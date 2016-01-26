@@ -6,4 +6,11 @@
     android:layout_height="match_parent"
     tools:context="calendar.simplemobiletools.com.MainActivity">
 
+    <TableLayout
+        android:id="@+id/table_holder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+    </TableLayout>
 </RelativeLayout>
