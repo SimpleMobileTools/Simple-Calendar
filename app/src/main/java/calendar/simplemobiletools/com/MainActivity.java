@@ -16,22 +16,36 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TableLayout tableHolder = (TableLayout) findViewById(R.id.table_holder);
-        LayoutInflater inflater = getLayoutInflater();
+        final TableLayout tableHolder = (TableLayout) findViewById(R.id.table_holder);
+        final LayoutInflater inflater = getLayoutInflater();
 
-        DateTime dateTime = new DateTime();
-        final int currMonthDays = dateTime.dayOfMonth().getMaximumValue();
+        final DateTime now = new DateTime();
+        final int currMonthDays = now.dayOfMonth().getMaximumValue();
 
-        for (int i = 0; i < 5; i++) {
+        final int firstDayIndex = now.withDayOfMonth(1).getDayOfWeek() - 1;
+        final int prevMonthDays = now.minusMonths(1).dayOfMonth().getMaximumValue();
+        final int prevMonthStart = prevMonthDays - firstDayIndex + 1;
+
+        int cur = 0;
+        int thisMonthDays = 1;
+        int nextMonth = 1;
+
+        for (int i = 0; i < 6; i++) {
             final TableRow row = (TableRow) inflater.inflate(R.layout.table_row, tableHolder, false);
-            for (int j = 1; j < 8; j++) {
-                final int currDate = i * 7 + j;
-                if (currDate > currMonthDays)
-                    break;
-
+            for (int j = 0; j < 7; j++) {
                 final TextView day = (TextView) inflater.inflate(R.layout.table_day, row, false);
+                int currDate = thisMonthDays;
+                if (cur < firstDayIndex) {
+                    currDate = prevMonthStart + cur;
+                } else if (currDate <= currMonthDays) {
+                    thisMonthDays++;
+                } else {
+                    currDate = nextMonth++;
+                }
+
                 day.setText(String.valueOf(currDate));
                 row.addView(day);
+                cur++;
             }
 
             tableHolder.addView(row);
