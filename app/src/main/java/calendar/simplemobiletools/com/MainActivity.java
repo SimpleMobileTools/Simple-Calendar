@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import org.joda.time.DateTime;
 
+import java.text.DateFormatSymbols;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -16,10 +18,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        final TextView monthTV = (TextView) findViewById(R.id.table_month);
+
         final TableLayout tableHolder = (TableLayout) findViewById(R.id.table_holder);
         final LayoutInflater inflater = getLayoutInflater();
 
         final DateTime now = new DateTime();
+        monthTV.setText(getMonthName(now));
         final int currMonthDays = now.dayOfMonth().getMaximumValue();
 
         final int firstDayIndex = now.withDayOfMonth(1).getDayOfWeek() - 1;
@@ -50,5 +55,10 @@ public class MainActivity extends AppCompatActivity {
 
             tableHolder.addView(row);
         }
+    }
+
+    private String getMonthName(DateTime dateTime) {
+        final String[] months = new DateFormatSymbols().getMonths();
+        return months[dateTime.getMonthOfYear() - 1];
     }
 }
