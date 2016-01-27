@@ -6,10 +6,20 @@
     android:layout_height="match_parent"
     tools:context="calendar.simplemobiletools.com.MainActivity">
 
+    <TextView
+        android:id="@+id/table_month"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_margin"
+        android:gravity="center_horizontal"
+        android:textColor="@color/darkGrey"
+        android:textSize="24sp"/>
+
     <TableLayout
         android:id="@+id/table_holder"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/table_month"
         android:gravity="center">
 
     </TableLayout>

@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         int cur = 0;
         int thisMonthDays = 1;
-        int nextMonth = 1;
+        int nextMonthsDay = 1;
 
         for (int i = 0; i < 6; i++) {
             final TableRow row = (TableRow) inflater.inflate(R.layout.table_row, tableHolder, false);
@@ -44,8 +44,9 @@ public class MainActivity extends AppCompatActivity {
                     currDate = prevMonthStart + cur;
                 } else if (currDate <= currMonthDays) {
                     thisMonthDays++;
+                    day.setTextColor(getResources().getColor(R.color.darkGrey));
                 } else {
-                    currDate = nextMonth++;
+                    currDate = nextMonthsDay++;
                 }
 
                 day.setText(String.valueOf(currDate));
