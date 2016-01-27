@@ -1,8 +1,10 @@
 package calendar.simplemobiletools.com;
 
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
+import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -12,11 +14,21 @@ import org.joda.time.DateTime;
 import java.text.DateFormatSymbols;
 
 public class MainActivity extends AppCompatActivity {
+    private DateTime targetDate;
+    private int grey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        grey = getResources().getColor(R.color.darkGrey);
+
+        final ImageView leftArrow = (ImageView) findViewById(R.id.left_arrow);
+        leftArrow.getDrawable().mutate().setColorFilter(grey, PorterDuff.Mode.SRC_ATOP);
+
+        final ImageView rightArrow = (ImageView) findViewById(R.id.right_arrow);
+        rightArrow.getDrawable().mutate().setColorFilter(grey, PorterDuff.Mode.SRC_ATOP);
 
         final TextView monthTV = (TextView) findViewById(R.id.table_month);
 
@@ -24,7 +36,8 @@ public class MainActivity extends AppCompatActivity {
         final LayoutInflater inflater = getLayoutInflater();
 
         final DateTime now = new DateTime();
-        monthTV.setText(getMonthName(now));
+        targetDate = now;
+        monthTV.setText(getMonthName());
         final int currMonthDays = now.dayOfMonth().getMaximumValue();
 
         final int firstDayIndex = now.withDayOfMonth(1).getDayOfWeek() - 1;
@@ -44,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                     currDate = prevMonthStart + cur;
                 } else if (currDate <= currMonthDays) {
                     thisMonthDays++;
-                    day.setTextColor(getResources().getColor(R.color.darkGrey));
+                    day.setTextColor(grey);
                 } else {
                     currDate = nextMonthsDay++;
                 }
@@ -58,8 +71,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private String getMonthName(DateTime dateTime) {
+    private String getMonthName() {
         final String[] months = new DateFormatSymbols().getMonths();
-        return months[dateTime.getMonthOfYear() - 1];
+        return months[targetDate.getMonthOfYear() - 1];
     }
 }

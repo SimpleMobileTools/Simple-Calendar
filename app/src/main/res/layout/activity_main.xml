@@ -4,22 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="@dimen/activity_margin"
     tools:context="calendar.simplemobiletools.com.MainActivity">
+
+    <ImageView
+        android:id="@+id/left_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignBottom="@+id/table_month"
+        android:layout_alignTop="@+id/table_month"
+        android:paddingRight="@dimen/activity_margin"
+        android:src="@mipmap/arrow_left"/>
 
     <TextView
         android:id="@+id/table_month"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/activity_margin"
         android:gravity="center_horizontal"
+        android:paddingBottom="@dimen/activity_margin"
+        android:paddingTop="@dimen/activity_margin"
         android:textColor="@color/darkGrey"
         android:textSize="24sp"/>
+
+    <ImageView
+        android:id="@+id/right_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignBottom="@+id/table_month"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/table_month"
+        android:paddingLeft="@dimen/activity_margin"
+        android:src="@mipmap/arrow_right"/>
 
     <TableLayout
         android:id="@+id/table_holder"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/table_month"
+        android:layout_marginBottom="@dimen/activity_margin"
         android:gravity="center">
 
     </TableLayout>
