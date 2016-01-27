@@ -13,26 +13,29 @@ import org.joda.time.DateTime;
 
 import java.text.DateFormatSymbols;
 
+import butterknife.Bind;
+import butterknife.BindColor;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 public class MainActivity extends AppCompatActivity {
+    @Bind(R.id.left_arrow) ImageView leftArrow;
+    @Bind(R.id.right_arrow) ImageView rightArrow;
+    @Bind(R.id.table_month) TextView monthTV;
+    @Bind(R.id.table_holder) TableLayout tableHolder;
+    @BindColor(R.color.darkGrey) int grey;
+
     private DateTime targetDate;
-    private int grey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
-        grey = getResources().getColor(R.color.darkGrey);
-
-        final ImageView leftArrow = (ImageView) findViewById(R.id.left_arrow);
         leftArrow.getDrawable().mutate().setColorFilter(grey, PorterDuff.Mode.SRC_ATOP);
-
-        final ImageView rightArrow = (ImageView) findViewById(R.id.right_arrow);
         rightArrow.getDrawable().mutate().setColorFilter(grey, PorterDuff.Mode.SRC_ATOP);
 
-        final TextView monthTV = (TextView) findViewById(R.id.table_month);
-
-        final TableLayout tableHolder = (TableLayout) findViewById(R.id.table_holder);
         final LayoutInflater inflater = getLayoutInflater();
 
         final DateTime now = new DateTime();
@@ -69,6 +72,16 @@ public class MainActivity extends AppCompatActivity {
 
             tableHolder.addView(row);
         }
+    }
+
+    @OnClick(R.id.left_arrow)
+    public void leftArrowClicked() {
+
+    }
+
+    @OnClick(R.id.right_arrow)
+    public void rightArrowClicked() {
+
     }
 
     private String getMonthName() {

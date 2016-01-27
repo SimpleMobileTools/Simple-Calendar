@@ -13,7 +13,9 @@
         android:layout_height="match_parent"
         android:layout_alignBottom="@+id/table_month"
         android:layout_alignTop="@+id/table_month"
+        android:paddingBottom="@dimen/activity_margin"
         android:paddingRight="@dimen/activity_margin"
+        android:paddingTop="@dimen/activity_margin"
         android:src="@mipmap/arrow_left"/>
 
     <TextView
@@ -33,7 +35,9 @@
         android:layout_alignBottom="@+id/table_month"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/table_month"
+        android:paddingBottom="@dimen/activity_margin"
         android:paddingLeft="@dimen/activity_margin"
+        android:paddingTop="@dimen/activity_margin"
         android:src="@mipmap/arrow_right"/>
 
     <TableLayout
