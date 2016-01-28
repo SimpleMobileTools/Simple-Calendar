@@ -23,7 +23,8 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.right_arrow) ImageView rightArrow;
     @Bind(R.id.table_month) TextView monthTV;
     @Bind(R.id.table_holder) TableLayout tableHolder;
-    @BindColor(R.color.darkGrey) int grey;
+    @BindColor(R.color.darkGrey) int darkGrey;
+    @BindColor(R.color.lightGrey) int lightGrey;
 
     private DateTime targetDate;
 
@@ -33,18 +34,30 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        leftArrow.getDrawable().mutate().setColorFilter(grey, PorterDuff.Mode.SRC_ATOP);
-        rightArrow.getDrawable().mutate().setColorFilter(grey, PorterDuff.Mode.SRC_ATOP);
+        leftArrow.getDrawable().mutate().setColorFilter(darkGrey, PorterDuff.Mode.SRC_ATOP);
+        rightArrow.getDrawable().mutate().setColorFilter(darkGrey, PorterDuff.Mode.SRC_ATOP);
+        targetDate = new DateTime();
 
+        createDays();
+        fillCalendar();
+    }
+
+    private void createDays() {
         final LayoutInflater inflater = getLayoutInflater();
+        for (int i = 0; i < 6; i++) {
+            final TableRow row = (TableRow) inflater.inflate(R.layout.table_row, tableHolder, false);
+            tableHolder.addView(row);
+            for (int j = 0; j < 7; j++) {
+                inflater.inflate(R.layout.table_day, row);
+            }
+        }
+    }
 
-        final DateTime now = new DateTime();
-        targetDate = now;
+    private void fillCalendar() {
         monthTV.setText(getMonthName());
-        final int currMonthDays = now.dayOfMonth().getMaximumValue();
-
-        final int firstDayIndex = now.withDayOfMonth(1).getDayOfWeek() - 1;
-        final int prevMonthDays = now.minusMonths(1).dayOfMonth().getMaximumValue();
+        final int currMonthDays = targetDate.dayOfMonth().getMaximumValue();
+        final int firstDayIndex = targetDate.withDayOfMonth(1).getDayOfWeek() - 1;
+        final int prevMonthDays = targetDate.minusMonths(1).dayOfMonth().getMaximumValue();
         final int prevMonthStart = prevMonthDays - firstDayIndex + 1;
 
         int cur = 0;
@@ -52,36 +65,38 @@ public class MainActivity extends AppCompatActivity {
         int nextMonthsDay = 1;
 
         for (int i = 0; i < 6; i++) {
-            final TableRow row = (TableRow) inflater.inflate(R.layout.table_row, tableHolder, false);
+            final TableRow row = (TableRow) tableHolder.getChildAt(i);
             for (int j = 0; j < 7; j++) {
-                final TextView day = (TextView) inflater.inflate(R.layout.table_day, row, false);
+                final TextView day = (TextView) row.getChildAt(j);
+
                 int currDate = thisMonthDays;
                 if (cur < firstDayIndex) {
                     currDate = prevMonthStart + cur;
+                    day.setTextColor(lightGrey);
                 } else if (currDate <= currMonthDays) {
                     thisMonthDays++;
-                    day.setTextColor(grey);
+                    day.setTextColor(darkGrey);
                 } else {
                     currDate = nextMonthsDay++;
+                    day.setTextColor(lightGrey);
                 }
 
                 day.setText(String.valueOf(currDate));
-                row.addView(day);
                 cur++;
             }
-
-            tableHolder.addView(row);
         }
     }
 
     @OnClick(R.id.left_arrow)
     public void leftArrowClicked() {
-
+        targetDate = targetDate.minusMonths(1);
+        fillCalendar();
     }
 
     @OnClick(R.id.right_arrow)
     public void rightArrowClicked() {
-
+        targetDate = targetDate.plusMonths(1);
+        fillCalendar();
     }
 
     private String getMonthName() {
