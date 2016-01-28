@@ -50,12 +50,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void createDays() {
+        final String[] days = {"M", "T", "W", "T", "F", "S", "S"};
         final LayoutInflater inflater = getLayoutInflater();
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 7; i++) {
             final TableRow row = (TableRow) inflater.inflate(R.layout.table_row, tableHolder, false);
             tableHolder.addView(row);
             for (int j = 0; j < 7; j++) {
-                inflater.inflate(R.layout.table_day, row);
+                final TextView day = (TextView) inflater.inflate(R.layout.table_day, row, false);
+                if (i == 0) {
+                    day.setText(days[j]);
+                    day.setTextSize(dayTextSize);
+                }
+                row.addView(day);
             }
         }
     }
@@ -71,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         int thisMonthDays = 1;
         int nextMonthsDay = 1;
 
-        for (int i = 0; i < 6; i++) {
+        for (int i = 1; i < 7; i++) {
             final TableRow row = (TableRow) tableHolder.getChildAt(i);
             for (int j = 0; j < 7; j++) {
                 final TextView day = (TextView) row.getChildAt(j);
