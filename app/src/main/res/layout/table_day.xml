@@ -7,4 +7,4 @@
     android:layout_weight="1"
     android:gravity="center"
     android:textColor="@color/lightGrey"
-    android:textSize="18sp"/>
+    android:textSize="@dimen/day_text_size"/>

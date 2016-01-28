@@ -15,18 +15,24 @@ import java.text.DateFormatSymbols;
 
 import butterknife.Bind;
 import butterknife.BindColor;
+import butterknife.BindDimen;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String PATTERN = "ddMMYYYY";
+
     @Bind(R.id.left_arrow) ImageView leftArrow;
     @Bind(R.id.right_arrow) ImageView rightArrow;
     @Bind(R.id.table_month) TextView monthTV;
     @Bind(R.id.table_holder) TableLayout tableHolder;
     @BindColor(R.color.darkGrey) int darkGrey;
     @BindColor(R.color.lightGrey) int lightGrey;
+    @BindDimen(R.dimen.day_text_size) float dayTextSize;
+    @BindDimen(R.dimen.today_text_size) float todayTextSize;
 
     private DateTime targetDate;
+    private String today;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         leftArrow.getDrawable().mutate().setColorFilter(darkGrey, PorterDuff.Mode.SRC_ATOP);
         rightArrow.getDrawable().mutate().setColorFilter(darkGrey, PorterDuff.Mode.SRC_ATOP);
         targetDate = new DateTime();
+        today = new DateTime().toString(PATTERN);
 
         createDays();
         fillCalendar();
@@ -68,12 +75,17 @@ public class MainActivity extends AppCompatActivity {
             final TableRow row = (TableRow) tableHolder.getChildAt(i);
             for (int j = 0; j < 7; j++) {
                 final TextView day = (TextView) row.getChildAt(j);
+                day.setTextSize(dayTextSize);
 
                 int currDate = thisMonthDays;
                 if (cur < firstDayIndex) {
                     currDate = prevMonthStart + cur;
                     day.setTextColor(lightGrey);
                 } else if (currDate <= currMonthDays) {
+                    if (targetDate.withDayOfMonth(thisMonthDays).toString(PATTERN).equals(today)) {
+                        day.setTextSize(todayTextSize);
+                    }
+
                     thisMonthDays++;
                     day.setTextColor(darkGrey);
                 } else {
