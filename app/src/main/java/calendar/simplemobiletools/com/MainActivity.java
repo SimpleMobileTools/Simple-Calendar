@@ -20,7 +20,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
-    private static final String PATTERN = "ddMMYYYY";
+    private static final String DATE_PATTERN = "ddMMYYYY";
+    private static final String YEAR_PATTERN = "YYYY";
 
     @Bind(R.id.left_arrow) ImageView leftArrow;
     @Bind(R.id.right_arrow) ImageView rightArrow;
@@ -43,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         leftArrow.getDrawable().mutate().setColorFilter(darkGrey, PorterDuff.Mode.SRC_ATOP);
         rightArrow.getDrawable().mutate().setColorFilter(darkGrey, PorterDuff.Mode.SRC_ATOP);
         targetDate = new DateTime();
-        today = new DateTime().toString(PATTERN);
+        today = targetDate.toString(DATE_PATTERN);
 
         createDays();
         fillCalendar();
@@ -88,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                     currDate = prevMonthStart + cur;
                     day.setTextColor(lightGrey);
                 } else if (currDate <= currMonthDays) {
-                    if (targetDate.withDayOfMonth(thisMonthDays).toString(PATTERN).equals(today)) {
+                    if (targetDate.withDayOfMonth(thisMonthDays).toString(DATE_PATTERN).equals(today)) {
                         day.setTextSize(todayTextSize);
                     }
 
@@ -119,6 +120,14 @@ public class MainActivity extends AppCompatActivity {
 
     private String getMonthName() {
         final String[] months = new DateFormatSymbols().getMonths();
-        return months[targetDate.getMonthOfYear() - 1];
+        final StringBuilder sb = new StringBuilder();
+        sb.append(months[targetDate.getMonthOfYear() - 1]);
+
+        final String targetYear = targetDate.toString(YEAR_PATTERN);
+        if (!targetYear.equals(new DateTime().toString(YEAR_PATTERN))) {
+            sb.append(" ");
+            sb.append(targetYear);
+        }
+        return sb.toString();
     }
 }
