@@ -22,6 +22,8 @@
         android:id="@+id/table_month"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/right_arrow"
+        android:layout_toRightOf="@+id/left_arrow"
         android:gravity="center_horizontal"
         android:paddingBottom="@dimen/activity_margin"
         android:paddingTop="@dimen/activity_margin"
@@ -47,7 +49,6 @@
         android:layout_below="@+id/table_month"
         android:layout_marginBottom="@dimen/activity_margin"
         android:layout_marginTop="@dimen/activity_margin"
-        android:gravity="center">
+        android:gravity="center"/>
 
-    </TableLayout>
 </RelativeLayout>

@@ -19,7 +19,8 @@ import butterknife.BindDimen;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MyDatePickerDialog.DatePickedListener {
+    public static final String DATE = "date";
     private static final String DATE_PATTERN = "ddMMYYYY";
     private static final String YEAR_PATTERN = "YYYY";
 
@@ -118,6 +119,15 @@ public class MainActivity extends AppCompatActivity {
         fillCalendar();
     }
 
+    @OnClick(R.id.table_month)
+    public void pickMonth() {
+        final MyDatePickerDialog dialog = new MyDatePickerDialog();
+        final Bundle bundle = new Bundle();
+        bundle.putString(DATE, targetDate.toString());
+        dialog.setArguments(bundle);
+        dialog.show(getSupportFragmentManager(), "datepicker");
+    }
+
     private String getMonthName() {
         final String[] months = new DateFormatSymbols().getMonths();
         final StringBuilder sb = new StringBuilder();
@@ -129,5 +139,11 @@ public class MainActivity extends AppCompatActivity {
             sb.append(targetYear);
         }
         return sb.toString();
+    }
+
+    @Override
+    public void onDatePicked(DateTime dateTime) {
+        targetDate = dateTime;
+        fillCalendar();
     }
 }
