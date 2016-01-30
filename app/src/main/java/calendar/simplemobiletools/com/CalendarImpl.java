@@ -15,15 +15,14 @@ public class CalendarImpl {
     private final String today;
     private DateTime targetDate;
 
-    public CalendarImpl(Calendar callback, DateTime targetDate) {
+    public CalendarImpl(Calendar callback) {
         this.callback = callback;
-        this.targetDate = targetDate;
         today = new DateTime().toString(DATE_PATTERN);
     }
 
-    public void updateCalendar(DateTime targetDateTime) {
-        this.targetDate = targetDateTime;
-        getDays(targetDateTime);
+    public void updateCalendar(DateTime targetDate) {
+        this.targetDate = targetDate;
+        getDays(targetDate);
         getMonthName();
     }
 

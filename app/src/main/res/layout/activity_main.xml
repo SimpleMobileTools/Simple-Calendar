@@ -28,7 +28,7 @@
         android:paddingBottom="@dimen/activity_margin"
         android:paddingTop="@dimen/activity_margin"
         android:textColor="@color/darkGrey"
-        android:textSize="24sp"/>
+        android:textSize="22sp"/>
 
     <ImageView
         android:id="@+id/right_arrow"

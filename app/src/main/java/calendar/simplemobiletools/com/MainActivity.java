@@ -46,9 +46,8 @@ public class MainActivity extends AppCompatActivity implements MyDatePickerDialo
         dayTextSize /= getResources().getDisplayMetrics().density;
         todayTextSize /= getResources().getDisplayMetrics().density;
 
-        DateTime now = new DateTime();
-        calendar = new CalendarImpl(this, now);
-        calendar.updateCalendar(now);
+        calendar = new CalendarImpl(this);
+        calendar.updateCalendar(new DateTime());
 
         setupLabelSizes();
     }
