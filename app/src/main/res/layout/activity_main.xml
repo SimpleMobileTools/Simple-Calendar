@@ -42,13 +42,14 @@
         android:paddingTop="@dimen/activity_margin"
         android:src="@mipmap/arrow_right"/>
 
-    <TableLayout
+    <LinearLayout
         android:id="@+id/table_holder"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/table_month"
         android:layout_marginBottom="@dimen/activity_margin"
         android:layout_marginTop="@dimen/activity_margin"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:orientation="vertical"/>
 
 </RelativeLayout>

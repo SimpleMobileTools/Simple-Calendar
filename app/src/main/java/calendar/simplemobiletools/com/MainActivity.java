@@ -5,8 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
-import android.widget.TableLayout;
-import android.widget.TableRow;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.joda.time.DateTime;
@@ -27,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements MyDatePickerDialo
     @Bind(R.id.left_arrow) ImageView leftArrow;
     @Bind(R.id.right_arrow) ImageView rightArrow;
     @Bind(R.id.table_month) TextView monthTV;
-    @Bind(R.id.table_holder) TableLayout tableHolder;
+    @Bind(R.id.table_holder) LinearLayout tableHolder;
     @BindColor(R.color.darkGrey) int darkGrey;
     @BindColor(R.color.lightGrey) int lightGrey;
     @BindDimen(R.dimen.day_text_size) float dayTextSize;
@@ -55,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements MyDatePickerDialo
         final String[] days = {"M", "T", "W", "T", "F", "S", "S"};
         final LayoutInflater inflater = getLayoutInflater();
         for (int i = 0; i < 7; i++) {
-            final TableRow row = (TableRow) inflater.inflate(R.layout.table_row, tableHolder, false);
+            final LinearLayout row = (LinearLayout) inflater.inflate(R.layout.table_row, tableHolder, false);
             tableHolder.addView(row);
             for (int j = 0; j < 7; j++) {
                 final TextView day = (TextView) inflater.inflate(R.layout.table_day, row, false);
@@ -80,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements MyDatePickerDialo
         int nextMonthsDay = 1;
 
         for (int i = 1; i < 7; i++) {
-            final TableRow row = (TableRow) tableHolder.getChildAt(i);
+            final LinearLayout row = (LinearLayout) tableHolder.getChildAt(i);
             for (int j = 0; j < 7; j++) {
                 final TextView day = (TextView) row.getChildAt(j);
                 day.setTextSize(dayTextSize);
