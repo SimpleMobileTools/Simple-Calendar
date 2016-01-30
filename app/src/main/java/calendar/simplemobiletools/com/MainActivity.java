@@ -3,7 +3,6 @@ package calendar.simplemobiletools.com;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -46,25 +45,9 @@ public class MainActivity extends AppCompatActivity implements MyDatePickerDialo
         targetDate = new DateTime();
         today = targetDate.toString(DATE_PATTERN);
 
-        createDays();
-        fillCalendar();
-    }
+        dayTextSize /= getResources().getDisplayMetrics().density;
 
-    private void createDays() {
-        final String[] days = {"M", "T", "W", "T", "F", "S", "S"};
-        final LayoutInflater inflater = getLayoutInflater();
-        for (int i = 0; i < 7; i++) {
-            final LinearLayout row = (LinearLayout) inflater.inflate(R.layout.table_row, tableHolder, false);
-            tableHolder.addView(row);
-            for (int j = 0; j < 7; j++) {
-                final TextView day = (TextView) inflater.inflate(R.layout.table_day, row, false);
-                if (i == 0) {
-                    day.setText(days[j]);
-                    day.setTextSize(dayTextSize);
-                }
-                row.addView(day);
-            }
-        }
+        fillCalendar();
     }
 
     private void fillCalendar() {
@@ -78,9 +61,11 @@ public class MainActivity extends AppCompatActivity implements MyDatePickerDialo
         int thisMonthDays = 1;
         int nextMonthsDay = 1;
 
-        for (int i = 1; i < 7; i++) {
+        final int rowsCnt = tableHolder.getChildCount();
+        for (int i = 1; i < rowsCnt; i++) {
             final LinearLayout row = (LinearLayout) tableHolder.getChildAt(i);
-            for (int j = 0; j < 7; j++) {
+            final int daysCnt = row.getChildCount();
+            for (int j = 0; j < daysCnt; j++) {
                 final TextView day = (TextView) row.getChildAt(j);
                 day.setTextSize(dayTextSize);
 

@@ -8,4 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="dayView" parent="AppTheme">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/lightGrey</item>
+        <item name="android:textSize">@dimen/day_text_size</item>
+    </style>
+
 </resources>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/label_0"
+        style="@style/dayView"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="M"/>
+
+    <TextView
+        android:id="@+id/label_1"
+        style="@style/dayView"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="T"/>
+
+    <TextView
+        android:id="@+id/label_2"
+        style="@style/dayView"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="W"/>
+
+    <TextView
+        android:id="@+id/label_3"
+        style="@style/dayView"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="T"/>
+
+    <TextView
+        android:id="@+id/label_4"
+        style="@style/dayView"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="F"/>
+
+    <TextView
+        android:id="@+id/label_5"
+        style="@style/dayView"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="S"/>
+
+    <TextView
+        android:id="@+id/label_6"
+        style="@style/dayView"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="S"/>
+
+</LinearLayout>
