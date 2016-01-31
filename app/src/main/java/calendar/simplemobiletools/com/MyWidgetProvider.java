@@ -7,7 +7,13 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.LightingColorFilter;
+import android.graphics.Paint;
 import android.widget.RemoteViews;
 
 import org.joda.time.DateTime;
@@ -17,6 +23,8 @@ import java.util.List;
 public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
     private static final String PREV = "prev";
     private static final String NEXT = "next";
+    private static final float LOW_ALPHA = 0.3f;
+
     private static RemoteViews remoteViews;
     private static int[] widgetIds;
     private static AppWidgetManager widgetManager;
@@ -24,10 +32,11 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
     private static Context cxt;
     private static CalendarImpl calendar;
     private static Resources res;
-    private static int lightGrey;
-    private static int darkGrey;
     private static float dayTextSize;
     private static float todayTextSize;
+    private static int bgColor;
+    private static int textColor;
+    private static int weakTextColor;
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
@@ -37,8 +46,9 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
     private void initVariables(Context context) {
         cxt = context;
         res = cxt.getResources();
-        lightGrey = res.getColor(R.color.lightGrey);
-        darkGrey = res.getColor(R.color.darkGrey);
+        bgColor = Color.BLACK;
+        textColor = Color.WHITE;
+        weakTextColor = adjustAlpha(textColor, LOW_ALPHA);
 
         dayTextSize = res.getDimension(R.dimen.day_text_size) / res.getDisplayMetrics().density;
         todayTextSize = res.getDimension(R.dimen.today_text_size) / res.getDisplayMetrics().density;
@@ -48,10 +58,10 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
         widgetIds = widgetManager.getAppWidgetIds(component);
 
         remoteViews = new RemoteViews(cxt.getPackageName(), R.layout.activity_main);
-        remoteViews.setInt(R.id.table_month, "setTextColor", Color.WHITE);
-
         intent = new Intent(cxt, MyWidgetProvider.class);
         setupButtons();
+        updateLabelColor();
+        updateTopViews();
 
         calendar = new CalendarImpl(this);
         calendar.updateCalendar(new DateTime());
@@ -94,21 +104,31 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
         for (int i = 0; i < len; i++) {
             final Day day = days.get(i);
             final int id = res.getIdentifier("day_" + i, "id", packageName);
-            int textColor = lightGrey;
-            float textSize = dayTextSize;
+            int curTextColor = weakTextColor;
+            float curTextSize = dayTextSize;
 
             if (day.getIsThisMonth()) {
-                textColor = darkGrey;
+                curTextColor = textColor;
             }
 
             if (day.getIsToday()) {
-                textSize = todayTextSize;
+                curTextSize = todayTextSize;
             }
 
             remoteViews.setTextViewText(id, String.valueOf(day.getValue()));
-            remoteViews.setInt(id, "setTextColor", textColor);
-            remoteViews.setFloat(id, "setTextSize", textSize);
+            remoteViews.setInt(id, "setTextColor", curTextColor);
+            remoteViews.setFloat(id, "setTextSize", curTextSize);
         }
+    }
+
+    private void updateTopViews() {
+        remoteViews.setInt(R.id.table_month, "setTextColor", textColor);
+
+        Bitmap bmp = getColoredIcon(cxt, textColor, R.mipmap.arrow_left);
+        remoteViews.setImageViewBitmap(R.id.left_arrow, bmp);
+
+        bmp = getColoredIcon(cxt, textColor, R.mipmap.arrow_right);
+        remoteViews.setImageViewBitmap(R.id.right_arrow, bmp);
     }
 
     public void updateMonth(String month) {
@@ -120,5 +140,34 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
         updateMonth(month);
         updateDays(days);
         widgetManager.updateAppWidget(widgetIds, remoteViews);
+    }
+
+    private void updateLabelColor() {
+        int labelColor = adjustAlpha(textColor, LOW_ALPHA);
+        final String packageName = cxt.getPackageName();
+        for (int i = 0; i < 7; i++) {
+            final int id = res.getIdentifier("label_" + i, "id", packageName);
+            remoteViews.setInt(id, "setTextColor", labelColor);
+        }
+    }
+
+    private int adjustAlpha(int color, float factor) {
+        final int alpha = Math.round(Color.alpha(color) * factor);
+        final int red = Color.red(color);
+        final int green = Color.green(color);
+        final int blue = Color.blue(color);
+        return Color.argb(alpha, red, green, blue);
+    }
+
+    private Bitmap getColoredIcon(Context context, int newTextColor, int id) {
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inMutable = true;
+        final Bitmap bmp = BitmapFactory.decodeResource(context.getResources(), id, options);
+        final Paint paint = new Paint();
+        final ColorFilter filter = new LightingColorFilter(newTextColor, 1);
+        paint.setColorFilter(filter);
+        final Canvas canvas = new Canvas(bmp);
+        canvas.drawBitmap(bmp, 0, 0, paint);
+        return bmp;
     }
 }
