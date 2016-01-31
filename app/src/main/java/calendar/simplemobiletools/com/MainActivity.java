@@ -1,6 +1,7 @@
 package calendar.simplemobiletools.com;
 
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,25 +13,22 @@ import org.joda.time.DateTime;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.BindColor;
 import butterknife.BindDimen;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity implements MyDatePickerDialog.DatePickedListener, Calendar {
-    public static final String DATE = "date";
-
     @Bind(R.id.left_arrow) ImageView leftArrow;
     @Bind(R.id.right_arrow) ImageView rightArrow;
     @Bind(R.id.table_month) TextView monthTV;
-    @BindColor(R.color.darkGrey) int darkGrey;
-    @BindColor(R.color.lightGrey) int lightGrey;
     @BindDimen(R.dimen.day_text_size) float dayTextSize;
     @BindDimen(R.dimen.today_text_size) float todayTextSize;
 
     private CalendarImpl calendar;
     private Resources res;
     private String packageName;
+    private int textColor;
+    private int weakTextColor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,18 +36,19 @@ public class MainActivity extends AppCompatActivity implements MyDatePickerDialo
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        leftArrow.getDrawable().mutate().setColorFilter(darkGrey, PorterDuff.Mode.SRC_ATOP);
-        rightArrow.getDrawable().mutate().setColorFilter(darkGrey, PorterDuff.Mode.SRC_ATOP);
+        textColor = Helpers.adjustAlpha(Color.BLACK, Constants.HIGH_ALPHA);
+        weakTextColor = Helpers.adjustAlpha(Color.BLACK, Constants.LOW_ALPHA);
+        leftArrow.getDrawable().mutate().setColorFilter(textColor, PorterDuff.Mode.SRC_ATOP);
+        rightArrow.getDrawable().mutate().setColorFilter(textColor, PorterDuff.Mode.SRC_ATOP);
 
         res = getResources();
         packageName = getPackageName();
         dayTextSize /= res.getDisplayMetrics().density;
         todayTextSize /= res.getDisplayMetrics().density;
+        setupLabels();
 
         calendar = new CalendarImpl(this);
         calendar.updateCalendar(new DateTime());
-
-        setupLabelSizes();
     }
 
     private void updateDays(List<Day> days) {
@@ -58,19 +57,20 @@ public class MainActivity extends AppCompatActivity implements MyDatePickerDialo
         for (int i = 0; i < len; i++) {
             final Day day = days.get(i);
             final TextView dayTV = (TextView) findViewById(res.getIdentifier("day_" + i, "id", packageName));
-            dayTV.setText(String.valueOf(day.getValue()));
+            int curTextColor = weakTextColor;
+            float curTextSize = dayTextSize;
 
             if (day.getIsThisMonth()) {
-                dayTV.setTextColor(darkGrey);
-            } else {
-                dayTV.setTextColor(lightGrey);
+                curTextColor = textColor;
             }
 
             if (day.getIsToday()) {
-                dayTV.setTextSize(todayTextSize);
-            } else {
-                dayTV.setTextSize(dayTextSize);
+                curTextSize = todayTextSize;
             }
+
+            dayTV.setText(String.valueOf(day.getValue()));
+            dayTV.setTextColor(curTextColor);
+            dayTV.setTextSize(curTextSize);
         }
     }
 
@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements MyDatePickerDialo
     public void pickMonth() {
         final MyDatePickerDialog dialog = new MyDatePickerDialog();
         final Bundle bundle = new Bundle();
-        bundle.putString(DATE, calendar.getTargetDate().toString());
+        bundle.putString(Constants.DATE, calendar.getTargetDate().toString());
         dialog.setArguments(bundle);
         dialog.show(getSupportFragmentManager(), "datepicker");
     }
@@ -108,10 +108,11 @@ public class MainActivity extends AppCompatActivity implements MyDatePickerDialo
         monthTV.setText(month);
     }
 
-    private void setupLabelSizes() {
+    private void setupLabels() {
         for (int i = 0; i < 7; i++) {
             final TextView dayTV = (TextView) findViewById(res.getIdentifier("label_" + i, "id", packageName));
             dayTV.setTextSize(dayTextSize);
+            dayTV.setTextColor(weakTextColor);
         }
     }
 }

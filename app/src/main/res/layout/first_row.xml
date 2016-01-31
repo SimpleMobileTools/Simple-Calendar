@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/label_0"
-        style="@style/dayView"
+        style="@style/DayView"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -16,7 +16,7 @@
 
     <TextView
         android:id="@+id/label_1"
-        style="@style/dayView"
+        style="@style/DayView"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -24,7 +24,7 @@
 
     <TextView
         android:id="@+id/label_2"
-        style="@style/dayView"
+        style="@style/DayView"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -32,7 +32,7 @@
 
     <TextView
         android:id="@+id/label_3"
-        style="@style/dayView"
+        style="@style/DayView"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -40,7 +40,7 @@
 
     <TextView
         android:id="@+id/label_4"
-        style="@style/dayView"
+        style="@style/DayView"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -48,7 +48,7 @@
 
     <TextView
         android:id="@+id/label_5"
-        style="@style/dayView"
+        style="@style/DayView"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -56,7 +56,7 @@
 
     <TextView
         android:id="@+id/label_6"
-        style="@style/dayView"
+        style="@style/DayView"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"

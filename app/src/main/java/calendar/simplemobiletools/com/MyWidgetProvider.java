@@ -6,6 +6,7 @@ import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -23,7 +24,6 @@ import java.util.List;
 public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
     private static final String PREV = "prev";
     private static final String NEXT = "next";
-    private static final float LOW_ALPHA = 0.3f;
 
     private static RemoteViews remoteViews;
     private static int[] widgetIds;
@@ -47,8 +47,11 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
         cxt = context;
         res = cxt.getResources();
         bgColor = Color.BLACK;
-        textColor = Color.WHITE;
-        weakTextColor = adjustAlpha(textColor, LOW_ALPHA);
+
+        final SharedPreferences prefs = initPrefs(cxt);
+        final int storedTextColor = prefs.getInt(Constants.WIDGET_TEXT_COLOR, Color.WHITE);
+        textColor = Helpers.adjustAlpha(storedTextColor, Constants.HIGH_ALPHA);
+        weakTextColor = Helpers.adjustAlpha(storedTextColor, Constants.LOW_ALPHA);
 
         dayTextSize = res.getDimension(R.dimen.day_text_size) / res.getDisplayMetrics().density;
         todayTextSize = res.getDimension(R.dimen.today_text_size) / res.getDisplayMetrics().density;
@@ -78,6 +81,10 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
     private void setupButtons() {
         setupIntent(PREV, R.id.left_arrow);
         setupIntent(NEXT, R.id.right_arrow);
+    }
+
+    private SharedPreferences initPrefs(Context context) {
+        return context.getSharedPreferences(Constants.PREFS, Context.MODE_PRIVATE);
     }
 
     @Override
@@ -143,20 +150,11 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
     }
 
     private void updateLabelColor() {
-        int labelColor = adjustAlpha(textColor, LOW_ALPHA);
         final String packageName = cxt.getPackageName();
         for (int i = 0; i < 7; i++) {
             final int id = res.getIdentifier("label_" + i, "id", packageName);
-            remoteViews.setInt(id, "setTextColor", labelColor);
+            remoteViews.setInt(id, "setTextColor", weakTextColor);
         }
-    }
-
-    private int adjustAlpha(int color, float factor) {
-        final int alpha = Math.round(Color.alpha(color) * factor);
-        final int red = Color.red(color);
-        final int green = Color.green(color);
-        final int blue = Color.blue(color);
-        return Color.argb(alpha, red, green, blue);
     }
 
     private Bitmap getColoredIcon(Context context, int newTextColor, int id) {

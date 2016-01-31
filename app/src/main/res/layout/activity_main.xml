@@ -27,7 +27,6 @@
         android:gravity="center_horizontal"
         android:paddingBottom="@dimen/activity_margin"
         android:paddingTop="@dimen/activity_margin"
-        android:textColor="@color/darkGrey"
         android:textSize="22sp"/>
 
     <ImageView
@@ -65,49 +64,49 @@
 
             <TextView
                 android:id="@+id/day_0"
-                style="@style/dayView"
+                style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/day_1"
-                style="@style/dayView"
+                style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/day_2"
-                style="@style/dayView"
+                style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/day_3"
-                style="@style/dayView"
+                style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/day_4"
-                style="@style/dayView"
+                style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/day_5"
-                style="@style/dayView"
+                style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/day_6"
-                style="@style/dayView"
+                style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
@@ -121,49 +120,49 @@
 
             <TextView
                 android:id="@+id/day_7"
-                style="@style/dayView"
+                style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/day_8"
-                style="@style/dayView"
+                style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/day_9"
-                style="@style/dayView"
+                style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/day_10"
-                style="@style/dayView"
+                style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/day_11"
-                style="@style/dayView"
+                style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/day_12"
-                style="@style/dayView"
+                style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/day_13"
-                style="@style/dayView"
+                style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
@@ -177,49 +176,49 @@
 
             <TextView
                 android:id="@+id/day_14"
-                style="@style/dayView"
+                style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/day_15"
-                style="@style/dayView"
+                style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/day_16"
-                style="@style/dayView"
+                style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/day_17"
-                style="@style/dayView"
+                style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/day_18"
-                style="@style/dayView"
+                style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/day_19"
-                style="@style/dayView"
+                style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/day_20"
-                style="@style/dayView"
+                style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
@@ -233,49 +232,49 @@
 
             <TextView
                 android:id="@+id/day_21"
-                style="@style/dayView"
+                style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/day_22"
-                style="@style/dayView"
+                style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/day_23"
-                style="@style/dayView"
+                style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/day_24"
-                style="@style/dayView"
+                style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/day_25"
-                style="@style/dayView"
+                style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/day_26"
-                style="@style/dayView"
+                style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/day_27"
-                style="@style/dayView"
+                style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
@@ -289,49 +288,49 @@
 
             <TextView
                 android:id="@+id/day_28"
-                style="@style/dayView"
+                style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/day_29"
-                style="@style/dayView"
+                style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/day_30"
-                style="@style/dayView"
+                style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/day_31"
-                style="@style/dayView"
+                style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/day_32"
-                style="@style/dayView"
+                style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/day_33"
-                style="@style/dayView"
+                style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/day_34"
-                style="@style/dayView"
+                style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
@@ -345,49 +344,49 @@
 
             <TextView
                 android:id="@+id/day_35"
-                style="@style/dayView"
+                style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/day_36"
-                style="@style/dayView"
+                style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/day_37"
-                style="@style/dayView"
+                style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/day_38"
-                style="@style/dayView"
+                style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/day_39"
-                style="@style/dayView"
+                style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/day_40"
-                style="@style/dayView"
+                style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/day_41"
-                style="@style/dayView"
+                style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>

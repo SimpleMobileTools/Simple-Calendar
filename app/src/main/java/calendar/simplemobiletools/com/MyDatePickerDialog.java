@@ -21,8 +21,8 @@ public class MyDatePickerDialog extends DialogFragment {
         hideDayPicker(datePicker);
 
         final Bundle bundle = getArguments();
-        if (bundle != null && bundle.containsKey(MainActivity.DATE)) {
-            final DateTime dateTime = new DateTime(bundle.getString(MainActivity.DATE));
+        if (bundle != null && bundle.containsKey(Constants.DATE)) {
+            final DateTime dateTime = new DateTime(bundle.getString(Constants.DATE));
             datePicker.init(dateTime.getYear(), dateTime.getMonthOfYear() - 1, 1, null);
         }
 

@@ -1,5 +1,5 @@
 <resources>
     <dimen name="activity_margin">16dp</dimen>
     <dimen name="day_text_size">16sp</dimen>
-    <dimen name="today_text_size">30sp</dimen>
+    <dimen name="today_text_size">32sp</dimen>
 </resources>
