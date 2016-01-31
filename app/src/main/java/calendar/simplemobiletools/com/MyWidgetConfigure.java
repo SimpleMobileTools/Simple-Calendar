@@ -63,11 +63,16 @@ public class MyWidgetConfigure extends AppCompatActivity implements Calendar {
         dayTextSize /= res.getDisplayMetrics().density;
         todayTextSize /= res.getDisplayMetrics().density;
 
-        textColorWithoutTransparency = Color.WHITE;
+        final SharedPreferences prefs = initPrefs(this);
+        textColorWithoutTransparency = prefs.getInt(Constants.WIDGET_TEXT_COLOR, Color.WHITE);
         updateTextColors();
 
         calendar = new CalendarImpl(this);
         calendar.updateCalendar(new DateTime());
+    }
+
+    private SharedPreferences initPrefs(Context context) {
+        return context.getSharedPreferences(Constants.PREFS, Context.MODE_PRIVATE);
     }
 
     @OnClick(R.id.config_save)
