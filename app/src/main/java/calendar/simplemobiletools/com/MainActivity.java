@@ -113,6 +113,7 @@ public class MainActivity extends AppCompatActivity implements MyDatePickerDialo
 
     private void updateMonth(String month) {
         monthTV.setText(month);
+        monthTV.setTextColor(textColor);
     }
 
     private void setupLabels() {
