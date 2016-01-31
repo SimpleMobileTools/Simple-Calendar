@@ -46,7 +46,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/table_month"
-        android:layout_marginTop="@dimen/activity_margin"
         android:gravity="center"
         android:orientation="vertical">
 

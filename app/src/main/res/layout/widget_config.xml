@@ -11,28 +11,47 @@
         layout="@layout/activity_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/config_bottom"
+        android:layout_above="@+id/config_bg_color"
         android:layout_marginBottom="@dimen/activity_margin"/>
 
+    <Button
+        android:id="@+id/config_bg_color"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_above="@+id/config_text_color"/>
+
     <RelativeLayout
-        android:id="@+id/config_bottom"
+        android:id="@+id/config_bg_seekbar_holder"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
+        android:layout_height="match_parent"
+        android:layout_alignBottom="@+id/config_bg_color"
+        android:layout_alignTop="@+id/config_bg_color"
+        android:layout_toRightOf="@+id/config_bg_color"
+        android:background="@android:color/white">
 
-        <Button
-            android:id="@+id/config_text_color"
-            android:layout_width="50dp"
-            android:layout_height="50dp"/>
-
-        <Button
-            android:id="@+id/config_save"
-            android:layout_width="wrap_content"
+        <SeekBar
+            android:id="@+id/config_bg_seekbar"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
             android:paddingLeft="@dimen/activity_margin"
-            android:paddingRight="@dimen/activity_margin"
-            android:text="Save"
-            android:textSize="18sp"/>
+            android:paddingRight="@dimen/activity_margin"/>
     </RelativeLayout>
+
+    <Button
+        android:id="@+id/config_text_color"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"/>
+
+    <Button
+        android:id="@+id/config_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:paddingLeft="@dimen/activity_margin"
+        android:paddingRight="@dimen/activity_margin"
+        android:text="OK"
+        android:textSize="18sp"/>
 </RelativeLayout>

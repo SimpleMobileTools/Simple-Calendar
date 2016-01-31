@@ -34,7 +34,6 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
     private static Resources res;
     private static float dayTextSize;
     private static float todayTextSize;
-    private static int bgColor;
     private static int textColor;
     private static int weakTextColor;
 
@@ -46,12 +45,12 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
     private void initVariables(Context context) {
         cxt = context;
         res = cxt.getResources();
-        bgColor = Color.BLACK;
 
         final SharedPreferences prefs = initPrefs(cxt);
         final int storedTextColor = prefs.getInt(Constants.WIDGET_TEXT_COLOR, Color.WHITE);
         textColor = Helpers.adjustAlpha(storedTextColor, Constants.HIGH_ALPHA);
         weakTextColor = Helpers.adjustAlpha(storedTextColor, Constants.LOW_ALPHA);
+
 
         dayTextSize = res.getDimension(R.dimen.day_text_size) / res.getDisplayMetrics().density;
         todayTextSize = res.getDimension(R.dimen.today_text_size) / res.getDisplayMetrics().density;
@@ -65,6 +64,9 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
         setupButtons();
         updateLabelColor();
         updateTopViews();
+
+        final int bgColor = prefs.getInt(Constants.WIDGET_BG_COLOR, Color.BLACK);
+        remoteViews.setInt(R.id.calendar_holder, "setBackgroundColor", bgColor);
 
         calendar = new CalendarImpl(this);
         calendar.updateCalendar(new DateTime());
