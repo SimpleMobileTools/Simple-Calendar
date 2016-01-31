@@ -22,8 +22,8 @@ public class CalendarImpl {
 
     public void updateCalendar(DateTime targetDate) {
         this.targetDate = targetDate;
-        getDays(targetDate);
         getMonthName();
+        getDays(targetDate);
     }
 
     public void getPrevMonth() {
@@ -63,22 +63,21 @@ public class CalendarImpl {
             value++;
         }
 
-        callback.updateDays(days);
+        callback.updateCalendar(getMonthName(), days);
     }
 
     private boolean isToday(DateTime targetDate, int curDayInMonth) {
         return targetDate.withDayOfMonth(curDayInMonth).toString(DATE_PATTERN).equals(today);
     }
 
-    private void getMonthName() {
+    private String getMonthName() {
         final String[] months = new DateFormatSymbols().getMonths();
         String month = (months[targetDate.getMonthOfYear() - 1]);
         final String targetYear = targetDate.toString(YEAR_PATTERN);
         if (!targetYear.equals(new DateTime().toString(YEAR_PATTERN))) {
             month += " " + targetYear;
         }
-
-        callback.updateMonth(month);
+        return month;
     }
 
     public DateTime getTargetDate() {

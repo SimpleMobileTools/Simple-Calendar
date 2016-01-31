@@ -43,8 +43,8 @@ public class MainActivity extends AppCompatActivity implements MyDatePickerDialo
 
         res = getResources();
         packageName = getPackageName();
-        dayTextSize /= getResources().getDisplayMetrics().density;
-        todayTextSize /= getResources().getDisplayMetrics().density;
+        dayTextSize /= res.getDisplayMetrics().density;
+        todayTextSize /= res.getDisplayMetrics().density;
 
         calendar = new CalendarImpl(this);
         calendar.updateCalendar(new DateTime());
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements MyDatePickerDialo
         setupLabelSizes();
     }
 
-    private void fillCalendar(List<Day> days) {
+    private void updateDays(List<Day> days) {
         final int len = days.size();
 
         for (int i = 0; i < len; i++) {
@@ -99,12 +99,12 @@ public class MainActivity extends AppCompatActivity implements MyDatePickerDialo
     }
 
     @Override
-    public void updateDays(List<Day> days) {
-        fillCalendar(days);
+    public void updateCalendar(String month, List<Day> days) {
+        updateMonth(month);
+        updateDays(days);
     }
 
-    @Override
-    public void updateMonth(String month) {
+    private void updateMonth(String month) {
         monthTV.setText(month);
     }
 
