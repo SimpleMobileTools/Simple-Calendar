@@ -5,6 +5,8 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,8 +23,10 @@ public class MainActivity extends AppCompatActivity implements MyDatePickerDialo
     @Bind(R.id.left_arrow) ImageView leftArrow;
     @Bind(R.id.right_arrow) ImageView rightArrow;
     @Bind(R.id.table_month) TextView monthTV;
+    @Bind(R.id.calendar_holder) View calendarHolder;
     @BindDimen(R.dimen.day_text_size) float dayTextSize;
     @BindDimen(R.dimen.today_text_size) float todayTextSize;
+    @BindDimen(R.dimen.activity_margin) int activityMargin;
 
     private CalendarImpl calendar;
     private Resources res;
@@ -46,6 +50,9 @@ public class MainActivity extends AppCompatActivity implements MyDatePickerDialo
         dayTextSize /= res.getDisplayMetrics().density;
         todayTextSize /= res.getDisplayMetrics().density;
         setupLabels();
+
+        final FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) calendarHolder.getLayoutParams();
+        params.setMargins(activityMargin, activityMargin, activityMargin, activityMargin);
 
         calendar = new CalendarImpl(this);
         calendar.updateCalendar(new DateTime());
