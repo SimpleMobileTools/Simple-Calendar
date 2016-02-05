@@ -26,7 +26,6 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
     private static final String NEXT = "next";
 
     private static RemoteViews remoteViews;
-    private static int[] widgetIds;
     private static AppWidgetManager widgetManager;
     private static Intent intent;
     private static Context cxt;
@@ -39,11 +38,13 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
-        initVariables(context);
+        cxt = context;
+        initVariables();
+        updateWidget();
+        super.onUpdate(context, appWidgetManager, appWidgetIds);
     }
 
-    private void initVariables(Context context) {
-        cxt = context;
+    private void initVariables() {
         res = cxt.getResources();
 
         final SharedPreferences prefs = initPrefs(cxt);
@@ -51,13 +52,9 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
         textColor = Helpers.adjustAlpha(storedTextColor, Constants.HIGH_ALPHA);
         weakTextColor = Helpers.adjustAlpha(storedTextColor, Constants.LOW_ALPHA);
 
-
         dayTextSize = res.getDimension(R.dimen.day_text_size) / res.getDisplayMetrics().density;
         todayTextSize = res.getDimension(R.dimen.today_text_size) / res.getDisplayMetrics().density;
-
-        final ComponentName component = new ComponentName(cxt, MyWidgetProvider.class);
         widgetManager = AppWidgetManager.getInstance(cxt);
-        widgetIds = widgetManager.getAppWidgetIds(component);
 
         remoteViews = new RemoteViews(cxt.getPackageName(), R.layout.activity_main);
         intent = new Intent(cxt, MyWidgetProvider.class);
@@ -70,8 +67,11 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
 
         calendar = new CalendarImpl(this);
         calendar.updateCalendar(new DateTime());
+    }
 
-        widgetManager.updateAppWidget(widgetIds, remoteViews);
+    private void updateWidget() {
+        final ComponentName thisWidget = new ComponentName(cxt, MyWidgetProvider.class);
+        AppWidgetManager.getInstance(cxt).updateAppWidget(thisWidget, remoteViews);
     }
 
     private void setupIntent(String action, int id) {
@@ -91,8 +91,9 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        if (remoteViews == null || widgetManager == null || widgetIds == null || calendar == null)
-            initVariables(context);
+        cxt = context;
+        if (remoteViews == null || widgetManager == null || calendar == null)
+            initVariables();
 
         final String action = intent.getAction();
         switch (action) {
@@ -148,7 +149,7 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
     public void updateCalendar(String month, List<Day> days) {
         updateMonth(month);
         updateDays(days);
-        widgetManager.updateAppWidget(widgetIds, remoteViews);
+        updateWidget();
     }
 
     private void updateLabelColor() {
