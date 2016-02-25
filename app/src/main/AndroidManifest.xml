@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
-    package="calendar.simplemobiletools.com"
+    package="com.simplemobiletools.calendar"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name="com.simplemobiletools.calendar.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -20,7 +20,7 @@
         </activity>
 
         <receiver
-            android:name=".MyWidgetProvider"
+            android:name="com.simplemobiletools.calendar.MyWidgetProvider"
             android:icon="@mipmap/ic_launcher"
             android:label="Simple Calendar">
             <intent-filter>
@@ -33,7 +33,7 @@
         </receiver>
 
         <activity
-            android:name=".MyWidgetConfigure"
+            android:name="com.simplemobiletools.calendar.MyWidgetConfigure"
             android:screenOrientation="portrait"
             android:theme="@style/MyWidgetConfigTheme">
             <intent-filter>

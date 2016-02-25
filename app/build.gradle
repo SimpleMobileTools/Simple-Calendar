@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "calendar.simplemobiletools.com"
+        applicationId "com.simplemobiletools.calendar"
         minSdkVersion 16
         targetSdkVersion 23
         versionCode 1

@@ -1,4 +1,4 @@
-package calendar.simplemobiletools.com;
+package com.simplemobiletools.calendar;
 
 import android.appwidget.AppWidgetManager;
 import android.content.Context;

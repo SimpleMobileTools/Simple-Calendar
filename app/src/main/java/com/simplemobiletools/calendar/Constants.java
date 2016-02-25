@@ -1,4 +1,4 @@
-package calendar.simplemobiletools.com;
+package com.simplemobiletools.calendar;
 
 public class Constants {
     public static final String DATE = "date";

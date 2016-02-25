@@ -1,4 +1,4 @@
-package calendar.simplemobiletools.com;
+package com.simplemobiletools.calendar;
 
 import android.content.res.Resources;
 import android.graphics.Color;
