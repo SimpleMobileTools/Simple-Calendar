@@ -10,6 +10,7 @@ import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -32,6 +33,7 @@ public class MyWidgetConfigure extends AppCompatActivity implements Calendar {
     @Bind(R.id.config_bg_seekbar) SeekBar bgSeekBar;
     @Bind(R.id.config_text_color) View textColorPicker;
     @Bind(R.id.config_calendar) View widgetBackground;
+    @Bind(R.id.config_save) Button saveBtn;
     @BindDimen(R.dimen.day_text_size) float dayTextSize;
     @BindDimen(R.dimen.today_text_size) float todayTextSize;
 
@@ -75,9 +77,15 @@ public class MyWidgetConfigure extends AppCompatActivity implements Calendar {
         textColorWithoutTransparency = prefs.getInt(Constants.WIDGET_TEXT_COLOR, Color.WHITE);
         updateTextColors();
 
-        bgColor = prefs.getInt(Constants.WIDGET_BG_COLOR, Color.BLACK);
+        bgColor = prefs.getInt(Constants.WIDGET_BG_COLOR, 0);
+        if (bgColor == 0) {
+            bgColor = Color.BLACK;
+            bgAlpha = .5f;
+        } else {
+            bgAlpha = Color.alpha(bgColor) / (float) 255;
+        }
+
         bgColorWithoutTransparency = Color.rgb(Color.red(bgColor), Color.green(bgColor), Color.blue(bgColor));
-        bgAlpha = Color.alpha(bgColor) / (float) 255;
         bgSeekBar.setOnSeekBarChangeListener(bgSeekbarChangeListener);
         bgSeekBar.setProgress((int) (bgAlpha * 100));
         updateBgColor();
@@ -156,6 +164,7 @@ public class MyWidgetConfigure extends AppCompatActivity implements Calendar {
         rightArrow.getDrawable().mutate().setColorFilter(textColor, PorterDuff.Mode.SRC_ATOP);
         monthTV.setTextColor(textColor);
         textColorPicker.setBackgroundColor(textColor);
+        saveBtn.setTextColor(textColor);
         updateLabels();
     }
 
@@ -163,6 +172,7 @@ public class MyWidgetConfigure extends AppCompatActivity implements Calendar {
         bgColor = Helpers.adjustAlpha(bgColorWithoutTransparency, bgAlpha);
         widgetBackground.setBackgroundColor(bgColor);
         bgColorPicker.setBackgroundColor(bgColor);
+        saveBtn.setBackgroundColor(bgColor);
     }
 
     private void updateDays() {

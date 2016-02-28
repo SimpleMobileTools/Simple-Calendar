@@ -2,4 +2,5 @@
     <dimen name="activity_margin">16dp</dimen>
     <dimen name="day_text_size">16sp</dimen>
     <dimen name="today_text_size">32sp</dimen>
+    <dimen name="config_text_size">18sp</dimen>
 </resources>
