@@ -18,6 +18,10 @@
         <item name="android:windowShowWallpaper">true</item>
     </style>
 
+    <style name="ArrowStyle">
+        <item name="android:background">@drawable/button</item>
+    </style>
+
     <style name="MyButton" parent="Widget.AppCompat.Button">
         <item name="android:textColor">@android:color/white</item>
         <item name="background">@drawable/button</item>
