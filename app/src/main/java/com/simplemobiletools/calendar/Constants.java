@@ -1,7 +1,6 @@
 package com.simplemobiletools.calendar;
 
 public class Constants {
-    public static final String DATE = "date";
     public static final float LOW_ALPHA = .2f;
     public static final float HIGH_ALPHA = .9f;
 

@@ -28,4 +28,6 @@
         <item name="android:background">@drawable/button</item>
     </style>
 
+    <style name="MyAlertDialog" parent="Base.Theme.AppCompat.Light.Dialog.Alert"/>
+
 </resources>

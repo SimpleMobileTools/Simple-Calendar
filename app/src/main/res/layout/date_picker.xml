@@ -1,23 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center_horizontal">
-
-    <DatePicker
-        android:id="@+id/date_picker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:calendarViewShown="false"
-        android:datePickerMode="spinner"/>
-
-    <Button
-        android:id="@+id/date_picker_ok"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/date_picker"
-        android:layout_alignRight="@id/date_picker"
-        android:layout_below="@id/date_picker"
-        android:text="OK"/>
-
-</RelativeLayout>
+<DatePicker
+    android:id="@+id/date_picker"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:calendarViewShown="false"
+    android:datePickerMode="spinner"/>

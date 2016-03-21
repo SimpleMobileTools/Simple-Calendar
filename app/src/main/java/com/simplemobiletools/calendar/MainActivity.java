@@ -1,13 +1,17 @@
 package com.simplemobiletools.calendar;
 
+import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.joda.time.DateTime;
@@ -19,7 +23,7 @@ import butterknife.BindDimen;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends AppCompatActivity implements MyDatePickerDialog.DatePickedListener, Calendar {
+public class MainActivity extends AppCompatActivity implements Calendar {
     @Bind(R.id.left_arrow) ImageView leftArrow;
     @Bind(R.id.right_arrow) ImageView rightArrow;
     @Bind(R.id.table_month) TextView monthTV;
@@ -93,16 +97,30 @@ public class MainActivity extends AppCompatActivity implements MyDatePickerDialo
 
     @OnClick(R.id.table_month)
     public void pickMonth() {
-        final MyDatePickerDialog dialog = new MyDatePickerDialog();
-        final Bundle bundle = new Bundle();
-        bundle.putString(Constants.DATE, calendar.getTargetDate().toString());
-        dialog.setArguments(bundle);
-        dialog.show(getSupportFragmentManager(), "datepicker");
+        final AlertDialog.Builder alertDialog = new AlertDialog.Builder(this, R.style.MyAlertDialog);
+        final View view = getLayoutInflater().inflate(R.layout.date_picker, null);
+        final DatePicker datePicker = (DatePicker) view.findViewById(R.id.date_picker);
+        hideDayPicker(datePicker);
+
+        final DateTime dateTime = new DateTime(calendar.getTargetDate().toString());
+        datePicker.init(dateTime.getYear(), dateTime.getMonthOfYear() - 1, 1, null);
+
+        alertDialog.setView(view);
+        alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                final int month = datePicker.getMonth() + 1;
+                final int year = datePicker.getYear();
+                calendar.updateCalendar(new DateTime().withMonthOfYear(month).withYear(year));
+            }
+        });
+
+        alertDialog.show();
     }
 
-    @Override
-    public void onDatePicked(DateTime dateTime) {
-        calendar.updateCalendar(dateTime);
+    private void hideDayPicker(DatePicker datePicker) {
+        final LinearLayout ll = (LinearLayout) datePicker.getChildAt(0);
+        final LinearLayout ll2 = (LinearLayout) ll.getChildAt(0);
+        ll2.getChildAt(0).setVisibility(View.GONE);
     }
 
     @Override
