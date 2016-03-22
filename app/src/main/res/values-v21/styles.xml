@@ -4,4 +4,8 @@
         <item name="android:background">?android:attr/selectableItemBackgroundBorderless</item>
     </style>
 
+    <style name="MonthStyle">
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+    </style>
+
 </resources>
