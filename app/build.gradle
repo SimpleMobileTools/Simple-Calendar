@@ -22,7 +22,7 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.android.support:appcompat-v7:23.3.0'
     compile 'joda-time:joda-time:2.9.1'
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.github.yukuku:ambilwarna:2.0.1'
