@@ -38,13 +38,13 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
-        cxt = context;
-        initVariables();
+        initVariables(context);
         updateWidget();
         super.onUpdate(context, appWidgetManager, appWidgetIds);
     }
 
-    private void initVariables() {
+    private void initVariables(Context context) {
+        cxt = context;
         res = cxt.getResources();
 
         final SharedPreferences prefs = initPrefs(cxt);
@@ -91,9 +91,8 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        cxt = context;
-        if (remoteViews == null || widgetManager == null || calendar == null)
-            initVariables();
+        if (remoteViews == null || widgetManager == null || calendar == null || cxt == null)
+            initVariables(context);
 
         final String action = intent.getAction();
         switch (action) {
