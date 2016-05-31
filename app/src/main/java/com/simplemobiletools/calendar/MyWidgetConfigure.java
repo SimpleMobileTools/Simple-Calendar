@@ -77,8 +77,8 @@ public class MyWidgetConfigure extends AppCompatActivity implements Calendar {
         textColorWithoutTransparency = prefs.getInt(Constants.WIDGET_TEXT_COLOR, Color.WHITE);
         updateTextColors();
 
-        bgColor = prefs.getInt(Constants.WIDGET_BG_COLOR, 0);
-        if (bgColor == 0) {
+        bgColor = prefs.getInt(Constants.WIDGET_BG_COLOR, 1);
+        if (bgColor == 1) {
             bgColor = Color.BLACK;
             bgAlpha = .5f;
         } else {
