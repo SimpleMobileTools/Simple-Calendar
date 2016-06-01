@@ -9,13 +9,13 @@ import android.widget.TextView;
 
 import java.util.Calendar;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class AboutActivity extends AppCompatActivity {
-    @Bind(R.id.about_copyright) TextView copyright;
-    @Bind(R.id.about_version) TextView version;
-    @Bind(R.id.about_email) TextView emailTV;
+    @BindView(R.id.about_copyright) TextView copyright;
+    @BindView(R.id.about_version) TextView version;
+    @BindView(R.id.about_email) TextView emailTV;
     private Resources res;
 
     @Override

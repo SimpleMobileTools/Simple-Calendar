@@ -22,16 +22,16 @@ import org.joda.time.DateTime;
 
 import java.util.List;
 
-import butterknife.Bind;
 import butterknife.BindDimen;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity implements Calendar {
-    @Bind(R.id.left_arrow) ImageView leftArrow;
-    @Bind(R.id.right_arrow) ImageView rightArrow;
-    @Bind(R.id.table_month) TextView monthTV;
-    @Bind(R.id.calendar_holder) View calendarHolder;
+    @BindView(R.id.left_arrow) ImageView leftArrow;
+    @BindView(R.id.right_arrow) ImageView rightArrow;
+    @BindView(R.id.table_month) TextView monthTV;
+    @BindView(R.id.calendar_holder) View calendarHolder;
     @BindDimen(R.dimen.day_text_size) float dayTextSize;
     @BindDimen(R.dimen.today_text_size) float todayTextSize;
     @BindDimen(R.dimen.activity_margin) int activityMargin;

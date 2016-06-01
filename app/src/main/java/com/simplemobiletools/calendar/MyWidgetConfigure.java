@@ -19,21 +19,21 @@ import org.joda.time.DateTime;
 
 import java.util.List;
 
-import butterknife.Bind;
 import butterknife.BindDimen;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import yuku.ambilwarna.AmbilWarnaDialog;
 
 public class MyWidgetConfigure extends AppCompatActivity implements Calendar {
-    @Bind(R.id.left_arrow) ImageView leftArrow;
-    @Bind(R.id.right_arrow) ImageView rightArrow;
-    @Bind(R.id.table_month) TextView monthTV;
-    @Bind(R.id.config_bg_color) View bgColorPicker;
-    @Bind(R.id.config_bg_seekbar) SeekBar bgSeekBar;
-    @Bind(R.id.config_text_color) View textColorPicker;
-    @Bind(R.id.config_calendar) View widgetBackground;
-    @Bind(R.id.config_save) Button saveBtn;
+    @BindView(R.id.left_arrow) ImageView leftArrow;
+    @BindView(R.id.right_arrow) ImageView rightArrow;
+    @BindView(R.id.table_month) TextView monthTV;
+    @BindView(R.id.config_bg_color) View bgColorPicker;
+    @BindView(R.id.config_bg_seekbar) SeekBar bgSeekBar;
+    @BindView(R.id.config_text_color) View textColorPicker;
+    @BindView(R.id.config_calendar) View widgetBackground;
+    @BindView(R.id.config_save) Button saveBtn;
     @BindDimen(R.dimen.day_text_size) float dayTextSize;
     @BindDimen(R.dimen.today_text_size) float todayTextSize;
 
