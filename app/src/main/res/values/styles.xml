@@ -11,6 +11,7 @@
     <style name="DayView">
         <item name="android:gravity">center</item>
         <item name="android:textSize">@dimen/day_text_size</item>
+        <item name="android:fontFamily">sans-serif-light</item>
     </style>
 
     <style name="MyWidgetConfigTheme" parent="@style/AppTheme">

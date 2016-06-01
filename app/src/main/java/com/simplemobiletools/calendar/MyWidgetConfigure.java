@@ -74,13 +74,13 @@ public class MyWidgetConfigure extends AppCompatActivity implements Calendar {
         todayTextSize /= res.getDisplayMetrics().density;
 
         final SharedPreferences prefs = initPrefs(this);
-        textColorWithoutTransparency = prefs.getInt(Constants.WIDGET_TEXT_COLOR, Color.WHITE);
+        textColorWithoutTransparency = prefs.getInt(Constants.WIDGET_TEXT_COLOR, getResources().getColor(R.color.colorPrimary));
         updateTextColors();
 
         bgColor = prefs.getInt(Constants.WIDGET_BG_COLOR, 1);
         if (bgColor == 1) {
             bgColor = Color.BLACK;
-            bgAlpha = .5f;
+            bgAlpha = .2f;
         } else {
             bgAlpha = Color.alpha(bgColor) / (float) 255;
         }
