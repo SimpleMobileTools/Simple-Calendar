@@ -19,7 +19,7 @@
 
         <TextView
             android:id="@+id/license_butterknife_title"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/activity_margin"
             android:text="@string/butterknife_title"
@@ -33,7 +33,7 @@
 
         <TextView
             android:id="@+id/license_ambilwarna_title"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/activity_margin"
             android:text="@string/ambilwarna_title"
@@ -47,7 +47,7 @@
 
         <TextView
             android:id="@+id/license_joda_title"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/activity_margin"
             android:text="@string/joda_title"
