@@ -19,19 +19,6 @@
             </intent-filter>
         </activity>
 
-        <receiver
-            android:name=".MyWidgetProvider"
-            android:icon="@mipmap/ic_launcher"
-            android:label="Simple Calendar">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
-            </intent-filter>
-
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/widget_info"/>
-        </receiver>
-
         <activity
             android:name=".MyWidgetConfigure"
             android:screenOrientation="portrait"
@@ -45,6 +32,25 @@
             android:name=".AboutActivity"
             android:label="@string/about"
             android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".LicenseActivity"
+            android:label="@string/third_party_licences"
+            android:screenOrientation="portrait"/>
+
+        <receiver
+            android:name=".MyWidgetProvider"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info"/>
+        </receiver>
+
     </application>
 
 </manifest>
