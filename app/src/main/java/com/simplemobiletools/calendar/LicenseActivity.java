@@ -18,20 +18,21 @@ public class LicenseActivity extends AppCompatActivity {
 
     @OnClick(R.id.license_butterknife_title)
     public void butterKnifeClicked() {
-        openUrl(getResources().getString(R.string.butterknife_url));
+        openUrl(R.string.butterknife_url);
     }
 
     @OnClick(R.id.license_ambilwarna_title)
     public void ambilwarnaClicked() {
-        openUrl(getResources().getString(R.string.ambilwarna_url));
+        openUrl(R.string.ambilwarna_url);
     }
 
     @OnClick(R.id.license_joda_title)
     public void jodaClicked() {
-        openUrl(getResources().getString(R.string.joda_url));
+        openUrl(R.string.joda_url);
     }
 
-    private void openUrl(String url) {
+    private void openUrl(int id) {
+        final String url = getResources().getString(id);
         final Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         startActivity(browserIntent);
     }
