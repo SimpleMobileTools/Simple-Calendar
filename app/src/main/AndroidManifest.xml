@@ -39,7 +39,8 @@
             android:screenOrientation="portrait"/>
 
         <receiver
-            android:name=".MyWidgetProvider">
+            android:name=".MyWidgetProvider"
+            android:icon="@mipmap/widget_preview">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
             </intent-filter>
