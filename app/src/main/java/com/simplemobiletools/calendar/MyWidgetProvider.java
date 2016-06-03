@@ -80,9 +80,16 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
         remoteViews.setOnClickPendingIntent(id, pendingIntent);
     }
 
+    private void setupAppOpenIntent(int id) {
+        final Intent intent = new Intent(cxt, MainActivity.class);
+        final PendingIntent pendingIntent = PendingIntent.getActivity(cxt, 0, intent, 0);
+        remoteViews.setOnClickPendingIntent(id, pendingIntent);
+    }
+
     private void setupButtons() {
         setupIntent(PREV, R.id.left_arrow);
         setupIntent(NEXT, R.id.right_arrow);
+        setupAppOpenIntent(R.id.table_month);
     }
 
     private SharedPreferences initPrefs(Context context) {
