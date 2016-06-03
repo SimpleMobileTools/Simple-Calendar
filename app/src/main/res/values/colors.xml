@@ -4,5 +4,5 @@
     <color name="colorPrimaryDark">#ffe46300</color>
     <color name="colorAccent">@color/colorPrimary</color>
     <color name="dark_grey_pressed_mask">#11000000</color>
-    <color name="lightGrey">#08000000</color>
+    <color name="lightGrey">#fff3f3f3</color>
 </resources>
