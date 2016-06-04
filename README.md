@@ -1,5 +1,13 @@
-# Simple-Calendar
-A calendar with a customizable widget
+# Simple Calendar
+<img alt="Logo" src="app/src/main/res/mipmap-xxxhdpi/launcher.png" width="80">
+
+A monthly calendar with the current day highlighted, without any other calendar integration, with Monday as the first day. You can easily check other months or years by pressing the month label in the app.
+
+Contains a 4x4 widget where you can customize the color of the text, as well as the alpha and the color of the background. To open the app from the widget press the month label.
+
+<img alt="App image" src="screenshots/app.png" width="250">
+<img alt="App image" src="screenshots/widget_config.png" width="250">
+<img alt="App image" src="screenshots/widget.png" width="250">
 
 License
 -------
