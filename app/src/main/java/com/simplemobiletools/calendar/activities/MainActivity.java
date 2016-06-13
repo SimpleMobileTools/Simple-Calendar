@@ -1,4 +1,4 @@
-package com.simplemobiletools.calendar;
+package com.simplemobiletools.calendar.activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -17,6 +17,13 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.simplemobiletools.calendar.Calendar;
+import com.simplemobiletools.calendar.CalendarImpl;
+import com.simplemobiletools.calendar.Constants;
+import com.simplemobiletools.calendar.Day;
+import com.simplemobiletools.calendar.Helpers;
+import com.simplemobiletools.calendar.R;
 
 import org.joda.time.DateTime;
 

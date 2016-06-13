@@ -17,6 +17,8 @@ import android.graphics.LightingColorFilter;
 import android.graphics.Paint;
 import android.widget.RemoteViews;
 
+import com.simplemobiletools.calendar.activities.MainActivity;
+
 import org.joda.time.DateTime;
 
 import java.util.List;

@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -29,12 +29,12 @@
         </activity>
 
         <activity
-            android:name=".AboutActivity"
+            android:name=".activities.AboutActivity"
             android:label="@string/about"
             android:screenOrientation="portrait"/>
 
         <activity
-            android:name=".LicenseActivity"
+            android:name=".activities.LicenseActivity"
             android:label="@string/third_party_licences"
             android:screenOrientation="portrait"/>
 

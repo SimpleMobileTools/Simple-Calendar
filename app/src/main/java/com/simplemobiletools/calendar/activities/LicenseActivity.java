@@ -1,9 +1,11 @@
-package com.simplemobiletools.calendar;
+package com.simplemobiletools.calendar.activities;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
+import com.simplemobiletools.calendar.R;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;

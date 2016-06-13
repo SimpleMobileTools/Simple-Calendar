@@ -1,4 +1,4 @@
-package com.simplemobiletools.calendar;
+package com.simplemobiletools.calendar.activities;
 
 import android.content.Intent;
 import android.content.res.Resources;
@@ -7,6 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.widget.TextView;
+
+import com.simplemobiletools.calendar.BuildConfig;
+import com.simplemobiletools.calendar.R;
+import com.simplemobiletools.calendar.activities.LicenseActivity;
 
 import java.util.Calendar;
 
