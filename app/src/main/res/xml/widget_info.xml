@@ -4,5 +4,6 @@
                     android:initialLayout="@layout/activity_main"
                     android:minHeight="250dp"
                     android:minWidth="250dp"
+                    android:resizeMode="horizontal|vertical"
                     android:updatePeriodMillis="18000000">
 </appwidget-provider>
