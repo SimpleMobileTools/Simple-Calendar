@@ -28,6 +28,7 @@ import com.simplemobiletools.calendar.R;
 import org.joda.time.DateTime;
 
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindDimen;
 import butterknife.BindView;
@@ -55,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements Calendar {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        Locale.setDefault(Locale.ENGLISH);
         textColor = Helpers.adjustAlpha(Color.BLACK, Constants.HIGH_ALPHA);
         weakTextColor = Helpers.adjustAlpha(Color.BLACK, Constants.LOW_ALPHA);
         leftArrow.getDrawable().mutate().setColorFilter(textColor, PorterDuff.Mode.SRC_ATOP);
@@ -150,7 +152,7 @@ public class MainActivity extends AppCompatActivity implements Calendar {
     private void hideDayPicker(DatePicker datePicker) {
         final LinearLayout ll = (LinearLayout) datePicker.getChildAt(0);
         final LinearLayout ll2 = (LinearLayout) ll.getChildAt(0);
-        ll2.getChildAt(0).setVisibility(View.GONE);
+        ll2.getChildAt(1).setVisibility(View.GONE);
     }
 
     @Override
