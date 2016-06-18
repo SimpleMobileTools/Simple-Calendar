@@ -20,7 +20,7 @@
         </activity>
 
         <activity
-            android:name=".MyWidgetConfigure"
+            android:name=".activities.WidgetConfigureActivity"
             android:screenOrientation="portrait"
             android:theme="@style/MyWidgetConfigTheme">
             <intent-filter>

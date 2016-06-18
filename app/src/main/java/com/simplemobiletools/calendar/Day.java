@@ -1,25 +1,25 @@
 package com.simplemobiletools.calendar;
 
 public class Day {
-    private final int value;
-    private final boolean isThisMonth;
-    private final boolean isToday;
+    private final int mValue;
+    private final boolean mIsThisMonth;
+    private final boolean mIsToday;
 
     public Day(int value, boolean isThisMonth, boolean isToday) {
-        this.value = value;
-        this.isThisMonth = isThisMonth;
-        this.isToday = isToday;
+        this.mValue = value;
+        this.mIsThisMonth = isThisMonth;
+        this.mIsToday = isToday;
     }
 
     public int getValue() {
-        return value;
+        return mValue;
     }
 
     public boolean getIsThisMonth() {
-        return isThisMonth;
+        return mIsThisMonth;
     }
 
     public boolean getIsToday() {
-        return isToday;
+        return mIsToday;
     }
 }

@@ -11,27 +11,27 @@ public class CalendarImpl {
     private static final String DATE_PATTERN = "ddMMYYYY";
     private static final String YEAR_PATTERN = "YYYY";
 
-    private final Calendar callback;
-    private final String today;
-    private DateTime targetDate;
+    private final Calendar mCallback;
+    private final String mToday;
+    private DateTime mTargetDate;
 
     public CalendarImpl(Calendar callback) {
-        this.callback = callback;
-        today = new DateTime().toString(DATE_PATTERN);
+        this.mCallback = callback;
+        mToday = new DateTime().toString(DATE_PATTERN);
     }
 
     public void updateCalendar(DateTime targetDate) {
-        this.targetDate = targetDate;
+        this.mTargetDate = targetDate;
         getMonthName();
         getDays(targetDate);
     }
 
     public void getPrevMonth() {
-        updateCalendar(targetDate.minusMonths(1));
+        updateCalendar(mTargetDate.minusMonths(1));
     }
 
     public void getNextMonth() {
-        updateCalendar(targetDate.plusMonths(1));
+        updateCalendar(mTargetDate.plusMonths(1));
     }
 
     private void getDays(DateTime targetDate) {
@@ -63,17 +63,17 @@ public class CalendarImpl {
             value++;
         }
 
-        callback.updateCalendar(getMonthName(), days);
+        mCallback.updateCalendar(getMonthName(), days);
     }
 
     private boolean isToday(DateTime targetDate, int curDayInMonth) {
-        return targetDate.withDayOfMonth(curDayInMonth).toString(DATE_PATTERN).equals(today);
+        return targetDate.withDayOfMonth(curDayInMonth).toString(DATE_PATTERN).equals(mToday);
     }
 
     private String getMonthName() {
         final String[] months = new DateFormatSymbols().getMonths();
-        String month = (months[targetDate.getMonthOfYear() - 1]);
-        final String targetYear = targetDate.toString(YEAR_PATTERN);
+        String month = (months[mTargetDate.getMonthOfYear() - 1]);
+        final String targetYear = mTargetDate.toString(YEAR_PATTERN);
         if (!targetYear.equals(new DateTime().toString(YEAR_PATTERN))) {
             month += " " + targetYear;
         }
@@ -81,6 +81,6 @@ public class CalendarImpl {
     }
 
     public DateTime getTargetDate() {
-        return targetDate;
+        return mTargetDate;
     }
 }

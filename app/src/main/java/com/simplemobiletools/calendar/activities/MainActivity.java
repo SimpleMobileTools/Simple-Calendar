@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
@@ -36,19 +35,21 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity implements Calendar {
-    @BindView(R.id.left_arrow) ImageView leftArrow;
-    @BindView(R.id.right_arrow) ImageView rightArrow;
-    @BindView(R.id.table_month) TextView monthTV;
-    @BindView(R.id.calendar_holder) View calendarHolder;
-    @BindDimen(R.dimen.day_text_size) float dayTextSize;
-    @BindDimen(R.dimen.today_text_size) float todayTextSize;
-    @BindDimen(R.dimen.activity_margin) int activityMargin;
+    @BindView(R.id.left_arrow) ImageView mLeftArrow;
+    @BindView(R.id.right_arrow) ImageView mRightArrow;
+    @BindView(R.id.table_month) TextView mMonthTV;
+    @BindView(R.id.calendar_holder) View mCalendarHolder;
 
-    private CalendarImpl calendar;
-    private Resources res;
-    private String packageName;
-    private int textColor;
-    private int weakTextColor;
+    @BindDimen(R.dimen.day_text_size) float mDayTextSize;
+    @BindDimen(R.dimen.today_text_size) float mTodayTextSize;
+    @BindDimen(R.dimen.activity_margin) int mActivityMargin;
+
+    private CalendarImpl mCalendar;
+    private Resources mRes;
+    private String mPackageName;
+
+    private int mTextColor;
+    private int mWeakTextColor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,28 +58,27 @@ public class MainActivity extends AppCompatActivity implements Calendar {
         ButterKnife.bind(this);
 
         Locale.setDefault(Locale.ENGLISH);
-        textColor = Helpers.adjustAlpha(Color.BLACK, Constants.HIGH_ALPHA);
-        weakTextColor = Helpers.adjustAlpha(Color.BLACK, Constants.LOW_ALPHA);
-        leftArrow.getDrawable().mutate().setColorFilter(textColor, PorterDuff.Mode.SRC_ATOP);
-        rightArrow.getDrawable().mutate().setColorFilter(textColor, PorterDuff.Mode.SRC_ATOP);
+        mTextColor = Helpers.adjustAlpha(Color.BLACK, Constants.HIGH_ALPHA);
+        mWeakTextColor = Helpers.adjustAlpha(Color.BLACK, Constants.LOW_ALPHA);
+        mLeftArrow.getDrawable().mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP);
+        mRightArrow.getDrawable().mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP);
 
-        res = getResources();
-        packageName = getPackageName();
-        dayTextSize /= res.getDisplayMetrics().density;
-        todayTextSize /= res.getDisplayMetrics().density;
+        mRes = getResources();
+        mPackageName = getPackageName();
+        mDayTextSize /= mRes.getDisplayMetrics().density;
+        mTodayTextSize /= mRes.getDisplayMetrics().density;
         setupLabels();
 
-        final FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) calendarHolder.getLayoutParams();
-        params.setMargins(activityMargin, activityMargin, activityMargin, activityMargin);
+        final FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) mCalendarHolder.getLayoutParams();
+        params.setMargins(mActivityMargin, mActivityMargin, mActivityMargin, mActivityMargin);
 
-        calendar = new CalendarImpl(this);
-        calendar.updateCalendar(new DateTime());
+        mCalendar = new CalendarImpl(this);
+        mCalendar.updateCalendar(new DateTime());
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu, menu);
+        getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
 
@@ -99,16 +99,16 @@ public class MainActivity extends AppCompatActivity implements Calendar {
 
         for (int i = 0; i < len; i++) {
             final Day day = days.get(i);
-            final TextView dayTV = (TextView) findViewById(res.getIdentifier("day_" + i, "id", packageName));
-            int curTextColor = weakTextColor;
-            float curTextSize = dayTextSize;
+            final TextView dayTV = (TextView) findViewById(mRes.getIdentifier("day_" + i, "id", mPackageName));
+            int curTextColor = mWeakTextColor;
+            float curTextSize = mDayTextSize;
 
             if (day.getIsThisMonth()) {
-                curTextColor = textColor;
+                curTextColor = mTextColor;
             }
 
             if (day.getIsToday()) {
-                curTextSize = todayTextSize;
+                curTextSize = mTodayTextSize;
             }
 
             dayTV.setText(String.valueOf(day.getValue()));
@@ -119,12 +119,12 @@ public class MainActivity extends AppCompatActivity implements Calendar {
 
     @OnClick(R.id.left_arrow)
     public void leftArrowClicked() {
-        calendar.getPrevMonth();
+        mCalendar.getPrevMonth();
     }
 
     @OnClick(R.id.right_arrow)
     public void rightArrowClicked() {
-        calendar.getNextMonth();
+        mCalendar.getNextMonth();
     }
 
     @OnClick(R.id.table_month)
@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity implements Calendar {
         final DatePicker datePicker = (DatePicker) view.findViewById(R.id.date_picker);
         hideDayPicker(datePicker);
 
-        final DateTime dateTime = new DateTime(calendar.getTargetDate().toString());
+        final DateTime dateTime = new DateTime(mCalendar.getTargetDate().toString());
         datePicker.init(dateTime.getYear(), dateTime.getMonthOfYear() - 1, 1, null);
 
         alertDialog.setView(view);
@@ -142,7 +142,7 @@ public class MainActivity extends AppCompatActivity implements Calendar {
             public void onClick(DialogInterface dialog, int id) {
                 final int month = datePicker.getMonth() + 1;
                 final int year = datePicker.getYear();
-                calendar.updateCalendar(new DateTime().withMonthOfYear(month).withYear(year));
+                mCalendar.updateCalendar(new DateTime().withMonthOfYear(month).withYear(year));
             }
         });
 
@@ -162,15 +162,15 @@ public class MainActivity extends AppCompatActivity implements Calendar {
     }
 
     private void updateMonth(String month) {
-        monthTV.setText(month);
-        monthTV.setTextColor(textColor);
+        mMonthTV.setText(month);
+        mMonthTV.setTextColor(mTextColor);
     }
 
     private void setupLabels() {
         for (int i = 0; i < 7; i++) {
-            final TextView dayTV = (TextView) findViewById(res.getIdentifier("label_" + i, "id", packageName));
-            dayTV.setTextSize(dayTextSize);
-            dayTV.setTextColor(weakTextColor);
+            final TextView dayTV = (TextView) findViewById(mRes.getIdentifier("label_" + i, "id", mPackageName));
+            dayTV.setTextSize(mDayTextSize);
+            dayTV.setTextColor(mWeakTextColor);
         }
     }
 }

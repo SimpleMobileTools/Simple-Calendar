@@ -27,16 +27,17 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
     private static final String PREV = "prev";
     private static final String NEXT = "next";
 
-    private static RemoteViews remoteViews;
-    private static AppWidgetManager widgetManager;
-    private static Intent intent;
-    private static Context cxt;
-    private static CalendarImpl calendar;
-    private static Resources res;
-    private static float dayTextSize;
-    private static float todayTextSize;
-    private static int textColor;
-    private static int weakTextColor;
+    private static RemoteViews mRemoteViews;
+    private static AppWidgetManager mWidgetManager;
+    private static Intent mIntent;
+    private static Context mContext;
+    private static CalendarImpl mCalendar;
+    private static Resources mRes;
+
+    private static float mDayTextSize;
+    private static float mTodayTextSize;
+    private static int mTextColor;
+    private static int mWeakTextColor;
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
@@ -46,46 +47,46 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
     }
 
     private void initVariables(Context context) {
-        cxt = context;
-        res = cxt.getResources();
+        mContext = context;
+        mRes = mContext.getResources();
 
-        final SharedPreferences prefs = initPrefs(cxt);
+        final SharedPreferences prefs = initPrefs(mContext);
         final int storedTextColor = prefs.getInt(Constants.WIDGET_TEXT_COLOR, Color.WHITE);
-        textColor = Helpers.adjustAlpha(storedTextColor, Constants.HIGH_ALPHA);
-        weakTextColor = Helpers.adjustAlpha(storedTextColor, Constants.LOW_ALPHA);
+        mTextColor = Helpers.adjustAlpha(storedTextColor, Constants.HIGH_ALPHA);
+        mWeakTextColor = Helpers.adjustAlpha(storedTextColor, Constants.LOW_ALPHA);
 
-        dayTextSize = res.getDimension(R.dimen.day_text_size) / res.getDisplayMetrics().density;
-        todayTextSize = res.getDimension(R.dimen.today_text_size) / res.getDisplayMetrics().density;
-        widgetManager = AppWidgetManager.getInstance(cxt);
+        mDayTextSize = mRes.getDimension(R.dimen.day_text_size) / mRes.getDisplayMetrics().density;
+        mTodayTextSize = mRes.getDimension(R.dimen.today_text_size) / mRes.getDisplayMetrics().density;
+        mWidgetManager = AppWidgetManager.getInstance(mContext);
 
-        remoteViews = new RemoteViews(cxt.getPackageName(), R.layout.activity_main);
-        intent = new Intent(cxt, MyWidgetProvider.class);
+        mRemoteViews = new RemoteViews(mContext.getPackageName(), R.layout.activity_main);
+        mIntent = new Intent(mContext, MyWidgetProvider.class);
         setupButtons();
         updateLabelColor();
         updateTopViews();
 
         final int bgColor = prefs.getInt(Constants.WIDGET_BG_COLOR, Color.BLACK);
-        remoteViews.setInt(R.id.calendar_holder, "setBackgroundColor", bgColor);
+        mRemoteViews.setInt(R.id.calendar_holder, "setBackgroundColor", bgColor);
 
-        calendar = new CalendarImpl(this);
-        calendar.updateCalendar(new DateTime());
+        mCalendar = new CalendarImpl(this);
+        mCalendar.updateCalendar(new DateTime());
     }
 
     private void updateWidget() {
-        final ComponentName thisWidget = new ComponentName(cxt, MyWidgetProvider.class);
-        AppWidgetManager.getInstance(cxt).updateAppWidget(thisWidget, remoteViews);
+        final ComponentName thisWidget = new ComponentName(mContext, MyWidgetProvider.class);
+        AppWidgetManager.getInstance(mContext).updateAppWidget(thisWidget, mRemoteViews);
     }
 
     private void setupIntent(String action, int id) {
-        intent.setAction(action);
-        final PendingIntent pendingIntent = PendingIntent.getBroadcast(cxt, 0, intent, 0);
-        remoteViews.setOnClickPendingIntent(id, pendingIntent);
+        mIntent.setAction(action);
+        final PendingIntent pendingIntent = PendingIntent.getBroadcast(mContext, 0, mIntent, 0);
+        mRemoteViews.setOnClickPendingIntent(id, pendingIntent);
     }
 
     private void setupAppOpenIntent(int id) {
-        final Intent intent = new Intent(cxt, MainActivity.class);
-        final PendingIntent pendingIntent = PendingIntent.getActivity(cxt, 0, intent, 0);
-        remoteViews.setOnClickPendingIntent(id, pendingIntent);
+        final Intent intent = new Intent(mContext, MainActivity.class);
+        final PendingIntent pendingIntent = PendingIntent.getActivity(mContext, 0, intent, 0);
+        mRemoteViews.setOnClickPendingIntent(id, pendingIntent);
     }
 
     private void setupButtons() {
@@ -100,16 +101,16 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        if (remoteViews == null || widgetManager == null || calendar == null || cxt == null)
+        if (mRemoteViews == null || mWidgetManager == null || mCalendar == null || mContext == null)
             initVariables(context);
 
         final String action = intent.getAction();
         switch (action) {
             case PREV:
-                calendar.getPrevMonth();
+                mCalendar.getPrevMonth();
                 break;
             case NEXT:
-                calendar.getNextMonth();
+                mCalendar.getNextMonth();
                 break;
             default:
                 super.onReceive(context, intent);
@@ -117,40 +118,40 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
     }
 
     public void updateDays(List<Day> days) {
-        final String packageName = cxt.getPackageName();
+        final String packageName = mContext.getPackageName();
         final int len = days.size();
         for (int i = 0; i < len; i++) {
             final Day day = days.get(i);
-            final int id = res.getIdentifier("day_" + i, "id", packageName);
-            int curTextColor = weakTextColor;
-            float curTextSize = dayTextSize;
+            final int id = mRes.getIdentifier("day_" + i, "id", packageName);
+            int curTextColor = mWeakTextColor;
+            float curTextSize = mDayTextSize;
 
             if (day.getIsThisMonth()) {
-                curTextColor = textColor;
+                curTextColor = mTextColor;
             }
 
             if (day.getIsToday()) {
-                curTextSize = todayTextSize;
+                curTextSize = mTodayTextSize;
             }
 
-            remoteViews.setTextViewText(id, String.valueOf(day.getValue()));
-            remoteViews.setInt(id, "setTextColor", curTextColor);
-            remoteViews.setFloat(id, "setTextSize", curTextSize);
+            mRemoteViews.setTextViewText(id, String.valueOf(day.getValue()));
+            mRemoteViews.setInt(id, "setTextColor", curTextColor);
+            mRemoteViews.setFloat(id, "setTextSize", curTextSize);
         }
     }
 
     private void updateTopViews() {
-        remoteViews.setInt(R.id.table_month, "setTextColor", textColor);
+        mRemoteViews.setInt(R.id.table_month, "setTextColor", mTextColor);
 
-        Bitmap bmp = getColoredIcon(cxt, textColor, R.mipmap.arrow_left);
-        remoteViews.setImageViewBitmap(R.id.left_arrow, bmp);
+        Bitmap bmp = getColoredIcon(mContext, mTextColor, R.mipmap.arrow_left);
+        mRemoteViews.setImageViewBitmap(R.id.left_arrow, bmp);
 
-        bmp = getColoredIcon(cxt, textColor, R.mipmap.arrow_right);
-        remoteViews.setImageViewBitmap(R.id.right_arrow, bmp);
+        bmp = getColoredIcon(mContext, mTextColor, R.mipmap.arrow_right);
+        mRemoteViews.setImageViewBitmap(R.id.right_arrow, bmp);
     }
 
     public void updateMonth(String month) {
-        remoteViews.setTextViewText(R.id.table_month, month);
+        mRemoteViews.setTextViewText(R.id.table_month, month);
     }
 
     @Override
@@ -161,10 +162,10 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
     }
 
     private void updateLabelColor() {
-        final String packageName = cxt.getPackageName();
+        final String packageName = mContext.getPackageName();
         for (int i = 0; i < 7; i++) {
-            final int id = res.getIdentifier("label_" + i, "id", packageName);
-            remoteViews.setInt(id, "setTextColor", weakTextColor);
+            final int id = mRes.getIdentifier("label_" + i, "id", packageName);
+            mRemoteViews.setInt(id, "setTextColor", mWeakTextColor);
         }
     }
 
