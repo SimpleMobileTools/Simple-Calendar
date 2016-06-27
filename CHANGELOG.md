@@ -1,5 +1,10 @@
-Change Log
+Changelog
 ==========
+
+Version 1.4 *(2016-06-27)*
+----------------------------
+
+ * Add a Google Plus page link to the About section
 
 Version 1.3 *(2016-06-19)*
 ----------------------------
