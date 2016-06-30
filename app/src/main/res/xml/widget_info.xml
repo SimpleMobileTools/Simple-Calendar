@@ -2,8 +2,8 @@
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
                     android:configure="com.simplemobiletools.calendar.activities.WidgetConfigureActivity"
                     android:initialLayout="@layout/activity_main"
-                    android:minHeight="250dp"
-                    android:minWidth="250dp"
+                    android:minHeight="@dimen/min_widget_height"
+                    android:minWidth="@dimen/min_widget_width"
                     android:resizeMode="horizontal|vertical"
                     android:updatePeriodMillis="18000000">
 </appwidget-provider>
