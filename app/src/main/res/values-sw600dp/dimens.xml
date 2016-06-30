@@ -1,6 +1,6 @@
 <resources>
     <dimen name="social_padding">12dp</dimen>
-    <dimen name="social_logo">60dp</dimen>
+    <dimen name="social_logo">50dp</dimen>
 
     <dimen name="min_widget_width">320dp</dimen>
     <dimen name="min_widget_height">320dp</dimen>
