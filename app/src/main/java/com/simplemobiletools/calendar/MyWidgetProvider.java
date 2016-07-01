@@ -96,7 +96,7 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
     }
 
     private SharedPreferences initPrefs(Context context) {
-        return context.getSharedPreferences(Constants.PREFS, Context.MODE_PRIVATE);
+        return context.getSharedPreferences(Constants.PREFS_KEY, Context.MODE_PRIVATE);
     }
 
     @Override

@@ -104,7 +104,7 @@ public class WidgetConfigureActivity extends AppCompatActivity implements Calend
     }
 
     private SharedPreferences initPrefs(Context context) {
-        return context.getSharedPreferences(Constants.PREFS, Context.MODE_PRIVATE);
+        return context.getSharedPreferences(Constants.PREFS_KEY, Context.MODE_PRIVATE);
     }
 
     @OnClick(R.id.config_save)
@@ -119,7 +119,7 @@ public class WidgetConfigureActivity extends AppCompatActivity implements Calend
     }
 
     private void storeWidgetColors() {
-        final SharedPreferences prefs = getSharedPreferences(Constants.PREFS, Context.MODE_PRIVATE);
+        final SharedPreferences prefs = getSharedPreferences(Constants.PREFS_KEY, Context.MODE_PRIVATE);
         prefs.edit().putInt(Constants.WIDGET_BG_COLOR, mBgColor).apply();
         prefs.edit().putInt(Constants.WIDGET_TEXT_COLOR, mTextColorWithoutTransparency).apply();
     }

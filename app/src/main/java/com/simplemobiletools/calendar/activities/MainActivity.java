@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.simplemobiletools.calendar.Calendar;
 import com.simplemobiletools.calendar.CalendarImpl;
+import com.simplemobiletools.calendar.Config;
 import com.simplemobiletools.calendar.Constants;
 import com.simplemobiletools.calendar.Day;
 import com.simplemobiletools.calendar.Helpers;
@@ -74,6 +75,12 @@ public class MainActivity extends AppCompatActivity implements Calendar {
 
         mCalendar = new CalendarImpl(this);
         mCalendar.updateCalendar(new DateTime());
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Config.newInstance(getApplicationContext()).setIsFirstRun(false);
     }
 
     @Override
