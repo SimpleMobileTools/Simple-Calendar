@@ -18,6 +18,7 @@ import android.graphics.Paint;
 import android.widget.RemoteViews;
 
 import com.simplemobiletools.calendar.activities.MainActivity;
+import com.simplemobiletools.calendar.models.Day;
 
 import org.joda.time.DateTime;
 
@@ -52,8 +53,8 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
 
         final SharedPreferences prefs = initPrefs(mContext);
         final int storedTextColor = prefs.getInt(Constants.WIDGET_TEXT_COLOR, Color.WHITE);
-        mTextColor = Helpers.adjustAlpha(storedTextColor, Constants.HIGH_ALPHA);
-        mWeakTextColor = Helpers.adjustAlpha(storedTextColor, Constants.LOW_ALPHA);
+        mTextColor = Utils.adjustAlpha(storedTextColor, Constants.HIGH_ALPHA);
+        mWeakTextColor = Utils.adjustAlpha(storedTextColor, Constants.LOW_ALPHA);
 
         mDayTextSize = mRes.getDimension(R.dimen.day_text_size) / mRes.getDisplayMetrics().density;
         mTodayTextSize = mRes.getDimension(R.dimen.today_text_size) / mRes.getDisplayMetrics().density;
@@ -68,7 +69,7 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
         final int bgColor = prefs.getInt(Constants.WIDGET_BG_COLOR, Color.BLACK);
         mRemoteViews.setInt(R.id.calendar_holder, "setBackgroundColor", bgColor);
 
-        mCalendar = new CalendarImpl(this);
+        mCalendar = new CalendarImpl(this, mContext);
         mCalendar.updateCalendar(new DateTime());
     }
 

@@ -18,8 +18,8 @@ import android.widget.TextView;
 import com.simplemobiletools.calendar.Calendar;
 import com.simplemobiletools.calendar.CalendarImpl;
 import com.simplemobiletools.calendar.Constants;
-import com.simplemobiletools.calendar.Day;
-import com.simplemobiletools.calendar.Helpers;
+import com.simplemobiletools.calendar.models.Day;
+import com.simplemobiletools.calendar.Utils;
 import com.simplemobiletools.calendar.MyWidgetProvider;
 import com.simplemobiletools.calendar.R;
 
@@ -99,7 +99,7 @@ public class WidgetConfigureActivity extends AppCompatActivity implements Calend
         mBgSeekBar.setProgress((int) (mBgAlpha * 100));
         updateBgColor();
 
-        mCalendar = new CalendarImpl(this);
+        mCalendar = new CalendarImpl(this, getApplicationContext());
         mCalendar.updateCalendar(new DateTime());
     }
 
@@ -166,8 +166,8 @@ public class WidgetConfigureActivity extends AppCompatActivity implements Calend
     }
 
     private void updateTextColors() {
-        mTextColor = Helpers.adjustAlpha(mTextColorWithoutTransparency, Constants.HIGH_ALPHA);
-        mWeakTextColor = Helpers.adjustAlpha(mTextColorWithoutTransparency, Constants.LOW_ALPHA);
+        mTextColor = Utils.adjustAlpha(mTextColorWithoutTransparency, Constants.HIGH_ALPHA);
+        mWeakTextColor = Utils.adjustAlpha(mTextColorWithoutTransparency, Constants.LOW_ALPHA);
 
         mLeftArrow.getDrawable().mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP);
         mRightArrow.getDrawable().mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP);
@@ -178,7 +178,7 @@ public class WidgetConfigureActivity extends AppCompatActivity implements Calend
     }
 
     private void updateBgColor() {
-        mBgColor = Helpers.adjustAlpha(mBgColorWithoutTransparency, mBgAlpha);
+        mBgColor = Utils.adjustAlpha(mBgColorWithoutTransparency, mBgAlpha);
         mWidgetBackground.setBackgroundColor(mBgColor);
         mBgColorPicker.setBackgroundColor(mBgColor);
         mSaveBtn.setBackgroundColor(mBgColor);

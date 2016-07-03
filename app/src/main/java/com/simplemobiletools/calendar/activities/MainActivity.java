@@ -21,9 +21,9 @@ import com.simplemobiletools.calendar.Calendar;
 import com.simplemobiletools.calendar.CalendarImpl;
 import com.simplemobiletools.calendar.Config;
 import com.simplemobiletools.calendar.Constants;
-import com.simplemobiletools.calendar.Day;
-import com.simplemobiletools.calendar.Helpers;
 import com.simplemobiletools.calendar.R;
+import com.simplemobiletools.calendar.Utils;
+import com.simplemobiletools.calendar.models.Day;
 
 import org.joda.time.DateTime;
 
@@ -51,6 +51,8 @@ public class MainActivity extends AppCompatActivity implements Calendar {
 
     private int mTextColor;
     private int mWeakTextColor;
+    private int mTextColorWithNote;
+    private int mWeakTextColorWithNote;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,13 +60,15 @@ public class MainActivity extends AppCompatActivity implements Calendar {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        mRes = getResources();
         Locale.setDefault(Locale.ENGLISH);
-        mTextColor = Helpers.adjustAlpha(Color.BLACK, Constants.HIGH_ALPHA);
-        mWeakTextColor = Helpers.adjustAlpha(Color.BLACK, Constants.LOW_ALPHA);
+        mTextColor = Utils.adjustAlpha(Color.BLACK, Constants.HIGH_ALPHA);
+        mTextColorWithNote = Utils.adjustAlpha(mRes.getColor(R.color.colorPrimary), Constants.HIGH_ALPHA);
+        mWeakTextColor = Utils.adjustAlpha(Color.BLACK, Constants.LOW_ALPHA);
+        mWeakTextColorWithNote = Utils.adjustAlpha(mRes.getColor(R.color.colorPrimary), Constants.LOW_ALPHA);
         mLeftArrow.getDrawable().mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP);
         mRightArrow.getDrawable().mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP);
 
-        mRes = getResources();
         mPackageName = getPackageName();
         mDayTextSize /= mRes.getDisplayMetrics().density;
         mTodayTextSize /= mRes.getDisplayMetrics().density;
@@ -73,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements Calendar {
         final FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) mCalendarHolder.getLayoutParams();
         params.setMargins(mActivityMargin, mActivityMargin, mActivityMargin, mActivityMargin);
 
-        mCalendar = new CalendarImpl(this);
+        mCalendar = new CalendarImpl(this, getApplicationContext());
         mCalendar.updateCalendar(new DateTime());
     }
 
@@ -107,6 +111,9 @@ public class MainActivity extends AppCompatActivity implements Calendar {
         for (int i = 0; i < len; i++) {
             final Day day = days.get(i);
             final TextView dayTV = (TextView) findViewById(mRes.getIdentifier("day_" + i, "id", mPackageName));
+            if (dayTV == null)
+                continue;
+
             int curTextColor = mWeakTextColor;
             float curTextSize = mDayTextSize;
 
@@ -121,7 +128,23 @@ public class MainActivity extends AppCompatActivity implements Calendar {
             dayTV.setText(String.valueOf(day.getValue()));
             dayTV.setTextColor(curTextColor);
             dayTV.setTextSize(curTextSize);
+
+            dayTV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    openDetails(day.getCode());
+                }
+            });
         }
+    }
+
+    private void openDetails(String code) {
+        if (code.isEmpty())
+            return;
+
+        final Intent intent = new Intent(getApplicationContext(), DetailsActivity.class);
+        intent.putExtra(Constants.DAY_CODE, code);
+        startActivity(intent);
     }
 
     @OnClick(R.id.left_arrow)

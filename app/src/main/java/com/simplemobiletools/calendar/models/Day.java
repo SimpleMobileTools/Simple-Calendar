@@ -5,9 +5,9 @@ public class Day {
     private final boolean mIsThisMonth;
     private final boolean mIsToday;
     private final boolean mHasNote;
-    private final int mCode;
+    private final String mCode;
 
-    public Day(int value, boolean isThisMonth, boolean isToday, int code, boolean hasNote) {
+    public Day(int value, boolean isThisMonth, boolean isToday, String code, boolean hasNote) {
         mValue = value;
         mIsThisMonth = isThisMonth;
         mIsToday = isToday;
@@ -27,7 +27,7 @@ public class Day {
         return mIsToday;
     }
 
-    public int getCode() {
+    public String getCode() {
         return mCode;
     }
 

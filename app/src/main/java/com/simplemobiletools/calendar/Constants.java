@@ -8,4 +8,8 @@ public class Constants {
     public static final String IS_FIRST_RUN = "is_first_run";
     public static final String WIDGET_BG_COLOR = "widget_bg_color";
     public static final String WIDGET_TEXT_COLOR = "widget_text_color";
+    public static final String EVENTS = "events";
+
+    public static final String DAY_CODE = "day_code";
+    public static final String DATE_PATTERN = "YYMMdd";
 }
