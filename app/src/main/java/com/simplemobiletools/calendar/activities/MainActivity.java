@@ -193,7 +193,6 @@ public class MainActivity extends AppCompatActivity implements Calendar {
 
     private void updateMonth(String month) {
         mMonthTV.setText(month);
-        mMonthTV.setTextColor(mTextColor);
     }
 
     private void setupLabels() {

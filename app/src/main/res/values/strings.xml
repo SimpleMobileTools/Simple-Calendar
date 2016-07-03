@@ -1,8 +1,13 @@
 <resources>
     <string name="app_name">Simple Calendar</string>
 
+    <!-- Event -->
+    <string name="event">Event</string>
+
     <!-- Details -->
     <string name="details">Details</string>
+    <string name="start">Start</string>
+    <string name="end">End</string>
 
     <!-- About -->
     <string name="about">About</string>

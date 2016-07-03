@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@+id/event_holder"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="@dimen/activity_margin">
+
+    <TextView
+        android:id="@+id/event_start_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/start"
+        android:textSize="@dimen/day_text_size"/>
+
+    <TextView
+        android:id="@+id/event_start_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/event_start_label"
+        android:padding="@dimen/activity_margin"
+        android:text="January 1 1970"
+        android:textSize="@dimen/day_text_size"/>
+
+    <TextView
+        android:id="@+id/event_start_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/event_start_label"
+        android:layout_toRightOf="@id/event_start_date"
+        android:padding="@dimen/activity_margin"
+        android:text="00:00"
+        android:textSize="@dimen/day_text_size"/>
+
+    <TextView
+        android:id="@+id/event_end_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/event_start_date"
+        android:layout_marginTop="@dimen/activity_margin"
+        android:text="@string/end"
+        android:textSize="@dimen/day_text_size"/>
+
+    <TextView
+        android:id="@+id/event_end_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/event_end_label"
+        android:padding="@dimen/activity_margin"
+        android:text="January 1 1970"
+        android:textSize="@dimen/day_text_size"/>
+
+    <TextView
+        android:id="@+id/event_end_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/event_end_label"
+        android:layout_toRightOf="@id/event_end_date"
+        android:padding="@dimen/activity_margin"
+        android:text="00:00"
+        android:textSize="@dimen/day_text_size"/>
+
+</RelativeLayout>

@@ -39,6 +39,11 @@
             android:screenOrientation="portrait"/>
 
         <activity
+            android:name=".activities.EventActivity"
+            android:label="@string/event"
+            android:screenOrientation="portrait"/>
+
+        <activity
             android:name=".activities.LicenseActivity"
             android:label="@string/third_party_licences"
             android:screenOrientation="portrait"/>
