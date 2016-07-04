@@ -85,18 +85,29 @@ public class EventActivity extends AppCompatActivity implements DBHelper.DBOpera
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_event, menu);
+        final MenuItem item = menu.findItem(R.id.delete);
+        if (mEvent.getId() == 0) {
+            item.setVisible(false);
+        }
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.delete:
+                deleteEvent();
+                return true;
             case R.id.save:
                 saveEvent();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void deleteEvent() {
+        DBHelper.newInstance(getApplicationContext(), this).deleteEvent(mEvent.getId());
     }
 
     private void saveEvent() {
@@ -224,6 +235,11 @@ public class EventActivity extends AppCompatActivity implements DBHelper.DBOpera
     @Override
     public void eventUpdated() {
         Utils.showToast(getApplicationContext(), R.string.event_updated);
+        finish();
+    }
+
+    @Override
+    public void eventsDeleted() {
         finish();
     }
 

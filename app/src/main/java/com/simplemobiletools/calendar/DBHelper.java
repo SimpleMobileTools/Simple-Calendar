@@ -74,6 +74,19 @@ public class DBHelper extends SQLiteOpenHelper {
         return values;
     }
 
+    public void deleteEvent(int id) {
+        final String selection = COL_ID + " = ?";
+        final String[] selectionArgs = {String.valueOf(id)};
+        mDb.delete(TABLE_NAME, selection, selectionArgs);
+        mCallback.eventsDeleted();
+    }
+
+    public void deleteEvents(String[] ids) {
+        final String selection = COL_ID + " IN (?)";
+        mDb.delete(TABLE_NAME, selection, ids);
+        mCallback.eventsDeleted();
+    }
+
     public void getEvents(int fromTS, int toTS) {
         final String[] projection = {COL_ID, COL_START_TS, COL_END_TS, COL_TITLE, COL_DESCRIPTION};
         List<Event> events = new ArrayList<>();
@@ -100,6 +113,8 @@ public class DBHelper extends SQLiteOpenHelper {
         void eventInserted();
 
         void eventUpdated();
+
+        void eventsDeleted();
 
         void gotEvents(List<Event> events);
     }

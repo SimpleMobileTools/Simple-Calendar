@@ -4,6 +4,7 @@
     <!-- Event -->
     <string name="event">Event</string>
     <string name="save">Save</string>
+    <string name="delete">Delete</string>
     <string name="title_empty">Title cannot be empty</string>
     <string name="end_before_start">The event cannot end earlier than it starts</string>
     <string name="event_added">Event added successfully</string>

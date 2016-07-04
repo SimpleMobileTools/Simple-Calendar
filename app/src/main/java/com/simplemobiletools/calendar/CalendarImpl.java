@@ -117,6 +117,11 @@ public class CalendarImpl implements DBHelper.DBOperationsListener {
     }
 
     @Override
+    public void eventsDeleted() {
+
+    }
+
+    @Override
     public void gotEvents(List<Event> events) {
         mEvents = events;
         getDays();

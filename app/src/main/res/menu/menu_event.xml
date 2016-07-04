@@ -2,8 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/delete"
+        android:icon="@mipmap/delete"
+        android:title="@string/delete"
+        app:showAsAction="ifRoom"/>
+
+    <item
         android:id="@+id/save"
         android:icon="@mipmap/check"
         android:title="@string/save"
         app:showAsAction="ifRoom"/>
+
 </menu>

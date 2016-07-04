@@ -17,6 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/activity_margin"
             android:gravity="center_horizontal"
+            android:paddingTop="@dimen/top_padding"
             android:text="January 1 1970"
             android:textSize="@dimen/month_text_size"/>
 
@@ -24,7 +25,8 @@
             android:id="@+id/day_events"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/day_date"/>
+            android:layout_below="@+id/day_date"
+            android:choiceMode="multipleChoiceModal"/>
     </RelativeLayout>
 
     <android.support.design.widget.FloatingActionButton

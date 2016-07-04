@@ -24,7 +24,7 @@
         android:layout_toRightOf="@+id/left_arrow"
         android:gravity="center_horizontal"
         android:paddingBottom="@dimen/activity_margin"
-        android:paddingTop="@dimen/activity_margin"
+        android:paddingTop="@dimen/top_padding"
         android:textSize="@dimen/month_text_size"/>
 
     <ImageView
