@@ -51,8 +51,8 @@ public class MainActivity extends AppCompatActivity implements Calendar {
 
     private int mTextColor;
     private int mWeakTextColor;
-    private int mTextColorWithNote;
-    private int mWeakTextColorWithNote;
+    private int mTextColorWithEvent;
+    private int mWeakTextColorWithEvent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,9 +63,9 @@ public class MainActivity extends AppCompatActivity implements Calendar {
         mRes = getResources();
         Locale.setDefault(Locale.ENGLISH);
         mTextColor = Utils.adjustAlpha(Color.BLACK, Constants.HIGH_ALPHA);
-        mTextColorWithNote = Utils.adjustAlpha(mRes.getColor(R.color.colorPrimary), Constants.HIGH_ALPHA);
+        mTextColorWithEvent = Utils.adjustAlpha(mRes.getColor(R.color.colorPrimary), Constants.HIGH_ALPHA);
         mWeakTextColor = Utils.adjustAlpha(Color.BLACK, Constants.LOW_ALPHA);
-        mWeakTextColorWithNote = Utils.adjustAlpha(mRes.getColor(R.color.colorPrimary), Constants.LOW_ALPHA);
+        mWeakTextColorWithEvent = Utils.adjustAlpha(mRes.getColor(R.color.colorPrimary), Constants.LOW_ALPHA);
         mLeftArrow.getDrawable().mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP);
         mRightArrow.getDrawable().mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP);
 
@@ -77,7 +77,12 @@ public class MainActivity extends AppCompatActivity implements Calendar {
         final FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) mCalendarHolder.getLayoutParams();
         params.setMargins(mActivityMargin, mActivityMargin, mActivityMargin, mActivityMargin);
 
-        mCalendar = new CalendarImpl(this);
+        mCalendar = new CalendarImpl(this, getApplicationContext());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         mCalendar.updateCalendar(new DateTime());
     }
 
@@ -114,11 +119,11 @@ public class MainActivity extends AppCompatActivity implements Calendar {
             if (dayTV == null)
                 continue;
 
-            int curTextColor = mWeakTextColor;
+            int curTextColor = day.getHasEvent() ? mWeakTextColorWithEvent : mWeakTextColor;
             float curTextSize = mDayTextSize;
 
             if (day.getIsThisMonth()) {
-                curTextColor = mTextColor;
+                curTextColor = day.getHasEvent() ? mTextColorWithEvent : mTextColor;
             }
 
             if (day.getIsToday()) {

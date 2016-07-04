@@ -69,7 +69,7 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
         final int bgColor = prefs.getInt(Constants.WIDGET_BG_COLOR, Color.BLACK);
         mRemoteViews.setInt(R.id.calendar_holder, "setBackgroundColor", bgColor);
 
-        mCalendar = new CalendarImpl(this);
+        mCalendar = new CalendarImpl(this, mContext);
         mCalendar.updateCalendar(new DateTime());
     }
 

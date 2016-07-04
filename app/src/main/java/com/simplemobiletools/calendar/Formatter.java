@@ -6,6 +6,7 @@ import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
 public class Formatter {
+    public static final String DAYCODE_PATTERN = "YYMMdd";
     private static final String EVENT_DATE_PATTERN = "MMMM d YYYY";
     private static final String EVENT_TIME_PATTERN = "HH:mm";
 
@@ -22,7 +23,7 @@ public class Formatter {
     }
 
     public static DateTime getDateTimeFromCode(String dayCode) {
-        final DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern(Constants.DATE_PATTERN).withZone(DateTimeZone.UTC);
+        final DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern(DAYCODE_PATTERN).withZone(DateTimeZone.UTC);
         return dateTimeFormatter.parseDateTime(dayCode);
     }
 
@@ -39,5 +40,14 @@ public class Formatter {
     public static int getDayEndTS(String dayCode) {
         final DateTime dateTime = getDateTimeFromCode(dayCode);
         return (int) (dateTime.plusDays(1).minusMinutes(1).getMillis() / 1000);
+    }
+
+    public static String getDayCodeFromTS(int ts) {
+        final DateTime dateTime = new DateTime(ts * 1000L, DateTimeZone.getDefault());
+        return dateTime.toString(Formatter.DAYCODE_PATTERN);
+    }
+
+    public static String getDayCodeFromDateTime(DateTime dateTime) {
+        return dateTime.toDateTime(DateTimeZone.getDefault()).toString(Formatter.DAYCODE_PATTERN);
     }
 }

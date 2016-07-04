@@ -4,15 +4,15 @@ public class Day {
     private final int mValue;
     private final boolean mIsThisMonth;
     private final boolean mIsToday;
-    private final boolean mHasNote;
+    private final boolean mHasEvent;
     private final String mCode;
 
-    public Day(int value, boolean isThisMonth, boolean isToday, String code, boolean hasNote) {
+    public Day(int value, boolean isThisMonth, boolean isToday, String code, boolean hasEvent) {
         mValue = value;
         mIsThisMonth = isThisMonth;
         mIsToday = isToday;
         mCode = code;
-        mHasNote = hasNote;
+        mHasEvent = hasEvent;
     }
 
     public int getValue() {
@@ -31,7 +31,7 @@ public class Day {
         return mCode;
     }
 
-    public boolean getHasNote() {
-        return mHasNote;
+    public boolean getHasEvent() {
+        return mHasEvent;
     }
 }

@@ -1,31 +1,37 @@
 package com.simplemobiletools.calendar;
 
+import android.content.Context;
+
 import com.simplemobiletools.calendar.models.Day;
+import com.simplemobiletools.calendar.models.Event;
 
 import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
 
 import java.text.DateFormatSymbols;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CalendarImpl {
+public class CalendarImpl implements DBHelper.DBOperationsListener {
     public static final int DAYS_CNT = 42;
     private static final String YEAR_PATTERN = "YYYY";
 
     private final Calendar mCallback;
     private final String mToday;
+    private final Context mContext;
     private DateTime mTargetDate;
+    private List<Event> mEvents;
 
-    public CalendarImpl(Calendar callback) {
+    public CalendarImpl(Calendar callback, Context context) {
         this.mCallback = callback;
-        mToday = new DateTime().toString(Constants.DATE_PATTERN);
+        mContext = context;
+        mToday = new DateTime().toString(Formatter.DAYCODE_PATTERN);
     }
 
     public void updateCalendar(DateTime targetDate) {
-        this.mTargetDate = targetDate;
-        getMonthName();
-        getDays(targetDate);
+        mTargetDate = targetDate;
+        final int startTS = Formatter.getDayStartTS(Formatter.getDayCodeFromDateTime(mTargetDate.minusMonths(1)));
+        final int endTS = Formatter.getDayEndTS(Formatter.getDayCodeFromDateTime(mTargetDate.plusMonths(1)));
+        DBHelper.newInstance(mContext, this).getEvents(startTS, endTS);
     }
 
     public void getPrevMonth() {
@@ -36,35 +42,35 @@ public class CalendarImpl {
         updateCalendar(mTargetDate.plusMonths(1));
     }
 
-    private void getDays(DateTime targetDate) {
+    private void getDays() {
         final List<Day> days = new ArrayList<>(DAYS_CNT);
 
-        final int currMonthDays = targetDate.dayOfMonth().getMaximumValue();
-        final int firstDayIndex = targetDate.withDayOfMonth(1).getDayOfWeek() - 1;
-        final int prevMonthDays = targetDate.minusMonths(1).dayOfMonth().getMaximumValue();
+        final int currMonthDays = mTargetDate.dayOfMonth().getMaximumValue();
+        final int firstDayIndex = mTargetDate.withDayOfMonth(1).getDayOfWeek() - 1;
+        final int prevMonthDays = mTargetDate.minusMonths(1).dayOfMonth().getMaximumValue();
 
         boolean isThisMonth = false;
         boolean isToday;
         int value = prevMonthDays - firstDayIndex + 1;
-        DateTime curDay = targetDate;
+        DateTime curDay = mTargetDate;
 
         for (int i = 0; i < DAYS_CNT; i++) {
             if (i < firstDayIndex) {
                 isThisMonth = false;
-                curDay = targetDate.minusMonths(1);
+                curDay = mTargetDate.minusMonths(1);
             } else if (i == firstDayIndex) {
                 value = 1;
                 isThisMonth = true;
-                curDay = targetDate;
+                curDay = mTargetDate;
             } else if (value == currMonthDays + 1) {
                 value = 1;
                 isThisMonth = false;
-                curDay = targetDate.plusMonths(1);
+                curDay = mTargetDate.plusMonths(1);
             }
 
-            isToday = isThisMonth && isToday(targetDate, value);
+            isToday = isThisMonth && isToday(mTargetDate, value);
 
-            final String dayCode = curDay.withDayOfMonth(value).toDateTime(DateTimeZone.UTC).toString(Constants.DATE_PATTERN);
+            final String dayCode = Formatter.getDayCodeFromDateTime(curDay.withDayOfMonth(value));
             final Day day = new Day(value, isThisMonth, isToday, dayCode, hasEvent(dayCode));
             days.add(day);
             value++;
@@ -74,11 +80,16 @@ public class CalendarImpl {
     }
 
     private boolean hasEvent(String dayCode) {
+        for (Event e : mEvents) {
+            if (Formatter.getDayCodeFromTS(e.getStartTS()).equals(dayCode)) {
+                return true;
+            }
+        }
         return false;
     }
 
     private boolean isToday(DateTime targetDate, int curDayInMonth) {
-        return targetDate.withDayOfMonth(curDayInMonth).toString(Constants.DATE_PATTERN).equals(mToday);
+        return targetDate.withDayOfMonth(curDayInMonth).toString(Formatter.DAYCODE_PATTERN).equals(mToday);
     }
 
     private String getMonthName() {
@@ -93,5 +104,16 @@ public class CalendarImpl {
 
     public DateTime getTargetDate() {
         return mTargetDate;
+    }
+
+    @Override
+    public void eventInserted() {
+
+    }
+
+    @Override
+    public void gotEvents(List<Event> events) {
+        mEvents = events;
+        getDays();
     }
 }
