@@ -14,9 +14,6 @@ import com.simplemobiletools.calendar.Formatter;
 import com.simplemobiletools.calendar.R;
 import com.simplemobiletools.calendar.models.Event;
 
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
-
 import java.util.List;
 
 import butterknife.BindView;
@@ -61,9 +58,8 @@ public class DetailsActivity extends AppCompatActivity implements DBHelper.DBOpe
     }
 
     private void checkEvents() {
-        final DateTime dateTime = Formatter.getDateTime(dayCode).withZone(DateTimeZone.UTC);
-        final int startTS = (int) (dateTime.getMillis() / 1000);
-        final int endTS = (int) (dateTime.plusDays(1).minusMinutes(1).getMillis() / 1000);
+        final int startTS = Formatter.getDayStartTS(dayCode);
+        final int endTS = Formatter.getDayEndTS(dayCode);
         DBHelper.newInstance(getApplicationContext(), this).getEvents(startTS, endTS);
     }
 

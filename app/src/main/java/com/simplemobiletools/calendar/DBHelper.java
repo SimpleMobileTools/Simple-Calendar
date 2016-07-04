@@ -13,7 +13,6 @@ import java.util.List;
 
 public class DBHelper extends SQLiteOpenHelper {
     private static SQLiteDatabase mDb;
-    private static String[] mProjection;
     private static DBOperationsListener mCallback;
 
     private static final String DB_NAME = "events.db";
@@ -34,7 +33,6 @@ public class DBHelper extends SQLiteOpenHelper {
     public DBHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
         mDb = getWritableDatabase();
-        mProjection = new String[]{COL_ID, COL_START_TS, COL_END_TS, COL_TITLE, COL_DESCRIPTION};
     }
 
     @Override
@@ -64,10 +62,11 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public void getEvents(int fromTS, int toTS) {
+        final String[] projection = {COL_ID, COL_START_TS, COL_END_TS, COL_TITLE, COL_DESCRIPTION};
         List<Event> events = new ArrayList<>();
         final String selection = COL_START_TS + " <= ? AND " + COL_END_TS + " >= ?";
         final String[] selectionArgs = {String.valueOf(toTS), String.valueOf(fromTS)};
-        final Cursor cursor = mDb.query(TABLE_NAME, mProjection, selection, selectionArgs, null, null, COL_START_TS);
+        final Cursor cursor = mDb.query(TABLE_NAME, projection, selection, selectionArgs, null, null, COL_START_TS);
         if (cursor != null) {
             if (cursor.moveToFirst()) {
                 do {
