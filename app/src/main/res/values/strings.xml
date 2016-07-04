@@ -3,6 +3,7 @@
 
     <!-- Event -->
     <string name="event">Event</string>
+    <string name="save">Save</string>
 
     <!-- Details -->
     <string name="details">Details</string>
