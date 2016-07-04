@@ -1,8 +1,5 @@
 package com.simplemobiletools.calendar;
 
-import android.content.Context;
-import android.util.SparseBooleanArray;
-
 import com.simplemobiletools.calendar.models.Day;
 
 import org.joda.time.DateTime;
@@ -18,15 +15,11 @@ public class CalendarImpl {
 
     private final Calendar mCallback;
     private final String mToday;
-    private final Context mContext;
     private DateTime mTargetDate;
-    private SparseBooleanArray mEvents;
 
-    public CalendarImpl(Calendar callback, Context context) {
+    public CalendarImpl(Calendar callback) {
         this.mCallback = callback;
         mToday = new DateTime().toString(Constants.DATE_PATTERN);
-        mContext = context;
-        mEvents = Config.newInstance(context).getEvents();
     }
 
     public void updateCalendar(DateTime targetDate) {
@@ -81,7 +74,7 @@ public class CalendarImpl {
     }
 
     private boolean hasEvent(String dayCode) {
-        return mEvents.get(Integer.parseInt(dayCode));
+        return false;
     }
 
     private boolean isToday(DateTime targetDate, int curDayInMonth) {

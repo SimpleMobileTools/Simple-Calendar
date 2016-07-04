@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements Calendar {
         final FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) mCalendarHolder.getLayoutParams();
         params.setMargins(mActivityMargin, mActivityMargin, mActivityMargin, mActivityMargin);
 
-        mCalendar = new CalendarImpl(this, getApplicationContext());
+        mCalendar = new CalendarImpl(this);
         mCalendar.updateCalendar(new DateTime());
     }
 

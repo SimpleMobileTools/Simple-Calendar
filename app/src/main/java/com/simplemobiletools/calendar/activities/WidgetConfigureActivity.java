@@ -18,10 +18,10 @@ import android.widget.TextView;
 import com.simplemobiletools.calendar.Calendar;
 import com.simplemobiletools.calendar.CalendarImpl;
 import com.simplemobiletools.calendar.Constants;
-import com.simplemobiletools.calendar.models.Day;
-import com.simplemobiletools.calendar.Utils;
 import com.simplemobiletools.calendar.MyWidgetProvider;
 import com.simplemobiletools.calendar.R;
+import com.simplemobiletools.calendar.Utils;
+import com.simplemobiletools.calendar.models.Day;
 
 import org.joda.time.DateTime;
 
@@ -99,7 +99,7 @@ public class WidgetConfigureActivity extends AppCompatActivity implements Calend
         mBgSeekBar.setProgress((int) (mBgAlpha * 100));
         updateBgColor();
 
-        mCalendar = new CalendarImpl(this, getApplicationContext());
+        mCalendar = new CalendarImpl(this);
         mCalendar.updateCalendar(new DateTime());
     }
 
