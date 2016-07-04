@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -75,11 +76,16 @@ public class EventActivity extends AppCompatActivity implements DBHelper.DBOpera
         mEventEndDateTime = new DateTime(mEvent.getEndTS() * 1000L, DateTimeZone.getDefault());
         mTitleET.setText(mEvent.getTitle());
         mDescriptionET.setText(mEvent.getDescription());
+        hideKeyboard();
     }
 
     private void setupNewEvent(String dayCode) {
         mEventStartDateTime = Formatter.getDateTimeFromCode(dayCode).withZone(DateTimeZone.getDefault()).withHourOfDay(13);
         mEventEndDateTime = Formatter.getDateTimeFromCode(dayCode).withZone(DateTimeZone.getDefault()).withHourOfDay(14);
+    }
+
+    private void hideKeyboard() {
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     }
 
     @Override
