@@ -63,11 +63,11 @@ public class DBHelper extends SQLiteOpenHelper {
         mCallback.eventInserted();
     }
 
-    public List<Event> getEvents(int fromTS, int toTS) {
+    public void getEvents(int fromTS, int toTS) {
         List<Event> events = new ArrayList<>();
-        final String selection = COL_START_TS + " >= ? AND " + COL_START_TS + " <= ?";
-        final String[] selectionArgs = {String.valueOf(fromTS), String.valueOf(toTS)};
-        final Cursor cursor = mDb.query(TABLE_NAME, mProjection, selection, selectionArgs, null, null, null);
+        final String selection = COL_START_TS + " <= ? AND " + COL_END_TS + " >= ?";
+        final String[] selectionArgs = {String.valueOf(toTS), String.valueOf(fromTS)};
+        final Cursor cursor = mDb.query(TABLE_NAME, mProjection, selection, selectionArgs, null, null, COL_START_TS);
         if (cursor != null) {
             if (cursor.moveToFirst()) {
                 do {
@@ -81,10 +81,12 @@ public class DBHelper extends SQLiteOpenHelper {
             }
             cursor.close();
         }
-        return events;
+        mCallback.gotEvents(events);
     }
 
     public interface DBOperationsListener {
         void eventInserted();
+
+        void gotEvents(List<Event> events);
     }
 }

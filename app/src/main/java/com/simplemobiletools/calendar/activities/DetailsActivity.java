@@ -4,18 +4,28 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.simplemobiletools.calendar.Constants;
+import com.simplemobiletools.calendar.DBHelper;
+import com.simplemobiletools.calendar.EventsAdapter;
 import com.simplemobiletools.calendar.Formatter;
 import com.simplemobiletools.calendar.R;
+import com.simplemobiletools.calendar.models.Event;
+
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class DetailsActivity extends AppCompatActivity {
+public class DetailsActivity extends AppCompatActivity implements DBHelper.DBOperationsListener {
     @BindView(R.id.details_date) TextView mDateTV;
+    @BindView(R.id.details_events) ListView mEventsList;
 
     private String dayCode;
 
@@ -37,10 +47,38 @@ public class DetailsActivity extends AppCompatActivity {
         mDateTV.setText(date);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        checkEvents();
+    }
+
     @OnClick(R.id.details_fab)
     public void fabClicked(View view) {
         final Intent intent = new Intent(getApplicationContext(), EventActivity.class);
         intent.putExtra(Constants.DAY_CODE, dayCode);
         startActivity(intent);
+    }
+
+    private void checkEvents() {
+        final DateTime dateTime = Formatter.getDateTime(dayCode).withZone(DateTimeZone.UTC);
+        final int startTS = (int) (dateTime.getMillis() / 1000);
+        final int endTS = (int) (dateTime.plusDays(1).minusMinutes(1).getMillis() / 1000);
+        DBHelper.newInstance(getApplicationContext(), this).getEvents(startTS, endTS);
+    }
+
+    private void updateEvents(List<Event> events) {
+        final EventsAdapter adapter = new EventsAdapter(this, events);
+        mEventsList.setAdapter(adapter);
+    }
+
+    @Override
+    public void eventInserted() {
+
+    }
+
+    @Override
+    public void gotEvents(List<Event> events) {
+        updateEvents(events);
     }
 }

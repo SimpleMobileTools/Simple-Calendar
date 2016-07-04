@@ -22,6 +22,8 @@ import com.simplemobiletools.calendar.models.Event;
 
 import org.joda.time.DateTime;
 
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -189,5 +191,10 @@ public class EventActivity extends AppCompatActivity implements DBHelper.DBOpera
     public void eventInserted() {
         Utils.showToast(getApplicationContext(), R.string.event_added);
         finish();
+    }
+
+    @Override
+    public void gotEvents(List<Event> events) {
+
     }
 }

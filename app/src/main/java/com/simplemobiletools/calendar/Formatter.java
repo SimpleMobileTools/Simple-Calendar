@@ -1,6 +1,7 @@
 package com.simplemobiletools.calendar;
 
 import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
@@ -21,7 +22,12 @@ public class Formatter {
     }
 
     public static DateTime getDateTime(String dayCode) {
-        final DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern(Constants.DATE_PATTERN);
+        final DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern(Constants.DATE_PATTERN).withZone(DateTimeZone.UTC);
         return dateTimeFormatter.parseDateTime(dayCode);
+    }
+
+    public static String getTime(int ts) {
+        final DateTime dateTime = new DateTime(ts * 1000L, DateTimeZone.UTC);
+        return getEventTime(dateTime);
     }
 }

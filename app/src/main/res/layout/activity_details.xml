@@ -1,17 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout
-    android:id="@+id/details_holder"
+    android:id="@+id/details_coordinator"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="@dimen/activity_margin">
 
-    <TextView
-        android:id="@+id/details_date"
+    <RelativeLayout
+        android:id="@+id/details_holder"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:textSize="@dimen/month_text_size"/>
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/details_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_margin"
+            android:gravity="center_horizontal"
+            android:text="January 1 1970"
+            android:textSize="@dimen/month_text_size"/>
+
+        <ListView
+            android:id="@+id/details_events"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/details_date"/>
+    </RelativeLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/details_fab"

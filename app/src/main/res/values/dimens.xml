@@ -2,6 +2,7 @@
     <dimen name="activity_margin">16dp</dimen>
     <dimen name="social_padding">8dp</dimen>
     <dimen name="social_logo">40dp</dimen>
+    <dimen name="event_padding">8dp</dimen>
 
     <dimen name="min_widget_width">250dp</dimen>
     <dimen name="min_widget_height">250dp</dimen>
