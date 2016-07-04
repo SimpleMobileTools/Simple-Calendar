@@ -43,7 +43,7 @@ public class Formatter {
     }
 
     public static int getDayEndTS(String dayCode) {
-        final DateTime dateTime = getDateTimeFromCode(dayCode);
+        final DateTime dateTime = getLocalDateTimeFromCode(dayCode);
         return (int) (dateTime.plusDays(1).minusMinutes(1).getMillis() / 1000);
     }
 
