@@ -52,13 +52,26 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public void insert(Event event) {
+        final ContentValues values = fillContentValues(event);
+        mDb.insert(TABLE_NAME, null, values);
+        mCallback.eventInserted();
+    }
+
+    public void update(Event event) {
+        final ContentValues values = fillContentValues(event);
+        final String selection = COL_ID + " = ?";
+        final String[] selectionArgs = {String.valueOf(event.getId())};
+        mDb.update(TABLE_NAME, values, selection, selectionArgs);
+        mCallback.eventUpdated();
+    }
+
+    private ContentValues fillContentValues(Event event) {
         final ContentValues values = new ContentValues();
         values.put(COL_START_TS, event.getStartTS());
         values.put(COL_END_TS, event.getEndTS());
         values.put(COL_TITLE, event.getTitle());
         values.put(COL_DESCRIPTION, event.getDescription());
-        mDb.insert(TABLE_NAME, null, values);
-        mCallback.eventInserted();
+        return values;
     }
 
     public void getEvents(int fromTS, int toTS) {
@@ -85,6 +98,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public interface DBOperationsListener {
         void eventInserted();
+
+        void eventUpdated();
 
         void gotEvents(List<Event> events);
     }

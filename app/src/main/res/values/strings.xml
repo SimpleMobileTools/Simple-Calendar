@@ -7,8 +7,9 @@
     <string name="title_empty">Title cannot be empty</string>
     <string name="end_before_start">The event cannot end earlier than it starts</string>
     <string name="event_added">Event added successfully</string>
+    <string name="event_updated">Event updated successfully</string>
 
-    <!-- Details -->
+    <!-- Day details -->
     <string name="details">Details</string>
     <string name="title">Title</string>
     <string name="start">Start</string>

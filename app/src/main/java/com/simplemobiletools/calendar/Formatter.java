@@ -27,13 +27,18 @@ public class Formatter {
         return dateTimeFormatter.parseDateTime(dayCode);
     }
 
+    public static DateTime getLocalDateTimeFromCode(String dayCode) {
+        final DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern(DAYCODE_PATTERN).withZone(DateTimeZone.getDefault());
+        return dateTimeFormatter.parseDateTime(dayCode);
+    }
+
     public static String getTime(int ts) {
-        final DateTime dateTime = new DateTime(ts * 1000L, DateTimeZone.UTC);
+        final DateTime dateTime = new DateTime(ts * 1000L, DateTimeZone.getDefault());
         return getEventTime(dateTime);
     }
 
     public static int getDayStartTS(String dayCode) {
-        final DateTime dateTime = getDateTimeFromCode(dayCode);
+        final DateTime dateTime = getLocalDateTimeFromCode(dayCode);
         return (int) (dateTime.getMillis() / 1000);
     }
 

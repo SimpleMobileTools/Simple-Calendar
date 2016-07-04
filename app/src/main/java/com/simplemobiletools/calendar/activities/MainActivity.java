@@ -137,17 +137,17 @@ public class MainActivity extends AppCompatActivity implements Calendar {
             dayTV.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    openDetails(day.getCode());
+                    openDay(day.getCode());
                 }
             });
         }
     }
 
-    private void openDetails(String code) {
+    private void openDay(String code) {
         if (code.isEmpty())
             return;
 
-        final Intent intent = new Intent(getApplicationContext(), DetailsActivity.class);
+        final Intent intent = new Intent(getApplicationContext(), DayActivity.class);
         intent.putExtra(Constants.DAY_CODE, code);
         startActivity(intent);
     }

@@ -34,7 +34,7 @@
             android:screenOrientation="portrait"/>
 
         <activity
-            android:name=".activities.DetailsActivity"
+            android:name=".activities.DayActivity"
             android:label="@string/details"
             android:screenOrientation="portrait"/>
 

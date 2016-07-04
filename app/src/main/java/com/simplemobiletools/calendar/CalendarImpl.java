@@ -22,7 +22,7 @@ public class CalendarImpl implements DBHelper.DBOperationsListener {
     private List<Event> mEvents;
 
     public CalendarImpl(Calendar callback, Context context) {
-        this.mCallback = callback;
+        mCallback = callback;
         mContext = context;
         mToday = new DateTime().toString(Formatter.DAYCODE_PATTERN);
     }
@@ -80,8 +80,8 @@ public class CalendarImpl implements DBHelper.DBOperationsListener {
     }
 
     private boolean hasEvent(String dayCode) {
-        for (Event e : mEvents) {
-            if (Formatter.getDayCodeFromTS(e.getStartTS()).equals(dayCode)) {
+        for (Event event : mEvents) {
+            if (Formatter.getDayCodeFromTS(event.getStartTS()).equals(dayCode)) {
                 return true;
             }
         }
@@ -108,6 +108,11 @@ public class CalendarImpl implements DBHelper.DBOperationsListener {
 
     @Override
     public void eventInserted() {
+
+    }
+
+    @Override
+    public void eventUpdated() {
 
     }
 

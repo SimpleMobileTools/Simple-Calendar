@@ -10,4 +10,5 @@ public class Constants {
     public static final String WIDGET_TEXT_COLOR = "widget_text_color";
 
     public static final String DAY_CODE = "day_code";
+    public static final String EVENT = "event";
 }

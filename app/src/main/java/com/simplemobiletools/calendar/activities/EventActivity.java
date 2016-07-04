@@ -21,6 +21,7 @@ import com.simplemobiletools.calendar.Utils;
 import com.simplemobiletools.calendar.models.Event;
 
 import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 
 import java.util.List;
 
@@ -38,6 +39,7 @@ public class EventActivity extends AppCompatActivity implements DBHelper.DBOpera
 
     private DateTime mEventStartDateTime;
     private DateTime mEventEndDateTime;
+    private Event mEvent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,17 +51,35 @@ public class EventActivity extends AppCompatActivity implements DBHelper.DBOpera
         if (intent == null)
             return;
 
-        final String dayCode = intent.getStringExtra(Constants.DAY_CODE);
-        if (dayCode == null || dayCode.isEmpty())
-            return;
+        final Event event = (Event) intent.getSerializableExtra(Constants.EVENT);
+        if (event != null) {
+            mEvent = event;
+            setupEditEvent();
+        } else {
+            mEvent = new Event();
+            final String dayCode = intent.getStringExtra(Constants.DAY_CODE);
+            if (dayCode == null || dayCode.isEmpty())
+                return;
 
-        mEventStartDateTime = Formatter.getDateTimeFromCode(dayCode).withHourOfDay(13);
+            setupNewEvent(dayCode);
+        }
+
         updateStartDate();
         updateStartTime();
-
-        mEventEndDateTime = Formatter.getDateTimeFromCode(dayCode).withHourOfDay(14);
         updateEndDate();
         updateEndTime();
+    }
+
+    private void setupEditEvent() {
+        mEventStartDateTime = new DateTime(mEvent.getStartTS() * 1000L, DateTimeZone.getDefault());
+        mEventEndDateTime = new DateTime(mEvent.getEndTS() * 1000L, DateTimeZone.getDefault());
+        mTitleET.setText(mEvent.getTitle());
+        mDescriptionET.setText(mEvent.getDescription());
+    }
+
+    private void setupNewEvent(String dayCode) {
+        mEventStartDateTime = Formatter.getDateTimeFromCode(dayCode).withZone(DateTimeZone.getDefault()).withHourOfDay(13);
+        mEventEndDateTime = Formatter.getDateTimeFromCode(dayCode).withZone(DateTimeZone.getDefault()).withHourOfDay(14);
     }
 
     @Override
@@ -95,9 +115,17 @@ public class EventActivity extends AppCompatActivity implements DBHelper.DBOpera
             return;
         }
 
+        final DBHelper dbHelper = DBHelper.newInstance(getApplicationContext(), this);
         final String description = mDescriptionET.getText().toString().trim();
-        final Event event = new Event(0, startTS, endTS, title, description);
-        DBHelper.newInstance(getApplicationContext(), this).insert(event);
+        mEvent.setStartTS(startTS);
+        mEvent.setEndTS(endTS);
+        mEvent.setTitle(title);
+        mEvent.setDescription(description);
+        if (mEvent.getId() == 0) {
+            dbHelper.insert(mEvent);
+        } else {
+            dbHelper.update(mEvent);
+        }
     }
 
     private void updateStartDate() {
@@ -190,6 +218,12 @@ public class EventActivity extends AppCompatActivity implements DBHelper.DBOpera
     @Override
     public void eventInserted() {
         Utils.showToast(getApplicationContext(), R.string.event_added);
+        finish();
+    }
+
+    @Override
+    public void eventUpdated() {
+        Utils.showToast(getApplicationContext(), R.string.event_updated);
         finish();
     }
 
