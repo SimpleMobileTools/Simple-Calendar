@@ -9,12 +9,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.simplemobiletools.calendar.Constants;
+import com.simplemobiletools.calendar.DBHelper;
 import com.simplemobiletools.calendar.Formatter;
 import com.simplemobiletools.calendar.R;
+import com.simplemobiletools.calendar.Utils;
+import com.simplemobiletools.calendar.models.Event;
 
 import org.joda.time.DateTime;
 
@@ -22,11 +26,13 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class EventActivity extends AppCompatActivity {
+public class EventActivity extends AppCompatActivity implements DBHelper.DBOperationsListener {
     @BindView(R.id.event_start_date) TextView mStartDate;
     @BindView(R.id.event_start_time) TextView mStartTime;
     @BindView(R.id.event_end_date) TextView mEndDate;
     @BindView(R.id.event_end_time) TextView mEndTime;
+    @BindView(R.id.event_title) EditText mTitleET;
+    @BindView(R.id.event_description) EditText mDescriptionET;
 
     private DateTime mEventStartDateTime;
     private DateTime mEventEndDateTime;
@@ -72,7 +78,24 @@ public class EventActivity extends AppCompatActivity {
     }
 
     private void saveEvent() {
+        final String title = mTitleET.getText().toString().trim();
+        if (title.isEmpty()) {
+            Utils.showToast(getApplicationContext(), R.string.title_empty);
+            mTitleET.requestFocus();
+            return;
+        }
 
+        final int startTS = (int) (mEventStartDateTime.getMillis() / 1000);
+        final int endTS = (int) (mEventEndDateTime.getMillis() / 1000);
+
+        if (startTS > endTS) {
+            Utils.showToast(getApplicationContext(), R.string.end_before_start);
+            return;
+        }
+
+        final String description = mDescriptionET.getText().toString().trim();
+        final Event event = new Event(0, startTS, endTS, title, description);
+        DBHelper.newInstance(getApplicationContext(), this).insert(event);
     }
 
     private void updateStartDate() {
@@ -160,5 +183,11 @@ public class EventActivity extends AppCompatActivity {
             mEventEndDateTime = mEventEndDateTime.withHourOfDay(hours).withMinuteOfHour(minutes);
             updateEndTime();
         }
+    }
+
+    @Override
+    public void eventInserted() {
+        Utils.showToast(getApplicationContext(), R.string.event_added);
+        finish();
     }
 }

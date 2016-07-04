@@ -14,6 +14,7 @@ import java.util.List;
 public class DBHelper extends SQLiteOpenHelper {
     private static SQLiteDatabase mDb;
     private static String[] mProjection;
+    private static DBOperationsListener mCallback;
 
     private static final String DB_NAME = "events.db";
     private static final int DB_VERSION = 1;
@@ -25,7 +26,8 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String COL_TITLE = "title";
     private static final String COL_DESCRIPTION = "description";
 
-    public static DBHelper newInstance(Context context) {
+    public static DBHelper newInstance(Context context, DBOperationsListener callback) {
+        mCallback = callback;
         return new DBHelper(context);
     }
 
@@ -58,6 +60,7 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(COL_TITLE, event.getTitle());
         values.put(COL_DESCRIPTION, event.getDescription());
         mDb.insert(TABLE_NAME, null, values);
+        mCallback.eventInserted();
     }
 
     public List<Event> getEvents(int fromTS, int toTS) {
@@ -79,5 +82,9 @@ public class DBHelper extends SQLiteOpenHelper {
             cursor.close();
         }
         return events;
+    }
+
+    public interface DBOperationsListener {
+        void eventInserted();
     }
 }

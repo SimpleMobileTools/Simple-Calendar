@@ -17,7 +17,6 @@ import butterknife.OnClick;
 public class DetailsActivity extends AppCompatActivity {
     @BindView(R.id.details_date) TextView mDateTV;
 
-    private static final int ADD_EVENT = 1;
     private String dayCode;
 
     @Override
@@ -42,6 +41,6 @@ public class DetailsActivity extends AppCompatActivity {
     public void fabClicked(View view) {
         final Intent intent = new Intent(getApplicationContext(), EventActivity.class);
         intent.putExtra(Constants.DAY_CODE, dayCode);
-        startActivityForResult(intent, ADD_EVENT);
+        startActivity(intent);
     }
 }
