@@ -53,11 +53,11 @@ public class EventActivity extends AppCompatActivity implements DBHelper.DBOpera
         if (dayCode == null || dayCode.isEmpty())
             return;
 
-        mEventStartDateTime = Formatter.getDateTimeFromCode(dayCode);
+        mEventStartDateTime = Formatter.getDateTimeFromCode(dayCode).withHourOfDay(13);
         updateStartDate();
         updateStartTime();
 
-        mEventEndDateTime = Formatter.getDateTimeFromCode(dayCode);
+        mEventEndDateTime = Formatter.getDateTimeFromCode(dayCode).withHourOfDay(14);
         updateEndDate();
         updateEndTime();
     }
