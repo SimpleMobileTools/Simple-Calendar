@@ -6,8 +6,10 @@
 
     <!-- Details -->
     <string name="details">Details</string>
+    <string name="title">Title</string>
     <string name="start">Start</string>
     <string name="end">End</string>
+    <string name="description">Description</string>
 
     <!-- About -->
     <string name="about">About</string>
