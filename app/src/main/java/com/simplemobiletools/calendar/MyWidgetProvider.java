@@ -15,6 +15,9 @@ import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.LightingColorFilter;
 import android.graphics.Paint;
+import android.graphics.Typeface;
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
 import android.widget.RemoteViews;
 
 import com.simplemobiletools.calendar.activities.MainActivity;
@@ -135,7 +138,14 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
                 curTextSize = mTodayTextSize;
             }
 
-            mRemoteViews.setTextViewText(id, String.valueOf(day.getValue()));
+            final String text = String.valueOf(day.getValue());
+            if (day.getHasEvent()) {
+                final SpannableString boldText = new SpannableString(text);
+                boldText.setSpan(new StyleSpan(Typeface.BOLD), 0, text.length(), 0);
+                mRemoteViews.setTextViewText(id, boldText);
+            } else {
+                mRemoteViews.setTextViewText(id, text);
+            }
             mRemoteViews.setInt(id, "setTextColor", curTextColor);
             mRemoteViews.setFloat(id, "setTextSize", curTextSize);
         }
