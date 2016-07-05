@@ -60,7 +60,7 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
         mTodayTextSize = mRes.getDimension(R.dimen.today_text_size) / mRes.getDisplayMetrics().density;
         mWidgetManager = AppWidgetManager.getInstance(mContext);
 
-        mRemoteViews = new RemoteViews(mContext.getPackageName(), R.layout.activity_main);
+        mRemoteViews = new RemoteViews(mContext.getPackageName(), R.layout.calendar_layout);
         mIntent = new Intent(mContext, MyWidgetProvider.class);
         setupButtons();
         updateLabelColor();

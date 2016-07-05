@@ -6,13 +6,13 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements Calendar {
         mTodayTextSize /= mRes.getDisplayMetrics().density;
         setupLabels();
 
-        final FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) mCalendarHolder.getLayoutParams();
+        final CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) mCalendarHolder.getLayoutParams();
         params.setMargins(mActivityMargin, mActivityMargin, mActivityMargin, mActivityMargin);
 
         mCalendar = new CalendarImpl(this, getApplicationContext());
