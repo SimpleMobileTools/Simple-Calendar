@@ -26,6 +26,7 @@ public class AboutActivity extends AppCompatActivity {
     @BindView(R.id.about_version) TextView mVersion;
     @BindView(R.id.about_email) TextView mEmailTV;
     @BindView(R.id.about_rate_us) View mRateUs;
+
     private static Resources mRes;
 
     @Override

@@ -38,9 +38,9 @@ public class EventActivity extends AppCompatActivity implements DBHelper.DBOpera
     @BindView(R.id.event_title) EditText mTitleET;
     @BindView(R.id.event_description) EditText mDescriptionET;
 
-    private DateTime mEventStartDateTime;
-    private DateTime mEventEndDateTime;
-    private Event mEvent;
+    private static DateTime mEventStartDateTime;
+    private static DateTime mEventEndDateTime;
+    private static Event mEvent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,7 +113,10 @@ public class EventActivity extends AppCompatActivity implements DBHelper.DBOpera
     }
 
     private void deleteEvent() {
-        DBHelper.newInstance(getApplicationContext(), this).deleteEvent(mEvent.getId());
+        final Intent intent = new Intent();
+        intent.putExtra(DayActivity.DELETED_ID, mEvent.getId());
+        setResult(RESULT_OK, intent);
+        finish();
     }
 
     private void saveEvent() {
@@ -246,7 +249,7 @@ public class EventActivity extends AppCompatActivity implements DBHelper.DBOpera
 
     @Override
     public void eventsDeleted(int cnt) {
-        finish();
+
     }
 
     @Override

@@ -38,6 +38,9 @@ public class DayActivity extends AppCompatActivity
     @BindView(R.id.day_events) ListView mEventsList;
     @BindView(R.id.day_coordinator) CoordinatorLayout mCoordinatorLayout;
 
+    private static final int EDIT_EVENT = 1;
+    public static final String DELETED_ID = "deleted_id";
+
     private static String mDayCode;
     private static List<Event> mEvents;
     private static int mSelectedItemsCnt;
@@ -85,7 +88,7 @@ public class DayActivity extends AppCompatActivity
     private void editEvent(Event event) {
         final Intent intent = new Intent(getApplicationContext(), EventActivity.class);
         intent.putExtra(Constants.EVENT, event);
-        startActivity(intent);
+        startActivityForResult(intent, EDIT_EVENT);
     }
 
     private void checkEvents() {
@@ -96,17 +99,33 @@ public class DayActivity extends AppCompatActivity
 
     private void updateEvents(List<Event> events) {
         mEvents = new ArrayList<>(events);
+        final List<Event> eventsToShow = getEventsToShow(events);
+        final EventsAdapter adapter = new EventsAdapter(this, eventsToShow);
+        mEventsList.setAdapter(adapter);
+        mEventsList.setOnItemClickListener(this);
+        mEventsList.setMultiChoiceModeListener(this);
+    }
+
+    private List<Event> getEventsToShow(List<Event> events) {
         final int cnt = events.size();
         for (int i = cnt - 1; i >= 0; i--) {
             if (mToBeDeleted.contains(events.get(i).getId())) {
                 events.remove(i);
             }
         }
+        return events;
+    }
 
-        final EventsAdapter adapter = new EventsAdapter(this, events);
-        mEventsList.setAdapter(adapter);
-        mEventsList.setOnItemClickListener(this);
-        mEventsList.setMultiChoiceModeListener(this);
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == EDIT_EVENT && resultCode == RESULT_OK && data != null) {
+            final int deletedId = data.getIntExtra(DELETED_ID, -1);
+            if (deletedId != -1) {
+                mToBeDeleted.clear();
+                mToBeDeleted.add(deletedId);
+                notifyEventDeletion(1);
+            }
+        }
     }
 
     @Override
@@ -166,7 +185,7 @@ public class DayActivity extends AppCompatActivity
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        editEvent(mEvents.get(position));
+        editEvent(getEventsToShow(mEvents).get(position));
     }
 
     @Override
