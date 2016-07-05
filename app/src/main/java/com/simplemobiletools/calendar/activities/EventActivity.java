@@ -245,7 +245,7 @@ public class EventActivity extends AppCompatActivity implements DBHelper.DBOpera
     }
 
     @Override
-    public void eventsDeleted() {
+    public void eventsDeleted(int cnt) {
         finish();
     }
 

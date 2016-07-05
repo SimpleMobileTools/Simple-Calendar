@@ -78,13 +78,13 @@ public class DBHelper extends SQLiteOpenHelper {
         final String selection = COL_ID + " = ?";
         final String[] selectionArgs = {String.valueOf(id)};
         mDb.delete(TABLE_NAME, selection, selectionArgs);
-        mCallback.eventsDeleted();
+        mCallback.eventsDeleted(1);
     }
 
     public void deleteEvents(String[] ids) {
         final String selection = COL_ID + " IN (?)";
         mDb.delete(TABLE_NAME, selection, ids);
-        mCallback.eventsDeleted();
+        mCallback.eventsDeleted(ids.length);
     }
 
     public void getEvents(int fromTS, int toTS) {
@@ -114,7 +114,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         void eventUpdated();
 
-        void eventsDeleted();
+        void eventsDeleted(int cnt);
 
         void gotEvents(List<Event> events);
     }

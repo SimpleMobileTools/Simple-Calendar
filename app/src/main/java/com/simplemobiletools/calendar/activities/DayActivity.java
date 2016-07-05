@@ -1,7 +1,11 @@
 package com.simplemobiletools.calendar.activities;
 
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.SparseBooleanArray;
 import android.view.ActionMode;
@@ -32,10 +36,13 @@ public class DayActivity extends AppCompatActivity
         implements DBHelper.DBOperationsListener, AdapterView.OnItemClickListener, AbsListView.MultiChoiceModeListener {
     @BindView(R.id.day_date) TextView mDateTV;
     @BindView(R.id.day_events) ListView mEventsList;
+    @BindView(R.id.day_coordinator) CoordinatorLayout mCoordinatorLayout;
 
     private static String mDayCode;
     private static List<Event> mEvents;
     private static int mSelectedItemsCnt;
+    private static Snackbar mSnackbar;
+    private static List<Integer> mToBeDeleted;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,12 +60,19 @@ public class DayActivity extends AppCompatActivity
 
         final String date = Formatter.getEventDate(mDayCode);
         mDateTV.setText(date);
+        mToBeDeleted = new ArrayList<>();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         checkEvents();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        checkDeleteEvents();
     }
 
     @OnClick(R.id.day_fab)
@@ -81,11 +95,18 @@ public class DayActivity extends AppCompatActivity
     }
 
     private void updateEvents(List<Event> events) {
+        mEvents = new ArrayList<>(events);
+        final int cnt = events.size();
+        for (int i = cnt - 1; i >= 0; i--) {
+            if (mToBeDeleted.contains(events.get(i).getId())) {
+                events.remove(i);
+            }
+        }
+
         final EventsAdapter adapter = new EventsAdapter(this, events);
         mEventsList.setAdapter(adapter);
         mEventsList.setOnItemClickListener(this);
         mEventsList.setMultiChoiceModeListener(this);
-        mEvents = events;
     }
 
     @Override
@@ -99,8 +120,43 @@ public class DayActivity extends AppCompatActivity
     }
 
     @Override
-    public void eventsDeleted() {
+    public void eventsDeleted(int cnt) {
         checkEvents();
+    }
+
+    private void checkDeleteEvents() {
+        if (mSnackbar != null && mSnackbar.isShown()) {
+            deleteEvents();
+        } else {
+            undoDeletion();
+        }
+    }
+
+    private void deleteEvents() {
+        mSnackbar.dismiss();
+
+        final int cnt = mToBeDeleted.size();
+        final String[] eventIDs = new String[cnt];
+        for (int i = 0; i < cnt; i++) {
+            eventIDs[i] = String.valueOf(mToBeDeleted.get(i));
+        }
+
+        DBHelper.newInstance(getApplicationContext(), this).deleteEvents(eventIDs);
+    }
+
+    private View.OnClickListener undoDeletion = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            undoDeletion();
+        }
+    };
+
+    private void undoDeletion() {
+        if (mSnackbar != null) {
+            mToBeDeleted.clear();
+            mSnackbar.dismiss();
+            updateEvents(mEvents);
+        }
     }
 
     @Override
@@ -127,6 +183,7 @@ public class DayActivity extends AppCompatActivity
 
     @Override
     public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+        checkDeleteEvents();
         final MenuInflater inflater = mode.getMenuInflater();
         inflater.inflate(R.menu.menu_day_cab, menu);
         return true;
@@ -141,7 +198,7 @@ public class DayActivity extends AppCompatActivity
     public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
         switch (item.getItemId()) {
             case R.id.delete:
-                deleteEvents();
+                prepareDeleteEvents();
                 mode.finish();
                 return true;
             default:
@@ -149,16 +206,26 @@ public class DayActivity extends AppCompatActivity
         }
     }
 
-    private void deleteEvents() {
-        final List<String> eventIDs = new ArrayList<>();
+    private void prepareDeleteEvents() {
         final SparseBooleanArray checked = mEventsList.getCheckedItemPositions();
         for (int i = 0; i < mEvents.size(); i++) {
             if (checked.get(i)) {
                 final Event event = mEvents.get(i);
-                eventIDs.add(String.valueOf(event.getId()));
+                mToBeDeleted.add(event.getId());
             }
         }
-        DBHelper.newInstance(getApplicationContext(), this).deleteEvents(eventIDs.toArray(new String[eventIDs.size()]));
+
+        notifyEventDeletion(mToBeDeleted.size());
+    }
+
+    private void notifyEventDeletion(int cnt) {
+        final Resources res = getResources();
+        final String msg = res.getQuantityString(R.plurals.events_deleted, cnt, cnt);
+        mSnackbar = Snackbar.make(mCoordinatorLayout, msg, Snackbar.LENGTH_INDEFINITE);
+        mSnackbar.setAction(res.getString(R.string.undo), undoDeletion);
+        mSnackbar.setActionTextColor(Color.WHITE);
+        mSnackbar.show();
+        updateEvents(mEvents);
     }
 
     @Override
