@@ -21,11 +21,13 @@ import com.simplemobiletools.calendar.Calendar;
 import com.simplemobiletools.calendar.CalendarImpl;
 import com.simplemobiletools.calendar.Config;
 import com.simplemobiletools.calendar.Constants;
+import com.simplemobiletools.calendar.Formatter;
 import com.simplemobiletools.calendar.R;
 import com.simplemobiletools.calendar.Utils;
 import com.simplemobiletools.calendar.models.Day;
 
 import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 
 import java.util.List;
 import java.util.Locale;
@@ -108,6 +110,14 @@ public class MainActivity extends AppCompatActivity implements Calendar {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @OnClick(R.id.calendar_fab)
+    public void fabClicked(View view) {
+        final Intent intent = new Intent(getApplicationContext(), EventActivity.class);
+        final String tomorrowCode = Formatter.getDayCodeFromDateTime(new DateTime(DateTimeZone.getDefault()).plusDays(1));
+        intent.putExtra(Constants.DAY_CODE, tomorrowCode);
+        startActivity(intent);
     }
 
     private void updateDays(List<Day> days) {

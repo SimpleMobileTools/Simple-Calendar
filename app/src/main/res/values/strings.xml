@@ -4,6 +4,8 @@
 
     <!-- Event -->
     <string name="event">Event</string>
+    <string name="edit_event">Edit Event</string>
+    <string name="new_event">New Event</string>
     <string name="save">Save</string>
     <string name="delete">Delete</string>
     <string name="title_empty">Title cannot be empty</string>

@@ -72,6 +72,7 @@ public class EventActivity extends AppCompatActivity implements DBHelper.DBOpera
     }
 
     private void setupEditEvent() {
+        setTitle(getResources().getString(R.string.edit_event));
         mEventStartDateTime = new DateTime(mEvent.getStartTS() * 1000L, DateTimeZone.getDefault());
         mEventEndDateTime = new DateTime(mEvent.getEndTS() * 1000L, DateTimeZone.getDefault());
         mTitleET.setText(mEvent.getTitle());
@@ -80,6 +81,7 @@ public class EventActivity extends AppCompatActivity implements DBHelper.DBOpera
     }
 
     private void setupNewEvent(String dayCode) {
+        setTitle(getResources().getString(R.string.new_event));
         mEventStartDateTime = Formatter.getDateTimeFromCode(dayCode).withZone(DateTimeZone.getDefault()).withHourOfDay(13);
         mEventEndDateTime = Formatter.getDateTimeFromCode(dayCode).withZone(DateTimeZone.getDefault()).withHourOfDay(14);
     }

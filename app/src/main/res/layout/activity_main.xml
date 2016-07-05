@@ -7,4 +7,12 @@
 
     <include layout="@layout/calendar_layout"/>
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/calendar_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/activity_margin"
+        android:src="@mipmap/plus"/>
+
 </android.support.design.widget.CoordinatorLayout>

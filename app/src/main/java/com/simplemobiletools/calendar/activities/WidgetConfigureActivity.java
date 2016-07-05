@@ -42,6 +42,7 @@ public class WidgetConfigureActivity extends AppCompatActivity implements Calend
     @BindView(R.id.config_text_color) View mTextColorPicker;
     @BindView(R.id.config_calendar) View mWidgetBackground;
     @BindView(R.id.config_save) Button mSaveBtn;
+    @BindView(R.id.calendar_fab) View mFab;
 
     @BindDimen(R.dimen.day_text_size) float mDayTextSize;
     @BindDimen(R.dimen.today_text_size) float mTodayTextSize;
@@ -101,6 +102,8 @@ public class WidgetConfigureActivity extends AppCompatActivity implements Calend
 
         mCalendar = new CalendarImpl(this, getApplicationContext());
         mCalendar.updateCalendar(new DateTime());
+
+        mFab.setVisibility(View.GONE);
     }
 
     private SharedPreferences initPrefs(Context context) {
