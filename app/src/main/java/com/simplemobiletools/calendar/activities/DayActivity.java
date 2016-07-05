@@ -28,6 +28,8 @@ import com.simplemobiletools.calendar.R;
 import com.simplemobiletools.calendar.Utils;
 import com.simplemobiletools.calendar.models.Event;
 
+import org.joda.time.DateTime;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -96,12 +98,24 @@ public class DayActivity extends AppCompatActivity
 
     @OnClick(R.id.top_left_arrow)
     public void leftArrowClicked() {
-
+        final DateTime dateTime = Formatter.getDateTimeFromCode(mDayCode);
+        final String yesterdayCode = Formatter.getDayCodeFromDateTime(dateTime.minusDays(1));
+        switchToDay(yesterdayCode);
     }
 
     @OnClick(R.id.top_right_arrow)
     public void rightArrowClicked() {
+        final DateTime dateTime = Formatter.getDateTimeFromCode(mDayCode);
+        final String tomorrowCode = Formatter.getDayCodeFromDateTime(dateTime.plusDays(1));
+        switchToDay(tomorrowCode);
+    }
 
+    private void switchToDay(String dayCode) {
+        final Intent intent = new Intent(getApplicationContext(), DayActivity.class);
+        intent.putExtra(Constants.DAY_CODE, dayCode);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        overridePendingTransition(0, 0);
     }
 
     private void editEvent(Event event) {
