@@ -1,5 +1,6 @@
 package com.simplemobiletools.calendar.activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -7,6 +8,7 @@ import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.SparseBooleanArray;
 import android.view.ActionMode;
@@ -16,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
+import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -108,6 +111,30 @@ public class DayActivity extends AppCompatActivity
         final DateTime dateTime = Formatter.getDateTimeFromCode(mDayCode);
         final String tomorrowCode = Formatter.getDayCodeFromDateTime(dateTime.plusDays(1));
         switchToDay(tomorrowCode);
+    }
+
+    @OnClick(R.id.top_text)
+    public void pickDay() {
+        final AlertDialog.Builder alertDialog = new AlertDialog.Builder(this, R.style.MyAlertDialog);
+        final View view = getLayoutInflater().inflate(R.layout.date_picker, null);
+        final DatePicker datePicker = (DatePicker) view.findViewById(R.id.date_picker);
+
+        final DateTime dateTime = Formatter.getDateTimeFromCode(mDayCode);
+        datePicker.init(dateTime.getYear(), dateTime.getMonthOfYear() - 1, dateTime.getDayOfMonth(), null);
+
+        alertDialog.setView(view);
+        alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                final int month = datePicker.getMonth() + 1;
+                final int year = datePicker.getYear();
+                final int day = datePicker.getDayOfMonth();
+                final DateTime newDateTime = dateTime.withDayOfMonth(day).withMonthOfYear(month).withYear(year);
+                String newDayCode = Formatter.getDayCodeFromDateTime(newDateTime);
+                switchToDay(newDayCode);
+            }
+        });
+
+        alertDialog.show();
     }
 
     private void switchToDay(String dayCode) {
