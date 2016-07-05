@@ -20,6 +20,7 @@ import android.text.SpannableString;
 import android.text.style.StyleSpan;
 import android.widget.RemoteViews;
 
+import com.simplemobiletools.calendar.activities.DayActivity;
 import com.simplemobiletools.calendar.activities.MainActivity;
 import com.simplemobiletools.calendar.models.Day;
 
@@ -93,6 +94,13 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
         mRemoteViews.setOnClickPendingIntent(id, pendingIntent);
     }
 
+    private void setupDayOpenIntent(int id, final String dayCode) {
+        final Intent intent = new Intent(mContext, DayActivity.class);
+        intent.putExtra(Constants.DAY_CODE, dayCode);
+        final PendingIntent pendingIntent = PendingIntent.getActivity(mContext, Integer.parseInt(dayCode), intent, 0);
+        mRemoteViews.setOnClickPendingIntent(id, pendingIntent);
+    }
+
     private void setupButtons() {
         setupIntent(PREV, R.id.top_left_arrow);
         setupIntent(NEXT, R.id.top_right_arrow);
@@ -148,6 +156,7 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
             }
             mRemoteViews.setInt(id, "setTextColor", curTextColor);
             mRemoteViews.setFloat(id, "setTextSize", curTextSize);
+            setupDayOpenIntent(id, day.getCode());
         }
     }
 
