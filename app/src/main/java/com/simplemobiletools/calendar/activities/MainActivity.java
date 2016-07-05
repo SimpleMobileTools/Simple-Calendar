@@ -38,9 +38,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity implements Calendar {
-    @BindView(R.id.left_arrow) ImageView mLeftArrow;
-    @BindView(R.id.right_arrow) ImageView mRightArrow;
-    @BindView(R.id.table_month) TextView mMonthTV;
+    @BindView(R.id.top_left_arrow) ImageView mLeftArrow;
+    @BindView(R.id.top_right_arrow) ImageView mRightArrow;
+    @BindView(R.id.top_text) TextView mMonthTV;
     @BindView(R.id.calendar_holder) View mCalendarHolder;
 
     @BindDimen(R.dimen.day_text_size) float mDayTextSize;
@@ -162,17 +162,17 @@ public class MainActivity extends AppCompatActivity implements Calendar {
         startActivity(intent);
     }
 
-    @OnClick(R.id.left_arrow)
+    @OnClick(R.id.top_left_arrow)
     public void leftArrowClicked() {
         mCalendar.getPrevMonth();
     }
 
-    @OnClick(R.id.right_arrow)
+    @OnClick(R.id.top_right_arrow)
     public void rightArrowClicked() {
         mCalendar.getNextMonth();
     }
 
-    @OnClick(R.id.table_month)
+    @OnClick(R.id.top_text)
     public void pickMonth() {
         final AlertDialog.Builder alertDialog = new AlertDialog.Builder(this, R.style.MyAlertDialog);
         final View view = getLayoutInflater().inflate(R.layout.date_picker, null);

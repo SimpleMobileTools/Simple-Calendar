@@ -3,6 +3,7 @@ package com.simplemobiletools.calendar.activities;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
@@ -15,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -23,6 +25,7 @@ import com.simplemobiletools.calendar.DBHelper;
 import com.simplemobiletools.calendar.EventsAdapter;
 import com.simplemobiletools.calendar.Formatter;
 import com.simplemobiletools.calendar.R;
+import com.simplemobiletools.calendar.Utils;
 import com.simplemobiletools.calendar.models.Event;
 
 import java.util.ArrayList;
@@ -34,9 +37,11 @@ import butterknife.OnClick;
 
 public class DayActivity extends AppCompatActivity
         implements DBHelper.DBOperationsListener, AdapterView.OnItemClickListener, AbsListView.MultiChoiceModeListener {
-    @BindView(R.id.day_date) TextView mDateTV;
+    @BindView(R.id.top_text) TextView mDateTV;
     @BindView(R.id.day_events) ListView mEventsList;
     @BindView(R.id.day_coordinator) CoordinatorLayout mCoordinatorLayout;
+    @BindView(R.id.top_left_arrow) ImageView mLeftArrow;
+    @BindView(R.id.top_right_arrow) ImageView mRightArrow;
 
     private static final int EDIT_EVENT = 1;
     public static final String DELETED_ID = "deleted_id";
@@ -64,6 +69,10 @@ public class DayActivity extends AppCompatActivity
         final String date = Formatter.getEventDate(mDayCode);
         mDateTV.setText(date);
         mToBeDeleted = new ArrayList<>();
+
+        final int textColor = Utils.adjustAlpha(Color.BLACK, Constants.HIGH_ALPHA);
+        mLeftArrow.getDrawable().mutate().setColorFilter(textColor, PorterDuff.Mode.SRC_ATOP);
+        mRightArrow.getDrawable().mutate().setColorFilter(textColor, PorterDuff.Mode.SRC_ATOP);
     }
 
     @Override
@@ -83,6 +92,16 @@ public class DayActivity extends AppCompatActivity
         final Intent intent = new Intent(getApplicationContext(), EventActivity.class);
         intent.putExtra(Constants.DAY_CODE, mDayCode);
         startActivity(intent);
+    }
+
+    @OnClick(R.id.top_left_arrow)
+    public void leftArrowClicked() {
+
+    }
+
+    @OnClick(R.id.top_right_arrow)
+    public void rightArrowClicked() {
+
     }
 
     private void editEvent(Event event) {

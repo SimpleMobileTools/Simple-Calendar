@@ -6,8 +6,6 @@
     android:layout_height="wrap_content"
     android:background="@drawable/event_item_background"
     android:paddingBottom="@dimen/event_padding"
-    android:paddingLeft="@dimen/activity_margin"
-    android:paddingRight="@dimen/activity_margin"
     android:paddingTop="@dimen/event_padding">
 
     <TextView

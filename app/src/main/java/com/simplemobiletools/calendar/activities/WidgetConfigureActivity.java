@@ -34,9 +34,9 @@ import butterknife.OnClick;
 import yuku.ambilwarna.AmbilWarnaDialog;
 
 public class WidgetConfigureActivity extends AppCompatActivity implements Calendar {
-    @BindView(R.id.left_arrow) ImageView mLeftArrow;
-    @BindView(R.id.right_arrow) ImageView mRightArrow;
-    @BindView(R.id.table_month) TextView mMonthTV;
+    @BindView(R.id.top_left_arrow) ImageView mLeftArrow;
+    @BindView(R.id.top_right_arrow) ImageView mRightArrow;
+    @BindView(R.id.top_text) TextView mMonthTV;
     @BindView(R.id.config_bg_color) View mBgColorPicker;
     @BindView(R.id.config_bg_seekbar) SeekBar mBgSeekBar;
     @BindView(R.id.config_text_color) View mTextColorPicker;
@@ -227,12 +227,12 @@ public class WidgetConfigureActivity extends AppCompatActivity implements Calend
         }
     };
 
-    @OnClick(R.id.left_arrow)
+    @OnClick(R.id.top_left_arrow)
     public void leftArrowClicked() {
         mCalendar.getPrevMonth();
     }
 
-    @OnClick(R.id.right_arrow)
+    @OnClick(R.id.top_right_arrow)
     public void rightArrowClicked() {
         mCalendar.getNextMonth();
     }

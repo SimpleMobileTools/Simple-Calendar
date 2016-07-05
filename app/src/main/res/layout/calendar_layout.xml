@@ -5,44 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/left_arrow"
-        style="@style/ArrowStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_alignBottom="@+id/table_month"
-        android:layout_alignTop="@+id/table_month"
-        android:padding="@dimen/activity_margin"
-        android:src="@mipmap/arrow_left"/>
-
-    <TextView
-        android:id="@+id/table_month"
-        style="@style/MonthStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_toLeftOf="@+id/right_arrow"
-        android:layout_toRightOf="@+id/left_arrow"
-        android:gravity="center_horizontal"
-        android:paddingBottom="@dimen/activity_margin"
-        android:paddingTop="@dimen/top_padding"
-        android:textSize="@dimen/month_text_size"/>
-
-    <ImageView
-        android:id="@+id/right_arrow"
-        style="@style/ArrowStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_alignBottom="@+id/table_month"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/table_month"
-        android:padding="@dimen/activity_margin"
-        android:src="@mipmap/arrow_right"/>
+    <include layout="@layout/top_navigation"/>
 
     <LinearLayout
         android:id="@+id/table_holder"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/table_month"
+        android:layout_below="@+id/top_text"
         android:gravity="center"
         android:orientation="vertical">
 

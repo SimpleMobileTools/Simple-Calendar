@@ -94,9 +94,9 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
     }
 
     private void setupButtons() {
-        setupIntent(PREV, R.id.left_arrow);
-        setupIntent(NEXT, R.id.right_arrow);
-        setupAppOpenIntent(R.id.table_month);
+        setupIntent(PREV, R.id.top_left_arrow);
+        setupIntent(NEXT, R.id.top_right_arrow);
+        setupAppOpenIntent(R.id.top_text);
     }
 
     private SharedPreferences initPrefs(Context context) {
@@ -152,17 +152,17 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
     }
 
     private void updateTopViews() {
-        mRemoteViews.setInt(R.id.table_month, "setTextColor", mTextColor);
+        mRemoteViews.setInt(R.id.top_text, "setTextColor", mTextColor);
 
         Bitmap bmp = getColoredIcon(mContext, mTextColor, R.mipmap.arrow_left);
-        mRemoteViews.setImageViewBitmap(R.id.left_arrow, bmp);
+        mRemoteViews.setImageViewBitmap(R.id.top_left_arrow, bmp);
 
         bmp = getColoredIcon(mContext, mTextColor, R.mipmap.arrow_right);
-        mRemoteViews.setImageViewBitmap(R.id.right_arrow, bmp);
+        mRemoteViews.setImageViewBitmap(R.id.top_right_arrow, bmp);
     }
 
     public void updateMonth(String month) {
-        mRemoteViews.setTextViewText(R.id.table_month, month);
+        mRemoteViews.setTextViewText(R.id.top_text, month);
     }
 
     @Override
