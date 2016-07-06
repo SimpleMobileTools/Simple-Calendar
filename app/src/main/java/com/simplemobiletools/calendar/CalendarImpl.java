@@ -107,12 +107,12 @@ public class CalendarImpl implements DBHelper.DBOperationsListener {
     }
 
     @Override
-    public void eventInserted() {
+    public void eventInserted(Event event) {
 
     }
 
     @Override
-    public void eventUpdated() {
+    public void eventUpdated(Event event) {
 
     }
 

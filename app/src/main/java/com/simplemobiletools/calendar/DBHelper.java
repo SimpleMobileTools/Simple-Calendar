@@ -16,7 +16,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static DBOperationsListener mCallback;
 
     private static final String DB_NAME = "events.db";
-    private static final int DB_VERSION = 1;
+    private static final int DB_VERSION = 2;
 
     private static final String TABLE_NAME = "events";
     private static final String COL_ID = "id";
@@ -24,6 +24,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String COL_END_TS = "end_ts";
     private static final String COL_TITLE = "title";
     private static final String COL_DESCRIPTION = "description";
+    private static final String COL_REMINDER_MINUTES = "reminder_minutes";
 
     public static DBHelper newInstance(Context context, DBOperationsListener callback) {
         mCallback = callback;
@@ -42,19 +43,25 @@ public class DBHelper extends SQLiteOpenHelper {
                 COL_START_TS + " INTEGER," +
                 COL_END_TS + " INTEGER," +
                 COL_TITLE + " TEXT," +
-                COL_DESCRIPTION + " TEXT" +
+                COL_DESCRIPTION + " TEXT," +
+                COL_REMINDER_MINUTES + " INTEGER" +
                 ")");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        if (oldVersion == 1) {
+            db.execSQL("ALTER TABLE " + TABLE_NAME + " ADD COLUMN " + COL_REMINDER_MINUTES + " INTEGER DEFAULT -1");
+        }
     }
 
     public void insert(Event event) {
         final ContentValues values = fillContentValues(event);
-        mDb.insert(TABLE_NAME, null, values);
-        mCallback.eventInserted();
+        long id = mDb.insert(TABLE_NAME, null, values);
+        event.setId((int) id);
+
+        if (mCallback != null)
+            mCallback.eventInserted(event);
     }
 
     public void update(Event event) {
@@ -62,7 +69,9 @@ public class DBHelper extends SQLiteOpenHelper {
         final String selection = COL_ID + " = ?";
         final String[] selectionArgs = {String.valueOf(event.getId())};
         mDb.update(TABLE_NAME, values, selection, selectionArgs);
-        mCallback.eventUpdated();
+
+        if (mCallback != null)
+            mCallback.eventUpdated(event);
     }
 
     private ContentValues fillContentValues(Event event) {
@@ -71,24 +80,20 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(COL_END_TS, event.getEndTS());
         values.put(COL_TITLE, event.getTitle());
         values.put(COL_DESCRIPTION, event.getDescription());
+        values.put(COL_REMINDER_MINUTES, event.getReminderMinutes());
         return values;
-    }
-
-    public void deleteEvent(int id) {
-        final String selection = COL_ID + " = ?";
-        final String[] selectionArgs = {String.valueOf(id)};
-        mDb.delete(TABLE_NAME, selection, selectionArgs);
-        mCallback.eventsDeleted(1);
     }
 
     public void deleteEvents(String[] ids) {
         final String selection = COL_ID + " IN (?)";
         mDb.delete(TABLE_NAME, selection, ids);
-        mCallback.eventsDeleted(ids.length);
+
+        if (mCallback != null)
+            mCallback.eventsDeleted(ids.length);
     }
 
     public void getEvents(int fromTS, int toTS) {
-        final String[] projection = {COL_ID, COL_START_TS, COL_END_TS, COL_TITLE, COL_DESCRIPTION};
+        final String[] projection = {COL_ID, COL_START_TS, COL_END_TS, COL_TITLE, COL_DESCRIPTION, COL_REMINDER_MINUTES};
         List<Event> events = new ArrayList<>();
         final String selection = COL_START_TS + " <= ? AND " + COL_END_TS + " >= ?";
         final String[] selectionArgs = {String.valueOf(toTS), String.valueOf(fromTS)};
@@ -101,18 +106,40 @@ public class DBHelper extends SQLiteOpenHelper {
                     final int endTS = cursor.getInt(cursor.getColumnIndex(COL_END_TS));
                     final String title = cursor.getString(cursor.getColumnIndex(COL_TITLE));
                     final String description = cursor.getString(cursor.getColumnIndex(COL_DESCRIPTION));
-                    events.add(new Event(id, startTS, endTS, title, description));
+                    final int reminderMinutes = cursor.getInt(cursor.getColumnIndex(COL_REMINDER_MINUTES));
+                    events.add(new Event(id, startTS, endTS, title, description, reminderMinutes));
                 } while (cursor.moveToNext());
             }
             cursor.close();
         }
-        mCallback.gotEvents(events);
+
+        if (mCallback != null)
+            mCallback.gotEvents(events);
+    }
+
+    public Event getEvent(int id) {
+        final String[] projection = {COL_START_TS, COL_END_TS, COL_TITLE, COL_DESCRIPTION, COL_REMINDER_MINUTES};
+        final String selection = COL_ID + " = ?";
+        final String[] selectionArgs = {String.valueOf(id)};
+        final Cursor cursor = mDb.query(TABLE_NAME, projection, selection, selectionArgs, null, null, null);
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                final int startTS = cursor.getInt(cursor.getColumnIndex(COL_START_TS));
+                final int endTS = cursor.getInt(cursor.getColumnIndex(COL_END_TS));
+                final String title = cursor.getString(cursor.getColumnIndex(COL_TITLE));
+                final String description = cursor.getString(cursor.getColumnIndex(COL_DESCRIPTION));
+                final int reminderMinutes = cursor.getInt(cursor.getColumnIndex(COL_REMINDER_MINUTES));
+                cursor.close();
+                return new Event(id, startTS, endTS, title, description, reminderMinutes);
+            }
+        }
+        return null;
     }
 
     public interface DBOperationsListener {
-        void eventInserted();
+        void eventInserted(Event event);
 
-        void eventUpdated();
+        void eventUpdated(Event event);
 
         void eventsDeleted(int cnt);
 

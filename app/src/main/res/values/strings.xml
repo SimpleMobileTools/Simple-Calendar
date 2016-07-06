@@ -15,8 +15,7 @@
     <string name="reminder">Reminder</string>
     <string name="off">Off</string>
     <string name="at_start">At start</string>
-    <string name="ten_mins">10 mins before</string>
-    <string name="thirty_mins">30 mins before</string>
+    <string name="minutes_before">Minutes before</string>
 
     <!-- Day details -->
     <string name="details">Details</string>

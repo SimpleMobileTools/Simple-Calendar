@@ -213,8 +213,10 @@ public class MainActivity extends AppCompatActivity implements Calendar {
     private void setupLabels() {
         for (int i = 0; i < 7; i++) {
             final TextView dayTV = (TextView) findViewById(mRes.getIdentifier("label_" + i, "id", mPackageName));
-            dayTV.setTextSize(mDayTextSize);
-            dayTV.setTextColor(mWeakTextColor);
+            if (dayTV != null) {
+                dayTV.setTextSize(mDayTextSize);
+                dayTV.setTextColor(mWeakTextColor);
+            }
         }
     }
 }

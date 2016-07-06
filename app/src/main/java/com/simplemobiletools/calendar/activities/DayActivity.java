@@ -189,12 +189,12 @@ public class DayActivity extends AppCompatActivity
     }
 
     @Override
-    public void eventInserted() {
+    public void eventInserted(Event event) {
 
     }
 
     @Override
-    public void eventUpdated() {
+    public void eventUpdated(Event event) {
 
     }
 

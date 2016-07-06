@@ -50,6 +50,8 @@
         <item name="android:textSize">20sp</item>
     </style>
 
+    <style name="EditTextStyle" parent="@android:style/Widget.TextView"/>
+
     <style name="SpinnerItem" parent="@android:style/Widget.TextView">
         <item name="android:paddingRight">@dimen/activity_margin</item>
     </style>

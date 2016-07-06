@@ -3,7 +3,6 @@
     <string-array name="reminders">
         <item>@string/off</item>
         <item>@string/at_start</item>
-        <item>@string/ten_mins</item>
-        <item>@string/thirty_mins</item>
+        <item>@string/minutes_before</item>
     </string-array>
 </resources>

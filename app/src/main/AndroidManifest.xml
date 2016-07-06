@@ -60,6 +60,8 @@
                 android:resource="@xml/widget_info"/>
         </receiver>
 
+        <receiver android:name=".NotificationPublisher"/>
+
     </application>
 
 </manifest>

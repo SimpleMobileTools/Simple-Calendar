@@ -1,15 +1,20 @@
 package com.simplemobiletools.calendar.activities;
 
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatSpinner;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -18,6 +23,7 @@ import android.widget.TimePicker;
 import com.simplemobiletools.calendar.Constants;
 import com.simplemobiletools.calendar.DBHelper;
 import com.simplemobiletools.calendar.Formatter;
+import com.simplemobiletools.calendar.NotificationPublisher;
 import com.simplemobiletools.calendar.R;
 import com.simplemobiletools.calendar.Utils;
 import com.simplemobiletools.calendar.models.Event;
@@ -39,11 +45,13 @@ public class EventActivity extends AppCompatActivity implements DBHelper.DBOpera
     @BindView(R.id.event_end_time) TextView mEndTime;
     @BindView(R.id.event_title) EditText mTitleET;
     @BindView(R.id.event_description) EditText mDescriptionET;
+    @BindView(R.id.event_reminder_other) EditText mReminderOtherET;
     @BindView(R.id.event_reminder) AppCompatSpinner mReminder;
 
     private static DateTime mEventStartDateTime;
     private static DateTime mEventEndDateTime;
     private static Event mEvent;
+    private static boolean mWasReminderInit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +63,7 @@ public class EventActivity extends AppCompatActivity implements DBHelper.DBOpera
         if (intent == null)
             return;
 
+        mWasReminderInit = false;
         final Event event = (Event) intent.getSerializableExtra(Constants.EVENT);
         if (event != null) {
             mEvent = event;
@@ -72,6 +81,7 @@ public class EventActivity extends AppCompatActivity implements DBHelper.DBOpera
         updateStartTime();
         updateEndDate();
         updateEndTime();
+        setupReminder();
     }
 
     private void setupEditEvent() {
@@ -93,9 +103,42 @@ public class EventActivity extends AppCompatActivity implements DBHelper.DBOpera
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     }
 
+    private void showKeyboard(EditText et) {
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(et, InputMethodManager.SHOW_IMPLICIT);
+    }
+
+    private void setupReminder() {
+        switch (mEvent.getReminderMinutes()) {
+            case -1:
+                mReminder.setSelection(0);
+                break;
+            case 0:
+                mReminder.setSelection(1);
+                break;
+            default:
+                mReminder.setSelection(2);
+                mReminderOtherET.setVisibility(View.VISIBLE);
+                mReminderOtherET.setText(String.valueOf(mEvent.getReminderMinutes()));
+                break;
+        }
+    }
+
     @OnItemSelected(R.id.event_reminder)
     public void handleReminder() {
+        if (!mWasReminderInit) {
+            mWasReminderInit = true;
+            return;
+        }
 
+        if (mReminder.getSelectedItemPosition() == mReminder.getCount() - 1) {
+            mReminderOtherET.setVisibility(View.VISIBLE);
+            mReminderOtherET.requestFocus();
+            showKeyboard(mReminderOtherET);
+        } else {
+            mReminderOtherET.setVisibility(View.GONE);
+            hideKeyboard();
+        }
     }
 
     @Override
@@ -147,14 +190,31 @@ public class EventActivity extends AppCompatActivity implements DBHelper.DBOpera
 
         final DBHelper dbHelper = DBHelper.newInstance(getApplicationContext(), this);
         final String description = mDescriptionET.getText().toString().trim();
+        final int reminderMinutes = getReminderMinutes();
         mEvent.setStartTS(startTS);
         mEvent.setEndTS(endTS);
         mEvent.setTitle(title);
         mEvent.setDescription(description);
+        mEvent.setReminderMinutes(reminderMinutes);
         if (mEvent.getId() == 0) {
             dbHelper.insert(mEvent);
         } else {
             dbHelper.update(mEvent);
+        }
+    }
+
+    private int getReminderMinutes() {
+        switch (mReminder.getSelectedItemPosition()) {
+            case 0:
+                return -1;
+            case 1:
+                return 0;
+            default:
+                final String value = mReminderOtherET.getText().toString().trim();
+                if (value.isEmpty())
+                    return 0;
+
+                return Integer.valueOf(value);
         }
     }
 
@@ -245,14 +305,34 @@ public class EventActivity extends AppCompatActivity implements DBHelper.DBOpera
         }
     }
 
+    private void handleNotification(Event event) {
+        if (event.getReminderMinutes() == -1) {
+            return;
+        }
+
+        final long delayFromNow = (long) event.getStartTS() * 1000 - event.getReminderMinutes() * 60000 - System.currentTimeMillis();
+        if (delayFromNow < 0) {
+            return;
+        }
+
+        final long notifInMs = SystemClock.elapsedRealtime() + delayFromNow;
+        final Intent intent = new Intent(this, NotificationPublisher.class);
+        intent.putExtra(NotificationPublisher.EVENT_ID, event.getId());
+        final PendingIntent pendingIntent = PendingIntent.getBroadcast(this, event.getId(), intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        final AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, notifInMs, pendingIntent);
+    }
+
     @Override
-    public void eventInserted() {
+    public void eventInserted(Event event) {
+        handleNotification(event);
         Utils.showToast(getApplicationContext(), R.string.event_added);
         finish();
     }
 
     @Override
-    public void eventUpdated() {
+    public void eventUpdated(Event event) {
+        handleNotification(event);
         Utils.showToast(getApplicationContext(), R.string.event_updated);
         finish();
     }

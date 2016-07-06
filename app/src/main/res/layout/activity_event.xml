@@ -121,5 +121,17 @@
             android:entries="@array/reminders"
             android:padding="@dimen/activity_margin"/>
 
+        <EditText
+            android:id="@+id/event_reminder_other"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/event_reminder_label"
+            android:layout_toRightOf="@+id/event_reminder"
+            android:digits="0123456789"
+            android:inputType="number"
+            android:minEms="5"
+            android:textSize="@dimen/day_text_size"
+            android:visibility="invisible"/>
+
     </RelativeLayout>
 </ScrollView>
