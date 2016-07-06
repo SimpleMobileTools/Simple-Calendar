@@ -30,10 +30,29 @@
             android:textSize="@dimen/day_text_size"/>
 
         <TextView
-            android:id="@+id/event_start_label"
+            android:id="@+id/event_description_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_title"
+            android:layout_marginTop="@dimen/activity_margin"
+            android:text="@string/description"
+            android:textSize="@dimen/day_text_size"/>
+
+        <EditText
+            android:id="@+id/event_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/event_description_label"
+            android:gravity="top"
+            android:inputType="textCapSentences|textMultiLine"
+            android:minEms="20"
+            android:textSize="@dimen/day_text_size"/>
+
+        <TextView
+            android:id="@+id/event_start_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/event_description"
             android:layout_marginTop="@dimen/activity_margin"
             android:text="@string/start"
             android:textSize="@dimen/day_text_size"/>
@@ -86,23 +105,21 @@
             android:textSize="@dimen/day_text_size"/>
 
         <TextView
-            android:id="@+id/event_description_label"
+            android:id="@+id/event_reminder_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_end_time"
             android:layout_marginTop="@dimen/activity_margin"
-            android:text="@string/description"
+            android:text="@string/reminder"
             android:textSize="@dimen/day_text_size"/>
 
-        <EditText
-            android:id="@+id/event_description"
+        <android.support.v7.widget.AppCompatSpinner
+            android:id="@+id/event_reminder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/event_description_label"
-            android:gravity="top"
-            android:inputType="textCapSentences|textMultiLine"
-            android:minEms="20"
-            android:textSize="@dimen/day_text_size"/>
+            android:layout_below="@+id/event_reminder_label"
+            android:entries="@array/reminders"
+            android:padding="@dimen/activity_margin"/>
 
     </RelativeLayout>
 </ScrollView>

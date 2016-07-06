@@ -5,6 +5,7 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatSpinner;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,6 +30,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnItemSelected;
 
 public class EventActivity extends AppCompatActivity implements DBHelper.DBOperationsListener {
     @BindView(R.id.event_start_date) TextView mStartDate;
@@ -37,6 +39,7 @@ public class EventActivity extends AppCompatActivity implements DBHelper.DBOpera
     @BindView(R.id.event_end_time) TextView mEndTime;
     @BindView(R.id.event_title) EditText mTitleET;
     @BindView(R.id.event_description) EditText mDescriptionET;
+    @BindView(R.id.event_reminder) AppCompatSpinner mReminder;
 
     private static DateTime mEventStartDateTime;
     private static DateTime mEventEndDateTime;
@@ -88,6 +91,11 @@ public class EventActivity extends AppCompatActivity implements DBHelper.DBOpera
 
     private void hideKeyboard() {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+    }
+
+    @OnItemSelected(R.id.event_reminder)
+    public void handleReminder() {
+
     }
 
     @Override
