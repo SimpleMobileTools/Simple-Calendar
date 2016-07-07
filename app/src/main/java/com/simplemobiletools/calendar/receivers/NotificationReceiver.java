@@ -1,4 +1,4 @@
-package com.simplemobiletools.calendar;
+package com.simplemobiletools.calendar.receivers;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -9,10 +9,14 @@ import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
 
+import com.simplemobiletools.calendar.Constants;
+import com.simplemobiletools.calendar.DBHelper;
+import com.simplemobiletools.calendar.Formatter;
+import com.simplemobiletools.calendar.R;
 import com.simplemobiletools.calendar.activities.EventActivity;
 import com.simplemobiletools.calendar.models.Event;
 
-public class NotificationPublisher extends BroadcastReceiver {
+public class NotificationReceiver extends BroadcastReceiver {
     public static String EVENT_ID = "event_id";
 
     public void onReceive(Context context, Intent intent) {

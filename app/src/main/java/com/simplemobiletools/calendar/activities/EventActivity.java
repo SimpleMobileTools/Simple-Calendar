@@ -1,13 +1,10 @@
 package com.simplemobiletools.calendar.activities;
 
-import android.app.AlarmManager;
 import android.app.DatePickerDialog;
-import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatSpinner;
 import android.view.Menu;
@@ -23,7 +20,6 @@ import android.widget.TimePicker;
 import com.simplemobiletools.calendar.Constants;
 import com.simplemobiletools.calendar.DBHelper;
 import com.simplemobiletools.calendar.Formatter;
-import com.simplemobiletools.calendar.NotificationPublisher;
 import com.simplemobiletools.calendar.R;
 import com.simplemobiletools.calendar.Utils;
 import com.simplemobiletools.calendar.models.Event;
@@ -310,34 +306,16 @@ public class EventActivity extends AppCompatActivity implements DBHelper.DBOpera
         }
     }
 
-    private void handleNotification(Event event) {
-        if (event.getReminderMinutes() == -1) {
-            return;
-        }
-
-        final long delayFromNow = (long) event.getStartTS() * 1000 - event.getReminderMinutes() * 60000 - System.currentTimeMillis();
-        if (delayFromNow < 0) {
-            return;
-        }
-
-        final long notifInMs = SystemClock.elapsedRealtime() + delayFromNow;
-        final Intent intent = new Intent(this, NotificationPublisher.class);
-        intent.putExtra(NotificationPublisher.EVENT_ID, event.getId());
-        final PendingIntent pendingIntent = PendingIntent.getBroadcast(this, event.getId(), intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        final AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, notifInMs, pendingIntent);
-    }
-
     @Override
     public void eventInserted(Event event) {
-        handleNotification(event);
+        Utils.scheduleNotification(getApplicationContext(), event);
         Utils.showToast(getApplicationContext(), R.string.event_added);
         finish();
     }
 
     @Override
     public void eventUpdated(Event event) {
-        handleNotification(event);
+        Utils.scheduleNotification(getApplicationContext(), event);
         Utils.showToast(getApplicationContext(), R.string.event_updated);
         finish();
     }

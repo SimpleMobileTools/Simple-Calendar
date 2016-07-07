@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.simplemobiletools.calendar.models.Event;
 
+import org.joda.time.DateTime;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -92,31 +94,6 @@ public class DBHelper extends SQLiteOpenHelper {
             mCallback.eventsDeleted(ids.length);
     }
 
-    public void getEvents(int fromTS, int toTS) {
-        final String[] projection = {COL_ID, COL_START_TS, COL_END_TS, COL_TITLE, COL_DESCRIPTION, COL_REMINDER_MINUTES};
-        List<Event> events = new ArrayList<>();
-        final String selection = COL_START_TS + " <= ? AND " + COL_END_TS + " >= ?";
-        final String[] selectionArgs = {String.valueOf(toTS), String.valueOf(fromTS)};
-        final Cursor cursor = mDb.query(TABLE_NAME, projection, selection, selectionArgs, null, null, COL_START_TS);
-        if (cursor != null) {
-            if (cursor.moveToFirst()) {
-                do {
-                    final int id = cursor.getInt(cursor.getColumnIndex(COL_ID));
-                    final int startTS = cursor.getInt(cursor.getColumnIndex(COL_START_TS));
-                    final int endTS = cursor.getInt(cursor.getColumnIndex(COL_END_TS));
-                    final String title = cursor.getString(cursor.getColumnIndex(COL_TITLE));
-                    final String description = cursor.getString(cursor.getColumnIndex(COL_DESCRIPTION));
-                    final int reminderMinutes = cursor.getInt(cursor.getColumnIndex(COL_REMINDER_MINUTES));
-                    events.add(new Event(id, startTS, endTS, title, description, reminderMinutes));
-                } while (cursor.moveToNext());
-            }
-            cursor.close();
-        }
-
-        if (mCallback != null)
-            mCallback.gotEvents(events);
-    }
-
     public Event getEvent(int id) {
         final String[] projection = {COL_START_TS, COL_END_TS, COL_TITLE, COL_DESCRIPTION, COL_REMINDER_MINUTES};
         final String selection = COL_ID + " = ?";
@@ -134,6 +111,53 @@ public class DBHelper extends SQLiteOpenHelper {
             }
         }
         return null;
+    }
+
+    public void getEvents(int fromTS, int toTS) {
+        List<Event> events = new ArrayList<>();
+        final String[] projection = getAllColumns();
+        final String selection = COL_START_TS + " <= ? AND " + COL_END_TS + " >= ?";
+        final String[] selectionArgs = {String.valueOf(toTS), String.valueOf(fromTS)};
+        final Cursor cursor = mDb.query(TABLE_NAME, projection, selection, selectionArgs, null, null, COL_START_TS);
+        if (cursor != null) {
+            events = fillEvents(cursor);
+        }
+
+        if (mCallback != null)
+            mCallback.gotEvents(events);
+    }
+
+    public List<Event> getEventsAtReboot() {
+        List<Event> events = new ArrayList<>();
+        final String[] projection = getAllColumns();
+        final String selection = COL_START_TS + " > ? AND " + COL_REMINDER_MINUTES + " != ?";
+        final String[] selectionArgs = {String.valueOf(DateTime.now().getMillis() / 1000), "-1"};
+        final Cursor cursor = mDb.query(TABLE_NAME, projection, selection, selectionArgs, null, null, null);
+        if (cursor != null) {
+            events = fillEvents(cursor);
+        }
+        return events;
+    }
+
+    private String[] getAllColumns() {
+        return new String[]{COL_ID, COL_START_TS, COL_END_TS, COL_TITLE, COL_DESCRIPTION, COL_REMINDER_MINUTES};
+    }
+
+    private List<Event> fillEvents(Cursor cursor) {
+        final List<Event> events = new ArrayList<>();
+        if (cursor.moveToFirst()) {
+            do {
+                final int id = cursor.getInt(cursor.getColumnIndex(COL_ID));
+                final int startTS = cursor.getInt(cursor.getColumnIndex(COL_START_TS));
+                final int endTS = cursor.getInt(cursor.getColumnIndex(COL_END_TS));
+                final String title = cursor.getString(cursor.getColumnIndex(COL_TITLE));
+                final String description = cursor.getString(cursor.getColumnIndex(COL_DESCRIPTION));
+                final int reminderMinutes = cursor.getInt(cursor.getColumnIndex(COL_REMINDER_MINUTES));
+                events.add(new Event(id, startTS, endTS, title, description, reminderMinutes));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return events;
     }
 
     public interface DBOperationsListener {
