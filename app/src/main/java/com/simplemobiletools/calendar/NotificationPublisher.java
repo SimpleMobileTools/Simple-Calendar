@@ -6,6 +6,8 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.media.RingtoneManager;
+import android.net.Uri;
 
 import com.simplemobiletools.calendar.activities.EventActivity;
 import com.simplemobiletools.calendar.models.Event;
@@ -38,12 +40,14 @@ public class NotificationPublisher extends BroadcastReceiver {
     }
 
     private Notification getNotification(Context context, PendingIntent pendingIntent, String content) {
+        final Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         final Notification.Builder builder = new Notification.Builder(context);
         builder.setContentTitle(context.getResources().getString(R.string.app_name));
         builder.setContentText(content);
         builder.setSmallIcon(R.mipmap.calendar);
         builder.setContentIntent(pendingIntent);
         builder.setAutoCancel(true);
+        builder.setSound(soundUri);
         return builder.build();
     }
 }
