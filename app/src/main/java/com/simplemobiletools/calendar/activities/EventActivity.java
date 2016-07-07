@@ -188,6 +188,11 @@ public class EventActivity extends AppCompatActivity implements DBHelper.DBOpera
             return;
         }
 
+        if (DateTime.now().isAfter(mEventStartDateTime.getMillis())) {
+            Utils.showToast(getApplicationContext(), R.string.start_in_past);
+            return;
+        }
+
         final DBHelper dbHelper = DBHelper.newInstance(getApplicationContext(), this);
         final String description = mDescriptionET.getText().toString().trim();
         final int reminderMinutes = getReminderMinutes();
