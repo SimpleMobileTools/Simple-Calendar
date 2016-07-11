@@ -12,8 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activities.MainActivity"
-            android:screenOrientation="portrait">
+            android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -32,23 +31,19 @@
 
         <activity
             android:name=".activities.AboutActivity"
-            android:label="@string/about"
-            android:screenOrientation="portrait"/>
+            android:label="@string/about"/>
 
         <activity
             android:name=".activities.DayActivity"
-            android:label="@string/details"
-            android:screenOrientation="portrait"/>
+            android:label="@string/details"/>
 
         <activity
             android:name=".activities.EventActivity"
-            android:label="@string/event"
-            android:screenOrientation="portrait"/>
+            android:label="@string/event"/>
 
         <activity
             android:name=".activities.LicenseActivity"
-            android:label="@string/third_party_licences"
-            android:screenOrientation="portrait"/>
+            android:label="@string/third_party_licences"/>
 
         <receiver
             android:name=".MyWidgetProvider"
@@ -70,7 +65,5 @@
                 <action android:name="android.intent.action.QUICKBOOT_POWERON"/>
             </intent-filter>
         </receiver>
-
     </application>
-
 </manifest>
