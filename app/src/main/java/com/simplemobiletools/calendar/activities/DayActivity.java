@@ -74,7 +74,8 @@ public class DayActivity extends SimpleActivity
         mDateTV.setText(date);
         mToBeDeleted = new ArrayList<>();
 
-        final int textColor = Utils.adjustAlpha(Color.BLACK, Constants.HIGH_ALPHA);
+        final int baseColor = mConfig.getIsDarkTheme() ? Color.WHITE : Color.BLACK;
+        final int textColor = Utils.adjustAlpha(baseColor, Constants.HIGH_ALPHA);
         mLeftArrow.getDrawable().mutate().setColorFilter(textColor, PorterDuff.Mode.SRC_ATOP);
         mRightArrow.getDrawable().mutate().setColorFilter(textColor, PorterDuff.Mode.SRC_ATOP);
     }
@@ -114,7 +115,8 @@ public class DayActivity extends SimpleActivity
 
     @OnClick(R.id.top_text)
     public void pickDay() {
-        final AlertDialog.Builder alertDialog = new AlertDialog.Builder(this, R.style.MyAlertDialog);
+        final int theme = mConfig.getIsDarkTheme() ? R.style.MyAlertDialog_Dark : R.style.MyAlertDialog;
+        final AlertDialog.Builder alertDialog = new AlertDialog.Builder(this, theme);
         final View view = getLayoutInflater().inflate(R.layout.date_picker, null);
         final DatePicker datePicker = (DatePicker) view.findViewById(R.id.date_picker);
 

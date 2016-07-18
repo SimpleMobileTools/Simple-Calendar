@@ -176,7 +176,8 @@ public class MainActivity extends SimpleActivity implements Calendar {
 
     @OnClick(R.id.top_text)
     public void pickMonth() {
-        final AlertDialog.Builder alertDialog = new AlertDialog.Builder(this, R.style.MyAlertDialog);
+        final int theme = mConfig.getIsDarkTheme() ? R.style.MyAlertDialog_Dark : R.style.MyAlertDialog;
+        final AlertDialog.Builder alertDialog = new AlertDialog.Builder(this, theme);
         final View view = getLayoutInflater().inflate(R.layout.date_picker, null);
         final DatePicker datePicker = (DatePicker) view.findViewById(R.id.date_picker);
         hideDayPicker(datePicker);
