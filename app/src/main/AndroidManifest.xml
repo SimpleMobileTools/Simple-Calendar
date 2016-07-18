@@ -31,19 +31,23 @@
 
         <activity
             android:name=".activities.AboutActivity"
-            android:label="@string/about"/>
+            android:label="@string/about"
+            android:parentActivityName=".activities.MainActivity"/>
 
         <activity
             android:name=".activities.DayActivity"
-            android:label="@string/details"/>
+            android:label="@string/details"
+            android:parentActivityName=".activities.MainActivity"/>
 
         <activity
             android:name=".activities.EventActivity"
-            android:label="@string/event"/>
+            android:label="@string/event"
+            android:parentActivityName=".activities.DayActivity"/>
 
         <activity
             android:name=".activities.LicenseActivity"
-            android:label="@string/third_party_licences"/>
+            android:label="@string/third_party_licences"
+            android:parentActivityName=".activities.AboutActivity"/>
 
         <activity
             android:name=".activities.SettingsActivity"

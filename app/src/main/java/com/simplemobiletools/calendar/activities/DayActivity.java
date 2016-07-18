@@ -124,6 +124,7 @@ public class DayActivity extends SimpleActivity
         datePicker.init(dateTime.getYear(), dateTime.getMonthOfYear() - 1, dateTime.getDayOfMonth(), null);
 
         alertDialog.setView(view);
+        alertDialog.setNegativeButton("Cancel", null);
         alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 final int month = datePicker.getMonth() + 1;
