@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 1.10 *(2016-07-18)*
+----------------------------
+
+ * Added Dark Theme
+ * Added Japanese, Swedish and Italian translations
+ * Misc minor fixes
+
 Version 1.9 *(2016-07-13)*
 ----------------------------
 
