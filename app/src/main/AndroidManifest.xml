@@ -45,6 +45,10 @@
             android:name=".activities.LicenseActivity"
             android:label="@string/third_party_licences"/>
 
+        <activity
+            android:name=".activities.SettingsActivity"
+            android:label="@string/settings"/>
+
         <receiver
             android:name=".MyWidgetProvider"
             android:icon="@mipmap/widget_preview">

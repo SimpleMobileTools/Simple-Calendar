@@ -52,4 +52,8 @@
         <item quantity="one">1 event deleted</item>
         <item quantity="other">%1$d events deleted</item>
     </plurals>
+
+    <!-- Settings -->
+    <string name="settings">Settings</string>
+    <string name="dark_theme">Dark theme</string>
 </resources>
