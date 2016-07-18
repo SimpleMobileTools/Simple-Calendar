@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import com.simplemobiletools.calendar.Calendar;
@@ -186,6 +187,7 @@ public class MainActivity extends SimpleActivity implements Calendar {
         datePicker.init(dateTime.getYear(), dateTime.getMonthOfYear() - 1, 1, null);
 
         alertDialog.setView(view);
+        alertDialog.setNegativeButton("Cancel", null);
         alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 final int month = datePicker.getMonth() + 1;
@@ -200,7 +202,10 @@ public class MainActivity extends SimpleActivity implements Calendar {
     private void hideDayPicker(DatePicker datePicker) {
         final LinearLayout ll = (LinearLayout) datePicker.getChildAt(0);
         final LinearLayout ll2 = (LinearLayout) ll.getChildAt(0);
-        ll2.getChildAt(1).setVisibility(View.GONE);
+        final NumberPicker picker1 = (NumberPicker) ll2.getChildAt(0);
+        final NumberPicker picker2 = (NumberPicker) ll2.getChildAt(1);
+        final NumberPicker dayPicker = (picker1.getMaxValue() > picker2.getMaxValue()) ? picker1 : picker2;
+        dayPicker.setVisibility(View.GONE);
     }
 
     @Override
