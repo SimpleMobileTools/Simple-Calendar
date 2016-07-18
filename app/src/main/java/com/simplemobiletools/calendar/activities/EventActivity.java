@@ -90,8 +90,8 @@ public class EventActivity extends SimpleActivity implements DBHelper.DBOperatio
 
     private void setupNewEvent(String dayCode) {
         setTitle(getResources().getString(R.string.new_event));
-        mEventStartDateTime = Formatter.getDateTimeFromCode(dayCode).withZone(DateTimeZone.getDefault()).withHourOfDay(13);
-        mEventEndDateTime = Formatter.getDateTimeFromCode(dayCode).withZone(DateTimeZone.getDefault()).withHourOfDay(14);
+        mEventStartDateTime = Formatter.getDateTimeFromCode(dayCode).withZone(DateTimeZone.UTC).withHourOfDay(13);
+        mEventEndDateTime = Formatter.getDateTimeFromCode(dayCode).withZone(DateTimeZone.UTC).withHourOfDay(14);
     }
 
     private void hideKeyboard() {
