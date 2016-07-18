@@ -36,7 +36,7 @@
 
     <!-- Settings -->
     <string name="settings">Impostazioni</string>
-    <string name="dark_theme">Dark theme</string>
+    <string name="dark_theme">Tema scuro</string>
 
     <!--License-->
     <string name="notice">Questa app usa le seguenti librerie di terze parti per semplificarmi la vita. Grazie.</string>

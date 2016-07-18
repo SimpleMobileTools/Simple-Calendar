@@ -36,7 +36,7 @@
 
     <!-- Settings -->
     <string name="settings">設定</string>
-    <string name="dark_theme">Dark theme</string>
+    <string name="dark_theme">暗いテーマ</string>
 
     <!--License-->
     <string name="notice">このアプリは、私の人生を容易にするために、次のサードパーティのライブラリーを使用しています。 ありがとうございます。</string>
