@@ -1,7 +1,7 @@
 package com.simplemobiletools.calendar.activities;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.widget.SwitchCompat;
 
 import com.simplemobiletools.calendar.Config;
@@ -11,7 +11,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class SettingsActivity extends AppCompatActivity {
+public class SettingsActivity extends SimpleActivity {
     @BindView(R.id.settings_dark_theme) SwitchCompat mDarkThemeSwitch;
 
     private static Config mConfig;
@@ -34,5 +34,10 @@ public class SettingsActivity extends AppCompatActivity {
     public void handleDarkTheme() {
         mDarkThemeSwitch.setChecked(!mDarkThemeSwitch.isChecked());
         mConfig.setIsDarkTheme(mDarkThemeSwitch.isChecked());
+        restartActivity();
+    }
+
+    private void restartActivity() {
+        TaskStackBuilder.create(getApplicationContext()).addNextIntentWithParentStack(getIntent()).startActivities();
     }
 }

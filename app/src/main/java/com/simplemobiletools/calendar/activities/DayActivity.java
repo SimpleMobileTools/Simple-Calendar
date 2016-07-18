@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.util.SparseBooleanArray;
 import android.view.ActionMode;
 import android.view.Menu;
@@ -40,7 +39,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class DayActivity extends AppCompatActivity
+public class DayActivity extends SimpleActivity
         implements DBHelper.DBOperationsListener, AdapterView.OnItemClickListener, AbsListView.MultiChoiceModeListener {
     @BindView(R.id.top_text) TextView mDateTV;
     @BindView(R.id.day_events) ListView mEventsList;

@@ -5,7 +5,6 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatSpinner;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -34,7 +33,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnItemSelected;
 
-public class EventActivity extends AppCompatActivity implements DBHelper.DBOperationsListener {
+public class EventActivity extends SimpleActivity implements DBHelper.DBOperationsListener {
     @BindView(R.id.event_start_date) TextView mStartDate;
     @BindView(R.id.event_start_time) TextView mStartTime;
     @BindView(R.id.event_end_date) TextView mEndDate;

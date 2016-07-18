@@ -8,7 +8,6 @@ import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -37,7 +36,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends AppCompatActivity implements Calendar {
+public class MainActivity extends SimpleActivity implements Calendar {
     @BindView(R.id.top_left_arrow) ImageView mLeftArrow;
     @BindView(R.id.top_right_arrow) ImageView mRightArrow;
     @BindView(R.id.top_text) TextView mMonthTV;
@@ -62,11 +61,12 @@ public class MainActivity extends AppCompatActivity implements Calendar {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        final int baseColor = mConfig.getIsDarkTheme() ? Color.WHITE : Color.BLACK;
         mRes = getResources();
         Locale.setDefault(Locale.ENGLISH);
-        mTextColor = Utils.adjustAlpha(Color.BLACK, Constants.HIGH_ALPHA);
+        mTextColor = Utils.adjustAlpha(baseColor, Constants.HIGH_ALPHA);
         mTextColorWithEvent = Utils.adjustAlpha(mRes.getColor(R.color.colorPrimary), Constants.HIGH_ALPHA);
-        mWeakTextColor = Utils.adjustAlpha(Color.BLACK, Constants.LOW_ALPHA);
+        mWeakTextColor = Utils.adjustAlpha(baseColor, Constants.LOW_ALPHA);
         mWeakTextColorWithEvent = Utils.adjustAlpha(mRes.getColor(R.color.colorPrimary), Constants.LOW_ALPHA);
         mLeftArrow.getDrawable().mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP);
         mRightArrow.getDrawable().mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP);

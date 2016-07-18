@@ -47,7 +47,9 @@
 
         <activity
             android:name=".activities.SettingsActivity"
-            android:label="@string/settings"/>
+            android:allowTaskReparenting="true"
+            android:label="@string/settings"
+            android:parentActivityName=".activities.MainActivity"/>
 
         <receiver
             android:name=".MyWidgetProvider"
