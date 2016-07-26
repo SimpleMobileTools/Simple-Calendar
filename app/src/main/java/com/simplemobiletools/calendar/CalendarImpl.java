@@ -7,7 +7,6 @@ import com.simplemobiletools.calendar.models.Event;
 
 import org.joda.time.DateTime;
 
-import java.text.DateFormatSymbols;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -93,8 +92,7 @@ public class CalendarImpl implements DBHelper.DBOperationsListener {
     }
 
     private String getMonthName() {
-        final String[] months = new DateFormatSymbols().getMonths();
-        String month = (months[mTargetDate.getMonthOfYear() - 1]);
+        String month = Formatter.getMonthName(mTargetDate.getMonthOfYear() - 1);
         final String targetYear = mTargetDate.toString(YEAR_PATTERN);
         if (!targetYear.equals(new DateTime().toString(YEAR_PATTERN))) {
             month += " " + targetYear;

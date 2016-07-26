@@ -30,7 +30,6 @@ import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
 import java.util.List;
-import java.util.Locale;
 
 import butterknife.BindDimen;
 import butterknife.BindView;
@@ -64,7 +63,6 @@ public class MainActivity extends SimpleActivity implements Calendar {
 
         final int baseColor = mConfig.getIsDarkTheme() ? Color.WHITE : Color.BLACK;
         mRes = getResources();
-        Locale.setDefault(Locale.ENGLISH);
         mTextColor = Utils.adjustAlpha(baseColor, Constants.HIGH_ALPHA);
         mTextColorWithEvent = Utils.adjustAlpha(mRes.getColor(R.color.colorPrimary), Constants.HIGH_ALPHA);
         mWeakTextColor = Utils.adjustAlpha(baseColor, Constants.LOW_ALPHA);
