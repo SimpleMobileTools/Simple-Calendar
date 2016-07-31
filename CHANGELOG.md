@@ -1,6 +1,11 @@
 Changelog
 ==========
 
+Version 1.15 *(2016-07-31)*
+----------------------------
+
+ * Fix a bug with some wrong month names
+
 Version 1.14 *(2016-07-26)*
 ----------------------------
 
