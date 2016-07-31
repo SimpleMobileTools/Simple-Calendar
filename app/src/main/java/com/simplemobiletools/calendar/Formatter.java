@@ -65,6 +65,7 @@ public class Formatter {
 
     public static String getMonthName(int id) {
         final Date date = new Date();
+        date.setDate(1);
         date.setMonth(id);
         String month = DateFormat.format("LLLL", date).toString();
         return month.substring(0, 1).toUpperCase() + month.substring(1).toLowerCase();
