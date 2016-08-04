@@ -20,6 +20,7 @@ import android.widget.AdapterView;
 import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.simplemobiletools.calendar.Constants;
@@ -35,6 +36,7 @@ import org.joda.time.DateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindDimen;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -46,6 +48,8 @@ public class DayActivity extends SimpleActivity
     @BindView(R.id.day_coordinator) CoordinatorLayout mCoordinatorLayout;
     @BindView(R.id.top_left_arrow) ImageView mLeftArrow;
     @BindView(R.id.top_right_arrow) ImageView mRightArrow;
+
+    @BindDimen(R.dimen.activity_margin) int mActivityMargin;
 
     private static final int EDIT_EVENT = 1;
     public static final String DELETED_ID = "deleted_id";
@@ -78,6 +82,12 @@ public class DayActivity extends SimpleActivity
         final int textColor = Utils.adjustAlpha(baseColor, Constants.HIGH_ALPHA);
         mLeftArrow.getDrawable().mutate().setColorFilter(textColor, PorterDuff.Mode.SRC_ATOP);
         mRightArrow.getDrawable().mutate().setColorFilter(textColor, PorterDuff.Mode.SRC_ATOP);
+
+        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) mLeftArrow.getLayoutParams();
+        params.setMargins(mActivityMargin, params.topMargin, params.rightMargin, params.bottomMargin);
+
+        params = (RelativeLayout.LayoutParams) mRightArrow.getLayoutParams();
+        params.setMargins(params.leftMargin, params.topMargin, mActivityMargin, params.bottomMargin);
     }
 
     @Override
