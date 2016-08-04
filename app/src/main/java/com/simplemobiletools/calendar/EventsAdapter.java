@@ -37,7 +37,12 @@ public class EventsAdapter extends BaseAdapter {
         final Event event = mEvents.get(position);
         viewHolder.eventTitle.setText(event.getTitle());
         viewHolder.eventStart.setText(Formatter.getTime(event.getStartTS()));
-        viewHolder.eventEnd.setText(Formatter.getTime(event.getEndTS()));
+
+        if (event.getStartTS() == event.getEndTS()) {
+            viewHolder.eventEnd.setVisibility(View.INVISIBLE);
+        } else {
+            viewHolder.eventEnd.setText(Formatter.getTime(event.getEndTS()));
+        }
 
         return convertView;
     }

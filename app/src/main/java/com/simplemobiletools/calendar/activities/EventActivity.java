@@ -47,6 +47,8 @@ public class EventActivity extends SimpleActivity implements DBHelper.DBOperatio
     private static DateTime mEventEndDateTime;
     private static Event mEvent;
     private static boolean mWasReminderInit;
+    private static boolean mWasEndDateSet;
+    private static boolean mWasEndTimeSet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +79,9 @@ public class EventActivity extends SimpleActivity implements DBHelper.DBOperatio
         updateEndDate();
         updateEndTime();
         setupReminder();
+
+        mWasEndDateSet = (event != null);
+        mWasEndTimeSet = (event != null);
     }
 
     private void setupEditEvent() {
@@ -91,7 +96,7 @@ public class EventActivity extends SimpleActivity implements DBHelper.DBOperatio
     private void setupNewEvent(String dayCode) {
         setTitle(getResources().getString(R.string.new_event));
         mEventStartDateTime = Formatter.getDateTimeFromCode(dayCode).withZoneRetainFields(DateTimeZone.getDefault()).withHourOfDay(13);
-        mEventEndDateTime = Formatter.getDateTimeFromCode(dayCode).withZoneRetainFields(DateTimeZone.getDefault()).withHourOfDay(14);
+        mEventEndDateTime = mEventStartDateTime;
     }
 
     private void hideKeyboard() {
@@ -261,6 +266,9 @@ public class EventActivity extends SimpleActivity implements DBHelper.DBOperatio
         @Override
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
             dateSet(year, monthOfYear, dayOfMonth, true);
+            if (!mWasEndDateSet) {
+                dateSet(year, monthOfYear, dayOfMonth, false);
+            }
         }
     };
 
@@ -268,6 +276,9 @@ public class EventActivity extends SimpleActivity implements DBHelper.DBOperatio
         @Override
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
             timeSet(hourOfDay, minute, true);
+            if (!mWasEndTimeSet) {
+                timeSet(hourOfDay, minute, false);
+            }
         }
     };
 
@@ -292,6 +303,7 @@ public class EventActivity extends SimpleActivity implements DBHelper.DBOperatio
         } else {
             mEventEndDateTime = mEventEndDateTime.withYear(year).withMonthOfYear(month + 1).withDayOfMonth(day);
             updateEndDate();
+            mWasEndDateSet = true;
         }
     }
 
@@ -302,6 +314,7 @@ public class EventActivity extends SimpleActivity implements DBHelper.DBOperatio
         } else {
             mEventEndDateTime = mEventEndDateTime.withHourOfDay(hours).withMinuteOfHour(minutes);
             updateEndTime();
+            mWasEndTimeSet = true;
         }
     }
 

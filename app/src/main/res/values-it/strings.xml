@@ -22,7 +22,7 @@
     <string name="details">Dettagli</string>
     <string name="title">Titolo</string>
     <string name="start">Inizio</string>
-    <string name="end">Fine</string>
+    <string name="end">Fine (facoltativo)</string>
     <string name="description">Descrizione</string>
 
     <!-- About -->

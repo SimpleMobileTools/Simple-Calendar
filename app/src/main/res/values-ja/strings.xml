@@ -22,7 +22,7 @@
     <string name="details">詳細</string>
     <string name="title">タイトル</string>
     <string name="start">開始</string>
-    <string name="end">終了</string>
+    <string name="end">終了 (任意)</string>
     <string name="description">説明</string>
 
     <!-- About -->
