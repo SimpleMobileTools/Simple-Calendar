@@ -36,6 +36,7 @@ public class EventsAdapter extends BaseAdapter {
 
         final Event event = mEvents.get(position);
         viewHolder.eventTitle.setText(event.getTitle());
+        viewHolder.eventDescription.setText(event.getDescription());
         viewHolder.eventStart.setText(Formatter.getTime(event.getStartTS()));
 
         if (event.getStartTS() == event.getEndTS()) {
@@ -64,6 +65,7 @@ public class EventsAdapter extends BaseAdapter {
 
     static class ViewHolder {
         @BindView(R.id.event_item_title) TextView eventTitle;
+        @BindView(R.id.event_item_description) TextView eventDescription;
         @BindView(R.id.event_item_start) TextView eventStart;
         @BindView(R.id.event_item_end) TextView eventEnd;
 
