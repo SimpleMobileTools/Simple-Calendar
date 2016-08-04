@@ -2,6 +2,7 @@
 <android.support.design.widget.CoordinatorLayout
     android:id="@+id/calendar_coordinator"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -13,6 +14,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/activity_margin"
-        android:src="@mipmap/plus"/>
+        android:src="@mipmap/plus"
+        app:backgroundTint="@color/colorPrimary"
+        app:rippleColor="@color/mediumGrey"/>
 
 </android.support.design.widget.CoordinatorLayout>
