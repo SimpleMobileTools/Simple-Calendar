@@ -2,15 +2,15 @@
 <android.support.design.widget.CoordinatorLayout
     android:id="@+id/day_coordinator"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_marginTop="@dimen/activity_margin">
 
     <RelativeLayout
         android:id="@+id/day_holder"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/activity_margin">
+        android:layout_height="wrap_content">
 
         <include layout="@layout/top_navigation"/>
 
@@ -19,17 +19,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/top_text"
-            android:choiceMode="multipleChoiceModal"/>
+            android:choiceMode="multipleChoiceModal"
+            android:clipToPadding="false"
+            android:paddingLeft="@dimen/activity_margin"/>
     </RelativeLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/day_fab"
-        app:backgroundTint="@color/colorPrimary"
-        app:rippleColor="@color/mediumGrey"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/activity_margin"
-        android:src="@mipmap/plus"/>
+        android:src="@mipmap/plus"
+        app:backgroundTint="@color/colorPrimary"
+        app:rippleColor="@color/mediumGrey"/>
 
 </android.support.design.widget.CoordinatorLayout>
