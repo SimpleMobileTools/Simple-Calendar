@@ -9,7 +9,7 @@ Contains a resizable 4x4 widget where you can customize the color of the text, a
 <a href="https://f-droid.org/app/com.simplemobiletools.calendar"><img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="60"></a>
 
 <img alt="App image" src="screenshots/app.png" width="250">
-<img alt="App image" src="screenshots/app_2.png" width="250">
+<img alt="App image" src="screenshots/app_3.png" width="250">
 <img alt="App image" src="screenshots/widget.png" width="250">
 
 License
