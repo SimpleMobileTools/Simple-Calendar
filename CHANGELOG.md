@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 1.16 *(2016-08-04)*
+----------------------------
+
+ * Make event end date/time optional
+ * Show the event description at the events screen
+
 Version 1.15 *(2016-07-31)*
 ----------------------------
 
