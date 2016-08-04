@@ -1,15 +1,15 @@
 # Simple Calendar
 <img alt="Logo" src="app/src/main/res/mipmap-xxxhdpi/launcher.png" width="80">
 
-A monthly calendar with the current day highlighted, without any other calendar integration, with Monday as the first day. You can easily check other months or years by pressing the month label in the app.
+A simple monthly calendar without any ads, unnecessary permissions or other calendar integration. You can easily jump to other months or years by pressing the month label in the app. You can also create events and setup reminders. It's fully opensource, secure, offline. It also comes with a Dark theme.
 
-Contains a 4x4 widget where you can customize the color of the text, as well as the alpha and the color of the background. To open the app from the widget press the month label.
+Contains a resizable 4x4 widget where you can customize the color of the text, as well as the alpha and the color of the background. To open the app from the widget press the month label.
 
 <a href='https://play.google.com/store/apps/details?id=com.simplemobiletools.calendar'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' height=60/></a>
 <a href="https://f-droid.org/app/com.simplemobiletools.calendar"><img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="60"></a>
 
 <img alt="App image" src="screenshots/app.png" width="250">
-<img alt="App image" src="screenshots/widget_config.png" width="250">
+<img alt="App image" src="screenshots/app_2.png" width="250">
 <img alt="App image" src="screenshots/widget.png" width="250">
 
 License
