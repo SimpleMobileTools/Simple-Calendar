@@ -1,6 +1,15 @@
 Changelog
 ==========
 
+Version 1.17 *(2016-08-21)*
+----------------------------
+
+ * Add an Invite friends button
+ * Allow adding events in the past, but notify the user
+ * Set default event reminder to At start
+ * Use manually translated month names for reliability
+ * Fix day switching arrows for every timezone
+
 Version 1.16 *(2016-08-04)*
 ----------------------------
 
