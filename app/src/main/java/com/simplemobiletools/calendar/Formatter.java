@@ -58,7 +58,7 @@ public class Formatter {
     }
 
     public static String getDayCodeFromDateTime(DateTime dateTime) {
-        return dateTime.toDateTime(DateTimeZone.getDefault()).toString(Formatter.DAYCODE_PATTERN);
+        return dateTime.toString(Formatter.DAYCODE_PATTERN);
     }
 
     // use manually translated month names, as DateFormat and Joda have issues with a lot of languages
