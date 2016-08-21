@@ -185,8 +185,8 @@ public class MainActivity extends SimpleActivity implements Calendar {
         datePicker.init(dateTime.getYear(), dateTime.getMonthOfYear() - 1, 1, null);
 
         alertDialog.setView(view);
-        alertDialog.setNegativeButton(android.R.string.cancel, null);
-        alertDialog.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+        alertDialog.setNegativeButton(R.string.cancel, null);
+        alertDialog.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 final int month = datePicker.getMonth() + 1;
                 final int year = datePicker.getYear();

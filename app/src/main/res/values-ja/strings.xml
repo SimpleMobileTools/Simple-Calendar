@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">シンプル カレンダー</string>
     <string name="undo">元に戻す</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
 
     <!-- Event -->
     <string name="event">イベント</string>

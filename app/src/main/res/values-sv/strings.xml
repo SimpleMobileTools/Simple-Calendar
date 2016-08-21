@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Simple Calendar</string>
     <string name="undo">Ångra</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
 
     <!-- Event -->
     <string name="event">Händelse</string>
