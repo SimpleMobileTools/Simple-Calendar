@@ -12,6 +12,7 @@
     <string name="end_before_start">Händelsen kan inte sluta före den har startat</string>
     <string name="start_in_past">Du kan inte schemalägga händelser i det förflutna</string>
     <string name="event_added">Händelsen tillagd</string>
+    <string name="past_event_added">Event in the past added successfully</string>
     <string name="event_updated">Händelsen uppdaterad</string>
     <string name="reminder">Påminnelse</string>
     <string name="off">Av</string>

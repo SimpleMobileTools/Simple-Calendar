@@ -12,6 +12,7 @@
     <string name="end_before_start">イベントの終了は開始よりも前にできません</string>
     <string name="start_in_past">過去のイベントはスケジュールできません</string>
     <string name="event_added">イベントを正常に追加しました</string>
+    <string name="past_event_added">Event in the past added successfully</string>
     <string name="event_updated">イベントを正常に更新しました</string>
     <string name="reminder">リマインダー</string>
     <string name="off">オフ</string>

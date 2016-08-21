@@ -12,6 +12,7 @@
     <string name="end_before_start">The event cannot end earlier than it starts</string>
     <string name="start_in_past">You cannot schedule events in the past</string>
     <string name="event_added">Event added successfully</string>
+    <string name="past_event_added">Event in the past added successfully</string>
     <string name="event_updated">Event updated successfully</string>
     <string name="reminder">Reminder</string>
     <string name="off">Off</string>

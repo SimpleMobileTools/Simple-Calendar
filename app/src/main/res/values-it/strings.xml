@@ -12,6 +12,7 @@
     <string name="end_before_start">L\'evento non può terminare prima del suo inizio</string>
     <string name="start_in_past">Non puoi organizzare eventi nel passato</string>
     <string name="event_added">Evento aggiunto correttamente</string>
+    <string name="past_event_added">Event in the past added successfully</string>
     <string name="event_updated">Evento aggiornato correttamente</string>
     <string name="reminder">Promemoria</string>
     <string name="off">Off</string>

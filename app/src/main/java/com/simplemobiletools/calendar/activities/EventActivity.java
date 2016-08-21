@@ -188,11 +188,6 @@ public class EventActivity extends SimpleActivity implements DBHelper.DBOperatio
             return;
         }
 
-        if (DateTime.now().isAfter(mEventStartDateTime.getMillis())) {
-            Utils.showToast(getApplicationContext(), R.string.start_in_past);
-            return;
-        }
-
         final DBHelper dbHelper = DBHelper.newInstance(getApplicationContext(), this);
         final String description = mDescriptionET.getText().toString().trim();
         final int reminderMinutes = getReminderMinutes();
@@ -320,8 +315,12 @@ public class EventActivity extends SimpleActivity implements DBHelper.DBOperatio
 
     @Override
     public void eventInserted(Event event) {
-        Utils.scheduleNotification(getApplicationContext(), event);
-        Utils.showToast(getApplicationContext(), R.string.event_added);
+        if (DateTime.now().isAfter(mEventStartDateTime.getMillis())) {
+            Utils.showToast(getApplicationContext(), R.string.past_event_added);
+        } else {
+            Utils.scheduleNotification(getApplicationContext(), event);
+            Utils.showToast(getApplicationContext(), R.string.event_added);
+        }
         finish();
     }
 
