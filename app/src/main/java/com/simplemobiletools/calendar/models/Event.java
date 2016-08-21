@@ -17,7 +17,7 @@ public class Event implements Serializable {
         mEndTS = 0;
         mTitle = "";
         mDescription = "";
-        mReminderMinutes = -1;
+        mReminderMinutes = 0;
     }
 
     public Event(int id, int startTS, int endTS, String title, String description, int reminerMinutes) {
