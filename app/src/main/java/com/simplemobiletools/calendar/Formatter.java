@@ -9,13 +9,21 @@ import org.joda.time.format.DateTimeFormatter;
 
 public class Formatter {
     public static final String DAYCODE_PATTERN = "YYMMdd";
+    private static final String DAY_PATTERN = "d";
+    private static final String YEAR_PATTERN = "YYYY";
     private static final String EVENT_DATE_PATTERN = "d YYYY"; // MMMM doesn't give the proper month name in some languages
     private static final String EVENT_TIME_PATTERN = "HH:mm";
 
     public static String getEventDate(Context context, String dayCode) {
-        final String dayYear = getDateTimeFromCode(dayCode).toString(EVENT_DATE_PATTERN);
+        final DateTime dateTime = getDateTimeFromCode(dayCode);
+        final String day = dateTime.toString(DAY_PATTERN);
+        final String year = dateTime.toString(YEAR_PATTERN);
         final int monthIndex = Integer.valueOf(dayCode.substring(2, 4)) - 1;
-        return getMonthName(context, monthIndex) + " " + dayYear;
+        final String month = getMonthName(context, monthIndex);
+        String date = month + " " + day;
+        if (!year.equals(new DateTime().toString(YEAR_PATTERN)))
+            date += " " + year;
+        return date;
     }
 
     public static String getEventDate(Context context, DateTime dateTime) {
