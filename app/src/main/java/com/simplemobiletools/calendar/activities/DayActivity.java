@@ -74,7 +74,7 @@ public class DayActivity extends SimpleActivity
         if (mDayCode == null || mDayCode.isEmpty())
             return;
 
-        final String date = Formatter.getEventDate(mDayCode);
+        final String date = Formatter.getEventDate(getApplicationContext(), mDayCode);
         mDateTV.setText(date);
         mToBeDeleted = new ArrayList<>();
 

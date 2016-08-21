@@ -53,4 +53,17 @@
         <item quantity="one">1 evento eliminato</item>
         <item quantity="other">%1$d eventi eliminati</item>
     </plurals>
+
+    <string name="january">Gennaio</string>
+    <string name="february">Febbraio</string>
+    <string name="march">Marzo</string>
+    <string name="april">Aprile</string>
+    <string name="may">Può</string>
+    <string name="june">Giugno</string>
+    <string name="july">Luglio</string>
+    <string name="august">August</string>
+    <string name="september">Settembre</string>
+    <string name="october">Ottobre</string>
+    <string name="november">Novembre</string>
+    <string name="december">Dicembre</string>
 </resources>

@@ -219,7 +219,7 @@ public class EventActivity extends SimpleActivity implements DBHelper.DBOperatio
     }
 
     private void updateStartDate() {
-        mStartDate.setText(Formatter.getEventDate(mEventStartDateTime));
+        mStartDate.setText(Formatter.getEventDate(getApplicationContext(), mEventStartDateTime));
     }
 
     private void updateStartTime() {
@@ -227,7 +227,7 @@ public class EventActivity extends SimpleActivity implements DBHelper.DBOperatio
     }
 
     private void updateEndDate() {
-        mEndDate.setText(Formatter.getEventDate(mEventEndDateTime));
+        mEndDate.setText(Formatter.getEventDate(getApplicationContext(), mEventEndDateTime));
     }
 
     private void updateEndTime() {

@@ -53,4 +53,17 @@
         <item quantity="one">1 händelse borttagen</item>
         <item quantity="other">%1$d händelser borttagna</item>
     </plurals>
+
+    <string name="january">Januari</string>
+    <string name="february">Februari</string>
+    <string name="march">Mars</string>
+    <string name="april">April</string>
+    <string name="may">Maj</string>
+    <string name="june">Juni</string>
+    <string name="july">Juli</string>
+    <string name="august">Augusti</string>
+    <string name="september">September</string>
+    <string name="october">Oktober</string>
+    <string name="november">November</string>
+    <string name="december">December</string>
 </resources>

@@ -92,7 +92,7 @@ public class CalendarImpl implements DBHelper.DBOperationsListener {
     }
 
     private String getMonthName() {
-        String month = Formatter.getMonthName(mTargetDate.getMonthOfYear() - 1);
+        String month = Formatter.getMonthName(mContext, mTargetDate.getMonthOfYear() - 1);
         final String targetYear = mTargetDate.toString(YEAR_PATTERN);
         if (!targetYear.equals(new DateTime().toString(YEAR_PATTERN))) {
             month += " " + targetYear;
