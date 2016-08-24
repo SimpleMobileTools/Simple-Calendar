@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">Kamera</string>
+    <string name="camera_unavailable">Kameran inte tillgänglig</string>
+    <string name="camera_open_error">Ett fel uppstod vid åtkomst till kameran</string>
+    <string name="video_creating_error">Ett fel uppstod när videofilen skulle skapas</string>
+    <string name="video_saving_error">Ett fel uppstod när videofilen skulle sparas</string>
+    <string name="video_setup_error">Ett fel uppstod när inspelningen skulle starta</string>
+    <string name="video_mode_error">Byte till videoläge misslyckades</string>
+    <string name="video_directory">Simple videos</string>
+    <string name="photo_directory">Simple bilder</string>
+    <string name="camera_switch_error">Byte av kamera misslyckades</string>
+    <string name="no_permissions">Inte mycket att göra utan tillgång till din kamera och lagring</string>
+    <string name="no_audio_permissions">För att spela in video krävs ljudrättigheter</string>
+    <string name="no_gallery_app_available">Ingen galleri-app finns tillgänglig</string>
+    <string name="no_valid_resolution_found">No valid resolution with selected aspect ratio found, using max resolution</string>
+
+    <!-- Settings -->
+    <string name="settings">Inställningar</string>
+    <string name="dark_theme">Mörkt tema</string>
+    <string name="long_tap_capture">Långtryck för bildtagning</string>
+    <string name="focus_before_capture">Fokusera om innan bildtagning</string>
+    <string name="force_ratio">Tvinga 16:9-förhållande</string>
+    <string name="max_photo_size">Bildupplösningsgräns</string>
+    <string name="max_video_size">Video resolution limit</string>
+    <string name="no_limit">inga</string>
+    <string name="shutter_sound">Slutarljud</string>
+
+    <!-- About -->
+    <string name="about">Om</string>
+    <string name="website">Fler enkla appar och källkod här:\nhttp://simplemobiletools.com</string>
+    <string name="email_label">Skicka feedback och förslag till:</string>
+    <string name="third_party_licences_underlined"><u>Tredjepartslicenser</u></string>
+    <string name="rate_us_underlined"><u>Betygsätt oss i Play Butiken</u></string>
+    <string name="follow_us">Följ oss:</string>
+    <string name="copyright">v %1$s\nCopyright © Simple Mobile Tools %2$d</string>
+
+    <!--License-->
+    <string name="notice">Denna app använder följande tredjepartsbibliotek för att göra mitt liv enklare. Tack.</string>
+    <string name="third_party_licences">Tredjepartslicenser</string>
+    <string name="butterknife_title"><u>Butter Knife (view injector)</u></string>
+</resources>
