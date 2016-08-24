@@ -1,41 +1,71 @@
 <resources>
-    <string name="app_name">Kamera</string>
-    <string name="camera_unavailable">Kameran inte tillgänglig</string>
-    <string name="camera_open_error">Ett fel uppstod vid åtkomst till kameran</string>
-    <string name="video_creating_error">Ett fel uppstod när videofilen skulle skapas</string>
-    <string name="video_saving_error">Ett fel uppstod när videofilen skulle sparas</string>
-    <string name="video_setup_error">Ett fel uppstod när inspelningen skulle starta</string>
-    <string name="video_mode_error">Byte till videoläge misslyckades</string>
-    <string name="video_directory">Simple videos</string>
-    <string name="photo_directory">Simple bilder</string>
-    <string name="camera_switch_error">Byte av kamera misslyckades</string>
-    <string name="no_permissions">Inte mycket att göra utan tillgång till din kamera och lagring</string>
-    <string name="no_audio_permissions">För att spela in video krävs ljudrättigheter</string>
-    <string name="no_gallery_app_available">Ingen galleri-app finns tillgänglig</string>
-    <string name="no_valid_resolution_found">No valid resolution with selected aspect ratio found, using max resolution</string>
+    <string name="app_name">Kalender</string>
+    <string name="undo">Ångra</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
 
-    <!-- Settings -->
-    <string name="settings">Inställningar</string>
-    <string name="dark_theme">Mörkt tema</string>
-    <string name="long_tap_capture">Långtryck för bildtagning</string>
-    <string name="focus_before_capture">Fokusera om innan bildtagning</string>
-    <string name="force_ratio">Tvinga 16:9-förhållande</string>
-    <string name="max_photo_size">Bildupplösningsgräns</string>
-    <string name="max_video_size">Video resolution limit</string>
-    <string name="no_limit">inga</string>
-    <string name="shutter_sound">Slutarljud</string>
+    <!-- Event -->
+    <string name="event">Händelse</string>
+    <string name="edit_event">Redigera händelse</string>
+    <string name="new_event">Ny händelse</string>
+    <string name="save">Spara</string>
+    <string name="delete">Ta bort</string>
+    <string name="title_empty">Titeln får inte vara tom</string>
+    <string name="end_before_start">Händelsen kan inte sluta före den har startat</string>
+    <string name="start_in_past">Du kan inte schemalägga händelser i det förflutna</string>
+    <string name="event_added">Händelsen tillagd</string>
+    <string name="past_event_added">Event in the past added successfully</string>
+    <string name="event_updated">Händelsen uppdaterad</string>
+    <string name="reminder">Påminnelse</string>
+    <string name="off">Av</string>
+    <string name="at_start">Vid start</string>
+    <string name="minutes_before">Minuter före</string>
+
+    <!-- Day details -->
+    <string name="details">Detaljer</string>
+    <string name="title">Titel</string>
+    <string name="start">Start</string>
+    <string name="end">Slut (frivillig)</string>
+    <string name="description">Beskrivning</string>
 
     <!-- About -->
     <string name="about">Om</string>
     <string name="website">Fler enkla appar och källkod här:\nhttp://simplemobiletools.com</string>
     <string name="email_label">Skicka feedback och förslag till:</string>
     <string name="third_party_licences_underlined"><u>Tredjepartslicenser</u></string>
+    <string name="invite_friends_underlined"><u>Invite friends</u></string>
+    <string name="share_text">Hey, come check out %1$s at %2$s</string>
+    <string name="invite_via">Invite via</string>
     <string name="rate_us_underlined"><u>Betygsätt oss i Play Butiken</u></string>
     <string name="follow_us">Följ oss:</string>
     <string name="copyright">v %1$s\nCopyright © Simple Mobile Tools %2$d</string>
 
-    <!--License-->
+    <!-- Settings -->
+    <string name="settings">Inställningar</string>
+    <string name="dark_theme">Mörkt tema</string>
+
+    <!-- License -->
     <string name="notice">Denna app använder följande tredjepartsbibliotek för att göra mitt liv enklare. Tack.</string>
     <string name="third_party_licences">Tredjepartslicenser</string>
     <string name="butterknife_title"><u>Butter Knife (view injector)</u></string>
+    <string name="ambilwarna_title"><u>AmbilWarna (color picker)</u></string>
+    <string name="joda_title"><u>Joda-Time (Java date replacement)</u></string>
+
+    <plurals name="events_deleted">
+        <item quantity="one">1 händelse borttagen</item>
+        <item quantity="other">%1$d händelser borttagna</item>
+    </plurals>
+
+    <string name="january">Januari</string>
+    <string name="february">Februari</string>
+    <string name="march">Mars</string>
+    <string name="april">April</string>
+    <string name="may">Maj</string>
+    <string name="june">Juni</string>
+    <string name="july">Juli</string>
+    <string name="august">Augusti</string>
+    <string name="september">September</string>
+    <string name="october">Oktober</string>
+    <string name="november">November</string>
+    <string name="december">December</string>
 </resources>
