@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.text.TextUtils;
 
 import com.simplemobiletools.calendar.models.Event;
 
@@ -87,8 +88,9 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public void deleteEvents(String[] ids) {
-        final String selection = COL_ID + " IN (?)";
-        mDb.delete(TABLE_NAME, selection, ids);
+        final String args = TextUtils.join(", ", ids);
+        final String selection = COL_ID + " IN (" + args + ")";
+        mDb.delete(TABLE_NAME, selection, null);
 
         if (mCallback != null)
             mCallback.eventsDeleted(ids.length);
