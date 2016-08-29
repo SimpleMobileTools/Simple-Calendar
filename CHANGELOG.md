@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 1.18 *(2016-08-29)*
+----------------------------
+
+ * Rename the app launcher to Calendar
+ * Update the launcher icon
+ * Fix deleting multiple events at once
+
 Version 1.17 *(2016-08-21)*
 ----------------------------
 
