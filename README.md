@@ -1,9 +1,11 @@
 # Simple Calendar
 <img alt="Logo" src="app/src/main/res/mipmap-xxxhdpi/launcher.png" width="80">
 
-A simple monthly calendar without any ads, unnecessary permissions or other calendar integration. You can easily jump to other months or years by pressing the month label in the app. You can also create events and setup reminders. It's fully opensource, secure, offline. It also comes with a Dark theme.
+A simple monthly calendar without any other calendar integration. You can easily create events and setup reminders.
 
 Contains a resizable 4x4 widget where you can customize the color of the text, as well as the alpha and the color of the background. To open the app from the widget press the month label.
+
+Contains no ads or unnecessary permissions. It is fully opensource, provides a Dark theme too.
 
 <a href='https://play.google.com/store/apps/details?id=com.simplemobiletools.calendar'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' height=60/></a>
 <a href="https://f-droid.org/app/com.simplemobiletools.calendar"><img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="60"></a>
