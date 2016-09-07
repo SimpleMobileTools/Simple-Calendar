@@ -1,0 +1,88 @@
+<resources>
+    <string name="app_name">Simple Calendar</string>
+    <string name="app_launcher_name">Calendar</string>
+    <string name="undo">Rückgängig</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Abbrechen</string>
+
+    <!-- Event -->
+    <string name="event">Termin</string>
+    <string name="edit_event">Termin bearbeiten</string>
+    <string name="new_event">Neuer Termin</string>
+    <string name="save">Speichern</string>
+    <string name="delete">Löschen</string>
+    <string name="title_empty">Titel darf nicht leer sein</string>
+    <string name="end_before_start">Der Termin darf nicht früher enden, als er beginnt</string>
+    <string name="start_in_past">Du kannst keine Termine in der Vergangenheit erstellen</string>
+    <string name="event_added">Termin erfolgreich hinzugefügt</string>
+    <string name="past_event_added">Termin erfolgreich in der Vergangenheit hinzugefügt</string>
+    <string name="event_updated">Termin erfolgreich aktualisiert</string>
+    <string name="reminder">Erinnerung</string>
+    <string name="off">Aus</string>
+    <string name="at_start">Zu Beginn</string>
+    <string name="minutes_before">Minuten vorher</string>
+
+    <!-- Day details -->
+    <string name="details">Details</string>
+    <string name="title">Titel</string>
+    <string name="start">Start</string>
+    <string name="end">Ende (optional)</string>
+    <string name="description">Beschreibung</string>
+
+    <!-- About -->
+    <string name="about">Über</string>
+    <string name="website">Weitere einfache Apps und Quellcode findes du auf:\nhttp://simplemobiletools.com</string>
+    <string name="email_label">Sende Vorschläge und Feedback an:</string>
+    <string name="third_party_licences_underlined"><u>Drittanbieterlizenzen</u></string>
+    <string name="invite_friends_underlined"><u>Lade Freunde ein</u></string>
+    <string name="share_text">Hey, wirf mal einen Blick auf %1$s bei %2$s</string>
+    <string name="invite_via">Einladen via</string>
+    <string name="rate_us_underlined"><u>Bewerte uns im Play Store</u></string>
+    <string name="follow_us">Folge uns:</string>
+    <string name="copyright">v %1$s\nCopyright © Simple Mobile Tools %2$d</string>
+
+    <!-- Settings -->
+    <string name="settings">Einstellungen</string>
+    <string name="dark_theme">Dunkles Thema</string>
+
+    <!-- License -->
+    <string name="notice">Diese App nutzt die folgenden Drittanbieterbibliotheken, die mein Leben einfacher machen. Danke.</string>
+    <string name="third_party_licences">Drittanbieterlizenzen</string>
+    <string name="butterknife_title"><u>Butter Knife (view injector)</u></string>
+    <string name="ambilwarna_title"><u>AmbilWarna (color picker)</u></string>
+    <string name="joda_title"><u>Joda-Time (Java date replacement)</u></string>
+
+    <plurals name="events_deleted">
+        <item quantity="one">1 Termin gelöscht</item>
+        <item quantity="other">%1$d Termine gelöscht</item>
+    </plurals>
+
+    <string name="january">Januar</string>
+    <string name="february">Februar</string>
+    <string name="march">März</string>
+    <string name="april">April</string>
+    <string name="may">Mai</string>
+    <string name="june">Juni</string>
+    <string name="july">Juli</string>
+    <string name="august">August</string>
+    <string name="september">September</string>
+    <string name="october">Oktober</string>
+    <string name="november">November</string>
+    <string name="december">Dezember</string>
+
+    <string-array name="months" translatable="false">
+        <item>@string/january</item>
+        <item>@string/february</item>
+        <item>@string/march</item>
+        <item>@string/april</item>
+        <item>@string/may</item>
+        <item>@string/june</item>
+        <item>@string/july</item>
+        <item>@string/august</item>
+        <item>@string/september</item>
+        <item>@string/october</item>
+        <item>@string/november</item>
+        <item>@string/december</item>
+    </string-array>
+
+</resources>
