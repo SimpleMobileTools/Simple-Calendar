@@ -1,6 +1,11 @@
 Changelog
 ==========
 
+Version 1.20 *(2016-09-09)*
+----------------------------
+
+ * Allow setting first day of the week to sunday
+
 Version 1.19 *(2016-09-07)*
 ----------------------------
 
