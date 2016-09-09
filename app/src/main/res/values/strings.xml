@@ -77,6 +77,14 @@
     <string name="november">November</string>
     <string name="december">December</string>
 
+    <string name="monday_letter">M</string>
+    <string name="tuesday_letter">T</string>
+    <string name="wednesday_letter">W</string>
+    <string name="thursday_letter">T</string>
+    <string name="friday_letter">F</string>
+    <string name="saturday_letter">S</string>
+    <string name="sunday_letter">S</string>
+
     <string-array name="months" translatable="false">
         <item>@string/january</item>
         <item>@string/february</item>

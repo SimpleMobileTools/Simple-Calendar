@@ -12,7 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:text="M"/>
+        android:text="@string/monday_letter"/>
 
     <TextView
         android:id="@+id/label_1"
@@ -20,7 +20,7 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:text="T"/>
+        android:text="@string/tuesday_letter"/>
 
     <TextView
         android:id="@+id/label_2"
@@ -28,7 +28,7 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:text="W"/>
+        android:text="@string/wednesday_letter"/>
 
     <TextView
         android:id="@+id/label_3"
@@ -36,7 +36,7 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:text="T"/>
+        android:text="@string/wednesday_letter"/>
 
     <TextView
         android:id="@+id/label_4"
@@ -44,7 +44,7 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:text="F"/>
+        android:text="@string/friday_letter"/>
 
     <TextView
         android:id="@+id/label_5"
@@ -52,7 +52,7 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:text="S"/>
+        android:text="@string/saturday_letter"/>
 
     <TextView
         android:id="@+id/label_6"
@@ -60,6 +60,6 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:text="S"/>
+        android:text="@string/sunday_letter"/>
 
 </LinearLayout>

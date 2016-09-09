@@ -70,4 +70,12 @@
     <string name="november">November</string>
     <string name="december">Dezember</string>
 
+    <string name="monday_letter">M</string>
+    <string name="tuesday_letter">D</string>
+    <string name="wednesday_letter">M</string>
+    <string name="thursday_letter">D</string>
+    <string name="friday_letter">F</string>
+    <string name="saturday_letter">S</string>
+    <string name="sunday_letter">S</string>
+
 </resources>
