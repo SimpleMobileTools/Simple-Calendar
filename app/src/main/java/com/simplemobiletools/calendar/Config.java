@@ -29,4 +29,12 @@ public class Config {
     public void setIsDarkTheme(boolean isDarkTheme) {
         mPrefs.edit().putBoolean(Constants.IS_DARK_THEME, isDarkTheme).apply();
     }
+
+    public boolean getIsSundayFirst() {
+        return mPrefs.getBoolean(Constants.SUNDAY_FIRST, false);
+    }
+
+    public void setIsSundayFirst(boolean sundayFirst) {
+        mPrefs.edit().putBoolean(Constants.SUNDAY_FIRST, sundayFirst).apply();
+    }
 }
