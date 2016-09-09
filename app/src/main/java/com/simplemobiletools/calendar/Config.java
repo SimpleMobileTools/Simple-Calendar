@@ -3,6 +3,8 @@ package com.simplemobiletools.calendar;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import java.util.Locale;
+
 public class Config {
     private SharedPreferences mPrefs;
 
@@ -31,7 +33,8 @@ public class Config {
     }
 
     public boolean getIsSundayFirst() {
-        return mPrefs.getBoolean(Constants.SUNDAY_FIRST, false);
+        boolean isSundayFirst = java.util.Calendar.getInstance(Locale.getDefault()).getFirstDayOfWeek() == java.util.Calendar.SUNDAY;
+        return mPrefs.getBoolean(Constants.SUNDAY_FIRST, isSundayFirst);
     }
 
     public void setIsSundayFirst(boolean sundayFirst) {
