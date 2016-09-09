@@ -11,55 +11,48 @@
         style="@style/DayView"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="@string/monday_letter"/>
+        android:layout_weight="1"/>
 
     <TextView
         android:id="@+id/label_1"
         style="@style/DayView"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="@string/tuesday_letter"/>
+        android:layout_weight="1"/>
 
     <TextView
         android:id="@+id/label_2"
         style="@style/DayView"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="@string/wednesday_letter"/>
+        android:layout_weight="1"/>
 
     <TextView
         android:id="@+id/label_3"
         style="@style/DayView"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="@string/wednesday_letter"/>
+        android:layout_weight="1"/>
 
     <TextView
         android:id="@+id/label_4"
         style="@style/DayView"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="@string/friday_letter"/>
+        android:layout_weight="1"/>
 
     <TextView
         android:id="@+id/label_5"
         style="@style/DayView"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="@string/saturday_letter"/>
+        android:layout_weight="1"/>
 
     <TextView
         android:id="@+id/label_6"
         style="@style/DayView"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="@string/sunday_letter"/>
+        android:layout_weight="1"/>
 
 </LinearLayout>

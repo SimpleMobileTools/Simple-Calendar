@@ -54,6 +54,7 @@ public class MainActivity extends SimpleActivity implements Calendar {
     private int mWeakTextColor;
     private int mTextColorWithEvent;
     private int mWeakTextColorWithEvent;
+    private boolean mSundayFirst;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +70,7 @@ public class MainActivity extends SimpleActivity implements Calendar {
         mWeakTextColorWithEvent = Utils.adjustAlpha(mRes.getColor(R.color.colorPrimary), Constants.LOW_ALPHA);
         mLeftArrow.getDrawable().mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP);
         mRightArrow.getDrawable().mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP);
+        mSundayFirst = mConfig.getIsSundayFirst();
 
         mPackageName = getPackageName();
         mDayTextSize /= mRes.getDisplayMetrics().density;
@@ -85,6 +87,10 @@ public class MainActivity extends SimpleActivity implements Calendar {
     protected void onResume() {
         super.onResume();
         mCalendar.updateCalendar(new DateTime());
+        if (mConfig.getIsSundayFirst() != mSundayFirst) {
+            mSundayFirst = mConfig.getIsSundayFirst();
+            setupLabels();
+        }
     }
 
     @Override
@@ -217,11 +223,20 @@ public class MainActivity extends SimpleActivity implements Calendar {
     }
 
     private void setupLabels() {
+        int letters[] = {R.string.sunday_letter, R.string.monday_letter, R.string.tuesday_letter, R.string.wednesday_letter,
+                R.string.thursday_letter, R.string.friday_letter, R.string.saturday_letter};
+
         for (int i = 0; i < 7; i++) {
             final TextView dayTV = (TextView) findViewById(mRes.getIdentifier("label_" + i, "id", mPackageName));
             if (dayTV != null) {
                 dayTV.setTextSize(mDayTextSize);
                 dayTV.setTextColor(mWeakTextColor);
+
+                int index = i;
+                if (!mSundayFirst)
+                    index = (index + 1) % letters.length;
+
+                dayTV.setText(getString(letters[index]));
             }
         }
     }
