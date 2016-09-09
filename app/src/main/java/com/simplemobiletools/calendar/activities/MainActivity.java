@@ -223,8 +223,7 @@ public class MainActivity extends SimpleActivity implements Calendar {
     }
 
     private void setupLabels() {
-        int letters[] = {R.string.sunday_letter, R.string.monday_letter, R.string.tuesday_letter, R.string.wednesday_letter,
-                R.string.thursday_letter, R.string.friday_letter, R.string.saturday_letter};
+        int letters[] = Utils.getLetterIDs();
 
         for (int i = 0; i < 7; i++) {
             final TextView dayTV = (TextView) findViewById(mRes.getIdentifier("label_" + i, "id", mPackageName));

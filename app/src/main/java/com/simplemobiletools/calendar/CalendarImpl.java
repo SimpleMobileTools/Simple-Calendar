@@ -45,7 +45,9 @@ public class CalendarImpl implements DBHelper.DBOperationsListener {
         final List<Day> days = new ArrayList<>(DAYS_CNT);
 
         final int currMonthDays = mTargetDate.dayOfMonth().getMaximumValue();
-        final int firstDayIndex = mTargetDate.withDayOfMonth(1).getDayOfWeek() - 1;
+        int firstDayIndex = mTargetDate.withDayOfMonth(1).getDayOfWeek();
+        if (!Config.newInstance(mContext).getIsSundayFirst())
+            firstDayIndex -= 1;
         final int prevMonthDays = mTargetDate.minusMonths(1).dayOfMonth().getMaximumValue();
 
         boolean isThisMonth = false;

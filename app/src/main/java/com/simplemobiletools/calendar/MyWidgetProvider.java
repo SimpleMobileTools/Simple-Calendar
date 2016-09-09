@@ -182,10 +182,18 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
     }
 
     private void updateLabelColor() {
+        final boolean mSundayFirst = Config.newInstance(mContext).getIsSundayFirst();
         final String packageName = mContext.getPackageName();
+        int letters[] = Utils.getLetterIDs();
         for (int i = 0; i < 7; i++) {
             final int id = mRes.getIdentifier("label_" + i, "id", packageName);
             mRemoteViews.setInt(id, "setTextColor", mWeakTextColor);
+
+            int index = i;
+            if (!mSundayFirst)
+                index = (index + 1) % letters.length;
+
+            mRemoteViews.setTextViewText(id, mContext.getResources().getString(letters[index]));
         }
     }
 

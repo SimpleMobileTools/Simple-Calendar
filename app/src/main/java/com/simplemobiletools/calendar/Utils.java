@@ -42,4 +42,9 @@ public class Utils {
         final AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, notifInMs, pendingIntent);
     }
+
+    public static int[] getLetterIDs() {
+        return new int[]{R.string.sunday_letter, R.string.monday_letter, R.string.tuesday_letter, R.string.wednesday_letter,
+                R.string.thursday_letter, R.string.friday_letter, R.string.saturday_letter};
+    }
 }
