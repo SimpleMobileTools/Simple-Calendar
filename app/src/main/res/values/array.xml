@@ -10,7 +10,6 @@
         <item>@string/none</item>
         <item>@string/daily</item>
         <item>@string/weekly</item>
-        <item>@string/monthly</item>
         <item>@string/yearly</item>
     </string-array>
 </resources>
