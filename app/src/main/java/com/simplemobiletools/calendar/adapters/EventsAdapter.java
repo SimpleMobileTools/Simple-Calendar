@@ -1,4 +1,4 @@
-package com.simplemobiletools.calendar;
+package com.simplemobiletools.calendar.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.simplemobiletools.calendar.Formatter;
+import com.simplemobiletools.calendar.R;
 import com.simplemobiletools.calendar.models.Event;
 
 import java.util.List;

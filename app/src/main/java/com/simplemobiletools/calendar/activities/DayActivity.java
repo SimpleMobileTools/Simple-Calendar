@@ -25,7 +25,7 @@ import android.widget.TextView;
 
 import com.simplemobiletools.calendar.Constants;
 import com.simplemobiletools.calendar.DBHelper;
-import com.simplemobiletools.calendar.EventsAdapter;
+import com.simplemobiletools.calendar.adapters.EventsAdapter;
 import com.simplemobiletools.calendar.Formatter;
 import com.simplemobiletools.calendar.R;
 import com.simplemobiletools.calendar.Utils;
