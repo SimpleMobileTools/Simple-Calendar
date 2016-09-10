@@ -131,7 +131,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 final String description = cursor.getString(cursor.getColumnIndex(COL_DESCRIPTION));
                 final int reminderMinutes = cursor.getInt(cursor.getColumnIndex(COL_REMINDER_MINUTES));
                 cursor.close();
-                return new Event(id, startTS, endTS, title, description, reminderMinutes);
+                return new Event(id, startTS, endTS, title, description, reminderMinutes, 0);
             }
         }
         return null;
@@ -177,7 +177,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 final String title = cursor.getString(cursor.getColumnIndex(COL_TITLE));
                 final String description = cursor.getString(cursor.getColumnIndex(COL_DESCRIPTION));
                 final int reminderMinutes = cursor.getInt(cursor.getColumnIndex(COL_REMINDER_MINUTES));
-                events.add(new Event(id, startTS, endTS, title, description, reminderMinutes));
+                events.add(new Event(id, startTS, endTS, title, description, reminderMinutes, 0));
             } while (cursor.moveToNext());
         }
         cursor.close();

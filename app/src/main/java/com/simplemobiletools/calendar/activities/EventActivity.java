@@ -34,6 +34,10 @@ import butterknife.OnClick;
 import butterknife.OnItemSelected;
 
 public class EventActivity extends SimpleActivity implements DBHelper.DBOperationsListener {
+    private static final int DAILY = 86400;
+    private static final int WEEKLY = 604800;
+    private static final int YEARLY = 31536000;
+
     @BindView(R.id.event_start_date) TextView mStartDate;
     @BindView(R.id.event_start_time) TextView mStartTime;
     @BindView(R.id.event_end_date) TextView mEndDate;
@@ -42,6 +46,7 @@ public class EventActivity extends SimpleActivity implements DBHelper.DBOperatio
     @BindView(R.id.event_description) EditText mDescriptionET;
     @BindView(R.id.event_reminder_other) EditText mReminderOtherET;
     @BindView(R.id.event_reminder) AppCompatSpinner mReminder;
+    @BindView(R.id.event_repetition) AppCompatSpinner mRepetition;
 
     private static DateTime mEventStartDateTime;
     private static DateTime mEventEndDateTime;
@@ -79,6 +84,7 @@ public class EventActivity extends SimpleActivity implements DBHelper.DBOperatio
         updateEndDate();
         updateEndTime();
         setupReminder();
+        setupRepetition();
 
         mWasEndDateSet = (event != null);
         mWasEndTimeSet = (event != null);
@@ -120,6 +126,23 @@ public class EventActivity extends SimpleActivity implements DBHelper.DBOperatio
                 mReminder.setSelection(2);
                 mReminderOtherET.setVisibility(View.VISIBLE);
                 mReminderOtherET.setText(String.valueOf(mEvent.getReminderMinutes()));
+                break;
+        }
+    }
+
+    private void setupRepetition() {
+        switch (mEvent.getRepeatInterval()) {
+            case DAILY:
+                mReminder.setSelection(1);
+                break;
+            case WEEKLY:
+                mReminder.setSelection(2);
+                break;
+            case YEARLY:
+                mReminder.setSelection(3);
+                break;
+            default:
+                mReminder.setSelection(0);
                 break;
         }
     }
@@ -190,12 +213,12 @@ public class EventActivity extends SimpleActivity implements DBHelper.DBOperatio
 
         final DBHelper dbHelper = DBHelper.newInstance(getApplicationContext(), this);
         final String description = mDescriptionET.getText().toString().trim();
-        final int reminderMinutes = getReminderMinutes();
         mEvent.setStartTS(startTS);
         mEvent.setEndTS(endTS);
         mEvent.setTitle(title);
         mEvent.setDescription(description);
-        mEvent.setReminderMinutes(reminderMinutes);
+        mEvent.setReminderMinutes(getReminderMinutes());
+        mEvent.setRepeatInterval(getRepeatInterval());
         if (mEvent.getId() == 0) {
             dbHelper.insert(mEvent);
         } else {
@@ -215,6 +238,19 @@ public class EventActivity extends SimpleActivity implements DBHelper.DBOperatio
                     return 0;
 
                 return Integer.valueOf(value);
+        }
+    }
+
+    private int getRepeatInterval() {
+        switch (mRepetition.getSelectedItemPosition()) {
+            case 1:
+                return DAILY;
+            case 2:
+                return WEEKLY;
+            case 3:
+                return YEARLY;
+            default:
+                return 0;
         }
     }
 

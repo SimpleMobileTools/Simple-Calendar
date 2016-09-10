@@ -3,13 +3,14 @@ package com.simplemobiletools.calendar.models;
 import java.io.Serializable;
 
 public class Event implements Serializable {
-    private static final long serialVersionUID = -32456795132354616L;
+    private static final long serialVersionUID = -32456795132344616L;
     private int mId;
     private int mStartTS;
     private int mEndTS;
     private String mTitle;
     private String mDescription;
     private int mReminderMinutes;
+    private int mRepeatInterval;
 
     public Event() {
         mId = 0;
@@ -18,15 +19,17 @@ public class Event implements Serializable {
         mTitle = "";
         mDescription = "";
         mReminderMinutes = 0;
+        mRepeatInterval = 0;
     }
 
-    public Event(int id, int startTS, int endTS, String title, String description, int reminerMinutes) {
+    public Event(int id, int startTS, int endTS, String title, String description, int reminderMinutes, int repeatInterval) {
         mId = id;
         mStartTS = startTS;
         mEndTS = endTS;
         mTitle = title;
         mDescription = description;
-        mReminderMinutes = reminerMinutes;
+        mReminderMinutes = reminderMinutes;
+        mRepeatInterval = repeatInterval;
     }
 
     public int getId() {
@@ -77,6 +80,14 @@ public class Event implements Serializable {
         mReminderMinutes = reminderMinutes;
     }
 
+    public int getRepeatInterval() {
+        return mRepeatInterval;
+    }
+
+    public void setRepeatInterval(int repeatInterval) {
+        mRepeatInterval = repeatInterval;
+    }
+
     @Override
     public String toString() {
         return "Event {" +
@@ -86,6 +97,7 @@ public class Event implements Serializable {
                 ", title=" + getTitle() +
                 ", description=" + getDescription() +
                 ", reminderMinutes=" + getReminderMinutes() +
+                ", repeatInterval=" + getRepeatInterval() +
                 "}";
     }
 }
