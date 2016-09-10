@@ -133,5 +133,22 @@
             android:textSize="@dimen/day_text_size"
             android:visibility="invisible"/>
 
+        <TextView
+            android:id="@+id/event_repetition_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/event_reminder"
+            android:layout_marginTop="@dimen/activity_margin"
+            android:text="@string/repetition"
+            android:textSize="@dimen/day_text_size"/>
+
+        <android.support.v7.widget.AppCompatSpinner
+            android:id="@+id/event_repetition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/event_repetition_label"
+            android:entries="@array/repetition"
+            android:padding="@dimen/activity_margin"/>
+
     </RelativeLayout>
 </ScrollView>

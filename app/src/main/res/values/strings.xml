@@ -21,6 +21,12 @@
     <string name="off">Off</string>
     <string name="at_start">At start</string>
     <string name="minutes_before">Minutes before</string>
+    <string name="repetition">Repetition</string>
+    <string name="none">None</string>
+    <string name="daily">Daily</string>
+    <string name="weekly">Weekly</string>
+    <string name="monthly">Monthly</string>
+    <string name="yearly">Yearly</string>
 
     <!-- Day details -->
     <string name="details">Details</string>

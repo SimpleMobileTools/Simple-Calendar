@@ -5,4 +5,12 @@
         <item>@string/at_start</item>
         <item>@string/minutes_before</item>
     </string-array>
+
+    <string-array name="repetition">
+        <item>@string/none</item>
+        <item>@string/daily</item>
+        <item>@string/weekly</item>
+        <item>@string/monthly</item>
+        <item>@string/yearly</item>
+    </string-array>
 </resources>

@@ -21,6 +21,12 @@
     <string name="off">オフ</string>
     <string name="at_start">開始時</string>
     <string name="minutes_before">分前</string>
+    <string name="repetition">Repetition</string>
+    <string name="none">None</string>
+    <string name="daily">Daily</string>
+    <string name="weekly">Weekly</string>
+    <string name="monthly">Monthly</string>
+    <string name="yearly">Yearly</string>
 
     <!-- Day details -->
     <string name="details">詳細</string>
