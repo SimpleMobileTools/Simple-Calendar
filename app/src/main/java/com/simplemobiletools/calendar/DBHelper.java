@@ -19,15 +19,20 @@ public class DBHelper extends SQLiteOpenHelper {
     private static DBOperationsListener mCallback;
 
     private static final String DB_NAME = "events.db";
-    private static final int DB_VERSION = 2;
+    private static final int DB_VERSION = 3;
 
-    private static final String TABLE_NAME = "events";
+    private static final String MAIN_TABLE_NAME = "events";
     private static final String COL_ID = "id";
     private static final String COL_START_TS = "start_ts";
     private static final String COL_END_TS = "end_ts";
     private static final String COL_TITLE = "title";
     private static final String COL_DESCRIPTION = "description";
     private static final String COL_REMINDER_MINUTES = "reminder_minutes";
+
+    private static final String META_TABLE_NAME = "events_meta";
+    private static final String COL_EVENT_ID = "event_id";
+    private static final String COL_REPEAT_START = "repeat_start";
+    private static final String COL_REPEAT_INTERVAL = "repeat_interval";
 
     public static DBHelper newInstance(Context context, DBOperationsListener callback) {
         mCallback = callback;
@@ -41,26 +46,43 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE " + TABLE_NAME + " (" +
+        db.execSQL("CREATE TABLE " + MAIN_TABLE_NAME + " (" +
                 COL_ID + " INTEGER PRIMARY KEY, " +
                 COL_START_TS + " INTEGER," +
                 COL_END_TS + " INTEGER," +
                 COL_TITLE + " TEXT," +
                 COL_DESCRIPTION + " TEXT," +
                 COL_REMINDER_MINUTES + " INTEGER" +
-                ")");
+                ")"
+        );
+
+        createMeta(db);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         if (oldVersion == 1) {
-            db.execSQL("ALTER TABLE " + TABLE_NAME + " ADD COLUMN " + COL_REMINDER_MINUTES + " INTEGER DEFAULT -1");
+            db.execSQL("ALTER TABLE " + MAIN_TABLE_NAME + " ADD COLUMN " + COL_REMINDER_MINUTES + " INTEGER DEFAULT -1");
         }
+
+        if (newVersion == 3) {
+            createMeta(db);
+        }
+    }
+
+    private void createMeta(SQLiteDatabase db) {
+        db.execSQL("CREATE TABLE " + META_TABLE_NAME + " (" +
+                COL_ID + " INTEGER PRIMARY KEY, " +
+                COL_EVENT_ID + " INTEGER, " +
+                COL_REPEAT_START + " INTEGER, " +
+                COL_REPEAT_INTERVAL + " INTEGER " +
+                ")"
+        );
     }
 
     public void insert(Event event) {
         final ContentValues values = fillContentValues(event);
-        long id = mDb.insert(TABLE_NAME, null, values);
+        long id = mDb.insert(MAIN_TABLE_NAME, null, values);
         event.setId((int) id);
 
         if (mCallback != null)
@@ -71,7 +93,7 @@ public class DBHelper extends SQLiteOpenHelper {
         final ContentValues values = fillContentValues(event);
         final String selection = COL_ID + " = ?";
         final String[] selectionArgs = {String.valueOf(event.getId())};
-        mDb.update(TABLE_NAME, values, selection, selectionArgs);
+        mDb.update(MAIN_TABLE_NAME, values, selection, selectionArgs);
 
         if (mCallback != null)
             mCallback.eventUpdated(event);
@@ -90,7 +112,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void deleteEvents(String[] ids) {
         final String args = TextUtils.join(", ", ids);
         final String selection = COL_ID + " IN (" + args + ")";
-        mDb.delete(TABLE_NAME, selection, null);
+        mDb.delete(MAIN_TABLE_NAME, selection, null);
 
         if (mCallback != null)
             mCallback.eventsDeleted(ids.length);
@@ -100,7 +122,7 @@ public class DBHelper extends SQLiteOpenHelper {
         final String[] projection = {COL_START_TS, COL_END_TS, COL_TITLE, COL_DESCRIPTION, COL_REMINDER_MINUTES};
         final String selection = COL_ID + " = ?";
         final String[] selectionArgs = {String.valueOf(id)};
-        final Cursor cursor = mDb.query(TABLE_NAME, projection, selection, selectionArgs, null, null, null);
+        final Cursor cursor = mDb.query(MAIN_TABLE_NAME, projection, selection, selectionArgs, null, null, null);
         if (cursor != null) {
             if (cursor.moveToFirst()) {
                 final int startTS = cursor.getInt(cursor.getColumnIndex(COL_START_TS));
@@ -120,7 +142,7 @@ public class DBHelper extends SQLiteOpenHelper {
         final String[] projection = getAllColumns();
         final String selection = COL_START_TS + " <= ? AND " + COL_END_TS + " >= ?";
         final String[] selectionArgs = {String.valueOf(toTS), String.valueOf(fromTS)};
-        final Cursor cursor = mDb.query(TABLE_NAME, projection, selection, selectionArgs, null, null, COL_START_TS);
+        final Cursor cursor = mDb.query(MAIN_TABLE_NAME, projection, selection, selectionArgs, null, null, COL_START_TS);
         if (cursor != null) {
             events = fillEvents(cursor);
         }
@@ -134,7 +156,7 @@ public class DBHelper extends SQLiteOpenHelper {
         final String[] projection = getAllColumns();
         final String selection = COL_START_TS + " > ? AND " + COL_REMINDER_MINUTES + " != ?";
         final String[] selectionArgs = {String.valueOf(DateTime.now().getMillis() / 1000), "-1"};
-        final Cursor cursor = mDb.query(TABLE_NAME, projection, selection, selectionArgs, null, null, null);
+        final Cursor cursor = mDb.query(MAIN_TABLE_NAME, projection, selection, selectionArgs, null, null, null);
         if (cursor != null) {
             events = fillEvents(cursor);
         }
