@@ -81,9 +81,13 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public void insert(Event event) {
-        final ContentValues values = fillContentValues(event);
-        long id = mDb.insert(MAIN_TABLE_NAME, null, values);
+        final ContentValues eventValues = fillContentValues(event);
+        long id = mDb.insert(MAIN_TABLE_NAME, null, eventValues);
         event.setId((int) id);
+        if (event.getRepeatInterval() != 0) {
+            final ContentValues metaValues = fillMetaValues(event);
+            mDb.insert(META_TABLE_NAME, null, metaValues);
+        }
 
         if (mCallback != null)
             mCallback.eventInserted(event);
@@ -106,6 +110,14 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(COL_TITLE, event.getTitle());
         values.put(COL_DESCRIPTION, event.getDescription());
         values.put(COL_REMINDER_MINUTES, event.getReminderMinutes());
+        return values;
+    }
+
+    private ContentValues fillMetaValues(Event event) {
+        final ContentValues values = new ContentValues();
+        values.put(COL_EVENT_ID, event.getId());
+        values.put(COL_REPEAT_START, event.getRepeatInterval());
+        values.put(COL_REPEAT_INTERVAL, event.getRepeatInterval());
         return values;
     }
 
