@@ -134,8 +134,11 @@ public class EventActivity extends SimpleActivity implements DBHelper.DBOperatio
             case Constants.WEEK:
                 mRepetition.setSelection(2);
                 break;
-            case Constants.YEAR:
+            case Constants.MONTH:
                 mRepetition.setSelection(3);
+                break;
+            case Constants.YEAR:
+                mRepetition.setSelection(4);
                 break;
             default:
                 mRepetition.setSelection(0);
@@ -244,6 +247,8 @@ public class EventActivity extends SimpleActivity implements DBHelper.DBOperatio
             case 2:
                 return Constants.WEEK;
             case 3:
+                return Constants.MONTH;
+            case 4:
                 return Constants.YEAR;
             default:
                 return 0;

@@ -164,8 +164,9 @@ public class DayActivity extends SimpleActivity
     }
 
     private void checkEvents() {
+        final int startTS = Formatter.getDayStartTS(mDayCode);
         final int endTS = Formatter.getDayEndTS(mDayCode);
-        DBHelper.newInstance(getApplicationContext(), this).getEvents(endTS, endTS);
+        DBHelper.newInstance(getApplicationContext(), this).getEvents(startTS, endTS);
     }
 
     private void updateEvents(List<Event> events) {

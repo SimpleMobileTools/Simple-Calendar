@@ -162,15 +162,11 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public void getEvents(int fromTS, int toTS) {
         List<Event> events = new ArrayList<>();
-        if (fromTS == toTS) {
-            events.addAll(getEventsFor(fromTS));
-        } else {
-            for (int ts = fromTS; ts <= toTS; ts += Constants.DAY) {
-                events.addAll(getEventsFor(ts));
-            }
+        for (int ts = fromTS; ts <= toTS; ts += Constants.DAY) {
+            events.addAll(getEventsFor(ts));
         }
 
-        final String selection = COL_START_TS + " <= ? AND " + COL_END_TS + " >= ?";
+        final String selection = COL_START_TS + " <= ? AND " + COL_END_TS + " >= ? AND " + COL_REPEAT_INTERVAL + " IS NULL";
         final String[] selectionArgs = {String.valueOf(toTS), String.valueOf(fromTS)};
         final Cursor cursor = getEventsCursor(selection, selectionArgs);
         if (cursor != null) {
@@ -183,9 +179,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private List<Event> getEventsFor(int ts) {
         List<Event> newEvents = new ArrayList<>();
-        final int dayExclusive = Constants.DAY;
+        final int dayExclusive = Constants.DAY -1;
         final String selection = "(? - " + COL_REPEAT_START + ") % " + COL_REPEAT_INTERVAL + " BETWEEN 0 AND " + dayExclusive;
-        final String[] selectionArgs = {String.valueOf(ts)};
+        final String[] selectionArgs = {String.valueOf(ts + 84600)};
         final Cursor cursor = getEventsCursor(selection, selectionArgs);
         if (cursor != null) {
             newEvents = fillEvents(cursor);
@@ -197,13 +193,15 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     private void updateEventTimes(Event e, int ts) {
-        final int periods = (ts - e.getStartTS()) / e.getRepeatInterval();
+        final int periods = (ts - e.getStartTS() + Constants.DAY) / e.getRepeatInterval();
         DateTime currStart = new DateTime(e.getStartTS() * 1000L, DateTimeZone.getDefault());
         DateTime newStart;
         if (e.getRepeatInterval() == Constants.DAY) {
             newStart = currStart.plusDays(periods);
         } else if (e.getRepeatInterval() == Constants.WEEK) {
             newStart = currStart.plusWeeks(periods);
+        } else if (e.getRepeatInterval() == Constants.MONTH) {
+            newStart = currStart.plusMonths(periods);
         } else {
             newStart = currStart.plusYears(periods);
         }
