@@ -11,7 +11,6 @@ import android.text.TextUtils;
 import com.simplemobiletools.calendar.models.Event;
 
 import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +34,8 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String COL_EVENT_ID = "event_id";
     private static final String COL_REPEAT_START = "repeat_start";
     private static final String COL_REPEAT_INTERVAL = "repeat_interval";
+    private static final String COL_REPEAT_MONTH = "repeat_month";
+    private static final String COL_REPEAT_DAY = "repeat_day";
 
     public static DBHelper newInstance(Context context, DBOperationsListener callback) {
         mCallback = callback;
@@ -76,7 +77,9 @@ public class DBHelper extends SQLiteOpenHelper {
                 COL_ID + " INTEGER PRIMARY KEY, " +
                 COL_EVENT_ID + " INTEGER UNIQUE, " +
                 COL_REPEAT_START + " INTEGER, " +
-                COL_REPEAT_INTERVAL + " INTEGER " +
+                COL_REPEAT_INTERVAL + " INTEGER, " +
+                COL_REPEAT_MONTH + " INTEGER, " +
+                COL_REPEAT_DAY + " INTEGER" +
                 ")");
     }
 
@@ -122,10 +125,21 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     private ContentValues fillMetaValues(Event event) {
+        final int repeatInterval = event.getRepeatInterval();
         final ContentValues values = new ContentValues();
         values.put(COL_EVENT_ID, event.getId());
         values.put(COL_REPEAT_START, event.getStartTS());
-        values.put(COL_REPEAT_INTERVAL, event.getRepeatInterval());
+        values.put(COL_REPEAT_INTERVAL, repeatInterval);
+        final DateTime dateTime = Formatter.getDateTimeFromTS(event.getStartTS());
+
+        if (repeatInterval == Constants.MONTH || repeatInterval == Constants.YEAR) {
+            values.put(COL_REPEAT_DAY, dateTime.getDayOfMonth());
+        }
+
+        if (repeatInterval == Constants.YEAR) {
+            values.put(COL_REPEAT_MONTH, dateTime.getMonthOfYear());
+        }
+
         return values;
     }
 
@@ -179,7 +193,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private List<Event> getEventsFor(int ts) {
         List<Event> newEvents = new ArrayList<>();
-        final int dayExclusive = Constants.DAY -1;
+        final int dayExclusive = Constants.DAY - 1;
         final String selection = "(? - " + COL_REPEAT_START + ") % " + COL_REPEAT_INTERVAL + " BETWEEN 0 AND " + dayExclusive;
         final String[] selectionArgs = {String.valueOf(ts + 84600)};
         final Cursor cursor = getEventsCursor(selection, selectionArgs);
@@ -194,7 +208,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private void updateEventTimes(Event e, int ts) {
         final int periods = (ts - e.getStartTS() + Constants.DAY) / e.getRepeatInterval();
-        DateTime currStart = new DateTime(e.getStartTS() * 1000L, DateTimeZone.getDefault());
+        DateTime currStart = Formatter.getDateTimeFromTS(e.getStartTS());
         DateTime newStart;
         if (e.getRepeatInterval() == Constants.DAY) {
             newStart = currStart.plusDays(periods);

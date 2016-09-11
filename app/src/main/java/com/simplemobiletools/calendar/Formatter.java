@@ -46,7 +46,7 @@ public class Formatter {
     }
 
     public static String getTime(int ts) {
-        final DateTime dateTime = new DateTime(ts * 1000L, DateTimeZone.getDefault());
+        final DateTime dateTime = getDateTimeFromTS(ts);
         return getEventTime(dateTime);
     }
 
@@ -61,12 +61,16 @@ public class Formatter {
     }
 
     public static String getDayCodeFromTS(int ts) {
-        final DateTime dateTime = new DateTime(ts * 1000L, DateTimeZone.getDefault());
+        final DateTime dateTime = getDateTimeFromTS(ts);
         return dateTime.toString(Formatter.DAYCODE_PATTERN);
     }
 
     public static String getDayCodeFromDateTime(DateTime dateTime) {
         return dateTime.toString(Formatter.DAYCODE_PATTERN);
+    }
+
+    public static DateTime getDateTimeFromTS(int ts) {
+        return new DateTime(ts * 1000L, DateTimeZone.getDefault());
     }
 
     // use manually translated month names, as DateFormat and Joda have issues with a lot of languages

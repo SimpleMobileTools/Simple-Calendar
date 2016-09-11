@@ -88,8 +88,8 @@ public class EventActivity extends SimpleActivity implements DBHelper.DBOperatio
 
     private void setupEditEvent() {
         setTitle(getResources().getString(R.string.edit_event));
-        mEventStartDateTime = new DateTime(mEvent.getStartTS() * 1000L, DateTimeZone.getDefault());
-        mEventEndDateTime = new DateTime(mEvent.getEndTS() * 1000L, DateTimeZone.getDefault());
+        mEventStartDateTime = Formatter.getDateTimeFromTS(mEvent.getStartTS());
+        mEventEndDateTime = Formatter.getDateTimeFromTS(mEvent.getEndTS());
         mTitleET.setText(mEvent.getTitle());
         mDescriptionET.setText(mEvent.getDescription());
         hideKeyboard();
