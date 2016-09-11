@@ -170,21 +170,7 @@ public class DBHelper extends SQLiteOpenHelper {
             if (cursor != null) {
                 final List<Event> newEvents = fillEvents(cursor);
                 for (Event e : newEvents) {
-                    final int periods = (ts - e.getStartTS()) / e.getRepeatInterval();
-                    DateTime currStart = new DateTime(e.getStartTS() * 1000L, DateTimeZone.getDefault());
-                    DateTime newStart;
-                    if (e.getRepeatInterval() == Constants.DAY) {
-                        newStart = currStart.plusDays(periods);
-                    } else if (e.getRepeatInterval() == Constants.WEEK) {
-                        newStart = currStart.plusWeeks(periods);
-                    } else {
-                        newStart = currStart.plusYears(periods);
-                    }
-
-                    final int newStartTS = (int) (newStart.getMillis() / 1000);
-                    final int newEndTS = newStartTS + (e.getEndTS() - e.getStartTS());
-                    e.setStartTS(newStartTS);
-                    e.setEndTS(newEndTS);
+                    updateEventTimes(e, ts);
                 }
                 events.addAll(newEvents);
             }
@@ -199,6 +185,24 @@ public class DBHelper extends SQLiteOpenHelper {
 
         if (mCallback != null)
             mCallback.gotEvents(events);
+    }
+
+    private void updateEventTimes(Event e, int ts) {
+        final int periods = (ts - e.getStartTS()) / e.getRepeatInterval();
+        DateTime currStart = new DateTime(e.getStartTS() * 1000L, DateTimeZone.getDefault());
+        DateTime newStart;
+        if (e.getRepeatInterval() == Constants.DAY) {
+            newStart = currStart.plusDays(periods);
+        } else if (e.getRepeatInterval() == Constants.WEEK) {
+            newStart = currStart.plusWeeks(periods);
+        } else {
+            newStart = currStart.plusYears(periods);
+        }
+
+        final int newStartTS = (int) (newStart.getMillis() / 1000);
+        final int newEndTS = newStartTS + (e.getEndTS() - e.getStartTS());
+        e.setStartTS(newStartTS);
+        e.setEndTS(newEndTS);
     }
 
     public List<Event> getEventsAtReboot() {
