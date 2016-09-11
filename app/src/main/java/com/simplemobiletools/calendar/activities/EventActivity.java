@@ -133,16 +133,16 @@ public class EventActivity extends SimpleActivity implements DBHelper.DBOperatio
     private void setupRepetition() {
         switch (mEvent.getRepeatInterval()) {
             case DAILY:
-                mReminder.setSelection(1);
+                mRepetition.setSelection(1);
                 break;
             case WEEKLY:
-                mReminder.setSelection(2);
+                mRepetition.setSelection(2);
                 break;
             case YEARLY:
-                mReminder.setSelection(3);
+                mRepetition.setSelection(3);
                 break;
             default:
-                mReminder.setSelection(0);
+                mRepetition.setSelection(0);
                 break;
         }
     }

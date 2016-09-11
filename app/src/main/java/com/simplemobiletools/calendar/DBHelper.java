@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteQueryBuilder;
 import android.text.TextUtils;
 
 import com.simplemobiletools.calendar.models.Event;
@@ -151,10 +152,10 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public void getEvents(int fromTS, int toTS) {
         List<Event> events = new ArrayList<>();
-        final String[] projection = getAllColumns();
         final String selection = COL_START_TS + " <= ? AND " + COL_END_TS + " >= ?";
         final String[] selectionArgs = {String.valueOf(toTS), String.valueOf(fromTS)};
-        final Cursor cursor = mDb.query(MAIN_TABLE_NAME, projection, selection, selectionArgs, null, null, COL_START_TS);
+        final Cursor cursor = getEventsCursor(selection, selectionArgs);
+
         if (cursor != null) {
             events = fillEvents(cursor);
         }
@@ -165,18 +166,27 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public List<Event> getEventsAtReboot() {
         List<Event> events = new ArrayList<>();
-        final String[] projection = getAllColumns();
         final String selection = COL_START_TS + " > ? AND " + COL_REMINDER_MINUTES + " != ?";
         final String[] selectionArgs = {String.valueOf(DateTime.now().getMillis() / 1000), "-1"};
-        final Cursor cursor = mDb.query(MAIN_TABLE_NAME, projection, selection, selectionArgs, null, null, null);
+        final Cursor cursor = getEventsCursor(selection, selectionArgs);
+
         if (cursor != null) {
             events = fillEvents(cursor);
         }
         return events;
     }
 
+    private Cursor getEventsCursor(String selection, String[] selectionArgs) {
+        final SQLiteQueryBuilder builder = new SQLiteQueryBuilder();
+        builder.setTables(MAIN_TABLE_NAME + " LEFT OUTER JOIN " + META_TABLE_NAME + " ON " + COL_EVENT_ID + " = " + MAIN_TABLE_NAME + "."
+                + COL_ID);
+        final String[] projection = getAllColumns();
+        return builder.query(mDb, projection, selection, selectionArgs, MAIN_TABLE_NAME + "." + COL_ID, null, COL_START_TS);
+    }
+
     private String[] getAllColumns() {
-        return new String[]{COL_ID, COL_START_TS, COL_END_TS, COL_TITLE, COL_DESCRIPTION, COL_REMINDER_MINUTES};
+        return new String[]{MAIN_TABLE_NAME + "." + COL_ID, COL_START_TS, COL_END_TS, COL_TITLE, COL_DESCRIPTION, COL_REMINDER_MINUTES,
+                COL_REPEAT_INTERVAL};
     }
 
     private List<Event> fillEvents(Cursor cursor) {
@@ -189,7 +199,8 @@ public class DBHelper extends SQLiteOpenHelper {
                 final String title = cursor.getString(cursor.getColumnIndex(COL_TITLE));
                 final String description = cursor.getString(cursor.getColumnIndex(COL_DESCRIPTION));
                 final int reminderMinutes = cursor.getInt(cursor.getColumnIndex(COL_REMINDER_MINUTES));
-                events.add(new Event(id, startTS, endTS, title, description, reminderMinutes, 0));
+                final int repeatInterval = cursor.getInt(cursor.getColumnIndex(COL_REPEAT_INTERVAL));
+                events.add(new Event(id, startTS, endTS, title, description, reminderMinutes, repeatInterval));
             } while (cursor.moveToNext());
         }
         cursor.close();
