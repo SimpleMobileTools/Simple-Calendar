@@ -11,6 +11,7 @@ import android.text.TextUtils;
 import com.simplemobiletools.calendar.models.Event;
 
 import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -170,7 +171,17 @@ public class DBHelper extends SQLiteOpenHelper {
                 final List<Event> newEvents = fillEvents(cursor);
                 for (Event e : newEvents) {
                     final int periods = (ts - e.getStartTS()) / e.getRepeatInterval();
-                    final int newStartTS = e.getStartTS() + periods * e.getRepeatInterval();
+                    DateTime currStart = new DateTime(e.getStartTS() * 1000L, DateTimeZone.getDefault());
+                    DateTime newStart;
+                    if (e.getRepeatInterval() == Constants.DAY) {
+                        newStart = currStart.plusDays(periods);
+                    } else if (e.getRepeatInterval() == Constants.WEEK) {
+                        newStart = currStart.plusWeeks(periods);
+                    } else {
+                        newStart = currStart.plusYears(periods);
+                    }
+
+                    final int newStartTS = (int) (newStart.getMillis() / 1000);
                     final int newEndTS = newStartTS + (e.getEndTS() - e.getStartTS());
                     e.setStartTS(newStartTS);
                     e.setEndTS(newEndTS);
