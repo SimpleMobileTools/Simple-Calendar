@@ -25,10 +25,10 @@ import android.widget.TextView;
 
 import com.simplemobiletools.calendar.Constants;
 import com.simplemobiletools.calendar.DBHelper;
-import com.simplemobiletools.calendar.adapters.EventsAdapter;
 import com.simplemobiletools.calendar.Formatter;
 import com.simplemobiletools.calendar.R;
 import com.simplemobiletools.calendar.Utils;
+import com.simplemobiletools.calendar.adapters.EventsAdapter;
 import com.simplemobiletools.calendar.models.Event;
 
 import org.joda.time.DateTime;
@@ -164,9 +164,8 @@ public class DayActivity extends SimpleActivity
     }
 
     private void checkEvents() {
-        final int startTS = Formatter.getDayStartTS(mDayCode);
         final int endTS = Formatter.getDayEndTS(mDayCode);
-        DBHelper.newInstance(getApplicationContext(), this).getEvents(startTS, endTS);
+        DBHelper.newInstance(getApplicationContext(), this).getEvents(endTS, endTS);
     }
 
     private void updateEvents(List<Event> events) {

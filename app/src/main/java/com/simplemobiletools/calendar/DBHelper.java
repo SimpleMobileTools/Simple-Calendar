@@ -162,17 +162,11 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public void getEvents(int fromTS, int toTS) {
         List<Event> events = new ArrayList<>();
-        for (int ts = fromTS; ts < toTS; ts += Constants.DAY) {
-            final int dayExclusive = Constants.DAY - 1;
-            final String selection = "(? - " + COL_REPEAT_START + ") % " + COL_REPEAT_INTERVAL + " BETWEEN 0 AND " + dayExclusive;
-            final String[] selectionArgs = {String.valueOf(ts)};
-            final Cursor cursor = getEventsCursor(selection, selectionArgs);
-            if (cursor != null) {
-                final List<Event> newEvents = fillEvents(cursor);
-                for (Event e : newEvents) {
-                    updateEventTimes(e, ts);
-                }
-                events.addAll(newEvents);
+        if (fromTS == toTS) {
+            events.addAll(getEventsFor(fromTS));
+        } else {
+            for (int ts = fromTS; ts <= toTS; ts += Constants.DAY) {
+                events.addAll(getEventsFor(ts));
             }
         }
 
@@ -185,6 +179,21 @@ public class DBHelper extends SQLiteOpenHelper {
 
         if (mCallback != null)
             mCallback.gotEvents(events);
+    }
+
+    private List<Event> getEventsFor(int ts) {
+        List<Event> newEvents = new ArrayList<>();
+        final int dayExclusive = Constants.DAY;
+        final String selection = "(? - " + COL_REPEAT_START + ") % " + COL_REPEAT_INTERVAL + " BETWEEN 0 AND " + dayExclusive;
+        final String[] selectionArgs = {String.valueOf(ts)};
+        final Cursor cursor = getEventsCursor(selection, selectionArgs);
+        if (cursor != null) {
+            newEvents = fillEvents(cursor);
+            for (Event e : newEvents) {
+                updateEventTimes(e, ts);
+            }
+        }
+        return newEvents;
     }
 
     private void updateEventTimes(Event e, int ts) {
