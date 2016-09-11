@@ -127,6 +127,9 @@ public class DBHelper extends SQLiteOpenHelper {
         final String selection = COL_ID + " IN (" + args + ")";
         mDb.delete(MAIN_TABLE_NAME, selection, null);
 
+        final String metaSelection = COL_EVENT_ID + " IN (" + args + ")";
+        mDb.delete(META_TABLE_NAME, metaSelection, null);
+
         if (mCallback != null)
             mCallback.eventsDeleted(ids.length);
     }
