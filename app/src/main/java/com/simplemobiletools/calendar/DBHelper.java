@@ -54,10 +54,9 @@ public class DBHelper extends SQLiteOpenHelper {
                 COL_TITLE + " TEXT," +
                 COL_DESCRIPTION + " TEXT," +
                 COL_REMINDER_MINUTES + " INTEGER" +
-                ")"
-        );
+                ")");
 
-        createMeta(db);
+        createMetaTable(db);
     }
 
     @Override
@@ -67,18 +66,17 @@ public class DBHelper extends SQLiteOpenHelper {
         }
 
         if (newVersion == 3) {
-            createMeta(db);
+            createMetaTable(db);
         }
     }
 
-    private void createMeta(SQLiteDatabase db) {
+    private void createMetaTable(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + META_TABLE_NAME + " (" +
                 COL_ID + " INTEGER PRIMARY KEY, " +
-                COL_EVENT_ID + " INTEGER, " +
+                COL_EVENT_ID + " INTEGER UNIQUE, " +
                 COL_REPEAT_START + " INTEGER, " +
                 COL_REPEAT_INTERVAL + " INTEGER " +
-                ")"
-        );
+                ")");
     }
 
     public void insert(Event event) {
@@ -95,10 +93,18 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public void update(Event event) {
+        final String[] selectionArgs = {String.valueOf(event.getId())};
         final ContentValues values = fillContentValues(event);
         final String selection = COL_ID + " = ?";
-        final String[] selectionArgs = {String.valueOf(event.getId())};
         mDb.update(MAIN_TABLE_NAME, values, selection, selectionArgs);
+
+        if (event.getRepeatInterval() == 0) {
+            final String metaSelection = COL_EVENT_ID + " = ?";
+            mDb.delete(META_TABLE_NAME, metaSelection, selectionArgs);
+        } else {
+            final ContentValues metaValues = fillMetaValues(event);
+            mDb.insertWithOnConflict(META_TABLE_NAME, null, metaValues, SQLiteDatabase.CONFLICT_REPLACE);
+        }
 
         if (mCallback != null)
             mCallback.eventUpdated(event);
@@ -117,7 +123,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private ContentValues fillMetaValues(Event event) {
         final ContentValues values = new ContentValues();
         values.put(COL_EVENT_ID, event.getId());
-        values.put(COL_REPEAT_START, event.getRepeatInterval());
+        values.put(COL_REPEAT_START, event.getStartTS());
         values.put(COL_REPEAT_INTERVAL, event.getRepeatInterval());
         return values;
     }
@@ -181,8 +187,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private Cursor getEventsCursor(String selection, String[] selectionArgs) {
         final SQLiteQueryBuilder builder = new SQLiteQueryBuilder();
-        builder.setTables(MAIN_TABLE_NAME + " LEFT OUTER JOIN " + META_TABLE_NAME + " ON " + COL_EVENT_ID + " = " + MAIN_TABLE_NAME + "."
-                + COL_ID);
+        builder.setTables(
+                MAIN_TABLE_NAME + " LEFT OUTER JOIN " + META_TABLE_NAME + " ON " + COL_EVENT_ID + " = " + MAIN_TABLE_NAME + "." + COL_ID);
         final String[] projection = getAllColumns();
         return builder.query(mDb, projection, selection, selectionArgs, MAIN_TABLE_NAME + "." + COL_ID, null, COL_START_TS);
     }
