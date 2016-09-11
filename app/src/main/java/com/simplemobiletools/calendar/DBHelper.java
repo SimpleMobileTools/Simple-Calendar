@@ -170,7 +170,10 @@ public class DBHelper extends SQLiteOpenHelper {
                 final List<Event> newEvents = fillEvents(cursor);
                 for (Event e : newEvents) {
                     final int periods = (ts - e.getStartTS()) / e.getRepeatInterval();
-                    e.setStartTS(e.getStartTS() + periods * e.getRepeatInterval());
+                    final int newStartTS = e.getStartTS() + periods * e.getRepeatInterval();
+                    final int newEndTS = newStartTS + (e.getEndTS() - e.getStartTS());
+                    e.setStartTS(newStartTS);
+                    e.setEndTS(newEndTS);
                 }
                 events.addAll(newEvents);
             }
