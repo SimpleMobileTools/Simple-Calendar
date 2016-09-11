@@ -34,10 +34,6 @@ import butterknife.OnClick;
 import butterknife.OnItemSelected;
 
 public class EventActivity extends SimpleActivity implements DBHelper.DBOperationsListener {
-    private static final int DAILY = 86400;
-    private static final int WEEKLY = 604800;
-    private static final int YEARLY = 31536000;
-
     @BindView(R.id.event_start_date) TextView mStartDate;
     @BindView(R.id.event_start_time) TextView mStartTime;
     @BindView(R.id.event_end_date) TextView mEndDate;
@@ -132,13 +128,13 @@ public class EventActivity extends SimpleActivity implements DBHelper.DBOperatio
 
     private void setupRepetition() {
         switch (mEvent.getRepeatInterval()) {
-            case DAILY:
+            case Constants.DAY:
                 mRepetition.setSelection(1);
                 break;
-            case WEEKLY:
+            case Constants.WEEK:
                 mRepetition.setSelection(2);
                 break;
-            case YEARLY:
+            case Constants.YEAR:
                 mRepetition.setSelection(3);
                 break;
             default:
@@ -244,11 +240,11 @@ public class EventActivity extends SimpleActivity implements DBHelper.DBOperatio
     private int getRepeatInterval() {
         switch (mRepetition.getSelectedItemPosition()) {
             case 1:
-                return DAILY;
+                return Constants.DAY;
             case 2:
-                return WEEKLY;
+                return Constants.WEEK;
             case 3:
-                return YEARLY;
+                return Constants.YEAR;
             default:
                 return 0;
         }

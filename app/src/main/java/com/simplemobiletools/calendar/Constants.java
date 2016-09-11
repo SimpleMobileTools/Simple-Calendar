@@ -7,6 +7,10 @@ public class Constants {
     public static final String DAY_CODE = "day_code";
     public static final String EVENT = "event";
 
+    public static final int DAY = 86400;
+    public static final int WEEK = 604800;
+    public static final int YEAR = 31536000;
+
     // Shared Preferences
     public static final String PREFS_KEY = "Calendar";
     public static final String IS_FIRST_RUN = "is_first_run";

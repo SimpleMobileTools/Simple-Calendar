@@ -161,12 +161,26 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public void getEvents(int fromTS, int toTS) {
         List<Event> events = new ArrayList<>();
+        for (int ts = fromTS; ts < toTS; ts += Constants.DAY) {
+            final int dayExclusive = Constants.DAY - 1;
+            final String selection = "(? - " + COL_REPEAT_START + ") % " + COL_REPEAT_INTERVAL + " BETWEEN 0 AND " + dayExclusive;
+            final String[] selectionArgs = {String.valueOf(ts)};
+            final Cursor cursor = getEventsCursor(selection, selectionArgs);
+            if (cursor != null) {
+                final List<Event> newEvents = fillEvents(cursor);
+                for (Event e : newEvents) {
+                    final int periods = (ts - e.getStartTS()) / e.getRepeatInterval();
+                    e.setStartTS(e.getStartTS() + periods * e.getRepeatInterval());
+                }
+                events.addAll(newEvents);
+            }
+        }
+
         final String selection = COL_START_TS + " <= ? AND " + COL_END_TS + " >= ?";
         final String[] selectionArgs = {String.valueOf(toTS), String.valueOf(fromTS)};
         final Cursor cursor = getEventsCursor(selection, selectionArgs);
-
         if (cursor != null) {
-            events = fillEvents(cursor);
+            events.addAll(fillEvents(cursor));
         }
 
         if (mCallback != null)
@@ -205,10 +219,10 @@ public class DBHelper extends SQLiteOpenHelper {
                 final int id = cursor.getInt(cursor.getColumnIndex(COL_ID));
                 final int startTS = cursor.getInt(cursor.getColumnIndex(COL_START_TS));
                 final int endTS = cursor.getInt(cursor.getColumnIndex(COL_END_TS));
-                final String title = cursor.getString(cursor.getColumnIndex(COL_TITLE));
-                final String description = cursor.getString(cursor.getColumnIndex(COL_DESCRIPTION));
                 final int reminderMinutes = cursor.getInt(cursor.getColumnIndex(COL_REMINDER_MINUTES));
                 final int repeatInterval = cursor.getInt(cursor.getColumnIndex(COL_REPEAT_INTERVAL));
+                final String title = cursor.getString(cursor.getColumnIndex(COL_TITLE));
+                final String description = cursor.getString(cursor.getColumnIndex(COL_DESCRIPTION));
                 events.add(new Event(id, startTS, endTS, title, description, reminderMinutes, repeatInterval));
             } while (cursor.moveToNext());
         }
