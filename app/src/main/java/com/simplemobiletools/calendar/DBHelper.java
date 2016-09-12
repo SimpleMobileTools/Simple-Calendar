@@ -193,12 +193,15 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private List<Event> getEventsFor(int ts) {
         List<Event> newEvents = new ArrayList<>();
+
+        // get daily and weekly events
         final int dayExclusive = Constants.DAY - 1;
-        final String selection = "(? - " + COL_REPEAT_START + ") % " + COL_REPEAT_INTERVAL + " BETWEEN 0 AND " + dayExclusive;
+        final String selection = "(" + COL_REPEAT_INTERVAL + " = " + Constants.DAY + " OR " + COL_REPEAT_INTERVAL + " = " + Constants.WEEK +
+                ") AND (? - " + COL_REPEAT_START + ") % " + COL_REPEAT_INTERVAL + " BETWEEN 0 AND " + dayExclusive;
         final String[] selectionArgs = {String.valueOf(ts + 84600)};
         final Cursor cursor = getEventsCursor(selection, selectionArgs);
         if (cursor != null) {
-            newEvents = fillEvents(cursor);
+            newEvents.addAll(fillEvents(cursor));
             for (Event e : newEvents) {
                 updateEventTimes(e, ts);
             }
@@ -248,7 +251,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private String[] getAllColumns() {
         return new String[]{MAIN_TABLE_NAME + "." + COL_ID, COL_START_TS, COL_END_TS, COL_TITLE, COL_DESCRIPTION, COL_REMINDER_MINUTES,
-                COL_REPEAT_INTERVAL};
+                COL_REPEAT_INTERVAL, COL_REPEAT_MONTH, COL_REPEAT_DAY};
     }
 
     private List<Event> fillEvents(Cursor cursor) {
