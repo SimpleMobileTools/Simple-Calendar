@@ -192,20 +192,36 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     private List<Event> getEventsFor(int ts) {
-        List<Event> newEvents = new ArrayList<>();
+        final List<Event> newEvents = new ArrayList<>();
+        final int dayExclusive = Constants.DAY - 1;
+        final int dayEnd = ts + dayExclusive;
 
         // get daily and weekly events
-        final int dayExclusive = Constants.DAY - 1;
-        final String selection = "(" + COL_REPEAT_INTERVAL + " = " + Constants.DAY + " OR " + COL_REPEAT_INTERVAL + " = " + Constants.WEEK +
+        String selection = "(" + COL_REPEAT_INTERVAL + " = " + Constants.DAY + " OR " + COL_REPEAT_INTERVAL + " = " + Constants.WEEK +
                 ") AND (? - " + COL_REPEAT_START + ") % " + COL_REPEAT_INTERVAL + " BETWEEN 0 AND " + dayExclusive;
-        final String[] selectionArgs = {String.valueOf(ts + 84600)};
-        final Cursor cursor = getEventsCursor(selection, selectionArgs);
+        String[] selectionArgs = {String.valueOf(dayEnd)};
+        Cursor cursor = getEventsCursor(selection, selectionArgs);
         if (cursor != null) {
-            newEvents.addAll(fillEvents(cursor));
-            for (Event e : newEvents) {
+            final List<Event> currEvents = fillEvents(cursor);
+            for (Event e : currEvents) {
                 updateEventTimes(e, ts);
             }
+            newEvents.addAll(currEvents);
         }
+
+        // get monthly events
+        final DateTime dateTime = Formatter.getDateTimeFromTS(ts);
+        selection = COL_REPEAT_INTERVAL + " = " + Constants.MONTH + " AND " + COL_REPEAT_DAY + " = " + dateTime.getDayOfMonth() +
+                " AND " + COL_REPEAT_START + " <= " + dayEnd;
+        cursor = getEventsCursor(selection, null);
+        if (cursor != null) {
+            final List<Event> currEvents = fillEvents(cursor);
+            for (Event e : currEvents) {
+                updateEventTimes(e, ts);
+            }
+            newEvents.addAll(currEvents);
+        }
+
         return newEvents;
     }
 
