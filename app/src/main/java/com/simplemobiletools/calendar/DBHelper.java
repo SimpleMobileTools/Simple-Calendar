@@ -195,46 +195,37 @@ public class DBHelper extends SQLiteOpenHelper {
         final List<Event> newEvents = new ArrayList<>();
         final int dayExclusive = Constants.DAY - 1;
         final int dayEnd = ts + dayExclusive;
+        final DateTime dateTime = Formatter.getDateTimeFromTS(ts);
 
         // get daily and weekly events
         String selection = "(" + COL_REPEAT_INTERVAL + " = " + Constants.DAY + " OR " + COL_REPEAT_INTERVAL + " = " + Constants.WEEK +
-                ") AND (? - " + COL_REPEAT_START + ") % " + COL_REPEAT_INTERVAL + " BETWEEN 0 AND " + dayExclusive;
-        String[] selectionArgs = {String.valueOf(dayEnd)};
-        Cursor cursor = getEventsCursor(selection, selectionArgs);
-        if (cursor != null) {
-            final List<Event> currEvents = fillEvents(cursor);
-            for (Event e : currEvents) {
-                updateEventTimes(e, ts);
-            }
-            newEvents.addAll(currEvents);
-        }
+                ") AND (" + dayEnd + " - " + COL_REPEAT_START + ") % " + COL_REPEAT_INTERVAL + " BETWEEN 0 AND " + dayExclusive;
+        newEvents.addAll(getEvents(selection, ts));
 
         // get monthly events
-        final DateTime dateTime = Formatter.getDateTimeFromTS(ts);
         selection = COL_REPEAT_INTERVAL + " = " + Constants.MONTH + " AND " + COL_REPEAT_DAY + " = " + dateTime.getDayOfMonth() +
                 " AND " + COL_REPEAT_START + " <= " + dayEnd;
-        cursor = getEventsCursor(selection, null);
-        if (cursor != null) {
-            final List<Event> currEvents = fillEvents(cursor);
-            for (Event e : currEvents) {
-                updateEventTimes(e, ts);
-            }
-            newEvents.addAll(currEvents);
-        }
+        newEvents.addAll(getEvents(selection, ts));
 
         // get yearly events
         selection = COL_REPEAT_INTERVAL + " = " + Constants.YEAR + " AND " + COL_REPEAT_MONTH + " = " + dateTime.getMonthOfYear() + " AND " +
                 COL_REPEAT_DAY + " = " + dateTime.getDayOfMonth() + " AND " + COL_REPEAT_START + " <= " + dayEnd;
-        cursor = getEventsCursor(selection, null);
+        newEvents.addAll(getEvents(selection, ts));
+
+        return newEvents;
+    }
+
+    private List<Event> getEvents(String selection, int ts) {
+        final List<Event> events = new ArrayList<>();
+        final Cursor cursor = getEventsCursor(selection, null);
         if (cursor != null) {
             final List<Event> currEvents = fillEvents(cursor);
             for (Event e : currEvents) {
                 updateEventTimes(e, ts);
             }
-            newEvents.addAll(currEvents);
+            events.addAll(currEvents);
         }
-
-        return newEvents;
+        return events;
     }
 
     private void updateEventTimes(Event e, int ts) {
