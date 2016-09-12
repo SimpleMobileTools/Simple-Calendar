@@ -222,6 +222,18 @@ public class DBHelper extends SQLiteOpenHelper {
             newEvents.addAll(currEvents);
         }
 
+        // get yearly events
+        selection = COL_REPEAT_INTERVAL + " = " + Constants.YEAR + " AND " + COL_REPEAT_MONTH + " = " + dateTime.getMonthOfYear() + " AND " +
+                COL_REPEAT_DAY + " = " + dateTime.getDayOfMonth() + " AND " + COL_REPEAT_START + " <= " + dayEnd;
+        cursor = getEventsCursor(selection, null);
+        if (cursor != null) {
+            final List<Event> currEvents = fillEvents(cursor);
+            for (Event e : currEvents) {
+                updateEventTimes(e, ts);
+            }
+            newEvents.addAll(currEvents);
+        }
+
         return newEvents;
     }
 
