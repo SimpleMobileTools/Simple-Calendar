@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -30,6 +31,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
 import butterknife.OnItemSelected;
 
@@ -43,6 +45,7 @@ public class EventActivity extends SimpleActivity implements DBHelper.DBOperatio
     @BindView(R.id.event_reminder_other) EditText mReminderOtherET;
     @BindView(R.id.event_reminder) AppCompatSpinner mReminder;
     @BindView(R.id.event_repetition) AppCompatSpinner mRepetition;
+    @BindView(R.id.event_end_checkbox) CheckBox mEndCheckbox;
 
     private static DateTime mEventStartDateTime;
     private static DateTime mEventEndDateTime;
@@ -81,6 +84,7 @@ public class EventActivity extends SimpleActivity implements DBHelper.DBOperatio
         updateEndTime();
         setupReminder();
         setupRepetition();
+        setupEndCheckbox();
 
         mWasEndDateSet = (event != null);
         mWasEndTimeSet = (event != null);
@@ -90,6 +94,7 @@ public class EventActivity extends SimpleActivity implements DBHelper.DBOperatio
         setTitle(getResources().getString(R.string.edit_event));
         mEventStartDateTime = Formatter.getDateTimeFromTS(mEvent.getStartTS());
         mEventEndDateTime = Formatter.getDateTimeFromTS(mEvent.getEndTS());
+        mEndCheckbox.setChecked(!mEventStartDateTime.equals(mEventEndDateTime));
         mTitleET.setText(mEvent.getTitle());
         mDescriptionET.setText(mEvent.getDescription());
         hideKeyboard();
@@ -144,6 +149,16 @@ public class EventActivity extends SimpleActivity implements DBHelper.DBOperatio
                 mRepetition.setSelection(0);
                 break;
         }
+    }
+
+    private void setupEndCheckbox() {
+        mEndCheckbox.setTextColor(mStartDate.getCurrentTextColor());
+    }
+
+    @OnCheckedChanged(R.id.event_end_checkbox)
+    public void checkChanged(boolean isChecked) {
+        mEndDate.setVisibility(isChecked ? View.VISIBLE : View.GONE);
+        mEndTime.setVisibility(isChecked ? View.VISIBLE : View.GONE);
     }
 
     @OnItemSelected(R.id.event_reminder)
@@ -205,7 +220,7 @@ public class EventActivity extends SimpleActivity implements DBHelper.DBOperatio
         final int startTS = (int) (mEventStartDateTime.getMillis() / 1000);
         final int endTS = (int) (mEventEndDateTime.getMillis() / 1000);
 
-        if (startTS > endTS) {
+        if (mEndCheckbox.isChecked() && startTS > endTS) {
             Utils.showToast(getApplicationContext(), R.string.end_before_start);
             return;
         }
@@ -213,7 +228,7 @@ public class EventActivity extends SimpleActivity implements DBHelper.DBOperatio
         final DBHelper dbHelper = DBHelper.newInstance(getApplicationContext(), this);
         final String description = mDescriptionET.getText().toString().trim();
         mEvent.setStartTS(startTS);
-        mEvent.setEndTS(endTS);
+        mEvent.setEndTS(mEndCheckbox.isChecked() ? endTS : startTS);
         mEvent.setTitle(title);
         mEvent.setDescription(description);
         mEvent.setReminderMinutes(getReminderMinutes());

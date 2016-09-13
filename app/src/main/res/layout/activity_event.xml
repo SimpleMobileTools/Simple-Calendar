@@ -76,12 +76,13 @@
             android:text="00:00"
             android:textSize="@dimen/day_text_size"/>
 
-        <TextView
-            android:id="@+id/event_end_label"
-            android:layout_width="wrap_content"
+        <CheckBox
+            android:id="@+id/event_end_checkbox"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_start_date"
-            android:layout_marginTop="@dimen/activity_margin"
+            android:paddingBottom="@dimen/activity_margin"
+            android:paddingTop="@dimen/activity_margin"
             android:text="@string/end"
             android:textSize="@dimen/day_text_size"/>
 
@@ -89,20 +90,26 @@
             android:id="@+id/event_end_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/event_end_label"
-            android:padding="@dimen/activity_margin"
+            android:layout_below="@+id/event_end_checkbox"
+            android:paddingBottom="@dimen/activity_margin"
+            android:paddingLeft="@dimen/activity_margin"
+            android:paddingRight="@dimen/activity_margin"
             android:text="January 1 1970"
-            android:textSize="@dimen/day_text_size"/>
+            android:textSize="@dimen/day_text_size"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/event_end_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/event_end_label"
+            android:layout_below="@+id/event_end_checkbox"
             android:layout_toRightOf="@id/event_end_date"
-            android:padding="@dimen/activity_margin"
+            android:paddingBottom="@dimen/activity_margin"
+            android:paddingLeft="@dimen/activity_margin"
+            android:paddingRight="@dimen/activity_margin"
             android:text="00:00"
-            android:textSize="@dimen/day_text_size"/>
+            android:textSize="@dimen/day_text_size"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/event_reminder_label"
