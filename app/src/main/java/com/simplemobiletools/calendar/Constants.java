@@ -9,7 +9,7 @@ public class Constants {
 
     public static final int DAY = 86400;
     public static final int WEEK = 604800;
-    public static final int MONTH = 2592000;
+    public static final int MONTH = 2592000;    // exact value not taken into account, Joda is used for adding months and years
     public static final int YEAR = 31536000;
 
     // Shared Preferences

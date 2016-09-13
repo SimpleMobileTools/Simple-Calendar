@@ -38,18 +38,7 @@ public class NotificationReceiver extends BroadcastReceiver {
         notificationManager.notify(id, notification);
 
         if (event.getRepeatInterval() != 0)
-            scheduleNextEvent(context, event);
-    }
-
-    private void scheduleNextEvent(Context context, Event event) {
-        if (event.getRepeatInterval() == Constants.DAY || event.getRepeatInterval() == Constants.WEEK) {
-            int startTS = event.getStartTS();
-            while (startTS < System.currentTimeMillis() / 1000 + 5) {
-                startTS += event.getRepeatInterval();
-            }
-
-            Utils.scheduleEventIn(context, startTS, event);
-        }
+            Utils.scheduleNextEvent(context, event);
     }
 
     private PendingIntent getPendingIntent(Context context, Event event) {

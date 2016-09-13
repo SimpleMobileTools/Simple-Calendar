@@ -355,9 +355,9 @@ public class EventActivity extends SimpleActivity implements DBHelper.DBOperatio
         if (DateTime.now().isAfter(mEventStartDateTime.getMillis())) {
             Utils.showToast(getApplicationContext(), R.string.past_event_added);
         } else {
-            Utils.scheduleNotification(getApplicationContext(), event);
             Utils.showToast(getApplicationContext(), R.string.event_added);
         }
+        Utils.scheduleNotification(getApplicationContext(), event);
         finish();
     }
 

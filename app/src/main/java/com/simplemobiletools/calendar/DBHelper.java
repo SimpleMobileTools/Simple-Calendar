@@ -217,6 +217,7 @@ public class DBHelper extends SQLiteOpenHelper {
             }
             events.addAll(currEvents);
         }
+
         return events;
     }
 

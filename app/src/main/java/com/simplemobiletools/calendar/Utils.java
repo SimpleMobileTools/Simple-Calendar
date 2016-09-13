@@ -11,6 +11,8 @@ import android.widget.Toast;
 import com.simplemobiletools.calendar.models.Event;
 import com.simplemobiletools.calendar.receivers.NotificationReceiver;
 
+import org.joda.time.DateTime;
+
 public class Utils {
 
     public static int adjustAlpha(int color, float factor) {
@@ -25,16 +27,41 @@ public class Utils {
         Toast.makeText(context, context.getResources().getString(resId), Toast.LENGTH_SHORT).show();
     }
 
-    public static void scheduleNotification(Context context, Event event) {
-        if (event.getReminderMinutes() == -1) {
-            return;
+    public static void scheduleNextEvent(Context context, Event event) {
+        int startTS = event.getStartTS() - event.getReminderMinutes() * 60;
+        int newTS = 0;
+        if (event.getRepeatInterval() == Constants.DAY || event.getRepeatInterval() == Constants.WEEK) {
+            while (startTS < System.currentTimeMillis() / 1000 + 5) {
+                startTS += event.getRepeatInterval();
+            }
+            newTS = startTS;
+        } else if (event.getRepeatInterval() == Constants.MONTH) {
+            newTS = getNewTS(startTS, true);
+        } else if (event.getRepeatInterval() == Constants.YEAR) {
+            newTS = getNewTS(startTS, false);
         }
 
-        scheduleEventIn(context, event.getStartTS(), event);
+        if (newTS != 0)
+            Utils.scheduleEventIn(context, newTS, event);
+    }
+
+    private static int getNewTS(int ts, boolean isMonthly) {
+        DateTime dateTime = Formatter.getDateTimeFromTS(ts);
+        while (dateTime.isBeforeNow()) {
+            dateTime = isMonthly ? dateTime.plusMonths(1) : dateTime.plusYears(1);
+        }
+        return (int) (dateTime.getMillis() / 1000);
+    }
+
+    public static void scheduleNotification(Context context, Event event) {
+        if (event.getReminderMinutes() == -1)
+            return;
+
+        scheduleNextEvent(context, event);
     }
 
     public static void scheduleEventIn(Context context, int notifTS, Event event) {
-        final long delayFromNow = (long) notifTS * 1000 - event.getReminderMinutes() * 60000 - System.currentTimeMillis();
+        final long delayFromNow = (long) notifTS * 1000 - System.currentTimeMillis();
         if (delayFromNow < 0)
             return;
 
