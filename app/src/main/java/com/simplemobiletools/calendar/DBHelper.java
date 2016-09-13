@@ -156,21 +156,13 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public Event getEvent(int id) {
-        final String[] projection = {COL_START_TS, COL_END_TS, COL_TITLE, COL_DESCRIPTION, COL_REMINDER_MINUTES};
-        final String selection = COL_ID + " = ?";
+        final String selection = MAIN_TABLE_NAME + "." + COL_ID + " = ?";
         final String[] selectionArgs = {String.valueOf(id)};
-        final Cursor cursor = mDb.query(MAIN_TABLE_NAME, projection, selection, selectionArgs, null, null, null);
-        if (cursor != null) {
-            if (cursor.moveToFirst()) {
-                final int startTS = cursor.getInt(cursor.getColumnIndex(COL_START_TS));
-                final int endTS = cursor.getInt(cursor.getColumnIndex(COL_END_TS));
-                final String title = cursor.getString(cursor.getColumnIndex(COL_TITLE));
-                final String description = cursor.getString(cursor.getColumnIndex(COL_DESCRIPTION));
-                final int reminderMinutes = cursor.getInt(cursor.getColumnIndex(COL_REMINDER_MINUTES));
-                cursor.close();
-                return new Event(id, startTS, endTS, title, description, reminderMinutes, 0);
-            }
-        }
+        final Cursor cursor = getEventsCursor(selection, selectionArgs);
+        final List<Event> events = fillEvents(cursor);
+        if (!events.isEmpty())
+            return events.get(0);
+
         return null;
     }
 
@@ -208,8 +200,8 @@ public class DBHelper extends SQLiteOpenHelper {
         newEvents.addAll(getEvents(selection, ts));
 
         // get yearly events
-        selection = COL_REPEAT_INTERVAL + " = " + Constants.YEAR + " AND " + COL_REPEAT_MONTH + " = " + dateTime.getMonthOfYear() + " AND " +
-                COL_REPEAT_DAY + " = " + dateTime.getDayOfMonth() + " AND " + COL_REPEAT_START + " <= " + dayEnd;
+        selection = COL_REPEAT_INTERVAL + " = " + Constants.YEAR + " AND " + COL_REPEAT_MONTH + " = " + dateTime.getMonthOfYear() +
+                " AND " + COL_REPEAT_DAY + " = " + dateTime.getDayOfMonth() + " AND " + COL_REPEAT_START + " <= " + dayEnd;
         newEvents.addAll(getEvents(selection, ts));
 
         return newEvents;

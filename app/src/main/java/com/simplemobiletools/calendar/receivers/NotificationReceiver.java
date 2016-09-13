@@ -13,6 +13,7 @@ import com.simplemobiletools.calendar.Constants;
 import com.simplemobiletools.calendar.DBHelper;
 import com.simplemobiletools.calendar.Formatter;
 import com.simplemobiletools.calendar.R;
+import com.simplemobiletools.calendar.Utils;
 import com.simplemobiletools.calendar.activities.EventActivity;
 import com.simplemobiletools.calendar.models.Event;
 
@@ -35,6 +36,20 @@ public class NotificationReceiver extends BroadcastReceiver {
         final String title = event.getTitle();
         final Notification notification = getNotification(context, pendingIntent, startTime + " - " + endTime + " " + title);
         notificationManager.notify(id, notification);
+
+        if (event.getRepeatInterval() != 0)
+            scheduleNextEvent(context, event);
+    }
+
+    private void scheduleNextEvent(Context context, Event event) {
+        if (event.getRepeatInterval() == Constants.DAY || event.getRepeatInterval() == Constants.WEEK) {
+            int startTS = event.getStartTS();
+            while (startTS < System.currentTimeMillis() / 1000 + 5) {
+                startTS += event.getRepeatInterval();
+            }
+
+            Utils.scheduleEventIn(context, startTS, event);
+        }
     }
 
     private PendingIntent getPendingIntent(Context context, Event event) {

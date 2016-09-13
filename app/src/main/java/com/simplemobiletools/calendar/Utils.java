@@ -30,17 +30,24 @@ public class Utils {
             return;
         }
 
-        final long delayFromNow = (long) event.getStartTS() * 1000 - event.getReminderMinutes() * 60000 - System.currentTimeMillis();
-        if (delayFromNow < 0) {
+        scheduleEventIn(context, event.getStartTS(), event);
+    }
+
+    public static void scheduleEventIn(Context context, int notifTS, Event event) {
+        final long delayFromNow = (long) notifTS * 1000 - event.getReminderMinutes() * 60000 - System.currentTimeMillis();
+        if (delayFromNow < 0)
             return;
-        }
 
         final long notifInMs = SystemClock.elapsedRealtime() + delayFromNow;
-        final Intent intent = new Intent(context, NotificationReceiver.class);
-        intent.putExtra(NotificationReceiver.EVENT_ID, event.getId());
-        final PendingIntent pendingIntent = PendingIntent.getBroadcast(context, event.getId(), intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        final PendingIntent pendingIntent = getNotificationIntent(context, event.getId());
         final AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, notifInMs, pendingIntent);
+    }
+
+    public static PendingIntent getNotificationIntent(Context context, int eventId) {
+        final Intent intent = new Intent(context, NotificationReceiver.class);
+        intent.putExtra(NotificationReceiver.EVENT_ID, eventId);
+        return PendingIntent.getBroadcast(context, eventId, intent, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
     public static int[] getLetterIDs() {
