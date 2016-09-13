@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 1.21 *(2016-09-13)*
+----------------------------
+
+ * Add simple daily, weekly, monthly and yearly recurring option
+ * Update the widget every 1 hour down from 5 hours
+ * Make event End date and time really optional
+
 Version 1.20 *(2016-09-09)*
 ----------------------------
 
