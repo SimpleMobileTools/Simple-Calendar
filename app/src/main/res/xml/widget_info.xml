@@ -6,4 +6,4 @@
                     android:minWidth="@dimen/min_widget_width"
                     android:previewImage="@mipmap/widget_preview"
                     android:resizeMode="horizontal|vertical"
-                    android:updatePeriodMillis="18000000"/>
+                    android:updatePeriodMillis="3600000"/>
