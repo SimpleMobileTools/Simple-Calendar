@@ -16,7 +16,7 @@ public class BootCompletedReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent arg1) {
         final List<Event> events = DBHelper.newInstance(context, null).getEventsAtReboot();
         for (Event event : events) {
-            Utils.scheduleNotification(context, event);
+            Utils.scheduleNextEvent(context, event);
         }
     }
 }

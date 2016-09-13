@@ -243,13 +243,14 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public List<Event> getEventsAtReboot() {
         List<Event> events = new ArrayList<>();
-        final String selection = COL_START_TS + " > ? AND " + COL_REMINDER_MINUTES + " != ?";
-        final String[] selectionArgs = {String.valueOf(DateTime.now().getMillis() / 1000), "-1"};
+        final String selection = COL_REMINDER_MINUTES + " != -1 AND (" + COL_START_TS + " > ? OR " + COL_REPEAT_INTERVAL + " != 0)";
+        final String[] selectionArgs = {String.valueOf(DateTime.now().getMillis() / 1000)};
         final Cursor cursor = getEventsCursor(selection, selectionArgs);
 
         if (cursor != null) {
             events = fillEvents(cursor);
         }
+
         return events;
     }
 
