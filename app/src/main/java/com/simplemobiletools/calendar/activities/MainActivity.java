@@ -1,18 +1,13 @@
 package com.simplemobiletools.calendar.activities;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.v7.app.AlertDialog;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.TextView;
@@ -24,11 +19,14 @@ import com.simplemobiletools.calendar.Constants;
 import com.simplemobiletools.calendar.Formatter;
 import com.simplemobiletools.calendar.R;
 import com.simplemobiletools.calendar.Utils;
+import com.simplemobiletools.calendar.adapters.MyPagerAdapter;
 import com.simplemobiletools.calendar.models.Day;
+import com.simplemobiletools.calendar.views.MyViewPager;
 
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindDimen;
@@ -37,14 +35,17 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends SimpleActivity implements Calendar {
-    @BindView(R.id.top_left_arrow) ImageView mLeftArrow;
+    /*@BindView(R.id.top_left_arrow) ImageView mLeftArrow;
     @BindView(R.id.top_right_arrow) ImageView mRightArrow;
     @BindView(R.id.top_text) TextView mMonthTV;
-    @BindView(R.id.calendar_holder) View mCalendarHolder;
+    @BindView(R.id.calendar_holder) View mCalendarHolder;*/
+    @BindView(R.id.view_pager) MyViewPager mPager;
 
     @BindDimen(R.dimen.day_text_size) float mDayTextSize;
     @BindDimen(R.dimen.today_text_size) float mTodayTextSize;
     @BindDimen(R.dimen.activity_margin) int mActivityMargin;
+
+    private static final int PREFILLED_MONTHS = 73;
 
     private CalendarImpl mCalendar;
     private Resources mRes;
@@ -68,8 +69,8 @@ public class MainActivity extends SimpleActivity implements Calendar {
         mTextColorWithEvent = Utils.adjustAlpha(mRes.getColor(R.color.colorPrimary), Constants.HIGH_ALPHA);
         mWeakTextColor = Utils.adjustAlpha(baseColor, Constants.LOW_ALPHA);
         mWeakTextColorWithEvent = Utils.adjustAlpha(mRes.getColor(R.color.colorPrimary), Constants.LOW_ALPHA);
-        mLeftArrow.getDrawable().mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP);
-        mRightArrow.getDrawable().mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP);
+        //mLeftArrow.getDrawable().mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP);
+        //mRightArrow.getDrawable().mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP);
         mSundayFirst = mConfig.getIsSundayFirst();
 
         mPackageName = getPackageName();
@@ -77,10 +78,15 @@ public class MainActivity extends SimpleActivity implements Calendar {
         mTodayTextSize /= mRes.getDisplayMetrics().density;
         setupLabels();
 
-        final CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) mCalendarHolder.getLayoutParams();
-        params.setMargins(mActivityMargin, mActivityMargin, mActivityMargin, mActivityMargin);
+        /*final CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) mCalendarHolder.getLayoutParams();
+        params.setMargins(mActivityMargin, mActivityMargin, mActivityMargin, mActivityMargin);*/
 
         mCalendar = new CalendarImpl(this, getApplicationContext());
+
+        final String today = new DateTime().toString(Formatter.DAYCODE_PATTERN);
+        final List<String> codes = getMonths(today);
+        final MyPagerAdapter adapter = new MyPagerAdapter(getSupportFragmentManager(), codes);
+        mPager.setAdapter(adapter);
     }
 
     @Override
@@ -127,6 +133,16 @@ public class MainActivity extends SimpleActivity implements Calendar {
         startActivity(intent);
     }
 
+    private List<String> getMonths(String code) {
+        final List<String> months = new ArrayList<>(PREFILLED_MONTHS);
+        final DateTime today = Formatter.getDateTimeFromCode(code);
+        for (int i = -PREFILLED_MONTHS / 2; i <= PREFILLED_MONTHS / 2; i++) {
+            months.add(Formatter.getDayCodeFromDateTime(today.plusMonths(i)));
+        }
+
+        return months;
+    }
+
     private void updateDays(List<Day> days) {
         final int len = days.size();
 
@@ -169,7 +185,7 @@ public class MainActivity extends SimpleActivity implements Calendar {
         startActivity(intent);
     }
 
-    @OnClick(R.id.top_left_arrow)
+    /*@OnClick(R.id.top_left_arrow)
     public void leftArrowClicked() {
         mCalendar.getPrevMonth();
     }
@@ -201,7 +217,7 @@ public class MainActivity extends SimpleActivity implements Calendar {
         });
 
         alertDialog.show();
-    }
+    }*/
 
     private void hideDayPicker(DatePicker datePicker) {
         final LinearLayout ll = (LinearLayout) datePicker.getChildAt(0);
@@ -214,12 +230,12 @@ public class MainActivity extends SimpleActivity implements Calendar {
 
     @Override
     public void updateCalendar(String month, List<Day> days) {
-        updateMonth(month);
-        updateDays(days);
+        /*updateMonth(month);
+        updateDays(days);*/
     }
 
     private void updateMonth(String month) {
-        mMonthTV.setText(month);
+        //mMonthTV.setText(month);
     }
 
     private void setupLabels() {
