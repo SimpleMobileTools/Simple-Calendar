@@ -1,5 +1,6 @@
 package com.simplemobiletools.calendar.fragments;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -7,10 +8,14 @@ import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import com.simplemobiletools.calendar.Calendar;
@@ -22,6 +27,8 @@ import com.simplemobiletools.calendar.R;
 import com.simplemobiletools.calendar.Utils;
 import com.simplemobiletools.calendar.activities.DayActivity;
 import com.simplemobiletools.calendar.models.Day;
+
+import org.joda.time.DateTime;
 
 import java.util.List;
 
@@ -122,6 +129,40 @@ public class MonthFragment extends Fragment implements Calendar {
             mListener.goRight();
     }
 
+    @OnClick(R.id.top_text)
+    public void pickMonth() {
+        final int theme = mConfig.getIsDarkTheme() ? R.style.MyAlertDialog_Dark : R.style.MyAlertDialog;
+        final AlertDialog.Builder alertDialog = new AlertDialog.Builder(getContext(), theme);
+        final View view = getLayoutInflater(getArguments()).inflate(R.layout.date_picker, null);
+        final DatePicker datePicker = (DatePicker) view.findViewById(R.id.date_picker);
+        hideDayPicker(datePicker);
+
+        final DateTime dateTime = new DateTime(mCalendar.getTargetDate().toString());
+        datePicker.init(dateTime.getYear(), dateTime.getMonthOfYear() - 1, 1, null);
+
+        alertDialog.setView(view);
+        alertDialog.setNegativeButton(R.string.cancel, null);
+        alertDialog.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                final int month = datePicker.getMonth() + 1;
+                final int year = datePicker.getYear();
+                if (mListener != null)
+                    mListener.goToDateTime(new DateTime().withMonthOfYear(month).withYear(year));
+            }
+        });
+
+        alertDialog.show();
+    }
+
+    private void hideDayPicker(DatePicker datePicker) {
+        final LinearLayout ll = (LinearLayout) datePicker.getChildAt(0);
+        final LinearLayout ll2 = (LinearLayout) ll.getChildAt(0);
+        final NumberPicker picker1 = (NumberPicker) ll2.getChildAt(0);
+        final NumberPicker picker2 = (NumberPicker) ll2.getChildAt(1);
+        final NumberPicker dayPicker = (picker1.getMaxValue() > picker2.getMaxValue()) ? picker1 : picker2;
+        dayPicker.setVisibility(View.GONE);
+    }
+
     private void setupLabels() {
         int letters[] = Utils.getLetterIDs();
 
@@ -186,5 +227,7 @@ public class MonthFragment extends Fragment implements Calendar {
         void goLeft();
 
         void goRight();
+
+        void goToDateTime(DateTime dateTime);
     }
 }
