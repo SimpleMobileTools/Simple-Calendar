@@ -50,7 +50,6 @@ public class MainActivity extends SimpleActivity {
     private int mWeakTextColor;
     private int mTextColorWithEvent;
     private int mWeakTextColorWithEvent;
-    private boolean mSundayFirst;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,27 +65,16 @@ public class MainActivity extends SimpleActivity {
         mWeakTextColorWithEvent = Utils.adjustAlpha(mRes.getColor(R.color.colorPrimary), Constants.LOW_ALPHA);
         //mLeftArrow.getDrawable().mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP);
         //mRightArrow.getDrawable().mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP);
-        mSundayFirst = mConfig.getIsSundayFirst();
 
         mPackageName = getPackageName();
         mDayTextSize /= mRes.getDisplayMetrics().density;
         mTodayTextSize /= mRes.getDisplayMetrics().density;
-        setupLabels();
 
         final String today = new DateTime().toString(Formatter.DAYCODE_PATTERN);
         final List<String> codes = getMonths(today);
         final MyPagerAdapter adapter = new MyPagerAdapter(getSupportFragmentManager(), codes);
         mPager.setAdapter(adapter);
         mPager.setCurrentItem(codes.size() / 2);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (mConfig.getIsSundayFirst() != mSundayFirst) {
-            mSundayFirst = mConfig.getIsSundayFirst();
-            setupLabels();
-        }
     }
 
     @Override
@@ -218,21 +206,4 @@ public class MainActivity extends SimpleActivity {
         dayPicker.setVisibility(View.GONE);
     }
 
-    private void setupLabels() {
-        int letters[] = Utils.getLetterIDs();
-
-        for (int i = 0; i < 7; i++) {
-            final TextView dayTV = (TextView) findViewById(mRes.getIdentifier("label_" + i, "id", mPackageName));
-            if (dayTV != null) {
-                dayTV.setTextSize(mDayTextSize);
-                dayTV.setTextColor(mWeakTextColor);
-
-                int index = i;
-                if (!mSundayFirst)
-                    index = (index + 1) % letters.length;
-
-                dayTV.setText(getString(letters[index]));
-            }
-        }
-    }
 }
