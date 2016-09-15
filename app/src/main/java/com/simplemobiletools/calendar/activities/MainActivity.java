@@ -35,7 +35,6 @@ import butterknife.OnClick;
 public class MainActivity extends SimpleActivity {
     /*@BindView(R.id.top_left_arrow) ImageView mLeftArrow;
     @BindView(R.id.top_right_arrow) ImageView mRightArrow;
-    @BindView(R.id.top_text) TextView mMonthTV;
     @BindView(R.id.calendar_holder) View mCalendarHolder;*/
     @BindView(R.id.view_pager) MyViewPager mPager;
 
@@ -217,10 +216,6 @@ public class MainActivity extends SimpleActivity {
         final NumberPicker picker2 = (NumberPicker) ll2.getChildAt(1);
         final NumberPicker dayPicker = (picker1.getMaxValue() > picker2.getMaxValue()) ? picker1 : picker2;
         dayPicker.setVisibility(View.GONE);
-    }
-
-    private void updateMonth(String month) {
-        //mMonthTV.setText(month);
     }
 
     private void setupLabels() {

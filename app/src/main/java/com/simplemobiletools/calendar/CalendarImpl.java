@@ -15,15 +15,15 @@ public class CalendarImpl implements DBHelper.DBOperationsListener {
     private static final String YEAR_PATTERN = "YYYY";
 
     private final Calendar mCallback;
-    private final String mDay;
+    private final String mToday;
     private final Context mContext;
     private DateTime mTargetDate;
     private List<Event> mEvents;
 
-    public CalendarImpl(Calendar callback, Context context, String day) {
+    public CalendarImpl(Calendar callback, Context context) {
         mCallback = callback;
         mContext = context;
-        mDay = day;
+        mToday = new DateTime().toString(Formatter.DAYCODE_PATTERN);
     }
 
     public void updateCalendar(DateTime targetDate) {
@@ -90,7 +90,7 @@ public class CalendarImpl implements DBHelper.DBOperationsListener {
     }
 
     private boolean isToday(DateTime targetDate, int curDayInMonth) {
-        return targetDate.withDayOfMonth(curDayInMonth).toString(Formatter.DAYCODE_PATTERN).equals(mDay);
+        return targetDate.withDayOfMonth(curDayInMonth).toString(Formatter.DAYCODE_PATTERN).equals(mToday);
     }
 
     private String getMonthName() {
