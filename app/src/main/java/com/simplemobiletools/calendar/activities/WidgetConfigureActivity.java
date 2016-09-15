@@ -6,12 +6,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -34,9 +32,9 @@ import butterknife.OnClick;
 import yuku.ambilwarna.AmbilWarnaDialog;
 
 public class WidgetConfigureActivity extends AppCompatActivity implements Calendar {
-    @BindView(R.id.top_left_arrow) ImageView mLeftArrow;
-    @BindView(R.id.top_right_arrow) ImageView mRightArrow;
-    @BindView(R.id.top_text) TextView mMonthTV;
+    //@BindView(R.id.top_left_arrow) ImageView mLeftArrow;
+    //@BindView(R.id.top_right_arrow) ImageView mRightArrow;
+    //@BindView(R.id.top_text) TextView mMonthTV;
     @BindView(R.id.config_bg_color) View mBgColorPicker;
     @BindView(R.id.config_bg_seekbar) SeekBar mBgSeekBar;
     @BindView(R.id.config_text_color) View mTextColorPicker;
@@ -172,9 +170,9 @@ public class WidgetConfigureActivity extends AppCompatActivity implements Calend
         mTextColor = Utils.adjustAlpha(mTextColorWithoutTransparency, Constants.HIGH_ALPHA);
         mWeakTextColor = Utils.adjustAlpha(mTextColorWithoutTransparency, Constants.LOW_ALPHA);
 
-        mLeftArrow.getDrawable().mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP);
-        mRightArrow.getDrawable().mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP);
-        mMonthTV.setTextColor(mTextColor);
+        //mLeftArrow.getDrawable().mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP);
+        //mRightArrow.getDrawable().mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP);
+        //mMonthTV.setTextColor(mTextColor);
         mTextColorPicker.setBackgroundColor(mTextColor);
         mSaveBtn.setTextColor(mTextColor);
         updateLabels();
@@ -203,9 +201,9 @@ public class WidgetConfigureActivity extends AppCompatActivity implements Calend
                 curTextSize = mTodayTextSize;
             }
 
-            dayTV.setText(String.valueOf(day.getValue()));
+            /*dayTV.setText(String.valueOf(day.getValue()));
             dayTV.setTextColor(curTextColor);
-            dayTV.setTextSize(curTextSize);
+            dayTV.setTextSize(curTextSize);*/
         }
     }
 
@@ -227,16 +225,6 @@ public class WidgetConfigureActivity extends AppCompatActivity implements Calend
         }
     };
 
-    @OnClick(R.id.top_left_arrow)
-    public void leftArrowClicked() {
-        mCalendar.getPrevMonth();
-    }
-
-    @OnClick(R.id.top_right_arrow)
-    public void rightArrowClicked() {
-        mCalendar.getNextMonth();
-    }
-
     @Override
     public void updateCalendar(String month, List<Day> days) {
         this.mDays = days;
@@ -245,14 +233,14 @@ public class WidgetConfigureActivity extends AppCompatActivity implements Calend
     }
 
     private void updateMonth(String month) {
-        mMonthTV.setText(month);
+        //mMonthTV.setText(month);
     }
 
     private void updateLabels() {
         for (int i = 0; i < 7; i++) {
             final TextView dayTV = (TextView) findViewById(mRes.getIdentifier("label_" + i, "id", mPackageName));
-            dayTV.setTextSize(mDayTextSize);
-            dayTV.setTextColor(mWeakTextColor);
+            //dayTV.setTextSize(mDayTextSize);
+            //dayTV.setTextColor(mWeakTextColor);
         }
     }
 }
