@@ -43,7 +43,7 @@ import butterknife.OnClick;
 
 public class DayActivity extends SimpleActivity
         implements DBHelper.DBOperationsListener, AdapterView.OnItemClickListener, AbsListView.MultiChoiceModeListener {
-    @BindView(R.id.top_text) TextView mDateTV;
+    @BindView(R.id.month_value) TextView mDateTV;
     @BindView(R.id.day_events) ListView mEventsList;
     @BindView(R.id.day_coordinator) CoordinatorLayout mCoordinatorLayout;
     @BindView(R.id.top_left_arrow) ImageView mLeftArrow;
@@ -123,7 +123,7 @@ public class DayActivity extends SimpleActivity
         switchToDay(tomorrowCode);
     }
 
-    @OnClick(R.id.top_text)
+    @OnClick(R.id.month_value)
     public void pickDay() {
         final int theme = mConfig.getIsDarkTheme() ? R.style.MyAlertDialog_Dark : R.style.MyAlertDialog;
         final AlertDialog.Builder alertDialog = new AlertDialog.Builder(this, theme);

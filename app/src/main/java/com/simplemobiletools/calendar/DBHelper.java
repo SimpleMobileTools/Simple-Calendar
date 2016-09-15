@@ -167,7 +167,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public void getEvents(int fromTS, int toTS) {
-        List<Event> events = new ArrayList<>();
+        final List<Event> events = new ArrayList<>();
         for (int ts = fromTS; ts <= toTS; ts += Constants.DAY) {
             events.addAll(getEventsFor(ts));
         }

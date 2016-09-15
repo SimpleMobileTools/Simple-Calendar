@@ -18,7 +18,7 @@
             android:id="@+id/day_events"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/top_text"
+            android:layout_below="@+id/month_value"
             android:choiceMode="multipleChoiceModal"
             android:clipToPadding="false"
             android:paddingLeft="@dimen/activity_margin"/>

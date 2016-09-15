@@ -8,13 +8,13 @@
         style="@style/ArrowStyle"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_alignBottom="@+id/top_text"
-        android:layout_alignTop="@+id/top_text"
+        android:layout_alignBottom="@+id/month_value"
+        android:layout_alignTop="@+id/month_value"
         android:padding="@dimen/activity_margin"
         android:src="@mipmap/arrow_left"/>
 
     <TextView
-        android:id="@+id/top_text"
+        android:id="@+id/month_value"
         style="@style/MonthStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -31,9 +31,9 @@
         style="@style/ArrowStyle"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_alignBottom="@+id/top_text"
+        android:layout_alignBottom="@+id/month_value"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/top_text"
+        android:layout_alignTop="@+id/month_value"
         android:padding="@dimen/activity_margin"
         android:src="@mipmap/arrow_right"/>
 
