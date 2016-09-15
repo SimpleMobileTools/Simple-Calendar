@@ -41,10 +41,11 @@ public class MonthFragment extends Fragment implements Calendar {
     private View mView;
     private CalendarImpl mCalendar;
     private Resources mRes;
-    private String mPackageName;
     private Config mConfig;
-
+    private NavigationListener mListener;
+    private String mPackageName;
     private String mCode;
+
     private int mTextColor;
     private int mWeakTextColor;
     private int mTextColorWithEvent;
@@ -93,6 +94,10 @@ public class MonthFragment extends Fragment implements Calendar {
         updateDays(days);
     }
 
+    public void setListener(NavigationListener listener) {
+        mListener = listener;
+    }
+
     private void setupColors() {
         final int baseColor = mConfig.getIsDarkTheme() ? Color.WHITE : Color.BLACK;
         mTextColor = Utils.adjustAlpha(baseColor, Constants.HIGH_ALPHA);
@@ -101,16 +106,20 @@ public class MonthFragment extends Fragment implements Calendar {
         mWeakTextColorWithEvent = Utils.adjustAlpha(mRes.getColor(R.color.colorPrimary), Constants.LOW_ALPHA);
         mLeftArrow.getDrawable().mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP);
         mRightArrow.getDrawable().mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP);
+        mLeftArrow.setBackground(null);
+        mRightArrow.setBackground(null);
     }
 
     @OnClick(R.id.top_left_arrow)
     public void leftArrowClicked() {
-
+        if (mListener != null)
+            mListener.goLeft();
     }
 
     @OnClick(R.id.top_right_arrow)
     public void rightArrowClicked() {
-
+        if (mListener != null)
+            mListener.goRight();
     }
 
     private void setupLabels() {
@@ -171,5 +180,11 @@ public class MonthFragment extends Fragment implements Calendar {
         final Intent intent = new Intent(getContext(), DayActivity.class);
         intent.putExtra(Constants.DAY_CODE, code);
         startActivity(intent);
+    }
+
+    public interface NavigationListener {
+        void goLeft();
+
+        void goRight();
     }
 }

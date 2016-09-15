@@ -12,10 +12,12 @@ import java.util.List;
 
 public class MyPagerAdapter extends FragmentStatePagerAdapter {
     private final List<String> mCodes;
+    private final MonthFragment.NavigationListener mListener;
 
-    public MyPagerAdapter(FragmentManager fm, List<String> codes) {
+    public MyPagerAdapter(FragmentManager fm, List<String> codes, MonthFragment.NavigationListener listener) {
         super(fm);
         mCodes = codes;
+        mListener = listener;
     }
 
     @Override
@@ -31,6 +33,7 @@ public class MyPagerAdapter extends FragmentStatePagerAdapter {
 
         final MonthFragment fragment = new MonthFragment();
         fragment.setArguments(bundle);
+        fragment.setListener(mListener);
         return fragment;
     }
 }

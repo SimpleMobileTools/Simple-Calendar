@@ -14,6 +14,7 @@ import com.simplemobiletools.calendar.Constants;
 import com.simplemobiletools.calendar.Formatter;
 import com.simplemobiletools.calendar.R;
 import com.simplemobiletools.calendar.adapters.MyPagerAdapter;
+import com.simplemobiletools.calendar.fragments.MonthFragment;
 import com.simplemobiletools.calendar.views.MyViewPager;
 
 import org.joda.time.DateTime;
@@ -27,7 +28,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends SimpleActivity {
+public class MainActivity extends SimpleActivity implements MonthFragment.NavigationListener {
     @BindView(R.id.view_pager) MyViewPager mPager;
 
     @BindDimen(R.dimen.day_text_size) float mDayTextSize;
@@ -43,7 +44,7 @@ public class MainActivity extends SimpleActivity {
 
         final String today = new DateTime().toString(Formatter.DAYCODE_PATTERN);
         final List<String> codes = getMonths(today);
-        final MyPagerAdapter adapter = new MyPagerAdapter(getSupportFragmentManager(), codes);
+        final MyPagerAdapter adapter = new MyPagerAdapter(getSupportFragmentManager(), codes, this);
         mPager.setAdapter(adapter);
         mPager.setCurrentItem(codes.size() / 2);
     }
@@ -133,5 +134,15 @@ public class MainActivity extends SimpleActivity {
         final NumberPicker picker2 = (NumberPicker) ll2.getChildAt(1);
         final NumberPicker dayPicker = (picker1.getMaxValue() > picker2.getMaxValue()) ? picker1 : picker2;
         dayPicker.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void goLeft() {
+        mPager.setCurrentItem(mPager.getCurrentItem() - 1);
+    }
+
+    @Override
+    public void goRight() {
+        mPager.setCurrentItem(mPager.getCurrentItem() + 1);
     }
 }
