@@ -2,11 +2,13 @@ package com.simplemobiletools.calendar.fragments;
 
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.simplemobiletools.calendar.Calendar;
@@ -23,9 +25,12 @@ import java.util.List;
 import butterknife.BindDimen;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MonthFragment extends Fragment implements Calendar {
     @BindView(R.id.top_text) TextView mMonthTV;
+    @BindView(R.id.top_left_arrow) ImageView mLeftArrow;
+    @BindView(R.id.top_right_arrow) ImageView mRightArrow;
 
     @BindDimen(R.dimen.day_text_size) float mDayTextSize;
     @BindDimen(R.dimen.today_text_size) float mTodayTextSize;
@@ -53,12 +58,8 @@ public class MonthFragment extends Fragment implements Calendar {
         mConfig = Config.newInstance(getContext());
         mSundayFirst = mConfig.getIsSundayFirst();
 
-        final int baseColor = mConfig.getIsDarkTheme() ? Color.WHITE : Color.BLACK;
         mRes = getResources();
-        mTextColor = Utils.adjustAlpha(baseColor, Constants.HIGH_ALPHA);
-        mTextColorWithEvent = Utils.adjustAlpha(mRes.getColor(R.color.colorPrimary), Constants.HIGH_ALPHA);
-        mWeakTextColor = Utils.adjustAlpha(baseColor, Constants.LOW_ALPHA);
-        mWeakTextColorWithEvent = Utils.adjustAlpha(mRes.getColor(R.color.colorPrimary), Constants.LOW_ALPHA);
+        setupColors();
 
         mPackageName = getActivity().getPackageName();
         mDayTextSize /= mRes.getDisplayMetrics().density;
@@ -79,6 +80,26 @@ public class MonthFragment extends Fragment implements Calendar {
     @Override
     public void updateCalendar(String month, List<Day> days) {
         mMonthTV.setText(month);
+    }
+
+    private void setupColors() {
+        final int baseColor = mConfig.getIsDarkTheme() ? Color.WHITE : Color.BLACK;
+        mTextColor = Utils.adjustAlpha(baseColor, Constants.HIGH_ALPHA);
+        mTextColorWithEvent = Utils.adjustAlpha(mRes.getColor(R.color.colorPrimary), Constants.HIGH_ALPHA);
+        mWeakTextColor = Utils.adjustAlpha(baseColor, Constants.LOW_ALPHA);
+        mWeakTextColorWithEvent = Utils.adjustAlpha(mRes.getColor(R.color.colorPrimary), Constants.LOW_ALPHA);
+        mLeftArrow.getDrawable().mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP);
+        mRightArrow.getDrawable().mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP);
+    }
+
+    @OnClick(R.id.top_left_arrow)
+    public void leftArrowClicked() {
+
+    }
+
+    @OnClick(R.id.top_right_arrow)
+    public void rightArrowClicked() {
+
     }
 
     private void setupLabels() {
