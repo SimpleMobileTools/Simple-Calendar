@@ -43,7 +43,6 @@ public class MainActivity extends SimpleActivity implements Calendar {
 
     @BindDimen(R.dimen.day_text_size) float mDayTextSize;
     @BindDimen(R.dimen.today_text_size) float mTodayTextSize;
-    @BindDimen(R.dimen.activity_margin) int mActivityMargin;
 
     private static final int PREFILLED_MONTHS = 73;
 
@@ -77,9 +76,6 @@ public class MainActivity extends SimpleActivity implements Calendar {
         mDayTextSize /= mRes.getDisplayMetrics().density;
         mTodayTextSize /= mRes.getDisplayMetrics().density;
         setupLabels();
-
-        /*final CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) mCalendarHolder.getLayoutParams();
-        params.setMargins(mActivityMargin, mActivityMargin, mActivityMargin, mActivityMargin);*/
 
         mCalendar = new CalendarImpl(this, getApplicationContext());
 
