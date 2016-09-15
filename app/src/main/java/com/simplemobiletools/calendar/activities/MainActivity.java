@@ -12,8 +12,6 @@ import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
-import com.simplemobiletools.calendar.Calendar;
-import com.simplemobiletools.calendar.CalendarImpl;
 import com.simplemobiletools.calendar.Config;
 import com.simplemobiletools.calendar.Constants;
 import com.simplemobiletools.calendar.Formatter;
@@ -34,7 +32,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends SimpleActivity implements Calendar {
+public class MainActivity extends SimpleActivity {
     /*@BindView(R.id.top_left_arrow) ImageView mLeftArrow;
     @BindView(R.id.top_right_arrow) ImageView mRightArrow;
     @BindView(R.id.top_text) TextView mMonthTV;
@@ -46,7 +44,6 @@ public class MainActivity extends SimpleActivity implements Calendar {
 
     private static final int PREFILLED_MONTHS = 73;
 
-    private CalendarImpl mCalendar;
     private Resources mRes;
     private String mPackageName;
 
@@ -77,18 +74,16 @@ public class MainActivity extends SimpleActivity implements Calendar {
         mTodayTextSize /= mRes.getDisplayMetrics().density;
         setupLabels();
 
-        mCalendar = new CalendarImpl(this, getApplicationContext());
-
         final String today = new DateTime().toString(Formatter.DAYCODE_PATTERN);
         final List<String> codes = getMonths(today);
         final MyPagerAdapter adapter = new MyPagerAdapter(getSupportFragmentManager(), codes);
         mPager.setAdapter(adapter);
+        mPager.setCurrentItem(codes.size() / 2);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        mCalendar.updateCalendar(new DateTime());
         if (mConfig.getIsSundayFirst() != mSundayFirst) {
             mSundayFirst = mConfig.getIsSundayFirst();
             setupLabels();
@@ -222,12 +217,6 @@ public class MainActivity extends SimpleActivity implements Calendar {
         final NumberPicker picker2 = (NumberPicker) ll2.getChildAt(1);
         final NumberPicker dayPicker = (picker1.getMaxValue() > picker2.getMaxValue()) ? picker1 : picker2;
         dayPicker.setVisibility(View.GONE);
-    }
-
-    @Override
-    public void updateCalendar(String month, List<Day> days) {
-        /*updateMonth(month);
-        updateDays(days);*/
     }
 
     private void updateMonth(String month) {

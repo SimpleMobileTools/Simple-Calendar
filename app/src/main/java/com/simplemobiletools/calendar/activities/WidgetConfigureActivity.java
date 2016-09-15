@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.simplemobiletools.calendar.Calendar;
 import com.simplemobiletools.calendar.CalendarImpl;
 import com.simplemobiletools.calendar.Constants;
+import com.simplemobiletools.calendar.Formatter;
 import com.simplemobiletools.calendar.MyWidgetProvider;
 import com.simplemobiletools.calendar.R;
 import com.simplemobiletools.calendar.Utils;
@@ -98,7 +99,8 @@ public class WidgetConfigureActivity extends AppCompatActivity implements Calend
         mBgSeekBar.setProgress((int) (mBgAlpha * 100));
         updateBgColor();
 
-        mCalendar = new CalendarImpl(this, getApplicationContext());
+        final String today = new DateTime().toString(Formatter.DAYCODE_PATTERN);
+        mCalendar = new CalendarImpl(this, getApplicationContext(), today);
         mCalendar.updateCalendar(new DateTime());
 
         mFab.setVisibility(View.GONE);
