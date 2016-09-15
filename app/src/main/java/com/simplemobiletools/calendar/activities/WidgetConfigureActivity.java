@@ -193,11 +193,11 @@ public class WidgetConfigureActivity extends AppCompatActivity implements Calend
             int curTextColor = mWeakTextColor;
             float curTextSize = mDayTextSize;
 
-            if (day.getIsThisMonth()) {
+            if (day.isThisMonth()) {
                 curTextColor = mTextColor;
             }
 
-            if (day.getIsToday()) {
+            if (day.isToday()) {
                 curTextSize = mTodayTextSize;
             }
 
