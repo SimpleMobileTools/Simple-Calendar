@@ -1,9 +1,11 @@
 package com.simplemobiletools.calendar.fragments;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +20,7 @@ import com.simplemobiletools.calendar.Constants;
 import com.simplemobiletools.calendar.Formatter;
 import com.simplemobiletools.calendar.R;
 import com.simplemobiletools.calendar.Utils;
+import com.simplemobiletools.calendar.activities.DayActivity;
 import com.simplemobiletools.calendar.models.Day;
 
 import java.util.List;
@@ -41,6 +44,7 @@ public class MonthFragment extends Fragment implements Calendar {
     private String mPackageName;
     private Config mConfig;
 
+    private String mCode;
     private int mTextColor;
     private int mWeakTextColor;
     private int mTextColorWithEvent;
@@ -51,21 +55,27 @@ public class MonthFragment extends Fragment implements Calendar {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.calendar_layout, container, false);
         ButterKnife.bind(this, mView);
+        mRes = getResources();
 
-        final String code = getArguments().getString(Constants.DAY_CODE);
-        mCalendar = new CalendarImpl(this, getContext());
-        mCalendar.updateCalendar(Formatter.getDateTimeFromCode(code));
+        mCode = getArguments().getString(Constants.DAY_CODE);
         mConfig = Config.newInstance(getContext());
         mSundayFirst = mConfig.getIsSundayFirst();
 
-        mRes = getResources();
         setupColors();
 
         mPackageName = getActivity().getPackageName();
         mDayTextSize /= mRes.getDisplayMetrics().density;
+        mTodayTextSize /= mRes.getDisplayMetrics().density;
         setupLabels();
 
         return mView;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mCalendar = new CalendarImpl(this, getContext());
+        mCalendar.updateCalendar(Formatter.getDateTimeFromCode(mCode));
     }
 
     @Override
@@ -80,6 +90,7 @@ public class MonthFragment extends Fragment implements Calendar {
     @Override
     public void updateCalendar(String month, List<Day> days) {
         mMonthTV.setText(month);
+        updateDays(days);
     }
 
     private void setupColors() {
@@ -118,5 +129,47 @@ public class MonthFragment extends Fragment implements Calendar {
                 dayTV.setText(getString(letters[index]));
             }
         }
+    }
+
+    private void updateDays(List<Day> days) {
+        final int len = days.size();
+
+        for (int i = 0; i < len; i++) {
+            final Day day = days.get(i);
+            final TextView dayTV = (TextView) mView.findViewById(mRes.getIdentifier("day_" + i, "id", mPackageName));
+            if (dayTV == null)
+                continue;
+
+            int curTextColor = day.getHasEvent() ? mWeakTextColorWithEvent : mWeakTextColor;
+            float curTextSize = mDayTextSize;
+
+            if (day.getIsThisMonth()) {
+                curTextColor = day.getHasEvent() ? mTextColorWithEvent : mTextColor;
+            }
+
+            if (day.getIsToday()) {
+                curTextSize = mTodayTextSize;
+            }
+
+            dayTV.setText(String.valueOf(day.getValue()));
+            dayTV.setTextColor(curTextColor);
+            dayTV.setTextSize(curTextSize);
+
+            dayTV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    openDay(day.getCode());
+                }
+            });
+        }
+    }
+
+    private void openDay(String code) {
+        if (code.isEmpty())
+            return;
+
+        final Intent intent = new Intent(getContext(), DayActivity.class);
+        intent.putExtra(Constants.DAY_CODE, code);
+        startActivity(intent);
     }
 }

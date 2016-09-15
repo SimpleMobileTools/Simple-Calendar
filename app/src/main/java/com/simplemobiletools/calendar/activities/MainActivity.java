@@ -1,8 +1,6 @@
 package com.simplemobiletools.calendar.activities;
 
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,15 +8,12 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
-import android.widget.TextView;
 
 import com.simplemobiletools.calendar.Config;
 import com.simplemobiletools.calendar.Constants;
 import com.simplemobiletools.calendar.Formatter;
 import com.simplemobiletools.calendar.R;
-import com.simplemobiletools.calendar.Utils;
 import com.simplemobiletools.calendar.adapters.MyPagerAdapter;
-import com.simplemobiletools.calendar.models.Day;
 import com.simplemobiletools.calendar.views.MyViewPager;
 
 import org.joda.time.DateTime;
@@ -33,9 +28,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends SimpleActivity {
-    /*@BindView(R.id.top_left_arrow) ImageView mLeftArrow;
-    @BindView(R.id.top_right_arrow) ImageView mRightArrow;
-    @BindView(R.id.calendar_holder) View mCalendarHolder;*/
     @BindView(R.id.view_pager) MyViewPager mPager;
 
     @BindDimen(R.dimen.day_text_size) float mDayTextSize;
@@ -43,32 +35,11 @@ public class MainActivity extends SimpleActivity {
 
     private static final int PREFILLED_MONTHS = 73;
 
-    private Resources mRes;
-    private String mPackageName;
-
-    private int mTextColor;
-    private int mWeakTextColor;
-    private int mTextColorWithEvent;
-    private int mWeakTextColorWithEvent;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
-        final int baseColor = mConfig.getIsDarkTheme() ? Color.WHITE : Color.BLACK;
-        mRes = getResources();
-        mTextColor = Utils.adjustAlpha(baseColor, Constants.HIGH_ALPHA);
-        mTextColorWithEvent = Utils.adjustAlpha(mRes.getColor(R.color.colorPrimary), Constants.HIGH_ALPHA);
-        mWeakTextColor = Utils.adjustAlpha(baseColor, Constants.LOW_ALPHA);
-        mWeakTextColorWithEvent = Utils.adjustAlpha(mRes.getColor(R.color.colorPrimary), Constants.LOW_ALPHA);
-        //mLeftArrow.getDrawable().mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP);
-        //mRightArrow.getDrawable().mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP);
-
-        mPackageName = getPackageName();
-        mDayTextSize /= mRes.getDisplayMetrics().density;
-        mTodayTextSize /= mRes.getDisplayMetrics().density;
 
         final String today = new DateTime().toString(Formatter.DAYCODE_PATTERN);
         final List<String> codes = getMonths(today);
@@ -121,48 +92,6 @@ public class MainActivity extends SimpleActivity {
         return months;
     }
 
-    private void updateDays(List<Day> days) {
-        final int len = days.size();
-
-        for (int i = 0; i < len; i++) {
-            final Day day = days.get(i);
-            final TextView dayTV = (TextView) findViewById(mRes.getIdentifier("day_" + i, "id", mPackageName));
-            if (dayTV == null)
-                continue;
-
-            int curTextColor = day.getHasEvent() ? mWeakTextColorWithEvent : mWeakTextColor;
-            float curTextSize = mDayTextSize;
-
-            if (day.getIsThisMonth()) {
-                curTextColor = day.getHasEvent() ? mTextColorWithEvent : mTextColor;
-            }
-
-            if (day.getIsToday()) {
-                curTextSize = mTodayTextSize;
-            }
-
-            dayTV.setText(String.valueOf(day.getValue()));
-            dayTV.setTextColor(curTextColor);
-            dayTV.setTextSize(curTextSize);
-
-            dayTV.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    openDay(day.getCode());
-                }
-            });
-        }
-    }
-
-    private void openDay(String code) {
-        if (code.isEmpty())
-            return;
-
-        final Intent intent = new Intent(getApplicationContext(), DayActivity.class);
-        intent.putExtra(Constants.DAY_CODE, code);
-        startActivity(intent);
-    }
-
     /*@OnClick(R.id.top_left_arrow)
     public void leftArrowClicked() {
         mCalendar.getPrevMonth();
@@ -205,5 +134,4 @@ public class MainActivity extends SimpleActivity {
         final NumberPicker dayPicker = (picker1.getMaxValue() > picker2.getMaxValue()) ? picker1 : picker2;
         dayPicker.setVisibility(View.GONE);
     }
-
 }
