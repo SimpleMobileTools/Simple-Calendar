@@ -204,7 +204,7 @@ public class EventActivity extends SimpleActivity implements DBHelper.DBOperatio
 
     private void deleteEvent() {
         final Intent intent = new Intent();
-        intent.putExtra(DayActivity.DELETED_ID, mEvent.getId());
+        intent.putExtra(DayActivity.Companion.getDELETED_ID(), mEvent.getId());
         setResult(RESULT_OK, intent);
         finish();
     }
