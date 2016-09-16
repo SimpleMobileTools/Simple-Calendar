@@ -7,22 +7,10 @@
     android:layout_height="match_parent"
     android:layout_marginTop="@dimen/activity_margin">
 
-    <RelativeLayout
-        android:id="@+id/day_holder"
+    <com.simplemobiletools.calendar.views.MyViewPager
+        android:id="@+id/view_pager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <include layout="@layout/top_navigation"/>
-
-        <ListView
-            android:id="@+id/day_events"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/month_value"
-            android:choiceMode="multipleChoiceModal"
-            android:clipToPadding="false"
-            android:paddingLeft="@dimen/activity_margin"/>
-    </RelativeLayout>
+        android:layout_height="match_parent"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/day_fab"
