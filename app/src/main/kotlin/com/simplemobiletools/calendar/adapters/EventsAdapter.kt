@@ -33,12 +33,12 @@ class EventsAdapter(context: Context, private val mEvents: List<Event>) : BaseAd
             title.text = event.title
             description.text = event.description
             start.text = Formatter.getTime(event.startTS)
-        }
 
-        if (event.startTS == event.endTS) {
-            viewHolder.end.visibility = View.INVISIBLE
-        } else {
-            viewHolder.end.text = Formatter.getTime(event.endTS)
+            if (event.startTS == event.endTS) {
+                end.visibility = View.INVISIBLE
+            } else {
+                end.text = Formatter.getTime(event.endTS)
+            }
         }
 
         return view
