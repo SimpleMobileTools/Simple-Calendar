@@ -84,22 +84,25 @@ class MonthFragment : Fragment(), Calendar {
         mTextColorWithEvent = Utils.adjustAlpha(mRes.getColor(R.color.colorPrimary), Constants.HIGH_ALPHA)
         mWeakTextColor = Utils.adjustAlpha(baseColor, Constants.LOW_ALPHA)
         mWeakTextColorWithEvent = Utils.adjustAlpha(mRes.getColor(R.color.colorPrimary), Constants.LOW_ALPHA)
-        mHolder.top_left_arrow.drawable.mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP)
-        mHolder.top_right_arrow.drawable.mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP)
-        mHolder.top_left_arrow.background = null
-        mHolder.top_right_arrow.background = null
 
-        mHolder.top_left_arrow.setOnClickListener {
-            if (mListener != null)
-                mListener!!.goLeft()
+        mHolder.apply {
+            top_left_arrow.drawable.mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP)
+            top_right_arrow.drawable.mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP)
+            top_left_arrow.background = null
+            top_right_arrow.background = null
+
+            top_left_arrow.setOnClickListener {
+                if (mListener != null)
+                    mListener!!.goLeft()
+            }
+
+            top_right_arrow.setOnClickListener {
+                if (mListener != null)
+                    mListener!!.goRight()
+            }
+
+            month_value.setOnClickListener { showMonthDialog() }
         }
-
-        mHolder.top_right_arrow.setOnClickListener {
-            if (mListener != null)
-                mListener!!.goRight()
-        }
-
-        mHolder.month_value.setOnClickListener { showMonthDialog() }
     }
 
     fun showMonthDialog() {
