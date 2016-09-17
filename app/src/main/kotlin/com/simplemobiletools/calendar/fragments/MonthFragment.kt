@@ -27,7 +27,7 @@ class MonthFragment : Fragment(), Calendar {
     private var mTextColorWithEvent: Int = 0
     private var mWeakTextColorWithEvent: Int = 0
     private var mSundayFirst: Boolean = false
-    private var mCode: String = ""
+    private var mDayCode: String = ""
 
     private var mCalendar: CalendarImpl? = null
     private var mListener: NavigationListener? = null
@@ -41,7 +41,7 @@ class MonthFragment : Fragment(), Calendar {
         mRes = resources
 
         mHolder = view.calendar_holder
-        mCode = arguments.getString(Constants.DAY_CODE)
+        mDayCode = arguments.getString(Constants.DAY_CODE)
         mConfig = Config.newInstance(context)
         mSundayFirst = mConfig.isSundayFirst
 
@@ -58,7 +58,7 @@ class MonthFragment : Fragment(), Calendar {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mCalendar = CalendarImpl(this, context)
-        mCalendar!!.updateCalendar(Formatter.getDateTimeFromCode(mCode))
+        mCalendar!!.updateCalendar(Formatter.getDateTimeFromCode(mDayCode))
     }
 
     override fun onResume() {

@@ -4,12 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
-import android.view.ActionMode
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
-import android.widget.AbsListView
-import android.widget.AdapterView
 import butterknife.OnClick
 import com.simplemobiletools.calendar.*
 import com.simplemobiletools.calendar.Formatter
@@ -19,8 +14,7 @@ import kotlinx.android.synthetic.main.activity_day.*
 import org.joda.time.DateTime
 import java.util.*
 
-class DayActivity : SimpleActivity(), NavigationListener, DBHelper.DBOperationsListener, AdapterView.OnItemClickListener,
-AbsListView.MultiChoiceModeListener {
+class DayActivity : SimpleActivity(), NavigationListener, DBHelper.DBOperationsListener {
 
     private val PREFILLED_DAYS = 61
     private var mDayCode: String? = null
@@ -235,43 +229,6 @@ AbsListView.MultiChoiceModeListener {
         //updateEvents(events)
     }
 
-    override fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-        //editEvent(getEventsToShow(mEvents)[position])
-    }
-
-    override fun onItemCheckedStateChanged(mode: ActionMode, position: Int, id: Long, checked: Boolean) {
-        if (checked) {
-            mSelectedItemsCnt++
-        } else {
-            mSelectedItemsCnt--
-        }
-
-        mode.title = mSelectedItemsCnt.toString()
-        mode.invalidate()
-    }
-
-    override fun onCreateActionMode(mode: ActionMode, menu: Menu): Boolean {
-        checkDeleteEvents()
-        val inflater = mode.menuInflater
-        inflater.inflate(R.menu.menu_day_cab, menu)
-        return true
-    }
-
-    override fun onPrepareActionMode(mode: ActionMode, menu: Menu): Boolean {
-        return true
-    }
-
-    override fun onActionItemClicked(mode: ActionMode, item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.delete -> {
-                prepareDeleteEvents()
-                mode.finish()
-                return true
-            }
-            else -> return false
-        }
-    }
-
     private fun prepareDeleteEvents() {
         /*val checked = mEventsList!!.checkedItemPositions
         for (i in mEvents!!.indices) {
@@ -292,10 +249,6 @@ AbsListView.MultiChoiceModeListener {
         mSnackbar!!.setActionTextColor(Color.WHITE)
         mSnackbar!!.show()
         updateEvents(mEvents)*/
-    }
-
-    override fun onDestroyActionMode(mode: ActionMode) {
-        mSelectedItemsCnt = 0
     }
 
     override fun goLeft() {
