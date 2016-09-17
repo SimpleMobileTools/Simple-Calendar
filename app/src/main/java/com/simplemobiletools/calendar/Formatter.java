@@ -8,7 +8,7 @@ import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
 public class Formatter {
-    public static final String DAYCODE_PATTERN = "YYMMdd";
+    public static final String DAYCODE_PATTERN = "YYYYMMdd";
     private static final String DAY_PATTERN = "d";
     private static final String YEAR_PATTERN = "YYYY";
     private static final String EVENT_DATE_PATTERN = "d YYYY"; // MMMM doesn't give the proper month name in some languages
@@ -18,7 +18,7 @@ public class Formatter {
         final DateTime dateTime = getDateTimeFromCode(dayCode);
         final String day = dateTime.toString(DAY_PATTERN);
         final String year = dateTime.toString(YEAR_PATTERN);
-        final int monthIndex = Integer.valueOf(dayCode.substring(2, 4)) - 1;
+        final int monthIndex = Integer.valueOf(dayCode.substring(4, 6)) - 1;
         final String month = getMonthName(context, monthIndex);
         String date = month + " " + day;
         if (!year.equals(new DateTime().toString(YEAR_PATTERN)))
