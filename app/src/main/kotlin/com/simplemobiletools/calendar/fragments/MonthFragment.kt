@@ -45,7 +45,7 @@ class MonthFragment : Fragment(), Calendar {
         mConfig = Config.newInstance(context)
         mSundayFirst = mConfig.isSundayFirst
 
-        setupColors()
+        setupButtons()
 
         mPackageName = activity.packageName
         mDayTextSize = mRes.getDimension(R.dimen.day_text_size) / mRes.displayMetrics.density
@@ -78,7 +78,7 @@ class MonthFragment : Fragment(), Calendar {
         mListener = listener
     }
 
-    private fun setupColors() {
+    private fun setupButtons() {
         val baseColor = if (mConfig.isDarkTheme) Color.WHITE else Color.BLACK
         mTextColor = Utils.adjustAlpha(baseColor, Constants.HIGH_ALPHA)
         mTextColorWithEvent = Utils.adjustAlpha(mRes.getColor(R.color.colorPrimary), Constants.HIGH_ALPHA)
@@ -92,13 +92,11 @@ class MonthFragment : Fragment(), Calendar {
             top_right_arrow.background = null
 
             top_left_arrow.setOnClickListener {
-                if (mListener != null)
-                    mListener!!.goLeft()
+                mListener?.goLeft()
             }
 
             top_right_arrow.setOnClickListener {
-                if (mListener != null)
-                    mListener!!.goRight()
+                mListener?.goRight()
             }
 
             month_value.setOnClickListener { showMonthDialog() }
@@ -120,8 +118,7 @@ class MonthFragment : Fragment(), Calendar {
         alertDialog.setPositiveButton(R.string.ok) { dialog, id ->
             val month = datePicker.month + 1
             val year = datePicker.year
-            if (mListener != null)
-                mListener!!.goToDateTime(DateTime().withMonthOfYear(month).withYear(year))
+            mListener?.goToDateTime(DateTime().withMonthOfYear(month).withYear(year))
         }
 
         alertDialog.show()

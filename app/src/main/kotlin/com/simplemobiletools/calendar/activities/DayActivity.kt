@@ -252,11 +252,11 @@ class DayActivity : SimpleActivity(), NavigationListener, DBHelper.DBOperationsL
     }
 
     override fun goLeft() {
-
+        view_pager.currentItem = view_pager.currentItem - 1
     }
 
     override fun goRight() {
-
+        view_pager.currentItem = view_pager.currentItem + 1
     }
 
     override fun goToDateTime(dateTime: DateTime) {

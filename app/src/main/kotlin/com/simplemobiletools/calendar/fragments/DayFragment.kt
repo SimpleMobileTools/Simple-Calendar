@@ -1,5 +1,8 @@
 package com.simplemobiletools.calendar.fragments
 
+import android.content.res.Resources
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.*
@@ -16,23 +19,59 @@ import java.util.*
 
 class DayFragment : Fragment(), DBHelper.DBOperationsListener, AdapterView.OnItemClickListener,
         AbsListView.MultiChoiceModeListener {
+    private var mTextColor: Int = 0
+    private var mWeakTextColor: Int = 0
+    private var mTextColorWithEvent: Int = 0
+    private var mWeakTextColorWithEvent: Int = 0
     private var mDayCode: String = ""
     private var mEvents: MutableList<Event>? = null
     private var mListener: NavigationListener? = null
 
+    lateinit var mRes: Resources
     lateinit var mHolder: RelativeLayout
+    lateinit var mConfig: Config
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.day_fragment, container, false)
+        mRes = resources
         mHolder = view.day_holder
+
+        mConfig = Config.newInstance(context)
         mDayCode = arguments.getString(Constants.DAY_CODE)
 
         val day = Formatter.getEventDate(activity.applicationContext, mDayCode)
-        view.month_value.text = day
+        mHolder.month_value.text = day
 
-        checkEvents()
-
+        setupButtons()
         return view
+    }
+
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        checkEvents()
+    }
+
+    private fun setupButtons() {
+        val baseColor = if (mConfig.isDarkTheme) Color.WHITE else Color.BLACK
+        mTextColor = Utils.adjustAlpha(baseColor, Constants.HIGH_ALPHA)
+        mTextColorWithEvent = Utils.adjustAlpha(mRes.getColor(R.color.colorPrimary), Constants.HIGH_ALPHA)
+        mWeakTextColor = Utils.adjustAlpha(baseColor, Constants.LOW_ALPHA)
+        mWeakTextColorWithEvent = Utils.adjustAlpha(mRes.getColor(R.color.colorPrimary), Constants.LOW_ALPHA)
+
+        mHolder.apply {
+            top_left_arrow.drawable.mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP)
+            top_right_arrow.drawable.mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP)
+            top_left_arrow.background = null
+            top_right_arrow.background = null
+
+            top_left_arrow.setOnClickListener {
+                mListener?.goLeft()
+            }
+
+            top_right_arrow.setOnClickListener {
+                mListener?.goRight()
+            }
+        }
     }
 
     fun setListener(listener: NavigationListener) {
