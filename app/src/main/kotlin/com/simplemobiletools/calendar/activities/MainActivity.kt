@@ -4,8 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import butterknife.OnClick
 import com.simplemobiletools.calendar.*
 import com.simplemobiletools.calendar.Formatter
 import com.simplemobiletools.calendar.adapters.MyMonthPagerAdapter
@@ -23,6 +21,13 @@ class MainActivity : SimpleActivity(), NavigationListener {
 
         val today = DateTime().toString(Formatter.DAYCODE_PATTERN)
         fillViewPager(today)
+
+        calendar_fab.setOnClickListener {
+            val intent = Intent(applicationContext, EventActivity::class.java)
+            val tomorrowCode = Formatter.getDayCodeFromDateTime(DateTime(DateTimeZone.getDefault()).plusDays(1))
+            intent.putExtra(Constants.DAY_CODE, tomorrowCode)
+            startActivity(intent)
+        }
     }
 
     override fun onDestroy() {
@@ -47,14 +52,6 @@ class MainActivity : SimpleActivity(), NavigationListener {
             }
             else -> return super.onOptionsItemSelected(item)
         }
-    }
-
-    @OnClick(R.id.calendar_fab)
-    fun fabClicked(view: View) {
-        val intent = Intent(applicationContext, EventActivity::class.java)
-        val tomorrowCode = Formatter.getDayCodeFromDateTime(DateTime(DateTimeZone.getDefault()).plusDays(1))
-        intent.putExtra(Constants.DAY_CODE, tomorrowCode)
-        startActivity(intent)
     }
 
     private fun fillViewPager(targetMonth: String) {
