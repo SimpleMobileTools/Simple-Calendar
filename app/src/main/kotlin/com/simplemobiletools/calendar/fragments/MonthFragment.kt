@@ -113,15 +113,18 @@ class MonthFragment : Fragment(), Calendar {
         val dateTime = DateTime(mCalendar!!.targetDate.toString())
         datePicker.init(dateTime.year, dateTime.monthOfYear - 1, 1, null)
 
-        alertDialog.setView(view)
-        alertDialog.setNegativeButton(R.string.cancel, null)
-        alertDialog.setPositiveButton(R.string.ok) { dialog, id ->
-            val month = datePicker.month + 1
-            val year = datePicker.year
-            mListener?.goToDateTime(DateTime().withMonthOfYear(month).withYear(year))
-        }
+        alertDialog.apply {
+            setView(view)
+            setNegativeButton(R.string.cancel, null)
+            setPositiveButton(R.string.ok) { dialog, id ->
+                val month = datePicker.month + 1
+                val year = datePicker.year
+                val newDateTime = dateTime.withMonthOfYear(month).withYear(year)
+                mListener?.goToDateTime(newDateTime)
+            }
 
-        alertDialog.show()
+            show()
+        }
     }
 
     private fun hideDayPicker(datePicker: DatePicker) {

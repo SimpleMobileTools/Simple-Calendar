@@ -5,9 +5,11 @@ import android.graphics.Color
 import android.graphics.PorterDuff
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.app.AlertDialog
 import android.view.*
 import android.widget.AbsListView
 import android.widget.AdapterView
+import android.widget.DatePicker
 import android.widget.RelativeLayout
 import com.simplemobiletools.calendar.*
 import com.simplemobiletools.calendar.Formatter
@@ -41,6 +43,7 @@ class DayFragment : Fragment(), DBHelper.DBOperationsListener, AdapterView.OnIte
 
         val day = Formatter.getEventDate(activity.applicationContext, mDayCode)
         mHolder.month_value.text = day
+        mHolder.month_value.setOnClickListener { pickDay() }
 
         setupButtons()
         return view
@@ -76,6 +79,30 @@ class DayFragment : Fragment(), DBHelper.DBOperationsListener, AdapterView.OnIte
 
     fun setListener(listener: NavigationListener) {
         mListener = listener
+    }
+
+    fun pickDay() {
+        val theme = if (mConfig.isDarkTheme) R.style.MyAlertDialog_Dark else R.style.MyAlertDialog
+        val alertDialog = AlertDialog.Builder(context, theme)
+        val view = getLayoutInflater(arguments).inflate(R.layout.date_picker, null)
+        val datePicker = view.findViewById(R.id.date_picker) as DatePicker
+
+        val dateTime = Formatter.getDateTimeFromCode(mDayCode)
+        datePicker.init(dateTime.year, dateTime.monthOfYear - 1, dateTime.dayOfMonth, null)
+
+        alertDialog.apply {
+            setView(view)
+            setNegativeButton(R.string.cancel, null)
+            setPositiveButton(R.string.ok) { dialog, id ->
+                val month = datePicker.month + 1
+                val year = datePicker.year
+                val day = datePicker.dayOfMonth
+                val newDateTime = dateTime.withDayOfMonth(day).withMonthOfYear(month).withYear(year)
+                mListener?.goToDateTime(newDateTime)
+            }
+
+            show()
+        }
     }
 
     private fun checkEvents() {
