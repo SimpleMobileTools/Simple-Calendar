@@ -6,18 +6,15 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import butterknife.OnClick
-import com.simplemobiletools.calendar.Config
-import com.simplemobiletools.calendar.Constants
+import com.simplemobiletools.calendar.*
 import com.simplemobiletools.calendar.Formatter
-import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.adapters.MyPagerAdapter
-import com.simplemobiletools.calendar.fragments.MonthFragment
+import com.simplemobiletools.calendar.adapters.MyMonthPagerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 import java.util.*
 
-class MainActivity : SimpleActivity(), MonthFragment.NavigationListener {
+class MainActivity : SimpleActivity(), NavigationListener {
     private val PREFILLED_MONTHS = 73
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,7 +59,7 @@ class MainActivity : SimpleActivity(), MonthFragment.NavigationListener {
 
     private fun fillViewPager(targetMonth: String) {
         val codes = getMonths(targetMonth)
-        val adapter = MyPagerAdapter(supportFragmentManager, codes, this)
+        val adapter = MyMonthPagerAdapter(supportFragmentManager, codes, this)
         view_pager.adapter = adapter
         view_pager.currentItem = codes.size / 2
     }

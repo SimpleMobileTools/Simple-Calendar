@@ -183,12 +183,4 @@ class MonthFragment : Fragment(), Calendar {
         intent.putExtra(Constants.DAY_CODE, code)
         startActivity(intent)
     }
-
-    interface NavigationListener {
-        fun goLeft()
-
-        fun goRight()
-
-        fun goToDateTime(dateTime: DateTime)
-    }
 }

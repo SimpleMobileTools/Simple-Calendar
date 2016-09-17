@@ -10,14 +10,30 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.AbsListView
 import android.widget.AdapterView
-import com.simplemobiletools.calendar.Constants
-import com.simplemobiletools.calendar.DBHelper
+import butterknife.OnClick
+import com.simplemobiletools.calendar.*
 import com.simplemobiletools.calendar.Formatter
-import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.adapters.MyDayPagerAdapter
 import com.simplemobiletools.calendar.models.Event
+import kotlinx.android.synthetic.main.activity_day.*
+import org.joda.time.DateTime
 import java.util.*
 
-class DayActivity : SimpleActivity(), DBHelper.DBOperationsListener, AdapterView.OnItemClickListener, AbsListView.MultiChoiceModeListener {
+class DayActivity : SimpleActivity(), NavigationListener, DBHelper.DBOperationsListener, AdapterView.OnItemClickListener,
+AbsListView.MultiChoiceModeListener {
+
+    private val PREFILLED_DAYS = 61
+    private var mDayCode: String? = null
+    private var mEvents: MutableList<Event>? = null
+    private var mSelectedItemsCnt: Int = 0
+    private var mSnackbar: Snackbar? = null
+    private var mToBeDeleted: MutableList<Int>? = null
+    private val EDIT_EVENT = 1
+
+    companion object {
+        val DELETED_ID = "deleted_id"
+    }
+
     /*@BindView(R.id.month_value) internal var mDateTV: TextView? = null
     @BindView(R.id.day_events) internal var mEventsList: ListView? = null
     @BindView(R.id.day_coordinator) internal var mCoordinatorLayout: CoordinatorLayout? = null
@@ -29,15 +45,15 @@ class DayActivity : SimpleActivity(), DBHelper.DBOperationsListener, AdapterView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_day)
-        //ButterKnife.bind(this)
 
         val intent = intent ?: return
-
         mDayCode = intent.getStringExtra(Constants.DAY_CODE)
         if (mDayCode == null || mDayCode!!.isEmpty())
             return
 
-        val date = Formatter.getEventDate(applicationContext, mDayCode)
+        //val date = Formatter.getEventDate(applicationContext, dayCode)
+        fillViewPager(mDayCode!!)
+
         /*mDateTV!!.text = date
         mToBeDeleted = ArrayList<Int>()
 
@@ -63,14 +79,31 @@ class DayActivity : SimpleActivity(), DBHelper.DBOperationsListener, AdapterView
         checkDeleteEvents()
     }
 
-    /*@OnClick(R.id.day_fab)
+    private fun fillViewPager(targetDay: String) {
+        val codes = getDays(targetDay)
+        val adapter = MyDayPagerAdapter(supportFragmentManager, codes, this)
+        view_pager.adapter = adapter
+        view_pager.currentItem = codes.size / 2
+    }
+
+    private fun getDays(code: String): List<String> {
+        val days = ArrayList<String>(PREFILLED_DAYS)
+        val today = Formatter.getDateTimeFromCode(code)
+        for (i in -PREFILLED_DAYS / 2..PREFILLED_DAYS / 2) {
+            days.add(Formatter.getDayCodeFromDateTime(today.plusDays(i)))
+        }
+
+        return days
+    }
+
+    @OnClick(R.id.day_fab)
     fun fabClicked(view: View) {
         val intent = Intent(applicationContext, EventActivity::class.java)
         intent.putExtra(Constants.DAY_CODE, mDayCode)
         startActivity(intent)
     }
 
-    @OnClick(R.id.top_left_arrow)
+    /*@OnClick(R.id.top_left_arrow)
     fun leftArrowClicked() {
         val dateTime = Formatter.getDateTimeFromCode(mDayCode)
         val yesterdayCode = Formatter.getDayCodeFromDateTime(dateTime.minusDays(1))
@@ -128,13 +161,13 @@ class DayActivity : SimpleActivity(), DBHelper.DBOperationsListener, AdapterView
         DBHelper.newInstance(applicationContext, this).getEvents(startTS, endTS)
     }
 
-    private fun updateEvents(events: MutableList<Event>) {
+    /*private fun updateEvents(events: MutableList<Event>) {
         mEvents = ArrayList(events)
-        /*val eventsToShow = getEventsToShow(events)
+        val eventsToShow = getEventsToShow(events)
         val adapter = EventsAdapter(this, eventsToShow)
         mEventsList!!.adapter = adapter
         mEventsList!!.onItemClickListener = this
-        mEventsList!!.setMultiChoiceModeListener(this)*/
+        mEventsList!!.setMultiChoiceModeListener(this)
     }
 
     private fun getEventsToShow(events: MutableList<Event>): List<Event> {
@@ -145,7 +178,7 @@ class DayActivity : SimpleActivity(), DBHelper.DBOperationsListener, AdapterView
             }
         }
         return events
-    }
+    }*/
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == EDIT_EVENT && resultCode == Activity.RESULT_OK && data != null) {
@@ -201,7 +234,7 @@ class DayActivity : SimpleActivity(), DBHelper.DBOperationsListener, AdapterView
     }
 
     override fun gotEvents(events: MutableList<Event>) {
-        updateEvents(events)
+        //updateEvents(events)
     }
 
     override fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long) {
@@ -267,14 +300,15 @@ class DayActivity : SimpleActivity(), DBHelper.DBOperationsListener, AdapterView
         mSelectedItemsCnt = 0
     }
 
-    companion object {
-        private val EDIT_EVENT = 1
-        val DELETED_ID = "deleted_id"
+    override fun goLeft() {
 
-        private var mDayCode: String? = null
-        private var mEvents: MutableList<Event>? = null
-        private var mSelectedItemsCnt: Int = 0
-        private var mSnackbar: Snackbar? = null
-        private var mToBeDeleted: MutableList<Int>? = null
+    }
+
+    override fun goRight() {
+
+    }
+
+    override fun goToDateTime(dateTime: DateTime) {
+
     }
 }
