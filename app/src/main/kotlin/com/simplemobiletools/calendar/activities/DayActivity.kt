@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.view.View
-import butterknife.OnClick
 import com.simplemobiletools.calendar.*
 import com.simplemobiletools.calendar.Formatter
 import com.simplemobiletools.calendar.adapters.MyDayPagerAdapter
@@ -47,6 +46,12 @@ class DayActivity : SimpleActivity(), NavigationListener, DBHelper.DBOperationsL
 
         fillViewPager(mDayCode!!)
 
+        day_fab.setOnClickListener {
+            val eventIntent = Intent(applicationContext, EventActivity::class.java)
+            eventIntent.putExtra(Constants.DAY_CODE, mDayCode)
+            startActivity(eventIntent)
+        }
+
         /*mToBeDeleted = ArrayList<Int>()
 
         val baseColor = if (mConfig.isDarkTheme) Color.WHITE else Color.BLACK
@@ -87,51 +92,6 @@ class DayActivity : SimpleActivity(), NavigationListener, DBHelper.DBOperationsL
 
         return days
     }
-
-    @OnClick(R.id.day_fab)
-    fun fabClicked(view: View) {
-        val intent = Intent(applicationContext, EventActivity::class.java)
-        intent.putExtra(Constants.DAY_CODE, mDayCode)
-        startActivity(intent)
-    }
-
-    /*@OnClick(R.id.top_left_arrow)
-    fun leftArrowClicked() {
-        val dateTime = Formatter.getDateTimeFromCode(mDayCode)
-        val yesterdayCode = Formatter.getDayCodeFromDateTime(dateTime.minusDays(1))
-        switchToDay(yesterdayCode)
-    }
-
-    @OnClick(R.id.top_right_arrow)
-    fun rightArrowClicked() {
-        val dateTime = Formatter.getDateTimeFromCode(mDayCode)
-        val tomorrowCode = Formatter.getDayCodeFromDateTime(dateTime.plusDays(1))
-        switchToDay(tomorrowCode)
-    }
-
-    @OnClick(R.id.month_value)
-    fun pickDay() {
-        val theme = if (mConfig.isDarkTheme) R.style.MyAlertDialog_Dark else R.style.MyAlertDialog
-        val alertDialog = AlertDialog.Builder(this, theme)
-        val view = layoutInflater.inflate(R.layout.date_picker, null)
-        val datePicker = view.findViewById(R.id.date_picker) as DatePicker
-
-        val dateTime = Formatter.getDateTimeFromCode(mDayCode)
-        datePicker.init(dateTime.year, dateTime.monthOfYear - 1, dateTime.dayOfMonth, null)
-
-        alertDialog.setView(view)
-        alertDialog.setNegativeButton(R.string.cancel, null)
-        alertDialog.setPositiveButton(R.string.ok) { dialog, id ->
-            val month = datePicker.month + 1
-            val year = datePicker.year
-            val day = datePicker.dayOfMonth
-            val newDateTime = dateTime.withDayOfMonth(day).withMonthOfYear(month).withYear(year)
-            val newDayCode = Formatter.getDayCodeFromDateTime(newDateTime)
-            switchToDay(newDayCode)
-        }
-
-        alertDialog.show()
-    }*/
 
     private fun switchToDay(dayCode: String) {
         val intent = Intent(applicationContext, DayActivity::class.java)
