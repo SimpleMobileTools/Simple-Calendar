@@ -51,11 +51,9 @@ AbsListView.MultiChoiceModeListener {
         if (mDayCode == null || mDayCode!!.isEmpty())
             return
 
-        //val date = Formatter.getEventDate(applicationContext, dayCode)
         fillViewPager(mDayCode!!)
 
-        /*mDateTV!!.text = date
-        mToBeDeleted = ArrayList<Int>()
+        /*mToBeDeleted = ArrayList<Int>()
 
         val baseColor = if (mConfig.isDarkTheme) Color.WHITE else Color.BLACK
         val textColor = Utils.adjustAlpha(baseColor, Constants.HIGH_ALPHA)
