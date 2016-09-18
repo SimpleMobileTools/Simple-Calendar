@@ -59,10 +59,9 @@ class DayActivity : SimpleActivity(), DayFragment.DeleteListener, ViewPager.OnPa
     }
 
     private fun addNewEvent() {
-        //view_pager.currentItem
-        /*val eventIntent = Intent(applicationContext, EventActivity::class.java)
+        val eventIntent = Intent(applicationContext, EventActivity::class.java)
         eventIntent.putExtra(Constants.DAY_CODE, mPagerDays?.get(view_pager.currentItem))
-        startActivity(eventIntent)*/
+        startActivity(eventIntent)
     }
 
     private fun getDays(code: String) {
@@ -72,25 +71,6 @@ class DayActivity : SimpleActivity(), DayFragment.DeleteListener, ViewPager.OnPa
             mPagerDays!!.add(Formatter.getDayCodeFromDateTime(today.plusDays(i)))
         }
     }
-
-    /*private fun updateEvents(events: MutableList<Event>) {
-        mEvents = ArrayList(events)
-        val eventsToShow = getEventsToShow(events)
-        val adapter = EventsAdapter(this, eventsToShow)
-        mEventsList!!.adapter = adapter
-        mEventsList!!.onItemClickListener = this
-        mEventsList!!.setMultiChoiceModeListener(this)
-    }
-
-    private fun getEventsToShow(events: MutableList<Event>): List<Event> {
-        val cnt = events.size
-        for (i in cnt - 1 downTo 0) {
-            if (mToBeDeleted!!.contains(events[i].id)) {
-                events.removeAt(i)
-            }
-        }
-        return events
-    }*/
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         /*if (requestCode == EDIT_EVENT && resultCode == Activity.RESULT_OK && data != null) {
