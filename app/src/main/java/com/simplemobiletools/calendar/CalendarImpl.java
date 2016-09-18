@@ -30,7 +30,7 @@ public class CalendarImpl implements DBHelper.DBOperationsListener {
         mTargetDate = targetDate;
         final int startTS = Formatter.getDayStartTS(Formatter.getDayCodeFromDateTime(mTargetDate.minusMonths(1)));
         final int endTS = Formatter.getDayEndTS(Formatter.getDayCodeFromDateTime(mTargetDate.plusMonths(1)));
-        DBHelper.newInstance(mContext, this).getEvents(startTS, endTS);
+        DBHelper.Companion.newInstance(mContext, this).getEvents(startTS, endTS);
     }
 
     public void getPrevMonth() {

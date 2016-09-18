@@ -23,6 +23,7 @@ import kotlinx.android.synthetic.main.top_navigation.view.*
 import java.util.*
 
 class DayFragment : Fragment(), DBHelper.DBOperationsListener, AdapterView.OnItemClickListener, AbsListView.MultiChoiceModeListener {
+
     private val EDIT_EVENT = 1
 
     private var mTextColor: Int = 0
@@ -171,7 +172,7 @@ class DayFragment : Fragment(), DBHelper.DBOperationsListener, AdapterView.OnIte
 
     fun deleteEvents() {
         val cnt = mToBeDeleted.size
-        val eventIDs = arrayOfNulls<String>(cnt)
+        val eventIDs = arrayOf<String>()
         for (i in 0..cnt - 1) {
             eventIDs[i] = mToBeDeleted[i].toString()
         }
@@ -225,11 +226,10 @@ class DayFragment : Fragment(), DBHelper.DBOperationsListener, AdapterView.OnIte
         editEvent(getEventsToShow(mEvents!!)[position])
     }
 
-    override fun eventInserted(event: Event?) {
-
+    override fun eventInserted(event: Event) {
     }
 
-    override fun eventUpdated(event: Event?) {
+    override fun eventUpdated(event: Event) {
 
     }
 
