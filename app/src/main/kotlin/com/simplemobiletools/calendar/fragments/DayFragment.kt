@@ -59,6 +59,10 @@ class DayFragment : Fragment(), DBHelper.DBOperationsListener, AdapterView.OnIte
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mToBeDeleted = ArrayList<Int>()
+    }
+
+    override fun onResume() {
+        super.onResume()
         checkEvents()
     }
 
@@ -134,16 +138,12 @@ class DayFragment : Fragment(), DBHelper.DBOperationsListener, AdapterView.OnIte
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == EDIT_EVENT && resultCode == Activity.RESULT_OK) {
-            if (data == null) {
-                checkEvents()
-            } else {
-                val deletedId = data.getIntExtra(DELETED_ID, -1)
-                if (deletedId != -1) {
-                    mToBeDeleted.clear()
-                    mToBeDeleted.add(deletedId)
-                    notifyDeletion()
-                }
+        if (requestCode == EDIT_EVENT && resultCode == Activity.RESULT_OK && data != null) {
+            val deletedId = data.getIntExtra(DELETED_ID, -1)
+            if (deletedId != -1) {
+                mToBeDeleted.clear()
+                mToBeDeleted.add(deletedId)
+                notifyDeletion()
             }
         }
     }

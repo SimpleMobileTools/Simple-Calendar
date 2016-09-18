@@ -381,7 +381,6 @@ public class EventActivity extends SimpleActivity implements DBHelper.DBOperatio
     public void eventUpdated(Event event) {
         Utils.scheduleNotification(getApplicationContext(), event);
         Utils.showToast(getApplicationContext(), R.string.event_updated);
-        setResult(RESULT_OK);
         finish();
     }
 
