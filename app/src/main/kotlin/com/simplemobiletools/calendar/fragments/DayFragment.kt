@@ -145,6 +145,21 @@ class DayFragment : Fragment(), DBHelper.DBOperationsListener, AdapterView.OnIte
         updateEvents(mEvents!!)
     }
 
+    fun deleteEvents() {
+        val cnt = mToBeDeleted.size
+        val eventIDs = arrayOfNulls<String>(cnt)
+        for (i in 0..cnt - 1) {
+            eventIDs[i] = mToBeDeleted[i].toString()
+        }
+
+        DBHelper.newInstance(activity.applicationContext, this).deleteEvents(eventIDs)
+    }
+
+    fun undoDeletion() {
+        mToBeDeleted.clear()
+        updateEvents(mEvents!!)
+    }
+
     override fun onPrepareActionMode(mode: ActionMode, menu: Menu): Boolean {
         return true
     }

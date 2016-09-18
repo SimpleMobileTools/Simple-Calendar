@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.support.design.widget.Snackbar
+import android.support.v4.view.ViewPager
 import android.view.View
 import com.simplemobiletools.calendar.Constants
 import com.simplemobiletools.calendar.Formatter
@@ -15,12 +16,13 @@ import kotlinx.android.synthetic.main.activity_day.*
 import org.joda.time.DateTime
 import java.util.*
 
-class DayActivity : SimpleActivity(), DayFragment.DeleteListener {
+class DayActivity : SimpleActivity(), DayFragment.DeleteListener, ViewPager.OnPageChangeListener {
     private val PREFILLED_DAYS = 61
     private var mDayCode: String? = null
     private var mEvents: MutableList<Event>? = null
     private var mSnackbar: Snackbar? = null
     private var mPagerDays: MutableList<String>? = null
+    private var mPagerPos = 0
 
     companion object {
         val DELETED_ID = "deleted_id"
@@ -47,15 +49,20 @@ class DayActivity : SimpleActivity(), DayFragment.DeleteListener {
 
     private fun fillViewPager(targetDay: String) {
         getDays(targetDay)
-        val adapter = MyDayPagerAdapter(supportFragmentManager, mPagerDays!!, this)
-        view_pager.adapter = adapter
-        view_pager.currentItem = mPagerDays!!.size / 2
+        val daysAdapter = MyDayPagerAdapter(supportFragmentManager, mPagerDays!!, this)
+        mPagerPos = mPagerDays!!.size / 2
+        view_pager.apply {
+            adapter = daysAdapter
+            currentItem = mPagerPos
+            addOnPageChangeListener(this@DayActivity)
+        }
     }
 
     private fun addNewEvent() {
-        val eventIntent = Intent(applicationContext, EventActivity::class.java)
+        //view_pager.currentItem
+        /*val eventIntent = Intent(applicationContext, EventActivity::class.java)
         eventIntent.putExtra(Constants.DAY_CODE, mPagerDays?.get(view_pager.currentItem))
-        startActivity(eventIntent)
+        startActivity(eventIntent)*/
     }
 
     private fun getDays(code: String) {
@@ -105,58 +112,44 @@ class DayActivity : SimpleActivity(), DayFragment.DeleteListener {
     }
 
     private fun deleteEvents() {
-        /*mSnackbar!!.dismiss()
-
-        val cnt = mToBeDeleted!!.size
-        val eventIDs = arrayOfNulls<String>(cnt)
-        for (i in 0..cnt - 1) {
-            eventIDs[i] = mToBeDeleted!![i].toString()
-        }
-
-        DBHelper.newInstance(applicationContext, this).deleteEvents(eventIDs)*/
+        mSnackbar!!.dismiss()
+        (view_pager.adapter as MyDayPagerAdapter).deleteItems(mPagerPos)
     }
 
     private val undoDeletion = View.OnClickListener { undoDeletion() }
 
     private fun undoDeletion() {
         if (mSnackbar != null) {
-            //mToBeDeleted!!.clear()
             mSnackbar!!.dismiss()
-            //updateEvents(mEvents)
+            (view_pager.adapter as MyDayPagerAdapter).undoDeletion(view_pager.currentItem)
         }
     }
 
-    private fun prepareDeleteEvents() {
-        /*val checked = mEventsList!!.checkedItemPositions
-        for (i in mEvents!!.indices) {
-            if (checked.get(i)) {
-                val event = mEvents!![i]
-                mToBeDeleted!!.add(event.id)
-            }
-        }
+    override fun onPageScrollStateChanged(state: Int) {
 
-        notifyEventDeletion(mToBeDeleted!!.size)*/
     }
 
-    private fun notifyEventDeletion(cnt: Int) {
-        /*val res = resources
-        val msg = res.getQuantityString(R.plurals.events_deleted, cnt, cnt)
-        mSnackbar = Snackbar.make(mCoordinatorLayout!!, msg, Snackbar.LENGTH_INDEFINITE)
-        mSnackbar!!.setAction(res.getString(R.string.undo), undoDeletion)
-        mSnackbar!!.setActionTextColor(Color.WHITE)
-        mSnackbar!!.show()
-        updateEvents(mEvents)*/
+    override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+
+    }
+
+    override fun onPageSelected(position: Int) {
+        checkDeleteEvents()
+        mPagerPos = position
     }
 
     override fun goLeft() {
+        checkDeleteEvents()
         view_pager.currentItem = view_pager.currentItem - 1
     }
 
     override fun goRight() {
+        checkDeleteEvents()
         view_pager.currentItem = view_pager.currentItem + 1
     }
 
     override fun goToDateTime(dateTime: DateTime) {
+        checkDeleteEvents()
         fillViewPager(Formatter.getDayCodeFromDateTime(dateTime))
     }
 
