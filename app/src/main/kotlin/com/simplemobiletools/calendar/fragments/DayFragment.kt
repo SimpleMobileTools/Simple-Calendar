@@ -26,6 +26,7 @@ class DayFragment : Fragment(), DBHelper.DBOperationsListener, AdapterView.OnIte
     private val EDIT_EVENT = 1
 
     private var mTextColor: Int = 0
+    private var mSelectedItemsCnt: Int = 0
     private var mDayCode: String = ""
     private var mEvents: MutableList<Event>? = null
     private var mListener: NavigationListener? = null
@@ -159,18 +160,18 @@ class DayFragment : Fragment(), DBHelper.DBOperationsListener, AdapterView.OnIte
     }
 
     override fun onDestroyActionMode(mode: ActionMode) {
-        //mSelectedItemsCnt = 0
+        mSelectedItemsCnt = 0
     }
 
     override fun onItemCheckedStateChanged(mode: ActionMode, position: Int, id: Long, checked: Boolean) {
-        /*if (checked) {
+        if (checked) {
             mSelectedItemsCnt++
         } else {
             mSelectedItemsCnt--
         }
 
         mode.title = mSelectedItemsCnt.toString()
-        mode.invalidate()*/
+        mode.invalidate()
     }
 
     override fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long) {

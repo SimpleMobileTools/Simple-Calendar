@@ -19,7 +19,6 @@ class DayActivity : SimpleActivity(), NavigationListener {
     private val PREFILLED_DAYS = 61
     private var mDayCode: String? = null
     private var mEvents: MutableList<Event>? = null
-    private var mSelectedItemsCnt: Int = 0
     private var mSnackbar: Snackbar? = null
     private var mToBeDeleted: MutableList<Int>? = null
     private var mPagerDays: MutableList<String>? = null
