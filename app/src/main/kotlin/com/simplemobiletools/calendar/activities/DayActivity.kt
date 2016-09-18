@@ -4,15 +4,17 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.view.View
-import com.simplemobiletools.calendar.*
+import com.simplemobiletools.calendar.Constants
 import com.simplemobiletools.calendar.Formatter
+import com.simplemobiletools.calendar.NavigationListener
+import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.adapters.MyDayPagerAdapter
 import com.simplemobiletools.calendar.models.Event
 import kotlinx.android.synthetic.main.activity_day.*
 import org.joda.time.DateTime
 import java.util.*
 
-class DayActivity : SimpleActivity(), NavigationListener, DBHelper.DBOperationsListener {
+class DayActivity : SimpleActivity(), NavigationListener {
 
     private val PREFILLED_DAYS = 61
     private var mDayCode: String? = null
@@ -45,11 +47,6 @@ class DayActivity : SimpleActivity(), NavigationListener, DBHelper.DBOperationsL
         //mToBeDeleted = ArrayList<Int>()
     }
 
-    override fun onResume() {
-        super.onResume()
-        checkEvents()
-    }
-
     override fun onPause() {
         super.onPause()
         checkDeleteEvents()
@@ -78,12 +75,6 @@ class DayActivity : SimpleActivity(), NavigationListener, DBHelper.DBOperationsL
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
         overridePendingTransition(0, 0)
-    }
-
-    private fun checkEvents() {
-        val startTS = Formatter.getDayStartTS(mDayCode)
-        val endTS = Formatter.getDayEndTS(mDayCode)
-        DBHelper.newInstance(applicationContext, this).getEvents(startTS, endTS)
     }
 
     /*private fun updateEvents(events: MutableList<Event>) {
@@ -116,18 +107,6 @@ class DayActivity : SimpleActivity(), NavigationListener, DBHelper.DBOperationsL
         }*/
     }
 
-    override fun eventInserted(event: Event) {
-
-    }
-
-    override fun eventUpdated(event: Event) {
-
-    }
-
-    override fun eventsDeleted(cnt: Int) {
-        checkEvents()
-    }
-
     private fun checkDeleteEvents() {
         if (mSnackbar != null && mSnackbar!!.isShown) {
             deleteEvents()
@@ -137,7 +116,7 @@ class DayActivity : SimpleActivity(), NavigationListener, DBHelper.DBOperationsL
     }
 
     private fun deleteEvents() {
-        mSnackbar!!.dismiss()
+        /*mSnackbar!!.dismiss()
 
         val cnt = mToBeDeleted!!.size
         val eventIDs = arrayOfNulls<String>(cnt)
@@ -145,7 +124,7 @@ class DayActivity : SimpleActivity(), NavigationListener, DBHelper.DBOperationsL
             eventIDs[i] = mToBeDeleted!![i].toString()
         }
 
-        DBHelper.newInstance(applicationContext, this).deleteEvents(eventIDs)
+        DBHelper.newInstance(applicationContext, this).deleteEvents(eventIDs)*/
     }
 
     private val undoDeletion = View.OnClickListener { undoDeletion() }
@@ -156,10 +135,6 @@ class DayActivity : SimpleActivity(), NavigationListener, DBHelper.DBOperationsL
             mSnackbar!!.dismiss()
             //updateEvents(mEvents)
         }
-    }
-
-    override fun gotEvents(events: MutableList<Event>) {
-        //updateEvents(events)
     }
 
     private fun prepareDeleteEvents() {
