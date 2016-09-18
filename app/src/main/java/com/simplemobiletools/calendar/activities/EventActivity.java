@@ -22,6 +22,7 @@ import com.simplemobiletools.calendar.DBHelper;
 import com.simplemobiletools.calendar.Formatter;
 import com.simplemobiletools.calendar.R;
 import com.simplemobiletools.calendar.Utils;
+import com.simplemobiletools.calendar.fragments.DayFragment;
 import com.simplemobiletools.calendar.models.Event;
 
 import org.joda.time.DateTime;
@@ -204,7 +205,7 @@ public class EventActivity extends SimpleActivity implements DBHelper.DBOperatio
 
     private void deleteEvent() {
         final Intent intent = new Intent();
-        intent.putExtra(DayActivity.Companion.getDELETED_ID(), mEvent.getId());
+        intent.putExtra(DayFragment.Companion.getDELETED_ID(), mEvent.getId());
         setResult(RESULT_OK, intent);
         finish();
     }
@@ -380,6 +381,7 @@ public class EventActivity extends SimpleActivity implements DBHelper.DBOperatio
     public void eventUpdated(Event event) {
         Utils.scheduleNotification(getApplicationContext(), event);
         Utils.showToast(getApplicationContext(), R.string.event_updated);
+        setResult(RESULT_OK);
         finish();
     }
 

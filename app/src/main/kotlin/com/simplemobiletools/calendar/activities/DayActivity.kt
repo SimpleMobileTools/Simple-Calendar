@@ -11,7 +11,6 @@ import com.simplemobiletools.calendar.Formatter
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.adapters.MyDayPagerAdapter
 import com.simplemobiletools.calendar.fragments.DayFragment
-import com.simplemobiletools.calendar.models.Event
 import kotlinx.android.synthetic.main.activity_day.*
 import org.joda.time.DateTime
 import java.util.*
@@ -19,14 +18,9 @@ import java.util.*
 class DayActivity : SimpleActivity(), DayFragment.DeleteListener, ViewPager.OnPageChangeListener {
     private val PREFILLED_DAYS = 61
     private var mDayCode: String? = null
-    private var mEvents: MutableList<Event>? = null
     private var mSnackbar: Snackbar? = null
     private var mPagerDays: MutableList<String>? = null
     private var mPagerPos = 0
-
-    companion object {
-        val DELETED_ID = "deleted_id"
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,17 +64,6 @@ class DayActivity : SimpleActivity(), DayFragment.DeleteListener, ViewPager.OnPa
         for (i in -PREFILLED_DAYS / 2..PREFILLED_DAYS / 2) {
             mPagerDays!!.add(Formatter.getDayCodeFromDateTime(today.plusDays(i)))
         }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        /*if (requestCode == EDIT_EVENT && resultCode == Activity.RESULT_OK && data != null) {
-            val deletedId = data.getIntExtra(DELETED_ID, -1)
-            if (deletedId != -1) {
-                mToBeDeleted!!.clear()
-                mToBeDeleted!!.add(deletedId)
-                notifyEventDeletion(1)
-            }
-        }*/
     }
 
     private fun checkDeleteEvents() {

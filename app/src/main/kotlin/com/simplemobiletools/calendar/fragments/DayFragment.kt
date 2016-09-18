@@ -1,5 +1,6 @@
 package com.simplemobiletools.calendar.fragments
 
+import android.app.Activity
 import android.content.Intent
 import android.content.res.Resources
 import android.graphics.Color
@@ -7,6 +8,7 @@ import android.graphics.PorterDuff
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AlertDialog
+import android.util.Log
 import android.view.*
 import android.widget.AbsListView
 import android.widget.AdapterView
@@ -34,6 +36,10 @@ class DayFragment : Fragment(), DBHelper.DBOperationsListener, AdapterView.OnIte
     lateinit var mHolder: RelativeLayout
     lateinit var mConfig: Config
     lateinit var mToBeDeleted: MutableList<Int>
+
+    companion object {
+        val DELETED_ID = "deleted_id"
+    }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.day_fragment, container, false)
@@ -112,6 +118,9 @@ class DayFragment : Fragment(), DBHelper.DBOperationsListener, AdapterView.OnIte
     }
 
     private fun updateEvents(events: MutableList<Event>) {
+        for (e in events) {
+            Log.e("DEBUG", "GOT EVENT $e")
+        }
         mEvents = ArrayList(events)
         val eventsToShow = getEventsToShow(events)
         val eventsAdapter = EventsAdapter(activity.baseContext, eventsToShow)
@@ -128,6 +137,21 @@ class DayFragment : Fragment(), DBHelper.DBOperationsListener, AdapterView.OnIte
         startActivityForResult(intent, EDIT_EVENT)
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == EDIT_EVENT && resultCode == Activity.RESULT_OK) {
+            if (data == null) {
+                checkEvents()
+            } else {
+                val deletedId = data.getIntExtra(DELETED_ID, -1)
+                if (deletedId != -1) {
+                    mToBeDeleted.clear()
+                    mToBeDeleted.add(deletedId)
+                    notifyDeletion()
+                }
+            }
+        }
+    }
+
     private fun getEventsToShow(events: MutableList<Event>): List<Event> {
         return events.filter { !mToBeDeleted.contains(it.id) }
     }
@@ -141,6 +165,10 @@ class DayFragment : Fragment(), DBHelper.DBOperationsListener, AdapterView.OnIte
             }
         }
 
+        notifyDeletion()
+    }
+
+    private fun notifyDeletion() {
         mListener?.notifyDeletion(mToBeDeleted.size)
         updateEvents(mEvents!!)
     }
