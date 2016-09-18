@@ -69,14 +69,6 @@ class DayActivity : SimpleActivity(), NavigationListener {
         }
     }
 
-    private fun switchToDay(dayCode: String) {
-        val intent = Intent(applicationContext, DayActivity::class.java)
-        intent.putExtra(Constants.DAY_CODE, dayCode)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        startActivity(intent)
-        overridePendingTransition(0, 0)
-    }
-
     /*private fun updateEvents(events: MutableList<Event>) {
         mEvents = ArrayList(events)
         val eventsToShow = getEventsToShow(events)
@@ -168,6 +160,6 @@ class DayActivity : SimpleActivity(), NavigationListener {
     }
 
     override fun goToDateTime(dateTime: DateTime) {
-
+        fillViewPager(Formatter.getDayCodeFromDateTime(dateTime))
     }
 }
