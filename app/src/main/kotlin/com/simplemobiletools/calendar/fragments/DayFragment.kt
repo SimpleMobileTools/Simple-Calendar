@@ -8,7 +8,6 @@ import android.graphics.PorterDuff
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AlertDialog
-import android.util.Log
 import android.view.*
 import android.widget.AbsListView
 import android.widget.AdapterView
@@ -118,9 +117,6 @@ class DayFragment : Fragment(), DBHelper.DBOperationsListener, AdapterView.OnIte
     }
 
     private fun updateEvents(events: MutableList<Event>) {
-        for (e in events) {
-            Log.e("DEBUG", "GOT EVENT $e")
-        }
         mEvents = ArrayList(events)
         val eventsToShow = getEventsToShow(events)
         val eventsAdapter = EventsAdapter(activity.baseContext, eventsToShow)
