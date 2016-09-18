@@ -26,9 +26,6 @@ class DayFragment : Fragment(), DBHelper.DBOperationsListener, AdapterView.OnIte
     private val EDIT_EVENT = 1
 
     private var mTextColor: Int = 0
-    private var mWeakTextColor: Int = 0
-    private var mTextColorWithEvent: Int = 0
-    private var mWeakTextColorWithEvent: Int = 0
     private var mDayCode: String = ""
     private var mEvents: MutableList<Event>? = null
     private var mListener: NavigationListener? = null
@@ -61,9 +58,6 @@ class DayFragment : Fragment(), DBHelper.DBOperationsListener, AdapterView.OnIte
     private fun setupButtons() {
         val baseColor = if (mConfig.isDarkTheme) Color.WHITE else Color.BLACK
         mTextColor = Utils.adjustAlpha(baseColor, Constants.HIGH_ALPHA)
-        mTextColorWithEvent = Utils.adjustAlpha(mRes.getColor(R.color.colorPrimary), Constants.HIGH_ALPHA)
-        mWeakTextColor = Utils.adjustAlpha(baseColor, Constants.LOW_ALPHA)
-        mWeakTextColorWithEvent = Utils.adjustAlpha(mRes.getColor(R.color.colorPrimary), Constants.LOW_ALPHA)
 
         mHolder.apply {
             top_left_arrow.drawable.mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP)
