@@ -27,14 +27,6 @@ class DayActivity : SimpleActivity(), NavigationListener, DBHelper.DBOperationsL
         val DELETED_ID = "deleted_id"
     }
 
-    /*@BindView(R.id.month_value) internal var mDateTV: TextView? = null
-    @BindView(R.id.day_events) internal var mEventsList: ListView? = null
-    @BindView(R.id.day_coordinator) internal var mCoordinatorLayout: CoordinatorLayout? = null
-    @BindView(R.id.top_left_arrow) internal var mLeftArrow: ImageView? = null
-    @BindView(R.id.top_right_arrow) internal var mRightArrow: ImageView? = null
-
-    @BindDimen(R.dimen.activity_margin) internal var mActivityMargin: Int = 0*/
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_day)
@@ -52,18 +44,7 @@ class DayActivity : SimpleActivity(), NavigationListener, DBHelper.DBOperationsL
             startActivity(eventIntent)
         }
 
-        /*mToBeDeleted = ArrayList<Int>()
-
-        val baseColor = if (mConfig.isDarkTheme) Color.WHITE else Color.BLACK
-        val textColor = Utils.adjustAlpha(baseColor, Constants.HIGH_ALPHA)
-        mLeftArrow!!.drawable.mutate().setColorFilter(textColor, PorterDuff.Mode.SRC_ATOP)
-        mRightArrow!!.drawable.mutate().setColorFilter(textColor, PorterDuff.Mode.SRC_ATOP)
-
-        var params = mLeftArrow!!.layoutParams as RelativeLayout.LayoutParams
-        params.setMargins(mActivityMargin, params.topMargin, params.rightMargin, params.bottomMargin)
-
-        params = mRightArrow!!.layoutParams as RelativeLayout.LayoutParams
-        params.setMargins(params.leftMargin, params.topMargin, mActivityMargin, params.bottomMargin)*/
+        //mToBeDeleted = ArrayList<Int>()
     }
 
     override fun onResume() {

@@ -114,7 +114,7 @@ class DayFragment : Fragment(), DBHelper.DBOperationsListener, AdapterView.OnIte
     private fun updateEvents(events: MutableList<Event>) {
         mEvents = ArrayList(events)
         val eventsToShow = getEventsToShow(events)
-        val eventsAdapter = EventsAdapter(activity.applicationContext, eventsToShow)
+        val eventsAdapter = EventsAdapter(activity.baseContext, eventsToShow)
         mHolder.day_events.apply {
             adapter = eventsAdapter
             onItemClickListener = this@DayFragment
