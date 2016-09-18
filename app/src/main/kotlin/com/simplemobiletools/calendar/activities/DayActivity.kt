@@ -22,6 +22,7 @@ class DayActivity : SimpleActivity(), NavigationListener {
     private var mSelectedItemsCnt: Int = 0
     private var mSnackbar: Snackbar? = null
     private var mToBeDeleted: MutableList<Int>? = null
+    private var mPagerDays: MutableList<String>? = null
 
     companion object {
         val DELETED_ID = "deleted_id"
@@ -38,11 +39,7 @@ class DayActivity : SimpleActivity(), NavigationListener {
 
         fillViewPager(mDayCode!!)
 
-        day_fab.setOnClickListener {
-            val eventIntent = Intent(applicationContext, EventActivity::class.java)
-            eventIntent.putExtra(Constants.DAY_CODE, mDayCode)
-            startActivity(eventIntent)
-        }
+        day_fab.setOnClickListener { addNewEvent() }
 
         //mToBeDeleted = ArrayList<Int>()
     }
@@ -53,20 +50,24 @@ class DayActivity : SimpleActivity(), NavigationListener {
     }
 
     private fun fillViewPager(targetDay: String) {
-        val codes = getDays(targetDay)
-        val adapter = MyDayPagerAdapter(supportFragmentManager, codes, this)
+        getDays(targetDay)
+        val adapter = MyDayPagerAdapter(supportFragmentManager, mPagerDays!!, this)
         view_pager.adapter = adapter
-        view_pager.currentItem = codes.size / 2
+        view_pager.currentItem = mPagerDays!!.size / 2
     }
 
-    private fun getDays(code: String): List<String> {
-        val days = ArrayList<String>(PREFILLED_DAYS)
+    private fun addNewEvent() {
+        val eventIntent = Intent(applicationContext, EventActivity::class.java)
+        eventIntent.putExtra(Constants.DAY_CODE, mPagerDays?.get(view_pager.currentItem))
+        startActivity(eventIntent)
+    }
+
+    private fun getDays(code: String) {
+        mPagerDays = ArrayList<String>(PREFILLED_DAYS)
         val today = Formatter.getDateTimeFromCode(code)
         for (i in -PREFILLED_DAYS / 2..PREFILLED_DAYS / 2) {
-            days.add(Formatter.getDayCodeFromDateTime(today.plusDays(i)))
+            mPagerDays!!.add(Formatter.getDayCodeFromDateTime(today.plusDays(i)))
         }
-
-        return days
     }
 
     private fun switchToDay(dayCode: String) {
