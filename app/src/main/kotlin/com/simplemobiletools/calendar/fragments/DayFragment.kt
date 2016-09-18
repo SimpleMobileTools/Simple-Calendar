@@ -171,12 +171,7 @@ class DayFragment : Fragment(), DBHelper.DBOperationsListener, AdapterView.OnIte
     }
 
     fun deleteEvents() {
-        val cnt = mToBeDeleted.size
-        val eventIDs = arrayOf<String>()
-        for (i in 0..cnt - 1) {
-            eventIDs[i] = mToBeDeleted[i].toString()
-        }
-
+        val eventIDs = Array(mToBeDeleted.size, { i -> (mToBeDeleted[i].toString()) })
         DBHelper.newInstance(activity.applicationContext, this).deleteEvents(eventIDs)
     }
 
@@ -201,7 +196,6 @@ class DayFragment : Fragment(), DBHelper.DBOperationsListener, AdapterView.OnIte
     }
 
     override fun onCreateActionMode(mode: ActionMode, menu: Menu): Boolean {
-        //checkDeleteEvents()
         val inflater = mode.menuInflater
         inflater.inflate(R.menu.menu_day_cab, menu)
         return true
@@ -230,7 +224,6 @@ class DayFragment : Fragment(), DBHelper.DBOperationsListener, AdapterView.OnIte
     }
 
     override fun eventUpdated(event: Event) {
-
     }
 
     override fun eventsDeleted(cnt: Int) {
