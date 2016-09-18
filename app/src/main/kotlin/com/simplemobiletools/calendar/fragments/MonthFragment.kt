@@ -58,7 +58,6 @@ class MonthFragment : Fragment(), Calendar {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mCalendar = CalendarImpl(this, context)
-        mCalendar!!.updateCalendar(Formatter.getDateTimeFromCode(mDayCode))
     }
 
     override fun onResume() {
@@ -67,6 +66,7 @@ class MonthFragment : Fragment(), Calendar {
             mSundayFirst = mConfig.isSundayFirst
             setupLabels()
         }
+        mCalendar!!.updateCalendar(Formatter.getDateTimeFromCode(mDayCode))
     }
 
     override fun updateCalendar(month: String, days: List<Day>) {
