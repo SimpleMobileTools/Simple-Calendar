@@ -1,5 +1,6 @@
 package com.simplemobiletools.calendar.fragments
 
+import android.content.Intent
 import android.content.res.Resources
 import android.graphics.Color
 import android.graphics.PorterDuff
@@ -13,6 +14,7 @@ import android.widget.DatePicker
 import android.widget.RelativeLayout
 import com.simplemobiletools.calendar.*
 import com.simplemobiletools.calendar.Formatter
+import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.adapters.EventsAdapter
 import com.simplemobiletools.calendar.models.Event
 import kotlinx.android.synthetic.main.day_fragment.view.*
@@ -21,6 +23,8 @@ import java.util.*
 
 class DayFragment : Fragment(), DBHelper.DBOperationsListener, AdapterView.OnItemClickListener,
         AbsListView.MultiChoiceModeListener {
+    private val EDIT_EVENT = 1
+
     private var mTextColor: Int = 0
     private var mWeakTextColor: Int = 0
     private var mTextColorWithEvent: Int = 0
@@ -122,6 +126,12 @@ class DayFragment : Fragment(), DBHelper.DBOperationsListener, AdapterView.OnIte
         }
     }
 
+    private fun editEvent(event: Event) {
+        val intent = Intent(activity.applicationContext, EventActivity::class.java)
+        intent.putExtra(Constants.EVENT, event)
+        startActivityForResult(intent, EDIT_EVENT)
+    }
+
     private fun getEventsToShow(events: MutableList<Event>): List<Event> {
         /*val cnt = events.size
         for (i in cnt - 1 downTo 0) {
@@ -169,8 +179,8 @@ class DayFragment : Fragment(), DBHelper.DBOperationsListener, AdapterView.OnIte
         mode.invalidate()*/
     }
 
-    override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        //editEvent(getEventsToShow(mEvents)[position])
+    override fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+        editEvent(getEventsToShow(mEvents!!)[position])
     }
 
     override fun eventInserted(event: Event?) {

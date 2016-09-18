@@ -1,6 +1,5 @@
 package com.simplemobiletools.calendar.activities
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
@@ -21,7 +20,6 @@ class DayActivity : SimpleActivity(), NavigationListener, DBHelper.DBOperationsL
     private var mSelectedItemsCnt: Int = 0
     private var mSnackbar: Snackbar? = null
     private var mToBeDeleted: MutableList<Int>? = null
-    private val EDIT_EVENT = 1
 
     companion object {
         val DELETED_ID = "deleted_id"
@@ -82,12 +80,6 @@ class DayActivity : SimpleActivity(), NavigationListener, DBHelper.DBOperationsL
         overridePendingTransition(0, 0)
     }
 
-    private fun editEvent(event: Event) {
-        val intent = Intent(applicationContext, EventActivity::class.java)
-        intent.putExtra(Constants.EVENT, event)
-        startActivityForResult(intent, EDIT_EVENT)
-    }
-
     private fun checkEvents() {
         val startTS = Formatter.getDayStartTS(mDayCode)
         val endTS = Formatter.getDayEndTS(mDayCode)
@@ -114,14 +106,14 @@ class DayActivity : SimpleActivity(), NavigationListener, DBHelper.DBOperationsL
     }*/
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == EDIT_EVENT && resultCode == Activity.RESULT_OK && data != null) {
+        /*if (requestCode == EDIT_EVENT && resultCode == Activity.RESULT_OK && data != null) {
             val deletedId = data.getIntExtra(DELETED_ID, -1)
             if (deletedId != -1) {
                 mToBeDeleted!!.clear()
                 mToBeDeleted!!.add(deletedId)
                 notifyEventDeletion(1)
             }
-        }
+        }*/
     }
 
     override fun eventInserted(event: Event) {
