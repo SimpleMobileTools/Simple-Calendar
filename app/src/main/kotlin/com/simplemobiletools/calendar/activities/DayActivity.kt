@@ -1,26 +1,25 @@
 package com.simplemobiletools.calendar.activities
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.view.View
 import com.simplemobiletools.calendar.Constants
 import com.simplemobiletools.calendar.Formatter
-import com.simplemobiletools.calendar.NavigationListener
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.adapters.MyDayPagerAdapter
+import com.simplemobiletools.calendar.fragments.DayFragment
 import com.simplemobiletools.calendar.models.Event
 import kotlinx.android.synthetic.main.activity_day.*
 import org.joda.time.DateTime
 import java.util.*
 
-class DayActivity : SimpleActivity(), NavigationListener {
-
+class DayActivity : SimpleActivity(), DayFragment.DeleteListener {
     private val PREFILLED_DAYS = 61
     private var mDayCode: String? = null
     private var mEvents: MutableList<Event>? = null
     private var mSnackbar: Snackbar? = null
-    private var mToBeDeleted: MutableList<Int>? = null
     private var mPagerDays: MutableList<String>? = null
 
     companion object {
@@ -39,8 +38,6 @@ class DayActivity : SimpleActivity(), NavigationListener {
         fillViewPager(mDayCode!!)
 
         day_fab.setOnClickListener { addNewEvent() }
-
-        //mToBeDeleted = ArrayList<Int>()
     }
 
     override fun onPause() {
@@ -123,7 +120,7 @@ class DayActivity : SimpleActivity(), NavigationListener {
 
     private fun undoDeletion() {
         if (mSnackbar != null) {
-            mToBeDeleted!!.clear()
+            //mToBeDeleted!!.clear()
             mSnackbar!!.dismiss()
             //updateEvents(mEvents)
         }
@@ -161,5 +158,13 @@ class DayActivity : SimpleActivity(), NavigationListener {
 
     override fun goToDateTime(dateTime: DateTime) {
         fillViewPager(Formatter.getDayCodeFromDateTime(dateTime))
+    }
+
+    override fun notifyDeletion(cnt: Int) {
+        val msg = resources.getQuantityString(R.plurals.events_deleted, cnt, cnt)
+        mSnackbar = Snackbar.make(day_coordinator, msg, Snackbar.LENGTH_INDEFINITE)
+        mSnackbar!!.setAction(resources.getString(R.string.undo), undoDeletion)
+        mSnackbar!!.setActionTextColor(Color.WHITE)
+        mSnackbar!!.show()
     }
 }

@@ -5,10 +5,9 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
 import com.simplemobiletools.calendar.Constants
-import com.simplemobiletools.calendar.NavigationListener
 import com.simplemobiletools.calendar.fragments.DayFragment
 
-class MyDayPagerAdapter(fm: FragmentManager, private val mCodes: List<String>, private val mListener: NavigationListener) :
+class MyDayPagerAdapter(fm: FragmentManager, private val mCodes: List<String>, private val mListener: DayFragment.DeleteListener) :
         FragmentStatePagerAdapter(fm) {
 
     override fun getCount(): Int {

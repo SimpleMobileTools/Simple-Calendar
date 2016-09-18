@@ -21,19 +21,19 @@ import kotlinx.android.synthetic.main.day_fragment.view.*
 import kotlinx.android.synthetic.main.top_navigation.view.*
 import java.util.*
 
-class DayFragment : Fragment(), DBHelper.DBOperationsListener, AdapterView.OnItemClickListener,
-        AbsListView.MultiChoiceModeListener {
+class DayFragment : Fragment(), DBHelper.DBOperationsListener, AdapterView.OnItemClickListener, AbsListView.MultiChoiceModeListener {
     private val EDIT_EVENT = 1
 
     private var mTextColor: Int = 0
     private var mSelectedItemsCnt: Int = 0
     private var mDayCode: String = ""
     private var mEvents: MutableList<Event>? = null
-    private var mListener: NavigationListener? = null
+    private var mListener: DeleteListener? = null
 
     lateinit var mRes: Resources
     lateinit var mHolder: RelativeLayout
     lateinit var mConfig: Config
+    lateinit var mToBeDeleted: MutableList<Int>
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.day_fragment, container, false)
@@ -53,6 +53,7 @@ class DayFragment : Fragment(), DBHelper.DBOperationsListener, AdapterView.OnIte
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        mToBeDeleted = ArrayList<Int>()
         checkEvents()
     }
 
@@ -76,7 +77,7 @@ class DayFragment : Fragment(), DBHelper.DBOperationsListener, AdapterView.OnIte
         }
     }
 
-    fun setListener(listener: NavigationListener) {
+    fun setListener(listener: DeleteListener) {
         mListener = listener
     }
 
@@ -128,13 +129,20 @@ class DayFragment : Fragment(), DBHelper.DBOperationsListener, AdapterView.OnIte
     }
 
     private fun getEventsToShow(events: MutableList<Event>): List<Event> {
-        /*val cnt = events.size
-        for (i in cnt - 1 downTo 0) {
-            if (mToBeDeleted!!.contains(events[i].id)) {
-                events.removeAt(i)
+        return events.filter { !mToBeDeleted.contains(it.id) }
+    }
+
+    private fun prepareDeleteEvents() {
+        val checked = mHolder.day_events.checkedItemPositions
+        for (i in mEvents!!.indices) {
+            if (checked.get(i)) {
+                val event = mEvents!![i]
+                mToBeDeleted.add(event.id)
             }
-        }*/
-        return events
+        }
+
+        mListener?.notifyDeletion(mToBeDeleted.size)
+        updateEvents(mEvents!!)
     }
 
     override fun onPrepareActionMode(mode: ActionMode, menu: Menu): Boolean {
@@ -144,7 +152,7 @@ class DayFragment : Fragment(), DBHelper.DBOperationsListener, AdapterView.OnIte
     override fun onActionItemClicked(mode: ActionMode, item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.delete -> {
-                //prepareDeleteEvents()
+                prepareDeleteEvents()
                 mode.finish()
                 return true
             }
@@ -192,5 +200,9 @@ class DayFragment : Fragment(), DBHelper.DBOperationsListener, AdapterView.OnIte
 
     override fun gotEvents(events: MutableList<Event>) {
         updateEvents(events)
+    }
+
+    interface DeleteListener : NavigationListener {
+        fun notifyDeletion(cnt: Int)
     }
 }
