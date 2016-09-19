@@ -7,6 +7,7 @@ import android.view.MenuItem
 import com.simplemobiletools.calendar.*
 import com.simplemobiletools.calendar.Formatter
 import com.simplemobiletools.calendar.adapters.MyMonthPagerAdapter
+import com.simplemobiletools.calendar.extensions.updateWidget
 import kotlinx.android.synthetic.main.activity_main.*
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
@@ -23,6 +24,11 @@ class MainActivity : SimpleActivity(), NavigationListener {
         fillViewPager(today)
 
         calendar_fab.setOnClickListener { addNewEvent() }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        updateWidget()
     }
 
     override fun onDestroy() {

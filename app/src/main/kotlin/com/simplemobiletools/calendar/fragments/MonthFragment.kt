@@ -13,7 +13,6 @@ import android.view.ViewGroup
 import android.widget.*
 import com.simplemobiletools.calendar.*
 import com.simplemobiletools.calendar.activities.DayActivity
-import com.simplemobiletools.calendar.extensions.updateWidget
 import com.simplemobiletools.calendar.models.Day
 import kotlinx.android.synthetic.main.month_fragment.view.*
 import kotlinx.android.synthetic.main.top_navigation.view.*
@@ -74,7 +73,6 @@ class MonthFragment : Fragment(), Calendar {
         activity?.runOnUiThread {
             mHolder.top_value.text = month
             updateDays(days)
-            context.updateWidget()
         }
     }
 
