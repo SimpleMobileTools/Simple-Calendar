@@ -46,7 +46,6 @@ public class WidgetConfigureActivity extends AppCompatActivity implements Calend
     @BindDimen(R.dimen.day_text_size) float mDayTextSize;
     @BindDimen(R.dimen.today_text_size) float mTodayTextSize;
 
-    private static CalendarImpl mCalendar;
     private static Resources mRes;
     private static String mPackageName;
     private List<Day> mDays;
@@ -99,8 +98,7 @@ public class WidgetConfigureActivity extends AppCompatActivity implements Calend
         mBgSeekBar.setProgress((int) (mBgAlpha * 100));
         updateBgColor();
 
-        mCalendar = new CalendarImpl(this, getApplicationContext());
-        mCalendar.updateCalendar(new DateTime());
+        new CalendarImpl(this, getApplicationContext()).updateCalendar(new DateTime());
     }
 
     private SharedPreferences initPrefs(Context context) {
