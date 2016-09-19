@@ -14,6 +14,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.EditText
 import com.simplemobiletools.calendar.*
+import com.simplemobiletools.calendar.extensions.updateWidget
 import com.simplemobiletools.calendar.fragments.DayFragment
 import com.simplemobiletools.calendar.models.Event
 import kotlinx.android.synthetic.main.activity_event.*
@@ -317,17 +318,19 @@ class EventActivity : SimpleActivity(), DBHelper.DBOperationsListener {
             Utils.showToast(applicationContext, R.string.event_added)
         }
         Utils.scheduleNotification(applicationContext, event)
+        updateWidget()
         finish()
     }
 
     override fun eventUpdated(event: Event) {
         Utils.scheduleNotification(applicationContext, event)
         Utils.showToast(applicationContext, R.string.event_updated)
+        updateWidget()
         finish()
     }
 
     override fun eventsDeleted(cnt: Int) {
-
+        updateWidget()
     }
 
     override fun gotEvents(events: MutableList<Event>) {
