@@ -226,7 +226,7 @@ public class EventActivity extends SimpleActivity implements DBHelper.DBOperatio
             return;
         }
 
-        final DBHelper dbHelper = DBHelper.Companion.newInstance(getApplicationContext(), this);
+        final DBHelper dbHelper = new DBHelper(getApplicationContext(), this);
         final String description = mDescriptionET.getText().toString().trim();
         mEvent.setStartTS(startTS);
         mEvent.setEndTS(mEndCheckbox.isChecked() ? endTS : startTS);

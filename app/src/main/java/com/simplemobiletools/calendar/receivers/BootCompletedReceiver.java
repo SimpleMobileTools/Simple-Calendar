@@ -14,7 +14,7 @@ public class BootCompletedReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent arg1) {
-        final List<Event> events = DBHelper.Companion.newInstance(context, null).getEventsAtReboot();
+        final List<Event> events = new DBHelper(context, null).getEventsAtReboot();
         for (Event event : events) {
             Utils.scheduleNextEvent(context, event);
         }

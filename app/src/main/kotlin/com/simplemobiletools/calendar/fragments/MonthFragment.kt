@@ -70,8 +70,10 @@ class MonthFragment : Fragment(), Calendar {
     }
 
     override fun updateCalendar(month: String, days: List<Day>) {
-        mHolder.month_value.text = month
-        updateDays(days)
+        activity?.runOnUiThread {
+            mHolder.month_value.text = month
+            updateDays(days)
+        }
     }
 
     fun setListener(listener: NavigationListener) {

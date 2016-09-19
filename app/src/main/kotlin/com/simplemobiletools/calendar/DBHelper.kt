@@ -13,7 +13,7 @@ import com.simplemobiletools.calendar.models.Event
 import org.joda.time.DateTime
 import java.util.*
 
-class DBHelper(context: Context) : SQLiteOpenHelper(context, DBHelper.DB_NAME, null, DBHelper.DB_VERSION) {
+class DBHelper(context: Context, callback: DBOperationsListener?) : SQLiteOpenHelper(context, DBHelper.DB_NAME, null, DBHelper.DB_VERSION) {
     private val MAIN_TABLE_NAME = "events"
     private val COL_ID = "id"
     private val COL_START_TS = "start_ts"
@@ -29,21 +29,18 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DBHelper.DB_NAME, n
     private val COL_REPEAT_MONTH = "repeat_month"
     private val COL_REPEAT_DAY = "repeat_day"
 
+    private var mCallback: DBOperationsListener? = null
+
     companion object {
         private val DB_NAME = "events.db"
         private val DB_VERSION = 3
-
-        private var mCallback: DBOperationsListener? = null
         lateinit private var mDb: SQLiteDatabase
-
-        fun newInstance(context: Context, callback: DBOperationsListener): DBHelper {
-            mCallback = callback
-            return DBHelper(context)
-        }
     }
 
     init {
         mDb = writableDatabase
+        mCallback = callback
+
     }
 
     override fun onCreate(db: SQLiteDatabase) {
@@ -149,19 +146,21 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DBHelper.DB_NAME, n
     }
 
     fun getEvents(fromTS: Int, toTS: Int) {
-        val events = ArrayList<Event>()
-        var ts = fromTS
-        while (ts <= toTS) {
-            events.addAll(getEventsFor(ts))
-            ts += Constants.DAY
-        }
+        Thread({
+            val events = ArrayList<Event>()
+            var ts = fromTS
+            while (ts <= toTS) {
+                events.addAll(getEventsFor(ts))
+                ts += Constants.DAY
+            }
 
-        val selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_REPEAT_INTERVAL IS NULL"
-        val selectionArgs = arrayOf(toTS.toString(), fromTS.toString())
-        val cursor = getEventsCursor(selection, selectionArgs)
-        events.addAll(fillEvents(cursor))
+            val selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_REPEAT_INTERVAL IS NULL"
+            val selectionArgs = arrayOf(toTS.toString(), fromTS.toString())
+            val cursor = getEventsCursor(selection, selectionArgs)
+            events.addAll(fillEvents(cursor))
 
-        mCallback?.gotEvents(events)
+            mCallback?.gotEvents(events)
+        }).start()
     }
 
     private fun getEventsFor(ts: Int): List<Event> {

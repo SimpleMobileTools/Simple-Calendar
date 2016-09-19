@@ -118,7 +118,7 @@ class DayFragment : Fragment(), DBHelper.DBOperationsListener, AdapterView.OnIte
     private fun checkEvents() {
         val startTS = Formatter.getDayStartTS(mDayCode)
         val endTS = Formatter.getDayEndTS(mDayCode)
-        DBHelper.newInstance(activity.applicationContext, this).getEvents(startTS, endTS)
+        DBHelper(context, this).getEvents(startTS, endTS)
     }
 
     private fun updateEvents(events: MutableList<Event>) {
@@ -172,7 +172,7 @@ class DayFragment : Fragment(), DBHelper.DBOperationsListener, AdapterView.OnIte
 
     fun deleteEvents() {
         val eventIDs = Array(mToBeDeleted.size, { i -> (mToBeDeleted[i].toString()) })
-        DBHelper.newInstance(activity.applicationContext, this).deleteEvents(eventIDs)
+        DBHelper(activity.applicationContext, this).deleteEvents(eventIDs)
     }
 
     fun undoDeletion() {
@@ -231,7 +231,9 @@ class DayFragment : Fragment(), DBHelper.DBOperationsListener, AdapterView.OnIte
     }
 
     override fun gotEvents(events: MutableList<Event>) {
-        updateEvents(events)
+        activity?.runOnUiThread {
+            updateEvents(events)
+        }
     }
 
     interface DeleteListener : NavigationListener {

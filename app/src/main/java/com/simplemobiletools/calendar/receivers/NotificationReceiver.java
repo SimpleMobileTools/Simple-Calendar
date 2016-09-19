@@ -26,7 +26,7 @@ public class NotificationReceiver extends BroadcastReceiver {
         if (id == -1)
             return;
 
-        final Event event = DBHelper.Companion.newInstance(context, null).getEvent(id);
+        final Event event = new DBHelper(context, null).getEvent(id);
         if (event == null || event.getReminderMinutes() == -1)
             return;
 

@@ -226,10 +226,15 @@ public class WidgetConfigureActivity extends AppCompatActivity implements Calend
     };
 
     @Override
-    public void updateCalendar(String month, List<Day> days) {
-        this.mDays = days;
-        updateMonth(month);
-        updateDays();
+    public void updateCalendar(final String month, final List<Day> days) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mDays = days;
+                updateMonth(month);
+                updateDays();
+            }
+        });
     }
 
     private void updateMonth(String month) {
