@@ -17,6 +17,7 @@ import com.simplemobiletools.calendar.*
 import com.simplemobiletools.calendar.Formatter
 import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.adapters.EventsAdapter
+import com.simplemobiletools.calendar.extensions.updateWidget
 import com.simplemobiletools.calendar.models.Event
 import kotlinx.android.synthetic.main.day_fragment.view.*
 import kotlinx.android.synthetic.main.top_navigation.view.*
@@ -224,13 +225,16 @@ class DayFragment : Fragment(), DBHelper.DBOperationsListener, AdapterView.OnIte
     }
 
     override fun eventInserted(event: Event) {
+        context.updateWidget()
     }
 
     override fun eventUpdated(event: Event) {
+        context.updateWidget()
     }
 
     override fun eventsDeleted(cnt: Int) {
         checkEvents()
+        context.updateWidget()
     }
 
     override fun gotEvents(events: MutableList<Event>) {
