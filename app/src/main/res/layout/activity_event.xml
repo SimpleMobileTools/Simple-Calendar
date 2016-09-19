@@ -1,61 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/event_scrollview"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <RelativeLayout
         android:id="@+id/event_holder"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:padding="@dimen/activity_margin">
 
-        <TextView
+        <android.support.design.widget.TextInputLayout
             android:id="@+id/event_title_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/title"
-            android:textSize="@dimen/day_text_size"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/event_title"
-            android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/event_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/title"
+                android:inputType="textCapSentences"
+                android:maxLength="30"
+                android:maxLines="1"
+                android:minEms="20"
+                android:textSize="@dimen/day_text_size" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/event_description_label"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_title_label"
-            android:inputType="textCapSentences"
-            android:maxLength="30"
-            android:maxLines="1"
-            android:minEms="20"
-            android:textSize="@dimen/day_text_size"/>
+            android:layout_marginTop="@dimen/activity_margin">
 
-        <TextView
-            android:id="@+id/event_description_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/event_title"
-            android:layout_marginTop="@dimen/activity_margin"
-            android:text="@string/description"
-            android:textSize="@dimen/day_text_size"/>
-
-        <EditText
-            android:id="@+id/event_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/event_description_label"
-            android:gravity="top"
-            android:inputType="textCapSentences|textMultiLine"
-            android:minEms="20"
-            android:textSize="@dimen/day_text_size"/>
+            <EditText
+                android:id="@+id/event_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/event_description_label"
+                android:gravity="top"
+                android:hint="@string/description"
+                android:inputType="textCapSentences|textMultiLine"
+                android:minEms="20"
+                android:textSize="@dimen/day_text_size" />
+        </android.support.design.widget.TextInputLayout>
 
         <TextView
             android:id="@+id/event_start_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/event_description"
+            android:layout_below="@+id/event_description_label"
             android:layout_marginTop="@dimen/activity_margin"
             android:text="@string/start"
-            android:textSize="@dimen/day_text_size"/>
+            android:textSize="@dimen/day_text_size" />
 
         <TextView
             android:id="@+id/event_start_date"
@@ -64,7 +63,7 @@
             android:layout_below="@+id/event_start_label"
             android:padding="@dimen/activity_margin"
             android:text="January 1 1970"
-            android:textSize="@dimen/day_text_size"/>
+            android:textSize="@dimen/day_text_size" />
 
         <TextView
             android:id="@+id/event_start_time"
@@ -74,7 +73,7 @@
             android:layout_toRightOf="@id/event_start_date"
             android:padding="@dimen/activity_margin"
             android:text="00:00"
-            android:textSize="@dimen/day_text_size"/>
+            android:textSize="@dimen/day_text_size" />
 
         <CheckBox
             android:id="@+id/event_end_checkbox"
@@ -84,7 +83,7 @@
             android:paddingBottom="@dimen/activity_margin"
             android:paddingTop="@dimen/activity_margin"
             android:text="@string/end"
-            android:textSize="@dimen/day_text_size"/>
+            android:textSize="@dimen/day_text_size" />
 
         <TextView
             android:id="@+id/event_end_date"
@@ -96,7 +95,7 @@
             android:paddingRight="@dimen/activity_margin"
             android:text="January 1 1970"
             android:textSize="@dimen/day_text_size"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/event_end_time"
@@ -109,7 +108,7 @@
             android:paddingRight="@dimen/activity_margin"
             android:text="00:00"
             android:textSize="@dimen/day_text_size"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/event_reminder_label"
@@ -118,7 +117,7 @@
             android:layout_below="@+id/event_end_time"
             android:layout_marginTop="@dimen/activity_margin"
             android:text="@string/reminder"
-            android:textSize="@dimen/day_text_size"/>
+            android:textSize="@dimen/day_text_size" />
 
         <android.support.v7.widget.AppCompatSpinner
             android:id="@+id/event_reminder"
@@ -126,7 +125,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_reminder_label"
             android:entries="@array/reminders"
-            android:padding="@dimen/activity_margin"/>
+            android:padding="@dimen/activity_margin" />
 
         <EditText
             android:id="@+id/event_reminder_other"
@@ -138,7 +137,7 @@
             android:inputType="number"
             android:minEms="5"
             android:textSize="@dimen/day_text_size"
-            android:visibility="invisible"/>
+            android:visibility="invisible" />
 
         <TextView
             android:id="@+id/event_repetition_label"
@@ -147,7 +146,7 @@
             android:layout_below="@+id/event_reminder"
             android:layout_marginTop="@dimen/activity_margin"
             android:text="@string/repetition"
-            android:textSize="@dimen/day_text_size"/>
+            android:textSize="@dimen/day_text_size" />
 
         <android.support.v7.widget.AppCompatSpinner
             android:id="@+id/event_repetition"
@@ -155,7 +154,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_repetition_label"
             android:entries="@array/repetition"
-            android:padding="@dimen/activity_margin"/>
+            android:padding="@dimen/activity_margin" />
 
     </RelativeLayout>
 </ScrollView>
