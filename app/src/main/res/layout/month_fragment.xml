@@ -12,7 +12,7 @@
         android:id="@+id/table_holder"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/month_value"
+        android:layout_below="@+id/top_value"
         android:gravity="center"
         android:orientation="vertical">
 

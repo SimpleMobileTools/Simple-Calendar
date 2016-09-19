@@ -50,8 +50,8 @@ class DayFragment : Fragment(), DBHelper.DBOperationsListener, AdapterView.OnIte
         mDayCode = arguments.getString(Constants.DAY_CODE)
 
         val day = Formatter.getEventDate(activity.applicationContext, mDayCode)
-        mHolder.month_value.text = day
-        mHolder.month_value.setOnClickListener { pickDay() }
+        mHolder.top_value.text = day
+        mHolder.top_value.setOnClickListener { pickDay() }
 
         setupButtons()
         return view

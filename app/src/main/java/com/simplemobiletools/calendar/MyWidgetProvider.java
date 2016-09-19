@@ -64,7 +64,7 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
         mTodayTextSize = mRes.getDimension(R.dimen.today_text_size) / mRes.getDisplayMetrics().density;
         mWidgetManager = AppWidgetManager.getInstance(mContext);
 
-        mRemoteViews = new RemoteViews(mContext.getPackageName(), R.layout.calendar_layout);
+        mRemoteViews = new RemoteViews(mContext.getPackageName(), R.layout.month_fragment);
         mIntent = new Intent(mContext, MyWidgetProvider.class);
         setupButtons();
         updateLabelColor();
@@ -104,7 +104,7 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
     private void setupButtons() {
         setupIntent(PREV, R.id.top_left_arrow);
         setupIntent(NEXT, R.id.top_right_arrow);
-        setupAppOpenIntent(R.id.month_value);
+        setupAppOpenIntent(R.id.top_value);
     }
 
     private SharedPreferences initPrefs(Context context) {
@@ -161,7 +161,7 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
     }
 
     private void updateTopViews() {
-        mRemoteViews.setInt(R.id.month_value, "setTextColor", mTextColor);
+        mRemoteViews.setInt(R.id.top_value, "setTextColor", mTextColor);
 
         Bitmap bmp = getColoredIcon(mContext, mTextColor, R.mipmap.arrow_left);
         mRemoteViews.setImageViewBitmap(R.id.top_left_arrow, bmp);
@@ -171,7 +171,7 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
     }
 
     public void updateMonth(String month) {
-        mRemoteViews.setTextViewText(R.id.month_value, month);
+        mRemoteViews.setTextViewText(R.id.top_value, month);
     }
 
     @Override
