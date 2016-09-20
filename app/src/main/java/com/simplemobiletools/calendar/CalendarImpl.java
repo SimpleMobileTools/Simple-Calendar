@@ -24,6 +24,7 @@ public class CalendarImpl implements DBHelper.DBOperationsListener {
         mCallback = callback;
         mContext = context;
         mToday = new DateTime().toString(Formatter.DAYCODE_PATTERN);
+        mEvents = new ArrayList<>();
     }
 
     public void updateCalendar(DateTime targetDate) {
@@ -31,6 +32,10 @@ public class CalendarImpl implements DBHelper.DBOperationsListener {
         final int startTS = Formatter.getDayStartTS(Formatter.getDayCodeFromDateTime(mTargetDate.minusMonths(1)));
         final int endTS = Formatter.getDayEndTS(Formatter.getDayCodeFromDateTime(mTargetDate.plusMonths(1)));
         new DBHelper(mContext, this).getEvents(startTS, endTS);
+    }
+
+    public void setTargetDate(DateTime dateTime) {
+        mTargetDate = dateTime;
     }
 
     public void getPrevMonth() {
@@ -41,7 +46,7 @@ public class CalendarImpl implements DBHelper.DBOperationsListener {
         updateCalendar(mTargetDate.plusMonths(1));
     }
 
-    private void getDays() {
+    public void getDays() {
         final List<Day> days = new ArrayList<>(DAYS_CNT);
 
         final int currMonthDays = mTargetDate.dayOfMonth().getMaximumValue();

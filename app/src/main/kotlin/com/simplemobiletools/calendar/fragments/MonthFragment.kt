@@ -29,12 +29,12 @@ class MonthFragment : Fragment(), Calendar {
     private var mSundayFirst: Boolean = false
     private var mDayCode: String = ""
 
-    private var mCalendar: CalendarImpl? = null
     private var mListener: NavigationListener? = null
 
     lateinit var mRes: Resources
     lateinit var mHolder: RelativeLayout
     lateinit var mConfig: Config
+    lateinit var mCalendar: CalendarImpl
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.month_fragment, container, false)
@@ -51,13 +51,9 @@ class MonthFragment : Fragment(), Calendar {
         mDayTextSize = mRes.getDimension(R.dimen.day_text_size) / mRes.displayMetrics.density
         mTodayTextSize = mRes.getDimension(R.dimen.today_text_size) / mRes.displayMetrics.density
         setupLabels()
+        mCalendar = CalendarImpl(this, context)
 
         return view
-    }
-
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        mCalendar = CalendarImpl(this, context)
     }
 
     override fun onResume() {
@@ -66,7 +62,12 @@ class MonthFragment : Fragment(), Calendar {
             mSundayFirst = mConfig.isSundayFirst
             setupLabels()
         }
-        mCalendar!!.updateCalendar(Formatter.getDateTimeFromCode(mDayCode))
+
+        mCalendar.apply {
+            targetDate = Formatter.getDateTimeFromCode(mDayCode)
+            getDays()    // prefill the screen asap, even if without events
+            updateCalendar(Formatter.getDateTimeFromCode(mDayCode))
+        }
     }
 
     override fun updateCalendar(month: String, days: List<Day>) {
@@ -112,7 +113,7 @@ class MonthFragment : Fragment(), Calendar {
         val datePicker = view.findViewById(R.id.date_picker) as DatePicker
         hideDayPicker(datePicker)
 
-        val dateTime = DateTime(mCalendar!!.targetDate.toString())
+        val dateTime = DateTime(mCalendar.targetDate.toString())
         datePicker.init(dateTime.year, dateTime.monthOfYear - 1, 1, null)
 
         alertDialog.apply {
