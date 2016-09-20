@@ -1,6 +1,14 @@
 Changelog
 ==========
 
+Version 1.22 *(2016-09-20)*
+----------------------------
+
+ * Allow swiping between months and days
+ * Update the widget when appropriate
+ * Underline days with events on the widget instead of using bold
+ * Misc UI improvements
+
 Version 1.21 *(2016-09-13)*
 ----------------------------
 
