@@ -21,12 +21,12 @@
     <string name="off">Aus</string>
     <string name="at_start">Zu Beginn</string>
     <string name="minutes_before">Minuten vorher</string>
-    <string name="repetition">Repetition</string>
-    <string name="none">None</string>
-    <string name="daily">Daily</string>
-    <string name="weekly">Weekly</string>
-    <string name="monthly">Monthly</string>
-    <string name="yearly">Yearly</string>
+    <string name="repetition">Wiederholung</string>
+    <string name="none">Keine</string>
+    <string name="daily">Täglich</string>
+    <string name="weekly">Wöchentlich</string>
+    <string name="monthly">Monatlich</string>
+    <string name="yearly">Jährlich</string>
 
     <!-- Day details -->
     <string name="details">Details</string>
