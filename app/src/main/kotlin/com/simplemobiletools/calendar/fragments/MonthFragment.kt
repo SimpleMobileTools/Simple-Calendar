@@ -53,6 +53,9 @@ class MonthFragment : Fragment(), Calendar {
         setupLabels()
         mCalendar = CalendarImpl(this, context)
 
+        val padding = resources.getDimension(R.dimen.activity_margin).toInt()
+        view.calendar_holder.setPadding(padding, padding, padding, padding)
+
         return view
     }
 
