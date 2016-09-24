@@ -20,7 +20,7 @@
     <string name="reminder">Erinnerung</string>
     <string name="off">Aus</string>
     <string name="at_start">Zu Beginn</string>
-    <string name="minutes_before">Minuten vorher</string>
+    <string name="minutes_before">X Minuten vorher</string>
     <string name="repetition">Wiederholung</string>
     <string name="none">Keine</string>
     <string name="daily">Täglich</string>

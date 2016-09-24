@@ -20,7 +20,7 @@
     <string name="reminder">Påminnelse</string>
     <string name="off">Av</string>
     <string name="at_start">Vid start</string>
-    <string name="minutes_before">Minuter före</string>
+    <string name="minutes_before">X minuter före</string>
     <string name="repetition">Repetition</string>
     <string name="none">None</string>
     <string name="daily">Daily</string>

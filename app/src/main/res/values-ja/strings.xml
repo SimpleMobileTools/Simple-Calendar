@@ -20,7 +20,7 @@
     <string name="reminder">リマインダー</string>
     <string name="off">オフ</string>
     <string name="at_start">開始時</string>
-    <string name="minutes_before">分前</string>
+    <string name="minutes_before">X 分前</string>
     <string name="repetition">Repetition</string>
     <string name="none">None</string>
     <string name="daily">Daily</string>
