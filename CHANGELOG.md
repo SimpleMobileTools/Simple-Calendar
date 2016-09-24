@@ -1,6 +1,11 @@
 Changelog
 ==========
 
+Version 1.23 *(2016-09-24)*
+----------------------------
+
+ * Reduce the side padding of the widget
+
 Version 1.22 *(2016-09-20)*
 ----------------------------
 
