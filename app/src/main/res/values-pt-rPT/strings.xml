@@ -1,0 +1,88 @@
+<resources>
+    <string name="app_name">Simple Calendar</string>
+    <string name="app_launcher_name">Calendário</string>
+    <string name="undo">Desfazer</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancelar</string>
+
+    <!-- Event -->
+    <string name="event">Evento</string>
+    <string name="edit_event">Editar evento</string>
+    <string name="new_event">Novo evento</string>
+    <string name="save">Guardar</string>
+    <string name="delete">Eliminar</string>
+    <string name="title_empty">O título não pode ficar em branco</string>
+    <string name="end_before_start">O evento não pode terminar antes de ter começado</string>
+    <string name="start_in_past">Não pode agendar eventos no passado</string>
+    <string name="event_added">Evento adicionado com sucesso</string>
+    <string name="past_event_added">Evento no passado adicionado com sucesso</string>
+    <string name="event_updated">Evento atualizado com sucesso</string>
+    <string name="reminder">Lembrete</string>
+    <string name="off">Desligado</string>
+    <string name="at_start">No início</string>
+    <string name="minutes_before">X minutos antes</string>
+    <string name="repetition">Repetição</string>
+    <string name="none">Nenhuma</string>
+    <string name="daily">Diária</string>
+    <string name="weekly">Semanal</string>
+    <string name="monthly">Mensal</string>
+    <string name="yearly">Anual</string>
+
+    <!-- Day details -->
+    <string name="details">Detalhes</string>
+    <string name="title">Título</string>
+    <string name="start">Início</string>
+    <string name="end">Fim (opcional)</string>
+    <string name="description">Descrição</string>
+
+    <!-- About -->
+    <string name="about">Sobre</string>
+    <string name="website">Mais aplicações simples e código de fonte em:\nhttp://simplemobiletools.com</string>
+    <string name="email_label">Envie os seus comentários ou sugestões para:</string>
+    <string name="third_party_licences_underlined"><u>Licenças de terceiros</u></string>
+    <string name="invite_friends_underlined"><u>Convidar amigos</u></string>
+    <string name="share_text">Olá, experimente %1$s em %2$s</string>
+    <string name="invite_via">Convidar via</string>
+    <string name="rate_us_underlined"><u>Classifique-nos na Play Store</u></string>
+    <string name="follow_us">Siga-nos:</string>
+    <string name="copyright">v %1$s\nCopyright © Simple Mobile Tools %2$d</string>
+
+    <!-- Settings -->
+    <string name="settings">Definições</string>
+    <string name="dark_theme">Tema escuro</string>
+    <string name="sunday_first">Domingo como primeiro dia</string>
+
+    <!-- License -->
+    <string name="notice">Esta aplicação usa as seguintes bibliotecas de terceiros para facilitar a minha vida. Obrigado.</string>
+    <string name="third_party_licences">Licenças de terceiros</string>
+    <string name="butterknife_title"><u>Butter Knife (injetor de \"views\")</u></string>
+    <string name="ambilwarna_title"><u>AmbilWarna (selecionador de cores)</u></string>
+    <string name="joda_title"><u>Joda-Time (substituto para a classe Java \"date\")</u></string>
+
+    <plurals name="events_deleted">
+        <item quantity="one">1 evento eliminado</item>
+        <item quantity="other">%1$d eventos eliminados</item>
+    </plurals>
+
+    <string name="january">Janeiro</string>
+    <string name="february">Fevereiro</string>
+    <string name="march">Março</string>
+    <string name="april">Abril</string>
+    <string name="may">Maio</string>
+    <string name="june">Junho</string>
+    <string name="july">Julho</string>
+    <string name="august">Agosto</string>
+    <string name="september">Setembro</string>
+    <string name="october">Outubro</string>
+    <string name="november">Novembro</string>
+    <string name="december">Dezembro</string>
+
+    <string name="monday_letter">S</string>
+    <string name="tuesday_letter">T</string>
+    <string name="wednesday_letter">Q</string>
+    <string name="thursday_letter">Q</string>
+    <string name="friday_letter">S</string>
+    <string name="saturday_letter">S</string>
+    <string name="sunday_letter">D</string>
+
+</resources>
