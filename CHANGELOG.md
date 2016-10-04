@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 1.24 *(2016-10-05)*
+----------------------------
+
+ * Fix notifications of non-repeatable events
+ * Add an option to display week numbers, disabled by default
+
 Version 1.23 *(2016-09-24)*
 ----------------------------
 
