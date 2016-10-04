@@ -29,7 +29,7 @@ public class Utils {
 
     public static void scheduleNextEvent(Context context, Event event) {
         int startTS = event.getStartTS() - event.getReminderMinutes() * 60;
-        int newTS = 0;
+        int newTS = startTS;
         if (event.getRepeatInterval() == Constants.DAY || event.getRepeatInterval() == Constants.WEEK) {
             while (startTS < System.currentTimeMillis() / 1000 + 5) {
                 startTS += event.getRepeatInterval();
@@ -60,7 +60,7 @@ public class Utils {
         scheduleNextEvent(context, event);
     }
 
-    public static void scheduleEventIn(Context context, int notifTS, Event event) {
+    private static void scheduleEventIn(Context context, int notifTS, Event event) {
         final long delayFromNow = (long) notifTS * 1000 - System.currentTimeMillis();
         if (delayFromNow < 0)
             return;
@@ -71,7 +71,7 @@ public class Utils {
         alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, notifInMs, pendingIntent);
     }
 
-    public static PendingIntent getNotificationIntent(Context context, int eventId) {
+    private static PendingIntent getNotificationIntent(Context context, int eventId) {
         final Intent intent = new Intent(context, NotificationReceiver.class);
         intent.putExtra(NotificationReceiver.EVENT_ID, eventId);
         return PendingIntent.getBroadcast(context, eventId, intent, PendingIntent.FLAG_UPDATE_CURRENT);
