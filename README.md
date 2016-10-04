@@ -3,7 +3,7 @@
 
 A simple calendar with events and a customizable widget.
 
-A monthly calendar without any other calendar integration. You can easily create recurring events and setup reminders.
+A monthly calendar without any other calendar integration. You can easily create recurring events and setup reminders, it can also display week numbers if needed.
 
 Contains a resizable 4x4 widget where you can customize the color of the text, as well as the alpha and the color of the background. To open the app from the widget press the month label.
 
