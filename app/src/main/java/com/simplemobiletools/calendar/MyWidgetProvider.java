@@ -17,6 +17,7 @@ import android.graphics.LightingColorFilter;
 import android.graphics.Paint;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
+import android.view.View;
 import android.widget.RemoteViews;
 
 import com.simplemobiletools.calendar.activities.DayActivity;
@@ -129,14 +130,17 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
     }
 
     public void updateDays(List<Day> days) {
+        final boolean displayWeekNumbers = Config.newInstance(mContext).getDisplayWeekNumbers();
         final int len = days.size();
         final String packageName = mContext.getPackageName();
         mRemoteViews.setInt(R.id.week_num, "setTextColor", mWeakTextColor);
+        mRemoteViews.setViewVisibility(R.id.week_num, displayWeekNumbers ? View.VISIBLE : View.GONE);
 
         for (int i = 0; i < 6; i++) {
             final int id = mRes.getIdentifier("week_num_" + i, "id", packageName);
             mRemoteViews.setTextViewText(id, days.get(i * 7).getWeekOfYear() + ":");
             mRemoteViews.setInt(id, "setTextColor", mWeakTextColor);
+            mRemoteViews.setViewVisibility(id, displayWeekNumbers ? View.VISIBLE : View.GONE);
         }
 
         for (int i = 0; i < len; i++) {

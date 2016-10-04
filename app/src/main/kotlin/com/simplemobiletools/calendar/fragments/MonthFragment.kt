@@ -160,13 +160,17 @@ class MonthFragment : Fragment(), Calendar {
     }
 
     private fun updateDays(days: List<Day>) {
+        val displayWeekNumbers = mConfig.displayWeekNumbers
         val len = days.size
+
         week_num.setTextColor(mWeakTextColor)
+        week_num.visibility = if (displayWeekNumbers) View.VISIBLE else View.GONE
 
         for (i in 0..5) {
             val weekIdTV = mHolder.findViewById(mRes.getIdentifier("week_num_" + i, "id", mPackageName)) as TextView
             weekIdTV.text = "${days[i * 7].weekOfYear}:"
             weekIdTV.setTextColor(mWeakTextColor)
+            weekIdTV.visibility = if (displayWeekNumbers) View.VISIBLE else View.GONE
         }
 
         for (i in 0..len - 1) {

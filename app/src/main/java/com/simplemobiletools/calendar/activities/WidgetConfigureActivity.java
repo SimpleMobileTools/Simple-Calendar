@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.simplemobiletools.calendar.Calendar;
 import com.simplemobiletools.calendar.CalendarImpl;
+import com.simplemobiletools.calendar.Config;
 import com.simplemobiletools.calendar.Constants;
 import com.simplemobiletools.calendar.MyWidgetProvider;
 import com.simplemobiletools.calendar.R;
@@ -184,13 +185,18 @@ public class WidgetConfigureActivity extends AppCompatActivity implements Calend
 
     private void updateDays() {
         final int len = mDays.size();
-        final TextView weekNum = (TextView) findViewById(R.id.week_num);
-        weekNum.setTextColor(mWeakTextColor);
 
-        for (int i = 0; i < 6; i++) {
-            final TextView weekIdTV = (TextView) findViewById(mRes.getIdentifier("week_num_" + i, "id", mPackageName));
-            weekIdTV.setText(mDays.get(i * 7).getWeekOfYear() + ":");
-            weekIdTV.setTextColor(mWeakTextColor);
+        if (Config.newInstance(getApplicationContext()).getDisplayWeekNumbers()) {
+            final TextView weekNum = (TextView) findViewById(R.id.week_num);
+            weekNum.setTextColor(mWeakTextColor);
+            weekNum.setVisibility(View.VISIBLE);
+
+            for (int i = 0; i < 6; i++) {
+                final TextView weekIdTV = (TextView) findViewById(mRes.getIdentifier("week_num_" + i, "id", mPackageName));
+                weekIdTV.setText(mDays.get(i * 7).getWeekOfYear() + ":");
+                weekIdTV.setTextColor(mWeakTextColor);
+                weekIdTV.setVisibility(View.VISIBLE);
+            }
         }
 
         for (int i = 0; i < len; i++) {
