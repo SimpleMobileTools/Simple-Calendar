@@ -129,8 +129,16 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
     }
 
     public void updateDays(List<Day> days) {
-        final String packageName = mContext.getPackageName();
         final int len = days.size();
+        final String packageName = mContext.getPackageName();
+        mRemoteViews.setInt(R.id.week_num, "setTextColor", mWeakTextColor);
+
+        for (int i = 0; i < 6; i++) {
+            final int id = mRes.getIdentifier("week_num_" + i, "id", packageName);
+            mRemoteViews.setTextViewText(id, days.get(i * 7).getWeekOfYear() + ":");
+            mRemoteViews.setInt(id, "setTextColor", mWeakTextColor);
+        }
+
         for (int i = 0; i < len; i++) {
             final Day day = days.get(i);
             final int id = mRes.getIdentifier("day_" + i, "id", packageName);

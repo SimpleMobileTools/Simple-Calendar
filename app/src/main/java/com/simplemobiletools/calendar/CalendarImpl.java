@@ -76,8 +76,9 @@ public class CalendarImpl implements DBHelper.DBOperationsListener {
 
             isToday = isThisMonth && isToday(mTargetDate, value);
 
-            final String dayCode = Formatter.getDayCodeFromDateTime(curDay.withDayOfMonth(value));
-            final Day day = new Day(value, isThisMonth, isToday, dayCode, hasEvent(dayCode));
+            final DateTime newDay = curDay.withDayOfMonth(value);
+            final String dayCode = Formatter.getDayCodeFromDateTime(newDay);
+            final Day day = new Day(value, isThisMonth, isToday, dayCode, hasEvent(dayCode), newDay.getWeekOfWeekyear());
             days.add(day);
             value++;
         }

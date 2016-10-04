@@ -7,6 +7,14 @@
     android:orientation="horizontal">
 
     <TextView
+        android:id="@+id/week_num"
+        style="@style/DayView"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="#"/>
+
+    <TextView
         android:id="@+id/label_0"
         style="@style/DayView"
         android:layout_width="0dp"

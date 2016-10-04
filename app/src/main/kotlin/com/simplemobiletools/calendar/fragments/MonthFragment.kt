@@ -14,6 +14,7 @@ import android.widget.*
 import com.simplemobiletools.calendar.*
 import com.simplemobiletools.calendar.activities.DayActivity
 import com.simplemobiletools.calendar.models.Day
+import kotlinx.android.synthetic.main.first_row.*
 import kotlinx.android.synthetic.main.month_fragment.view.*
 import kotlinx.android.synthetic.main.top_navigation.view.*
 import org.joda.time.DateTime
@@ -160,6 +161,13 @@ class MonthFragment : Fragment(), Calendar {
 
     private fun updateDays(days: List<Day>) {
         val len = days.size
+        week_num.setTextColor(mWeakTextColor)
+
+        for (i in 0..5) {
+            val weekIdTV = mHolder.findViewById(mRes.getIdentifier("week_num_" + i, "id", mPackageName)) as TextView
+            weekIdTV.text = "${days[i * 7].weekOfYear}:"
+            weekIdTV.setTextColor(mWeakTextColor)
+        }
 
         for (i in 0..len - 1) {
             val day = days[i]

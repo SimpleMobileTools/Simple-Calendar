@@ -184,6 +184,15 @@ public class WidgetConfigureActivity extends AppCompatActivity implements Calend
 
     private void updateDays() {
         final int len = mDays.size();
+        final TextView weekNum = (TextView) findViewById(R.id.week_num);
+        weekNum.setTextColor(mWeakTextColor);
+
+        for (int i = 0; i < 6; i++) {
+            final TextView weekIdTV = (TextView) findViewById(mRes.getIdentifier("week_num_" + i, "id", mPackageName));
+            weekIdTV.setText(mDays.get(i * 7).getWeekOfYear() + ":");
+            weekIdTV.setTextColor(mWeakTextColor);
+        }
+
         for (int i = 0; i < len; i++) {
             final Day day = mDays.get(i);
             final TextView dayTV = (TextView) findViewById(mRes.getIdentifier("day_" + i, "id", mPackageName));
