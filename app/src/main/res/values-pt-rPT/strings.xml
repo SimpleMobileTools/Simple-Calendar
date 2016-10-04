@@ -51,6 +51,7 @@
     <string name="settings">Definições</string>
     <string name="dark_theme">Tema escuro</string>
     <string name="sunday_first">Domingo como primeiro dia</string>
+    <string name="week_numbers">Display week numbers</string>
 
     <!-- License -->
     <string name="notice">Esta aplicação usa as seguintes bibliotecas de terceiros para facilitar a minha vida. Obrigado.</string>

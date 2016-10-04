@@ -14,6 +14,7 @@ import butterknife.OnClick;
 public class SettingsActivity extends SimpleActivity {
     @BindView(R.id.settings_dark_theme) SwitchCompat mDarkThemeSwitch;
     @BindView(R.id.settings_sunday_first) SwitchCompat mSundayFirstSwitch;
+    @BindView(R.id.settings_week_numbers) SwitchCompat mWeekNumbersSwitch;
 
     private static Config mConfig;
 
@@ -26,6 +27,7 @@ public class SettingsActivity extends SimpleActivity {
 
         setupDarkTheme();
         setupSundayFirst();
+        setupWeekNumbers();
     }
 
     private void setupDarkTheme() {
@@ -34,6 +36,10 @@ public class SettingsActivity extends SimpleActivity {
 
     private void setupSundayFirst() {
         mSundayFirstSwitch.setChecked(mConfig.getIsSundayFirst());
+    }
+
+    private void setupWeekNumbers() {
+        mWeekNumbersSwitch.setChecked(mConfig.getDisplayWeekNumbers());
     }
 
     @OnClick(R.id.settings_dark_theme_holder)
@@ -47,6 +53,12 @@ public class SettingsActivity extends SimpleActivity {
     public void handleSundayFirst() {
         mSundayFirstSwitch.setChecked(!mSundayFirstSwitch.isChecked());
         mConfig.setIsSundayFirst(mSundayFirstSwitch.isChecked());
+    }
+
+    @OnClick(R.id.settings_week_numbers_holder)
+    public void handleWeekNumbers() {
+        mWeekNumbersSwitch.setChecked(!mWeekNumbersSwitch.isChecked());
+        mConfig.setDisplayWeekNumbers(mWeekNumbersSwitch.isChecked());
     }
 
     private void restartActivity() {

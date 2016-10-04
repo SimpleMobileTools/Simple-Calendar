@@ -40,4 +40,12 @@ public class Config {
     public void setIsSundayFirst(boolean sundayFirst) {
         mPrefs.edit().putBoolean(Constants.SUNDAY_FIRST, sundayFirst).apply();
     }
+
+    public boolean getDisplayWeekNumbers() {
+        return mPrefs.getBoolean(Constants.WEEK_NUMBERS, false);
+    }
+
+    public void setDisplayWeekNumbers(boolean displayWeekNumbers) {
+        mPrefs.edit().putBoolean(Constants.WEEK_NUMBERS, displayWeekNumbers).apply();
+    }
 }

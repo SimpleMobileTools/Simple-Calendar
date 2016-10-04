@@ -51,6 +51,7 @@
     <string name="settings">Inställningar</string>
     <string name="dark_theme">Mörkt tema</string>
     <string name="sunday_first">Sunday as first day</string>
+    <string name="week_numbers">Display week numbers</string>
 
     <!-- License -->
     <string name="notice">Denna app använder följande tredjepartsbibliotek för att göra mitt liv enklare. Tack.</string>
