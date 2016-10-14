@@ -48,4 +48,12 @@ public class Config {
     public void setDisplayWeekNumbers(boolean displayWeekNumbers) {
         mPrefs.edit().putBoolean(Constants.WEEK_NUMBERS, displayWeekNumbers).apply();
     }
+
+    public int getLastOtherReminderMins() {
+        return mPrefs.getInt(Constants.LAST_OTHER_REMINDER_MINS, 10);
+    }
+
+    public void setLastOtherReminderMins(int lastMins) {
+        mPrefs.edit().putInt(Constants.LAST_OTHER_REMINDER_MINS, lastMins).apply();
+    }
 }

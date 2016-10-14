@@ -21,4 +21,5 @@ public class Constants {
     public static final String WEEK_NUMBERS = "week_numbers";
     public static final String WIDGET_BG_COLOR = "widget_bg_color";
     public static final String WIDGET_TEXT_COLOR = "widget_text_color";
+    public static final String LAST_OTHER_REMINDER_MINS = "last_other_reminder_mins";
 }

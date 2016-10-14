@@ -93,6 +93,7 @@ class EventActivity : SimpleActivity(), DBHelper.DBOperationsListener {
         title = resources.getString(R.string.new_event)
         mEventStartDateTime = Formatter.getDateTimeFromCode(dayCode).withZoneRetainFields(DateTimeZone.getDefault()).withHourOfDay(13)
         mEventEndDateTime = mEventStartDateTime
+        event_reminder_other.setText(mConfig.lastOtherReminderMins.toString())
     }
 
     private fun hideKeyboard() {
@@ -210,6 +211,14 @@ class EventActivity : SimpleActivity(), DBHelper.DBOperationsListener {
             dbHelper.insert(mEvent)
         } else {
             dbHelper.update(mEvent)
+        }
+
+        saveLastReminderMins()
+    }
+
+    private fun saveLastReminderMins() {
+        if (event_reminder.selectedItemPosition == 2) {
+            mConfig.lastOtherReminderMins = reminderMinutes
         }
     }
 
