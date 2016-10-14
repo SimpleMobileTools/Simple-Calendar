@@ -34,11 +34,15 @@ public class NotificationReceiver extends BroadcastReceiver {
         final String startTime = Formatter.getTime(event.getStartTS());
         final String endTime = Formatter.getTime(event.getEndTS());
         final String title = event.getTitle();
-        final Notification notification = getNotification(context, pendingIntent, startTime + " - " + endTime + " " + title);
+        final Notification notification = getNotification(context, pendingIntent, getEventTime(startTime, endTime) + " " + title);
         notificationManager.notify(id, notification);
 
         if (event.getRepeatInterval() != 0)
             Utils.scheduleNextEvent(context, event);
+    }
+
+    private String getEventTime(String startTime, String endTime) {
+        return startTime.equals(endTime) ? startTime : (startTime + " - " + endTime);
     }
 
     private PendingIntent getPendingIntent(Context context, Event event) {
