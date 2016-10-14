@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 1.25 *(2016-10-15)*
+----------------------------
+
+ * Add biweekly repetition
+ * Remember the last value used at "Custom reminder minutes"
+
 Version 1.24 *(2016-10-05)*
 ----------------------------
 
