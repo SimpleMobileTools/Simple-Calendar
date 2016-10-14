@@ -119,8 +119,9 @@ class EventActivity : SimpleActivity(), DBHelper.DBOperationsListener {
         when (mEvent.repeatInterval) {
             Constants.DAY -> event_repetition.setSelection(1)
             Constants.WEEK -> event_repetition.setSelection(2)
-            Constants.MONTH -> event_repetition.setSelection(3)
-            Constants.YEAR -> event_repetition.setSelection(4)
+            Constants.BIWEEK -> event_repetition.setSelection(3)
+            Constants.MONTH -> event_repetition.setSelection(4)
+            Constants.YEAR -> event_repetition.setSelection(5)
             else -> event_repetition.setSelection(0)
         }
     }
@@ -231,8 +232,9 @@ class EventActivity : SimpleActivity(), DBHelper.DBOperationsListener {
             when (event_repetition.selectedItemPosition) {
                 1 -> return Constants.DAY
                 2 -> return Constants.WEEK
-                3 -> return Constants.MONTH
-                4 -> return Constants.YEAR
+                3 -> return Constants.BIWEEK
+                4 -> return Constants.MONTH
+                5 -> return Constants.YEAR
                 else -> return 0
             }
         }

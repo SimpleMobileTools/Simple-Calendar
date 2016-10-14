@@ -169,9 +169,9 @@ class DBHelper(context: Context, callback: DBOperationsListener?) : SQLiteOpenHe
         val dayEnd = ts + dayExclusive
         val dateTime = Formatter.getDateTimeFromTS(ts)
 
-        // get daily and weekly events
-        var selection = "($COL_REPEAT_INTERVAL = ${Constants.DAY} OR $COL_REPEAT_INTERVAL = ${Constants.WEEK}) AND " +
-                "($dayEnd - $COL_REPEAT_START) % $COL_REPEAT_INTERVAL BETWEEN 0 AND $dayExclusive"
+        // get daily, weekly and biweekly events
+        var selection = "($COL_REPEAT_INTERVAL = ${Constants.DAY} OR $COL_REPEAT_INTERVAL = ${Constants.WEEK} OR " +
+                "$COL_REPEAT_INTERVAL = ${Constants.BIWEEK}) AND ($dayEnd - $COL_REPEAT_START) % $COL_REPEAT_INTERVAL BETWEEN 0 AND $dayExclusive"
         newEvents.addAll(getEvents(selection, ts))
 
         // get monthly events
@@ -207,6 +207,7 @@ class DBHelper(context: Context, callback: DBOperationsListener?) : SQLiteOpenHe
         newStart = when (e.repeatInterval) {
             Constants.DAY -> currStart.plusDays(periods)
             Constants.WEEK -> currStart.plusWeeks(periods)
+            Constants.BIWEEK -> currStart.plusWeeks(periods * 2)
             Constants.MONTH -> currStart.plusMonths(periods)
             else -> currStart.plusYears(periods)
         }

@@ -25,6 +25,7 @@
     <string name="none">Nenhuma</string>
     <string name="daily">Diária</string>
     <string name="weekly">Semanal</string>
+    <string name="biweekly">Biweekly</string>
     <string name="monthly">Mensal</string>
     <string name="yearly">Anual</string>
 

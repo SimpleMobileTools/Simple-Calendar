@@ -30,7 +30,7 @@ public class Utils {
     public static void scheduleNextEvent(Context context, Event event) {
         int startTS = event.getStartTS() - event.getReminderMinutes() * 60;
         int newTS = startTS;
-        if (event.getRepeatInterval() == Constants.DAY || event.getRepeatInterval() == Constants.WEEK) {
+        if (event.getRepeatInterval() == Constants.DAY || event.getRepeatInterval() == Constants.WEEK || event.getRepeatInterval() == Constants.BIWEEK) {
             while (startTS < System.currentTimeMillis() / 1000 + 5) {
                 startTS += event.getRepeatInterval();
             }

@@ -25,6 +25,7 @@
     <string name="none">Keine</string>
     <string name="daily">Täglich</string>
     <string name="weekly">Wöchentlich</string>
+    <string name="biweekly">Biweekly</string>
     <string name="monthly">Monatlich</string>
     <string name="yearly">Jährlich</string>
 
