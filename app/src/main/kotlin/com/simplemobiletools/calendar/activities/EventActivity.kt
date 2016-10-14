@@ -83,6 +83,7 @@ class EventActivity : SimpleActivity(), DBHelper.DBOperationsListener {
         mEventStartDateTime = Formatter.getDateTimeFromTS(mEvent.startTS)
         mEventEndDateTime = Formatter.getDateTimeFromTS(mEvent.endTS)
         event_end_checkbox.isChecked = mEventStartDateTime != mEventEndDateTime
+        endCheckboxChecked(event_end_checkbox.isChecked)
         event_title.setText(mEvent.title)
         event_description.setText(mEvent.description)
         hideKeyboard()
