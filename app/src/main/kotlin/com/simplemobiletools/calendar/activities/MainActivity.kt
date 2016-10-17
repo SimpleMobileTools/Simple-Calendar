@@ -4,8 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import com.simplemobiletools.calendar.*
+import com.simplemobiletools.calendar.Constants
 import com.simplemobiletools.calendar.Formatter
+import com.simplemobiletools.calendar.NavigationListener
+import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.adapters.MyMonthPagerAdapter
 import com.simplemobiletools.calendar.adapters.MyYearPagerAdapter
 import com.simplemobiletools.calendar.extensions.updateWidget

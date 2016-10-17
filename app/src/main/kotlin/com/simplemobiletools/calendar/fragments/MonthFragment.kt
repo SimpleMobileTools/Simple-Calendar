@@ -163,6 +163,9 @@ class MonthFragment : Fragment(), Calendar {
         val displayWeekNumbers = mConfig.displayWeekNumbers
         val len = days.size
 
+        if (week_num == null)
+            return
+
         week_num.setTextColor(mWeakTextColor)
         week_num.visibility = if (displayWeekNumbers) View.VISIBLE else View.GONE
 
