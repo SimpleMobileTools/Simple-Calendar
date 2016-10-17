@@ -44,24 +44,24 @@ class MainActivity : SimpleActivity(), NavigationListener {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
+        return when (item.itemId) {
             R.id.monthly_view -> {
                 updateView(Constants.MONTHLY_VIEW)
-                return true
+                true
             }
             R.id.yearly_view -> {
                 updateView(Constants.YEARLY_VIEW)
-                return true
+                true
             }
             R.id.settings -> {
                 startActivity(Intent(applicationContext, SettingsActivity::class.java))
-                return true
+                true
             }
             R.id.about -> {
                 startActivity(Intent(applicationContext, AboutActivity::class.java))
-                return true
+                true
             }
-            else -> return super.onOptionsItemSelected(item)
+            else -> super.onOptionsItemSelected(item)
         }
     }
 
