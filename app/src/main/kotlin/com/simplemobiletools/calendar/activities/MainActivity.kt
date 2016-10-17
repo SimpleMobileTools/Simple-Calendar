@@ -7,6 +7,7 @@ import android.view.MenuItem
 import com.simplemobiletools.calendar.*
 import com.simplemobiletools.calendar.Formatter
 import com.simplemobiletools.calendar.adapters.MyMonthPagerAdapter
+import com.simplemobiletools.calendar.adapters.MyYearPagerAdapter
 import com.simplemobiletools.calendar.extensions.updateWidget
 import kotlinx.android.synthetic.main.activity_main.*
 import org.joda.time.DateTime
@@ -15,6 +16,7 @@ import java.util.*
 
 class MainActivity : SimpleActivity(), NavigationListener {
     private val PREFILLED_MONTHS = 73
+    private val PREFILLED_YEARS = 21
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,10 +75,10 @@ class MainActivity : SimpleActivity(), NavigationListener {
 
     private fun updateViewPager() {
         if (mConfig.view == Constants.MONTHLY_VIEW) {
-            val today = DateTime().toString(Formatter.DAYCODE_PATTERN)
-            fillMonthlyViewPager(today)
+            val targetDay = DateTime().toString(Formatter.DAYCODE_PATTERN)
+            fillMonthlyViewPager(targetDay)
         } else {
-
+            fillYearlyViewPager()
         }
     }
 
@@ -87,8 +89,8 @@ class MainActivity : SimpleActivity(), NavigationListener {
         startActivity(intent)
     }
 
-    private fun fillMonthlyViewPager(targetMonth: String) {
-        val codes = getMonths(targetMonth)
+    private fun fillMonthlyViewPager(targetDay: String) {
+        val codes = getMonths(targetDay)
         val adapter = MyMonthPagerAdapter(supportFragmentManager, codes, this)
         view_pager.adapter = adapter
         view_pager.currentItem = codes.size / 2
@@ -102,6 +104,22 @@ class MainActivity : SimpleActivity(), NavigationListener {
         }
 
         return months
+    }
+
+    private fun fillYearlyViewPager() {
+        val targetYear = DateTime().toString(Formatter.YEAR_PATTERN).toInt()
+        val years = getYears(targetYear)
+        val adapter = MyYearPagerAdapter(supportFragmentManager, years, this)
+        view_pager.adapter = adapter
+        view_pager.currentItem = years.size / 2
+    }
+
+    private fun getYears(targetYear: Int): List<Int> {
+        val years = ArrayList<Int>(PREFILLED_YEARS)
+        for (i in targetYear - PREFILLED_YEARS / 2..targetYear + PREFILLED_YEARS / 2)
+            years.add(i)
+
+        return years
     }
 
     override fun goLeft() {

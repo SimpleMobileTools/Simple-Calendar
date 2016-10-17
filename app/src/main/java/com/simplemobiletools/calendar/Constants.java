@@ -5,6 +5,7 @@ public class Constants {
     public static final float HIGH_ALPHA = .8f;
 
     public static final String DAY_CODE = "day_code";
+    public static final String YEAR_LABEL = "year";
     public static final String EVENT = "event";
 
     public static final int MONTHLY_VIEW = 1;

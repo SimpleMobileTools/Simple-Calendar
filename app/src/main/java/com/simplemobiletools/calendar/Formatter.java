@@ -9,8 +9,8 @@ import org.joda.time.format.DateTimeFormatter;
 
 public class Formatter {
     public static final String DAYCODE_PATTERN = "YYYYMMdd";
+    public static final String YEAR_PATTERN = "YYYY";
     private static final String DAY_PATTERN = "d";
-    private static final String YEAR_PATTERN = "YYYY";
     private static final String EVENT_DATE_PATTERN = "d YYYY"; // MMMM doesn't give the proper month name in some languages
     private static final String EVENT_TIME_PATTERN = "HH:mm";
 
