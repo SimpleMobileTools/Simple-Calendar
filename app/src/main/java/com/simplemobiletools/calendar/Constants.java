@@ -7,6 +7,9 @@ public class Constants {
     public static final String DAY_CODE = "day_code";
     public static final String EVENT = "event";
 
+    public static final int MONTHLY_VIEW = 1;
+    public static final int YEARLY_VIEW = 2;
+
     public static final int DAY = 86400;
     public static final int WEEK = 604800;
     public static final int BIWEEK = 1209600;
@@ -19,6 +22,7 @@ public class Constants {
     public static final String IS_DARK_THEME = "is_dark_theme";
     public static final String SUNDAY_FIRST = "sunday_first";
     public static final String WEEK_NUMBERS = "week_numbers";
+    public static final String VIEW = "view";
     public static final String WIDGET_BG_COLOR = "widget_bg_color";
     public static final String WIDGET_TEXT_COLOR = "widget_text_color";
     public static final String LAST_OTHER_REMINDER_MINS = "last_other_reminder_mins";

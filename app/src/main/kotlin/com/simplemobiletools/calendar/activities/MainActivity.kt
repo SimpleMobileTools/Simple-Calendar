@@ -19,9 +19,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        val today = DateTime().toString(Formatter.DAYCODE_PATTERN)
-        fillViewPager(today)
+        updateViewPager()
 
         calendar_fab.setOnClickListener { addNewEvent() }
     }
@@ -38,12 +36,21 @@ class MainActivity : SimpleActivity(), NavigationListener {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu, menu)
+
+        menu.findItem(R.id.yearly_view).isVisible = mConfig.view == Constants.MONTHLY_VIEW
+        menu.findItem(R.id.monthly_view).isVisible = mConfig.view == Constants.YEARLY_VIEW
+
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+            R.id.monthly_view -> {
+                updateView(Constants.MONTHLY_VIEW)
+                return true
+            }
             R.id.yearly_view -> {
+                updateView(Constants.YEARLY_VIEW)
                 return true
             }
             R.id.settings -> {
@@ -58,6 +65,21 @@ class MainActivity : SimpleActivity(), NavigationListener {
         }
     }
 
+    private fun updateView(view: Int) {
+        mConfig.view = view
+        updateViewPager()
+        invalidateOptionsMenu()
+    }
+
+    private fun updateViewPager() {
+        if (mConfig.view == Constants.MONTHLY_VIEW) {
+            val today = DateTime().toString(Formatter.DAYCODE_PATTERN)
+            fillMonthlyViewPager(today)
+        } else {
+
+        }
+    }
+
     private fun addNewEvent() {
         val intent = Intent(applicationContext, EventActivity::class.java)
         val tomorrowCode = Formatter.getDayCodeFromDateTime(DateTime(DateTimeZone.getDefault()).plusDays(1))
@@ -65,7 +87,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
         startActivity(intent)
     }
 
-    private fun fillViewPager(targetMonth: String) {
+    private fun fillMonthlyViewPager(targetMonth: String) {
         val codes = getMonths(targetMonth)
         val adapter = MyMonthPagerAdapter(supportFragmentManager, codes, this)
         view_pager.adapter = adapter
@@ -91,6 +113,6 @@ class MainActivity : SimpleActivity(), NavigationListener {
     }
 
     override fun goToDateTime(dateTime: DateTime) {
-        fillViewPager(Formatter.getDayCodeFromDateTime(dateTime))
+        fillMonthlyViewPager(Formatter.getDayCodeFromDateTime(dateTime))
     }
 }

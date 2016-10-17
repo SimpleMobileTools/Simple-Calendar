@@ -56,4 +56,12 @@ public class Config {
     public void setLastOtherReminderMins(int lastMins) {
         mPrefs.edit().putInt(Constants.LAST_OTHER_REMINDER_MINS, lastMins).apply();
     }
+
+    public int getView() {
+        return mPrefs.getInt(Constants.VIEW, Constants.MONTHLY_VIEW);
+    }
+
+    public void setView(int view) {
+        mPrefs.edit().putInt(Constants.VIEW, view).apply();
+    }
 }
