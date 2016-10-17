@@ -43,6 +43,9 @@ class MainActivity : SimpleActivity(), NavigationListener {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+            R.id.yearly_view -> {
+                return true
+            }
             R.id.settings -> {
                 startActivity(Intent(applicationContext, SettingsActivity::class.java))
                 return true

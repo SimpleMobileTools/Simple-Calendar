@@ -4,6 +4,8 @@
     <string name="undo">Undo</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
+    <string name="monthly_view">Monthly view</string>
+    <string name="yearly_view">Yearly view</string>
 
     <!-- Event -->
     <string name="event">Event</string>
