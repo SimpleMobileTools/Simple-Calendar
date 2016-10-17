@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.simplemobiletools.calendar.BuildConfig;
-import com.simplemobiletools.calendar.Config;
 import com.simplemobiletools.calendar.R;
 
 import java.util.Calendar;
@@ -55,7 +54,7 @@ public class AboutActivity extends SimpleActivity {
     }
 
     private void setupRateUs() {
-        if (Config.newInstance(getApplicationContext()).getIsFirstRun()) {
+        if (mConfig.getIsFirstRun()) {
             mRateUs.setVisibility(View.GONE);
         }
     }

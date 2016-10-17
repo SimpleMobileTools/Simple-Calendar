@@ -33,7 +33,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
 
     override fun onDestroy() {
         super.onDestroy()
-        Config.newInstance(applicationContext).isFirstRun = false
+        mConfig.isFirstRun = false
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

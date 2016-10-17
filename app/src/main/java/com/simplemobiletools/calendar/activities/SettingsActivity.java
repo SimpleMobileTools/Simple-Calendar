@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.widget.SwitchCompat;
 
-import com.simplemobiletools.calendar.Config;
 import com.simplemobiletools.calendar.R;
 
 import butterknife.BindView;
@@ -16,13 +15,10 @@ public class SettingsActivity extends SimpleActivity {
     @BindView(R.id.settings_sunday_first) SwitchCompat mSundayFirstSwitch;
     @BindView(R.id.settings_week_numbers) SwitchCompat mWeekNumbersSwitch;
 
-    private static Config mConfig;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-        mConfig = Config.newInstance(getApplicationContext());
         ButterKnife.bind(this);
 
         setupDarkTheme();
