@@ -5,6 +5,7 @@
     <dimen name="event_padding">8dp</dimen>
     <dimen name="top_padding">8dp</dimen>
     <dimen name="settings_padding">8dp</dimen>
+    <dimen name="yearly_padding">10dp</dimen>
 
     <dimen name="min_widget_width">250dp</dimen>
     <dimen name="min_widget_height">250dp</dimen>

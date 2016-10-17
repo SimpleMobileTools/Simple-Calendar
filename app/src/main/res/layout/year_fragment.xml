@@ -3,89 +3,188 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/calendar_holder"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="@dimen/yearly_padding">
 
     <TableRow android:layout_weight="1">
 
         <RelativeLayout
             android:id="@+id/month_1"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/january"
+                android:textAllCaps="true"/>
+
+        </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/month_2"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/february"
+                android:textAllCaps="true"/>
+        </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/month_3"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/march"
+                android:textAllCaps="true"/>
+        </RelativeLayout>
     </TableRow>
 
     <TableRow android:layout_weight="1">
 
         <RelativeLayout
             android:id="@+id/month_4"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/april"
+                android:textAllCaps="true"/>
+        </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/month_5"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/may"
+                android:textAllCaps="true"/>
+
+        </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/month_6"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/june"
+                android:textAllCaps="true"/>
+        </RelativeLayout>
     </TableRow>
 
     <TableRow android:layout_weight="1">
 
         <RelativeLayout
             android:id="@+id/month_7"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/july"
+                android:textAllCaps="true"/>
+        </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/month_8"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/august"
+                android:textAllCaps="true"/>
+        </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/month_9"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/september"
+                android:textAllCaps="true"/>
+        </RelativeLayout>
     </TableRow>
 
     <TableRow android:layout_weight="1">
 
         <RelativeLayout
             android:id="@+id/month_10"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/october"
+                android:textAllCaps="true"/>
+        </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/month_11"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/november"
+                android:textAllCaps="true"/>
+        </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/month_12"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/december"
+                android:textAllCaps="true"/>
+        </RelativeLayout>
     </TableRow>
 </TableLayout>
