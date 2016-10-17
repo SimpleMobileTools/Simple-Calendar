@@ -1,8 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<TableLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/calendar_holder"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</RelativeLayout>
+    <TableRow android:layout_weight="1">
+
+        <RelativeLayout
+            android:id="@+id/month_1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <RelativeLayout
+            android:id="@+id/month_2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <RelativeLayout
+            android:id="@+id/month_3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+    </TableRow>
+
+    <TableRow android:layout_weight="1">
+
+        <RelativeLayout
+            android:id="@+id/month_4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <RelativeLayout
+            android:id="@+id/month_5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <RelativeLayout
+            android:id="@+id/month_6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+    </TableRow>
+
+    <TableRow android:layout_weight="1">
+
+        <RelativeLayout
+            android:id="@+id/month_7"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <RelativeLayout
+            android:id="@+id/month_8"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <RelativeLayout
+            android:id="@+id/month_9"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+    </TableRow>
+
+    <TableRow android:layout_weight="1">
+
+        <RelativeLayout
+            android:id="@+id/month_10"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <RelativeLayout
+            android:id="@+id/month_11"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <RelativeLayout
+            android:id="@+id/month_12"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+    </TableRow>
+</TableLayout>
