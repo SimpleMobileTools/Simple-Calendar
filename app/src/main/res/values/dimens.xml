@@ -5,11 +5,14 @@
     <dimen name="event_padding">8dp</dimen>
     <dimen name="top_padding">8dp</dimen>
     <dimen name="settings_padding">8dp</dimen>
-    <dimen name="yearly_padding">10dp</dimen>
+    <dimen name="yearly_padding_side">10dp</dimen>
+    <dimen name="yearly_padding_half">3dp</dimen>
+    <dimen name="yearly_padding_full">6dp</dimen>
 
     <dimen name="min_widget_width">250dp</dimen>
     <dimen name="min_widget_height">250dp</dimen>
 
+    <dimen name="tiny_text_size">8sp</dimen>
     <dimen name="normal_text_size">14sp</dimen>
     <dimen name="day_text_size">16sp</dimen>
     <dimen name="month_text_size">22sp</dimen>
