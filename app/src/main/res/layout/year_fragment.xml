@@ -20,7 +20,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:text="@string/january"
-                android:textAllCaps="true"/>
+                android:textAllCaps="true"
+                android:textSize="@dimen/normal_text_size"/>
 
         </RelativeLayout>
 
@@ -36,7 +37,9 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:text="@string/february"
-                android:textAllCaps="true"/>
+                android:textAllCaps="true"
+                android:textSize="@dimen/normal_text_size"/>
+
         </RelativeLayout>
 
         <RelativeLayout
@@ -51,7 +54,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:text="@string/march"
-                android:textAllCaps="true"/>
+                android:textAllCaps="true"
+                android:textSize="@dimen/normal_text_size"/>
         </RelativeLayout>
     </TableRow>
 
@@ -69,7 +73,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:text="@string/april"
-                android:textAllCaps="true"/>
+                android:textAllCaps="true"
+                android:textSize="@dimen/normal_text_size"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -84,7 +89,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:text="@string/may"
-                android:textAllCaps="true"/>
+                android:textAllCaps="true"
+                android:textSize="@dimen/normal_text_size"/>
 
         </RelativeLayout>
 
@@ -100,7 +106,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:text="@string/june"
-                android:textAllCaps="true"/>
+                android:textAllCaps="true"
+                android:textSize="@dimen/normal_text_size"/>
         </RelativeLayout>
     </TableRow>
 
@@ -118,7 +125,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:text="@string/july"
-                android:textAllCaps="true"/>
+                android:textAllCaps="true"
+                android:textSize="@dimen/normal_text_size"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -133,7 +141,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:text="@string/august"
-                android:textAllCaps="true"/>
+                android:textAllCaps="true"
+                android:textSize="@dimen/normal_text_size"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -148,7 +157,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:text="@string/september"
-                android:textAllCaps="true"/>
+                android:textAllCaps="true"
+                android:textSize="@dimen/normal_text_size"/>
         </RelativeLayout>
     </TableRow>
 
@@ -166,7 +176,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:text="@string/october"
-                android:textAllCaps="true"/>
+                android:textAllCaps="true"
+                android:textSize="@dimen/normal_text_size"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -181,7 +192,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:text="@string/november"
-                android:textAllCaps="true"/>
+                android:textAllCaps="true"
+                android:textSize="@dimen/normal_text_size"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -196,7 +208,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:text="@string/december"
-                android:textAllCaps="true"/>
+                android:textAllCaps="true"
+                android:textSize="@dimen/normal_text_size"/>
         </RelativeLayout>
     </TableRow>
 </TableLayout>
