@@ -22,6 +22,8 @@ class MainActivity : SimpleActivity(), NavigationListener {
     private val PREFILLED_MONTHS = 73
     private val PREFILLED_YEARS = 21
 
+    private var mIsMonthSelected = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -71,7 +73,16 @@ class MainActivity : SimpleActivity(), NavigationListener {
         }
     }
 
+    override fun onBackPressed() {
+        if (mIsMonthSelected && mConfig.view == Constants.YEARLY_VIEW) {
+            updateView(Constants.YEARLY_VIEW)
+        } else {
+            super.onBackPressed()
+        }
+    }
+
     private fun updateView(view: Int) {
+        mIsMonthSelected = view == Constants.MONTHLY_VIEW
         mConfig.view = view
         updateViewPager()
         Handler().postDelayed({ invalidateOptionsMenu() }, 500)
@@ -152,5 +163,6 @@ class MainActivity : SimpleActivity(), NavigationListener {
 
     override fun goToDateTime(dateTime: DateTime) {
         fillMonthlyViewPager(Formatter.getDayCodeFromDateTime(dateTime))
+        mIsMonthSelected = true
     }
 }
