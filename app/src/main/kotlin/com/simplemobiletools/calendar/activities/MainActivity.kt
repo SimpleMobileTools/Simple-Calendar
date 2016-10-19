@@ -2,6 +2,7 @@ package com.simplemobiletools.calendar.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.support.v4.view.ViewPager
 import android.view.Menu
 import android.view.MenuItem
@@ -73,7 +74,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
     private fun updateView(view: Int) {
         mConfig.view = view
         updateViewPager()
-        invalidateOptionsMenu()
+        Handler().postDelayed({ invalidateOptionsMenu() }, 500)
     }
 
     private fun updateViewPager() {
@@ -119,7 +120,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
         view_pager.currentItem = years.size / 2
 
         title = "${getString(R.string.app_launcher_name)} - ${years[years.size / 2]}"
-        view_pager.addOnPageChangeListener(object: ViewPager.OnPageChangeListener {
+        view_pager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrollStateChanged(state: Int) {
             }
 
