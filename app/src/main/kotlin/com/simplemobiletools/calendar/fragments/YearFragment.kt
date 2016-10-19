@@ -9,7 +9,7 @@ import com.simplemobiletools.calendar.Constants
 import com.simplemobiletools.calendar.NavigationListener
 import com.simplemobiletools.calendar.R
 import kotlinx.android.synthetic.main.year_fragment.view.*
-import java.util.*
+import org.joda.time.DateTime
 
 class YearFragment : Fragment() {
     private var mListener: NavigationListener? = null
@@ -20,8 +20,8 @@ class YearFragment : Fragment() {
 
         mYear = arguments.getInt(Constants.YEAR_LABEL)
 
-        val calendar = GregorianCalendar(mYear, Calendar.FEBRUARY, 1)
-        view.february_value.setDays(calendar.getActualMaximum(Calendar.DAY_OF_MONTH))
+        val days = DateTime().withYear(mYear).withDayOfMonth(1).withMonthOfYear(2).dayOfMonth().maximumValue
+        view.february_value.setDays(days)
 
         return view
     }
