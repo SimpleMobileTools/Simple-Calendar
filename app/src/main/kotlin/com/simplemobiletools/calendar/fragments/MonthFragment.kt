@@ -20,15 +20,15 @@ import kotlinx.android.synthetic.main.top_navigation.view.*
 import org.joda.time.DateTime
 
 class MonthFragment : Fragment(), Calendar {
-    private var mDayTextSize: Float = 0f
-    private var mTodayTextSize: Float = 0f
-    private var mPackageName: String = ""
-    private var mTextColor: Int = 0
-    private var mWeakTextColor: Int = 0
-    private var mTextColorWithEvent: Int = 0
-    private var mWeakTextColorWithEvent: Int = 0
-    private var mSundayFirst: Boolean = false
-    private var mDayCode: String = ""
+    private var mDayTextSize = 0f
+    private var mTodayTextSize = 0f
+    private var mPackageName = ""
+    private var mTextColor = 0
+    private var mWeakTextColor = 0
+    private var mTextColorWithEvent = 0
+    private var mWeakTextColorWithEvent = 0
+    private var mSundayFirst = false
+    private var mDayCode = ""
 
     private var mListener: NavigationListener? = null
 
