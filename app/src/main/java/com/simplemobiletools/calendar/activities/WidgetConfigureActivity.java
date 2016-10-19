@@ -99,7 +99,7 @@ public class WidgetConfigureActivity extends AppCompatActivity implements Calend
         mBgSeekBar.setProgress((int) (mBgAlpha * 100));
         updateBgColor();
 
-        new CalendarImpl(this, getApplicationContext()).updateCalendar(new DateTime());
+        new CalendarImpl(this, getApplicationContext()).updateMonthlyCalendar(new DateTime());
     }
 
     private SharedPreferences initPrefs(Context context) {

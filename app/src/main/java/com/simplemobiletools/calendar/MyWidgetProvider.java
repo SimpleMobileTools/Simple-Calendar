@@ -74,7 +74,7 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
         mRemoteViews.setInt(R.id.calendar_holder, "setBackgroundColor", bgColor);
 
         mCalendar = new CalendarImpl(this, mContext);
-        mCalendar.updateCalendar(new DateTime());
+        mCalendar.updateMonthlyCalendar(new DateTime());
     }
 
     private void updateWidget() {
