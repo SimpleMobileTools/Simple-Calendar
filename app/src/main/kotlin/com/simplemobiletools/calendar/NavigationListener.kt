@@ -7,5 +7,5 @@ interface NavigationListener {
 
     fun goRight()
 
-    fun goToDateTime(dateTime: DateTime, switchedFromYearly: Boolean)
+    fun goToDateTime(dateTime: DateTime)
 }

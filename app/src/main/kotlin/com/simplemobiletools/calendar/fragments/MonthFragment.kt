@@ -127,7 +127,7 @@ class MonthFragment : Fragment(), Calendar {
                 val month = datePicker.month + 1
                 val year = datePicker.year
                 val newDateTime = dateTime.withDayOfMonth(1).withMonthOfYear(month).withYear(year)
-                mListener?.goToDateTime(newDateTime, false)
+                mListener?.goToDateTime(newDateTime)
             }
 
             show()

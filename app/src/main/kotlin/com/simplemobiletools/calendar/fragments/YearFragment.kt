@@ -49,7 +49,7 @@ class YearFragment : Fragment() {
 
             monthView.setFirstDay(dayOfWeek)
             monthView.setOnClickListener {
-                mListener?.goToDateTime(DateTime().withDayOfMonth(1).withMonthOfYear(i).withYear(mYear), true)
+                mListener?.goToDateTime(DateTime().withDayOfMonth(1).withMonthOfYear(i).withYear(mYear))
             }
         }
     }
