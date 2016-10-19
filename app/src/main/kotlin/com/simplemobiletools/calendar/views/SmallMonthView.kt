@@ -16,6 +16,7 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
     var mDayWidth = 0f
     var mTextColor = 0
     var mDays = 31
+    var mFirstDay = 0
 
     constructor(context: Context, attrs: AttributeSet) : this(context, attrs, 0) {
     }
@@ -23,6 +24,10 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
     fun setDays(days: Int) {
         mDays = days
         invalidate()
+    }
+
+    fun setFirstDay(firstDay: Int) {
+        mFirstDay = firstDay
     }
 
     init {
@@ -52,13 +57,13 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
             mDayWidth = (canvas.width / 7).toFloat()
         }
 
-        var curId = 1
+        var curId = 1 - mFirstDay
         for (y in 1..6) {
             for (x in 1..7) {
-                if (curId <= mDays) {
+                if (curId > 0 && curId <= mDays) {
                     canvas.drawText(curId.toString(), x * mDayWidth, y * mDayWidth, mPaint)
-                    curId++
                 }
+                curId++
             }
         }
     }
