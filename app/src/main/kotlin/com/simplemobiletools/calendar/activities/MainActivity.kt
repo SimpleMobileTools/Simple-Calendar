@@ -2,6 +2,7 @@ package com.simplemobiletools.calendar.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.support.v4.view.ViewPager
 import android.view.Menu
 import android.view.MenuItem
 import com.simplemobiletools.calendar.Constants
@@ -94,8 +95,10 @@ class MainActivity : SimpleActivity(), NavigationListener {
     private fun fillMonthlyViewPager(targetDay: String) {
         val codes = getMonths(targetDay)
         val adapter = MyMonthPagerAdapter(supportFragmentManager, codes, this)
+        view_pager.clearOnPageChangeListeners()
         view_pager.adapter = adapter
         view_pager.currentItem = codes.size / 2
+        title = getString(R.string.app_launcher_name)
     }
 
     private fun getMonths(code: String): List<String> {
@@ -114,6 +117,20 @@ class MainActivity : SimpleActivity(), NavigationListener {
         val adapter = MyYearPagerAdapter(supportFragmentManager, years, this)
         view_pager.adapter = adapter
         view_pager.currentItem = years.size / 2
+
+        title = "${getString(R.string.app_launcher_name)} - ${years[years.size / 2]}"
+        view_pager.addOnPageChangeListener(object: ViewPager.OnPageChangeListener {
+            override fun onPageScrollStateChanged(state: Int) {
+            }
+
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+            }
+
+            override fun onPageSelected(position: Int) {
+                if (position < years.size)
+                    title = "${getString(R.string.app_launcher_name)} - ${years[position]}"
+            }
+        })
     }
 
     private fun getYears(targetYear: Int): List<Int> {
