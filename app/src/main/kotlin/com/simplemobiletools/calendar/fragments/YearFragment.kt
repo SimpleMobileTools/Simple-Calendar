@@ -21,7 +21,7 @@ class YearFragment : Fragment() {
         mYear = arguments.getInt(Constants.YEAR_LABEL)
 
         val days = DateTime().withYear(mYear).withDayOfMonth(1).withMonthOfYear(2).dayOfMonth().maximumValue
-        view.february_value.setDays(days)
+        view.month_2.setDays(days)
 
         return view
     }
