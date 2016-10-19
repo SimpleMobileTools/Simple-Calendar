@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CalendarImpl implements DBHelper.DBOperationsListener {
-    public static final int DAYS_CNT = 42;
+    private static final int DAYS_CNT = 42;
     private static final String YEAR_PATTERN = "YYYY";
 
     private final Calendar mCallback;
@@ -38,11 +38,11 @@ public class CalendarImpl implements DBHelper.DBOperationsListener {
         mTargetDate = dateTime;
     }
 
-    public void getPrevMonth() {
+    void getPrevMonth() {
         updateCalendar(mTargetDate.minusMonths(1));
     }
 
-    public void getNextMonth() {
+    void getNextMonth() {
         updateCalendar(mTargetDate.plusMonths(1));
     }
 
