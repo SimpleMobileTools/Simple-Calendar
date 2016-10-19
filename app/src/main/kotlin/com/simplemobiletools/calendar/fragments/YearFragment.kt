@@ -16,28 +16,39 @@ import org.joda.time.DateTime
 class YearFragment : Fragment() {
     private var mListener: NavigationListener? = null
     private var mYear = 0
+    private var mSundayFirst = false
+    lateinit var mView: View
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater!!.inflate(R.layout.year_fragment, container, false)
-
+        mView = inflater!!.inflate(R.layout.year_fragment, container, false)
         mYear = arguments.getInt(Constants.YEAR_LABEL)
+        setupMonths()
+        return mView
+    }
 
+    override fun onResume() {
+        super.onResume()
+        val sundayFirst = Config.newInstance(context).isSundayFirst
+        if (sundayFirst != mSundayFirst) {
+            mSundayFirst = sundayFirst
+            setupMonths()
+        }
+    }
+
+    fun setupMonths() {
         val dateTime = DateTime().withYear(mYear).withDayOfMonth(1).withMonthOfYear(2).withHourOfDay(12)
         val days = dateTime.dayOfMonth().maximumValue
-        view.month_2.setDays(days)
+        mView.month_2.setDays(days)
 
         val res = resources
-        val sundayFirst = Config.newInstance(context).isSundayFirst
         for (i in 1..12) {
-            val monthView = view.findViewById(res.getIdentifier("month_" + i, "id", activity.packageName)) as SmallMonthView
+            val monthView = mView.findViewById(res.getIdentifier("month_" + i, "id", activity.packageName)) as SmallMonthView
             var dayOfWeek = dateTime.withMonthOfYear(i).dayOfWeek().get()
-            if (!sundayFirst)
+            if (!mSundayFirst)
                 dayOfWeek--
 
             monthView.setFirstDay(dayOfWeek)
         }
-
-        return view
     }
 
     fun setListener(listener: NavigationListener) {
