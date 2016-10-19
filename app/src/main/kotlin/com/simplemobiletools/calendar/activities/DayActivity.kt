@@ -111,7 +111,7 @@ class DayActivity : SimpleActivity(), DayFragment.DeleteListener, ViewPager.OnPa
         view_pager.currentItem = view_pager.currentItem + 1
     }
 
-    override fun goToDateTime(dateTime: DateTime) {
+    override fun goToDateTime(dateTime: DateTime, switchedFromYearly: Boolean) {
         checkDeleteEvents()
         fillViewPager(Formatter.getDayCodeFromDateTime(dateTime))
     }

@@ -150,7 +150,12 @@ class MainActivity : SimpleActivity(), NavigationListener {
         view_pager.currentItem = view_pager.currentItem + 1
     }
 
-    override fun goToDateTime(dateTime: DateTime) {
+    override fun goToDateTime(dateTime: DateTime, switchedFromYearly: Boolean) {
         fillMonthlyViewPager(Formatter.getDayCodeFromDateTime(dateTime))
+
+        if (switchedFromYearly) {
+            mConfig.view = Constants.MONTHLY_VIEW
+            invalidateOptionsMenu()
+        }
     }
 }

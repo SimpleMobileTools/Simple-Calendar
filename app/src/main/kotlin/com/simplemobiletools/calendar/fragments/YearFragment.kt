@@ -48,6 +48,9 @@ class YearFragment : Fragment() {
                 dayOfWeek--
 
             monthView.setFirstDay(dayOfWeek)
+            monthView.setOnClickListener {
+                mListener?.goToDateTime(DateTime().withDayOfMonth(1).withMonthOfYear(i).withYear(mYear), true)
+            }
         }
     }
 
