@@ -15,11 +15,28 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
     var mPaint: Paint
     var mDayWidth = 0f
     var mTextColor = 0
+    var mDays = 31
 
     constructor(context: Context, attrs: AttributeSet) : this(context, attrs, 0) {
     }
 
+    fun setDays(days: Int) {
+        mDays = days
+        invalidate()
+    }
+
     init {
+        val a = context.theme.obtainStyledAttributes(
+                attrs,
+                R.styleable.SmallMonthView,
+                0, 0)
+
+        try {
+            mDays = a.getInt(R.styleable.SmallMonthView_days, 31)
+        } finally {
+            a.recycle()
+        }
+
         val baseColor = if (Config.newInstance(context).isDarkTheme) Color.WHITE else Color.BLACK
         mTextColor = Utils.adjustAlpha(baseColor, Constants.MEDIUM_ALPHA)
 
@@ -38,8 +55,10 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
         var curId = 1
         for (y in 1..6) {
             for (x in 1..7) {
-                canvas.drawText(curId.toString(), x * mDayWidth, y * mDayWidth, mPaint)
-                curId++
+                if (curId <= mDays) {
+                    canvas.drawText(curId.toString(), x * mDayWidth, y * mDayWidth, mPaint)
+                    curId++
+                }
             }
         }
     }

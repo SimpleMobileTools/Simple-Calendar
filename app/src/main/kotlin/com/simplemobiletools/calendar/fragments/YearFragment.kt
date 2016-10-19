@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import com.simplemobiletools.calendar.Constants
 import com.simplemobiletools.calendar.NavigationListener
 import com.simplemobiletools.calendar.R
+import kotlinx.android.synthetic.main.year_fragment.view.*
+import java.util.*
 
 class YearFragment : Fragment() {
     private var mListener: NavigationListener? = null
@@ -17,6 +19,9 @@ class YearFragment : Fragment() {
         val view = inflater!!.inflate(R.layout.year_fragment, container, false)
 
         mYear = arguments.getInt(Constants.YEAR_LABEL)
+
+        val calendar = GregorianCalendar(mYear, Calendar.FEBRUARY, 1)
+        view.february_value.setDays(calendar.getActualMaximum(Calendar.DAY_OF_MONTH))
 
         return view
     }
