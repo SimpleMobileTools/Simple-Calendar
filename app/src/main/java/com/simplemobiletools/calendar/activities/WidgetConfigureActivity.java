@@ -15,8 +15,8 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.simplemobiletools.calendar.Calendar;
-import com.simplemobiletools.calendar.CalendarImpl;
+import com.simplemobiletools.calendar.MonthlyCalendar;
+import com.simplemobiletools.calendar.MonthlyCalendarImpl;
 import com.simplemobiletools.calendar.Config;
 import com.simplemobiletools.calendar.Constants;
 import com.simplemobiletools.calendar.MyWidgetProvider;
@@ -34,7 +34,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import yuku.ambilwarna.AmbilWarnaDialog;
 
-public class WidgetConfigureActivity extends AppCompatActivity implements Calendar {
+public class WidgetConfigureActivity extends AppCompatActivity implements MonthlyCalendar {
     @BindView(R.id.top_left_arrow) ImageView mLeftArrow;
     @BindView(R.id.top_right_arrow) ImageView mRightArrow;
     @BindView(R.id.top_value) TextView mMonthTV;
@@ -99,7 +99,7 @@ public class WidgetConfigureActivity extends AppCompatActivity implements Calend
         mBgSeekBar.setProgress((int) (mBgAlpha * 100));
         updateBgColor();
 
-        new CalendarImpl(this, getApplicationContext()).updateMonthlyCalendar(new DateTime());
+        new MonthlyCalendarImpl(this, getApplicationContext()).updateMonthlyCalendar(new DateTime());
     }
 
     private SharedPreferences initPrefs(Context context) {
@@ -238,7 +238,7 @@ public class WidgetConfigureActivity extends AppCompatActivity implements Calend
     };
 
     @Override
-    public void updateCalendar(final String month, final List<Day> days) {
+    public void updateMonthlyCalendar(final String month, final List<Day> days) {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {

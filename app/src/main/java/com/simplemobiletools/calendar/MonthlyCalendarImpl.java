@@ -10,17 +10,17 @@ import org.joda.time.DateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CalendarImpl implements DBHelper.DBOperationsListener {
+public class MonthlyCalendarImpl implements DBHelper.DBOperationsListener {
     private static final int DAYS_CNT = 42;
     private static final String YEAR_PATTERN = "YYYY";
 
-    private final Calendar mCallback;
+    private final MonthlyCalendar mCallback;
     private final String mToday;
     private final Context mContext;
     private DateTime mTargetDate;
     private List<Event> mEvents;
 
-    public CalendarImpl(Calendar callback, Context context) {
+    public MonthlyCalendarImpl(MonthlyCalendar callback, Context context) {
         mCallback = callback;
         mContext = context;
         mToday = new DateTime().toString(Formatter.DAYCODE_PATTERN);
@@ -83,7 +83,7 @@ public class CalendarImpl implements DBHelper.DBOperationsListener {
             value++;
         }
 
-        mCallback.updateCalendar(getMonthName(), days);
+        mCallback.updateMonthlyCalendar(getMonthName(), days);
     }
 
     private boolean hasEvent(String dayCode) {

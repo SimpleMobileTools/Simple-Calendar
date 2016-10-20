@@ -4,6 +4,6 @@ import com.simplemobiletools.calendar.models.Day;
 
 import java.util.List;
 
-public interface Calendar {
-    void updateCalendar(String month, List<Day> days);
+public interface MonthlyCalendar {
+    void updateMonthlyCalendar(String month, List<Day> days);
 }

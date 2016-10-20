@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.month_fragment.view.*
 import kotlinx.android.synthetic.main.top_navigation.view.*
 import org.joda.time.DateTime
 
-class MonthFragment : Fragment(), Calendar {
+class MonthFragment : Fragment(), MonthlyCalendar {
     private var mDayTextSize = 0f
     private var mTodayTextSize = 0f
     private var mPackageName = ""
@@ -35,7 +35,7 @@ class MonthFragment : Fragment(), Calendar {
     lateinit var mRes: Resources
     lateinit var mHolder: RelativeLayout
     lateinit var mConfig: Config
-    lateinit var mCalendar: CalendarImpl
+    lateinit var mCalendar: MonthlyCalendarImpl
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.month_fragment, container, false)
@@ -52,7 +52,7 @@ class MonthFragment : Fragment(), Calendar {
         mDayTextSize = mRes.getDimension(R.dimen.day_text_size) / mRes.displayMetrics.density
         mTodayTextSize = mRes.getDimension(R.dimen.today_text_size) / mRes.displayMetrics.density
         setupLabels()
-        mCalendar = CalendarImpl(this, context)
+        mCalendar = MonthlyCalendarImpl(this, context)
 
         val padding = resources.getDimension(R.dimen.activity_margin).toInt()
         view.calendar_holder.setPadding(padding, padding, padding, padding)
@@ -74,7 +74,7 @@ class MonthFragment : Fragment(), Calendar {
         }
     }
 
-    override fun updateCalendar(month: String, days: List<Day>) {
+    override fun updateMonthlyCalendar(month: String, days: List<Day>) {
         activity?.runOnUiThread {
             mHolder.top_value.text = month
             updateDays(days)

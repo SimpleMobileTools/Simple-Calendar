@@ -28,7 +28,7 @@ import org.joda.time.DateTime;
 
 import java.util.List;
 
-public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
+public class MyWidgetProvider extends AppWidgetProvider implements MonthlyCalendar {
     private static final String PREV = "prev";
     private static final String NEXT = "next";
 
@@ -36,7 +36,7 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
     private static AppWidgetManager mWidgetManager;
     private static Intent mIntent;
     private static Context mContext;
-    private static CalendarImpl mCalendar;
+    private static MonthlyCalendarImpl mCalendar;
     private static Resources mRes;
 
     private static float mDayTextSize;
@@ -73,7 +73,7 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
         final int bgColor = prefs.getInt(Constants.WIDGET_BG_COLOR, Color.BLACK);
         mRemoteViews.setInt(R.id.calendar_holder, "setBackgroundColor", bgColor);
 
-        mCalendar = new CalendarImpl(this, mContext);
+        mCalendar = new MonthlyCalendarImpl(this, mContext);
         mCalendar.updateMonthlyCalendar(new DateTime());
     }
 
@@ -186,7 +186,7 @@ public class MyWidgetProvider extends AppWidgetProvider implements Calendar {
     }
 
     @Override
-    public void updateCalendar(String month, List<Day> days) {
+    public void updateMonthlyCalendar(String month, List<Day> days) {
         updateMonth(month);
         updateDays(days);
         updateWidget();
