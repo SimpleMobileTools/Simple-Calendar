@@ -2,6 +2,7 @@ package com.simplemobiletools.calendar.fragments
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.SparseArray
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import com.simplemobiletools.calendar.*
 import com.simplemobiletools.calendar.views.SmallMonthView
 import kotlinx.android.synthetic.main.year_fragment.view.*
 import org.joda.time.DateTime
+import java.util.*
 
 class YearFragment : Fragment(), YearlyCalendar {
     private var mListener: NavigationListener? = null
@@ -52,7 +54,7 @@ class YearFragment : Fragment(), YearlyCalendar {
 
             monthView.setFirstDay(dayOfWeek)
             monthView.setOnClickListener {
-                mListener?.goToDateTime(DateTime().withDate(mYear, i, 1)
+                mListener?.goToDateTime(DateTime().withDate(mYear, i, 1))
             }
         }
     }
@@ -61,7 +63,15 @@ class YearFragment : Fragment(), YearlyCalendar {
         mListener = listener
     }
 
-    override fun updateYearlyCalendar(events: MutableList<String>) {
+    override fun updateYearlyCalendar(events: SparseArray<ArrayList<Int>>) {
+        if (!isAdded)
+            return
 
+        val res = resources
+
+        for (i in 1..12) {
+            val monthView = mView.findViewById(res.getIdentifier("month_$i", "id", context.packageName)) as SmallMonthView
+            monthView.setEvents(events.get(i))
+        }
     }
 }

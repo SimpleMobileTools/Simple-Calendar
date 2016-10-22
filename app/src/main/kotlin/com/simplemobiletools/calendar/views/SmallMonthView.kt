@@ -10,13 +10,18 @@ import com.simplemobiletools.calendar.Config
 import com.simplemobiletools.calendar.Constants
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.Utils
+import java.util.*
 
 class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(context, attrs, defStyle) {
     var mPaint: Paint
+    var mColoredPaint: Paint
     var mDayWidth = 0f
     var mTextColor = 0
+    var mColoredTextColor = 0
     var mDays = 31
     var mFirstDay = 0
+
+    var mEvents: ArrayList<Int>? = null
 
     constructor(context: Context, attrs: AttributeSet) : this(context, attrs, 0) {
     }
@@ -28,6 +33,11 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
 
     fun setFirstDay(firstDay: Int) {
         mFirstDay = firstDay
+    }
+
+    fun setEvents(events: ArrayList<Int>?) {
+        mEvents = events
+        post { invalidate() }
     }
 
     init {
@@ -44,11 +54,16 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
 
         val baseColor = if (Config.newInstance(context).isDarkTheme) Color.WHITE else Color.BLACK
         mTextColor = Utils.adjustAlpha(baseColor, Constants.MEDIUM_ALPHA)
+        mColoredTextColor = Utils.adjustAlpha(resources.getColor(R.color.colorPrimary), Constants.MEDIUM_ALPHA)
 
-        mPaint = Paint(Paint.ANTI_ALIAS_FLAG)
-        mPaint.color = mTextColor
-        mPaint.textSize = resources.getDimensionPixelSize(R.dimen.tiny_text_size).toFloat()
-        mPaint.textAlign = Paint.Align.RIGHT
+        mPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+            color = mTextColor
+            textSize = resources.getDimensionPixelSize(R.dimen.tiny_text_size).toFloat()
+            textAlign = Paint.Align.RIGHT
+        }
+
+        mColoredPaint = Paint(mPaint)
+        mColoredPaint.color = mColoredTextColor
     }
 
     override fun onDraw(canvas: Canvas) {
@@ -61,7 +76,10 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
         for (y in 1..6) {
             for (x in 1..7) {
                 if (curId > 0 && curId <= mDays) {
-                    canvas.drawText(curId.toString(), x * mDayWidth, y * mDayWidth, mPaint)
+                    if (mEvents?.contains(curId) == true)
+                        canvas.drawText(curId.toString(), x * mDayWidth, y * mDayWidth, mColoredPaint)
+                    else
+                        canvas.drawText(curId.toString(), x * mDayWidth, y * mDayWidth, mPaint)
                 }
                 curId++
             }
