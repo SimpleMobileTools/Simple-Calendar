@@ -13,6 +13,7 @@ import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.adapters.MyMonthPagerAdapter
 import com.simplemobiletools.calendar.adapters.MyYearPagerAdapter
 import com.simplemobiletools.calendar.extensions.updateWidget
+import com.simplemobiletools.calendar.fragments.EventListFragment
 import com.simplemobiletools.calendar.views.dialogs.ChangeViewDialog
 import kotlinx.android.synthetic.main.activity_main.*
 import org.joda.time.DateTime
@@ -118,7 +119,7 @@ class MainActivity : SimpleActivity(), NavigationListener, ChangeViewDialog.Chan
             visibility = View.VISIBLE
         }
         title = getString(R.string.app_launcher_name)
-        calendar_events_list.visibility = View.GONE
+        calendar_event_list_holder.visibility = View.GONE
     }
 
     private fun getMonths(code: String): List<String> {
@@ -154,7 +155,7 @@ class MainActivity : SimpleActivity(), NavigationListener, ChangeViewDialog.Chan
             visibility = View.VISIBLE
         }
         title = "${getString(R.string.app_launcher_name)} - ${years[years.size / 2]}"
-        calendar_events_list.visibility = View.GONE
+        calendar_event_list_holder.visibility = View.GONE
     }
 
     private fun getYears(targetYear: Int): List<Int> {
@@ -169,7 +170,8 @@ class MainActivity : SimpleActivity(), NavigationListener, ChangeViewDialog.Chan
         title = getString(R.string.app_launcher_name)
         view_pager.adapter = null
         view_pager.visibility = View.GONE
-        calendar_events_list.visibility = View.VISIBLE
+        calendar_event_list_holder.visibility = View.VISIBLE
+        supportFragmentManager.beginTransaction().replace(R.id.calendar_event_list_holder, EventListFragment(), "").commit()
     }
 
     override fun goLeft() {
