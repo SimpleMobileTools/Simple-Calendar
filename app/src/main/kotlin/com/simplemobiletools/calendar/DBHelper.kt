@@ -151,6 +151,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DBHelper.DB_NAME, n
         Thread({
             val events = ArrayList<Event>()
             events.addAll(getEventsFor(fromTS, toTS))
+
             val selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_REPEAT_INTERVAL IS NULL"
             val selectionArgs = arrayOf(toTS.toString(), fromTS.toString())
             val cursor = getEventsCursor(selection, selectionArgs)
