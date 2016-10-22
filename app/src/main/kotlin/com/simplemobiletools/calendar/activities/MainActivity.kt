@@ -109,12 +109,15 @@ class MainActivity : SimpleActivity(), NavigationListener, ChangeViewDialog.Chan
 
     private fun fillMonthlyViewPager(targetDay: String) {
         val codes = getMonths(targetDay)
-        val adapter = MyMonthPagerAdapter(supportFragmentManager, codes, this)
-        view_pager.clearOnPageChangeListeners()
-        view_pager.adapter = adapter
-        view_pager.currentItem = codes.size / 2
+        val monthlyAdapter = MyMonthPagerAdapter(supportFragmentManager, codes, this)
+
+        view_pager.apply {
+            clearOnPageChangeListeners()
+            adapter = monthlyAdapter
+            currentItem = codes.size / 2
+            visibility = View.VISIBLE
+        }
         title = getString(R.string.app_launcher_name)
-        view_pager.visibility = View.VISIBLE
         calendar_events_list.visibility = View.GONE
     }
 
@@ -131,24 +134,26 @@ class MainActivity : SimpleActivity(), NavigationListener, ChangeViewDialog.Chan
     private fun fillYearlyViewPager() {
         val targetYear = DateTime().toString(Formatter.YEAR_PATTERN).toInt()
         val years = getYears(targetYear)
-        val adapter = MyYearPagerAdapter(supportFragmentManager, years, this)
-        view_pager.adapter = adapter
-        view_pager.currentItem = years.size / 2
+        val yearlyAdapter = MyYearPagerAdapter(supportFragmentManager, years, this)
 
+        view_pager.apply {
+            adapter = yearlyAdapter
+            currentItem = years.size / 2
+            addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+                override fun onPageScrollStateChanged(state: Int) {
+                }
+
+                override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+                }
+
+                override fun onPageSelected(position: Int) {
+                    if (position < years.size)
+                        title = "${getString(R.string.app_launcher_name)} - ${years[position]}"
+                }
+            })
+            visibility = View.VISIBLE
+        }
         title = "${getString(R.string.app_launcher_name)} - ${years[years.size / 2]}"
-        view_pager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-            override fun onPageScrollStateChanged(state: Int) {
-            }
-
-            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-            }
-
-            override fun onPageSelected(position: Int) {
-                if (position < years.size)
-                    title = "${getString(R.string.app_launcher_name)} - ${years[position]}"
-            }
-        })
-        view_pager.visibility = View.VISIBLE
         calendar_events_list.visibility = View.GONE
     }
 
