@@ -20,6 +20,7 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
     var mColoredTextColor = 0
     var mDays = 31
     var mFirstDay = 0
+    var mTodaysId = 0
 
     var mEvents: ArrayList<Int>? = null
 
@@ -38,6 +39,10 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
     fun setEvents(events: ArrayList<Int>?) {
         mEvents = events
         post { invalidate() }
+    }
+
+    fun setTodaysId(id: Int) {
+        mTodaysId = id
     }
 
     init {
@@ -76,13 +81,18 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
         for (y in 1..6) {
             for (x in 1..7) {
                 if (curId > 0 && curId <= mDays) {
-                    if (mEvents?.contains(curId) == true)
-                        canvas.drawText(curId.toString(), x * mDayWidth, y * mDayWidth, mColoredPaint)
-                    else
-                        canvas.drawText(curId.toString(), x * mDayWidth, y * mDayWidth, mPaint)
+                    canvas.drawText(curId.toString(), x * mDayWidth, y * mDayWidth, getPaint(curId))
+
+                    if (curId == mTodaysId) {
+                        canvas.drawCircle(x * mDayWidth - mDayWidth / 4, y * mDayWidth - mDayWidth / 4, mDayWidth * 0.41f, mColoredPaint)
+                    }
                 }
                 curId++
             }
         }
+    }
+
+    private fun getPaint(curId: Int): Paint {
+        return if (mEvents?.contains(curId) == true) mColoredPaint else mPaint
     }
 }
