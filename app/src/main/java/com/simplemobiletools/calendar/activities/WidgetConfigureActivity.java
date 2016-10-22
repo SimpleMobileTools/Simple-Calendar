@@ -15,10 +15,10 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.simplemobiletools.calendar.MonthlyCalendar;
-import com.simplemobiletools.calendar.MonthlyCalendarImpl;
 import com.simplemobiletools.calendar.Config;
 import com.simplemobiletools.calendar.Constants;
+import com.simplemobiletools.calendar.MonthlyCalendar;
+import com.simplemobiletools.calendar.MonthlyCalendarImpl;
 import com.simplemobiletools.calendar.MyWidgetProvider;
 import com.simplemobiletools.calendar.R;
 import com.simplemobiletools.calendar.Utils;
