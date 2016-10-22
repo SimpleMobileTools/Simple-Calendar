@@ -17,7 +17,7 @@
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/january_label"
+                android:id="@+id/month_1_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -29,7 +29,7 @@
                 android:id="@+id/month_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/january_label"/>
+                android:layout_below="@+id/month_1_label"/>
 
         </RelativeLayout>
 
@@ -42,7 +42,7 @@
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/february_label"
+                android:id="@+id/month_2_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -54,7 +54,7 @@
                 android:id="@+id/month_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/february_label"/>
+                android:layout_below="@+id/month_2_label"/>
 
         </RelativeLayout>
 
@@ -66,7 +66,7 @@
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/march_label"
+                android:id="@+id/month_3_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -78,7 +78,7 @@
                 android:id="@+id/month_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/march_label"/>
+                android:layout_below="@+id/month_3_label"/>
         </RelativeLayout>
     </TableRow>
 
@@ -92,7 +92,7 @@
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/april_label"
+                android:id="@+id/month_4_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -104,7 +104,7 @@
                 android:id="@+id/month_4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/april_label"
+                android:layout_below="@+id/month_4_label"
                 app:days="30"/>
         </RelativeLayout>
 
@@ -117,7 +117,7 @@
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/may_label"
+                android:id="@+id/month_5_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -129,7 +129,7 @@
                 android:id="@+id/month_5"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/may_label"/>
+                android:layout_below="@+id/month_5_label"/>
 
         </RelativeLayout>
 
@@ -141,7 +141,7 @@
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/june_label"
+                android:id="@+id/month_6_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -153,7 +153,7 @@
                 android:id="@+id/month_6"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/june_label"
+                android:layout_below="@+id/month_6_label"
                 app:days="30"/>
         </RelativeLayout>
     </TableRow>
@@ -168,7 +168,7 @@
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/july_label"
+                android:id="@+id/month_7_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -180,7 +180,7 @@
                 android:id="@+id/month_7"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/july_label"/>
+                android:layout_below="@+id/month_7_label"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -192,7 +192,7 @@
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/august_label"
+                android:id="@+id/month_8_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -204,7 +204,7 @@
                 android:id="@+id/month_8"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/august_label"/>
+                android:layout_below="@+id/month_8_label"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -215,7 +215,7 @@
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/september_label"
+                android:id="@+id/month_9_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -227,7 +227,7 @@
                 android:id="@+id/month_9"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/september_label"
+                android:layout_below="@+id/month_9_label"
                 app:days="30"/>
         </RelativeLayout>
     </TableRow>
@@ -242,7 +242,7 @@
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/october_label"
+                android:id="@+id/month_10_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -254,7 +254,7 @@
                 android:id="@+id/month_10"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/october_label"/>
+                android:layout_below="@+id/month_10_label"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -266,7 +266,7 @@
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/november_label"
+                android:id="@+id/month_11_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -278,7 +278,7 @@
                 android:id="@+id/month_11"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/november_label"
+                android:layout_below="@+id/month_11_label"
                 app:days="30"/>
         </RelativeLayout>
 
@@ -290,7 +290,7 @@
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/december_label"
+                android:id="@+id/month_12_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -302,7 +302,7 @@
                 android:id="@+id/month_12"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/december_label"/>
+                android:layout_below="@+id/month_12_label"/>
         </RelativeLayout>
     </TableRow>
 </TableLayout>
