@@ -29,7 +29,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DBHelper.DB_NAME, n
     private val COL_REPEAT_MONTH = "repeat_month"
     private val COL_REPEAT_DAY = "repeat_day"
 
-    private var mCallback: MonthlyEventsListener? = null
+    private var mEventsListener: EventsListener? = null
 
     companion object {
         private val DB_NAME = "events.db"
@@ -37,8 +37,8 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DBHelper.DB_NAME, n
         lateinit private var mDb: SQLiteDatabase
     }
 
-    constructor(context: Context, callback: MonthlyEventsListener?) : this(context) {
-        mCallback = callback
+    constructor(context: Context, callback: EventsListener?) : this(context) {
+        mEventsListener = callback
     }
 
     init {
@@ -76,7 +76,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DBHelper.DB_NAME, n
             mDb.insert(META_TABLE_NAME, null, metaValues)
         }
 
-        mCallback?.eventInserted(event)
+        mEventsListener?.eventInserted(event)
     }
 
     fun update(event: Event) {
@@ -93,7 +93,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DBHelper.DB_NAME, n
             mDb.insertWithOnConflict(META_TABLE_NAME, null, metaValues, SQLiteDatabase.CONFLICT_REPLACE)
         }
 
-        mCallback?.eventUpdated(event)
+        mEventsListener?.eventUpdated(event)
     }
 
     private fun fillContentValues(event: Event): ContentValues {
@@ -133,7 +133,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DBHelper.DB_NAME, n
         val metaSelection = "$COL_EVENT_ID IN ($args)"
         mDb.delete(META_TABLE_NAME, metaSelection, null)
 
-        mCallback?.eventsDeleted(ids.size)
+        mEventsListener?.eventsDeleted(ids.size)
     }
 
     fun getEvent(id: Int): Event? {
@@ -147,7 +147,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DBHelper.DB_NAME, n
         return null
     }
 
-    fun getEvents(fromTS: Int, toTS: Int) {
+    fun getEvents(fromTS: Int, toTS: Int, callback: GetEventsListener?) {
         Thread({
             val events = ArrayList<Event>()
             var ts = fromTS
@@ -161,7 +161,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DBHelper.DB_NAME, n
             val cursor = getEventsCursor(selection, selectionArgs)
             events.addAll(fillEvents(cursor))
 
-            mCallback?.gotEvents(events)
+            callback?.gotEvents(events)
         }).start()
     }
 
@@ -258,13 +258,17 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DBHelper.DB_NAME, n
         return events
     }
 
-    interface MonthlyEventsListener {
+    interface EventsListener {
         fun eventInserted(event: Event)
 
         fun eventUpdated(event: Event)
 
         fun eventsDeleted(cnt: Int)
 
+        fun gotEvents(events: MutableList<Event>)
+    }
+
+    interface GetEventsListener {
         fun gotEvents(events: MutableList<Event>)
     }
 

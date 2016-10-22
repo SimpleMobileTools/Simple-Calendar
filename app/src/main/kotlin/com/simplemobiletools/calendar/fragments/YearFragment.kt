@@ -14,12 +14,18 @@ class YearFragment : Fragment(), YearlyCalendar {
     private var mListener: NavigationListener? = null
     private var mYear = 0
     private var mSundayFirst = false
+
     lateinit var mView: View
+    lateinit var mCalendar: YearlyCalendarImpl
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mView = inflater!!.inflate(R.layout.year_fragment, container, false)
         mYear = arguments.getInt(Constants.YEAR_LABEL)
         setupMonths()
+
+        mCalendar = YearlyCalendarImpl(this, context)
+        mCalendar.getEvents(mYear)
+
         return mView
     }
 

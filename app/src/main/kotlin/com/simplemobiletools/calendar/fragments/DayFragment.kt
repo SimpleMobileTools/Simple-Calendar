@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.day_fragment.view.*
 import kotlinx.android.synthetic.main.top_navigation.view.*
 import java.util.*
 
-class DayFragment : Fragment(), DBHelper.MonthlyEventsListener, AdapterView.OnItemClickListener, AbsListView.MultiChoiceModeListener {
+class DayFragment : Fragment(), DBHelper.EventsListener, AdapterView.OnItemClickListener, AbsListView.MultiChoiceModeListener, DBHelper.GetEventsListener {
 
     private val EDIT_EVENT = 1
 
@@ -119,7 +119,7 @@ class DayFragment : Fragment(), DBHelper.MonthlyEventsListener, AdapterView.OnIt
     private fun checkEvents() {
         val startTS = Formatter.getDayStartTS(mDayCode)
         val endTS = Formatter.getDayEndTS(mDayCode)
-        DBHelper(context, this).getEvents(startTS, endTS)
+        DBHelper(context, this).getEvents(startTS, endTS, this)
     }
 
     private fun updateEvents(events: MutableList<Event>) {

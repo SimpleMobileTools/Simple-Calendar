@@ -10,7 +10,7 @@ import org.joda.time.DateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MonthlyCalendarImpl implements DBHelper.MonthlyEventsListener {
+public class MonthlyCalendarImpl implements DBHelper.GetEventsListener {
     private static final int DAYS_CNT = 42;
     private static final String YEAR_PATTERN = "YYYY";
 
@@ -31,7 +31,7 @@ public class MonthlyCalendarImpl implements DBHelper.MonthlyEventsListener {
         mTargetDate = targetDate;
         final int startTS = Formatter.getDayStartTS(Formatter.getDayCodeFromDateTime(mTargetDate.minusMonths(1)));
         final int endTS = Formatter.getDayEndTS(Formatter.getDayCodeFromDateTime(mTargetDate.plusMonths(1)));
-        new DBHelper(mContext, this).getEvents(startTS, endTS);
+        new DBHelper(mContext).getEvents(startTS, endTS, this);
     }
 
     public void setTargetDate(DateTime dateTime) {
@@ -110,21 +110,6 @@ public class MonthlyCalendarImpl implements DBHelper.MonthlyEventsListener {
 
     public DateTime getTargetDate() {
         return mTargetDate;
-    }
-
-    @Override
-    public void eventInserted(Event event) {
-
-    }
-
-    @Override
-    public void eventUpdated(Event event) {
-
-    }
-
-    @Override
-    public void eventsDeleted(int cnt) {
-
     }
 
     @Override
