@@ -2,12 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/monthly_view"
-        android:title="@string/monthly_view"
-        app:showAsAction="never"/>
-    <item
-        android:id="@+id/yearly_view"
-        android:title="@string/yearly_view"
+        android:id="@+id/change_view"
+        android:title="@string/change_view"
         app:showAsAction="never"/>
     <item
         android:id="@+id/settings"

@@ -13,12 +13,13 @@ import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.adapters.MyMonthPagerAdapter
 import com.simplemobiletools.calendar.adapters.MyYearPagerAdapter
 import com.simplemobiletools.calendar.extensions.updateWidget
+import com.simplemobiletools.calendar.views.dialogs.ChangeViewDialog
 import kotlinx.android.synthetic.main.activity_main.*
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 import java.util.*
 
-class MainActivity : SimpleActivity(), NavigationListener {
+class MainActivity : SimpleActivity(), NavigationListener, ChangeViewDialog.ChangeViewListener {
     private val PREFILLED_MONTHS = 73
     private val PREFILLED_YEARS = 21
 
@@ -45,20 +46,13 @@ class MainActivity : SimpleActivity(), NavigationListener {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu, menu)
 
-        menu.findItem(R.id.yearly_view).isVisible = mConfig.view == Constants.MONTHLY_VIEW
-        menu.findItem(R.id.monthly_view).isVisible = mConfig.view == Constants.YEARLY_VIEW
-
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.monthly_view -> {
-                updateView(Constants.MONTHLY_VIEW)
-                true
-            }
-            R.id.yearly_view -> {
-                updateView(Constants.YEARLY_VIEW)
+            R.id.change_view -> {
+                showViewDialog()
                 true
             }
             R.id.settings -> {
@@ -79,6 +73,14 @@ class MainActivity : SimpleActivity(), NavigationListener {
         } else {
             super.onBackPressed()
         }
+    }
+
+    private fun showViewDialog() {
+        ChangeViewDialog(this)
+    }
+
+    override fun ViewChanged(newView: Int) {
+        updateView(newView)
     }
 
     private fun updateView(view: Int) {
