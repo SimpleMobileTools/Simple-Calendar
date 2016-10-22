@@ -150,12 +150,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DBHelper.DB_NAME, n
     fun getEvents(fromTS: Int, toTS: Int, callback: GetEventsListener?) {
         Thread({
             val events = ArrayList<Event>()
-            var ts = fromTS
-            while (ts <= toTS) {
-                events.addAll(getEventsFor(ts))
-                ts += Constants.DAY
-            }
-
+            events.addAll(getEventsFor(fromTS, toTS))
             val selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_REPEAT_INTERVAL IS NULL"
             val selectionArgs = arrayOf(toTS.toString(), fromTS.toString())
             val cursor = getEventsCursor(selection, selectionArgs)
@@ -165,59 +160,34 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DBHelper.DB_NAME, n
         }).start()
     }
 
-    private fun getEventsFor(ts: Int): List<Event> {
+    private fun getEventsFor(fromTS: Int, toTS: Int): List<Event> {
         val newEvents = ArrayList<Event>()
-        val dayExclusive = Constants.DAY - 1
-        val dayEnd = ts + dayExclusive
-        val dateTime = Formatter.getDateTimeFromTS(ts)
 
-        // get daily, weekly and biweekly events
-        var selection = "($COL_REPEAT_INTERVAL = ${Constants.DAY} OR $COL_REPEAT_INTERVAL = ${Constants.WEEK} OR " +
-                "$COL_REPEAT_INTERVAL = ${Constants.BIWEEK}) AND ($dayEnd - $COL_REPEAT_START) % $COL_REPEAT_INTERVAL BETWEEN 0 AND $dayExclusive"
-        newEvents.addAll(getEvents(selection, ts))
-
-        // get monthly events
-        selection = "$COL_REPEAT_INTERVAL = ${Constants.MONTH} AND $COL_REPEAT_DAY = ${dateTime.dayOfMonth} AND $COL_REPEAT_START <= $dayEnd"
-        newEvents.addAll(getEvents(selection, ts))
-
-        // get yearly events
-        selection = "$COL_REPEAT_INTERVAL = ${Constants.YEAR} AND $COL_REPEAT_MONTH = ${dateTime.monthOfYear}" +
-                " AND $COL_REPEAT_DAY = ${dateTime.dayOfMonth} AND $COL_REPEAT_START <= $dayEnd"
-        newEvents.addAll(getEvents(selection, ts))
+        // get repeatable events
+        val selection = "$COL_REPEAT_INTERVAL != 0 AND $COL_START_TS < $toTS"
+        val events = getEvents(selection)
+        for (e in events) {
+            while (e.startTS < toTS) {
+                if (e.startTS > fromTS) {
+                    val newEvent = Event(e.id, e.startTS, e.endTS, e.title, e.description, e.reminderMinutes, e.repeatInterval)
+                    newEvents.add(newEvent)
+                }
+                e.addIntervalTime()
+            }
+        }
 
         return newEvents
     }
 
-    private fun getEvents(selection: String, ts: Int): List<Event> {
+    private fun getEvents(selection: String): List<Event> {
         val events = ArrayList<Event>()
         val cursor = getEventsCursor(selection, null)
         if (cursor != null) {
             val currEvents = fillEvents(cursor)
-            for (e in currEvents) {
-                updateEventTimes(e, ts)
-            }
             events.addAll(currEvents)
         }
 
         return events
-    }
-
-    private fun updateEventTimes(e: Event, ts: Int) {
-        val periods = (ts - e.startTS + Constants.DAY) / e.repeatInterval
-        val currStart = Formatter.getDateTimeFromTS(e.startTS)
-        val newStart: DateTime
-        newStart = when (e.repeatInterval) {
-            Constants.DAY -> currStart.plusDays(periods)
-            Constants.WEEK -> currStart.plusWeeks(periods)
-            Constants.BIWEEK -> currStart.plusWeeks(periods * 2)
-            Constants.MONTH -> currStart.plusMonths(periods)
-            else -> currStart.plusYears(periods)
-        }
-
-        val newStartTS = (newStart.millis / 1000).toInt()
-        val newEndTS = newStartTS + (e.endTS - e.startTS)
-        e.startTS = newStartTS
-        e.endTS = newEndTS
     }
 
     fun getEventsAtReboot(): List<Event> {
@@ -270,9 +240,5 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DBHelper.DB_NAME, n
 
     interface GetEventsListener {
         fun gotEvents(events: MutableList<Event>)
-    }
-
-    interface YearlyEventsListener {
-        fun yearlyEvents(events: MutableList<String>)
     }
 }
