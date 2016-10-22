@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.activity_event.*
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 
-class EventActivity : SimpleActivity(), DBHelper.DBOperationsListener {
+class EventActivity : SimpleActivity(), DBHelper.MonthlyEventsListener {
     private var mWasReminderInit: Boolean = false
     private var mWasEndDateSet: Boolean = false
     private var mWasEndTimeSet: Boolean = false

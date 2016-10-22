@@ -13,7 +13,7 @@ import com.simplemobiletools.calendar.models.Event
 import org.joda.time.DateTime
 import java.util.*
 
-class DBHelper(context: Context, callback: DBOperationsListener?) : SQLiteOpenHelper(context, DBHelper.DB_NAME, null, DBHelper.DB_VERSION) {
+class DBHelper(context: Context) : SQLiteOpenHelper(context, DBHelper.DB_NAME, null, DBHelper.DB_VERSION) {
     private val MAIN_TABLE_NAME = "events"
     private val COL_ID = "id"
     private val COL_START_TS = "start_ts"
@@ -29,7 +29,7 @@ class DBHelper(context: Context, callback: DBOperationsListener?) : SQLiteOpenHe
     private val COL_REPEAT_MONTH = "repeat_month"
     private val COL_REPEAT_DAY = "repeat_day"
 
-    private var mCallback: DBOperationsListener? = null
+    private var mCallback: MonthlyEventsListener? = null
 
     companion object {
         private val DB_NAME = "events.db"
@@ -37,10 +37,12 @@ class DBHelper(context: Context, callback: DBOperationsListener?) : SQLiteOpenHe
         lateinit private var mDb: SQLiteDatabase
     }
 
+    constructor(context: Context, callback: MonthlyEventsListener?) : this(context) {
+        mCallback = callback
+    }
+
     init {
         mDb = writableDatabase
-        mCallback = callback
-
     }
 
     override fun onCreate(db: SQLiteDatabase) {
@@ -256,7 +258,7 @@ class DBHelper(context: Context, callback: DBOperationsListener?) : SQLiteOpenHe
         return events
     }
 
-    interface DBOperationsListener {
+    interface MonthlyEventsListener {
         fun eventInserted(event: Event)
 
         fun eventUpdated(event: Event)
@@ -264,5 +266,9 @@ class DBHelper(context: Context, callback: DBOperationsListener?) : SQLiteOpenHe
         fun eventsDeleted(cnt: Int)
 
         fun gotEvents(events: MutableList<Event>)
+    }
+
+    interface YearlyEventsListener {
+        fun yearlyEvents(events: MutableList<String>)
     }
 }

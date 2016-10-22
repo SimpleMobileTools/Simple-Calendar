@@ -10,7 +10,7 @@ import org.joda.time.DateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MonthlyCalendarImpl implements DBHelper.DBOperationsListener {
+public class MonthlyCalendarImpl implements DBHelper.MonthlyEventsListener {
     private static final int DAYS_CNT = 42;
     private static final String YEAR_PATTERN = "YYYY";
 

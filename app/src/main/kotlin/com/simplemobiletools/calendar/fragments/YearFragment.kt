@@ -5,15 +5,12 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.simplemobiletools.calendar.Config
-import com.simplemobiletools.calendar.Constants
-import com.simplemobiletools.calendar.NavigationListener
-import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.*
 import com.simplemobiletools.calendar.views.SmallMonthView
 import kotlinx.android.synthetic.main.year_fragment.view.*
 import org.joda.time.DateTime
 
-class YearFragment : Fragment() {
+class YearFragment : Fragment(), YearlyCalendar {
     private var mListener: NavigationListener? = null
     private var mYear = 0
     private var mSundayFirst = false
@@ -56,5 +53,9 @@ class YearFragment : Fragment() {
 
     fun setListener(listener: NavigationListener) {
         mListener = listener
+    }
+
+    override fun updateYearlyCalendar(events: MutableList<String>) {
+
     }
 }

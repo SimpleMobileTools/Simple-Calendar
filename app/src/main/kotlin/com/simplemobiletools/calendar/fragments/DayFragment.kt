@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.day_fragment.view.*
 import kotlinx.android.synthetic.main.top_navigation.view.*
 import java.util.*
 
-class DayFragment : Fragment(), DBHelper.DBOperationsListener, AdapterView.OnItemClickListener, AbsListView.MultiChoiceModeListener {
+class DayFragment : Fragment(), DBHelper.MonthlyEventsListener, AdapterView.OnItemClickListener, AbsListView.MultiChoiceModeListener {
 
     private val EDIT_EVENT = 1
 
