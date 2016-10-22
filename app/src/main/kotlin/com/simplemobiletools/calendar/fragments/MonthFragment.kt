@@ -126,7 +126,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
             setPositiveButton(R.string.ok) { dialog, id ->
                 val month = datePicker.month + 1
                 val year = datePicker.year
-                val newDateTime = dateTime.withDayOfMonth(1).withMonthOfYear(month).withYear(year)
+                val newDateTime = dateTime.withDate(year, month, 1)
                 mListener?.goToDateTime(newDateTime)
             }
 

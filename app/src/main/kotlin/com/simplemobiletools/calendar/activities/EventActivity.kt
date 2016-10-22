@@ -303,10 +303,10 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
 
     private fun dateSet(year: Int, month: Int, day: Int, isStart: Boolean) {
         if (isStart) {
-            mEventStartDateTime = mEventStartDateTime.withYear(year).withMonthOfYear(month + 1).withDayOfMonth(day)
+            mEventStartDateTime = mEventStartDateTime.withDate(year, month + 1, day)
             updateStartDate()
         } else {
-            mEventEndDateTime = mEventEndDateTime.withYear(year).withMonthOfYear(month + 1).withDayOfMonth(day)
+            mEventEndDateTime = mEventEndDateTime.withDate(year, month + 1, day)
             updateEndDate()
             mWasEndDateSet = true
         }

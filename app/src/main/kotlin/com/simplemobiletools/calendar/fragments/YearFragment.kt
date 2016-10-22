@@ -39,7 +39,7 @@ class YearFragment : Fragment(), YearlyCalendar {
     }
 
     fun setupMonths() {
-        val dateTime = DateTime().withYear(mYear).withDayOfMonth(1).withMonthOfYear(2).withHourOfDay(12)
+        val dateTime = DateTime().withDate(mYear, 2, 1).withHourOfDay(12)
         val days = dateTime.dayOfMonth().maximumValue
         mView.month_2.setDays(days)
 
@@ -52,7 +52,7 @@ class YearFragment : Fragment(), YearlyCalendar {
 
             monthView.setFirstDay(dayOfWeek)
             monthView.setOnClickListener {
-                mListener?.goToDateTime(DateTime().withDayOfMonth(1).withMonthOfYear(i).withYear(mYear))
+                mListener?.goToDateTime(DateTime().withDate(mYear, i, 1)
             }
         }
     }

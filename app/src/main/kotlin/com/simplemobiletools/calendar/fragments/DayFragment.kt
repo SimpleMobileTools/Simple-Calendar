@@ -108,7 +108,7 @@ class DayFragment : Fragment(), DBHelper.EventsListener, AdapterView.OnItemClick
                 val month = datePicker.month + 1
                 val year = datePicker.year
                 val day = datePicker.dayOfMonth
-                val newDateTime = dateTime.withDayOfMonth(day).withMonthOfYear(month).withYear(year)
+                val newDateTime = dateTime.withDate(year, month, day)
                 mListener?.goToDateTime(newDateTime)
             }
 
