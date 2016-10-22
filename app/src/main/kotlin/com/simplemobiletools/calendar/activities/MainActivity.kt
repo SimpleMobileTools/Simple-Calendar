@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v4.view.ViewPager
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import com.simplemobiletools.calendar.Constants
 import com.simplemobiletools.calendar.Formatter
 import com.simplemobiletools.calendar.NavigationListener
@@ -92,7 +93,7 @@ class MainActivity : SimpleActivity(), NavigationListener, ChangeViewDialog.Chan
         if (mConfig.view == Constants.YEARLY_VIEW) {
             fillYearlyViewPager()
         } else if (mConfig.view == Constants.EVENTS_LIST_VIEW) {
-            view_pager.adapter = null
+            fillEventsList()
         } else {
             val targetDay = DateTime().toString(Formatter.DAYCODE_PATTERN)
             fillMonthlyViewPager(targetDay)
@@ -113,6 +114,8 @@ class MainActivity : SimpleActivity(), NavigationListener, ChangeViewDialog.Chan
         view_pager.adapter = adapter
         view_pager.currentItem = codes.size / 2
         title = getString(R.string.app_launcher_name)
+        view_pager.visibility = View.VISIBLE
+        calendar_events_list.visibility = View.GONE
     }
 
     private fun getMonths(code: String): List<String> {
@@ -145,6 +148,8 @@ class MainActivity : SimpleActivity(), NavigationListener, ChangeViewDialog.Chan
                     title = "${getString(R.string.app_launcher_name)} - ${years[position]}"
             }
         })
+        view_pager.visibility = View.VISIBLE
+        calendar_events_list.visibility = View.GONE
     }
 
     private fun getYears(targetYear: Int): List<Int> {
@@ -153,6 +158,13 @@ class MainActivity : SimpleActivity(), NavigationListener, ChangeViewDialog.Chan
             years.add(i)
 
         return years
+    }
+
+    private fun fillEventsList() {
+        title = getString(R.string.app_launcher_name)
+        view_pager.adapter = null
+        view_pager.visibility = View.GONE
+        calendar_events_list.visibility = View.VISIBLE
     }
 
     override fun goLeft() {
