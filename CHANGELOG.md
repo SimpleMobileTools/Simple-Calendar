@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 1.26 *(2016-10-22)*
+----------------------------
+
+ * Added a yearly view
+ * Misc bugfixes and performance improvements
+
 Version 1.25 *(2016-10-15)*
 ----------------------------
 
