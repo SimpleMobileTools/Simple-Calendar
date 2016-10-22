@@ -2,7 +2,6 @@ package com.simplemobiletools.calendar.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import android.support.v4.view.ViewPager
 import android.view.Menu
 import android.view.MenuItem
@@ -87,15 +86,16 @@ class MainActivity : SimpleActivity(), NavigationListener, ChangeViewDialog.Chan
         mIsMonthSelected = view == Constants.MONTHLY_VIEW
         mConfig.view = view
         updateViewPager()
-        Handler().postDelayed({ invalidateOptionsMenu() }, 500)
     }
 
     private fun updateViewPager() {
-        if (mConfig.view == Constants.MONTHLY_VIEW) {
+        if (mConfig.view == Constants.YEARLY_VIEW) {
+            fillYearlyViewPager()
+        } else if (mConfig.view == Constants.EVENTS_LIST_VIEW) {
+            view_pager.adapter = null
+        } else {
             val targetDay = DateTime().toString(Formatter.DAYCODE_PATTERN)
             fillMonthlyViewPager(targetDay)
-        } else {
-            fillYearlyViewPager()
         }
     }
 

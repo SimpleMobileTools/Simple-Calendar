@@ -11,6 +11,7 @@ public class Constants {
 
     public static final int MONTHLY_VIEW = 1;
     public static final int YEARLY_VIEW = 2;
+    public static final int EVENTS_LIST_VIEW = 3;
 
     public static final int DAY = 86400;
     public static final int WEEK = 604800;

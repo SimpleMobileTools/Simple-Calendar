@@ -7,6 +7,7 @@
     <string name="change_view">Change view</string>
     <string name="monthly_view">Monthly view</string>
     <string name="yearly_view">Yearly view</string>
+    <string name="simple_event_list">Simple event list</string>
 
     <!-- Event -->
     <string name="event">Termin</string>

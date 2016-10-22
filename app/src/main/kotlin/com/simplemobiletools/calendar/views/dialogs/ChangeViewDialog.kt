@@ -32,6 +32,7 @@ class ChangeViewDialog(val activity: Activity) : AlertDialog.Builder(activity), 
     fun getNewView(id: Int): Int {
         return when (id) {
             R.id.dialog_radio_yearly -> Constants.YEARLY_VIEW
+            R.id.dialog_radio_events_list -> Constants.EVENTS_LIST_VIEW
             else -> Constants.MONTHLY_VIEW
         }
     }
@@ -39,6 +40,7 @@ class ChangeViewDialog(val activity: Activity) : AlertDialog.Builder(activity), 
     fun getSavedItem(): Int {
         return when (Config.newInstance(activity).view) {
             Constants.YEARLY_VIEW -> R.id.dialog_radio_yearly
+            Constants.EVENTS_LIST_VIEW -> R.id.dialog_radio_events_list
             else -> R.id.dialog_radio_monthly
         }
     }

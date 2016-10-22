@@ -22,4 +22,13 @@
         android:paddingTop="@dimen/activity_margin"
         android:text="@string/yearly_view"/>
 
+
+    <RadioButton
+        android:id="@+id/dialog_radio_events_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/activity_margin"
+        android:paddingTop="@dimen/activity_margin"
+        android:text="@string/simple_event_list"/>
+
 </RadioGroup>
