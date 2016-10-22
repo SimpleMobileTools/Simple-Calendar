@@ -25,7 +25,7 @@ class ChangeViewDialog(val activity: Activity) : AlertDialog.Builder(activity), 
     }
 
     override fun onCheckedChanged(group: RadioGroup?, checkedId: Int) {
-        (activity as ChangeViewListener).ViewChanged(getNewView(checkedId))
+        (activity as ChangeViewListener).viewChanged(getNewView(checkedId))
         dialog?.dismiss()
     }
 
@@ -44,6 +44,6 @@ class ChangeViewDialog(val activity: Activity) : AlertDialog.Builder(activity), 
     }
 
     interface ChangeViewListener {
-        fun ViewChanged(newView: Int)
+        fun viewChanged(newView: Int)
     }
 }

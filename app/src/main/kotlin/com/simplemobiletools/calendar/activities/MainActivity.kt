@@ -79,7 +79,7 @@ class MainActivity : SimpleActivity(), NavigationListener, ChangeViewDialog.Chan
         ChangeViewDialog(this)
     }
 
-    override fun ViewChanged(newView: Int) {
+    override fun viewChanged(newView: Int) {
         updateView(newView)
     }
 
