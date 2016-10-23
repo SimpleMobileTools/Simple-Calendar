@@ -163,16 +163,16 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
+        return when (item.itemId) {
             R.id.delete -> {
                 deleteEvent()
-                return true
+                true
             }
             R.id.save -> {
                 saveEvent()
-                return true
+                true
             }
-            else -> return super.onOptionsItemSelected(item)
+            else -> super.onOptionsItemSelected(item)
         }
     }
 
@@ -224,28 +224,28 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
 
     private val reminderMinutes: Int
         get() {
-            when (event_reminder.selectedItemPosition) {
-                0 -> return -1
-                1 -> return 0
+            return when (event_reminder.selectedItemPosition) {
+                0 -> -1
+                1 -> 0
                 else -> {
                     val value = event_reminder_other.text.toString().trim { it <= ' ' }
                     if (value.isEmpty())
-                        return 0
+                        0
 
-                    return Integer.valueOf(value)!!
+                    Integer.valueOf(value)!!
                 }
             }
         }
 
     private val repeatInterval: Int
         get() {
-            when (event_repetition.selectedItemPosition) {
-                1 -> return Constants.DAY
-                2 -> return Constants.WEEK
-                3 -> return Constants.BIWEEK
-                4 -> return Constants.MONTH
-                5 -> return Constants.YEAR
-                else -> return 0
+            return when (event_repetition.selectedItemPosition) {
+                1 -> Constants.DAY
+                2 -> Constants.WEEK
+                3 -> Constants.BIWEEK
+                4 -> Constants.MONTH
+                5 -> Constants.YEAR
+                else -> 0
             }
         }
 
