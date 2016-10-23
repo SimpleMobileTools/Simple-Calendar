@@ -5,12 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.TextView
 import com.simplemobiletools.calendar.Formatter
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.models.Event
+import com.simplemobiletools.calendar.models.ListEvent
+import com.simplemobiletools.calendar.models.ListItem
+import com.simplemobiletools.calendar.models.ListSection
 import kotlinx.android.synthetic.main.event_item.view.*
 
-class EventsListAdapter(context: Context, private val mEvents: List<Event>) : BaseAdapter() {
+class EventsListAdapter(context: Context, private val mEvents: List<ListItem>) : BaseAdapter() {
+    val ITEM_EVENT = 0
+    val ITEM_HEADER = 1
+
     private val mInflater: LayoutInflater
 
     init {
@@ -20,28 +26,48 @@ class EventsListAdapter(context: Context, private val mEvents: List<Event>) : Ba
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var view = convertView
         val viewHolder: ViewHolder
+        val type = getItemViewType(position)
+
         if (view == null) {
-            view = mInflater.inflate(R.layout.event_item, parent, false)
-            viewHolder = ViewHolder(view)
+            if (type == ITEM_EVENT) {
+                view = mInflater.inflate(R.layout.event_item, parent, false)
+                viewHolder = ViewHolder(view)
+            } else {
+                view = mInflater.inflate(R.layout.event_section, parent, false)
+                viewHolder = ViewHolder(view)
+            }
             view!!.tag = viewHolder
         } else {
             viewHolder = view.tag as ViewHolder
         }
 
-        val event = mEvents[position]
-        viewHolder.apply {
-            title.text = event.title
-            description.text = event.description
-            start.text = Formatter.getTime(event.startTS)
+        if (type == ITEM_EVENT) {
+            val item = mEvents[position] as ListEvent
+            viewHolder.apply {
+                title.text = item.title
+                description?.text = item.description
+                start?.text = Formatter.getTime(item.startTS)
 
-            if (event.startTS == event.endTS) {
-                end.visibility = View.INVISIBLE
-            } else {
-                end.text = Formatter.getTime(event.endTS)
+                if (item.startTS == item.endTS) {
+                    end?.visibility = View.INVISIBLE
+                } else {
+                    end?.text = Formatter.getTime(item.endTS)
+                }
             }
+        } else {
+            val item = mEvents[position] as ListSection
+            viewHolder.title.text = item.title
         }
 
         return view
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return if (mEvents[position] is ListEvent) ITEM_EVENT else ITEM_HEADER
+    }
+
+    override fun getViewTypeCount(): Int {
+        return 2
     }
 
     override fun getCount(): Int {
@@ -53,13 +79,13 @@ class EventsListAdapter(context: Context, private val mEvents: List<Event>) : Ba
     }
 
     override fun getItemId(position: Int): Long {
-        return 0
+        return position.toLong()
     }
 
     class ViewHolder(view: View) {
         val title = view.event_item_title
-        val description = view.event_item_description
-        val start = view.event_item_start
-        val end = view.event_item_end
+        val description: TextView? = view.event_item_description
+        val start: TextView? = view.event_item_start
+        val end: TextView? = view.event_item_end
     }
 }
