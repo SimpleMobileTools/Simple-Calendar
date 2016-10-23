@@ -7,4 +7,5 @@
     android:choiceMode="multipleChoiceModal"
     android:clipToPadding="false"
     android:divider="@null"
-    android:paddingLeft="@dimen/activity_margin"/>
+    android:paddingLeft="@dimen/activity_margin"
+    android:paddingTop="@dimen/medium_padding"/>

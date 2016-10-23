@@ -1,6 +1,7 @@
 package com.simplemobiletools.calendar.adapters
 
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,14 +14,16 @@ import com.simplemobiletools.calendar.models.ListItem
 import com.simplemobiletools.calendar.models.ListSection
 import kotlinx.android.synthetic.main.event_item.view.*
 
-class EventsListAdapter(context: Context, private val mEvents: List<ListItem>) : BaseAdapter() {
+class EventsListAdapter(context: Context, val mEvents: List<ListItem>) : BaseAdapter() {
     val ITEM_EVENT = 0
     val ITEM_HEADER = 1
 
     private val mInflater: LayoutInflater
+    private var mTopDivider: Drawable? = null
 
     init {
         mInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        mTopDivider = context.resources.getDrawable(R.drawable.divider)
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
@@ -58,6 +61,7 @@ class EventsListAdapter(context: Context, private val mEvents: List<ListItem>) :
         } else {
             val item = mEvents[position] as ListSection
             viewHolder.title.text = item.title
+            viewHolder.title.setCompoundDrawablesWithIntrinsicBounds(null, if (position == 0) null else mTopDivider, null, null)
         }
 
         return view
