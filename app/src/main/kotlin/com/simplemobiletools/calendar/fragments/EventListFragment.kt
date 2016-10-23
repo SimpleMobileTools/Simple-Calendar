@@ -1,17 +1,18 @@
 package com.simplemobiletools.calendar.fragments
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.*
 import android.widget.AbsListView
 import android.widget.AdapterView
-import com.simplemobiletools.calendar.Constants
-import com.simplemobiletools.calendar.DBHelper
+import com.simplemobiletools.calendar.*
 import com.simplemobiletools.calendar.Formatter
-import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.EventActivity
+import com.simplemobiletools.calendar.activities.MainActivity
 import com.simplemobiletools.calendar.adapters.EventsListAdapter
+import com.simplemobiletools.calendar.extensions.updateWidget
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.models.ListEvent
 import com.simplemobiletools.calendar.models.ListItem
@@ -21,28 +22,35 @@ import org.joda.time.DateTime
 import java.util.*
 import kotlin.comparisons.compareBy
 
-class EventListFragment : Fragment(), DBHelper.GetEventsListener, AdapterView.OnItemClickListener, AbsListView.MultiChoiceModeListener {
+class EventListFragment : Fragment(), DBHelper.GetEventsListener, AdapterView.OnItemClickListener, AbsListView.MultiChoiceModeListener, DBHelper.EventsListener {
     private val EDIT_EVENT = 1
 
     var mSelectedItemsCnt = 0
     var mListItems: ArrayList<ListItem> = ArrayList()
+    lateinit var mToBeDeleted: MutableList<Int>
     lateinit var mView: View
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mView = inflater!!.inflate(R.layout.fragment_event_list, container, false)
+        mToBeDeleted = ArrayList<Int>()
         return mView
     }
 
     override fun onResume() {
         super.onResume()
+        checkEvents()
+    }
+
+    private fun checkEvents() {
         val fromTS = (DateTime().millis / 1000).toInt()
         val toTS = (DateTime().plusYears(1).millis / 1000).toInt()
         DBHelper(context).getEvents(fromTS, toTS, this)
     }
 
     override fun gotEvents(events: MutableList<Event>) {
-        mListItems = ArrayList<ListItem>(events.size)
-        val sorted = events.sortedWith(compareBy({ it.startTS }, { it.endTS }))
+        val filtered = getEventsToShow(events)
+        mListItems = ArrayList<ListItem>(filtered.size)
+        val sorted = filtered.sortedWith(compareBy({ it.startTS }, { it.endTS }))
         var prevCode = ""
         sorted.forEach {
             val code = Formatter.getDayCodeFromTS(it.startTS)
@@ -64,7 +72,24 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, AdapterView.On
         }
     }
 
+    private fun getEventsToShow(events: MutableList<Event>): List<Event> {
+        return events.filter { !mToBeDeleted.contains(it.id) }
+    }
+
+    private fun prepareDeleteEvents() {
+        val checked = mView.calendar_events_list.checkedItemPositions
+        for (i in mListItems.indices) {
+            if (checked.get(i)) {
+                val event = mListItems[i]
+                mToBeDeleted.add((event as ListEvent).id)
+            }
+        }
+
+        notifyDeletion()
+    }
+
     override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        (activity as MainActivity).checkDeleteEvents()
         editEvent((mListItems[position] as ListEvent).id)
     }
 
@@ -74,6 +99,33 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, AdapterView.On
         startActivityForResult(intent, EDIT_EVENT)
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == EDIT_EVENT && resultCode == Activity.RESULT_OK && data != null) {
+            val deletedId = data.getIntExtra(DayFragment.DELETED_ID, -1)
+            if (deletedId != -1) {
+                mToBeDeleted.clear()
+                mToBeDeleted.add(deletedId)
+                notifyDeletion()
+            }
+        }
+    }
+
+    private fun notifyDeletion() {
+        (activity as MainActivity).notifyDeletion(mToBeDeleted.size)
+        checkEvents()
+    }
+
+    fun deleteEvents() {
+        val eventIDs = Array(mToBeDeleted.size, { i -> (mToBeDeleted[i].toString()) })
+        DBHelper(activity.applicationContext, this).deleteEvents(eventIDs)
+        mToBeDeleted.clear()
+    }
+
+    fun undoDeletion() {
+        mToBeDeleted.clear()
+        checkEvents()
+    }
+
     override fun onPrepareActionMode(mode: ActionMode?, menu: Menu?): Boolean {
         return true
     }
@@ -81,6 +133,7 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, AdapterView.On
     override fun onActionItemClicked(mode: ActionMode, item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.delete -> {
+                prepareDeleteEvents()
                 mode.finish()
                 true
             }
@@ -107,5 +160,23 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, AdapterView.On
 
         mode.title = mSelectedItemsCnt.toString()
         mode.invalidate()
+    }
+
+    override fun eventInserted(event: Event) {
+        checkEvents()
+        context.updateWidget()
+    }
+
+    override fun eventUpdated(event: Event) {
+        checkEvents()
+        context.updateWidget()
+    }
+
+    override fun eventsDeleted(cnt: Int) {
+        context.updateWidget()
+    }
+
+    interface DeleteListener : NavigationListener {
+        fun notifyDeletion(cnt: Int)
     }
 }

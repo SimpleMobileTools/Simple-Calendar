@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <com.simplemobiletools.calendar.views.MyViewPager
-        android:id="@+id/view_pager"
+        android:id="@+id/main_view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

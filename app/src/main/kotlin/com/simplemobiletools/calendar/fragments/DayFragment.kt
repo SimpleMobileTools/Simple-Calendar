@@ -53,14 +53,10 @@ class DayFragment : Fragment(), DBHelper.EventsListener, AdapterView.OnItemClick
         val day = Formatter.getEventDate(activity.applicationContext, mDayCode)
         mHolder.top_value.text = day
         mHolder.top_value.setOnClickListener { pickDay() }
+        mToBeDeleted = ArrayList<Int>()
 
         setupButtons()
         return view
-    }
-
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        mToBeDeleted = ArrayList<Int>()
     }
 
     override fun onResume() {
