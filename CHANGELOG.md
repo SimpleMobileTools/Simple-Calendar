@@ -1,6 +1,11 @@
 Changelog
 ==========
 
+Version 1.27 *(2016-10-23)*
+----------------------------
+
+ * Added a new view with listing all events one year ahead
+
 Version 1.26 *(2016-10-22)*
 ----------------------------
 
