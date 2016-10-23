@@ -189,13 +189,13 @@ class DayFragment : Fragment(), DBHelper.EventsListener, AdapterView.OnItemClick
     }
 
     override fun onActionItemClicked(mode: ActionMode, item: MenuItem): Boolean {
-        when (item.itemId) {
+        return when (item.itemId) {
             R.id.delete -> {
                 prepareDeleteEvents()
                 mode.finish()
-                return true
+                true
             }
-            else -> return false
+            else -> false
         }
     }
 

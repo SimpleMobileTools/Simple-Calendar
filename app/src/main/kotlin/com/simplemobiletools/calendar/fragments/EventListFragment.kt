@@ -3,9 +3,8 @@ package com.simplemobiletools.calendar.fragments
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.AbsListView
 import android.widget.AdapterView
 import com.simplemobiletools.calendar.Constants
 import com.simplemobiletools.calendar.DBHelper
@@ -22,11 +21,12 @@ import org.joda.time.DateTime
 import java.util.*
 import kotlin.comparisons.compareBy
 
-class EventListFragment : Fragment(), DBHelper.GetEventsListener, AdapterView.OnItemClickListener {
+class EventListFragment : Fragment(), DBHelper.GetEventsListener, AdapterView.OnItemClickListener, AbsListView.MultiChoiceModeListener {
     private val EDIT_EVENT = 1
 
-    lateinit var mView: View
+    var mSelectedItemsCnt = 0
     var mListItems: ArrayList<ListItem> = ArrayList()
+    lateinit var mView: View
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mView = inflater!!.inflate(R.layout.fragment_event_list, container, false)
@@ -59,6 +59,7 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, AdapterView.On
             mView.calendar_events_list.apply {
                 adapter = eventsAdapter
                 onItemClickListener = this@EventListFragment
+                setMultiChoiceModeListener(this@EventListFragment)
             }
         }
     }
@@ -71,5 +72,40 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, AdapterView.On
         val intent = Intent(activity.applicationContext, EventActivity::class.java)
         intent.putExtra(Constants.EVENT_ID, eventId)
         startActivityForResult(intent, EDIT_EVENT)
+    }
+
+    override fun onPrepareActionMode(mode: ActionMode?, menu: Menu?): Boolean {
+        return true
+    }
+
+    override fun onActionItemClicked(mode: ActionMode, item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.delete -> {
+                mode.finish()
+                true
+            }
+            else -> false
+        }
+    }
+
+    override fun onCreateActionMode(mode: ActionMode, menu: Menu?): Boolean {
+        val inflater = mode.menuInflater
+        inflater.inflate(R.menu.menu_day_cab, menu)
+        return true
+    }
+
+    override fun onDestroyActionMode(mode: ActionMode?) {
+        mSelectedItemsCnt = 0
+    }
+
+    override fun onItemCheckedStateChanged(mode: ActionMode, position: Int, id: Long, checked: Boolean) {
+        if (checked) {
+            mSelectedItemsCnt++
+        } else {
+            mSelectedItemsCnt--
+        }
+
+        mode.title = mSelectedItemsCnt.toString()
+        mode.invalidate()
     }
 }
