@@ -30,12 +30,11 @@ class EventsListAdapter(context: Context, private val mEvents: List<ListItem>) :
 
         if (view == null) {
             if (type == ITEM_EVENT) {
-                view = mInflater.inflate(R.layout.event_item, parent, false)
-                viewHolder = ViewHolder(view)
+                view = mInflater.inflate(R.layout.event_list_item, parent, false)
             } else {
-                view = mInflater.inflate(R.layout.event_section, parent, false)
-                viewHolder = ViewHolder(view)
+                view = mInflater.inflate(R.layout.event_list_section, parent, false)
             }
+            viewHolder = ViewHolder(view)
             view!!.tag = viewHolder
         } else {
             viewHolder = view.tag as ViewHolder
@@ -52,6 +51,7 @@ class EventsListAdapter(context: Context, private val mEvents: List<ListItem>) :
                     end?.visibility = View.INVISIBLE
                 } else {
                     end?.text = Formatter.getTime(item.endTS)
+                    end?.visibility = View.VISIBLE
                 }
             }
         } else {
@@ -79,10 +79,10 @@ class EventsListAdapter(context: Context, private val mEvents: List<ListItem>) :
     }
 
     override fun getItemId(position: Int): Long {
-        return position.toLong()
+        return 0
     }
 
-    class ViewHolder(view: View) {
+    internal class ViewHolder(view: View) {
         val title = view.event_item_title
         val description: TextView? = view.event_item_description
         val start: TextView? = view.event_item_start

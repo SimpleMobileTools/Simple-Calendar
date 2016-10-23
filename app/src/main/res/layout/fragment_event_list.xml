@@ -6,4 +6,5 @@
     android:layout_height="wrap_content"
     android:choiceMode="multipleChoiceModal"
     android:clipToPadding="false"
+    android:divider="@null"
     android:paddingLeft="@dimen/activity_margin"/>

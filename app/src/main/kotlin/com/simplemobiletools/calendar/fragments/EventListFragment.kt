@@ -6,11 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.simplemobiletools.calendar.DBHelper
+import com.simplemobiletools.calendar.Formatter
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.adapters.EventsListAdapter
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.models.ListEvent
 import com.simplemobiletools.calendar.models.ListItem
+import com.simplemobiletools.calendar.models.ListSection
 import kotlinx.android.synthetic.main.fragment_event_list.view.*
 import org.joda.time.DateTime
 import java.util.*
@@ -34,7 +36,16 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener {
     override fun gotEvents(events: MutableList<Event>) {
         val listItems = ArrayList<ListItem>(events.size)
         val sorted = events.sortedWith(compareBy({ it.startTS }, { it.endTS }))
-        sorted.forEach { listItems.add(ListEvent(it.id, it.startTS, it.endTS, it.title, it.description)) }
+        var prevCode = ""
+        sorted.forEach {
+            val code = Formatter.getDayCodeFromTS(it.startTS)
+            if (code != prevCode) {
+                val day = Formatter.getEventDate(context, code)
+                listItems.add(ListSection(day, false))
+                prevCode = code
+            }
+            listItems.add(ListEvent(it.id, it.startTS, it.endTS, it.title, it.description))
+        }
 
         val eventsAdapter = EventsListAdapter(context, listItems)
         activity?.runOnUiThread {

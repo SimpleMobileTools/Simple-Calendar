@@ -38,6 +38,7 @@ class EventsAdapter(context: Context, private val mEvents: List<Event>) : BaseAd
                 end.visibility = View.INVISIBLE
             } else {
                 end.text = Formatter.getTime(event.endTS)
+                end.visibility = View.VISIBLE
             }
         }
 
