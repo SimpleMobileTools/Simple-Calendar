@@ -33,6 +33,7 @@ class EventsListAdapter(context: Context, private val mEvents: List<ListItem>) :
                 view = mInflater.inflate(R.layout.event_list_item, parent, false)
             } else {
                 view = mInflater.inflate(R.layout.event_list_section, parent, false)
+                view.setOnClickListener(null)
             }
             viewHolder = ViewHolder(view)
             view!!.tag = viewHolder
