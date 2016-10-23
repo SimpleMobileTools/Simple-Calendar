@@ -37,7 +37,8 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
         val intent = intent ?: return
 
         mWasReminderInit = false
-        val event = intent.getSerializableExtra(Constants.EVENT) as Event?
+        val eventId = intent.getIntExtra(Constants.EVENT_ID, 0)
+        val event = DBHelper(applicationContext).getEvent(eventId)
         if (event != null) {
             mEvent = event
             setupEditEvent()

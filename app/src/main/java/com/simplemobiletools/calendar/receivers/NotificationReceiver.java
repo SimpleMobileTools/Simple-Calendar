@@ -47,7 +47,7 @@ public class NotificationReceiver extends BroadcastReceiver {
 
     private PendingIntent getPendingIntent(Context context, Event event) {
         final Intent intent = new Intent(context, EventActivity.class);
-        intent.putExtra(Constants.EVENT, event);
+        intent.putExtra(Constants.EVENT_ID, event);
         return PendingIntent.getActivity(context, event.getId(), intent, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 

@@ -136,9 +136,9 @@ class DayFragment : Fragment(), DBHelper.EventsListener, AdapterView.OnItemClick
         }
     }
 
-    private fun editEvent(event: Event) {
+    private fun editEvent(eventId: Int) {
         val intent = Intent(activity.applicationContext, EventActivity::class.java)
-        intent.putExtra(Constants.EVENT, event)
+        intent.putExtra(Constants.EVENT_ID, eventId)
         startActivityForResult(intent, EDIT_EVENT)
     }
 
@@ -221,7 +221,7 @@ class DayFragment : Fragment(), DBHelper.EventsListener, AdapterView.OnItemClick
     }
 
     override fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-        editEvent(getEventsToShow(mEvents!!)[position])
+        editEvent(getEventsToShow(mEvents!!)[position].id)
     }
 
     override fun eventInserted(event: Event) {

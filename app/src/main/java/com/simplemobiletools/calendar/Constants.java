@@ -7,7 +7,7 @@ public class Constants {
 
     public static final String DAY_CODE = "day_code";
     public static final String YEAR_LABEL = "year";
-    public static final String EVENT = "event";
+    public static final String EVENT_ID = "event_id";
 
     public static final int MONTHLY_VIEW = 1;
     public static final int YEARLY_VIEW = 2;
