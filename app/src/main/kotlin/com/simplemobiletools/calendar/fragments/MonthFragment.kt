@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.*
 import com.simplemobiletools.calendar.*
 import com.simplemobiletools.calendar.activities.DayActivity
+import com.simplemobiletools.calendar.extensions.beVisibleIf
 import com.simplemobiletools.calendar.models.Day
 import kotlinx.android.synthetic.main.first_row.*
 import kotlinx.android.synthetic.main.month_fragment.view.*
@@ -167,13 +168,13 @@ class MonthFragment : Fragment(), MonthlyCalendar {
             return
 
         week_num.setTextColor(mWeakTextColor)
-        week_num.visibility = if (displayWeekNumbers) View.VISIBLE else View.GONE
+        week_num.beVisibleIf(displayWeekNumbers)
 
         for (i in 0..5) {
             val weekIdTV = mHolder.findViewById(mRes.getIdentifier("week_num_" + i, "id", mPackageName)) as TextView
             weekIdTV.text = "${days[i * 7].weekOfYear}:"
             weekIdTV.setTextColor(mWeakTextColor)
-            weekIdTV.visibility = if (displayWeekNumbers) View.VISIBLE else View.GONE
+            weekIdTV.beVisibleIf(displayWeekNumbers)
         }
 
         for (i in 0..len - 1) {

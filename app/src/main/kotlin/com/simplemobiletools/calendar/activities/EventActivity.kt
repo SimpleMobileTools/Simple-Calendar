@@ -14,6 +14,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.EditText
 import com.simplemobiletools.calendar.*
+import com.simplemobiletools.calendar.extensions.beVisibleIf
 import com.simplemobiletools.calendar.extensions.updateWidget
 import com.simplemobiletools.calendar.fragments.DayFragment
 import com.simplemobiletools.calendar.models.Event
@@ -134,8 +135,8 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
     }
 
     fun endCheckboxChecked(isChecked: Boolean) {
-        event_end_date.visibility = if (isChecked) View.VISIBLE else View.GONE
-        event_end_time.visibility = if (isChecked) View.VISIBLE else View.GONE
+        event_end_date.beVisibleIf(isChecked)
+        event_end_time.beVisibleIf(isChecked)
     }
 
     fun reminderItemSelected() {
