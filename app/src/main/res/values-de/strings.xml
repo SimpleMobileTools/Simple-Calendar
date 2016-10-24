@@ -8,6 +8,7 @@
     <string name="monthly_view">Monatsansicht</string>
     <string name="yearly_view">Jahresansicht</string>
     <string name="simple_event_list">Simple event list</string>
+    <string name="no_events_added">Seems like your calendar is empty.\nYou can create events with the Plus button at the bottom.</string>
 
     <!-- Event -->
     <string name="event">Termin</string>

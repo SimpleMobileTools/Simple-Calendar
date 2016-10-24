@@ -1,11 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ListView
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/calendar_events_list"
+    android:id="@+id/calendar_events_list_holder"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:choiceMode="multipleChoiceModal"
-    android:clipToPadding="false"
-    android:divider="@null"
-    android:paddingLeft="@dimen/activity_margin"
-    android:paddingTop="@dimen/medium_padding"/>
+    android:layout_height="match_parent">
+
+    <ListView
+        android:id="@+id/calendar_events_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:choiceMode="multipleChoiceModal"
+        android:clipToPadding="false"
+        android:divider="@null"
+        android:paddingLeft="@dimen/activity_margin"
+        android:paddingTop="@dimen/medium_padding"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/calendar_empty_list_placeholder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:alpha="0.5"
+        android:gravity="center_horizontal"
+        android:lineSpacingExtra="1dp"
+        android:padding="@dimen/big_margin"
+        android:text="@string/no_events_added"/>
+
+</RelativeLayout>

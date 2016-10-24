@@ -12,6 +12,8 @@ import com.simplemobiletools.calendar.Formatter
 import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.activities.MainActivity
 import com.simplemobiletools.calendar.adapters.EventsListAdapter
+import com.simplemobiletools.calendar.extensions.beGoneIf
+import com.simplemobiletools.calendar.extensions.beVisibleIf
 import com.simplemobiletools.calendar.extensions.updateWidget
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.models.ListEvent
@@ -27,6 +29,7 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, AdapterView.On
 
     var mSelectedItemsCnt = 0
     var mListItems: ArrayList<ListItem> = ArrayList()
+    var mAllEvents: MutableList<Event>? = null
     lateinit var mToBeDeleted: MutableList<Int>
     lateinit var mView: View
 
@@ -62,6 +65,7 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, AdapterView.On
             mListItems.add(ListEvent(it.id, it.startTS, it.endTS, it.title, it.description))
         }
 
+        mAllEvents = events
         val eventsAdapter = EventsListAdapter(context, mListItems)
         activity?.runOnUiThread {
             mView.calendar_events_list.apply {
@@ -69,10 +73,20 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, AdapterView.On
                 onItemClickListener = this@EventListFragment
                 setMultiChoiceModeListener(this@EventListFragment)
             }
+            checkPlaceholderVisibility()
         }
     }
 
-    private fun getEventsToShow(events: MutableList<Event>): List<Event> {
+    private fun checkPlaceholderVisibility() {
+        val events = getEventsToShow(mAllEvents)
+        mView.calendar_empty_list_placeholder.beVisibleIf(events.isEmpty())
+        mView.calendar_events_list.beGoneIf(events.isEmpty())
+    }
+
+    private fun getEventsToShow(events: MutableList<Event>?): List<Event> {
+        if (events == null)
+            return ArrayList()
+
         return events.filter { !mToBeDeleted.contains(it.id) }
     }
 
@@ -116,6 +130,9 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, AdapterView.On
     }
 
     fun deleteEvents() {
+        if (activity == null)
+            return
+
         val eventIDs = Array(mToBeDeleted.size, { i -> (mToBeDeleted[i].toString()) })
         DBHelper(activity.applicationContext, this).deleteEvents(eventIDs)
         mToBeDeleted.clear()
@@ -173,6 +190,7 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, AdapterView.On
     }
 
     override fun eventsDeleted(cnt: Int) {
+        checkPlaceholderVisibility()
         context.updateWidget()
     }
 
