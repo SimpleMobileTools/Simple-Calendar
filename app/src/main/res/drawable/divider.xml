@@ -5,5 +5,5 @@
         android:width="10000dp"
         android:height="1dp"/>
 
-    <solid android:color="@color/mediumGrey"/>
+    <solid android:color="@color/eventListDivider"/>
 </shape>

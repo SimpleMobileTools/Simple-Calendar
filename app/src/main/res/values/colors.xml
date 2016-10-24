@@ -5,4 +5,5 @@
     <color name="colorAccent">@color/colorPrimary</color>
     <color name="dark_grey_pressed_mask">#11000000</color>
     <color name="mediumGrey">#18000000</color>
+    <color name="eventListDivider">#44aaaaaa</color>
 </resources>
