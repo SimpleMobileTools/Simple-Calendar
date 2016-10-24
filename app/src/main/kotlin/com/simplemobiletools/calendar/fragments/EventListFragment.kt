@@ -3,6 +3,7 @@ package com.simplemobiletools.calendar.fragments
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.os.Parcelable
 import android.support.v4.app.Fragment
 import android.view.*
 import android.widget.AbsListView
@@ -30,6 +31,7 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, AdapterView.On
     var mSelectedItemsCnt = 0
     var mListItems: ArrayList<ListItem> = ArrayList()
     var mAllEvents: MutableList<Event>? = null
+    var mState: Parcelable? = null
     lateinit var mToBeDeleted: MutableList<Int>
     lateinit var mView: View
 
@@ -42,6 +44,11 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, AdapterView.On
     override fun onResume() {
         super.onResume()
         checkEvents()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        mState = mView.calendar_events_list.onSaveInstanceState()
     }
 
     private fun checkEvents() {
@@ -72,6 +79,9 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, AdapterView.On
                 adapter = eventsAdapter
                 onItemClickListener = this@EventListFragment
                 setMultiChoiceModeListener(this@EventListFragment)
+
+                if (mState != null)
+                    onRestoreInstanceState(mState)
             }
             checkPlaceholderVisibility()
         }
