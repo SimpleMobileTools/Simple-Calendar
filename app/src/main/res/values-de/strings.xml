@@ -4,9 +4,9 @@
     <string name="undo">Rückgängig</string>
     <string name="ok">OK</string>
     <string name="cancel">Abbrechen</string>
-    <string name="change_view">Change view</string>
-    <string name="monthly_view">Monthly view</string>
-    <string name="yearly_view">Yearly view</string>
+    <string name="change_view">Ansicht ändern</string>
+    <string name="monthly_view">Monatsansicht</string>
+    <string name="yearly_view">Jahresansicht</string>
     <string name="simple_event_list">Simple event list</string>
 
     <!-- Event -->
@@ -29,7 +29,7 @@
     <string name="none">Keine</string>
     <string name="daily">Täglich</string>
     <string name="weekly">Wöchentlich</string>
-    <string name="biweekly">Biweekly</string>
+    <string name="biweekly">Zweiwöchentlich</string>
     <string name="monthly">Monatlich</string>
     <string name="yearly">Jährlich</string>
 
@@ -55,8 +55,8 @@
     <!-- Settings -->
     <string name="settings">Einstellungen</string>
     <string name="dark_theme">Dunkles Thema</string>
-    <string name="sunday_first">Sunday as first day</string>
-    <string name="week_numbers">Display week numbers</string>
+    <string name="sunday_first">Sonntag als erster Wochentag</string>
+    <string name="week_numbers">Zeige Kalenderwoche an</string>
 
     <!-- License -->
     <string name="notice">Diese App nutzt die folgenden Drittanbieterbibliotheken, die mein Leben einfacher machen. Danke.</string>
