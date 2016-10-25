@@ -55,7 +55,7 @@
 
     <!-- Settings -->
     <string name="settings">Einstellungen</string>
-    <string name="dark_theme">Dunkles Thema</string>
+    <string name="dark_theme">Dunkles Design</string>
     <string name="sunday_first">Sonntag als erster Wochentag</string>
     <string name="week_numbers">Zeige Kalenderwoche an</string>
 
