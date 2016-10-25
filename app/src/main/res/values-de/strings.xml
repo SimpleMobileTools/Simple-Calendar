@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">Simple Calendar</string>
-    <string name="app_launcher_name">Calendar</string>
+    <string name="app_name">Schlichter Kalendner</string>
+    <string name="app_launcher_name">Kalender</string>
     <string name="undo">Rückgängig</string>
     <string name="ok">OK</string>
     <string name="cancel">Abbrechen</string>
@@ -8,7 +8,7 @@
     <string name="monthly_view">Monatsansicht</string>
     <string name="yearly_view">Jahresansicht</string>
     <string name="simple_event_list">Simple event list</string>
-    <string name="no_events_added">Seems like your calendar is empty.\nYou can create events with the Plus button at the bottom.</string>
+    <string name="no_events_added">Sieht aus als wäre dein Kalender leer.\nDu kannst neue Termine mit dem Plus Button unten rechts erstellen.</string>
 
     <!-- Event -->
     <string name="event">Termin</string>
@@ -17,7 +17,7 @@
     <string name="save">Speichern</string>
     <string name="delete">Löschen</string>
     <string name="title_empty">Titel darf nicht leer sein</string>
-    <string name="end_before_start">Der Termin darf nicht früher enden, als er beginnt</string>
+    <string name="end_before_start">Der Termin darf nicht früher enden als er beginnt</string>
     <string name="start_in_past">Du kannst keine Termine in der Vergangenheit erstellen</string>
     <string name="event_added">Termin erfolgreich hinzugefügt</string>
     <string name="past_event_added">Termin erfolgreich in der Vergangenheit hinzugefügt</string>
@@ -62,9 +62,9 @@
     <!-- License -->
     <string name="notice">Diese App nutzt die folgenden Drittanbieterbibliotheken, die mein Leben einfacher machen. Danke.</string>
     <string name="third_party_licences">Drittanbieterlizenzen</string>
-    <string name="butterknife_title"><u>Butter Knife (view injector)</u></string>
-    <string name="ambilwarna_title"><u>AmbilWarna (color picker)</u></string>
-    <string name="joda_title"><u>Joda-Time (Java date replacement)</u></string>
+    <string name="butterknife_title"><u>Butter Knife (View Injector)</u></string>
+    <string name="ambilwarna_title"><u>AmbilWarna (Color Picker)</u></string>
+    <string name="joda_title"><u>Joda-Time (Java Datumsaustausch)</u></string>
 
     <plurals name="events_deleted">
         <item quantity="one">1 Termin gelöscht</item>
