@@ -18,9 +18,6 @@ import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 
 class EventActivity : SimpleActivity(), DBHelper.EventsListener {
-    val HOUR_MINS = 60
-    val DAY_MINS = 1440
-
     private var mWasReminderInit: Boolean = false
     private var mWasEndDateSet: Boolean = false
     private var mWasEndTimeSet: Boolean = false
@@ -93,13 +90,13 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
         title = resources.getString(R.string.new_event)
         mEventStartDateTime = Formatter.getDateTimeFromCode(dayCode).withZoneRetainFields(DateTimeZone.getDefault()).withHourOfDay(13)
         mEventEndDateTime = mEventStartDateTime
-        event_reminder_other.setText(mConfig.lastOtherReminderMins.toString())
+        custom_reminder_value.setText(mConfig.lastOtherReminderMins.toString())
     }
 
     private fun setupReminder() {
         when (mEvent.reminderMinutes) {
-            -1 -> event_reminder.setSelection(0)
-            0 -> event_reminder.setSelection(1)
+            Constants.REMINDER_OFF -> event_reminder.setSelection(0)
+            Constants.REMINDER_AT_START -> event_reminder.setSelection(1)
             else -> {
                 event_reminder.setSelection(2)
                 toggleCustomReminderVisibility(true)
@@ -136,8 +133,8 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
 
         if (event_reminder.selectedItemPosition == event_reminder.count - 1) {
             toggleCustomReminderVisibility(true)
-            event_reminder_other.requestFocus()
-            showKeyboard(event_reminder_other)
+            custom_reminder_value.requestFocus()
+            showKeyboard(custom_reminder_value)
         } else {
             hideKeyboard()
             toggleCustomReminderVisibility(false)
@@ -147,22 +144,22 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
     private fun setupReminderPeriod() {
         val mins = mEvent.reminderMinutes
         var value = mins
-        if (mins % DAY_MINS == 0) {
-            value = mins / DAY_MINS
-            settings_custom_reminder_other_period.setSelection(2)
-        } else if (mins % HOUR_MINS == 0) {
-            value = mins / HOUR_MINS
-            settings_custom_reminder_other_period.setSelection(1)
+        if (mins % Constants.DAY_MINS == 0) {
+            value = mins / Constants.DAY_MINS
+            custom_reminder_other_period.setSelection(2)
+        } else if (mins % Constants.HOUR_MINS == 0) {
+            value = mins / Constants.HOUR_MINS
+            custom_reminder_other_period.setSelection(1)
         } else {
-            settings_custom_reminder_other_period.setSelection(0)
+            custom_reminder_other_period.setSelection(0)
         }
-        event_reminder_other.setText(value.toString())
+        custom_reminder_value.setText(value.toString())
     }
 
     fun toggleCustomReminderVisibility(show: Boolean) {
-        settings_custom_reminder_other_period.beVisibleIf(show)
-        settings_custom_reminder_other_val.beVisibleIf(show)
-        event_reminder_other.beVisibleIf(show)
+        custom_reminder_other_period.beVisibleIf(show)
+        custom_reminder_other_val.beVisibleIf(show)
+        custom_reminder_value.beVisibleIf(show)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -242,13 +239,13 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
             0 -> -1
             1 -> 0
             else -> {
-                val value = event_reminder_other.value
+                val value = custom_reminder_value.value
                 if (value.isEmpty())
                     0
 
-                val multiplier = when (settings_custom_reminder_other_period.selectedItemPosition) {
-                    1 -> HOUR_MINS
-                    2 -> DAY_MINS
+                val multiplier = when (custom_reminder_other_period.selectedItemPosition) {
+                    1 -> Constants.HOUR_MINS
+                    2 -> Constants.DAY_MINS
                     else -> 1
                 }
                 Integer.valueOf(value) * multiplier

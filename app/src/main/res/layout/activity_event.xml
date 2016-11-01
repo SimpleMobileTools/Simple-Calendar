@@ -128,7 +128,7 @@
             android:padding="@dimen/activity_margin"/>
 
         <EditText
-            android:id="@+id/event_reminder_other"
+            android:id="@+id/custom_reminder_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_reminder"
@@ -140,24 +140,24 @@
             android:visibility="gone"/>
 
         <android.support.v7.widget.AppCompatSpinner
-            android:id="@+id/settings_custom_reminder_other_period"
+            android:id="@+id/custom_reminder_other_period"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/event_reminder_other"
-            android:layout_alignTop="@+id/event_reminder_other"
-            android:layout_toRightOf="@+id/event_reminder_other"
+            android:layout_alignBottom="@+id/custom_reminder_value"
+            android:layout_alignTop="@+id/custom_reminder_value"
+            android:layout_toRightOf="@+id/custom_reminder_value"
             android:entries="@array/custom_reminders"
             android:gravity="center_vertical"
             android:paddingLeft="@dimen/activity_margin"
             android:visibility="gone"/>
 
         <TextView
-            android:id="@+id/settings_custom_reminder_other_val"
+            android:id="@+id/custom_reminder_other_val"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/event_reminder_other"
-            android:layout_alignTop="@+id/event_reminder_other"
-            android:layout_toRightOf="@+id/settings_custom_reminder_other_period"
+            android:layout_alignBottom="@+id/custom_reminder_value"
+            android:layout_alignTop="@+id/custom_reminder_value"
+            android:layout_toRightOf="@+id/custom_reminder_other_period"
             android:gravity="center_vertical"
             android:text="@string/before"
             android:visibility="gone"/>
@@ -166,7 +166,7 @@
             android:id="@+id/event_repetition_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/event_reminder_other"
+            android:layout_below="@+id/custom_reminder_value"
             android:layout_marginTop="@dimen/activity_margin"
             android:text="@string/repetition"
             android:textSize="@dimen/day_text_size"/>

@@ -93,7 +93,7 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener, ChangeV
 
     private fun updateView(view: Int) {
         mIsMonthSelected = view == Constants.MONTHLY_VIEW
-        mConfig.view = view
+        mConfig.storedView = view
         updateViewPager()
     }
 

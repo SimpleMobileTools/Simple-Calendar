@@ -64,4 +64,22 @@ public class Config {
     public void setStoredView(int view) {
         mPrefs.edit().putInt(Constants.VIEW, view).apply();
     }
+
+    public int getDefaultReminderType() {
+        return mPrefs.getInt(Constants.REMINDER_TYPE, Constants.REMINDER_AT_START);
+    }
+
+    public void setDefaultReminderType(int type) {
+        mPrefs.edit().putInt(Constants.REMINDER_TYPE, type).apply();
+    }
+
+    public int getDefaultReminderMinutes() {
+        return mPrefs.getInt(Constants.REMINDER_MINUTES, 0);
+    }
+
+    public void setDefaultReminderMinutes(int mins) {
+        if (mins == 0)
+            setDefaultReminderType(Constants.REMINDER_AT_START);
+        mPrefs.edit().putInt(Constants.REMINDER_MINUTES, mins).apply();
+    }
 }
