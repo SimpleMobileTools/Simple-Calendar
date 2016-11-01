@@ -38,7 +38,7 @@ class ChangeViewDialog(val activity: Activity) : AlertDialog.Builder(activity), 
     }
 
     fun getSavedItem(): Int {
-        return when (Config.newInstance(activity).view) {
+        return when (Config.newInstance(activity).storedView) {
             Constants.YEARLY_VIEW -> R.id.dialog_radio_yearly
             Constants.EVENTS_LIST_VIEW -> R.id.dialog_radio_events_list
             else -> R.id.dialog_radio_monthly

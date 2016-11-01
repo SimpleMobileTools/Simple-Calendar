@@ -57,11 +57,11 @@ public class Config {
         mPrefs.edit().putInt(Constants.LAST_OTHER_REMINDER_MINS, lastMins).apply();
     }
 
-    public int getView() {
+    public int getStoredView() {
         return mPrefs.getInt(Constants.VIEW, Constants.MONTHLY_VIEW);
     }
 
-    public void setView(int view) {
+    public void setStoredView(int view) {
         mPrefs.edit().putInt(Constants.VIEW, view).apply();
     }
 }

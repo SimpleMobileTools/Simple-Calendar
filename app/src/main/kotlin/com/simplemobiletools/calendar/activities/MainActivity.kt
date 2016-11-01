@@ -76,7 +76,7 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener, ChangeV
     }
 
     override fun onBackPressed() {
-        if (mIsMonthSelected && mConfig.view == Constants.YEARLY_VIEW) {
+        if (mIsMonthSelected && mConfig.storedView == Constants.YEARLY_VIEW) {
             updateView(Constants.YEARLY_VIEW)
         } else {
             super.onBackPressed()
@@ -98,9 +98,9 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener, ChangeV
     }
 
     private fun updateViewPager() {
-        if (mConfig.view == Constants.YEARLY_VIEW) {
+        if (mConfig.storedView == Constants.YEARLY_VIEW) {
             fillYearlyViewPager()
-        } else if (mConfig.view == Constants.EVENTS_LIST_VIEW) {
+        } else if (mConfig.storedView == Constants.EVENTS_LIST_VIEW) {
             fillEventsList()
         } else {
             val targetDay = DateTime().toString(Formatter.DAYCODE_PATTERN)
