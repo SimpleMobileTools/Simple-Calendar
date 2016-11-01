@@ -3,9 +3,9 @@
 
 A simple calendar with events and a customizable widget.
 
-A calendar without any other calendar integration. You can easily create recurring events and setup reminders, it can also display week numbers if needed.
+An offline calendar without any other calendar integration. You can easily create recurring events and setup reminders, it can also display week numbers.
 
-Contains a resizable 4x4 widget where you can customize the color of the text, as well as the alpha and the color of the background. To open the app from the widget press the month label.
+Contains a resizable 4x4 widget where you can customize the color of the text, as well as the alpha and the color of the background.
 
 Contains no ads or unnecessary permissions. It is fully opensource, provides a Dark theme too.
 
