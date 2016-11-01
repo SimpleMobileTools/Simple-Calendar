@@ -4,6 +4,7 @@ import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.widget.Toast
 import com.simplemobiletools.calendar.MyWidgetProvider
 import com.simplemobiletools.calendar.R
 
@@ -18,3 +19,7 @@ fun Context.updateWidget() {
     intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
     sendBroadcast(intent)
 }
+
+fun Context.toast(id: Int) = Toast.makeText(this, resources.getString(id), Toast.LENGTH_SHORT).show()
+
+fun Context.toast(message: String) = Toast.makeText(this, message, Toast.LENGTH_SHORT).show()

@@ -65,6 +65,7 @@
     <string name="sunday_first">Sunday as first day</string>
     <string name="week_numbers">Display week numbers</string>
     <string name="default_event_reminder">Default event reminder</string>
+    <string name="reminder_saved">Reminder saved</string>
 
     <!-- License -->
     <string name="notice">このアプリは、私の人生を容易にするために、次のサードパーティのライブラリーを使用しています。 ありがとうございます。</string>

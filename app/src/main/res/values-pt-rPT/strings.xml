@@ -65,6 +65,7 @@
     <string name="sunday_first">Domingo como primeiro dia</string>
     <string name="week_numbers">Display week numbers</string>
     <string name="default_event_reminder">Default event reminder</string>
+    <string name="reminder_saved">Reminder saved</string>
 
     <!-- License -->
     <string name="notice">Esta aplicação usa as seguintes bibliotecas de terceiros para facilitar a minha vida. Obrigado.</string>

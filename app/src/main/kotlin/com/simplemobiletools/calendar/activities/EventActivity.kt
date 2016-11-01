@@ -240,9 +240,6 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
             1 -> 0
             else -> {
                 val value = custom_reminder_value.value
-                if (value.isEmpty())
-                    0
-
                 val multiplier = when (custom_reminder_other_period.selectedItemPosition) {
                     1 -> Constants.HOUR_MINS
                     2 -> Constants.DAY_MINS

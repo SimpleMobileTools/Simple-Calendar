@@ -6,9 +6,7 @@ import android.view.View
 import android.widget.AdapterView
 import com.simplemobiletools.calendar.Constants
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.extensions.beVisibleIf
-import com.simplemobiletools.calendar.extensions.hideKeyboard
-import com.simplemobiletools.calendar.extensions.showKeyboard
+import com.simplemobiletools.calendar.extensions.*
 import kotlinx.android.synthetic.main.activity_settings.*
 
 class SettingsActivity : SimpleActivity() {
@@ -55,19 +53,23 @@ class SettingsActivity : SimpleActivity() {
             Constants.REMINDER_AT_START -> 1
             else -> 2
         })
+        custom_reminder_save.setTextColor(custom_reminder_other_val.currentTextColor)
         setupReminderPeriod(reminderMinutes)
         settings_custom_reminder_holder.beVisibleIf(reminderType == 2)
+        custom_reminder_save.setOnClickListener { saveReminder() }
 
         settings_default_reminder.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(p0: AdapterView<*>?) {
             }
 
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, itemIndex: Int, p3: Long) {
-                settings_custom_reminder_holder.beVisibleIf(itemIndex == 2)
-                if (itemIndex == 2)
+                if (itemIndex == 2) {
+                    settings_custom_reminder_holder.visibility = View.VISIBLE
                     showKeyboard(custom_reminder_value)
-                else
+                } else {
                     hideKeyboard()
+                    settings_custom_reminder_holder.visibility = View.GONE
+                }
 
                 mConfig.defaultReminderType = when (itemIndex) {
                     0 -> Constants.REMINDER_OFF
@@ -76,6 +78,17 @@ class SettingsActivity : SimpleActivity() {
                 }
             }
         }
+    }
+
+    private fun saveReminder() {
+        val value = custom_reminder_value.value
+        val multiplier = when (custom_reminder_other_period.selectedItemPosition) {
+            1 -> Constants.HOUR_MINS
+            2 -> Constants.DAY_MINS
+            else -> 1
+        }
+        mConfig.defaultReminderMinutes = Integer.valueOf(value) * multiplier
+        toast(R.string.reminder_saved)
     }
 
     private fun setupReminderPeriod(mins: Int) {

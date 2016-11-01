@@ -65,6 +65,7 @@
     <string name="sunday_first">Sonntag als erster Wochentag</string>
     <string name="week_numbers">Zeige Kalenderwoche an</string>
     <string name="default_event_reminder">Default event reminder</string>
+    <string name="reminder_saved">Reminder saved</string>
 
     <!-- License -->
     <string name="notice">Diese App nutzt die folgenden Drittanbieterbibliotheken, die mein Leben einfacher machen. Danke.</string>

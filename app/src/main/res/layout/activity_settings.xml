@@ -119,6 +119,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/settings_padding"
+            android:layout_marginRight="@dimen/activity_margin"
             android:layout_marginTop="@dimen/settings_padding"
             android:visibility="gone">
 
@@ -129,7 +130,7 @@
                 android:layout_marginLeft="@dimen/activity_margin"
                 android:digits="0123456789"
                 android:inputType="number"
-                android:minEms="5"
+                android:minEms="3"
                 android:textSize="@dimen/day_text_size"/>
 
             <android.support.v7.widget.AppCompatSpinner
@@ -141,7 +142,7 @@
                 android:layout_toRightOf="@+id/custom_reminder_value"
                 android:entries="@array/custom_reminders"
                 android:gravity="center_vertical"
-                android:paddingLeft="@dimen/activity_margin"/>
+                android:paddingLeft="@dimen/settings_padding"/>
 
             <TextView
                 android:id="@+id/custom_reminder_other_val"
@@ -152,6 +153,17 @@
                 android:layout_toRightOf="@+id/custom_reminder_other_period"
                 android:gravity="center_vertical"
                 android:text="@string/before"/>
+
+            <Button
+                android:id="@+id/custom_reminder_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/custom_reminder_value"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/custom_reminder_value"
+                android:background="?android:attr/selectableItemBackground"
+                android:textSize="@dimen/day_text_size"
+                android:text="@string/save"/>
 
         </RelativeLayout>
     </LinearLayout>
