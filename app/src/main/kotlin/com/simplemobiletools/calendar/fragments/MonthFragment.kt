@@ -150,7 +150,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         for (i in 0..6) {
             val dayTV = mHolder.findViewById(mRes.getIdentifier("label_" + i, "id", mPackageName)) as TextView
             dayTV.textSize = mDayTextSize
-            dayTV.setTextColor(mWeakTextColor)
+            dayTV.setTextColor(mTextColor)
 
             var index = i
             if (!mSundayFirst)

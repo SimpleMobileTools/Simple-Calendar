@@ -198,7 +198,7 @@ public class MyWidgetProvider extends AppWidgetProvider implements MonthlyCalend
         int letters[] = Utils.getLetterIDs();
         for (int i = 0; i < 7; i++) {
             final int id = mRes.getIdentifier("label_" + i, "id", packageName);
-            mRemoteViews.setInt(id, "setTextColor", mWeakTextColor);
+            mRemoteViews.setInt(id, "setTextColor", mTextColor);
 
             int index = i;
             if (!mSundayFirst)
