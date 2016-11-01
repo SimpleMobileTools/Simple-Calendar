@@ -15,6 +15,7 @@ import android.widget.EditText
 import com.simplemobiletools.calendar.*
 import com.simplemobiletools.calendar.extensions.beVisibleIf
 import com.simplemobiletools.calendar.extensions.updateWidget
+import com.simplemobiletools.calendar.extensions.value
 import com.simplemobiletools.calendar.fragments.DayFragment
 import com.simplemobiletools.calendar.models.Event
 import kotlinx.android.synthetic.main.activity_event.*
@@ -22,6 +23,9 @@ import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 
 class EventActivity : SimpleActivity(), DBHelper.EventsListener {
+    val HOUR_MINS = 60
+    val DAY_MINS = 1440
+
     private var mWasReminderInit: Boolean = false
     private var mWasEndDateSet: Boolean = false
     private var mWasEndTimeSet: Boolean = false
@@ -114,7 +118,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
             else -> {
                 event_reminder.setSelection(2)
                 toggleCustomReminderVisibility(true)
-                event_reminder_other.setText(mEvent.reminderMinutes.toString())
+                setupReminderPeriod()
             }
         }
     }
@@ -155,6 +159,21 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
         }
     }
 
+    private fun setupReminderPeriod() {
+        val mins = mEvent.reminderMinutes
+        var value = mins
+        if (mins % DAY_MINS == 0) {
+            value = mins / DAY_MINS
+            event_reminder_other_period.setSelection(2)
+        } else if (mins % HOUR_MINS == 0) {
+            value = mins / HOUR_MINS
+            event_reminder_other_period.setSelection(1)
+        } else {
+            event_reminder_other_period.setSelection(0)
+        }
+        event_reminder_other.setText(value.toString())
+    }
+
     fun toggleCustomReminderVisibility(show: Boolean) {
         event_reminder_other_period.beVisibleIf(show)
         event_reminder_other_val.beVisibleIf(show)
@@ -192,29 +211,32 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
     }
 
     private fun saveEvent() {
-        val title = event_title.text.toString().trim { it <= ' ' }
-        if (title.isEmpty()) {
+        val newTitle = event_title.value
+        if (newTitle.isEmpty()) {
             Utils.showToast(applicationContext, R.string.title_empty)
             event_title.requestFocus()
             return
         }
 
-        val startTS = (mEventStartDateTime.millis / 1000).toInt()
-        val endTS = (mEventEndDateTime.millis / 1000).toInt()
+        val newStartTS = (mEventStartDateTime.millis / 1000).toInt()
+        val newEndTS = (mEventEndDateTime.millis / 1000).toInt()
 
-        if (event_end_checkbox.isChecked && startTS > endTS) {
+        if (event_end_checkbox.isChecked && newStartTS > newEndTS) {
             Utils.showToast(applicationContext, R.string.end_before_start)
             return
         }
 
         val dbHelper = DBHelper(applicationContext, this)
-        val description = event_description.text.toString().trim { it <= ' ' }
-        mEvent.startTS = startTS
-        mEvent.endTS = if (event_end_checkbox.isChecked) endTS else startTS
-        mEvent.title = title
-        mEvent.description = description
-        mEvent.reminderMinutes = reminderMinutes
-        mEvent.repeatInterval = repeatInterval
+        val newDescription = event_description.value
+        mEvent.apply {
+            startTS = newStartTS
+            endTS = if (event_end_checkbox.isChecked) newEndTS else newStartTS
+            title = newTitle
+            description = newDescription
+            reminderMinutes = getReminderMinutes()
+            repeatInterval = getRepeatInterval()
+        }
+
         if (mEvent.id == 0) {
             dbHelper.insert(mEvent)
         } else {
@@ -226,36 +248,39 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
 
     private fun saveLastReminderMins() {
         if (event_reminder.selectedItemPosition == 2) {
-            mConfig.lastOtherReminderMins = reminderMinutes
+            mConfig.lastOtherReminderMins = getReminderMinutes()
         }
     }
 
-    private val reminderMinutes: Int
-        get() {
-            return when (event_reminder.selectedItemPosition) {
-                0 -> -1
-                1 -> 0
-                else -> {
-                    val value = event_reminder_other.text.toString().trim { it <= ' ' }
-                    if (value.isEmpty())
-                        0
+    private fun getReminderMinutes(): Int {
+        return when (event_reminder.selectedItemPosition) {
+            0 -> -1
+            1 -> 0
+            else -> {
+                val value = event_reminder_other.value
+                if (value.isEmpty())
+                    0
 
-                    Integer.valueOf(value)!!
+                val multiplier = when (event_reminder_other_period.selectedItemPosition) {
+                    1 -> HOUR_MINS
+                    2 -> DAY_MINS
+                    else -> 1
                 }
+                Integer.valueOf(value) * multiplier
             }
         }
+    }
 
-    private val repeatInterval: Int
-        get() {
-            return when (event_repetition.selectedItemPosition) {
-                1 -> Constants.DAY
-                2 -> Constants.WEEK
-                3 -> Constants.BIWEEK
-                4 -> Constants.MONTH
-                5 -> Constants.YEAR
-                else -> 0
-            }
+    private fun getRepeatInterval(): Int {
+        return when (event_repetition.selectedItemPosition) {
+            1 -> Constants.DAY
+            2 -> Constants.WEEK
+            3 -> Constants.BIWEEK
+            4 -> Constants.MONTH
+            5 -> Constants.YEAR
+            else -> 0
         }
+    }
 
     private fun updateStartDate() {
         event_start_date.text = Formatter.getEventDate(applicationContext, mEventStartDateTime)
