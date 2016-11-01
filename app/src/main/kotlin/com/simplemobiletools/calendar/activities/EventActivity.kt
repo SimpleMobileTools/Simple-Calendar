@@ -9,7 +9,6 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.EditText
@@ -99,7 +98,8 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
     }
 
     private fun hideKeyboard() {
-        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
+        val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow((currentFocus ?: View(this)).windowToken, 0)
     }
 
     private fun showKeyboard(et: EditText) {
@@ -113,7 +113,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
             0 -> event_reminder.setSelection(1)
             else -> {
                 event_reminder.setSelection(2)
-                event_reminder_other.visibility = View.VISIBLE
+                toggleCustomReminderVisibility(true)
                 event_reminder_other.setText(mEvent.reminderMinutes.toString())
             }
         }
@@ -146,13 +146,19 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
         }
 
         if (event_reminder.selectedItemPosition == event_reminder.count - 1) {
-            event_reminder_other.visibility = View.VISIBLE
+            toggleCustomReminderVisibility(true)
             event_reminder_other.requestFocus()
             showKeyboard(event_reminder_other)
         } else {
-            event_reminder_other.visibility = View.GONE
             hideKeyboard()
+            toggleCustomReminderVisibility(false)
         }
+    }
+
+    fun toggleCustomReminderVisibility(show: Boolean) {
+        event_reminder_other_period.beVisibleIf(show)
+        event_reminder_other_val.beVisibleIf(show)
+        event_reminder_other.beVisibleIf(show)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
