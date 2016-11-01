@@ -25,7 +25,7 @@
     <string name="reminder">Påminnelse</string>
     <string name="off">Av</string>
     <string name="at_start">Vid start</string>
-    <string name="minutes_before">X minuter före</string>
+    <string name="custom">Custom</string>
     <string name="repetition">Repetition</string>
     <string name="none">None</string>
     <string name="daily">Daily</string>
@@ -33,6 +33,12 @@
     <string name="biweekly">Biweekly</string>
     <string name="monthly">Monthly</string>
     <string name="yearly">Yearly</string>
+
+    <!-- Custom reminder -->
+    <string name="before">before</string>
+    <string name="minutes">minutes</string>
+    <string name="hours">hours</string>
+    <string name="days">days</string>
 
     <!-- Day details -->
     <string name="details">Detaljer</string>

@@ -25,7 +25,7 @@
     <string name="reminder">Lembrete</string>
     <string name="off">Desligado</string>
     <string name="at_start">No início</string>
-    <string name="minutes_before">X minutos antes</string>
+    <string name="custom">Custom</string>
     <string name="repetition">Repetição</string>
     <string name="none">Nenhuma</string>
     <string name="daily">Diária</string>
@@ -33,6 +33,12 @@
     <string name="biweekly">Biweekly</string>
     <string name="monthly">Mensal</string>
     <string name="yearly">Anual</string>
+
+    <!-- Custom reminder -->
+    <string name="before">before</string>
+    <string name="minutes">minutes</string>
+    <string name="hours">hours</string>
+    <string name="days">days</string>
 
     <!-- Day details -->
     <string name="details">Detalhes</string>
