@@ -3,19 +3,14 @@ package com.simplemobiletools.calendar.activities
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
-import android.widget.EditText
 import com.simplemobiletools.calendar.*
-import com.simplemobiletools.calendar.extensions.beVisibleIf
-import com.simplemobiletools.calendar.extensions.updateWidget
-import com.simplemobiletools.calendar.extensions.value
+import com.simplemobiletools.calendar.extensions.*
 import com.simplemobiletools.calendar.fragments.DayFragment
 import com.simplemobiletools.calendar.models.Event
 import kotlinx.android.synthetic.main.activity_event.*
@@ -101,16 +96,6 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
         event_reminder_other.setText(mConfig.lastOtherReminderMins.toString())
     }
 
-    private fun hideKeyboard() {
-        val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        inputMethodManager.hideSoftInputFromWindow((currentFocus ?: View(this)).windowToken, 0)
-    }
-
-    private fun showKeyboard(et: EditText) {
-        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.showSoftInput(et, InputMethodManager.SHOW_IMPLICIT)
-    }
-
     private fun setupReminder() {
         when (mEvent.reminderMinutes) {
             -1 -> event_reminder.setSelection(0)
@@ -164,19 +149,19 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
         var value = mins
         if (mins % DAY_MINS == 0) {
             value = mins / DAY_MINS
-            event_reminder_other_period.setSelection(2)
+            settings_custom_reminder_other_period.setSelection(2)
         } else if (mins % HOUR_MINS == 0) {
             value = mins / HOUR_MINS
-            event_reminder_other_period.setSelection(1)
+            settings_custom_reminder_other_period.setSelection(1)
         } else {
-            event_reminder_other_period.setSelection(0)
+            settings_custom_reminder_other_period.setSelection(0)
         }
         event_reminder_other.setText(value.toString())
     }
 
     fun toggleCustomReminderVisibility(show: Boolean) {
-        event_reminder_other_period.beVisibleIf(show)
-        event_reminder_other_val.beVisibleIf(show)
+        settings_custom_reminder_other_period.beVisibleIf(show)
+        settings_custom_reminder_other_val.beVisibleIf(show)
         event_reminder_other.beVisibleIf(show)
     }
 
@@ -261,7 +246,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
                 if (value.isEmpty())
                     0
 
-                val multiplier = when (event_reminder_other_period.selectedItemPosition) {
+                val multiplier = when (settings_custom_reminder_other_period.selectedItemPosition) {
                     1 -> HOUR_MINS
                     2 -> DAY_MINS
                     else -> 1

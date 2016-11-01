@@ -64,6 +64,7 @@
     <string name="dark_theme">Tema scuro</string>
     <string name="sunday_first">Sunday as first day</string>
     <string name="week_numbers">Display week numbers</string>
+    <string name="default_event_reminder">Default event reminder</string>
 
     <!-- License -->
     <string name="notice">Questa app usa le seguenti librerie di terze parti per semplificarmi la vita. Grazie.</string>

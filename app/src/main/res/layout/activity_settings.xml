@@ -88,5 +88,74 @@
                 android:clickable="false"/>
 
         </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/settings_default_reminder_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/settings_padding"
+            android:background="?attr/selectableItemBackground"
+            android:padding="@dimen/activity_margin">
+
+            <TextView
+                android:id="@+id/settings_default_reminder_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingLeft="@dimen/settings_padding"
+                android:text="@string/default_event_reminder"/>
+
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/settings_default_reminder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:entries="@array/reminders"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/settings_custom_reminder_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/settings_padding"
+            android:paddingLeft="@dimen/activity_margin"
+            android:visibility="gone">
+
+            <EditText
+                android:id="@+id/settings_custom_reminder_other"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_margin"
+                android:digits="0123456789"
+                android:inputType="number"
+                android:minEms="5"
+                android:textSize="@dimen/day_text_size"
+                android:visibility="visible"/>
+
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/settings_custom_reminder_other_period"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/settings_custom_reminder_other"
+                android:layout_alignTop="@+id/settings_custom_reminder_other"
+                android:layout_toRightOf="@+id/settings_custom_reminder_other"
+                android:entries="@array/custom_reminders"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/activity_margin"
+                android:visibility="visible"/>
+
+            <TextView
+                android:id="@+id/settings_custom_reminder_other_val"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/settings_custom_reminder_other"
+                android:layout_alignTop="@+id/settings_custom_reminder_other"
+                android:layout_toRightOf="@+id/settings_custom_reminder_other_period"
+                android:gravity="center_vertical"
+                android:text="@string/before"
+                android:visibility="visible"/>
+
+        </RelativeLayout>
     </LinearLayout>
 </ScrollView>

@@ -140,7 +140,7 @@
             android:visibility="gone"/>
 
         <android.support.v7.widget.AppCompatSpinner
-            android:id="@+id/event_reminder_other_period"
+            android:id="@+id/settings_custom_reminder_other_period"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/event_reminder_other"
@@ -152,12 +152,12 @@
             android:visibility="gone"/>
 
         <TextView
-            android:id="@+id/event_reminder_other_val"
+            android:id="@+id/settings_custom_reminder_other_val"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/event_reminder_other"
             android:layout_alignTop="@+id/event_reminder_other"
-            android:layout_toRightOf="@+id/event_reminder_other_period"
+            android:layout_toRightOf="@+id/settings_custom_reminder_other_period"
             android:gravity="center_vertical"
             android:text="@string/before"
             android:visibility="gone"/>
