@@ -89,6 +89,7 @@ class SettingsActivity : SimpleActivity() {
         }
         mConfig.defaultReminderMinutes = Integer.valueOf(value) * multiplier
         toast(R.string.reminder_saved)
+        hideKeyboard()
     }
 
     private fun setupReminderPeriod(mins: Int) {

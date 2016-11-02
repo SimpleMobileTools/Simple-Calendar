@@ -186,9 +186,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
     }
 
     fun toggleCustomReminderVisibility(show: Boolean) {
-        custom_reminder_other_period.beVisibleIf(show)
-        custom_reminder_other_val.beVisibleIf(show)
-        custom_reminder_value.beVisibleIf(show)
+        custom_reminder_holder.beVisibleIf(show)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
