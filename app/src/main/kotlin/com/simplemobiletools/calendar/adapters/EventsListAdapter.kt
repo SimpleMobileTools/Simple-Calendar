@@ -20,10 +20,17 @@ class EventsListAdapter(context: Context, val mEvents: List<ListItem>) : BaseAda
 
     private val mInflater: LayoutInflater
     private var mTopDivider: Drawable? = null
+    private var mNow = (System.currentTimeMillis() / 1000).toInt()
+    private var mOrangeColor = 0
+    private var mGreyColor = 0
+    private var mTodayDate = ""
 
     init {
         mInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         mTopDivider = context.resources.getDrawable(R.drawable.divider)
+        mOrangeColor = context.resources.getColor(R.color.colorPrimary)
+        val mTodayCode = Formatter.getDayCodeFromTS(mNow)
+        mTodayDate = Formatter.getEventDate(context, mTodayCode)
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
@@ -57,11 +64,22 @@ class EventsListAdapter(context: Context, val mEvents: List<ListItem>) : BaseAda
                     end?.text = Formatter.getTime(item.endTS)
                     end?.visibility = View.VISIBLE
                 }
+
+                val currTextColor = if (item.startTS <= mNow) mOrangeColor else mGreyColor
+                start?.setTextColor(currTextColor)
+                end?.setTextColor(currTextColor)
+                title.setTextColor(currTextColor)
+                description?.setTextColor(currTextColor)
             }
         } else {
             val item = mEvents[position] as ListSection
             viewHolder.title.text = item.title
             viewHolder.title.setCompoundDrawablesWithIntrinsicBounds(null, if (position == 0) null else mTopDivider, null, null)
+
+            if (mGreyColor == 0)
+                mGreyColor = viewHolder.title.currentTextColor
+
+            viewHolder.title.setTextColor(if (item.title == mTodayDate) mOrangeColor else mGreyColor)
         }
 
         return view

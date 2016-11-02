@@ -3,7 +3,6 @@ package com.simplemobiletools.calendar.activities
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
-
 import com.simplemobiletools.calendar.Config
 import com.simplemobiletools.calendar.R
 
