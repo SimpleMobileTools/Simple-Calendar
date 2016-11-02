@@ -257,7 +257,7 @@ public class WidgetConfigureActivity extends AppCompatActivity implements Monthl
         for (int i = 0; i < 7; i++) {
             final TextView dayTV = (TextView) findViewById(mRes.getIdentifier("label_" + i, "id", mPackageName));
             dayTV.setTextSize(mDayTextSize);
-            dayTV.setTextColor(mWeakTextColor);
+            dayTV.setTextColor(mTextColor);
         }
     }
 }
