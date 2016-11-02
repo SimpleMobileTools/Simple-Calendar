@@ -27,7 +27,7 @@ class YearFragment : Fragment(), YearlyCalendar {
         mYear = arguments.getInt(Constants.YEAR_LABEL)
         setupMonths()
 
-        mCalendar = YearlyCalendarImpl(this, context)
+        mCalendar = YearlyCalendarImpl(this, context, mYear)
 
         return mView
     }

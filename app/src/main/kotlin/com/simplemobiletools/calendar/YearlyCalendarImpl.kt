@@ -6,7 +6,7 @@ import com.simplemobiletools.calendar.models.Event
 import org.joda.time.DateTime
 import java.util.*
 
-class YearlyCalendarImpl(val callback: YearlyCalendar, val context: Context) : DBHelper.GetEventsListener {
+class YearlyCalendarImpl(val callback: YearlyCalendar, val context: Context, val year: Int) : DBHelper.GetEventsListener {
 
     fun getEvents(year: Int) {
         val startDateTime = DateTime().withTime(0, 0, 0, 0).withDate(year, 1, 1)
@@ -42,6 +42,7 @@ class YearlyCalendarImpl(val callback: YearlyCalendar, val context: Context) : D
         if (arr[month] == null)
             arr.put(month, ArrayList<Int>())
 
-        arr.get(month).add(day)
+        if (dateTime.year == year)
+            arr.get(month).add(day)
     }
 }
