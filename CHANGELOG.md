@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 1.30 *(2016-11-02)*
+----------------------------
+
+ * Added Hindi translation
+ * Some default reminder corrections
+
 Version 1.29 *(2016-11-02)*
 ----------------------------
 
