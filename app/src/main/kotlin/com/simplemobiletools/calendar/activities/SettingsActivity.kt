@@ -87,7 +87,9 @@ class SettingsActivity : SimpleActivity() {
             2 -> Constants.DAY_MINS
             else -> 1
         }
+
         mConfig.defaultReminderMinutes = Integer.valueOf(value) * multiplier
+        mConfig.defaultReminderType = Constants.REMINDER_CUSTOM
         toast(R.string.reminder_saved)
         hideKeyboard()
     }

@@ -62,6 +62,9 @@ public class Config {
     }
 
     public void setDefaultReminderType(int type) {
+        if (type == Constants.REMINDER_CUSTOM && getDefaultReminderMinutes() == 0)
+            type = Constants.REMINDER_AT_START;
+
         mPrefs.edit().putInt(Constants.REMINDER_TYPE, type).apply();
     }
 
