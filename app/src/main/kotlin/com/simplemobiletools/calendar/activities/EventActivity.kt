@@ -46,7 +46,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
                 return
 
             setupNewEvent(dayCode)
-            setupDefaultReminder()
+            setupDefaultReminderType()
         }
 
         updateStartDate()
@@ -91,21 +91,23 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
         title = resources.getString(R.string.new_event)
         mEventStartDateTime = Formatter.getDateTimeFromCode(dayCode).withZoneRetainFields(DateTimeZone.getDefault()).withHourOfDay(13)
         mEventEndDateTime = mEventStartDateTime
-        setupDefaultReminder()
+        setupDefaultReminderType()
     }
 
-    private fun setupDefaultReminder() {
+    private fun setupDefaultReminderType() {
         val type = mConfig.defaultReminderType
+        toggleCustomReminderVisibility(type == Constants.REMINDER_CUSTOM)
         if (type == Constants.REMINDER_OFF) {
             event_reminder.setSelection(0)
         } else if (type == Constants.REMINDER_AT_START) {
             event_reminder.setSelection(1)
         } else {
             event_reminder.setSelection(2)
+            setupDefaultReminderValue()
         }
+    }
 
-        toggleCustomReminderVisibility(type == Constants.REMINDER_CUSTOM)
-
+    private fun setupDefaultReminderValue() {
         val mins = mConfig.defaultReminderMinutes
         var value = mins
         if (mins == 0) {
