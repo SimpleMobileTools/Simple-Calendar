@@ -17,15 +17,31 @@ class YearlyCalendarImpl(val callback: YearlyCalendar, val context: Context) : D
 
     override fun gotEvents(events: MutableList<Event>) {
         val arr = SparseArray<ArrayList<Int>>(12)
-        for (e in events) {
-            val dateTime = DateTime().withMillis(e.startTS * 1000L)
-            val month = dateTime.monthOfYear
-            val day = dateTime.dayOfMonth
-            if (arr[month] == null)
-                arr.put(month, ArrayList<Int>())
+        for (event in events) {
+            val startDateTime = DateTime().withMillis(event.startTS * 1000L)
+            markDay(arr, startDateTime)
 
-            arr.get(month).add(day)
+            val startCode = Formatter.getDayCodeFromDateTime(startDateTime)
+            val endDateTime = DateTime().withMillis(event.endTS * 1000L)
+            val endCode = Formatter.getDayCodeFromDateTime(endDateTime)
+            if (startCode != endCode) {
+                var currDateTime = startDateTime
+                while (Formatter.getDayCodeFromDateTime(currDateTime) != endCode) {
+                    currDateTime = currDateTime.plusDays(1)
+                    markDay(arr, currDateTime)
+                }
+            }
         }
         callback.updateYearlyCalendar(arr)
+    }
+
+    private fun markDay(arr: SparseArray<ArrayList<Int>>, dateTime: DateTime) {
+        val month = dateTime.monthOfYear
+        val day = dateTime.dayOfMonth
+
+        if (arr[month] == null)
+            arr.put(month, ArrayList<Int>())
+
+        arr.get(month).add(day)
     }
 }
