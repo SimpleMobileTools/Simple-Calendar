@@ -38,6 +38,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
         if (event != null) {
             mEvent = event
             setupEditEvent()
+            setupReminder()
         } else {
             mEvent = Event()
             val dayCode = intent.getStringExtra(Constants.DAY_CODE)
@@ -45,13 +46,13 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
                 return
 
             setupNewEvent(dayCode)
+            setupDefaultReminder()
         }
 
         updateStartDate()
         updateStartTime()
         updateEndDate()
         updateEndTime()
-        setupReminder()
         setupRepetition()
         setupEndCheckbox()
 
@@ -90,6 +91,35 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
         title = resources.getString(R.string.new_event)
         mEventStartDateTime = Formatter.getDateTimeFromCode(dayCode).withZoneRetainFields(DateTimeZone.getDefault()).withHourOfDay(13)
         mEventEndDateTime = mEventStartDateTime
+        setupDefaultReminder()
+    }
+
+    private fun setupDefaultReminder() {
+        val type = mConfig.defaultReminderType
+        if (type == Constants.REMINDER_OFF) {
+            event_reminder.setSelection(0)
+        } else if (type == Constants.REMINDER_AT_START) {
+            event_reminder.setSelection(1)
+        } else {
+            event_reminder.setSelection(2)
+        }
+
+        toggleCustomReminderVisibility(type == Constants.REMINDER_CUSTOM)
+
+        val mins = mConfig.defaultReminderMinutes
+        var value = mins
+        if (mins == 0) {
+            custom_reminder_other_period.setSelection(0)
+        } else if (mins % Constants.DAY_MINS == 0) {
+            value = mins / Constants.DAY_MINS
+            custom_reminder_other_period.setSelection(2)
+        } else if (mins % Constants.HOUR_MINS == 0) {
+            value = mins / Constants.HOUR_MINS
+            custom_reminder_other_period.setSelection(1)
+        } else {
+            custom_reminder_other_period.setSelection(0)
+        }
+        custom_reminder_value.setText(value.toString())
     }
 
     private fun setupReminder() {
