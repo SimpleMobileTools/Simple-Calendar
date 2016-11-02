@@ -2,7 +2,7 @@ package com.simplemobiletools.calendar;
 
 public class Constants {
     public static final float LOW_ALPHA = .2f;
-    public static final float MEDIUM_ALPHA = .4f;
+    public static final float MEDIUM_ALPHA = .6f;
     public static final float HIGH_ALPHA = .8f;
 
     public static final String DAY_CODE = "day_code";
