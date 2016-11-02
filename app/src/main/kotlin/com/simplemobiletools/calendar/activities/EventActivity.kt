@@ -90,7 +90,6 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
         title = resources.getString(R.string.new_event)
         mEventStartDateTime = Formatter.getDateTimeFromCode(dayCode).withZoneRetainFields(DateTimeZone.getDefault()).withHourOfDay(13)
         mEventEndDateTime = mEventStartDateTime
-        custom_reminder_value.setText(mConfig.lastOtherReminderMins.toString())
     }
 
     private fun setupReminder() {
@@ -223,14 +222,6 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
             dbHelper.insert(mEvent)
         } else {
             dbHelper.update(mEvent)
-        }
-
-        saveLastReminderMins()
-    }
-
-    private fun saveLastReminderMins() {
-        if (event_reminder.selectedItemPosition == 2) {
-            mConfig.lastOtherReminderMins = getReminderMinutes()
         }
     }
 
