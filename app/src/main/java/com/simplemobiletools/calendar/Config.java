@@ -69,7 +69,7 @@ public class Config {
     }
 
     public int getDefaultReminderMinutes() {
-        return mPrefs.getInt(Constants.REMINDER_MINUTES, 0);
+        return mPrefs.getInt(Constants.REMINDER_MINUTES, 10);
     }
 
     public void setDefaultReminderMinutes(int mins) {
