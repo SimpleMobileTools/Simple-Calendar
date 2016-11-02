@@ -1,0 +1,102 @@
+<resources>
+    <string name="app_name">सरल कैलेंडर</string>
+    <string name="app_launcher_name">कैलेंडर</string>
+    <string name="undo">पूर्ववत करें</string>
+    <string name="ok">ठीक</string>
+    <string name="cancel">रद्द करें</string>
+    <string name="change_view">दृश्य बदले</string>
+    <string name="monthly_view">मासिक दृश्य</string>
+    <string name="yearly_view">वार्षिक दृश्य</string>
+    <string name="simple_event_list">सरल इवेंट सूची</string>
+    <string name="no_events_added">लगता हैं की आपका कैलेंडर खाली हैं।\nआप इवेंट्स को नीचे प्लस बटन के साथ बना सकते हैं।</string>
+
+    <!-- Event -->
+    <string name="event">इवेंट</string>
+    <string name="edit_event">इवेंट एडिट करें</string>
+    <string name="new_event">नया इवेंट</string>
+    <string name="save">सेव</string>
+    <string name="delete">डिलीट</string>
+    <string name="title_empty">शीर्षक रिक्त नहीं हो सकता</string>
+    <string name="end_before_start">इवेंट शुरू होने से पहले खत्म नहीं हो सकता</string>
+    <string name="start_in_past">आप भूत में इवेंट्स को शेड्यूल नहीं कर सकते हैं</string>
+    <string name="event_added">इवेंट सफलतापूर्वक जोड़ा गया</string>
+    <string name="past_event_added">भुत में इवेंट सफलतापूर्वक जोड़ा गया</string>
+    <string name="event_updated">इवेंट सफलतापूर्वक अपडेट किया गया</string>
+    <string name="reminder">रिमाइंडर</string>
+    <string name="off">ऑफ</string>
+    <string name="at_start">शुरुआत के समय</string>
+    <string name="minutes_before">X मिनटों पहले</string>
+    <string name="repetition">दुहराव</string>
+    <string name="none">कोई नहीं</string>
+    <string name="daily">रोज</string>
+    <string name="weekly">साप्ताहिक</string>
+    <string name="biweekly">हर दो सफ्ताह</string>
+    <string name="monthly">मासिक</string>
+    <string name="yearly">वार्षिक</string>
+
+    <!-- Custom reminder -->
+    <string name="before">before</string>
+    <string name="minutes">minutes</string>
+    <string name="hours">hours</string>
+    <string name="days">days</string>
+
+    <!-- Day details -->
+    <string name="details">विवरण</string>
+    <string name="title">शीर्षक</string>
+    <string name="start">प्रारंभ</string>
+    <string name="end">अंत (वैकल्पिक)</string>
+    <string name="description">विवरण</string>
+
+    <!-- About -->
+    <string name="about">के बारे में</string>
+    <string name="website">अधिक एप्पस व सोर्स कोड:\nhttp://simplemobiletools.com</string>
+    <string name="email_label">अपनी राय या सुझाव को भेजें:</string>
+    <string name="third_party_licences_underlined"><u> तीसरी पार्टी के लाइसेंस </u></string>
+    <string name="invite_friends_underlined"><u>मित्रो को आमन्त्रित करें</u></string>
+    <string name="share_text">अरे, %1$s को %2$s पर देखो</string>
+    <string name="invite_via">के माध्यम से आमंत्रित</string>
+    <string name="rate_us_underlined"><u>हमे प्ले स्टोर पर रेट करें</u></string>
+    <string name="follow_us">हमे फॉलो करें:</string>
+    <string name="copyright">सं %1$s\nकॉपीराइट © सिंपल मोबाइल टूल्स %2$d</string>
+
+    <!-- Settings -->
+    <string name="settings">सेटिंग्स</string>
+    <string name="dark_theme">काली थीम</string>
+    <string name="sunday_first">रविवार पहला दिन हैं</string>
+    <string name="week_numbers">सफ्ताह क्रमांक दिखाए</string>
+    <string name="default_event_reminder">Default event reminder</string>
+    <string name="reminder_saved">Reminder saved</string>
+
+    <!-- License -->
+    <string name="notice">मेरा जीवन आसान करने के लिए यह एप्प तीसरे पक्ष की लाइब्रेरी का इस्तेमाल करती हैं। धन्यवाद।</string>
+    <string name="third_party_licences">तीसरे पक्ष के लाइसेंस</string>
+    <string name="butterknife_title"><u> बटर नायफ (इंजेक्टर देखे)</u></string>
+    <string name="ambilwarna_title"><u>अम्बिलवरना (कलर पिकर)</u></string>
+    <string name="joda_title"><u>जोड़ा-टाइम(जावा डेट रिप्लेसमेंट)</u></string>
+
+    <plurals name="events_deleted">
+        <item quantity="one">1 इवेंट डिलीट किया गया</item>
+        <item quantity="other">%1$d इवेंट्स मिटाया गया</item>
+    </plurals>
+
+    <string name="january">जनवरी</string>
+    <string name="february">फरवरी</string>
+    <string name="march">मार्च</string>
+    <string name="april">अप्रैल</string>
+    <string name="may">मई</string>
+    <string name="june">जून</string>
+    <string name="july">जुलाई</string>
+    <string name="august">अगस्त</string>
+    <string name="september">सितंबर</string>
+    <string name="october">अक्टूबर</string>
+    <string name="november">नवंबर</string>
+    <string name="december">दिसंबर</string>
+
+    <string name="monday_letter">सो</string>
+    <string name="tuesday_letter">मं</string>
+    <string name="wednesday_letter">बू</string>
+    <string name="thursday_letter">गु</string>
+    <string name="friday_letter">शु</string>
+    <string name="saturday_letter">श</string>
+    <string name="sunday_letter">र</string>
+</resources>
