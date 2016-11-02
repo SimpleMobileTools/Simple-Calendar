@@ -25,7 +25,7 @@
     <string name="reminder">रिमाइंडर</string>
     <string name="off">ऑफ</string>
     <string name="at_start">शुरुआत के समय</string>
-    <string name="minutes_before">X मिनटों पहले</string>
+    <string name="custom">Custom</string>
     <string name="repetition">दुहराव</string>
     <string name="none">कोई नहीं</string>
     <string name="daily">रोज</string>
