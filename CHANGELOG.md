@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 1.29 *(2016-11-02)*
+----------------------------
+
+ * Allow setting event reminder in other units too, not just minutes
+ * Allow setting a default reminder used by new events
+
 Version 1.28 *(2016-10-24)*
 ----------------------------
 
