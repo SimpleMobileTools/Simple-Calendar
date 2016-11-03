@@ -67,21 +67,33 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
 
             val newDay = curDay.withDayOfMonth(value)
             val dayCode = Formatter.getDayCodeFromDateTime(newDay)
-            val day = Day(value, isThisMonth, isToday, dayCode, hasEvent(dayCode), newDay.weekOfWeekyear)
+            val day = Day(value, isThisMonth, isToday, dayCode, false, newDay.weekOfWeekyear)
             days.add(day)
             value++
         }
 
+        markEvents(days, firstDayIndex - 1)
+
         mCallback.updateMonthlyCalendar(monthName, days)
     }
 
-    private fun hasEvent(dayCode: String): Boolean {
+    private fun markEvents(days: ArrayList<Day>, firstDayIndex: Int) {
         for (event in mEvents) {
-            if (Formatter.getDayCodeFromTS(event.startTS) == dayCode) {
-                return true
+            val startDateTime = DateTime().withMillis(event.startTS * 1000L)
+            val endDateTime = DateTime().withMillis(event.endTS * 1000L)
+            val endCode = Formatter.getDayCodeFromDateTime(endDateTime)
+
+            var currDay = startDateTime
+            if (currDay.monthOfYear == mTargetDate.monthOfYear)
+                days[startDateTime.dayOfMonth + firstDayIndex].hasEvent = true
+
+            while (Formatter.getDayCodeFromDateTime(currDay) != endCode) {
+                currDay = currDay.plusDays(1)
+                if (currDay.monthOfYear == mTargetDate.monthOfYear) {
+                    days[currDay.dayOfMonth + firstDayIndex].hasEvent = true
+                }
             }
         }
-        return false
     }
 
     private fun isToday(targetDate: DateTime, curDayInMonth: Int): Boolean {
