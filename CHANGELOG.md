@@ -1,6 +1,11 @@
 Changelog
 ==========
 
+Version 1.32 *(2016-11-03)*
+----------------------------
+
+ * Properly highlight events lasting multiple days
+
 Version 1.31 *(2016-11-03)*
 ----------------------------
 
