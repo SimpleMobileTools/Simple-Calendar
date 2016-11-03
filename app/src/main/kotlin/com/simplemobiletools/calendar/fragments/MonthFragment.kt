@@ -69,7 +69,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         }
 
         mCalendar.apply {
-            targetDate = Formatter.getDateTimeFromCode(mDayCode)
+            mTargetDate = Formatter.getDateTimeFromCode(mDayCode)
             getDays()    // prefill the screen asap, even if without events
             updateMonthlyCalendar(Formatter.getDateTimeFromCode(mDayCode))
         }
@@ -118,7 +118,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         val datePicker = view.findViewById(R.id.date_picker) as DatePicker
         hideDayPicker(datePicker)
 
-        val dateTime = DateTime(mCalendar.targetDate.toString())
+        val dateTime = DateTime(mCalendar.mTargetDate.toString())
         datePicker.init(dateTime.year, dateTime.monthOfYear - 1, 1, null)
 
         alertDialog.apply {
