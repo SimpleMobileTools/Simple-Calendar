@@ -14,7 +14,7 @@ import com.simplemobiletools.calendar.models.ListItem
 import com.simplemobiletools.calendar.models.ListSection
 import kotlinx.android.synthetic.main.event_item.view.*
 
-class EventsListAdapter(context: Context, val mEvents: List<ListItem>) : BaseAdapter() {
+class EventsListAdapter(val context: Context, val mEvents: List<ListItem>) : BaseAdapter() {
     val ITEM_EVENT = 0
     val ITEM_HEADER = 1
 
@@ -63,6 +63,12 @@ class EventsListAdapter(context: Context, val mEvents: List<ListItem>) : BaseAda
                 } else {
                     end?.text = Formatter.getTime(item.endTS)
                     end?.visibility = View.VISIBLE
+
+                    val startCode = Formatter.getDayCodeFromTS(item.startTS)
+                    val endCode = Formatter.getDayCodeFromTS(item.endTS)
+                    if (startCode != endCode) {
+                        end?.append(" (${Formatter.getEventDate(context, endCode)})")
+                    }
                 }
 
                 val currTextColor = if (item.startTS <= mNow) mOrangeColor else mGreyColor

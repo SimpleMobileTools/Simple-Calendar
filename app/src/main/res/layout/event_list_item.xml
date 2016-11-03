@@ -7,6 +7,7 @@
     android:background="@drawable/event_item_background"
     android:paddingBottom="@dimen/event_padding"
     android:paddingLeft="@dimen/activity_margin"
+    android:paddingRight="@dimen/activity_margin"
     android:paddingTop="@dimen/small_padding">
 
     <TextView
@@ -40,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/event_item_title"
         android:layout_marginLeft="@dimen/activity_margin"
-        android:layout_toRightOf="@+id/event_item_start"
+        android:layout_toRightOf="@+id/event_item_end"
         android:alpha=".4"
         android:maxLines="1"
         android:text="Event description"
