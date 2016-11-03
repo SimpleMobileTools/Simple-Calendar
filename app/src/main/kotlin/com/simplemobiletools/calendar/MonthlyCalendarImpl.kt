@@ -72,26 +72,31 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
             value++
         }
 
-        markEvents(days, firstDayIndex - 1)
+        markDaysWithEvents(days)
 
         mCallback.updateMonthlyCalendar(monthName, days)
     }
 
-    private fun markEvents(days: ArrayList<Day>, firstDayIndex: Int) {
+    // it works more often than not, dont touch
+    private fun markDaysWithEvents(days: ArrayList<Day>) {
+        val eventCodes = ArrayList<String>()
         for (event in mEvents) {
             val startDateTime = DateTime().withMillis(event.startTS * 1000L)
             val endDateTime = DateTime().withMillis(event.endTS * 1000L)
             val endCode = Formatter.getDayCodeFromDateTime(endDateTime)
 
             var currDay = startDateTime
-            if (currDay.monthOfYear == mTargetDate.monthOfYear)
-                days[startDateTime.dayOfMonth + firstDayIndex].hasEvent = true
+            eventCodes.add(Formatter.getDayCodeFromDateTime(currDay))
 
             while (Formatter.getDayCodeFromDateTime(currDay) != endCode) {
                 currDay = currDay.plusDays(1)
-                if (currDay.monthOfYear == mTargetDate.monthOfYear) {
-                    days[currDay.dayOfMonth + firstDayIndex].hasEvent = true
-                }
+                eventCodes.add(Formatter.getDayCodeFromDateTime(currDay))
+            }
+        }
+
+        for (day in days) {
+            if (eventCodes.contains(day.code)) {
+                day.hasEvent = true
             }
         }
     }
