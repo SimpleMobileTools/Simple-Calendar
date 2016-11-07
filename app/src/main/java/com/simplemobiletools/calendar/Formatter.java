@@ -11,6 +11,7 @@ public class Formatter {
     public static final String DAYCODE_PATTERN = "YYYYMMdd";
     public static final String YEAR_PATTERN = "YYYY";
     private static final String DAY_PATTERN = "d";
+    private static final String DAY_OF_WEEK_PATTERN = "EEE";
     private static final String EVENT_DATE_PATTERN = "d YYYY"; // MMMM doesn't give the proper month name in some languages
     private static final String EVENT_TIME_PATTERN = "HH:mm";
 
@@ -27,8 +28,14 @@ public class Formatter {
     }
 
     public static String getEventDate(Context context, DateTime dateTime) {
-        final String dayYear = dateTime.toString(EVENT_DATE_PATTERN);
-        return getMonthName(context, dateTime.getMonthOfYear() - 1) + " " + dayYear;
+        return getDayTitle(context, getDayCodeFromDateTime(dateTime));
+    }
+
+    public static String getDayTitle(Context context, String dayCode) {
+        String date = getEventDate(context, dayCode);
+        final DateTime dateTime = getDateTimeFromCode(dayCode);
+        final String day = dateTime.toString(DAY_OF_WEEK_PATTERN);
+        return date + " (" + day + ")";
     }
 
     public static String getEventTime(DateTime dateTime) {

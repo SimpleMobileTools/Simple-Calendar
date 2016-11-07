@@ -42,15 +42,15 @@ class DayFragment : Fragment(), DBHelper.EventsListener, AdapterView.OnItemClick
         val DELETED_ID = "deleted_id"
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater!!.inflate(R.layout.day_fragment, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val view = inflater.inflate(R.layout.day_fragment, container, false)
         mRes = resources
         mHolder = view.day_holder
 
         mConfig = Config.newInstance(context)
         mDayCode = arguments.getString(Constants.DAY_CODE)
 
-        val day = Formatter.getEventDate(activity.applicationContext, mDayCode)
+        val day = Formatter.getDayTitle(activity.applicationContext, mDayCode)
         mHolder.top_value.text = day
         mHolder.top_value.setOnClickListener { pickDay() }
         mToBeDeleted = ArrayList<Int>()

@@ -65,7 +65,7 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, AdapterView.On
         sorted.forEach {
             val code = Formatter.getDayCodeFromTS(it.startTS)
             if (code != prevCode) {
-                val day = Formatter.getEventDate(context, code)
+                val day = Formatter.getDayTitle(context, code)
                 mListItems.add(ListSection(day, false))
                 prevCode = code
             }
