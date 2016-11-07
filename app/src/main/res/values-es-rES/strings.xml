@@ -1,0 +1,103 @@
+<resources>
+    <string name="app_name">Calendario simple</string>
+    <string name="app_launcher_name">Calendario</string>
+    <string name="undo">Deshacer</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancelar</string>
+    <string name="change_view">Cambiar vista</string>
+    <string name="monthly_view">Vista mensual</string>
+    <string name="yearly_view">Vista anual</string>
+    <string name="simple_event_list">Lista de eventos simples</string>
+    <string name="no_events_added">Parece que tu calendario está vacío.\nPuedes crear eventos con el botón Más de la parte inferior.</string>
+
+    <!-- Event -->
+    <string name="event">Evento</string>
+    <string name="edit_event">Editar evento</string>
+    <string name="new_event">Nuevo evento</string>
+    <string name="save">Guardar</string>
+    <string name="delete">Borrar</string>
+    <string name="title_empty">El título no puede estar vacío</string>
+    <string name="end_before_start">El evento no puede acabar antes de iniciarse</string>
+    <string name="start_in_past">No puedes programar eventos en el pasado</string>
+    <string name="event_added">El evento se ha añadido con éxito</string>
+    <string name="past_event_added">El evento en el pasado se ha añadido con éxito</string>
+    <string name="event_updated">El evento se ha actualizado con éxito</string>
+    <string name="reminder">Recordatorio</string>
+    <string name="off">Apagado</string>
+    <string name="at_start">Al inicio</string>
+    <string name="custom">Personalizado</string>
+    <string name="repetition">Repetición</string>
+    <string name="none">Ninguno</string>
+    <string name="daily">Diario</string>
+    <string name="weekly">Semanal</string>
+    <string name="biweekly">Quincenal</string>
+    <string name="monthly">Mensual</string>
+    <string name="yearly">Anual</string>
+
+    <!-- Custom reminder -->
+    <string name="before">antes de</string>
+    <string name="minutes">minutos</string>
+    <string name="hours">horas</string>
+    <string name="days">días</string>
+
+    <!-- Day details -->
+    <string name="details">Detalles</string>
+    <string name="title">Título</string>
+    <string name="start">Inicio</string>
+    <string name="end">Fin (opcional)</string>
+    <string name="description">Descripción</string>
+
+    <!-- About -->
+    <string name="about">Sobre</string>
+    <string name="website">Más aplicaciones simples y código fuente en:\nhttp;//simplemobiletools.com</string>
+    <string name="email_label">Envía tus comentarios o sugerencias a:</string>
+    <string name="third_party_licences_underlined"> <u>Licencias de terceros</u></string>
+    <string name="invite_friends_underlined"><u>Invitar amigos</u></string>
+    <string name="share_text">Hola, ven y echa un vistazo a %1$s en %2$s</string>
+    <string name="invite_via">Invitar a través de</string>
+    <string name="rate_us_underlined"><u>Califícanos en el Play Store</u></string>
+    <string name="follow_us">Síguenos:</string>
+    <string name="copyright">v %1$s\nCopyright © Simple Mobile Tools %2$d</string>
+
+    <!-- Settings -->
+    <string name="settings">Ajustes</string>
+    <string name="dark_theme">Tema oscuro</string>
+    <string name="sunday_first">Domingo como primer día</string>
+    <string name="week_numbers">Mostrar los números de la semana</string>
+    <string name="default_event_reminder">Recordatorio predeterminado de un evento</string>
+    <string name="reminder_saved">Recordatorio guardado</string>
+
+    <!-- License -->
+    <string name="notice">Esta aplicación utiliza bibliotecas de terceros para hacer mi vida más fácil. Gracias.</string>
+    <string name="third_party_licences">Licencia de terceros</string>
+    <string name="butterknife_title"><u>Butter Knife (vista inyector)</u></string>
+    <string name="ambilwarna_title"><u>AmbilWarna (selector de color)</u></string>
+    <string name="joda_title"><u>Joda-Time (reemplazo de la fecha Java)</u></string>
+
+    <plurals name="events_deleted">
+        <item quantity="one">1 evento borrado</item>
+        <item quantity="other">%1$d eventos borrados</item>
+    </plurals>
+
+    <string name="january">Enero</string>
+    <string name="february">Febrero</string>
+    <string name="march">Marzo</string>
+    <string name="april">Abril</string>
+    <string name="may">Mayo</string>
+    <string name="june">Junio</string>
+    <string name="july">Julio</string>
+    <string name="august">Agosto</string>
+    <string name="september">Septiembre</string>
+    <string name="october">Octubre</string>
+    <string name="november">Noviembre</string>
+    <string name="december">Diciembre</string>
+
+    <string name="monday_letter">L</string>
+    <string name="tuesday_letter">M</string>
+    <string name="wednesday_letter">X</string>
+    <string name="thursday_letter">J</string>
+    <string name="friday_letter">V</string>
+    <string name="saturday_letter">S</string>
+    <string name="sunday_letter">D</string>
+
+</resources>
