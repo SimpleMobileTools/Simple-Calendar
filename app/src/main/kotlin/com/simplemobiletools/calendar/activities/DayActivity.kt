@@ -16,7 +16,7 @@ import org.joda.time.DateTime
 import java.util.*
 
 class DayActivity : SimpleActivity(), DayFragment.DeleteListener, ViewPager.OnPageChangeListener {
-    private val PREFILLED_DAYS = 61
+    private val PREFILLED_DAYS = 121
     private var mDayCode: String? = null
     private var mSnackbar: Snackbar? = null
     private var mPagerDays: MutableList<String>? = null
