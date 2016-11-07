@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 1.33 *(2016-11-07)*
+----------------------------
+
+ * Display the day of the week in some views
+ * Added Spanish translation
+
 Version 1.32 *(2016-11-03)*
 ----------------------------
 
