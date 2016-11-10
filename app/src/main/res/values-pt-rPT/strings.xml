@@ -4,41 +4,41 @@
     <string name="undo">Desfazer</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancelar</string>
-    <string name="change_view">Change view</string>
-    <string name="monthly_view">Monthly view</string>
-    <string name="yearly_view">Yearly view</string>
-    <string name="simple_event_list">Simple event list</string>
-    <string name="no_events_added">Seems like your calendar is empty.\nYou can create events with the Plus button at the bottom.</string>
+    <string name="change_view">Mudar vista</string>
+    <string name="monthly_view">Vista mensal</string>
+    <string name="yearly_view">Vista anual</string>
+    <string name="simple_event_list">Lista de eventos</string>
+    <string name="no_events_added">Parece que o seu calendário está vazio.\nPode criar eventos com o botão +, existente na base.</string>
 
     <!-- Event -->
     <string name="event">Evento</string>
     <string name="edit_event">Editar evento</string>
     <string name="new_event">Novo evento</string>
     <string name="save">Guardar</string>
-    <string name="delete">Eliminar</string>
-    <string name="title_empty">O título não pode ficar em branco</string>
-    <string name="end_before_start">O evento não pode terminar antes de ter começado</string>
-    <string name="start_in_past">Não pode agendar eventos no passado</string>
+    <string name="delete">Apagar</string>
+    <string name="title_empty">O título não pode estar vazio</string>
+    <string name="end_before_start">O evento não pode terminar antes de iniciar</string>
+    <string name="start_in_past">Não pode agendar eventos para o passado</string>
     <string name="event_added">Evento adicionado com sucesso</string>
     <string name="past_event_added">Evento no passado adicionado com sucesso</string>
     <string name="event_updated">Evento atualizado com sucesso</string>
     <string name="reminder">Lembrete</string>
     <string name="off">Desligado</string>
     <string name="at_start">No início</string>
-    <string name="custom">Custom</string>
+    <string name="custom">Personalizado</string>
     <string name="repetition">Repetição</string>
     <string name="none">Nenhuma</string>
     <string name="daily">Diária</string>
     <string name="weekly">Semanal</string>
-    <string name="biweekly">Biweekly</string>
+    <string name="biweekly">Bissemanal</string>
     <string name="monthly">Mensal</string>
     <string name="yearly">Anual</string>
 
     <!-- Custom reminder -->
-    <string name="before">before</string>
-    <string name="minutes">minutes</string>
-    <string name="hours">hours</string>
-    <string name="days">days</string>
+    <string name="before">antes</string>
+    <string name="minutes">minutos</string>
+    <string name="hours">horas</string>
+    <string name="days">dias</string>
 
     <!-- Day details -->
     <string name="details">Detalhes</string>
@@ -48,49 +48,56 @@
     <string name="description">Descrição</string>
 
     <!-- About -->
-    <string name="about">Sobre</string>
-    <string name="website">Mais aplicações simples e código de fonte em:\nhttp://simplemobiletools.com</string>
+    <string name="about">Acerca</string>
+    <string name="website">Mais aplicações Simple e código fonte em:\nhttp://simplemobiletools.com</string>
     <string name="email_label">Envie os seus comentários ou sugestões para:</string>
+    <string name="email" translatable="false">hello@simplemobiletools.com</string>
     <string name="third_party_licences_underlined"><u>Licenças de terceiros</u></string>
     <string name="invite_friends_underlined"><u>Convidar amigos</u></string>
-    <string name="share_text">Olá, experimente %1$s em %2$s</string>
+    <string name="share_text">Olá, experimenta o %1$s em %2$s</string>
     <string name="invite_via">Convidar via</string>
-    <string name="rate_us_underlined"><u>Classifique-nos na Play Store</u></string>
+    <string name="rate_us_underlined"><u>Avalie-nos na Play Store</u></string>
     <string name="follow_us">Siga-nos:</string>
-    <string name="copyright">v %1$s\nCopyright © Simple Mobile Tools %2$d</string>
+    <string name="copyright">V %1$s\nCopyright © Simple Mobile Tools %2$d</string>
 
     <!-- Settings -->
     <string name="settings">Definições</string>
     <string name="dark_theme">Tema escuro</string>
     <string name="sunday_first">Domingo como primeiro dia</string>
-    <string name="week_numbers">Display week numbers</string>
-    <string name="default_event_reminder">Default event reminder</string>
-    <string name="reminder_saved">Reminder saved</string>
+    <string name="week_numbers">Mostrar número das semanas</string>
+    <string name="default_event_reminder">Lembrete padrão</string>
+    <string name="reminder_saved">Lembrete guardado</string>
 
     <!-- License -->
     <string name="notice">Esta aplicação usa as seguintes bibliotecas de terceiros para facilitar a minha vida. Obrigado.</string>
     <string name="third_party_licences">Licenças de terceiros</string>
-    <string name="butterknife_title"><u>Butter Knife (injetor de \"views\")</u></string>
-    <string name="ambilwarna_title"><u>AmbilWarna (selecionador de cores)</u></string>
-    <string name="joda_title"><u>Joda-Time (substituto para a classe Java \"date\")</u></string>
+    <string name="butterknife_title"><u>Butter Knife (injetor de vistas)</u></string>
+    <string name="butterknife_text" translatable="false">Copyright 2013 Jake Wharton\n\nLicensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.You may obtain a copy of the License at\n\nhttp://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS,WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.See the License for the specific language governing permissions and limitations under the License.</string>
+    <string name="butterknife_url" translatable="false">https://github.com/JakeWharton/butterknife</string>
+    <string name="ambilwarna_title"><u>AmbilWarna (seletor de cores)</u></string>
+    <string name="ambilwarna_text" translatable="false">Copyright 2009-2015 Yuku\n\nLicensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at\n\nhttp://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</string>
+    <string name="ambilwarna_url" translatable="false">https://github.com/yukuku/ambilwarna</string>
+    <string name="joda_title"><u>Joda-Time (substituto de Java date )</u></string>
+    <string name="joda_text" translatable="false">Copyright 2013 JodaOrg\n\nLicensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.You may obtain a copy of the License at\n\nhttp://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS,WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.See the License for the specific language governing permissions and limitations under the License.</string>
+    <string name="joda_url" translatable="false">https://github.com/JodaOrg/joda-time</string>
 
     <plurals name="events_deleted">
-        <item quantity="one">1 evento eliminado</item>
-        <item quantity="other">%1$d eventos eliminados</item>
+        <item quantity="one">1 evento apagado</item>
+        <item quantity="other">%1$d eventos apagados</item>
     </plurals>
 
-    <string name="january">Janeiro</string>
-    <string name="february">Fevereiro</string>
-    <string name="march">Março</string>
-    <string name="april">Abril</string>
-    <string name="may">Maio</string>
-    <string name="june">Junho</string>
-    <string name="july">Julho</string>
-    <string name="august">Agosto</string>
-    <string name="september">Setembro</string>
-    <string name="october">Outubro</string>
-    <string name="november">Novembro</string>
-    <string name="december">Dezembro</string>
+    <string name="january">janeiro</string>
+    <string name="february">fevereiro</string>
+    <string name="march">março</string>
+    <string name="april">abril</string>
+    <string name="may">maio</string>
+    <string name="june">junho</string>
+    <string name="july">julho</string>
+    <string name="august">agosto</string>
+    <string name="september">setembro</string>
+    <string name="october">outubro</string>
+    <string name="november">novembro</string>
+    <string name="december">dezembro</string>
 
     <string name="monday_letter">S</string>
     <string name="tuesday_letter">T</string>
@@ -99,5 +106,19 @@
     <string name="friday_letter">S</string>
     <string name="saturday_letter">S</string>
     <string name="sunday_letter">D</string>
+<string-array name="months" translatable="false">
+        <item>@string/january</item>
+        <item>@string/february</item>
+        <item>@string/march</item>
+        <item>@string/april</item>
+        <item>@string/may</item>
+        <item>@string/june</item>
+        <item>@string/july</item>
+        <item>@string/august</item>
+        <item>@string/september</item>
+        <item>@string/october</item>
+        <item>@string/november</item>
+        <item>@string/december</item>
+    </string-array>
 
 </resources>
