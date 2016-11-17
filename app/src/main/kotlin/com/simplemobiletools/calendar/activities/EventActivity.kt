@@ -9,7 +9,8 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
-import com.simplemobiletools.calendar.*
+import com.simplemobiletools.calendar.Constants
+import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.*
 import com.simplemobiletools.calendar.fragments.DayFragment
 import com.simplemobiletools.calendar.helpers.DBHelper
@@ -217,16 +218,17 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
     }
 
     private fun deleteEvent() {
-        val intent = Intent()
-        intent.putExtra(DayFragment.DELETED_ID, mEvent.id)
-        setResult(Activity.RESULT_OK, intent)
+        Intent().apply {
+            putExtra(DayFragment.DELETED_ID, mEvent.id)
+            setResult(Activity.RESULT_OK, this)
+        }
         finish()
     }
 
     private fun saveEvent() {
         val newTitle = event_title.value
         if (newTitle.isEmpty()) {
-            Utils.showToast(applicationContext, R.string.title_empty)
+            toast(R.string.title_empty)
             event_title.requestFocus()
             return
         }
@@ -235,7 +237,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
         val newEndTS = (mEventEndDateTime.millis / 1000).toInt()
 
         if (event_end_checkbox.isChecked && newStartTS > newEndTS) {
-            Utils.showToast(applicationContext, R.string.end_before_start)
+            toast(R.string.end_before_start)
             return
         }
 
@@ -360,18 +362,18 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
 
     override fun eventInserted(event: Event) {
         if (DateTime.now().isAfter(mEventStartDateTime.millis)) {
-            Utils.showToast(applicationContext, R.string.past_event_added)
+            toast(R.string.past_event_added)
         } else {
-            Utils.showToast(applicationContext, R.string.event_added)
+            toast(R.string.event_added)
         }
-        Utils.scheduleNotification(applicationContext, event)
+        scheduleNotification(event)
         updateWidget()
         finish()
     }
 
     override fun eventUpdated(event: Event) {
-        Utils.scheduleNotification(applicationContext, event)
-        Utils.showToast(applicationContext, R.string.event_updated)
+        scheduleNotification(event)
+        toast(R.string.event_updated)
         updateWidget()
         finish()
     }

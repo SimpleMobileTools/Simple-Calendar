@@ -20,6 +20,7 @@ import com.simplemobiletools.calendar.adapters.EventsAdapter
 import com.simplemobiletools.calendar.extensions.updateWidget
 import com.simplemobiletools.calendar.helpers.Config
 import com.simplemobiletools.calendar.helpers.DBHelper
+import com.simplemobiletools.calendar.helpers.Utils
 import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.models.Event
 import kotlinx.android.synthetic.main.day_fragment.view.*

@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.models.Event
 import kotlinx.android.synthetic.main.event_item.view.*
 
@@ -45,17 +45,11 @@ class EventsAdapter(context: Context, private val mEvents: List<Event>) : BaseAd
         return view
     }
 
-    override fun getCount(): Int {
-        return mEvents.size
-    }
+    override fun getCount() = mEvents.size
 
-    override fun getItem(position: Int): Any {
-        return mEvents[position]
-    }
+    override fun getItem(position: Int) = mEvents[position]
 
-    override fun getItemId(position: Int): Long {
-        return 0
-    }
+    override fun getItemId(position: Int) = 0L
 
     class ViewHolder(view: View) {
         val title = view.event_item_title

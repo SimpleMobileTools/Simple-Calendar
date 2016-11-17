@@ -7,10 +7,10 @@ import android.support.design.widget.Snackbar
 import android.support.v4.view.ViewPager
 import android.view.View
 import com.simplemobiletools.calendar.Constants
-import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.adapters.MyDayPagerAdapter
 import com.simplemobiletools.calendar.fragments.DayFragment
+import com.simplemobiletools.calendar.helpers.Formatter
 import kotlinx.android.synthetic.main.activity_day.*
 import org.joda.time.DateTime
 import java.util.*
@@ -119,8 +119,10 @@ class DayActivity : SimpleActivity(), DayFragment.DeleteListener, ViewPager.OnPa
     override fun notifyDeletion(cnt: Int) {
         val msg = resources.getQuantityString(R.plurals.events_deleted, cnt, cnt)
         mSnackbar = Snackbar.make(day_coordinator, msg, Snackbar.LENGTH_INDEFINITE)
-        mSnackbar!!.setAction(resources.getString(R.string.undo), undoDeletion)
-        mSnackbar!!.setActionTextColor(Color.WHITE)
-        mSnackbar!!.show()
+        mSnackbar!!.apply {
+            setAction(resources.getString(R.string.undo), undoDeletion)
+            setActionTextColor(Color.WHITE)
+            show()
+        }
     }
 }

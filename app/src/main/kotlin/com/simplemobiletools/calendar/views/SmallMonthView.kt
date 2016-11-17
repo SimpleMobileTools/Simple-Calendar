@@ -9,7 +9,7 @@ import android.view.View
 import com.simplemobiletools.calendar.helpers.Config
 import com.simplemobiletools.calendar.Constants
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.Utils
+import com.simplemobiletools.calendar.helpers.Utils
 import java.util.*
 
 class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(context, attrs, defStyle) {

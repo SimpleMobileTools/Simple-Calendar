@@ -3,8 +3,8 @@ package com.simplemobiletools.calendar.activities
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
-import com.simplemobiletools.calendar.helpers.Config
 import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.helpers.Config
 
 open class SimpleActivity : AppCompatActivity() {
     lateinit var mConfig: Config
@@ -16,12 +16,12 @@ open class SimpleActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
+        return when (item.itemId) {
             android.R.id.home -> {
                 finish()
-                return true
+                true
             }
-            else -> return super.onOptionsItemSelected(item)
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }

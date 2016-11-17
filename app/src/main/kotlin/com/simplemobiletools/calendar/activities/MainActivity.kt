@@ -9,12 +9,12 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import com.simplemobiletools.calendar.Constants
-import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.adapters.MyMonthPagerAdapter
 import com.simplemobiletools.calendar.adapters.MyYearPagerAdapter
 import com.simplemobiletools.calendar.extensions.updateWidget
 import com.simplemobiletools.calendar.fragments.EventListFragment
+import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.views.dialogs.ChangeViewDialog
 import kotlinx.android.synthetic.main.activity_main.*
 import org.joda.time.DateTime
@@ -222,14 +222,16 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener, ChangeV
     override fun notifyDeletion(cnt: Int) {
         val msg = resources.getQuantityString(R.plurals.events_deleted, cnt, cnt)
         mSnackbar = Snackbar.make(calendar_coordinator, msg, Snackbar.LENGTH_LONG)
-        mSnackbar!!.setCallback(object: Snackbar.Callback() {
-            override fun onDismissed(snackbar: Snackbar?, event: Int) {
-                super.onDismissed(snackbar, event)
-                mEventListFragment?.deleteEvents()
-            }
-        })
-        mSnackbar!!.setAction(resources.getString(R.string.undo), undoDeletion)
-        mSnackbar!!.setActionTextColor(Color.WHITE)
-        mSnackbar!!.show()
+        mSnackbar!!.apply {
+            setCallback(object : Snackbar.Callback() {
+                override fun onDismissed(snackbar: Snackbar?, event: Int) {
+                    super.onDismissed(snackbar, event)
+                    mEventListFragment?.deleteEvents()
+                }
+            })
+            setAction(resources.getString(R.string.undo), undoDeletion)
+            setActionTextColor(Color.WHITE)
+            show()
+        }
     }
 }

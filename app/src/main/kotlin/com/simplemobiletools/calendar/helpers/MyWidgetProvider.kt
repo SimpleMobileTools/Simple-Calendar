@@ -16,7 +16,7 @@ import android.widget.RemoteViews
 import com.simplemobiletools.calendar.Constants
 import com.simplemobiletools.calendar.MonthlyCalendarImpl
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.Utils
+import com.simplemobiletools.calendar.helpers.Utils
 import com.simplemobiletools.calendar.activities.DayActivity
 import com.simplemobiletools.calendar.activities.MainActivity
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
@@ -183,7 +183,7 @@ class MyWidgetProvider : AppWidgetProvider(), MonthlyCalendar {
     private fun updateLabelColor() {
         val mSundayFirst = Config.newInstance(mContext).isSundayFirst
         val packageName = mContext.packageName
-        val letters = Utils.getLetterIDs()
+        val letters = Utils.letterIDs
         for (i in 0..6) {
             val id = mRes.getIdentifier("label_" + i, "id", packageName)
             mRemoteViews.setInt(id, "setTextColor", mTextColor)

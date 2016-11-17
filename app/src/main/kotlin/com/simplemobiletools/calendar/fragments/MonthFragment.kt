@@ -16,6 +16,7 @@ import com.simplemobiletools.calendar.activities.DayActivity
 import com.simplemobiletools.calendar.extensions.beVisibleIf
 import com.simplemobiletools.calendar.helpers.Config
 import com.simplemobiletools.calendar.helpers.Formatter
+import com.simplemobiletools.calendar.helpers.Utils
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.models.Day
@@ -149,7 +150,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
     }
 
     private fun setupLabels() {
-        val letters = Utils.getLetterIDs()
+        val letters = Utils.letterIDs
 
         for (i in 0..6) {
             val dayTV = mHolder.findViewById(mRes.getIdentifier("label_" + i, "id", mPackageName)) as TextView

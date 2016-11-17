@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.simplemobiletools.calendar.*
 import com.simplemobiletools.calendar.helpers.Config
+import com.simplemobiletools.calendar.helpers.Utils
 import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.interfaces.YearlyCalendar
 import com.simplemobiletools.calendar.views.SmallMonthView

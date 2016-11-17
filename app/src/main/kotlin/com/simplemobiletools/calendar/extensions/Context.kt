@@ -1,16 +1,23 @@
 package com.simplemobiletools.calendar.extensions
 
+import android.app.AlarmManager
+import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.os.SystemClock
 import android.widget.Toast
-import com.simplemobiletools.calendar.helpers.MyWidgetProvider
+import com.simplemobiletools.calendar.Constants
 import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.helpers.Formatter
+import com.simplemobiletools.calendar.helpers.MyWidgetProvider
+import com.simplemobiletools.calendar.models.Event
+import com.simplemobiletools.calendar.receivers.NotificationReceiver
 
 fun Context.updateWidget() {
     val widgetsCnt = AppWidgetManager.getInstance(this).getAppWidgetIds(ComponentName(this, MyWidgetProvider::class.java))
-    if (widgetsCnt.size == 0)
+    if (widgetsCnt.isEmpty())
         return
 
     val intent = Intent(this, MyWidgetProvider::class.java)
@@ -22,4 +29,53 @@ fun Context.updateWidget() {
 
 fun Context.toast(id: Int) = Toast.makeText(this, resources.getString(id), Toast.LENGTH_SHORT).show()
 
-fun Context.toast(message: String) = Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+fun Context.scheduleNextEvent(event: Event) {
+    var startTS = event.startTS - event.reminderMinutes * 60
+    var newTS = startTS
+    if (event.repeatInterval == Constants.DAY || event.repeatInterval == Constants.WEEK || event.repeatInterval == Constants.BIWEEK) {
+        while (startTS < System.currentTimeMillis() / 1000 + 5) {
+            startTS += event.repeatInterval
+        }
+        newTS = startTS
+    } else if (event.repeatInterval == Constants.MONTH) {
+        newTS = getNewTS(startTS, true)
+    } else if (event.repeatInterval == Constants.YEAR) {
+        newTS = getNewTS(startTS, false)
+    }
+
+    if (newTS != 0)
+        scheduleEventIn(newTS, event)
+}
+
+private fun getNewTS(ts: Int, isMonthly: Boolean): Int {
+    var dateTime = Formatter.getDateTimeFromTS(ts)
+    while (dateTime.isBeforeNow) {
+        dateTime = if (isMonthly) dateTime.plusMonths(1) else dateTime.plusYears(1)
+    }
+    return (dateTime.millis / 1000).toInt()
+}
+
+
+fun Context.scheduleNotification(event: Event) {
+    if (event.reminderMinutes == -1)
+        return
+
+    scheduleNextEvent(event)
+}
+
+fun Context.scheduleEventIn(notifTS: Int, event: Event) {
+    val delayFromNow = notifTS.toLong() * 1000 - System.currentTimeMillis()
+    if (delayFromNow < 0)
+        return
+
+    val notifInMs = SystemClock.elapsedRealtime() + delayFromNow
+    val pendingIntent = getNotificationIntent(this, event.id)
+    val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+    alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, notifInMs, pendingIntent)
+}
+
+private fun getNotificationIntent(context: Context, eventId: Int): PendingIntent {
+    val intent = Intent(context, NotificationReceiver::class.java)
+    intent.putExtra(NotificationReceiver.EVENT_ID, eventId)
+    return PendingIntent.getBroadcast(context, eventId, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+}

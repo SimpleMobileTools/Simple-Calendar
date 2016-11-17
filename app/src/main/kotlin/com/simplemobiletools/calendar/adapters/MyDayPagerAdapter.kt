@@ -16,9 +16,7 @@ class MyDayPagerAdapter(fm: FragmentManager, private val mCodes: List<String>, p
         fragments = SparseArray(10)
     }
 
-    override fun getCount(): Int {
-        return mCodes.size
-    }
+    override fun getCount() = mCodes.size
 
     override fun getItem(position: Int): Fragment {
         val bundle = Bundle()

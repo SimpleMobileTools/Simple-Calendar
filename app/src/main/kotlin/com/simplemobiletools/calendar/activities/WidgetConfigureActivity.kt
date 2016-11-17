@@ -15,9 +15,9 @@ import android.widget.TextView
 import com.simplemobiletools.calendar.Constants
 import com.simplemobiletools.calendar.MonthlyCalendarImpl
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.Utils
 import com.simplemobiletools.calendar.helpers.Config
 import com.simplemobiletools.calendar.helpers.MyWidgetProvider
+import com.simplemobiletools.calendar.helpers.Utils
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.models.Day
 import kotlinx.android.synthetic.main.first_row.*

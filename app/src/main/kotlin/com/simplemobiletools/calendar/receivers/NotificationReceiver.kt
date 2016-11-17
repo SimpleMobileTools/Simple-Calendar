@@ -9,8 +9,8 @@ import android.content.Intent
 import android.media.RingtoneManager
 import com.simplemobiletools.calendar.Constants
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.Utils
 import com.simplemobiletools.calendar.activities.EventActivity
+import com.simplemobiletools.calendar.extensions.scheduleNextEvent
 import com.simplemobiletools.calendar.helpers.DBHelper
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.models.Event
@@ -38,12 +38,10 @@ class NotificationReceiver : BroadcastReceiver() {
         notificationManager.notify(id, notification)
 
         if (event.repeatInterval != 0)
-            Utils.scheduleNextEvent(context, event)
+            context.scheduleNextEvent(event)
     }
 
-    private fun getEventTime(startTime: String, endTime: String): String {
-        return if (startTime == endTime) startTime else startTime + " - " + endTime
-    }
+    private fun getEventTime(startTime: String, endTime: String) = if (startTime == endTime) startTime else startTime + " - " + endTime
 
     private fun getPendingIntent(context: Context, event: Event): PendingIntent {
         val intent = Intent(context, EventActivity::class.java)
