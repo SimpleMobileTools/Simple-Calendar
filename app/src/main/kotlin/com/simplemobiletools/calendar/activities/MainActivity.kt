@@ -168,9 +168,7 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener, ChangeV
 
     private fun getYears(targetYear: Int): List<Int> {
         val years = ArrayList<Int>(PREFILLED_YEARS)
-        for (i in targetYear - PREFILLED_YEARS / 2..targetYear + PREFILLED_YEARS / 2)
-            years.add(i)
-
+        years += targetYear - PREFILLED_YEARS / 2..targetYear + PREFILLED_YEARS / 2
         return years
     }
 
