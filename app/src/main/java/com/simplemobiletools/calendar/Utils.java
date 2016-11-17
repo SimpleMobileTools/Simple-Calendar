@@ -46,7 +46,7 @@ public class Utils {
     }
 
     private static int getNewTS(int ts, boolean isMonthly) {
-        DateTime dateTime = Formatter.getDateTimeFromTS(ts);
+        DateTime dateTime = Formatter.INSTANCE.getDateTimeFromTS(ts);
         while (dateTime.isBeforeNow()) {
             dateTime = isMonthly ? dateTime.plusMonths(1) : dateTime.plusYears(1);
         }

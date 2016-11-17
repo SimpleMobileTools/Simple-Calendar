@@ -31,8 +31,8 @@ public class NotificationReceiver extends BroadcastReceiver {
             return;
 
         final PendingIntent pendingIntent = getPendingIntent(context, event);
-        final String startTime = Formatter.getTime(event.getStartTS());
-        final String endTime = Formatter.getTime(event.getEndTS());
+        final String startTime = Formatter.INSTANCE.getTime(event.getStartTS());
+        final String endTime = Formatter.INSTANCE.getTime(event.getEndTS());
         final String title = event.getTitle();
         final Notification notification = getNotification(context, pendingIntent, getEventTime(startTime, endTime) + " " + title);
         notificationManager.notify(id, notification);
