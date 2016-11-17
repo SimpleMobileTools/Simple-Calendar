@@ -8,10 +8,8 @@ import android.content.Context
 import android.content.Intent
 import android.os.SystemClock
 import android.widget.Toast
-import com.simplemobiletools.calendar.Constants
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.helpers.Formatter
-import com.simplemobiletools.calendar.helpers.MyWidgetProvider
+import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.receivers.NotificationReceiver
 
@@ -20,11 +18,12 @@ fun Context.updateWidget() {
     if (widgetsCnt.isEmpty())
         return
 
-    val intent = Intent(this, MyWidgetProvider::class.java)
-    intent.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
     val ids = intArrayOf(R.xml.widget_info)
-    intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
-    sendBroadcast(intent)
+    Intent(this, MyWidgetProvider::class.java).apply {
+        action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
+        putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
+        sendBroadcast(this)
+    }
 }
 
 fun Context.toast(id: Int) = Toast.makeText(this, resources.getString(id), Toast.LENGTH_SHORT).show()
@@ -32,14 +31,14 @@ fun Context.toast(id: Int) = Toast.makeText(this, resources.getString(id), Toast
 fun Context.scheduleNextEvent(event: Event) {
     var startTS = event.startTS - event.reminderMinutes * 60
     var newTS = startTS
-    if (event.repeatInterval == Constants.DAY || event.repeatInterval == Constants.WEEK || event.repeatInterval == Constants.BIWEEK) {
+    if (event.repeatInterval == DAY || event.repeatInterval == WEEK || event.repeatInterval == BIWEEK) {
         while (startTS < System.currentTimeMillis() / 1000 + 5) {
             startTS += event.repeatInterval
         }
         newTS = startTS
-    } else if (event.repeatInterval == Constants.MONTH) {
+    } else if (event.repeatInterval == MONTH) {
         newTS = getNewTS(startTS, true)
-    } else if (event.repeatInterval == Constants.YEAR) {
+    } else if (event.repeatInterval == YEAR) {
         newTS = getNewTS(startTS, false)
     }
 

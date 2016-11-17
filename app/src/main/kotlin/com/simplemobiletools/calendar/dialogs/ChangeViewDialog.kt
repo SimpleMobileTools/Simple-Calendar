@@ -3,9 +3,11 @@ package com.simplemobiletools.calendar.dialogs
 import android.app.Activity
 import android.app.AlertDialog
 import android.widget.RadioGroup
-import com.simplemobiletools.calendar.Constants
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.helpers.Config
+import com.simplemobiletools.calendar.helpers.EVENTS_LIST_VIEW
+import com.simplemobiletools.calendar.helpers.MONTHLY_VIEW
+import com.simplemobiletools.calendar.helpers.YEARLY_VIEW
 import kotlinx.android.synthetic.main.dialog_change_views.view.*
 
 class ChangeViewDialog(val activity: Activity) : AlertDialog.Builder(activity), RadioGroup.OnCheckedChangeListener {
@@ -30,14 +32,14 @@ class ChangeViewDialog(val activity: Activity) : AlertDialog.Builder(activity), 
     }
 
     fun getNewView(id: Int) = when (id) {
-        R.id.dialog_radio_yearly -> Constants.YEARLY_VIEW
-        R.id.dialog_radio_events_list -> Constants.EVENTS_LIST_VIEW
-        else -> Constants.MONTHLY_VIEW
+        R.id.dialog_radio_yearly -> YEARLY_VIEW
+        R.id.dialog_radio_events_list -> EVENTS_LIST_VIEW
+        else -> MONTHLY_VIEW
     }
 
     fun getSavedItem() = when (Config.newInstance(activity).storedView) {
-        Constants.YEARLY_VIEW -> R.id.dialog_radio_yearly
-        Constants.EVENTS_LIST_VIEW -> R.id.dialog_radio_events_list
+        YEARLY_VIEW -> R.id.dialog_radio_yearly
+        EVENTS_LIST_VIEW -> R.id.dialog_radio_events_list
         else -> R.id.dialog_radio_monthly
     }
 

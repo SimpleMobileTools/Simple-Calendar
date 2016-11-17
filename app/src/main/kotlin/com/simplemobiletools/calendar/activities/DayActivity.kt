@@ -6,10 +6,10 @@ import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v4.view.ViewPager
 import android.view.View
-import com.simplemobiletools.calendar.Constants
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.adapters.MyDayPagerAdapter
 import com.simplemobiletools.calendar.fragments.DayFragment
+import com.simplemobiletools.calendar.helpers.DAY_CODE
 import com.simplemobiletools.calendar.helpers.Formatter
 import kotlinx.android.synthetic.main.activity_day.*
 import org.joda.time.DateTime
@@ -17,7 +17,7 @@ import java.util.*
 
 class DayActivity : SimpleActivity(), DayFragment.DeleteListener, ViewPager.OnPageChangeListener {
     private val PREFILLED_DAYS = 121
-    private var mDayCode: String? = null
+    private var mDayCode = ""
     private var mSnackbar: Snackbar? = null
     private var mPagerDays: MutableList<String>? = null
     private var mPagerPos = 0
@@ -27,11 +27,11 @@ class DayActivity : SimpleActivity(), DayFragment.DeleteListener, ViewPager.OnPa
         setContentView(R.layout.activity_day)
 
         val intent = intent ?: return
-        mDayCode = intent.getStringExtra(Constants.DAY_CODE)
-        if (mDayCode == null || mDayCode!!.isEmpty())
+        mDayCode = intent.getStringExtra(DAY_CODE)
+        if (mDayCode.isEmpty())
             return
 
-        fillViewPager(mDayCode!!)
+        fillViewPager(mDayCode)
 
         day_fab.setOnClickListener { addNewEvent() }
     }
@@ -53,9 +53,10 @@ class DayActivity : SimpleActivity(), DayFragment.DeleteListener, ViewPager.OnPa
     }
 
     private fun addNewEvent() {
-        val eventIntent = Intent(applicationContext, EventActivity::class.java)
-        eventIntent.putExtra(Constants.DAY_CODE, mPagerDays?.get(view_pager.currentItem))
-        startActivity(eventIntent)
+        Intent(applicationContext, EventActivity::class.java).apply {
+            putExtra(DAY_CODE, mPagerDays?.get(view_pager.currentItem))
+            startActivity(this)
+        }
     }
 
     private fun getDays(code: String) {

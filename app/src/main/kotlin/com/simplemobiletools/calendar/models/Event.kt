@@ -1,6 +1,6 @@
 package com.simplemobiletools.calendar.models
 
-import com.simplemobiletools.calendar.Constants
+import com.simplemobiletools.calendar.helpers.Constants
 import com.simplemobiletools.calendar.helpers.Formatter
 import org.joda.time.DateTime
 import java.io.Serializable

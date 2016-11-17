@@ -7,7 +7,6 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.media.RingtoneManager
-import com.simplemobiletools.calendar.Constants
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.extensions.scheduleNextEvent
@@ -45,7 +44,7 @@ class NotificationReceiver : BroadcastReceiver() {
 
     private fun getPendingIntent(context: Context, event: Event): PendingIntent {
         val intent = Intent(context, EventActivity::class.java)
-        intent.putExtra(Constants.EVENT_ID, event)
+        intent.putExtra(EVENT_ID, event)
         return PendingIntent.getActivity(context, event.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
     }
 

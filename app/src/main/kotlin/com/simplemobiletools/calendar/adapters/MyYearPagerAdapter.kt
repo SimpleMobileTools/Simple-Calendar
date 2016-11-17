@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
-import com.simplemobiletools.calendar.Constants
+import com.simplemobiletools.calendar.helpers.Constants
 import com.simplemobiletools.calendar.fragments.YearFragment
 import com.simplemobiletools.calendar.interfaces.NavigationListener
 

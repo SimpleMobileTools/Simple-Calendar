@@ -6,9 +6,9 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
-import com.simplemobiletools.calendar.Constants
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.helpers.Config
+import com.simplemobiletools.calendar.helpers.MEDIUM_ALPHA
 import com.simplemobiletools.calendar.helpers.Utils
 import java.util.*
 
@@ -58,8 +58,8 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
         }
 
         val baseColor = if (Config.newInstance(context).isDarkTheme) Color.WHITE else Color.BLACK
-        mTextColor = Utils.adjustAlpha(baseColor, Constants.MEDIUM_ALPHA)
-        mColoredTextColor = Utils.adjustAlpha(resources.getColor(R.color.colorPrimary), Constants.MEDIUM_ALPHA)
+        mTextColor = Utils.adjustAlpha(baseColor, MEDIUM_ALPHA)
+        mColoredTextColor = Utils.adjustAlpha(resources.getColor(R.color.colorPrimary), MEDIUM_ALPHA)
 
         mPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
             color = mTextColor

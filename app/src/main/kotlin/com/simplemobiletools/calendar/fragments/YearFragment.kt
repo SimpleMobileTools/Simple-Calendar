@@ -8,9 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import com.simplemobiletools.calendar.*
+import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.YearlyCalendarImpl
 import com.simplemobiletools.calendar.helpers.Config
+import com.simplemobiletools.calendar.helpers.HIGH_ALPHA
 import com.simplemobiletools.calendar.helpers.Utils
+import com.simplemobiletools.calendar.helpers.YEAR_LABEL
 import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.interfaces.YearlyCalendar
 import com.simplemobiletools.calendar.views.SmallMonthView
@@ -28,7 +31,7 @@ class YearFragment : Fragment(), YearlyCalendar {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mView = inflater!!.inflate(R.layout.year_fragment, container, false)
-        mYear = arguments.getInt(Constants.YEAR_LABEL)
+        mYear = arguments.getInt(YEAR_LABEL)
         setupMonths()
 
         mCalendar = YearlyCalendarImpl(this, context, mYear)
@@ -72,7 +75,7 @@ class YearFragment : Fragment(), YearlyCalendar {
         val now = DateTime()
         if (now.year == mYear) {
             val monthLabel = mView.findViewById(res.getIdentifier("month_${now.monthOfYear}_label", "id", activity.packageName)) as TextView
-            monthLabel.setTextColor(Utils.adjustAlpha(res.getColor(R.color.colorPrimary), Constants.HIGH_ALPHA))
+            monthLabel.setTextColor(Utils.adjustAlpha(res.getColor(R.color.colorPrimary), HIGH_ALPHA))
 
             val monthView = mView.findViewById(res.getIdentifier("month_${now.monthOfYear}", "id", activity.packageName)) as SmallMonthView
             monthView.setTodaysId(now.dayOfMonth)

@@ -9,12 +9,10 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
-import com.simplemobiletools.calendar.Constants
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.*
 import com.simplemobiletools.calendar.fragments.DayFragment
-import com.simplemobiletools.calendar.helpers.DBHelper
-import com.simplemobiletools.calendar.helpers.Formatter
+import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.models.Event
 import kotlinx.android.synthetic.main.activity_event.*
 import org.joda.time.DateTime
@@ -36,7 +34,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
         val intent = intent ?: return
 
         mWasReminderInit = false
-        val eventId = intent.getIntExtra(Constants.EVENT_ID, 0)
+        val eventId = intent.getIntExtra(EVENT_ID, 0)
         val event = DBHelper(applicationContext).getEvent(eventId)
         if (event != null) {
             mEvent = event
@@ -44,7 +42,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
             setupReminder()
         } else {
             mEvent = Event()
-            val dayCode = intent.getStringExtra(Constants.DAY_CODE)
+            val dayCode = intent.getStringExtra(DAY_CODE)
             if (dayCode == null || dayCode.isEmpty())
                 return
 
@@ -99,10 +97,10 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
 
     private fun setupDefaultReminderType() {
         val type = mConfig.defaultReminderType
-        toggleCustomReminderVisibility(type == Constants.REMINDER_CUSTOM)
-        if (type == Constants.REMINDER_OFF) {
+        toggleCustomReminderVisibility(type == REMINDER_CUSTOM)
+        if (type == REMINDER_OFF) {
             event_reminder.setSelection(0)
-        } else if (type == Constants.REMINDER_AT_START) {
+        } else if (type == REMINDER_AT_START) {
             event_reminder.setSelection(1)
         } else {
             event_reminder.setSelection(2)
@@ -115,11 +113,11 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
         var value = mins
         if (mins == 0) {
             custom_reminder_other_period.setSelection(0)
-        } else if (mins % Constants.DAY_MINS == 0) {
-            value = mins / Constants.DAY_MINS
+        } else if (mins % DAY_MINS == 0) {
+            value = mins / DAY_MINS
             custom_reminder_other_period.setSelection(2)
-        } else if (mins % Constants.HOUR_MINS == 0) {
-            value = mins / Constants.HOUR_MINS
+        } else if (mins % HOUR_MINS == 0) {
+            value = mins / HOUR_MINS
             custom_reminder_other_period.setSelection(1)
         } else {
             custom_reminder_other_period.setSelection(0)
@@ -129,8 +127,8 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
 
     private fun setupReminder() {
         when (mEvent.reminderMinutes) {
-            Constants.REMINDER_OFF -> event_reminder.setSelection(0)
-            Constants.REMINDER_AT_START -> event_reminder.setSelection(1)
+            REMINDER_OFF -> event_reminder.setSelection(0)
+            REMINDER_AT_START -> event_reminder.setSelection(1)
             else -> {
                 event_reminder.setSelection(2)
                 toggleCustomReminderVisibility(true)
@@ -141,11 +139,11 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
 
     private fun setupRepetition() {
         when (mEvent.repeatInterval) {
-            Constants.DAY -> event_repetition.setSelection(1)
-            Constants.WEEK -> event_repetition.setSelection(2)
-            Constants.BIWEEK -> event_repetition.setSelection(3)
-            Constants.MONTH -> event_repetition.setSelection(4)
-            Constants.YEAR -> event_repetition.setSelection(5)
+            DAY -> event_repetition.setSelection(1)
+            WEEK -> event_repetition.setSelection(2)
+            BIWEEK -> event_repetition.setSelection(3)
+            MONTH -> event_repetition.setSelection(4)
+            YEAR -> event_repetition.setSelection(5)
             else -> event_repetition.setSelection(0)
         }
     }
@@ -178,11 +176,11 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
     private fun setupReminderPeriod() {
         val mins = mEvent.reminderMinutes
         var value = mins
-        if (mins % Constants.DAY_MINS == 0) {
-            value = mins / Constants.DAY_MINS
+        if (mins % DAY_MINS == 0) {
+            value = mins / DAY_MINS
             custom_reminder_other_period.setSelection(2)
-        } else if (mins % Constants.HOUR_MINS == 0) {
-            value = mins / Constants.HOUR_MINS
+        } else if (mins % HOUR_MINS == 0) {
+            value = mins / HOUR_MINS
             custom_reminder_other_period.setSelection(1)
         } else {
             custom_reminder_other_period.setSelection(0)
@@ -266,8 +264,8 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
             else -> {
                 val value = custom_reminder_value.value
                 val multiplier = when (custom_reminder_other_period.selectedItemPosition) {
-                    1 -> Constants.HOUR_MINS
-                    2 -> Constants.DAY_MINS
+                    1 -> HOUR_MINS
+                    2 -> DAY_MINS
                     else -> 1
                 }
                 Integer.valueOf(value) * multiplier
@@ -277,11 +275,11 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
 
     private fun getRepeatInterval(): Int {
         return when (event_repetition.selectedItemPosition) {
-            1 -> Constants.DAY
-            2 -> Constants.WEEK
-            3 -> Constants.BIWEEK
-            4 -> Constants.MONTH
-            5 -> Constants.YEAR
+            1 -> DAY
+            2 -> WEEK
+            3 -> BIWEEK
+            4 -> MONTH
+            5 -> YEAR
             else -> 0
         }
     }

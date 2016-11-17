@@ -13,10 +13,8 @@ import android.text.SpannableString
 import android.text.style.UnderlineSpan
 import android.view.View
 import android.widget.RemoteViews
-import com.simplemobiletools.calendar.Constants
 import com.simplemobiletools.calendar.MonthlyCalendarImpl
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.helpers.Utils
 import com.simplemobiletools.calendar.activities.DayActivity
 import com.simplemobiletools.calendar.activities.MainActivity
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
@@ -52,9 +50,9 @@ class MyWidgetProvider : AppWidgetProvider(), MonthlyCalendar {
         mRes = mContext.resources
 
         val prefs = initPrefs(context)
-        val storedTextColor = prefs.getInt(Constants.WIDGET_TEXT_COLOR, Color.WHITE)
-        mTextColor = Utils.adjustAlpha(storedTextColor, Constants.HIGH_ALPHA)
-        mWeakTextColor = Utils.adjustAlpha(storedTextColor, Constants.LOW_ALPHA)
+        val storedTextColor = prefs.getInt(WIDGET_TEXT_COLOR, Color.WHITE)
+        mTextColor = Utils.adjustAlpha(storedTextColor, HIGH_ALPHA)
+        mWeakTextColor = Utils.adjustAlpha(storedTextColor, LOW_ALPHA)
 
         mDayTextSize = mRes.getDimension(R.dimen.day_text_size) / mRes.displayMetrics.density
         mTodayTextSize = mRes.getDimension(R.dimen.today_text_size) / mRes.displayMetrics.density
@@ -66,7 +64,7 @@ class MyWidgetProvider : AppWidgetProvider(), MonthlyCalendar {
         updateLabelColor()
         updateTopViews()
 
-        val bgColor = prefs.getInt(Constants.WIDGET_BG_COLOR, Color.BLACK)
+        val bgColor = prefs.getInt(WIDGET_BG_COLOR, Color.BLACK)
         mRemoteViews.setInt(R.id.calendar_holder, "setBackgroundColor", bgColor)
 
         mCalendar = MonthlyCalendarImpl(this, mContext)
@@ -85,16 +83,18 @@ class MyWidgetProvider : AppWidgetProvider(), MonthlyCalendar {
     }
 
     private fun setupAppOpenIntent(id: Int) {
-        val intent = Intent(mContext, MainActivity::class.java)
-        val pendingIntent = PendingIntent.getActivity(mContext, 0, intent, 0)
-        mRemoteViews.setOnClickPendingIntent(id, pendingIntent)
+        Intent(mContext, MainActivity::class.java).apply {
+            val pendingIntent = PendingIntent.getActivity(mContext, 0, this, 0)
+            mRemoteViews.setOnClickPendingIntent(id, pendingIntent)
+        }
     }
 
     private fun setupDayOpenIntent(id: Int, dayCode: String) {
-        val intent = Intent(mContext, DayActivity::class.java)
-        intent.putExtra(Constants.DAY_CODE, dayCode)
-        val pendingIntent = PendingIntent.getActivity(mContext, Integer.parseInt(dayCode), intent, 0)
-        mRemoteViews.setOnClickPendingIntent(id, pendingIntent)
+        Intent(mContext, DayActivity::class.java).apply {
+            putExtra(DAY_CODE, dayCode)
+            val pendingIntent = PendingIntent.getActivity(mContext, Integer.parseInt(dayCode), this, 0)
+            mRemoteViews.setOnClickPendingIntent(id, pendingIntent)
+        }
     }
 
     private fun setupButtons() {
@@ -103,9 +103,7 @@ class MyWidgetProvider : AppWidgetProvider(), MonthlyCalendar {
         setupAppOpenIntent(R.id.top_value)
     }
 
-    private fun initPrefs(context: Context): SharedPreferences {
-        return context.getSharedPreferences(Constants.PREFS_KEY, Context.MODE_PRIVATE)
-    }
+    private fun initPrefs(context: Context) = context.getSharedPreferences(PREFS_KEY, Context.MODE_PRIVATE)
 
     override fun onReceive(context: Context, intent: Intent) {
         val action = intent.action

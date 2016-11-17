@@ -11,12 +11,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import com.simplemobiletools.calendar.*
+import com.simplemobiletools.calendar.MonthlyCalendarImpl
+import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.DayActivity
 import com.simplemobiletools.calendar.extensions.beVisibleIf
-import com.simplemobiletools.calendar.helpers.Config
-import com.simplemobiletools.calendar.helpers.Formatter
-import com.simplemobiletools.calendar.helpers.Utils
+import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.models.Day
@@ -48,7 +47,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         mRes = resources
 
         mHolder = view.calendar_holder
-        mDayCode = arguments.getString(Constants.DAY_CODE)
+        mDayCode = arguments.getString(DAY_CODE)
         mConfig = Config.newInstance(context)
         mSundayFirst = mConfig.isSundayFirst
 
@@ -93,10 +92,10 @@ class MonthFragment : Fragment(), MonthlyCalendar {
 
     private fun setupButtons() {
         val baseColor = if (mConfig.isDarkTheme) Color.WHITE else Color.BLACK
-        mTextColor = Utils.adjustAlpha(baseColor, Constants.HIGH_ALPHA)
-        mTextColorWithEvent = Utils.adjustAlpha(mRes.getColor(R.color.colorPrimary), Constants.HIGH_ALPHA)
-        mWeakTextColor = Utils.adjustAlpha(baseColor, Constants.LOW_ALPHA)
-        mWeakTextColorWithEvent = Utils.adjustAlpha(mRes.getColor(R.color.colorPrimary), Constants.LOW_ALPHA)
+        mTextColor = Utils.adjustAlpha(baseColor, HIGH_ALPHA)
+        mTextColorWithEvent = Utils.adjustAlpha(mRes.getColor(R.color.colorPrimary), HIGH_ALPHA)
+        mWeakTextColor = Utils.adjustAlpha(baseColor, LOW_ALPHA)
+        mWeakTextColorWithEvent = Utils.adjustAlpha(mRes.getColor(R.color.colorPrimary), LOW_ALPHA)
 
         mHolder.apply {
             top_left_arrow.drawable.mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP)
@@ -209,8 +208,9 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         if (code.isEmpty())
             return
 
-        val intent = Intent(context, DayActivity::class.java)
-        intent.putExtra(Constants.DAY_CODE, code)
-        startActivity(intent)
+        Intent(context, DayActivity::class.java).apply {
+            putExtra(DAY_CODE, code)
+            startActivity(this)
+        }
     }
 }

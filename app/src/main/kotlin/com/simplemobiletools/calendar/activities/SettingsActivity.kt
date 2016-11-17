@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.support.v4.app.TaskStackBuilder
 import android.view.View
 import android.widget.AdapterView
-import com.simplemobiletools.calendar.Constants
+import com.simplemobiletools.calendar.helpers.Constants
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.*
 import kotlinx.android.synthetic.main.activity_settings.*

@@ -12,12 +12,9 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.SeekBar
 import android.widget.TextView
-import com.simplemobiletools.calendar.Constants
 import com.simplemobiletools.calendar.MonthlyCalendarImpl
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.helpers.Config
-import com.simplemobiletools.calendar.helpers.MyWidgetProvider
-import com.simplemobiletools.calendar.helpers.Utils
+import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.models.Day
 import kotlinx.android.synthetic.main.first_row.*
@@ -69,10 +66,10 @@ class WidgetConfigureActivity : AppCompatActivity(), MonthlyCalendar {
         mTodayTextSize /= mRes.displayMetrics.density
 
         val prefs = initPrefs(this)
-        mTextColorWithoutTransparency = prefs.getInt(Constants.WIDGET_TEXT_COLOR, resources.getColor(R.color.colorPrimary))
+        mTextColorWithoutTransparency = prefs.getInt(WIDGET_TEXT_COLOR, resources.getColor(R.color.colorPrimary))
         updateTextColors()
 
-        mBgColor = prefs.getInt(Constants.WIDGET_BG_COLOR, 1)
+        mBgColor = prefs.getInt(WIDGET_BG_COLOR, 1)
         if (mBgColor == 1) {
             mBgColor = Color.BLACK
             mBgAlpha = .2f
@@ -88,7 +85,7 @@ class WidgetConfigureActivity : AppCompatActivity(), MonthlyCalendar {
         MonthlyCalendarImpl(this, applicationContext).updateMonthlyCalendar(DateTime())
     }
 
-    private fun initPrefs(context: Context) = context.getSharedPreferences(Constants.PREFS_KEY, Context.MODE_PRIVATE)
+    private fun initPrefs(context: Context) = context.getSharedPreferences(PREFS_KEY, Context.MODE_PRIVATE)
 
     fun saveConfig() {
         storeWidgetColors()
@@ -102,8 +99,8 @@ class WidgetConfigureActivity : AppCompatActivity(), MonthlyCalendar {
     }
 
     private fun storeWidgetColors() {
-        getSharedPreferences(Constants.PREFS_KEY, Context.MODE_PRIVATE).apply {
-            edit().putInt(Constants.WIDGET_BG_COLOR, mBgColor).putInt(Constants.WIDGET_TEXT_COLOR, mTextColorWithoutTransparency).apply()
+        getSharedPreferences(PREFS_KEY, Context.MODE_PRIVATE).apply {
+            edit().putInt(WIDGET_BG_COLOR, mBgColor).putInt(WIDGET_TEXT_COLOR, mTextColorWithoutTransparency).apply()
         }
     }
 
@@ -137,14 +134,15 @@ class WidgetConfigureActivity : AppCompatActivity(), MonthlyCalendar {
     }
 
     private fun requestWidgetUpdate() {
-        val intent = Intent(AppWidgetManager.ACTION_APPWIDGET_UPDATE, null, this, MyWidgetProvider::class.java)
-        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, intArrayOf(mWidgetId))
-        sendBroadcast(intent)
+        Intent(AppWidgetManager.ACTION_APPWIDGET_UPDATE, null, this, MyWidgetProvider::class.java).apply {
+            putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, intArrayOf(mWidgetId))
+            sendBroadcast(this)
+        }
     }
 
     private fun updateTextColors() {
-        mTextColor = Utils.adjustAlpha(mTextColorWithoutTransparency, Constants.HIGH_ALPHA)
-        mWeakTextColor = Utils.adjustAlpha(mTextColorWithoutTransparency, Constants.LOW_ALPHA)
+        mTextColor = Utils.adjustAlpha(mTextColorWithoutTransparency, HIGH_ALPHA)
+        mWeakTextColor = Utils.adjustAlpha(mTextColorWithoutTransparency, LOW_ALPHA)
 
         top_left_arrow.drawable.mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP)
         top_right_arrow.drawable.mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP)

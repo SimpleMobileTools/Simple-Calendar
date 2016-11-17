@@ -13,15 +13,12 @@ import android.widget.AbsListView
 import android.widget.AdapterView
 import android.widget.DatePicker
 import android.widget.RelativeLayout
-import com.simplemobiletools.calendar.Constants
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.adapters.EventsAdapter
 import com.simplemobiletools.calendar.extensions.updateWidget
-import com.simplemobiletools.calendar.helpers.Config
-import com.simplemobiletools.calendar.helpers.DBHelper
+import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
-import com.simplemobiletools.calendar.helpers.Utils
 import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.models.Event
 import kotlinx.android.synthetic.main.day_fragment.view.*
@@ -53,7 +50,7 @@ class DayFragment : Fragment(), DBHelper.EventsListener, AdapterView.OnItemClick
         mHolder = view.day_holder
 
         mConfig = Config.newInstance(context)
-        mDayCode = arguments.getString(Constants.DAY_CODE)
+        mDayCode = arguments.getString(DAY_CODE)
 
         val day = Formatter.getDayTitle(activity.applicationContext, mDayCode)
         mHolder.top_value.text = day
@@ -71,7 +68,7 @@ class DayFragment : Fragment(), DBHelper.EventsListener, AdapterView.OnItemClick
 
     private fun setupButtons() {
         val baseColor = if (mConfig.isDarkTheme) Color.WHITE else Color.BLACK
-        mTextColor = Utils.adjustAlpha(baseColor, Constants.HIGH_ALPHA)
+        mTextColor = Utils.adjustAlpha(baseColor, HIGH_ALPHA)
 
         mHolder.apply {
             top_left_arrow.drawable.mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP)
@@ -138,9 +135,10 @@ class DayFragment : Fragment(), DBHelper.EventsListener, AdapterView.OnItemClick
     }
 
     private fun editEvent(eventId: Int) {
-        val intent = Intent(activity.applicationContext, EventActivity::class.java)
-        intent.putExtra(Constants.EVENT_ID, eventId)
-        startActivityForResult(intent, EDIT_EVENT)
+        Intent(activity.applicationContext, EventActivity::class.java).apply {
+            putExtra(EVENT_ID, eventId)
+            startActivityForResult(this, EDIT_EVENT)
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

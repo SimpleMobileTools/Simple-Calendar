@@ -8,7 +8,6 @@ import android.support.v4.app.Fragment
 import android.view.*
 import android.widget.AbsListView
 import android.widget.AdapterView
-import com.simplemobiletools.calendar.Constants
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.activities.MainActivity
@@ -17,6 +16,7 @@ import com.simplemobiletools.calendar.extensions.beGoneIf
 import com.simplemobiletools.calendar.extensions.beVisibleIf
 import com.simplemobiletools.calendar.extensions.updateWidget
 import com.simplemobiletools.calendar.helpers.DBHelper
+import com.simplemobiletools.calendar.helpers.EVENT_ID
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.models.Event
@@ -113,9 +113,10 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, AdapterView.On
     }
 
     private fun editEvent(eventId: Int) {
-        val intent = Intent(activity.applicationContext, EventActivity::class.java)
-        intent.putExtra(Constants.EVENT_ID, eventId)
-        startActivityForResult(intent, EDIT_EVENT)
+        Intent(activity.applicationContext, EventActivity::class.java).apply {
+            putExtra(EVENT_ID, eventId)
+            startActivityForResult(this, EDIT_EVENT)
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

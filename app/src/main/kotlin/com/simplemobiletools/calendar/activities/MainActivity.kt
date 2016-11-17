@@ -8,14 +8,14 @@ import android.support.v4.view.ViewPager
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import com.simplemobiletools.calendar.Constants
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.adapters.MyMonthPagerAdapter
 import com.simplemobiletools.calendar.adapters.MyYearPagerAdapter
+import com.simplemobiletools.calendar.dialogs.ChangeViewDialog
 import com.simplemobiletools.calendar.extensions.updateWidget
 import com.simplemobiletools.calendar.fragments.EventListFragment
+import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
-import com.simplemobiletools.calendar.dialogs.ChangeViewDialog
 import kotlinx.android.synthetic.main.activity_main.*
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
@@ -76,8 +76,8 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener, ChangeV
     }
 
     override fun onBackPressed() {
-        if (mIsMonthSelected && mConfig.storedView == Constants.YEARLY_VIEW) {
-            updateView(Constants.YEARLY_VIEW)
+        if (mIsMonthSelected && mConfig.storedView == YEARLY_VIEW) {
+            updateView(YEARLY_VIEW)
         } else {
             super.onBackPressed()
         }
@@ -92,15 +92,15 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener, ChangeV
     }
 
     private fun updateView(view: Int) {
-        mIsMonthSelected = view == Constants.MONTHLY_VIEW
+        mIsMonthSelected = view == MONTHLY_VIEW
         mConfig.storedView = view
         updateViewPager()
     }
 
     private fun updateViewPager() {
-        if (mConfig.storedView == Constants.YEARLY_VIEW) {
+        if (mConfig.storedView == YEARLY_VIEW) {
             fillYearlyViewPager()
-        } else if (mConfig.storedView == Constants.EVENTS_LIST_VIEW) {
+        } else if (mConfig.storedView == EVENTS_LIST_VIEW) {
             fillEventsList()
         } else {
             val targetDay = DateTime().toString(Formatter.DAYCODE_PATTERN)
@@ -109,10 +109,11 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener, ChangeV
     }
 
     private fun addNewEvent() {
-        val intent = Intent(applicationContext, EventActivity::class.java)
         val tomorrowCode = Formatter.getDayCodeFromDateTime(DateTime(DateTimeZone.getDefault()).plusDays(1))
-        intent.putExtra(Constants.DAY_CODE, tomorrowCode)
-        startActivity(intent)
+        Intent(applicationContext, EventActivity::class.java).apply {
+            putExtra(DAY_CODE, tomorrowCode)
+            startActivity(this)
+        }
     }
 
     private fun fillMonthlyViewPager(targetDay: String) {
