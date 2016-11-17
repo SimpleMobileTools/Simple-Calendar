@@ -12,8 +12,12 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.SeekBar
 import android.widget.TextView
-import com.simplemobiletools.calendar.*
+import com.simplemobiletools.calendar.Constants
+import com.simplemobiletools.calendar.MonthlyCalendarImpl
+import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.Utils
 import com.simplemobiletools.calendar.helpers.Config
+import com.simplemobiletools.calendar.helpers.MyWidgetProvider
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.models.Day
 import kotlinx.android.synthetic.main.first_row.*
@@ -25,7 +29,7 @@ import yuku.ambilwarna.AmbilWarnaDialog
 class WidgetConfigureActivity : AppCompatActivity(), MonthlyCalendar {
     lateinit var mRes: Resources
     private var mDays: List<Day>? = null
-    private var mPackageName = packageName
+    private var mPackageName = ""
 
     private var mBgAlpha = 0f
     private var mWidgetId = 0
@@ -41,6 +45,7 @@ class WidgetConfigureActivity : AppCompatActivity(), MonthlyCalendar {
         super.onCreate(savedInstanceState)
         setResult(Activity.RESULT_CANCELED)
         setContentView(R.layout.widget_config)
+        mPackageName = packageName
         initVariables()
 
         val extras = intent.extras

@@ -5,7 +5,7 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.widget.Toast
-import com.simplemobiletools.calendar.MyWidgetProvider
+import com.simplemobiletools.calendar.helpers.MyWidgetProvider
 import com.simplemobiletools.calendar.R
 
 fun Context.updateWidget() {

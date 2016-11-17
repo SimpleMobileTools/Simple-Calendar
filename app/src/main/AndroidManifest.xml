@@ -55,7 +55,7 @@
             android:parentActivityName=".activities.MainActivity"/>
 
         <receiver
-            android:name=".MyWidgetProvider"
+            android:name=".helpers.MyWidgetProvider"
             android:icon="@mipmap/widget_preview">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
