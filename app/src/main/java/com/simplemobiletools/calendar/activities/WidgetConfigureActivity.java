@@ -186,7 +186,7 @@ public class WidgetConfigureActivity extends AppCompatActivity implements Monthl
     private void updateDays() {
         final int len = mDays.size();
 
-        if (Config.newInstance(getApplicationContext()).getDisplayWeekNumbers()) {
+        if (Config.Companion.newInstance(getApplicationContext()).getDisplayWeekNumbers()) {
             final TextView weekNum = (TextView) findViewById(R.id.week_num);
             weekNum.setTextColor(mWeakTextColor);
             weekNum.setVisibility(View.VISIBLE);

@@ -130,7 +130,7 @@ public class MyWidgetProvider extends AppWidgetProvider implements MonthlyCalend
     }
 
     public void updateDays(List<Day> days) {
-        final boolean displayWeekNumbers = Config.newInstance(mContext).getDisplayWeekNumbers();
+        final boolean displayWeekNumbers = Config.Companion.newInstance(mContext).getDisplayWeekNumbers();
         final int len = days.size();
         final String packageName = mContext.getPackageName();
         mRemoteViews.setInt(R.id.week_num, "setTextColor", mWeakTextColor);
@@ -193,7 +193,7 @@ public class MyWidgetProvider extends AppWidgetProvider implements MonthlyCalend
     }
 
     private void updateLabelColor() {
-        final boolean mSundayFirst = Config.newInstance(mContext).getIsSundayFirst();
+        final boolean mSundayFirst = Config.Companion.newInstance(mContext).isSundayFirst();
         final String packageName = mContext.getPackageName();
         int letters[] = Utils.getLetterIDs();
         for (int i = 0; i < 7; i++) {
