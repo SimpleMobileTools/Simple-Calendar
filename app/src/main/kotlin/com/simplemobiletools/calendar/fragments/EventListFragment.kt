@@ -8,8 +8,8 @@ import android.support.v4.app.Fragment
 import android.view.*
 import android.widget.AbsListView
 import android.widget.AdapterView
-import com.simplemobiletools.calendar.*
-import com.simplemobiletools.calendar.helpers.Formatter
+import com.simplemobiletools.calendar.Constants
+import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.activities.MainActivity
 import com.simplemobiletools.calendar.adapters.EventsListAdapter
@@ -17,6 +17,7 @@ import com.simplemobiletools.calendar.extensions.beGoneIf
 import com.simplemobiletools.calendar.extensions.beVisibleIf
 import com.simplemobiletools.calendar.extensions.updateWidget
 import com.simplemobiletools.calendar.helpers.DBHelper
+import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.models.ListEvent
@@ -95,21 +96,13 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, AdapterView.On
         mView.calendar_events_list.beGoneIf(events.isEmpty())
     }
 
-    private fun getEventsToShow(events: MutableList<Event>?): List<Event> {
-        if (events == null)
-            return ArrayList()
-
-        return events.filter { !mToBeDeleted.contains(it.id) }
-    }
+    private fun getEventsToShow(events: MutableList<Event>?) = events?.filter { !mToBeDeleted.contains(it.id) } ?: ArrayList()
 
     private fun prepareDeleteEvents() {
         val checked = mView.calendar_events_list.checkedItemPositions
-        for (i in mListItems.indices) {
-            if (checked.get(i)) {
-                val event = mListItems[i]
-                mToBeDeleted.add((event as ListEvent).id)
-            }
-        }
+        mListItems.indices.filter { checked.get(it) }
+                .map { mListItems[it] }
+                .forEach { mToBeDeleted.add((it as ListEvent).id) }
 
         notifyDeletion()
     }
@@ -155,9 +148,7 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, AdapterView.On
         checkEvents()
     }
 
-    override fun onPrepareActionMode(mode: ActionMode?, menu: Menu?): Boolean {
-        return true
-    }
+    override fun onPrepareActionMode(mode: ActionMode?, menu: Menu?) = true
 
     override fun onActionItemClicked(mode: ActionMode, item: MenuItem): Boolean {
         return when (item.itemId) {

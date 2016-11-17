@@ -101,9 +101,8 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
         days.filter { eventCodes.contains(it.code) }.forEach { it.hasEvent = true }
     }
 
-    private fun isToday(targetDate: DateTime, curDayInMonth: Int): Boolean {
-        return targetDate.withDayOfMonth(curDayInMonth).toString(Formatter.DAYCODE_PATTERN) == mToday
-    }
+    private fun isToday(targetDate: DateTime, curDayInMonth: Int) =
+            targetDate.withDayOfMonth(curDayInMonth).toString(Formatter.DAYCODE_PATTERN) == mToday
 
     private val monthName: String
         get() {

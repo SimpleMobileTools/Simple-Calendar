@@ -15,7 +15,7 @@ import com.simplemobiletools.calendar.adapters.MyYearPagerAdapter
 import com.simplemobiletools.calendar.extensions.updateWidget
 import com.simplemobiletools.calendar.fragments.EventListFragment
 import com.simplemobiletools.calendar.helpers.Formatter
-import com.simplemobiletools.calendar.views.dialogs.ChangeViewDialog
+import com.simplemobiletools.calendar.dialogs.ChangeViewDialog
 import kotlinx.android.synthetic.main.activity_main.*
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone

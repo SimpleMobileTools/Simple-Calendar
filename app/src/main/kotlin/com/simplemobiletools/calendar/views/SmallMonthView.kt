@@ -6,9 +6,9 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
-import com.simplemobiletools.calendar.helpers.Config
 import com.simplemobiletools.calendar.Constants
 import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.helpers.Config
 import com.simplemobiletools.calendar.helpers.Utils
 import java.util.*
 
@@ -92,7 +92,5 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
         }
     }
 
-    private fun getPaint(curId: Int): Paint {
-        return if (mEvents?.contains(curId) == true) mColoredPaint else mPaint
-    }
+    private fun getPaint(curId: Int) = if (mEvents?.contains(curId) == true) mColoredPaint else mPaint
 }

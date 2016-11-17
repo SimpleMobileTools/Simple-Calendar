@@ -13,13 +13,14 @@ import android.widget.AbsListView
 import android.widget.AdapterView
 import android.widget.DatePicker
 import android.widget.RelativeLayout
-import com.simplemobiletools.calendar.*
-import com.simplemobiletools.calendar.helpers.Formatter
+import com.simplemobiletools.calendar.Constants
+import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.adapters.EventsAdapter
 import com.simplemobiletools.calendar.extensions.updateWidget
 import com.simplemobiletools.calendar.helpers.Config
 import com.simplemobiletools.calendar.helpers.DBHelper
+import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.helpers.Utils
 import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.models.Event
@@ -153,18 +154,14 @@ class DayFragment : Fragment(), DBHelper.EventsListener, AdapterView.OnItemClick
         }
     }
 
-    private fun getEventsToShow(events: MutableList<Event>): List<Event> {
-        return events.filter { !mToBeDeleted.contains(it.id) }
-    }
+    private fun getEventsToShow(events: MutableList<Event>) = events.filter { !mToBeDeleted.contains(it.id) }
 
     private fun prepareDeleteEvents() {
         val checked = mHolder.day_events.checkedItemPositions
-        for (i in mEvents!!.indices) {
-            if (checked.get(i)) {
-                val event = mEvents!![i]
-                mToBeDeleted.add(event.id)
-            }
-        }
+        mEvents!!.indices
+                .filter { checked.get(it) }
+                .map { mEvents!![it] }
+                .forEach { mToBeDeleted.add(it.id) }
 
         notifyDeletion()
     }
@@ -184,9 +181,7 @@ class DayFragment : Fragment(), DBHelper.EventsListener, AdapterView.OnItemClick
         updateEvents(mEvents!!)
     }
 
-    override fun onPrepareActionMode(mode: ActionMode, menu: Menu): Boolean {
-        return true
-    }
+    override fun onPrepareActionMode(mode: ActionMode, menu: Menu) = true
 
     override fun onActionItemClicked(mode: ActionMode, item: MenuItem): Boolean {
         return when (item.itemId) {
