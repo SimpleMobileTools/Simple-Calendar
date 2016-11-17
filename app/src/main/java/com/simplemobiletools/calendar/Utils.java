@@ -73,7 +73,7 @@ public class Utils {
 
     private static PendingIntent getNotificationIntent(Context context, int eventId) {
         final Intent intent = new Intent(context, NotificationReceiver.class);
-        intent.putExtra(NotificationReceiver.EVENT_ID, eventId);
+        intent.putExtra(NotificationReceiver.Companion.getEVENT_ID(), eventId);
         return PendingIntent.getBroadcast(context, eventId, intent, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
