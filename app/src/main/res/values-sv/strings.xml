@@ -70,7 +70,6 @@
     <!-- License -->
     <string name="notice">Denna app använder följande tredjepartsbibliotek för att göra mitt liv enklare. Tack.</string>
     <string name="third_party_licences">Tredjepartslicenser</string>
-    <string name="butterknife_title"><u>Butter Knife (view injector)</u></string>
     <string name="ambilwarna_title"><u>AmbilWarna (color picker)</u></string>
     <string name="joda_title"><u>Joda-Time (Java date replacement)</u></string>
 

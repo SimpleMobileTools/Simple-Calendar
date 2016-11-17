@@ -70,7 +70,6 @@
     <!-- License -->
     <string name="notice">Esta aplicação usa as seguintes bibliotecas de terceiros para facilitar a minha vida. Obrigado.</string>
     <string name="third_party_licences">Licenças de terceiros</string>
-    <string name="butterknife_title"><u>Butter Knife (injetor de vistas)</u></string>
     <string name="ambilwarna_title"><u>AmbilWarna (seletor de cores)</u></string>
     <string name="joda_title"><u>Joda-Time (substituto de Java date)</u></string>
     

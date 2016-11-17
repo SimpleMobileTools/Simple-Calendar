@@ -70,7 +70,6 @@
     <!-- License -->
     <string name="notice">Diese App nutzt die folgenden Drittanbieterbibliotheken, die mein Leben einfacher machen. Danke.</string>
     <string name="third_party_licences">Drittanbieterlizenzen</string>
-    <string name="butterknife_title"><u>Butter Knife (View Injector)</u></string>
     <string name="ambilwarna_title"><u>AmbilWarna (Color Picker)</u></string>
     <string name="joda_title"><u>Joda-Time (Java Datumsaustausch)</u></string>
 

@@ -70,7 +70,6 @@
     <!-- License -->
     <string name="notice">मेरा जीवन आसान करने के लिए यह एप्प तीसरे पक्ष की लाइब्रेरी का इस्तेमाल करती हैं। धन्यवाद।</string>
     <string name="third_party_licences">तीसरे पक्ष के लाइसेंस</string>
-    <string name="butterknife_title"><u> बटर नायफ (इंजेक्टर देखे)</u></string>
     <string name="ambilwarna_title"><u>अम्बिलवरना (कलर पिकर)</u></string>
     <string name="joda_title"><u>जोड़ा-टाइम(जावा डेट रिप्लेसमेंट)</u></string>
 
