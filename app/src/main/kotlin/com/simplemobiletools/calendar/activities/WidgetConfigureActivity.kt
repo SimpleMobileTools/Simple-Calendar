@@ -14,6 +14,7 @@ import android.widget.SeekBar
 import android.widget.TextView
 import com.simplemobiletools.calendar.MonthlyCalendarImpl
 import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.extensions.adjustAlpha
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.models.Day
@@ -141,8 +142,8 @@ class WidgetConfigureActivity : AppCompatActivity(), MonthlyCalendar {
     }
 
     private fun updateTextColors() {
-        mTextColor = Utils.adjustAlpha(mTextColorWithoutTransparency, HIGH_ALPHA)
-        mWeakTextColor = Utils.adjustAlpha(mTextColorWithoutTransparency, LOW_ALPHA)
+        mTextColor = mTextColorWithoutTransparency.adjustAlpha(HIGH_ALPHA)
+        mWeakTextColor = mTextColorWithoutTransparency.adjustAlpha(LOW_ALPHA)
 
         top_left_arrow.drawable.mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP)
         top_right_arrow.drawable.mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP)
@@ -153,7 +154,7 @@ class WidgetConfigureActivity : AppCompatActivity(), MonthlyCalendar {
     }
 
     private fun updateBgColor() {
-        mBgColor = Utils.adjustAlpha(mBgColorWithoutTransparency, mBgAlpha)
+        mBgColor = mBgColorWithoutTransparency.adjustAlpha(mBgAlpha)
         config_calendar.setBackgroundColor(mBgColor)
         config_bg_color.setBackgroundColor(mBgColor)
         config_save.setBackgroundColor(mBgColor)

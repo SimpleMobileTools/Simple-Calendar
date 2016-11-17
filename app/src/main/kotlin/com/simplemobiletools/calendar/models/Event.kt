@@ -1,7 +1,6 @@
 package com.simplemobiletools.calendar.models
 
-import com.simplemobiletools.calendar.helpers.Constants
-import com.simplemobiletools.calendar.helpers.Formatter
+import com.simplemobiletools.calendar.helpers.*
 import org.joda.time.DateTime
 import java.io.Serializable
 
@@ -18,10 +17,10 @@ class Event(var id: Int = 0, var startTS: Int = 0, var endTS: Int = 0, var title
         val currStart = Formatter.getDateTimeFromTS(startTS)
         val newStart: DateTime
         newStart = when (repeatInterval) {
-            Constants.DAY -> currStart.plusDays(1)
-            Constants.WEEK -> currStart.plusWeeks(1)
-            Constants.BIWEEK -> currStart.plusWeeks(2)
-            Constants.MONTH -> currStart.plusMonths(1)
+            DAY -> currStart.plusDays(1)
+            WEEK -> currStart.plusWeeks(1)
+            BIWEEK -> currStart.plusWeeks(2)
+            MONTH -> currStart.plusMonths(1)
             else -> currStart.plusYears(1)
         }
         val newStartTS = (newStart.millis / 1000).toInt()

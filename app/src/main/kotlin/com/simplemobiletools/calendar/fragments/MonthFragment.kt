@@ -14,6 +14,7 @@ import android.widget.*
 import com.simplemobiletools.calendar.MonthlyCalendarImpl
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.DayActivity
+import com.simplemobiletools.calendar.extensions.adjustAlpha
 import com.simplemobiletools.calendar.extensions.beVisibleIf
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
@@ -92,10 +93,10 @@ class MonthFragment : Fragment(), MonthlyCalendar {
 
     private fun setupButtons() {
         val baseColor = if (mConfig.isDarkTheme) Color.WHITE else Color.BLACK
-        mTextColor = Utils.adjustAlpha(baseColor, HIGH_ALPHA)
-        mTextColorWithEvent = Utils.adjustAlpha(mRes.getColor(R.color.colorPrimary), HIGH_ALPHA)
-        mWeakTextColor = Utils.adjustAlpha(baseColor, LOW_ALPHA)
-        mWeakTextColorWithEvent = Utils.adjustAlpha(mRes.getColor(R.color.colorPrimary), LOW_ALPHA)
+        mTextColor = baseColor.adjustAlpha(HIGH_ALPHA)
+        mTextColorWithEvent = mRes.getColor(R.color.colorPrimary).adjustAlpha(HIGH_ALPHA)
+        mWeakTextColor = baseColor.adjustAlpha(LOW_ALPHA)
+        mWeakTextColorWithEvent = mRes.getColor(R.color.colorPrimary).adjustAlpha(LOW_ALPHA)
 
         mHolder.apply {
             top_left_arrow.drawable.mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP)
@@ -149,7 +150,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
     }
 
     private fun setupLabels() {
-        val letters = Utils.letterIDs
+        val letters = letterIDs
 
         for (i in 0..6) {
             val dayTV = mHolder.findViewById(mRes.getIdentifier("label_" + i, "id", mPackageName)) as TextView

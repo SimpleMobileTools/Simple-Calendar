@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.database.sqlite.SQLiteQueryBuilder
 import android.text.TextUtils
-import com.simplemobiletools.calendar.helpers.Constants
 import com.simplemobiletools.calendar.extensions.getIntValue
 import com.simplemobiletools.calendar.extensions.getStringValue
 import com.simplemobiletools.calendar.models.Event
@@ -116,11 +115,11 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
             put(COL_REPEAT_START, event.startTS)
             put(COL_REPEAT_INTERVAL, repeatInterval)
 
-            if (repeatInterval == Constants.MONTH || repeatInterval == Constants.YEAR) {
+            if (repeatInterval == MONTH || repeatInterval == YEAR) {
                 put(COL_REPEAT_DAY, dateTime.dayOfMonth)
             }
 
-            if (repeatInterval == Constants.YEAR) {
+            if (repeatInterval == YEAR) {
                 put(COL_REPEAT_MONTH, dateTime.monthOfYear)
             }
         }

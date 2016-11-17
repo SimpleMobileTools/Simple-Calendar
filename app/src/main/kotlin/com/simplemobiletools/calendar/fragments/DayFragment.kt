@@ -16,6 +16,7 @@ import android.widget.RelativeLayout
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.adapters.EventsAdapter
+import com.simplemobiletools.calendar.extensions.adjustAlpha
 import com.simplemobiletools.calendar.extensions.updateWidget
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
@@ -68,7 +69,7 @@ class DayFragment : Fragment(), DBHelper.EventsListener, AdapterView.OnItemClick
 
     private fun setupButtons() {
         val baseColor = if (mConfig.isDarkTheme) Color.WHITE else Color.BLACK
-        mTextColor = Utils.adjustAlpha(baseColor, HIGH_ALPHA)
+        mTextColor = baseColor.adjustAlpha(HIGH_ALPHA)
 
         mHolder.apply {
             top_left_arrow.drawable.mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP)

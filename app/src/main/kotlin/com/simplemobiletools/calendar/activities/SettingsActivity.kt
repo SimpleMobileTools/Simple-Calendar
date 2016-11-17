@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.support.v4.app.TaskStackBuilder
 import android.view.View
 import android.widget.AdapterView
-import com.simplemobiletools.calendar.helpers.Constants
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.*
+import com.simplemobiletools.calendar.helpers.*
 import kotlinx.android.synthetic.main.activity_settings.*
 
 class SettingsActivity : SimpleActivity() {
@@ -49,8 +49,8 @@ class SettingsActivity : SimpleActivity() {
         val reminderType = mConfig.defaultReminderType
         val reminderMinutes = mConfig.defaultReminderMinutes
         settings_default_reminder.setSelection(when (reminderType) {
-            Constants.REMINDER_OFF -> 0
-            Constants.REMINDER_AT_START -> 1
+            REMINDER_OFF -> 0
+            REMINDER_AT_START -> 1
             else -> 2
         })
         custom_reminder_save.setTextColor(custom_reminder_other_val.currentTextColor)
@@ -72,9 +72,9 @@ class SettingsActivity : SimpleActivity() {
                 }
 
                 mConfig.defaultReminderType = when (itemIndex) {
-                    0 -> Constants.REMINDER_OFF
-                    1 -> Constants.REMINDER_AT_START
-                    else -> Constants.REMINDER_CUSTOM
+                    0 -> REMINDER_OFF
+                    1 -> REMINDER_AT_START
+                    else -> REMINDER_CUSTOM
                 }
             }
         }
@@ -83,13 +83,13 @@ class SettingsActivity : SimpleActivity() {
     private fun saveReminder() {
         val value = custom_reminder_value.value
         val multiplier = when (custom_reminder_other_period.selectedItemPosition) {
-            1 -> Constants.HOUR_MINS
-            2 -> Constants.DAY_MINS
+            1 -> HOUR_MINS
+            2 -> DAY_MINS
             else -> 1
         }
 
         mConfig.defaultReminderMinutes = Integer.valueOf(value) * multiplier
-        mConfig.defaultReminderType = Constants.REMINDER_CUSTOM
+        mConfig.defaultReminderType = REMINDER_CUSTOM
         toast(R.string.reminder_saved)
         hideKeyboard()
     }
@@ -98,11 +98,11 @@ class SettingsActivity : SimpleActivity() {
         var value = mins
         if (mins == 0) {
             custom_reminder_other_period.setSelection(0)
-        } else if (mins % Constants.DAY_MINS == 0) {
-            value = mins / Constants.DAY_MINS
+        } else if (mins % DAY_MINS == 0) {
+            value = mins / DAY_MINS
             custom_reminder_other_period.setSelection(2)
-        } else if (mins % Constants.HOUR_MINS == 0) {
-            value = mins / Constants.HOUR_MINS
+        } else if (mins % HOUR_MINS == 0) {
+            value = mins / HOUR_MINS
             custom_reminder_other_period.setSelection(1)
         } else {
             custom_reminder_other_period.setSelection(0)

@@ -1,5 +1,7 @@
 package com.simplemobiletools.calendar.helpers
 
+import com.simplemobiletools.calendar.R
+
 val LOW_ALPHA = .2f
 val MEDIUM_ALPHA = .6f
 val HIGH_ALPHA = .8f
@@ -36,3 +38,6 @@ val REMINDER_TYPE = "reminder_type"
 val REMINDER_MINUTES = "reminder_minutes"
 val WIDGET_BG_COLOR = "widget_bg_color"
 val WIDGET_TEXT_COLOR = "widget_text_color"
+
+val letterIDs = intArrayOf(R.string.sunday_letter, R.string.monday_letter, R.string.tuesday_letter, R.string.wednesday_letter,
+        R.string.thursday_letter, R.string.friday_letter, R.string.saturday_letter)

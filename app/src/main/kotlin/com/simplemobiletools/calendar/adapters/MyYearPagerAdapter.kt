@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
-import com.simplemobiletools.calendar.helpers.Constants
 import com.simplemobiletools.calendar.fragments.YearFragment
+import com.simplemobiletools.calendar.helpers.YEAR_LABEL
 import com.simplemobiletools.calendar.interfaces.NavigationListener
 
 class MyYearPagerAdapter(fm: FragmentManager, private val mYears: List<Int>, private val mListener: NavigationListener) : FragmentStatePagerAdapter(fm) {
@@ -15,7 +15,7 @@ class MyYearPagerAdapter(fm: FragmentManager, private val mYears: List<Int>, pri
     override fun getItem(position: Int): Fragment {
         val bundle = Bundle()
         val year = mYears[position]
-        bundle.putInt(Constants.YEAR_LABEL, year)
+        bundle.putInt(YEAR_LABEL, year)
 
         val fragment = YearFragment()
         fragment.arguments = bundle

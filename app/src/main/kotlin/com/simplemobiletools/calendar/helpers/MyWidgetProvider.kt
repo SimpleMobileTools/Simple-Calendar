@@ -6,7 +6,6 @@ import android.appwidget.AppWidgetProvider
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.content.res.Resources
 import android.graphics.*
 import android.text.SpannableString
@@ -17,6 +16,7 @@ import com.simplemobiletools.calendar.MonthlyCalendarImpl
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.DayActivity
 import com.simplemobiletools.calendar.activities.MainActivity
+import com.simplemobiletools.calendar.extensions.adjustAlpha
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.models.Day
 import org.joda.time.DateTime
@@ -51,8 +51,8 @@ class MyWidgetProvider : AppWidgetProvider(), MonthlyCalendar {
 
         val prefs = initPrefs(context)
         val storedTextColor = prefs.getInt(WIDGET_TEXT_COLOR, Color.WHITE)
-        mTextColor = Utils.adjustAlpha(storedTextColor, HIGH_ALPHA)
-        mWeakTextColor = Utils.adjustAlpha(storedTextColor, LOW_ALPHA)
+        mTextColor = storedTextColor.adjustAlpha(HIGH_ALPHA)
+        mWeakTextColor = storedTextColor.adjustAlpha(LOW_ALPHA)
 
         mDayTextSize = mRes.getDimension(R.dimen.day_text_size) / mRes.displayMetrics.density
         mTodayTextSize = mRes.getDimension(R.dimen.today_text_size) / mRes.displayMetrics.density
@@ -181,7 +181,7 @@ class MyWidgetProvider : AppWidgetProvider(), MonthlyCalendar {
     private fun updateLabelColor() {
         val mSundayFirst = Config.newInstance(mContext).isSundayFirst
         val packageName = mContext.packageName
-        val letters = Utils.letterIDs
+        val letters = letterIDs
         for (i in 0..6) {
             val id = mRes.getIdentifier("label_" + i, "id", packageName)
             mRemoteViews.setInt(id, "setTextColor", mTextColor)
