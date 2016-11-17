@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import com.simplemobiletools.calendar.Formatter
+import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.models.Event
 import kotlinx.android.synthetic.main.event_item.view.*

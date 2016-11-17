@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.os.SystemClock;
 import android.widget.Toast;
 
+import com.simplemobiletools.calendar.helpers.Formatter;
 import com.simplemobiletools.calendar.models.Event;
 import com.simplemobiletools.calendar.receivers.NotificationReceiver;
 

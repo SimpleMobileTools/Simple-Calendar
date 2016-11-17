@@ -1,6 +1,7 @@
-package com.simplemobiletools.calendar
+package com.simplemobiletools.calendar.helpers
 
 import android.content.Context
+import com.simplemobiletools.calendar.R
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 import org.joda.time.format.DateTimeFormat
@@ -45,9 +46,9 @@ object Formatter {
 
     fun getDayEndTS(dayCode: String) = (getLocalDateTimeFromCode(dayCode).plusDays(1).minusMinutes(1).millis / 1000).toInt()
 
-    fun getDayCodeFromTS(ts: Int) = getDateTimeFromTS(ts).toString(Formatter.DAYCODE_PATTERN)
+    fun getDayCodeFromTS(ts: Int) = getDateTimeFromTS(ts).toString(DAYCODE_PATTERN)
 
-    fun getDayCodeFromDateTime(dateTime: DateTime) = dateTime.toString(Formatter.DAYCODE_PATTERN)
+    fun getDayCodeFromDateTime(dateTime: DateTime) = dateTime.toString(DAYCODE_PATTERN)
 
     fun getDateTimeFromTS(ts: Int) = DateTime(ts * 1000L, DateTimeZone.getDefault())
 

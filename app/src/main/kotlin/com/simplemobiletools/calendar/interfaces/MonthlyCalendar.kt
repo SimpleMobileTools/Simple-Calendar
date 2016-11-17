@@ -1,4 +1,4 @@
-package com.simplemobiletools.calendar
+package com.simplemobiletools.calendar.interfaces
 
 import com.simplemobiletools.calendar.models.Day
 

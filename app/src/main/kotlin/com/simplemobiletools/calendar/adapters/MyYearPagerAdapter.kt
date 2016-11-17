@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
 import com.simplemobiletools.calendar.Constants
-import com.simplemobiletools.calendar.NavigationListener
+import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.fragments.YearFragment
 
 class MyYearPagerAdapter(fm: FragmentManager, private val mYears: List<Int>, private val mListener: NavigationListener) : FragmentStatePagerAdapter(fm) {

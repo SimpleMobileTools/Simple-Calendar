@@ -6,7 +6,7 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
-import com.simplemobiletools.calendar.Config
+import com.simplemobiletools.calendar.helpers.Config
 import com.simplemobiletools.calendar.Constants
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.Utils

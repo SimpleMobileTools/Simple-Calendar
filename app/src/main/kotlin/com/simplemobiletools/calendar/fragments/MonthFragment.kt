@@ -14,6 +14,10 @@ import android.widget.*
 import com.simplemobiletools.calendar.*
 import com.simplemobiletools.calendar.activities.DayActivity
 import com.simplemobiletools.calendar.extensions.beVisibleIf
+import com.simplemobiletools.calendar.helpers.Config
+import com.simplemobiletools.calendar.helpers.Formatter
+import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
+import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.models.Day
 import kotlinx.android.synthetic.main.first_row.*
 import kotlinx.android.synthetic.main.month_fragment.view.*

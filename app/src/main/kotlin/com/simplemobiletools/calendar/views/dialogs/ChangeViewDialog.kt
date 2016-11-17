@@ -3,7 +3,7 @@ package com.simplemobiletools.calendar.views.dialogs
 import android.app.Activity
 import android.app.AlertDialog
 import android.widget.RadioGroup
-import com.simplemobiletools.calendar.Config
+import com.simplemobiletools.calendar.helpers.Config
 import com.simplemobiletools.calendar.Constants
 import com.simplemobiletools.calendar.R
 import kotlinx.android.synthetic.main.dialog_change_views.view.*

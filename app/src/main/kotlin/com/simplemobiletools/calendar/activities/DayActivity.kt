@@ -7,7 +7,7 @@ import android.support.design.widget.Snackbar
 import android.support.v4.view.ViewPager
 import android.view.View
 import com.simplemobiletools.calendar.Constants
-import com.simplemobiletools.calendar.Formatter
+import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.adapters.MyDayPagerAdapter
 import com.simplemobiletools.calendar.fragments.DayFragment

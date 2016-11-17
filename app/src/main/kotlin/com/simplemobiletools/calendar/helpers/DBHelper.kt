@@ -1,4 +1,4 @@
-package com.simplemobiletools.calendar
+package com.simplemobiletools.calendar.helpers
 
 import android.content.ContentValues
 import android.content.Context
@@ -7,13 +7,15 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.database.sqlite.SQLiteQueryBuilder
 import android.text.TextUtils
+import com.simplemobiletools.calendar.Constants
+import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.extensions.getIntValue
 import com.simplemobiletools.calendar.extensions.getStringValue
 import com.simplemobiletools.calendar.models.Event
 import org.joda.time.DateTime
 import java.util.*
 
-class DBHelper(context: Context) : SQLiteOpenHelper(context, DBHelper.DB_NAME, null, DBHelper.DB_VERSION) {
+class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
     private val MAIN_TABLE_NAME = "events"
     private val COL_ID = "id"
     private val COL_START_TS = "start_ts"
@@ -202,11 +204,11 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DBHelper.DB_NAME, n
         val builder = SQLiteQueryBuilder()
         builder.tables = "$MAIN_TABLE_NAME LEFT OUTER JOIN $META_TABLE_NAME ON $COL_EVENT_ID = $MAIN_TABLE_NAME.$COL_ID"
         val projection = allColumns
-        return builder.query(mDb, projection, selection, selectionArgs, MAIN_TABLE_NAME + "." + COL_ID, null, COL_START_TS)
+        return builder.query(mDb, projection, selection, selectionArgs, MAIN_TABLE_NAME + "build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/res" + COL_ID, null, COL_START_TS)
     }
 
     private val allColumns: Array<String>
-        get() = arrayOf(MAIN_TABLE_NAME + "." + COL_ID, COL_START_TS, COL_END_TS, COL_TITLE, COL_DESCRIPTION, COL_REMINDER_MINUTES, COL_REPEAT_INTERVAL, COL_REPEAT_MONTH, COL_REPEAT_DAY)
+        get() = arrayOf(MAIN_TABLE_NAME + "build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/res" + COL_ID, COL_START_TS, COL_END_TS, COL_TITLE, COL_DESCRIPTION, COL_REMINDER_MINUTES, COL_REPEAT_INTERVAL, COL_REPEAT_MONTH, COL_REPEAT_DAY)
 
     private fun fillEvents(cursor: Cursor?): List<Event> {
         val events = ArrayList<Event>()

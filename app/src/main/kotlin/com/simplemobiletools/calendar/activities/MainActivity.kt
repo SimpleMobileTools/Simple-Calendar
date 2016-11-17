@@ -9,7 +9,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import com.simplemobiletools.calendar.Constants
-import com.simplemobiletools.calendar.Formatter
+import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.adapters.MyMonthPagerAdapter
 import com.simplemobiletools.calendar.adapters.MyYearPagerAdapter

@@ -1,7 +1,8 @@
-package com.simplemobiletools.calendar
+package com.simplemobiletools.calendar.helpers
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.simplemobiletools.calendar.Constants
 import java.util.*
 
 class Config(context: Context) {
@@ -25,7 +26,7 @@ class Config(context: Context) {
 
     var isSundayFirst: Boolean
         get() {
-            val isSundayFirst = java.util.Calendar.getInstance(Locale.getDefault()).firstDayOfWeek == java.util.Calendar.SUNDAY
+            val isSundayFirst = Calendar.getInstance(Locale.getDefault()).firstDayOfWeek == Calendar.SUNDAY
             return mPrefs.getBoolean(Constants.SUNDAY_FIRST, isSundayFirst)
         }
         set(sundayFirst) = mPrefs.edit().putBoolean(Constants.SUNDAY_FIRST, sundayFirst).apply()

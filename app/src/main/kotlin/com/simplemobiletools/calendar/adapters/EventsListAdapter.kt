@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
-import com.simplemobiletools.calendar.Formatter
+import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.models.ListEvent
 import com.simplemobiletools.calendar.models.ListItem

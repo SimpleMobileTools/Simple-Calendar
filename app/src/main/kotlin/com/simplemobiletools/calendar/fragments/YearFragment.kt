@@ -9,6 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.simplemobiletools.calendar.*
+import com.simplemobiletools.calendar.helpers.Config
+import com.simplemobiletools.calendar.interfaces.NavigationListener
+import com.simplemobiletools.calendar.interfaces.YearlyCalendar
 import com.simplemobiletools.calendar.views.SmallMonthView
 import kotlinx.android.synthetic.main.year_fragment.view.*
 import org.joda.time.DateTime

@@ -12,6 +12,8 @@ import android.widget.AdapterView
 import com.simplemobiletools.calendar.*
 import com.simplemobiletools.calendar.extensions.*
 import com.simplemobiletools.calendar.fragments.DayFragment
+import com.simplemobiletools.calendar.helpers.DBHelper
+import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.models.Event
 import kotlinx.android.synthetic.main.activity_event.*
 import org.joda.time.DateTime

@@ -14,10 +14,13 @@ import android.widget.AdapterView
 import android.widget.DatePicker
 import android.widget.RelativeLayout
 import com.simplemobiletools.calendar.*
-import com.simplemobiletools.calendar.Formatter
+import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.adapters.EventsAdapter
 import com.simplemobiletools.calendar.extensions.updateWidget
+import com.simplemobiletools.calendar.helpers.Config
+import com.simplemobiletools.calendar.helpers.DBHelper
+import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.models.Event
 import kotlinx.android.synthetic.main.day_fragment.view.*
 import kotlinx.android.synthetic.main.top_navigation.view.*

@@ -22,6 +22,8 @@ import android.widget.RemoteViews;
 
 import com.simplemobiletools.calendar.activities.DayActivity;
 import com.simplemobiletools.calendar.activities.MainActivity;
+import com.simplemobiletools.calendar.helpers.Config;
+import com.simplemobiletools.calendar.interfaces.MonthlyCalendar;
 import com.simplemobiletools.calendar.models.Day;
 
 import org.joda.time.DateTime;
