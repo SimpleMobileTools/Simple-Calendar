@@ -19,9 +19,9 @@ import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 
 class EventActivity : SimpleActivity(), DBHelper.EventsListener {
-    private var mWasReminderInit: Boolean = false
-    private var mWasEndDateSet: Boolean = false
-    private var mWasEndTimeSet: Boolean = false
+    private var mWasReminderInit = false
+    private var mWasEndDateSet = false
+    private var mWasEndTimeSet = false
 
     lateinit var mEventStartDateTime: DateTime
     lateinit var mEventEndDateTime: DateTime

@@ -75,6 +75,6 @@ fun Context.scheduleEventIn(notifTS: Int, event: Event) {
 
 private fun getNotificationIntent(context: Context, eventId: Int): PendingIntent {
     val intent = Intent(context, NotificationReceiver::class.java)
-    intent.putExtra(NotificationReceiver.EVENT_ID, eventId)
+    intent.putExtra(EVENT_ID, eventId)
     return PendingIntent.getBroadcast(context, eventId, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 }

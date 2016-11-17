@@ -11,14 +11,11 @@ import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.extensions.scheduleNextEvent
 import com.simplemobiletools.calendar.helpers.DBHelper
+import com.simplemobiletools.calendar.helpers.EVENT_ID
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.models.Event
 
 class NotificationReceiver : BroadcastReceiver() {
-    companion object {
-        var EVENT_ID = "event_id"
-    }
-
     override fun onReceive(context: Context, intent: Intent) {
         val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val id = intent.getIntExtra(EVENT_ID, -1)
@@ -44,7 +41,7 @@ class NotificationReceiver : BroadcastReceiver() {
 
     private fun getPendingIntent(context: Context, event: Event): PendingIntent {
         val intent = Intent(context, EventActivity::class.java)
-        intent.putExtra(EVENT_ID, event)
+        intent.putExtra(EVENT_ID, event.id)
         return PendingIntent.getActivity(context, event.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
     }
 
