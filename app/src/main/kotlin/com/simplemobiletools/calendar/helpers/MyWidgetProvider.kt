@@ -48,6 +48,7 @@ class MyWidgetProvider : AppWidgetProvider(), MonthlyCalendar {
     private fun initVariables(context: Context) {
         mContext = context
         mRes = mContext.resources
+        mCalendar = MonthlyCalendarImpl(this, mContext)
 
         val prefs = initPrefs(context)
         val storedTextColor = prefs.getInt(WIDGET_TEXT_COLOR, Color.WHITE)
@@ -67,7 +68,6 @@ class MyWidgetProvider : AppWidgetProvider(), MonthlyCalendar {
         val bgColor = prefs.getInt(WIDGET_BG_COLOR, Color.BLACK)
         mRemoteViews.setInt(R.id.calendar_holder, "setBackgroundColor", bgColor)
 
-        mCalendar = MonthlyCalendarImpl(this, mContext)
         mCalendar.updateMonthlyCalendar(DateTime())
     }
 
