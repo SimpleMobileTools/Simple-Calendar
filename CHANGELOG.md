@@ -1,6 +1,11 @@
 Changelog
 ==========
 
+Version 1.36 *(2016-11-19)*
+----------------------------
+
+ * Make sure events are sorted properly in the Day view
+
 Version 1.35 *(2016-11-19)*
 ----------------------------
 
