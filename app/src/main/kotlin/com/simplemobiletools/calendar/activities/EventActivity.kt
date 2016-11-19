@@ -365,19 +365,16 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
             toast(R.string.event_added)
         }
         scheduleNotification(event)
-        updateWidget()
         finish()
     }
 
     override fun eventUpdated(event: Event) {
         scheduleNotification(event)
         toast(R.string.event_updated)
-        updateWidget()
         finish()
     }
 
     override fun eventsDeleted(cnt: Int) {
-        updateWidget()
     }
 
     override fun gotEvents(events: MutableList<Event>) {

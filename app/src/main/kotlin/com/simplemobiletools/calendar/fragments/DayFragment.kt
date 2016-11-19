@@ -17,7 +17,6 @@ import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.adapters.EventsAdapter
 import com.simplemobiletools.calendar.extensions.adjustAlpha
-import com.simplemobiletools.calendar.extensions.updateWidget
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.interfaces.NavigationListener
@@ -220,16 +219,13 @@ class DayFragment : Fragment(), DBHelper.EventsListener, AdapterView.OnItemClick
     }
 
     override fun eventInserted(event: Event) {
-        context.updateWidget()
     }
 
     override fun eventUpdated(event: Event) {
-        context.updateWidget()
     }
 
     override fun eventsDeleted(cnt: Int) {
         checkEvents()
-        context.updateWidget()
     }
 
     override fun gotEvents(events: MutableList<Event>) {

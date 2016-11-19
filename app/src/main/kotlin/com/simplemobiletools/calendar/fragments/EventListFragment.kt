@@ -14,7 +14,6 @@ import com.simplemobiletools.calendar.activities.MainActivity
 import com.simplemobiletools.calendar.adapters.EventsListAdapter
 import com.simplemobiletools.calendar.extensions.beGoneIf
 import com.simplemobiletools.calendar.extensions.beVisibleIf
-import com.simplemobiletools.calendar.extensions.updateWidget
 import com.simplemobiletools.calendar.helpers.DBHelper
 import com.simplemobiletools.calendar.helpers.EVENT_ID
 import com.simplemobiletools.calendar.helpers.Formatter
@@ -185,17 +184,14 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, AdapterView.On
 
     override fun eventInserted(event: Event) {
         checkEvents()
-        context.updateWidget()
     }
 
     override fun eventUpdated(event: Event) {
         checkEvents()
-        context.updateWidget()
     }
 
     override fun eventsDeleted(cnt: Int) {
         checkPlaceholderVisibility()
-        context.updateWidget()
     }
 
     interface DeleteListener : NavigationListener {
