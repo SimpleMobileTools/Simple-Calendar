@@ -188,10 +188,15 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
 
     private fun getEvents(selection: String): List<Event> {
         val events = ArrayList<Event>()
-        val cursor = getEventsCursor(selection, null)
-        if (cursor != null) {
-            val currEvents = fillEvents(cursor)
-            events.addAll(currEvents)
+        var cursor: Cursor? = null
+        try {
+            cursor = getEventsCursor(selection, null)
+            if (cursor != null) {
+                val currEvents = fillEvents(cursor)
+                events.addAll(currEvents)
+            }
+        } finally {
+            cursor?.close()
         }
 
         return events
@@ -208,7 +213,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
         val builder = SQLiteQueryBuilder()
         builder.tables = "$MAIN_TABLE_NAME LEFT OUTER JOIN $META_TABLE_NAME ON $COL_EVENT_ID = $MAIN_TABLE_NAME.$COL_ID"
         val projection = allColumns
-        return builder.query(mDb, projection, selection, selectionArgs, "$MAIN_TABLE_NAME.COL_ID", null, COL_START_TS)
+        return builder.query(mDb, projection, selection, selectionArgs, "$MAIN_TABLE_NAME.$COL_ID", null, COL_START_TS)
     }
 
     private val allColumns: Array<String>
@@ -216,22 +221,22 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
 
     private fun fillEvents(cursor: Cursor?): List<Event> {
         val events = ArrayList<Event>()
-        if (cursor == null)
-            return events
-
-        if (cursor.moveToFirst()) {
-            do {
-                val id = cursor.getIntValue(COL_ID)
-                val startTS = cursor.getIntValue(COL_START_TS)
-                val endTS = cursor.getIntValue(COL_END_TS)
-                val reminderMinutes = cursor.getIntValue(COL_REMINDER_MINUTES)
-                val repeatInterval = cursor.getIntValue(COL_REPEAT_INTERVAL)
-                val title = cursor.getStringValue(COL_TITLE)
-                val description = cursor.getStringValue(COL_DESCRIPTION)
-                events.add(Event(id, startTS, endTS, title, description, reminderMinutes, repeatInterval))
-            } while (cursor.moveToNext())
+        try {
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
+                    val id = cursor.getIntValue(COL_ID)
+                    val startTS = cursor.getIntValue(COL_START_TS)
+                    val endTS = cursor.getIntValue(COL_END_TS)
+                    val reminderMinutes = cursor.getIntValue(COL_REMINDER_MINUTES)
+                    val repeatInterval = cursor.getIntValue(COL_REPEAT_INTERVAL)
+                    val title = cursor.getStringValue(COL_TITLE)
+                    val description = cursor.getStringValue(COL_DESCRIPTION)
+                    events.add(Event(id, startTS, endTS, title, description, reminderMinutes, repeatInterval))
+                } while (cursor.moveToNext())
+            }
+        } finally {
+            cursor?.close()
         }
-        cursor.close()
         return events
     }
 
