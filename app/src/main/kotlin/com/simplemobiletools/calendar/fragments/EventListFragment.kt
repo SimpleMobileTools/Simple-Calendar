@@ -63,7 +63,7 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, AdapterView.On
     override fun gotEvents(events: MutableList<Event>) {
         val filtered = getEventsToShow(events)
         mListItems = ArrayList<ListItem>(filtered.size)
-        val sorted = filtered.sortedWith(compareBy({ it.startTS }, { it.endTS }))
+        val sorted = filtered.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { it.description }))
         var prevCode = ""
         sorted.forEach {
             val code = Formatter.getDayCodeFromTS(it.startTS)

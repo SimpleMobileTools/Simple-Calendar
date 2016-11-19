@@ -25,6 +25,7 @@ import com.simplemobiletools.calendar.models.Event
 import kotlinx.android.synthetic.main.day_fragment.view.*
 import kotlinx.android.synthetic.main.top_navigation.view.*
 import java.util.*
+import kotlin.comparisons.compareBy
 
 class DayFragment : Fragment(), DBHelper.EventsListener, AdapterView.OnItemClickListener, AbsListView.MultiChoiceModeListener, DBHelper.GetEventsListener {
 
@@ -232,8 +233,9 @@ class DayFragment : Fragment(), DBHelper.EventsListener, AdapterView.OnItemClick
     }
 
     override fun gotEvents(events: MutableList<Event>) {
+        val sorted = ArrayList<Event>(events.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { it.description })))
         activity?.runOnUiThread {
-            updateEvents(events)
+            updateEvents(sorted)
         }
     }
 
