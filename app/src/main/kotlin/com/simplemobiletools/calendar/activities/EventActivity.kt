@@ -138,14 +138,16 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
     }
 
     private fun setupRepetition() {
-        when (mEvent.repeatInterval) {
-            DAY -> event_repetition.setSelection(1)
-            WEEK -> event_repetition.setSelection(2)
-            BIWEEK -> event_repetition.setSelection(3)
-            MONTH -> event_repetition.setSelection(4)
-            YEAR -> event_repetition.setSelection(5)
-            else -> event_repetition.setSelection(0)
-        }
+        event_repetition.setSelection(
+                when (mEvent.repeatInterval) {
+                    DAY -> 1
+                    WEEK -> 2
+                    BIWEEK -> 3
+                    MONTH -> 4
+                    YEAR -> 5
+                    else -> 0
+                }
+        )
     }
 
     private fun setupEndCheckbox() {
