@@ -45,5 +45,19 @@
             android:layout_height="wrap_content"
             android:text="@string/joda_text"/>
 
+        <TextView
+            android:id="@+id/license_stetho_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/activity_margin"
+            android:text="@string/stetho_title"
+            android:textColor="@color/colorPrimary"/>
+
+        <TextView
+            android:id="@+id/license_stetho_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/stetho_text"/>
+
     </LinearLayout>
 </ScrollView>

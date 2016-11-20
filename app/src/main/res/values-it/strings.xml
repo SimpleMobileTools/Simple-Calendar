@@ -72,6 +72,7 @@
     <string name="third_party_licences">Licenze di terze parti</string>
     <string name="ambilwarna_title"><u>AmbilWarna (color picker)</u></string>
     <string name="joda_title"><u>Joda-Time (Java date replacement)</u></string>
+    <string name="stetho_title"><u>Stetho (debugging databases)</u></string>
 
     <plurals name="events_deleted">
         <item quantity="one">1 evento eliminato</item>

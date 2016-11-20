@@ -72,6 +72,7 @@
     <string name="third_party_licences">तीसरे पक्ष के लाइसेंस</string>
     <string name="ambilwarna_title"><u>अम्बिलवरना (कलर पिकर)</u></string>
     <string name="joda_title"><u>जोड़ा-टाइम(जावा डेट रिप्लेसमेंट)</u></string>
+    <string name="stetho_title"><u>Stetho (debugging databases)</u></string>
 
     <plurals name="events_deleted">
         <item quantity="one">1 इवेंट डिलीट किया गया</item>

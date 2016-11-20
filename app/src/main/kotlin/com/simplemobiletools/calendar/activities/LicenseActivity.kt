@@ -14,6 +14,7 @@ class LicenseActivity : SimpleActivity() {
 
         license_ambilwarna_title.setOnClickListener { openUrl(R.string.ambilwarna_url) }
         license_joda_title.setOnClickListener { openUrl(R.string.joda_url) }
+        license_stetho_title.setOnClickListener { openUrl(R.string.stetho_url) }
     }
 
     private fun openUrl(id: Int) {
