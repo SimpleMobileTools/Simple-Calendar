@@ -30,8 +30,8 @@ class MyWidgetProvider : AppWidgetProvider(), MonthlyCalendar {
         private var mTodayTextSize = 0f
         private var mTextColor = 0
         private var mWeakTextColor = 0
+        private var mCalendar: MonthlyCalendarImpl? = null
 
-        lateinit var mCalendar: MonthlyCalendarImpl
         lateinit var mRemoteViews: RemoteViews
         lateinit var mRes: Resources
         lateinit var mContext: Context
@@ -68,7 +68,7 @@ class MyWidgetProvider : AppWidgetProvider(), MonthlyCalendar {
         val bgColor = prefs.getInt(WIDGET_BG_COLOR, Color.BLACK)
         mRemoteViews.setInt(R.id.calendar_holder, "setBackgroundColor", bgColor)
 
-        mCalendar.updateMonthlyCalendar(DateTime())
+        mCalendar?.updateMonthlyCalendar(DateTime())
     }
 
     private fun updateWidget() {
@@ -108,8 +108,8 @@ class MyWidgetProvider : AppWidgetProvider(), MonthlyCalendar {
     override fun onReceive(context: Context, intent: Intent) {
         val action = intent.action
         when (action) {
-            PREV -> mCalendar.getPrevMonth()
-            NEXT -> mCalendar.getNextMonth()
+            PREV -> mCalendar?.getPrevMonth()
+            NEXT -> mCalendar?.getNextMonth()
             else -> super.onReceive(context, intent)
         }
     }
