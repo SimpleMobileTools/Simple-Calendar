@@ -70,6 +70,7 @@
     <!-- License -->
     <string name="notice">Esta aplicación utiliza bibliotecas de terceros para hacer mi vida más fácil. Gracias.</string>
     <string name="third_party_licences">Licencia de terceros</string>
+    <string name="kotlin_title"><u>Kotlin (Lenguaje de programación)</u></string>
     <string name="ambilwarna_title"><u>AmbilWarna (selector de color)</u></string>
     <string name="joda_title"><u>Joda-Time (reemplazo de la fecha Java)</u></string>
     <string name="stetho_title"><u>Stetho (debugging databases)</u></string>
