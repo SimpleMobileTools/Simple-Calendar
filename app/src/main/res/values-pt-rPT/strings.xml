@@ -73,7 +73,7 @@
     <string name="kotlin_title"><u>Kotlin (linguagem de programação)</u></string>
     <string name="ambilwarna_title"><u>AmbilWarna (seletor de cores)</u></string>
     <string name="joda_title"><u>Joda-Time (substituto de Java date)</u></string>
-    <string name="stetho_title"><u>Stetho (debugging databases)</u></string>
+    <string name="stetho_title"><u>Stetho (depuração a bases de dados)</u></string>
     
     <plurals name="events_deleted">
         <item quantity="one">1 evento apagado</item>
