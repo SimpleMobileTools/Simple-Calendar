@@ -21,7 +21,7 @@ import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 import java.util.*
 
-class MainActivity : SimpleActivity(), EventListFragment.DeleteListener, ChangeViewDialog.ChangeViewListener {
+class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
     private val PREFILLED_MONTHS = 73
     private val PREFILLED_YEARS = 21
 
@@ -84,14 +84,13 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener, ChangeV
     }
 
     private fun showViewDialog() {
-        ChangeViewDialog(this)
-    }
-
-    override fun viewChanged(newView: Int) {
-        updateView(newView)
+        ChangeViewDialog(this) {
+            updateView(it)
+        }
     }
 
     private fun updateView(view: Int) {
+        calendar_fab.visibility = if (view == YEARLY_VIEW) View.GONE else View.VISIBLE
         mIsMonthSelected = view == MONTHLY_VIEW
         mConfig.storedView = view
         updateViewPager()
@@ -117,6 +116,7 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener, ChangeV
     }
 
     private fun fillMonthlyViewPager(targetDay: String) {
+        calendar_fab.visibility = View.VISIBLE
         val codes = getMonths(targetDay)
         val monthlyAdapter = MyMonthPagerAdapter(supportFragmentManager, codes, this)
 

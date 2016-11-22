@@ -10,7 +10,7 @@ import com.simplemobiletools.calendar.helpers.MONTHLY_VIEW
 import com.simplemobiletools.calendar.helpers.YEARLY_VIEW
 import kotlinx.android.synthetic.main.dialog_change_views.view.*
 
-class ChangeViewDialog(val activity: Activity) : AlertDialog.Builder(activity), RadioGroup.OnCheckedChangeListener {
+class ChangeViewDialog(val activity: Activity, val callback: (newView: Int) -> Unit) : AlertDialog.Builder(activity), RadioGroup.OnCheckedChangeListener {
     val dialog: AlertDialog?
 
     init {
@@ -27,7 +27,7 @@ class ChangeViewDialog(val activity: Activity) : AlertDialog.Builder(activity), 
     }
 
     override fun onCheckedChanged(group: RadioGroup?, checkedId: Int) {
-        (activity as ChangeViewListener).viewChanged(getNewView(checkedId))
+        callback.invoke(getNewView(checkedId))
         dialog?.dismiss()
     }
 
@@ -41,9 +41,5 @@ class ChangeViewDialog(val activity: Activity) : AlertDialog.Builder(activity), 
         YEARLY_VIEW -> R.id.dialog_radio_yearly
         EVENTS_LIST_VIEW -> R.id.dialog_radio_events_list
         else -> R.id.dialog_radio_monthly
-    }
-
-    interface ChangeViewListener {
-        fun viewChanged(newView: Int)
     }
 }
