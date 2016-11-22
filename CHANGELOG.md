@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 1.37 *(2016-11-22)*
+----------------------------
+
+ * Remove the "Add new event" button from yearly view
+ * Misc other smaller improvements
+
 Version 1.36 *(2016-11-19)*
 ----------------------------
 
