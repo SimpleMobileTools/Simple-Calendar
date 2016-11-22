@@ -141,6 +141,7 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
     }
 
     private fun fillYearlyViewPager() {
+        calendar_fab.visibility = View.GONE
         val targetYear = DateTime().toString(Formatter.YEAR_PATTERN).toInt()
         val years = getYears(targetYear)
         val yearlyAdapter = MyYearPagerAdapter(supportFragmentManager, years, this)
