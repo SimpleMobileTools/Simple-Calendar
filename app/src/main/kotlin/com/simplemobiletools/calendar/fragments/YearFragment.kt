@@ -17,7 +17,7 @@ import com.simplemobiletools.calendar.helpers.YEAR_LABEL
 import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.interfaces.YearlyCalendar
 import com.simplemobiletools.calendar.views.SmallMonthView
-import kotlinx.android.synthetic.main.year_fragment.view.*
+import kotlinx.android.synthetic.main.fragment_year.view.*
 import org.joda.time.DateTime
 import java.util.*
 
@@ -30,7 +30,7 @@ class YearFragment : Fragment(), YearlyCalendar {
     lateinit var mCalendar: YearlyCalendarImpl
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        mView = inflater!!.inflate(R.layout.year_fragment, container, false)
+        mView = inflater!!.inflate(R.layout.fragment_year, container, false)
         mYear = arguments.getInt(YEAR_LABEL)
         setupMonths()
 

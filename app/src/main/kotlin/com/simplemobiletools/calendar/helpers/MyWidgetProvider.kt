@@ -59,7 +59,7 @@ class MyWidgetProvider : AppWidgetProvider(), MonthlyCalendar {
         mTodayTextSize = mRes.getDimension(R.dimen.today_text_size) / mRes.displayMetrics.density
         mWidgetManager = AppWidgetManager.getInstance(mContext)
 
-        mRemoteViews = RemoteViews(mContext.packageName, R.layout.month_fragment)
+        mRemoteViews = RemoteViews(mContext.packageName, R.layout.fragment_month)
         mIntent = Intent(mContext, MyWidgetProvider::class.java)
         setupButtons()
         updateLabelColor()

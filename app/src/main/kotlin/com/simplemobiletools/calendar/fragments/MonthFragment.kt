@@ -21,7 +21,7 @@ import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.models.Day
 import kotlinx.android.synthetic.main.first_row.*
-import kotlinx.android.synthetic.main.month_fragment.view.*
+import kotlinx.android.synthetic.main.fragment_month.view.*
 import kotlinx.android.synthetic.main.top_navigation.view.*
 import org.joda.time.DateTime
 
@@ -44,7 +44,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
     lateinit var mCalendar: MonthlyCalendarImpl
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater!!.inflate(R.layout.month_fragment, container, false)
+        val view = inflater!!.inflate(R.layout.fragment_month, container, false)
         mRes = resources
 
         mHolder = view.calendar_holder

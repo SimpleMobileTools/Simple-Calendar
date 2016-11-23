@@ -23,7 +23,7 @@ import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.views.RecyclerViewDivider
-import kotlinx.android.synthetic.main.day_fragment.view.*
+import kotlinx.android.synthetic.main.fragment_day.view.*
 import kotlinx.android.synthetic.main.top_navigation.view.*
 import java.util.*
 import kotlin.comparisons.compareBy
@@ -47,7 +47,7 @@ class DayFragment : Fragment(), DBHelper.EventsListener, DBHelper.GetEventsListe
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.day_fragment, container, false)
+        val view = inflater.inflate(R.layout.fragment_day, container, false)
         mRes = resources
         mHolder = view.day_holder
 

@@ -7,7 +7,7 @@
 
     <include
         android:id="@+id/config_calendar"
-        layout="@layout/month_fragment"
+        layout="@layout/fragment_month"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/config_bg_color"
