@@ -3,15 +3,15 @@ package com.simplemobiletools.calendar.fragments
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.os.Parcelable
 import android.support.v4.app.Fragment
-import android.view.*
-import android.widget.AbsListView
-import android.widget.AdapterView
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.activities.MainActivity
-import com.simplemobiletools.calendar.adapters.EventsListAdapter
+import com.simplemobiletools.calendar.activities.SimpleActivity
+import com.simplemobiletools.calendar.adapters.EventListAdapter
 import com.simplemobiletools.calendar.extensions.beGoneIf
 import com.simplemobiletools.calendar.extensions.beVisibleIf
 import com.simplemobiletools.calendar.helpers.DBHelper
@@ -27,13 +27,11 @@ import org.joda.time.DateTime
 import java.util.*
 import kotlin.comparisons.compareBy
 
-class EventListFragment : Fragment(), DBHelper.GetEventsListener, AdapterView.OnItemClickListener, AbsListView.MultiChoiceModeListener, DBHelper.EventsListener {
+class EventListFragment : Fragment(), DBHelper.GetEventsListener, DBHelper.EventsListener, EventListAdapter.ItemOperationsListener {
     private val EDIT_EVENT = 1
 
-    var mSelectedItemsCnt = 0
     var mListItems: ArrayList<ListItem> = ArrayList()
     var mAllEvents: MutableList<Event>? = null
-    var mState: Parcelable? = null
     lateinit var mToBeDeleted: MutableList<Int>
     lateinit var mView: View
 
@@ -50,7 +48,6 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, AdapterView.On
 
     override fun onPause() {
         super.onPause()
-        mState = mView.calendar_events_list.onSaveInstanceState()
     }
 
     private fun checkEvents() {
@@ -75,15 +72,13 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, AdapterView.On
         }
 
         mAllEvents = events
-        val eventsAdapter = EventsListAdapter(context, mListItems)
+        val eventsAdapter = EventListAdapter(activity as SimpleActivity, mListItems, this) {
+            /*(activity as MainActivity).checkDeleteEvents()
+            (mListItems[position] as ListEvent).id*/
+        }
         activity?.runOnUiThread {
             mView.calendar_events_list.apply {
-                adapter = eventsAdapter
-                onItemClickListener = this@EventListFragment
-                setMultiChoiceModeListener(this@EventListFragment)
-
-                if (mState != null)
-                    onRestoreInstanceState(mState)
+                this@apply.adapter = eventsAdapter
             }
             checkPlaceholderVisibility()
         }
@@ -97,18 +92,9 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, AdapterView.On
 
     private fun getEventsToShow(events: MutableList<Event>?) = events?.filter { !mToBeDeleted.contains(it.id) } ?: ArrayList()
 
-    private fun prepareDeleteEvents() {
-        val checked = mView.calendar_events_list.checkedItemPositions
-        mListItems.indices.filter { checked.get(it) }
-                .map { mListItems[it] }
-                .forEach { mToBeDeleted.add((it as ListEvent).id) }
-
+    override fun prepareForDeleting(ids: ArrayList<Int>) {
+        mToBeDeleted = ids
         notifyDeletion()
-    }
-
-    override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        (activity as MainActivity).checkDeleteEvents()
-        editEvent((mListItems[position] as ListEvent).id)
     }
 
     private fun editEvent(eventId: Int) {
@@ -146,40 +132,6 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, AdapterView.On
     fun undoDeletion() {
         mToBeDeleted.clear()
         checkEvents()
-    }
-
-    override fun onPrepareActionMode(mode: ActionMode?, menu: Menu?) = true
-
-    override fun onActionItemClicked(mode: ActionMode, item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.cab_delete -> {
-                prepareDeleteEvents()
-                mode.finish()
-                true
-            }
-            else -> false
-        }
-    }
-
-    override fun onCreateActionMode(mode: ActionMode, menu: Menu?): Boolean {
-        val inflater = mode.menuInflater
-        inflater.inflate(R.menu.cab_day, menu)
-        return true
-    }
-
-    override fun onDestroyActionMode(mode: ActionMode?) {
-        mSelectedItemsCnt = 0
-    }
-
-    override fun onItemCheckedStateChanged(mode: ActionMode, position: Int, id: Long, checked: Boolean) {
-        if (checked) {
-            mSelectedItemsCnt++
-        } else {
-            mSelectedItemsCnt--
-        }
-
-        mode.title = mSelectedItemsCnt.toString()
-        mode.invalidate()
     }
 
     override fun eventInserted(event: Event) {
