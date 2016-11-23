@@ -124,6 +124,16 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
                 event_item_description.setTextColor(currTextColor)
 
                 setOnClickListener { viewClicked(multiSelector, listItem, pos) }
+                setOnLongClickListener {
+                    if (!multiSelector.isSelectable) {
+                        activity.startSupportActionMode(multiSelectorCallback)
+                        multiSelector.setSelected(this@ViewHolder, true)
+                        actMode?.title = multiSelector.selectedPositions.size.toString()
+                        toggleItemSelection(itemView, true, pos)
+                        actMode?.invalidate()
+                    }
+                    true
+                }
             }
 
             return itemView
@@ -133,7 +143,7 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
             if (multiSelector.isSelectable) {
                 val isSelected = multiSelector.selectedPositions.contains(layoutPosition)
                 multiSelector.setSelected(this, !isSelected)
-                EventsAdapter.toggleItemSelection(itemView, !isSelected, pos)
+                toggleItemSelection(itemView, !isSelected, pos)
 
                 val selectedCnt = multiSelector.selectedPositions.size
                 if (selectedCnt == 0) {
@@ -141,7 +151,7 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
                 } else {
                     actMode?.title = selectedCnt.toString()
                 }
-                EventsAdapter.actMode?.invalidate()
+                actMode?.invalidate()
             } else {
                 itemClick((listItem as ListEvent).id)
             }
