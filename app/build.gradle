@@ -37,6 +37,7 @@ dependencies {
     compile 'joda-time:joda-time:2.9.1'
     compile 'com.github.yukuku:ambilwarna:2.0.1'
     compile 'com.facebook.stetho:stetho:1.4.1'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.simplemobiletools:filepicker:1.5.4@aar'
     compile 'com.bignerdranch.android:recyclerview-multiselect:0.2'
 
