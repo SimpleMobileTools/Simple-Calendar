@@ -13,6 +13,7 @@ import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.models.ListEvent
 import com.simplemobiletools.calendar.models.ListItem
 import com.simplemobiletools.calendar.models.ListSection
+import com.simplemobiletools.filepicker.dialogs.ConfirmationDialog
 import kotlinx.android.synthetic.main.event_item.view.*
 import java.util.*
 
@@ -56,6 +57,10 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
     val multiSelectorMode = object : ModalMultiSelectorCallback(multiSelector) {
         override fun onActionItemClicked(mode: ActionMode, item: MenuItem): Boolean {
             return when (item.itemId) {
+                R.id.cab_delete -> {
+                    askConfirmDelete()
+                    true
+                }
                 else -> false
             }
         }
@@ -74,6 +79,20 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
             views.forEach { toggleItemSelection(it, false) }
             markedItems.clear()
         }
+    }
+
+    private fun askConfirmDelete() {
+        ConfirmationDialog(activity) {
+            actMode?.finish()
+            prepareForDeleting()
+        }
+    }
+
+    private fun prepareForDeleting() {
+        val selections = multiSelector.selectedPositions
+        val ids = ArrayList<Int>(selections.size)
+        selections.forEach { ids.add((mItems[it] as ListEvent).id) }
+        listener?.prepareForDeleting(ids)
     }
 
     override fun getItemViewType(position: Int) = if (mItems[position] is ListEvent) ITEM_EVENT else ITEM_HEADER
