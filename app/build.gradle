@@ -37,6 +37,8 @@ dependencies {
     compile 'joda-time:joda-time:2.9.1'
     compile 'com.github.yukuku:ambilwarna:2.0.1'
     compile 'com.facebook.stetho:stetho:1.4.1'
+    compile 'com.bignerdranch.android:recyclerview-multiselect:0.2'
+
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
 
