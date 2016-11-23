@@ -21,6 +21,7 @@ import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.models.Event
+import com.simplemobiletools.calendar.views.RecyclerViewDivider
 import kotlinx.android.synthetic.main.day_fragment.view.*
 import kotlinx.android.synthetic.main.top_navigation.view.*
 import java.util.*
@@ -132,6 +133,7 @@ class DayFragment : Fragment(), DBHelper.EventsListener, AbsListView.MultiChoice
         }
         mHolder.day_events.apply {
             this@apply.adapter = eventsAdapter
+            addItemDecoration(RecyclerViewDivider(context))
         }
     }
 
