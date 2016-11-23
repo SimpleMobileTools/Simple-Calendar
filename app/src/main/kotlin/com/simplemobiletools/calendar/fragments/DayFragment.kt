@@ -32,7 +32,6 @@ class DayFragment : Fragment(), DBHelper.EventsListener, DBHelper.GetEventsListe
     private val EDIT_EVENT = 1
 
     private var mTextColor = 0
-    private var mSelectedItemsCnt = 0
     private var mDayCode = ""
     private var mEvents: MutableList<Event>? = null
     private var mListener: DeleteListener? = null
