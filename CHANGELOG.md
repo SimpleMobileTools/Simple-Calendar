@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 1.38 *(2016-11-23)*
+----------------------------
+
+ * Always show the "Change view" button on the actionbar
+ * Add a confirmation dialog before deleting events
+ * Reduce the size of todays date on big screens
+
 Version 1.37 *(2016-11-22)*
 ----------------------------
 
