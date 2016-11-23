@@ -23,6 +23,7 @@ class EventsAdapter(val activity: SimpleActivity, val mItems: List<Event>, val i
         val markedItems = HashSet<Int>()
 
         fun toggleItemSelection(itemView: View, select: Boolean, pos: Int = -1) {
+            itemView.event_item_frame.isSelected = select
             if (pos == -1)
                 return
 
