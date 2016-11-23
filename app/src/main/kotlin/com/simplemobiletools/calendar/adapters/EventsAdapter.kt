@@ -1,60 +1,83 @@
 package com.simplemobiletools.calendar.adapters
 
-import android.content.Context
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.BaseAdapter
+import android.support.v7.view.ActionMode
+import android.support.v7.widget.RecyclerView
+import android.view.*
+import com.bignerdranch.android.multiselector.ModalMultiSelectorCallback
+import com.bignerdranch.android.multiselector.MultiSelector
+import com.bignerdranch.android.multiselector.SwappingHolder
 import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.models.Event
 import kotlinx.android.synthetic.main.event_item.view.*
+import java.util.*
 
-class EventsAdapter(context: Context, private val mEvents: List<Event>) : BaseAdapter() {
-    private val mInflater: LayoutInflater
+class EventsAdapter(val activity: SimpleActivity, val mItems: List<Event>, val itemClick: (Event) -> Unit) :
+        RecyclerView.Adapter<EventsAdapter.ViewHolder>() {
+    val multiSelector = MultiSelector()
+    val views = ArrayList<View>()
 
-    init {
-        mInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+    companion object {
+        var actMode: ActionMode? = null
+        val markedItems = HashSet<Int>()
+
+        fun toggleItemSelection(itemView: View, select: Boolean, pos: Int = -1) {
+
+        }
     }
 
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        var view = convertView
-        val viewHolder: ViewHolder
-        if (view == null) {
-            view = mInflater.inflate(R.layout.event_item, parent, false)
-            viewHolder = ViewHolder(view)
-            view!!.tag = viewHolder
-        } else {
-            viewHolder = view.tag as ViewHolder
-        }
-
-        val event = mEvents[position]
-        viewHolder.apply {
-            title.text = event.title
-            description.text = event.description
-            start.text = Formatter.getTime(event.startTS)
-
-            if (event.startTS == event.endTS) {
-                end.visibility = View.INVISIBLE
-            } else {
-                end.text = Formatter.getTime(event.endTS)
-                end.visibility = View.VISIBLE
+    val multiSelectorMode = object : ModalMultiSelectorCallback(multiSelector) {
+        override fun onActionItemClicked(mode: ActionMode, item: MenuItem): Boolean {
+            return when (item.itemId) {
+                else -> false
             }
         }
 
-        return view
+        override fun onCreateActionMode(actionMode: ActionMode?, menu: Menu?): Boolean {
+            super.onCreateActionMode(actionMode, menu)
+            actMode = actionMode
+            activity.menuInflater.inflate(R.menu.menu_day_cab, menu)
+            return true
+        }
+
+        override fun onPrepareActionMode(actionMode: ActionMode?, menu: Menu): Boolean {
+            return true
+        }
+
+        override fun onDestroyActionMode(actionMode: ActionMode?) {
+            super.onDestroyActionMode(actionMode)
+        }
     }
 
-    override fun getCount() = mEvents.size
+    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
+        val view = LayoutInflater.from(parent?.context).inflate(R.layout.event_item, parent, false)
+        return ViewHolder(activity, view, itemClick)
+    }
 
-    override fun getItem(position: Int) = mEvents[position]
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        views.add(holder.bindView(multiSelectorMode, multiSelector, mItems[position], position))
+    }
 
-    override fun getItemId(position: Int) = 0L
+    override fun getItemCount() = mItems.size
 
-    class ViewHolder(view: View) {
-        val title = view.event_item_title
-        val description = view.event_item_description
-        val start = view.event_item_start
-        val end = view.event_item_end
+    class ViewHolder(val activity: SimpleActivity, view: View, val itemClick: (Event) -> (Unit)) : SwappingHolder(view, MultiSelector()) {
+        fun bindView(multiSelectorCallback: ModalMultiSelectorCallback, multiSelector: MultiSelector, event: Event, pos: Int): View {
+
+            itemView.apply {
+                event_item_title.text = event.title
+                event_item_description.text = event.description
+                event_item_start.text = Formatter.getTime(event.startTS)
+
+                if (event.startTS == event.endTS) {
+                    event_item_end.visibility = View.INVISIBLE
+                } else {
+                    event_item_end.text = Formatter.getTime(event.endTS)
+                    event_item_end.visibility = View.VISIBLE
+                }
+            }
+
+            return itemView
+        }
     }
 }

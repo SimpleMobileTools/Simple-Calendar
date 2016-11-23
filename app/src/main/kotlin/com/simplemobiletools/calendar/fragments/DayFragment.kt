@@ -10,11 +10,11 @@ import android.support.v4.app.Fragment
 import android.support.v7.app.AlertDialog
 import android.view.*
 import android.widget.AbsListView
-import android.widget.AdapterView
 import android.widget.DatePicker
 import android.widget.RelativeLayout
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.EventActivity
+import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.adapters.EventsAdapter
 import com.simplemobiletools.calendar.extensions.adjustAlpha
 import com.simplemobiletools.calendar.helpers.*
@@ -26,7 +26,7 @@ import kotlinx.android.synthetic.main.top_navigation.view.*
 import java.util.*
 import kotlin.comparisons.compareBy
 
-class DayFragment : Fragment(), DBHelper.EventsListener, AdapterView.OnItemClickListener, AbsListView.MultiChoiceModeListener, DBHelper.GetEventsListener {
+class DayFragment : Fragment(), DBHelper.EventsListener, AbsListView.MultiChoiceModeListener, DBHelper.GetEventsListener {
 
     private val EDIT_EVENT = 1
 
@@ -127,11 +127,11 @@ class DayFragment : Fragment(), DBHelper.EventsListener, AdapterView.OnItemClick
         if (activity == null)
             return
 
-        val eventsAdapter = EventsAdapter(activity.baseContext, eventsToShow)
+        val eventsAdapter = EventsAdapter(activity as SimpleActivity, eventsToShow) {
+
+        }
         mHolder.day_events.apply {
-            adapter = eventsAdapter
-            onItemClickListener = this@DayFragment
-            setMultiChoiceModeListener(this@DayFragment)
+            this@apply.adapter = eventsAdapter
         }
     }
 
@@ -156,13 +156,13 @@ class DayFragment : Fragment(), DBHelper.EventsListener, AdapterView.OnItemClick
     private fun getEventsToShow(events: MutableList<Event>) = events.filter { !mToBeDeleted.contains(it.id) }
 
     private fun prepareDeleteEvents() {
-        val checked = mHolder.day_events.checkedItemPositions
+        /*val checked = mHolder.day_events.checkedItemPositions
         mEvents!!.indices
                 .filter { checked.get(it) }
                 .map { mEvents!![it] }
                 .forEach { mToBeDeleted.add(it.id) }
 
-        notifyDeletion()
+        notifyDeletion()*/
     }
 
     private fun notifyDeletion() {
@@ -214,9 +214,9 @@ class DayFragment : Fragment(), DBHelper.EventsListener, AdapterView.OnItemClick
         mode.invalidate()
     }
 
-    override fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+    /*override fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long) {
         editEvent(getEventsToShow(mEvents!!)[position].id)
-    }
+    }*/
 
     override fun eventInserted(event: Event) {
     }

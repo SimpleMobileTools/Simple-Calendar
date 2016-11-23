@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    android:id="@+id/day_holder"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/day_holder"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <include layout="@layout/top_navigation"/>
 
-    <ListView
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/day_events"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/top_value"
-        android:choiceMode="multipleChoiceModal"
         android:clipToPadding="false"
-        android:paddingLeft="@dimen/activity_margin"/>
+        android:paddingLeft="@dimen/activity_margin"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
 
 </RelativeLayout>
