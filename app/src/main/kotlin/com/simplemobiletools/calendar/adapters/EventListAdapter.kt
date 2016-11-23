@@ -16,7 +16,7 @@ import com.simplemobiletools.calendar.models.ListSection
 import kotlinx.android.synthetic.main.event_item.view.*
 import java.util.*
 
-class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>, val listener: EventListAdapter.ItemOperationsListener?, val itemClick: (ListItem) -> Unit) :
+class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>, val listener: EventListAdapter.ItemOperationsListener?, val itemClick: (Int) -> Unit) :
         RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     val multiSelector = MultiSelector()
     val views = ArrayList<View>()
@@ -96,7 +96,7 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
 
     override fun getItemCount() = mItems.size
 
-    class ViewHolder(val activity: SimpleActivity, view: View, val itemClick: (ListItem) -> (Unit)) : SwappingHolder(view, MultiSelector()) {
+    class ViewHolder(val activity: SimpleActivity, view: View, val itemClick: (Int) -> (Unit)) : SwappingHolder(view, MultiSelector()) {
         fun bindView(multiSelectorCallback: ModalMultiSelectorCallback, multiSelector: MultiSelector, listItem: ListItem, pos: Int): View {
             val item = listItem as ListEvent
             itemView.apply {
@@ -122,9 +122,29 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
                 event_item_end.setTextColor(currTextColor)
                 event_item_title.setTextColor(currTextColor)
                 event_item_description.setTextColor(currTextColor)
+
+                setOnClickListener { viewClicked(multiSelector, listItem, pos) }
             }
 
             return itemView
+        }
+
+        fun viewClicked(multiSelector: MultiSelector, listItem: ListItem, pos: Int) {
+            if (multiSelector.isSelectable) {
+                val isSelected = multiSelector.selectedPositions.contains(layoutPosition)
+                multiSelector.setSelected(this, !isSelected)
+                EventsAdapter.toggleItemSelection(itemView, !isSelected, pos)
+
+                val selectedCnt = multiSelector.selectedPositions.size
+                if (selectedCnt == 0) {
+                    actMode?.finish()
+                } else {
+                    actMode?.title = selectedCnt.toString()
+                }
+                EventsAdapter.actMode?.invalidate()
+            } else {
+                itemClick((listItem as ListEvent).id)
+            }
         }
     }
 
