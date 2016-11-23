@@ -152,7 +152,7 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, AdapterView.On
 
     override fun onActionItemClicked(mode: ActionMode, item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.delete -> {
+            R.id.cab_delete -> {
                 prepareDeleteEvents()
                 mode.finish()
                 true

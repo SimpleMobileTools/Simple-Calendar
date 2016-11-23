@@ -8,8 +8,9 @@ import android.graphics.PorterDuff
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AlertDialog
-import android.view.*
-import android.widget.AbsListView
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.DatePicker
 import android.widget.RelativeLayout
 import com.simplemobiletools.calendar.R
@@ -27,8 +28,7 @@ import kotlinx.android.synthetic.main.top_navigation.view.*
 import java.util.*
 import kotlin.comparisons.compareBy
 
-class DayFragment : Fragment(), DBHelper.EventsListener, AbsListView.MultiChoiceModeListener, DBHelper.GetEventsListener {
-
+class DayFragment : Fragment(), DBHelper.EventsListener, DBHelper.GetEventsListener, EventsAdapter.ItemOperationsListener {
     private val EDIT_EVENT = 1
 
     private var mTextColor = 0
@@ -128,7 +128,7 @@ class DayFragment : Fragment(), DBHelper.EventsListener, AbsListView.MultiChoice
         if (activity == null)
             return
 
-        val eventsAdapter = EventsAdapter(activity as SimpleActivity, eventsToShow) {
+        val eventsAdapter = EventsAdapter(activity as SimpleActivity, eventsToShow, this) {
             editEvent(it.id)
         }
         mHolder.day_events.apply {
@@ -157,14 +157,9 @@ class DayFragment : Fragment(), DBHelper.EventsListener, AbsListView.MultiChoice
 
     private fun getEventsToShow(events: MutableList<Event>) = events.filter { !mToBeDeleted.contains(it.id) }
 
-    private fun prepareDeleteEvents() {
-        /*val checked = mHolder.day_events.checkedItemPositions
-        mEvents!!.indices
-                .filter { checked.get(it) }
-                .map { mEvents!![it] }
-                .forEach { mToBeDeleted.add(it.id) }
-
-        notifyDeletion()*/
+    override fun prepareForDeleting(ids: ArrayList<Int>) {
+        mToBeDeleted = ids
+        notifyDeletion()
     }
 
     private fun notifyDeletion() {
@@ -180,40 +175,6 @@ class DayFragment : Fragment(), DBHelper.EventsListener, AbsListView.MultiChoice
     fun undoDeletion() {
         mToBeDeleted.clear()
         updateEvents(mEvents!!)
-    }
-
-    override fun onPrepareActionMode(mode: ActionMode, menu: Menu) = true
-
-    override fun onActionItemClicked(mode: ActionMode, item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.delete -> {
-                prepareDeleteEvents()
-                mode.finish()
-                true
-            }
-            else -> false
-        }
-    }
-
-    override fun onCreateActionMode(mode: ActionMode, menu: Menu): Boolean {
-        val inflater = mode.menuInflater
-        inflater.inflate(R.menu.cab_day, menu)
-        return true
-    }
-
-    override fun onDestroyActionMode(mode: ActionMode) {
-        mSelectedItemsCnt = 0
-    }
-
-    override fun onItemCheckedStateChanged(mode: ActionMode, position: Int, id: Long, checked: Boolean) {
-        if (checked) {
-            mSelectedItemsCnt++
-        } else {
-            mSelectedItemsCnt--
-        }
-
-        mode.title = mSelectedItemsCnt.toString()
-        mode.invalidate()
     }
 
     override fun eventInserted(event: Event) {

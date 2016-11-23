@@ -196,7 +196,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_event, menu)
-        val item = menu.findItem(R.id.delete)
+        val item = menu.findItem(R.id.cab_delete)
         if (mEvent.id == 0) {
             item.isVisible = false
         }
@@ -205,7 +205,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.delete -> {
+            R.id.cab_delete -> {
                 deleteEvent()
                 true
             }

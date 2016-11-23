@@ -10,10 +10,11 @@ import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.models.Event
+import com.simplemobiletools.filepicker.dialogs.ConfirmationDialog
 import kotlinx.android.synthetic.main.event_item.view.*
 import java.util.*
 
-class EventsAdapter(val activity: SimpleActivity, val mItems: List<Event>, val itemClick: (Event) -> Unit) :
+class EventsAdapter(val activity: SimpleActivity, val mItems: List<Event>, val listener: ItemOperationsListener?, val itemClick: (Event) -> Unit) :
         RecyclerView.Adapter<EventsAdapter.ViewHolder>() {
     val multiSelector = MultiSelector()
     val views = ArrayList<View>()
@@ -37,6 +38,10 @@ class EventsAdapter(val activity: SimpleActivity, val mItems: List<Event>, val i
     val multiSelectorMode = object : ModalMultiSelectorCallback(multiSelector) {
         override fun onActionItemClicked(mode: ActionMode, item: MenuItem): Boolean {
             return when (item.itemId) {
+                R.id.cab_delete -> {
+                    askConfirmDelete()
+                    true
+                }
                 else -> false
             }
         }
@@ -55,6 +60,20 @@ class EventsAdapter(val activity: SimpleActivity, val mItems: List<Event>, val i
             views.forEach { toggleItemSelection(it, false) }
             markedItems.clear()
         }
+    }
+
+    private fun askConfirmDelete() {
+        ConfirmationDialog(activity) {
+            actMode?.finish()
+            prepareForDeleting()
+        }
+    }
+
+    private fun prepareForDeleting() {
+        val selections = multiSelector.selectedPositions
+        val ids = ArrayList<Int>(selections.size)
+        selections.forEach { ids.add(mItems[it].id) }
+        listener?.prepareForDeleting(ids)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
@@ -116,5 +135,9 @@ class EventsAdapter(val activity: SimpleActivity, val mItems: List<Event>, val i
                 itemClick(event)
             }
         }
+    }
+
+    interface ItemOperationsListener {
+        fun prepareForDeleting(ids: ArrayList<Int>)
     }
 }
