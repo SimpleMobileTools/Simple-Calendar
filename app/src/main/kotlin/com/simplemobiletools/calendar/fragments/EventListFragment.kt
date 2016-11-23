@@ -163,7 +163,7 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, AdapterView.On
 
     override fun onCreateActionMode(mode: ActionMode, menu: Menu?): Boolean {
         val inflater = mode.menuInflater
-        inflater.inflate(R.menu.menu_day_cab, menu)
+        inflater.inflate(R.menu.cab_day, menu)
         return true
     }
 

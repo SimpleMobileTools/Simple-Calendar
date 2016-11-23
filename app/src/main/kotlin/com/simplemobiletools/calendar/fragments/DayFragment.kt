@@ -128,7 +128,7 @@ class DayFragment : Fragment(), DBHelper.EventsListener, AbsListView.MultiChoice
             return
 
         val eventsAdapter = EventsAdapter(activity as SimpleActivity, eventsToShow) {
-
+            editEvent(it.id)
         }
         mHolder.day_events.apply {
             this@apply.adapter = eventsAdapter
@@ -195,7 +195,7 @@ class DayFragment : Fragment(), DBHelper.EventsListener, AbsListView.MultiChoice
 
     override fun onCreateActionMode(mode: ActionMode, menu: Menu): Boolean {
         val inflater = mode.menuInflater
-        inflater.inflate(R.menu.menu_day_cab, menu)
+        inflater.inflate(R.menu.cab_day, menu)
         return true
     }
 
@@ -213,10 +213,6 @@ class DayFragment : Fragment(), DBHelper.EventsListener, AbsListView.MultiChoice
         mode.title = mSelectedItemsCnt.toString()
         mode.invalidate()
     }
-
-    /*override fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-        editEvent(getEventsToShow(mEvents!!)[position].id)
-    }*/
 
     override fun eventInserted(event: Event) {
     }
