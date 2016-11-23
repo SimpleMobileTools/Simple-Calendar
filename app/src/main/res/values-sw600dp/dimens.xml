@@ -7,7 +7,7 @@
 
     <dimen name="normal_text_size">18sp</dimen>
     <dimen name="day_text_size">24sp</dimen>
-    <dimen name="month_text_size">33sp</dimen>
-    <dimen name="today_text_size">48sp</dimen>
+    <dimen name="today_text_size">34sp</dimen>
+    <dimen name="month_text_size">30sp</dimen>
     <dimen name="config_text_size">22sp</dimen>
 </resources>
