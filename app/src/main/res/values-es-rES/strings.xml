@@ -101,4 +101,16 @@
     <string name="saturday_letter">S</string>
     <string name="sunday_letter">D</string>
 
+    <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
+    <string name="app_short_description">Un simple calendario con eventos, widget personalizable y sin anuncios.</string>
+    <string name="app_long_description">
+        Un calendario sin conexión sin ninguna otra integración con el calendario. Usted puede crear fácilmente eventos recurrentes y configurar recordatorios. También muestra los números de semana.
+
+
+        Contiene un widget 4x4 de tamaño variable en el que se puede personalizar el color del texto, así como el alfa y el color del fondo.
+
+        No contiene anuncios ni permisos innecesarios. Es totalmente de código abierto y ofrece un tema oscuro también.
+
+        Esta aplicación es solo una parte de una serie más grande de aplicaciones. Puede encontrar el resto de ellas en http://www.simplemobiletools.com
+    </string>
 </resources>
