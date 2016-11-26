@@ -58,7 +58,7 @@ class NotificationReceiver : BroadcastReceiver() {
                 .setSound(soundUri)
 
         if (Config.newInstance(context).vibrateOnReminder)
-            builder.setVibrate(longArrayOf(0, 500))
+            builder.setVibrate(longArrayOf(0, 300, 300, 300))
 
         return builder.build()
     }
