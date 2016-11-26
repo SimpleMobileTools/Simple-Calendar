@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 1.39 *(2016-11-26)*
+----------------------------
+
+ * Activate the notification light at reminders
+ * Add an optional vibration to reminders, disabled by default
+ * Misc smaller improvements
+
 Version 1.38 *(2016-11-23)*
 ----------------------------
 
