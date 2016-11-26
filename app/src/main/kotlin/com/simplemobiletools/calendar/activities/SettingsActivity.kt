@@ -5,8 +5,12 @@ import android.support.v4.app.TaskStackBuilder
 import android.view.View
 import android.widget.AdapterView
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.extensions.*
+import com.simplemobiletools.calendar.extensions.beVisibleIf
+import com.simplemobiletools.calendar.extensions.hideKeyboard
+import com.simplemobiletools.calendar.extensions.showKeyboard
+import com.simplemobiletools.calendar.extensions.value
 import com.simplemobiletools.calendar.helpers.*
+import com.simplemobiletools.filepicker.extensions.toast
 import kotlinx.android.synthetic.main.activity_settings.*
 
 class SettingsActivity : SimpleActivity() {
@@ -17,6 +21,7 @@ class SettingsActivity : SimpleActivity() {
         setupDarkTheme()
         setupSundayFirst()
         setupWeekNumbers()
+        setupVibrate()
         setupEventReminder()
     }
 
@@ -42,6 +47,14 @@ class SettingsActivity : SimpleActivity() {
         settings_week_numbers_holder.setOnClickListener {
             settings_week_numbers.toggle()
             mConfig.displayWeekNumbers = settings_week_numbers.isChecked
+        }
+    }
+
+    private fun setupVibrate() {
+        settings_vibrate.isChecked = mConfig.vibrateOnReminder
+        settings_vibrate_holder.setOnClickListener {
+            settings_vibrate.toggle()
+            mConfig.vibrateOnReminder = settings_vibrate.isChecked
         }
     }
 

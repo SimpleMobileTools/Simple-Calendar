@@ -7,7 +7,6 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.os.SystemClock
-import android.widget.Toast
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.models.Event
@@ -25,8 +24,6 @@ fun Context.updateWidget() {
         sendBroadcast(this)
     }
 }
-
-fun Context.toast(id: Int) = Toast.makeText(this, resources.getString(id), Toast.LENGTH_SHORT).show()
 
 fun Context.scheduleNextEvent(event: Event) {
     var startTS = event.startTS - event.reminderMinutes * 60
@@ -53,7 +50,6 @@ private fun getNewTS(ts: Int, isMonthly: Boolean): Int {
     }
     return (dateTime.millis / 1000).toInt()
 }
-
 
 fun Context.scheduleNotification(event: Event) {
     if (event.reminderMinutes == -1)

@@ -64,6 +64,7 @@
     <string name="dark_theme">Tema oscuro</string>
     <string name="sunday_first">Domingo como primer día</string>
     <string name="week_numbers">Mostrar los números de la semana</string>
+    <string name="vibrate">Vibrate on reminder notification</string>
     <string name="default_event_reminder">Recordatorio predeterminado de un evento</string>
     <string name="reminder_saved">Recordatorio guardado</string>
 

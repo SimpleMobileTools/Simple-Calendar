@@ -15,6 +15,7 @@ import com.simplemobiletools.calendar.extensions.*
 import com.simplemobiletools.calendar.fragments.DayFragment
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.models.Event
+import com.simplemobiletools.filepicker.extensions.toast
 import kotlinx.android.synthetic.main.activity_event.*
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
