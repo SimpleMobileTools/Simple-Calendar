@@ -35,10 +35,10 @@
     <string name="yearly">Jährlich</string>
 
     <!-- Custom reminder -->
-    <string name="before">before</string>
-    <string name="minutes">minutes</string>
-    <string name="hours">hours</string>
-    <string name="days">days</string>
+    <string name="before">vorher</string>
+    <string name="minutes">Minuten</string>
+    <string name="hours">Stunden</string>
+    <string name="days">Tage</string>
 
     <!-- Day details -->
     <string name="details">Details</string>
@@ -64,8 +64,8 @@
     <string name="dark_theme">Dunkles Design</string>
     <string name="sunday_first">Sonntag als erster Wochentag</string>
     <string name="week_numbers">Zeige Kalenderwoche an</string>
-    <string name="default_event_reminder">Default event reminder</string>
-    <string name="reminder_saved">Reminder saved</string>
+    <string name="default_event_reminder">Standard Termin Erinnerung</string>
+    <string name="reminder_saved">Erinnerung gespeichert</string>
 
     <!-- License -->
     <string name="notice">Diese App nutzt die folgenden Drittanbieterbibliotheken, die mein Leben einfacher machen. Danke.</string>
