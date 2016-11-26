@@ -10,8 +10,8 @@ android {
         applicationId "com.simplemobiletools.calendar"
         minSdkVersion 16
         targetSdkVersion 23
-        versionCode 38
-        versionName "1.38"
+        versionCode 39
+        versionName "1.39"
     }
 
     signingConfigs {
