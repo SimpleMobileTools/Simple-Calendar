@@ -37,7 +37,7 @@ class NotificationReceiver : BroadcastReceiver() {
             context.scheduleNextEvent(event)
     }
 
-    private fun getEventTime(startTime: String, endTime: String) = if (startTime == endTime) startTime else startTime + " - " + endTime
+    private fun getEventTime(startTime: String, endTime: String) = if (startTime == endTime) startTime else ("$startTime - $endTime")
 
     private fun getPendingIntent(context: Context, event: Event): PendingIntent {
         val intent = Intent(context, EventActivity::class.java)
@@ -52,6 +52,7 @@ class NotificationReceiver : BroadcastReceiver() {
                 .setContentText(content)
                 .setSmallIcon(R.mipmap.calendar)
                 .setContentIntent(pendingIntent)
+                .setDefaults(Notification.DEFAULT_LIGHTS)
                 .setAutoCancel(true)
                 .setSound(soundUri)
                 .build()
