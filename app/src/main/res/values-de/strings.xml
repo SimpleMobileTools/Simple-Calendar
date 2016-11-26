@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Schlichter Kalendner</string>
+    <string name="app_name">Schlichter Kalender</string>
     <string name="app_launcher_name">Kalender</string>
     <string name="undo">Rückgängig</string>
     <string name="ok">OK</string>
@@ -7,7 +7,7 @@
     <string name="change_view">Ansicht ändern</string>
     <string name="monthly_view">Monatsansicht</string>
     <string name="yearly_view">Jahresansicht</string>
-    <string name="simple_event_list">Simple event list</string>
+    <string name="simple_event_list">Einfache Termin Liste</string>
     <string name="no_events_added">Sieht aus als wäre dein Kalender leer.\nDu kannst neue Termine mit dem Plus Button unten rechts erstellen.</string>
 
     <!-- Event -->
@@ -25,7 +25,7 @@
     <string name="reminder">Erinnerung</string>
     <string name="off">Aus</string>
     <string name="at_start">Zu Beginn</string>
-    <string name="custom">Custom</string>
+    <string name="custom">Benutzerdefiniert</string>
     <string name="repetition">Wiederholung</string>
     <string name="none">Keine</string>
     <string name="daily">Täglich</string>
@@ -35,10 +35,10 @@
     <string name="yearly">Jährlich</string>
 
     <!-- Custom reminder -->
-    <string name="before">before</string>
-    <string name="minutes">minutes</string>
-    <string name="hours">hours</string>
-    <string name="days">days</string>
+    <string name="before">vorher</string>
+    <string name="minutes">Minuten</string>
+    <string name="hours">Stunden</string>
+    <string name="days">Tage</string>
 
     <!-- Day details -->
     <string name="details">Details</string>
@@ -64,8 +64,8 @@
     <string name="dark_theme">Dunkles Design</string>
     <string name="sunday_first">Sonntag als erster Wochentag</string>
     <string name="week_numbers">Zeige Kalenderwoche an</string>
-    <string name="default_event_reminder">Default event reminder</string>
-    <string name="reminder_saved">Reminder saved</string>
+    <string name="default_event_reminder">Standard Termin Erinnerung</string>
+    <string name="reminder_saved">Erinnerung gespeichert</string>
 
     <!-- License -->
     <string name="notice">Diese App nutzt die folgenden Drittanbieterbibliotheken, die mein Leben einfacher machen. Danke.</string>
