@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.view.WindowManager
 import android.widget.AdapterView
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.*
@@ -78,6 +79,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
     }
 
     private fun setupEditEvent() {
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
         title = resources.getString(R.string.edit_event)
         mEventStartDateTime = Formatter.getDateTimeFromTS(mEvent.startTS)
         mEventEndDateTime = Formatter.getDateTimeFromTS(mEvent.endTS)
@@ -85,10 +87,10 @@ class EventActivity : SimpleActivity(), DBHelper.EventsListener {
         endCheckboxChecked(event_end_checkbox.isChecked)
         event_title.setText(mEvent.title)
         event_description.setText(mEvent.description)
-        hideKeyboard()
     }
 
     private fun setupNewEvent(dayCode: String) {
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
         title = resources.getString(R.string.new_event)
         mEventStartDateTime = Formatter.getDateTimeFromCode(dayCode).withZoneRetainFields(DateTimeZone.getDefault()).withHourOfDay(13)
         mEventEndDateTime = mEventStartDateTime
