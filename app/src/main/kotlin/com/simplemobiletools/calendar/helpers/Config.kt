@@ -35,7 +35,7 @@ class Config(context: Context) {
         set(displayWeekNumbers) = mPrefs.edit().putBoolean(WEEK_NUMBERS, displayWeekNumbers).apply()
 
     var vibrateOnReminder: Boolean
-        get() = mPrefs.getBoolean(VIBRATE, true)
+        get() = mPrefs.getBoolean(VIBRATE, false)
         set(vibrate) = mPrefs.edit().putBoolean(VIBRATE, vibrate).apply()
 
     var storedView: Int

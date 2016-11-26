@@ -10,6 +10,7 @@ import android.media.RingtoneManager
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.extensions.scheduleNextEvent
+import com.simplemobiletools.calendar.helpers.Config
 import com.simplemobiletools.calendar.helpers.DBHelper
 import com.simplemobiletools.calendar.helpers.EVENT_ID
 import com.simplemobiletools.calendar.helpers.Formatter
@@ -30,14 +31,14 @@ class NotificationReceiver : BroadcastReceiver() {
         val startTime = Formatter.getTime(event.startTS)
         val endTime = Formatter.getTime(event.endTS)
         val title = event.title
-        val notification = getNotification(context, pendingIntent, getEventTime(startTime, endTime) + " " + title)
+        val notification = getNotification(context, pendingIntent, "${getEventTime(startTime, endTime)} $title")
         notificationManager.notify(id, notification)
 
         if (event.repeatInterval != 0)
             context.scheduleNextEvent(event)
     }
 
-    private fun getEventTime(startTime: String, endTime: String) = if (startTime == endTime) startTime else ("$startTime - $endTime")
+    private fun getEventTime(startTime: String, endTime: String) = if (startTime == endTime) startTime else "$startTime - $endTime"
 
     private fun getPendingIntent(context: Context, event: Event): PendingIntent {
         val intent = Intent(context, EventActivity::class.java)
@@ -47,7 +48,7 @@ class NotificationReceiver : BroadcastReceiver() {
 
     private fun getNotification(context: Context, pendingIntent: PendingIntent, content: String): Notification {
         val soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
-        return Notification.Builder(context)
+        val builder = Notification.Builder(context)
                 .setContentTitle(context.resources.getString(R.string.app_name))
                 .setContentText(content)
                 .setSmallIcon(R.mipmap.calendar)
@@ -55,6 +56,10 @@ class NotificationReceiver : BroadcastReceiver() {
                 .setDefaults(Notification.DEFAULT_LIGHTS)
                 .setAutoCancel(true)
                 .setSound(soundUri)
-                .build()
+
+        if (Config.newInstance(context).vibrateOnReminder)
+            builder.setVibrate(longArrayOf(0, 500))
+
+        return builder.build()
     }
 }
