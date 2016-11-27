@@ -41,15 +41,15 @@ class MyWidgetListProvider : AppWidgetProvider() {
 
         mWidgetManager = AppWidgetManager.getInstance(mContext)
 
-        mRemoteViews = RemoteViews(mContext.packageName, R.layout.fragment_month)
-        mIntent = Intent(mContext, MyWidgetMonthlyProvider::class.java)
+        mRemoteViews = RemoteViews(mContext.packageName, R.layout.widget_event_list)
+        mIntent = Intent(mContext, MyWidgetListProvider::class.java)
 
         val bgColor = prefs.getInt(WIDGET_BG_COLOR, Color.BLACK)
-        mRemoteViews.setInt(R.id.calendar_holder, "setBackgroundColor", bgColor)
+        mRemoteViews.setInt(R.id.widget_event_list, "setBackgroundColor", bgColor)
     }
 
     private fun updateWidget() {
-        val thisWidget = ComponentName(mContext, MyWidgetMonthlyProvider::class.java)
+        val thisWidget = ComponentName(mContext, MyWidgetListProvider::class.java)
         AppWidgetManager.getInstance(mContext).updateAppWidget(thisWidget, mRemoteViews)
     }
 
