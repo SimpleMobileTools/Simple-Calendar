@@ -20,7 +20,7 @@ import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.models.Day
 import kotlinx.android.synthetic.main.first_row.*
 import kotlinx.android.synthetic.main.top_navigation.*
-import kotlinx.android.synthetic.main.widget_config.*
+import kotlinx.android.synthetic.main.widget_config_monthly.*
 import org.joda.time.DateTime
 import yuku.ambilwarna.AmbilWarnaDialog
 
@@ -42,7 +42,7 @@ class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setResult(Activity.RESULT_CANCELED)
-        setContentView(R.layout.widget_config)
+        setContentView(R.layout.widget_config_monthly)
         mPackageName = packageName
         initVariables()
 
