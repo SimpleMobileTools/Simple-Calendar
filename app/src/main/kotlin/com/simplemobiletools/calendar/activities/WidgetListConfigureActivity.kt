@@ -13,9 +13,12 @@ import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.adapters.EventListWidgetAdapter
 import com.simplemobiletools.calendar.extensions.adjustAlpha
 import com.simplemobiletools.calendar.helpers.*
+import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.models.ListEvent
 import com.simplemobiletools.calendar.models.ListItem
+import com.simplemobiletools.calendar.models.ListSection
 import kotlinx.android.synthetic.main.widget_config_list.*
+import org.joda.time.DateTime
 import yuku.ambilwarna.AmbilWarnaDialog
 import java.util.*
 
@@ -46,11 +49,7 @@ class WidgetListConfigureActivity : AppCompatActivity() {
         if (mWidgetId == AppWidgetManager.INVALID_APPWIDGET_ID)
             finish()
 
-        val listItems = ArrayList<ListItem>(10)
-        val event = ListEvent(1, 1, 2, "title", "desc")
-        listItems.add(event)
-
-        mEventsAdapter = EventListWidgetAdapter(this, listItems)
+        mEventsAdapter = EventListWidgetAdapter(this, getListItems())
         mEventsAdapter!!.setTextColor(mTextColor)
         config_events_list.adapter = mEventsAdapter
 
@@ -146,6 +145,31 @@ class WidgetListConfigureActivity : AppCompatActivity() {
         config_events_list.setBackgroundColor(mBgColor)
         config_bg_color.setBackgroundColor(mBgColor)
         config_save.setBackgroundColor(mBgColor)
+    }
+
+    private fun getListItems(): ArrayList<ListItem> {
+        val listItems = ArrayList<ListItem>(10)
+        var dateTime = DateTime.now().withTime(0, 0, 0, 0).plusDays(1)
+        var code = Formatter.getDayCodeFromTS((dateTime.millis / 1000).toInt())
+        var day = Formatter.getDayTitle(this, code)
+        listItems.add(ListSection(day))
+
+        var time = dateTime.withHourOfDay(7)
+        listItems.add(ListEvent(1, (time.millis / 1000).toInt(), (time.plusMinutes(30).millis / 1000).toInt(), "Workout", "Leg day"))
+        time = dateTime.withHourOfDay(8)
+        listItems.add(ListEvent(2, (time.millis / 1000).toInt(), (time.plusHours(1).millis / 1000).toInt(), "Meeting with John", "In Rockstone Garden"))
+
+        dateTime = dateTime.plusDays(1)
+        code = Formatter.getDayCodeFromTS((dateTime.millis / 1000).toInt())
+        day = Formatter.getDayTitle(this, code)
+        listItems.add(ListSection(day))
+
+        time = dateTime.withHourOfDay(13)
+        listItems.add(ListEvent(3, (time.millis / 1000).toInt(), (time.plusHours(1).millis / 1000).toInt(), "Lunch with Mary", "In the Plaza"))
+        time = dateTime.withHourOfDay(18)
+        listItems.add(ListEvent(4, (time.millis / 1000).toInt(), (time.plusMinutes(10).millis / 1000).toInt(), "Coffee time", ""))
+
+        return listItems
     }
 
     private val bgSeekbarChangeListener = object : SeekBar.OnSeekBarChangeListener {

@@ -11,7 +11,10 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/config_bg_color"
         android:layout_marginBottom="@dimen/activity_margin"
-        android:clipToPadding="false"/>
+        android:clipToPadding="false"
+        android:divider="@null"
+        android:paddingLeft="@dimen/activity_margin"
+        android:paddingTop="@dimen/medium_padding"/>
 
     <Button
         android:id="@+id/config_bg_color"
