@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_centerHorizontal="true"
-    android:layout_margin="@dimen/activity_margin">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="@dimen/activity_margin">
+
+    <ListView
+        android:id="@+id/config_events_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/config_bg_color"
+        android:layout_marginBottom="@dimen/activity_margin"
+        android:clipToPadding="false"/>
 
     <Button
         android:id="@+id/config_bg_color"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_above="@+id/config_text_color" />
+        android:layout_above="@+id/config_text_color"/>
 
     <RelativeLayout
         android:id="@+id/config_bg_seekbar_holder"
@@ -26,14 +34,14 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:paddingLeft="@dimen/activity_margin"
-            android:paddingRight="@dimen/activity_margin" />
+            android:paddingRight="@dimen/activity_margin"/>
     </RelativeLayout>
 
     <Button
         android:id="@+id/config_text_color"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentBottom="true"/>
 
     <Button
         android:id="@+id/config_save"
@@ -46,5 +54,5 @@
         android:paddingRight="@dimen/activity_margin"
         android:text="@android:string/ok"
         android:textColor="@android:color/white"
-        android:textSize="@dimen/config_text_size" />
+        android:textSize="@dimen/config_text_size"/>
 </RelativeLayout>

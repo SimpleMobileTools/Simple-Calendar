@@ -10,10 +10,14 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.SeekBar
 import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.adapters.EventListWidgetAdapter
 import com.simplemobiletools.calendar.extensions.adjustAlpha
 import com.simplemobiletools.calendar.helpers.*
+import com.simplemobiletools.calendar.models.ListEvent
+import com.simplemobiletools.calendar.models.ListItem
 import kotlinx.android.synthetic.main.widget_config_list.*
 import yuku.ambilwarna.AmbilWarnaDialog
+import java.util.*
 
 class WidgetListConfigureActivity : AppCompatActivity() {
     lateinit var mRes: Resources
@@ -25,6 +29,8 @@ class WidgetListConfigureActivity : AppCompatActivity() {
     private var mBgColor = 0
     private var mTextColorWithoutTransparency = 0
     private var mTextColor = 0
+
+    private var mEventsAdapter: EventListWidgetAdapter? = null
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +45,14 @@ class WidgetListConfigureActivity : AppCompatActivity() {
 
         if (mWidgetId == AppWidgetManager.INVALID_APPWIDGET_ID)
             finish()
+
+        val listItems = ArrayList<ListItem>(10)
+        val event = ListEvent(1, 1, 2, "title", "desc")
+        listItems.add(event)
+
+        mEventsAdapter = EventListWidgetAdapter(this, listItems)
+        mEventsAdapter!!.setTextColor(mTextColor)
+        config_events_list.adapter = mEventsAdapter
 
         config_save.setOnClickListener { saveConfig() }
         config_bg_color.setOnClickListener { pickBackgroundColor() }
@@ -122,13 +136,14 @@ class WidgetListConfigureActivity : AppCompatActivity() {
 
     private fun updateTextColors() {
         mTextColor = mTextColorWithoutTransparency.adjustAlpha(HIGH_ALPHA)
-
+        mEventsAdapter?.setTextColor(mTextColor)
         config_text_color.setBackgroundColor(mTextColor)
         config_save.setTextColor(mTextColor)
     }
 
     private fun updateBgColor() {
         mBgColor = mBgColorWithoutTransparency.adjustAlpha(mBgAlpha)
+        config_events_list.setBackgroundColor(mBgColor)
         config_bg_color.setBackgroundColor(mBgColor)
         config_save.setBackgroundColor(mBgColor)
     }

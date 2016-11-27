@@ -20,17 +20,11 @@ class EventListWidgetAdapter(val context: Context, val mEvents: List<ListItem>) 
 
     private val mInflater: LayoutInflater
     private var mTopDivider: Drawable? = null
-    private var mNow = (System.currentTimeMillis() / 1000).toInt()
-    private var mOrangeColor = 0
-    private var mGreyColor = 0
-    private var mTodayDate = ""
+    private var mTextColor = 0
 
     init {
         mInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         mTopDivider = context.resources.getDrawable(R.drawable.divider)
-        mOrangeColor = context.resources.getColor(R.color.colorPrimary)
-        val mTodayCode = Formatter.getDayCodeFromTS(mNow)
-        mTodayDate = Formatter.getEventDate(context, mTodayCode)
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
@@ -71,45 +65,35 @@ class EventListWidgetAdapter(val context: Context, val mEvents: List<ListItem>) 
                     }
                 }
 
-                val currTextColor = if (item.startTS <= mNow) mOrangeColor else mGreyColor
-                start?.setTextColor(currTextColor)
-                end?.setTextColor(currTextColor)
-                title.setTextColor(currTextColor)
-                description?.setTextColor(currTextColor)
+                start?.setTextColor(mTextColor)
+                end?.setTextColor(mTextColor)
+                title.setTextColor(mTextColor)
+                description?.setTextColor(mTextColor)
             }
         } else {
             val item = mEvents[position] as ListSection
             viewHolder.title.text = item.title
             viewHolder.title.setCompoundDrawablesWithIntrinsicBounds(null, if (position == 0) null else mTopDivider, null, null)
-
-            if (mGreyColor == 0)
-                mGreyColor = viewHolder.title.currentTextColor
-
-            viewHolder.title.setTextColor(if (item.title == mTodayDate) mOrangeColor else mGreyColor)
+            viewHolder.title.setTextColor(mTextColor)
         }
 
         return view
     }
 
-    override fun getItemViewType(position: Int): Int {
-        return if (mEvents[position] is ListEvent) ITEM_EVENT else ITEM_HEADER
+    fun setTextColor(color: Int) {
+        mTextColor = color
+        notifyDataSetChanged()
     }
 
-    override fun getViewTypeCount(): Int {
-        return 2
-    }
+    override fun getItemViewType(position: Int) = if (mEvents[position] is ListEvent) ITEM_EVENT else ITEM_HEADER
 
-    override fun getCount(): Int {
-        return mEvents.size
-    }
+    override fun getViewTypeCount() = 2
 
-    override fun getItem(position: Int): Any {
-        return mEvents[position]
-    }
+    override fun getCount() = mEvents.size
 
-    override fun getItemId(position: Int): Long {
-        return 0
-    }
+    override fun getItem(position: Int) = mEvents[position]
+
+    override fun getItemId(position: Int) = 0L
 
     internal class ViewHolder(view: View) {
         val title = view.event_item_title
