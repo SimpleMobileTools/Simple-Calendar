@@ -13,12 +13,12 @@ import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.receivers.NotificationReceiver
 
 fun Context.updateWidget() {
-    val widgetsCnt = AppWidgetManager.getInstance(this).getAppWidgetIds(ComponentName(this, MyWidgetProvider::class.java))
+    val widgetsCnt = AppWidgetManager.getInstance(this).getAppWidgetIds(ComponentName(this, MyWidgetMonthlyProvider::class.java))
     if (widgetsCnt.isEmpty())
         return
 
-    val ids = intArrayOf(R.xml.widget_info)
-    Intent(this, MyWidgetProvider::class.java).apply {
+    val ids = intArrayOf(R.xml.widget_monthly_info)
+    Intent(this, MyWidgetMonthlyProvider::class.java).apply {
         action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
         putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
         sendBroadcast(this)

@@ -22,7 +22,7 @@
         </activity>
 
         <activity
-            android:name=".activities.WidgetConfigureActivity"
+            android:name=".activities.WidgetMonthlyConfigureActivity"
             android:screenOrientation="portrait"
             android:theme="@style/MyWidgetConfigTheme">
             <intent-filter>
@@ -56,7 +56,7 @@
             android:parentActivityName=".activities.MainActivity"/>
 
         <receiver
-            android:name=".helpers.MyWidgetProvider"
+            android:name=".helpers.MyWidgetMonthlyProvider"
             android:icon="@mipmap/widget_preview">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
@@ -64,7 +64,7 @@
 
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/widget_info"/>
+                android:resource="@xml/widget_monthly_info"/>
         </receiver>
 
         <receiver android:name=".receivers.NotificationReceiver"/>

@@ -21,7 +21,7 @@ import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.models.Day
 import org.joda.time.DateTime
 
-class MyWidgetProvider : AppWidgetProvider(), MonthlyCalendar {
+class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
     companion object {
         private val PREV = "prev"
         private val NEXT = "next"
@@ -60,7 +60,7 @@ class MyWidgetProvider : AppWidgetProvider(), MonthlyCalendar {
         mWidgetManager = AppWidgetManager.getInstance(mContext)
 
         mRemoteViews = RemoteViews(mContext.packageName, R.layout.fragment_month)
-        mIntent = Intent(mContext, MyWidgetProvider::class.java)
+        mIntent = Intent(mContext, MyWidgetMonthlyProvider::class.java)
         setupButtons()
         updateLabelColor()
         updateTopViews()
@@ -72,7 +72,7 @@ class MyWidgetProvider : AppWidgetProvider(), MonthlyCalendar {
     }
 
     private fun updateWidget() {
-        val thisWidget = ComponentName(mContext, MyWidgetProvider::class.java)
+        val thisWidget = ComponentName(mContext, MyWidgetMonthlyProvider::class.java)
         AppWidgetManager.getInstance(mContext).updateAppWidget(thisWidget, mRemoteViews)
     }
 
