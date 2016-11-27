@@ -6,22 +6,13 @@ import android.content.Context
 import android.content.Intent
 import android.content.res.Resources
 import android.graphics.Color
-import android.graphics.PorterDuff
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.View
 import android.widget.SeekBar
-import android.widget.TextView
-import com.simplemobiletools.calendar.MonthlyCalendarImpl
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.adjustAlpha
 import com.simplemobiletools.calendar.helpers.*
-import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
-import com.simplemobiletools.calendar.models.Day
-import kotlinx.android.synthetic.main.first_row.*
-import kotlinx.android.synthetic.main.top_navigation.*
-import kotlinx.android.synthetic.main.widget_config_monthly.*
-import org.joda.time.DateTime
+import kotlinx.android.synthetic.main.widget_config_list.*
 import yuku.ambilwarna.AmbilWarnaDialog
 
 class WidgetListConfigureActivity : AppCompatActivity() {
@@ -38,7 +29,7 @@ class WidgetListConfigureActivity : AppCompatActivity() {
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setResult(Activity.RESULT_CANCELED)
-        setContentView(R.layout.widget_config_monthly)
+        setContentView(R.layout.widget_config_list)
         mPackageName = packageName
         initVariables()
 
@@ -138,7 +129,6 @@ class WidgetListConfigureActivity : AppCompatActivity() {
 
     private fun updateBgColor() {
         mBgColor = mBgColorWithoutTransparency.adjustAlpha(mBgAlpha)
-        config_calendar.setBackgroundColor(mBgColor)
         config_bg_color.setBackgroundColor(mBgColor)
         config_save.setBackgroundColor(mBgColor)
     }

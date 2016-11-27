@@ -31,6 +31,15 @@
         </activity>
 
         <activity
+            android:name=".activities.WidgetListConfigureActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyWidgetConfigTheme">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
+            </intent-filter>
+        </activity>
+
+        <activity
             android:name=".activities.AboutActivity"
             android:label="@string/about"
             android:parentActivityName=".activities.MainActivity"/>
@@ -57,8 +66,8 @@
 
         <receiver
             android:name=".helpers.MyWidgetMonthlyProvider"
-            android:label="@string/widget_monthly"
-            android:icon="@mipmap/widget_preview">
+            android:icon="@mipmap/widget_preview"
+            android:label="@string/widget_monthly">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
             </intent-filter>
@@ -70,8 +79,8 @@
 
         <receiver
             android:name=".helpers.MyWidgetListProvider"
-            android:label="@string/widget_list"
-            android:icon="@mipmap/widget_preview">
+            android:icon="@mipmap/widget_preview"
+            android:label="@string/widget_list">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
             </intent-filter>
