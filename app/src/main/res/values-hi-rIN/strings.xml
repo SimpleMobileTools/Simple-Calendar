@@ -10,6 +10,10 @@
     <string name="simple_event_list">सरल इवेंट सूची</string>
     <string name="no_events_added">लगता हैं की आपका कैलेंडर खाली हैं।\nआप इवेंट्स को नीचे प्लस बटन के साथ बना सकते हैं।</string>
 
+    <!-- Widget titles -->
+    <string name="widget_monthly">Calendar monthly</string>
+    <string name="widget_list">Calendar event list</string>
+
     <!-- Event -->
     <string name="event">इवेंट</string>
     <string name="edit_event">इवेंट एडिट करें</string>

@@ -57,6 +57,7 @@
 
         <receiver
             android:name=".helpers.MyWidgetMonthlyProvider"
+            android:label="@string/widget_monthly"
             android:icon="@mipmap/widget_preview">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
@@ -65,6 +66,19 @@
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget_monthly_info"/>
+        </receiver>
+
+        <receiver
+            android:name=".helpers.MyWidgetListProvider"
+            android:label="@string/widget_list"
+            android:icon="@mipmap/widget_preview">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_list_info"/>
         </receiver>
 
         <receiver android:name=".receivers.NotificationReceiver"/>

@@ -10,6 +10,10 @@
     <string name="simple_event_list">Einfache Termin Liste</string>
     <string name="no_events_added">Sieht aus als wäre dein Kalender leer.\nDu kannst neue Termine mit dem Plus Button unten rechts erstellen.</string>
 
+    <!-- Widget titles -->
+    <string name="widget_monthly">Calendar monthly</string>
+    <string name="widget_list">Calendar event list</string>
+
     <!-- Event -->
     <string name="event">Termin</string>
     <string name="edit_event">Termin bearbeiten</string>
