@@ -27,7 +27,7 @@ import org.joda.time.DateTime
 import java.util.*
 import kotlin.comparisons.compareBy
 
-class EventListFragment : Fragment(), DBHelper.GetEventsListener, DBHelper.EventsListener, EventListAdapter.ItemOperationsListener {
+class EventListFragment : Fragment(), DBHelper.GetEventsListener, DBHelper.EventUpdateListener, EventListAdapter.ItemOperationsListener {
     private val EDIT_EVENT = 1
 
     var mListItems: ArrayList<ListItem> = ArrayList()

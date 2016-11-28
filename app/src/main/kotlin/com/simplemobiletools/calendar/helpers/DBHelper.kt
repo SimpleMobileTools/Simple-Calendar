@@ -30,7 +30,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
     private val COL_REPEAT_MONTH = "repeat_month"
     private val COL_REPEAT_DAY = "repeat_day"
 
-    private var mEventsListener: EventsListener? = null
+    private var mEventsListener: EventUpdateListener? = null
     private var context: Context? = null
 
     companion object {
@@ -39,7 +39,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
         lateinit private var mDb: SQLiteDatabase
     }
 
-    constructor(context: Context, callback: EventsListener?) : this(context) {
+    constructor(context: Context, callback: EventUpdateListener?) : this(context) {
         mEventsListener = callback
         this.context = context
     }
@@ -240,7 +240,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
         return events
     }
 
-    interface EventsListener {
+    interface EventUpdateListener {
         fun eventInserted(event: Event)
 
         fun eventUpdated(event: Event)

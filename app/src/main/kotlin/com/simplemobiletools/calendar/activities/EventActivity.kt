@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.activity_event.*
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 
-class EventActivity : SimpleActivity(), DBHelper.EventsListener {
+class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     private var mWasReminderInit = false
     private var mWasEndDateSet = false
     private var mWasEndTimeSet = false

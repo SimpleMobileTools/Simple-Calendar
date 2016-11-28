@@ -28,7 +28,7 @@ import kotlinx.android.synthetic.main.top_navigation.view.*
 import java.util.*
 import kotlin.comparisons.compareBy
 
-class DayFragment : Fragment(), DBHelper.EventsListener, DBHelper.GetEventsListener, EventsAdapter.ItemOperationsListener {
+class DayFragment : Fragment(), DBHelper.EventUpdateListener, DBHelper.GetEventsListener, EventsAdapter.ItemOperationsListener {
     private val EDIT_EVENT = 1
 
     private var mTextColor = 0
