@@ -52,7 +52,7 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, DBHelper.Event
 
     private fun checkEvents() {
         val fromTS = (DateTime().millis / 1000).toInt()
-        val toTS = (DateTime().plusYears(1).millis / 1000).toInt()
+        val toTS = (DateTime().plusMonths(6).millis / 1000).toInt()
         DBHelper(context).getEvents(fromTS, toTS, this)
     }
 
