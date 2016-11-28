@@ -11,10 +11,17 @@ import android.graphics.Color
 import android.widget.RemoteViews
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.DayActivity
+import com.simplemobiletools.calendar.adapters.EventListWidgetAdapter
 import com.simplemobiletools.calendar.extensions.adjustAlpha
-import com.simplemobiletools.calendar.models.Day
+import com.simplemobiletools.calendar.models.Event
+import com.simplemobiletools.calendar.models.ListEvent
+import com.simplemobiletools.calendar.models.ListItem
+import com.simplemobiletools.calendar.models.ListSection
+import org.joda.time.DateTime
+import java.util.*
+import kotlin.comparisons.compareBy
 
-class MyWidgetListProvider : AppWidgetProvider() {
+class MyWidgetListProvider : AppWidgetProvider(), DBHelper.GetEventsListener {
     companion object {
         private var mTextColor = 0
 
@@ -51,12 +58,10 @@ class MyWidgetListProvider : AppWidgetProvider() {
     private fun updateWidget() {
         val thisWidget = ComponentName(mContext, MyWidgetListProvider::class.java)
         AppWidgetManager.getInstance(mContext).updateAppWidget(thisWidget, mRemoteViews)
-    }
 
-    private fun setupIntent(action: String, id: Int) {
-        mIntent.action = action
-        val pendingIntent = PendingIntent.getBroadcast(mContext, 0, mIntent, 0)
-        mRemoteViews.setOnClickPendingIntent(id, pendingIntent)
+        val fromTS = (DateTime().millis / 1000).toInt()
+        val toTS = (DateTime().plusMonths(6).millis / 1000).toInt()
+        DBHelper(mContext).getEvents(fromTS, toTS, this)
     }
 
     private fun setupDayOpenIntent(id: Int, dayCode: String) {
@@ -69,9 +74,20 @@ class MyWidgetListProvider : AppWidgetProvider() {
 
     private fun initPrefs(context: Context) = context.getSharedPreferences(PREFS_KEY, Context.MODE_PRIVATE)
 
-    fun updateDays(days: List<Day>) {
-        val displayWeekNumbers = Config.newInstance(mContext).displayWeekNumbers
-        val len = days.size
-        val packageName = mContext.packageName
+    override fun gotEvents(events: MutableList<Event>) {
+        val listItems = ArrayList<ListItem>(events.size)
+        val sorted = events.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { it.description }))
+        var prevCode = ""
+        sorted.forEach {
+            val code = Formatter.getDayCodeFromTS(it.startTS)
+            if (code != prevCode) {
+                val day = Formatter.getDayTitle(mContext, code)
+                listItems.add(ListSection(day))
+                prevCode = code
+            }
+            listItems.add(ListEvent(it.id, it.startTS, it.endTS, it.title, it.description))
+        }
+
+        val eventsAdapter = EventListWidgetAdapter(mContext, listItems)
     }
 }
