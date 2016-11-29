@@ -1,5 +1,6 @@
 package com.simplemobiletools.calendar.helpers
 
+import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.ComponentName
@@ -7,8 +8,10 @@ import android.content.Context
 import android.content.Intent
 import android.content.res.Resources
 import android.graphics.Color
+import android.net.Uri
 import android.widget.RemoteViews
 import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.extensions.adjustAlpha
 import com.simplemobiletools.calendar.services.WidgetService
 
@@ -46,7 +49,13 @@ class MyWidgetListProvider : AppWidgetProvider() {
         mRemoteViews.setInt(R.id.widget_event_list, "setBackgroundColor", bgColor)
 
         val intent = Intent(context, WidgetService::class.java)
+        intent.data = Uri.parse(intent.toUri(Intent.URI_INTENT_SCHEME))
         mRemoteViews.setRemoteAdapter(R.id.widget_event_list, intent)
+
+        val startActivityIntent = Intent(context, EventActivity::class.java)
+        val startActivityPendingIntent = PendingIntent.getActivity(context, 0, startActivityIntent, PendingIntent.FLAG_UPDATE_CURRENT)
+        mRemoteViews.setPendingIntentTemplate(R.id.widget_event_list, startActivityPendingIntent)
+
 
         val thisWidget = ComponentName(mContext, MyWidgetListProvider::class.java)
         AppWidgetManager.getInstance(mContext).updateAppWidget(thisWidget, mRemoteViews)

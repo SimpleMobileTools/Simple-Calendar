@@ -8,16 +8,16 @@ import android.graphics.Color
 import android.widget.RemoteViews
 import android.widget.RemoteViewsService
 import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.R.id.event_item_holder
 import com.simplemobiletools.calendar.extensions.adjustAlpha
+import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
-import com.simplemobiletools.calendar.helpers.HIGH_ALPHA
-import com.simplemobiletools.calendar.helpers.PREFS_KEY
-import com.simplemobiletools.calendar.helpers.WIDGET_TEXT_COLOR
 import com.simplemobiletools.calendar.models.ListEvent
 import com.simplemobiletools.calendar.models.ListItem
 import com.simplemobiletools.calendar.models.ListSection
 import org.joda.time.DateTime
 import java.util.*
+
 
 class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteViewsService.RemoteViewsFactory {
     val ITEM_EVENT = 0
@@ -38,6 +38,7 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
     override fun getViewAt(position: Int): RemoteViews {
         val type = getItemViewType(position)
         val remoteView: RemoteViews
+
         if (type == ITEM_EVENT) {
             val item = events[position] as ListEvent
             remoteView = RemoteViews(context.packageName, R.layout.event_list_item_widget)
@@ -51,6 +52,10 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
                 setInt(R.id.event_item_description, "setTextColor", textColor)
                 setInt(R.id.event_item_start, "setTextColor", textColor)
                 setInt(R.id.event_item_end, "setTextColor", textColor)
+
+                val intent = Intent()
+                intent.putExtra(EVENT_ID, item.id)
+                setOnClickFillInIntent(event_item_holder, intent)
             }
         } else {
             val item = events[position] as ListSection
