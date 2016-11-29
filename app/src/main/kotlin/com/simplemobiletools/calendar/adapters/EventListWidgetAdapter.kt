@@ -40,7 +40,7 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
         val remoteView: RemoteViews
         if (type == ITEM_EVENT) {
             val item = events[position] as ListEvent
-            remoteView = RemoteViews(context.packageName, R.layout.event_list_item)
+            remoteView = RemoteViews(context.packageName, R.layout.event_list_item_widget)
             remoteView.apply {
                 setTextViewText(R.id.event_item_title, item.title)
                 setTextViewText(R.id.event_item_description, item.description)
@@ -54,7 +54,7 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
             }
         } else {
             val item = events[position] as ListSection
-            remoteView = RemoteViews(context.packageName, R.layout.event_list_section)
+            remoteView = RemoteViews(context.packageName, R.layout.event_list_section_widget)
             remoteView.apply {
                 setTextViewText(R.id.event_item_title, item.title)
                 setInt(R.id.event_item_title, "setTextColor", textColor)

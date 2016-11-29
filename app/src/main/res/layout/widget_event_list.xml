@@ -4,6 +4,9 @@
     android:id="@+id/widget_event_list"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clipToPadding="false"
     android:divider="@null"
+    android:dividerHeight="@dimen/medium_padding"
+    android:paddingBottom="@dimen/activity_margin"
     android:paddingLeft="@dimen/activity_margin"
-    android:paddingRight="@dimen/activity_margin"/>
+    android:paddingTop="@dimen/medium_padding"/>
