@@ -10,7 +10,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.SeekBar
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.adapters.EventListWidgetAdapter
+import com.simplemobiletools.calendar.adapters.EventListWidgetAdapterOld
 import com.simplemobiletools.calendar.extensions.adjustAlpha
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
@@ -33,7 +33,7 @@ class WidgetListConfigureActivity : AppCompatActivity() {
     private var mTextColorWithoutTransparency = 0
     private var mTextColor = 0
 
-    private var mEventsAdapter: EventListWidgetAdapter? = null
+    private var mEventsAdapter: EventListWidgetAdapterOld? = null
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +49,7 @@ class WidgetListConfigureActivity : AppCompatActivity() {
         if (mWidgetId == AppWidgetManager.INVALID_APPWIDGET_ID)
             finish()
 
-        mEventsAdapter = EventListWidgetAdapter(this, getListItems())
+        mEventsAdapter = EventListWidgetAdapterOld(this, getListItems())
         mEventsAdapter!!.setTextColor(mTextColor)
         config_events_list.adapter = mEventsAdapter
 
