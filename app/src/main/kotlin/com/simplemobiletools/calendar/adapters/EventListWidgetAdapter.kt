@@ -20,6 +20,9 @@ import org.joda.time.DateTime
 import java.util.*
 
 class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteViewsService.RemoteViewsFactory {
+    val ITEM_EVENT = 0
+    val ITEM_HEADER = 1
+
     val appWidgetId: Int
     var events: List<ListItem>
     val prefs: SharedPreferences
@@ -29,22 +32,46 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
         prefs = context.getSharedPreferences(PREFS_KEY, Context.MODE_PRIVATE)
         textColor = prefs.getInt(WIDGET_TEXT_COLOR, Color.WHITE).adjustAlpha(HIGH_ALPHA)
         appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID)
-        events = getListItems()
+        events = ArrayList<ListItem>()
     }
 
     override fun getViewAt(position: Int): RemoteViews {
-        val rv = RemoteViews(context.packageName, R.layout.event_list_section)
-        rv.setTextViewText(R.id.event_item_title, "hello")
-        rv.setInt(R.id.event_item_title, "setTextColor", textColor)
+        val type = getItemViewType(position)
+        val remoteView: RemoteViews
+        if (type == ITEM_EVENT) {
+            val item = events[position] as ListEvent
+            remoteView = RemoteViews(context.packageName, R.layout.event_list_item)
+            remoteView.apply {
+                setTextViewText(R.id.event_item_title, item.title)
+                setTextViewText(R.id.event_item_description, item.description)
+                setTextViewText(R.id.event_item_start, Formatter.getTime(item.startTS))
+                setTextViewText(R.id.event_item_end, Formatter.getTime(item.endTS))
 
-        return rv
+                setInt(R.id.event_item_title, "setTextColor", textColor)
+                setInt(R.id.event_item_description, "setTextColor", textColor)
+                setInt(R.id.event_item_start, "setTextColor", textColor)
+                setInt(R.id.event_item_end, "setTextColor", textColor)
+            }
+        } else {
+            val item = events[position] as ListSection
+            remoteView = RemoteViews(context.packageName, R.layout.event_list_section)
+            remoteView.apply {
+                setTextViewText(R.id.event_item_title, item.title)
+                setInt(R.id.event_item_title, "setTextColor", textColor)
+            }
+        }
+
+        return remoteView
     }
+
+    fun getItemViewType(position: Int) = if (events[position] is ListEvent) ITEM_EVENT else ITEM_HEADER
 
     override fun getLoadingView() = null
 
-    override fun getViewTypeCount() = 1
+    override fun getViewTypeCount() = 2
 
     override fun onCreate() {
+        events = getListItems()
     }
 
     override fun getItemId(position: Int) = position.toLong()
