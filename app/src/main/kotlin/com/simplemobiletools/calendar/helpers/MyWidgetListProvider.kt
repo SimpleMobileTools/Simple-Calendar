@@ -56,9 +56,8 @@ class MyWidgetListProvider : AppWidgetProvider() {
         val startActivityPendingIntent = PendingIntent.getActivity(context, 0, startActivityIntent, PendingIntent.FLAG_UPDATE_CURRENT)
         mRemoteViews.setPendingIntentTemplate(R.id.widget_event_list, startActivityPendingIntent)
 
-
         val thisWidget = ComponentName(mContext, MyWidgetListProvider::class.java)
-        AppWidgetManager.getInstance(mContext).updateAppWidget(thisWidget, mRemoteViews)
+        mWidgetManager.updateAppWidget(thisWidget, mRemoteViews)
     }
 
     private fun initPrefs(context: Context) = context.getSharedPreferences(PREFS_KEY, Context.MODE_PRIVATE)

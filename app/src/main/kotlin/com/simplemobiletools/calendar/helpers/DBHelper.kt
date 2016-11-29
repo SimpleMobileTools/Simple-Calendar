@@ -155,16 +155,20 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
 
     fun getEvents(fromTS: Int, toTS: Int, callback: GetEventsListener?) {
         Thread({
-            val events = ArrayList<Event>()
-            events.addAll(getEventsFor(fromTS, toTS))
-
-            val selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_REPEAT_INTERVAL IS NULL"
-            val selectionArgs = arrayOf(toTS.toString(), fromTS.toString())
-            val cursor = getEventsCursor(selection, selectionArgs)
-            events.addAll(fillEvents(cursor))
-
-            callback?.gotEvents(events)
+            getEventsInBackground(fromTS, toTS, callback)
         }).start()
+    }
+
+    fun getEventsInBackground(fromTS: Int, toTS: Int, callback: GetEventsListener?) {
+        val events = ArrayList<Event>()
+        events.addAll(getEventsFor(fromTS, toTS))
+
+        val selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_REPEAT_INTERVAL IS NULL"
+        val selectionArgs = arrayOf(toTS.toString(), fromTS.toString())
+        val cursor = getEventsCursor(selection, selectionArgs)
+        events.addAll(fillEvents(cursor))
+
+        callback?.gotEvents(events)
     }
 
     private fun getEventsFor(fromTS: Int, toTS: Int): List<Event> {

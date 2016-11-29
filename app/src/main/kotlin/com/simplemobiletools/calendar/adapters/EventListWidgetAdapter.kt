@@ -12,12 +12,13 @@ import com.simplemobiletools.calendar.R.id.event_item_holder
 import com.simplemobiletools.calendar.extensions.adjustAlpha
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
+import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.models.ListEvent
 import com.simplemobiletools.calendar.models.ListItem
 import com.simplemobiletools.calendar.models.ListSection
 import org.joda.time.DateTime
 import java.util.*
-
+import kotlin.comparisons.compareBy
 
 class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteViewsService.RemoteViewsFactory {
     val ITEM_EVENT = 0
@@ -76,12 +77,32 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
     override fun getViewTypeCount() = 2
 
     override fun onCreate() {
-        events = getListItems()
+
     }
 
     override fun getItemId(position: Int) = position.toLong()
 
     override fun onDataSetChanged() {
+        val fromTS = (DateTime().millis / 1000).toInt()
+        val toTS = (DateTime().plusMonths(6).millis / 1000).toInt()
+        DBHelper(context).getEventsInBackground(fromTS, toTS, object : DBHelper.GetEventsListener {
+            override fun gotEvents(events: MutableList<Event>) {
+                val listItems = ArrayList<ListItem>(events.size)
+                val sorted = events.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { it.description }))
+                var prevCode = ""
+                sorted.forEach {
+                    val code = Formatter.getDayCodeFromTS(it.startTS)
+                    if (code != prevCode) {
+                        val day = Formatter.getDayTitle(context, code)
+                        listItems.add(ListSection(day))
+                        prevCode = code
+                    }
+                    listItems.add(ListEvent(it.id, it.startTS, it.endTS, it.title, it.description))
+                }
+
+                this@EventListWidgetAdapter.events = listItems
+            }
+        })
     }
 
     override fun hasStableIds() = true
@@ -89,30 +110,5 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
     override fun getCount() = events.size
 
     override fun onDestroy() {
-    }
-
-    private fun getListItems(): ArrayList<ListItem> {
-        val listItems = ArrayList<ListItem>(10)
-        var dateTime = DateTime.now().withTime(0, 0, 0, 0).plusDays(1)
-        var code = Formatter.getDayCodeFromTS((dateTime.millis / 1000).toInt())
-        var day = Formatter.getDayTitle(context, code)
-        listItems.add(ListSection(day))
-
-        var time = dateTime.withHourOfDay(7)
-        listItems.add(ListEvent(1, (time.millis / 1000).toInt(), (time.plusMinutes(30).millis / 1000).toInt(), "Workout", "Leg day"))
-        time = dateTime.withHourOfDay(8)
-        listItems.add(ListEvent(2, (time.millis / 1000).toInt(), (time.plusHours(1).millis / 1000).toInt(), "Meeting with John", "In Rockstone Garden"))
-
-        dateTime = dateTime.plusDays(1)
-        code = Formatter.getDayCodeFromTS((dateTime.millis / 1000).toInt())
-        day = Formatter.getDayTitle(context, code)
-        listItems.add(ListSection(day))
-
-        time = dateTime.withHourOfDay(13)
-        listItems.add(ListEvent(3, (time.millis / 1000).toInt(), (time.plusHours(1).millis / 1000).toInt(), "Lunch with Mary", "In the Plaza"))
-        time = dateTime.withHourOfDay(18)
-        listItems.add(ListEvent(4, (time.millis / 1000).toInt(), (time.plusMinutes(10).millis / 1000).toInt(), "Coffee time", ""))
-
-        return listItems
     }
 }
