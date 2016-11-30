@@ -1,18 +1,18 @@
-<resources>
+﻿<resources>
     <string name="app_name">シンプル カレンダー</string>
-    <string name="app_launcher_name">Calendar</string>
+    <string name="app_launcher_name">カレンダー</string>
     <string name="undo">元に戻す</string>
     <string name="ok">OK</string>
-    <string name="cancel">Cancel</string>
-    <string name="change_view">Change view</string>
-    <string name="monthly_view">Monthly view</string>
-    <string name="yearly_view">Yearly view</string>
-    <string name="simple_event_list">Simple event list</string>
-    <string name="no_events_added">Seems like your calendar is empty.\nYou can create events with the Plus button at the bottom.</string>
+    <string name="cancel">キャンセル</string>
+    <string name="change_view">ビューの変更</string>
+    <string name="monthly_view">月ビュー</string>
+    <string name="yearly_view">年ビュー</string>
+    <string name="simple_event_list">シンプル イベント リスト</string>
+    <string name="no_events_added">カレンダーが空のようです。\n下にあるプラスボタンを使ってイベントを作成できます。</string>
 
     <!-- Widget titles -->
-    <string name="widget_monthly">Calendar monthly</string>
-    <string name="widget_list">Calendar event list</string>
+    <string name="widget_monthly">カレンダー月</string>
+    <string name="widget_list">カレンダー イベント リスト</string>
 
     <!-- Event -->
     <string name="event">イベント</string>
@@ -24,25 +24,25 @@
     <string name="end_before_start">イベントの終了は開始よりも前にできません</string>
     <string name="start_in_past">過去のイベントはスケジュールできません</string>
     <string name="event_added">イベントを正常に追加しました</string>
-    <string name="past_event_added">Event in the past added successfully</string>
+    <string name="past_event_added">過去のイベントを正常に追加しました</string>
     <string name="event_updated">イベントを正常に更新しました</string>
     <string name="reminder">リマインダー</string>
     <string name="off">オフ</string>
     <string name="at_start">開始時</string>
-    <string name="custom">Custom</string>
-    <string name="repetition">Repetition</string>
-    <string name="none">None</string>
-    <string name="daily">Daily</string>
-    <string name="weekly">Weekly</string>
-    <string name="biweekly">Biweekly</string>
-    <string name="monthly">Monthly</string>
-    <string name="yearly">Yearly</string>
+    <string name="custom">カスタム</string>
+    <string name="repetition">繰り返し</string>
+    <string name="none">なし</string>
+    <string name="daily">毎日</string>
+    <string name="weekly">毎週</string>
+    <string name="biweekly">隔週</string>
+    <string name="monthly">毎月</string>
+    <string name="yearly">毎年</string>
 
     <!-- Custom reminder -->
-    <string name="before">before</string>
-    <string name="minutes">minutes</string>
-    <string name="hours">hours</string>
-    <string name="days">days</string>
+    <string name="before">前</string>
+    <string name="minutes">分</string>
+    <string name="hours">時間</string>
+    <string name="days">日</string>
 
     <!-- Day details -->
     <string name="details">詳細</string>
@@ -56,9 +56,9 @@
     <string name="website">もっとシンプルなアプリとソースコードは:\nhttp://simplemobiletools.com</string>
     <string name="email_label">ご意見やご提案をお送りください:</string>
     <string name="third_party_licences_underlined"><u>サードパーティー ライセンス</u></string>
-    <string name="invite_friends_underlined"><u>Invite friends</u></string>
-    <string name="share_text">Hey, come check out %1$s at %2$s</string>
-    <string name="invite_via">Invite via</string>
+    <string name="invite_friends_underlined"><u>友達を招待</u></string>
+    <string name="share_text">%2$s で %1$s を確認してください</string>
+    <string name="invite_via">招待...</string>
     <string name="rate_us_underlined"><u>Play ストアで評価してください</u></string>
     <string name="follow_us">フォローしてください:</string>
     <string name="copyright">v %1$s\nCopyright © Simple Mobile Tools %2$d</string>
@@ -66,37 +66,37 @@
     <!-- Settings -->
     <string name="settings">設定</string>
     <string name="dark_theme">ダークテーマ</string>
-    <string name="sunday_first">Sunday as first day</string>
-    <string name="week_numbers">Display week numbers</string>
-    <string name="vibrate">Vibrate on reminder notification</string>
-    <string name="default_event_reminder">Default event reminder</string>
-    <string name="reminder_saved">Reminder saved</string>
+    <string name="sunday_first">日曜日が最初</string>
+    <string name="week_numbers">週番号を表示</string>
+    <string name="vibrate">リマインダー通知で振動</string>
+    <string name="default_event_reminder">デフォルトのイベント リマインダー</string>
+    <string name="reminder_saved">リマインダーを保存しました</string>
 
     <!-- License -->
-    <string name="notice">このアプリは、私の人生を容易にするために、次のサードパーティのライブラリーを使用しています。 ありがとうございます。</string>
+    <string name="notice">このアプリは、私の暮らしにゆとりを持たせるために、次のサードパーティのライブラリーを使用しています。 ありがとうございます。</string>
     <string name="third_party_licences">サードパーティー ライセンス</string>
     <string name="kotlin_title"><u>Kotlin (プログラミング言語)</u></string>
     <string name="ambilwarna_title"><u>AmbilWarna (カラー ピッカー)</u></string>
     <string name="joda_title"><u>Joda-Time (Java 日付の置き換え)</u></string>
-    <string name="stetho_title"><u>Stetho (debugging databases)</u></string>
+    <string name="stetho_title"><u>Stetho (デバッグ データベース)</u></string>
 
     <plurals name="events_deleted">
         <item quantity="one">1 イベントを削除しました</item>
         <item quantity="other">%1$d イベントを削除しました</item>
     </plurals>
 
-    <string name="january">January</string>
-    <string name="february">February</string>
-    <string name="march">March</string>
-    <string name="april">April</string>
-    <string name="may">May</string>
-    <string name="june">June</string>
-    <string name="july">July</string>
-    <string name="august">August</string>
-    <string name="september">September</string>
-    <string name="october">October</string>
-    <string name="november">November</string>
-    <string name="december">December</string>
+    <string name="january">1月</string>
+    <string name="february">2月</string>
+    <string name="march">3月</string>
+    <string name="april">4月</string>
+    <string name="may">5月</string>
+    <string name="june">6月</string>
+    <string name="july">7月</string>
+    <string name="august">8月</string>
+    <string name="september">9月</string>
+    <string name="october">10月</string>
+    <string name="november">11月</string>
+    <string name="december">12月</string>
 
     <string name="monday_letter">月</string>
     <string name="tuesday_letter">火</string>
@@ -107,15 +107,15 @@
     <string name="sunday_letter">日</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
-    <string name="app_short_description">A simple calendar with events, customizable widget and no ads.</string>
+    <string name="app_short_description">イベント、カスタマイズ可能なウィジェットのあるシンプルなカレンダー。広告はありません。</string>
     <string name="app_long_description">
-        An offline calendar without any other calendar integration. You can easily create recurring events and setup reminders, it can also display week numbers.
+        他のカレンダーとは統合されていないオフラインカレンダー。 簡単に定期的なイベントを作成し、リマインダーを設定することができます。また、週番号も表示することができます。
 
 
-        Contains a resizable 4x4 widget where you can customize the color of the text, as well as the alpha and the color of the background.
+        サイズ変更が可能な 4x4 ウィジェットが含まれており、文字の色や背景のアルファや色をカスタマイズすることができます。
 
-        Contains no ads or unnecessary permissions. It is fully opensource, provides a Dark theme too.
+        広告や不要なアクセス許可は含まれていません。 完全にオープンソースで、ダークテーマも提供しています。
 
-        This app is just one piece of a bigger series of apps. You can find the rest of them at http://www.simplemobiletools.com
+        このアプリは、大きな一連のアプリの一つです。 他のアプリは http://www.simplemobiletools.com で見つけることができます
     </string>
 </resources>
