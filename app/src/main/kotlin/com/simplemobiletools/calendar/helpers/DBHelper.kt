@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteQueryBuilder
 import android.text.TextUtils
 import com.simplemobiletools.calendar.extensions.getIntValue
 import com.simplemobiletools.calendar.extensions.getStringValue
-import com.simplemobiletools.calendar.extensions.updateWidget
+import com.simplemobiletools.calendar.extensions.updateWidgets
 import com.simplemobiletools.calendar.models.Event
 import org.joda.time.DateTime
 import java.util.*
@@ -79,7 +79,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
             mDb.insert(META_TABLE_NAME, null, metaValues)
         }
 
-        context?.updateWidget()
+        context?.updateWidgets()
         mEventsListener?.eventInserted(event)
     }
 
@@ -97,7 +97,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
             mDb.insertWithOnConflict(META_TABLE_NAME, null, metaValues, SQLiteDatabase.CONFLICT_REPLACE)
         }
 
-        context?.updateWidget()
+        context?.updateWidgets()
         mEventsListener?.eventUpdated(event)
     }
 
@@ -138,7 +138,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
         val metaSelection = "$COL_EVENT_ID IN ($args)"
         mDb.delete(META_TABLE_NAME, metaSelection, null)
 
-        context?.updateWidget()
+        context?.updateWidgets()
         mEventsListener?.eventsDeleted(ids.size)
     }
 

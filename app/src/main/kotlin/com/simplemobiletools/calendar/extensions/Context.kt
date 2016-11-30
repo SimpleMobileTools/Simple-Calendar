@@ -12,16 +12,29 @@ import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.receivers.NotificationReceiver
 
-fun Context.updateWidget() {
+fun Context.updateWidgets() {
     val widgetsCnt = AppWidgetManager.getInstance(this).getAppWidgetIds(ComponentName(this, MyWidgetMonthlyProvider::class.java))
-    if (widgetsCnt.isEmpty())
-        return
+    if (widgetsCnt.isNotEmpty()) {
+        val ids = intArrayOf(R.xml.widget_monthly_info)
+        Intent(this, MyWidgetMonthlyProvider::class.java).apply {
+            action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
+            putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
+            sendBroadcast(this)
+        }
+    }
 
-    val ids = intArrayOf(R.xml.widget_monthly_info)
-    Intent(this, MyWidgetMonthlyProvider::class.java).apply {
-        action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
-        putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
-        sendBroadcast(this)
+    updateListWidget()
+}
+
+fun Context.updateListWidget() {
+    val widgetsCnt = AppWidgetManager.getInstance(this).getAppWidgetIds(ComponentName(this, MyWidgetListProvider::class.java))
+    if (widgetsCnt.isNotEmpty()) {
+        val ids = intArrayOf(R.xml.widget_list_info)
+        Intent(this, MyWidgetListProvider::class.java).apply {
+            action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
+            putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
+            sendBroadcast(this)
+        }
     }
 }
 

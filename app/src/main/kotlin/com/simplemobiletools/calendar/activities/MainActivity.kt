@@ -12,7 +12,7 @@ import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.adapters.MyMonthPagerAdapter
 import com.simplemobiletools.calendar.adapters.MyYearPagerAdapter
 import com.simplemobiletools.calendar.dialogs.ChangeViewDialog
-import com.simplemobiletools.calendar.extensions.updateWidget
+import com.simplemobiletools.calendar.extensions.updateWidgets
 import com.simplemobiletools.calendar.fragments.EventListFragment
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
@@ -39,7 +39,7 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
 
     override fun onResume() {
         super.onResume()
-        updateWidget()
+        updateWidgets()
     }
 
     override fun onPause() {

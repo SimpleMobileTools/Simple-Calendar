@@ -10,6 +10,7 @@ import android.media.RingtoneManager
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.extensions.scheduleNextEvent
+import com.simplemobiletools.calendar.extensions.updateListWidget
 import com.simplemobiletools.calendar.helpers.Config
 import com.simplemobiletools.calendar.helpers.DBHelper
 import com.simplemobiletools.calendar.helpers.EVENT_ID
@@ -18,6 +19,7 @@ import com.simplemobiletools.calendar.models.Event
 
 class NotificationReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
+        context.updateListWidget()
         val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val id = intent.getIntExtra(EVENT_ID, -1)
         if (id == -1)

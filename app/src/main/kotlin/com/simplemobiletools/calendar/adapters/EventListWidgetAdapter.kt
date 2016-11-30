@@ -77,7 +77,6 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
     override fun getViewTypeCount() = 2
 
     override fun onCreate() {
-
     }
 
     override fun getItemId(position: Int) = position.toLong()
