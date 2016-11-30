@@ -79,7 +79,7 @@
 
         <receiver
             android:name=".helpers.MyWidgetListProvider"
-            android:icon="@mipmap/widget_monthly_preview"
+            android:icon="@mipmap/widget_list_preview"
             android:label="@string/widget_list">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
