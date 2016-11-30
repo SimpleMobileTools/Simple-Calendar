@@ -1,9 +1,7 @@
 package com.simplemobiletools.calendar.activities
 
-import android.app.Activity
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
-import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -12,9 +10,9 @@ import android.view.WindowManager
 import android.widget.AdapterView
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.*
-import com.simplemobiletools.calendar.fragments.DayFragment
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.models.Event
+import com.simplemobiletools.filepicker.dialogs.ConfirmationDialog
 import com.simplemobiletools.filepicker.extensions.toast
 import kotlinx.android.synthetic.main.activity_event.*
 import org.joda.time.DateTime
@@ -221,11 +219,10 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     }
 
     private fun deleteEvent() {
-        Intent().apply {
-            putExtra(DayFragment.DELETED_ID, mEvent.id)
-            setResult(Activity.RESULT_OK, this)
+        ConfirmationDialog(this) {
+            DBHelper(applicationContext, this).deleteEvents(arrayOf(mEvent.id.toString()))
+            finish()
         }
-        finish()
     }
 
     private fun saveEvent() {

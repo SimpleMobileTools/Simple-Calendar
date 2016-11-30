@@ -1,6 +1,5 @@
 package com.simplemobiletools.calendar.fragments
 
-import android.app.Activity
 import android.content.Intent
 import android.content.res.Resources
 import android.graphics.Color
@@ -29,8 +28,6 @@ import java.util.*
 import kotlin.comparisons.compareBy
 
 class DayFragment : Fragment(), DBHelper.EventUpdateListener, DBHelper.GetEventsListener, EventsAdapter.ItemOperationsListener {
-    private val EDIT_EVENT = 1
-
     private var mTextColor = 0
     private var mDayCode = ""
     private var mEvents: MutableList<Event>? = null
@@ -40,10 +37,6 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DBHelper.GetEvents
     lateinit var mHolder: RelativeLayout
     lateinit var mConfig: Config
     lateinit var mToBeDeleted: MutableList<Int>
-
-    companion object {
-        val DELETED_ID = "deleted_id"
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_day, container, false)
@@ -139,18 +132,7 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DBHelper.GetEvents
     private fun editEvent(eventId: Int) {
         Intent(activity.applicationContext, EventActivity::class.java).apply {
             putExtra(EVENT_ID, eventId)
-            startActivityForResult(this, EDIT_EVENT)
-        }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == EDIT_EVENT && resultCode == Activity.RESULT_OK && data != null) {
-            val deletedId = data.getIntExtra(DELETED_ID, -1)
-            if (deletedId != -1) {
-                mToBeDeleted.clear()
-                mToBeDeleted.add(deletedId)
-                notifyDeletion()
-            }
+            startActivity(this)
         }
     }
 

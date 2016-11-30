@@ -1,6 +1,5 @@
 package com.simplemobiletools.calendar.fragments
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -28,8 +27,6 @@ import java.util.*
 import kotlin.comparisons.compareBy
 
 class EventListFragment : Fragment(), DBHelper.GetEventsListener, DBHelper.EventUpdateListener, EventListAdapter.ItemOperationsListener {
-    private val EDIT_EVENT = 1
-
     var mAllEvents: MutableList<Event>? = null
     lateinit var mToBeDeleted: MutableList<Int>
     lateinit var mView: View
@@ -100,18 +97,7 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, DBHelper.Event
     private fun editEvent(eventId: Int) {
         Intent(activity.applicationContext, EventActivity::class.java).apply {
             putExtra(EVENT_ID, eventId)
-            startActivityForResult(this, EDIT_EVENT)
-        }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == EDIT_EVENT && resultCode == Activity.RESULT_OK && data != null) {
-            val deletedId = data.getIntExtra(DayFragment.DELETED_ID, -1)
-            if (deletedId != -1) {
-                mToBeDeleted.clear()
-                mToBeDeleted.add(deletedId)
-                notifyDeletion()
-            }
+            startActivity(this)
         }
     }
 
