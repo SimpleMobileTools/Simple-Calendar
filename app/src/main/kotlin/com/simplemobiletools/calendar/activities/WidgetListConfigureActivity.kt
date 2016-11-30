@@ -164,10 +164,12 @@ class WidgetListConfigureActivity : AppCompatActivity() {
         day = Formatter.getDayTitle(this, code)
         listItems.add(ListSection(day))
 
+        time = dateTime.withHourOfDay(8)
+        listItems.add(ListEvent(3, (time.millis / 1000).toInt(), (time.plusHours(1).millis / 1000).toInt(), "Library", ""))
         time = dateTime.withHourOfDay(13)
-        listItems.add(ListEvent(3, (time.millis / 1000).toInt(), (time.plusHours(1).millis / 1000).toInt(), "Lunch with Mary", "In the Plaza"))
+        listItems.add(ListEvent(4, (time.millis / 1000).toInt(), (time.plusHours(1).millis / 1000).toInt(), "Lunch with Mary", "In the Plaza"))
         time = dateTime.withHourOfDay(18)
-        listItems.add(ListEvent(4, (time.millis / 1000).toInt(), (time.plusMinutes(10).millis / 1000).toInt(), "Coffee time", ""))
+        listItems.add(ListEvent(5, (time.millis / 1000).toInt(), (time.plusMinutes(10).millis / 1000).toInt(), "Coffee time", ""))
 
         return listItems
     }
