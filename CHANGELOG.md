@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 1.40 *(2016-11-30)*
+----------------------------
+
+ * Add a new widget for a list of events
+ * Make the reminder alarm more aggressive, waking up sleeping devices
+ * Misc bug and crashfixes
+
 Version 1.39 *(2016-11-26)*
 ----------------------------
 
