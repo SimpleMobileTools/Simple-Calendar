@@ -270,7 +270,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
                     2 -> DAY_MINS
                     else -> 1
                 }
-                Integer.valueOf(value) * multiplier
+                Integer.valueOf(if (value.isEmpty()) "0" else value) * multiplier
             }
         }
     }

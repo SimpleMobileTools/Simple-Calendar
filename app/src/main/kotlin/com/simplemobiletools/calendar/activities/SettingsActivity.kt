@@ -101,7 +101,7 @@ class SettingsActivity : SimpleActivity() {
             else -> 1
         }
 
-        mConfig.defaultReminderMinutes = Integer.valueOf(value) * multiplier
+        mConfig.defaultReminderMinutes = Integer.valueOf(if (value.isEmpty()) "0" else value) * multiplier
         mConfig.defaultReminderType = REMINDER_CUSTOM
         toast(R.string.reminder_saved)
         hideKeyboard()
