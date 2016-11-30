@@ -30,7 +30,6 @@ import kotlin.comparisons.compareBy
 class EventListFragment : Fragment(), DBHelper.GetEventsListener, DBHelper.EventUpdateListener, EventListAdapter.ItemOperationsListener {
     private val EDIT_EVENT = 1
 
-    var mListItems: ArrayList<ListItem> = ArrayList()
     var mAllEvents: MutableList<Event>? = null
     lateinit var mToBeDeleted: MutableList<Int>
     lateinit var mView: View
@@ -58,21 +57,22 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, DBHelper.Event
 
     override fun gotEvents(events: MutableList<Event>) {
         val filtered = getEventsToShow(events)
-        mListItems = ArrayList<ListItem>(filtered.size)
+        val listItems = ArrayList<ListItem>(filtered.size)
         val sorted = filtered.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { it.description }))
+        val sublist = sorted.subList(0, Math.min(sorted.size, 50))
         var prevCode = ""
-        sorted.forEach {
+        sublist.forEach {
             val code = Formatter.getDayCodeFromTS(it.startTS)
             if (code != prevCode) {
                 val day = Formatter.getDayTitle(context, code)
-                mListItems.add(ListSection(day))
+                listItems.add(ListSection(day))
                 prevCode = code
             }
-            mListItems.add(ListEvent(it.id, it.startTS, it.endTS, it.title, it.description))
+            listItems.add(ListEvent(it.id, it.startTS, it.endTS, it.title, it.description))
         }
 
         mAllEvents = events
-        val eventsAdapter = EventListAdapter(activity as SimpleActivity, mListItems, this) {
+        val eventsAdapter = EventListAdapter(activity as SimpleActivity, listItems, this) {
             (activity as MainActivity).checkDeleteEvents()
             editEvent(it)
         }
