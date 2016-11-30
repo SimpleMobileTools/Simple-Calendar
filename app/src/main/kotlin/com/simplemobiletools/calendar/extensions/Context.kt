@@ -6,6 +6,7 @@ import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.SystemClock
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.helpers.*
@@ -79,7 +80,10 @@ fun Context.scheduleEventIn(notifTS: Int, event: Event) {
     val notifInMs = SystemClock.elapsedRealtime() + delayFromNow
     val pendingIntent = getNotificationIntent(this, event.id)
     val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-    alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, notifInMs, pendingIntent)
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
+        alarmManager.setExact(AlarmManager.ELAPSED_REALTIME_WAKEUP, notifInMs, pendingIntent)
+    else
+        alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, notifInMs, pendingIntent)
 }
 
 private fun getNotificationIntent(context: Context, eventId: Int): PendingIntent {
