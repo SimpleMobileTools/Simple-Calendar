@@ -11,8 +11,8 @@
     <string name="no_events_added">Parece que o seu calendário está vazio.\nPode criar eventos com o botão +, existente na base.</string>
 
     <!-- Widget titles -->
-    <string name="widget_monthly">Calendar monthly</string>
-    <string name="widget_list">Calendar event list</string>
+    <string name="widget_monthly">Calendário mensal</string>
+    <string name="widget_list">Lista de eventos</string>
 
     <!-- Event -->
     <string name="event">Evento</string>
