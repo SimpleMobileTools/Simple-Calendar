@@ -122,6 +122,7 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
                 event_item_title.text = item.title
                 event_item_description.text = item.description
                 event_item_start.text = Formatter.getTime(item.startTS)
+                toggleItemSelection(itemView, markedItems.contains(pos), pos)
 
                 if (item.startTS == item.endTS) {
                     event_item_end.visibility = View.INVISIBLE
