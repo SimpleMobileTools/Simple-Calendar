@@ -94,6 +94,7 @@ class EventsAdapter(val activity: SimpleActivity, val mItems: List<Event>, val l
                 event_item_title.text = event.title
                 event_item_description.text = event.description
                 event_item_start.text = Formatter.getTime(event.startTS)
+                toggleItemSelection(this, markedItems.contains(pos), pos)
 
                 if (event.startTS == event.endTS) {
                     event_item_end.visibility = View.INVISIBLE
