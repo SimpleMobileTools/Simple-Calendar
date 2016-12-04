@@ -23,6 +23,7 @@ class ChangeViewDialog(val activity: Activity, val callback: (newView: Int) -> U
                 .setView(view)
                 .create()
 
+        dialog?.setCanceledOnTouchOutside(true)
         dialog?.show()
     }
 
