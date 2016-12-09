@@ -107,7 +107,7 @@
     <string name="sunday_letter">V</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
-    <string name="app_short_description">Egy egyszerű naptár bejegyzésekkel, személyre szabható widget-tel és reklámok nélkül.</string>
+    <string name="app_short_description">Egy egyszerű naptár bejegyzésekkel, widget-tel és reklámok nélkül.</string>
     <string name="app_long_description">
         Egy internet-kapcsolatot nem igénylő naptár, más naptárokkal való integráció nélkül. Könnyedén lehet ismétlődő eseményeket és emlékeztetőket felvenni, és a hetek sorszámait is mutatja.
 
