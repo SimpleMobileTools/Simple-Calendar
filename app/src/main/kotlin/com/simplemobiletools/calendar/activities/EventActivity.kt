@@ -158,6 +158,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     }
 
     fun endCheckboxChecked(isChecked: Boolean) {
+        hideKeyboard()
         event_end_date.beVisibleIf(isChecked)
         event_end_time.beVisibleIf(isChecked)
     }
@@ -305,20 +306,24 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     }
 
     fun setupStartDate() {
+        hideKeyboard()
         DatePickerDialog(this, mDialogTheme, startDateSetListener, mEventStartDateTime.year, mEventStartDateTime.monthOfYear - 1,
                 mEventStartDateTime.dayOfMonth).show()
     }
 
     fun setupStartTime() {
+        hideKeyboard()
         TimePickerDialog(this, mDialogTheme, startTimeSetListener, mEventStartDateTime.hourOfDay, mEventStartDateTime.minuteOfHour, true).show()
     }
 
     fun setupEndDate() {
+        hideKeyboard()
         DatePickerDialog(this, mDialogTheme, endDateSetListener, mEventEndDateTime.year, mEventEndDateTime.monthOfYear - 1,
                 mEventEndDateTime.dayOfMonth).show()
     }
 
     fun setupEndTime() {
+        hideKeyboard()
         TimePickerDialog(this, mDialogTheme, endTimeSetListener, mEventEndDateTime.hourOfDay, mEventEndDateTime.minuteOfHour, true).show()
     }
 
