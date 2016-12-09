@@ -1,6 +1,11 @@
 Changelog
 ==========
 
+Version 1.41 *(2016-12-09)*
+----------------------------
+
+ * Some smaller bugfixes and updated translations
+
 Version 1.40 *(2016-11-30)*
 ----------------------------
 
