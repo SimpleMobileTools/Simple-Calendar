@@ -56,6 +56,15 @@
 
     <style name="MyAlertDialog.Dark" parent="Base.Theme.AppCompat.Dialog.Alert"/>
 
+    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/colorPrimary</item>
+    </style>
+
+    <style name="DialogTheme.Dark" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowBackground">@color/dark_theme_dialog_background</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+    </style>
+
     <style name="AppTheme.ActionBarStyle" parent="@style/Base.Widget.AppCompat.ActionBar">
         <item name="background">@color/colorPrimary</item>
         <item name="titleTextStyle">@style/AppTheme.ActionBar.TitleTextStyle</item>

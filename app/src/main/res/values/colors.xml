@@ -8,4 +8,5 @@
     <color name="activated_item_foreground">#44888888</color>
     <color name="mediumGrey">#18000000</color>
     <color name="divider_grey">#44cccccc</color>
+    <color name="dark_theme_dialog_background">#ff333333</color>
 </resources>
