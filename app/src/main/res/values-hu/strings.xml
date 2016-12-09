@@ -55,7 +55,6 @@
     <string name="about">Információ</string>
     <string name="website">További egyszerű alkalmazások és a forráskód itt:\nhttp://simplemobiletools.com</string>
     <string name="email_label">Visszajelzés és javaslatok:</string>
-
     <string name="third_party_licences_underlined"><u>Harmadik fél licenszek</u></string>
     <string name="invite_friends_underlined"><u>Barátok meghívása</u></string>
     <string name="share_text">Szia, ezt nézd meg! %1$s itt: %2$s</string>
@@ -77,11 +76,8 @@
     <string name="notice">Ez az alkalmazás az alábbi könyvtárakat használja, hogy a munkám egyszerűbb legyen. Köszönöm szépen.</string>
     <string name="third_party_licences">Harmadik fél licenszek</string>
     <string name="kotlin_title"><u>Kotlin (programozási nyelv)</u></string>
-
     <string name="ambilwarna_title"><u>AmbilWarna (színválasztó)</u></string>
-
     <string name="joda_title"><u>Joda-Time (Java dátum helyettesítérére)</u></string>
-
     <string name="stetho_title"><u>Stetho (adatbázisok hibakeresésére)</u></string>
 
     <plurals name="events_deleted">
