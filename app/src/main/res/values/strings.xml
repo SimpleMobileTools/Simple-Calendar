@@ -53,14 +53,16 @@
 
     <!-- About -->
     <string name="about">About</string>
-    <string name="website">More simple apps and source code at:\nhttp://simplemobiletools.com</string>
+    <string name="website">For the source codes visit\nhttp://simplemobiletools.com</string>
     <string name="email_label">Send your feedback or suggestions to:</string>
     <string name="email" translatable="false">hello@simplemobiletools.com</string>
+    <string name="more_apps_underlined"><u>More apps</u></string>
     <string name="third_party_licences_underlined"><u>Third party licences</u></string>
     <string name="invite_friends_underlined"><u>Invite friends</u></string>
     <string name="share_text">Hey, come check out %1$s at %2$s</string>
     <string name="invite_via">Invite via</string>
-    <string name="rate_us_underlined"><u>Rate us in the Play Store</u></string>
+    <string name="rate_us_underlined"><u>Rate us</u></string>
+    <string name="donate_underlined"><u>Donate</u></string>
     <string name="follow_us">Follow us:</string>
     <string name="copyright">v %1$s\nCopyright © Simple Mobile Tools %2$d</string>
 
@@ -131,6 +133,7 @@
     </string-array>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
+    <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">A simple calendar with events, customizable widget and no ads.</string>
     <string name="app_long_description">
         An offline calendar without any other calendar integration. You can easily create recurring events and setup reminders, it can also display week numbers.

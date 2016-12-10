@@ -55,11 +55,13 @@
     <string name="about">के बारे में</string>
     <string name="website">अधिक एप्पस व सोर्स कोड:\nhttp://simplemobiletools.com</string>
     <string name="email_label">अपनी राय या सुझाव को भेजें:</string>
+    <string name="more_apps_underlined"><u>More apps</u></string>
     <string name="third_party_licences_underlined"><u> तीसरी पार्टी के लाइसेंस </u></string>
     <string name="invite_friends_underlined"><u>मित्रो को आमन्त्रित करें</u></string>
     <string name="share_text">अरे, %1$s को %2$s पर देखो</string>
     <string name="invite_via">के माध्यम से आमंत्रित</string>
     <string name="rate_us_underlined"><u>हमे प्ले स्टोर पर रेट करें</u></string>
+    <string name="donate_underlined"><u>Donate</u></string>
     <string name="follow_us">हमे फॉलो करें:</string>
     <string name="copyright">सं %1$s\nकॉपीराइट © सिंपल मोबाइल टूल्स %2$d</string>
 
@@ -107,6 +109,7 @@
     <string name="sunday_letter">र</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
+    <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">एक सरल कैलेंडर इवेंट्स, कस्टमाइजेबल विजेट व बिना विज्ञापन के बिना।</string>
     <string name="app_long_description">
         एक ऑफलाइन कैलेंडर बिना अन्य कैलेंडर इंटीग्रेशन के। आप आसानी से इवेंट्स व रिमाइंडर बना सकते हैं, यह सफ्ताह क्रमांक भी दर्शाता हैं।
