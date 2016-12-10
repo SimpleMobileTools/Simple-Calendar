@@ -1,6 +1,11 @@
 Changelog
 ==========
 
+Version 1.42 *(2016-12-10)*
+----------------------------
+
+ * Allow changing the reminder notification sound
+
 Version 1.41 *(2016-12-09)*
 ----------------------------
 
