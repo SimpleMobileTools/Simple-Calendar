@@ -74,6 +74,8 @@
     <string name="reminder_sound">Reminder sound</string>
     <string name="default_event_reminder">デフォルトのイベント リマインダー</string>
     <string name="reminder_saved">リマインダーを保存しました</string>
+    <string name="notification_sound">Notification sound</string>
+    <string name="no_ringtone_picker">No app capable of setting ringtone found</string>
 
     <!-- License -->
     <string name="notice">このアプリは、私の暮らしにゆとりを持たせるために、次のサードパーティのライブラリーを使用しています。 ありがとうございます。</string>

@@ -74,6 +74,8 @@
     <string name="reminder_sound">Reminder sound</string>
     <string name="default_event_reminder">Alapértelmezett emlékeztetés</string>
     <string name="reminder_saved">Emlékeztető elmentve</string>
+    <string name="notification_sound">Notification sound</string>
+    <string name="no_ringtone_picker">No app capable of setting ringtone found</string>
 
     <!-- License -->
     <string name="notice">Ez az alkalmazás az alábbi könyvtárakat használja, hogy a munkám egyszerűbb legyen. Köszönöm szépen.</string>

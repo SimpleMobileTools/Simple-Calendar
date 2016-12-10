@@ -74,6 +74,8 @@
     <string name="reminder_sound">Reminder sound</string>
     <string name="default_event_reminder">Recordatorio predeterminado de un evento</string>
     <string name="reminder_saved">Recordatorio guardado</string>
+    <string name="notification_sound">Notification sound</string>
+    <string name="no_ringtone_picker">No app capable of setting ringtone found</string>
 
     <!-- License -->
     <string name="notice">Esta aplicación utiliza bibliotecas de terceros para hacer mi vida más fácil. Gracias.</string>

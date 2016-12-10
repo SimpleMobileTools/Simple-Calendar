@@ -1,6 +1,11 @@
 package com.simplemobiletools.calendar.activities
 
+import android.app.Activity
+import android.content.Intent
+import android.media.RingtoneManager
+import android.net.Uri
 import android.os.Bundle
+import android.os.Parcelable
 import android.support.v4.app.TaskStackBuilder
 import android.view.View
 import android.widget.AdapterView
@@ -10,11 +15,12 @@ import com.simplemobiletools.calendar.extensions.hideKeyboard
 import com.simplemobiletools.calendar.extensions.showKeyboard
 import com.simplemobiletools.calendar.extensions.value
 import com.simplemobiletools.calendar.helpers.*
-import com.simplemobiletools.filepicker.extensions.getFilenameFromPath
 import com.simplemobiletools.filepicker.extensions.toast
 import kotlinx.android.synthetic.main.activity_settings.*
 
 class SettingsActivity : SimpleActivity() {
+    val GET_RINGTONE_URI = 1
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
@@ -53,9 +59,19 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun setupReminderSound() {
-        settings_reminder_sound.text = mConfig.reminderSound.getFilenameFromPath()
+        settings_reminder_sound.text = RingtoneManager.getRingtone(this, Uri.parse(mConfig.reminderSound)).getTitle(this)
         settings_reminder_sound_holder.setOnClickListener {
+            Intent(RingtoneManager.ACTION_RINGTONE_PICKER).apply {
+                putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_NOTIFICATION)
+                putExtra(RingtoneManager.EXTRA_RINGTONE_TITLE, resources.getString(R.string.notification_sound))
+                putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, Uri.parse(mConfig.reminderSound))
 
+                if (resolveActivity(packageManager) != null)
+                    startActivityForResult(this, GET_RINGTONE_URI)
+                else {
+                    toast(R.string.no_ringtone_picker)
+                }
+            }
         }
     }
 
@@ -130,6 +146,14 @@ class SettingsActivity : SimpleActivity() {
             custom_reminder_other_period.setSelection(0)
         }
         custom_reminder_value.setText(value.toString())
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
+        if (resultCode == Activity.RESULT_OK && requestCode == GET_RINGTONE_URI) {
+            val uri = intent?.getParcelableExtra<Parcelable>(RingtoneManager.EXTRA_RINGTONE_PICKED_URI) ?: return
+            settings_reminder_sound.text = RingtoneManager.getRingtone(this, uri as Uri).getTitle(this)
+            mConfig.reminderSound = uri.toString()
+        }
     }
 
     private fun restartActivity() {

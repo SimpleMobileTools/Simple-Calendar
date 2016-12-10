@@ -5,7 +5,7 @@ import android.content.SharedPreferences
 import android.media.RingtoneManager
 import java.util.*
 
-class Config(context: Context) {
+class Config(val context: Context) {
     private val mPrefs: SharedPreferences
 
     companion object {
@@ -40,7 +40,7 @@ class Config(context: Context) {
         set(vibrate) = mPrefs.edit().putBoolean(VIBRATE, vibrate).apply()
 
     var reminderSound: String
-        get() = mPrefs.getString(REMINDER_SOUND, RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION).toString())
+        get() = mPrefs.getString(REMINDER_SOUND, RingtoneManager.getActualDefaultRingtoneUri(context, RingtoneManager.TYPE_NOTIFICATION).toString())
         set(path) = mPrefs.edit().putString(REMINDER_SOUND, path).apply()
 
     var storedView: Int
