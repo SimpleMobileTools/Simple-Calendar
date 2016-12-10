@@ -2,7 +2,7 @@ package com.simplemobiletools.calendar.helpers
 
 import com.simplemobiletools.calendar.R
 
-val LOW_ALPHA = .2f
+val LOW_ALPHA = .3f
 val MEDIUM_ALPHA = .6f
 val HIGH_ALPHA = .8f
 
