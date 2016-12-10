@@ -10,6 +10,7 @@ import com.simplemobiletools.calendar.extensions.hideKeyboard
 import com.simplemobiletools.calendar.extensions.showKeyboard
 import com.simplemobiletools.calendar.extensions.value
 import com.simplemobiletools.calendar.helpers.*
+import com.simplemobiletools.filepicker.extensions.getFilenameFromPath
 import com.simplemobiletools.filepicker.extensions.toast
 import kotlinx.android.synthetic.main.activity_settings.*
 
@@ -22,6 +23,7 @@ class SettingsActivity : SimpleActivity() {
         setupSundayFirst()
         setupWeekNumbers()
         setupVibrate()
+        setupReminderSound()
         setupEventReminder()
     }
 
@@ -47,6 +49,13 @@ class SettingsActivity : SimpleActivity() {
         settings_week_numbers_holder.setOnClickListener {
             settings_week_numbers.toggle()
             mConfig.displayWeekNumbers = settings_week_numbers.isChecked
+        }
+    }
+
+    private fun setupReminderSound() {
+        settings_reminder_sound.text = mConfig.reminderSound.getFilenameFromPath()
+        settings_reminder_sound_holder.setOnClickListener {
+
         }
     }
 

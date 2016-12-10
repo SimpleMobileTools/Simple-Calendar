@@ -124,6 +124,36 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/settings_reminder_sound_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/settings_padding"
+            android:background="?attr/selectableItemBackground"
+            android:padding="@dimen/activity_margin">
+
+            <TextView
+                android:id="@+id/settings_reminder_sound_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingLeft="@dimen/settings_padding"
+                android:paddingStart="@dimen/settings_padding"
+                android:text="@string/reminder_sound"/>
+
+            <TextView
+                android:id="@+id/settings_reminder_sound"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="@dimen/tiny_margin"
+                android:layout_marginRight="@dimen/tiny_margin"
+                android:background="@null"
+                android:clickable="false"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
             android:id="@+id/settings_default_reminder_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

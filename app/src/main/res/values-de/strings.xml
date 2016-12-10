@@ -71,6 +71,7 @@
     <string name="sunday_first">Sonntag als erster Wochentag</string>
     <string name="week_numbers">Zeige Kalenderwoche an</string>
     <string name="vibrate">Vibrate on reminder notification</string>
+    <string name="reminder_sound">Reminder sound</string>
     <string name="default_event_reminder">Standard Termin Erinnerung</string>
     <string name="reminder_saved">Erinnerung gespeichert</string>
 

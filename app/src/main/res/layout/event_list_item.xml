@@ -15,7 +15,7 @@
         android:paddingBottom="@dimen/event_padding"
         android:paddingLeft="@dimen/activity_margin"
         android:paddingRight="@dimen/activity_margin"
-        android:paddingTop="@dimen/small_padding">
+        android:paddingTop="@dimen/tiny_margin">
 
         <TextView
             android:id="@+id/event_item_start"

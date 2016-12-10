@@ -71,6 +71,7 @@
     <string name="sunday_first">日曜日が最初</string>
     <string name="week_numbers">週番号を表示</string>
     <string name="vibrate">リマインダー通知で振動</string>
+    <string name="reminder_sound">Reminder sound</string>
     <string name="default_event_reminder">デフォルトのイベント リマインダー</string>
     <string name="reminder_saved">リマインダーを保存しました</string>
 

@@ -71,6 +71,7 @@
     <string name="sunday_first">Vasárnap a hét első napja</string>
     <string name="week_numbers">Hetek sorszámának mutatása</string>
     <string name="vibrate">Emlékeztetőnél rezgés</string>
+    <string name="reminder_sound">Reminder sound</string>
     <string name="default_event_reminder">Alapértelmezett emlékeztetés</string>
     <string name="reminder_saved">Emlékeztető elmentve</string>
 

@@ -2,6 +2,7 @@ package com.simplemobiletools.calendar.helpers
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.media.RingtoneManager
 import java.util.*
 
 class Config(context: Context) {
@@ -37,6 +38,10 @@ class Config(context: Context) {
     var vibrateOnReminder: Boolean
         get() = mPrefs.getBoolean(VIBRATE, false)
         set(vibrate) = mPrefs.edit().putBoolean(VIBRATE, vibrate).apply()
+
+    var reminderSound: String
+        get() = mPrefs.getString(REMINDER_SOUND, RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION).toString())
+        set(path) = mPrefs.edit().putString(REMINDER_SOUND, path).apply()
 
     var storedView: Int
         get() = mPrefs.getInt(VIEW, MONTHLY_VIEW)

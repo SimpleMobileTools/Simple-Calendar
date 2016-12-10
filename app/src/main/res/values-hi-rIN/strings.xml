@@ -71,6 +71,7 @@
     <string name="sunday_first">रविवार पहला दिन हैं</string>
     <string name="week_numbers">सफ्ताह क्रमांक दिखाए</string>
     <string name="vibrate">Vibrate on reminder notification</string>
+    <string name="reminder_sound">Reminder sound</string>
     <string name="default_event_reminder">Default event reminder</string>
     <string name="reminder_saved">Reminder saved</string>
 
