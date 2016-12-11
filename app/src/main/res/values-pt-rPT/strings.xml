@@ -71,11 +71,11 @@
     <string name="sunday_first">Domingo como primeiro dia</string>
     <string name="week_numbers">Mostrar número das semanas</string>
     <string name="vibrate">Vibrar ao notificar sobre o lembrete</string>
-    <string name="reminder_sound">Reminder sound</string>
+    <string name="reminder_sound">Som do lembrete</string>
     <string name="default_event_reminder">Lembrete padrão</string>
     <string name="reminder_saved">Lembrete guardado</string>
-    <string name="notification_sound">Notification sound</string>
-    <string name="no_ringtone_picker">No app capable of setting ringtone found</string>
+    <string name="notification_sound">Som da notificação</string>
+    <string name="no_ringtone_picker">Não foi encontrada qualquer aplicação capaz de definir o som</string>
 
     <!-- License -->
     <string name="notice">Esta aplicação usa as seguintes bibliotecas de terceiros para facilitar a minha vida. Obrigado.</string>
