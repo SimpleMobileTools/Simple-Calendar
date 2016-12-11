@@ -55,13 +55,13 @@
     <string name="about">Acerca</string>
     <string name="website">Mais aplicações Simple e código fonte em:\nhttp://simplemobiletools.com</string>
     <string name="email_label">Envie os seus comentários ou sugestões para:</string>
-    <string name="more_apps_underlined"><u>More apps</u></string>
+    <string name="more_apps_underlined"><u>Mais aplicações</u></string>
     <string name="third_party_licences_underlined"><u>Licenças de terceiros</u></string>
     <string name="invite_friends_underlined"><u>Convidar amigos</u></string>
     <string name="share_text">Olá, experimenta o %1$s em %2$s</string>
     <string name="invite_via">Convidar via</string>
     <string name="rate_us_underlined"><u>Avalie-nos na Play Store</u></string>
-    <string name="donate_underlined"><u>Donate</u></string>
+    <string name="donate_underlined"><u>Donativos</u></string>
     <string name="follow_us">Siga-nos:</string>
     <string name="copyright">V %1$s\nCopyright © Simple Mobile Tools %2$d</string>
 
@@ -71,11 +71,11 @@
     <string name="sunday_first">Domingo como primeiro dia</string>
     <string name="week_numbers">Mostrar número das semanas</string>
     <string name="vibrate">Vibrar ao notificar sobre o lembrete</string>
-    <string name="reminder_sound">Reminder sound</string>
+    <string name="reminder_sound">Som do lembrete</string>
     <string name="default_event_reminder">Lembrete padrão</string>
     <string name="reminder_saved">Lembrete guardado</string>
-    <string name="notification_sound">Notification sound</string>
-    <string name="no_ringtone_picker">No app capable of setting ringtone found</string>
+    <string name="notification_sound">Som da notificação</string>
+    <string name="no_ringtone_picker">Não foi encontrada qualquer aplicação capaz de definir o som</string>
 
     <!-- License -->
     <string name="notice">Esta aplicação usa as seguintes bibliotecas de terceiros para facilitar a minha vida. Obrigado.</string>
