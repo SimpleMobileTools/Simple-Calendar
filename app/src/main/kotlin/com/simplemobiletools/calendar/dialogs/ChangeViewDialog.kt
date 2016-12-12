@@ -19,7 +19,7 @@ class ChangeViewDialog(val activity: Activity, val callback: (newView: Int) -> U
         view.dialog_radio_view.setOnCheckedChangeListener(this)
 
         dialog = AlertDialog.Builder(activity)
-                .setTitle(activity.resources.getString(R.string.change_view))
+                .setTitle(R.string.change_view)
                 .setView(view)
                 .create()
 
