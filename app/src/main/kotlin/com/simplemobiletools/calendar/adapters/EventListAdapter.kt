@@ -51,7 +51,7 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
         mTopDivider = activity.resources.getDrawable(R.drawable.divider)
         mOrangeColor = activity.resources.getColor(R.color.colorPrimary)
         val mTodayCode = Formatter.getDayCodeFromTS(mNow)
-        mTodayDate = Formatter.getEventDate(activity, mTodayCode)
+        mTodayDate = Formatter.getDate(activity, mTodayCode)
     }
 
     val multiSelectorMode = object : ModalMultiSelectorCallback(multiSelector) {
@@ -121,19 +121,19 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
             itemView.apply {
                 event_item_title.text = item.title
                 event_item_description.text = item.description
-                event_item_start.text = Formatter.getTime(item.startTS)
+                event_item_start.text = Formatter.getTimeFromTS(context, item.startTS)
                 toggleItemSelection(this, markedItems.contains(pos), pos)
 
                 if (item.startTS == item.endTS) {
                     event_item_end.visibility = View.INVISIBLE
                 } else {
-                    event_item_end.text = Formatter.getTime(item.endTS)
+                    event_item_end.text = Formatter.getTimeFromTS(context, item.endTS)
                     event_item_end.visibility = View.VISIBLE
 
                     val startCode = Formatter.getDayCodeFromTS(item.startTS)
                     val endCode = Formatter.getDayCodeFromTS(item.endTS)
                     if (startCode != endCode) {
-                        event_item_end.append(" (${Formatter.getEventDate(context, endCode)})")
+                        event_item_end.append(" (${Formatter.getDate(context, endCode)})")
                     }
                 }
 

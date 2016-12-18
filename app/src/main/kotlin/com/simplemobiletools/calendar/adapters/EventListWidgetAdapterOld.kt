@@ -50,18 +50,18 @@ class EventListWidgetAdapterOld(val context: Context, val mEvents: List<ListItem
             viewHolder.apply {
                 title.text = item.title
                 description?.text = item.description
-                start?.text = Formatter.getTime(item.startTS)
+                start?.text = Formatter.getTimeFromTS(context, item.startTS)
 
                 if (item.startTS == item.endTS) {
                     end?.visibility = View.INVISIBLE
                 } else {
-                    end?.text = Formatter.getTime(item.endTS)
+                    end?.text = Formatter.getTimeFromTS(context, item.endTS)
                     end?.visibility = View.VISIBLE
 
                     val startCode = Formatter.getDayCodeFromTS(item.startTS)
                     val endCode = Formatter.getDayCodeFromTS(item.endTS)
                     if (startCode != endCode) {
-                        end?.append(" (${Formatter.getEventDate(context, endCode)})")
+                        end?.append(" (${Formatter.getDate(context, endCode)})")
                     }
                 }
 

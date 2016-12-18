@@ -290,19 +290,19 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     }
 
     private fun updateStartDate() {
-        event_start_date.text = Formatter.getEventDate(applicationContext, mEventStartDateTime)
+        event_start_date.text = Formatter.getDate(applicationContext, mEventStartDateTime)
     }
 
     private fun updateStartTime() {
-        event_start_time.text = Formatter.getEventTime(mEventStartDateTime)
+        event_start_time.text = Formatter.getTime(this, mEventStartDateTime)
     }
 
     private fun updateEndDate() {
-        event_end_date.text = Formatter.getEventDate(applicationContext, mEventEndDateTime)
+        event_end_date.text = Formatter.getDate(applicationContext, mEventEndDateTime)
     }
 
     private fun updateEndTime() {
-        event_end_time.text = Formatter.getEventTime(mEventEndDateTime)
+        event_end_time.text = Formatter.getTime(this, mEventEndDateTime)
     }
 
     fun setupStartDate() {

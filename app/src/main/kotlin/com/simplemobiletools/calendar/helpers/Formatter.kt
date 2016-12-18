@@ -1,6 +1,7 @@
 package com.simplemobiletools.calendar.helpers
 
 import android.content.Context
+import android.text.format.DateFormat
 import com.simplemobiletools.calendar.R
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
@@ -11,9 +12,10 @@ object Formatter {
     val YEAR_PATTERN = "YYYY"
     private val DAY_PATTERN = "d"
     private val DAY_OF_WEEK_PATTERN = "EEE"
-    private val EVENT_TIME_PATTERN = "HH:mm"
+    private val PATTERN_TIME_12 = "h:mm a"
+    private val PATTERN_TIME_24 = "k:mm"
 
-    fun getEventDate(context: Context, dayCode: String): String {
+    fun getDate(context: Context, dayCode: String): String {
         val dateTime = getDateTimeFromCode(dayCode)
         val day = dateTime.toString(DAY_PATTERN)
         val year = dateTime.toString(YEAR_PATTERN)
@@ -26,21 +28,21 @@ object Formatter {
     }
 
     fun getDayTitle(context: Context, dayCode: String): String {
-        val date = getEventDate(context, dayCode)
+        val date = getDate(context, dayCode)
         val dateTime = getDateTimeFromCode(dayCode)
         val day = dateTime.toString(DAY_OF_WEEK_PATTERN)
         return "$date ($day)"
     }
 
-    fun getEventDate(context: Context, dateTime: DateTime) = getDayTitle(context, getDayCodeFromDateTime(dateTime))
+    fun getDate(context: Context, dateTime: DateTime) = getDayTitle(context, getDayCodeFromDateTime(dateTime))
 
-    fun getEventTime(dateTime: DateTime) = dateTime.toString(EVENT_TIME_PATTERN)
+    fun getTime(context: Context, dateTime: DateTime) = dateTime.toString(getTimePattern(context))
 
     fun getDateTimeFromCode(dayCode: String) = DateTimeFormat.forPattern(DAYCODE_PATTERN).withZone(DateTimeZone.UTC).parseDateTime(dayCode)
 
     fun getLocalDateTimeFromCode(dayCode: String) = DateTimeFormat.forPattern(DAYCODE_PATTERN).withZone(DateTimeZone.getDefault()).parseDateTime(dayCode)
 
-    fun getTime(ts: Int) = getEventTime(getDateTimeFromTS(ts))
+    fun getTimeFromTS(context: Context, ts: Int) = getTime(context, getDateTimeFromTS(ts))
 
     fun getDayStartTS(dayCode: String) = (getLocalDateTimeFromCode(dayCode).millis / 1000).toInt()
 
@@ -54,4 +56,6 @@ object Formatter {
 
     // use manually translated month names, as DateFormat and Joda have issues with a lot of languages
     fun getMonthName(context: Context, id: Int) = context.resources.getStringArray(R.array.months)[id]
+
+    fun getTimePattern(context: Context) = if (DateFormat.is24HourFormat(context)) PATTERN_TIME_24 else PATTERN_TIME_12
 }

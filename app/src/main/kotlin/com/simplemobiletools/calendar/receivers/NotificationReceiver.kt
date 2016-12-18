@@ -30,8 +30,8 @@ class NotificationReceiver : BroadcastReceiver() {
             return
 
         val pendingIntent = getPendingIntent(context, event)
-        val startTime = Formatter.getTime(event.startTS)
-        val endTime = Formatter.getTime(event.endTS)
+        val startTime = Formatter.getTimeFromTS(context, event.startTS)
+        val endTime = Formatter.getTimeFromTS(context, event.endTS)
         val title = event.title
         val notification = getNotification(context, pendingIntent, "${getEventTime(startTime, endTime)} $title")
         notificationManager.notify(id, notification)

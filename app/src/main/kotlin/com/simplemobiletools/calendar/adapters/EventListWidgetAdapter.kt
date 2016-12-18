@@ -46,8 +46,8 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
             remoteView.apply {
                 setTextViewText(R.id.event_item_title, item.title)
                 setTextViewText(R.id.event_item_description, item.description)
-                setTextViewText(R.id.event_item_start, Formatter.getTime(item.startTS))
-                setTextViewText(R.id.event_item_end, Formatter.getTime(item.endTS))
+                setTextViewText(R.id.event_item_start, Formatter.getTimeFromTS(context, item.startTS))
+                setTextViewText(R.id.event_item_end, Formatter.getTimeFromTS(context, item.endTS))
 
                 setInt(R.id.event_item_title, "setTextColor", textColor)
                 setInt(R.id.event_item_description, "setTextColor", textColor)
