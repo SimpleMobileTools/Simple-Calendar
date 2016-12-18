@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 1.43 *(2016-12-18)*
+----------------------------
+
+ * Use 12 or 24 hours time format as appropriate
+ * Fixing a crash at going to Settings on some devices
+
 Version 1.42 *(2016-12-10)*
 ----------------------------
 
