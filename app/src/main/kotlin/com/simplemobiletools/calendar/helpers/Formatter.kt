@@ -19,9 +19,9 @@ object Formatter {
         val year = dateTime.toString(YEAR_PATTERN)
         val monthIndex = Integer.valueOf(dayCode.substring(4, 6))!! - 1
         val month = getMonthName(context, monthIndex)
-        var date = month + " " + day
+        var date = "$month $day"
         if (year != DateTime().toString(YEAR_PATTERN))
-            date += " " + year
+            date += " $year"
         return date
     }
 
