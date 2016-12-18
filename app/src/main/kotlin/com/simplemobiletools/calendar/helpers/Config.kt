@@ -40,7 +40,7 @@ class Config(val context: Context) {
         set(vibrate) = mPrefs.edit().putBoolean(VIBRATE, vibrate).apply()
 
     var reminderSound: String
-        get() = mPrefs.getString(REMINDER_SOUND, RingtoneManager.getActualDefaultRingtoneUri(context, RingtoneManager.TYPE_NOTIFICATION).toString())
+        get() = mPrefs.getString(REMINDER_SOUND, getDefaultNotificationSound())
         set(path) = mPrefs.edit().putString(REMINDER_SOUND, path).apply()
 
     var storedView: Int
@@ -64,4 +64,6 @@ class Config(val context: Context) {
                 defaultReminderType = REMINDER_AT_START
             mPrefs.edit().putInt(REMINDER_MINUTES, mins).apply()
         }
+
+    fun getDefaultNotificationSound() = RingtoneManager.getActualDefaultRingtoneUri(context, RingtoneManager.TYPE_NOTIFICATION)?.toString() ?: ""
 }
