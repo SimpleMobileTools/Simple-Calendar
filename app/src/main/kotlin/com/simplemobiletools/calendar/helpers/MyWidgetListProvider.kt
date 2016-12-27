@@ -45,7 +45,8 @@ class MyWidgetListProvider : AppWidgetProvider() {
         mIntent = Intent(mContext, MyWidgetListProvider::class.java)
 
         val bgColor = prefs.getInt(WIDGET_BG_COLOR, Color.BLACK)
-        mRemoteViews.setInt(R.id.widget_event_list, "setBackgroundColor", bgColor)
+        mRemoteViews.setInt(R.id.widget_event_list_holder, "setBackgroundColor", bgColor)
+        mRemoteViews.setInt(R.id.widget_event_list_empty, "setTextColor", mTextColor)
 
         Intent(context, WidgetService::class.java).apply {
             data = Uri.parse(this.toUri(Intent.URI_INTENT_SCHEME))
@@ -55,6 +56,7 @@ class MyWidgetListProvider : AppWidgetProvider() {
         val startActivityIntent = Intent(context, EventActivity::class.java)
         val startActivityPendingIntent = PendingIntent.getActivity(context, 0, startActivityIntent, PendingIntent.FLAG_UPDATE_CURRENT)
         mRemoteViews.setPendingIntentTemplate(R.id.widget_event_list, startActivityPendingIntent)
+        mRemoteViews.setEmptyView(R.id.widget_event_list, R.id.widget_event_list_empty)
 
         val appWidgetIds = mWidgetManager.getAppWidgetIds(ComponentName(context, MyWidgetListProvider::class.java))
         mWidgetManager.updateAppWidget(appWidgetIds, mRemoteViews)

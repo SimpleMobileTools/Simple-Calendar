@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ListView
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/widget_event_list"
+    android:id="@+id/widget_event_list_holder"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:clipToPadding="false"
-    android:divider="@null"
-    android:dividerHeight="@dimen/medium_padding"
-    android:paddingBottom="@dimen/activity_margin"
-    android:paddingLeft="@dimen/activity_margin"
-    android:paddingTop="@dimen/medium_padding"/>
+    android:layout_height="match_parent">
+
+    <ListView
+        android:id="@+id/widget_event_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:divider="@null"
+        android:dividerHeight="@dimen/medium_padding"
+        android:paddingBottom="@dimen/activity_margin"
+        android:paddingLeft="@dimen/activity_margin"
+        android:paddingTop="@dimen/medium_padding"/>
+
+    <TextView
+        android:id="@+id/widget_event_list_empty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:padding="@dimen/big_margin"
+        android:text="@string/no_upcoming_events"
+        android:textSize="@dimen/dialog_text_size"/>
+
+</RelativeLayout>
