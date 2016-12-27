@@ -2,8 +2,6 @@
     <string name="app_name">Egyszerű naptár</string>
     <string name="app_launcher_name">Naptár</string>
     <string name="undo">Visszavonás</string>
-    <string name="ok">OK</string>
-    <string name="cancel">Mégsem</string>
     <string name="change_view">Nézet megváltoztatása</string>
     <string name="monthly_view">Havi nézet</string>
     <string name="yearly_view">Éves nézet</string>
@@ -18,8 +16,6 @@
     <string name="event">Bejegyzés</string>
     <string name="edit_event">Bejegyzés szerkesztése</string>
     <string name="new_event">Új bejegyzés</string>
-    <string name="save">Mentés</string>
-    <string name="delete">Törlés</string>
     <string name="title_empty">A cím nem lehet üres</string>
     <string name="end_before_start">Az eseménynek nem lehet vége a kezdete előtt</string>
     <string name="start_in_past">A múltba nem lehet bejegyzéseket felvenni</string>
@@ -51,23 +47,7 @@
     <string name="end">Vég (nem kötelező)</string>
     <string name="description">Leírás</string>
 
-    <!-- About -->
-    <string name="about">Információ</string>
-    <string name="website">További egyszerű alkalmazások és a forráskód itt:\nhttp://simplemobiletools.com</string>
-    <string name="email_label">Visszajelzés és javaslatok:</string>
-    <string name="more_apps_underlined"><u>More apps</u></string>
-    <string name="third_party_licences_underlined"><u>Harmadik fél licenszek</u></string>
-    <string name="invite_friends_underlined"><u>Barátok meghívása</u></string>
-    <string name="share_text">Szia, ezt nézd meg! %1$s itt: %2$s</string>
-    <string name="invite_via">Meghívó küldése itt</string>
-    <string name="rate_us_underlined"><u>Értékelés</u></string>
-    <string name="donate_underlined"><u>Donate</u></string>
-    <string name="follow_us">Követés:</string>
-    <string name="copyright">%1$s verzió\nSzerzői jogok: © Simple Mobile Tools %2$d</string>
-
     <!-- Settings -->
-    <string name="settings">Beállítások</string>
-    <string name="dark_theme">Sötét téma</string>
     <string name="sunday_first">Vasárnap a hét első napja</string>
     <string name="week_numbers">Hetek sorszámának mutatása</string>
     <string name="vibrate">Emlékeztetőnél rezgés</string>
@@ -76,14 +56,6 @@
     <string name="reminder_saved">Emlékeztető elmentve</string>
     <string name="notification_sound">Notification sound</string>
     <string name="no_ringtone_picker">No app capable of setting ringtone found</string>
-
-    <!-- License -->
-    <string name="notice">Ez az alkalmazás az alábbi könyvtárakat használja, hogy a munkám egyszerűbb legyen. Köszönöm szépen.</string>
-    <string name="third_party_licences">Harmadik fél licenszek</string>
-    <string name="kotlin_title"><u>Kotlin (programozási nyelv)</u></string>
-    <string name="ambilwarna_title"><u>AmbilWarna (színválasztó)</u></string>
-    <string name="joda_title"><u>Joda-Time (Java dátum helyettesítérére)</u></string>
-    <string name="stetho_title"><u>Stetho (adatbázisok hibakeresésére)</u></string>
 
     <plurals name="events_deleted">
         <item quantity="one">1 bejegyzés törölve</item>
@@ -128,7 +100,5 @@
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/library/src/main/res
-        https://github.com/SimpleMobileTools/Simple-File-Picker/tree/master/library/src/main/res
-        https://github.com/SimpleMobileTools/Simple-File-Properties/tree/master/library/src/main/res
     -->
 </resources>

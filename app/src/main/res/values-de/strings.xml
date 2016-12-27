@@ -2,8 +2,6 @@
     <string name="app_name">Schlichter Kalender</string>
     <string name="app_launcher_name">Kalender</string>
     <string name="undo">Rückgängig</string>
-    <string name="ok">OK</string>
-    <string name="cancel">Abbrechen</string>
     <string name="change_view">Ansicht ändern</string>
     <string name="monthly_view">Monatsansicht</string>
     <string name="yearly_view">Jahresansicht</string>
@@ -18,8 +16,6 @@
     <string name="event">Termin</string>
     <string name="edit_event">Termin bearbeiten</string>
     <string name="new_event">Neuer Termin</string>
-    <string name="save">Speichern</string>
-    <string name="delete">Löschen</string>
     <string name="title_empty">Titel darf nicht leer sein</string>
     <string name="end_before_start">Der Termin darf nicht früher enden als er beginnt</string>
     <string name="start_in_past">Du kannst keine Termine in der Vergangenheit erstellen</string>
@@ -51,23 +47,7 @@
     <string name="end">Ende (optional)</string>
     <string name="description">Beschreibung</string>
 
-    <!-- About -->
-    <string name="about">Über</string>
-    <string name="website">Weitere einfache Apps und Quellcode findes du auf:\nhttp://simplemobiletools.com</string>
-    <string name="email_label">Sende Vorschläge und Feedback an:</string>
-    <string name="more_apps_underlined"><u>More apps</u></string>
-    <string name="third_party_licences_underlined"><u>Drittanbieterlizenzen</u></string>
-    <string name="invite_friends_underlined"><u>Lade Freunde ein</u></string>
-    <string name="share_text">Hey, wirf mal einen Blick auf %1$s: %2$s</string>
-    <string name="invite_via">Einladen via</string>
-    <string name="rate_us_underlined"><u>Bewerte uns im Play Store</u></string>
-    <string name="donate_underlined"><u>Donate</u></string>
-    <string name="follow_us">Folge uns:</string>
-    <string name="copyright">v %1$s\nCopyright © Simple Mobile Tools %2$d</string>
-
     <!-- Settings -->
-    <string name="settings">Einstellungen</string>
-    <string name="dark_theme">Dunkles Design</string>
     <string name="sunday_first">Sonntag als erster Wochentag</string>
     <string name="week_numbers">Zeige Kalenderwoche an</string>
     <string name="vibrate">Vibrate on reminder notification</string>
@@ -76,14 +56,6 @@
     <string name="reminder_saved">Erinnerung gespeichert</string>
     <string name="notification_sound">Notification sound</string>
     <string name="no_ringtone_picker">No app capable of setting ringtone found</string>
-
-    <!-- License -->
-    <string name="notice">Diese App nutzt die folgenden Drittanbieterbibliotheken, die mein Leben einfacher machen. Danke.</string>
-    <string name="third_party_licences">Drittanbieterlizenzen</string>
-    <string name="kotlin_title"><u>Kotlin (Programmiersprache)</u></string>
-    <string name="ambilwarna_title"><u>AmbilWarna (Color Picker)</u></string>
-    <string name="joda_title"><u>Joda-Time (Java Datumsaustausch)</u></string>
-    <string name="stetho_title"><u>Stetho (debugging databases)</u></string>
 
     <plurals name="events_deleted">
         <item quantity="one">1 Termin gelöscht</item>
@@ -128,7 +100,5 @@
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/library/src/main/res
-        https://github.com/SimpleMobileTools/Simple-File-Picker/tree/master/library/src/main/res
-        https://github.com/SimpleMobileTools/Simple-File-Properties/tree/master/library/src/main/res
     -->
 </resources>

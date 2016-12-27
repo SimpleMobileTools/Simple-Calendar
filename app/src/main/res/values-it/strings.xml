@@ -2,8 +2,6 @@
     <string name="app_name">Simple Calendar</string>
     <string name="app_launcher_name">Calendar</string>
     <string name="undo">Annulla</string>
-    <string name="ok">OK</string>
-    <string name="cancel">Cancel</string>
     <string name="change_view">Change view</string>
     <string name="monthly_view">Monthly view</string>
     <string name="yearly_view">Yearly view</string>
@@ -18,8 +16,6 @@
     <string name="event">Evento</string>
     <string name="edit_event">Modifica evento</string>
     <string name="new_event">Nuovo evento</string>
-    <string name="save">Salva</string>
-    <string name="delete">Elimina</string>
     <string name="title_empty">Il titolo non può essere vuoto</string>
     <string name="end_before_start">L\'evento non può terminare prima del suo inizio</string>
     <string name="start_in_past">Non puoi organizzare eventi nel passato</string>
@@ -51,23 +47,7 @@
     <string name="end">Fine (facoltativo)</string>
     <string name="description">Descrizione</string>
 
-    <!-- About -->
-    <string name="about">Informazioni</string>
-    <string name="website">Altre semplici app e codici sorgenti in:\nhttp://simplemobiletools.com</string>
-    <string name="email_label">Invia la tua opinione o i tuoi suggerimenti a:</string>
-    <string name="more_apps_underlined"><u>More apps</u></string>
-    <string name="third_party_licences_underlined"><u>Licenze di terze parti</u></string>
-    <string name="invite_friends_underlined"><u>Invite friends</u></string>
-    <string name="share_text">Hey, come check out %1$s at %2$s</string>
-    <string name="invite_via">Invite via</string>
-    <string name="rate_us_underlined"><u>Dacci un voto sul Play Store</u></string>
-    <string name="donate_underlined"><u>Donate</u></string>
-    <string name="follow_us">Seguici:</string>
-    <string name="copyright">v %1$s\nCopyright © Simple Mobile Tools %2$d</string>
-
     <!-- Settings -->
-    <string name="settings">Impostazioni</string>
-    <string name="dark_theme">Tema scuro</string>
     <string name="sunday_first">Sunday as first day</string>
     <string name="week_numbers">Display week numbers</string>
     <string name="vibrate">Vibrate on reminder notification</string>
@@ -76,14 +56,6 @@
     <string name="reminder_saved">Reminder saved</string>
     <string name="notification_sound">Notification sound</string>
     <string name="no_ringtone_picker">No app capable of setting ringtone found</string>
-
-    <!-- License -->
-    <string name="notice">Questa app usa le seguenti librerie di terze parti per semplificarmi la vita. Grazie.</string>
-    <string name="third_party_licences">Licenze di terze parti</string>
-    <string name="kotlin_title"><u>Kotlin (programming language)</u></string>
-    <string name="ambilwarna_title"><u>AmbilWarna (color picker)</u></string>
-    <string name="joda_title"><u>Joda-Time (Java date replacement)</u></string>
-    <string name="stetho_title"><u>Stetho (debugging databases)</u></string>
 
     <plurals name="events_deleted">
         <item quantity="one">1 evento eliminato</item>
@@ -128,7 +100,5 @@
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/library/src/main/res
-        https://github.com/SimpleMobileTools/Simple-File-Picker/tree/master/library/src/main/res
-        https://github.com/SimpleMobileTools/Simple-File-Properties/tree/master/library/src/main/res
     -->
 </resources>

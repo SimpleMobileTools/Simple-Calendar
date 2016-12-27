@@ -2,8 +2,6 @@
     <string name="app_name">Simple Calendar</string>
     <string name="app_launcher_name">Calendar</string>
     <string name="undo">Undo</string>
-    <string name="ok">OK</string>
-    <string name="cancel">Cancel</string>
     <string name="change_view">Change view</string>
     <string name="monthly_view">Monthly view</string>
     <string name="yearly_view">Yearly view</string>
@@ -18,8 +16,6 @@
     <string name="event">Event</string>
     <string name="edit_event">Edit Event</string>
     <string name="new_event">New Event</string>
-    <string name="save">Save</string>
-    <string name="delete">Delete</string>
     <string name="title_empty">Title cannot be empty</string>
     <string name="end_before_start">The event cannot end earlier than it starts</string>
     <string name="start_in_past">You cannot schedule events in the past</string>
@@ -51,24 +47,7 @@
     <string name="end">End (optional)</string>
     <string name="description">Description</string>
 
-    <!-- About -->
-    <string name="about">About</string>
-    <string name="website">For the source codes visit\nhttp://simplemobiletools.com</string>
-    <string name="email_label">Send your feedback or suggestions to:</string>
-    <string name="email" translatable="false">hello@simplemobiletools.com</string>
-    <string name="more_apps_underlined"><u>More apps</u></string>
-    <string name="third_party_licences_underlined"><u>Third party licences</u></string>
-    <string name="invite_friends_underlined"><u>Invite friends</u></string>
-    <string name="share_text">Hey, come check out %1$s at %2$s</string>
-    <string name="invite_via">Invite via</string>
-    <string name="rate_us_underlined"><u>Rate us</u></string>
-    <string name="donate_underlined"><u>Donate</u></string>
-    <string name="follow_us">Follow us:</string>
-    <string name="copyright">v %1$s\nCopyright © Simple Mobile Tools %2$d</string>
-
     <!-- Settings -->
-    <string name="settings">Settings</string>
-    <string name="dark_theme">Dark theme</string>
     <string name="sunday_first">Sunday as first day</string>
     <string name="week_numbers">Display week numbers</string>
     <string name="vibrate">Vibrate on reminder notification</string>
@@ -77,22 +56,6 @@
     <string name="reminder_saved">Reminder saved</string>
     <string name="notification_sound">Notification sound</string>
     <string name="no_ringtone_picker">No app capable of setting ringtone found</string>
-
-    <!-- License -->
-    <string name="notice">This app uses the following third party libraries to make my life easier. Thank you.</string>
-    <string name="third_party_licences">Third party licences</string>
-    <string name="kotlin_title"><u>Kotlin (programming language)</u></string>
-    <string name="kotlin_text" translatable="false">Copyright 2010 - 2016 JetBrains s.r.o.\n\nLicensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.You may obtain a copy of the License at\n\nhttp://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS,WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.See the License for the specific language governing permissions and limitations under the License.</string>
-    <string name="kotlin_url" translatable="false">https://github.com/JetBrains/kotlin</string>
-    <string name="ambilwarna_title"><u>AmbilWarna (color picker)</u></string>
-    <string name="ambilwarna_text" translatable="false">Copyright 2009-2015 Yuku\n\nLicensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at\n\nhttp://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</string>
-    <string name="ambilwarna_url" translatable="false">https://github.com/yukuku/ambilwarna</string>
-    <string name="joda_title"><u>Joda-Time (Java date replacement)</u></string>
-    <string name="joda_text" translatable="false">Copyright 2013 JodaOrg\n\nLicensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.You may obtain a copy of the License at\n\nhttp://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS,WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.See the License for the specific language governing permissions and limitations under the License.</string>
-    <string name="joda_url" translatable="false">https://github.com/JodaOrg/joda-time</string>
-    <string name="stetho_title"><u>Stetho (debugging databases)</u></string>
-    <string name="stetho_text" translatable="false">BSD License\n\nFor Stetho software\n\nCopyright (c) 2015, Facebook, Inc. All rights reserved.\n\nRedistribution and use in source and binary forms, with or without modification,\nare permitted provided that the following conditions are met:\n\n * Redistributions of source code must retain the above copyright notice, this\n   list of conditions and the following disclaimer.\n\n * Redistributions in binary form must reproduce the above copyright notice,\n   this list of conditions and the following disclaimer in the documentation\n   and/or other materials provided with the distribution.\n\n * Neither the name Facebook nor the names of its contributors may be used to\n   endorse or promote products derived from this software without specific\n   prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND\nANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED\nWARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR\nANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES\n(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;\nLOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON\nANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS\nSOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</string>
-    <string name="stetho_url" translatable="false">https://github.com/facebook/stetho</string>
 
     <plurals name="events_deleted">
         <item quantity="one">1 event deleted</item>
@@ -120,21 +83,6 @@
     <string name="saturday_letter">S</string>
     <string name="sunday_letter">S</string>
 
-    <string-array name="months" translatable="false">
-        <item>@string/january</item>
-        <item>@string/february</item>
-        <item>@string/march</item>
-        <item>@string/april</item>
-        <item>@string/may</item>
-        <item>@string/june</item>
-        <item>@string/july</item>
-        <item>@string/august</item>
-        <item>@string/september</item>
-        <item>@string/october</item>
-        <item>@string/november</item>
-        <item>@string/december</item>
-    </string-array>
-
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">A simple calendar with events, customizable widget and no ads.</string>
@@ -152,7 +100,5 @@
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/library/src/main/res
-        https://github.com/SimpleMobileTools/Simple-File-Picker/tree/master/library/src/main/res
-        https://github.com/SimpleMobileTools/Simple-File-Properties/tree/master/library/src/main/res
     -->
 </resources>

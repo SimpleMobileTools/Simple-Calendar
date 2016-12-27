@@ -2,8 +2,6 @@
     <string name="app_name">सरल कैलेंडर</string>
     <string name="app_launcher_name">कैलेंडर</string>
     <string name="undo">पूर्ववत करें</string>
-    <string name="ok">ठीक</string>
-    <string name="cancel">रद्द करें</string>
     <string name="change_view">दृश्य बदले</string>
     <string name="monthly_view">मासिक दृश्य</string>
     <string name="yearly_view">वार्षिक दृश्य</string>
@@ -18,8 +16,6 @@
     <string name="event">इवेंट</string>
     <string name="edit_event">इवेंट एडिट करें</string>
     <string name="new_event">नया इवेंट</string>
-    <string name="save">सेव</string>
-    <string name="delete">डिलीट</string>
     <string name="title_empty">शीर्षक रिक्त नहीं हो सकता</string>
     <string name="end_before_start">इवेंट शुरू होने से पहले खत्म नहीं हो सकता</string>
     <string name="start_in_past">आप भूत में इवेंट्स को शेड्यूल नहीं कर सकते हैं</string>
@@ -51,23 +47,7 @@
     <string name="end">अंत (वैकल्पिक)</string>
     <string name="description">विवरण</string>
 
-    <!-- About -->
-    <string name="about">के बारे में</string>
-    <string name="website">अधिक एप्पस व सोर्स कोड:\nhttp://simplemobiletools.com</string>
-    <string name="email_label">अपनी राय या सुझाव को भेजें:</string>
-    <string name="more_apps_underlined"><u>More apps</u></string>
-    <string name="third_party_licences_underlined"><u> तीसरी पार्टी के लाइसेंस </u></string>
-    <string name="invite_friends_underlined"><u>मित्रो को आमन्त्रित करें</u></string>
-    <string name="share_text">अरे, %1$s को %2$s पर देखो</string>
-    <string name="invite_via">के माध्यम से आमंत्रित</string>
-    <string name="rate_us_underlined"><u>हमे प्ले स्टोर पर रेट करें</u></string>
-    <string name="donate_underlined"><u>Donate</u></string>
-    <string name="follow_us">हमे फॉलो करें:</string>
-    <string name="copyright">सं %1$s\nकॉपीराइट © सिंपल मोबाइल टूल्स %2$d</string>
-
     <!-- Settings -->
-    <string name="settings">सेटिंग्स</string>
-    <string name="dark_theme">काली थीम</string>
     <string name="sunday_first">रविवार पहला दिन हैं</string>
     <string name="week_numbers">सफ्ताह क्रमांक दिखाए</string>
     <string name="vibrate">Vibrate on reminder notification</string>
@@ -76,14 +56,6 @@
     <string name="reminder_saved">Reminder saved</string>
     <string name="notification_sound">Notification sound</string>
     <string name="no_ringtone_picker">No app capable of setting ringtone found</string>
-
-    <!-- License -->
-    <string name="notice">मेरा जीवन आसान करने के लिए यह एप्प तीसरे पक्ष की लाइब्रेरी का इस्तेमाल करती हैं। धन्यवाद।</string>
-    <string name="third_party_licences">तीसरे पक्ष के लाइसेंस</string>
-    <string name="kotlin_title"><u>Kotlin (programming language)</u></string>
-    <string name="ambilwarna_title"><u>अम्बिलवरना (कलर पिकर)</u></string>
-    <string name="joda_title"><u>जोड़ा-टाइम(जावा डेट रिप्लेसमेंट)</u></string>
-    <string name="stetho_title"><u>Stetho (debugging databases)</u></string>
 
     <plurals name="events_deleted">
         <item quantity="one">1 इवेंट डिलीट किया गया</item>
@@ -117,6 +89,7 @@
     <string name="app_long_description">
         एक ऑफलाइन कैलेंडर बिना अन्य कैलेंडर इंटीग्रेशन के। आप आसानी से इवेंट्स व रिमाइंडर बना सकते हैं, यह सफ्ताह क्रमांक भी दर्शाता हैं।
 
+
         इसमें आकार बदल सकने वाला 4x4 विजेट हैं जहा आप टेक्स्ट का रंग अनुकूलित कर सकते हैं, और अल्फा व बैकग्राउंड का रंग भी बदल सकते हैं।
 
         कोई भी विज्ञापन व अनावश्यक अनुमतियों की आवश्यकता नहीं। यह पूर्ण रूप से ओपन सोर्स हैं, और काली थीम हैं।
@@ -127,7 +100,5 @@
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/library/src/main/res
-        https://github.com/SimpleMobileTools/Simple-File-Picker/tree/master/library/src/main/res
-        https://github.com/SimpleMobileTools/Simple-File-Properties/tree/master/library/src/main/res
     -->
 </resources>
