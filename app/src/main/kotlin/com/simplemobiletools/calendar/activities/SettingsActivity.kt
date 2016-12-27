@@ -15,7 +15,7 @@ import com.simplemobiletools.calendar.extensions.hideKeyboard
 import com.simplemobiletools.calendar.extensions.showKeyboard
 import com.simplemobiletools.calendar.extensions.value
 import com.simplemobiletools.calendar.helpers.*
-import com.simplemobiletools.filepicker.extensions.toast
+import com.simplemobiletools.commons.extensions.toast
 import kotlinx.android.synthetic.main.activity_settings.*
 
 class SettingsActivity : SimpleActivity() {

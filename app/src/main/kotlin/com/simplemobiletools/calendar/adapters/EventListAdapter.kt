@@ -13,7 +13,7 @@ import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.models.ListEvent
 import com.simplemobiletools.calendar.models.ListItem
 import com.simplemobiletools.calendar.models.ListSection
-import com.simplemobiletools.filepicker.dialogs.ConfirmationDialog
+import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import kotlinx.android.synthetic.main.event_item.view.*
 import java.util.*
 

@@ -12,8 +12,8 @@ import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.*
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.models.Event
-import com.simplemobiletools.filepicker.dialogs.ConfirmationDialog
-import com.simplemobiletools.filepicker.extensions.toast
+import com.simplemobiletools.commons.dialogs.ConfirmationDialog
+import com.simplemobiletools.commons.extensions.toast
 import kotlinx.android.synthetic.main.activity_event.*
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone

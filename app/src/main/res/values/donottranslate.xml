@@ -1,5 +1,5 @@
 <resources>
-    <string-array name="months" translatable="false">
+    <string-array name="months">
         <item>@string/january</item>
         <item>@string/february</item>
         <item>@string/march</item>
