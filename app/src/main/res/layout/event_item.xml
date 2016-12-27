@@ -11,8 +11,8 @@
         android:id="@+id/event_item_holder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/event_padding"
-        android:paddingTop="@dimen/event_padding">
+        android:paddingBottom="@dimen/medium_margin"
+        android:paddingTop="@dimen/medium_margin">
 
         <TextView
             android:id="@+id/event_item_start"

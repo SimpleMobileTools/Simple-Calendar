@@ -146,8 +146,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginEnd="@dimen/tiny_margin"
-                android:layout_marginRight="@dimen/tiny_margin"
+                android:layout_marginEnd="@dimen/small_margin"
+                android:layout_marginRight="@dimen/small_margin"
                 android:background="@null"
                 android:clickable="false"/>
 

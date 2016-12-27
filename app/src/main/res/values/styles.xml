@@ -1,9 +1,9 @@
 <resources>
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryDark">@color/color_primary_dark</item>
+        <item name="colorAccent">@color/color_primary</item>
         <item name="buttonStyle">@style/MyButton</item>
         <item name="android:buttonStyle">@style/MyButton</item>
         <item name="actionBarStyle">@style/AppTheme.ActionBarStyle</item>
@@ -11,20 +11,6 @@
         <item name="android:spinnerItemStyle">@style/SpinnerItem</item>
         <item name="spinnerDropDownItemStyle">@style/SpinnerItem.DropDownItem</item>
         <item name="android:spinnerDropDownItemStyle">@style/SpinnerItem.DropDownItem</item>
-    </style>
-
-    <style name="AppTheme.Dark" parent="Theme.AppCompat">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="buttonStyle">@style/MyButton</item>
-        <item name="android:buttonStyle">@style/MyButton</item>
-        <item name="actionBarStyle">@style/AppTheme.ActionBarStyle</item>
-        <item name="android:textSize">@dimen/normal_text_size</item>
-        <item name="android:spinnerItemStyle">@style/SpinnerItem</item>
-        <item name="spinnerDropDownItemStyle">@style/SpinnerItem.DropDownItem</item>
-        <item name="android:spinnerDropDownItemStyle">@style/SpinnerItem.DropDownItem</item>
-        <item name="android:windowBackground">@android:color/black</item>
     </style>
 
     <style name="DayView">
@@ -54,19 +40,8 @@
 
     <style name="MyAlertDialog" parent="Base.Theme.AppCompat.Light.Dialog.Alert"/>
 
-    <style name="MyAlertDialog.Dark" parent="Base.Theme.AppCompat.Dialog.Alert"/>
-
-    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
-        <item name="colorAccent">@color/colorPrimary</item>
-    </style>
-
-    <style name="DialogTheme.Dark" parent="Theme.AppCompat.Dialog">
-        <item name="android:windowBackground">@color/dark_theme_dialog_background</item>
-        <item name="colorAccent">@color/colorPrimary</item>
-    </style>
-
     <style name="AppTheme.ActionBarStyle" parent="@style/Base.Widget.AppCompat.ActionBar">
-        <item name="background">@color/colorPrimary</item>
+        <item name="background">@color/color_primary</item>
         <item name="titleTextStyle">@style/AppTheme.ActionBar.TitleTextStyle</item>
     </style>
 
@@ -74,8 +49,6 @@
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textSize">20sp</item>
     </style>
-
-    <style name="EditTextStyle" parent="@android:style/Widget.TextView"/>
 
     <style name="SpinnerItem" parent="@android:style/Widget.TextView">
         <item name="android:paddingRight">@dimen/activity_margin</item>

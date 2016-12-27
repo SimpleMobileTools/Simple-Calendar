@@ -19,7 +19,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/activity_margin"
         android:src="@mipmap/plus"
-        app:backgroundTint="@color/colorPrimary"
-        app:rippleColor="@color/mediumGrey"/>
+        app:backgroundTint="@color/color_primary"
+        app:rippleColor="@color/pressed_item_foreground"/>
 
 </android.support.design.widget.CoordinatorLayout>

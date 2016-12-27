@@ -1,12 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#fff68630</color>
-    <color name="colorPrimaryDark">#ffe27725</color>
-    <color name="colorAccent">@color/colorPrimary</color>
-
-    <color name="pressed_item_foreground">#08000000</color>
-    <color name="activated_item_foreground">#44888888</color>
-    <color name="mediumGrey">#18000000</color>
-    <color name="divider_grey">#44cccccc</color>
     <color name="dark_theme_dialog_background">#ff333333</color>
 </resources>
