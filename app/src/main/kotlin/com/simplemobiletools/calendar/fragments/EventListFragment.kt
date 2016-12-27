@@ -33,6 +33,8 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, DBHelper.Event
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mView = inflater!!.inflate(R.layout.fragment_event_list, container, false)
+        val placeholderText = String.format(getString(R.string.two_string_placeholder), "${getString(R.string.no_upcoming_events)}\n", getString(R.string.add_some_events))
+        mView.calendar_empty_list_placeholder.text = placeholderText
         mToBeDeleted = ArrayList<Int>()
         return mView
     }

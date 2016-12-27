@@ -6,7 +6,8 @@
     <string name="monthly_view">Monthly view</string>
     <string name="yearly_view">Yearly view</string>
     <string name="simple_event_list">Simple event list</string>
-    <string name="no_events_added">Seems like your calendar is empty.\nYou can create events with the Plus button at the bottom.</string>
+    <string name="no_upcoming_events">Seems like you don\'t have any upcoming events.</string>
+    <string name="add_some_events">You can add some with the Plus button at the bottom.</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Calendar monthly</string>

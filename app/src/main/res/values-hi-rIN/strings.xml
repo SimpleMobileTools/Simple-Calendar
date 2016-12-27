@@ -6,7 +6,8 @@
     <string name="monthly_view">मासिक दृश्य</string>
     <string name="yearly_view">वार्षिक दृश्य</string>
     <string name="simple_event_list">सरल इवेंट सूची</string>
-    <string name="no_events_added">लगता हैं की आपका कैलेंडर खाली हैं।\nआप इवेंट्स को नीचे प्लस बटन के साथ बना सकते हैं।</string>
+    <string name="no_upcoming_events">Seems like you don\'t have any upcoming events.</string>
+    <string name="add_some_events">You can add some with the Plus button at the bottom.</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Calendar monthly</string>
