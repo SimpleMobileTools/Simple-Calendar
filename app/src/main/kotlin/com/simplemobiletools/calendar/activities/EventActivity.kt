@@ -9,11 +9,15 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.AdapterView
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.extensions.*
+import com.simplemobiletools.calendar.extensions.beVisibleIf
+import com.simplemobiletools.calendar.extensions.scheduleNotification
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
+import com.simplemobiletools.commons.extensions.hideKeyboard
+import com.simplemobiletools.commons.extensions.showKeyboard
 import com.simplemobiletools.commons.extensions.toast
+import com.simplemobiletools.commons.extensions.value
 import kotlinx.android.synthetic.main.activity_event.*
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
@@ -22,7 +26,6 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     private var mWasReminderInit = false
     private var mWasEndDateSet = false
     private var mWasEndTimeSet = false
-    private var mDialogTheme = 0
 
     lateinit var mEventStartDateTime: DateTime
     lateinit var mEventEndDateTime: DateTime
@@ -33,7 +36,6 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         setContentView(R.layout.activity_event)
 
         val intent = intent ?: return
-        mDialogTheme = if (mConfig.isDarkTheme) R.style.DialogTheme_Dark else R.style.DialogTheme
 
         mWasReminderInit = false
         val eventId = intent.getIntExtra(EVENT_ID, 0)
@@ -307,24 +309,24 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
     fun setupStartDate() {
         hideKeyboard()
-        DatePickerDialog(this, mDialogTheme, startDateSetListener, mEventStartDateTime.year, mEventStartDateTime.monthOfYear - 1,
+        DatePickerDialog(this, startDateSetListener, mEventStartDateTime.year, mEventStartDateTime.monthOfYear - 1,
                 mEventStartDateTime.dayOfMonth).show()
     }
 
     fun setupStartTime() {
         hideKeyboard()
-        TimePickerDialog(this, mDialogTheme, startTimeSetListener, mEventStartDateTime.hourOfDay, mEventStartDateTime.minuteOfHour, true).show()
+        TimePickerDialog(this, startTimeSetListener, mEventStartDateTime.hourOfDay, mEventStartDateTime.minuteOfHour, true).show()
     }
 
     fun setupEndDate() {
         hideKeyboard()
-        DatePickerDialog(this, mDialogTheme, endDateSetListener, mEventEndDateTime.year, mEventEndDateTime.monthOfYear - 1,
+        DatePickerDialog(this, endDateSetListener, mEventEndDateTime.year, mEventEndDateTime.monthOfYear - 1,
                 mEventEndDateTime.dayOfMonth).show()
     }
 
     fun setupEndTime() {
         hideKeyboard()
-        TimePickerDialog(this, mDialogTheme, endTimeSetListener, mEventEndDateTime.hourOfDay, mEventEndDateTime.minuteOfHour, true).show()
+        TimePickerDialog(this, endTimeSetListener, mEventEndDateTime.hourOfDay, mEventEndDateTime.minuteOfHour, true).show()
     }
 
     private val startDateSetListener = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->

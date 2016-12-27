@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/activity_margin"
             android:text="@string/kotlin_title"
-            android:textColor="@color/colorPrimary"/>
+            android:textColor="@color/color_primary"/>
 
         <TextView
             android:id="@+id/license_kotlin_text"
@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/activity_margin"
             android:text="@string/ambilwarna_title"
-            android:textColor="@color/colorPrimary"/>
+            android:textColor="@color/color_primary"/>
 
         <TextView
             android:id="@+id/license_ambilwarna_text"
@@ -52,7 +52,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/activity_margin"
             android:text="@string/joda_title"
-            android:textColor="@color/colorPrimary"/>
+            android:textColor="@color/color_primary"/>
 
         <TextView
             android:id="@+id/license_joda_text"
@@ -66,7 +66,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/activity_margin"
             android:text="@string/stetho_title"
-            android:textColor="@color/colorPrimary"/>
+            android:textColor="@color/color_primary"/>
 
         <TextView
             android:id="@+id/license_stetho_text"

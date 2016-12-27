@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge
-    android:id="@+id/calendar_holder"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/calendar_holder">
 
     <ImageView
         android:id="@+id/top_left_arrow"

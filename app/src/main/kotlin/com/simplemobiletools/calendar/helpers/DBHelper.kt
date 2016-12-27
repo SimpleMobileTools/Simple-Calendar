@@ -7,10 +7,10 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.database.sqlite.SQLiteQueryBuilder
 import android.text.TextUtils
-import com.simplemobiletools.calendar.extensions.getIntValue
-import com.simplemobiletools.calendar.extensions.getStringValue
 import com.simplemobiletools.calendar.extensions.updateWidgets
 import com.simplemobiletools.calendar.models.Event
+import com.simplemobiletools.commons.extensions.getIntValue
+import com.simplemobiletools.commons.extensions.getStringValue
 import org.joda.time.DateTime
 import java.util.*
 

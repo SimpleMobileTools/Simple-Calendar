@@ -11,11 +11,11 @@ import android.view.View
 import android.widget.AdapterView
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.beVisibleIf
-import com.simplemobiletools.calendar.extensions.hideKeyboard
-import com.simplemobiletools.calendar.extensions.showKeyboard
-import com.simplemobiletools.calendar.extensions.value
 import com.simplemobiletools.calendar.helpers.*
+import com.simplemobiletools.commons.extensions.hideKeyboard
+import com.simplemobiletools.commons.extensions.showKeyboard
 import com.simplemobiletools.commons.extensions.toast
+import com.simplemobiletools.commons.extensions.value
 import kotlinx.android.synthetic.main.activity_settings.*
 
 class SettingsActivity : SimpleActivity() {

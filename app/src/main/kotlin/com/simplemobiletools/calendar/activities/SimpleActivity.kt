@@ -1,9 +1,9 @@
 package com.simplemobiletools.calendar.activities
 
+import com.simplemobiletools.calendar.R
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
-import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.helpers.Config
 
 open class SimpleActivity : AppCompatActivity() {
@@ -11,7 +11,7 @@ open class SimpleActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         mConfig = Config.newInstance(applicationContext)
-        setTheme(if (mConfig.isDarkTheme) R.style.AppTheme_Dark else R.style.AppTheme)
+        setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
     }
 

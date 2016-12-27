@@ -12,8 +12,8 @@ import android.net.Uri
 import android.widget.RemoteViews
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.EventActivity
-import com.simplemobiletools.calendar.extensions.adjustAlpha
 import com.simplemobiletools.calendar.services.WidgetService
+import com.simplemobiletools.commons.extensions.adjustAlpha
 
 class MyWidgetListProvider : AppWidgetProvider() {
     companion object {

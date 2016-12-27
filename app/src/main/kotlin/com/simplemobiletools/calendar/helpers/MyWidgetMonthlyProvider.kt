@@ -16,9 +16,9 @@ import com.simplemobiletools.calendar.MonthlyCalendarImpl
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.DayActivity
 import com.simplemobiletools.calendar.activities.MainActivity
-import com.simplemobiletools.calendar.extensions.adjustAlpha
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.models.Day
+import com.simplemobiletools.commons.extensions.adjustAlpha
 import org.joda.time.DateTime
 
 class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {

@@ -43,7 +43,7 @@
             android:paddingBottom="@dimen/activity_margin"
             android:paddingTop="@dimen/activity_margin"
             android:text="@string/more_apps_underlined"
-            android:textColor="@color/colorPrimary"/>
+            android:textColor="@color/color_primary"/>
 
         <TextView
             android:id="@+id/about_invite"
@@ -53,7 +53,7 @@
             android:paddingBottom="@dimen/activity_margin"
             android:paddingTop="@dimen/activity_margin"
             android:text="@string/invite_friends_underlined"
-            android:textColor="@color/colorPrimary"/>
+            android:textColor="@color/color_primary"/>
 
         <TextView
             android:id="@+id/about_rate_us"
@@ -63,7 +63,7 @@
             android:paddingBottom="@dimen/activity_margin"
             android:paddingTop="@dimen/activity_margin"
             android:text="@string/rate_us_underlined"
-            android:textColor="@color/colorPrimary"/>
+            android:textColor="@color/color_primary"/>
 
         <TextView
             android:id="@+id/about_license"
@@ -73,7 +73,7 @@
             android:paddingBottom="@dimen/activity_margin"
             android:paddingTop="@dimen/activity_margin"
             android:text="@string/third_party_licences_underlined"
-            android:textColor="@color/colorPrimary"/>
+            android:textColor="@color/color_primary"/>
 
         <TextView
             android:id="@+id/about_donate"
@@ -83,14 +83,13 @@
             android:paddingBottom="@dimen/activity_margin"
             android:paddingTop="@dimen/activity_margin"
             android:text="@string/donate_underlined"
-            android:textColor="@color/colorPrimary"/>
+            android:textColor="@color/color_primary"/>
 
         <TextView
             android:id="@+id/about_follow_us"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/about_donate"
-            android:paddingBottom="@dimen/social_padding"
             android:paddingTop="@dimen/activity_margin"
             android:text="@string/follow_us"/>
 
@@ -106,8 +105,6 @@
             android:layout_width="@dimen/social_logo"
             android:layout_height="@dimen/social_logo"
             android:layout_below="@+id/about_follow_us"
-            android:layout_marginLeft="@dimen/social_padding"
-            android:layout_marginRight="@dimen/social_padding"
             android:layout_toEndOf="@+id/about_facebook"
             android:layout_toRightOf="@+id/about_facebook"
             android:src="@mipmap/gplus"/>

@@ -15,7 +15,6 @@
             android:id="@+id/settings_dark_theme_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/settings_padding"
             android:background="?attr/selectableItemBackground"
             android:padding="@dimen/activity_margin">
 
@@ -24,8 +23,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:paddingLeft="@dimen/settings_padding"
-                android:paddingStart="@dimen/settings_padding"
                 android:text="@string/dark_theme"/>
 
             <android.support.v7.widget.SwitchCompat
@@ -43,7 +40,6 @@
             android:id="@+id/settings_sunday_first_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/settings_padding"
             android:background="?attr/selectableItemBackground"
             android:padding="@dimen/activity_margin">
 
@@ -52,8 +48,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:paddingLeft="@dimen/settings_padding"
-                android:paddingStart="@dimen/settings_padding"
                 android:text="@string/sunday_first"/>
 
             <android.support.v7.widget.SwitchCompat
@@ -71,7 +65,6 @@
             android:id="@+id/settings_week_numbers_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/settings_padding"
             android:background="?attr/selectableItemBackground"
             android:padding="@dimen/activity_margin">
 
@@ -80,8 +73,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:paddingLeft="@dimen/settings_padding"
-                android:paddingStart="@dimen/settings_padding"
                 android:text="@string/week_numbers"/>
 
             <android.support.v7.widget.SwitchCompat
@@ -99,7 +90,6 @@
             android:id="@+id/settings_vibrate_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/settings_padding"
             android:background="?attr/selectableItemBackground"
             android:padding="@dimen/activity_margin">
 
@@ -108,8 +98,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:paddingLeft="@dimen/settings_padding"
-                android:paddingStart="@dimen/settings_padding"
                 android:text="@string/vibrate"/>
 
             <android.support.v7.widget.SwitchCompat
@@ -127,7 +115,6 @@
             android:id="@+id/settings_reminder_sound_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/settings_padding"
             android:background="?attr/selectableItemBackground"
             android:padding="@dimen/activity_margin">
 
@@ -136,8 +123,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:paddingLeft="@dimen/settings_padding"
-                android:paddingStart="@dimen/settings_padding"
                 android:text="@string/reminder_sound"/>
 
             <TextView
@@ -157,7 +142,6 @@
             android:id="@+id/settings_default_reminder_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/settings_padding"
             android:background="?attr/selectableItemBackground"
             android:padding="@dimen/activity_margin">
 
@@ -166,8 +150,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:paddingLeft="@dimen/settings_padding"
-                android:paddingStart="@dimen/settings_padding"
                 android:text="@string/default_event_reminder"/>
 
             <android.support.v7.widget.AppCompatSpinner
@@ -184,9 +166,7 @@
             android:id="@+id/settings_custom_reminder_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/settings_padding"
             android:layout_marginRight="@dimen/activity_margin"
-            android:layout_marginTop="@dimen/settings_padding"
             android:orientation="horizontal"
             android:visibility="gone">
 
@@ -207,16 +187,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:entries="@array/custom_reminders"
-                android:gravity="center"
-                android:paddingLeft="@dimen/settings_padding"
-                android:paddingStart="@dimen/settings_padding"/>
+                android:gravity="center"/>
 
             <TextView
                 android:id="@+id/custom_reminder_other_val"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="@dimen/settings_padding"
-                android:layout_marginStart="@dimen/settings_padding"
                 android:gravity="center"
                 android:text="@string/before"/>
 

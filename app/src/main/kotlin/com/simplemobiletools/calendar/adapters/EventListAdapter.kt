@@ -49,7 +49,7 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
 
     init {
         mTopDivider = activity.resources.getDrawable(R.drawable.divider)
-        mOrangeColor = activity.resources.getColor(R.color.colorPrimary)
+        mOrangeColor = activity.resources.getColor(R.color.color_primary)
         val mTodayCode = Formatter.getDayCodeFromTS(mNow)
         mTodayDate = Formatter.getDate(activity, mTodayCode)
     }

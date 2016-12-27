@@ -11,12 +11,12 @@ import android.support.v7.app.AppCompatActivity
 import android.widget.SeekBar
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.adapters.EventListWidgetAdapterOld
-import com.simplemobiletools.calendar.extensions.adjustAlpha
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.models.ListEvent
 import com.simplemobiletools.calendar.models.ListItem
 import com.simplemobiletools.calendar.models.ListSection
+import com.simplemobiletools.commons.extensions.adjustAlpha
 import kotlinx.android.synthetic.main.widget_config_list.*
 import org.joda.time.DateTime
 import yuku.ambilwarna.AmbilWarnaDialog
@@ -62,7 +62,7 @@ class WidgetListConfigureActivity : AppCompatActivity() {
         mRes = resources
 
         val prefs = initPrefs(this)
-        mTextColorWithoutTransparency = prefs.getInt(WIDGET_TEXT_COLOR, resources.getColor(R.color.colorPrimary))
+        mTextColorWithoutTransparency = prefs.getInt(WIDGET_TEXT_COLOR, resources.getColor(R.color.color_primary))
         updateTextColors()
 
         mBgColor = prefs.getInt(WIDGET_BG_COLOR, 1)

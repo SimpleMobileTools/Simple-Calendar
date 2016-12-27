@@ -14,12 +14,12 @@ import android.widget.*
 import com.simplemobiletools.calendar.MonthlyCalendarImpl
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.DayActivity
-import com.simplemobiletools.calendar.extensions.adjustAlpha
 import com.simplemobiletools.calendar.extensions.beVisibleIf
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.models.Day
+import com.simplemobiletools.commons.extensions.adjustAlpha
 import kotlinx.android.synthetic.main.first_row.*
 import kotlinx.android.synthetic.main.fragment_month.view.*
 import kotlinx.android.synthetic.main.top_navigation.view.*
@@ -94,9 +94,9 @@ class MonthFragment : Fragment(), MonthlyCalendar {
     private fun setupButtons() {
         val baseColor = if (mConfig.isDarkTheme) Color.WHITE else Color.BLACK
         mTextColor = baseColor.adjustAlpha(HIGH_ALPHA)
-        mTextColorWithEvent = mRes.getColor(R.color.colorPrimary).adjustAlpha(HIGH_ALPHA)
+        mTextColorWithEvent = mRes.getColor(R.color.color_primary).adjustAlpha(HIGH_ALPHA)
         mWeakTextColor = baseColor.adjustAlpha(LOW_ALPHA)
-        mWeakTextColorWithEvent = mRes.getColor(R.color.colorPrimary).adjustAlpha(LOW_ALPHA)
+        mWeakTextColorWithEvent = mRes.getColor(R.color.color_primary).adjustAlpha(LOW_ALPHA)
 
         mHolder.apply {
             top_left_arrow.drawable.mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP)
@@ -117,8 +117,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
     }
 
     fun showMonthDialog() {
-        val theme = if (mConfig.isDarkTheme) R.style.MyAlertDialog_Dark else R.style.MyAlertDialog
-        val alertDialog = AlertDialog.Builder(context, theme)
+        val alertDialog = AlertDialog.Builder(context)
         val view = getLayoutInflater(arguments).inflate(R.layout.date_picker, null)
         val datePicker = view.findViewById(R.id.date_picker) as DatePicker
         hideDayPicker(datePicker)

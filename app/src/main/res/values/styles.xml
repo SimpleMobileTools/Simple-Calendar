@@ -3,7 +3,7 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/color_primary</item>
         <item name="colorPrimaryDark">@color/color_primary_dark</item>
-        <item name="colorAccent">@color/color_primary</item>
+        <item name="colorAccent">@color/color_accent</item>
         <item name="buttonStyle">@style/MyButton</item>
         <item name="android:buttonStyle">@style/MyButton</item>
         <item name="actionBarStyle">@style/AppTheme.ActionBarStyle</item>
@@ -41,22 +41,23 @@
     <style name="MyAlertDialog" parent="Base.Theme.AppCompat.Light.Dialog.Alert"/>
 
     <style name="AppTheme.ActionBarStyle" parent="@style/Base.Widget.AppCompat.ActionBar">
-        <item name="background">@color/color_primary</item>
         <item name="titleTextStyle">@style/AppTheme.ActionBar.TitleTextStyle</item>
     </style>
 
     <style name="AppTheme.ActionBar.TitleTextStyle" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
         <item name="android:fontFamily">sans-serif</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">@dimen/actionbar_text_size</item>
     </style>
 
     <style name="SpinnerItem" parent="@android:style/Widget.TextView">
         <item name="android:paddingRight">@dimen/activity_margin</item>
-        <item name="android:gravity">center</item>
     </style>
 
     <style name="SpinnerItem.DropDownItem" parent="@android:style/Widget.TextView">
         <item name="android:gravity">center_vertical</item>
-        <item name="android:padding">@dimen/settings_padding</item>
+        <item name="android:paddingTop">@dimen/medium_margin</item>
+        <item name="android:paddingBottom">@dimen/medium_margin</item>
+        <item name="android:paddingLeft">@dimen/activity_margin</item>
+        <item name="android:paddingRight">@dimen/activity_margin</item>
     </style>
 </resources>
