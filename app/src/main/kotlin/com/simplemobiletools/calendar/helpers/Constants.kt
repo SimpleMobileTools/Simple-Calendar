@@ -28,9 +28,6 @@ val HOUR_MINS = 60
 val DAY_MINS = 1440
 
 // Shared Preferences
-val PREFS_KEY = "Calendar"
-val IS_FIRST_RUN = "is_first_run"
-val IS_DARK_THEME = "is_dark_theme"
 val SUNDAY_FIRST = "sunday_first"
 val WEEK_NUMBERS = "week_numbers"
 val VIBRATE = "vibrate"
@@ -38,8 +35,6 @@ val REMINDER_SOUND = "reminder_sound"
 val VIEW = "view"
 val REMINDER_TYPE = "reminder_type"
 val REMINDER_MINUTES = "reminder_minutes"
-val WIDGET_BG_COLOR = "widget_bg_color"
-val WIDGET_TEXT_COLOR = "widget_text_color"
 
 val letterIDs = intArrayOf(R.string.sunday_letter, R.string.monday_letter, R.string.tuesday_letter, R.string.wednesday_letter,
         R.string.thursday_letter, R.string.friday_letter, R.string.saturday_letter)

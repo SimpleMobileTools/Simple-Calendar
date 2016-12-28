@@ -92,7 +92,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
     }
 
     private fun setupButtons() {
-        val baseColor = if (mConfig.isDarkTheme) Color.WHITE else Color.BLACK
+        val baseColor = Color.BLACK
         mTextColor = baseColor.adjustAlpha(HIGH_ALPHA)
         mTextColorWithEvent = mRes.getColor(R.color.color_primary).adjustAlpha(HIGH_ALPHA)
         mWeakTextColor = baseColor.adjustAlpha(LOW_ALPHA)

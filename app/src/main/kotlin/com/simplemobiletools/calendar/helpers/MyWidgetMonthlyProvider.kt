@@ -50,10 +50,9 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
         mRes = mContext.resources
         mCalendar = MonthlyCalendarImpl(this, mContext)
 
-        val prefs = initPrefs(context)
-        val storedTextColor = prefs.getInt(WIDGET_TEXT_COLOR, Color.WHITE)
-        mTextColor = storedTextColor.adjustAlpha(HIGH_ALPHA)
-        mWeakTextColor = storedTextColor.adjustAlpha(LOW_ALPHA)
+        val config = Config.newInstance(context)
+        mTextColor = config.widgetTextColor.adjustAlpha(HIGH_ALPHA)
+        mWeakTextColor = config.widgetTextColor.adjustAlpha(LOW_ALPHA)
 
         mDayTextSize = mRes.getDimension(R.dimen.day_text_size) / mRes.displayMetrics.density
         mTodayTextSize = mRes.getDimension(R.dimen.today_text_size) / mRes.displayMetrics.density
@@ -65,8 +64,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
         updateLabelColor()
         updateTopViews()
 
-        val bgColor = prefs.getInt(WIDGET_BG_COLOR, Color.BLACK)
-        mRemoteViews.setInt(R.id.calendar_holder, "setBackgroundColor", bgColor)
+        mRemoteViews.setInt(R.id.calendar_holder, "setBackgroundColor", config.widgetBgColor)
 
         mCalendar?.updateMonthlyCalendar(DateTime())
     }
@@ -102,8 +100,6 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
         setupIntent(NEXT, R.id.top_right_arrow)
         setupAppOpenIntent(R.id.top_value)
     }
-
-    private fun initPrefs(context: Context) = context.getSharedPreferences(PREFS_KEY, Context.MODE_PRIVATE)
 
     override fun onReceive(context: Context, intent: Intent) {
         val action = intent.action

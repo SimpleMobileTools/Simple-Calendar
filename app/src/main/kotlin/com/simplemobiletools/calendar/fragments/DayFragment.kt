@@ -61,7 +61,7 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DBHelper.GetEvents
     }
 
     private fun setupButtons() {
-        val baseColor = if (mConfig.isDarkTheme) Color.WHITE else Color.BLACK
+        val baseColor = Color.BLACK
         mTextColor = baseColor.adjustAlpha(HIGH_ALPHA)
 
         mHolder.apply {

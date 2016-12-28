@@ -3,8 +3,6 @@ package com.simplemobiletools.calendar.adapters
 import android.appwidget.AppWidgetManager
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
-import android.graphics.Color
 import android.widget.RemoteViews
 import android.widget.RemoteViewsService
 import com.simplemobiletools.calendar.R
@@ -26,12 +24,10 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
 
     val appWidgetId: Int
     var events: List<ListItem>
-    val prefs: SharedPreferences
     val textColor: Int
 
     init {
-        prefs = context.getSharedPreferences(PREFS_KEY, Context.MODE_PRIVATE)
-        textColor = prefs.getInt(WIDGET_TEXT_COLOR, Color.WHITE).adjustAlpha(HIGH_ALPHA)
+        textColor = Config.newInstance(context).widgetTextColor.adjustAlpha(HIGH_ALPHA)
         appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID)
         events = ArrayList<ListItem>()
     }

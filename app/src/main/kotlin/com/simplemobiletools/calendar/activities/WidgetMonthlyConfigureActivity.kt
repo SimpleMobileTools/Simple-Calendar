@@ -2,7 +2,6 @@ package com.simplemobiletools.calendar.activities
 
 import android.app.Activity
 import android.appwidget.AppWidgetManager
-import android.content.Context
 import android.content.Intent
 import android.content.res.Resources
 import android.graphics.Color
@@ -14,7 +13,10 @@ import android.widget.SeekBar
 import android.widget.TextView
 import com.simplemobiletools.calendar.MonthlyCalendarImpl
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.helpers.*
+import com.simplemobiletools.calendar.helpers.Config
+import com.simplemobiletools.calendar.helpers.HIGH_ALPHA
+import com.simplemobiletools.calendar.helpers.LOW_ALPHA
+import com.simplemobiletools.calendar.helpers.MyWidgetMonthlyProvider
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.models.Day
 import com.simplemobiletools.commons.extensions.adjustAlpha
@@ -66,11 +68,11 @@ class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
         mTodayTextSize = mRes.getDimension(R.dimen.today_text_size)
         mTodayTextSize /= mRes.displayMetrics.density
 
-        val prefs = initPrefs(this)
-        mTextColorWithoutTransparency = prefs.getInt(WIDGET_TEXT_COLOR, resources.getColor(R.color.color_primary))
+        val config = Config.newInstance(this)
+        mTextColorWithoutTransparency = config.widgetTextColor
         updateTextColors()
 
-        mBgColor = prefs.getInt(WIDGET_BG_COLOR, 1)
+        mBgColor = config.widgetBgColor
         if (mBgColor == 1) {
             mBgColor = Color.BLACK
             mBgAlpha = .2f
@@ -86,8 +88,6 @@ class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
         MonthlyCalendarImpl(this, applicationContext).updateMonthlyCalendar(DateTime())
     }
 
-    private fun initPrefs(context: Context) = context.getSharedPreferences(PREFS_KEY, Context.MODE_PRIVATE)
-
     fun saveConfig() {
         storeWidgetColors()
         requestWidgetUpdate()
@@ -100,8 +100,9 @@ class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
     }
 
     private fun storeWidgetColors() {
-        getSharedPreferences(PREFS_KEY, Context.MODE_PRIVATE).apply {
-            edit().putInt(WIDGET_BG_COLOR, mBgColor).putInt(WIDGET_TEXT_COLOR, mTextColorWithoutTransparency).apply()
+        Config.newInstance(this).apply {
+            widgetBgColor = mBgColor
+            widgetTextColor = mTextColorWithoutTransparency
         }
     }
 

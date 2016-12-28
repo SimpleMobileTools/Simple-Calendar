@@ -7,7 +7,6 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.helpers.Config
 import com.simplemobiletools.calendar.helpers.MEDIUM_ALPHA
 import com.simplemobiletools.commons.extensions.adjustAlpha
 import java.util.*
@@ -57,7 +56,7 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
             a.recycle()
         }
 
-        val baseColor = if (Config.newInstance(context).isDarkTheme) Color.WHITE else Color.BLACK
+        val baseColor = Color.BLACK
         mTextColor = baseColor.adjustAlpha(MEDIUM_ALPHA)
         mColoredTextColor = resources.getColor(R.color.color_primary).adjustAlpha(MEDIUM_ALPHA)
 

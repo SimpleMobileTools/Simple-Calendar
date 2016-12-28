@@ -1,68 +1,54 @@
 package com.simplemobiletools.calendar.helpers
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.media.RingtoneManager
+import com.simplemobiletools.commons.helpers.BaseConfig
 import java.util.*
 
-class Config(val context: Context) {
-    private val mPrefs: SharedPreferences
-
+class Config(context: Context) : BaseConfig(context) {
     companion object {
         fun newInstance(context: Context) = Config(context)
     }
 
-    init {
-        mPrefs = context.getSharedPreferences(PREFS_KEY, Context.MODE_PRIVATE)
-    }
-
-    var isFirstRun: Boolean
-        get() = mPrefs.getBoolean(IS_FIRST_RUN, true)
-        set(firstRun) = mPrefs.edit().putBoolean(IS_FIRST_RUN, firstRun).apply()
-
-    var isDarkTheme: Boolean
-        get() = mPrefs.getBoolean(IS_DARK_THEME, false)
-        set(isDarkTheme) = mPrefs.edit().putBoolean(IS_DARK_THEME, isDarkTheme).apply()
-
     var isSundayFirst: Boolean
         get() {
             val isSundayFirst = Calendar.getInstance(Locale.getDefault()).firstDayOfWeek == Calendar.SUNDAY
-            return mPrefs.getBoolean(SUNDAY_FIRST, isSundayFirst)
+            return prefs.getBoolean(SUNDAY_FIRST, isSundayFirst)
         }
-        set(sundayFirst) = mPrefs.edit().putBoolean(SUNDAY_FIRST, sundayFirst).apply()
+        set(sundayFirst) = prefs.edit().putBoolean(SUNDAY_FIRST, sundayFirst).apply()
 
     var displayWeekNumbers: Boolean
-        get() = mPrefs.getBoolean(WEEK_NUMBERS, false)
-        set(displayWeekNumbers) = mPrefs.edit().putBoolean(WEEK_NUMBERS, displayWeekNumbers).apply()
+        get() = prefs.getBoolean(WEEK_NUMBERS, false)
+        set(displayWeekNumbers) = prefs.edit().putBoolean(WEEK_NUMBERS, displayWeekNumbers).apply()
 
     var vibrateOnReminder: Boolean
-        get() = mPrefs.getBoolean(VIBRATE, false)
-        set(vibrate) = mPrefs.edit().putBoolean(VIBRATE, vibrate).apply()
+        get() = prefs.getBoolean(VIBRATE, false)
+        set(vibrate) = prefs.edit().putBoolean(VIBRATE, vibrate).apply()
 
     var reminderSound: String
-        get() = mPrefs.getString(REMINDER_SOUND, getDefaultNotificationSound())
-        set(path) = mPrefs.edit().putString(REMINDER_SOUND, path).apply()
+        get() = prefs.getString(REMINDER_SOUND, getDefaultNotificationSound())
+        set(path) = prefs.edit().putString(REMINDER_SOUND, path).apply()
 
     var storedView: Int
-        get() = mPrefs.getInt(VIEW, MONTHLY_VIEW)
-        set(view) = mPrefs.edit().putInt(VIEW, view).apply()
+        get() = prefs.getInt(VIEW, MONTHLY_VIEW)
+        set(view) = prefs.edit().putInt(VIEW, view).apply()
 
     var defaultReminderType: Int
-        get() = mPrefs.getInt(REMINDER_TYPE, REMINDER_AT_START)
+        get() = prefs.getInt(REMINDER_TYPE, REMINDER_AT_START)
         set(type) {
             var newType = type
             if (newType == REMINDER_CUSTOM && defaultReminderMinutes == 0)
                 newType = REMINDER_AT_START
 
-            mPrefs.edit().putInt(REMINDER_TYPE, newType).apply()
+            prefs.edit().putInt(REMINDER_TYPE, newType).apply()
         }
 
     var defaultReminderMinutes: Int
-        get() = mPrefs.getInt(REMINDER_MINUTES, 10)
+        get() = prefs.getInt(REMINDER_MINUTES, 10)
         set(mins) {
             if (mins == 0)
                 defaultReminderType = REMINDER_AT_START
-            mPrefs.edit().putInt(REMINDER_MINUTES, mins).apply()
+            prefs.edit().putInt(REMINDER_MINUTES, mins).apply()
         }
 
     fun getDefaultNotificationSound() = RingtoneManager.getActualDefaultRingtoneUri(context, RingtoneManager.TYPE_NOTIFICATION)?.toString() ?: ""

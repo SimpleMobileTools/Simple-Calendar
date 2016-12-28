@@ -25,21 +25,11 @@ class SettingsActivity : SimpleActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
 
-        setupDarkTheme()
         setupSundayFirst()
         setupWeekNumbers()
         setupVibrate()
         setupReminderSound()
         setupEventReminder()
-    }
-
-    private fun setupDarkTheme() {
-        settings_dark_theme.isChecked = mConfig.isDarkTheme
-        settings_dark_theme_holder.setOnClickListener {
-            settings_dark_theme.toggle()
-            mConfig.isDarkTheme = settings_dark_theme.isChecked
-            restartActivity()
-        }
     }
 
     private fun setupSundayFirst() {
