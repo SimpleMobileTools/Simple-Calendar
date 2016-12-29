@@ -5,21 +5,21 @@
     <string name="change_view">Changer de vue</string>
     <string name="monthly_view">Vue mensuelle</string>
     <string name="yearly_view">Vue annuelle</string>
-    <string name="simple_event_list">Liste simple d'événements</string>
-    <string name="no_upcoming_events">Il semblerait que vous n'ayez aucun événement à venir.</string>
+    <string name="simple_event_list">Liste simple d\'événements</string>
+    <string name="no_upcoming_events">Il semblerait que vous n\'ayez aucun événement à venir.</string>
     <string name="add_some_events">Vous pouvez ajouter des évènements avec le bouton Plus en bas.</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Calendrier mensuel</string>
-    <string name="widget_list">Liste d'événements Calendrier</string>
+    <string name="widget_list">Liste d\'événements Calendrier</string>
 
     <!-- Event -->
     <string name="event">Evénement</string>
-    <string name="edit_event">Editer l'Evénement</string>
+    <string name="edit_event">Editer l\'Evénement</string>
     <string name="new_event">Nouvel Evénement</string>
     <string name="title_empty">Le titre ne peut pas être vide</string>
-    <string name="end_before_start">L'événement ne peut pas se terminer plus tôt qu'il ne commence</string>
-    <string name="start_in_past">Vous ne pouvez pas planifier d'événement dans le passé</string>
+    <string name="end_before_start">L\'événement ne peut pas se terminer plus tôt qu\'il ne commence</string>
+    <string name="start_in_past">Vous ne pouvez pas planifier d\'événement dans le passé</string>
     <string name="event_added">Evénement ajouté avec succès</string>
     <string name="past_event_added">Evénement dans le passé ajouté avec succès</string>
     <string name="event_updated">Evénement ajouté avec succès</string>
@@ -53,7 +53,7 @@
     <string name="week_numbers">Afficher les numéros de semaine</string>
     <string name="vibrate">Vibrer à la notification de rappel</string>
     <string name="reminder_sound">Son de rappel</string>
-    <string name="default_event_reminder">Rappel d'événement par défaut</string>
+    <string name="default_event_reminder">Rappel d\'événement par défaut</string>
     <string name="reminder_saved">Rappel sauvegardé</string>
     <string name="notification_sound">Son de notification</string>
     <string name="no_ringtone_picker">Aucune application capable de configurer la sonnerie trouvée</string>
@@ -88,14 +88,14 @@
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Un calendrier simple avec événements, widget personnalisable, sans publicités.</string>
     <string name="app_long_description">
-        Un calendrier hors ligne sans aucune autre intégration de calendrier. Vous puvez aisément créer des événements récurrents et configurer des rappels, il est aussi possible d'afficher les numéros de semaine.
+        Un calendrier hors ligne sans aucune autre intégration de calendrier. Vous puvez aisément créer des événements récurrents et configurer des rappels, il est aussi possible d\'afficher les numéros de semaine.
 
 
-        Contient un widget 4x4 redimensionnable où vous pouvez personnaliser la couleur du texte, ainsi que l'alpha et la couleur de l'arrière plan.
+        Contient un widget 4x4 redimensionnable où vous pouvez personnaliser la couleur du texte, ainsi que l\'alpha et la couleur de l\'arrière plan.
 
         Ne contient pas de publicités ou de permissions inutiles. Complètement opensource, fournit un thème sombre également.
 
-        Cette application est juste une pièces d'une plus grosse série d'applications. Vous pouvez trouver le reste de celles-ci à http://www.simplemobiletools.com
+        Cette application est juste une pièces d\'une plus grosse série d\'applications. Vous pouvez trouver le reste de celles-ci à http://www.simplemobiletools.com
     </string>
 
     <!--
