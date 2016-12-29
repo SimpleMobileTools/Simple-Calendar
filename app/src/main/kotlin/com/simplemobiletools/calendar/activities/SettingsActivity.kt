@@ -10,7 +10,9 @@ import android.view.View
 import android.widget.AdapterView
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.beVisibleIf
-import com.simplemobiletools.calendar.helpers.*
+import com.simplemobiletools.calendar.helpers.DAY_MINS
+import com.simplemobiletools.calendar.helpers.HOUR_MINS
+import com.simplemobiletools.calendar.helpers.REMINDER_CUSTOM
 import com.simplemobiletools.commons.extensions.*
 import kotlinx.android.synthetic.main.activity_settings.*
 
@@ -75,15 +77,13 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun setupEventReminder() {
+        var isInitialSetup = true
         val reminderType = config.defaultReminderType
         val reminderMinutes = config.defaultReminderMinutes
-        settings_default_reminder.setSelection(when (reminderType) {
-            REMINDER_OFF -> 0
-            REMINDER_AT_START -> 1
-            else -> 2
-        })
+        settings_default_reminder.setSelection(reminderType)
         custom_reminder_save.setTextColor(custom_reminder_other_val.currentTextColor)
         setupReminderPeriod(reminderMinutes)
+
         settings_custom_reminder_holder.beVisibleIf(reminderType == 2)
         custom_reminder_save.setOnClickListener { saveReminder() }
 
@@ -92,19 +92,20 @@ class SettingsActivity : SimpleActivity() {
             }
 
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, itemIndex: Int, p3: Long) {
-                if (itemIndex == 2) {
-                    settings_custom_reminder_holder.visibility = View.VISIBLE
-                    showKeyboard(custom_reminder_value)
-                } else {
-                    hideKeyboard()
-                    settings_custom_reminder_holder.visibility = View.GONE
-                }
+                if (isInitialSetup)
+                    settings_default_reminder.setSelection(reminderType)
+                else {
+                    if (itemIndex == 2) {
+                        settings_custom_reminder_holder.visibility = View.VISIBLE
+                        showKeyboard(custom_reminder_value)
+                    } else {
+                        hideKeyboard()
+                        settings_custom_reminder_holder.visibility = View.GONE
+                    }
 
-                config.defaultReminderType = when (itemIndex) {
-                    0 -> REMINDER_OFF
-                    1 -> REMINDER_AT_START
-                    else -> REMINDER_CUSTOM
+                    config.defaultReminderType = itemIndex
                 }
+                isInitialSetup = false
             }
         }
     }
