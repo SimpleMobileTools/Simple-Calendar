@@ -86,7 +86,7 @@
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Un calendrier simple avec événements, widget personnalisable et pas de publicités.</string>
+    <string name="app_short_description">Un calendrier simple avec événements, widget personnalisable, sans publicités.</string>
     <string name="app_long_description">
         Un calendrier hors ligne sans aucune autre intégration de calendrier. Vous puvez aisément créer des événements récurrents et configurer des rappels, il est aussi possible d'afficher les numéros de semaine.
 
