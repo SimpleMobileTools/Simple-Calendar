@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:padding="@dimen/activity_margin">
 
-    <RadioButton
+    <com.simplemobiletools.commons.views.MyCompatRadioButton
         android:id="@+id/dialog_radio_monthly"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,7 +14,7 @@
         android:paddingTop="@dimen/activity_margin"
         android:text="@string/monthly_view"/>
 
-    <RadioButton
+    <com.simplemobiletools.commons.views.MyCompatRadioButton
         android:id="@+id/dialog_radio_yearly"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,8 +22,7 @@
         android:paddingTop="@dimen/activity_margin"
         android:text="@string/yearly_view"/>
 
-
-    <RadioButton
+    <com.simplemobiletools.commons.views.MyCompatRadioButton
         android:id="@+id/dialog_radio_events_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

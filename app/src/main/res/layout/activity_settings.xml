@@ -170,6 +170,7 @@
                 android:inputType="number"
                 android:maxLength="10"
                 android:minEms="3"
+                android:textCursorDrawable="@null"
                 android:textSize="@dimen/day_text_size"/>
 
             <com.simplemobiletools.commons.views.MyAppCompatSpinner
