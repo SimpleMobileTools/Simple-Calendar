@@ -6,7 +6,6 @@ import android.media.RingtoneManager
 import android.net.Uri
 import android.os.Bundle
 import android.os.Parcelable
-import android.support.v4.app.TaskStackBuilder
 import android.view.View
 import android.widget.AdapterView
 import com.simplemobiletools.calendar.R
@@ -33,28 +32,28 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun setupSundayFirst() {
-        settings_sunday_first.isChecked = mConfig.isSundayFirst
+        settings_sunday_first.isChecked = config.isSundayFirst
         settings_sunday_first_holder.setOnClickListener {
             settings_sunday_first.toggle()
-            mConfig.isSundayFirst = settings_sunday_first.isChecked
+            config.isSundayFirst = settings_sunday_first.isChecked
         }
     }
 
     private fun setupWeekNumbers() {
-        settings_week_numbers.isChecked = mConfig.displayWeekNumbers
+        settings_week_numbers.isChecked = config.displayWeekNumbers
         settings_week_numbers_holder.setOnClickListener {
             settings_week_numbers.toggle()
-            mConfig.displayWeekNumbers = settings_week_numbers.isChecked
+            config.displayWeekNumbers = settings_week_numbers.isChecked
         }
     }
 
     private fun setupReminderSound() {
-        settings_reminder_sound.text = RingtoneManager.getRingtone(this, Uri.parse(mConfig.reminderSound)).getTitle(this)
+        settings_reminder_sound.text = RingtoneManager.getRingtone(this, Uri.parse(config.reminderSound)).getTitle(this)
         settings_reminder_sound_holder.setOnClickListener {
             Intent(RingtoneManager.ACTION_RINGTONE_PICKER).apply {
                 putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_NOTIFICATION)
                 putExtra(RingtoneManager.EXTRA_RINGTONE_TITLE, resources.getString(R.string.notification_sound))
-                putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, Uri.parse(mConfig.reminderSound))
+                putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, Uri.parse(config.reminderSound))
 
                 if (resolveActivity(packageManager) != null)
                     startActivityForResult(this, GET_RINGTONE_URI)
@@ -66,16 +65,16 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun setupVibrate() {
-        settings_vibrate.isChecked = mConfig.vibrateOnReminder
+        settings_vibrate.isChecked = config.vibrateOnReminder
         settings_vibrate_holder.setOnClickListener {
             settings_vibrate.toggle()
-            mConfig.vibrateOnReminder = settings_vibrate.isChecked
+            config.vibrateOnReminder = settings_vibrate.isChecked
         }
     }
 
     private fun setupEventReminder() {
-        val reminderType = mConfig.defaultReminderType
-        val reminderMinutes = mConfig.defaultReminderMinutes
+        val reminderType = config.defaultReminderType
+        val reminderMinutes = config.defaultReminderMinutes
         settings_default_reminder.setSelection(when (reminderType) {
             REMINDER_OFF -> 0
             REMINDER_AT_START -> 1
@@ -99,7 +98,7 @@ class SettingsActivity : SimpleActivity() {
                     settings_custom_reminder_holder.visibility = View.GONE
                 }
 
-                mConfig.defaultReminderType = when (itemIndex) {
+                config.defaultReminderType = when (itemIndex) {
                     0 -> REMINDER_OFF
                     1 -> REMINDER_AT_START
                     else -> REMINDER_CUSTOM
@@ -116,8 +115,8 @@ class SettingsActivity : SimpleActivity() {
             else -> 1
         }
 
-        mConfig.defaultReminderMinutes = Integer.valueOf(if (value.isEmpty()) "0" else value) * multiplier
-        mConfig.defaultReminderType = REMINDER_CUSTOM
+        config.defaultReminderMinutes = Integer.valueOf(if (value.isEmpty()) "0" else value) * multiplier
+        config.defaultReminderType = REMINDER_CUSTOM
         toast(R.string.reminder_saved)
         hideKeyboard()
     }
@@ -142,11 +141,7 @@ class SettingsActivity : SimpleActivity() {
         if (resultCode == Activity.RESULT_OK && requestCode == GET_RINGTONE_URI) {
             val uri = intent?.getParcelableExtra<Parcelable>(RingtoneManager.EXTRA_RINGTONE_PICKED_URI) ?: return
             settings_reminder_sound.text = RingtoneManager.getRingtone(this, uri as Uri).getTitle(this)
-            mConfig.reminderSound = uri.toString()
+            config.reminderSound = uri.toString()
         }
-    }
-
-    private fun restartActivity() {
-        TaskStackBuilder.create(applicationContext).addNextIntentWithParentStack(intent).startActivities()
     }
 }

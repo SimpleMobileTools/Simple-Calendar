@@ -49,7 +49,7 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
 
     override fun onDestroy() {
         super.onDestroy()
-        mConfig.isFirstRun = false
+        config.isFirstRun = false
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -76,7 +76,7 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
     }
 
     override fun onBackPressed() {
-        if (mIsMonthSelected && mConfig.storedView == YEARLY_VIEW) {
+        if (mIsMonthSelected && config.storedView == YEARLY_VIEW) {
             updateView(YEARLY_VIEW)
         } else {
             super.onBackPressed()
@@ -92,14 +92,14 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
     private fun updateView(view: Int) {
         calendar_fab.visibility = if (view == YEARLY_VIEW) View.GONE else View.VISIBLE
         mIsMonthSelected = view == MONTHLY_VIEW
-        mConfig.storedView = view
+        config.storedView = view
         updateViewPager()
     }
 
     private fun updateViewPager() {
-        if (mConfig.storedView == YEARLY_VIEW) {
+        if (config.storedView == YEARLY_VIEW) {
             fillYearlyViewPager()
-        } else if (mConfig.storedView == EVENTS_LIST_VIEW) {
+        } else if (config.storedView == EVENTS_LIST_VIEW) {
             fillEventsList()
         } else {
             val targetDay = DateTime().toString(Formatter.DAYCODE_PATTERN)

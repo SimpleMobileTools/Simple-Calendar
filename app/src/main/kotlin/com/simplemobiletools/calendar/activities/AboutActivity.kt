@@ -51,7 +51,7 @@ class AboutActivity : SimpleActivity() {
     }
 
     private fun setupRateUs() {
-        if (mConfig.isFirstRun) {
+        if (config.isFirstRun) {
             about_rate_us.visibility = View.GONE
         } else {
             about_rate_us.setOnClickListener {

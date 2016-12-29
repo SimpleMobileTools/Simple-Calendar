@@ -101,7 +101,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     }
 
     private fun setupDefaultReminderType() {
-        val type = mConfig.defaultReminderType
+        val type = config.defaultReminderType
         toggleCustomReminderVisibility(type == REMINDER_CUSTOM)
         if (type == REMINDER_OFF) {
             event_reminder.setSelection(0)
@@ -114,7 +114,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     }
 
     private fun setupDefaultReminderValue() {
-        val mins = mConfig.defaultReminderMinutes
+        val mins = config.defaultReminderMinutes
         var value = mins
         if (mins == 0) {
             custom_reminder_other_period.setSelection(0)
