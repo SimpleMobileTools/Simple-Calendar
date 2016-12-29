@@ -8,6 +8,7 @@ import android.support.v4.view.ViewPager
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import com.simplemobiletools.calendar.BuildConfig
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.adapters.MyMonthPagerAdapter
 import com.simplemobiletools.calendar.adapters.MyYearPagerAdapter
@@ -16,6 +17,10 @@ import com.simplemobiletools.calendar.extensions.updateWidgets
 import com.simplemobiletools.calendar.fragments.EventListFragment
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
+import com.simplemobiletools.commons.helpers.LICENSE_AMBILWARNA
+import com.simplemobiletools.commons.helpers.LICENSE_JODA
+import com.simplemobiletools.commons.helpers.LICENSE_KOTLIN
+import com.simplemobiletools.commons.helpers.LICENSE_STETHO
 import kotlinx.android.synthetic.main.activity_main.*
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
@@ -60,8 +65,8 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.change_view -> showViewDialog()
-            R.id.settings -> startActivity(Intent(applicationContext, SettingsActivity::class.java))
-            R.id.about -> startActivity(Intent(applicationContext, AboutActivity::class.java))
+            R.id.settings -> launchSettings()
+            R.id.about -> launchAbout()
             else -> return super.onOptionsItemSelected(item)
         }
         return true
@@ -97,6 +102,14 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
             val targetDay = DateTime().toString(Formatter.DAYCODE_PATTERN)
             fillMonthlyViewPager(targetDay)
         }
+    }
+
+    private fun launchSettings() {
+        startActivity(Intent(applicationContext, SettingsActivity::class.java))
+    }
+
+    private fun launchAbout() {
+        startAboutActivity(R.string.app_name, LICENSE_KOTLIN or LICENSE_AMBILWARNA or LICENSE_JODA or LICENSE_STETHO, BuildConfig.VERSION_NAME)
     }
 
     private fun addNewEvent() {
