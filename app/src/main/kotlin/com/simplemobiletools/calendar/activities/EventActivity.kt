@@ -210,17 +210,12 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.cab_delete -> {
-                deleteEvent()
-                true
-            }
-            R.id.save -> {
-                saveEvent()
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
+        when (item.itemId) {
+            R.id.cab_delete -> deleteEvent()
+            R.id.save -> saveEvent()
+            else -> return super.onOptionsItemSelected(item)
         }
+        return true
     }
 
     private fun deleteEvent() {

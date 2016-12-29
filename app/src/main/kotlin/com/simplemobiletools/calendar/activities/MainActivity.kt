@@ -58,21 +58,13 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.change_view -> {
-                showViewDialog()
-                true
-            }
-            R.id.settings -> {
-                startActivity(Intent(applicationContext, SettingsActivity::class.java))
-                true
-            }
-            R.id.about -> {
-                startActivity(Intent(applicationContext, AboutActivity::class.java))
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
+        when (item.itemId) {
+            R.id.change_view -> showViewDialog()
+            R.id.settings -> startActivity(Intent(applicationContext, SettingsActivity::class.java))
+            R.id.about -> startActivity(Intent(applicationContext, AboutActivity::class.java))
+            else -> return super.onOptionsItemSelected(item)
         }
+        return true
     }
 
     override fun onBackPressed() {
