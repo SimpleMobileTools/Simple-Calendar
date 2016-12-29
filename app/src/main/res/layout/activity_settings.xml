@@ -15,24 +15,19 @@
             android:id="@+id/settings_sunday_first_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_margin"
             android:background="?attr/selectableItemBackground"
             android:padding="@dimen/activity_margin">
 
-            <TextView
-                android:id="@+id/settings_sunday_first_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:text="@string/sunday_first"/>
-
-            <android.support.v7.widget.SwitchCompat
+            <com.simplemobiletools.commons.views.MySwitchCompat
                 android:id="@+id/settings_sunday_first"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:background="@null"
-                android:clickable="false"/>
+                android:clickable="false"
+                android:paddingLeft="@dimen/medium_margin"
+                android:paddingStart="@dimen/medium_margin"
+                android:text="@string/sunday_first"/>
 
         </RelativeLayout>
 
@@ -40,24 +35,19 @@
             android:id="@+id/settings_week_numbers_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_margin"
             android:background="?attr/selectableItemBackground"
             android:padding="@dimen/activity_margin">
 
-            <TextView
-                android:id="@+id/settings_week_numbers_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:text="@string/week_numbers"/>
-
-            <android.support.v7.widget.SwitchCompat
+            <com.simplemobiletools.commons.views.MySwitchCompat
                 android:id="@+id/settings_week_numbers"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:background="@null"
-                android:clickable="false"/>
+                android:clickable="false"
+                android:paddingLeft="@dimen/medium_margin"
+                android:paddingStart="@dimen/medium_margin"
+                android:text="@string/week_numbers"/>
 
         </RelativeLayout>
 
@@ -65,24 +55,19 @@
             android:id="@+id/settings_vibrate_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_margin"
             android:background="?attr/selectableItemBackground"
             android:padding="@dimen/activity_margin">
 
-            <TextView
-                android:id="@+id/settings_vibrate_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:text="@string/vibrate"/>
-
-            <android.support.v7.widget.SwitchCompat
+            <com.simplemobiletools.commons.views.MySwitchCompat
                 android:id="@+id/settings_vibrate"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:background="@null"
-                android:clickable="false"/>
+                android:clickable="false"
+                android:paddingLeft="@dimen/medium_margin"
+                android:paddingStart="@dimen/medium_margin"
+                android:text="@string/vibrate"/>
 
         </RelativeLayout>
 
@@ -90,17 +75,23 @@
             android:id="@+id/settings_reminder_sound_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_margin"
             android:background="?attr/selectableItemBackground"
-            android:padding="@dimen/activity_margin">
+            android:paddingBottom="@dimen/bigger_margin"
+            android:paddingLeft="@dimen/activity_margin"
+            android:paddingRight="@dimen/activity_margin"
+            android:paddingTop="@dimen/bigger_margin">
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/settings_reminder_sound_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
+                android:paddingLeft="@dimen/medium_margin"
+                android:paddingStart="@dimen/medium_margin"
                 android:text="@string/reminder_sound"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/settings_reminder_sound"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -117,17 +108,22 @@
             android:id="@+id/settings_default_reminder_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackground"
-            android:padding="@dimen/activity_margin">
+            android:layout_marginTop="@dimen/medium_margin"
+            android:paddingBottom="@dimen/activity_margin"
+            android:paddingLeft="@dimen/activity_margin"
+            android:paddingRight="@dimen/medium_margin"
+            android:paddingTop="@dimen/activity_margin">
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/settings_default_reminder_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
+                android:paddingLeft="@dimen/medium_margin"
+                android:paddingStart="@dimen/medium_margin"
                 android:text="@string/default_event_reminder"/>
 
-            <android.support.v7.widget.AppCompatSpinner
+            <com.simplemobiletools.commons.views.MyAppCompatSpinner
                 android:id="@+id/settings_default_reminder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -145,7 +141,7 @@
             android:orientation="horizontal"
             android:visibility="gone">
 
-            <EditText
+            <com.simplemobiletools.commons.views.MyEditText
                 android:id="@+id/custom_reminder_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -157,14 +153,14 @@
                 android:minEms="3"
                 android:textSize="@dimen/day_text_size"/>
 
-            <android.support.v7.widget.AppCompatSpinner
+            <com.simplemobiletools.commons.views.MyAppCompatSpinner
                 android:id="@+id/custom_reminder_other_period"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:entries="@array/custom_reminders"
                 android:gravity="center"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/custom_reminder_other_val"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -176,13 +172,18 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"/>
 
-            <Button
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/custom_reminder_save"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackground"
+                android:paddingBottom="@dimen/normal_margin"
+                android:paddingLeft="@dimen/big_margin"
+                android:paddingRight="@dimen/big_margin"
+                android:paddingTop="@dimen/normal_margin"
                 android:text="@string/save"
-                android:textSize="@dimen/day_text_size"/>
+                android:textAllCaps="true"
+                android:textSize="@dimen/bigger_text_size"/>
 
         </LinearLayout>
     </LinearLayout>

@@ -11,10 +11,7 @@ import android.widget.AdapterView
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.beVisibleIf
 import com.simplemobiletools.calendar.helpers.*
-import com.simplemobiletools.commons.extensions.hideKeyboard
-import com.simplemobiletools.commons.extensions.showKeyboard
-import com.simplemobiletools.commons.extensions.toast
-import com.simplemobiletools.commons.extensions.value
+import com.simplemobiletools.commons.extensions.*
 import kotlinx.android.synthetic.main.activity_settings.*
 
 class SettingsActivity : SimpleActivity() {
@@ -23,12 +20,17 @@ class SettingsActivity : SimpleActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
+    }
+
+    override fun onResume() {
+        super.onResume()
 
         setupSundayFirst()
         setupWeekNumbers()
         setupVibrate()
         setupReminderSound()
         setupEventReminder()
+        updateTextColors(settings_holder)
     }
 
     private fun setupSundayFirst() {
