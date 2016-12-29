@@ -45,6 +45,11 @@
             android:parentActivityName=".activities.MainActivity"/>
 
         <activity
+            android:name="com.simplemobiletools.commons.activities.CustomizationActivity"
+            android:label="@string/customize_colors"
+            android:parentActivityName=".activities.SettingsActivity"/>
+
+        <activity
             android:name=".activities.DayActivity"
             android:label="@string/details"
             android:parentActivityName=".activities.MainActivity"/>

@@ -27,12 +27,19 @@ class SettingsActivity : SimpleActivity() {
     override fun onResume() {
         super.onResume()
 
+        setupCustomizeColors()
         setupSundayFirst()
         setupWeekNumbers()
         setupVibrate()
         setupReminderSound()
         setupEventReminder()
         updateTextColors(settings_holder)
+    }
+
+    private fun setupCustomizeColors() {
+        settings_customize_colors_holder.setOnClickListener {
+            startCustomizationActivity()
+        }
     }
 
     private fun setupSundayFirst() {
