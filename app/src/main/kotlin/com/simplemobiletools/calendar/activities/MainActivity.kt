@@ -38,13 +38,12 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        updateViewPager()
-
         calendar_fab.setOnClickListener { addNewEvent() }
     }
 
     override fun onResume() {
         super.onResume()
+        updateViewPager()
         updateWidgets()
         updateTextColors(calendar_coordinator)
     }
