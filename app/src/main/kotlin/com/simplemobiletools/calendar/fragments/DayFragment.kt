@@ -20,8 +20,8 @@ import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.models.Event
-import com.simplemobiletools.calendar.views.RecyclerViewDivider
 import com.simplemobiletools.commons.extensions.adjustAlpha
+import com.simplemobiletools.commons.views.RecyclerViewDivider
 import kotlinx.android.synthetic.main.fragment_day.view.*
 import kotlinx.android.synthetic.main.top_navigation.view.*
 import java.util.*

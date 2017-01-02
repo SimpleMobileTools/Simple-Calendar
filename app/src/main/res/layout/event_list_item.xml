@@ -11,7 +11,7 @@
         android:id="@+id/event_item_holder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/event_item_background"
+        android:background="@drawable/selector"
         android:paddingBottom="@dimen/medium_margin"
         android:paddingLeft="@dimen/activity_margin"
         android:paddingRight="@dimen/activity_margin"
