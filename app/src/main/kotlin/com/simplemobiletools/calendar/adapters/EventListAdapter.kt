@@ -9,6 +9,7 @@ import com.bignerdranch.android.multiselector.MultiSelector
 import com.bignerdranch.android.multiselector.SwappingHolder
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.SimpleActivity
+import com.simplemobiletools.calendar.helpers.Config
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.models.ListEvent
 import com.simplemobiletools.calendar.models.ListItem
@@ -29,11 +30,11 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
         var actMode: ActionMode? = null
         val markedItems = HashSet<Int>()
 
-        var mTopDivider: Drawable? = null
+        var topDivider: Drawable? = null
         var mNow = (System.currentTimeMillis() / 1000).toInt()
-        var mOrangeColor = 0
-        var mGreyColor = 0
-        var mTodayDate = ""
+        var primaryColor = 0
+        var textColor = 0
+        var todayDate = ""
 
         fun toggleItemSelection(itemView: View, select: Boolean, pos: Int = -1) {
             itemView.event_item_frame.isSelected = select
@@ -48,21 +49,20 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
     }
 
     init {
-        mTopDivider = activity.resources.getDrawable(R.drawable.divider)
-        mOrangeColor = activity.resources.getColor(R.color.color_primary)
+        textColor = Config.newInstance(activity).textColor
+        topDivider = activity.resources.getDrawable(R.drawable.divider)
+        primaryColor = activity.resources.getColor(R.color.color_primary)
         val mTodayCode = Formatter.getDayCodeFromTS(mNow)
-        mTodayDate = Formatter.getDate(activity, mTodayCode)
+        todayDate = Formatter.getDate(activity, mTodayCode)
     }
 
     val multiSelectorMode = object : ModalMultiSelectorCallback(multiSelector) {
         override fun onActionItemClicked(mode: ActionMode, item: MenuItem): Boolean {
-            return when (item.itemId) {
-                R.id.cab_delete -> {
-                    askConfirmDelete()
-                    true
-                }
-                else -> false
+            when (item.itemId) {
+                R.id.cab_delete -> askConfirmDelete()
+                else -> return false
             }
+            return true
         }
 
         override fun onCreateActionMode(actionMode: ActionMode?, menu: Menu?): Boolean {
@@ -137,7 +137,7 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
                     }
                 }
 
-                val currTextColor = if (item.startTS <= mNow) mOrangeColor else mGreyColor
+                val currTextColor = if (item.startTS <= mNow) primaryColor else textColor
                 event_item_start.setTextColor(currTextColor)
                 event_item_end.setTextColor(currTextColor)
                 event_item_title.setTextColor(currTextColor)
@@ -181,14 +181,10 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
     class SectionHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun bindView(listItem: ListItem): View {
             val item = listItem as ListSection
-            itemView.apply {
-                event_item_title.text = item.title
-                event_item_title.setCompoundDrawablesWithIntrinsicBounds(null, if (position == 0) null else mTopDivider, null, null)
-
-                if (mGreyColor == 0)
-                    mGreyColor = event_item_title.currentTextColor
-
-                event_item_title.setTextColor(if (item.title == mTodayDate) mOrangeColor else mGreyColor)
+            itemView.event_item_title.apply {
+                text = item.title
+                setCompoundDrawablesWithIntrinsicBounds(null, if (position == 0) null else topDivider, null, null)
+                setTextColor(if (item.title == todayDate) primaryColor else textColor)
             }
 
             return itemView

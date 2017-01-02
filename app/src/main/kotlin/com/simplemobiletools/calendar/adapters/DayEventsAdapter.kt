@@ -8,20 +8,22 @@ import com.bignerdranch.android.multiselector.MultiSelector
 import com.bignerdranch.android.multiselector.SwappingHolder
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.SimpleActivity
+import com.simplemobiletools.calendar.helpers.Config
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import kotlinx.android.synthetic.main.event_item.view.*
 import java.util.*
 
-class EventsAdapter(val activity: SimpleActivity, val mItems: List<Event>, val listener: ItemOperationsListener?, val itemClick: (Event) -> Unit) :
-        RecyclerView.Adapter<EventsAdapter.ViewHolder>() {
+class DayEventsAdapter(val activity: SimpleActivity, val mItems: List<Event>, val listener: ItemOperationsListener?, val itemClick: (Event) -> Unit) :
+        RecyclerView.Adapter<DayEventsAdapter.ViewHolder>() {
     val multiSelector = MultiSelector()
     val views = ArrayList<View>()
 
     companion object {
         var actMode: ActionMode? = null
         val markedItems = HashSet<Int>()
+        var textColor = 0
 
         fun toggleItemSelection(itemView: View, select: Boolean, pos: Int = -1) {
             itemView.event_item_frame.isSelected = select
@@ -35,15 +37,17 @@ class EventsAdapter(val activity: SimpleActivity, val mItems: List<Event>, val l
         }
     }
 
+    init {
+        textColor = Config.newInstance(activity).textColor
+    }
+
     val multiSelectorMode = object : ModalMultiSelectorCallback(multiSelector) {
         override fun onActionItemClicked(mode: ActionMode, item: MenuItem): Boolean {
-            return when (item.itemId) {
-                R.id.cab_delete -> {
-                    askConfirmDelete()
-                    true
-                }
-                else -> false
+            when (item.itemId) {
+                R.id.cab_delete -> askConfirmDelete()
+                else -> return false
             }
+            return true
         }
 
         override fun onCreateActionMode(actionMode: ActionMode?, menu: Menu?): Boolean {
@@ -92,15 +96,24 @@ class EventsAdapter(val activity: SimpleActivity, val mItems: List<Event>, val l
 
             itemView.apply {
                 event_item_title.text = event.title
+                event_item_title.setTextColor(textColor)
+
                 event_item_description.text = event.description
+                event_item_description.setTextColor(textColor)
+
                 event_item_start.text = Formatter.getTimeFromTS(context, event.startTS)
+                event_item_start.setTextColor(textColor)
+
                 toggleItemSelection(this, markedItems.contains(pos), pos)
 
                 if (event.startTS == event.endTS) {
                     event_item_end.visibility = View.INVISIBLE
                 } else {
-                    event_item_end.text = Formatter.getTimeFromTS(context, event.endTS)
-                    event_item_end.visibility = View.VISIBLE
+                    event_item_end.apply {
+                        text = Formatter.getTimeFromTS(context, event.endTS)
+                        setTextColor(textColor)
+                        visibility = View.VISIBLE
+                    }
                 }
 
                 setOnClickListener { viewClicked(multiSelector, event, pos) }

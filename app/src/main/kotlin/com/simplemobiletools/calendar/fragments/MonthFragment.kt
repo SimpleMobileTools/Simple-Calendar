@@ -2,7 +2,6 @@ package com.simplemobiletools.calendar.fragments
 
 import android.content.Intent
 import android.content.res.Resources
-import android.graphics.Color
 import android.graphics.PorterDuff
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -83,6 +82,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
     override fun updateMonthlyCalendar(month: String, days: List<Day>) {
         activity?.runOnUiThread {
             mHolder.top_value.text = month
+            mHolder.top_value.setTextColor(mConfig.textColor)
             updateDays(days)
         }
     }
@@ -92,7 +92,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
     }
 
     private fun setupButtons() {
-        val baseColor = Color.BLACK
+        val baseColor = mConfig.textColor
         mTextColor = baseColor.adjustAlpha(HIGH_ALPHA)
         mTextColorWithEvent = mRes.getColor(R.color.color_primary).adjustAlpha(HIGH_ALPHA)
         mWeakTextColor = baseColor.adjustAlpha(LOW_ALPHA)

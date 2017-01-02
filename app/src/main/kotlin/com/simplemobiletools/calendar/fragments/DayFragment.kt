@@ -2,7 +2,6 @@ package com.simplemobiletools.calendar.fragments
 
 import android.content.Intent
 import android.content.res.Resources
-import android.graphics.Color
 import android.graphics.PorterDuff
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -15,7 +14,7 @@ import android.widget.RelativeLayout
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.activities.SimpleActivity
-import com.simplemobiletools.calendar.adapters.EventsAdapter
+import com.simplemobiletools.calendar.adapters.DayEventsAdapter
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.interfaces.NavigationListener
@@ -27,7 +26,7 @@ import kotlinx.android.synthetic.main.top_navigation.view.*
 import java.util.*
 import kotlin.comparisons.compareBy
 
-class DayFragment : Fragment(), DBHelper.EventUpdateListener, DBHelper.GetEventsListener, EventsAdapter.ItemOperationsListener {
+class DayFragment : Fragment(), DBHelper.EventUpdateListener, DBHelper.GetEventsListener, DayEventsAdapter.ItemOperationsListener {
     private var mTextColor = 0
     private var mDayCode = ""
     private var mEvents: MutableList<Event>? = null
@@ -49,6 +48,7 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DBHelper.GetEvents
         val day = Formatter.getDayTitle(activity.applicationContext, mDayCode)
         mHolder.top_value.text = day
         mHolder.top_value.setOnClickListener { pickDay() }
+        mHolder.top_value.setTextColor(mConfig.textColor)
         mToBeDeleted = ArrayList<Int>()
 
         setupButtons()
@@ -61,7 +61,7 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DBHelper.GetEvents
     }
 
     private fun setupButtons() {
-        val baseColor = Color.BLACK
+        val baseColor = mConfig.textColor
         mTextColor = baseColor.adjustAlpha(HIGH_ALPHA)
 
         mHolder.apply {
@@ -119,7 +119,7 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DBHelper.GetEvents
         if (activity == null)
             return
 
-        val eventsAdapter = EventsAdapter(activity as SimpleActivity, eventsToShow, this) {
+        val eventsAdapter = DayEventsAdapter(activity as SimpleActivity, eventsToShow, this) {
             editEvent(it.id)
         }
         mHolder.day_events.apply {

@@ -10,11 +10,7 @@ import com.simplemobiletools.calendar.helpers.DAY_CODE
 
 class MyDayPagerAdapter(fm: FragmentManager, private val mCodes: List<String>, private val mListener: DayFragment.DeleteListener) :
         FragmentStatePagerAdapter(fm) {
-    var fragments: SparseArray<DayFragment>
-
-    init {
-        fragments = SparseArray(10)
-    }
+    var fragments: SparseArray<DayFragment> = SparseArray(10)
 
     override fun getCount() = mCodes.size
 

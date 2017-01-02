@@ -13,6 +13,7 @@
         android:clipToPadding="false"
         android:paddingLeft="@dimen/activity_margin"
         android:paddingTop="@dimen/medium_margin"
+        android:scrollbars="vertical"
         android:visibility="gone"
         app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
 
