@@ -10,9 +10,7 @@ import android.view.View
 import android.widget.AdapterView
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.beVisibleIf
-import com.simplemobiletools.calendar.helpers.DAY_MINS
-import com.simplemobiletools.calendar.helpers.HOUR_MINS
-import com.simplemobiletools.calendar.helpers.REMINDER_CUSTOM
+import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.commons.extensions.*
 import kotlinx.android.synthetic.main.activity_settings.*
 
@@ -110,10 +108,18 @@ class SettingsActivity : SimpleActivity() {
                         settings_custom_reminder_holder.visibility = View.GONE
                     }
 
-                    config.defaultReminderType = itemIndex
+                    config.defaultReminderType = getDefaultReminderValue(itemIndex)
                 }
                 isInitialSetup = false
             }
+        }
+    }
+
+    private fun getDefaultReminderValue(index: Int): Int {
+        return when (index) {
+            0 -> REMINDER_OFF
+            1 -> REMINDER_AT_START
+            else -> REMINDER_CUSTOM
         }
     }
 
