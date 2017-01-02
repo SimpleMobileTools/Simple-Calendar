@@ -93,10 +93,11 @@ class MonthFragment : Fragment(), MonthlyCalendar {
 
     private fun setupButtons() {
         val baseColor = mConfig.textColor
+        val primaryColor = mConfig.primaryColor
         mTextColor = baseColor.adjustAlpha(HIGH_ALPHA)
-        mTextColorWithEvent = mRes.getColor(R.color.color_primary).adjustAlpha(HIGH_ALPHA)
+        mTextColorWithEvent = primaryColor.adjustAlpha(HIGH_ALPHA)
         mWeakTextColor = baseColor.adjustAlpha(LOW_ALPHA)
-        mWeakTextColorWithEvent = mRes.getColor(R.color.color_primary).adjustAlpha(LOW_ALPHA)
+        mWeakTextColorWithEvent = primaryColor.adjustAlpha(LOW_ALPHA)
 
         mHolder.apply {
             top_left_arrow.drawable.mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP)
@@ -152,15 +153,15 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         val letters = letterIDs
 
         for (i in 0..6) {
-            val dayTV = mHolder.findViewById(mRes.getIdentifier("label_" + i, "id", mPackageName)) as TextView
-            dayTV.textSize = mDayTextSize
-            dayTV.setTextColor(mTextColor)
-
             var index = i
             if (!mSundayFirst)
                 index = (index + 1) % letters.size
 
-            dayTV.text = getString(letters[index])
+            (mHolder.findViewById(mRes.getIdentifier("label_$i", "id", mPackageName)) as TextView).apply {
+                textSize = mDayTextSize
+                setTextColor(mTextColor)
+                text = getString(letters[index])
+            }
         }
     }
 
@@ -175,16 +176,15 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         week_num.beVisibleIf(displayWeekNumbers)
 
         for (i in 0..5) {
-            val weekIdTV = mHolder.findViewById(mRes.getIdentifier("week_num_" + i, "id", mPackageName)) as TextView
-            weekIdTV.text = "${days[i * 7].weekOfYear}:"
-            weekIdTV.setTextColor(mWeakTextColor)
-            weekIdTV.beVisibleIf(displayWeekNumbers)
+            (mHolder.findViewById(mRes.getIdentifier("week_num_$i", "id", mPackageName)) as TextView).apply {
+                text = "${days[i * 7].weekOfYear}:"
+                setTextColor(mWeakTextColor)
+                beVisibleIf(displayWeekNumbers)
+            }
         }
 
         for (i in 0..len - 1) {
             val day = days[i]
-            val dayTV = mHolder.findViewById(mRes.getIdentifier("day_" + i, "id", mPackageName)) as TextView
-
             var curTextColor = if (day.hasEvent) mWeakTextColorWithEvent else mWeakTextColor
             var curTextSize = mDayTextSize
 
@@ -196,11 +196,12 @@ class MonthFragment : Fragment(), MonthlyCalendar {
                 curTextSize = mTodayTextSize
             }
 
-            dayTV.text = day.value.toString()
-            dayTV.setTextColor(curTextColor)
-            dayTV.textSize = curTextSize
-
-            dayTV.setOnClickListener { openDay(day.code) }
+            (mHolder.findViewById(mRes.getIdentifier("day_$i", "id", mPackageName)) as TextView).apply {
+                text = day.value.toString()
+                setTextColor(curTextColor)
+                textSize = curTextSize
+                setOnClickListener { openDay(day.code) }
+            }
         }
     }
 

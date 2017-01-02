@@ -49,9 +49,10 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
     }
 
     init {
-        textColor = Config.newInstance(activity).textColor
+        val config = Config.newInstance(activity)
+        textColor = config.textColor
         topDivider = activity.resources.getDrawable(R.drawable.divider)
-        primaryColor = activity.resources.getColor(R.color.color_primary)
+        primaryColor = config.primaryColor
         val mTodayCode = Formatter.getDayCodeFromTS(mNow)
         todayDate = Formatter.getDate(activity, mTodayCode)
     }

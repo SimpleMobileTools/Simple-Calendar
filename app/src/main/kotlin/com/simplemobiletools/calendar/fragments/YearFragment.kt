@@ -77,7 +77,7 @@ class YearFragment : Fragment(), YearlyCalendar {
         val now = DateTime()
         if (now.year == mYear) {
             val monthLabel = mView.findViewById(res.getIdentifier("month_${now.monthOfYear}_label", "id", activity.packageName)) as TextView
-            monthLabel.setTextColor(res.getColor(R.color.color_primary).adjustAlpha(HIGH_ALPHA))
+            monthLabel.setTextColor(Config.newInstance(context).primaryColor.adjustAlpha(HIGH_ALPHA))
 
             val monthView = mView.findViewById(res.getIdentifier("month_${now.monthOfYear}", "id", activity.packageName)) as SmallMonthView
             monthView.setTodaysId(now.dayOfMonth)
