@@ -11,50 +11,50 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/activity_margin">
 
-        <android.support.design.widget.TextInputLayout
+        <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/event_title_label"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.simplemobiletools.commons.views.MyEditText
-                android:id="@+id/event_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="@string/title"
-                android:inputType="textCapSentences"
-                android:maxLength="30"
-                android:maxLines="1"
-                android:minEms="20"
-                android:textCursorDrawable="@null"
-                android:textSize="@dimen/day_text_size"/>
-
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/event_description_label"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/event_title_label"
-            android:layout_marginTop="@dimen/activity_margin">
+            android:text="@string/title"
+            android:textSize="@dimen/day_text_size"/>
 
-            <com.simplemobiletools.commons.views.MyEditText
-                android:id="@+id/event_description"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/event_description_label"
-                android:gravity="top"
-                android:hint="@string/description"
-                android:inputType="textCapSentences|textMultiLine"
-                android:minEms="20"
-                android:textCursorDrawable="@null"
-                android:textSize="@dimen/day_text_size"/>
-        </android.support.design.widget.TextInputLayout>
+        <com.simplemobiletools.commons.views.MyEditText
+            android:id="@+id/event_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/event_title_label"
+            android:inputType="textCapSentences"
+            android:maxLength="30"
+            android:maxLines="1"
+            android:minEms="20"
+            android:textCursorDrawable="@null"
+            android:textSize="@dimen/day_text_size"/>
+
+        <com.simplemobiletools.commons.views.MyTextView
+            android:id="@+id/event_description_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/event_title"
+            android:layout_marginTop="@dimen/activity_margin"
+            android:text="@string/description"
+            android:textSize="@dimen/day_text_size"/>
+
+        <com.simplemobiletools.commons.views.MyEditText
+            android:id="@+id/event_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/event_description_label"
+            android:gravity="top"
+            android:inputType="textCapSentences|textMultiLine"
+            android:minEms="20"
+            android:textCursorDrawable="@null"
+            android:textSize="@dimen/day_text_size"/>
 
         <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/event_start_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/event_description_label"
+            android:layout_below="@+id/event_description"
             android:layout_marginTop="@dimen/activity_margin"
             android:text="@string/start"
             android:textSize="@dimen/day_text_size"/>
