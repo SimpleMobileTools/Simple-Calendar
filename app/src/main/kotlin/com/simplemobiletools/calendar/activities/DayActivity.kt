@@ -1,6 +1,7 @@
 package com.simplemobiletools.calendar.activities
 
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
 import android.support.design.widget.Snackbar
@@ -33,6 +34,7 @@ class DayActivity : SimpleActivity(), DayFragment.DeleteListener, ViewPager.OnPa
 
         fillViewPager(mDayCode)
 
+        day_fab.backgroundTintList = ColorStateList.valueOf(baseConfig.primaryColor)
         day_fab.setOnClickListener { addNewEvent() }
     }
 

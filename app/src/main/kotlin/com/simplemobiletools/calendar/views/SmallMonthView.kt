@@ -23,8 +23,7 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
 
     var mEvents: ArrayList<Int>? = null
 
-    constructor(context: Context, attrs: AttributeSet) : this(context, attrs, 0) {
-    }
+    constructor(context: Context, attrs: AttributeSet) : this(context, attrs, 0)
 
     fun setDays(days: Int) {
         mDays = days
