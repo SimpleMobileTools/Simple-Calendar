@@ -27,7 +27,7 @@
             android:layout_weight="1"
             android:orientation="horizontal">
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/week_num_0"
                 style="@style/DayView"
                 android:layout_width="0dp"
@@ -35,49 +35,49 @@
                 android:layout_weight="1"
                 android:visibility="gone"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/day_0"
                 style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/day_1"
                 style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/day_2"
                 style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/day_3"
                 style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/day_4"
                 style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/day_5"
                 style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/day_6"
                 style="@style/DayView"
                 android:layout_width="0dp"
@@ -91,7 +91,7 @@
             android:layout_weight="1"
             android:orientation="horizontal">
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/week_num_1"
                 style="@style/DayView"
                 android:layout_width="0dp"
@@ -99,49 +99,49 @@
                 android:layout_weight="1"
                 android:visibility="gone"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/day_7"
                 style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/day_8"
                 style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/day_9"
                 style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/day_10"
                 style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/day_11"
                 style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/day_12"
                 style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/day_13"
                 style="@style/DayView"
                 android:layout_width="0dp"
@@ -155,7 +155,7 @@
             android:layout_weight="1"
             android:orientation="horizontal">
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/week_num_2"
                 style="@style/DayView"
                 android:layout_width="0dp"
@@ -163,49 +163,49 @@
                 android:layout_weight="1"
                 android:visibility="gone"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/day_14"
                 style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/day_15"
                 style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/day_16"
                 style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/day_17"
                 style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/day_18"
                 style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/day_19"
                 style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/day_20"
                 style="@style/DayView"
                 android:layout_width="0dp"
@@ -219,7 +219,7 @@
             android:layout_weight="1"
             android:orientation="horizontal">
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/week_num_3"
                 style="@style/DayView"
                 android:layout_width="0dp"
@@ -227,49 +227,49 @@
                 android:layout_weight="1"
                 android:visibility="gone"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/day_21"
                 style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/day_22"
                 style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/day_23"
                 style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/day_24"
                 style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/day_25"
                 style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/day_26"
                 style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/day_27"
                 style="@style/DayView"
                 android:layout_width="0dp"
@@ -283,7 +283,7 @@
             android:layout_weight="1"
             android:orientation="horizontal">
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/week_num_4"
                 style="@style/DayView"
                 android:layout_width="0dp"
@@ -291,49 +291,49 @@
                 android:layout_weight="1"
                 android:visibility="gone"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/day_28"
                 style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/day_29"
                 style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/day_30"
                 style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/day_31"
                 style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/day_32"
                 style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/day_33"
                 style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/day_34"
                 style="@style/DayView"
                 android:layout_width="0dp"
@@ -347,7 +347,7 @@
             android:layout_weight="1"
             android:orientation="horizontal">
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/week_num_5"
                 style="@style/DayView"
                 android:layout_width="0dp"
@@ -355,49 +355,49 @@
                 android:layout_weight="1"
                 android:visibility="gone"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/day_35"
                 style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/day_36"
                 style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/day_37"
                 style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/day_38"
                 style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/day_39"
                 style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/day_40"
                 style="@style/DayView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/day_41"
                 style="@style/DayView"
                 android:layout_width="0dp"

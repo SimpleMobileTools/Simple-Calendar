@@ -16,7 +16,7 @@
         android:paddingLeft="@dimen/activity_margin"
         android:paddingTop="@dimen/medium_margin"/>
 
-    <TextView
+    <com.simplemobiletools.commons.views.MyTextView
         android:id="@+id/widget_event_list_empty"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

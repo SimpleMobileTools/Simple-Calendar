@@ -6,7 +6,7 @@
     android:layout_weight="1"
     android:orientation="horizontal">
 
-    <TextView
+    <com.simplemobiletools.commons.views.MyTextView
         android:id="@+id/week_num"
         style="@style/DayView"
         android:layout_width="0dp"
@@ -15,7 +15,7 @@
         android:text="#"
         android:visibility="gone"/>
 
-    <TextView
+    <com.simplemobiletools.commons.views.MyTextView
         android:id="@+id/label_0"
         style="@style/DayView"
         android:layout_width="0dp"
@@ -23,7 +23,7 @@
         android:layout_weight="1"
         android:text="@string/monday_letter"/>
 
-    <TextView
+    <com.simplemobiletools.commons.views.MyTextView
         android:id="@+id/label_1"
         style="@style/DayView"
         android:layout_width="0dp"
@@ -31,7 +31,7 @@
         android:layout_weight="1"
         android:text="@string/tuesday_letter"/>
 
-    <TextView
+    <com.simplemobiletools.commons.views.MyTextView
         android:id="@+id/label_2"
         style="@style/DayView"
         android:layout_width="0dp"
@@ -39,7 +39,7 @@
         android:layout_weight="1"
         android:text="@string/wednesday_letter"/>
 
-    <TextView
+    <com.simplemobiletools.commons.views.MyTextView
         android:id="@+id/label_3"
         style="@style/DayView"
         android:layout_width="0dp"
@@ -47,7 +47,7 @@
         android:layout_weight="1"
         android:text="@string/thursday_letter"/>
 
-    <TextView
+    <com.simplemobiletools.commons.views.MyTextView
         android:id="@+id/label_4"
         style="@style/DayView"
         android:layout_width="0dp"
@@ -55,7 +55,7 @@
         android:layout_weight="1"
         android:text="@string/friday_letter"/>
 
-    <TextView
+    <com.simplemobiletools.commons.views.MyTextView
         android:id="@+id/label_5"
         style="@style/DayView"
         android:layout_width="0dp"
@@ -63,7 +63,7 @@
         android:layout_weight="1"
         android:text="@string/saturday_letter"/>
 
-    <TextView
+    <com.simplemobiletools.commons.views.MyTextView
         android:id="@+id/label_6"
         style="@style/DayView"
         android:layout_width="0dp"

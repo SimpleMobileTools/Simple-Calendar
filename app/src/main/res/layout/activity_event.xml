@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <EditText
+            <com.simplemobiletools.commons.views.MyEditText
                 android:id="@+id/event_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -25,6 +25,7 @@
                 android:maxLength="30"
                 android:maxLines="1"
                 android:minEms="20"
+                android:textCursorDrawable="@null"
                 android:textSize="@dimen/day_text_size"/>
 
         </android.support.design.widget.TextInputLayout>
@@ -36,7 +37,7 @@
             android:layout_below="@+id/event_title_label"
             android:layout_marginTop="@dimen/activity_margin">
 
-            <EditText
+            <com.simplemobiletools.commons.views.MyEditText
                 android:id="@+id/event_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -45,10 +46,11 @@
                 android:hint="@string/description"
                 android:inputType="textCapSentences|textMultiLine"
                 android:minEms="20"
+                android:textCursorDrawable="@null"
                 android:textSize="@dimen/day_text_size"/>
         </android.support.design.widget.TextInputLayout>
 
-        <TextView
+        <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/event_start_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -57,7 +59,7 @@
             android:text="@string/start"
             android:textSize="@dimen/day_text_size"/>
 
-        <TextView
+        <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/event_start_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -66,7 +68,7 @@
             android:text="January 1 1970"
             android:textSize="@dimen/day_text_size"/>
 
-        <TextView
+        <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/event_start_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -76,7 +78,7 @@
             android:text="00:00"
             android:textSize="@dimen/day_text_size"/>
 
-        <CheckBox
+        <com.simplemobiletools.commons.views.MyAppCompatCheckbox
             android:id="@+id/event_end_checkbox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -86,7 +88,7 @@
             android:text="@string/end"
             android:textSize="@dimen/day_text_size"/>
 
-        <TextView
+        <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/event_end_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -98,7 +100,7 @@
             android:textSize="@dimen/day_text_size"
             android:visibility="gone"/>
 
-        <TextView
+        <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/event_end_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -111,7 +113,7 @@
             android:textSize="@dimen/day_text_size"
             android:visibility="gone"/>
 
-        <TextView
+        <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/event_reminder_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -120,7 +122,7 @@
             android:text="@string/reminder"
             android:textSize="@dimen/day_text_size"/>
 
-        <android.support.v7.widget.AppCompatSpinner
+        <com.simplemobiletools.commons.views.MyAppCompatSpinner
             android:id="@+id/event_reminder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -137,7 +139,7 @@
             android:orientation="horizontal"
             android:visibility="gone">
 
-            <EditText
+            <com.simplemobiletools.commons.views.MyEditText
                 android:id="@+id/custom_reminder_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -145,9 +147,10 @@
                 android:inputType="number"
                 android:maxLength="10"
                 android:minEms="5"
+                android:textCursorDrawable="@null"
                 android:textSize="@dimen/day_text_size"/>
 
-            <android.support.v7.widget.AppCompatSpinner
+            <com.simplemobiletools.commons.views.MyAppCompatSpinner
                 android:id="@+id/custom_reminder_other_period"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -155,7 +158,7 @@
                 android:gravity="center_vertical"
                 android:paddingLeft="@dimen/activity_margin"/>
 
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/custom_reminder_other_val"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -164,7 +167,7 @@
                 android:text="@string/before"/>
         </LinearLayout>
 
-        <TextView
+        <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/event_repetition_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -173,7 +176,7 @@
             android:text="@string/repetition"
             android:textSize="@dimen/day_text_size"/>
 
-        <android.support.v7.widget.AppCompatSpinner
+        <com.simplemobiletools.commons.views.MyAppCompatSpinner
             android:id="@+id/event_repetition"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -16,7 +16,7 @@
         android:visibility="gone"
         app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
 
-    <TextView
+    <com.simplemobiletools.commons.views.MyTextView
         android:id="@+id/calendar_empty_list_placeholder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
