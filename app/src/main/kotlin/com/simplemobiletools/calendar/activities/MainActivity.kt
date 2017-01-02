@@ -1,7 +1,6 @@
 package com.simplemobiletools.calendar.activities
 
 import android.content.Intent
-import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
 import android.support.design.widget.Snackbar
@@ -18,6 +17,7 @@ import com.simplemobiletools.calendar.extensions.updateWidgets
 import com.simplemobiletools.calendar.fragments.EventListFragment
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
+import com.simplemobiletools.commons.extensions.updateTextColors
 import com.simplemobiletools.commons.helpers.LICENSE_AMBILWARNA
 import com.simplemobiletools.commons.helpers.LICENSE_JODA
 import com.simplemobiletools.commons.helpers.LICENSE_KOTLIN
@@ -46,7 +46,7 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
     override fun onResume() {
         super.onResume()
         updateWidgets()
-        calendar_fab.backgroundTintList = ColorStateList.valueOf(baseConfig.primaryColor)
+        updateTextColors(calendar_coordinator)
     }
 
     override fun onPause() {

@@ -169,16 +169,16 @@ class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
             week_num.visibility = View.VISIBLE
 
             for (i in 0..5) {
-                val weekIdTV = findViewById(mRes.getIdentifier("week_num_" + i, "id", mPackageName)) as TextView?
-                weekIdTV!!.text = mDays!![i * 7].weekOfYear.toString() + ":"
-                weekIdTV.setTextColor(mWeakTextColor)
-                weekIdTV.visibility = View.VISIBLE
+                (findViewById(mRes.getIdentifier("week_num_$i", "id", mPackageName)) as TextView).apply {
+                    text = "${mDays!![i * 7].weekOfYear}:"
+                    setTextColor(mWeakTextColor)
+                    visibility = View.VISIBLE
+                }
             }
         }
 
         for (i in 0..len - 1) {
             val day = mDays!![i]
-            val dayTV = findViewById(mRes.getIdentifier("day_" + i, "id", mPackageName)) as TextView?
             var curTextColor = mWeakTextColor
             var curTextSize = mDayTextSize
 
@@ -190,9 +190,11 @@ class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
                 curTextSize = mTodayTextSize
             }
 
-            dayTV!!.text = day.value.toString()
-            dayTV.setTextColor(curTextColor)
-            dayTV.textSize = curTextSize
+            (findViewById(mRes.getIdentifier("day_$i", "id", mPackageName)) as TextView).apply {
+                text = day.value.toString()
+                setTextColor(curTextColor)
+                textSize = curTextSize
+            }
         }
     }
 
@@ -225,9 +227,10 @@ class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
 
     private fun updateLabels() {
         for (i in 0..6) {
-            val dayTV = findViewById(mRes.getIdentifier("label_" + i, "id", mPackageName)) as TextView?
-            dayTV!!.textSize = mDayTextSize
-            dayTV.setTextColor(mTextColor)
+            (findViewById(mRes.getIdentifier("label_$i", "id", mPackageName)) as TextView).apply {
+                textSize = mDayTextSize
+                setTextColor(mTextColor)
+            }
         }
     }
 }

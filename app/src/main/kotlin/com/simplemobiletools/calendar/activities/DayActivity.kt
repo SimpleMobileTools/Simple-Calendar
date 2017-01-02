@@ -1,7 +1,6 @@
 package com.simplemobiletools.calendar.activities
 
 import android.content.Intent
-import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
 import android.support.design.widget.Snackbar
@@ -12,6 +11,7 @@ import com.simplemobiletools.calendar.adapters.MyDayPagerAdapter
 import com.simplemobiletools.calendar.fragments.DayFragment
 import com.simplemobiletools.calendar.helpers.DAY_CODE
 import com.simplemobiletools.calendar.helpers.Formatter
+import com.simplemobiletools.commons.extensions.updateTextColors
 import kotlinx.android.synthetic.main.activity_day.*
 import org.joda.time.DateTime
 import java.util.*
@@ -34,8 +34,8 @@ class DayActivity : SimpleActivity(), DayFragment.DeleteListener, ViewPager.OnPa
 
         fillViewPager(mDayCode)
 
-        day_fab.backgroundTintList = ColorStateList.valueOf(baseConfig.primaryColor)
         day_fab.setOnClickListener { addNewEvent() }
+        updateTextColors(day_coordinator)
     }
 
     override fun onPause() {

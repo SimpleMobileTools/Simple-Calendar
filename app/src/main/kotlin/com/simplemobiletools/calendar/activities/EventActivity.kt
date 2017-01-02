@@ -14,10 +14,7 @@ import com.simplemobiletools.calendar.extensions.scheduleNotification
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
-import com.simplemobiletools.commons.extensions.hideKeyboard
-import com.simplemobiletools.commons.extensions.showKeyboard
-import com.simplemobiletools.commons.extensions.toast
-import com.simplemobiletools.commons.extensions.value
+import com.simplemobiletools.commons.extensions.*
 import kotlinx.android.synthetic.main.activity_event.*
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
@@ -79,6 +76,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
                 reminderItemSelected()
             }
         }
+        updateTextColors(event_scrollview)
     }
 
     private fun setupEditEvent() {

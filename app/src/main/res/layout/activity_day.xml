@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/activity_margin"/>
 
-    <android.support.design.widget.FloatingActionButton
+    <com.simplemobiletools.commons.views.MyFloatingActionButton
         android:id="@+id/day_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
