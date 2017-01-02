@@ -1,8 +1,7 @@
 <resources>
 
     <style name="AppTheme" parent="AppTheme.Base">
-        <item name="buttonStyle">@style/MyButton</item>
-        <item name="android:buttonStyle">@style/MyButton</item>
+
     </style>
 
     <style name="DayView">
@@ -12,18 +11,10 @@
     </style>
 
     <style name="ArrowStyle">
-        <item name="android:background">@drawable/button</item>
+        <item name="android:background">@drawable/transparent_button</item>
     </style>
 
     <style name="MonthStyle">
-        <item name="android:background">@drawable/button</item>
+        <item name="android:background">@drawable/transparent_button</item>
     </style>
-
-    <style name="MyButton" parent="Widget.AppCompat.Button">
-        <item name="android:textColor">@android:color/white</item>
-        <item name="background">@drawable/button</item>
-        <item name="android:background">@drawable/button</item>
-    </style>
-
-    <style name="MyAlertDialog" parent="Base.Theme.AppCompat.Light.Dialog.Alert"/>
 </resources>
