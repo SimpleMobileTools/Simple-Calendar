@@ -56,7 +56,6 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         updateEndDate()
         updateEndTime()
         setupRepetition()
-        setupEndCheckbox()
 
         mWasEndDateSet = event != null
         mWasEndTimeSet = event != null
@@ -151,10 +150,6 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
                     else -> 0
                 }
         )
-    }
-
-    private fun setupEndCheckbox() {
-        event_end_checkbox.setTextColor(event_start_date.currentTextColor)
     }
 
     fun endCheckboxChecked(isChecked: Boolean) {
@@ -259,8 +254,8 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
     private fun getReminderMinutes(): Int {
         return when (event_reminder.selectedItemPosition) {
-            0 -> -1
-            1 -> 0
+            0 -> REMINDER_OFF
+            1 -> REMINDER_AT_START
             else -> {
                 val value = custom_reminder_value.value
                 val multiplier = when (custom_reminder_other_period.selectedItemPosition) {
