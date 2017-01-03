@@ -2,6 +2,7 @@ package com.simplemobiletools.calendar.fragments
 
 import android.content.Intent
 import android.content.res.Resources
+import android.graphics.Paint
 import android.graphics.PorterDuff
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -180,22 +181,25 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         }
 
         val eventBackground = resources.getDrawable(R.drawable.circle_empty)
-        eventBackground.setColorFilter(mTextColor.adjustAlpha(LOW_ALPHA), PorterDuff.Mode.SRC_IN)
+        eventBackground.setColorFilter(mTextColor.adjustAlpha(HIGH_ALPHA), PorterDuff.Mode.SRC_IN)
 
         for (i in 0..len - 1) {
             val day = days[i]
-            var curTextSize = mDayTextSize
+            var curTextColor = mWeakTextColor
 
-            if (day.isToday) {
-                curTextSize = mTodayTextSize
+            if (day.isThisMonth) {
+                curTextColor = mTextColor
             }
 
             (mHolder.findViewById(mRes.getIdentifier("day_$i", "id", mPackageName)) as TextView).apply {
                 text = day.value.toString()
-                setTextColor(mTextColor)
-                textSize = curTextSize
+                setTextColor(curTextColor)
                 setOnClickListener { openDay(day.code) }
+
                 if (day.hasEvent)
+                    paintFlags = paintFlags or Paint.UNDERLINE_TEXT_FLAG
+
+                if (day.isToday)
                     background = eventBackground
             }
         }
