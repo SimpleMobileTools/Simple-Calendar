@@ -6,12 +6,14 @@ import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Build
 import android.os.SystemClock
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.receivers.NotificationReceiver
+import com.simplemobiletools.commons.extensions.getContrastColor
 
 fun Context.updateWidgets() {
     val widgetsCnt = AppWidgetManager.getInstance(this).getAppWidgetIds(ComponentName(this, MyWidgetMonthlyProvider::class.java))
@@ -90,4 +92,8 @@ private fun getNotificationIntent(context: Context, eventId: Int): PendingIntent
     val intent = Intent(context, NotificationReceiver::class.java)
     intent.putExtra(EVENT_ID, eventId)
     return PendingIntent.getBroadcast(context, eventId, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+}
+
+fun Context.getAppropriateTheme(): Int {
+    return if (Config.newInstance(this).backgroundColor.getContrastColor() == Color.WHITE) R.style.DialogTheme_Dark else R.style.DialogTheme
 }

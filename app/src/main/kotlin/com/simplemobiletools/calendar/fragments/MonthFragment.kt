@@ -16,11 +16,13 @@ import com.simplemobiletools.calendar.MonthlyCalendarImpl
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.DayActivity
 import com.simplemobiletools.calendar.extensions.beVisibleIf
+import com.simplemobiletools.calendar.extensions.getAppropriateTheme
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.models.Day
 import com.simplemobiletools.commons.extensions.adjustAlpha
+import com.simplemobiletools.commons.extensions.setupDialogStuff
 import kotlinx.android.synthetic.main.first_row.*
 import kotlinx.android.synthetic.main.fragment_month.view.*
 import kotlinx.android.synthetic.main.top_navigation.view.*
@@ -120,7 +122,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
     }
 
     fun showMonthDialog() {
-        val alertDialog = AlertDialog.Builder(context)
+        activity.setTheme(context.getAppropriateTheme())
         val view = getLayoutInflater(arguments).inflate(R.layout.date_picker, null)
         val datePicker = view.findViewById(R.id.date_picker) as DatePicker
         datePicker.findViewById(Resources.getSystem().getIdentifier("day", "id", "android")).visibility = View.GONE
@@ -128,18 +130,19 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         val dateTime = DateTime(mCalendar.mTargetDate.toString())
         datePicker.init(dateTime.year, dateTime.monthOfYear - 1, 1, null)
 
-        alertDialog.apply {
-            setView(view)
-            setNegativeButton(R.string.cancel, null)
-            setPositiveButton(R.string.ok) { dialog, id ->
-                val month = datePicker.month + 1
-                val year = datePicker.year
-                val newDateTime = dateTime.withDate(year, month, 1)
-                mListener?.goToDateTime(newDateTime)
-            }
-
-            show()
+        AlertDialog.Builder(context)
+                .setNegativeButton(R.string.cancel, null)
+                .setPositiveButton(R.string.ok) { dialog, which -> positivePressed(dateTime, datePicker) }
+                .create().apply {
+            context.setupDialogStuff(view, this)
         }
+    }
+
+    private fun positivePressed(dateTime: DateTime, datePicker: DatePicker) {
+        val month = datePicker.month + 1
+        val year = datePicker.year
+        val newDateTime = dateTime.withDate(year, month, 1)
+        mListener?.goToDateTime(newDateTime)
     }
 
     private fun setupLabels() {

@@ -11,6 +11,7 @@ import android.view.WindowManager
 import android.widget.AdapterView
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.beVisibleIf
+import com.simplemobiletools.calendar.extensions.getAppropriateTheme
 import com.simplemobiletools.calendar.extensions.scheduleNotification
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.models.Event
@@ -35,7 +36,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         setContentView(R.layout.activity_event)
 
         val intent = intent ?: return
-        mDialogTheme = if (config.backgroundColor.getContrastColor() == Color.WHITE) R.style.DialogTheme_Dark else R.style.DialogTheme
+        mDialogTheme = getAppropriateTheme()
 
         mWasReminderInit = false
         val eventId = intent.getIntExtra(EVENT_ID, 0)
