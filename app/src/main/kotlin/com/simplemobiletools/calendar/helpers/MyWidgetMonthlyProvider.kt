@@ -26,8 +26,6 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
         private val PREV = "prev"
         private val NEXT = "next"
 
-        private var mDayTextSize = 0f
-        private var mTodayTextSize = 0f
         private var mTextColor = 0
         private var mWeakTextColor = 0
         private var mCalendar: MonthlyCalendarImpl? = null
@@ -51,11 +49,9 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
         mCalendar = MonthlyCalendarImpl(this, mContext)
 
         val config = Config.newInstance(context)
-        mTextColor = config.widgetTextColor.adjustAlpha(HIGH_ALPHA)
+        mTextColor = config.widgetTextColor
         mWeakTextColor = config.widgetTextColor.adjustAlpha(LOW_ALPHA)
 
-        mDayTextSize = mRes.getDimension(R.dimen.day_text_size) / mRes.displayMetrics.density
-        mTodayTextSize = mRes.getDimension(R.dimen.today_text_size) / mRes.displayMetrics.density
         mWidgetManager = AppWidgetManager.getInstance(mContext)
 
         mRemoteViews = RemoteViews(mContext.packageName, R.layout.fragment_month)
@@ -118,7 +114,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
         mRemoteViews.setViewVisibility(R.id.week_num, if (displayWeekNumbers) View.VISIBLE else View.GONE)
 
         for (i in 0..5) {
-            val id = mRes.getIdentifier("week_num_" + i, "id", packageName)
+            val id = mRes.getIdentifier("week_num_$i", "id", packageName)
             mRemoteViews.apply {
                 setTextViewText(id, days[i * 7].weekOfYear.toString() + ":")
                 setInt(id, "setTextColor", mWeakTextColor)
@@ -128,16 +124,11 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
 
         for (i in 0..len - 1) {
             val day = days[i]
-            val id = mRes.getIdentifier("day_" + i, "id", packageName)
+            val id = mRes.getIdentifier("day_$i", "id", packageName)
             var curTextColor = mWeakTextColor
-            var curTextSize = mDayTextSize
 
             if (day.isThisMonth) {
                 curTextColor = mTextColor
-            }
-
-            if (day.isToday) {
-                curTextSize = mTodayTextSize
             }
 
             val text = day.value.toString()
@@ -149,7 +140,6 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
                 mRemoteViews.setTextViewText(id, text)
             }
             mRemoteViews.setInt(id, "setTextColor", curTextColor)
-            mRemoteViews.setFloat(id, "setTextSize", curTextSize)
             setupDayOpenIntent(id, day.code)
         }
     }
@@ -179,7 +169,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
         val packageName = mContext.packageName
         val letters = letterIDs
         for (i in 0..6) {
-            val id = mRes.getIdentifier("label_" + i, "id", packageName)
+            val id = mRes.getIdentifier("label_$i", "id", packageName)
             mRemoteViews.setInt(id, "setTextColor", mTextColor)
 
             var index = i

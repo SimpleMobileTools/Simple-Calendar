@@ -12,7 +12,6 @@ import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.adapters.EventListWidgetAdapterOld
 import com.simplemobiletools.calendar.helpers.Config
 import com.simplemobiletools.calendar.helpers.Formatter
-import com.simplemobiletools.calendar.helpers.HIGH_ALPHA
 import com.simplemobiletools.calendar.helpers.MyWidgetListProvider
 import com.simplemobiletools.calendar.models.ListEvent
 import com.simplemobiletools.calendar.models.ListItem
@@ -130,7 +129,7 @@ class WidgetListConfigureActivity : AppCompatActivity() {
     }
 
     private fun updateTextColors() {
-        mTextColor = mTextColorWithoutTransparency.adjustAlpha(HIGH_ALPHA)
+        mTextColor = mTextColorWithoutTransparency
         mEventsAdapter?.setTextColor(mTextColor)
         config_text_color.setBackgroundColor(mTextColor)
         config_save.setTextColor(mTextColor)

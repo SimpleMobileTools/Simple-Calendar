@@ -7,13 +7,14 @@ import android.widget.RemoteViews
 import android.widget.RemoteViewsService
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.R.id.event_item_holder
-import com.simplemobiletools.calendar.helpers.*
+import com.simplemobiletools.calendar.helpers.Config
+import com.simplemobiletools.calendar.helpers.DBHelper
+import com.simplemobiletools.calendar.helpers.EVENT_ID
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.models.ListEvent
 import com.simplemobiletools.calendar.models.ListItem
 import com.simplemobiletools.calendar.models.ListSection
-import com.simplemobiletools.commons.extensions.adjustAlpha
 import org.joda.time.DateTime
 import java.util.*
 import kotlin.comparisons.compareBy
@@ -27,7 +28,7 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
     val textColor: Int
 
     init {
-        textColor = Config.newInstance(context).widgetTextColor.adjustAlpha(HIGH_ALPHA)
+        textColor = Config.newInstance(context).widgetTextColor
         appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID)
         events = ArrayList<ListItem>()
     }

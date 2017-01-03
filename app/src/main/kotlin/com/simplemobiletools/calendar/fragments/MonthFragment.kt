@@ -30,13 +30,9 @@ import kotlinx.android.synthetic.main.top_navigation.view.*
 import org.joda.time.DateTime
 
 class MonthFragment : Fragment(), MonthlyCalendar {
-    private var mDayTextSize = 0f
-    private var mTodayTextSize = 0f
     private var mPackageName = ""
     private var mTextColor = 0
     private var mWeakTextColor = 0
-    private var mTextColorWithEvent = 0
-    private var mWeakTextColorWithEvent = 0
     private var mSundayFirst = false
     private var mDayCode = ""
 
@@ -59,8 +55,6 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         setupButtons()
 
         mPackageName = activity.packageName
-        mDayTextSize = mRes.getDimension(R.dimen.day_text_size) / mRes.displayMetrics.density
-        mTodayTextSize = mRes.getDimension(R.dimen.today_text_size) / mRes.displayMetrics.density
         setupLabels()
         mCalendar = MonthlyCalendarImpl(this, context)
 
@@ -98,11 +92,8 @@ class MonthFragment : Fragment(), MonthlyCalendar {
 
     private fun setupButtons() {
         val baseColor = mConfig.textColor
-        val primaryColor = mConfig.primaryColor
-        mTextColor = baseColor.adjustAlpha(HIGH_ALPHA)
-        mTextColorWithEvent = primaryColor.adjustAlpha(HIGH_ALPHA)
+        mTextColor = baseColor
         mWeakTextColor = baseColor.adjustAlpha(LOW_ALPHA)
-        mWeakTextColorWithEvent = primaryColor.adjustAlpha(LOW_ALPHA)
 
         mHolder.apply {
             top_left_arrow.drawable.mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP)
@@ -155,7 +146,6 @@ class MonthFragment : Fragment(), MonthlyCalendar {
                 index = (index + 1) % letters.size
 
             (mHolder.findViewById(mRes.getIdentifier("label_$i", "id", mPackageName)) as TextView).apply {
-                textSize = mDayTextSize
                 setTextColor(mTextColor)
                 text = getString(letters[index])
             }
@@ -181,7 +171,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         }
 
         val todayCircle = resources.getDrawable(R.drawable.circle_empty)
-        todayCircle.setColorFilter(mTextColor.adjustAlpha(HIGH_ALPHA), PorterDuff.Mode.SRC_IN)
+        todayCircle.setColorFilter(mTextColor, PorterDuff.Mode.SRC_IN)
 
         for (i in 0..len - 1) {
             val day = days[i]

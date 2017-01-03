@@ -11,12 +11,10 @@ import android.widget.TextView
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.YearlyCalendarImpl
 import com.simplemobiletools.calendar.helpers.Config
-import com.simplemobiletools.calendar.helpers.HIGH_ALPHA
 import com.simplemobiletools.calendar.helpers.YEAR_LABEL
 import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.interfaces.YearlyCalendar
 import com.simplemobiletools.calendar.views.SmallMonthView
-import com.simplemobiletools.commons.extensions.adjustAlpha
 import com.simplemobiletools.commons.extensions.updateTextColors
 import kotlinx.android.synthetic.main.fragment_year.view.*
 import org.joda.time.DateTime
@@ -77,7 +75,7 @@ class YearFragment : Fragment(), YearlyCalendar {
         val now = DateTime()
         if (now.year == mYear) {
             val monthLabel = mView.findViewById(res.getIdentifier("month_${now.monthOfYear}_label", "id", activity.packageName)) as TextView
-            monthLabel.setTextColor(Config.newInstance(context).primaryColor.adjustAlpha(HIGH_ALPHA))
+            monthLabel.setTextColor(Config.newInstance(context).primaryColor)
 
             val monthView = mView.findViewById(res.getIdentifier("month_${now.monthOfYear}", "id", activity.packageName)) as SmallMonthView
             monthView.setTodaysId(now.dayOfMonth)

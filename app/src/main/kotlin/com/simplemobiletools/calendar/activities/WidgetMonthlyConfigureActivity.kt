@@ -8,13 +8,13 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.PorterDuff
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.SeekBar
 import android.widget.TextView
 import com.simplemobiletools.calendar.MonthlyCalendarImpl
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.helpers.Config
-import com.simplemobiletools.calendar.helpers.HIGH_ALPHA
 import com.simplemobiletools.calendar.helpers.LOW_ALPHA
 import com.simplemobiletools.calendar.helpers.MyWidgetMonthlyProvider
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
@@ -26,7 +26,7 @@ import kotlinx.android.synthetic.main.widget_config_monthly.*
 import org.joda.time.DateTime
 import yuku.ambilwarna.AmbilWarnaDialog
 
-class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
+class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
     lateinit var mRes: Resources
     private var mDays: List<Day>? = null
     private var mPackageName = ""
@@ -38,8 +38,6 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
     private var mTextColorWithoutTransparency = 0
     private var mTextColor = 0
     private var mWeakTextColor = 0
-    private var mDayTextSize = 0f
-    private var mTodayTextSize = 0f
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,11 +60,6 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
 
     private fun initVariables() {
         mRes = resources
-        mDayTextSize = mRes.getDimension(R.dimen.day_text_size)
-        mDayTextSize /= mRes.displayMetrics.density
-
-        mTodayTextSize = mRes.getDimension(R.dimen.today_text_size)
-        mTodayTextSize /= mRes.displayMetrics.density
 
         val config = Config.newInstance(this)
         mTextColorWithoutTransparency = config.widgetTextColor
@@ -143,7 +136,7 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
     }
 
     private fun updateTextColors() {
-        mTextColor = mTextColorWithoutTransparency.adjustAlpha(HIGH_ALPHA)
+        mTextColor = mTextColorWithoutTransparency
         mWeakTextColor = mTextColorWithoutTransparency.adjustAlpha(LOW_ALPHA)
 
         top_left_arrow.drawable.mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP)
@@ -178,7 +171,7 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
         }
 
         val todayCircle = resources.getDrawable(R.drawable.circle_empty)
-        todayCircle.setColorFilter(mTextColor.adjustAlpha(HIGH_ALPHA), PorterDuff.Mode.SRC_IN)
+        todayCircle.setColorFilter(mTextColor, PorterDuff.Mode.SRC_IN)
 
         for (i in 0..len - 1) {
             val day = mDays!![i]
@@ -231,7 +224,6 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
     private fun updateLabels() {
         for (i in 0..6) {
             (findViewById(mRes.getIdentifier("label_$i", "id", mPackageName)) as TextView).apply {
-                textSize = mDayTextSize
                 setTextColor(mTextColor)
             }
         }

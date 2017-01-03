@@ -8,5 +8,4 @@
 
     <dimen name="day_text_size">16sp</dimen>
     <dimen name="month_text_size">22sp</dimen>
-    <dimen name="today_text_size">26sp</dimen>
 </resources>

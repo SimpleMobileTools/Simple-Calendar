@@ -20,7 +20,6 @@ import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.models.Event
-import com.simplemobiletools.commons.extensions.adjustAlpha
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import com.simplemobiletools.commons.views.RecyclerViewDivider
 import kotlinx.android.synthetic.main.fragment_day.view.*
@@ -64,8 +63,7 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DBHelper.GetEvents
     }
 
     private fun setupButtons() {
-        val baseColor = mConfig.textColor
-        mTextColor = baseColor.adjustAlpha(HIGH_ALPHA)
+        mTextColor = mConfig.textColor
 
         mHolder.apply {
             top_left_arrow.drawable.mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP)

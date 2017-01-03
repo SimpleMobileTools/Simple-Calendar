@@ -12,7 +12,6 @@ import android.widget.RemoteViews
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.services.WidgetService
-import com.simplemobiletools.commons.extensions.adjustAlpha
 
 class MyWidgetListProvider : AppWidgetProvider() {
     companion object {
@@ -35,7 +34,7 @@ class MyWidgetListProvider : AppWidgetProvider() {
         mRes = mContext.resources
 
         val config = Config.newInstance(context)
-        mTextColor = config.widgetTextColor.adjustAlpha(HIGH_ALPHA)
+        mTextColor = config.widgetTextColor
 
         mWidgetManager = AppWidgetManager.getInstance(mContext)
 

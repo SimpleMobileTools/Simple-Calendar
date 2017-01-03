@@ -4,7 +4,6 @@ import com.simplemobiletools.calendar.R
 
 val LOW_ALPHA = .3f
 val MEDIUM_ALPHA = .6f
-val HIGH_ALPHA = .8f
 
 val DAY_CODE = "day_code"
 val YEAR_LABEL = "year"
