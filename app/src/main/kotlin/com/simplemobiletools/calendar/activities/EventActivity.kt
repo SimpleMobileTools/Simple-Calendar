@@ -2,6 +2,7 @@ package com.simplemobiletools.calendar.activities
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.graphics.Color
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -23,6 +24,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     private var mWasReminderInit = false
     private var mWasEndDateSet = false
     private var mWasEndTimeSet = false
+    private var mDialogTheme = 0
 
     lateinit var mEventStartDateTime: DateTime
     lateinit var mEventEndDateTime: DateTime
@@ -33,6 +35,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         setContentView(R.layout.activity_event)
 
         val intent = intent ?: return
+        mDialogTheme = if (config.backgroundColor.getContrastColor() == Color.WHITE) R.style.DialogTheme_Dark else R.style.DialogTheme
 
         mWasReminderInit = false
         val eventId = intent.getIntExtra(EVENT_ID, 0)
@@ -297,24 +300,25 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
     fun setupStartDate() {
         hideKeyboard()
-        DatePickerDialog(this, startDateSetListener, mEventStartDateTime.year, mEventStartDateTime.monthOfYear - 1,
+        config.backgroundColor.getContrastColor()
+        DatePickerDialog(this, mDialogTheme, startDateSetListener, mEventStartDateTime.year, mEventStartDateTime.monthOfYear - 1,
                 mEventStartDateTime.dayOfMonth).show()
     }
 
     fun setupStartTime() {
         hideKeyboard()
-        TimePickerDialog(this, startTimeSetListener, mEventStartDateTime.hourOfDay, mEventStartDateTime.minuteOfHour, true).show()
+        TimePickerDialog(this, mDialogTheme, startTimeSetListener, mEventStartDateTime.hourOfDay, mEventStartDateTime.minuteOfHour, true).show()
     }
 
     fun setupEndDate() {
         hideKeyboard()
-        DatePickerDialog(this, endDateSetListener, mEventEndDateTime.year, mEventEndDateTime.monthOfYear - 1,
+        DatePickerDialog(this, mDialogTheme, endDateSetListener, mEventEndDateTime.year, mEventEndDateTime.monthOfYear - 1,
                 mEventEndDateTime.dayOfMonth).show()
     }
 
     fun setupEndTime() {
         hideKeyboard()
-        TimePickerDialog(this, endTimeSetListener, mEventEndDateTime.hourOfDay, mEventEndDateTime.minuteOfHour, true).show()
+        TimePickerDialog(this, mDialogTheme, endTimeSetListener, mEventEndDateTime.hourOfDay, mEventEndDateTime.minuteOfHour, true).show()
     }
 
     private val startDateSetListener = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
