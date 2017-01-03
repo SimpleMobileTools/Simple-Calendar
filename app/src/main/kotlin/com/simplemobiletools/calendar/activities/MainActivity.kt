@@ -34,16 +34,21 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
     private var mIsMonthSelected = false
     private var mSnackbar: Snackbar? = null
     private var mEventListFragment: EventListFragment? = null
+    private var mStoredTextColor = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         calendar_fab.setOnClickListener { addNewEvent() }
+        updateViewPager()
+        mStoredTextColor = config.textColor
     }
 
     override fun onResume() {
         super.onResume()
-        updateViewPager()
+        if (mStoredTextColor != config.textColor)
+            updateViewPager()
+
         updateWidgets()
         updateTextColors(calendar_coordinator)
     }
@@ -51,6 +56,7 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
     override fun onPause() {
         super.onPause()
         checkDeleteEvents()
+        mStoredTextColor = config.textColor
     }
 
     override fun onDestroy() {
