@@ -5,9 +5,9 @@ import android.appwidget.AppWidgetManager
 import android.content.Intent
 import android.content.res.Resources
 import android.graphics.Color
+import android.graphics.Paint
 import android.graphics.PorterDuff
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.SeekBar
 import android.widget.TextView
@@ -26,7 +26,7 @@ import kotlinx.android.synthetic.main.widget_config_monthly.*
 import org.joda.time.DateTime
 import yuku.ambilwarna.AmbilWarnaDialog
 
-class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
+class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
     lateinit var mRes: Resources
     private var mDays: List<Day>? = null
     private var mPackageName = ""
@@ -177,23 +177,26 @@ class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
             }
         }
 
+        val todayCircle = resources.getDrawable(R.drawable.circle_empty)
+        todayCircle.setColorFilter(mTextColor.adjustAlpha(HIGH_ALPHA), PorterDuff.Mode.SRC_IN)
+
         for (i in 0..len - 1) {
             val day = mDays!![i]
             var curTextColor = mWeakTextColor
-            var curTextSize = mDayTextSize
 
             if (day.isThisMonth) {
                 curTextColor = mTextColor
             }
 
-            if (day.isToday) {
-                curTextSize = mTodayTextSize
-            }
-
             (findViewById(mRes.getIdentifier("day_$i", "id", mPackageName)) as TextView).apply {
                 text = day.value.toString()
                 setTextColor(curTextColor)
-                textSize = curTextSize
+
+                if (day.hasEvent)
+                    paintFlags = paintFlags or Paint.UNDERLINE_TEXT_FLAG
+
+                if (day.isToday)
+                    background = todayCircle
             }
         }
     }

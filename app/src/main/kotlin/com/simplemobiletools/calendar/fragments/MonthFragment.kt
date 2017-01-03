@@ -180,8 +180,8 @@ class MonthFragment : Fragment(), MonthlyCalendar {
             }
         }
 
-        val eventBackground = resources.getDrawable(R.drawable.circle_empty)
-        eventBackground.setColorFilter(mTextColor.adjustAlpha(HIGH_ALPHA), PorterDuff.Mode.SRC_IN)
+        val todayCircle = resources.getDrawable(R.drawable.circle_empty)
+        todayCircle.setColorFilter(mTextColor.adjustAlpha(HIGH_ALPHA), PorterDuff.Mode.SRC_IN)
 
         for (i in 0..len - 1) {
             val day = days[i]
@@ -200,7 +200,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
                     paintFlags = paintFlags or Paint.UNDERLINE_TEXT_FLAG
 
                 if (day.isToday)
-                    background = eventBackground
+                    background = todayCircle
             }
         }
     }
