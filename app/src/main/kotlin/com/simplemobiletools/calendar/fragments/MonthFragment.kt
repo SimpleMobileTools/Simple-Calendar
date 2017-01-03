@@ -179,14 +179,12 @@ class MonthFragment : Fragment(), MonthlyCalendar {
             }
         }
 
+        val eventBackground = resources.getDrawable(R.drawable.circle_empty)
+        eventBackground.setColorFilter(mTextColor.adjustAlpha(LOW_ALPHA), PorterDuff.Mode.SRC_IN)
+
         for (i in 0..len - 1) {
             val day = days[i]
-            var curTextColor = if (day.hasEvent) mWeakTextColorWithEvent else mWeakTextColor
             var curTextSize = mDayTextSize
-
-            if (day.isThisMonth) {
-                curTextColor = if (day.hasEvent) mTextColorWithEvent else mTextColor
-            }
 
             if (day.isToday) {
                 curTextSize = mTodayTextSize
@@ -194,9 +192,11 @@ class MonthFragment : Fragment(), MonthlyCalendar {
 
             (mHolder.findViewById(mRes.getIdentifier("day_$i", "id", mPackageName)) as TextView).apply {
                 text = day.value.toString()
-                setTextColor(curTextColor)
+                setTextColor(mTextColor)
                 textSize = curTextSize
                 setOnClickListener { openDay(day.code) }
+                if (day.hasEvent)
+                    background = eventBackground
             }
         }
     }
