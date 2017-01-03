@@ -6,12 +6,12 @@
     <string name="monthly_view">Monatsansicht</string>
     <string name="yearly_view">Jahresansicht</string>
     <string name="simple_event_list">Einfache Termin Liste</string>
-    <string name="no_upcoming_events">Seems like you don\'t have any upcoming events.</string>
-    <string name="add_some_events">You can add some with the Plus button at the bottom.</string>
+    <string name="no_upcoming_events">Sieht aus als wäre dein Kalender leer.</string>
+    <string name="add_some_events">Du kannst neeue Termine mit dem Plus Button unten rechts erstellen.</string>
 
     <!-- Widget titles -->
-    <string name="widget_monthly">Calendar monthly</string>
-    <string name="widget_list">Calendar event list</string>
+    <string name="widget_monthly">Monats Kalender</string>
+    <string name="widget_list">Termin Liste</string>
 
     <!-- Event -->
     <string name="event">Termin</string>
