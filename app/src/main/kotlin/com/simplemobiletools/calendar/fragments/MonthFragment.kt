@@ -9,7 +9,9 @@ import android.support.v7.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.DatePicker
+import android.widget.RelativeLayout
+import android.widget.TextView
 import com.simplemobiletools.calendar.MonthlyCalendarImpl
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.DayActivity
@@ -121,7 +123,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         val alertDialog = AlertDialog.Builder(context)
         val view = getLayoutInflater(arguments).inflate(R.layout.date_picker, null)
         val datePicker = view.findViewById(R.id.date_picker) as DatePicker
-        hideDayPicker(datePicker)
+        datePicker.findViewById(Resources.getSystem().getIdentifier("day", "id", "android")).visibility = View.GONE
 
         val dateTime = DateTime(mCalendar.mTargetDate.toString())
         datePicker.init(dateTime.year, dateTime.monthOfYear - 1, 1, null)
@@ -138,15 +140,6 @@ class MonthFragment : Fragment(), MonthlyCalendar {
 
             show()
         }
-    }
-
-    private fun hideDayPicker(datePicker: DatePicker) {
-        val ll = datePicker.getChildAt(0) as LinearLayout
-        val ll2 = ll.getChildAt(0) as LinearLayout
-        val picker1 = ll2.getChildAt(0) as NumberPicker
-        val picker2 = ll2.getChildAt(1) as NumberPicker
-        val dayPicker = if (picker1.maxValue > picker2.maxValue) picker1 else picker2
-        dayPicker.visibility = View.GONE
     }
 
     private fun setupLabels() {
