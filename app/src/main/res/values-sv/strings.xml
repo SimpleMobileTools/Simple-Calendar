@@ -84,6 +84,14 @@
     <string name="saturday_letter">L</string>
     <string name="sunday_letter">S</string>
 
+    <!-- Release notes -->
+    <string name="release_44">
+        Added more color customization options\n
+        Your settings have been cleared, please reset them</string>
+    <string name="release_42">Allow changing the reminder notification sound</string>
+    <string name="release_40">Added a new view, a list of upcoming events</string>
+    <string name="release_39">Added the option to vibrate at notifications</string>
+
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">A simple calendar with events, customizable widget and no ads.</string>

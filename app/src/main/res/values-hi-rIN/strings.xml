@@ -84,6 +84,14 @@
     <string name="saturday_letter">श</string>
     <string name="sunday_letter">र</string>
 
+    <!-- Release notes -->
+    <string name="release_44">
+        Added more color customization options\n
+        Your settings have been cleared, please reset them</string>
+    <string name="release_42">Allow changing the reminder notification sound</string>
+    <string name="release_40">Added a new view, a list of upcoming events</string>
+    <string name="release_39">Added the option to vibrate at notifications</string>
+
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">एक सरल कैलेंडर इवेंट्स, कस्टमाइजेबल विजेट व बिना विज्ञापन के बिना।</string>
