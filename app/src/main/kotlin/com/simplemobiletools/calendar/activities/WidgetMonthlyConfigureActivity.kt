@@ -100,7 +100,7 @@ class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
     }
 
     fun pickBackgroundColor() {
-        val dialog = AmbilWarnaDialog(this, mBgColorWithoutTransparency, object : AmbilWarnaDialog.OnAmbilWarnaListener {
+        AmbilWarnaDialog(this, mBgColorWithoutTransparency, object : AmbilWarnaDialog.OnAmbilWarnaListener {
             override fun onCancel(dialog: AmbilWarnaDialog) {
             }
 
@@ -108,13 +108,11 @@ class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
                 mBgColorWithoutTransparency = color
                 updateBgColor()
             }
-        })
-
-        dialog.show()
+        }).show()
     }
 
     fun pickTextColor() {
-        val dialog = AmbilWarnaDialog(this, mTextColor, object : AmbilWarnaDialog.OnAmbilWarnaListener {
+        AmbilWarnaDialog(this, mTextColor, object : AmbilWarnaDialog.OnAmbilWarnaListener {
             override fun onCancel(dialog: AmbilWarnaDialog) {
             }
 
@@ -123,9 +121,7 @@ class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
                 updateTextColors()
                 updateDays()
             }
-        })
-
-        dialog.show()
+        }).show()
     }
 
     private fun requestWidgetUpdate() {
