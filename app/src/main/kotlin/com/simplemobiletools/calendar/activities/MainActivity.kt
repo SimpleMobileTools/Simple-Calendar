@@ -17,11 +17,13 @@ import com.simplemobiletools.calendar.extensions.updateWidgets
 import com.simplemobiletools.calendar.fragments.EventListFragment
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
+import com.simplemobiletools.commons.extensions.checkWhatsNew
 import com.simplemobiletools.commons.extensions.updateTextColors
 import com.simplemobiletools.commons.helpers.LICENSE_AMBILWARNA
 import com.simplemobiletools.commons.helpers.LICENSE_JODA
 import com.simplemobiletools.commons.helpers.LICENSE_KOTLIN
 import com.simplemobiletools.commons.helpers.LICENSE_STETHO
+import com.simplemobiletools.commons.models.Release
 import kotlinx.android.synthetic.main.activity_main.*
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
@@ -42,6 +44,7 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
         calendar_fab.setOnClickListener { addNewEvent() }
         updateViewPager()
         mStoredTextColor = config.textColor
+        checkWhatsNewDialog()
     }
 
     override fun onResume() {
@@ -244,6 +247,16 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
             setAction(resources.getString(R.string.undo), undoDeletion)
             setActionTextColor(Color.WHITE)
             show()
+        }
+    }
+
+    private fun checkWhatsNewDialog() {
+        arrayListOf<Release>().apply {
+            add(Release(39, R.string.release_39))
+            add(Release(40, R.string.release_40))
+            add(Release(42, R.string.release_42))
+            add(Release(44, R.string.release_44))
+            checkWhatsNew(this, BuildConfig.VERSION_CODE)
         }
     }
 }
