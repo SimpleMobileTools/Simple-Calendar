@@ -1,20 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+       android:shape="ring"
+       android:thicknessRatio="2"
+       android:useLevel="false">
+    <solid android:color="@android:color/transparent"/>
 
-    <item
-        android:left="@dimen/small_margin"
-        android:right="@dimen/small_margin">
-
-        <shape xmlns:android="http://schemas.android.com/apk/res/android"
-               android:innerRadius="0dp"
-               android:shape="ring"
-               android:thicknessRatio="2"
-               android:useLevel="false">
-            <solid android:color="@android:color/transparent"/>
-
-            <stroke
-                android:width="1dp"
-                android:color="@android:color/white"/>
-        </shape>
-    </item>
-</layer-list>
+    <stroke
+        android:width="1dp"
+        android:color="#ffffffff"/>
+</shape>
