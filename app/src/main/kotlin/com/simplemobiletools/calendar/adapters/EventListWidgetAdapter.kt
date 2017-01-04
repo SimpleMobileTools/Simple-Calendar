@@ -1,8 +1,8 @@
 package com.simplemobiletools.calendar.adapters
 
-import android.appwidget.AppWidgetManager
 import android.content.Context
 import android.content.Intent
+import android.view.View
 import android.widget.RemoteViews
 import android.widget.RemoteViewsService
 import com.simplemobiletools.calendar.R
@@ -23,15 +23,8 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
     val ITEM_EVENT = 0
     val ITEM_HEADER = 1
 
-    val appWidgetId: Int
-    var events: List<ListItem>
-    val textColor: Int
-
-    init {
-        textColor = Config.newInstance(context).widgetTextColor
-        appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID)
-        events = ArrayList<ListItem>()
-    }
+    var events: List<ListItem> = ArrayList()
+    val textColor: Int = Config.newInstance(context).widgetTextColor
 
     override fun getViewAt(position: Int): RemoteViews {
         val type = getItemViewType(position)
@@ -39,26 +32,37 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
 
         if (type == ITEM_EVENT) {
             val item = events[position] as ListEvent
-            remoteView = RemoteViews(context.packageName, R.layout.event_list_item_widget)
-            remoteView.apply {
+            remoteView = RemoteViews(context.packageName, R.layout.event_list_item_widget).apply {
                 setTextViewText(R.id.event_item_title, item.title)
                 setTextViewText(R.id.event_item_description, item.description)
                 setTextViewText(R.id.event_item_start, Formatter.getTimeFromTS(context, item.startTS))
-                setTextViewText(R.id.event_item_end, Formatter.getTimeFromTS(context, item.endTS))
+
+                if (item.startTS == item.endTS) {
+                    setViewVisibility(R.id.event_item_end, View.INVISIBLE)
+                } else {
+                    setViewVisibility(R.id.event_item_end, View.VISIBLE)
+                    var endString = Formatter.getTimeFromTS(context, item.endTS)
+                    val startCode = Formatter.getDayCodeFromTS(item.startTS)
+                    val endCode = Formatter.getDayCodeFromTS(item.endTS)
+                    if (startCode != endCode) {
+                        endString += " (${Formatter.getDate(context, endCode)})"
+                    }
+                    setTextViewText(R.id.event_item_end, endString)
+                }
 
                 setInt(R.id.event_item_title, "setTextColor", textColor)
                 setInt(R.id.event_item_description, "setTextColor", textColor)
                 setInt(R.id.event_item_start, "setTextColor", textColor)
                 setInt(R.id.event_item_end, "setTextColor", textColor)
 
-                val intent = Intent()
-                intent.putExtra(EVENT_ID, item.id)
-                setOnClickFillInIntent(event_item_holder, intent)
+                Intent().apply {
+                    putExtra(EVENT_ID, item.id)
+                    setOnClickFillInIntent(event_item_holder, this)
+                }
             }
         } else {
             val item = events[position] as ListSection
-            remoteView = RemoteViews(context.packageName, R.layout.event_list_section_widget)
-            remoteView.apply {
+            remoteView = RemoteViews(context.packageName, R.layout.event_list_section_widget).apply {
                 setTextViewText(R.id.event_item_title, item.title)
                 setInt(R.id.event_item_title, "setTextColor", textColor)
             }
