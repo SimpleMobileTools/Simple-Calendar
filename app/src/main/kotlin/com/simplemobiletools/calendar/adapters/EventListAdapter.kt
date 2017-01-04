@@ -54,7 +54,7 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
         topDivider = activity.resources.getDrawable(R.drawable.divider)
         primaryColor = config.primaryColor
         val mTodayCode = Formatter.getDayCodeFromTS(mNow)
-        todayDate = Formatter.getDate(activity, mTodayCode)
+        todayDate = Formatter.getDayTitle(activity, mTodayCode)
     }
 
     val multiSelectorMode = object : ModalMultiSelectorCallback(multiSelector) {
