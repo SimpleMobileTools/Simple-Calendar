@@ -8,6 +8,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.res.Resources
 import android.graphics.*
+import android.graphics.drawable.Drawable
 import android.text.SpannableString
 import android.text.style.UnderlineSpan
 import android.view.View
@@ -54,7 +55,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
 
         mWidgetManager = AppWidgetManager.getInstance(mContext)
 
-        mRemoteViews = RemoteViews(mContext.packageName, R.layout.fragment_month)
+        mRemoteViews = RemoteViews(mContext.packageName, R.layout.fragment_month_widget)
         mIntent = Intent(mContext, MyWidgetMonthlyProvider::class.java)
         setupButtons()
         updateLabelColor()
@@ -139,9 +140,30 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
             } else {
                 mRemoteViews.setTextViewText(id, text)
             }
+
+            val circleId = mRes.getIdentifier("day_${i}_circle", "id", packageName)
+            if (day.isToday) {
+                val wantedSize = mContext.resources.displayMetrics.widthPixels / 7
+                val drawable = mContext.resources.getDrawable(R.drawable.circle_empty)
+                drawable.setColorFilter(mTextColor, PorterDuff.Mode.SRC_IN)
+                mRemoteViews.setImageViewBitmap(circleId, drawableToBitmap(drawable, wantedSize))
+                mRemoteViews.setViewVisibility(circleId, View.VISIBLE)
+            } else {
+                mRemoteViews.setViewVisibility(circleId, View.GONE)
+            }
+
             mRemoteViews.setInt(id, "setTextColor", curTextColor)
             setupDayOpenIntent(id, day.code)
         }
+    }
+
+    fun drawableToBitmap(drawable: Drawable, size: Int): Bitmap {
+        val bitmap = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888)
+        Canvas(bitmap).apply {
+            drawable.setBounds(0, 0, width, height)
+            drawable.draw(this)
+        }
+        return bitmap
     }
 
     private fun updateTopViews() {
