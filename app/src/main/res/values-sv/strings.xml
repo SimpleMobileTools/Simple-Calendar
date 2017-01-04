@@ -84,6 +84,16 @@
     <string name="saturday_letter">L</string>
     <string name="sunday_letter">S</string>
 
+    <!-- List widget config example events -->
+    <string name="sample_title_1">Workout</string>
+    <string name="sample_description_1">Leg day</string>
+    <string name="sample_title_2">Meeting with John</string>
+    <string name="sample_description_2">In Rockstone garden</string>
+    <string name="sample_title_3">Library</string>
+    <string name="sample_title_4">Lunch with Mary</string>
+    <string name="sample_description_4">In the Plaza</string>
+    <string name="sample_title_5">Coffee time</string>
+
     <!-- Release notes -->
     <string name="release_44">
         Added more color customization options\n

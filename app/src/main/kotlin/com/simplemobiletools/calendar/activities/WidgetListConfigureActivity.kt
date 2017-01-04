@@ -150,9 +150,9 @@ class WidgetListConfigureActivity : AppCompatActivity() {
         listItems.add(ListSection(day))
 
         var time = dateTime.withHourOfDay(7)
-        listItems.add(ListEvent(1, (time.millis / 1000).toInt(), (time.plusMinutes(30).millis / 1000).toInt(), "Workout", "Leg day"))
+        listItems.add(ListEvent(1, (time.millis / 1000).toInt(), (time.plusMinutes(30).millis / 1000).toInt(), getString(R.string.sample_title_1), getString(R.string.sample_description_1)))
         time = dateTime.withHourOfDay(8)
-        listItems.add(ListEvent(2, (time.millis / 1000).toInt(), (time.plusHours(1).millis / 1000).toInt(), "Meeting with John", "In Rockstone Garden"))
+        listItems.add(ListEvent(2, (time.millis / 1000).toInt(), (time.plusHours(1).millis / 1000).toInt(), getString(R.string.sample_title_2), getString(R.string.sample_description_2)))
 
         dateTime = dateTime.plusDays(1)
         code = Formatter.getDayCodeFromTS((dateTime.millis / 1000).toInt())
@@ -160,11 +160,11 @@ class WidgetListConfigureActivity : AppCompatActivity() {
         listItems.add(ListSection(day))
 
         time = dateTime.withHourOfDay(8)
-        listItems.add(ListEvent(3, (time.millis / 1000).toInt(), (time.plusHours(1).millis / 1000).toInt(), "Library", ""))
+        listItems.add(ListEvent(3, (time.millis / 1000).toInt(), (time.plusHours(1).millis / 1000).toInt(), getString(R.string.sample_title_3), ""))
         time = dateTime.withHourOfDay(13)
-        listItems.add(ListEvent(4, (time.millis / 1000).toInt(), (time.plusHours(1).millis / 1000).toInt(), "Lunch with Mary", "In the Plaza"))
+        listItems.add(ListEvent(4, (time.millis / 1000).toInt(), (time.plusHours(1).millis / 1000).toInt(), getString(R.string.sample_title_4), getString(R.string.sample_description_4)))
         time = dateTime.withHourOfDay(18)
-        listItems.add(ListEvent(5, (time.millis / 1000).toInt(), (time.plusMinutes(10).millis / 1000).toInt(), "Coffee time", ""))
+        listItems.add(ListEvent(5, (time.millis / 1000).toInt(), (time.plusMinutes(10).millis / 1000).toInt(), getString(R.string.sample_title_5), ""))
 
         return listItems
     }
