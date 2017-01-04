@@ -1,6 +1,14 @@
 Changelog
 ==========
 
+Version 2.0.0 *(2017-01-04)*
+----------------------------
+
+ * Added more color customization
+ * Added a Whats new dialog
+ * Mark current day with a circle, underline days with events
+ * Many smaller improvements and bugfixes
+
 Version 1.43 *(2016-12-18)*
 ----------------------------
 
