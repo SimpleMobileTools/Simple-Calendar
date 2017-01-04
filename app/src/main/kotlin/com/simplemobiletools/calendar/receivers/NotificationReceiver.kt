@@ -53,7 +53,7 @@ class NotificationReceiver : BroadcastReceiver() {
         val builder = Notification.Builder(context)
                 .setContentTitle(context.resources.getString(R.string.app_name))
                 .setContentText(content)
-                .setSmallIcon(R.mipmap.calendar)
+                .setSmallIcon(R.drawable.ic_calendar)
                 .setContentIntent(pendingIntent)
                 .setDefaults(Notification.DEFAULT_LIGHTS)
                 .setAutoCancel(true)

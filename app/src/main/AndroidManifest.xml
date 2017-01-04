@@ -9,7 +9,7 @@
     <application
         android:name=".App"
         android:allowBackup="true"
-        android:icon="@mipmap/launcher"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_launcher_name"
         android:theme="@style/AppTheme">
 
@@ -75,7 +75,7 @@
 
         <receiver
             android:name=".helpers.MyWidgetMonthlyProvider"
-            android:icon="@mipmap/widget_monthly_preview"
+            android:icon="@drawable/img_widget_monthly_preview"
             android:label="@string/widget_monthly">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
@@ -88,7 +88,7 @@
 
         <receiver
             android:name=".helpers.MyWidgetListProvider"
-            android:icon="@mipmap/widget_list_preview"
+            android:icon="@drawable/img_widget_list_preview"
             android:label="@string/widget_list">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
