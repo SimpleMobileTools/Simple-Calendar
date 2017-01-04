@@ -41,7 +41,7 @@
                 android:layout_weight="1">
 
                 <ImageView
-                    android:id="@+id/day_1_circle"
+                    android:id="@+id/day_0_circle"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:visibility="gone"/>
@@ -483,7 +483,7 @@
                 android:layout_weight="1">
 
                 <ImageView
-                    android:id="@+id/day_2_circle"
+                    android:id="@+id/day_22_circle"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:visibility="gone"/>
