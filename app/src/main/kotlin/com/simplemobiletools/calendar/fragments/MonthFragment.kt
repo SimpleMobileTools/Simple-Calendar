@@ -18,6 +18,7 @@ import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.DayActivity
 import com.simplemobiletools.calendar.extensions.beVisibleIf
 import com.simplemobiletools.calendar.extensions.getAppropriateTheme
+import com.simplemobiletools.calendar.extensions.removeUnderlineFlag
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.interfaces.NavigationListener
@@ -186,11 +187,8 @@ class MonthFragment : Fragment(), MonthlyCalendar {
                 setTextColor(curTextColor)
                 setOnClickListener { openDay(day.code) }
 
-                if (day.hasEvent)
-                    paintFlags = paintFlags or Paint.UNDERLINE_TEXT_FLAG
-
-                if (day.isToday)
-                    background = todayCircle
+                paintFlags = if (day.hasEvent) (paintFlags or Paint.UNDERLINE_TEXT_FLAG) else (paintFlags.removeUnderlineFlag())
+                background = if (day.isToday) todayCircle else null
             }
         }
     }

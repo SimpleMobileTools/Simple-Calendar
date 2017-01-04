@@ -14,6 +14,7 @@ import android.widget.SeekBar
 import android.widget.TextView
 import com.simplemobiletools.calendar.MonthlyCalendarImpl
 import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.extensions.removeUnderlineFlag
 import com.simplemobiletools.calendar.helpers.Config
 import com.simplemobiletools.calendar.helpers.LOW_ALPHA
 import com.simplemobiletools.calendar.helpers.MyWidgetMonthlyProvider
@@ -181,11 +182,8 @@ class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
                 text = day.value.toString()
                 setTextColor(curTextColor)
 
-                if (day.hasEvent)
-                    paintFlags = paintFlags or Paint.UNDERLINE_TEXT_FLAG
-
-                if (day.isToday)
-                    background = todayCircle
+                paintFlags = if (day.hasEvent) (paintFlags or Paint.UNDERLINE_TEXT_FLAG) else (paintFlags.removeUnderlineFlag())
+                background = if (day.isToday) todayCircle else null
             }
         }
     }
