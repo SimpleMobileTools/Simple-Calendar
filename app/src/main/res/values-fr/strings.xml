@@ -85,35 +85,35 @@
     <string name="sunday_letter">D</string>
 
     <!-- List widget config example events -->
-    <string name="sample_title_1">Workout</string>
-    <string name="sample_description_1">Leg day</string>
-    <string name="sample_title_2">Meeting with John</string>
-    <string name="sample_description_2">In Rockstone garden</string>
-    <string name="sample_title_3">Library</string>
-    <string name="sample_title_4">Lunch with Mary</string>
-    <string name="sample_description_4">In the Plaza</string>
-    <string name="sample_title_5">Coffee time</string>
+    <string name="sample_title_1">Entraînement</string>
+    <string name="sample_description_1">Jour des jambes</string>
+    <string name="sample_title_2">Rendez-vous avec John</string>
+    <string name="sample_description_2">Au jardin Rockstone</string>
+    <string name="sample_title_3">Librairie</string>
+    <string name="sample_title_4">Déjeuner avec Mary</string>
+    <string name="sample_description_4">Dans la Place</string>
+    <string name="sample_title_5">Heure du café</string>
 
     <!-- Release notes -->
     <string name="release_44">
-        Added more color customization options\n
-        Your settings have been cleared, please reset them</string>
-    <string name="release_42">Allow changing the reminder notification sound</string>
-    <string name="release_40">Added a new view, a list of upcoming events</string>
-    <string name="release_39">Added the option to vibrate at notifications</string>
+        Plus d\'options de personnalisation des couleurs ajoutées\n
+        Vos paramètres ont été nettoyés, veuillez les réinitialiser</string>
+    <string name="release_42">Possibilité de changer la sonnerie de la notification de rappel</string>
+    <string name="release_40">Ajout d\'une nouvelle vue, une liste des événements à venir</string>
+    <string name="release_39">Ajout de l\'option pour vibrer lors des notifications</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Un calendrier simple avec événements, widget personnalisable, sans publicités.</string>
     <string name="app_long_description">
-        Un calendrier hors ligne sans aucune autre intégration de calendrier. Vous puvez aisément créer des événements récurrents et configurer des rappels, il est aussi possible d\'afficher les numéros de semaine.
+        Un calendrier hors ligne sans aucune autre intégration de calendrier. Vous pouvez aisément créer des événements récurrents et configurer des rappels, il est aussi possible d\'afficher les numéros de semaine.
 
 
         Contient un widget 4x4 redimensionnable où vous pouvez personnaliser la couleur du texte, ainsi que l\'alpha et la couleur de l\'arrière plan.
 
-        Ne contient pas de publicités ou de permissions inutiles. Complètement opensource, fournit un thème sombre également.
+        Ne contient pas de publicités ou de permissions inutiles. Complètement opensource, fournit une personnalisation des couleurs.
 
-        Cette application est juste une pièces d\'une plus grosse série d\'applications. Vous pouvez trouver le reste de celles-ci à http://www.simplemobiletools.com
+        Cette application est juste une pièce d\'une plus grosse série d\'applications. Vous pouvez trouver le reste de celles-ci à http://www.simplemobiletools.com
     </string>
 
     <!--
