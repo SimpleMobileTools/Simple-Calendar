@@ -96,11 +96,11 @@
 
     <!-- Release notes -->
     <string name="release_44">
-        Plus d'options de personnalisation des couleurs ajoutées\n
+        Plus d\'options de personnalisation des couleurs ajoutées\n
         Vos paramètres ont été nettoyés, veuillez les réinitialiser</string>
     <string name="release_42">Possibilité de changer la sonnerie de la notification de rappel</string>
-    <string name="release_40">Ajout d'une nouvelle vue, une liste des événements à venir</string>
-    <string name="release_39">Ajout de l'option pour vibrer lors des notifications</string>
+    <string name="release_40">Ajout d\'une nouvelle vue, une liste des événements à venir</string>
+    <string name="release_39">Ajout de l\'option pour vibrer lors des notifications</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
