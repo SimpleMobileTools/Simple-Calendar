@@ -82,7 +82,6 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun setupEventReminder() {
-        var isInitialSetup = true
         val reminderType = config.defaultReminderType
         val reminderMinutes = config.defaultReminderMinutes
         settings_default_reminder.setSelection(reminderType)
@@ -93,24 +92,19 @@ class SettingsActivity : SimpleActivity() {
         custom_reminder_save.setOnClickListener { saveReminder() }
 
         settings_default_reminder.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(p0: AdapterView<*>?) {
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, itemIndex: Int, p3: Long) {
+                if (itemIndex == 2) {
+                    settings_custom_reminder_holder.visibility = View.VISIBLE
+                    showKeyboard(custom_reminder_value)
+                } else {
+                    hideKeyboard()
+                    settings_custom_reminder_holder.visibility = View.GONE
+                }
+
+                config.defaultReminderType = getDefaultReminderValue(itemIndex)
             }
 
-            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, itemIndex: Int, p3: Long) {
-                if (isInitialSetup)
-                    settings_default_reminder.setSelection(reminderType)
-                else {
-                    if (itemIndex == 2) {
-                        settings_custom_reminder_holder.visibility = View.VISIBLE
-                        showKeyboard(custom_reminder_value)
-                    } else {
-                        hideKeyboard()
-                        settings_custom_reminder_holder.visibility = View.GONE
-                    }
-
-                    config.defaultReminderType = getDefaultReminderValue(itemIndex)
-                }
-                isInitialSetup = false
+            override fun onNothingSelected(p0: AdapterView<*>?) {
             }
         }
     }
