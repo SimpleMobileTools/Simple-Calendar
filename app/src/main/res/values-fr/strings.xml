@@ -3,6 +3,7 @@
     <string name="app_launcher_name">Calendrier</string>
     <string name="undo">Annuler</string>
     <string name="change_view">Changer de vue</string>
+    <string name="weekly_view">Weekly view</string>
     <string name="monthly_view">Vue mensuelle</string>
     <string name="yearly_view">Vue annuelle</string>
     <string name="simple_event_list">Liste simple d\'événements</string>
@@ -95,6 +96,7 @@
     <string name="sample_title_5">Heure du café</string>
 
     <!-- Release notes -->
+    <string name="release_4x">Added a weekly view</string>
     <string name="release_44">
         Plus d\'options de personnalisation des couleurs ajoutées\n
         Vos paramètres ont été nettoyés, veuillez les réinitialiser</string>

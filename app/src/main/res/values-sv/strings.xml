@@ -3,6 +3,7 @@
     <string name="app_launcher_name">Calendar</string>
     <string name="undo">Ångra</string>
     <string name="change_view">Change view</string>
+    <string name="weekly_view">Weekly view</string>
     <string name="monthly_view">Monthly view</string>
     <string name="yearly_view">Yearly view</string>
     <string name="simple_event_list">Simple event list</string>
@@ -95,6 +96,7 @@
     <string name="sample_title_5">Coffee time</string>
 
     <!-- Release notes -->
+    <string name="release_4x">Added a weekly view</string>
     <string name="release_44">
         Added more color customization options\n
         Your settings have been cleared, please reset them</string>

@@ -3,6 +3,7 @@
     <string name="app_launcher_name">Calendário</string>
     <string name="undo">Desfazer</string>
     <string name="change_view">Mudar vista</string>
+    <string name="weekly_view">Weekly view</string>
     <string name="monthly_view">Vista mensal</string>
     <string name="yearly_view">Vista anual</string>
     <string name="simple_event_list">Lista de eventos</string>
@@ -95,6 +96,7 @@
     <string name="sample_title_5">Coffee time</string>
 
     <!-- Release notes -->
+    <string name="release_4x">Added a weekly view</string>
     <string name="release_44">
         Added more color customization options\n
         Your settings have been cleared, please reset them</string>

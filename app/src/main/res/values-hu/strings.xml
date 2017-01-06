@@ -3,6 +3,7 @@
     <string name="app_launcher_name">Naptár</string>
     <string name="undo">Visszavonás</string>
     <string name="change_view">Nézet megváltoztatása</string>
+    <string name="weekly_view">Weekly view</string>
     <string name="monthly_view">Havi nézet</string>
     <string name="yearly_view">Éves nézet</string>
     <string name="simple_event_list">Egyszerű bejegyzéslista</string>
@@ -95,6 +96,7 @@
     <string name="sample_title_5">Coffee time</string>
 
     <!-- Release notes -->
+    <string name="release_4x">Added a weekly view</string>
     <string name="release_44">
         Added more color customization options\n
         Your settings have been cleared, please reset them</string>
