@@ -51,5 +51,11 @@ class Config(context: Context) : BaseConfig(context) {
             prefs.edit().putInt(REMINDER_MINUTES, mins).apply()
         }
 
-    fun getDefaultNotificationSound() = RingtoneManager.getActualDefaultRingtoneUri(context, RingtoneManager.TYPE_NOTIFICATION)?.toString() ?: ""
+    fun getDefaultNotificationSound(): String {
+        try {
+            return RingtoneManager.getActualDefaultRingtoneUri(context, RingtoneManager.TYPE_NOTIFICATION)?.toString() ?: ""
+        } catch (e: Exception) {
+            return ""
+        }
+    }
 }
