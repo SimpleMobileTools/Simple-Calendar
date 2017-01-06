@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 2.0.1 *(2017-01-06)*
+----------------------------
+
+ * Use a brighter white for the default background
+ * Misc smaller changes
+
 Version 2.0.0 *(2017-01-04)*
 ----------------------------
 
