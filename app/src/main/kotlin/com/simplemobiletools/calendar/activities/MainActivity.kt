@@ -256,6 +256,7 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
             add(Release(40, R.string.release_40))
             add(Release(42, R.string.release_42))
             add(Release(44, R.string.release_44))
+            add(Release(46, R.string.release_46))
             checkWhatsNew(this, BuildConfig.VERSION_CODE)
         }
     }
