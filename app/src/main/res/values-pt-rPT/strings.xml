@@ -58,7 +58,8 @@
     <string name="reminder_saved">Lembrete guardado</string>
     <string name="notification_sound">Som da notificação</string>
     <string name="no_ringtone_picker">Não foi encontrada qualquer aplicação capaz de definir o som</string>
-    
+    <string name="no_ringtone_selected">None</string>
+
     <plurals name="events_deleted">
         <item quantity="one">1 evento apagado</item>
         <item quantity="other">%1$d eventos apagados</item>

@@ -57,7 +57,11 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun setupReminderSound() {
-        settings_reminder_sound.text = RingtoneManager.getRingtone(this, Uri.parse(config.reminderSound)).getTitle(this)
+        if (config.reminderSound.isEmpty()) {
+            settings_reminder_sound.text = resources.getString(R.string.no_ringtone_selected)
+        } else {
+            settings_reminder_sound.text = RingtoneManager.getRingtone(this, Uri.parse(config.reminderSound)).getTitle(this)
+        }
         settings_reminder_sound_holder.setOnClickListener {
             Intent(RingtoneManager.ACTION_RINGTONE_PICKER).apply {
                 putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_NOTIFICATION)
@@ -147,11 +151,15 @@ class SettingsActivity : SimpleActivity() {
         custom_reminder_value.setText(value.toString())
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
         if (resultCode == Activity.RESULT_OK && requestCode == GET_RINGTONE_URI) {
-            val uri = intent?.getParcelableExtra<Parcelable>(RingtoneManager.EXTRA_RINGTONE_PICKED_URI) ?: return
-            settings_reminder_sound.text = RingtoneManager.getRingtone(this, uri as Uri).getTitle(this)
-            config.reminderSound = uri.toString()
+            val uri = resultData?.getParcelableExtra<Parcelable>(RingtoneManager.EXTRA_RINGTONE_PICKED_URI)
+            if (uri == null) {
+                config.reminderSound = ""
+            } else {
+                settings_reminder_sound.text = RingtoneManager.getRingtone(this, uri as Uri).getTitle(this)
+                config.reminderSound = uri.toString()
+            }
         }
     }
 }

@@ -58,6 +58,7 @@
     <string name="reminder_saved">Emlékeztető elmentve</string>
     <string name="notification_sound">Notification sound</string>
     <string name="no_ringtone_picker">No app capable of setting ringtone found</string>
+    <string name="no_ringtone_selected">None</string>
 
     <plurals name="events_deleted">
         <item quantity="one">1 bejegyzés törölve</item>

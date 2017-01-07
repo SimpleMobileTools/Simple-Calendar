@@ -58,6 +58,7 @@
     <string name="reminder_saved">Rappel sauvegardé</string>
     <string name="notification_sound">Son de notification</string>
     <string name="no_ringtone_picker">Aucune application capable de configurer la sonnerie trouvée</string>
+    <string name="no_ringtone_selected">None</string>
 
     <plurals name="events_deleted">
         <item quantity="one">1 événement supprimé</item>
