@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.YearlyCalendarImpl
+import com.simplemobiletools.calendar.helpers.YearlyCalendarImpl
 import com.simplemobiletools.calendar.helpers.Config
 import com.simplemobiletools.calendar.helpers.YEAR_LABEL
 import com.simplemobiletools.calendar.interfaces.NavigationListener

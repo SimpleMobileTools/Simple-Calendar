@@ -12,7 +12,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.SeekBar
 import android.widget.TextView
-import com.simplemobiletools.calendar.MonthlyCalendarImpl
+import com.simplemobiletools.calendar.helpers.MonthlyCalendarImpl
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.removeUnderlineFlag
 import com.simplemobiletools.calendar.helpers.Config

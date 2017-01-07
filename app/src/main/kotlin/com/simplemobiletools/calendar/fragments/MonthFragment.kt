@@ -13,7 +13,7 @@ import android.view.ViewGroup
 import android.widget.DatePicker
 import android.widget.RelativeLayout
 import android.widget.TextView
-import com.simplemobiletools.calendar.MonthlyCalendarImpl
+import com.simplemobiletools.calendar.helpers.MonthlyCalendarImpl
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.DayActivity
 import com.simplemobiletools.calendar.extensions.beVisibleIf

@@ -1,4 +1,4 @@
-package com.simplemobiletools.calendar
+package com.simplemobiletools.calendar.helpers
 
 import android.content.Context
 import com.simplemobiletools.calendar.helpers.Config

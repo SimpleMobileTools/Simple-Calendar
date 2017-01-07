@@ -13,7 +13,7 @@ import android.text.SpannableString
 import android.text.style.UnderlineSpan
 import android.view.View
 import android.widget.RemoteViews
-import com.simplemobiletools.calendar.MonthlyCalendarImpl
+import com.simplemobiletools.calendar.helpers.MonthlyCalendarImpl
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.DayActivity
 import com.simplemobiletools.calendar.activities.MainActivity
