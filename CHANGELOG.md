@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 2.0.2 *(2017-01-07)*
+----------------------------
+
+ * Allow setting empty notification sound
+ * Notification reminders have been tweaked, please update them
+
 Version 2.0.1 *(2017-01-06)*
 ----------------------------
 
