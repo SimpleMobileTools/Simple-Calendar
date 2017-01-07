@@ -88,11 +88,11 @@ class SettingsActivity : SimpleActivity() {
     private fun setupEventReminder() {
         val reminderType = config.defaultReminderType
         val reminderMinutes = config.defaultReminderMinutes
-        settings_default_reminder.setSelection(reminderType)
+        settings_default_reminder.setSelection(getDefaultReminderTypeIndex(reminderType))
         custom_reminder_save.setTextColor(custom_reminder_other_val.currentTextColor)
         setupReminderPeriod(reminderMinutes)
 
-        settings_custom_reminder_holder.beVisibleIf(reminderType == 2)
+        settings_custom_reminder_holder.beVisibleIf(reminderType == REMINDER_CUSTOM)
         custom_reminder_save.setOnClickListener { saveReminder() }
 
         settings_default_reminder.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -110,6 +110,14 @@ class SettingsActivity : SimpleActivity() {
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
             }
+        }
+    }
+
+    private fun getDefaultReminderTypeIndex(type: Int): Int {
+        return when (type) {
+            REMINDER_OFF -> 0
+            REMINDER_AT_START -> 1
+            else -> 2
         }
     }
 
