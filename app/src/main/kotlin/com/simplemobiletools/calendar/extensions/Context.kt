@@ -68,7 +68,7 @@ private fun getNewTS(ts: Int, isMonthly: Boolean): Int {
 }
 
 fun Context.scheduleNotification(event: Event) {
-    if (event.reminderMinutes == -1)
+    if (event.reminderMinutes == REMINDER_OFF)
         return
 
     scheduleNextEvent(event)
@@ -76,7 +76,7 @@ fun Context.scheduleNotification(event: Event) {
 
 fun Context.scheduleEventIn(notifTS: Int, event: Event) {
     val delayFromNow = notifTS.toLong() * 1000 - System.currentTimeMillis()
-    if (delayFromNow < 0)
+    if (delayFromNow <= 0)
         return
 
     val notifInMs = SystemClock.elapsedRealtime() + delayFromNow

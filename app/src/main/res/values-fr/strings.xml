@@ -98,6 +98,7 @@
 
     <!-- Release notes -->
     <string name="release_4x">Added a weekly view</string>
+    <string name="release_46">Event reminder types have been tweaked, please update them</string>
     <string name="release_44">
         Plus d\'options de personnalisation des couleurs ajoutées\n
         Vos paramètres ont été nettoyés, veuillez les réinitialiser</string>
