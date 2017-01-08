@@ -1,0 +1,127 @@
+<resources>
+    <string name="app_name">Simple Calendar</string>
+    <string name="app_launcher_name">Календарь</string>
+    <string name="undo">Отменить</string>
+    <string name="change_view">Отображение</string>
+    <string name="weekly_view">На неделю</string>
+    <string name="monthly_view">На месяц</string>
+    <string name="yearly_view">На год</string>
+    <string name="simple_event_list">Простой список событий</string>
+    <string name="no_upcoming_events">Похоже у вас нет пердстоящих событий.</string>
+    <string name="add_some_events">Вы можете их добавить, нажав на кнопку с плюсом внизу.</string>
+
+    <!-- Widget titles -->
+    <string name="widget_monthly">Календарь на месяц</string>
+    <string name="widget_list">Календарь событий</string>
+
+    <!-- Event -->
+    <string name="event">Событие</string>
+    <string name="edit_event">Редактировать событие</string>
+    <string name="new_event">Новое событие</string>
+    <string name="title_empty">Заголовок не может быть пустым</string>
+    <string name="end_before_start">Событие не может завершаться раньше чем начинается</string>
+    <string name="start_in_past">Нельзя планировать события в прошлом</string>
+    <string name="event_added">Событие успешно добавлено</string>
+    <string name="past_event_added">Событие в прошлом успешно создано</string>
+    <string name="event_updated">Событие успешно обновлено</string>
+    <string name="reminder">Напоминание</string>
+    <string name="off">Отключено<string>
+    <string name="at_start">С наступлением события</string>
+    <string name="custom">Настраиваемое</string>
+    <string name="repetition">Повторять</string>
+    <string name="none">Нет</string>
+    <string name="daily">Ежедневно</string>
+    <string name="weekly">Еженедельно</string>
+    <string name="biweekly">Раз в две недели</string>
+    <string name="monthly">Ежемесячно</string>
+    <string name="yearly">Ежегодно</string>
+
+    <!-- Custom reminder -->
+    <string name="before">до события</string>
+    <string name="minutes">минут</string>
+    <string name="hours">часов</string>
+    <string name="days">дней</string>
+
+    <!-- Day details -->
+    <string name="details">Подробности</string>
+    <string name="title">Заголовок</string>
+    <string name="start">Начало</string>
+    <string name="end">Окончание (необязательно)</string>
+    <string name="description">Описание</string>
+
+    <!-- Settings -->
+    <string name="sunday_first">Воскресенье - начало недели</string>
+    <string name="week_numbers">Отображать номера недель</string>
+    <string name="vibrate">Вибрация при напоминании</string>
+    <string name="reminder_sound">Звук напоминания</string>
+    <string name="default_event_reminder">Напоминаие для событий по умолчанию</string>
+    <string name="reminder_saved">Напоминание сохранено</string>
+    <string name="notification_sound">Звук уведомления</string>
+    <string name="no_ringtone_picker">Не найдено приложение для выбора рингтона</string>
+    <string name="no_ringtone_selected">Нет</string>
+
+    <plurals name="events_deleted">
+        <item quantity="one">1 событие удалено</item>
+        <item quantity="other">Событий удалено: %1$d</item>
+    </plurals>
+
+    <string name="january">Январь</string>
+    <string name="february">Февраль</string>
+    <string name="march">Март</string>
+    <string name="april">Апрель</string>
+    <string name="may">Май</string>
+    <string name="june">Июнь</string>
+    <string name="july">Июль</string>
+    <string name="august">Август</string>
+    <string name="september">Сентябрь</string>
+    <string name="october">Октябрь</string>
+    <string name="november">Ноябрь</string>
+    <string name="december">Декабрь</string>
+
+    <string name="monday_letter">ПН</string>
+    <string name="tuesday_letter">ВТ</string>
+    <string name="wednesday_letter">СР</string>
+    <string name="thursday_letter">ЧТ</string>
+    <string name="friday_letter">ПТ</string>
+    <string name="saturday_letter">СБ</string>
+    <string name="sunday_letter">ВС</string>
+
+    <!-- List widget config example events -->
+    <string name="sample_title_1">Тренировка</string>
+    <string name="sample_description_1">День ног</string>
+    <string name="sample_title_2">Встреча с Женей</string>
+    <string name="sample_description_2">У метро Невский проспект</string>
+    <string name="sample_title_3">Библиотека</string>
+    <string name="sample_title_4">Ужин с Машей</string>
+    <string name="sample_description_4">В КЭТ на Караванной</string>
+    <string name="sample_title_5">Время для кофе</string>
+
+    <!-- Release notes -->
+    <string name="release_4x">Добавлен вид "на неделю"</string>
+    <string name="release_46">Типы оповещений о событиях были изменены, пожалуйста, обновите их.</string>
+    <string name="release_44">
+        Добавлена возможность изменять цветовое оформление\n
+        Настройки приложения в этой версии были сброшены к первоначальным, пожалуйста, настройте снова</string>
+    <string name="release_42">Добавлена возможность изменять звук напоминания</string>
+    <string name="release_40">Добавлен новый вид "список предстоящих событий"</string>
+    <string name="release_39">Добавлена настройка вибрации при напоминании</string>
+
+    <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
+    <!-- Short description has to have less than 80 chars -->
+    <string name="app_short_description">Простой календарь с событиями и настраиваемым виджетом. Без рекламы.</string>
+    <string name="app_long_description">
+        Оффлайн календарь, без каких-либо интегрированных сторонних функций. Можно создавать повторяющиеся события и устанавливать напоминания. Есть возможность отображения номеров недель.
+
+
+        У приложения есть виджет 4x4 с изменяемым размером, у которого можно изменить цвет текста, цвет и прозрачность фона.
+        
+        Это приложение не будет показывать рекламу или запрашивать ненужные разрешения. У него полностью открытый исходный код и настраиваемые цвета оформления.
+
+        Simple Calendar - это приложение из серии Simple Mobile Tools. Остальные приложения из этой серии можно найти здесь: http://www.simplemobiletools.com
+    </string>
+
+    <!--
+        Haven't found some strings? There's more at
+        https://github.com/SimpleMobileTools/Simple-Commons/tree/master/library/src/main/res
+    -->
+</resources>
