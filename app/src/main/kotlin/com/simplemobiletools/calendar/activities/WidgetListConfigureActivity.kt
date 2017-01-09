@@ -16,10 +16,10 @@ import com.simplemobiletools.calendar.helpers.MyWidgetListProvider
 import com.simplemobiletools.calendar.models.ListEvent
 import com.simplemobiletools.calendar.models.ListItem
 import com.simplemobiletools.calendar.models.ListSection
+import com.simplemobiletools.commons.dialogs.ColorPickerDialog
 import com.simplemobiletools.commons.extensions.adjustAlpha
 import kotlinx.android.synthetic.main.widget_config_list.*
 import org.joda.time.DateTime
-import yuku.ambilwarna.AmbilWarnaDialog
 import java.util.*
 
 class WidgetListConfigureActivity : AppCompatActivity() {
@@ -98,27 +98,17 @@ class WidgetListConfigureActivity : AppCompatActivity() {
     }
 
     fun pickBackgroundColor() {
-        AmbilWarnaDialog(this, mBgColorWithoutTransparency, object : AmbilWarnaDialog.OnAmbilWarnaListener {
-            override fun onCancel(dialog: AmbilWarnaDialog) {
-            }
-
-            override fun onOk(dialog: AmbilWarnaDialog, color: Int) {
-                mBgColorWithoutTransparency = color
-                updateBgColor()
-            }
-        }).show()
+        ColorPickerDialog(this, mBgColorWithoutTransparency) {
+            mBgColorWithoutTransparency = it
+            updateBgColor()
+        }
     }
 
     fun pickTextColor() {
-        AmbilWarnaDialog(this, mTextColor, object : AmbilWarnaDialog.OnAmbilWarnaListener {
-            override fun onCancel(dialog: AmbilWarnaDialog) {
-            }
-
-            override fun onOk(dialog: AmbilWarnaDialog, color: Int) {
-                mTextColorWithoutTransparency = color
-                updateTextColors()
-            }
-        }).show()
+        ColorPickerDialog(this, mTextColor) {
+            mTextColorWithoutTransparency = it
+            updateTextColors()
+        }
     }
 
     private fun requestWidgetUpdate() {

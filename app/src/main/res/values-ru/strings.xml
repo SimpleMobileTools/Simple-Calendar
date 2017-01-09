@@ -25,7 +25,7 @@
     <string name="past_event_added">Событие в прошлом успешно создано</string>
     <string name="event_updated">Событие успешно обновлено</string>
     <string name="reminder">Напоминание</string>
-    <string name="off">Отключено<string>
+    <string name="off">Отключено</string>
     <string name="at_start">С наступлением события</string>
     <string name="custom">Настраиваемое</string>
     <string name="repetition">Повторять</string>

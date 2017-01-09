@@ -12,20 +12,20 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.SeekBar
 import android.widget.TextView
-import com.simplemobiletools.calendar.helpers.MonthlyCalendarImpl
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.removeUnderlineFlag
 import com.simplemobiletools.calendar.helpers.Config
 import com.simplemobiletools.calendar.helpers.LOW_ALPHA
+import com.simplemobiletools.calendar.helpers.MonthlyCalendarImpl
 import com.simplemobiletools.calendar.helpers.MyWidgetMonthlyProvider
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.models.Day
+import com.simplemobiletools.commons.dialogs.ColorPickerDialog
 import com.simplemobiletools.commons.extensions.adjustAlpha
 import kotlinx.android.synthetic.main.first_row.*
 import kotlinx.android.synthetic.main.top_navigation.*
 import kotlinx.android.synthetic.main.widget_config_monthly.*
 import org.joda.time.DateTime
-import yuku.ambilwarna.AmbilWarnaDialog
 
 class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
     lateinit var mRes: Resources
@@ -101,28 +101,18 @@ class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
     }
 
     fun pickBackgroundColor() {
-        AmbilWarnaDialog(this, mBgColorWithoutTransparency, object : AmbilWarnaDialog.OnAmbilWarnaListener {
-            override fun onCancel(dialog: AmbilWarnaDialog) {
-            }
-
-            override fun onOk(dialog: AmbilWarnaDialog, color: Int) {
-                mBgColorWithoutTransparency = color
-                updateBgColor()
-            }
-        }).show()
+        ColorPickerDialog(this, mBgColorWithoutTransparency) {
+            mBgColorWithoutTransparency = it
+            updateBgColor()
+        }
     }
 
     fun pickTextColor() {
-        AmbilWarnaDialog(this, mTextColor, object : AmbilWarnaDialog.OnAmbilWarnaListener {
-            override fun onCancel(dialog: AmbilWarnaDialog) {
-            }
-
-            override fun onOk(dialog: AmbilWarnaDialog, color: Int) {
-                mTextColorWithoutTransparency = color
-                updateTextColors()
-                updateDays()
-            }
-        }).show()
+        ColorPickerDialog(this, mTextColor) {
+            mTextColorWithoutTransparency = it
+            updateTextColors()
+            updateDays()
+        }
     }
 
     private fun requestWidgetUpdate() {

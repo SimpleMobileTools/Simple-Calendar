@@ -19,7 +19,6 @@ import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.commons.extensions.checkWhatsNew
 import com.simplemobiletools.commons.extensions.updateTextColors
-import com.simplemobiletools.commons.helpers.LICENSE_AMBILWARNA
 import com.simplemobiletools.commons.helpers.LICENSE_JODA
 import com.simplemobiletools.commons.helpers.LICENSE_KOTLIN
 import com.simplemobiletools.commons.helpers.LICENSE_STETHO
@@ -119,7 +118,7 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
     }
 
     private fun launchAbout() {
-        startAboutActivity(R.string.app_name, LICENSE_KOTLIN or LICENSE_AMBILWARNA or LICENSE_JODA or LICENSE_STETHO, BuildConfig.VERSION_NAME)
+        startAboutActivity(R.string.app_name, LICENSE_KOTLIN or LICENSE_JODA or LICENSE_STETHO, BuildConfig.VERSION_NAME)
     }
 
     private fun addNewEvent() {
