@@ -58,10 +58,11 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun setupReminderSound() {
+        val noRingtone = resources.getString(R.string.no_ringtone_selected)
         if (config.reminderSound.isEmpty()) {
-            settings_reminder_sound.text = resources.getString(R.string.no_ringtone_selected)
+            settings_reminder_sound.text = noRingtone
         } else {
-            settings_reminder_sound.text = RingtoneManager.getRingtone(this, Uri.parse(config.reminderSound)).getTitle(this)
+            settings_reminder_sound.text = RingtoneManager.getRingtone(this, Uri.parse(config.reminderSound))?.getTitle(this) ?: noRingtone
         }
         settings_reminder_sound_holder.setOnClickListener {
             Intent(RingtoneManager.ACTION_RINGTONE_PICKER).apply {
