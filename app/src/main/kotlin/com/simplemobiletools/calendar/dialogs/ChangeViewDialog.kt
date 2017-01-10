@@ -8,6 +8,7 @@ import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.helpers.EVENTS_LIST_VIEW
 import com.simplemobiletools.calendar.helpers.MONTHLY_VIEW
+import com.simplemobiletools.calendar.helpers.WEEKLY_VIEW
 import com.simplemobiletools.calendar.helpers.YEARLY_VIEW
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import kotlinx.android.synthetic.main.dialog_change_views.view.*
@@ -33,12 +34,14 @@ class ChangeViewDialog(val activity: Activity, val callback: (newView: Int) -> U
     }
 
     fun getNewView(id: Int) = when (id) {
+        R.id.dialog_radio_weekly -> WEEKLY_VIEW
         R.id.dialog_radio_yearly -> YEARLY_VIEW
         R.id.dialog_radio_events_list -> EVENTS_LIST_VIEW
         else -> MONTHLY_VIEW
     }
 
     fun getSavedItem() = when (activity.config.storedView) {
+        WEEKLY_VIEW -> R.id.dialog_radio_weekly
         YEARLY_VIEW -> R.id.dialog_radio_yearly
         EVENTS_LIST_VIEW -> R.id.dialog_radio_events_list
         else -> R.id.dialog_radio_monthly

@@ -108,6 +108,8 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
             fillYearlyViewPager()
         } else if (config.storedView == EVENTS_LIST_VIEW) {
             fillEventsList()
+        } else if (config.storedView == WEEKLY_VIEW) {
+
         } else {
             val targetDay = DateTime().toString(Formatter.DAYCODE_PATTERN)
             fillMonthlyViewPager(targetDay)

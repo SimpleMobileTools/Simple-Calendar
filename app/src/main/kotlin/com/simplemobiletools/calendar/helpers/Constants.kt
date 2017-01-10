@@ -12,6 +12,7 @@ val EVENT_ID = "event_id"
 val MONTHLY_VIEW = 1
 val YEARLY_VIEW = 2
 val EVENTS_LIST_VIEW = 3
+val WEEKLY_VIEW = 4
 
 val REMINDER_OFF = -1
 val REMINDER_AT_START = 0
