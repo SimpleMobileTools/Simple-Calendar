@@ -8,4 +8,13 @@
         <item name="android:background">?android:attr/selectableItemBackground</item>
     </style>
 
+    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/color_primary</item>
+    </style>
+
+    <style name="DialogTheme.Dark" parent="Theme.AppCompat.Dialog">
+        <item name="colorAccent">@color/color_primary</item>
+        <item name="android:windowBackground">@color/default_background_color_dark_theme</item>
+    </style>
+
 </resources>
