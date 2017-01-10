@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 2.0.3 *(2017-01-10)*
+----------------------------
+
+ * Use the new version of the colorpicker dialog
+ * Some crashfixes
+
 Version 2.0.2 *(2017-01-07)*
 ----------------------------
 
