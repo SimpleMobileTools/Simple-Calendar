@@ -95,5 +95,5 @@ private fun getNotificationIntent(context: Context, eventId: Int): PendingIntent
 }
 
 fun Context.getAppropriateTheme(): Int {
-    return if (Config.newInstance(this).backgroundColor.getContrastColor() == Color.WHITE) R.style.DialogTheme_Dark else R.style.DialogTheme
+    return if (Config.newInstance(this).backgroundColor.getContrastColor() == Color.WHITE) R.style.MyDialogTheme_Dark else R.style.MyDialogTheme
 }
