@@ -15,6 +15,7 @@ import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.adapters.DayEventsAdapter
+import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.getAppropriateTheme
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
@@ -44,7 +45,7 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DBHelper.GetEvents
         mRes = resources
         mHolder = view.day_holder
 
-        mConfig = Config.newInstance(context)
+        mConfig = context.config
         mDayCode = arguments.getString(DAY_CODE)
 
         val day = Formatter.getDayTitle(activity.applicationContext, mDayCode)

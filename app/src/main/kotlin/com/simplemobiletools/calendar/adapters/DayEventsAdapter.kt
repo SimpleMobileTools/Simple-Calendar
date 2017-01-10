@@ -8,7 +8,7 @@ import com.bignerdranch.android.multiselector.MultiSelector
 import com.bignerdranch.android.multiselector.SwappingHolder
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.SimpleActivity
-import com.simplemobiletools.calendar.helpers.Config
+import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
@@ -38,7 +38,7 @@ class DayEventsAdapter(val activity: SimpleActivity, val mItems: List<Event>, va
     }
 
     init {
-        textColor = Config.newInstance(activity).textColor
+        textColor = activity.config.textColor
     }
 
     val multiSelectorMode = object : ModalMultiSelectorCallback(multiSelector) {

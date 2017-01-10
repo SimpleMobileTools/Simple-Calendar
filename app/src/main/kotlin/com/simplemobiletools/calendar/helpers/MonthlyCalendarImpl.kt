@@ -1,9 +1,7 @@
 package com.simplemobiletools.calendar.helpers
 
 import android.content.Context
-import com.simplemobiletools.calendar.helpers.Config
-import com.simplemobiletools.calendar.helpers.DBHelper
-import com.simplemobiletools.calendar.helpers.Formatter
+import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.models.Day
 import com.simplemobiletools.calendar.models.Event
@@ -44,7 +42,7 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
 
         val currMonthDays = mTargetDate.dayOfMonth().maximumValue
         var firstDayIndex = mTargetDate.withDayOfMonth(1).dayOfWeek
-        if (!Config.newInstance(mContext).isSundayFirst)
+        if (!mContext.config.isSundayFirst)
             firstDayIndex -= 1
         val prevMonthDays = mTargetDate.minusMonths(1).dayOfMonth().maximumValue
 

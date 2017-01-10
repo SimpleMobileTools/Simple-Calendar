@@ -13,10 +13,10 @@ import android.view.ViewGroup
 import android.widget.DatePicker
 import android.widget.RelativeLayout
 import android.widget.TextView
-import com.simplemobiletools.calendar.helpers.MonthlyCalendarImpl
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.DayActivity
 import com.simplemobiletools.calendar.extensions.beVisibleIf
+import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.getAppropriateTheme
 import com.simplemobiletools.calendar.extensions.removeUnderlineFlag
 import com.simplemobiletools.calendar.helpers.*
@@ -50,7 +50,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
 
         mHolder = view.calendar_holder
         mDayCode = arguments.getString(DAY_CODE)
-        mConfig = Config.newInstance(context)
+        mConfig = context.config
         mSundayFirst = mConfig.isSundayFirst
 
         setupButtons()

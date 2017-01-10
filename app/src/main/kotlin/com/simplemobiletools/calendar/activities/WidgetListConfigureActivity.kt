@@ -10,7 +10,7 @@ import android.support.v7.app.AppCompatActivity
 import android.widget.SeekBar
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.adapters.EventListWidgetAdapterOld
-import com.simplemobiletools.calendar.helpers.Config
+import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.helpers.MyWidgetListProvider
 import com.simplemobiletools.calendar.models.ListEvent
@@ -61,7 +61,6 @@ class WidgetListConfigureActivity : AppCompatActivity() {
     private fun initVariables() {
         mRes = resources
 
-        val config = Config.newInstance(this)
         mTextColorWithoutTransparency = config.widgetTextColor
         updateTextColors()
 
@@ -91,7 +90,7 @@ class WidgetListConfigureActivity : AppCompatActivity() {
     }
 
     private fun storeWidgetColors() {
-        Config.newInstance(this).apply {
+        config.apply {
             widgetBgColor = mBgColor
             widgetTextColor = mTextColorWithoutTransparency
         }

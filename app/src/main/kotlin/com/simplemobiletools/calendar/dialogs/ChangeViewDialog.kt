@@ -5,7 +5,7 @@ import android.support.v7.app.AlertDialog
 import android.view.LayoutInflater
 import android.widget.RadioGroup
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.helpers.Config
+import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.helpers.EVENTS_LIST_VIEW
 import com.simplemobiletools.calendar.helpers.MONTHLY_VIEW
 import com.simplemobiletools.calendar.helpers.YEARLY_VIEW
@@ -38,7 +38,7 @@ class ChangeViewDialog(val activity: Activity, val callback: (newView: Int) -> U
         else -> MONTHLY_VIEW
     }
 
-    fun getSavedItem() = when (Config.newInstance(activity).storedView) {
+    fun getSavedItem() = when (activity.config.storedView) {
         YEARLY_VIEW -> R.id.dialog_radio_yearly
         EVENTS_LIST_VIEW -> R.id.dialog_radio_events_list
         else -> R.id.dialog_radio_monthly

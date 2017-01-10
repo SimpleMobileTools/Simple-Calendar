@@ -9,7 +9,7 @@ import com.bignerdranch.android.multiselector.MultiSelector
 import com.bignerdranch.android.multiselector.SwappingHolder
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.SimpleActivity
-import com.simplemobiletools.calendar.helpers.Config
+import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.models.ListEvent
 import com.simplemobiletools.calendar.models.ListItem
@@ -49,10 +49,9 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
     }
 
     init {
-        val config = Config.newInstance(activity)
-        textColor = config.textColor
+        textColor = activity.config.textColor
         topDivider = activity.resources.getDrawable(R.drawable.divider)
-        primaryColor = config.primaryColor
+        primaryColor = activity.config.primaryColor
         val mTodayCode = Formatter.getDayCodeFromTS(mNow)
         todayDate = Formatter.getDayTitle(activity, mTodayCode)
     }

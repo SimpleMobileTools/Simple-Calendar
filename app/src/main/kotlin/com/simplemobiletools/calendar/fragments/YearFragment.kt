@@ -9,9 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.helpers.YearlyCalendarImpl
-import com.simplemobiletools.calendar.helpers.Config
+import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.helpers.YEAR_LABEL
+import com.simplemobiletools.calendar.helpers.YearlyCalendarImpl
 import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.interfaces.YearlyCalendar
 import com.simplemobiletools.calendar.views.SmallMonthView
@@ -41,7 +41,7 @@ class YearFragment : Fragment(), YearlyCalendar {
 
     override fun onResume() {
         super.onResume()
-        val sundayFirst = Config.newInstance(context).isSundayFirst
+        val sundayFirst = context.config.isSundayFirst
         if (sundayFirst != mSundayFirst) {
             mSundayFirst = sundayFirst
             setupMonths()
@@ -75,7 +75,7 @@ class YearFragment : Fragment(), YearlyCalendar {
         val now = DateTime()
         if (now.year == mYear) {
             val monthLabel = mView.findViewById(res.getIdentifier("month_${now.monthOfYear}_label", "id", activity.packageName)) as TextView
-            monthLabel.setTextColor(Config.newInstance(context).primaryColor)
+            monthLabel.setTextColor(context.config.primaryColor)
 
             val monthView = mView.findViewById(res.getIdentifier("month_${now.monthOfYear}", "id", activity.packageName)) as SmallMonthView
             monthView.setTodaysId(now.dayOfMonth)

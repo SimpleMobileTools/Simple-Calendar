@@ -9,9 +9,9 @@ import android.content.Intent
 import android.net.Uri
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.EventActivity
+import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.scheduleNextEvent
 import com.simplemobiletools.calendar.extensions.updateListWidget
-import com.simplemobiletools.calendar.helpers.Config
 import com.simplemobiletools.calendar.helpers.DBHelper
 import com.simplemobiletools.calendar.helpers.EVENT_ID
 import com.simplemobiletools.calendar.helpers.Formatter
@@ -49,7 +49,7 @@ class NotificationReceiver : BroadcastReceiver() {
     }
 
     private fun getNotification(context: Context, pendingIntent: PendingIntent, content: String): Notification {
-        val soundUri = Uri.parse(Config.newInstance(context).reminderSound)
+        val soundUri = Uri.parse(context.config.reminderSound)
         val builder = Notification.Builder(context)
                 .setContentTitle(context.resources.getString(R.string.app_name))
                 .setContentText(content)
@@ -59,7 +59,7 @@ class NotificationReceiver : BroadcastReceiver() {
                 .setAutoCancel(true)
                 .setSound(soundUri)
 
-        if (Config.newInstance(context).vibrateOnReminder)
+        if (context.config.vibrateOnReminder)
             builder.setVibrate(longArrayOf(0, 300, 300, 300))
 
         return builder.build()

@@ -7,7 +7,7 @@ import android.widget.RemoteViews
 import android.widget.RemoteViewsService
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.R.id.event_item_holder
-import com.simplemobiletools.calendar.helpers.Config
+import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.helpers.DBHelper
 import com.simplemobiletools.calendar.helpers.EVENT_ID
 import com.simplemobiletools.calendar.helpers.Formatter
@@ -24,7 +24,7 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
     val ITEM_HEADER = 1
 
     var events: List<ListItem> = ArrayList()
-    val textColor: Int = Config.newInstance(context).widgetTextColor
+    val textColor: Int = context.config.widgetTextColor
 
     override fun getViewAt(position: Int): RemoteViews {
         val type = getItemViewType(position)

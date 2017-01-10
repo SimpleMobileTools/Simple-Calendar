@@ -13,8 +13,8 @@ import android.view.View
 import android.widget.SeekBar
 import android.widget.TextView
 import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.removeUnderlineFlag
-import com.simplemobiletools.calendar.helpers.Config
 import com.simplemobiletools.calendar.helpers.LOW_ALPHA
 import com.simplemobiletools.calendar.helpers.MonthlyCalendarImpl
 import com.simplemobiletools.calendar.helpers.MyWidgetMonthlyProvider
@@ -62,7 +62,6 @@ class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
     private fun initVariables() {
         mRes = resources
 
-        val config = Config.newInstance(this)
         mTextColorWithoutTransparency = config.widgetTextColor
         updateTextColors()
 
@@ -94,7 +93,7 @@ class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
     }
 
     private fun storeWidgetColors() {
-        Config.newInstance(this).apply {
+        config.apply {
             widgetBgColor = mBgColor
             widgetTextColor = mTextColorWithoutTransparency
         }
@@ -144,7 +143,7 @@ class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
     private fun updateDays() {
         val len = mDays!!.size
 
-        if (Config.newInstance(applicationContext).displayWeekNumbers) {
+        if (applicationContext.config.displayWeekNumbers) {
             week_num.setTextColor(mWeakTextColor)
             week_num.visibility = View.VISIBLE
 

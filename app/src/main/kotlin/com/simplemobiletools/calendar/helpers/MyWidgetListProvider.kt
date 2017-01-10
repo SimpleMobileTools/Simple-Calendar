@@ -11,6 +11,7 @@ import android.net.Uri
 import android.widget.RemoteViews
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.EventActivity
+import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.services.WidgetService
 
 class MyWidgetListProvider : AppWidgetProvider() {
@@ -19,7 +20,6 @@ class MyWidgetListProvider : AppWidgetProvider() {
 
         lateinit var mRemoteViews: RemoteViews
         lateinit var mRes: Resources
-        lateinit var mContext: Context
         lateinit var mWidgetManager: AppWidgetManager
         lateinit var mIntent: Intent
     }
@@ -30,18 +30,16 @@ class MyWidgetListProvider : AppWidgetProvider() {
     }
 
     private fun initVariables(context: Context) {
-        mContext = context
-        mRes = mContext.resources
+        mRes = context.resources
 
-        val config = Config.newInstance(context)
-        mTextColor = config.widgetTextColor
+        mTextColor = context.config.widgetTextColor
 
-        mWidgetManager = AppWidgetManager.getInstance(mContext)
+        mWidgetManager = AppWidgetManager.getInstance(context)
 
-        mRemoteViews = RemoteViews(mContext.packageName, R.layout.widget_event_list)
-        mIntent = Intent(mContext, MyWidgetListProvider::class.java)
+        mRemoteViews = RemoteViews(context.packageName, R.layout.widget_event_list)
+        mIntent = Intent(context, MyWidgetListProvider::class.java)
 
-        mRemoteViews.setInt(R.id.widget_event_list_holder, "setBackgroundColor", config.widgetBgColor)
+        mRemoteViews.setInt(R.id.widget_event_list_holder, "setBackgroundColor", context.config.widgetBgColor)
         mRemoteViews.setInt(R.id.widget_event_list_empty, "setTextColor", mTextColor)
 
         Intent(context, WidgetService::class.java).apply {

@@ -13,10 +13,10 @@ import android.text.SpannableString
 import android.text.style.UnderlineSpan
 import android.view.View
 import android.widget.RemoteViews
-import com.simplemobiletools.calendar.helpers.MonthlyCalendarImpl
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.DayActivity
 import com.simplemobiletools.calendar.activities.MainActivity
+import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.models.Day
 import com.simplemobiletools.commons.extensions.adjustAlpha
@@ -49,7 +49,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
         mRes = mContext.resources
         mCalendar = MonthlyCalendarImpl(this, mContext)
 
-        val config = Config.newInstance(context)
+        val config = context.config
         mTextColor = config.widgetTextColor
         mWeakTextColor = config.widgetTextColor.adjustAlpha(LOW_ALPHA)
 
@@ -108,7 +108,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
     }
 
     fun updateDays(days: List<Day>) {
-        val displayWeekNumbers = Config.newInstance(mContext).displayWeekNumbers
+        val displayWeekNumbers = mContext.config.displayWeekNumbers
         val len = days.size
         val packageName = mContext.packageName
         mRemoteViews.setInt(R.id.week_num, "setTextColor", mWeakTextColor)
@@ -187,7 +187,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
     }
 
     private fun updateLabelColor() {
-        val mSundayFirst = Config.newInstance(mContext).isSundayFirst
+        val mSundayFirst = mContext.config.isSundayFirst
         val packageName = mContext.packageName
         val letters = letterIDs
         for (i in 0..6) {
