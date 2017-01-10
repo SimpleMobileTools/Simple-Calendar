@@ -3,12 +3,12 @@
     <string name="app_launcher_name">Calendário</string>
     <string name="undo">Desfazer</string>
     <string name="change_view">Mudar vista</string>
-    <string name="weekly_view">Weekly view</string>
+    <string name="weekly_view">Vista semanal</string>
     <string name="monthly_view">Vista mensal</string>
     <string name="yearly_view">Vista anual</string>
     <string name="simple_event_list">Lista de eventos</string>
-    <string name="no_upcoming_events">Seems like you don\'t have any upcoming events.</string>
-    <string name="add_some_events">You can add some with the Plus button at the bottom.</string>
+    <string name="no_upcoming_events">Parece que você não tem eventos para breve.</string>
+    <string name="add_some_events">Pode adicionar um evento através do botão existente na base do ecrã.</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Calendário mensal</string>
@@ -58,7 +58,7 @@
     <string name="reminder_saved">Lembrete guardado</string>
     <string name="notification_sound">Som da notificação</string>
     <string name="no_ringtone_picker">Não foi encontrada qualquer aplicação capaz de definir o som</string>
-    <string name="no_ringtone_selected">None</string>
+    <string name="no_ringtone_selected">Nenhum</string>
 
     <plurals name="events_deleted">
         <item quantity="one">1 evento apagado</item>
@@ -87,14 +87,14 @@
     <string name="sunday_letter">D</string>
 
     <!-- List widget config example events -->
-    <string name="sample_title_1">Workout</string>
-    <string name="sample_description_1">Leg day</string>
-    <string name="sample_title_2">Meeting with John</string>
+    <string name="sample_title_1">Exercício</string>
+    <string name="sample_description_1">Ir às compras</string>
+    <string name="sample_title_2">Encontro com João</string>
     <string name="sample_description_2">In Rockstone garden</string>
-    <string name="sample_title_3">Library</string>
-    <string name="sample_title_4">Lunch with Mary</string>
-    <string name="sample_description_4">In the Plaza</string>
-    <string name="sample_title_5">Coffee time</string>
+    <string name="sample_title_3">Ir à biblioteca</string>
+    <string name="sample_title_4">Lanchar com a Maria</string>
+    <string name="sample_description_4">Ir até à praça</string>
+    <string name="sample_title_5">Beber um café</string>
 
     <!-- Release notes -->
     <string name="release_4x">Added a weekly view</string>
