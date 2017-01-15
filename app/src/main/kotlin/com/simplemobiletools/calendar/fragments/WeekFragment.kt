@@ -15,6 +15,7 @@ import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.views.MyScrollView
 import kotlinx.android.synthetic.main.fragment_week.view.*
 import org.joda.time.DateTime
+import java.util.*
 
 class WeekFragment : Fragment(), WeeklyCalendar {
     private var mListener: WeekScrollListener? = null
@@ -37,7 +38,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             }
         })
 
-        mView.week_events_grid.adapter = WeekEventsAdapter(context)
+        mView.week_events_grid.adapter = WeekEventsAdapter(context, ArrayList<Event>())
 
         mCalendar = WeeklyCalendarImpl(this, context)
         return mView

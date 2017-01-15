@@ -10,7 +10,7 @@ import com.simplemobiletools.calendar.fragments.WeekFragment
 class MyWeekPagerAdapter(fm: FragmentManager, private val mListener: WeekFragment.WeekScrollListener) : FragmentStatePagerAdapter(fm) {
     private val mFragments = SparseArray<WeekFragment>()
 
-    override fun getCount() = 3
+    override fun getCount() = 1
 
     override fun getItem(position: Int): Fragment {
         val bundle = Bundle()
