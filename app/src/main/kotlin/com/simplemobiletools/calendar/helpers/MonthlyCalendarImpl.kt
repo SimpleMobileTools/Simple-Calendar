@@ -23,8 +23,8 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
 
     fun updateMonthlyCalendar(targetDate: DateTime) {
         mTargetDate = targetDate
-        val startTS = Formatter.getDayStartTS(Formatter.getDayCodeFromDateTime(mTargetDate.minusMonths(1)))
-        val endTS = Formatter.getDayEndTS(Formatter.getDayCodeFromDateTime(mTargetDate.plusMonths(1)))
+        val startTS = (mTargetDate.minusMonths(1).millis / 1000).toInt()
+        val endTS = (mTargetDate.plusMonths(1).millis / 1000).toInt()
         DBHelper(mContext).getEvents(startTS, endTS, this)
     }
 
@@ -81,9 +81,9 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
     // it works more often than not, dont touch
     private fun markDaysWithEvents(days: ArrayList<Day>) {
         val eventCodes = ArrayList<String>()
-        for (event in mEvents) {
-            val startDateTime = DateTime().withMillis(event.startTS * 1000L)
-            val endDateTime = DateTime().withMillis(event.endTS * 1000L)
+        for ((id, startTS, endTS) in mEvents) {
+            val startDateTime = DateTime().withMillis(startTS * 1000L)
+            val endDateTime = DateTime().withMillis(endTS * 1000L)
             val endCode = Formatter.getDayCodeFromDateTime(endDateTime)
 
             var currDay = startDateTime
