@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.MainActivity
+import com.simplemobiletools.calendar.adapters.WeekEventsAdapter
 import com.simplemobiletools.calendar.helpers.DBHelper
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.views.MyScrollView
@@ -34,6 +35,8 @@ class WeekFragment : Fragment(), DBHelper.GetEventsListener {
                 mView.week_events_scrollview.viewTreeObserver.removeOnGlobalLayoutListener(this)
             }
         })
+
+        mView.week_events_grid.adapter = WeekEventsAdapter(context)
         return mView
     }
 

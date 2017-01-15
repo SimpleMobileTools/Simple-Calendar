@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/week_holder"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/weekly_view_row_minus_one_height"
+    android:background="@android:color/white">
+
+</RelativeLayout>

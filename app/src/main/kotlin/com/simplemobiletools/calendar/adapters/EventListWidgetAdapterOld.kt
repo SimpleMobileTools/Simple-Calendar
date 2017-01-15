@@ -18,12 +18,11 @@ class EventListWidgetAdapterOld(val context: Context, val mEvents: List<ListItem
     val ITEM_EVENT = 0
     val ITEM_HEADER = 1
 
-    private val mInflater: LayoutInflater
+    private val mInflater: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
     private var mTopDivider: Drawable? = null
     private var mTextColor = 0
 
     init {
-        mInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         mTopDivider = context.resources.getDrawable(R.drawable.divider)
     }
 
