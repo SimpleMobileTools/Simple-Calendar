@@ -2,6 +2,8 @@ package com.simplemobiletools.calendar.adapters
 
 import android.content.Context
 import android.content.Intent
+import android.text.SpannableString
+import android.text.style.UnderlineSpan
 import android.view.View
 import android.widget.RemoteViews
 import android.widget.RemoteViewsService
@@ -25,6 +27,7 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
 
     var events: List<ListItem> = ArrayList()
     val textColor: Int = context.config.widgetTextColor
+    var todayDate = ""
 
     override fun getViewAt(position: Int): RemoteViews {
         val type = getItemViewType(position)
@@ -63,8 +66,15 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
         } else {
             val item = events[position] as ListSection
             remoteView = RemoteViews(context.packageName, R.layout.event_list_section_widget).apply {
-                setTextViewText(R.id.event_item_title, item.title)
                 setInt(R.id.event_item_title, "setTextColor", textColor)
+
+                if (item.title == todayDate) {
+                    val underlinedText = SpannableString(item.title)
+                    underlinedText.setSpan(UnderlineSpan(), 0, item.title.length, 0)
+                    setTextViewText(R.id.event_item_title, underlinedText)
+                } else {
+                    setTextViewText(R.id.event_item_title, item.title)
+                }
             }
         }
 
@@ -78,6 +88,9 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
     override fun getViewTypeCount() = 2
 
     override fun onCreate() {
+        val now = (System.currentTimeMillis() / 1000).toInt()
+        val todayCode = Formatter.getDayCodeFromTS(now)
+        todayDate = Formatter.getDayTitle(context, todayCode)
     }
 
     override fun getItemId(position: Int) = position.toLong()
