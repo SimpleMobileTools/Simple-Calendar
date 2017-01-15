@@ -5,17 +5,36 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewTreeObserver
 import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.activities.MainActivity
 import com.simplemobiletools.calendar.helpers.DBHelper
 import com.simplemobiletools.calendar.models.Event
+import com.simplemobiletools.calendar.views.MyScrollView
+import kotlinx.android.synthetic.main.fragment_week.view.*
 import java.util.*
 import kotlin.comparisons.compareBy
 
 class WeekFragment : Fragment(), DBHelper.GetEventsListener {
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_week, container, false)
+    private var mListener: WeekScrollListener? = null
+    lateinit var mView: View
 
-        return view
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        mView = inflater.inflate(R.layout.fragment_week, container, false)
+
+        mView.week_events_scrollview.setOnScrollviewListener(object : MyScrollView.ScrollViewListener {
+            override fun onScrollChanged(scrollView: MyScrollView, x: Int, y: Int, oldx: Int, oldy: Int) {
+                mListener?.scrollTo(y)
+            }
+        })
+
+        mView.week_events_scrollview.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                updateScrollY(MainActivity.mWeekScrollY)
+                mView.week_events_scrollview.viewTreeObserver.removeOnGlobalLayoutListener(this)
+            }
+        })
+        return mView
     }
 
     override fun gotEvents(events: MutableList<Event>) {
@@ -23,5 +42,17 @@ class WeekFragment : Fragment(), DBHelper.GetEventsListener {
         activity?.runOnUiThread {
 
         }
+    }
+
+    fun setListener(listener: WeekScrollListener) {
+        mListener = listener
+    }
+
+    fun updateScrollY(y: Int) {
+        mView.week_events_scrollview.scrollY = y
+    }
+
+    interface WeekScrollListener {
+        fun scrollTo(y: Int)
     }
 }

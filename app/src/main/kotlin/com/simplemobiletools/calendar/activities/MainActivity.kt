@@ -18,8 +18,10 @@ import com.simplemobiletools.calendar.dialogs.ChangeViewDialog
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.updateWidgets
 import com.simplemobiletools.calendar.fragments.EventListFragment
+import com.simplemobiletools.calendar.fragments.WeekFragment
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
+import com.simplemobiletools.calendar.views.MyScrollView
 import com.simplemobiletools.commons.extensions.checkWhatsNew
 import com.simplemobiletools.commons.extensions.updateTextColors
 import com.simplemobiletools.commons.helpers.LICENSE_JODA
@@ -39,6 +41,10 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
     private var mSnackbar: Snackbar? = null
     private var mEventListFragment: EventListFragment? = null
     private var mStoredTextColor = 0
+
+    companion object {
+        var mWeekScrollY = 0
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -116,6 +122,8 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
             val targetDay = DateTime().toString(Formatter.DAYCODE_PATTERN)
             fillMonthlyViewPager(targetDay)
         }
+
+        mWeekScrollY = 0
     }
 
     private fun launchSettings() {
@@ -161,7 +169,12 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
     }
 
     private fun fillWeeklyViewPager() {
-        val weeklyAdapter = MyWeekPagerAdapter(supportFragmentManager)
+        val weeklyAdapter = MyWeekPagerAdapter(supportFragmentManager, object : WeekFragment.WeekScrollListener {
+            override fun scrollTo(y: Int) {
+                week_view_hours_scrollview.scrollY = y
+                mWeekScrollY = y
+            }
+        })
         main_view_pager.visibility = View.GONE
         calendar_event_list_holder.visibility = View.GONE
         main_weekly_scrollview.visibility = View.VISIBLE
@@ -173,6 +186,15 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
             view.text = if (value.length == 2) value else "0$value"
             week_view_hours_holder.addView(view)
         }
+
+        week_view_view_pager.adapter = weeklyAdapter
+
+        week_view_hours_scrollview.setOnScrollviewListener(object : MyScrollView.ScrollViewListener {
+            override fun onScrollChanged(scrollView: MyScrollView, x: Int, y: Int, oldx: Int, oldy: Int) {
+                mWeekScrollY = y
+                weeklyAdapter.updateScrollY(week_view_view_pager.currentItem, y)
+            }
+        })
     }
 
     private fun fillYearlyViewPager() {

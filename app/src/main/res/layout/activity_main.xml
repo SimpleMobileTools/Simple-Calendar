@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ScrollView
+    <LinearLayout
         android:id="@+id/main_weekly_scrollview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,17 +19,29 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <LinearLayout
-                android:id="@+id/week_view_hours_holder"
-                android:layout_width="match_parent"
+            <com.simplemobiletools.calendar.views.MyScrollView
+                android:id="@+id/week_view_hours_scrollview"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingBottom="@dimen/weekly_view_row_height">
+                android:layout_marginTop="@dimen/weekly_view_day_letters_height"
+                android:overScrollMode="never"
+                android:scrollbars="none">
 
-            </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/week_view_hours_holder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/weekly_view_row_height"/>
+            </com.simplemobiletools.calendar.views.MyScrollView>
+
+            <com.simplemobiletools.commons.views.MyViewPager
+                android:id="@+id/week_view_view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
 
         </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
 
     <com.simplemobiletools.commons.views.MyViewPager
         android:id="@+id/main_view_pager"
