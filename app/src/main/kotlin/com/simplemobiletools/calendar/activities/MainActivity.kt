@@ -166,6 +166,7 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
         calendar_event_list_holder.visibility = View.GONE
         main_weekly_scrollview.visibility = View.VISIBLE
 
+        week_view_hours_holder.removeAllViews()
         for (i in 1..23) {
             val view = layoutInflater.inflate(R.layout.weekly_view_hour_textview, null, false) as TextView
             val value = i.toString()
