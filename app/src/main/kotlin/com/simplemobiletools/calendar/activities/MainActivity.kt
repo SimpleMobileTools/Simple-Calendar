@@ -11,6 +11,7 @@ import android.view.View
 import com.simplemobiletools.calendar.BuildConfig
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.adapters.MyMonthPagerAdapter
+import com.simplemobiletools.calendar.adapters.MyWeekPagerAdapter
 import com.simplemobiletools.calendar.adapters.MyYearPagerAdapter
 import com.simplemobiletools.calendar.dialogs.ChangeViewDialog
 import com.simplemobiletools.calendar.extensions.config
@@ -109,7 +110,7 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
         } else if (config.storedView == EVENTS_LIST_VIEW) {
             fillEventsList()
         } else if (config.storedView == WEEKLY_VIEW) {
-
+            fillWeeklyViewPager()
         } else {
             val targetDay = DateTime().toString(Formatter.DAYCODE_PATTERN)
             fillMonthlyViewPager(targetDay)
@@ -155,6 +156,13 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
         }
 
         return months
+    }
+
+    private fun fillWeeklyViewPager() {
+        val weeklyAdapter = MyWeekPagerAdapter(supportFragmentManager)
+        main_view_pager.apply {
+            adapter = weeklyAdapter
+        }
     }
 
     private fun fillYearlyViewPager() {
