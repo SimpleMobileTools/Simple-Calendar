@@ -8,6 +8,7 @@ import android.support.v4.view.ViewPager
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.TextView
 import com.simplemobiletools.calendar.BuildConfig
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.adapters.MyMonthPagerAdapter
@@ -134,6 +135,7 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
     }
 
     private fun fillMonthlyViewPager(targetDay: String) {
+        main_weekly_scrollview.visibility = View.GONE
         calendar_fab.visibility = View.VISIBLE
         val codes = getMonths(targetDay)
         val monthlyAdapter = MyMonthPagerAdapter(supportFragmentManager, codes, this)
@@ -160,12 +162,20 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
 
     private fun fillWeeklyViewPager() {
         val weeklyAdapter = MyWeekPagerAdapter(supportFragmentManager)
-        main_view_pager.apply {
-            adapter = weeklyAdapter
+        main_view_pager.visibility = View.GONE
+        calendar_event_list_holder.visibility = View.GONE
+        main_weekly_scrollview.visibility = View.VISIBLE
+
+        for (i in 1..23) {
+            val view = layoutInflater.inflate(R.layout.weekly_view_hour_textview, null, false) as TextView
+            val value = i.toString()
+            view.text = if (value.length == 2) value else "0$value"
+            week_view_hours_holder.addView(view)
         }
     }
 
     private fun fillYearlyViewPager() {
+        main_weekly_scrollview.visibility = View.GONE
         calendar_fab.visibility = View.GONE
         val targetYear = DateTime().toString(Formatter.YEAR_PATTERN).toInt()
         val years = getYears(targetYear)
@@ -224,6 +234,7 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
         title = getString(R.string.app_launcher_name)
         main_view_pager.adapter = null
         main_view_pager.visibility = View.GONE
+        main_weekly_scrollview.visibility = View.GONE
         calendar_event_list_holder.visibility = View.VISIBLE
 
         if (mEventListFragment == null)
