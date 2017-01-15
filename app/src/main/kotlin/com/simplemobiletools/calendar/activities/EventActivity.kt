@@ -9,10 +9,10 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.AdapterView
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.extensions.beVisibleIf
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.getAppropriateTheme
 import com.simplemobiletools.calendar.extensions.scheduleNotification
+import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
@@ -230,8 +230,8 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             return
         }
 
-        val newStartTS = (mEventStartDateTime.millis / 1000).toInt()
-        val newEndTS = (mEventEndDateTime.millis / 1000).toInt()
+        val newStartTS = mEventStartDateTime.seconds()
+        val newEndTS = mEventEndDateTime.seconds()
 
         if (event_end_checkbox.isChecked && newStartTS > newEndTS) {
             toast(R.string.end_before_start)

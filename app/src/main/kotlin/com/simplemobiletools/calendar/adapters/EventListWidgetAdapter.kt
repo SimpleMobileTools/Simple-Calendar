@@ -10,6 +10,7 @@ import android.widget.RemoteViewsService
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.R.id.event_item_holder
 import com.simplemobiletools.calendar.extensions.config
+import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.helpers.DBHelper
 import com.simplemobiletools.calendar.helpers.EVENT_ID
 import com.simplemobiletools.calendar.helpers.Formatter
@@ -96,8 +97,8 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
     override fun getItemId(position: Int) = position.toLong()
 
     override fun onDataSetChanged() {
-        val fromTS = (DateTime().millis / 1000).toInt()
-        val toTS = (DateTime().plusMonths(6).millis / 1000).toInt()
+        val fromTS = DateTime().seconds()
+        val toTS = DateTime().plusMonths(6).seconds()
         DBHelper(context).getEventsInBackground(fromTS, toTS, object : DBHelper.GetEventsListener {
             override fun gotEvents(events: MutableList<Event>) {
                 val listItems = ArrayList<ListItem>(events.size)

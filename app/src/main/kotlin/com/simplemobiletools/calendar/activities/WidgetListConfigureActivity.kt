@@ -11,6 +11,7 @@ import android.widget.SeekBar
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.adapters.EventListWidgetAdapterOld
 import com.simplemobiletools.calendar.extensions.config
+import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.helpers.MyWidgetListProvider
 import com.simplemobiletools.calendar.models.ListEvent
@@ -134,26 +135,26 @@ class WidgetListConfigureActivity : AppCompatActivity() {
     private fun getListItems(): ArrayList<ListItem> {
         val listItems = ArrayList<ListItem>(10)
         var dateTime = DateTime.now().withTime(0, 0, 0, 0).plusDays(1)
-        var code = Formatter.getDayCodeFromTS((dateTime.millis / 1000).toInt())
+        var code = Formatter.getDayCodeFromTS(dateTime.seconds())
         var day = Formatter.getDayTitle(this, code)
         listItems.add(ListSection(day))
 
         var time = dateTime.withHourOfDay(7)
-        listItems.add(ListEvent(1, (time.millis / 1000).toInt(), (time.plusMinutes(30).millis / 1000).toInt(), getString(R.string.sample_title_1), getString(R.string.sample_description_1)))
+        listItems.add(ListEvent(1, time.seconds(), time.plusMinutes(30).seconds(), getString(R.string.sample_title_1), getString(R.string.sample_description_1)))
         time = dateTime.withHourOfDay(8)
-        listItems.add(ListEvent(2, (time.millis / 1000).toInt(), (time.plusHours(1).millis / 1000).toInt(), getString(R.string.sample_title_2), getString(R.string.sample_description_2)))
+        listItems.add(ListEvent(2, time.seconds(), time.plusHours(1).seconds(), getString(R.string.sample_title_2), getString(R.string.sample_description_2)))
 
         dateTime = dateTime.plusDays(1)
-        code = Formatter.getDayCodeFromTS((dateTime.millis / 1000).toInt())
+        code = Formatter.getDayCodeFromTS(dateTime.seconds())
         day = Formatter.getDayTitle(this, code)
         listItems.add(ListSection(day))
 
         time = dateTime.withHourOfDay(8)
-        listItems.add(ListEvent(3, (time.millis / 1000).toInt(), (time.plusHours(1).millis / 1000).toInt(), getString(R.string.sample_title_3), ""))
+        listItems.add(ListEvent(3, time.seconds(), time.plusHours(1).seconds(), getString(R.string.sample_title_3), ""))
         time = dateTime.withHourOfDay(13)
-        listItems.add(ListEvent(4, (time.millis / 1000).toInt(), (time.plusHours(1).millis / 1000).toInt(), getString(R.string.sample_title_4), getString(R.string.sample_description_4)))
+        listItems.add(ListEvent(4, time.seconds(), time.plusHours(1).seconds(), getString(R.string.sample_title_4), getString(R.string.sample_description_4)))
         time = dateTime.withHourOfDay(18)
-        listItems.add(ListEvent(5, (time.millis / 1000).toInt(), (time.plusMinutes(10).millis / 1000).toInt(), getString(R.string.sample_title_5), ""))
+        listItems.add(ListEvent(5, time.seconds(), time.plusMinutes(10).seconds(), getString(R.string.sample_title_5), ""))
 
         return listItems
     }

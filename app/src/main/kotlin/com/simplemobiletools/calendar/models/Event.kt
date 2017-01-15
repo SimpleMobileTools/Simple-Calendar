@@ -1,5 +1,6 @@
 package com.simplemobiletools.calendar.models
 
+import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.helpers.*
 import org.joda.time.DateTime
 import java.io.Serializable
@@ -21,7 +22,7 @@ data class Event(var id: Int = 0, var startTS: Int = 0, var endTS: Int = 0, var 
             MONTH -> currStart.plusMonths(1)
             else -> currStart.plusYears(1)
         }
-        val newStartTS = (newStart.millis / 1000).toInt()
+        val newStartTS = newStart.seconds()
         val newEndTS = newStartTS + (endTS - startTS)
         startTS = newStartTS
         endTS = newEndTS

@@ -1,6 +1,7 @@
 package com.simplemobiletools.calendar.helpers
 
 import android.content.Context
+import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.interfaces.WeeklyCalendar
 import com.simplemobiletools.calendar.models.Event
 import org.joda.time.DateTime
@@ -17,8 +18,8 @@ class WeeklyCalendarImpl(val mCallback: WeeklyCalendar, val mContext: Context) :
 
     fun updateWeeklyCalendar(targetDate: DateTime) {
         mTargetDate = targetDate
-        val startTS = (mTargetDate.millis / 1000).toInt()
-        val endTS = (mTargetDate.plusWeeks(1).millis / 1000).toInt()
+        val startTS = mTargetDate.seconds()
+        val endTS = mTargetDate.plusWeeks(1).seconds()
         DBHelper(mContext).getEvents(startTS, endTS, this)
     }
 

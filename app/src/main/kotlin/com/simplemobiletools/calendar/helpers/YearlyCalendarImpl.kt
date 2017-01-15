@@ -2,8 +2,7 @@ package com.simplemobiletools.calendar.helpers
 
 import android.content.Context
 import android.util.SparseArray
-import com.simplemobiletools.calendar.helpers.DBHelper
-import com.simplemobiletools.calendar.helpers.Formatter
+import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.interfaces.YearlyCalendar
 import com.simplemobiletools.calendar.models.Event
 import org.joda.time.DateTime
@@ -13,8 +12,8 @@ class YearlyCalendarImpl(val callback: YearlyCalendar, val context: Context, val
 
     fun getEvents(year: Int) {
         val startDateTime = DateTime().withTime(0, 0, 0, 0).withDate(year, 1, 1)
-        val startTS = (startDateTime.millis / 1000).toInt()
-        val endTS = (startDateTime.plusYears(1).minusSeconds(1).millis / 1000).toInt()
+        val startTS = startDateTime.seconds()
+        val endTS = startDateTime.plusYears(1).minusSeconds(1).seconds()
         DBHelper(context).getEvents(startTS, endTS, this)
     }
 

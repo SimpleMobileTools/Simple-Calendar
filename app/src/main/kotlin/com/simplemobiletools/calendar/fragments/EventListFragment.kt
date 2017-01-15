@@ -11,8 +11,7 @@ import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.activities.MainActivity
 import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.adapters.EventListAdapter
-import com.simplemobiletools.calendar.extensions.beGoneIf
-import com.simplemobiletools.calendar.extensions.beVisibleIf
+import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.helpers.DBHelper
 import com.simplemobiletools.calendar.helpers.EVENT_ID
 import com.simplemobiletools.calendar.helpers.Formatter
@@ -21,6 +20,8 @@ import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.models.ListEvent
 import com.simplemobiletools.calendar.models.ListItem
 import com.simplemobiletools.calendar.models.ListSection
+import com.simplemobiletools.commons.extensions.beGoneIf
+import com.simplemobiletools.commons.extensions.beVisibleIf
 import kotlinx.android.synthetic.main.fragment_event_list.view.*
 import org.joda.time.DateTime
 import java.util.*
@@ -49,8 +50,8 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, DBHelper.Event
     }
 
     private fun checkEvents() {
-        val fromTS = (DateTime().millis / 1000).toInt()
-        val toTS = (DateTime().plusMonths(6).millis / 1000).toInt()
+        val fromTS = DateTime().seconds()
+        val toTS = DateTime().plusMonths(6).seconds()
         DBHelper(context).getEvents(fromTS, toTS, this)
     }
 

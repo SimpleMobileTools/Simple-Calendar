@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.database.sqlite.SQLiteQueryBuilder
 import android.text.TextUtils
+import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.extensions.updateWidgets
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.commons.extensions.getIntValue
@@ -208,7 +209,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
 
     fun getEventsAtReboot(): List<Event> {
         val selection = "$COL_REMINDER_MINUTES != -1 AND ($COL_START_TS > ? OR $COL_REPEAT_INTERVAL != 0)"
-        val selectionArgs = arrayOf((DateTime.now().millis / 1000).toString())
+        val selectionArgs = arrayOf(DateTime.now().seconds().toString())
         val cursor = getEventsCursor(selection, selectionArgs)
         return fillEvents(cursor)
     }

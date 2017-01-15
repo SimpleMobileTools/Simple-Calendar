@@ -2,6 +2,7 @@ package com.simplemobiletools.calendar.helpers
 
 import android.content.Context
 import com.simplemobiletools.calendar.extensions.config
+import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.models.Day
 import com.simplemobiletools.calendar.models.Event
@@ -23,8 +24,8 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
 
     fun updateMonthlyCalendar(targetDate: DateTime) {
         mTargetDate = targetDate
-        val startTS = (mTargetDate.minusMonths(1).millis / 1000).toInt()
-        val endTS = (mTargetDate.plusMonths(1).millis / 1000).toInt()
+        val startTS = mTargetDate.minusMonths(1).seconds()
+        val endTS = mTargetDate.plusMonths(1).seconds()
         DBHelper(mContext).getEvents(startTS, endTS, this)
     }
 

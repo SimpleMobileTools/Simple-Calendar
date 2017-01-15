@@ -64,7 +64,7 @@ private fun getNewTS(ts: Int, isMonthly: Boolean): Int {
     while (dateTime.isBeforeNow) {
         dateTime = if (isMonthly) dateTime.plusMonths(1) else dateTime.plusYears(1)
     }
-    return (dateTime.millis / 1000).toInt()
+    return dateTime.seconds()
 }
 
 fun Context.scheduleNotification(event: Event) {
