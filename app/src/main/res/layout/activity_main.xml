@@ -23,7 +23,8 @@
                 android:id="@+id/week_view_hours_holder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/weekly_view_row_height">
 
             </LinearLayout>
 
