@@ -9,16 +9,17 @@ import android.view.ViewTreeObserver
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.MainActivity
 import com.simplemobiletools.calendar.adapters.WeekEventsAdapter
-import com.simplemobiletools.calendar.helpers.DBHelper
+import com.simplemobiletools.calendar.helpers.WeeklyCalendarImpl
+import com.simplemobiletools.calendar.interfaces.WeeklyCalendar
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.views.MyScrollView
 import kotlinx.android.synthetic.main.fragment_week.view.*
-import java.util.*
-import kotlin.comparisons.compareBy
+import org.joda.time.DateTime
 
-class WeekFragment : Fragment(), DBHelper.GetEventsListener {
+class WeekFragment : Fragment(), WeeklyCalendar {
     private var mListener: WeekScrollListener? = null
     lateinit var mView: View
+    lateinit var mCalendar: WeeklyCalendarImpl
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mView = inflater.inflate(R.layout.fragment_week, container, false)
@@ -37,14 +38,18 @@ class WeekFragment : Fragment(), DBHelper.GetEventsListener {
         })
 
         mView.week_events_grid.adapter = WeekEventsAdapter(context)
+
+        mCalendar = WeeklyCalendarImpl(this, context)
         return mView
     }
 
-    override fun gotEvents(events: MutableList<Event>) {
-        val sorted = ArrayList<Event>(events.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { it.description })))
-        activity?.runOnUiThread {
+    override fun onResume() {
+        super.onResume()
+        mCalendar.updateWeeklyCalendar(DateTime())
+    }
 
-        }
+    override fun updateWeeklyCalendar(events: List<Event>) {
+
     }
 
     fun setListener(listener: WeekScrollListener) {

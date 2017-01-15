@@ -17,9 +17,13 @@ class WeeklyCalendarImpl(val mCallback: WeeklyCalendar, val mContext: Context) :
 
     fun updateWeeklyCalendar(targetDate: DateTime) {
         mTargetDate = targetDate
+        val startTS = (mTargetDate.millis / 1000).toInt()
+        val endTS = (mTargetDate.plusWeeks(1).millis / 1000).toInt()
+        DBHelper(mContext).getEvents(startTS, endTS, this)
     }
 
     override fun gotEvents(events: MutableList<Event>) {
         mEvents = events
+        mCallback.updateWeeklyCalendar(events)
     }
 }
