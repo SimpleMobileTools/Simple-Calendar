@@ -6,9 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.models.Event
 
-class WeekEventsAdapter(val context: Context, val mEvents: List<Event>) : BaseAdapter() {
+class WeekEventsAdapter(val context: Context) : BaseAdapter() {
     private val mInflater: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
@@ -21,7 +20,7 @@ class WeekEventsAdapter(val context: Context, val mEvents: List<Event>) : BaseAd
         return view!!
     }
 
-    override fun getItem(position: Int) = mEvents[position]
+    override fun getItem(position: Int) = null
 
     override fun getItemId(position: Int) = 0L
 
