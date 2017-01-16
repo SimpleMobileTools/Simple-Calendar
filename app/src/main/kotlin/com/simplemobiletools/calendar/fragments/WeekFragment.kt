@@ -1,14 +1,18 @@
 package com.simplemobiletools.calendar.fragments
 
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
+import android.widget.LinearLayout
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.MainActivity
 import com.simplemobiletools.calendar.adapters.WeekEventsAdapter
+import com.simplemobiletools.calendar.extensions.config
+import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.helpers.WeeklyCalendarImpl
 import com.simplemobiletools.calendar.interfaces.WeeklyCalendar
 import com.simplemobiletools.calendar.models.Event
@@ -48,7 +52,17 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     }
 
     override fun updateWeeklyCalendar(events: List<Event>) {
-
+        val res = resources
+        val eventColor = context.config.primaryColor
+        for (event in events) {
+            val dateTime = Formatter.getDateTimeFromTS(event.startTS)
+            val dayOfWeek = dateTime.dayOfWeek - if (context.config.isSundayFirst) 0 else 1
+            val layout = mView.findViewById(res.getIdentifier("week_column_$dayOfWeek", "id", context.packageName)) as LinearLayout
+            LayoutInflater.from(context).inflate(R.layout.week_event_marker, null, false).apply {
+                background = ColorDrawable(eventColor)
+                layout.addView(this)
+            }
+        }
     }
 
     fun setListener(listener: WeekScrollListener) {

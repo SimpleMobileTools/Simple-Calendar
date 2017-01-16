@@ -94,6 +94,14 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/week_column_0"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:orientation="vertical"/>
+
+                <LinearLayout
                     android:id="@+id/week_column_1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -135,14 +143,6 @@
 
                 <LinearLayout
                     android:id="@+id/week_column_6"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@android:color/transparent"
-                    android:orientation="vertical"/>
-
-                <LinearLayout
-                    android:id="@+id/week_column_7"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
