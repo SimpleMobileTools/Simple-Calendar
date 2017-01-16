@@ -72,7 +72,7 @@
         android:overScrollMode="never"
         android:scrollbars="none">
 
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/week_events_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -87,6 +87,69 @@
                 android:numColumns="7"
                 android:verticalSpacing="1dp"/>
 
-        </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/weekly_view_events_height"
+                android:background="@android:color/transparent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/week_column_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:orientation="vertical"/>
+
+                <LinearLayout
+                    android:id="@+id/week_column_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:orientation="vertical"/>
+
+                <LinearLayout
+                    android:id="@+id/week_column_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:orientation="vertical"/>
+
+                <LinearLayout
+                    android:id="@+id/week_column_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:orientation="vertical"/>
+
+                <LinearLayout
+                    android:id="@+id/week_column_5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:orientation="vertical"/>
+
+                <LinearLayout
+                    android:id="@+id/week_column_6"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:orientation="vertical"/>
+
+                <LinearLayout
+                    android:id="@+id/week_column_7"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:orientation="vertical"/>
+
+            </LinearLayout>
+        </RelativeLayout>
     </com.simplemobiletools.calendar.views.MyScrollView>
 </LinearLayout>
