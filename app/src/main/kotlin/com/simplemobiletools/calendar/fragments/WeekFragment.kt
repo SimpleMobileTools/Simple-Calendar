@@ -53,15 +53,28 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
     override fun updateWeeklyCalendar(events: List<Event>) {
         val res = resources
+        val fullHeight = resources.getDimension(R.dimen.weekly_view_events_height)
+        val minuteHeight = fullHeight / 1440
         val eventColor = context.config.primaryColor
+        val sideMargin = res.displayMetrics.density.toInt()
         for (event in events) {
-            val dateTime = Formatter.getDateTimeFromTS(event.startTS)
-            val dayOfWeek = dateTime.dayOfWeek - if (context.config.isSundayFirst) 0 else 1
+            val startDateTime = Formatter.getDateTimeFromTS(event.startTS)
+            val endDateTime = Formatter.getDateTimeFromTS(event.endTS)
+            val dayOfWeek = startDateTime.dayOfWeek - if (context.config.isSundayFirst) 0 else 1
             val layout = mView.findViewById(res.getIdentifier("week_column_$dayOfWeek", "id", context.packageName)) as LinearLayout
+
+            val startMinutes = startDateTime.minuteOfDay
+            val duration = endDateTime.minuteOfDay - startMinutes
+
             LayoutInflater.from(context).inflate(R.layout.week_event_marker, null, false).apply {
                 background = ColorDrawable(eventColor)
                 activity.runOnUiThread {
                     layout.addView(this)
+                    (layoutParams as LinearLayout.LayoutParams).apply {
+                        rightMargin = sideMargin
+                        topMargin = (startMinutes * minuteHeight).toInt()
+                        height = (duration * minuteHeight).toInt() - sideMargin
+                    }
                 }
             }
         }
