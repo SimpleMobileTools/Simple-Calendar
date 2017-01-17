@@ -60,7 +60,9 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             val layout = mView.findViewById(res.getIdentifier("week_column_$dayOfWeek", "id", context.packageName)) as LinearLayout
             LayoutInflater.from(context).inflate(R.layout.week_event_marker, null, false).apply {
                 background = ColorDrawable(eventColor)
-                layout.addView(this)
+                activity.runOnUiThread {
+                    layout.addView(this)
+                }
             }
         }
     }
