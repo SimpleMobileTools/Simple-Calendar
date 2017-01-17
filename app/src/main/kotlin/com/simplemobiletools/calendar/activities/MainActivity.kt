@@ -16,6 +16,8 @@ import com.simplemobiletools.calendar.adapters.MyWeekPagerAdapter
 import com.simplemobiletools.calendar.adapters.MyYearPagerAdapter
 import com.simplemobiletools.calendar.dialogs.ChangeViewDialog
 import com.simplemobiletools.calendar.extensions.config
+import com.simplemobiletools.calendar.extensions.seconds
+import com.simplemobiletools.calendar.extensions.secondsInWeek
 import com.simplemobiletools.calendar.extensions.updateWidgets
 import com.simplemobiletools.calendar.fragments.EventListFragment
 import com.simplemobiletools.calendar.fragments.WeekFragment
@@ -36,6 +38,7 @@ import java.util.*
 class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
     private val PREFILLED_MONTHS = 73
     private val PREFILLED_YEARS = 21
+    private val PREFILLED_WEEKS = 41
 
     private var mIsMonthSelected = false
     private var mSnackbar: Snackbar? = null
@@ -169,7 +172,9 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
     }
 
     private fun fillWeeklyViewPager() {
-        val weeklyAdapter = MyWeekPagerAdapter(supportFragmentManager, object : WeekFragment.WeekScrollListener {
+        val thisweek = DateTime().withDayOfWeek(1).withTime(0, 0, 0, 0).seconds()
+        val weekTSs = getWeekTimestamps(thisweek)
+        val weeklyAdapter = MyWeekPagerAdapter(supportFragmentManager, weekTSs, object : WeekFragment.WeekScrollListener {
             override fun scrollTo(y: Int) {
                 week_view_hours_scrollview.scrollY = y
                 mWeekScrollY = y
@@ -187,7 +192,10 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
             week_view_hours_holder.addView(view)
         }
 
-        week_view_view_pager.adapter = weeklyAdapter
+        week_view_view_pager.apply {
+            adapter = weeklyAdapter
+            currentItem = weekTSs.size / 2
+        }
 
         week_view_hours_scrollview.setOnScrollviewListener(object : MyScrollView.ScrollViewListener {
             override fun onScrollChanged(scrollView: MyScrollView, x: Int, y: Int, oldx: Int, oldy: Int) {
@@ -195,6 +203,14 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
                 weeklyAdapter.updateScrollY(week_view_view_pager.currentItem, y)
             }
         })
+    }
+
+    private fun getWeekTimestamps(targetWeekTS: Int): List<Int> {
+        val weekTSs = ArrayList<Int>(PREFILLED_WEEKS)
+        for (i in -PREFILLED_WEEKS / 2..PREFILLED_WEEKS / 2) {
+            weekTSs.add(targetWeekTS + i * secondsInWeek)
+        }
+        return weekTSs
     }
 
     private fun fillYearlyViewPager() {

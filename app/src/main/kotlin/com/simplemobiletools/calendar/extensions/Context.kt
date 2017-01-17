@@ -99,3 +99,5 @@ fun Context.getAppropriateTheme(): Int {
 }
 
 val Context.config: Config get() = Config.newInstance(this)
+
+val Context.secondsInWeek: Int get() = 7 * 24 * 60 * 60

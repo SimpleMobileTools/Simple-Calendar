@@ -13,42 +13,51 @@ import com.simplemobiletools.calendar.activities.MainActivity
 import com.simplemobiletools.calendar.adapters.WeekEventsAdapter
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.helpers.Formatter
+import com.simplemobiletools.calendar.helpers.WEEK_START_TIMESTAMP
 import com.simplemobiletools.calendar.helpers.WeeklyCalendarImpl
 import com.simplemobiletools.calendar.interfaces.WeeklyCalendar
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.views.MyScrollView
 import kotlinx.android.synthetic.main.fragment_week.view.*
-import org.joda.time.DateTime
 
 class WeekFragment : Fragment(), WeeklyCalendar {
     private var mListener: WeekScrollListener? = null
+    private var mWeekTimestamp = 0
     lateinit var mView: View
     lateinit var mCalendar: WeeklyCalendarImpl
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        mView = inflater.inflate(R.layout.fragment_week, container, false)
+        mView = inflater.inflate(R.layout.fragment_week, container, false).apply {
 
-        mView.week_events_scrollview.setOnScrollviewListener(object : MyScrollView.ScrollViewListener {
-            override fun onScrollChanged(scrollView: MyScrollView, x: Int, y: Int, oldx: Int, oldy: Int) {
-                mListener?.scrollTo(y)
-            }
-        })
+            week_events_scrollview.setOnScrollviewListener(object : MyScrollView.ScrollViewListener {
+                override fun onScrollChanged(scrollView: MyScrollView, x: Int, y: Int, oldx: Int, oldy: Int) {
+                    mListener?.scrollTo(y)
+                }
+            })
 
-        mView.week_events_scrollview.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
-            override fun onGlobalLayout() {
-                updateScrollY(MainActivity.mWeekScrollY)
-                mView.week_events_scrollview.viewTreeObserver.removeOnGlobalLayoutListener(this)
-            }
-        })
+            week_events_scrollview.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+                override fun onGlobalLayout() {
+                    updateScrollY(MainActivity.mWeekScrollY)
+                    mView.week_events_scrollview.viewTreeObserver.removeOnGlobalLayoutListener(this)
+                }
+            })
 
-        mView.week_events_grid.adapter = WeekEventsAdapter(context)
+            week_events_grid.adapter = WeekEventsAdapter(context)
+        }
+
+        mWeekTimestamp = arguments.getInt(WEEK_START_TIMESTAMP)
         mCalendar = WeeklyCalendarImpl(this, context)
+        setupDayLabels()
         return mView
+    }
+
+    private fun setupDayLabels() {
+
     }
 
     override fun onResume() {
         super.onResume()
-        mCalendar.updateWeeklyCalendar(DateTime())
+        mCalendar.updateWeeklyCalendar(mWeekTimestamp)
     }
 
     override fun updateWeeklyCalendar(events: List<Event>) {

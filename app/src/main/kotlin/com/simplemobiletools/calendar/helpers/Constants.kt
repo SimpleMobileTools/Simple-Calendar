@@ -8,6 +8,7 @@ val MEDIUM_ALPHA = .6f
 val DAY_CODE = "day_code"
 val YEAR_LABEL = "year"
 val EVENT_ID = "event_id"
+val WEEK_START_TIMESTAMP = "week_start_timestamp"
 
 val MONTHLY_VIEW = 1
 val YEARLY_VIEW = 2

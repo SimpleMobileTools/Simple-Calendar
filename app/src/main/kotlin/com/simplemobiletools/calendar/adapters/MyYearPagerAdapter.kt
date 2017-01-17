@@ -8,7 +8,7 @@ import com.simplemobiletools.calendar.fragments.YearFragment
 import com.simplemobiletools.calendar.helpers.YEAR_LABEL
 import com.simplemobiletools.calendar.interfaces.NavigationListener
 
-class MyYearPagerAdapter(fm: FragmentManager, private val mYears: List<Int>, private val mListener: NavigationListener) : FragmentStatePagerAdapter(fm) {
+class MyYearPagerAdapter(fm: FragmentManager, val mYears: List<Int>, val mListener: NavigationListener) : FragmentStatePagerAdapter(fm) {
 
     override fun getCount() = mYears.size
 
