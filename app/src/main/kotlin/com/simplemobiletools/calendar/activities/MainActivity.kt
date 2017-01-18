@@ -183,6 +183,7 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
         main_view_pager.visibility = View.GONE
         calendar_event_list_holder.visibility = View.GONE
         main_weekly_scrollview.visibility = View.VISIBLE
+        title = getString(R.string.app_launcher_name)
 
         week_view_hours_holder.removeAllViews()
         for (i in 1..23) {
