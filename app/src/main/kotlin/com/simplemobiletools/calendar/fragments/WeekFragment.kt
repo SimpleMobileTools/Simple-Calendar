@@ -1,5 +1,6 @@
 package com.simplemobiletools.calendar.fragments
 
+import android.content.res.Resources
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import android.widget.LinearLayout
+import android.widget.TextView
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.MainActivity
 import com.simplemobiletools.calendar.adapters.WeekEventsAdapter
@@ -25,6 +27,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private var mWeekTimestamp = 0
     lateinit var mView: View
     lateinit var mCalendar: WeeklyCalendarImpl
+    lateinit var mRes: Resources
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mView = inflater.inflate(R.layout.fragment_week, container, false).apply {
@@ -45,6 +48,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             week_events_grid.adapter = WeekEventsAdapter(context)
         }
 
+        mRes = resources
         mWeekTimestamp = arguments.getInt(WEEK_START_TIMESTAMP)
         mCalendar = WeeklyCalendarImpl(this, context)
         setupDayLabels()
@@ -52,7 +56,12 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     }
 
     private fun setupDayLabels() {
-
+        var curDay = Formatter.getDateTimeFromTS(mWeekTimestamp)
+        for (i in 0..6) {
+            val view = mView.findViewById(mRes.getIdentifier("week_day_label_$i", "id", context.packageName)) as TextView
+            view.text = curDay.dayOfMonth.toString()
+            curDay = curDay.plusDays(1)
+        }
     }
 
     override fun onResume() {
@@ -61,16 +70,15 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     }
 
     override fun updateWeeklyCalendar(events: List<Event>) {
-        val res = resources
-        val fullHeight = resources.getDimension(R.dimen.weekly_view_events_height)
-        val minuteHeight = fullHeight / 1440
+        val fullHeight = mRes.getDimension(R.dimen.weekly_view_events_height)
+        val minuteHeight = fullHeight / (24 * 60)
         val eventColor = context.config.primaryColor
-        val sideMargin = res.displayMetrics.density.toInt()
+        val sideMargin = mRes.displayMetrics.density.toInt()
         for (event in events) {
             val startDateTime = Formatter.getDateTimeFromTS(event.startTS)
             val endDateTime = Formatter.getDateTimeFromTS(event.endTS)
             val dayOfWeek = startDateTime.dayOfWeek - if (context.config.isSundayFirst) 0 else 1
-            val layout = mView.findViewById(res.getIdentifier("week_column_$dayOfWeek", "id", context.packageName)) as LinearLayout
+            val layout = mView.findViewById(mRes.getIdentifier("week_column_$dayOfWeek", "id", context.packageName)) as LinearLayout
 
             val startMinutes = startDateTime.minuteOfDay
             val duration = endDateTime.minuteOfDay - startMinutes
