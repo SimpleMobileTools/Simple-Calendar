@@ -59,9 +59,22 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         var curDay = Formatter.getDateTimeFromTS(mWeekTimestamp)
         for (i in 0..6) {
             val view = mView.findViewById(mRes.getIdentifier("week_day_label_$i", "id", context.packageName)) as TextView
-            view.text = curDay.dayOfMonth.toString()
+            val dayLetter = getDayLetter(curDay.dayOfWeek)
+            view.text = "$dayLetter\n${curDay.dayOfMonth}"
             curDay = curDay.plusDays(1)
         }
+    }
+
+    private fun getDayLetter(pos: Int): String {
+        return mRes.getString(when (pos) {
+            1 -> R.string.monday_letter
+            2 -> R.string.tuesday_letter
+            3 -> R.string.wednesday_letter
+            4 -> R.string.thursday_letter
+            5 -> R.string.friday_letter
+            6 -> R.string.saturday_letter
+            else -> R.string.sunday_letter
+        })
     }
 
     override fun onResume() {
