@@ -87,11 +87,14 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         val minuteHeight = fullHeight / (24 * 60)
         val eventColor = context.config.primaryColor
         val sideMargin = mRes.displayMetrics.density.toInt()
+        (0..6).map { getColumnWithId(it) }
+                .forEach { activity.runOnUiThread { it.removeAllViews() } }
+
         for (event in events) {
             val startDateTime = Formatter.getDateTimeFromTS(event.startTS)
             val endDateTime = Formatter.getDateTimeFromTS(event.endTS)
             val dayOfWeek = startDateTime.dayOfWeek - if (context.config.isSundayFirst) 0 else 1
-            val layout = mView.findViewById(mRes.getIdentifier("week_column_$dayOfWeek", "id", context.packageName)) as LinearLayout
+            val layout = getColumnWithId(dayOfWeek)
 
             val startMinutes = startDateTime.minuteOfDay
             val duration = endDateTime.minuteOfDay - startMinutes
@@ -109,6 +112,8 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             }
         }
     }
+
+    private fun getColumnWithId(id: Int) = mView.findViewById(mRes.getIdentifier("week_column_$id", "id", context.packageName)) as LinearLayout
 
     fun setListener(listener: WeekScrollListener) {
         mListener = listener
