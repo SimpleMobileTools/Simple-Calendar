@@ -102,61 +102,54 @@
                 android:background="@android:color/transparent"
                 android:orientation="horizontal">
 
-                <LinearLayout
+                <RelativeLayout
                     android:id="@+id/week_column_0"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@android:color/transparent"
-                    android:orientation="vertical"/>
+                    android:background="@android:color/transparent"/>
 
-                <LinearLayout
+                <RelativeLayout
                     android:id="@+id/week_column_1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@android:color/transparent"
-                    android:orientation="vertical"/>
+                    android:background="@android:color/transparent"/>
 
-                <LinearLayout
+                <RelativeLayout
                     android:id="@+id/week_column_2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@android:color/transparent"
-                    android:orientation="vertical"/>
+                    android:background="@android:color/transparent"/>
 
-                <LinearLayout
+                <RelativeLayout
                     android:id="@+id/week_column_3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@android:color/transparent"
-                    android:orientation="vertical"/>
+                    android:background="@android:color/transparent"/>
 
-                <LinearLayout
+                <RelativeLayout
                     android:id="@+id/week_column_4"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@android:color/transparent"
-                    android:orientation="vertical"/>
+                    android:background="@android:color/transparent"/>
 
-                <LinearLayout
+                <RelativeLayout
                     android:id="@+id/week_column_5"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@android:color/transparent"
-                    android:orientation="vertical"/>
+                    android:background="@android:color/transparent"/>
 
-                <LinearLayout
+                <RelativeLayout
                     android:id="@+id/week_column_6"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@android:color/transparent"
-                    android:orientation="vertical"/>
+                    android:background="@android:color/transparent"/>
 
             </LinearLayout>
         </RelativeLayout>

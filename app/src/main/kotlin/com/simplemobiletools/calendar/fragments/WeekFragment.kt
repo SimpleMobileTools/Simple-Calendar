@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
-import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import android.widget.TextView
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.MainActivity
@@ -103,9 +103,10 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 background = ColorDrawable(eventColor)
                 activity.runOnUiThread {
                     layout.addView(this)
-                    (layoutParams as LinearLayout.LayoutParams).apply {
+                    (layoutParams as RelativeLayout.LayoutParams).apply {
                         rightMargin = sideMargin
                         topMargin = (startMinutes * minuteHeight).toInt()
+                        width = layout.width
                         height = (duration * minuteHeight).toInt() - sideMargin
                     }
                 }
@@ -113,7 +114,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         }
     }
 
-    private fun getColumnWithId(id: Int) = mView.findViewById(mRes.getIdentifier("week_column_$id", "id", context.packageName)) as LinearLayout
+    private fun getColumnWithId(id: Int) = mView.findViewById(mRes.getIdentifier("week_column_$id", "id", context.packageName)) as RelativeLayout
 
     fun setListener(listener: WeekScrollListener) {
         mListener = listener
