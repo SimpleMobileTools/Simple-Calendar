@@ -9,11 +9,9 @@
     <LinearLayout
         android:id="@+id/week_letters_holder"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/weekly_view_day_letters_height"
         android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingBottom="@dimen/tiny_margin"
-        android:paddingTop="@dimen/tiny_margin">
+        android:orientation="horizontal">
 
         <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/week_day_label_0"
@@ -21,7 +19,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="@string/monday_letter"/>
+            android:text="@string/monday_letter"
+            android:textSize="@dimen/normal_text_size"/>
 
         <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/week_day_label_1"
@@ -29,7 +28,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="@string/tuesday_letter"/>
+            android:text="@string/tuesday_letter"
+            android:textSize="@dimen/normal_text_size"/>
 
         <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/week_day_label_2"
@@ -37,7 +37,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="@string/wednesday_letter"/>
+            android:text="@string/wednesday_letter"
+            android:textSize="@dimen/normal_text_size"/>
 
         <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/week_day_label_3"
@@ -45,7 +46,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="@string/thursday_letter"/>
+            android:text="@string/thursday_letter"
+            android:textSize="@dimen/normal_text_size"/>
 
         <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/week_day_label_4"
@@ -53,7 +55,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="@string/friday_letter"/>
+            android:text="@string/friday_letter"
+            android:textSize="@dimen/normal_text_size"/>
 
         <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/week_day_label_5"
@@ -61,7 +64,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="@string/saturday_letter"/>
+            android:text="@string/saturday_letter"
+            android:textSize="@dimen/normal_text_size"/>
 
         <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/week_day_label_6"
@@ -69,7 +73,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="@string/sunday_letter"/>
+            android:text="@string/sunday_letter"
+            android:textSize="@dimen/normal_text_size"/>
 
     </LinearLayout>
 
