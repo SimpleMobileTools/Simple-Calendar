@@ -85,6 +85,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     override fun updateWeeklyCalendar(events: List<Event>) {
         val fullHeight = mRes.getDimension(R.dimen.weekly_view_events_height)
         val minuteHeight = fullHeight / (24 * 60)
+        val minimalHeight = mRes.getDimension(R.dimen.weekly_view_minimal_event_height).toInt()
         val eventColor = context.config.primaryColor
         val sideMargin = mRes.displayMetrics.density.toInt()
         (0..6).map { getColumnWithId(it) }
@@ -107,7 +108,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                         rightMargin = sideMargin
                         topMargin = (startMinutes * minuteHeight).toInt()
                         width = layout.width
-                        height = (duration * minuteHeight).toInt() - sideMargin
+                        height = if (event.startTS == event.endTS) minimalHeight else (duration * minuteHeight).toInt() - sideMargin
                     }
                 }
             }
