@@ -2,4 +2,10 @@
 <TextView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"/>
+    android:layout_height="wrap_content"
+    android:ellipsize="end"
+    android:maxLines="2"
+    android:paddingLeft="@dimen/tiny_margin"
+    android:paddingRight="@dimen/tiny_margin"
+    android:textColor="@android:color/white"
+    android:textSize="@dimen/small_text_size"/>

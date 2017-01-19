@@ -92,7 +92,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         (0..6).map { getColumnWithId(it) }
                 .forEach { activity.runOnUiThread { it.removeAllViews() } }
 
-
         val sorted = events.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { it.description }))
         for (event in sorted) {
             val startDateTime = Formatter.getDateTimeFromTS(event.startTS)
@@ -103,8 +102,9 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             val startMinutes = startDateTime.minuteOfDay
             val duration = endDateTime.minuteOfDay - startMinutes
 
-            LayoutInflater.from(context).inflate(R.layout.week_event_marker, null, false).apply {
+            (LayoutInflater.from(context).inflate(R.layout.week_event_marker, null, false) as TextView).apply {
                 background = ColorDrawable(eventColor)
+                text = event.title
                 activity.runOnUiThread {
                     layout.addView(this)
                     (layoutParams as RelativeLayout.LayoutParams).apply {
