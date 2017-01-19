@@ -21,6 +21,7 @@ import com.simplemobiletools.calendar.interfaces.WeeklyCalendar
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.views.MyScrollView
 import kotlinx.android.synthetic.main.fragment_week.view.*
+import kotlin.comparisons.compareBy
 
 class WeekFragment : Fragment(), WeeklyCalendar {
     private var mListener: WeekScrollListener? = null
@@ -91,7 +92,9 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         (0..6).map { getColumnWithId(it) }
                 .forEach { activity.runOnUiThread { it.removeAllViews() } }
 
-        for (event in events) {
+
+        val sorted = events.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { it.description }))
+        for (event in sorted) {
             val startDateTime = Formatter.getDateTimeFromTS(event.startTS)
             val endDateTime = Formatter.getDateTimeFromTS(event.endTS)
             val dayOfWeek = startDateTime.dayOfWeek - if (context.config.isSundayFirst) 0 else 1
