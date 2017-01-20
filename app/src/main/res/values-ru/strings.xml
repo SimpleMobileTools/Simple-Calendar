@@ -49,6 +49,9 @@
     <string name="end">Окончание (необязательно)</string>
     <string name="description">Описание</string>
 
+    <!-- Weekly view -->
+    <string name="week">Week</string>
+
     <!-- Settings -->
     <string name="sunday_first">Воскресенье - начало недели</string>
     <string name="week_numbers">Отображать номера недель</string>

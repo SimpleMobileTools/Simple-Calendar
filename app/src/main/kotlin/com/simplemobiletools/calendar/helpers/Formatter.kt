@@ -20,7 +20,7 @@ object Formatter {
         val dateTime = getDateTimeFromCode(dayCode)
         val day = dateTime.toString(DAY_PATTERN)
         val year = dateTime.toString(YEAR_PATTERN)
-        val monthIndex = Integer.valueOf(dayCode.substring(4, 6))!! - 1
+        val monthIndex = Integer.valueOf(dayCode.substring(4, 6))!!
         val month = getMonthName(context, monthIndex)
         var date = "$month $day"
         if (year != DateTime().toString(YEAR_PATTERN))
@@ -56,7 +56,7 @@ object Formatter {
     fun getDateTimeFromTS(ts: Int) = DateTime(ts * 1000L, DateTimeZone.getDefault())
 
     // use manually translated month names, as DateFormat and Joda have issues with a lot of languages
-    fun getMonthName(context: Context, id: Int) = context.resources.getStringArray(R.array.months)[id]
+    fun getMonthName(context: Context, id: Int) = context.resources.getStringArray(R.array.months)[id - 1]
 
     fun getTimePattern(context: Context) = if (DateFormat.is24HourFormat(context)) PATTERN_TIME_24 else PATTERN_TIME_12
 }

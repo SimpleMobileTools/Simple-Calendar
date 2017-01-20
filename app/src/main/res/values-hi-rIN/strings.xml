@@ -49,6 +49,9 @@
     <string name="end">अंत (वैकल्पिक)</string>
     <string name="description">विवरण</string>
 
+    <!-- Weekly view -->
+    <string name="week">Week</string>
+
     <!-- Settings -->
     <string name="sunday_first">रविवार पहला दिन हैं</string>
     <string name="week_numbers">सफ्ताह क्रमांक दिखाए</string>

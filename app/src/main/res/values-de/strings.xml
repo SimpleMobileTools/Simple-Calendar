@@ -49,6 +49,9 @@
     <string name="end">Ende (optional)</string>
     <string name="description">Beschreibung</string>
 
+    <!-- Weekly view -->
+    <string name="week">Week</string>
+
     <!-- Settings -->
     <string name="sunday_first">Sonntag als erster Wochentag</string>
     <string name="week_numbers">Zeige Kalenderwoche an</string>

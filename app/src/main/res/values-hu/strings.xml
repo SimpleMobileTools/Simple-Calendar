@@ -49,6 +49,9 @@
     <string name="end">Vég (nem kötelező)</string>
     <string name="description">Leírás</string>
 
+    <!-- Weekly view -->
+    <string name="week">Week</string>
+
     <!-- Settings -->
     <string name="sunday_first">Vasárnap a hét első napja</string>
     <string name="week_numbers">Hetek sorszámának mutatása</string>

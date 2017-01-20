@@ -115,6 +115,7 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
     }
 
     private fun updateViewPager() {
+        resetTitle()
         if (config.storedView == YEARLY_VIEW) {
             fillYearlyViewPager()
         } else if (config.storedView == EVENTS_LIST_VIEW) {
@@ -145,6 +146,11 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
         }
     }
 
+    private fun resetTitle() {
+        title = getString(R.string.app_launcher_name)
+        supportActionBar?.subtitle = ""
+    }
+
     private fun fillMonthlyViewPager(targetDay: String) {
         main_weekly_scrollview.visibility = View.GONE
         calendar_fab.visibility = View.VISIBLE
@@ -157,7 +163,6 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
             currentItem = codes.size / 2
             visibility = View.VISIBLE
         }
-        title = getString(R.string.app_launcher_name)
         calendar_event_list_holder.visibility = View.GONE
     }
 
@@ -183,7 +188,6 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
         main_view_pager.visibility = View.GONE
         calendar_event_list_holder.visibility = View.GONE
         main_weekly_scrollview.visibility = View.VISIBLE
-        title = getString(R.string.app_launcher_name)
 
         week_view_hours_holder.removeAllViews()
         for (i in 1..23) {
@@ -195,6 +199,17 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
 
         week_view_view_pager.apply {
             adapter = weeklyAdapter
+            addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+                override fun onPageScrollStateChanged(state: Int) {
+                }
+
+                override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+                }
+
+                override fun onPageSelected(position: Int) {
+                    setupActionbarTitle(weekTSs[position])
+                }
+            })
             currentItem = weekTSs.size / 2
         }
 
@@ -212,6 +227,19 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
             weekTSs.add(targetWeekTS + i * secondsInWeek)
         }
         return weekTSs
+    }
+
+    private fun setupActionbarTitle(timestamp: Int) {
+        val startDateTime = Formatter.getDateTimeFromTS(timestamp)
+        val endDateTime = Formatter.getDateTimeFromTS(timestamp + secondsInWeek)
+        val startMonthName = Formatter.getMonthName(this, startDateTime.monthOfYear)
+        if (startDateTime.monthOfYear == endDateTime.monthOfYear) {
+            title = startMonthName
+        } else {
+            val endMonthName = Formatter.getMonthName(this, endDateTime.monthOfYear)
+            title = "$startMonthName - $endMonthName"
+        }
+        supportActionBar?.subtitle = "${getString(R.string.week)} ${startDateTime.weekOfWeekyear.toString()}"
     }
 
     private fun fillYearlyViewPager() {
@@ -271,7 +299,6 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
     }
 
     private fun fillEventsList() {
-        title = getString(R.string.app_launcher_name)
         main_view_pager.adapter = null
         main_view_pager.visibility = View.GONE
         main_weekly_scrollview.visibility = View.GONE

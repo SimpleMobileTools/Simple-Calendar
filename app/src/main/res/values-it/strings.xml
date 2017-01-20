@@ -49,6 +49,9 @@
     <string name="end">Fine (facoltativo)</string>
     <string name="description">Descrizione</string>
 
+    <!-- Weekly view -->
+    <string name="week">Week</string>
+
     <!-- Settings -->
     <string name="sunday_first">Sunday as first day</string>
     <string name="week_numbers">Show week numbers in monthy view</string>

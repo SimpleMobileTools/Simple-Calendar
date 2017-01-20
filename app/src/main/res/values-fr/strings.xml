@@ -49,6 +49,9 @@
     <string name="end">Fin (optionnel)</string>
     <string name="description">Description</string>
 
+    <!-- Weekly view -->
+    <string name="week">Week</string>
+
     <!-- Settings -->
     <string name="sunday_first">Dimanche en premier jour</string>
     <string name="week_numbers">Afficher les numéros de semaine</string>
