@@ -21,6 +21,14 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getBoolean(WEEK_NUMBERS, false)
         set(displayWeekNumbers) = prefs.edit().putBoolean(WEEK_NUMBERS, displayWeekNumbers).apply()
 
+    var startWeeklyAt: Int
+        get() = prefs.getInt(START_WEEKLY_AT, 7)
+        set(startWeeklyAt) = prefs.edit().putInt(START_WEEKLY_AT, startWeeklyAt).apply()
+
+    var endWeeklyAt: Int
+        get() = prefs.getInt(END_WEEKLY_AT, 24)
+        set(endWeeklyAt) = prefs.edit().putInt(END_WEEKLY_AT, endWeeklyAt).apply()
+
     var vibrateOnReminder: Boolean
         get() = prefs.getBoolean(VIBRATE, false)
         set(vibrate) = prefs.edit().putBoolean(VIBRATE, vibrate).apply()

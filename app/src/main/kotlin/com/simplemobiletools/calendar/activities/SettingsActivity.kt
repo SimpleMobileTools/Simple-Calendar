@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.os.Parcelable
 import android.view.View
 import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.helpers.*
@@ -27,6 +28,8 @@ class SettingsActivity : SimpleActivity() {
 
         setupCustomizeColors()
         setupSundayFirst()
+        setupWeeklyStart()
+        setupWeeklyEnd()
         setupWeekNumbers()
         setupVibrate()
         setupReminderSound()
@@ -45,6 +48,46 @@ class SettingsActivity : SimpleActivity() {
         settings_sunday_first_holder.setOnClickListener {
             settings_sunday_first.toggle()
             config.isSundayFirst = settings_sunday_first.isChecked
+        }
+    }
+
+    private fun setupWeeklyStart() {
+        settings_start_weekly_at.apply {
+            adapter = getWeeklyAdapter()
+            setSelection(config.startWeeklyAt)
+            onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    if (selectedItemPosition >= config.endWeeklyAt) {
+                        toast(R.string.day_end_before_start)
+                        setSelection(config.startWeeklyAt)
+                    } else {
+                        config.startWeeklyAt = selectedItemPosition
+                    }
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                }
+            }
+        }
+    }
+
+    private fun setupWeeklyEnd() {
+        settings_end_weekly_at.apply {
+            adapter = getWeeklyAdapter()
+            setSelection(config.endWeeklyAt)
+            onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    if (selectedItemPosition <= config.startWeeklyAt) {
+                        toast(R.string.day_end_before_start)
+                        setSelection(config.endWeeklyAt)
+                    } else {
+                        config.endWeeklyAt = selectedItemPosition
+                    }
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                }
+            }
         }
     }
 
@@ -158,6 +201,15 @@ class SettingsActivity : SimpleActivity() {
             custom_reminder_other_period.setSelection(0)
         }
         custom_reminder_value.setText(value.toString())
+    }
+
+    private fun getWeeklyAdapter(): ArrayAdapter<String> {
+        val adapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item)
+        for (i in 0..24) {
+            adapter.add("$i:00")
+        }
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        return adapter
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {

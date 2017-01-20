@@ -31,6 +31,8 @@ val DAY_MINS = 1440
 // Shared Preferences
 val SUNDAY_FIRST = "sunday_first"
 val WEEK_NUMBERS = "week_numbers"
+val START_WEEKLY_AT = "start_weekly_at"
+val END_WEEKLY_AT = "end_weekly_at"
 val VIBRATE = "vibrate"
 val REMINDER_SOUND = "reminder_sound"
 val VIEW = "view"
