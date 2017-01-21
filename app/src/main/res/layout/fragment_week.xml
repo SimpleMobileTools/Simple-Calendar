@@ -102,6 +102,7 @@
                 android:verticalSpacing="1dp"/>
 
             <LinearLayout
+                android:id="@+id/week_events_columns_holder"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/weekly_view_events_height"
                 android:background="@android:color/transparent"

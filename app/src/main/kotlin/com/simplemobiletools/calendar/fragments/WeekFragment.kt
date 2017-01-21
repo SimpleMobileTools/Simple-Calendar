@@ -1,6 +1,7 @@
 package com.simplemobiletools.calendar.fragments
 
 import android.content.res.Resources
+import android.graphics.Rect
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -31,18 +32,30 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     lateinit var mRes: Resources
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        mView = inflater.inflate(R.layout.fragment_week, container, false).apply {
+        val rowHeight = context.resources.getDimension(R.dimen.weekly_view_row_height)
+        val minY = (rowHeight * context.config.startWeeklyAt).toInt()
+        var maxY = (rowHeight * context.config.endWeeklyAt).toInt()
 
+        mView = inflater.inflate(R.layout.fragment_week, container, false).apply {
             week_events_scrollview.setOnScrollviewListener(object : MyScrollView.ScrollViewListener {
                 override fun onScrollChanged(scrollView: MyScrollView, x: Int, y: Int, oldx: Int, oldy: Int) {
-                    mListener?.scrollTo(y)
+                    if (y < minY) {
+                        week_events_scrollview.scrollY = minY
+                    } else if (y > maxY) {
+                        week_events_scrollview.scrollY = maxY
+                    } else {
+                        mListener?.scrollTo(y)
+                    }
                 }
             })
 
             week_events_scrollview.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
                 override fun onGlobalLayout() {
-                    updateScrollY(MainActivity.mWeekScrollY)
-                    mView.week_events_scrollview.viewTreeObserver.removeOnGlobalLayoutListener(this)
+                    updateScrollY(Math.max(MainActivity.mWeekScrollY, minY))
+                    viewTreeObserver.removeOnGlobalLayoutListener(this)
+                    val bounds = Rect()
+                    week_events_holder.getGlobalVisibleRect(bounds)
+                    maxY -= bounds.bottom - bounds.top
                 }
             })
 
