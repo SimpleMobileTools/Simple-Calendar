@@ -1,5 +1,6 @@
 package com.simplemobiletools.calendar.fragments
 
+import android.content.Intent
 import android.content.res.Resources
 import android.graphics.Rect
 import android.graphics.drawable.ColorDrawable
@@ -12,9 +13,11 @@ import android.view.ViewTreeObserver
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.activities.MainActivity
 import com.simplemobiletools.calendar.adapters.WeekEventsAdapter
 import com.simplemobiletools.calendar.extensions.config
+import com.simplemobiletools.calendar.helpers.EVENT_ID
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.helpers.WEEK_START_TIMESTAMP
 import com.simplemobiletools.calendar.helpers.WeeklyCalendarImpl
@@ -145,6 +148,12 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                         topMargin = (startMinutes * minuteHeight).toInt()
                         width = layout.width
                         height = if (event.startTS == event.endTS) minimalHeight else (duration * minuteHeight).toInt() - sideMargin
+                    }
+                }
+                setOnClickListener {
+                    Intent(activity.applicationContext, EventActivity::class.java).apply {
+                        putExtra(EVENT_ID, event.id)
+                        startActivity(this)
                     }
                 }
             }
