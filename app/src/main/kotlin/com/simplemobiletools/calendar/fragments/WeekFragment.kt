@@ -76,6 +76,8 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 val bounds = Rect()
                 week_events_holder.getGlobalVisibleRect(bounds)
                 maxScrollY -= bounds.bottom - bounds.top
+                if (minScrollY > maxScrollY)
+                    maxScrollY = -1
 
                 checkScrollLimits(mView.week_events_scrollview.scrollY)
             }
