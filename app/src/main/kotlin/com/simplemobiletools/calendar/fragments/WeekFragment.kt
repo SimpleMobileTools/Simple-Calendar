@@ -21,41 +21,35 @@ import com.simplemobiletools.calendar.helpers.WeeklyCalendarImpl
 import com.simplemobiletools.calendar.interfaces.WeeklyCalendar
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.views.MyScrollView
+import kotlinx.android.synthetic.main.fragment_week.*
 import kotlinx.android.synthetic.main.fragment_week.view.*
 import kotlin.comparisons.compareBy
 
 class WeekFragment : Fragment(), WeeklyCalendar {
     private var mListener: WeekScrollListener? = null
     private var mWeekTimestamp = 0
+    private var mRowHeight = 0
+    private var minScrollY = -1
+    private var maxScrollY = -1
     lateinit var mView: View
     lateinit var mCalendar: WeeklyCalendarImpl
     lateinit var mRes: Resources
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val rowHeight = context.resources.getDimension(R.dimen.weekly_view_row_height)
-        val minY = (rowHeight * context.config.startWeeklyAt).toInt()
-        var maxY = (rowHeight * context.config.endWeeklyAt).toInt()
+        mRowHeight = (context.resources.getDimension(R.dimen.weekly_view_row_height)).toInt()
+        minScrollY = mRowHeight * context.config.startWeeklyAt
 
         mView = inflater.inflate(R.layout.fragment_week, container, false).apply {
             week_events_scrollview.setOnScrollviewListener(object : MyScrollView.ScrollViewListener {
                 override fun onScrollChanged(scrollView: MyScrollView, x: Int, y: Int, oldx: Int, oldy: Int) {
-                    if (y < minY) {
-                        week_events_scrollview.scrollY = minY
-                    } else if (y > maxY) {
-                        week_events_scrollview.scrollY = maxY
-                    } else {
-                        mListener?.scrollTo(y)
-                    }
+                    checkScrollLimits(y)
                 }
             })
 
             week_events_scrollview.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
                 override fun onGlobalLayout() {
-                    updateScrollY(Math.max(MainActivity.mWeekScrollY, minY))
-                    viewTreeObserver.removeOnGlobalLayoutListener(this)
-                    val bounds = Rect()
-                    week_events_holder.getGlobalVisibleRect(bounds)
-                    maxY -= bounds.bottom - bounds.top
+                    updateScrollY(Math.max(MainActivity.mWeekScrollY, minScrollY))
+                    week_events_scrollview.viewTreeObserver.removeOnGlobalLayoutListener(this)
                 }
             })
 
@@ -67,6 +61,25 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         mCalendar = WeeklyCalendarImpl(this, context)
         setupDayLabels()
         return mView
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mCalendar.updateWeeklyCalendar(mWeekTimestamp)
+
+        mView.week_events_scrollview.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                mView.week_events_scrollview.viewTreeObserver.removeOnGlobalLayoutListener(this)
+                minScrollY = mRowHeight * context.config.startWeeklyAt
+                maxScrollY = mRowHeight * context.config.endWeeklyAt
+
+                val bounds = Rect()
+                week_events_holder.getGlobalVisibleRect(bounds)
+                maxScrollY -= bounds.bottom - bounds.top
+
+                checkScrollLimits(mView.week_events_scrollview.scrollY)
+            }
+        })
     }
 
     private fun setupDayLabels() {
@@ -91,9 +104,14 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         })
     }
 
-    override fun onResume() {
-        super.onResume()
-        mCalendar.updateWeeklyCalendar(mWeekTimestamp)
+    private fun checkScrollLimits(y: Int) {
+        if (minScrollY != -1 && y < minScrollY) {
+            mView.week_events_scrollview.scrollY = minScrollY
+        } else if (maxScrollY != -1 && y > maxScrollY) {
+            mView.week_events_scrollview.scrollY = maxScrollY
+        } else {
+            mListener?.scrollTo(y)
+        }
     }
 
     override fun updateWeeklyCalendar(events: List<Event>) {
