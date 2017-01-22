@@ -50,12 +50,12 @@
     <string name="description">Descrição</string>
 
     <!-- Weekly view -->
-    <string name="week">Week</string>
+    <string name="week">Semana</string>
 
     <!-- Settings -->
     <string name="sunday_first">Domingo como primeiro dia</string>
-    <string name="start_weekly_at">Start weekly view day at</string>
-    <string name="end_weekly_at">End weekly view day at</string>
+    <string name="start_weekly_at">Iniciar vista semanal em</string>
+    <string name="end_weekly_at">Terminar vista semanal em</string>
     <string name="week_numbers">Mostrar número das semanas</string>
     <string name="vibrate">Vibrar ao notificar sobre o lembrete</string>
     <string name="reminder_sound">Som do lembrete</string>
@@ -64,7 +64,7 @@
     <string name="notification_sound">Som da notificação</string>
     <string name="no_ringtone_picker">Não foi encontrada qualquer aplicação capaz de definir o som</string>
     <string name="no_ringtone_selected">Nenhum</string>
-    <string name="day_end_before_start">The day cannot end earlier than it starts</string>
+    <string name="day_end_before_start">O dia final não pode ser antes do inicial</string>
 
     <plurals name="events_deleted">
         <item quantity="one">1 evento apagado</item>
@@ -93,13 +93,13 @@
     <string name="sunday_letter">D</string>
 
     <!-- List widget config example events -->
-    <string name="sample_title_1">Exercício</string>
+    <string name="sample_title_1">Ir ao ginásio</string>
     <string name="sample_description_1">Ir às compras</string>
-    <string name="sample_title_2">Encontro com João</string>
-    <string name="sample_description_2">In Rockstone garden</string>
+    <string name="sample_title_2">Reunião com o João</string>
+    <string name="sample_description_2">Passear no jardim</string>
     <string name="sample_title_3">Ir à biblioteca</string>
-    <string name="sample_title_4">Lanchar com a Maria</string>
-    <string name="sample_description_4">Ir até à praça</string>
+    <string name="sample_title_4">Almoçar com a Maria</string>
+    <string name="sample_description_4">Ir ao mercado</string>
     <string name="sample_title_5">Beber um café</string>
 
     <!-- Release notes -->
