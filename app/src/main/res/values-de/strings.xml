@@ -3,12 +3,12 @@
     <string name="app_launcher_name">Kalender</string>
     <string name="undo">Rückgängig</string>
     <string name="change_view">Ansicht ändern</string>
-    <string name="weekly_view">Weekly view</string>
+    <string name="weekly_view">Wochenansicht</string>
     <string name="monthly_view">Monatsansicht</string>
     <string name="yearly_view">Jahresansicht</string>
     <string name="simple_event_list">Einfache Termin Liste</string>
     <string name="no_upcoming_events">Sieht aus als wäre dein Kalender leer.</string>
-    <string name="add_some_events">Du kannst neeue Termine mit dem Plus Button unten rechts erstellen.</string>
+    <string name="add_some_events">Du kannst neue Termine mit dem Plus Button unten rechts erstellen.</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Monats Kalender</string>
@@ -103,27 +103,26 @@
     <string name="sample_title_5">Kaffee Pause</string>
 
     <!-- Release notes -->
-    <string name="release_4x">Added a weekly view</string>
-    <string name="release_46">Event reminder types have been tweaked, please update them</string>
+    <string name="release_4x">Wochenansicht hinzugefügt</string>
+    <string name="release_46">Event Erinnerungen wurden angepasst</string>
     <string name="release_44">
-        Added more color customization options\n
-        Your settings have been cleared, please reset them</string>
-    <string name="release_42">Allow changing the reminder notification sound</string>
-    <string name="release_40">Added a new view, a list of upcoming events</string>
-    <string name="release_39">Added the option to vibrate at notifications</string>
+        mehr Farbeinstellungen hinzugefügt\n
+        alle Einstellungen wurden zurückgesetzt</string>
+    <string name="release_42">Erinnerungs Ton kann nun verändert werden</string>
+    <string name="release_40">Listenansicht für bevorstehende Events hinzugefügt</string>
+    <string name="release_39">Vibration als Erinnerungs Option hinzugefügt</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">A simple calendar with events, customizable widget and no ads.</string>
+    <string name="app_short_description">Ein simpler Kalender mit Events, personalisierbaren Widgets ohne Werbung.</string>
     <string name="app_long_description">
-        An offline calendar without any other calendar integration. You can easily create recurring events and setup reminders, it can also display week numbers.
+        Ein eigenständiger offline Kalender. Einfaches erstellen wiederholender Events sowie Erinnerungen, inkl. optionaler Anzeige der Kalenderwochen.
 
+        Enthält ein skalierbares 4x4 Widget, bei welchen die Schriftfarbe sowie die Hintergrundfarbe anpassbar ist.
+        
+        Dieser Kalender enthält weder Werbung noch unnötige App-Berechtigung und ist vollständig Opensource.
 
-        Contains a resizable 4x4 widget where you can customize the color of the text, as well as the alpha and the color of the background.
-
-        Contains no ads or unnecessary permissions. It is fully opensource, provides customizable colors.
-
-        This app is just one piece of a bigger series of apps. You can find the rest of them at http://www.simplemobiletools.com
+        Dieses App ist teil einer grösseren Serie von Apps. Diese findet man unter http://www.simplemobiletools.com
     </string>
 
     <!--
