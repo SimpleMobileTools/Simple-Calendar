@@ -32,7 +32,7 @@ android {
 }
 
 dependencies {
-    compile 'com.simplemobiletools:commons:2.4.5'
+    compile 'com.simplemobiletools:commons:2.4.6'
     compile 'joda-time:joda-time:2.9.1'
     compile 'com.facebook.stetho:stetho:1.4.1'
     compile 'com.bignerdranch.android:recyclerview-multiselect:0.2'
@@ -56,12 +56,11 @@ def propFile = new File('signing.properties')
 if (propFile.canRead()) {
     props.load(new FileInputStream(propFile))
 
-    if (props != null && props.containsKey('STORE_FILE') && props.containsKey('STORE_PASSWORD') &&
-            props.containsKey('KEY_ALIAS') && props.containsKey('KEY_PASSWORD')) {
+    if (props != null && props.containsKey('STORE_FILE') && props.containsKey('KEY_ALIAS') && props.containsKey('PASSWORD')) {
         android.signingConfigs.release.storeFile = file(props['STORE_FILE'])
-        android.signingConfigs.release.storePassword = props['STORE_PASSWORD']
+        android.signingConfigs.release.storePassword = props['PASSWORD']
         android.signingConfigs.release.keyAlias = props['KEY_ALIAS']
-        android.signingConfigs.release.keyPassword = props['KEY_PASSWORD']
+        android.signingConfigs.release.keyPassword = props['PASSWORD']
     } else {
         println 'signing.properties found but some entries are missing'
         android.buildTypes.release.signingConfig = null
