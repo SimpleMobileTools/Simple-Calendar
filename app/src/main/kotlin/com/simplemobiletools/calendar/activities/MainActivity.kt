@@ -41,6 +41,7 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
     private var mSnackbar: Snackbar? = null
     private var mEventListFragment: EventListFragment? = null
     private var mStoredTextColor = 0
+    private var mStoredIsSundayFirst = false
 
     companion object {
         var mWeekScrollY = 0
@@ -52,6 +53,7 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
         calendar_fab.setOnClickListener { addNewEvent() }
         updateViewPager()
         mStoredTextColor = config.textColor
+        mStoredIsSundayFirst = config.isSundayFirst
         checkWhatsNewDialog()
     }
 
@@ -59,6 +61,9 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
         super.onResume()
         if (mStoredTextColor != config.textColor)
             updateViewPager()
+
+        if (mStoredIsSundayFirst != config.isSundayFirst && config.storedView == WEEKLY_VIEW)
+            fillWeeklyViewPager()
 
         updateWidgets()
         updateTextColors(calendar_coordinator)
@@ -68,6 +73,7 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
         super.onPause()
         checkDeleteEvents()
         mStoredTextColor = config.textColor
+        mStoredIsSundayFirst = config.isSundayFirst
     }
 
     override fun onDestroy() {
@@ -174,7 +180,8 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
     }
 
     private fun fillWeeklyViewPager() {
-        val thisweek = DateTime().withDayOfWeek(1).withTime(0, 0, 0, 0).seconds()
+        val firstDayIndex = if (config.isSundayFirst) 7 else 1
+        val thisweek = DateTime().withDayOfWeek(firstDayIndex).withTime(0, 0, 0, 0).seconds()
         val weekTSs = getWeekTimestamps(thisweek)
         val weeklyAdapter = MyWeekPagerAdapter(supportFragmentManager, weekTSs, object : WeekFragment.WeekScrollListener {
             override fun scrollTo(y: Int) {

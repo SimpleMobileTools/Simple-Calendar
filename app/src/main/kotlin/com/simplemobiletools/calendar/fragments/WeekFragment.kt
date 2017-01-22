@@ -137,7 +137,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         for (event in sorted) {
             val startDateTime = Formatter.getDateTimeFromTS(event.startTS)
             val endDateTime = Formatter.getDateTimeFromTS(event.endTS)
-            val dayOfWeek = startDateTime.dayOfWeek - if (context.config.isSundayFirst) 0 else 1
+            val dayOfWeek = startDateTime.dayOfWeek - 1
             val layout = getColumnWithId(dayOfWeek)
 
             val startMinutes = startDateTime.minuteOfDay
