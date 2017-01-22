@@ -94,10 +94,13 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
     private fun setupDayLabels() {
         var curDay = Formatter.getDateTimeFromTS(mWeekTimestamp)
+        val textColor = context.config.textColor
         for (i in 0..6) {
-            val view = mView.findViewById(mRes.getIdentifier("week_day_label_$i", "id", context.packageName)) as TextView
             val dayLetter = getDayLetter(curDay.dayOfWeek)
-            view.text = "$dayLetter\n${curDay.dayOfMonth}"
+            (mView.findViewById(mRes.getIdentifier("week_day_label_$i", "id", context.packageName)) as TextView).apply {
+                text = "$dayLetter\n${curDay.dayOfMonth}"
+                setTextColor(textColor)
+            }
             curDay = curDay.plusDays(1)
         }
     }

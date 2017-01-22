@@ -41,6 +41,8 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
     private var mSnackbar: Snackbar? = null
     private var mEventListFragment: EventListFragment? = null
     private var mStoredTextColor = 0
+    private var mStoredBackgroundColor = 0
+    private var mStoredPrimaryColor = 0
     private var mStoredIsSundayFirst = false
 
     companion object {
@@ -52,15 +54,17 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
         setContentView(R.layout.activity_main)
         calendar_fab.setOnClickListener { addNewEvent() }
         updateViewPager()
-        mStoredTextColor = config.textColor
-        mStoredIsSundayFirst = config.isSundayFirst
         checkWhatsNewDialog()
     }
 
     override fun onResume() {
         super.onResume()
-        if (mStoredTextColor != config.textColor)
+        if (mStoredTextColor != config.textColor || mStoredBackgroundColor != config.backgroundColor || mStoredPrimaryColor != config.primaryColor)
             updateViewPager()
+
+        mStoredTextColor = config.textColor
+        mStoredPrimaryColor = config.primaryColor
+        mStoredBackgroundColor = config.backgroundColor
 
         if (mStoredIsSundayFirst != config.isSundayFirst && config.storedView == WEEKLY_VIEW)
             fillWeeklyViewPager()
@@ -74,6 +78,8 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
         checkDeleteEvents()
         mStoredTextColor = config.textColor
         mStoredIsSundayFirst = config.isSundayFirst
+        mStoredBackgroundColor = config.backgroundColor
+        mStoredPrimaryColor = config.primaryColor
     }
 
     override fun onDestroy() {
@@ -195,10 +201,12 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
 
         week_view_hours_holder.removeAllViews()
         for (i in 1..23) {
-            val view = layoutInflater.inflate(R.layout.weekly_view_hour_textview, null, false) as TextView
             val value = i.toString()
-            view.text = if (value.length == 2) value else "0$value"
-            week_view_hours_holder.addView(view)
+            (layoutInflater.inflate(R.layout.weekly_view_hour_textview, null, false) as TextView).apply {
+                text = if (value.length == 2) value else "0$value"
+                setTextColor(mStoredTextColor)
+                week_view_hours_holder.addView(this)
+            }
         }
 
         week_view_view_pager.apply {
