@@ -19,7 +19,6 @@ import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.extensions.*
 import kotlinx.android.synthetic.main.activity_event.*
 import org.joda.time.DateTime
-import org.joda.time.DateTimeZone
 
 class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     private var mWasReminderInit = false
@@ -47,12 +46,11 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             setupReminder()
         } else {
             mEvent = Event()
-            val dayCode = intent.getStringExtra(DAY_CODE)
             val startTS = intent.getIntExtra(NEW_EVENT_START_TS, 0)
-            if (dayCode == null || dayCode.isEmpty())
+            if (startTS == 0)
                 return
 
-            setupNewEvent(dayCode)
+            setupNewEvent(Formatter.getDateTimeFromTS(startTS))
             setupDefaultReminderType()
         }
 
@@ -94,10 +92,10 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         event_description.setText(mEvent.description)
     }
 
-    private fun setupNewEvent(dayCode: String) {
+    private fun setupNewEvent(dateTime: DateTime) {
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
         title = resources.getString(R.string.new_event)
-        mEventStartDateTime = Formatter.getDateTimeFromCode(dayCode).withZoneRetainFields(DateTimeZone.getDefault()).withHourOfDay(13)
+        mEventStartDateTime = dateTime
         mEventEndDateTime = mEventStartDateTime
         setupDefaultReminderType()
     }

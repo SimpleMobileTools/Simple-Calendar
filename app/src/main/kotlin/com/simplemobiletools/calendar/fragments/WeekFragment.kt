@@ -74,6 +74,9 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
         mView.week_events_scrollview.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
+                if (context == null)
+                    return
+
                 mView.week_events_scrollview.viewTreeObserver.removeOnGlobalLayoutListener(this)
                 minScrollY = mRowHeight * context.config.startWeeklyAt
                 maxScrollY = mRowHeight * context.config.endWeeklyAt

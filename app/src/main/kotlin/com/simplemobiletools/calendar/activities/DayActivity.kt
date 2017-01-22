@@ -8,9 +8,11 @@ import android.support.v4.view.ViewPager
 import android.view.View
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.adapters.MyDayPagerAdapter
+import com.simplemobiletools.calendar.extensions.getNewEventTimestampFromCode
 import com.simplemobiletools.calendar.fragments.DayFragment
 import com.simplemobiletools.calendar.helpers.DAY_CODE
 import com.simplemobiletools.calendar.helpers.Formatter
+import com.simplemobiletools.calendar.helpers.NEW_EVENT_START_TS
 import com.simplemobiletools.commons.extensions.updateTextColors
 import kotlinx.android.synthetic.main.activity_day.*
 import org.joda.time.DateTime
@@ -56,7 +58,7 @@ class DayActivity : SimpleActivity(), DayFragment.DeleteListener, ViewPager.OnPa
 
     private fun addNewEvent() {
         Intent(applicationContext, EventActivity::class.java).apply {
-            putExtra(DAY_CODE, mPagerDays?.get(view_pager.currentItem))
+            putExtra(NEW_EVENT_START_TS, getNewEventTimestampFromCode(mPagerDays?.get(view_pager.currentItem).toString()))
             startActivity(this)
         }
     }

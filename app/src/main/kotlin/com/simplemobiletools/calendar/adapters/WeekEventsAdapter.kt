@@ -25,6 +25,7 @@ class WeekEventsAdapter(val context: Context, val startTS: Int, val callback: (t
         }
 
         view.setOnClickListener {
+            selectedGrid?.setImageDrawable(null)
             selectedGrid?.background = ColorDrawable(defaultBackground)
             if (selectedGrid == view) {
                 selectedGrid = null

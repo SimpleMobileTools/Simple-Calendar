@@ -98,6 +98,8 @@ fun Context.getAppropriateTheme(): Int {
     return if (config.backgroundColor.getContrastColor() == Color.WHITE) R.style.MyDialogTheme_Dark else R.style.MyDialogTheme
 }
 
+fun Context.getNewEventTimestampFromCode(dayCode: String) = Formatter.getLocalDateTimeFromCode(dayCode).withTime(13, 0, 0, 0).seconds()
+
 val Context.config: Config get() = Config.newInstance(this)
 
 val Context.secondsInWeek: Int get() = 7 * 24 * 60 * 60

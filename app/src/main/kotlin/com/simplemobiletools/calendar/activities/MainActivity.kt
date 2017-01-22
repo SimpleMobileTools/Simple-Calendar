@@ -15,10 +15,7 @@ import com.simplemobiletools.calendar.adapters.MyMonthPagerAdapter
 import com.simplemobiletools.calendar.adapters.MyWeekPagerAdapter
 import com.simplemobiletools.calendar.adapters.MyYearPagerAdapter
 import com.simplemobiletools.calendar.dialogs.ChangeViewDialog
-import com.simplemobiletools.calendar.extensions.config
-import com.simplemobiletools.calendar.extensions.seconds
-import com.simplemobiletools.calendar.extensions.secondsInWeek
-import com.simplemobiletools.calendar.extensions.updateWidgets
+import com.simplemobiletools.calendar.extensions.*
 import com.simplemobiletools.calendar.fragments.EventListFragment
 import com.simplemobiletools.calendar.fragments.WeekFragment
 import com.simplemobiletools.calendar.helpers.*
@@ -141,7 +138,7 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
     private fun addNewEvent() {
         val tomorrowCode = Formatter.getDayCodeFromDateTime(DateTime(DateTimeZone.getDefault()).plusDays(1))
         Intent(applicationContext, EventActivity::class.java).apply {
-            putExtra(DAY_CODE, tomorrowCode)
+            putExtra(NEW_EVENT_START_TS, getNewEventTimestampFromCode(tomorrowCode))
             startActivity(this)
         }
     }
