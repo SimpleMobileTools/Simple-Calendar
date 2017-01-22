@@ -246,7 +246,10 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
         val endDateTime = Formatter.getDateTimeFromTS(timestamp + secondsInWeek)
         val startMonthName = Formatter.getMonthName(this, startDateTime.monthOfYear)
         if (startDateTime.monthOfYear == endDateTime.monthOfYear) {
-            title = startMonthName
+            var newTitle = startMonthName
+            if (startDateTime.year != DateTime().year)
+                newTitle += " - ${startDateTime.year}"
+            title = newTitle
         } else {
             val endMonthName = Formatter.getMonthName(this, endDateTime.monthOfYear)
             title = "$startMonthName - $endMonthName"
