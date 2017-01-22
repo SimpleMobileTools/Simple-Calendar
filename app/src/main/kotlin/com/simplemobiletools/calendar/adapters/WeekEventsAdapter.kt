@@ -10,7 +10,7 @@ import android.widget.ImageView
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.config
 
-class WeekEventsAdapter(val context: Context) : BaseAdapter() {
+class WeekEventsAdapter(val context: Context, val startTS: Int, val callback: (timestamp: Int) -> Unit) : BaseAdapter() {
     private val mInflater: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
     private val defaultBackground = context.config.backgroundColor
     private val coloredBackground = context.config.primaryColor
@@ -28,6 +28,7 @@ class WeekEventsAdapter(val context: Context) : BaseAdapter() {
             selectedGrid?.background = ColorDrawable(defaultBackground)
             if (selectedGrid == view) {
                 selectedGrid = null
+                callback.invoke(startTS + (position / 7 * 60 * 60) + (position % 7 * 24 * 60 * 60))
             } else {
                 view!!.background = ColorDrawable(coloredBackground)
                 (view as ImageView).setImageResource(R.drawable.ic_plus)

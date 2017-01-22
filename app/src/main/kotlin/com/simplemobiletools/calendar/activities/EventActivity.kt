@@ -48,6 +48,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         } else {
             mEvent = Event()
             val dayCode = intent.getStringExtra(DAY_CODE)
+            val startTS = intent.getIntExtra(NEW_EVENT_START_TS, 0)
             if (dayCode == null || dayCode.isEmpty())
                 return
 

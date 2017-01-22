@@ -17,10 +17,7 @@ import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.activities.MainActivity
 import com.simplemobiletools.calendar.adapters.WeekEventsAdapter
 import com.simplemobiletools.calendar.extensions.config
-import com.simplemobiletools.calendar.helpers.EVENT_ID
-import com.simplemobiletools.calendar.helpers.Formatter
-import com.simplemobiletools.calendar.helpers.WEEK_START_TIMESTAMP
-import com.simplemobiletools.calendar.helpers.WeeklyCalendarImpl
+import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.interfaces.WeeklyCalendar
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.views.MyScrollView
@@ -41,6 +38,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mRowHeight = (context.resources.getDimension(R.dimen.weekly_view_row_height)).toInt()
         minScrollY = mRowHeight * context.config.startWeeklyAt
+        mWeekTimestamp = arguments.getInt(WEEK_START_TIMESTAMP)
 
         mView = inflater.inflate(R.layout.fragment_week, container, false).apply {
             week_events_scrollview.setOnScrollviewListener(object : MyScrollView.ScrollViewListener {
@@ -56,11 +54,15 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 }
             })
 
-            week_events_grid.adapter = WeekEventsAdapter(context)
+            week_events_grid.adapter = WeekEventsAdapter(context, mWeekTimestamp) {
+                Intent(context, EventActivity::class.java).apply {
+                    putExtra(NEW_EVENT_START_TS, it)
+                    startActivity(this)
+                }
+            }
         }
 
         mRes = resources
-        mWeekTimestamp = arguments.getInt(WEEK_START_TIMESTAMP)
         mCalendar = WeeklyCalendarImpl(this, context)
         setupDayLabels()
         return mView
