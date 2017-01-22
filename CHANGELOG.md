@@ -1,6 +1,11 @@
 Changelog
 ==========
 
+Version 2.1.0 *(2017-01-22)*
+----------------------------
+
+ * Adding an initial implementation of a weekly view
+
 Version 2.0.3 *(2017-01-10)*
 ----------------------------
 
