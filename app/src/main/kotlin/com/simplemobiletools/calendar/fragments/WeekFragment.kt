@@ -31,6 +31,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private var mRowHeight = 0
     private var minScrollY = -1
     private var maxScrollY = -1
+    private var mWasDestroyed = false
     lateinit var mView: View
     lateinit var mCalendar: WeeklyCalendarImpl
     lateinit var mRes: Resources
@@ -128,6 +129,9 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     }
 
     override fun updateWeeklyCalendar(events: List<Event>) {
+        if (mWasDestroyed)
+            return
+
         val fullHeight = mRes.getDimension(R.dimen.weekly_view_events_height)
         val minuteHeight = fullHeight / (24 * 60)
         val minimalHeight = mRes.getDimension(R.dimen.weekly_view_minimal_event_height).toInt()
@@ -166,6 +170,11 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 }
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        mWasDestroyed = true
     }
 
     private fun getColumnWithId(id: Int) = mView.findViewById(mRes.getIdentifier("week_column_$id", "id", context.packageName)) as RelativeLayout
