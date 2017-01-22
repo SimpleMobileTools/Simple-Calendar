@@ -26,7 +26,7 @@ class Config(context: Context) : BaseConfig(context) {
         set(startWeeklyAt) = prefs.edit().putInt(START_WEEKLY_AT, startWeeklyAt).apply()
 
     var endWeeklyAt: Int
-        get() = prefs.getInt(END_WEEKLY_AT, 24)
+        get() = prefs.getInt(END_WEEKLY_AT, 23)
         set(endWeeklyAt) = prefs.edit().putInt(END_WEEKLY_AT, endWeeklyAt).apply()
 
     var vibrateOnReminder: Boolean
