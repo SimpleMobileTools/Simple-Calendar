@@ -243,7 +243,7 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
             val endMonthName = Formatter.getMonthName(this, endDateTime.monthOfYear)
             title = "$startMonthName - $endMonthName"
         }
-        supportActionBar?.subtitle = "${getString(R.string.week)} ${startDateTime.weekOfWeekyear.toString()}"
+        supportActionBar?.subtitle = "${getString(R.string.week)} ${startDateTime.plusDays(3).weekOfWeekyear}"
     }
 
     private fun fillYearlyViewPager() {
