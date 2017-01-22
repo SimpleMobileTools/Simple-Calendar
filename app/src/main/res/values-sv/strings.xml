@@ -1,18 +1,18 @@
 <resources>
     <string name="app_name">Simple Calendar</string>
-    <string name="app_launcher_name">Calendar</string>
+    <string name="app_launcher_name">Kalender</string>
     <string name="undo">Ångra</string>
-    <string name="change_view">Change view</string>
-    <string name="weekly_view">Weekly view</string>
-    <string name="monthly_view">Monthly view</string>
-    <string name="yearly_view">Yearly view</string>
-    <string name="simple_event_list">Simple event list</string>
-    <string name="no_upcoming_events">Seems like you don\'t have any upcoming events.</string>
-    <string name="add_some_events">You can add some with the Plus button at the bottom.</string>
+    <string name="change_view">Ändra vy</string>
+    <string name="weekly_view">Veckovy</string>
+    <string name="monthly_view">Månadsvy</string>
+    <string name="yearly_view">Årsvy</string>
+    <string name="simple_event_list">Händelselista</string>
+    <string name="no_upcoming_events">Det ser ut som att du inte har några kommandechändelser.</string>
+    <string name="add_some_events">Du kan lägga till händelser via plus-knappen som du ser längst ner.</string>
 
     <!-- Widget titles -->
-    <string name="widget_monthly">Calendar monthly</string>
-    <string name="widget_list">Calendar event list</string>
+    <string name="widget_monthly">Kalender månadsvis</string>
+    <string name="widget_list">Kalender händelselista</string>
 
     <!-- Event -->
     <string name="event">Händelse</string>
@@ -22,25 +22,25 @@
     <string name="end_before_start">Händelsen kan inte sluta före den har startat</string>
     <string name="start_in_past">Du kan inte schemalägga händelser i det förflutna</string>
     <string name="event_added">Händelsen tillagd</string>
-    <string name="past_event_added">Event in the past added successfully</string>
+    <string name="past_event_added">Händelsen ät tillagd</string>
     <string name="event_updated">Händelsen uppdaterad</string>
     <string name="reminder">Påminnelse</string>
     <string name="off">Av</string>
     <string name="at_start">Vid start</string>
-    <string name="custom">Custom</string>
+    <string name="custom">Egen</string>
     <string name="repetition">Repetition</string>
-    <string name="none">None</string>
-    <string name="daily">Daily</string>
-    <string name="weekly">Weekly</string>
-    <string name="biweekly">Biweekly</string>
-    <string name="monthly">Monthly</string>
-    <string name="yearly">Yearly</string>
+    <string name="none">Ingen</string>
+    <string name="daily">Dagligen</string>
+    <string name="weekly">Veckovis</string>
+    <string name="biweekly">Varannan vecka</string>
+    <string name="monthly">Månadsvis</string>
+    <string name="yearly">Årligen</string>
 
     <!-- Custom reminder -->
-    <string name="before">before</string>
-    <string name="minutes">minutes</string>
-    <string name="hours">hours</string>
-    <string name="days">days</string>
+    <string name="before">före</string>
+    <string name="minutes">minuter</string>
+    <string name="hours">timmar</string>
+    <string name="days">dagar</string>
 
     <!-- Day details -->
     <string name="details">Detaljer</string>
@@ -50,21 +50,21 @@
     <string name="description">Beskrivning</string>
 
     <!-- Weekly view -->
-    <string name="week">Week</string>
+    <string name="week">Vecka</string>
 
     <!-- Settings -->
-    <string name="sunday_first">Sunday as first day</string>
-    <string name="start_weekly_at">Start weekly view day at</string>
-    <string name="end_weekly_at">End weekly view day at</string>
-    <string name="week_numbers">Show week numbers in monthy view</string>
-    <string name="vibrate">Vibrate on reminder notification</string>
-    <string name="reminder_sound">Reminder sound</string>
-    <string name="default_event_reminder">Default event reminder</string>
-    <string name="reminder_saved">Reminder saved</string>
-    <string name="notification_sound">Notification sound</string>
-    <string name="no_ringtone_picker">No app capable of setting ringtone found</string>
-    <string name="no_ringtone_selected">None</string>
-    <string name="day_end_before_start">The day cannot end earlier than it starts</string>
+    <string name="sunday_first">Söndag är första dagen</string>
+    <string name="start_weekly_at">Starta veckovydagen vid</string>
+    <string name="end_weekly_at">Sluta veckovydagen vid</string>
+    <string name="week_numbers">Visa veckonumret i månadsvyn</string>
+    <string name="vibrate">Vibrera vid påminnelseaviseringen</string>
+    <string name="reminder_sound">Påminnelseljud</string>
+    <string name="default_event_reminder">Standard händelsepåminnare</string>
+    <string name="reminder_saved">Påminnelse sparad</string>
+    <string name="notification_sound">Aviseringsljud</string>
+    <string name="no_ringtone_picker">Hittade ingen app som kan ställa in ljudet</string>
+    <string name="no_ringtone_selected">Ingen</string>
+    <string name="day_end_before_start">Dagen kan inte börja innan den tar slut</string>
 
     <plurals name="events_deleted">
         <item quantity="one">1 händelse borttagen</item>
@@ -93,14 +93,14 @@
     <string name="sunday_letter">S</string>
 
     <!-- List widget config example events -->
-    <string name="sample_title_1">Workout</string>
+    <string name="sample_title_1">Träna</string>
     <string name="sample_description_1">Leg day</string>
-    <string name="sample_title_2">Meeting with John</string>
-    <string name="sample_description_2">In Rockstone garden</string>
-    <string name="sample_title_3">Library</string>
-    <string name="sample_title_4">Lunch with Mary</string>
-    <string name="sample_description_4">In the Plaza</string>
-    <string name="sample_title_5">Coffee time</string>
+    <string name="sample_title_2">Möte med Johan</string>
+    <string name="sample_description_2">I trädgården</string>
+    <string name="sample_title_3">Biblioteket</string>
+    <string name="sample_title_4">Lunch med Marie</string>
+    <string name="sample_description_4">På stranden</string>
+    <string name="sample_title_5">Kaffedags</string>
 
     <!-- Release notes -->
     <string name="release_4x">Added a weekly view</string>
@@ -114,16 +114,16 @@
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">A simple calendar with events, customizable widget and no ads.</string>
+    <string name="app_short_description">En enkel kalender med händelser, anpassningsbar widget och utan reklam.</string>
     <string name="app_long_description">
-        An offline calendar without any other calendar integration. You can easily create recurring events and setup reminders, it can also display week numbers.
+        En fristående kalender utan några andra kalenderintegration. Du kan enkelt skapa återkommande händelser och ställa in påminnelser, den kan också visa veckonumret.
 
 
-        Contains a resizable 4x4 widget where you can customize the color of the text, as well as the alpha and the color of the background.
+        Innehåller en skalbart 4x4 widget där du kan ändra textfärgen och färgen på bakgrunden.
 
-        Contains no ads or unnecessary permissions. It is fully opensource, provides customizable colors.
+        Innehåller ingen reklam eller onödiga behörigheter. Det är helt och hållet opensource, innehåller anpassningsbara färger.
 
-        This app is just one piece of a bigger series of apps. You can find the rest of them at http://www.simplemobiletools.com
+        Detta är bara en app i en serie av appar. Du hittar resten av dem här http://www.simplemobiletools.com
     </string>
 
     <!--
