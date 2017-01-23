@@ -11,7 +11,7 @@
         android:layout_alignBottom="@+id/top_value"
         android:layout_alignTop="@+id/top_value"
         android:padding="@dimen/activity_margin"
-        android:src="@drawable/ic_arrow_left"/>
+        android:src="@drawable/ic_pointer_left"/>
 
     <com.simplemobiletools.commons.views.MyTextView
         android:id="@+id/top_value"
@@ -34,6 +34,6 @@
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/top_value"
         android:padding="@dimen/activity_margin"
-        android:src="@drawable/ic_arrow_right"/>
+        android:src="@drawable/ic_pointer_right"/>
 
 </merge>

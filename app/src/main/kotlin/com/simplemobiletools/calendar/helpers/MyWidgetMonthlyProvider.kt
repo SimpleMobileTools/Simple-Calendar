@@ -169,10 +169,10 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
     private fun updateTopViews() {
         mRemoteViews.setInt(R.id.top_value, "setTextColor", mTextColor)
 
-        var bmp = getColoredIcon(mContext, mTextColor, R.drawable.ic_arrow_left)
+        var bmp = getColoredIcon(mContext, mTextColor, R.drawable.ic_pointer_left)
         mRemoteViews.setImageViewBitmap(R.id.top_left_arrow, bmp)
 
-        bmp = getColoredIcon(mContext, mTextColor, R.drawable.ic_arrow_right)
+        bmp = getColoredIcon(mContext, mTextColor, R.drawable.ic_pointer_right)
         mRemoteViews.setImageViewBitmap(R.id.top_right_arrow, bmp)
     }
 
