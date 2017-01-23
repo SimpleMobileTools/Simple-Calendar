@@ -103,6 +103,7 @@
     <string name="sample_title_5">Coffee time</string>
 
     <!-- Release notes -->
+    <string name="release_49">Allow picking colors by hex codes</string>
     <string name="release_48">Added a weekly view</string>
     <string name="release_46">Event reminder types have been tweaked, please update them</string>
     <string name="release_44">
