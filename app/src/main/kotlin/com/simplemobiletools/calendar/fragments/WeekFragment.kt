@@ -159,7 +159,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                         rightMargin = sideMargin
                         topMargin = (startMinutes * minuteHeight).toInt()
                         width = layout.width
-                        height = if (event.startTS == event.endTS) minimalHeight else (duration * minuteHeight).toInt() - sideMargin
+                        minHeight = if (event.startTS == event.endTS) minimalHeight else (duration * minuteHeight).toInt() - sideMargin
                     }
                 }
                 setOnClickListener {
