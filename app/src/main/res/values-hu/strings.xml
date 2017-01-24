@@ -9,6 +9,7 @@
     <string name="simple_event_list">Egyszerű bejegyzéslista</string>
     <string name="no_upcoming_events">Seems like you don\'t have any upcoming events.</string>
     <string name="add_some_events">You can add some with the Plus button at the bottom.</string>
+    <string name="import_ics_file">Import events from .ics file</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Havi naptár</string>
@@ -103,6 +104,7 @@
     <string name="sample_title_5">Coffee time</string>
 
     <!-- Release notes -->
+    <string name="release_5x">Allow importing events from .ics files</string>
     <string name="release_49">Allow picking colors by hex codes</string>
     <string name="release_48">Added a weekly view</string>
     <string name="release_46">Event reminder types have been tweaked, please update them</string>

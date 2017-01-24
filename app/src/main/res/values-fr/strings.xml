@@ -9,6 +9,7 @@
     <string name="simple_event_list">Liste simple d\'événements</string>
     <string name="no_upcoming_events">Il semblerait que vous n\'ayez aucun événement à venir.</string>
     <string name="add_some_events">Vous pouvez ajouter des évènements avec le bouton Plus en bas.</string>
+    <string name="import_ics_file">Import events from .ics file</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Calendrier mensuel</string>
@@ -103,6 +104,7 @@
     <string name="sample_title_5">Heure du café</string>
 
     <!-- Release notes -->
+    <string name="release_5x">Allow importing events from .ics files</string>
     <string name="release_49">Allow picking colors by hex codes</string>
     <string name="release_48">Added a weekly view</string>
     <string name="release_46">Event reminder types have been tweaked, please update them</string>

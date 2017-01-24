@@ -9,6 +9,7 @@
     <string name="simple_event_list">Einfache Termin Liste</string>
     <string name="no_upcoming_events">Sieht aus als wäre dein Kalender leer.</string>
     <string name="add_some_events">Du kannst neue Termine mit dem Plus Button unten rechts erstellen.</string>
+    <string name="import_ics_file">Import events from .ics file</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Monats Kalender</string>
@@ -103,6 +104,7 @@
     <string name="sample_title_5">Kaffee Pause</string>
 
     <!-- Release notes -->
+    <string name="release_5x">Allow importing events from .ics files</string>
     <string name="release_49">Allow picking colors by hex codes</string>
     <string name="release_48">Wochenansicht hinzugefügt</string>
     <string name="release_46">Event Erinnerungen wurden angepasst</string>
