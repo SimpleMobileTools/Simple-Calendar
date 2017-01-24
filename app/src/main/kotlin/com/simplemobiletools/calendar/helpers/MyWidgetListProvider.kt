@@ -10,7 +10,7 @@ import android.content.res.Resources
 import android.net.Uri
 import android.widget.RemoteViews
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.activities.EventActivity
+import com.simplemobiletools.calendar.activities.SplashActivity
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.services.WidgetService
 
@@ -47,7 +47,7 @@ class MyWidgetListProvider : AppWidgetProvider() {
             mRemoteViews.setRemoteAdapter(R.id.widget_event_list, this)
         }
 
-        val startActivityIntent = Intent(context, EventActivity::class.java)
+        val startActivityIntent = Intent(context, SplashActivity::class.java)
         val startActivityPendingIntent = PendingIntent.getActivity(context, 0, startActivityIntent, PendingIntent.FLAG_UPDATE_CURRENT)
         mRemoteViews.setPendingIntentTemplate(R.id.widget_event_list, startActivityPendingIntent)
         mRemoteViews.setEmptyView(R.id.widget_event_list, R.id.widget_event_list_empty)

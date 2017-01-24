@@ -14,8 +14,7 @@ import android.text.style.UnderlineSpan
 import android.view.View
 import android.widget.RemoteViews
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.activities.DayActivity
-import com.simplemobiletools.calendar.activities.MainActivity
+import com.simplemobiletools.calendar.activities.SplashActivity
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.models.Day
@@ -78,14 +77,14 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
     }
 
     private fun setupAppOpenIntent(id: Int) {
-        Intent(mContext, MainActivity::class.java).apply {
+        Intent(mContext, SplashActivity::class.java).apply {
             val pendingIntent = PendingIntent.getActivity(mContext, 0, this, 0)
             mRemoteViews.setOnClickPendingIntent(id, pendingIntent)
         }
     }
 
     private fun setupDayOpenIntent(id: Int, dayCode: String) {
-        Intent(mContext, DayActivity::class.java).apply {
+        Intent(mContext, SplashActivity::class.java).apply {
             putExtra(DAY_CODE, dayCode)
             val pendingIntent = PendingIntent.getActivity(mContext, Integer.parseInt(dayCode), this, 0)
             mRemoteViews.setOnClickPendingIntent(id, pendingIntent)
