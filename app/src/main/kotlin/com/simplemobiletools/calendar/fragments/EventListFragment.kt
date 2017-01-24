@@ -51,7 +51,7 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, DBHelper.Event
 
     private fun checkEvents() {
         val fromTS = DateTime().seconds()
-        val toTS = DateTime().plusMonths(6).seconds()
+        val toTS = DateTime().plusYears(1).seconds()
         DBHelper(context).getEvents(fromTS, toTS, this)
     }
 
@@ -59,7 +59,7 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, DBHelper.Event
         val filtered = getEventsToShow(events)
         val listItems = ArrayList<ListItem>(filtered.size)
         val sorted = filtered.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { it.description }))
-        val sublist = sorted.subList(0, Math.min(sorted.size, 50))
+        val sublist = sorted.subList(0, Math.min(sorted.size, 100))
         var prevCode = ""
         sublist.forEach {
             val code = Formatter.getDayCodeFromTS(it.startTS)
