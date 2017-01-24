@@ -16,7 +16,7 @@ This app is just one piece of a bigger series of apps. You can find the rest of 
 
 <img alt="App image" src="screenshots/app_2.png" width="250">
 <img alt="App image" src="screenshots/app_4.png" width="250">
-<img alt="App image" src="screenshots/app_1.png" width="250">
+<img alt="App image" src="screenshots/app.png" width="250">
 
 License
 -------
