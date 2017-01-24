@@ -14,9 +14,9 @@ This app is just one piece of a bigger series of apps. You can find the rest of 
 <a href='https://play.google.com/store/apps/details?id=com.simplemobiletools.calendar'><img src='http://simplemobiletools.github.io/assets/public/google-play.png' alt='Get it on Google Play' height=45/></a>
 <a href='https://f-droid.org/app/com.simplemobiletools.calendar'><img src='http://simplemobiletools.github.io/assets/public/f-droid.png' alt='Get it on F-Droid' height=45 ></a>
 
-<img alt="App image" src="screenshots/app.png" width="250">
-<img alt="App image" src="screenshots/app_3.png" width="250">
-<img alt="App image" src="screenshots/widget.png" width="250">
+<img alt="App image" src="screenshots/app_2.png" width="250">
+<img alt="App image" src="screenshots/app_4.png" width="250">
+<img alt="App image" src="screenshots/app_1.png" width="250">
 
 License
 -------
