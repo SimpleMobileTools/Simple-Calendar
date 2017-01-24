@@ -21,7 +21,8 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:text="@string/monday_letter"/>
+        android:text="@string/monday_letter"
+        android:textStyle="bold"/>
 
     <com.simplemobiletools.commons.views.MyTextView
         android:id="@+id/label_1"
@@ -29,7 +30,8 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:text="@string/tuesday_letter"/>
+        android:text="@string/tuesday_letter"
+        android:textStyle="bold"/>
 
     <com.simplemobiletools.commons.views.MyTextView
         android:id="@+id/label_2"
@@ -37,7 +39,8 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:text="@string/wednesday_letter"/>
+        android:text="@string/wednesday_letter"
+        android:textStyle="bold"/>
 
     <com.simplemobiletools.commons.views.MyTextView
         android:id="@+id/label_3"
@@ -45,7 +48,8 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:text="@string/thursday_letter"/>
+        android:text="@string/thursday_letter"
+        android:textStyle="bold"/>
 
     <com.simplemobiletools.commons.views.MyTextView
         android:id="@+id/label_4"
@@ -53,7 +57,8 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:text="@string/friday_letter"/>
+        android:text="@string/friday_letter"
+        android:textStyle="bold"/>
 
     <com.simplemobiletools.commons.views.MyTextView
         android:id="@+id/label_5"
@@ -61,7 +66,8 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:text="@string/saturday_letter"/>
+        android:text="@string/saturday_letter"
+        android:textStyle="bold"/>
 
     <com.simplemobiletools.commons.views.MyTextView
         android:id="@+id/label_6"
@@ -69,6 +75,7 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:text="@string/sunday_letter"/>
+        android:text="@string/sunday_letter"
+        android:textStyle="bold"/>
 
 </LinearLayout>
