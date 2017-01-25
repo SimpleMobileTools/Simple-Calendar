@@ -110,14 +110,14 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
         val displayWeekNumbers = mContext.config.displayWeekNumbers
         val len = days.size
         val packageName = mContext.packageName
-        mRemoteViews.setInt(R.id.week_num, "setTextColor", mWeakTextColor)
+        mRemoteViews.setInt(R.id.week_num, "setTextColor", mTextColor)
         mRemoteViews.setViewVisibility(R.id.week_num, if (displayWeekNumbers) View.VISIBLE else View.GONE)
 
         for (i in 0..5) {
             val id = mRes.getIdentifier("week_num_$i", "id", packageName)
             mRemoteViews.apply {
                 setTextViewText(id, days[i * 7 + 3].weekOfYear.toString() + ":")
-                setInt(id, "setTextColor", mWeakTextColor)
+                setInt(id, "setTextColor", mTextColor)
                 setViewVisibility(id, if (displayWeekNumbers) View.VISIBLE else View.GONE)
             }
         }

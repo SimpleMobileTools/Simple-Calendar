@@ -144,13 +144,13 @@ class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
         val len = mDays!!.size
 
         if (applicationContext.config.displayWeekNumbers) {
-            week_num.setTextColor(mWeakTextColor)
+            week_num.setTextColor(mTextColor)
             week_num.visibility = View.VISIBLE
 
             for (i in 0..5) {
                 (findViewById(mRes.getIdentifier("week_num_$i", "id", mPackageName)) as TextView).apply {
                     text = "${mDays!![i * 7 + 3].weekOfYear}:"
-                    setTextColor(mWeakTextColor)
+                    setTextColor(mTextColor)
                     visibility = View.VISIBLE
                 }
             }

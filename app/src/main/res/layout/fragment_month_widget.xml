@@ -29,7 +29,7 @@
 
             <TextView
                 android:id="@+id/week_num_0"
-                style="@style/DayView"
+                style="@style/MetaView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -170,7 +170,7 @@
 
             <TextView
                 android:id="@+id/week_num_1"
-                style="@style/DayView"
+                style="@style/MetaView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -312,7 +312,7 @@
 
             <TextView
                 android:id="@+id/week_num_2"
-                style="@style/DayView"
+                style="@style/MetaView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -453,7 +453,7 @@
 
             <TextView
                 android:id="@+id/week_num_3"
-                style="@style/DayView"
+                style="@style/MetaView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -594,7 +594,7 @@
 
             <TextView
                 android:id="@+id/week_num_4"
-                style="@style/DayView"
+                style="@style/MetaView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -735,7 +735,7 @@
 
             <TextView
                 android:id="@+id/week_num_5"
-                style="@style/DayView"
+                style="@style/MetaView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

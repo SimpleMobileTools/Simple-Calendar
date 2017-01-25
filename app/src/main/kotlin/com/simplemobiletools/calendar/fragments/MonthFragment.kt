@@ -160,13 +160,13 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         if (week_num == null)
             return
 
-        week_num.setTextColor(mWeakTextColor)
+        week_num.setTextColor(mTextColor)
         week_num.beVisibleIf(displayWeekNumbers)
 
         for (i in 0..5) {
             (mHolder.findViewById(mRes.getIdentifier("week_num_$i", "id", mPackageName)) as TextView).apply {
                 text = "${days[i * 7 + 3].weekOfYear}:"
-                setTextColor(mWeakTextColor)
+                setTextColor(mTextColor)
                 beVisibleIf(displayWeekNumbers)
             }
         }
