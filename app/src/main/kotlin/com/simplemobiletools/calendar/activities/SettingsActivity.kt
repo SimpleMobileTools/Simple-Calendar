@@ -11,7 +11,12 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.config
-import com.simplemobiletools.calendar.helpers.*
+import com.simplemobiletools.calendar.extensions.getDefaultReminderTypeIndex
+import com.simplemobiletools.calendar.extensions.getDefaultReminderValue
+import com.simplemobiletools.calendar.extensions.setupReminderPeriod
+import com.simplemobiletools.calendar.helpers.DAY_MINS
+import com.simplemobiletools.calendar.helpers.HOUR_MINS
+import com.simplemobiletools.calendar.helpers.REMINDER_CUSTOM
 import com.simplemobiletools.commons.extensions.*
 import kotlinx.android.synthetic.main.activity_settings.*
 
@@ -132,9 +137,9 @@ class SettingsActivity : SimpleActivity() {
     private fun setupEventReminder() {
         val reminderType = config.defaultReminderType
         val reminderMinutes = config.defaultReminderMinutes
-        settings_default_reminder.setSelection(getDefaultReminderTypeIndex(reminderType))
+        settings_default_reminder.setSelection(getDefaultReminderTypeIndex())
         custom_reminder_save.setTextColor(custom_reminder_other_val.currentTextColor)
-        setupReminderPeriod(reminderMinutes)
+        setupReminderPeriod(reminderMinutes, custom_reminder_other_period, custom_reminder_value)
 
         settings_custom_reminder_holder.beVisibleIf(reminderType == REMINDER_CUSTOM)
         custom_reminder_save.setOnClickListener { saveReminder() }
@@ -157,22 +162,6 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
-    private fun getDefaultReminderTypeIndex(type: Int): Int {
-        return when (type) {
-            REMINDER_OFF -> 0
-            REMINDER_AT_START -> 1
-            else -> 2
-        }
-    }
-
-    private fun getDefaultReminderValue(index: Int): Int {
-        return when (index) {
-            0 -> REMINDER_OFF
-            1 -> REMINDER_AT_START
-            else -> REMINDER_CUSTOM
-        }
-    }
-
     private fun saveReminder() {
         val value = custom_reminder_value.value
         val multiplier = when (custom_reminder_other_period.selectedItemPosition) {
@@ -185,22 +174,6 @@ class SettingsActivity : SimpleActivity() {
         config.defaultReminderType = REMINDER_CUSTOM
         toast(R.string.reminder_saved)
         hideKeyboard()
-    }
-
-    private fun setupReminderPeriod(mins: Int) {
-        var value = mins
-        if (mins == 0) {
-            custom_reminder_other_period.setSelection(0)
-        } else if (mins % DAY_MINS == 0) {
-            value = mins / DAY_MINS
-            custom_reminder_other_period.setSelection(2)
-        } else if (mins % HOUR_MINS == 0) {
-            value = mins / HOUR_MINS
-            custom_reminder_other_period.setSelection(1)
-        } else {
-            custom_reminder_other_period.setSelection(0)
-        }
-        custom_reminder_value.setText(value.toString())
     }
 
     private fun getWeeklyAdapter(): ArrayAdapter<String> {
