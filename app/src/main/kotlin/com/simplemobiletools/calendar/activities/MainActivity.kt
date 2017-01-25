@@ -18,6 +18,7 @@ import com.simplemobiletools.calendar.adapters.MyMonthPagerAdapter
 import com.simplemobiletools.calendar.adapters.MyWeekPagerAdapter
 import com.simplemobiletools.calendar.adapters.MyYearPagerAdapter
 import com.simplemobiletools.calendar.dialogs.ChangeViewDialog
+import com.simplemobiletools.calendar.dialogs.ImportEventsDialog
 import com.simplemobiletools.calendar.extensions.*
 import com.simplemobiletools.calendar.fragments.EventListFragment
 import com.simplemobiletools.calendar.fragments.WeekFragment
@@ -101,7 +102,7 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.change_view -> showViewDialog()
-            R.id.import_file -> tryImportFile()
+            R.id.import_events -> tryImportEvents()
             R.id.settings -> launchSettings()
             R.id.about -> launchAbout()
             else -> return super.onOptionsItemSelected(item)
@@ -146,17 +147,19 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
         mWeekScrollY = 0
     }
 
-    private fun tryImportFile() {
+    private fun tryImportEvents() {
         if (hasReadStoragePermission()) {
-            importFile()
+            importEvents()
         } else {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), STORAGE_PERMISSION)
         }
     }
 
-    private fun importFile() {
+    private fun importEvents() {
         FilePickerDialog(this) {
+            ImportEventsDialog(this, it) {
 
+            }
         }
     }
 
@@ -363,7 +366,7 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
 
         if (requestCode == STORAGE_PERMISSION) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                tryImportFile()
+                tryImportEvents()
             }
         }
     }

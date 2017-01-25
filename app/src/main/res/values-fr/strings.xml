@@ -9,7 +9,6 @@
     <string name="simple_event_list">Liste simple d\'événements</string>
     <string name="no_upcoming_events">Il semblerait que vous n\'ayez aucun événement à venir.</string>
     <string name="add_some_events">Vous pouvez ajouter des évènements avec le bouton Plus en bas.</string>
-    <string name="import_ics_file">Import events from .ics file</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Calendrier mensuel</string>
@@ -42,6 +41,11 @@
     <string name="minutes">minutes</string>
     <string name="hours">heures</string>
     <string name="days">jours</string>
+
+    <!-- Importing -->
+    <string name="import_events">Import events</string>
+    <string name="event_reminder">Event reminder</string>
+    <string name="events_imported_successfully">Events imported successfully</string>
 
     <!-- Day details -->
     <string name="details">Détails</string>

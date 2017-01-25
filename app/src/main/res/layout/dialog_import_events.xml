@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/import_events_holder"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/activity_margin"
+    android:paddingRight="@dimen/activity_margin"
+    android:paddingTop="@dimen/activity_margin">
+
+    <com.simplemobiletools.commons.views.MyTextView
+        android:id="@+id/import_events_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/filename"
+        android:textSize="@dimen/smaller_text_size"/>
+
+    <com.simplemobiletools.commons.views.MyTextView
+        android:id="@+id/import_events_filename"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_margin"
+        android:layout_marginLeft="@dimen/activity_margin"
+        android:paddingBottom="@dimen/small_margin"
+        android:paddingRight="@dimen/small_margin"
+        android:paddingTop="@dimen/small_margin"/>
+
+    <com.simplemobiletools.commons.views.MyTextView
+        android:id="@+id/import_events_reminder_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/event_reminder"
+        android:textSize="@dimen/smaller_text_size"/>
+
+    <com.simplemobiletools.commons.views.MyAppCompatSpinner
+        android:id="@+id/import_events_reminder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:entries="@array/reminders"/>
+
+    <LinearLayout
+        android:id="@+id/import_events_custom_reminder_holder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/activity_margin"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <com.simplemobiletools.commons.views.MyEditText
+            android:id="@+id/import_events_custom_reminder_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_margin"
+            android:layout_marginLeft="@dimen/activity_margin"
+            android:layout_marginStart="@dimen/activity_margin"
+            android:digits="0123456789"
+            android:inputType="number"
+            android:maxLength="10"
+            android:minEms="3"
+            android:textCursorDrawable="@null"
+            android:textSize="@dimen/day_text_size"/>
+
+        <com.simplemobiletools.commons.views.MyAppCompatSpinner
+            android:id="@+id/import_events_custom_reminder_other_period"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:entries="@array/custom_reminders"
+            android:gravity="center"/>
+
+        <com.simplemobiletools.commons.views.MyTextView
+            android:id="@+id/import_events_custom_reminder_other_val"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/before"/>
+
+    </LinearLayout>
+</LinearLayout>
