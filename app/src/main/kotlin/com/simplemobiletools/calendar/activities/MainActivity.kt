@@ -1,9 +1,12 @@
 package com.simplemobiletools.calendar.activities
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Color
 import android.os.Bundle
 import android.support.design.widget.Snackbar
+import android.support.v4.app.ActivityCompat
 import android.support.v4.view.ViewPager
 import android.view.Menu
 import android.view.MenuItem
@@ -21,7 +24,9 @@ import com.simplemobiletools.calendar.fragments.WeekFragment
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.views.MyScrollView
+import com.simplemobiletools.commons.dialogs.FilePickerDialog
 import com.simplemobiletools.commons.extensions.checkWhatsNew
+import com.simplemobiletools.commons.extensions.hasReadStoragePermission
 import com.simplemobiletools.commons.extensions.updateTextColors
 import com.simplemobiletools.commons.helpers.LICENSE_JODA
 import com.simplemobiletools.commons.helpers.LICENSE_KOTLIN
@@ -36,6 +41,7 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
     private val PREFILLED_MONTHS = 73
     private val PREFILLED_YEARS = 21
     private val PREFILLED_WEEKS = 41
+    private val STORAGE_PERMISSION = 1
 
     private var mIsMonthSelected = false
     private var mSnackbar: Snackbar? = null
@@ -95,6 +101,7 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.change_view -> showViewDialog()
+            R.id.import_file -> tryImportFile()
             R.id.settings -> launchSettings()
             R.id.about -> launchAbout()
             else -> return super.onOptionsItemSelected(item)
@@ -137,6 +144,20 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
         }
 
         mWeekScrollY = 0
+    }
+
+    private fun tryImportFile() {
+        if (hasReadStoragePermission()) {
+            importFile()
+        } else {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), STORAGE_PERMISSION)
+        }
+    }
+
+    private fun importFile() {
+        FilePickerDialog(this) {
+
+        }
     }
 
     private fun launchSettings() {
@@ -335,6 +356,16 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
     override fun goToDateTime(dateTime: DateTime) {
         fillMonthlyViewPager(Formatter.getDayCodeFromDateTime(dateTime))
         mIsMonthSelected = true
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        if (requestCode == STORAGE_PERMISSION) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                tryImportFile()
+            }
+        }
     }
 
     override fun notifyDeletion(cnt: Int) {

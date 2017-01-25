@@ -7,6 +7,10 @@
         android:title="@string/change_view"
         app:showAsAction="ifRoom"/>
     <item
+        android:id="@+id/import_file"
+        android:title="@string/import_ics_file"
+        app:showAsAction="never"/>
+    <item
         android:id="@+id/settings"
         android:title="@string/settings"
         app:showAsAction="never"/>
