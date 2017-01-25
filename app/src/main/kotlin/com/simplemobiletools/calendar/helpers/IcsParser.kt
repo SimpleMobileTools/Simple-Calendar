@@ -2,7 +2,10 @@ package com.simplemobiletools.calendar.helpers
 
 import android.content.Context
 import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.models.Event
+import org.joda.time.DateTimeZone
+import org.joda.time.format.DateTimeFormat
 
 object IcsParser {
     private val BEGIN_EVENT = "BEGIN:VEVENT"
@@ -27,11 +30,9 @@ object IcsParser {
                 if (line == BEGIN_EVENT) {
                     resetValues()
                 } else if (line.startsWith(DTSTART)) {
-                    val datetime = line.substring(DTSTART.length)
-                    curStart = 0
+                    curStart = getTimestamp(line.substring(DTSTART.length))
                 } else if (line.startsWith(DTEND)) {
-                    val datetime = line.substring(DTEND.length)
-                    curEnd = 0
+                    curEnd = getTimestamp(line.substring(DTEND.length))
                 } else if (line.startsWith(SUMMARY)) {
                     curTitle = line.substring(SUMMARY.length)
                 } else if (line.startsWith(DESCRIPTION)) {
@@ -40,14 +41,20 @@ object IcsParser {
                     if (curTitle.isEmpty() || curStart == -1 || curEnd == -1)
                         continue
 
-                    val event = Event(0, 0, 0, curTitle, curDescription)
+                    val event = Event(0, curStart, curEnd, curTitle, curDescription)
                     resetValues()
                 }
             }
         }
     }
 
-    fun resetValues() {
+    private fun getTimestamp(fullString: String): Int {
+        val digitString = fullString.replace("T", "").replace("Z", "")
+        val dateTimeFormat = DateTimeFormat.forPattern("yyyyMMddHHmmss")
+        return dateTimeFormat.parseDateTime(digitString).withZoneRetainFields(DateTimeZone.UTC).seconds()
+    }
+
+    private fun resetValues() {
         curStart = -1
         curEnd = -1
         curTitle = ""
