@@ -117,7 +117,8 @@ fun Context.getDefaultReminderValue(index: Int): Int {
     }
 }
 
-fun Context.setupReminderPeriod(mins: Int, otherPeriod: AppCompatSpinner, otherValue: EditText) {
+fun Context.setupReminderPeriod(otherPeriod: AppCompatSpinner, otherValue: EditText) {
+    val mins = config.defaultReminderMinutes
     var value = mins
     if (mins == 0) {
         otherPeriod.setSelection(0)

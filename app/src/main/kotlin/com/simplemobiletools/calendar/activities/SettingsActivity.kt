@@ -136,10 +136,9 @@ class SettingsActivity : SimpleActivity() {
 
     private fun setupEventReminder() {
         val reminderType = config.defaultReminderType
-        val reminderMinutes = config.defaultReminderMinutes
         settings_default_reminder.setSelection(getDefaultReminderTypeIndex())
         custom_reminder_save.setTextColor(custom_reminder_other_val.currentTextColor)
-        setupReminderPeriod(reminderMinutes, custom_reminder_other_period, custom_reminder_value)
+        setupReminderPeriod(custom_reminder_other_period, custom_reminder_value)
 
         settings_custom_reminder_holder.beVisibleIf(reminderType == REMINDER_CUSTOM)
         custom_reminder_save.setOnClickListener { saveReminder() }
