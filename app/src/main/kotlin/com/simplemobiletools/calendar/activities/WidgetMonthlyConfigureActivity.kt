@@ -149,7 +149,7 @@ class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
 
             for (i in 0..5) {
                 (findViewById(mRes.getIdentifier("week_num_$i", "id", mPackageName)) as TextView).apply {
-                    text = "${mDays!![i * 7].weekOfYear}:"
+                    text = "${mDays!![i * 7 + 3].weekOfYear}:"
                     setTextColor(mWeakTextColor)
                     visibility = View.VISIBLE
                 }
