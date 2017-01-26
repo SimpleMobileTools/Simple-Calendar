@@ -23,6 +23,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
     private val COL_TITLE = "title"
     private val COL_DESCRIPTION = "description"
     private val COL_REMINDER_MINUTES = "reminder_minutes"
+    private val COL_IMPORT_ID = "import_id"
 
     private val META_TABLE_NAME = "events_meta"
     private val COL_EVENT_ID = "event_id"
@@ -36,7 +37,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
 
     companion object {
         private val DB_NAME = "events.db"
-        private val DB_VERSION = 3
+        private val DB_VERSION = 4
         lateinit private var mDb: SQLiteDatabase
     }
 
@@ -51,7 +52,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
 
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL("CREATE TABLE $MAIN_TABLE_NAME ($COL_ID INTEGER PRIMARY KEY, $COL_START_TS INTEGER, $COL_END_TS INTEGER, $COL_TITLE TEXT, " +
-                "$COL_DESCRIPTION TEXT, $COL_REMINDER_MINUTES INTEGER)")
+                "$COL_DESCRIPTION TEXT, $COL_REMINDER_MINUTES INTEGER, $COL_IMPORT_ID TEXT)")
 
         createMetaTable(db)
     }
@@ -61,8 +62,12 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
             db.execSQL("ALTER TABLE $MAIN_TABLE_NAME ADD COLUMN $COL_REMINDER_MINUTES INTEGER DEFAULT -1")
         }
 
-        if (newVersion == 3) {
+        if (oldVersion < 3) {
             createMetaTable(db)
+        }
+
+        if (oldVersion < 4) {
+            db.execSQL("ALTER TABLE $MAIN_TABLE_NAME ADD COLUMN $COL_IMPORT_ID TEXT")
         }
     }
 
