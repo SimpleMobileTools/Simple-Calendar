@@ -13,8 +13,8 @@ object Formatter {
     val YEAR_PATTERN = "YYYY"
     private val DAY_PATTERN = "d"
     private val DAY_OF_WEEK_PATTERN = "EEE"
-    private val PATTERN_TIME_12 = "h:mm a"
-    private val PATTERN_TIME_24 = "k:mm"
+    private val PATTERN_TIME_12 = "hh:mm a"
+    private val PATTERN_TIME_24 = "kk:mm"
 
     fun getDate(context: Context, dayCode: String): String {
         val dateTime = getDateTimeFromCode(dayCode)
