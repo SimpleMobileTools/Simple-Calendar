@@ -111,7 +111,7 @@
     <string name="sample_title_5">Время для кофе</string>
 
     <!-- Release notes -->
-    <string name="release_5x">Allow importing events from .ics files</string>
+    <string name="release_51">Allow importing events from .ics files</string>
     <string name="release_49">Allow picking colors by hex codes</string>
     <string name="release_48">Добавлен вид "на неделю"</string>
     <string name="release_46">Типы оповещений о событиях были изменены, пожалуйста, обновите их.</string>

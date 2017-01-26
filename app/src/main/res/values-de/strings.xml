@@ -111,7 +111,7 @@
     <string name="sample_title_5">Kaffee Pause</string>
 
     <!-- Release notes -->
-    <string name="release_5x">Allow importing events from .ics files</string>
+    <string name="release_51">Allow importing events from .ics files</string>
     <string name="release_49">Allow picking colors by hex codes</string>
     <string name="release_48">Wochenansicht hinzugefügt</string>
     <string name="release_46">Event Erinnerungen wurden angepasst</string>
