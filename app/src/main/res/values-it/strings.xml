@@ -44,8 +44,10 @@
 
     <!-- Importing -->
     <string name="import_events">Import events</string>
+    <string name="import_events_from_ics">Import events from an .ics file</string>
     <string name="event_reminder">Event reminder</string>
     <string name="events_imported_successfully">Events imported successfully</string>
+    <string name="invalid_file_format">Invalid file format</string>
 
     <!-- Day details -->
     <string name="details">Dettagli</string>

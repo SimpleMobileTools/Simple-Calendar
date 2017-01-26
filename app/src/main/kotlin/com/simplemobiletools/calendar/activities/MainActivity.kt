@@ -28,6 +28,7 @@ import com.simplemobiletools.calendar.views.MyScrollView
 import com.simplemobiletools.commons.dialogs.FilePickerDialog
 import com.simplemobiletools.commons.extensions.checkWhatsNew
 import com.simplemobiletools.commons.extensions.hasReadStoragePermission
+import com.simplemobiletools.commons.extensions.toast
 import com.simplemobiletools.commons.extensions.updateTextColors
 import com.simplemobiletools.commons.helpers.LICENSE_JODA
 import com.simplemobiletools.commons.helpers.LICENSE_KOTLIN
@@ -157,8 +158,16 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
 
     private fun importEvents() {
         FilePickerDialog(this) {
-            ImportEventsDialog(this, it) {
-
+            if (it.toLowerCase().endsWith(".ics")) {
+                ImportEventsDialog(this, it) {
+                    if (it) {
+                        toast(R.string.events_imported_successfully)
+                    } else {
+                        toast(R.string.unknown_error_occurred)
+                    }
+                }
+            } else {
+                toast(R.string.invalid_file_format)
             }
         }
     }

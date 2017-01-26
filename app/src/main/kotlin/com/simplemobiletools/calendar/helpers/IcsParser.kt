@@ -21,7 +21,7 @@ object IcsParser {
     var curTitle = ""
     var curDescription = ""
 
-    fun parseIcs(context: Context) {
+    fun parseIcs(context: Context, reminderMinutes: Int, path: String) {
         val inputStream = context.resources.openRawResource(R.raw.sample)
 
         inputStream.bufferedReader().use {
@@ -41,7 +41,7 @@ object IcsParser {
                     if (curTitle.isEmpty() || curStart == -1 || curEnd == -1)
                         continue
 
-                    val event = Event(0, curStart, curEnd, curTitle, curDescription)
+                    val event = Event(0, curStart, curEnd, curTitle, curDescription, reminderMinutes)
                     resetValues()
                 }
             }

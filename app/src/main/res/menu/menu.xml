@@ -8,7 +8,7 @@
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/import_events"
-        android:title="@string/import_events"
+        android:title="@string/import_events_from_ics"
         app:showAsAction="never"/>
     <item
         android:id="@+id/settings"

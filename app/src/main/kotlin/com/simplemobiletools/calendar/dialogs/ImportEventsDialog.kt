@@ -8,17 +8,14 @@ import android.widget.AdapterView
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.getDefaultReminderTypeIndex
 import com.simplemobiletools.calendar.extensions.setupReminderPeriod
-import com.simplemobiletools.calendar.helpers.DAY_MINS
-import com.simplemobiletools.calendar.helpers.HOUR_MINS
-import com.simplemobiletools.calendar.helpers.REMINDER_AT_START
-import com.simplemobiletools.calendar.helpers.REMINDER_OFF
+import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.commons.extensions.humanizePath
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import com.simplemobiletools.commons.extensions.showKeyboard
 import com.simplemobiletools.commons.extensions.value
 import kotlinx.android.synthetic.main.dialog_import_events.view.*
 
-class ImportEventsDialog(val activity: Activity, val path: String, val callback: () -> Unit) : AlertDialog.Builder(activity) {
+class ImportEventsDialog(val activity: Activity, val path: String, val callback: (success: Boolean) -> Unit) : AlertDialog.Builder(activity) {
     init {
         val view = LayoutInflater.from(activity).inflate(R.layout.dialog_import_events, null).apply {
             import_events_filename.text = activity.humanizePath(path)
@@ -51,6 +48,13 @@ class ImportEventsDialog(val activity: Activity, val path: String, val callback:
                     0 -> REMINDER_OFF
                     1 -> REMINDER_AT_START
                     else -> getReminderMinutes(view)
+                }
+
+                try {
+                    IcsParser.parseIcs(context, minutes, path)
+                    callback.invoke(true)
+                } catch (e: Exception) {
+                    callback.invoke(false)
                 }
             })
         }
