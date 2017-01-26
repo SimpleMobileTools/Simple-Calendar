@@ -51,8 +51,10 @@ class ImportEventsDialog(val activity: Activity, val path: String, val callback:
                 }
 
                 try {
-                    IcsParser.parseIcs(context, minutes, path)
-                    callback.invoke(true)
+                    Thread({
+                        IcsParser.parseIcs(context, minutes, path)
+                        callback.invoke(true)
+                    }).start()
                 } catch (e: Exception) {
                     callback.invoke(false)
                 }

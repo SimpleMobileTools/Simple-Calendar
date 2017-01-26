@@ -160,10 +160,12 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
         FilePickerDialog(this) {
             if (it.toLowerCase().endsWith(".ics")) {
                 ImportEventsDialog(this, it) {
-                    if (it) {
-                        toast(R.string.events_imported_successfully)
-                    } else {
-                        toast(R.string.unknown_error_occurred)
+                    runOnUiThread {
+                        if (it) {
+                            toast(R.string.events_imported_successfully)
+                        } else {
+                            toast(R.string.unknown_error_occurred)
+                        }
                     }
                 }
             } else {

@@ -1,11 +1,11 @@
 package com.simplemobiletools.calendar.helpers
 
 import android.content.Context
-import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.models.Event
 import org.joda.time.DateTimeZone
 import org.joda.time.format.DateTimeFormat
+import java.io.File
 
 object IcsParser {
     private val BEGIN_EVENT = "BEGIN:VEVENT"
@@ -22,7 +22,7 @@ object IcsParser {
     var curDescription = ""
 
     fun parseIcs(context: Context, reminderMinutes: Int, path: String) {
-        val inputStream = context.resources.openRawResource(R.raw.sample)
+        val inputStream = File(path).inputStream()
 
         inputStream.bufferedReader().use {
             while (true) {
