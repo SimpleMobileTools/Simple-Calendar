@@ -13,6 +13,6 @@
     <dimen name="min_widget_height">250dp</dimen>
 
     <dimen name="meta_text_size">14sp</dimen>
-    <dimen name="day_text_size">17sp</dimen>
+    <dimen name="day_text_size">20sp</dimen>
     <dimen name="month_text_size">22sp</dimen>
 </resources>
