@@ -1,0 +1,131 @@
+<resources>
+    <string name="app_name">לוח שנה פשוט</string>
+    <string name="app_launcher_name">לוח שנה</string>
+    <string name="undo">בטל פעולה אחרונה</string>
+    <string name="change_view">שינוי תצפית</string>
+    <string name="weekly_view">תצפית שבועית</string>
+    <string name="monthly_view">תצפית חודשית</string>
+    <string name="yearly_view">תצפית שנתית</string>
+    <string name="simple_event_list">רשימת אירועים פשוטה</string>
+    <string name="no_upcoming_events">נראה שאין לך אירועים בזמן הקרוב.</string>
+    <string name="add_some_events">ניתן להוסיף אירועים בעזרת כפתור הפלוס למטה.</string>
+
+    <!-- Widget titles -->
+    <string name="widget_monthly">לוח השנה חודשית</string>
+    <string name="widget_list">רשימת אירועים בלוח השנה</string>
+
+    <!-- Event -->
+    <string name="event">אירוע</string>
+    <string name="edit_event">ערוך</string>
+    <string name="new_event">אירוע חדש</string>
+    <string name="title_empty">הכותרת לא יכולה להיות ריקה</string>
+    <string name="end_before_start">האירוע לא יכול להיגמר מוקדם משהוא מתחיל</string>
+    <string name="start_in_past">לא ניתן לקבוע אירועים בעבר</string>
+    <string name="event_added">האירוע הוסף בהצלחה</string>
+    <string name="past_event_added">אירוע בעבר הוסף בהצלחה</string>
+    <string name="event_updated">האירוע עודכן בהצלחה</string>
+    <string name="reminder">תזכורת</string>
+    <string name="off">כבוי</string>
+    <string name="at_start">בהתחלה</string>
+    <string name="custom">מותאם אישית</string>
+    <string name="repetition">Repetition</string>
+    <string name="none">ללא</string>
+    <string name="daily">יום-יומית</string>
+    <string name="weekly">שבועית</string>
+    <string name="biweekly">דו-שבועית</string>
+    <string name="monthly">חודשית</string>
+    <string name="yearly">שנתית</string>
+
+    <!-- Custom reminder -->
+    <string name="before">לפני</string>
+    <string name="minutes">דקות</string>
+    <string name="hours">שעות</string>
+    <string name="days">ימים</string>
+
+    <!-- Importing -->
+    <string name="import_events">ייבוא אירועים</string>
+    <string name="import_events_from_ics">Import events from an .ics file</string>
+    <string name="event_reminder">תזכורת לאירוע</string>
+    <string name="events_imported_successfully">האירועים יובאו בהצלחה</string>
+    <string name="invalid_file_format">Invalid file format</string>
+
+    <!-- Day details -->
+    <string name="details">פרטים</string>
+    <string name="title">כותרת</string>
+    <string name="start">התחלה</string>
+    <string name="end">סוף (אופציונלי)</string>
+    <string name="description">תיאור</string>
+
+    <!-- Weekly view -->
+    <string name="week">שבוע</string>
+
+    <!-- Settings -->
+    <string name="sunday_first">יום א\' בתור היום הראשון בשבוע</string>
+    <string name="start_weekly_at">התחלת תצפית שבועית בשעה</string>
+    <string name="end_weekly_at">התחלת תצפית שבועית בשעה</string>
+    <string name="week_numbers">הצגת מספרי השבועות בתצפית חודשית</string>
+    <string name="vibrate">רטט בהתראת תזכורת</string>
+    <string name="reminder_sound">צליל תזכורת</string>
+    <string name="default_event_reminder">תזכורת קבועה לאירוע</string>
+    <string name="reminder_saved">התזכורת נשמרה</string>
+    <string name="notification_sound">צליל התראה</string>
+    <string name="no_ringtone_picker">לא נמצאה אפליקציה להגדרת רינגטון</string>
+    <string name="no_ringtone_selected">ללא</string>
+    <string name="day_end_before_start">היום לא יכול להסתיים מוקדם משהוא מתחיל</string>
+
+    <plurals name="events_deleted">
+        <item quantity="one">אירוע אחד נמחק</item>
+        <item quantity="other">%1$d events deleted</item>
+    </plurals>
+
+    <string name="january">ינואר</string>
+    <string name="february">פברואר</string>
+    <string name="march">מרץ</string>
+    <string name="april">אפריל</string>
+    <string name="may">מאי</string>
+    <string name="june">יוני</string>
+    <string name="july">יולי</string>
+    <string name="august">אוגוסט</string>
+    <string name="september">ספטמבר</string>
+    <string name="october">אוקטובר</string>
+    <string name="november">נובמבר</string>
+    <string name="december">דצמבר</string>
+
+    <string name="monday_letter">ב\'</string>
+    <string name="tuesday_letter">ג\'</string>
+    <string name="wednesday_letter">ד\'</string>
+    <string name="thursday_letter">ה\'</string>
+    <string name="friday_letter">ו\'</string>
+    <string name="saturday_letter">ש\'</string>
+    <string name="sunday_letter">א\'</string>
+
+    <!-- List widget config example events -->
+    <string name="sample_title_1">אימון</string>
+    <string name="sample_description_1">ראש השנה</string>
+    <string name="sample_title_2">פגישה עם יוני</string>
+    <string name="sample_description_2">בכיכר רבין</string>
+    <string name="sample_title_3">ספרייה</string>
+    <string name="sample_title_4">ארוחת צהריים עם מרים</string>
+    <string name="sample_description_4">במלון</string>
+    <string name="sample_title_5">הפסקת קפה</string>
+
+    <!-- Release notes -->
+    <string name="release_5x">אופשר לייבא אירועים מקבצי ics.</string>
+    <string name="release_49">אופשר להוסיף צבעים על פי קוד הקסדצימלי</string>
+    <string name="release_48">הוספה תצפית שבועית</string>
+    <string name="release_46">סוגי תזכורות שונו, נא לעדכן אותן</string>
+    <string name="release_44">הוספו עוד אפשרויות עיצוב צבע\nההגדרות נוקו, נא לאפס אותן</string>
+    <string name="release_42">אופשר לשנות את צליל ההתראה של תזכורות</string>
+    <string name="release_40">הוספה תצפית חדשה, רשימה של אירועים קרובים</string>
+    <string name="release_39">הוספה האופציה לרטט בהתראות</string>
+
+    <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
+    <!-- Short description has to have less than 80 chars -->
+    <string name="app_short_description">לוח שנה פשוט עם אירועים, וויג\'ט בעיצוב אישי וללא פרסומות</string>
+    <string name="app_long_description">לוח שנה אוף-ליין ללא כל אינטגרציה עם לוח שנה אחר. אפשר בקלות ליצור אירועים מחזוריים ותזכורות אליהם. יש אפשרות להציג את מספרי השבועות. מכיל וויג\'ט 4×4 שניתן להתאים אישית את גודלו, צבע הטקסט והרקע שלו, ושקיפותו. אין פרסומות או דרישות להרשאות בלתי-נחוצות. קוד המקור לגמרי פתוח, וניתן לעצב את צבעי הממשק.\nאפליקציה זו היא רק פיסה אחת מתוך סדרה גדולה יותר של אפליקציות. ניתן למצוא את השאר בכתובת  http://www.simplemobiletools.com</string>
+
+    <!--
+        Haven't found some strings? There's more at
+        https://github.com/SimpleMobileTools/Simple-Commons/tree/master/library/src/main/res
+    -->
+</resources>
