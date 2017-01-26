@@ -1,6 +1,7 @@
 package com.simplemobiletools.calendar.helpers
 
 import android.content.Context
+import com.simplemobiletools.calendar.extensions.scheduleNotification
 import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.helpers.IcsParser.ImportResult.*
 import com.simplemobiletools.calendar.models.Event
@@ -51,7 +52,9 @@ class IcsParser {
                             continue
 
                         val event = Event(0, curStart, curEnd, curTitle, curDescription, reminderMinutes)
-                        dbHelper.insert(event)
+                        dbHelper.insert(event) {
+                            context.scheduleNotification(event)
+                        }
                         eventsImported++
                         resetValues()
                     }
