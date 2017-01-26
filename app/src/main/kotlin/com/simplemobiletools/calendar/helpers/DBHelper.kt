@@ -71,7 +71,10 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
                 "$COL_REPEAT_INTERVAL INTEGER, $COL_REPEAT_MONTH INTEGER, $COL_REPEAT_DAY INTEGER)")
     }
 
-    fun insert(event: Event) {
+    fun insert(event: Event, insertListener: (event: Event) -> Unit) {
+        if (event.startTS > event.endTS || event.title.trim().isEmpty())
+            return
+
         val eventValues = fillContentValues(event)
         val id = mDb.insert(MAIN_TABLE_NAME, null, eventValues)
         event.id = id.toInt()
@@ -82,6 +85,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
 
         context?.updateWidgets()
         mEventsListener?.eventInserted(event)
+        insertListener.invoke(event)
     }
 
     fun update(event: Event) {
