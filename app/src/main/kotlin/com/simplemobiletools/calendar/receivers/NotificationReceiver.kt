@@ -32,8 +32,7 @@ class NotificationReceiver : BroadcastReceiver() {
         val pendingIntent = getPendingIntent(context, event)
         val startTime = Formatter.getTimeFromTS(context, event.startTS)
         val endTime = Formatter.getTimeFromTS(context, event.endTS)
-        val title = event.title
-        val notification = getNotification(context, pendingIntent, "${getEventTime(startTime, endTime)} $title")
+        val notification = getNotification(context, pendingIntent, event.title, "${getEventTime(startTime, endTime)} ${event.description}")
         notificationManager.notify(id, notification)
 
         if (event.repeatInterval != 0)
@@ -48,10 +47,10 @@ class NotificationReceiver : BroadcastReceiver() {
         return PendingIntent.getActivity(context, event.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
     }
 
-    private fun getNotification(context: Context, pendingIntent: PendingIntent, content: String): Notification {
+    private fun getNotification(context: Context, pendingIntent: PendingIntent, title: String, content: String): Notification {
         val soundUri = Uri.parse(context.config.reminderSound)
         val builder = Notification.Builder(context)
-                .setContentTitle(context.resources.getString(R.string.app_name))
+                .setContentTitle(title)
                 .setContentText(content)
                 .setSmallIcon(R.drawable.ic_calendar)
                 .setContentIntent(pendingIntent)
