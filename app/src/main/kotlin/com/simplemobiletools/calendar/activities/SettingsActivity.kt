@@ -162,13 +162,13 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun saveReminder() {
-        val value = custom_reminder_value.value
         val multiplier = when (custom_reminder_other_period.selectedItemPosition) {
             1 -> HOUR_MINS
             2 -> DAY_MINS
             else -> 1
         }
 
+        val value = custom_reminder_value.value
         config.defaultReminderMinutes = Integer.valueOf(if (value.isEmpty()) "0" else value) * multiplier
         config.defaultReminderType = REMINDER_CUSTOM
         toast(R.string.reminder_saved)

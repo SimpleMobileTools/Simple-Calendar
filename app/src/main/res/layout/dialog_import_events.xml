@@ -37,6 +37,7 @@
         android:id="@+id/import_events_reminder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_margin"
         android:layout_marginTop="@dimen/medium_margin"
         android:entries="@array/reminders"/>
 
@@ -54,11 +55,11 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/activity_margin"
             android:layout_marginLeft="@dimen/activity_margin"
-            android:layout_marginStart="@dimen/activity_margin"
+            android:layout_marginRight="@dimen/activity_margin"
             android:digits="0123456789"
+            android:ems="3"
             android:inputType="number"
-            android:maxLength="10"
-            android:minEms="3"
+            android:maxLength="4"
             android:textCursorDrawable="@null"
             android:textSize="@dimen/day_text_size"/>
 

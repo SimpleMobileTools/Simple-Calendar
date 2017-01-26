@@ -8,10 +8,14 @@ import android.widget.AdapterView
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.getDefaultReminderTypeIndex
 import com.simplemobiletools.calendar.extensions.setupReminderPeriod
-import com.simplemobiletools.commons.extensions.hideKeyboard
+import com.simplemobiletools.calendar.helpers.DAY_MINS
+import com.simplemobiletools.calendar.helpers.HOUR_MINS
+import com.simplemobiletools.calendar.helpers.REMINDER_AT_START
+import com.simplemobiletools.calendar.helpers.REMINDER_OFF
 import com.simplemobiletools.commons.extensions.humanizePath
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import com.simplemobiletools.commons.extensions.showKeyboard
+import com.simplemobiletools.commons.extensions.value
 import kotlinx.android.synthetic.main.dialog_import_events.view.*
 
 class ImportEventsDialog(val activity: Activity, val path: String, val callback: () -> Unit) : AlertDialog.Builder(activity) {
@@ -27,12 +31,12 @@ class ImportEventsDialog(val activity: Activity, val path: String, val callback:
                         import_events_custom_reminder_holder.visibility = View.VISIBLE
                         activity.showKeyboard(import_events_custom_reminder_value)
                     } else {
-                        activity.hideKeyboard()
                         import_events_custom_reminder_holder.visibility = View.GONE
                     }
                 }
 
                 override fun onNothingSelected(p0: AdapterView<*>?) {
+
                 }
             }
         }
@@ -42,9 +46,24 @@ class ImportEventsDialog(val activity: Activity, val path: String, val callback:
                 .setNegativeButton(R.string.cancel, null)
                 .create().apply {
             activity.setupDialogStuff(view, this, R.string.import_events)
-            getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(View.OnClickListener {
-
+            getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener({
+                val minutes = when (view.import_events_reminder.selectedItemPosition) {
+                    0 -> REMINDER_OFF
+                    1 -> REMINDER_AT_START
+                    else -> getReminderMinutes(view)
+                }
             })
         }
+    }
+
+    private fun getReminderMinutes(view: View): Int {
+        val multiplier = when (view.import_events_custom_reminder_other_period.selectedItemPosition) {
+            1 -> HOUR_MINS
+            2 -> DAY_MINS
+            else -> 1
+        }
+
+        val value = view.import_events_custom_reminder_value.value
+        return Integer.valueOf(if (value.isEmpty()) "0" else value) * multiplier
     }
 }
