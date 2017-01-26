@@ -47,6 +47,7 @@
     <string name="import_events_from_ics">Import events from an .ics file</string>
     <string name="event_reminder">תזכורת לאירוע</string>
     <string name="events_imported_successfully">האירועים יובאו בהצלחה</string>
+    <string name="importing_some_events_failed">Importing some events failed</string>
     <string name="invalid_file_format">Invalid file format</string>
 
     <!-- Day details -->

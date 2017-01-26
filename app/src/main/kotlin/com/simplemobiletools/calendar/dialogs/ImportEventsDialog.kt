@@ -9,13 +9,11 @@ import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.getDefaultReminderTypeIndex
 import com.simplemobiletools.calendar.extensions.setupReminderPeriod
 import com.simplemobiletools.calendar.helpers.*
-import com.simplemobiletools.commons.extensions.humanizePath
-import com.simplemobiletools.commons.extensions.setupDialogStuff
-import com.simplemobiletools.commons.extensions.showKeyboard
-import com.simplemobiletools.commons.extensions.value
+import com.simplemobiletools.calendar.helpers.IcsParser.ImportResult.*
+import com.simplemobiletools.commons.extensions.*
 import kotlinx.android.synthetic.main.dialog_import_events.view.*
 
-class ImportEventsDialog(val activity: Activity, val path: String, val callback: (success: Boolean) -> Unit) : AlertDialog.Builder(activity) {
+class ImportEventsDialog(val activity: Activity, val path: String, val callback: (refreshView: Boolean) -> Unit) : AlertDialog.Builder(activity) {
     init {
         val view = LayoutInflater.from(activity).inflate(R.layout.dialog_import_events, null).apply {
             import_events_filename.text = activity.humanizePath(path)
@@ -50,15 +48,23 @@ class ImportEventsDialog(val activity: Activity, val path: String, val callback:
                     else -> getReminderMinutes(view)
                 }
 
-                try {
-                    Thread({
-                        IcsParser.parseIcs(context, minutes, path)
-                        callback.invoke(true)
-                    }).start()
-                } catch (e: Exception) {
-                    callback.invoke(false)
-                }
+                Thread({
+                    val result = IcsParser().parseIcs(context, minutes, path)
+                    handleParseResult(result)
+                    dismiss()
+                }).start()
             })
+        }
+    }
+
+    private fun handleParseResult(result: IcsParser.ImportResult) {
+        activity.runOnUiThread {
+            activity.toast(when (result) {
+                IMPORT_OK -> R.string.events_imported_successfully
+                IMPORT_PARTIAL -> R.string.importing_some_events_failed
+                else -> R.string.importing_some_events_failed
+            })
+            callback.invoke(result != IMPORT_FAIL)
         }
     }
 
