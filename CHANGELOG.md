@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 2.1.3 *(2017-01-26)*
+----------------------------
+
+ * Allow importing events from .ics files
+ * Display proper week number at widgets
+ * Smaller bugfixes and improvements
+
 Version 2.1.2 *(2017-01-24)*
 ----------------------------
 
