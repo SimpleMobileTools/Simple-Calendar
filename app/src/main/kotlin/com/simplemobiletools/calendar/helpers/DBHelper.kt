@@ -118,6 +118,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
             put(COL_TITLE, event.title)
             put(COL_DESCRIPTION, event.description)
             put(COL_REMINDER_MINUTES, event.reminderMinutes)
+            put(COL_IMPORT_ID, event.importId)
         }
     }
 
@@ -150,6 +151,25 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
 
         context?.updateWidgets()
         mEventsListener?.eventsDeleted(ids.size)
+    }
+
+    fun getImportIds(): ArrayList<String> {
+        val ids = ArrayList<String>()
+        val columns = arrayOf(COL_IMPORT_ID)
+        val selection = "$COL_IMPORT_ID IS NOT NULL"
+        var cursor: Cursor? = null
+        try {
+            cursor = mDb.query(MAIN_TABLE_NAME, columns, selection, null, null, null, null)
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
+                    val id = cursor.getStringValue(COL_IMPORT_ID)
+                    ids.add(id)
+                } while (cursor.moveToNext())
+            }
+        } finally {
+            cursor?.close()
+        }
+        return ids
     }
 
     fun getEvent(id: Int): Event? {

@@ -21,11 +21,13 @@ class IcsParser {
     private val DTEND = "DTEND:"
     private val SUMMARY = "SUMMARY:"
     private val DESCRIPTION = "DESCRIPTION:"
+    private val UID = "UID:"
 
     var curStart = -1
     var curEnd = -1
     var curTitle = ""
     var curDescription = ""
+    var curImportId = ""
 
     var eventsImported = 0
     var eventsFailed = 0
@@ -33,6 +35,7 @@ class IcsParser {
     fun parseIcs(context: Context, reminderMinutes: Int, path: String): ImportResult {
         try {
             val dbHelper = DBHelper(context)
+            val importIDs = dbHelper.getImportIds()
 
             File(path).inputStream().bufferedReader().use {
                 while (true) {
@@ -47,11 +50,13 @@ class IcsParser {
                         curTitle = line.substring(SUMMARY.length)
                     } else if (line.startsWith(DESCRIPTION)) {
                         curDescription = line.substring(DESCRIPTION.length)
+                    } else if (line.startsWith(UID)) {
+                        curImportId = line.substring(UID.length)
                     } else if (line == END || line == BEGIN_ALARM) {
-                        if (curTitle.isEmpty() || curStart == -1 || curEnd == -1)
+                        if (curTitle.isEmpty() || curStart == -1 || curEnd == -1 || importIDs.contains(curImportId))
                             continue
 
-                        val event = Event(0, curStart, curEnd, curTitle, curDescription, reminderMinutes)
+                        val event = Event(0, curStart, curEnd, curTitle, curDescription, reminderMinutes, importId = curImportId)
                         dbHelper.insert(event) {
                             context.scheduleNotification(event)
                         }
@@ -89,5 +94,6 @@ class IcsParser {
         curEnd = -1
         curTitle = ""
         curDescription = ""
+        curImportId = ""
     }
 }
