@@ -43,12 +43,12 @@
     <string name="days">dias</string>
 
     <!-- Importing -->
-    <string name="import_events">Import events</string>
-    <string name="import_events_from_ics">Import events from an .ics file</string>
-    <string name="event_reminder">Event reminder</string>
-    <string name="events_imported_successfully">Events imported successfully</string>
-    <string name="importing_some_events_failed">Importing some events failed</string>
-    <string name="invalid_file_format">Invalid file format</string>
+    <string name="import_events">Importãr eventos</string>
+    <string name="import_events_from_ics">Importar eventos de um ficheiro .ics</string>
+    <string name="event_reminder">Lembrete de eventos</string>
+    <string name="events_imported_successfully">Eventos importados com sucesso</string>
+    <string name="importing_some_events_failed">Alguns eventos não foram importados</string>
+    <string name="invalid_file_format">Formato de ficheiro inválido</string>
 
     <!-- Day details -->
     <string name="details">Detalhes</string>
