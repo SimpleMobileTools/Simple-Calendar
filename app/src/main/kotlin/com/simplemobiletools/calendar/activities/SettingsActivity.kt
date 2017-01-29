@@ -13,6 +13,8 @@ import android.support.v4.content.ContextCompat
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import com.google.android.gms.common.ConnectionResult
+import com.google.android.gms.common.GoogleApiAvailability
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential
 import com.google.api.client.util.ExponentialBackOff
 import com.google.api.services.calendar.CalendarScopes
@@ -30,7 +32,8 @@ import kotlinx.android.synthetic.main.activity_settings.*
 class SettingsActivity : SimpleActivity() {
     private val GET_RINGTONE_URI = 1
     private val ACCOUNTS_PERMISSION = 2
-    private val REQUEST_ACCOUNT = 3
+    private val REQUEST_ACCOUNT_NAME = 3
+    private val REQUEST_GOOGLE_PLAY_SERVICES = 4
 
     lateinit var credential: GoogleAccountCredential
 
@@ -69,9 +72,7 @@ class SettingsActivity : SimpleActivity() {
             config.googleSync = settings_google_sync.isChecked
 
             if (settings_google_sync.isChecked) {
-                if (config.syncAccountName.isEmpty()) {
-                    checkGetAccountsPermission()
-                }
+                tryEnablingSync()
             }
         }
     }
@@ -213,18 +214,42 @@ class SettingsActivity : SimpleActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
-        if (resultCode == RESULT_OK && requestCode == GET_RINGTONE_URI) {
-            val uri = resultData?.getParcelableExtra<Parcelable>(RingtoneManager.EXTRA_RINGTONE_PICKED_URI)
-            if (uri == null) {
-                config.reminderSound = ""
-            } else {
-                settings_reminder_sound.text = RingtoneManager.getRingtone(this, uri as Uri).getTitle(this)
-                config.reminderSound = uri.toString()
+        if (resultCode == RESULT_OK) {
+            if (requestCode == GET_RINGTONE_URI) {
+                val uri = resultData?.getParcelableExtra<Parcelable>(RingtoneManager.EXTRA_RINGTONE_PICKED_URI)
+                if (uri == null) {
+                    config.reminderSound = ""
+                } else {
+                    settings_reminder_sound.text = RingtoneManager.getRingtone(this, uri as Uri).getTitle(this)
+                    config.reminderSound = uri.toString()
+                }
+            } else if (requestCode == REQUEST_ACCOUNT_NAME && resultData?.extras != null) {
+                val accountName = resultData!!.getStringExtra(AccountManager.KEY_ACCOUNT_NAME)
+                config.syncAccountName = accountName
+                credential.selectedAccountName = accountName
             }
-        } else if (resultCode == RESULT_OK && requestCode == REQUEST_ACCOUNT && resultData?.extras != null) {
-            val accountName = resultData!!.getStringExtra(AccountManager.KEY_ACCOUNT_NAME)
-            config.syncAccountName = accountName
-            credential.selectedAccountName = accountName
+        }
+    }
+
+    private fun tryEnablingSync() {
+        if (!isGooglePlayServicesAvailable()) {
+            acquireGooglePlayServices()
+        } else if (config.syncAccountName.isEmpty()) {
+            checkGetAccountsPermission()
+        }
+    }
+
+    private fun isGooglePlayServicesAvailable(): Boolean {
+        val apiAvailability = GoogleApiAvailability.getInstance()
+        val connectionStatusCode = apiAvailability.isGooglePlayServicesAvailable(this)
+        return connectionStatusCode == ConnectionResult.SUCCESS
+    }
+
+    private fun acquireGooglePlayServices() {
+        val apiAvailability = GoogleApiAvailability.getInstance()
+        val connectionStatusCode = apiAvailability.isGooglePlayServicesAvailable(this)
+        if (apiAvailability.isUserResolvableError(connectionStatusCode)) {
+            GoogleApiAvailability.getInstance().getErrorDialog(this, connectionStatusCode, REQUEST_GOOGLE_PLAY_SERVICES).show()
         }
     }
 
@@ -248,7 +273,7 @@ class SettingsActivity : SimpleActivity() {
 
     private fun showAccountChooser() {
         if (config.syncAccountName.isEmpty()) {
-            startActivityForResult(credential.newChooseAccountIntent(), REQUEST_ACCOUNT)
+            startActivityForResult(credential.newChooseAccountIntent(), REQUEST_ACCOUNT_NAME)
         }
     }
 }
