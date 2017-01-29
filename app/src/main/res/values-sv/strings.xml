@@ -73,6 +73,7 @@
     <string name="no_ringtone_picker">Hittade ingen app som kan ställa in ljudet</string>
     <string name="no_ringtone_selected">Ingen</string>
     <string name="day_end_before_start">Dagen kan inte börja innan den tar slut</string>
+    <string name="google_sync">Google sync</string>
 
     <plurals name="events_deleted">
         <item quantity="one">1 händelse borttagen</item>

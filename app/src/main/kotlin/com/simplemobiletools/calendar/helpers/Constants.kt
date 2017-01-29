@@ -39,6 +39,8 @@ val REMINDER_SOUND = "reminder_sound"
 val VIEW = "view"
 val REMINDER_TYPE = "reminder_type"
 val REMINDER_MINUTES = "reminder_minutes"
+val GOOGLE_SYNC = "google_sync"
+val SYNC_ACCOUNT_NAME = "sync_account_name"
 
 val letterIDs = intArrayOf(R.string.sunday_letter, R.string.monday_letter, R.string.tuesday_letter, R.string.wednesday_letter,
         R.string.thursday_letter, R.string.friday_letter, R.string.saturday_letter)

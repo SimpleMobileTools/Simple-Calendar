@@ -59,6 +59,14 @@ class Config(context: Context) : BaseConfig(context) {
             prefs.edit().putInt(REMINDER_MINUTES, mins).apply()
         }
 
+    var googleSync: Boolean
+        get() = prefs.getBoolean(GOOGLE_SYNC, false)
+        set(googleSync) = prefs.edit().putBoolean(GOOGLE_SYNC, googleSync).apply()
+
+    var syncAccountName: String
+        get() = prefs.getString(SYNC_ACCOUNT_NAME, "")
+        set(syncAccountName) = prefs.edit().putString(SYNC_ACCOUNT_NAME, syncAccountName).apply()
+
     fun getDefaultNotificationSound(): String {
         try {
             return RingtoneManager.getActualDefaultRingtoneUri(context, RingtoneManager.TYPE_NOTIFICATION)?.toString() ?: ""

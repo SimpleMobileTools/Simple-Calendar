@@ -1,14 +1,21 @@
 package com.simplemobiletools.calendar.activities
 
-import android.app.Activity
+import android.Manifest
+import android.accounts.AccountManager
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.media.RingtoneManager
 import android.net.Uri
 import android.os.Bundle
 import android.os.Parcelable
+import android.support.v4.app.ActivityCompat
+import android.support.v4.content.ContextCompat
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential
+import com.google.api.client.util.ExponentialBackOff
+import com.google.api.services.calendar.CalendarScopes
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.getDefaultReminderTypeIndex
@@ -21,11 +28,17 @@ import com.simplemobiletools.commons.extensions.*
 import kotlinx.android.synthetic.main.activity_settings.*
 
 class SettingsActivity : SimpleActivity() {
-    val GET_RINGTONE_URI = 1
+    private val GET_RINGTONE_URI = 1
+    private val ACCOUNTS_PERMISSION = 2
+    private val REQUEST_ACCOUNT = 3
+
+    lateinit var credential: GoogleAccountCredential
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
+
+        credential = GoogleAccountCredential.usingOAuth2(this, arrayListOf(CalendarScopes.CALENDAR_READONLY)).setBackOff(ExponentialBackOff())
     }
 
     override fun onResume() {
@@ -33,6 +46,7 @@ class SettingsActivity : SimpleActivity() {
 
         setupCustomizeColors()
         setupSundayFirst()
+        setupGoogleSync()
         setupWeeklyStart()
         setupWeeklyEnd()
         setupWeekNumbers()
@@ -45,6 +59,20 @@ class SettingsActivity : SimpleActivity() {
     private fun setupCustomizeColors() {
         settings_customize_colors_holder.setOnClickListener {
             startCustomizationActivity()
+        }
+    }
+
+    private fun setupGoogleSync() {
+        settings_google_sync.isChecked = config.googleSync
+        settings_google_sync_holder.setOnClickListener {
+            settings_google_sync.toggle()
+            config.googleSync = settings_google_sync.isChecked
+
+            if (settings_google_sync.isChecked) {
+                if (config.syncAccountName.isEmpty()) {
+                    checkGetAccountsPermission()
+                }
+            }
         }
     }
 
@@ -185,7 +213,7 @@ class SettingsActivity : SimpleActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
-        if (resultCode == Activity.RESULT_OK && requestCode == GET_RINGTONE_URI) {
+        if (resultCode == RESULT_OK && requestCode == GET_RINGTONE_URI) {
             val uri = resultData?.getParcelableExtra<Parcelable>(RingtoneManager.EXTRA_RINGTONE_PICKED_URI)
             if (uri == null) {
                 config.reminderSound = ""
@@ -193,6 +221,34 @@ class SettingsActivity : SimpleActivity() {
                 settings_reminder_sound.text = RingtoneManager.getRingtone(this, uri as Uri).getTitle(this)
                 config.reminderSound = uri.toString()
             }
+        } else if (resultCode == RESULT_OK && requestCode == REQUEST_ACCOUNT && resultData?.extras != null) {
+            val accountName = resultData!!.getStringExtra(AccountManager.KEY_ACCOUNT_NAME)
+            config.syncAccountName = accountName
+            credential.selectedAccountName = accountName
+        }
+    }
+
+    private fun checkGetAccountsPermission() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.GET_ACCOUNTS) == PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.GET_ACCOUNTS), ACCOUNTS_PERMISSION)
+        } else {
+            showAccountChooser()
+        }
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        if (requestCode == ACCOUNTS_PERMISSION) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                showAccountChooser()
+            }
+        }
+    }
+
+    private fun showAccountChooser() {
+        if (config.syncAccountName.isEmpty()) {
+            startActivityForResult(credential.newChooseAccountIntent(), REQUEST_ACCOUNT)
         }
     }
 }

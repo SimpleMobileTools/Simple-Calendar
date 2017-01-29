@@ -73,6 +73,7 @@
     <string name="no_ringtone_picker">No app capable of setting ringtone found</string>
     <string name="no_ringtone_selected">None</string>
     <string name="day_end_before_start">The day cannot end earlier than it starts</string>
+    <string name="google_sync">Google sync</string>
 
     <plurals name="events_deleted">
         <item quantity="one">1 bejegyzés törölve</item>

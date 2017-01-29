@@ -73,6 +73,7 @@
     <string name="no_ringtone_picker">Não foi encontrada qualquer aplicação capaz de definir o som</string>
     <string name="no_ringtone_selected">Nenhum</string>
     <string name="day_end_before_start">O dia final não pode ser antes do inicial</string>
+    <string name="google_sync">Google sync</string>
 
     <plurals name="events_deleted">
         <item quantity="one">1 evento apagado</item>

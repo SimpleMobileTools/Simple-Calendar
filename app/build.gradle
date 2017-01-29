@@ -36,6 +36,15 @@ dependencies {
     compile 'joda-time:joda-time:2.9.1'
     compile 'com.facebook.stetho:stetho:1.4.1'
     compile 'com.bignerdranch.android:recyclerview-multiselect:0.2'
+
+    compile 'com.google.android.gms:play-services-auth:10.0.1'
+    compile('com.google.api-client:google-api-client-android:1.22.0') {
+        exclude group: 'org.apache.httpcomponents'
+    }
+    compile('com.google.apis:google-api-services-calendar:v3-rev230-1.22.0') {
+        exclude group: 'org.apache.httpcomponents'
+    }
+
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
 
