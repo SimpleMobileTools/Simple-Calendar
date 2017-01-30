@@ -37,7 +37,6 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
     private fun getDataFromApi(): List<Event> {
         val now = DateTime(System.currentTimeMillis() - getMonthMillis())
         val events = service.events().list("primary")
-                .setMaxResults(10)
                 .setTimeMin(now)
                 .setOrderBy("startTime")
                 .setSingleEvents(true)
