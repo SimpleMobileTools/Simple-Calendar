@@ -19,6 +19,7 @@ import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccoun
 import com.google.api.client.util.ExponentialBackOff
 import com.google.api.services.calendar.CalendarScopes
 import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.asynctasks.FetchGoogleEventsTask
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.getDefaultReminderTypeIndex
 import com.simplemobiletools.calendar.extensions.getDefaultReminderValue
@@ -34,6 +35,10 @@ class SettingsActivity : SimpleActivity() {
     private val ACCOUNTS_PERMISSION = 2
     private val REQUEST_ACCOUNT_NAME = 3
     private val REQUEST_GOOGLE_PLAY_SERVICES = 4
+
+    companion object {
+        val REQUEST_AUTHORIZATION = 5
+    }
 
     lateinit var credential: GoogleAccountCredential
 
@@ -226,7 +231,9 @@ class SettingsActivity : SimpleActivity() {
             } else if (requestCode == REQUEST_ACCOUNT_NAME && resultData?.extras != null) {
                 val accountName = resultData!!.getStringExtra(AccountManager.KEY_ACCOUNT_NAME)
                 config.syncAccountName = accountName
-                credential.selectedAccountName = accountName
+                tryEnablingSync()
+            } else if (requestCode == REQUEST_AUTHORIZATION) {
+                tryEnablingSync()
             }
         }
     }
@@ -234,8 +241,13 @@ class SettingsActivity : SimpleActivity() {
     private fun tryEnablingSync() {
         if (!isGooglePlayServicesAvailable()) {
             acquireGooglePlayServices()
+        } else if (!hasGetAccountsPermission()) {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.GET_ACCOUNTS), ACCOUNTS_PERMISSION)
         } else if (config.syncAccountName.isEmpty()) {
-            checkGetAccountsPermission()
+            showAccountChooser()
+        } else {
+            credential.selectedAccountName = config.syncAccountName
+            FetchGoogleEventsTask(this, credential).execute()
         }
     }
 
@@ -253,13 +265,7 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
-    private fun checkGetAccountsPermission() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.GET_ACCOUNTS) == PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.GET_ACCOUNTS), ACCOUNTS_PERMISSION)
-        } else {
-            showAccountChooser()
-        }
-    }
+    private fun hasGetAccountsPermission() = ContextCompat.checkSelfPermission(this, Manifest.permission.GET_ACCOUNTS) == PackageManager.PERMISSION_GRANTED
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
