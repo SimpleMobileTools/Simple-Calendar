@@ -8,11 +8,17 @@ import com.google.api.client.googleapis.extensions.android.gms.auth.UserRecovera
 import com.google.api.client.json.gson.GsonFactory
 import com.google.api.client.util.DateTime
 import com.google.api.services.calendar.model.Event
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.SettingsActivity
+import com.simplemobiletools.calendar.models.GoogleEvent
 import java.util.*
 
+// more info about event fields at https://developers.google.com/google-apps/calendar/v3/reference/events/insert
 class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCredential) : AsyncTask<Void, Void, List<Event>>() {
+    private val CONFIRMED = "confirmed"
+
     private var service: com.google.api.services.calendar.Calendar
     private var lastError: Exception? = null
 
@@ -41,7 +47,24 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
                 .setSingleEvents(true)
                 .execute()
 
+        for (event in events) {
+            if (event.key == "items") {
+                val parsed = parseEvents(event.value.toString())
+            }
+        }
+
         return events.items
+    }
+
+    private fun parseEvents(json: String): List<com.simplemobiletools.calendar.models.Event> {
+        val events = ArrayList<com.simplemobiletools.calendar.models.Event>()
+        val token = object : TypeToken<List<GoogleEvent>>() {}.type
+        val googleEvents = Gson().fromJson<ArrayList<GoogleEvent>>(json, token) ?: ArrayList<GoogleEvent>(8)
+        for (googleEvent in googleEvents) {
+            if (googleEvent.status != CONFIRMED)
+                continue
+        }
+        return events
     }
 
     override fun onCancelled() {
