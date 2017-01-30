@@ -37,6 +37,11 @@ dependencies {
     compile 'com.facebook.stetho:stetho:1.4.1'
     compile 'com.bignerdranch.android:recyclerview-multiselect:0.2'
 
+    compile 'com.google.code.gson:gson:2.8.0'
+    compile('com.google.http-client:google-http-client-gson:1.22.0') {
+        exclude group: 'org.apache.httpcomponents'
+    }
+
     compile 'com.google.android.gms:play-services-auth:10.0.1'
     compile('com.google.api-client:google-api-client-android:1.22.0') {
         exclude group: 'org.apache.httpcomponents'
