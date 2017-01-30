@@ -5,7 +5,7 @@ import android.os.AsyncTask
 import com.google.api.client.extensions.android.http.AndroidHttp
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential
 import com.google.api.client.googleapis.extensions.android.gms.auth.UserRecoverableAuthIOException
-import com.google.api.client.json.jackson2.JacksonFactory
+import com.google.api.client.json.gson.GsonFactory
 import com.google.api.client.util.DateTime
 import com.google.api.services.calendar.model.Event
 import com.simplemobiletools.calendar.R
@@ -18,8 +18,7 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
 
     init {
         val transport = AndroidHttp.newCompatibleTransport()
-        val jsonFactory = JacksonFactory.getDefaultInstance()
-        service = com.google.api.services.calendar.Calendar.Builder(transport, jsonFactory, credential)
+        service = com.google.api.services.calendar.Calendar.Builder(transport, GsonFactory(), credential)
                 .setApplicationName(activity.resources.getString(R.string.app_name))
                 .build()
     }
