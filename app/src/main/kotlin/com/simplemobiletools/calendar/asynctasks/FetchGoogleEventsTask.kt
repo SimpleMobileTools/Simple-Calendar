@@ -6,13 +6,17 @@ import com.google.api.client.extensions.android.http.AndroidHttp
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential
 import com.google.api.client.googleapis.extensions.android.gms.auth.UserRecoverableAuthIOException
 import com.google.api.client.json.gson.GsonFactory
-import com.google.api.client.util.DateTime
 import com.google.api.services.calendar.model.Event
 import com.google.gson.Gson
+import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.SettingsActivity
+import com.simplemobiletools.calendar.helpers.DAY
+import com.simplemobiletools.calendar.helpers.MONTH
+import com.simplemobiletools.calendar.helpers.WEEK
+import com.simplemobiletools.calendar.helpers.YEAR
 import com.simplemobiletools.calendar.models.GoogleEvent
 import com.simplemobiletools.calendar.models.GoogleEventReminder
 import java.util.*
@@ -24,6 +28,12 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
     private val ITEMS = "items"
     private val OVERRIDES = "overrides"
     private val POPUP = "popup"
+    private val RRULE = "RRULE:"
+
+    private val DAILY = "DAILY"
+    private val WEEKLY = "WEEKLY"
+    private val MONTHLY = "MONTHLY"
+    private val YEARLY = "YEARLY"
 
     private var service: com.google.api.services.calendar.Calendar
     private var lastError: Exception? = null
@@ -46,10 +56,7 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
     }
 
     private fun getDataFromApi(): List<Event> {
-        val minTime = DateTime(System.currentTimeMillis() - getMonthMillis())
         val events = service.events().list(PRIMARY)
-                .setTimeMin(minTime)
-                .setSingleEvents(true)
                 .execute()
 
         for (event in events) {
@@ -70,6 +77,7 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
                 continue
 
             val reminder = getReminder(googleEvent.reminders)
+            val recurrence = getRecurrence(googleEvent.recurrence)
         }
         return events
     }
@@ -86,6 +94,32 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
         return -1
     }
 
+    private fun getRecurrence(recurrence: JsonArray?): Int {
+        if (recurrence == null) {
+            return 0
+        }
+
+        var rule = recurrence[0].toString().trim('"')
+        if (!rule.startsWith(RRULE))
+            return 0
+
+        rule = rule.substring(RRULE.length)
+
+        val parts = rule.split(';')
+        val frequency = parts[0].split("=")[1]
+        return getFrequencyMinutes(frequency)
+    }
+
+    private fun getFrequencyMinutes(frequency: String): Int {
+        return when (frequency) {
+            DAILY -> DAY
+            WEEKLY -> WEEK
+            MONTHLY -> MONTH
+            YEARLY -> YEAR
+            else -> 0
+        }
+    }
+
     override fun onCancelled() {
         if (lastError != null) {
             if (lastError is UserRecoverableAuthIOException) {
@@ -93,6 +127,4 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
             }
         }
     }
-
-    private fun getMonthMillis() = 30 * 24 * 60 * 60 * 1000L
 }
