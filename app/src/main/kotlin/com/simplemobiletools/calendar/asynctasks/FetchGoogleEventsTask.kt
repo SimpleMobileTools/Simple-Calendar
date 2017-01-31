@@ -9,15 +9,21 @@ import com.google.api.client.json.gson.GsonFactory
 import com.google.api.client.util.DateTime
 import com.google.api.services.calendar.model.Event
 import com.google.gson.Gson
+import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.SettingsActivity
 import com.simplemobiletools.calendar.models.GoogleEvent
+import com.simplemobiletools.calendar.models.GoogleEventReminder
 import java.util.*
 
 // more info about event fields at https://developers.google.com/google-apps/calendar/v3/reference/events/insert
 class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCredential) : AsyncTask<Void, Void, List<Event>>() {
     private val CONFIRMED = "confirmed"
+    private val PRIMARY = "primary"
+    private val ITEMS = "items"
+    private val OVERRIDES = "overrides"
+    private val POPUP = "popup"
 
     private var service: com.google.api.services.calendar.Calendar
     private var lastError: Exception? = null
@@ -40,15 +46,14 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
     }
 
     private fun getDataFromApi(): List<Event> {
-        val now = DateTime(System.currentTimeMillis() - getMonthMillis())
-        val events = service.events().list("primary")
-                .setTimeMin(now)
-                .setOrderBy("startTime")
+        val minTime = DateTime(System.currentTimeMillis() - getMonthMillis())
+        val events = service.events().list(PRIMARY)
+                .setTimeMin(minTime)
                 .setSingleEvents(true)
                 .execute()
 
         for (event in events) {
-            if (event.key == "items") {
+            if (event.key == ITEMS) {
                 val parsed = parseEvents(event.value.toString())
             }
         }
@@ -63,8 +68,22 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
         for (googleEvent in googleEvents) {
             if (googleEvent.status != CONFIRMED)
                 continue
+
+            val reminder = getReminder(googleEvent.reminders)
         }
         return events
+    }
+
+    private fun getReminder(json: JsonObject): Int {
+        val array = json.getAsJsonArray(OVERRIDES)
+        val token = object : TypeToken<List<GoogleEventReminder>>() {}.type
+        val reminders = Gson().fromJson<ArrayList<GoogleEventReminder>>(array, token) ?: ArrayList<GoogleEventReminder>(2)
+        for ((method, minutes) in reminders) {
+            if (method == POPUP) {
+                return minutes
+            }
+        }
+        return -1
     }
 
     override fun onCancelled() {
