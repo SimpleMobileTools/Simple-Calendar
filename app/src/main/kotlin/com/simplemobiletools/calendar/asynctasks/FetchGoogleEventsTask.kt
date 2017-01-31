@@ -2,11 +2,11 @@ package com.simplemobiletools.calendar.asynctasks
 
 import android.app.Activity
 import android.os.AsyncTask
+import android.util.Log
 import com.google.api.client.extensions.android.http.AndroidHttp
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential
 import com.google.api.client.googleapis.extensions.android.gms.auth.UserRecoverableAuthIOException
 import com.google.api.client.json.gson.GsonFactory
-import com.google.api.services.calendar.model.Event
 import com.google.gson.Gson
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
@@ -22,13 +22,14 @@ import com.simplemobiletools.calendar.models.GoogleEventReminder
 import java.util.*
 
 // more info about event fields at https://developers.google.com/google-apps/calendar/v3/reference/events/insert
-class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCredential) : AsyncTask<Void, Void, List<Event>>() {
+class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCredential) : AsyncTask<Void, Void, List<com.simplemobiletools.calendar.models.Event>>() {
     private val CONFIRMED = "confirmed"
     private val PRIMARY = "primary"
     private val ITEMS = "items"
     private val OVERRIDES = "overrides"
     private val POPUP = "popup"
     private val RRULE = "RRULE:"
+    private val NEXT_PAGE_TOKEN = "nextPageToken"
 
     private val DAILY = "DAILY"
     private val WEEKLY = "WEEKLY"
@@ -45,7 +46,7 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
                 .build()
     }
 
-    override fun doInBackground(vararg params: Void): List<Event>? {
+    override fun doInBackground(vararg params: Void): List<com.simplemobiletools.calendar.models.Event>? {
         try {
             return getDataFromApi()
         } catch (e: Exception) {
@@ -55,17 +56,28 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
         }
     }
 
-    private fun getDataFromApi(): List<Event> {
-        val events = service.events().list(PRIMARY)
-                .execute()
+    private fun getDataFromApi(): List<com.simplemobiletools.calendar.models.Event> {
+        val parsedEvents = ArrayList<com.simplemobiletools.calendar.models.Event>()
+        var currToken = ""
+        while (true) {
+            val events = service.events().list(PRIMARY)
+                    .setPageToken(currToken)
+                    .execute()
 
-        for (event in events) {
-            if (event.key == ITEMS) {
-                val parsed = parseEvents(event.value.toString())
+            for (event in events) {
+                if (event.key == ITEMS) {
+                    val parsed = parseEvents(event.value.toString())
+                }
+            }
+
+            if (events.containsKey(NEXT_PAGE_TOKEN)) {
+                currToken = events[NEXT_PAGE_TOKEN] as String
+            } else {
+                break
             }
         }
 
-        return events.items
+        return parsedEvents
     }
 
     private fun parseEvents(json: String): List<com.simplemobiletools.calendar.models.Event> {
