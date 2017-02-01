@@ -52,10 +52,11 @@
     <string name="invalid_file_format">Invalid file format</string>
 
     <!-- Event details -->
-        <string name="title">Título</string>
+    <string name="title">Título</string>
     <string name="start">Inicio</string>
     <string name="end">Fin (opcional)</string>
     <string name="description">Descripción</string>
+    <string name="all_day">All-day</string>
 
     <!-- Weekly view -->
     <string name="week">Week</string>

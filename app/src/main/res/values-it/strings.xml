@@ -56,6 +56,7 @@
     <string name="start">Inizio</string>
     <string name="end">Fine (facoltativo)</string>
     <string name="description">Descrizione</string>
+    <string name="all_day">All-day</string>
 
     <!-- Weekly view -->
     <string name="week">Week</string>

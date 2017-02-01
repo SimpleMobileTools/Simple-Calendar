@@ -56,6 +56,7 @@
     <string name="start">प्रारंभ</string>
     <string name="end">अंत (वैकल्पिक)</string>
     <string name="description">विवरण</string>
+    <string name="all_day">All-day</string>
 
     <!-- Weekly view -->
     <string name="week">Week</string>

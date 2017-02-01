@@ -56,6 +56,7 @@
     <string name="start">Начало</string>
     <string name="end">Окончание (необязательно)</string>
     <string name="description">Описание</string>
+    <string name="all_day">All-day</string>
 
     <!-- Weekly view -->
     <string name="week">Неделя</string>

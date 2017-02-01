@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/event_scrollview"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -58,6 +59,19 @@
             android:layout_marginTop="@dimen/activity_margin"
             android:text="@string/start"
             android:textSize="@dimen/day_text_size"/>
+
+        <com.simplemobiletools.commons.views.MySwitchCompat
+            android:id="@+id/event_all_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/event_description"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:padding="@dimen/medium_margin"
+            android:text="@string/all_day"
+            android:textSize="@dimen/day_text_size"
+            app:switchPadding="@dimen/small_margin"/>
 
         <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/event_start_date"

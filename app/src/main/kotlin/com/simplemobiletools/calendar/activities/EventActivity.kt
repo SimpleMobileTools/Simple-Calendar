@@ -69,6 +69,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         event_end_time.setOnClickListener { setupEndTime() }
 
         event_end_checkbox.setOnCheckedChangeListener { compoundButton, isChecked -> endCheckboxChecked(isChecked) }
+        event_all_day.setOnCheckedChangeListener { compoundButton, isChecked -> toggleAllDay(isChecked) }
 
         event_reminder.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -78,6 +79,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
                 reminderItemSelected()
             }
         }
+
         updateTextColors(event_scrollview)
     }
 
@@ -153,6 +155,10 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
                     else -> 0
                 }
         )
+    }
+
+    fun toggleAllDay(isChecked: Boolean) {
+
     }
 
     fun endCheckboxChecked(isChecked: Boolean) {

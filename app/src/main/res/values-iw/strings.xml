@@ -56,6 +56,7 @@
     <string name="start">התחלה</string>
     <string name="end">סוף (אופציונלי)</string>
     <string name="description">תיאור</string>
+    <string name="all_day">All-day</string>
 
     <!-- Weekly view -->
     <string name="week">שבוע</string>
