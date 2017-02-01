@@ -76,7 +76,7 @@
     <string name="google_sync">Google sync</string>
 
     <plurals name="events_deleted">
-        <item quantity="one">1 bejegyzés törölve</item>
+        <item quantity="one">%1$d bejegyzés törölve</item>
         <item quantity="other">%1$d bejegyzés törölve</item>
     </plurals>
 
