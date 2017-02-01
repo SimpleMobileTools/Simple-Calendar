@@ -18,3 +18,7 @@
 
 # Joda
 -dontwarn org.joda.time.**
+
+# Guava from google-api-client
+-keep class com.google.common.**
+-dontwarn com.google.common.**

@@ -15,7 +15,13 @@ android {
     }
 
     signingConfigs {
-        release
+        release {
+            def config = readSignProp('app/signing.properties')
+            storeFile file(config['STORE_FILE'])
+            storePassword config['PASSWORD']
+            keyAlias config['KEY_ALIAS']
+            keyPassword config['PASSWORD']
+        }
     }
 
     buildTypes {
@@ -23,6 +29,12 @@ android {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
+        }
+        debug {
+        	defaultConfig {
+        		minSdkVersion 21
+        		multiDexEnabled true
+            }
         }
     }
 
@@ -53,33 +65,12 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
 
-buildscript {
-    ext.kotlin_version = '1.0.3'
-    repositories {
-        mavenCentral()
+Properties readSignProp(String fileName) {
+    File file = new File(fileName)
+    if (file.canRead()) {
+        Properties props = new Properties()
+        props.load(new FileInputStream(file))
+        return props
     }
-
-    dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version"
-    }
-}
-
-def Properties props = new Properties()
-def propFile = new File('signing.properties')
-if (propFile.canRead()) {
-    props.load(new FileInputStream(propFile))
-
-    if (props != null && props.containsKey('STORE_FILE') && props.containsKey('KEY_ALIAS') && props.containsKey('PASSWORD')) {
-        android.signingConfigs.release.storeFile = file(props['STORE_FILE'])
-        android.signingConfigs.release.storePassword = props['PASSWORD']
-        android.signingConfigs.release.keyAlias = props['KEY_ALIAS']
-        android.signingConfigs.release.keyPassword = props['PASSWORD']
-    } else {
-        println 'signing.properties found but some entries are missing'
-        android.buildTypes.release.signingConfig = null
-    }
-} else {
-    println 'signing.properties not found'
-    android.buildTypes.release.signingConfig = null
+    throw Exception("${fileName} found but some entries are missing")
 }
