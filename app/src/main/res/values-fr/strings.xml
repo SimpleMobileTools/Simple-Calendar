@@ -76,7 +76,7 @@
     <string name="google_sync">Google sync</string>
 
     <plurals name="events_deleted">
-        <item quantity="one">1 événement supprimé</item>
+        <item quantity="one">%1$d événement supprimé</item>
         <item quantity="other">%1$d événements supprimés</item>
     </plurals>
 
