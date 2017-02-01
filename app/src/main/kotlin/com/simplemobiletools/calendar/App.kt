@@ -1,10 +1,9 @@
 package com.simplemobiletools.calendar
 
-import android.app.Application
-
+import android.support.multidex.MultiDexApplication
 import com.facebook.stetho.Stetho
 
-class App : Application() {
+class App : MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
         Stetho.initializeWithDefaults(this)
