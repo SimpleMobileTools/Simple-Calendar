@@ -9,6 +9,7 @@
     <string name="simple_event_list">Egyszerű bejegyzéslista</string>
     <string name="no_upcoming_events">Seems like you don\'t have any upcoming events.</string>
     <string name="add_some_events">You can add some with the Plus button at the bottom.</string>
+    <string name="details">Részletek</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Havi naptár</string>
@@ -50,8 +51,7 @@
     <string name="importing_some_events_failed">Importing some events failed</string>
     <string name="invalid_file_format">Invalid file format</string>
 
-    <!-- Day details -->
-    <string name="details">Részletek</string>
+    <!-- Event details -->
     <string name="title">Név</string>
     <string name="start">Kezdet</string>
     <string name="end">Vég (nem kötelező)</string>

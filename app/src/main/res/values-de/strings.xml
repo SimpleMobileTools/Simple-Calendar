@@ -9,6 +9,7 @@
     <string name="simple_event_list">Einfache Termin Liste</string>
     <string name="no_upcoming_events">Sieht aus als wäre dein Kalender leer.</string>
     <string name="add_some_events">Du kannst neue Termine mit dem Plus Button unten rechts erstellen.</string>
+    <string name="details">Details</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Monats Kalender</string>
@@ -50,8 +51,7 @@
     <string name="importing_some_events_failed">Importing some events failed</string>
     <string name="invalid_file_format">Invalid file format</string>
 
-    <!-- Day details -->
-    <string name="details">Details</string>
+    <!-- Event details -->
     <string name="title">Titel</string>
     <string name="start">Start</string>
     <string name="end">Ende (optional)</string>

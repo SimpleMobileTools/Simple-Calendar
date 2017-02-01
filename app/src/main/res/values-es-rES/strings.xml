@@ -9,6 +9,7 @@
     <string name="simple_event_list">Lista de eventos simples</string>
     <string name="no_upcoming_events">Seems like you don\'t have any upcoming events.</string>
     <string name="add_some_events">You can add some with the Plus button at the bottom.</string>
+    <string name="details">Detalles</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Calendar monthly</string>
@@ -50,9 +51,8 @@
     <string name="importing_some_events_failed">Importing some events failed</string>
     <string name="invalid_file_format">Invalid file format</string>
 
-    <!-- Day details -->
-    <string name="details">Detalles</string>
-    <string name="title">Título</string>
+    <!-- Event details -->
+        <string name="title">Título</string>
     <string name="start">Inicio</string>
     <string name="end">Fin (opcional)</string>
     <string name="description">Descripción</string>

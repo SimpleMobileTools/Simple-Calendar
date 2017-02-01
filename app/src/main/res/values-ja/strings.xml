@@ -9,6 +9,7 @@
     <string name="simple_event_list">シンプル イベント リスト</string>
     <string name="no_upcoming_events">Seems like you don\'t have any upcoming events.</string>
     <string name="add_some_events">You can add some with the Plus button at the bottom.</string>
+    <string name="details">詳細</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">カレンダー月</string>
@@ -50,8 +51,7 @@
     <string name="importing_some_events_failed">Importing some events failed</string>
     <string name="invalid_file_format">Invalid file format</string>
 
-    <!-- Day details -->
-    <string name="details">詳細</string>
+    <!-- Event details -->
     <string name="title">タイトル</string>
     <string name="start">開始</string>
     <string name="end">終了 (任意)</string>
