@@ -12,6 +12,7 @@ import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.SettingsActivity
+import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.helpers.DAY
 import com.simplemobiletools.calendar.helpers.MONTH
 import com.simplemobiletools.calendar.helpers.WEEK
@@ -19,6 +20,7 @@ import com.simplemobiletools.calendar.helpers.YEAR
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.models.GoogleEvent
 import com.simplemobiletools.calendar.models.GoogleEventReminder
+import org.joda.time.DateTime
 import java.util.*
 
 // more info about event fields at https://developers.google.com/google-apps/calendar/v3/reference/events/insert
@@ -90,6 +92,13 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
 
             val reminder = getReminder(googleEvent.reminders)
             val recurrence = getRecurrence(googleEvent.recurrence)
+            val start = googleEvent.start
+            if (start.date != null) {
+                val startTS = DateTime(start.date).seconds()
+            } else {
+                val startTS = DateTime(start.dateTime).seconds()
+                val endTS = DateTime(googleEvent.end.dateTime).seconds()
+            }
         }
         return events
     }
