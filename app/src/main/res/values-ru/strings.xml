@@ -43,12 +43,12 @@
     <string name="days">дней</string>
 
     <!-- Importing -->
-    <string name="import_events">Import events</string>
-    <string name="import_events_from_ics">Import events from an .ics file</string>
-    <string name="event_reminder">Event reminder</string>
-    <string name="events_imported_successfully">Events imported successfully</string>
-    <string name="importing_some_events_failed">Importing some events failed</string>
-    <string name="invalid_file_format">Invalid file format</string>
+    <string name="import_events">Импорт событий</string>
+    <string name="import_events_from_ics">Импорт событий из .ics файла</string>
+    <string name="event_reminder">Напоминания о событиях</string>
+    <string name="events_imported_successfully">События успешно импортированы</string>
+    <string name="importing_some_events_failed">Ошибка импорта</string>
+    <string name="invalid_file_format">Неправальный формат файла</string>
 
     <!-- Day details -->
     <string name="details">Подробности</string>
@@ -58,12 +58,12 @@
     <string name="description">Описание</string>
 
     <!-- Weekly view -->
-    <string name="week">Week</string>
+    <string name="week">Неделя</string>
 
     <!-- Settings -->
     <string name="sunday_first">Воскресенье - начало недели</string>
-    <string name="start_weekly_at">Start weekly view day at</string>
-    <string name="end_weekly_at">End weekly view day at</string>
+    <string name="start_weekly_at">Начало недели</string>
+    <string name="end_weekly_at">Окончание недели</string>
     <string name="week_numbers">Отображать номера недель</string>
     <string name="vibrate">Вибрация при напоминании</string>
     <string name="reminder_sound">Звук напоминания</string>
@@ -72,11 +72,13 @@
     <string name="notification_sound">Звук уведомления</string>
     <string name="no_ringtone_picker">Не найдено приложение для выбора рингтона</string>
     <string name="no_ringtone_selected">Нет</string>
-    <string name="day_end_before_start">The day cannot end earlier than it starts</string>
+    <string name="day_end_before_start">Конец дня не может быть раньше начала</string>
     <string name="google_sync">Google sync</string>
 
     <plurals name="events_deleted">
-        <item quantity="one">1 событие удалено</item>
+        <item quantity="one">%1$d событие удалено</item>
+        <item quantity="few">%1$d события удалено</item>
+        <item quantity="many">%1$d событий удалено</item>
         <item quantity="other">Событий удалено: %1$d</item>
     </plurals>
 
@@ -112,8 +114,8 @@
     <string name="sample_title_5">Время для кофе</string>
 
     <!-- Release notes -->
-    <string name="release_51">Allow importing events from .ics files</string>
-    <string name="release_49">Allow picking colors by hex codes</string>
+    <string name="release_51">Разрешен импорт событий из .ics файлов</string>
+    <string name="release_49">Разрешен выбор цвета из шестнадцатеричного кода</string>
     <string name="release_48">Добавлен вид "на неделю"</string>
     <string name="release_46">Типы оповещений о событиях были изменены, пожалуйста, обновите их.</string>
     <string name="release_44">
