@@ -44,19 +44,19 @@
     <string name="days">Tage</string>
 
     <!-- Importing -->
-    <string name="import_events">Import events</string>
-    <string name="import_events_from_ics">Import events from an .ics file</string>
-    <string name="event_reminder">Event reminder</string>
-    <string name="events_imported_successfully">Events imported successfully</string>
-    <string name="importing_some_events_failed">Importing some events failed</string>
-    <string name="invalid_file_format">Invalid file format</string>
+    <string name="import_events">importiere Termine</string>
+    <string name="import_events_from_ics">importiere Termine aus.ics Datei</string>
+    <string name="event_reminder">Termin Erinnerung</string>
+    <string name="events_imported_successfully">Termine erfolgreich importiert</string>
+    <string name="importing_some_events_failed">einige Termine wurden nicht erfolgreich importiert</string>
+    <string name="invalid_file_format">ungültiges Dateiformat</string>
 
     <!-- Event details -->
     <string name="title">Titel</string>
     <string name="start">Start</string>
     <string name="end">Ende (optional)</string>
     <string name="description">Beschreibung</string>
-    <string name="all_day">All-day</string>
+    <string name="all_day">täglich</string>
 
     <!-- Weekly view -->
     <string name="week">Woche</string>
@@ -113,8 +113,8 @@
     <string name="sample_title_5">Kaffee Pause</string>
 
     <!-- Release notes -->
-    <string name="release_51">Allow importing events from .ics files</string>
-    <string name="release_49">Allow picking colors by hex codes</string>
+    <string name="release_51">Import von Terminen aus .ics Dateien hinzugefügt</string>
+    <string name="release_49">Farbauswahl durch hex Code hinzugefügt</string>
     <string name="release_48">Wochenansicht hinzugefügt</string>
     <string name="release_46">Event Erinnerungen wurden angepasst</string>
     <string name="release_44">
