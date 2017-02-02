@@ -25,10 +25,9 @@
     <string name="event_added">האירוע הוסף בהצלחה</string>
     <string name="past_event_added">אירוע בעבר הוסף בהצלחה</string>
     <string name="event_updated">האירוע עודכן בהצלחה</string>
-    <string name="reminder">תזכורת</string>
-    <string name="no_reminder">No reminder</string>
-    <string name="at_start">בהתחלה</string>
-    <string name="custom">מותאם אישית</string>
+
+    <!-- Event Repetition -->
+    <string name="select_repeat_interval">Select a repeat interval</string>
     <string name="repetition">Repetition</string>
     <string name="no_repetition">No repetition</string>
     <string name="daily">יום-יומית</string>
@@ -39,8 +38,12 @@
 
     <!-- Event Reminders -->
     <string name="select_event_reminder">Select an event reminder</string>
+    <string name="reminder">תזכורת</string>
+    <string name="no_reminder">No reminder</string>
+    <string name="at_start">בהתחלה</string>
     <string name="mins_before_10">10 minutes before</string>
     <string name="mins_before_30">30 minutes before</string>
+    <string name="custom">מותאם אישית</string>
     <string name="before">לפני</string>
     <string name="minutes">דקות</string>
     <string name="hours">שעות</string>

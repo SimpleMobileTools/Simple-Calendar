@@ -9,6 +9,7 @@ import android.view.MenuItem
 import android.view.WindowManager
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.dialogs.EventReminderDialog
+import com.simplemobiletools.calendar.dialogs.EventRepeatIntervalDialog
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.getAppropriateTheme
 import com.simplemobiletools.calendar.extensions.scheduleNotification
@@ -102,7 +103,10 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     }
 
     private fun showRepeatIntervalDialog() {
-
+        EventRepeatIntervalDialog(this, mRepeatInterval) {
+            mRepeatInterval = it
+            updateRepetitionText()
+        }
     }
 
     private fun updateReminderText() {

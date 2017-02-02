@@ -25,10 +25,9 @@
     <string name="event_added">Evento adicionado com sucesso</string>
     <string name="past_event_added">Evento no passado adicionado com sucesso</string>
     <string name="event_updated">Evento atualizado com sucesso</string>
-    <string name="reminder">Lembrete</string>
-    <string name="no_reminder">No reminder</string>
-    <string name="at_start">No início</string>
-    <string name="custom">Personalizado</string>
+
+    <!-- Event Repetition -->
+    <string name="select_repeat_interval">Select a repeat interval</string>
     <string name="repetition">Repetição</string>
     <string name="no_repetition">No repetition</string>
     <string name="daily">Diária</string>
@@ -39,8 +38,12 @@
 
     <!-- Event Reminders -->
     <string name="select_event_reminder">Select an event reminder</string>
+    <string name="reminder">Lembrete</string>
+    <string name="no_reminder">No reminder</string>
+    <string name="at_start">No início</string>
     <string name="mins_before_10">10 minutes before</string>
     <string name="mins_before_30">30 minutes before</string>
+    <string name="custom">Personalizado</string>
     <string name="before">antes</string>
     <string name="minutes">minutos</string>
     <string name="hours">horas</string>

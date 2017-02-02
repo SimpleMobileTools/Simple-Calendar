@@ -25,10 +25,9 @@
     <string name="event_added">Bejegyzés hozzáadva</string>
     <string name="past_event_added">Korábbi bejegyzés hozzáadva</string>
     <string name="event_updated">Bejegyzés frissítve</string>
-    <string name="reminder">Emlékeztető</string>
-    <string name="no_reminder">No reminder</string>
-    <string name="at_start">A kezdetekor</string>
-    <string name="custom">Egyedi</string>
+
+    <!-- Event Repetition -->
+    <string name="select_repeat_interval">Select a repeat interval</string>
     <string name="repetition">Ismétlés</string>
     <string name="no_repetition">No repetition</string>
     <string name="daily">Naponta</string>
@@ -39,8 +38,12 @@
 
     <!-- Event Reminders -->
     <string name="select_event_reminder">Select an event reminder</string>
+    <string name="reminder">Emlékeztető</string>
+    <string name="no_reminder">No reminder</string>
+    <string name="at_start">A kezdetekor</string>
     <string name="mins_before_10">10 minutes before</string>
     <string name="mins_before_30">30 minutes before</string>
+    <string name="custom">Egyedi</string>
     <string name="before">korábban</string>
     <string name="minutes">perccel</string>
     <string name="hours">órával</string>

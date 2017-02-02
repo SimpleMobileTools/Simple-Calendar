@@ -25,10 +25,9 @@
     <string name="event_added">Händelsen tillagd</string>
     <string name="past_event_added">Händelsen ät tillagd</string>
     <string name="event_updated">Händelsen uppdaterad</string>
-    <string name="reminder">Påminnelse</string>
-    <string name="no_reminder">No reminder</string>
-    <string name="at_start">Vid start</string>
-    <string name="custom">Egen</string>
+
+    <!-- Event Repetition -->
+    <string name="select_repeat_interval">Select a repeat interval</string>
     <string name="repetition">Repetition</string>
     <string name="no_repetition">No repetition</string>
     <string name="daily">Dagligen</string>
@@ -39,8 +38,12 @@
 
     <!-- Event Reminders -->
     <string name="select_event_reminder">Select an event reminder</string>
+    <string name="reminder">Påminnelse</string>
+    <string name="no_reminder">No reminder</string>
+    <string name="at_start">Vid start</string>
     <string name="mins_before_10">10 minutes before</string>
     <string name="mins_before_30">30 minutes before</string>
+    <string name="custom">Egen</string>
     <string name="before">före</string>
     <string name="minutes">minuter</string>
     <string name="hours">timmar</string>

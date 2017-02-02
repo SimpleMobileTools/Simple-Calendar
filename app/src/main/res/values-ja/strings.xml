@@ -25,10 +25,9 @@
     <string name="event_added">イベントを正常に追加しました</string>
     <string name="past_event_added">過去のイベントを正常に追加しました</string>
     <string name="event_updated">イベントを正常に更新しました</string>
-    <string name="reminder">リマインダー</string>
-    <string name="no_reminder">No reminder</string>
-    <string name="at_start">開始時</string>
-    <string name="custom">カスタム</string>
+
+    <!-- Event Repetition -->
+    <string name="select_repeat_interval">Select a repeat interval</string>
     <string name="repetition">繰り返し</string>
     <string name="no_repetition">No repetition</string>
     <string name="daily">毎日</string>
@@ -39,8 +38,12 @@
 
     <!-- Event Reminders -->
     <string name="select_event_reminder">Select an event reminder</string>
+    <string name="reminder">リマインダー</string>
+    <string name="no_reminder">No reminder</string>
+    <string name="at_start">開始時</string>
     <string name="mins_before_10">10 minutes before</string>
     <string name="mins_before_30">30 minutes before</string>
+    <string name="custom">カスタム</string>
     <string name="before">前</string>
     <string name="minutes">分</string>
     <string name="hours">時間</string>
