@@ -181,45 +181,6 @@
             android:layout_marginTop="@dimen/medium_margin"
             android:background="@color/darker_divider"/>
 
-        <LinearLayout
-            android:id="@+id/custom_reminder_holder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/event_reminder_divider"
-            android:layout_marginLeft="@dimen/activity_margin"
-            android:orientation="horizontal"
-            android:visibility="gone">
-
-            <com.simplemobiletools.commons.views.MyEditText
-                android:id="@+id/custom_reminder_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:digits="0123456789"
-                android:inputType="number"
-                android:maxLength="10"
-                android:minEms="5"
-                android:textCursorDrawable="@null"
-                android:textSize="@dimen/day_text_size"/>
-
-            <com.simplemobiletools.commons.views.MyAppCompatSpinner
-                android:id="@+id/custom_reminder_other_period"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:entries="@array/custom_reminders"
-                android:gravity="center_vertical"
-                android:paddingLeft="@dimen/activity_margin"
-                android:paddingStart="@dimen/activity_margin"/>
-
-            <com.simplemobiletools.commons.views.MyTextView
-                android:id="@+id/custom_reminder_other_val"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:paddingLeft="@dimen/activity_margin"
-                android:paddingStart="@dimen/activity_margin"
-                android:text="@string/before"/>
-        </LinearLayout>
-
         <ImageView
             android:id="@+id/event_repetition_image"
             android:layout_width="wrap_content"
@@ -237,7 +198,7 @@
             android:id="@+id/event_repetition"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/custom_reminder_holder"
+            android:layout_below="@+id/event_reminder_divider"
             android:layout_toRightOf="@+id/event_repetition_image"
             android:entries="@array/repetition"
             android:padding="@dimen/normal_margin"/>
