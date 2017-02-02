@@ -2,6 +2,7 @@ package com.simplemobiletools.calendar.activities
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.graphics.PorterDuff
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -68,7 +69,6 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         event_end_date.setOnClickListener { setupEndDate() }
         event_end_time.setOnClickListener { setupEndTime() }
 
-        event_end_checkbox.setOnCheckedChangeListener { compoundButton, isChecked -> endCheckboxChecked(isChecked) }
         event_all_day.setOnCheckedChangeListener { compoundButton, isChecked -> toggleAllDay(isChecked) }
 
         event_reminder.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -81,6 +81,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         }
 
         updateTextColors(event_scrollview)
+        updateIconColors()
     }
 
     private fun setupEditEvent() {
@@ -88,8 +89,6 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         title = resources.getString(R.string.edit_event)
         mEventStartDateTime = Formatter.getDateTimeFromTS(mEvent.startTS)
         mEventEndDateTime = Formatter.getDateTimeFromTS(mEvent.endTS)
-        event_end_checkbox.isChecked = mEventStartDateTime != mEventEndDateTime
-        endCheckboxChecked(event_end_checkbox.isChecked)
         event_title.setText(mEvent.title)
         event_description.setText(mEvent.description)
     }
@@ -159,15 +158,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
     fun toggleAllDay(isChecked: Boolean) {
         event_start_time.beGoneIf(isChecked)
-        event_end_checkbox.beGoneIf(isChecked)
-        event_end_date.beGoneIf(isChecked || !event_end_checkbox.isChecked)
-        event_end_time.beGoneIf(isChecked || !event_end_checkbox.isChecked)
-    }
-
-    fun endCheckboxChecked(isChecked: Boolean) {
-        hideKeyboard()
-        event_end_date.beVisibleIf(isChecked)
-        event_end_time.beVisibleIf(isChecked)
+        event_end_time.beGoneIf(isChecked)
     }
 
     fun reminderItemSelected() {
@@ -241,7 +232,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         val newStartTS = mEventStartDateTime.seconds()
         val newEndTS = mEventEndDateTime.seconds()
 
-        if (event_end_checkbox.isChecked && newStartTS > newEndTS) {
+        if (newStartTS > newEndTS) {
             toast(R.string.end_before_start)
             return
         }
@@ -250,7 +241,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         val newDescription = event_description.value
         mEvent.apply {
             startTS = newStartTS
-            endTS = if (event_end_checkbox.isChecked) newEndTS else newStartTS
+            endTS = newEndTS
             title = newTitle
             description = newDescription
             reminderMinutes = getReminderMinutes()
@@ -368,6 +359,12 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             updateEndTime()
             mWasEndTimeSet = true
         }
+    }
+
+    private fun updateIconColors() {
+        event_time_image.setColorFilter(config.textColor, PorterDuff.Mode.SRC_IN)
+        event_repetition_image.setColorFilter(config.textColor, PorterDuff.Mode.SRC_IN)
+        event_reminder_image.setColorFilter(config.textColor, PorterDuff.Mode.SRC_IN)
     }
 
     override fun eventInserted(event: Event) {

@@ -26,11 +26,11 @@
     <string name="past_event_added">過去のイベントを正常に追加しました</string>
     <string name="event_updated">イベントを正常に更新しました</string>
     <string name="reminder">リマインダー</string>
-    <string name="off">オフ</string>
+    <string name="no_reminder">No reminder</string>
     <string name="at_start">開始時</string>
     <string name="custom">カスタム</string>
     <string name="repetition">繰り返し</string>
-    <string name="none">なし</string>
+    <string name="no_repetition">No repetition</string>
     <string name="daily">毎日</string>
     <string name="weekly">毎週</string>
     <string name="biweekly">隔週</string>

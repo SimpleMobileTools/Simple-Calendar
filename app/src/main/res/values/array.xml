@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="reminders">
-        <item>@string/off</item>
+        <item>@string/no_reminder</item>
         <item>@string/at_start</item>
         <item>@string/custom</item>
     </string-array>
@@ -13,7 +13,7 @@
     </string-array>
 
     <string-array name="repetition">
-        <item>@string/none</item>
+        <item>@string/no_repetition</item>
         <item>@string/daily</item>
         <item>@string/weekly</item>
         <item>@string/biweekly</item>

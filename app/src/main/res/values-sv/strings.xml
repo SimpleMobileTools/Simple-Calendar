@@ -26,11 +26,11 @@
     <string name="past_event_added">Händelsen ät tillagd</string>
     <string name="event_updated">Händelsen uppdaterad</string>
     <string name="reminder">Påminnelse</string>
-    <string name="off">Av</string>
+    <string name="no_reminder">No reminder</string>
     <string name="at_start">Vid start</string>
     <string name="custom">Egen</string>
     <string name="repetition">Repetition</string>
-    <string name="none">Ingen</string>
+    <string name="no_repetition">No repetition</string>
     <string name="daily">Dagligen</string>
     <string name="weekly">Veckovis</string>
     <string name="biweekly">Varannan vecka</string>

@@ -26,11 +26,11 @@
     <string name="past_event_added">Event in the past added successfully</string>
     <string name="event_updated">Event updated successfully</string>
     <string name="reminder">Reminder</string>
-    <string name="off">Off</string>
+    <string name="no_reminder">No reminder</string>
     <string name="at_start">At start</string>
     <string name="custom">Custom</string>
     <string name="repetition">Repetition</string>
-    <string name="none">None</string>
+    <string name="no_repetition">No repetition</string>
     <string name="daily">Daily</string>
     <string name="weekly">Weekly</string>
     <string name="biweekly">Biweekly</string>

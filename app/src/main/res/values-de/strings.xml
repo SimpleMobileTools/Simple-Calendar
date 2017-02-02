@@ -26,11 +26,11 @@
     <string name="past_event_added">Termin erfolgreich in der Vergangenheit hinzugefügt</string>
     <string name="event_updated">Termin erfolgreich aktualisiert</string>
     <string name="reminder">Erinnerung</string>
-    <string name="off">Aus</string>
+    <string name="no_reminder">No reminder</string>
     <string name="at_start">Zu Beginn</string>
     <string name="custom">Benutzerdefiniert</string>
     <string name="repetition">Wiederholung</string>
-    <string name="none">Keine</string>
+    <string name="no_repetition">No repetition</string>
     <string name="daily">Täglich</string>
     <string name="weekly">Wöchentlich</string>
     <string name="biweekly">Zweiwöchentlich</string>

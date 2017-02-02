@@ -26,11 +26,11 @@
     <string name="past_event_added">El evento en el pasado se ha añadido con éxito</string>
     <string name="event_updated">El evento se ha actualizado con éxito</string>
     <string name="reminder">Recordatorio</string>
-    <string name="off">Apagado</string>
+    <string name="no_reminder">No reminder</string>
     <string name="at_start">Al inicio</string>
     <string name="custom">Personalizado</string>
     <string name="repetition">Repetición</string>
-    <string name="none">Ninguno</string>
+    <string name="no_repetition">No repetition</string>
     <string name="daily">Diario</string>
     <string name="weekly">Semanal</string>
     <string name="biweekly">Quincenal</string>
