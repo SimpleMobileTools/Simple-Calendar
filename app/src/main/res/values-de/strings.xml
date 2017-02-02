@@ -37,7 +37,10 @@
     <string name="monthly">Monatlich</string>
     <string name="yearly">Jährlich</string>
 
-    <!-- Custom reminder -->
+    <!-- Event Reminders -->
+    <string name="select_event_reminder">Select an event reminder</string>
+    <string name="mins_before_10">10 minutes before</string>
+    <string name="mins_before_30">30 minutes before</string>
     <string name="before">vorher</string>
     <string name="minutes">Minuten</string>
     <string name="hours">Stunden</string>

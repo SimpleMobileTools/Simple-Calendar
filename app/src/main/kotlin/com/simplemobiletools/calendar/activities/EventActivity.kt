@@ -6,10 +6,9 @@ import android.graphics.PorterDuff
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.view.WindowManager
-import android.widget.AdapterView
 import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.dialogs.EventReminderDialog
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.getAppropriateTheme
 import com.simplemobiletools.calendar.extensions.scheduleNotification
@@ -22,9 +21,9 @@ import kotlinx.android.synthetic.main.activity_event.*
 import org.joda.time.DateTime
 
 class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
-    private var mWasReminderInit = false
     private var mWasEndDateSet = false
     private var mWasEndTimeSet = false
+    private var mReminderMinutes = 0
     private var mDialogTheme = 0
 
     lateinit var mEventStartDateTime: DateTime
@@ -38,23 +37,22 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         val intent = intent ?: return
         mDialogTheme = getAppropriateTheme()
 
-        mWasReminderInit = false
         val eventId = intent.getIntExtra(EVENT_ID, 0)
         val event = DBHelper(applicationContext).getEvent(eventId)
         if (event != null) {
             mEvent = event
             setupEditEvent()
-            setupReminder()
         } else {
             mEvent = Event()
+            mReminderMinutes = config.defaultReminderMinutes
             val startTS = intent.getIntExtra(NEW_EVENT_START_TS, 0)
             if (startTS == 0)
                 return
 
             setupNewEvent(Formatter.getDateTimeFromTS(startTS))
-            setupDefaultReminderType()
         }
 
+        updateReminderText()
         updateStartDate()
         updateStartTime()
         updateEndDate()
@@ -70,15 +68,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         event_end_time.setOnClickListener { setupEndTime() }
 
         event_all_day.setOnCheckedChangeListener { compoundButton, isChecked -> toggleAllDay(isChecked) }
-
-        event_reminder.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-            }
-
-            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                reminderItemSelected()
-            }
-        }
+        event_reminder.setOnClickListener { showReminderDialog() }
 
         updateTextColors(event_scrollview)
         updateIconColors()
@@ -91,56 +81,40 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         mEventEndDateTime = Formatter.getDateTimeFromTS(mEvent.endTS)
         event_title.setText(mEvent.title)
         event_description.setText(mEvent.description)
+        mReminderMinutes = mEvent.reminderMinutes
     }
 
     private fun setupNewEvent(dateTime: DateTime) {
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
         title = resources.getString(R.string.new_event)
         mEventStartDateTime = dateTime
-        mEventEndDateTime = mEventStartDateTime
-        setupDefaultReminderType()
+        mEventEndDateTime = mEventStartDateTime.plusHours(1)
     }
 
-    private fun setupDefaultReminderType() {
-        val type = config.defaultReminderType
-        toggleCustomReminderVisibility(type == REMINDER_CUSTOM)
-        if (type == REMINDER_OFF) {
-            event_reminder.setSelection(0)
-        } else if (type == REMINDER_AT_START) {
-            event_reminder.setSelection(1)
-        } else {
-            event_reminder.setSelection(2)
-            setupDefaultReminderValue()
+    private fun showReminderDialog() {
+        EventReminderDialog(this, mReminderMinutes) {
+            mReminderMinutes = it
+            updateReminderText()
         }
     }
 
-    private fun setupDefaultReminderValue() {
-        val mins = config.defaultReminderMinutes
-        var value = mins
-        if (mins == 0) {
-            custom_reminder_other_period.setSelection(0)
-        } else if (mins % DAY_MINS == 0) {
-            value = mins / DAY_MINS
-            custom_reminder_other_period.setSelection(2)
-        } else if (mins % HOUR_MINS == 0) {
-            value = mins / HOUR_MINS
-            custom_reminder_other_period.setSelection(1)
-        } else {
-            custom_reminder_other_period.setSelection(0)
+    private fun getReminderMinutesToString(minutes: Int) = when (minutes) {
+        -1 -> getString(R.string.no_reminder)
+        0 -> getString(R.string.at_start)
+        10 -> getString(R.string.mins_before_10)
+        30 -> getString(R.string.mins_before_30)
+        else -> {
+            if (minutes % 1440 == 0)
+                "${minutes / 1440} ${getString(R.string.days)}"
+            else if (minutes % 60 == 0)
+                "${minutes / 60} ${getString(R.string.hours)}"
+            else
+                "$minutes ${getString(R.string.minutes)}"
         }
-        custom_reminder_value.setText(value.toString())
     }
 
-    private fun setupReminder() {
-        when (mEvent.reminderMinutes) {
-            REMINDER_OFF -> event_reminder.setSelection(0)
-            REMINDER_AT_START -> event_reminder.setSelection(1)
-            else -> {
-                event_reminder.setSelection(2)
-                toggleCustomReminderVisibility(true)
-                setupReminderPeriod()
-            }
-        }
+    private fun updateReminderText() {
+        event_reminder.text = getReminderMinutesToString(mReminderMinutes)
     }
 
     private fun setupRepetition() {
@@ -159,41 +133,6 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     fun toggleAllDay(isChecked: Boolean) {
         event_start_time.beGoneIf(isChecked)
         event_end_time.beGoneIf(isChecked)
-    }
-
-    fun reminderItemSelected() {
-        if (!mWasReminderInit) {
-            mWasReminderInit = true
-            return
-        }
-
-        if (event_reminder.selectedItemPosition == event_reminder.count - 1) {
-            toggleCustomReminderVisibility(true)
-            custom_reminder_value.requestFocus()
-            showKeyboard(custom_reminder_value)
-        } else {
-            hideKeyboard()
-            toggleCustomReminderVisibility(false)
-        }
-    }
-
-    private fun setupReminderPeriod() {
-        val mins = mEvent.reminderMinutes
-        var value = mins
-        if (mins % DAY_MINS == 0) {
-            value = mins / DAY_MINS
-            custom_reminder_other_period.setSelection(2)
-        } else if (mins % HOUR_MINS == 0) {
-            value = mins / HOUR_MINS
-            custom_reminder_other_period.setSelection(1)
-        } else {
-            custom_reminder_other_period.setSelection(0)
-        }
-        custom_reminder_value.setText(value.toString())
-    }
-
-    fun toggleCustomReminderVisibility(show: Boolean) {
-        custom_reminder_holder.beVisibleIf(show)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -244,7 +183,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             endTS = newEndTS
             title = newTitle
             description = newDescription
-            reminderMinutes = getReminderMinutes()
+            reminderMinutes = mReminderMinutes
             repeatInterval = getRepeatInterval()
         }
 
@@ -252,22 +191,6 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             dbHelper.insert(mEvent) {}
         } else {
             dbHelper.update(mEvent)
-        }
-    }
-
-    private fun getReminderMinutes(): Int {
-        return when (event_reminder.selectedItemPosition) {
-            0 -> REMINDER_OFF
-            1 -> REMINDER_AT_START
-            else -> {
-                val value = custom_reminder_value.value
-                val multiplier = when (custom_reminder_other_period.selectedItemPosition) {
-                    1 -> HOUR_MINS
-                    2 -> DAY_MINS
-                    else -> 1
-                }
-                Integer.valueOf(if (value.isEmpty()) "0" else value) * multiplier
-            }
         }
     }
 

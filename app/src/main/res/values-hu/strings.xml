@@ -37,7 +37,10 @@
     <string name="monthly">Havonta</string>
     <string name="yearly">Évente</string>
 
-    <!-- Custom reminder -->
+    <!-- Event Reminders -->
+    <string name="select_event_reminder">Select an event reminder</string>
+    <string name="mins_before_10">10 minutes before</string>
+    <string name="mins_before_30">30 minutes before</string>
     <string name="before">korábban</string>
     <string name="minutes">perccel</string>
     <string name="hours">órával</string>

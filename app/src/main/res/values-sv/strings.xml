@@ -37,7 +37,10 @@
     <string name="monthly">Månadsvis</string>
     <string name="yearly">Årligen</string>
 
-    <!-- Custom reminder -->
+    <!-- Event Reminders -->
+    <string name="select_event_reminder">Select an event reminder</string>
+    <string name="mins_before_10">10 minutes before</string>
+    <string name="mins_before_30">30 minutes before</string>
     <string name="before">före</string>
     <string name="minutes">minuter</string>
     <string name="hours">timmar</string>

@@ -48,7 +48,7 @@
             android:layout_below="@+id/event_description"
             android:layout_marginBottom="@dimen/normal_margin"
             android:layout_marginTop="@dimen/activity_margin"
-            android:background="#66808080"/>
+            android:background="@color/darker_divider"/>
 
         <ImageView
             android:id="@+id/event_time_image"
@@ -91,6 +91,7 @@
             android:layout_below="@+id/event_time_image"
             android:background="?attr/selectableItemBackground"
             android:paddingBottom="@dimen/activity_margin"
+            android:paddingEnd="@dimen/activity_margin"
             android:paddingRight="@dimen/activity_margin"
             android:paddingTop="@dimen/activity_margin"
             android:text="January 1 1970"
@@ -117,6 +118,7 @@
             android:layout_below="@+id/event_start_date"
             android:background="?attr/selectableItemBackground"
             android:paddingBottom="@dimen/activity_margin"
+            android:paddingEnd="@dimen/activity_margin"
             android:paddingRight="@dimen/activity_margin"
             android:paddingTop="@dimen/activity_margin"
             android:text="January 1 1970"
@@ -141,7 +143,7 @@
             android:layout_below="@+id/event_end_date"
             android:layout_marginBottom="@dimen/medium_margin"
             android:layout_marginTop="@dimen/medium_margin"
-            android:background="#66808080"/>
+            android:background="@color/darker_divider"/>
 
         <ImageView
             android:id="@+id/event_reminder_image"
@@ -156,14 +158,19 @@
             android:padding="@dimen/medium_margin"
             android:src="@drawable/ic_bell"/>
 
-        <com.simplemobiletools.commons.views.MyAppCompatSpinner
+        <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/event_reminder"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_date_time_divider"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_toEndOf="@+id/event_reminder_image"
             android:layout_toRightOf="@+id/event_reminder_image"
-            android:entries="@array/reminders"
-            android:padding="@dimen/normal_margin"/>
+            android:background="?attr/selectableItemBackground"
+            android:paddingBottom="@dimen/normal_margin"
+            android:paddingTop="@dimen/normal_margin"
+            android:textSize="@dimen/day_text_size"/>
 
         <ImageView
             android:id="@+id/event_reminder_divider"
@@ -172,7 +179,7 @@
             android:layout_below="@+id/event_reminder"
             android:layout_marginBottom="@dimen/medium_margin"
             android:layout_marginTop="@dimen/medium_margin"
-            android:background="#66808080"/>
+            android:background="@color/darker_divider"/>
 
         <LinearLayout
             android:id="@+id/custom_reminder_holder"

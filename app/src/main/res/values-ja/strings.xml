@@ -37,7 +37,10 @@
     <string name="monthly">毎月</string>
     <string name="yearly">毎年</string>
 
-    <!-- Custom reminder -->
+    <!-- Event Reminders -->
+    <string name="select_event_reminder">Select an event reminder</string>
+    <string name="mins_before_10">10 minutes before</string>
+    <string name="mins_before_30">30 minutes before</string>
     <string name="before">前</string>
     <string name="minutes">分</string>
     <string name="hours">時間</string>
