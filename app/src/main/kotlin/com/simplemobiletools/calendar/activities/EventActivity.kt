@@ -24,6 +24,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     private var mWasEndDateSet = false
     private var mWasEndTimeSet = false
     private var mReminderMinutes = 0
+    private var mRepeatInterval = 0
     private var mDialogTheme = 0
 
     lateinit var mEventStartDateTime: DateTime
@@ -53,11 +54,11 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         }
 
         updateReminderText()
+        updateRepetitionText()
         updateStartDate()
         updateStartTime()
         updateEndDate()
         updateEndTime()
-        setupRepetition()
 
         mWasEndDateSet = event != null
         mWasEndTimeSet = event != null
@@ -69,6 +70,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
         event_all_day.setOnCheckedChangeListener { compoundButton, isChecked -> toggleAllDay(isChecked) }
         event_reminder.setOnClickListener { showReminderDialog() }
+        event_repetition.setOnClickListener { showRepeatIntervalDialog() }
 
         updateTextColors(event_scrollview)
         updateIconColors()
@@ -82,6 +84,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         event_title.setText(mEvent.title)
         event_description.setText(mEvent.description)
         mReminderMinutes = mEvent.reminderMinutes
+        mRepeatInterval = mEvent.repeatInterval
     }
 
     private fun setupNewEvent(dateTime: DateTime) {
@@ -96,6 +99,14 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             mReminderMinutes = it
             updateReminderText()
         }
+    }
+
+    private fun showRepeatIntervalDialog() {
+
+    }
+
+    private fun updateReminderText() {
+        event_reminder.text = getReminderMinutesToString(mReminderMinutes)
     }
 
     private fun getReminderMinutesToString(minutes: Int) = when (minutes) {
@@ -113,22 +124,18 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         }
     }
 
-    private fun updateReminderText() {
-        event_reminder.text = getReminderMinutesToString(mReminderMinutes)
+    private fun updateRepetitionText() {
+        event_repetition.text = getRepetitionToString(mRepeatInterval)
     }
 
-    private fun setupRepetition() {
-        event_repetition.setSelection(
-                when (mEvent.repeatInterval) {
-                    DAY -> 1
-                    WEEK -> 2
-                    BIWEEK -> 3
-                    MONTH -> 4
-                    YEAR -> 5
-                    else -> 0
-                }
-        )
-    }
+    private fun getRepetitionToString(seconds: Int) = getString(when (seconds) {
+        DAY -> R.string.daily
+        WEEK -> R.string.weekly
+        BIWEEK -> R.string.biweekly
+        MONTH -> R.string.monthly
+        YEAR -> R.string.yearly
+        else -> R.string.no_repetition
+    })
 
     fun toggleAllDay(isChecked: Boolean) {
         event_start_time.beGoneIf(isChecked)
@@ -184,24 +191,13 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             title = newTitle
             description = newDescription
             reminderMinutes = mReminderMinutes
-            repeatInterval = getRepeatInterval()
+            repeatInterval = mRepeatInterval
         }
 
         if (mEvent.id == 0) {
             dbHelper.insert(mEvent) {}
         } else {
             dbHelper.update(mEvent)
-        }
-    }
-
-    private fun getRepeatInterval(): Int {
-        return when (event_repetition.selectedItemPosition) {
-            1 -> DAY
-            2 -> WEEK
-            3 -> BIWEEK
-            4 -> MONTH
-            5 -> YEAR
-            else -> 0
         }
     }
 

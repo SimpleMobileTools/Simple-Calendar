@@ -194,14 +194,19 @@
             android:padding="@dimen/medium_margin"
             android:src="@drawable/ic_repeat"/>
 
-        <com.simplemobiletools.commons.views.MyAppCompatSpinner
+        <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/event_repetition"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_reminder_divider"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_toEndOf="@+id/event_repetition_image"
             android:layout_toRightOf="@+id/event_repetition_image"
-            android:entries="@array/repetition"
-            android:padding="@dimen/normal_margin"/>
+            android:background="?attr/selectableItemBackground"
+            android:paddingBottom="@dimen/normal_margin"
+            android:paddingTop="@dimen/normal_margin"
+            android:textSize="@dimen/day_text_size"/>
 
     </RelativeLayout>
 </ScrollView>
