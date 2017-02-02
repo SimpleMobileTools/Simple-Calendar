@@ -158,7 +158,10 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     }
 
     fun toggleAllDay(isChecked: Boolean) {
-
+        event_start_time.beGoneIf(isChecked)
+        event_end_checkbox.beGoneIf(isChecked)
+        event_end_date.beGoneIf(isChecked || !event_end_checkbox.isChecked)
+        event_end_time.beGoneIf(isChecked || !event_end_checkbox.isChecked)
     }
 
     fun endCheckboxChecked(isChecked: Boolean) {
