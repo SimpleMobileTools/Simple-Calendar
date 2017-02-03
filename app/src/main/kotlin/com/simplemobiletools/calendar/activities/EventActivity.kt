@@ -181,7 +181,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             description = newDescription
             reminderMinutes = mReminderMinutes
             repeatInterval = mRepeatInterval
-            flags = if (event_all_day.isChecked) (mEvent.flags or FLAG_ALL_DAY) else (mEvent.flags xor FLAG_ALL_DAY)
+            flags = if (event_all_day.isChecked) (mEvent.flags or FLAG_ALL_DAY) else (mEvent.flags.removeFlag(FLAG_ALL_DAY))
         }
 
         if (mEvent.id == 0) {

@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
+import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.simplemobiletools.calendar.R
@@ -24,6 +25,7 @@ import com.simplemobiletools.calendar.views.MyScrollView
 import kotlinx.android.synthetic.main.fragment_week.*
 import kotlinx.android.synthetic.main.fragment_week.view.*
 import org.joda.time.DateTime
+import org.joda.time.Days
 import kotlin.comparisons.compareBy
 
 class WeekFragment : Fragment(), WeeklyCalendar {
@@ -33,6 +35,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private var minScrollY = -1
     private var maxScrollY = -1
     private var mWasDestroyed = false
+    private var primaryColor = 0
     lateinit var mView: View
     lateinit var mCalendar: WeeklyCalendarImpl
     lateinit var mRes: Resources
@@ -41,6 +44,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         mRowHeight = (context.resources.getDimension(R.dimen.weekly_view_row_height)).toInt()
         minScrollY = mRowHeight * context.config.startWeeklyAt
         mWeekTimestamp = arguments.getInt(WEEK_START_TIMESTAMP)
+        primaryColor = context.config.primaryColor
 
         mView = inflater.inflate(R.layout.fragment_week, container, false).apply {
             week_events_scrollview.setOnScrollviewListener(object : MyScrollView.ScrollViewListener {
@@ -104,7 +108,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             val dayLetter = getDayLetter(curDay.dayOfWeek)
             (mView.findViewById(mRes.getIdentifier("week_day_label_$i", "id", context.packageName)) as TextView).apply {
                 text = "$dayLetter\n${curDay.dayOfMonth}"
-                setTextColor(if (todayCode == dayCode) context.config.primaryColor else textColor)
+                setTextColor(if (todayCode == dayCode) primaryColor else textColor)
             }
             curDay = curDay.plusDays(1)
         }
@@ -139,38 +143,73 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         val fullHeight = mRes.getDimension(R.dimen.weekly_view_events_height)
         val minuteHeight = fullHeight / (24 * 60)
         val minimalHeight = mRes.getDimension(R.dimen.weekly_view_minimal_event_height).toInt()
-        val eventColor = context.config.primaryColor
         val sideMargin = mRes.displayMetrics.density.toInt()
         (0..6).map { getColumnWithId(it) }
                 .forEach { activity.runOnUiThread { it.removeAllViews() } }
 
+        activity.runOnUiThread { mView.week_all_day_holder.removeAllViews() }
+
         val sorted = events.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { it.description }))
         for (event in sorted) {
-            val startDateTime = Formatter.getDateTimeFromTS(event.startTS).plusDays(if (context.config.isSundayFirst) 1 else 0)
-            val endDateTime = Formatter.getDateTimeFromTS(event.endTS)
-            val dayOfWeek = startDateTime.dayOfWeek - 1
-            val layout = getColumnWithId(dayOfWeek)
+            if (event.isAllDay()) {
+                addAllDayEvent(event)
+            } else {
+                val startDateTime = Formatter.getDateTimeFromTS(event.startTS).plusDays(if (context.config.isSundayFirst) 1 else 0)
+                val endDateTime = Formatter.getDateTimeFromTS(event.endTS)
+                val dayOfWeek = startDateTime.dayOfWeek - 1
+                val layout = getColumnWithId(dayOfWeek)
 
-            val startMinutes = startDateTime.minuteOfDay
-            val duration = endDateTime.minuteOfDay - startMinutes
+                val startMinutes = startDateTime.minuteOfDay
+                val duration = endDateTime.minuteOfDay - startMinutes
 
-            (LayoutInflater.from(context).inflate(R.layout.week_event_marker, null, false) as TextView).apply {
-                background = ColorDrawable(eventColor)
-                text = event.title
-                activity.runOnUiThread {
-                    layout.addView(this)
-                    (layoutParams as RelativeLayout.LayoutParams).apply {
-                        rightMargin = sideMargin
-                        topMargin = (startMinutes * minuteHeight).toInt()
-                        width = layout.width
-                        minHeight = if (event.startTS == event.endTS) minimalHeight else (duration * minuteHeight).toInt() - sideMargin
+                (LayoutInflater.from(context).inflate(R.layout.week_event_marker, null, false) as TextView).apply {
+                    background = ColorDrawable(primaryColor)
+                    text = event.title
+                    activity.runOnUiThread {
+                        layout.addView(this)
+                        (layoutParams as RelativeLayout.LayoutParams).apply {
+                            rightMargin = sideMargin
+                            topMargin = (startMinutes * minuteHeight).toInt()
+                            width = layout.width
+                            minHeight = if (event.startTS == event.endTS) minimalHeight else (duration * minuteHeight).toInt() - sideMargin
+                        }
+                    }
+                    setOnClickListener {
+                        Intent(activity.applicationContext, EventActivity::class.java).apply {
+                            putExtra(EVENT_ID, event.id)
+                            startActivity(this)
+                        }
                     }
                 }
-                setOnClickListener {
-                    Intent(activity.applicationContext, EventActivity::class.java).apply {
-                        putExtra(EVENT_ID, event.id)
-                        startActivity(this)
-                    }
+            }
+        }
+    }
+
+    private fun addAllDayEvent(event: Event) {
+        (LayoutInflater.from(context).inflate(R.layout.week_all_day_event_marker, null, false) as TextView).apply {
+            background = ColorDrawable(primaryColor)
+            text = event.title
+
+            val startDateTime = Formatter.getDateTimeFromTS(event.startTS)
+            val endDateTime = Formatter.getDateTimeFromTS(event.endTS)
+
+            val firstDayIndex = startDateTime.dayOfWeek - if (context.config.isSundayFirst) 0 else 1
+            val daysCnt = Days.daysBetween(startDateTime.withTimeAtStartOfDay(), endDateTime.withTimeAtStartOfDay()).days
+
+            activity.runOnUiThread {
+                val dayColumnWidth = getColumnWithId(1).width
+                mView.week_all_day_holder.addView(this)
+                (layoutParams as LinearLayout.LayoutParams).apply {
+                    topMargin = mRes.getDimension(R.dimen.tiny_margin).toInt()
+                    bottomMargin = mRes.getDimension(R.dimen.tiny_margin).toInt()
+                    leftMargin = firstDayIndex * dayColumnWidth
+                    width = (daysCnt + 1) * dayColumnWidth - mRes.displayMetrics.density.toInt()
+                }
+            }
+            setOnClickListener {
+                Intent(activity.applicationContext, EventActivity::class.java).apply {
+                    putExtra(EVENT_ID, event.id)
+                    startActivity(this)
                 }
             }
         }

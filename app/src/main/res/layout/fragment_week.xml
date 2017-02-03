@@ -85,12 +85,12 @@
 
         </LinearLayout>
 
-        <RelativeLayout
+        <LinearLayout
             android:id="@+id/week_all_day_holder"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
 
-        </RelativeLayout>
     </LinearLayout>
 
     <com.simplemobiletools.calendar.views.MyScrollView
