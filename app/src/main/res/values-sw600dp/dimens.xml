@@ -5,7 +5,6 @@
     <dimen name="weekly_view_row_height">90dp</dimen>
     <dimen name="weekly_view_row_minus_one_height">89dp</dimen>
     <dimen name="weekly_view_events_height">2160dp</dimen>      <!-- weekly_view_row_height * 24 hours -->
-    <dimen name="weekly_view_day_letters_height">50dp</dimen>
     <dimen name="weekly_view_minimal_event_height">15dp</dimen>
 
     <dimen name="meta_text_size">20sp</dimen>

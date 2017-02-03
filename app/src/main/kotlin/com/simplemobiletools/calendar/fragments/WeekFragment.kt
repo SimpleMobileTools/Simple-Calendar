@@ -81,6 +81,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 mView.week_events_scrollview.viewTreeObserver.removeOnGlobalLayoutListener(this)
                 minScrollY = mRowHeight * context.config.startWeeklyAt
                 maxScrollY = mRowHeight * context.config.endWeeklyAt
+                (activity as MainActivity).updateHoursTopMargin(mView.week_letters_holder.height)
 
                 val bounds = Rect()
                 week_events_holder.getGlobalVisibleRect(bounds)

@@ -9,7 +9,7 @@
     <LinearLayout
         android:id="@+id/week_letters_holder"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/weekly_view_day_letters_height"
+        android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
