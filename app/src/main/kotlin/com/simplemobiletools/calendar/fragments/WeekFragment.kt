@@ -23,6 +23,7 @@ import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.views.MyScrollView
 import kotlinx.android.synthetic.main.fragment_week.*
 import kotlinx.android.synthetic.main.fragment_week.view.*
+import org.joda.time.DateTime
 import kotlin.comparisons.compareBy
 
 class WeekFragment : Fragment(), WeeklyCalendar {
@@ -97,11 +98,13 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private fun setupDayLabels() {
         var curDay = Formatter.getDateTimeFromTS(mWeekTimestamp)
         val textColor = context.config.textColor
+        val todayCode = Formatter.getDayCodeFromDateTime(DateTime())
         for (i in 0..6) {
+            val dayCode = Formatter.getDayCodeFromDateTime(curDay)
             val dayLetter = getDayLetter(curDay.dayOfWeek)
             (mView.findViewById(mRes.getIdentifier("week_day_label_$i", "id", context.packageName)) as TextView).apply {
                 text = "$dayLetter\n${curDay.dayOfMonth}"
-                setTextColor(textColor)
+                setTextColor(if (todayCode == dayCode) context.config.primaryColor else textColor)
             }
             curDay = curDay.plusDays(1)
         }
