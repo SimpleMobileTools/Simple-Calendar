@@ -217,9 +217,8 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
     }
 
     private fun fillWeeklyViewPager() {
-        val firstDayIndex = if (config.isSundayFirst) 7 else 1
-        val thisweek = DateTime().withDayOfWeek(firstDayIndex).withTime(0, 0, 0, 0).seconds()
-        val weekTSs = getWeekTimestamps(thisweek)
+        val thisweek = DateTime().withDayOfWeek(1).withTimeAtStartOfDay().minusDays(if (config.isSundayFirst) 1 else 0)
+        val weekTSs = getWeekTimestamps(thisweek.seconds())
         val weeklyAdapter = MyWeekPagerAdapter(supportFragmentManager, weekTSs, object : WeekFragment.WeekScrollListener {
             override fun scrollTo(y: Int) {
                 week_view_hours_scrollview.scrollY = y
