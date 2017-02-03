@@ -66,12 +66,12 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
         mRes = resources
         mCalendar = WeeklyCalendarImpl(this, context)
-        setupDayLabels()
         return mView
     }
 
     override fun onResume() {
         super.onResume()
+        setupDayLabels()
         mCalendar.updateWeeklyCalendar(mWeekTimestamp)
 
         mView.week_events_scrollview.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
