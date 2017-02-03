@@ -32,15 +32,21 @@ class EventReminderDialog(val activity: Activity, val defaultMinutes: Int, val c
     }
 
     override fun onCheckedChanged(group: RadioGroup?, checkedId: Int) {
-        callback.invoke(getSelectionValue(checkedId))
-        dialog?.dismiss()
+        if (checkedId == R.id.dialog_radio_custom) {
+            CustomEventReminderDialog(activity) {
+                callback.invoke(it)
+                dialog?.dismiss()
+            }
+        } else {
+            callback.invoke(getSelectionValue(checkedId))
+            dialog?.dismiss()
+        }
     }
 
     private fun getSelectionValue(id: Int) = when (id) {
-        R.id.dialog_radio_no_reminder -> -1
         R.id.dialog_radio_at_start -> 0
         R.id.dialog_radio_mins_before_10 -> 10
         R.id.dialog_radio_mins_before_30 -> 30
-        else -> 2
+        else -> -1
     }
 }

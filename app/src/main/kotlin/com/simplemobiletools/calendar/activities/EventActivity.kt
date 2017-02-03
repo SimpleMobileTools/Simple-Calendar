@@ -89,7 +89,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     }
 
     private fun setupNewEvent(dateTime: DateTime) {
-        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
         title = resources.getString(R.string.new_event)
         mEventStartDateTime = dateTime
         mEventEndDateTime = mEventStartDateTime.plusHours(1)
