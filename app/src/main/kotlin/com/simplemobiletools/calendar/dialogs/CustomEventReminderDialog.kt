@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.WindowManager
 import com.simplemobiletools.calendar.R
+import com.simplemobiletools.commons.extensions.hideKeyboard
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import com.simplemobiletools.commons.extensions.value
 import kotlinx.android.synthetic.main.dialog_custom_event_reminder.view.*
@@ -31,6 +32,7 @@ class CustomEventReminderDialog(val activity: Activity, val callback: (minutes: 
         val multiplier = getMultiplier(view.dialog_radio_view.checkedRadioButtonId)
         val minutes = Integer.valueOf(if (value.isEmpty()) "0" else value)
         callback.invoke(minutes * multiplier)
+        activity.hideKeyboard()
         dialog.dismiss()
     }
 
