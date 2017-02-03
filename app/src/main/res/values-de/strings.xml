@@ -27,9 +27,9 @@
     <string name="event_updated">Termin erfolgreich aktualisiert</string>
 
     <!-- Event Repetition -->
-    <string name="select_repeat_interval">Select a repeat interval</string>
+    <string name="select_repeat_interval">Wähle ein Wiederholungsintervall</string>
     <string name="repetition">Wiederholung</string>
-    <string name="no_repetition">No repetition</string>
+    <string name="no_repetition">Keine Wiederholung</string>
     <string name="daily">Täglich</string>
     <string name="weekly">Wöchentlich</string>
     <string name="biweekly">Zweiwöchentlich</string>
@@ -37,12 +37,12 @@
     <string name="yearly">Jährlich</string>
 
     <!-- Event Reminders -->
-    <string name="select_event_reminder">Select an event reminder</string>
+    <string name="select_event_reminder">Wähle eine Termin Erinnerung</string>
     <string name="reminder">Erinnerung</string>
-    <string name="no_reminder">No reminder</string>
+    <string name="no_reminder">Keine Erinnerung</string>
     <string name="at_start">Zu Beginn</string>
-    <string name="mins_before_10">10 minutes before</string>
-    <string name="mins_before_30">30 minutes before</string>
+    <string name="mins_before_10">10 Minuten vorher</string>
+    <string name="mins_before_30">30 Minuten vorher</string>
     <string name="custom">Benutzerdefiniert</string>
     <string name="before">vorher</string>
     <string name="minutes_raw">Minuten</string>
@@ -50,17 +50,17 @@
     <string name="days_raw">Tage</string>
 
     <plurals name="minutes">
-        <item quantity="one">%1$d minute before</item>
+        <item quantity="one">%1$d Minute vorher</item>
         <item quantity="other">%1$d Minuten vorher</item>
     </plurals>
 
     <plurals name="hours">
-        <item quantity="one">%1$d hour before</item>
+        <item quantity="one">%1$d Stunde vorher</item>
         <item quantity="other">%1$d Stunden vorher</item>
     </plurals>
 
     <plurals name="days">
-        <item quantity="one">%1$d day before</item>
+        <item quantity="one">%1$d Tag vorher</item>
         <item quantity="other">%1$d Tage vorher</item>
     </plurals>
 
@@ -134,7 +134,7 @@
     <string name="sample_title_5">Kaffee Pause</string>
 
     <!-- Release notes -->
-    <string name="release_52">Added all-day long event support</string>
+    <string name="release_52">Unterstützt nun ganztägige Termine</string>
     <string name="release_51">Import von Terminen aus .ics Dateien hinzugefügt</string>
     <string name="release_49">Farbauswahl durch hex Code hinzugefügt</string>
     <string name="release_48">Wochenansicht hinzugefügt</string>
