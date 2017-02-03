@@ -12,7 +12,7 @@ import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
-import kotlinx.android.synthetic.main.event_item.view.*
+import kotlinx.android.synthetic.main.event_item_day_view.view.*
 import java.util.*
 
 class DayEventsAdapter(val activity: SimpleActivity, val mItems: List<Event>, val listener: ItemOperationsListener?, val itemClick: (Event) -> Unit) :
@@ -81,7 +81,7 @@ class DayEventsAdapter(val activity: SimpleActivity, val mItems: List<Event>, va
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent?.context).inflate(R.layout.event_item, parent, false)
+        val view = LayoutInflater.from(parent?.context).inflate(R.layout.event_item_day_view, parent, false)
         return ViewHolder(activity, view, itemClick)
     }
 

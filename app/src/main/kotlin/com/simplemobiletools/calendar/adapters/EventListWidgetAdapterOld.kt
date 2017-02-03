@@ -12,7 +12,7 @@ import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.models.ListEvent
 import com.simplemobiletools.calendar.models.ListItem
 import com.simplemobiletools.calendar.models.ListSection
-import kotlinx.android.synthetic.main.event_item.view.*
+import kotlinx.android.synthetic.main.event_item_day_view.view.*
 
 class EventListWidgetAdapterOld(val context: Context, val mEvents: List<ListItem>) : BaseAdapter() {
     val ITEM_EVENT = 0

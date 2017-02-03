@@ -15,7 +15,7 @@ import com.simplemobiletools.calendar.models.ListEvent
 import com.simplemobiletools.calendar.models.ListItem
 import com.simplemobiletools.calendar.models.ListSection
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
-import kotlinx.android.synthetic.main.event_item.view.*
+import kotlinx.android.synthetic.main.event_item_day_view.view.*
 import java.util.*
 
 class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>, val listener: EventListAdapter.ItemOperationsListener?, val itemClick: (Int) -> Unit) :
