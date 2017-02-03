@@ -10,10 +10,7 @@ import android.view.WindowManager
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.dialogs.EventReminderDialog
 import com.simplemobiletools.calendar.dialogs.EventRepeatIntervalDialog
-import com.simplemobiletools.calendar.extensions.config
-import com.simplemobiletools.calendar.extensions.getAppropriateTheme
-import com.simplemobiletools.calendar.extensions.scheduleNotification
-import com.simplemobiletools.calendar.extensions.seconds
+import com.simplemobiletools.calendar.extensions.*
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
@@ -110,22 +107,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     }
 
     private fun updateReminderText() {
-        event_reminder.text = getReminderMinutesToString(mReminderMinutes)
-    }
-
-    private fun getReminderMinutesToString(minutes: Int) = when (minutes) {
-        -1 -> getString(R.string.no_reminder)
-        0 -> getString(R.string.at_start)
-        10 -> getString(R.string.mins_before_10)
-        30 -> getString(R.string.mins_before_30)
-        else -> {
-            if (minutes % 1440 == 0)
-                resources.getQuantityString(R.plurals.days, minutes / 1440, minutes / 1440)
-            else if (minutes % 60 == 0)
-                resources.getQuantityString(R.plurals.hours, minutes / 60, minutes / 60)
-            else
-                resources.getQuantityString(R.plurals.minutes, minutes, minutes)
-        }
+        event_reminder.text = getReminderText(mReminderMinutes)
     }
 
     private fun updateRepetitionText() {

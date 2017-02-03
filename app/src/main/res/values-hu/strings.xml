@@ -50,18 +50,18 @@
     <string name="days_raw">nap</string>
 
     <plurals name="minutes">
-        <item quantity="one">%1$d percel</item>
-        <item quantity="other">%1$d percel</item>
+        <item quantity="one">%1$d percel korábban</item>
+        <item quantity="other">%1$d percel korábban</item>
     </plurals>
 
     <plurals name="hours">
-        <item quantity="one">%1$d órával</item>
-        <item quantity="other">%1$d órával</item>
+        <item quantity="one">%1$d órával korábban</item>
+        <item quantity="other">%1$d órával korábban</item>
     </plurals>
 
     <plurals name="days">
-        <item quantity="one">%1$d nappal</item>
-        <item quantity="other">%1$d nappal</item>
+        <item quantity="one">%1$d nappal korábban</item>
+        <item quantity="other">%1$d nappal korábban</item>
     </plurals>
 
     <!-- Importing -->

@@ -134,6 +134,19 @@ fun Context.setupReminderPeriod(otherPeriod: AppCompatSpinner, otherValue: EditT
     otherValue.setText(value.toString())
 }
 
+fun Context.getReminderText(minutes: Int) = when (minutes) {
+    -1 -> getString(R.string.no_reminder)
+    0 -> getString(R.string.at_start)
+    else -> {
+        if (minutes % 1440 == 0)
+            resources.getQuantityString(R.plurals.days, minutes / 1440, minutes / 1440)
+        else if (minutes % 60 == 0)
+            resources.getQuantityString(R.plurals.hours, minutes / 60, minutes / 60)
+        else
+            resources.getQuantityString(R.plurals.minutes, minutes, minutes)
+    }
+}
+
 fun Context.getNewEventTimestampFromCode(dayCode: String) = Formatter.getLocalDateTimeFromCode(dayCode).withTime(13, 0, 0, 0).seconds()
 
 val Context.config: Config get() = Config.newInstance(this)

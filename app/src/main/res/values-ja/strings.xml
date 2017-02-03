@@ -50,18 +50,18 @@
     <string name="days_raw">日</string>
 
     <plurals name="minutes">
-        <item quantity="one">%1$d minute</item>
-        <item quantity="other">%1$d 分</item>
+        <item quantity="one">%1$d minute before</item>
+        <item quantity="other">%1$d 分 前</item>
     </plurals>
 
     <plurals name="hours">
-        <item quantity="one">%1$d hour</item>
-        <item quantity="other">%1$d 時間</item>
+        <item quantity="one">%1$d hour before</item>
+        <item quantity="other">%1$d 時間 前</item>
     </plurals>
 
     <plurals name="days">
-        <item quantity="one">%1$d day</item>
-        <item quantity="other">%1$d 日</item>
+        <item quantity="one">%1$d day before</item>
+        <item quantity="other">%1$d 日 前</item>
     </plurals>
 
     <!-- Importing -->
