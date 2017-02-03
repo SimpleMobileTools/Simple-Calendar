@@ -403,6 +403,7 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
             add(Release(48, R.string.release_48))
             add(Release(49, R.string.release_49))
             add(Release(51, R.string.release_51))
+            add(Release(52, R.string.release_52))
             checkWhatsNew(this, BuildConfig.VERSION_CODE)
         }
     }

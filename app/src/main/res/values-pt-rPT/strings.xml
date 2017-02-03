@@ -134,6 +134,7 @@
     <string name="sample_title_5">Beber um café</string>
 
     <!-- Release notes -->
+    <string name="release_52">Added all-day long event support</string>
     <string name="release_51">Allow importing events from .ics files</string>
     <string name="release_49">Allow picking colors by hex codes</string>
     <string name="release_48">Added a weekly view</string>
