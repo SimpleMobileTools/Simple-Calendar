@@ -24,6 +24,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
     private val COL_DESCRIPTION = "description"
     private val COL_REMINDER_MINUTES = "reminder_minutes"
     private val COL_IMPORT_ID = "import_id"
+    private val COL_FLAGS = "flags"
 
     private val META_TABLE_NAME = "events_meta"
     private val COL_EVENT_ID = "event_id"
@@ -52,7 +53,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
 
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL("CREATE TABLE $MAIN_TABLE_NAME ($COL_ID INTEGER PRIMARY KEY, $COL_START_TS INTEGER, $COL_END_TS INTEGER, $COL_TITLE TEXT, " +
-                "$COL_DESCRIPTION TEXT, $COL_REMINDER_MINUTES INTEGER, $COL_IMPORT_ID TEXT)")
+                "$COL_DESCRIPTION TEXT, $COL_REMINDER_MINUTES INTEGER, $COL_IMPORT_ID TEXT, $COL_FLAGS INTEGER)")
 
         createMetaTable(db)
     }
@@ -68,6 +69,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
 
         if (oldVersion < 4) {
             db.execSQL("ALTER TABLE $MAIN_TABLE_NAME ADD COLUMN $COL_IMPORT_ID TEXT")
+            db.execSQL("ALTER TABLE $MAIN_TABLE_NAME ADD COLUMN $COL_FLAGS INTEGER")
         }
     }
 
@@ -83,6 +85,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
         val eventValues = fillContentValues(event)
         val id = mDb.insert(MAIN_TABLE_NAME, null, eventValues)
         event.id = id.toInt()
+
         if (event.repeatInterval != 0) {
             val metaValues = fillMetaValues(event)
             mDb.insert(META_TABLE_NAME, null, metaValues)
@@ -119,6 +122,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
             put(COL_DESCRIPTION, event.description)
             put(COL_REMINDER_MINUTES, event.reminderMinutes)
             put(COL_IMPORT_ID, event.importId)
+            put(COL_FLAGS, event.flags)
         }
     }
 
@@ -210,7 +214,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
         for (e in events) {
             while (e.startTS < toTS) {
                 if (e.startTS > fromTS) {
-                    val newEvent = Event(e.id, e.startTS, e.endTS, e.title, e.description, e.reminderMinutes, e.repeatInterval)
+                    val newEvent = Event(e.id, e.startTS, e.endTS, e.title, e.description, e.reminderMinutes, e.repeatInterval, e.importId, e.flags)
                     newEvents.add(newEvent)
                 }
                 e.addIntervalTime()
@@ -251,7 +255,8 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
     }
 
     private val allColumns: Array<String>
-        get() = arrayOf("$MAIN_TABLE_NAME.$COL_ID", COL_START_TS, COL_END_TS, COL_TITLE, COL_DESCRIPTION, COL_REMINDER_MINUTES, COL_REPEAT_INTERVAL, COL_REPEAT_MONTH, COL_REPEAT_DAY)
+        get() = arrayOf("$MAIN_TABLE_NAME.$COL_ID", COL_START_TS, COL_END_TS, COL_TITLE, COL_DESCRIPTION, COL_REMINDER_MINUTES, COL_REPEAT_INTERVAL,
+                COL_REPEAT_MONTH, COL_REPEAT_DAY, COL_IMPORT_ID, COL_FLAGS)
 
     private fun fillEvents(cursor: Cursor?): List<Event> {
         val events = ArrayList<Event>()
@@ -265,7 +270,9 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
                     val repeatInterval = cursor.getIntValue(COL_REPEAT_INTERVAL)
                     val title = cursor.getStringValue(COL_TITLE)
                     val description = cursor.getStringValue(COL_DESCRIPTION)
-                    events.add(Event(id, startTS, endTS, title, description, reminderMinutes, repeatInterval))
+                    val importId = cursor.getStringValue(COL_IMPORT_ID)
+                    val flags = cursor.getIntValue(COL_FLAGS)
+                    events.add(Event(id, startTS, endTS, title, description, reminderMinutes, repeatInterval, importId, flags))
                 } while (cursor.moveToNext())
             }
         } finally {

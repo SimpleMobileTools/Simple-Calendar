@@ -70,6 +70,9 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         event_reminder.setOnClickListener { showReminderDialog() }
         event_repetition.setOnClickListener { showRepeatIntervalDialog() }
 
+        if (mEvent.flags and FLAG_ALL_DAY != 0)
+            event_all_day.toggle()
+
         updateTextColors(event_scrollview)
         updateIconColors()
     }
@@ -178,6 +181,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             description = newDescription
             reminderMinutes = mReminderMinutes
             repeatInterval = mRepeatInterval
+            flags = if (event_all_day.isChecked) (mEvent.flags or FLAG_ALL_DAY) else (mEvent.flags xor FLAG_ALL_DAY)
         }
 
         if (mEvent.id == 0) {
