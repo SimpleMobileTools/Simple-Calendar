@@ -7,9 +7,9 @@
     </string-array>
 
     <string-array name="custom_reminders">
-        <item>@string/minutes</item>
-        <item>@string/hours</item>
-        <item>@string/days</item>
+        <item>@string/minutes_raw</item>
+        <item>@string/hours_raw</item>
+        <item>@string/days_raw</item>
     </string-array>
 
     <string-array name="repetition">

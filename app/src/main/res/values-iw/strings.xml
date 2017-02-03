@@ -45,9 +45,24 @@
     <string name="mins_before_30">30 minutes before</string>
     <string name="custom">מותאם אישית</string>
     <string name="before">לפני</string>
-    <string name="minutes">דקות</string>
-    <string name="hours">שעות</string>
-    <string name="days">ימים</string>
+    <string name="minutes_raw">minutes</string>
+    <string name="hours_raw">hours</string>
+    <string name="days_raw">days</string>
+
+    <plurals name="minutes">
+        <item quantity="one">%1$d minute</item>
+        <item quantity="other">%1$d minutes</item>
+    </plurals>
+
+    <plurals name="hours">
+        <item quantity="one">%1$d hour</item>
+        <item quantity="other">%1$d hours</item>
+    </plurals>
+
+    <plurals name="days">
+        <item quantity="one">%1$d day</item>
+        <item quantity="other">%1$d days</item>
+    </plurals>
 
     <!-- Importing -->
     <string name="import_events">ייבוא אירועים</string>

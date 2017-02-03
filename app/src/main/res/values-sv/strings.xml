@@ -45,9 +45,24 @@
     <string name="mins_before_30">30 minutes before</string>
     <string name="custom">Egen</string>
     <string name="before">före</string>
-    <string name="minutes">minuter</string>
-    <string name="hours">timmar</string>
-    <string name="days">dagar</string>
+    <string name="minutes_raw">minuter</string>
+    <string name="hours_raw">timmar</string>
+    <string name="days_raw">dagar</string>
+
+    <plurals name="minutes">
+        <item quantity="one">%1$d minute</item>
+        <item quantity="other">%1$d minuter</item>
+    </plurals>
+
+    <plurals name="hours">
+        <item quantity="one">%1$d hour</item>
+        <item quantity="other">%1$d timmar</item>
+    </plurals>
+
+    <plurals name="days">
+        <item quantity="one">%1$d day</item>
+        <item quantity="other">%1$d dagar</item>
+    </plurals>
 
     <!-- Importing -->
     <string name="import_events">Import events</string>

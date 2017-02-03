@@ -120,11 +120,11 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         30 -> getString(R.string.mins_before_30)
         else -> {
             if (minutes % 1440 == 0)
-                "${minutes / 1440} ${getString(R.string.days)}"
+                resources.getQuantityString(R.plurals.days, minutes / 1440, minutes / 1440)
             else if (minutes % 60 == 0)
-                "${minutes / 60} ${getString(R.string.hours)}"
+                resources.getQuantityString(R.plurals.hours, minutes / 60, minutes / 60)
             else
-                "$minutes ${getString(R.string.minutes)}"
+                resources.getQuantityString(R.plurals.minutes, minutes, minutes)
         }
     }
 

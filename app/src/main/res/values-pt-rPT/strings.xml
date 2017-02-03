@@ -45,9 +45,24 @@
     <string name="mins_before_30">30 minutes before</string>
     <string name="custom">Personalizado</string>
     <string name="before">antes</string>
-    <string name="minutes">minutos</string>
-    <string name="hours">horas</string>
-    <string name="days">dias</string>
+    <string name="minutes_raw">minutos</string>
+    <string name="hours_raw">horas</string>
+    <string name="days_raw">dias</string>
+
+    <plurals name="minutes">
+        <item quantity="one">%1$d minute</item>
+        <item quantity="other">%1$d minutos</item>
+    </plurals>
+
+    <plurals name="hours">
+        <item quantity="one">%1$d hour</item>
+        <item quantity="other">%1$d horas</item>
+    </plurals>
+
+    <plurals name="days">
+        <item quantity="one">%1$d day</item>
+        <item quantity="other">%1$d dias</item>
+    </plurals>
 
     <!-- Importing -->
     <string name="import_events">Importar eventos</string>

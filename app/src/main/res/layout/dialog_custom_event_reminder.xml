@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:paddingBottom="@dimen/activity_margin"
             android:paddingTop="@dimen/activity_margin"
-            android:text="@string/minutes"/>
+            android:text="@string/minutes_raw"/>
 
         <com.simplemobiletools.commons.views.MyCompatRadioButton
             android:id="@+id/dialog_radio_hours"
@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:paddingBottom="@dimen/activity_margin"
             android:paddingTop="@dimen/activity_margin"
-            android:text="@string/hours"/>
+            android:text="@string/hours_raw"/>
 
         <com.simplemobiletools.commons.views.MyCompatRadioButton
             android:id="@+id/dialog_radio_days"
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:paddingBottom="@dimen/activity_margin"
             android:paddingTop="@dimen/activity_margin"
-            android:text="@string/days"/>
+            android:text="@string/days_raw"/>
 
     </RadioGroup>
 </LinearLayout>

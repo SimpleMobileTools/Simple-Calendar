@@ -45,9 +45,24 @@
     <string name="mins_before_30">30 minutes before</string>
     <string name="custom">Egyedi</string>
     <string name="before">korábban</string>
-    <string name="minutes">perccel</string>
-    <string name="hours">órával</string>
-    <string name="days">nappal</string>
+    <string name="minutes_raw">perc</string>
+    <string name="hours_raw">óra</string>
+    <string name="days_raw">nap</string>
+
+    <plurals name="minutes">
+        <item quantity="one">%1$d percel</item>
+        <item quantity="other">%1$d percel</item>
+    </plurals>
+
+    <plurals name="hours">
+        <item quantity="one">%1$d órával</item>
+        <item quantity="other">%1$d órával</item>
+    </plurals>
+
+    <plurals name="days">
+        <item quantity="one">%1$d nappal</item>
+        <item quantity="other">%1$d nappal</item>
+    </plurals>
 
     <!-- Importing -->
     <string name="import_events">Import events</string>
