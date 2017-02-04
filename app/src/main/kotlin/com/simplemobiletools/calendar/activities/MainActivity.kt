@@ -11,7 +11,6 @@ import android.support.v4.view.ViewPager
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.LinearLayout
 import android.widget.TextView
 import com.simplemobiletools.calendar.BuildConfig
 import com.simplemobiletools.calendar.R
@@ -265,7 +264,7 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
     }
 
     fun updateHoursTopMargin(margin: Int) {
-        (week_view_hours_scrollview.layoutParams as LinearLayout.LayoutParams).setMargins(0, margin, 0, 0)
+        week_view_hours_divider.layoutParams.height = margin
         week_view_hours_scrollview.requestLayout()
     }
 

@@ -41,6 +41,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private var isFragmentVisible = false
     private var wasFragmentInit = false
     private var wasExtraHeightAdded = false
+    private var oneDP = 1
 
     lateinit var mView: View
     lateinit var mCalendar: WeeklyCalendarImpl
@@ -51,6 +52,8 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         minScrollY = mRowHeight * context.config.startWeeklyAt
         mWeekTimestamp = arguments.getInt(WEEK_START_TIMESTAMP)
         primaryColor = context.config.primaryColor
+        mRes = resources
+        oneDP = mRes.displayMetrics.density.toInt()
 
         mView = inflater.inflate(R.layout.fragment_week, container, false).apply {
             week_events_scrollview.setOnScrollviewListener(object : MyScrollView.ScrollViewListener {
@@ -74,7 +77,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             }
         }
 
-        mRes = resources
         mCalendar = WeeklyCalendarImpl(this, context)
         wasFragmentInit = true
         return mView
@@ -164,7 +166,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         val fullHeight = mRes.getDimension(R.dimen.weekly_view_events_height)
         val minuteHeight = fullHeight / (24 * 60)
         val minimalHeight = mRes.getDimension(R.dimen.weekly_view_minimal_event_height).toInt()
-        val sideMargin = mRes.displayMetrics.density.toInt()
         (0..6).map { getColumnWithId(it) }
                 .forEach { activity.runOnUiThread { it.removeAllViews() } }
 
@@ -189,10 +190,10 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                     activity.runOnUiThread {
                         layout.addView(this)
                         (layoutParams as RelativeLayout.LayoutParams).apply {
-                            rightMargin = sideMargin
+                            rightMargin = oneDP
                             topMargin = (startMinutes * minuteHeight).toInt()
                             width = layout.width
-                            minHeight = if (event.startTS == event.endTS) minimalHeight else (duration * minuteHeight).toInt() - sideMargin
+                            minHeight = if (event.startTS == event.endTS) minimalHeight else (duration * minuteHeight).toInt() - oneDP
                         }
                     }
                     setOnClickListener {
@@ -225,9 +226,9 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 mView.week_all_day_holder.addView(this)
                 (layoutParams as LinearLayout.LayoutParams).apply {
                     topMargin = mRes.getDimension(R.dimen.tiny_margin).toInt()
-                    bottomMargin = mRes.getDimension(R.dimen.tiny_margin).toInt()
+                    bottomMargin = oneDP
                     leftMargin = firstDayIndex % 7 * dayColumnWidth
-                    width = (daysCnt + 1) * dayColumnWidth - mRes.displayMetrics.density.toInt()
+                    width = (daysCnt + 1) * dayColumnWidth - oneDP
                 }
 
                 mView.week_top_holder.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {

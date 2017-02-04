@@ -6,18 +6,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/week_top_holder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="vertical">
+        android:foreground="@drawable/stroke_bottom"
+        android:gravity="center_vertical">
 
         <LinearLayout
             android:id="@+id/week_letters_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
+            android:paddingBottom="@dimen/small_margin"
             android:orientation="horizontal">
 
             <com.simplemobiletools.commons.views.MyTextView
@@ -86,12 +87,62 @@
         </LinearLayout>
 
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignBottom="@+id/week_all_day_holder">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/stroke_right"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/stroke_right"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/stroke_right"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/stroke_right"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/stroke_right"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/stroke_right"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/stroke_right"/>
+
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/week_all_day_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/week_letters_holder"
             android:orientation="vertical"/>
 
-    </LinearLayout>
+    </RelativeLayout>
 
     <com.simplemobiletools.calendar.views.MyScrollView
         android:id="@+id/week_events_scrollview"
@@ -104,14 +155,14 @@
         <RelativeLayout
             android:id="@+id/week_events_holder"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content">
 
             <GridView
                 android:id="@+id/week_events_grid"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/weekly_view_events_height"
                 android:background="@color/divider_grey"
+                android:foreground="@drawable/stroke_right"
                 android:horizontalSpacing="1dp"
                 android:numColumns="7"
                 android:verticalSpacing="1dp"/>
