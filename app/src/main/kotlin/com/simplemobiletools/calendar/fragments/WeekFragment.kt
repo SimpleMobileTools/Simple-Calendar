@@ -60,8 +60,8 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
             week_events_scrollview.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
                 override fun onGlobalLayout() {
-                    updateScrollY(Math.max(MainActivity.mWeekScrollY, minScrollY))
                     week_events_scrollview.viewTreeObserver.removeOnGlobalLayoutListener(this)
+                    updateScrollY(Math.max(MainActivity.mWeekScrollY, minScrollY))
                 }
             })
 
@@ -145,7 +145,8 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         } else if (maxScrollY != -1 && y > maxScrollY) {
             mView.week_events_scrollview.scrollY = maxScrollY
         } else {
-            mListener?.scrollTo(y)
+            if (isFragmentVisible)
+                mListener?.scrollTo(y)
         }
     }
 

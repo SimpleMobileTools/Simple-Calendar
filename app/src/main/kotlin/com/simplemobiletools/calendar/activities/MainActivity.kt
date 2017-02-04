@@ -261,6 +261,7 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
                 weeklyAdapter.updateScrollY(week_view_view_pager.currentItem, y)
             }
         })
+        week_view_hours_scrollview.setOnTouchListener({ view, motionEvent -> true })
     }
 
     fun updateHoursTopMargin(margin: Int) {
