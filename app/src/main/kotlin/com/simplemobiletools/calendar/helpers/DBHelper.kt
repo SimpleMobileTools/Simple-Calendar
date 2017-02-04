@@ -38,7 +38,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
 
     companion object {
         private val DB_NAME = "events.db"
-        private val DB_VERSION = 4
+        private val DB_VERSION = 5
         lateinit private var mDb: SQLiteDatabase
     }
 
@@ -69,6 +69,9 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
 
         if (oldVersion < 4) {
             db.execSQL("ALTER TABLE $MAIN_TABLE_NAME ADD COLUMN $COL_IMPORT_ID TEXT")
+        }
+
+        if (oldVersion < 5) {
             db.execSQL("ALTER TABLE $MAIN_TABLE_NAME ADD COLUMN $COL_FLAGS INTEGER")
         }
     }
