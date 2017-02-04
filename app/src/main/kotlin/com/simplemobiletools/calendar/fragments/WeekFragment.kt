@@ -40,6 +40,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private var primaryColor = 0
     private var isFragmentVisible = false
     private var wasFragmentInit = false
+    private var wasExtraHeightAdded = false
 
     lateinit var mView: View
     lateinit var mCalendar: WeeklyCalendarImpl
@@ -84,7 +85,13 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         isFragmentVisible = menuVisible
         if (isFragmentVisible && wasFragmentInit) {
             (activity as MainActivity).updateHoursTopMargin(mView.week_top_holder.height)
+            checkScrollLimits(mView.week_events_scrollview.scrollY)
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        wasExtraHeightAdded = true
     }
 
     override fun onResume() {
@@ -229,6 +236,9 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                         if (isFragmentVisible) {
                             (activity as MainActivity).updateHoursTopMargin(mView.week_top_holder.height)
                         }
+
+                        if (!wasExtraHeightAdded)
+                            maxScrollY += mView.week_all_day_holder.height
                     }
                 })
             }
@@ -253,7 +263,8 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     }
 
     fun updateScrollY(y: Int) {
-        mView.week_events_scrollview.scrollY = y
+        if (wasFragmentInit)
+            mView.week_events_scrollview.scrollY = y
     }
 
     interface WeekScrollListener {
