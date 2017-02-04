@@ -36,6 +36,9 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private var maxScrollY = -1
     private var mWasDestroyed = false
     private var primaryColor = 0
+    private var isFragmentVisible = false
+    private var wasFragmentInit = false
+
     lateinit var mView: View
     lateinit var mCalendar: WeeklyCalendarImpl
     lateinit var mRes: Resources
@@ -70,7 +73,16 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
         mRes = resources
         mCalendar = WeeklyCalendarImpl(this, context)
+        wasFragmentInit = true
         return mView
+    }
+
+    override fun setMenuVisibility(menuVisible: Boolean) {
+        super.setMenuVisibility(menuVisible)
+        isFragmentVisible = menuVisible
+        if (isFragmentVisible && wasFragmentInit) {
+            (activity as MainActivity).updateHoursTopMargin(mView.week_top_holder.height)
+        }
     }
 
     override fun onResume() {
@@ -86,7 +98,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 mView.week_events_scrollview.viewTreeObserver.removeOnGlobalLayoutListener(this)
                 minScrollY = mRowHeight * context.config.startWeeklyAt
                 maxScrollY = mRowHeight * context.config.endWeeklyAt
-                (activity as MainActivity).updateHoursTopMargin(mView.week_letters_holder.height)
 
                 val bounds = Rect()
                 week_events_holder.getGlobalVisibleRect(bounds)
@@ -205,6 +216,15 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                     leftMargin = firstDayIndex * dayColumnWidth
                     width = (daysCnt + 1) * dayColumnWidth - mRes.displayMetrics.density.toInt()
                 }
+
+                mView.week_top_holder.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+                    override fun onGlobalLayout() {
+                        mView.week_top_holder.viewTreeObserver.removeOnGlobalLayoutListener(this)
+                        if (isFragmentVisible) {
+                            (activity as MainActivity).updateHoursTopMargin(mView.week_top_holder.height)
+                        }
+                    }
+                })
             }
             setOnClickListener {
                 Intent(activity.applicationContext, EventActivity::class.java).apply {

@@ -265,6 +265,7 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
 
     fun updateHoursTopMargin(margin: Int) {
         (week_view_hours_scrollview.layoutParams as LinearLayout.LayoutParams).setMargins(0, margin, 0, 0)
+        week_view_hours_scrollview.requestLayout()
     }
 
     private fun getWeekTimestamps(targetWeekTS: Int): List<Int> {
