@@ -6,10 +6,7 @@ import android.graphics.Rect
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.view.ViewTreeObserver
+import android.view.*
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
@@ -33,6 +30,8 @@ import org.joda.time.Days
 import kotlin.comparisons.compareBy
 
 class WeekFragment : Fragment(), WeeklyCalendar {
+    val CLICK_DURATION_THRESHOLD = 150
+
     private var mListener: WeekScrollListener? = null
     private var mWeekTimestamp = 0
     private var mRowHeight = 0
@@ -43,6 +42,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private var isFragmentVisible = false
     private var wasFragmentInit = false
     private var wasExtraHeightAdded = false
+    private var clickStartTime = 0L
 
     lateinit var mView: View
     lateinit var mCalendar: WeeklyCalendarImpl
@@ -155,16 +155,38 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         }
     }
 
+    private fun initGrid() {
+        (0..6).map { getColumnWithId(it) }
+                .forEach {
+                    activity.runOnUiThread { it.removeAllViews() }
+                    it.setOnTouchListener { view, motionEvent ->
+                        checkGridClick(motionEvent)
+                        true
+                    }
+                }
+    }
+
+    private fun checkGridClick(event: MotionEvent) {
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> clickStartTime = System.currentTimeMillis()
+            MotionEvent.ACTION_UP -> {
+                if (System.currentTimeMillis() - clickStartTime < CLICK_DURATION_THRESHOLD) {
+
+                }
+            }
+            else -> {
+            }
+        }
+    }
+
     override fun updateWeeklyCalendar(events: List<Event>) {
         if (mWasDestroyed)
             return
 
+        initGrid()
         val fullHeight = mRes.getDimension(R.dimen.weekly_view_events_height)
         val minuteHeight = fullHeight / (24 * 60)
         val minimalHeight = mRes.getDimension(R.dimen.weekly_view_minimal_event_height).toInt()
-        (0..6).map { getColumnWithId(it) }
-                .forEach { activity.runOnUiThread { it.removeAllViews() } }
-
         activity.runOnUiThread { mView.week_all_day_holder.removeAllViews() }
 
         var hadAllDayEvent = false
@@ -204,15 +226,19 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         }
 
         if (!hadAllDayEvent) {
-            mView.week_top_holder.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
-                override fun onGlobalLayout() {
-                    mView.week_top_holder.viewTreeObserver.removeOnGlobalLayoutListener(this)
-                    if (isFragmentVisible) {
-                        (activity as MainActivity).updateHoursTopMargin(mView.week_top_holder.height)
-                    }
-                }
-            })
+            checkTopHolderHeight()
         }
+    }
+
+    private fun checkTopHolderHeight() {
+        mView.week_top_holder.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                mView.week_top_holder.viewTreeObserver.removeOnGlobalLayoutListener(this)
+                if (isFragmentVisible) {
+                    (activity as MainActivity).updateHoursTopMargin(mView.week_top_holder.height)
+                }
+            }
+        })
     }
 
     private fun addAllDayEvent(event: Event) {
