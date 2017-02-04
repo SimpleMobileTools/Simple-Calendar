@@ -41,7 +41,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private var isFragmentVisible = false
     private var wasFragmentInit = false
     private var wasExtraHeightAdded = false
-    private var oneDP = 1
 
     lateinit var mView: View
     lateinit var mCalendar: WeeklyCalendarImpl
@@ -53,7 +52,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         mWeekTimestamp = arguments.getInt(WEEK_START_TIMESTAMP)
         primaryColor = context.config.primaryColor
         mRes = resources
-        oneDP = mRes.displayMetrics.density.toInt()
 
         mView = inflater.inflate(R.layout.fragment_week, container, false).apply {
             week_events_scrollview.setOnScrollviewListener(object : MyScrollView.ScrollViewListener {
@@ -171,9 +169,11 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
         activity.runOnUiThread { mView.week_all_day_holder.removeAllViews() }
 
+        var hadAllDayEvent = false
         val sorted = events.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { it.description }))
         for (event in sorted) {
             if (event.isAllDay() || Formatter.getDayCodeFromTS(event.startTS) != Formatter.getDayCodeFromTS(event.endTS)) {
+                hadAllDayEvent = true
                 addAllDayEvent(event)
             } else {
                 val startDateTime = Formatter.getDateTimeFromTS(event.startTS)
@@ -190,10 +190,9 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                     activity.runOnUiThread {
                         layout.addView(this)
                         (layoutParams as RelativeLayout.LayoutParams).apply {
-                            rightMargin = oneDP
                             topMargin = (startMinutes * minuteHeight).toInt()
-                            width = layout.width
-                            minHeight = if (event.startTS == event.endTS) minimalHeight else (duration * minuteHeight).toInt() - oneDP
+                            width = layout.width - 1
+                            minHeight = if (event.startTS == event.endTS) minimalHeight else (duration * minuteHeight).toInt() - 1
                         }
                     }
                     setOnClickListener {
@@ -204,6 +203,17 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                     }
                 }
             }
+        }
+
+        if (!hadAllDayEvent) {
+            mView.week_top_holder.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+                override fun onGlobalLayout() {
+                    mView.week_top_holder.viewTreeObserver.removeOnGlobalLayoutListener(this)
+                    if (isFragmentVisible) {
+                        (activity as MainActivity).updateHoursTopMargin(mView.week_top_holder.height)
+                    }
+                }
+            })
         }
     }
 
@@ -226,9 +236,9 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 mView.week_all_day_holder.addView(this)
                 (layoutParams as LinearLayout.LayoutParams).apply {
                     topMargin = mRes.getDimension(R.dimen.tiny_margin).toInt()
-                    bottomMargin = oneDP
-                    leftMargin = firstDayIndex % 7 * dayColumnWidth
-                    width = (daysCnt + 1) * dayColumnWidth - oneDP
+                    leftMargin = getColumnWithId(firstDayIndex).x.toInt()
+                    bottomMargin = 1
+                    width = getColumnWithId(firstDayIndex + daysCnt).right - leftMargin - 1
                 }
 
                 mView.week_top_holder.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {

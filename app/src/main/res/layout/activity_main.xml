@@ -24,13 +24,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignRight="@+id/week_view_hours_scrollview"
-                android:background="@drawable/stroke_bottom"/>
+                android:background="@drawable/stroke_bottom_right"/>
 
             <com.simplemobiletools.calendar.views.MyScrollView
                 android:id="@+id/week_view_hours_scrollview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/week_view_hours_divider"
+                android:background="@drawable/stroke_right"
                 android:overScrollMode="never"
                 android:paddingTop="@dimen/medium_margin"
                 android:scrollbars="none">
@@ -41,6 +42,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:paddingBottom="@dimen/weekly_view_row_height"/>
+
             </com.simplemobiletools.calendar.views.MyScrollView>
 
             <com.simplemobiletools.commons.views.MyViewPager
@@ -48,12 +50,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_toRightOf="@+id/week_view_hours_scrollview"/>
-
-            <ImageView
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:layout_toRightOf="@+id/week_view_hours_scrollview"
-                android:foreground="@drawable/stroke_right"/>
 
         </RelativeLayout>
     </LinearLayout>
