@@ -18,6 +18,8 @@ import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.activities.MainActivity
 import com.simplemobiletools.calendar.adapters.WeekEventsAdapter
 import com.simplemobiletools.calendar.extensions.config
+import com.simplemobiletools.calendar.extensions.seconds
+import com.simplemobiletools.calendar.extensions.secondsInWeek
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.interfaces.WeeklyCalendar
 import com.simplemobiletools.calendar.models.Event
@@ -204,8 +206,11 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             val startDateTime = Formatter.getDateTimeFromTS(event.startTS)
             val endDateTime = Formatter.getDateTimeFromTS(event.endTS)
 
-            val firstDayIndex = startDateTime.dayOfWeek - if (context.config.isSundayFirst) 0 else 1
-            val daysCnt = Days.daysBetween(startDateTime.withTimeAtStartOfDay(), endDateTime.withTimeAtStartOfDay()).days
+            val minTS = Math.max(startDateTime.withTimeAtStartOfDay().seconds(), mWeekTimestamp)
+            val maxTS = Math.min(endDateTime.withTimeAtStartOfDay().seconds(), mWeekTimestamp + context.secondsInWeek)
+            val startDateTimeInWeek = Formatter.getDateTimeFromTS(minTS)
+            val firstDayIndex = startDateTimeInWeek.dayOfWeek - if (context.config.isSundayFirst) 0 else 1
+            val daysCnt = Days.daysBetween(Formatter.getDateTimeFromTS(minTS), Formatter.getDateTimeFromTS(maxTS)).days
 
             activity.runOnUiThread {
                 val dayColumnWidth = getColumnWithId(1).width
@@ -213,7 +218,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 (layoutParams as LinearLayout.LayoutParams).apply {
                     topMargin = mRes.getDimension(R.dimen.tiny_margin).toInt()
                     bottomMargin = mRes.getDimension(R.dimen.tiny_margin).toInt()
-                    leftMargin = firstDayIndex * dayColumnWidth
+                    leftMargin = firstDayIndex % 7 * dayColumnWidth
                     width = (daysCnt + 1) * dayColumnWidth - mRes.displayMetrics.density.toInt()
                 }
 
