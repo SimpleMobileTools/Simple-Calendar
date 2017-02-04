@@ -16,11 +16,13 @@ import android.widget.TextView
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.activities.MainActivity
-import com.simplemobiletools.calendar.adapters.WeekEventsAdapter
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.extensions.secondsInWeek
-import com.simplemobiletools.calendar.helpers.*
+import com.simplemobiletools.calendar.helpers.EVENT_ID
+import com.simplemobiletools.calendar.helpers.Formatter
+import com.simplemobiletools.calendar.helpers.WEEK_START_TIMESTAMP
+import com.simplemobiletools.calendar.helpers.WeeklyCalendarImpl
 import com.simplemobiletools.calendar.interfaces.WeeklyCalendar
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.views.MyScrollView
@@ -66,16 +68,10 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                     updateScrollY(Math.max(MainActivity.mWeekScrollY, minScrollY))
                 }
             })
-
-            week_events_grid.adapter = WeekEventsAdapter(context, mWeekTimestamp) {
-                Intent(context, EventActivity::class.java).apply {
-                    putExtra(NEW_EVENT_START_TS, it)
-                    startActivity(this)
-                }
-            }
         }
 
-        (0..6).map { (LayoutInflater.from(context).inflate(R.layout.stroke_width_divider, mView.week_vertical_grid_holder, true)) }
+        (0..6).map { (LayoutInflater.from(context).inflate(R.layout.stroke_vertical_divider, mView.week_vertical_grid_holder)) }
+        (0..23).map { (LayoutInflater.from(context).inflate(R.layout.stroke_horizontal_divider, mView.week_horizontal_grid_holder)) }
 
         mCalendar = WeeklyCalendarImpl(this, context)
         wasFragmentInit = true
