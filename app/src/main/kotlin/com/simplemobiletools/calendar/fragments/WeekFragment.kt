@@ -75,6 +75,8 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             }
         }
 
+        (0..6).map { (LayoutInflater.from(context).inflate(R.layout.stroke_width_divider, mView.week_vertical_grid_holder, true)) }
+
         mCalendar = WeeklyCalendarImpl(this, context)
         wasFragmentInit = true
         return mView
@@ -232,7 +234,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             val daysCnt = Days.daysBetween(Formatter.getDateTimeFromTS(minTS), Formatter.getDateTimeFromTS(maxTS)).days
 
             activity.runOnUiThread {
-                val dayColumnWidth = getColumnWithId(1).width
                 mView.week_all_day_holder.addView(this)
                 (layoutParams as LinearLayout.LayoutParams).apply {
                     topMargin = mRes.getDimension(R.dimen.tiny_margin).toInt()
