@@ -18,3 +18,6 @@
 
 # Joda
 -dontwarn org.joda.time.**
+
+-keep class com.google.common.**
+-dontwarn com.google.common.**
