@@ -238,8 +238,10 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                             (activity as MainActivity).updateHoursTopMargin(mView.week_top_holder.height)
                         }
 
-                        if (!wasExtraHeightAdded)
+                        if (!wasExtraHeightAdded) {
                             maxScrollY += mView.week_all_day_holder.height
+                            wasExtraHeightAdded = true
+                        }
                     }
                 })
             }
