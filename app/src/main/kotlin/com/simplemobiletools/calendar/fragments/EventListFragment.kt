@@ -29,6 +29,7 @@ import kotlin.comparisons.compareBy
 
 class EventListFragment : Fragment(), DBHelper.GetEventsListener, DBHelper.EventUpdateListener, EventListAdapter.ItemOperationsListener {
     var mAllEvents: MutableList<Event>? = null
+    var prevEventsHash = 0
     lateinit var mToBeDeleted: MutableList<Int>
     lateinit var mView: View
 
@@ -45,10 +46,6 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, DBHelper.Event
         checkEvents()
     }
 
-    override fun onPause() {
-        super.onPause()
-    }
-
     private fun checkEvents() {
         val fromTS = DateTime().seconds()
         val toTS = DateTime().plusYears(1).seconds()
@@ -56,6 +53,11 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, DBHelper.Event
     }
 
     override fun gotEvents(events: MutableList<Event>) {
+        val hash = events.hashCode()
+        if (prevEventsHash == hash)
+            return
+
+        prevEventsHash = hash
         val filtered = getEventsToShow(events)
         val listItems = ArrayList<ListItem>(filtered.size)
         val sorted = filtered.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { it.description }))
