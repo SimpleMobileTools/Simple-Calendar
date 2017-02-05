@@ -17,8 +17,8 @@ class IcsParser {
     private val BEGIN_EVENT = "BEGIN:VEVENT"
     private val BEGIN_ALARM = "BEGIN:VALARM"
     private val END = "END:VEVENT"
-    private val DTSTART = "DTSTART:"
-    private val DTEND = "DTEND:"
+    private val DTSTART = "DTSTART"
+    private val DTEND = "DTEND"
     private val SUMMARY = "SUMMARY:"
     private val DESCRIPTION = "DESCRIPTION:"
     private val UID = "UID:"
@@ -28,6 +28,7 @@ class IcsParser {
     var curTitle = ""
     var curDescription = ""
     var curImportId = ""
+    var curFlags = 0
 
     var eventsImported = 0
     var eventsFailed = 0
@@ -56,7 +57,7 @@ class IcsParser {
                         if (curTitle.isEmpty() || curStart == -1 || curEnd == -1 || importIDs.contains(curImportId))
                             continue
 
-                        val event = Event(0, curStart, curEnd, curTitle, curDescription, reminderMinutes, importId = curImportId)
+                        val event = Event(0, curStart, curEnd, curTitle, curDescription, reminderMinutes, importId = curImportId, flags = curFlags)
                         dbHelper.insert(event) {
                             context.scheduleNotification(event)
                         }
@@ -80,9 +81,16 @@ class IcsParser {
 
     private fun getTimestamp(fullString: String): Int {
         try {
-            val digitString = fullString.replace("T", "").replace("Z", "")
-            val dateTimeFormat = DateTimeFormat.forPattern("yyyyMMddHHmmss")
-            return dateTimeFormat.parseDateTime(digitString).withZoneRetainFields(DateTimeZone.UTC).seconds()
+            if (fullString.startsWith(';')) {
+                curFlags = curFlags or FLAG_ALL_DAY
+                val value = fullString.substring(fullString.lastIndexOf(':') + 1)
+                val dateTimeFormat = DateTimeFormat.forPattern("yyyyMMdd")
+                return dateTimeFormat.parseDateTime(value).seconds()
+            } else {
+                val digitString = fullString.substring(1).replace("T", "").replace("Z", "")
+                val dateTimeFormat = DateTimeFormat.forPattern("yyyyMMddHHmmss")
+                return dateTimeFormat.parseDateTime(digitString).withZoneRetainFields(DateTimeZone.UTC).seconds()
+            }
         } catch (e: Exception) {
             eventsFailed++
             return -1
@@ -95,5 +103,6 @@ class IcsParser {
         curTitle = ""
         curDescription = ""
         curImportId = ""
+        curFlags = 0
     }
 }
