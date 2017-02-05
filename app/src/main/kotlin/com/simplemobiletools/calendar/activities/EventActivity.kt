@@ -128,8 +128,13 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
     private val repetitionLimitDateSetListener = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
         val repeatLimitDateTime = DateTime().withDate(year, monthOfYear + 1, dayOfMonth).withTime(0, 0, 0, 0)
-        event_repetition_limit.text = Formatter.getDate(applicationContext, repeatLimitDateTime, false)
-        mRepeatLimit = repeatLimitDateTime.seconds()
+        if (repeatLimitDateTime.seconds() < mEvent.endTS) {
+            event_repetition_limit.text = resources.getString(R.string.forever)
+            mRepeatLimit = 0
+        } else {
+            event_repetition_limit.text = Formatter.getDate(applicationContext, repeatLimitDateTime, false)
+            mRepeatLimit = repeatLimitDateTime.seconds()
+        }
     }
 
     private fun updateReminderText() {
