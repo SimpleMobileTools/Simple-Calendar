@@ -24,7 +24,7 @@ class EventListWidgetAdapterOld(val context: Context, val mEvents: List<ListItem
     private var mTextColor = 0
 
     init {
-        mTopDivider = context.resources.getDrawable(R.drawable.divider)
+        mTopDivider = context.resources.getDrawable(R.drawable.divider_width)
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {

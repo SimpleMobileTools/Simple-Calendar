@@ -51,7 +51,7 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
 
     init {
         textColor = activity.config.textColor
-        topDivider = activity.resources.getDrawable(R.drawable.divider)
+        topDivider = activity.resources.getDrawable(R.drawable.divider_width)
         primaryColor = activity.config.primaryColor
         val mTodayCode = Formatter.getDayCodeFromTS(mNow)
         todayDate = Formatter.getDayTitle(activity, mTodayCode)
@@ -101,6 +101,7 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RecyclerView.ViewHolder {
         val layoutId = if (viewType == ITEM_EVENT) R.layout.event_list_item else R.layout.event_list_section
         val view = LayoutInflater.from(parent?.context).inflate(layoutId, parent, false)
+
         return if (viewType == ITEM_EVENT)
             EventListAdapter.ViewHolder(activity, view, itemClick)
         else
