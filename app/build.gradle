@@ -39,7 +39,7 @@ dependencies {
     compile 'com.bignerdranch.android:recyclerview-multiselect:0.2'
     compile 'com.android.support:multidex:1.0.1'
 
-    compile 'com.google.code.gson:gson:2.8.0'
+    /*compile 'com.google.code.gson:gson:2.8.0'
     compile('com.google.http-client:google-http-client-gson:1.22.0') {
         exclude group: 'org.apache.httpcomponents'
     }
@@ -50,7 +50,7 @@ dependencies {
     }
     compile('com.google.apis:google-api-services-calendar:v3-rev230-1.22.0') {
         exclude group: 'org.apache.httpcomponents'
-    }
+    }*/
 
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }

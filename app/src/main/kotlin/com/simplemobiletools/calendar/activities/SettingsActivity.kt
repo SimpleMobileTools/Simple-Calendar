@@ -1,25 +1,15 @@
 package com.simplemobiletools.calendar.activities
 
-import android.Manifest
 import android.accounts.AccountManager
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.media.RingtoneManager
 import android.net.Uri
 import android.os.Bundle
 import android.os.Parcelable
-import android.support.v4.app.ActivityCompat
-import android.support.v4.content.ContextCompat
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import com.google.android.gms.common.ConnectionResult
-import com.google.android.gms.common.GoogleApiAvailability
-import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential
-import com.google.api.client.util.ExponentialBackOff
-import com.google.api.services.calendar.CalendarScopes
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.asynctasks.FetchGoogleEventsTask
 import com.simplemobiletools.calendar.dialogs.EventReminderDialog
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.getReminderText
@@ -37,13 +27,13 @@ class SettingsActivity : SimpleActivity() {
         val REQUEST_AUTHORIZATION = 5
     }
 
-    lateinit var credential: GoogleAccountCredential
+    //lateinit var credential: GoogleAccountCredential
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
 
-        credential = GoogleAccountCredential.usingOAuth2(this, arrayListOf(CalendarScopes.CALENDAR_READONLY)).setBackOff(ExponentialBackOff())
+        //credential = GoogleAccountCredential.usingOAuth2(this, arrayListOf(CalendarScopes.CALENDAR_READONLY)).setBackOff(ExponentialBackOff())
     }
 
     override fun onResume() {
@@ -74,7 +64,7 @@ class SettingsActivity : SimpleActivity() {
             config.googleSync = settings_google_sync.isChecked
 
             if (settings_google_sync.isChecked) {
-                tryEnablingSync()
+                //tryEnablingSync()
             }
         }
     }
@@ -199,14 +189,14 @@ class SettingsActivity : SimpleActivity() {
             } else if (requestCode == REQUEST_ACCOUNT_NAME && resultData?.extras != null) {
                 val accountName = resultData!!.getStringExtra(AccountManager.KEY_ACCOUNT_NAME)
                 config.syncAccountName = accountName
-                tryEnablingSync()
+                //tryEnablingSync()
             } else if (requestCode == REQUEST_AUTHORIZATION) {
-                tryEnablingSync()
+                //tryEnablingSync()
             }
         }
     }
 
-    private fun tryEnablingSync() {
+    /*private fun tryEnablingSync() {
         if (!isGooglePlayServicesAvailable()) {
             acquireGooglePlayServices()
         } else if (!hasGetAccountsPermission()) {
@@ -249,5 +239,5 @@ class SettingsActivity : SimpleActivity() {
         if (config.syncAccountName.isEmpty()) {
             startActivityForResult(credential.newChooseAccountIntent(), REQUEST_ACCOUNT_NAME)
         }
-    }
+    }*/
 }

@@ -1,30 +1,7 @@
 package com.simplemobiletools.calendar.asynctasks
 
-import android.app.Activity
-import android.os.AsyncTask
-import com.google.api.client.extensions.android.http.AndroidHttp
-import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential
-import com.google.api.client.googleapis.extensions.android.gms.auth.UserRecoverableAuthIOException
-import com.google.api.client.json.gson.GsonFactory
-import com.google.gson.Gson
-import com.google.gson.JsonArray
-import com.google.gson.JsonObject
-import com.google.gson.reflect.TypeToken
-import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.activities.SettingsActivity
-import com.simplemobiletools.calendar.extensions.seconds
-import com.simplemobiletools.calendar.helpers.DAY
-import com.simplemobiletools.calendar.helpers.MONTH
-import com.simplemobiletools.calendar.helpers.WEEK
-import com.simplemobiletools.calendar.helpers.YEAR
-import com.simplemobiletools.calendar.models.Event
-import com.simplemobiletools.calendar.models.GoogleEvent
-import com.simplemobiletools.calendar.models.GoogleEventReminder
-import org.joda.time.DateTime
-import java.util.*
-
 // more info about event fields at https://developers.google.com/google-apps/calendar/v3/reference/events/insert
-class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCredential) : AsyncTask<Void, Void, List<Event>>() {
+/*class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCredential) : AsyncTask<Void, Void, List<Event>>() {
     private val CONFIRMED = "confirmed"
     private val PRIMARY = "primary"
     private val ITEMS = "items"
@@ -150,4 +127,4 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
             }
         }
     }
-}
+}*/
