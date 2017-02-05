@@ -151,4 +151,6 @@ fun Context.getNewEventTimestampFromCode(dayCode: String) = Formatter.getLocalDa
 
 val Context.config: Config get() = Config.newInstance(this)
 
-val Context.secondsInWeek: Int get() = 7 * 24 * 60 * 60
+val Context.secondsInDay: Int get() = 24 * 60 * 60
+
+val Context.secondsInWeek: Int get() = 7 * secondsInDay

@@ -7,7 +7,6 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.*
-import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
@@ -16,11 +15,9 @@ import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.activities.MainActivity
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.seconds
+import com.simplemobiletools.calendar.extensions.secondsInDay
 import com.simplemobiletools.calendar.extensions.secondsInWeek
-import com.simplemobiletools.calendar.helpers.EVENT_ID
-import com.simplemobiletools.calendar.helpers.Formatter
-import com.simplemobiletools.calendar.helpers.WEEK_START_TIMESTAMP
-import com.simplemobiletools.calendar.helpers.WeeklyCalendarImpl
+import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.interfaces.WeeklyCalendar
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.views.MyScrollView
@@ -44,8 +41,9 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private var wasFragmentInit = false
     private var wasExtraHeightAdded = false
     private var clickStartTime = 0L
-    lateinit var inflater: LayoutInflater
+    private var selectedGrid: View? = null
 
+    lateinit var inflater: LayoutInflater
     lateinit var mView: View
     lateinit var mCalendar: WeeklyCalendarImpl
     lateinit var mRes: Resources
@@ -160,28 +158,38 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
     private fun initGrid() {
         (0..6).map { getColumnWithId(it) }
-                .forEach {
-                    activity.runOnUiThread { it.removeAllViews() }
-                    it.setOnTouchListener { view, motionEvent ->
-                        checkGridClick(motionEvent, it)
+                .forEachIndexed { index, layout ->
+                    activity.runOnUiThread { layout.removeAllViews() }
+                    layout.setOnTouchListener { view, motionEvent ->
+                        checkGridClick(motionEvent, index, layout)
                         true
                     }
                 }
     }
 
-    private fun checkGridClick(event: MotionEvent, view: ViewGroup) {
+    private fun checkGridClick(event: MotionEvent, index: Int, view: ViewGroup) {
         when (event.action) {
             MotionEvent.ACTION_DOWN -> clickStartTime = System.currentTimeMillis()
             MotionEvent.ACTION_UP -> {
                 if (System.currentTimeMillis() - clickStartTime < CLICK_DURATION_THRESHOLD) {
+                    selectedGrid?.visibility = View.GONE
+
                     val rowHeight = resources.getDimension(R.dimen.weekly_view_row_height)
                     val hour = (event.y / rowHeight).toInt()
-                    (inflater.inflate(R.layout.week_grid_item, null, false) as ImageView).apply {
+                    selectedGrid = (inflater.inflate(R.layout.week_grid_item, null, false) as View).apply {
                         view.addView(this)
                         background = ColorDrawable(primaryColor)
                         layoutParams.width = view.width
                         layoutParams.height = rowHeight.toInt()
                         y = hour * rowHeight
+
+                        setOnClickListener {
+                            val timestamp = mWeekTimestamp + index * context.secondsInDay + hour * 60 * 60
+                            Intent(context, EventActivity::class.java).apply {
+                                putExtra(NEW_EVENT_START_TS, timestamp)
+                                startActivity(this)
+                            }
+                        }
                     }
                 }
             }

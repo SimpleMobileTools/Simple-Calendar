@@ -4,7 +4,6 @@
     <dimen name="yearly_padding_full">6dp</dimen>
 
     <dimen name="weekly_view_row_height">60dp</dimen>
-    <dimen name="weekly_view_row_minus_one_height">59dp</dimen>
     <dimen name="weekly_view_events_height">1440dp</dimen>      <!-- weekly_view_row_height * 24 hours -->
     <dimen name="weekly_view_minimal_event_height">10dp</dimen>
 
