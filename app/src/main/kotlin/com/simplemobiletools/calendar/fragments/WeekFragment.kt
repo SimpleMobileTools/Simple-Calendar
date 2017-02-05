@@ -215,7 +215,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         var hadAllDayEvent = false
         val sorted = events.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { it.description }))
         for (event in sorted) {
-            if (event.isAllDay() || Formatter.getDayCodeFromTS(event.startTS) != Formatter.getDayCodeFromTS(event.endTS)) {
+            if (event.isAllDay || Formatter.getDayCodeFromTS(event.startTS) != Formatter.getDayCodeFromTS(event.endTS)) {
                 hadAllDayEvent = true
                 addAllDayEvent(event)
             } else {

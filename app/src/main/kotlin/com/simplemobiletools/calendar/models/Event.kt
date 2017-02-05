@@ -28,5 +28,5 @@ data class Event(var id: Int = 0, var startTS: Int = 0, var endTS: Int = 0, var 
         endTS = newEndTS
     }
 
-    fun isAllDay() = flags and FLAG_ALL_DAY != 0
+    val isAllDay = flags and FLAG_ALL_DAY != 0
 }

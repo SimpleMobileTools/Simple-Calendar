@@ -12,6 +12,7 @@ import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
+import com.simplemobiletools.commons.extensions.beInvisible
 import com.simplemobiletools.commons.extensions.beInvisibleIf
 import kotlinx.android.synthetic.main.event_item_day_view.view.*
 import java.util.*
@@ -25,6 +26,7 @@ class DayEventsAdapter(val activity: SimpleActivity, val mItems: List<Event>, va
         var actMode: ActionMode? = null
         val markedItems = HashSet<Int>()
         var textColor = 0
+        var allDayString = ""
 
         fun toggleItemSelection(itemView: View, select: Boolean, pos: Int = -1) {
             itemView.event_item_frame.isSelected = select
@@ -40,6 +42,7 @@ class DayEventsAdapter(val activity: SimpleActivity, val mItems: List<Event>, va
 
     init {
         textColor = activity.config.textColor
+        allDayString = activity.resources.getString(R.string.all_day)
     }
 
     val multiSelectorMode = object : ModalMultiSelectorCallback(multiSelector) {
@@ -97,23 +100,33 @@ class DayEventsAdapter(val activity: SimpleActivity, val mItems: List<Event>, va
 
             itemView.apply {
                 event_item_title.text = event.title
-                event_item_title.setTextColor(textColor)
-
                 event_item_description.text = event.description
-                event_item_description.setTextColor(textColor)
-
-                event_item_start.text = Formatter.getTimeFromTS(context, event.startTS)
-                event_item_start.setTextColor(textColor)
-
-                toggleItemSelection(this, markedItems.contains(pos), pos)
+                event_item_start.text = if (event.isAllDay) allDayString else Formatter.getTimeFromTS(context, event.startTS)
                 event_item_end.beInvisibleIf(event.startTS == event.endTS)
+                toggleItemSelection(this, markedItems.contains(pos), pos)
 
                 if (event.startTS != event.endTS) {
+                    val startCode = Formatter.getDayCodeFromTS(event.startTS)
+                    val endCode = Formatter.getDayCodeFromTS(event.endTS)
+
                     event_item_end.apply {
                         text = Formatter.getTimeFromTS(context, event.endTS)
-                        setTextColor(textColor)
+                        if (startCode != endCode) {
+                            if (event.isAllDay) {
+                                text = Formatter.getDateFromCode(context, endCode, true)
+                            } else {
+                                append(" (${Formatter.getDateFromCode(context, endCode, true)})")
+                            }
+                        } else if (event.isAllDay) {
+                            beInvisible()
+                        }
                     }
                 }
+
+                event_item_start.setTextColor(textColor)
+                event_item_end.setTextColor(textColor)
+                event_item_title.setTextColor(textColor)
+                event_item_description.setTextColor(textColor)
 
                 setOnClickListener { viewClicked(multiSelector, event, pos) }
                 setOnLongClickListener {

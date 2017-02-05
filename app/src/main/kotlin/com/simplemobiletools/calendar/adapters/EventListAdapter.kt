@@ -132,19 +132,20 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
                 toggleItemSelection(this, markedItems.contains(pos), pos)
 
                 if (item.startTS != item.endTS) {
-                    event_item_end.text = Formatter.getTimeFromTS(context, item.endTS)
-
                     val startCode = Formatter.getDayCodeFromTS(item.startTS)
                     val endCode = Formatter.getDayCodeFromTS(item.endTS)
 
-                    if (startCode != endCode) {
-                        if (item.isAllDay) {
-                            event_item_end.text = Formatter.getDateFromCode(context, endCode, true)
-                        } else {
-                            event_item_end.append(" (${Formatter.getDateFromCode(context, endCode, true)})")
+                    event_item_end.apply {
+                        text = Formatter.getTimeFromTS(context, item.endTS)
+                        if (startCode != endCode) {
+                            if (item.isAllDay) {
+                                text = Formatter.getDateFromCode(context, endCode, true)
+                            } else {
+                                append(" (${Formatter.getDateFromCode(context, endCode, true)})")
+                            }
+                        } else if (item.isAllDay) {
+                            beInvisible()
                         }
-                    } else if (item.isAllDay) {
-                        event_item_end.beInvisible()
                     }
                 }
 

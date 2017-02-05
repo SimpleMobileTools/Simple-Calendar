@@ -70,7 +70,7 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, DBHelper.Event
                 listItems.add(ListSection(day))
                 prevCode = code
             }
-            listItems.add(ListEvent(it.id, it.startTS, it.endTS, it.title, it.description, it.isAllDay()))
+            listItems.add(ListEvent(it.id, it.startTS, it.endTS, it.title, it.description, it.isAllDay))
         }
 
         mAllEvents = events
