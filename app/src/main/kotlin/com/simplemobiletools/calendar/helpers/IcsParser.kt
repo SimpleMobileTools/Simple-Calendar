@@ -49,6 +49,7 @@ class IcsParser {
                         curEnd = getTimestamp(line.substring(DTEND.length))
                     } else if (line.startsWith(SUMMARY)) {
                         curTitle = line.substring(SUMMARY.length)
+                        curTitle = curTitle.substring(0, Math.min(curTitle.length, 50))
                     } else if (line.startsWith(DESCRIPTION)) {
                         curDescription = line.substring(DESCRIPTION.length)
                     } else if (line.startsWith(UID)) {

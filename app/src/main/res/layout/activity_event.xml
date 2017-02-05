@@ -20,7 +20,7 @@
             android:layout_marginTop="@dimen/activity_margin"
             android:hint="@string/title"
             android:inputType="textCapSentences"
-            android:maxLength="30"
+            android:maxLength="50"
             android:maxLines="1"
             android:minEms="20"
             android:textCursorDrawable="@null"
