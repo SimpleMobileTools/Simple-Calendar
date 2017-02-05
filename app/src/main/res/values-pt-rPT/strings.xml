@@ -27,9 +27,9 @@
     <string name="event_updated">Evento atualizado com sucesso</string>
 
     <!-- Event Repetition -->
-    <string name="select_repeat_interval">Select a repeat interval</string>
+    <string name="select_repeat_interval">Selecione o intervalo de repetição</string>
     <string name="repetition">Repetição</string>
-    <string name="no_repetition">No repetition</string>
+    <string name="no_repetition">Sem repetição</string>
     <string name="daily">Diária</string>
     <string name="weekly">Semanal</string>
     <string name="biweekly">Bissemanal</string>
@@ -37,12 +37,12 @@
     <string name="yearly">Anual</string>
 
     <!-- Event Reminders -->
-    <string name="select_event_reminder">Select an event reminder</string>
+    <string name="select_event_reminder">Selecione um lembrete</string>
     <string name="reminder">Lembrete</string>
-    <string name="no_reminder">No reminder</string>
+    <string name="no_reminder">Sem lembrete</string>
     <string name="at_start">No início</string>
-    <string name="mins_before_10">10 minutes before</string>
-    <string name="mins_before_30">30 minutes before</string>
+    <string name="mins_before_10">10 minutos antes</string>
+    <string name="mins_before_30">30 minutos antes</string>
     <string name="custom">Personalizado</string>
     <string name="before">antes</string>
     <string name="minutes_raw">minutos</string>
@@ -50,17 +50,17 @@
     <string name="days_raw">dias</string>
 
     <plurals name="minutes">
-        <item quantity="one">%1$d minute before</item>
+        <item quantity="one">%1$d minuto antes</item>
         <item quantity="other">%1$d minutos antes</item>
     </plurals>
 
     <plurals name="hours">
-        <item quantity="one">%1$d hour before</item>
+        <item quantity="one">%1$d hora antes</item>
         <item quantity="other">%1$d horas antes</item>
     </plurals>
 
     <plurals name="days">
-        <item quantity="one">%1$d day before</item>
+        <item quantity="one">%1$d dia antes</item>
         <item quantity="other">%1$d dias antes</item>
     </plurals>
 
@@ -77,7 +77,7 @@
     <string name="start">Início</string>
     <string name="end">Fim (opcional)</string>
     <string name="description">Descrição</string>
-    <string name="all_day">All-day</string>
+    <string name="all_day">Todo o dia</string>
 
     <!-- Weekly view -->
     <string name="week">Semana</string>
@@ -95,7 +95,7 @@
     <string name="no_ringtone_picker">Não foi encontrada qualquer aplicação capaz de definir o som</string>
     <string name="no_ringtone_selected">Nenhum</string>
     <string name="day_end_before_start">O dia final não pode ser antes do inicial</string>
-    <string name="google_sync">Google sync</string>
+    <string name="google_sync">Sincronização Google</string>
 
     <plurals name="events_deleted">
         <item quantity="one">%1$d evento apagado</item>
