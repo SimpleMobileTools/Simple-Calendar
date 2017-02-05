@@ -2,6 +2,8 @@
     <dimen name="min_widget_width">320dp</dimen>
     <dimen name="min_widget_height">320dp</dimen>
 
+    <dimen name="monthly_day_height">60dp</dimen>
+
     <dimen name="weekly_view_row_height">90dp</dimen>
     <dimen name="weekly_view_row_minus_one_height">89dp</dimen>
     <dimen name="weekly_view_events_height">2160dp</dimen>      <!-- weekly_view_row_height * 24 hours -->

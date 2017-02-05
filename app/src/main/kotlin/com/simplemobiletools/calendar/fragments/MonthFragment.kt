@@ -2,7 +2,6 @@ package com.simplemobiletools.calendar.fragments
 
 import android.content.Intent
 import android.content.res.Resources
-import android.graphics.Paint
 import android.graphics.PorterDuff
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -21,7 +20,10 @@ import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.models.Day
-import com.simplemobiletools.commons.extensions.*
+import com.simplemobiletools.commons.extensions.adjustAlpha
+import com.simplemobiletools.commons.extensions.beGone
+import com.simplemobiletools.commons.extensions.beVisibleIf
+import com.simplemobiletools.commons.extensions.setupDialogStuff
 import kotlinx.android.synthetic.main.first_row.*
 import kotlinx.android.synthetic.main.fragment_month.view.*
 import kotlinx.android.synthetic.main.top_navigation.view.*
@@ -168,8 +170,15 @@ class MonthFragment : Fragment(), MonthlyCalendar {
             }
         }
 
+        val weakerText = mTextColor.adjustAlpha(MEDIUM_ALPHA)
         val todayCircle = resources.getDrawable(R.drawable.circle_empty)
-        todayCircle.setColorFilter(mTextColor, PorterDuff.Mode.SRC_IN)
+        todayCircle.setColorFilter(weakerText, PorterDuff.Mode.SRC_IN)
+
+        val eventDot = resources.getDrawable(R.drawable.monthly_day_dot)
+        eventDot.setColorFilter(weakerText, PorterDuff.Mode.SRC_IN)
+
+        val todayWithEvent = resources.getDrawable(R.drawable.monthly_day_with_event_today)
+        todayWithEvent.setColorFilter(weakerText, PorterDuff.Mode.SRC_IN)
 
         for (i in 0..len - 1) {
             val day = days[i]
@@ -184,8 +193,17 @@ class MonthFragment : Fragment(), MonthlyCalendar {
                 setTextColor(curTextColor)
                 setOnClickListener { openDay(day.code) }
 
-                paintFlags = if (day.hasEvent) (paintFlags or Paint.UNDERLINE_TEXT_FLAG) else (paintFlags.removeFlag(Paint.UNDERLINE_TEXT_FLAG))
-                background = if (day.isToday) todayCircle else null
+                background = if (!day.isThisMonth) {
+                    null
+                } else if (day.isToday && day.hasEvent) {
+                    todayWithEvent
+                } else if (day.isToday) {
+                    todayCircle
+                } else if (day.hasEvent) {
+                    eventDot
+                } else {
+                    null
+                }
             }
         }
     }
