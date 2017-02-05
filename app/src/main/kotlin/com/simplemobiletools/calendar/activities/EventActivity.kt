@@ -89,7 +89,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         mReminderMinutes = mEvent.reminderMinutes
         mRepeatInterval = mEvent.repeatInterval
         mRepeatLimit = mEvent.repeatLimit
-        checkRepeatLimitVisibility(mRepeatLimit)
+        checkRepeatLimitVisibility(mRepeatInterval)
     }
 
     private fun setupNewEvent(dateTime: DateTime) {
