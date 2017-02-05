@@ -41,23 +41,9 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getInt(VIEW, MONTHLY_VIEW)
         set(view) = prefs.edit().putInt(VIEW, view).apply()
 
-    var defaultReminderType: Int
-        get() = prefs.getInt(REMINDER_TYPE, REMINDER_AT_START)
-        set(type) {
-            var newType = type
-            if (newType == REMINDER_CUSTOM && defaultReminderMinutes == 0)
-                newType = REMINDER_AT_START
-
-            prefs.edit().putInt(REMINDER_TYPE, newType).apply()
-        }
-
     var defaultReminderMinutes: Int
         get() = prefs.getInt(REMINDER_MINUTES, 10)
-        set(mins) {
-            if (mins == 0)
-                defaultReminderType = REMINDER_AT_START
-            prefs.edit().putInt(REMINDER_MINUTES, mins).apply()
-        }
+        set(mins) = prefs.edit().putInt(REMINDER_MINUTES, mins).apply()
 
     var googleSync: Boolean
         get() = prefs.getBoolean(GOOGLE_SYNC, false)

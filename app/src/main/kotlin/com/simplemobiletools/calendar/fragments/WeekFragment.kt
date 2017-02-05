@@ -291,6 +291,9 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
                 mView.week_top_holder.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
                     override fun onGlobalLayout() {
+                        if (activity == null)
+                            return
+
                         mView.week_top_holder.viewTreeObserver.removeOnGlobalLayoutListener(this)
                         if (isFragmentVisible) {
                             (activity as MainActivity).updateHoursTopMargin(mView.week_top_holder.height)

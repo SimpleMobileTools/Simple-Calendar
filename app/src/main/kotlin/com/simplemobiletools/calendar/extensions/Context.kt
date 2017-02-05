@@ -9,8 +9,6 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.SystemClock
-import android.support.v7.widget.AppCompatSpinner
-import android.widget.EditText
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.models.Event
@@ -98,32 +96,6 @@ private fun getNotificationIntent(context: Context, eventId: Int): PendingIntent
 
 fun Context.getAppropriateTheme(): Int {
     return if (config.backgroundColor.getContrastColor() == Color.WHITE) R.style.MyDialogTheme_Dark else R.style.MyDialogTheme
-}
-
-fun Context.getDefaultReminderTypeIndex(): Int {
-    val reminderType = config.defaultReminderType
-    return when (reminderType) {
-        REMINDER_OFF -> 0
-        REMINDER_AT_START -> 1
-        else -> 2
-    }
-}
-
-fun Context.setupReminderPeriod(otherPeriod: AppCompatSpinner, otherValue: EditText) {
-    val mins = config.defaultReminderMinutes
-    var value = mins
-    if (mins == 0) {
-        otherPeriod.setSelection(0)
-    } else if (mins % DAY_MINS == 0) {
-        value = mins / DAY_MINS
-        otherPeriod.setSelection(2)
-    } else if (mins % HOUR_MINS == 0) {
-        value = mins / HOUR_MINS
-        otherPeriod.setSelection(1)
-    } else {
-        otherPeriod.setSelection(0)
-    }
-    otherValue.setText(value.toString())
 }
 
 fun Context.getReminderText(minutes: Int) = when (minutes) {

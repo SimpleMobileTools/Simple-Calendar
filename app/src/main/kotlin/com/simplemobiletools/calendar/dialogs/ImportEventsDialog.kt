@@ -3,33 +3,29 @@ package com.simplemobiletools.calendar.dialogs
 import android.app.Activity
 import android.support.v7.app.AlertDialog
 import android.view.LayoutInflater
-import android.view.View
-import android.widget.AdapterView
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.extensions.getDefaultReminderTypeIndex
-import com.simplemobiletools.calendar.extensions.setupReminderPeriod
-import com.simplemobiletools.calendar.helpers.*
+import com.simplemobiletools.calendar.extensions.config
+import com.simplemobiletools.calendar.extensions.getReminderText
+import com.simplemobiletools.calendar.helpers.IcsParser
 import com.simplemobiletools.calendar.helpers.IcsParser.ImportResult.*
-import com.simplemobiletools.commons.extensions.*
+import com.simplemobiletools.commons.extensions.humanizePath
+import com.simplemobiletools.commons.extensions.setupDialogStuff
+import com.simplemobiletools.commons.extensions.toast
 import kotlinx.android.synthetic.main.dialog_import_events.view.*
 
 class ImportEventsDialog(val activity: Activity, val path: String, val callback: (refreshView: Boolean) -> Unit) : AlertDialog.Builder(activity) {
+    var reminderMinutes = 0
+
     init {
         val view = LayoutInflater.from(activity).inflate(R.layout.dialog_import_events, null).apply {
+            reminderMinutes = activity.config.defaultReminderMinutes
             import_events_filename.text = activity.humanizePath(path)
-            import_events_reminder.setSelection(context.getDefaultReminderTypeIndex())
-            context.setupReminderPeriod(import_events_custom_reminder_other_period, import_events_custom_reminder_value)
+            import_events_reminder.text = activity.getReminderText(reminderMinutes)
 
-            import_events_reminder.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, itemIndex: Int, p3: Long) {
-                    import_events_custom_reminder_holder.beVisibleIf(itemIndex == 2)
-                    if (itemIndex == 2) {
-                        activity.showKeyboard(import_events_custom_reminder_value)
-                    }
-                }
-
-                override fun onNothingSelected(p0: AdapterView<*>?) {
-
+            import_events_reminder.setOnClickListener {
+                EventReminderDialog(activity, reminderMinutes) {
+                    reminderMinutes = it
+                    import_events_reminder.text = activity.getReminderText(it)
                 }
             }
         }
@@ -40,14 +36,8 @@ class ImportEventsDialog(val activity: Activity, val path: String, val callback:
                 .create().apply {
             activity.setupDialogStuff(view, this, R.string.import_events)
             getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener({
-                val minutes = when (view.import_events_reminder.selectedItemPosition) {
-                    0 -> REMINDER_OFF
-                    1 -> REMINDER_AT_START
-                    else -> getReminderMinutes(view)
-                }
-
                 Thread({
-                    val result = IcsParser().parseIcs(context, minutes, path)
+                    val result = IcsParser().parseIcs(context, reminderMinutes, path)
                     handleParseResult(result)
                     dismiss()
                 }).start()
@@ -64,16 +54,5 @@ class ImportEventsDialog(val activity: Activity, val path: String, val callback:
             })
             callback.invoke(result != IMPORT_FAIL)
         }
-    }
-
-    private fun getReminderMinutes(view: View): Int {
-        val multiplier = when (view.import_events_custom_reminder_other_period.selectedItemPosition) {
-            1 -> HOUR_MINS
-            2 -> DAY_MINS
-            else -> 1
-        }
-
-        val value = view.import_events_custom_reminder_value.value
-        return Integer.valueOf(if (value.isEmpty()) "0" else value) * multiplier
     }
 }
