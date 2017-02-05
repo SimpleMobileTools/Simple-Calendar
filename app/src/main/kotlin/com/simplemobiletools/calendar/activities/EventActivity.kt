@@ -69,6 +69,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         event_all_day.setOnCheckedChangeListener { compoundButton, isChecked -> toggleAllDay(isChecked) }
         event_reminder.setOnClickListener { showReminderDialog() }
         event_repetition.setOnClickListener { showRepeatIntervalDialog() }
+        event_repetition_limit.setOnClickListener { showRepetitionLimitDialog() }
 
         if (mEvent.flags and FLAG_ALL_DAY != 0)
             event_all_day.toggle()
@@ -106,7 +107,13 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         EventRepeatIntervalDialog(this, mRepeatInterval) {
             mRepeatInterval = it
             updateRepetitionText()
+            event_repetition_limit.beGoneIf(it == 0)
+            event_repetition_limit_label.beGoneIf(it == 0)
         }
+    }
+
+    private fun showRepetitionLimitDialog() {
+
     }
 
     private fun updateReminderText() {
