@@ -69,6 +69,7 @@
     <string name="import_events_from_ics">Импорт событий из .ics файла</string>
     <string name="event_reminder">Напоминания о событиях</string>
     <string name="events_imported_successfully">События успешно импортированы</string>
+    <string name="importing_events_failed">Importing events failed</string>
     <string name="importing_some_events_failed">Ошибка импорта</string>
     <string name="invalid_file_format">Неправильный формат файла</string>
 

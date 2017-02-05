@@ -69,6 +69,7 @@
     <string name="import_events_from_ics">importiere Termine aus.ics Datei</string>
     <string name="event_reminder">Termin Erinnerung</string>
     <string name="events_imported_successfully">Termine erfolgreich importiert</string>
+    <string name="importing_events_failed">Importing events failed</string>
     <string name="importing_some_events_failed">einige Termine wurden nicht erfolgreich importiert</string>
     <string name="invalid_file_format">ungültiges Dateiformat</string>
 

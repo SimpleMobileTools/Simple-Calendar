@@ -69,6 +69,7 @@
     <string name="import_events_from_ics">Import events from an .ics file</string>
     <string name="event_reminder">Event reminder</string>
     <string name="events_imported_successfully">Events imported successfully</string>
+    <string name="importing_events_failed">Importing events failed</string>
     <string name="importing_some_events_failed">Importing some events failed</string>
     <string name="invalid_file_format">Invalid file format</string>
 

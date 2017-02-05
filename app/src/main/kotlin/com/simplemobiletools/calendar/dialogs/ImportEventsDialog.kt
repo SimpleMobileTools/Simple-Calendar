@@ -50,7 +50,7 @@ class ImportEventsDialog(val activity: Activity, val path: String, val callback:
             activity.toast(when (result) {
                 IMPORT_OK -> R.string.events_imported_successfully
                 IMPORT_PARTIAL -> R.string.importing_some_events_failed
-                else -> R.string.importing_some_events_failed
+                else -> R.string.importing_events_failed
             })
             callback.invoke(result != IMPORT_FAIL)
         }
