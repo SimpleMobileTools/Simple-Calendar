@@ -21,6 +21,7 @@ import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.interfaces.WeeklyCalendar
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.views.MyScrollView
+import com.simplemobiletools.commons.extensions.beGone
 import kotlinx.android.synthetic.main.fragment_week.*
 import kotlinx.android.synthetic.main.fragment_week.view.*
 import org.joda.time.DateTime
@@ -29,6 +30,7 @@ import kotlin.comparisons.compareBy
 
 class WeekFragment : Fragment(), WeeklyCalendar {
     val CLICK_DURATION_THRESHOLD = 150
+    val PLUS_FADEOUT_DELAY = 5000L
 
     private var mListener: WeekScrollListener? = null
     private var mWeekTimestamp = 0
@@ -172,7 +174,8 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             MotionEvent.ACTION_DOWN -> clickStartTime = System.currentTimeMillis()
             MotionEvent.ACTION_UP -> {
                 if (System.currentTimeMillis() - clickStartTime < CLICK_DURATION_THRESHOLD) {
-                    selectedGrid?.visibility = View.GONE
+                    selectedGrid?.animation?.cancel()
+                    selectedGrid?.beGone()
 
                     val rowHeight = resources.getDimension(R.dimen.weekly_view_row_height)
                     val hour = (event.y / rowHeight).toInt()
@@ -189,6 +192,9 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                                 putExtra(NEW_EVENT_START_TS, timestamp)
                                 startActivity(this)
                             }
+                        }
+                        animate().alpha(0f).setStartDelay(PLUS_FADEOUT_DELAY).withEndAction {
+                            beGone()
                         }
                     }
                 }
