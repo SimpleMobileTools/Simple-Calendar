@@ -12,6 +12,7 @@ import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.models.ListEvent
 import com.simplemobiletools.calendar.models.ListItem
 import com.simplemobiletools.calendar.models.ListSection
+import com.simplemobiletools.commons.extensions.beInvisibleIf
 import kotlinx.android.synthetic.main.event_item_day_view.view.*
 
 class EventListWidgetAdapterOld(val context: Context, val mEvents: List<ListItem>) : BaseAdapter() {
@@ -50,12 +51,10 @@ class EventListWidgetAdapterOld(val context: Context, val mEvents: List<ListItem
                 title.text = item.title
                 description?.text = item.description
                 start?.text = Formatter.getTimeFromTS(context, item.startTS)
+                end?.beInvisibleIf(item.startTS == item.endTS)
 
-                if (item.startTS == item.endTS) {
-                    end?.visibility = View.INVISIBLE
-                } else {
+                if (item.startTS != item.endTS) {
                     end?.text = Formatter.getTimeFromTS(context, item.endTS)
-                    end?.visibility = View.VISIBLE
 
                     val startCode = Formatter.getDayCodeFromTS(item.startTS)
                     val endCode = Formatter.getDayCodeFromTS(item.endTS)
@@ -71,9 +70,11 @@ class EventListWidgetAdapterOld(val context: Context, val mEvents: List<ListItem
             }
         } else {
             val item = mEvents[position] as ListSection
-            viewHolder.title.text = item.title
-            viewHolder.title.setCompoundDrawablesWithIntrinsicBounds(null, if (position == 0) null else mTopDivider, null, null)
-            viewHolder.title.setTextColor(mTextColor)
+            viewHolder.title.apply {
+                text = item.title
+                setCompoundDrawablesWithIntrinsicBounds(null, if (position == 0) null else mTopDivider, null, null)
+                setTextColor(mTextColor)
+            }
         }
 
         return view

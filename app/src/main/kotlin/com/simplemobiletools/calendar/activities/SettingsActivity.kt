@@ -179,12 +179,11 @@ class SettingsActivity : SimpleActivity() {
 
         settings_default_reminder.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, itemIndex: Int, p3: Long) {
+                settings_custom_reminder_holder.beVisibleIf(itemIndex == 2)
                 if (itemIndex == 2) {
-                    settings_custom_reminder_holder.visibility = View.VISIBLE
                     showKeyboard(custom_reminder_value)
                 } else {
                     hideKeyboard()
-                    settings_custom_reminder_holder.visibility = View.GONE
                 }
 
                 config.defaultReminderType = getDefaultReminderValue(itemIndex)

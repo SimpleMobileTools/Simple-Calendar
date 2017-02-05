@@ -26,10 +26,7 @@ import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.views.MyScrollView
 import com.simplemobiletools.commons.dialogs.FilePickerDialog
-import com.simplemobiletools.commons.extensions.checkWhatsNew
-import com.simplemobiletools.commons.extensions.hasReadStoragePermission
-import com.simplemobiletools.commons.extensions.toast
-import com.simplemobiletools.commons.extensions.updateTextColors
+import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.LICENSE_JODA
 import com.simplemobiletools.commons.helpers.LICENSE_KOTLIN
 import com.simplemobiletools.commons.helpers.LICENSE_STETHO
@@ -126,7 +123,7 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
     }
 
     private fun updateView(view: Int) {
-        calendar_fab.visibility = if (view == YEARLY_VIEW) View.GONE else View.VISIBLE
+        calendar_fab.beGoneIf(view == YEARLY_VIEW)
         mIsMonthSelected = view == MONTHLY_VIEW
         config.storedView = view
         updateViewPager()
@@ -191,8 +188,8 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
     }
 
     private fun fillMonthlyViewPager(targetDay: String) {
-        main_weekly_scrollview.visibility = View.GONE
-        calendar_fab.visibility = View.VISIBLE
+        main_weekly_scrollview.beGone()
+        calendar_fab.beVisible()
         val codes = getMonths(targetDay)
         val monthlyAdapter = MyMonthPagerAdapter(supportFragmentManager, codes, this)
 
@@ -200,9 +197,9 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
             clearOnPageChangeListeners()
             adapter = monthlyAdapter
             currentItem = codes.size / 2
-            visibility = View.VISIBLE
+            beVisible()
         }
-        calendar_event_list_holder.visibility = View.GONE
+        calendar_event_list_holder.beGone()
     }
 
     private fun getMonths(code: String): List<String> {
@@ -224,9 +221,9 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
                 mWeekScrollY = y
             }
         })
-        main_view_pager.visibility = View.GONE
-        calendar_event_list_holder.visibility = View.GONE
-        main_weekly_scrollview.visibility = View.VISIBLE
+        main_view_pager.beGone()
+        calendar_event_list_holder.beGone()
+        main_weekly_scrollview.beVisible()
 
         week_view_hours_holder.removeAllViews()
         for (i in 1..23) {
@@ -293,8 +290,8 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
     }
 
     private fun fillYearlyViewPager() {
-        main_weekly_scrollview.visibility = View.GONE
-        calendar_fab.visibility = View.GONE
+        main_weekly_scrollview.beGone()
+        calendar_fab.beGone()
         val targetYear = DateTime().toString(Formatter.YEAR_PATTERN).toInt()
         val years = getYears(targetYear)
         val yearlyAdapter = MyYearPagerAdapter(supportFragmentManager, years, this)
@@ -314,10 +311,10 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
                         title = "${getString(R.string.app_launcher_name)} - ${years[position]}"
                 }
             })
-            visibility = View.VISIBLE
+            beVisible()
         }
         title = "${getString(R.string.app_launcher_name)} - ${years[years.size / 2]}"
-        calendar_event_list_holder.visibility = View.GONE
+        calendar_event_list_holder.beGone()
     }
 
     private fun getYears(targetYear: Int): List<Int> {
@@ -350,9 +347,9 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
 
     private fun fillEventsList() {
         main_view_pager.adapter = null
-        main_view_pager.visibility = View.GONE
-        main_weekly_scrollview.visibility = View.GONE
-        calendar_event_list_holder.visibility = View.VISIBLE
+        main_view_pager.beGone()
+        main_weekly_scrollview.beGone()
+        calendar_event_list_holder.beVisible()
 
         if (mEventListFragment == null)
             mEventListFragment = EventListFragment()

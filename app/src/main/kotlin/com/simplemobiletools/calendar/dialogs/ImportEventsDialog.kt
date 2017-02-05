@@ -22,11 +22,9 @@ class ImportEventsDialog(val activity: Activity, val path: String, val callback:
 
             import_events_reminder.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, itemIndex: Int, p3: Long) {
+                    import_events_custom_reminder_holder.beVisibleIf(itemIndex == 2)
                     if (itemIndex == 2) {
-                        import_events_custom_reminder_holder.visibility = View.VISIBLE
                         activity.showKeyboard(import_events_custom_reminder_value)
-                    } else {
-                        import_events_custom_reminder_holder.visibility = View.GONE
                     }
                 }
 

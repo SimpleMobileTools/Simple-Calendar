@@ -9,12 +9,10 @@ import android.graphics.Paint
 import android.graphics.PorterDuff
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.View
 import android.widget.SeekBar
 import android.widget.TextView
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.config
-import com.simplemobiletools.calendar.extensions.removeFlag
 import com.simplemobiletools.calendar.helpers.LOW_ALPHA
 import com.simplemobiletools.calendar.helpers.MonthlyCalendarImpl
 import com.simplemobiletools.calendar.helpers.MyWidgetMonthlyProvider
@@ -22,6 +20,8 @@ import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.models.Day
 import com.simplemobiletools.commons.dialogs.ColorPickerDialog
 import com.simplemobiletools.commons.extensions.adjustAlpha
+import com.simplemobiletools.commons.extensions.beVisible
+import com.simplemobiletools.commons.extensions.removeFlag
 import kotlinx.android.synthetic.main.first_row.*
 import kotlinx.android.synthetic.main.top_navigation.*
 import kotlinx.android.synthetic.main.widget_config_monthly.*
@@ -145,13 +145,13 @@ class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
 
         if (applicationContext.config.displayWeekNumbers) {
             week_num.setTextColor(mTextColor)
-            week_num.visibility = View.VISIBLE
+            week_num.beVisible()
 
             for (i in 0..5) {
                 (findViewById(mRes.getIdentifier("week_num_$i", "id", mPackageName)) as TextView).apply {
                     text = "${mDays!![i * 7 + 3].weekOfYear}:"
                     setTextColor(mTextColor)
-                    visibility = View.VISIBLE
+                    beVisible()
                 }
             }
         }

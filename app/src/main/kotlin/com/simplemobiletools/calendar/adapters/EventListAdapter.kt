@@ -15,6 +15,7 @@ import com.simplemobiletools.calendar.models.ListEvent
 import com.simplemobiletools.calendar.models.ListItem
 import com.simplemobiletools.calendar.models.ListSection
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
+import com.simplemobiletools.commons.extensions.beInvisibleIf
 import kotlinx.android.synthetic.main.event_item_day_view.view.*
 import java.util.*
 
@@ -122,13 +123,11 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
                 event_item_title.text = item.title
                 event_item_description.text = item.description
                 event_item_start.text = Formatter.getTimeFromTS(context, item.startTS)
+                event_item_end.beInvisibleIf(item.startTS == item.endTS)
                 toggleItemSelection(this, markedItems.contains(pos), pos)
 
-                if (item.startTS == item.endTS) {
-                    event_item_end.visibility = View.INVISIBLE
-                } else {
+                if (item.startTS != item.endTS) {
                     event_item_end.text = Formatter.getTimeFromTS(context, item.endTS)
-                    event_item_end.visibility = View.VISIBLE
 
                     val startCode = Formatter.getDayCodeFromTS(item.startTS)
                     val endCode = Formatter.getDayCodeFromTS(item.endTS)

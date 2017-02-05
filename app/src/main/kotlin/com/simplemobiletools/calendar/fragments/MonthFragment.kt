@@ -17,14 +17,11 @@ import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.DayActivity
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.getAppropriateTheme
-import com.simplemobiletools.calendar.extensions.removeFlag
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.models.Day
-import com.simplemobiletools.commons.extensions.adjustAlpha
-import com.simplemobiletools.commons.extensions.beVisibleIf
-import com.simplemobiletools.commons.extensions.setupDialogStuff
+import com.simplemobiletools.commons.extensions.*
 import kotlinx.android.synthetic.main.first_row.*
 import kotlinx.android.synthetic.main.fragment_month.view.*
 import kotlinx.android.synthetic.main.top_navigation.view.*
@@ -118,7 +115,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         activity.setTheme(context.getAppropriateTheme())
         val view = getLayoutInflater(arguments).inflate(R.layout.date_picker, null)
         val datePicker = view.findViewById(R.id.date_picker) as DatePicker
-        datePicker.findViewById(Resources.getSystem().getIdentifier("day", "id", "android")).visibility = View.GONE
+        datePicker.findViewById(Resources.getSystem().getIdentifier("day", "id", "android")).beGone()
 
         val dateTime = DateTime(mCalendar.mTargetDate.toString())
         datePicker.init(dateTime.year, dateTime.monthOfYear - 1, 1, null)

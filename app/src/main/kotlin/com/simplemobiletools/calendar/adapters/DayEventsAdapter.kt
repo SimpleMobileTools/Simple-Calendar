@@ -12,6 +12,7 @@ import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
+import com.simplemobiletools.commons.extensions.beInvisibleIf
 import kotlinx.android.synthetic.main.event_item_day_view.view.*
 import java.util.*
 
@@ -105,14 +106,12 @@ class DayEventsAdapter(val activity: SimpleActivity, val mItems: List<Event>, va
                 event_item_start.setTextColor(textColor)
 
                 toggleItemSelection(this, markedItems.contains(pos), pos)
+                event_item_end.beInvisibleIf(event.startTS == event.endTS)
 
-                if (event.startTS == event.endTS) {
-                    event_item_end.visibility = View.INVISIBLE
-                } else {
+                if (event.startTS != event.endTS) {
                     event_item_end.apply {
                         text = Formatter.getTimeFromTS(context, event.endTS)
                         setTextColor(textColor)
-                        visibility = View.VISIBLE
                     }
                 }
 
