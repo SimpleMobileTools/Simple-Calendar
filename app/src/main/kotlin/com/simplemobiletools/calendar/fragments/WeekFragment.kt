@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.*
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
@@ -43,12 +44,14 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private var wasFragmentInit = false
     private var wasExtraHeightAdded = false
     private var clickStartTime = 0L
+    lateinit var inflater: LayoutInflater
 
     lateinit var mView: View
     lateinit var mCalendar: WeeklyCalendarImpl
     lateinit var mRes: Resources
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        this.inflater = inflater
         mRowHeight = (context.resources.getDimension(R.dimen.weekly_view_row_height)).toInt()
         minScrollY = mRowHeight * context.config.startWeeklyAt
         mWeekTimestamp = arguments.getInt(WEEK_START_TIMESTAMP)
@@ -70,8 +73,8 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             })
         }
 
-        (0..6).map { (LayoutInflater.from(context).inflate(R.layout.stroke_vertical_divider, mView.week_vertical_grid_holder)) }
-        (0..23).map { (LayoutInflater.from(context).inflate(R.layout.stroke_horizontal_divider, mView.week_horizontal_grid_holder)) }
+        (0..6).map { inflater.inflate(R.layout.stroke_vertical_divider, mView.week_vertical_grid_holder) }
+        (0..23).map { inflater.inflate(R.layout.stroke_horizontal_divider, mView.week_horizontal_grid_holder) }
 
         mCalendar = WeeklyCalendarImpl(this, context)
         wasFragmentInit = true
@@ -160,18 +163,26 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 .forEach {
                     activity.runOnUiThread { it.removeAllViews() }
                     it.setOnTouchListener { view, motionEvent ->
-                        checkGridClick(motionEvent)
+                        checkGridClick(motionEvent, it)
                         true
                     }
                 }
     }
 
-    private fun checkGridClick(event: MotionEvent) {
+    private fun checkGridClick(event: MotionEvent, view: ViewGroup) {
         when (event.action) {
             MotionEvent.ACTION_DOWN -> clickStartTime = System.currentTimeMillis()
             MotionEvent.ACTION_UP -> {
                 if (System.currentTimeMillis() - clickStartTime < CLICK_DURATION_THRESHOLD) {
-
+                    val rowHeight = resources.getDimension(R.dimen.weekly_view_row_height)
+                    val hour = (event.y / rowHeight).toInt()
+                    (inflater.inflate(R.layout.week_grid_item, null, false) as ImageView).apply {
+                        view.addView(this)
+                        background = ColorDrawable(primaryColor)
+                        layoutParams.width = view.width
+                        layoutParams.height = rowHeight.toInt()
+                        y = hour * rowHeight
+                    }
                 }
             }
             else -> {
@@ -204,13 +215,13 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 val startMinutes = startDateTime.minuteOfDay
                 val duration = endDateTime.minuteOfDay - startMinutes
 
-                (LayoutInflater.from(context).inflate(R.layout.week_event_marker, null, false) as TextView).apply {
+                (inflater.inflate(R.layout.week_event_marker, null, false) as TextView).apply {
                     background = ColorDrawable(primaryColor)
                     text = event.title
                     activity.runOnUiThread {
                         layout.addView(this)
+                        y = startMinutes * minuteHeight
                         (layoutParams as RelativeLayout.LayoutParams).apply {
-                            topMargin = (startMinutes * minuteHeight).toInt()
                             width = layout.width - 1
                             minHeight = if (event.startTS == event.endTS) minimalHeight else (duration * minuteHeight).toInt() - 1
                         }
@@ -242,7 +253,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     }
 
     private fun addAllDayEvent(event: Event) {
-        (LayoutInflater.from(context).inflate(R.layout.week_all_day_event_marker, null, false) as TextView).apply {
+        (inflater.inflate(R.layout.week_all_day_event_marker, null, false) as TextView).apply {
             background = ColorDrawable(primaryColor)
             text = event.title
 
