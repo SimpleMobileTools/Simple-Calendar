@@ -277,7 +277,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             val minTS = Math.max(startDateTime.withTimeAtStartOfDay().seconds(), mWeekTimestamp)
             val maxTS = Math.min(endDateTime.withTimeAtStartOfDay().seconds(), mWeekTimestamp + context.secondsInWeek)
             val startDateTimeInWeek = Formatter.getDateTimeFromTS(minTS)
-            val firstDayIndex = startDateTimeInWeek.dayOfWeek - if (context.config.isSundayFirst) 0 else 1
+            val firstDayIndex = (startDateTimeInWeek.dayOfWeek - if (context.config.isSundayFirst) 0 else 1) % 7
             val daysCnt = Days.daysBetween(Formatter.getDateTimeFromTS(minTS), Formatter.getDateTimeFromTS(maxTS)).days
 
             activity.runOnUiThread {
@@ -286,7 +286,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                     topMargin = mRes.getDimension(R.dimen.tiny_margin).toInt()
                     leftMargin = getColumnWithId(firstDayIndex).x.toInt()
                     bottomMargin = 1
-                    width = getColumnWithId(firstDayIndex + daysCnt).right - leftMargin - 1
+                    width = getColumnWithId(Math.min(firstDayIndex + daysCnt, 6)).right - leftMargin - 1
                 }
 
                 mView.week_top_holder.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
@@ -317,7 +317,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         mWasDestroyed = true
     }
 
-    private fun getColumnWithId(id: Int) = mView.findViewById(mRes.getIdentifier("week_column_$id", "id", context.packageName)) as RelativeLayout
+    private fun getColumnWithId(id: Int) = mView.findViewById(mRes.getIdentifier("week_column_$id", "id", context.packageName)) as ViewGroup
 
     fun setListener(listener: WeekScrollListener) {
         mListener = listener
