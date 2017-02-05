@@ -23,6 +23,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     private var mWasEndTimeSet = false
     private var mReminderMinutes = 0
     private var mRepeatInterval = 0
+    private var mRepeatLimit = 0
     private var mDialogTheme = 0
 
     lateinit var mEventStartDateTime: DateTime
@@ -87,6 +88,8 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         event_description.setText(mEvent.description)
         mReminderMinutes = mEvent.reminderMinutes
         mRepeatInterval = mEvent.repeatInterval
+        mRepeatLimit = mEvent.repeatLimit
+        checkRepeatLimitVisibility(mRepeatLimit)
     }
 
     private fun setupNewEvent(dateTime: DateTime) {
@@ -107,13 +110,26 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         EventRepeatIntervalDialog(this, mRepeatInterval) {
             mRepeatInterval = it
             updateRepetitionText()
-            event_repetition_limit.beGoneIf(it == 0)
-            event_repetition_limit_label.beGoneIf(it == 0)
+            checkRepeatLimitVisibility(it)
         }
     }
 
-    private fun showRepetitionLimitDialog() {
+    private fun checkRepeatLimitVisibility(limit: Int) {
+        event_repetition_limit.beGoneIf(limit == 0)
+        event_repetition_limit_label.beGoneIf(limit == 0)
+    }
 
+    private fun showRepetitionLimitDialog() {
+        val now = (System.currentTimeMillis() / 1000).toInt()
+        val repeatLimitDateTime = Formatter.getDateTimeFromTS(if (mRepeatLimit != 0) mRepeatLimit else now)
+        DatePickerDialog(this, mDialogTheme, repetitionLimitDateSetListener, repeatLimitDateTime.year, repeatLimitDateTime.monthOfYear - 1,
+                repeatLimitDateTime.dayOfMonth).show()
+    }
+
+    private val repetitionLimitDateSetListener = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+        val repeatLimitDateTime = DateTime().withDate(year, monthOfYear + 1, dayOfMonth).withTime(0, 0, 0, 0)
+        event_repetition_limit.text = Formatter.getDate(applicationContext, repeatLimitDateTime, false)
+        mRepeatLimit = repeatLimitDateTime.seconds()
     }
 
     private fun updateReminderText() {
@@ -189,6 +205,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             reminderMinutes = mReminderMinutes
             repeatInterval = mRepeatInterval
             flags = if (event_all_day.isChecked) (mEvent.flags or FLAG_ALL_DAY) else (mEvent.flags.removeFlag(FLAG_ALL_DAY))
+            repeatLimit = if (repeatInterval == 0) 0 else mRepeatLimit
         }
 
         if (mEvent.id == 0) {

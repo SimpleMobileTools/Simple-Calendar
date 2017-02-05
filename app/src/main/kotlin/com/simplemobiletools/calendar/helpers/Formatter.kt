@@ -30,14 +30,17 @@ object Formatter {
         return date
     }
 
-    fun getDayTitle(context: Context, dayCode: String): String {
+    fun getDayTitle(context: Context, dayCode: String, addDayOfWeek: Boolean = true): String {
         val date = getDateFromCode(context, dayCode)
         val dateTime = getDateTimeFromCode(dayCode)
         val day = dateTime.toString(DAY_OF_WEEK_PATTERN)
-        return "$date ($day)"
+        return if (addDayOfWeek)
+            "$date ($day)"
+        else
+            date
     }
 
-    fun getDate(context: Context, dateTime: DateTime) = getDayTitle(context, getDayCodeFromDateTime(dateTime))
+    fun getDate(context: Context, dateTime: DateTime, addDayOfWeek: Boolean = true) = getDayTitle(context, getDayCodeFromDateTime(dateTime), addDayOfWeek)
 
     fun getTime(context: Context, dateTime: DateTime) = dateTime.toString(getTimePattern(context))
 

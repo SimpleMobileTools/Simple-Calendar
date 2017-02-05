@@ -32,6 +32,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
     private val COL_REPEAT_INTERVAL = "repeat_interval"
     private val COL_REPEAT_MONTH = "repeat_month"
     private val COL_REPEAT_DAY = "repeat_day"
+    private val COL_REPEAT_LIMIT = "repeat_limit"
 
     private var mEventsListener: EventUpdateListener? = null
     private var context: Context? = null
@@ -73,12 +74,13 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
 
         if (oldVersion < 5) {
             db.execSQL("ALTER TABLE $MAIN_TABLE_NAME ADD COLUMN $COL_FLAGS INTEGER")
+            db.execSQL("ALTER TABLE $META_TABLE_NAME ADD COLUMN $COL_REPEAT_LIMIT INTEGER")
         }
     }
 
     private fun createMetaTable(db: SQLiteDatabase) {
         db.execSQL("CREATE TABLE $META_TABLE_NAME ($COL_ID INTEGER PRIMARY KEY, $COL_EVENT_ID INTEGER UNIQUE, $COL_REPEAT_START INTEGER, " +
-                "$COL_REPEAT_INTERVAL INTEGER, $COL_REPEAT_MONTH INTEGER, $COL_REPEAT_DAY INTEGER)")
+                "$COL_REPEAT_INTERVAL INTEGER, $COL_REPEAT_MONTH INTEGER, $COL_REPEAT_DAY INTEGER, $COL_REPEAT_LIMIT INTEGER)")
     }
 
     fun insert(event: Event, insertListener: (event: Event) -> Unit) {
@@ -137,6 +139,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
             put(COL_EVENT_ID, event.id)
             put(COL_REPEAT_START, event.startTS)
             put(COL_REPEAT_INTERVAL, repeatInterval)
+            put(COL_REPEAT_LIMIT, event.repeatLimit)
 
             if (repeatInterval == MONTH || repeatInterval == YEAR) {
                 put(COL_REPEAT_DAY, dateTime.dayOfMonth)
@@ -259,7 +262,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
 
     private val allColumns: Array<String>
         get() = arrayOf("$MAIN_TABLE_NAME.$COL_ID", COL_START_TS, COL_END_TS, COL_TITLE, COL_DESCRIPTION, COL_REMINDER_MINUTES, COL_REPEAT_INTERVAL,
-                COL_REPEAT_MONTH, COL_REPEAT_DAY, COL_IMPORT_ID, COL_FLAGS)
+                COL_REPEAT_MONTH, COL_REPEAT_DAY, COL_IMPORT_ID, COL_FLAGS, COL_REPEAT_LIMIT)
 
     private fun fillEvents(cursor: Cursor?): List<Event> {
         val events = ArrayList<Event>()
@@ -275,7 +278,8 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
                     val description = cursor.getStringValue(COL_DESCRIPTION)
                     val importId = cursor.getStringValue(COL_IMPORT_ID)
                     val flags = cursor.getIntValue(COL_FLAGS)
-                    events.add(Event(id, startTS, endTS, title, description, reminderMinutes, repeatInterval, importId, flags))
+                    val repeatLimit = cursor.getIntValue(COL_REPEAT_LIMIT)
+                    events.add(Event(id, startTS, endTS, title, description, reminderMinutes, repeatInterval, importId, flags, repeatLimit))
                 } while (cursor.moveToNext())
             }
         } finally {
