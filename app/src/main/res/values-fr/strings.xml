@@ -90,7 +90,6 @@
     <string name="vibrate">Vibrer à la notification de rappel</string>
     <string name="reminder_sound">Son de rappel</string>
     <string name="default_event_reminder">Rappel d\'événement par défaut</string>
-    <string name="reminder_saved">Rappel sauvegardé</string>
     <string name="notification_sound">Son de notification</string>
     <string name="no_ringtone_picker">Aucune application capable de configurer la sonnerie trouvée</string>
     <string name="no_ringtone_selected">None</string>

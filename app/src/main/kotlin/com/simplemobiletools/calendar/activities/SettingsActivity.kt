@@ -20,14 +20,11 @@ import com.google.api.client.util.ExponentialBackOff
 import com.google.api.services.calendar.CalendarScopes
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.asynctasks.FetchGoogleEventsTask
+import com.simplemobiletools.calendar.dialogs.EventReminderDialog
 import com.simplemobiletools.calendar.extensions.config
-import com.simplemobiletools.calendar.extensions.getDefaultReminderTypeIndex
-import com.simplemobiletools.calendar.extensions.getDefaultReminderValue
-import com.simplemobiletools.calendar.extensions.setupReminderPeriod
-import com.simplemobiletools.calendar.helpers.DAY_MINS
-import com.simplemobiletools.calendar.helpers.HOUR_MINS
-import com.simplemobiletools.calendar.helpers.REMINDER_CUSTOM
-import com.simplemobiletools.commons.extensions.*
+import com.simplemobiletools.calendar.extensions.getReminderText
+import com.simplemobiletools.commons.extensions.toast
+import com.simplemobiletools.commons.extensions.updateTextColors
 import kotlinx.android.synthetic.main.activity_settings.*
 
 class SettingsActivity : SimpleActivity() {
@@ -169,43 +166,15 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun setupEventReminder() {
-        val reminderType = config.defaultReminderType
-        settings_default_reminder.setSelection(getDefaultReminderTypeIndex())
-        custom_reminder_save.setTextColor(custom_reminder_other_val.currentTextColor)
-        setupReminderPeriod(custom_reminder_other_period, custom_reminder_value)
-
-        settings_custom_reminder_holder.beVisibleIf(reminderType == REMINDER_CUSTOM)
-        custom_reminder_save.setOnClickListener { saveReminder() }
-
-        settings_default_reminder.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, itemIndex: Int, p3: Long) {
-                settings_custom_reminder_holder.beVisibleIf(itemIndex == 2)
-                if (itemIndex == 2) {
-                    showKeyboard(custom_reminder_value)
-                } else {
-                    hideKeyboard()
-                }
-
-                config.defaultReminderType = getDefaultReminderValue(itemIndex)
-            }
-
-            override fun onNothingSelected(p0: AdapterView<*>?) {
+        var reminderMinutes = config.defaultReminderMinutes
+        settings_default_reminder.text = getReminderText(reminderMinutes)
+        settings_default_reminder_holder.setOnClickListener {
+            EventReminderDialog(this, reminderMinutes) {
+                config.defaultReminderMinutes = it
+                reminderMinutes = it
+                settings_default_reminder.text = getReminderText(it)
             }
         }
-    }
-
-    private fun saveReminder() {
-        val multiplier = when (custom_reminder_other_period.selectedItemPosition) {
-            1 -> HOUR_MINS
-            2 -> DAY_MINS
-            else -> 1
-        }
-
-        val value = custom_reminder_value.value
-        config.defaultReminderMinutes = Integer.valueOf(if (value.isEmpty()) "0" else value) * multiplier
-        config.defaultReminderType = REMINDER_CUSTOM
-        toast(R.string.reminder_saved)
-        hideKeyboard()
     }
 
     private fun getWeeklyAdapter(): ArrayAdapter<String> {

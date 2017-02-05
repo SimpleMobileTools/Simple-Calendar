@@ -90,7 +90,6 @@
     <string name="vibrate">リマインダー通知で振動</string>
     <string name="reminder_sound">Reminder sound</string>
     <string name="default_event_reminder">デフォルトのイベント リマインダー</string>
-    <string name="reminder_saved">リマインダーを保存しました</string>
     <string name="notification_sound">Notification sound</string>
     <string name="no_ringtone_picker">No app capable of setting ringtone found</string>
     <string name="no_ringtone_selected">None</string>

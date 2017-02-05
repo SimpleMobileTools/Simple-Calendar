@@ -90,7 +90,6 @@
     <string name="vibrate">Vibration ein bei Errinerung</string>
     <string name="reminder_sound">Erinnerungs Ton</string>
     <string name="default_event_reminder">Standard Termin Erinnerung</string>
-    <string name="reminder_saved">Erinnerung gespeichert</string>
     <string name="notification_sound">Benachrichtigungs Ton</string>
     <string name="no_ringtone_picker">No app capable of setting ringtone found</string>
     <string name="no_ringtone_selected">Kein Klingelton gewählt</string>

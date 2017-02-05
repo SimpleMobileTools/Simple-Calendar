@@ -90,7 +90,6 @@
     <string name="vibrate">Вибрация при напоминании</string>
     <string name="reminder_sound">Звук напоминания</string>
     <string name="default_event_reminder">Напоминание для событий по умолчанию</string>
-    <string name="reminder_saved">Напоминание сохранено</string>
     <string name="notification_sound">Звук уведомления</string>
     <string name="no_ringtone_picker">Не найдено приложение для выбора рингтона</string>
     <string name="no_ringtone_selected">Нет</string>

@@ -90,7 +90,6 @@
     <string name="vibrate">רטט בהתראת תזכורת</string>
     <string name="reminder_sound">צליל תזכורת</string>
     <string name="default_event_reminder">תזכורת קבועה לאירוע</string>
-    <string name="reminder_saved">התזכורת נשמרה</string>
     <string name="notification_sound">צליל התראה</string>
     <string name="no_ringtone_picker">לא נמצאה אפליקציה להגדרת רינגטון</string>
     <string name="no_ringtone_selected">ללא</string>

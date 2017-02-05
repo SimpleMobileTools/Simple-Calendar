@@ -90,7 +90,6 @@
     <string name="vibrate">Vibrar ao notificar sobre o lembrete</string>
     <string name="reminder_sound">Som do lembrete</string>
     <string name="default_event_reminder">Lembrete padrão</string>
-    <string name="reminder_saved">Lembrete guardado</string>
     <string name="notification_sound">Som da notificação</string>
     <string name="no_ringtone_picker">Não foi encontrada qualquer aplicação capaz de definir o som</string>
     <string name="no_ringtone_selected">Nenhum</string>

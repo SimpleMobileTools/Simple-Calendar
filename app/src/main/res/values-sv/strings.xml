@@ -90,7 +90,6 @@
     <string name="vibrate">Vibrera vid påminnelseaviseringen</string>
     <string name="reminder_sound">Påminnelseljud</string>
     <string name="default_event_reminder">Standard händelsepåminnare</string>
-    <string name="reminder_saved">Påminnelse sparad</string>
     <string name="notification_sound">Aviseringsljud</string>
     <string name="no_ringtone_picker">Hittade ingen app som kan ställa in ljudet</string>
     <string name="no_ringtone_selected">Ingen</string>

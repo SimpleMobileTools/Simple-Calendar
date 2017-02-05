@@ -109,14 +109,6 @@ fun Context.getDefaultReminderTypeIndex(): Int {
     }
 }
 
-fun Context.getDefaultReminderValue(index: Int): Int {
-    return when (index) {
-        0 -> REMINDER_OFF
-        1 -> REMINDER_AT_START
-        else -> REMINDER_CUSTOM
-    }
-}
-
 fun Context.setupReminderPeriod(otherPeriod: AppCompatSpinner, otherValue: EditText) {
     val mins = config.defaultReminderMinutes
     var value = mins

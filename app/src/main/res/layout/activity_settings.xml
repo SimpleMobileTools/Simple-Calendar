@@ -211,10 +211,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/medium_margin"
-            android:paddingBottom="@dimen/activity_margin"
+            android:paddingBottom="@dimen/bigger_margin"
             android:paddingLeft="@dimen/activity_margin"
-            android:paddingRight="@dimen/medium_margin"
-            android:paddingTop="@dimen/activity_margin">
+            android:paddingRight="@dimen/activity_margin"
+            android:paddingTop="@dimen/bigger_margin">
 
             <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/settings_default_reminder_label"
@@ -227,70 +227,17 @@
                 android:paddingRight="@dimen/medium_margin"
                 android:text="@string/default_event_reminder"/>
 
-            <com.simplemobiletools.commons.views.MyAppCompatSpinner
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/settings_default_reminder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:entries="@array/reminders"/>
+                android:layout_marginEnd="@dimen/small_margin"
+                android:layout_marginRight="@dimen/small_margin"
+                android:background="@null"
+                android:clickable="false"/>
 
         </RelativeLayout>
-
-        <LinearLayout
-            android:id="@+id/settings_custom_reminder_holder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/activity_margin"
-            android:orientation="horizontal"
-            android:visibility="gone">
-
-            <com.simplemobiletools.commons.views.MyEditText
-                android:id="@+id/custom_reminder_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/activity_margin"
-                android:layout_marginLeft="@dimen/activity_margin"
-                android:layout_marginRight="@dimen/activity_margin"
-                android:digits="0123456789"
-                android:ems="3"
-                android:inputType="number"
-                android:maxLength="4"
-                android:textCursorDrawable="@null"
-                android:textSize="@dimen/day_text_size"/>
-
-            <com.simplemobiletools.commons.views.MyAppCompatSpinner
-                android:id="@+id/custom_reminder_other_period"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:entries="@array/custom_reminders"
-                android:gravity="center"/>
-
-            <com.simplemobiletools.commons.views.MyTextView
-                android:id="@+id/custom_reminder_other_val"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="@string/before"/>
-
-            <android.support.v4.widget.Space
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-
-            <com.simplemobiletools.commons.views.MyTextView
-                android:id="@+id/custom_reminder_save"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="?attr/selectableItemBackground"
-                android:paddingBottom="@dimen/normal_margin"
-                android:paddingLeft="@dimen/big_margin"
-                android:paddingRight="@dimen/big_margin"
-                android:paddingTop="@dimen/normal_margin"
-                android:text="@string/save"
-                android:textAllCaps="true"
-                android:textSize="@dimen/bigger_text_size"/>
-
-        </LinearLayout>
     </LinearLayout>
 </ScrollView>

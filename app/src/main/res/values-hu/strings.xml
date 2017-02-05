@@ -90,7 +90,6 @@
     <string name="vibrate">Emlékeztetőnél rezgés</string>
     <string name="reminder_sound">Reminder sound</string>
     <string name="default_event_reminder">Alapértelmezett emlékeztetés</string>
-    <string name="reminder_saved">Emlékeztető elmentve</string>
     <string name="notification_sound">Notification sound</string>
     <string name="no_ringtone_picker">No app capable of setting ringtone found</string>
     <string name="no_ringtone_selected">None</string>
