@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 2.1.4 *(2017-02-05)*
+----------------------------
+
+ * Added support for all-day long events
+ * Improved support for importing .ics files
+ * Many UI changes here and there
+
 Version 2.1.3 *(2017-01-26)*
 ----------------------------
 
