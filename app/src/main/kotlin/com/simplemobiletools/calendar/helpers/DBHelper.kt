@@ -218,7 +218,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
         val selection = "$COL_REPEAT_INTERVAL != 0 AND $COL_START_TS < $toTS"
         val events = getEvents(selection)
         for (e in events) {
-            while (e.startTS < toTS) {
+            while (e.startTS < toTS && (e.repeatLimit == 0 || e.repeatLimit > e.endTS)) {
                 if (e.startTS > fromTS) {
                     val newEvent = Event(e.id, e.startTS, e.endTS, e.title, e.description, e.reminderMinutes, e.repeatInterval, e.importId, e.flags)
                     newEvents.add(newEvent)

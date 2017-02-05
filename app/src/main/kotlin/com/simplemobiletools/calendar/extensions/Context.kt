@@ -55,7 +55,7 @@ fun Context.scheduleNextEvent(event: Event) {
         newTS = getNewTS(startTS, false)
     }
 
-    if (newTS != 0)
+    if (newTS != 0 && (event.repeatLimit == 0 || event.repeatLimit > newTS))
         scheduleEventIn(newTS, event)
 }
 
