@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:ellipsize="end"
-    android:maxLines="2"
+    android:maxLines="3"
     android:paddingLeft="@dimen/tiny_margin"
     android:paddingRight="@dimen/tiny_margin"
     android:textColor="@android:color/white"
