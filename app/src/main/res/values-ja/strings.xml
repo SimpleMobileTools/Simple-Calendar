@@ -35,6 +35,8 @@
     <string name="biweekly">隔週</string>
     <string name="monthly">毎月</string>
     <string name="yearly">毎年</string>
+    <string name="repeat_till">Repeat till:</string>
+    <string name="forever">Forever</string>
 
     <!-- Event Reminders -->
     <string name="select_event_reminder">Select an event reminder</string>

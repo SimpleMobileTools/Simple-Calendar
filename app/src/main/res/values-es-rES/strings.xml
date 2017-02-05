@@ -35,6 +35,8 @@
     <string name="biweekly">Quincenal</string>
     <string name="monthly">Mensual</string>
     <string name="yearly">Anual</string>
+    <string name="repeat_till">Repeat till:</string>
+    <string name="forever">Forever</string>
 
     <!-- Event Reminders -->
     <string name="select_event_reminder">Select an event reminder</string>

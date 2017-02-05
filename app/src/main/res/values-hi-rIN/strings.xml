@@ -35,6 +35,8 @@
     <string name="biweekly">हर दो सफ्ताह</string>
     <string name="monthly">मासिक</string>
     <string name="yearly">वार्षिक</string>
+    <string name="repeat_till">Repeat till:</string>
+    <string name="forever">Forever</string>
 
     <!-- Event Reminders -->
     <string name="select_event_reminder">Select an event reminder</string>

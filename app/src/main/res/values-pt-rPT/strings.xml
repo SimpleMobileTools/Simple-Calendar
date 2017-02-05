@@ -35,6 +35,8 @@
     <string name="biweekly">Bissemanal</string>
     <string name="monthly">Mensal</string>
     <string name="yearly">Anual</string>
+    <string name="repeat_till">Repeat till:</string>
+    <string name="forever">Forever</string>
 
     <!-- Event Reminders -->
     <string name="select_event_reminder">Selecione um lembrete</string>

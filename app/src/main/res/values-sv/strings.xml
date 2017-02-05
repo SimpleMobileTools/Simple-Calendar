@@ -35,6 +35,8 @@
     <string name="biweekly">Varannan vecka</string>
     <string name="monthly">Månadsvis</string>
     <string name="yearly">Årligen</string>
+    <string name="repeat_till">Repeat till:</string>
+    <string name="forever">Forever</string>
 
     <!-- Event Reminders -->
     <string name="select_event_reminder">Select an event reminder</string>

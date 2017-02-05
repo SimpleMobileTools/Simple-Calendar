@@ -35,6 +35,8 @@
     <string name="biweekly">Kéthetente</string>
     <string name="monthly">Havonta</string>
     <string name="yearly">Évente</string>
+    <string name="repeat_till">Repeat till:</string>
+    <string name="forever">Forever</string>
 
     <!-- Event Reminders -->
     <string name="select_event_reminder">Select an event reminder</string>
