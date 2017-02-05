@@ -86,7 +86,7 @@ class IcsParser {
                 curFlags = curFlags or FLAG_ALL_DAY
                 val value = fullString.substring(fullString.lastIndexOf(':') + 1)
                 val dateTimeFormat = DateTimeFormat.forPattern("yyyyMMdd")
-                return dateTimeFormat.parseDateTime(value).seconds()
+                return dateTimeFormat.parseDateTime(value).withHourOfDay(1).seconds()
             } else {
                 val digitString = fullString.substring(1).replace("T", "").replace("Z", "")
                 val dateTimeFormat = DateTimeFormat.forPattern("yyyyMMddHHmmss")
