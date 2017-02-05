@@ -114,7 +114,3 @@ fun Context.getReminderText(minutes: Int) = when (minutes) {
 fun Context.getNewEventTimestampFromCode(dayCode: String) = Formatter.getLocalDateTimeFromCode(dayCode).withTime(13, 0, 0, 0).seconds()
 
 val Context.config: Config get() = Config.newInstance(this)
-
-val Context.secondsInDay: Int get() = 24 * 60 * 60
-
-val Context.secondsInWeek: Int get() = 7 * secondsInDay

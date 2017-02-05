@@ -15,8 +15,6 @@ import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.activities.MainActivity
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.seconds
-import com.simplemobiletools.calendar.extensions.secondsInDay
-import com.simplemobiletools.calendar.extensions.secondsInWeek
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.interfaces.WeeklyCalendar
 import com.simplemobiletools.calendar.models.Event
@@ -187,7 +185,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                         y = hour * rowHeight
 
                         setOnClickListener {
-                            val timestamp = mWeekTimestamp + index * context.secondsInDay + hour * 60 * 60
+                            val timestamp = mWeekTimestamp + index * DAY_SECONDS + hour * 60 * 60
                             Intent(context, EventActivity::class.java).apply {
                                 putExtra(NEW_EVENT_START_TS, timestamp)
                                 startActivity(this)
@@ -275,7 +273,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             val endDateTime = Formatter.getDateTimeFromTS(event.endTS)
 
             val minTS = Math.max(startDateTime.withTimeAtStartOfDay().seconds(), mWeekTimestamp)
-            val maxTS = Math.min(endDateTime.withTimeAtStartOfDay().seconds(), mWeekTimestamp + context.secondsInWeek)
+            val maxTS = Math.min(endDateTime.withTimeAtStartOfDay().seconds(), mWeekTimestamp + WEEK_SECONDS)
             val startDateTimeInWeek = Formatter.getDateTimeFromTS(minTS)
             val firstDayIndex = (startDateTimeInWeek.dayOfWeek - if (context.config.isSundayFirst) 0 else 1) % 7
             val daysCnt = Days.daysBetween(Formatter.getDateTimeFromTS(minTS), Formatter.getDateTimeFromTS(maxTS)).days

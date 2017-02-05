@@ -19,7 +19,10 @@ import com.simplemobiletools.calendar.adapters.MyWeekPagerAdapter
 import com.simplemobiletools.calendar.adapters.MyYearPagerAdapter
 import com.simplemobiletools.calendar.dialogs.ChangeViewDialog
 import com.simplemobiletools.calendar.dialogs.ImportEventsDialog
-import com.simplemobiletools.calendar.extensions.*
+import com.simplemobiletools.calendar.extensions.config
+import com.simplemobiletools.calendar.extensions.getNewEventTimestampFromCode
+import com.simplemobiletools.calendar.extensions.seconds
+import com.simplemobiletools.calendar.extensions.updateWidgets
 import com.simplemobiletools.calendar.fragments.EventListFragment
 import com.simplemobiletools.calendar.fragments.WeekFragment
 import com.simplemobiletools.calendar.helpers.*
@@ -268,14 +271,14 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
     private fun getWeekTimestamps(targetWeekTS: Int): List<Int> {
         val weekTSs = ArrayList<Int>(PREFILLED_WEEKS)
         for (i in -PREFILLED_WEEKS / 2..PREFILLED_WEEKS / 2) {
-            weekTSs.add(targetWeekTS + i * secondsInWeek)
+            weekTSs.add(targetWeekTS + i * WEEK_SECONDS)
         }
         return weekTSs
     }
 
     private fun setupActionbarTitle(timestamp: Int) {
         val startDateTime = Formatter.getDateTimeFromTS(timestamp)
-        val endDateTime = Formatter.getDateTimeFromTS(timestamp + secondsInWeek)
+        val endDateTime = Formatter.getDateTimeFromTS(timestamp + WEEK_SECONDS)
         val startMonthName = Formatter.getMonthName(this, startDateTime.monthOfYear)
         if (startDateTime.monthOfYear == endDateTime.monthOfYear) {
             var newTitle = startMonthName

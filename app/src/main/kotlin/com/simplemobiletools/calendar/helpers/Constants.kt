@@ -24,6 +24,9 @@ val BIWEEK = 1209600
 val MONTH = 2592000    // exact value not taken into account, Joda is used for adding months and years
 val YEAR = 31536000
 
+val DAY_SECONDS = 24 * 60 * 60
+val WEEK_SECONDS = 7 * DAY_SECONDS
+
 // Shared Preferences
 val SUNDAY_FIRST = "sunday_first"
 val WEEK_NUMBERS = "week_numbers"
