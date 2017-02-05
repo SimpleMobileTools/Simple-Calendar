@@ -93,11 +93,13 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
             val reminder = getReminder(googleEvent.reminders)
             val recurrence = getRecurrence(googleEvent.recurrence)
             val start = googleEvent.start
+            val end = googleEvent.end
             if (start.date != null) {
-                val startTS = DateTime(start.date).seconds()
+                val startTS = DateTime(start.date).withHourOfDay(1).seconds()
+                val endTS = DateTime(end.date).withHourOfDay(1).seconds()
             } else {
                 val startTS = DateTime(start.dateTime).seconds()
-                val endTS = DateTime(googleEvent.end.dateTime).seconds()
+                val endTS = DateTime(end.dateTime).seconds()
             }
         }
         return events
