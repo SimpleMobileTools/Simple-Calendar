@@ -89,7 +89,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         mReminderMinutes = mEvent.reminderMinutes
         mRepeatInterval = mEvent.repeatInterval
         mRepeatLimit = mEvent.repeatLimit
-        checkRepeatLimitVisibility(mRepeatInterval)
+        checkRepeatLimit(mRepeatInterval)
     }
 
     private fun setupNewEvent(dateTime: DateTime) {
@@ -110,13 +110,14 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         EventRepeatIntervalDialog(this, mRepeatInterval) {
             mRepeatInterval = it
             updateRepetitionText()
-            checkRepeatLimitVisibility(it)
+            checkRepeatLimit(it)
         }
     }
 
-    private fun checkRepeatLimitVisibility(limit: Int) {
+    private fun checkRepeatLimit(limit: Int) {
         event_repetition_limit.beGoneIf(limit == 0)
         event_repetition_limit_label.beGoneIf(limit == 0)
+        checkRepetitionLimitText()
     }
 
     private fun showRepetitionLimitDialog() {
@@ -129,11 +130,19 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     private val repetitionLimitDateSetListener = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
         val repeatLimitDateTime = DateTime().withDate(year, monthOfYear + 1, dayOfMonth).withTime(0, 0, 0, 0)
         if (repeatLimitDateTime.seconds() < mEvent.endTS) {
-            event_repetition_limit.text = resources.getString(R.string.forever)
             mRepeatLimit = 0
         } else {
-            event_repetition_limit.text = Formatter.getDate(applicationContext, repeatLimitDateTime, false)
             mRepeatLimit = repeatLimitDateTime.seconds()
+        }
+        checkRepetitionLimitText()
+    }
+
+    private fun checkRepetitionLimitText() {
+        event_repetition_limit.text = if (mRepeatLimit == 0) {
+            resources.getString(R.string.forever)
+        } else {
+            val repeatLimitDateTime = Formatter.getDateTimeFromTS(mRepeatLimit)
+            Formatter.getDate(applicationContext, repeatLimitDateTime, false)
         }
     }
 
