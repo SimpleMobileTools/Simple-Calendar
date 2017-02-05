@@ -29,6 +29,7 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
     var events: List<ListItem> = ArrayList()
     val textColor: Int = context.config.widgetTextColor
     var todayDate = ""
+    val allDayString = context.resources.getString(R.string.all_day)
 
     override fun getViewAt(position: Int): RemoteViews {
         val type = getItemViewType(position)
@@ -39,7 +40,7 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
             remoteView = RemoteViews(context.packageName, R.layout.event_list_item_widget).apply {
                 setTextViewText(R.id.event_item_title, item.title)
                 setTextViewText(R.id.event_item_description, item.description)
-                setTextViewText(R.id.event_item_start, Formatter.getTimeFromTS(context, item.startTS))
+                setTextViewText(R.id.event_item_start, if (item.isAllDay) allDayString else Formatter.getTimeFromTS(context, item.startTS))
 
                 if (item.startTS == item.endTS) {
                     setViewVisibility(R.id.event_item_end, View.INVISIBLE)
@@ -48,8 +49,15 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
                     var endString = Formatter.getTimeFromTS(context, item.endTS)
                     val startCode = Formatter.getDayCodeFromTS(item.startTS)
                     val endCode = Formatter.getDayCodeFromTS(item.endTS)
+
                     if (startCode != endCode) {
-                        endString += " (${Formatter.getDate(context, endCode)})"
+                        if (item.isAllDay) {
+                            endString = Formatter.getDateFromCode(context, endCode, true)
+                        } else {
+                            endString += " (${Formatter.getDateFromCode(context, endCode, true)})"
+                        }
+                    } else if (item.isAllDay) {
+                        setViewVisibility(R.id.event_item_end, View.INVISIBLE)
                     }
                     setTextViewText(R.id.event_item_end, endString)
                 }
@@ -112,7 +120,7 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
                         listItems.add(ListSection(day))
                         prevCode = code
                     }
-                    listItems.add(ListEvent(it.id, it.startTS, it.endTS, it.title, it.description))
+                    listItems.add(ListEvent(it.id, it.startTS, it.endTS, it.title, it.description, it.isAllDay()))
                 }
 
                 this@EventListWidgetAdapter.events = listItems

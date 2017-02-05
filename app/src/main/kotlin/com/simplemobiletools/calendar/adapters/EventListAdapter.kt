@@ -15,8 +15,9 @@ import com.simplemobiletools.calendar.models.ListEvent
 import com.simplemobiletools.calendar.models.ListItem
 import com.simplemobiletools.calendar.models.ListSection
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
+import com.simplemobiletools.commons.extensions.beInvisible
 import com.simplemobiletools.commons.extensions.beInvisibleIf
-import kotlinx.android.synthetic.main.event_item_day_view.view.*
+import kotlinx.android.synthetic.main.event_list_item.view.*
 import java.util.*
 
 class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>, val listener: EventListAdapter.ItemOperationsListener?, val itemClick: (Int) -> Unit) :
@@ -36,6 +37,7 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
         var primaryColor = 0
         var textColor = 0
         var todayDate = ""
+        var allDayString = ""
 
         fun toggleItemSelection(itemView: View, select: Boolean, pos: Int = -1) {
             itemView.event_item_frame.isSelected = select
@@ -50,8 +52,10 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
     }
 
     init {
+        val res = activity.resources
+        allDayString = res.getString(R.string.all_day)
+        topDivider = res.getDrawable(R.drawable.divider_width)
         textColor = activity.config.textColor
-        topDivider = activity.resources.getDrawable(R.drawable.divider_width)
         primaryColor = activity.config.primaryColor
         val mTodayCode = Formatter.getDayCodeFromTS(mNow)
         todayDate = Formatter.getDayTitle(activity, mTodayCode)
@@ -123,7 +127,7 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
             itemView.apply {
                 event_item_title.text = item.title
                 event_item_description.text = item.description
-                event_item_start.text = Formatter.getTimeFromTS(context, item.startTS)
+                event_item_start.text = if (item.isAllDay) allDayString else Formatter.getTimeFromTS(context, item.startTS)
                 event_item_end.beInvisibleIf(item.startTS == item.endTS)
                 toggleItemSelection(this, markedItems.contains(pos), pos)
 
@@ -132,8 +136,15 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
 
                     val startCode = Formatter.getDayCodeFromTS(item.startTS)
                     val endCode = Formatter.getDayCodeFromTS(item.endTS)
+
                     if (startCode != endCode) {
-                        event_item_end.append(" (${Formatter.getDate(context, endCode)})")
+                        if (item.isAllDay) {
+                            event_item_end.text = Formatter.getDateFromCode(context, endCode, true)
+                        } else {
+                            event_item_end.append(" (${Formatter.getDateFromCode(context, endCode, true)})")
+                        }
+                    } else if (item.isAllDay) {
+                        event_item_end.beInvisible()
                     }
                 }
 

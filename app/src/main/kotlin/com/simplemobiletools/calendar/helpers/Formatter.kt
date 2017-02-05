@@ -16,12 +16,14 @@ object Formatter {
     private val PATTERN_TIME_12 = "hh:mm a"
     private val PATTERN_TIME_24 = "kk:mm"
 
-    fun getDate(context: Context, dayCode: String): String {
+    fun getDateFromCode(context: Context, dayCode: String, shortMonth: Boolean = false): String {
         val dateTime = getDateTimeFromCode(dayCode)
         val day = dateTime.toString(DAY_PATTERN)
         val year = dateTime.toString(YEAR_PATTERN)
         val monthIndex = Integer.valueOf(dayCode.substring(4, 6))!!
-        val month = getMonthName(context, monthIndex)
+        var month = getMonthName(context, monthIndex)
+        if (shortMonth)
+           month = month.substring(0, Math.min(month.length, 3))
         var date = "$month $day"
         if (year != DateTime().toString(YEAR_PATTERN))
             date += " $year"
@@ -29,7 +31,7 @@ object Formatter {
     }
 
     fun getDayTitle(context: Context, dayCode: String): String {
-        val date = getDate(context, dayCode)
+        val date = getDateFromCode(context, dayCode)
         val dateTime = getDateTimeFromCode(dayCode)
         val day = dateTime.toString(DAY_OF_WEEK_PATTERN)
         return "$date ($day)"

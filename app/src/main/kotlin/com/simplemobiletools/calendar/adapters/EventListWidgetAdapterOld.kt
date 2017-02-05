@@ -13,7 +13,7 @@ import com.simplemobiletools.calendar.models.ListEvent
 import com.simplemobiletools.calendar.models.ListItem
 import com.simplemobiletools.calendar.models.ListSection
 import com.simplemobiletools.commons.extensions.beInvisibleIf
-import kotlinx.android.synthetic.main.event_item_day_view.view.*
+import kotlinx.android.synthetic.main.event_list_item_widget.view.*
 
 class EventListWidgetAdapterOld(val context: Context, val mEvents: List<ListItem>) : BaseAdapter() {
     val ITEM_EVENT = 0
@@ -59,7 +59,7 @@ class EventListWidgetAdapterOld(val context: Context, val mEvents: List<ListItem
                     val startCode = Formatter.getDayCodeFromTS(item.startTS)
                     val endCode = Formatter.getDayCodeFromTS(item.endTS)
                     if (startCode != endCode) {
-                        end?.append(" (${Formatter.getDate(context, endCode)})")
+                        end?.append(" (${Formatter.getDateFromCode(context, endCode)})")
                     }
                 }
 
