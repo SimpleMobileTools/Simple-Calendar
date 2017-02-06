@@ -42,7 +42,7 @@ fun Context.updateListWidget() {
 }
 
 fun Context.scheduleNextEvent(event: Event) {
-    var startTS = event.startTS - event.reminderMinutes * 60
+    var startTS = event.startTS - event.reminder1Minutes * 60
     var newTS = startTS
     if (event.repeatInterval == DAY || event.repeatInterval == WEEK || event.repeatInterval == BIWEEK) {
         while (startTS < System.currentTimeMillis() / 1000 + 5) {
@@ -68,7 +68,7 @@ private fun getNewTS(ts: Int, isMonthly: Boolean): Int {
 }
 
 fun Context.scheduleNotification(event: Event) {
-    if (event.reminderMinutes == REMINDER_OFF)
+    if (event.reminder1Minutes == REMINDER_OFF && event.reminder2Minutes == REMINDER_OFF && event.reminder3Minutes == REMINDER_OFF)
         return
 
     scheduleNextEvent(event)

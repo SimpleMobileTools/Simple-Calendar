@@ -15,6 +15,7 @@ import com.simplemobiletools.calendar.extensions.updateListWidget
 import com.simplemobiletools.calendar.helpers.DBHelper
 import com.simplemobiletools.calendar.helpers.EVENT_ID
 import com.simplemobiletools.calendar.helpers.Formatter
+import com.simplemobiletools.calendar.helpers.REMINDER_OFF
 import com.simplemobiletools.calendar.models.Event
 
 class NotificationReceiver : BroadcastReceiver() {
@@ -26,7 +27,7 @@ class NotificationReceiver : BroadcastReceiver() {
             return
 
         val event = DBHelper(context).getEvent(id)
-        if (event == null || event.reminderMinutes == -1)
+        if (event == null || (event.reminder1Minutes == REMINDER_OFF && event.reminder2Minutes == REMINDER_OFF && event.reminder3Minutes == REMINDER_OFF))
             return
 
         val pendingIntent = getPendingIntent(context, event)

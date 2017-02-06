@@ -9,7 +9,8 @@
     <RelativeLayout
         android:id="@+id/event_holder"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/medium_margin">
 
         <com.simplemobiletools.commons.views.MyEditText
             android:id="@+id/event_title"
@@ -149,8 +150,8 @@
             android:id="@+id/event_reminder_image"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_alignBottom="@+id/event_reminder"
-            android:layout_alignTop="@+id/event_reminder"
+            android:layout_alignBottom="@+id/event_reminder_1"
+            android:layout_alignTop="@+id/event_reminder_1"
             android:layout_below="@+id/event_date_time_divider"
             android:layout_marginLeft="@dimen/normal_margin"
             android:layout_marginStart="@dimen/normal_margin"
@@ -159,7 +160,7 @@
             android:src="@drawable/ic_bell"/>
 
         <com.simplemobiletools.commons.views.MyTextView
-            android:id="@+id/event_reminder"
+            android:id="@+id/event_reminder_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_date_time_divider"
@@ -172,11 +173,41 @@
             android:paddingTop="@dimen/normal_margin"
             android:textSize="@dimen/day_text_size"/>
 
+        <com.simplemobiletools.commons.views.MyTextView
+            android:id="@+id/event_reminder_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/event_reminder_1"
+            android:layout_alignStart="@+id/event_reminder_1"
+            android:layout_below="@+id/event_reminder_1"
+            android:alpha="0.4"
+            android:background="?attr/selectableItemBackground"
+            android:paddingBottom="@dimen/normal_margin"
+            android:paddingTop="@dimen/normal_margin"
+            android:text="@string/add_another_reminder"
+            android:textSize="@dimen/day_text_size"
+            android:visibility="gone"/>
+
+        <com.simplemobiletools.commons.views.MyTextView
+            android:id="@+id/event_reminder_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/event_reminder_1"
+            android:layout_alignStart="@+id/event_reminder_1"
+            android:layout_below="@+id/event_reminder_2"
+            android:alpha="0.4"
+            android:background="?attr/selectableItemBackground"
+            android:paddingBottom="@dimen/normal_margin"
+            android:paddingTop="@dimen/normal_margin"
+            android:text="@string/add_another_reminder"
+            android:textSize="@dimen/day_text_size"
+            android:visibility="gone"/>
+
         <ImageView
             android:id="@+id/event_reminder_divider"
             android:layout_width="match_parent"
             android:layout_height="1px"
-            android:layout_below="@+id/event_reminder"
+            android:layout_below="@+id/event_reminder_3"
             android:layout_marginBottom="@dimen/medium_margin"
             android:layout_marginTop="@dimen/medium_margin"
             android:background="@color/darker_divider"/>

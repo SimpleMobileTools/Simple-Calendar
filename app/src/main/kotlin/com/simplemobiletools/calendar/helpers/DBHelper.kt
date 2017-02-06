@@ -23,6 +23,8 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
     private val COL_TITLE = "title"
     private val COL_DESCRIPTION = "description"
     private val COL_REMINDER_MINUTES = "reminder_minutes"
+    private val COL_REMINDER_MINUTES_2 = "reminder_minutes_2"
+    private val COL_REMINDER_MINUTES_3 = "reminder_minutes_3"
     private val COL_IMPORT_ID = "import_id"
     private val COL_FLAGS = "flags"
 
@@ -39,7 +41,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
 
     companion object {
         private val DB_NAME = "events.db"
-        private val DB_VERSION = 5
+        private val DB_VERSION = 6
         lateinit private var mDb: SQLiteDatabase
     }
 
@@ -54,7 +56,8 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
 
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL("CREATE TABLE $MAIN_TABLE_NAME ($COL_ID INTEGER PRIMARY KEY, $COL_START_TS INTEGER, $COL_END_TS INTEGER, $COL_TITLE TEXT, " +
-                "$COL_DESCRIPTION TEXT, $COL_REMINDER_MINUTES INTEGER, $COL_IMPORT_ID TEXT, $COL_FLAGS INTEGER)")
+                "$COL_DESCRIPTION TEXT, $COL_REMINDER_MINUTES INTEGER, $COL_REMINDER_MINUTES_2 INTEGER, $COL_REMINDER_MINUTES_3 INTEGER, " +
+                "$COL_IMPORT_ID TEXT, $COL_FLAGS INTEGER)")
 
         createMetaTable(db)
     }
@@ -75,6 +78,11 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
         if (oldVersion < 5) {
             db.execSQL("ALTER TABLE $MAIN_TABLE_NAME ADD COLUMN $COL_FLAGS INTEGER NOT NULL DEFAULT 0")
             db.execSQL("ALTER TABLE $META_TABLE_NAME ADD COLUMN $COL_REPEAT_LIMIT INTEGER NOT NULL DEFAULT 0")
+        }
+
+        if (oldVersion < 6) {
+            db.execSQL("ALTER TABLE $MAIN_TABLE_NAME ADD COLUMN $COL_REMINDER_MINUTES_2 INTEGER NOT NULL DEFAULT -1")
+            db.execSQL("ALTER TABLE $MAIN_TABLE_NAME ADD COLUMN $COL_REMINDER_MINUTES_3 INTEGER NOT NULL DEFAULT -1")
         }
     }
 
@@ -125,7 +133,9 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
             put(COL_END_TS, event.endTS)
             put(COL_TITLE, event.title)
             put(COL_DESCRIPTION, event.description)
-            put(COL_REMINDER_MINUTES, event.reminderMinutes)
+            put(COL_REMINDER_MINUTES, event.reminder1Minutes)
+            put(COL_REMINDER_MINUTES_2, event.reminder2Minutes)
+            put(COL_REMINDER_MINUTES_3, event.reminder3Minutes)
             put(COL_IMPORT_ID, event.importId)
             put(COL_FLAGS, event.flags)
         }
@@ -220,7 +230,8 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
         for (e in events) {
             while (e.startTS < toTS && (e.repeatLimit == 0 || e.repeatLimit > e.endTS)) {
                 if (e.startTS > fromTS) {
-                    val newEvent = Event(e.id, e.startTS, e.endTS, e.title, e.description, e.reminderMinutes, e.repeatInterval, e.importId, e.flags)
+                    val newEvent = Event(e.id, e.startTS, e.endTS, e.title, e.description, e.reminder1Minutes, e.reminder2Minutes, e.reminder3Minutes,
+                            e.repeatInterval, e.importId, e.flags)
                     newEvents.add(newEvent)
                 }
                 e.addIntervalTime()
@@ -261,8 +272,8 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
     }
 
     private val allColumns: Array<String>
-        get() = arrayOf("$MAIN_TABLE_NAME.$COL_ID", COL_START_TS, COL_END_TS, COL_TITLE, COL_DESCRIPTION, COL_REMINDER_MINUTES, COL_REPEAT_INTERVAL,
-                COL_REPEAT_MONTH, COL_REPEAT_DAY, COL_IMPORT_ID, COL_FLAGS, COL_REPEAT_LIMIT)
+        get() = arrayOf("$MAIN_TABLE_NAME.$COL_ID", COL_START_TS, COL_END_TS, COL_TITLE, COL_DESCRIPTION, COL_REMINDER_MINUTES, COL_REMINDER_MINUTES_2,
+                COL_REMINDER_MINUTES_3, COL_REPEAT_INTERVAL, COL_REPEAT_MONTH, COL_REPEAT_DAY, COL_IMPORT_ID, COL_FLAGS, COL_REPEAT_LIMIT)
 
     private fun fillEvents(cursor: Cursor?): List<Event> {
         val events = ArrayList<Event>()
@@ -272,14 +283,17 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
                     val id = cursor.getIntValue(COL_ID)
                     val startTS = cursor.getIntValue(COL_START_TS)
                     val endTS = cursor.getIntValue(COL_END_TS)
-                    val reminderMinutes = cursor.getIntValue(COL_REMINDER_MINUTES)
+                    val reminder1Minutes = cursor.getIntValue(COL_REMINDER_MINUTES)
+                    val reminder2Minutes = cursor.getIntValue(COL_REMINDER_MINUTES_2)
+                    val reminder3Minutes = cursor.getIntValue(COL_REMINDER_MINUTES_3)
                     val repeatInterval = cursor.getIntValue(COL_REPEAT_INTERVAL)
                     val title = cursor.getStringValue(COL_TITLE)
                     val description = cursor.getStringValue(COL_DESCRIPTION)
                     val importId = cursor.getStringValue(COL_IMPORT_ID)
                     val flags = cursor.getIntValue(COL_FLAGS)
                     val repeatLimit = cursor.getIntValue(COL_REPEAT_LIMIT)
-                    events.add(Event(id, startTS, endTS, title, description, reminderMinutes, repeatInterval, importId, flags, repeatLimit))
+                    events.add(Event(id, startTS, endTS, title, description, reminder1Minutes, reminder2Minutes, reminder3Minutes,
+                            repeatInterval, importId, flags, repeatLimit))
                 } while (cursor.moveToNext())
             }
         } finally {

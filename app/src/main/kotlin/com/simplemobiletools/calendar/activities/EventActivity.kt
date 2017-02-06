@@ -21,7 +21,9 @@ import org.joda.time.DateTime
 class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     private var mWasEndDateSet = false
     private var mWasEndTimeSet = false
-    private var mReminderMinutes = 0
+    private var mReminder1Minutes = 0
+    private var mReminder2Minutes = 0
+    private var mReminder3Minutes = 0
     private var mRepeatInterval = 0
     private var mRepeatLimit = 0
     private var mDialogTheme = 0
@@ -44,7 +46,9 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             setupEditEvent()
         } else {
             mEvent = Event()
-            mReminderMinutes = config.defaultReminderMinutes
+            mReminder1Minutes = config.defaultReminderMinutes
+            mReminder2Minutes = 0
+            mReminder3Minutes = 0
             val startTS = intent.getIntExtra(NEW_EVENT_START_TS, 0)
             if (startTS == 0)
                 return
@@ -52,7 +56,9 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             setupNewEvent(Formatter.getDateTimeFromTS(startTS))
         }
 
-        updateReminderText()
+        updateReminder1Text()
+        updateReminder2Text()
+        updateReminder3Text()
         updateRepetitionText()
         updateStartDate()
         updateStartTime()
@@ -68,9 +74,12 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         event_end_time.setOnClickListener { setupEndTime() }
 
         event_all_day.setOnCheckedChangeListener { compoundButton, isChecked -> toggleAllDay(isChecked) }
-        event_reminder.setOnClickListener { showReminderDialog() }
         event_repetition.setOnClickListener { showRepeatIntervalDialog() }
         event_repetition_limit.setOnClickListener { showRepetitionLimitDialog() }
+
+        event_reminder_1.setOnClickListener { showReminder1Dialog() }
+        event_reminder_2.setOnClickListener { showReminder2Dialog() }
+        event_reminder_3.setOnClickListener { showReminder3Dialog() }
 
         if (mEvent.flags and FLAG_ALL_DAY != 0)
             event_all_day.toggle()
@@ -86,7 +95,9 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         mEventEndDateTime = Formatter.getDateTimeFromTS(mEvent.endTS)
         event_title.setText(mEvent.title)
         event_description.setText(mEvent.description)
-        mReminderMinutes = mEvent.reminderMinutes
+        mReminder1Minutes = mEvent.reminder1Minutes
+        mReminder2Minutes = mEvent.reminder2Minutes
+        mReminder3Minutes = mEvent.reminder3Minutes
         mRepeatInterval = mEvent.repeatInterval
         mRepeatLimit = mEvent.repeatLimit
         checkRepeatLimit(mRepeatInterval)
@@ -99,10 +110,24 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         mEventEndDateTime = mEventStartDateTime.plusHours(1)
     }
 
-    private fun showReminderDialog() {
-        EventReminderDialog(this, mReminderMinutes) {
-            mReminderMinutes = it
-            updateReminderText()
+    private fun showReminder1Dialog() {
+        EventReminderDialog(this, mReminder1Minutes) {
+            mReminder1Minutes = it
+            updateReminder1Text()
+        }
+    }
+
+    private fun showReminder2Dialog() {
+        EventReminderDialog(this, mReminder2Minutes) {
+            mReminder2Minutes = it
+            updateReminder2Text()
+        }
+    }
+
+    private fun showReminder3Dialog() {
+        EventReminderDialog(this, mReminder3Minutes) {
+            mReminder3Minutes = it
+            updateReminder3Text()
         }
     }
 
@@ -146,8 +171,16 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         }
     }
 
-    private fun updateReminderText() {
-        event_reminder.text = getReminderText(mReminderMinutes)
+    private fun updateReminder1Text() {
+        event_reminder_1.text = getReminderText(mReminder1Minutes)
+    }
+
+    private fun updateReminder2Text() {
+        event_reminder_2.text = getReminderText(mReminder2Minutes)
+    }
+
+    private fun updateReminder3Text() {
+        event_reminder_2.text = getReminderText(mReminder3Minutes)
     }
 
     private fun updateRepetitionText() {
@@ -216,7 +249,9 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             endTS = newEndTS
             title = newTitle
             description = newDescription
-            reminderMinutes = mReminderMinutes
+            reminder1Minutes = mReminder1Minutes
+            reminder2Minutes = mReminder2Minutes
+            reminder3Minutes = mReminder3Minutes
             repeatInterval = mRepeatInterval
             flags = if (event_all_day.isChecked) (mEvent.flags or FLAG_ALL_DAY) else (mEvent.flags.removeFlag(FLAG_ALL_DAY))
             repeatLimit = if (repeatInterval == 0) 0 else mRepeatLimit
