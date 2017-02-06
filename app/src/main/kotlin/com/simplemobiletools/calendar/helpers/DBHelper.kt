@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.database.sqlite.SQLiteQueryBuilder
 import android.text.TextUtils
+import com.simplemobiletools.calendar.extensions.scheduleReminder
 import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.extensions.updateWidgets
 import com.simplemobiletools.calendar.models.Event
@@ -105,6 +106,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
         }
 
         context?.updateWidgets()
+        context?.scheduleReminder(event)
         mEventsListener?.eventInserted(event)
         insertListener.invoke(event)
     }
@@ -124,6 +126,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
         }
 
         context?.updateWidgets()
+        context?.scheduleReminder(event)
         mEventsListener?.eventUpdated(event)
     }
 

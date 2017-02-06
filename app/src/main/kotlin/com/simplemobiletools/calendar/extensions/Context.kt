@@ -41,7 +41,7 @@ fun Context.updateListWidget() {
     }
 }
 
-fun Context.scheduleNextEventNotifications(event: Event) {
+fun Context.scheduleNextEventReminder(event: Event) {
     var startTS = event.startTS - event.reminder1Minutes * 60
     var newTS = startTS
     if (event.repeatInterval == DAY || event.repeatInterval == WEEK || event.repeatInterval == BIWEEK) {
@@ -67,11 +67,11 @@ private fun getNewTS(ts: Int, isMonthly: Boolean): Int {
     return dateTime.seconds()
 }
 
-fun Context.scheduleNotifications(event: Event) {
+fun Context.scheduleReminder(event: Event) {
     if (event.getRemindersCount() == 0)
         return
 
-    scheduleNextEventNotifications(event)
+    scheduleNextEventReminder(event)
 }
 
 fun Context.scheduleEventIn(notifTS: Int, event: Event) {

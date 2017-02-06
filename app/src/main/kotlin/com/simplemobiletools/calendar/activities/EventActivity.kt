@@ -10,7 +10,10 @@ import android.view.WindowManager
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.dialogs.EventReminderDialog
 import com.simplemobiletools.calendar.dialogs.EventRepeatIntervalDialog
-import com.simplemobiletools.calendar.extensions.*
+import com.simplemobiletools.calendar.extensions.config
+import com.simplemobiletools.calendar.extensions.getAppropriateTheme
+import com.simplemobiletools.calendar.extensions.getReminderText
+import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
@@ -383,12 +386,10 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         } else {
             toast(R.string.event_added)
         }
-        scheduleNotifications(event)
         finish()
     }
 
     override fun eventUpdated(event: Event) {
-        scheduleNotifications(event)
         toast(R.string.event_updated)
         finish()
     }
