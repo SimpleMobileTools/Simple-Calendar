@@ -10,6 +10,7 @@ val YEAR_LABEL = "year"
 val EVENT_ID = "event_id"
 val NEW_EVENT_START_TS = "new_event_start_ts"
 val WEEK_START_TIMESTAMP = "week_start_timestamp"
+val NEW_EVENT_SET_HOUR_DURATION = "new_event_set_hour_duration"
 
 val MONTHLY_VIEW = 1
 val YEARLY_VIEW = 2

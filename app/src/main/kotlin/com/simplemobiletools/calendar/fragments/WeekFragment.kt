@@ -188,6 +188,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                             val timestamp = mWeekTimestamp + index * DAY_SECONDS + hour * 60 * 60
                             Intent(context, EventActivity::class.java).apply {
                                 putExtra(NEW_EVENT_START_TS, timestamp)
+                                putExtra(NEW_EVENT_SET_HOUR_DURATION, true)
                                 startActivity(this)
                             }
                         }

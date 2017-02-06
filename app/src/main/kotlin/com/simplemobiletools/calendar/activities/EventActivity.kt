@@ -108,7 +108,9 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
         title = resources.getString(R.string.new_event)
         mEventStartDateTime = dateTime
-        mEventEndDateTime = mEventStartDateTime.plusHours(1)
+
+        val addHours = if (intent.getBooleanExtra(NEW_EVENT_SET_HOUR_DURATION, false)) 1 else 0
+        mEventEndDateTime = mEventStartDateTime.plusHours(addHours)
     }
 
     private fun showReminder1Dialog() {
