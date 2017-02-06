@@ -68,7 +68,7 @@ private fun getNewTS(ts: Int, isMonthly: Boolean): Int {
 }
 
 fun Context.scheduleNotification(event: Event) {
-    if (event.reminder1Minutes == REMINDER_OFF && event.reminder2Minutes == REMINDER_OFF && event.reminder3Minutes == REMINDER_OFF)
+    if (event.getRemindersCount() == 0)
         return
 
     scheduleNextEvent(event)

@@ -30,4 +30,15 @@ data class Event(var id: Int = 0, var startTS: Int = 0, var endTS: Int = 0, var 
     }
 
     val isAllDay = flags and FLAG_ALL_DAY != 0
+
+    fun getRemindersCount(): Int {
+        var cnt = 0
+        if (reminder1Minutes != REMINDER_OFF)
+            cnt++
+        if (reminder2Minutes != REMINDER_OFF)
+            cnt++
+        if (reminder3Minutes != REMINDER_OFF)
+            cnt++
+        return cnt
+    }
 }
