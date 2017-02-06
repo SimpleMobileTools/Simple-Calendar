@@ -41,4 +41,6 @@ data class Event(var id: Int = 0, var startTS: Int = 0, var endTS: Int = 0, var 
             cnt++
         return cnt
     }
+
+    fun getReminders() = arrayOf(reminder1Minutes, reminder2Minutes, reminder3Minutes).filter { it != REMINDER_OFF }
 }

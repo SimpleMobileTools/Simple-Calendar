@@ -269,6 +269,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             return
         }
 
+        val reminders = sortedSetOf(mReminder1Minutes, mReminder2Minutes, mReminder3Minutes).filter { it != REMINDER_OFF }
         val dbHelper = DBHelper(applicationContext, this)
         val newDescription = event_description.value
         mEvent.apply {
@@ -276,9 +277,9 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             endTS = newEndTS
             title = newTitle
             description = newDescription
-            reminder1Minutes = mReminder1Minutes
-            reminder2Minutes = mReminder2Minutes
-            reminder3Minutes = mReminder3Minutes
+            reminder1Minutes = reminders.elementAtOrElse(0) { REMINDER_OFF }
+            reminder2Minutes = reminders.elementAtOrElse(1) { REMINDER_OFF }
+            reminder3Minutes = reminders.elementAtOrElse(2) { REMINDER_OFF }
             repeatInterval = mRepeatInterval
             flags = if (event_all_day.isChecked) (mEvent.flags or FLAG_ALL_DAY) else (mEvent.flags.removeFlag(FLAG_ALL_DAY))
             repeatLimit = if (repeatInterval == 0) 0 else mRepeatLimit
@@ -382,12 +383,12 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         } else {
             toast(R.string.event_added)
         }
-        scheduleNotification(event)
+        scheduleNotifications(event)
         finish()
     }
 
     override fun eventUpdated(event: Event) {
-        scheduleNotification(event)
+        scheduleNotifications(event)
         toast(R.string.event_updated)
         finish()
     }

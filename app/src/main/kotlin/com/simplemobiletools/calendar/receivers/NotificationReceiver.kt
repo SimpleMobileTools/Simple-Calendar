@@ -10,7 +10,7 @@ import android.net.Uri
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.extensions.config
-import com.simplemobiletools.calendar.extensions.scheduleNextEvent
+import com.simplemobiletools.calendar.extensions.scheduleNextEventNotifications
 import com.simplemobiletools.calendar.extensions.updateListWidget
 import com.simplemobiletools.calendar.helpers.DBHelper
 import com.simplemobiletools.calendar.helpers.EVENT_ID
@@ -36,7 +36,7 @@ class NotificationReceiver : BroadcastReceiver() {
         notificationManager.notify(id, notification)
 
         if (event.repeatInterval != 0)
-            context.scheduleNextEvent(event)
+            context.scheduleNextEventNotifications(event)
     }
 
     private fun getEventTime(startTime: String, endTime: String) = if (startTime == endTime) startTime else "$startTime - $endTime"
