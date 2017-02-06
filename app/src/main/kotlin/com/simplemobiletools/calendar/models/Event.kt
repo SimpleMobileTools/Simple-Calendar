@@ -6,7 +6,7 @@ import org.joda.time.DateTime
 import java.io.Serializable
 
 data class Event(var id: Int = 0, var startTS: Int = 0, var endTS: Int = 0, var title: String = "", var description: String = "",
-                 var reminderMinutes: Int = 0, var repeatInterval: Int = 0, var importId: String = "", var flags: Int = 0,
+                 var reminderMinutes: Int = 0, var repeatInterval: Int = 0, var importId: String? = "", var flags: Int = 0,
                  var repeatLimit: Int = 0) : Serializable {
 
     companion object {
