@@ -1,6 +1,11 @@
 Changelog
 ==========
 
+Version 2.1.6 *(2017-02-06)*
+----------------------------
+
+ * Allow setting up to 3 reminders per event
+
 Version 2.1.5 *(2017-02-06)*
 ----------------------------
 
