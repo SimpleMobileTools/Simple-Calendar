@@ -169,8 +169,8 @@
             android:layout_toEndOf="@+id/event_reminder_image"
             android:layout_toRightOf="@+id/event_reminder_image"
             android:background="?attr/selectableItemBackground"
-            android:paddingBottom="@dimen/normal_margin"
-            android:paddingTop="@dimen/normal_margin"
+            android:paddingBottom="@dimen/activity_margin"
+            android:paddingTop="@dimen/activity_margin"
             android:textSize="@dimen/day_text_size"/>
 
         <com.simplemobiletools.commons.views.MyTextView
@@ -182,8 +182,8 @@
             android:layout_below="@+id/event_reminder_1"
             android:alpha="0.4"
             android:background="?attr/selectableItemBackground"
-            android:paddingBottom="@dimen/normal_margin"
-            android:paddingTop="@dimen/normal_margin"
+            android:paddingBottom="@dimen/activity_margin"
+            android:paddingTop="@dimen/activity_margin"
             android:text="@string/add_another_reminder"
             android:textSize="@dimen/day_text_size"
             android:visibility="gone"/>
@@ -197,8 +197,8 @@
             android:layout_below="@+id/event_reminder_2"
             android:alpha="0.4"
             android:background="?attr/selectableItemBackground"
-            android:paddingBottom="@dimen/normal_margin"
-            android:paddingTop="@dimen/normal_margin"
+            android:paddingBottom="@dimen/activity_margin"
+            android:paddingTop="@dimen/activity_margin"
             android:text="@string/add_another_reminder"
             android:textSize="@dimen/day_text_size"
             android:visibility="gone"/>

@@ -47,8 +47,8 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         } else {
             mEvent = Event()
             mReminder1Minutes = config.defaultReminderMinutes
-            mReminder2Minutes = 0
-            mReminder3Minutes = 0
+            mReminder2Minutes = -1
+            mReminder3Minutes = -1
             val startTS = intent.getIntExtra(NEW_EVENT_START_TS, 0)
             if (startTS == 0)
                 return
@@ -56,9 +56,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             setupNewEvent(Formatter.getDateTimeFromTS(startTS))
         }
 
-        updateReminder1Text()
-        updateReminder2Text()
-        updateReminder3Text()
+        checkReminderTexts()
         updateRepetitionText()
         updateStartDate()
         updateStartTime()
@@ -113,21 +111,21 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     private fun showReminder1Dialog() {
         EventReminderDialog(this, mReminder1Minutes) {
             mReminder1Minutes = it
-            updateReminder1Text()
+            checkReminderTexts()
         }
     }
 
     private fun showReminder2Dialog() {
         EventReminderDialog(this, mReminder2Minutes) {
             mReminder2Minutes = it
-            updateReminder2Text()
+            checkReminderTexts()
         }
     }
 
     private fun showReminder3Dialog() {
         EventReminderDialog(this, mReminder3Minutes) {
             mReminder3Minutes = it
-            updateReminder3Text()
+            checkReminderTexts()
         }
     }
 
@@ -171,16 +169,45 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         }
     }
 
+    private fun checkReminderTexts() {
+        updateReminder1Text()
+        updateReminder2Text()
+        updateReminder3Text()
+    }
+
     private fun updateReminder1Text() {
         event_reminder_1.text = getReminderText(mReminder1Minutes)
+        if (mReminder1Minutes == REMINDER_OFF) {
+            mReminder2Minutes = REMINDER_OFF
+            mReminder3Minutes = REMINDER_OFF
+        }
     }
 
     private fun updateReminder2Text() {
-        event_reminder_2.text = getReminderText(mReminder2Minutes)
+        event_reminder_2.apply {
+            beGoneIf(mReminder1Minutes == REMINDER_OFF)
+            if (mReminder2Minutes == REMINDER_OFF) {
+                text = resources.getString(R.string.add_another_reminder)
+                alpha = 0.4f
+                mReminder3Minutes = REMINDER_OFF
+            } else {
+                text = getReminderText(mReminder2Minutes)
+                alpha = 1f
+            }
+        }
     }
 
     private fun updateReminder3Text() {
-        event_reminder_2.text = getReminderText(mReminder3Minutes)
+        event_reminder_3.apply {
+            beGoneIf(mReminder2Minutes == REMINDER_OFF || mReminder1Minutes == REMINDER_OFF)
+            if (mReminder3Minutes == REMINDER_OFF) {
+                text = resources.getString(R.string.add_another_reminder)
+                alpha = 0.4f
+            } else {
+                text = getReminderText(mReminder3Minutes)
+                alpha = 1f
+            }
+        }
     }
 
     private fun updateRepetitionText() {
