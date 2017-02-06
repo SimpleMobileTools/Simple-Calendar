@@ -42,6 +42,9 @@ fun Context.updateListWidget() {
 }
 
 fun Context.scheduleNextEventReminder(event: Event) {
+    if (event.getReminders().isEmpty())
+        return
+
     var startTS = event.startTS - event.reminder1Minutes * 60
     var newTS = startTS
     if (event.repeatInterval == DAY || event.repeatInterval == WEEK || event.repeatInterval == BIWEEK) {
