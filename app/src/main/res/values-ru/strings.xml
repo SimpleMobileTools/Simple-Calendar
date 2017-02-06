@@ -139,6 +139,7 @@
     <string name="sample_title_5">Время для кофе</string>
 
     <!-- Release notes -->
+    <string name="release_54">Allow setting multiple reminders per event</string>
     <string name="release_52">Added all-day long event support</string>
     <string name="release_51">Разрешен импорт событий из .ics файлов</string>
     <string name="release_49">Разрешен выбор цвета из шестнадцатеричного кода</string>

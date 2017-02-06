@@ -137,6 +137,7 @@
     <string name="sample_title_5">Kaffee Pause</string>
 
     <!-- Release notes -->
+    <string name="release_54">Allow setting multiple reminders per event</string>
     <string name="release_52">Unterstützt nun ganztägige Termine</string>
     <string name="release_51">Import von Terminen aus .ics Dateien hinzugefügt</string>
     <string name="release_49">Farbauswahl durch hex Code hinzugefügt</string>

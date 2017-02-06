@@ -137,6 +137,7 @@
     <string name="sample_title_5">הפסקת קפה</string>
 
     <!-- Release notes -->
+    <string name="release_54">Allow setting multiple reminders per event</string>
     <string name="release_52">Added all-day long event support</string>
     <string name="release_51">אופשר לייבא אירועים מקבצי ics.</string>
     <string name="release_49">אופשר להוסיף צבעים על פי קוד הקסדצימלי</string>
