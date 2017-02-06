@@ -45,21 +45,29 @@ fun Context.scheduleNextEventReminder(event: Event) {
     if (event.getReminders().isEmpty())
         return
 
-    var startTS = event.startTS - event.reminder1Minutes * 60
-    var newTS = startTS
-    if (event.repeatInterval == DAY || event.repeatInterval == WEEK || event.repeatInterval == BIWEEK) {
-        while (startTS < System.currentTimeMillis() / 1000 + 5) {
-            startTS += event.repeatInterval
+    var nextTS = Int.MAX_VALUE
+    val reminderSeconds = event.getReminders().reversed().map { it * 60 }
+
+    reminderSeconds.forEach {
+        var startTS = event.startTS - it
+        val now = System.currentTimeMillis() / 1000 + 5
+        if (event.repeatInterval == DAY || event.repeatInterval == WEEK || event.repeatInterval == BIWEEK) {
+            while (startTS < now) {
+                startTS += event.repeatInterval
+            }
+            nextTS = Math.min(nextTS, startTS)
+        } else if (event.repeatInterval == MONTH) {
+            nextTS = Math.min(nextTS, getNewTS(startTS, true))
+        } else if (event.repeatInterval == YEAR) {
+            nextTS = Math.min(nextTS, getNewTS(startTS, false))
         }
-        newTS = startTS
-    } else if (event.repeatInterval == MONTH) {
-        newTS = getNewTS(startTS, true)
-    } else if (event.repeatInterval == YEAR) {
-        newTS = getNewTS(startTS, false)
     }
 
-    if (newTS != 0 && (event.repeatLimit == 0 || event.repeatLimit > newTS))
-        scheduleEventIn(newTS, event)
+    if (nextTS == 0)
+        return
+
+    if (event.repeatLimit == 0 || event.repeatLimit > nextTS)
+        scheduleEventIn(nextTS, event)
 }
 
 private fun getNewTS(ts: Int, isMonthly: Boolean): Int {
@@ -71,10 +79,8 @@ private fun getNewTS(ts: Int, isMonthly: Boolean): Int {
 }
 
 fun Context.scheduleReminder(event: Event) {
-    if (event.getRemindersCount() == 0)
-        return
-
-    scheduleNextEventReminder(event)
+    if (event.getReminders().isNotEmpty())
+        scheduleNextEventReminder(event)
 }
 
 fun Context.scheduleEventIn(notifTS: Int, event: Event) {

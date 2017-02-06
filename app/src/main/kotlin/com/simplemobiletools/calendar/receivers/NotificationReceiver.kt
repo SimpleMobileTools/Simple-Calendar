@@ -26,7 +26,7 @@ class NotificationReceiver : BroadcastReceiver() {
             return
 
         val event = DBHelper(context).getEvent(id)
-        if (event == null || event.getRemindersCount() == 0)
+        if (event == null || event.getReminders().isEmpty())
             return
 
         val pendingIntent = getPendingIntent(context, event)
