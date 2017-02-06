@@ -50,6 +50,7 @@
     <string name="minutes_raw">minutes</string>
     <string name="hours_raw">heures</string>
     <string name="days_raw">jours</string>
+    <string name="add_another_reminder">Add another reminder</string>
 
     <plurals name="minutes">
         <item quantity="one">%1$d minute before</item>
