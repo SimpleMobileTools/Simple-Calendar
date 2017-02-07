@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 2.1.8 *(2017-02-07)*
+----------------------------
+
+ * Added a current time indicator at weekly view
+ * Removed the Undo function after deleting events
+ * Added Slovak translation
+
 Version 2.1.7 *(2017-02-07)*
 ----------------------------
 
