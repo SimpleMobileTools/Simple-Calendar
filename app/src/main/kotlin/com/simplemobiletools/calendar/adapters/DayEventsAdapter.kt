@@ -10,6 +10,7 @@ import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.helpers.Formatter
+import com.simplemobiletools.calendar.interfaces.DeleteEventsListener
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.extensions.beInvisible
@@ -17,7 +18,7 @@ import com.simplemobiletools.commons.extensions.beInvisibleIf
 import kotlinx.android.synthetic.main.event_item_day_view.view.*
 import java.util.*
 
-class DayEventsAdapter(val activity: SimpleActivity, val mItems: List<Event>, val listener: ItemOperationsListener?, val itemClick: (Event) -> Unit) :
+class DayEventsAdapter(val activity: SimpleActivity, val mItems: List<Event>, val listener: DeleteEventsListener?, val itemClick: (Event) -> Unit) :
         RecyclerView.Adapter<DayEventsAdapter.ViewHolder>() {
     val multiSelector = MultiSelector()
     val views = ArrayList<View>()
@@ -81,7 +82,7 @@ class DayEventsAdapter(val activity: SimpleActivity, val mItems: List<Event>, va
         val selections = multiSelector.selectedPositions
         val ids = ArrayList<Int>(selections.size)
         selections.forEach { ids.add(mItems[it].id) }
-        listener?.deleteIds(ids)
+        listener?.deleteEvents(ids)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
@@ -161,9 +162,5 @@ class DayEventsAdapter(val activity: SimpleActivity, val mItems: List<Event>, va
                 itemClick(event)
             }
         }
-    }
-
-    interface ItemOperationsListener {
-        fun deleteIds(ids: ArrayList<Int>)
     }
 }

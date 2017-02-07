@@ -20,6 +20,7 @@ import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.getAppropriateTheme
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
+import com.simplemobiletools.calendar.interfaces.DeleteEventsListener
 import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.commons.extensions.setupDialogStuff
@@ -30,7 +31,7 @@ import org.joda.time.DateTime
 import java.util.*
 import kotlin.comparisons.compareBy
 
-class DayFragment : Fragment(), DBHelper.EventUpdateListener, DBHelper.GetEventsListener, DayEventsAdapter.ItemOperationsListener {
+class DayFragment : Fragment(), DBHelper.EventUpdateListener, DBHelper.GetEventsListener, DeleteEventsListener {
     private var mTextColor = 0
     private var mDayCode = ""
     private var mListener: NavigationListener? = null
@@ -136,7 +137,7 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DBHelper.GetEvents
         }
     }
 
-    override fun deleteIds(ids: ArrayList<Int>) {
+    override fun deleteEvents(ids: ArrayList<Int>) {
         val eventIDs = Array(ids.size, { i -> (ids[i].toString()) })
         DBHelper(activity.applicationContext, this).deleteEvents(eventIDs)
     }

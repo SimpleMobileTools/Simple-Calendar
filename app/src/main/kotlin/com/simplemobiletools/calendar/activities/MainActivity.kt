@@ -3,14 +3,11 @@ package com.simplemobiletools.calendar.activities
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Color
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.v4.app.ActivityCompat
 import android.support.v4.view.ViewPager
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.TextView
 import com.simplemobiletools.calendar.BuildConfig
 import com.simplemobiletools.calendar.R
@@ -27,6 +24,7 @@ import com.simplemobiletools.calendar.fragments.EventListFragment
 import com.simplemobiletools.calendar.fragments.WeekFragment
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
+import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.views.MyScrollView
 import com.simplemobiletools.commons.dialogs.FilePickerDialog
 import com.simplemobiletools.commons.extensions.*
@@ -39,15 +37,13 @@ import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 import java.util.*
 
-class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
+class MainActivity : SimpleActivity(), NavigationListener {
     private val PREFILLED_MONTHS = 73
     private val PREFILLED_YEARS = 21
     private val PREFILLED_WEEKS = 41
     private val STORAGE_PERMISSION = 1
 
     private var mIsMonthSelected = false
-    private var mSnackbar: Snackbar? = null
-    private var mEventListFragment: EventListFragment? = null
     private var mStoredTextColor = 0
     private var mStoredBackgroundColor = 0
     private var mStoredPrimaryColor = 0
@@ -83,7 +79,6 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
 
     override fun onPause() {
         super.onPause()
-        checkDeleteEvents()
         mStoredTextColor = config.textColor
         mStoredIsSundayFirst = config.isSundayFirst
         mStoredBackgroundColor = config.backgroundColor
@@ -326,37 +321,12 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
         return years
     }
 
-    fun checkDeleteEvents() {
-        if (mSnackbar != null && mSnackbar!!.isShown) {
-            deleteEvents()
-        } else {
-            undoDeletion()
-        }
-    }
-
-    private fun deleteEvents() {
-        mSnackbar!!.dismiss()
-        mEventListFragment?.deleteEvents()
-    }
-
-    private val undoDeletion = View.OnClickListener { undoDeletion() }
-
-    private fun undoDeletion() {
-        if (mSnackbar != null) {
-            mSnackbar!!.dismiss()
-            mEventListFragment?.undoDeletion()
-        }
-    }
-
     private fun fillEventsList() {
         main_view_pager.adapter = null
         main_view_pager.beGone()
         main_weekly_scrollview.beGone()
         calendar_event_list_holder.beVisible()
-
-        if (mEventListFragment == null)
-            mEventListFragment = EventListFragment()
-        supportFragmentManager.beginTransaction().replace(R.id.calendar_event_list_holder, mEventListFragment, "").commit()
+        supportFragmentManager.beginTransaction().replace(R.id.calendar_event_list_holder, EventListFragment(), "").commit()
     }
 
     override fun goLeft() {
@@ -379,22 +349,6 @@ class MainActivity : SimpleActivity(), EventListFragment.DeleteListener {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 tryImportEvents()
             }
-        }
-    }
-
-    override fun notifyDeletion(cnt: Int) {
-        val msg = resources.getQuantityString(R.plurals.events_deleted, cnt, cnt)
-        mSnackbar = Snackbar.make(calendar_coordinator, msg, Snackbar.LENGTH_LONG)
-        mSnackbar!!.apply {
-            setCallback(object : Snackbar.Callback() {
-                override fun onDismissed(snackbar: Snackbar?, event: Int) {
-                    super.onDismissed(snackbar, event)
-                    mEventListFragment?.deleteEvents()
-                }
-            })
-            setAction(resources.getString(R.string.undo), undoDeletion)
-            setActionTextColor(Color.WHITE)
-            show()
         }
     }
 

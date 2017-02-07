@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Simple Calendar</string>
     <string name="app_launcher_name">Calendrier</string>
-    <string name="undo">Annuler</string>
     <string name="change_view">Changer de vue</string>
     <string name="weekly_view">Weekly view</string>
     <string name="monthly_view">Vue mensuelle</string>

@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Schlichter Kalender</string>
     <string name="app_launcher_name">Kalender</string>
-    <string name="undo">Rückgängig</string>
     <string name="change_view">Ansicht ändern</string>
     <string name="weekly_view">Wochenansicht</string>
     <string name="monthly_view">Monatsansicht</string>

@@ -11,6 +11,7 @@ import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.helpers.Formatter
+import com.simplemobiletools.calendar.interfaces.DeleteEventsListener
 import com.simplemobiletools.calendar.models.ListEvent
 import com.simplemobiletools.calendar.models.ListItem
 import com.simplemobiletools.calendar.models.ListSection
@@ -20,7 +21,7 @@ import com.simplemobiletools.commons.extensions.beInvisibleIf
 import kotlinx.android.synthetic.main.event_list_item.view.*
 import java.util.*
 
-class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>, val listener: EventListAdapter.ItemOperationsListener?, val itemClick: (Int) -> Unit) :
+class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>, val listener: DeleteEventsListener?, val itemClick: (Int) -> Unit) :
         RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     val multiSelector = MultiSelector()
     val views = ArrayList<View>()
@@ -97,7 +98,7 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
         val selections = multiSelector.selectedPositions
         val ids = ArrayList<Int>(selections.size)
         selections.forEach { ids.add((mItems[it] as ListEvent).id) }
-        listener?.prepareForDeleting(ids)
+        listener?.deleteEvents(ids)
     }
 
     override fun getItemViewType(position: Int) = if (mItems[position] is ListEvent) ITEM_EVENT else ITEM_HEADER
@@ -201,9 +202,5 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
 
             return itemView
         }
-    }
-
-    interface ItemOperationsListener {
-        fun prepareForDeleting(ids: ArrayList<Int>)
     }
 }

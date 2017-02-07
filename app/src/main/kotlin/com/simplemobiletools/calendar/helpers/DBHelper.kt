@@ -220,7 +220,6 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
         val selectionArgs = arrayOf(toTS.toString(), fromTS.toString())
         val cursor = getEventsCursor(selection, selectionArgs)
         events.addAll(fillEvents(cursor))
-
         callback?.gotEvents(events)
     }
 
