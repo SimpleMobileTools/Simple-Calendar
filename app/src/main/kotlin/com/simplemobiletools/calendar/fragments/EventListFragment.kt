@@ -70,6 +70,9 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, DBHelper.Event
         }
 
         mAllEvents = events
+        if (activity == null)
+            return
+
         val eventsAdapter = EventListAdapter(activity as SimpleActivity, listItems, this) {
             editEvent(it)
         }
