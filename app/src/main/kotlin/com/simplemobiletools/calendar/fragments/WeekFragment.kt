@@ -42,6 +42,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private var wasExtraHeightAdded = false
     private var clickStartTime = 0L
     private var selectedGrid: View? = null
+    private var todayColumnIndex = -1
 
     lateinit var inflater: LayoutInflater
     lateinit var mView: View
@@ -128,6 +129,8 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             (mView.findViewById(mRes.getIdentifier("week_day_label_$i", "id", context.packageName)) as TextView).apply {
                 text = "$dayLetter\n${curDay.dayOfMonth}"
                 setTextColor(if (todayCode == dayCode) primaryColor else textColor)
+                if (todayCode == dayCode)
+                    todayColumnIndex = i
             }
             curDay = curDay.plusDays(1)
         }
@@ -251,6 +254,23 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
         if (!hadAllDayEvent) {
             checkTopHolderHeight()
+        }
+
+        if (todayColumnIndex != -1) {
+            val minutes = DateTime().minuteOfDay
+            val todayColumn = getColumnWithId(todayColumnIndex)
+            inflater.inflate(R.layout.week_now_marker, null, false).apply {
+                background = ColorDrawable(primaryColor)
+                activity.runOnUiThread {
+                    mView.week_events_holder.addView(this)
+                    x = todayColumn.x
+                    y = minutes.toFloat()
+                    (layoutParams as RelativeLayout.LayoutParams).apply {
+                        width = todayColumn.width - 1
+                        height = resources.getDimension(R.dimen.weekly_view_now_height).toInt()
+                    }
+                }
+            }
         }
     }
 
