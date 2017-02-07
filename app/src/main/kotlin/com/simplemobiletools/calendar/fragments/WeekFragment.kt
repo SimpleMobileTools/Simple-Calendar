@@ -2,11 +2,13 @@ package com.simplemobiletools.calendar.fragments
 
 import android.content.Intent
 import android.content.res.Resources
+import android.graphics.PorterDuff
 import android.graphics.Rect
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.*
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
@@ -256,17 +258,22 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             checkTopHolderHeight()
         }
 
+        addCurrentTimeIndicator(minuteHeight)
+    }
+
+    fun addCurrentTimeIndicator(minuteHeight: Float) {
         if (todayColumnIndex != -1) {
             val minutes = DateTime().minuteOfDay
             val todayColumn = getColumnWithId(todayColumnIndex)
-            inflater.inflate(R.layout.week_now_marker, null, false).apply {
-                background = ColorDrawable(primaryColor)
+            (inflater.inflate(R.layout.week_now_marker, null, false) as ImageView).apply {
+                setColorFilter(primaryColor, PorterDuff.Mode.SRC_IN)
                 activity.runOnUiThread {
                     mView.week_events_holder.addView(this)
-                    x = todayColumn.x
-                    y = minutes.toFloat()
+                    val extraWidth = (todayColumn.width * 0.3).toInt()
+                    x = todayColumn.x - extraWidth / 2
+                    y = minutes * minuteHeight
                     (layoutParams as RelativeLayout.LayoutParams).apply {
-                        width = todayColumn.width - 1
+                        width = todayColumn.width + extraWidth
                         height = resources.getDimension(R.dimen.weekly_view_now_height).toInt()
                     }
                 }
