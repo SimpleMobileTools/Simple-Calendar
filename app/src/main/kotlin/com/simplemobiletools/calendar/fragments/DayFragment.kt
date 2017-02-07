@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.DatePicker
 import android.widget.RelativeLayout
 import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.activities.DayActivity
 import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.adapters.DayEventsAdapter
@@ -32,13 +33,11 @@ import kotlin.comparisons.compareBy
 class DayFragment : Fragment(), DBHelper.EventUpdateListener, DBHelper.GetEventsListener, DayEventsAdapter.ItemOperationsListener {
     private var mTextColor = 0
     private var mDayCode = ""
-    private var mEvents: MutableList<Event>? = null
-    private var mListener: DeleteListener? = null
+    private var mListener: NavigationListener? = null
 
     lateinit var mRes: Resources
     lateinit var mHolder: RelativeLayout
     lateinit var mConfig: Config
-    lateinit var mToBeDeleted: MutableList<Int>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_day, container, false)
@@ -49,10 +48,11 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DBHelper.GetEvents
         mDayCode = arguments.getString(DAY_CODE)
 
         val day = Formatter.getDayTitle(activity.applicationContext, mDayCode)
-        mHolder.top_value.text = day
-        mHolder.top_value.setOnClickListener { pickDay() }
-        mHolder.top_value.setTextColor(mConfig.textColor)
-        mToBeDeleted = ArrayList<Int>()
+        mHolder.top_value.apply {
+            text = day
+            setOnClickListener { pickDay() }
+            setTextColor(mConfig.textColor)
+        }
 
         setupButtons()
         return view
@@ -82,7 +82,7 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DBHelper.GetEvents
         }
     }
 
-    fun setListener(listener: DeleteListener) {
+    fun setListener(listener: NavigationListener) {
         mListener = listener
     }
 
@@ -110,19 +110,17 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DBHelper.GetEvents
         mListener?.goToDateTime(newDateTime)
     }
 
-    private fun checkEvents() {
+    fun checkEvents() {
         val startTS = Formatter.getDayStartTS(mDayCode)
         val endTS = Formatter.getDayEndTS(mDayCode)
         DBHelper(context, this).getEvents(startTS, endTS, this)
     }
 
     private fun updateEvents(events: MutableList<Event>) {
-        mEvents = ArrayList(events)
-        val eventsToShow = getEventsToShow(events)
         if (activity == null)
             return
 
-        val eventsAdapter = DayEventsAdapter(activity as SimpleActivity, eventsToShow, this) {
+        val eventsAdapter = DayEventsAdapter(activity as SimpleActivity, events, this) {
             editEvent(it.id)
         }
         mHolder.day_events.apply {
@@ -138,26 +136,9 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DBHelper.GetEvents
         }
     }
 
-    private fun getEventsToShow(events: MutableList<Event>) = events.filter { !mToBeDeleted.contains(it.id) }
-
-    override fun prepareForDeleting(ids: ArrayList<Int>) {
-        mToBeDeleted = ids
-        notifyDeletion()
-    }
-
-    private fun notifyDeletion() {
-        mListener?.notifyDeletion(mToBeDeleted.size)
-        updateEvents(mEvents!!)
-    }
-
-    fun deleteEvents() {
-        val eventIDs = Array(mToBeDeleted.size, { i -> (mToBeDeleted[i].toString()) })
+    override fun deleteIds(ids: ArrayList<Int>) {
+        val eventIDs = Array(ids.size, { i -> (ids[i].toString()) })
         DBHelper(activity.applicationContext, this).deleteEvents(eventIDs)
-    }
-
-    fun undoDeletion() {
-        mToBeDeleted.clear()
-        updateEvents(mEvents!!)
     }
 
     override fun eventInserted(event: Event) {
@@ -168,6 +149,7 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DBHelper.GetEvents
 
     override fun eventsDeleted(cnt: Int) {
         checkEvents()
+        (activity as DayActivity).recheckEvents()
     }
 
     override fun gotEvents(events: MutableList<Event>) {
@@ -175,9 +157,5 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DBHelper.GetEvents
         activity?.runOnUiThread {
             updateEvents(sorted)
         }
-    }
-
-    interface DeleteListener : NavigationListener {
-        fun notifyDeletion(cnt: Int)
     }
 }

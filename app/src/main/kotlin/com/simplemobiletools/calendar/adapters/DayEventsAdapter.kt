@@ -73,15 +73,15 @@ class DayEventsAdapter(val activity: SimpleActivity, val mItems: List<Event>, va
     private fun askConfirmDelete() {
         ConfirmationDialog(activity) {
             actMode?.finish()
-            prepareForDeleting()
+            deleteEvents()
         }
     }
 
-    private fun prepareForDeleting() {
+    private fun deleteEvents() {
         val selections = multiSelector.selectedPositions
         val ids = ArrayList<Int>(selections.size)
         selections.forEach { ids.add(mItems[it].id) }
-        listener?.prepareForDeleting(ids)
+        listener?.deleteIds(ids)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
@@ -164,6 +164,6 @@ class DayEventsAdapter(val activity: SimpleActivity, val mItems: List<Event>, va
     }
 
     interface ItemOperationsListener {
-        fun prepareForDeleting(ids: ArrayList<Int>)
+        fun deleteIds(ids: ArrayList<Int>)
     }
 }
