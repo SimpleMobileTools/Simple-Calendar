@@ -34,9 +34,7 @@ class NotificationReceiver : BroadcastReceiver() {
         val endTime = Formatter.getTimeFromTS(context, event.endTS)
         val notification = getNotification(context, pendingIntent, event.title, "${getEventTime(startTime, endTime)} ${event.description}")
         notificationManager.notify(id, notification)
-
-        if (event.repeatInterval != 0)
-            context.scheduleNextEventReminder(event)
+        context.scheduleNextEventReminder(event)
     }
 
     private fun getEventTime(startTime: String, endTime: String) = if (startTime == endTime) startTime else "$startTime - $endTime"

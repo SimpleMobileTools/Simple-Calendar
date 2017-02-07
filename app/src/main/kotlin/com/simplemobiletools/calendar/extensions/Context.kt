@@ -45,12 +45,12 @@ fun Context.scheduleNextEventReminder(event: Event) {
     if (event.getReminders().isEmpty())
         return
 
+    val now = System.currentTimeMillis() / 1000 + 3
     var nextTS = Int.MAX_VALUE
     val reminderSeconds = event.getReminders().reversed().map { it * 60 }
 
     reminderSeconds.forEach {
         var startTS = event.startTS - it
-        val now = System.currentTimeMillis() / 1000 + 5
         if (event.repeatInterval == DAY || event.repeatInterval == WEEK || event.repeatInterval == BIWEEK) {
             while (startTS < now) {
                 startTS += event.repeatInterval
@@ -60,10 +60,12 @@ fun Context.scheduleNextEventReminder(event: Event) {
             nextTS = Math.min(nextTS, getNewTS(startTS, true))
         } else if (event.repeatInterval == YEAR) {
             nextTS = Math.min(nextTS, getNewTS(startTS, false))
+        } else if (startTS > now) {
+            nextTS = Math.min(nextTS, startTS)
         }
     }
 
-    if (nextTS == 0)
+    if (nextTS == 0 || nextTS < now || nextTS == Int.MAX_VALUE)
         return
 
     if (event.repeatLimit == 0 || event.repeatLimit > nextTS)
