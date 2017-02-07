@@ -20,7 +20,6 @@
     <string name="new_event">אירוע חדש</string>
     <string name="title_empty">הכותרת לא יכולה להיות ריקה</string>
     <string name="end_before_start">האירוע לא יכול להיגמר מוקדם משהוא מתחיל</string>
-    <string name="start_in_past">לא ניתן לקבוע אירועים בעבר</string>
     <string name="event_added">האירוע הוסף בהצלחה</string>
     <string name="past_event_added">אירוע בעבר הוסף בהצלחה</string>
     <string name="event_updated">האירוע עודכן בהצלחה</string>
@@ -42,8 +41,6 @@
     <string name="reminder">תזכורת</string>
     <string name="no_reminder">No reminder</string>
     <string name="at_start">בהתחלה</string>
-    <string name="mins_before_10">10 minutes before</string>
-    <string name="mins_before_30">30 minutes before</string>
     <string name="custom">מותאם אישית</string>
     <string name="before">לפני</string>
     <string name="minutes_raw">minutes</string>
@@ -77,8 +74,6 @@
 
     <!-- Event details -->
     <string name="title">כותרת</string>
-    <string name="start">התחלה</string>
-    <string name="end">סוף (אופציונלי)</string>
     <string name="description">תיאור</string>
     <string name="all_day">All-day</string>
 
@@ -93,16 +88,10 @@
     <string name="vibrate">רטט בהתראת תזכורת</string>
     <string name="reminder_sound">צליל תזכורת</string>
     <string name="default_event_reminder">תזכורת קבועה לאירוע</string>
-    <string name="notification_sound">צליל התראה</string>
     <string name="no_ringtone_picker">לא נמצאה אפליקציה להגדרת רינגטון</string>
     <string name="no_ringtone_selected">ללא</string>
     <string name="day_end_before_start">היום לא יכול להסתיים מוקדם משהוא מתחיל</string>
     <string name="google_sync">Google sync</string>
-
-    <plurals name="events_deleted">
-        <item quantity="one">%1$d אירוע אחד נמחק</item>
-        <item quantity="other">%1$d events deleted</item>
-    </plurals>
 
     <string name="january">ינואר</string>
     <string name="february">פברואר</string>

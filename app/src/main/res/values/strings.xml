@@ -20,7 +20,6 @@
     <string name="new_event">New Event</string>
     <string name="title_empty">Title cannot be empty</string>
     <string name="end_before_start">The event cannot end earlier than it starts</string>
-    <string name="start_in_past">You cannot schedule events in the past</string>
     <string name="event_added">Event added successfully</string>
     <string name="past_event_added">Event in the past added successfully</string>
     <string name="event_updated">Event updated successfully</string>
@@ -42,8 +41,6 @@
     <string name="reminder">Reminder</string>
     <string name="no_reminder">No reminder</string>
     <string name="at_start">At start</string>
-    <string name="mins_before_10">10 minutes before</string>
-    <string name="mins_before_30">30 minutes before</string>
     <string name="custom">Custom</string>
     <string name="before">before</string>
     <string name="minutes_raw">minutes</string>
@@ -77,8 +74,6 @@
 
     <!-- Event details -->
     <string name="title">Title</string>
-    <string name="start">Start</string>
-    <string name="end">End (optional)</string>
     <string name="description">Description</string>
     <string name="all_day">All-day</string>
 
@@ -93,16 +88,10 @@
     <string name="vibrate">Vibrate on reminder notification</string>
     <string name="reminder_sound">Reminder sound</string>
     <string name="default_event_reminder">Default event reminder</string>
-    <string name="notification_sound">Notification sound</string>
     <string name="no_ringtone_picker">No app capable of setting ringtone found</string>
     <string name="no_ringtone_selected">None</string>
     <string name="day_end_before_start">The day cannot end earlier than it starts</string>
     <string name="google_sync">Google sync</string>
-
-    <plurals name="events_deleted">
-        <item quantity="one">%1$d event deleted</item>
-        <item quantity="other">%1$d events deleted</item>
-    </plurals>
 
     <string name="january">January</string>
     <string name="february">February</string>

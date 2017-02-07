@@ -20,7 +20,6 @@
     <string name="new_event">Ny händelse</string>
     <string name="title_empty">Titeln får inte vara tom</string>
     <string name="end_before_start">Händelsen kan inte sluta före den har startat</string>
-    <string name="start_in_past">Du kan inte schemalägga händelser i det förflutna</string>
     <string name="event_added">Händelsen tillagd</string>
     <string name="past_event_added">Händelsen ät tillagd</string>
     <string name="event_updated">Händelsen uppdaterad</string>
@@ -42,8 +41,6 @@
     <string name="reminder">Påminnelse</string>
     <string name="no_reminder">No reminder</string>
     <string name="at_start">Vid start</string>
-    <string name="mins_before_10">10 minutes before</string>
-    <string name="mins_before_30">30 minutes before</string>
     <string name="custom">Egen</string>
     <string name="before">före</string>
     <string name="minutes_raw">minuter</string>
@@ -77,8 +74,6 @@
 
     <!-- Event details -->
     <string name="title">Titel</string>
-    <string name="start">Start</string>
-    <string name="end">Slut (frivillig)</string>
     <string name="description">Beskrivning</string>
     <string name="all_day">All-day</string>
 
@@ -93,16 +88,10 @@
     <string name="vibrate">Vibrera vid påminnelseaviseringen</string>
     <string name="reminder_sound">Påminnelseljud</string>
     <string name="default_event_reminder">Standard händelsepåminnare</string>
-    <string name="notification_sound">Aviseringsljud</string>
     <string name="no_ringtone_picker">Hittade ingen app som kan ställa in ljudet</string>
     <string name="no_ringtone_selected">Ingen</string>
     <string name="day_end_before_start">Dagen kan inte börja innan den tar slut</string>
     <string name="google_sync">Google sync</string>
-
-    <plurals name="events_deleted">
-        <item quantity="one">%1$d händelse borttagen</item>
-        <item quantity="other">%1$d händelser borttagna</item>
-    </plurals>
 
     <string name="january">Januari</string>
     <string name="february">Februari</string>

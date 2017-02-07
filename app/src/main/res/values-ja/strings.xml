@@ -20,7 +20,6 @@
     <string name="new_event">新しいイベント</string>
     <string name="title_empty">タイトルは空にできません</string>
     <string name="end_before_start">イベントの終了は開始よりも前にできません</string>
-    <string name="start_in_past">過去のイベントはスケジュールできません</string>
     <string name="event_added">イベントを正常に追加しました</string>
     <string name="past_event_added">過去のイベントを正常に追加しました</string>
     <string name="event_updated">イベントを正常に更新しました</string>
@@ -42,8 +41,6 @@
     <string name="reminder">リマインダー</string>
     <string name="no_reminder">No reminder</string>
     <string name="at_start">開始時</string>
-    <string name="mins_before_10">10 minutes before</string>
-    <string name="mins_before_30">30 minutes before</string>
     <string name="custom">カスタム</string>
     <string name="before">前</string>
     <string name="minutes_raw">分</string>
@@ -77,8 +74,6 @@
 
     <!-- Event details -->
     <string name="title">タイトル</string>
-    <string name="start">開始</string>
-    <string name="end">終了 (任意)</string>
     <string name="description">説明</string>
     <string name="all_day">All-day</string>
 
@@ -93,16 +88,10 @@
     <string name="vibrate">リマインダー通知で振動</string>
     <string name="reminder_sound">Reminder sound</string>
     <string name="default_event_reminder">デフォルトのイベント リマインダー</string>
-    <string name="notification_sound">Notification sound</string>
     <string name="no_ringtone_picker">No app capable of setting ringtone found</string>
     <string name="no_ringtone_selected">None</string>
     <string name="day_end_before_start">The day cannot end earlier than it starts</string>
     <string name="google_sync">Google sync</string>
-
-    <plurals name="events_deleted">
-        <item quantity="one">%1$d イベントを削除しました</item>
-        <item quantity="other">%1$d イベントを削除しました</item>
-    </plurals>
 
     <string name="january">1月</string>
     <string name="february">2月</string>

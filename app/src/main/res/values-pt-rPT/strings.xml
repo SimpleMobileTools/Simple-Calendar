@@ -20,7 +20,6 @@
     <string name="new_event">Novo evento</string>
     <string name="title_empty">O título não pode estar vazio</string>
     <string name="end_before_start">O evento não pode terminar antes de iniciar</string>
-    <string name="start_in_past">Não pode agendar eventos para o passado</string>
     <string name="event_added">Evento adicionado com sucesso</string>
     <string name="past_event_added">Evento no passado adicionado com sucesso</string>
     <string name="event_updated">Evento atualizado com sucesso</string>
@@ -42,8 +41,6 @@
     <string name="reminder">Lembrete</string>
     <string name="no_reminder">Sem lembrete</string>
     <string name="at_start">No início</string>
-    <string name="mins_before_10">10 minutos antes</string>
-    <string name="mins_before_30">30 minutos antes</string>
     <string name="custom">Personalizado</string>
     <string name="before">antes</string>
     <string name="minutes_raw">minutos</string>
@@ -77,8 +74,6 @@
 
     <!-- Event details -->
     <string name="title">Título</string>
-    <string name="start">Início</string>
-    <string name="end">Fim (opcional)</string>
     <string name="description">Descrição</string>
     <string name="all_day">Todo o dia</string>
 
@@ -93,16 +88,10 @@
     <string name="vibrate">Vibrar ao notificar sobre o lembrete</string>
     <string name="reminder_sound">Som do lembrete</string>
     <string name="default_event_reminder">Lembrete padrão</string>
-    <string name="notification_sound">Som da notificação</string>
     <string name="no_ringtone_picker">Não foi encontrada qualquer aplicação capaz de definir o som</string>
     <string name="no_ringtone_selected">Nenhum</string>
     <string name="day_end_before_start">O dia final não pode ser antes do inicial</string>
     <string name="google_sync">Sincronização Google</string>
-
-    <plurals name="events_deleted">
-        <item quantity="one">%1$d evento apagado</item>
-        <item quantity="other">%1$d eventos apagados</item>
-    </plurals>
 
     <string name="january">janeiro</string>
     <string name="february">fevereiro</string>

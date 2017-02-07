@@ -1,0 +1,159 @@
+<resources>
+    <string name="app_name">Jednoduchý kalendár</string>
+    <string name="app_launcher_name">Kalendár</string>
+    <string name="change_view">Zmeniť pohľad</string>
+    <string name="weekly_view">Týždenný</string>
+    <string name="monthly_view">Mesačný</string>
+    <string name="yearly_view">Ročný</string>
+    <string name="simple_event_list">Jednoduchý zoznam</string>
+    <string name="no_upcoming_events">Nemáte žiadne naplánované udalosti.</string>
+    <string name="add_some_events">Viete ich pridať pomocou tlačidla Plus v pravom dolnom rohu.</string>
+    <string name="details">Detaily</string>
+
+    <!-- Widget titles -->
+    <string name="widget_monthly">Kalendár mesačný</string>
+    <string name="widget_list">Kalendár so zoznamom</string>
+
+    <!-- Event -->
+    <string name="event">Udalosť</string>
+    <string name="edit_event">Upraviť udalosť</string>
+    <string name="new_event">Nová udalosť</string>
+    <string name="title_empty">Prosím zadajte názov</string>
+    <string name="end_before_start">Udalosť nemôže skončiť skôr ako by začala</string>
+    <string name="event_added">Udalosť bola úspešne pridaná</string>
+    <string name="past_event_added">Udalosť v minulosti bola úspešne pridaná</string>
+    <string name="event_updated">Udalosť bola úspešne upravená</string>
+
+    <!-- Event Repetition -->
+    <string name="select_repeat_interval">Zvoľte opakovanie</string>
+    <string name="repetition">Opakovanie</string>
+    <string name="no_repetition">Neopakuje sa</string>
+    <string name="daily">Denne</string>
+    <string name="weekly">Týždenne</string>
+    <string name="biweekly">Dvojtýždenne</string>
+    <string name="monthly">Mesačne</string>
+    <string name="yearly">Ročne</string>
+    <string name="repeat_till">Opakovať do:</string>
+    <string name="forever">Navždy</string>
+
+    <!-- Event Reminders -->
+    <string name="select_event_reminder">Zvoľte pripomienku</string>
+    <string name="reminder">Pripomenka</string>
+    <string name="no_reminder">Žiadna pripomienka</string>
+    <string name="at_start">Na začiatku</string>
+    <string name="custom">Vlastná</string>
+    <string name="before">pred</string>
+    <string name="minutes_raw">minúty</string>
+    <string name="hours_raw">hodiny</string>
+    <string name="days_raw">dni</string>
+    <string name="add_another_reminder">Pridať ďalšiu pripomienku</string>
+
+    <plurals name="minutes">
+        <item quantity="one">%1$d minútu vopred</item>
+        <item quantity="other">%1$d minút vopred</item>
+    </plurals>
+
+    <plurals name="hours">
+        <item quantity="one">%1$d hodinu vopred</item>
+        <item quantity="other">%1$d hodín vopred</item>
+    </plurals>
+
+    <plurals name="days">
+        <item quantity="one">%1$d deň vopred</item>
+        <item quantity="other">%1$d dní vopred</item>
+    </plurals>
+
+    <!-- Importing -->
+    <string name="import_events">Importovať udalosti</string>
+    <string name="import_events_from_ics">Importovať udalosti z .ics súboru</string>
+    <string name="event_reminder">Pripomienka udalosti</string>
+    <string name="events_imported_successfully">Udalosti boli úspešne importované</string>
+    <string name="importing_events_failed">Importovanie udalostí zlyhalo</string>
+    <string name="importing_some_events_failed">Importovanie niektorých udalostí zlyhalo</string>
+    <string name="invalid_file_format">Nesprávny formát súboru</string>
+
+    <!-- Event details -->
+    <string name="title">Názov</string>
+    <string name="description">Popis</string>
+    <string name="all_day">Celodenná</string>
+
+    <!-- Weekly view -->
+    <string name="week">Týždeň</string>
+
+    <!-- Settings -->
+    <string name="sunday_first">Začať týždeň nedeľou</string>
+    <string name="start_weekly_at">Začať týždenný pohľad o</string>
+    <string name="end_weekly_at">Ukončiť týždenný pohľad o</string>
+    <string name="week_numbers">Zobraziť čísla týždňov v mesačnom pohľade</string>
+    <string name="vibrate">Vibrovať pri pripomienke</string>
+    <string name="reminder_sound">Zvučka pripomienky</string>
+    <string name="default_event_reminder">Predvolená hodnota pripomienky</string>
+    <string name="no_ringtone_picker">Nenašla sa žiadna aplikácia na zmenu zvučky</string>
+    <string name="no_ringtone_selected">Žiadna</string>
+    <string name="day_end_before_start">Deň nemôže skončiť skôr než začne</string>
+    <string name="google_sync">Google synchronizácia</string>
+
+    <string name="january">Január</string>
+    <string name="february">Február</string>
+    <string name="march">Marec</string>
+    <string name="april">Apríl</string>
+    <string name="may">Máj</string>
+    <string name="june">Jún</string>
+    <string name="july">Júl</string>
+    <string name="august">August</string>
+    <string name="september">September</string>
+    <string name="october">Október</string>
+    <string name="november">November</string>
+    <string name="december">December</string>
+
+    <string name="monday_letter">P</string>
+    <string name="tuesday_letter">U</string>
+    <string name="wednesday_letter">S</string>
+    <string name="thursday_letter">Š</string>
+    <string name="friday_letter">P</string>
+    <string name="saturday_letter">S</string>
+    <string name="sunday_letter">N</string>
+
+    <!-- List widget config example events -->
+    <string name="sample_title_1">Cvičenie</string>
+    <string name="sample_description_1">Nohy</string>
+    <string name="sample_title_2">Stretnutie s Janom</string>
+    <string name="sample_description_2">V Astone</string>
+    <string name="sample_title_3">Knižnica</string>
+    <string name="sample_title_4">Obed s Katkou</string>
+    <string name="sample_description_4">V supermarkete</string>
+    <string name="sample_title_5">Káva</string>
+
+    <!-- Release notes -->
+    <string name="release_54">Allow setting up to 3 reminders per event</string>
+    <string name="release_52">Added all-day long event support</string>
+    <string name="release_51">Allow importing events from .ics files</string>
+    <string name="release_49">Allow picking colors by hex codes</string>
+    <string name="release_48">Added a weekly view</string>
+    <string name="release_46">Event reminder types have been tweaked, please update them</string>
+    <string name="release_44">
+        Added more color customization options\n
+        Your settings have been cleared, please reset them</string>
+    <string name="release_42">Allow changing the reminder notification sound</string>
+    <string name="release_40">Added a new view, a list of upcoming events</string>
+    <string name="release_39">Added the option to vibrate at notifications</string>
+
+    <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
+    <!-- Short description has to have less than 80 chars -->
+    <string name="app_short_description">Jednoduchý kalendár s udalosťami, upraviteľným widgetom a bez reklám</string>
+    <string name="app_long_description">
+        Offline kalendár bez integrácie iného kalendára. Viete si jednoducho vytvoriť opakujúce sa udalosti s pripomienkami, alebo zobraziť čísla týždňov.
+
+
+        Obsahuje škálovateľný 4x4 widget, kde viete upraviť farbu textu, ako aj priehľadnosť a farbu pozadia.
+
+        Neobsahuje žiadne reklamy a nepotrebné oprávnenia. Je opensource, poskytuje možnosť zmeny farieb.
+
+        Táto aplikácia je iba jednou zo skupiny aplikácií. Ostatné viete nájsť na http://www.simplemobiletools.com
+    </string>
+
+    <!--
+        Haven't found some strings? There's more at
+        https://github.com/SimpleMobileTools/Simple-Commons/tree/master/library/src/main/res
+    -->
+</resources>

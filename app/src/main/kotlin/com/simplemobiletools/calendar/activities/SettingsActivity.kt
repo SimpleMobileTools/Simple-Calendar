@@ -135,7 +135,7 @@ class SettingsActivity : SimpleActivity() {
         settings_reminder_sound_holder.setOnClickListener {
             Intent(RingtoneManager.ACTION_RINGTONE_PICKER).apply {
                 putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_NOTIFICATION)
-                putExtra(RingtoneManager.EXTRA_RINGTONE_TITLE, resources.getString(R.string.notification_sound))
+                putExtra(RingtoneManager.EXTRA_RINGTONE_TITLE, resources.getString(R.string.reminder_sound))
                 putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, Uri.parse(config.reminderSound))
 
                 if (resolveActivity(packageManager) != null)

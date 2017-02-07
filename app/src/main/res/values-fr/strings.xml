@@ -20,7 +20,6 @@
     <string name="new_event">Nouvel Evénement</string>
     <string name="title_empty">Le titre ne peut pas être vide</string>
     <string name="end_before_start">L\'événement ne peut pas se terminer plus tôt qu\'il ne commence</string>
-    <string name="start_in_past">Vous ne pouvez pas planifier d\'événement dans le passé</string>
     <string name="event_added">Evénement ajouté avec succès</string>
     <string name="past_event_added">Evénement dans le passé ajouté avec succès</string>
     <string name="event_updated">Evénement ajouté avec succès</string>
@@ -42,8 +41,6 @@
     <string name="reminder">Rappel</string>
     <string name="no_reminder">No reminder</string>
     <string name="at_start">Au démarrage</string>
-    <string name="mins_before_10">10 minutes before</string>
-    <string name="mins_before_30">30 minutes before</string>
     <string name="custom">Personnalisé</string>
     <string name="before">avant</string>
     <string name="minutes_raw">minutes</string>
@@ -77,8 +74,6 @@
 
     <!-- Event details -->
     <string name="title">Titre</string>
-    <string name="start">Début</string>
-    <string name="end">Fin (optionnel)</string>
     <string name="description">Description</string>
     <string name="all_day">All-day</string>
 
@@ -93,16 +88,10 @@
     <string name="vibrate">Vibrer à la notification de rappel</string>
     <string name="reminder_sound">Son de rappel</string>
     <string name="default_event_reminder">Rappel d\'événement par défaut</string>
-    <string name="notification_sound">Son de notification</string>
     <string name="no_ringtone_picker">Aucune application capable de configurer la sonnerie trouvée</string>
     <string name="no_ringtone_selected">None</string>
     <string name="day_end_before_start">The day cannot end earlier than it starts</string>
     <string name="google_sync">Google sync</string>
-
-    <plurals name="events_deleted">
-        <item quantity="one">%1$d événement supprimé</item>
-        <item quantity="other">%1$d événements supprimés</item>
-    </plurals>
 
     <string name="january">Janvier</string>
     <string name="february">Février</string>
