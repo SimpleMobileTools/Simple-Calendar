@@ -80,7 +80,14 @@
     <!-- Weekly view -->
     <string name="week">Week</string>
 
+    <!-- Event types -->
+    <string name="add_new_type">Add a new type</string>
+    <string name="type_already_exists">Type with this title already exists</string>
+    <string name="color">Color</string>
+    <string name="regular_event">Regular event</string>
+
     <!-- Settings -->
+    <string name="manage_event_types">Manage event types</string>
     <string name="sunday_first">日曜日が最初</string>
     <string name="start_weekly_at">Start weekly view day at</string>
     <string name="end_weekly_at">End weekly view day at</string>

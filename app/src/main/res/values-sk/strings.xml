@@ -80,7 +80,14 @@
     <!-- Weekly view -->
     <string name="week">Týždeň</string>
 
+    <!-- Event types -->
+    <string name="add_new_type">Pridať nový typ</string>
+    <string name="type_already_exists">Typ s daným názvom už existuje</string>
+    <string name="color">Farba</string>
+    <string name="regular_event">Bežná udalosť</string>
+
     <!-- Settings -->
+    <string name="manage_event_types">Manage event types</string>
     <string name="sunday_first">Začať týždeň nedeľou</string>
     <string name="start_weekly_at">Začať týždenný pohľad o</string>
     <string name="end_weekly_at">Ukončiť týždenný pohľad o</string>
