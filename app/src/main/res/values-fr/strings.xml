@@ -144,10 +144,11 @@
     <string name="app_long_description">
         Un calendrier hors ligne sans aucune autre intégration de calendrier. Vous pouvez aisément créer des événements récurrents et configurer des rappels, il est aussi possible d\'afficher les numéros de semaine.
 
-
         Contient un widget 4x4 redimensionnable où vous pouvez personnaliser la couleur du texte, ainsi que l\'alpha et la couleur de l\'arrière plan.
 
         Ne contient pas de publicités ou de permissions inutiles. Complètement opensource, fournit une personnalisation des couleurs.
+
+        The Storage permission is needed only for importing events from .ics files.
 
         Cette application est juste une pièce d\'une plus grosse série d\'applications. Vous pouvez trouver le reste de celles-ci à http://www.simplemobiletools.com
     </string>

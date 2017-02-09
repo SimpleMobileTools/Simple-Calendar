@@ -144,10 +144,11 @@
     <string name="app_long_description">
         En fristående kalender utan några andra kalenderintegration. Du kan enkelt skapa återkommande händelser och ställa in påminnelser, den kan också visa veckonumret.
 
-
         Innehåller en skalbart 4x4 widget där du kan ändra textfärgen och färgen på bakgrunden.
 
         Innehåller ingen reklam eller onödiga behörigheter. Det är helt och hållet opensource, innehåller anpassningsbara färger.
+
+        The Storage permission is needed only for importing events from .ics files.
 
         Detta är bara en app i en serie av appar. Du hittar resten av dem här http://www.simplemobiletools.com
     </string>

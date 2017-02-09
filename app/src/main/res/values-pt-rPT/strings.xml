@@ -144,10 +144,11 @@
     <string name="app_long_description">
         Um calendário local que não possui qualquer tipo de integração. Pode adicionar eventos e lembretes recorrentes e possui uma opção para mostrar o número da semana.
 
-
         Contém um widget 4x4, em que pode personalizar a cor do texto, bem como a cor e o valor alfa do fundo.
 
         Não contém anúncios nem permissões desnecessárias. Disponibiliza um tema escuro e é totalmente \'open source\'.
+
+        The Storage permission is needed only for importing events from .ics files.
 
         Esta aplicação é apenas parte de um conjunto mais vasto de aplicações. Saiba mais em http://www.simplemobiletools.com
     </string>

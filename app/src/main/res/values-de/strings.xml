@@ -148,6 +148,8 @@
         
         Dieser Kalender enthält weder Werbung noch unnötige App-Berechtigung und ist vollständig Opensource.
 
+        The Storage permission is needed only for importing events from .ics files.
+
         Dieses App ist Teil einer grösseren Serie von Apps. Diese findet man unter http://www.simplemobiletools.com
     </string>
 

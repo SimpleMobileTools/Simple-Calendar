@@ -144,10 +144,11 @@
     <string name="app_long_description">
         एक ऑफलाइन कैलेंडर बिना अन्य कैलेंडर इंटीग्रेशन के। आप आसानी से इवेंट्स व रिमाइंडर बना सकते हैं, यह सफ्ताह क्रमांक भी दर्शाता हैं।
 
-
         इसमें आकार बदल सकने वाला 4x4 विजेट हैं जहा आप टेक्स्ट का रंग अनुकूलित कर सकते हैं, और अल्फा व बैकग्राउंड का रंग भी बदल सकते हैं।
 
         कोई भी विज्ञापन व अनावश्यक अनुमतियों की आवश्यकता नहीं। यह पूर्ण रूप से ओपन सोर्स हैं, और काली थीम हैं।
+
+        The Storage permission is needed only for importing events from .ics files.
 
         This app is just one piece of a bigger series of apps. You can find the rest of them at http://www.simplemobiletools.com
     </string>

@@ -144,10 +144,11 @@
     <string name="app_long_description">
         他のカレンダーとは統合されていないオフラインカレンダー。 簡単に定期的なイベントを作成し、リマインダーを設定することができます。また、週番号も表示することができます。
 
-
         サイズ変更が可能な 4x4 ウィジェットが含まれており、文字の色や背景のアルファや色をカスタマイズすることができます。
 
         広告や不要なアクセス許可は含まれていません。 完全にオープンソースで、ダークテーマも提供しています。
+
+        The Storage permission is needed only for importing events from .ics files.
 
         このアプリは、大きな一連のアプリの一つです。 他のアプリは http://www.simplemobiletools.com で見つけることができます
     </string>
