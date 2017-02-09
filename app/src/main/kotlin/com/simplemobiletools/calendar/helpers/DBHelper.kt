@@ -28,6 +28,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
     private val COL_REMINDER_MINUTES_3 = "reminder_minutes_3"
     private val COL_IMPORT_ID = "import_id"
     private val COL_FLAGS = "flags"
+    private val COL_TYPE = "type"
 
     private val META_TABLE_NAME = "events_meta"
     private val COL_EVENT_ID = "event_id"
@@ -37,12 +38,17 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
     private val COL_REPEAT_DAY = "repeat_day"
     private val COL_REPEAT_LIMIT = "repeat_limit"
 
+    private val TYPES_TABLE_NAME = "event_types"
+    private val COL_TYPE_ID = "event_type_id"
+    private val COL_TYPE_TITLE = "event_type_title"
+    private val COL_TYPE_COLOR = "event_type_color"
+
     private var mEventsListener: EventUpdateListener? = null
     private var context: Context? = null
 
     companion object {
         private val DB_NAME = "events.db"
-        private val DB_VERSION = 6
+        private val DB_VERSION = 7
         lateinit private var mDb: SQLiteDatabase
     }
 
@@ -58,9 +64,10 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL("CREATE TABLE $MAIN_TABLE_NAME ($COL_ID INTEGER PRIMARY KEY, $COL_START_TS INTEGER, $COL_END_TS INTEGER, $COL_TITLE TEXT, " +
                 "$COL_DESCRIPTION TEXT, $COL_REMINDER_MINUTES INTEGER, $COL_REMINDER_MINUTES_2 INTEGER, $COL_REMINDER_MINUTES_3 INTEGER, " +
-                "$COL_IMPORT_ID TEXT, $COL_FLAGS INTEGER)")
+                "$COL_IMPORT_ID TEXT, $COL_FLAGS INTEGER, $COL_TYPE INTEGER)")
 
         createMetaTable(db)
+        createTypesTable(db)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
@@ -85,11 +92,20 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
             db.execSQL("ALTER TABLE $MAIN_TABLE_NAME ADD COLUMN $COL_REMINDER_MINUTES_2 INTEGER NOT NULL DEFAULT -1")
             db.execSQL("ALTER TABLE $MAIN_TABLE_NAME ADD COLUMN $COL_REMINDER_MINUTES_3 INTEGER NOT NULL DEFAULT -1")
         }
+
+        if (oldVersion < 7) {
+            createTypesTable(db)
+            db.execSQL("ALTER TABLE $MAIN_TABLE_NAME ADD COLUMN $COL_TYPE INTEGER NOT NULL DEFAULT 0")
+        }
     }
 
     private fun createMetaTable(db: SQLiteDatabase) {
         db.execSQL("CREATE TABLE $META_TABLE_NAME ($COL_ID INTEGER PRIMARY KEY, $COL_EVENT_ID INTEGER UNIQUE, $COL_REPEAT_START INTEGER, " +
                 "$COL_REPEAT_INTERVAL INTEGER, $COL_REPEAT_MONTH INTEGER, $COL_REPEAT_DAY INTEGER, $COL_REPEAT_LIMIT INTEGER)")
+    }
+
+    private fun createTypesTable(db: SQLiteDatabase) {
+        db.execSQL("CREATE TABLE $TYPES_TABLE_NAME ($COL_TYPE_ID INTEGER PRIMARY KEY, $COL_TYPE_TITLE TEXT, $COL_TYPE_COLOR INTEGER)" )
     }
 
     fun insert(event: Event, insertListener: (event: Event) -> Unit) {
