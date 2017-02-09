@@ -10,6 +10,7 @@ import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.adapters.EventListAdapter
+import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.helpers.DBHelper
 import com.simplemobiletools.calendar.helpers.EVENT_ID
@@ -87,6 +88,8 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, DBHelper.Event
     private fun checkPlaceholderVisibility() {
         mView.calendar_empty_list_placeholder.beVisibleIf(mAllEvents.isEmpty())
         mView.calendar_events_list.beGoneIf(mAllEvents.isEmpty())
+        if (activity != null)
+            mView.calendar_empty_list_placeholder.setTextColor(activity.config.textColor)
     }
 
     private fun editEvent(eventId: Int) {

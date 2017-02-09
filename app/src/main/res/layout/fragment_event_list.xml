@@ -21,7 +21,6 @@
         android:id="@+id/calendar_empty_list_placeholder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:alpha="0.5"
         android:gravity="center_horizontal"
         android:lineSpacingExtra="1dp"
         android:padding="@dimen/big_margin"
