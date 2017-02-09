@@ -81,6 +81,7 @@
     <string name="week">Týždeň</string>
 
     <!-- Event types -->
+    <string name="event_types">Typy udalostí</string>
     <string name="add_new_type">Pridať nový typ</string>
     <string name="type_already_exists">Typ s daným názvom už existuje</string>
     <string name="color">Farba</string>

@@ -77,6 +77,11 @@
             android:label="@string/settings"
             android:parentActivityName=".activities.MainActivity"/>
 
+        <activity
+            android:name=".activities.ManageEventTypesActivity"
+            android:label="@string/event_types"
+            android:parentActivityName=".activities.SettingsActivity"/>
+
         <receiver
             android:name=".helpers.MyWidgetMonthlyProvider"
             android:icon="@drawable/img_widget_monthly_preview"

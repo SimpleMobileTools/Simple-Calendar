@@ -40,6 +40,7 @@ class SettingsActivity : SimpleActivity() {
         super.onResume()
 
         setupCustomizeColors()
+        setupManageEventTypes()
         setupSundayFirst()
         setupGoogleSync()
         setupWeeklyStart()
@@ -54,6 +55,12 @@ class SettingsActivity : SimpleActivity() {
     private fun setupCustomizeColors() {
         settings_customize_colors_holder.setOnClickListener {
             startCustomizationActivity()
+        }
+    }
+
+    private fun setupManageEventTypes() {
+        settings_manage_event_types_holder.setOnClickListener {
+            startActivity(Intent(this, ManageEventTypesActivity::class.java))
         }
     }
 

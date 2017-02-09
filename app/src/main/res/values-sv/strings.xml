@@ -81,6 +81,7 @@
     <string name="week">Vecka</string>
 
     <!-- Event types -->
+    <string name="event_types">Event types</string>
     <string name="add_new_type">Add a new type</string>
     <string name="type_already_exists">Type with this title already exists</string>
     <string name="color">Color</string>
