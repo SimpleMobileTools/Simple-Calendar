@@ -64,7 +64,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL("CREATE TABLE $MAIN_TABLE_NAME ($COL_ID INTEGER PRIMARY KEY, $COL_START_TS INTEGER, $COL_END_TS INTEGER, $COL_TITLE TEXT, " +
                 "$COL_DESCRIPTION TEXT, $COL_REMINDER_MINUTES INTEGER, $COL_REMINDER_MINUTES_2 INTEGER, $COL_REMINDER_MINUTES_3 INTEGER, " +
-                "$COL_IMPORT_ID TEXT, $COL_FLAGS INTEGER, $COL_EVENT_TYPE INTEGER)")
+                "$COL_IMPORT_ID TEXT, $COL_FLAGS INTEGER, $COL_EVENT_TYPE INTEGER NOT NULL DEFAULT $REGULAR_EVENT_ID)")
 
         createMetaTable(db)
         createTypesTable(db)
@@ -95,7 +95,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
         if (oldVersion < 7) {
             createTypesTable(db)
-            db.execSQL("ALTER TABLE $MAIN_TABLE_NAME ADD COLUMN $COL_EVENT_TYPE INTEGER NOT NULL DEFAULT 0")
+            db.execSQL("ALTER TABLE $MAIN_TABLE_NAME ADD COLUMN $COL_EVENT_TYPE INTEGER NOT NULL DEFAULT $REGULAR_EVENT_ID")
         }
     }
 
@@ -164,6 +164,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             put(COL_REMINDER_MINUTES_3, event.reminder3Minutes)
             put(COL_IMPORT_ID, event.importId)
             put(COL_FLAGS, event.flags)
+            put(COL_EVENT_TYPE, event.eventType)
         }
     }
 
@@ -396,13 +397,13 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         return events
     }
 
-    fun getEventTypes(callback: (types: List<EventType>) -> Unit) {
+    fun getEventTypes(callback: (types: ArrayList<EventType>) -> Unit) {
         Thread({
             fetchEventTypes(callback)
         }).start()
     }
 
-    fun fetchEventTypes(callback: (types: List<EventType>) -> Unit) {
+    fun fetchEventTypes(callback: (types: ArrayList<EventType>) -> Unit) {
         val eventTypes = ArrayList<EventType>(3)
         val cols = arrayOf(COL_TYPE_ID, COL_TYPE_TITLE, COL_TYPE_COLOR)
         var cursor: Cursor? = null

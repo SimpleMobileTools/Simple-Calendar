@@ -10,6 +10,7 @@ import android.view.WindowManager
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.dialogs.EventReminderDialog
 import com.simplemobiletools.calendar.dialogs.EventRepeatIntervalDialog
+import com.simplemobiletools.calendar.dialogs.SelectEventTypeDialog
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.getAppropriateTheme
 import com.simplemobiletools.calendar.extensions.getReminderText
@@ -66,7 +67,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         updateStartTime()
         updateEndDate()
         updateEndTime()
-        updateEventType()
+        updateEventTypeText()
 
         mWasEndDateSet = event != null
         mWasEndTimeSet = event != null
@@ -84,7 +85,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         event_reminder_2.setOnClickListener { showReminder2Dialog() }
         event_reminder_3.setOnClickListener { showReminder3Dialog() }
 
-        event_type.setOnClickListener { }
+        event_type.setOnClickListener { showEventTypeDialog() }
 
         if (mEvent.flags and FLAG_ALL_DAY != 0)
             event_all_day.toggle()
@@ -179,6 +180,13 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         }
     }
 
+    private fun showEventTypeDialog() {
+        SelectEventTypeDialog(this, mEventType) {
+            mEventType = it
+            updateEventTypeText()
+        }
+    }
+
     private fun checkReminderTexts() {
         updateReminder1Text()
         updateReminder2Text()
@@ -224,7 +232,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         event_repetition.text = getRepetitionToString(mRepeatInterval)
     }
 
-    private fun updateEventType() {
+    private fun updateEventTypeText() {
         event_type.text = DBHelper.newInstance(applicationContext).getEventTypeTitle(mEventType)
     }
 
@@ -297,6 +305,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             repeatInterval = mRepeatInterval
             flags = if (event_all_day.isChecked) (mEvent.flags or FLAG_ALL_DAY) else (mEvent.flags.removeFlag(FLAG_ALL_DAY))
             repeatLimit = if (repeatInterval == 0) 0 else mRepeatLimit
+            eventType = mEventType
         }
 
         if (mEvent.id == 0) {

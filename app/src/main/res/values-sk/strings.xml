@@ -88,6 +88,7 @@
     <string name="color">Farba</string>
     <string name="regular_event">Bežná udalosť</string>
     <string name="cannot_delete_default_type">Predvolený typ nie je možné vymazať</string>
+    <string name="select_event_type">Zvoľte typ udalosti</string>
 
     <!-- Settings -->
     <string name="manage_event_types">Manage event types</string>
