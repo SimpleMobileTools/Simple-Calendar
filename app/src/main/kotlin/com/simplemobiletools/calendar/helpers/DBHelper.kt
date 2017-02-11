@@ -338,6 +338,33 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         return events
     }
 
+    fun getEventTypes(callback: (types: List<EventType>) -> Unit) {
+        Thread({
+            fetchEventTypes(callback)
+        }).start()
+    }
+
+    fun fetchEventTypes(callback: (types: List<EventType>) -> Unit) {
+        val eventTypes = ArrayList<EventType>(3)
+        val cols = arrayOf(COL_TYPE_ID, COL_TYPE_TITLE, COL_TYPE_COLOR)
+        var cursor: Cursor? = null
+        try {
+            cursor = mDb.query(TYPES_TABLE_NAME, cols, null, null, null, null, COL_TYPE_ID)
+            if (cursor?.moveToFirst() == true) {
+                do {
+                    val id = cursor.getIntValue(COL_TYPE_ID)
+                    val title = cursor.getStringValue(COL_TYPE_TITLE)
+                    val color = cursor.getIntValue(COL_TYPE_COLOR)
+                    val eventType = EventType(id, title, color)
+                    eventTypes.add(eventType)
+                } while (cursor.moveToNext())
+            }
+        } finally {
+            cursor?.close()
+        }
+        callback.invoke(eventTypes)
+    }
+
     interface EventUpdateListener {
         fun eventInserted(event: Event)
 
