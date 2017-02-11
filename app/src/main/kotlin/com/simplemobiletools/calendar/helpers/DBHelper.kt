@@ -51,6 +51,8 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     companion object {
         private val DB_NAME = "events.db"
         private val DB_VERSION = 7
+        val REGULAR_EVENT_ID = 1
+
         private var mEventsListener: EventUpdateListener? = null
 
         fun newInstance(context: Context, callback: EventUpdateListener? = null): DBHelper {
@@ -237,7 +239,14 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     }
 
     fun deleteEventTypes(ids: ArrayList<Int>, callback: (deletedCnt: Int) -> Unit) {
-        val args = TextUtils.join(", ", ids)
+        var deleteIds = ids
+        if (ids.contains(DBHelper.REGULAR_EVENT_ID))
+            deleteIds = ids.filter { it != DBHelper.REGULAR_EVENT_ID } as ArrayList<Int>
+
+        if (deleteIds.isEmpty())
+            return
+
+        val args = TextUtils.join(", ", deleteIds)
         val selection = "$COL_TYPE_ID IN ($args)"
         callback.invoke(mDb.delete(TYPES_TABLE_NAME, selection, null))
     }

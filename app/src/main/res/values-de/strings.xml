@@ -87,6 +87,7 @@
     <string name="type_already_exists">Type with this title already exists</string>
     <string name="color">Color</string>
     <string name="regular_event">Regular event</string>
+    <string name="cannot_delete_default_type">Default event type cannot be deleted</string>
 
     <!-- Settings -->
     <string name="manage_event_types">Manage event types</string>
