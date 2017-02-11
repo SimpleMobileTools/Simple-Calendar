@@ -15,6 +15,10 @@ class ManageEventTypesActivity : SimpleActivity() {
 
         }
 
-        updateTextColors(manage_event_types_scrollview)
+        manage_event_types_fab.setOnClickListener {
+
+        }
+
+        updateTextColors(manage_event_types_coordinator)
     }
 }

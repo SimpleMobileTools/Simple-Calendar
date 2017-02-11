@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/manage_event_types_scrollview"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/manage_event_types_coordinator"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/manage_event_types_holder"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/manage_event_types_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:clipToPadding="false"
+        android:paddingLeft="@dimen/activity_margin"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
 
-    </LinearLayout>
-</ScrollView>
+    <com.simplemobiletools.commons.views.MyFloatingActionButton
+        android:id="@+id/manage_event_types_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/activity_margin"
+        android:src="@drawable/ic_plus"
+        app:backgroundTint="@color/color_primary"
+        app:rippleColor="@color/pressed_item_foreground"/>
+
+</android.support.design.widget.CoordinatorLayout>
