@@ -79,7 +79,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
         event_all_day.setOnCheckedChangeListener { compoundButton, isChecked -> toggleAllDay(isChecked) }
         event_repetition.setOnClickListener { showRepeatIntervalDialog() }
-        event_repetition_limit.setOnClickListener { showRepetitionLimitDialog() }
+        event_repetition_limit_holder.setOnClickListener { showRepetitionLimitDialog() }
 
         event_reminder_1.setOnClickListener { showReminder1Dialog() }
         event_reminder_2.setOnClickListener { showReminder2Dialog() }
@@ -149,8 +149,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     }
 
     private fun checkRepeatLimit(limit: Int) {
-        event_repetition_limit.beGoneIf(limit == 0)
-        event_repetition_limit_label.beGoneIf(limit == 0)
+        event_repetition_limit_holder.beGoneIf(limit == 0)
         checkRepetitionLimitText()
     }
 

@@ -239,39 +239,45 @@
             android:paddingTop="@dimen/normal_margin"
             android:textSize="@dimen/day_text_size"/>
 
-        <com.simplemobiletools.commons.views.MyTextView
-            android:id="@+id/event_repetition_limit_label"
+        <RelativeLayout
+            android:id="@+id/event_repetition_limit_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/event_repetition"
             android:layout_alignStart="@+id/event_repetition"
             android:layout_below="@+id/event_repetition"
-            android:layout_toLeftOf="@+id/event_repetition_limit"
-            android:layout_toStartOf="@+id/event_repetition_limit"
-            android:paddingBottom="@dimen/activity_margin"
-            android:paddingTop="@dimen/activity_margin"
-            android:text="@string/repeat_till"
-            android:textSize="@dimen/day_text_size"
-            android:visibility="gone"/>
-
-        <com.simplemobiletools.commons.views.MyTextView
-            android:id="@+id/event_repetition_limit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/event_repetition"
             android:background="?attr/selectableItemBackground"
-            android:padding="@dimen/activity_margin"
-            android:text="@string/forever"
-            android:textSize="@dimen/day_text_size"
-            android:visibility="gone"/>
+            android:visibility="gone">
+
+            <com.simplemobiletools.commons.views.MyTextView
+                android:id="@+id/event_repetition_limit_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/event_repetition_limit"
+                android:layout_toStartOf="@+id/event_repetition_limit"
+                android:clickable="false"
+                android:paddingBottom="@dimen/activity_margin"
+                android:paddingTop="@dimen/activity_margin"
+                android:text="@string/repeat_till"
+                android:textSize="@dimen/day_text_size"/>
+
+            <com.simplemobiletools.commons.views.MyTextView
+                android:id="@+id/event_repetition_limit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:clickable="false"
+                android:padding="@dimen/activity_margin"
+                android:text="@string/forever"
+                android:textSize="@dimen/day_text_size"/>
+        </RelativeLayout>
 
         <ImageView
             android:id="@+id/event_repetition_divider"
             android:layout_width="match_parent"
             android:layout_height="1px"
-            android:layout_below="@+id/event_repetition_limit"
+            android:layout_below="@+id/event_repetition_limit_holder"
             android:layout_marginBottom="@dimen/medium_margin"
             android:layout_marginTop="@dimen/medium_margin"
             android:background="@color/darker_divider"/>
@@ -315,8 +321,8 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginEnd="@dimen/normal_margin"
-                android:layout_marginRight="@dimen/normal_margin"
+                android:layout_marginEnd="@dimen/activity_margin"
+                android:layout_marginRight="@dimen/activity_margin"
                 android:clickable="false"/>
 
         </RelativeLayout>
