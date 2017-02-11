@@ -111,7 +111,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
     private fun addRegularEventType(db: SQLiteDatabase) {
         val regularEvent = context.resources.getString(R.string.regular_event)
-        val eventType = EventType(1, regularEvent, context.config.primaryColor)
+        val eventType = EventType(REGULAR_EVENT_ID, regularEvent, context.config.primaryColor)
         addEventType(eventType, db)
     }
 
