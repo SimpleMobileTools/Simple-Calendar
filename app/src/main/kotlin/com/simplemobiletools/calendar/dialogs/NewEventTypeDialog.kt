@@ -16,7 +16,7 @@ import com.simplemobiletools.commons.extensions.toast
 import com.simplemobiletools.commons.extensions.value
 import kotlinx.android.synthetic.main.dialog_event_type.view.*
 
-class EventTypeDialog(val activity: Activity, var eventType: EventType? = null, val callback: () -> Unit) : AlertDialog.Builder(activity) {
+class NewEventTypeDialog(val activity: Activity, var eventType: EventType? = null, val callback: () -> Unit) : AlertDialog.Builder(activity) {
     var isNewEvent = eventType == null
 
     init {

@@ -3,7 +3,7 @@ package com.simplemobiletools.calendar.activities
 import android.os.Bundle
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.adapters.EventTypeAdapter
-import com.simplemobiletools.calendar.dialogs.EventTypeDialog
+import com.simplemobiletools.calendar.dialogs.NewEventTypeDialog
 import com.simplemobiletools.calendar.helpers.DBHelper
 import com.simplemobiletools.calendar.interfaces.DeleteItemsListener
 import com.simplemobiletools.calendar.models.EventType
@@ -27,7 +27,7 @@ class ManageEventTypesActivity : SimpleActivity(), DeleteItemsListener {
     }
 
     private fun showEventTypeDialog(eventType: EventType? = null) {
-        EventTypeDialog(this, eventType) {
+        NewEventTypeDialog(this, eventType) {
             getEventTypes()
         }
     }
