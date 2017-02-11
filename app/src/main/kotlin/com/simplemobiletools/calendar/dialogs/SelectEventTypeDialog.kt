@@ -8,7 +8,9 @@ import android.widget.RadioGroup
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.helpers.DBHelper
 import com.simplemobiletools.calendar.models.EventType
+import com.simplemobiletools.commons.extensions.hideKeyboard
 import com.simplemobiletools.commons.extensions.setupDialogStuff
+import com.simplemobiletools.commons.extensions.updateTextColors
 import kotlinx.android.synthetic.main.dialog_radio_group.view.*
 import java.util.*
 
@@ -21,7 +23,7 @@ class SelectEventTypeDialog(val activity: Activity, val currEventType: Int, val 
     var radioGroup: RadioGroup
 
     init {
-        val view = activity.layoutInflater.inflate(R.layout.dialog_radio_group, null)
+        val view = activity.layoutInflater.inflate(R.layout.dialog_radio_group, null) as ViewGroup
         radioGroup = view.dialog_radio_group
         radioGroup.setOnCheckedChangeListener(this)
 
@@ -33,6 +35,7 @@ class SelectEventTypeDialog(val activity: Activity, val currEventType: Int, val 
                 }
                 addRadioButton(activity.getString(R.string.add_new_type), NEW_TYPE_ID)
                 wasInit = true
+                activity.updateTextColors(view.dialog_radio_holder)
             }
         }
 
@@ -56,7 +59,11 @@ class SelectEventTypeDialog(val activity: Activity, val currEventType: Int, val 
             return
 
         if (checkedId == NEW_TYPE_ID) {
-
+            NewEventTypeDialog(activity) {
+                callback.invoke(it)
+                activity.hideKeyboard()
+                dialog?.dismiss()
+            }
         } else {
             callback.invoke(checkedId)
             dialog?.dismiss()

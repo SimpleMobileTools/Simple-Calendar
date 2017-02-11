@@ -192,16 +192,16 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         insertEventType(eventType, db)
     }
 
-    fun insertEventType(eventType: EventType, db: SQLiteDatabase = mDb): Boolean {
+    fun insertEventType(eventType: EventType, db: SQLiteDatabase = mDb): Int {
         val values = fillEventTypeValues(eventType)
-        return db.insert(TYPES_TABLE_NAME, null, values) != -1L
+        return db.insert(TYPES_TABLE_NAME, null, values).toInt()
     }
 
-    fun updateEventType(eventType: EventType): Boolean {
+    fun updateEventType(eventType: EventType): Int {
         val selectionArgs = arrayOf(eventType.id.toString())
         val values = fillEventTypeValues(eventType)
         val selection = "$COL_TYPE_ID = ?"
-        return mDb.update(TYPES_TABLE_NAME, values, selection, selectionArgs) == 1
+        return mDb.update(TYPES_TABLE_NAME, values, selection, selectionArgs)
     }
 
     private fun fillEventTypeValues(eventType: EventType): ContentValues {

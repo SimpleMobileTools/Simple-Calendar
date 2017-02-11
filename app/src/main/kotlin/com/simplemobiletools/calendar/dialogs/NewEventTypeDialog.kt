@@ -16,7 +16,7 @@ import com.simplemobiletools.commons.extensions.toast
 import com.simplemobiletools.commons.extensions.value
 import kotlinx.android.synthetic.main.dialog_event_type.view.*
 
-class NewEventTypeDialog(val activity: Activity, var eventType: EventType? = null, val callback: () -> Unit) : AlertDialog.Builder(activity) {
+class NewEventTypeDialog(val activity: Activity, var eventType: EventType? = null, val callback: (eventTypeId: Int) -> Unit) : AlertDialog.Builder(activity) {
     var isNewEvent = eventType == null
 
     init {
@@ -58,16 +58,16 @@ class NewEventTypeDialog(val activity: Activity, var eventType: EventType? = nul
 
                 eventType!!.title = title
 
-                val wasDbUpdated: Boolean
+                val eventTypeId: Int
                 if (isNewEvent) {
-                    wasDbUpdated = db.insertEventType(eventType!!)
+                    eventTypeId = db.insertEventType(eventType!!)
                 } else {
-                    wasDbUpdated = db.updateEventType(eventType!!)
+                    eventTypeId = db.updateEventType(eventType!!)
                 }
 
-                if (wasDbUpdated) {
+                if (eventTypeId != -1) {
                     dismiss()
-                    callback.invoke()
+                    callback.invoke(eventTypeId)
                 } else {
                     activity.toast(R.string.unknown_error_occurred)
                 }
