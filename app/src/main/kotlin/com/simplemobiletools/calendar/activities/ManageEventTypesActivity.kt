@@ -9,7 +9,6 @@ import com.simplemobiletools.calendar.interfaces.DeleteItemsListener
 import com.simplemobiletools.calendar.models.EventType
 import com.simplemobiletools.commons.extensions.toast
 import com.simplemobiletools.commons.extensions.updateTextColors
-import com.simplemobiletools.commons.views.RecyclerViewDivider
 import kotlinx.android.synthetic.main.activity_manage_event_types.*
 import java.util.*
 
@@ -41,13 +40,8 @@ class ManageEventTypesActivity : SimpleActivity(), DeleteItemsListener {
     }
 
     private fun gotEventTypes(eventTypes: List<EventType>) {
-        val eventTypesAdapter = EventTypeAdapter(this, eventTypes, this) {
+        manage_event_types_list.adapter = EventTypeAdapter(this, eventTypes, this) {
             showEventTypeDialog(it)
-        }
-
-        manage_event_types_list.apply {
-            this@apply.adapter = eventTypesAdapter
-            addItemDecoration(RecyclerViewDivider(context))
         }
     }
 
