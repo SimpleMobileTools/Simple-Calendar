@@ -263,9 +263,22 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         if (deleteIds.isEmpty())
             return
 
+        for (eventTypeId in deleteIds) {
+            resetEventsWithType(eventTypeId)
+        }
+
         val args = TextUtils.join(", ", deleteIds)
         val selection = "$COL_TYPE_ID IN ($args)"
         callback.invoke(mDb.delete(TYPES_TABLE_NAME, selection, null))
+    }
+
+    private fun resetEventsWithType(eventTypeId: Int) {
+        val values = ContentValues()
+        values.put(COL_EVENT_TYPE, REGULAR_EVENT_ID)
+
+        val selection = "$COL_EVENT_TYPE = ?"
+        val selectionArgs = arrayOf(eventTypeId.toString())
+        mDb.update(MAIN_TABLE_NAME, values, selection, selectionArgs)
     }
 
     fun getImportIds(): ArrayList<String> {
