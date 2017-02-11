@@ -16,23 +16,18 @@ class SelectEventTypeDialog(val activity: Activity, val currEventType: Int, val 
     val dialog: AlertDialog?
     var wasInit = false
     var eventTypes = ArrayList<EventType>()
+    var radioGroup: RadioGroup
 
     init {
         val view = activity.layoutInflater.inflate(R.layout.dialog_radio_group, null)
-        val radioGroup = view.dialog_radio_group
+        radioGroup = view.dialog_radio_group
         radioGroup.setOnCheckedChangeListener(this)
 
         DBHelper.newInstance(activity).getEventTypes {
+            eventTypes = it
             activity.runOnUiThread {
-                eventTypes = it
                 eventTypes.forEach {
-                    val radioButton = activity.layoutInflater.inflate(R.layout.radio_button, null) as RadioButton
-                    radioButton.apply {
-                        text = it.title
-                        isChecked = it.id == currEventType
-                        id = it.id
-                    }
-                    radioGroup.addView(radioButton, RadioGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT))
+                    addRadioButton(it)
                 }
                 wasInit = true
             }
@@ -42,6 +37,15 @@ class SelectEventTypeDialog(val activity: Activity, val currEventType: Int, val 
                 .create().apply {
             activity.setupDialogStuff(view, this, R.string.select_event_type)
         }
+    }
+
+    private fun addRadioButton(type: EventType) {
+        val radioButton = (activity.layoutInflater.inflate(R.layout.radio_button, null) as RadioButton).apply {
+            text = type.title
+            isChecked = type.id == currEventType
+            id = type.id
+        }
+        radioGroup.addView(radioButton, RadioGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT))
     }
 
     override fun onCheckedChanged(group: RadioGroup, checkedId: Int) {
