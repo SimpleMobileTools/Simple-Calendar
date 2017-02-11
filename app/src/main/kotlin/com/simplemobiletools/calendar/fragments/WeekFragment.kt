@@ -234,7 +234,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 val duration = endDateTime.minuteOfDay - startMinutes
 
                 (inflater.inflate(R.layout.week_event_marker, null, false) as TextView).apply {
-                    background = ColorDrawable(primaryColor)
+                    background = ColorDrawable(MainActivity.eventTypeColors.get(event.eventType, primaryColor))
                     text = event.title
                     activity.runOnUiThread {
                         layout.addView(this)
@@ -295,7 +295,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
     private fun addAllDayEvent(event: Event) {
         (inflater.inflate(R.layout.week_all_day_event_marker, null, false) as TextView).apply {
-            background = ColorDrawable(primaryColor)
+            background = ColorDrawable(MainActivity.eventTypeColors.get(event.eventType, primaryColor))
             text = event.title
 
             val startDateTime = Formatter.getDateTimeFromTS(event.startTS)

@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v4.view.ViewPager
+import android.util.SparseIntArray
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
@@ -51,6 +52,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
 
     companion object {
         var mWeekScrollY = 0
+        var eventTypeColors = SparseIntArray(3)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,6 +68,10 @@ class MainActivity : SimpleActivity(), NavigationListener {
         if (mStoredTextColor != config.textColor || mStoredBackgroundColor != config.backgroundColor || mStoredPrimaryColor != config.primaryColor)
             updateViewPager()
 
+        DBHelper.newInstance(applicationContext).getEventTypes {
+            eventTypeColors.clear()
+            it.map { eventTypeColors.put(it.id, it.color) }
+        }
         mStoredTextColor = config.textColor
         mStoredPrimaryColor = config.primaryColor
         mStoredBackgroundColor = config.backgroundColor
