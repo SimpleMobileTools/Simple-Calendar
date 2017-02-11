@@ -268,7 +268,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             (inflater.inflate(R.layout.week_now_marker, null, false) as ImageView).apply {
                 setColorFilter(primaryColor, PorterDuff.Mode.SRC_IN)
                 activity.runOnUiThread {
-                    mView.week_events_holder.addView(this)
+                    mView.week_events_holder.addView(this, 0)
                     val extraWidth = (todayColumn.width * 0.3).toInt()
                     val markerHeight = resources.getDimension(R.dimen.weekly_view_now_height).toInt()
                     (layoutParams as RelativeLayout.LayoutParams).apply {
