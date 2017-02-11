@@ -13,6 +13,8 @@ import kotlinx.android.synthetic.main.dialog_radio_group.view.*
 import java.util.*
 
 class SelectEventTypeDialog(val activity: Activity, val currEventType: Int, val callback: (checkedId: Int) -> Unit) : RadioGroup.OnCheckedChangeListener {
+    val NEW_TYPE_ID = -2
+
     val dialog: AlertDialog?
     var wasInit = false
     var eventTypes = ArrayList<EventType>()
@@ -27,8 +29,9 @@ class SelectEventTypeDialog(val activity: Activity, val currEventType: Int, val 
             eventTypes = it
             activity.runOnUiThread {
                 eventTypes.forEach {
-                    addRadioButton(it)
+                    addRadioButton(it.title, it.id)
                 }
+                addRadioButton(activity.getString(R.string.add_new_type), NEW_TYPE_ID)
                 wasInit = true
             }
         }
@@ -39,17 +42,22 @@ class SelectEventTypeDialog(val activity: Activity, val currEventType: Int, val 
         }
     }
 
-    private fun addRadioButton(type: EventType) {
+    private fun addRadioButton(title: String, typeId: Int) {
         val radioButton = (activity.layoutInflater.inflate(R.layout.radio_button, null) as RadioButton).apply {
-            text = type.title
-            isChecked = type.id == currEventType
-            id = type.id
+            text = title
+            isChecked = typeId == currEventType
+            id = typeId
         }
         radioGroup.addView(radioButton, RadioGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT))
     }
 
     override fun onCheckedChanged(group: RadioGroup, checkedId: Int) {
-        if (wasInit) {
+        if (!wasInit)
+            return
+
+        if (checkedId == NEW_TYPE_ID) {
+
+        } else {
             callback.invoke(checkedId)
             dialog?.dismiss()
         }
