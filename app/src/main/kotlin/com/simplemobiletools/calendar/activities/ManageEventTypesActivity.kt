@@ -23,8 +23,8 @@ class ManageEventTypesActivity : SimpleActivity(), EventTypeAdapter.DeleteEventT
         updateTextColors(manage_event_types_coordinator)
     }
 
-    private fun showEventTypeDialog() {
-        EventTypeDialog(this) {
+    private fun showEventTypeDialog(eventType: EventType? = null) {
+        EventTypeDialog(this, eventType) {
             getEventTypes()
         }
     }
@@ -39,7 +39,7 @@ class ManageEventTypesActivity : SimpleActivity(), EventTypeAdapter.DeleteEventT
 
     private fun gotEventTypes(eventTypes: List<EventType>) {
         val eventTypesAdapter = EventTypeAdapter(this, eventTypes, this) {
-
+            showEventTypeDialog(it)
         }
 
         manage_event_types_list.apply {

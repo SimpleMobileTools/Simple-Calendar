@@ -16,16 +16,19 @@ import com.simplemobiletools.commons.extensions.toast
 import com.simplemobiletools.commons.extensions.value
 import kotlinx.android.synthetic.main.dialog_event_type.view.*
 
-class EventTypeDialog(val activity: Activity, val callback: () -> Unit) : AlertDialog.Builder(activity) {
-    var currentColor = 0
+class EventTypeDialog(val activity: Activity, var eventType: EventType? = null, val callback: () -> Unit) : AlertDialog.Builder(activity) {
+    var isNewEvent = eventType == null
 
     init {
+        if (eventType == null)
+            eventType = EventType(0, "", activity.config.primaryColor)
+
         val view = LayoutInflater.from(activity).inflate(R.layout.dialog_event_type, null).apply {
-            currentColor = activity.config.primaryColor
             setupColor(type_color)
+            type_title.setText(eventType!!.title)
             type_color.setOnClickListener {
-                ColorPickerDialog(activity, currentColor) {
-                    currentColor = it
+                ColorPickerDialog(activity, eventType!!.color) {
+                    eventType!!.color = it
                     setupColor(type_color)
                 }
             }
@@ -37,19 +40,32 @@ class EventTypeDialog(val activity: Activity, val callback: () -> Unit) : AlertD
                 .setNegativeButton(R.string.cancel, null)
                 .create().apply {
             window!!.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
-            activity.setupDialogStuff(view, this, R.string.add_new_type)
+            activity.setupDialogStuff(view, this, if (isNewEvent) R.string.add_new_type else R.string.edit_type)
             getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener({
                 val title = view.type_title.value
+                val eventIdWithTitle = db.getEventTypeIdWithTitle(title)
+                var isEventTypeTitleTaken = isNewEvent && eventIdWithTitle != -1
+                if (!isEventTypeTitleTaken)
+                    isEventTypeTitleTaken = !isNewEvent && eventType!!.id != eventIdWithTitle && eventIdWithTitle != -1
+
                 if (title.isEmpty()) {
                     activity.toast(R.string.title_empty)
                     return@setOnClickListener
-                } else if (db.doesEventTypeExist(title)) {
+                } else if (isEventTypeTitleTaken) {
                     activity.toast(R.string.type_already_exists)
                     return@setOnClickListener
                 }
 
-                val eventType = EventType(0, title, currentColor)
-                if (db.addEventType(eventType)) {
+                eventType!!.title = title
+
+                val wasDbUpdated: Boolean
+                if (isNewEvent) {
+                    wasDbUpdated = db.insertEventType(eventType!!)
+                } else {
+                    wasDbUpdated = db.updateEventType(eventType!!)
+                }
+
+                if (wasDbUpdated) {
                     dismiss()
                     callback.invoke()
                 } else {
@@ -60,6 +76,6 @@ class EventTypeDialog(val activity: Activity, val callback: () -> Unit) : AlertD
     }
 
     private fun setupColor(view: ImageView) {
-        view.setBackgroundWithStroke(currentColor, activity.config.backgroundColor)
+        view.setBackgroundWithStroke(eventType!!.color, activity.config.backgroundColor)
     }
 }

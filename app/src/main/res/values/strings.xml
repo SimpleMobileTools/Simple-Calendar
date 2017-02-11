@@ -83,6 +83,7 @@
     <!-- Event types -->
     <string name="event_types">Event types</string>
     <string name="add_new_type">Add a new type</string>
+    <string name="edit_type">Edit type</string>
     <string name="type_already_exists">Type with this title already exists</string>
     <string name="color">Color</string>
     <string name="regular_event">Regular event</string>

@@ -110,7 +110,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private fun addRegularEventType(db: SQLiteDatabase) {
         val regularEvent = context.resources.getString(R.string.regular_event)
         val eventType = EventType(1, regularEvent, context.config.primaryColor)
-        insertEventType(eventType, db)
+        addEventType(eventType, db)
     }
 
     fun insert(event: Event, insertListener: (event: Event) -> Unit) {
@@ -185,13 +185,20 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
     }
 
-    private fun insertEventType(eventType: EventType, db: SQLiteDatabase) {
-        addEventType(eventType, db)
+    private fun addEventType(eventType: EventType, db: SQLiteDatabase) {
+        insertEventType(eventType, db)
     }
 
-    fun addEventType(eventType: EventType, db: SQLiteDatabase = mDb): Boolean {
+    fun insertEventType(eventType: EventType, db: SQLiteDatabase = mDb): Boolean {
         val values = fillEventTypeValues(eventType)
         return db.insert(TYPES_TABLE_NAME, null, values) != -1L
+    }
+
+    fun updateEventType(eventType: EventType): Boolean {
+        val selectionArgs = arrayOf(eventType.id.toString())
+        val values = fillEventTypeValues(eventType)
+        val selection = "$COL_TYPE_ID = ?"
+        return mDb.update(TYPES_TABLE_NAME, values, selection, selectionArgs) == 1
     }
 
     private fun fillEventTypeValues(eventType: EventType): ContentValues {
@@ -201,17 +208,20 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
     }
 
-    fun doesEventTypeExist(title: String): Boolean {
+    fun getEventTypeIdWithTitle(title: String): Int {
         val cols = arrayOf(COL_TYPE_ID)
         val selection = "$COL_TYPE_TITLE = ?"
         val selectionArgs = arrayOf(title)
         var cursor: Cursor? = null
         try {
             cursor = mDb.query(TYPES_TABLE_NAME, cols, selection, selectionArgs, null, null, null)
-            return cursor.count == 1
+            if (cursor?.moveToFirst() == true) {
+                return cursor.getIntValue(COL_TYPE_ID)
+            }
         } finally {
             cursor?.close()
         }
+        return -1
     }
 
     fun deleteEvents(ids: Array<String>) {
@@ -365,7 +375,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         val cols = arrayOf(COL_TYPE_ID, COL_TYPE_TITLE, COL_TYPE_COLOR)
         var cursor: Cursor? = null
         try {
-            cursor = mDb.query(TYPES_TABLE_NAME, cols, null, null, null, null, COL_TYPE_ID)
+            cursor = mDb.query(TYPES_TABLE_NAME, cols, null, null, null, null, "$COL_TYPE_TITLE ASC")
             if (cursor?.moveToFirst() == true) {
                 do {
                     val id = cursor.getIntValue(COL_TYPE_ID)
