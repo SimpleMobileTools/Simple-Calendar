@@ -15,7 +15,7 @@ import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.helpers.DBHelper
 import com.simplemobiletools.calendar.helpers.EVENT_ID
 import com.simplemobiletools.calendar.helpers.Formatter
-import com.simplemobiletools.calendar.interfaces.DeleteEventsListener
+import com.simplemobiletools.calendar.interfaces.DeleteItemsListener
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.models.ListEvent
 import com.simplemobiletools.calendar.models.ListItem
@@ -27,7 +27,7 @@ import org.joda.time.DateTime
 import java.util.*
 import kotlin.comparisons.compareBy
 
-class EventListFragment : Fragment(), DBHelper.GetEventsListener, DBHelper.EventUpdateListener, DeleteEventsListener {
+class EventListFragment : Fragment(), DBHelper.GetEventsListener, DBHelper.EventUpdateListener, DeleteItemsListener {
     var mAllEvents: MutableList<Event> = ArrayList()
     var prevEventsHash = 0
     lateinit var mView: View
@@ -99,7 +99,7 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, DBHelper.Event
         }
     }
 
-    override fun deleteEvents(ids: ArrayList<Int>) {
+    override fun deleteItems(ids: ArrayList<Int>) {
         val eventIDs = Array(ids.size, { i -> (ids[i].toString()) })
         DBHelper.newInstance(activity.applicationContext, this).deleteEvents(eventIDs)
     }

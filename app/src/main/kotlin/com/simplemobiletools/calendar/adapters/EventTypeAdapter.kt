@@ -9,13 +9,14 @@ import com.bignerdranch.android.multiselector.SwappingHolder
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.extensions.config
+import com.simplemobiletools.calendar.interfaces.DeleteItemsListener
 import com.simplemobiletools.calendar.models.EventType
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.extensions.setBackgroundWithStroke
 import kotlinx.android.synthetic.main.event_type_view.view.*
 import java.util.*
 
-class EventTypeAdapter(val activity: SimpleActivity, val mItems: List<EventType>, val listener: DeleteEventTypeListener?, val itemClick: (EventType) -> Unit) :
+class EventTypeAdapter(val activity: SimpleActivity, val mItems: List<EventType>, val listener: DeleteItemsListener?, val itemClick: (EventType) -> Unit) :
         RecyclerView.Adapter<EventTypeAdapter.ViewHolder>() {
     val multiSelector = MultiSelector()
     val views = ArrayList<View>()
@@ -74,7 +75,10 @@ class EventTypeAdapter(val activity: SimpleActivity, val mItems: List<EventType>
     }
 
     private fun deleteEventTypes() {
-        listener?.eventTypeDeleted()
+        val selections = multiSelector.selectedPositions
+        val ids = ArrayList<Int>(selections.size)
+        selections.forEach { ids.add((mItems[it]).id) }
+        listener?.deleteItems(ids)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
@@ -131,9 +135,5 @@ class EventTypeAdapter(val activity: SimpleActivity, val mItems: List<EventType>
                 itemClick(eventType)
             }
         }
-    }
-
-    interface DeleteEventTypeListener {
-        fun eventTypeDeleted()
     }
 }

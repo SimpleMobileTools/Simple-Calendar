@@ -5,12 +5,15 @@ import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.adapters.EventTypeAdapter
 import com.simplemobiletools.calendar.dialogs.EventTypeDialog
 import com.simplemobiletools.calendar.helpers.DBHelper
+import com.simplemobiletools.calendar.interfaces.DeleteItemsListener
 import com.simplemobiletools.calendar.models.EventType
+import com.simplemobiletools.commons.extensions.toast
 import com.simplemobiletools.commons.extensions.updateTextColors
 import com.simplemobiletools.commons.views.RecyclerViewDivider
 import kotlinx.android.synthetic.main.activity_manage_event_types.*
+import java.util.*
 
-class ManageEventTypesActivity : SimpleActivity(), EventTypeAdapter.DeleteEventTypeListener {
+class ManageEventTypesActivity : SimpleActivity(), DeleteItemsListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_manage_event_types)
@@ -48,7 +51,13 @@ class ManageEventTypesActivity : SimpleActivity(), EventTypeAdapter.DeleteEventT
         }
     }
 
-    override fun eventTypeDeleted() {
-        getEventTypes()
+    override fun deleteItems(ids: ArrayList<Int>) {
+        DBHelper.newInstance(applicationContext).deleteEventTypes(ids) {
+            if (it > 0) {
+                getEventTypes()
+            } else {
+                toast(R.string.unknown_error_occurred)
+            }
+        }
     }
 }
