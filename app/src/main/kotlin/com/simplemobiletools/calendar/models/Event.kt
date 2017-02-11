@@ -7,7 +7,7 @@ import java.io.Serializable
 
 data class Event(var id: Int = 0, var startTS: Int = 0, var endTS: Int = 0, var title: String = "", var description: String = "",
                  var reminder1Minutes: Int = -1, var reminder2Minutes: Int = -1, var reminder3Minutes: Int = -1, var repeatInterval: Int = 0,
-                 var importId: String? = "", var flags: Int = 0, var repeatLimit: Int = 0) : Serializable {
+                 var importId: String? = "", var flags: Int = 0, var repeatLimit: Int = 0, var eventType: Int = DBHelper.REGULAR_EVENT_ID) : Serializable {
 
     companion object {
         private val serialVersionUID = -32456795132344616L
@@ -30,8 +30,6 @@ data class Event(var id: Int = 0, var startTS: Int = 0, var endTS: Int = 0, var 
     }
 
     val isAllDay = flags and FLAG_ALL_DAY != 0
-
-    fun getRemindersCount() = getReminders().count()
 
     fun getReminders() = setOf(reminder1Minutes, reminder2Minutes, reminder3Minutes).filter { it != REMINDER_OFF }
 }

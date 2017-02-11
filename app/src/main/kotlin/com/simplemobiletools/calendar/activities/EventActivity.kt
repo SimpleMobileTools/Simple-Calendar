@@ -65,6 +65,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         updateStartTime()
         updateEndDate()
         updateEndTime()
+        updateEventType()
 
         mWasEndDateSet = event != null
         mWasEndTimeSet = event != null
@@ -81,6 +82,8 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         event_reminder_1.setOnClickListener { showReminder1Dialog() }
         event_reminder_2.setOnClickListener { showReminder2Dialog() }
         event_reminder_3.setOnClickListener { showReminder3Dialog() }
+
+        event_type.setOnClickListener {  }
 
         if (mEvent.flags and FLAG_ALL_DAY != 0)
             event_all_day.toggle()
@@ -217,6 +220,10 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
     private fun updateRepetitionText() {
         event_repetition.text = getRepetitionToString(mRepeatInterval)
+    }
+
+    private fun updateEventType() {
+
     }
 
     private fun getRepetitionToString(seconds: Int) = getString(when (seconds) {
@@ -380,6 +387,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         event_time_image.setColorFilter(config.textColor, PorterDuff.Mode.SRC_IN)
         event_repetition_image.setColorFilter(config.textColor, PorterDuff.Mode.SRC_IN)
         event_reminder_image.setColorFilter(config.textColor, PorterDuff.Mode.SRC_IN)
+        event_type_image.setColorFilter(config.textColor, PorterDuff.Mode.SRC_IN)
     }
 
     override fun eventInserted(event: Event) {
