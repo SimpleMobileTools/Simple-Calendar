@@ -226,6 +226,22 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         return -1
     }
 
+    fun getEventTypeTitle(id: Int): String {
+        val cols = arrayOf(COL_TYPE_TITLE)
+        val selection = "$COL_TYPE_ID = ?"
+        val selectionArgs = arrayOf(id.toString())
+        var cursor: Cursor? = null
+        try {
+            cursor = mDb.query(TYPES_TABLE_NAME, cols, selection, selectionArgs, null, null, null)
+            if (cursor?.moveToFirst() == true) {
+                return cursor.getStringValue(COL_TYPE_TITLE)
+            }
+        } finally {
+            cursor?.close()
+        }
+        return context.resources.getString(R.string.regular_event)
+    }
+
     fun deleteEvents(ids: Array<String>) {
         val args = TextUtils.join(", ", ids)
         val selection = "$COL_ID IN ($args)"

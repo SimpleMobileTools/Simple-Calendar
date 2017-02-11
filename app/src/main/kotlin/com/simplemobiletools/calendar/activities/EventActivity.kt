@@ -29,6 +29,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     private var mReminder3Minutes = 0
     private var mRepeatInterval = 0
     private var mRepeatLimit = 0
+    private var mEventType = DBHelper.REGULAR_EVENT_ID
     private var mDialogTheme = 0
 
     lateinit var mEventStartDateTime: DateTime
@@ -83,7 +84,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         event_reminder_2.setOnClickListener { showReminder2Dialog() }
         event_reminder_3.setOnClickListener { showReminder3Dialog() }
 
-        event_type.setOnClickListener {  }
+        event_type.setOnClickListener { }
 
         if (mEvent.flags and FLAG_ALL_DAY != 0)
             event_all_day.toggle()
@@ -104,6 +105,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         mReminder3Minutes = mEvent.reminder3Minutes
         mRepeatInterval = mEvent.repeatInterval
         mRepeatLimit = mEvent.repeatLimit
+        mEventType = mEvent.eventType
         checkRepeatLimit(mRepeatInterval)
     }
 
@@ -223,7 +225,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     }
 
     private fun updateEventType() {
-
+        event_type.text = DBHelper.newInstance(applicationContext).getEventTypeTitle(mEventType)
     }
 
     private fun getRepetitionToString(seconds: Int) = getString(when (seconds) {
