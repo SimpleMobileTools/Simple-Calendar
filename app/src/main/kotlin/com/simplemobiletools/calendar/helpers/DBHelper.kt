@@ -7,10 +7,13 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.database.sqlite.SQLiteQueryBuilder
 import android.text.TextUtils
+import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.scheduleReminder
 import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.extensions.updateWidgets
 import com.simplemobiletools.calendar.models.Event
+import com.simplemobiletools.calendar.models.EventType
 import com.simplemobiletools.commons.extensions.getIntValue
 import com.simplemobiletools.commons.extensions.getStringValue
 import org.joda.time.DateTime
@@ -43,20 +46,17 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private val COL_TYPE_TITLE = "event_type_title"
     private val COL_TYPE_COLOR = "event_type_color"
 
+    private val mDb: SQLiteDatabase = writableDatabase
+
     companion object {
         private val DB_NAME = "events.db"
         private val DB_VERSION = 7
-        lateinit private var mDb: SQLiteDatabase
         private var mEventsListener: EventUpdateListener? = null
 
         fun newInstance(context: Context, callback: EventUpdateListener? = null): DBHelper {
             mEventsListener = callback
             return DBHelper(context)
         }
-    }
-
-    init {
-        mDb = writableDatabase
     }
 
     override fun onCreate(db: SQLiteDatabase) {
@@ -108,14 +108,16 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     }
 
     private fun addRegularEventType(db: SQLiteDatabase) {
-
+        val regularEvent = context.resources.getString(R.string.regular_event)
+        val eventType = EventType(1, regularEvent, context.config.primaryColor)
+        insertEventType(eventType, db)
     }
 
     fun insert(event: Event, insertListener: (event: Event) -> Unit) {
         if (event.startTS > event.endTS || event.title.trim().isEmpty())
             return
 
-        val eventValues = fillContentValues(event)
+        val eventValues = fillEventValues(event)
         val id = mDb.insert(MAIN_TABLE_NAME, null, eventValues)
         event.id = id.toInt()
 
@@ -124,15 +126,15 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             mDb.insert(META_TABLE_NAME, null, metaValues)
         }
 
-        context?.updateWidgets()
-        context?.scheduleReminder(event)
+        context.updateWidgets()
+        context.scheduleReminder(event)
         mEventsListener?.eventInserted(event)
         insertListener.invoke(event)
     }
 
     fun update(event: Event) {
         val selectionArgs = arrayOf(event.id.toString())
-        val values = fillContentValues(event)
+        val values = fillEventValues(event)
         val selection = "$COL_ID = ?"
         mDb.update(MAIN_TABLE_NAME, values, selection, selectionArgs)
 
@@ -144,12 +146,12 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             mDb.insertWithOnConflict(META_TABLE_NAME, null, metaValues, SQLiteDatabase.CONFLICT_REPLACE)
         }
 
-        context?.updateWidgets()
-        context?.scheduleReminder(event)
+        context.updateWidgets()
+        context.scheduleReminder(event)
         mEventsListener?.eventUpdated(event)
     }
 
-    private fun fillContentValues(event: Event): ContentValues {
+    private fun fillEventValues(event: Event): ContentValues {
         return ContentValues().apply {
             put(COL_START_TS, event.startTS)
             put(COL_END_TS, event.endTS)
@@ -183,6 +185,19 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
     }
 
+    private fun insertEventType(eventType: EventType, db: SQLiteDatabase) {
+        val values = fillEventTypeValues(eventType)
+        db.insert(TYPES_TABLE_NAME, null, values)
+    }
+
+    private fun fillEventTypeValues(eventType: EventType): ContentValues {
+        return ContentValues().apply {
+            put(COL_TYPE_ID, eventType.id)
+            put(COL_TYPE_TITLE, eventType.title)
+            put(COL_TYPE_COLOR, eventType.color)
+        }
+    }
+
     fun deleteEvents(ids: Array<String>) {
         val args = TextUtils.join(", ", ids)
         val selection = "$COL_ID IN ($args)"
@@ -191,7 +206,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         val metaSelection = "$COL_EVENT_ID IN ($args)"
         mDb.delete(META_TABLE_NAME, metaSelection, null)
 
-        context?.updateWidgets()
+        context.updateWidgets()
         mEventsListener?.eventsDeleted(ids.size)
     }
 
