@@ -270,12 +270,13 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 activity.runOnUiThread {
                     mView.week_events_holder.addView(this)
                     val extraWidth = (todayColumn.width * 0.3).toInt()
-                    x = todayColumn.x - extraWidth / 2
-                    y = minutes * minuteHeight
+                    val markerHeight = resources.getDimension(R.dimen.weekly_view_now_height).toInt()
                     (layoutParams as RelativeLayout.LayoutParams).apply {
                         width = todayColumn.width + extraWidth
-                        height = resources.getDimension(R.dimen.weekly_view_now_height).toInt()
+                        height = markerHeight
                     }
+                    x = todayColumn.x - extraWidth / 2
+                    y = minutes * minuteHeight - markerHeight / 2
                 }
             }
         }
