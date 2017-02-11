@@ -30,7 +30,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     private var mReminder3Minutes = 0
     private var mRepeatInterval = 0
     private var mRepeatLimit = 0
-    private var mEventType = DBHelper.REGULAR_EVENT_ID
+    private var mEventTypeId = DBHelper.REGULAR_EVENT_ID
     private var mDialogTheme = 0
 
     lateinit var mEventStartDateTime: DateTime
@@ -67,7 +67,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         updateStartTime()
         updateEndDate()
         updateEndTime()
-        updateEventTypeText()
+        updateEventType()
 
         mWasEndDateSet = event != null
         mWasEndTimeSet = event != null
@@ -85,7 +85,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         event_reminder_2.setOnClickListener { showReminder2Dialog() }
         event_reminder_3.setOnClickListener { showReminder3Dialog() }
 
-        event_type.setOnClickListener { showEventTypeDialog() }
+        event_type_holder.setOnClickListener { showEventTypeDialog() }
 
         if (mEvent.flags and FLAG_ALL_DAY != 0)
             event_all_day.toggle()
@@ -106,7 +106,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         mReminder3Minutes = mEvent.reminder3Minutes
         mRepeatInterval = mEvent.repeatInterval
         mRepeatLimit = mEvent.repeatLimit
-        mEventType = mEvent.eventType
+        mEventTypeId = mEvent.eventType
         checkRepeatLimit(mRepeatInterval)
     }
 
@@ -181,9 +181,9 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     }
 
     private fun showEventTypeDialog() {
-        SelectEventTypeDialog(this, mEventType) {
-            mEventType = it
-            updateEventTypeText()
+        SelectEventTypeDialog(this, mEventTypeId) {
+            mEventTypeId = it
+            updateEventType()
         }
     }
 
@@ -232,8 +232,12 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         event_repetition.text = getRepetitionToString(mRepeatInterval)
     }
 
-    private fun updateEventTypeText() {
-        event_type.text = DBHelper.newInstance(applicationContext).getEventTypeTitle(mEventType)
+    private fun updateEventType() {
+        val eventType = DBHelper.newInstance(applicationContext).getEventType(mEventTypeId)
+        if (eventType != null) {
+            event_type.text = eventType.title
+            event_type_color.setBackgroundWithStroke(eventType.color, config.backgroundColor)
+        }
     }
 
     private fun getRepetitionToString(seconds: Int) = getString(when (seconds) {
@@ -252,10 +256,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_event, menu)
-        val item = menu.findItem(R.id.cab_delete)
-        if (mEvent.id == 0) {
-            item.isVisible = false
-        }
+        menu.findItem(R.id.cab_delete).isVisible = mEvent.id != 0
         return true
     }
 
@@ -305,7 +306,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             repeatInterval = mRepeatInterval
             flags = if (event_all_day.isChecked) (mEvent.flags or FLAG_ALL_DAY) else (mEvent.flags.removeFlag(FLAG_ALL_DAY))
             repeatLimit = if (repeatInterval == 0) 0 else mRepeatLimit
-            eventType = mEventType
+            eventType = mEventTypeId
         }
 
         if (mEvent.id == 0) {

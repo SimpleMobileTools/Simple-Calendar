@@ -280,8 +280,8 @@
             android:id="@+id/event_type_image"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_alignBottom="@+id/event_type"
-            android:layout_alignTop="@+id/event_type"
+            android:layout_alignBottom="@+id/event_type_holder"
+            android:layout_alignTop="@+id/event_type_holder"
             android:layout_below="@+id/event_date_time_divider"
             android:layout_marginLeft="@dimen/normal_margin"
             android:layout_marginStart="@dimen/normal_margin"
@@ -289,19 +289,36 @@
             android:padding="@dimen/medium_margin"
             android:src="@drawable/ic_color"/>
 
-        <com.simplemobiletools.commons.views.MyTextView
-            android:id="@+id/event_type"
+        <RelativeLayout
+            android:id="@+id/event_type_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_repetition_divider"
-            android:layout_marginLeft="@dimen/small_margin"
-            android:layout_marginStart="@dimen/small_margin"
             android:layout_toEndOf="@+id/event_type_image"
             android:layout_toRightOf="@+id/event_type_image"
-            android:background="?attr/selectableItemBackground"
-            android:paddingBottom="@dimen/normal_margin"
-            android:paddingTop="@dimen/normal_margin"
-            android:textSize="@dimen/day_text_size"/>
+            android:background="?attr/selectableItemBackground">
 
+            <com.simplemobiletools.commons.views.MyTextView
+                android:id="@+id/event_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/small_margin"
+                android:layout_marginStart="@dimen/small_margin"
+                android:paddingBottom="@dimen/normal_margin"
+                android:paddingTop="@dimen/normal_margin"
+                android:textSize="@dimen/day_text_size"/>
+
+            <ImageView
+                android:id="@+id/event_type_color"
+                android:layout_width="@dimen/color_sample_size"
+                android:layout_height="@dimen/color_sample_size"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/normal_margin"
+                android:layout_marginRight="@dimen/normal_margin"
+                android:clickable="false"/>
+
+        </RelativeLayout>
     </RelativeLayout>
 </ScrollView>
