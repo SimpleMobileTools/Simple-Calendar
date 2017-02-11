@@ -34,7 +34,7 @@ class IcsParser {
 
     fun parseIcs(context: Context, reminderMinutes: Int, path: String): ImportResult {
         try {
-            val dbHelper = DBHelper(context)
+            val dbHelper = DBHelper.newInstance(context)
             val importIDs = dbHelper.getImportIds()
 
             File(path).inputStream().bufferedReader().use {

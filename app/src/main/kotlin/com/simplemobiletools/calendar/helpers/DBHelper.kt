@@ -16,7 +16,7 @@ import com.simplemobiletools.commons.extensions.getStringValue
 import org.joda.time.DateTime
 import java.util.*
 
-class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
+class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
     private val MAIN_TABLE_NAME = "events"
     private val COL_ID = "id"
     private val COL_START_TS = "start_ts"
@@ -43,18 +43,16 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
     private val COL_TYPE_TITLE = "event_type_title"
     private val COL_TYPE_COLOR = "event_type_color"
 
-    private var mEventsListener: EventUpdateListener? = null
-    private var context: Context? = null
-
     companion object {
         private val DB_NAME = "events.db"
         private val DB_VERSION = 7
         lateinit private var mDb: SQLiteDatabase
-    }
+        private var mEventsListener: EventUpdateListener? = null
 
-    constructor(context: Context, callback: EventUpdateListener?) : this(context) {
-        mEventsListener = callback
-        this.context = context
+        fun newInstance(context: Context, callback: EventUpdateListener? = null): DBHelper {
+            mEventsListener = callback
+            return DBHelper(context)
+        }
     }
 
     init {
@@ -105,7 +103,12 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
     }
 
     private fun createTypesTable(db: SQLiteDatabase) {
-        db.execSQL("CREATE TABLE $TYPES_TABLE_NAME ($COL_TYPE_ID INTEGER PRIMARY KEY, $COL_TYPE_TITLE TEXT, $COL_TYPE_COLOR INTEGER)" )
+        db.execSQL("CREATE TABLE $TYPES_TABLE_NAME ($COL_TYPE_ID INTEGER PRIMARY KEY, $COL_TYPE_TITLE TEXT, $COL_TYPE_COLOR INTEGER)")
+        addRegularEventType(db)
+    }
+
+    private fun addRegularEventType(db: SQLiteDatabase) {
+
     }
 
     fun insert(event: Event, insertListener: (event: Event) -> Unit) {

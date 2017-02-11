@@ -47,7 +47,7 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, DBHelper.Event
     private fun checkEvents() {
         val fromTS = DateTime().seconds()
         val toTS = DateTime().plusYears(1).seconds()
-        DBHelper(context).getEvents(fromTS, toTS, this)
+        DBHelper.newInstance(context).getEvents(fromTS, toTS, this)
     }
 
     override fun gotEvents(events: MutableList<Event>) {
@@ -101,7 +101,7 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, DBHelper.Event
 
     override fun deleteEvents(ids: ArrayList<Int>) {
         val eventIDs = Array(ids.size, { i -> (ids[i].toString()) })
-        DBHelper(activity.applicationContext, this).deleteEvents(eventIDs)
+        DBHelper.newInstance(activity.applicationContext, this).deleteEvents(eventIDs)
     }
 
     override fun eventInserted(event: Event) {

@@ -9,7 +9,7 @@ import com.simplemobiletools.calendar.helpers.DBHelper
 class BootCompletedReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, arg1: Intent) {
-        val events = DBHelper(context).getEventsAtReboot()
+        val events = DBHelper.newInstance(context).getEventsAtReboot()
         for (event in events) {
             context.scheduleNextEventReminder(event)
         }

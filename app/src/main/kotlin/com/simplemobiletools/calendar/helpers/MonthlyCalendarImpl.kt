@@ -26,7 +26,7 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
         mTargetDate = targetDate
         val startTS = mTargetDate.minusMonths(1).seconds()
         val endTS = mTargetDate.plusMonths(1).seconds()
-        DBHelper(mContext).getEvents(startTS, endTS, this)
+        DBHelper.newInstance(mContext).getEvents(startTS, endTS, this)
     }
 
     fun getPrevMonth() {

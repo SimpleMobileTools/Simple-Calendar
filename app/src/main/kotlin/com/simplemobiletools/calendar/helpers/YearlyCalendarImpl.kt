@@ -14,7 +14,7 @@ class YearlyCalendarImpl(val callback: YearlyCalendar, val context: Context, val
         val startDateTime = DateTime().withTime(0, 0, 0, 0).withDate(year, 1, 1)
         val startTS = startDateTime.seconds()
         val endTS = startDateTime.plusYears(1).minusSeconds(1).seconds()
-        DBHelper(context).getEvents(startTS, endTS, this)
+        DBHelper.newInstance(context).getEvents(startTS, endTS, this)
     }
 
     override fun gotEvents(events: MutableList<Event>) {

@@ -107,7 +107,7 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
     override fun onDataSetChanged() {
         val fromTS = DateTime().seconds()
         val toTS = DateTime().plusYears(1).seconds()
-        DBHelper(context).getEventsInBackground(fromTS, toTS, object : DBHelper.GetEventsListener {
+        DBHelper.newInstance(context).getEventsInBackground(fromTS, toTS, object : DBHelper.GetEventsListener {
             override fun gotEvents(events: MutableList<Event>) {
                 val listItems = ArrayList<ListItem>(events.size)
                 val sorted = events.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { it.description }))

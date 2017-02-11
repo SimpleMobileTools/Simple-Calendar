@@ -114,7 +114,7 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DBHelper.GetEvents
     fun checkEvents() {
         val startTS = Formatter.getDayStartTS(mDayCode)
         val endTS = Formatter.getDayEndTS(mDayCode)
-        DBHelper(context, this).getEvents(startTS, endTS, this)
+        DBHelper.newInstance(context, this).getEvents(startTS, endTS, this)
     }
 
     private fun updateEvents(events: MutableList<Event>) {
@@ -139,7 +139,7 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DBHelper.GetEvents
 
     override fun deleteEvents(ids: ArrayList<Int>) {
         val eventIDs = Array(ids.size, { i -> (ids[i].toString()) })
-        DBHelper(activity.applicationContext, this).deleteEvents(eventIDs)
+        DBHelper.newInstance(activity.applicationContext, this).deleteEvents(eventIDs)
     }
 
     override fun eventInserted(event: Event) {

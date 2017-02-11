@@ -43,7 +43,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         mDialogTheme = getAppropriateTheme()
 
         val eventId = intent.getIntExtra(EVENT_ID, 0)
-        val event = DBHelper(applicationContext).getEvent(eventId)
+        val event = DBHelper.newInstance(applicationContext).getEvent(eventId)
         if (event != null) {
             mEvent = event
             setupEditEvent()
@@ -253,7 +253,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
     private fun deleteEvent() {
         ConfirmationDialog(this) {
-            DBHelper(applicationContext, this).deleteEvents(arrayOf(mEvent.id.toString()))
+            DBHelper.newInstance(applicationContext, this).deleteEvents(arrayOf(mEvent.id.toString()))
             finish()
         }
     }
@@ -275,7 +275,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         }
 
         val reminders = sortedSetOf(mReminder1Minutes, mReminder2Minutes, mReminder3Minutes).filter { it != REMINDER_OFF }
-        val dbHelper = DBHelper(applicationContext, this)
+        val dbHelper = DBHelper.newInstance(applicationContext, this)
         val newDescription = event_description.value
         mEvent.apply {
             startTS = newStartTS
