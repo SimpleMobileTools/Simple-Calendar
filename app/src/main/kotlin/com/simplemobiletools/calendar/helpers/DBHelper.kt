@@ -337,9 +337,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         for (e in events) {
             while (e.startTS < toTS && (e.repeatLimit == 0 || e.repeatLimit > e.endTS)) {
                 if (e.startTS > fromTS) {
-                    val newEvent = Event(e.id, e.startTS, e.endTS, e.title, e.description, e.reminder1Minutes, e.reminder2Minutes, e.reminder3Minutes,
-                            e.repeatInterval, e.importId, e.flags, e.eventType)
-                    newEvents.add(newEvent)
+                    newEvents.add(e.copy())
                 }
                 e.addIntervalTime()
             }
