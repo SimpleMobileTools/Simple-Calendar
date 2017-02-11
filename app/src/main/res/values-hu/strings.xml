@@ -136,6 +136,7 @@
     <string name="sample_title_5">Coffee time</string>
 
     <!-- Release notes -->
+    <string name="release_57">Added event types with customizable colors</string>
     <string name="release_54">Allow setting up to 3 reminders per event</string>
     <string name="release_52">Added all-day long event support</string>
     <string name="release_51">Allow importing events from .ics files</string>
