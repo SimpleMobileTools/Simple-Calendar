@@ -12,10 +12,7 @@ class ManageEventTypesActivity : SimpleActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_manage_event_types)
 
-        DBHelper.newInstance(applicationContext).getEventTypes {
-
-        }
-
+        getEventTypes()
         manage_event_types_fab.setOnClickListener {
             showEventTypeDialog()
         }
@@ -25,6 +22,12 @@ class ManageEventTypesActivity : SimpleActivity() {
 
     private fun showEventTypeDialog() {
         EventTypeDialog(this) {
+            getEventTypes()
+        }
+    }
+
+    private fun getEventTypes() {
+        DBHelper.newInstance(applicationContext).getEventTypes {
 
         }
     }
