@@ -161,7 +161,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
 
     private fun refreshViewPager() {
         if (config.storedView == YEARLY_VIEW) {
-
+            (main_view_pager.adapter as MyYearPagerAdapter).refreshEvents(main_view_pager.currentItem)
         } else if (config.storedView == EVENTS_LIST_VIEW) {
 
         } else if (config.storedView == WEEKLY_VIEW) {

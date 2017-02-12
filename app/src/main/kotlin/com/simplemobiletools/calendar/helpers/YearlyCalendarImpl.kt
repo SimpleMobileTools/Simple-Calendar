@@ -2,6 +2,7 @@ package com.simplemobiletools.calendar.helpers
 
 import android.content.Context
 import android.util.SparseArray
+import com.simplemobiletools.calendar.extensions.getFilteredEvents
 import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.interfaces.YearlyCalendar
 import com.simplemobiletools.calendar.models.Event
@@ -18,13 +19,14 @@ class YearlyCalendarImpl(val callback: YearlyCalendar, val context: Context, val
     }
 
     override fun gotEvents(events: MutableList<Event>) {
+        val filtered = context.getFilteredEvents(events)
         val arr = SparseArray<ArrayList<Int>>(12)
-        for (event in events) {
-            val startDateTime = DateTime().withMillis(event.startTS * 1000L)
+        for ((id, startTS, endTS) in filtered) {
+            val startDateTime = DateTime().withMillis(startTS * 1000L)
             markDay(arr, startDateTime)
 
             val startCode = Formatter.getDayCodeFromDateTime(startDateTime)
-            val endDateTime = DateTime().withMillis(event.endTS * 1000L)
+            val endDateTime = DateTime().withMillis(endTS * 1000L)
             val endCode = Formatter.getDayCodeFromDateTime(endDateTime)
             if (startCode != endCode) {
                 var currDateTime = startDateTime
