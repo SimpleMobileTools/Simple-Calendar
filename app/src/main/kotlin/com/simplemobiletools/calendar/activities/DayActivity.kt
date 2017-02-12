@@ -3,10 +3,15 @@ package com.simplemobiletools.calendar.activities
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.view.ViewPager
+import android.util.SparseIntArray
+import android.view.Menu
+import android.view.MenuItem
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.adapters.MyDayPagerAdapter
+import com.simplemobiletools.calendar.dialogs.FilterEventTypesDialog
 import com.simplemobiletools.calendar.extensions.getNewEventTimestampFromCode
 import com.simplemobiletools.calendar.helpers.DAY_CODE
+import com.simplemobiletools.calendar.helpers.DBHelper
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.helpers.NEW_EVENT_START_TS
 import com.simplemobiletools.calendar.interfaces.NavigationListener
@@ -20,6 +25,7 @@ class DayActivity : SimpleActivity(), NavigationListener, ViewPager.OnPageChange
     private var mDayCode = ""
     private var mPagerDays: MutableList<String>? = null
     private var mPagerPos = 0
+    private var eventTypeColors = SparseIntArray()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +40,26 @@ class DayActivity : SimpleActivity(), NavigationListener, ViewPager.OnPageChange
 
         day_fab.setOnClickListener { addNewEvent() }
         updateTextColors(day_coordinator)
+
+        DBHelper.newInstance(applicationContext).getEventTypes {
+            eventTypeColors.clear()
+            it.map { eventTypeColors.put(it.id, it.color) }
+            invalidateOptionsMenu()
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_day, menu)
+        menu.findItem(R.id.filter).isVisible = eventTypeColors.size() > 1
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.filter -> showFilterDialog()
+            else -> return super.onOptionsItemSelected(item)
+        }
+        return true
     }
 
     private fun fillViewPager(targetDay: String) {
@@ -44,6 +70,12 @@ class DayActivity : SimpleActivity(), NavigationListener, ViewPager.OnPageChange
             adapter = daysAdapter
             currentItem = mPagerPos
             addOnPageChangeListener(this@DayActivity)
+        }
+    }
+
+    private fun showFilterDialog() {
+        FilterEventTypesDialog(this) {
+            recheckEvents()
         }
     }
 

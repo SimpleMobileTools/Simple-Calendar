@@ -98,7 +98,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu, menu)
+        menuInflater.inflate(R.menu.menu_main, menu)
         menu.findItem(R.id.filter).isVisible = eventTypeColors.size() > 1
         return true
     }

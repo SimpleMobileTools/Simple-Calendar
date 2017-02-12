@@ -18,7 +18,10 @@ import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.adapters.DayEventsAdapter
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.getAppropriateTheme
-import com.simplemobiletools.calendar.helpers.*
+import com.simplemobiletools.calendar.extensions.getFilteredEvents
+import com.simplemobiletools.calendar.helpers.DAY_CODE
+import com.simplemobiletools.calendar.helpers.DBHelper
+import com.simplemobiletools.calendar.helpers.EVENT_ID
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.interfaces.DeleteItemsListener
 import com.simplemobiletools.calendar.interfaces.NavigationListener
@@ -38,21 +41,18 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DBHelper.GetEvents
 
     lateinit var mRes: Resources
     lateinit var mHolder: RelativeLayout
-    lateinit var mConfig: Config
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_day, container, false)
         mRes = resources
         mHolder = view.day_holder
 
-        mConfig = context.config
         mDayCode = arguments.getString(DAY_CODE)
-
         val day = Formatter.getDayTitle(activity.applicationContext, mDayCode)
         mHolder.top_value.apply {
             text = day
             setOnClickListener { pickDay() }
-            setTextColor(mConfig.textColor)
+            setTextColor(context.config.textColor)
         }
 
         setupButtons()
@@ -65,7 +65,7 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DBHelper.GetEvents
     }
 
     private fun setupButtons() {
-        mTextColor = mConfig.textColor
+        mTextColor = context.config.textColor
 
         mHolder.apply {
             top_left_arrow.drawable.mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP)
@@ -117,7 +117,7 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DBHelper.GetEvents
         DBHelper.newInstance(context, this).getEvents(startTS, endTS, this)
     }
 
-    private fun updateEvents(events: MutableList<Event>) {
+    private fun updateEvents(events: List<Event>) {
         if (activity == null)
             return
 
@@ -149,14 +149,14 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DBHelper.GetEvents
     }
 
     override fun eventsDeleted(cnt: Int) {
-        checkEvents()
         (activity as DayActivity).recheckEvents()
     }
 
     override fun gotEvents(events: MutableList<Event>) {
         val sorted = ArrayList<Event>(events.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { it.description })))
+        val filtered = context.getFilteredEvents(sorted)
         activity?.runOnUiThread {
-            updateEvents(sorted)
+            updateEvents(filtered)
         }
     }
 }
