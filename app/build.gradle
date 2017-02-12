@@ -11,7 +11,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 25
         versionCode 57
-        versionName "2.1.8"
+        versionName "2.1.9"
         multiDexEnabled true
     }
 
