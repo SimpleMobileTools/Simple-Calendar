@@ -11,7 +11,7 @@ import com.simplemobiletools.calendar.interfaces.NavigationListener
 
 class MyDayPagerAdapter(fm: FragmentManager, private val mCodes: List<String>, private val mListener: NavigationListener) :
         FragmentStatePagerAdapter(fm) {
-    var fragments: SparseArray<DayFragment> = SparseArray(10)
+    private val mFragments = SparseArray<DayFragment>()
 
     override fun getCount() = mCodes.size
 
@@ -20,18 +20,16 @@ class MyDayPagerAdapter(fm: FragmentManager, private val mCodes: List<String>, p
         val code = mCodes[position]
         bundle.putString(DAY_CODE, code)
 
-        if (fragments.get(position) != null)
-            return fragments[position]
-
         val fragment = DayFragment()
         fragment.arguments = bundle
         fragment.setListener(mListener)
-        fragments.put(position, fragment)
+
+        mFragments.put(position, fragment)
         return fragment
     }
 
     fun checkDayEvents(pos: Int) {
-        fragments.get(pos - 1)?.checkEvents()
-        fragments.get(pos + 1)?.checkEvents()
+        mFragments[pos - 1].checkEvents()
+        mFragments[pos + 1].checkEvents()
     }
 }
