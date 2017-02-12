@@ -89,7 +89,7 @@
     <string name="type_already_exists">Já existe um tipo com este nome</string>
     <string name="color">Cor</string>
     <string name="regular_event">Evento regular</string>
-    <string name="cannot_delete_default_type">O tipo de vento padrão não pode ser apagado</string>
+    <string name="cannot_delete_default_type">O tipo de evento padrão não pode ser apagado</string>
     <string name="select_event_type">Selecione um tipo de evento</string>
 
     <!-- Settings -->
