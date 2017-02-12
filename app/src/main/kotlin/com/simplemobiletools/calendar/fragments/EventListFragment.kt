@@ -52,7 +52,7 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, DBHelper.Event
     }
 
     override fun gotEvents(events: MutableList<Event>) {
-        if (context == null)
+        if (context == null || activity == null)
             return
 
         val filtered = context.getFilteredEvents(events)
@@ -75,9 +75,6 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, DBHelper.Event
             }
             listItems.add(ListEvent(it.id, it.startTS, it.endTS, it.title, it.description, it.isAllDay))
         }
-
-        if (activity == null)
-            return
 
         val eventsAdapter = EventListAdapter(activity as SimpleActivity, listItems, this) {
             editEvent(it)
