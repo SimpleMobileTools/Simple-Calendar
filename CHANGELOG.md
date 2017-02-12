@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 2.1.9 *(2017-02-12)*
+----------------------------
+
+ * Added event types with customizable colors
+ * Some crashfixes
+
 Version 2.1.8 *(2017-02-07)*
 ----------------------------
 
