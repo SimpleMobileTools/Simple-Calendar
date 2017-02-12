@@ -53,7 +53,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
 
     companion object {
         var mWeekScrollY = 0
-        var eventTypeColors = SparseIntArray(3)
+        var eventTypeColors = SparseIntArray()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,6 +72,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
         DBHelper.newInstance(applicationContext).getEventTypes {
             eventTypeColors.clear()
             it.map { eventTypeColors.put(it.id, it.color) }
+            invalidateOptionsMenu()
         }
         mStoredTextColor = config.textColor
         mStoredPrimaryColor = config.primaryColor
@@ -99,6 +100,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu, menu)
+        menu.findItem(R.id.filter).isVisible = eventTypeColors.size() > 1
         return true
     }
 
