@@ -11,6 +11,7 @@ import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.adapters.EventListAdapter
 import com.simplemobiletools.calendar.extensions.config
+import com.simplemobiletools.calendar.extensions.getFilteredEvents
 import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.helpers.DBHelper
 import com.simplemobiletools.calendar.helpers.EVENT_ID
@@ -28,8 +29,8 @@ import java.util.*
 import kotlin.comparisons.compareBy
 
 class EventListFragment : Fragment(), DBHelper.GetEventsListener, DBHelper.EventUpdateListener, DeleteItemsListener {
-    var mAllEvents: MutableList<Event> = ArrayList()
-    var prevEventsHash = 0
+    private var mEvents: List<Event> = ArrayList()
+    private var prevEventsHash = 0
     lateinit var mView: View
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -51,13 +52,18 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, DBHelper.Event
     }
 
     override fun gotEvents(events: MutableList<Event>) {
-        val hash = events.hashCode()
-        if (prevEventsHash == hash || context == null)
+        if (context == null)
+            return
+
+        val filtered = context.getFilteredEvents(events)
+        val hash = filtered.hashCode()
+        if (prevEventsHash == hash)
             return
 
         prevEventsHash = hash
-        val listItems = ArrayList<ListItem>(events.size)
-        val sorted = events.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { it.description }))
+        mEvents = filtered
+        val listItems = ArrayList<ListItem>(mEvents.size)
+        val sorted = mEvents.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { it.description }))
         val sublist = sorted.subList(0, Math.min(sorted.size, 100))
         var prevCode = ""
         sublist.forEach {
@@ -70,7 +76,6 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, DBHelper.Event
             listItems.add(ListEvent(it.id, it.startTS, it.endTS, it.title, it.description, it.isAllDay))
         }
 
-        mAllEvents = events
         if (activity == null)
             return
 
@@ -86,8 +91,8 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, DBHelper.Event
     }
 
     private fun checkPlaceholderVisibility() {
-        mView.calendar_empty_list_placeholder.beVisibleIf(mAllEvents.isEmpty())
-        mView.calendar_events_list.beGoneIf(mAllEvents.isEmpty())
+        mView.calendar_empty_list_placeholder.beVisibleIf(mEvents.isEmpty())
+        mView.calendar_events_list.beGoneIf(mEvents.isEmpty())
         if (activity != null)
             mView.calendar_empty_list_placeholder.setTextColor(activity.config.textColor)
     }

@@ -190,7 +190,7 @@ class SettingsActivity : SimpleActivity() {
                 if (uri == null) {
                     config.reminderSound = ""
                 } else {
-                    settings_reminder_sound.text = RingtoneManager.getRingtone(this, uri as Uri).getTitle(this)
+                    settings_reminder_sound.text = RingtoneManager.getRingtone(this, uri as Uri)?.getTitle(this)
                     config.reminderSound = uri.toString()
                 }
             } else if (requestCode == REQUEST_ACCOUNT_NAME && resultData?.extras != null) {

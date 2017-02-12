@@ -60,7 +60,6 @@ class MainActivity : SimpleActivity(), NavigationListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         calendar_fab.setOnClickListener { addNewEvent() }
-        updateViewPager()
         checkWhatsNewDialog()
     }
 
@@ -163,7 +162,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
         if (config.storedView == YEARLY_VIEW) {
             (main_view_pager.adapter as MyYearPagerAdapter).refreshEvents(main_view_pager.currentItem)
         } else if (config.storedView == EVENTS_LIST_VIEW) {
-
+            fillEventsList()
         } else if (config.storedView == WEEKLY_VIEW) {
             (week_view_view_pager.adapter as MyWeekPagerAdapter).refreshEvents(week_view_view_pager.currentItem)
         } else {
