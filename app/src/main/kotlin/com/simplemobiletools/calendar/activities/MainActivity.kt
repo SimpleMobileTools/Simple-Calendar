@@ -132,7 +132,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
 
     private fun showFilterDialog() {
         FilterEventTypesDialog(this) {
-
+            refreshViewPager()
         }
     }
 
@@ -157,6 +157,18 @@ class MainActivity : SimpleActivity(), NavigationListener {
         }
 
         mWeekScrollY = 0
+    }
+
+    private fun refreshViewPager() {
+        if (config.storedView == YEARLY_VIEW) {
+
+        } else if (config.storedView == EVENTS_LIST_VIEW) {
+
+        } else if (config.storedView == WEEKLY_VIEW) {
+            (week_view_view_pager.adapter as MyWeekPagerAdapter).refreshEvents(week_view_view_pager.currentItem)
+        } else {
+
+        }
     }
 
     private fun tryImportEvents() {

@@ -122,6 +122,12 @@ fun Context.getReminderText(minutes: Int) = when (minutes) {
     }
 }
 
+fun Context.getFilteredEvents(events: List<Event>): List<Event> {
+    val displayEventTypes = config.displayEventTypes
+    val filtered = events.filter { displayEventTypes.contains(it.eventType.toString()) }
+    return filtered
+}
+
 fun Context.getNewEventTimestampFromCode(dayCode: String) = Formatter.getLocalDateTimeFromCode(dayCode).withTime(13, 0, 0, 0).seconds()
 
 val Context.config: Config get() = Config.newInstance(this)

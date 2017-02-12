@@ -16,8 +16,10 @@ import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.activities.MainActivity
 import com.simplemobiletools.calendar.extensions.config
+import com.simplemobiletools.calendar.extensions.getFilteredEvents
 import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.helpers.*
+import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.interfaces.WeeklyCalendar
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.views.MyScrollView
@@ -26,6 +28,7 @@ import kotlinx.android.synthetic.main.fragment_week.*
 import kotlinx.android.synthetic.main.fragment_week.view.*
 import org.joda.time.DateTime
 import org.joda.time.Days
+import java.util.*
 import kotlin.comparisons.compareBy
 
 class WeekFragment : Fragment(), WeeklyCalendar {
@@ -45,6 +48,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private var clickStartTime = 0L
     private var selectedGrid: View? = null
     private var todayColumnIndex = -1
+    private var events: List<Event> = ArrayList()
 
     lateinit var inflater: LayoutInflater
     lateinit var mView: View
@@ -209,8 +213,15 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     }
 
     override fun updateWeeklyCalendar(events: List<Event>) {
+        this.events = events
+        updateEvents()
+    }
+
+    fun updateEvents() {
         if (mWasDestroyed)
             return
+
+        val filtered = context.getFilteredEvents(events)
 
         initGrid()
         val fullHeight = mRes.getDimension(R.dimen.weekly_view_events_height)
@@ -219,7 +230,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         activity.runOnUiThread { mView.week_all_day_holder.removeAllViews() }
 
         var hadAllDayEvent = false
-        val sorted = events.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { it.description }))
+        val sorted = filtered.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { it.description }))
         for (event in sorted) {
             if (event.isAllDay || Formatter.getDayCodeFromTS(event.startTS) != Formatter.getDayCodeFromTS(event.endTS)) {
                 hadAllDayEvent = true
