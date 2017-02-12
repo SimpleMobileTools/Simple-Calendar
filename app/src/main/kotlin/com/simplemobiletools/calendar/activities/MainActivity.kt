@@ -104,6 +104,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.change_view -> showViewDialog()
+            R.id.filter -> showFilterDialog()
             R.id.import_events -> tryImportEvents()
             R.id.settings -> launchSettings()
             R.id.about -> launchAbout()
@@ -124,6 +125,10 @@ class MainActivity : SimpleActivity(), NavigationListener {
         ChangeViewDialog(this) {
             updateView(it)
         }
+    }
+
+    private fun showFilterDialog() {
+
     }
 
     private fun updateView(view: Int) {

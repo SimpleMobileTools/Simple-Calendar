@@ -23,6 +23,8 @@
     <string name="event_added">Termin erfolgreich hinzugefügt</string>
     <string name="past_event_added">Termin erfolgreich in der Vergangenheit hinzugefügt</string>
     <string name="event_updated">Termin erfolgreich aktualisiert</string>
+    <string name="filter">Filter</string>
+    <string name="filter_events_by_type">Filter events by type</string>
 
     <!-- Event Repetition -->
     <string name="select_repeat_interval">Wähle ein Wiederholungsintervall</string>

@@ -23,6 +23,8 @@
     <string name="event_added">Udalosť bola úspešne pridaná</string>
     <string name="past_event_added">Udalosť v minulosti bola úspešne pridaná</string>
     <string name="event_updated">Udalosť bola úspešne upravená</string>
+    <string name="filter">Filtrovať</string>
+    <string name="filter_events_by_type">Filtrovať udalosti podľa typu</string>
 
     <!-- Event Repetition -->
     <string name="select_repeat_interval">Zvoľte opakovanie</string>
