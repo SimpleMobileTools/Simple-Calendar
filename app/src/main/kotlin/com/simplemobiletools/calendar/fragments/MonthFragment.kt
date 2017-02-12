@@ -74,8 +74,12 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         mCalendar.apply {
             mTargetDate = Formatter.getDateTimeFromCode(mDayCode)
             getDays()    // prefill the screen asap, even if without events
-            updateMonthlyCalendar(Formatter.getDateTimeFromCode(mDayCode))
         }
+        updateCalendar()
+    }
+
+    fun updateCalendar() {
+        mCalendar.updateMonthlyCalendar(Formatter.getDateTimeFromCode(mDayCode))
     }
 
     override fun updateMonthlyCalendar(month: String, days: List<Day>) {

@@ -167,7 +167,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
         } else if (config.storedView == WEEKLY_VIEW) {
             (week_view_view_pager.adapter as MyWeekPagerAdapter).refreshEvents(week_view_view_pager.currentItem)
         } else {
-
+            (main_view_pager.adapter as MyMonthPagerAdapter).refreshEvents(main_view_pager.currentItem)
         }
     }
 
@@ -183,8 +183,9 @@ class MainActivity : SimpleActivity(), NavigationListener {
         FilePickerDialog(this) {
             if (it.toLowerCase().endsWith(".ics")) {
                 ImportEventsDialog(this, it) {
-                    if (it)
+                    if (it) {
                         updateViewPager()
+                    }
                 }
             } else {
                 toast(R.string.invalid_file_format)

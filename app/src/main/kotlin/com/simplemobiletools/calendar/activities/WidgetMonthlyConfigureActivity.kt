@@ -78,7 +78,7 @@ class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
         config_bg_seekbar.progress = (mBgAlpha * 100).toInt()
         updateBgColor()
 
-        MonthlyCalendarImpl(this, applicationContext).updateMonthlyCalendar(DateTime())
+        MonthlyCalendarImpl(this, applicationContext).updateMonthlyCalendar(DateTime(), false)
     }
 
     fun saveConfig() {

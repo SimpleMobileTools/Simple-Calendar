@@ -2,6 +2,7 @@ package com.simplemobiletools.calendar.helpers
 
 import android.content.Context
 import com.simplemobiletools.calendar.extensions.config
+import com.simplemobiletools.calendar.extensions.getFilteredEvents
 import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.models.Day
@@ -15,6 +16,7 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
 
     private val mToday: String = DateTime().toString(Formatter.DAYCODE_PATTERN)
     var mEvents: List<Event>
+    var mFilterEventTypes = true
 
     lateinit var mTargetDate: DateTime
 
@@ -22,7 +24,8 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
         mEvents = ArrayList<Event>()
     }
 
-    fun updateMonthlyCalendar(targetDate: DateTime) {
+    fun updateMonthlyCalendar(targetDate: DateTime, filterEventTypes: Boolean = true) {
+        mFilterEventTypes = filterEventTypes
         mTargetDate = targetDate
         val startTS = mTargetDate.minusMonths(1).seconds()
         val endTS = mTargetDate.plusMonths(1).seconds()
@@ -113,7 +116,10 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
         }
 
     override fun gotEvents(events: MutableList<Event>) {
-        mEvents = events
+        if (mFilterEventTypes)
+            mEvents = mContext.getFilteredEvents(events)
+        else
+            mEvents = events
         getDays()
     }
 }

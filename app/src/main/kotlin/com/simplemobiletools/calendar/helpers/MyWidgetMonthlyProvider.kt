@@ -62,7 +62,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
 
         mRemoteViews.setInt(R.id.calendar_holder, "setBackgroundColor", config.widgetBgColor)
 
-        mCalendar?.updateMonthlyCalendar(DateTime())
+        mCalendar?.updateMonthlyCalendar(DateTime(), false)
     }
 
     private fun updateWidget() {
