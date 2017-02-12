@@ -9,6 +9,7 @@ import android.view.MenuItem
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.adapters.MyDayPagerAdapter
 import com.simplemobiletools.calendar.dialogs.FilterEventTypesDialog
+import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.getNewEventTimestampFromCode
 import com.simplemobiletools.calendar.helpers.DAY_CODE
 import com.simplemobiletools.calendar.helpers.DBHelper
@@ -50,7 +51,7 @@ class DayActivity : SimpleActivity(), NavigationListener, ViewPager.OnPageChange
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_day, menu)
-        menu.findItem(R.id.filter).isVisible = eventTypeColors.size() > 1
+        menu.findItem(R.id.filter).isVisible = eventTypeColors.size() > 1 || config.displayEventTypes.isEmpty()
         return true
     }
 
