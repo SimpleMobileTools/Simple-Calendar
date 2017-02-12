@@ -239,7 +239,10 @@ class MainActivity : SimpleActivity(), NavigationListener {
     }
 
     private fun fillWeeklyViewPager() {
-        val thisweek = DateTime().withDayOfWeek(1).withTimeAtStartOfDay().minusDays(if (config.isSundayFirst) 1 else 0)
+        var thisweek = DateTime().withDayOfWeek(1).withTimeAtStartOfDay().minusDays(if (config.isSundayFirst) 1 else 0)
+        if (DateTime().minusDays(7).seconds() > thisweek.seconds()) {
+            thisweek = thisweek.plusDays(7)
+        }
         val weekTSs = getWeekTimestamps(thisweek.seconds())
         val weeklyAdapter = MyWeekPagerAdapter(supportFragmentManager, weekTSs, object : WeekFragment.WeekScrollListener {
             override fun scrollTo(y: Int) {
