@@ -37,6 +37,7 @@ val VIBRATE = "vibrate"
 val REMINDER_SOUND = "reminder_sound"
 val VIEW = "view"
 val REMINDER_MINUTES = "reminder_minutes"
+val DISPLAY_EVENT_TYPES = "display_event_types"
 val GOOGLE_SYNC = "google_sync"
 val SYNC_ACCOUNT_NAME = "sync_account_name"
 

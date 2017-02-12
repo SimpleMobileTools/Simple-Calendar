@@ -5,25 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?attr/selectableItemBackground"
-    android:padding="@dimen/activity_margin">
+    android:padding="@dimen/normal_margin">
 
     <com.simplemobiletools.commons.views.MyAppCompatCheckbox
         android:id="@+id/filter_event_type_checkbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:clickable="false"/>
-
-    <com.simplemobiletools.commons.views.MyTextView
-        android:id="@+id/filter_event_type_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toEndOf="@+id/filter_event_type_checkbox"
-        android:layout_toRightOf="@+id/filter_event_type_checkbox"
         android:clickable="false"
-        android:paddingLeft="@dimen/medium_margin"
-        android:paddingRight="@dimen/medium_margin"
-        android:text="@string/text_color"/>
+        android:paddingLeft="@dimen/small_margin"/>
 
     <ImageView
         android:id="@+id/filter_event_type_color"

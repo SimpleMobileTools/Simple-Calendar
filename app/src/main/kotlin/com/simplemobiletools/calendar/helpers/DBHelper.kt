@@ -194,7 +194,9 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
     fun insertEventType(eventType: EventType, db: SQLiteDatabase = mDb): Int {
         val values = fillEventTypeValues(eventType)
-        return db.insert(TYPES_TABLE_NAME, null, values).toInt()
+        val insertedId = db.insert(TYPES_TABLE_NAME, null, values).toInt()
+        context.config.addDisplayEventType(insertedId.toString())
+        return insertedId
     }
 
     fun updateEventType(eventType: EventType): Int {
@@ -262,6 +264,9 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         if (ids.contains(DBHelper.REGULAR_EVENT_ID))
             deleteIds = ids.filter { it != DBHelper.REGULAR_EVENT_ID } as ArrayList<Int>
 
+        val deletedSet = HashSet<String>()
+        deleteIds.map { deletedSet.add(it.toString()) }
+        context.config.removeDisplayEventTypes(deletedSet)
         if (deleteIds.isEmpty())
             return
 

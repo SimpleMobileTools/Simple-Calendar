@@ -45,6 +45,10 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getInt(REMINDER_MINUTES, 10)
         set(mins) = prefs.edit().putInt(REMINDER_MINUTES, mins).apply()
 
+    var displayEventTypes: Set<String>
+        get() = prefs.getStringSet(DISPLAY_EVENT_TYPES, HashSet<String>())
+        set(displayEventTypes) = prefs.edit().remove(DISPLAY_EVENT_TYPES).putStringSet(DISPLAY_EVENT_TYPES, displayEventTypes).apply()
+
     var googleSync: Boolean
         get() = prefs.getBoolean(GOOGLE_SYNC, false)
         set(googleSync) = prefs.edit().putBoolean(GOOGLE_SYNC, googleSync).apply()
@@ -52,6 +56,22 @@ class Config(context: Context) : BaseConfig(context) {
     var syncAccountName: String
         get() = prefs.getString(SYNC_ACCOUNT_NAME, "")
         set(syncAccountName) = prefs.edit().putString(SYNC_ACCOUNT_NAME, syncAccountName).apply()
+
+    fun addDisplayEventType(type: String) {
+        addDisplayEventTypes(HashSet<String>(Arrays.asList(type)))
+    }
+
+    fun addDisplayEventTypes(types: Set<String>) {
+        val currDisplayEventTypes = HashSet<String>(displayEventTypes)
+        currDisplayEventTypes.addAll(types)
+        displayEventTypes = currDisplayEventTypes
+    }
+
+    fun removeDisplayEventTypes(types: Set<String>) {
+        val currDisplayEventTypes = HashSet<String>(displayEventTypes)
+        currDisplayEventTypes.removeAll(types)
+        displayEventTypes = currDisplayEventTypes
+    }
 
     fun getDefaultNotificationSound(): String {
         try {

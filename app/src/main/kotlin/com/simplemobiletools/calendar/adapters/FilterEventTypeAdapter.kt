@@ -38,7 +38,8 @@ class FilterEventTypeAdapter(val activity: SimpleActivity, val mItems: List<Even
     class ViewHolder(val activity: SimpleActivity, view: View) : RecyclerView.ViewHolder(view) {
         fun bindView(eventType: EventType): View {
             itemView.apply {
-                filter_event_type_title.text = eventType.title
+                filter_event_type_checkbox.setColors(activity.config.textColor, activity.config.primaryColor, activity.config.backgroundColor)
+                filter_event_type_checkbox.text = eventType.title
                 filter_event_type_color.setBackgroundWithStroke(eventType.color, activity.config.backgroundColor)
                 filter_event_type_holder.setOnClickListener { filter_event_type_checkbox.toggle() }
             }

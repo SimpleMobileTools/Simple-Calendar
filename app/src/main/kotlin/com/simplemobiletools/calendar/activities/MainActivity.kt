@@ -16,7 +16,7 @@ import com.simplemobiletools.calendar.adapters.MyMonthPagerAdapter
 import com.simplemobiletools.calendar.adapters.MyWeekPagerAdapter
 import com.simplemobiletools.calendar.adapters.MyYearPagerAdapter
 import com.simplemobiletools.calendar.dialogs.ChangeViewDialog
-import com.simplemobiletools.calendar.dialogs.FilterEventsDialog
+import com.simplemobiletools.calendar.dialogs.FilterEventTypesDialog
 import com.simplemobiletools.calendar.dialogs.ImportEventsDialog
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.getNewEventTimestampFromCode
@@ -129,7 +129,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
     }
 
     private fun showFilterDialog() {
-        FilterEventsDialog(this) {
+        FilterEventTypesDialog(this) {
 
         }
     }

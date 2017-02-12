@@ -2,9 +2,10 @@
 <android.support.v7.widget.RecyclerView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/filter_events_list"
+    android:id="@+id/filter_event_types_list"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clipToPadding="false"
     android:overScrollMode="never"
+    android:paddingTop="@dimen/medium_margin"
     app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
