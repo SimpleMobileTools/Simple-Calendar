@@ -77,7 +77,7 @@
     <!-- Event details -->
     <string name="title">Titel</string>
     <string name="description">Beschreibung</string>
-    <string name="all_day">täglich</string>
+    <string name="all_day">ganztags</string>
 
     <!-- Weekly view -->
     <string name="week">Woche</string>
