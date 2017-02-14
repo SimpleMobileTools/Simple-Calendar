@@ -23,8 +23,8 @@
     <string name="event_added">Termin erfolgreich hinzugefügt</string>
     <string name="past_event_added">Termin erfolgreich in der Vergangenheit hinzugefügt</string>
     <string name="event_updated">Termin erfolgreich aktualisiert</string>
-    <string name="filter">Filter</string>
-    <string name="filter_events_by_type">Filter events by type</string>
+    <string name="filter">Sortieren</string>
+    <string name="filter_events_by_type">Sortiere Termine nach Typ</string>
 
     <!-- Event Repetition -->
     <string name="select_repeat_interval">Wähle ein Wiederholungsintervall</string>
@@ -35,8 +35,8 @@
     <string name="biweekly">Zweiwöchentlich</string>
     <string name="monthly">Monatlich</string>
     <string name="yearly">Jährlich</string>
-    <string name="repeat_till">Repeat till:</string>
-    <string name="forever">Forever</string>
+    <string name="repeat_till">Wiederholen bis:</string>
+    <string name="forever">unendlich</string>
 
     <!-- Event Reminders -->
     <string name="select_event_reminder">Wähle eine Termin Erinnerung</string>
@@ -48,7 +48,7 @@
     <string name="minutes_raw">Minuten</string>
     <string name="hours_raw">Stunden</string>
     <string name="days_raw">Tage</string>
-    <string name="add_another_reminder">Add another reminder</string>
+    <string name="add_another_reminder">füge eine weitere Erinnerung hinzu</string>
 
     <plurals name="minutes">
         <item quantity="one">%1$d Minute vorher</item>
@@ -70,7 +70,7 @@
     <string name="import_events_from_ics">importiere Termine aus.ics Datei</string>
     <string name="event_reminder">Termin Erinnerung</string>
     <string name="events_imported_successfully">Termine erfolgreich importiert</string>
-    <string name="importing_events_failed">Importing events failed</string>
+    <string name="importing_events_failed">Termine importieren fehlgeschlagen</string>
     <string name="importing_some_events_failed">einige Termine wurden nicht erfolgreich importiert</string>
     <string name="invalid_file_format">ungültiges Dateiformat</string>
 
@@ -83,17 +83,17 @@
     <string name="week">Woche</string>
 
     <!-- Event types -->
-    <string name="event_types">Event types</string>
-    <string name="add_new_type">Add a new type</string>
-    <string name="edit_type">Edit type</string>
-    <string name="type_already_exists">Type with this title already exists</string>
-    <string name="color">Color</string>
-    <string name="regular_event">Regular event</string>
-    <string name="cannot_delete_default_type">Default event type cannot be deleted</string>
-    <string name="select_event_type">Select an event type</string>
+    <string name="event_types">Termin Typen</string>
+    <string name="add_new_type">fügen einen neuen Typ hinzu</string>
+    <string name="edit_type">Typ bearbeiten</string>
+    <string name="type_already_exists">Typ mit diesen Namen existiert bereits</string>
+    <string name="color">Farbe</string>
+    <string name="regular_event">Regelmässier Termin</string>
+    <string name="cannot_delete_default_type">der Standart Termin Typ kann nicht gelöscht werden</string>
+    <string name="select_event_type">Wähle einen Termin Typ</string>
 
     <!-- Settings -->
-    <string name="manage_event_types">Manage event types</string>
+    <string name="manage_event_types">Verwalte Termin Typen</string>
     <string name="sunday_first">Sonntag als erster Wochentag</string>
     <string name="start_weekly_at">Wochen Ansicht beginnt am</string>
     <string name="end_weekly_at">Wochen Ansicht endet am</string>
