@@ -36,10 +36,19 @@ class IcsParser {
         try {
             val dbHelper = DBHelper.newInstance(context)
             val importIDs = dbHelper.getImportIds()
+            var prevLine = ""
 
             File(path).inputStream().bufferedReader().use {
                 while (true) {
-                    val line = it.readLine()?.trim() ?: break
+                    var line = it.readLine() ?: break
+                    if (line.trim().isEmpty())
+                        continue
+
+                    if (line.substring(0, 1) == " ") {
+                        line = prevLine + line.trim()
+                        eventsFailed--
+                    }
+
                     if (line == BEGIN_EVENT) {
                         resetValues()
                     } else if (line.startsWith(DTSTART)) {
@@ -62,6 +71,7 @@ class IcsParser {
                         eventsImported++
                         resetValues()
                     }
+                    prevLine = line
                 }
             }
         } catch (e: Exception) {
@@ -79,20 +89,28 @@ class IcsParser {
 
     private fun getTimestamp(fullString: String): Int {
         try {
-            if (fullString.startsWith(';')) {
+            return if (fullString.startsWith(';')) {
                 curFlags = curFlags or FLAG_ALL_DAY
-                val value = fullString.substring(fullString.lastIndexOf(':') + 1)
-                val dateTimeFormat = DateTimeFormat.forPattern("yyyyMMdd")
-                return dateTimeFormat.parseDateTime(value).withHourOfDay(1).seconds()
+                val value = fullString.substring(fullString.lastIndexOf(':') + 1).replace("T", "").replace("Z", "")
+                if (value.length == 14) {
+                    parseLongFormat(value)
+                } else {
+                    val dateTimeFormat = DateTimeFormat.forPattern("yyyyMMdd")
+                    dateTimeFormat.parseDateTime(value).withHourOfDay(1).seconds()
+                }
             } else {
                 val digitString = fullString.substring(1).replace("T", "").replace("Z", "")
-                val dateTimeFormat = DateTimeFormat.forPattern("yyyyMMddHHmmss")
-                return dateTimeFormat.parseDateTime(digitString).withZoneRetainFields(DateTimeZone.UTC).seconds()
+                parseLongFormat(digitString)
             }
         } catch (e: Exception) {
             eventsFailed++
             return -1
         }
+    }
+
+    private fun parseLongFormat(digitString: String): Int {
+        val dateTimeFormat = DateTimeFormat.forPattern("yyyyMMddHHmmss")
+        return dateTimeFormat.parseDateTime(digitString).withZoneRetainFields(DateTimeZone.UTC).seconds()
     }
 
     private fun resetValues() {
