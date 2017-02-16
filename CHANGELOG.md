@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 2.1.10 *(2017-02-16)*
+----------------------------
+
+ * Fix some issues with importing some .ics files
+ * Use the es Spanish translation for ca and gl Spanish too
+
 Version 2.1.9 *(2017-02-12)*
 ----------------------------
 
