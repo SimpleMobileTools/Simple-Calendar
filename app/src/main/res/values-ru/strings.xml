@@ -23,46 +23,46 @@
     <string name="event_added">Событие успешно добавлено</string>
     <string name="past_event_added">Событие в прошлом успешно создано</string>
     <string name="event_updated">Событие успешно обновлено</string>
-    <string name="filter">Filter</string>
-    <string name="filter_events_by_type">Filter events by type</string>
+    <string name="filter">Фильтрация</string>
+    <string name="filter_events_by_type">Фильтровать события по типу</string>
 
     <!-- Event Repetition -->
-    <string name="select_repeat_interval">Select a repeat interval</string>
+    <string name="select_repeat_interval">Выбрать интервал повтора</string>
     <string name="repetition">Повторять</string>
-    <string name="no_repetition">No repetition</string>
+    <string name="no_repetition">Без повторения</string>
     <string name="daily">Ежедневно</string>
     <string name="weekly">Еженедельно</string>
     <string name="biweekly">Раз в две недели</string>
     <string name="monthly">Ежемесячно</string>
     <string name="yearly">Ежегодно</string>
-    <string name="repeat_till">Repeat till:</string>
-    <string name="forever">Forever</string>
+    <string name="repeat_till">Повторять до:</string>
+    <string name="forever">Бесконечно</string>
 
     <!-- Event Reminders -->
-    <string name="select_event_reminder">Select an event reminder</string>
+    <string name="select_event_reminder">Выбрать напоминание для события</string>
     <string name="reminder">Напоминание</string>
-    <string name="no_reminder">No reminder</string>
+    <string name="no_reminder">Без напоминания</string>
     <string name="at_start">С наступлением события</string>
     <string name="custom">Настраиваемое</string>
     <string name="before">до события</string>
     <string name="minutes_raw">минут</string>
     <string name="hours_raw">часов</string>
     <string name="days_raw">дней</string>
-    <string name="add_another_reminder">Add another reminder</string>
+    <string name="add_another_reminder">Добавить ещё одно напоминание</string>
 
     <plurals name="minutes">
-        <item quantity="one">%1$d minute before</item>
-        <item quantity="other">%1$d минут до события</item>
+        <item quantity="one">%1$d минута до события</item>
+        <item quantity="other">%1$d минут(-ы) до события</item>
     </plurals>
 
     <plurals name="hours">
-        <item quantity="one">%1$d hour before</item>
-        <item quantity="other">%1$d часов до события</item>
+        <item quantity="one">%1$d час до события</item>
+        <item quantity="other">%1$d часа(-ов) до события</item>
     </plurals>
 
     <plurals name="days">
-        <item quantity="one">%1$d day before</item>
-        <item quantity="other">%1$d дней до события</item>
+        <item quantity="one">%1$d день до события</item>
+        <item quantity="other">%1$d дня(-ей) до события</item>
     </plurals>
 
     <!-- Importing -->
@@ -70,7 +70,7 @@
     <string name="import_events_from_ics">Импорт событий из .ics файла</string>
     <string name="event_reminder">Напоминания о событиях</string>
     <string name="events_imported_successfully">События успешно импортированы</string>
-    <string name="importing_events_failed">Importing events failed</string>
+    <string name="importing_events_failed">Импорт событий не удался</string>
     <string name="importing_some_events_failed">Ошибка импорта</string>
     <string name="invalid_file_format">Неправильный формат файла</string>
 
@@ -83,17 +83,17 @@
     <string name="week">Неделя</string>
 
     <!-- Event types -->
-    <string name="event_types">Event types</string>
-    <string name="add_new_type">Add a new type</string>
-    <string name="edit_type">Edit type</string>
-    <string name="type_already_exists">Type with this title already exists</string>
-    <string name="color">Color</string>
-    <string name="regular_event">Regular event</string>
-    <string name="cannot_delete_default_type">Default event type cannot be deleted</string>
-    <string name="select_event_type">Select an event type</string>
+    <string name="event_types">Типы событий</string>
+    <string name="add_new_type">Добавить новый тип</string>
+    <string name="edit_type">Редактировать тип</string>
+    <string name="type_already_exists">Тип с таким названием уже существует</string>
+    <string name="color">Цвет</string>
+    <string name="regular_event">Обычное событие</string>
+    <string name="cannot_delete_default_type">Тип событий по умолчанию не может быть удалён</string>
+    <string name="select_event_type">Выбрать тип события</string>
 
     <!-- Settings -->
-    <string name="manage_event_types">Manage event types</string>
+    <string name="manage_event_types">Управление типами событий</string>
     <string name="sunday_first">Воскресенье - начало недели</string>
     <string name="start_weekly_at">Начало дня (неделя)</string>
     <string name="end_weekly_at">Окончание дня (неделя)</string>
@@ -138,9 +138,9 @@
     <string name="sample_title_5">Время для кофе</string>
 
     <!-- Release notes -->
-    <string name="release_57">Added event types with customizable colors</string>
-    <string name="release_54">Allow setting up to 3 reminders per event</string>
-    <string name="release_52">Added all-day long event support</string>
+    <string name="release_57">Добавлены типы событий с настраиваемыми цветами</string>
+    <string name="release_54">Добавлена возможность установить до 3-х напоминаний для события</string>
+    <string name="release_52">Добавлена поддержка событий, длящихся целый день</string>
     <string name="release_51">Разрешен импорт событий из .ics файлов</string>
     <string name="release_49">Разрешен выбор цвета из шестнадцатеричного кода</string>
     <string name="release_48">Добавлен вид "на неделю"</string>
@@ -162,7 +162,7 @@
 
         Это приложение не будет показывать рекламу или запрашивать ненужные разрешения. У него полностью открытый исходный код и настраиваемые цвета оформления.
 
-        The Storage permission is needed only for importing events from .ics files.
+        Разрешение для доступа к памяти требуется только для импорта событий из .ics файлов.
 
         Simple Calendar - это приложение из серии Simple Mobile Tools. Остальные приложения из этой серии можно найти здесь: http://www.simplemobiletools.com
     </string>
