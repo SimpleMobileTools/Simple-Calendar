@@ -28,6 +28,7 @@ class IcsParser {
     private val DISPLAY = "DISPLAY"
     private val FREQ = "FREQ"
     private val UNTIL = "UNTIL"
+    private val COUNT = "COUNT"
     private val INTERVAL = "INTERVAL"
 
     private val DAILY = "DAILY"
@@ -171,14 +172,23 @@ class IcsParser {
     private fun parseRepeatInterval(fullString: String): Int {
         val parts = fullString.split(";")
         var frequencySeconds = 0
+        var count = 0
         for (part in parts) {
             val keyValue = part.split("=")
-            if (keyValue[0] == FREQ) {
-                frequencySeconds = getFrequencySeconds(keyValue[1])
-            } else if (keyValue[0] == INTERVAL) {
-                return frequencySeconds * keyValue[1].toInt()
-            } else if (keyValue[0] == UNTIL) {
-                curRepeatLimit = parseDateTimeValue(keyValue[1])
+            val key = keyValue[0]
+            val value = keyValue[1]
+            if (key == FREQ) {
+                frequencySeconds = getFrequencySeconds(value)
+            } else if (key == COUNT) {
+                count = value.toInt()
+            } else if (key == UNTIL) {
+                curRepeatLimit = parseDateTimeValue(value)
+            } else if (key == INTERVAL) {
+                val interval = value.toInt()
+                val repeatInterval = frequencySeconds * interval
+                if (count > 0)
+                    curRepeatLimit = curStart + count * repeatInterval
+                return repeatInterval
             }
         }
         return frequencySeconds
