@@ -23,8 +23,16 @@ class IcsParser {
     private val UID = "UID:"
     private val ACTION = "ACTION:"
     private val TRIGGER = "TRIGGER:"
+    private val RRULE = "RRULE:"
 
     private val DISPLAY = "DISPLAY"
+    private val FREQ = "FREQ"
+    private val INTERVAL = "INTERVAL"
+
+    private val DAILY = "DAILY"
+    private val WEEKLY = "WEEKLY"
+    private val MONTHLY = "MONTHLY"
+    private val YEARLY = "YEARLY"
 
     var curStart = -1
     var curEnd = -1
@@ -33,6 +41,7 @@ class IcsParser {
     var curImportId = ""
     var curFlags = 0
     var curReminderMinutes = -1
+    var curRepeatInterval = 0
     var curShouldHaveNotification = false
     var isNotificationDescription = false
 
@@ -65,13 +74,15 @@ class IcsParser {
                     } else if (line.startsWith(DURATION)) {
                         val duration = line.substring(DURATION.length)
                         curEnd = curStart + decodeTime(duration)
-                    } else if (line.startsWith(SUMMARY)) {
+                    } else if (line.startsWith(SUMMARY) && !isNotificationDescription) {
                         curTitle = line.substring(SUMMARY.length)
                         curTitle = curTitle.substring(0, Math.min(curTitle.length, 50))
                     } else if (line.startsWith(DESCRIPTION) && !isNotificationDescription) {
                         curDescription = line.substring(DESCRIPTION.length)
                     } else if (line.startsWith(UID)) {
                         curImportId = line.substring(UID.length)
+                    } else if (line.startsWith(RRULE)) {
+                        curRepeatInterval = parseRepeatSeconds(line.substring(RRULE.length))
                     } else if (line.startsWith(ACTION)) {
                         isNotificationDescription = true
                         if (line.substring(ACTION.length) == DISPLAY)
@@ -85,7 +96,7 @@ class IcsParser {
                             continue
 
                         importIDs.add(curImportId)
-                        val event = Event(0, curStart, curEnd, curTitle, curDescription, curReminderMinutes, -1, -1, importId = curImportId, flags = curFlags)
+                        val event = Event(0, curStart, curEnd, curTitle, curDescription, curReminderMinutes, -1, -1, curRepeatInterval, curImportId, curFlags)
                         dbHelper.insert(event) { }
                         eventsImported++
                         resetValues()
@@ -150,6 +161,30 @@ class IcsParser {
         return dateTimeFormat.parseDateTime(digitString).withZoneRetainFields(DateTimeZone.UTC).seconds()
     }
 
+    private fun parseRepeatSeconds(fullString: String): Int {
+        val parts = fullString.split(";")
+        var frequencySeconds = 0
+        for (part in parts) {
+            val keyValue = part.split("=")
+            if (keyValue[0] == FREQ) {
+                frequencySeconds = getFrequencySeconds(keyValue[1])
+            } else if (keyValue[0] == INTERVAL) {
+                return frequencySeconds * keyValue[1].toInt()
+            }
+        }
+        return frequencySeconds
+    }
+
+    private fun getFrequencySeconds(interval: String): Int {
+        return when (interval) {
+            DAILY -> DAY
+            WEEKLY -> WEEK
+            MONTHLY -> MONTH
+            YEARLY -> YEAR
+            else -> 0
+        }
+    }
+
     private fun resetValues() {
         curStart = -1
         curEnd = -1
@@ -158,6 +193,7 @@ class IcsParser {
         curImportId = ""
         curFlags = 0
         curReminderMinutes = -1
+        curRepeatInterval = 0
         curShouldHaveNotification = false
         isNotificationDescription = false
     }
