@@ -34,6 +34,7 @@ class IcsParser {
     var curFlags = 0
     var curReminderMinutes = -1
     var curShouldHaveNotification = false
+    var isNotificationDescription = false
 
     var eventsImported = 0
     var eventsFailed = 0
@@ -67,11 +68,12 @@ class IcsParser {
                     } else if (line.startsWith(SUMMARY)) {
                         curTitle = line.substring(SUMMARY.length)
                         curTitle = curTitle.substring(0, Math.min(curTitle.length, 50))
-                    } else if (line.startsWith(DESCRIPTION)) {
+                    } else if (line.startsWith(DESCRIPTION) && !isNotificationDescription) {
                         curDescription = line.substring(DESCRIPTION.length)
                     } else if (line.startsWith(UID)) {
                         curImportId = line.substring(UID.length)
                     } else if (line.startsWith(ACTION)) {
+                        isNotificationDescription = true
                         if (line.substring(ACTION.length) == DISPLAY)
                             curShouldHaveNotification = true
                     } else if (line.startsWith(TRIGGER)) {
@@ -156,5 +158,6 @@ class IcsParser {
         curFlags = 0
         curReminderMinutes = -1
         curShouldHaveNotification = false
+        isNotificationDescription = false
     }
 }
