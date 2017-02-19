@@ -1,53 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/dialog_custom_reminder_holder"
+    android:id="@+id/dialog_custom_reminder_scrollview"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:paddingLeft="@dimen/activity_margin"
-    android:paddingRight="@dimen/activity_margin"
-    android:paddingTop="@dimen/activity_margin">
+    android:layout_height="wrap_content">
 
-    <com.simplemobiletools.commons.views.MyEditText
-        android:id="@+id/dialog_custom_reminder_value"
+    <LinearLayout
+        android:id="@+id/dialog_custom_reminder_holder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:digits="0123456789"
-        android:ems="3"
-        android:inputType="number"
-        android:maxLength="4"
-        android:textCursorDrawable="@null"/>
-
-    <RadioGroup
-        android:id="@+id/dialog_radio_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/activity_margin"
+        android:paddingRight="@dimen/activity_margin"
         android:paddingTop="@dimen/activity_margin">
 
-        <com.simplemobiletools.commons.views.MyCompatRadioButton
-            android:id="@+id/dialog_radio_minutes"
+        <com.simplemobiletools.commons.views.MyEditText
+            android:id="@+id/dialog_custom_reminder_value"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/activity_margin"
-            android:paddingTop="@dimen/activity_margin"
-            android:text="@string/minutes_raw"/>
+            android:digits="0123456789"
+            android:ems="3"
+            android:inputType="number"
+            android:maxLength="4"
+            android:textCursorDrawable="@null"/>
 
-        <com.simplemobiletools.commons.views.MyCompatRadioButton
-            android:id="@+id/dialog_radio_hours"
+        <RadioGroup
+            android:id="@+id/dialog_radio_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/activity_margin"
-            android:paddingTop="@dimen/activity_margin"
-            android:text="@string/hours_raw"/>
+            android:paddingTop="@dimen/activity_margin">
 
-        <com.simplemobiletools.commons.views.MyCompatRadioButton
-            android:id="@+id/dialog_radio_days"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/activity_margin"
-            android:paddingTop="@dimen/activity_margin"
-            android:text="@string/days_raw"/>
+            <com.simplemobiletools.commons.views.MyCompatRadioButton
+                android:id="@+id/dialog_radio_minutes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/activity_margin"
+                android:paddingTop="@dimen/activity_margin"
+                android:text="@string/minutes_raw"/>
 
-    </RadioGroup>
-</LinearLayout>
+            <com.simplemobiletools.commons.views.MyCompatRadioButton
+                android:id="@+id/dialog_radio_hours"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/activity_margin"
+                android:paddingTop="@dimen/activity_margin"
+                android:text="@string/hours_raw"/>
+
+            <com.simplemobiletools.commons.views.MyCompatRadioButton
+                android:id="@+id/dialog_radio_days"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/activity_margin"
+                android:paddingTop="@dimen/activity_margin"
+                android:text="@string/days_raw"/>
+
+        </RadioGroup>
+    </LinearLayout>
+</ScrollView>
