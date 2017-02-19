@@ -319,6 +319,9 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             val daysCnt = Days.daysBetween(Formatter.getDateTimeFromTS(minTS), Formatter.getDateTimeFromTS(maxTS)).days
 
             activity.runOnUiThread {
+                if (activity == null)
+                    return@runOnUiThread
+
                 mView.week_all_day_holder.addView(this)
                 (layoutParams as LinearLayout.LayoutParams).apply {
                     topMargin = mRes.getDimension(R.dimen.tiny_margin).toInt()
