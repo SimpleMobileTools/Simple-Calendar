@@ -139,7 +139,13 @@ class MainActivity : SimpleActivity(), NavigationListener {
     }
 
     private fun goToToday() {
-
+        if (config.storedView == WEEKLY_VIEW) {
+            week_view_view_pager.currentItem = mDefaultWeeklyPage
+        } else if (config.storedView == MONTHLY_VIEW) {
+            main_view_pager.currentItem = mDefaultMonthlyPage
+        } else if (config.storedView == YEARLY_VIEW) {
+            main_view_pager.currentItem = mDefaultYearlyPage
+        }
     }
 
     private fun shouldGoToTodayBeVisible(): Boolean {
