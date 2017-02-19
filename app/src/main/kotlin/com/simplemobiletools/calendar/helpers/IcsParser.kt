@@ -27,6 +27,7 @@ class IcsParser {
 
     private val DISPLAY = "DISPLAY"
     private val FREQ = "FREQ"
+    private val UNTIL = "UNTIL"
     private val INTERVAL = "INTERVAL"
 
     private val DAILY = "DAILY"
@@ -42,6 +43,7 @@ class IcsParser {
     var curFlags = 0
     var curReminderMinutes = -1
     var curRepeatInterval = 0
+    var curRepeatLimit = 0
     var curShouldHaveNotification = false
     var isNotificationDescription = false
 
@@ -82,7 +84,7 @@ class IcsParser {
                     } else if (line.startsWith(UID)) {
                         curImportId = line.substring(UID.length)
                     } else if (line.startsWith(RRULE)) {
-                        curRepeatInterval = parseRepeatSeconds(line.substring(RRULE.length))
+                        curRepeatInterval = parseRepeatInterval(line.substring(RRULE.length))
                     } else if (line.startsWith(ACTION)) {
                         isNotificationDescription = true
                         if (line.substring(ACTION.length) == DISPLAY)
@@ -96,7 +98,8 @@ class IcsParser {
                             continue
 
                         importIDs.add(curImportId)
-                        val event = Event(0, curStart, curEnd, curTitle, curDescription, curReminderMinutes, -1, -1, curRepeatInterval, curImportId, curFlags)
+                        val event = Event(0, curStart, curEnd, curTitle, curDescription, curReminderMinutes, -1, -1, curRepeatInterval,
+                                curImportId, curFlags, curRepeatLimit)
                         dbHelper.insert(event) { }
                         eventsImported++
                         resetValues()
@@ -121,20 +124,24 @@ class IcsParser {
         try {
             return if (fullString.startsWith(';')) {
                 curFlags = curFlags or FLAG_ALL_DAY
-                val value = fullString.substring(fullString.lastIndexOf(':') + 1).replace("T", "").replace("Z", "")
-                if (value.length == 14) {
-                    parseLongFormat(value)
-                } else {
-                    val dateTimeFormat = DateTimeFormat.forPattern("yyyyMMdd")
-                    dateTimeFormat.parseDateTime(value).withHourOfDay(1).seconds()
-                }
+                val value = fullString.substring(fullString.lastIndexOf(':') + 1)
+                parseDateTimeValue(value)
             } else {
-                val digitString = fullString.substring(1).replace("T", "").replace("Z", "")
-                parseLongFormat(digitString)
+                parseDateTimeValue(fullString.substring(1))
             }
         } catch (e: Exception) {
             eventsFailed++
             return -1
+        }
+    }
+
+    private fun parseDateTimeValue(value: String): Int {
+        val edited = value.replace("T", "").replace("Z", "")
+        return if (edited.length == 14) {
+            parseLongFormat(edited)
+        } else {
+            val dateTimeFormat = DateTimeFormat.forPattern("yyyyMMdd")
+            dateTimeFormat.parseDateTime(edited).withHourOfDay(1).seconds()
         }
     }
 
@@ -161,7 +168,7 @@ class IcsParser {
         return dateTimeFormat.parseDateTime(digitString).withZoneRetainFields(DateTimeZone.UTC).seconds()
     }
 
-    private fun parseRepeatSeconds(fullString: String): Int {
+    private fun parseRepeatInterval(fullString: String): Int {
         val parts = fullString.split(";")
         var frequencySeconds = 0
         for (part in parts) {
@@ -170,6 +177,8 @@ class IcsParser {
                 frequencySeconds = getFrequencySeconds(keyValue[1])
             } else if (keyValue[0] == INTERVAL) {
                 return frequencySeconds * keyValue[1].toInt()
+            } else if (keyValue[0] == UNTIL) {
+                curRepeatLimit = parseDateTimeValue(keyValue[1])
             }
         }
         return frequencySeconds
@@ -194,6 +203,7 @@ class IcsParser {
         curFlags = 0
         curReminderMinutes = -1
         curRepeatInterval = 0
+        curRepeatLimit = 0
         curShouldHaveNotification = false
         isNotificationDescription = false
     }
