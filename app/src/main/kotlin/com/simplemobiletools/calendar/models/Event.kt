@@ -21,7 +21,8 @@ data class Event(var id: Int = 0, var startTS: Int = 0, var endTS: Int = 0, var 
             WEEK -> currStart.plusWeeks(1)
             BIWEEK -> currStart.plusWeeks(2)
             MONTH -> currStart.plusMonths(1)
-            else -> currStart.plusYears(1)
+            YEAR -> currStart.plusYears(1)
+            else -> currStart.plusSeconds(repeatInterval)
         }
         val newStartTS = newStart.seconds()
         val newEndTS = newStartTS + (endTS - startTS)
