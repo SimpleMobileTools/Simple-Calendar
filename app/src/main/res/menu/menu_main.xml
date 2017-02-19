@@ -2,14 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/change_view"
-        android:icon="@drawable/ic_change_view"
-        android:title="@string/change_view"
-        app:showAsAction="ifRoom"/>
-    <item
         android:id="@+id/go_to_today"
         android:icon="@drawable/ic_today"
         android:title="@string/go_to_today"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/change_view"
+        android:icon="@drawable/ic_change_view"
+        android:title="@string/change_view"
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/filter"

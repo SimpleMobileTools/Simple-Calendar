@@ -50,6 +50,11 @@ class MainActivity : SimpleActivity(), NavigationListener {
     private var mStoredBackgroundColor = 0
     private var mStoredPrimaryColor = 0
     private var mStoredIsSundayFirst = false
+    private var mShouldFilterBeVisible = false
+
+    private var mDefaultWeeklyPage = 0
+    private var mDefaultMonthlyPage = 0
+    private var mDefaultYearlyPage = 0
 
     companion object {
         var mWeekScrollY = 0
@@ -71,6 +76,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
         DBHelper.newInstance(applicationContext).getEventTypes {
             eventTypeColors.clear()
             it.map { eventTypeColors.put(it.id, it.color) }
+            mShouldFilterBeVisible = eventTypeColors.size() > 1 || config.displayEventTypes.isEmpty()
             invalidateOptionsMenu()
         }
         mStoredTextColor = config.textColor
@@ -99,9 +105,8 @@ class MainActivity : SimpleActivity(), NavigationListener {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
-        menu.findItem(R.id.filter).isVisible = eventTypeColors.size() > 1 || config.displayEventTypes.isEmpty()
+        menu.findItem(R.id.filter).isVisible = mShouldFilterBeVisible
         menu.findItem(R.id.go_to_today).isVisible = shouldGoToTodayBeVisible()
-
         return true
     }
 
@@ -138,7 +143,15 @@ class MainActivity : SimpleActivity(), NavigationListener {
     }
 
     private fun shouldGoToTodayBeVisible(): Boolean {
-        return config.storedView == WEEKLY_VIEW || config.storedView == MONTHLY_VIEW || config.storedView == YEARLY_VIEW
+        return if (config.storedView == WEEKLY_VIEW) {
+            week_view_view_pager.currentItem != mDefaultWeeklyPage
+        } else if (config.storedView == MONTHLY_VIEW) {
+            main_view_pager.currentItem != mDefaultMonthlyPage
+        } else if (config.storedView == YEARLY_VIEW) {
+            main_view_pager.currentItem != mDefaultYearlyPage
+        } else {
+            false
+        }
     }
 
     private fun showFilterDialog() {
@@ -230,12 +243,23 @@ class MainActivity : SimpleActivity(), NavigationListener {
         calendar_fab.beVisible()
         val codes = getMonths(targetDay)
         val monthlyAdapter = MyMonthPagerAdapter(supportFragmentManager, codes, this)
+        mDefaultMonthlyPage = codes.size / 2
 
         main_view_pager.apply {
-            clearOnPageChangeListeners()
             adapter = monthlyAdapter
-            currentItem = codes.size / 2
             beVisible()
+            addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+                override fun onPageScrollStateChanged(state: Int) {
+                }
+
+                override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+                }
+
+                override fun onPageSelected(position: Int) {
+                    invalidateOptionsMenu()
+                }
+            })
+            currentItem = mDefaultMonthlyPage
         }
         calendar_event_list_holder.beGone()
     }
@@ -276,6 +300,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
             }
         }
 
+        mDefaultWeeklyPage = weekTSs.size / 2
         week_view_view_pager.apply {
             adapter = weeklyAdapter
             addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
@@ -286,10 +311,11 @@ class MainActivity : SimpleActivity(), NavigationListener {
                 }
 
                 override fun onPageSelected(position: Int) {
+                    invalidateOptionsMenu()
                     setupActionbarTitle(weekTSs[position])
                 }
             })
-            currentItem = weekTSs.size / 2
+            currentItem = mDefaultWeeklyPage
         }
 
         week_view_hours_scrollview.setOnScrollviewListener(object : MyScrollView.ScrollViewListener {
@@ -337,9 +363,9 @@ class MainActivity : SimpleActivity(), NavigationListener {
         val years = getYears(targetYear)
         val yearlyAdapter = MyYearPagerAdapter(supportFragmentManager, years, this)
 
+        mDefaultYearlyPage = years.size / 2
         main_view_pager.apply {
             adapter = yearlyAdapter
-            currentItem = years.size / 2
             addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
                 override fun onPageScrollStateChanged(state: Int) {
                 }
@@ -348,10 +374,12 @@ class MainActivity : SimpleActivity(), NavigationListener {
                 }
 
                 override fun onPageSelected(position: Int) {
+                    invalidateOptionsMenu()
                     if (position < years.size)
                         title = "${getString(R.string.app_launcher_name)} - ${years[position]}"
                 }
             })
+            currentItem = mDefaultYearlyPage
             beVisible()
         }
         title = "${getString(R.string.app_launcher_name)} - ${years[years.size / 2]}"
