@@ -161,6 +161,7 @@
     <string name="sample_title_5">Kaffee Pause</string>
 
     <!-- Release notes -->
+    <string name="release_59">Added customizable repeat intervals</string>
     <string name="release_57">Added event types with customizable colors</string>
     <string name="release_54">Allow setting up to 3 reminders per event</string>
     <string name="release_52">Unterstützt nun ganztägige Termine</string>
