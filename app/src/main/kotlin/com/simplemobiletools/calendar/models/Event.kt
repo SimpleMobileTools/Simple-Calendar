@@ -20,9 +20,15 @@ data class Event(var id: Int = 0, var startTS: Int = 0, var endTS: Int = 0, var 
             DAY -> currStart.plusDays(1)
             WEEK -> currStart.plusWeeks(1)
             BIWEEK -> currStart.plusWeeks(2)
-            MONTH -> currStart.plusMonths(1)
-            YEAR -> currStart.plusYears(1)
-            else -> currStart.plusSeconds(repeatInterval)
+            else -> {
+                if (repeatInterval % YEAR == 0) {
+                    currStart.plusYears(repeatInterval / YEAR)
+                } else if (repeatInterval % MONTH == 0) {
+                    currStart.plusMonths(repeatInterval / MONTH)
+                } else {
+                    currStart.plusSeconds(repeatInterval)
+                }
+            }
         }
         val newStartTS = newStart.seconds()
         val newEndTS = newStartTS + (endTS - startTS)
