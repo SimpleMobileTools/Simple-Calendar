@@ -364,6 +364,11 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         if (isStart) {
             mEventStartDateTime = mEventStartDateTime.withDate(year, month + 1, day)
             updateStartDate()
+            if (mEventStartDateTime.isAfter(mEventEndDateTime)) {
+                mEventEndDateTime = mEventStartDateTime
+                updateEndDate()
+                updateEndTime()
+            }
         } else {
             mEventEndDateTime = mEventEndDateTime.withDate(year, month + 1, day)
             updateEndDate()
@@ -375,6 +380,10 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         if (isStart) {
             mEventStartDateTime = mEventStartDateTime.withHourOfDay(hours).withMinuteOfHour(minutes)
             updateStartTime()
+            if (mEventStartDateTime.isAfter(mEventEndDateTime)) {
+                mEventEndDateTime = mEventStartDateTime
+                updateEndTime()
+            }
         } else {
             mEventEndDateTime = mEventEndDateTime.withHourOfDay(hours).withMinuteOfHour(minutes)
             updateEndTime()
