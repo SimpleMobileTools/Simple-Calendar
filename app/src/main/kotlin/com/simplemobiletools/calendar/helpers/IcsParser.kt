@@ -58,7 +58,7 @@ class IcsParser {
                         curEnd = getTimestamp(line.substring(DTEND.length))
                     } else if (line.startsWith(DURATION)) {
                         val duration = line.substring(DURATION.length)
-                        curEnd = calculateEndTime(curStart, duration)
+                        curEnd = curStart + calculateEndTime(duration)
                     } else if (line.startsWith(SUMMARY)) {
                         curTitle = line.substring(SUMMARY.length)
                         curTitle = curTitle.substring(0, Math.min(curTitle.length, 50))
@@ -113,7 +113,7 @@ class IcsParser {
     }
 
     // P0DT1H0M0S
-    private fun calculateEndTime(curStart: Int, duration: String): Int {
+    private fun calculateEndTime(duration: String): Int {
         val weeks = getDurationValue(duration, "W")
         val days = getDurationValue(duration, "DT")
         val hours = getDurationValue(duration, "H")
@@ -125,7 +125,7 @@ class IcsParser {
         val daySecs = hourSecs * 24
         val weekSecs = daySecs * 7
 
-        return curStart + seconds + (minutes * minSecs) + (hours * hourSecs) + (days * daySecs) + (weeks * weekSecs)
+        return seconds + (minutes * minSecs) + (hours * hourSecs) + (days * daySecs) + (weeks * weekSecs)
     }
 
     private fun getDurationValue(duration: String, char: String): Int = Regex("[0-9]+(?=$char)").find(duration)?.value?.toInt() ?: 0
