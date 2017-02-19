@@ -61,7 +61,10 @@ class EventRepeatIntervalDialog(val activity: Activity, val repeatSeconds: Int, 
             return
 
         if (checkedId == seconds.size) {
-
+            CustomEventRepeatIntervalDialog(activity) {
+                callback.invoke(it)
+                dialog?.dismiss()
+            }
         } else {
             callback.invoke(seconds.elementAt(checkedId))
             dialog?.dismiss()

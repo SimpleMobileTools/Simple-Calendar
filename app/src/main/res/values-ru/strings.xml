@@ -35,6 +35,9 @@
     <string name="biweekly">Раз в две недели</string>
     <string name="monthly">Ежемесячно</string>
     <string name="yearly">Ежегодно</string>
+    <string name="weeks_raw">weeks</string>
+    <string name="months_raw">months</string>
+    <string name="years_raw">years</string>
     <string name="repeat_till">Повторять до:</string>
     <string name="forever">Бесконечно</string>
 

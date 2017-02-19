@@ -35,6 +35,9 @@
     <string name="biweekly">Dvojtýždenne</string>
     <string name="monthly">Mesačne</string>
     <string name="yearly">Ročne</string>
+    <string name="weeks_raw">týždňov</string>
+    <string name="months_raw">mesiacov</string>
+    <string name="years_raw">rokov</string>
     <string name="repeat_till">Opakovať do:</string>
     <string name="forever">Navždy</string>
 

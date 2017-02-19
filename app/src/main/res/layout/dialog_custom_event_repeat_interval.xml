@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dialog_custom_repeat_interval_scrollview"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/dialog_custom_repeat_interval_holder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/activity_margin"
+        android:paddingRight="@dimen/activity_margin"
+        android:paddingTop="@dimen/activity_margin">
+
+        <com.simplemobiletools.commons.views.MyEditText
+            android:id="@+id/dialog_custom_repeat_interval_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:digits="0123456789"
+            android:ems="3"
+            android:inputType="number"
+            android:maxLength="4"
+            android:textCursorDrawable="@null"/>
+
+        <RadioGroup
+            android:id="@+id/dialog_radio_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/activity_margin">
+
+            <com.simplemobiletools.commons.views.MyCompatRadioButton
+                android:id="@+id/dialog_radio_days"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/activity_margin"
+                android:paddingTop="@dimen/activity_margin"
+                android:text="@string/days_raw"/>
+
+            <com.simplemobiletools.commons.views.MyCompatRadioButton
+                android:id="@+id/dialog_radio_weeks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/activity_margin"
+                android:paddingTop="@dimen/activity_margin"
+                android:text="@string/weeks_raw"/>
+
+            <com.simplemobiletools.commons.views.MyCompatRadioButton
+                android:id="@+id/dialog_radio_months"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/activity_margin"
+                android:paddingTop="@dimen/activity_margin"
+                android:text="@string/months_raw"/>
+
+            <com.simplemobiletools.commons.views.MyCompatRadioButton
+                android:id="@+id/dialog_radio_years"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/activity_margin"
+                android:paddingTop="@dimen/activity_margin"
+                android:text="@string/years_raw"/>
+
+        </RadioGroup>
+    </LinearLayout>
+</ScrollView>

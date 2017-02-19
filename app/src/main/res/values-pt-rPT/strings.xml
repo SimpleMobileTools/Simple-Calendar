@@ -35,6 +35,9 @@
     <string name="biweekly">Bissemanal</string>
     <string name="monthly">Mensal</string>
     <string name="yearly">Anual</string>
+    <string name="weeks_raw">weeks</string>
+    <string name="months_raw">months</string>
+    <string name="years_raw">years</string>
     <string name="repeat_till">Repetir até:</string>
     <string name="forever">Eternamente</string>
 
