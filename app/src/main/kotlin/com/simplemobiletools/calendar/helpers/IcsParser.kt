@@ -38,7 +38,7 @@ class IcsParser {
     var eventsImported = 0
     var eventsFailed = 0
 
-    fun parseIcs(context: Context, reminderMinutes: Int, path: String): ImportResult {
+    fun parseIcs(context: Context, path: String): ImportResult {
         try {
             val dbHelper = DBHelper.newInstance(context)
             val importIDs = dbHelper.getImportIds()

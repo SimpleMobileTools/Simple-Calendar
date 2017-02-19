@@ -98,7 +98,6 @@
     <!-- Importing -->
     <string name="import_events">Importovať udalosti</string>
     <string name="import_events_from_ics">Importovať udalosti z .ics súboru</string>
-    <string name="event_reminder">Pripomienka udalosti</string>
     <string name="events_imported_successfully">Udalosti boli úspešne importované</string>
     <string name="importing_events_failed">Importovanie udalostí zlyhalo</string>
     <string name="importing_some_events_failed">Importovanie niektorých udalostí zlyhalo</string>
