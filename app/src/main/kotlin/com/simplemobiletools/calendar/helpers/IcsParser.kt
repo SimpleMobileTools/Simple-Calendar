@@ -84,6 +84,7 @@ class IcsParser {
                         if (curTitle.isEmpty() || curStart == -1 || curEnd == -1 || importIDs.contains(curImportId))
                             continue
 
+                        importIDs.add(curImportId)
                         val event = Event(0, curStart, curEnd, curTitle, curDescription, curReminderMinutes, -1, -1, importId = curImportId, flags = curFlags)
                         dbHelper.insert(event) { }
                         eventsImported++
