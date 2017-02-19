@@ -38,6 +38,26 @@
     <string name="repeat_till">Повторять до:</string>
     <string name="forever">Бесконечно</string>
 
+    <plurals name="days">
+        <item quantity="one">%1$d day</item>
+        <item quantity="other">%1$d days</item>
+    </plurals>
+
+    <plurals name="weeks">
+        <item quantity="one">%1$d week</item>
+        <item quantity="other">%1$d weeks</item>
+    </plurals>
+
+    <plurals name="months">
+        <item quantity="one">%1$d month</item>
+        <item quantity="other">%1$d months</item>
+    </plurals>
+
+    <plurals name="years">
+        <item quantity="one">%1$d year</item>
+        <item quantity="other">%1$d years</item>
+    </plurals>
+
     <!-- Event Reminders -->
     <string name="select_event_reminder">Выбрать напоминание для события</string>
     <string name="reminder">Напоминание</string>
@@ -60,7 +80,7 @@
         <item quantity="other">%1$d часа(-ов) до события</item>
     </plurals>
 
-    <plurals name="days">
+    <plurals name="days_before">
         <item quantity="one">%1$d день до события</item>
         <item quantity="other">%1$d дня(-ей) до события</item>
     </plurals>

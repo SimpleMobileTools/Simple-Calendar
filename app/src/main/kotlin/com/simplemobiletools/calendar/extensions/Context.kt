@@ -122,6 +122,28 @@ fun Context.getReminderText(minutes: Int) = when (minutes) {
     }
 }
 
+fun Context.getRepetitionText(seconds: Int): String {
+    val days = seconds / 60 / 60 / 24
+    return when (days) {
+        0 -> getString(R.string.no_repetition)
+        1 -> getString(R.string.daily)
+        7 -> getString(R.string.weekly)
+        14 -> getString(R.string.biweekly)
+        30 -> getString(R.string.monthly)
+        365 -> getString(R.string.yearly)
+        else -> {
+            if (days % 365 == 0)
+                resources.getQuantityString(R.plurals.years, days / 365, days / 365)
+            else if (days % 30 == 0)
+                resources.getQuantityString(R.plurals.months, days / 30, days / 30)
+            else if (days % 7 == 0)
+                resources.getQuantityString(R.plurals.weeks, days / 7, days / 7)
+            else
+                resources.getQuantityString(R.plurals.days, days, days)
+        }
+    }
+}
+
 fun Context.getFilteredEvents(events: List<Event>): List<Event> {
     val displayEventTypes = config.displayEventTypes
     val filtered = events.filter { displayEventTypes.contains(it.eventType.toString()) }

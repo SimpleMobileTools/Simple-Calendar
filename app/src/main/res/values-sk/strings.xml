@@ -38,6 +38,30 @@
     <string name="repeat_till">Opakovať do:</string>
     <string name="forever">Navždy</string>
 
+    <plurals name="days">
+        <item quantity="one">%1$d deň</item>
+        <item quantity="few">%1$d dni</item>
+        <item quantity="other">%1$d dní</item>
+    </plurals>
+
+    <plurals name="weeks">
+        <item quantity="one">%1$d týždeň</item>
+        <item quantity="few">%1$d týždne</item>
+        <item quantity="other">%1$d týždňov</item>
+    </plurals>
+
+    <plurals name="months">
+        <item quantity="one">%1$d mesiac</item>
+        <item quantity="few">%1$d mesiace</item>
+        <item quantity="other">%1$d mesiacov</item>
+    </plurals>
+
+    <plurals name="years">
+        <item quantity="one">%1$d rok</item>
+        <item quantity="two">%1$d roky</item>
+        <item quantity="other">%1$d rokov</item>
+    </plurals>
+
     <!-- Event Reminders -->
     <string name="select_event_reminder">Zvoľte pripomienku</string>
     <string name="reminder">Pripomenka</string>
@@ -52,16 +76,19 @@
 
     <plurals name="minutes">
         <item quantity="one">%1$d minútu vopred</item>
+        <item quantity="few">%1$d minúty vopred</item>
         <item quantity="other">%1$d minút vopred</item>
     </plurals>
 
     <plurals name="hours">
         <item quantity="one">%1$d hodinu vopred</item>
+        <item quantity="few">%1$d hodiny vopred</item>
         <item quantity="other">%1$d hodín vopred</item>
     </plurals>
 
-    <plurals name="days">
+    <plurals name="days_before">
         <item quantity="one">%1$d deň vopred</item>
+        <item quantity="few">%1$d dni vopred</item>
         <item quantity="other">%1$d dní vopred</item>
     </plurals>
 

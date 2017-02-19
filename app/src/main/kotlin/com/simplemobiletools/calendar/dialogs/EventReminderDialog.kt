@@ -11,7 +11,8 @@ import com.simplemobiletools.commons.extensions.setupDialogStuff
 import kotlinx.android.synthetic.main.dialog_radio_group.view.*
 import java.util.*
 
-class EventReminderDialog(val activity: Activity, val defaultMinutes: Int, val callback: (minutes: Int) -> Unit) : AlertDialog.Builder(activity), RadioGroup.OnCheckedChangeListener {
+class EventReminderDialog(val activity: Activity, val reminderMinutes: Int, val callback: (minutes: Int) -> Unit) : AlertDialog.Builder(activity),
+        RadioGroup.OnCheckedChangeListener {
     val dialog: AlertDialog?
     var wasInit = false
     var minutes = TreeSet<Int>()
@@ -27,7 +28,7 @@ class EventReminderDialog(val activity: Activity, val defaultMinutes: Int, val c
             add(0)
             add(10)
             add(30)
-            add(defaultMinutes)
+            add(reminderMinutes)
         }
 
         minutes.forEachIndexed { index, value ->
@@ -46,7 +47,7 @@ class EventReminderDialog(val activity: Activity, val defaultMinutes: Int, val c
     private fun addRadioButton(textValue: String, value: Int, index: Int) {
         val radioButton = (activity.layoutInflater.inflate(R.layout.radio_button, null) as RadioButton).apply {
             text = textValue
-            isChecked = value == defaultMinutes
+            isChecked = value == reminderMinutes
             id = index
         }
         radioGroup.addView(radioButton, RadioGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT))

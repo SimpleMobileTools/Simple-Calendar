@@ -38,6 +38,26 @@
     <string name="repeat_till">Repeat till:</string>
     <string name="forever">Forever</string>
 
+    <plurals name="days">
+        <item quantity="one">%1$d day</item>
+        <item quantity="other">%1$d days</item>
+    </plurals>
+
+    <plurals name="weeks">
+        <item quantity="one">%1$d week</item>
+        <item quantity="other">%1$d weeks</item>
+    </plurals>
+
+    <plurals name="months">
+        <item quantity="one">%1$d month</item>
+        <item quantity="other">%1$d months</item>
+    </plurals>
+
+    <plurals name="years">
+        <item quantity="one">%1$d year</item>
+        <item quantity="other">%1$d years</item>
+    </plurals>
+
     <!-- Event Reminders -->
     <string name="select_event_reminder">Select an event reminder</string>
     <string name="reminder">रिमाइंडर</string>
@@ -60,7 +80,7 @@
         <item quantity="other">%1$d hours before</item>
     </plurals>
 
-    <plurals name="days">
+    <plurals name="days_before">
         <item quantity="one">%1$d day before</item>
         <item quantity="other">%1$d days before</item>
     </plurals>
