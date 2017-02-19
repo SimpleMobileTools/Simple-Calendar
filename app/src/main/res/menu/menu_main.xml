@@ -7,6 +7,11 @@
         android:title="@string/change_view"
         app:showAsAction="ifRoom"/>
     <item
+        android:id="@+id/go_to_today"
+        android:icon="@drawable/ic_today"
+        android:title="@string/go_to_today"
+        app:showAsAction="ifRoom"/>
+    <item
         android:id="@+id/filter"
         android:icon="@drawable/ic_filter"
         android:title="@string/filter"

@@ -9,6 +9,7 @@
     <string name="no_upcoming_events">Det ser ut som att du inte har några kommandechändelser.</string>
     <string name="add_some_events">Du kan lägga till händelser via plus-knappen som du ser längst ner.</string>
     <string name="details">Detaljer</string>
+    <string name="go_to_today">Go to today</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Kalender månadsvis</string>
