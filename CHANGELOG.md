@@ -1,6 +1,14 @@
 Changelog
 ==========
 
+Version 2.2.0 *(2017-02-19)*
+----------------------------
+
+ * Implement customizable repeat intervals
+ * Use a lot more fields when importing events from .ics files
+ * Add a "Go to today" button in some views
+ * Many other smaller improvements and bugfixes
+
 Version 2.1.10 *(2017-02-16)*
 ----------------------------
 
