@@ -100,6 +100,8 @@ class MainActivity : SimpleActivity(), NavigationListener {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         menu.findItem(R.id.filter).isVisible = eventTypeColors.size() > 1 || config.displayEventTypes.isEmpty()
+        menu.findItem(R.id.go_to_today).isVisible = shouldGoToTodayBeVisible()
+
         return true
     }
 
@@ -127,11 +129,16 @@ class MainActivity : SimpleActivity(), NavigationListener {
     private fun showViewDialog() {
         ChangeViewDialog(this) {
             updateView(it)
+            invalidateOptionsMenu()
         }
     }
 
     private fun goToToday() {
 
+    }
+
+    private fun shouldGoToTodayBeVisible(): Boolean {
+        return config.storedView == WEEKLY_VIEW || config.storedView == MONTHLY_VIEW || config.storedView == YEARLY_VIEW
     }
 
     private fun showFilterDialog() {
