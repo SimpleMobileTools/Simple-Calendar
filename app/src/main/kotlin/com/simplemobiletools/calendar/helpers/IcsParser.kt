@@ -14,7 +14,6 @@ class IcsParser {
     }
 
     private val BEGIN_EVENT = "BEGIN:VEVENT"
-    private val BEGIN_ALARM = "BEGIN:VALARM"
     private val END = "END:VEVENT"
     private val DTSTART = "DTSTART"
     private val DTEND = "DTEND"
@@ -22,6 +21,10 @@ class IcsParser {
     private val SUMMARY = "SUMMARY:"
     private val DESCRIPTION = "DESCRIPTION:"
     private val UID = "UID:"
+    private val ACTION = "ACTION:"
+    private val TRIGGER = "TRIGGER:"
+
+    private val DISPLAY = "DISPLAY"
 
     var curStart = -1
     var curEnd = -1
@@ -29,6 +32,8 @@ class IcsParser {
     var curDescription = ""
     var curImportId = ""
     var curFlags = 0
+    var curReminderMinutes = -1
+    var curShouldHaveNotification = false
 
     var eventsImported = 0
     var eventsFailed = 0
@@ -58,7 +63,7 @@ class IcsParser {
                         curEnd = getTimestamp(line.substring(DTEND.length))
                     } else if (line.startsWith(DURATION)) {
                         val duration = line.substring(DURATION.length)
-                        curEnd = curStart + calculateEndTime(duration)
+                        curEnd = curStart + decodeTime(duration)
                     } else if (line.startsWith(SUMMARY)) {
                         curTitle = line.substring(SUMMARY.length)
                         curTitle = curTitle.substring(0, Math.min(curTitle.length, 50))
@@ -66,11 +71,18 @@ class IcsParser {
                         curDescription = line.substring(DESCRIPTION.length)
                     } else if (line.startsWith(UID)) {
                         curImportId = line.substring(UID.length)
-                    } else if (line == END || line == BEGIN_ALARM) {
+                    } else if (line.startsWith(ACTION)) {
+                        if (line.substring(ACTION.length) == DISPLAY)
+                            curShouldHaveNotification = true
+                    } else if (line.startsWith(TRIGGER)) {
+                        if (curReminderMinutes == -1 && curShouldHaveNotification) {
+                            curReminderMinutes = decodeTime(line.substring(TRIGGER.length)) / 60
+                        }
+                    } else if (line == END) {
                         if (curTitle.isEmpty() || curStart == -1 || curEnd == -1 || importIDs.contains(curImportId))
                             continue
 
-                        val event = Event(0, curStart, curEnd, curTitle, curDescription, reminderMinutes, -1, -1, importId = curImportId, flags = curFlags)
+                        val event = Event(0, curStart, curEnd, curTitle, curDescription, curReminderMinutes, -1, -1, importId = curImportId, flags = curFlags)
                         dbHelper.insert(event) { }
                         eventsImported++
                         resetValues()
@@ -113,7 +125,7 @@ class IcsParser {
     }
 
     // P0DT1H0M0S
-    private fun calculateEndTime(duration: String): Int {
+    private fun decodeTime(duration: String): Int {
         val weeks = getDurationValue(duration, "W")
         val days = getDurationValue(duration, "DT")
         val hours = getDurationValue(duration, "H")
@@ -142,5 +154,7 @@ class IcsParser {
         curDescription = ""
         curImportId = ""
         curFlags = 0
+        curReminderMinutes = -1
+        curShouldHaveNotification = false
     }
 }
