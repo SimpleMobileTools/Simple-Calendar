@@ -1,8 +1,8 @@
 package com.simplemobiletools.calendar.helpers
 
 import android.content.Context
-import android.text.format.DateFormat
 import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.seconds
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
@@ -63,5 +63,5 @@ object Formatter {
     // use manually translated month names, as DateFormat and Joda have issues with a lot of languages
     fun getMonthName(context: Context, id: Int) = context.resources.getStringArray(R.array.months)[id - 1]
 
-    fun getTimePattern(context: Context) = if (DateFormat.is24HourFormat(context)) PATTERN_TIME_24 else PATTERN_TIME_12
+    fun getTimePattern(context: Context) = if (context.config.use24hourFormat) PATTERN_TIME_24 else PATTERN_TIME_12
 }

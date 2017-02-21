@@ -41,6 +41,7 @@ class SettingsActivity : SimpleActivity() {
 
         setupCustomizeColors()
         setupManageEventTypes()
+        setupHourFormat()
         setupSundayFirst()
         setupGoogleSync()
         setupWeeklyStart()
@@ -61,6 +62,14 @@ class SettingsActivity : SimpleActivity() {
     private fun setupManageEventTypes() {
         settings_manage_event_types_holder.setOnClickListener {
             startActivity(Intent(this, ManageEventTypesActivity::class.java))
+        }
+    }
+
+    private fun setupHourFormat() {
+        settings_hour_format.isChecked = config.use24hourFormat
+        settings_hour_format_holder.setOnClickListener {
+            settings_hour_format.toggle()
+            config.use24hourFormat = settings_hour_format.isChecked
         }
     }
 

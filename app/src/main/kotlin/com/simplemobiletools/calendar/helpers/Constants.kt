@@ -29,6 +29,7 @@ val DAY_SECONDS = 24 * 60 * 60
 val WEEK_SECONDS = 7 * DAY_SECONDS
 
 // Shared Preferences
+val USE_24_HOUR_FORMAT = "use_24_hour_format"
 val SUNDAY_FIRST = "sunday_first"
 val WEEK_NUMBERS = "week_numbers"
 val START_WEEKLY_AT = "start_weekly_at"

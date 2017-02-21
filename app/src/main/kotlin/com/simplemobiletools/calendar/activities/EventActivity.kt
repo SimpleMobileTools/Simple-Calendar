@@ -328,7 +328,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
     fun setupStartTime() {
         hideKeyboard()
-        TimePickerDialog(this, mDialogTheme, startTimeSetListener, mEventStartDateTime.hourOfDay, mEventStartDateTime.minuteOfHour, true).show()
+        TimePickerDialog(this, mDialogTheme, startTimeSetListener, mEventStartDateTime.hourOfDay, mEventStartDateTime.minuteOfHour, config.use24hourFormat).show()
     }
 
     fun setupEndDate() {
@@ -339,7 +339,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
     fun setupEndTime() {
         hideKeyboard()
-        TimePickerDialog(this, mDialogTheme, endTimeSetListener, mEventEndDateTime.hourOfDay, mEventEndDateTime.minuteOfHour, true).show()
+        TimePickerDialog(this, mDialogTheme, endTimeSetListener, mEventEndDateTime.hourOfDay, mEventEndDateTime.minuteOfHour, config.use24hourFormat).show()
     }
 
     private val startDateSetListener = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
