@@ -153,10 +153,10 @@ fun Context.getFilteredEvents(events: List<Event>): List<Event> {
     return filtered
 }
 
-fun Context.launchNewEventIntent(startNewTask: Boolean = false) {
-    val tomorrowCode = Formatter.getDayCodeFromDateTime(DateTime(DateTimeZone.getDefault()).plusDays(1))
+fun Context.launchNewEventIntent(startNewTask: Boolean = false, today: Boolean = false) {
+    val code = Formatter.getDayCodeFromDateTime(DateTime(DateTimeZone.getDefault()).plusDays(if (today) 0 else 1))
     Intent(applicationContext, EventActivity::class.java).apply {
-        putExtra(NEW_EVENT_START_TS, getNewEventTimestampFromCode(tomorrowCode))
+        putExtra(NEW_EVENT_START_TS, getNewEventTimestampFromCode(code))
         if (startNewTask)
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(this)

@@ -2,8 +2,6 @@ package com.simplemobiletools.calendar.adapters
 
 import android.content.Context
 import android.content.Intent
-import android.text.SpannableString
-import android.text.style.UnderlineSpan
 import android.view.View
 import android.widget.RemoteViews
 import android.widget.RemoteViewsService
@@ -31,7 +29,7 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
     var todayDate = ""
     val allDayString = context.resources.getString(R.string.all_day)
 
-    override fun getViewAt(position: Int): RemoteViews {
+    override fun getViewAt(position: Int): RemoteViews? {
         val type = getItemViewType(position)
         val remoteView: RemoteViews
 
@@ -76,14 +74,7 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
             val item = events[position] as ListSection
             remoteView = RemoteViews(context.packageName, R.layout.event_list_section_widget).apply {
                 setInt(R.id.event_item_title, "setTextColor", textColor)
-
-                if (item.title == todayDate) {
-                    val underlinedText = SpannableString(item.title)
-                    underlinedText.setSpan(UnderlineSpan(), 0, item.title.length, 0)
-                    setTextViewText(R.id.event_item_title, underlinedText)
-                } else {
-                    setTextViewText(R.id.event_item_title, item.title)
-                }
+                setTextViewText(R.id.event_item_title, item.title)
             }
         }
 
@@ -117,7 +108,8 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
                     val code = Formatter.getDayCodeFromTS(it.startTS)
                     if (code != prevCode) {
                         val day = Formatter.getDayTitle(context, code)
-                        listItems.add(ListSection(day))
+                        if (day != todayDate)
+                            listItems.add(ListSection(day))
                         prevCode = code
                     }
                     listItems.add(ListEvent(it.id, it.startTS, it.endTS, it.title, it.description, it.isAllDay))
