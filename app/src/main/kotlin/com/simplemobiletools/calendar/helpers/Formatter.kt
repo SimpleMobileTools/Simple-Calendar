@@ -14,7 +14,7 @@ object Formatter {
     private val DAY_PATTERN = "d"
     private val DAY_OF_WEEK_PATTERN = "EEE"
     private val PATTERN_TIME_12 = "hh:mm a"
-    private val PATTERN_TIME_24 = "kk:mm"
+    private val PATTERN_TIME_24 = "HH:mm"
 
     fun getDateFromCode(context: Context, dayCode: String, shortMonth: Boolean = false): String {
         val dateTime = getDateTimeFromCode(dayCode)
