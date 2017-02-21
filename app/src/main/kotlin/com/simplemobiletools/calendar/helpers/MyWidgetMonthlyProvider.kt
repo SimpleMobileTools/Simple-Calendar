@@ -16,6 +16,7 @@ import android.widget.RemoteViews
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.SplashActivity
 import com.simplemobiletools.calendar.extensions.config
+import com.simplemobiletools.calendar.extensions.launchNewEventIntent
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.models.Day
 import com.simplemobiletools.commons.extensions.adjustAlpha
@@ -25,6 +26,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
     companion object {
         private val PREV = "prev"
         private val NEXT = "next"
+        private val NEW_EVENT = "new_event"
 
         private var mTextColor = 0
         private var mWeakTextColor = 0
@@ -94,6 +96,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
     private fun setupButtons() {
         setupIntent(PREV, R.id.top_left_arrow)
         setupIntent(NEXT, R.id.top_right_arrow)
+        setupIntent(NEW_EVENT, R.id.top_new_event)
         setupAppOpenIntent(R.id.top_value)
     }
 
@@ -106,6 +109,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
         when (action) {
             PREV -> mCalendar?.getPrevMonth()
             NEXT -> mCalendar?.getNextMonth()
+            NEW_EVENT -> mContext.launchNewEventIntent(true)
             else -> super.onReceive(context, intent)
         }
     }
@@ -177,6 +181,9 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
 
         bmp = getColoredIcon(mContext, mTextColor, R.drawable.ic_pointer_right)
         mRemoteViews.setImageViewBitmap(R.id.top_right_arrow, bmp)
+
+        bmp = getColoredIcon(mContext, mTextColor, R.drawable.ic_plus)
+        mRemoteViews.setImageViewBitmap(R.id.top_new_event, bmp)
     }
 
     fun updateMonth(month: String) {

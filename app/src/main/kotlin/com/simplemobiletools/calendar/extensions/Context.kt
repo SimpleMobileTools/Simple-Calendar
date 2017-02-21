@@ -10,10 +10,13 @@ import android.graphics.Color
 import android.os.Build
 import android.os.SystemClock
 import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.receivers.NotificationReceiver
 import com.simplemobiletools.commons.extensions.getContrastColor
+import org.joda.time.DateTime
+import org.joda.time.DateTimeZone
 
 fun Context.updateWidgets() {
     val widgetsCnt = AppWidgetManager.getInstance(this).getAppWidgetIds(ComponentName(this, MyWidgetMonthlyProvider::class.java))
@@ -148,6 +151,16 @@ fun Context.getFilteredEvents(events: List<Event>): List<Event> {
     val displayEventTypes = config.displayEventTypes
     val filtered = events.filter { displayEventTypes.contains(it.eventType.toString()) }
     return filtered
+}
+
+fun Context.launchNewEventIntent(startNewTask: Boolean = false) {
+    val tomorrowCode = Formatter.getDayCodeFromDateTime(DateTime(DateTimeZone.getDefault()).plusDays(1))
+    Intent(applicationContext, EventActivity::class.java).apply {
+        putExtra(NEW_EVENT_START_TS, getNewEventTimestampFromCode(tomorrowCode))
+        if (startNewTask)
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(this)
+    }
 }
 
 fun Context.getNewEventTimestampFromCode(dayCode: String) = Formatter.getLocalDateTimeFromCode(dayCode).withTime(13, 0, 0, 0).seconds()

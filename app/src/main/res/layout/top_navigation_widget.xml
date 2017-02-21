@@ -31,9 +31,20 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_alignBottom="@+id/top_value"
+        android:layout_alignTop="@+id/top_value"
+        android:layout_toLeftOf="@+id/top_new_event"
+        android:padding="@dimen/activity_margin"
+        android:src="@drawable/ic_pointer_right"/>
+
+    <ImageView
+        android:id="@+id/top_new_event"
+        style="@style/ArrowStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignBottom="@+id/top_value"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/top_value"
         android:padding="@dimen/activity_margin"
-        android:src="@drawable/ic_pointer_right"/>
+        android:src="@drawable/ic_plus"/>
 
 </merge>

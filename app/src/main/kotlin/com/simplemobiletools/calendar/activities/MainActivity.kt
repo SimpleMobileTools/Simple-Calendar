@@ -19,7 +19,7 @@ import com.simplemobiletools.calendar.dialogs.ChangeViewDialog
 import com.simplemobiletools.calendar.dialogs.FilterEventTypesDialog
 import com.simplemobiletools.calendar.dialogs.ImportEventsDialog
 import com.simplemobiletools.calendar.extensions.config
-import com.simplemobiletools.calendar.extensions.getNewEventTimestampFromCode
+import com.simplemobiletools.calendar.extensions.launchNewEventIntent
 import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.extensions.updateWidgets
 import com.simplemobiletools.calendar.fragments.EventListFragment
@@ -36,7 +36,6 @@ import com.simplemobiletools.commons.helpers.LICENSE_STETHO
 import com.simplemobiletools.commons.models.Release
 import kotlinx.android.synthetic.main.activity_main.*
 import org.joda.time.DateTime
-import org.joda.time.DateTimeZone
 import java.util.*
 
 class MainActivity : SimpleActivity(), NavigationListener {
@@ -64,7 +63,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        calendar_fab.setOnClickListener { addNewEvent() }
+        calendar_fab.setOnClickListener { launchNewEventIntent() }
         checkWhatsNewDialog()
     }
 
@@ -229,14 +228,6 @@ class MainActivity : SimpleActivity(), NavigationListener {
 
     private fun launchAbout() {
         startAboutActivity(R.string.app_name, LICENSE_KOTLIN or LICENSE_JODA or LICENSE_STETHO, BuildConfig.VERSION_NAME)
-    }
-
-    private fun addNewEvent() {
-        val tomorrowCode = Formatter.getDayCodeFromDateTime(DateTime(DateTimeZone.getDefault()).plusDays(1))
-        Intent(applicationContext, EventActivity::class.java).apply {
-            putExtra(NEW_EVENT_START_TS, getNewEventTimestampFromCode(tomorrowCode))
-            startActivity(this)
-        }
     }
 
     private fun resetTitle() {
