@@ -1,6 +1,14 @@
 Changelog
 ==========
 
+Version 2.2.1 *(2017-02-21)*
+----------------------------
+
+ * Added a setting for toggling 24-hour format
+ * Added buttons for easy event creation to widgets
+ * Some .ics file parsing fixes
+ * Couple smaller improvements
+
 Version 2.2.0 *(2017-02-19)*
 ----------------------------
 
