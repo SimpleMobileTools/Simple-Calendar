@@ -99,6 +99,10 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
 
     override fun onReceive(context: Context, intent: Intent) {
         val action = intent.action
+        if (mCalendar == null) {
+            initVariables(context)
+        }
+
         when (action) {
             PREV -> mCalendar?.getPrevMonth()
             NEXT -> mCalendar?.getNextMonth()
