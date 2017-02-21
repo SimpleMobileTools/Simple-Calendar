@@ -49,6 +49,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
     private var mStoredBackgroundColor = 0
     private var mStoredPrimaryColor = 0
     private var mStoredIsSundayFirst = false
+    private var mStoredUse24HourFormat = false
     private var mShouldFilterBeVisible = false
 
     private var mDefaultWeeklyPage = 0
@@ -82,8 +83,11 @@ class MainActivity : SimpleActivity(), NavigationListener {
         mStoredPrimaryColor = config.primaryColor
         mStoredBackgroundColor = config.backgroundColor
 
-        if (mStoredIsSundayFirst != config.isSundayFirst && config.storedView == WEEKLY_VIEW)
-            fillWeeklyViewPager()
+        if (config.storedView == WEEKLY_VIEW) {
+            if (mStoredIsSundayFirst != config.isSundayFirst || mStoredUse24HourFormat != config.use24hourFormat) {
+                fillWeeklyViewPager()
+            }
+        }
 
         updateWidgets()
         updateTextColors(calendar_coordinator)
@@ -95,6 +99,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
         mStoredIsSundayFirst = config.isSundayFirst
         mStoredBackgroundColor = config.backgroundColor
         mStoredPrimaryColor = config.primaryColor
+        mStoredUse24HourFormat = config.use24hourFormat
     }
 
     override fun onDestroy() {
@@ -288,10 +293,11 @@ class MainActivity : SimpleActivity(), NavigationListener {
         main_weekly_scrollview.beVisible()
 
         week_view_hours_holder.removeAllViews()
+        val hourDateTime = DateTime().withTime(0, 0, 0, 0)
         for (i in 1..23) {
-            val value = i.toString()
+            val formattedHours = Formatter.getHours(this, hourDateTime.withHourOfDay(i))
             (layoutInflater.inflate(R.layout.weekly_view_hour_textview, null, false) as TextView).apply {
-                text = if (value.length == 2) value else "0$value"
+                text = formattedHours
                 setTextColor(mStoredTextColor)
                 week_view_hours_holder.addView(this)
             }

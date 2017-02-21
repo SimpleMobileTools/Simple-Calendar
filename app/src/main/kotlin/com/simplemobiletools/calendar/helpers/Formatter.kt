@@ -16,6 +16,9 @@ object Formatter {
     private val PATTERN_TIME_12 = "hh:mm a"
     private val PATTERN_TIME_24 = "HH:mm"
 
+    private val PATTERN_HOURS_12 = "h a"
+    private val PATTERN_HOURS_24 = "HH"
+
     fun getDateFromCode(context: Context, dayCode: String, shortMonth: Boolean = false): String {
         val dateTime = getDateTimeFromCode(dayCode)
         val day = dateTime.toString(DAY_PATTERN)
@@ -23,7 +26,7 @@ object Formatter {
         val monthIndex = Integer.valueOf(dayCode.substring(4, 6))!!
         var month = getMonthName(context, monthIndex)
         if (shortMonth)
-           month = month.substring(0, Math.min(month.length, 3))
+            month = month.substring(0, Math.min(month.length, 3))
         var date = "$month $day"
         if (year != DateTime().toString(YEAR_PATTERN))
             date += " $year"
@@ -41,6 +44,8 @@ object Formatter {
     }
 
     fun getDate(context: Context, dateTime: DateTime, addDayOfWeek: Boolean = true) = getDayTitle(context, getDayCodeFromDateTime(dateTime), addDayOfWeek)
+
+    fun getHours(context: Context, dateTime: DateTime) = dateTime.toString(getHourPattern(context))
 
     fun getTime(context: Context, dateTime: DateTime) = dateTime.toString(getTimePattern(context))
 
@@ -62,6 +67,8 @@ object Formatter {
 
     // use manually translated month names, as DateFormat and Joda have issues with a lot of languages
     fun getMonthName(context: Context, id: Int) = context.resources.getStringArray(R.array.months)[id - 1]
+
+    fun getHourPattern(context: Context) = if (context.config.use24hourFormat) PATTERN_HOURS_24 else PATTERN_HOURS_12
 
     fun getTimePattern(context: Context) = if (context.config.use24hourFormat) PATTERN_TIME_24 else PATTERN_TIME_12
 }
