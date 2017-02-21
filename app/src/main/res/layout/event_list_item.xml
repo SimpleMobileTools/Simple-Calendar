@@ -38,6 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/activity_margin"
             android:layout_toRightOf="@+id/event_item_start"
+            android:ellipsize="end"
             android:maxLines="1"
             android:text="Event title"
             android:textSize="@dimen/day_text_size"/>
@@ -50,6 +51,7 @@
             android:layout_marginLeft="@dimen/activity_margin"
             android:layout_toRightOf="@+id/event_item_end"
             android:alpha=".4"
+            android:ellipsize="end"
             android:maxLines="1"
             android:text="Event description"
             android:textSize="@dimen/day_text_size"/>
