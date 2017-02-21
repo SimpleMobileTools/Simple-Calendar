@@ -249,7 +249,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                     text = event.title
                     activity.runOnUiThread {
                         layout.addView(this)
-                        y = startMinutes * minuteHeight
+                        y = Math.max(startMinutes * minuteHeight, minScrollY.toFloat())
                         (layoutParams as RelativeLayout.LayoutParams).apply {
                             width = layout.width - 1
                             minHeight = if (event.startTS == event.endTS) minimalHeight else (duration * minuteHeight).toInt() - 1
