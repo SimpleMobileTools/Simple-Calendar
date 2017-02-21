@@ -117,6 +117,7 @@
 
     <!-- Settings -->
     <string name="manage_event_types">Manage event types</string>
+    <string name="use_24_hour_format">Use 24-hour format</string>
     <string name="sunday_first">日曜日が最初</string>
     <string name="start_weekly_at">Start weekly view day at</string>
     <string name="end_weekly_at">End weekly view day at</string>
@@ -161,6 +162,7 @@
     <string name="sample_title_5">Coffee time</string>
 
     <!-- Release notes -->
+    <string name="release_60">Allow toggling 24-hour format in settings</string>
     <string name="release_59">
         Added customizable repeat intervals\n
         Multiple improvements to importing events from .ics files

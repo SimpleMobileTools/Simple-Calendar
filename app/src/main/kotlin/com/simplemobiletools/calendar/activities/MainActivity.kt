@@ -434,6 +434,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
             add(Release(54, R.string.release_54))
             add(Release(57, R.string.release_57))
             add(Release(59, R.string.release_59))
+            add(Release(60, R.string.release_60))
             checkWhatsNew(this, BuildConfig.VERSION_CODE)
         }
     }
