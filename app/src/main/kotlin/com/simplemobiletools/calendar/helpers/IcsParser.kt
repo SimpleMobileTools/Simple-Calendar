@@ -139,10 +139,10 @@ class IcsParser {
     private fun parseDateTimeValue(value: String): Int {
         val edited = value.replace("T", "").replace("Z", "")
         return if (edited.length == 14) {
-            parseLongFormat(edited)
+            parseLongFormat(edited, value.endsWith("Z"))
         } else {
             val dateTimeFormat = DateTimeFormat.forPattern("yyyyMMdd")
-            dateTimeFormat.parseDateTime(edited).withHourOfDay(1).seconds()
+            dateTimeFormat.parseDateTime(edited).withZoneRetainFields(DateTimeZone.getDefault()).withHourOfDay(1).seconds()
         }
     }
 
@@ -164,9 +164,10 @@ class IcsParser {
 
     private fun getDurationValue(duration: String, char: String): Int = Regex("[0-9]+(?=$char)").find(duration)?.value?.toInt() ?: 0
 
-    private fun parseLongFormat(digitString: String): Int {
+    private fun parseLongFormat(digitString: String, useUTC: Boolean): Int {
         val dateTimeFormat = DateTimeFormat.forPattern("yyyyMMddHHmmss")
-        return dateTimeFormat.parseDateTime(digitString).withZoneRetainFields(DateTimeZone.UTC).seconds()
+        val dateTimeZone = if (useUTC) DateTimeZone.UTC else DateTimeZone.getDefault()
+        return dateTimeFormat.parseDateTime(digitString).withZoneRetainFields(dateTimeZone).seconds()
     }
 
     private fun parseRepeatInterval(fullString: String): Int {
@@ -186,9 +187,10 @@ class IcsParser {
             } else if (key == INTERVAL) {
                 val interval = value.toInt()
                 val repeatInterval = frequencySeconds * interval
-                if (count > 0)
+                if (count > 0) {
                     curRepeatLimit = curStart + count * repeatInterval
-                return repeatInterval
+                    return repeatInterval
+                }
             }
         }
         return frequencySeconds
