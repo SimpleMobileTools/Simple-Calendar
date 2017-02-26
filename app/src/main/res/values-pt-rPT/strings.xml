@@ -9,7 +9,7 @@
     <string name="no_upcoming_events">Parece que você não tem eventos para breve.</string>
     <string name="add_some_events">Pode adicionar um evento através do botão existente na base do ecrã.</string>
     <string name="details">Detalhes</string>
-    <string name="go_to_today">Go to today</string>
+    <string name="go_to_today">Ir para hoje</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Calendário mensal</string>
@@ -36,30 +36,30 @@
     <string name="biweekly">Bissemanal</string>
     <string name="monthly">Mensal</string>
     <string name="yearly">Anual</string>
-    <string name="weeks_raw">weeks</string>
-    <string name="months_raw">months</string>
-    <string name="years_raw">years</string>
+    <string name="weeks_raw">semanas</string>
+    <string name="months_raw">meses</string>
+    <string name="years_raw">anos</string>
     <string name="repeat_till">Repetir até:</string>
     <string name="forever">Eternamente</string>
 
     <plurals name="days">
-        <item quantity="one">%1$d day</item>
-        <item quantity="other">%1$d days</item>
+        <item quantity="one">%1$d dia</item>
+        <item quantity="other">%1$d dias</item>
     </plurals>
 
     <plurals name="weeks">
-        <item quantity="one">%1$d week</item>
-        <item quantity="other">%1$d weeks</item>
+        <item quantity="one">%1$d semana</item>
+        <item quantity="other">%1$d semanas</item>
     </plurals>
 
     <plurals name="months">
-        <item quantity="one">%1$d month</item>
-        <item quantity="other">%1$d months</item>
+        <item quantity="one">%1$d mês</item>
+        <item quantity="other">%1$d meses</item>
     </plurals>
 
     <plurals name="years">
-        <item quantity="one">%1$d year</item>
-        <item quantity="other">%1$d years</item>
+        <item quantity="one">%1$d ano</item>
+        <item quantity="other">%1$d anos</item>
     </plurals>
 
     <!-- Event Reminders -->
@@ -117,7 +117,7 @@
 
     <!-- Settings -->
     <string name="manage_event_types">Gerir tipos de eventos</string>
-    <string name="use_24_hour_format">Use 24-hour format</string>
+    <string name="use_24_hour_format">Usar formato 24 H</string>
     <string name="sunday_first">Domingo como primeiro dia</string>
     <string name="start_weekly_at">Iniciar vista semanal em</string>
     <string name="end_weekly_at">Terminar vista semanal em</string>
