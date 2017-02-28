@@ -49,8 +49,8 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private val mDb: SQLiteDatabase = writableDatabase
 
     companion object {
-        private val DB_NAME = "events.db"
         private val DB_VERSION = 7
+        val DB_NAME = "events.db"
         val REGULAR_EVENT_ID = 1
 
         private var mEventsListener: EventUpdateListener? = null

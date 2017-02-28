@@ -36,6 +36,7 @@ import com.simplemobiletools.commons.helpers.LICENSE_STETHO
 import com.simplemobiletools.commons.models.Release
 import kotlinx.android.synthetic.main.activity_main.*
 import org.joda.time.DateTime
+import java.io.*
 import java.util.*
 
 class MainActivity : SimpleActivity(), NavigationListener {
@@ -238,7 +239,49 @@ class MainActivity : SimpleActivity(), NavigationListener {
     }
 
     private fun exportDatabase() {
+        FilePickerDialog(this, pickFile = false) {
+            val source = getDatabasePath(DBHelper.DB_NAME)
+            val destination = File(it, DBHelper.DB_NAME)
+            if (isShowingPermDialog(destination)) {
+                return@FilePickerDialog
+            }
 
+            Thread({
+                if (source.exists()) {
+                    val inputStream = FileInputStream(source)
+                    val outputStream: OutputStream?
+
+                    if (needsStupidWritePermissions(destination.absolutePath)) {
+                        var document = getFileDocument(destination.absolutePath, config.treeUri)
+                        if (!destination.exists()) {
+                            document = document.createFile("", destination.name)
+                        }
+                        outputStream = contentResolver.openOutputStream(document.uri)
+                    } else {
+                        outputStream = FileOutputStream(destination)
+                    }
+
+                    copyStream(inputStream, outputStream)
+                    inputStream.close()
+                    outputStream?.close()
+
+                    runOnUiThread {
+                        toast(R.string.database_exported_successfully)
+                    }
+                }
+            }).start()
+        }
+    }
+
+    private fun copyStream(inputStream: InputStream, out: OutputStream?) {
+        val buf = ByteArray(1024)
+        var len: Int
+        while (true) {
+            len = inputStream.read(buf)
+            if (len <= 0)
+                break
+            out?.write(buf, 0, len)
+        }
     }
 
     private fun launchSettings() {
