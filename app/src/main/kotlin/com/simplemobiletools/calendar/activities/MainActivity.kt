@@ -68,6 +68,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
         setContentView(R.layout.activity_main)
         calendar_fab.setOnClickListener { launchNewEventIntent() }
         checkWhatsNewDialog()
+        storeStoragePaths()
     }
 
     override fun onResume() {
@@ -252,7 +253,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
                     val outputStream: OutputStream?
 
                     if (needsStupidWritePermissions(destination.absolutePath)) {
-                        var document = getFileDocument(destination.absolutePath, config.treeUri)
+                        var document = getFileDocument(destination.absolutePath, config.treeUri) ?: return@Thread
                         if (!destination.exists()) {
                             document = document.createFile("", destination.name)
                         }
