@@ -89,13 +89,14 @@
         <item quantity="other">%1$d Tage vorher</item>
     </plurals>
 
-    <!-- Importing -->
+    <!-- Export / Import -->
     <string name="import_events">importiere Termine</string>
     <string name="import_events_from_ics">importiere Termine aus.ics Datei</string>
     <string name="events_imported_successfully">Termine erfolgreich importiert</string>
     <string name="importing_events_failed">Termine importieren fehlgeschlagen</string>
     <string name="importing_some_events_failed">einige Termine wurden nicht erfolgreich importiert</string>
     <string name="invalid_file_format">ungültiges Dateiformat</string>
+    <string name="export_raw_database">Export raw database</string>
 
     <!-- Event details -->
     <string name="title">Titel</string>

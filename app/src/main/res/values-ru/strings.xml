@@ -89,13 +89,14 @@
         <item quantity="other">%1$d дня(-ей) до события</item>
     </plurals>
 
-    <!-- Importing -->
+    <!-- Export / Import -->
     <string name="import_events">Импорт событий</string>
     <string name="import_events_from_ics">Импорт событий из .ics файла</string>
     <string name="events_imported_successfully">События успешно импортированы</string>
     <string name="importing_events_failed">Импорт событий не удался</string>
     <string name="importing_some_events_failed">Ошибка импорта</string>
     <string name="invalid_file_format">Неправильный формат файла</string>
+    <string name="export_raw_database">Export raw database</string>
 
     <!-- Event details -->
     <string name="title">Заголовок</string>

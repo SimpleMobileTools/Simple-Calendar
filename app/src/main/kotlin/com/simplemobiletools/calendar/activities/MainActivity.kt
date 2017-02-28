@@ -42,7 +42,8 @@ class MainActivity : SimpleActivity(), NavigationListener {
     private val PREFILLED_MONTHS = 73
     private val PREFILLED_YEARS = 21
     private val PREFILLED_WEEKS = 41
-    private val STORAGE_PERMISSION = 1
+    private val STORAGE_PERMISSION_IMPORT = 1
+    private val STORAGE_PERMISSION_EXPORT = 2
 
     private var mIsMonthSelected = false
     private var mStoredTextColor = 0
@@ -120,6 +121,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
             R.id.go_to_today -> goToToday()
             R.id.filter -> showFilterDialog()
             R.id.import_events -> tryImportEvents()
+            R.id.export_raw -> tryExportDatabase()
             R.id.settings -> launchSettings()
             R.id.about -> launchAbout()
             else -> return super.onOptionsItemSelected(item)
@@ -209,7 +211,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
         if (hasReadStoragePermission()) {
             importEvents()
         } else {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), STORAGE_PERMISSION)
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), STORAGE_PERMISSION_IMPORT)
         }
     }
 
@@ -225,6 +227,18 @@ class MainActivity : SimpleActivity(), NavigationListener {
                 toast(R.string.invalid_file_format)
             }
         }
+    }
+
+    private fun tryExportDatabase() {
+        if (hasWriteStoragePermission()) {
+            exportDatabase()
+        } else {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), STORAGE_PERMISSION_EXPORT)
+        }
+    }
+
+    private fun exportDatabase() {
+
     }
 
     private fun launchSettings() {
@@ -419,9 +433,11 @@ class MainActivity : SimpleActivity(), NavigationListener {
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
-        if (requestCode == STORAGE_PERMISSION) {
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                tryImportEvents()
+        if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            if (requestCode == STORAGE_PERMISSION_IMPORT) {
+                importEvents()
+            } else if (requestCode == STORAGE_PERMISSION_EXPORT) {
+                exportDatabase()
             }
         }
     }
