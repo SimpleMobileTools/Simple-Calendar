@@ -1,6 +1,11 @@
 Changelog
 ==========
 
+Version 2.2.2 *(2017-02-28)*
+----------------------------
+
+ * Added the ability to export raw database of events
+
 Version 2.2.1 *(2017-02-21)*
 ----------------------------
 
