@@ -96,8 +96,8 @@
     <string name="importing_events_failed">Falha de importação</string>
     <string name="importing_some_events_failed">Alguns eventos não foram importados</string>
     <string name="invalid_file_format">Formato de ficheiro inválido</string>
-    <string name="export_raw_database">Export raw database</string>
-    <string name="database_exported_successfully">Database exported successfully</string>
+    <string name="export_raw_database">Exportar base de dados raw</string>
+    <string name="database_exported_successfully">Base de dados exportada com sucesso</string>
 
     <!-- Event details -->
     <string name="title">Título</string>
