@@ -96,8 +96,8 @@
     <string name="importing_events_failed">Termine importieren fehlgeschlagen</string>
     <string name="importing_some_events_failed">einige Termine wurden nicht erfolgreich importiert</string>
     <string name="invalid_file_format">ungültiges Dateiformat</string>
-    <string name="export_raw_database">Export raw database</string>
-    <string name="database_exported_successfully">Database exported successfully</string>
+    <string name="export_raw_database">exportiere raw Datenbank</string>
+    <string name="database_exported_successfully">Datenbank erfolgreich exportiert</string>
 
     <!-- Event details -->
     <string name="title">Titel</string>
