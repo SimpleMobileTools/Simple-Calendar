@@ -215,7 +215,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
     fun getEventTypeIdWithTitle(title: String): Int {
         val cols = arrayOf(COL_TYPE_ID)
-        val selection = "$COL_TYPE_TITLE = ?"
+        val selection = "$COL_TYPE_TITLE = ? COLLATE NOCASE"
         val selectionArgs = arrayOf(title)
         var cursor: Cursor? = null
         try {
