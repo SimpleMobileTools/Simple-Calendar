@@ -367,7 +367,9 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         val selectionArgs = arrayOf(toTS.toString(), fromTS.toString())
         val cursor = getEventsCursor(selection, selectionArgs)
         events.addAll(fillEvents(cursor))
-        callback?.gotEvents(events)
+
+        val filtered = events.filterNot { it.ignoreEventOccurrences.contains(it.startTS) } as MutableList<Event>
+        callback?.gotEvents(filtered)
     }
 
     private fun getEventsFor(fromTS: Int, toTS: Int): List<Event> {

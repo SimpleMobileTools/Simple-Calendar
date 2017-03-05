@@ -105,16 +105,14 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
                 val sublist = sorted.subList(0, Math.min(sorted.size, 100))
                 var prevCode = ""
                 sublist.forEach {
-                    if (!it.ignoreEventOccurrences.contains(it.startTS)) {
-                        val code = Formatter.getDayCodeFromTS(it.startTS)
-                        if (code != prevCode) {
-                            val day = Formatter.getDayTitle(context, code)
-                            if (day != todayDate)
-                                listItems.add(ListSection(day))
-                            prevCode = code
-                        }
-                        listItems.add(ListEvent(it.id, it.startTS, it.endTS, it.title, it.description, it.isAllDay))
+                    val code = Formatter.getDayCodeFromTS(it.startTS)
+                    if (code != prevCode) {
+                        val day = Formatter.getDayTitle(context, code)
+                        if (day != todayDate)
+                            listItems.add(ListSection(day))
+                        prevCode = code
                     }
+                    listItems.add(ListEvent(it.id, it.startTS, it.endTS, it.title, it.description, it.isAllDay))
                 }
 
                 this@EventListWidgetAdapter.events = listItems

@@ -20,10 +20,9 @@ class YearlyCalendarImpl(val callback: YearlyCalendar, val context: Context, val
 
     override fun gotEvents(events: MutableList<Event>) {
         val filtered = context.getFilteredEvents(events)
-        val notIgnored = filtered.filterNot { it.ignoreEventOccurrences.contains(it.startTS) }
         val arr = SparseArray<ArrayList<Int>>(12)
 
-        for ((id, startTS, endTS) in notIgnored) {
+        for ((id, startTS, endTS) in filtered) {
             val startDateTime = Formatter.getDateTimeFromTS(startTS)
             markDay(arr, startDateTime)
 

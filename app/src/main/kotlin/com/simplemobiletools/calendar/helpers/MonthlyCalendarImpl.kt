@@ -85,12 +85,9 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
     // it works more often than not, dont touch
     private fun markDaysWithEvents(days: ArrayList<Day>) {
         val eventCodes = ArrayList<String>()
-        for (event in mEvents) {
-            if (event.ignoreEventOccurrences.contains(event.startTS))
-                continue
-
-            val startDateTime = Formatter.getDateTimeFromTS(event.startTS)
-            val endDateTime = Formatter.getDateTimeFromTS(event.endTS)
+        for ((id, startTS, endTS) in mEvents) {
+            val startDateTime = Formatter.getDateTimeFromTS(startTS)
+            val endDateTime = Formatter.getDateTimeFromTS(endTS)
             val endCode = Formatter.getDayCodeFromDateTime(endDateTime)
 
             var currDay = startDateTime
