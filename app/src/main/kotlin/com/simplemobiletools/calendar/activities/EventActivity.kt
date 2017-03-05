@@ -260,10 +260,11 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
     private fun deleteEvent() {
         DeleteEventDialog(this, arrayListOf(mEvent.id)) {
+            val db = DBHelper.newInstance(applicationContext, null)
             if (it) {
-                DBHelper.newInstance(applicationContext, this).deleteEvents(arrayOf(mEvent.id.toString()))
+                db.deleteEvents(arrayOf(mEvent.id.toString()))
             } else {
-
+                db.deleteEventOccurrence(mEvent.id, mEventOccurrenceTS)
             }
             finish()
         }

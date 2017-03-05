@@ -181,6 +181,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             put(COL_IMPORT_ID, event.importId)
             put(COL_FLAGS, event.flags)
             put(COL_EVENT_TYPE, event.eventType)
+            put(COL_PARENT_EVENT_ID, 0)
         }
     }
 
@@ -226,6 +227,13 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         return ContentValues().apply {
             put(COL_TYPE_TITLE, eventType.title)
             put(COL_TYPE_COLOR, eventType.color)
+        }
+    }
+
+    private fun fillExceptionValues(parentEventId: Int, occurrenceTS: Int): ContentValues {
+        return ContentValues().apply {
+            put(COL_PARENT_EVENT_ID, parentEventId)
+            put(COL_OCCURRENCE_TIMESTAMP, occurrenceTS)
         }
     }
 
@@ -276,6 +284,14 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
         context.updateWidgets()
         mEventsListener?.eventsDeleted(ids.size)
+    }
+
+    fun deleteEventOccurrence(parentEventId: Int, occurrenceTS: Int) {
+        val exceptionSelection = "$COL_PARENT_EVENT_ID = $parentEventId AND $COL_OCCURRENCE_TIMESTAMP = $occurrenceTS"
+        mDb.delete(EXCEPTIONS_TABLE_NAME, exceptionSelection, null)
+
+        val values = fillExceptionValues(parentEventId, occurrenceTS)
+        mDb.insert(EXCEPTIONS_TABLE_NAME, null, values)
     }
 
     fun deleteEventTypes(ids: ArrayList<Int>, callback: (deletedCnt: Int) -> Unit) {
