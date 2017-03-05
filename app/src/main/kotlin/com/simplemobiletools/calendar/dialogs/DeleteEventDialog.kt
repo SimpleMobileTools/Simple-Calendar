@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 
-class DeleteEventDialog(val activity: Activity, val callback: () -> Unit) : AlertDialog.Builder(activity) {
+class DeleteEventDialog(val activity: Activity, val eventIds: List<Int>, val callback: (allOccurrences: Boolean) -> Unit) : AlertDialog.Builder(activity) {
     val dialog: AlertDialog?
 
     init {
@@ -22,6 +22,6 @@ class DeleteEventDialog(val activity: Activity, val callback: () -> Unit) : Aler
 
     private fun dialogConfirmed() {
         dialog?.dismiss()
-        callback.invoke()
+        callback.invoke(true)
     }
 }

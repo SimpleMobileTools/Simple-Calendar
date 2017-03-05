@@ -15,7 +15,6 @@ import com.simplemobiletools.calendar.dialogs.SelectEventTypeDialog
 import com.simplemobiletools.calendar.extensions.*
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.models.Event
-import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.extensions.*
 import kotlinx.android.synthetic.main.activity_event.*
 import org.joda.time.DateTime
@@ -258,7 +257,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     }
 
     private fun deleteEvent() {
-        DeleteEventDialog(this) {
+        DeleteEventDialog(this, arrayListOf(mEvent.id)) {
             DBHelper.newInstance(applicationContext, this).deleteEvents(arrayOf(mEvent.id.toString()))
             finish()
         }

@@ -88,17 +88,14 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
     }
 
     private fun askConfirmDelete() {
-        DeleteEventDialog(activity) {
-            actMode?.finish()
-            prepareForDeleting()
-        }
-    }
-
-    private fun prepareForDeleting() {
         val selections = multiSelector.selectedPositions
-        val ids = ArrayList<Int>(selections.size)
-        selections.forEach { ids.add((mItems[it] as ListEvent).id) }
-        listener?.deleteItems(ids)
+        val eventIds = ArrayList<Int>(selections.size)
+        selections.forEach { eventIds.add((mItems[it] as ListEvent).id) }
+
+        DeleteEventDialog(activity, eventIds) {
+            actMode?.finish()
+            listener?.deleteItems(eventIds)
+        }
     }
 
     override fun getItemViewType(position: Int) = if (mItems[position] is ListEvent) ITEM_EVENT else ITEM_HEADER
