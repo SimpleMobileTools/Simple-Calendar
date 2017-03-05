@@ -32,8 +32,10 @@ class NotificationReceiver : BroadcastReceiver() {
         val pendingIntent = getPendingIntent(context, event)
         val startTime = Formatter.getTimeFromTS(context, event.startTS)
         val endTime = Formatter.getTimeFromTS(context, event.endTS)
-        val notification = getNotification(context, pendingIntent, event.title, "${getEventTime(startTime, endTime)} ${event.description}")
-        notificationManager.notify(id, notification)
+        if (!event.ignoreEventOccurrences.contains(event.startTS)) {
+            val notification = getNotification(context, pendingIntent, event.title, "${getEventTime(startTime, endTime)} ${event.description}")
+            notificationManager.notify(id, notification)
+        }
         context.scheduleNextEventReminder(event)
     }
 
