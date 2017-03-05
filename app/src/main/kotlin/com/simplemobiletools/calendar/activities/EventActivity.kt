@@ -8,6 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.WindowManager
 import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.dialogs.DeleteEventDialog
 import com.simplemobiletools.calendar.dialogs.EventReminderDialog
 import com.simplemobiletools.calendar.dialogs.EventRepeatIntervalDialog
 import com.simplemobiletools.calendar.dialogs.SelectEventTypeDialog
@@ -257,7 +258,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     }
 
     private fun deleteEvent() {
-        ConfirmationDialog(this) {
+        DeleteEventDialog(this) {
             DBHelper.newInstance(applicationContext, this).deleteEvents(arrayOf(mEvent.id.toString()))
             finish()
         }

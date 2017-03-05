@@ -8,11 +8,11 @@ import com.bignerdranch.android.multiselector.MultiSelector
 import com.bignerdranch.android.multiselector.SwappingHolder
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.SimpleActivity
+import com.simplemobiletools.calendar.dialogs.DeleteEventDialog
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.interfaces.DeleteItemsListener
 import com.simplemobiletools.calendar.models.Event
-import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.extensions.beInvisible
 import com.simplemobiletools.commons.extensions.beInvisibleIf
 import kotlinx.android.synthetic.main.event_item_day_view.view.*
@@ -72,7 +72,7 @@ class DayEventsAdapter(val activity: SimpleActivity, val mItems: List<Event>, va
     }
 
     private fun askConfirmDelete() {
-        ConfirmationDialog(activity) {
+        DeleteEventDialog(activity) {
             actMode?.finish()
             deleteEvents()
         }
