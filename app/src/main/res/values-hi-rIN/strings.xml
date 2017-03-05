@@ -41,6 +41,11 @@
     <string name="years_raw">years</string>
     <string name="repeat_till">Repeat till:</string>
     <string name="forever">Forever</string>
+    <string name="selection_contains_repetition">The selection contains repeating events</string>
+    <string name="delete_one_only">Delete the selected occurrence only</string>
+    <string name="delete_all_occurrences">Delete all occurrences</string>
+    <string name="update_one_only">Update the selected occurrence only</string>
+    <string name="update_all_occurrences">Update all occurrences</string>
 
     <plurals name="days">
         <item quantity="one">%1$d day</item>
