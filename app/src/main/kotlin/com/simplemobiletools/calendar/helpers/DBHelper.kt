@@ -46,10 +46,15 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private val COL_TYPE_TITLE = "event_type_title"
     private val COL_TYPE_COLOR = "event_type_color"
 
+    private val EXCEPTIONS_TABLE_NAME = "event_repeat_exceptions"
+    private val COL_EXCEPTION_ID = "event_exception_id"
+    private val COL_OCCURRENCE_TIMESTAMP = "event_occurrence_timestamp"
+    private val COL_PARENT_EVENT_ID = "event_parent_id"
+
     private val mDb: SQLiteDatabase = writableDatabase
 
     companion object {
-        private val DB_VERSION = 7
+        private val DB_VERSION = 8
         val DB_NAME = "events.db"
         val REGULAR_EVENT_TYPE_ID = 1
 
@@ -64,10 +69,12 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL("CREATE TABLE $MAIN_TABLE_NAME ($COL_ID INTEGER PRIMARY KEY, $COL_START_TS INTEGER, $COL_END_TS INTEGER, $COL_TITLE TEXT, " +
                 "$COL_DESCRIPTION TEXT, $COL_REMINDER_MINUTES INTEGER, $COL_REMINDER_MINUTES_2 INTEGER, $COL_REMINDER_MINUTES_3 INTEGER, " +
-                "$COL_IMPORT_ID TEXT, $COL_FLAGS INTEGER, $COL_EVENT_TYPE INTEGER NOT NULL DEFAULT $REGULAR_EVENT_TYPE_ID)")
+                "$COL_IMPORT_ID TEXT, $COL_FLAGS INTEGER, $COL_EVENT_TYPE INTEGER NOT NULL DEFAULT $REGULAR_EVENT_TYPE_ID, " +
+                "$COL_PARENT_EVENT_ID INTEGER)")
 
         createMetaTable(db)
         createTypesTable(db)
+        createExceptionsTable(db)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
@@ -97,6 +104,11 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             createTypesTable(db)
             db.execSQL("ALTER TABLE $MAIN_TABLE_NAME ADD COLUMN $COL_EVENT_TYPE INTEGER NOT NULL DEFAULT $REGULAR_EVENT_TYPE_ID")
         }
+
+        if (oldVersion < 8) {
+            db.execSQL("ALTER TABLE $MAIN_TABLE_NAME ADD COLUMN $COL_PARENT_EVENT_ID INTEGER NOT NULL DEFAULT 0")
+            createExceptionsTable(db)
+        }
     }
 
     private fun createMetaTable(db: SQLiteDatabase) {
@@ -107,6 +119,10 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private fun createTypesTable(db: SQLiteDatabase) {
         db.execSQL("CREATE TABLE $TYPES_TABLE_NAME ($COL_TYPE_ID INTEGER PRIMARY KEY, $COL_TYPE_TITLE TEXT, $COL_TYPE_COLOR INTEGER)")
         addRegularEventType(db)
+    }
+
+    private fun createExceptionsTable(db: SQLiteDatabase) {
+        db.execSQL("CREATE TABLE $EXCEPTIONS_TABLE_NAME ($COL_EXCEPTION_ID INTEGER PRIMARY KEY, $COL_PARENT_EVENT_ID INTEGER, $COL_OCCURRENCE_TIMESTAMP INTEGER)")
     }
 
     private fun addRegularEventType(db: SQLiteDatabase) {
