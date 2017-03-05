@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 2.2.3 *(2017-03-05)*
+----------------------------
+
+ * Allow deleting individual occurrences of repeatable events
+ * Many smaller improvements and bugfixes
+
 Version 2.2.2 *(2017-02-28)*
 ----------------------------
 
