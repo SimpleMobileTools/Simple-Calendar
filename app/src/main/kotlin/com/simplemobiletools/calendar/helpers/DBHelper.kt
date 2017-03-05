@@ -51,7 +51,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     companion object {
         private val DB_VERSION = 7
         val DB_NAME = "events.db"
-        val REGULAR_EVENT_ID = 1
+        val REGULAR_EVENT_TYPE_ID = 1
 
         private var mEventsListener: EventUpdateListener? = null
 
@@ -64,7 +64,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL("CREATE TABLE $MAIN_TABLE_NAME ($COL_ID INTEGER PRIMARY KEY, $COL_START_TS INTEGER, $COL_END_TS INTEGER, $COL_TITLE TEXT, " +
                 "$COL_DESCRIPTION TEXT, $COL_REMINDER_MINUTES INTEGER, $COL_REMINDER_MINUTES_2 INTEGER, $COL_REMINDER_MINUTES_3 INTEGER, " +
-                "$COL_IMPORT_ID TEXT, $COL_FLAGS INTEGER, $COL_EVENT_TYPE INTEGER NOT NULL DEFAULT $REGULAR_EVENT_ID)")
+                "$COL_IMPORT_ID TEXT, $COL_FLAGS INTEGER, $COL_EVENT_TYPE INTEGER NOT NULL DEFAULT $REGULAR_EVENT_TYPE_ID)")
 
         createMetaTable(db)
         createTypesTable(db)
@@ -95,7 +95,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
         if (oldVersion < 7) {
             createTypesTable(db)
-            db.execSQL("ALTER TABLE $MAIN_TABLE_NAME ADD COLUMN $COL_EVENT_TYPE INTEGER NOT NULL DEFAULT $REGULAR_EVENT_ID")
+            db.execSQL("ALTER TABLE $MAIN_TABLE_NAME ADD COLUMN $COL_EVENT_TYPE INTEGER NOT NULL DEFAULT $REGULAR_EVENT_TYPE_ID")
         }
     }
 
@@ -111,7 +111,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
     private fun addRegularEventType(db: SQLiteDatabase) {
         val regularEvent = context.resources.getString(R.string.regular_event)
-        val eventType = EventType(REGULAR_EVENT_ID, regularEvent, context.config.primaryColor)
+        val eventType = EventType(REGULAR_EVENT_TYPE_ID, regularEvent, context.config.primaryColor)
         addEventType(eventType, db)
     }
 
@@ -261,8 +261,8 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
     fun deleteEventTypes(ids: ArrayList<Int>, callback: (deletedCnt: Int) -> Unit) {
         var deleteIds = ids
-        if (ids.contains(DBHelper.REGULAR_EVENT_ID))
-            deleteIds = ids.filter { it != DBHelper.REGULAR_EVENT_ID } as ArrayList<Int>
+        if (ids.contains(DBHelper.REGULAR_EVENT_TYPE_ID))
+            deleteIds = ids.filter { it != DBHelper.REGULAR_EVENT_TYPE_ID } as ArrayList<Int>
 
         val deletedSet = HashSet<String>()
         deleteIds.map { deletedSet.add(it.toString()) }
@@ -281,7 +281,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
     private fun resetEventsWithType(eventTypeId: Int) {
         val values = ContentValues()
-        values.put(COL_EVENT_TYPE, REGULAR_EVENT_ID)
+        values.put(COL_EVENT_TYPE, REGULAR_EVENT_TYPE_ID)
 
         val selection = "$COL_EVENT_TYPE = ?"
         val selectionArgs = arrayOf(eventTypeId.toString())

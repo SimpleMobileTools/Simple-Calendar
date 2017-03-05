@@ -46,7 +46,7 @@ class ManageEventTypesActivity : SimpleActivity(), DeleteItemsListener {
     }
 
     override fun deleteItems(ids: ArrayList<Int>) {
-        if (ids.contains(DBHelper.REGULAR_EVENT_ID)) {
+        if (ids.contains(DBHelper.REGULAR_EVENT_TYPE_ID)) {
             toast(R.string.cannot_delete_default_type)
         }
 

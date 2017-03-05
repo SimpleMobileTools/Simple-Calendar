@@ -1,9 +1,11 @@
 package com.simplemobiletools.calendar.helpers
 
 import android.content.Context
+import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.helpers.IcsParser.ImportResult.*
 import com.simplemobiletools.calendar.models.Event
+import com.simplemobiletools.calendar.models.EventType
 import org.joda.time.DateTimeZone
 import org.joda.time.format.DateTimeFormat
 import java.io.File
@@ -24,6 +26,7 @@ class IcsParser {
     private val ACTION = "ACTION:"
     private val TRIGGER = "TRIGGER:"
     private val RRULE = "RRULE:"
+    private val CATEGORIES = "CATEGORIES:"
 
     private val DISPLAY = "DISPLAY"
     private val FREQ = "FREQ"
@@ -45,6 +48,7 @@ class IcsParser {
     var curReminderMinutes = -1
     var curRepeatInterval = 0
     var curRepeatLimit = 0
+    var curEventType = DBHelper.REGULAR_EVENT_TYPE_ID
     var curShouldHaveNotification = false
     var isNotificationDescription = false
 
@@ -94,13 +98,16 @@ class IcsParser {
                         if (curReminderMinutes == -1 && curShouldHaveNotification) {
                             curReminderMinutes = decodeTime(line.substring(TRIGGER.length)) / 60
                         }
+                    } else if (line.startsWith(CATEGORIES)) {
+                        val categories = line.substring(CATEGORIES.length)
+                        tryAddCategories(categories, context)
                     } else if (line == END) {
                         if (curTitle.isEmpty() || curStart == -1 || curEnd == -1 || importIDs.contains(curImportId))
                             continue
 
                         importIDs.add(curImportId)
                         val event = Event(0, curStart, curEnd, curTitle, curDescription, curReminderMinutes, -1, -1, curRepeatInterval,
-                                curImportId, curFlags, curRepeatLimit)
+                                curImportId, curFlags, curRepeatLimit, curEventType)
                         dbHelper.insert(event) { }
                         eventsImported++
                         resetValues()
@@ -143,6 +150,20 @@ class IcsParser {
         } else {
             val dateTimeFormat = DateTimeFormat.forPattern("yyyyMMdd")
             dateTimeFormat.parseDateTime(edited).withZoneRetainFields(DateTimeZone.getDefault()).withHourOfDay(1).seconds()
+        }
+    }
+
+    private fun tryAddCategories(categories: String, context: Context) {
+        if (!categories.contains(",")) {
+            val eventTitle = categories
+            val dbHelper = DBHelper.newInstance(context)
+            val eventId = dbHelper.getEventTypeIdWithTitle(eventTitle)
+            if (eventId == -1) {
+                val eventType = EventType(0, eventTitle, context.resources.getColor(R.color.color_primary))
+                curEventType = dbHelper.insertEventType(eventType)
+            } else {
+                curEventType = eventId
+            }
         }
     }
 
@@ -216,6 +237,7 @@ class IcsParser {
         curReminderMinutes = -1
         curRepeatInterval = 0
         curRepeatLimit = 0
+        curEventType = DBHelper.REGULAR_EVENT_TYPE_ID
         curShouldHaveNotification = false
         isNotificationDescription = false
     }

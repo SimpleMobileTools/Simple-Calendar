@@ -27,7 +27,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     private var mReminder3Minutes = 0
     private var mRepeatInterval = 0
     private var mRepeatLimit = 0
-    private var mEventTypeId = DBHelper.REGULAR_EVENT_ID
+    private var mEventTypeId = DBHelper.REGULAR_EVENT_TYPE_ID
     private var mDialogTheme = 0
 
     lateinit var mEventStartDateTime: DateTime
