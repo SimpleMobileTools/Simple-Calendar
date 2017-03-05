@@ -104,7 +104,8 @@
     <string name="importing_some_events_failed">Importovanie niektorých udalostí zlyhalo</string>
     <string name="invalid_file_format">Nesprávny formát súboru</string>
     <string name="export_raw_database">Exportovať surovú databázu</string>
-    <string name="database_exported_successfully">Databáza bola úspešne exportovaná</string>
+    <string name="database_exported_successfully">Databáza bola úspešne exportovaná
+    <string name="default_event_type">Predvolený typ udalosti</string></string>
 
     <!-- Event details -->
     <string name="title">Názov</string>

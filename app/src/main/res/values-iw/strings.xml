@@ -98,6 +98,7 @@
     <string name="invalid_file_format">Invalid file format</string>
     <string name="export_raw_database">Export raw database</string>
     <string name="database_exported_successfully">Database exported successfully</string>
+    <string name="default_event_type">Default event type</string>
 
     <!-- Event details -->
     <string name="title">כותרת</string>

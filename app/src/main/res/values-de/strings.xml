@@ -98,6 +98,7 @@
     <string name="invalid_file_format">ungültiges Dateiformat</string>
     <string name="export_raw_database">exportiere raw Datenbank</string>
     <string name="database_exported_successfully">Datenbank erfolgreich exportiert</string>
+    <string name="default_event_type">Default event type</string>
 
     <!-- Event details -->
     <string name="title">Titel</string>

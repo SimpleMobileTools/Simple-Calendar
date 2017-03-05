@@ -55,7 +55,7 @@ class IcsParser {
     var eventsImported = 0
     var eventsFailed = 0
 
-    fun parseIcs(context: Context, path: String): ImportResult {
+    fun parseIcs(context: Context, path: String, defaultEventType: Int): ImportResult {
         try {
             val dbHelper = DBHelper.newInstance(context)
             val importIDs = dbHelper.getImportIds()
@@ -74,6 +74,7 @@ class IcsParser {
 
                     if (line == BEGIN_EVENT) {
                         resetValues()
+                        curEventType = defaultEventType
                     } else if (line.startsWith(DTSTART)) {
                         curStart = getTimestamp(line.substring(DTSTART.length))
                     } else if (line.startsWith(DTEND)) {

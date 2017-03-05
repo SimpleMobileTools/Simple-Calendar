@@ -10,7 +10,7 @@
     android:paddingTop="@dimen/activity_margin">
 
     <com.simplemobiletools.commons.views.MyTextView
-        android:id="@+id/import_events_label"
+        android:id="@+id/import_events_filename_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/filename"
@@ -26,4 +26,37 @@
         android:paddingRight="@dimen/small_margin"
         android:paddingTop="@dimen/small_margin"/>
 
+    <com.simplemobiletools.commons.views.MyTextView
+        android:id="@+id/import_events_event_type_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/default_event_type"
+        android:textSize="@dimen/smaller_text_size"/>
+
+    <RelativeLayout
+        android:id="@+id/import_event_type_holder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:padding="@dimen/small_margin">
+
+        <com.simplemobiletools.commons.views.MyTextView
+            android:id="@+id/import_event_type_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingLeft="@dimen/medium_margin"
+            android:paddingRight="@dimen/medium_margin"/>
+
+        <ImageView
+            android:id="@+id/import_event_type_color"
+            android:layout_width="@dimen/color_sample_size"
+            android:layout_height="@dimen/color_sample_size"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="@dimen/medium_margin"
+            android:layout_marginRight="@dimen/medium_margin"
+            android:clickable="false"/>
+
+    </RelativeLayout>
 </LinearLayout>
