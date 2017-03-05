@@ -10,7 +10,7 @@ android {
         applicationId "com.simplemobiletools.calendar"
         minSdkVersion 16
         targetSdkVersion 25
-        versionCode 61
+        versionCode 62
         versionName "2.2.2"
         multiDexEnabled true
     }
