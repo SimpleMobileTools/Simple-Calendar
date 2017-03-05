@@ -51,11 +51,10 @@ fun Context.scheduleNextEventReminder(event: Event) {
     val now = System.currentTimeMillis() / 1000 + 3
     var nextTS = Int.MAX_VALUE
     val reminderSeconds = event.getReminders().reversed().map { it * 60 }
-
     reminderSeconds.forEach {
         var startTS = event.startTS - it
         if (event.repeatInterval == DAY || event.repeatInterval == WEEK || event.repeatInterval == BIWEEK) {
-            while (startTS < now) {
+            while (startTS < now || event.ignoreEventOccurrences.contains(startTS)) {
                 startTS += event.repeatInterval
             }
             nextTS = Math.min(nextTS, startTS)
@@ -108,9 +107,7 @@ private fun getNotificationIntent(context: Context, eventId: Int): PendingIntent
     return PendingIntent.getBroadcast(context, eventId, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 }
 
-fun Context.getAppropriateTheme(): Int {
-    return if (config.backgroundColor.getContrastColor() == Color.WHITE) R.style.MyDialogTheme_Dark else R.style.MyDialogTheme
-}
+fun Context.getAppropriateTheme() = if (config.backgroundColor.getContrastColor() == Color.WHITE) R.style.MyDialogTheme_Dark else R.style.MyDialogTheme
 
 fun Context.getReminderText(minutes: Int) = when (minutes) {
     -1 -> getString(R.string.no_reminder)
@@ -149,8 +146,7 @@ fun Context.getRepetitionText(seconds: Int): String {
 
 fun Context.getFilteredEvents(events: List<Event>): List<Event> {
     val displayEventTypes = config.displayEventTypes
-    val filtered = events.filter { displayEventTypes.contains(it.eventType.toString()) }
-    return filtered
+    return events.filter { displayEventTypes.contains(it.eventType.toString()) }
 }
 
 fun Context.launchNewEventIntent(startNewTask: Boolean = false, today: Boolean = false) {
