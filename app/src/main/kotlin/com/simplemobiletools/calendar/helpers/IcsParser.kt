@@ -203,6 +203,9 @@ class IcsParser {
                 frequencySeconds = getFrequencySeconds(value)
             } else if (key == COUNT) {
                 count = value.toInt()
+                if (frequencySeconds != 0) {
+                    curRepeatLimit = curStart + count * frequencySeconds
+                }
             } else if (key == UNTIL) {
                 curRepeatLimit = parseDateTimeValue(value)
             } else if (key == INTERVAL) {
