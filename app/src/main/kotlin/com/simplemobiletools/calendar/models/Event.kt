@@ -2,12 +2,15 @@ package com.simplemobiletools.calendar.models
 
 import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.helpers.*
+import com.simplemobiletools.calendar.helpers.Formatter
 import org.joda.time.DateTime
 import java.io.Serializable
+import java.util.*
 
 data class Event(var id: Int = 0, var startTS: Int = 0, var endTS: Int = 0, var title: String = "", var description: String = "",
                  var reminder1Minutes: Int = -1, var reminder2Minutes: Int = -1, var reminder3Minutes: Int = -1, var repeatInterval: Int = 0,
-                 var importId: String? = "", var flags: Int = 0, var repeatLimit: Int = 0, var eventType: Int = DBHelper.REGULAR_EVENT_TYPE_ID) : Serializable {
+                 var importId: String? = "", var flags: Int = 0, var repeatLimit: Int = 0, var eventType: Int = DBHelper.REGULAR_EVENT_TYPE_ID,
+                 var ignoreEventOccurrences: ArrayList<Int> = ArrayList()) : Serializable {
 
     companion object {
         private val serialVersionUID = -32456795132344616L

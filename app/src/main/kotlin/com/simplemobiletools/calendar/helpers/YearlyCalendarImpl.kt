@@ -20,13 +20,15 @@ class YearlyCalendarImpl(val callback: YearlyCalendar, val context: Context, val
 
     override fun gotEvents(events: MutableList<Event>) {
         val filtered = context.getFilteredEvents(events)
+        val notIgnored = filtered.filterNot { it.ignoreEventOccurrences.contains(it.startTS) }
         val arr = SparseArray<ArrayList<Int>>(12)
-        for ((id, startTS, endTS) in filtered) {
-            val startDateTime = DateTime().withMillis(startTS * 1000L)
+
+        for ((id, startTS, endTS) in notIgnored) {
+            val startDateTime = Formatter.getDateTimeFromTS(startTS)
             markDay(arr, startDateTime)
 
             val startCode = Formatter.getDayCodeFromDateTime(startDateTime)
-            val endDateTime = DateTime().withMillis(endTS * 1000L)
+            val endDateTime = Formatter.getDateTimeFromTS(endTS)
             val endCode = Formatter.getDayCodeFromDateTime(endDateTime)
             if (startCode != endCode) {
                 var currDateTime = startDateTime

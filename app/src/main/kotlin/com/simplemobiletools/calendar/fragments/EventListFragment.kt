@@ -68,13 +68,15 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, DBHelper.Event
         val sublist = sorted.subList(0, Math.min(sorted.size, 100))
         var prevCode = ""
         sublist.forEach {
-            val code = Formatter.getDayCodeFromTS(it.startTS)
-            if (code != prevCode) {
-                val day = Formatter.getDayTitle(context, code)
-                listItems.add(ListSection(day))
-                prevCode = code
+            if (!it.ignoreEventOccurrences.contains(it.startTS)) {
+                val code = Formatter.getDayCodeFromTS(it.startTS)
+                if (code != prevCode) {
+                    val day = Formatter.getDayTitle(context, code)
+                    listItems.add(ListSection(day))
+                    prevCode = code
+                }
+                listItems.add(ListEvent(it.id, it.startTS, it.endTS, it.title, it.description, it.isAllDay))
             }
-            listItems.add(ListEvent(it.id, it.startTS, it.endTS, it.title, it.description, it.isAllDay))
         }
 
         val eventsAdapter = EventListAdapter(activity as SimpleActivity, listItems, this) { eventId, eventTS ->

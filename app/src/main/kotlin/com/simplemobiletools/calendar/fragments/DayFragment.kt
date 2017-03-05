@@ -154,8 +154,10 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DBHelper.GetEvents
     override fun gotEvents(events: MutableList<Event>) {
         val sorted = ArrayList<Event>(events.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { it.description })))
         val filtered = context.getFilteredEvents(sorted)
+        val notIgnored = filtered.filterNot { it.ignoreEventOccurrences.contains(it.startTS) }
+
         activity?.runOnUiThread {
-            updateEvents(filtered)
+            updateEvents(notIgnored)
         }
     }
 }

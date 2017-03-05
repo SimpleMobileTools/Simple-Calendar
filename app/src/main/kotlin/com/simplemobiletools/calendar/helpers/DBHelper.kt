@@ -347,10 +347,10 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         val selectionArgs = arrayOf(id.toString())
         val cursor = getEventsCursor(selection, selectionArgs)
         val events = fillEvents(cursor)
-        if (!events.isEmpty())
-            return events[0]
-
-        return null
+        return if (!events.isEmpty())
+            events[0]
+        else
+            null
     }
 
     fun getEvents(fromTS: Int, toTS: Int, callback: GetEventsListener?) {
@@ -449,8 +449,14 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                     if (flags and FLAG_ALL_DAY != 0)
                         endTS -= 1
 
+                    val ignoreEventOccurrences = if (repeatInterval != 0) {
+                        getIgnoredOccurrences(id)
+                    } else {
+                        ArrayList<Int>()
+                    }
+
                     val event = Event(id, startTS, endTS, title, description, reminder1Minutes, reminder2Minutes, reminder3Minutes,
-                            repeatInterval, importId, flags, repeatLimit, eventType)
+                            repeatInterval, importId, flags, repeatLimit, eventType, ignoreEventOccurrences)
                     events.add(event)
                 } while (cursor.moveToNext())
             }
@@ -485,6 +491,26 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             cursor?.close()
         }
         callback.invoke(eventTypes)
+    }
+
+    private fun getIgnoredOccurrences(eventId: Int): ArrayList<Int> {
+        val projection = arrayOf(COL_OCCURRENCE_TIMESTAMP)
+        val selection = "$COL_PARENT_EVENT_ID = ?"
+        val selectionArgs = arrayOf(eventId.toString())
+        val timestamps = ArrayList<Int>()
+
+        var cursor: Cursor? = null
+        try {
+            cursor = mDb.query(EXCEPTIONS_TABLE_NAME, projection, selection, selectionArgs, null, null, COL_OCCURRENCE_TIMESTAMP)
+            if (cursor?.moveToFirst() == true) {
+                do {
+                    timestamps.add(cursor.getIntValue(COL_OCCURRENCE_TIMESTAMP))
+                } while (cursor.moveToNext())
+            }
+        } finally {
+            cursor?.close()
+        }
+        return timestamps
     }
 
     interface EventUpdateListener {
