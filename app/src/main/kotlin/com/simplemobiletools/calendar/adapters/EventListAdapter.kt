@@ -12,7 +12,7 @@ import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.dialogs.DeleteEventDialog
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.helpers.Formatter
-import com.simplemobiletools.calendar.interfaces.DeleteItemsListener
+import com.simplemobiletools.calendar.interfaces.DeleteEventsListener
 import com.simplemobiletools.calendar.models.ListEvent
 import com.simplemobiletools.calendar.models.ListItem
 import com.simplemobiletools.calendar.models.ListSection
@@ -21,7 +21,7 @@ import com.simplemobiletools.commons.extensions.beInvisibleIf
 import kotlinx.android.synthetic.main.event_list_item.view.*
 import java.util.*
 
-class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>, val listener: DeleteItemsListener?, val itemClick: (Int, Int) -> Unit) :
+class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>, val listener: DeleteEventsListener?, val itemClick: (Int, Int) -> Unit) :
         RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     val multiSelector = MultiSelector()
     val views = ArrayList<View>()
@@ -90,13 +90,18 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
     private fun askConfirmDelete() {
         val selections = multiSelector.selectedPositions
         val eventIds = ArrayList<Int>(selections.size)
-        selections.forEach { eventIds.add((mItems[it] as ListEvent).id) }
+        val timestamps = ArrayList<Int>(selections.size)
+
+        selections.forEach {
+            eventIds.add((mItems[it] as ListEvent).id)
+            timestamps.add((mItems[it] as ListEvent).startTS)
+        }
 
         DeleteEventDialog(activity, eventIds) {
             if (it) {
                 listener?.deleteItems(eventIds)
             } else {
-
+                listener?.deleteEventOccurrences(eventIds, timestamps)
             }
             actMode?.finish()
         }

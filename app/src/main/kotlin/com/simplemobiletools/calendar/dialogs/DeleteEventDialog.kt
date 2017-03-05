@@ -10,7 +10,7 @@ import com.simplemobiletools.commons.extensions.beVisibleIf
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import kotlinx.android.synthetic.main.dialog_delete_event.view.*
 
-class DeleteEventDialog(val activity: Activity, val eventIds: List<Int>, val callback: (allOccurrences: Boolean) -> Unit) : AlertDialog.Builder(activity) {
+class DeleteEventDialog(val activity: Activity, eventIds: List<Int>, val callback: (allOccurrences: Boolean) -> Unit) : AlertDialog.Builder(activity) {
     val dialog: AlertDialog?
 
     init {
