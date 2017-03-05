@@ -257,6 +257,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                     }
                     setOnClickListener {
                         Intent(activity.applicationContext, EventActivity::class.java).apply {
+                            putExtra(EVENT_OCCURRENCE_TS, event.startTS)
                             putExtra(EVENT_ID, event.id)
                             startActivity(this)
                         }

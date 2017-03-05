@@ -21,7 +21,7 @@ import com.simplemobiletools.commons.extensions.beInvisibleIf
 import kotlinx.android.synthetic.main.event_list_item.view.*
 import java.util.*
 
-class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>, val listener: DeleteItemsListener?, val itemClick: (Int) -> Unit) :
+class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>, val listener: DeleteItemsListener?, val itemClick: (Int, Int) -> Unit) :
         RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     val multiSelector = MultiSelector()
     val views = ArrayList<View>()
@@ -123,7 +123,7 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
 
     override fun getItemCount() = mItems.size
 
-    class ViewHolder(val activity: SimpleActivity, view: View, val itemClick: (Int) -> (Unit)) : SwappingHolder(view, MultiSelector()) {
+    class ViewHolder(val activity: SimpleActivity, view: View, val itemClick: (Int, Int) -> (Unit)) : SwappingHolder(view, MultiSelector()) {
         fun bindView(multiSelectorCallback: ModalMultiSelectorCallback, multiSelector: MultiSelector, listItem: ListItem, pos: Int): View {
             val item = listItem as ListEvent
             itemView.apply {
@@ -187,7 +187,8 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
                 }
                 actMode?.invalidate()
             } else {
-                itemClick((listItem as ListEvent).id)
+                val listEvent = listItem as ListEvent
+                itemClick(listEvent.id, listEvent.startTS)
             }
         }
     }

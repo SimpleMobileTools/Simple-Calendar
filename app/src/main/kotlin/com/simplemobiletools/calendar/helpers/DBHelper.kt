@@ -429,8 +429,10 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                     val eventType = cursor.getIntValue(COL_EVENT_TYPE)
                     if (flags and FLAG_ALL_DAY != 0)
                         endTS -= 1
-                    events.add(Event(id, startTS, endTS, title, description, reminder1Minutes, reminder2Minutes, reminder3Minutes,
-                            repeatInterval, importId, flags, repeatLimit, eventType))
+
+                    val event = Event(id, startTS, endTS, title, description, reminder1Minutes, reminder2Minutes, reminder3Minutes,
+                            repeatInterval, importId, flags, repeatLimit, eventType)
+                    events.add(event)
                 } while (cursor.moveToNext())
             }
         } finally {

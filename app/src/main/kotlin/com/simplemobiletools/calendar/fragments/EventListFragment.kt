@@ -15,6 +15,7 @@ import com.simplemobiletools.calendar.extensions.getFilteredEvents
 import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.helpers.DBHelper
 import com.simplemobiletools.calendar.helpers.EVENT_ID
+import com.simplemobiletools.calendar.helpers.EVENT_OCCURRENCE_TS
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.interfaces.DeleteItemsListener
 import com.simplemobiletools.calendar.models.Event
@@ -76,8 +77,8 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, DBHelper.Event
             listItems.add(ListEvent(it.id, it.startTS, it.endTS, it.title, it.description, it.isAllDay))
         }
 
-        val eventsAdapter = EventListAdapter(activity as SimpleActivity, listItems, this) {
-            editEvent(it)
+        val eventsAdapter = EventListAdapter(activity as SimpleActivity, listItems, this) { eventId, eventTS ->
+            editEvent(eventId, eventTS)
         }
         activity?.runOnUiThread {
             mView.calendar_events_list.apply {
@@ -94,8 +95,9 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, DBHelper.Event
             mView.calendar_empty_list_placeholder.setTextColor(activity.config.textColor)
     }
 
-    private fun editEvent(eventId: Int) {
+    private fun editEvent(eventId: Int, eventTS: Int) {
         Intent(activity.applicationContext, EventActivity::class.java).apply {
+            putExtra(EVENT_OCCURRENCE_TS, eventTS)
             putExtra(EVENT_ID, eventId)
             startActivity(this)
         }

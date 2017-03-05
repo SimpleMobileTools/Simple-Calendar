@@ -19,9 +19,7 @@ import com.simplemobiletools.calendar.adapters.DayEventsAdapter
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.getAppropriateTheme
 import com.simplemobiletools.calendar.extensions.getFilteredEvents
-import com.simplemobiletools.calendar.helpers.DAY_CODE
-import com.simplemobiletools.calendar.helpers.DBHelper
-import com.simplemobiletools.calendar.helpers.EVENT_ID
+import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.interfaces.DeleteItemsListener
 import com.simplemobiletools.calendar.interfaces.NavigationListener
@@ -122,7 +120,7 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DBHelper.GetEvents
             return
 
         val eventsAdapter = DayEventsAdapter(activity as SimpleActivity, events, this) {
-            editEvent(it.id)
+            editEvent(it)
         }
         mHolder.day_events.apply {
             this@apply.adapter = eventsAdapter
@@ -130,9 +128,10 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DBHelper.GetEvents
         }
     }
 
-    private fun editEvent(eventId: Int) {
+    private fun editEvent(event: Event) {
         Intent(activity.applicationContext, EventActivity::class.java).apply {
-            putExtra(EVENT_ID, eventId)
+            putExtra(EVENT_OCCURRENCE_TS, event.startTS)
+            putExtra(EVENT_ID, event.id)
             startActivity(this)
         }
     }

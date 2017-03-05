@@ -29,6 +29,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     private var mRepeatLimit = 0
     private var mEventTypeId = DBHelper.REGULAR_EVENT_TYPE_ID
     private var mDialogTheme = 0
+    private var mEventOccurrenceTS = 0
 
     lateinit var mEventStartDateTime: DateTime
     lateinit var mEventEndDateTime: DateTime
@@ -45,6 +46,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         val event = DBHelper.newInstance(applicationContext).getEvent(eventId)
         if (event != null) {
             mEvent = event
+            mEventOccurrenceTS = intent.getIntExtra(EVENT_OCCURRENCE_TS, 0)
             setupEditEvent()
         } else {
             mEvent = Event()
