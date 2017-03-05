@@ -271,6 +271,9 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         val metaSelection = "$COL_EVENT_ID IN ($args)"
         mDb.delete(META_TABLE_NAME, metaSelection, null)
 
+        val exceptionSelection = "$COL_PARENT_EVENT_ID IN ($args)"
+        mDb.delete(EXCEPTIONS_TABLE_NAME, exceptionSelection, null)
+
         context.updateWidgets()
         mEventsListener?.eventsDeleted(ids.size)
     }
