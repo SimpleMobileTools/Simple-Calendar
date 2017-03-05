@@ -4,13 +4,22 @@ import android.app.Activity
 import android.support.v7.app.AlertDialog
 import android.view.LayoutInflater
 import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.helpers.DBHelper
+import com.simplemobiletools.commons.extensions.beVisibleIf
 import com.simplemobiletools.commons.extensions.setupDialogStuff
+import kotlinx.android.synthetic.main.dialog_delete_event.view.*
 
-class DeleteEventDialog(val activity: Activity, val eventIds: List<Int>, val callback: (allOccurrences: Boolean) -> Unit) : AlertDialog.Builder(activity) {
+class DeleteEventDialog(val activity: Activity, eventIds: List<Int>, val callback: (allOccurrences: Boolean) -> Unit) : AlertDialog.Builder(activity) {
     val dialog: AlertDialog?
 
     init {
-        val view = LayoutInflater.from(activity).inflate(R.layout.dialog_delete_event, null)
+        val events = DBHelper.newInstance(activity).getEventsWithIds(eventIds)
+        val hasRepeatableEvent = events.any { it.repeatInterval > 0 }
+
+        val view = LayoutInflater.from(activity).inflate(R.layout.dialog_delete_event, null).apply {
+            delete_event_repeat_description.beVisibleIf(hasRepeatableEvent)
+            delete_event_radio_view.beVisibleIf(hasRepeatableEvent)
+        }
 
         dialog = AlertDialog.Builder(activity)
                 .setPositiveButton(R.string.yes, { dialog, which -> dialogConfirmed() })
