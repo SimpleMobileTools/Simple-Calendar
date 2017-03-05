@@ -3,13 +3,14 @@ package com.simplemobiletools.calendar.dialogs
 import android.app.Activity
 import android.support.v7.app.AlertDialog
 import android.view.LayoutInflater
+import android.view.ViewGroup
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.helpers.DBHelper
 import com.simplemobiletools.commons.extensions.beVisibleIf
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import kotlinx.android.synthetic.main.dialog_delete_event.view.*
 
-class DeleteEventDialog(val activity: Activity, eventIds: List<Int>, val callback: (allOccurrences: Boolean) -> Unit) : AlertDialog.Builder(activity) {
+class DeleteEventDialog(val activity: Activity, val eventIds: List<Int>, val callback: (allOccurrences: Boolean) -> Unit) : AlertDialog.Builder(activity) {
     val dialog: AlertDialog?
 
     init {
@@ -22,15 +23,16 @@ class DeleteEventDialog(val activity: Activity, eventIds: List<Int>, val callbac
         }
 
         dialog = AlertDialog.Builder(activity)
-                .setPositiveButton(R.string.yes, { dialog, which -> dialogConfirmed() })
+                .setPositiveButton(R.string.yes, { dialog, which -> dialogConfirmed(view as ViewGroup, hasRepeatableEvent) })
                 .setNegativeButton(R.string.no, null)
                 .create().apply {
             activity.setupDialogStuff(view, this)
         }
     }
 
-    private fun dialogConfirmed() {
+    private fun dialogConfirmed(view: ViewGroup, hasRepeatableEvent: Boolean) {
+        val deleteAllOccurrences = !hasRepeatableEvent || view.delete_event_radio_view.checkedRadioButtonId == R.id.delete_event_all
         dialog?.dismiss()
-        callback.invoke(true)
+        callback.invoke(deleteAllOccurrences)
     }
 }

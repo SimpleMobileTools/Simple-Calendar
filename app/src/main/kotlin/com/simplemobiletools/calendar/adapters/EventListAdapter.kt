@@ -93,8 +93,12 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
         selections.forEach { eventIds.add((mItems[it] as ListEvent).id) }
 
         DeleteEventDialog(activity, eventIds) {
+            if (it) {
+                listener?.deleteItems(eventIds)
+            } else {
+
+            }
             actMode?.finish()
-            listener?.deleteItems(eventIds)
         }
     }
 

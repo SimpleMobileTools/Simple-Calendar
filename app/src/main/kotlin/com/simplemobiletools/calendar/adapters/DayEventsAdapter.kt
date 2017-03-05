@@ -77,8 +77,12 @@ class DayEventsAdapter(val activity: SimpleActivity, val mItems: List<Event>, va
         selections.forEach { eventIds.add(mItems[it].id) }
 
         DeleteEventDialog(activity, eventIds) {
+            if (it) {
+                listener?.deleteItems(eventIds)
+            } else {
+
+            }
             actMode?.finish()
-            listener?.deleteItems(eventIds)
         }
     }
 
