@@ -54,7 +54,7 @@ fun Context.scheduleNextEventReminder(event: Event) {
     reminderSeconds.forEach {
         var startTS = event.startTS - it
         if (event.repeatInterval == DAY || event.repeatInterval == WEEK || event.repeatInterval == BIWEEK) {
-            while (startTS < now || event.ignoreEventOccurrences.contains(startTS)) {
+            while (startTS < now || event.ignoreEventOccurrences.contains(startTS + it)) {
                 startTS += event.repeatInterval
             }
             nextTS = Math.min(nextTS, startTS)
