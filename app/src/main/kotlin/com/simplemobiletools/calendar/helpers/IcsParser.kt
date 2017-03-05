@@ -155,16 +155,19 @@ class IcsParser {
     }
 
     private fun tryAddCategories(categories: String, context: Context) {
-        if (!categories.contains(",")) {
-            val eventTitle = categories
-            val dbHelper = DBHelper.newInstance(context)
-            val eventId = dbHelper.getEventTypeIdWithTitle(eventTitle)
-            if (eventId == -1) {
-                val eventType = EventType(0, eventTitle, context.resources.getColor(R.color.color_primary))
-                curEventType = dbHelper.insertEventType(eventType)
-            } else {
-                curEventType = eventId
-            }
+        val eventTypeTitle = if (categories.contains(",")) {
+            categories.split(",")[0]
+        } else {
+            categories
+        }
+
+        val dbHelper = DBHelper.newInstance(context)
+        val eventId = dbHelper.getEventTypeIdWithTitle(eventTypeTitle)
+        if (eventId == -1) {
+            val eventType = EventType(0, eventTypeTitle, context.resources.getColor(R.color.color_primary))
+            curEventType = dbHelper.insertEventType(eventType)
+        } else {
+            curEventType = eventId
         }
     }
 
