@@ -41,11 +41,11 @@
     <string name="years_raw">Jahre</string>
     <string name="repeat_till">Wiederholen bis:</string>
     <string name="forever">unendlich</string>
-    <string name="selection_contains_repetition">The selection contains repeating events</string>
-    <string name="delete_one_only">Delete the selected occurrence only</string>
-    <string name="delete_all_occurrences">Delete all occurrences</string>
-    <string name="update_one_only">Update the selected occurrence only</string>
-    <string name="update_all_occurrences">Update all occurrences</string>
+    <string name="selection_contains_repetition">Die Auswahl enthält Events mit Wiederholungen</string>
+    <string name="delete_one_only">lösche nur die Ausgewählte Wiederholung</string>
+    <string name="delete_all_occurrences">lösche alle Wiederholungen</string>
+    <string name="update_one_only">ändere nur die Ausgewählte Wiederholung</string>
+    <string name="update_all_occurrences">ändere alle Wiederholungen</string>
 
     <plurals name="days">
         <item quantity="one">%1$d Tag</item>
@@ -103,7 +103,7 @@
     <string name="invalid_file_format">ungültiges Dateiformat</string>
     <string name="export_raw_database">exportiere raw Datenbank</string>
     <string name="database_exported_successfully">Datenbank erfolgreich exportiert</string>
-    <string name="default_event_type">Default event type</string>
+    <string name="default_event_type">Standard Termin Typ</string>
 
     <!-- Event details -->
     <string name="title">Titel</string>
