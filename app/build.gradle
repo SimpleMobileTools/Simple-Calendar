@@ -33,7 +33,7 @@ android {
 }
 
 dependencies {
-    compile 'com.simplemobiletools:commons:2.8.6'
+    compile 'com.simplemobiletools:commons:2.8.8'
     compile 'joda-time:joda-time:2.9.1'
     compile 'com.facebook.stetho:stetho:1.4.1'
     compile 'com.bignerdranch.android:recyclerview-multiselect:0.2'
