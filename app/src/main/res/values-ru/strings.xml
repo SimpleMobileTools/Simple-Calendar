@@ -169,27 +169,6 @@
     <string name="sample_description_4">В КЭТ на Караванной</string>
     <string name="sample_title_5">Время для кофе</string>
 
-    <!-- Release notes -->
-    <string name="release_62">Allow deleting individual occurrences of repeatable events</string>
-    <string name="release_60">Allow toggling 24-hour format in settings</string>
-    <string name="release_59">
-        Added customizable repeat intervals\n
-        Multiple improvements to importing events from .ics files
-    </string>
-    <string name="release_57">Добавлены типы событий с настраиваемыми цветами</string>
-    <string name="release_54">Добавлена возможность установить до 3-х напоминаний для события</string>
-    <string name="release_52">Добавлена поддержка событий, длящихся целый день</string>
-    <string name="release_51">Разрешен импорт событий из .ics файлов</string>
-    <string name="release_49">Разрешен выбор цвета из шестнадцатеричного кода</string>
-    <string name="release_48">Добавлен вид "на неделю"</string>
-    <string name="release_46">Типы оповещений о событиях были изменены, пожалуйста, обновите их.</string>
-    <string name="release_44">
-        Добавлена возможность изменять цветовое оформление\n
-        Настройки приложения в этой версии были сброшены к первоначальным, пожалуйста, настройте снова</string>
-    <string name="release_42">Добавлена возможность изменять звук напоминания</string>
-    <string name="release_40">Добавлен новый вид "список предстоящих событий"</string>
-    <string name="release_39">Добавлена настройка вибрации при напоминании</string>
-
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Простой календарь с событиями и настраиваемым виджетом. Без рекламы.</string>

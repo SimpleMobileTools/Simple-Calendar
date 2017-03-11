@@ -169,25 +169,6 @@
     <string name="sample_description_4">במלון</string>
     <string name="sample_title_5">הפסקת קפה</string>
 
-    <!-- Release notes -->
-    <string name="release_62">Allow deleting individual occurrences of repeatable events</string>
-    <string name="release_60">Allow toggling 24-hour format in settings</string>
-    <string name="release_59">
-        Added customizable repeat intervals\n
-        Multiple improvements to importing events from .ics files
-    </string>
-    <string name="release_57">Added event types with customizable colors</string>
-    <string name="release_54">Allow setting up to 3 reminders per event</string>
-    <string name="release_52">Added all-day long event support</string>
-    <string name="release_51">אופשר לייבא אירועים מקבצי ics.</string>
-    <string name="release_49">אופשר להוסיף צבעים על פי קוד הקסדצימלי</string>
-    <string name="release_48">הוספה תצפית שבועית</string>
-    <string name="release_46">סוגי תזכורות שונו, נא לעדכן אותן</string>
-    <string name="release_44">הוספו עוד אפשרויות עיצוב צבע\nההגדרות נוקו, נא לאפס אותן</string>
-    <string name="release_42">אופשר לשנות את צליל ההתראה של תזכורות</string>
-    <string name="release_40">הוספה תצפית חדשה, רשימה של אירועים קרובים</string>
-    <string name="release_39">הוספה האופציה לרטט בהתראות</string>
-
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">לוח שנה פשוט עם אירועים, וויג\'ט בעיצוב אישי וללא פרסומות</string>

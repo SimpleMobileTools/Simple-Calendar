@@ -169,27 +169,6 @@
     <string name="sample_description_4">Dans la Place</string>
     <string name="sample_title_5">Heure du café</string>
 
-    <!-- Release notes -->
-    <string name="release_62">Allow deleting individual occurrences of repeatable events</string>
-    <string name="release_60">Allow toggling 24-hour format in settings</string>
-    <string name="release_59">
-        Added customizable repeat intervals\n
-        Multiple improvements to importing events from .ics files
-    </string>
-    <string name="release_57">Added event types with customizable colors</string>
-    <string name="release_54">Allow setting up to 3 reminders per event</string>
-    <string name="release_52">Added all-day long event support</string>
-    <string name="release_51">Allow importing events from .ics files</string>
-    <string name="release_49">Allow picking colors by hex codes</string>
-    <string name="release_48">Added a weekly view</string>
-    <string name="release_46">Event reminder types have been tweaked, please update them</string>
-    <string name="release_44">
-        Plus d\'options de personnalisation des couleurs ajoutées\n
-        Vos paramètres ont été nettoyés, veuillez les réinitialiser</string>
-    <string name="release_42">Possibilité de changer la sonnerie de la notification de rappel</string>
-    <string name="release_40">Ajout d\'une nouvelle vue, une liste des événements à venir</string>
-    <string name="release_39">Ajout de l\'option pour vibrer lors des notifications</string>
-
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Un calendrier simple avec événements, widget personnalisable, sans publicités.</string>

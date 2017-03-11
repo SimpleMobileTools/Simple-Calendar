@@ -169,27 +169,6 @@
     <string name="sample_description_4">In the Plaza</string>
     <string name="sample_title_5">Coffee time</string>
 
-    <!-- Release notes -->
-    <string name="release_62">Allow deleting individual occurrences of repeatable events</string>
-    <string name="release_60">Allow toggling 24-hour format in settings</string>
-    <string name="release_59">
-        Added customizable repeat intervals\n
-        Multiple improvements to importing events from .ics files
-    </string>
-    <string name="release_57">Added event types with customizable colors</string>
-    <string name="release_54">Allow setting up to 3 reminders per event</string>
-    <string name="release_52">Added all-day long event support</string>
-    <string name="release_51">Allow importing events from .ics files</string>
-    <string name="release_49">Allow picking colors by hex codes</string>
-    <string name="release_48">Added a weekly view</string>
-    <string name="release_46">Event reminder types have been tweaked, please update them</string>
-    <string name="release_44">
-        Added more color customization options\n
-        Your settings have been cleared, please reset them</string>
-    <string name="release_42">Allow changing the reminder notification sound</string>
-    <string name="release_40">Added a new view, a list of upcoming events</string>
-    <string name="release_39">Added the option to vibrate at notifications</string>
-
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Egy egyszerű naptár bejegyzésekkel, widget-tel és reklámok nélkül.</string>
