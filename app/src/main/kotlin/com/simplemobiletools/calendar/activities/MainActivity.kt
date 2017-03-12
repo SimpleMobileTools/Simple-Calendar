@@ -354,7 +354,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
         main_weekly_scrollview.beVisible()
 
         week_view_hours_holder.removeAllViews()
-        val hourDateTime = DateTime().withTime(0, 0, 0, 0)
+        val hourDateTime = DateTime().withDate(2000, 1, 1).withTime(0, 0, 0, 0)
         for (i in 1..23) {
             val formattedHours = Formatter.getHours(this, hourDateTime.withHourOfDay(i))
             (layoutInflater.inflate(R.layout.weekly_view_hour_textview, null, false) as TextView).apply {
