@@ -1,6 +1,11 @@
 Changelog
 ==========
 
+Version 2.2.6 *(2017-03-12)*
+----------------------------
+
+ * Fix some rare crash at some time of some timezone
+
 Version 2.2.5 *(2017-03-12)*
 ----------------------------
 
