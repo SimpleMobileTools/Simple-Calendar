@@ -29,7 +29,7 @@ class MyMonthPagerAdapter(fm: FragmentManager, private val mCodes: List<String>,
 
     fun refreshEvents(pos: Int) {
         for (i in -1..1) {
-            mFragments[pos + i].updateCalendar()
+            mFragments[pos + i]?.updateCalendar()
         }
     }
 }

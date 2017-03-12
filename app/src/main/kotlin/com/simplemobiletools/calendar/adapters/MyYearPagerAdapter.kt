@@ -29,7 +29,7 @@ class MyYearPagerAdapter(fm: FragmentManager, val mYears: List<Int>, val mListen
 
     fun refreshEvents(pos: Int) {
         for (i in -1..1) {
-            mFragments[pos + i].updateEvents()
+            mFragments[pos + i]?.updateEvents()
         }
     }
 }

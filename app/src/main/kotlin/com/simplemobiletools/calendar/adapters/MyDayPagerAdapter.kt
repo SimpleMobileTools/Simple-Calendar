@@ -30,7 +30,7 @@ class MyDayPagerAdapter(fm: FragmentManager, private val mCodes: List<String>, p
 
     fun checkDayEvents(pos: Int) {
         for (i in -1..1) {
-            mFragments[pos + i].checkEvents()
+            mFragments[pos + i]?.checkEvents()
         }
     }
 }
