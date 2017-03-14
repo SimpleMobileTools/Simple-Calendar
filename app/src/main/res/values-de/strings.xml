@@ -1,19 +1,19 @@
 <resources>
-    <string name="app_name">Schlichter Kalender</string>
+    <string name="app_name">Einfacher Kalender</string>
     <string name="app_launcher_name">Kalender</string>
     <string name="change_view">Ansicht ändern</string>
     <string name="weekly_view">Wochenansicht</string>
     <string name="monthly_view">Monatsansicht</string>
     <string name="yearly_view">Jahresansicht</string>
-    <string name="simple_event_list">Einfache Termin Liste</string>
-    <string name="no_upcoming_events">Sieht aus als wäre dein Kalender leer.</string>
+    <string name="simple_event_list">Einfache Termin-Liste</string>
+    <string name="no_upcoming_events">Keine anstehenden Termine</string>
     <string name="add_some_events">Du kannst neue Termine mit dem Plus Button unten rechts erstellen.</string>
     <string name="details">Details</string>
-    <string name="go_to_today">gehe zu Heute</string>
+    <string name="go_to_today">Gehe zu Heute</string>
 
     <!-- Widget titles -->
-    <string name="widget_monthly">Monats Kalender</string>
-    <string name="widget_list">Termin Liste</string>
+    <string name="widget_monthly">Monatskalender</string>
+    <string name="widget_list">Termin-Liste</string>
 
     <!-- Event -->
     <string name="event">Termin</string>
@@ -42,10 +42,10 @@
     <string name="repeat_till">Wiederholen bis:</string>
     <string name="forever">unendlich</string>
     <string name="selection_contains_repetition">Die Auswahl enthält Events mit Wiederholungen</string>
-    <string name="delete_one_only">lösche nur die ausgewählte Wiederholung</string>
-    <string name="delete_all_occurrences">lösche alle Wiederholungen</string>
-    <string name="update_one_only">ändere nur die ausgewählte Wiederholung</string>
-    <string name="update_all_occurrences">ändere alle Wiederholungen</string>
+    <string name="delete_one_only">Lösche nur die ausgewählte Wiederholung</string>
+    <string name="delete_all_occurrences">Lösche alle Wiederholungen</string>
+    <string name="update_one_only">Ändere nur die ausgewählte Wiederholung</string>
+    <string name="update_all_occurrences">Ändere alle Wiederholungen</string>
 
     <plurals name="days">
         <item quantity="one">%1$d Tag</item>
@@ -68,7 +68,7 @@
     </plurals>
 
     <!-- Event Reminders -->
-    <string name="select_event_reminder">Wähle eine Termin Erinnerung</string>
+    <string name="select_event_reminder">Wähle eine Termin-Erinnerung</string>
     <string name="reminder">Erinnerung</string>
     <string name="no_reminder">Keine Erinnerung</string>
     <string name="at_start">Zu Beginn</string>
@@ -77,7 +77,7 @@
     <string name="minutes_raw">Minuten</string>
     <string name="hours_raw">Stunden</string>
     <string name="days_raw">Tage</string>
-    <string name="add_another_reminder">füge eine weitere Erinnerung hinzu</string>
+    <string name="add_another_reminder">Füge eine weitere Erinnerung hinzu</string>
 
     <plurals name="minutes">
         <item quantity="one">%1$d Minute vorher</item>
@@ -95,48 +95,48 @@
     </plurals>
 
     <!-- Export / Import -->
-    <string name="import_events">importiere Termine</string>
-    <string name="import_events_from_ics">importiere Termine aus.ics Datei</string>
+    <string name="import_events">Importiere Termine</string>
+    <string name="import_events_from_ics">Importiere Termine aus .ics Datei</string>
     <string name="events_imported_successfully">Termine erfolgreich importiert</string>
     <string name="importing_events_failed">Termine importieren fehlgeschlagen</string>
-    <string name="importing_some_events_failed">einige Termine wurden nicht erfolgreich importiert</string>
-    <string name="invalid_file_format">ungültiges Dateiformat</string>
-    <string name="export_raw_database">exportiere raw Datenbank</string>
+    <string name="importing_some_events_failed">Einige Termine wurden nicht erfolgreich importiert</string>
+    <string name="invalid_file_format">Ungültiges Dateiformat</string>
+    <string name="export_raw_database">Exportiere raw Datenbank</string>
     <string name="database_exported_successfully">Datenbank erfolgreich exportiert</string>
-    <string name="default_event_type">Standard Termin Typ</string>
+    <string name="default_event_type">Standard-Termin-Typ</string>
 
     <!-- Event details -->
     <string name="title">Titel</string>
     <string name="description">Beschreibung</string>
-    <string name="all_day">ganztags</string>
+    <string name="all_day">Ganztags</string>
 
     <!-- Weekly view -->
     <string name="week">Woche</string>
 
     <!-- Event types -->
-    <string name="event_types">Termin Typen</string>
-    <string name="add_new_type">fügen einen neuen Typ hinzu</string>
+    <string name="event_types">Termin-Typen</string>
+    <string name="add_new_type">Füge einen neuen Typ hinzu</string>
     <string name="edit_type">Typ bearbeiten</string>
-    <string name="type_already_exists">Typ mit diesen Namen existiert bereits</string>
+    <string name="type_already_exists">Typ mit diesem Namen existiert bereits</string>
     <string name="color">Farbe</string>
-    <string name="regular_event">Regelmässier Termin</string>
-    <string name="cannot_delete_default_type">der Standart Termin Typ kann nicht gelöscht werden</string>
+    <string name="regular_event">Regelmäßier Termin</string>
+    <string name="cannot_delete_default_type">Standart-Termin-Typ kann nicht gelöscht werden</string>
     <string name="select_event_type">Wähle einen Termin Typ</string>
 
     <!-- Settings -->
-    <string name="manage_event_types">Verwalte Termin Typen</string>
-    <string name="use_24_hour_format">verwende 24 h Format</string>
+    <string name="manage_event_types">Verwalte Termin-Typen</string>
+    <string name="use_24_hour_format">Verwende 24 h Format</string>
     <string name="sunday_first">Sonntag als erster Wochentag</string>
-    <string name="start_weekly_at">Wochen Ansicht beginnt am</string>
-    <string name="end_weekly_at">Wochen Ansicht endet am</string>
+    <string name="start_weekly_at">Wochenansicht beginnt am</string>
+    <string name="end_weekly_at">Wochenansicht endet am</string>
     <string name="week_numbers">Zeige Kalenderwoche an</string>
-    <string name="vibrate">Vibration ein bei Errinerung</string>
-    <string name="reminder_sound">Erinnerungs Ton</string>
+    <string name="vibrate">Vibration bei Errinerung</string>
+    <string name="reminder_sound">Erinnerungston</string>
     <string name="default_event_reminder">Standard Termin Erinnerung</string>
-    <string name="no_ringtone_picker">No app capable of setting ringtone found</string>
+    <string name="no_ringtone_picker">Keine App zum Setzen des Klingentons gefunden</string>
     <string name="no_ringtone_selected">Kein Klingelton gewählt</string>
-    <string name="day_end_before_start">The day cannot end earlier than it starts</string>
-    <string name="google_sync">Google sync</string>
+    <string name="day_end_before_start">Terminbeginn kann nicht vor Terminende liegen</string>
+    <string name="google_sync">Google Sync</string>
 
     <string name="january">Januar</string>
     <string name="february">Februar</string>
@@ -167,21 +167,21 @@
     <string name="sample_title_3">Bibliothek</string>
     <string name="sample_title_4">Essen mit Mary</string>
     <string name="sample_description_4">im Sternen</string>
-    <string name="sample_title_5">Kaffee Pause</string>
+    <string name="sample_title_5">Kaffee-Pause</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Ein simpler Kalender mit Events, personalisierbaren Widgets ohne Werbung.</string>
+    <string name="app_short_description">Ein einfacher Kalender mit Events, personalisierbaren Widgets ohne Werbung.</string>
     <string name="app_long_description">
-        Ein eigenständiger offline Kalender. Einfaches erstellen wiederholender Events sowie Erinnerungen, inkl. optionaler Anzeige der Kalenderwochen.
+        Ein eigenständiger offline Kalender. Einfaches Erstellen wiederholender Events sowie Erinnerungen, inkl. optionaler Anzeige der Kalenderwochen.
 
-        Enthält ein skalierbares 4x4 Widget, bei welchen die Schriftfarbe sowie die Hintergrundfarbe anpassbar ist.
+        Enthält ein skalierbares 4x4 Widget, bei welchem die Schriftfarbe sowie die Hintergrundfarbe anpassbar sind.
         
-        Dieser Kalender enthält weder Werbung noch unnötige App-Berechtigung und ist vollständig Opensource.
+        Dieser Kalender enthält weder Werbung noch unnötige App-Berechtigungen und ist vollständig Open Source.
 
-        The Storage permission is needed only for importing events from .ics files.
+        Berechtigung Speicher ist nur für das Importieren von .ics Termin-Dateien notwendig.
 
-        Dieses App ist Teil einer grösseren Serie von Apps. Diese findet man unter http://www.simplemobiletools.com
+        Diese App ist Teil einer grösseren Serie von Apps. Diese findet man unter http://www.simplemobiletools.com
     </string>
 
     <!--
