@@ -9,7 +9,7 @@
     <string name="no_upcoming_events">Похоже у вас нет пердстоящих событий.</string>
     <string name="add_some_events">Вы можете их добавить, нажав на кнопку с плюсом внизу.</string>
     <string name="details">Подробности</string>
-    <string name="go_to_today">Go to today</string>
+    <string name="go_to_today">Сегодня</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Календарь на месяц</string>
@@ -36,35 +36,35 @@
     <string name="biweekly">Раз в две недели</string>
     <string name="monthly">Ежемесячно</string>
     <string name="yearly">Ежегодно</string>
-    <string name="weeks_raw">weeks</string>
-    <string name="months_raw">months</string>
-    <string name="years_raw">years</string>
+    <string name="weeks_raw">недель</string>
+    <string name="months_raw">месяцев</string>
+    <string name="years_raw">лет</string>
     <string name="repeat_till">Повторять до:</string>
     <string name="forever">Бесконечно</string>
-    <string name="selection_contains_repetition">The selection contains repeating events</string>
-    <string name="delete_one_only">Delete the selected occurrence only</string>
-    <string name="delete_all_occurrences">Delete all occurrences</string>
-    <string name="update_one_only">Update the selected occurrence only</string>
-    <string name="update_all_occurrences">Update all occurrences</string>
+    <string name="selection_contains_repetition">В выбранном есть повторяющиеся события</string>
+    <string name="delete_one_only">Удалить только выбранное</string>
+    <string name="delete_all_occurrences">Удалить все связанные</string>
+    <string name="update_one_only">Обновить только выбранное</string>
+    <string name="update_all_occurrences">Обновить все связанные</string>
 
     <plurals name="days">
-        <item quantity="one">%1$d day</item>
-        <item quantity="other">%1$d days</item>
+        <item quantity="one">%1$d день</item>
+        <item quantity="other">%1$d дня(-ей)</item>
     </plurals>
 
     <plurals name="weeks">
-        <item quantity="one">%1$d week</item>
-        <item quantity="other">%1$d weeks</item>
+        <item quantity="one">%1$d неделя</item>
+        <item quantity="other">%1$d недели(-ль)</item>
     </plurals>
 
     <plurals name="months">
-        <item quantity="one">%1$d month</item>
-        <item quantity="other">%1$d months</item>
+        <item quantity="one">%1$d месяц</item>
+        <item quantity="other">%1$d месяца(-ев)</item>
     </plurals>
 
     <plurals name="years">
-        <item quantity="one">%1$d year</item>
-        <item quantity="other">%1$d years</item>
+        <item quantity="one">%1$d год</item>
+        <item quantity="other">%1$d года(лет)</item>
     </plurals>
 
     <!-- Event Reminders -->
@@ -101,9 +101,9 @@
     <string name="importing_events_failed">Импорт событий не удался</string>
     <string name="importing_some_events_failed">Ошибка импорта</string>
     <string name="invalid_file_format">Неправильный формат файла</string>
-    <string name="export_raw_database">Export raw database</string>
-    <string name="database_exported_successfully">Database exported successfully</string>
-    <string name="default_event_type">Default event type</string>
+    <string name="export_raw_database">Экспортировать необработанную базу</string>
+    <string name="database_exported_successfully">База данных успешно экспортирована</string>
+    <string name="default_event_type">Тип события по умолчанию</string>
 
     <!-- Event details -->
     <string name="title">Заголовок</string>
@@ -125,7 +125,7 @@
 
     <!-- Settings -->
     <string name="manage_event_types">Управление типами событий</string>
-    <string name="use_24_hour_format">Use 24-hour format</string>
+    <string name="use_24_hour_format">Использовать 24-х часовой формат</string>
     <string name="sunday_first">Воскресенье - начало недели</string>
     <string name="start_weekly_at">Начало дня (неделя)</string>
     <string name="end_weekly_at">Окончание дня (неделя)</string>
