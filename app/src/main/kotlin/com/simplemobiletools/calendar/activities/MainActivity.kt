@@ -246,34 +246,32 @@ class MainActivity : SimpleActivity(), NavigationListener {
         FilePickerDialog(this, pickFile = false) {
             val source = getDatabasePath(DBHelper.DB_NAME)
             val destination = File(it, DBHelper.DB_NAME)
-            if (isShowingPermDialog(destination)) {
-                return@FilePickerDialog
-            }
+            handleSAFDialog(destination) {
+                Thread({
+                    if (source.exists()) {
+                        val inputStream = FileInputStream(source)
+                        val outputStream: OutputStream?
 
-            Thread({
-                if (source.exists()) {
-                    val inputStream = FileInputStream(source)
-                    val outputStream: OutputStream?
-
-                    if (needsStupidWritePermissions(destination.absolutePath)) {
-                        var document = getFileDocument(destination.absolutePath, config.treeUri) ?: return@Thread
-                        if (!destination.exists()) {
-                            document = document.createFile("", destination.name)
+                        if (needsStupidWritePermissions(destination.absolutePath)) {
+                            var document = getFileDocument(destination.absolutePath, config.treeUri) ?: return@Thread
+                            if (!destination.exists()) {
+                                document = document.createFile("", destination.name)
+                            }
+                            outputStream = contentResolver.openOutputStream(document.uri)
+                        } else {
+                            outputStream = FileOutputStream(destination)
                         }
-                        outputStream = contentResolver.openOutputStream(document.uri)
-                    } else {
-                        outputStream = FileOutputStream(destination)
-                    }
 
-                    copyStream(inputStream, outputStream)
-                    inputStream.close()
-                    outputStream?.close()
+                        copyStream(inputStream, outputStream)
+                        inputStream.close()
+                        outputStream?.close()
 
-                    runOnUiThread {
-                        toast(R.string.database_exported_successfully)
+                        runOnUiThread {
+                            toast(R.string.database_exported_successfully)
+                        }
                     }
-                }
-            }).start()
+                }).start()
+            }
         }
     }
 
