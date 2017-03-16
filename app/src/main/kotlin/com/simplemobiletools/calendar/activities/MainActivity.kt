@@ -245,7 +245,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
     private fun exportDatabase() {
         FilePickerDialog(this, pickFile = false) {
             val source = getDatabasePath(DBHelper.DB_NAME)
-            val destination = File(it, DBHelper.DB_NAME)
+            val destination = File(it, "calendar_${System.currentTimeMillis()}.db")
             handleSAFDialog(destination) {
                 Thread({
                     if (source.exists()) {
