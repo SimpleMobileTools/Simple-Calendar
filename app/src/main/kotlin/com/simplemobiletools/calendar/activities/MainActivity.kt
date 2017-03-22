@@ -155,7 +155,11 @@ class MainActivity : SimpleActivity(), NavigationListener {
         } else if (config.storedView == MONTHLY_VIEW) {
             main_view_pager.currentItem = mDefaultMonthlyPage
         } else if (config.storedView == YEARLY_VIEW) {
-            main_view_pager.currentItem = mDefaultYearlyPage
+            if (mIsMonthSelected) {
+                openMonthlyToday()
+            } else {
+                main_view_pager.currentItem = mDefaultYearlyPage
+            }
         }
     }
 
@@ -193,11 +197,15 @@ class MainActivity : SimpleActivity(), NavigationListener {
         } else if (config.storedView == WEEKLY_VIEW) {
             fillWeeklyViewPager()
         } else {
-            val targetDay = DateTime().toString(Formatter.DAYCODE_PATTERN)
-            fillMonthlyViewPager(targetDay)
+            openMonthlyToday()
         }
 
         mWeekScrollY = 0
+    }
+
+    private fun openMonthlyToday() {
+        val targetDay = DateTime().toString(Formatter.DAYCODE_PATTERN)
+        fillMonthlyViewPager(targetDay)
     }
 
     private fun refreshViewPager() {
