@@ -179,7 +179,7 @@
 
         Não contém anúncios nem permissões desnecessárias. Disponibiliza um tema escuro e é totalmente \'open source\'.
 
-        The Storage permission is needed only for importing events from .ics files.
+        A permissão de armazenamento é necessária apenas para importar eventos dos arquivos .ics.
 
         Esta aplicação é apenas parte de um conjunto mais vasto de aplicações. Saiba mais em http://www.simplemobiletools.com
     </string>
