@@ -2,14 +2,14 @@
     <string name="app_name">Simple Calendar</string>
     <string name="app_launcher_name">Calendrier</string>
     <string name="change_view">Changer de vue</string>
-    <string name="weekly_view">Weekly view</string>
+    <string name="weekly_view">Vue hebdomadaire</string>
     <string name="monthly_view">Vue mensuelle</string>
     <string name="yearly_view">Vue annuelle</string>
     <string name="simple_event_list">Liste simple d\'événements</string>
     <string name="no_upcoming_events">Il semblerait que vous n\'ayez aucun événement à venir.</string>
     <string name="add_some_events">Vous pouvez ajouter des évènements avec le bouton Plus en bas.</string>
     <string name="details">Détails</string>
-    <string name="go_to_today">Go to today</string>
+    <string name="go_to_today">Aller à aujourd\'hui</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Calendrier mensuel</string>
@@ -24,119 +24,119 @@
     <string name="event_added">Evénement ajouté avec succès</string>
     <string name="past_event_added">Evénement dans le passé ajouté avec succès</string>
     <string name="event_updated">Evénement ajouté avec succès</string>
-    <string name="filter">Filter</string>
-    <string name="filter_events_by_type">Filter events by type</string>
+    <string name="filter">Filtrer</string>
+    <string name="filter_events_by_type">Filtrer les evénements par type</string>
 
     <!-- Event Repetition -->
-    <string name="select_repeat_interval">Select a repeat interval</string>
+    <string name="select_repeat_interval">Sélectionner une intervalle de répétition</string>
     <string name="repetition">Répétition</string>
-    <string name="no_repetition">No repetition</string>
+    <string name="no_repetition">Pas de répétition</string>
     <string name="daily">Quotidienne</string>
     <string name="weekly">Hebdomadaire</string>
     <string name="biweekly">Bihebdomadaire</string>
     <string name="monthly">Mensuelle</string>
     <string name="yearly">Annuelle</string>
-    <string name="weeks_raw">weeks</string>
-    <string name="months_raw">months</string>
-    <string name="years_raw">years</string>
-    <string name="repeat_till">Repeat till:</string>
-    <string name="forever">Forever</string>
-    <string name="selection_contains_repetition">The selection contains repeating events</string>
-    <string name="delete_one_only">Delete the selected occurrence only</string>
-    <string name="delete_all_occurrences">Delete all occurrences</string>
-    <string name="update_one_only">Update the selected occurrence only</string>
-    <string name="update_all_occurrences">Update all occurrences</string>
+    <string name="weeks_raw">semaines</string>
+    <string name="months_raw">mois</string>
+    <string name="years_raw">années</string>
+    <string name="repeat_till">Répéter jusqu\'à:</string>
+    <string name="forever">Pour toujours</string>
+    <string name="selection_contains_repetition">La sélection contient des evénements avec répétition</string>
+    <string name="delete_one_only">Supprimer l\'occurrence sélectionnée seulement</string>
+    <string name="delete_all_occurrences">Supprimer toutes les occurrences</string>
+    <string name="update_one_only">Mettre à jour l\'occurrence sélectionnée seulement</string>
+    <string name="update_all_occurrences">Mettre à jour toutes les occurrences</string>
 
     <plurals name="days">
-        <item quantity="one">%1$d day</item>
-        <item quantity="other">%1$d days</item>
+        <item quantity="one">%1$d jour</item>
+        <item quantity="other">%1$d jours</item>
     </plurals>
 
     <plurals name="weeks">
-        <item quantity="one">%1$d week</item>
-        <item quantity="other">%1$d weeks</item>
+        <item quantity="one">%1$d semaine</item>
+        <item quantity="other">%1$d semaines</item>
     </plurals>
 
     <plurals name="months">
-        <item quantity="one">%1$d month</item>
-        <item quantity="other">%1$d months</item>
+        <item quantity="one">%1$d mois</item>
+        <item quantity="other">%1$d mois</item>
     </plurals>
 
     <plurals name="years">
-        <item quantity="one">%1$d year</item>
-        <item quantity="other">%1$d years</item>
+        <item quantity="one">%1$d an</item>
+        <item quantity="other">%1$d ans</item>
     </plurals>
 
     <!-- Event Reminders -->
-    <string name="select_event_reminder">Select an event reminder</string>
+    <string name="select_event_reminder">Seléctionner un rappel d\'evénement</string>
     <string name="reminder">Rappel</string>
-    <string name="no_reminder">No reminder</string>
+    <string name="no_reminder">Pas de rappel</string>
     <string name="at_start">Au démarrage</string>
     <string name="custom">Personnalisé</string>
     <string name="before">avant</string>
     <string name="minutes_raw">minutes</string>
     <string name="hours_raw">heures</string>
     <string name="days_raw">jours</string>
-    <string name="add_another_reminder">Add another reminder</string>
+    <string name="add_another_reminder">Ajouter un autre rappel</string>
 
     <plurals name="minutes">
-        <item quantity="one">%1$d minute before</item>
+        <item quantity="one">%1$d minute avant</item>
         <item quantity="other">%1$d minutes avant</item>
     </plurals>
 
     <plurals name="hours">
-        <item quantity="one">%1$d hour before</item>
+        <item quantity="one">%1$d heure avant</item>
         <item quantity="other">%1$d heures avant</item>
     </plurals>
 
     <plurals name="days_before">
-        <item quantity="one">%1$d day before</item>
+        <item quantity="one">%1$d jour avant</item>
         <item quantity="other">%1$d jours avant</item>
     </plurals>
 
     <!-- Export / Import -->
-    <string name="import_events">Import events</string>
-    <string name="import_events_from_ics">Import events from an .ics file</string>
-    <string name="events_imported_successfully">Events imported successfully</string>
-    <string name="importing_events_failed">Importing events failed</string>
-    <string name="importing_some_events_failed">Importing some events failed</string>
-    <string name="invalid_file_format">Invalid file format</string>
-    <string name="export_raw_database">Export raw database</string>
-    <string name="database_exported_successfully">Database exported successfully</string>
-    <string name="default_event_type">Default event type</string>
+    <string name="import_events">Importer des evénements</string>
+    <string name="import_events_from_ics">Importer des evénements depuis un fichier .ics</string>
+    <string name="events_imported_successfully">Evénements importés avec succès</string>
+    <string name="importing_events_failed">Import des evénements échoué</string>
+    <string name="importing_some_events_failed">L\'import de certains evénements a échoué</string>
+    <string name="invalid_file_format">Format de fichier invalide</string>
+    <string name="export_raw_database">Exporter la base de données brute</string>
+    <string name="database_exported_successfully">Base de données exportée avec succès</string>
+    <string name="default_event_type">Type d\'evénement par défaut</string>
 
     <!-- Event details -->
     <string name="title">Titre</string>
     <string name="description">Description</string>
-    <string name="all_day">All-day</string>
+    <string name="all_day">Journée entière</string>
 
     <!-- Weekly view -->
-    <string name="week">Week</string>
+    <string name="week">Semaine</string>
 
     <!-- Event types -->
-    <string name="event_types">Event types</string>
-    <string name="add_new_type">Add a new type</string>
-    <string name="edit_type">Edit type</string>
-    <string name="type_already_exists">Type with this title already exists</string>
-    <string name="color">Color</string>
-    <string name="regular_event">Regular event</string>
-    <string name="cannot_delete_default_type">Default event type cannot be deleted</string>
-    <string name="select_event_type">Select an event type</string>
+    <string name="event_types">Type d\'evénement</string>
+    <string name="add_new_type">Ajouter un nouveau type</string>
+    <string name="edit_type">Editer le type</string>
+    <string name="type_already_exists">Un type avec ce titre existe déjà</string>
+    <string name="color">Couleur</string>
+    <string name="regular_event">Evénement régulier</string>
+    <string name="cannot_delete_default_type">Le type d\'evénement par défuat ne peut pas être supprimé</string>
+    <string name="select_event_type">Sélectionner un type d\'evénement</string>
 
     <!-- Settings -->
-    <string name="manage_event_types">Manage event types</string>
-    <string name="use_24_hour_format">Use 24-hour format</string>
+    <string name="manage_event_types">Gestion des types d\'evénements</string>
+    <string name="use_24_hour_format">Utiliser le format 24 heures</string>
     <string name="sunday_first">Dimanche en premier jour</string>
-    <string name="start_weekly_at">Start weekly view day at</string>
-    <string name="end_weekly_at">End weekly view day at</string>
+    <string name="start_weekly_at">Jour de début de la vue hebdomadaire</string>
+    <string name="end_weekly_at">Jour de fin de la vue hebdomadaire</string>
     <string name="week_numbers">Afficher les numéros de semaine</string>
     <string name="vibrate">Vibrer à la notification de rappel</string>
     <string name="reminder_sound">Son de rappel</string>
     <string name="default_event_reminder">Rappel d\'événement par défaut</string>
     <string name="no_ringtone_picker">Aucune application capable de configurer la sonnerie trouvée</string>
-    <string name="no_ringtone_selected">None</string>
-    <string name="day_end_before_start">The day cannot end earlier than it starts</string>
-    <string name="google_sync">Google sync</string>
+    <string name="no_ringtone_selected">Aucune</string>
+    <string name="day_end_before_start">Le jour ne peut pas se terminer plus tôt qu\'il ne débute</string>
+    <string name="google_sync">Synchronisation Google</string>
 
     <string name="january">Janvier</string>
     <string name="february">Février</string>
