@@ -6,8 +6,8 @@
     <string name="monthly_view">Vista mensal</string>
     <string name="yearly_view">Vista anual</string>
     <string name="simple_event_list">Lista de eventos</string>
-    <string name="no_upcoming_events">Parece que você não tem eventos para breve.</string>
-    <string name="add_some_events">Pode adicionar um evento através do botão existente na base do ecrã.</string>
+    <string name="no_upcoming_events">Parece que você não tem eventos próximos.</string>
+    <string name="add_some_events">Pode-se adicionar um evento através do botão existente na base da tela.</string>
     <string name="details">Detalhes</string>
     <string name="go_to_today">Ir para hoje</string>
 
@@ -19,7 +19,7 @@
     <string name="event">Evento</string>
     <string name="edit_event">Editar evento</string>
     <string name="new_event">Novo evento</string>
-    <string name="title_empty">O título não pode estar vazio</string>
+    <string name="title_empty">O título não pode ficar vazio</string>
     <string name="end_before_start">O evento não pode terminar antes de iniciar</string>
     <string name="event_added">Evento adicionado com sucesso</string>
     <string name="past_event_added">Evento no passado adicionado com sucesso</string>
@@ -96,11 +96,11 @@
 
     <!-- Export / Import -->
     <string name="import_events">Importar eventos</string>
-    <string name="import_events_from_ics">Importar eventos de um ficheiro .ics</string>
+    <string name="import_events_from_ics">Importar eventos de um arquivo .ics</string>
     <string name="events_imported_successfully">Eventos importados com sucesso</string>
     <string name="importing_events_failed">Falha de importação</string>
     <string name="importing_some_events_failed">Alguns eventos não foram importados</string>
-    <string name="invalid_file_format">Formato de ficheiro inválido</string>
+    <string name="invalid_file_format">Formato de arquivo inválido</string>
     <string name="export_raw_database">Exportar base de dados raw</string>
     <string name="database_exported_successfully">Base de dados exportada com sucesso</string>
     <string name="default_event_type">Tipo de evento padrão</string>
@@ -114,7 +114,7 @@
     <string name="week">Semana</string>
 
     <!-- Event types -->
-    <string name="event_types">Tipos de eventos</string>
+    <string name="event_types">Tipos de evento</string>
     <string name="add_new_type">Adicionar um tipo</string>
     <string name="edit_type">Editar tipo</string>
     <string name="type_already_exists">Já existe um tipo com este nome</string>
@@ -124,8 +124,8 @@
     <string name="select_event_type">Selecione um tipo de evento</string>
 
     <!-- Settings -->
-    <string name="manage_event_types">Gerir tipos de eventos</string>
-    <string name="use_24_hour_format">Usar formato 24 H</string>
+    <string name="manage_event_types">Gerenciar tipos de eventos</string>
+    <string name="use_24_hour_format">Usar formato 24 horas</string>
     <string name="sunday_first">Domingo como primeiro dia</string>
     <string name="start_weekly_at">Iniciar vista semanal em</string>
     <string name="end_weekly_at">Terminar vista semanal em</string>
@@ -133,9 +133,9 @@
     <string name="vibrate">Vibrar ao notificar sobre o lembrete</string>
     <string name="reminder_sound">Som do lembrete</string>
     <string name="default_event_reminder">Lembrete padrão</string>
-    <string name="no_ringtone_picker">Não foi encontrada qualquer aplicação capaz de definir o som</string>
+    <string name="no_ringtone_picker">Não foi encontrado nenhum aplicativo capaz de definir o som</string>
     <string name="no_ringtone_selected">Nenhum</string>
-    <string name="day_end_before_start">O dia final não pode ser antes do inicial</string>
+    <string name="day_end_before_start">O dia final não pode ser antes do início</string>
     <string name="google_sync">Sincronização Google</string>
 
     <string name="january">janeiro</string>
@@ -171,17 +171,17 @@
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Um calendário para adicionar eventos e com um widget personalizável.</string>
+    <string name="app_short_description">Um calendário para adicionar eventos, com um widget personalizável.</string>
     <string name="app_long_description">
-        Um calendário local que não possui qualquer tipo de integração. Pode adicionar eventos e lembretes recorrentes e possui uma opção para mostrar o número da semana.
+        Um calendário que não possui qualquer tipo de integração. Pode-se adicionar eventos e lembretes recorrentes, e possui uma opção para mostrar o número da semana.
 
-        Contém um widget 4x4, em que pode personalizar a cor do texto, bem como a cor e o valor alfa do fundo.
+        Contém um widget 4x4, em que se pode personalizar a cor do texto, bem como a cor e o valor alfa do fundo.
 
-        Não contém anúncios nem permissões desnecessárias. Disponibiliza um tema escuro e é totalmente \'open source\'.
+        Não contém anúncios nem permissões desnecessárias. Disponibiliza um tema escuro, e é totalmente \'open source\'.
 
-        The Storage permission is needed only for importing events from .ics files.
+        A permissão de armazenamento é necessária apenas para importar eventos dos arquivos .ics
 
-        Esta aplicação é apenas parte de um conjunto mais vasto de aplicações. Saiba mais em http://www.simplemobiletools.com
+        Este aplicativo é apenas parte de um conjunto mais vasto de aplicações. Saiba mais em http://www.simplemobiletools.com
     </string>
 
     <!--
