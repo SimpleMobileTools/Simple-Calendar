@@ -13,7 +13,7 @@ import com.simplemobiletools.calendar.interfaces.DeleteItemsListener
 import com.simplemobiletools.calendar.models.EventType
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.extensions.setBackgroundWithStroke
-import kotlinx.android.synthetic.main.event_type_view.view.*
+import kotlinx.android.synthetic.main.item_event_type.view.*
 import java.util.*
 
 class EventTypeAdapter(val activity: SimpleActivity, val mItems: List<EventType>, val listener: DeleteItemsListener?, val itemClick: (EventType) -> Unit) :
@@ -82,7 +82,7 @@ class EventTypeAdapter(val activity: SimpleActivity, val mItems: List<EventType>
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent?.context).inflate(R.layout.event_type_view, parent, false)
+        val view = LayoutInflater.from(parent?.context).inflate(R.layout.item_event_type, parent, false)
         return ViewHolder(activity, view, itemClick)
     }
 
