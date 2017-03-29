@@ -34,14 +34,10 @@ class ManageEventTypesActivity : SimpleActivity(), DeleteItemsListener {
     private fun getEventTypes() {
         DBHelper.newInstance(applicationContext).getEventTypes {
             runOnUiThread {
-                gotEventTypes(it)
+                manage_event_types_list.adapter = EventTypeAdapter(this, it, this) {
+                    showEventTypeDialog(it)
+                }
             }
-        }
-    }
-
-    private fun gotEventTypes(eventTypes: List<EventType>) {
-        manage_event_types_list.adapter = EventTypeAdapter(this, eventTypes, this) {
-            showEventTypeDialog(it)
         }
     }
 
