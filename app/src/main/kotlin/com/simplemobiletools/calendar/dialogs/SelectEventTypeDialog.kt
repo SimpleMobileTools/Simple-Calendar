@@ -14,7 +14,7 @@ import com.simplemobiletools.commons.extensions.hideKeyboard
 import com.simplemobiletools.commons.extensions.setBackgroundWithStroke
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import com.simplemobiletools.commons.extensions.updateTextColors
-import kotlinx.android.synthetic.main.dialog_radio_group.view.*
+import kotlinx.android.synthetic.main.dialog_select_event_type.view.*
 import kotlinx.android.synthetic.main.radio_button_with_color.view.*
 import java.util.*
 
@@ -27,7 +27,7 @@ class SelectEventTypeDialog(val activity: Activity, val currEventType: Int, val 
     var eventTypes = ArrayList<EventType>()
 
     init {
-        val view = activity.layoutInflater.inflate(R.layout.dialog_radio_group, null) as ViewGroup
+        val view = activity.layoutInflater.inflate(R.layout.dialog_select_event_type, null) as ViewGroup
         radioGroup = view.dialog_radio_group
 
         activity.dbHelper.getEventTypes {
