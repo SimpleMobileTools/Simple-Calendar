@@ -361,18 +361,19 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
     fun getEventsInBackground(fromTS: Int, toTS: Int, callback: GetEventsListener?) {
         val events = ArrayList<Event>()
-        events.addAll(getEventsFor(fromTS, toTS))
 
         val selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_REPEAT_INTERVAL IS NULL"
         val selectionArgs = arrayOf(toTS.toString(), fromTS.toString())
         val cursor = getEventsCursor(selection, selectionArgs)
         events.addAll(fillEvents(cursor))
 
+        events.addAll(getRepeatableEventsFor(fromTS, toTS))
+
         val filtered = events.filterNot { it.ignoreEventOccurrences.contains(it.startTS) } as MutableList<Event>
         callback?.gotEvents(filtered)
     }
 
-    private fun getEventsFor(fromTS: Int, toTS: Int): List<Event> {
+    private fun getRepeatableEventsFor(fromTS: Int, toTS: Int, getRunningEvents: Boolean = false): List<Event> {
         val newEvents = ArrayList<Event>()
 
         // get repeatable events
@@ -381,6 +382,8 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         for (e in events) {
             while (e.startTS < toTS && (e.repeatLimit == 0 || e.repeatLimit > e.endTS)) {
                 if (e.startTS >= fromTS) {
+                    newEvents.add(e.copy())
+                } else if (getRunningEvents && (e.startTS <= fromTS && e.endTS >= toTS)) {
                     newEvents.add(e.copy())
                 }
                 e.addIntervalTime()
@@ -391,11 +394,17 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     }
 
     fun getRunningEvents(callback: (events: ArrayList<Event>) -> Unit) {
+        val events = ArrayList<Event>()
+        val ts = (System.currentTimeMillis() / 1000).toInt()
+
         val selection = "$COL_START_TS <= ? AND $COL_END_TS >= ?"
-        val ts = (System.currentTimeMillis() / 1000).toString()
-        val selectionArgs = arrayOf(ts, ts)
+        val selectionArgs = arrayOf(ts.toString(), ts.toString())
         val cursor = getEventsCursor(selection, selectionArgs)
-        callback(fillEvents(cursor) as ArrayList)
+        events.addAll(fillEvents(cursor))
+
+        events.addAll(getRepeatableEventsFor(ts, ts, true))
+
+        callback(events)
     }
 
     private fun getEvents(selection: String): List<Event> {
