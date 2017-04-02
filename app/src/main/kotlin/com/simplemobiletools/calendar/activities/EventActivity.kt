@@ -9,7 +9,6 @@ import android.view.MenuItem
 import android.view.WindowManager
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.dialogs.DeleteEventDialog
-import com.simplemobiletools.calendar.dialogs.EventRepeatIntervalDialog
 import com.simplemobiletools.calendar.dialogs.SelectEventTypeDialog
 import com.simplemobiletools.calendar.extensions.*
 import com.simplemobiletools.calendar.helpers.*
@@ -139,7 +138,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     }
 
     private fun showRepeatIntervalDialog() {
-        EventRepeatIntervalDialog(this, mRepeatInterval) {
+        showEventRepeatIntervalDialog(mRepeatInterval) {
             mRepeatInterval = it
             updateRepetitionText()
             checkRepeatLimit(it)
