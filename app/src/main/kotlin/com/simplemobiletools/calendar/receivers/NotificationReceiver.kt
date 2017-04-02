@@ -10,9 +10,9 @@ import android.net.Uri
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.extensions.config
+import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.scheduleNextEventReminder
 import com.simplemobiletools.calendar.extensions.updateListWidget
-import com.simplemobiletools.calendar.helpers.DBHelper
 import com.simplemobiletools.calendar.helpers.EVENT_ID
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.models.Event
@@ -25,7 +25,7 @@ class NotificationReceiver : BroadcastReceiver() {
         if (id == -1)
             return
 
-        val event = DBHelper.newInstance(context).getEvent(id)
+        val event = context.dbHelper.getEvent(id)
         if (event == null || event.getReminders().isEmpty())
             return
 

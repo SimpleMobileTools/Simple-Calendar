@@ -11,6 +11,7 @@ import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.adapters.EventListAdapter
 import com.simplemobiletools.calendar.extensions.config
+import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.getFilteredEvents
 import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.helpers.DBHelper
@@ -27,7 +28,6 @@ import com.simplemobiletools.commons.extensions.beVisibleIf
 import kotlinx.android.synthetic.main.fragment_event_list.view.*
 import org.joda.time.DateTime
 import java.util.*
-import kotlin.comparisons.compareBy
 
 class EventListFragment : Fragment(), DBHelper.GetEventsListener, DBHelper.EventUpdateListener, DeleteEventsListener {
     private var mEvents: List<Event> = ArrayList()
@@ -49,7 +49,7 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, DBHelper.Event
     private fun checkEvents() {
         val fromTS = DateTime().seconds()
         val toTS = DateTime().plusYears(1).seconds()
-        DBHelper.newInstance(context).getEvents(fromTS, toTS, this)
+        context.dbHelper.getEvents(fromTS, toTS, this)
     }
 
     override fun gotEvents(events: MutableList<Event>) {
@@ -109,9 +109,8 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, DBHelper.Event
     }
 
     override fun deleteEventOccurrences(parentIds: ArrayList<Int>, timestamps: ArrayList<Int>) {
-        val db = DBHelper.newInstance(context)
         parentIds.forEachIndexed { index, value ->
-            db.deleteEventOccurrence(parentIds[index], timestamps[index])
+            context.dbHelper.deleteEventOccurrence(parentIds[index], timestamps[index])
         }
         checkEvents()
     }

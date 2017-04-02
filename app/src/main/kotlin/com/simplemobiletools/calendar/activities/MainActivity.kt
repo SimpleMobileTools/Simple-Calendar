@@ -19,10 +19,7 @@ import com.simplemobiletools.calendar.adapters.MyYearPagerAdapter
 import com.simplemobiletools.calendar.dialogs.ChangeViewDialog
 import com.simplemobiletools.calendar.dialogs.FilterEventTypesDialog
 import com.simplemobiletools.calendar.dialogs.ImportEventsDialog
-import com.simplemobiletools.calendar.extensions.config
-import com.simplemobiletools.calendar.extensions.launchNewEventIntent
-import com.simplemobiletools.calendar.extensions.seconds
-import com.simplemobiletools.calendar.extensions.updateWidgets
+import com.simplemobiletools.calendar.extensions.*
 import com.simplemobiletools.calendar.fragments.EventListFragment
 import com.simplemobiletools.calendar.fragments.WeekFragment
 import com.simplemobiletools.calendar.helpers.*
@@ -79,7 +76,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
         if (mStoredTextColor != config.textColor || mStoredBackgroundColor != config.backgroundColor || mStoredPrimaryColor != config.primaryColor)
             updateViewPager()
 
-        DBHelper.newInstance(applicationContext).getEventTypes {
+        dbHelper.getEventTypes {
             eventTypeColors.clear()
             it.map { eventTypeColors.put(it.id, it.color) }
             mShouldFilterBeVisible = eventTypeColors.size() > 1 || config.displayEventTypes.isEmpty()

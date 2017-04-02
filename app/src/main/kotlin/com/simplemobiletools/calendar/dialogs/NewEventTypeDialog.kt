@@ -7,7 +7,7 @@ import android.view.WindowManager
 import android.widget.ImageView
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.config
-import com.simplemobiletools.calendar.helpers.DBHelper
+import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.models.EventType
 import com.simplemobiletools.commons.dialogs.ColorPickerDialog
 import com.simplemobiletools.commons.extensions.setBackgroundWithStroke
@@ -34,7 +34,6 @@ class NewEventTypeDialog(val activity: Activity, var eventType: EventType? = nul
             }
         }
 
-        val db = DBHelper.newInstance(activity)
         AlertDialog.Builder(activity)
                 .setPositiveButton(R.string.ok, null)
                 .setNegativeButton(R.string.cancel, null)
@@ -43,7 +42,7 @@ class NewEventTypeDialog(val activity: Activity, var eventType: EventType? = nul
             activity.setupDialogStuff(view, this, if (isNewEvent) R.string.add_new_type else R.string.edit_type)
             getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener({
                 val title = view.type_title.value
-                val eventIdWithTitle = db.getEventTypeIdWithTitle(title)
+                val eventIdWithTitle = activity.dbHelper.getEventTypeIdWithTitle(title)
                 var isEventTypeTitleTaken = isNewEvent && eventIdWithTitle != -1
                 if (!isEventTypeTitleTaken)
                     isEventTypeTitleTaken = !isNewEvent && eventType!!.id != eventIdWithTitle && eventIdWithTitle != -1
@@ -60,9 +59,9 @@ class NewEventTypeDialog(val activity: Activity, var eventType: EventType? = nul
 
                 val eventTypeId: Int
                 if (isNewEvent) {
-                    eventTypeId = db.insertEventType(eventType!!)
+                    eventTypeId = activity.dbHelper.insertEventType(eventType!!)
                 } else {
-                    eventTypeId = db.updateEventType(eventType!!)
+                    eventTypeId = activity.dbHelper.updateEventType(eventType!!)
                 }
 
                 if (eventTypeId != -1) {

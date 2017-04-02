@@ -2,6 +2,7 @@ package com.simplemobiletools.calendar.helpers
 
 import android.content.Context
 import com.simplemobiletools.calendar.extensions.config
+import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.getFilteredEvents
 import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
@@ -29,7 +30,7 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
         mTargetDate = targetDate
         val startTS = mTargetDate.minusMonths(1).seconds()
         val endTS = mTargetDate.plusMonths(1).seconds()
-        DBHelper.newInstance(mContext).getEvents(startTS, endTS, this)
+        mContext.dbHelper.getEvents(startTS, endTS, this)
     }
 
     fun getPrevMonth() {

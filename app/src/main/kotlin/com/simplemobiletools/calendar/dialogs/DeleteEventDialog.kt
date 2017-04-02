@@ -5,7 +5,7 @@ import android.support.v7.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.helpers.DBHelper
+import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.commons.extensions.beVisibleIf
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import kotlinx.android.synthetic.main.dialog_delete_event.view.*
@@ -14,7 +14,7 @@ class DeleteEventDialog(val activity: Activity, eventIds: List<Int>, val callbac
     val dialog: AlertDialog?
 
     init {
-        val events = DBHelper.newInstance(activity).getEventsWithIds(eventIds)
+        val events = activity.dbHelper.getEventsWithIds(eventIds)
         val hasRepeatableEvent = events.any { it.repeatInterval > 0 }
 
         val view = LayoutInflater.from(activity).inflate(R.layout.dialog_delete_event, null).apply {

@@ -43,7 +43,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         mDialogTheme = getAppropriateTheme()
 
         val eventId = intent.getIntExtra(EVENT_ID, 0)
-        val event = DBHelper.newInstance(applicationContext).getEvent(eventId)
+        val event = dbHelper.getEvent(eventId)
         if (event != null) {
             mEvent = event
             mEventOccurrenceTS = intent.getIntExtra(EVENT_OCCURRENCE_TS, 0)
@@ -231,7 +231,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     }
 
     private fun updateEventType() {
-        val eventType = DBHelper.newInstance(applicationContext).getEventType(mEventTypeId)
+        val eventType = dbHelper.getEventType(mEventTypeId)
         if (eventType != null) {
             event_type.text = eventType.title
             event_type_color.setBackgroundWithStroke(eventType.color, config.backgroundColor)
@@ -260,11 +260,10 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
     private fun deleteEvent() {
         DeleteEventDialog(this, arrayListOf(mEvent.id)) {
-            val db = DBHelper.newInstance(applicationContext, null)
             if (it) {
-                db.deleteEvents(arrayOf(mEvent.id.toString()))
+                dbHelper.deleteEvents(arrayOf(mEvent.id.toString()))
             } else {
-                db.deleteEventOccurrence(mEvent.id, mEventOccurrenceTS)
+                dbHelper.deleteEventOccurrence(mEvent.id, mEventOccurrenceTS)
             }
             finish()
         }

@@ -8,6 +8,7 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.config
+import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.helpers.DBHelper
 import com.simplemobiletools.calendar.models.EventType
 import com.simplemobiletools.commons.extensions.hideKeyboard
@@ -30,7 +31,7 @@ class SelectEventTypeDialog(val activity: Activity, val currEventType: Int, val 
         val view = activity.layoutInflater.inflate(R.layout.dialog_radio_group, null) as ViewGroup
         radioGroup = view.dialog_radio_group
 
-        DBHelper.newInstance(activity).getEventTypes {
+        activity.dbHelper.getEventTypes {
             eventTypes = it
             activity.runOnUiThread {
                 eventTypes.forEach {

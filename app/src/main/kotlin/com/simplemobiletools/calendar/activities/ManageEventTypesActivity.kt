@@ -4,6 +4,7 @@ import android.os.Bundle
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.adapters.EventTypeAdapter
 import com.simplemobiletools.calendar.dialogs.NewEventTypeDialog
+import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.helpers.DBHelper
 import com.simplemobiletools.calendar.interfaces.DeleteItemsListener
 import com.simplemobiletools.calendar.models.EventType
@@ -32,7 +33,7 @@ class ManageEventTypesActivity : SimpleActivity(), DeleteItemsListener {
     }
 
     private fun getEventTypes() {
-        DBHelper.newInstance(applicationContext).getEventTypes {
+        dbHelper.getEventTypes {
             runOnUiThread {
                 manage_event_types_list.adapter = EventTypeAdapter(this, it, this) {
                     showEventTypeDialog(it)
@@ -46,7 +47,7 @@ class ManageEventTypesActivity : SimpleActivity(), DeleteItemsListener {
             toast(R.string.cannot_delete_default_type)
         }
 
-        DBHelper.newInstance(applicationContext).deleteEventTypes(ids) {
+        dbHelper.deleteEventTypes(ids) {
             if (it > 0) {
                 getEventTypes()
             } else {

@@ -10,9 +10,9 @@ import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.adapters.MyDayPagerAdapter
 import com.simplemobiletools.calendar.dialogs.FilterEventTypesDialog
 import com.simplemobiletools.calendar.extensions.config
+import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.getNewEventTimestampFromCode
 import com.simplemobiletools.calendar.helpers.DAY_CODE
-import com.simplemobiletools.calendar.helpers.DBHelper
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.helpers.NEW_EVENT_START_TS
 import com.simplemobiletools.calendar.interfaces.NavigationListener
@@ -42,7 +42,7 @@ class DayActivity : SimpleActivity(), NavigationListener, ViewPager.OnPageChange
         day_fab.setOnClickListener { addNewEvent() }
         updateTextColors(day_coordinator)
 
-        DBHelper.newInstance(applicationContext).getEventTypes {
+        dbHelper.getEventTypes {
             eventTypeColors.clear()
             it.map { eventTypeColors.put(it.id, it.color) }
             invalidateOptionsMenu()

@@ -2,6 +2,7 @@ package com.simplemobiletools.calendar.helpers
 
 import android.content.Context
 import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.helpers.IcsParser.ImportResult.*
 import com.simplemobiletools.calendar.models.Event
@@ -57,8 +58,7 @@ class IcsParser {
 
     fun parseIcs(context: Context, path: String, defaultEventType: Int): ImportResult {
         try {
-            val dbHelper = DBHelper.newInstance(context)
-            val importIDs = dbHelper.getImportIds()
+            val importIDs = context.dbHelper.getImportIds()
             var prevLine = ""
 
             File(path).inputStream().bufferedReader().use {
@@ -109,7 +109,7 @@ class IcsParser {
                         importIDs.add(curImportId)
                         val event = Event(0, curStart, curEnd, curTitle, curDescription, curReminderMinutes, -1, -1, curRepeatInterval,
                                 curImportId, curFlags, curRepeatLimit, curEventType)
-                        dbHelper.insert(event) { }
+                        context.dbHelper.insert(event) { }
                         eventsImported++
                         resetValues()
                     }
@@ -161,11 +161,10 @@ class IcsParser {
             categories
         }
 
-        val dbHelper = DBHelper.newInstance(context)
-        val eventId = dbHelper.getEventTypeIdWithTitle(eventTypeTitle)
+        val eventId = context.dbHelper.getEventTypeIdWithTitle(eventTypeTitle)
         if (eventId == -1) {
             val eventType = EventType(0, eventTypeTitle, context.resources.getColor(R.color.color_primary))
-            curEventType = dbHelper.insertEventType(eventType)
+            curEventType = context.dbHelper.insertEventType(eventType)
         } else {
             curEventType = eventId
         }

@@ -17,6 +17,7 @@ import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.adapters.DayEventsAdapter
 import com.simplemobiletools.calendar.extensions.config
+import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.getAppropriateTheme
 import com.simplemobiletools.calendar.extensions.getFilteredEvents
 import com.simplemobiletools.calendar.helpers.*
@@ -30,7 +31,6 @@ import kotlinx.android.synthetic.main.fragment_day.view.*
 import kotlinx.android.synthetic.main.top_navigation.view.*
 import org.joda.time.DateTime
 import java.util.*
-import kotlin.comparisons.compareBy
 
 class DayFragment : Fragment(), DBHelper.EventUpdateListener, DBHelper.GetEventsListener, DeleteEventsListener {
     private var mTextColor = 0
@@ -142,9 +142,8 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DBHelper.GetEvents
     }
 
     override fun deleteEventOccurrences(parentIds: ArrayList<Int>, timestamps: ArrayList<Int>) {
-        val db = DBHelper.newInstance(context)
         parentIds.forEachIndexed { index, value ->
-            db.deleteEventOccurrence(parentIds[index], timestamps[index])
+            context.dbHelper.deleteEventOccurrence(parentIds[index], timestamps[index])
         }
         (activity as DayActivity).recheckEvents()
     }

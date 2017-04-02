@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.config
+import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.helpers.DBHelper
 import com.simplemobiletools.calendar.helpers.IcsParser
 import com.simplemobiletools.calendar.helpers.IcsParser.ImportResult.*
@@ -47,7 +48,7 @@ class ImportEventsDialog(val activity: Activity, val path: String, val callback:
     }
 
     private fun updateEventType(view: ViewGroup) {
-        val eventType = DBHelper.newInstance(context).getEventType(currEventTypeId)
+        val eventType = context.dbHelper.getEventType(currEventTypeId)
         view.import_event_type_title.text = eventType!!.title
         view.import_event_type_color.setBackgroundWithStroke(eventType.color, activity.config.backgroundColor)
     }

@@ -8,6 +8,7 @@ import android.widget.RemoteViewsService
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.R.id.event_item_holder
 import com.simplemobiletools.calendar.extensions.config
+import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.helpers.DBHelper
 import com.simplemobiletools.calendar.helpers.EVENT_ID
@@ -18,7 +19,6 @@ import com.simplemobiletools.calendar.models.ListItem
 import com.simplemobiletools.calendar.models.ListSection
 import org.joda.time.DateTime
 import java.util.*
-import kotlin.comparisons.compareBy
 
 class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteViewsService.RemoteViewsFactory {
     val ITEM_EVENT = 0
@@ -98,7 +98,7 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
     override fun onDataSetChanged() {
         val fromTS = DateTime().seconds()
         val toTS = DateTime().plusYears(1).seconds()
-        DBHelper.newInstance(context).getEventsInBackground(fromTS, toTS, object : DBHelper.GetEventsListener {
+        context.dbHelper.getEventsInBackground(fromTS, toTS, object : DBHelper.GetEventsListener {
             override fun gotEvents(events: MutableList<Event>) {
                 val listItems = ArrayList<ListItem>(events.size)
                 val sorted = events.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { it.description }))
