@@ -48,3 +48,28 @@ val letterIDs = intArrayOf(R.string.sunday_letter, R.string.monday_letter, R.str
 
 // special event flags
 val FLAG_ALL_DAY = 1
+
+// constants related to ICS file exporting / importing
+val BEGIN_EVENT = "BEGIN:VEVENT"
+val END = "END:VEVENT"
+val DTSTART = "DTSTART"
+val DTEND = "DTEND"
+val DURATION = "DURATION:"
+val SUMMARY = "SUMMARY:"
+val DESCRIPTION = "DESCRIPTION:"
+val UID = "UID:"
+val ACTION = "ACTION:"
+val TRIGGER = "TRIGGER:"
+val RRULE = "RRULE:"
+val CATEGORIES = "CATEGORIES:"
+
+val DISPLAY = "DISPLAY"
+val FREQ = "FREQ"
+val UNTIL = "UNTIL"
+val COUNT = "COUNT"
+val INTERVAL = "INTERVAL"
+
+val DAILY = "DAILY"
+val WEEKLY = "WEEKLY"
+val MONTHLY = "MONTHLY"
+val YEARLY = "YEARLY"

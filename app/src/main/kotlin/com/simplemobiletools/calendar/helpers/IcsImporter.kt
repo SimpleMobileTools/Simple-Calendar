@@ -16,30 +16,6 @@ class IcsImporter {
         IMPORT_FAIL, IMPORT_OK, IMPORT_PARTIAL
     }
 
-    private val BEGIN_EVENT = "BEGIN:VEVENT"
-    private val END = "END:VEVENT"
-    private val DTSTART = "DTSTART"
-    private val DTEND = "DTEND"
-    private val DURATION = "DURATION:"
-    private val SUMMARY = "SUMMARY:"
-    private val DESCRIPTION = "DESCRIPTION:"
-    private val UID = "UID:"
-    private val ACTION = "ACTION:"
-    private val TRIGGER = "TRIGGER:"
-    private val RRULE = "RRULE:"
-    private val CATEGORIES = "CATEGORIES:"
-
-    private val DISPLAY = "DISPLAY"
-    private val FREQ = "FREQ"
-    private val UNTIL = "UNTIL"
-    private val COUNT = "COUNT"
-    private val INTERVAL = "INTERVAL"
-
-    private val DAILY = "DAILY"
-    private val WEEKLY = "WEEKLY"
-    private val MONTHLY = "MONTHLY"
-    private val YEARLY = "YEARLY"
-
     var curStart = -1
     var curEnd = -1
     var curTitle = ""
