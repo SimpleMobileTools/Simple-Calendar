@@ -21,6 +21,10 @@
         android:title="@string/import_events_from_ics"
         app:showAsAction="never"/>
     <item
+        android:id="@+id/export_events"
+        android:title="@string/export_events_to_ics"
+        app:showAsAction="never"/>
+    <item
         android:id="@+id/export_raw"
         android:title="@string/export_raw_database"
         app:showAsAction="never"/>

@@ -44,6 +44,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
     private val PREFILLED_WEEKS = 41
     private val STORAGE_PERMISSION_IMPORT = 1
     private val STORAGE_PERMISSION_EXPORT = 2
+    private val STORAGE_PERMISSION_EXPORT_RAW = 3
 
     private var mIsMonthSelected = false
     private var mStoredTextColor = 0
@@ -124,7 +125,8 @@ class MainActivity : SimpleActivity(), NavigationListener {
             R.id.go_to_today -> goToToday()
             R.id.filter -> showFilterDialog()
             R.id.import_events -> tryImportEvents()
-            R.id.export_raw -> tryExportDatabase()
+            R.id.export_events -> tryExportEvents()
+            R.id.export_raw -> tryExportRaw()
             R.id.settings -> launchSettings()
             R.id.about -> launchAbout()
             else -> return super.onOptionsItemSelected(item)
@@ -247,15 +249,29 @@ class MainActivity : SimpleActivity(), NavigationListener {
         }
     }
 
-    private fun tryExportDatabase() {
-        if (hasWriteStoragePermission()) {
-            exportDatabase()
+    private fun tryExportEvents() {
+        if (hasReadStoragePermission()) {
+            exportEvents()
         } else {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), STORAGE_PERMISSION_EXPORT)
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), STORAGE_PERMISSION_EXPORT)
         }
     }
 
-    private fun exportDatabase() {
+    private fun exportEvents() {
+        FilePickerDialog(this, pickFile = false) {
+
+        }
+    }
+
+    private fun tryExportRaw() {
+        if (hasWriteStoragePermission()) {
+            exportRaw()
+        } else {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), STORAGE_PERMISSION_EXPORT_RAW)
+        }
+    }
+
+    private fun exportRaw() {
         FilePickerDialog(this, pickFile = false) {
             val source = getDatabasePath(DBHelper.DB_NAME)
             val destination = File(it, "calendar_${System.currentTimeMillis()}.db")
@@ -495,7 +511,9 @@ class MainActivity : SimpleActivity(), NavigationListener {
             if (requestCode == STORAGE_PERMISSION_IMPORT) {
                 importEvents()
             } else if (requestCode == STORAGE_PERMISSION_EXPORT) {
-                exportDatabase()
+                exportEvents()
+            } else if (requestCode == STORAGE_PERMISSION_EXPORT_RAW) {
+                exportRaw()
             }
         }
     }
