@@ -78,7 +78,7 @@ class IcsImporter {
                     } else if (line.startsWith(CATEGORIES)) {
                         val categories = line.substring(CATEGORIES.length)
                         tryAddCategories(categories, context)
-                    } else if (line == END) {
+                    } else if (line == END_EVENT) {
                         if (curTitle.isEmpty() || curStart == -1 || curEnd == -1 || importIDs.contains(curImportId))
                             continue
 

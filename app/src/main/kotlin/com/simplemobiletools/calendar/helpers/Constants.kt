@@ -50,8 +50,10 @@ val letterIDs = intArrayOf(R.string.sunday_letter, R.string.monday_letter, R.str
 val FLAG_ALL_DAY = 1
 
 // constants related to ICS file exporting / importing
+val BEGIN_CALENDAR = "BEGIN:VCALENDAR"
+val END_CALENDAR = "END:VCALENDAR"
 val BEGIN_EVENT = "BEGIN:VEVENT"
-val END = "END:VEVENT"
+val END_EVENT = "END:VEVENT"
 val DTSTART = "DTSTART"
 val DTEND = "DTEND"
 val DURATION = "DURATION:"
