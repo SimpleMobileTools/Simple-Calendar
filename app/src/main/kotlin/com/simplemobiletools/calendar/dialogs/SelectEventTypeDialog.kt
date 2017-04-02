@@ -9,7 +9,6 @@ import android.widget.RadioGroup
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
-import com.simplemobiletools.calendar.helpers.DBHelper
 import com.simplemobiletools.calendar.models.EventType
 import com.simplemobiletools.commons.extensions.hideKeyboard
 import com.simplemobiletools.commons.extensions.setBackgroundWithStroke
@@ -45,7 +44,7 @@ class SelectEventTypeDialog(val activity: Activity, val currEventType: Int, val 
 
         dialog = AlertDialog.Builder(activity)
                 .create().apply {
-            activity.setupDialogStuff(view, this, R.string.select_event_type)
+            activity.setupDialogStuff(view, this)
         }
     }
 
