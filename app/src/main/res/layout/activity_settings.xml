@@ -111,41 +111,6 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/settings_reminder_sound_holder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/medium_margin"
-            android:background="?attr/selectableItemBackground"
-            android:paddingBottom="@dimen/bigger_margin"
-            android:paddingLeft="@dimen/activity_margin"
-            android:paddingRight="@dimen/activity_margin"
-            android:paddingTop="@dimen/bigger_margin">
-
-            <com.simplemobiletools.commons.views.MyTextView
-                android:id="@+id/settings_reminder_sound_label"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toLeftOf="@+id/settings_reminder_sound"
-                android:layout_toStartOf="@+id/settings_reminder_sound"
-                android:paddingLeft="@dimen/medium_margin"
-                android:paddingRight="@dimen/medium_margin"
-                android:text="@string/reminder_sound"/>
-
-            <com.simplemobiletools.commons.views.MyTextView
-                android:id="@+id/settings_reminder_sound"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginEnd="@dimen/small_margin"
-                android:layout_marginRight="@dimen/small_margin"
-                android:background="@null"
-                android:clickable="false"/>
-
-        </RelativeLayout>
-
-        <RelativeLayout
             android:id="@+id/settings_sunday_first_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -162,6 +127,26 @@
                 android:paddingLeft="@dimen/medium_margin"
                 android:paddingStart="@dimen/medium_margin"
                 android:text="@string/sunday_first"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/settings_week_numbers_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:background="?attr/selectableItemBackground"
+            android:padding="@dimen/activity_margin">
+
+            <com.simplemobiletools.commons.views.MySwitchCompat
+                android:id="@+id/settings_week_numbers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:clickable="false"
+                android:paddingLeft="@dimen/medium_margin"
+                android:paddingStart="@dimen/medium_margin"
+                android:text="@string/week_numbers"/>
 
         </RelativeLayout>
 
@@ -226,22 +211,37 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/settings_week_numbers_holder"
+            android:id="@+id/settings_reminder_sound_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/medium_margin"
             android:background="?attr/selectableItemBackground"
-            android:padding="@dimen/activity_margin">
+            android:paddingBottom="@dimen/bigger_margin"
+            android:paddingLeft="@dimen/activity_margin"
+            android:paddingRight="@dimen/activity_margin"
+            android:paddingTop="@dimen/bigger_margin">
 
-            <com.simplemobiletools.commons.views.MySwitchCompat
-                android:id="@+id/settings_week_numbers"
+            <com.simplemobiletools.commons.views.MyTextView
+                android:id="@+id/settings_reminder_sound_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@null"
-                android:clickable="false"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/settings_reminder_sound"
+                android:layout_toStartOf="@+id/settings_reminder_sound"
                 android:paddingLeft="@dimen/medium_margin"
-                android:paddingStart="@dimen/medium_margin"
-                android:text="@string/week_numbers"/>
+                android:paddingRight="@dimen/medium_margin"
+                android:text="@string/reminder_sound"/>
+
+            <com.simplemobiletools.commons.views.MyTextView
+                android:id="@+id/settings_reminder_sound"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="@dimen/small_margin"
+                android:layout_marginRight="@dimen/small_margin"
+                android:background="@null"
+                android:clickable="false"/>
 
         </RelativeLayout>
 
