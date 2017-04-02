@@ -105,7 +105,7 @@
     <string name="export_raw_database">Exportar base de dados raw</string>
     <string name="default_event_type">Tipo de evento padrão</string>
     <string name="events_exported">Events have been exported successfully</string>
-    <string name="export_events_to_ics">Export events to .ics file</string>
+    <string name="export_events_to_ics">Export events to an .ics file</string>
     <string name="no_events_for_exporting">No events for exporting have been found</string>
     <string name="export_past_events_too">Export past events too</string>
 

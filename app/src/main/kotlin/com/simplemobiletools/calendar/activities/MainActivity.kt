@@ -260,7 +260,8 @@ class MainActivity : SimpleActivity(), NavigationListener {
 
     private fun exportEvents() {
         FilePickerDialog(this, pickFile = false) {
-            ExportEventsDialog(this, it) {
+            val path = it
+            ExportEventsDialog(this, path) {
 
             }
         }

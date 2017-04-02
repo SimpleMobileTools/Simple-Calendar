@@ -21,7 +21,7 @@ class YearlyCalendarImpl(val callback: YearlyCalendar, val context: Context, val
         }
     }
 
-    fun gotEvents(events: MutableList<Event>) {
+    private fun gotEvents(events: MutableList<Event>) {
         val filtered = context.getFilteredEvents(events)
         val arr = SparseArray<ArrayList<Int>>(12)
 
