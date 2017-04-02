@@ -10,10 +10,8 @@ import com.simplemobiletools.calendar.R.id.event_item_holder
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.seconds
-import com.simplemobiletools.calendar.helpers.DBHelper
 import com.simplemobiletools.calendar.helpers.EVENT_ID
 import com.simplemobiletools.calendar.helpers.Formatter
-import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.models.ListEvent
 import com.simplemobiletools.calendar.models.ListItem
 import com.simplemobiletools.calendar.models.ListSection
@@ -98,26 +96,24 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
     override fun onDataSetChanged() {
         val fromTS = DateTime().seconds()
         val toTS = DateTime().plusYears(1).seconds()
-        context.dbHelper.getEventsInBackground(fromTS, toTS, object : DBHelper.GetEventsListener {
-            override fun gotEvents(events: MutableList<Event>) {
-                val listItems = ArrayList<ListItem>(events.size)
-                val sorted = events.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { it.description }))
-                val sublist = sorted.subList(0, Math.min(sorted.size, 100))
-                var prevCode = ""
-                sublist.forEach {
-                    val code = Formatter.getDayCodeFromTS(it.startTS)
-                    if (code != prevCode) {
-                        val day = Formatter.getDayTitle(context, code)
-                        if (day != todayDate)
-                            listItems.add(ListSection(day))
-                        prevCode = code
-                    }
-                    listItems.add(ListEvent(it.id, it.startTS, it.endTS, it.title, it.description, it.isAllDay))
+        context.dbHelper.getEventsInBackground(fromTS, toTS) {
+            val listItems = ArrayList<ListItem>(it.size)
+            val sorted = it.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { it.description }))
+            val sublist = sorted.subList(0, Math.min(sorted.size, 100))
+            var prevCode = ""
+            sublist.forEach {
+                val code = Formatter.getDayCodeFromTS(it.startTS)
+                if (code != prevCode) {
+                    val day = Formatter.getDayTitle(context, code)
+                    if (day != todayDate)
+                        listItems.add(ListSection(day))
+                    prevCode = code
                 }
-
-                this@EventListWidgetAdapter.events = listItems
+                listItems.add(ListEvent(it.id, it.startTS, it.endTS, it.title, it.description, it.isAllDay))
             }
-        })
+
+            this@EventListWidgetAdapter.events = listItems
+        }
     }
 
     override fun hasStableIds() = true

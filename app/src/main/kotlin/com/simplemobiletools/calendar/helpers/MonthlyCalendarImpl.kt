@@ -11,7 +11,7 @@ import com.simplemobiletools.calendar.models.Event
 import org.joda.time.DateTime
 import java.util.*
 
-class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context) : DBHelper.GetEventsListener {
+class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context) {
     private val DAYS_CNT = 42
     private val YEAR_PATTERN = "YYYY"
 
@@ -30,7 +30,9 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
         mTargetDate = targetDate
         val startTS = mTargetDate.minusMonths(1).seconds()
         val endTS = mTargetDate.plusMonths(1).seconds()
-        mContext.dbHelper.getEvents(startTS, endTS, this)
+        mContext.dbHelper.getEvents(startTS, endTS) {
+            gotEvents(it)
+        }
     }
 
     fun getPrevMonth() {
@@ -116,7 +118,7 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
             return month
         }
 
-    override fun gotEvents(events: MutableList<Event>) {
+    fun gotEvents(events: MutableList<Event>) {
         if (mFilterEventTypes)
             mEvents = mContext.getFilteredEvents(events)
         else

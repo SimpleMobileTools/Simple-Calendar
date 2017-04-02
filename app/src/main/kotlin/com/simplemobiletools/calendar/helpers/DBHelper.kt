@@ -353,13 +353,13 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             null
     }
 
-    fun getEvents(fromTS: Int, toTS: Int, callback: GetEventsListener?) {
+    fun getEvents(fromTS: Int, toTS: Int, callback: (events: MutableList<Event>) -> Unit) {
         Thread({
             getEventsInBackground(fromTS, toTS, callback)
         }).start()
     }
 
-    fun getEventsInBackground(fromTS: Int, toTS: Int, callback: GetEventsListener?) {
+    fun getEventsInBackground(fromTS: Int, toTS: Int, callback: (events: MutableList<Event>) -> Unit) {
         val events = ArrayList<Event>()
 
         val selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_REPEAT_INTERVAL IS NULL"
@@ -370,7 +370,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         events.addAll(getRepeatableEventsFor(fromTS, toTS))
 
         val filtered = events.filterNot { it.ignoreEventOccurrences.contains(it.startTS) } as MutableList<Event>
-        callback?.gotEvents(filtered)
+        callback(filtered)
     }
 
     private fun getRepeatableEventsFor(fromTS: Int, toTS: Int, getRunningEvents: Boolean = false): List<Event> {
@@ -539,10 +539,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
         fun eventsDeleted(cnt: Int)
 
-        fun gotEvents(events: MutableList<Event>)
-    }
-
-    interface GetEventsListener {
         fun gotEvents(events: MutableList<Event>)
     }
 }

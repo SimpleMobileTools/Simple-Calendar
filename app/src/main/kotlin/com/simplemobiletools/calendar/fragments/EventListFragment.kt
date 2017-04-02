@@ -29,7 +29,7 @@ import kotlinx.android.synthetic.main.fragment_event_list.view.*
 import org.joda.time.DateTime
 import java.util.*
 
-class EventListFragment : Fragment(), DBHelper.GetEventsListener, DBHelper.EventUpdateListener, DeleteEventsListener {
+class EventListFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEventsListener {
     private var mEvents: List<Event> = ArrayList()
     private var prevEventsHash = 0
     lateinit var mView: View
@@ -49,10 +49,16 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, DBHelper.Event
     private fun checkEvents() {
         val fromTS = DateTime().seconds()
         val toTS = DateTime().plusYears(1).seconds()
-        context.dbHelper.getEvents(fromTS, toTS, this)
+        context.dbHelper.getEvents(fromTS, toTS) {
+            receivedEvents(it)
+        }
     }
 
     override fun gotEvents(events: MutableList<Event>) {
+        receivedEvents(events)
+    }
+
+    private fun receivedEvents(events: MutableList<Event>) {
         if (context == null || activity == null)
             return
 
@@ -110,7 +116,7 @@ class EventListFragment : Fragment(), DBHelper.GetEventsListener, DBHelper.Event
 
     override fun deleteEventOccurrences(parentIds: ArrayList<Int>, timestamps: ArrayList<Int>) {
         parentIds.forEachIndexed { index, value ->
-            context.dbHelper.deleteEventOccurrence(parentIds[index], timestamps[index])
+            context.dbHelper.deleteEventOccurrence(value, timestamps[index])
         }
         checkEvents()
     }

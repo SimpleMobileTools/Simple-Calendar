@@ -32,7 +32,7 @@ import kotlinx.android.synthetic.main.top_navigation.view.*
 import org.joda.time.DateTime
 import java.util.*
 
-class DayFragment : Fragment(), DBHelper.EventUpdateListener, DBHelper.GetEventsListener, DeleteEventsListener {
+class DayFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEventsListener {
     private var mTextColor = 0
     private var mDayCode = ""
     private var mListener: NavigationListener? = null
@@ -112,7 +112,18 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DBHelper.GetEvents
     fun checkEvents() {
         val startTS = Formatter.getDayStartTS(mDayCode)
         val endTS = Formatter.getDayEndTS(mDayCode)
-        DBHelper.newInstance(context, this).getEvents(startTS, endTS, this)
+        DBHelper.newInstance(context, this).getEvents(startTS, endTS) {
+            receivedEvents(it)
+        }
+    }
+
+    private fun receivedEvents(events: List<Event>) {
+        val sorted = ArrayList<Event>(events.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { it.description })))
+        val filtered = context.getFilteredEvents(sorted)
+
+        activity?.runOnUiThread {
+            updateEvents(filtered)
+        }
     }
 
     private fun updateEvents(events: List<Event>) {
@@ -159,11 +170,6 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DBHelper.GetEvents
     }
 
     override fun gotEvents(events: MutableList<Event>) {
-        val sorted = ArrayList<Event>(events.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { it.description })))
-        val filtered = context.getFilteredEvents(sorted)
-
-        activity?.runOnUiThread {
-            updateEvents(filtered)
-        }
+        receivedEvents(events)
     }
 }
