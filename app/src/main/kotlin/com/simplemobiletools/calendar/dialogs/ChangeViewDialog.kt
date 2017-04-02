@@ -2,7 +2,6 @@ package com.simplemobiletools.calendar.dialogs
 
 import android.app.Activity
 import android.support.v7.app.AlertDialog
-import android.view.LayoutInflater
 import android.widget.RadioGroup
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.config
@@ -17,7 +16,7 @@ class ChangeViewDialog(val activity: Activity, val callback: (newView: Int) -> U
     val dialog: AlertDialog?
 
     init {
-        val view = LayoutInflater.from(activity).inflate(R.layout.dialog_change_views, null).dialog_radio_view.apply {
+        val view = activity.layoutInflater.inflate(R.layout.dialog_change_views, null).dialog_radio_view.apply {
             check(getSavedItem())
             setOnCheckedChangeListener(this@ChangeViewDialog)
         }

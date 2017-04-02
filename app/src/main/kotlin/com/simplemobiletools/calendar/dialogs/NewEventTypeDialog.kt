@@ -2,7 +2,6 @@ package com.simplemobiletools.calendar.dialogs
 
 import android.app.Activity
 import android.support.v7.app.AlertDialog
-import android.view.LayoutInflater
 import android.view.WindowManager
 import android.widget.ImageView
 import com.simplemobiletools.calendar.R
@@ -23,7 +22,7 @@ class NewEventTypeDialog(val activity: Activity, var eventType: EventType? = nul
         if (eventType == null)
             eventType = EventType(0, "", activity.config.primaryColor)
 
-        val view = LayoutInflater.from(activity).inflate(R.layout.dialog_event_type, null).apply {
+        val view = activity.layoutInflater.inflate(R.layout.dialog_event_type, null).apply {
             setupColor(type_color)
             type_title.setText(eventType!!.title)
             type_color.setOnClickListener {

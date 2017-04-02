@@ -2,7 +2,6 @@ package com.simplemobiletools.calendar.dialogs
 
 import android.app.Activity
 import android.support.v7.app.AlertDialog
-import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.config
@@ -20,7 +19,7 @@ class ImportEventsDialog(val activity: Activity, val path: String, val callback:
     var currEventTypeId = DBHelper.REGULAR_EVENT_TYPE_ID
 
     init {
-        val view = (LayoutInflater.from(activity).inflate(R.layout.dialog_import_events, null) as ViewGroup).apply {
+        val view = (activity.layoutInflater.inflate(R.layout.dialog_import_events, null) as ViewGroup).apply {
             import_events_filename.text = activity.humanizePath(path)
 
             updateEventType(this)

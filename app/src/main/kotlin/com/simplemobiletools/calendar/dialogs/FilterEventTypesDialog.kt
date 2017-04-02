@@ -1,7 +1,6 @@
 package com.simplemobiletools.calendar.dialogs
 
 import android.support.v7.app.AlertDialog
-import android.view.LayoutInflater
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.adapters.FilterEventTypeAdapter
@@ -15,7 +14,7 @@ import java.util.*
 class FilterEventTypesDialog(val activity: SimpleActivity, val callback: () -> Unit) : AlertDialog.Builder(activity) {
     var dialog: AlertDialog
     var eventTypes = ArrayList<EventType>()
-    val view = LayoutInflater.from(activity).inflate(R.layout.dialog_filter_event_types, null)
+    val view = activity.layoutInflater.inflate(R.layout.dialog_filter_event_types, null)
 
     init {
         activity.dbHelper.getEventTypes {
