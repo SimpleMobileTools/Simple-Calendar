@@ -1,12 +1,15 @@
 package com.simplemobiletools.calendar.extensions
 
 import android.app.AlarmManager
+import android.app.Notification
+import android.app.NotificationManager
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import android.os.Build
 import android.os.SystemClock
 import com.simplemobiletools.calendar.R
@@ -147,6 +150,40 @@ fun Context.getRepetitionText(seconds: Int): String {
 fun Context.getFilteredEvents(events: List<Event>): List<Event> {
     val displayEventTypes = config.displayEventTypes
     return events.filter { displayEventTypes.contains(it.eventType.toString()) }
+}
+
+fun Context.notifyEvent(event: Event) {
+    val pendingIntent = getPendingIntent(this, event)
+    val startTime = Formatter.getTimeFromTS(this, event.startTS)
+    val endTime = Formatter.getTimeFromTS(this, event.endTS)
+    val notification = getNotification(this, pendingIntent, event.title, "${getFormattedEventTime(startTime, endTime)} ${event.description}")
+    val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+    notificationManager.notify(event.id, notification)
+}
+
+private fun getNotification(context: Context, pendingIntent: PendingIntent, title: String, content: String): Notification {
+    val soundUri = Uri.parse(context.config.reminderSound)
+    val builder = Notification.Builder(context)
+            .setContentTitle(title)
+            .setContentText(content)
+            .setSmallIcon(R.drawable.ic_calendar)
+            .setContentIntent(pendingIntent)
+            .setDefaults(Notification.DEFAULT_LIGHTS)
+            .setAutoCancel(true)
+            .setSound(soundUri)
+
+    if (context.config.vibrateOnReminder)
+        builder.setVibrate(longArrayOf(0, 300, 300, 300))
+
+    return builder.build()
+}
+
+private fun getFormattedEventTime(startTime: String, endTime: String) = if (startTime == endTime) startTime else "$startTime - $endTime"
+
+private fun getPendingIntent(context: Context, event: Event): PendingIntent {
+    val intent = Intent(context, EventActivity::class.java)
+    intent.putExtra(EVENT_ID, event.id)
+    return PendingIntent.getActivity(context, event.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 }
 
 fun Context.launchNewEventIntent(startNewTask: Boolean = false, today: Boolean = false) {
