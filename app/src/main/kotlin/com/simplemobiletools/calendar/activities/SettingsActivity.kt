@@ -6,15 +6,14 @@ import android.media.RingtoneManager
 import android.net.Uri
 import android.os.Bundle
 import android.os.Parcelable
-import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.getReminderText
+import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.toast
 import com.simplemobiletools.commons.extensions.updateTextColors
+import com.simplemobiletools.commons.models.RadioItem
 import kotlinx.android.synthetic.main.activity_settings.*
 
 class SettingsActivity : SimpleActivity() {
@@ -114,40 +113,34 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun setupWeeklyStart() {
-        settings_start_weekly_at.apply {
-            adapter = getWeeklyAdapter()
-            setSelection(config.startWeeklyAt)
-            onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                    if (selectedItemPosition >= config.endWeeklyAt) {
-                        toast(R.string.day_end_before_start)
-                        setSelection(config.startWeeklyAt)
-                    } else {
-                        config.startWeeklyAt = selectedItemPosition
-                    }
-                }
+        settings_start_weekly_at.text = getHoursString(config.startWeeklyAt)
+        settings_start_weekly_at_holder.setOnClickListener {
+            val items = ArrayList<RadioItem>()
+            (0..24).mapTo(items) { RadioItem(it, getHoursString(it)) }
 
-                override fun onNothingSelected(parent: AdapterView<*>?) {
+            RadioGroupDialog(this@SettingsActivity, items, config.startWeeklyAt) {
+                if (it as Int >= config.endWeeklyAt) {
+                    toast(R.string.day_end_before_start)
+                } else {
+                    config.startWeeklyAt = it
+                    settings_start_weekly_at.text = getHoursString(it)
                 }
             }
         }
     }
 
     private fun setupWeeklyEnd() {
-        settings_end_weekly_at.apply {
-            adapter = getWeeklyAdapter()
-            setSelection(config.endWeeklyAt)
-            onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                    if (selectedItemPosition <= config.startWeeklyAt) {
-                        toast(R.string.day_end_before_start)
-                        setSelection(config.endWeeklyAt)
-                    } else {
-                        config.endWeeklyAt = selectedItemPosition
-                    }
-                }
+        settings_end_weekly_at.text = getHoursString(config.endWeeklyAt)
+        settings_end_weekly_at_holder.setOnClickListener {
+            val items = ArrayList<RadioItem>()
+            (0..24).mapTo(items) { RadioItem(it, getHoursString(it)) }
 
-                override fun onNothingSelected(parent: AdapterView<*>?) {
+            RadioGroupDialog(this@SettingsActivity, items, config.endWeeklyAt) {
+                if (it as Int <= config.startWeeklyAt) {
+                    toast(R.string.day_end_before_start)
+                } else {
+                    config.endWeeklyAt = it
+                    settings_end_weekly_at.text = getHoursString(it)
                 }
             }
         }
@@ -203,13 +196,12 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
-    private fun getWeeklyAdapter(): ArrayAdapter<String> {
-        val adapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item)
-        for (i in 0..24) {
-            adapter.add("$i:00")
+    private fun getHoursString(hours: Int): String {
+        return if (hours < 10) {
+            "0$hours:00"
+        } else {
+            "$hours:00"
         }
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        return adapter
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
@@ -223,7 +215,7 @@ class SettingsActivity : SimpleActivity() {
                     config.reminderSound = uri.toString()
                 }
             } else if (requestCode == REQUEST_ACCOUNT_NAME && resultData?.extras != null) {
-                val accountName = resultData!!.getStringExtra(AccountManager.KEY_ACCOUNT_NAME)
+                val accountName = resultData.getStringExtra(AccountManager.KEY_ACCOUNT_NAME)
                 config.syncAccountName = accountName
                 //tryEnablingSync()
             } else if (requestCode == REQUEST_AUTHORIZATION) {
