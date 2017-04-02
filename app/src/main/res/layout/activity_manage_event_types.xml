@@ -1,26 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
+<android.support.v7.widget.RecyclerView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/manage_event_types_coordinator"
+    android:id="@+id/manage_event_types_list"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/manage_event_types_list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipToPadding="false"
-        app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
-
-    <com.simplemobiletools.commons.views.MyFloatingActionButton
-        android:id="@+id/manage_event_types_fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/activity_margin"
-        android:src="@drawable/ic_plus"
-        app:backgroundTint="@color/color_primary"
-        app:rippleColor="@color/pressed_item_foreground"/>
-
-</android.support.design.widget.CoordinatorLayout>
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>

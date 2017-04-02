@@ -1,6 +1,8 @@
 package com.simplemobiletools.calendar.activities
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.adapters.EventTypeAdapter
 import com.simplemobiletools.calendar.dialogs.NewEventTypeDialog
@@ -19,11 +21,7 @@ class ManageEventTypesActivity : SimpleActivity(), DeleteItemsListener {
         setContentView(R.layout.activity_manage_event_types)
 
         getEventTypes()
-        manage_event_types_fab.setOnClickListener {
-            showEventTypeDialog()
-        }
-
-        updateTextColors(manage_event_types_coordinator)
+        updateTextColors(manage_event_types_list)
     }
 
     private fun showEventTypeDialog(eventType: EventType? = null) {
@@ -40,6 +38,19 @@ class ManageEventTypesActivity : SimpleActivity(), DeleteItemsListener {
                 }
             }
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_event_types, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.add_event_type -> showEventTypeDialog()
+            else -> return super.onOptionsItemSelected(item)
+        }
+        return true
     }
 
     override fun deleteItems(ids: ArrayList<Int>) {
