@@ -126,7 +126,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
             R.id.go_to_today -> goToToday()
             R.id.filter -> showFilterDialog()
             R.id.import_events -> tryImportEvents()
-            R.id.export_events -> tryExportEvents()
+//            R.id.export_events -> tryExportEvents()
             R.id.export_raw -> tryExportRaw()
             R.id.settings -> launchSettings()
             R.id.about -> launchAbout()
