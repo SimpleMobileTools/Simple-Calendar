@@ -16,7 +16,6 @@ import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.adapters.MyMonthPagerAdapter
 import com.simplemobiletools.calendar.adapters.MyWeekPagerAdapter
 import com.simplemobiletools.calendar.adapters.MyYearPagerAdapter
-import com.simplemobiletools.calendar.dialogs.ChangeViewDialog
 import com.simplemobiletools.calendar.dialogs.FilterEventTypesDialog
 import com.simplemobiletools.calendar.dialogs.ImportEventsDialog
 import com.simplemobiletools.calendar.extensions.*
@@ -27,10 +26,12 @@ import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.views.MyScrollView
 import com.simplemobiletools.commons.dialogs.FilePickerDialog
+import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.LICENSE_JODA
 import com.simplemobiletools.commons.helpers.LICENSE_KOTLIN
 import com.simplemobiletools.commons.helpers.LICENSE_STETHO
+import com.simplemobiletools.commons.models.RadioItem
 import com.simplemobiletools.commons.models.Release
 import kotlinx.android.synthetic.main.activity_main.*
 import org.joda.time.DateTime
@@ -140,8 +141,15 @@ class MainActivity : SimpleActivity(), NavigationListener {
     }
 
     private fun showViewDialog() {
-        ChangeViewDialog(this) {
-            updateView(it)
+        val res = resources
+        val items = arrayListOf(
+                RadioItem(WEEKLY_VIEW, res.getString(R.string.weekly_view)),
+                RadioItem(MONTHLY_VIEW, res.getString(R.string.monthly_view)),
+                RadioItem(YEARLY_VIEW, res.getString(R.string.yearly_view)),
+                RadioItem(EVENTS_LIST_VIEW, res.getString(R.string.simple_event_list)))
+
+        RadioGroupDialog(this, items, config.storedView) {
+            updateView(it as Int)
             invalidateOptionsMenu()
         }
     }
