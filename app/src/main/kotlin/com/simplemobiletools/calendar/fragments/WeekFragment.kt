@@ -29,7 +29,6 @@ import kotlinx.android.synthetic.main.fragment_week.view.*
 import org.joda.time.DateTime
 import org.joda.time.Days
 import java.util.*
-import kotlin.comparisons.compareBy
 
 class WeekFragment : Fragment(), WeeklyCalendar {
     val CLICK_DURATION_THRESHOLD = 150
@@ -249,7 +248,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                     text = event.title
                     activity.runOnUiThread {
                         layout.addView(this)
-                        y = Math.max(startMinutes * minuteHeight, minScrollY.toFloat())
+                        y = startMinutes * minuteHeight
                         (layoutParams as RelativeLayout.LayoutParams).apply {
                             width = layout.width - 1
                             minHeight = if (event.startTS == event.endTS) minimalHeight else (duration * minuteHeight).toInt() - 1
