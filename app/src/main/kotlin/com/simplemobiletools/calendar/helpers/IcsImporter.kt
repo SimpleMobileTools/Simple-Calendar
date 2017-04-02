@@ -4,14 +4,14 @@ import android.content.Context
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.seconds
-import com.simplemobiletools.calendar.helpers.IcsParser.ImportResult.*
+import com.simplemobiletools.calendar.helpers.IcsImporter.ImportResult.*
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.models.EventType
 import org.joda.time.DateTimeZone
 import org.joda.time.format.DateTimeFormat
 import java.io.File
 
-class IcsParser {
+class IcsImporter {
     enum class ImportResult {
         IMPORT_FAIL, IMPORT_OK, IMPORT_PARTIAL
     }

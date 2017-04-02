@@ -7,8 +7,8 @@ import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.helpers.DBHelper
-import com.simplemobiletools.calendar.helpers.IcsParser
-import com.simplemobiletools.calendar.helpers.IcsParser.ImportResult.*
+import com.simplemobiletools.calendar.helpers.IcsImporter
+import com.simplemobiletools.calendar.helpers.IcsImporter.ImportResult.*
 import com.simplemobiletools.commons.extensions.humanizePath
 import com.simplemobiletools.commons.extensions.setBackgroundWithStroke
 import com.simplemobiletools.commons.extensions.setupDialogStuff
@@ -38,7 +38,7 @@ class ImportEventsDialog(val activity: Activity, val path: String, val callback:
             activity.setupDialogStuff(view, this, R.string.import_events)
             getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener({
                 Thread({
-                    val result = IcsParser().parseIcs(context, path, currEventTypeId)
+                    val result = IcsImporter().parseIcs(context, path, currEventTypeId)
                     handleParseResult(result)
                     dismiss()
                 }).start()
@@ -52,7 +52,7 @@ class ImportEventsDialog(val activity: Activity, val path: String, val callback:
         view.import_event_type_color.setBackgroundWithStroke(eventType.color, activity.config.backgroundColor)
     }
 
-    private fun handleParseResult(result: IcsParser.ImportResult) {
+    private fun handleParseResult(result: IcsImporter.ImportResult) {
         activity.runOnUiThread {
             activity.toast(when (result) {
                 IMPORT_OK -> R.string.events_imported_successfully
