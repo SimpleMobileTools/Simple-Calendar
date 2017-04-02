@@ -1,6 +1,11 @@
 Changelog
 ==========
 
+Version 2.2.7 *(2017-04-02)*
+----------------------------
+
+ * Misc smaller bugfixes and improvements
+
 Version 2.2.6 *(2017-03-12)*
 ----------------------------
 
