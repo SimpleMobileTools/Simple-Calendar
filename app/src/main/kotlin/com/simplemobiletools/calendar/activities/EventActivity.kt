@@ -9,7 +9,6 @@ import android.view.MenuItem
 import android.view.WindowManager
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.dialogs.DeleteEventDialog
-import com.simplemobiletools.calendar.dialogs.EventReminderDialog
 import com.simplemobiletools.calendar.dialogs.EventRepeatIntervalDialog
 import com.simplemobiletools.calendar.dialogs.SelectEventTypeDialog
 import com.simplemobiletools.calendar.extensions.*
@@ -119,21 +118,21 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     }
 
     private fun showReminder1Dialog() {
-        EventReminderDialog(this, mReminder1Minutes) {
+        showEventReminderDialog(mReminder1Minutes) {
             mReminder1Minutes = it
             checkReminderTexts()
         }
     }
 
     private fun showReminder2Dialog() {
-        EventReminderDialog(this, mReminder2Minutes) {
+        showEventReminderDialog(mReminder2Minutes) {
             mReminder2Minutes = it
             checkReminderTexts()
         }
     }
 
     private fun showReminder3Dialog() {
-        EventReminderDialog(this, mReminder3Minutes) {
+        showEventReminderDialog(mReminder3Minutes) {
             mReminder3Minutes = it
             checkReminderTexts()
         }

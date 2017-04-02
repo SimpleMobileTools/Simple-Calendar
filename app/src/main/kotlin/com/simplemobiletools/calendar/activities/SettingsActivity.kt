@@ -10,7 +10,6 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.dialogs.EventReminderDialog
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.getReminderText
@@ -196,7 +195,7 @@ class SettingsActivity : SimpleActivity() {
         var reminderMinutes = config.defaultReminderMinutes
         settings_default_reminder.text = getReminderText(reminderMinutes)
         settings_default_reminder_holder.setOnClickListener {
-            EventReminderDialog(this, reminderMinutes) {
+            showEventReminderDialog(reminderMinutes) {
                 config.defaultReminderMinutes = it
                 reminderMinutes = it
                 settings_default_reminder.text = getReminderText(it)
