@@ -162,3 +162,5 @@ fun Context.launchNewEventIntent(startNewTask: Boolean = false, today: Boolean =
 fun Context.getNewEventTimestampFromCode(dayCode: String) = Formatter.getLocalDateTimeFromCode(dayCode).withTime(13, 0, 0, 0).seconds()
 
 val Context.config: Config get() = Config.newInstance(this)
+
+val Context.dbHelper: DBHelper get() = DBHelper.newInstance(this)

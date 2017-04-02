@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.dialogs.EventReminderDialog
 import com.simplemobiletools.calendar.extensions.config
+import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.getReminderText
 import com.simplemobiletools.commons.extensions.toast
 import com.simplemobiletools.commons.extensions.updateTextColors
@@ -22,6 +23,8 @@ class SettingsActivity : SimpleActivity() {
     private val ACCOUNTS_PERMISSION = 2
     private val REQUEST_ACCOUNT_NAME = 3
     private val REQUEST_GOOGLE_PLAY_SERVICES = 4
+
+    private var mStoredPrimaryColor = 0
 
     companion object {
         val REQUEST_AUTHORIZATION = 5
@@ -51,6 +54,24 @@ class SettingsActivity : SimpleActivity() {
         setupReminderSound()
         setupEventReminder()
         updateTextColors(settings_holder)
+        checkPrimaryColor()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        mStoredPrimaryColor = config.primaryColor
+    }
+
+    private fun checkPrimaryColor() {
+        if (config.primaryColor != mStoredPrimaryColor) {
+            dbHelper.getEventTypes {
+                if (it.size == 1) {
+                    val eventType = it[0]
+                    eventType.color = config.primaryColor
+                    dbHelper.updateEventType(eventType)
+                }
+            }
+        }
     }
 
     private fun setupCustomizeColors() {
