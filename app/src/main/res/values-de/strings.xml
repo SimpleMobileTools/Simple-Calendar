@@ -96,6 +96,7 @@
 
     <!-- Export / Import -->
     <string name="import_events">Importiere Termine</string>
+    <string name="export_events">Export events</string>
     <string name="import_events_from_ics">Importiere Termine aus .ics Datei</string>
     <string name="events_imported_successfully">Termine erfolgreich importiert</string>
     <string name="importing_events_failed">Termine importieren fehlgeschlagen</string>

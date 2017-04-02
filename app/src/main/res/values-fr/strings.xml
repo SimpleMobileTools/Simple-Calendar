@@ -96,6 +96,7 @@
 
     <!-- Export / Import -->
     <string name="import_events">Importer des evénements</string>
+    <string name="export_events">Export events</string>
     <string name="import_events_from_ics">Importer des evénements depuis un fichier .ics</string>
     <string name="events_imported_successfully">Evénements importés avec succès</string>
     <string name="importing_events_failed">Import des evénements échoué</string>

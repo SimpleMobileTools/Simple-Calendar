@@ -103,6 +103,7 @@
 
     <!-- Export / Import -->
     <string name="import_events">Importovať udalosti</string>
+    <string name="export_events">Exportovať udalosti</string>
     <string name="import_events_from_ics">Importovať udalosti z .ics súboru</string>
     <string name="events_imported_successfully">Udalosti boli úspešne importované</string>
     <string name="importing_events_failed">Importovanie udalostí zlyhalo</string>
