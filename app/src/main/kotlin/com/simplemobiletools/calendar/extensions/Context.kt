@@ -152,6 +152,12 @@ fun Context.getFilteredEvents(events: List<Event>): List<Event> {
     return events.filter { displayEventTypes.contains(it.eventType.toString()) }
 }
 
+fun Context.notifyRunningEvents() {
+    dbHelper.getRunningEvents {
+        it.forEach { notifyEvent(it) }
+    }
+}
+
 fun Context.notifyEvent(event: Event) {
     val pendingIntent = getPendingIntent(this, event)
     val startTime = Formatter.getTimeFromTS(this, event.startTS)

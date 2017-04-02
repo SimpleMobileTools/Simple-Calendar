@@ -390,6 +390,14 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         return newEvents
     }
 
+    fun getRunningEvents(callback: (events: ArrayList<Event>) -> Unit) {
+        val selection = "$COL_START_TS <= ? AND $COL_END_TS >= ?"
+        val ts = (System.currentTimeMillis() / 1000).toString()
+        val selectionArgs = arrayOf(ts, ts)
+        val cursor = getEventsCursor(selection, selectionArgs)
+        callback(fillEvents(cursor) as ArrayList)
+    }
+
     private fun getEvents(selection: String): List<Event> {
         val events = ArrayList<Event>()
         var cursor: Cursor? = null

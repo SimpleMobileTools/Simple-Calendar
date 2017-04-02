@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import com.simplemobiletools.calendar.extensions.dbHelper
+import com.simplemobiletools.calendar.extensions.notifyRunningEvents
 import com.simplemobiletools.calendar.extensions.scheduleNextEventReminder
 
 class BootCompletedReceiver : BroadcastReceiver() {
@@ -13,5 +14,6 @@ class BootCompletedReceiver : BroadcastReceiver() {
         for (event in events) {
             context.scheduleNextEventReminder(event)
         }
+        context.notifyRunningEvents()
     }
 }
