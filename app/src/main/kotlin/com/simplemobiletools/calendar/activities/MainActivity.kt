@@ -275,7 +275,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
                         outputStream?.close()
 
                         runOnUiThread {
-                            toast(R.string.database_exported_successfully)
+                            toast(R.string.events_exported)
                         }
                     }
                 }).start()
