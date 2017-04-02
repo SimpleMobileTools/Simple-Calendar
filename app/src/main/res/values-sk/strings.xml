@@ -105,14 +105,16 @@
     <string name="import_events">Importovať udalosti</string>
     <string name="export_events">Exportovať udalosti</string>
     <string name="import_events_from_ics">Importovať udalosti z .ics súboru</string>
+    <string name="export_events_to_ics">Exportovať udalosti do .ics súboru</string>
     <string name="events_imported_successfully">Udalosti boli úspešne importované</string>
+    <string name="events_exported_successfully">Udalosti boli úspešne exportované</string>
     <string name="importing_events_failed">Importovanie udalostí zlyhalo</string>
+    <string name="exporting_events_failed">Exportovanie udalostí zlyhalo</string>
     <string name="importing_some_events_failed">Importovanie niektorých udalostí zlyhalo</string>
+    <string name="exporting_some_events_failed">Exportovanie niektorých udalostí zlyhalo</string>
     <string name="invalid_file_format">Nesprávny formát súboru</string>
     <string name="export_raw_database">Exportovať surovú databázu</string>
     <string name="default_event_type">Predvolený typ udalosti</string>
-    <string name="events_exported">Udalosti boli úspešne exportované</string>
-    <string name="export_events_to_ics">Exportovať udalosti do .ics súboru</string>
     <string name="no_events_for_exporting">Nenašli sa žiadne udalosti na exportovanie</string>
     <string name="export_past_events_too">Exportovať aj minulé udalosti</string>
 

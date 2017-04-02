@@ -262,7 +262,12 @@ class MainActivity : SimpleActivity(), NavigationListener {
         FilePickerDialog(this, pickFile = false) {
             val path = it
             ExportEventsDialog(this, path) {
-
+                val result = IcsExporter().exportEvents(this, path)
+                toast(when (result) {
+                    IcsExporter.ExportResult.EXPORT_OK -> R.string.events_exported_successfully
+                    IcsExporter.ExportResult.EXPORT_PARTIAL -> R.string.exporting_some_events_failed
+                    else -> R.string.exporting_events_failed
+                })
             }
         }
     }
@@ -300,7 +305,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
                         outputStream?.close()
 
                         runOnUiThread {
-                            toast(R.string.events_exported)
+                            toast(R.string.events_exported_successfully)
                         }
                     }
                 }).start()
