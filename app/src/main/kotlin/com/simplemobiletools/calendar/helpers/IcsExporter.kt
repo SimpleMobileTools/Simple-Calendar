@@ -21,6 +21,12 @@ class IcsExporter {
             for (event in events) {
                 out.writeLn(BEGIN_EVENT)
 
+                event.title.let { if (it.isNotEmpty()) out.writeLn("$SUMMARY$it") }
+                event.description.let { if (it.isNotEmpty()) out.writeLn("$DESCRIPTION$it") }
+                event.importId?.let { if (it.isNotEmpty()) out.writeLn("$UID$it") }
+                event.startTS.let { out.writeLn("$DTSTART:${Formatter.getExportedTime(it)}") }
+                event.endTS.let { out.writeLn("$DTEND:${Formatter.getExportedTime(it)}") }
+
                 out.writeLn(END_EVENT)
             }
             out.writeLn(END_CALENDAR)

@@ -11,6 +11,7 @@ import org.joda.time.format.DateTimeFormat
 object Formatter {
     val DAYCODE_PATTERN = "YYYYMMdd"
     val YEAR_PATTERN = "YYYY"
+    val TIME_PATTERN = "HHmmss"
     private val DAY_PATTERN = "d"
     private val DAY_OF_WEEK_PATTERN = "EEE"
     private val PATTERN_TIME_12 = "hh:mm a"
@@ -71,4 +72,9 @@ object Formatter {
     fun getHourPattern(context: Context) = if (context.config.use24hourFormat) PATTERN_HOURS_24 else PATTERN_HOURS_12
 
     fun getTimePattern(context: Context) = if (context.config.use24hourFormat) PATTERN_TIME_24 else PATTERN_TIME_12
+
+    fun getExportedTime(ts: Int): String {
+        val dateTime = getDateTimeFromTS(ts)
+        return "${dateTime.toString(DAYCODE_PATTERN)}T${dateTime.toString(TIME_PATTERN)}Z"
+    }
 }
