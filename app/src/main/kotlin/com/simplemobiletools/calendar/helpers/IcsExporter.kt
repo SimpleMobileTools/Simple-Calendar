@@ -5,6 +5,7 @@ import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.writeLn
 import com.simplemobiletools.calendar.helpers.IcsExporter.ExportResult.*
 import com.simplemobiletools.calendar.models.Event
+import java.io.BufferedWriter
 import java.io.File
 
 class IcsExporter {
@@ -33,8 +34,10 @@ class IcsExporter {
                     event.startTS.let { out.writeLn("$DTSTART:${Formatter.getExportedTime(it)}") }
                     event.endTS.let { out.writeLn("$DTEND:${Formatter.getExportedTime(it)}") }
                 }
-                out.writeLn("$STATUS$CONFIRMED")
 
+                fillRepeatInterval(event.repeatInterval, out)
+
+                out.writeLn("$STATUS$CONFIRMED")
                 out.writeLn(END_EVENT)
             }
             out.writeLn(END_CALENDAR)
@@ -47,5 +50,33 @@ class IcsExporter {
         } else {
             EXPORT_OK
         }
+    }
+
+    private fun fillRepeatInterval(repeatInterval: Int, out: BufferedWriter) {
+        if (repeatInterval == 0)
+            return
+
+        val freq = getFreq(repeatInterval)
+        val interval = getInterval(repeatInterval)
+        val rrule = "$RRULE=$FREQ=$freq;$INTERVAL=$interval"
+        out.writeLn(rrule)
+    }
+
+    private fun getFreq(interval: Int) = when (interval) {
+        DAY -> DAILY
+        WEEK -> WEEKLY
+        MONTH -> MONTHLY
+        else -> YEARLY
+    }
+
+    private fun getInterval(interval: Int): Int {
+        return if (interval % YEAR == 0)
+            interval / YEAR
+        else if (interval % MONTH == 0)
+            interval / MONTH
+        else if (interval % WEEK == 0)
+            interval / WEEK
+        else
+            interval / DAY
     }
 }
