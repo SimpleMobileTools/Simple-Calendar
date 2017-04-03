@@ -3,6 +3,7 @@ package com.simplemobiletools.calendar.helpers
 import android.content.Context
 import com.simplemobiletools.calendar.extensions.writeLn
 import com.simplemobiletools.calendar.helpers.IcsExporter.ExportResult.*
+import com.simplemobiletools.calendar.models.Event
 import java.io.File
 
 class IcsExporter {
@@ -13,7 +14,7 @@ class IcsExporter {
     var eventsExported = 0
     var eventsFailed = 0
 
-    fun exportEvents(context: Context, path: String): ExportResult {
+    fun exportEvents(context: Context, path: String, events: ArrayList<Event>): ExportResult {
         File(path, "events_${System.currentTimeMillis() / 1000}.ics").bufferedWriter().use { out ->
             out.writeLn(BEGIN_CALENDAR)
             out.writeLn(END_CALENDAR)

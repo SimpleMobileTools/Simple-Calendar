@@ -263,7 +263,8 @@ class MainActivity : SimpleActivity(), NavigationListener {
             val path = it
             ExportEventsDialog(this, path) {
                 Thread({
-                    val result = IcsExporter().exportEvents(this, path)
+                    val events = dbHelper.getEventsToExport(it)
+                    val result = IcsExporter().exportEvents(this, path, events)
                     runOnUiThread {
                         toast(when (result) {
                             IcsExporter.ExportResult.EXPORT_OK -> R.string.events_exported_successfully

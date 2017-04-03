@@ -435,7 +435,23 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         return fillEvents(cursor)
     }
 
-    private fun getEventsCursor(selection: String, selectionArgs: Array<String>?): Cursor? {
+    fun getEventsToExport(includePast: Boolean): ArrayList<Event> {
+        val events = ArrayList<Event>()
+
+        val cursor = if (includePast) {
+            getEventsCursor()
+        } else {
+            val endTime = (System.currentTimeMillis() / 1000).toString()
+            val selection = "$COL_END_TS > ?"
+            val selectionArgs = arrayOf(endTime)
+            getEventsCursor(selection, selectionArgs)
+        }
+
+        events.addAll(fillEvents(cursor))
+        return events
+    }
+
+    private fun getEventsCursor(selection: String = "", selectionArgs: Array<String>? = null): Cursor? {
         val builder = SQLiteQueryBuilder()
         builder.tables = "$MAIN_TABLE_NAME LEFT OUTER JOIN $META_TABLE_NAME ON $COL_EVENT_ID = $MAIN_TABLE_NAME.$COL_ID"
         val projection = allColumns
