@@ -153,9 +153,7 @@ fun Context.getFilteredEvents(events: List<Event>): List<Event> {
 }
 
 fun Context.notifyRunningEvents() {
-    dbHelper.getRunningEvents {
-        it.forEach { notifyEvent(it) }
-    }
+    dbHelper.getRunningEvents().forEach { notifyEvent(it) }
 }
 
 fun Context.notifyEvent(event: Event) {

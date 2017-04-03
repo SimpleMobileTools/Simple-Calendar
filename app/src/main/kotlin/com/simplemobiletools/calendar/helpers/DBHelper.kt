@@ -393,7 +393,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         return newEvents
     }
 
-    fun getRunningEvents(callback: (events: ArrayList<Event>) -> Unit) {
+    fun getRunningEvents(): List<Event> {
         val events = ArrayList<Event>()
         val ts = (System.currentTimeMillis() / 1000).toInt()
 
@@ -403,8 +403,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         events.addAll(fillEvents(cursor))
 
         events.addAll(getRepeatableEventsFor(ts, ts, true))
-
-        callback(events)
+        return events
     }
 
     private fun getEvents(selection: String): List<Event> {
