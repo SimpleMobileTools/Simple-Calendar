@@ -437,7 +437,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
     fun getEventsToExport(includePast: Boolean): ArrayList<Event> {
         val currTime = (System.currentTimeMillis() / 1000).toString()
-        val events = ArrayList<Event>()
+        var events = ArrayList<Event>()
 
         // non repeating events
         var cursor = if (includePast) {
@@ -457,6 +457,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             events.addAll(fillEvents(cursor))
         }
 
+        events = events.distinctBy { it.id } as ArrayList<Event>
         return events
     }
 
