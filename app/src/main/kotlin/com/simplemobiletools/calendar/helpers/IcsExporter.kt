@@ -1,6 +1,7 @@
 package com.simplemobiletools.calendar.helpers
 
 import android.content.Context
+import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.writeLn
 import com.simplemobiletools.calendar.helpers.IcsExporter.ExportResult.*
 import com.simplemobiletools.calendar.models.Event
@@ -24,8 +25,15 @@ class IcsExporter {
                 event.title.let { if (it.isNotEmpty()) out.writeLn("$SUMMARY$it") }
                 event.description.let { if (it.isNotEmpty()) out.writeLn("$DESCRIPTION$it") }
                 event.importId?.let { if (it.isNotEmpty()) out.writeLn("$UID$it") }
-                event.startTS.let { out.writeLn("$DTSTART:${Formatter.getExportedTime(it)}") }
-                event.endTS.let { out.writeLn("$DTEND:${Formatter.getExportedTime(it)}") }
+                event.eventType.let { out.writeLn("$CATEGORIES${context.dbHelper.getEventType(it)?.title}") }
+
+                if (event.isAllDay) {
+                    out.writeLn("$DTSTART;$VALUE=$DATE:${Formatter.getDayCodeFromTS(event.startTS)}")
+                } else {
+                    event.startTS.let { out.writeLn("$DTSTART:${Formatter.getExportedTime(it)}") }
+                    event.endTS.let { out.writeLn("$DTEND:${Formatter.getExportedTime(it)}") }
+                }
+                out.writeLn("$STATUS$CONFIRMED")
 
                 out.writeLn(END_EVENT)
             }
