@@ -410,7 +410,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         val events = ArrayList<Event>()
         var cursor: Cursor? = null
         try {
-            cursor = getEventsCursor(selection, null)
+            cursor = getEventsCursor(selection)
             if (cursor != null) {
                 val currEvents = fillEvents(cursor)
                 events.addAll(currEvents)
@@ -436,18 +436,27 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     }
 
     fun getEventsToExport(includePast: Boolean): ArrayList<Event> {
+        val currTime = (System.currentTimeMillis() / 1000).toString()
         val events = ArrayList<Event>()
 
-        val cursor = if (includePast) {
+        // non repeating events
+        var cursor = if (includePast) {
             getEventsCursor()
         } else {
-            val endTime = (System.currentTimeMillis() / 1000).toString()
             val selection = "$COL_END_TS > ?"
-            val selectionArgs = arrayOf(endTime)
+            val selectionArgs = arrayOf(currTime)
             getEventsCursor(selection, selectionArgs)
         }
-
         events.addAll(fillEvents(cursor))
+
+        // repeating events
+        if (!includePast) {
+            val selection = "$COL_REPEAT_INTERVAL != 0 AND ($COL_REPEAT_LIMIT == 0 OR $COL_REPEAT_LIMIT > ?)"
+            val selectionArgs = arrayOf(currTime)
+            cursor = getEventsCursor(selection, selectionArgs)
+            events.addAll(fillEvents(cursor))
+        }
+
         return events
     }
 
