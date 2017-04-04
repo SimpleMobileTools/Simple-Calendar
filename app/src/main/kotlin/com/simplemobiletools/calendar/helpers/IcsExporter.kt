@@ -35,7 +35,7 @@ class IcsExporter {
                     event.endTS.let { out.writeLn("$DTEND:${Formatter.getExportedTime(it)}") }
                 }
 
-                fillRepeatInterval(event.repeatInterval, out)
+                fillRepeatInterval(event, out)
 
                 out.writeLn("$STATUS$CONFIRMED")
                 out.writeLn(END_EVENT)
@@ -52,21 +52,27 @@ class IcsExporter {
         }
     }
 
-    private fun fillRepeatInterval(repeatInterval: Int, out: BufferedWriter) {
+    private fun fillRepeatInterval(event: Event, out: BufferedWriter) {
+        val repeatInterval = event.repeatInterval
         if (repeatInterval == 0)
             return
 
         val freq = getFreq(repeatInterval)
         val interval = getInterval(repeatInterval)
-        val rrule = "$RRULE=$FREQ=$freq;$INTERVAL=$interval"
+        val repeatLimit = getRepeatLimitString(event)
+        val rrule = "$RRULE$FREQ=$freq;$INTERVAL=$interval$repeatLimit"
         out.writeLn(rrule)
     }
 
-    private fun getFreq(interval: Int) = when (interval) {
-        DAY -> DAILY
-        WEEK -> WEEKLY
-        MONTH -> MONTHLY
-        else -> YEARLY
+    private fun getFreq(interval: Int): String {
+        return if (interval % YEAR == 0)
+            YEARLY
+        else if (interval % MONTH == 0)
+            MONTHLY
+        else if (interval % WEEK == 0)
+            WEEKLY
+        else
+            DAILY
     }
 
     private fun getInterval(interval: Int): Int {
@@ -78,5 +84,12 @@ class IcsExporter {
             interval / WEEK
         else
             interval / DAY
+    }
+
+    private fun getRepeatLimitString(event: Event): String {
+        return if (event.repeatLimit == 0)
+            ""
+        else
+            ";$UNTIL=${Formatter.getDayCodeFromTS(event.repeatLimit)}"
     }
 }
