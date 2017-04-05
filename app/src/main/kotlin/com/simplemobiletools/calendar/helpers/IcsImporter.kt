@@ -22,17 +22,17 @@ class IcsImporter {
     var curDescription = ""
     var curImportId = ""
     var curFlags = 0
-    var curReminderMinutes = -1
+    var curReminderMinutes = ArrayList<Int>()
     var curRepeatInterval = 0
     var curRepeatLimit = 0
     var curEventType = DBHelper.REGULAR_EVENT_TYPE_ID
-    var curShouldHaveNotification = false
     var isNotificationDescription = false
+    var lastReminderAction = ""
 
     var eventsImported = 0
     var eventsFailed = 0
 
-    fun parseIcs(context: Context, path: String, defaultEventType: Int): ImportResult {
+    fun importEvents(context: Context, path: String, defaultEventType: Int): ImportResult {
         try {
             val importIDs = context.dbHelper.getImportIds()
             var prevLine = ""
@@ -69,12 +69,10 @@ class IcsImporter {
                         curRepeatInterval = parseRepeatInterval(line.substring(RRULE.length))
                     } else if (line.startsWith(ACTION)) {
                         isNotificationDescription = true
-                        if (line.substring(ACTION.length) == DISPLAY)
-                            curShouldHaveNotification = true
+                        lastReminderAction = line.substring(ACTION.length)
                     } else if (line.startsWith(TRIGGER)) {
-                        if (curReminderMinutes == -1 && curShouldHaveNotification) {
-                            curReminderMinutes = decodeTime(line.substring(TRIGGER.length)) / 60
-                        }
+                        if (lastReminderAction == DISPLAY)
+                            curReminderMinutes.add(decodeTime(line.substring(TRIGGER.length)) / 60)
                     } else if (line.startsWith(CATEGORIES)) {
                         val categories = line.substring(CATEGORIES.length)
                         tryAddCategories(categories, context)
@@ -83,7 +81,8 @@ class IcsImporter {
                             continue
 
                         importIDs.add(curImportId)
-                        val event = Event(0, curStart, curEnd, curTitle, curDescription, curReminderMinutes, -1, -1, curRepeatInterval,
+                        val event = Event(0, curStart, curEnd, curTitle, curDescription, curReminderMinutes.getOrElse(0, { -1 }),
+                                curReminderMinutes.getOrElse(1, { -1 }), curReminderMinutes.getOrElse(2, { -1 }), curRepeatInterval,
                                 curImportId, curFlags, curRepeatLimit, curEventType)
                         context.dbHelper.insert(event) { }
                         eventsImported++
@@ -216,11 +215,11 @@ class IcsImporter {
         curDescription = ""
         curImportId = ""
         curFlags = 0
-        curReminderMinutes = -1
+        curReminderMinutes = ArrayList<Int>()
         curRepeatInterval = 0
         curRepeatLimit = 0
         curEventType = DBHelper.REGULAR_EVENT_TYPE_ID
-        curShouldHaveNotification = false
         isNotificationDescription = false
+        lastReminderAction = ""
     }
 }
