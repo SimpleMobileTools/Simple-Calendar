@@ -35,11 +35,12 @@ class IcsExporter {
                     event.endTS.let { out.writeLn("$DTEND:${Formatter.getExportedTime(it)}") }
                 }
 
+                out.writeLn("$STATUS$CONFIRMED")
+
                 fillRepeatInterval(event, out)
                 fillReminders(event, out)
                 fillIgnoredOccurrences(event, out)
 
-                out.writeLn("$STATUS$CONFIRMED")
                 out.writeLn(END_EVENT)
             }
             out.writeLn(END_CALENDAR)
