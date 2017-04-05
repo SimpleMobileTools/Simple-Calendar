@@ -26,6 +26,7 @@ val BIWEEK = 1209600
 val MONTH = 2592000    // exact value not taken into account, Joda is used for adding months and years
 val YEAR = 31536000
 
+val DAY_MINUTES = 24 * 60
 val DAY_SECONDS = 24 * 60 * 60
 val WEEK_SECONDS = 7 * DAY_SECONDS
 
@@ -54,6 +55,8 @@ val BEGIN_CALENDAR = "BEGIN:VCALENDAR"
 val END_CALENDAR = "END:VCALENDAR"
 val BEGIN_EVENT = "BEGIN:VEVENT"
 val END_EVENT = "END:VEVENT"
+val BEGIN_ALARM = "BEGIN:VALARM"
+val END_ALARM = "END:VALARM"
 val DTSTART = "DTSTART"
 val DTEND = "DTEND"
 val DURATION = "DURATION:"
