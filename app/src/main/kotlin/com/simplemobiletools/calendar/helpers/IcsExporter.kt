@@ -37,6 +37,7 @@ class IcsExporter {
 
                 fillRepeatInterval(event, out)
                 fillReminders(event, out)
+                fillIgnoredOccurrences(event, out)
 
                 out.writeLn("$STATUS$CONFIRMED")
                 out.writeLn(END_EVENT)
@@ -122,5 +123,11 @@ class IcsExporter {
             remainder -= hours * 60
         }
         return "-P${days}DT${hours}H${remainder}M0S"
+    }
+
+    private fun fillIgnoredOccurrences(event: Event, out: BufferedWriter) {
+        event.ignoreEventOccurrences.forEach {
+            out.writeLn("$EXDATE${Formatter.getDayCodeFromTS(it)}")
+        }
     }
 }
