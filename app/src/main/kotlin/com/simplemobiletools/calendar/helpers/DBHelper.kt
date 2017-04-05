@@ -131,7 +131,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         addEventType(eventType, db)
     }
 
-    fun insert(event: Event, insertListener: (event: Event) -> Unit) {
+    fun insert(event: Event) {
         if (event.startTS > event.endTS || event.title.trim().isEmpty())
             return
 
@@ -147,7 +147,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         context.updateWidgets()
         context.scheduleReminder(event)
         mEventsListener?.eventInserted(event)
-        insertListener.invoke(event)
     }
 
     fun update(event: Event) {

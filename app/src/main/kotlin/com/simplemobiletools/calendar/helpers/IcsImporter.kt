@@ -84,7 +84,7 @@ class IcsImporter {
                         val event = Event(0, curStart, curEnd, curTitle, curDescription, curReminderMinutes.getOrElse(0, { -1 }),
                                 curReminderMinutes.getOrElse(1, { -1 }), curReminderMinutes.getOrElse(2, { -1 }), curRepeatInterval,
                                 curImportId, curFlags, curRepeatLimit, curEventType)
-                        context.dbHelper.insert(event) { }
+                        context.dbHelper.insert(event)
                         eventsImported++
                         resetValues()
                     }

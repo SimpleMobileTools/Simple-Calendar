@@ -301,7 +301,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         }
 
         if (mEvent.id == 0) {
-            dbHelper.insert(mEvent) {}
+            dbHelper.insert(mEvent)
         } else {
             dbHelper.update(mEvent)
         }
