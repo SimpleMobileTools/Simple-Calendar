@@ -261,7 +261,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             if (it) {
                 dbHelper.deleteEvents(arrayOf(mEvent.id.toString()))
             } else {
-                dbHelper.deleteEventOccurrence(mEvent.id, mEventOccurrenceTS)
+                dbHelper.addEventRepeatException(mEvent.id, mEventOccurrenceTS)
             }
             finish()
         }

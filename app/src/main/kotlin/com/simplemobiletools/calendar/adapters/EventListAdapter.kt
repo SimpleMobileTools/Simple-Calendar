@@ -101,7 +101,7 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
             if (it) {
                 listener?.deleteItems(eventIds)
             } else {
-                listener?.deleteEventOccurrences(eventIds, timestamps)
+                listener?.addEventRepeatException(eventIds, timestamps)
             }
             actMode?.finish()
         }

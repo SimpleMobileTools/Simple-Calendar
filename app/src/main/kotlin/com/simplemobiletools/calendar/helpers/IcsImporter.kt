@@ -23,6 +23,7 @@ class IcsImporter {
     var curImportId = ""
     var curFlags = 0
     var curReminderMinutes = ArrayList<Int>()
+    var curRepeatExceptions = ArrayList<Int>()
     var curRepeatInterval = 0
     var curRepeatLimit = 0
     var curEventType = DBHelper.REGULAR_EVENT_TYPE_ID
@@ -76,6 +77,8 @@ class IcsImporter {
                     } else if (line.startsWith(CATEGORIES)) {
                         val categories = line.substring(CATEGORIES.length)
                         tryAddCategories(categories, context)
+                    } else if (line.startsWith(EXDATE)) {
+                        curRepeatExceptions.add(getTimestamp(line.substring(EXDATE.length)))
                     } else if (line == END_EVENT) {
                         if (curTitle.isEmpty() || curStart == -1 || curEnd == -1 || importIDs.contains(curImportId))
                             continue
@@ -84,7 +87,13 @@ class IcsImporter {
                         val event = Event(0, curStart, curEnd, curTitle, curDescription, curReminderMinutes.getOrElse(0, { -1 }),
                                 curReminderMinutes.getOrElse(1, { -1 }), curReminderMinutes.getOrElse(2, { -1 }), curRepeatInterval,
                                 curImportId, curFlags, curRepeatLimit, curEventType)
-                        context.dbHelper.insert(event)
+
+                        val eventId = context.dbHelper.insert(event)
+
+                        for (exceptionTS in curRepeatExceptions) {
+                            context.dbHelper.addEventRepeatException(eventId, exceptionTS)
+                        }
+
                         eventsImported++
                         resetValues()
                     }
@@ -216,6 +225,7 @@ class IcsImporter {
         curImportId = ""
         curFlags = 0
         curReminderMinutes = ArrayList<Int>()
+        curRepeatExceptions = ArrayList<Int>()
         curRepeatInterval = 0
         curRepeatLimit = 0
         curEventType = DBHelper.REGULAR_EVENT_TYPE_ID

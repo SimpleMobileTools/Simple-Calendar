@@ -138,9 +138,9 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         addEventType(eventType, db)
     }
 
-    fun insert(event: Event) {
+    fun insert(event: Event): Int {
         if (event.startTS > event.endTS || event.title.trim().isEmpty())
-            return
+            return 0
 
         val eventValues = fillEventValues(event)
         val id = mDb.insert(MAIN_TABLE_NAME, null, eventValues)
@@ -154,6 +154,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         context.updateWidgets()
         context.scheduleReminder(event)
         mEventsListener?.eventInserted(event)
+        return event.id
     }
 
     fun update(event: Event) {
@@ -292,10 +293,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         mEventsListener?.eventsDeleted(ids.size)
     }
 
-    fun deleteEventOccurrence(parentEventId: Int, occurrenceTS: Int) {
-        val exceptionSelection = "$COL_PARENT_EVENT_ID = $parentEventId AND $COL_OCCURRENCE_DAYCODE = ${Formatter.getDayCodeFromTS(occurrenceTS)}"
-        mDb.delete(EXCEPTIONS_TABLE_NAME, exceptionSelection, null)
-
+    fun addEventRepeatException(parentEventId: Int, occurrenceTS: Int) {
         val values = fillExceptionValues(parentEventId, occurrenceTS)
         mDb.insert(EXCEPTIONS_TABLE_NAME, null, values)
     }

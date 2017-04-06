@@ -152,9 +152,9 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEventsListen
         DBHelper.newInstance(activity.applicationContext, this).deleteEvents(eventIDs)
     }
 
-    override fun deleteEventOccurrences(parentIds: ArrayList<Int>, timestamps: ArrayList<Int>) {
+    override fun addEventRepeatException(parentIds: ArrayList<Int>, timestamps: ArrayList<Int>) {
         parentIds.forEachIndexed { index, value ->
-            context.dbHelper.deleteEventOccurrence(parentIds[index], timestamps[index])
+            context.dbHelper.addEventRepeatException(parentIds[index], timestamps[index])
         }
         (activity as DayActivity).recheckEvents()
     }
