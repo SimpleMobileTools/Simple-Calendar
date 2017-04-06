@@ -239,7 +239,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private fun fillExceptionValues(parentEventId: Int, occurrenceTS: Int): ContentValues {
         return ContentValues().apply {
             put(COL_PARENT_EVENT_ID, parentEventId)
-            put(COL_OCCURRENCE_TIMESTAMP, occurrenceTS)
+            put(COL_OCCURRENCE_DAYCODE, Formatter.getDayCodeFromTS(occurrenceTS))
         }
     }
 
@@ -293,7 +293,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     }
 
     fun deleteEventOccurrence(parentEventId: Int, occurrenceTS: Int) {
-        val exceptionSelection = "$COL_PARENT_EVENT_ID = $parentEventId AND $COL_OCCURRENCE_TIMESTAMP = $occurrenceTS"
+        val exceptionSelection = "$COL_PARENT_EVENT_ID = $parentEventId AND $COL_OCCURRENCE_DAYCODE = ${Formatter.getDayCodeFromTS(occurrenceTS)}"
         mDb.delete(EXCEPTIONS_TABLE_NAME, exceptionSelection, null)
 
         val values = fillExceptionValues(parentEventId, occurrenceTS)
@@ -375,7 +375,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
         events.addAll(getRepeatableEventsFor(fromTS, toTS))
 
-        val filtered = events.filterNot { it.ignoreEventOccurrences.contains(it.startTS) } as MutableList<Event>
+        val filtered = events.filterNot { it.ignoreEventOccurrences.contains(Formatter.getDayCodeFromTS(it.startTS).toInt()) } as MutableList<Event>
         callback(filtered)
     }
 
@@ -544,23 +544,23 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     }
 
     private fun getIgnoredOccurrences(eventId: Int): ArrayList<Int> {
-        val projection = arrayOf(COL_OCCURRENCE_TIMESTAMP)
+        val projection = arrayOf(COL_OCCURRENCE_DAYCODE)
         val selection = "$COL_PARENT_EVENT_ID = ?"
         val selectionArgs = arrayOf(eventId.toString())
-        val timestamps = ArrayList<Int>()
+        val daycodes = ArrayList<Int>()
 
         var cursor: Cursor? = null
         try {
-            cursor = mDb.query(EXCEPTIONS_TABLE_NAME, projection, selection, selectionArgs, null, null, COL_OCCURRENCE_TIMESTAMP)
+            cursor = mDb.query(EXCEPTIONS_TABLE_NAME, projection, selection, selectionArgs, null, null, COL_OCCURRENCE_DAYCODE)
             if (cursor?.moveToFirst() == true) {
                 do {
-                    timestamps.add(cursor.getIntValue(COL_OCCURRENCE_TIMESTAMP))
+                    daycodes.add(cursor.getIntValue(COL_OCCURRENCE_DAYCODE))
                 } while (cursor.moveToNext())
             }
         } finally {
             cursor?.close()
         }
-        return timestamps
+        return daycodes
     }
 
     private fun convertExceptionTimestampToDaycode(db: SQLiteDatabase) {

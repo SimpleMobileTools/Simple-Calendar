@@ -128,7 +128,7 @@ class IcsExporter {
 
     private fun fillIgnoredOccurrences(event: Event, out: BufferedWriter) {
         event.ignoreEventOccurrences.forEach {
-            out.writeLn("$EXDATE${Formatter.getDayCodeFromTS(it)}")
+            out.writeLn("$EXDATE:$it}")
         }
     }
 }

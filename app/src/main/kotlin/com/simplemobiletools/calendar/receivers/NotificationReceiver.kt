@@ -8,6 +8,7 @@ import com.simplemobiletools.calendar.extensions.notifyEvent
 import com.simplemobiletools.calendar.extensions.scheduleNextEventReminder
 import com.simplemobiletools.calendar.extensions.updateListWidget
 import com.simplemobiletools.calendar.helpers.EVENT_ID
+import com.simplemobiletools.calendar.helpers.Formatter
 
 class NotificationReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
@@ -20,7 +21,7 @@ class NotificationReceiver : BroadcastReceiver() {
         if (event == null || event.getReminders().isEmpty())
             return
 
-        if (!event.ignoreEventOccurrences.contains(event.startTS)) {
+        if (!event.ignoreEventOccurrences.contains(Formatter.getDayCodeFromTS(event.startTS).toInt())) {
             context.notifyEvent(event)
         }
         context.scheduleNextEventReminder(event)

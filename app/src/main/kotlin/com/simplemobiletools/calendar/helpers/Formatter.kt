@@ -60,8 +60,6 @@ object Formatter {
 
     fun getDayEndTS(dayCode: String) = getLocalDateTimeFromCode(dayCode).plusDays(1).minusMinutes(1).seconds()
 
-    fun getDayCodeFromTS(ts: Int) = getDateTimeFromTS(ts).toString(DAYCODE_PATTERN)
-
     fun getDayCodeFromDateTime(dateTime: DateTime) = dateTime.toString(DAYCODE_PATTERN)
 
     fun getDateTimeFromTS(ts: Int) = DateTime(ts * 1000L, DateTimeZone.getDefault())
@@ -76,5 +74,13 @@ object Formatter {
     fun getExportedTime(ts: Int): String {
         val dateTime = getDateTimeFromTS(ts)
         return "${dateTime.toString(DAYCODE_PATTERN)}T${dateTime.toString(TIME_PATTERN)}Z"
+    }
+
+    fun getDayCodeFromTS(ts: Int): String {
+        val daycode = getDateTimeFromTS(ts).toString(DAYCODE_PATTERN)
+        return if (daycode.isNotEmpty())
+            daycode
+        else
+            "0"
     }
 }
