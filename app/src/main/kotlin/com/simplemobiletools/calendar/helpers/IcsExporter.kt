@@ -41,6 +41,7 @@ class IcsExporter {
                 fillReminders(event, out)
                 fillIgnoredOccurrences(event, out)
 
+                eventsExported++
                 out.writeLn(END_EVENT)
             }
             out.writeLn(END_CALENDAR)
