@@ -72,6 +72,10 @@ class MainActivity : SimpleActivity(), NavigationListener {
         storeStoragePaths()
         if (resources.getBoolean(R.bool.portrait_only))
             requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+
+        if (intent?.action == Intent.ACTION_VIEW && intent.data != null) {
+            importEventsFromFile(intent.data!!.path)
+        }
     }
 
     override fun onResume() {
@@ -238,15 +242,19 @@ class MainActivity : SimpleActivity(), NavigationListener {
 
     private fun importEvents() {
         FilePickerDialog(this) {
-            if (it.toLowerCase().endsWith(".ics")) {
-                ImportEventsDialog(this, it) {
-                    if (it) {
-                        updateViewPager()
-                    }
+            importEventsFromFile(it)
+        }
+    }
+
+    private fun importEventsFromFile(path: String) {
+        if (path.toLowerCase().endsWith(".ics")) {
+            ImportEventsDialog(this, path) {
+                if (it) {
+                    updateViewPager()
                 }
-            } else {
-                toast(R.string.invalid_file_format)
             }
+        } else {
+            toast(R.string.invalid_file_format)
         }
     }
 
