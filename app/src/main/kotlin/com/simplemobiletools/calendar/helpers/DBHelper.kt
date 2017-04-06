@@ -49,12 +49,13 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private val EXCEPTIONS_TABLE_NAME = "event_repeat_exceptions"
     private val COL_EXCEPTION_ID = "event_exception_id"
     private val COL_OCCURRENCE_TIMESTAMP = "event_occurrence_timestamp"
+    private val COL_OCCURRENCE_DAYCODE = "event_occurrence_daycode"
     private val COL_PARENT_EVENT_ID = "event_parent_id"
 
     private val mDb: SQLiteDatabase = writableDatabase
 
     companion object {
-        private val DB_VERSION = 8
+        private val DB_VERSION = 9
         val DB_NAME = "events.db"
         val REGULAR_EVENT_TYPE_ID = 1
 
@@ -109,6 +110,11 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             db.execSQL("ALTER TABLE $MAIN_TABLE_NAME ADD COLUMN $COL_PARENT_EVENT_ID INTEGER NOT NULL DEFAULT 0")
             createExceptionsTable(db)
         }
+
+        if (oldVersion < 9) {
+            db.execSQL("ALTER TABLE $EXCEPTIONS_TABLE_NAME ADD COLUMN $COL_OCCURRENCE_DAYCODE INTEGER NOT NULL DEFAULT 0")
+            convertExceptionTimestampToDaycode(db)
+        }
     }
 
     private fun createMetaTable(db: SQLiteDatabase) {
@@ -122,7 +128,8 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     }
 
     private fun createExceptionsTable(db: SQLiteDatabase) {
-        db.execSQL("CREATE TABLE $EXCEPTIONS_TABLE_NAME ($COL_EXCEPTION_ID INTEGER PRIMARY KEY, $COL_PARENT_EVENT_ID INTEGER, $COL_OCCURRENCE_TIMESTAMP INTEGER)")
+        db.execSQL("CREATE TABLE $EXCEPTIONS_TABLE_NAME ($COL_EXCEPTION_ID INTEGER PRIMARY KEY, $COL_PARENT_EVENT_ID INTEGER, $COL_OCCURRENCE_TIMESTAMP INTEGER, " +
+                "$COL_OCCURRENCE_DAYCODE INTEGER)")
     }
 
     private fun addRegularEventType(db: SQLiteDatabase) {
@@ -554,6 +561,28 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             cursor?.close()
         }
         return timestamps
+    }
+
+    private fun convertExceptionTimestampToDaycode(db: SQLiteDatabase) {
+        val projection = arrayOf(COL_EXCEPTION_ID, COL_OCCURRENCE_TIMESTAMP)
+        var cursor: Cursor? = null
+        try {
+            cursor = db.query(EXCEPTIONS_TABLE_NAME, projection, null, null, null, null, null)
+            if (cursor?.moveToFirst() == true) {
+                do {
+                    val id = cursor.getIntValue(COL_EXCEPTION_ID)
+                    val ts = cursor.getIntValue(COL_OCCURRENCE_TIMESTAMP)
+                    val values = ContentValues()
+                    values.put(COL_OCCURRENCE_DAYCODE, Formatter.getDayCodeFromTS(ts))
+
+                    val selection = "$COL_EXCEPTION_ID = ?"
+                    val selectionArgs = arrayOf(id.toString())
+                    db.update(EXCEPTIONS_TABLE_NAME, values, selection, selectionArgs)
+                } while (cursor.moveToNext())
+            }
+        } finally {
+            cursor?.close()
+        }
     }
 
     interface EventUpdateListener {
