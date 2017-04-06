@@ -106,7 +106,6 @@
     <string name="importing_some_events_failed">L\'import de certains evénements a échoué</string>
     <string name="exporting_some_events_failed">Exporting some events failed</string>
     <string name="invalid_file_format">Format de fichier invalide</string>
-    <string name="export_raw_database">Exporter la base de données brute</string>
     <string name="default_event_type">Type d\'evénement par défaut</string>
     <string name="no_events_for_exporting">No events for exporting have been found</string>
     <string name="export_past_events_too">Export past events too</string>

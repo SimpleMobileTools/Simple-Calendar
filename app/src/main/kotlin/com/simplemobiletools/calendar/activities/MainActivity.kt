@@ -36,7 +36,6 @@ import com.simplemobiletools.commons.models.RadioItem
 import com.simplemobiletools.commons.models.Release
 import kotlinx.android.synthetic.main.activity_main.*
 import org.joda.time.DateTime
-import java.io.*
 import java.util.*
 
 class MainActivity : SimpleActivity(), NavigationListener {
@@ -45,7 +44,6 @@ class MainActivity : SimpleActivity(), NavigationListener {
     private val PREFILLED_WEEKS = 41
     private val STORAGE_PERMISSION_IMPORT = 1
     private val STORAGE_PERMISSION_EXPORT = 2
-    private val STORAGE_PERMISSION_EXPORT_RAW = 3
 
     private var mIsMonthSelected = false
     private var mStoredTextColor = 0
@@ -131,7 +129,6 @@ class MainActivity : SimpleActivity(), NavigationListener {
             R.id.filter -> showFilterDialog()
             R.id.import_events -> tryImportEvents()
             R.id.export_events -> tryExportEvents()
-            R.id.export_raw -> tryExportRaw()
             R.id.settings -> launchSettings()
             R.id.about -> launchAbout()
             else -> return super.onOptionsItemSelected(item)
@@ -282,58 +279,6 @@ class MainActivity : SimpleActivity(), NavigationListener {
                     }
                 }).start()
             }
-        }
-    }
-
-    private fun tryExportRaw() {
-        if (hasWriteStoragePermission()) {
-            exportRaw()
-        } else {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), STORAGE_PERMISSION_EXPORT_RAW)
-        }
-    }
-
-    private fun exportRaw() {
-        FilePickerDialog(this, pickFile = false) {
-            val source = getDatabasePath(DBHelper.DB_NAME)
-            val destination = File(it, "calendar_${System.currentTimeMillis()}.db")
-            handleSAFDialog(destination) {
-                Thread({
-                    if (source.exists()) {
-                        val inputStream = FileInputStream(source)
-                        val outputStream: OutputStream?
-
-                        if (needsStupidWritePermissions(destination.absolutePath)) {
-                            var document = getFileDocument(destination.absolutePath, config.treeUri) ?: return@Thread
-                            if (!destination.exists()) {
-                                document = document.createFile("", destination.name)
-                            }
-                            outputStream = contentResolver.openOutputStream(document.uri)
-                        } else {
-                            outputStream = FileOutputStream(destination)
-                        }
-
-                        copyStream(inputStream, outputStream)
-                        inputStream.close()
-                        outputStream?.close()
-
-                        runOnUiThread {
-                            toast(R.string.events_exported_successfully)
-                        }
-                    }
-                }).start()
-            }
-        }
-    }
-
-    private fun copyStream(inputStream: InputStream, out: OutputStream?) {
-        val buf = ByteArray(1024)
-        var len: Int
-        while (true) {
-            len = inputStream.read(buf)
-            if (len <= 0)
-                break
-            out?.write(buf, 0, len)
         }
     }
 
@@ -534,8 +479,6 @@ class MainActivity : SimpleActivity(), NavigationListener {
                 importEvents()
             } else if (requestCode == STORAGE_PERMISSION_EXPORT) {
                 exportEvents()
-            } else if (requestCode == STORAGE_PERMISSION_EXPORT_RAW) {
-                exportRaw()
             }
         }
     }
