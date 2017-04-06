@@ -96,19 +96,19 @@
 
     <!-- Export / Import -->
     <string name="import_events">Importar eventos</string>
-    <string name="export_events">Export events</string>
+    <string name="export_events">Exportar eventos</string>
     <string name="import_events_from_ics">Importar eventos de um ficheiro .ics</string>
-    <string name="export_events_to_ics">Export events to an .ics file</string>
+    <string name="export_events_to_ics">Exportar eventos para um ficheiro .ics</string>
     <string name="events_imported_successfully">Eventos importados com sucesso</string>
-    <string name="events_exported_successfully">Events have been exported successfully</string>
+    <string name="events_exported_successfully">Eventos exportados com sucesso</string>
     <string name="importing_events_failed">Falha de importação</string>
-    <string name="exporting_events_failed">Exporting events failed</string>
+    <string name="exporting_events_failed">Falha de exportação</string>
     <string name="importing_some_events_failed">Alguns eventos não foram importados</string>
-    <string name="exporting_some_events_failed">Exporting some events failed</string>
+    <string name="exporting_some_events_failed">Alguns eventos não foram exportados</string>
     <string name="invalid_file_format">Formato de ficheiro inválido</string>
     <string name="default_event_type">Tipo de evento padrão</string>
-    <string name="no_events_for_exporting">No events for exporting have been found</string>
-    <string name="export_past_events_too">Export past events too</string>
+    <string name="no_events_for_exporting">Não existem eventos para exportação</string>
+    <string name="export_past_events_too">Exportar eventos antigos</string>
 
     <!-- Event details -->
     <string name="title">Título</string>
