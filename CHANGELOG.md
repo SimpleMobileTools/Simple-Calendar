@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 2.3.0 *(2017-04-07)*
+----------------------------
+
+ * Replaced raw database exporting with proper .ics file exporting
+ * Added color themes
+
 Version 2.2.7 *(2017-04-02)*
 ----------------------------
 
