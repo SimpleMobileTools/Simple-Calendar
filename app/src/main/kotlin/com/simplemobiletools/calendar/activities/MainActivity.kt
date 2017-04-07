@@ -499,6 +499,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
             add(Release(59, R.string.release_59))
             add(Release(60, R.string.release_60))
             add(Release(62, R.string.release_62))
+            add(Release(67, R.string.release_67))
             checkWhatsNew(this, BuildConfig.VERSION_CODE)
         }
     }

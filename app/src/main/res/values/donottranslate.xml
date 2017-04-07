@@ -1,6 +1,10 @@
 <resources>
 
     <!-- Release notes -->
+    <string name="release_67">
+        Replaced raw database exporting with proper .ics file exporting\n
+        Added color themes
+    </string>
     <string name="release_62">Allow deleting individual occurrences of repeatable events</string>
     <string name="release_60">Allow toggling 24-hour format in settings</string>
     <string name="release_59">
