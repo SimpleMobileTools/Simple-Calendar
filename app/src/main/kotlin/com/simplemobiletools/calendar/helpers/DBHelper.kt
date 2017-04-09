@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
+import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
 import android.database.sqlite.SQLiteQueryBuilder
 import android.text.TextUtils
@@ -55,7 +56,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private val mDb: SQLiteDatabase = writableDatabase
 
     companion object {
-        private val DB_VERSION = 9
+        private val DB_VERSION = 10
         val DB_NAME = "events.db"
         val REGULAR_EVENT_TYPE_ID = 1
 
@@ -112,7 +113,10 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
 
         if (oldVersion < 9) {
-            db.execSQL("ALTER TABLE $EXCEPTIONS_TABLE_NAME ADD COLUMN $COL_OCCURRENCE_DAYCODE INTEGER NOT NULL DEFAULT 0")
+            try {
+                db.execSQL("ALTER TABLE $EXCEPTIONS_TABLE_NAME ADD COLUMN $COL_OCCURRENCE_DAYCODE INTEGER NOT NULL DEFAULT 0")
+            } catch (e: SQLiteException) {
+            }
             convertExceptionTimestampToDaycode(db)
         }
     }
