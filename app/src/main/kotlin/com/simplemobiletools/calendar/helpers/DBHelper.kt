@@ -387,14 +387,14 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         // get repeatable events
         val selection = "$COL_REPEAT_INTERVAL != 0 AND $COL_START_TS < $toTS"
         val events = getEvents(selection)
-        for (e in events) {
-            while (e.startTS < toTS && (e.repeatLimit == 0 || e.repeatLimit > e.endTS)) {
-                if (e.startTS >= fromTS) {
-                    newEvents.add(e.copy())
-                } else if (getRunningEvents && (e.startTS <= fromTS && e.endTS >= toTS)) {
-                    newEvents.add(e.copy())
+        for (event in events) {
+            while (event.startTS < toTS && (event.repeatLimit == 0 || event.repeatLimit >= event.startTS)) {
+                if (event.startTS >= fromTS) {
+                    newEvents.add(event.copy())
+                } else if (getRunningEvents && (event.startTS <= fromTS && event.endTS >= toTS)) {
+                    newEvents.add(event.copy())
                 }
-                e.addIntervalTime()
+                event.addIntervalTime()
             }
         }
 
