@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 2.3.1 *(2017-04-09)*
+----------------------------
+
+ * Fix some crashing to people who upgraded 2 database versions at once
+ * Add repeatable event if UNTIL is the time of last occurences start
+
 Version 2.3.0 *(2017-04-07)*
 ----------------------------
 
