@@ -110,11 +110,6 @@ class MainActivity : SimpleActivity(), NavigationListener {
         mStoredUse24HourFormat = config.use24hourFormat
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        config.isFirstRun = false
-    }
-
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         menu.findItem(R.id.filter).isVisible = mShouldFilterBeVisible
