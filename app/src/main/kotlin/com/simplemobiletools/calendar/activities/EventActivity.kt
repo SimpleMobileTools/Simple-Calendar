@@ -9,6 +9,7 @@ import android.view.MenuItem
 import android.view.WindowManager
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.dialogs.DeleteEventDialog
+import com.simplemobiletools.calendar.dialogs.RepeatRuleDailyDialog
 import com.simplemobiletools.calendar.dialogs.SelectEventTypeDialog
 import com.simplemobiletools.calendar.extensions.*
 import com.simplemobiletools.calendar.helpers.*
@@ -107,7 +108,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         mRepeatLimit = mEvent.repeatLimit
         mRepeatRule = mEvent.repeatRule
         mEventTypeId = mEvent.eventType
-        checkRepeatLimit(mRepeatInterval)
+        checkRepeatTexts(mRepeatInterval)
     }
 
     private fun setupNewEvent(dateTime: DateTime) {
@@ -144,11 +145,11 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         showEventRepeatIntervalDialog(mRepeatInterval) {
             mRepeatInterval = it
             updateRepetitionText()
-            checkRepeatLimit(it)
+            checkRepeatTexts(it)
         }
     }
 
-    private fun checkRepeatLimit(limit: Int) {
+    private fun checkRepeatTexts(limit: Int) {
         event_repetition_limit_holder.beGoneIf(limit == 0)
         checkRepetitionLimitText()
 
@@ -183,7 +184,11 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     }
 
     private fun showRepetitionRuleDialog() {
-
+        if (mRepeatInterval == DAY) {
+            RepeatRuleDailyDialog(this, mRepeatRule) {
+                mRepeatRule = it
+            }
+        }
     }
 
     private fun checkRepetitionRuleText() {
