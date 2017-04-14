@@ -38,8 +38,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private val COL_EVENT_ID = "event_id"
     private val COL_REPEAT_START = "repeat_start"
     private val COL_REPEAT_INTERVAL = "repeat_interval"
-    private val COL_REPEAT_MONTH = "repeat_month"
-    private val COL_REPEAT_DAY = "repeat_day"
+    private val COL_REPEAT_RULE = "repeat_rule"
     private val COL_REPEAT_LIMIT = "repeat_limit"
 
     private val TYPES_TABLE_NAME = "event_types"
@@ -56,7 +55,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private val mDb: SQLiteDatabase = writableDatabase
 
     companion object {
-        private val DB_VERSION = 10
+        private val DB_VERSION = 11
         val DB_NAME = "events.db"
         val REGULAR_EVENT_TYPE_ID = 1
 
@@ -119,11 +118,16 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             }
             convertExceptionTimestampToDaycode(db)
         }
+
+        if (oldVersion < 11) {
+            db.execSQL("ALTER TABLE $META_TABLE_NAME ADD COLUMN $COL_REPEAT_RULE INTEGER NOT NULL DEFAULT 0")
+            setupRepeatRules(db)
+        }
     }
 
     private fun createMetaTable(db: SQLiteDatabase) {
         db.execSQL("CREATE TABLE $META_TABLE_NAME ($COL_ID INTEGER PRIMARY KEY, $COL_EVENT_ID INTEGER UNIQUE, $COL_REPEAT_START INTEGER, " +
-                "$COL_REPEAT_INTERVAL INTEGER, $COL_REPEAT_MONTH INTEGER, $COL_REPEAT_DAY INTEGER, $COL_REPEAT_LIMIT INTEGER)")
+                "$COL_REPEAT_INTERVAL INTEGER, $COL_REPEAT_LIMIT INTEGER, $COL_REPEAT_RULE INTEGER)")
     }
 
     private fun createTypesTable(db: SQLiteDatabase) {
@@ -202,7 +206,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             put(COL_REPEAT_START, event.startTS)
             put(COL_REPEAT_INTERVAL, event.repeatInterval)
             put(COL_REPEAT_LIMIT, event.repeatLimit)
-            put(COL_REPEAT_DAY, event.repeatDay)
+            put(COL_REPEAT_RULE, event.repeatRule)
         }
     }
 
@@ -468,7 +472,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
     private val allColumns: Array<String>
         get() = arrayOf("$MAIN_TABLE_NAME.$COL_ID", COL_START_TS, COL_END_TS, COL_TITLE, COL_DESCRIPTION, COL_REMINDER_MINUTES, COL_REMINDER_MINUTES_2,
-                COL_REMINDER_MINUTES_3, COL_REPEAT_INTERVAL, COL_REPEAT_MONTH, COL_REPEAT_DAY, COL_IMPORT_ID, COL_FLAGS, COL_REPEAT_LIMIT, COL_EVENT_TYPE)
+                COL_REMINDER_MINUTES_3, COL_REPEAT_INTERVAL, COL_IMPORT_ID, COL_FLAGS, COL_REPEAT_LIMIT, COL_EVENT_TYPE)
 
     private fun fillEvents(cursor: Cursor?): List<Event> {
         val events = ArrayList<Event>()
@@ -482,7 +486,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                     val reminder2Minutes = cursor.getIntValue(COL_REMINDER_MINUTES_2)
                     val reminder3Minutes = cursor.getIntValue(COL_REMINDER_MINUTES_3)
                     val repeatInterval = cursor.getIntValue(COL_REPEAT_INTERVAL)
-                    val repeatDay = cursor.getIntValue(COL_REPEAT_DAY)
+                    val repeatRule = cursor.getIntValue(COL_REPEAT_RULE)
                     val title = cursor.getStringValue(COL_TITLE)
                     val description = cursor.getStringValue(COL_DESCRIPTION)
                     val importId = cursor.getStringValue(COL_IMPORT_ID)
@@ -499,7 +503,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                     }
 
                     val event = Event(id, startTS, endTS, title, description, reminder1Minutes, reminder2Minutes, reminder3Minutes,
-                            repeatInterval, importId, flags, repeatLimit, repeatDay, eventType, ignoreEventOccurrences)
+                            repeatInterval, importId, flags, repeatLimit, repeatRule, eventType, ignoreEventOccurrences)
                     events.add(event)
                 } while (cursor.moveToNext())
             }
@@ -571,6 +575,34 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                     val selection = "$COL_EXCEPTION_ID = ?"
                     val selectionArgs = arrayOf(id.toString())
                     db.update(EXCEPTIONS_TABLE_NAME, values, selection, selectionArgs)
+                } while (cursor.moveToNext())
+            }
+        } finally {
+            cursor?.close()
+        }
+    }
+
+    private fun setupRepeatRules(db: SQLiteDatabase) {
+        val projection = arrayOf(COL_EVENT_ID, COL_REPEAT_INTERVAL)
+        val selection = "$COL_REPEAT_INTERVAL = ? OR $COL_REPEAT_INTERVAL = ?"
+        val selectionArgs = arrayOf(DAY.toString(), MONTH.toString())
+        var cursor: Cursor? = null
+        try {
+            cursor = db.query(META_TABLE_NAME, projection, selection, selectionArgs, null, null, null)
+            if (cursor?.moveToFirst() == true) {
+                do {
+                    val eventId = cursor.getIntValue(COL_EVENT_ID)
+                    val interval = cursor.getIntValue(COL_REPEAT_INTERVAL)
+                    var rule = ALL_DAYS
+                    if (interval == MONTH) {
+                        rule = REPEAT_MONTH_SAME_DAY
+                    }
+
+                    val values = ContentValues()
+                    values.put(COL_REPEAT_RULE, rule)
+                    val curSelection = "$COL_EVENT_ID = ?"
+                    val curSelectionArgs = arrayOf(eventId.toString())
+                    db.update(META_TABLE_NAME, values, curSelection, curSelectionArgs)
                 } while (cursor.moveToNext())
             }
         } finally {

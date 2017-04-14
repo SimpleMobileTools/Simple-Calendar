@@ -25,6 +25,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     private var mReminder3Minutes = 0
     private var mRepeatInterval = 0
     private var mRepeatLimit = 0
+    private var mRepeatRule = 0
     private var mEventTypeId = DBHelper.REGULAR_EVENT_TYPE_ID
     private var mDialogTheme = 0
     private var mEventOccurrenceTS = 0
@@ -104,6 +105,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         mReminder3Minutes = mEvent.reminder3Minutes
         mRepeatInterval = mEvent.repeatInterval
         mRepeatLimit = mEvent.repeatLimit
+        mRepeatRule = mEvent.repeatRule
         mEventTypeId = mEvent.eventType
         checkRepeatLimit(mRepeatInterval)
     }
@@ -151,6 +153,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         checkRepetitionLimitText()
 
         event_repetition_rule_holder.beGoneIf(mRepeatInterval != DAY && mRepeatInterval != MONTH)
+        checkRepetitionRuleText()
     }
 
     private fun showRepetitionLimitDialog() {
@@ -181,6 +184,10 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
     private fun showRepetitionRuleDialog() {
 
+    }
+
+    private fun checkRepetitionRuleText() {
+        event_repetition_rule.text = ""
     }
 
     private fun showEventTypeDialog() {
@@ -304,6 +311,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             repeatInterval = mRepeatInterval
             flags = if (event_all_day.isChecked) (mEvent.flags or FLAG_ALL_DAY) else (mEvent.flags.removeFlag(FLAG_ALL_DAY))
             repeatLimit = if (repeatInterval == 0) 0 else mRepeatLimit
+            repeatRule = mRepeatRule
             eventType = mEventTypeId
         }
 
