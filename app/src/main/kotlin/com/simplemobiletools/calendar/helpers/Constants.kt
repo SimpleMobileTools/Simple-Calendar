@@ -47,6 +47,14 @@ val SYNC_ACCOUNT_NAME = "sync_account_name"
 val letterIDs = intArrayOf(R.string.sunday_letter, R.string.monday_letter, R.string.tuesday_letter, R.string.wednesday_letter,
         R.string.thursday_letter, R.string.friday_letter, R.string.saturday_letter)
 
+val MONDAY = 1
+val TUESDAY = 2
+val WEDNESDAY = 4
+val THURSDAY = 8
+val FRIDAY = 16
+val SATURDAY = 32
+val SUNDAY = 64
+
 // special event flags
 val FLAG_ALL_DAY = 1
 

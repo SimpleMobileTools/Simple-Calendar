@@ -197,22 +197,12 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     }
 
     private fun fillMetaValues(event: Event): ContentValues {
-        val repeatInterval = event.repeatInterval
-        val dateTime = Formatter.getDateTimeFromTS(event.startTS)
-
         return ContentValues().apply {
             put(COL_EVENT_ID, event.id)
             put(COL_REPEAT_START, event.startTS)
-            put(COL_REPEAT_INTERVAL, repeatInterval)
+            put(COL_REPEAT_INTERVAL, event.repeatInterval)
             put(COL_REPEAT_LIMIT, event.repeatLimit)
-
-            if (repeatInterval == MONTH || repeatInterval == YEAR) {
-                put(COL_REPEAT_DAY, dateTime.dayOfMonth)
-            }
-
-            if (repeatInterval == YEAR) {
-                put(COL_REPEAT_MONTH, dateTime.monthOfYear)
-            }
+            put(COL_REPEAT_DAY, event.repeatDay)
         }
     }
 
@@ -492,6 +482,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                     val reminder2Minutes = cursor.getIntValue(COL_REMINDER_MINUTES_2)
                     val reminder3Minutes = cursor.getIntValue(COL_REMINDER_MINUTES_3)
                     val repeatInterval = cursor.getIntValue(COL_REPEAT_INTERVAL)
+                    val repeatDay = cursor.getIntValue(COL_REPEAT_DAY)
                     val title = cursor.getStringValue(COL_TITLE)
                     val description = cursor.getStringValue(COL_DESCRIPTION)
                     val importId = cursor.getStringValue(COL_IMPORT_ID)
@@ -508,7 +499,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                     }
 
                     val event = Event(id, startTS, endTS, title, description, reminder1Minutes, reminder2Minutes, reminder3Minutes,
-                            repeatInterval, importId, flags, repeatLimit, eventType, ignoreEventOccurrences)
+                            repeatInterval, importId, flags, repeatLimit, repeatDay, eventType, ignoreEventOccurrences)
                     events.add(event)
                 } while (cursor.moveToNext())
             }
