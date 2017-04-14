@@ -77,6 +77,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         event_all_day.setOnCheckedChangeListener { compoundButton, isChecked -> toggleAllDay(isChecked) }
         event_repetition.setOnClickListener { showRepeatIntervalDialog() }
         event_repetition_limit_holder.setOnClickListener { showRepetitionLimitDialog() }
+        event_repetition_rule_holder.setOnClickListener { showRepetitionRuleDialog() }
 
         event_reminder_1.setOnClickListener { showReminder1Dialog() }
         event_reminder_2.setOnClickListener { showReminder2Dialog() }
@@ -148,6 +149,8 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     private fun checkRepeatLimit(limit: Int) {
         event_repetition_limit_holder.beGoneIf(limit == 0)
         checkRepetitionLimitText()
+
+        event_repetition_rule_holder.beGoneIf(mRepeatInterval != DAY && mRepeatInterval != MONTH)
     }
 
     private fun showRepetitionLimitDialog() {
@@ -174,6 +177,10 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             val repeatLimitDateTime = Formatter.getDateTimeFromTS(mRepeatLimit)
             Formatter.getDate(applicationContext, repeatLimitDateTime, false)
         }
+    }
+
+    private fun showRepetitionRuleDialog() {
+
     }
 
     private fun showEventTypeDialog() {
