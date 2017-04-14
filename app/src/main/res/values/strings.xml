@@ -164,6 +164,14 @@
     <string name="saturday_letter">S</string>
     <string name="sunday_letter">S</string>
 
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="friday">Friday</string>
+    <string name="saturday">Saturday</string>
+    <string name="sunday">Sunday</string>
+
     <!-- List widget config example events -->
     <string name="sample_title_1">Workout</string>
     <string name="sample_description_1">Leg day</string>

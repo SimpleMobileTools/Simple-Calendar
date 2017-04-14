@@ -171,6 +171,14 @@
     <string name="saturday_letter">S</string>
     <string name="sunday_letter">N</string>
 
+    <string name="monday">Pondelok</string>
+    <string name="tuesday">Utorok</string>
+    <string name="wednesday">Streda</string>
+    <string name="thursday">Štvrtok</string>
+    <string name="friday">Piatok</string>
+    <string name="saturday">Sobota</string>
+    <string name="sunday">Nedeľa</string>
+
     <!-- List widget config example events -->
     <string name="sample_title_1">Cvičenie</string>
     <string name="sample_description_1">Nohy</string>
