@@ -57,12 +57,12 @@ fun Context.scheduleNextEventReminder(event: Event) {
     reminderSeconds.forEach {
         var startTS = event.startTS - it
         if (event.repeatInterval == DAY) {
-            while (startTS < now || isOccurrenceIgnored(event, startTS, it) || isWrongDay(event, startTS, it)) {
+            while (startTS < now || isOccurrenceIgnored(event, startTS, it)) {
                 startTS += event.repeatInterval
             }
             nextTS = Math.min(nextTS, startTS)
         } else if (event.repeatInterval == WEEK) {
-            while (startTS < now || isOccurrenceIgnored(event, startTS, it)) {
+            while (startTS < now || isOccurrenceIgnored(event, startTS, it) || isWrongDay(event, startTS, it)) {
                 startTS += event.repeatInterval
             }
             nextTS = Math.min(nextTS, startTS)

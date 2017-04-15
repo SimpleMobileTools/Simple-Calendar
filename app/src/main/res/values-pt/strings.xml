@@ -48,7 +48,6 @@
     <string name="repeat">Repetição</string>
     <string name="every_day">Todos os dias</string>
     <string name="selected_days">Nos dias selecionados</string>
-    <string name="default_daily_repetition">Default daily repetition</string>
     <string name="on_the_same_day">No mesmo dia de cada mês</string>
     <string name="on_the_last_day">No último dia do mês</string>
     <string name="every_m">A cada</string>

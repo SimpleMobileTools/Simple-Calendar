@@ -48,7 +48,6 @@
     <string name="repeat">Opakovať</string>
     <string name="every_day">Každý deň</string>
     <string name="selected_days">Vo vybraných dňoch</string>
-    <string name="default_daily_repetition">Predvolené denné opakovanie</string>
     <string name="on_the_same_day">Každý mesiac v rovnaký deň</string>
     <string name="on_the_last_day">Posledný deň v mesiaci</string>
     <string name="every_m">Každý</string>

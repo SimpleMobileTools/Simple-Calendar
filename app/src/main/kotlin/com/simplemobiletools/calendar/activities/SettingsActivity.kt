@@ -7,11 +7,9 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Parcelable
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.dialogs.RepeatRuleDailyDialog
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.getReminderText
-import com.simplemobiletools.calendar.helpers.EVERY_DAY
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.toast
 import com.simplemobiletools.commons.extensions.updateTextColors
@@ -52,7 +50,6 @@ class SettingsActivity : SimpleActivity() {
         setupWeeklyEnd()
         setupVibrate()
         setupReminderSound()
-        setupDailyRepetition()
         setupEventReminder()
         updateTextColors(settings_holder)
         checkPrimaryColor()
@@ -185,20 +182,6 @@ class SettingsActivity : SimpleActivity() {
             settings_vibrate.toggle()
             config.vibrateOnReminder = settings_vibrate.isChecked
         }
-    }
-
-    private fun setupDailyRepetition() {
-        updateDailyRepetitionText()
-        settings_default_daily_repetition_holder.setOnClickListener {
-            RepeatRuleDailyDialog(this, config.defaultDailyRepetition) {
-                config.defaultDailyRepetition = it
-                updateDailyRepetitionText()
-            }
-        }
-    }
-
-    private fun updateDailyRepetitionText() {
-        settings_default_daily_repetition.text = getString(if (config.defaultDailyRepetition == EVERY_DAY) R.string.every_day else R.string.selected_days)
     }
 
     private fun setupEventReminder() {

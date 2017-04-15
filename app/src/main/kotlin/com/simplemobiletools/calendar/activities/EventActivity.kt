@@ -152,8 +152,8 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         updateRepetitionText()
         checkRepeatTexts(interval)
 
-        if (mRepeatInterval == DAY) {
-            setRepeatRule(config.defaultDailyRepetition)
+        if (mRepeatInterval == WEEK) {
+            setRepeatRule(Math.pow(2.0, (mEventStartDateTime.dayOfWeek - 1).toDouble()).toInt())
         }
     }
 
@@ -161,7 +161,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         event_repetition_limit_holder.beGoneIf(limit == 0)
         checkRepetitionLimitText()
 
-        event_repetition_rule_holder.beVisibleIf(mRepeatInterval == DAY)
+        event_repetition_rule_holder.beVisibleIf(mRepeatInterval == WEEK)
         checkRepetitionRuleText()
     }
 
@@ -192,7 +192,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     }
 
     private fun showRepetitionRuleDialog() {
-        if (mRepeatInterval == DAY) {
+        if (mRepeatInterval == WEEK) {
             RepeatRuleDailyDialog(this, mRepeatRule) {
                 setRepeatRule(it)
             }
@@ -208,7 +208,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     }
 
     private fun checkRepetitionRuleText() {
-        if (mRepeatInterval == DAY) {
+        if (mRepeatInterval == WEEK) {
             event_repetition_rule.text = getString(if (mRepeatRule == EVERY_DAY) R.string.every_day else R.string.selected_days)
         }
     }
