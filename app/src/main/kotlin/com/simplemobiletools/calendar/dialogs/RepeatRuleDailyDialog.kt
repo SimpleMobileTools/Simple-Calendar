@@ -4,6 +4,7 @@ import android.app.Activity
 import android.support.v7.app.AlertDialog
 import android.view.View
 import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import com.simplemobiletools.commons.views.MyAppCompatCheckbox
 import kotlinx.android.synthetic.main.dialog_vertical_linear_layout.view.*
@@ -25,6 +26,10 @@ class RepeatRuleDailyDialog(val activity: Activity, val curRepeatRule: Int, val 
                 id = pow
                 checkboxes.add(this)
             }
+        }
+
+        if (activity.config.isSundayFirst) {
+            checkboxes.add(0, checkboxes.removeAt(6))
         }
 
         checkboxes.forEach {
