@@ -161,7 +161,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         event_repetition_limit_holder.beGoneIf(limit == 0)
         checkRepetitionLimitText()
 
-        event_repetition_rule_holder.beGoneIf(mRepeatInterval != DAY && mRepeatInterval != MONTH)
+        event_repetition_rule_holder.beVisibleIf(mRepeatInterval == DAY)
         checkRepetitionRuleText()
     }
 
