@@ -6,7 +6,10 @@ import com.simplemobiletools.calendar.dialogs.CustomEventReminderDialog
 import com.simplemobiletools.calendar.dialogs.CustomEventRepeatIntervalDialog
 import com.simplemobiletools.calendar.extensions.getReminderText
 import com.simplemobiletools.calendar.extensions.getRepetitionText
-import com.simplemobiletools.calendar.helpers.*
+import com.simplemobiletools.calendar.helpers.DAY
+import com.simplemobiletools.calendar.helpers.MONTH
+import com.simplemobiletools.calendar.helpers.WEEK
+import com.simplemobiletools.calendar.helpers.YEAR
 import com.simplemobiletools.commons.activities.BaseSimpleActivity
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.models.RadioItem
@@ -59,7 +62,6 @@ open class SimpleActivity : BaseSimpleActivity() {
             add(0)
             add(DAY)
             add(WEEK)
-            add(BIWEEK)
             add(MONTH)
             add(YEAR)
             add(curSeconds)

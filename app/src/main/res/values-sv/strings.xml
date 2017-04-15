@@ -33,7 +33,6 @@
     <string name="no_repetition">No repetition</string>
     <string name="daily">Dagligen</string>
     <string name="weekly">Veckovis</string>
-    <string name="biweekly">Varannan vecka</string>
     <string name="monthly">Månadsvis</string>
     <string name="yearly">Årligen</string>
     <string name="weeks_raw">weeks</string>

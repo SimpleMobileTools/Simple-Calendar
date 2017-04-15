@@ -33,7 +33,6 @@
     <string name="no_repetition">No repetition</string>
     <string name="daily">יום-יומית</string>
     <string name="weekly">שבועית</string>
-    <string name="biweekly">דו-שבועית</string>
     <string name="monthly">חודשית</string>
     <string name="yearly">שנתית</string>
     <string name="weeks_raw">weeks</string>

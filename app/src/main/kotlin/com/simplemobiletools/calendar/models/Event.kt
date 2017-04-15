@@ -22,7 +22,6 @@ data class Event(var id: Int = 0, var startTS: Int = 0, var endTS: Int = 0, var 
         newStart = when (repeatInterval) {
             DAY -> currStart.plusDays(1)
             WEEK -> currStart.plusWeeks(1)
-            BIWEEK -> currStart.plusWeeks(2)
             else -> {
                 if (repeatInterval % YEAR == 0) {
                     currStart.plusYears(repeatInterval / YEAR)

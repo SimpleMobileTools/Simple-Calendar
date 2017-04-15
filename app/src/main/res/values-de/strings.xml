@@ -33,7 +33,6 @@
     <string name="no_repetition">Keine Wiederholung</string>
     <string name="daily">Täglich</string>
     <string name="weekly">Wöchentlich</string>
-    <string name="biweekly">Zweiwöchentlich</string>
     <string name="monthly">Monatlich</string>
     <string name="yearly">Jährlich</string>
     <string name="weeks_raw">Wochen</string>

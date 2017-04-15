@@ -61,7 +61,7 @@ fun Context.scheduleNextEventReminder(event: Event) {
                 startTS += event.repeatInterval
             }
             nextTS = Math.min(nextTS, startTS)
-        } else if (event.repeatInterval == WEEK || event.repeatInterval == BIWEEK) {
+        } else if (event.repeatInterval == WEEK) {
             while (startTS < now || isOccurrenceIgnored(event, startTS, it)) {
                 startTS += event.repeatInterval
             }
@@ -146,7 +146,6 @@ fun Context.getRepetitionText(seconds: Int): String {
         0 -> getString(R.string.no_repetition)
         1 -> getString(R.string.daily)
         7 -> getString(R.string.weekly)
-        14 -> getString(R.string.biweekly)
         30 -> getString(R.string.monthly)
         365 -> getString(R.string.yearly)
         else -> {

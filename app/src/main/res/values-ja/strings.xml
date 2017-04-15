@@ -33,7 +33,6 @@
     <string name="no_repetition">No repetition</string>
     <string name="daily">毎日</string>
     <string name="weekly">毎週</string>
-    <string name="biweekly">隔週</string>
     <string name="monthly">毎月</string>
     <string name="yearly">毎年</string>
     <string name="weeks_raw">weeks</string>

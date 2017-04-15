@@ -33,7 +33,6 @@
     <string name="no_repetition">Pas de répétition</string>
     <string name="daily">Quotidienne</string>
     <string name="weekly">Hebdomadaire</string>
-    <string name="biweekly">Bihebdomadaire</string>
     <string name="monthly">Mensuelle</string>
     <string name="yearly">Annuelle</string>
     <string name="weeks_raw">semaines</string>

@@ -33,7 +33,6 @@
     <string name="no_repetition">No repetition</string>
     <string name="daily">Naponta</string>
     <string name="weekly">Hetente</string>
-    <string name="biweekly">Kéthetente</string>
     <string name="monthly">Havonta</string>
     <string name="yearly">Évente</string>
     <string name="weeks_raw">weeks</string>
