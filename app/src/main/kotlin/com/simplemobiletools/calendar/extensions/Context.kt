@@ -56,8 +56,13 @@ fun Context.scheduleNextEventReminder(event: Event) {
     val reminderSeconds = event.getReminders().reversed().map { it * 60 }
     reminderSeconds.forEach {
         var startTS = event.startTS - it
-        if (event.repeatInterval == DAY || event.repeatInterval == WEEK || event.repeatInterval == BIWEEK) {
-            while (startTS < now || event.ignoreEventOccurrences.contains(Formatter.getDayCodeFromTS(startTS + it).toInt())) {
+        if (event.repeatInterval == DAY) {
+            while (startTS < now || isOccurrenceIgnored(event, startTS, it) || isWrongDay(event, startTS, it)) {
+                startTS += event.repeatInterval
+            }
+            nextTS = Math.min(nextTS, startTS)
+        } else if (event.repeatInterval == WEEK || event.repeatInterval == BIWEEK) {
+            while (startTS < now || isOccurrenceIgnored(event, startTS, it)) {
                 startTS += event.repeatInterval
             }
             nextTS = Math.min(nextTS, startTS)
@@ -75,6 +80,16 @@ fun Context.scheduleNextEventReminder(event: Event) {
 
     if (event.repeatLimit == 0 || event.repeatLimit > nextTS)
         scheduleEventIn(nextTS, event)
+}
+
+private fun isOccurrenceIgnored(event: Event, startTS: Int, reminderSeconds: Int): Boolean {
+    return event.ignoreEventOccurrences.contains(Formatter.getDayCodeFromTS(startTS + reminderSeconds).toInt())
+}
+
+private fun isWrongDay(event: Event, startTS: Int, reminderSeconds: Int): Boolean {
+    val dateTime = Formatter.getDateTimeFromTS(startTS + reminderSeconds)
+    val power = Math.pow(2.0, (dateTime.dayOfWeek - 1).toDouble()).toInt()
+    return event.repeatRule and power == 0
 }
 
 private fun getNewTS(ts: Int, isMonthly: Boolean): Int {
