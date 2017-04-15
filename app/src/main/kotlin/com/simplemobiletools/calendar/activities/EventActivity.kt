@@ -153,7 +153,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         checkRepeatTexts(interval)
 
         if (mRepeatInterval == DAY) {
-            setRepeatRule(EVERY_DAY)
+            setRepeatRule(config.defaultDailyRepetition)
         }
     }
 

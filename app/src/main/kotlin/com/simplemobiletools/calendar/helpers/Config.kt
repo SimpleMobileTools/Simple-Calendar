@@ -49,6 +49,10 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getInt(VIEW, MONTHLY_VIEW)
         set(view) = prefs.edit().putInt(VIEW, view).apply()
 
+    var defaultDailyRepetition: Int
+        get() = prefs.getInt(DAILY_REPETITION, EVERY_DAY)
+        set(dailyRepetition) = prefs.edit().putInt(DAILY_REPETITION, dailyRepetition).apply()
+
     var defaultReminderMinutes: Int
         get() = prefs.getInt(REMINDER_MINUTES, 10)
         set(mins) = prefs.edit().putInt(REMINDER_MINUTES, mins).apply()

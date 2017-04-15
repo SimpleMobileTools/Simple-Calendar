@@ -49,6 +49,7 @@
     <string name="repeat">Repeat</string>
     <string name="every_day">Every day</string>
     <string name="selected_days">On selected days</string>
+    <string name="default_daily_repetition">Default daily repetition</string>
     <string name="on_the_same_day">On the same day every month</string>
     <string name="on_the_last_day">On the last day of the month</string>
     <string name="every_m">Every</string>

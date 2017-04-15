@@ -49,6 +49,7 @@
     <string name="repeat">Widerholung</string>
     <string name="every_day">Täglich</string>
     <string name="selected_days">an ausgewählten Tagen</string>
+    <string name="default_daily_repetition">Default daily repetition</string>
     <string name="on_the_same_day">jeden Monat am selben Tag</string>
     <string name="on_the_last_day">am letzten Tag des Monat</string>
     <string name="every_m">jeden</string>
