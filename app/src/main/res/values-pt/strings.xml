@@ -46,27 +46,27 @@
     <string name="delete_all_occurrences">Apagar todas as ocorrências</string>
     <string name="update_one_only">Atualizar a ocorrência selecionada</string>
     <string name="update_all_occurrences">Atualizar todas as ocorrências</string>
-    <string name="repeat">Repeat</string>
-    <string name="every_day">Every day</string>
-    <string name="selected_days">On selected days</string>
+    <string name="repeat">Repetição</string>
+    <string name="every_day">Todos os dias</string>
+    <string name="selected_days">Nos dias selecionados</string>
     <string name="default_daily_repetition">Default daily repetition</string>
-    <string name="on_the_same_day">On the same day every month</string>
-    <string name="on_the_last_day">On the last day of the month</string>
-    <string name="every_m">Every</string>
-    <string name="first_m">first</string>
-    <string name="second_m">second</string>
-    <string name="third_m">third</string>
-    <string name="fourth_m">fourth</string>
-    <string name="last_m">last</string>
+    <string name="on_the_same_day">No mesmo dia de cada mês</string>
+    <string name="on_the_last_day">No último dia do mês</string>
+    <string name="every_m">A cada</string>
+    <string name="first_m">primeira</string>
+    <string name="second_m">segunda</string>
+    <string name="third_m">terceira</string>
+    <string name="fourth_m">quarta</string>
+    <string name="last_m">última</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
-    <string name="every_f">Every</string>
-    <string name="first_f">first</string>
-    <string name="second_f">second</string>
-    <string name="third_f">third</string>
-    <string name="fourth_f">fourth</string>
-    <string name="last_f">last</string>
+    <string name="every_f">A cada</string>
+    <string name="first_f">primeiro</string>
+    <string name="second_f">segundo</string>
+    <string name="third_f">terceiro</string>
+    <string name="fourth_f">quarto</string>
+    <string name="last_f">último</string>
 
     <plurals name="days">
         <item quantity="one">%1$d dia</item>
@@ -185,23 +185,23 @@
     <string name="saturday_letter">S</string>
     <string name="sunday_letter">D</string>
 
-    <string name="monday">Monday</string>
-    <string name="tuesday">Tuesday</string>
-    <string name="wednesday">Wednesday</string>
-    <string name="thursday">Thursday</string>
-    <string name="friday">Friday</string>
-    <string name="saturday">Saturday</string>
-    <string name="sunday">Sunday</string>
+    <string name="monday">segunda</string>
+    <string name="tuesday">teça</string>
+    <string name="wednesday">quarta</string>
+    <string name="thursday">quinta</string>
+    <string name="friday">sexta</string>
+    <string name="saturday">sábado</string>
+    <string name="sunday">domingo</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
-    <string name="monday_alt">Monday</string>
-    <string name="tuesday_alt">Tuesday</string>
-    <string name="wednesday_alt">Wednesday</string>
-    <string name="thursday_alt">Thursday</string>
-    <string name="friday_alt">Friday</string>
-    <string name="saturday_alt">Saturday</string>
-    <string name="sunday_alt">Sunday</string>
+    <string name="monday_alt">segunda</string>
+    <string name="tuesday_alt">teça</string>
+    <string name="wednesday_alt">quarta</string>
+    <string name="thursday_alt">quinta</string>
+    <string name="friday_alt">sexta</string>
+    <string name="saturday_alt">sábado</string>
+    <string name="sunday_alt">domingo</string>
 
     <!-- List widget config example events -->
     <string name="sample_title_1">Ir ao ginásio</string>
