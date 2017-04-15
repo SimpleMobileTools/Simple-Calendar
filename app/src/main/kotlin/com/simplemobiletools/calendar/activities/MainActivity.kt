@@ -264,13 +264,19 @@ class MainActivity : SimpleActivity(), NavigationListener {
             ExportEventsDialog(this, path) {
                 Thread({
                     val events = dbHelper.getEventsToExport(it)
-                    val result = IcsExporter().exportEvents(this, path, events)
-                    runOnUiThread {
-                        toast(when (result) {
-                            IcsExporter.ExportResult.EXPORT_OK -> R.string.events_exported_successfully
-                            IcsExporter.ExportResult.EXPORT_PARTIAL -> R.string.exporting_some_events_failed
-                            else -> R.string.exporting_events_failed
-                        })
+                    if (events.isEmpty()) {
+                        runOnUiThread {
+                            toast(R.string.no_events_for_exporting)
+                        }
+                    } else {
+                        val result = IcsExporter().exportEvents(this, path, events)
+                        runOnUiThread {
+                            toast(when (result) {
+                                IcsExporter.ExportResult.EXPORT_OK -> R.string.events_exported_successfully
+                                IcsExporter.ExportResult.EXPORT_PARTIAL -> R.string.exporting_some_events_failed
+                                else -> R.string.exporting_events_failed
+                            })
+                        }
                     }
                 }).start()
             }
