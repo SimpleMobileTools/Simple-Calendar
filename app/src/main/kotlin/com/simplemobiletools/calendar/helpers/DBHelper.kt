@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
 import android.database.sqlite.SQLiteQueryBuilder
 import android.text.TextUtils
+import android.util.SparseIntArray
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.scheduleReminder
@@ -381,7 +382,9 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         // get repeatable events
         val selection = "$COL_REPEAT_INTERVAL != 0 AND $COL_START_TS < $toTS"
         val events = getEvents(selection)
+        val startTimes = SparseIntArray(events.size)
         events.forEach {
+            startTimes.put(it.id, it.startTS)
             while (it.startTS < toTS && (it.repeatLimit == 0 || it.repeatLimit >= it.startTS)) {
                 if (it.startTS >= fromTS) {
                     if (it.repeatInterval % WEEK == 0) {
@@ -400,7 +403,20 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             }
         }
 
-        return newEvents
+        val filteredEvents = ArrayList<Event>(newEvents.size)
+        newEvents.forEach {
+            if (it.repeatInterval != 0 && it.repeatInterval % WEEK == 0) {
+                val initialWeekOfYear = Formatter.getDateTimeFromTS(startTimes[it.id]).weekOfWeekyear
+                val currentWeekOfYear = Formatter.getDateTimeFromTS(it.startTS).weekOfWeekyear
+                if ((currentWeekOfYear - initialWeekOfYear) % (it.repeatInterval / WEEK) == 0) {
+                    filteredEvents.add(it)
+                }
+            } else {
+                filteredEvents.add(it)
+            }
+        }
+
+        return filteredEvents
     }
 
     fun getRunningEvents(): List<Event> {
