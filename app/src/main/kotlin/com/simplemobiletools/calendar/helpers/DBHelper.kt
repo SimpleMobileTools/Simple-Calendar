@@ -381,22 +381,22 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         // get repeatable events
         val selection = "$COL_REPEAT_INTERVAL != 0 AND $COL_START_TS < $toTS"
         val events = getEvents(selection)
-        for (event in events) {
-            while (event.startTS < toTS && (event.repeatLimit == 0 || event.repeatLimit >= event.startTS)) {
-                if (event.startTS >= fromTS) {
-                    if (event.repeatInterval == WEEK) {
-                        val dateTime = Formatter.getDateTimeFromTS(event.startTS)
+        events.forEach {
+            while (it.startTS < toTS && (it.repeatLimit == 0 || it.repeatLimit >= it.startTS)) {
+                if (it.startTS >= fromTS) {
+                    if (it.repeatInterval % WEEK == 0) {
+                        val dateTime = Formatter.getDateTimeFromTS(it.startTS)
                         val power = Math.pow(2.0, (dateTime.dayOfWeek - 1).toDouble()).toInt()
-                        if (event.repeatRule and power != 0) {
-                            newEvents.add(event.copy())
+                        if (it.repeatRule and power != 0) {
+                            newEvents.add(it.copy())
                         }
                     } else {
-                        newEvents.add(event.copy())
+                        newEvents.add(it.copy())
                     }
-                } else if (getRunningEvents && (event.startTS <= fromTS && event.endTS >= toTS)) {
-                    newEvents.add(event.copy())
+                } else if (getRunningEvents && (it.startTS <= fromTS && it.endTS >= toTS)) {
+                    newEvents.add(it.copy())
                 }
-                event.addIntervalTime()
+                it.addIntervalTime()
             }
         }
 
@@ -591,17 +591,20 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     }
 
     private fun setupRepeatRules(db: SQLiteDatabase) {
-        val projection = arrayOf(COL_EVENT_ID, COL_REPEAT_INTERVAL)
-        val selection = "$COL_REPEAT_INTERVAL = ? OR $COL_REPEAT_INTERVAL = ?"
-        val selectionArgs = arrayOf(DAY.toString(), MONTH.toString())
+        val projection = arrayOf(COL_EVENT_ID, COL_REPEAT_INTERVAL, COL_REPEAT_START)
+        val selection = "$COL_REPEAT_INTERVAL != 0"
         var cursor: Cursor? = null
         try {
-            cursor = db.query(META_TABLE_NAME, projection, selection, selectionArgs, null, null, null)
+            cursor = db.query(META_TABLE_NAME, projection, selection, null, null, null, null)
             if (cursor?.moveToFirst() == true) {
                 do {
-                    val eventId = cursor.getIntValue(COL_EVENT_ID)
                     val interval = cursor.getIntValue(COL_REPEAT_INTERVAL)
-                    var rule = EVERY_DAY
+                    if (interval != MONTH && interval % WEEK != 0)
+                        continue
+
+                    val eventId = cursor.getIntValue(COL_EVENT_ID)
+                    val start = cursor.getIntValue(COL_REPEAT_START)
+                    var rule = Math.pow(2.0, (Formatter.getDateTimeFromTS(start).dayOfWeek - 1).toDouble()).toInt()
                     if (interval == MONTH) {
                         rule = REPEAT_MONTH_SAME_DAY
                     }

@@ -20,12 +20,15 @@ data class Event(var id: Int = 0, var startTS: Int = 0, var endTS: Int = 0, var 
         val currStart = Formatter.getDateTimeFromTS(startTS)
         val newStart: DateTime
         newStart = when (repeatInterval) {
-            DAY, WEEK -> currStart.plusDays(1) // step through weekly repetition by days too, as it can trigger multiple times a week
+            DAY -> currStart.plusDays(1)
             else -> {
                 if (repeatInterval % YEAR == 0) {
                     currStart.plusYears(repeatInterval / YEAR)
                 } else if (repeatInterval % MONTH == 0) {
                     currStart.plusMonths(repeatInterval / MONTH)
+                } else if (repeatInterval % WEEK == 0) {
+                    // step through weekly repetition by days too, as events can trigger multiple times a week
+                    currStart.plusDays(1)
                 } else {
                     currStart.plusSeconds(repeatInterval)
                 }

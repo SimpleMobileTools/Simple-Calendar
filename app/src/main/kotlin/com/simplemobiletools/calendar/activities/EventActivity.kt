@@ -152,7 +152,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         updateRepetitionText()
         checkRepeatTexts(interval)
 
-        if (mRepeatInterval == WEEK) {
+        if (isXWeeklyRepetition()) {
             setRepeatRule(Math.pow(2.0, (mEventStartDateTime.dayOfWeek - 1).toDouble()).toInt())
         }
     }
@@ -161,7 +161,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         event_repetition_limit_holder.beGoneIf(limit == 0)
         checkRepetitionLimitText()
 
-        event_repetition_rule_holder.beVisibleIf(mRepeatInterval == WEEK)
+        event_repetition_rule_holder.beVisibleIf(isXWeeklyRepetition())
         checkRepetitionRuleText()
     }
 
@@ -192,7 +192,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     }
 
     private fun showRepetitionRuleDialog() {
-        if (mRepeatInterval == WEEK) {
+        if (isXWeeklyRepetition()) {
             RepeatRuleDailyDialog(this, mRepeatRule) {
                 setRepeatRule(it)
             }
@@ -208,7 +208,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     }
 
     private fun checkRepetitionRuleText() {
-        if (mRepeatInterval == WEEK) {
+        if (isXWeeklyRepetition()) {
             event_repetition_rule.text = getString(if (mRepeatRule == EVERY_DAY) R.string.every_day else R.string.selected_days)
         }
     }
@@ -273,10 +273,12 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         }
     }
 
-    fun toggleAllDay(isChecked: Boolean) {
+    private fun toggleAllDay(isChecked: Boolean) {
         event_start_time.beGoneIf(isChecked)
         event_end_time.beGoneIf(isChecked)
     }
+
+    private fun isXWeeklyRepetition() = mRepeatInterval != 0 && mRepeatInterval % WEEK == 0
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_event, menu)

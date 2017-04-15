@@ -56,7 +56,7 @@ fun Context.scheduleNextEventReminder(event: Event) {
     val reminderSeconds = event.getReminders().reversed().map { it * 60 }
     reminderSeconds.forEach {
         var startTS = event.startTS - it
-        if (event.repeatInterval == DAY || event.repeatInterval == WEEK) {
+        if (event.repeatInterval == DAY || (event.repeatInterval != 0 && event.repeatInterval % WEEK == 0)) {
             while (startTS < now || isOccurrenceIgnored(event, startTS, it) || isWrongDay(event, startTS, it)) {
                 startTS += DAY
             }
