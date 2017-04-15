@@ -56,14 +56,9 @@ fun Context.scheduleNextEventReminder(event: Event) {
     val reminderSeconds = event.getReminders().reversed().map { it * 60 }
     reminderSeconds.forEach {
         var startTS = event.startTS - it
-        if (event.repeatInterval == DAY) {
-            while (startTS < now || isOccurrenceIgnored(event, startTS, it)) {
-                startTS += event.repeatInterval
-            }
-            nextTS = Math.min(nextTS, startTS)
-        } else if (event.repeatInterval == WEEK) {
+        if (event.repeatInterval == DAY || event.repeatInterval == WEEK) {
             while (startTS < now || isOccurrenceIgnored(event, startTS, it) || isWrongDay(event, startTS, it)) {
-                startTS += event.repeatInterval
+                startTS += DAY
             }
             nextTS = Math.min(nextTS, startTS)
         } else if (event.repeatInterval == MONTH) {
@@ -87,6 +82,9 @@ private fun isOccurrenceIgnored(event: Event, startTS: Int, reminderSeconds: Int
 }
 
 private fun isWrongDay(event: Event, startTS: Int, reminderSeconds: Int): Boolean {
+    if (event.repeatInterval == DAY)
+        return false
+
     val dateTime = Formatter.getDateTimeFromTS(startTS + reminderSeconds)
     val power = Math.pow(2.0, (dateTime.dayOfWeek - 1).toDouble()).toInt()
     return event.repeatRule and power == 0

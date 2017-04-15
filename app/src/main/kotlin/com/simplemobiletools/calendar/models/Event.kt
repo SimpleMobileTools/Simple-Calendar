@@ -20,8 +20,7 @@ data class Event(var id: Int = 0, var startTS: Int = 0, var endTS: Int = 0, var 
         val currStart = Formatter.getDateTimeFromTS(startTS)
         val newStart: DateTime
         newStart = when (repeatInterval) {
-            DAY -> currStart.plusDays(1)
-            WEEK -> currStart.plusWeeks(1)
+            DAY, WEEK -> currStart.plusDays(1) // step through weekly repetition by days too, as it can trigger multiple times a week
             else -> {
                 if (repeatInterval % YEAR == 0) {
                     currStart.plusYears(repeatInterval / YEAR)
