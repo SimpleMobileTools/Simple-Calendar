@@ -593,7 +593,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                 do {
                     val eventId = cursor.getIntValue(COL_EVENT_ID)
                     val interval = cursor.getIntValue(COL_REPEAT_INTERVAL)
-                    var rule = ALL_DAYS
+                    var rule = EVERY_DAY
                     if (interval == MONTH) {
                         rule = REPEAT_MONTH_SAME_DAY
                     }

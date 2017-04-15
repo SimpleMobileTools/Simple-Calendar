@@ -151,6 +151,10 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         mRepeatInterval = interval
         updateRepetitionText()
         checkRepeatTexts(interval)
+
+        if (mRepeatInterval == DAY) {
+            setRepeatRule(EVERY_DAY)
+        }
     }
 
     private fun checkRepeatTexts(limit: Int) {
@@ -190,18 +194,22 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     private fun showRepetitionRuleDialog() {
         if (mRepeatInterval == DAY) {
             RepeatRuleDailyDialog(this, mRepeatRule) {
-                mRepeatRule = it
-                checkRepetitionRuleText()
-                if (it == 0) {
-                    setRepeatInterval(0)
-                }
+                setRepeatRule(it)
             }
+        }
+    }
+
+    private fun setRepeatRule(rule: Int) {
+        mRepeatRule = rule
+        checkRepetitionRuleText()
+        if (rule == 0) {
+            setRepeatInterval(0)
         }
     }
 
     private fun checkRepetitionRuleText() {
         if (mRepeatInterval == DAY) {
-            event_repetition_rule.text = getString(if (mRepeatRule == 127) R.string.every_day else R.string.selected_days)
+            event_repetition_rule.text = getString(if (mRepeatRule == EVERY_DAY) R.string.every_day else R.string.selected_days)
         }
     }
 

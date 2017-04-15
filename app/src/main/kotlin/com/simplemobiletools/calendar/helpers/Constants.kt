@@ -54,7 +54,7 @@ val THURSDAY = 8
 val FRIDAY = 16
 val SATURDAY = 32
 val SUNDAY = 64
-val ALL_DAYS = 127
+val EVERY_DAY = 127
 
 // repeat_rule for monthly repetition
 val REPEAT_MONTH_SAME_DAY = 1
