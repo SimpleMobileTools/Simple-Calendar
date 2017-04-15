@@ -187,12 +187,15 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         if (mRepeatInterval == DAY) {
             RepeatRuleDailyDialog(this, mRepeatRule) {
                 mRepeatRule = it
+                checkRepetitionRuleText()
             }
         }
     }
 
     private fun checkRepetitionRuleText() {
-        event_repetition_rule.text = ""
+        if (mRepeatInterval == DAY) {
+            event_repetition_rule.text = getString(if (mRepeatRule == 127) R.string.every_day else R.string.selected_days)
+        }
     }
 
     private fun showEventTypeDialog() {
