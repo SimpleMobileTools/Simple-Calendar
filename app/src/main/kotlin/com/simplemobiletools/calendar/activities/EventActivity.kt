@@ -143,10 +143,14 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
     private fun showRepeatIntervalDialog() {
         showEventRepeatIntervalDialog(mRepeatInterval) {
-            mRepeatInterval = it
-            updateRepetitionText()
-            checkRepeatTexts(it)
+            setRepeatInterval(it)
         }
+    }
+
+    private fun setRepeatInterval(interval: Int) {
+        mRepeatInterval = interval
+        updateRepetitionText()
+        checkRepeatTexts(interval)
     }
 
     private fun checkRepeatTexts(limit: Int) {
@@ -188,6 +192,9 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             RepeatRuleDailyDialog(this, mRepeatRule) {
                 mRepeatRule = it
                 checkRepetitionRuleText()
+                if (it == 0) {
+                    setRepeatInterval(0)
+                }
             }
         }
     }
