@@ -384,7 +384,15 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         for (event in events) {
             while (event.startTS < toTS && (event.repeatLimit == 0 || event.repeatLimit >= event.startTS)) {
                 if (event.startTS >= fromTS) {
-                    newEvents.add(event.copy())
+                    if (event.repeatInterval == DAY) {
+                        val dateTime = Formatter.getDateTimeFromTS(event.startTS)
+                        val power = Math.pow(2.0, (dateTime.dayOfWeek - 1).toDouble()).toInt()
+                        if (event.repeatRule and power != 0) {
+                            newEvents.add(event.copy())
+                        }
+                    } else {
+                        newEvents.add(event.copy())
+                    }
                 } else if (getRunningEvents && (event.startTS <= fromTS && event.endTS >= toTS)) {
                     newEvents.add(event.copy())
                 }
