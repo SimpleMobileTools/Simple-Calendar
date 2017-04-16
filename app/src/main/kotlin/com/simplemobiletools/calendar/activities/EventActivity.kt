@@ -78,8 +78,8 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
         event_all_day.setOnCheckedChangeListener { compoundButton, isChecked -> toggleAllDay(isChecked) }
         event_repetition.setOnClickListener { showRepeatIntervalDialog() }
-        event_repetition_limit_holder.setOnClickListener { showRepetitionLimitDialog() }
         event_repetition_rule_holder.setOnClickListener { showRepetitionRuleDialog() }
+        event_repetition_limit_holder.setOnClickListener { showRepetitionLimitDialog() }
 
         event_reminder_1.setOnClickListener { showReminder1Dialog() }
         event_reminder_2.setOnClickListener { showReminder2Dialog() }
@@ -166,6 +166,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     }
 
     private fun showRepetitionLimitDialog() {
+        hideKeyboard()
         val now = (System.currentTimeMillis() / 1000).toInt()
         val repeatLimitDateTime = Formatter.getDateTimeFromTS(if (mRepeatLimit != 0) mRepeatLimit else now)
         DatePickerDialog(this, mDialogTheme, repetitionLimitDateSetListener, repeatLimitDateTime.year, repeatLimitDateTime.monthOfYear - 1,
@@ -192,6 +193,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     }
 
     private fun showRepetitionRuleDialog() {
+        hideKeyboard()
         if (isXWeeklyRepetition()) {
             RepeatRuleDailyDialog(this, mRepeatRule) {
                 setRepeatRule(it)
@@ -214,6 +216,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     }
 
     private fun showEventTypeDialog() {
+        hideKeyboard()
         SelectEventTypeDialog(this, mEventTypeId) {
             mEventTypeId = it
             updateEventType()
@@ -274,6 +277,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     }
 
     private fun toggleAllDay(isChecked: Boolean) {
+        hideKeyboard()
         event_start_time.beGoneIf(isChecked)
         event_end_time.beGoneIf(isChecked)
     }

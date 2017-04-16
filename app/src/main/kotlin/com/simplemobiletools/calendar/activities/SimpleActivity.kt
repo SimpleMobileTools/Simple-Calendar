@@ -12,6 +12,7 @@ import com.simplemobiletools.calendar.helpers.WEEK
 import com.simplemobiletools.calendar.helpers.YEAR
 import com.simplemobiletools.commons.activities.BaseSimpleActivity
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
+import com.simplemobiletools.commons.extensions.hideKeyboard
 import com.simplemobiletools.commons.models.RadioItem
 import java.util.TreeSet
 import kotlin.collections.ArrayList
@@ -22,6 +23,7 @@ open class SimpleActivity : BaseSimpleActivity() {
     }
 
     protected fun showEventReminderDialog(curMinutes: Int, callback: (minutes: Int) -> Unit) {
+        hideKeyboard()
         val minutes = TreeSet<Int>()
         minutes.apply {
             add(-1)
@@ -57,6 +59,7 @@ open class SimpleActivity : BaseSimpleActivity() {
     }
 
     protected fun showEventRepeatIntervalDialog(curSeconds: Int, callback: (minutes: Int) -> Unit) {
+        hideKeyboard()
         val seconds = TreeSet<Int>()
         seconds.apply {
             add(0)
