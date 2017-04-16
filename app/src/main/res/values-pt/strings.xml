@@ -45,6 +45,9 @@
     <string name="delete_all_occurrences">Apagar todas as ocorrências</string>
     <string name="update_one_only">Atualizar a ocorrência selecionada</string>
     <string name="update_all_occurrences">Atualizar todas as ocorrências</string>
+    <string name="repeat_till_date">Repeat till a date</string>
+    <string name="repeat_x_times">Repeat x times</string>
+    <string name="times">times</string>
     <string name="repeat">Repetição</string>
     <string name="every_day">Todos os dias</string>
     <string name="selected_days">Nos dias selecionados</string>

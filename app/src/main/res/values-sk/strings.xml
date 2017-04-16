@@ -45,6 +45,9 @@
     <string name="delete_all_occurrences">Vymazať všetky opakovania</string>
     <string name="update_one_only">Upraviť iba označené opakovania</string>
     <string name="update_all_occurrences">Upraviť všetky opakovania</string>
+    <string name="repeat_till_date">Opakovať po dátum</string>
+    <string name="repeat_x_times">Opakovať x krát</string>
+    <string name="times">krát</string>
     <string name="repeat">Opakovať</string>
     <string name="every_day">Každý deň</string>
     <string name="selected_days">Vo vybraných dňoch</string>

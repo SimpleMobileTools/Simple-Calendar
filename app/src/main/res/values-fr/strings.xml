@@ -45,6 +45,9 @@
     <string name="delete_all_occurrences">Supprimer toutes les occurrences</string>
     <string name="update_one_only">Mettre à jour l\'occurrence sélectionnée seulement</string>
     <string name="update_all_occurrences">Mettre à jour toutes les occurrences</string>
+    <string name="repeat_till_date">Repeat till a date</string>
+    <string name="repeat_x_times">Repeat x times</string>
+    <string name="times">times</string>
     <string name="repeat">Repeat</string>
     <string name="every_day">Every day</string>
     <string name="selected_days">On selected days</string>
