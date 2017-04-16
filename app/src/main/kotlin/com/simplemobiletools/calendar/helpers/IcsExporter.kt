@@ -99,7 +99,7 @@ class IcsExporter {
     }
 
     private fun getByDay(event: Event): String {
-        return if (event.repeatInterval != WEEK) {
+        return if (event.repeatInterval == 0 || event.repeatInterval % WEEK != 0) {
             ""
         } else {
             val days = getByDayString(event.repeatRule)
