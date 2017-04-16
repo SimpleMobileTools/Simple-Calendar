@@ -85,9 +85,7 @@ private fun isWrongDay(event: Event, startTS: Int, reminderSeconds: Int): Boolea
     if (event.repeatInterval == DAY)
         return false
 
-    val dateTime = Formatter.getDateTimeFromTS(startTS + reminderSeconds)
-    val power = Math.pow(2.0, (dateTime.dayOfWeek - 1).toDouble()).toInt()
-    return event.repeatRule and power == 0
+    return !(startTS + reminderSeconds).isTsOnValidDay(event)
 }
 
 private fun getNewTS(ts: Int, isMonthly: Boolean): Int {

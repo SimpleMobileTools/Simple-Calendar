@@ -10,10 +10,7 @@ import android.database.sqlite.SQLiteQueryBuilder
 import android.text.TextUtils
 import android.util.SparseIntArray
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.extensions.config
-import com.simplemobiletools.calendar.extensions.scheduleReminder
-import com.simplemobiletools.calendar.extensions.seconds
-import com.simplemobiletools.calendar.extensions.updateWidgets
+import com.simplemobiletools.calendar.extensions.*
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.models.EventType
 import com.simplemobiletools.commons.extensions.getIntValue
@@ -388,9 +385,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             while (it.startTS < toTS && (it.repeatLimit == 0 || it.repeatLimit >= it.startTS)) {
                 if (it.startTS >= fromTS) {
                     if (it.repeatInterval % WEEK == 0) {
-                        val dateTime = Formatter.getDateTimeFromTS(it.startTS)
-                        val power = Math.pow(2.0, (dateTime.dayOfWeek - 1).toDouble()).toInt()
-                        if (it.repeatRule and power != 0) {
+                        if (it.startTS.isTsOnValidDay(it)) {
                             newEvents.add(it.copy())
                         }
                     } else {
