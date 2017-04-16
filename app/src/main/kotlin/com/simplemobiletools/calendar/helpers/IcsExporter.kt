@@ -64,7 +64,8 @@ class IcsExporter {
         val freq = getFreq(repeatInterval)
         val interval = getInterval(repeatInterval)
         val repeatLimit = getRepeatLimitString(event)
-        val rrule = "$RRULE$FREQ=$freq;$INTERVAL=$interval$repeatLimit"
+        val byDay = getByDay(event)
+        val rrule = "$RRULE$FREQ=$freq;$INTERVAL=$interval$repeatLimit$byDay"
         out.writeLn(rrule)
     }
 
@@ -95,6 +96,34 @@ class IcsExporter {
             ""
         else
             ";$UNTIL=${Formatter.getDayCodeFromTS(event.repeatLimit)}"
+    }
+
+    private fun getByDay(event: Event): String {
+        return if (event.repeatInterval != WEEK) {
+            ""
+        } else {
+            val days = getByDayString(event.repeatRule)
+            ";$BYDAY=$days"
+        }
+    }
+
+    private fun getByDayString(rule: Int): String {
+        var result = ""
+        if (rule and MONDAY != 0)
+            result += "$MO,"
+        if (rule and TUESDAY != 0)
+            result += "$TU,"
+        if (rule and WEDNESDAY != 0)
+            result += "$WE,"
+        if (rule and THURSDAY != 0)
+            result += "$TH,"
+        if (rule and FRIDAY != 0)
+            result += "$FR,"
+        if (rule and SATURDAY != 0)
+            result += "$SA,"
+        if (rule and SUNDAY != 0)
+            result += "$SU,"
+        return result.trimEnd(',')
     }
 
     private fun fillReminders(event: Event, out: BufferedWriter) {
