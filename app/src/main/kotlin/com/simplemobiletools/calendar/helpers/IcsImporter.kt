@@ -26,6 +26,7 @@ class IcsImporter {
     var curRepeatExceptions = ArrayList<Int>()
     var curRepeatInterval = 0
     var curRepeatLimit = 0
+    var curRepeatRule = 0
     var curEventType = DBHelper.REGULAR_EVENT_TYPE_ID
     var isNotificationDescription = false
     var lastReminderAction = ""
@@ -86,14 +87,13 @@ class IcsImporter {
                         importIDs.add(curImportId)
                         val event = Event(0, curStart, curEnd, curTitle, curDescription, curReminderMinutes.getOrElse(0, { -1 }),
                                 curReminderMinutes.getOrElse(1, { -1 }), curReminderMinutes.getOrElse(2, { -1 }), curRepeatInterval,
-                                curImportId, curFlags, curRepeatLimit, curEventType)
+                                curImportId, curFlags, curRepeatLimit, curRepeatRule, curEventType)
 
                         val eventId = context.dbHelper.insert(event)
 
                         for (exceptionTS in curRepeatExceptions) {
                             context.dbHelper.addEventRepeatException(eventId, exceptionTS)
                         }
-
                         eventsImported++
                         resetValues()
                     }
@@ -188,8 +188,12 @@ class IcsImporter {
             val value = keyValue[1]
             if (key == FREQ) {
                 frequencySeconds = getFrequencySeconds(value)
+                if (value == WEEKLY) {
+                    val start = Formatter.getDateTimeFromTS(curStart)
+                    curRepeatRule = Math.pow(2.0, (start.dayOfWeek - 1).toDouble()).toInt()
+                }
             } else if (key == COUNT) {
-                count = value.toInt()
+                count = value.toInt() - 1
                 if (frequencySeconds != 0) {
                     curRepeatLimit = curStart + count * frequencySeconds
                 }
@@ -200,8 +204,10 @@ class IcsImporter {
                 val repeatInterval = frequencySeconds * interval
                 if (count > 0) {
                     curRepeatLimit = curStart + count * repeatInterval
-                    return repeatInterval
+                    frequencySeconds *= interval
                 }
+            } else if (key == BYDAY) {
+                handleRepeatRule(value)
             }
         }
         return frequencySeconds
@@ -217,6 +223,23 @@ class IcsImporter {
         }
     }
 
+    private fun handleRepeatRule(value: String) {
+        if (value.contains(MO))
+            curRepeatRule = curRepeatRule or MONDAY
+        if (value.contains(TU))
+            curRepeatRule = curRepeatRule or TUESDAY
+        if (value.contains(WE))
+            curRepeatRule = curRepeatRule or WEDNESDAY
+        if (value.contains(TH))
+            curRepeatRule = curRepeatRule or THURSDAY
+        if (value.contains(FR))
+            curRepeatRule = curRepeatRule or FRIDAY
+        if (value.contains(SA))
+            curRepeatRule = curRepeatRule or SATURDAY
+        if (value.contains(SU))
+            curRepeatRule = curRepeatRule or SUNDAY
+    }
+
     private fun resetValues() {
         curStart = -1
         curEnd = -1
@@ -228,6 +251,7 @@ class IcsImporter {
         curRepeatExceptions = ArrayList<Int>()
         curRepeatInterval = 0
         curRepeatLimit = 0
+        curRepeatRule = 0
         curEventType = DBHelper.REGULAR_EVENT_TYPE_ID
         isNotificationDescription = false
         lastReminderAction = ""
