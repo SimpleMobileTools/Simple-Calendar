@@ -211,8 +211,28 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
     private fun checkRepetitionRuleText() {
         if (isXWeeklyRepetition()) {
-            event_repetition_rule.text = getString(if (mRepeatRule == EVERY_DAY) R.string.every_day else R.string.selected_days)
+            event_repetition_rule.text = if (mRepeatRule == EVERY_DAY) getString(R.string.every_day) else getSelectedDaysString()
         }
+    }
+
+    private fun getSelectedDaysString(): String {
+        var days = ""
+        if (mRepeatRule and MONDAY != 0)
+            days += "${getString(R.string.monday).substringTo(3)}, "
+        if (mRepeatRule and TUESDAY != 0)
+            days += "${getString(R.string.tuesday).substringTo(3)}, "
+        if (mRepeatRule and WEDNESDAY != 0)
+            days += "${getString(R.string.wednesday).substringTo(3)}, "
+        if (mRepeatRule and THURSDAY != 0)
+            days += "${getString(R.string.thursday).substringTo(3)}, "
+        if (mRepeatRule and FRIDAY != 0)
+            days += "${getString(R.string.friday).substringTo(3)}, "
+        if (mRepeatRule and SATURDAY != 0)
+            days += "${getString(R.string.saturday).substringTo(3)}, "
+        if (mRepeatRule and SUNDAY != 0)
+            days += "${getString(R.string.sunday).substringTo(3)}, "
+
+        return days.trim().trimEnd(',')
     }
 
     private fun showEventTypeDialog() {

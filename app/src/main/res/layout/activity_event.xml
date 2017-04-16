@@ -251,10 +251,8 @@
 
             <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/event_repetition_rule_label"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toLeftOf="@+id/event_repetition_rule"
-                android:layout_toStartOf="@+id/event_repetition_rule"
                 android:clickable="false"
                 android:paddingBottom="@dimen/activity_margin"
                 android:paddingTop="@dimen/activity_margin"
@@ -263,11 +261,16 @@
 
             <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/event_repetition_rule"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
+                android:layout_toEndOf="@+id/event_repetition_rule_label"
+                android:layout_toRightOf="@+id/event_repetition_rule_label"
                 android:clickable="false"
+                android:ellipsize="end"
+                android:gravity="end"
+                android:lines="1"
                 android:padding="@dimen/activity_margin"
                 android:text="@string/every_day"
                 android:textSize="@dimen/day_text_size"/>
