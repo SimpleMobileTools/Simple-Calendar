@@ -10,6 +10,7 @@ import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.dialogs.DeleteEventDialog
 import com.simplemobiletools.calendar.extensions.config
+import com.simplemobiletools.calendar.extensions.shareEvents
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.interfaces.DeleteEventsListener
 import com.simplemobiletools.calendar.models.Event
@@ -49,6 +50,7 @@ class DayEventsAdapter(val activity: SimpleActivity, val mItems: List<Event>, va
     val multiSelectorMode = object : ModalMultiSelectorCallback(multiSelector) {
         override fun onActionItemClicked(mode: ActionMode, item: MenuItem): Boolean {
             when (item.itemId) {
+                R.id.cab_share -> shareEvents()
                 R.id.cab_delete -> askConfirmDelete()
                 else -> return false
             }
@@ -69,6 +71,15 @@ class DayEventsAdapter(val activity: SimpleActivity, val mItems: List<Event>, va
             views.forEach { toggleItemSelection(it, false) }
             markedItems.clear()
         }
+    }
+
+    private fun shareEvents() {
+        val selections = multiSelector.selectedPositions
+        val eventIds = ArrayList<Int>(selections.size)
+        selections.forEach {
+            eventIds.add(mItems[it].id)
+        }
+        activity.shareEvents(eventIds.distinct())
     }
 
     private fun askConfirmDelete() {

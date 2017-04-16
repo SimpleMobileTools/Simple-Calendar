@@ -306,17 +306,23 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_event, menu)
-        menu.findItem(R.id.cab_delete).isVisible = mEvent.id != 0
+        menu.findItem(R.id.delete).isVisible = mEvent.id != 0
+        menu.findItem(R.id.share).isVisible = mEvent.id != 0
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.cab_delete -> deleteEvent()
+            R.id.share -> shareEvent()
+            R.id.delete -> deleteEvent()
             R.id.save -> saveEvent()
             else -> return super.onOptionsItemSelected(item)
         }
         return true
+    }
+
+    private fun shareEvent() {
+        shareEvents(arrayListOf(mEvent.id))
     }
 
     private fun deleteEvent() {
