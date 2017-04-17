@@ -36,6 +36,7 @@ import com.simplemobiletools.commons.models.RadioItem
 import com.simplemobiletools.commons.models.Release
 import kotlinx.android.synthetic.main.activity_main.*
 import org.joda.time.DateTime
+import java.io.File
 import java.util.*
 
 class MainActivity : SimpleActivity(), NavigationListener {
@@ -269,7 +270,9 @@ class MainActivity : SimpleActivity(), NavigationListener {
                             toast(R.string.no_events_for_exporting)
                         }
                     } else {
-                        val result = IcsExporter().exportEvents(this, path, events)
+                        val filename = "events_${System.currentTimeMillis() / 1000}.ics"
+                        val file = File(path, filename)
+                        val result = IcsExporter().exportEvents(this, file, events)
                         runOnUiThread {
                             toast(when (result) {
                                 IcsExporter.ExportResult.EXPORT_OK -> R.string.events_exported_successfully

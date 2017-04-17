@@ -10,6 +10,7 @@
     <string name="add_some_events">Du kannst neue Termine mit dem Plus Button unten rechts erstellen.</string>
     <string name="details">Details</string>
     <string name="go_to_today">Gehe zu Heute</string>
+    <string name="no_app_for_ics">No app capable of handling .ics files has been found</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Monatskalender</string>

@@ -443,10 +443,10 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         return events
     }
 
-    fun getEventsWithIds(ids: List<Int>): List<Event> {
+    fun getEventsWithIds(ids: List<Int>): ArrayList<Event> {
         val args = TextUtils.join(", ", ids)
         val selection = "$MAIN_TABLE_NAME.$COL_ID IN ($args)"
-        return getEvents(selection)
+        return getEvents(selection) as ArrayList<Event>
     }
 
     fun getEventsAtReboot(): List<Event> {

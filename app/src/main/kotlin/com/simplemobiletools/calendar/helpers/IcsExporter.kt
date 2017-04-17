@@ -16,9 +16,8 @@ class IcsExporter {
     var eventsExported = 0
     var eventsFailed = 0
 
-    fun exportEvents(context: Context, path: String, events: ArrayList<Event>): ExportResult {
-        val filename = "events_${System.currentTimeMillis() / 1000}.ics"
-        File(path, filename).bufferedWriter().use { out ->
+    fun exportEvents(context: Context, file: File, events: ArrayList<Event>): ExportResult {
+        file.bufferedWriter().use { out ->
             out.writeLn(BEGIN_CALENDAR)
             for (event in events) {
                 out.writeLn(BEGIN_EVENT)

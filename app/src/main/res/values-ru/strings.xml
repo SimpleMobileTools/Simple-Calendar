@@ -10,6 +10,7 @@
     <string name="add_some_events">Вы можете их добавить, нажав на кнопку с плюсом внизу.</string>
     <string name="details">Подробности</string>
     <string name="go_to_today">Сегодня</string>
+    <string name="no_app_for_ics">No app capable of handling .ics files has been found</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Календарь на месяц</string>

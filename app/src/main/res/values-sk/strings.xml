@@ -10,6 +10,7 @@
     <string name="add_some_events">Viete ich pridať pomocou tlačidla Plus v pravom dolnom rohu.</string>
     <string name="details">Detaily</string>
     <string name="go_to_today">Prejsť na dnešok</string>
+    <string name="no_app_for_ics">Nenašla sa žiadna aplikácia schopná spracovania .ics súboru</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Kalendár mesačný</string>
