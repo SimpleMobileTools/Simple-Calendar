@@ -70,8 +70,10 @@ fun Context.scheduleNextEventReminder(event: Event) {
         }
     }
 
-    if (nextTS == 0 || nextTS < now || nextTS == Int.MAX_VALUE)
+    if (nextTS == 0 || nextTS < now || nextTS == Int.MAX_VALUE) {
+        cancelNotification(event.id)
         return
+    }
 
     if (event.repeatLimit == 0 || event.repeatLimit > nextTS)
         scheduleEventIn(nextTS, event)
@@ -113,6 +115,10 @@ fun Context.scheduleEventIn(notifTS: Int, event: Event) {
         alarmManager.setExact(AlarmManager.ELAPSED_REALTIME_WAKEUP, notifInMs, pendingIntent)
     else
         alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, notifInMs, pendingIntent)
+}
+
+fun Context.cancelNotification(id: Int) {
+    getNotificationIntent(this, id).cancel()
 }
 
 private fun getNotificationIntent(context: Context, eventId: Int): PendingIntent {
