@@ -1,6 +1,16 @@
 Changelog
 ==========
 
+Version 2.3.2 *(2017-04-17)*
+----------------------------
+
+ * Added more advanced weekly repetition by week days
+ * Added sharing individual events by creating temporary .ics files
+ * Properly start the week at datepicker by Sunday if selected so
+ * Handle opening .ics files from email clients
+ * Some bugfixes related to exporting/importing events
+ * Misc other bugfixes and UX improvements
+
 Version 2.3.1 *(2017-04-09)*
 ----------------------------
 
