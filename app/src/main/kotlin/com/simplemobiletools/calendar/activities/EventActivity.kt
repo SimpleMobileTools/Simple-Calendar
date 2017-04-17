@@ -1,5 +1,6 @@
 package com.simplemobiletools.calendar.activities
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.graphics.PorterDuff
@@ -13,10 +14,12 @@ import com.simplemobiletools.calendar.dialogs.RepeatRuleDailyDialog
 import com.simplemobiletools.calendar.dialogs.SelectEventTypeDialog
 import com.simplemobiletools.calendar.extensions.*
 import com.simplemobiletools.calendar.helpers.*
+import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.commons.extensions.*
 import kotlinx.android.synthetic.main.activity_event.*
 import org.joda.time.DateTime
+import java.util.*
 
 class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     private var mWasEndDateSet = false
@@ -165,12 +168,19 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         checkRepetitionRuleText()
     }
 
+    @SuppressLint("NewApi")
     private fun showRepetitionLimitDialog() {
         hideKeyboard()
         val now = (System.currentTimeMillis() / 1000).toInt()
         val repeatLimitDateTime = Formatter.getDateTimeFromTS(if (mRepeatLimit != 0) mRepeatLimit else now)
-        DatePickerDialog(this, mDialogTheme, repetitionLimitDateSetListener, repeatLimitDateTime.year, repeatLimitDateTime.monthOfYear - 1,
-                repeatLimitDateTime.dayOfMonth).show()
+        val datepicker = DatePickerDialog(this, mDialogTheme, repetitionLimitDateSetListener, repeatLimitDateTime.year, repeatLimitDateTime.monthOfYear - 1,
+                repeatLimitDateTime.dayOfMonth)
+
+        if (isLollipopPlus()) {
+            datepicker.datePicker.firstDayOfWeek = if (config.isSundayFirst) Calendar.SUNDAY else Calendar.MONDAY
+        }
+
+        datepicker.show()
     }
 
     private val repetitionLimitDateSetListener = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
@@ -393,11 +403,18 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         event_end_time.text = Formatter.getTime(this, mEventEndDateTime)
     }
 
+    @SuppressLint("NewApi")
     fun setupStartDate() {
         hideKeyboard()
         config.backgroundColor.getContrastColor()
-        DatePickerDialog(this, mDialogTheme, startDateSetListener, mEventStartDateTime.year, mEventStartDateTime.monthOfYear - 1,
-                mEventStartDateTime.dayOfMonth).show()
+        val datepicker = DatePickerDialog(this, mDialogTheme, startDateSetListener, mEventStartDateTime.year, mEventStartDateTime.monthOfYear - 1,
+                mEventStartDateTime.dayOfMonth)
+
+        if (isLollipopPlus()) {
+            datepicker.datePicker.firstDayOfWeek = if (config.isSundayFirst) Calendar.SUNDAY else Calendar.MONDAY
+        }
+
+        datepicker.show()
     }
 
     fun setupStartTime() {
@@ -405,10 +422,17 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         TimePickerDialog(this, mDialogTheme, startTimeSetListener, mEventStartDateTime.hourOfDay, mEventStartDateTime.minuteOfHour, config.use24hourFormat).show()
     }
 
+    @SuppressLint("NewApi")
     fun setupEndDate() {
         hideKeyboard()
-        DatePickerDialog(this, mDialogTheme, endDateSetListener, mEventEndDateTime.year, mEventEndDateTime.monthOfYear - 1,
-                mEventEndDateTime.dayOfMonth).show()
+        val datepicker = DatePickerDialog(this, mDialogTheme, endDateSetListener, mEventEndDateTime.year, mEventEndDateTime.monthOfYear - 1,
+                mEventEndDateTime.dayOfMonth)
+
+        if (isLollipopPlus()) {
+            datepicker.datePicker.firstDayOfWeek = if (config.isSundayFirst) Calendar.SUNDAY else Calendar.MONDAY
+        }
+
+        datepicker.show()
     }
 
     fun setupEndTime() {
