@@ -287,6 +287,10 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
         context.updateWidgets()
         mEventsListener?.eventsDeleted(ids.size)
+
+        ids.forEach {
+            context.cancelNotification(it.toInt())
+        }
     }
 
     fun addEventRepeatException(parentEventId: Int, occurrenceTS: Int) {
