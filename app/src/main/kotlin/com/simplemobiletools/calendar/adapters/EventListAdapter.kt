@@ -96,6 +96,7 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
             eventIds.add((mItems[it] as ListEvent).id)
         }
         activity.shareEvents(eventIds.distinct())
+        actMode?.finish()
     }
 
     private fun askConfirmDelete() {

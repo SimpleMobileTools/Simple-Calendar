@@ -339,7 +339,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         } finally {
             cursor?.close()
         }
-        return ids
+        return ids.filter { it.trim().isNotEmpty() } as ArrayList<String>
     }
 
     fun getEvent(id: Int): Event? {

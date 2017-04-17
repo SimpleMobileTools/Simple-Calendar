@@ -9,7 +9,6 @@ import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.helpers.DBHelper
 import com.simplemobiletools.calendar.helpers.IcsImporter
 import com.simplemobiletools.calendar.helpers.IcsImporter.ImportResult.*
-import com.simplemobiletools.commons.extensions.humanizePath
 import com.simplemobiletools.commons.extensions.setBackgroundWithStroke
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import com.simplemobiletools.commons.extensions.toast
@@ -20,8 +19,6 @@ class ImportEventsDialog(val activity: Activity, val path: String, val callback:
 
     init {
         val view = (activity.layoutInflater.inflate(R.layout.dialog_import_events, null) as ViewGroup).apply {
-            import_events_filename.text = activity.humanizePath(path)
-
             updateEventType(this)
             import_event_type_holder.setOnClickListener {
                 SelectEventTypeDialog(activity, currEventTypeId) {

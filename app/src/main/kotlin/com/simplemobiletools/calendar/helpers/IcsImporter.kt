@@ -84,7 +84,9 @@ class IcsImporter {
                         if (curTitle.isEmpty() || curStart == -1 || curEnd == -1 || importIDs.contains(curImportId))
                             continue
 
-                        importIDs.add(curImportId)
+                        if (curImportId.isNotEmpty())
+                            importIDs.add(curImportId)
+
                         val event = Event(0, curStart, curEnd, curTitle, curDescription, curReminderMinutes.getOrElse(0, { -1 }),
                                 curReminderMinutes.getOrElse(1, { -1 }), curReminderMinutes.getOrElse(2, { -1 }), curRepeatInterval,
                                 curImportId, curFlags, curRepeatLimit, curRepeatRule, curEventType)

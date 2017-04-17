@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v4.view.ViewPager
@@ -37,6 +38,7 @@ import com.simplemobiletools.commons.models.Release
 import kotlinx.android.synthetic.main.activity_main.*
 import org.joda.time.DateTime
 import java.io.File
+import java.io.FileOutputStream
 import java.util.*
 
 class MainActivity : SimpleActivity(), NavigationListener {
@@ -73,7 +75,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
             requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
         if (intent?.action == Intent.ACTION_VIEW && intent.data != null) {
-            importEventsFromFile(intent.data!!.path)
+            tryImportEventsFromFile(intent.data)
         }
     }
 
@@ -235,19 +237,34 @@ class MainActivity : SimpleActivity(), NavigationListener {
 
     private fun importEvents() {
         FilePickerDialog(this) {
-            importEventsFromFile(it)
+            importEventsDialog(it)
         }
     }
 
-    private fun importEventsFromFile(path: String) {
-        if (path.toLowerCase().endsWith(".ics")) {
-            ImportEventsDialog(this, path) {
-                if (it) {
-                    updateViewPager()
-                }
+    private fun tryImportEventsFromFile(uri: Uri) {
+        if (uri.scheme == "file") {
+            importEventsDialog(uri.path)
+        } else if (uri.scheme == "content") {
+            val tempFile = getTempFile()
+            if (tempFile == null) {
+                toast(R.string.unknown_error_occurred)
+                return
             }
+
+            val inputStream = contentResolver.openInputStream(uri)
+            val out = FileOutputStream(tempFile)
+            inputStream.copyTo(out)
+            importEventsDialog(tempFile.absolutePath)
         } else {
             toast(R.string.invalid_file_format)
+        }
+    }
+
+    private fun importEventsDialog(path: String) {
+        ImportEventsDialog(this, path) {
+            if (it) {
+                updateViewPager()
+            }
         }
     }
 

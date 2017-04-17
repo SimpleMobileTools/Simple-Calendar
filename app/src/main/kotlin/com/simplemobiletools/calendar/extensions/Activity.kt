@@ -9,17 +9,13 @@ import com.simplemobiletools.commons.extensions.toast
 import java.io.File
 
 fun Activity.shareEvents(ids: List<Int>) {
-    val folder = File(cacheDir, "events")
-    if (!folder.exists()) {
-        if (!folder.mkdir()) {
-            toast(R.string.unknown_error_occurred)
-            return
-        }
+    val file = getTempFile()
+    if (file == null) {
+        toast(R.string.unknown_error_occurred)
+        return
     }
 
-    val file = File(folder, "events.ics")
     val events = dbHelper.getEventsWithIds(ids)
-
     val result = IcsExporter().exportEvents(this, file, events)
     if (result == IcsExporter.ExportResult.EXPORT_OK) {
         val uri = FileProvider.getUriForFile(this, "com.simplemobiletools.calendar.fileprovider", file)
@@ -38,4 +34,16 @@ fun Activity.shareEvents(ids: List<Int>) {
             }
         }
     }
+}
+
+fun Activity.getTempFile(): File? {
+    val folder = File(cacheDir, "events")
+    if (!folder.exists()) {
+        if (!folder.mkdir()) {
+            toast(R.string.unknown_error_occurred)
+            return null
+        }
+    }
+
+    return File(folder, "events.ics")
 }

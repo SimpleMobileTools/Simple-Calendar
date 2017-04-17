@@ -80,6 +80,7 @@ class DayEventsAdapter(val activity: SimpleActivity, val mItems: List<Event>, va
             eventIds.add(mItems[it].id)
         }
         activity.shareEvents(eventIds.distinct())
+        actMode?.finish()
     }
 
     private fun askConfirmDelete() {
