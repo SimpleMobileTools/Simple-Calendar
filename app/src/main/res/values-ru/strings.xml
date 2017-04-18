@@ -6,11 +6,11 @@
     <string name="monthly_view">На месяц</string>
     <string name="yearly_view">На год</string>
     <string name="simple_event_list">Простой список событий</string>
-    <string name="no_upcoming_events">Похоже у вас нет пердстоящих событий.</string>
+    <string name="no_upcoming_events">Похоже, у вас нет предстоящих событий.</string>
     <string name="add_some_events">Вы можете их добавить, нажав на кнопку с плюсом внизу.</string>
     <string name="details">Подробности</string>
     <string name="go_to_today">Сегодня</string>
-    <string name="no_app_for_ics">No app capable of handling .ics files has been found</string>
+    <string name="no_app_for_ics">Не найдено приложение для просмотра .ics файлов</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Календарь на месяц</string>
@@ -46,14 +46,14 @@
     <string name="delete_all_occurrences">Удалить все связанные</string>
     <string name="update_one_only">Обновить только выбранное</string>
     <string name="update_all_occurrences">Обновить все связанные</string>
-    <string name="repeat_till_date">Repeat till a date</string>
-    <string name="repeat_x_times">Repeat x times</string>
-    <string name="times">times</string>
-    <string name="repeat">Repeat</string>
-    <string name="every_day">Every day</string>
-    <string name="selected_days">On selected days</string>
-    <string name="on_the_same_day">On the same day every month</string>
-    <string name="on_the_last_day">On the last day of the month</string>
+    <string name="repeat_till_date">Повторять до даты</string>
+    <string name="repeat_x_times">Повторять x раз</string>
+    <string name="times">раз</string>
+    <string name="repeat">Повторять</string>
+    <string name="every_day">Каждый день</string>
+    <string name="selected_days">В выбранные дни</string>
+    <string name="on_the_same_day">В тот же день каждый месяц</string>
+    <string name="on_the_last_day">В последний день месяца</string>
     <string name="every_m">Every</string>
     <string name="first_m">first</string>
     <string name="second_m">second</string>
@@ -119,19 +119,19 @@
 
     <!-- Export / Import -->
     <string name="import_events">Импорт событий</string>
-    <string name="export_events">Export events</string>
+    <string name="export_events">Экспорт событий</string>
     <string name="import_events_from_ics">Импорт событий из .ics файла</string>
-    <string name="export_events_to_ics">Export events to an .ics file</string>
+    <string name="export_events_to_ics">Экспорт событий в .ics файл</string>
     <string name="events_imported_successfully">События успешно импортированы</string>
-    <string name="events_exported_successfully">Events have been exported successfully</string>
-    <string name="importing_events_failed">Импорт событий не удался</string>
-    <string name="exporting_events_failed">Exporting events failed</string>
-    <string name="importing_some_events_failed">Ошибка импорта</string>
-    <string name="exporting_some_events_failed">Exporting some events failed</string>
+    <string name="events_exported_successfully">События успешно экспортированы</string>
+    <string name="importing_events_failed">Не удалось импортировать события</string>
+    <string name="exporting_events_failed">Не удалось экспортировать события</string>
+    <string name="importing_some_events_failed">Не удалось импортировать некоторые события</string>
+    <string name="exporting_some_events_failed">Не удалось экспортировать некоторые события</string>
     <string name="invalid_file_format">Неправильный формат файла</string>
     <string name="default_event_type">Тип события по умолчанию</string>
-    <string name="no_events_for_exporting">No events for exporting have been found</string>
-    <string name="export_past_events_too">Export past events too</string>
+    <string name="no_events_for_exporting">Не найдено событий для экспорта</string>
+    <string name="export_past_events_too">Экспортировать прошедшие события</string>
 
     <!-- Event details -->
     <string name="title">Заголовок</string>
