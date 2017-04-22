@@ -1,6 +1,7 @@
 package com.simplemobiletools.calendar.helpers
 
 import android.content.Context
+import android.util.SparseIntArray
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.getFilteredEvents
@@ -75,7 +76,7 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
 
             val newDay = curDay.withDayOfMonth(value)
             val dayCode = Formatter.getDayCodeFromDateTime(newDay)
-            val day = Day(value, isThisMonth, isToday, dayCode, false, newDay.weekOfWeekyear)
+            val day = Day(value, isThisMonth, isToday, dayCode, false, newDay.weekOfWeekyear, ArrayList<Int>())
             days.add(day)
             value++
         }
@@ -88,21 +89,28 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
     // it works more often than not, dont touch
     private fun markDaysWithEvents(days: ArrayList<Day>) {
         val eventCodes = ArrayList<String>()
-        for ((id, startTS, endTS) in mEvents) {
-            val startDateTime = Formatter.getDateTimeFromTS(startTS)
-            val endDateTime = Formatter.getDateTimeFromTS(endTS)
-            val endCode = Formatter.getDayCodeFromDateTime(endDateTime)
-
-            var currDay = startDateTime
-            eventCodes.add(Formatter.getDayCodeFromDateTime(currDay))
-
-            while (Formatter.getDayCodeFromDateTime(currDay) != endCode) {
-                currDay = currDay.plusDays(1)
-                eventCodes.add(Formatter.getDayCodeFromDateTime(currDay))
+        mContext.dbHelper.getEventTypes {
+            val eventTypes = SparseIntArray()
+            it.forEach {
+                eventTypes.put(it.id, it.color)
             }
-        }
 
-        days.filter { eventCodes.contains(it.code) }.forEach { it.hasEvent = true }
+            mEvents.forEach {
+                val startDateTime = Formatter.getDateTimeFromTS(it.startTS)
+                val endDateTime = Formatter.getDateTimeFromTS(it.endTS)
+                val endCode = Formatter.getDayCodeFromDateTime(endDateTime)
+
+                var currDay = startDateTime
+                eventCodes.add(Formatter.getDayCodeFromDateTime(currDay))
+
+                while (Formatter.getDayCodeFromDateTime(currDay) != endCode) {
+                    currDay = currDay.plusDays(1)
+                    eventCodes.add(Formatter.getDayCodeFromDateTime(currDay))
+                }
+            }
+
+            days.filter { eventCodes.contains(it.code) }.forEach { it.hasEvent = true }
+        }
     }
 
     private fun isToday(targetDate: DateTime, curDayInMonth: Int) =
