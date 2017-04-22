@@ -58,7 +58,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         setupLabels()
         mCalendar = MonthlyCalendarImpl(this, context)
 
-        val padding = resources.getDimension(R.dimen.activity_margin).toInt()
+        val padding = mRes.getDimension(R.dimen.activity_margin).toInt()
         view.calendar_holder.setPadding(padding, padding, padding, padding)
 
         return view
@@ -175,14 +175,6 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         }
 
         val weakerText = mTextColor.adjustAlpha(MEDIUM_ALPHA)
-        val todayCircle = resources.getDrawable(R.drawable.circle_empty)
-        todayCircle.setColorFilter(weakerText, PorterDuff.Mode.SRC_IN)
-
-        val eventDot = resources.getDrawable(R.drawable.monthly_day_dot)
-        eventDot.setColorFilter(weakerText, PorterDuff.Mode.SRC_IN)
-
-        val todayWithEvent = resources.getDrawable(R.drawable.monthly_day_with_event_today)
-        todayWithEvent.setColorFilter(weakerText, PorterDuff.Mode.SRC_IN)
 
         for (i in 0..len - 1) {
             val day = days[i]
@@ -200,16 +192,30 @@ class MonthFragment : Fragment(), MonthlyCalendar {
                 background = if (!day.isThisMonth) {
                     null
                 } else if (day.isToday && day.hasEvent) {
-                    todayWithEvent
+                    val drawable = mRes.getDrawable(R.drawable.monthly_day_with_event_today).mutate()
+                    drawable.setColorFilter(getDayDotColor(day, weakerText), PorterDuff.Mode.SRC_IN)
+                    drawable
                 } else if (day.isToday) {
+                    val todayCircle = mRes.getDrawable(R.drawable.circle_empty)
+                    todayCircle.setColorFilter(weakerText, PorterDuff.Mode.SRC_IN)
                     todayCircle
                 } else if (day.hasEvent) {
-                    eventDot
+                    val drawable = mRes.getDrawable(R.drawable.monthly_day_dot).mutate()
+                    drawable.setColorFilter(getDayDotColor(day, weakerText), PorterDuff.Mode.SRC_IN)
+                    drawable
                 } else {
                     null
                 }
             }
         }
+    }
+
+    private fun getDayDotColor(day: Day, defaultColor: Int): Int {
+        val colors = day.eventColors.distinct()
+        return if (colors.size == 1)
+            colors[0]
+        else
+            defaultColor
     }
 
     private fun openDay(code: String) {
