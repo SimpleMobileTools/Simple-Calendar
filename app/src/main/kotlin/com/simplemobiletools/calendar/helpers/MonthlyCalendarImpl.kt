@@ -88,11 +88,11 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
 
     // it works more often than not, dont touch
     private fun markDaysWithEvents(days: ArrayList<Day>) {
-        val eventCodes = ArrayList<String>()
         mContext.dbHelper.getEventTypes {
-            val eventTypes = SparseIntArray()
+            val dayEvents = HashMap<String, ArrayList<Event>>()
+            val eventTypeColors = SparseIntArray()
             it.forEach {
-                eventTypes.put(it.id, it.color)
+                eventTypeColors.put(it.id, it.color)
             }
 
             mEvents.forEach {
@@ -101,15 +101,27 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
                 val endCode = Formatter.getDayCodeFromDateTime(endDateTime)
 
                 var currDay = startDateTime
-                eventCodes.add(Formatter.getDayCodeFromDateTime(currDay))
+                var dayCode = Formatter.getDayCodeFromDateTime(currDay)
+                var currDayEvents = (dayEvents[dayCode] ?: ArrayList<Event>()).apply { add(it) }
+                dayEvents.put(dayCode, currDayEvents)
 
                 while (Formatter.getDayCodeFromDateTime(currDay) != endCode) {
                     currDay = currDay.plusDays(1)
-                    eventCodes.add(Formatter.getDayCodeFromDateTime(currDay))
+                    dayCode = Formatter.getDayCodeFromDateTime(currDay)
+                    currDayEvents = (dayEvents[dayCode] ?: ArrayList<Event>()).apply { add(it) }
+                    dayEvents.put(dayCode, currDayEvents)
                 }
             }
 
-            days.filter { eventCodes.contains(it.code) }.forEach { it.hasEvent = true }
+            days.filter { dayEvents.keys.contains(it.code) }.forEach {
+                val day = it
+                day.hasEvent = true
+
+                val events = dayEvents[it.code]
+                events!!.forEach {
+                    day.eventColors.add(eventTypeColors[it.eventType])
+                }
+            }
         }
     }
 
