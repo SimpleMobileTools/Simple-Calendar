@@ -335,6 +335,10 @@ class MainActivity : SimpleActivity(), NavigationListener {
 
                 override fun onPageSelected(position: Int) {
                     invalidateOptionsMenu()
+                    if (config.storedView == YEARLY_VIEW) {
+                        val dateTime = Formatter.getDateTimeFromCode(codes[position])
+                        title = "${getString(R.string.app_launcher_name)} - ${Formatter.getYear(dateTime)}"
+                    }
                 }
             })
             currentItem = mDefaultMonthlyPage
@@ -391,7 +395,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
 
                 override fun onPageSelected(position: Int) {
                     invalidateOptionsMenu()
-                    setupActionbarTitle(weekTSs[position])
+                    setupWeeklyActionbarTitle(weekTSs[position])
                 }
             })
             currentItem = mDefaultWeeklyPage
@@ -419,7 +423,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
         return weekTSs
     }
 
-    private fun setupActionbarTitle(timestamp: Int) {
+    private fun setupWeeklyActionbarTitle(timestamp: Int) {
         val startDateTime = Formatter.getDateTimeFromTS(timestamp)
         val endDateTime = Formatter.getDateTimeFromTS(timestamp + WEEK_SECONDS)
         val startMonthName = Formatter.getMonthName(this, startDateTime.monthOfYear)
