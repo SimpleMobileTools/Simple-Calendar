@@ -354,8 +354,8 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             return
         }
 
-        val newStartTS = mEventStartDateTime.seconds()
-        val newEndTS = mEventEndDateTime.seconds()
+        val newStartTS = mEventStartDateTime.withSecondOfMinute(0).withMillisOfSecond(0).seconds()
+        val newEndTS = mEventEndDateTime.withSecondOfMinute(0).withMillisOfSecond(0).seconds()
 
         if (newStartTS > newEndTS) {
             toast(R.string.end_before_start)

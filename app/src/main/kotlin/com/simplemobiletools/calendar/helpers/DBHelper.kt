@@ -518,8 +518,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                     val flags = cursor.getIntValue(COL_FLAGS)
                     val repeatLimit = cursor.getIntValue(COL_REPEAT_LIMIT)
                     val eventType = cursor.getIntValue(COL_EVENT_TYPE)
-                    if (flags and FLAG_ALL_DAY != 0)
-                        endTS -= 1
 
                     val ignoreEventOccurrences = if (repeatInterval != 0) {
                         getIgnoredOccurrences(id)
