@@ -48,6 +48,12 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
         val eventId = intent.getIntExtra(EVENT_ID, 0)
         val event = dbHelper.getEvent(eventId)
+
+        if (eventId != 0 && event == null) {
+            finish()
+            return
+        }
+
         if (event != null) {
             mEvent = event
             mEventOccurrenceTS = intent.getIntExtra(EVENT_OCCURRENCE_TS, 0)
