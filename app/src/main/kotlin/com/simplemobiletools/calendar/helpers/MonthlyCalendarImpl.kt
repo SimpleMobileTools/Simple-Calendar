@@ -82,8 +82,6 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
         }
 
         markDaysWithEvents(days)
-
-        mCallback.updateMonthlyCalendar(monthName, days)
     }
 
     // it works more often than not, dont touch
@@ -122,6 +120,7 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
                     day.eventColors.add(eventTypeColors[it.eventType])
                 }
             }
+            mCallback.updateMonthlyCalendar(monthName, days)
         }
     }
 
@@ -143,6 +142,7 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
             mEvents = mContext.getFilteredEvents(events)
         else
             mEvents = events
+
         getDays()
     }
 }
