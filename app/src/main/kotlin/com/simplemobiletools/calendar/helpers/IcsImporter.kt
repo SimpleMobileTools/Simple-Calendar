@@ -118,8 +118,10 @@ class IcsImporter {
     private fun getTimestamp(fullString: String): Int {
         try {
             return if (fullString.startsWith(';')) {
-                curFlags = curFlags or FLAG_ALL_DAY
                 val value = fullString.substring(fullString.lastIndexOf(':') + 1)
+                if (!value.contains("T"))
+                    curFlags = curFlags or FLAG_ALL_DAY
+
                 parseDateTimeValue(value)
             } else {
                 parseDateTimeValue(fullString.substring(1))
