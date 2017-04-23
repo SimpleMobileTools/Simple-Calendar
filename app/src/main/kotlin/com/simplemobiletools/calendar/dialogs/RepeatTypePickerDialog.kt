@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.support.v7.app.AlertDialog
+import android.view.View
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.getAppropriateTheme
@@ -11,6 +12,7 @@ import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.commons.extensions.isLollipopPlus
 import com.simplemobiletools.commons.extensions.setupDialogStuff
+import com.simplemobiletools.commons.extensions.value
 import kotlinx.android.synthetic.main.dialog_repeat_type_picker.view.*
 import org.joda.time.DateTime
 import java.util.*
@@ -18,11 +20,16 @@ import java.util.*
 class RepeatTypePickerDialog(val activity: Activity, var repeatLimit: Int, val startTS: Int, val callback: (repeatLimit: Int) -> Unit) :
         AlertDialog.Builder(activity) {
     lateinit var dialog: AlertDialog
-    var view = activity.layoutInflater.inflate(R.layout.dialog_repeat_type_picker, null)
+    var view: View
 
     init {
-        view.repeat_type_date.setOnClickListener { showRepetitionLimitDialog() }
-        view.repeat_type_forever.setOnClickListener { callback(0); dialog.dismiss() }
+        view = activity.layoutInflater.inflate(R.layout.dialog_repeat_type_picker, null).apply {
+            repeat_type_date.setOnClickListener { showRepetitionLimitDialog() }
+            repeat_type_forever.setOnClickListener { callback(0); dialog.dismiss() }
+            repeat_type_count.setOnClickListener { dialog_radio_view.check(R.id.repeat_type_x_times) }
+            dialog_radio_view.check(getCheckedItem())
+        }
+
         if (repeatLimit < startTS)
             repeatLimit = startTS
 
@@ -37,6 +44,15 @@ class RepeatTypePickerDialog(val activity: Activity, var repeatLimit: Int, val s
         }
     }
 
+    private fun getCheckedItem(): Int {
+        return if (repeatLimit > 0)
+            R.id.repeat_type_till_date
+        else if (repeatLimit < 0)
+            R.id.repeat_type_count
+        else
+            R.id.repeat_type_forever
+    }
+
     private fun updateRepeatLimitText() {
         if (repeatLimit == 0)
             repeatLimit = (System.currentTimeMillis() / 1000).toInt()
@@ -48,7 +64,15 @@ class RepeatTypePickerDialog(val activity: Activity, var repeatLimit: Int, val s
     private fun confirmRepetition() {
         when (view.dialog_radio_view.checkedRadioButtonId) {
             R.id.repeat_type_till_date -> callback(repeatLimit)
-            else -> { }
+            R.id.repeat_type_forever -> callback(0)
+            else -> {
+                var count = view.repeat_type_count.value
+                if (count.isEmpty())
+                    count = "0"
+                else
+                    count = "-$count"
+                callback(count.toInt())
+            }
         }
         dialog.dismiss()
     }
