@@ -25,7 +25,7 @@
             android:layout_marginStart="@dimen/repeat_type_margin_start"
             android:paddingBottom="@dimen/normal_margin"
             android:paddingTop="@dimen/medium_margin"
-            android:text="asd"/>
+            android:text="January 1 1970"/>
 
         <com.simplemobiletools.commons.views.MyCompatRadioButton
             android:id="@+id/repeat_type_x_times"

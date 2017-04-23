@@ -66,10 +66,10 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
         checkReminderTexts()
         updateRepetitionText()
-        updateStartDate()
-        updateStartTime()
-        updateEndDate()
-        updateEndTime()
+        updateStartDateText()
+        updateStartTimeText()
+        updateEndDateText()
+        updateEndTimeText()
         updateEventType()
 
         mWasEndDateSet = event != null
@@ -172,9 +172,13 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     private fun showRepetitionTypePicker() {
         hideKeyboard()
         RepeatTypePickerDialog(this, mRepeatLimit, mEventStartDateTime.seconds()) {
-            mRepeatLimit = it
-            checkRepetitionLimitText()
+            setRepeatLimit(it)
         }
+    }
+
+    private fun setRepeatLimit(limit: Int) {
+        mRepeatLimit = limit
+        checkRepetitionLimitText()
     }
 
     private fun checkRepetitionLimitText() {
@@ -371,19 +375,19 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         }
     }
 
-    private fun updateStartDate() {
+    private fun updateStartDateText() {
         event_start_date.text = Formatter.getDate(applicationContext, mEventStartDateTime)
     }
 
-    private fun updateStartTime() {
+    private fun updateStartTimeText() {
         event_start_time.text = Formatter.getTime(this, mEventStartDateTime)
     }
 
-    private fun updateEndDate() {
+    private fun updateEndDateText() {
         event_end_date.text = Formatter.getDate(applicationContext, mEventEndDateTime)
     }
 
-    private fun updateEndTime() {
+    private fun updateEndTimeText() {
         event_end_time.text = Formatter.getTime(this, mEventEndDateTime)
     }
 
@@ -445,15 +449,15 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     private fun dateSet(year: Int, month: Int, day: Int, isStart: Boolean) {
         if (isStart) {
             mEventStartDateTime = mEventStartDateTime.withDate(year, month + 1, day)
-            updateStartDate()
+            updateStartDateText()
             if (mEventStartDateTime.isAfter(mEventEndDateTime)) {
                 mEventEndDateTime = mEventStartDateTime
-                updateEndDate()
-                updateEndTime()
+                updateEndDateText()
+                updateEndTimeText()
             }
         } else {
             mEventEndDateTime = mEventEndDateTime.withDate(year, month + 1, day)
-            updateEndDate()
+            updateEndDateText()
             mWasEndDateSet = true
         }
     }
@@ -461,14 +465,14 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     private fun timeSet(hours: Int, minutes: Int, isStart: Boolean) {
         if (isStart) {
             mEventStartDateTime = mEventStartDateTime.withHourOfDay(hours).withMinuteOfHour(minutes)
-            updateStartTime()
+            updateStartTimeText()
             if (mEventStartDateTime.isAfter(mEventEndDateTime)) {
                 mEventEndDateTime = mEventStartDateTime
-                updateEndTime()
+                updateEndTimeText()
             }
         } else {
             mEventEndDateTime = mEventEndDateTime.withHourOfDay(hours).withMinuteOfHour(minutes)
-            updateEndTime()
+            updateEndTimeText()
             mWasEndTimeSet = true
         }
     }

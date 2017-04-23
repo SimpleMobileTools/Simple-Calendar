@@ -23,6 +23,9 @@ class RepeatTypePickerDialog(val activity: Activity, var repeatLimit: Int, val s
     init {
         view.repeat_type_date.setOnClickListener { showRepetitionLimitDialog() }
         view.repeat_type_forever.setOnClickListener { callback(0); dialog.dismiss() }
+        if (repeatLimit < startTS)
+            repeatLimit = startTS
+
         updateRepeatLimitText()
 
         dialog = AlertDialog.Builder(activity)
@@ -30,6 +33,7 @@ class RepeatTypePickerDialog(val activity: Activity, var repeatLimit: Int, val s
                 .setNegativeButton(R.string.cancel, null)
                 .create().apply {
             activity.setupDialogStuff(view, this)
+            activity.currentFocus?.clearFocus()
         }
     }
 
@@ -42,7 +46,11 @@ class RepeatTypePickerDialog(val activity: Activity, var repeatLimit: Int, val s
     }
 
     private fun confirmRepetition() {
-
+        when (view.dialog_radio_view.checkedRadioButtonId) {
+            R.id.repeat_type_till_date -> callback(repeatLimit)
+            else -> { }
+        }
+        dialog.dismiss()
     }
 
     @SuppressLint("NewApi")
@@ -59,13 +67,15 @@ class RepeatTypePickerDialog(val activity: Activity, var repeatLimit: Int, val s
         datepicker.show()
     }
 
-    private val repetitionLimitDateSetListener = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+    private val repetitionLimitDateSetListener = DatePickerDialog.OnDateSetListener { v, year, monthOfYear, dayOfMonth ->
         val repeatLimitDateTime = DateTime().withDate(year, monthOfYear + 1, dayOfMonth).withTime(23, 59, 59, 0)
         if (repeatLimitDateTime.seconds() < startTS) {
             repeatLimit = 0
         } else {
             repeatLimit = repeatLimitDateTime.seconds()
         }
+
+        view.dialog_radio_view.check(R.id.repeat_type_till_date)
         updateRepeatLimitText()
     }
 }
