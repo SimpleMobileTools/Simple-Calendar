@@ -183,10 +183,15 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
     private fun checkRepetitionLimitText() {
         event_repetition_limit.text = if (mRepeatLimit == 0) {
+            event_repetition_limit_label.text = getString(R.string.repeat)
             resources.getString(R.string.forever)
-        } else {
+        } else if (mRepeatLimit > 0) {
+            event_repetition_limit_label.text = getString(R.string.repeat_till)
             val repeatLimitDateTime = Formatter.getDateTimeFromTS(mRepeatLimit)
             Formatter.getFullDate(applicationContext, repeatLimitDateTime)
+        } else {
+            event_repetition_limit_label.text = getString(R.string.repeat)
+            "${-mRepeatLimit} ${getString(R.string.times)}"
         }
     }
 

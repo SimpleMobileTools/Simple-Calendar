@@ -27,10 +27,11 @@ class RepeatTypePickerDialog(val activity: Activity, var repeatLimit: Int, val s
             repeat_type_date.setOnClickListener { showRepetitionLimitDialog() }
             repeat_type_forever.setOnClickListener { callback(0); dialog.dismiss() }
             repeat_type_count.setOnClickListener { dialog_radio_view.check(R.id.repeat_type_x_times) }
-            dialog_radio_view.check(getCheckedItem())
         }
 
-        if (repeatLimit < startTS)
+        view.dialog_radio_view.check(getCheckedItem())
+
+        if (repeatLimit in 1..startTS)
             repeatLimit = startTS
 
         updateRepeatLimitText()
@@ -47,14 +48,15 @@ class RepeatTypePickerDialog(val activity: Activity, var repeatLimit: Int, val s
     private fun getCheckedItem(): Int {
         return if (repeatLimit > 0)
             R.id.repeat_type_till_date
-        else if (repeatLimit < 0)
-            R.id.repeat_type_count
-        else
+        else if (repeatLimit < 0) {
+            view.repeat_type_count.setText((-repeatLimit).toString())
+            R.id.repeat_type_x_times
+        } else
             R.id.repeat_type_forever
     }
 
     private fun updateRepeatLimitText() {
-        if (repeatLimit == 0)
+        if (repeatLimit <= 0)
             repeatLimit = (System.currentTimeMillis() / 1000).toInt()
 
         val repeatLimitDateTime = Formatter.getDateTimeFromTS(repeatLimit)
