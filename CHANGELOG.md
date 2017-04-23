@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 2.3.4 *(2017-04-23)*
+----------------------------
+
+ * Add a new event repetition type "Repeat x times"
+ * Color the dot at the monthly view based on the event types
+ * Fix a couple event importing issues
+
 Version 2.3.3 *(2017-04-17)*
 ----------------------------
 
