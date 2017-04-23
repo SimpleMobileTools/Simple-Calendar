@@ -404,8 +404,10 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                 }
             } else {
                 // events repeating x times
-                while (it.startTS < toTS && it.repeatLimit < 0) {
-                    newEvents.add(it.copy())
+                while (it.repeatLimit < 0) {
+                    if (it.startTS >= fromTS && it.startTS < toTS) {
+                        newEvents.add(it.copy())
+                    }
                     it.addIntervalTime()
                     it.repeatLimit++
                 }
