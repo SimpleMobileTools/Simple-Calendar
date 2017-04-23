@@ -62,7 +62,7 @@ class IcsImporter {
                         curEnd = curStart + decodeTime(duration)
                     } else if (line.startsWith(SUMMARY) && !isNotificationDescription) {
                         curTitle = line.substring(SUMMARY.length)
-                        curTitle = curTitle.substring(0, Math.min(curTitle.length, 50))
+                        curTitle = getTitle(curTitle)
                     } else if (line.startsWith(DESCRIPTION) && !isNotificationDescription) {
                         curDescription = line.substring(DESCRIPTION.length)
                     } else if (line.startsWith(UID)) {
@@ -153,6 +153,14 @@ class IcsImporter {
             curEventType = context.dbHelper.insertEventType(eventType)
         } else {
             curEventType = eventId
+        }
+    }
+
+    private fun getTitle(title: String): String {
+        return if (title.startsWith(";") && title.contains(":")) {
+            title.substring(title.lastIndexOf(':') + 1)
+        } else {
+            title.substring(1, Math.min(title.length, 50))
         }
     }
 

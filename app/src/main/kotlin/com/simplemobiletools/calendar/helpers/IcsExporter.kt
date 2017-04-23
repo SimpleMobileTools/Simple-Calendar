@@ -22,7 +22,7 @@ class IcsExporter {
             for (event in events) {
                 out.writeLn(BEGIN_EVENT)
 
-                event.title.let { if (it.isNotEmpty()) out.writeLn("$SUMMARY$it") }
+                event.title.let { if (it.isNotEmpty()) out.writeLn("$SUMMARY:$it") }
                 event.description.let { if (it.isNotEmpty()) out.writeLn("$DESCRIPTION$it") }
                 event.importId?.let { if (it.isNotEmpty()) out.writeLn("$UID$it") }
                 event.eventType.let { out.writeLn("$CATEGORIES${context.dbHelper.getEventType(it)?.title}") }
