@@ -1,6 +1,7 @@
 <resources>
 
     <!-- Release notes -->
+    <string name="release_71">Add a new event repetition type \"Repeat x times\"</string>
     <string name="release_69">
         Added more advanced weekly repetition by week days\n
         Added sharing individual events by creating temporary .ics files
