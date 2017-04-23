@@ -388,22 +388,33 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         val startTimes = SparseIntArray(events.size)
         events.forEach {
             startTimes.put(it.id, it.startTS)
-            while (it.startTS < toTS && (it.repeatLimit == 0 || it.repeatLimit >= it.startTS)) {
-                if (it.startTS >= fromTS) {
-                    if (it.repeatInterval % WEEK == 0) {
-                        if (it.startTS.isTsOnValidDay(it)) {
+            if (it.repeatLimit >= 0) {
+                // events repeating by x days etc
+                while (it.startTS < toTS && (it.repeatLimit == 0 || it.repeatLimit >= it.startTS)) {
+                    if (it.startTS >= fromTS) {
+                        if (it.repeatInterval % WEEK == 0) {
+                            if (it.startTS.isTsOnValidDay(it)) {
+                                newEvents.add(it.copy())
+                            }
+                        } else {
                             newEvents.add(it.copy())
                         }
-                    } else {
+                    } else if (getRunningEvents && (it.startTS <= fromTS && it.endTS >= toTS)) {
                         newEvents.add(it.copy())
                     }
-                } else if (getRunningEvents && (it.startTS <= fromTS && it.endTS >= toTS)) {
-                    newEvents.add(it.copy())
+                    it.addIntervalTime()
                 }
-                it.addIntervalTime()
+            } else {
+                // events repeating x times
+                while (it.startTS < toTS && it.repeatLimit < 0) {
+                    newEvents.add(it.copy())
+                    it.addIntervalTime()
+                    it.repeatLimit++
+                }
             }
         }
 
+        // check if weekly repeatable events are on the current day
         val filteredEvents = ArrayList<Event>(newEvents.size)
         newEvents.forEach {
             if (it.repeatInterval != 0 && it.repeatInterval % WEEK == 0) {
@@ -506,7 +517,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                 do {
                     val id = cursor.getIntValue(COL_ID)
                     val startTS = cursor.getIntValue(COL_START_TS)
-                    var endTS = cursor.getIntValue(COL_END_TS)
+                    val endTS = cursor.getIntValue(COL_END_TS)
                     val reminder1Minutes = cursor.getIntValue(COL_REMINDER_MINUTES)
                     val reminder2Minutes = cursor.getIntValue(COL_REMINDER_MINUTES_2)
                     val reminder3Minutes = cursor.getIntValue(COL_REMINDER_MINUTES_3)
