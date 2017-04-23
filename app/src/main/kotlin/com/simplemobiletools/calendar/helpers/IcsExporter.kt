@@ -93,6 +93,8 @@ class IcsExporter {
     private fun getRepeatLimitString(event: Event): String {
         return if (event.repeatLimit == 0)
             ""
+        else if (event.repeatLimit < 0)
+            ";$COUNT=${-event.repeatLimit}"
         else
             ";$UNTIL=${Formatter.getDayCodeFromTS(event.repeatLimit)}"
     }
