@@ -46,6 +46,14 @@ object Formatter {
 
     fun getDate(context: Context, dateTime: DateTime, addDayOfWeek: Boolean = true) = getDayTitle(context, getDayCodeFromDateTime(dateTime), addDayOfWeek)
 
+    fun getFullDate(context: Context, dateTime: DateTime): String {
+        val day = dateTime.toString(DAY_PATTERN)
+        val year = dateTime.toString(YEAR_PATTERN)
+        val monthIndex = dateTime.monthOfYear
+        val month = getMonthName(context, monthIndex)
+        return "$month $day $year"
+    }
+
     fun getHours(context: Context, dateTime: DateTime) = dateTime.toString(getHourPattern(context))
 
     fun getTime(context: Context, dateTime: DateTime) = dateTime.toString(getTimePattern(context))

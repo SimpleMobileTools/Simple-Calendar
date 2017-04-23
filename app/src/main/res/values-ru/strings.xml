@@ -47,6 +47,7 @@
     <string name="update_all_occurrences">Обновить все связанные</string>
     <string name="repeat_till_date">Повторять до даты</string>
     <string name="repeat_x_times">Повторять x раз</string>
+    <string name="repeat_forever">Repeat forever</string>
     <string name="times">раз</string>
     <string name="repeat">Повторять</string>
     <string name="every_day">Каждый день</string>

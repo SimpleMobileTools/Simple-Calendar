@@ -11,6 +11,7 @@ import android.view.WindowManager
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.dialogs.DeleteEventDialog
 import com.simplemobiletools.calendar.dialogs.RepeatRuleDailyDialog
+import com.simplemobiletools.calendar.dialogs.RepeatTypePickerDialog
 import com.simplemobiletools.calendar.dialogs.SelectEventTypeDialog
 import com.simplemobiletools.calendar.extensions.*
 import com.simplemobiletools.calendar.helpers.*
@@ -82,7 +83,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         event_all_day.setOnCheckedChangeListener { compoundButton, isChecked -> toggleAllDay(isChecked) }
         event_repetition.setOnClickListener { showRepeatIntervalDialog() }
         event_repetition_rule_holder.setOnClickListener { showRepetitionRuleDialog() }
-        event_repetition_limit_holder.setOnClickListener { showRepetitionLimitDialog() }
+        event_repetition_limit_holder.setOnClickListener { showRepetitionTypePicker() }
 
         event_reminder_1.setOnClickListener { showReminder1Dialog() }
         event_reminder_2.setOnClickListener { showReminder2Dialog() }
@@ -168,29 +169,12 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         checkRepetitionRuleText()
     }
 
-    @SuppressLint("NewApi")
-    private fun showRepetitionLimitDialog() {
+    private fun showRepetitionTypePicker() {
         hideKeyboard()
-        val now = (System.currentTimeMillis() / 1000).toInt()
-        val repeatLimitDateTime = Formatter.getDateTimeFromTS(if (mRepeatLimit != 0) mRepeatLimit else now)
-        val datepicker = DatePickerDialog(this, mDialogTheme, repetitionLimitDateSetListener, repeatLimitDateTime.year, repeatLimitDateTime.monthOfYear - 1,
-                repeatLimitDateTime.dayOfMonth)
-
-        if (isLollipopPlus()) {
-            datepicker.datePicker.firstDayOfWeek = if (config.isSundayFirst) Calendar.SUNDAY else Calendar.MONDAY
+        RepeatTypePickerDialog(this, mRepeatLimit, mEventStartDateTime.seconds()) {
+            mRepeatLimit = it
+            checkRepetitionLimitText()
         }
-
-        datepicker.show()
-    }
-
-    private val repetitionLimitDateSetListener = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-        val repeatLimitDateTime = DateTime().withDate(year, monthOfYear + 1, dayOfMonth).withTime(23, 59, 59, 0)
-        if (repeatLimitDateTime.seconds() < mEvent.endTS) {
-            mRepeatLimit = 0
-        } else {
-            mRepeatLimit = repeatLimitDateTime.seconds()
-        }
-        checkRepetitionLimitText()
     }
 
     private fun checkRepetitionLimitText() {
@@ -198,7 +182,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             resources.getString(R.string.forever)
         } else {
             val repeatLimitDateTime = Formatter.getDateTimeFromTS(mRepeatLimit)
-            Formatter.getDate(applicationContext, repeatLimitDateTime, false)
+            Formatter.getFullDate(applicationContext, repeatLimitDateTime)
         }
     }
 

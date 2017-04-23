@@ -47,6 +47,7 @@
     <string name="update_all_occurrences">Ändere alle Wiederholungen</string>
     <string name="repeat_till_date">Wiederhole bis zu bestimmtem Datum</string>
     <string name="repeat_x_times">Wiederhole x Mal</string>
+    <string name="repeat_forever">Repeat forever</string>
     <string name="times">Mal</string>
     <string name="repeat">Widerholung</string>
     <string name="every_day">Täglich</string>

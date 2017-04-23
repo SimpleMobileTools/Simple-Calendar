@@ -47,6 +47,7 @@
     <string name="update_all_occurrences">Atualizar todas as ocorrências</string>
     <string name="repeat_till_date">Repeat till a date</string>
     <string name="repeat_x_times">Repeat x times</string>
+    <string name="repeat_forever">Repeat forever</string>
     <string name="times">times</string>
     <string name="repeat">Repeat</string>
     <string name="every_day">Every day</string>
