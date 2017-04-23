@@ -191,7 +191,6 @@ class IcsImporter {
     private fun parseRepeatInterval(fullString: String): Int {
         val parts = fullString.split(";")
         var frequencySeconds = 0
-        var count = 0
         for (part in parts) {
             val keyValue = part.split("=")
             val key = keyValue[0]
@@ -203,19 +202,11 @@ class IcsImporter {
                     curRepeatRule = Math.pow(2.0, (start.dayOfWeek - 1).toDouble()).toInt()
                 }
             } else if (key == COUNT) {
-                count = value.toInt() - 1
-                if (frequencySeconds != 0) {
-                    curRepeatLimit = curStart + count * frequencySeconds
-                }
+                curRepeatLimit = -value.toInt()
             } else if (key == UNTIL) {
                 curRepeatLimit = parseDateTimeValue(value)
             } else if (key == INTERVAL) {
-                val interval = value.toInt()
-                val repeatInterval = frequencySeconds * interval
-                if (count > 0) {
-                    curRepeatLimit = curStart + count * repeatInterval
-                    frequencySeconds *= interval
-                }
+                frequencySeconds *= value.toInt()
             } else if (key == BYDAY) {
                 handleRepeatRule(value)
             }
