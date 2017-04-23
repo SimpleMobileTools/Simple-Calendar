@@ -41,7 +41,7 @@
             android:layout_marginLeft="@dimen/repeat_type_margin_start"
             android:layout_marginStart="@dimen/repeat_type_margin_start"
             android:inputType="number"
-            android:maxLength="3"/>
+            android:maxLength="5"/>
 
         <com.simplemobiletools.commons.views.MyCompatRadioButton
             android:id="@+id/repeat_type_forever"
