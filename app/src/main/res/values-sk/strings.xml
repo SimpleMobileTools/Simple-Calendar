@@ -29,7 +29,6 @@
     <string name="filter_events_by_type">Filtrovať udalosti podľa typu</string>
 
     <!-- Event Repetition -->
-    <string name="select_repeat_interval">Zvoľte opakovanie</string>
     <string name="repetition">Opakovanie</string>
     <string name="no_repetition">Neopakuje sa</string>
     <string name="daily">Denne</string>

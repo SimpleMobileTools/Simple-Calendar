@@ -29,7 +29,6 @@
     <string name="filter_events_by_type">Filtrer les evénements par type</string>
 
     <!-- Event Repetition -->
-    <string name="select_repeat_interval">Sélectionner une intervalle de répétition</string>
     <string name="repetition">Répétition</string>
     <string name="no_repetition">Pas de répétition</string>
     <string name="daily">Quotidienne</string>

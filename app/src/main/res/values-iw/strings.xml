@@ -29,7 +29,6 @@
     <string name="filter_events_by_type">Filter events by type</string>
 
     <!-- Event Repetition -->
-    <string name="select_repeat_interval">Select a repeat interval</string>
     <string name="repetition">Repetition</string>
     <string name="no_repetition">No repetition</string>
     <string name="daily">יום-יומית</string>

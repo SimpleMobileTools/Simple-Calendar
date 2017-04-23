@@ -22,7 +22,7 @@ class CustomEventRepeatIntervalDialog(val activity: Activity, val callback: (sec
                 .setNegativeButton(R.string.cancel, null)
                 .create().apply {
             window!!.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
-            activity.setupDialogStuff(view, this, R.string.select_repeat_interval)
+            activity.setupDialogStuff(view, this)
         }
     }
 

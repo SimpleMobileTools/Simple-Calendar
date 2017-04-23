@@ -29,7 +29,6 @@
     <string name="filter_events_by_type">Sortiere Termine nach Typ</string>
 
     <!-- Event Repetition -->
-    <string name="select_repeat_interval">Wähle ein Wiederholungsintervall</string>
     <string name="repetition">Wiederholung</string>
     <string name="no_repetition">Keine Wiederholung</string>
     <string name="daily">Täglich</string>

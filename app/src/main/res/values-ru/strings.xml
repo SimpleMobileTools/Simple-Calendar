@@ -29,7 +29,6 @@
     <string name="filter_events_by_type">Фильтровать события по типу</string>
 
     <!-- Event Repetition -->
-    <string name="select_repeat_interval">Выбрать интервал повтора</string>
     <string name="repetition">Повторять</string>
     <string name="no_repetition">Без повторения</string>
     <string name="daily">Ежедневно</string>
