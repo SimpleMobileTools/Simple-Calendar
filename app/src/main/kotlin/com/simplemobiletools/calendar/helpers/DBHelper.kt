@@ -38,7 +38,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private val COL_REPEAT_INTERVAL = "repeat_interval"
     private val COL_REPEAT_RULE = "repeat_rule"
     private val COL_REPEAT_LIMIT = "repeat_limit"
-    private val COL_REPEAT_COUNT = "repeat_count"
 
     private val TYPES_TABLE_NAME = "event_types"
     private val COL_TYPE_ID = "event_type_id"
@@ -120,14 +119,13 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
         if (oldVersion < 11) {
             db.execSQL("ALTER TABLE $META_TABLE_NAME ADD COLUMN $COL_REPEAT_RULE INTEGER NOT NULL DEFAULT 0")
-            db.execSQL("ALTER TABLE $META_TABLE_NAME ADD COLUMN $COL_REPEAT_COUNT INTEGER NOT NULL DEFAULT 0")
             setupRepeatRules(db)
         }
     }
 
     private fun createMetaTable(db: SQLiteDatabase) {
         db.execSQL("CREATE TABLE $META_TABLE_NAME ($COL_ID INTEGER PRIMARY KEY, $COL_EVENT_ID INTEGER UNIQUE, $COL_REPEAT_START INTEGER, " +
-                "$COL_REPEAT_INTERVAL INTEGER, $COL_REPEAT_LIMIT INTEGER, $COL_REPEAT_RULE INTEGER, $COL_REPEAT_COUNT INTEGER)")
+                "$COL_REPEAT_INTERVAL INTEGER, $COL_REPEAT_LIMIT INTEGER, $COL_REPEAT_RULE INTEGER)")
     }
 
     private fun createTypesTable(db: SQLiteDatabase) {
