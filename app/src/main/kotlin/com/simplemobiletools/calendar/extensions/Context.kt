@@ -47,6 +47,13 @@ fun Context.updateListWidget() {
     }
 }
 
+fun Context.scheduleAllEvents() {
+    val events = dbHelper.getEventsAtReboot()
+    events.forEach {
+        scheduleNextEventReminder(it)
+    }
+}
+
 fun Context.scheduleNextEventReminder(event: Event) {
     if (event.getReminders().isEmpty())
         return
