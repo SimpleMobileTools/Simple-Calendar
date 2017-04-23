@@ -256,7 +256,7 @@
                 android:clickable="false"
                 android:paddingBottom="@dimen/activity_margin"
                 android:paddingTop="@dimen/activity_margin"
-                android:text="@string/repeat"
+                android:text="@string/repeat_on"
                 android:textSize="@dimen/day_text_size"/>
 
             <com.simplemobiletools.commons.views.MyTextView

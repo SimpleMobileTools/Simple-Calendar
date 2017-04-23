@@ -50,6 +50,7 @@
     <string name="repeat_forever">Repeat forever</string>
     <string name="times">times</string>
     <string name="repeat">Repetição</string>
+    <string name="repeat_on">Repeat on</string>
     <string name="every_day">Todos os dias</string>
     <string name="selected_days">Nos dias selecionados</string>
     <string name="on_the_same_day">No mesmo dia de cada mês</string>
