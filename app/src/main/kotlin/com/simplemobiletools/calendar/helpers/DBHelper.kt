@@ -404,17 +404,27 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                 }
             } else {
                 // events repeating x times
-                while (it.repeatLimit < 0) {
-                    if (it.startTS >= fromTS && it.startTS < toTS) {
-                        newEvents.add(it.copy())
+                while (it.repeatLimit < 0 && it.endTS < toTS) {
+                    if (it.repeatInterval != 0 && it.repeatInterval % WEEK == 0) {
+                        if (it.startTS >= fromTS && it.startTS < toTS) {
+                            if (it.startTS.isTsOnValidDay(it)) {
+                                newEvents.add(it.copy())
+                                it.repeatLimit++
+                            }
+                        }
+                        it.addIntervalTime()
+                    } else {
+                        if (it.startTS >= fromTS && it.startTS < toTS) {
+                            newEvents.add(it.copy())
+                        }
+                        it.addIntervalTime()
+                        it.repeatLimit++
                     }
-                    it.addIntervalTime()
-                    it.repeatLimit++
                 }
             }
         }
 
-        // check if weekly repeatable events are on the current day
+        // check if weekly repeatable events are on the correct day
         val filteredEvents = ArrayList<Event>(newEvents.size)
         newEvents.forEach {
             if (it.repeatInterval != 0 && it.repeatInterval % WEEK == 0) {
