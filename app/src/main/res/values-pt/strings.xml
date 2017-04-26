@@ -10,7 +10,7 @@
     <string name="add_some_events">Pode adicionar um evento através do botão existente na base do ecrã.</string>
     <string name="details">Detalhes</string>
     <string name="go_to_today">Ir para hoje</string>
-    <string name="no_app_for_ics">No app capable of handling .ics files has been found</string>
+    <string name="no_app_for_ics">Nenhuma aplicação capaz de ler ficheiros .ics encontrada</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Calendário mensal</string>
@@ -45,12 +45,12 @@
     <string name="delete_all_occurrences">Apagar todas as ocorrências</string>
     <string name="update_one_only">Atualizar a ocorrência selecionada</string>
     <string name="update_all_occurrences">Atualizar todas as ocorrências</string>
-    <string name="repeat_till_date">Repeat till a date</string>
-    <string name="repeat_x_times">Repeat x times</string>
-    <string name="repeat_forever">Repeat forever</string>
-    <string name="times">times</string>
+    <string name="repeat_till_date">Repetir até à data</string>
+    <string name="repeat_x_times">Repetir x vezes</string>
+    <string name="repeat_forever">Repetir para sempre</string>
+    <string name="times">vezes</string>
     <string name="repeat">Repetição</string>
-    <string name="repeat_on">Repeat on</string>
+    <string name="repeat_on">Repetir em</string>
     <string name="every_day">Todos os dias</string>
     <string name="selected_days">Nos dias selecionados</string>
     <string name="on_the_same_day">No mesmo dia de cada mês</string>
@@ -189,7 +189,7 @@
     <string name="sunday_letter">D</string>
 
     <string name="monday">segunda</string>
-    <string name="tuesday">teça</string>
+    <string name="tuesday">terça</string>
     <string name="wednesday">quarta</string>
     <string name="thursday">quinta</string>
     <string name="friday">sexta</string>
