@@ -406,11 +406,11 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                 // events repeating x times
                 while (it.repeatLimit < 0 && it.endTS < toTS) {
                     if (it.repeatInterval != 0 && it.repeatInterval % WEEK == 0) {
-                        if (it.startTS >= fromTS && it.startTS < toTS) {
-                            if (it.startTS.isTsOnValidDay(it)) {
+                        if (it.startTS.isTsOnValidDay(it)) {
+                            if (it.startTS >= fromTS && it.startTS < toTS) {
                                 newEvents.add(it.copy())
-                                it.repeatLimit++
                             }
+                            it.repeatLimit++
                         }
                         it.addIntervalTime()
                     } else {
