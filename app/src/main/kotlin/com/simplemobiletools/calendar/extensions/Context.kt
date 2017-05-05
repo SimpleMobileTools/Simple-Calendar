@@ -84,8 +84,9 @@ fun Context.scheduleNextEventReminder(event: Event) {
         return
     }
 
-    if (event.repeatLimit == 0 || event.repeatLimit > nextTS)
+    if (event.repeatLimit == 0 || event.repeatLimit > nextTS || event.repeatLimit < 0) {
         scheduleEventIn(nextTS, event)
+    }
 }
 
 private fun isOccurrenceIgnored(event: Event, startTS: Int, reminderSeconds: Int): Boolean {
