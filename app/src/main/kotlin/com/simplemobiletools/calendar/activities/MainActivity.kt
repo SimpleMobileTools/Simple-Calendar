@@ -418,7 +418,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
     private fun getWeekTimestamps(targetWeekTS: Int): List<Int> {
         val weekTSs = ArrayList<Int>(PREFILLED_WEEKS)
         for (i in -PREFILLED_WEEKS / 2..PREFILLED_WEEKS / 2) {
-            weekTSs.add(targetWeekTS + i * WEEK_SECONDS)
+            weekTSs.add(Formatter.getDateTimeFromTS(targetWeekTS).plusWeeks(i).seconds())
         }
         return weekTSs
     }
