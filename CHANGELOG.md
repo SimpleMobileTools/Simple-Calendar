@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 2.3.5 *(2017-05-05)*
+----------------------------
+
+ * Make urls, phone numbers, map coords and emails in event description clickable
+ * Fixed a couple issues mostly related to repeating events
+ * Minor crashfixes
+
 Version 2.3.4 *(2017-04-23)*
 ----------------------------
 
