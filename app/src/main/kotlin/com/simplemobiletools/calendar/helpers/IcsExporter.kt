@@ -17,6 +17,12 @@ class IcsExporter {
     var eventsFailed = 0
 
     fun exportEvents(context: Context, file: File, events: ArrayList<Event>): ExportResult {
+        try {
+            file.createNewFile()
+        } catch (e: Exception) {
+            return EXPORT_FAIL
+        }
+
         file.bufferedWriter().use { out ->
             out.writeLn(BEGIN_CALENDAR)
             for (event in events) {
