@@ -1,5 +1,6 @@
 package com.simplemobiletools.calendar.extensions
 
+import android.annotation.TargetApi
 import android.app.AlarmManager
 import android.app.Notification
 import android.app.NotificationManager
@@ -18,6 +19,7 @@ import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.receivers.NotificationReceiver
 import com.simplemobiletools.commons.extensions.getContrastColor
+import com.simplemobiletools.commons.extensions.isLollipopPlus
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 
@@ -94,7 +96,7 @@ private fun isWrongDay(event: Event, startTS: Int, reminderSeconds: Int): Boolea
     if (event.repeatInterval == DAY)
         return false
 
-    return !(startTS + reminderSeconds).isTsOnValidDay(event)
+    return !(startTS + reminderSeconds).isTsOnProperDay(event)
 }
 
 private fun getNewTS(ts: Int, isMonthly: Boolean): Int {
@@ -188,6 +190,7 @@ fun Context.notifyEvent(event: Event) {
     notificationManager.notify(event.id, notification)
 }
 
+@TargetApi(Build.VERSION_CODES.LOLLIPOP)
 private fun getNotification(context: Context, pendingIntent: PendingIntent, title: String, content: String): Notification {
     val soundUri = Uri.parse(context.config.reminderSound)
     val builder = Notification.Builder(context)
@@ -195,9 +198,13 @@ private fun getNotification(context: Context, pendingIntent: PendingIntent, titl
             .setContentText(content)
             .setSmallIcon(R.drawable.ic_calendar)
             .setContentIntent(pendingIntent)
+            .setPriority(Notification.PRIORITY_HIGH)
             .setDefaults(Notification.DEFAULT_LIGHTS)
             .setAutoCancel(true)
             .setSound(soundUri)
+
+    if (context.isLollipopPlus())
+        builder.setVisibility(Notification.VISIBILITY_PUBLIC)
 
     if (context.config.vibrateOnReminder)
         builder.setVibrate(longArrayOf(0, 300, 300, 300))
