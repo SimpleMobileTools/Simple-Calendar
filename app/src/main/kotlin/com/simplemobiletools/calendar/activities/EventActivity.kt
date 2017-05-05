@@ -5,6 +5,7 @@ import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.graphics.PorterDuff
 import android.os.Bundle
+import android.text.method.LinkMovementMethod
 import android.view.Menu
 import android.view.MenuItem
 import android.view.WindowManager
@@ -111,6 +112,8 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         mEventEndDateTime = Formatter.getDateTimeFromTS(mEvent.endTS)
         event_title.setText(mEvent.title)
         event_description.setText(mEvent.description)
+        event_description.movementMethod = LinkMovementMethod.getInstance()
+
         mReminder1Minutes = mEvent.reminder1Minutes
         mReminder2Minutes = mEvent.reminder2Minutes
         mReminder3Minutes = mEvent.reminder3Minutes
