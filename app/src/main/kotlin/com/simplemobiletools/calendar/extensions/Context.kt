@@ -66,8 +66,8 @@ fun Context.scheduleNextEventReminder(event: Event) {
     reminderSeconds.forEach {
         var startTS = event.startTS - it
         if (event.repeatInterval == DAY || (event.repeatInterval != 0 && event.repeatInterval % WEEK == 0)) {
-            while (startTS < now || isOccurrenceIgnored(event, startTS, it) || isWrongDay(event, startTS, it)) {
-                startTS += DAY
+            while (startTS < now || isOccurrenceIgnored(event, startTS, it) || !isCorrectDay(event, startTS, it)) {
+                startTS = Formatter.getDateTimeFromTS(startTS).plusDays(1).seconds()
             }
             nextTS = Math.min(nextTS, startTS)
         } else if (event.repeatInterval == MONTH) {
@@ -93,11 +93,11 @@ private fun isOccurrenceIgnored(event: Event, startTS: Int, reminderSeconds: Int
     return event.ignoreEventOccurrences.contains(Formatter.getDayCodeFromTS(startTS + reminderSeconds).toInt())
 }
 
-private fun isWrongDay(event: Event, startTS: Int, reminderSeconds: Int): Boolean {
-    if (event.repeatInterval == DAY)
-        return false
-
-    return !(startTS + reminderSeconds).isTsOnProperDay(event)
+private fun isCorrectDay(event: Event, startTS: Int, reminderSeconds: Int): Boolean {
+    return if (event.repeatInterval == DAY)
+        true
+    else
+        (startTS + reminderSeconds).isTsOnProperDay(event)
 }
 
 private fun getNewTS(ts: Int, isMonthly: Boolean): Int {
