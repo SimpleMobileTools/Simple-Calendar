@@ -469,6 +469,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
                 updateEndDateText()
                 updateEndTimeText()
             }
+            checkWeeklyRepeatRule()
         } else {
             mEventEndDateTime = mEventEndDateTime.withDate(year, month + 1, day)
             updateEndDateText()
@@ -488,6 +489,15 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             mEventEndDateTime = mEventEndDateTime.withHourOfDay(hours).withMinuteOfHour(minutes)
             updateEndTimeText()
             mWasEndTimeSet = true
+        }
+    }
+
+    private fun checkWeeklyRepeatRule() {
+        if (isXWeeklyRepetition()) {
+            val day = mRepeatRule
+            if (day == MONDAY || day == TUESDAY || day == WEDNESDAY || day == THURSDAY || day == FRIDAY || day == SATURDAY || day == SUNDAY) {
+                setRepeatRule(Math.pow(2.0, (mEventStartDateTime.dayOfWeek - 1).toDouble()).toInt())
+            }
         }
     }
 
