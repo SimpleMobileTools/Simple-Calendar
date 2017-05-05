@@ -83,6 +83,8 @@ class MyWidgetListProvider : AppWidgetProvider() {
     }
 
     override fun onReceive(context: Context, intent: Intent) {
+        mContext = context
+
         when (intent.action) {
             NEW_EVENT -> context.launchNewEventIntent(true, true)
             LAUNCH_TODAY -> launchDayActivity()
