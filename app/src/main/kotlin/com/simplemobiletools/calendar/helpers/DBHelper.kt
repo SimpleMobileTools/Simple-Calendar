@@ -391,7 +391,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                 while (it.startTS < toTS && (it.repeatLimit == 0 || it.repeatLimit >= it.startTS)) {
                     if (it.startTS >= fromTS) {
                         if (it.repeatInterval % WEEK == 0) {
-                            if (it.startTS.isTsOnValidDay(it)) {
+                            if (it.startTS.isTsOnProperDay(it)) {
                                 newEvents.add(it.copy())
                             }
                         } else {
@@ -406,11 +406,17 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                 // events repeating x times
                 while (it.repeatLimit < 0 && it.endTS < toTS) {
                     if (it.repeatInterval != 0 && it.repeatInterval % WEEK == 0) {
-                        if (it.startTS.isTsOnValidDay(it)) {
-                            if (it.startTS >= fromTS && it.startTS < toTS) {
-                                newEvents.add(it.copy())
+                        if (it.startTS.isTsOnProperDay(it)) {
+                            val initialWeekOfYear = Formatter.getDateTimeFromTS(startTimes[it.id]).weekOfWeekyear
+                            val currentWeekOfYear = Formatter.getDateTimeFromTS(it.startTS).weekOfWeekyear
+
+                            // check if its the proper week, for events repeating by x weeks
+                            if ((currentWeekOfYear - initialWeekOfYear) % (it.repeatInterval / WEEK) == 0) {
+                                if (it.startTS >= fromTS && it.startTS < toTS) {
+                                    newEvents.add(it.copy())
+                                }
+                                it.repeatLimit++
                             }
-                            it.repeatLimit++
                         }
                         it.addIntervalTime()
                     } else {
@@ -424,21 +430,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             }
         }
 
-        // check if weekly repeatable events are on the correct day
-        val filteredEvents = ArrayList<Event>(newEvents.size)
-        newEvents.forEach {
-            if (it.repeatInterval != 0 && it.repeatInterval % WEEK == 0) {
-                val initialWeekOfYear = Formatter.getDateTimeFromTS(startTimes[it.id]).weekOfWeekyear
-                val currentWeekOfYear = Formatter.getDateTimeFromTS(it.startTS).weekOfWeekyear
-                if ((currentWeekOfYear - initialWeekOfYear) % (it.repeatInterval / WEEK) == 0) {
-                    filteredEvents.add(it)
-                }
-            } else {
-                filteredEvents.add(it)
-            }
-        }
-
-        return filteredEvents
+        return newEvents
     }
 
     fun getRunningEvents(): List<Event> {
