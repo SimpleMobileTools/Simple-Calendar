@@ -279,28 +279,27 @@ class MainActivity : SimpleActivity(), NavigationListener {
     private fun exportEvents() {
         FilePickerDialog(this, pickFile = false) {
             val path = it
-            handleSAFDialog(File(path)) {
-                ExportEventsDialog(this, path) {
-                    Thread({
-                        val events = dbHelper.getEventsToExport(it)
-                        if (events.isEmpty()) {
+            ExportEventsDialog(this, path) {
+                Thread({
+                    val events = dbHelper.getEventsToExport(it)
+                    if (events.isEmpty()) {
+                        runOnUiThread {
+                            toast(R.string.no_events_for_exporting)
+                        }
+                    } else {
+                        val filename = "events_${System.currentTimeMillis() / 1000}.ics"
+                        val file = File(path, filename)
+                        IcsExporter().exportEvents(this, file, events) {
                             runOnUiThread {
-                                toast(R.string.no_events_for_exporting)
-                            }
-                        } else {
-                            val filename = "events_${System.currentTimeMillis() / 1000}.ics"
-                            val file = File(path, filename)
-                            val result = IcsExporter().exportEvents(this, file, events)
-                            runOnUiThread {
-                                toast(when (result) {
+                                toast(when (it) {
                                     IcsExporter.ExportResult.EXPORT_OK -> R.string.events_exported_successfully
                                     IcsExporter.ExportResult.EXPORT_PARTIAL -> R.string.exporting_some_events_failed
                                     else -> R.string.exporting_events_failed
                                 })
                             }
                         }
-                    }).start()
-                }
+                    }
+                }).start()
             }
         }
     }

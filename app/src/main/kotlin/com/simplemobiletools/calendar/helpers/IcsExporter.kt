@@ -1,10 +1,11 @@
 package com.simplemobiletools.calendar.helpers
 
-import android.content.Context
+import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.writeLn
 import com.simplemobiletools.calendar.helpers.IcsExporter.ExportResult.*
 import com.simplemobiletools.calendar.models.Event
+import com.simplemobiletools.commons.extensions.getFileOutputStream
 import java.io.BufferedWriter
 import java.io.File
 
@@ -16,48 +17,44 @@ class IcsExporter {
     var eventsExported = 0
     var eventsFailed = 0
 
-    fun exportEvents(context: Context, file: File, events: ArrayList<Event>): ExportResult {
-        try {
-            file.createNewFile()
-        } catch (e: Exception) {
-            return EXPORT_FAIL
-        }
+    fun exportEvents(activity: SimpleActivity, file: File, events: ArrayList<Event>, callback: (result: ExportResult) -> Unit) {
+        activity.getFileOutputStream(file) {
+            it.bufferedWriter().use { out ->
+                out.writeLn(BEGIN_CALENDAR)
+                for (event in events) {
+                    out.writeLn(BEGIN_EVENT)
 
-        file.bufferedWriter().use { out ->
-            out.writeLn(BEGIN_CALENDAR)
-            for (event in events) {
-                out.writeLn(BEGIN_EVENT)
+                    event.title.let { if (it.isNotEmpty()) out.writeLn("$SUMMARY:$it") }
+                    event.description.let { if (it.isNotEmpty()) out.writeLn("$DESCRIPTION$it") }
+                    event.importId?.let { if (it.isNotEmpty()) out.writeLn("$UID$it") }
+                    event.eventType.let { out.writeLn("$CATEGORIES${activity.dbHelper.getEventType(it)?.title}") }
 
-                event.title.let { if (it.isNotEmpty()) out.writeLn("$SUMMARY:$it") }
-                event.description.let { if (it.isNotEmpty()) out.writeLn("$DESCRIPTION$it") }
-                event.importId?.let { if (it.isNotEmpty()) out.writeLn("$UID$it") }
-                event.eventType.let { out.writeLn("$CATEGORIES${context.dbHelper.getEventType(it)?.title}") }
+                    if (event.isAllDay) {
+                        out.writeLn("$DTSTART;$VALUE=$DATE:${Formatter.getDayCodeFromTS(event.startTS)}")
+                    } else {
+                        event.startTS.let { out.writeLn("$DTSTART:${Formatter.getExportedTime(it)}") }
+                        event.endTS.let { out.writeLn("$DTEND:${Formatter.getExportedTime(it)}") }
+                    }
 
-                if (event.isAllDay) {
-                    out.writeLn("$DTSTART;$VALUE=$DATE:${Formatter.getDayCodeFromTS(event.startTS)}")
-                } else {
-                    event.startTS.let { out.writeLn("$DTSTART:${Formatter.getExportedTime(it)}") }
-                    event.endTS.let { out.writeLn("$DTEND:${Formatter.getExportedTime(it)}") }
+                    out.writeLn("$STATUS$CONFIRMED")
+
+                    fillRepeatInterval(event, out)
+                    fillReminders(event, out)
+                    fillIgnoredOccurrences(event, out)
+
+                    eventsExported++
+                    out.writeLn(END_EVENT)
                 }
-
-                out.writeLn("$STATUS$CONFIRMED")
-
-                fillRepeatInterval(event, out)
-                fillReminders(event, out)
-                fillIgnoredOccurrences(event, out)
-
-                eventsExported++
-                out.writeLn(END_EVENT)
+                out.writeLn(END_CALENDAR)
             }
-            out.writeLn(END_CALENDAR)
-        }
 
-        return if (eventsExported == 0) {
-            EXPORT_FAIL
-        } else if (eventsFailed > 0) {
-            EXPORT_PARTIAL
-        } else {
-            EXPORT_OK
+            callback(if (eventsExported == 0) {
+                EXPORT_FAIL
+            } else if (eventsFailed > 0) {
+                EXPORT_PARTIAL
+            } else {
+                EXPORT_OK
+            })
         }
     }
 
