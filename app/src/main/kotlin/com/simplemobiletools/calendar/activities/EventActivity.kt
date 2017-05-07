@@ -227,7 +227,50 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     }
 
     private fun getRepeatXthDayString(): String {
-        return getString(R.string.repeat_every_m)
+        val dayOfWeek = mEventStartDateTime.dayOfWeek
+        val base = getBaseString(dayOfWeek)
+        val order = getOrderString()
+        val dayString = getDayString(dayOfWeek)
+        return "$base $order $dayString"
+    }
+
+    private fun getBaseString(day: Int): String {
+        return getString(if (isMaleGender(day)) {
+            R.string.repeat_every_m
+        } else {
+            R.string.repeat_every_f
+        })
+    }
+
+    private fun isMaleGender(day: Int) = day == 1 || day == 2 || day == 4 || day == 5
+
+    private fun getOrderString(): String {
+        val dayOfMonth = mEventStartDateTime.dayOfMonth
+        var order = (dayOfMonth - 1) / 7 + 1
+        if (mEventStartDateTime.monthOfYear != mEventStartDateTime.plusDays(7).monthOfYear) {
+            order = -1
+        }
+
+        val isMale = isMaleGender(mEventStartDateTime.dayOfWeek)
+        return getString(when (order) {
+            1 -> if (isMale) R.string.first_m else R.string.first_f
+            2 -> if (isMale) R.string.second_m else R.string.second_f
+            3 -> if (isMale) R.string.third_m else R.string.third_f
+            4 -> if (isMale) R.string.fourth_m else R.string.fourth_f
+            else -> if (isMale) R.string.last_m else R.string.last_f
+        })
+    }
+
+    private fun getDayString(day: Int): String {
+        return getString(when (day) {
+            1 -> R.string.monday_alt
+            2 -> R.string.tuesday_alt
+            3 -> R.string.wednesday_alt
+            4 -> R.string.thursday_alt
+            5 -> R.string.friday_alt
+            6 -> R.string.saturday_alt
+            else -> R.string.sunday_alt
+        })
     }
 
     private fun setRepeatRule(rule: Int) {
