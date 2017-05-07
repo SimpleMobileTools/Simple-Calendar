@@ -100,8 +100,7 @@ class RepeatLimitTypePickerDialog(val activity: Activity, var repeatLimit: Int, 
         } else {
             repeatLimit = repeatLimitDateTime.seconds()
         }
-
-        view.dialog_radio_view.check(R.id.repeat_type_till_date)
-        updateRepeatLimitText()
+        callback(repeatLimit)
+        dialog.dismiss()
     }
 }

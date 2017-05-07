@@ -387,7 +387,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         events.forEach {
             startTimes.put(it.id, it.startTS)
             if (it.repeatLimit >= 0) {
-                newEvents.addAll(getEventsRepeatingTillDate(fromTS, toTS, startTimes, getRunningEvents, it))
+                newEvents.addAll(getEventsRepeatingTillDateOrForever(fromTS, toTS, startTimes, getRunningEvents, it))
             } else {
                 newEvents.addAll(getEventsRepeatingXTimes(fromTS, toTS, startTimes, it))
             }
@@ -396,10 +396,10 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         return newEvents
     }
 
-    private fun getEventsRepeatingTillDate(fromTS: Int, toTS: Int, startTimes: SparseIntArray, getRunningEvents: Boolean, event: Event): ArrayList<Event> {
+    private fun getEventsRepeatingTillDateOrForever(fromTS: Int, toTS: Int, startTimes: SparseIntArray, getRunningEvents: Boolean, event: Event): ArrayList<Event> {
         val events = ArrayList<Event>()
-        while (event.startTS < toTS && (event.repeatLimit == 0 || event.repeatLimit >= event.startTS)) {
-            if (event.startTS >= fromTS) {
+        while (event.startTS <= toTS && (event.repeatLimit == 0 || event.repeatLimit >= event.startTS)) {
+            if (event.startTS <= toTS && event.endTS >= fromTS) {
                 if (event.repeatInterval % WEEK == 0) {
                     if (event.startTS.isTsOnProperDay(event)) {
                         if (isOnProperWeek(event, startTimes)) {
@@ -419,7 +419,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
     private fun getEventsRepeatingXTimes(fromTS: Int, toTS: Int, startTimes: SparseIntArray, event: Event): ArrayList<Event> {
         val events = ArrayList<Event>()
-        while (event.repeatLimit < 0 && event.endTS < toTS) {
+        while (event.repeatLimit < 0 && event.startTS <= toTS) {
             if (event.repeatInterval != 0 && event.repeatInterval % WEEK == 0) {
                 if (event.startTS.isTsOnProperDay(event)) {
                     if (isOnProperWeek(event, startTimes)) {
@@ -429,14 +429,13 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                         event.repeatLimit++
                     }
                 }
-                event.addIntervalTime()
             } else {
-                if (event.startTS >= fromTS && event.startTS < toTS) {
+                if (event.startTS <= toTS && event.endTS >= fromTS) {
                     events.add(event.copy())
                 }
-                event.addIntervalTime()
                 event.repeatLimit++
             }
+            event.addIntervalTime()
         }
         return events
     }
