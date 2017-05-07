@@ -234,7 +234,8 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         return if (includeBase) {
             "$base $order $dayString"
         } else {
-            "${order.capitalize()} $dayString"
+            val everyString = getString(if (isMaleGender(mEventStartDateTime.dayOfWeek)) R.string.every_m else R.string.every_f)
+            "$everyString $order $dayString"
         }
     }
 
@@ -289,6 +290,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         if (isXWeeklyRepetition()) {
             event_repetition_rule.text = if (mRepeatRule == EVERY_DAY) getString(R.string.every_day) else getSelectedDaysString()
         } else if (isXMonthlyRepetition()) {
+            event_repetition_rule_label.text = getString(if (mRepeatRule == REPEAT_MONTH_EVERY_XTH_DAY) R.string.repeat else R.string.repeat_on)
             event_repetition_rule.text = getMonthlyRepetitionRuleText()
         }
     }
