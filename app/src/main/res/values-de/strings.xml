@@ -38,7 +38,7 @@
     <string name="weeks_raw">Wochen</string>
     <string name="months_raw">Monate</string>
     <string name="years_raw">Jahre</string>
-    <string name="repeat_till">Wiederholen bis:</string>
+    <string name="repeat_till">Wiederholen bis</string>
     <string name="forever">unendlich</string>
     <string name="selection_contains_repetition">Die Auswahl enthält Events mit Wiederholungen</string>
     <string name="delete_one_only">Lösche nur die ausgewählte Wiederholung</string>

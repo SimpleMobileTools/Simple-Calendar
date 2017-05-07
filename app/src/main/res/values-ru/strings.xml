@@ -38,7 +38,7 @@
     <string name="weeks_raw">недель</string>
     <string name="months_raw">месяцев</string>
     <string name="years_raw">лет</string>
-    <string name="repeat_till">Повторять до:</string>
+    <string name="repeat_till">Повторять до</string>
     <string name="forever">Бесконечно</string>
     <string name="selection_contains_repetition">В выбранном есть повторяющиеся события</string>
     <string name="delete_one_only">Удалить только выбранное</string>

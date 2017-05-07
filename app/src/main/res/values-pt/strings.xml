@@ -38,7 +38,7 @@
     <string name="weeks_raw">semanas</string>
     <string name="months_raw">meses</string>
     <string name="years_raw">anos</string>
-    <string name="repeat_till">Repetir até:</string>
+    <string name="repeat_till">Repetir até</string>
     <string name="forever">Eternamente</string>
     <string name="selection_contains_repetition">A seleção contém eventos recorrentes</string>
     <string name="delete_one_only">Apagar a ocorrência selecionada</string>

@@ -38,7 +38,7 @@
     <string name="weeks_raw">týždňov</string>
     <string name="months_raw">mesiacov</string>
     <string name="years_raw">rokov</string>
-    <string name="repeat_till">Opakovať do:</string>
+    <string name="repeat_till">Opakovať do</string>
     <string name="forever">Navždy</string>
     <string name="selection_contains_repetition">Výber obsahuje opakujúce sa udalosti</string>
     <string name="delete_one_only">Vymazať iba označené opakovania</string>
