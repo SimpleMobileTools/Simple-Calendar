@@ -392,7 +392,13 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                     if (it.startTS >= fromTS) {
                         if (it.repeatInterval % WEEK == 0) {
                             if (it.startTS.isTsOnProperDay(it)) {
-                                newEvents.add(it.copy())
+                                val initialWeekOfYear = Formatter.getDateTimeFromTS(startTimes[it.id]).weekOfWeekyear
+                                val currentWeekOfYear = Formatter.getDateTimeFromTS(it.startTS).weekOfWeekyear
+
+                                // check if its the proper week, for events repeating by x weeks
+                                if ((currentWeekOfYear - initialWeekOfYear) % (it.repeatInterval / WEEK) == 0) {
+                                    newEvents.add(it.copy())
+                                }
                             }
                         } else {
                             newEvents.add(it.copy())
