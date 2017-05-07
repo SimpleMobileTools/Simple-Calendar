@@ -11,7 +11,7 @@ import android.view.MenuItem
 import android.view.WindowManager
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.dialogs.DeleteEventDialog
-import com.simplemobiletools.calendar.dialogs.RepeatRuleDailyDialog
+import com.simplemobiletools.calendar.dialogs.RepeatRuleWeeklyDialog
 import com.simplemobiletools.calendar.dialogs.RepeatTypePickerDialog
 import com.simplemobiletools.calendar.dialogs.SelectEventTypeDialog
 import com.simplemobiletools.calendar.extensions.*
@@ -208,8 +208,10 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
     private fun showRepetitionRuleDialog() {
         hideKeyboard()
-        RepeatRuleDailyDialog(this, mRepeatRule) {
-            setRepeatRule(it)
+        if (isXWeeklyRepetition()) {
+            RepeatRuleWeeklyDialog(this, mRepeatRule) {
+                setRepeatRule(it)
+            }
         }
     }
 

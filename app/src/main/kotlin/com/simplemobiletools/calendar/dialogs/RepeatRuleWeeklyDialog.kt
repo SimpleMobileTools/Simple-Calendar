@@ -9,7 +9,7 @@ import com.simplemobiletools.commons.extensions.setupDialogStuff
 import com.simplemobiletools.commons.views.MyAppCompatCheckbox
 import kotlinx.android.synthetic.main.dialog_vertical_linear_layout.view.*
 
-class RepeatRuleDailyDialog(val activity: Activity, val curRepeatRule: Int, val callback: (repeatRule: Int) -> Unit) :
+class RepeatRuleWeeklyDialog(val activity: Activity, val curRepeatRule: Int, val callback: (repeatRule: Int) -> Unit) :
         AlertDialog.Builder(activity) {
     val dialog: AlertDialog
     val view: View = activity.layoutInflater.inflate(R.layout.dialog_vertical_linear_layout, null)
