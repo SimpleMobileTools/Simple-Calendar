@@ -174,7 +174,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         event_repetition_limit_holder.beGoneIf(limit == 0)
         checkRepetitionLimitText()
 
-        event_repetition_rule_holder.beVisibleIf(isXWeeklyRepetition())
+        event_repetition_rule_holder.beVisibleIf(isXWeeklyRepetition() || isXMonthlyRepetition())
         checkRepetitionRuleText()
     }
 
@@ -222,6 +222,8 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     private fun checkRepetitionRuleText() {
         if (isXWeeklyRepetition()) {
             event_repetition_rule.text = if (mRepeatRule == EVERY_DAY) getString(R.string.every_day) else getSelectedDaysString()
+        } else if (isXMonthlyRepetition()) {
+
         }
     }
 
@@ -314,7 +316,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
     private fun isXWeeklyRepetition() = mRepeatInterval != 0 && mRepeatInterval % WEEK == 0
 
-    private fun isXMonthlyRepetition() = mRepeatInterval != 0 && !isXWeeklyRepetition() && mRepeatInterval % MONTH == 0
+    private fun isXMonthlyRepetition() = mRepeatInterval != 0 && mRepeatInterval % MONTH == 0
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_event, menu)
@@ -469,7 +471,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
                 updateEndDateText()
                 updateEndTimeText()
             }
-            checkWeeklyRepeatRule()
+            checkRepeatRule()
         } else {
             mEventEndDateTime = mEventEndDateTime.withDate(year, month + 1, day)
             updateEndDateText()
@@ -492,12 +494,14 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         }
     }
 
-    private fun checkWeeklyRepeatRule() {
+    private fun checkRepeatRule() {
         if (isXWeeklyRepetition()) {
             val day = mRepeatRule
             if (day == MONDAY || day == TUESDAY || day == WEDNESDAY || day == THURSDAY || day == FRIDAY || day == SATURDAY || day == SUNDAY) {
                 setRepeatRule(Math.pow(2.0, (mEventStartDateTime.dayOfWeek - 1).toDouble()).toInt())
             }
+        } else if (isXMonthlyRepetition()) {
+
         }
     }
 
