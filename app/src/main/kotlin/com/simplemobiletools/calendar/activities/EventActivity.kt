@@ -11,14 +11,16 @@ import android.view.MenuItem
 import android.view.WindowManager
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.dialogs.DeleteEventDialog
-import com.simplemobiletools.calendar.dialogs.RepeatRuleWeeklyDialog
 import com.simplemobiletools.calendar.dialogs.RepeatLimitTypePickerDialog
+import com.simplemobiletools.calendar.dialogs.RepeatRuleWeeklyDialog
 import com.simplemobiletools.calendar.dialogs.SelectEventTypeDialog
 import com.simplemobiletools.calendar.extensions.*
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.models.Event
+import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
+import com.simplemobiletools.commons.models.RadioItem
 import kotlinx.android.synthetic.main.activity_event.*
 import org.joda.time.DateTime
 import java.util.*
@@ -212,7 +214,20 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             RepeatRuleWeeklyDialog(this, mRepeatRule) {
                 setRepeatRule(it)
             }
+        } else if (isXMonthlyRepetition()) {
+            val items = arrayListOf(
+                    RadioItem(REPEAT_MONTH_SAME_DAY, getString(R.string.repeat_on_the_same_day)),
+                    RadioItem(REPEAT_MONTH_EVERY_XTH_DAY, getRepeatXthDayString()),
+                    RadioItem(REPEAT_MONTH_LAST_DAY, getString(R.string.repeat_on_the_last_day)))
+
+            RadioGroupDialog(this, items, mRepeatRule) {
+                setRepeatRule(it as Int)
+            }
         }
+    }
+
+    private fun getRepeatXthDayString(): String {
+        return getString(R.string.repeat_every_m)
     }
 
     private fun setRepeatRule(rule: Int) {

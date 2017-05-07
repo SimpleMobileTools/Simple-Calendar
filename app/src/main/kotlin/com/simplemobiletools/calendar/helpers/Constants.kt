@@ -58,7 +58,7 @@ val EVERY_DAY = 127
 
 // repeat_rule for monthly repetition
 val REPEAT_MONTH_SAME_DAY = 1
-val REPEAT_MONTH_EVERY_XTH_DAY = 3
+val REPEAT_MONTH_EVERY_XTH_DAY = 2
 val REPEAT_MONTH_LAST_DAY = 3
 
 // special event flags
