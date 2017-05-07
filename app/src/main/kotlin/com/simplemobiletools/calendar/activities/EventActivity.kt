@@ -167,6 +167,8 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
         if (isXWeeklyRepetition()) {
             setRepeatRule(Math.pow(2.0, (mEventStartDateTime.dayOfWeek - 1).toDouble()).toInt())
+        } else if (isXMonthlyRepetition()) {
+            setRepeatRule(REPEAT_MONTH_SAME_DAY)
         }
     }
 
@@ -223,7 +225,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         if (isXWeeklyRepetition()) {
             event_repetition_rule.text = if (mRepeatRule == EVERY_DAY) getString(R.string.every_day) else getSelectedDaysString()
         } else if (isXMonthlyRepetition()) {
-
+            event_repetition_rule.text = getMonthlyRepetitionRuleText()
         }
     }
 
@@ -245,6 +247,16 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             days += "${getString(R.string.sunday).substringTo(3)}, "
 
         return days.trim().trimEnd(',')
+    }
+
+    private fun getMonthlyRepetitionRuleText(): String {
+        return when (mRepeatRule) {
+            REPEAT_MONTH_SAME_DAY -> getString(R.string.the_same_day)
+            REPEAT_MONTH_LAST_DAY -> getString(R.string.the_last_day)
+            else -> {
+                ""
+            }
+        }
     }
 
     private fun showEventTypeDialog() {
