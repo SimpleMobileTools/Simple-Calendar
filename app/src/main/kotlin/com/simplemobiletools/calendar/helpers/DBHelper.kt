@@ -420,7 +420,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private fun getEventsRepeatingXTimes(fromTS: Int, toTS: Int, startTimes: SparseIntArray, event: Event): ArrayList<Event> {
         val events = ArrayList<Event>()
         while (event.repeatLimit < 0 && event.startTS <= toTS) {
-            if (event.repeatInterval != 0 && event.repeatInterval % WEEK == 0) {
+            if (event.repeatInterval % WEEK == 0) {
                 if (event.startTS.isTsOnProperDay(event)) {
                     if (isOnProperWeek(event, startTimes)) {
                         if (event.startTS >= fromTS && event.startTS < toTS) {
