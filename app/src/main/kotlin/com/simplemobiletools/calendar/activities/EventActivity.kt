@@ -12,7 +12,7 @@ import android.view.WindowManager
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.dialogs.DeleteEventDialog
 import com.simplemobiletools.calendar.dialogs.RepeatRuleWeeklyDialog
-import com.simplemobiletools.calendar.dialogs.RepeatTypePickerDialog
+import com.simplemobiletools.calendar.dialogs.RepeatLimitTypePickerDialog
 import com.simplemobiletools.calendar.dialogs.SelectEventTypeDialog
 import com.simplemobiletools.calendar.extensions.*
 import com.simplemobiletools.calendar.helpers.*
@@ -182,7 +182,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
     private fun showRepetitionTypePicker() {
         hideKeyboard()
-        RepeatTypePickerDialog(this, mRepeatLimit, mEventStartDateTime.seconds()) {
+        RepeatLimitTypePickerDialog(this, mRepeatLimit, mEventStartDateTime.seconds()) {
             setRepeatLimit(it)
         }
     }

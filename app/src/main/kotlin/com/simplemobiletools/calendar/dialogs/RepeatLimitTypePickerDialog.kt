@@ -13,17 +13,17 @@ import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.commons.extensions.isLollipopPlus
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import com.simplemobiletools.commons.extensions.value
-import kotlinx.android.synthetic.main.dialog_repeat_type_picker.view.*
+import kotlinx.android.synthetic.main.dialog_repeat_limit_type_picker.view.*
 import org.joda.time.DateTime
 import java.util.*
 
-class RepeatTypePickerDialog(val activity: Activity, var repeatLimit: Int, val startTS: Int, val callback: (repeatLimit: Int) -> Unit) :
+class RepeatLimitTypePickerDialog(val activity: Activity, var repeatLimit: Int, val startTS: Int, val callback: (repeatLimit: Int) -> Unit) :
         AlertDialog.Builder(activity) {
     lateinit var dialog: AlertDialog
     var view: View
 
     init {
-        view = activity.layoutInflater.inflate(R.layout.dialog_repeat_type_picker, null).apply {
+        view = activity.layoutInflater.inflate(R.layout.dialog_repeat_limit_type_picker, null).apply {
             repeat_type_date.setOnClickListener { showRepetitionLimitDialog() }
             repeat_type_forever.setOnClickListener { callback(0); dialog.dismiss() }
             repeat_type_count.setOnClickListener { dialog_radio_view.check(R.id.repeat_type_x_times) }
