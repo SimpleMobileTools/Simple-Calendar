@@ -387,56 +387,66 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         events.forEach {
             startTimes.put(it.id, it.startTS)
             if (it.repeatLimit >= 0) {
-                // events repeating by x days etc
-                while (it.startTS < toTS && (it.repeatLimit == 0 || it.repeatLimit >= it.startTS)) {
-                    if (it.startTS >= fromTS) {
-                        if (it.repeatInterval % WEEK == 0) {
-                            if (it.startTS.isTsOnProperDay(it)) {
-                                val initialWeekOfYear = Formatter.getDateTimeFromTS(startTimes[it.id]).weekOfWeekyear
-                                val currentWeekOfYear = Formatter.getDateTimeFromTS(it.startTS).weekOfWeekyear
-
-                                // check if its the proper week, for events repeating by x weeks
-                                if ((currentWeekOfYear - initialWeekOfYear) % (it.repeatInterval / WEEK) == 0) {
-                                    newEvents.add(it.copy())
-                                }
-                            }
-                        } else {
-                            newEvents.add(it.copy())
-                        }
-                    } else if (getRunningEvents && (it.startTS <= fromTS && it.endTS >= toTS)) {
-                        newEvents.add(it.copy())
-                    }
-                    it.addIntervalTime()
-                }
+                newEvents.addAll(getEventsRepeatingTillDate(fromTS, toTS, startTimes, getRunningEvents, it))
             } else {
-                // events repeating x times
-                while (it.repeatLimit < 0 && it.endTS < toTS) {
-                    if (it.repeatInterval != 0 && it.repeatInterval % WEEK == 0) {
-                        if (it.startTS.isTsOnProperDay(it)) {
-                            val initialWeekOfYear = Formatter.getDateTimeFromTS(startTimes[it.id]).weekOfWeekyear
-                            val currentWeekOfYear = Formatter.getDateTimeFromTS(it.startTS).weekOfWeekyear
-
-                            // check if its the proper week, for events repeating by x weeks
-                            if ((currentWeekOfYear - initialWeekOfYear) % (it.repeatInterval / WEEK) == 0) {
-                                if (it.startTS >= fromTS && it.startTS < toTS) {
-                                    newEvents.add(it.copy())
-                                }
-                                it.repeatLimit++
-                            }
-                        }
-                        it.addIntervalTime()
-                    } else {
-                        if (it.startTS >= fromTS && it.startTS < toTS) {
-                            newEvents.add(it.copy())
-                        }
-                        it.addIntervalTime()
-                        it.repeatLimit++
-                    }
-                }
+                newEvents.addAll(getEventsRepeatingXTimes(fromTS, toTS, startTimes, it))
             }
         }
 
         return newEvents
+    }
+
+    private fun getEventsRepeatingTillDate(fromTS: Int, toTS: Int, startTimes: SparseIntArray, getRunningEvents: Boolean, event: Event): ArrayList<Event> {
+        val events = ArrayList<Event>()
+        while (event.startTS < toTS && (event.repeatLimit == 0 || event.repeatLimit >= event.startTS)) {
+            if (event.startTS >= fromTS) {
+                if (event.repeatInterval % WEEK == 0) {
+                    if (event.startTS.isTsOnProperDay(event)) {
+                        val initialWeekOfYear = Formatter.getDateTimeFromTS(startTimes[event.id]).weekOfWeekyear
+                        val currentWeekOfYear = Formatter.getDateTimeFromTS(event.startTS).weekOfWeekyear
+
+                        // check if its the proper week, for events repeating by x weeks
+                        if ((currentWeekOfYear - initialWeekOfYear) % (event.repeatInterval / WEEK) == 0) {
+                            events.add(event.copy())
+                        }
+                    }
+                } else {
+                    events.add(event.copy())
+                }
+            } else if (getRunningEvents && (event.startTS <= fromTS && event.endTS >= toTS)) {
+                events.add(event.copy())
+            }
+            event.addIntervalTime()
+        }
+        return events
+    }
+
+    private fun getEventsRepeatingXTimes(fromTS: Int, toTS: Int, startTimes: SparseIntArray, event: Event): ArrayList<Event> {
+        val events = ArrayList<Event>()
+        while (event.repeatLimit < 0 && event.endTS < toTS) {
+            if (event.repeatInterval != 0 && event.repeatInterval % WEEK == 0) {
+                if (event.startTS.isTsOnProperDay(event)) {
+                    val initialWeekOfYear = Formatter.getDateTimeFromTS(startTimes[event.id]).weekOfWeekyear
+                    val currentWeekOfYear = Formatter.getDateTimeFromTS(event.startTS).weekOfWeekyear
+
+                    // check if its the proper week, for events repeating by x weeks
+                    if ((currentWeekOfYear - initialWeekOfYear) % (event.repeatInterval / WEEK) == 0) {
+                        if (event.startTS >= fromTS && event.startTS < toTS) {
+                            events.add(event.copy())
+                        }
+                        event.repeatLimit++
+                    }
+                }
+                event.addIntervalTime()
+            } else {
+                if (event.startTS >= fromTS && event.startTS < toTS) {
+                    events.add(event.copy())
+                }
+                event.addIntervalTime()
+                event.repeatLimit++
+            }
+        }
+        return events
     }
 
     fun getRunningEvents(): List<Event> {
