@@ -409,7 +409,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                 } else {
                     events.add(event.copy())
                 }
-            } else if (getRunningEvents && (event.startTS <= fromTS && event.endTS >= toTS)) {
+            } else if (getRunningEvents && (event.startTS <= fromTS)) {
                 events.add(event.copy())
             }
             event.addIntervalTime()
@@ -423,14 +423,14 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             if (event.repeatInterval % WEEK == 0) {
                 if (event.startTS.isTsOnProperDay(event)) {
                     if (isOnProperWeek(event, startTimes)) {
-                        if (event.startTS >= fromTS && event.startTS < toTS) {
+                        if (event.startTS >= fromTS) {
                             events.add(event.copy())
                         }
                         event.repeatLimit++
                     }
                 }
             } else {
-                if (event.startTS <= toTS && event.endTS >= fromTS) {
+                if (event.startTS <= toTS) {
                     events.add(event.copy())
                 }
                 event.repeatLimit++
