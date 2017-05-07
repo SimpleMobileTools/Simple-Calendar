@@ -206,10 +206,8 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
     private fun showRepetitionRuleDialog() {
         hideKeyboard()
-        if (isXWeeklyRepetition()) {
-            RepeatRuleDailyDialog(this, mRepeatRule) {
-                setRepeatRule(it)
-            }
+        RepeatRuleDailyDialog(this, mRepeatRule) {
+            setRepeatRule(it)
         }
     }
 
@@ -315,6 +313,8 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     }
 
     private fun isXWeeklyRepetition() = mRepeatInterval != 0 && mRepeatInterval % WEEK == 0
+
+    private fun isXMonthlyRepetition() = mRepeatInterval != 0 && !isXWeeklyRepetition() && mRepeatInterval % MONTH == 0
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_event, menu)
