@@ -399,7 +399,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private fun getEventsRepeatingTillDateOrForever(fromTS: Int, toTS: Int, startTimes: SparseIntArray, getRunningEvents: Boolean, event: Event): ArrayList<Event> {
         val events = ArrayList<Event>()
         while (event.startTS <= toTS && (event.repeatLimit == 0 || event.repeatLimit >= event.startTS)) {
-            if (event.startTS <= toTS && event.endTS >= fromTS) {
+            if (event.endTS >= fromTS) {
                 if (event.repeatInterval % WEEK == 0) {
                     if (event.startTS.isTsOnProperDay(event)) {
                         if (isOnProperWeek(event, startTimes)) {
@@ -423,16 +423,14 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             if (event.repeatInterval % WEEK == 0) {
                 if (event.startTS.isTsOnProperDay(event)) {
                     if (isOnProperWeek(event, startTimes)) {
-                        if (event.startTS >= fromTS) {
+                        if (event.endTS >= fromTS) {
                             events.add(event.copy())
                         }
                         event.repeatLimit++
                     }
                 }
             } else {
-                if (event.startTS <= toTS) {
-                    events.add(event.copy())
-                }
+                events.add(event.copy())
                 event.repeatLimit++
             }
             event.addIntervalTime()
