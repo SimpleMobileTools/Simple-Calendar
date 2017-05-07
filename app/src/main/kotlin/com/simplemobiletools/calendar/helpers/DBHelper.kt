@@ -530,7 +530,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                     val reminder2Minutes = cursor.getIntValue(COL_REMINDER_MINUTES_2)
                     val reminder3Minutes = cursor.getIntValue(COL_REMINDER_MINUTES_3)
                     val repeatInterval = cursor.getIntValue(COL_REPEAT_INTERVAL)
-                    val repeatRule = cursor.getIntValue(COL_REPEAT_RULE)
+                    var repeatRule = cursor.getIntValue(COL_REPEAT_RULE)
                     val title = cursor.getStringValue(COL_TITLE)
                     val description = cursor.getStringValue(COL_DESCRIPTION)
                     val importId = cursor.getStringValue(COL_IMPORT_ID)
@@ -542,6 +542,10 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                         getIgnoredOccurrences(id)
                     } else {
                         ArrayList<Int>()
+                    }
+
+                    if (repeatInterval % MONTH == 0 && repeatRule == 0) {
+                        repeatRule = REPEAT_MONTH_SAME_DAY
                     }
 
                     val event = Event(id, startTS, endTS, title, description, reminder1Minutes, reminder2Minutes, reminder3Minutes,
