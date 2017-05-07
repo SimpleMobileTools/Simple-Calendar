@@ -217,7 +217,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         } else if (isXMonthlyRepetition()) {
             val items = arrayListOf(
                     RadioItem(REPEAT_MONTH_SAME_DAY, getString(R.string.repeat_on_the_same_day)),
-                    RadioItem(REPEAT_MONTH_EVERY_XTH_DAY, getRepeatXthDayString()),
+                    RadioItem(REPEAT_MONTH_EVERY_XTH_DAY, getRepeatXthDayString(true)),
                     RadioItem(REPEAT_MONTH_LAST_DAY, getString(R.string.repeat_on_the_last_day)))
 
             RadioGroupDialog(this, items, mRepeatRule) {
@@ -226,12 +226,16 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         }
     }
 
-    private fun getRepeatXthDayString(): String {
+    private fun getRepeatXthDayString(includeBase: Boolean): String {
         val dayOfWeek = mEventStartDateTime.dayOfWeek
         val base = getBaseString(dayOfWeek)
         val order = getOrderString()
         val dayString = getDayString(dayOfWeek)
-        return "$base $order $dayString"
+        return if (includeBase) {
+            "$base $order $dayString"
+        } else {
+            "${order.capitalize()} $dayString"
+        }
     }
 
     private fun getBaseString(day: Int): String {
@@ -313,9 +317,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         return when (mRepeatRule) {
             REPEAT_MONTH_SAME_DAY -> getString(R.string.the_same_day)
             REPEAT_MONTH_LAST_DAY -> getString(R.string.the_last_day)
-            else -> {
-                ""
-            }
+            else -> getRepeatXthDayString(false)
         }
     }
 
@@ -573,7 +575,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
                 setRepeatRule(Math.pow(2.0, (mEventStartDateTime.dayOfWeek - 1).toDouble()).toInt())
             }
         } else if (isXMonthlyRepetition()) {
-
+            checkRepetitionRuleText()
         }
     }
 
