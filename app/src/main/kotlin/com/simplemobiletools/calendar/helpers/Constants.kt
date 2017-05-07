@@ -46,6 +46,7 @@ val SYNC_ACCOUNT_NAME = "sync_account_name"
 val letterIDs = intArrayOf(R.string.sunday_letter, R.string.monday_letter, R.string.tuesday_letter, R.string.wednesday_letter,
         R.string.thursday_letter, R.string.friday_letter, R.string.saturday_letter)
 
+// repeat_rule for weekly repetition
 val MONDAY = 1
 val TUESDAY = 2
 val WEDNESDAY = 4
@@ -57,8 +58,8 @@ val EVERY_DAY = 127
 
 // repeat_rule for monthly repetition
 val REPEAT_MONTH_SAME_DAY = 1
-val REPEAT_MONTH_LAST_DAY = 2
-val REPEAT_MONTH_EVERY_X = 3
+val REPEAT_MONTH_EVERY_XTH_DAY = 3
+val REPEAT_MONTH_LAST_DAY = 3
 
 // special event flags
 val FLAG_ALL_DAY = 1
