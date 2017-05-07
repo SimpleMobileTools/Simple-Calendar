@@ -402,11 +402,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             if (event.startTS >= fromTS) {
                 if (event.repeatInterval % WEEK == 0) {
                     if (event.startTS.isTsOnProperDay(event)) {
-                        val initialWeekOfYear = Formatter.getDateTimeFromTS(startTimes[event.id]).weekOfWeekyear
-                        val currentWeekOfYear = Formatter.getDateTimeFromTS(event.startTS).weekOfWeekyear
-
-                        // check if its the proper week, for events repeating by x weeks
-                        if ((currentWeekOfYear - initialWeekOfYear) % (event.repeatInterval / WEEK) == 0) {
+                        if (isOnProperWeek(event, startTimes)) {
                             events.add(event.copy())
                         }
                     }
@@ -426,11 +422,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         while (event.repeatLimit < 0 && event.endTS < toTS) {
             if (event.repeatInterval != 0 && event.repeatInterval % WEEK == 0) {
                 if (event.startTS.isTsOnProperDay(event)) {
-                    val initialWeekOfYear = Formatter.getDateTimeFromTS(startTimes[event.id]).weekOfWeekyear
-                    val currentWeekOfYear = Formatter.getDateTimeFromTS(event.startTS).weekOfWeekyear
-
-                    // check if its the proper week, for events repeating by x weeks
-                    if ((currentWeekOfYear - initialWeekOfYear) % (event.repeatInterval / WEEK) == 0) {
+                    if (isOnProperWeek(event, startTimes)) {
                         if (event.startTS >= fromTS && event.startTS < toTS) {
                             events.add(event.copy())
                         }
@@ -447,6 +439,13 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             }
         }
         return events
+    }
+
+    // check if its the proper week, for events repeating by x weeks
+    private fun isOnProperWeek(event: Event, startTimes: SparseIntArray): Boolean {
+        val initialWeekOfYear = Formatter.getDateTimeFromTS(startTimes[event.id]).weekOfWeekyear
+        val currentWeekOfYear = Formatter.getDateTimeFromTS(event.startTS).weekOfWeekyear
+        return (currentWeekOfYear - initialWeekOfYear) % (event.repeatInterval / WEEK) == 0
     }
 
     fun getRunningEvents(): List<Event> {
