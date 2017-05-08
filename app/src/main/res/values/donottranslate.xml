@@ -1,6 +1,7 @@
 <resources>
 
     <!-- Release notes -->
+    <string name="release_73">Add more advanced monthly repetition options, like \"Last day of the month\" or \"Every second Tuesday\"</string>
     <string name="release_71">Add a new event repetition type \"Repeat x times\"</string>
     <string name="release_69">
         Added more advanced weekly repetition by week days\n
