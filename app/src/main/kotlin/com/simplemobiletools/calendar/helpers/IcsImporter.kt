@@ -202,6 +202,8 @@ class IcsImporter {
                 if (value == WEEKLY) {
                     val start = Formatter.getDateTimeFromTS(curStart)
                     curRepeatRule = Math.pow(2.0, (start.dayOfWeek - 1).toDouble()).toInt()
+                } else if (value == MONTHLY) {
+                    curRepeatRule = REPEAT_MONTH_SAME_DAY
                 }
             } else if (key == COUNT) {
                 curRepeatLimit = -value.toInt()
@@ -211,6 +213,8 @@ class IcsImporter {
                 frequencySeconds *= value.toInt()
             } else if (key == BYDAY) {
                 handleRepeatRule(value)
+            } else if (key == BYMONTHDAY && value.toInt() == -1) {
+                curRepeatRule = REPEAT_MONTH_LAST_DAY
             }
         }
         return frequencySeconds

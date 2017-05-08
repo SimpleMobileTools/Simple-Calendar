@@ -2,6 +2,8 @@ package com.simplemobiletools.calendar.helpers
 
 import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.extensions.dbHelper
+import com.simplemobiletools.calendar.extensions.isXMonthlyRepetition
+import com.simplemobiletools.calendar.extensions.isXWeeklyRepetition
 import com.simplemobiletools.calendar.extensions.writeLn
 import com.simplemobiletools.calendar.helpers.IcsExporter.ExportResult.*
 import com.simplemobiletools.calendar.models.Event
@@ -103,11 +105,17 @@ class IcsExporter {
     }
 
     private fun getByDay(event: Event): String {
-        return if (event.repeatInterval == 0 || event.repeatInterval % WEEK != 0) {
-            ""
-        } else {
+        return if (event.repeatInterval.isXWeeklyRepetition()) {
             val days = getByDayString(event.repeatRule)
             ";$BYDAY=$days"
+        } else if (event.repeatInterval.isXMonthlyRepetition()) {
+            if (event.repeatRule == REPEAT_MONTH_LAST_DAY) {
+                ";$BYMONTHDAY=-1"
+            } else {
+                ""
+            }
+        } else {
+            ""
         }
     }
 
