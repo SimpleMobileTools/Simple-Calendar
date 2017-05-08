@@ -26,7 +26,7 @@ data class Event(var id: Int = 0, var startTS: Int = 0, var endTS: Int = 0, var 
                     currStart.plusYears(repeatInterval / YEAR)
                 } else if (repeatInterval % MONTH == 0) {
                     if (repeatRule == REPEAT_MONTH_SAME_DAY) {
-                        currStart.plusMonths(repeatInterval / MONTH)
+                        addMonthsWithSameDay(currStart, original)
                     } else if (repeatRule == REPEAT_MONTH_EVERY_XTH_DAY) {
                         addXthDayInterval(currStart, original)
                     } else {
@@ -46,6 +46,17 @@ data class Event(var id: Int = 0, var startTS: Int = 0, var endTS: Int = 0, var 
         endTS = newEndTS
     }
 
+    // if an event should happen on 31st with Same Day monthly repetition, dont show it at all at months with 30 or less days
+    private fun addMonthsWithSameDay(currStart: DateTime, original: Event): DateTime {
+        var newDateTime = currStart.plusMonths(repeatInterval / MONTH)
+        while (newDateTime.dayOfMonth().maximumValue < Formatter.getDateTimeFromTS(original.startTS).dayOfMonth().maximumValue) {
+            newDateTime = newDateTime.plusMonths(repeatInterval / MONTH)
+            newDateTime = newDateTime.withDayOfMonth(newDateTime.dayOfMonth().maximumValue)
+        }
+        return newDateTime
+    }
+
+    // handle monthly repetitions like Third Monday
     private fun addXthDayInterval(currStart: DateTime, original: Event): DateTime {
         val day = currStart.dayOfWeek
         var order = (currStart.dayOfMonth - 1) / 7
