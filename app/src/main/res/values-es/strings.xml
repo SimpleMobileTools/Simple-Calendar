@@ -1,20 +1,20 @@
 <resources>
-    <string name="app_name">Calendario simple</string>
-    <string name="app_launcher_name">Calendario</string>
+    <string name="app_name">Simple Calendar</string>
+    <string name="app_launcher_name">Simple Calendar</string>
     <string name="change_view">Cambiar vista</string>
-    <string name="weekly_view">Weekly view</string>
+    <string name="weekly_view">Vista semanal</string>
     <string name="monthly_view">Vista mensual</string>
     <string name="yearly_view">Vista anual</string>
-    <string name="simple_event_list">Lista de eventos simples</string>
-    <string name="no_upcoming_events">Seems like you don\'t have any upcoming events.</string>
-    <string name="add_some_events">You can add some with the Plus button at the bottom.</string>
+    <string name="simple_event_list">Lista de eventos sencilla</string>
+    <string name="no_upcoming_events">Parece que no tienes ningún evento próximo.</string>
+    <string name="add_some_events">Puede añadir algunos con el botón Más en la parte inferior.</string>
     <string name="details">Detalles</string>
-    <string name="go_to_today">Go to today</string>
-    <string name="no_app_for_ics">No app capable of handling .ics files has been found</string>
+    <string name="go_to_today">Ir al día de hoy</string>
+    <string name="no_app_for_ics">No se ha encontrado ninguna aplicación capaz de manejar archivos .ics</string>
 
     <!-- Widget titles -->
-    <string name="widget_monthly">Calendar monthly</string>
-    <string name="widget_list">Calendar event list</string>
+    <string name="widget_monthly">Calendario mensual</string>
+    <string name="widget_list">Lista de eventos del calendario</string>
 
     <!-- Event -->
     <string name="event">Evento</string>
@@ -23,153 +23,153 @@
     <string name="title_empty">El título no puede estar vacío</string>
     <string name="end_before_start">El evento no puede acabar antes de iniciarse</string>
     <string name="event_added">El evento se ha añadido con éxito</string>
-    <string name="past_event_added">El evento en el pasado se ha añadido con éxito</string>
+    <string name="past_event_added">El evento se ha añadido con éxito en el pasado</string>
     <string name="event_updated">El evento se ha actualizado con éxito</string>
-    <string name="filter">Filter</string>
-    <string name="filter_events_by_type">Filter events by type</string>
+    <string name="filter">Filtrar</string>
+    <string name="filter_events_by_type">Filtrar eventos según tipo</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Repetición</string>
-    <string name="no_repetition">No repetition</string>
-    <string name="daily">Diario</string>
-    <string name="weekly">Semanal</string>
-    <string name="monthly">Mensual</string>
-    <string name="yearly">Anual</string>
-    <string name="weeks_raw">weeks</string>
-    <string name="months_raw">months</string>
-    <string name="years_raw">years</string>
-    <string name="repeat_till">Repeat till</string>
-    <string name="forever">Forever</string>
-    <string name="selection_contains_repetition">The selection contains repeating events</string>
-    <string name="delete_one_only">Delete the selected occurrence only</string>
-    <string name="delete_all_occurrences">Delete all occurrences</string>
-    <string name="update_one_only">Update the selected occurrence only</string>
-    <string name="update_all_occurrences">Update all occurrences</string>
-    <string name="repeat_till_date">Repeat till a date</string>
-    <string name="repeat_x_times">Repeat x times</string>
-    <string name="repeat_forever">Repeat forever</string>
-    <string name="times">times</string>
-    <string name="repeat">Repeat</string>
-    <string name="repeat_on">Repeat on</string>
-    <string name="every_day">Every day</string>
-    <string name="selected_days">On selected days</string>
-    <string name="the_same_day">The same day</string>
-    <string name="the_last_day">The last day</string>
-    <string name="repeat_on_the_same_day">Repeat on the same day each month</string>
-    <string name="repeat_on_the_last_day">Repeat on the last day of the month</string>
-    <string name="repeat_every_m">Repeat every</string>
-    <string name="every_m">Every</string>
-    <string name="first_m">first</string>
-    <string name="second_m">second</string>
-    <string name="third_m">third</string>
-    <string name="fourth_m">fourth</string>
-    <string name="last_m">last</string>
+    <string name="no_repetition">Sin repetición</string>
+    <string name="daily">Diariamente</string>
+    <string name="weekly">Semanalmente</string>
+    <string name="monthly">Mensualmente</string>
+    <string name="yearly">Anualmente</string>
+    <string name="weeks_raw">semanas</string>
+    <string name="months_raw">meses</string>
+    <string name="years_raw">años</string>
+    <string name="repeat_till">Repetir hasta</string>
+    <string name="forever">Siempre</string>
+    <string name="selection_contains_repetition">La selección contiene eventos repetitivos</string>
+    <string name="delete_one_only">Eliminar sólo el evento seleccionado</string>
+    <string name="delete_all_occurrences">Eliminar todos los eventos</string>
+    <string name="update_one_only">Actualizar sólo el evento seleccionado</string>
+    <string name="update_all_occurrences">Actualizar todos los eventos</string>
+    <string name="repeat_till_date">Repetir hasta la fecha</string>
+    <string name="repeat_x_times">Repetir x veces</string>
+    <string name="repeat_forever">Repetir por siempre</string>
+    <string name="times">veces</string>
+    <string name="repeat">Repetir</string>
+    <string name="repeat_on">Repertir los</string>
+    <string name="every_day">Cada día</string>
+    <string name="selected_days">En los días seleccionados</string>
+    <string name="the_same_day">El mismo día</string>
+    <string name="the_last_day">El último día</string>
+    <string name="repeat_on_the_same_day">Repetir en el mismo día cada mes</string>
+    <string name="repeat_on_the_last_day">Repetir en el último día del mes</string>
+    <string name="repeat_every_m">Repetir cada</string>
+    <string name="every_m">Cada</string>
+    <string name="first_m">primero</string>
+    <string name="second_m">segundo</string>
+    <string name="third_m">tercero</string>
+    <string name="fourth_m">cuarto</string>
+    <string name="last_m">último</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
-    <string name="repeat_every_f">Repeat every</string>
-    <string name="every_f">Every</string>
-    <string name="first_f">first</string>
-    <string name="second_f">second</string>
-    <string name="third_f">third</string>
-    <string name="fourth_f">fourth</string>
-    <string name="last_f">last</string>
+    <string name="repeat_every_f">Repetir cada</string>
+    <string name="every_f">Cada</string>
+    <string name="first_f">primero</string>
+    <string name="second_f">segundo</string>
+    <string name="third_f">tercero</string>
+    <string name="fourth_f">cuarto</string>
+    <string name="last_f">último</string>
 
     <plurals name="days">
-        <item quantity="one">%1$d day</item>
-        <item quantity="other">%1$d days</item>
+        <item quantity="one">%1$d día</item>
+        <item quantity="other">%1$d días</item>
     </plurals>
 
     <plurals name="weeks">
-        <item quantity="one">%1$d week</item>
-        <item quantity="other">%1$d weeks</item>
+        <item quantity="one">%1$d semana</item>
+        <item quantity="other">%1$d semanas</item>
     </plurals>
 
     <plurals name="months">
-        <item quantity="one">%1$d month</item>
-        <item quantity="other">%1$d months</item>
+        <item quantity="one">%1$d mes</item>
+        <item quantity="other">%1$d meses</item>
     </plurals>
 
     <plurals name="years">
-        <item quantity="one">%1$d year</item>
-        <item quantity="other">%1$d years</item>
+        <item quantity="one">%1$d año</item>
+        <item quantity="other">%1$d años</item>
     </plurals>
 
     <!-- Event Reminders -->
-    <string name="select_event_reminder">Select an event reminder</string>
+    <string name="select_event_reminder">Seleccionar un recordatorio de evento</string>
     <string name="reminder">Recordatorio</string>
-    <string name="no_reminder">No reminder</string>
+    <string name="no_reminder">Sin recordatorio</string>
     <string name="at_start">Al inicio</string>
     <string name="custom">Personalizado</string>
-    <string name="before">antes de</string>
+    <string name="before">antes</string>
     <string name="minutes_raw">minutos</string>
     <string name="hours_raw">horas</string>
     <string name="days_raw">días</string>
-    <string name="add_another_reminder">Add another reminder</string>
+    <string name="add_another_reminder">Agregar otro recordatorio</string>
 
     <plurals name="minutes">
-        <item quantity="one">%1$d minute before</item>
-        <item quantity="other">%1$d minutos antes de</item>
+        <item quantity="one">%1$d minuto antes</item>
+        <item quantity="other">%1$d minutos antes</item>
     </plurals>
 
     <plurals name="hours">
-        <item quantity="one">%1$d hour before</item>
-        <item quantity="other">%1$d horas antes de</item>
+        <item quantity="one">%1$d hora antes</item>
+        <item quantity="other">%1$d horas antes</item>
     </plurals>
 
     <plurals name="days_before">
-        <item quantity="one">%1$d day before</item>
-        <item quantity="other">%1$d días antes de</item>
+        <item quantity="one">%1$d día antes</item>
+        <item quantity="other">%1$d días antes</item>
     </plurals>
 
     <!-- Export / Import -->
-    <string name="import_events">Import events</string>
-    <string name="export_events">Export events</string>
-    <string name="import_events_from_ics">Import events from an .ics file</string>
-    <string name="export_events_to_ics">Export events to an .ics file</string>
-    <string name="events_imported_successfully">Events imported successfully</string>
-    <string name="events_exported_successfully">Events have been exported successfully</string>
-    <string name="importing_events_failed">Importing events failed</string>
-    <string name="exporting_events_failed">Exporting events failed</string>
-    <string name="importing_some_events_failed">Importing some events failed</string>
-    <string name="exporting_some_events_failed">Exporting some events failed</string>
-    <string name="invalid_file_format">Invalid file format</string>
-    <string name="default_event_type">Default event type</string>
-    <string name="no_events_for_exporting">No events for exporting have been found</string>
-    <string name="export_past_events_too">Export past events too</string>
+    <string name="import_events">Importar eventos</string>
+    <string name="export_events">Exportar eventos</string>
+    <string name="import_events_from_ics">Importar eventos desde un archivo .ics</string>
+    <string name="export_events_to_ics">Exportar eventos desde un archivo .ics</string>
+    <string name="events_imported_successfully">Eventos importados exitosamente</string>
+    <string name="events_exported_successfully">Los eventos han sido exportados exitosamente</string>
+    <string name="importing_events_failed">Error en la importación de eventos</string>
+    <string name="exporting_events_failed">Error en la exportación de eventos</string>
+    <string name="importing_some_events_failed">Error al importar algunos eventos</string>
+    <string name="exporting_some_events_failed">Error al exportar algunos eventos</string>
+    <string name="invalid_file_format">Formato de archivo no válido</string>
+    <string name="default_event_type">Tipo de evento predeterminado</string>
+    <string name="no_events_for_exporting">No se han encontrado eventos para la exportación</string>
+    <string name="export_past_events_too">También exportar eventos pasados</string>
 
     <!-- Event details -->
     <string name="title">Título</string>
     <string name="description">Descripción</string>
-    <string name="all_day">All-day</string>
+    <string name="all_day">Todo el día</string>
 
     <!-- Weekly view -->
-    <string name="week">Week</string>
+    <string name="week">Semana</string>
 
     <!-- Event types -->
-    <string name="event_types">Event types</string>
-    <string name="add_new_type">Add a new type</string>
-    <string name="edit_type">Edit type</string>
-    <string name="type_already_exists">Type with this title already exists</string>
+    <string name="event_types">Tipos de eventos</string>
+    <string name="add_new_type">Agregar un nuevo tipo de evento</string>
+    <string name="edit_type">Editar tipo de evento</string>
+    <string name="type_already_exists">Ya existe un tipo de evento con este nombre</string>
     <string name="color">Color</string>
-    <string name="regular_event">Regular event</string>
-    <string name="cannot_delete_default_type">Default event type cannot be deleted</string>
-    <string name="select_event_type">Select an event type</string>
+    <string name="regular_event">Evento regular</string>
+    <string name="cannot_delete_default_type">No se puede eliminar el tipo de evento predeterminado</string>
+    <string name="select_event_type">Seleccione un tipo de evento</string>
 
     <!-- Settings -->
-    <string name="manage_event_types">Manage event types</string>
-    <string name="use_24_hour_format">Use 24-hour format</string>
-    <string name="sunday_first">Domingo como primer día</string>
-    <string name="start_weekly_at">Start weekly view day at</string>
-    <string name="end_weekly_at">End weekly view day at</string>
+    <string name="manage_event_types">Gestionar tipos de eventos</string>
+    <string name="use_24_hour_format">Usar formato de 24 horas</string>
+    <string name="sunday_first">Domingo como primer día de la semana</string>
+    <string name="start_weekly_at">El día en la vista semanal comienza a las</string>
+    <string name="end_weekly_at">El día en la vista semanal finaliza a las</string>
     <string name="week_numbers">Mostrar los números de la semana</string>
-    <string name="vibrate">Vibrate on reminder notification</string>
-    <string name="reminder_sound">Reminder sound</string>
+    <string name="vibrate">Vibración en notificación de recordatorio</string>
+    <string name="reminder_sound">Sonido de recordatorio</string>
     <string name="default_event_reminder">Recordatorio predeterminado de un evento</string>
-    <string name="no_ringtone_picker">No app capable of setting ringtone found</string>
-    <string name="no_ringtone_selected">None</string>
-    <string name="day_end_before_start">The day cannot end earlier than it starts</string>
-    <string name="google_sync">Google sync</string>
+    <string name="no_ringtone_picker">No se ha encontrado ninguna aplicación capaz de establecer el tono de llamada</string>
+    <string name="no_ringtone_selected">Ninguno</string>
+    <string name="day_end_before_start">El día no puede terminar antes de que comience/string>
+    <string name="google_sync">Sincronización de Google</string>
 
     <string name="january">Enero</string>
     <string name="february">Febrero</string>
@@ -192,37 +192,37 @@
     <string name="saturday_letter">S</string>
     <string name="sunday_letter">D</string>
 
-    <string name="monday">Monday</string>
-    <string name="tuesday">Tuesday</string>
-    <string name="wednesday">Wednesday</string>
-    <string name="thursday">Thursday</string>
-    <string name="friday">Friday</string>
-    <string name="saturday">Saturday</string>
-    <string name="sunday">Sunday</string>
+    <string name="monday">Lunes</string>
+    <string name="tuesday">Martes</string>
+    <string name="wednesday">Miércoles</string>
+    <string name="thursday">Jueves</string>
+    <string name="friday">Viernes</string>
+    <string name="saturday">Sábado</string>
+    <string name="sunday">Domingo</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
-    <string name="monday_alt">Monday</string>
-    <string name="tuesday_alt">Tuesday</string>
-    <string name="wednesday_alt">Wednesday</string>
-    <string name="thursday_alt">Thursday</string>
-    <string name="friday_alt">Friday</string>
-    <string name="saturday_alt">Saturday</string>
-    <string name="sunday_alt">Sunday</string>
+    <string name="monday_alt">Lunes</string>
+    <string name="tuesday_alt">Martes</string>
+    <string name="wednesday_alt">Miércoles</string>
+    <string name="thursday_alt">Jueves</string>
+    <string name="friday_alt">Viernes</string>
+    <string name="saturday_alt">Sábado</string>
+    <string name="sunday_alt">Domingo</string>
 
     <!-- List widget config example events -->
-    <string name="sample_title_1">Workout</string>
-    <string name="sample_description_1">Leg day</string>
-    <string name="sample_title_2">Meeting with John</string>
-    <string name="sample_description_2">In Rockstone garden</string>
-    <string name="sample_title_3">Library</string>
-    <string name="sample_title_4">Lunch with Mary</string>
-    <string name="sample_description_4">In the Plaza</string>
-    <string name="sample_title_5">Coffee time</string>
+    <string name="sample_title_1">Ejercicio</string>
+    <string name="sample_description_1">Ejercitar piernas</string>
+    <string name="sample_title_2">Reunión con John</string>
+    <string name="sample_description_2">En el jardín de Rockstone</string>
+    <string name="sample_title_3">Biblioteca</string>
+    <string name="sample_title_4">Almuerzo con María</string>
+    <string name="sample_description_4">En la plaza</string>
+    <string name="sample_title_5">Hora de café</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Un simple calendario con eventos, widget personalizable y sin anuncios.</string>
+    <string name="app_short_description">Un sencillo calendario con eventos, widget personalizable y sin anuncios.</string>
     <string name="app_long_description">
         Un calendario sin conexión sin ninguna otra integración con el calendario. Usted puede crear fácilmente eventos recurrentes y configurar recordatorios. También muestra los números de semana.
 
