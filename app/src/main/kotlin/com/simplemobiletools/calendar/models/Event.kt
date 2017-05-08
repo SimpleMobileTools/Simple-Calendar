@@ -25,7 +25,11 @@ data class Event(var id: Int = 0, var startTS: Int = 0, var endTS: Int = 0, var 
                 if (repeatInterval % YEAR == 0) {
                     currStart.plusYears(repeatInterval / YEAR)
                 } else if (repeatInterval % MONTH == 0) {
-                    currStart.plusMonths(repeatInterval / MONTH)
+                    if (repeatRule == REPEAT_MONTH_LAST_DAY) {
+                        currStart.plusMonths(repeatInterval / MONTH).dayOfMonth().withMaximumValue()
+                    } else {
+                        currStart.plusMonths(repeatInterval / MONTH)
+                    }
                 } else if (repeatInterval % WEEK == 0) {
                     // step through weekly repetition by days too, as events can trigger multiple times a week
                     currStart.plusDays(1)
