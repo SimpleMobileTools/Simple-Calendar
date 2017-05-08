@@ -3,6 +3,8 @@ package com.simplemobiletools.calendar.helpers
 import android.content.Context
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.dbHelper
+import com.simplemobiletools.calendar.extensions.isXMonthlyRepetition
+import com.simplemobiletools.calendar.extensions.isXWeeklyRepetition
 import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.helpers.IcsImporter.ImportResult.*
 import com.simplemobiletools.calendar.models.Event
@@ -212,7 +214,11 @@ class IcsImporter {
             } else if (key == INTERVAL) {
                 frequencySeconds *= value.toInt()
             } else if (key == BYDAY) {
-                handleRepeatRule(value)
+                if (frequencySeconds.isXWeeklyRepetition()) {
+                    handleRepeatRule(value)
+                } else if (frequencySeconds.isXMonthlyRepetition()) {
+                    curRepeatRule = REPEAT_MONTH_EVERY_XTH_DAY
+                }
             } else if (key == BYMONTHDAY && value.toInt() == -1) {
                 curRepeatRule = REPEAT_MONTH_LAST_DAY
             }

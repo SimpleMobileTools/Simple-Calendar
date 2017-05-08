@@ -111,6 +111,12 @@ class IcsExporter {
         } else if (event.repeatInterval.isXMonthlyRepetition()) {
             if (event.repeatRule == REPEAT_MONTH_LAST_DAY) {
                 ";$BYMONTHDAY=-1"
+            } else if (event.repeatRule == REPEAT_MONTH_EVERY_XTH_DAY) {
+                val start = Formatter.getDateTimeFromTS(event.startTS)
+                val dayOfMonth = start.dayOfMonth
+                val order = (dayOfMonth - 1) / 7 + 1
+                val day = getDayLetters(start.dayOfWeek)
+                ";$BYDAY=$order$day"
             } else {
                 ""
             }
@@ -136,6 +142,18 @@ class IcsExporter {
         if (rule and SUNDAY != 0)
             result += "$SU,"
         return result.trimEnd(',')
+    }
+
+    private fun getDayLetters(dayOfWeek: Int): String {
+        return when (dayOfWeek) {
+            1 -> MO
+            2 -> TU
+            3 -> WE
+            4 -> TH
+            5 -> FR
+            6 -> SA
+            else -> SU
+        }
     }
 
     private fun fillReminders(event: Event, out: BufferedWriter) {
