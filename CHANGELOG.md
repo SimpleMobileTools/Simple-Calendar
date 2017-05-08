@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 2.4.0 *(2017-05-08)*
+----------------------------
+
+ * Add more advanced monthly repetition options, like "Last day of the month" or "Every second Tuesday"
+ * Fix events repeating by multiple weeks or months
+ * Allow exporting events on SD cards
+
 Version 2.3.5 *(2017-05-05)*
 ----------------------------
 
