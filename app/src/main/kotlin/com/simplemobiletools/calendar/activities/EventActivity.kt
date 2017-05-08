@@ -217,14 +217,19 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         } else if (isXMonthlyRepetition()) {
             val items = arrayListOf(
                     RadioItem(REPEAT_MONTH_SAME_DAY, getString(R.string.repeat_on_the_same_day)),
-                    RadioItem(REPEAT_MONTH_EVERY_XTH_DAY, getRepeatXthDayString(true)),
-                    RadioItem(REPEAT_MONTH_LAST_DAY, getString(R.string.repeat_on_the_last_day)))
+                    RadioItem(REPEAT_MONTH_EVERY_XTH_DAY, getRepeatXthDayString(true)))
+
+            if (isLastDayOfTheMonth()) {
+                items.add(RadioItem(REPEAT_MONTH_LAST_DAY, getString(R.string.repeat_on_the_last_day)))
+            }
 
             RadioGroupDialog(this, items, mRepeatRule) {
                 setRepeatRule(it as Int)
             }
         }
     }
+
+    private fun isLastDayOfTheMonth() = mEventStartDateTime.dayOfMonth == mEventStartDateTime.dayOfMonth().withMaximumValue().dayOfMonth
 
     private fun getRepeatXthDayString(includeBase: Boolean): String {
         val dayOfWeek = mEventStartDateTime.dayOfWeek
