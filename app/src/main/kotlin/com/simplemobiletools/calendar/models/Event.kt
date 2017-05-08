@@ -43,4 +43,6 @@ data class Event(var id: Int = 0, var startTS: Int = 0, var endTS: Int = 0, var 
     val isAllDay = flags and FLAG_ALL_DAY != 0
 
     fun getReminders() = setOf(reminder1Minutes, reminder2Minutes, reminder3Minutes).filter { it != REMINDER_OFF }
+
+    fun isRepeatingByXWeeks() = repeatInterval > 0 && repeatInterval % WEEK == 0
 }

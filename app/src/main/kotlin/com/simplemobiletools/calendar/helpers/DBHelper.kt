@@ -366,7 +366,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     fun getEventsInBackground(fromTS: Int, toTS: Int, callback: (events: MutableList<Event>) -> Unit) {
         val events = ArrayList<Event>()
 
-        val selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_REPEAT_INTERVAL IS NULL"
+        val selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_REPEAT_INTERVAL IS 0"
         val selectionArgs = arrayOf(toTS.toString(), fromTS.toString())
         val cursor = getEventsCursor(selection, selectionArgs)
         events.addAll(fillEvents(cursor))
@@ -377,17 +377,17 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         callback(filtered)
     }
 
-    private fun getRepeatableEventsFor(fromTS: Int, toTS: Int, getRunningEvents: Boolean = false): List<Event> {
+    private fun getRepeatableEventsFor(fromTS: Int, toTS: Int): List<Event> {
         val newEvents = ArrayList<Event>()
 
         // get repeatable events
-        val selection = "$COL_REPEAT_INTERVAL != 0 AND $COL_START_TS < $toTS"
+        val selection = "$COL_REPEAT_INTERVAL != 0 AND $COL_START_TS <= $toTS"
         val events = getEvents(selection)
         val startTimes = SparseIntArray(events.size)
         events.forEach {
             startTimes.put(it.id, it.startTS)
             if (it.repeatLimit >= 0) {
-                newEvents.addAll(getEventsRepeatingTillDateOrForever(fromTS, toTS, startTimes, getRunningEvents, it))
+                newEvents.addAll(getEventsRepeatingTillDateOrForever(fromTS, toTS, startTimes, it))
             } else {
                 newEvents.addAll(getEventsRepeatingXTimes(fromTS, toTS, startTimes, it))
             }
@@ -396,11 +396,11 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         return newEvents
     }
 
-    private fun getEventsRepeatingTillDateOrForever(fromTS: Int, toTS: Int, startTimes: SparseIntArray, getRunningEvents: Boolean, event: Event): ArrayList<Event> {
+    private fun getEventsRepeatingTillDateOrForever(fromTS: Int, toTS: Int, startTimes: SparseIntArray, event: Event): ArrayList<Event> {
         val events = ArrayList<Event>()
         while (event.startTS <= toTS && (event.repeatLimit == 0 || event.repeatLimit >= event.startTS)) {
             if (event.endTS >= fromTS) {
-                if (event.repeatInterval % WEEK == 0) {
+                if (event.isRepeatingByXWeeks()) {
                     if (event.startTS.isTsOnProperDay(event)) {
                         if (isOnProperWeek(event, startTimes)) {
                             events.add(event.copy())
@@ -409,8 +409,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                 } else {
                     events.add(event.copy())
                 }
-            } else if (getRunningEvents && (event.startTS <= fromTS)) {
-                events.add(event.copy())
             }
             event.addIntervalTime()
         }
@@ -420,7 +418,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private fun getEventsRepeatingXTimes(fromTS: Int, toTS: Int, startTimes: SparseIntArray, event: Event): ArrayList<Event> {
         val events = ArrayList<Event>()
         while (event.repeatLimit < 0 && event.startTS <= toTS) {
-            if (event.repeatInterval % WEEK == 0) {
+            if (event.isRepeatingByXWeeks()) {
                 if (event.startTS.isTsOnProperDay(event)) {
                     if (isOnProperWeek(event, startTimes)) {
                         if (event.endTS >= fromTS) {
@@ -430,7 +428,9 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                     }
                 }
             } else {
-                events.add(event.copy())
+                if (event.endTS >= fromTS) {
+                    events.add(event.copy())
+                }
                 event.repeatLimit++
             }
             event.addIntervalTime()
@@ -449,12 +449,12 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         val events = ArrayList<Event>()
         val ts = (System.currentTimeMillis() / 1000).toInt()
 
-        val selection = "$COL_START_TS <= ? AND $COL_END_TS >= ?"
+        val selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_REPEAT_INTERVAL IS 0"
         val selectionArgs = arrayOf(ts.toString(), ts.toString())
         val cursor = getEventsCursor(selection, selectionArgs)
         events.addAll(fillEvents(cursor))
 
-        events.addAll(getRepeatableEventsFor(ts, ts, true))
+        events.addAll(getRepeatableEventsFor(ts, ts))
         return events
     }
 
