@@ -397,6 +397,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     }
 
     private fun getEventsRepeatingTillDateOrForever(fromTS: Int, toTS: Int, startTimes: SparseIntArray, event: Event): ArrayList<Event> {
+        val original = event.copy()
         val events = ArrayList<Event>()
         while (event.startTS <= toTS && (event.repeatLimit == 0 || event.repeatLimit >= event.startTS)) {
             if (event.endTS >= fromTS) {
@@ -410,12 +411,13 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                     events.add(event.copy())
                 }
             }
-            event.addIntervalTime(context)
+            event.addIntervalTime(original)
         }
         return events
     }
 
     private fun getEventsRepeatingXTimes(fromTS: Int, toTS: Int, startTimes: SparseIntArray, event: Event): ArrayList<Event> {
+        val original = event.copy()
         val events = ArrayList<Event>()
         while (event.repeatLimit < 0 && event.startTS <= toTS) {
             if (event.repeatInterval.isXWeeklyRepetition()) {
@@ -433,7 +435,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                 }
                 event.repeatLimit++
             }
-            event.addIntervalTime(context)
+            event.addIntervalTime(original)
         }
         return events
     }
