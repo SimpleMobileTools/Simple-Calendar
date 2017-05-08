@@ -578,6 +578,8 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
                 setRepeatRule(Math.pow(2.0, (mEventStartDateTime.dayOfWeek - 1).toDouble()).toInt())
             }
         } else if (mRepeatInterval.isXMonthlyRepetition()) {
+            if (mRepeatRule == REPEAT_MONTH_LAST_DAY && !isLastDayOfTheMonth())
+                mRepeatRule = REPEAT_MONTH_SAME_DAY
             checkRepetitionRuleText()
         }
     }
