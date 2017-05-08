@@ -168,7 +168,7 @@
     <string name="default_event_reminder">Recordatorio predeterminado de un evento</string>
     <string name="no_ringtone_picker">No se ha encontrado ninguna aplicación capaz de establecer el tono de llamada</string>
     <string name="no_ringtone_selected">Ninguno</string>
-    <string name="day_end_before_start">El día no puede terminar antes de que comience/string>
+    <string name="day_end_before_start">El día no puede terminar antes de que comience</string>
     <string name="google_sync">Sincronización de Google</string>
 
     <string name="january">Enero</string>
