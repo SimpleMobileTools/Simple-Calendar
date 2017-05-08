@@ -1,5 +1,7 @@
 package com.simplemobiletools.calendar.models
 
+import android.content.Context
+import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
@@ -16,7 +18,7 @@ data class Event(var id: Int = 0, var startTS: Int = 0, var endTS: Int = 0, var 
         private val serialVersionUID = -32456795132345616L
     }
 
-    fun addIntervalTime() {
+    fun addIntervalTime(context: Context) {
         val currStart = Formatter.getDateTimeFromTS(startTS)
         val newStart: DateTime
         newStart = when (repeatInterval) {
@@ -25,10 +27,12 @@ data class Event(var id: Int = 0, var startTS: Int = 0, var endTS: Int = 0, var 
                 if (repeatInterval % YEAR == 0) {
                     currStart.plusYears(repeatInterval / YEAR)
                 } else if (repeatInterval % MONTH == 0) {
-                    if (repeatRule == REPEAT_MONTH_LAST_DAY) {
-                        currStart.plusMonths(repeatInterval / MONTH).dayOfMonth().withMaximumValue()
-                    } else {
+                    if (repeatRule == REPEAT_MONTH_SAME_DAY) {
                         currStart.plusMonths(repeatInterval / MONTH)
+                    } else if (repeatRule == REPEAT_MONTH_EVERY_XTH_DAY) {
+                        addXthDayInterval(currStart, context)
+                    } else {
+                        currStart.plusMonths(repeatInterval / MONTH).dayOfMonth().withMaximumValue()
                     }
                 } else if (repeatInterval % WEEK == 0) {
                     // step through weekly repetition by days too, as events can trigger multiple times a week
@@ -42,6 +46,36 @@ data class Event(var id: Int = 0, var startTS: Int = 0, var endTS: Int = 0, var 
         val newEndTS = newStartTS + (endTS - startTS)
         startTS = newStartTS
         endTS = newEndTS
+    }
+
+    private fun addXthDayInterval(currStart: DateTime, context: Context): DateTime {
+        val day = currStart.dayOfWeek
+        var order = (currStart.dayOfMonth - 1) / 7
+        val properMonth = currStart.withDayOfMonth(7).plusMonths(repeatInterval / MONTH).withDayOfWeek(day)
+        var firstProperDay = properMonth.dayOfMonth % 7
+        if (firstProperDay == 0)
+            firstProperDay = properMonth.dayOfMonth
+
+        // check if it should be for example Fourth Monday, or Last Monday
+        if (order == 3 || order == 4) {
+            val original = context.dbHelper.getEvent(id)
+            val originalDateTime = Formatter.getDateTimeFromTS(original!!.startTS)
+            val isLastWeekday = originalDateTime.monthOfYear != originalDateTime.plusDays(7).monthOfYear
+            if (isLastWeekday)
+                order = -1
+        }
+
+        val daysCnt = properMonth.dayOfMonth().maximumValue
+        var wantedDay = firstProperDay + order * 7
+        if (wantedDay > daysCnt)
+            wantedDay -= 7
+
+        if (order == -1) {
+            wantedDay = firstProperDay + ((daysCnt - firstProperDay) / 7) * 7
+        }
+
+        val addedProperOrder = properMonth.withDayOfMonth(wantedDay)
+        return addedProperOrder
     }
 
     val isAllDay = flags and FLAG_ALL_DAY != 0

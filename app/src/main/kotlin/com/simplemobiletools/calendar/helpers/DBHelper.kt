@@ -410,7 +410,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                     events.add(event.copy())
                 }
             }
-            event.addIntervalTime()
+            event.addIntervalTime(context)
         }
         return events
     }
@@ -433,7 +433,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                 }
                 event.repeatLimit++
             }
-            event.addIntervalTime()
+            event.addIntervalTime(context)
         }
         return events
     }
