@@ -167,9 +167,9 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         updateRepetitionText()
         checkRepeatTexts(interval)
 
-        if (isXWeeklyRepetition()) {
+        if (mRepeatInterval.isXWeeklyRepetition()) {
             setRepeatRule(Math.pow(2.0, (mEventStartDateTime.dayOfWeek - 1).toDouble()).toInt())
-        } else if (isXMonthlyRepetition()) {
+        } else if (mRepeatInterval.isXMonthlyRepetition()) {
             setRepeatRule(REPEAT_MONTH_SAME_DAY)
         }
     }
@@ -178,7 +178,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         event_repetition_limit_holder.beGoneIf(limit == 0)
         checkRepetitionLimitText()
 
-        event_repetition_rule_holder.beVisibleIf(isXWeeklyRepetition() || isXMonthlyRepetition())
+        event_repetition_rule_holder.beVisibleIf(mRepeatInterval.isXWeeklyRepetition() || mRepeatInterval.isXMonthlyRepetition())
         checkRepetitionRuleText()
     }
 
@@ -210,11 +210,11 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
     private fun showRepetitionRuleDialog() {
         hideKeyboard()
-        if (isXWeeklyRepetition()) {
+        if (mRepeatInterval.isXWeeklyRepetition()) {
             RepeatRuleWeeklyDialog(this, mRepeatRule) {
                 setRepeatRule(it)
             }
-        } else if (isXMonthlyRepetition()) {
+        } else if (mRepeatInterval.isXMonthlyRepetition()) {
             val items = arrayListOf(
                     RadioItem(REPEAT_MONTH_SAME_DAY, getString(R.string.repeat_on_the_same_day)),
                     RadioItem(REPEAT_MONTH_EVERY_XTH_DAY, getRepeatXthDayString(true)))
@@ -292,9 +292,9 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     }
 
     private fun checkRepetitionRuleText() {
-        if (isXWeeklyRepetition()) {
+        if (mRepeatInterval.isXWeeklyRepetition()) {
             event_repetition_rule.text = if (mRepeatRule == EVERY_DAY) getString(R.string.every_day) else getSelectedDaysString()
-        } else if (isXMonthlyRepetition()) {
+        } else if (mRepeatInterval.isXMonthlyRepetition()) {
             event_repetition_rule_label.text = getString(if (mRepeatRule == REPEAT_MONTH_EVERY_XTH_DAY) R.string.repeat else R.string.repeat_on)
             event_repetition_rule.text = getMonthlyRepetitionRuleText()
         }
@@ -394,10 +394,6 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         event_start_time.beGoneIf(isChecked)
         event_end_time.beGoneIf(isChecked)
     }
-
-    private fun isXWeeklyRepetition() = mRepeatInterval != 0 && mRepeatInterval % WEEK == 0
-
-    private fun isXMonthlyRepetition() = mRepeatInterval != 0 && mRepeatInterval % MONTH == 0
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_event, menu)
@@ -576,12 +572,12 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     }
 
     private fun checkRepeatRule() {
-        if (isXWeeklyRepetition()) {
+        if (mRepeatInterval.isXWeeklyRepetition()) {
             val day = mRepeatRule
             if (day == MONDAY || day == TUESDAY || day == WEDNESDAY || day == THURSDAY || day == FRIDAY || day == SATURDAY || day == SUNDAY) {
                 setRepeatRule(Math.pow(2.0, (mEventStartDateTime.dayOfWeek - 1).toDouble()).toInt())
             }
-        } else if (isXMonthlyRepetition()) {
+        } else if (mRepeatInterval.isXMonthlyRepetition()) {
             checkRepetitionRuleText()
         }
     }
