@@ -49,6 +49,10 @@ data class Event(var id: Int = 0, var startTS: Int = 0, var endTS: Int = 0, var 
     // if an event should happen on 31st with Same Day monthly repetition, dont show it at all at months with 30 or less days
     private fun addMonthsWithSameDay(currStart: DateTime, original: Event): DateTime {
         var newDateTime = currStart.plusMonths(repeatInterval / MONTH)
+        if (newDateTime.dayOfMonth == currStart.dayOfMonth) {
+            return newDateTime
+        }
+
         while (newDateTime.dayOfMonth().maximumValue < Formatter.getDateTimeFromTS(original.startTS).dayOfMonth().maximumValue) {
             newDateTime = newDateTime.plusMonths(repeatInterval / MONTH)
             newDateTime = newDateTime.withDayOfMonth(newDateTime.dayOfMonth().maximumValue)
