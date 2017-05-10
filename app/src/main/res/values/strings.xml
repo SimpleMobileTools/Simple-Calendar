@@ -230,7 +230,7 @@
 
         Contains no ads or unnecessary permissions. It is fully opensource, provides customizable colors.
 
-        The Storage permission is needed only for importing events from .ics files.
+        The Storage permission is needed only for exporting or importing events from .ics files.
 
         This app is just one piece of a bigger series of apps. You can find the rest of them at http://www.simplemobiletools.com
     </string>

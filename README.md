@@ -9,6 +9,8 @@ Contains a resizable 4x4 widget where you can customize the color of the text, a
 
 Contains no ads or unnecessary permissions. It is fully opensource, provides customizable colors.
 
+The Storage permission is needed only for exporting or importing events from .ics files.
+
 This app is just one piece of a bigger series of apps. You can find the rest of them at http://www.simplemobiletools.com
 
 <a href='https://play.google.com/store/apps/details?id=com.simplemobiletools.calendar'><img src='http://simplemobiletools.github.io/assets/public/google-play.png' alt='Get it on Google Play' height=45/></a>
