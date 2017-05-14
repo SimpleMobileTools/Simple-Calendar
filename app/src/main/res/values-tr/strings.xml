@@ -1,0 +1,242 @@
+<resources>
+    <string name="app_name">Basit Takvim</string>
+    <string name="app_launcher_name">Takvim</string>
+    <string name="change_view">Görünümü değiştir</string>
+    <string name="weekly_view">Haftalık görünüm</string>
+    <string name="monthly_view">Aylık görünüm</string>
+    <string name="yearly_view">Yıllık görünüm</string>
+    <string name="simple_event_list">Basit durum listesi</string>
+    <string name="no_upcoming_events">Gelecekteki etkinliğiniz yok gibi görünüyor.</string>
+    <string name="add_some_events">Artı düğmesinin alt kısmında bazılarını ekleyebilirsiniz.</string>
+    <string name="details">Ayrıntı</string>
+    <string name="go_to_today">Bugüne git</string>
+    <string name="no_app_for_ics">ics dosyalarını işleme yeteneğinde hiçbir uygulama bulunamadı</string>
+
+    <!-- Widget titles -->
+    <string name="widget_monthly">Aylık takvim</string>
+    <string name="widget_list">Takvim etkinlik listesi</string>
+
+    <!-- Event -->
+    <string name="event">Durum</string>
+    <string name="edit_event">Etkinliği Düzenle</string>
+    <string name="new_event">Yeni Etkinlik</string>
+    <string name="title_empty">Başlık başlığı boş olamaz</string>
+    <string name="end_before_start">Etkinlik, başlamasından önce sona eremez</string>
+    <string name="event_added">Etkinlik başarıyla eklendi</string>
+    <string name="past_event_added">Geçmişteki etkinlik başarıyla eklendi</string>
+    <string name="event_updated">Etkinlik başarıyla güncellendi</string>
+    <string name="filter">Filtre</string>
+    <string name="filter_events_by_type">Etkinlikleri türe göre filtreleyin</string>
+
+    <!-- Event Repetition -->
+    <string name="repetition">Tekrarla</string>
+    <string name="no_repetition">Tekrarlama yok</string>
+    <string name="daily">Günlük</string>
+    <string name="weekly">Haftalık</string>
+    <string name="monthly">Aylık</string>
+    <string name="yearly">Yıllık</string>
+    <string name="weeks_raw">haftalar</string>
+    <string name="months_raw">aylar</string>
+    <string name="years_raw">yıllar</string>
+    <string name="repeat_till">Kadar tekrarla:</string>
+    <string name="forever">Sonsuza dek</string>
+    <string name="selection_contains_repetition">Seçim, tekrar eden etkinlikleri içeriyor</string>
+    <string name="delete_one_only">Yalnızca seçilen olayı sil</string>
+    <string name="delete_all_occurrences">Tüm tekrarlamaları sil</string>
+    <string name="update_one_only">Sadece seçilen olayı güncelle</string>
+    <string name="update_all_occurrences">Tüm olayları güncelle</string>
+    <string name="repeat_till_date">Tarihe kadar tekrarla</string>
+    <string name="repeat_x_times">X süresini tekrarla</string>
+    <string name="repeat_forever">Sonsuza kadar tekrarla</string>
+    <string name="times">zamanlar</string>
+    <string name="repeat">Tekrarla</string>
+    <string name="repeat_on">Tekrarlama açık</string>
+    <string name="every_day">Her gün</string>
+    <string name="selected_days">Seçilen günlerde</string>
+    <string name="the_same_day">The same day</string>
+    <string name="the_last_day">The last day</string>
+    <string name="repeat_on_the_same_day">Repeat on the same day each month</string>
+    <string name="repeat_on_the_last_day">Repeat on the last day of the month</string>
+    <string name="repeat_every_m">Repeat every</string>
+    <string name="every_m">Her</string>
+    <string name="first_m">ilk</string>
+    <string name="second_m">ikinci</string>
+    <string name="third_m">üçüncü</string>
+    <string name="fourth_m">dördüncü</string>
+    <string name="last_m">son</string>
+
+    <!-- bazı diller için alternatif sürümler, bunun ne anlama geldiğinden emin değilseniz aynı çevirileri kullanın -->
+    <!-- tekrarlamada kullanılır, "Her ilk Pazar" -->
+    <string name="repeat_every_f">Repeat every</string>
+    <string name="every_f">Her</string>
+    <string name="first_f">ilk</string>
+    <string name="second_f">ikinci</string>
+    <string name="third_f">üçüncü</string>
+    <string name="fourth_f">dördüncü</string>
+    <string name="last_f">son</string>
+
+    <plurals name="days">
+        <item quantity="one">%1$d gün</item>
+        <item quantity="other">günler %1$d</item>
+    </plurals>
+
+    <plurals name="weeks">
+        <item quantity="one">%1$d hafta</item>
+        <item quantity="other">haftalar %1$d</item>
+    </plurals>
+
+    <plurals name="months">
+        <item quantity="one">%1$d ay</item>
+        <item quantity="other">aylar %1$d</item>
+    </plurals>
+
+    <plurals name="years">
+        <item quantity="one">%1$d yıl</item>
+        <item quantity="other">yıllar %1$d</item>
+    </plurals>
+
+    <!-- Event Reminders -->
+    <string name="select_event_reminder">Bir etkinlik hatırlatıcısı seçin</string>
+    <string name="reminder">Hatırlatma</string>
+    <string name="no_reminder">Hatırlatma yok</string>
+    <string name="at_start">Başlangıçta</string>
+    <string name="custom">Özel</string>
+    <string name="before">önce</string>
+    <string name="minutes_raw">dakika</string>
+    <string name="hours_raw">saatler</string>
+    <string name="days_raw">günler</string>
+    <string name="add_another_reminder">Başka bir hatırlatma ekle</string>
+
+    <plurals name="minutes">
+        <item quantity="one">%1$d dakika önce</item>
+        <item quantity="other">%1$d dakika önce</item>
+    </plurals>
+
+    <plurals name="hours">
+        <item quantity="one">%1$d saat önce</item>
+        <item quantity="other">%1$d saat önce</item>
+    </plurals>
+
+    <plurals name="days_before">
+        <item quantity="one">%1$d önceki gün</item>
+        <item quantity="other">%1$d önceki gün</item>
+    </plurals>
+
+    <!-- Export / Import -->
+    <string name="import_events">Olayları içe aktar</string>
+    <string name="export_events">Olayları dışa aktar</string>
+    <string name="import_events_from_ics">Bir .ics dosyasından olayları içe aktar</string>
+    <string name="export_events_to_ics">Etkinlikleri bir .ics dosyasına aktarın</string>
+    <string name="events_imported_successfully">Olaylar başarıyla içe aktarıldı</string>
+    <string name="events_exported_successfully">Olaylar başarıyla dışa aktarıldı</string>
+    <string name="importing_events_failed">Etkinlikler içe aktarma başarısız</string>
+    <string name="exporting_events_failed">Olayları dışa aktarma başarısız</string>
+    <string name="importing_some_events_failed">Bazı etkinlikleri içe aktarma başarısız</string>
+    <string name="exporting_some_events_failed">Bazı etkinlikleri dışa aktarma başarısız</string>
+    <string name="invalid_file_format">Geçersiz dosya biçimi</string>
+    <string name="default_event_type">Varsayılan olay türü</string>
+    <string name="no_events_for_exporting">Dışa aktarmak için etkinlik bulunamadı</string>
+    <string name="export_past_events_too">Geçmişteki etkinlikleri de dışa aktar</string>
+
+    <!-- Event details -->
+    <string name="title">Başlık</string>
+    <string name="description">Açıklama</string>
+    <string name="all_day">Tüm-gün</string>
+
+    <!-- Weekly view -->
+    <string name="week">Hafta</string>
+
+    <!-- Event types -->
+    <string name="event_types">Olay türleri</string>
+    <string name="add_new_type">Yeni bir tür ekle</string>
+    <string name="edit_type">Türü düzenle</string>
+    <string name="type_already_exists">Bu başlığı taşıyan tür zaten var</string>
+    <string name="color">Renk</string>
+    <string name="regular_event">Düzenli etkinlik</string>
+    <string name="cannot_delete_default_type">Varsayılan etkinlik türü silinemiyor</string>
+    <string name="select_event_type">Bir etkinlik türü seçin</string>
+
+    <!-- Settings -->
+    <string name="manage_event_types">Olay türlerini yönet</string>
+    <string name="use_24_hour_format">24 saat formatını kullan</string>
+    <string name="sunday_first">Pazar günü ilk gün olarak</string>
+    <string name="start_weekly_at">Haftalık görüntüleme gününü şu saatte başlatın</string>
+    <string name="end_weekly_at">Haftalık görüntüleme gününü bitiştir</string>
+    <string name="week_numbers">Aylık görünümde hafta sayılarını göster</string>
+    <string name="vibrate">Hatırlatma bildiriminde titreşim</string>
+    <string name="reminder_sound">Hatırlatma sesi</string>
+    <string name="default_event_reminder">Varsayılan olay hatırlatıcısı</string>
+    <string name="no_ringtone_picker">Zil sesi ayarlayabilen hiçbir uygulama bulunamadı</string>
+    <string name="no_ringtone_selected">Boş</string>
+    <string name="day_end_before_start">Gün başlamadan önce bitemez</string>
+    <string name="google_sync">Google senkronizasyonu</string>
+
+    <string name="january">Ocak</string>
+    <string name="february">Şubat</string>
+    <string name="march">Mart</string>
+    <string name="april">Nisan</string>
+    <string name="may">Mayıs</string>
+    <string name="june">Haziran</string>
+    <string name="july">Temmuz</string>
+    <string name="august">Ağustos</string>
+    <string name="september">Eylül</string>
+    <string name="october">Ekim</string>
+    <string name="november">Kasım</string>
+    <string name="december">Aralık</string>
+
+    <string name="monday_letter">M</string>
+    <string name="tuesday_letter">T</string>
+    <string name="wednesday_letter">W</string>
+    <string name="thursday_letter">T</string>
+    <string name="friday_letter">F</string>
+    <string name="saturday_letter">S</string>
+    <string name="sunday_letter">S</string>
+
+    <string name="monday">Pazartesi</string>
+    <string name="tuesday">Salı</string>
+    <string name="wednesday">Çarşamba</string>
+    <string name="thursday">Perşembe</string>
+    <string name="friday">Cuma</string>
+    <string name="saturday">Cumartesi</string>
+    <string name="sunday">Pazar</string>
+
+    <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
+    <!-- used in repetition, like "Every last Sunday" -->
+    <string name="monday_alt">Pazartesi</string>
+    <string name="tuesday_alt">Salı</string>
+    <string name="wednesday_alt">Çarşamba</string>
+    <string name="thursday_alt">Perşembe</string>
+    <string name="friday_alt">Cuma</string>
+    <string name="saturday_alt">Cumartesi</string>
+    <string name="sunday_alt">Pazar</string>
+
+    <!-- List widget config example events -->
+    <string name="sample_title_1">Egzersiz yapma</string>
+    <string name="sample_description_1">Etap günü</string>
+    <string name="sample_title_2">John ile görüşme</string>
+    <string name="sample_description_2">Rockstone bahçesinde</string>
+    <string name="sample_title_3">Kütüphane</string>
+    <string name="sample_title_4">Mary ile öğle yemeği</string>
+    <string name="sample_description_4">Plaza\'da</string>
+    <string name="sample_title_5">Kahve zamanı</string>
+
+    <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
+    <!-- Short description has to have less than 80 chars -->
+    <string name="app_short_description">Etkinlikler, özelleştirilebilir widget ve reklamsız basit bir takvim.</string>
+    <string name="app_long_description">
+        Başka bir takvim entegrasyonu gerektirmeyen çevrimdışı bir takvim. Yinelenen etkinlikler kolayca oluşturabilir ve hatırlatıcılar oluşturabilir, haftanın sayılarını da gösterebilir.
+
+        Metnin rengini, ayrıca alfa ve arka plan rengini özelleştirebileceğiniz resizable 4x4 bir widget içerir.
+
+        Reklam içermeyen veya gereksiz izinler. Tamamen açık kaynaktır, özelleştirilebilir renkler sağlar.
+
+        Depolama izni yalnızca .ics dosyalarından olayları içe aktarmak için gereklidir.
+
+        Bu uygulama, daha büyük bir uygulama serisinden sadece bir parça. Geri kalanını şu adresten bulabilirsiniz: http://www.simplemobiletools.com
+    </string>
+
+    <!--
+        Haven't found some strings? There's more at
+        https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
+    -->
+</resources>
