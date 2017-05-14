@@ -19,6 +19,7 @@ import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.receivers.NotificationReceiver
 import com.simplemobiletools.commons.extensions.getContrastColor
+import com.simplemobiletools.commons.extensions.isKitkatPlus
 import com.simplemobiletools.commons.extensions.isLollipopPlus
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
@@ -121,7 +122,8 @@ fun Context.scheduleEventIn(notifTS: Int, event: Event) {
     val notifInMs = SystemClock.elapsedRealtime() + delayFromNow
     val pendingIntent = getNotificationIntent(this, event.id)
     val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
+
+    if (isKitkatPlus())
         alarmManager.setExact(AlarmManager.ELAPSED_REALTIME_WAKEUP, notifInMs, pendingIntent)
     else
         alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, notifInMs, pendingIntent)
