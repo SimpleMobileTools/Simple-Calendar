@@ -12,7 +12,6 @@ import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
 import android.os.Build
-import android.os.SystemClock
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.helpers.*
@@ -86,7 +85,7 @@ fun Context.scheduleNextEventReminder(event: Event) {
     }
 
     if (event.repeatLimit == 0 || event.repeatLimit > nextTS || event.repeatLimit < 0) {
-        scheduleEventIn(nextTS, event)
+        scheduleEventIn(nextTS * 1000L, event)
     }
 }
 
@@ -114,19 +113,17 @@ fun Context.scheduleReminder(event: Event) {
         scheduleNextEventReminder(event)
 }
 
-fun Context.scheduleEventIn(notifTS: Int, event: Event) {
-    val delayFromNow = notifTS.toLong() * 1000 - System.currentTimeMillis()
-    if (delayFromNow <= 0)
+fun Context.scheduleEventIn(notifTS: Long, event: Event) {
+    if (notifTS < System.currentTimeMillis())
         return
 
-    val notifInMs = SystemClock.elapsedRealtime() + delayFromNow
     val pendingIntent = getNotificationIntent(this, event.id)
     val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
     if (isKitkatPlus())
-        alarmManager.setExact(AlarmManager.ELAPSED_REALTIME_WAKEUP, notifInMs, pendingIntent)
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, notifTS, pendingIntent)
     else
-        alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, notifInMs, pendingIntent)
+        alarmManager.set(AlarmManager.RTC_WAKEUP, notifTS, pendingIntent)
 }
 
 fun Context.cancelNotification(id: Int) {
