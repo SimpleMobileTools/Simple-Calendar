@@ -156,6 +156,9 @@
     <string name="cannot_delete_default_type">O tipo de evento padrão não pode ser apagado</string>
     <string name="select_event_type">Selecione um tipo de evento</string>
 
+    <!-- Holidays -->
+    <string name="add_holidays">Add holidays</string>
+
     <!-- Settings -->
     <string name="manage_event_types">Gerenciar tipos de eventos</string>
     <string name="use_24_hour_format">Usar formato 24 horas</string>

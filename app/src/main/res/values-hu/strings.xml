@@ -156,6 +156,9 @@
     <string name="cannot_delete_default_type">Default event type cannot be deleted</string>
     <string name="select_event_type">Select an event type</string>
 
+    <!-- Holidays -->
+    <string name="add_holidays">Add holidays</string>
+
     <!-- Settings -->
     <string name="manage_event_types">Manage event types</string>
     <string name="use_24_hour_format">Use 24-hour format</string>

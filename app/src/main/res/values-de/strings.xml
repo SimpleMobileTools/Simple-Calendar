@@ -156,6 +156,9 @@
     <string name="cannot_delete_default_type">Standart-Termin-Typ kann nicht gelöscht werden</string>
     <string name="select_event_type">Wähle einen Termin Typ</string>
 
+    <!-- Holidays -->
+    <string name="add_holidays">Add holidays</string>
+
     <!-- Settings -->
     <string name="manage_event_types">Verwalte Termin-Typen</string>
     <string name="use_24_hour_format">Verwende 24 h Format</string>
