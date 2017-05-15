@@ -168,7 +168,7 @@ class IcsImporter {
         return if (title.startsWith(";") && title.contains(":")) {
             title.substring(title.lastIndexOf(':') + 1)
         } else {
-            title.substring(1, Math.min(title.length, 50))
+            title.substring(1, Math.min(title.length, 80))
         }
     }
 

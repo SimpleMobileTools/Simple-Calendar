@@ -23,7 +23,7 @@
         android:layout_marginLeft="@dimen/small_margin"
         android:layout_marginStart="@dimen/small_margin"
         android:inputType="textCapSentences"
-        android:maxLength="50"
+        android:maxLength="80"
         android:singleLine="true"
         android:textCursorDrawable="@null"/>
 
