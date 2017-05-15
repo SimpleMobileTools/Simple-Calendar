@@ -33,6 +33,7 @@ class IcsExporter {
 
                     if (event.isAllDay) {
                         out.writeLn("$DTSTART;$VALUE=$DATE:${Formatter.getDayCodeFromTS(event.startTS)}")
+                        out.writeLn("$DTEND;$VALUE=$DATE:${Formatter.getDayCodeFromTS(event.endTS + DAY)}")
                     } else {
                         event.startTS.let { out.writeLn("$DTSTART:${Formatter.getExportedTime(it)}") }
                         event.endTS.let { out.writeLn("$DTEND:${Formatter.getExportedTime(it)}") }
