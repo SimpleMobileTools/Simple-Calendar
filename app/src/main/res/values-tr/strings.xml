@@ -53,11 +53,11 @@
     <string name="repeat_on">Tekrarlama açık</string>
     <string name="every_day">Her gün</string>
     <string name="selected_days">Seçilen günlerde</string>
-    <string name="the_same_day">The same day</string>
-    <string name="the_last_day">The last day</string>
-    <string name="repeat_on_the_same_day">Repeat on the same day each month</string>
-    <string name="repeat_on_the_last_day">Repeat on the last day of the month</string>
-    <string name="repeat_every_m">Repeat every</string>
+    <string name="the_same_day">Aynı gün</string>
+    <string name="the_last_day">Son gün</string>
+    <string name="repeat_on_the_same_day">Her ay aynı gün tekrar edin</string>
+    <string name="repeat_on_the_last_day">Ayın son gününde tekrar et</string>
+    <string name="repeat_every_m">Her seferinde tekrarla</string>
     <string name="every_m">Her</string>
     <string name="first_m">ilk</string>
     <string name="second_m">ikinci</string>
@@ -65,9 +65,9 @@
     <string name="fourth_m">dördüncü</string>
     <string name="last_m">son</string>
 
-    <!-- bazı diller için alternatif sürümler, bunun ne anlama geldiğinden emin değilseniz aynı çevirileri kullanın -->
-    <!-- tekrarlamada kullanılır, "Her ilk Pazar" -->
-    <string name="repeat_every_f">Repeat every</string>
+    <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
+    <!-- used in repetition, like "Every first Sunday" -->
+    <string name="repeat_every_f">Her seferinde tekrarla</string>
     <string name="every_f">Her</string>
     <string name="first_f">ilk</string>
     <string name="second_f">ikinci</string>
@@ -157,7 +157,7 @@
     <string name="select_event_type">Bir etkinlik türü seçin</string>
 
     <!-- Holidays -->
-    <string name="add_holidays">Add holidays</string>
+    <string name="add_holidays">Tatil ekle</string>
 
     <!-- Settings -->
     <string name="manage_event_types">Olay türlerini yönet</string>
