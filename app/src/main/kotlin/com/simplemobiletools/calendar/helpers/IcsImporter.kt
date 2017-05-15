@@ -93,6 +93,10 @@ class IcsImporter {
                                 curReminderMinutes.getOrElse(1, { -1 }), curReminderMinutes.getOrElse(2, { -1 }), curRepeatInterval,
                                 curImportId, curFlags, curRepeatLimit, curRepeatRule, curEventType)
 
+                        if (event.isAllDay && curEnd > curStart) {
+                            event.endTS -= DAY
+                        }
+
                         val eventId = context.dbHelper.insert(event)
 
                         for (exceptionTS in curRepeatExceptions) {
