@@ -25,9 +25,8 @@ class IcsExporter {
                 out.writeLn(BEGIN_CALENDAR)
                 for (event in events) {
                     out.writeLn(BEGIN_EVENT)
-
-                    event.title.let { if (it.isNotEmpty()) out.writeLn("$SUMMARY:$it") }
-                    event.description.let { if (it.isNotEmpty()) out.writeLn("$DESCRIPTION$it") }
+                    event.title.replace("\n", "\\n").let { if (it.isNotEmpty()) out.writeLn("$SUMMARY:$it") }
+                    event.description.replace("\n", "\\n").let { if (it.isNotEmpty()) out.writeLn("$DESCRIPTION$it") }
                     event.importId?.let { if (it.isNotEmpty()) out.writeLn("$UID$it") }
                     event.eventType.let { out.writeLn("$CATEGORIES${activity.dbHelper.getEventType(it)?.title}") }
 

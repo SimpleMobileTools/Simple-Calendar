@@ -64,9 +64,9 @@ class IcsImporter {
                         curEnd = curStart + decodeTime(duration)
                     } else if (line.startsWith(SUMMARY) && !isNotificationDescription) {
                         curTitle = line.substring(SUMMARY.length)
-                        curTitle = getTitle(curTitle)
+                        curTitle = getTitle(curTitle).replace("\\n", "\n")
                     } else if (line.startsWith(DESCRIPTION) && !isNotificationDescription) {
-                        curDescription = line.substring(DESCRIPTION.length)
+                        curDescription = line.substring(DESCRIPTION.length).replace("\\n", "\n")
                     } else if (line.startsWith(UID)) {
                         curImportId = line.substring(UID.length)
                     } else if (line.startsWith(RRULE)) {
