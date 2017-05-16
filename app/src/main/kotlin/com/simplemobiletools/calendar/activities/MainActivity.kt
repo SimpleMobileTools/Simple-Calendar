@@ -526,10 +526,12 @@ class MainActivity : SimpleActivity(), NavigationListener {
             put("Česká republika", R.raw.czech)
             put("Deutschland", R.raw.germany)
             put("Eesti", R.raw.estonia)
+            put("España", R.raw.spain)
             put("Éire", R.raw.ireland)
             put("France", R.raw.france)
             put("Hanguk", R.raw.southkorea)
             put("Hellas", R.raw.greece)
+            put("India", R.raw.india)
             put("Ísland", R.raw.iceland)
             put("Italia", R.raw.italy)
             put("Magyarország", R.raw.hungary)
@@ -545,6 +547,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
             put("Slovensko", R.raw.slovakia)
             put("Suomi", R.raw.finland)
             put("Sverige", R.raw.sweden)
+            put("United Kingdom", R.raw.unitedkingdom)
             put("United States", R.raw.unitedstates)
 
             var i = 0
