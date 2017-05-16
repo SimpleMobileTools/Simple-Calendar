@@ -17,6 +17,10 @@
         android:title="@string/filter"
         app:showAsAction="ifRoom"/>
     <item
+        android:id="@+id/add_holidays"
+        android:title="@string/add_holidays"
+        app:showAsAction="never"/>
+    <item
         android:id="@+id/import_events"
         android:title="@string/import_events_from_ics"
         app:showAsAction="never"/>

@@ -125,6 +125,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
             R.id.change_view -> showViewDialog()
             R.id.go_to_today -> goToToday()
             R.id.filter -> showFilterDialog()
+            R.id.add_holidays -> addHolidays()
             R.id.import_events -> tryImportEvents()
             R.id.export_events -> tryExportEvents()
             R.id.settings -> launchSettings()
@@ -186,6 +187,10 @@ class MainActivity : SimpleActivity(), NavigationListener {
         FilterEventTypesDialog(this) {
             refreshViewPager()
         }
+    }
+
+    private fun addHolidays() {
+        val items = getHolidayRadioItems()
     }
 
     private fun updateView(view: Int) {
@@ -507,6 +512,52 @@ class MainActivity : SimpleActivity(), NavigationListener {
                 exportEvents()
             }
         }
+    }
+
+    private fun getHolidayRadioItems(): ArrayList<RadioItem> {
+        val items = ArrayList<RadioItem>()
+
+        LinkedHashMap<String, Int>().apply {
+            put("Algeria", R.raw.algeria)
+            put("België", R.raw.belgium)
+            put("Bolivia", R.raw.bolivia)
+            put("Brasil", R.raw.brazil)
+            put("Canada", R.raw.canada)
+            put("Česká republika", R.raw.czech)
+            put("Deutschland", R.raw.germany)
+            put("Eesti", R.raw.estonia)
+            put("Éire", R.raw.ireland)
+            put("France", R.raw.france)
+            put("Hanguk", R.raw.southkorea)
+            put("Hellas", R.raw.greece)
+            put("Ísland", R.raw.iceland)
+            put("Italia", R.raw.italy)
+            put("Magyarország", R.raw.hungary)
+            put("Nederland", R.raw.netherlands)
+            put("Nihon", R.raw.japan)
+            put("Norge", R.raw.norway)
+            put("Pākistān", R.raw.pakistan)
+            put("Polska", R.raw.poland)
+            put("Portugal", R.raw.portugal)
+            put("Rossiya", R.raw.russia)
+            put("Schweiz", R.raw.switzerland)
+            put("Slovenija", R.raw.slovenia)
+            put("Slovensko", R.raw.slovakia)
+            put("Suomi", R.raw.finland)
+            put("Sverige", R.raw.sweden)
+            put("United States", R.raw.unitedstates)
+
+            var i = 0
+            for ((country, file) in this) {
+                items.add(RadioItem(i++, country, file))
+            }
+        }
+
+        RadioGroupDialog(this, items, -1) {
+
+        }
+
+        return items
     }
 
     private fun checkWhatsNewDialog() {

@@ -1,13 +1,13 @@
 package com.simplemobiletools.calendar.helpers
 
 import android.content.Context
+import android.util.Log
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.isXMonthlyRepetition
 import com.simplemobiletools.calendar.extensions.isXWeeklyRepetition
 import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.helpers.IcsImporter.ImportResult.*
-import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.models.EventType
 import org.joda.time.DateTimeZone
 import org.joda.time.format.DateTimeFormat
@@ -47,7 +47,9 @@ class IcsImporter {
                     if (line.trim().isEmpty())
                         continue
 
-                    if (line.substring(0, 1) == " ") {
+                    Log.e("DEBUG", "line $line")
+
+                    /*if (line.substring(0, 1) == " ") {
                         line = prevLine + line.trim()
                         eventsFailed--
                     }
@@ -105,7 +107,7 @@ class IcsImporter {
                         eventsImported++
                         resetValues()
                     }
-                    prevLine = line
+                    prevLine = line*/
                 }
             }
         } catch (e: Exception) {
