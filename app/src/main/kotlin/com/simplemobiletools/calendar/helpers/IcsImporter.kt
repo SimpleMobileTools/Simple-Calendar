@@ -41,7 +41,13 @@ class IcsImporter {
             val importIDs = context.dbHelper.getImportIds()
             var prevLine = ""
 
-            File(path).inputStream().bufferedReader().use {
+            val inputStream = if (path.contains("/")) {
+                File(path).inputStream()
+            } else {
+                context.assets.open(path)
+            }
+
+            inputStream.bufferedReader().use {
                 while (true) {
                     var line = it.readLine() ?: break
                     if (line.trim().isEmpty())
