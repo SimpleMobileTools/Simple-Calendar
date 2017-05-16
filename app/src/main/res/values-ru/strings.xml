@@ -137,6 +137,7 @@
     <string name="default_event_type">Тип события по умолчанию</string>
     <string name="no_events_for_exporting">Не найдено событий для экспорта</string>
     <string name="export_past_events_too">Экспортировать прошедшие события</string>
+    <string name="include_event_types">Include event types</string>
 
     <!-- Event details -->
     <string name="title">Заголовок</string>
@@ -157,7 +158,10 @@
     <string name="select_event_type">Выбрать тип события</string>
 
     <!-- Holidays -->
+    <string name="holidays">Holidays</string>
     <string name="add_holidays">Add holidays</string>
+    <string name="national_holidays">National holidays</string>
+    <string name="religious_holidays">Religious holidays</string>
 
     <!-- Settings -->
     <string name="manage_event_types">Управление типами событий</string>

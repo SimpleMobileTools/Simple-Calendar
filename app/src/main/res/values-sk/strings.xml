@@ -144,6 +144,7 @@
     <string name="default_event_type">Predvolený typ udalosti</string>
     <string name="no_events_for_exporting">Nenašli sa žiadne udalosti na exportovanie</string>
     <string name="export_past_events_too">Exportovať aj minulé udalosti</string>
+    <string name="include_event_types">Zahrnúť typy udalostí</string>
 
     <!-- Event details -->
     <string name="title">Názov</string>
@@ -164,7 +165,10 @@
     <string name="select_event_type">Zvoľte typ udalosti</string>
 
     <!-- Holidays -->
+    <string name="holidays">Sviatky</string>
     <string name="add_holidays">Pridať sviatky</string>
+    <string name="national_holidays">Štátne sviatky</string>
+    <string name="religious_holidays">Náboženské sviatky</string>
 
     <!-- Settings -->
     <string name="manage_event_types">Spravovať typy udalostí</string>

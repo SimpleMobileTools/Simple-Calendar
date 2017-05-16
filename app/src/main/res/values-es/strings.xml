@@ -137,6 +137,7 @@
     <string name="default_event_type">Tipo de evento predeterminado</string>
     <string name="no_events_for_exporting">No se han encontrado eventos para la exportación</string>
     <string name="export_past_events_too">También exportar eventos pasados</string>
+    <string name="include_event_types">Include event types</string>
 
     <!-- Event details -->
     <string name="title">Título</string>
@@ -157,7 +158,10 @@
     <string name="select_event_type">Seleccione un tipo de evento</string>
 
     <!-- Holidays -->
+    <string name="holidays">Holidays</string>
     <string name="add_holidays">Add holidays</string>
+    <string name="national_holidays">National holidays</string>
+    <string name="religious_holidays">Religious holidays</string>
 
     <!-- Settings -->
     <string name="manage_event_types">Gestionar tipos de eventos</string>

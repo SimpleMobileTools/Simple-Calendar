@@ -137,6 +137,7 @@
     <string name="default_event_type">Varsayılan olay türü</string>
     <string name="no_events_for_exporting">Dışa aktarmak için etkinlik bulunamadı</string>
     <string name="export_past_events_too">Geçmişteki etkinlikleri de dışa aktar</string>
+    <string name="include_event_types">Include event types</string>
 
     <!-- Event details -->
     <string name="title">Başlık</string>
@@ -157,7 +158,10 @@
     <string name="select_event_type">Bir etkinlik türü seçin</string>
 
     <!-- Holidays -->
+    <string name="holidays">Holidays</string>
     <string name="add_holidays">Tatil ekle</string>
+    <string name="national_holidays">National holidays</string>
+    <string name="religious_holidays">Religious holidays</string>
 
     <!-- Settings -->
     <string name="manage_event_types">Olay türlerini yönet</string>

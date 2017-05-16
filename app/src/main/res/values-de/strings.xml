@@ -137,6 +137,7 @@
     <string name="default_event_type">Standard-Termin-Typ</string>
     <string name="no_events_for_exporting">Keine Termine zum exportieren gefunden</string>
     <string name="export_past_events_too">vergagene Termine auch exportieren</string>
+    <string name="include_event_types">Include event types</string>
 
     <!-- Event details -->
     <string name="title">Titel</string>
@@ -157,7 +158,10 @@
     <string name="select_event_type">Wähle einen Termin Typ</string>
 
     <!-- Holidays -->
+    <string name="holidays">Holidays</string>
     <string name="add_holidays">Add holidays</string>
+    <string name="national_holidays">National holidays</string>
+    <string name="religious_holidays">Religious holidays</string>
 
     <!-- Settings -->
     <string name="manage_event_types">Verwalte Termin-Typen</string>
