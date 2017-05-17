@@ -53,6 +53,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
     private var mStoredTextColor = 0
     private var mStoredBackgroundColor = 0
     private var mStoredPrimaryColor = 0
+    private var mStoredDayCode = ""
     private var mStoredIsSundayFirst = false
     private var mStoredUse24HourFormat = false
     private var mShouldFilterBeVisible = false
@@ -78,12 +79,16 @@ class MainActivity : SimpleActivity(), NavigationListener {
         if (intent?.action == Intent.ACTION_VIEW && intent.data != null) {
             tryImportEventsFromFile(intent.data)
         }
+        storeStateVariables()
+        updateViewPager()
     }
 
     override fun onResume() {
         super.onResume()
-        if (mStoredTextColor != config.textColor || mStoredBackgroundColor != config.backgroundColor || mStoredPrimaryColor != config.primaryColor)
+        if (mStoredTextColor != config.textColor || mStoredBackgroundColor != config.backgroundColor || mStoredPrimaryColor != config.primaryColor
+                || mStoredDayCode != getCurrentDayCode()) {
             updateViewPager()
+        }
 
         dbHelper.getEventTypes {
             eventTypeColors.clear()
@@ -91,10 +96,8 @@ class MainActivity : SimpleActivity(), NavigationListener {
             mShouldFilterBeVisible = eventTypeColors.size() > 1 || config.displayEventTypes.isEmpty()
             invalidateOptionsMenu()
         }
-        mStoredTextColor = config.textColor
-        mStoredPrimaryColor = config.primaryColor
-        mStoredBackgroundColor = config.backgroundColor
 
+        storeStateVariables()
         if (config.storedView == WEEKLY_VIEW) {
             if (mStoredIsSundayFirst != config.isSundayFirst || mStoredUse24HourFormat != config.use24hourFormat) {
                 fillWeeklyViewPager()
@@ -143,6 +146,15 @@ class MainActivity : SimpleActivity(), NavigationListener {
             super.onBackPressed()
         }
     }
+
+    private fun storeStateVariables() {
+        mStoredTextColor = config.textColor
+        mStoredPrimaryColor = config.primaryColor
+        mStoredBackgroundColor = config.backgroundColor
+        mStoredDayCode = getCurrentDayCode()
+    }
+
+    private fun getCurrentDayCode() = Formatter.getDayCodeFromTS((System.currentTimeMillis() / 1000).toInt())
 
     private fun showViewDialog() {
         val res = resources
