@@ -124,6 +124,7 @@
 
     <!-- Export / Import -->
     <string name="importing">Importing&#8230;</string>
+    <string name="exporting">Exporting&#8230;</string>
     <string name="import_events">Olayları içe aktar</string>
     <string name="export_events">Olayları dışa aktar</string>
     <string name="import_events_from_ics">Bir .ics dosyasından olayları içe aktar</string>

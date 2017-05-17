@@ -309,6 +309,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
         FilePickerDialog(this, pickFile = false) {
             val path = it
             ExportEventsDialog(this, path) { exportPastEvents, file ->
+                toast(R.string.exporting)
                 Thread({
                     val events = dbHelper.getEventsToExport(exportPastEvents)
                     if (events.isEmpty()) {

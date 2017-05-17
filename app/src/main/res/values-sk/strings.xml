@@ -131,6 +131,7 @@
 
     <!-- Export / Import -->
     <string name="importing">Importujem&#8230;</string>
+    <string name="exporting">Exportujem&#8230;</string>
     <string name="import_events">Importovať udalosti</string>
     <string name="export_events">Exportovať udalosti</string>
     <string name="import_events_from_ics">Importovať udalosti z .ics súboru</string>
