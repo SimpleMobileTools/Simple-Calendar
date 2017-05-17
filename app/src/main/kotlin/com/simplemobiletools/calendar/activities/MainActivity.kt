@@ -12,6 +12,7 @@ import android.util.SparseIntArray
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
+import android.widget.Toast
 import com.simplemobiletools.calendar.BuildConfig
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.adapters.MyMonthPagerAdapter
@@ -26,6 +27,7 @@ import com.simplemobiletools.calendar.fragments.WeekFragment
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.interfaces.NavigationListener
+import com.simplemobiletools.calendar.models.EventType
 import com.simplemobiletools.calendar.views.MyScrollView
 import com.simplemobiletools.commons.dialogs.FilePickerDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
@@ -192,7 +194,27 @@ class MainActivity : SimpleActivity(), NavigationListener {
     private fun addHolidays() {
         val items = getHolidayRadioItems()
         RadioGroupDialog(this, items, -1) {
-            importEventsDialog(it as String)
+            toast(R.string.importing)
+            Thread({
+                val holidays = getString(R.string.holidays)
+                var eventTypeId = dbHelper.getEventTypeIdWithTitle(holidays)
+                if (eventTypeId == -1) {
+                    val eventType = EventType(0, holidays, config.primaryColor)
+                    eventTypeId = dbHelper.insertEventType(eventType)
+                }
+                val result = IcsImporter().importEvents(applicationContext, it as String, eventTypeId)
+                handleParseResult(result)
+            }).start()
+        }
+    }
+
+    private fun handleParseResult(result: IcsImporter.ImportResult) {
+        runOnUiThread {
+            toast(when (result) {
+                IcsImporter.ImportResult.IMPORT_OK -> R.string.holidays_imported_successfully
+                IcsImporter.ImportResult.IMPORT_PARTIAL -> R.string.importing_some_holidays_failed
+                else -> R.string.importing_holidays_failed
+            }, Toast.LENGTH_LONG)
         }
     }
 
