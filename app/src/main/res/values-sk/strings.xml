@@ -146,6 +146,7 @@
     <string name="no_events_for_exporting">Nenašli sa žiadne udalosti na exportovanie</string>
     <string name="export_past_events_too">Exportovať aj minulé udalosti</string>
     <string name="include_event_types">Zahrnúť typy udalostí</string>
+    <string name="filename_without_ics">Názov súboru (bez .ics)</string>
 
     <!-- Event details -->
     <string name="title">Názov</string>

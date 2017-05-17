@@ -139,6 +139,7 @@
     <string name="no_events_for_exporting">No se han encontrado eventos para la exportación</string>
     <string name="export_past_events_too">También exportar eventos pasados</string>
     <string name="include_event_types">Include event types</string>
+    <string name="filename_without_ics">Filename (without .ics)</string>
 
     <!-- Event details -->
     <string name="title">Título</string>

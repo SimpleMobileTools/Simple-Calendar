@@ -26,6 +26,22 @@
         android:paddingRight="@dimen/small_margin"
         android:paddingTop="@dimen/small_margin"/>
 
+    <com.simplemobiletools.commons.views.MyTextView
+        android:id="@+id/export_events_filename_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/filename_without_ics"
+        android:textSize="@dimen/smaller_text_size"/>
+
+    <com.simplemobiletools.commons.views.MyEditText
+        android:id="@+id/export_events_filename"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_margin"
+        android:layout_marginLeft="@dimen/activity_margin"
+        android:paddingRight="@dimen/small_margin"
+        android:paddingTop="@dimen/normal_margin"/>
+
     <com.simplemobiletools.commons.views.MyAppCompatCheckbox
         android:id="@+id/export_events_checkbox"
         android:layout_width="match_parent"
