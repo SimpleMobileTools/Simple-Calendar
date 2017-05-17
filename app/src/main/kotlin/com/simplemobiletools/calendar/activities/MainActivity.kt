@@ -39,7 +39,6 @@ import com.simplemobiletools.commons.models.RadioItem
 import com.simplemobiletools.commons.models.Release
 import kotlinx.android.synthetic.main.activity_main.*
 import org.joda.time.DateTime
-import java.io.File
 import java.io.FileOutputStream
 import java.util.*
 
@@ -309,16 +308,14 @@ class MainActivity : SimpleActivity(), NavigationListener {
     private fun exportEvents() {
         FilePickerDialog(this, pickFile = false) {
             val path = it
-            ExportEventsDialog(this, path) {
+            ExportEventsDialog(this, path) { exportPastEvents, file ->
                 Thread({
-                    val events = dbHelper.getEventsToExport(it)
+                    val events = dbHelper.getEventsToExport(exportPastEvents)
                     if (events.isEmpty()) {
                         runOnUiThread {
                             toast(R.string.no_events_for_exporting)
                         }
                     } else {
-                        val filename = "events_${System.currentTimeMillis() / 1000}.ics"
-                        val file = File(path, filename)
                         IcsExporter().exportEvents(this, file, events) {
                             runOnUiThread {
                                 toast(when (it) {
