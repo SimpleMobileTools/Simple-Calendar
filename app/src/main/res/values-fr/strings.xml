@@ -123,6 +123,7 @@
     </plurals>
 
     <!-- Export / Import -->
+    <string name="importing">Importing&#8230;</string>
     <string name="import_events">Importer des evénements</string>
     <string name="export_events">Export events</string>
     <string name="import_events_from_ics">Importer des evénements depuis un fichier .ics</string>
@@ -162,6 +163,9 @@
     <string name="add_holidays">Add holidays</string>
     <string name="national_holidays">National holidays</string>
     <string name="religious_holidays">Religious holidays</string>
+    <string name="holidays_imported_successfully">Holidays have been successfully imported into a new event type</string>
+    <string name="importing_some_holidays_failed">Importing some events failed</string>
+    <string name="importing_holidays_failed">Importing holidays failed</string>
 
     <!-- Settings -->
     <string name="manage_event_types">Gestion des types d\'evénements</string>
