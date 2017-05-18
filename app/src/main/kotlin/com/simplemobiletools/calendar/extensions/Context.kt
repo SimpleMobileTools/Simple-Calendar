@@ -116,9 +116,9 @@ fun Context.getReminderText(minutes: Int) = when (minutes) {
         if (minutes % 1440 == 0)
             resources.getQuantityString(R.plurals.days, minutes / 1440, minutes / 1440)
         else if (minutes % 60 == 0)
-            resources.getQuantityString(R.plurals.hours, minutes / 60, minutes / 60)
+            resources.getQuantityString(R.plurals.hours_before, minutes / 60, minutes / 60)
         else
-            resources.getQuantityString(R.plurals.minutes, minutes, minutes)
+            resources.getQuantityString(R.plurals.minutes_before, minutes, minutes)
     }
 }
 

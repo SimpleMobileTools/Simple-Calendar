@@ -7,6 +7,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Parcelable
 import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.dialogs.SnoozePickerDialog
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.getReminderText
@@ -50,6 +51,7 @@ class SettingsActivity : SimpleActivity() {
         setupWeeklyEnd()
         setupVibrate()
         setupReminderSound()
+        setupSnoozeDelay()
         setupEventReminder()
         updateTextColors(settings_holder)
         checkPrimaryColor()
@@ -182,6 +184,20 @@ class SettingsActivity : SimpleActivity() {
             settings_vibrate.toggle()
             config.vibrateOnReminder = settings_vibrate.isChecked
         }
+    }
+
+    private fun setupSnoozeDelay() {
+        updateSnoozeText()
+        settings_snooze_delay_holder.setOnClickListener {
+            SnoozePickerDialog(this, config.snoozeDelay) {
+                config.snoozeDelay = it
+                updateSnoozeText()
+            }
+        }
+    }
+
+    private fun updateSnoozeText() {
+        settings_snooze_delay.text = resources.getQuantityString(R.plurals.minutes, config.snoozeDelay, config.snoozeDelay)
     }
 
     private fun setupEventReminder() {

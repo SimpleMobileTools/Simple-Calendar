@@ -112,13 +112,13 @@
     <string name="days_raw">dni</string>
     <string name="add_another_reminder">Pridať ďalšiu pripomienku</string>
 
-    <plurals name="minutes">
+    <plurals name="minutes_before">
         <item quantity="one">%1$d minútu vopred</item>
         <item quantity="few">%1$d minúty vopred</item>
         <item quantity="other">%1$d minút vopred</item>
     </plurals>
 
-    <plurals name="hours">
+    <plurals name="hours_before">
         <item quantity="one">%1$d hodinu vopred</item>
         <item quantity="few">%1$d hodiny vopred</item>
         <item quantity="other">%1$d hodín vopred</item>
@@ -192,6 +192,12 @@
     <string name="day_end_before_start">Deň nemôže skončiť skôr než začne</string>
     <string name="google_sync">Google synchronizácia</string>
     <string name="snooze_delay">Posunúť pripomienku s Odložiť o</string>
+
+    <plurals name="minutes">
+        <item quantity="one">%1$d minútu</item>
+        <item quantity="few">%1$d minúty</item>
+        <item quantity="other">%1$d minút</item>
+    </plurals>
 
     <string name="january">Január</string>
     <string name="february">Február</string>

@@ -108,12 +108,12 @@
     <string name="days_raw">dagar</string>
     <string name="add_another_reminder">Add another reminder</string>
 
-    <plurals name="minutes">
+    <plurals name="minutes_before">
         <item quantity="one">%1$d minute before</item>
         <item quantity="other">%1$d minuter före</item>
     </plurals>
 
-    <plurals name="hours">
+    <plurals name="hours_before">
         <item quantity="one">%1$d hour before</item>
         <item quantity="other">%1$d timmar före</item>
     </plurals>
@@ -185,6 +185,11 @@
     <string name="day_end_before_start">Dagen kan inte börja innan den tar slut</string>
     <string name="google_sync">Google sync</string>
     <string name="snooze_delay">Postpone reminder with Snooze by</string>
+
+    <plurals name="minutes">
+        <item quantity="one">%1$d minute</item>
+        <item quantity="other">%1$d minutes</item>
+    </plurals>
 
     <string name="january">Januari</string>
     <string name="february">Februari</string>

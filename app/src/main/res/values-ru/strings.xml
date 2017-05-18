@@ -108,12 +108,12 @@
     <string name="days_raw">дней</string>
     <string name="add_another_reminder">Добавить ещё одно напоминание</string>
 
-    <plurals name="minutes">
+    <plurals name="minutes_before">
         <item quantity="one">%1$d минута до события</item>
         <item quantity="other">%1$d минут(-ы) до события</item>
     </plurals>
 
-    <plurals name="hours">
+    <plurals name="hours_before">
         <item quantity="one">%1$d час до события</item>
         <item quantity="other">%1$d часа(-ов) до события</item>
     </plurals>
@@ -185,6 +185,11 @@
     <string name="day_end_before_start">Конец дня не может быть раньше начала</string>
     <string name="google_sync">Синхронизация с Google</string>
     <string name="snooze_delay">Postpone reminder with Snooze by</string>
+
+    <plurals name="minutes">
+        <item quantity="one">%1$d minute</item>
+        <item quantity="other">%1$d minutes</item>
+    </plurals>
 
     <string name="january">Январь</string>
     <string name="february">Февраль</string>

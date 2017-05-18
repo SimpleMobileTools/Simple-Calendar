@@ -108,12 +108,12 @@
     <string name="days_raw">jours</string>
     <string name="add_another_reminder">Ajouter un autre rappel</string>
 
-    <plurals name="minutes">
+    <plurals name="minutes_before">
         <item quantity="one">%1$d minute avant</item>
         <item quantity="other">%1$d minutes avant</item>
     </plurals>
 
-    <plurals name="hours">
+    <plurals name="hours_before">
         <item quantity="one">%1$d heure avant</item>
         <item quantity="other">%1$d heures avant</item>
     </plurals>
@@ -185,6 +185,11 @@
     <string name="day_end_before_start">Le jour ne peut pas se terminer plus tôt qu\'il ne débute</string>
     <string name="google_sync">Synchronisation Google</string>
     <string name="snooze_delay">Postpone reminder with Snooze by</string>
+
+    <plurals name="minutes">
+        <item quantity="one">%1$d minute</item>
+        <item quantity="other">%1$d minutes</item>
+    </plurals>
 
     <string name="january">Janvier</string>
     <string name="february">Février</string>
