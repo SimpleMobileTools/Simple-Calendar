@@ -1,6 +1,16 @@
 Changelog
 ==========
 
+Version 2.4.3 *(2017-05-18)*
+----------------------------
+
+ * Added an easy way to import Holidays in some countries
+ * Allow filtering events to export by event type
+ * Added Snooze
+ * Fixed misc issues with triggering reminders
+ * Allow renaming the file used for exporting events to
+ * Added Turkish translation by Burhan 2010
+
 Version 2.4.2 *(2017-05-09)*
 ----------------------------
 
