@@ -122,6 +122,8 @@
             android:name=".services.WidgetService"
             android:permission="android.permission.BIND_REMOTEVIEWS"/>
 
+        <service android:name=".services.SnoozeService"/>
+
         <receiver android:name=".receivers.NotificationReceiver"/>
 
         <receiver android:name=".receivers.BootCompletedReceiver">

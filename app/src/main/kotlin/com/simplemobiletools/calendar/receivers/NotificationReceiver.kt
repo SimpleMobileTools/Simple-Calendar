@@ -17,7 +17,7 @@ class NotificationReceiver : BroadcastReceiver() {
         if (id == -1)
             return
 
-        val event = context.dbHelper.getEvent(id)
+        val event = context.dbHelper.getEventWithId(id)
         if (event == null || event.getReminders().isEmpty())
             return
 

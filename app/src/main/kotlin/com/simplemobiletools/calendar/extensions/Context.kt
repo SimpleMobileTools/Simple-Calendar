@@ -12,11 +12,13 @@ import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
 import android.os.Build
+import android.support.v7.app.NotificationCompat
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.receivers.NotificationReceiver
+import com.simplemobiletools.calendar.services.SnoozeService
 import com.simplemobiletools.commons.extensions.getContrastColor
 import com.simplemobiletools.commons.extensions.isKitkatPlus
 import com.simplemobiletools.commons.extensions.isLollipopPlus
@@ -154,16 +156,16 @@ fun Context.notifyEvent(event: Event) {
     val pendingIntent = getPendingIntent(this, event)
     val startTime = Formatter.getTimeFromTS(this, event.startTS)
     val endTime = Formatter.getTimeFromTS(this, event.endTS)
-    val notification = getNotification(this, pendingIntent, event.title, "${getFormattedEventTime(startTime, endTime)} ${event.description}")
+    val notification = getNotification(this, pendingIntent, event, "${getFormattedEventTime(startTime, endTime)} ${event.description}")
     val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
     notificationManager.notify(event.id, notification)
 }
 
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-private fun getNotification(context: Context, pendingIntent: PendingIntent, title: String, content: String): Notification {
+private fun getNotification(context: Context, pendingIntent: PendingIntent, event: Event, content: String): Notification {
     val soundUri = Uri.parse(context.config.reminderSound)
-    val builder = Notification.Builder(context)
-            .setContentTitle(title)
+    val builder = NotificationCompat.Builder(context)
+            .setContentTitle(event.title)
             .setContentText(content)
             .setSmallIcon(R.drawable.ic_calendar)
             .setContentIntent(pendingIntent)
@@ -171,6 +173,7 @@ private fun getNotification(context: Context, pendingIntent: PendingIntent, titl
             .setDefaults(Notification.DEFAULT_LIGHTS)
             .setAutoCancel(true)
             .setSound(soundUri)
+            .addAction(R.drawable.ic_snooze, context.getString(R.string.snooze), getSnoozePendingIntent(context, event))
 
     if (context.isLollipopPlus())
         builder.setVisibility(Notification.VISIBILITY_PUBLIC)
@@ -187,6 +190,12 @@ private fun getPendingIntent(context: Context, event: Event): PendingIntent {
     val intent = Intent(context, EventActivity::class.java)
     intent.putExtra(EVENT_ID, event.id)
     return PendingIntent.getActivity(context, event.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+}
+
+private fun getSnoozePendingIntent(context: Context, event: Event): PendingIntent {
+    val intent = Intent(context, SnoozeService::class.java).setAction("snooze")
+    intent.putExtra(EVENT_ID, event.id)
+    return PendingIntent.getService(context, event.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 }
 
 fun Context.launchNewEventIntent(startNewTask: Boolean = false, today: Boolean = false) {

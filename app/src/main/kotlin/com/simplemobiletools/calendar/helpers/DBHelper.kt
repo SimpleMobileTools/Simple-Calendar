@@ -346,7 +346,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         return ids.filter { it.trim().isNotEmpty() } as ArrayList<String>
     }
 
-    fun getEvent(id: Int): Event? {
+    fun getEventWithId(id: Int): Event? {
         val selection = "$MAIN_TABLE_NAME.$COL_ID = ?"
         val selectionArgs = arrayOf(id.toString())
         val cursor = getEventsCursor(selection, selectionArgs)

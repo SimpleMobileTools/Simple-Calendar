@@ -50,7 +50,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         mDialogTheme = getAppropriateTheme()
 
         val eventId = intent.getIntExtra(EVENT_ID, 0)
-        val event = dbHelper.getEvent(eventId)
+        val event = dbHelper.getEventWithId(eventId)
 
         if (eventId != 0 && event == null) {
             finish()
