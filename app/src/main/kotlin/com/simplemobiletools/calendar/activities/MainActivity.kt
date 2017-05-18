@@ -321,7 +321,6 @@ class MainActivity : SimpleActivity(), NavigationListener {
         FilePickerDialog(this, pickFile = false) {
             val path = it
             ExportEventsDialog(this, path) { exportPastEvents, file ->
-                toast(R.string.exporting)
                 Thread({
                     val events = dbHelper.getEventsToExport(exportPastEvents)
                     if (events.isEmpty()) {
@@ -329,6 +328,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
                             toast(R.string.no_events_for_exporting)
                         }
                     } else {
+                        toast(R.string.exporting)
                         IcsExporter().exportEvents(this, file, events) {
                             runOnUiThread {
                                 toast(when (it) {
