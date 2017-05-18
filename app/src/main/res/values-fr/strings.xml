@@ -11,6 +11,7 @@
     <string name="details">Détails</string>
     <string name="go_to_today">Aller à aujourd\'hui</string>
     <string name="no_app_for_ics">No app capable of handling .ics files has been found</string>
+    <string name="snooze">Snooze</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Calendrier mensuel</string>
@@ -183,6 +184,7 @@
     <string name="no_ringtone_selected">Aucune</string>
     <string name="day_end_before_start">Le jour ne peut pas se terminer plus tôt qu\'il ne débute</string>
     <string name="google_sync">Synchronisation Google</string>
+    <string name="snooze_delay">Postpone reminder with Snooze by</string>
 
     <string name="january">Janvier</string>
     <string name="february">Février</string>

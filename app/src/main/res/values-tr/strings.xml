@@ -11,6 +11,7 @@
     <string name="details">Ayrıntı</string>
     <string name="go_to_today">Bugüne git</string>
     <string name="no_app_for_ics">ics dosyalarını işleme yeteneğinde hiçbir uygulama bulunamadı</string>
+    <string name="snooze">Snooze</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Aylık takvim</string>
@@ -183,6 +184,7 @@
     <string name="no_ringtone_selected">Boş</string>
     <string name="day_end_before_start">Gün başlamadan önce bitemez</string>
     <string name="google_sync">Google senkronizasyonu</string>
+    <string name="snooze_delay">Postpone reminder with Snooze by</string>
 
     <string name="january">Ocak</string>
     <string name="february">Şubat</string>

@@ -11,6 +11,7 @@
     <string name="details">פרטים</string>
     <string name="go_to_today">Go to today</string>
     <string name="no_app_for_ics">No app capable of handling .ics files has been found</string>
+    <string name="snooze">Snooze</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">לוח השנה חודשית</string>
@@ -183,6 +184,7 @@
     <string name="no_ringtone_selected">ללא</string>
     <string name="day_end_before_start">היום לא יכול להסתיים מוקדם משהוא מתחיל</string>
     <string name="google_sync">Google sync</string>
+    <string name="snooze_delay">Postpone reminder with Snooze by</string>
 
     <string name="january">ינואר</string>
     <string name="february">פברואר</string>

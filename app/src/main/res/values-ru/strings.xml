@@ -11,6 +11,7 @@
     <string name="details">Подробности</string>
     <string name="go_to_today">Сегодня</string>
     <string name="no_app_for_ics">Не найдено приложение для просмотра .ics файлов</string>
+    <string name="snooze">Snooze</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Календарь на месяц</string>
@@ -183,6 +184,7 @@
     <string name="no_ringtone_selected">Нет</string>
     <string name="day_end_before_start">Конец дня не может быть раньше начала</string>
     <string name="google_sync">Синхронизация с Google</string>
+    <string name="snooze_delay">Postpone reminder with Snooze by</string>
 
     <string name="january">Январь</string>
     <string name="february">Февраль</string>
