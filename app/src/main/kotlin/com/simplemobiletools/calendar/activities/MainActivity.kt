@@ -27,6 +27,7 @@ import com.simplemobiletools.calendar.fragments.WeekFragment
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.interfaces.NavigationListener
+import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.models.EventType
 import com.simplemobiletools.calendar.views.MyScrollView
 import com.simplemobiletools.commons.dialogs.FilePickerDialog
@@ -41,6 +42,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import org.joda.time.DateTime
 import java.io.FileOutputStream
 import java.util.*
+import kotlin.collections.ArrayList
 
 class MainActivity : SimpleActivity(), NavigationListener {
     private val PREFILLED_MONTHS = 73
@@ -320,16 +322,18 @@ class MainActivity : SimpleActivity(), NavigationListener {
     private fun exportEvents() {
         FilePickerDialog(this, pickFile = false) {
             val path = it
-            ExportEventsDialog(this, path) { exportPastEvents, file ->
+            ExportEventsDialog(this, path) { exportPastEvents, file, eventTypes ->
                 Thread({
-                    val events = dbHelper.getEventsToExport(exportPastEvents)
+                    val events = dbHelper.getEventsToExport(exportPastEvents).filter { eventTypes.contains(it.eventType.toString()) }
                     if (events.isEmpty()) {
                         runOnUiThread {
                             toast(R.string.no_events_for_exporting)
                         }
                     } else {
-                        toast(R.string.exporting)
-                        IcsExporter().exportEvents(this, file, events) {
+                        runOnUiThread {
+                            toast(R.string.exporting)
+                        }
+                        IcsExporter().exportEvents(this, file, events as ArrayList<Event>) {
                             runOnUiThread {
                                 toast(when (it) {
                                     IcsExporter.ExportResult.EXPORT_OK -> R.string.events_exported_successfully

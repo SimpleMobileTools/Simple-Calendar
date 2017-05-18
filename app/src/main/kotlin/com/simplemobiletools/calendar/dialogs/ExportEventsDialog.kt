@@ -11,7 +11,8 @@ import com.simplemobiletools.commons.extensions.*
 import kotlinx.android.synthetic.main.dialog_export_events.view.*
 import java.io.File
 
-class ExportEventsDialog(val activity: SimpleActivity, val path: String, val callback: (exportPastEvents: Boolean, file: File) -> Unit) : AlertDialog.Builder(activity) {
+class ExportEventsDialog(val activity: SimpleActivity, val path: String, val callback: (exportPastEvents: Boolean, file: File, eventTypes: HashSet<String>) -> Unit)
+    : AlertDialog.Builder(activity) {
     init {
         val view = (activity.layoutInflater.inflate(R.layout.dialog_export_events, null) as ViewGroup).apply {
             export_events_folder.text = activity.humanizePath(path)
@@ -22,9 +23,9 @@ class ExportEventsDialog(val activity: SimpleActivity, val path: String, val cal
                 it.mapTo(eventTypes, { it.id.toString() })
 
                 activity.runOnUiThread {
+                    export_events_types_list.adapter = FilterEventTypeAdapter(activity, it, eventTypes)
                     if (it.size > 1) {
                         export_events_pick_types.beVisible()
-                        export_events_types_list.adapter = FilterEventTypeAdapter(activity, it, eventTypes)
 
                         val margin = activity.resources.getDimension(R.dimen.normal_margin).toInt()
                         (export_events_checkbox.layoutParams as LinearLayout.LayoutParams).leftMargin = margin
@@ -49,7 +50,8 @@ class ExportEventsDialog(val activity: SimpleActivity, val path: String, val cal
                         return@setOnClickListener
                     }
 
-                    callback(view.export_events_checkbox.isChecked, file)
+                    val eventTypes = (view.export_events_types_list.adapter as FilterEventTypeAdapter).getSelectedItemsSet()
+                    callback(view.export_events_checkbox.isChecked, file, eventTypes)
                     dismiss()
                 } else {
                     context.toast(R.string.invalid_name)
