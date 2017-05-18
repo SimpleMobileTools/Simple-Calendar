@@ -1,6 +1,11 @@
 <resources>
 
     <!-- Release notes -->
+    <string name="release_76">
+        Added an easy way to import Holidays in some countries\n
+        Allow filtering events to export by event type\n
+        Added Snooze
+    </string>
     <string name="release_73">Add more advanced monthly repetition options, like \"Last day of the month\" or \"Every second Tuesday\"</string>
     <string name="release_71">Add a new event repetition type \"Repeat x times\"</string>
     <string name="release_69">
