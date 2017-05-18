@@ -42,11 +42,11 @@ class ExportEventsDialog(val activity: SimpleActivity, val path: String, val cal
             getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener({
                 val filename = view.export_events_filename.value
                 if (filename.isEmpty()) {
-                    context.toast(R.string.empty_name)
+                    activity.toast(R.string.empty_name)
                 } else if (filename.isAValidFilename()) {
                     val file = File(path, "$filename.ics")
                     if (file.exists()) {
-                        context.toast(R.string.name_taken)
+                        activity.toast(R.string.name_taken)
                         return@setOnClickListener
                     }
 
@@ -54,7 +54,7 @@ class ExportEventsDialog(val activity: SimpleActivity, val path: String, val cal
                     callback(view.export_events_checkbox.isChecked, file, eventTypes)
                     dismiss()
                 } else {
-                    context.toast(R.string.invalid_name)
+                    activity.toast(R.string.invalid_name)
                 }
             })
         }

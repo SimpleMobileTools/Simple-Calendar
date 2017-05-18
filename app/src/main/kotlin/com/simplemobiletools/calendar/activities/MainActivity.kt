@@ -222,13 +222,11 @@ class MainActivity : SimpleActivity(), NavigationListener {
     }
 
     private fun handleParseResult(result: IcsImporter.ImportResult) {
-        runOnUiThread {
-            toast(when (result) {
-                IcsImporter.ImportResult.IMPORT_OK -> R.string.holidays_imported_successfully
-                IcsImporter.ImportResult.IMPORT_PARTIAL -> R.string.importing_some_holidays_failed
-                else -> R.string.importing_holidays_failed
-            }, Toast.LENGTH_LONG)
-        }
+        toast(when (result) {
+            IcsImporter.ImportResult.IMPORT_OK -> R.string.holidays_imported_successfully
+            IcsImporter.ImportResult.IMPORT_PARTIAL -> R.string.importing_some_holidays_failed
+            else -> R.string.importing_holidays_failed
+        }, Toast.LENGTH_LONG)
     }
 
     private fun updateView(view: Int) {
@@ -326,21 +324,15 @@ class MainActivity : SimpleActivity(), NavigationListener {
                 Thread({
                     val events = dbHelper.getEventsToExport(exportPastEvents).filter { eventTypes.contains(it.eventType.toString()) }
                     if (events.isEmpty()) {
-                        runOnUiThread {
-                            toast(R.string.no_events_for_exporting)
-                        }
+                        toast(R.string.no_events_for_exporting)
                     } else {
-                        runOnUiThread {
-                            toast(R.string.exporting)
-                        }
+                        toast(R.string.exporting)
                         IcsExporter().exportEvents(this, file, events as ArrayList<Event>) {
-                            runOnUiThread {
-                                toast(when (it) {
-                                    IcsExporter.ExportResult.EXPORT_OK -> R.string.events_exported_successfully
-                                    IcsExporter.ExportResult.EXPORT_PARTIAL -> R.string.exporting_some_events_failed
-                                    else -> R.string.exporting_events_failed
-                                })
-                            }
+                            toast(when (it) {
+                                IcsExporter.ExportResult.EXPORT_OK -> R.string.events_exported_successfully
+                                IcsExporter.ExportResult.EXPORT_PARTIAL -> R.string.exporting_some_events_failed
+                                else -> R.string.exporting_events_failed
+                            })
                         }
                     }
                 }).start()
