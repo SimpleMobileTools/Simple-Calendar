@@ -52,65 +52,34 @@ fun Context.updateListWidget() {
 fun Context.scheduleAllEvents() {
     val events = dbHelper.getEventsAtReboot()
     events.forEach {
-        scheduleNextEventReminder(it)
+        scheduleNextEventReminder(it, dbHelper)
     }
 }
 
-fun Context.scheduleNextEventReminder(event: Event) {
+fun Context.scheduleNextEventReminder(event: Event, dbHelper: DBHelper) {
     if (event.getReminders().isEmpty())
         return
 
-    val now = System.currentTimeMillis() / 1000 + 3
-    var nextTS = Int.MAX_VALUE
+    val now = (System.currentTimeMillis() / 1000).toInt()
     val reminderSeconds = event.getReminders().reversed().map { it * 60 }
-    reminderSeconds.forEach {
-        var startTS = event.startTS - it
-        if (event.repeatInterval == DAY || (event.repeatInterval != 0 && event.repeatInterval % WEEK == 0)) {
-            while (startTS < now || isOccurrenceIgnored(event, startTS, it) || !isCorrectDay(event, startTS, it)) {
-                startTS = Formatter.getDateTimeFromTS(startTS).plusDays(1).seconds()
+
+    dbHelper.getEvents(now, now + YEAR, event.id) {
+        if (it.isNotEmpty()) {
+            for (curEvent in it) {
+                for (curReminder in reminderSeconds) {
+                    if (curEvent.startTS - curReminder > now) {
+                        scheduleEventIn((curEvent.startTS - curReminder) * 1000L, curEvent)
+                        return@getEvents
+                    }
+                }
             }
-            nextTS = Math.min(nextTS, startTS)
-        } else if (event.repeatInterval == MONTH) {
-            nextTS = Math.min(nextTS, getNewTS(startTS, true))
-        } else if (event.repeatInterval == YEAR) {
-            nextTS = Math.min(nextTS, getNewTS(startTS, false))
-        } else if (startTS > now) {
-            nextTS = Math.min(nextTS, startTS)
         }
     }
-
-    if (nextTS == 0 || nextTS < now || nextTS == Int.MAX_VALUE) {
-        cancelNotification(event.id)
-        return
-    }
-
-    if (event.repeatLimit == 0 || event.repeatLimit > nextTS || event.repeatLimit < 0) {
-        scheduleEventIn(nextTS * 1000L, event)
-    }
 }
 
-private fun isOccurrenceIgnored(event: Event, startTS: Int, reminderSeconds: Int): Boolean {
-    return event.ignoreEventOccurrences.contains(Formatter.getDayCodeFromTS(startTS + reminderSeconds).toInt())
-}
-
-private fun isCorrectDay(event: Event, startTS: Int, reminderSeconds: Int): Boolean {
-    return if (event.repeatInterval == DAY)
-        true
-    else
-        (startTS + reminderSeconds).isTsOnProperDay(event)
-}
-
-private fun getNewTS(ts: Int, isMonthly: Boolean): Int {
-    var dateTime = Formatter.getDateTimeFromTS(ts)
-    while (dateTime.isBeforeNow) {
-        dateTime = if (isMonthly) dateTime.plusMonths(1) else dateTime.plusYears(1)
-    }
-    return dateTime.seconds()
-}
-
-fun Context.scheduleReminder(event: Event) {
+fun Context.scheduleReminder(event: Event, dbHelper: DBHelper) {
     if (event.getReminders().isNotEmpty())
-        scheduleNextEventReminder(event)
+        scheduleNextEventReminder(event, dbHelper)
 }
 
 fun Context.scheduleEventIn(notifTS: Long, event: Event) {

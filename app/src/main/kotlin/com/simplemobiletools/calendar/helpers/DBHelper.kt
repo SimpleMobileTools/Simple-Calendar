@@ -158,7 +158,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
 
         context.updateWidgets()
-        context.scheduleReminder(event)
+        context.scheduleReminder(event, this)
         mEventsListener?.eventInserted(event)
         return event.id
     }
@@ -178,7 +178,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
 
         context.updateWidgets()
-        context.scheduleReminder(event)
+        context.scheduleReminder(event, this)
         mEventsListener?.eventUpdated(event)
     }
 
@@ -357,31 +357,35 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             null
     }
 
-    fun getEvents(fromTS: Int, toTS: Int, callback: (events: MutableList<Event>) -> Unit) {
+    fun getEvents(fromTS: Int, toTS: Int, eventId: Int = -1, callback: (events: MutableList<Event>) -> Unit) {
         Thread({
-            getEventsInBackground(fromTS, toTS, callback)
+            getEventsInBackground(fromTS, toTS, eventId, callback)
         }).start()
     }
 
-    fun getEventsInBackground(fromTS: Int, toTS: Int, callback: (events: MutableList<Event>) -> Unit) {
+    fun getEventsInBackground(fromTS: Int, toTS: Int, eventId: Int = -1, callback: (events: MutableList<Event>) -> Unit) {
         val events = ArrayList<Event>()
 
-        val selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_REPEAT_INTERVAL IS NULL"
+        var selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_REPEAT_INTERVAL IS NULL"
+        if (eventId != -1)
+            selection += " AND $MAIN_TABLE_NAME.$COL_ID = $eventId"
         val selectionArgs = arrayOf(toTS.toString(), fromTS.toString())
         val cursor = getEventsCursor(selection, selectionArgs)
         events.addAll(fillEvents(cursor))
 
-        events.addAll(getRepeatableEventsFor(fromTS, toTS))
+        events.addAll(getRepeatableEventsFor(fromTS, toTS, eventId))
 
         val filtered = events.filterNot { it.ignoreEventOccurrences.contains(Formatter.getDayCodeFromTS(it.startTS).toInt()) } as MutableList<Event>
         callback(filtered)
     }
 
-    private fun getRepeatableEventsFor(fromTS: Int, toTS: Int): List<Event> {
+    private fun getRepeatableEventsFor(fromTS: Int, toTS: Int, eventId: Int = -1): List<Event> {
         val newEvents = ArrayList<Event>()
 
         // get repeatable events
-        val selection = "$COL_REPEAT_INTERVAL != 0 AND $COL_START_TS <= $toTS"
+        var selection = "$COL_REPEAT_INTERVAL != 0 AND $COL_START_TS <= $toTS"
+        if (eventId != -1)
+            selection += " AND $MAIN_TABLE_NAME.$COL_ID = $eventId"
         val events = getEvents(selection)
         val startTimes = SparseIntArray(events.size)
         events.forEach {
