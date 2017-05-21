@@ -7,17 +7,13 @@ import com.simplemobiletools.calendar.models.Event
 import java.util.*
 
 class WeeklyCalendarImpl(val mCallback: WeeklyCalendar, val mContext: Context) {
-    var mEvents: List<Event>
-
-    init {
-        mEvents = ArrayList<Event>()
-    }
+    var mEvents = ArrayList<Event>()
 
     fun updateWeeklyCalendar(weekStartTS: Int) {
         val startTS = weekStartTS
         val endTS = startTS + WEEK_SECONDS
         mContext.dbHelper.getEvents(startTS, endTS) {
-            mEvents = it
+            mEvents = it as ArrayList<Event>
             mCallback.updateWeeklyCalendar(it)
         }
     }

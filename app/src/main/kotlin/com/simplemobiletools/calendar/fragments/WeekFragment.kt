@@ -9,7 +9,6 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.*
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.simplemobiletools.calendar.R
@@ -47,7 +46,8 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private var clickStartTime = 0L
     private var selectedGrid: View? = null
     private var todayColumnIndex = -1
-    private var events: List<Event> = ArrayList()
+    private var events = ArrayList<Event>()
+    private var allDayHolders = ArrayList<RelativeLayout>()
 
     lateinit var inflater: LayoutInflater
     lateinit var mView: View
@@ -167,7 +167,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private fun initGrid() {
         (0..6).map { getColumnWithId(it) }
                 .forEachIndexed { index, layout ->
-                    activity.runOnUiThread { layout.removeAllViews() }
+                    layout.removeAllViews()
                     layout.setOnTouchListener { view, motionEvent ->
                         checkGridClick(motionEvent, index, layout)
                         true
@@ -211,7 +211,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         }
     }
 
-    override fun updateWeeklyCalendar(events: List<Event>) {
+    override fun updateWeeklyCalendar(events: ArrayList<Event>) {
         this.events = events
         updateEvents()
     }
@@ -220,13 +220,26 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         if (mWasDestroyed)
             return
 
+        activity.runOnUiThread {
+            if (context != null)
+                addEvents()
+        }
+    }
+
+    private fun addEvents() {
         val filtered = context.getFilteredEvents(events)
 
         initGrid()
+        allDayHolders.clear()
+        week_all_day_holder?.removeAllViews()
+
+        val allDaysLine = inflater.inflate(R.layout.all_day_events_holder_line, null, false) as RelativeLayout
+        week_all_day_holder.addView(allDaysLine)
+        allDayHolders.add(allDaysLine)
+
         val fullHeight = mRes.getDimension(R.dimen.weekly_view_events_height)
         val minuteHeight = fullHeight / (24 * 60)
         val minimalHeight = mRes.getDimension(R.dimen.weekly_view_minimal_event_height).toInt()
-        activity.runOnUiThread { mView.week_all_day_holder.removeAllViews() }
 
         var hadAllDayEvent = false
         val sorted = filtered.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { it.description }))
@@ -246,13 +259,11 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 (inflater.inflate(R.layout.week_event_marker, null, false) as TextView).apply {
                     background = ColorDrawable(MainActivity.eventTypeColors.get(event.eventType, primaryColor))
                     text = event.title
-                    activity.runOnUiThread {
-                        layout.addView(this)
-                        y = startMinutes * minuteHeight
-                        (layoutParams as RelativeLayout.LayoutParams).apply {
-                            width = layout.width - 1
-                            minHeight = if (event.startTS == event.endTS) minimalHeight else (duration * minuteHeight).toInt() - 1
-                        }
+                    layout.addView(this)
+                    y = startMinutes * minuteHeight
+                    (layoutParams as RelativeLayout.LayoutParams).apply {
+                        width = layout.width - 1
+                        minHeight = if (event.startTS == event.endTS) minimalHeight else (duration * minuteHeight).toInt() - 1
                     }
                     setOnClickListener {
                         Intent(activity.applicationContext, EventActivity::class.java).apply {
@@ -278,17 +289,15 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             val todayColumn = getColumnWithId(todayColumnIndex)
             (inflater.inflate(R.layout.week_now_marker, null, false) as ImageView).apply {
                 setColorFilter(primaryColor, PorterDuff.Mode.SRC_IN)
-                activity.runOnUiThread {
-                    mView.week_events_holder.addView(this, 0)
-                    val extraWidth = (todayColumn.width * 0.3).toInt()
-                    val markerHeight = resources.getDimension(R.dimen.weekly_view_now_height).toInt()
-                    (layoutParams as RelativeLayout.LayoutParams).apply {
-                        width = todayColumn.width + extraWidth
-                        height = markerHeight
-                    }
-                    x = todayColumn.x - extraWidth / 2
-                    y = minutes * minuteHeight - markerHeight / 2
+                mView.week_events_holder.addView(this, 0)
+                val extraWidth = (todayColumn.width * 0.3).toInt()
+                val markerHeight = resources.getDimension(R.dimen.weekly_view_now_height).toInt()
+                (layoutParams as RelativeLayout.LayoutParams).apply {
+                    width = todayColumn.width + extraWidth
+                    height = markerHeight
                 }
+                x = todayColumn.x - extraWidth / 2
+                y = minutes * minuteHeight - markerHeight / 2
             }
         }
     }
@@ -318,35 +327,33 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             val firstDayIndex = (startDateTimeInWeek.dayOfWeek - if (context.config.isSundayFirst) 0 else 1) % 7
             val daysCnt = Days.daysBetween(Formatter.getDateTimeFromTS(minTS), Formatter.getDateTimeFromTS(maxTS)).days
 
-            activity.runOnUiThread {
-                if (activity == null)
-                    return@runOnUiThread
+            if (activity == null)
+                return
 
-                mView.week_all_day_holder.addView(this)
-                (layoutParams as LinearLayout.LayoutParams).apply {
-                    topMargin = mRes.getDimension(R.dimen.tiny_margin).toInt()
-                    leftMargin = getColumnWithId(firstDayIndex).x.toInt()
-                    bottomMargin = 1
-                    width = getColumnWithId(Math.min(firstDayIndex + daysCnt, 6)).right - leftMargin - 1
-                }
-
-                mView.week_top_holder.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
-                    override fun onGlobalLayout() {
-                        if (activity == null)
-                            return
-
-                        mView.week_top_holder.viewTreeObserver.removeOnGlobalLayoutListener(this)
-                        if (isFragmentVisible) {
-                            (activity as MainActivity).updateHoursTopMargin(mView.week_top_holder.height)
-                        }
-
-                        if (!wasExtraHeightAdded) {
-                            maxScrollY += mView.week_all_day_holder.height
-                            wasExtraHeightAdded = true
-                        }
-                    }
-                })
+            allDayHolders[0].addView(this)
+            (layoutParams as RelativeLayout.LayoutParams).apply {
+                topMargin = mRes.getDimension(R.dimen.tiny_margin).toInt()
+                leftMargin = getColumnWithId(firstDayIndex).x.toInt()
+                bottomMargin = 1
+                width = getColumnWithId(Math.min(firstDayIndex + daysCnt, 6)).right - leftMargin - 1
             }
+
+            mView.week_top_holder.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+                override fun onGlobalLayout() {
+                    if (activity == null)
+                        return
+
+                    mView.week_top_holder.viewTreeObserver.removeOnGlobalLayoutListener(this)
+                    if (isFragmentVisible) {
+                        (activity as MainActivity).updateHoursTopMargin(mView.week_top_holder.height)
+                    }
+
+                    if (!wasExtraHeightAdded) {
+                        maxScrollY += mView.week_all_day_holder.height
+                        wasExtraHeightAdded = true
+                    }
+                }
+            })
             setOnClickListener {
                 Intent(activity.applicationContext, EventActivity::class.java).apply {
                     putExtra(EVENT_ID, event.id)
