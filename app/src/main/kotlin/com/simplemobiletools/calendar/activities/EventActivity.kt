@@ -73,10 +73,8 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
         checkReminderTexts()
         updateRepetitionText()
-        updateStartDateText()
-        updateStartTimeText()
-        updateEndDateText()
-        updateEndTimeText()
+        updateStartTexts()
+        updateEndTexts()
         updateEventType()
 
         event_start_date.setOnClickListener { setupStartDate() }
@@ -461,6 +459,11 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         } else {
             dbHelper.update(mEvent)
         }
+    }
+
+    private fun updateStartTexts() {
+        updateStartDateText()
+        updateStartTimeText()
     }
 
     private fun updateStartDateText() {
