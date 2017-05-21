@@ -471,6 +471,11 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         event_start_time.text = Formatter.getTime(this, mEventStartDateTime)
     }
 
+    private fun updateEndTexts() {
+        updateEndDateText()
+        updateEndTimeText()
+    }
+
     private fun updateEndDateText() {
         event_end_date.text = Formatter.getDate(applicationContext, mEventEndDateTime)
     }
@@ -530,14 +535,14 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
     private fun dateSet(year: Int, month: Int, day: Int, isStart: Boolean) {
         if (isStart) {
+            val diff = mEventEndDateTime.seconds() - mEventStartDateTime.seconds()
+
             mEventStartDateTime = mEventStartDateTime.withDate(year, month + 1, day)
             updateStartDateText()
-            if (mEventStartDateTime.isAfter(mEventEndDateTime)) {
-                mEventEndDateTime = mEventStartDateTime
-                updateEndDateText()
-                updateEndTimeText()
-            }
             checkRepeatRule()
+
+            mEventEndDateTime = mEventStartDateTime.plusSeconds(diff)
+            updateEndTexts()
         } else {
             mEventEndDateTime = mEventEndDateTime.withDate(year, month + 1, day)
             updateEndDateText()
@@ -546,12 +551,13 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
     private fun timeSet(hours: Int, minutes: Int, isStart: Boolean) {
         if (isStart) {
+            val diff = mEventEndDateTime.seconds() - mEventStartDateTime.seconds()
+
             mEventStartDateTime = mEventStartDateTime.withHourOfDay(hours).withMinuteOfHour(minutes)
             updateStartTimeText()
-            if (mEventStartDateTime.isAfter(mEventEndDateTime)) {
-                mEventEndDateTime = mEventStartDateTime
-                updateEndTimeText()
-            }
+
+            mEventEndDateTime = mEventStartDateTime.plusSeconds(diff)
+            updateEndTexts()
         } else {
             mEventEndDateTime = mEventEndDateTime.withHourOfDay(hours).withMinuteOfHour(minutes)
             updateEndTimeText()
