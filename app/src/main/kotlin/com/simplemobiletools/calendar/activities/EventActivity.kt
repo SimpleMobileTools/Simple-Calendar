@@ -468,10 +468,12 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
     private fun updateStartDateText() {
         event_start_date.text = Formatter.getDate(applicationContext, mEventStartDateTime)
+        checkStartEndValidity()
     }
 
     private fun updateStartTimeText() {
         event_start_time.text = Formatter.getTime(this, mEventStartDateTime)
+        checkStartEndValidity()
     }
 
     private fun updateEndTexts() {
@@ -481,10 +483,18 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
     private fun updateEndDateText() {
         event_end_date.text = Formatter.getDate(applicationContext, mEventEndDateTime)
+        checkStartEndValidity()
     }
 
     private fun updateEndTimeText() {
         event_end_time.text = Formatter.getTime(this, mEventEndDateTime)
+        checkStartEndValidity()
+    }
+
+    private fun checkStartEndValidity() {
+        val textColor = if (mEventStartDateTime.isAfter(mEventEndDateTime)) resources.getColor(R.color.red_text) else config.textColor
+        event_end_date.setTextColor(textColor)
+        event_end_time.setTextColor(textColor)
     }
 
     @SuppressLint("NewApi")
