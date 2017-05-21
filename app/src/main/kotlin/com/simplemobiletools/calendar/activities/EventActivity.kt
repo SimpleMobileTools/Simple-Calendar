@@ -26,8 +26,6 @@ import org.joda.time.DateTime
 import java.util.*
 
 class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
-    private var mWasEndDateSet = false
-    private var mWasEndTimeSet = false
     private var mReminder1Minutes = 0
     private var mReminder2Minutes = 0
     private var mReminder3Minutes = 0
@@ -80,9 +78,6 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         updateEndDateText()
         updateEndTimeText()
         updateEventType()
-
-        mWasEndDateSet = event != null
-        mWasEndTimeSet = event != null
 
         event_start_date.setOnClickListener { setupStartDate() }
         event_start_time.setOnClickListener { setupStartTime() }
@@ -523,16 +518,10 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
     private val startDateSetListener = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
         dateSet(year, monthOfYear, dayOfMonth, true)
-        if (!mWasEndDateSet) {
-            dateSet(year, monthOfYear, dayOfMonth, false)
-        }
     }
 
     private val startTimeSetListener = TimePickerDialog.OnTimeSetListener { view, hourOfDay, minute ->
         timeSet(hourOfDay, minute, true)
-        if (!mWasEndTimeSet) {
-            timeSet(hourOfDay, minute, false)
-        }
     }
 
     private val endDateSetListener = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth -> dateSet(year, monthOfYear, dayOfMonth, false) }
@@ -552,7 +541,6 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         } else {
             mEventEndDateTime = mEventEndDateTime.withDate(year, month + 1, day)
             updateEndDateText()
-            mWasEndDateSet = true
         }
     }
 
@@ -567,7 +555,6 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         } else {
             mEventEndDateTime = mEventEndDateTime.withHourOfDay(hours).withMinuteOfHour(minutes)
             updateEndTimeText()
-            mWasEndTimeSet = true
         }
     }
 
