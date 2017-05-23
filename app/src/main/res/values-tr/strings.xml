@@ -174,8 +174,8 @@
     <string name="manage_event_types">Olay türlerini yönet</string>
     <string name="use_24_hour_format">24 saat formatını kullan</string>
     <string name="sunday_first">Pazar günü ilk gün olarak</string>
-    <string name="start_weekly_at">Haftalık görüntüleme gününü şu saatte başlatın</string>
-    <string name="end_weekly_at">Haftalık görüntüleme gününü bitiştir</string>
+    <string name="start_day_at">Haftalık görüntüleme gününü şu saatte başlatın</string>
+    <string name="end_day_at">Haftalık görüntüleme gününü bitiştir</string>
     <string name="week_numbers">Aylık görünümde hafta sayılarını göster</string>
     <string name="vibrate">Hatırlatma bildiriminde titreşim</string>
     <string name="reminder_sound">Hatırlatma sesi</string>

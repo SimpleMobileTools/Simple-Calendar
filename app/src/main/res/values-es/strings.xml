@@ -174,8 +174,8 @@
     <string name="manage_event_types">Gestionar tipos de eventos</string>
     <string name="use_24_hour_format">Usar formato de 24 horas</string>
     <string name="sunday_first">Domingo como primer día de la semana</string>
-    <string name="start_weekly_at">El día en la vista semanal comienza a las</string>
-    <string name="end_weekly_at">El día en la vista semanal finaliza a las</string>
+    <string name="start_day_at">El día en la vista semanal comienza a las</string>
+    <string name="end_day_at">El día en la vista semanal finaliza a las</string>
     <string name="week_numbers">Mostrar los números de la semana</string>
     <string name="vibrate">Vibración en notificación de recordatorio</string>
     <string name="reminder_sound">Sonido de recordatorio</string>

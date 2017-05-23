@@ -174,8 +174,8 @@
     <string name="manage_event_types">Manage event types</string>
     <string name="use_24_hour_format">Use 24-hour format</string>
     <string name="sunday_first">Söndag är första dagen</string>
-    <string name="start_weekly_at">Starta veckovydagen vid</string>
-    <string name="end_weekly_at">Sluta veckovydagen vid</string>
+    <string name="start_day_at">Starta veckovydagen vid</string>
+    <string name="end_day_at">Sluta veckovydagen vid</string>
     <string name="week_numbers">Visa veckonumret i månadsvyn</string>
     <string name="vibrate">Vibrera vid påminnelseaviseringen</string>
     <string name="reminder_sound">Påminnelseljud</string>

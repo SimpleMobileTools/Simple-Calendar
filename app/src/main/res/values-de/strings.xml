@@ -174,8 +174,8 @@
     <string name="manage_event_types">Verwalte Termin-Typen</string>
     <string name="use_24_hour_format">Verwende 24 h Format</string>
     <string name="sunday_first">Sonntag als erster Wochentag</string>
-    <string name="start_weekly_at">Wochenansicht beginnt am</string>
-    <string name="end_weekly_at">Wochenansicht endet am</string>
+    <string name="start_day_at">Wochenansicht beginnt am</string>
+    <string name="end_day_at">Wochenansicht endet am</string>
     <string name="week_numbers">Zeige Kalenderwoche an</string>
     <string name="vibrate">Vibration bei Errinerung</string>
     <string name="reminder_sound">Erinnerungston</string>

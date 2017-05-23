@@ -174,8 +174,8 @@
     <string name="manage_event_types">Manage event types</string>
     <string name="use_24_hour_format">Use 24-hour format</string>
     <string name="sunday_first">יום א\' בתור היום הראשון בשבוע</string>
-    <string name="start_weekly_at">התחלת תצפית שבועית בשעה</string>
-    <string name="end_weekly_at">התחלת תצפית שבועית בשעה</string>
+    <string name="start_day_at">התחלת תצפית שבועית בשעה</string>
+    <string name="end_day_at">התחלת תצפית שבועית בשעה</string>
     <string name="week_numbers">הצגת מספרי השבועות בתצפית חודשית</string>
     <string name="vibrate">רטט בהתראת תזכורת</string>
     <string name="reminder_sound">צליל תזכורת</string>

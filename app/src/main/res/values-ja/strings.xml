@@ -174,8 +174,8 @@
     <string name="manage_event_types">Manage event types</string>
     <string name="use_24_hour_format">Use 24-hour format</string>
     <string name="sunday_first">日曜日が最初</string>
-    <string name="start_weekly_at">Start weekly view day at</string>
-    <string name="end_weekly_at">End weekly view day at</string>
+    <string name="start_day_at">Start day at</string>
+    <string name="end_day_at">End day at</string>
     <string name="week_numbers">週番号を表示</string>
     <string name="vibrate">リマインダー通知で振動</string>
     <string name="reminder_sound">Reminder sound</string>

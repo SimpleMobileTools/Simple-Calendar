@@ -174,8 +174,8 @@
     <string name="manage_event_types">Управление типами событий</string>
     <string name="use_24_hour_format">Использовать 24-х часовой формат</string>
     <string name="sunday_first">Воскресенье - начало недели</string>
-    <string name="start_weekly_at">Начало дня (неделя)</string>
-    <string name="end_weekly_at">Окончание дня (неделя)</string>
+    <string name="start_day_at">Начало дня (неделя)</string>
+    <string name="end_day_at">Окончание дня (неделя)</string>
     <string name="week_numbers">Отображать номера недель</string>
     <string name="vibrate">Вибрация при напоминании</string>
     <string name="reminder_sound">Звук напоминания</string>

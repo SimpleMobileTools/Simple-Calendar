@@ -174,8 +174,8 @@
     <string name="manage_event_types">Manage event types</string>
     <string name="use_24_hour_format">Use 24-hour format</string>
     <string name="sunday_first">Vasárnap a hét első napja</string>
-    <string name="start_weekly_at">Start weekly view day at</string>
-    <string name="end_weekly_at">End weekly view day at</string>
+    <string name="start_day_at">Start day at</string>
+    <string name="end_day_at">End day at</string>
     <string name="week_numbers">Hetek sorszámának mutatása</string>
     <string name="vibrate">Emlékeztetőnél rezgés</string>
     <string name="reminder_sound">Reminder sound</string>

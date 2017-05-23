@@ -131,96 +131,6 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/settings_week_numbers_holder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/medium_margin"
-            android:background="?attr/selectableItemBackground"
-            android:padding="@dimen/activity_margin">
-
-            <com.simplemobiletools.commons.views.MySwitchCompat
-                android:id="@+id/settings_week_numbers"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:clickable="false"
-                android:paddingLeft="@dimen/medium_margin"
-                android:paddingStart="@dimen/medium_margin"
-                android:text="@string/week_numbers"/>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/settings_start_weekly_at_holder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/medium_margin"
-            android:background="?attr/selectableItemBackground"
-            android:paddingBottom="@dimen/bigger_margin"
-            android:paddingLeft="@dimen/activity_margin"
-            android:paddingRight="@dimen/activity_margin"
-            android:paddingTop="@dimen/bigger_margin">
-
-            <com.simplemobiletools.commons.views.MyTextView
-                android:id="@+id/settings_start_weekly_at_label"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toLeftOf="@+id/settings_start_weekly_at"
-                android:layout_toStartOf="@+id/settings_start_weekly_at"
-                android:paddingLeft="@dimen/medium_margin"
-                android:paddingRight="@dimen/medium_margin"
-                android:text="@string/start_weekly_at"/>
-
-            <com.simplemobiletools.commons.views.MyTextView
-                android:id="@+id/settings_start_weekly_at"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginEnd="@dimen/small_margin"
-                android:layout_marginRight="@dimen/small_margin"
-                android:background="@null"
-                android:clickable="false"/>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/settings_end_weekly_at_holder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/medium_margin"
-            android:background="?attr/selectableItemBackground"
-            android:paddingBottom="@dimen/bigger_margin"
-            android:paddingLeft="@dimen/activity_margin"
-            android:paddingRight="@dimen/activity_margin"
-            android:paddingTop="@dimen/bigger_margin">
-
-            <com.simplemobiletools.commons.views.MyTextView
-                android:id="@+id/settings_end_weekly_at_label"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toLeftOf="@+id/settings_end_weekly_at"
-                android:layout_toStartOf="@+id/settings_end_weekly_at"
-                android:paddingLeft="@dimen/medium_margin"
-                android:paddingRight="@dimen/medium_margin"
-                android:text="@string/end_weekly_at"/>
-
-            <com.simplemobiletools.commons.views.MyTextView
-                android:id="@+id/settings_end_weekly_at"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginEnd="@dimen/small_margin"
-                android:layout_marginRight="@dimen/small_margin"
-                android:background="@null"
-                android:clickable="false"/>
-
-        </RelativeLayout>
-
-        <RelativeLayout
             android:id="@+id/settings_reminder_sound_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -322,6 +232,131 @@
                 android:layout_marginRight="@dimen/small_margin"
                 android:background="@null"
                 android:clickable="false"/>
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/weekly_view_divider"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/divider_strong"/>
+
+        <com.simplemobiletools.commons.views.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/big_margin"
+            android:layout_marginStart="@dimen/big_margin"
+            android:layout_marginTop="@dimen/activity_margin"
+            android:alpha="0.6"
+            android:text="@string/weekly_view"
+            android:textAllCaps="true"
+            android:textColor="@color/divider_strong"
+            android:textSize="@dimen/small_text_size"/>
+
+        <RelativeLayout
+            android:id="@+id/settings_start_weekly_at_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:background="?attr/selectableItemBackground"
+            android:paddingBottom="@dimen/bigger_margin"
+            android:paddingLeft="@dimen/activity_margin"
+            android:paddingRight="@dimen/activity_margin"
+            android:paddingTop="@dimen/bigger_margin">
+
+            <com.simplemobiletools.commons.views.MyTextView
+                android:id="@+id/settings_start_weekly_at_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/settings_start_weekly_at"
+                android:layout_toStartOf="@+id/settings_start_weekly_at"
+                android:paddingLeft="@dimen/medium_margin"
+                android:paddingRight="@dimen/medium_margin"
+                android:text="@string/start_day_at"/>
+
+            <com.simplemobiletools.commons.views.MyTextView
+                android:id="@+id/settings_start_weekly_at"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="@dimen/small_margin"
+                android:layout_marginRight="@dimen/small_margin"
+                android:background="@null"
+                android:clickable="false"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/settings_end_weekly_at_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:paddingBottom="@dimen/bigger_margin"
+            android:paddingLeft="@dimen/activity_margin"
+            android:paddingRight="@dimen/activity_margin"
+            android:paddingTop="@dimen/bigger_margin">
+
+            <com.simplemobiletools.commons.views.MyTextView
+                android:id="@+id/settings_end_weekly_at_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/settings_end_weekly_at"
+                android:layout_toStartOf="@+id/settings_end_weekly_at"
+                android:paddingLeft="@dimen/medium_margin"
+                android:paddingRight="@dimen/medium_margin"
+                android:text="@string/end_day_at"/>
+
+            <com.simplemobiletools.commons.views.MyTextView
+                android:id="@+id/settings_end_weekly_at"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="@dimen/small_margin"
+                android:layout_marginRight="@dimen/small_margin"
+                android:background="@null"
+                android:clickable="false"/>
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/monthly_view_divider"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/divider_strong"/>
+
+        <com.simplemobiletools.commons.views.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/big_margin"
+            android:layout_marginStart="@dimen/big_margin"
+            android:layout_marginTop="@dimen/activity_margin"
+            android:alpha="0.6"
+            android:text="@string/monthly_view"
+            android:textAllCaps="true"
+            android:textColor="@color/divider_strong"
+            android:textSize="@dimen/small_text_size"/>
+
+        <RelativeLayout
+            android:id="@+id/settings_week_numbers_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:background="?attr/selectableItemBackground"
+            android:padding="@dimen/activity_margin">
+
+            <com.simplemobiletools.commons.views.MySwitchCompat
+                android:id="@+id/settings_week_numbers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:clickable="false"
+                android:paddingLeft="@dimen/medium_margin"
+                android:paddingStart="@dimen/medium_margin"
+                android:text="@string/week_numbers"/>
 
         </RelativeLayout>
     </LinearLayout>
