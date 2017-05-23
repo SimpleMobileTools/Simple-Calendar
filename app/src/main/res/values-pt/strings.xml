@@ -184,6 +184,7 @@
     <string name="no_ringtone_selected">Nenhum</string>
     <string name="day_end_before_start">O dia final não pode ser antes do inicial</string>
     <string name="google_sync">Sincronização Google</string>
+    <string name="display_past_events">Display events in the past</string>
     <string name="snooze_delay">Postpone reminder with Snooze by</string>
 
     <plurals name="minutes">

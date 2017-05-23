@@ -53,6 +53,7 @@ class SettingsActivity : SimpleActivity() {
         setupReminderSound()
         setupSnoozeDelay()
         setupEventReminder()
+        setupDisplayPastEvents()
         updateTextColors(settings_holder)
         checkPrimaryColor()
     }
@@ -218,6 +219,10 @@ class SettingsActivity : SimpleActivity() {
         } else {
             "$hours:00"
         }
+    }
+
+    private fun setupDisplayPastEvents() {
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
