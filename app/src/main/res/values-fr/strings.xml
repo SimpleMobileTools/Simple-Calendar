@@ -97,7 +97,6 @@
     </plurals>
 
     <!-- Event Reminders -->
-    <string name="select_event_reminder">Seléctionner un rappel d\'evénement</string>
     <string name="reminder">Rappel</string>
     <string name="no_reminder">Pas de rappel</string>
     <string name="at_start">Au démarrage</string>

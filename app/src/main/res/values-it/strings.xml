@@ -97,7 +97,6 @@
     </plurals>
 
     <!-- Event Reminders -->
-    <string name="select_event_reminder">Select an event reminder</string>
     <string name="reminder">Promemoria</string>
     <string name="no_reminder">No reminder</string>
     <string name="at_start">All\'inizio</string>

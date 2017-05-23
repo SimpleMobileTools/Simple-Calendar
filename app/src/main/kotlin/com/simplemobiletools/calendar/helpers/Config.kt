@@ -57,6 +57,10 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getInt(SNOOZE_DELAY, 10)
         set(snoozeDelay) = prefs.edit().putInt(SNOOZE_DELAY, snoozeDelay).apply()
 
+    var displayPastEvents: Int
+        get() = prefs.getInt(DISPLAY_PAST_EVENTS, 0)
+        set(displayPastEvents) = prefs.edit().putInt(DISPLAY_PAST_EVENTS, displayPastEvents).apply()
+
     var displayEventTypes: Set<String>
         get() = prefs.getStringSet(DISPLAY_EVENT_TYPES, HashSet<String>())
         set(displayEventTypes) = prefs.edit().remove(DISPLAY_EVENT_TYPES).putStringSet(DISPLAY_EVENT_TYPES, displayEventTypes).apply()

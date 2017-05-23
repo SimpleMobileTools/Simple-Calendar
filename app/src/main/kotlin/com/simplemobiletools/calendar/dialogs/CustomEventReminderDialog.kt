@@ -22,7 +22,7 @@ class CustomEventReminderDialog(val activity: Activity, val callback: (minutes: 
                 .setNegativeButton(R.string.cancel, null)
                 .create().apply {
             window!!.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
-            activity.setupDialogStuff(view, this, R.string.select_event_reminder)
+            activity.setupDialogStuff(view, this)
         }
     }
 

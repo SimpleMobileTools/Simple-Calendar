@@ -101,7 +101,6 @@
     </plurals>
 
     <!-- Event Reminders -->
-    <string name="select_event_reminder">Zvoľte pripomienku</string>
     <string name="reminder">Pripomenka</string>
     <string name="no_reminder">Žiadna pripomienka</string>
     <string name="at_start">Na začiatku</string>

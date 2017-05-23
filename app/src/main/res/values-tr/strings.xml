@@ -97,7 +97,6 @@
     </plurals>
 
     <!-- Event Reminders -->
-    <string name="select_event_reminder">Bir etkinlik hatırlatıcısı seçin</string>
     <string name="reminder">Hatırlatma</string>
     <string name="no_reminder">Hatırlatma yok</string>
     <string name="at_start">Başlangıçta</string>
