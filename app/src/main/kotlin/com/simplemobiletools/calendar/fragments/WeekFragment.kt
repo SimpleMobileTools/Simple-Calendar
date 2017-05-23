@@ -379,22 +379,8 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 width = getColumnWithId(Math.min(firstDayIndex + daysCnt, 6)).right - leftMargin - 1
             }
 
-            mView.week_top_holder.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
-                override fun onGlobalLayout() {
-                    if (activity == null)
-                        return
+            calculateExtraHeight()
 
-                    mView.week_top_holder.viewTreeObserver.removeOnGlobalLayoutListener(this)
-                    if (isFragmentVisible) {
-                        (activity as MainActivity).updateHoursTopMargin(mView.week_top_holder.height)
-                    }
-
-                    if (!wasExtraHeightAdded) {
-                        maxScrollY += mView.week_all_day_holder.height
-                        wasExtraHeightAdded = true
-                    }
-                }
-            })
             setOnClickListener {
                 Intent(activity.applicationContext, EventActivity::class.java).apply {
                     putExtra(EVENT_ID, event.id)
@@ -402,6 +388,25 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 }
             }
         }
+    }
+
+    private fun calculateExtraHeight() {
+        mView.week_top_holder.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                if (activity == null)
+                    return
+
+                mView.week_top_holder.viewTreeObserver.removeOnGlobalLayoutListener(this)
+                if (isFragmentVisible) {
+                    (activity as MainActivity).updateHoursTopMargin(mView.week_top_holder.height)
+                }
+
+                if (!wasExtraHeightAdded) {
+                    maxScrollY += mView.week_all_day_holder.height
+                    wasExtraHeightAdded = true
+                }
+            }
+        })
     }
 
     override fun onDestroyView() {
