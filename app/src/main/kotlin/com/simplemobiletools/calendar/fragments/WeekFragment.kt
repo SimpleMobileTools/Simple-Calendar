@@ -48,6 +48,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private var todayColumnIndex = -1
     private var events = ArrayList<Event>()
     private var allDayHolders = ArrayList<RelativeLayout>()
+    private var allDayRows = ArrayList<HashSet<Int>>()
 
     lateinit var inflater: LayoutInflater
     lateinit var mView: View
@@ -61,6 +62,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         mWeekTimestamp = arguments.getInt(WEEK_START_TIMESTAMP)
         primaryColor = context.config.primaryColor
         mRes = resources
+        allDayRows.add(HashSet())
 
         mView = inflater.inflate(R.layout.fragment_week, container, false).apply {
             week_events_scrollview.setOnScrollviewListener(object : MyScrollView.ScrollViewListener {
@@ -231,11 +233,11 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
         initGrid()
         allDayHolders.clear()
+        allDayRows.clear()
+        allDayRows.add(HashSet<Int>())
         week_all_day_holder?.removeAllViews()
 
-        val allDaysLine = inflater.inflate(R.layout.all_day_events_holder_line, null, false) as RelativeLayout
-        week_all_day_holder.addView(allDaysLine)
-        allDayHolders.add(allDaysLine)
+        addNewLine()
 
         val fullHeight = mRes.getDimension(R.dimen.weekly_view_events_height)
         val minuteHeight = fullHeight / (24 * 60)
@@ -281,6 +283,12 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         }
 
         addCurrentTimeIndicator(minuteHeight)
+    }
+
+    private fun addNewLine() {
+        val allDaysLine = inflater.inflate(R.layout.all_day_events_holder_line, null, false) as RelativeLayout
+        week_all_day_holder.addView(allDaysLine)
+        allDayHolders.add(allDaysLine)
     }
 
     fun addCurrentTimeIndicator(minuteHeight: Float) {
@@ -330,7 +338,40 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             if (activity == null)
                 return
 
-            allDayHolders[0].addView(this)
+            var doesEventFit: Boolean
+            val cnt = allDayRows.size - 1
+            var wasEventHandled = false
+            var drawAtLine = 0
+            for (index in 0..cnt) {
+                doesEventFit = true
+                drawAtLine = index
+                val row = allDayRows[index]
+                for (i in firstDayIndex..firstDayIndex + daysCnt) {
+                    if (row.contains(i)) {
+                        doesEventFit = false
+                    }
+                }
+
+                for (dayIndex in firstDayIndex..firstDayIndex + daysCnt) {
+                    if (doesEventFit) {
+                        row.add(dayIndex)
+                        wasEventHandled = true
+                    } else if (index == cnt) {
+                        if (allDayRows.size == index + 1) {
+                            allDayRows.add(HashSet<Int>())
+                            addNewLine()
+                            drawAtLine++
+                            wasEventHandled = true
+                        }
+                        allDayRows.last().add(dayIndex)
+                    }
+                }
+                if (wasEventHandled) {
+                    break
+                }
+            }
+
+            allDayHolders[drawAtLine].addView(this)
             (layoutParams as RelativeLayout.LayoutParams).apply {
                 topMargin = mRes.getDimension(R.dimen.tiny_margin).toInt()
                 leftMargin = getColumnWithId(firstDayIndex).x.toInt()
