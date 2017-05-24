@@ -16,12 +16,12 @@
 
         <com.simplemobiletools.commons.views.MyEditText
             android:id="@+id/dialog_custom_reminder_value"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:digits="0123456789"
-            android:ems="3"
+            android:ems="6"
             android:inputType="number"
-            android:maxLength="4"
+            android:maxLength="5"
             android:textCursorDrawable="@null"/>
 
         <RadioGroup

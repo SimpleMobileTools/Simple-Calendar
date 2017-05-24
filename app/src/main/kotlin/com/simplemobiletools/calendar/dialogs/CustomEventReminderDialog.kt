@@ -2,6 +2,7 @@ package com.simplemobiletools.calendar.dialogs
 
 import android.app.Activity
 import android.support.v7.app.AlertDialog
+import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import com.simplemobiletools.calendar.R
@@ -10,13 +11,24 @@ import com.simplemobiletools.commons.extensions.setupDialogStuff
 import com.simplemobiletools.commons.extensions.value
 import kotlinx.android.synthetic.main.dialog_custom_event_reminder.view.*
 
-class CustomEventReminderDialog(val activity: Activity, val callback: (minutes: Int) -> Unit) : AlertDialog.Builder(activity) {
+class CustomEventReminderDialog(val activity: Activity, val selectedMinutes: Int = 0, val callback: (minutes: Int) -> Unit) : AlertDialog.Builder(activity) {
     var dialog: AlertDialog
-    var view = activity.layoutInflater.inflate(R.layout.dialog_custom_event_reminder, null) as ViewGroup
+    var view: View = (activity.layoutInflater.inflate(R.layout.dialog_custom_event_reminder, null) as ViewGroup).apply {
+        if (selectedMinutes == 0) {
+            dialog_radio_view.check(R.id.dialog_radio_minutes)
+        } else if (selectedMinutes % 1440 == 0) {
+            dialog_radio_view.check(R.id.dialog_radio_days)
+            dialog_custom_reminder_value.setText((selectedMinutes / 1440).toString())
+        } else if (selectedMinutes % 60 == 0) {
+            dialog_radio_view.check(R.id.dialog_radio_hours)
+            dialog_custom_reminder_value.setText((selectedMinutes / 60).toString())
+        } else {
+            dialog_radio_view.check(R.id.dialog_radio_minutes)
+            dialog_custom_reminder_value.setText(selectedMinutes.toString())
+        }
+    }
 
     init {
-        view.dialog_radio_view.check(R.id.dialog_radio_minutes)
-
         dialog = AlertDialog.Builder(activity)
                 .setPositiveButton(R.string.ok, { dialogInterface, i -> confirmReminder() })
                 .setNegativeButton(R.string.cancel, null)

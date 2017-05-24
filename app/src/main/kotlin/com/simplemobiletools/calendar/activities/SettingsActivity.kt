@@ -223,17 +223,19 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun setupDisplayPastEvents() {
-        updatePastEventsText()
+        var displayPastEvents = config.displayPastEvents
+        updatePastEventsText(displayPastEvents)
         settings_display_past_events_holder.setOnClickListener {
-            CustomEventReminderDialog(this) {
+            CustomEventReminderDialog(this, displayPastEvents) {
+                displayPastEvents = it
                 config.displayPastEvents = it
-                updatePastEventsText()
+                updatePastEventsText(it)
             }
         }
     }
 
-    private fun updatePastEventsText() {
-        settings_display_past_events.text = getDisplayPastEventsText(config.displayPastEvents)
+    private fun updatePastEventsText(displayPastEvents: Int) {
+        settings_display_past_events.text = getDisplayPastEventsText(displayPastEvents)
     }
 
     private fun getDisplayPastEventsText(displayPastEvents: Int): String {
