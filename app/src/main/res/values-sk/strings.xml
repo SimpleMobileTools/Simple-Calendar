@@ -199,6 +199,12 @@
         <item quantity="other">%1$d minút</item>
     </plurals>
 
+    <plurals name="hours">
+        <item quantity="one">%1$d hodiny</item>
+        <item quantity="few">%1$d hodín</item>
+        <item quantity="other">%1$d hodín</item>
+    </plurals>
+
     <string name="january">Január</string>
     <string name="february">Február</string>
     <string name="march">Marec</string>

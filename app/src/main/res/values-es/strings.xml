@@ -183,12 +183,17 @@
     <string name="no_ringtone_selected">Ninguno</string>
     <string name="day_end_before_start">El día no puede terminar antes de que comience</string>
     <string name="google_sync">Sincronización de Google</string>
-    <string name="display_past_events">Display events in the past</string>
+    <string name="display_past_events">Display events from the past</string>
     <string name="snooze_delay">Postpone reminder with Snooze by</string>
 
     <plurals name="minutes">
         <item quantity="one">%1$d minute</item>
         <item quantity="other">%1$d minutes</item>
+    </plurals>
+
+    <plurals name="hours">
+        <item quantity="one">%1$d hour</item>
+        <item quantity="other">%1$d hours</item>
     </plurals>
 
     <string name="january">Enero</string>
