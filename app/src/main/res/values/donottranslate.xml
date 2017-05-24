@@ -1,6 +1,7 @@
 <resources>
 
     <!-- Release notes -->
+    <string name="release_77">Allow displaying some events from the past in the Simple Event List view</string>
     <string name="release_76">
         Added an easy way to import Holidays in some countries\n
         Allow filtering events to export by event type\n
