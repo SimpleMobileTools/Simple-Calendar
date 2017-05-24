@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 2.5.0 *(2017-05-24)*
+----------------------------
+
+ * Allow displaying some events from the past in the Simple Event List view
+ * Make sure the event duration stays the same at changing the event Start value
+
 Version 2.4.3 *(2017-05-18)*
 ----------------------------
 
