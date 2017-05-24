@@ -109,11 +109,17 @@ private fun getNotificationIntent(context: Context, eventId: Int): PendingIntent
 
 fun Context.getAppropriateTheme() = if (config.backgroundColor.getContrastColor() == Color.WHITE) R.style.MyDialogTheme_Dark else R.style.MyDialogTheme
 
-fun Context.getReminderText(minutes: Int) = when (minutes) {
+fun Context.getFormattedMinutes(minutes: Int) = when (minutes) {
     -1 -> getString(R.string.no_reminder)
     0 -> getString(R.string.at_start)
     else -> {
-        if (minutes % 1440 == 0)
+        if (minutes % 525600 == 0)
+            resources.getQuantityString(R.plurals.years, minutes / 525600, minutes / 525600)
+        if (minutes % 43200 == 0)
+            resources.getQuantityString(R.plurals.months, minutes / 43200, minutes / 43200)
+        else if (minutes % 10080 == 0)
+            resources.getQuantityString(R.plurals.weeks, minutes / 10080, minutes / 10080)
+        else if (minutes % 1440 == 0)
             resources.getQuantityString(R.plurals.days, minutes / 1440, minutes / 1440)
         else if (minutes % 60 == 0)
             resources.getQuantityString(R.plurals.hours_before, minutes / 60, minutes / 60)

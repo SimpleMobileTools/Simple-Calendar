@@ -205,6 +205,8 @@
         <item quantity="other">%1$d hodín</item>
     </plurals>
 
+    <string name="never">Nikdy</string>
+
     <string name="january">Január</string>
     <string name="february">Február</string>
     <string name="march">Marec</string>

@@ -4,7 +4,7 @@ import android.os.Bundle
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.dialogs.CustomEventReminderDialog
 import com.simplemobiletools.calendar.dialogs.CustomEventRepeatIntervalDialog
-import com.simplemobiletools.calendar.extensions.getReminderText
+import com.simplemobiletools.calendar.extensions.getFormattedMinutes
 import com.simplemobiletools.calendar.extensions.getRepetitionText
 import com.simplemobiletools.calendar.helpers.DAY
 import com.simplemobiletools.calendar.helpers.MONTH
@@ -36,7 +36,7 @@ open class SimpleActivity : BaseSimpleActivity() {
         val items = ArrayList<RadioItem>(minutes.size + 1)
         minutes.mapIndexedTo(items, {
             index, value ->
-            RadioItem(index, getReminderText(value), value)
+            RadioItem(index, getFormattedMinutes(value), value)
         })
 
         var selectedIndex = 0

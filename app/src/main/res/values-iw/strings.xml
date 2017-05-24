@@ -196,6 +196,8 @@
         <item quantity="other">%1$d hours</item>
     </plurals>
 
+    <string name="never">Never</string>
+
     <string name="january">ינואר</string>
     <string name="february">פברואר</string>
     <string name="march">מרץ</string>

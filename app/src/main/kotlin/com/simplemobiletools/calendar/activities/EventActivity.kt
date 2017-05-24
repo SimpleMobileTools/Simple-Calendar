@@ -336,7 +336,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     }
 
     private fun updateReminder1Text() {
-        event_reminder_1.text = getReminderText(mReminder1Minutes)
+        event_reminder_1.text = getFormattedMinutes(mReminder1Minutes)
         if (mReminder1Minutes == REMINDER_OFF) {
             mReminder2Minutes = REMINDER_OFF
             mReminder3Minutes = REMINDER_OFF
@@ -351,7 +351,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
                 alpha = 0.4f
                 mReminder3Minutes = REMINDER_OFF
             } else {
-                text = getReminderText(mReminder2Minutes)
+                text = getFormattedMinutes(mReminder2Minutes)
                 alpha = 1f
             }
         }
@@ -364,7 +364,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
                 text = resources.getString(R.string.add_another_reminder)
                 alpha = 0.4f
             } else {
-                text = getReminderText(mReminder3Minutes)
+                text = getFormattedMinutes(mReminder3Minutes)
                 alpha = 1f
             }
         }

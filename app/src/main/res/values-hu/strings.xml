@@ -196,6 +196,8 @@
         <item quantity="other">%1$d hours</item>
     </plurals>
 
+    <string name="never">Never</string>
+
     <string name="january">Január</string>
     <string name="february">Február</string>
     <string name="march">Március</string>

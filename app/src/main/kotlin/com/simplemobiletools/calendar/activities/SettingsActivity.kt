@@ -7,10 +7,11 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Parcelable
 import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.dialogs.CustomEventReminderDialog
 import com.simplemobiletools.calendar.dialogs.SnoozePickerDialog
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
-import com.simplemobiletools.calendar.extensions.getReminderText
+import com.simplemobiletools.calendar.extensions.getFormattedMinutes
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.toast
 import com.simplemobiletools.commons.extensions.updateTextColors
@@ -203,12 +204,12 @@ class SettingsActivity : SimpleActivity() {
 
     private fun setupEventReminder() {
         var reminderMinutes = config.defaultReminderMinutes
-        settings_default_reminder.text = getReminderText(reminderMinutes)
+        settings_default_reminder.text = getFormattedMinutes(reminderMinutes)
         settings_default_reminder_holder.setOnClickListener {
             showEventReminderDialog(reminderMinutes) {
                 config.defaultReminderMinutes = it
                 reminderMinutes = it
-                settings_default_reminder.text = getReminderText(it)
+                settings_default_reminder.text = getFormattedMinutes(it)
             }
         }
     }
@@ -222,7 +223,24 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun setupDisplayPastEvents() {
+        updatePastEventsText()
+        settings_display_past_events_holder.setOnClickListener {
+            CustomEventReminderDialog(this) {
+                config.displayPastEvents = it
+                updatePastEventsText()
+            }
+        }
+    }
 
+    private fun updatePastEventsText() {
+        settings_display_past_events.text = getDisplayPastEventsText(config.displayPastEvents)
+    }
+
+    private fun getDisplayPastEventsText(displayPastEvents: Int): String {
+        return if (displayPastEvents == 0)
+            getString(R.string.never)
+        else
+            getFormattedMinutes(displayPastEvents)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
