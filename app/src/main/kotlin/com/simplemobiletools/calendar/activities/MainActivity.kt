@@ -107,7 +107,8 @@ class MainActivity : SimpleActivity(), NavigationListener {
         }
 
         updateWidgets()
-        updateTextColors(calendar_coordinator)
+        if (config.storedView != EVENTS_LIST_VIEW)
+            updateTextColors(calendar_coordinator)
     }
 
     override fun onPause() {
