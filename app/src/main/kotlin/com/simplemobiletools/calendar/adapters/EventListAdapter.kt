@@ -173,7 +173,12 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
                 var startTextColor = textColor
                 var endTextColor = textColor
                 if (item.startTS <= mNow && item.endTS <= mNow) {
-                    startTextColor = redTextColor
+                    if (item.isAllDay) {
+                        if (Formatter.getDayCodeFromTS(item.startTS) == Formatter.getDayCodeFromTS(mNow))
+                            startTextColor = primaryColor
+                    } else {
+                        startTextColor = redTextColor
+                    }
                     endTextColor = redTextColor
                 } else if (item.startTS <= mNow && item.endTS >= mNow) {
                     startTextColor = primaryColor
