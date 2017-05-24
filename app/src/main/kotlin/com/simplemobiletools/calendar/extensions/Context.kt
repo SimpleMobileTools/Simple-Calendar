@@ -109,7 +109,7 @@ private fun getNotificationIntent(context: Context, eventId: Int): PendingIntent
 
 fun Context.getAppropriateTheme() = if (config.backgroundColor.getContrastColor() == Color.WHITE) R.style.MyDialogTheme_Dark else R.style.MyDialogTheme
 
-fun Context.getFormattedMinutes(minutes: Int) = when (minutes) {
+fun Context.getFormattedMinutes(minutes: Int, showBefore: Boolean = true) = when (minutes) {
     -1 -> getString(R.string.no_reminder)
     0 -> getString(R.string.at_start)
     else -> {
@@ -121,10 +121,13 @@ fun Context.getFormattedMinutes(minutes: Int) = when (minutes) {
             resources.getQuantityString(R.plurals.weeks, minutes / 10080, minutes / 10080)
         else if (minutes % 1440 == 0)
             resources.getQuantityString(R.plurals.days, minutes / 1440, minutes / 1440)
-        else if (minutes % 60 == 0)
-            resources.getQuantityString(R.plurals.hours_before, minutes / 60, minutes / 60)
-        else
-            resources.getQuantityString(R.plurals.minutes_before, minutes, minutes)
+        else if (minutes % 60 == 0) {
+            val base = if (showBefore) R.plurals.hours_before else R.plurals.hours
+            resources.getQuantityString(base, minutes / 60, minutes / 60)
+        } else {
+            val base = if (showBefore) R.plurals.minutes_before else R.plurals.minutes
+            resources.getQuantityString(base, minutes, minutes)
+        }
     }
 }
 

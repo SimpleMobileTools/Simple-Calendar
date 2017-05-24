@@ -240,7 +240,7 @@ class SettingsActivity : SimpleActivity() {
         return if (displayPastEvents == 0)
             getString(R.string.never)
         else
-            getFormattedMinutes(displayPastEvents)
+            getFormattedMinutes(displayPastEvents, false)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
