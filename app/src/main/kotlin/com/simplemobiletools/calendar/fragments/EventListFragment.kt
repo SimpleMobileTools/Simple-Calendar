@@ -47,7 +47,7 @@ class EventListFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEvents
     }
 
     private fun checkEvents() {
-        val fromTS = DateTime().seconds()
+        val fromTS = DateTime().seconds() - context.config.displayPastEvents * 60
         val toTS = DateTime().plusYears(1).seconds()
         context.dbHelper.getEvents(fromTS, toTS) {
             receivedEvents(it)
