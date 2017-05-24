@@ -305,7 +305,9 @@ class MainActivity : SimpleActivity(), NavigationListener {
     private fun importEventsDialog(path: String) {
         ImportEventsDialog(this, path) {
             if (it) {
-                updateViewPager()
+                runOnUiThread {
+                    updateViewPager()
+                }
             }
         }
     }
