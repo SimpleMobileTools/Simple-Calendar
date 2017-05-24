@@ -38,6 +38,7 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
         var mNow = (System.currentTimeMillis() / 1000).toInt()
         var primaryColor = 0
         var textColor = 0
+        var redTextColor = 0
         var todayDate = ""
         var allDayString = ""
 
@@ -58,6 +59,7 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
         allDayString = res.getString(R.string.all_day)
         topDivider = res.getDrawable(R.drawable.divider_width)
         textColor = activity.config.textColor
+        redTextColor = res.getColor(R.color.red_text)
         primaryColor = activity.config.primaryColor
         val mTodayCode = Formatter.getDayCodeFromTS(mNow)
         todayDate = Formatter.getDayTitle(activity, mTodayCode)
@@ -168,11 +170,19 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
                     }
                 }
 
-                val currTextColor = if (item.startTS <= mNow) primaryColor else textColor
-                event_item_start.setTextColor(currTextColor)
-                event_item_end.setTextColor(currTextColor)
-                event_item_title.setTextColor(currTextColor)
-                event_item_description.setTextColor(currTextColor)
+                var startTextColor = textColor
+                var endTextColor = textColor
+                if (item.startTS <= mNow && item.endTS <= mNow) {
+                    startTextColor = redTextColor
+                    endTextColor = redTextColor
+                } else if (item.startTS <= mNow && item.endTS >= mNow) {
+                    startTextColor = primaryColor
+                }
+
+                event_item_start.setTextColor(startTextColor)
+                event_item_end.setTextColor(endTextColor)
+                event_item_title.setTextColor(startTextColor)
+                event_item_description.setTextColor(startTextColor)
 
                 setOnClickListener { viewClicked(multiSelector, listItem, pos) }
                 setOnLongClickListener {
