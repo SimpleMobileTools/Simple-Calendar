@@ -48,17 +48,17 @@
     <string name="update_all_occurrences">Atualizar todas as ocorrências</string>
     <string name="repeat_till_date">Repetir até à data</string>
     <string name="repeat_x_times">Repetir x vezes</string>
-    <string name="repeat_forever">Repetir para sempre</string>
+    <string name="repeat_forever">Repetir eternamente</string>
     <string name="times">vezes</string>
     <string name="repeat">Repetição</string>
     <string name="repeat_on">Repetir em</string>
     <string name="every_day">Todos os dias</string>
-    <string name="selected_days">Nos dias selecionados</string>
-    <string name="the_same_day">The same day</string>
-    <string name="the_last_day">The last day</string>
-    <string name="repeat_on_the_same_day">Repeat on the same day each month</string>
-    <string name="repeat_on_the_last_day">Repeat on the last day of the month</string>
-    <string name="repeat_every_m">Repeat every</string>
+    <string name="selected_days">Dias selecionados</string>
+    <string name="the_same_day">Mesmo dia</string>
+    <string name="the_last_day">Último dia</string>
+    <string name="repeat_on_the_same_day">Repetir no mesmo dia de cada mês</string>
+    <string name="repeat_on_the_last_day">Repetir no último dia de cada mês</string>
+    <string name="repeat_every_m">Repetir</string>
     <string name="every_m">A cada</string>
     <string name="first_m">primeira</string>
     <string name="second_m">segunda</string>
@@ -68,7 +68,7 @@
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
-    <string name="repeat_every_f">Repeat every</string>
+    <string name="repeat_every_f">Repetir</string>
     <string name="every_f">A cada</string>
     <string name="first_f">primeiro</string>
     <string name="second_f">segundo</string>
@@ -123,8 +123,8 @@
     </plurals>
 
     <!-- Export / Import -->
-    <string name="importing">Importing&#8230;</string>
-    <string name="exporting">Exporting&#8230;</string>
+    <string name="importing">A importar&#8230;</string>
+    <string name="exporting">A exportar&#8230;</string>
     <string name="import_events">Importar eventos</string>
     <string name="export_events">Exportar eventos</string>
     <string name="import_events_from_ics">Importar eventos de um ficheiro .ics</string>
@@ -139,8 +139,8 @@
     <string name="default_event_type">Tipo de evento padrão</string>
     <string name="no_events_for_exporting">Não existem eventos para exportação</string>
     <string name="export_past_events_too">Exportar eventos antigos</string>
-    <string name="include_event_types">Include event types</string>
-    <string name="filename_without_ics">Filename (without .ics)</string>
+    <string name="include_event_types">Incluir tipos de eventos</string>
+    <string name="filename_without_ics">Nome do ficheiro (sem .ics)</string>
 
     <!-- Event details -->
     <string name="title">Título</string>
@@ -161,13 +161,13 @@
     <string name="select_event_type">Selecione um tipo de evento</string>
 
     <!-- Holidays -->
-    <string name="holidays">Holidays</string>
-    <string name="add_holidays">Add holidays</string>
-    <string name="national_holidays">National holidays</string>
-    <string name="religious_holidays">Religious holidays</string>
-    <string name="holidays_imported_successfully">Holidays have been successfully imported into a new event type</string>
-    <string name="importing_some_holidays_failed">Importing some events failed</string>
-    <string name="importing_holidays_failed">Importing holidays failed</string>
+    <string name="holidays">Feriados</string>
+    <string name="add_holidays">Adicionar feriados</string>
+    <string name="national_holidays">Feriados nacionais</string>
+    <string name="religious_holidays">Feriados religiosos</string>
+    <string name="holidays_imported_successfully">Os feriados foram importados para um novo tipo de evento</string>
+    <string name="importing_some_holidays_failed">Alguns eventos não foram importados</string>
+    <string name="importing_holidays_failed">Falha ao importar os feriados</string>
 
     <!-- Settings -->
     <string name="manage_event_types">Gerir tipos de eventos</string>
@@ -179,24 +179,24 @@
     <string name="vibrate">Vibrar ao notificar sobre o lembrete</string>
     <string name="reminder_sound">Som do lembrete</string>
     <string name="default_event_reminder">Lembrete padrão</string>
-    <string name="no_ringtone_picker">Não foi encontrada qualquer aplicação capaz de definir o som</string>
+    <string name="no_ringtone_picker">Não foi encontrada uma aplicação capaz de definir o som</string>
     <string name="no_ringtone_selected">Nenhum</string>
     <string name="day_end_before_start">O dia final não pode ser antes do inicial</string>
     <string name="google_sync">Sincronização Google</string>
-    <string name="display_past_events">Display events from the past</string>
-    <string name="snooze_delay">Postpone reminder with Snooze by</string>
+    <string name="display_past_events">Mostrar eventos passados</string>
+    <string name="snooze_delay">Adiar lembrete com a opção Snooze</string>
 
     <plurals name="minutes">
-        <item quantity="one">%1$d minute</item>
-        <item quantity="other">%1$d minutes</item>
+        <item quantity="one">%1$d minuto</item>
+        <item quantity="other">%1$d minutos</item>
     </plurals>
 
     <plurals name="hours">
-        <item quantity="one">%1$d hour</item>
-        <item quantity="other">%1$d hours</item>
+        <item quantity="one">%1$d hora</item>
+        <item quantity="other">%1$d horas</item>
     </plurals>
 
-    <string name="never">Never</string>
+    <string name="never">Nunca</string>
 
     <string name="january">janeiro</string>
     <string name="february">fevereiro</string>
@@ -230,7 +230,7 @@
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">segunda</string>
-    <string name="tuesday_alt">teça</string>
+    <string name="tuesday_alt">terça</string>
     <string name="wednesday_alt">quarta</string>
     <string name="thursday_alt">quinta</string>
     <string name="friday_alt">sexta</string>
