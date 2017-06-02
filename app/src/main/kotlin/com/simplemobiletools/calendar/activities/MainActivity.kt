@@ -45,9 +45,9 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class MainActivity : SimpleActivity(), NavigationListener {
-    private val PREFILLED_MONTHS = 73
-    private val PREFILLED_YEARS = 21
-    private val PREFILLED_WEEKS = 41
+    private val PREFILLED_MONTHS = 97
+    private val PREFILLED_YEARS = 31
+    private val PREFILLED_WEEKS = 61
     private val STORAGE_PERMISSION_IMPORT = 1
     private val STORAGE_PERMISSION_EXPORT = 2
 

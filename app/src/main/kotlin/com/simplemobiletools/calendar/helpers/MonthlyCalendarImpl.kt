@@ -61,7 +61,7 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
         for (i in 0..DAYS_CNT - 1) {
             if (i < firstDayIndex) {
                 isThisMonth = false
-                curDay = mTargetDate.minusMonths(1)
+                curDay = mTargetDate.withDayOfMonth(1).minusMonths(1)
             } else if (i == firstDayIndex) {
                 value = 1
                 isThisMonth = true
@@ -69,7 +69,7 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
             } else if (value == currMonthDays + 1) {
                 value = 1
                 isThisMonth = false
-                curDay = mTargetDate.plusMonths(1)
+                curDay = mTargetDate.withDayOfMonth(1).plusMonths(1)
             }
 
             isToday = isThisMonth && isToday(mTargetDate, value)
@@ -124,8 +124,13 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
         }
     }
 
-    private fun isToday(targetDate: DateTime, curDayInMonth: Int) =
-            targetDate.withDayOfMonth(curDayInMonth).toString(Formatter.DAYCODE_PATTERN) == mToday
+    private fun isToday(targetDate: DateTime, curDayInMonth: Int): Boolean {
+        try {
+            return targetDate.withDayOfMonth(curDayInMonth).toString(Formatter.DAYCODE_PATTERN) == mToday
+        } catch(ignored: Exception) {
+            return false
+        }
+    }
 
     private val monthName: String
         get() {
