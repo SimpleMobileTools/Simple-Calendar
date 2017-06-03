@@ -56,12 +56,16 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         private val DB_VERSION = 11
         val DB_NAME = "events.db"
         val REGULAR_EVENT_TYPE_ID = 1
+        var dbInstance: DBHelper? = null
 
         private var mEventsListener: EventUpdateListener? = null
 
         fun newInstance(context: Context, callback: EventUpdateListener? = null): DBHelper {
             mEventsListener = callback
-            return DBHelper(context)
+            if (dbInstance == null)
+                dbInstance = DBHelper(context)
+
+            return dbInstance!!
         }
     }
 
