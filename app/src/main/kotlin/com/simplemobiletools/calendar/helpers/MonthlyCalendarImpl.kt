@@ -125,11 +125,10 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
     }
 
     private fun isToday(targetDate: DateTime, curDayInMonth: Int): Boolean {
-        try {
-            return targetDate.withDayOfMonth(curDayInMonth).toString(Formatter.DAYCODE_PATTERN) == mToday
-        } catch(ignored: Exception) {
-            return false
-        }
+        return if (curDayInMonth > targetDate.dayOfMonth().maximumValue)
+            false
+        else
+            targetDate.withDayOfMonth(curDayInMonth).toString(Formatter.DAYCODE_PATTERN) == mToday
     }
 
     private val monthName: String
