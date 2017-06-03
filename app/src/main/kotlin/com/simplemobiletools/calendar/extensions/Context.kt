@@ -69,8 +69,8 @@ fun Context.scheduleNextEventReminder(event: Event, dbHelper: DBHelper) {
         if (it.isNotEmpty()) {
             for (curEvent in it) {
                 for (curReminder in reminderSeconds) {
-                    if (curEvent.startTS - curReminder > now) {
-                        scheduleEventIn((curEvent.startTS - curReminder) * 1000L, curEvent)
+                    if (curEvent.getEventStartTS() - curReminder > now) {
+                        scheduleEventIn((curEvent.getEventStartTS() - curReminder) * 1000L, curEvent)
                         return@getEvents
                     }
                 }
@@ -165,7 +165,8 @@ fun Context.notifyEvent(event: Event) {
     val pendingIntent = getPendingIntent(this, event)
     val startTime = Formatter.getTimeFromTS(this, event.startTS)
     val endTime = Formatter.getTimeFromTS(this, event.endTS)
-    val notification = getNotification(this, pendingIntent, event, "${getFormattedEventTime(startTime, endTime)} ${event.description}")
+    val timeRange = if (event.isAllDay) getString(R.string.all_day) else getFormattedEventTime(startTime, endTime)
+    val notification = getNotification(this, pendingIntent, event, "$timeRange ${event.description}")
     val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
     notificationManager.notify(event.id, notification)
 }
