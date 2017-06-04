@@ -16,6 +16,7 @@ import android.support.v7.app.NotificationCompat
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.helpers.*
+import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.receivers.NotificationReceiver
 import com.simplemobiletools.calendar.services.SnoozeService
@@ -24,6 +25,8 @@ import com.simplemobiletools.commons.extensions.isKitkatPlus
 import com.simplemobiletools.commons.extensions.isLollipopPlus
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
+import java.text.SimpleDateFormat
+import java.util.*
 
 fun Context.updateWidgets() {
     val widgetsCnt = AppWidgetManager.getInstance(this).getAppWidgetIds(ComponentName(this, MyWidgetMonthlyProvider::class.java))
@@ -219,6 +222,8 @@ fun Context.launchNewEventIntent(startNewTask: Boolean = false, today: Boolean =
 }
 
 fun Context.getNewEventTimestampFromCode(dayCode: String) = Formatter.getLocalDateTimeFromCode(dayCode).withTime(13, 0, 0, 0).seconds()
+
+fun Context.getCurrentOffset() = SimpleDateFormat("Z", Locale.getDefault()).format(Date())
 
 val Context.config: Config get() = Config.newInstance(this)
 

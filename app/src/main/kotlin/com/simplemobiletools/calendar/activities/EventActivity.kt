@@ -452,6 +452,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             repeatLimit = if (repeatInterval == 0) 0 else mRepeatLimit
             repeatRule = mRepeatRule
             eventType = mEventTypeId
+            offset = getCurrentOffset()
         }
 
         if (mEvent.id == 0) {
