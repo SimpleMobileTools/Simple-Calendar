@@ -453,6 +453,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             repeatRule = mRepeatRule
             eventType = mEventTypeId
             offset = getCurrentOffset()
+            isDstIncluded = TimeZone.getDefault().inDaylightTime(Date())
         }
 
         if (mEvent.id == 0) {

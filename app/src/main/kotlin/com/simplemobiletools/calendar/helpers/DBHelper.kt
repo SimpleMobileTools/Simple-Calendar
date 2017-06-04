@@ -32,6 +32,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private val COL_FLAGS = "flags"
     private val COL_EVENT_TYPE = "event_type"
     private val COL_OFFSET = "offset"
+    private val COL_IS_DST_INCLUDED = "is_dst_included"
 
     private val META_TABLE_NAME = "events_meta"
     private val COL_EVENT_ID = "event_id"
@@ -74,7 +75,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         db.execSQL("CREATE TABLE $MAIN_TABLE_NAME ($COL_ID INTEGER PRIMARY KEY, $COL_START_TS INTEGER, $COL_END_TS INTEGER, $COL_TITLE TEXT, " +
                 "$COL_DESCRIPTION TEXT, $COL_REMINDER_MINUTES INTEGER, $COL_REMINDER_MINUTES_2 INTEGER, $COL_REMINDER_MINUTES_3 INTEGER, " +
                 "$COL_IMPORT_ID TEXT, $COL_FLAGS INTEGER, $COL_EVENT_TYPE INTEGER NOT NULL DEFAULT $REGULAR_EVENT_TYPE_ID, " +
-                "$COL_PARENT_EVENT_ID INTEGER, $COL_OFFSET TEXT)")
+                "$COL_PARENT_EVENT_ID INTEGER, $COL_OFFSET TEXT, $COL_IS_DST_INCLUDED INTEGER)")
 
         createMetaTable(db)
         createTypesTable(db)
@@ -129,6 +130,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
         if (oldVersion < 12) {
             db.execSQL("ALTER TABLE $MAIN_TABLE_NAME ADD COLUMN $COL_OFFSET TEXT DEFAULT ''")
+            db.execSQL("ALTER TABLE $MAIN_TABLE_NAME ADD COLUMN $COL_IS_DST_INCLUDED INTEGER NOT NULL DEFAULT 0")
         }
     }
 
@@ -205,6 +207,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             put(COL_EVENT_TYPE, event.eventType)
             put(COL_PARENT_EVENT_ID, 0)
             put(COL_OFFSET, event.offset)
+            put(COL_IS_DST_INCLUDED, if (event.isDstIncluded) 1 else 0)
         }
     }
 
@@ -538,7 +541,8 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
     private val allColumns: Array<String>
         get() = arrayOf("$MAIN_TABLE_NAME.$COL_ID", COL_START_TS, COL_END_TS, COL_TITLE, COL_DESCRIPTION, COL_REMINDER_MINUTES, COL_REMINDER_MINUTES_2,
-                COL_REMINDER_MINUTES_3, COL_REPEAT_INTERVAL, COL_REPEAT_RULE, COL_IMPORT_ID, COL_FLAGS, COL_REPEAT_LIMIT, COL_EVENT_TYPE, COL_OFFSET)
+                COL_REMINDER_MINUTES_3, COL_REPEAT_INTERVAL, COL_REPEAT_RULE, COL_IMPORT_ID, COL_FLAGS, COL_REPEAT_LIMIT, COL_EVENT_TYPE, COL_OFFSET,
+                COL_IS_DST_INCLUDED)
 
     private fun fillEvents(cursor: Cursor?): List<Event> {
         val events = ArrayList<Event>()
@@ -560,6 +564,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                     val repeatLimit = cursor.getIntValue(COL_REPEAT_LIMIT)
                     val eventType = cursor.getIntValue(COL_EVENT_TYPE)
                     val offset = cursor.getStringValue(COL_OFFSET)
+                    val isDstIncluded = cursor.getIntValue(COL_IS_DST_INCLUDED) == 1
 
                     val ignoreEventOccurrences = if (repeatInterval != 0) {
                         getIgnoredOccurrences(id)
@@ -572,7 +577,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                     }
 
                     val event = Event(id, startTS, endTS, title, description, reminder1Minutes, reminder2Minutes, reminder3Minutes,
-                            repeatInterval, importId, flags, repeatLimit, repeatRule, eventType, ignoreEventOccurrences, offset)
+                            repeatInterval, importId, flags, repeatLimit, repeatRule, eventType, ignoreEventOccurrences, offset, isDstIncluded)
                     events.add(event)
                 } while (cursor.moveToNext())
             }
