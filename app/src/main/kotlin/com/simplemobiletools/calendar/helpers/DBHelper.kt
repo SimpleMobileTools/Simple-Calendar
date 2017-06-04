@@ -31,6 +31,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private val COL_IMPORT_ID = "import_id"
     private val COL_FLAGS = "flags"
     private val COL_EVENT_TYPE = "event_type"
+    private val COL_OFFSET = "offset"
 
     private val META_TABLE_NAME = "events_meta"
     private val COL_EVENT_ID = "event_id"
@@ -53,7 +54,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private val mDb: SQLiteDatabase = writableDatabase
 
     companion object {
-        private val DB_VERSION = 11
+        private val DB_VERSION = 12
         val DB_NAME = "events.db"
         val REGULAR_EVENT_TYPE_ID = 1
         var dbInstance: DBHelper? = null
@@ -73,7 +74,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         db.execSQL("CREATE TABLE $MAIN_TABLE_NAME ($COL_ID INTEGER PRIMARY KEY, $COL_START_TS INTEGER, $COL_END_TS INTEGER, $COL_TITLE TEXT, " +
                 "$COL_DESCRIPTION TEXT, $COL_REMINDER_MINUTES INTEGER, $COL_REMINDER_MINUTES_2 INTEGER, $COL_REMINDER_MINUTES_3 INTEGER, " +
                 "$COL_IMPORT_ID TEXT, $COL_FLAGS INTEGER, $COL_EVENT_TYPE INTEGER NOT NULL DEFAULT $REGULAR_EVENT_TYPE_ID, " +
-                "$COL_PARENT_EVENT_ID INTEGER)")
+                "$COL_PARENT_EVENT_ID INTEGER, $COL_OFFSET TEXT)")
 
         createMetaTable(db)
         createTypesTable(db)
@@ -124,6 +125,10 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         if (oldVersion < 11) {
             db.execSQL("ALTER TABLE $META_TABLE_NAME ADD COLUMN $COL_REPEAT_RULE INTEGER NOT NULL DEFAULT 0")
             setupRepeatRules(db)
+        }
+
+        if (oldVersion < 12) {
+            db.execSQL("ALTER TABLE $MAIN_TABLE_NAME ADD COLUMN $COL_OFFSET TEXT DEFAULT ''")
         }
     }
 
