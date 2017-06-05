@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 2.5.2 *(2017-06-05)*
+----------------------------
+
+ * Store timezone and daylight saving info at events
+ * Misc smaller crashfixes and improvements
+
 Version 2.5.1 *(2017-05-26)*
 ----------------------------
 
