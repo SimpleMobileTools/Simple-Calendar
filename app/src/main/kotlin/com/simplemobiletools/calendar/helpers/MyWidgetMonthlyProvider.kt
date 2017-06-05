@@ -68,8 +68,10 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
     }
 
     private fun updateWidget() {
-        val thisWidget = ComponentName(mContext, MyWidgetMonthlyProvider::class.java)
-        AppWidgetManager.getInstance(mContext).updateAppWidget(thisWidget, mRemoteViews)
+        if (mRemoteViews != null) {
+            val thisWidget = ComponentName(mContext, MyWidgetMonthlyProvider::class.java)
+            AppWidgetManager.getInstance(mContext).updateAppWidget(thisWidget, mRemoteViews)
+        }
     }
 
     private fun setupIntent(action: String, id: Int) {
