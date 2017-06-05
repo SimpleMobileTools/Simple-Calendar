@@ -21,3 +21,6 @@
 
 -keep class com.google.common.**
 -dontwarn com.google.common.**
+
+-renamesourcefileattribute SourceFile
+-keepattributes SourceFile,LineNumberTable
