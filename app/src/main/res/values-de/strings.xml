@@ -159,6 +159,8 @@
     <string name="regular_event">Regelmässiger Termin</string>
     <string name="cannot_delete_default_type">Standart-Termin-Typ kann nicht gelöscht werden</string>
     <string name="select_event_type">Wähle einen Termin Typ</string>
+    <string name="move_events_into_default">Move affected events into the default event type</string>
+    <string name="remove_affected_events">Permanently remove affected events</string>
 
     <!-- Holidays -->
     <string name="holidays">Holidays</string>

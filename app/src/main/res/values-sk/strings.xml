@@ -169,6 +169,8 @@
     <string name="holidays_imported_successfully">Sviatky boli úspešne importované do nového typu udalostí</string>
     <string name="importing_some_holidays_failed">Importovanie niektorých sviatkov zlyhalo</string>
     <string name="importing_holidays_failed">Importovanie udalostí zlyhalo</string>
+    <string name="move_events_into_default">Presunúť dotknuté udalosti do predvoleného typu udalostí</string>
+    <string name="remove_affected_events">Natrvalo odstrániť dotknuté udalosti</string>
 
     <!-- Holidays -->
     <string name="holidays">Sviatky</string>

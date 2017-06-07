@@ -159,6 +159,8 @@
     <string name="regular_event">Regular event</string>
     <string name="cannot_delete_default_type">Default event type cannot be deleted</string>
     <string name="select_event_type">Select an event type</string>
+    <string name="move_events_into_default">Move affected events into the default event type</string>
+    <string name="remove_affected_events">Permanently remove affected events</string>
 
     <!-- Holidays -->
     <string name="holidays">Holidays</string>

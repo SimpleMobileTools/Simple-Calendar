@@ -173,6 +173,8 @@
     <string name="regular_event">Обычное событие</string>
     <string name="cannot_delete_default_type">Тип событий по умолчанию не может быть удалён</string>
     <string name="select_event_type">Выбрать тип события</string>
+    <string name="move_events_into_default">Move affected events into the default event type</string>
+    <string name="remove_affected_events">Permanently remove affected events</string>
 
     <!-- Holidays -->
     <string name="holidays">Праздники</string>
