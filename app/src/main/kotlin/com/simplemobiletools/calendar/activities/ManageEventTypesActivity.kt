@@ -8,14 +8,14 @@ import com.simplemobiletools.calendar.adapters.EventTypeAdapter
 import com.simplemobiletools.calendar.dialogs.NewEventTypeDialog
 import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.helpers.DBHelper
-import com.simplemobiletools.calendar.interfaces.DeleteItemsListener
+import com.simplemobiletools.calendar.interfaces.DeleteEventTypesListener
 import com.simplemobiletools.calendar.models.EventType
 import com.simplemobiletools.commons.extensions.toast
 import com.simplemobiletools.commons.extensions.updateTextColors
 import kotlinx.android.synthetic.main.activity_manage_event_types.*
 import java.util.*
 
-class ManageEventTypesActivity : SimpleActivity(), DeleteItemsListener {
+class ManageEventTypesActivity : SimpleActivity(), DeleteEventTypesListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_manage_event_types)
@@ -53,7 +53,7 @@ class ManageEventTypesActivity : SimpleActivity(), DeleteItemsListener {
         return true
     }
 
-    override fun deleteItems(ids: ArrayList<Int>) {
+    override fun deleteEventTypes(ids: ArrayList<Int>, deleteEvents: Boolean) {
         if (ids.contains(DBHelper.REGULAR_EVENT_TYPE_ID)) {
             toast(R.string.cannot_delete_default_type)
         }

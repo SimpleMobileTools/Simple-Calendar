@@ -9,14 +9,15 @@ import com.bignerdranch.android.multiselector.SwappingHolder
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.extensions.config
-import com.simplemobiletools.calendar.interfaces.DeleteItemsListener
+import com.simplemobiletools.calendar.interfaces.DeleteEventTypesListener
 import com.simplemobiletools.calendar.models.EventType
-import com.simplemobiletools.commons.dialogs.ConfirmationDialog
+import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.setBackgroundWithStroke
+import com.simplemobiletools.commons.models.RadioItem
 import kotlinx.android.synthetic.main.item_event_type.view.*
 import java.util.*
 
-class EventTypeAdapter(val activity: SimpleActivity, val mItems: List<EventType>, val listener: DeleteItemsListener?, val itemClick: (EventType) -> Unit) :
+class EventTypeAdapter(val activity: SimpleActivity, val mItems: List<EventType>, val listener: DeleteEventTypesListener?, val itemClick: (EventType) -> Unit) :
         RecyclerView.Adapter<EventTypeAdapter.ViewHolder>() {
     val multiSelector = MultiSelector()
     val views = ArrayList<View>()
@@ -68,17 +69,24 @@ class EventTypeAdapter(val activity: SimpleActivity, val mItems: List<EventType>
     }
 
     private fun askConfirmDelete() {
-        ConfirmationDialog(activity) {
+        val MOVE_EVENTS = 0
+        val DELETE_EVENTS = 1
+        val res = activity.resources
+        val items = ArrayList<RadioItem>().apply {
+            add(RadioItem(MOVE_EVENTS, res.getString(R.string.move_events_into_default)))
+            add(RadioItem(DELETE_EVENTS, res.getString(R.string.remove_affected_events)))
+        }
+        RadioGroupDialog(activity, items, -1) {
             actMode?.finish()
-            deleteEventTypes()
+            deleteEventTypes(it == DELETE_EVENTS)
         }
     }
 
-    private fun deleteEventTypes() {
+    private fun deleteEventTypes(deleteEvents: Boolean) {
         val selections = multiSelector.selectedPositions
         val ids = ArrayList<Int>(selections.size)
         selections.forEach { ids.add((mItems[it]).id) }
-        listener?.deleteItems(ids)
+        listener?.deleteEventTypes(ids, deleteEvents)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
