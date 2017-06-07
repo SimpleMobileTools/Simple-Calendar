@@ -58,7 +58,7 @@ class ManageEventTypesActivity : SimpleActivity(), DeleteEventTypesListener {
             toast(R.string.cannot_delete_default_type)
         }
 
-        dbHelper.deleteEventTypes(ids) {
+        dbHelper.deleteEventTypes(ids, deleteEvents) {
             if (it > 0) {
                 getEventTypes()
             } else {

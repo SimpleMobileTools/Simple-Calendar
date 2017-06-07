@@ -311,7 +311,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         mDb.insert(EXCEPTIONS_TABLE_NAME, null, values)
     }
 
-    fun deleteEventTypes(ids: ArrayList<Int>, callback: (deletedCnt: Int) -> Unit) {
+    fun deleteEventTypes(ids: ArrayList<Int>, deleteEvents: Boolean, callback: (deletedCnt: Int) -> Unit) {
         var deleteIds = ids
         if (ids.contains(DBHelper.REGULAR_EVENT_TYPE_ID))
             deleteIds = ids.filter { it != DBHelper.REGULAR_EVENT_TYPE_ID } as ArrayList<Int>
@@ -323,12 +323,25 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             return
 
         for (eventTypeId in deleteIds) {
-            resetEventsWithType(eventTypeId)
+            if (deleteEvents) {
+                deleteEventsWithType(eventTypeId)
+            } else {
+                resetEventsWithType(eventTypeId)
+            }
         }
 
         val args = TextUtils.join(", ", deleteIds)
         val selection = "$COL_TYPE_ID IN ($args)"
         callback.invoke(mDb.delete(TYPES_TABLE_NAME, selection, null))
+    }
+
+    private fun deleteEventsWithType(eventTypeId: Int) {
+        val selection = "$MAIN_TABLE_NAME.$COL_EVENT_TYPE = ?"
+        val selectionArgs = arrayOf(eventTypeId.toString())
+        val cursor = getEventsCursor(selection, selectionArgs)
+        val events = fillEvents(cursor)
+        val eventIDs = Array(events.size, { i -> (events[i].id.toString()) })
+        deleteEvents(eventIDs)
     }
 
     private fun resetEventsWithType(eventTypeId: Int) {
