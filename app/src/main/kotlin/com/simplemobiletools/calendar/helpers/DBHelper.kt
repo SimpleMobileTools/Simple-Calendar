@@ -168,7 +168,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         val id = mDb.insert(MAIN_TABLE_NAME, null, eventValues)
         event.id = id.toInt()
 
-        if (event.repeatInterval != 0) {
+        if (event.repeatInterval != 0 && event.parentId == 0) {
             val metaValues = fillMetaValues(event)
             mDb.insert(META_TABLE_NAME, null, metaValues)
         }
