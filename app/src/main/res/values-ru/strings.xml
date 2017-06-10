@@ -41,6 +41,7 @@
     <string name="years_raw">лет</string>
     <string name="repeat_till">Повторять до</string>
     <string name="forever">Бесконечно</string>
+    <string name="event_is_repeatable">The event is repeatable</string>
     <string name="selection_contains_repetition">В выбранном есть повторяющиеся события</string>
     <string name="delete_one_only">Удалить только выбранное</string>
     <string name="delete_all_occurrences">Удалить все связанные</string>

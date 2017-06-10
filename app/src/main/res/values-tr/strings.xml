@@ -41,6 +41,7 @@
     <string name="years_raw">yıllar</string>
     <string name="repeat_till">Kadar tekrarla:</string>
     <string name="forever">Sonsuza dek</string>
+    <string name="event_is_repeatable">The event is repeatable</string>
     <string name="selection_contains_repetition">Seçim, tekrar eden etkinlikleri içeriyor</string>
     <string name="delete_one_only">Yalnızca seçilen olayı sil</string>
     <string name="delete_all_occurrences">Tüm tekrarlamaları sil</string>

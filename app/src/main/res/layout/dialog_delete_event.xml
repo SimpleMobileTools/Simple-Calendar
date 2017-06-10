@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/activity_margin"
         android:paddingBottom="@dimen/normal_margin"
-        android:text="@string/selection_contains_repetition"
+        android:text="@string/event_is_repeatable"
         android:textSize="@dimen/normal_text_size"/>
 
     <RadioGroup

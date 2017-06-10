@@ -19,6 +19,10 @@ class DeleteEventDialog(val activity: Activity, eventIds: List<Int>, val callbac
         val view = activity.layoutInflater.inflate(R.layout.dialog_delete_event, null).apply {
             delete_event_repeat_description.beVisibleIf(hasRepeatableEvent)
             delete_event_radio_view.beVisibleIf(hasRepeatableEvent)
+
+            if (eventIds.size > 1) {
+                delete_event_repeat_description.text = resources.getString(R.string.selection_contains_repetition)
+            }
         }
 
         dialog = AlertDialog.Builder(activity)
