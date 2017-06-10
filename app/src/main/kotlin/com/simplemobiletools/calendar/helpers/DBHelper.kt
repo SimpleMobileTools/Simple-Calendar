@@ -51,11 +51,12 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private val COL_OCCURRENCE_TIMESTAMP = "event_occurrence_timestamp"
     private val COL_OCCURRENCE_DAYCODE = "event_occurrence_daycode"
     private val COL_PARENT_EVENT_ID = "event_parent_id"
+    private val COL_CHILD_EVENT_ID = "event_child_id"
 
     private val mDb: SQLiteDatabase = writableDatabase
 
     companion object {
-        private val DB_VERSION = 12
+        private val DB_VERSION = 13
         val DB_NAME = "events.db"
         val REGULAR_EVENT_TYPE_ID = 1
         var dbInstance: DBHelper? = null
@@ -132,6 +133,10 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             db.execSQL("ALTER TABLE $MAIN_TABLE_NAME ADD COLUMN $COL_OFFSET TEXT DEFAULT ''")
             db.execSQL("ALTER TABLE $MAIN_TABLE_NAME ADD COLUMN $COL_IS_DST_INCLUDED INTEGER NOT NULL DEFAULT 0")
         }
+
+        if (oldVersion < 13) {
+            db.execSQL("ALTER TABLE $EXCEPTIONS_TABLE_NAME ADD COLUMN $COL_CHILD_EVENT_ID INTEGER NOT NULL DEFAULT 0")
+        }
     }
 
     private fun createMetaTable(db: SQLiteDatabase) {
@@ -146,7 +151,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
     private fun createExceptionsTable(db: SQLiteDatabase) {
         db.execSQL("CREATE TABLE $EXCEPTIONS_TABLE_NAME ($COL_EXCEPTION_ID INTEGER PRIMARY KEY, $COL_PARENT_EVENT_ID INTEGER, $COL_OCCURRENCE_TIMESTAMP INTEGER, " +
-                "$COL_OCCURRENCE_DAYCODE INTEGER)")
+                "$COL_OCCURRENCE_DAYCODE INTEGER, $COL_CHILD_EVENT_ID INTEGER)")
     }
 
     private fun addRegularEventType(db: SQLiteDatabase) {
@@ -205,7 +210,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             put(COL_IMPORT_ID, event.importId)
             put(COL_FLAGS, event.flags)
             put(COL_EVENT_TYPE, event.eventType)
-            put(COL_PARENT_EVENT_ID, 0)
+            put(COL_PARENT_EVENT_ID, event.parentId)
             put(COL_OFFSET, event.offset)
             put(COL_IS_DST_INCLUDED, if (event.isDstIncluded) 1 else 0)
         }
@@ -247,9 +252,17 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     }
 
     private fun fillExceptionValues(parentEventId: Int, occurrenceTS: Int): ContentValues {
+        val childEvent = getEventWithId(parentEventId) ?: return ContentValues()
+        childEvent.id = 0
+        childEvent.parentId = parentEventId
+        childEvent.startTS = 0
+        childEvent.endTS = 0
+        val childId = insert(childEvent)
+
         return ContentValues().apply {
             put(COL_PARENT_EVENT_ID, parentEventId)
             put(COL_OCCURRENCE_DAYCODE, Formatter.getDayCodeFromTS(occurrenceTS))
+            put(COL_CHILD_EVENT_ID, childId)
         }
     }
 
@@ -392,7 +405,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     fun getEventsInBackground(fromTS: Int, toTS: Int, eventId: Int = -1, callback: (events: MutableList<Event>) -> Unit) {
         val events = ArrayList<Event>()
 
-        var selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_REPEAT_INTERVAL IS NULL"
+        var selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_REPEAT_INTERVAL IS NULL AND $COL_PARENT_EVENT_ID == 0"
         if (eventId != -1)
             selection += " AND $MAIN_TABLE_NAME.$COL_ID = $eventId"
         val selectionArgs = arrayOf(toTS.toString(), fromTS.toString())
@@ -409,7 +422,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         val newEvents = ArrayList<Event>()
 
         // get repeatable events
-        var selection = "$COL_REPEAT_INTERVAL != 0 AND $COL_START_TS <= $toTS"
+        var selection = "$COL_REPEAT_INTERVAL != 0 AND $COL_START_TS <= $toTS AND $COL_PARENT_EVENT_ID == 0"
         if (eventId != -1)
             selection += " AND $MAIN_TABLE_NAME.$COL_ID = $eventId"
         val events = getEvents(selection)
@@ -481,7 +494,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         val events = ArrayList<Event>()
         val ts = (System.currentTimeMillis() / 1000).toInt()
 
-        val selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_REPEAT_INTERVAL IS 0"
+        val selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_REPEAT_INTERVAL IS 0 AND $COL_PARENT_EVENT_ID == 0"
         val selectionArgs = arrayOf(ts.toString(), ts.toString())
         val cursor = getEventsCursor(selection, selectionArgs)
         events.addAll(fillEvents(cursor))
@@ -513,7 +526,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     }
 
     fun getEventsAtReboot(): List<Event> {
-        val selection = "$COL_REMINDER_MINUTES != -1 AND ($COL_START_TS > ? OR $COL_REPEAT_INTERVAL != 0)"
+        val selection = "$COL_REMINDER_MINUTES != -1 AND ($COL_START_TS > ? OR $COL_REPEAT_INTERVAL != 0) AND $COL_PARENT_EVENT_ID == 0"
         val selectionArgs = arrayOf(DateTime.now().seconds().toString())
         val cursor = getEventsCursor(selection, selectionArgs)
         return fillEvents(cursor)
