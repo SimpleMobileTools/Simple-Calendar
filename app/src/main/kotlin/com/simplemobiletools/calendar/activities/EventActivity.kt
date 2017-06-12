@@ -41,6 +41,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_event)
 
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_cross)
         val intent = intent ?: return
         mDialogTheme = getAppropriateTheme()
 
