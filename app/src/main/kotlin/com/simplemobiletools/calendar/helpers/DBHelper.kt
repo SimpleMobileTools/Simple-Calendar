@@ -405,7 +405,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     fun getEventsInBackground(fromTS: Int, toTS: Int, eventId: Int = -1, callback: (events: MutableList<Event>) -> Unit) {
         val events = ArrayList<Event>()
 
-        var selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_REPEAT_INTERVAL IS NULL AND $COL_PARENT_EVENT_ID == 0"
+        var selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_REPEAT_INTERVAL IS NULL AND $COL_START_TS != 0"
         if (eventId != -1)
             selection += " AND $MAIN_TABLE_NAME.$COL_ID = $eventId"
         val selectionArgs = arrayOf(toTS.toString(), fromTS.toString())
@@ -422,7 +422,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         val newEvents = ArrayList<Event>()
 
         // get repeatable events
-        var selection = "$COL_REPEAT_INTERVAL != 0 AND $COL_START_TS <= $toTS AND $COL_PARENT_EVENT_ID == 0"
+        var selection = "$COL_REPEAT_INTERVAL != 0 AND $COL_START_TS <= $toTS AND $COL_START_TS != 0"
         if (eventId != -1)
             selection += " AND $MAIN_TABLE_NAME.$COL_ID = $eventId"
         val events = getEvents(selection)
@@ -494,7 +494,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         val events = ArrayList<Event>()
         val ts = (System.currentTimeMillis() / 1000).toInt()
 
-        val selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_REPEAT_INTERVAL IS 0 AND $COL_PARENT_EVENT_ID == 0"
+        val selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_REPEAT_INTERVAL IS 0 AND $COL_START_TS != 0"
         val selectionArgs = arrayOf(ts.toString(), ts.toString())
         val cursor = getEventsCursor(selection, selectionArgs)
         events.addAll(fillEvents(cursor))
@@ -526,7 +526,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     }
 
     fun getEventsAtReboot(): List<Event> {
-        val selection = "$COL_REMINDER_MINUTES != -1 AND ($COL_START_TS > ? OR $COL_REPEAT_INTERVAL != 0) AND $COL_PARENT_EVENT_ID == 0"
+        val selection = "$COL_REMINDER_MINUTES != -1 AND ($COL_START_TS > ? OR $COL_REPEAT_INTERVAL != 0) AND $COL_START_TS != 0"
         val selectionArgs = arrayOf(DateTime.now().seconds().toString())
         val cursor = getEventsCursor(selection, selectionArgs)
         return fillEvents(cursor)

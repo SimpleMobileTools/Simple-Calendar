@@ -461,7 +461,10 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
                     if (it) {
                         dbHelper.update(mEvent)
                     } else {
-
+                        dbHelper.addEventRepeatException(mEvent.id, mEventOccurrenceTS)
+                        mEvent.parentId = mEvent.id
+                        mEvent.id = 0
+                        dbHelper.insert(mEvent)
                     }
                 }
             } else {
