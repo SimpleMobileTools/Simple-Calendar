@@ -83,8 +83,8 @@ class EventListFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEvents
             listItems.add(ListEvent(it.id, it.startTS, it.endTS, it.title, it.description, it.isAllDay))
         }
 
-        val eventsAdapter = EventListAdapter(activity as SimpleActivity, listItems, this) { eventId, eventTS ->
-            editEvent(eventId, eventTS)
+        val eventsAdapter = EventListAdapter(activity as SimpleActivity, listItems, this) {
+            editEvent(it)
         }
         activity?.runOnUiThread {
             mView.calendar_events_list.apply {
@@ -101,10 +101,10 @@ class EventListFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEvents
             mView.calendar_empty_list_placeholder.setTextColor(activity.config.textColor)
     }
 
-    private fun editEvent(eventId: Int, eventTS: Int) {
+    private fun editEvent(event: ListEvent) {
         Intent(activity.applicationContext, EventActivity::class.java).apply {
-            putExtra(EVENT_OCCURRENCE_TS, eventTS)
-            putExtra(EVENT_ID, eventId)
+            putExtra(EVENT_OCCURRENCE_TS, event.startTS)
+            putExtra(EVENT_ID, event.id)
             startActivity(this)
         }
     }
