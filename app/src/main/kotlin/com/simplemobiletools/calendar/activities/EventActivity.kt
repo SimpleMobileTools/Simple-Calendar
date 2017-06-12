@@ -10,10 +10,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.WindowManager
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.dialogs.DeleteEventDialog
-import com.simplemobiletools.calendar.dialogs.RepeatLimitTypePickerDialog
-import com.simplemobiletools.calendar.dialogs.RepeatRuleWeeklyDialog
-import com.simplemobiletools.calendar.dialogs.SelectEventTypeDialog
+import com.simplemobiletools.calendar.dialogs.*
 import com.simplemobiletools.calendar.extensions.*
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
@@ -459,7 +456,17 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         if (mEvent.id == 0) {
             dbHelper.insert(mEvent)
         } else {
-            dbHelper.update(mEvent)
+            if (mRepeatInterval > 0) {
+                EditRepeatingEventDialog(this) {
+                    if (it) {
+                        dbHelper.update(mEvent)
+                    } else {
+
+                    }
+                }
+            } else {
+                dbHelper.update(mEvent)
+            }
         }
     }
 

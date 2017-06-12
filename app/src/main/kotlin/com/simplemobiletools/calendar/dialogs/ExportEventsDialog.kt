@@ -13,6 +13,7 @@ import java.io.File
 
 class ExportEventsDialog(val activity: SimpleActivity, val path: String, val callback: (exportPastEvents: Boolean, file: File, eventTypes: HashSet<String>) -> Unit)
     : AlertDialog.Builder(activity) {
+
     init {
         val view = (activity.layoutInflater.inflate(R.layout.dialog_export_events, null) as ViewGroup).apply {
             export_events_folder.text = activity.humanizePath(path)

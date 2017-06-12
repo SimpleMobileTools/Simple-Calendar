@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/edit_repeating_event_holder"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/big_margin"
+    android:paddingRight="@dimen/big_margin"
+    android:paddingTop="@dimen/big_margin">
+
+    <com.simplemobiletools.commons.views.MyTextView
+        android:id="@+id/edit_repeating_event_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_margin"
+        android:text="@string/event_is_repeatable"/>
+
+    <RadioGroup
+        android:id="@+id/edit_repeating_event_radiogroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_margin">
+
+        <com.simplemobiletools.commons.views.MyCompatRadioButton
+            android:id="@+id/edit_repeating_event_one_only"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/activity_margin"
+            android:paddingTop="@dimen/activity_margin"
+            android:text="@string/update_one_only"/>
+
+        <com.simplemobiletools.commons.views.MyCompatRadioButton
+            android:id="@+id/edit_repeating_event_all_occurrences"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/activity_margin"
+            android:paddingTop="@dimen/activity_margin"
+            android:text="@string/update_all_occurrences"/>
+
+    </RadioGroup>
+</LinearLayout>
