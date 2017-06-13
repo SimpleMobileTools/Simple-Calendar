@@ -326,6 +326,29 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         ids.forEach {
             context.cancelNotification(it.toInt())
         }
+
+        deleteChildEvents(args)
+    }
+
+    private fun deleteChildEvents(ids: String) {
+        val projection = arrayOf(COL_ID)
+        val selection = "$COL_PARENT_EVENT_ID IN ($ids)"
+        val childIds = ArrayList<String>()
+
+        var cursor: Cursor? = null
+        try {
+            cursor = mDb.query(MAIN_TABLE_NAME, projection, selection, null, null, null, null)
+            if (cursor?.moveToFirst() == true) {
+                do {
+                    childIds.add(cursor.getStringValue(COL_ID))
+                } while (cursor.moveToNext())
+            }
+        } finally {
+            cursor?.close()
+        }
+
+        if (childIds.isNotEmpty())
+            deleteEvents(childIds.toTypedArray())
     }
 
     fun addEventRepeatException(parentEventId: Int, occurrenceTS: Int) {
