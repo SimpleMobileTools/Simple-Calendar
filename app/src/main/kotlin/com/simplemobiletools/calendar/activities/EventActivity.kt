@@ -459,7 +459,14 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         }
 
         if (mEvent.id == 0) {
-            dbHelper.insert(mEvent)
+            dbHelper.insert(mEvent) {
+                if (DateTime.now().isAfter(mEventStartDateTime.millis)) {
+                    toast(R.string.past_event_added)
+                } else {
+                    toast(R.string.event_added)
+                }
+                finish()
+            }
         } else {
             if (mRepeatInterval > 0 && wasRepeatable) {
                 EditRepeatingEventDialog(this) {
@@ -469,7 +476,10 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
                         dbHelper.addEventRepeatException(mEvent.id, mEventOccurrenceTS)
                         mEvent.parentId = mEvent.id
                         mEvent.id = 0
-                        dbHelper.insert(mEvent)
+                        dbHelper.insert(mEvent) {
+                            toast(R.string.event_updated)
+                            finish()
+                        }
                     }
                 }
             } else {
@@ -615,12 +625,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     }
 
     override fun eventInserted(event: Event) {
-        if (DateTime.now().isAfter(mEventStartDateTime.millis)) {
-            toast(R.string.past_event_added)
-        } else {
-            toast(R.string.event_added)
-        }
-        finish()
+
     }
 
     override fun eventUpdated(event: Event) {

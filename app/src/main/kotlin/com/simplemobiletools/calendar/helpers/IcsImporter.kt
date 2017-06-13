@@ -103,13 +103,13 @@ class IcsImporter {
                             event.endTS -= DAY
                         }
 
-                        val eventId = context.dbHelper.insert(event)
-
-                        for (exceptionTS in curRepeatExceptions) {
-                            context.dbHelper.addEventRepeatException(eventId, exceptionTS)
+                        context.dbHelper.insert(event) {
+                            for (exceptionTS in curRepeatExceptions) {
+                                context.dbHelper.addEventRepeatException(it, exceptionTS)
+                            }
+                            eventsImported++
+                            resetValues()
                         }
-                        eventsImported++
-                        resetValues()
                     }
                     prevLine = line
                 }

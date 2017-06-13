@@ -160,9 +160,11 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         addEventType(eventType, db)
     }
 
-    fun insert(event: Event): Int {
-        if (event.startTS > event.endTS || event.title.trim().isEmpty())
-            return 0
+    fun insert(event: Event, callback: (id: Int) -> Unit) {
+        if (event.startTS > event.endTS || event.title.trim().isEmpty()) {
+            callback(0)
+            return
+        }
 
         val eventValues = fillEventValues(event)
         val id = mDb.insert(MAIN_TABLE_NAME, null, eventValues)
@@ -175,8 +177,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
         context.updateWidgets()
         context.scheduleReminder(event, this)
-        mEventsListener?.eventInserted(event)
-        return event.id
+        callback(event.id)
     }
 
     fun update(event: Event) {
@@ -251,18 +252,26 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
     }
 
-    private fun fillExceptionValues(parentEventId: Int, occurrenceTS: Int): ContentValues {
-        val childEvent = getEventWithId(parentEventId) ?: return ContentValues()
-        childEvent.id = 0
-        childEvent.parentId = parentEventId
-        childEvent.startTS = 0
-        childEvent.endTS = 0
-        val childId = insert(childEvent)
+    private fun fillExceptionValues(parentEventId: Int, occurrenceTS: Int, callback: (values: ContentValues) -> Unit) {
+        val childEvent = getEventWithId(parentEventId)
+        if (childEvent == null) {
+            callback(ContentValues())
+            return
+        }
 
-        return ContentValues().apply {
-            put(COL_PARENT_EVENT_ID, parentEventId)
-            put(COL_OCCURRENCE_DAYCODE, Formatter.getDayCodeFromTS(occurrenceTS))
-            put(COL_CHILD_EVENT_ID, childId)
+        childEvent.apply {
+            id = 0
+            parentId = parentEventId
+            startTS = 0
+            endTS = 0
+        }
+
+        insert(childEvent) {
+            callback(ContentValues().apply {
+                put(COL_PARENT_EVENT_ID, parentEventId)
+                put(COL_OCCURRENCE_DAYCODE, Formatter.getDayCodeFromTS(occurrenceTS))
+                put(COL_CHILD_EVENT_ID, it)
+            })
         }
     }
 
@@ -320,8 +329,9 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     }
 
     fun addEventRepeatException(parentEventId: Int, occurrenceTS: Int) {
-        val values = fillExceptionValues(parentEventId, occurrenceTS)
-        mDb.insert(EXCEPTIONS_TABLE_NAME, null, values)
+        fillExceptionValues(parentEventId, occurrenceTS) {
+            mDb.insert(EXCEPTIONS_TABLE_NAME, null, it)
+        }
     }
 
     fun deleteEventTypes(ids: ArrayList<Int>, deleteEvents: Boolean, callback: (deletedCnt: Int) -> Unit) {
