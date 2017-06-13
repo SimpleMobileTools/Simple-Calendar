@@ -436,6 +436,8 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             return
         }
 
+        val wasRepeatable = mEvent.repeatInterval > 0
+
         val reminders = sortedSetOf(mReminder1Minutes, mReminder2Minutes, mReminder3Minutes).filter { it != REMINDER_OFF }
         val dbHelper = DBHelper.newInstance(applicationContext, this)
         val newDescription = event_description.value
@@ -459,7 +461,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         if (mEvent.id == 0) {
             dbHelper.insert(mEvent)
         } else {
-            if (mRepeatInterval > 0) {
+            if (mRepeatInterval > 0 && wasRepeatable) {
                 EditRepeatingEventDialog(this) {
                     if (it) {
                         dbHelper.update(mEvent)
