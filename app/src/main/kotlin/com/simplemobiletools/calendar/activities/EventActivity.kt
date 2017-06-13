@@ -99,10 +99,12 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     }
 
     private fun setupEditEvent() {
+        val realStart = if (mEventOccurrenceTS == 0) mEvent.startTS else mEventOccurrenceTS
+        val duration = mEvent.endTS - mEvent.startTS
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
         title = resources.getString(R.string.edit_event)
-        mEventStartDateTime = Formatter.getDateTimeFromTS(mEvent.startTS)
-        mEventEndDateTime = Formatter.getDateTimeFromTS(mEvent.endTS)
+        mEventStartDateTime = Formatter.getDateTimeFromTS(realStart)
+        mEventEndDateTime = Formatter.getDateTimeFromTS(realStart + duration)
         event_title.setText(mEvent.title)
         event_description.setText(mEvent.description)
         event_description.movementMethod = LinkMovementMethod.getInstance()
