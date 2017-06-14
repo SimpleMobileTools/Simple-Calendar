@@ -1,6 +1,7 @@
 <resources>
 
     <!-- Release notes -->
+    <string name="release_80">Allow editing specific instances of repeating events</string>
     <string name="release_77">Allow displaying some events from the past in the Simple Event List view</string>
     <string name="release_76">
         Added an easy way to import Holidays in some countries\n
