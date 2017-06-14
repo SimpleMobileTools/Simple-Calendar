@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 2.5.3 *(2017-06-14)*
+----------------------------
+
+ * Allow editing specific instances of repeating events
+ * Show proper date and time at opening a repeatable event instance
+
 Version 2.5.2 *(2017-06-05)*
 ----------------------------
 
