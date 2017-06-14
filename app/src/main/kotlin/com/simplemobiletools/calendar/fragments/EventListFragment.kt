@@ -103,8 +103,8 @@ class EventListFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEvents
 
     private fun editEvent(event: ListEvent) {
         Intent(activity.applicationContext, EventActivity::class.java).apply {
-            putExtra(EVENT_OCCURRENCE_TS, event.startTS)
             putExtra(EVENT_ID, event.id)
+            putExtra(EVENT_OCCURRENCE_TS, event.startTS)
             startActivity(this)
         }
     }

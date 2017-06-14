@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.simplemobiletools.calendar.helpers.DAY_CODE
 import com.simplemobiletools.calendar.helpers.EVENT_ID
+import com.simplemobiletools.calendar.helpers.EVENT_OCCURRENCE_TS
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,6 +19,7 @@ class SplashActivity : AppCompatActivity() {
         } else if (intent.extras?.containsKey(EVENT_ID) == true) {
             Intent(this, EventActivity::class.java).apply {
                 putExtra(EVENT_ID, intent.getIntExtra(EVENT_ID, 0))
+                putExtra(EVENT_OCCURRENCE_TS, intent.getIntExtra(EVENT_OCCURRENCE_TS, 0))
                 startActivity(this)
             }
         } else {

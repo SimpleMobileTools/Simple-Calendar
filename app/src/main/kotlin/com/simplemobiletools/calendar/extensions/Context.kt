@@ -107,8 +107,8 @@ fun Context.cancelNotification(id: Int) {
 
 private fun getNotificationIntent(context: Context, event: Event): PendingIntent {
     val intent = Intent(context, NotificationReceiver::class.java)
-    intent.putExtra(EVENT_OCCURRENCE_TS, event.startTS)
     intent.putExtra(EVENT_ID, event.id)
+    intent.putExtra(EVENT_OCCURRENCE_TS, event.startTS)
     return PendingIntent.getBroadcast(context, event.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 }
 
@@ -203,15 +203,15 @@ private fun getFormattedEventTime(startTime: String, endTime: String) = if (star
 
 private fun getPendingIntent(context: Context, event: Event): PendingIntent {
     val intent = Intent(context, EventActivity::class.java)
-    intent.putExtra(EVENT_OCCURRENCE_TS, event.startTS)
     intent.putExtra(EVENT_ID, event.id)
+    intent.putExtra(EVENT_OCCURRENCE_TS, event.startTS)
     return PendingIntent.getActivity(context, event.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 }
 
 private fun getSnoozePendingIntent(context: Context, event: Event): PendingIntent {
     val intent = Intent(context, SnoozeService::class.java).setAction("snooze")
-    intent.putExtra(EVENT_OCCURRENCE_TS, event.startTS)
     intent.putExtra(EVENT_ID, event.id)
+    intent.putExtra(EVENT_OCCURRENCE_TS, event.startTS)
     return PendingIntent.getService(context, event.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 }
 

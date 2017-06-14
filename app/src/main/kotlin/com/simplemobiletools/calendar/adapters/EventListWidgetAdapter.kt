@@ -11,6 +11,7 @@ import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.helpers.EVENT_ID
+import com.simplemobiletools.calendar.helpers.EVENT_OCCURRENCE_TS
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.models.ListEvent
 import com.simplemobiletools.calendar.models.ListItem
@@ -65,6 +66,7 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
 
                 Intent().apply {
                     putExtra(EVENT_ID, item.id)
+                    putExtra(EVENT_OCCURRENCE_TS, item.startTS)
                     setOnClickFillInIntent(event_item_holder, this)
                 }
             }
