@@ -10,7 +10,7 @@
     <string name="add_some_events">Pode adicionar um evento através do botão existente na base do ecrã.</string>
     <string name="details">Detalhes</string>
     <string name="go_to_today">Ir para hoje</string>
-    <string name="no_app_for_ics">Nenhuma aplicação capaz de ler ficheiros .ics encontrada</string>
+    <string name="no_app_for_ics">Não possui uma aplicação capaz de ler ficheiros .ics</string>
     <string name="snooze">Snooze</string>
 
     <!-- Widget titles -->
@@ -41,7 +41,7 @@
     <string name="years_raw">anos</string>
     <string name="repeat_till">Repetir até</string>
     <string name="forever">Eternamente</string>
-    <string name="event_is_repeatable">The event is repeatable</string>
+    <string name="event_is_repeatable">O evento é repetível</string>
     <string name="selection_contains_repetition">A seleção contém eventos recorrentes</string>
     <string name="delete_one_only">Apagar a ocorrência selecionada</string>
     <string name="delete_all_occurrences">Apagar todas as ocorrências</string>
@@ -160,8 +160,8 @@
     <string name="regular_event">Evento regular</string>
     <string name="cannot_delete_default_type">O tipo de evento padrão não pode ser apagado</string>
     <string name="select_event_type">Selecione um tipo de evento</string>
-    <string name="move_events_into_default">Move affected events into the default event type</string>
-    <string name="remove_affected_events">Permanently remove affected events</string>
+    <string name="move_events_into_default">Mover eventos afetados para o tipo de evento padrão</string>
+    <string name="remove_affected_events">Remover permanentemente os eventos afetados</string>
 
     <!-- Holidays -->
     <string name="holidays">Feriados</string>
