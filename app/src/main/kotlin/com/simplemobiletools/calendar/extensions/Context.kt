@@ -91,7 +91,7 @@ fun Context.scheduleEventIn(notifTS: Long, event: Event) {
     if (notifTS < System.currentTimeMillis())
         return
 
-    val pendingIntent = getNotificationIntent(this, event.id)
+    val pendingIntent = getNotificationIntent(this, event)
     val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
     if (isKitkatPlus())
@@ -101,13 +101,15 @@ fun Context.scheduleEventIn(notifTS: Long, event: Event) {
 }
 
 fun Context.cancelNotification(id: Int) {
-    getNotificationIntent(this, id).cancel()
+    val intent = Intent(this, NotificationReceiver::class.java)
+    PendingIntent.getBroadcast(this, id, intent, PendingIntent.FLAG_UPDATE_CURRENT).cancel()
 }
 
-private fun getNotificationIntent(context: Context, eventId: Int): PendingIntent {
+private fun getNotificationIntent(context: Context, event: Event): PendingIntent {
     val intent = Intent(context, NotificationReceiver::class.java)
-    intent.putExtra(EVENT_ID, eventId)
-    return PendingIntent.getBroadcast(context, eventId, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+    intent.putExtra(EVENT_OCCURRENCE_TS, event.startTS)
+    intent.putExtra(EVENT_ID, event.id)
+    return PendingIntent.getBroadcast(context, event.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 }
 
 fun Context.getAppropriateTheme() = if (config.backgroundColor.getContrastColor() == Color.WHITE) R.style.MyDialogTheme_Dark else R.style.MyDialogTheme
@@ -201,12 +203,14 @@ private fun getFormattedEventTime(startTime: String, endTime: String) = if (star
 
 private fun getPendingIntent(context: Context, event: Event): PendingIntent {
     val intent = Intent(context, EventActivity::class.java)
+    intent.putExtra(EVENT_OCCURRENCE_TS, event.startTS)
     intent.putExtra(EVENT_ID, event.id)
     return PendingIntent.getActivity(context, event.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 }
 
 private fun getSnoozePendingIntent(context: Context, event: Event): PendingIntent {
     val intent = Intent(context, SnoozeService::class.java).setAction("snooze")
+    intent.putExtra(EVENT_OCCURRENCE_TS, event.startTS)
     intent.putExtra(EVENT_ID, event.id)
     return PendingIntent.getService(context, event.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 }
