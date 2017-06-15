@@ -1,20 +1,20 @@
 <resources>
     <string name="app_name">Simple Calendar</string>
-    <string name="app_launcher_name">Calendar</string>
-    <string name="change_view">Change view</string>
-    <string name="weekly_view">Weekly view</string>
-    <string name="monthly_view">Monthly view</string>
-    <string name="yearly_view">Yearly view</string>
+    <string name="app_launcher_name">Calendario</string>
+    <string name="change_view">Cambia vista</string>
+    <string name="weekly_view">Vista settimanale</string>
+    <string name="monthly_view">Vista Mensile</string>
+    <string name="yearly_view">Vista annuale</string>
     <string name="simple_event_list">Simple event list</string>
     <string name="no_upcoming_events">Seems like you don\'t have any upcoming events.</string>
     <string name="add_some_events">You can add some with the Plus button at the bottom.</string>
     <string name="details">Dettagli</string>
     <string name="go_to_today">Go to today</string>
-    <string name="no_app_for_ics">No app capable of handling .ics files has been found</string>
+    <string name="no_app_for_ics">Nessuna applicazione trovata capace di gestire l'estensione .ics</string>
     <string name="snooze">Snooze</string>
 
     <!-- Widget titles -->
-    <string name="widget_monthly">Calendar monthly</string>
+    <string name="widget_monthly">Calendario mensile</string>
     <string name="widget_list">Calendar event list</string>
 
     <!-- Event -->
@@ -26,46 +26,46 @@
     <string name="event_added">Evento aggiunto correttamente</string>
     <string name="past_event_added">Event in the past added successfully</string>
     <string name="event_updated">Evento aggiornato correttamente</string>
-    <string name="filter">Filter</string>
-    <string name="filter_events_by_type">Filter events by type</string>
+    <string name="filter">Filtro</string>
+    <string name="filter_events_by_type">Filtra eventi per tipologia</string>
 
     <!-- Event Repetition -->
-    <string name="repetition">Repetition</string>
-    <string name="no_repetition">No repetition</string>
-    <string name="daily">Daily</string>
-    <string name="weekly">Weekly</string>
-    <string name="monthly">Monthly</string>
-    <string name="yearly">Yearly</string>
-    <string name="weeks_raw">weeks</string>
-    <string name="months_raw">months</string>
-    <string name="years_raw">years</string>
-    <string name="repeat_till">Repeat till</string>
-    <string name="forever">Forever</string>
-    <string name="event_is_repeatable">The event is repeatable</string>
-    <string name="selection_contains_repetition">The selection contains repeating events</string>
-    <string name="delete_one_only">Delete the selected occurrence only</string>
-    <string name="delete_all_occurrences">Delete all occurrences</string>
-    <string name="update_one_only">Update the selected occurrence only</string>
-    <string name="update_all_occurrences">Update all occurrences</string>
+    <string name="repetition">Ripeti</string>
+    <string name="no_repetition">Non ripetere</string>
+    <string name="daily">Giornalmente</string>
+    <string name="weekly">Settimanalmente</string>
+    <string name="monthly">Mensilmente</string>
+    <string name="yearly">Annulamente</string>
+    <string name="weeks_raw">Settimane</string>
+    <string name="months_raw">Mesi</string>
+    <string name="years_raw">Anni</string>
+    <string name="repeat_till">Ripeti fino a</string>
+    <string name="forever">Per sempre</string>
+    <string name="event_is_repeatable">L'evento è ripetibile</string>
+    <string name="selection_contains_repetition">La selezione contiene eventi ripetuti</string>
+    <string name="delete_one_only">Elimina solamente l'occorenza selezionata</string>
+    <string name="delete_all_occurrences">Elimina tutte le occorrenze</string>
+    <string name="update_one_only">Aggiorna solamente l'occorenza selezionata</string>
+    <string name="update_all_occurrences">Aggiorna tutte le occorenze</string>
     <string name="repeat_till_date">Repeat till a date</string>
-    <string name="repeat_x_times">Repeat x times</string>
-    <string name="repeat_forever">Repeat forever</string>
+    <string name="repeat_x_times">Ripeti x volte</string>
+    <string name="repeat_forever">Ripeti per sempre</string>
     <string name="times">times</string>
-    <string name="repeat">Repeat</string>
+    <string name="repeat">Ripeti</string>
     <string name="repeat_on">Repeat on</string>
-    <string name="every_day">Every day</string>
+    <string name="every_day">Ogni giorno</string>
     <string name="selected_days">On selected days</string>
-    <string name="the_same_day">The same day</string>
-    <string name="the_last_day">The last day</string>
-    <string name="repeat_on_the_same_day">Repeat on the same day each month</string>
+    <string name="the_same_day">Lo stesso giorno</string>
+    <string name="the_last_day">L'ultimo giorno</string>
+    <string name="repeat_on_the_same_day">Ripeti lo stesso giorno ogni mese </string>
     <string name="repeat_on_the_last_day">Repeat on the last day of the month</string>
     <string name="repeat_every_m">Repeat every</string>
-    <string name="every_m">Every</string>
-    <string name="first_m">first</string>
-    <string name="second_m">second</string>
-    <string name="third_m">third</string>
-    <string name="fourth_m">fourth</string>
-    <string name="last_m">last</string>
+    <string name="every_m">Tutti</string>
+    <string name="first_m">primo</string>
+    <string name="second_m">secondo</string>
+    <string name="third_m">terzo</string>
+    <string name="fourth_m">quarto</string>
+    <string name="last_m">ultimo</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
