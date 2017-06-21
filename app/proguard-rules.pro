@@ -23,4 +23,4 @@
 -dontwarn com.google.common.**
 
 -renamesourcefileattribute SourceFile
--keepattributes SourceFile,LineNumberTable
+-keepattributes SourceFile, LineNumberTable
