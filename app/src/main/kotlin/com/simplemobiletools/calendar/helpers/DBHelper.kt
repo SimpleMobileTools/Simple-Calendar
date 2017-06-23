@@ -119,7 +119,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         if (oldVersion < 9) {
             try {
                 db.execSQL("ALTER TABLE $EXCEPTIONS_TABLE_NAME ADD COLUMN $COL_OCCURRENCE_DAYCODE INTEGER NOT NULL DEFAULT 0")
-            } catch (e: SQLiteException) {
+            } catch (ignored: SQLiteException) {
             }
             convertExceptionTimestampToDaycode(db)
         }
@@ -135,6 +135,10 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
 
         if (oldVersion < 13) {
+            try {
+                createExceptionsTable(db)
+            } catch (ignored: SQLiteException) {
+            }
             db.execSQL("ALTER TABLE $EXCEPTIONS_TABLE_NAME ADD COLUMN $COL_CHILD_EVENT_ID INTEGER NOT NULL DEFAULT 0")
         }
     }
