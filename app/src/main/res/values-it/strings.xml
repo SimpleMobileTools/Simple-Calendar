@@ -10,7 +10,7 @@
     <string name="add_some_events">You can add some with the Plus button at the bottom.</string>
     <string name="details">Dettagli</string>
     <string name="go_to_today">Go to today</string>
-    <string name="no_app_for_ics">Nessuna applicazione trovata capace di gestire l'estensione .ics</string>
+    <string name="no_app_for_ics">Nessuna applicazione trovata capace di gestire l\'estensione .ics</string>
     <string name="snooze">Snooze</string>
 
     <!-- Widget titles -->
@@ -41,11 +41,11 @@
     <string name="years_raw">Anni</string>
     <string name="repeat_till">Ripeti fino a</string>
     <string name="forever">Per sempre</string>
-    <string name="event_is_repeatable">L'evento è ripetibile</string>
+    <string name="event_is_repeatable">L\'evento è ripetibile</string>
     <string name="selection_contains_repetition">La selezione contiene eventi ripetuti</string>
-    <string name="delete_one_only">Elimina solamente l'occorenza selezionata</string>
+    <string name="delete_one_only">Elimina solamente l\'occorenza selezionata</string>
     <string name="delete_all_occurrences">Elimina tutte le occorrenze</string>
-    <string name="update_one_only">Aggiorna solamente l'occorenza selezionata</string>
+    <string name="update_one_only">Aggiorna solamente l\'occorenza selezionata</string>
     <string name="update_all_occurrences">Aggiorna tutte le occorenze</string>
     <string name="repeat_till_date">Repeat till a date</string>
     <string name="repeat_x_times">Ripeti x volte</string>
@@ -56,7 +56,7 @@
     <string name="every_day">Ogni giorno</string>
     <string name="selected_days">On selected days</string>
     <string name="the_same_day">Lo stesso giorno</string>
-    <string name="the_last_day">L'ultimo giorno</string>
+    <string name="the_last_day">L\'ultimo giorno</string>
     <string name="repeat_on_the_same_day">Ripeti lo stesso giorno ogni mese </string>
     <string name="repeat_on_the_last_day">Repeat on the last day of the month</string>
     <string name="repeat_every_m">Repeat every</string>
