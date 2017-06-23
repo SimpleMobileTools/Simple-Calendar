@@ -22,15 +22,13 @@ class MyWidgetListProvider : AppWidgetProvider() {
     private val NEW_EVENT = "new_event"
     private val LAUNCH_TODAY = "launch_today"
 
-    companion object {
-        private var mTextColor = 0
+    private var mTextColor = 0
 
-        lateinit var mRemoteViews: RemoteViews
-        lateinit var mRes: Resources
-        lateinit var mWidgetManager: AppWidgetManager
-        lateinit var mIntent: Intent
-        lateinit var mContext: Context
-    }
+    lateinit var mRemoteViews: RemoteViews
+    lateinit var mRes: Resources
+    lateinit var mWidgetManager: AppWidgetManager
+    lateinit var mIntent: Intent
+    lateinit var mContext: Context
 
     override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
         initVariables(context)

@@ -23,20 +23,22 @@ import com.simplemobiletools.commons.extensions.adjustAlpha
 import org.joda.time.DateTime
 
 class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
+    private val PREV = "prev"
+    private val NEXT = "next"
+    private val NEW_EVENT = "new_event"
+
+    private var mTextColor = 0
+    private var mWeakTextColor = 0
+    private var mCalendar: MonthlyCalendarImpl? = null
+    private var mRemoteViews: RemoteViews? = null
+
+    lateinit var mRes: Resources
+    lateinit var mContext: Context
+    lateinit var mWidgetManager: AppWidgetManager
+    lateinit var mIntent: Intent
+
     companion object {
-        private val PREV = "prev"
-        private val NEXT = "next"
-        private val NEW_EVENT = "new_event"
-
-        private var mTextColor = 0
-        private var mWeakTextColor = 0
-        private var mCalendar: MonthlyCalendarImpl? = null
-        private var mRemoteViews: RemoteViews? = null
-
-        lateinit var mRes: Resources
-        lateinit var mContext: Context
-        lateinit var mWidgetManager: AppWidgetManager
-        lateinit var mIntent: Intent
+        private var mTargetDate = DateTime()
     }
 
     override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
@@ -63,8 +65,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
         updateTopViews()
 
         mRemoteViews?.setInt(R.id.calendar_holder, "setBackgroundColor", config.widgetBgColor)
-
-        mCalendar?.updateMonthlyCalendar(DateTime(), false)
+        mCalendar?.updateMonthlyCalendar(mTargetDate, false)
     }
 
     private fun updateWidget() {
@@ -107,11 +108,21 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
 
         val action = intent.action
         when (action) {
-            PREV -> mCalendar?.getPrevMonth()
-            NEXT -> mCalendar?.getNextMonth()
+            PREV -> getPrevMonth()
+            NEXT -> getNextMonth()
             NEW_EVENT -> mContext.launchNewEventIntent(true)
             else -> super.onReceive(context, intent)
         }
+    }
+
+    private fun getPrevMonth() {
+        mTargetDate = mTargetDate.minusMonths(1)
+        mCalendar?.getMonth(mTargetDate)
+    }
+
+    private fun getNextMonth() {
+        mTargetDate = mTargetDate.plusMonths(1)
+        mCalendar?.getMonth(mTargetDate)
     }
 
     fun updateDays(days: List<Day>) {

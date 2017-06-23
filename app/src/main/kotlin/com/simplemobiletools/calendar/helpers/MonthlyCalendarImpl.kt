@@ -36,12 +36,8 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
         }
     }
 
-    fun getPrevMonth() {
-        updateMonthlyCalendar(mTargetDate.minusMonths(1))
-    }
-
-    fun getNextMonth() {
-        updateMonthlyCalendar(mTargetDate.plusMonths(1))
+    fun getMonth(targetDate: DateTime) {
+        updateMonthlyCalendar(targetDate)
     }
 
     fun getDays() {
