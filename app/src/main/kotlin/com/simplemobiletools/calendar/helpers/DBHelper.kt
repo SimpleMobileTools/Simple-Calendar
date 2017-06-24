@@ -451,7 +451,9 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
         events.addAll(getRepeatableEventsFor(fromTS, toTS, eventId))
 
-        val filtered = events.filterNot { it.ignoreEventOccurrences.contains(Formatter.getDayCodeFromTS(it.startTS).toInt()) } as MutableList<Event>
+        events.addAll(getAllDayEvents(fromTS, toTS, eventId))
+
+        val filtered = events.distinct().filterNot { it.ignoreEventOccurrences.contains(Formatter.getDayCodeFromTS(it.startTS).toInt()) } as MutableList<Event>
         callback(filtered)
     }
 
@@ -517,6 +519,18 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             }
             event.addIntervalTime(original)
         }
+        return events
+    }
+
+    private fun getAllDayEvents(fromTS: Int, toTS: Int, eventId: Int = -1): List<Event> {
+        val events = ArrayList<Event>()
+        var selection = "($COL_FLAGS & $FLAG_ALL_DAY) != 0"
+        if (eventId != -1)
+            selection += " AND $MAIN_TABLE_NAME.$COL_ID = $eventId"
+
+        val todayCode = Formatter.getDayCodeFromTS(fromTS)
+        val cursor = getEventsCursor(selection)
+        events.addAll(fillEvents(cursor).filter { todayCode == Formatter.getDayCodeFromTS(it.startTS) })
         return events
     }
 
