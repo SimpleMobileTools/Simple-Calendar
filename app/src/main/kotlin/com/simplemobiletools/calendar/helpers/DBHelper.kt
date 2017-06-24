@@ -493,6 +493,14 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                     events.add(event.copy())
                 }
             }
+
+            if (event.isAllDay) {
+                val dayCode = Formatter.getDayCodeFromTS(fromTS)
+                val endDayCode = Formatter.getDayCodeFromTS(event.endTS)
+                if (dayCode == endDayCode) {
+                    events.add(event.copy())
+                }
+            }
             event.addIntervalTime(original)
         }
         return events
@@ -514,6 +522,12 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             } else {
                 if (event.endTS >= fromTS) {
                     events.add(event.copy())
+                } else if (event.isAllDay) {
+                    val dayCode = Formatter.getDayCodeFromTS(fromTS)
+                    val endDayCode = Formatter.getDayCodeFromTS(event.endTS)
+                    if (dayCode == endDayCode) {
+                        events.add(event.copy())
+                    }
                 }
                 event.repeatLimit++
             }
@@ -528,9 +542,9 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         if (eventId != -1)
             selection += " AND $MAIN_TABLE_NAME.$COL_ID = $eventId"
 
-        val todayCode = Formatter.getDayCodeFromTS(fromTS)
+        val dayCode = Formatter.getDayCodeFromTS(fromTS)
         val cursor = getEventsCursor(selection)
-        events.addAll(fillEvents(cursor).filter { todayCode == Formatter.getDayCodeFromTS(it.startTS) })
+        events.addAll(fillEvents(cursor).filter { dayCode == Formatter.getDayCodeFromTS(it.startTS) })
         return events
     }
 
