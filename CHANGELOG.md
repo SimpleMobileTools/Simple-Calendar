@@ -1,6 +1,11 @@
 Changelog
 ==========
 
+Version 2.5.6 *(2017-06-24)*
+----------------------------
+
+ * Properly display all-day events on list views
+
 Version 2.5.4 *(2017-06-23)*
 ----------------------------
 
