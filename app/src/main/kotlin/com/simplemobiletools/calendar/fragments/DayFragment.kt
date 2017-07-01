@@ -6,6 +6,7 @@ import android.graphics.PorterDuff
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AlertDialog
+import android.support.v7.widget.DividerItemDecoration
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,7 +27,6 @@ import com.simplemobiletools.calendar.interfaces.DeleteEventsListener
 import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.commons.extensions.setupDialogStuff
-import com.simplemobiletools.commons.views.RecyclerViewDivider
 import kotlinx.android.synthetic.main.fragment_day.view.*
 import kotlinx.android.synthetic.main.top_navigation.view.*
 import org.joda.time.DateTime
@@ -133,9 +133,10 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEventsListen
         val eventsAdapter = DayEventsAdapter(activity as SimpleActivity, events, this) {
             editEvent(it)
         }
-        mHolder.day_events.apply {
-            this@apply.adapter = eventsAdapter
-            addItemDecoration(RecyclerViewDivider(context))
+        mHolder.day_events.adapter = eventsAdapter
+        DividerItemDecoration(context, DividerItemDecoration.VERTICAL).apply {
+            setDrawable(context.resources.getDrawable(com.simplemobiletools.commons.R.drawable.divider))
+            mHolder.day_events.addItemDecoration(this)
         }
     }
 
