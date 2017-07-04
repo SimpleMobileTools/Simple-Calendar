@@ -495,10 +495,18 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             }
 
             if (event.isAllDay) {
-                val dayCode = Formatter.getDayCodeFromTS(fromTS)
-                val endDayCode = Formatter.getDayCodeFromTS(event.endTS)
-                if (dayCode == endDayCode) {
-                    events.add(event.copy())
+                if (event.repeatInterval.isXWeeklyRepetition()) {
+                    if (event.startTS.isTsOnProperDay(event)) {
+                        if (isOnProperWeek(event, startTimes)) {
+                            events.add(event.copy())
+                        }
+                    }
+                } else {
+                    val dayCode = Formatter.getDayCodeFromTS(fromTS)
+                    val endDayCode = Formatter.getDayCodeFromTS(event.endTS)
+                    if (dayCode == endDayCode) {
+                        events.add(event.copy())
+                    }
                 }
             }
             event.addIntervalTime(original)
