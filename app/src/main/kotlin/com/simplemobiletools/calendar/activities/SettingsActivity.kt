@@ -2,6 +2,7 @@ package com.simplemobiletools.calendar.activities
 
 import android.accounts.AccountManager
 import android.content.Intent
+import android.content.res.Resources
 import android.media.RingtoneManager
 import android.net.Uri
 import android.os.Bundle
@@ -12,6 +13,9 @@ import com.simplemobiletools.calendar.dialogs.SnoozePickerDialog
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.getFormattedMinutes
+import com.simplemobiletools.calendar.helpers.FONT_SIZE_LARGE
+import com.simplemobiletools.calendar.helpers.FONT_SIZE_MEDIUM
+import com.simplemobiletools.calendar.helpers.FONT_SIZE_SMALL
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.toast
 import com.simplemobiletools.commons.extensions.updateTextColors
@@ -24,6 +28,7 @@ class SettingsActivity : SimpleActivity() {
     private val REQUEST_ACCOUNT_NAME = 3
     private val REQUEST_GOOGLE_PLAY_SERVICES = 4
 
+    lateinit var res: Resources
     private var mStoredPrimaryColor = 0
 
     companion object {
@@ -35,6 +40,7 @@ class SettingsActivity : SimpleActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
+        res = resources
 
         //credential = GoogleAccountCredential.usingOAuth2(this, arrayListOf(CalendarScopes.CALENDAR_READONLY)).setBackOff(ExponentialBackOff())
     }
@@ -55,6 +61,7 @@ class SettingsActivity : SimpleActivity() {
         setupSnoozeDelay()
         setupEventReminder()
         setupDisplayPastEvents()
+        setupFontSize()
         updateTextColors(settings_holder)
         checkPrimaryColor()
     }
@@ -159,7 +166,7 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun setupReminderSound() {
-        val noRingtone = resources.getString(R.string.no_ringtone_selected)
+        val noRingtone = res.getString(R.string.no_ringtone_selected)
         if (config.reminderSound.isEmpty()) {
             settings_reminder_sound.text = noRingtone
         } else {
@@ -168,7 +175,7 @@ class SettingsActivity : SimpleActivity() {
         settings_reminder_sound_holder.setOnClickListener {
             Intent(RingtoneManager.ACTION_RINGTONE_PICKER).apply {
                 putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_NOTIFICATION)
-                putExtra(RingtoneManager.EXTRA_RINGTONE_TITLE, resources.getString(R.string.reminder_sound))
+                putExtra(RingtoneManager.EXTRA_RINGTONE_TITLE, res.getString(R.string.reminder_sound))
                 putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, Uri.parse(config.reminderSound))
 
                 if (resolveActivity(packageManager) != null)
@@ -199,7 +206,7 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun updateSnoozeText() {
-        settings_snooze_delay.text = resources.getQuantityString(R.plurals.minutes, config.snoozeDelay, config.snoozeDelay)
+        settings_snooze_delay.text = res.getQuantityString(R.plurals.minutes, config.snoozeDelay, config.snoozeDelay)
     }
 
     private fun setupEventReminder() {
@@ -244,6 +251,27 @@ class SettingsActivity : SimpleActivity() {
         else
             getFormattedMinutes(displayPastEvents, false)
     }
+
+    private fun setupFontSize() {
+        settings_font_size.text = getFontSizeText()
+        settings_font_size_holder.setOnClickListener {
+            val items = arrayListOf(
+                    RadioItem(FONT_SIZE_SMALL, res.getString(R.string.small)),
+                    RadioItem(FONT_SIZE_MEDIUM, res.getString(R.string.medium)),
+                    RadioItem(FONT_SIZE_LARGE, res.getString(R.string.large)))
+
+            RadioGroupDialog(this@SettingsActivity, items, config.fontSize) {
+                config.fontSize = it as Int
+                settings_font_size.text = getFontSizeText()
+            }
+        }
+    }
+
+    private fun getFontSizeText() = getString(when (config.fontSize) {
+        FONT_SIZE_SMALL -> R.string.small
+        FONT_SIZE_MEDIUM -> R.string.medium
+        else -> R.string.large
+    })
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
         if (resultCode == RESULT_OK) {

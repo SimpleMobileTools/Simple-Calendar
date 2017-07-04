@@ -40,6 +40,7 @@ val REMINDER_SOUND = "reminder_sound"
 val VIEW = "view"
 val REMINDER_MINUTES = "reminder_minutes"
 val DISPLAY_EVENT_TYPES = "display_event_types"
+val FONT_SIZE = "font_size"
 val GOOGLE_SYNC = "google_sync"
 val SYNC_ACCOUNT_NAME = "sync_account_name"
 val SNOOZE_DELAY = "snooze_delay"
@@ -109,3 +110,8 @@ val TH = "TH"
 val FR = "FR"
 val SA = "SA"
 val SU = "SU"
+
+// font sizes
+val FONT_SIZE_SMALL = 0
+val FONT_SIZE_MEDIUM = 1
+val FONT_SIZE_LARGE = 2

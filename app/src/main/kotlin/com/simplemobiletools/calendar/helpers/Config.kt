@@ -65,6 +65,10 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getStringSet(DISPLAY_EVENT_TYPES, HashSet<String>())
         set(displayEventTypes) = prefs.edit().remove(DISPLAY_EVENT_TYPES).putStringSet(DISPLAY_EVENT_TYPES, displayEventTypes).apply()
 
+    var fontSize: Int
+        get() = prefs.getInt(FONT_SIZE, FONT_SIZE_MEDIUM)
+        set(size) = prefs.edit().putInt(FONT_SIZE, size).apply()
+
     var googleSync: Boolean
         get() = prefs.getBoolean(GOOGLE_SYNC, false)
         set(googleSync) = prefs.edit().putBoolean(GOOGLE_SYNC, googleSync).apply()
