@@ -202,6 +202,7 @@
     <string name="google_sync">Синхронизация с Google</string>
     <string name="display_past_events">Показывать прошедшие события</string>
     <string name="snooze_delay">Postpone reminder with Snooze by</string>
+    <string name="widgets">Widgets</string>
 
     <plurals name="minutes">
         <item quantity="one">%1$d минута</item>

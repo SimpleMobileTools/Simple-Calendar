@@ -188,6 +188,7 @@
     <string name="google_sync">Google Synk</string>
     <string name="display_past_events">Visa tidigare händelser</string>
     <string name="snooze_delay">Skjut upp påminnelse med Snooza</string>
+    <string name="widgets">Widgets</string>
 
     <plurals name="minutes">
         <item quantity="one">%1$d minut</item>

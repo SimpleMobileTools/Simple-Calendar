@@ -188,6 +188,7 @@
     <string name="google_sync">Sincronização Google</string>
     <string name="display_past_events">Mostrar eventos passados</string>
     <string name="snooze_delay">Adiar lembrete com a opção Snooze</string>
+    <string name="widgets">Widgets</string>
 
     <plurals name="minutes">
         <item quantity="one">%1$d minuto</item>

@@ -195,6 +195,7 @@
     <string name="google_sync">Google synchronizácia</string>
     <string name="display_past_events">Zobraziť minulé udalosti spred</string>
     <string name="snooze_delay">Posunúť pripomienku s Odložiť o</string>
+    <string name="widgets">Widgety</string>
 
     <plurals name="minutes">
         <item quantity="one">%1$d minútu</item>
