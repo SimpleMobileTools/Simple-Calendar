@@ -220,7 +220,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
             updateMonth(month)
             updateDays(days)
             updateWidget()
-        } catch (ignored: Exception) {
+        } catch (ignored: ArrayIndexOutOfBoundsException) {
         }
     }
 
