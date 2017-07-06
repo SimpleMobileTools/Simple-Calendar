@@ -390,8 +390,8 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_event, menu)
-        menu.findItem(R.id.delete).isVisible = mEvent.id != 0
-        menu.findItem(R.id.share).isVisible = mEvent.id != 0
+        menu.findItem(R.id.delete).isVisible = mDialogTheme != 0 && mEvent.id != 0
+        menu.findItem(R.id.share).isVisible = mDialogTheme != 0 && mEvent.id != 0
         return true
     }
 
