@@ -48,7 +48,10 @@ class MyWidgetListProvider : AppWidgetProvider() {
 
         mRemoteViews.setInt(R.id.widget_event_list_holder, "setBackgroundColor", context.config.widgetBgColor)
         mRemoteViews.setInt(R.id.widget_event_list_empty, "setTextColor", mTextColor)
+        mRemoteViews.setFloat(R.id.widget_event_list_empty, "setTextSize", context.config.getFontSize())
+
         mRemoteViews.setInt(R.id.widget_event_list_today, "setTextColor", mTextColor)
+        mRemoteViews.setFloat(R.id.widget_event_list_today, "setTextSize", context.config.getFontSize() + 3)
 
         val now = (System.currentTimeMillis() / 1000).toInt()
         val todayCode = Formatter.getDayCodeFromTS(now)
