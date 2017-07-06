@@ -216,9 +216,12 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
     }
 
     override fun updateMonthlyCalendar(month: String, days: List<Day>) {
-        updateMonth(month)
-        updateDays(days)
-        updateWidget()
+        try {
+            updateMonth(month)
+            updateDays(days)
+            updateWidget()
+        } catch (ignored: Exception) {
+        }
     }
 
     private fun updateLabelColor() {
