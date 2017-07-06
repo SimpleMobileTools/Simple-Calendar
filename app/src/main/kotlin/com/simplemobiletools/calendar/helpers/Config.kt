@@ -3,6 +3,7 @@ package com.simplemobiletools.calendar.helpers
 import android.content.Context
 import android.media.RingtoneManager
 import android.text.format.DateFormat
+import com.simplemobiletools.calendar.R
 import com.simplemobiletools.commons.helpers.BaseConfig
 import java.util.*
 
@@ -100,4 +101,14 @@ class Config(context: Context) : BaseConfig(context) {
             return ""
         }
     }
+
+    fun getFontSize() = when (fontSize) {
+        FONT_SIZE_SMALL -> getSmallFontSize()
+        FONT_SIZE_MEDIUM -> getMediumFontSize()
+        else -> getLargeFontSize()
+    }
+
+    fun getSmallFontSize() = getMediumFontSize() - 3f
+    fun getMediumFontSize() = context.resources.getDimension(R.dimen.day_text_size) / context.resources.displayMetrics.density
+    fun getLargeFontSize() = getMediumFontSize() + 3f
 }

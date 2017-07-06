@@ -32,6 +32,10 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
     private var mCalendar: MonthlyCalendarImpl? = null
     private var mRemoteViews: RemoteViews? = null
 
+    private var mSmallerFontSize = 0f
+    private var mMediumFontSize = 0f
+    private var mLargerFontSize = 0f
+
     lateinit var mRes: Resources
     lateinit var mContext: Context
     lateinit var mWidgetManager: AppWidgetManager
@@ -51,20 +55,23 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
         mContext = context
         mRes = mContext.resources
         mCalendar = MonthlyCalendarImpl(this, mContext)
-
-        val config = context.config
-        mTextColor = config.widgetTextColor
-        mWeakTextColor = config.widgetTextColor.adjustAlpha(LOW_ALPHA)
-
         mWidgetManager = AppWidgetManager.getInstance(mContext)
 
-        mRemoteViews = RemoteViews(mContext.packageName, R.layout.fragment_month_widget)
+        context.config.apply {
+            mTextColor = widgetTextColor
+            mWeakTextColor = widgetTextColor.adjustAlpha(LOW_ALPHA)
+            mMediumFontSize = getFontSize()
+            mSmallerFontSize = getFontSize() - 3f
+            mLargerFontSize = getFontSize() + 3f
+
+            mRemoteViews = RemoteViews(mContext.packageName, R.layout.fragment_month_widget)
+            mRemoteViews?.setInt(R.id.calendar_holder, "setBackgroundColor", widgetBgColor)
+        }
+
         mIntent = Intent(mContext, MyWidgetMonthlyProvider::class.java)
         setupButtons()
         updateLabelColor()
         updateTopViews()
-
-        mRemoteViews?.setInt(R.id.calendar_holder, "setBackgroundColor", config.widgetBgColor)
         mCalendar?.updateMonthlyCalendar(mTargetDate, false)
     }
 
@@ -130,6 +137,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
         val len = days.size
         val packageName = mContext.packageName
         mRemoteViews?.setInt(R.id.week_num, "setTextColor", mTextColor)
+        mRemoteViews?.setFloat(R.id.week_num, "setTextSize", mSmallerFontSize)
         mRemoteViews?.setViewVisibility(R.id.week_num, if (displayWeekNumbers) View.VISIBLE else View.GONE)
 
         for (i in 0..5) {
@@ -137,6 +145,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
             mRemoteViews?.apply {
                 setTextViewText(id, days[i * 7 + 3].weekOfYear.toString() + ":")
                 setInt(id, "setTextColor", mTextColor)
+                setFloat(id, "setTextSize", mSmallerFontSize)
                 setViewVisibility(id, if (displayWeekNumbers) View.VISIBLE else View.GONE)
             }
         }
@@ -171,6 +180,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
             }
 
             mRemoteViews?.setInt(id, "setTextColor", curTextColor)
+            mRemoteViews?.setFloat(id, "setTextSize", mMediumFontSize)
             setupDayOpenIntent(id, day.code)
         }
     }
@@ -186,6 +196,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
 
     private fun updateTopViews() {
         mRemoteViews?.setInt(R.id.top_value, "setTextColor", mTextColor)
+        mRemoteViews?.setFloat(R.id.top_value, "setTextSize", mLargerFontSize)
 
         var bmp = getColoredIcon(mContext, mTextColor, R.drawable.ic_pointer_left)
         mRemoteViews?.setImageViewBitmap(R.id.top_left_arrow, bmp)
@@ -214,6 +225,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
         for (i in 0..6) {
             val id = mRes.getIdentifier("label_$i", "id", packageName)
             mRemoteViews?.setInt(id, "setTextColor", mTextColor)
+            mRemoteViews?.setFloat(id, "setTextSize", mSmallerFontSize)
 
             var index = i
             if (!mSundayFirst)

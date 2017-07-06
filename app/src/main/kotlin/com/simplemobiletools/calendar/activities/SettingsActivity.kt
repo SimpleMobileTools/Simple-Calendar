@@ -10,9 +10,7 @@ import android.os.Parcelable
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.dialogs.CustomEventReminderDialog
 import com.simplemobiletools.calendar.dialogs.SnoozePickerDialog
-import com.simplemobiletools.calendar.extensions.config
-import com.simplemobiletools.calendar.extensions.dbHelper
-import com.simplemobiletools.calendar.extensions.getFormattedMinutes
+import com.simplemobiletools.calendar.extensions.*
 import com.simplemobiletools.calendar.helpers.FONT_SIZE_LARGE
 import com.simplemobiletools.calendar.helpers.FONT_SIZE_MEDIUM
 import com.simplemobiletools.calendar.helpers.FONT_SIZE_SMALL
@@ -263,6 +261,8 @@ class SettingsActivity : SimpleActivity() {
             RadioGroupDialog(this@SettingsActivity, items, config.fontSize) {
                 config.fontSize = it as Int
                 settings_font_size.text = getFontSizeText()
+                updateWidgets()
+                updateListWidget()
             }
         }
     }
