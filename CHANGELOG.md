@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 2.5.7 *(2017-07-06)*
+----------------------------
+
+ * Added a setting for changing widget font size
+ * Added Austrian holidays
+
 Version 2.5.6 *(2017-06-24)*
 ----------------------------
 
