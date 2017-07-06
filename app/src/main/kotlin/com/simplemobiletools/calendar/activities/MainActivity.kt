@@ -573,6 +573,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
             put("Nederland", "netherlands.ics")
             put("日本", "japan.ics")
             put("Norge", "norway.ics")
+            put("Österreich", "austria.ics")
             put("Pākistān", "pakistan.ics")
             put("Polska", "poland.ics")
             put("Portugal", "portugal.ics")
