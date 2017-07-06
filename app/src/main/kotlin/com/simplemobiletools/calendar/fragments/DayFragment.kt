@@ -119,7 +119,7 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEventsListen
 
     private fun receivedEvents(events: List<Event>) {
         val sorted = ArrayList<Event>(events.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { it.description })))
-        val filtered = context.getFilteredEvents(sorted)
+        val filtered = context?.getFilteredEvents(sorted) ?: ArrayList<Event>()
 
         activity?.runOnUiThread {
             updateEvents(filtered)
