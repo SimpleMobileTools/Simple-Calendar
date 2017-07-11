@@ -2,6 +2,7 @@ package com.simplemobiletools.calendar.activities
 
 import android.Manifest
 import android.accounts.AccountManager
+import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.Resources
@@ -283,23 +284,26 @@ class SettingsActivity : SimpleActivity() {
         else -> R.string.large
     })
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode == RESULT_OK) {
             if (requestCode == GET_RINGTONE_URI) {
-                val uri = resultData?.getParcelableExtra<Parcelable>(RingtoneManager.EXTRA_RINGTONE_PICKED_URI)
+                val uri = data?.getParcelableExtra<Parcelable>(RingtoneManager.EXTRA_RINGTONE_PICKED_URI)
                 if (uri == null) {
                     config.reminderSound = ""
                 } else {
                     settings_reminder_sound.text = RingtoneManager.getRingtone(this, uri as Uri)?.getTitle(this)
                     config.reminderSound = uri.toString()
                 }
-            } else if (requestCode == REQUEST_ACCOUNT_NAME && resultData?.extras != null) {
-                val accountName = resultData.getStringExtra(AccountManager.KEY_ACCOUNT_NAME)
+            } else if (requestCode == REQUEST_ACCOUNT_NAME && data?.extras != null) {
+                val accountName = data.getStringExtra(AccountManager.KEY_ACCOUNT_NAME)
                 config.syncAccountName = accountName
                 tryEnablingSync()
             } else if (requestCode == REQUEST_AUTHORIZATION) {
                 tryEnablingSync()
             }
+        } else if (resultCode == Activity.RESULT_CANCELED && requestCode == REQUEST_ACCOUNT_NAME) {
+            settings_google_sync.toggle()
+            config.googleSync = false
         }
     }
 
