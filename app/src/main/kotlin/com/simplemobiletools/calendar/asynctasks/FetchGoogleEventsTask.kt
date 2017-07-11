@@ -13,10 +13,7 @@ import com.google.gson.reflect.TypeToken
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.SettingsActivity
 import com.simplemobiletools.calendar.extensions.seconds
-import com.simplemobiletools.calendar.helpers.DAY
-import com.simplemobiletools.calendar.helpers.MONTH
-import com.simplemobiletools.calendar.helpers.WEEK
-import com.simplemobiletools.calendar.helpers.YEAR
+import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.models.GoogleEvent
 import com.simplemobiletools.calendar.models.GoogleEventReminder
@@ -29,13 +26,7 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
     private val ITEMS = "items"
     private val OVERRIDES = "overrides"
     private val POPUP = "popup"
-    private val RRULE = "RRULE:"
     private val NEXT_PAGE_TOKEN = "nextPageToken"
-
-    private val DAILY = "DAILY"
-    private val WEEKLY = "WEEKLY"
-    private val MONTHLY = "MONTHLY"
-    private val YEARLY = "YEARLY"
 
     private var service: com.google.api.services.calendar.Calendar
     private var lastError: Exception? = null
