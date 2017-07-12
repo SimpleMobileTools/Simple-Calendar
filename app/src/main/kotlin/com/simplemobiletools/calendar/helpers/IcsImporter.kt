@@ -3,15 +3,9 @@ package com.simplemobiletools.calendar.helpers
 import android.content.Context
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.dbHelper
-import com.simplemobiletools.calendar.extensions.isXMonthlyRepetition
-import com.simplemobiletools.calendar.extensions.isXWeeklyRepetition
-import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.helpers.IcsImporter.ImportResult.*
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.models.EventType
-import com.simplemobiletools.calendar.models.RepeatRule
-import org.joda.time.DateTimeZone
-import org.joda.time.format.DateTimeFormat
 import java.io.File
 
 class IcsImporter {
@@ -77,7 +71,7 @@ class IcsImporter {
                     } else if (line.startsWith(UID)) {
                         curImportId = line.substring(UID.length)
                     } else if (line.startsWith(RRULE)) {
-                        val repeatRule = parseRepeatInterval(line.substring(RRULE.length), curStart)
+                        val repeatRule = Parser().parseRepeatInterval(line.substring(RRULE.length), curStart)
                         curRepeatRule = repeatRule.repeatRule
                         curRepeatInterval = repeatRule.repeatInterval
                         curRepeatLimit = repeatRule.repeatLimit
@@ -138,23 +132,13 @@ class IcsImporter {
                 if (!value.contains("T"))
                     curFlags = curFlags or FLAG_ALL_DAY
 
-                parseDateTimeValue(value)
+                Parser().parseDateTimeValue(value)
             } else {
-                parseDateTimeValue(fullString.substring(1))
+                Parser().parseDateTimeValue(fullString.substring(1))
             }
         } catch (e: Exception) {
             eventsFailed++
             return -1
-        }
-    }
-
-    private fun parseDateTimeValue(value: String): Int {
-        val edited = value.replace("T", "").replace("Z", "")
-        return if (edited.length == 14) {
-            parseLongFormat(edited, value.endsWith("Z"))
-        } else {
-            val dateTimeFormat = DateTimeFormat.forPattern("yyyyMMdd")
-            dateTimeFormat.parseDateTime(edited).withZoneRetainFields(DateTimeZone.getDefault()).withHourOfDay(1).seconds()
         }
     }
 
@@ -199,75 +183,6 @@ class IcsImporter {
     }
 
     private fun getDurationValue(duration: String, char: String): Int = Regex("[0-9]+(?=$char)").find(duration)?.value?.toInt() ?: 0
-
-    private fun parseLongFormat(digitString: String, useUTC: Boolean): Int {
-        val dateTimeFormat = DateTimeFormat.forPattern("yyyyMMddHHmmss")
-        val dateTimeZone = if (useUTC) DateTimeZone.UTC else DateTimeZone.getDefault()
-        return dateTimeFormat.parseDateTime(digitString).withZoneRetainFields(dateTimeZone).seconds()
-    }
-
-    private fun parseRepeatInterval(fullString: String, startTS: Int): RepeatRule {
-        val parts = fullString.split(";")
-        var repeatInterval = 0
-        var repeatRule = 0
-        var repeatLimit = 0
-        for (part in parts) {
-            val keyValue = part.split("=")
-            val key = keyValue[0]
-            val value = keyValue[1]
-            if (key == FREQ) {
-                repeatInterval = getFrequencySeconds(value)
-                if (value == WEEKLY) {
-                    val start = Formatter.getDateTimeFromTS(startTS)
-                    repeatRule = Math.pow(2.0, (start.dayOfWeek - 1).toDouble()).toInt()
-                } else if (value == MONTHLY) {
-                    repeatRule = REPEAT_MONTH_SAME_DAY
-                }
-            } else if (key == COUNT) {
-                repeatLimit = -value.toInt()
-            } else if (key == UNTIL) {
-                repeatLimit = parseDateTimeValue(value)
-            } else if (key == INTERVAL) {
-                repeatInterval *= value.toInt()
-            } else if (key == BYDAY) {
-                if (repeatInterval.isXWeeklyRepetition()) {
-                    handleRepeatRule(value)
-                } else if (repeatInterval.isXMonthlyRepetition()) {
-                    repeatRule = REPEAT_MONTH_EVERY_XTH_DAY
-                }
-            } else if (key == BYMONTHDAY && value.toInt() == -1) {
-                repeatRule = REPEAT_MONTH_LAST_DAY
-            }
-        }
-        return RepeatRule(repeatInterval, repeatRule, repeatLimit)
-    }
-
-    private fun getFrequencySeconds(interval: String): Int {
-        return when (interval) {
-            DAILY -> DAY
-            WEEKLY -> WEEK
-            MONTHLY -> MONTH
-            YEARLY -> YEAR
-            else -> 0
-        }
-    }
-
-    private fun handleRepeatRule(value: String) {
-        if (value.contains(MO))
-            curRepeatRule = curRepeatRule or MONDAY
-        if (value.contains(TU))
-            curRepeatRule = curRepeatRule or TUESDAY
-        if (value.contains(WE))
-            curRepeatRule = curRepeatRule or WEDNESDAY
-        if (value.contains(TH))
-            curRepeatRule = curRepeatRule or THURSDAY
-        if (value.contains(FR))
-            curRepeatRule = curRepeatRule or FRIDAY
-        if (value.contains(SA))
-            curRepeatRule = curRepeatRule or SATURDAY
-        if (value.contains(SU))
-            curRepeatRule = curRepeatRule or SUNDAY
-    }
 
     private fun resetValues() {
         curStart = -1
