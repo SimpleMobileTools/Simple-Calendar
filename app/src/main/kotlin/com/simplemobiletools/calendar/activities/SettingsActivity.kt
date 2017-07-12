@@ -25,6 +25,7 @@ import com.simplemobiletools.calendar.extensions.*
 import com.simplemobiletools.calendar.helpers.FONT_SIZE_LARGE
 import com.simplemobiletools.calendar.helpers.FONT_SIZE_MEDIUM
 import com.simplemobiletools.calendar.helpers.FONT_SIZE_SMALL
+import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.toast
 import com.simplemobiletools.commons.extensions.updateTextColors
@@ -115,12 +116,22 @@ class SettingsActivity : SimpleActivity() {
     private fun setupGoogleSync() {
         settings_google_sync.isChecked = config.googleSync
         settings_google_sync_holder.setOnClickListener {
-            settings_google_sync.toggle()
-            config.googleSync = settings_google_sync.isChecked
-
-            if (settings_google_sync.isChecked) {
-                tryEnablingSync()
+            if (!config.googleSync) {
+                ConfirmationDialog(this, getString(R.string.google_sync_testing), positive = R.string.ok, negative = 0) {
+                    toggleGoogleSync()
+                }
+            } else {
+                toggleGoogleSync()
             }
+        }
+    }
+
+    private fun toggleGoogleSync() {
+        settings_google_sync.toggle()
+        config.googleSync = settings_google_sync.isChecked
+
+        if (settings_google_sync.isChecked) {
+            tryEnablingSync()
         }
     }
 

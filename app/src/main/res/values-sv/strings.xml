@@ -189,6 +189,7 @@
     <string name="display_past_events">Visa tidigare händelser</string>
     <string name="snooze_delay">Skjut upp påminnelse med Snooza</string>
     <string name="widgets">Widgets</string>
+    <string name="google_sync_testing">Google sync is in a testing mode, reporting any feedback at hello@simplemobiletools.com would be appreciated. Thanks!</string>
 
     <plurals name="minutes">
         <item quantity="one">%1$d minut</item>
