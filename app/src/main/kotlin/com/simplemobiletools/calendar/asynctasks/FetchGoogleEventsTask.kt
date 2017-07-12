@@ -7,16 +7,17 @@ import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccoun
 import com.google.api.client.googleapis.extensions.android.gms.auth.UserRecoverableAuthIOException
 import com.google.api.client.json.gson.GsonFactory
 import com.google.gson.Gson
-import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.SettingsActivity
 import com.simplemobiletools.calendar.extensions.seconds
-import com.simplemobiletools.calendar.helpers.*
+import com.simplemobiletools.calendar.helpers.Parser
+import com.simplemobiletools.calendar.helpers.RRULE
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.models.GoogleEvent
 import com.simplemobiletools.calendar.models.GoogleEventReminder
+import com.simplemobiletools.calendar.models.RepeatRule
 import org.joda.time.DateTime
 
 // more info about event fields at https://developers.google.com/google-apps/calendar/v3/reference/events/insert
@@ -39,12 +40,12 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
     }
 
     override fun doInBackground(vararg params: Void): List<Event>? {
-        try {
-            return getDataFromApi()
+        return try {
+            getDataFromApi()
         } catch (e: Exception) {
             lastError = e
             cancel(true)
-            return ArrayList()
+            null
         }
     }
 
@@ -80,57 +81,42 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
             if (googleEvent.status != CONFIRMED)
                 continue
 
-            val reminder = getReminder(googleEvent.reminders)
-            val recurrence = getRecurrence(googleEvent.recurrence)
+            val reminders = getReminder(googleEvent.reminders)
             val start = googleEvent.start
             val end = googleEvent.end
+            var startTS: Int
+            var endTS: Int
             if (start.date != null) {
-                val startTS = DateTime(start.date).withHourOfDay(1).seconds()
-                val endTS = DateTime(end.date).withHourOfDay(1).seconds()
+                startTS = DateTime(start.date).withHourOfDay(1).seconds()
+                endTS = DateTime(end.date).withHourOfDay(1).seconds()
             } else {
-                val startTS = DateTime(start.dateTime).seconds()
-                val endTS = DateTime(end.dateTime).seconds()
+                startTS = DateTime(start.dateTime).seconds()
+                endTS = DateTime(end.dateTime).seconds()
             }
+
+            val recurrence = googleEvent.recurrence.firstOrNull()
+            var repeatRule = RepeatRule(0, 0, 0)
+            if (recurrence != null) {
+                repeatRule = Parser().parseRepeatInterval(recurrence.toString().trim('\"').substring(RRULE.length), startTS)
+            }
+
+            Event(0, startTS, endTS, googleEvent.summary, googleEvent.description, reminders.getOrElse(0, { -1 }), reminders.getOrElse(1, { -1 }),
+                    reminders.getOrElse(2, { -1 }), repeatRule.repeatInterval, googleEvent.iCalUID)
         }
         return events
     }
 
-    private fun getReminder(json: JsonObject): Int {
+    private fun getReminder(json: JsonObject): List<Int> {
         val array = json.getAsJsonArray(OVERRIDES)
         val token = object : TypeToken<List<GoogleEventReminder>>() {}.type
         val reminders = Gson().fromJson<ArrayList<GoogleEventReminder>>(array, token) ?: ArrayList<GoogleEventReminder>(2)
+        val reminderMinutes = ArrayList<Int>()
         for ((method, minutes) in reminders) {
             if (method == POPUP) {
-                return minutes
+                reminderMinutes.add(minutes)
             }
         }
-        return -1
-    }
-
-    private fun getRecurrence(recurrence: JsonArray?): Int {
-        if (recurrence == null) {
-            return 0
-        }
-
-        var rule = recurrence[0].toString().trim('"')
-        if (!rule.startsWith(RRULE))
-            return 0
-
-        rule = rule.substring(RRULE.length)
-
-        val parts = rule.split(';')
-        val frequency = parts[0].split("=")[1]
-        return getFrequencyMinutes(frequency)
-    }
-
-    private fun getFrequencyMinutes(frequency: String): Int {
-        return when (frequency) {
-            DAILY -> DAY
-            WEEKLY -> WEEK
-            MONTHLY -> MONTH
-            YEARLY -> YEAR
-            else -> 0
-        }
+        return reminderMinutes
     }
 
     override fun onCancelled() {
