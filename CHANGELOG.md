@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 2.5.8 *(2017-07-12)*
+----------------------------
+
+ * Hotfixing an issue causing crashes at upgrading the app for some people
+ * Build was created from b544749 by cherry-picking 521eeb6 for playstore only
+
 Version 2.5.7 *(2017-07-06)*
 ----------------------------
 
