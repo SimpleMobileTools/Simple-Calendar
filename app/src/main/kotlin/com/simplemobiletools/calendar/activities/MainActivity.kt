@@ -83,6 +83,10 @@ class MainActivity : SimpleActivity(), NavigationListener {
         }
         storeStateVariables()
         updateViewPager()
+
+        if (!hasGetAccountsPermission()) {
+            config.googleSync = false
+        }
     }
 
     override fun onResume() {

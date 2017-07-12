@@ -11,7 +11,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Parcelable
 import android.support.v4.app.ActivityCompat
-import android.support.v4.content.ContextCompat
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential
@@ -313,8 +312,7 @@ class SettingsActivity : SimpleActivity() {
                 tryEnablingSync()
             }
         } else if (resultCode == Activity.RESULT_CANCELED && requestCode == REQUEST_ACCOUNT_NAME) {
-            settings_google_sync.toggle()
-            config.googleSync = false
+            disableGoogleSync()
         }
     }
 
@@ -345,7 +343,10 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
-    private fun hasGetAccountsPermission() = ContextCompat.checkSelfPermission(this, Manifest.permission.GET_ACCOUNTS) == PackageManager.PERMISSION_GRANTED
+    private fun disableGoogleSync() {
+        settings_google_sync.toggle()
+        config.googleSync = false
+    }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
@@ -353,6 +354,8 @@ class SettingsActivity : SimpleActivity() {
         if (requestCode == ACCOUNTS_PERMISSION) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 showAccountChooser()
+            } else {
+                disableGoogleSync()
             }
         }
     }
