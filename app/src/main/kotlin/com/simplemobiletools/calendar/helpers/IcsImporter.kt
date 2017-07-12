@@ -9,6 +9,7 @@ import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.helpers.IcsImporter.ImportResult.*
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.models.EventType
+import com.simplemobiletools.calendar.models.RepeatRule
 import org.joda.time.DateTimeZone
 import org.joda.time.format.DateTimeFormat
 import java.io.File
@@ -76,7 +77,10 @@ class IcsImporter {
                     } else if (line.startsWith(UID)) {
                         curImportId = line.substring(UID.length)
                     } else if (line.startsWith(RRULE)) {
-                        curRepeatInterval = parseRepeatInterval(line.substring(RRULE.length))
+                        val repeatRule = parseRepeatInterval(line.substring(RRULE.length), curStart)
+                        curRepeatRule = repeatRule.repeatRule
+                        curRepeatInterval = repeatRule.repeatInterval
+                        curRepeatLimit = repeatRule.repeatLimit
                     } else if (line.startsWith(ACTION)) {
                         isNotificationDescription = true
                         lastReminderAction = line.substring(ACTION.length)
@@ -202,38 +206,40 @@ class IcsImporter {
         return dateTimeFormat.parseDateTime(digitString).withZoneRetainFields(dateTimeZone).seconds()
     }
 
-    private fun parseRepeatInterval(fullString: String): Int {
+    private fun parseRepeatInterval(fullString: String, startTS: Int): RepeatRule {
         val parts = fullString.split(";")
-        var frequencySeconds = 0
+        var repeatInterval = 0
+        var repeatRule = 0
+        var repeatLimit = 0
         for (part in parts) {
             val keyValue = part.split("=")
             val key = keyValue[0]
             val value = keyValue[1]
             if (key == FREQ) {
-                frequencySeconds = getFrequencySeconds(value)
+                repeatInterval = getFrequencySeconds(value)
                 if (value == WEEKLY) {
-                    val start = Formatter.getDateTimeFromTS(curStart)
-                    curRepeatRule = Math.pow(2.0, (start.dayOfWeek - 1).toDouble()).toInt()
+                    val start = Formatter.getDateTimeFromTS(startTS)
+                    repeatRule = Math.pow(2.0, (start.dayOfWeek - 1).toDouble()).toInt()
                 } else if (value == MONTHLY) {
-                    curRepeatRule = REPEAT_MONTH_SAME_DAY
+                    repeatRule = REPEAT_MONTH_SAME_DAY
                 }
             } else if (key == COUNT) {
-                curRepeatLimit = -value.toInt()
+                repeatLimit = -value.toInt()
             } else if (key == UNTIL) {
-                curRepeatLimit = parseDateTimeValue(value)
+                repeatLimit = parseDateTimeValue(value)
             } else if (key == INTERVAL) {
-                frequencySeconds *= value.toInt()
+                repeatInterval *= value.toInt()
             } else if (key == BYDAY) {
-                if (frequencySeconds.isXWeeklyRepetition()) {
+                if (repeatInterval.isXWeeklyRepetition()) {
                     handleRepeatRule(value)
-                } else if (frequencySeconds.isXMonthlyRepetition()) {
-                    curRepeatRule = REPEAT_MONTH_EVERY_XTH_DAY
+                } else if (repeatInterval.isXMonthlyRepetition()) {
+                    repeatRule = REPEAT_MONTH_EVERY_XTH_DAY
                 }
             } else if (key == BYMONTHDAY && value.toInt() == -1) {
-                curRepeatRule = REPEAT_MONTH_LAST_DAY
+                repeatRule = REPEAT_MONTH_LAST_DAY
             }
         }
-        return frequencySeconds
+        return RepeatRule(repeatInterval, repeatRule, repeatLimit)
     }
 
     private fun getFrequencySeconds(interval: String): Int {
