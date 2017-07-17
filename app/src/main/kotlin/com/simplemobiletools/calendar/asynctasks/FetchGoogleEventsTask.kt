@@ -11,13 +11,13 @@ import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.SettingsActivity
+import com.simplemobiletools.calendar.extensions.config
+import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.seconds
+import com.simplemobiletools.calendar.helpers.FLAG_ALL_DAY
 import com.simplemobiletools.calendar.helpers.Parser
 import com.simplemobiletools.calendar.helpers.RRULE
-import com.simplemobiletools.calendar.models.Event
-import com.simplemobiletools.calendar.models.GoogleEvent
-import com.simplemobiletools.calendar.models.GoogleEventReminder
-import com.simplemobiletools.calendar.models.RepeatRule
+import com.simplemobiletools.calendar.models.*
 import org.joda.time.DateTime
 
 // more info about event fields at https://developers.google.com/google-apps/calendar/v3/reference/events/insert
@@ -31,6 +31,7 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
 
     private var service: com.google.api.services.calendar.Calendar
     private var lastError: Exception? = null
+    private var dbHelper = activity.dbHelper
 
     init {
         val transport = AndroidHttp.newCompatibleTransport()
@@ -59,7 +60,9 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
 
             for (event in events) {
                 if (event.key == ITEMS) {
-                    val parsed = parseEvents(event.value.toString())
+                    dbHelper.getEventTypes {
+                        parseEvents(event.value.toString(), it)
+                    }
                 }
             }
 
@@ -73,7 +76,7 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
         return parsedEvents
     }
 
-    private fun parseEvents(json: String): List<Event> {
+    private fun parseEvents(json: String, eventTypes: ArrayList<EventType>): List<Event> {
         val events = ArrayList<Event>()
         val token = object : TypeToken<List<GoogleEvent>>() {}.type
         val googleEvents = Gson().fromJson<ArrayList<GoogleEvent>>(json, token) ?: ArrayList<GoogleEvent>(8)
@@ -86,22 +89,36 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
             val end = googleEvent.end
             var startTS: Int
             var endTS: Int
+            var flags = 0
+            var eventTypeId = -1
+            val eventType = "google_${googleEvent.colorId}"
+            eventTypes.forEach {
+                if (it.title.toLowerCase() == eventType)
+                    eventTypeId = it.id
+            }
+
+            if (eventTypeId == -1) {
+                eventTypeId = dbHelper.insertEventType(EventType(0, eventType, activity.config.primaryColor))
+            }
+
             if (start.date != null) {
                 startTS = DateTime(start.date).withHourOfDay(1).seconds()
                 endTS = DateTime(end.date).withHourOfDay(1).seconds()
+                flags = flags or FLAG_ALL_DAY
             } else {
                 startTS = DateTime(start.dateTime).seconds()
                 endTS = DateTime(end.dateTime).seconds()
             }
 
-            val recurrence = googleEvent.recurrence.firstOrNull()
+            val recurrence = googleEvent.recurrence?.firstOrNull()
             var repeatRule = RepeatRule(0, 0, 0)
             if (recurrence != null) {
                 repeatRule = Parser().parseRepeatInterval(recurrence.toString().trim('\"').substring(RRULE.length), startTS)
             }
 
             Event(0, startTS, endTS, googleEvent.summary, googleEvent.description, reminders.getOrElse(0, { -1 }), reminders.getOrElse(1, { -1 }),
-                    reminders.getOrElse(2, { -1 }), repeatRule.repeatInterval, googleEvent.iCalUID)
+                    reminders.getOrElse(2, { -1 }), repeatRule.repeatInterval, googleEvent.iCalUID, flags, repeatRule.repeatLimit, repeatRule.repeatRule,
+                    eventTypeId)
         }
         return events
     }
