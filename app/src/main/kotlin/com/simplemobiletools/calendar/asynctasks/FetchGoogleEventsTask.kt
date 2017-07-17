@@ -33,6 +33,7 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
     private var service: com.google.api.services.calendar.Calendar
     private var lastError: Exception? = null
     private var dbHelper = activity.dbHelper
+    private var eventTypes = ArrayList<EventType>()
 
     init {
         val transport = AndroidHttp.newCompatibleTransport()
@@ -62,7 +63,8 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
             for ((key, value) in events) {
                 if (key == ITEMS) {
                     dbHelper.getEventTypes {
-                        parseEvents(value.toString(), it)
+                        eventTypes = it
+                        parseEvents(value.toString())
                     }
                 }
             }
@@ -77,7 +79,7 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
         return parsedEvents
     }
 
-    private fun parseEvents(json: String, eventTypes: ArrayList<EventType>): List<Event> {
+    private fun parseEvents(json: String): List<Event> {
         val importIDs = activity.dbHelper.getImportIds()
         val events = ArrayList<Event>()
         val token = object : TypeToken<List<GoogleEvent>>() {}.type
@@ -101,18 +103,6 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
             var startTS: Int
             var endTS: Int
             var flags = 0
-            var eventTypeId = -1
-            val eventType = "google_${googleEvent.colorId}"
-            eventTypes.forEach {
-                if (it.title.toLowerCase() == eventType)
-                    eventTypeId = it.id
-            }
-
-            if (eventTypeId == -1) {
-                val newEventType = EventType(0, eventType, activity.config.primaryColor)
-                eventTypeId = dbHelper.insertEventType(newEventType)
-                eventTypes.add(newEventType)
-            }
 
             if (start.date != null) {
                 startTS = DateTime(start.date).withHourOfDay(1).seconds()
@@ -129,6 +119,7 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
                 repeatRule = Parser().parseRepeatInterval(recurrence.toString().trim('\"').substring(RRULE.length), startTS)
             }
 
+            val eventTypeId = getEventTypeId(googleEvent)
             val event = Event(0, startTS, endTS, googleEvent.summary, googleEvent.description, reminders.getOrElse(0, { -1 }), reminders.getOrElse(1, { -1 }),
                     reminders.getOrElse(2, { -1 }), repeatRule.repeatInterval, importId, flags, repeatRule.repeatLimit, repeatRule.repeatRule,
                     eventTypeId, lastUpdated = lastUpdate)
@@ -141,6 +132,23 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
             dbHelper.insert(event) {}
         }
         return events
+    }
+
+    private fun getEventTypeId(googleEvent: GoogleEvent): Int {
+        var eventTypeId = -1
+        val eventType = "google_sync_${googleEvent.colorId}"
+        eventTypes.forEach {
+            if (it.title.toLowerCase() == eventType)
+                eventTypeId = it.id
+        }
+
+        if (eventTypeId == -1) {
+            val newEventType = EventType(0, eventType, activity.config.primaryColor)
+            eventTypeId = dbHelper.insertEventType(newEventType)
+            eventTypes.add(newEventType)
+        }
+
+        return eventTypeId
     }
 
     private fun getReminder(json: JsonObject): List<Int> {
