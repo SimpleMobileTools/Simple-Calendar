@@ -58,10 +58,10 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
                     .setPageToken(currToken)
                     .execute()
 
-            for (event in events) {
-                if (event.key == ITEMS) {
+            for ((key, value) in events) {
+                if (key == ITEMS) {
                     dbHelper.getEventTypes {
-                        parseEvents(event.value.toString(), it)
+                        parseEvents(value.toString(), it)
                     }
                 }
             }
