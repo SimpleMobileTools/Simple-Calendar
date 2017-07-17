@@ -713,6 +713,19 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         callback.invoke(eventTypes)
     }
 
+    fun doEventTypesContainEvent(types: ArrayList<Int>): Boolean {
+        val args = TextUtils.join(", ", types)
+        val columns = arrayOf(COL_ID)
+        val selection = "$COL_EVENT_TYPE IN ($args)"
+        var cursor: Cursor? = null
+        try {
+            cursor = mDb.query(MAIN_TABLE_NAME, columns, selection, null, null, null, null)
+            return cursor?.moveToFirst() == true
+        } finally {
+            cursor?.close()
+        }
+    }
+
     private fun getIgnoredOccurrences(eventId: Int): ArrayList<Int> {
         val projection = arrayOf(COL_OCCURRENCE_DAYCODE)
         val selection = "$COL_PARENT_EVENT_ID = ?"

@@ -9,6 +9,7 @@ import com.bignerdranch.android.multiselector.SwappingHolder
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.extensions.config
+import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.interfaces.DeleteEventTypesListener
 import com.simplemobiletools.calendar.models.EventType
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
@@ -69,23 +70,28 @@ class EventTypeAdapter(val activity: SimpleActivity, val mItems: List<EventType>
     }
 
     private fun askConfirmDelete() {
-        val MOVE_EVENTS = 0
-        val DELETE_EVENTS = 1
-        val res = activity.resources
-        val items = ArrayList<RadioItem>().apply {
-            add(RadioItem(MOVE_EVENTS, res.getString(R.string.move_events_into_default)))
-            add(RadioItem(DELETE_EVENTS, res.getString(R.string.remove_affected_events)))
-        }
-        RadioGroupDialog(activity, items, -1) {
-            actMode?.finish()
-            deleteEventTypes(it == DELETE_EVENTS)
-        }
-    }
-
-    private fun deleteEventTypes(deleteEvents: Boolean) {
         val selections = multiSelector.selectedPositions
         val ids = ArrayList<Int>(selections.size)
         selections.forEach { ids.add((mItems[it]).id) }
+
+        if (activity.dbHelper.doEventTypesContainEvent(ids)) {
+            val MOVE_EVENTS = 0
+            val DELETE_EVENTS = 1
+            val res = activity.resources
+            val items = ArrayList<RadioItem>().apply {
+                add(RadioItem(MOVE_EVENTS, res.getString(R.string.move_events_into_default)))
+                add(RadioItem(DELETE_EVENTS, res.getString(R.string.remove_affected_events)))
+            }
+            RadioGroupDialog(activity, items, -1) {
+                actMode?.finish()
+                deleteEventTypes(it == DELETE_EVENTS, ids)
+            }
+        } else {
+            deleteEventTypes(true, ids)
+        }
+    }
+
+    private fun deleteEventTypes(deleteEvents: Boolean, ids: ArrayList<Int>) {
         listener?.deleteEventTypes(ids, deleteEvents)
     }
 
