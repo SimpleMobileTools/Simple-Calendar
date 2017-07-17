@@ -138,10 +138,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             try {
                 createExceptionsTable(db)
             } catch (ignored: SQLiteException) {
-            }
-            try {
                 db.execSQL("ALTER TABLE $EXCEPTIONS_TABLE_NAME ADD COLUMN $COL_CHILD_EVENT_ID INTEGER NOT NULL DEFAULT 0")
-            } catch (ignored: SQLiteException) {
             }
         }
     }
