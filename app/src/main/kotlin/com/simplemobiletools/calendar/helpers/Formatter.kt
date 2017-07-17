@@ -81,8 +81,8 @@ object Formatter {
 
     fun getTimePattern(context: Context) = if (context.config.use24hourFormat) PATTERN_TIME_24 else PATTERN_TIME_12
 
-    fun getExportedTime(ts: Int): String {
-        val dateTime = DateTime(ts * 1000L, DateTimeZone.UTC)
+    fun getExportedTime(ts: Long): String {
+        val dateTime = DateTime(ts, DateTimeZone.UTC)
         return "${dateTime.toString(DAYCODE_PATTERN)}T${dateTime.toString(TIME_PATTERN)}Z"
     }
 

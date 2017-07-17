@@ -29,13 +29,14 @@ class IcsExporter {
                     event.description.replace("\n", "\\n").let { if (it.isNotEmpty()) out.writeLn("$DESCRIPTION$it") }
                     event.importId?.let { if (it.isNotEmpty()) out.writeLn("$UID$it") }
                     event.eventType.let { out.writeLn("$CATEGORIES${activity.dbHelper.getEventType(it)?.title}") }
+                    event.lastUpdated.let { out.writeLn("$LAST_MODIFIED:${Formatter.getExportedTime(it)}") }
 
                     if (event.isAllDay) {
                         out.writeLn("$DTSTART;$VALUE=$DATE:${Formatter.getDayCodeFromTS(event.startTS)}")
                         out.writeLn("$DTEND;$VALUE=$DATE:${Formatter.getDayCodeFromTS(event.endTS + DAY)}")
                     } else {
-                        event.startTS.let { out.writeLn("$DTSTART:${Formatter.getExportedTime(it)}") }
-                        event.endTS.let { out.writeLn("$DTEND:${Formatter.getExportedTime(it)}") }
+                        event.startTS.let { out.writeLn("$DTSTART:${Formatter.getExportedTime(it * 1000L)}") }
+                        event.endTS.let { out.writeLn("$DTEND:${Formatter.getExportedTime(it * 1000L)}") }
                     }
 
                     out.writeLn("$STATUS$CONFIRMED")
