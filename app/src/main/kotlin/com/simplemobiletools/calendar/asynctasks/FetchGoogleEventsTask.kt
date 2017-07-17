@@ -77,12 +77,18 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
     }
 
     private fun parseEvents(json: String, eventTypes: ArrayList<EventType>): List<Event> {
+        val importIDs = activity.dbHelper.getImportIds()
         val events = ArrayList<Event>()
         val token = object : TypeToken<List<GoogleEvent>>() {}.type
         val googleEvents = Gson().fromJson<ArrayList<GoogleEvent>>(json, token) ?: ArrayList<GoogleEvent>(8)
         for (googleEvent in googleEvents) {
             if (googleEvent.status != CONFIRMED)
                 continue
+
+            val importId = googleEvent.iCalUID
+            if (importIDs.contains(importId)) {
+                continue
+            }
 
             val reminders = getReminder(googleEvent.reminders)
             val start = googleEvent.start
@@ -118,9 +124,12 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
                 repeatRule = Parser().parseRepeatInterval(recurrence.toString().trim('\"').substring(RRULE.length), startTS)
             }
 
-            Event(0, startTS, endTS, googleEvent.summary, googleEvent.description, reminders.getOrElse(0, { -1 }), reminders.getOrElse(1, { -1 }),
-                    reminders.getOrElse(2, { -1 }), repeatRule.repeatInterval, googleEvent.iCalUID, flags, repeatRule.repeatLimit, repeatRule.repeatRule,
+            val event = Event(0, startTS, endTS, googleEvent.summary, googleEvent.description, reminders.getOrElse(0, { -1 }), reminders.getOrElse(1, { -1 }),
+                    reminders.getOrElse(2, { -1 }), repeatRule.repeatInterval, importId, flags, repeatRule.repeatLimit, repeatRule.repeatRule,
                     eventTypeId)
+
+            importIDs.add(importId)
+            dbHelper.insert(event) {}
         }
         return events
     }
