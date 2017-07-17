@@ -14,6 +14,7 @@ import com.simplemobiletools.calendar.activities.SettingsActivity
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.seconds
+import com.simplemobiletools.calendar.helpers.DAY
 import com.simplemobiletools.calendar.helpers.FLAG_ALL_DAY
 import com.simplemobiletools.calendar.helpers.Parser
 import com.simplemobiletools.calendar.helpers.RRULE
@@ -127,6 +128,10 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
             val event = Event(0, startTS, endTS, googleEvent.summary, googleEvent.description, reminders.getOrElse(0, { -1 }), reminders.getOrElse(1, { -1 }),
                     reminders.getOrElse(2, { -1 }), repeatRule.repeatInterval, importId, flags, repeatRule.repeatLimit, repeatRule.repeatRule,
                     eventTypeId)
+
+            if (event.isAllDay && endTS > startTS) {
+                event.endTS -= DAY
+            }
 
             importIDs.add(importId)
             dbHelper.insert(event) {}
