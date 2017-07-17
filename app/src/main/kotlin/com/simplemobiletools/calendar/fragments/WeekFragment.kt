@@ -223,7 +223,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             return
 
         activity.runOnUiThread {
-            if (context != null)
+            if (context != null && isAdded)
                 addEvents()
         }
     }
