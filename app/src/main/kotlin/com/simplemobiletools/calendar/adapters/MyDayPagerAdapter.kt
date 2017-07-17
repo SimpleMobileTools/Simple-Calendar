@@ -33,4 +33,8 @@ class MyDayPagerAdapter(fm: FragmentManager, private val mCodes: List<String>, p
             mFragments[pos + i]?.checkEvents()
         }
     }
+
+    fun destroyMultiselector() {
+        DayEventsAdapter.actMode?.finish()
+    }
 }
