@@ -226,7 +226,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             put(COL_PARENT_EVENT_ID, event.parentId)
             put(COL_OFFSET, event.offset)
             put(COL_IS_DST_INCLUDED, if (event.isDstIncluded) 1 else 0)
-            put(COL_LAST_UPDATED, System.currentTimeMillis())
+            put(COL_LAST_UPDATED, event.lastUpdated)
             put(COL_SOURCE, event.source)
         }
     }
@@ -430,6 +430,17 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             cursor?.close()
         }
         return ids.filter { it.trim().isNotEmpty() } as ArrayList<String>
+    }
+
+    fun getEventWithImportId(importId: String): Event? {
+        val selection = "$MAIN_TABLE_NAME.$COL_IMPORT_ID = ?"
+        val selectionArgs = arrayOf(importId.toString())
+        val cursor = getEventsCursor(selection, selectionArgs)
+        val events = fillEvents(cursor)
+        return if (!events.isEmpty())
+            events[0]
+        else
+            null
     }
 
     fun getEventWithId(id: Int): Event? {

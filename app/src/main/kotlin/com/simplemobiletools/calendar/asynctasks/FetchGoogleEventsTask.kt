@@ -86,9 +86,13 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
             if (googleEvent.status != CONFIRMED)
                 continue
 
+            val lastUpdate = DateTime(googleEvent.updated).millis
             val importId = googleEvent.iCalUID
             if (importIDs.contains(importId)) {
-                continue
+                val oldEvent = dbHelper.getEventWithImportId(importId)
+                if (oldEvent != null && oldEvent.lastUpdated >= lastUpdate) {
+                    continue
+                }
             }
 
             val reminders = getReminder(googleEvent.reminders)
@@ -127,7 +131,7 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
 
             val event = Event(0, startTS, endTS, googleEvent.summary, googleEvent.description, reminders.getOrElse(0, { -1 }), reminders.getOrElse(1, { -1 }),
                     reminders.getOrElse(2, { -1 }), repeatRule.repeatInterval, importId, flags, repeatRule.repeatLimit, repeatRule.repeatRule,
-                    eventTypeId)
+                    eventTypeId, lastUpdated = lastUpdate)
 
             if (event.isAllDay && endTS > startTS) {
                 event.endTS -= DAY

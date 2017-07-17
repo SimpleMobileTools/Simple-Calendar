@@ -456,6 +456,8 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             eventType = mEventTypeId
             offset = getCurrentOffset()
             isDstIncluded = TimeZone.getDefault().inDaylightTime(Date())
+            lastUpdated = System.currentTimeMillis()
+            source = "Simple Calendar"
         }
 
         if (mEvent.id == 0) {
