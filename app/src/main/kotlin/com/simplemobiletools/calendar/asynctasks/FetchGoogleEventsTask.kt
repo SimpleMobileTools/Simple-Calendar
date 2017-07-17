@@ -98,7 +98,9 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
             }
 
             if (eventTypeId == -1) {
-                eventTypeId = dbHelper.insertEventType(EventType(0, eventType, activity.config.primaryColor))
+                val newEventType = EventType(0, eventType, activity.config.primaryColor)
+                eventTypeId = dbHelper.insertEventType(newEventType)
+                eventTypes.add(newEventType)
             }
 
             if (start.date != null) {
