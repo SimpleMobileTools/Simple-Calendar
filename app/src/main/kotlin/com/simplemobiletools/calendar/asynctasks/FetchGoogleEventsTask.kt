@@ -97,7 +97,6 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
                 }
             }
 
-            val reminders = getReminder(googleEvent.reminders)
             val start = googleEvent.start
             val end = googleEvent.end
             var startTS: Int
@@ -113,12 +112,8 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
                 endTS = DateTime(end.dateTime).seconds()
             }
 
-            val recurrence = googleEvent.recurrence?.firstOrNull()
-            var repeatRule = RepeatRule(0, 0, 0)
-            if (recurrence != null) {
-                repeatRule = Parser().parseRepeatInterval(recurrence.toString().trim('\"').substring(RRULE.length), startTS)
-            }
-
+            val reminders = getReminders(googleEvent.reminders)
+            val repeatRule = getRepeatRule(googleEvent, startTS)
             val eventTypeId = getEventTypeId(googleEvent)
             val event = Event(0, startTS, endTS, googleEvent.summary, googleEvent.description, reminders.getOrElse(0, { -1 }), reminders.getOrElse(1, { -1 }),
                     reminders.getOrElse(2, { -1 }), repeatRule.repeatInterval, importId, flags, repeatRule.repeatLimit, repeatRule.repeatRule,
@@ -151,7 +146,16 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
         return eventTypeId
     }
 
-    private fun getReminder(json: JsonObject): List<Int> {
+    private fun getRepeatRule(googleEvent: GoogleEvent, startTS: Int): RepeatRule {
+        val recurrence = googleEvent.recurrence?.firstOrNull()
+        return if (recurrence != null) {
+            Parser().parseRepeatInterval(recurrence.toString().trim('\"').substring(RRULE.length), startTS)
+        } else {
+            RepeatRule(0, 0, 0)
+        }
+    }
+
+    private fun getReminders(json: JsonObject): List<Int> {
         val array = json.getAsJsonArray(OVERRIDES)
         val token = object : TypeToken<List<GoogleEventReminder>>() {}.type
         val reminders = Gson().fromJson<ArrayList<GoogleEventReminder>>(array, token) ?: ArrayList<GoogleEventReminder>(2)
