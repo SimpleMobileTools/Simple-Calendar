@@ -93,6 +93,7 @@ class EventTypeAdapter(val activity: SimpleActivity, val mItems: List<EventType>
 
     private fun deleteEventTypes(deleteEvents: Boolean, ids: ArrayList<Int>) {
         listener?.deleteEventTypes(ids, deleteEvents)
+        actMode?.finish()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
