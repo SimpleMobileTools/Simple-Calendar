@@ -196,7 +196,7 @@
     <string name="display_past_events">Zobraziť minulé udalosti spred</string>
     <string name="snooze_delay">Posunúť pripomienku s Odložiť o</string>
     <string name="widgets">Widgety</string>
-    <string name="google_sync_testing">Google synchronizácia je v testovacej prevádzke, nahlásenie akýchkoľvek ohlasov na hello@simplemobiletools.com je vítané. Vďaka!</string>
+    <string name="google_sync_testing">Google synchronizácia je v testovacej prevádzke, buďte opatrní pri spoliehaní sa na ňu. Nahlásenie akýchkoľvek ohlasov na hello@simplemobiletools.com je vítané. Vďaka!</string>
 
     <plurals name="minutes">
         <item quantity="one">%1$d minútu</item>

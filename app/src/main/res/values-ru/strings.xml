@@ -203,7 +203,7 @@
     <string name="display_past_events">Показывать прошедшие события</string>
     <string name="snooze_delay">Postpone reminder with Snooze by</string>
     <string name="widgets">Widgets</string>
-    <string name="google_sync_testing">Google sync is in a testing mode, reporting any feedback at hello@simplemobiletools.com would be appreciated. Thanks!</string>
+    <string name="google_sync_testing">Google sync is in a testing mode, please be cautions when relying on it. Reporting any feedback at hello@simplemobiletools.com would be appreciated. Thanks!</string>
 
     <plurals name="minutes">
         <item quantity="one">%1$d минута</item>
