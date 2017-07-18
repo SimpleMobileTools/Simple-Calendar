@@ -1,7 +1,9 @@
 package com.simplemobiletools.calendar.asynctasks
 
 import android.app.Activity
+import android.graphics.Color
 import android.os.AsyncTask
+import android.util.SparseIntArray
 import com.google.api.client.extensions.android.http.AndroidHttp
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential
 import com.google.api.client.googleapis.extensions.android.gms.auth.UserRecoverableAuthIOException
@@ -34,6 +36,7 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
     private var lastError: Exception? = null
     private var dbHelper = activity.dbHelper
     private var eventTypes = ArrayList<EventType>()
+    private var eventColors = SparseIntArray()
 
     init {
         val transport = AndroidHttp.newCompatibleTransport()
@@ -44,11 +47,19 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
 
     override fun doInBackground(vararg params: Void): List<Event>? {
         return try {
+            getColors()
             getDataFromApi()
         } catch (e: Exception) {
             lastError = e
             cancel(true)
             null
+        }
+    }
+
+    private fun getColors() {
+        val colors = service.colors().get().execute()
+        for ((id, color) in colors.event.entries) {
+            eventColors.put(id.toInt(), Color.parseColor(color.background))
         }
     }
 
@@ -121,7 +132,7 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
 
             val reminders = getReminders(googleEvent.reminders)
             val repeatRule = getRepeatRule(googleEvent, startTS)
-            val eventTypeId = getEventTypeId(googleEvent)
+            val eventTypeId = getEventTypeId(googleEvent.colorId)
             val event = Event(eventId, startTS, endTS, googleEvent.summary, googleEvent.description, reminders.getOrElse(0, { -1 }),
                     reminders.getOrElse(1, { -1 }), reminders.getOrElse(2, { -1 }), repeatRule.repeatInterval, importId, flags, repeatRule.repeatLimit,
                     repeatRule.repeatRule, eventTypeId, lastUpdated = lastUpdate)
@@ -140,16 +151,17 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
         return events
     }
 
-    private fun getEventTypeId(googleEvent: GoogleEvent): Int {
+    private fun getEventTypeId(colorId: Int): Int {
         var eventTypeId = -1
-        val eventType = "google_sync_${googleEvent.colorId}"
+        val eventType = "google_sync_$colorId"
         eventTypes.forEach {
             if (it.title.toLowerCase() == eventType)
                 eventTypeId = it.id
         }
 
         if (eventTypeId == -1) {
-            val newEventType = EventType(0, eventType, activity.config.primaryColor)
+            val newColor = if (eventColors[colorId] != 0) eventColors[colorId] else activity.config.primaryColor
+            val newEventType = EventType(0, eventType, newColor)
             eventTypeId = dbHelper.insertEventType(newEventType)
             eventTypes.add(newEventType)
         }
