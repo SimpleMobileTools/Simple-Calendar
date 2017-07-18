@@ -439,7 +439,6 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         val wasRepeatable = mEvent.repeatInterval > 0
 
         val reminders = sortedSetOf(mReminder1Minutes, mReminder2Minutes, mReminder3Minutes).filter { it != REMINDER_OFF }
-        val dbHelper = DBHelper.newInstance(applicationContext, this)
         val newDescription = event_description.value
         mEvent.apply {
             startTS = newStartTS
@@ -460,6 +459,10 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             source = "Simple Calendar"
         }
 
+        storeEvent(wasRepeatable)
+    }
+
+    private fun storeEvent(wasRepeatable: Boolean) {
         if (mEvent.id == 0) {
             dbHelper.insert(mEvent) {
                 if (DateTime.now().isAfter(mEventStartDateTime.millis)) {
