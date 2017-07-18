@@ -80,6 +80,8 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
     }
 
     private fun parseEvents(json: String): List<Event> {
+        var updateEvent = false
+        var eventId = 0
         val importIDs = activity.dbHelper.getImportIds()
         val events = ArrayList<Event>()
         val token = object : TypeToken<List<GoogleEvent>>() {}.type
@@ -92,8 +94,13 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
             val importId = googleEvent.iCalUID
             if (importIDs.contains(importId)) {
                 val oldEvent = dbHelper.getEventWithImportId(importId)
-                if (oldEvent != null && oldEvent.lastUpdated >= lastUpdate) {
-                    continue
+                if (oldEvent != null) {
+                    if (oldEvent.lastUpdated >= lastUpdate) {
+                        continue
+                    } else {
+                        updateEvent = true
+                        eventId = oldEvent.id
+                    }
                 }
             }
 
@@ -115,16 +122,20 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
             val reminders = getReminders(googleEvent.reminders)
             val repeatRule = getRepeatRule(googleEvent, startTS)
             val eventTypeId = getEventTypeId(googleEvent)
-            val event = Event(0, startTS, endTS, googleEvent.summary, googleEvent.description, reminders.getOrElse(0, { -1 }), reminders.getOrElse(1, { -1 }),
-                    reminders.getOrElse(2, { -1 }), repeatRule.repeatInterval, importId, flags, repeatRule.repeatLimit, repeatRule.repeatRule,
-                    eventTypeId, lastUpdated = lastUpdate)
+            val event = Event(eventId, startTS, endTS, googleEvent.summary, googleEvent.description, reminders.getOrElse(0, { -1 }),
+                    reminders.getOrElse(1, { -1 }), reminders.getOrElse(2, { -1 }), repeatRule.repeatInterval, importId, flags, repeatRule.repeatLimit,
+                    repeatRule.repeatRule, eventTypeId, lastUpdated = lastUpdate)
 
             if (event.isAllDay && endTS > startTS) {
                 event.endTS -= DAY
             }
 
-            importIDs.add(importId)
-            dbHelper.insert(event) {}
+            if (updateEvent) {
+                dbHelper.update(event)
+            } else {
+                importIDs.add(importId)
+                dbHelper.insert(event) {}
+            }
         }
         return events
     }
