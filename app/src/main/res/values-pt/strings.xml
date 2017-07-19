@@ -189,7 +189,7 @@
     <string name="display_past_events">Mostrar eventos passados</string>
     <string name="snooze_delay">Adiar lembrete com a opção Snooze</string>
     <string name="widgets">Widgets</string>
-    <string name="google_sync_testing"> A sincronização Google ainda não está terminada. Reporte os erros encontrados para hello@simplemobiletools.com. Obrigado!</string>
+    <string name="google_sync_testing">A sincronização Google ainda não está terminada. Reporte os erros encontrados para hello@simplemobiletools.com. Obrigado!</string>
 
     <plurals name="minutes">
         <item quantity="one">%1$d minuto</item>
