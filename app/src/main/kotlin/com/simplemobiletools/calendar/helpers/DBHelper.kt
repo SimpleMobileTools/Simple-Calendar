@@ -79,7 +79,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         db.execSQL("CREATE TABLE $MAIN_TABLE_NAME ($COL_ID INTEGER PRIMARY KEY, $COL_START_TS INTEGER, $COL_END_TS INTEGER, $COL_TITLE TEXT, " +
                 "$COL_DESCRIPTION TEXT, $COL_REMINDER_MINUTES INTEGER, $COL_REMINDER_MINUTES_2 INTEGER, $COL_REMINDER_MINUTES_3 INTEGER, " +
                 "$COL_IMPORT_ID TEXT, $COL_FLAGS INTEGER, $COL_EVENT_TYPE INTEGER NOT NULL DEFAULT $REGULAR_EVENT_TYPE_ID, " +
-                "$COL_PARENT_EVENT_ID INTEGER, $COL_OFFSET TEXT, $COL_IS_DST_INCLUDED INTEGER, $COL_LAST_UPDATED INTEGER, $COL_SOURCE TEXT)")
+                "$COL_PARENT_EVENT_ID INTEGER, $COL_OFFSET TEXT, $COL_IS_DST_INCLUDED INTEGER, $COL_LAST_UPDATED INTEGER, $COL_SOURCE INTEGER)")
 
         createMetaTable(db)
         createTypesTable(db)
@@ -147,7 +147,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
         if (oldVersion < 14) {
             db.execSQL("ALTER TABLE $MAIN_TABLE_NAME ADD COLUMN $COL_LAST_UPDATED INTEGER NOT NULL DEFAULT 0")
-            db.execSQL("ALTER TABLE $MAIN_TABLE_NAME ADD COLUMN $COL_SOURCE TEXT DEFAULT ''")
+            db.execSQL("ALTER TABLE $MAIN_TABLE_NAME ADD COLUMN $COL_SOURCE INTEGER NOT NULL DEFAULT $SOURCE_SIMPLE_CALENDAR")
         }
     }
 
@@ -686,7 +686,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                     val offset = cursor.getStringValue(COL_OFFSET)
                     val isDstIncluded = cursor.getIntValue(COL_IS_DST_INCLUDED) == 1
                     val lastUpdated = cursor.getLongValue(COL_LAST_UPDATED)
-                    val source = cursor.getStringValue(COL_SOURCE)
+                    val source = cursor.getIntValue(COL_SOURCE)
 
                     val ignoreEventOccurrences = if (repeatInterval != 0) {
                         getIgnoredOccurrences(id)

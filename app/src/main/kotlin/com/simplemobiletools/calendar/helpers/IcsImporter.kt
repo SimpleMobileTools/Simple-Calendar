@@ -98,7 +98,8 @@ class IcsImporter {
 
                         val event = Event(0, curStart, curEnd, curTitle, curDescription, curReminderMinutes.getOrElse(0, { -1 }),
                                 curReminderMinutes.getOrElse(1, { -1 }), curReminderMinutes.getOrElse(2, { -1 }), curRepeatInterval,
-                                curImportId, curFlags, curRepeatLimit, curRepeatRule, curEventType, lastUpdated = curLastModified)
+                                curImportId, curFlags, curRepeatLimit, curRepeatRule, curEventType, lastUpdated = curLastModified,
+                                source = SOURCE_IMPORTED_ICS)
 
                         if (event.isAllDay && curEnd > curStart) {
                             event.endTS -= DAY

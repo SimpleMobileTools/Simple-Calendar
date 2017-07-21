@@ -16,12 +16,10 @@ import com.simplemobiletools.calendar.activities.SettingsActivity
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.seconds
-import com.simplemobiletools.calendar.helpers.DAY
-import com.simplemobiletools.calendar.helpers.FLAG_ALL_DAY
-import com.simplemobiletools.calendar.helpers.Parser
-import com.simplemobiletools.calendar.helpers.RRULE
+import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.models.*
 import org.joda.time.DateTime
+import java.util.*
 
 // more info about event fields at https://developers.google.com/google-apps/calendar/v3/reference/events/insert
 class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCredential) : AsyncTask<Void, Void, List<Event>>() {
@@ -135,7 +133,7 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
             val eventTypeId = getEventTypeId(googleEvent.colorId)
             val event = Event(eventId, startTS, endTS, googleEvent.summary, googleEvent.description, reminders.getOrElse(0, { -1 }),
                     reminders.getOrElse(1, { -1 }), reminders.getOrElse(2, { -1 }), repeatRule.repeatInterval, importId, flags, repeatRule.repeatLimit,
-                    repeatRule.repeatRule, eventTypeId, lastUpdated = lastUpdate)
+                    repeatRule.repeatRule, eventTypeId, lastUpdated = lastUpdate, source = SOURCE_GOOGLE_SYNC)
 
             if (event.isAllDay && endTS > startTS) {
                 event.endTS -= DAY
