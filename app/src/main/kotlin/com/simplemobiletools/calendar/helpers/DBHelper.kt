@@ -365,6 +365,14 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             deleteEvents(childIds.toTypedArray())
     }
 
+    fun deleteGoogleSyncEvents() {
+        val selection = "$COL_SOURCE = $SOURCE_GOOGLE_SYNC"
+        val cursor = getEventsCursor(selection)
+        val events = fillEvents(cursor)
+        val eventIDs = Array(events.size, { i -> (events[i].id.toString()) })
+        deleteEvents(eventIDs)
+    }
+
     fun addEventRepeatException(parentEventId: Int, occurrenceTS: Int) {
         fillExceptionValues(parentEventId, occurrenceTS) {
             mDb.insert(EXCEPTIONS_TABLE_NAME, null, it)
