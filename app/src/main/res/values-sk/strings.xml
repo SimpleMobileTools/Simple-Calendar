@@ -197,6 +197,8 @@
     <string name="snooze_delay">Posunúť pripomienku s Odložiť o</string>
     <string name="widgets">Widgety</string>
     <string name="google_sync_testing">Google synchronizácia je v testovacej prevádzke, buďte opatrní pri spoliehaní sa na ňu. Nahlásenie akýchkoľvek ohlasov na hello@simplemobiletools.com je vítané. Vďaka!</string>
+    <string name="google_sync_existing">Odoslať lokálne vytvorené udalosti do oblakov?</string>
+    <string name="google_sync_disabling">Vypnutie Google synchonizácie odstráni všetky synchronizované udalosti zo zariadenia, no v oblakoch ostanú nedotknuté.</string>
 
     <plurals name="minutes">
         <item quantity="one">%1$d minútu</item>
