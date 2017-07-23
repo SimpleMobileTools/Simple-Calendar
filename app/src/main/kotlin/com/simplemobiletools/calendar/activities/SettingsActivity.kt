@@ -44,14 +44,10 @@ class SettingsActivity : SimpleActivity() {
         val REQUEST_AUTHORIZATION = 5
     }
 
-    lateinit var credential: GoogleAccountCredential
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
         res = resources
-
-        credential = GoogleAccountCredential.usingOAuth2(this, arrayListOf(CalendarScopes.CALENDAR)).setBackOff(ExponentialBackOff())
     }
 
     override fun onResume() {
@@ -331,7 +327,6 @@ class SettingsActivity : SimpleActivity() {
         } else if (config.syncAccountName.isEmpty()) {
             showAccountChooser()
         } else {
-            credential.selectedAccountName = config.syncAccountName
             FetchGoogleEventsTask(this).execute()
         }
     }
@@ -369,6 +364,7 @@ class SettingsActivity : SimpleActivity() {
 
     private fun showAccountChooser() {
         if (config.syncAccountName.isEmpty()) {
+            val credential = GoogleAccountCredential.usingOAuth2(this, arrayListOf(CalendarScopes.CALENDAR)).setBackOff(ExponentialBackOff())
             startActivityForResult(credential.newChooseAccountIntent(), REQUEST_ACCOUNT_NAME)
         }
     }
