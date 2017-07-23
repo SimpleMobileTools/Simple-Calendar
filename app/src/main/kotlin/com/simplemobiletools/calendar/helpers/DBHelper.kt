@@ -323,9 +323,13 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         return null
     }
 
-    fun deleteEvents(ids: Array<String>) {
+    fun deleteEvents(ids: Array<String>, deleteFromGoogle: Boolean = true) {
         val args = TextUtils.join(", ", ids)
-        val selection = "$COL_ID IN ($args)"
+        val selection = "$MAIN_TABLE_NAME.$COL_ID IN ($args)"
+        val cursor = getEventsCursor(selection)
+        val events = fillEvents(cursor)
+        val importIDs = Array(events.size, { i -> (events[i].importId) })
+
         mDb.delete(MAIN_TABLE_NAME, selection, null)
 
         val metaSelection = "$COL_EVENT_ID IN ($args)"
@@ -342,6 +346,15 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
 
         deleteChildEvents(args)
+        if (deleteFromGoogle) {
+            importIDs.forEach {
+                Thread({
+                    if (context.isOnline()) {
+                        context.getGoogleSyncService().events().delete(PRIMARY, it).execute()
+                    }
+                }).start()
+            }
+        }
     }
 
     private fun deleteChildEvents(ids: String) {
@@ -370,7 +383,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         val cursor = getEventsCursor(selection)
         val events = fillEvents(cursor)
         val eventIDs = Array(events.size, { i -> (events[i].id.toString()) })
-        deleteEvents(eventIDs)
+        deleteEvents(eventIDs, false)
     }
 
     fun addEventRepeatException(parentEventId: Int, occurrenceTS: Int) {

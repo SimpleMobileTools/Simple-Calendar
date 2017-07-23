@@ -21,7 +21,6 @@ import java.util.*
 // more info about event fields at https://developers.google.com/google-apps/calendar/v3/reference/events/insert
 class FetchGoogleEventsTask(val activity: Activity) : AsyncTask<Void, Void, List<Event>>() {
     private val CONFIRMED = "confirmed"
-    private val PRIMARY = "primary"
     private val ITEMS = "items"
     private val OVERRIDES = "overrides"
     private val POPUP = "popup"
