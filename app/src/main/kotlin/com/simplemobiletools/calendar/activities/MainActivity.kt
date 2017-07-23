@@ -90,7 +90,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
             config.googleSync = false
         }
 
-        if (config.syncAccountName.isNotEmpty()) {
+        if (config.syncAccountName.isNotEmpty() && config.googleSync) {
             FetchGoogleEventsTask(this, googleSyncListener).execute()
         }
     }

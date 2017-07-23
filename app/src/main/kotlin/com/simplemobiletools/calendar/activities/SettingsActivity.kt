@@ -134,6 +134,8 @@ class SettingsActivity : SimpleActivity() {
 
         if (settings_google_sync.isChecked) {
             tryEnablingSync()
+        } else {
+            disableGoogleSync()
         }
     }
 
@@ -346,8 +348,9 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun disableGoogleSync() {
-        settings_google_sync.toggle()
+        settings_google_sync.isChecked = false
         config.googleSync = false
+        config.syncAccountName = ""
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
