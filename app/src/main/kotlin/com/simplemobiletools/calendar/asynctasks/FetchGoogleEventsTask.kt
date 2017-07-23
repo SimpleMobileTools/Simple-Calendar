@@ -4,17 +4,14 @@ import android.app.Activity
 import android.graphics.Color
 import android.os.AsyncTask
 import android.util.SparseIntArray
-import com.google.api.client.extensions.android.http.AndroidHttp
-import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential
 import com.google.api.client.googleapis.extensions.android.gms.auth.UserRecoverableAuthIOException
-import com.google.api.client.json.gson.GsonFactory
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
-import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.SettingsActivity
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
+import com.simplemobiletools.calendar.extensions.getGoogleSyncService
 import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.models.*
@@ -22,7 +19,7 @@ import org.joda.time.DateTime
 import java.util.*
 
 // more info about event fields at https://developers.google.com/google-apps/calendar/v3/reference/events/insert
-class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCredential) : AsyncTask<Void, Void, List<Event>>() {
+class FetchGoogleEventsTask(val activity: Activity) : AsyncTask<Void, Void, List<Event>>() {
     private val CONFIRMED = "confirmed"
     private val PRIMARY = "primary"
     private val ITEMS = "items"
@@ -30,18 +27,11 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
     private val POPUP = "popup"
     private val NEXT_PAGE_TOKEN = "nextPageToken"
 
-    private var service: com.google.api.services.calendar.Calendar
     private var lastError: Exception? = null
     private var dbHelper = activity.dbHelper
     private var eventTypes = ArrayList<EventType>()
     private var eventColors = SparseIntArray()
-
-    init {
-        val transport = AndroidHttp.newCompatibleTransport()
-        service = com.google.api.services.calendar.Calendar.Builder(transport, GsonFactory(), credential)
-                .setApplicationName(activity.resources.getString(R.string.app_name))
-                .build()
-    }
+    private var service = activity.getGoogleSyncService()
 
     override fun doInBackground(vararg params: Void): List<Event>? {
         return try {

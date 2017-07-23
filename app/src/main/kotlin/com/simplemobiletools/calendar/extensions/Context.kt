@@ -13,6 +13,11 @@ import android.graphics.Color
 import android.net.Uri
 import android.os.Build
 import android.support.v7.app.NotificationCompat
+import com.google.api.client.extensions.android.http.AndroidHttp
+import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential
+import com.google.api.client.json.gson.GsonFactory
+import com.google.api.client.util.ExponentialBackOff
+import com.google.api.services.calendar.CalendarScopes
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.helpers.*
@@ -223,6 +228,15 @@ fun Context.launchNewEventIntent(startNewTask: Boolean = false, today: Boolean =
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(this)
     }
+}
+
+fun Context.getGoogleSyncService(): com.google.api.services.calendar.Calendar {
+    val credential = GoogleAccountCredential.usingOAuth2(this, arrayListOf(CalendarScopes.CALENDAR)).setBackOff(ExponentialBackOff())
+    credential.selectedAccountName = config.syncAccountName
+    val transport = AndroidHttp.newCompatibleTransport()
+    return com.google.api.services.calendar.Calendar.Builder(transport, GsonFactory(), credential)
+            .setApplicationName(resources.getString(R.string.app_name))
+            .build()
 }
 
 fun Context.getNewEventTimestampFromCode(dayCode: String) = Formatter.getLocalDateTimeFromCode(dayCode).withTime(13, 0, 0, 0).seconds()

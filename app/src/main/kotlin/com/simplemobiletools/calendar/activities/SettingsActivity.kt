@@ -328,7 +328,7 @@ class SettingsActivity : SimpleActivity() {
             showAccountChooser()
         } else {
             credential.selectedAccountName = config.syncAccountName
-            FetchGoogleEventsTask(this, credential).execute()
+            FetchGoogleEventsTask(this).execute()
         }
     }
 
