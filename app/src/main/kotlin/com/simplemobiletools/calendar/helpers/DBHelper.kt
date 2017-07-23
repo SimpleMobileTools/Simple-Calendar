@@ -381,10 +381,14 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             deleteEvents(childIds.toTypedArray())
     }
 
-    fun deleteGoogleSyncEvents() {
+    fun getGoogleSyncEvents(): List<Event> {
         val selection = "$COL_SOURCE = $SOURCE_GOOGLE_SYNC"
         val cursor = getEventsCursor(selection)
-        val events = fillEvents(cursor)
+        return fillEvents(cursor)
+    }
+
+    fun deleteGoogleSyncEvents() {
+        val events = getGoogleSyncEvents()
         val eventIDs = Array(events.size, { i -> (events[i].id.toString()) })
         deleteEvents(eventIDs, false)
     }
