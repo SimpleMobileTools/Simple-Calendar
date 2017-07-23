@@ -6,5 +6,6 @@
 .DS_Store
 /build
 /captures
+debug.keystore
 release.keystore
 signing.properties

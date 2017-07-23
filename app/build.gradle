@@ -17,6 +17,7 @@ android {
 
     signingConfigs {
         release
+        debug
     }
 
     buildTypes {
@@ -24,6 +25,9 @@ android {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
+        }
+        debug {
+            signingConfig signingConfigs.debug
         }
     }
 
@@ -78,10 +82,21 @@ if (propFile.canRead()) {
         android.signingConfigs.release.keyAlias = props['KEY_ALIAS']
         android.signingConfigs.release.keyPassword = props['PASSWORD']
     } else {
-        println 'signing.properties found but some entries are missing'
+        println 'signing.properties found but some release entries are missing'
         android.buildTypes.release.signingConfig = null
+    }
+
+    if (props != null && props.containsKey('DEBUG_STORE_FILE') && props.containsKey('DEBUG_KEY_ALIAS') && props.containsKey('DEBUG_PASSWORD')) {
+        android.signingConfigs.debug.storeFile = file(props['DEBUG_STORE_FILE'])
+        android.signingConfigs.debug.storePassword = props['DEBUG_PASSWORD']
+        android.signingConfigs.debug.keyAlias = props['DEBUG_KEY_ALIAS']
+        android.signingConfigs.debug.keyPassword = props['DEBUG_PASSWORD']
+    } else {
+        println 'signing.properties found but some debug entries are missing'
+        android.buildTypes.debug.signingConfig = null
     }
 } else {
     println 'signing.properties not found'
     android.buildTypes.release.signingConfig = null
+    android.buildTypes.debug.signingConfig = null
 }
