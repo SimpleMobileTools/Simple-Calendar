@@ -367,6 +367,7 @@ class SettingsActivity : SimpleActivity() {
 
     private fun showAccountChooser() {
         if (config.syncAccountName.isEmpty()) {
+            // more about oauth at https://developers.google.com/google-apps/calendar/auth
             val credential = GoogleAccountCredential.usingOAuth2(this, arrayListOf(CalendarScopes.CALENDAR)).setBackOff(ExponentialBackOff())
             startActivityForResult(credential.newChooseAccountIntent(), REQUEST_ACCOUNT_NAME)
         }
