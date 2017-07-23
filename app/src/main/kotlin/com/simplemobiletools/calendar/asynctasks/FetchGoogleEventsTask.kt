@@ -90,7 +90,7 @@ class FetchGoogleEventsTask(val activity: Activity) : AsyncTask<Void, Void, List
                 continue
 
             val lastUpdate = DateTime(googleEvent.updated).millis
-            val importId = googleEvent.iCalUID
+            val importId = googleEvent.id
             if (importIDs.contains(importId)) {
                 val oldEvent = dbHelper.getEventWithImportId(importId)
                 if (oldEvent != null) {
