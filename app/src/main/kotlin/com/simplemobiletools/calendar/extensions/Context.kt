@@ -249,6 +249,8 @@ fun Context.getNewEventTimestampFromCode(dayCode: String) = Formatter.getLocalDa
 
 fun Context.getCurrentOffset() = SimpleDateFormat("Z", Locale.getDefault()).format(Date())
 
+fun Context.isGoogleSyncActive() = config.googleSync && config.syncAccountName.isNotEmpty()
+
 val Context.config: Config get() = Config.newInstance(this)
 
 val Context.dbHelper: DBHelper get() = DBHelper.newInstance(this)

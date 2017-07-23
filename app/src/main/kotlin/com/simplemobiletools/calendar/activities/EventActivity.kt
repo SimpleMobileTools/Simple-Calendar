@@ -470,6 +470,13 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
                 } else {
                     toast(R.string.event_added)
                 }
+
+                if (isGoogleSyncActive()) {
+                    if (isOnline()) {
+                        createRemoteGoogleEvent()
+                    }
+                }
+
                 finish()
             }
         } else {
@@ -491,6 +498,10 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
                 dbHelper.update(mEvent)
             }
         }
+    }
+
+    private fun createRemoteGoogleEvent() {
+
     }
 
     private fun updateStartTexts() {

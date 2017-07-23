@@ -109,7 +109,7 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun setupGoogleSync() {
-        settings_google_sync.isChecked = config.googleSync
+        settings_google_sync.isChecked = isGoogleSyncActive()
         settings_google_sync_holder.setOnClickListener {
             if (config.googleSync) {
                 ConfirmationDialog(this, getString(R.string.google_sync_disabling), positive = R.string.ok, negative = R.string.cancel) {
