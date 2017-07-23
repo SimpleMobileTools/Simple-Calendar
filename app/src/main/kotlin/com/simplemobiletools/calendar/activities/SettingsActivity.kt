@@ -51,7 +51,7 @@ class SettingsActivity : SimpleActivity() {
         setContentView(R.layout.activity_settings)
         res = resources
 
-        credential = GoogleAccountCredential.usingOAuth2(this, arrayListOf(CalendarScopes.CALENDAR_READONLY)).setBackOff(ExponentialBackOff())
+        credential = GoogleAccountCredential.usingOAuth2(this, arrayListOf(CalendarScopes.CALENDAR)).setBackOff(ExponentialBackOff())
     }
 
     override fun onResume() {
