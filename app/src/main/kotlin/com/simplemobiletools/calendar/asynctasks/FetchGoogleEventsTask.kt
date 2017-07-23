@@ -21,7 +21,6 @@ import java.util.*
 
 // more info about event fields at https://developers.google.com/google-apps/calendar/v3/reference/events/insert
 class FetchGoogleEventsTask(val activity: Activity, val googleSyncListener: GoogleSyncListener? = null) : AsyncTask<Void, Void, String>() {
-    private val CONFIRMED = "confirmed"
     private val ITEMS = "items"
     private val OVERRIDES = "overrides"
     private val POPUP = "popup"
@@ -86,7 +85,7 @@ class FetchGoogleEventsTask(val activity: Activity, val googleSyncListener: Goog
         for (googleEvent in googleEvents) {
             val importId = googleEvent.id
             remoteImportIds.add(importId)
-            if (googleEvent.status != CONFIRMED)
+            if (!googleEvent.status.equals(CONFIRMED, true))
                 continue
 
             val lastUpdate = DateTime(googleEvent.updated).millis

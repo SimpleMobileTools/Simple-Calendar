@@ -9,6 +9,7 @@ import android.text.method.LinkMovementMethod
 import android.view.Menu
 import android.view.MenuItem
 import android.view.WindowManager
+import com.google.api.services.calendar.model.EventDateTime
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.dialogs.*
 import com.simplemobiletools.calendar.extensions.*
@@ -473,7 +474,9 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
                 if (isGoogleSyncActive()) {
                     if (isOnline()) {
-                        createRemoteGoogleEvent()
+                        Thread({
+                            createRemoteGoogleEvent()
+                        }).start()
                     }
                 }
 
@@ -501,7 +504,18 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     }
 
     private fun createRemoteGoogleEvent() {
+        try {
+            com.google.api.services.calendar.model.Event().apply {
+                summary = mEvent.title
+                description = mEvent.description
+                start = EventDateTime().setDateTime(com.google.api.client.util.DateTime(mEvent.startTS * 1000L))
+                end = EventDateTime().setDateTime(com.google.api.client.util.DateTime(mEvent.endTS * 1000L))
+                status = CONFIRMED.toLowerCase()
+                getGoogleSyncService().events().insert(PRIMARY, this).execute()
+            }
+        } catch (ignored: Exception) {
 
+        }
     }
 
     private fun updateStartTexts() {
