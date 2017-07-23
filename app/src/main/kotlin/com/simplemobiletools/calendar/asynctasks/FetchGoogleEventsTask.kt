@@ -14,12 +14,13 @@ import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.getGoogleSyncService
 import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.helpers.*
+import com.simplemobiletools.calendar.interfaces.GoogleSyncListener
 import com.simplemobiletools.calendar.models.*
 import org.joda.time.DateTime
 import java.util.*
 
 // more info about event fields at https://developers.google.com/google-apps/calendar/v3/reference/events/insert
-class FetchGoogleEventsTask(val activity: Activity) : AsyncTask<Void, Void, List<Event>>() {
+class FetchGoogleEventsTask(val activity: Activity, val googleSyncListener: GoogleSyncListener? = null) : AsyncTask<Void, Void, String>() {
     private val CONFIRMED = "confirmed"
     private val ITEMS = "items"
     private val OVERRIDES = "overrides"
@@ -32,15 +33,16 @@ class FetchGoogleEventsTask(val activity: Activity) : AsyncTask<Void, Void, List
     private var eventColors = SparseIntArray()
     private var service = activity.getGoogleSyncService()
 
-    override fun doInBackground(vararg params: Void): List<Event>? {
-        return try {
+    override fun doInBackground(vararg params: Void): String {
+        try {
             getColors()
             getDataFromApi()
         } catch (e: Exception) {
             lastError = e
             cancel(true)
-            null
         }
+        googleSyncListener?.syncCompleted()
+        return ""
     }
 
     private fun getColors() {
@@ -50,8 +52,7 @@ class FetchGoogleEventsTask(val activity: Activity) : AsyncTask<Void, Void, List
         }
     }
 
-    private fun getDataFromApi(): List<Event> {
-        val parsedEvents = ArrayList<Event>()
+    private fun getDataFromApi() {
         var currToken = ""
         while (true) {
             val events = service.events().list(PRIMARY)
@@ -60,10 +61,8 @@ class FetchGoogleEventsTask(val activity: Activity) : AsyncTask<Void, Void, List
 
             for ((key, value) in events) {
                 if (key == ITEMS) {
-                    dbHelper.getEventTypes {
-                        eventTypes = it
-                        parseEvents(value.toString())
-                    }
+                    eventTypes = dbHelper.fetchEventTypes()
+                    parseEvents(value.toString())
                 }
             }
 
@@ -73,15 +72,12 @@ class FetchGoogleEventsTask(val activity: Activity) : AsyncTask<Void, Void, List
                 break
             }
         }
-
-        return parsedEvents
     }
 
-    private fun parseEvents(json: String): List<Event> {
+    private fun parseEvents(json: String) {
         var updateEvent = false
         var eventId = 0
         val importIDs = activity.dbHelper.getImportIds()
-        val events = ArrayList<Event>()
         val token = object : TypeToken<List<GoogleEvent>>() {}.type
         val googleEvents = Gson().fromJson<ArrayList<GoogleEvent>>(json, token) ?: ArrayList<GoogleEvent>(8)
         for (googleEvent in googleEvents) {
@@ -136,7 +132,6 @@ class FetchGoogleEventsTask(val activity: Activity) : AsyncTask<Void, Void, List
                 dbHelper.insert(event) {}
             }
         }
-        return events
     }
 
     private fun getEventTypeId(colorId: Int): Int {

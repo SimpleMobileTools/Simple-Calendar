@@ -736,11 +736,11 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
     fun getEventTypes(callback: (types: ArrayList<EventType>) -> Unit) {
         Thread({
-            fetchEventTypes(callback)
+            callback(fetchEventTypes())
         }).start()
     }
 
-    fun fetchEventTypes(callback: (types: ArrayList<EventType>) -> Unit) {
+    fun fetchEventTypes(): ArrayList<EventType> {
         val eventTypes = ArrayList<EventType>(3)
         val cols = arrayOf(COL_TYPE_ID, COL_TYPE_TITLE, COL_TYPE_COLOR)
         var cursor: Cursor? = null
@@ -758,7 +758,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         } finally {
             cursor?.close()
         }
-        callback.invoke(eventTypes)
+        return eventTypes
     }
 
     fun doEventTypesContainEvent(types: ArrayList<Int>): Boolean {
