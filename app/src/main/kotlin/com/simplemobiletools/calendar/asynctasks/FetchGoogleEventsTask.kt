@@ -128,10 +128,11 @@ class FetchGoogleEventsTask(val activity: Activity, credential: GoogleAccountCre
                 endTS = DateTime(end.dateTime).seconds()
             }
 
+            val description = googleEvent.description ?: ""
             val reminders = getReminders(googleEvent.reminders)
             val repeatRule = getRepeatRule(googleEvent, startTS)
             val eventTypeId = getEventTypeId(googleEvent.colorId)
-            val event = Event(eventId, startTS, endTS, googleEvent.summary, googleEvent.description, reminders.getOrElse(0, { -1 }),
+            val event = Event(eventId, startTS, endTS, googleEvent.summary, description, reminders.getOrElse(0, { -1 }),
                     reminders.getOrElse(1, { -1 }), reminders.getOrElse(2, { -1 }), repeatRule.repeatInterval, importId, flags, repeatRule.repeatLimit,
                     repeatRule.repeatRule, eventTypeId, lastUpdated = lastUpdate, source = SOURCE_GOOGLE_SYNC)
 
