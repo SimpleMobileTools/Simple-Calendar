@@ -113,7 +113,7 @@ class SettingsActivity : SimpleActivity() {
         settings_google_sync_holder.setOnClickListener {
             if (config.googleSync) {
                 ConfirmationDialog(this, getString(R.string.google_sync_disabling), positive = R.string.ok, negative = R.string.cancel) {
-                    dbHelper.deleteGoogleSyncEvents()
+                    dbHelper.deleteAllGoogleSyncEvents()
                     toggleGoogleSync()
                 }
             } else {

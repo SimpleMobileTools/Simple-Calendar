@@ -345,7 +345,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             context.cancelNotification(it.toInt())
         }
 
-        deleteChildEvents(args)
+        deleteChildEvents(args, deleteFromGoogle)
         if (deleteFromGoogle) {
             importIDs.forEach {
                 Thread({
@@ -360,7 +360,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
     }
 
-    private fun deleteChildEvents(ids: String) {
+    private fun deleteChildEvents(ids: String, deleteFromGoogle: Boolean) {
         val projection = arrayOf(COL_ID)
         val selection = "$COL_PARENT_EVENT_ID IN ($ids)"
         val childIds = ArrayList<String>()
@@ -378,7 +378,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
 
         if (childIds.isNotEmpty())
-            deleteEvents(childIds.toTypedArray())
+            deleteEvents(childIds.toTypedArray(), deleteFromGoogle)
     }
 
     fun getGoogleSyncEvents(): List<Event> {
@@ -387,7 +387,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         return fillEvents(cursor)
     }
 
-    fun deleteGoogleSyncEvents() {
+    fun deleteAllGoogleSyncEvents() {
         val events = getGoogleSyncEvents()
         val eventIDs = Array(events.size, { i -> (events[i].id.toString()) })
         deleteEvents(eventIDs, false)

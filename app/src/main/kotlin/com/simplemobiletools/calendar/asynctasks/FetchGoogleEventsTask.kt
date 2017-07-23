@@ -62,7 +62,9 @@ class FetchGoogleEventsTask(val activity: Activity, val googleSyncListener: Goog
             for ((key, value) in events) {
                 if (key == ITEMS) {
                     eventTypes = dbHelper.fetchEventTypes()
-                    parseEvents(value.toString())
+                    val localGoogleEvents = dbHelper.getGoogleSyncEvents()
+                    val remoteGoogleEvents = parseEvents(value.toString())
+                    removeRedundantLocalEvents(localGoogleEvents, remoteGoogleEvents)
                 }
             }
 
@@ -74,18 +76,20 @@ class FetchGoogleEventsTask(val activity: Activity, val googleSyncListener: Goog
         }
     }
 
-    private fun parseEvents(json: String) {
+    private fun parseEvents(json: String): ArrayList<String> {
+        val remoteImportIds = ArrayList<String>()
         var updateEvent = false
         var eventId = 0
         val importIDs = activity.dbHelper.getImportIds()
         val token = object : TypeToken<List<GoogleEvent>>() {}.type
         val googleEvents = Gson().fromJson<ArrayList<GoogleEvent>>(json, token) ?: ArrayList<GoogleEvent>(8)
         for (googleEvent in googleEvents) {
+            val importId = googleEvent.id
+            remoteImportIds.add(importId)
             if (googleEvent.status != CONFIRMED)
                 continue
 
             val lastUpdate = DateTime(googleEvent.updated).millis
-            val importId = googleEvent.id
             if (importIDs.contains(importId)) {
                 val oldEvent = dbHelper.getEventWithImportId(importId)
                 if (oldEvent != null) {
@@ -132,6 +136,13 @@ class FetchGoogleEventsTask(val activity: Activity, val googleSyncListener: Goog
                 dbHelper.insert(event) {}
             }
         }
+        return remoteImportIds
+    }
+
+    private fun removeRedundantLocalEvents(localGoogleEvents: List<Event>, remoteGoogleEvents: ArrayList<String>) {
+        val filtered = localGoogleEvents.filter { !remoteGoogleEvents.contains(it.importId) }
+        val filteredIds = Array(filtered.size, { i -> (filtered[i].id.toString()) })
+        dbHelper.deleteEvents(filteredIds, false)
     }
 
     private fun getEventTypeId(colorId: Int): Int {
