@@ -121,8 +121,12 @@ class SettingsActivity : SimpleActivity() {
                     toggleGoogleSync()
                 }
             } else {
-                ConfirmationDialog(this, getString(R.string.google_sync_testing), positive = R.string.ok, negative = 0) {
-                    toggleGoogleSync()
+                if (isOnline()) {
+                    ConfirmationDialog(this, getString(R.string.google_sync_testing), positive = R.string.ok, negative = 0) {
+                        toggleGoogleSync()
+                    }
+                } else {
+                    toast(R.string.cannot_while_offline)
                 }
             }
         }

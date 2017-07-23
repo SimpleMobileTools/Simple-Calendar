@@ -10,6 +10,7 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.net.ConnectivityManager
 import android.net.Uri
 import android.os.Build
 import android.support.v7.app.NotificationCompat
@@ -237,6 +238,11 @@ fun Context.getGoogleSyncService(): com.google.api.services.calendar.Calendar {
     return com.google.api.services.calendar.Calendar.Builder(transport, GsonFactory(), credential)
             .setApplicationName(resources.getString(R.string.app_name))
             .build()
+}
+
+fun Context.isOnline(): Boolean {
+    val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    return connectivityManager.activeNetworkInfo != null
 }
 
 fun Context.getNewEventTimestampFromCode(dayCode: String) = Formatter.getLocalDateTimeFromCode(dayCode).withTime(13, 0, 0, 0).seconds()

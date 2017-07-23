@@ -189,6 +189,7 @@
     <string name="display_past_events">Mostrar eventos passados</string>
     <string name="snooze_delay">Adiar lembrete com a opção Snooze</string>
     <string name="widgets">Widgets</string>
+    <string name="cannot_while_offline">You cannot do that while offline.</string>
     <string name="google_sync_testing">A sincronização Google ainda não está terminada. Reporte os erros encontrados para hello@simplemobiletools.com. Obrigado!</string>
     <string name="google_sync_existing">Send locally created events to the cloud?</string>
     <string name="google_sync_disabling">Disabling Google sync will delete all synced events from your device, while leaving them intact in the cloud.</string>
