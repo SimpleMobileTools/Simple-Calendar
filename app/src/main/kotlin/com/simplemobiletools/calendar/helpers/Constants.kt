@@ -123,3 +123,4 @@ val SOURCE_IMPORTED_ICS = 2
 
 // Google Sync
 val PRIMARY = "primary"
+val POPUP = "popup"

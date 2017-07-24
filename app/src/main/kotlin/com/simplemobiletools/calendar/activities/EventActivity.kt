@@ -10,6 +10,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.WindowManager
 import com.google.api.services.calendar.model.EventDateTime
+import com.google.api.services.calendar.model.EventReminder
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.dialogs.*
 import com.simplemobiletools.calendar.extensions.*
@@ -512,11 +513,21 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
                 end = EventDateTime().setDateTime(com.google.api.client.util.DateTime(mEvent.endTS * 1000L))
                 status = CONFIRMED.toLowerCase()
                 recurrence = listOf(Parser().getShortRepeatInterval(mEvent))
+                reminders = getEventReminders()
                 getGoogleSyncService().events().insert(PRIMARY, this).execute()
             }
         } catch (ignored: Exception) {
 
         }
+    }
+
+    private fun getEventReminders(): com.google.api.services.calendar.model.Event.Reminders {
+        val reminders = ArrayList<EventReminder>()
+        mEvent.getReminders().forEach {
+            val reminder = EventReminder().setMinutes(it).setMethod(POPUP)
+            reminders.add(reminder)
+        }
+        return com.google.api.services.calendar.model.Event.Reminders().setOverrides(reminders)
     }
 
     private fun updateStartTexts() {

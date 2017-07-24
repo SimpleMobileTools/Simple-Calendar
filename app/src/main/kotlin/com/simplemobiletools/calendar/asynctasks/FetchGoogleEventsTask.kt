@@ -23,7 +23,6 @@ import java.util.*
 class FetchGoogleEventsTask(val activity: Activity, val googleSyncListener: GoogleSyncListener? = null) : AsyncTask<Void, Void, String>() {
     private val ITEMS = "items"
     private val OVERRIDES = "overrides"
-    private val POPUP = "popup"
     private val NEXT_PAGE_TOKEN = "nextPageToken"
 
     private var lastError: Exception? = null
