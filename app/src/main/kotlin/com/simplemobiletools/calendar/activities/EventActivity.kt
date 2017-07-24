@@ -9,8 +9,6 @@ import android.text.method.LinkMovementMethod
 import android.view.Menu
 import android.view.MenuItem
 import android.view.WindowManager
-import com.google.api.services.calendar.model.EventDateTime
-import com.google.api.services.calendar.model.EventReminder
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.dialogs.*
 import com.simplemobiletools.calendar.extensions.*
@@ -473,14 +471,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
                     toast(R.string.event_added)
                 }
 
-                if (isGoogleSyncActive()) {
-                    if (isOnline()) {
-                        Thread({
-                            createRemoteGoogleEvent()
-                        }).start()
-                    }
-                }
-
+                GoogleSyncHandler().uploadToGoogle(this, mEvent)
                 finish()
             }
         } else {
@@ -502,39 +493,6 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
                 dbHelper.update(mEvent)
             }
         }
-    }
-
-    private fun createRemoteGoogleEvent() {
-        try {
-            com.google.api.services.calendar.model.Event().apply {
-                summary = mEvent.title
-                description = mEvent.description
-
-                if (mEvent.getIsAllDay()) {
-                    start = EventDateTime().setDate(com.google.api.client.util.DateTime(true, mEvent.startTS * 1000L, null))
-                    end = EventDateTime().setDate(com.google.api.client.util.DateTime(true, (mEvent.endTS + DAY) * 1000L, null))
-                } else {
-                    start = EventDateTime().setDateTime(com.google.api.client.util.DateTime(mEvent.startTS * 1000L))
-                    end = EventDateTime().setDateTime(com.google.api.client.util.DateTime(mEvent.endTS * 1000L))
-                }
-
-                status = CONFIRMED.toLowerCase()
-                recurrence = listOf(Parser().getShortRepeatInterval(mEvent))
-                reminders = getEventReminders()
-                getGoogleSyncService().events().insert(PRIMARY, this).execute()
-            }
-        } catch (ignored: Exception) {
-
-        }
-    }
-
-    private fun getEventReminders(): com.google.api.services.calendar.model.Event.Reminders {
-        val reminders = ArrayList<EventReminder>()
-        mEvent.getReminders().forEach {
-            val reminder = EventReminder().setMinutes(it).setMethod(POPUP)
-            reminders.add(reminder)
-        }
-        return com.google.api.services.calendar.model.Event.Reminders().setOverrides(reminders)
     }
 
     private fun updateStartTexts() {
