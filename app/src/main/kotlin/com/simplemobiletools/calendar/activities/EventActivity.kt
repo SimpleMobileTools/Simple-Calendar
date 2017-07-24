@@ -511,6 +511,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
                 start = EventDateTime().setDateTime(com.google.api.client.util.DateTime(mEvent.startTS * 1000L))
                 end = EventDateTime().setDateTime(com.google.api.client.util.DateTime(mEvent.endTS * 1000L))
                 status = CONFIRMED.toLowerCase()
+                recurrence = listOf(Parser().getShortRepeatInterval(mEvent))
                 getGoogleSyncService().events().insert(PRIMARY, this).execute()
             }
         } catch (ignored: Exception) {
