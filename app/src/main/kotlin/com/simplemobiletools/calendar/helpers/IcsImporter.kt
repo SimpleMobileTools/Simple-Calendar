@@ -101,7 +101,7 @@ class IcsImporter {
                                 curImportId, curFlags, curRepeatLimit, curRepeatRule, curEventType, lastUpdated = curLastModified,
                                 source = SOURCE_IMPORTED_ICS)
 
-                        if (event.isAllDay && curEnd > curStart) {
+                        if (event.getIsAllDay() && curEnd > curStart) {
                             event.endTS -= DAY
                         }
 

@@ -92,13 +92,13 @@ data class Event(var id: Int = 0, var startTS: Int = 0, var endTS: Int = 0, var 
         return addedProperOrder
     }
 
-    val isAllDay = flags and FLAG_ALL_DAY != 0
+    fun getIsAllDay() = flags and FLAG_ALL_DAY != 0
 
     fun getReminders() = setOf(reminder1Minutes, reminder2Minutes, reminder3Minutes).filter { it != REMINDER_OFF }
 
     // properly return the start time of all-day events as midnight
     fun getEventStartTS(): Int {
-        return if (isAllDay) {
+        return if (getIsAllDay()) {
             Formatter.getDateTimeFromTS(startTS).withTime(0, 0, 0, 0).seconds()
         } else {
             startTS

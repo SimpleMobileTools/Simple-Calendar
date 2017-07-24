@@ -119,7 +119,7 @@ class DayEventsAdapter(val activity: SimpleActivity, val mItems: List<Event>, va
             itemView.apply {
                 event_item_title.text = event.title
                 event_item_description.text = event.description
-                event_item_start.text = if (event.isAllDay) allDayString else Formatter.getTimeFromTS(context, event.startTS)
+                event_item_start.text = if (event.getIsAllDay()) allDayString else Formatter.getTimeFromTS(context, event.startTS)
                 event_item_end.beInvisibleIf(event.startTS == event.endTS)
                 toggleItemSelection(this, markedItems.contains(pos), pos)
 
@@ -130,12 +130,12 @@ class DayEventsAdapter(val activity: SimpleActivity, val mItems: List<Event>, va
                     event_item_end.apply {
                         text = Formatter.getTimeFromTS(context, event.endTS)
                         if (startCode != endCode) {
-                            if (event.isAllDay) {
+                            if (event.getIsAllDay()) {
                                 text = Formatter.getDateFromCode(context, endCode, true)
                             } else {
                                 append(" (${Formatter.getDateFromCode(context, endCode, true)})")
                             }
-                        } else if (event.isAllDay) {
+                        } else if (event.getIsAllDay()) {
                             beInvisible()
                         }
                     }

@@ -543,7 +543,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                 }
             }
 
-            if (event.isAllDay) {
+            if (event.getIsAllDay()) {
                 if (event.repeatInterval.isXWeeklyRepetition()) {
                     if (event.startTS.isTsOnProperDay(event)) {
                         if (isOnProperWeek(event, startTimes)) {
@@ -579,7 +579,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             } else {
                 if (event.endTS >= fromTS) {
                     events.add(event.copy())
-                } else if (event.isAllDay) {
+                } else if (event.getIsAllDay()) {
                     val dayCode = Formatter.getDayCodeFromTS(fromTS)
                     val endDayCode = Formatter.getDayCodeFromTS(event.endTS)
                     if (dayCode == endDayCode) {

@@ -509,8 +509,15 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             com.google.api.services.calendar.model.Event().apply {
                 summary = mEvent.title
                 description = mEvent.description
-                start = EventDateTime().setDateTime(com.google.api.client.util.DateTime(mEvent.startTS * 1000L))
-                end = EventDateTime().setDateTime(com.google.api.client.util.DateTime(mEvent.endTS * 1000L))
+
+                if (mEvent.getIsAllDay()) {
+                    start = EventDateTime().setDate(com.google.api.client.util.DateTime(true, mEvent.startTS * 1000L, null))
+                    end = EventDateTime().setDate(com.google.api.client.util.DateTime(true, (mEvent.endTS + DAY) * 1000L, null))
+                } else {
+                    start = EventDateTime().setDateTime(com.google.api.client.util.DateTime(mEvent.startTS * 1000L))
+                    end = EventDateTime().setDateTime(com.google.api.client.util.DateTime(mEvent.endTS * 1000L))
+                }
+
                 status = CONFIRMED.toLowerCase()
                 recurrence = listOf(Parser().getShortRepeatInterval(mEvent))
                 reminders = getEventReminders()

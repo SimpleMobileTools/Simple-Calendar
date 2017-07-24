@@ -176,7 +176,7 @@ fun Context.notifyEvent(event: Event) {
     val pendingIntent = getPendingIntent(this, event)
     val startTime = Formatter.getTimeFromTS(this, event.startTS)
     val endTime = Formatter.getTimeFromTS(this, event.endTS)
-    val timeRange = if (event.isAllDay) getString(R.string.all_day) else getFormattedEventTime(startTime, endTime)
+    val timeRange = if (event.getIsAllDay()) getString(R.string.all_day) else getFormattedEventTime(startTime, endTime)
     val notification = getNotification(this, pendingIntent, event, "$timeRange ${event.description}")
     val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
     notificationManager.notify(event.id, notification)

@@ -123,7 +123,7 @@ class FetchGoogleEventsTask(val activity: Activity, val googleSyncListener: Goog
                     reminders.getOrElse(1, { -1 }), reminders.getOrElse(2, { -1 }), repeatRule.repeatInterval, importId, flags, repeatRule.repeatLimit,
                     repeatRule.repeatRule, eventTypeId, lastUpdated = lastUpdate, source = SOURCE_GOOGLE_SYNC)
 
-            if (event.isAllDay && endTS > startTS) {
+            if (event.getIsAllDay() && endTS > startTS) {
                 event.endTS -= DAY
             }
 
