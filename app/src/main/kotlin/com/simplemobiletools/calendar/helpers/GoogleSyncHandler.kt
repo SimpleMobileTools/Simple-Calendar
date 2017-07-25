@@ -1,16 +1,16 @@
 package com.simplemobiletools.calendar.helpers
 
 import android.widget.Toast
+import com.google.api.client.googleapis.json.GoogleJsonResponseException
 import com.google.api.services.calendar.model.EventDateTime
 import com.google.api.services.calendar.model.EventReminder
-import com.google.gson.Gson
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.SimpleActivity
+import com.simplemobiletools.calendar.extensions.getGoogleMessageError
 import com.simplemobiletools.calendar.extensions.getGoogleSyncService
 import com.simplemobiletools.calendar.extensions.isGoogleSyncActive
 import com.simplemobiletools.calendar.extensions.isOnline
 import com.simplemobiletools.calendar.models.Event
-import com.simplemobiletools.calendar.models.GoogleError
 import com.simplemobiletools.commons.extensions.toast
 import java.util.*
 
@@ -52,11 +52,8 @@ class GoogleSyncHandler {
 
                 try {
                     activity.getGoogleSyncService().events().insert(PRIMARY, this).execute()
-                } catch (e: Exception) {
-                    val message = e.message!!
-                    val json = message.substring(message.indexOf('{'))
-                    val error = Gson().fromJson<GoogleError>(json, GoogleError::class.java)
-                    val msg = String.format(activity.getString(R.string.google_sync_error_insert), error.message)
+                } catch (e: GoogleJsonResponseException) {
+                    val msg = String.format(activity.getString(R.string.google_sync_error_insert), e.getGoogleMessageError())
                     activity.toast(msg, Toast.LENGTH_LONG)
                 }
             }
@@ -72,5 +69,20 @@ class GoogleSyncHandler {
             reminders.add(reminder)
         }
         return com.google.api.services.calendar.model.Event.Reminders().setOverrides(reminders)
+    }
+
+    fun updateGoogleEvent(activity: SimpleActivity, event: Event) {
+        if (activity.isGoogleSyncActive()) {
+            if (activity.isOnline()) {
+                Thread({
+                    try {
+                        val googleEvent = activity.getGoogleSyncService().events().get(PRIMARY, event.importId + "qw").execute()
+                    } catch (e: GoogleJsonResponseException) {
+                        val msg = String.format(activity.getString(R.string.google_sync_error_update), e.getGoogleMessageError())
+                        activity.toast(msg, Toast.LENGTH_LONG)
+                    }
+                }).start()
+            }
+        }
     }
 }

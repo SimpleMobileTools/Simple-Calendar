@@ -196,6 +196,7 @@
     <string name="google_sync_existing">Send locally created events to the cloud?</string>
     <string name="google_sync_disabling">Disabling Google sync will delete all synced events from your device, while leaving them intact in the cloud.</string>
     <string name="google_sync_error_insert">Error uploading event: %1$s</string>
+    <string name="google_sync_error_update">Error updating event: %1$s</string>
 
     <plurals name="minutes">
         <item quantity="one">%1$d minute</item>

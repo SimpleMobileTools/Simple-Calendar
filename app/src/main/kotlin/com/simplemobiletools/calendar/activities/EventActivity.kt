@@ -500,6 +500,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     }
 
     private fun eventUpdated() {
+        GoogleSyncHandler().updateGoogleEvent(this, mEvent)
         toast(R.string.event_updated)
         finish()
     }
