@@ -76,7 +76,7 @@ class GoogleSyncHandler {
             if (activity.isOnline()) {
                 Thread({
                     try {
-                        val googleEvent = activity.getGoogleSyncService().events().get(PRIMARY, event.importId + "qw").execute()
+                        val googleEvent = activity.getGoogleSyncService().events().get(PRIMARY, event.importId).execute()
                     } catch (e: GoogleJsonResponseException) {
                         val msg = String.format(activity.getString(R.string.google_sync_error_update), e.getGoogleMessageError())
                         activity.toast(msg, Toast.LENGTH_LONG)
