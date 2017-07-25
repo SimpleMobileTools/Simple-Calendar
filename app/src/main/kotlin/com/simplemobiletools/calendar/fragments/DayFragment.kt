@@ -163,9 +163,6 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEventsListen
     override fun eventInserted(event: Event) {
     }
 
-    override fun eventUpdated(event: Event) {
-    }
-
     override fun eventsDeleted(cnt: Int) {
         (activity as DayActivity).recheckEvents()
     }

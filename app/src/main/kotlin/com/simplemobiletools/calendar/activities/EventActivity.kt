@@ -478,7 +478,9 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             if (mRepeatInterval > 0 && wasRepeatable) {
                 EditRepeatingEventDialog(this) {
                     if (it) {
-                        dbHelper.update(mEvent)
+                        dbHelper.update(mEvent) {
+                            eventUpdated()
+                        }
                     } else {
                         dbHelper.addEventRepeatException(mEvent.id, mEventOccurrenceTS)
                         mEvent.parentId = mEvent.id
@@ -490,9 +492,16 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
                     }
                 }
             } else {
-                dbHelper.update(mEvent)
+                dbHelper.update(mEvent) {
+                    eventUpdated()
+                }
             }
         }
+    }
+
+    private fun eventUpdated() {
+        toast(R.string.event_updated)
+        finish()
     }
 
     private fun updateStartTexts() {
@@ -633,11 +642,6 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
     override fun eventInserted(event: Event) {
 
-    }
-
-    override fun eventUpdated(event: Event) {
-        toast(R.string.event_updated)
-        finish()
     }
 
     override fun eventsDeleted(cnt: Int) {

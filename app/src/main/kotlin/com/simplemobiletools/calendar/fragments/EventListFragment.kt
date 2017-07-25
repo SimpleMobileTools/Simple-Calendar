@@ -125,10 +125,6 @@ class EventListFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEvents
         checkEvents()
     }
 
-    override fun eventUpdated(event: Event) {
-        checkEvents()
-    }
-
     override fun eventsDeleted(cnt: Int) {
         checkEvents()
         checkPlaceholderVisibility()

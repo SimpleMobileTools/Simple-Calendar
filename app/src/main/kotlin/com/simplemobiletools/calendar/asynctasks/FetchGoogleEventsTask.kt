@@ -128,7 +128,7 @@ class FetchGoogleEventsTask(val activity: Activity, val googleSyncListener: Goog
             }
 
             if (updateEvent) {
-                dbHelper.update(event)
+                dbHelper.update(event) {}
             } else {
                 importIDs.add(importId)
                 dbHelper.insert(event) {}

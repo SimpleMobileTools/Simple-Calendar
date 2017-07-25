@@ -192,7 +192,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         callback(event.id)
     }
 
-    fun update(event: Event) {
+    fun update(event: Event, callback: () -> Unit) {
         val selectionArgs = arrayOf(event.id.toString())
         val values = fillEventValues(event)
         val selection = "$COL_ID = ?"
@@ -208,7 +208,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
         context.updateWidgets()
         context.scheduleReminder(event, this)
-        mEventsListener?.eventUpdated(event)
+        callback()
     }
 
     private fun fillEventValues(event: Event): ContentValues {
@@ -853,8 +853,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
     interface EventUpdateListener {
         fun eventInserted(event: Event)
-
-        fun eventUpdated(event: Event)
 
         fun eventsDeleted(cnt: Int)
 
