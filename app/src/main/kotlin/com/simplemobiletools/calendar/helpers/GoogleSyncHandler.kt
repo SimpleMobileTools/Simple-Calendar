@@ -30,13 +30,21 @@ class GoogleSyncHandler {
                     start = EventDateTime().setDate(com.google.api.client.util.DateTime(true, event.startTS * 1000L, null))
                     end = EventDateTime().setDate(com.google.api.client.util.DateTime(true, (event.endTS + DAY) * 1000L, null))
                 } else {
-                    start = EventDateTime().setDateTime(com.google.api.client.util.DateTime(event.startTS * 1000L))
-                    end = EventDateTime().setDateTime(com.google.api.client.util.DateTime(event.endTS * 1000L))
+                    start = EventDateTime().setDateTime(com.google.api.client.util.DateTime(event.startTS * 1000L)).setTimeZone(TimeZone.getDefault().id)
+                    end = EventDateTime().setDateTime(com.google.api.client.util.DateTime(event.endTS * 1000L)).setTimeZone(TimeZone.getDefault().id)
                 }
 
                 status = CONFIRMED.toLowerCase()
-                recurrence = listOf(Parser().getShortRepeatInterval(event))
-                reminders = getEventReminders(event)
+                Parser().getShortRepeatInterval(event).let {
+                    if (it.isNotEmpty()) {
+                        recurrence = listOf(it)
+                    }
+                }
+
+                if (event.getReminders().isNotEmpty()) {
+                    reminders = getEventReminders(event).setUseDefault(false)
+                }
+
                 context.getGoogleSyncService().events().insert(PRIMARY, this).execute()
             }
         } catch (ignored: Exception) {
