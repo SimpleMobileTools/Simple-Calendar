@@ -9,7 +9,7 @@ import java.util.*
 
 data class Event(var id: Int = 0, var startTS: Int = 0, var endTS: Int = 0, var title: String = "", var description: String = "",
                  var reminder1Minutes: Int = -1, var reminder2Minutes: Int = -1, var reminder3Minutes: Int = -1, var repeatInterval: Int = 0,
-                 var importId: String? = "", var flags: Int = 0, var repeatLimit: Int = 0, var repeatRule: Int = 0,
+                 var importId: String = "", var flags: Int = 0, var repeatLimit: Int = 0, var repeatRule: Int = 0,
                  var eventType: Int = DBHelper.REGULAR_EVENT_TYPE_ID, var ignoreEventOccurrences: ArrayList<Int> = ArrayList(),
                  var offset: String = "", var isDstIncluded: Boolean = false, var parentId: Int = 0, var lastUpdated: Long = 0L,
                  var source: Int = SOURCE_SIMPLE_CALENDAR) : Serializable {

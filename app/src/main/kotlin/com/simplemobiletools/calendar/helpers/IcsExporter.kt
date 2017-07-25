@@ -25,7 +25,7 @@ class IcsExporter {
                     out.writeLn(BEGIN_EVENT)
                     event.title.replace("\n", "\\n").let { if (it.isNotEmpty()) out.writeLn("$SUMMARY:$it") }
                     event.description.replace("\n", "\\n").let { if (it.isNotEmpty()) out.writeLn("$DESCRIPTION$it") }
-                    event.importId?.let { if (it.isNotEmpty()) out.writeLn("$UID$it") }
+                    event.importId.let { if (it.isNotEmpty()) out.writeLn("$UID$it") }
                     event.eventType.let { out.writeLn("$CATEGORIES${activity.dbHelper.getEventType(it)?.title}") }
                     event.lastUpdated.let { out.writeLn("$LAST_MODIFIED:${Formatter.getExportedTime(it)}") }
 

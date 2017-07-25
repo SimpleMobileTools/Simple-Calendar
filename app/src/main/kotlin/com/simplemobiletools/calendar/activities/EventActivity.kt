@@ -437,6 +437,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         }
 
         val wasRepeatable = mEvent.repeatInterval > 0
+        val newImportId = if (mEvent.id != 0) mEvent.importId else UUID.randomUUID().toString().replace("-", "") + System.currentTimeMillis().toString()
 
         val reminders = sortedSetOf(mReminder1Minutes, mReminder2Minutes, mReminder3Minutes).filter { it != REMINDER_OFF }
         val newDescription = event_description.value
@@ -449,6 +450,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             reminder2Minutes = reminders.elementAtOrElse(1) { REMINDER_OFF }
             reminder3Minutes = reminders.elementAtOrElse(2) { REMINDER_OFF }
             repeatInterval = mRepeatInterval
+            importId = newImportId
             flags = if (event_all_day.isChecked) (mEvent.flags or FLAG_ALL_DAY) else (mEvent.flags.removeFlag(FLAG_ALL_DAY))
             repeatLimit = if (repeatInterval == 0) 0 else mRepeatLimit
             repeatRule = mRepeatRule
