@@ -1,26 +1,31 @@
 package com.simplemobiletools.calendar.helpers
 
-import android.content.Context
+import android.widget.Toast
 import com.google.api.services.calendar.model.EventDateTime
 import com.google.api.services.calendar.model.EventReminder
+import com.google.gson.Gson
+import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.extensions.getGoogleSyncService
 import com.simplemobiletools.calendar.extensions.isGoogleSyncActive
 import com.simplemobiletools.calendar.extensions.isOnline
 import com.simplemobiletools.calendar.models.Event
+import com.simplemobiletools.calendar.models.GoogleError
+import com.simplemobiletools.commons.extensions.toast
 import java.util.*
 
 class GoogleSyncHandler {
-    fun uploadToGoogle(context: Context, event: Event) {
-        if (context.isGoogleSyncActive()) {
-            if (context.isOnline()) {
+    fun uploadToGoogle(activity: SimpleActivity, event: Event) {
+        if (activity.isGoogleSyncActive()) {
+            if (activity.isOnline()) {
                 Thread({
-                    createRemoteGoogleEvent(context, event)
+                    createRemoteGoogleEvent(activity, event)
                 }).start()
             }
         }
     }
 
-    private fun createRemoteGoogleEvent(context: Context, event: Event) {
+    private fun createRemoteGoogleEvent(activity: SimpleActivity, event: Event) {
         try {
             com.google.api.services.calendar.model.Event().apply {
                 summary = event.title
@@ -45,7 +50,15 @@ class GoogleSyncHandler {
                     reminders = getEventReminders(event).setUseDefault(false)
                 }
 
-                context.getGoogleSyncService().events().insert(PRIMARY, this).execute()
+                try {
+                    activity.getGoogleSyncService().events().insert(PRIMARY, this).execute()
+                } catch (e: Exception) {
+                    val message = e.message!!
+                    val json = message.substring(message.indexOf('{'))
+                    val error = Gson().fromJson<GoogleError>(json, GoogleError::class.java)
+                    val msg = String.format(activity.getString(R.string.google_sync_error_insert), error.message)
+                    activity.toast(msg, Toast.LENGTH_LONG)
+                }
             }
         } catch (ignored: Exception) {
 

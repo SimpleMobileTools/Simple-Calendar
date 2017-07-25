@@ -190,9 +190,12 @@
     <string name="snooze_delay">Postpone reminder with Snooze by</string>
     <string name="widgets">Widgets</string>
     <string name="cannot_while_offline">You cannot do that while offline.</string>
+
+    <!-- Google sync -->
     <string name="google_sync_testing">Google sync is in a testing mode, please be cautions when relying on it. Reporting any feedback at hello@simplemobiletools.com would be appreciated. Thanks!</string>
     <string name="google_sync_existing">Send locally created events to the cloud?</string>
     <string name="google_sync_disabling">Disabling Google sync will delete all synced events from your device, while leaving them intact in the cloud.</string>
+    <string name="google_sync_error_insert">Error uploading event: %1$s</string>
 
     <plurals name="minutes">
         <item quantity="one">%1$d minute</item>
