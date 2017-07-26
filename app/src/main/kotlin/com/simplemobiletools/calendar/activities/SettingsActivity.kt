@@ -14,6 +14,7 @@ import android.support.v4.app.ActivityCompat
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential
+import com.google.api.client.googleapis.extensions.android.gms.auth.UserRecoverableAuthIOException
 import com.google.api.client.util.ExponentialBackOff
 import com.google.api.services.calendar.CalendarScopes
 import com.simplemobiletools.calendar.R
@@ -48,6 +49,7 @@ class SettingsActivity : SimpleActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
         res = resources
+        setupGoogleSync()
     }
 
     override fun onResume() {
@@ -58,7 +60,6 @@ class SettingsActivity : SimpleActivity() {
         setupHourFormat()
         setupSundayFirst()
         setupWeekNumbers()
-        setupGoogleSync()
         setupWeeklyStart()
         setupWeeklyEnd()
         setupVibrate()
@@ -130,7 +131,6 @@ class SettingsActivity : SimpleActivity() {
 
     private fun toggleGoogleSync() {
         settings_google_sync.toggle()
-        config.googleSync = settings_google_sync.isChecked
 
         if (settings_google_sync.isChecked) {
             tryEnablingSync()
@@ -331,7 +331,9 @@ class SettingsActivity : SimpleActivity() {
         } else if (config.syncAccountName.isEmpty()) {
             showAccountChooser()
         } else {
-            FetchGoogleEventsTask(this).execute()
+            Thread({
+                fetchEventsIfHasPermissions()
+            }).start()
         }
     }
 
@@ -346,6 +348,23 @@ class SettingsActivity : SimpleActivity() {
         val connectionStatusCode = apiAvailability.isGooglePlayServicesAvailable(this)
         if (apiAvailability.isUserResolvableError(connectionStatusCode)) {
             GoogleApiAvailability.getInstance().getErrorDialog(this, connectionStatusCode, REQUEST_GOOGLE_PLAY_SERVICES).show()
+        }
+    }
+
+    private fun fetchEventsIfHasPermissions() {
+        try {
+            getGoogleSyncService().colors().get().execute() // just checking if we have the permission for fetching user data
+            config.googleSync = true
+            runOnUiThread {
+                settings_google_sync.isChecked = true
+            }
+            FetchGoogleEventsTask(applicationContext).execute()
+        } catch (e: Exception) {
+            if (e is UserRecoverableAuthIOException) {
+                startActivityForResult(e.intent, REQUEST_AUTHORIZATION)
+            } else {
+                toast(R.string.unknown_error_occurred)
+            }
         }
     }
 

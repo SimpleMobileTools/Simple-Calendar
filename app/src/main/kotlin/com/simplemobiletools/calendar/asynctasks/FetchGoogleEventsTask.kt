@@ -1,18 +1,13 @@
 package com.simplemobiletools.calendar.asynctasks
 
-import android.app.Activity
+import android.content.Context
 import android.graphics.Color
 import android.os.AsyncTask
 import android.util.SparseIntArray
-import com.google.api.client.googleapis.extensions.android.gms.auth.UserRecoverableAuthIOException
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
-import com.simplemobiletools.calendar.activities.SettingsActivity
-import com.simplemobiletools.calendar.extensions.config
-import com.simplemobiletools.calendar.extensions.dbHelper
-import com.simplemobiletools.calendar.extensions.getGoogleSyncService
-import com.simplemobiletools.calendar.extensions.seconds
+import com.simplemobiletools.calendar.extensions.*
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.interfaces.GoogleSyncListener
 import com.simplemobiletools.calendar.models.*
@@ -20,23 +15,24 @@ import org.joda.time.DateTime
 import java.util.*
 
 // more info about event fields at https://developers.google.com/google-apps/calendar/v3/reference/events/insert
-class FetchGoogleEventsTask(val activity: Activity, val googleSyncListener: GoogleSyncListener? = null) : AsyncTask<Void, Void, String>() {
+class FetchGoogleEventsTask(val context: Context, val googleSyncListener: GoogleSyncListener? = null) : AsyncTask<Void, Void, String>() {
     private val ITEMS = "items"
     private val OVERRIDES = "overrides"
     private val NEXT_PAGE_TOKEN = "nextPageToken"
 
-    private var lastError: Exception? = null
-    private var dbHelper = activity.dbHelper
+    private var dbHelper = context.dbHelper
     private var eventTypes = ArrayList<EventType>()
     private var eventColors = SparseIntArray()
-    private var service = activity.getGoogleSyncService()
+    private var service = context.getGoogleSyncService()
 
     override fun doInBackground(vararg params: Void): String {
+        if (!context.isGoogleSyncActive())
+            return ""
+
         try {
             getColors()
             getDataFromApi()
         } catch (e: Exception) {
-            lastError = e
             cancel(true)
         }
         googleSyncListener?.syncCompleted()
@@ -53,6 +49,7 @@ class FetchGoogleEventsTask(val activity: Activity, val googleSyncListener: Goog
     private fun getDataFromApi() {
         var currToken = ""
         while (true) {
+            service.colors().get().execute()
             val events = service.events().list(PRIMARY)
                     .setPageToken(currToken)
                     .execute()
@@ -78,7 +75,7 @@ class FetchGoogleEventsTask(val activity: Activity, val googleSyncListener: Goog
         val remoteImportIds = ArrayList<String>()
         var updateEvent = false
         var eventId = 0
-        val importIDs = activity.dbHelper.getImportIds()
+        val importIDs = context.dbHelper.getImportIds()
         val token = object : TypeToken<List<GoogleEvent>>() {}.type
         val googleEvents = Gson().fromJson<ArrayList<GoogleEvent>>(json, token) ?: ArrayList<GoogleEvent>(8)
         for (googleEvent in googleEvents) {
@@ -152,7 +149,7 @@ class FetchGoogleEventsTask(val activity: Activity, val googleSyncListener: Goog
         }
 
         if (eventTypeId == -1) {
-            val newColor = if (eventColors[colorId] != 0) eventColors[colorId] else activity.config.primaryColor
+            val newColor = if (eventColors[colorId] != 0) eventColors[colorId] else context.config.primaryColor
             val newEventType = EventType(0, eventType, newColor)
             eventTypeId = dbHelper.insertEventType(newEventType)
             eventTypes.add(newEventType)
@@ -181,13 +178,5 @@ class FetchGoogleEventsTask(val activity: Activity, val googleSyncListener: Goog
             }
         }
         return reminderMinutes
-    }
-
-    override fun onCancelled() {
-        if (lastError != null) {
-            if (lastError is UserRecoverableAuthIOException) {
-                activity.startActivityForResult((lastError as UserRecoverableAuthIOException).intent, SettingsActivity.REQUEST_AUTHORIZATION)
-            }
-        }
     }
 }

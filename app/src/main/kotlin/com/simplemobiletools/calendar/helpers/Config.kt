@@ -4,6 +4,7 @@ import android.content.Context
 import android.media.RingtoneManager
 import android.text.format.DateFormat
 import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.extensions.scheduleGoogleSync
 import com.simplemobiletools.commons.helpers.BaseConfig
 import java.util.*
 
@@ -72,7 +73,10 @@ class Config(context: Context) : BaseConfig(context) {
 
     var googleSync: Boolean
         get() = prefs.getBoolean(GOOGLE_SYNC, false)
-        set(googleSync) = prefs.edit().putBoolean(GOOGLE_SYNC, googleSync).apply()
+        set(googleSync) {
+            context.scheduleGoogleSync(googleSync)
+            prefs.edit().putBoolean(GOOGLE_SYNC, googleSync).apply()
+        }
 
     var syncAccountName: String
         get() = prefs.getString(SYNC_ACCOUNT_NAME, "")

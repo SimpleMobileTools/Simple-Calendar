@@ -91,8 +91,9 @@ class MainActivity : SimpleActivity(), NavigationListener {
         }
 
         if (isGoogleSyncActive()) {
-            FetchGoogleEventsTask(this, googleSyncListener).execute()
+            FetchGoogleEventsTask(applicationContext, googleSyncListener).execute()
         }
+        scheduleGoogleSync(isGoogleSyncActive())
     }
 
     override fun onResume() {

@@ -135,6 +135,8 @@
             </intent-filter>
         </receiver>
 
+        <receiver android:name=".receivers.GoogleSyncReceiver"/>
+
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.simplemobiletools.calendar.fileprovider"

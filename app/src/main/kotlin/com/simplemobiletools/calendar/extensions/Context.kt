@@ -24,6 +24,7 @@ import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.models.Event
+import com.simplemobiletools.calendar.receivers.GoogleSyncReceiver
 import com.simplemobiletools.calendar.receivers.NotificationReceiver
 import com.simplemobiletools.calendar.services.SnoozeService
 import com.simplemobiletools.commons.extensions.getContrastColor
@@ -243,6 +244,19 @@ fun Context.getGoogleSyncService(): com.google.api.services.calendar.Calendar {
 fun Context.isOnline(): Boolean {
     val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
     return connectivityManager.activeNetworkInfo != null
+}
+
+fun Context.scheduleGoogleSync(activate: Boolean) {
+    val syncIntent = Intent(this, GoogleSyncReceiver::class.java)
+    val pendingIntent = PendingIntent.getBroadcast(this, 0, syncIntent, PendingIntent.FLAG_CANCEL_CURRENT)
+    val alarm = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+
+    if (activate) {
+        val syncCheckInterval = 4 * AlarmManager.INTERVAL_HOUR
+        alarm.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + syncCheckInterval, syncCheckInterval, pendingIntent)
+    } else {
+        alarm.cancel(pendingIntent)
+    }
 }
 
 fun Context.getNewEventTimestampFromCode(dayCode: String) = Formatter.getLocalDateTimeFromCode(dayCode).withTime(13, 0, 0, 0).seconds()
