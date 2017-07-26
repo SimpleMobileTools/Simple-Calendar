@@ -268,3 +268,5 @@ fun Context.isGoogleSyncActive() = config.googleSync && config.syncAccountName.i
 val Context.config: Config get() = Config.newInstance(this)
 
 val Context.dbHelper: DBHelper get() = DBHelper.newInstance(this)
+
+val Context.googleSyncQueue: GoogleSyncQueueDB get() = GoogleSyncQueueDB.newInstance(this)
