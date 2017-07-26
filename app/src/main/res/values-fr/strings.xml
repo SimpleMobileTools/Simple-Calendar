@@ -146,7 +146,7 @@
     <!-- Event details -->
     <string name="title">Titre</string>
     <string name="description">Description</string>
-    <string name="all_day">Journée entière</string>
+    <string name="all_day">Journée</string>
 
     <!-- Weekly view -->
     <string name="week">Semaine</string>
