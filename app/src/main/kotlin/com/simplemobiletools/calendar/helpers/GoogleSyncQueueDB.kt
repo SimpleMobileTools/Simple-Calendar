@@ -31,7 +31,7 @@ class GoogleSyncQueueDB private constructor(val context: Context) : SQLiteOpenHe
     }
 
     override fun onCreate(db: SQLiteDatabase) {
-        db.execSQL("CREATE TABLE $OPERATIONS_TABLE_NAME ($COL_ID INTEGER PRIMARY KEY, $COL_EVENT_ID INTEGER, $COL_OPERATION INTEGER)")
+        db.execSQL("CREATE TABLE $OPERATIONS_TABLE_NAME ($COL_ID INTEGER PRIMARY KEY AUTOINCREMENT, $COL_EVENT_ID INTEGER, $COL_OPERATION INTEGER)")
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
