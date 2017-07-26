@@ -38,10 +38,12 @@ class GoogleSyncQueueDB private constructor(val context: Context) : SQLiteOpenHe
 
     }
 
-    fun insert(operation: Int, eventId: Int) {
+    fun insert(eventId: Int, operation: Int) {
+        delete(eventId)
+
         val contentValues = ContentValues().apply {
-            put(COL_OPERATION, operation)
             put(COL_EVENT_ID, eventId)
+            put(COL_OPERATION, operation)
         }
         mDb.insert(OPERATIONS_TABLE_NAME, null, contentValues)
     }
