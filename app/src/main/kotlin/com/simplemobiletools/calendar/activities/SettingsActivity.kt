@@ -316,8 +316,10 @@ class SettingsActivity : SimpleActivity() {
             } else if (requestCode == REQUEST_AUTHORIZATION) {
                 tryEnablingSync()
             }
-        } else if (resultCode == Activity.RESULT_CANCELED && requestCode == REQUEST_ACCOUNT_NAME) {
-            disableGoogleSync()
+        } else if (resultCode == Activity.RESULT_CANCELED) {
+            if (requestCode == REQUEST_ACCOUNT_NAME || requestCode == REQUEST_AUTHORIZATION) {
+                disableGoogleSync()
+            }
         }
     }
 
