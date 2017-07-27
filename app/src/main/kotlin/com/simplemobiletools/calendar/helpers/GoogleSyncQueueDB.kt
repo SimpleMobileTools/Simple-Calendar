@@ -39,12 +39,16 @@ class GoogleSyncQueueDB private constructor(val context: Context) : SQLiteOpenHe
     }
 
     fun addOperation(eventId: Int, operation: Int) {
+        val hadInsertOperation = getOperationOf(eventId)?.operation?.equals(OPERATION_INSERT) == true
         if (operation == OPERATION_DELETE) {
             clearOperationsOf(eventId)
+            if (hadInsertOperation) {
+                return
+            }
         }
 
         if (operation == OPERATION_UPDATE) {
-            if (getOperationOf(eventId)?.operation?.equals(OPERATION_INSERT) == true) {
+            if (hadInsertOperation) {
                 return
             }
         }
