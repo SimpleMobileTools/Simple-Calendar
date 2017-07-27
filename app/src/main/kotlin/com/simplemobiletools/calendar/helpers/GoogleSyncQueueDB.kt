@@ -71,4 +71,8 @@ class GoogleSyncQueueDB private constructor(val context: Context) : SQLiteOpenHe
         val selection = "$COL_EVENT_ID = $eventId"
         mDb.delete(OPERATIONS_TABLE_NAME, selection, null)
     }
+
+    fun clearQueue() {
+        mDb.delete(OPERATIONS_TABLE_NAME, null, null)
+    }
 }

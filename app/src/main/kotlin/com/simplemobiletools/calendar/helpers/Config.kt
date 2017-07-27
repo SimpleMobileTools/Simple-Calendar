@@ -4,6 +4,7 @@ import android.content.Context
 import android.media.RingtoneManager
 import android.text.format.DateFormat
 import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.extensions.googleSyncQueue
 import com.simplemobiletools.calendar.extensions.scheduleGoogleSync
 import com.simplemobiletools.commons.helpers.BaseConfig
 import java.util.*
@@ -75,6 +76,9 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getBoolean(GOOGLE_SYNC, false)
         set(googleSync) {
             context.scheduleGoogleSync(googleSync)
+            if (!googleSync)
+                context.googleSyncQueue.clearQueue()
+
             prefs.edit().putBoolean(GOOGLE_SYNC, googleSync).apply()
         }
 
