@@ -38,14 +38,37 @@ class GoogleSyncQueueDB private constructor(val context: Context) : SQLiteOpenHe
 
     }
 
-    fun insert(eventId: Int, operation: Int) {
-        delete(eventId)
+    fun addOperation(eventId: Int, operation: Int) {
+        if (operation == OPERATION_DELETE) {
+            clearOperationsOf(eventId)
+        }
+
+        if (operation == OPERATION_UPDATE) {
+            if (getOperationOf(eventId)?.operation?.equals(OPERATION_INSERT) == true) {
+                return
+            }
+        }
 
         val contentValues = ContentValues().apply {
             put(COL_EVENT_ID, eventId)
             put(COL_OPERATION, operation)
         }
         mDb.insert(OPERATIONS_TABLE_NAME, null, contentValues)
+    }
+
+    fun getOperationOf(eventId: Int): GoogleOperation? {
+        val selection = "$COL_EVENT_ID = $eventId"
+        val projection = arrayOf(COL_OPERATION)
+        var cursor: Cursor? = null
+        try {
+            cursor = mDb.query(OPERATIONS_TABLE_NAME, projection, selection, null, null, null, null)
+            if (cursor?.moveToFirst() == true) {
+                return GoogleOperation(eventId, cursor.getIntValue(COL_OPERATION))
+            }
+        } finally {
+            cursor?.close()
+        }
+        return null
     }
 
     fun getOperations(): ArrayList<GoogleOperation> {
@@ -67,7 +90,7 @@ class GoogleSyncQueueDB private constructor(val context: Context) : SQLiteOpenHe
         return operations
     }
 
-    fun delete(eventId: Int) {
+    fun clearOperationsOf(eventId: Int) {
         val selection = "$COL_EVENT_ID = $eventId"
         mDb.delete(OPERATIONS_TABLE_NAME, selection, null)
     }

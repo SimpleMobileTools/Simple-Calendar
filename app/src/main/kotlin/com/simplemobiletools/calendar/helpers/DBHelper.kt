@@ -354,7 +354,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                         } catch (ignored: Exception) {
                         }
                     } else {
-                        context.googleSyncQueue.insert(it.id, OPERATION_DELETE)
+                        context.googleSyncQueue.addOperation(it.id, OPERATION_DELETE)
                     }
                 }).start()
             }
