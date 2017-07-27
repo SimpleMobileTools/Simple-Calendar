@@ -6,21 +6,20 @@ import com.google.api.services.calendar.model.EventDateTime
 import com.google.api.services.calendar.model.EventReminder
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.SimpleActivity
-import com.simplemobiletools.calendar.extensions.getGoogleMessageError
-import com.simplemobiletools.calendar.extensions.getGoogleSyncService
-import com.simplemobiletools.calendar.extensions.isGoogleSyncActive
-import com.simplemobiletools.calendar.extensions.isOnline
+import com.simplemobiletools.calendar.extensions.*
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.commons.extensions.toast
 import java.util.*
 
 class GoogleSyncHandler {
-    fun uploadToGoogle(activity: SimpleActivity, event: Event) {
+    fun insertToGoogle(activity: SimpleActivity, event: Event) {
         if (activity.isGoogleSyncActive()) {
             if (activity.isOnline()) {
                 Thread({
                     createRemoteGoogleEvent(activity, event)
                 }).start()
+            } else {
+                activity.googleSyncQueue.insert(event.id, OPERATION_INSERT)
             }
         }
     }
@@ -94,6 +93,8 @@ class GoogleSyncHandler {
                         activity.toast(msg, Toast.LENGTH_LONG)
                     }
                 }).start()
+            } else {
+                activity.googleSyncQueue.insert(event.id, OPERATION_UPDATE)
             }
         }
     }

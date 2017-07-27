@@ -29,6 +29,12 @@ class FetchGoogleEventsTask(val context: Context, val googleSyncListener: Google
         if (!context.isGoogleSyncActive())
             return ""
 
+        // always handle queued operations before fetching new data
+        val queuedOperations = context.googleSyncQueue.getOperations()
+        queuedOperations.forEach {
+
+        }
+
         try {
             getColors()
             getDataFromApi()
