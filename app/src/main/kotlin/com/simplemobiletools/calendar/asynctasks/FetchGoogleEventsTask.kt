@@ -26,13 +26,24 @@ class FetchGoogleEventsTask(val context: Context, val googleSyncListener: Google
     private var service = context.getGoogleSyncService()
 
     override fun doInBackground(vararg params: Void): String {
-        if (!context.isGoogleSyncActive())
+        if (!context.isGoogleSyncActive() || !context.isOnline())
             return ""
 
         // always handle queued operations before fetching new data
         val queuedOperations = context.googleSyncQueue.getOperations()
         queuedOperations.forEach {
+            when (it.operation) {
+                OPERATION_INSERT -> {
 
+                }
+                OPERATION_UPDATE -> {
+
+                }
+                OPERATION_DELETE -> {
+                    context.deleteFromGoogleSync(it.importId)
+                    context.googleSyncQueue.clearOperationsOf(it.eventId)
+                }
+            }
         }
 
         try {

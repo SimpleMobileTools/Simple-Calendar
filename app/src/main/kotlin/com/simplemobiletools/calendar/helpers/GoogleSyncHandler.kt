@@ -19,7 +19,7 @@ class GoogleSyncHandler {
                     createRemoteGoogleEvent(activity, event)
                 }).start()
             } else {
-                activity.googleSyncQueue.addOperation(event.id, OPERATION_INSERT)
+                activity.googleSyncQueue.addOperation(event.id, OPERATION_INSERT, event.importId)
             }
         }
     }
@@ -94,7 +94,7 @@ class GoogleSyncHandler {
                     }
                 }).start()
             } else {
-                activity.googleSyncQueue.addOperation(event.id, OPERATION_UPDATE)
+                activity.googleSyncQueue.addOperation(event.id, OPERATION_UPDATE, event.importId)
             }
         }
     }

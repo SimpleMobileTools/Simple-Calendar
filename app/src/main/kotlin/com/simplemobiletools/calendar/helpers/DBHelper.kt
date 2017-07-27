@@ -349,12 +349,9 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             events.forEach {
                 Thread({
                     if (context.isOnline()) {
-                        try {
-                            context.getGoogleSyncService().events().delete(PRIMARY, it.importId).execute()
-                        } catch (ignored: Exception) {
-                        }
+                        context.deleteFromGoogleSync(it.importId)
                     } else {
-                        context.googleSyncQueue.addOperation(it.id, OPERATION_DELETE)
+                        context.googleSyncQueue.addOperation(it.id, OPERATION_DELETE, it.importId)
                     }
                 }).start()
             }
