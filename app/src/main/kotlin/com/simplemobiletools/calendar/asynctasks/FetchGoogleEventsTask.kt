@@ -36,14 +36,17 @@ class FetchGoogleEventsTask(val context: Context, val googleSyncListener: Google
                 OPERATION_INSERT -> {
                     val event = dbHelper.getEventWithId(it.eventId)
                     if (event != null)
-                        GoogleSyncHandler().createRemoteGoogleEvent(context, event)
+                        GoogleSyncHandler().insertToGoogle(context, event)
                     context.googleSyncQueue.clearOperationsOf(it.eventId)
                 }
                 OPERATION_UPDATE -> {
-
+                    val event = dbHelper.getEventWithId(it.eventId)
+                    if (event != null)
+                        GoogleSyncHandler().updateGoogleEvent(context, event)
+                    context.googleSyncQueue.clearOperationsOf(it.eventId)
                 }
                 OPERATION_DELETE -> {
-                    context.deleteFromGoogleSync(it.importId)
+                    GoogleSyncHandler().deleteFromGoogle(context, it.importId)
                     context.googleSyncQueue.clearOperationsOf(it.eventId)
                 }
             }

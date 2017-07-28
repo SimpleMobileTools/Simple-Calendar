@@ -259,13 +259,6 @@ fun Context.scheduleGoogleSync(activate: Boolean) {
     }
 }
 
-fun Context.deleteFromGoogleSync(importId: String) {
-    try {
-        getGoogleSyncService().events().delete(PRIMARY, importId).execute()
-    } catch (ignored: Exception) {
-    }
-}
-
 fun Context.getNewEventTimestampFromCode(dayCode: String) = Formatter.getLocalDateTimeFromCode(dayCode).withTime(13, 0, 0, 0).seconds()
 
 fun Context.getCurrentOffset() = SimpleDateFormat("Z", Locale.getDefault()).format(Date())
