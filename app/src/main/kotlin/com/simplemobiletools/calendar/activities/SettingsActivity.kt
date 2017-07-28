@@ -26,6 +26,7 @@ import com.simplemobiletools.calendar.dialogs.SnoozePickerDialog
 import com.simplemobiletools.calendar.extensions.*
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.interfaces.GoogleSyncListener
+import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.toast
@@ -357,10 +358,14 @@ class SettingsActivity : SimpleActivity() {
             getGoogleSyncService().colors().get().execute() // just checking if we have the permission for fetching user data
             storeCalendarData()
             config.googleSync = true
+            FetchGoogleEventsTask(applicationContext, googleSyncListener).execute()
             runOnUiThread {
                 settings_google_sync.isChecked = true
+                val eventsToExport = dbHelper.getEventsToExport(true)
+                if (eventsToExport.isNotEmpty()) {
+                    offerEventsUpload(eventsToExport)
+                }
             }
-            FetchGoogleEventsTask(applicationContext, googleSyncListener).execute()
         } catch (e: Exception) {
             if (e is UserRecoverableAuthIOException) {
                 startActivityForResult(e.intent, REQUEST_AUTHORIZATION)
@@ -396,9 +401,22 @@ class SettingsActivity : SimpleActivity() {
         config.googleDefaultReminders = reminderMinutes.joinToString(",")
     }
 
-    val googleSyncListener = object : GoogleSyncListener {
+    private val googleSyncListener = object : GoogleSyncListener {
         override fun syncCompleted() {
             toast(R.string.events_imported_successfully)
+        }
+    }
+
+    private fun offerEventsUpload(eventsToExport: ArrayList<Event>) {
+        ConfirmationDialog(this, messageId = R.string.google_sync_existing) {
+            Thread({
+                eventsToExport.forEach {
+                    try {
+                        GoogleSyncHandler().tryInsertToGoogle(this, it)
+                    } catch (e: Exception) {
+                    }
+                }
+            }).start()
         }
     }
 
