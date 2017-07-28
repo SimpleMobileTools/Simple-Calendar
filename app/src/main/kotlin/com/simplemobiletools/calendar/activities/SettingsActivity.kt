@@ -6,6 +6,7 @@ import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.Resources
+import android.graphics.Color
 import android.media.RingtoneManager
 import android.net.Uri
 import android.os.Bundle
@@ -25,6 +26,7 @@ import com.simplemobiletools.calendar.extensions.*
 import com.simplemobiletools.calendar.helpers.FONT_SIZE_LARGE
 import com.simplemobiletools.calendar.helpers.FONT_SIZE_MEDIUM
 import com.simplemobiletools.calendar.helpers.FONT_SIZE_SMALL
+import com.simplemobiletools.calendar.helpers.PRIMARY
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.toast
@@ -354,6 +356,7 @@ class SettingsActivity : SimpleActivity() {
     private fun fetchEventsIfHasPermissions() {
         try {
             getGoogleSyncService().colors().get().execute() // just checking if we have the permission for fetching user data
+            storeCalendarData()
             config.googleSync = true
             runOnUiThread {
                 settings_google_sync.isChecked = true
@@ -372,6 +375,14 @@ class SettingsActivity : SimpleActivity() {
         settings_google_sync.isChecked = false
         config.googleSync = false
         config.syncAccountName = ""
+        config.googleDefaultEventColor = config.primaryColor
+    }
+
+    private fun storeCalendarData() {
+        Thread({
+            val calendar = getGoogleSyncService().calendarList().get(PRIMARY).execute()
+            config.googleDefaultEventColor = Color.parseColor(calendar.backgroundColor)
+        }).start()
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {

@@ -86,6 +86,10 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getString(SYNC_ACCOUNT_NAME, "")
         set(syncAccountName) = prefs.edit().putString(SYNC_ACCOUNT_NAME, syncAccountName).apply()
 
+    var googleDefaultEventColor: Int
+        get() = prefs.getInt(GOOGLE_DEFAULT_EVENT_COLOR, primaryColor)
+        set(color) = prefs.edit().putInt(GOOGLE_DEFAULT_EVENT_COLOR, color).apply()
+
     fun addDisplayEventType(type: String) {
         addDisplayEventTypes(HashSet<String>(Arrays.asList(type)))
     }

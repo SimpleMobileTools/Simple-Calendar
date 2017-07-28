@@ -186,7 +186,7 @@ class FetchGoogleEventsTask(val context: Context, val googleSyncListener: Google
         }
 
         if (eventTypeId == -1) {
-            val newColor = if (eventColors[colorId] != 0) eventColors[colorId] else context.config.primaryColor
+            val newColor = if (eventColors[colorId] != 0) eventColors[colorId] else context.config.googleDefaultEventColor
             val newEventType = EventType(0, eventType, newColor)
             eventTypeId = dbHelper.insertEventType(newEventType)
             eventTypes.add(newEventType)
