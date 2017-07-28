@@ -1,5 +1,6 @@
 package com.simplemobiletools.calendar.helpers
 
+import android.content.Context
 import android.widget.Toast
 import com.google.api.client.googleapis.json.GoogleJsonResponseException
 import com.google.api.services.calendar.model.EventDateTime
@@ -16,7 +17,11 @@ class GoogleSyncHandler {
         if (activity.isGoogleSyncActive()) {
             if (activity.isOnline()) {
                 Thread({
-                    createRemoteGoogleEvent(activity, event)
+                    val errorMsg = createRemoteGoogleEvent(activity, event)
+                    if (errorMsg.isNotEmpty()) {
+                        val msg = String.format(activity.getString(R.string.google_sync_error_insert), errorMsg)
+                        activity.toast(msg, Toast.LENGTH_LONG)
+                    }
                 }).start()
             } else {
                 activity.googleSyncQueue.addOperation(event.id, OPERATION_INSERT, event.importId)
@@ -24,19 +29,14 @@ class GoogleSyncHandler {
         }
     }
 
-    private fun createRemoteGoogleEvent(activity: SimpleActivity, event: Event) {
+    fun createRemoteGoogleEvent(context: Context, event: Event): String {
+        val googleEvent = mergeMyEventToGoogleEvent(com.google.api.services.calendar.model.Event(), event)
         try {
-            val googleEvent = mergeMyEventToGoogleEvent(com.google.api.services.calendar.model.Event(), event)
-            try {
-                activity.getGoogleSyncService().events().insert(PRIMARY, googleEvent).execute()
-            } catch (e: GoogleJsonResponseException) {
-                val msg = String.format(activity.getString(R.string.google_sync_error_insert), e.getGoogleMessageError())
-                activity.toast(msg, Toast.LENGTH_LONG)
-            }
-
-        } catch (ignored: Exception) {
-
+            context.getGoogleSyncService().events().insert(PRIMARY, googleEvent).execute()
+        } catch (e: GoogleJsonResponseException) {
+            return e.getGoogleMessageError()
         }
+        return ""
     }
 
     private fun getEventReminders(event: Event): com.google.api.services.calendar.model.Event.Reminders {

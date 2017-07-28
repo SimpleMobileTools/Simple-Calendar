@@ -34,7 +34,10 @@ class FetchGoogleEventsTask(val context: Context, val googleSyncListener: Google
         queuedOperations.forEach {
             when (it.operation) {
                 OPERATION_INSERT -> {
-
+                    val event = dbHelper.getEventWithId(it.eventId)
+                    if (event != null)
+                        GoogleSyncHandler().createRemoteGoogleEvent(context, event)
+                    context.googleSyncQueue.clearOperationsOf(it.eventId)
                 }
                 OPERATION_UPDATE -> {
 
