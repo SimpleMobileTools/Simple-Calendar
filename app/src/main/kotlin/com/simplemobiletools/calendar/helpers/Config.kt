@@ -90,6 +90,10 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getInt(GOOGLE_DEFAULT_EVENT_COLOR, primaryColor)
         set(color) = prefs.edit().putInt(GOOGLE_DEFAULT_EVENT_COLOR, color).apply()
 
+    var googleDefaultReminders: String
+        get() = prefs.getString(GOOGLE_DEFAULT_REMINDERS, "")
+        set(reminders) = prefs.edit().putString(GOOGLE_DEFAULT_REMINDERS, reminders).apply()
+
     fun addDisplayEventType(type: String) {
         addDisplayEventTypes(HashSet<String>(Arrays.asList(type)))
     }

@@ -46,6 +46,7 @@ val SYNC_ACCOUNT_NAME = "sync_account_name"
 val SNOOZE_DELAY = "snooze_delay"
 val DISPLAY_PAST_EVENTS = "display_past_events"
 val GOOGLE_DEFAULT_EVENT_COLOR = "google_default_event_color"
+val GOOGLE_DEFAULT_REMINDERS = "google_default_reminders"
 
 val letterIDs = intArrayOf(R.string.sunday_letter, R.string.monday_letter, R.string.tuesday_letter, R.string.wednesday_letter,
         R.string.thursday_letter, R.string.friday_letter, R.string.saturday_letter)
@@ -128,3 +129,5 @@ val POPUP = "popup"
 val OPERATION_INSERT = 1
 val OPERATION_UPDATE = 2
 val OPERATION_DELETE = 3
+val OVERRIDES = "overrides"
+val DEFAULT_REMINDERS = "defaultReminders"

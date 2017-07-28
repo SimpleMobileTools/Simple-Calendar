@@ -22,7 +22,6 @@ import java.util.*
 // more info about event fields at https://developers.google.com/google-apps/calendar/v3/reference/events/insert
 class FetchGoogleEventsTask(val context: Context, val googleSyncListener: GoogleSyncListener? = null) : AsyncTask<Void, Void, String>() {
     private val ITEMS = "items"
-    private val OVERRIDES = "overrides"
     private val NEXT_PAGE_TOKEN = "nextPageToken"
 
     private var dbHelper = context.dbHelper

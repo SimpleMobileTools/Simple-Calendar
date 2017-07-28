@@ -18,15 +18,13 @@ import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccoun
 import com.google.api.client.googleapis.extensions.android.gms.auth.UserRecoverableAuthIOException
 import com.google.api.client.util.ExponentialBackOff
 import com.google.api.services.calendar.CalendarScopes
+import com.google.api.services.calendar.model.CalendarListEntry
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.asynctasks.FetchGoogleEventsTask
 import com.simplemobiletools.calendar.dialogs.CustomEventReminderDialog
 import com.simplemobiletools.calendar.dialogs.SnoozePickerDialog
 import com.simplemobiletools.calendar.extensions.*
-import com.simplemobiletools.calendar.helpers.FONT_SIZE_LARGE
-import com.simplemobiletools.calendar.helpers.FONT_SIZE_MEDIUM
-import com.simplemobiletools.calendar.helpers.FONT_SIZE_SMALL
-import com.simplemobiletools.calendar.helpers.PRIMARY
+import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.toast
@@ -382,7 +380,19 @@ class SettingsActivity : SimpleActivity() {
         Thread({
             val calendar = getGoogleSyncService().calendarList().get(PRIMARY).execute()
             config.googleDefaultEventColor = Color.parseColor(calendar.backgroundColor)
+            storeDefaultReminders(calendar)
         }).start()
+    }
+
+    private fun storeDefaultReminders(calendar: CalendarListEntry) {
+        val reminderMinutes = ArrayList<Int>()
+        val reminders = calendar.defaultReminders
+        reminders.forEach {
+            if (it.method == POPUP) {
+                reminderMinutes.add(it.minutes)
+            }
+        }
+        config.googleDefaultReminders = reminderMinutes.joinToString()
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
