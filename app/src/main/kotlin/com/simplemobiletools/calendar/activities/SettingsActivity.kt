@@ -392,7 +392,7 @@ class SettingsActivity : SimpleActivity() {
                 reminderMinutes.add(it.minutes)
             }
         }
-        config.googleDefaultReminders = reminderMinutes.joinToString()
+        config.googleDefaultReminders = reminderMinutes.joinToString(",")
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {

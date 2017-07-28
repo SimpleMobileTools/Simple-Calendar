@@ -131,3 +131,4 @@ val OPERATION_UPDATE = 2
 val OPERATION_DELETE = 3
 val OVERRIDES = "overrides"
 val DEFAULT_REMINDERS = "defaultReminders"
+val USE_DEFAULT = "useDefault"

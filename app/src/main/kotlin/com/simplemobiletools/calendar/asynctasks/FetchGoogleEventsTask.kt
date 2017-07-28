@@ -216,6 +216,11 @@ class FetchGoogleEventsTask(val context: Context, val googleSyncListener: Google
                     reminderMinutes.add(minutes)
                 }
             }
+        } else if (json?.has(USE_DEFAULT) == true) {
+            val minutes = context.config.googleDefaultReminders.splitToSequence(',')
+            minutes.forEach {
+                reminderMinutes.add(it.toInt())
+            }
         }
         return reminderMinutes
     }
