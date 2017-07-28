@@ -97,7 +97,7 @@
 
     <plurals name="years">
         <item quantity="one">%1$d rok</item>
-        <item quantity="two">%1$d roky</item>
+        <item quantity="few">%1$d roky</item>
         <item quantity="other">%1$d rokov</item>
     </plurals>
 
@@ -149,6 +149,7 @@
     <string name="export_past_events_too">Exportovať aj minulé udalosti</string>
     <string name="include_event_types">Zahrnúť typy udalostí</string>
     <string name="filename_without_ics">Názov súboru (bez .ics)</string>
+    <string name="no_title">Bez názvu</string>
 
     <!-- Event details -->
     <string name="title">Názov</string>

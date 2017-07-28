@@ -30,6 +30,7 @@ class FetchGoogleEventsTask(val context: Context, val googleSyncListener: Google
     private var eventColors = SparseIntArray()
     private var service = context.getGoogleSyncService()
     private var parseError: Exception? = null
+    private var noTitleText = context.getString(R.string.no_title)
 
     override fun doInBackground(vararg params: Void): String {
         if (!context.isGoogleSyncActive() || !context.isOnline())
@@ -149,11 +150,12 @@ class FetchGoogleEventsTask(val context: Context, val googleSyncListener: Google
                 endTS = DateTime(end.dateTime).seconds()
             }
 
+            val summary = googleEvent.summary ?: "($noTitleText)"
             val description = googleEvent.description ?: ""
             val reminders = getReminders(googleEvent.reminders)
             val repeatRule = getRepeatRule(googleEvent, startTS)
             val eventTypeId = getEventTypeId(googleEvent.colorId)
-            val event = Event(eventId, startTS, endTS, googleEvent.summary, description, reminders.getOrElse(0, { -1 }),
+            val event = Event(eventId, startTS, endTS, summary, description, reminders.getOrElse(0, { -1 }),
                     reminders.getOrElse(1, { -1 }), reminders.getOrElse(2, { -1 }), repeatRule.repeatInterval, importId, flags, repeatRule.repeatLimit,
                     repeatRule.repeatRule, eventTypeId, lastUpdated = lastUpdate, source = SOURCE_GOOGLE_SYNC)
 
