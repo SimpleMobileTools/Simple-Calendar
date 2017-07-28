@@ -190,14 +190,16 @@ class FetchGoogleEventsTask(val context: Context, val googleSyncListener: Google
         }
     }
 
-    private fun getReminders(json: JsonObject): List<Int> {
-        val array = json.getAsJsonArray(OVERRIDES)
-        val token = object : TypeToken<List<GoogleEventReminder>>() {}.type
-        val reminders = Gson().fromJson<ArrayList<GoogleEventReminder>>(array, token) ?: ArrayList<GoogleEventReminder>(2)
+    private fun getReminders(json: JsonObject?): List<Int> {
         val reminderMinutes = ArrayList<Int>()
-        for ((method, minutes) in reminders) {
-            if (method == POPUP) {
-                reminderMinutes.add(minutes)
+        if (json?.has(OVERRIDES) == true) {
+            val array = json.getAsJsonArray(OVERRIDES)
+            val token = object : TypeToken<List<GoogleEventReminder>>() {}.type
+            val reminders = Gson().fromJson<ArrayList<GoogleEventReminder>>(array, token) ?: ArrayList<GoogleEventReminder>(2)
+            for ((method, minutes) in reminders) {
+                if (method == POPUP) {
+                    reminderMinutes.add(minutes)
+                }
             }
         }
         return reminderMinutes
