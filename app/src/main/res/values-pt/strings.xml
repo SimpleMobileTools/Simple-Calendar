@@ -197,6 +197,7 @@
     <string name="google_sync_disabling">Disabling Google sync will delete all synced events from your device, while leaving them intact in the cloud.</string>
     <string name="google_sync_error_insert">Error uploading event to Google: %1$s</string>
     <string name="google_sync_error_update">Error updating event at Google: %1$s</string>
+    <string name="google_sync_error_fetch">Error fetching Google events: %1$s</string>
 
     <plurals name="minutes">
         <item quantity="one">%1$d minuto</item>

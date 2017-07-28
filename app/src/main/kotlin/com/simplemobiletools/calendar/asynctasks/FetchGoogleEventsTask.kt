@@ -4,13 +4,18 @@ import android.content.Context
 import android.graphics.Color
 import android.os.AsyncTask
 import android.util.SparseIntArray
+import android.widget.Toast
+import com.google.api.client.googleapis.json.GoogleJsonResponseException
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
+import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.*
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.interfaces.GoogleSyncListener
 import com.simplemobiletools.calendar.models.*
+import com.simplemobiletools.commons.extensions.isOnMainThread
+import com.simplemobiletools.commons.extensions.toast
 import org.joda.time.DateTime
 import java.util.*
 
@@ -24,6 +29,7 @@ class FetchGoogleEventsTask(val context: Context, val googleSyncListener: Google
     private var eventTypes = ArrayList<EventType>()
     private var eventColors = SparseIntArray()
     private var service = context.getGoogleSyncService()
+    private var parseError: Exception? = null
 
     override fun doInBackground(vararg params: Void): String {
         if (!context.isGoogleSyncActive() || !context.isOnline())
@@ -56,10 +62,18 @@ class FetchGoogleEventsTask(val context: Context, val googleSyncListener: Google
             getColors()
             getDataFromApi()
         } catch (e: Exception) {
-            cancel(true)
+            parseError = e
         }
         googleSyncListener?.syncCompleted()
         return ""
+    }
+
+    override fun onPostExecute(result: String?) {
+        super.onPostExecute(result)
+        if (context.isOnMainThread() && parseError != null && parseError is GoogleJsonResponseException) {
+            val msg = String.format(context.getString(R.string.google_sync_error_fetch), parseError!!.getGoogleMessageError())
+            context.toast(msg, Toast.LENGTH_LONG)
+        }
     }
 
     private fun getColors() {

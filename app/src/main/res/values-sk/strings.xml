@@ -204,6 +204,7 @@
     <string name="google_sync_disabling">Vypnutie Google synchonizácie odstráni všetky synchronizované udalosti zo zariadenia, no v oblakoch ostanú nedotknuté.</string>
     <string name="google_sync_error_insert">Chyba pri nahrávaní udalosti na Google: %1$s</string>
     <string name="google_sync_error_update">Chyba pri úprave udalosti na Googli: %1$s</string>
+    <string name="google_sync_error_fetch">Chyba pri čítaní Google udalostí: %1$s</string>
 
     <plurals name="minutes">
         <item quantity="one">%1$d minútu</item>
