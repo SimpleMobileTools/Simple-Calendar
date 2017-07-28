@@ -61,10 +61,10 @@ class FetchGoogleEventsTask(val context: Context, val googleSyncListener: Google
         try {
             getColors()
             getDataFromApi()
+            googleSyncListener?.syncCompleted()
         } catch (e: Exception) {
             parseError = e
         }
-        googleSyncListener?.syncCompleted()
         return ""
     }
 

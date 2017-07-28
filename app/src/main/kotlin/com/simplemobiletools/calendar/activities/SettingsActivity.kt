@@ -25,6 +25,7 @@ import com.simplemobiletools.calendar.dialogs.CustomEventReminderDialog
 import com.simplemobiletools.calendar.dialogs.SnoozePickerDialog
 import com.simplemobiletools.calendar.extensions.*
 import com.simplemobiletools.calendar.helpers.*
+import com.simplemobiletools.calendar.interfaces.GoogleSyncListener
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.toast
@@ -359,7 +360,7 @@ class SettingsActivity : SimpleActivity() {
             runOnUiThread {
                 settings_google_sync.isChecked = true
             }
-            FetchGoogleEventsTask(applicationContext).execute()
+            FetchGoogleEventsTask(applicationContext, googleSyncListener).execute()
         } catch (e: Exception) {
             if (e is UserRecoverableAuthIOException) {
                 startActivityForResult(e.intent, REQUEST_AUTHORIZATION)
@@ -393,6 +394,12 @@ class SettingsActivity : SimpleActivity() {
             }
         }
         config.googleDefaultReminders = reminderMinutes.joinToString(",")
+    }
+
+    val googleSyncListener = object : GoogleSyncListener {
+        override fun syncCompleted() {
+            toast(R.string.events_imported_successfully)
+        }
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
