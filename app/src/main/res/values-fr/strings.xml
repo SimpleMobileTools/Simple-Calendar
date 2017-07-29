@@ -273,6 +273,8 @@
 
         The Storage permission is needed only for importing events from .ics files.
 
+        Internet and Contacts permissions are used only at Google sync.
+
         Cette application est juste une pièce d\'une plus grosse série d\'applications. Vous pouvez trouver le reste de celles-ci à http://www.simplemobiletools.com
     </string>
 

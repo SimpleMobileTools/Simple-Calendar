@@ -265,13 +265,15 @@
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Egy egyszerű naptár bejegyzésekkel, widget-tel és reklámok nélkül.</string>
     <string name="app_long_description">
-        Egy internet-kapcsolatot nem igénylő naptár, más naptárokkal való integráció nélkül. Könnyedén lehet ismétlődő eseményeket és emlékeztetőket felvenni, és a hetek sorszámait is mutatja.
+        Egy egyszerű naptár, Google integráció lehetőségével. Könnyedén lehet ismétlődő eseményeket és emlékeztetőket felvenni, és a hetek sorszámait is mutatja.
 
         Egy 4x4-es átméretezhető widget-et is biztosít, aminek beállíthatod a színét, az alfáját és a háttérszínét is.
 
         Nincsenek reklámok, és nem igényel szükségtelen engedélyeket. A forráskódja teljesen nyílt, és sötét téma is beállítható.
 
         The Storage permission is needed only for importing events from .ics files.
+
+        Internet and Contacts permissions are used only at Google sync.
 
         Ez az alkalmazás egy nagyobb alkalmazás-sorozat része. A továbbiak itt találhatók: http://www.simplemobiletools.com
     </string>

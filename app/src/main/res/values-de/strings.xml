@@ -265,13 +265,15 @@
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Ein einfacher Kalender mit Events, personalisierbaren Widgets ohne Werbung.</string>
     <string name="app_long_description">
-        Ein eigenständiger offline Kalender. Einfaches Erstellen wiederholender Events sowie Erinnerungen, inkl. optionaler Anzeige der Kalenderwochen.
+        Ein eigenständiger Kalender. Einfaches Erstellen wiederholender Events sowie Erinnerungen, inkl. optionaler Anzeige der Kalenderwochen.
 
         Enthält ein skalierbares 4x4 Widget, bei welchem die Schriftfarbe sowie die Hintergrundfarbe anpassbar sind.
         
         Dieser Kalender enthält weder Werbung noch unnötige App-Berechtigungen und ist vollständig Open Source.
 
         Berechtigung Speicher ist nur für das Importieren von .ics Termin-Dateien notwendig.
+
+        Internet and Contacts permissions are used only at Google sync.
 
         Diese App ist Teil einer grösseren Serie von Apps. Diese findet man unter http://www.simplemobiletools.com
     </string>

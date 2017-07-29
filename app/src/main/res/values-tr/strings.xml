@@ -273,6 +273,8 @@
 
         Depolama izni yalnızca .ics dosyalarından olayları içe aktarmak için gereklidir.
 
+        Internet and Contacts permissions are used only at Google sync.
+
         Bu uygulama, daha büyük bir uygulama serisinden sadece bir parça. Geri kalanını şu adresten bulabilirsiniz: http://www.simplemobiletools.com
     </string>
 
