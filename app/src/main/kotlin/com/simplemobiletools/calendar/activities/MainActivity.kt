@@ -18,7 +18,6 @@ import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.adapters.MyMonthPagerAdapter
 import com.simplemobiletools.calendar.adapters.MyWeekPagerAdapter
 import com.simplemobiletools.calendar.adapters.MyYearPagerAdapter
-import com.simplemobiletools.calendar.asynctasks.FetchGoogleEventsTask
 import com.simplemobiletools.calendar.dialogs.ExportEventsDialog
 import com.simplemobiletools.calendar.dialogs.FilterEventTypesDialog
 import com.simplemobiletools.calendar.dialogs.ImportEventsDialog
@@ -636,6 +635,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
             add(Release(77, R.string.release_77))
             add(Release(80, R.string.release_80))
             add(Release(84, R.string.release_84))
+            add(Release(86, R.string.release_86))
             checkWhatsNew(this, BuildConfig.VERSION_CODE)
         }
     }
