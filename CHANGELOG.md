@@ -1,6 +1,11 @@
 Changelog
 ==========
 
+Version 2.6.0 *(2017-07-29)*
+----------------------------
+
+ * Added an initial implementation of Google sync
+
 Version 2.5.8 *(2017-07-12)*
 ----------------------------
 
