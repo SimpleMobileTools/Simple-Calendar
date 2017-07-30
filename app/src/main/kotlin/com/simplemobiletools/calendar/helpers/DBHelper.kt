@@ -699,7 +699,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                     var repeatRule = cursor.getIntValue(COL_REPEAT_RULE)
                     val title = cursor.getStringValue(COL_TITLE)
                     val description = cursor.getStringValue(COL_DESCRIPTION)
-                    val importId = cursor.getStringValue(COL_IMPORT_ID)
+                    val importId = cursor.getStringValue(COL_IMPORT_ID) ?: ""
                     val flags = cursor.getIntValue(COL_FLAGS)
                     val repeatLimit = cursor.getIntValue(COL_REPEAT_LIMIT)
                     val eventType = cursor.getIntValue(COL_EVENT_TYPE)
