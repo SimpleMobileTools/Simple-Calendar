@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 2.6.1 *(2017-07-30)*
+----------------------------
+
+ * Properly display events repeating weekly on some views
+ * Adding a crashfix
+
 Version 2.6.0 *(2017-07-29)*
 ----------------------------
 
