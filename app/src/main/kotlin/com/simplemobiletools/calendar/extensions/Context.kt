@@ -134,10 +134,10 @@ fun Context.getFormattedMinutes(minutes: Int, showBefore: Boolean = true) = when
         else if (minutes % 1440 == 0)
             resources.getQuantityString(R.plurals.days, minutes / 1440, minutes / 1440)
         else if (minutes % 60 == 0) {
-            val base = if (showBefore) R.plurals.hours_before else R.plurals.hours
+            val base = if (showBefore) R.plurals.hours_before else R.plurals.by_hours
             resources.getQuantityString(base, minutes / 60, minutes / 60)
         } else {
-            val base = if (showBefore) R.plurals.minutes_before else R.plurals.minutes
+            val base = if (showBefore) R.plurals.minutes_before else R.plurals.by_minutes
             resources.getQuantityString(base, minutes, minutes)
         }
     }

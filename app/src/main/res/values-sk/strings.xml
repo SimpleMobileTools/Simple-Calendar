@@ -207,15 +207,15 @@
     <string name="google_sync_error_update">Chyba pri úprave udalosti na Googli: %1$s</string>
     <string name="google_sync_error_fetch">Chyba pri čítaní Google udalostí: %1$s</string>
 
-    <plurals name="minutes">
+    <plurals name="by_minutes">
         <item quantity="one">%1$d minútu</item>
         <item quantity="few">%1$d minúty</item>
         <item quantity="other">%1$d minút</item>
     </plurals>
 
-    <plurals name="hours">
-        <item quantity="one">%1$d hodiny</item>
-        <item quantity="few">%1$d hodín</item>
+    <plurals name="by_hours">
+        <item quantity="one">%1$d hodinu</item>
+        <item quantity="few">%1$d hodiny</item>
         <item quantity="other">%1$d hodín</item>
     </plurals>
 

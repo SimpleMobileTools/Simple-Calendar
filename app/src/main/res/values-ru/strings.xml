@@ -214,13 +214,13 @@
     <string name="google_sync_error_update">Error updating event at Google: %1$s</string>
     <string name="google_sync_error_fetch">Error fetching Google events: %1$s</string>
 
-    <plurals name="minutes">
+    <plurals name="by_minutes">
         <item quantity="one">%1$d минута</item>
         <item quantity="few">%1$d минуты</item>
         <item quantity="many">%1$d минут</item>
     </plurals>
 
-    <plurals name="hours">
+    <plurals name="by_hours">
         <item quantity="one">%1$d час</item>
         <item quantity="few">%1$d часа</item>
         <item quantity="many">%1$d часов</item>

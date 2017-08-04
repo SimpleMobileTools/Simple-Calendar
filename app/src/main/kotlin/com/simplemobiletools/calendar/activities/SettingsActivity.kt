@@ -232,7 +232,7 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun updateSnoozeText() {
-        settings_snooze_delay.text = res.getQuantityString(R.plurals.minutes, config.snoozeDelay, config.snoozeDelay)
+        settings_snooze_delay.text = res.getQuantityString(R.plurals.by_minutes, config.snoozeDelay, config.snoozeDelay)
     }
 
     private fun setupEventReminder() {

@@ -200,12 +200,12 @@
     <string name="google_sync_error_update">Error updating event at Google: %1$s</string>
     <string name="google_sync_error_fetch">Error fetching Google events: %1$s</string>
 
-    <plurals name="minutes">
+    <plurals name="by_minutes">
         <item quantity="one">%1$d minut</item>
         <item quantity="other">%1$d minuter</item>
     </plurals>
 
-    <plurals name="hours">
+    <plurals name="by_hours">
         <item quantity="one">%1$d timme</item>
         <item quantity="other">%1$d timmar</item>
     </plurals>
