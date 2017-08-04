@@ -73,7 +73,7 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         if (mDayWidth == 0f) {
-            if(resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE){
+            if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
                 mDayWidth = (canvas.width / 9.2).toFloat()
             } else mDayWidth = (canvas.width / 8).toFloat()
         }

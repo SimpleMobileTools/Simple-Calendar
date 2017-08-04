@@ -31,8 +31,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/month_1_label"
                 android:layout_marginLeft="@dimen/yearly_month_left_padding"
-                android:layout_marginStart="@dimen/yearly_month_left_padding"
-                />
+                android:layout_marginStart="@dimen/yearly_month_left_padding" />
 
         </RelativeLayout>
 
