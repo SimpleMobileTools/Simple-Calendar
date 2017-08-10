@@ -82,6 +82,10 @@ class Config(context: Context) : BaseConfig(context) {
             prefs.edit().putBoolean(GOOGLE_SYNC, googleSync).apply()
         }
 
+    var caldavSync: Boolean
+        get() = prefs.getBoolean(CALDAV_SYNC, false)
+        set(caldavSync) = prefs.edit().putBoolean(CALDAV_SYNC, caldavSync).apply()
+
     var syncAccountName: String
         get() = prefs.getString(SYNC_ACCOUNT_NAME, "")
         set(syncAccountName) = prefs.edit().putString(SYNC_ACCOUNT_NAME, syncAccountName).apply()

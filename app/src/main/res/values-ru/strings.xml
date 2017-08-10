@@ -201,6 +201,7 @@
     <string name="no_ringtone_selected">Нет</string>
     <string name="day_end_before_start">Конец дня не может быть раньше начала</string>
     <string name="google_sync">Синхронизация с Google</string>
+    <string name="caldav_sync">Sync with the local calendar (CalDAV)</string>
     <string name="display_past_events">Показывать прошедшие события</string>
     <string name="snooze_delay">Postpone reminder with Snooze by</string>
     <string name="widgets">Widgets</string>

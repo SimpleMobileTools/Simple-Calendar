@@ -187,6 +187,7 @@
     <string name="no_ringtone_selected">None</string>
     <string name="day_end_before_start">The day cannot end earlier than it starts</string>
     <string name="google_sync">Google sync</string>
+    <string name="caldav_sync">Sync with the local calendar (CalDAV)</string>
     <string name="display_past_events">Display events from the past</string>
     <string name="snooze_delay">Postpone reminder with Snooze by</string>
     <string name="widgets">Widgets</string>

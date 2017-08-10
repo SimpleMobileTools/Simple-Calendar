@@ -52,6 +52,7 @@ class SettingsActivity : SimpleActivity() {
         setContentView(R.layout.activity_settings)
         res = resources
         setupGoogleSync()
+        setupCaldavSync()
     }
 
     override fun onResume() {
@@ -128,6 +129,14 @@ class SettingsActivity : SimpleActivity() {
                     toast(R.string.cannot_while_offline)
                 }
             }
+        }
+    }
+
+    private fun setupCaldavSync() {
+        settings_caldav_sync.isChecked = config.caldavSync
+        settings_caldav_sync_holder.setOnClickListener {
+            settings_caldav_sync.toggle()
+            config.caldavSync = settings_caldav_sync.isChecked
         }
     }
 
