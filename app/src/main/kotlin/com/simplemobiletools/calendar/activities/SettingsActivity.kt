@@ -39,6 +39,7 @@ class SettingsActivity : SimpleActivity() {
     private val ACCOUNTS_PERMISSION = 2
     private val REQUEST_ACCOUNT_NAME = 3
     private val REQUEST_GOOGLE_PLAY_SERVICES = 4
+    private val CALENDAR_PERMISSION = 5
 
     lateinit var res: Resources
     private var mStoredPrimaryColor = 0
@@ -135,9 +136,21 @@ class SettingsActivity : SimpleActivity() {
     private fun setupCaldavSync() {
         settings_caldav_sync.isChecked = config.caldavSync
         settings_caldav_sync_holder.setOnClickListener {
-            settings_caldav_sync.toggle()
-            config.caldavSync = settings_caldav_sync.isChecked
+            if (config.caldavSync) {
+                toggleCaldavSync()
+            } else {
+                if (hasCalendarPermission()) {
+                    toggleCaldavSync()
+                } else {
+                    ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_CALENDAR), CALENDAR_PERMISSION)
+                }
+            }
         }
+    }
+
+    private fun toggleCaldavSync() {
+        settings_caldav_sync.toggle()
+        config.caldavSync = settings_caldav_sync.isChecked
     }
 
     private fun toggleGoogleSync() {
@@ -437,6 +450,10 @@ class SettingsActivity : SimpleActivity() {
                 showAccountChooser()
             } else {
                 disableGoogleSync()
+            }
+        } else if (requestCode == CALENDAR_PERMISSION) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                toggleCaldavSync()
             }
         }
     }

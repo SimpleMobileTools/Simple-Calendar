@@ -90,6 +90,10 @@ class MainActivity : SimpleActivity(), NavigationListener {
             config.googleSync = false
         }
 
+        if (!hasCalendarPermission()) {
+            config.caldavSync = false
+        }
+
         if (isGoogleSyncActive()) {
             FetchGoogleEventsTask(applicationContext, googleSyncListener).execute()
         }
