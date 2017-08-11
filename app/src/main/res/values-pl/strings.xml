@@ -84,19 +84,19 @@
 
     <plurals name="weeks">
         <item quantity="one">%1$d tydzień</item>
-        <item quantity="one">%1$d tygodnie</item>
+        <item quantity="few">%1$d tygodnie</item>
         <item quantity="other">%1$d tygodni</item>
     </plurals>
 
     <plurals name="months">
         <item quantity="one">%1$d miesiąc</item>
-        <item quantity="one">%1$d miesiące</item>
+        <item quantity="few">%1$d miesiące</item>
         <item quantity="other">%1$d miesięcy</item>
     </plurals>
 
     <plurals name="years">
         <item quantity="one">%1$d rok</item>
-        <item quantity="one">%1$d lata</item>
+        <item quantity="few">%1$d lata</item>
         <item quantity="other">%1$d lat</item>
     </plurals>
 
