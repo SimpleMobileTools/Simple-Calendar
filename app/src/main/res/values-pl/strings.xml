@@ -192,7 +192,7 @@
     <string name="no_ringtone_selected">Żaden</string>
     <string name="day_end_before_start">Dzień nie może zakończyć się wcześniej niż się zaczyna</string>
     <string name="google_sync">Synchronizacja z Google</string>
-    <string name="caldav_sync">Synchronizuj z lokalnym kalendarzem (CalDAV)</string>
+    <string name="caldav_sync">CalDAV sync</string>
     <string name="display_past_events">Pokazuj wydarzenia z przeszłości</string>
     <string name="snooze_delay">Opóźnij przypomnienie o</string>
     <string name="widgets">Widżety</string>

@@ -194,7 +194,7 @@
     <string name="no_ringtone_selected">Žiadna</string>
     <string name="day_end_before_start">Deň nemôže skončiť skôr než začne</string>
     <string name="google_sync">Google synchronizácia</string>
-    <string name="caldav_sync">Lokálna synchronizácia (CalDAV)</string>
+    <string name="caldav_sync">CalDAV synchronizácia</string>
     <string name="display_past_events">Zobraziť minulé udalosti spred</string>
     <string name="snooze_delay">Posunúť pripomienku s Odložiť o</string>
     <string name="widgets">Widgety</string>
