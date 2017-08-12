@@ -33,7 +33,13 @@ android {
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
+        debug.java.srcDirs += 'src/debug/kotlin'
+        release.java.srcDirs += 'src/release/kotlin'
     }
+}
+
+ext {
+    leakCanaryVersion = '1.5.2'
 }
 
 dependencies {
@@ -57,6 +63,8 @@ dependencies {
     }
 
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    debugCompile "com.squareup.leakcanary:leakcanary-android:$leakCanaryVersion"
+    releaseCompile "com.squareup.leakcanary:leakcanary-android-no-op:$leakCanaryVersion"
 }
 
 buildscript {
