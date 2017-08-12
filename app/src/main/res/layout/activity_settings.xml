@@ -256,6 +256,7 @@
 
         <ImageView
             android:id="@+id/weekly_view_divider"
+            android:importantForAccessibility="no"
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:background="@color/divider_strong"/>
@@ -346,6 +347,7 @@
             android:id="@+id/monthly_view_divider"
             android:layout_width="match_parent"
             android:layout_height="1px"
+            android:importantForAccessibility="no"
             android:background="@color/divider_strong"/>
 
         <com.simplemobiletools.commons.views.MyTextView
@@ -385,6 +387,7 @@
             android:id="@+id/events_list_view_divider"
             android:layout_width="match_parent"
             android:layout_height="1px"
+            android:importantForAccessibility="no"
             android:background="@color/divider_strong"/>
 
         <com.simplemobiletools.commons.views.MyTextView
@@ -438,6 +441,7 @@
             android:id="@+id/widgets_divider"
             android:layout_width="match_parent"
             android:layout_height="1px"
+            android:importantForAccessibility="no"
             android:background="@color/divider_strong"/>
 
         <com.simplemobiletools.commons.views.MyTextView
