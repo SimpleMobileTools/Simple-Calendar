@@ -36,6 +36,11 @@ android {
         debug.java.srcDirs += 'src/debug/kotlin'
         release.java.srcDirs += 'src/release/kotlin'
     }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
 }
 
 ext {
@@ -50,6 +55,7 @@ dependencies {
     compile 'com.android.support:multidex:1.0.1'
     compile 'com.google.code.gson:gson:2.8.0'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
     debugCompile "com.squareup.leakcanary:leakcanary-android:$leakCanaryVersion"
     releaseCompile "com.squareup.leakcanary:leakcanary-android-no-op:$leakCanaryVersion"
 }
