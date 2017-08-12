@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/dialog_repeat_type_picker_holder"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -25,7 +26,7 @@
             android:layout_marginStart="@dimen/repeat_type_margin_start"
             android:paddingBottom="@dimen/normal_margin"
             android:paddingTop="@dimen/medium_margin"
-            android:text="January 1 1970"/>
+            tools:text="January 1 1970"/>
 
         <com.simplemobiletools.commons.views.MyCompatRadioButton
             android:id="@+id/repeat_type_x_times"

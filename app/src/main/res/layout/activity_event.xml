@@ -2,6 +2,7 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/event_scrollview"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -98,7 +99,7 @@
             android:paddingEnd="@dimen/activity_margin"
             android:paddingRight="@dimen/activity_margin"
             android:paddingTop="@dimen/activity_margin"
-            android:text="January 1 1970"
+            tools:text="January 1 1970"
             android:textSize="@dimen/day_text_size"/>
 
         <com.simplemobiletools.commons.views.MyTextView
@@ -110,7 +111,7 @@
             android:layout_below="@+id/event_time_image"
             android:background="?attr/selectableItemBackground"
             android:padding="@dimen/activity_margin"
-            android:text="00:00"
+            tools:text="00:00"
             android:textSize="@dimen/day_text_size"/>
 
         <com.simplemobiletools.commons.views.MyTextView
@@ -125,7 +126,7 @@
             android:paddingEnd="@dimen/activity_margin"
             android:paddingRight="@dimen/activity_margin"
             android:paddingTop="@dimen/activity_margin"
-            android:text="January 1 1970"
+            tools:text="January 1 1970"
             android:textSize="@dimen/day_text_size"/>
 
         <com.simplemobiletools.commons.views.MyTextView
@@ -137,7 +138,7 @@
             android:layout_below="@+id/event_start_time"
             android:background="?attr/selectableItemBackground"
             android:padding="@dimen/activity_margin"
-            android:text="00:00"
+            tools:text="00:00"
             android:textSize="@dimen/day_text_size"/>
 
         <ImageView
