@@ -193,20 +193,11 @@
     <string name="no_ringtone_picker">Nenašla sa žiadna aplikácia na zmenu zvučky</string>
     <string name="no_ringtone_selected">Žiadna</string>
     <string name="day_end_before_start">Deň nemôže skončiť skôr než začne</string>
-    <string name="google_sync">Google synchronizácia</string>
     <string name="caldav_sync">CalDAV synchronizácia</string>
     <string name="display_past_events">Zobraziť minulé udalosti spred</string>
     <string name="snooze_delay">Posunúť pripomienku s Odložiť o</string>
     <string name="widgets">Widgety</string>
     <string name="cannot_while_offline">Nemôžete to urobiť bez internetu.</string>
-
-    <!-- Google sync -->
-    <string name="google_sync_testing">Google synchronizácia je v testovacej prevádzke, buďte opatrní pri spoliehaní sa na ňu. Nahlásenie akýchkoľvek ohlasov na hello@simplemobiletools.com je vítané. Vďaka!</string>
-    <string name="google_sync_existing">Nahrať momentálne existujúce udalosti Googlu?</string>
-    <string name="google_sync_disabling">Vypnutie Google synchonizácie odstráni všetky synchronizované udalosti zo zariadenia, no v oblakoch ostanú nedotknuté.</string>
-    <string name="google_sync_error_insert">Chyba pri nahrávaní udalosti na Google: %1$s</string>
-    <string name="google_sync_error_update">Chyba pri úprave udalosti na Googli: %1$s</string>
-    <string name="google_sync_error_fetch">Chyba pri čítaní Google udalostí: %1$s</string>
 
     <plurals name="by_minutes">
         <item quantity="one">%1$d minútu</item>

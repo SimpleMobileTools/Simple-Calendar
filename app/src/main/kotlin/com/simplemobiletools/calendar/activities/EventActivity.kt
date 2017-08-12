@@ -473,7 +473,6 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
                     toast(R.string.event_added)
                 }
 
-                GoogleSyncHandler().tryInsertToGoogle(this, mEvent)
                 finish()
             }
         } else {
@@ -502,7 +501,6 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     }
 
     private fun eventUpdated() {
-        GoogleSyncHandler().tryUpdateGoogleEvent(this, mEvent)
         toast(R.string.event_updated)
         finish()
     }

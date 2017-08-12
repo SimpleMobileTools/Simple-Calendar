@@ -12,22 +12,15 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
-import android.net.ConnectivityManager
 import android.net.Uri
 import android.os.Build
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.NotificationCompat
-import com.google.api.client.extensions.android.http.AndroidHttp
-import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential
-import com.google.api.client.json.gson.GsonFactory
-import com.google.api.client.util.ExponentialBackOff
-import com.google.api.services.calendar.CalendarScopes
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.models.Event
-import com.simplemobiletools.calendar.receivers.GoogleSyncReceiver
 import com.simplemobiletools.calendar.receivers.NotificationReceiver
 import com.simplemobiletools.calendar.services.SnoozeService
 import com.simplemobiletools.commons.extensions.getContrastColor
@@ -237,41 +230,10 @@ fun Context.launchNewEventIntent(startNewTask: Boolean = false, today: Boolean =
     }
 }
 
-fun Context.getGoogleSyncService(): com.google.api.services.calendar.Calendar {
-    val credential = GoogleAccountCredential.usingOAuth2(this, arrayListOf(CalendarScopes.CALENDAR)).setBackOff(ExponentialBackOff())
-    credential.selectedAccountName = config.syncAccountName
-    val transport = AndroidHttp.newCompatibleTransport()
-    return com.google.api.services.calendar.Calendar.Builder(transport, GsonFactory(), credential)
-            .setApplicationName(resources.getString(R.string.app_name))
-            .build()
-}
-
-fun Context.isOnline(): Boolean {
-    val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-    return connectivityManager.activeNetworkInfo != null
-}
-
-fun Context.scheduleGoogleSync(activate: Boolean) {
-    val syncIntent = Intent(this, GoogleSyncReceiver::class.java)
-    val pendingIntent = PendingIntent.getBroadcast(this, 0, syncIntent, PendingIntent.FLAG_CANCEL_CURRENT)
-    val alarm = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-
-    if (activate) {
-        val syncCheckInterval = 4 * AlarmManager.INTERVAL_HOUR
-        alarm.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + syncCheckInterval, syncCheckInterval, pendingIntent)
-    } else {
-        alarm.cancel(pendingIntent)
-    }
-}
-
 fun Context.getNewEventTimestampFromCode(dayCode: String) = Formatter.getLocalDateTimeFromCode(dayCode).withTime(13, 0, 0, 0).seconds()
 
 fun Context.getCurrentOffset() = SimpleDateFormat("Z", Locale.getDefault()).format(Date())
 
-fun Context.isGoogleSyncActive() = config.googleSync && config.syncAccountName.isNotEmpty()
-
 val Context.config: Config get() = Config.newInstance(this)
 
 val Context.dbHelper: DBHelper get() = DBHelper.newInstance(this)
-
-val Context.googleSyncQueue: GoogleSyncQueueDB get() = GoogleSyncQueueDB.newInstance(this)

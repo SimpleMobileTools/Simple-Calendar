@@ -4,8 +4,6 @@ import android.content.Context
 import android.media.RingtoneManager
 import android.text.format.DateFormat
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.extensions.googleSyncQueue
-import com.simplemobiletools.calendar.extensions.scheduleGoogleSync
 import com.simplemobiletools.commons.helpers.BaseConfig
 import java.util.*
 
@@ -72,31 +70,9 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getInt(FONT_SIZE, FONT_SIZE_MEDIUM)
         set(size) = prefs.edit().putInt(FONT_SIZE, size).apply()
 
-    var googleSync: Boolean
-        get() = prefs.getBoolean(GOOGLE_SYNC, false)
-        set(googleSync) {
-            context.scheduleGoogleSync(googleSync)
-            if (!googleSync)
-                context.googleSyncQueue.clearQueue()
-
-            prefs.edit().putBoolean(GOOGLE_SYNC, googleSync).apply()
-        }
-
     var caldavSync: Boolean
         get() = prefs.getBoolean(CALDAV_SYNC, false)
         set(caldavSync) = prefs.edit().putBoolean(CALDAV_SYNC, caldavSync).apply()
-
-    var syncAccountName: String
-        get() = prefs.getString(SYNC_ACCOUNT_NAME, "")
-        set(syncAccountName) = prefs.edit().putString(SYNC_ACCOUNT_NAME, syncAccountName).apply()
-
-    var googleDefaultEventColor: Int
-        get() = prefs.getInt(GOOGLE_DEFAULT_EVENT_COLOR, primaryColor)
-        set(color) = prefs.edit().putInt(GOOGLE_DEFAULT_EVENT_COLOR, color).apply()
-
-    var googleDefaultReminders: String
-        get() = prefs.getString(GOOGLE_DEFAULT_REMINDERS, "")
-        set(reminders) = prefs.edit().putString(GOOGLE_DEFAULT_REMINDERS, reminders).apply()
 
     fun addDisplayEventType(type: String) {
         addDisplayEventTypes(HashSet<String>(Arrays.asList(type)))

@@ -18,7 +18,6 @@ import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.adapters.MyMonthPagerAdapter
 import com.simplemobiletools.calendar.adapters.MyWeekPagerAdapter
 import com.simplemobiletools.calendar.adapters.MyYearPagerAdapter
-import com.simplemobiletools.calendar.asynctasks.FetchGoogleEventsTask
 import com.simplemobiletools.calendar.dialogs.ExportEventsDialog
 import com.simplemobiletools.calendar.dialogs.FilterEventTypesDialog
 import com.simplemobiletools.calendar.dialogs.ImportEventsDialog
@@ -27,7 +26,6 @@ import com.simplemobiletools.calendar.fragments.EventListFragment
 import com.simplemobiletools.calendar.fragments.WeekFragment
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
-import com.simplemobiletools.calendar.interfaces.GoogleSyncListener
 import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.models.EventType
@@ -86,18 +84,9 @@ class MainActivity : SimpleActivity(), NavigationListener {
         storeStateVariables()
         updateViewPager()
 
-        if (!hasGetAccountsPermission()) {
-            config.googleSync = false
-        }
-
         if (!hasCalendarPermission()) {
             config.caldavSync = false
         }
-
-        if (isGoogleSyncActive()) {
-            FetchGoogleEventsTask(applicationContext, googleSyncListener).execute()
-        }
-        scheduleGoogleSync(isGoogleSyncActive())
     }
 
     override fun onResume() {
@@ -536,12 +525,6 @@ class MainActivity : SimpleActivity(), NavigationListener {
         main_weekly_scrollview.beGone()
         calendar_event_list_holder.beVisible()
         supportFragmentManager.beginTransaction().replace(R.id.calendar_event_list_holder, EventListFragment(), "").commit()
-    }
-
-    val googleSyncListener = object : GoogleSyncListener {
-        override fun syncCompleted() {
-            refreshViewPager()
-        }
     }
 
     override fun goLeft() {

@@ -186,20 +186,11 @@
     <string name="no_ringtone_picker">No se ha encontrado ninguna aplicación capaz de establecer el tono de llamada</string>
     <string name="no_ringtone_selected">Ninguno</string>
     <string name="day_end_before_start">El día no puede terminar antes de que comience</string>
-    <string name="google_sync">Sincronización de Google</string>
     <string name="caldav_sync">CalDAV sync</string>
     <string name="display_past_events">Display events from the past</string>
     <string name="snooze_delay">Postpone reminder with Snooze by</string>
     <string name="widgets">Widgets</string>
     <string name="cannot_while_offline">You cannot do that while offline.</string>
-
-    <!-- Google sync -->
-    <string name="google_sync_testing">Google sync is in a testing mode, please be cautions when relying on it. Reporting any feedback at hello@simplemobiletools.com would be appreciated. Thanks!</string>
-    <string name="google_sync_existing">Upload currently existing events to Google?</string>
-    <string name="google_sync_disabling">Disabling Google sync will delete all synced events from your device, while leaving them intact in the cloud.</string>
-    <string name="google_sync_error_insert">Error uploading event to Google: %1$s</string>
-    <string name="google_sync_error_update">Error updating event at Google: %1$s</string>
-    <string name="google_sync_error_fetch">Error fetching Google events: %1$s</string>
 
     <plurals name="by_minutes">
         <item quantity="one">%1$d minute</item>

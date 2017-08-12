@@ -323,7 +323,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         return null
     }
 
-    fun deleteEvents(ids: Array<String>, deleteFromGoogle: Boolean = true) {
+    fun deleteEvents(ids: Array<String>) {
         val args = TextUtils.join(", ", ids)
         val selection = "$MAIN_TABLE_NAME.$COL_ID IN ($args)"
         val cursor = getEventsCursor(selection)
@@ -344,15 +344,10 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             context.cancelNotification(it.toInt())
         }
 
-        deleteChildEvents(args, deleteFromGoogle)
-        if (deleteFromGoogle) {
-            events.forEach {
-                GoogleSyncHandler().tryDeleteFromGoogle(context, it)
-            }
-        }
+        deleteChildEvents(args)
     }
 
-    private fun deleteChildEvents(ids: String, deleteFromGoogle: Boolean) {
+    private fun deleteChildEvents(ids: String) {
         val projection = arrayOf(COL_ID)
         val selection = "$COL_PARENT_EVENT_ID IN ($ids)"
         val childIds = ArrayList<String>()
@@ -370,19 +365,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
 
         if (childIds.isNotEmpty())
-            deleteEvents(childIds.toTypedArray(), deleteFromGoogle)
-    }
-
-    fun getGoogleSyncEvents(): List<Event> {
-        val selection = "$COL_SOURCE = $SOURCE_GOOGLE_SYNC"
-        val cursor = getEventsCursor(selection)
-        return fillEvents(cursor)
-    }
-
-    fun deleteAllGoogleSyncEvents() {
-        val events = getGoogleSyncEvents()
-        val eventIDs = Array(events.size, { i -> (events[i].id.toString()) })
-        deleteEvents(eventIDs, false)
+            deleteEvents(childIds.toTypedArray())
     }
 
     fun addEventRepeatException(parentEventId: Int, occurrenceTS: Int) {

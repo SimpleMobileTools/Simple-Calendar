@@ -191,20 +191,11 @@
     <string name="no_ringtone_picker">Nie znalazłem aplikacji mogącej ustawiać dzwonki</string>
     <string name="no_ringtone_selected">Żaden</string>
     <string name="day_end_before_start">Dzień nie może zakończyć się wcześniej niż się zaczyna</string>
-    <string name="google_sync">Synchronizacja z Google</string>
     <string name="caldav_sync">CalDAV sync</string>
     <string name="display_past_events">Pokazuj wydarzenia z przeszłości</string>
     <string name="snooze_delay">Opóźnij przypomnienie o</string>
     <string name="widgets">Widżety</string>
     <string name="cannot_while_offline">Nie możesz tego zrobić bez dostępu do internetu.</string>
-
-    <!-- Google sync -->
-    <string name="google_sync_testing">Synchronizacja z Google jest w fazie testów,  sync is in a testing mode. Polegasz na niej na własną odpowiedzialność. Wszelkie raporty odnośnie tej funkcji pisane na adres hello@simplemobiletools.com są mile widziane.</string>
-    <string name="google_sync_existing">Wysłać istniejące wydarzenia na Dysk Google?</string>
-    <string name="google_sync_disabling">Wyłączenie synchronizacji z Google usunie wszelkie zsynchronizowane z Twoim urządzeniem wydarzenia, pozostwiając je nienaruszone w chmurze.</string>
-    <string name="google_sync_error_insert">Wystąił błąd podczas wysyłania wydarzeń na Dysk Google: %1$s</string>
-    <string name="google_sync_error_update">Wystąił błąd podczas aktualizacji wydarzeń na Dysku Google: %1$s</string>
-    <string name="google_sync_error_fetch">Wystąił błąd podczas pobierania wydarzeń z Dysku Google: %1$s</string>
 
     <plurals name="by_minutes">
         <item quantity="one">%1$d minutę</item>

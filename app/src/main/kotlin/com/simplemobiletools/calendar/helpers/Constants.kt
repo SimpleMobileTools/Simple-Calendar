@@ -41,13 +41,10 @@ val VIEW = "view"
 val REMINDER_MINUTES = "reminder_minutes"
 val DISPLAY_EVENT_TYPES = "display_event_types"
 val FONT_SIZE = "font_size"
-val GOOGLE_SYNC = "google_sync"
 val CALDAV_SYNC = "caldav_sync"
 val SYNC_ACCOUNT_NAME = "sync_account_name"
 val SNOOZE_DELAY = "snooze_delay"
 val DISPLAY_PAST_EVENTS = "display_past_events"
-val GOOGLE_DEFAULT_EVENT_COLOR = "google_default_event_color"
-val GOOGLE_DEFAULT_REMINDERS = "google_default_reminders"
 
 val letterIDs = intArrayOf(R.string.sunday_letter, R.string.monday_letter, R.string.tuesday_letter, R.string.wednesday_letter,
         R.string.thursday_letter, R.string.friday_letter, R.string.saturday_letter)
@@ -121,15 +118,4 @@ val FONT_SIZE_MEDIUM = 1
 val FONT_SIZE_LARGE = 2
 
 val SOURCE_SIMPLE_CALENDAR = 0
-val SOURCE_GOOGLE_SYNC = 1
 val SOURCE_IMPORTED_ICS = 2
-
-// Google Sync
-val PRIMARY = "primary"
-val POPUP = "popup"
-val OPERATION_INSERT = 1
-val OPERATION_UPDATE = 2
-val OPERATION_DELETE = 3
-val OVERRIDES = "overrides"
-val DEFAULT_REMINDERS = "defaultReminders"
-val USE_DEFAULT = "useDefault"

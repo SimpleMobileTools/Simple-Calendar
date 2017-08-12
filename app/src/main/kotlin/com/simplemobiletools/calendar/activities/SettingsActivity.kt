@@ -1,33 +1,21 @@
 package com.simplemobiletools.calendar.activities
 
 import android.Manifest
-import android.accounts.AccountManager
-import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.Resources
-import android.graphics.Color
 import android.media.RingtoneManager
 import android.net.Uri
 import android.os.Bundle
 import android.os.Parcelable
 import android.support.v4.app.ActivityCompat
-import com.google.android.gms.common.ConnectionResult
-import com.google.android.gms.common.GoogleApiAvailability
-import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential
-import com.google.api.client.googleapis.extensions.android.gms.auth.UserRecoverableAuthIOException
-import com.google.api.client.util.ExponentialBackOff
-import com.google.api.services.calendar.CalendarScopes
-import com.google.api.services.calendar.model.CalendarListEntry
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.asynctasks.FetchGoogleEventsTask
 import com.simplemobiletools.calendar.dialogs.CustomEventReminderDialog
 import com.simplemobiletools.calendar.dialogs.SnoozePickerDialog
 import com.simplemobiletools.calendar.extensions.*
-import com.simplemobiletools.calendar.helpers.*
-import com.simplemobiletools.calendar.interfaces.GoogleSyncListener
-import com.simplemobiletools.calendar.models.Event
-import com.simplemobiletools.commons.dialogs.ConfirmationDialog
+import com.simplemobiletools.calendar.helpers.FONT_SIZE_LARGE
+import com.simplemobiletools.calendar.helpers.FONT_SIZE_MEDIUM
+import com.simplemobiletools.calendar.helpers.FONT_SIZE_SMALL
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.toast
 import com.simplemobiletools.commons.extensions.updateTextColors
@@ -36,9 +24,6 @@ import kotlinx.android.synthetic.main.activity_settings.*
 
 class SettingsActivity : SimpleActivity() {
     private val GET_RINGTONE_URI = 1
-    private val ACCOUNTS_PERMISSION = 2
-    private val REQUEST_ACCOUNT_NAME = 3
-    private val REQUEST_GOOGLE_PLAY_SERVICES = 4
     private val CALENDAR_PERMISSION = 5
 
     lateinit var res: Resources
@@ -52,7 +37,6 @@ class SettingsActivity : SimpleActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
         res = resources
-        setupGoogleSync()
         setupCaldavSync()
     }
 
@@ -113,26 +97,6 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
-    private fun setupGoogleSync() {
-        settings_google_sync.isChecked = isGoogleSyncActive()
-        settings_google_sync_holder.setOnClickListener {
-            if (config.googleSync) {
-                ConfirmationDialog(this, getString(R.string.google_sync_disabling), positive = R.string.ok, negative = R.string.cancel) {
-                    dbHelper.deleteAllGoogleSyncEvents()
-                    toggleGoogleSync()
-                }
-            } else {
-                if (isOnline()) {
-                    ConfirmationDialog(this, getString(R.string.google_sync_testing), positive = R.string.ok, negative = 0) {
-                        toggleGoogleSync()
-                    }
-                } else {
-                    toast(R.string.cannot_while_offline)
-                }
-            }
-        }
-    }
-
     private fun setupCaldavSync() {
         settings_caldav_sync.isChecked = config.caldavSync
         settings_caldav_sync_holder.setOnClickListener {
@@ -151,16 +115,6 @@ class SettingsActivity : SimpleActivity() {
     private fun toggleCaldavSync() {
         settings_caldav_sync.toggle()
         config.caldavSync = settings_caldav_sync.isChecked
-    }
-
-    private fun toggleGoogleSync() {
-        settings_google_sync.toggle()
-
-        if (settings_google_sync.isChecked) {
-            tryEnablingSync()
-        } else {
-            disableGoogleSync()
-        }
     }
 
     private fun setupSundayFirst() {
@@ -333,136 +287,17 @@ class SettingsActivity : SimpleActivity() {
                     settings_reminder_sound.text = RingtoneManager.getRingtone(this, uri as Uri)?.getTitle(this)
                     config.reminderSound = uri.toString()
                 }
-            } else if (requestCode == REQUEST_ACCOUNT_NAME && data?.extras != null) {
-                val accountName = data.getStringExtra(AccountManager.KEY_ACCOUNT_NAME)
-                config.syncAccountName = accountName
-                tryEnablingSync()
-            } else if (requestCode == REQUEST_AUTHORIZATION) {
-                tryEnablingSync()
             }
-        } else if (resultCode == Activity.RESULT_CANCELED) {
-            if (requestCode == REQUEST_ACCOUNT_NAME || requestCode == REQUEST_AUTHORIZATION) {
-                disableGoogleSync()
-            }
-        }
-    }
-
-    private fun tryEnablingSync() {
-        if (!isGooglePlayServicesAvailable()) {
-            acquireGooglePlayServices()
-        } else if (!hasGetAccountsPermission()) {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.GET_ACCOUNTS), ACCOUNTS_PERMISSION)
-        } else if (config.syncAccountName.isEmpty()) {
-            showAccountChooser()
-        } else {
-            Thread({
-                fetchEventsIfHasPermissions()
-            }).start()
-        }
-    }
-
-    private fun isGooglePlayServicesAvailable(): Boolean {
-        val apiAvailability = GoogleApiAvailability.getInstance()
-        val connectionStatusCode = apiAvailability.isGooglePlayServicesAvailable(this)
-        return connectionStatusCode == ConnectionResult.SUCCESS
-    }
-
-    private fun acquireGooglePlayServices() {
-        val apiAvailability = GoogleApiAvailability.getInstance()
-        val connectionStatusCode = apiAvailability.isGooglePlayServicesAvailable(this)
-        if (apiAvailability.isUserResolvableError(connectionStatusCode)) {
-            GoogleApiAvailability.getInstance().getErrorDialog(this, connectionStatusCode, REQUEST_GOOGLE_PLAY_SERVICES).show()
-        }
-    }
-
-    private fun fetchEventsIfHasPermissions() {
-        try {
-            getGoogleSyncService().colors().get().execute() // just checking if we have the permission for fetching user data
-            storeCalendarData()
-            config.googleSync = true
-            FetchGoogleEventsTask(applicationContext, googleSyncListener).execute()
-            runOnUiThread {
-                settings_google_sync.isChecked = true
-                val eventsToExport = dbHelper.getEventsToExport(true)
-                if (eventsToExport.isNotEmpty()) {
-                    offerEventsUpload(eventsToExport)
-                }
-            }
-        } catch (e: Exception) {
-            if (e is UserRecoverableAuthIOException) {
-                startActivityForResult(e.intent, REQUEST_AUTHORIZATION)
-            } else {
-                toast(R.string.unknown_error_occurred)
-            }
-        }
-    }
-
-    private fun disableGoogleSync() {
-        settings_google_sync.isChecked = false
-        config.googleSync = false
-        config.syncAccountName = ""
-        config.googleDefaultEventColor = config.primaryColor
-    }
-
-    private fun storeCalendarData() {
-        Thread({
-            val calendar = getGoogleSyncService().calendarList().get(PRIMARY).execute()
-            config.googleDefaultEventColor = Color.parseColor(calendar.backgroundColor)
-            storeDefaultReminders(calendar)
-        }).start()
-    }
-
-    private fun storeDefaultReminders(calendar: CalendarListEntry) {
-        val reminderMinutes = ArrayList<Int>()
-        val reminders = calendar.defaultReminders
-        reminders.forEach {
-            if (it.method == POPUP) {
-                reminderMinutes.add(it.minutes)
-            }
-        }
-        config.googleDefaultReminders = reminderMinutes.joinToString(",")
-    }
-
-    private val googleSyncListener = object : GoogleSyncListener {
-        override fun syncCompleted() {
-            toast(R.string.events_imported_successfully)
-        }
-    }
-
-    private fun offerEventsUpload(eventsToExport: ArrayList<Event>) {
-        ConfirmationDialog(this, messageId = R.string.google_sync_existing) {
-            Thread({
-                eventsToExport.forEach {
-                    try {
-                        GoogleSyncHandler().tryInsertToGoogle(this, it)
-                    } catch (e: Exception) {
-                    }
-                }
-            }).start()
         }
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
-        if (requestCode == ACCOUNTS_PERMISSION) {
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                showAccountChooser()
-            } else {
-                disableGoogleSync()
-            }
-        } else if (requestCode == CALENDAR_PERMISSION) {
+        if (requestCode == CALENDAR_PERMISSION) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 toggleCaldavSync()
             }
-        }
-    }
-
-    private fun showAccountChooser() {
-        if (config.syncAccountName.isEmpty()) {
-            // more about oauth at https://developers.google.com/google-apps/calendar/auth
-            val credential = GoogleAccountCredential.usingOAuth2(this, arrayListOf(CalendarScopes.CALENDAR)).setBackOff(ExponentialBackOff())
-            startActivityForResult(credential.newChooseAccountIntent(), REQUEST_ACCOUNT_NAME)
         }
     }
 }
