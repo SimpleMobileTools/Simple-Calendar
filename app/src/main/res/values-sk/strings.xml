@@ -199,6 +199,7 @@
     <string name="widgets">Widgety</string>
 
     <!-- CalDAV sync -->
+    <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Zvoľte kalendáre pre synchronizáciu</string>
     <string name="manage_synced_calendars">Spravovať synchronizované kalendáre</string>
 

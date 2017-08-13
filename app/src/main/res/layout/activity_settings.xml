@@ -110,49 +110,6 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/settings_caldav_sync_holder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/medium_margin"
-            android:background="?attr/selectableItemBackground"
-            android:padding="@dimen/activity_margin">
-
-            <com.simplemobiletools.commons.views.MySwitchCompat
-                android:id="@+id/settings_caldav_sync"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:clickable="false"
-                android:paddingLeft="@dimen/medium_margin"
-                android:paddingStart="@dimen/medium_margin"
-                android:text="@string/caldav_sync"/>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/settings_manage_synced_calendars_holder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/medium_margin"
-            android:background="?attr/selectableItemBackground"
-            android:paddingBottom="@dimen/bigger_margin"
-            android:paddingLeft="@dimen/activity_margin"
-            android:paddingRight="@dimen/activity_margin"
-            android:paddingTop="@dimen/bigger_margin"
-            android:visibility="gone">
-
-            <com.simplemobiletools.commons.views.MyTextView
-                android:id="@+id/settings_manage_synced_calendars"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:paddingLeft="@dimen/medium_margin"
-                android:paddingRight="@dimen/medium_margin"
-                android:text="@string/manage_synced_calendars"/>
-
-        </RelativeLayout>
-
-        <RelativeLayout
             android:id="@+id/settings_reminder_sound_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -254,6 +211,68 @@
                 android:layout_marginRight="@dimen/small_margin"
                 android:background="@null"
                 android:clickable="false"/>
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/caldav_divider"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/divider_strong"
+            android:importantForAccessibility="no"/>
+
+        <com.simplemobiletools.commons.views.MyTextView
+            android:id="@+id/caldav_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/big_margin"
+            android:layout_marginStart="@dimen/big_margin"
+            android:layout_marginTop="@dimen/activity_margin"
+            android:alpha="0.6"
+            android:text="@string/caldav"
+            android:textAllCaps="true"
+            android:textColor="@color/divider_strong"
+            android:textSize="@dimen/small_text_size"/>
+
+        <RelativeLayout
+            android:id="@+id/settings_caldav_sync_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:background="?attr/selectableItemBackground"
+            android:padding="@dimen/activity_margin">
+
+            <com.simplemobiletools.commons.views.MySwitchCompat
+                android:id="@+id/settings_caldav_sync"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:clickable="false"
+                android:paddingLeft="@dimen/medium_margin"
+                android:paddingStart="@dimen/medium_margin"
+                android:text="@string/caldav_sync"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/settings_manage_synced_calendars_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:paddingBottom="@dimen/bigger_margin"
+            android:paddingLeft="@dimen/activity_margin"
+            android:paddingRight="@dimen/activity_margin"
+            android:paddingTop="@dimen/bigger_margin"
+            android:visibility="gone">
+
+            <com.simplemobiletools.commons.views.MyTextView
+                android:id="@+id/settings_manage_synced_calendars"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingLeft="@dimen/medium_margin"
+                android:paddingRight="@dimen/medium_margin"
+                android:text="@string/manage_synced_calendars"/>
 
         </RelativeLayout>
 

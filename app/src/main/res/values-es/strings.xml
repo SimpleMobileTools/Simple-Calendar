@@ -192,6 +192,7 @@
     <string name="widgets">Widgets</string>
 
     <!-- CalDAV sync -->
+    <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Select calendars to sync</string>
     <string name="manage_synced_calendars">Manage synced calendars</string>
 
