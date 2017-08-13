@@ -11,21 +11,22 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.database.Cursor
 import android.graphics.Color
 import android.net.Uri
 import android.os.Build
+import android.provider.CalendarContract
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.NotificationCompat
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
+import com.simplemobiletools.calendar.models.CalDAVCalendar
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.receivers.NotificationReceiver
 import com.simplemobiletools.calendar.services.SnoozeService
-import com.simplemobiletools.commons.extensions.getContrastColor
-import com.simplemobiletools.commons.extensions.isKitkatPlus
-import com.simplemobiletools.commons.extensions.isLollipopPlus
+import com.simplemobiletools.commons.extensions.*
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 import java.text.SimpleDateFormat
@@ -228,6 +229,36 @@ fun Context.launchNewEventIntent(startNewTask: Boolean = false, today: Boolean =
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(this)
     }
+}
+
+fun Context.getCalDAVCalendars(): List<CalDAVCalendar> {
+    val calendars = ArrayList<CalDAVCalendar>()
+    if (!config.caldavSync || !hasCalendarPermission()) {
+        return calendars
+    }
+
+    val uri = CalendarContract.Calendars.CONTENT_URI
+    val projection = arrayOf(
+            CalendarContract.Calendars._ID,
+            CalendarContract.Calendars.ACCOUNT_NAME,
+            CalendarContract.Calendars.CALENDAR_DISPLAY_NAME,
+            CalendarContract.Calendars.OWNER_ACCOUNT)
+
+    var cursor: Cursor? = null
+    try {
+        cursor = contentResolver.query(uri, projection, null, null, null)
+        while (cursor.moveToNext()) {
+            val id = cursor.getLongValue(CalendarContract.Calendars._ID)
+            val displayName = cursor.getStringValue(CalendarContract.Calendars.ACCOUNT_NAME)
+            val accountName = cursor.getStringValue(CalendarContract.Calendars.CALENDAR_DISPLAY_NAME)
+            val ownerName = cursor.getStringValue(CalendarContract.Calendars.OWNER_ACCOUNT)
+            val calendar = CalDAVCalendar(id, displayName, accountName, ownerName)
+            calendars.add(calendar)
+        }
+    } finally {
+        cursor?.close()
+    }
+    return calendars
 }
 
 fun Context.getNewEventTimestampFromCode(dayCode: String) = Formatter.getLocalDateTimeFromCode(dayCode).withTime(13, 0, 0, 0).seconds()
