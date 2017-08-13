@@ -249,7 +249,8 @@ fun Context.getCalDAVCalendars(ids: String = ""): List<CalDAVCalendar> {
     var cursor: Cursor? = null
     try {
         cursor = contentResolver.query(uri, projection, selection, null, null)
-        while (cursor.moveToNext()) {
+        cursor.moveToFirst()
+        do {
             val id = cursor.getLongValue(CalendarContract.Calendars._ID)
             val displayName = cursor.getStringValue(CalendarContract.Calendars.CALENDAR_DISPLAY_NAME)
             val accountName = cursor.getStringValue(CalendarContract.Calendars.ACCOUNT_NAME)
@@ -257,11 +258,42 @@ fun Context.getCalDAVCalendars(ids: String = ""): List<CalDAVCalendar> {
             val color = cursor.getIntValue(CalendarContract.Calendars.CALENDAR_COLOR)
             val calendar = CalDAVCalendar(id, displayName, accountName, ownerName, color)
             calendars.add(calendar)
-        }
+        } while (cursor.moveToNext())
     } finally {
         cursor?.close()
     }
     return calendars
+}
+
+fun Context.fetchCalDAVCalendarEvents(calendarID: Long) {
+    val eventsUri = CalendarContract.Events.CONTENT_URI
+    val projection = arrayOf(
+            CalendarContract.Events._ID,
+            CalendarContract.Events.TITLE,
+            CalendarContract.Events.DESCRIPTION,
+            CalendarContract.Events.DTSTART,
+            CalendarContract.Events.DTEND,
+            CalendarContract.Events.DURATION,
+            CalendarContract.Events.ALL_DAY,
+            CalendarContract.Events.RRULE)
+    val selection = "${CalendarContract.Events.CALENDAR_ID} = $calendarID"
+
+    var cursor: Cursor? = null
+    try {
+        cursor = contentResolver.query(eventsUri, projection, selection, null, null)
+        cursor.moveToFirst()
+        do {
+            val title = cursor.getStringValue(CalendarContract.Events.TITLE)
+            val description = cursor.getStringValue(CalendarContract.Events.DESCRIPTION)
+            val startTS = cursor.getLongValue(CalendarContract.Events.DTSTART)
+            val endTS = cursor.getLongValue(CalendarContract.Events.DTEND)
+            val duration = cursor.getStringValue(CalendarContract.Events.DURATION)
+            val allDay = cursor.getIntValue(CalendarContract.Events.ALL_DAY)
+            val rrule = cursor.getStringValue(CalendarContract.Events.RRULE)
+        } while (cursor.moveToNext())
+    } finally {
+        cursor?.close()
+    }
 }
 
 fun Context.getNewEventTimestampFromCode(dayCode: String) = Formatter.getLocalDateTimeFromCode(dayCode).withTime(13, 0, 0, 0).seconds()

@@ -146,6 +146,10 @@ class SettingsActivity : SimpleActivity() {
                             dbHelper.insertEventType(eventType)
                         }
                     }
+
+                    calendars.forEach {
+                        fetchCalDAVCalendarEvents(it.id)
+                    }
                 }
             }).start()
         }

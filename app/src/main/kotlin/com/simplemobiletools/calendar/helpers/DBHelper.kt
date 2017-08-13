@@ -326,8 +326,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     fun deleteEvents(ids: Array<String>) {
         val args = TextUtils.join(", ", ids)
         val selection = "$MAIN_TABLE_NAME.$COL_ID IN ($args)"
-        val cursor = getEventsCursor(selection)
-        val events = fillEvents(cursor).filter { it.importId.isNotEmpty() }
 
         mDb.delete(MAIN_TABLE_NAME, selection, null)
 
