@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/event_item_frame"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -18,7 +19,7 @@
             android:id="@+id/event_item_start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="13:00"
+            tools:text="13:00"
             android:textSize="@dimen/day_text_size"/>
 
         <com.simplemobiletools.commons.views.MyTextView
@@ -26,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_item_start"
-            android:text="15:00"
+            tools:text="15:00"
             android:textSize="@dimen/day_text_size"/>
 
         <com.simplemobiletools.commons.views.MyTextView
@@ -38,7 +39,7 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:paddingRight="@dimen/activity_margin"
-            android:text="Event title"
+            tools:text="Event title"
             android:textSize="@dimen/day_text_size"/>
 
         <com.simplemobiletools.commons.views.MyTextView
@@ -52,7 +53,7 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:paddingRight="@dimen/activity_margin"
-            android:text="Event description"
+            tools:text="Event description"
             android:textSize="@dimen/day_text_size"/>
 
     </RelativeLayout>

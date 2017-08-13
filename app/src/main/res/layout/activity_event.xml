@@ -2,6 +2,7 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/event_scrollview"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -51,6 +52,7 @@
             android:layout_below="@+id/event_description"
             android:layout_marginBottom="@dimen/normal_margin"
             android:layout_marginTop="@dimen/activity_margin"
+            android:importantForAccessibility="no"
             android:background="@color/darker_divider"/>
 
         <ImageView
@@ -97,7 +99,7 @@
             android:paddingEnd="@dimen/activity_margin"
             android:paddingRight="@dimen/activity_margin"
             android:paddingTop="@dimen/activity_margin"
-            android:text="January 1 1970"
+            tools:text="January 1 1970"
             android:textSize="@dimen/day_text_size"/>
 
         <com.simplemobiletools.commons.views.MyTextView
@@ -109,7 +111,7 @@
             android:layout_below="@+id/event_time_image"
             android:background="?attr/selectableItemBackground"
             android:padding="@dimen/activity_margin"
-            android:text="00:00"
+            tools:text="00:00"
             android:textSize="@dimen/day_text_size"/>
 
         <com.simplemobiletools.commons.views.MyTextView
@@ -124,7 +126,7 @@
             android:paddingEnd="@dimen/activity_margin"
             android:paddingRight="@dimen/activity_margin"
             android:paddingTop="@dimen/activity_margin"
-            android:text="January 1 1970"
+            tools:text="January 1 1970"
             android:textSize="@dimen/day_text_size"/>
 
         <com.simplemobiletools.commons.views.MyTextView
@@ -136,7 +138,7 @@
             android:layout_below="@+id/event_start_time"
             android:background="?attr/selectableItemBackground"
             android:padding="@dimen/activity_margin"
-            android:text="00:00"
+            tools:text="00:00"
             android:textSize="@dimen/day_text_size"/>
 
         <ImageView
@@ -146,6 +148,7 @@
             android:layout_below="@+id/event_end_date"
             android:layout_marginBottom="@dimen/medium_margin"
             android:layout_marginTop="@dimen/medium_margin"
+            android:importantForAccessibility="no"
             android:background="@color/darker_divider"/>
 
         <ImageView
@@ -212,6 +215,7 @@
             android:layout_below="@+id/event_reminder_3"
             android:layout_marginBottom="@dimen/medium_margin"
             android:layout_marginTop="@dimen/medium_margin"
+            android:importantForAccessibility="no"
             android:background="@color/darker_divider"/>
 
         <ImageView
@@ -319,6 +323,7 @@
             android:layout_below="@+id/event_repetition_limit_holder"
             android:layout_marginBottom="@dimen/medium_margin"
             android:layout_marginTop="@dimen/medium_margin"
+            android:importantForAccessibility="no"
             android:background="@color/darker_divider"/>
 
         <ImageView

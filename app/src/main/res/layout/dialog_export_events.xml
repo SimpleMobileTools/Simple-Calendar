@@ -65,6 +65,7 @@
 
             <ImageView
                 android:id="@+id/export_events_divider"
+                android:importantForAccessibility="no"
                 android:layout_width="match_parent"
                 android:layout_height="1px"
                 android:layout_marginBottom="@dimen/medium_margin"
