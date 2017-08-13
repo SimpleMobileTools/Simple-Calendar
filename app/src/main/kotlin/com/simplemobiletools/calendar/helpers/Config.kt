@@ -74,6 +74,10 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getBoolean(CALDAV_SYNC, false)
         set(caldavSync) = prefs.edit().putBoolean(CALDAV_SYNC, caldavSync).apply()
 
+    var caldavSyncedCalendarIDs: String
+        get() = prefs.getString(CALDAV_SYNCED_CALENDAR_IDS, "")
+        set(calendarIDs) = prefs.edit().putString(CALDAV_SYNCED_CALENDAR_IDS, calendarIDs).apply()
+
     fun addDisplayEventType(type: String) {
         addDisplayEventTypes(HashSet<String>(Arrays.asList(type)))
     }
