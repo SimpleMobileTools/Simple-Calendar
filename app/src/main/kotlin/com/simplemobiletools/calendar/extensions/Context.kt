@@ -231,7 +231,7 @@ fun Context.launchNewEventIntent(startNewTask: Boolean = false, today: Boolean =
     }
 }
 
-fun Context.getCalDAVCalendars(): List<CalDAVCalendar> {
+fun Context.getCalDAVCalendars(ids: String = ""): List<CalDAVCalendar> {
     val calendars = ArrayList<CalDAVCalendar>()
     if (!hasCalendarPermission()) {
         return calendars
@@ -244,10 +244,11 @@ fun Context.getCalDAVCalendars(): List<CalDAVCalendar> {
             CalendarContract.Calendars.ACCOUNT_NAME,
             CalendarContract.Calendars.OWNER_ACCOUNT,
             CalendarContract.Calendars.CALENDAR_COLOR)
+    val selection = if (ids.trim().isNotEmpty()) "${CalendarContract.Calendars._ID} IN ($ids)" else null
 
     var cursor: Cursor? = null
     try {
-        cursor = contentResolver.query(uri, projection, null, null, null)
+        cursor = contentResolver.query(uri, projection, selection, null, null)
         while (cursor.moveToNext()) {
             val id = cursor.getLongValue(CalendarContract.Calendars._ID)
             val displayName = cursor.getStringValue(CalendarContract.Calendars.CALENDAR_DISPLAY_NAME)
