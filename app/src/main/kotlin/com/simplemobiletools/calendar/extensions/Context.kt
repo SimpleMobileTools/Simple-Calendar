@@ -240,8 +240,8 @@ fun Context.getCalDAVCalendars(): List<CalDAVCalendar> {
     val uri = CalendarContract.Calendars.CONTENT_URI
     val projection = arrayOf(
             CalendarContract.Calendars._ID,
-            CalendarContract.Calendars.ACCOUNT_NAME,
             CalendarContract.Calendars.CALENDAR_DISPLAY_NAME,
+            CalendarContract.Calendars.ACCOUNT_NAME,
             CalendarContract.Calendars.OWNER_ACCOUNT)
 
     var cursor: Cursor? = null
@@ -249,8 +249,8 @@ fun Context.getCalDAVCalendars(): List<CalDAVCalendar> {
         cursor = contentResolver.query(uri, projection, null, null, null)
         while (cursor.moveToNext()) {
             val id = cursor.getLongValue(CalendarContract.Calendars._ID)
-            val displayName = cursor.getStringValue(CalendarContract.Calendars.ACCOUNT_NAME)
-            val accountName = cursor.getStringValue(CalendarContract.Calendars.CALENDAR_DISPLAY_NAME)
+            val displayName = cursor.getStringValue(CalendarContract.Calendars.CALENDAR_DISPLAY_NAME)
+            val accountName = cursor.getStringValue(CalendarContract.Calendars.ACCOUNT_NAME)
             val ownerName = cursor.getStringValue(CalendarContract.Calendars.OWNER_ACCOUNT)
             val calendar = CalDAVCalendar(id, displayName, accountName, ownerName)
             calendars.add(calendar)
