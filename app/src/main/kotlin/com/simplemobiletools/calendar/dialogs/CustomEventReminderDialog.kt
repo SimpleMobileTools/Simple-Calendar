@@ -2,7 +2,6 @@ package com.simplemobiletools.calendar.dialogs
 
 import android.app.Activity
 import android.support.v7.app.AlertDialog
-import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import com.simplemobiletools.calendar.R
@@ -13,7 +12,7 @@ import kotlinx.android.synthetic.main.dialog_custom_event_reminder.view.*
 
 class CustomEventReminderDialog(val activity: Activity, val selectedMinutes: Int = 0, val callback: (minutes: Int) -> Unit) : AlertDialog.Builder(activity) {
     var dialog: AlertDialog
-    var view: View = (activity.layoutInflater.inflate(R.layout.dialog_custom_event_reminder, null) as ViewGroup).apply {
+    var view = (activity.layoutInflater.inflate(R.layout.dialog_custom_event_reminder, null) as ViewGroup).apply {
         if (selectedMinutes == 0) {
             dialog_radio_view.check(R.id.dialog_radio_minutes)
         } else if (selectedMinutes % 1440 == 0) {

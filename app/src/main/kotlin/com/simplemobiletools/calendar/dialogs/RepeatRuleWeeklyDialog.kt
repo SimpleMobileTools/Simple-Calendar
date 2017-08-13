@@ -2,7 +2,6 @@ package com.simplemobiletools.calendar.dialogs
 
 import android.app.Activity
 import android.support.v7.app.AlertDialog
-import android.view.View
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.commons.extensions.setupDialogStuff
@@ -12,7 +11,7 @@ import kotlinx.android.synthetic.main.dialog_vertical_linear_layout.view.*
 class RepeatRuleWeeklyDialog(val activity: Activity, val curRepeatRule: Int, val callback: (repeatRule: Int) -> Unit) :
         AlertDialog.Builder(activity) {
     val dialog: AlertDialog
-    val view: View = activity.layoutInflater.inflate(R.layout.dialog_vertical_linear_layout, null)
+    val view = activity.layoutInflater.inflate(R.layout.dialog_vertical_linear_layout, null)
 
     init {
         val days = arrayOf(R.string.monday, R.string.tuesday, R.string.wednesday, R.string.thursday, R.string.friday, R.string.saturday, R.string.sunday)

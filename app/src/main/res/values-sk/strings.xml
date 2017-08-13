@@ -197,7 +197,9 @@
     <string name="display_past_events">Zobraziť minulé udalosti spred</string>
     <string name="snooze_delay">Posunúť pripomienku s Odložiť o</string>
     <string name="widgets">Widgety</string>
-    <string name="cannot_while_offline">Nemôžete to urobiť bez internetu.</string>
+
+    <!-- CalDAV sync -->
+    <string name="select_caldav_calendars">Zvoľte kalendáre pre synchronizáciu</string>
 
     <plurals name="by_minutes">
         <item quantity="one">%1$d minútu</item>

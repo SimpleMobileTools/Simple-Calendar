@@ -11,6 +11,7 @@ import android.os.Parcelable
 import android.support.v4.app.ActivityCompat
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.dialogs.CustomEventReminderDialog
+import com.simplemobiletools.calendar.dialogs.SelectCalendarsDialog
 import com.simplemobiletools.calendar.dialogs.SnoozePickerDialog
 import com.simplemobiletools.calendar.extensions.*
 import com.simplemobiletools.calendar.helpers.FONT_SIZE_LARGE
@@ -28,10 +29,6 @@ class SettingsActivity : SimpleActivity() {
 
     lateinit var res: Resources
     private var mStoredPrimaryColor = 0
-
-    companion object {
-        val REQUEST_AUTHORIZATION = 5
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -115,6 +112,11 @@ class SettingsActivity : SimpleActivity() {
     private fun toggleCaldavSync() {
         settings_caldav_sync.toggle()
         config.caldavSync = settings_caldav_sync.isChecked
+        if (config.caldavSync) {
+            SelectCalendarsDialog(this) {
+
+            }
+        }
     }
 
     private fun setupSundayFirst() {
