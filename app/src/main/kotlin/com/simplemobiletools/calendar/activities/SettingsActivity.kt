@@ -17,6 +17,7 @@ import com.simplemobiletools.calendar.extensions.*
 import com.simplemobiletools.calendar.helpers.FONT_SIZE_LARGE
 import com.simplemobiletools.calendar.helpers.FONT_SIZE_MEDIUM
 import com.simplemobiletools.calendar.helpers.FONT_SIZE_SMALL
+import com.simplemobiletools.calendar.models.EventType
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.beGone
 import com.simplemobiletools.commons.extensions.beVisibleIf
@@ -133,6 +134,20 @@ class SettingsActivity : SimpleActivity() {
             settings_manage_synced_calendars_holder.beVisibleIf(ids.isNotEmpty())
             settings_caldav_sync.isChecked = ids.isNotEmpty()
             config.caldavSync = ids.isNotEmpty()
+
+            Thread({
+                if (ids.isNotEmpty()) {
+                    val eventTypeNames = dbHelper.fetchEventTypes().map { it.title.toLowerCase() } as ArrayList<String>
+                    val calendars = getCalDAVCalendars(config.caldavSyncedCalendarIDs)
+                    calendars.forEach {
+                        if (!eventTypeNames.contains(it.displayName.toLowerCase())) {
+                            val eventType = EventType(0, it.displayName, it.color)
+                            eventTypeNames.add(it.displayName.toLowerCase())
+                            dbHelper.insertEventType(eventType)
+                        }
+                    }
+                }
+            }).start()
         }
     }
 
