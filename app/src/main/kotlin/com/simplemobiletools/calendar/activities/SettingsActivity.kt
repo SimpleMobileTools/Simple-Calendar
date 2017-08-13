@@ -18,6 +18,8 @@ import com.simplemobiletools.calendar.helpers.FONT_SIZE_LARGE
 import com.simplemobiletools.calendar.helpers.FONT_SIZE_MEDIUM
 import com.simplemobiletools.calendar.helpers.FONT_SIZE_SMALL
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
+import com.simplemobiletools.commons.extensions.beGone
+import com.simplemobiletools.commons.extensions.beVisibleIf
 import com.simplemobiletools.commons.extensions.toast
 import com.simplemobiletools.commons.extensions.updateTextColors
 import com.simplemobiletools.commons.models.RadioItem
@@ -107,15 +109,30 @@ class SettingsActivity : SimpleActivity() {
                 }
             }
         }
+
+        settings_manage_synced_calendars_holder.beVisibleIf(config.caldavSync)
+        settings_manage_synced_calendars_holder.setOnClickListener {
+            showCalendarPicker()
+        }
     }
 
     private fun toggleCaldavSync(enable: Boolean) {
-        settings_caldav_sync.isChecked = enable
-        config.caldavSync = enable
         if (enable) {
-            SelectCalendarsDialog(this) {
-                config.isFirstCaldavSync = false
-            }
+            showCalendarPicker()
+        } else {
+            settings_caldav_sync.isChecked = false
+            config.caldavSync = false
+            settings_manage_synced_calendars_holder.beGone()
+        }
+    }
+
+    private fun showCalendarPicker() {
+        SelectCalendarsDialog(this) {
+            config.isFirstCaldavSync = false
+            val ids = config.caldavSyncedCalendarIDs.split(",").filter { it.trim().isNotEmpty() } as ArrayList<String>
+            settings_manage_synced_calendars_holder.beVisibleIf(ids.isNotEmpty())
+            settings_caldav_sync.isChecked = ids.isNotEmpty()
+            config.caldavSync = ids.isNotEmpty()
         }
     }
 

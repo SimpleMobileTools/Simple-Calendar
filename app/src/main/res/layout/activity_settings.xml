@@ -130,6 +130,29 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/settings_manage_synced_calendars_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:background="?attr/selectableItemBackground"
+            android:paddingBottom="@dimen/bigger_margin"
+            android:paddingLeft="@dimen/activity_margin"
+            android:paddingRight="@dimen/activity_margin"
+            android:paddingTop="@dimen/bigger_margin"
+            android:visibility="gone">
+
+            <com.simplemobiletools.commons.views.MyTextView
+                android:id="@+id/settings_manage_synced_calendars"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingLeft="@dimen/medium_margin"
+                android:paddingRight="@dimen/medium_margin"
+                android:text="@string/manage_synced_calendars"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
             android:id="@+id/settings_reminder_sound_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -236,10 +259,10 @@
 
         <ImageView
             android:id="@+id/weekly_view_divider"
-            android:importantForAccessibility="no"
             android:layout_width="match_parent"
             android:layout_height="1px"
-            android:background="@color/divider_strong"/>
+            android:background="@color/divider_strong"
+            android:importantForAccessibility="no"/>
 
         <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/weekly_view_label"
@@ -327,8 +350,8 @@
             android:id="@+id/monthly_view_divider"
             android:layout_width="match_parent"
             android:layout_height="1px"
-            android:importantForAccessibility="no"
-            android:background="@color/divider_strong"/>
+            android:background="@color/divider_strong"
+            android:importantForAccessibility="no"/>
 
         <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/monthly_view_label"
@@ -367,8 +390,8 @@
             android:id="@+id/events_list_view_divider"
             android:layout_width="match_parent"
             android:layout_height="1px"
-            android:importantForAccessibility="no"
-            android:background="@color/divider_strong"/>
+            android:background="@color/divider_strong"
+            android:importantForAccessibility="no"/>
 
         <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/simple_event_list_label"
@@ -421,8 +444,8 @@
             android:id="@+id/widgets_divider"
             android:layout_width="match_parent"
             android:layout_height="1px"
-            android:importantForAccessibility="no"
-            android:background="@color/divider_strong"/>
+            android:background="@color/divider_strong"
+            android:importantForAccessibility="no"/>
 
         <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/simple_font_size_label"

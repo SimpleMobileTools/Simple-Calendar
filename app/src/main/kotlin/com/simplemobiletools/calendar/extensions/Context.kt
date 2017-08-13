@@ -233,7 +233,7 @@ fun Context.launchNewEventIntent(startNewTask: Boolean = false, today: Boolean =
 
 fun Context.getCalDAVCalendars(): List<CalDAVCalendar> {
     val calendars = ArrayList<CalDAVCalendar>()
-    if (!config.caldavSync || !hasCalendarPermission()) {
+    if (!hasCalendarPermission()) {
         return calendars
     }
 
