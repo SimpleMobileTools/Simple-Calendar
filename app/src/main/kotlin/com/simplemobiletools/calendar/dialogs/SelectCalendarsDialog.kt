@@ -14,13 +14,14 @@ import kotlinx.android.synthetic.main.calendar_item_account.view.*
 import kotlinx.android.synthetic.main.calendar_item_calendar.view.*
 import kotlinx.android.synthetic.main.dialog_select_calendars.view.*
 
-class SelectCalendarsDialog(val activity: Activity, val callback: (calendars: Int) -> Unit) : AlertDialog.Builder(activity) {
+class SelectCalendarsDialog(val activity: Activity, val callback: () -> Unit) : AlertDialog.Builder(activity) {
     var prevAccount = ""
     var dialog: AlertDialog
     var view = (activity.layoutInflater.inflate(R.layout.dialog_select_calendars, null) as ViewGroup)
 
     init {
         val ids = activity.config.caldavSyncedCalendarIDs.split(",") as ArrayList<String>
+        val isFirstCaldavSync = activity.config.isFirstCaldavSync
         val calendars = activity.getCalDAVCalendars()
         val sorted = calendars.sortedWith(compareBy({ it.accountName }, { it.displayName }))
         sorted.forEach {
@@ -29,7 +30,7 @@ class SelectCalendarsDialog(val activity: Activity, val callback: (calendars: In
                 addCalendarItem(false, it.accountName)
             }
 
-            addCalendarItem(true, it.displayName, it.id, ids.contains(it.id.toString()))
+            addCalendarItem(true, it.displayName, it.id, ids.contains(it.id.toString()) || isFirstCaldavSync)
         }
 
         dialog = AlertDialog.Builder(activity)
@@ -74,5 +75,6 @@ class SelectCalendarsDialog(val activity: Activity, val callback: (calendars: In
         }
 
         activity.config.caldavSyncedCalendarIDs = TextUtils.join(",", calendarIDs)
+        callback()
     }
 }

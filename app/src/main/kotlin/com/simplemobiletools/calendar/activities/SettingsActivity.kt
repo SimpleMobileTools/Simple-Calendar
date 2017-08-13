@@ -98,10 +98,10 @@ class SettingsActivity : SimpleActivity() {
         settings_caldav_sync.isChecked = config.caldavSync
         settings_caldav_sync_holder.setOnClickListener {
             if (config.caldavSync) {
-                toggleCaldavSync()
+                toggleCaldavSync(false)
             } else {
                 if (hasCalendarPermission()) {
-                    toggleCaldavSync()
+                    toggleCaldavSync(true)
                 } else {
                     ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_CALENDAR), CALENDAR_PERMISSION)
                 }
@@ -109,12 +109,12 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
-    private fun toggleCaldavSync() {
-        settings_caldav_sync.toggle()
-        config.caldavSync = settings_caldav_sync.isChecked
-        if (config.caldavSync) {
+    private fun toggleCaldavSync(enable: Boolean) {
+        settings_caldav_sync.isChecked = enable
+        config.caldavSync = enable
+        if (enable) {
             SelectCalendarsDialog(this) {
-
+                config.isFirstCaldavSync = false
             }
         }
     }
@@ -298,7 +298,7 @@ class SettingsActivity : SimpleActivity() {
 
         if (requestCode == CALENDAR_PERMISSION) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                toggleCaldavSync()
+                toggleCaldavSync(true)
             }
         }
     }
