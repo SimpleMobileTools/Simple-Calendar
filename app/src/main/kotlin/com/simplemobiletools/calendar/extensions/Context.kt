@@ -266,7 +266,7 @@ fun Context.getCalDAVCalendars(ids: String = ""): List<CalDAVCalendar> {
 }
 
 fun Context.fetchCalDAVCalendarEvents(calendarID: Long) {
-    val eventsUri = CalendarContract.Events.CONTENT_URI
+    val uri = CalendarContract.Events.CONTENT_URI
     val projection = arrayOf(
             CalendarContract.Events._ID,
             CalendarContract.Events.TITLE,
@@ -280,9 +280,10 @@ fun Context.fetchCalDAVCalendarEvents(calendarID: Long) {
 
     var cursor: Cursor? = null
     try {
-        cursor = contentResolver.query(eventsUri, projection, selection, null, null)
+        cursor = contentResolver.query(uri, projection, selection, null, null)
         cursor.moveToFirst()
         do {
+            val id = cursor.getLongValue(CalendarContract.Events._ID)
             val title = cursor.getStringValue(CalendarContract.Events.TITLE)
             val description = cursor.getStringValue(CalendarContract.Events.DESCRIPTION)
             val startTS = cursor.getLongValue(CalendarContract.Events.DTSTART)
@@ -290,10 +291,35 @@ fun Context.fetchCalDAVCalendarEvents(calendarID: Long) {
             val duration = cursor.getStringValue(CalendarContract.Events.DURATION)
             val allDay = cursor.getIntValue(CalendarContract.Events.ALL_DAY)
             val rrule = cursor.getStringValue(CalendarContract.Events.RRULE)
+            val reminders = getCalDAVEventReminders(id)
         } while (cursor.moveToNext())
     } finally {
         cursor?.close()
     }
+}
+
+fun Context.getCalDAVEventReminders(eventId: Long): List<Int> {
+    val reminders = ArrayList<Int>()
+    val uri = CalendarContract.Reminders.CONTENT_URI
+    val projection = arrayOf(
+            CalendarContract.Reminders.MINUTES,
+            CalendarContract.Reminders.METHOD)
+    val selection = "${CalendarContract.Reminders.EVENT_ID} = $eventId"
+    var cursor: Cursor? = null
+    try {
+        cursor = contentResolver.query(uri, projection, selection, null, null)
+        cursor.moveToFirst()
+        do {
+            val minutes = cursor.getIntValue(CalendarContract.Reminders.MINUTES)
+            val method = cursor.getIntValue(CalendarContract.Reminders.METHOD)
+            if (method == CalendarContract.Reminders.METHOD_ALERT) {
+                reminders.add(minutes)
+            }
+        } while (cursor.moveToNext())
+    } finally {
+        cursor?.close()
+    }
+    return reminders
 }
 
 fun Context.getNewEventTimestampFromCode(dayCode: String) = Formatter.getLocalDateTimeFromCode(dayCode).withTime(13, 0, 0, 0).seconds()
