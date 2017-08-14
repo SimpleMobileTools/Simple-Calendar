@@ -250,16 +250,17 @@ fun Context.getCalDAVCalendars(ids: String = ""): List<CalDAVCalendar> {
     var cursor: Cursor? = null
     try {
         cursor = contentResolver.query(uri, projection, selection, null, null)
-        cursor.moveToFirst()
-        do {
-            val id = cursor.getLongValue(CalendarContract.Calendars._ID)
-            val displayName = cursor.getStringValue(CalendarContract.Calendars.CALENDAR_DISPLAY_NAME)
-            val accountName = cursor.getStringValue(CalendarContract.Calendars.ACCOUNT_NAME)
-            val ownerName = cursor.getStringValue(CalendarContract.Calendars.OWNER_ACCOUNT)
-            val color = cursor.getIntValue(CalendarContract.Calendars.CALENDAR_COLOR)
-            val calendar = CalDAVCalendar(id, displayName, accountName, ownerName, color)
-            calendars.add(calendar)
-        } while (cursor.moveToNext())
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                val id = cursor.getLongValue(CalendarContract.Calendars._ID)
+                val displayName = cursor.getStringValue(CalendarContract.Calendars.CALENDAR_DISPLAY_NAME)
+                val accountName = cursor.getStringValue(CalendarContract.Calendars.ACCOUNT_NAME)
+                val ownerName = cursor.getStringValue(CalendarContract.Calendars.OWNER_ACCOUNT)
+                val color = cursor.getIntValue(CalendarContract.Calendars.CALENDAR_COLOR)
+                val calendar = CalDAVCalendar(id, displayName, accountName, ownerName, color)
+                calendars.add(calendar)
+            } while (cursor.moveToNext())
+        }
     } finally {
         cursor?.close()
     }
@@ -282,23 +283,24 @@ fun Context.fetchCalDAVCalendarEvents(calendarID: Long, eventTypeId: Int) {
     var cursor: Cursor? = null
     try {
         cursor = contentResolver.query(uri, projection, selection, null, null)
-        cursor.moveToFirst()
-        do {
-            val id = cursor.getLongValue(CalendarContract.Events._ID)
-            val title = cursor.getStringValue(CalendarContract.Events.TITLE)
-            val description = cursor.getStringValue(CalendarContract.Events.DESCRIPTION)
-            val startTS = (cursor.getLongValue(CalendarContract.Events.DTSTART) / 1000).toInt()
-            val endTS = (cursor.getLongValue(CalendarContract.Events.DTEND) / 1000).toInt()
-            val duration = cursor.getStringValue(CalendarContract.Events.DURATION)
-            val allDay = cursor.getIntValue(CalendarContract.Events.ALL_DAY)
-            val rrule = cursor.getStringValue(CalendarContract.Events.RRULE)
-            val reminders = getCalDAVEventReminders(id)
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                val id = cursor.getLongValue(CalendarContract.Events._ID)
+                val title = cursor.getStringValue(CalendarContract.Events.TITLE)
+                val description = cursor.getStringValue(CalendarContract.Events.DESCRIPTION)
+                val startTS = (cursor.getLongValue(CalendarContract.Events.DTSTART) / 1000).toInt()
+                val endTS = (cursor.getLongValue(CalendarContract.Events.DTEND) / 1000).toInt()
+                val duration = cursor.getStringValue(CalendarContract.Events.DURATION)
+                val allDay = cursor.getIntValue(CalendarContract.Events.ALL_DAY)
+                val rrule = cursor.getStringValue(CalendarContract.Events.RRULE)
+                val reminders = getCalDAVEventReminders(id)
 
-            val repeatRule = Parser().parseRepeatInterval(rrule, startTS)
-            val event = Event(0, startTS, endTS, title, description, reminders.getOrElse(0, { -1 }),
-                    reminders.getOrElse(1, { -1 }), reminders.getOrElse(2, { -1 }), repeatRule.repeatInterval,
-                    "", 0 or allDay, repeatRule.repeatLimit, repeatRule.repeatRule, eventTypeId, lastUpdated = System.currentTimeMillis())
-        } while (cursor.moveToNext())
+                val repeatRule = Parser().parseRepeatInterval(rrule, startTS)
+                val event = Event(0, startTS, endTS, title, description, reminders.getOrElse(0, { -1 }),
+                        reminders.getOrElse(1, { -1 }), reminders.getOrElse(2, { -1 }), repeatRule.repeatInterval,
+                        "", 0 or allDay, repeatRule.repeatLimit, repeatRule.repeatRule, eventTypeId, lastUpdated = System.currentTimeMillis())
+            } while (cursor.moveToNext())
+        }
     } finally {
         cursor?.close()
     }
@@ -314,14 +316,15 @@ fun Context.getCalDAVEventReminders(eventId: Long): List<Int> {
     var cursor: Cursor? = null
     try {
         cursor = contentResolver.query(uri, projection, selection, null, null)
-        cursor.moveToFirst()
-        do {
-            val minutes = cursor.getIntValue(CalendarContract.Reminders.MINUTES)
-            val method = cursor.getIntValue(CalendarContract.Reminders.METHOD)
-            if (method == CalendarContract.Reminders.METHOD_ALERT) {
-                reminders.add(minutes)
-            }
-        } while (cursor.moveToNext())
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                val minutes = cursor.getIntValue(CalendarContract.Reminders.MINUTES)
+                val method = cursor.getIntValue(CalendarContract.Reminders.METHOD)
+                if (method == CalendarContract.Reminders.METHOD_ALERT) {
+                    reminders.add(minutes)
+                }
+            } while (cursor.moveToNext())
+        }
     } finally {
         cursor?.close()
     }
