@@ -305,6 +305,15 @@ fun Context.fetchCalDAVCalendarEvents(calendarID: Long, eventTypeId: Int) {
                         reminders.getOrElse(1, { -1 }), reminders.getOrElse(2, { -1 }), repeatRule.repeatInterval,
                         importId, allDay, repeatRule.repeatLimit, repeatRule.repeatRule, eventTypeId, lastUpdated = System.currentTimeMillis(),
                         source = "$CALDAV-$calendarID")
+
+
+                if (event.getIsAllDay() && endTS > startTS) {
+                    event.endTS -= DAY
+                }
+
+                dbHelper.insert(event) {
+
+                }
             } while (cursor.moveToNext())
         }
     } finally {
