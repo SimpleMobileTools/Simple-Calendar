@@ -286,7 +286,7 @@ fun Context.fetchCalDAVCalendarEvents(calendarID: Long, eventTypeId: Int) {
         if (cursor != null && cursor.moveToFirst()) {
             do {
                 val id = cursor.getLongValue(CalendarContract.Events._ID)
-                val title = cursor.getStringValue(CalendarContract.Events.TITLE)
+                val title = cursor.getStringValue(CalendarContract.Events.TITLE) ?: continue
                 val description = cursor.getStringValue(CalendarContract.Events.DESCRIPTION)
                 val startTS = (cursor.getLongValue(CalendarContract.Events.DTSTART) / 1000).toInt()
                 var endTS = (cursor.getLongValue(CalendarContract.Events.DTEND) / 1000).toInt()
