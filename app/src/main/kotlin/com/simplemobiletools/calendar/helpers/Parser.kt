@@ -190,4 +190,22 @@ class Parser {
             else -> SU
         }
     }
+
+    // from P0DT1H5M0S to 3900 (seconds)
+    fun parseDuration(duration: String): Int {
+        val weeks = getDurationValue(duration, "W")
+        val days = getDurationValue(duration, "DT")
+        val hours = getDurationValue(duration, "H")
+        val minutes = getDurationValue(duration, "M")
+        val seconds = getDurationValue(duration, "S")
+
+        val minSecs = 60
+        val hourSecs = minSecs * 60
+        val daySecs = hourSecs * 24
+        val weekSecs = daySecs * 7
+
+        return seconds + (minutes * minSecs) + (hours * hourSecs) + (days * daySecs) + (weeks * weekSecs)
+    }
+
+    private fun getDurationValue(duration: String, char: String) = Regex("[0-9]+(?=$char)").find(duration)?.value?.toInt() ?: 0
 }

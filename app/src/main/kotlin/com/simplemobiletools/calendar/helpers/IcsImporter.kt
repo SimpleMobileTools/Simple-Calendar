@@ -63,7 +63,7 @@ class IcsImporter {
                         curEnd = getTimestamp(line.substring(DTEND.length))
                     } else if (line.startsWith(DURATION)) {
                         val duration = line.substring(DURATION.length)
-                        curEnd = curStart + decodeTime(duration)
+                        curEnd = curStart + Parser().parseDuration(duration)
                     } else if (line.startsWith(SUMMARY) && !isNotificationDescription) {
                         curTitle = line.substring(SUMMARY.length)
                         curTitle = getTitle(curTitle).replace("\\n", "\n")
@@ -81,7 +81,7 @@ class IcsImporter {
                         lastReminderAction = line.substring(ACTION.length)
                     } else if (line.startsWith(TRIGGER)) {
                         if (lastReminderAction == DISPLAY)
-                            curReminderMinutes.add(decodeTime(line.substring(TRIGGER.length)) / 60)
+                            curReminderMinutes.add(Parser().parseDuration(line.substring(TRIGGER.length)) / 60)
                     } else if (line.startsWith(CATEGORIES)) {
                         val categories = line.substring(CATEGORIES.length)
                         tryAddCategories(categories, context)
@@ -169,24 +169,6 @@ class IcsImporter {
             title.substring(1, Math.min(title.length, 80))
         }
     }
-
-    // P0DT1H0M0S
-    private fun decodeTime(duration: String): Int {
-        val weeks = getDurationValue(duration, "W")
-        val days = getDurationValue(duration, "DT")
-        val hours = getDurationValue(duration, "H")
-        val minutes = getDurationValue(duration, "M")
-        val seconds = getDurationValue(duration, "S")
-
-        val minSecs = 60
-        val hourSecs = minSecs * 60
-        val daySecs = hourSecs * 24
-        val weekSecs = daySecs * 7
-
-        return seconds + (minutes * minSecs) + (hours * hourSecs) + (days * daySecs) + (weeks * weekSecs)
-    }
-
-    private fun getDurationValue(duration: String, char: String): Int = Regex("[0-9]+(?=$char)").find(duration)?.value?.toInt() ?: 0
 
     private fun resetValues() {
         curStart = -1

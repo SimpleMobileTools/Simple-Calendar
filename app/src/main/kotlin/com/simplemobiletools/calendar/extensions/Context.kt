@@ -289,11 +289,15 @@ fun Context.fetchCalDAVCalendarEvents(calendarID: Long, eventTypeId: Int) {
                 val title = cursor.getStringValue(CalendarContract.Events.TITLE)
                 val description = cursor.getStringValue(CalendarContract.Events.DESCRIPTION)
                 val startTS = (cursor.getLongValue(CalendarContract.Events.DTSTART) / 1000).toInt()
-                val endTS = (cursor.getLongValue(CalendarContract.Events.DTEND) / 1000).toInt()
-                val duration = cursor.getStringValue(CalendarContract.Events.DURATION)
+                var endTS = (cursor.getLongValue(CalendarContract.Events.DTEND) / 1000).toInt()
                 val allDay = cursor.getIntValue(CalendarContract.Events.ALL_DAY)
                 val rrule = cursor.getStringValue(CalendarContract.Events.RRULE) ?: ""
                 val reminders = getCalDAVEventReminders(id)
+
+                if (endTS == 0) {
+                    val duration = cursor.getStringValue(CalendarContract.Events.DURATION)
+                    endTS = startTS + Parser().parseDuration(duration)
+                }
 
                 val importId = getCalDAVEventImportId(calendarID, id)
                 val repeatRule = Parser().parseRepeatInterval(rrule, startTS)
