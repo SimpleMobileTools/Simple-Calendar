@@ -15,6 +15,10 @@ class Parser {
         var repeatInterval = 0
         var repeatRule = 0
         var repeatLimit = 0
+        if (fullString.isEmpty()) {
+            return RepeatRule(repeatInterval, repeatRule, repeatLimit)
+        }
+
         for (part in parts) {
             val keyValue = part.split("=")
             val key = keyValue[0]

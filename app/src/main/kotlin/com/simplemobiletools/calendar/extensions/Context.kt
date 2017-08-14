@@ -292,13 +292,15 @@ fun Context.fetchCalDAVCalendarEvents(calendarID: Long, eventTypeId: Int) {
                 val endTS = (cursor.getLongValue(CalendarContract.Events.DTEND) / 1000).toInt()
                 val duration = cursor.getStringValue(CalendarContract.Events.DURATION)
                 val allDay = cursor.getIntValue(CalendarContract.Events.ALL_DAY)
-                val rrule = cursor.getStringValue(CalendarContract.Events.RRULE)
+                val rrule = cursor.getStringValue(CalendarContract.Events.RRULE) ?: ""
                 val reminders = getCalDAVEventReminders(id)
 
+                val importId = getCalDAVEventImportId(calendarID, id)
                 val repeatRule = Parser().parseRepeatInterval(rrule, startTS)
                 val event = Event(0, startTS, endTS, title, description, reminders.getOrElse(0, { -1 }),
                         reminders.getOrElse(1, { -1 }), reminders.getOrElse(2, { -1 }), repeatRule.repeatInterval,
-                        "", 0 or allDay, repeatRule.repeatLimit, repeatRule.repeatRule, eventTypeId, lastUpdated = System.currentTimeMillis())
+                        importId, allDay, repeatRule.repeatLimit, repeatRule.repeatRule, eventTypeId, lastUpdated = System.currentTimeMillis(),
+                        source = "$CALDAV-$calendarID")
             } while (cursor.moveToNext())
         }
     } finally {
@@ -330,6 +332,8 @@ fun Context.getCalDAVEventReminders(eventId: Long): List<Int> {
     }
     return reminders
 }
+
+fun Context.getCalDAVEventImportId(calendarId: Long, eventId: Long) = "$CALDAV-$calendarId-$eventId"
 
 fun Context.getNewEventTimestampFromCode(dayCode: String) = Formatter.getLocalDateTimeFromCode(dayCode).withTime(13, 0, 0, 0).seconds()
 
