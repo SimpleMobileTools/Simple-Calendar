@@ -436,17 +436,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         return ids.filter { it.trim().isNotEmpty() } as ArrayList<String>
     }
 
-    fun getEventWithImportId(importId: String): Event? {
-        val selection = "$MAIN_TABLE_NAME.$COL_IMPORT_ID = ?"
-        val selectionArgs = arrayOf(importId.toString())
-        val cursor = getEventsCursor(selection, selectionArgs)
-        val events = fillEvents(cursor)
-        return if (!events.isEmpty())
-            events[0]
-        else
-            null
-    }
-
     fun getEventWithId(id: Int): Event? {
         val selection = "$MAIN_TABLE_NAME.$COL_ID = ?"
         val selectionArgs = arrayOf(id.toString())
@@ -656,6 +645,13 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         return events
     }
 
+    fun getEventsFromCalDAVCalendar(calendarId: Long): List<Event> {
+        val selection = "$MAIN_TABLE_NAME.$COL_EVENT_SOURCE = ?"
+        val selectionArgs = arrayOf("$CALDAV-$calendarId")
+        val cursor = getEventsCursor(selection, selectionArgs)
+        return fillEvents(cursor)
+    }
+
     private fun getEventsCursor(selection: String = "", selectionArgs: Array<String>? = null): Cursor? {
         val builder = SQLiteQueryBuilder()
         builder.tables = "$MAIN_TABLE_NAME LEFT OUTER JOIN $META_TABLE_NAME ON $COL_EVENT_ID = $MAIN_TABLE_NAME.$COL_ID"
@@ -698,7 +694,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                         ArrayList<Int>()
                     }
 
-                    if (repeatInterval % MONTH == 0 && repeatRule == 0) {
+                    if (repeatInterval > 0 && repeatInterval % MONTH == 0 && repeatRule == 0) {
                         repeatRule = REPEAT_MONTH_SAME_DAY
                     }
 

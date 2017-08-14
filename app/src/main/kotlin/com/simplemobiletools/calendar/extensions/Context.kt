@@ -267,7 +267,14 @@ fun Context.getCalDAVCalendars(ids: String = ""): List<CalDAVCalendar> {
     return calendars
 }
 
-fun Context.fetchCalDAVCalendarEvents(calendarID: Long, eventTypeId: Int) {
+fun Context.fetchCalDAVCalendarEvents(calendarId: Long, eventTypeId: Int) {
+    val importIdsMap = HashMap<String, Int>()
+    val existingEvents = dbHelper.getEventsFromCalDAVCalendar(calendarId)
+    existingEvents.forEach {
+        it.id = 0
+        importIdsMap.put(it.importId, it.hashCode())
+    }
+
     val uri = CalendarContract.Events.CONTENT_URI
     val projection = arrayOf(
             CalendarContract.Events._ID,
@@ -278,7 +285,7 @@ fun Context.fetchCalDAVCalendarEvents(calendarID: Long, eventTypeId: Int) {
             CalendarContract.Events.DURATION,
             CalendarContract.Events.ALL_DAY,
             CalendarContract.Events.RRULE)
-    val selection = "${CalendarContract.Events.CALENDAR_ID} = $calendarID"
+    val selection = "${CalendarContract.Events.CALENDAR_ID} = $calendarId"
 
     var cursor: Cursor? = null
     try {
@@ -299,20 +306,20 @@ fun Context.fetchCalDAVCalendarEvents(calendarID: Long, eventTypeId: Int) {
                     endTS = startTS + Parser().parseDuration(duration)
                 }
 
-                val importId = getCalDAVEventImportId(calendarID, id)
+                val importId = getCalDAVEventImportId(calendarId, id)
                 val repeatRule = Parser().parseRepeatInterval(rrule, startTS)
                 val event = Event(0, startTS, endTS, title, description, reminders.getOrElse(0, { -1 }),
                         reminders.getOrElse(1, { -1 }), reminders.getOrElse(2, { -1 }), repeatRule.repeatInterval,
-                        importId, allDay, repeatRule.repeatLimit, repeatRule.repeatRule, eventTypeId, lastUpdated = System.currentTimeMillis(),
-                        source = "$CALDAV-$calendarID")
-
+                        importId, allDay, repeatRule.repeatLimit, repeatRule.repeatRule, eventTypeId, source = "$CALDAV-$calendarId")
 
                 if (event.getIsAllDay() && endTS > startTS) {
                     event.endTS -= DAY
                 }
 
-                dbHelper.insert(event) {
+                if (importIdsMap[importId] != event.hashCode()) {
+                    dbHelper.insert(event) {
 
+                    }
                 }
             } while (cursor.moveToNext())
         }
