@@ -12,6 +12,7 @@ val EVENT_OCCURRENCE_TS = "event_occurrence_ts"
 val NEW_EVENT_START_TS = "new_event_start_ts"
 val WEEK_START_TIMESTAMP = "week_start_timestamp"
 val NEW_EVENT_SET_HOUR_DURATION = "new_event_set_hour_duration"
+val CALDAV = "Caldav"
 
 val MONTHLY_VIEW = 1
 val YEARLY_VIEW = 2
@@ -119,5 +120,5 @@ val FONT_SIZE_SMALL = 0
 val FONT_SIZE_MEDIUM = 1
 val FONT_SIZE_LARGE = 2
 
-val SOURCE_SIMPLE_CALENDAR = 0
-val SOURCE_IMPORTED_ICS = 2
+val SOURCE_SIMPLE_CALENDAR = "simple-calendar"
+val SOURCE_IMPORTED_ICS = "imported-ics"
