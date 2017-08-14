@@ -129,7 +129,6 @@ class SettingsActivity : SimpleActivity() {
 
     private fun showCalendarPicker() {
         SelectCalendarsDialog(this) {
-            config.isFirstCaldavSync = false
             val ids = config.caldavSyncedCalendarIDs.split(",").filter { it.trim().isNotEmpty() } as ArrayList<String>
             settings_manage_synced_calendars_holder.beVisibleIf(ids.isNotEmpty())
             settings_caldav_sync.isChecked = ids.isNotEmpty()

@@ -21,7 +21,6 @@ class SelectCalendarsDialog(val activity: Activity, val callback: () -> Unit) : 
 
     init {
         val ids = activity.config.caldavSyncedCalendarIDs.split(",").filter { it.trim().isNotEmpty() } as ArrayList<String>
-        val isFirstCaldavSync = activity.config.isFirstCaldavSync
         val calendars = activity.getCalDAVCalendars()
         val sorted = calendars.sortedWith(compareBy({ it.accountName }, { it.displayName }))
         sorted.forEach {
@@ -30,7 +29,7 @@ class SelectCalendarsDialog(val activity: Activity, val callback: () -> Unit) : 
                 addCalendarItem(false, it.accountName)
             }
 
-            addCalendarItem(true, it.displayName, it.id, ids.contains(it.id.toString()) || isFirstCaldavSync)
+            addCalendarItem(true, it.displayName, it.id, ids.contains(it.id.toString()))
         }
 
         dialog = AlertDialog.Builder(activity)

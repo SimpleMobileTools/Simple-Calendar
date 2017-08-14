@@ -78,10 +78,6 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getString(CALDAV_SYNCED_CALENDAR_IDS, "")
         set(calendarIDs) = prefs.edit().putString(CALDAV_SYNCED_CALENDAR_IDS, calendarIDs).apply()
 
-    var isFirstCaldavSync: Boolean
-        get() = prefs.getBoolean(IS_FIRST_CALDAV_SYNC, true)
-        set(isFirstCaldavSync) = prefs.edit().putBoolean(IS_FIRST_CALDAV_SYNC, isFirstCaldavSync).apply()
-
     fun addDisplayEventType(type: String) {
         addDisplayEventTypes(HashSet<String>(Arrays.asList(type)))
     }
