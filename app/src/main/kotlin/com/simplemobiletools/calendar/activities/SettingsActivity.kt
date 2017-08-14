@@ -148,7 +148,8 @@ class SettingsActivity : SimpleActivity() {
                     }
 
                     calendars.forEach {
-                        fetchCalDAVCalendarEvents(it.id)
+                        val eventTypeId = dbHelper.getEventTypeIdWithTitle(it.displayName)
+                        fetchCalDAVCalendarEvents(it.id, eventTypeId)
                     }
                 }
             }).start()

@@ -237,6 +237,7 @@ fun Context.getCalDAVCalendars(ids: String = ""): List<CalDAVCalendar> {
         return calendars
     }
 
+    dbHelper.fetchEventTypes()
     val uri = CalendarContract.Calendars.CONTENT_URI
     val projection = arrayOf(
             CalendarContract.Calendars._ID,
@@ -265,7 +266,7 @@ fun Context.getCalDAVCalendars(ids: String = ""): List<CalDAVCalendar> {
     return calendars
 }
 
-fun Context.fetchCalDAVCalendarEvents(calendarID: Long) {
+fun Context.fetchCalDAVCalendarEvents(calendarID: Long, eventTypeId: Int) {
     val uri = CalendarContract.Events.CONTENT_URI
     val projection = arrayOf(
             CalendarContract.Events._ID,
@@ -286,12 +287,17 @@ fun Context.fetchCalDAVCalendarEvents(calendarID: Long) {
             val id = cursor.getLongValue(CalendarContract.Events._ID)
             val title = cursor.getStringValue(CalendarContract.Events.TITLE)
             val description = cursor.getStringValue(CalendarContract.Events.DESCRIPTION)
-            val startTS = cursor.getLongValue(CalendarContract.Events.DTSTART)
-            val endTS = cursor.getLongValue(CalendarContract.Events.DTEND)
+            val startTS = (cursor.getLongValue(CalendarContract.Events.DTSTART) / 1000).toInt()
+            val endTS = (cursor.getLongValue(CalendarContract.Events.DTEND) / 1000).toInt()
             val duration = cursor.getStringValue(CalendarContract.Events.DURATION)
             val allDay = cursor.getIntValue(CalendarContract.Events.ALL_DAY)
             val rrule = cursor.getStringValue(CalendarContract.Events.RRULE)
             val reminders = getCalDAVEventReminders(id)
+
+            val repeatRule = Parser().parseRepeatInterval(rrule, startTS)
+            val event = Event(0, startTS, endTS, title, description, reminders.getOrElse(0, { -1 }),
+                    reminders.getOrElse(1, { -1 }), reminders.getOrElse(2, { -1 }), repeatRule.repeatInterval,
+                    "", 0 or allDay, repeatRule.repeatLimit, repeatRule.repeatRule, eventTypeId, lastUpdated = System.currentTimeMillis())
         } while (cursor.moveToNext())
     } finally {
         cursor?.close()
