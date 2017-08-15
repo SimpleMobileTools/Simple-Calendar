@@ -208,4 +208,20 @@ class Parser {
     }
 
     private fun getDurationValue(duration: String, char: String) = Regex("[0-9]+(?=$char)").find(duration)?.value?.toInt() ?: 0
+
+    // from 65 to P0DT1H5M0S
+    fun getDurationString(minutes: Int): String {
+        var days = 0
+        var hours = 0
+        var remainder = minutes
+        if (remainder >= DAY_MINUTES) {
+            days = Math.floor((remainder / DAY_MINUTES).toDouble()).toInt()
+            remainder -= days * DAY_MINUTES
+        }
+        if (remainder >= 60) {
+            hours = Math.floor((remainder / 60).toDouble()).toInt()
+            remainder -= hours * 60
+        }
+        return "-P${days}DT${hours}H${remainder}M0S"
+    }
 }

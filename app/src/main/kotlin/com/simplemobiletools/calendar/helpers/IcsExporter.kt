@@ -69,24 +69,9 @@ class IcsExporter {
         if (minutes != -1) {
             out.writeLn(BEGIN_ALARM)
             out.writeLn("$ACTION$DISPLAY")
-            out.writeLn("$TRIGGER${getReminderString(minutes)}")
+            out.writeLn("$TRIGGER${Parser().getDurationString(minutes)}")
             out.writeLn(END_ALARM)
         }
-    }
-
-    private fun getReminderString(minutes: Int): String {
-        var days = 0
-        var hours = 0
-        var remainder = minutes
-        if (remainder >= DAY_MINUTES) {
-            days = Math.floor(((remainder / DAY_MINUTES).toDouble())).toInt()
-            remainder -= days * DAY_MINUTES
-        }
-        if (remainder >= 60) {
-            hours = Math.floor(((remainder / 60).toDouble())).toInt()
-            remainder -= hours * 60
-        }
-        return "-P${days}DT${hours}H${remainder}M0S"
     }
 
     private fun fillIgnoredOccurrences(event: Event, out: BufferedWriter) {

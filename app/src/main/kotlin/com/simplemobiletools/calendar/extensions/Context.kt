@@ -8,6 +8,7 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
+import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -334,6 +335,28 @@ fun Context.fetchCalDAVCalendarEvents(calendarId: Long, eventTypeId: Int) {
     } finally {
         cursor?.close()
     }
+}
+
+fun Context.addCalDAVEvent(event: Event, calendarId: Int) {
+    val durationMinutes = (event.endTS - event.startTS) / 1000 / 60
+    val uri = CalendarContract.Events.CONTENT_URI
+    val values = ContentValues().apply {
+        put(CalendarContract.Events.CALENDAR_ID, calendarId)
+        put(CalendarContract.Events.TITLE, event.title)
+        put(CalendarContract.Events.DESCRIPTION, event.description)
+        put(CalendarContract.Events.DTSTART, event.startTS * 1000L)
+        put(CalendarContract.Events.ALL_DAY, if (event.getIsAllDay()) 1 else 0)
+        put(CalendarContract.Events.RRULE, Parser().getShortRepeatInterval(event))
+        put(CalendarContract.Events.EVENT_TIMEZONE, TimeZone.getDefault().toString())
+
+        if (event.repeatInterval > 0) {
+            put(CalendarContract.Events.DURATION, Parser().getDurationString(durationMinutes))
+        } else {
+            put(CalendarContract.Events.DTEND, event.endTS * 1000L)
+        }
+    }
+
+    contentResolver.insert(uri, values)
 }
 
 fun Context.getCalDAVEventReminders(eventId: Long): List<Int> {
