@@ -268,11 +268,10 @@ fun Context.getCalDAVCalendars(ids: String = ""): List<CalDAVCalendar> {
 }
 
 fun Context.fetchCalDAVCalendarEvents(calendarId: Long, eventTypeId: Int) {
-    val importIdsMap = HashMap<String, Int>()
+    val importIdsMap = HashMap<String, Event>()
     val existingEvents = dbHelper.getEventsFromCalDAVCalendar(calendarId)
     existingEvents.forEach {
-        it.id = 0
-        importIdsMap.put(it.importId, it.hashCode())
+        importIdsMap.put(it.importId, it)
     }
 
     val uri = CalendarContract.Events.CONTENT_URI
@@ -316,9 +315,18 @@ fun Context.fetchCalDAVCalendarEvents(calendarId: Long, eventTypeId: Int) {
                     event.endTS -= DAY
                 }
 
-                if (importIdsMap[importId] != event.hashCode()) {
+                if (importIdsMap.containsKey(event.importId)) {
+                    val existingEvent = importIdsMap[importId]
+                    val originalEventId = existingEvent!!.id
+                    existingEvent.id = 0
+                    if (existingEvent.hashCode() != event.hashCode()) {
+                        event.id = originalEventId
+                        dbHelper.update(event) {
+                        }
+                    }
+                } else {
                     dbHelper.insert(event) {
-
+                        importIdsMap.put(event.importId, event)
                     }
                 }
             } while (cursor.moveToNext())
