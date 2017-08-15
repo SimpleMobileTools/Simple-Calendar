@@ -142,7 +142,7 @@
     <string name="export_past_events_too">Exportar eventos antigos</string>
     <string name="include_event_types">Incluir tipos de eventos</string>
     <string name="filename_without_ics">Nome do ficheiro (sem .ics)</string>
-    <string name="no_title">No title</string>
+    <string name="no_title">Sem título</string>
 
     <!-- Event details -->
     <string name="title">Título</string>
@@ -186,15 +186,15 @@
     <string name="no_ringtone_picker">Não foi encontrada uma aplicação capaz de definir o som</string>
     <string name="no_ringtone_selected">Nenhum</string>
     <string name="day_end_before_start">O dia final não pode ser antes do inicial</string>
-    <string name="caldav_sync">CalDAV sync</string>
+    <string name="caldav_sync">Sincronização CalDAV</string>
     <string name="display_past_events">Mostrar eventos passados</string>
     <string name="snooze_delay">Adiar lembrete com a opção Snooze</string>
     <string name="widgets">Widgets</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
-    <string name="select_caldav_calendars">Select calendars to sync</string>
-    <string name="manage_synced_calendars">Manage synced calendars</string>
+    <string name="select_caldav_calendars">Selecione os calendários a sincronizar</string>
+    <string name="manage_synced_calendars">Gerir calendários sincronizados</string>
 
     <plurals name="by_minutes">
         <item quantity="one">%1$d minuto</item>
