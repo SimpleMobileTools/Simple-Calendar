@@ -417,6 +417,16 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         mDb.update(MAIN_TABLE_NAME, values, selection, selectionArgs)
     }
 
+    fun updateEventImportIdAndSource(eventId: Int, importId: String, source: String) {
+        val values = ContentValues()
+        values.put(COL_IMPORT_ID, importId)
+        values.put(COL_EVENT_SOURCE, source)
+
+        val selection = "$MAIN_TABLE_NAME.$COL_ID = ?"
+        val selectionArgs = arrayOf(eventId.toString())
+        mDb.update(MAIN_TABLE_NAME, values, selection, selectionArgs)
+    }
+
     fun getImportIds(): ArrayList<String> {
         val ids = ArrayList<String>()
         val columns = arrayOf(COL_IMPORT_ID)

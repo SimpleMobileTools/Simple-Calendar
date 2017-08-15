@@ -337,7 +337,7 @@ fun Context.fetchCalDAVCalendarEvents(calendarId: Long, eventTypeId: Int) {
     }
 }
 
-fun Context.addCalDAVEvent(event: Event, calendarId: Int) {
+fun Context.addCalDAVEvent(event: Event, calendarId: Long) {
     val durationMinutes = (event.endTS - event.startTS) / 1000 / 60
     val uri = CalendarContract.Events.CONTENT_URI
     val values = ContentValues().apply {
@@ -356,7 +356,11 @@ fun Context.addCalDAVEvent(event: Event, calendarId: Int) {
         }
     }
 
-    contentResolver.insert(uri, values)
+    val newUri = contentResolver.insert(uri, values)
+    val eventRemoteID = java.lang.Long.parseLong(newUri.lastPathSegment)
+
+    val importId = getCalDAVEventImportId(calendarId, eventRemoteID)
+    dbHelper.updateEventImportIdAndSource(event.id, importId, "$CALDAV-$calendarId")
 }
 
 fun Context.getCalDAVEventReminders(eventId: Long): List<Int> {

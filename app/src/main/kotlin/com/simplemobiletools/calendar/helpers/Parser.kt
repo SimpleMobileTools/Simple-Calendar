@@ -105,7 +105,7 @@ class Parser {
         val interval = getInterval(repeatInterval)
         val repeatLimit = getRepeatLimitString(event)
         val byDay = getByDay(event)
-        return "$RRULE$FREQ=$freq;$INTERVAL=$interval$repeatLimit$byDay"
+        return "$FREQ=$freq;$INTERVAL=$interval$repeatLimit$byDay"
     }
 
     private fun getFreq(interval: Int): String {

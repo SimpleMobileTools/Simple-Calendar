@@ -38,7 +38,7 @@ class IcsExporter {
                     }
 
                     out.writeLn("$STATUS$CONFIRMED")
-                    Parser().getShortRepeatInterval(event).let { if (it.isNotEmpty()) out.writeLn(it) }
+                    Parser().getShortRepeatInterval(event).let { if (it.isNotEmpty()) out.writeLn("$RRULE$it") }
 
                     fillReminders(event, out)
                     fillIgnoredOccurrences(event, out)
