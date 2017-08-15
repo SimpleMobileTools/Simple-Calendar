@@ -349,6 +349,9 @@ fun Context.addCalDAVEvent(event: Event, calendarId: Long) {
         put(CalendarContract.Events.RRULE, Parser().getShortRepeatInterval(event))
         put(CalendarContract.Events.EVENT_TIMEZONE, TimeZone.getDefault().toString())
 
+        if (event.getIsAllDay() && event.endTS > event.startTS)
+            event.endTS += DAY
+
         if (event.repeatInterval > 0) {
             put(CalendarContract.Events.DURATION, Parser().getDurationString(durationMinutes))
         } else {
