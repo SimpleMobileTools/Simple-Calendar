@@ -105,7 +105,7 @@ class IcsImporter {
                             event.endTS -= DAY
                         }
 
-                        context.dbHelper.insert(event) {
+                        context.dbHelper.insert(event, true) {
                             for (exceptionTS in curRepeatExceptions) {
                                 context.dbHelper.addEventRepeatException(it, exceptionTS)
                             }

@@ -175,7 +175,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         addEventType(eventType, db)
     }
 
-    fun insert(event: Event, callback: (id: Int) -> Unit) {
+    fun insert(event: Event, addToCalDAV: Boolean, callback: (id: Int) -> Unit) {
         if (event.startTS > event.endTS || event.title.trim().isEmpty()) {
             callback(0)
             return
@@ -192,6 +192,11 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
         context.updateWidgets()
         context.scheduleReminder(event, this)
+
+        if (addToCalDAV) {
+
+        }
+
         callback(event.id)
     }
 
@@ -283,7 +288,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             endTS = 0
         }
 
-        insert(childEvent) {
+        insert(childEvent, false) {
             callback(ContentValues().apply {
                 put(COL_PARENT_EVENT_ID, parentEventId)
                 put(COL_OCCURRENCE_DAYCODE, Formatter.getDayCodeFromTS(occurrenceTS))

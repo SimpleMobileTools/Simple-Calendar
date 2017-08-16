@@ -326,7 +326,7 @@ fun Context.fetchCalDAVCalendarEvents(calendarId: Long, eventTypeId: Int) {
                         }
                     }
                 } else {
-                    dbHelper.insert(event) {
+                    dbHelper.insert(event, false) {
                         importIdsMap.put(event.importId, event)
                     }
                 }

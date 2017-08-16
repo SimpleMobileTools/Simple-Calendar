@@ -466,7 +466,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
     private fun storeEvent(wasRepeatable: Boolean) {
         if (mEvent.id == 0) {
-            dbHelper.insert(mEvent) {
+            dbHelper.insert(mEvent, true) {
                 if (DateTime.now().isAfter(mEventStartDateTime.millis)) {
                     toast(R.string.past_event_added)
                 } else {
@@ -486,7 +486,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
                         dbHelper.addEventRepeatException(mEvent.id, mEventOccurrenceTS)
                         mEvent.parentId = mEvent.id
                         mEvent.id = 0
-                        dbHelper.insert(mEvent) {
+                        dbHelper.insert(mEvent, true) {
                             toast(R.string.event_updated)
                             finish()
                         }
