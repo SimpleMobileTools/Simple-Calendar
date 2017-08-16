@@ -50,14 +50,12 @@ class Parser {
         return RepeatRule(repeatInterval, repeatRule, repeatLimit)
     }
 
-    private fun getFrequencySeconds(interval: String): Int {
-        return when (interval) {
-            DAILY -> DAY
-            WEEKLY -> WEEK
-            MONTHLY -> MONTH
-            YEARLY -> YEAR
-            else -> 0
-        }
+    private fun getFrequencySeconds(interval: String) = when (interval) {
+        DAILY -> DAY
+        WEEKLY -> WEEK
+        MONTHLY -> MONTH
+        YEARLY -> YEAR
+        else -> 0
     }
 
     private fun handleRepeatRule(value: String): Int {
@@ -96,7 +94,7 @@ class Parser {
     }
 
     // from Daily, 5x... to RRULE:FREQ=DAILY;COUNT=5
-    fun getShortRepeatInterval(event: Event): String {
+    fun getRepeatCode(event: Event): String {
         val repeatInterval = event.repeatInterval
         if (repeatInterval == 0)
             return ""
@@ -108,35 +106,24 @@ class Parser {
         return "$FREQ=$freq;$INTERVAL=$interval$repeatLimit$byDay"
     }
 
-    private fun getFreq(interval: Int): String {
-        return if (interval % YEAR == 0)
-            YEARLY
-        else if (interval % MONTH == 0)
-            MONTHLY
-        else if (interval % WEEK == 0)
-            WEEKLY
-        else
-            DAILY
+    private fun getFreq(interval: Int) = when {
+        interval % YEAR == 0 -> YEARLY
+        interval % MONTH == 0 -> MONTHLY
+        interval % WEEK == 0 -> WEEKLY
+        else -> DAILY
     }
 
-    private fun getInterval(interval: Int): Int {
-        return if (interval % YEAR == 0)
-            interval / YEAR
-        else if (interval % MONTH == 0)
-            interval / MONTH
-        else if (interval % WEEK == 0)
-            interval / WEEK
-        else
-            interval / DAY
+    private fun getInterval(interval: Int) = when {
+        interval % YEAR == 0 -> interval / YEAR
+        interval % MONTH == 0 -> interval / MONTH
+        interval % WEEK == 0 -> interval / WEEK
+        else -> interval / DAY
     }
 
-    private fun getRepeatLimitString(event: Event): String {
-        return if (event.repeatLimit == 0)
-            ""
-        else if (event.repeatLimit < 0)
-            ";$COUNT=${-event.repeatLimit}"
-        else
-            ";$UNTIL=${Formatter.getDayCodeFromTS(event.repeatLimit)}"
+    private fun getRepeatLimitString(event: Event) = when {
+        event.repeatLimit == 0 -> ""
+        event.repeatLimit < 0 -> ";$COUNT=${-event.repeatLimit}"
+        else -> ";$UNTIL=${Formatter.getDayCodeFromTS(event.repeatLimit)}"
     }
 
     private fun getByDay(event: Event): String {
@@ -179,22 +166,20 @@ class Parser {
         return result.trimEnd(',')
     }
 
-    private fun getDayLetters(dayOfWeek: Int): String {
-        return when (dayOfWeek) {
-            1 -> MO
-            2 -> TU
-            3 -> WE
-            4 -> TH
-            5 -> FR
-            6 -> SA
-            else -> SU
-        }
+    private fun getDayLetters(dayOfWeek: Int) = when (dayOfWeek) {
+        1 -> MO
+        2 -> TU
+        3 -> WE
+        4 -> TH
+        5 -> FR
+        6 -> SA
+        else -> SU
     }
 
     // from P0DT1H5M0S to 3900 (seconds)
-    fun parseDuration(duration: String): Int {
+    fun parseDurationSeconds(duration: String): Int {
         val weeks = getDurationValue(duration, "W")
-        val days = getDurationValue(duration, "DT")
+        val days = getDurationValue(duration, "D")
         val hours = getDurationValue(duration, "H")
         val minutes = getDurationValue(duration, "M")
         val seconds = getDurationValue(duration, "S")
@@ -210,7 +195,7 @@ class Parser {
     private fun getDurationValue(duration: String, char: String) = Regex("[0-9]+(?=$char)").find(duration)?.value?.toInt() ?: 0
 
     // from 65 to P0DT1H5M0S
-    fun getDurationString(minutes: Int): String {
+    fun getDurationCode(minutes: Int): String {
         var days = 0
         var hours = 0
         var remainder = minutes
@@ -222,6 +207,6 @@ class Parser {
             hours = Math.floor((remainder / 60).toDouble()).toInt()
             remainder -= hours * 60
         }
-        return "-P${days}DT${hours}H${remainder}M0S"
+        return "P${days}DT${hours}H${remainder}M0S"
     }
 }

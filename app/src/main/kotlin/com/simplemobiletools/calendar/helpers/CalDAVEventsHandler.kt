@@ -85,7 +85,7 @@ class CalDAVEventsHandler(val context: Context) {
 
                     if (endTS == 0) {
                         val duration = cursor.getStringValue(CalendarContract.Events.DURATION)
-                        endTS = startTS + Parser().parseDuration(duration)
+                        endTS = startTS + Parser().parseDurationSeconds(duration)
                     }
 
                     val importId = getCalDAVEventImportId(calendarId, id)
@@ -120,7 +120,6 @@ class CalDAVEventsHandler(val context: Context) {
     }
 
     fun addCalDAVEvent(event: Event, calendarId: Long) {
-        val durationMinutes = (event.endTS - event.startTS) / 1000 / 60
         val uri = CalendarContract.Events.CONTENT_URI
         val values = ContentValues().apply {
             put(CalendarContract.Events.CALENDAR_ID, calendarId)
@@ -128,14 +127,14 @@ class CalDAVEventsHandler(val context: Context) {
             put(CalendarContract.Events.DESCRIPTION, event.description)
             put(CalendarContract.Events.DTSTART, event.startTS * 1000L)
             put(CalendarContract.Events.ALL_DAY, if (event.getIsAllDay()) 1 else 0)
-            put(CalendarContract.Events.RRULE, Parser().getShortRepeatInterval(event))
+            put(CalendarContract.Events.RRULE, Parser().getRepeatCode(event))
             put(CalendarContract.Events.EVENT_TIMEZONE, TimeZone.getDefault().toString())
 
             if (event.getIsAllDay() && event.endTS > event.startTS)
                 event.endTS += DAY
 
             if (event.repeatInterval > 0) {
-                put(CalendarContract.Events.DURATION, Parser().getDurationString(durationMinutes))
+                put(CalendarContract.Events.DURATION, getDurationCode(event))
             } else {
                 put(CalendarContract.Events.DTEND, event.endTS * 1000L)
             }
@@ -146,6 +145,15 @@ class CalDAVEventsHandler(val context: Context) {
 
         val importId = getCalDAVEventImportId(calendarId, eventRemoteID)
         context.dbHelper.updateEventImportIdAndSource(event.id, importId, "$CALDAV-$calendarId")
+    }
+
+    private fun getDurationCode(event: Event): String {
+        return if (event.getIsAllDay()) {
+            val dur = Math.max(1, (event.endTS - event.startTS) / DAY)
+            "P${dur}D"
+        } else {
+            Parser().getDurationCode((event.endTS - event.startTS) / 60)
+        }
     }
 
     fun getCalDAVEventReminders(eventId: Long): List<Int> {

@@ -38,7 +38,7 @@ class IcsExporter {
                     }
 
                     out.writeLn("$STATUS$CONFIRMED")
-                    Parser().getShortRepeatInterval(event).let { if (it.isNotEmpty()) out.writeLn("$RRULE$it") }
+                    Parser().getRepeatCode(event).let { if (it.isNotEmpty()) out.writeLn("$RRULE$it") }
 
                     fillReminders(event, out)
                     fillIgnoredOccurrences(event, out)
@@ -69,7 +69,7 @@ class IcsExporter {
         if (minutes != -1) {
             out.writeLn(BEGIN_ALARM)
             out.writeLn("$ACTION$DISPLAY")
-            out.writeLn("$TRIGGER${Parser().getDurationString(minutes)}")
+            out.writeLn("$TRIGGER-${Parser().getDurationCode(minutes)}")
             out.writeLn(END_ALARM)
         }
     }

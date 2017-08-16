@@ -63,7 +63,7 @@ class IcsImporter {
                         curEnd = getTimestamp(line.substring(DTEND.length))
                     } else if (line.startsWith(DURATION)) {
                         val duration = line.substring(DURATION.length)
-                        curEnd = curStart + Parser().parseDuration(duration)
+                        curEnd = curStart + Parser().parseDurationSeconds(duration)
                     } else if (line.startsWith(SUMMARY) && !isNotificationDescription) {
                         curTitle = line.substring(SUMMARY.length)
                         curTitle = getTitle(curTitle).replace("\\n", "\n")
@@ -81,7 +81,7 @@ class IcsImporter {
                         lastReminderAction = line.substring(ACTION.length)
                     } else if (line.startsWith(TRIGGER)) {
                         if (lastReminderAction == DISPLAY)
-                            curReminderMinutes.add(Parser().parseDuration(line.substring(TRIGGER.length)) / 60)
+                            curReminderMinutes.add(Parser().parseDurationSeconds(line.substring(TRIGGER.length)) / 60)
                     } else if (line.startsWith(CATEGORIES)) {
                         val categories = line.substring(CATEGORIES.length)
                         tryAddCategories(categories, context)
