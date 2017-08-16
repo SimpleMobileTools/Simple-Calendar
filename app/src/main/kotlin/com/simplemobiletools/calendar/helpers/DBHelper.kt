@@ -331,7 +331,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         return null
     }
 
-    fun deleteEvents(ids: Array<String>) {
+    fun deleteEvents(ids: Array<String>, deleteFromCalDAV: Boolean) {
         val args = TextUtils.join(", ", ids)
         val selection = "$MAIN_TABLE_NAME.$COL_ID IN ($args)"
         val cursor = getEventsCursor(selection)
@@ -352,14 +352,16 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             context.cancelNotification(it.toInt())
         }
 
-        events.forEach {
-            CalDAVEventsHandler(context).deleteCalDAVEvent(it)
+        if (deleteFromCalDAV) {
+            events.forEach {
+                CalDAVEventsHandler(context).deleteCalDAVEvent(it)
+            }
         }
 
-        deleteChildEvents(args)
+        deleteChildEvents(args, deleteFromCalDAV)
     }
 
-    private fun deleteChildEvents(ids: String) {
+    private fun deleteChildEvents(ids: String, deleteFromCalDAV: Boolean) {
         val projection = arrayOf(COL_ID)
         val selection = "$COL_PARENT_EVENT_ID IN ($ids)"
         val childIds = ArrayList<String>()
@@ -377,7 +379,14 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
 
         if (childIds.isNotEmpty())
-            deleteEvents(childIds.toTypedArray())
+            deleteEvents(childIds.toTypedArray(), deleteFromCalDAV)
+    }
+
+    fun getCalDAVCalendarEvents(calendarId: Long): List<Event> {
+        val selection = "$MAIN_TABLE_NAME.$COL_EVENT_SOURCE = (?)"
+        val selectionArgs = arrayOf("$CALDAV-$calendarId")
+        val cursor = getEventsCursor(selection, selectionArgs)
+        return fillEvents(cursor).filter { it.importId.isNotEmpty() }
     }
 
     fun addEventRepeatException(parentEventId: Int, occurrenceTS: Int) {
@@ -416,7 +425,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         val cursor = getEventsCursor(selection, selectionArgs)
         val events = fillEvents(cursor)
         val eventIDs = Array(events.size, { i -> (events[i].id.toString()) })
-        deleteEvents(eventIDs)
+        deleteEvents(eventIDs, true)
     }
 
     private fun resetEventsWithType(eventTypeId: Int) {

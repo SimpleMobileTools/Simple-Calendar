@@ -129,14 +129,16 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun showCalendarPicker() {
+        val oldCalendarIds = config.getCalendarIdsAsList()
+
         SelectCalendarsDialog(this) {
-            val ids = config.caldavSyncedCalendarIDs.split(",").filter { it.trim().isNotEmpty() } as ArrayList<String>
-            settings_manage_synced_calendars_holder.beVisibleIf(ids.isNotEmpty())
-            settings_caldav_sync.isChecked = ids.isNotEmpty()
-            config.caldavSync = ids.isNotEmpty()
+            val newCalendarIds = config.getCalendarIdsAsList()
+            settings_manage_synced_calendars_holder.beVisibleIf(newCalendarIds.isNotEmpty())
+            settings_caldav_sync.isChecked = newCalendarIds.isNotEmpty()
+            config.caldavSync = newCalendarIds.isNotEmpty()
 
             Thread({
-                if (ids.isNotEmpty()) {
+                if (newCalendarIds.isNotEmpty()) {
                     val eventTypeNames = dbHelper.fetchEventTypes().map { it.title.toLowerCase() } as ArrayList<String>
                     val calendars = CalDAVEventsHandler(applicationContext).getCalDAVCalendars(config.caldavSyncedCalendarIDs)
                     calendars.forEach {
@@ -151,6 +153,10 @@ class SettingsActivity : SimpleActivity() {
                         val eventTypeId = dbHelper.getEventTypeIdWithTitle(it.displayName)
                         CalDAVEventsHandler(applicationContext).fetchCalDAVCalendarEvents(it.id, eventTypeId)
                     }
+                }
+
+                oldCalendarIds.filter { !newCalendarIds.contains(it) }.forEach {
+                    CalDAVEventsHandler(applicationContext).deleteCalDAVCalendarEvents(it.toLong())
                 }
             }).start()
         }

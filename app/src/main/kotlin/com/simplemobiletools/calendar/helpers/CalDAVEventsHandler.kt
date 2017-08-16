@@ -157,6 +157,12 @@ class CalDAVEventsHandler(val context: Context) {
         }
     }
 
+    fun deleteCalDAVCalendarEvents(calendarId: Long) {
+        val events = context.dbHelper.getCalDAVCalendarEvents(calendarId)
+        val eventIds = events.map { it.id.toString() }.toTypedArray()
+        context.dbHelper.deleteEvents(eventIds, false)
+    }
+
     fun deleteCalDAVEvent(event: Event) {
         val uri = CalendarContract.Events.CONTENT_URI
         val contentUri = ContentUris.withAppendedId(uri, event.getCalDAVId())
