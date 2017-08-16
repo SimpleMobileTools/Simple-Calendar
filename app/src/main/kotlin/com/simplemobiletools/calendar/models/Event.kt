@@ -104,4 +104,6 @@ data class Event(var id: Int = 0, var startTS: Int = 0, var endTS: Int = 0, var 
             startTS
         }
     }
+
+    fun getCalDAVId() = (importId.split("-").lastOrNull() ?: "0").toString().toLong()
 }

@@ -1,5 +1,6 @@
 package com.simplemobiletools.calendar.helpers
 
+import android.content.ContentUris
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
@@ -154,6 +155,12 @@ class CalDAVEventsHandler(val context: Context) {
         } else {
             Parser().getDurationCode((event.endTS - event.startTS) / 60)
         }
+    }
+
+    fun deleteCalDAVEvent(event: Event) {
+        val uri = CalendarContract.Events.CONTENT_URI
+        val contentUri = ContentUris.withAppendedId(uri, event.getCalDAVId())
+        context.contentResolver.delete(contentUri, null, null)
     }
 
     fun getCalDAVEventReminders(eventId: Long): List<Int> {
