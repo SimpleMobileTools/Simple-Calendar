@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.RelativeLayout
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.config
-import com.simplemobiletools.calendar.extensions.getCalDAVCalendars
+import com.simplemobiletools.calendar.helpers.CalDAVEventsHandler
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import kotlinx.android.synthetic.main.calendar_item_account.view.*
 import kotlinx.android.synthetic.main.calendar_item_calendar.view.*
@@ -21,7 +21,7 @@ class SelectCalendarsDialog(val activity: Activity, val callback: () -> Unit) : 
 
     init {
         val ids = activity.config.caldavSyncedCalendarIDs.split(",").filter { it.trim().isNotEmpty() } as ArrayList<String>
-        val calendars = activity.getCalDAVCalendars()
+        val calendars = CalDAVEventsHandler(activity).getCalDAVCalendars()
         val sorted = calendars.sortedWith(compareBy({ it.accountName }, { it.displayName }))
         sorted.forEach {
             if (prevAccount != it.accountName) {

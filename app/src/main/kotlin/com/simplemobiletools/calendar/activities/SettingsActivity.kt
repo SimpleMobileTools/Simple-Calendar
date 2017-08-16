@@ -14,6 +14,7 @@ import com.simplemobiletools.calendar.dialogs.CustomEventReminderDialog
 import com.simplemobiletools.calendar.dialogs.SelectCalendarsDialog
 import com.simplemobiletools.calendar.dialogs.SnoozePickerDialog
 import com.simplemobiletools.calendar.extensions.*
+import com.simplemobiletools.calendar.helpers.CalDAVEventsHandler
 import com.simplemobiletools.calendar.helpers.FONT_SIZE_LARGE
 import com.simplemobiletools.calendar.helpers.FONT_SIZE_MEDIUM
 import com.simplemobiletools.calendar.helpers.FONT_SIZE_SMALL
@@ -137,7 +138,7 @@ class SettingsActivity : SimpleActivity() {
             Thread({
                 if (ids.isNotEmpty()) {
                     val eventTypeNames = dbHelper.fetchEventTypes().map { it.title.toLowerCase() } as ArrayList<String>
-                    val calendars = getCalDAVCalendars(config.caldavSyncedCalendarIDs)
+                    val calendars = CalDAVEventsHandler(applicationContext).getCalDAVCalendars(config.caldavSyncedCalendarIDs)
                     calendars.forEach {
                         if (!eventTypeNames.contains(it.displayName.toLowerCase())) {
                             val eventType = EventType(0, it.displayName, it.color)
@@ -148,7 +149,7 @@ class SettingsActivity : SimpleActivity() {
 
                     calendars.forEach {
                         val eventTypeId = dbHelper.getEventTypeIdWithTitle(it.displayName)
-                        fetchCalDAVCalendarEvents(it.id, eventTypeId)
+                        CalDAVEventsHandler(applicationContext).fetchCalDAVCalendarEvents(it.id, eventTypeId)
                     }
                 }
             }).start()
