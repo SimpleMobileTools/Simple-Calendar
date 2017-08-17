@@ -200,6 +200,7 @@
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Select calendars to sync</string>
     <string name="manage_synced_calendars">Manage synced calendars</string>
+    <string name="store_locally_only">Store locally only</string>
 
     <plurals name="by_minutes">
         <item quantity="one">%1$d minutę</item>

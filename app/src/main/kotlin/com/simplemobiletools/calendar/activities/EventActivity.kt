@@ -396,6 +396,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             updateCurrentCalendarInfo(getCalendarWithId(calendars))
 
             event_caldav_calendar_holder.setOnClickListener {
+                hideKeyboard()
                 SelectEventCalendarDialog(this, calendars, config.lastUsedCaldavCalendar) {
                     config.lastUsedCaldavCalendar = it
                     updateCurrentCalendarInfo(getCalendarWithId(calendars))
@@ -408,8 +409,24 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             calendars.firstOrNull { it.id == config.lastUsedCaldavCalendar }
 
     private fun updateCurrentCalendarInfo(currentCalendar: CalDAVCalendar?) {
-        event_caldav_calendar_name.text = currentCalendar?.displayName
-        event_caldav_calendar_email.text = currentCalendar?.accountName
+        if (currentCalendar == null) {
+            event_caldav_calendar_email.beGone()
+            event_caldav_calendar_name.apply {
+                text = getString(R.string.store_locally_only)
+                apply {
+                    setPadding(paddingLeft, paddingTop, paddingRight, resources.getDimension(R.dimen.medium_margin).toInt())
+                }
+            }
+        } else {
+            event_caldav_calendar_email.text = currentCalendar.accountName
+            event_caldav_calendar_email.beVisible()
+            event_caldav_calendar_name.apply {
+                text = currentCalendar.displayName
+                apply {
+                    setPadding(paddingLeft, paddingTop, paddingRight, resources.getDimension(R.dimen.tiny_margin).toInt())
+                }
+            }
+        }
     }
 
     private fun toggleAllDay(isChecked: Boolean) {

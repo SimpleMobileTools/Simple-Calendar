@@ -17,9 +17,11 @@ import kotlinx.android.synthetic.main.dialog_select_radio_group.view.*
 import kotlinx.android.synthetic.main.radio_button_with_color.view.*
 
 class SelectEventCalendarDialog(val activity: Activity, val calendars: List<CalDAVCalendar>, val currCalendarId: Int, val callback: (id: Int) -> Unit) {
-    val dialog: AlertDialog?
-    val radioGroup: RadioGroup
-    var wasInit = false
+    private val STORE_LOCALLY_ONLY = 0
+
+    private val dialog: AlertDialog?
+    private val radioGroup: RadioGroup
+    private var wasInit = false
 
     init {
         val view = activity.layoutInflater.inflate(R.layout.dialog_select_radio_group, null) as ViewGroup
@@ -28,8 +30,9 @@ class SelectEventCalendarDialog(val activity: Activity, val calendars: List<CalD
         activity.dbHelper.getEventTypes {
             activity.runOnUiThread {
                 calendars.forEach {
-                    addRadioButton(it.displayName, it.id.toInt(), it.color)
+                    addRadioButton(it.displayName, it.id, it.color)
                 }
+                addRadioButton(activity.getString(R.string.store_locally_only), STORE_LOCALLY_ONLY, Color.TRANSPARENT)
                 wasInit = true
                 activity.updateTextColors(view.dialog_radio_holder)
             }
@@ -56,7 +59,7 @@ class SelectEventCalendarDialog(val activity: Activity, val calendars: List<CalD
         radioGroup.addView(view, RadioGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT))
     }
 
-    fun viewClicked(typeId: Int) {
+    private fun viewClicked(typeId: Int) {
         if (!wasInit)
             return
 

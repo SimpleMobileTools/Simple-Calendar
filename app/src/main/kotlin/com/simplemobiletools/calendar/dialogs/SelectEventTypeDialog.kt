@@ -19,12 +19,12 @@ import kotlinx.android.synthetic.main.radio_button_with_color.view.*
 import java.util.*
 
 class SelectEventTypeDialog(val activity: Activity, val currEventType: Int, val callback: (checkedId: Int) -> Unit) {
-    val NEW_TYPE_ID = -2
+    private val NEW_TYPE_ID = -2
 
-    val dialog: AlertDialog?
-    val radioGroup: RadioGroup
-    var wasInit = false
-    var eventTypes = ArrayList<EventType>()
+    private val dialog: AlertDialog?
+    private val radioGroup: RadioGroup
+    private var wasInit = false
+    private var eventTypes = ArrayList<EventType>()
 
     init {
         val view = activity.layoutInflater.inflate(R.layout.dialog_select_radio_group, null) as ViewGroup
@@ -63,7 +63,7 @@ class SelectEventTypeDialog(val activity: Activity, val currEventType: Int, val 
         radioGroup.addView(view, RadioGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT))
     }
 
-    fun viewClicked(typeId: Int) {
+    private fun viewClicked(typeId: Int) {
         if (!wasInit)
             return
 
