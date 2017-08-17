@@ -125,17 +125,17 @@ class SettingsActivity : SimpleActivity() {
             settings_caldav_sync.isChecked = false
             config.caldavSync = false
             settings_manage_synced_calendars_holder.beGone()
-            config.getCalendarIdsAsList().forEach {
+            config.getSyncedCalendarIdsAsList().forEach {
                 CalDAVEventsHandler(applicationContext).deleteCalDAVCalendarEvents(it.toLong())
             }
         }
     }
 
     private fun showCalendarPicker() {
-        val oldCalendarIds = config.getCalendarIdsAsList()
+        val oldCalendarIds = config.getSyncedCalendarIdsAsList()
 
         SelectCalendarsDialog(this) {
-            val newCalendarIds = config.getCalendarIdsAsList()
+            val newCalendarIds = config.getSyncedCalendarIdsAsList()
             settings_manage_synced_calendars_holder.beVisibleIf(newCalendarIds.isNotEmpty())
             settings_caldav_sync.isChecked = newCalendarIds.isNotEmpty()
             config.caldavSync = newCalendarIds.isNotEmpty()

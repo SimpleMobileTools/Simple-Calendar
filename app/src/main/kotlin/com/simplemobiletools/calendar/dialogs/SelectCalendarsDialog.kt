@@ -20,7 +20,7 @@ class SelectCalendarsDialog(val activity: Activity, val callback: () -> Unit) : 
     var view = (activity.layoutInflater.inflate(R.layout.dialog_select_calendars, null) as ViewGroup)
 
     init {
-        val ids = activity.config.getCalendarIdsAsList()
+        val ids = activity.config.getSyncedCalendarIdsAsList()
         val calendars = CalDAVEventsHandler(activity).getCalDAVCalendars()
         val sorted = calendars.sortedWith(compareBy({ it.accountName }, { it.displayName }))
         sorted.forEach {
