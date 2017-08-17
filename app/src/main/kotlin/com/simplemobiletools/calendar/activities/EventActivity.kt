@@ -74,6 +74,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         updateStartTexts()
         updateEndTexts()
         updateEventType()
+        updateCalDAVCalendar()
 
         event_start_date.setOnClickListener { setupStartDate() }
         event_start_time.setOnClickListener { setupStartTime() }
@@ -382,6 +383,17 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         }
     }
 
+    private fun updateCalDAVCalendar() {
+        if (config.caldavSync) {
+            event_caldav_calendar_image.beVisible()
+            event_caldav_calendar_holder.beVisible()
+            event_caldav_calendar_divider.beVisible()
+            event_caldav_calendar_holder.setOnClickListener {
+
+            }
+        }
+    }
+
     private fun toggleAllDay(isChecked: Boolean) {
         hideKeyboard()
         event_start_time.beGoneIf(isChecked)
@@ -639,6 +651,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         event_repetition_image.setColorFilter(config.textColor, PorterDuff.Mode.SRC_IN)
         event_reminder_image.setColorFilter(config.textColor, PorterDuff.Mode.SRC_IN)
         event_type_image.setColorFilter(config.textColor, PorterDuff.Mode.SRC_IN)
+        event_caldav_calendar_image.setColorFilter(config.textColor, PorterDuff.Mode.SRC_IN)
     }
 
     override fun eventInserted(event: Event) {

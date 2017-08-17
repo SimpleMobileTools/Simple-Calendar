@@ -52,8 +52,8 @@
             android:layout_below="@+id/event_description"
             android:layout_marginBottom="@dimen/normal_margin"
             android:layout_marginTop="@dimen/activity_margin"
-            android:importantForAccessibility="no"
-            android:background="@color/darker_divider"/>
+            android:background="@color/darker_divider"
+            android:importantForAccessibility="no"/>
 
         <ImageView
             android:id="@+id/event_time_image"
@@ -99,8 +99,8 @@
             android:paddingEnd="@dimen/activity_margin"
             android:paddingRight="@dimen/activity_margin"
             android:paddingTop="@dimen/activity_margin"
-            tools:text="January 1 1970"
-            android:textSize="@dimen/day_text_size"/>
+            android:textSize="@dimen/day_text_size"
+            tools:text="January 1 1970"/>
 
         <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/event_start_time"
@@ -111,8 +111,8 @@
             android:layout_below="@+id/event_time_image"
             android:background="?attr/selectableItemBackground"
             android:padding="@dimen/activity_margin"
-            tools:text="00:00"
-            android:textSize="@dimen/day_text_size"/>
+            android:textSize="@dimen/day_text_size"
+            tools:text="00:00"/>
 
         <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/event_end_date"
@@ -126,8 +126,8 @@
             android:paddingEnd="@dimen/activity_margin"
             android:paddingRight="@dimen/activity_margin"
             android:paddingTop="@dimen/activity_margin"
-            tools:text="January 1 1970"
-            android:textSize="@dimen/day_text_size"/>
+            android:textSize="@dimen/day_text_size"
+            tools:text="January 1 1970"/>
 
         <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/event_end_time"
@@ -138,8 +138,8 @@
             android:layout_below="@+id/event_start_time"
             android:background="?attr/selectableItemBackground"
             android:padding="@dimen/activity_margin"
-            tools:text="00:00"
-            android:textSize="@dimen/day_text_size"/>
+            android:textSize="@dimen/day_text_size"
+            tools:text="00:00"/>
 
         <ImageView
             android:id="@+id/event_date_time_divider"
@@ -148,8 +148,8 @@
             android:layout_below="@+id/event_end_date"
             android:layout_marginBottom="@dimen/medium_margin"
             android:layout_marginTop="@dimen/medium_margin"
-            android:importantForAccessibility="no"
-            android:background="@color/darker_divider"/>
+            android:background="@color/darker_divider"
+            android:importantForAccessibility="no"/>
 
         <ImageView
             android:id="@+id/event_reminder_image"
@@ -215,8 +215,8 @@
             android:layout_below="@+id/event_reminder_3"
             android:layout_marginBottom="@dimen/medium_margin"
             android:layout_marginTop="@dimen/medium_margin"
-            android:importantForAccessibility="no"
-            android:background="@color/darker_divider"/>
+            android:background="@color/darker_divider"
+            android:importantForAccessibility="no"/>
 
         <ImageView
             android:id="@+id/event_repetition_image"
@@ -323,8 +323,71 @@
             android:layout_below="@+id/event_repetition_limit_holder"
             android:layout_marginBottom="@dimen/medium_margin"
             android:layout_marginTop="@dimen/medium_margin"
+            android:background="@color/darker_divider"
+            android:importantForAccessibility="no"/>
+
+        <ImageView
+            android:id="@+id/event_caldav_calendar_image"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignBottom="@+id/event_caldav_calendar_holder"
+            android:layout_alignTop="@+id/event_caldav_calendar_holder"
+            android:layout_below="@+id/event_repetition_divider"
+            android:layout_marginLeft="@dimen/normal_margin"
+            android:layout_marginStart="@dimen/normal_margin"
+            android:alpha="0.8"
+            android:padding="@dimen/medium_margin"
+            android:src="@drawable/ic_calendar"
+            android:visibility="gone"/>
+
+        <RelativeLayout
+            android:id="@+id/event_caldav_calendar_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/event_repetition_divider"
+            android:layout_toEndOf="@+id/event_caldav_calendar_image"
+            android:layout_toRightOf="@+id/event_caldav_calendar_image"
+            android:background="?attr/selectableItemBackground"
+            android:visibility="gone">
+
+            <com.simplemobiletools.commons.views.MyTextView
+                android:id="@+id/event_caldav_calendar_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/small_margin"
+                android:layout_marginStart="@dimen/small_margin"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:paddingBottom="@dimen/tiny_margin"
+                android:paddingTop="@dimen/medium_margin"
+                android:textSize="@dimen/day_text_size"
+                tools:text="My calendar"/>
+
+            <com.simplemobiletools.commons.views.MyTextView
+                android:id="@+id/event_caldav_calendar_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/event_caldav_calendar_name"
+                android:layout_marginLeft="@dimen/small_margin"
+                android:layout_marginStart="@dimen/small_margin"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:paddingBottom="@dimen/medium_margin"
+                android:textSize="@dimen/meta_text_size"
+                tools:text="hello@simplemobiletools.com"/>
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/event_caldav_calendar_divider"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_below="@+id/event_caldav_calendar_holder"
+            android:layout_marginBottom="@dimen/medium_margin"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:background="@color/darker_divider"
             android:importantForAccessibility="no"
-            android:background="@color/darker_divider"/>
+            android:visibility="gone"/>
 
         <ImageView
             android:id="@+id/event_type_image"
@@ -332,7 +395,7 @@
             android:layout_height="match_parent"
             android:layout_alignBottom="@+id/event_type_holder"
             android:layout_alignTop="@+id/event_type_holder"
-            android:layout_below="@+id/event_date_time_divider"
+            android:layout_below="@+id/event_caldav_calendar_divider"
             android:layout_marginLeft="@dimen/normal_margin"
             android:layout_marginStart="@dimen/normal_margin"
             android:alpha="0.8"
@@ -343,7 +406,7 @@
             android:id="@+id/event_type_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/event_repetition_divider"
+            android:layout_below="@+id/event_caldav_calendar_divider"
             android:layout_toEndOf="@+id/event_type_image"
             android:layout_toRightOf="@+id/event_type_image"
             android:background="?attr/selectableItemBackground">
