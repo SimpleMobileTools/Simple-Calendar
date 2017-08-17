@@ -315,12 +315,10 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         return days.trim().trimEnd(',')
     }
 
-    private fun getMonthlyRepetitionRuleText(): String {
-        return when (mRepeatRule) {
-            REPEAT_MONTH_SAME_DAY -> getString(R.string.the_same_day)
-            REPEAT_MONTH_LAST_DAY -> getString(R.string.the_last_day)
-            else -> getRepeatXthDayString(false)
-        }
+    private fun getMonthlyRepetitionRuleText() = when (mRepeatRule) {
+        REPEAT_MONTH_SAME_DAY -> getString(R.string.the_same_day)
+        REPEAT_MONTH_LAST_DAY -> getString(R.string.the_last_day)
+        else -> getRepeatXthDayString(false)
     }
 
     private fun showEventTypeDialog() {
@@ -402,6 +400,8 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
                     updateCurrentCalendarInfo(getCalendarWithId(calendars))
                 }
             }
+        } else {
+            updateCurrentCalendarInfo(null)
         }
     }
 
@@ -409,8 +409,12 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             calendars.firstOrNull { it.id == config.lastUsedCaldavCalendar }
 
     private fun updateCurrentCalendarInfo(currentCalendar: CalDAVCalendar?) {
+        event_type_image.beVisibleIf(currentCalendar == null)
+        event_type_holder.beVisibleIf(currentCalendar == null)
+        event_caldav_calendar_divider.beVisibleIf(currentCalendar == null)
+        event_caldav_calendar_email.beGoneIf(currentCalendar == null)
+
         if (currentCalendar == null) {
-            event_caldav_calendar_email.beGone()
             event_caldav_calendar_name.apply {
                 text = getString(R.string.store_locally_only)
                 apply {
@@ -419,7 +423,6 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             }
         } else {
             event_caldav_calendar_email.text = currentCalendar.accountName
-            event_caldav_calendar_email.beVisible()
             event_caldav_calendar_name.apply {
                 text = currentCalendar.displayName
                 apply {
@@ -589,7 +592,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     }
 
     @SuppressLint("NewApi")
-    fun setupStartDate() {
+    private fun setupStartDate() {
         hideKeyboard()
         config.backgroundColor.getContrastColor()
         val datepicker = DatePickerDialog(this, mDialogTheme, startDateSetListener, mEventStartDateTime.year, mEventStartDateTime.monthOfYear - 1,
@@ -602,13 +605,13 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         datepicker.show()
     }
 
-    fun setupStartTime() {
+    private fun setupStartTime() {
         hideKeyboard()
         TimePickerDialog(this, mDialogTheme, startTimeSetListener, mEventStartDateTime.hourOfDay, mEventStartDateTime.minuteOfHour, config.use24hourFormat).show()
     }
 
     @SuppressLint("NewApi")
-    fun setupEndDate() {
+    private fun setupEndDate() {
         hideKeyboard()
         val datepicker = DatePickerDialog(this, mDialogTheme, endDateSetListener, mEventEndDateTime.year, mEventEndDateTime.monthOfYear - 1,
                 mEventEndDateTime.dayOfMonth)
@@ -620,7 +623,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         datepicker.show()
     }
 
-    fun setupEndTime() {
+    private fun setupEndTime() {
         hideKeyboard()
         TimePickerDialog(this, mDialogTheme, endTimeSetListener, mEventEndDateTime.hourOfDay, mEventEndDateTime.minuteOfHour, config.use24hourFormat).show()
     }
@@ -690,13 +693,11 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     }
 
     override fun eventInserted(event: Event) {
-
     }
 
     override fun eventsDeleted(cnt: Int) {
     }
 
     override fun gotEvents(events: MutableList<Event>) {
-
     }
 }
