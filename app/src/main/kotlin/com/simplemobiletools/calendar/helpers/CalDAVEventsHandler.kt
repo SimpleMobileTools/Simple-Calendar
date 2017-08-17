@@ -28,9 +28,10 @@ class CalDAVEventsHandler(val context: Context) {
                 CalendarContract.Calendars.CALENDAR_DISPLAY_NAME,
                 CalendarContract.Calendars.ACCOUNT_NAME,
                 CalendarContract.Calendars.OWNER_ACCOUNT,
-                CalendarContract.Calendars.CALENDAR_COLOR)
-        val selection = if (ids.trim().isNotEmpty()) "${CalendarContract.Calendars._ID} IN ($ids)" else null
+                CalendarContract.Calendars.CALENDAR_COLOR,
+                CalendarContract.Calendars.CALENDAR_ACCESS_LEVEL)
 
+        val selection = if (ids.trim().isNotEmpty()) "${CalendarContract.Calendars._ID} IN ($ids)" else null
         var cursor: Cursor? = null
         try {
             cursor = context.contentResolver.query(uri, projection, selection, null, null)
@@ -41,7 +42,8 @@ class CalDAVEventsHandler(val context: Context) {
                     val accountName = cursor.getStringValue(CalendarContract.Calendars.ACCOUNT_NAME)
                     val ownerName = cursor.getStringValue(CalendarContract.Calendars.OWNER_ACCOUNT)
                     val color = cursor.getIntValue(CalendarContract.Calendars.CALENDAR_COLOR)
-                    val calendar = CalDAVCalendar(id, displayName, accountName, ownerName, color)
+                    val accessLevel = cursor.getIntValue(CalendarContract.Calendars.CALENDAR_ACCESS_LEVEL)
+                    val calendar = CalDAVCalendar(id, displayName, accountName, ownerName, color, accessLevel)
                     calendars.add(calendar)
                 } while (cursor.moveToNext())
             }
@@ -68,8 +70,8 @@ class CalDAVEventsHandler(val context: Context) {
                 CalendarContract.Events.DURATION,
                 CalendarContract.Events.ALL_DAY,
                 CalendarContract.Events.RRULE)
-        val selection = "${CalendarContract.Events.CALENDAR_ID} = $calendarId"
 
+        val selection = "${CalendarContract.Events.CALENDAR_ID} = $calendarId"
         var cursor: Cursor? = null
         try {
             cursor = context.contentResolver.query(uri, projection, selection, null, null)

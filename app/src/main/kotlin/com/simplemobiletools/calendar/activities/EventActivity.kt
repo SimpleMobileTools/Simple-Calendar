@@ -389,7 +389,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             event_caldav_calendar_holder.beVisible()
             event_caldav_calendar_divider.beVisible()
             event_caldav_calendar_holder.setOnClickListener {
-
+                val calendars = CalDAVEventsHandler(applicationContext).getCalDAVCalendars().filter { it.canWrite() }
             }
         }
     }
