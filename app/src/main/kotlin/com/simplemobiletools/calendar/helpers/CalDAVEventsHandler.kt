@@ -37,7 +37,7 @@ class CalDAVEventsHandler(val context: Context) {
             cursor = context.contentResolver.query(uri, projection, selection, null, null)
             if (cursor != null && cursor.moveToFirst()) {
                 do {
-                    val id = cursor.getLongValue(CalendarContract.Calendars._ID)
+                    val id = cursor.getIntValue(CalendarContract.Calendars._ID)
                     val displayName = cursor.getStringValue(CalendarContract.Calendars.CALENDAR_DISPLAY_NAME)
                     val accountName = cursor.getStringValue(CalendarContract.Calendars.ACCOUNT_NAME)
                     val ownerName = cursor.getStringValue(CalendarContract.Calendars.OWNER_ACCOUNT)
@@ -53,7 +53,7 @@ class CalDAVEventsHandler(val context: Context) {
         return calendars
     }
 
-    fun fetchCalDAVCalendarEvents(calendarId: Long, eventTypeId: Int) {
+    fun fetchCalDAVCalendarEvents(calendarId: Int, eventTypeId: Int) {
         val importIdsMap = HashMap<String, Event>()
         val existingEvents = context.dbHelper.getEventsFromCalDAVCalendar(calendarId)
         existingEvents.forEach {
@@ -122,7 +122,7 @@ class CalDAVEventsHandler(val context: Context) {
         }
     }
 
-    fun addCalDAVEvent(event: Event, calendarId: Long) {
+    fun addCalDAVEvent(event: Event, calendarId: Int) {
         val uri = CalendarContract.Events.CONTENT_URI
         val values = ContentValues().apply {
             put(CalendarContract.Events.CALENDAR_ID, calendarId)
@@ -196,5 +196,5 @@ class CalDAVEventsHandler(val context: Context) {
         return reminders
     }
 
-    fun getCalDAVEventImportId(calendarId: Long, eventId: Long) = "$CALDAV-$calendarId-$eventId"
+    fun getCalDAVEventImportId(calendarId: Int, eventId: Long) = "$CALDAV-$calendarId-$eventId"
 }

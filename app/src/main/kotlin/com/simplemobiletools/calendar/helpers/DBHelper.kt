@@ -675,7 +675,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         return events
     }
 
-    fun getEventsFromCalDAVCalendar(calendarId: Long): List<Event> {
+    fun getEventsFromCalDAVCalendar(calendarId: Int): List<Event> {
         val selection = "$MAIN_TABLE_NAME.$COL_EVENT_SOURCE = ?"
         val selectionArgs = arrayOf("$CALDAV-$calendarId")
         val cursor = getEventsCursor(selection, selectionArgs)

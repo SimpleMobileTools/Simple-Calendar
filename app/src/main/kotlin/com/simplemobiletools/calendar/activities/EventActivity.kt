@@ -14,6 +14,7 @@ import com.simplemobiletools.calendar.dialogs.*
 import com.simplemobiletools.calendar.extensions.*
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
+import com.simplemobiletools.calendar.models.CalDAVCalendar
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
@@ -388,13 +389,25 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             event_caldav_calendar_image.beVisible()
             event_caldav_calendar_holder.beVisible()
             event_caldav_calendar_divider.beVisible()
+
+            val calendars = CalDAVEventsHandler(applicationContext).getCalDAVCalendars().filter { it.canWrite() }
+            updateCurrentCalendarInfo(getCalendarWithId(calendars))
+
             event_caldav_calendar_holder.setOnClickListener {
-                val calendars = CalDAVEventsHandler(applicationContext).getCalDAVCalendars().filter { it.canWrite() }
                 SelectEventCalendarDialog(this, calendars, config.lastUsedCaldavCalendar) {
                     config.lastUsedCaldavCalendar = it
+                    updateCurrentCalendarInfo(getCalendarWithId(calendars))
                 }
             }
         }
+    }
+
+    private fun getCalendarWithId(calendars: List<CalDAVCalendar>): CalDAVCalendar? =
+            calendars.firstOrNull { it.id == config.lastUsedCaldavCalendar }
+
+    private fun updateCurrentCalendarInfo(currentCalendar: CalDAVCalendar?) {
+        event_caldav_calendar_name.text = currentCalendar?.displayName
+        event_caldav_calendar_email.text = currentCalendar?.accountName
     }
 
     private fun toggleAllDay(isChecked: Boolean) {

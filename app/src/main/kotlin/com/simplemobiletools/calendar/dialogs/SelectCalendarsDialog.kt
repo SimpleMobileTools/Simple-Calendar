@@ -40,7 +40,7 @@ class SelectCalendarsDialog(val activity: Activity, val callback: () -> Unit) : 
         }
     }
 
-    private fun addCalendarItem(isEvent: Boolean, text: String, tag: Long = 0L, shouldCheck: Boolean = false) {
+    private fun addCalendarItem(isEvent: Boolean, text: String, tag: Int = 0, shouldCheck: Boolean = false) {
         val calendarItem = activity.layoutInflater.inflate(if (isEvent) R.layout.calendar_item_calendar else R.layout.calendar_item_account,
                 view.dialog_select_calendars_holder, false)
 
