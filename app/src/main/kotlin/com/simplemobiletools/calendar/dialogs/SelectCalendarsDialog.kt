@@ -61,14 +61,14 @@ class SelectCalendarsDialog(val activity: Activity, val callback: () -> Unit) : 
     }
 
     private fun confirmSelection() {
-        val calendarIDs = ArrayList<Long>()
+        val calendarIDs = ArrayList<Int>()
         val childCnt = view.dialog_select_calendars_holder.childCount
         for (i in 0..childCnt) {
             val child = view.dialog_select_calendars_holder.getChildAt(i)
             if (child is RelativeLayout) {
                 val check = child.getChildAt(0)
                 if (check is SwitchCompat && check.isChecked) {
-                    calendarIDs.add(check.tag as Long)
+                    calendarIDs.add(check.tag as Int)
                 }
             }
         }
