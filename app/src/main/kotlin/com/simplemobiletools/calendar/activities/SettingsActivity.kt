@@ -125,6 +125,9 @@ class SettingsActivity : SimpleActivity() {
             settings_caldav_sync.isChecked = false
             config.caldavSync = false
             settings_manage_synced_calendars_holder.beGone()
+            config.getCalendarIdsAsList().forEach {
+                CalDAVEventsHandler(applicationContext).deleteCalDAVCalendarEvents(it.toLong())
+            }
         }
     }
 
