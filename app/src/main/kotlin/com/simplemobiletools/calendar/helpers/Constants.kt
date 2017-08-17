@@ -44,6 +44,7 @@ val DISPLAY_EVENT_TYPES = "display_event_types"
 val FONT_SIZE = "font_size"
 val CALDAV_SYNC = "caldav_sync"
 val CALDAV_SYNCED_CALENDAR_IDS = "caldav_synced_calendar_ids"
+val LAST_USED_CALDAV_CALENDAR = "last_used_caldav_calendar"
 val SNOOZE_DELAY = "snooze_delay"
 val DISPLAY_PAST_EVENTS = "display_past_events"
 
