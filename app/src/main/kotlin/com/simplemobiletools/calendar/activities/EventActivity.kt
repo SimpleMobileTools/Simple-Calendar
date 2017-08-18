@@ -489,6 +489,9 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         val wasRepeatable = mEvent.repeatInterval > 0
         val newImportId = if (mEvent.id != 0) mEvent.importId else UUID.randomUUID().toString().replace("-", "") + System.currentTimeMillis().toString()
 
+        val newEventType = if (!config.caldavSync || config.lastUsedCaldavCalendar == 0) mEventTypeId else dbHelper.getEventTypeIdWithCalDAVCalendarId(config.lastUsedCaldavCalendar)
+        val newSource = if (!config.caldavSync || config.lastUsedCaldavCalendar == 0) SOURCE_SIMPLE_CALENDAR else "$CALDAV-${config.lastUsedCaldavCalendar}"
+
         val reminders = sortedSetOf(mReminder1Minutes, mReminder2Minutes, mReminder3Minutes).filter { it != REMINDER_OFF }
         val newDescription = event_description.value
         mEvent.apply {
@@ -504,11 +507,11 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             flags = if (event_all_day.isChecked) (mEvent.flags or FLAG_ALL_DAY) else (mEvent.flags.removeFlag(FLAG_ALL_DAY))
             repeatLimit = if (repeatInterval == 0) 0 else mRepeatLimit
             repeatRule = mRepeatRule
-            eventType = mEventTypeId
+            eventType = newEventType
             offset = getCurrentOffset()
             isDstIncluded = TimeZone.getDefault().inDaylightTime(Date())
             lastUpdated = System.currentTimeMillis()
-            source = if (!config.caldavSync || config.lastUsedCaldavCalendar == 0) SOURCE_SIMPLE_CALENDAR else "$CALDAV-${config.lastUsedCaldavCalendar}"
+            source = newSource
         }
 
         storeEvent(wasRepeatable)

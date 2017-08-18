@@ -277,6 +277,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         return ContentValues().apply {
             put(COL_TYPE_TITLE, eventType.title)
             put(COL_TYPE_COLOR, eventType.color)
+            put(COL_TYPE_CALDAV_CALENDAR_ID, eventType.caldavCalendarId)
         }
     }
 
@@ -307,6 +308,22 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         val cols = arrayOf(COL_TYPE_ID)
         val selection = "$COL_TYPE_TITLE = ? COLLATE NOCASE"
         val selectionArgs = arrayOf(title)
+        var cursor: Cursor? = null
+        try {
+            cursor = mDb.query(TYPES_TABLE_NAME, cols, selection, selectionArgs, null, null, null)
+            if (cursor?.moveToFirst() == true) {
+                return cursor.getIntValue(COL_TYPE_ID)
+            }
+        } finally {
+            cursor?.close()
+        }
+        return -1
+    }
+
+    fun getEventTypeIdWithCalDAVCalendarId(calendarId: Int): Int {
+        val cols = arrayOf(COL_TYPE_ID)
+        val selection = "$COL_TYPE_CALDAV_CALENDAR_ID = ?"
+        val selectionArgs = arrayOf(calendarId.toString())
         var cursor: Cursor? = null
         try {
             cursor = mDb.query(TYPES_TABLE_NAME, cols, selection, selectionArgs, null, null, null)
