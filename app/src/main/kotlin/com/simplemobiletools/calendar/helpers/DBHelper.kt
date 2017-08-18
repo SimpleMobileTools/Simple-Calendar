@@ -48,6 +48,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private val COL_TYPE_ID = "event_type_id"
     private val COL_TYPE_TITLE = "event_type_title"
     private val COL_TYPE_COLOR = "event_type_color"
+    private val COL_TYPE_CALDAV_CALENDAR_ID = "event_caldav_calendar_id"
 
     private val EXCEPTIONS_TABLE_NAME = "event_repeat_exceptions"
     private val COL_EXCEPTION_ID = "event_exception_id"
@@ -59,7 +60,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private val mDb: SQLiteDatabase = writableDatabase
 
     companion object {
-        private val DB_VERSION = 15
+        private val DB_VERSION = 16
         val DB_NAME = "events.db"
         val REGULAR_EVENT_TYPE_ID = 1
         var dbInstance: DBHelper? = null
@@ -152,6 +153,10 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         if (oldVersion < 15) {
             db.execSQL("ALTER TABLE $MAIN_TABLE_NAME ADD COLUMN $COL_EVENT_SOURCE TEXT DEFAULT ''")
         }
+
+        if (oldVersion < 16) {
+            db.execSQL("ALTER TABLE $TYPES_TABLE_NAME ADD COLUMN $COL_TYPE_CALDAV_CALENDAR_ID INTEGER NOT NULL DEFAULT 0")
+        }
     }
 
     private fun createMetaTable(db: SQLiteDatabase) {
@@ -160,7 +165,8 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     }
 
     private fun createTypesTable(db: SQLiteDatabase) {
-        db.execSQL("CREATE TABLE $TYPES_TABLE_NAME ($COL_TYPE_ID INTEGER PRIMARY KEY AUTOINCREMENT, $COL_TYPE_TITLE TEXT, $COL_TYPE_COLOR INTEGER)")
+        db.execSQL("CREATE TABLE $TYPES_TABLE_NAME ($COL_TYPE_ID INTEGER PRIMARY KEY AUTOINCREMENT, $COL_TYPE_TITLE TEXT, $COL_TYPE_COLOR INTEGER, " +
+                "$COL_TYPE_CALDAV_CALENDAR_ID INTEGER)")
         addRegularEventType(db)
     }
 

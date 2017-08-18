@@ -22,7 +22,6 @@ class CalDAVEventsHandler(val context: Context) {
             return calendars
         }
 
-        context.dbHelper.fetchEventTypes()
         val uri = CalendarContract.Calendars.CONTENT_URI
         val projection = arrayOf(
                 CalendarContract.Calendars._ID,

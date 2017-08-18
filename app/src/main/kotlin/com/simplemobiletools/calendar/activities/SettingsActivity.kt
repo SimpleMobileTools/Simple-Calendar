@@ -146,7 +146,7 @@ class SettingsActivity : SimpleActivity() {
                     val calendars = CalDAVEventsHandler(applicationContext).getCalDAVCalendars(config.caldavSyncedCalendarIDs)
                     calendars.forEach {
                         if (!eventTypeNames.contains(it.displayName.toLowerCase())) {
-                            val eventType = EventType(0, it.displayName, it.color)
+                            val eventType = EventType(0, it.displayName, it.color, it.id)
                             eventTypeNames.add(it.displayName.toLowerCase())
                             dbHelper.insertEventType(eventType)
                         }
