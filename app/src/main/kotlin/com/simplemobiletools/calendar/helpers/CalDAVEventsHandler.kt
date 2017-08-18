@@ -5,6 +5,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.provider.CalendarContract
+import android.provider.CalendarContract.Reminders
 import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.hasCalendarPermission
 import com.simplemobiletools.calendar.models.CalDAVCalendar
@@ -125,7 +126,7 @@ class CalDAVEventsHandler(val context: Context) {
     fun addCalDAVEvent(event: Event) {
         val calendarId = event.getCalDAVCalendarId()
         val uri = CalendarContract.Events.CONTENT_URI
-        val values = ContentValues().apply {
+        val calendarValues = ContentValues().apply {
             put(CalendarContract.Events.CALENDAR_ID, calendarId)
             put(CalendarContract.Events.TITLE, event.title)
             put(CalendarContract.Events.DESCRIPTION, event.description)
@@ -144,8 +145,17 @@ class CalDAVEventsHandler(val context: Context) {
             }
         }
 
-        val newUri = context.contentResolver.insert(uri, values)
+        val newUri = context.contentResolver.insert(uri, calendarValues)
         val eventRemoteID = java.lang.Long.parseLong(newUri.lastPathSegment)
+
+        event.getReminders().forEach {
+            ContentValues().apply {
+                put(Reminders.MINUTES, it)
+                put(Reminders.EVENT_ID, eventRemoteID)
+                put(Reminders.METHOD, Reminders.METHOD_ALERT)
+                context.contentResolver.insert(Reminders.CONTENT_URI, this)
+            }
+        }
 
         val importId = getCalDAVEventImportId(calendarId, eventRemoteID)
         context.dbHelper.updateEventImportIdAndSource(event.id, importId, "$CALDAV-$calendarId")
