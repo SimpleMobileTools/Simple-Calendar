@@ -122,7 +122,8 @@ class CalDAVEventsHandler(val context: Context) {
         }
     }
 
-    fun addCalDAVEvent(event: Event, calendarId: Int) {
+    fun addCalDAVEvent(event: Event) {
+        val calendarId = event.getCalDAVCalendarId()
         val uri = CalendarContract.Events.CONTENT_URI
         val values = ContentValues().apply {
             put(CalendarContract.Events.CALENDAR_ID, calendarId)
@@ -167,7 +168,7 @@ class CalDAVEventsHandler(val context: Context) {
 
     fun deleteCalDAVEvent(event: Event) {
         val uri = CalendarContract.Events.CONTENT_URI
-        val contentUri = ContentUris.withAppendedId(uri, event.getCalDAVId())
+        val contentUri = ContentUris.withAppendedId(uri, event.getCalDAVEventId())
         context.contentResolver.delete(contentUri, null, null)
     }
 

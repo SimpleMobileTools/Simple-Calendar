@@ -194,7 +194,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         context.scheduleReminder(event, this)
 
         if (addToCalDAV) {
-
+            CalDAVEventsHandler(context).addCalDAVEvent(event)
         }
 
         callback(event.id)

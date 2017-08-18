@@ -508,7 +508,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             offset = getCurrentOffset()
             isDstIncluded = TimeZone.getDefault().inDaylightTime(Date())
             lastUpdated = System.currentTimeMillis()
-            source = SOURCE_SIMPLE_CALENDAR
+            source = if (!config.caldavSync || config.lastUsedCaldavCalendar == 0) SOURCE_SIMPLE_CALENDAR else "$CALDAV-${config.lastUsedCaldavCalendar}"
         }
 
         storeEvent(wasRepeatable)
