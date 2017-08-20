@@ -211,6 +211,8 @@
     <string name="manage_synced_calendars">Manage synced calendars</string>
     <string name="store_locally_only">Store locally only</string>
     <string name="refresh_caldav_accounts">Refresh CalDAV accounts</string>
+    <string name="refreshing">Refreshing…</string>
+    <string name="refreshing_complete">Refreshing complete</string>
 
     <plurals name="by_minutes">
         <item quantity="one">%1$d минута</item>

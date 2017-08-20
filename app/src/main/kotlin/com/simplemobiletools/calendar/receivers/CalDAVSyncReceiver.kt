@@ -7,6 +7,6 @@ import com.simplemobiletools.calendar.extensions.recheckCalDAVCalendars
 
 class CalDAVSyncReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
-        context.recheckCalDAVCalendars()
+        context.recheckCalDAVCalendars {}
     }
 }

@@ -13,7 +13,7 @@ class BootCompletedReceiver : BroadcastReceiver() {
         context.apply {
             scheduleAllEvents()
             notifyRunningEvents()
-            recheckCalDAVCalendars()
+            recheckCalDAVCalendars {}
         }
     }
 }

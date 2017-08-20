@@ -18,12 +18,13 @@ import com.simplemobiletools.commons.extensions.getStringValue
 import java.util.*
 
 class CalDAVEventsHandler(val context: Context) {
-    fun refreshCalendars() {
+    fun refreshCalendars(callback: () -> Unit) {
         getCalDAVCalendars(context.config.caldavSyncedCalendarIDs).forEach {
             val eventTypeId = context.dbHelper.getEventTypeIdWithTitle(it.displayName)
             CalDAVEventsHandler(context).fetchCalDAVCalendarEvents(it.id, eventTypeId)
         }
         context.scheduleCalDAVSync(true)
+        callback()
     }
 
     fun getCalDAVCalendars(ids: String = ""): List<CalDAVCalendar> {

@@ -1,11 +1,15 @@
 package com.simplemobiletools.calendar.activities
 
 import android.Manifest
+import android.content.ContentResolver
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
+import android.database.ContentObserver
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.provider.CalendarContract
 import android.support.v4.app.ActivityCompat
 import android.support.v4.view.ViewPager
 import android.util.SparseIntArray
@@ -45,6 +49,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class MainActivity : SimpleActivity(), NavigationListener {
+    private val CALDAV_SYNC_DELAY = 2000L
     private val PREFILLED_MONTHS = 97
     private val PREFILLED_YEARS = 31
     private val PREFILLED_WEEKS = 61
@@ -59,6 +64,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
     private var mStoredIsSundayFirst = false
     private var mStoredUse24HourFormat = false
     private var mShouldFilterBeVisible = false
+    private var mCalDAVSyncHandler = Handler()
 
     private var mDefaultWeeklyPage = 0
     private var mDefaultMonthlyPage = 0
@@ -88,7 +94,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
             config.caldavSync = false
         }
 
-        recheckCalDAVCalendars()
+        recheckCalDAVCalendars {}
     }
 
     override fun onResume() {
@@ -124,6 +130,12 @@ class MainActivity : SimpleActivity(), NavigationListener {
         mStoredBackgroundColor = config.backgroundColor
         mStoredPrimaryColor = config.primaryColor
         mStoredUse24HourFormat = config.use24hourFormat
+    }
+
+    override fun onStop() {
+        super.onStop()
+        mCalDAVSyncHandler.removeCallbacksAndMessages(null)
+        contentResolver.unregisterContentObserver(calDAVSyncObserver)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -214,7 +226,25 @@ class MainActivity : SimpleActivity(), NavigationListener {
     }
 
     private fun refreshCalDAVAccounts() {
+        toast(R.string.refreshing)
+        val uri = CalendarContract.Calendars.CONTENT_URI
+        contentResolver.registerContentObserver(uri, false, calDAVSyncObserver)
+        ContentResolver.requestSync(null, uri.authority, Bundle())
+    }
 
+    private val calDAVSyncObserver = object : ContentObserver(Handler()) {
+        override fun onChange(selfChange: Boolean) {
+            super.onChange(selfChange)
+            if (!selfChange) {
+                mCalDAVSyncHandler.removeCallbacksAndMessages(null)
+                mCalDAVSyncHandler.postDelayed({
+                    recheckCalDAVCalendars {
+                        refreshViewPager()
+                        toast(R.string.refreshing_complete)
+                    }
+                }, CALDAV_SYNC_DELAY)
+            }
+        }
     }
 
     private fun addHolidays() {
