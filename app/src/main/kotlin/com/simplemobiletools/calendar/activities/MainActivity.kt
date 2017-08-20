@@ -224,7 +224,10 @@ class MainActivity : SimpleActivity(), NavigationListener {
         toast(R.string.refreshing)
         val uri = CalendarContract.Calendars.CONTENT_URI
         contentResolver.registerContentObserver(uri, false, calDAVSyncObserver)
-        ContentResolver.requestSync(null, uri.authority, Bundle())
+        Bundle().apply {
+            putBoolean(ContentResolver.SYNC_EXTRAS_MANUAL, true)
+            ContentResolver.requestSync(null, uri.authority, this)
+        }
     }
 
     private val calDAVSyncObserver = object : ContentObserver(Handler()) {
