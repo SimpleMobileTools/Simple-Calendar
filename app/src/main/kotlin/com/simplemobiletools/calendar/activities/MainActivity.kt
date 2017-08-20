@@ -226,6 +226,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
         contentResolver.registerContentObserver(uri, false, calDAVSyncObserver)
         Bundle().apply {
             putBoolean(ContentResolver.SYNC_EXTRAS_MANUAL, true)
+            putBoolean(ContentResolver.SYNC_EXTRAS_EXPEDITED, true)
             ContentResolver.requestSync(null, uri.authority, this)
         }
     }
