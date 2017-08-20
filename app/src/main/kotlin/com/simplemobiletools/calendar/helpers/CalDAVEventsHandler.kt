@@ -55,6 +55,7 @@ class CalDAVEventsHandler(val context: Context) {
 
     fun fetchCalDAVCalendarEvents(calendarId: Int, eventTypeId: Int) {
         val importIdsMap = HashMap<String, Event>()
+        val fetchedEventIds = ArrayList<String>()
         val existingEvents = context.dbHelper.getEventsFromCalDAVCalendar(calendarId)
         existingEvents.forEach {
             importIdsMap.put(it.importId, it)
@@ -101,6 +102,7 @@ class CalDAVEventsHandler(val context: Context) {
                         event.endTS -= DAY
                     }
 
+                    fetchedEventIds.add(importId)
                     if (importIdsMap.containsKey(event.importId)) {
                         val existingEvent = importIdsMap[importId]
                         val originalEventId = existingEvent!!.id
@@ -119,6 +121,20 @@ class CalDAVEventsHandler(val context: Context) {
             }
         } finally {
             cursor?.close()
+        }
+
+        val eventIdsToDelete = ArrayList<String>()
+        importIdsMap.keys.filter { !fetchedEventIds.contains(it) }.forEach {
+            val caldavEventId = it
+            existingEvents.forEach {
+                if (it.importId == caldavEventId) {
+                    eventIdsToDelete.add(it.id.toString())
+                }
+            }
+        }
+
+        eventIdsToDelete.forEach {
+            context.dbHelper.deleteEvents(eventIdsToDelete.toTypedArray(), false)
         }
     }
 
