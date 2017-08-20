@@ -64,7 +64,7 @@ class CalDAVEventsHandler(val context: Context) {
         return calendars
     }
 
-    fun fetchCalDAVCalendarEvents(calendarId: Int, eventTypeId: Int) {
+    private fun fetchCalDAVCalendarEvents(calendarId: Int, eventTypeId: Int) {
         val importIdsMap = HashMap<String, Event>()
         val fetchedEventIds = ArrayList<String>()
         val existingEvents = context.dbHelper.getEventsFromCalDAVCalendar(calendarId)
@@ -208,7 +208,7 @@ class CalDAVEventsHandler(val context: Context) {
         context.contentResolver.delete(contentUri, null, null)
     }
 
-    fun getCalDAVEventReminders(eventId: Long): List<Int> {
+    private fun getCalDAVEventReminders(eventId: Long): List<Int> {
         val reminders = ArrayList<Int>()
         val uri = CalendarContract.Reminders.CONTENT_URI
         val projection = arrayOf(

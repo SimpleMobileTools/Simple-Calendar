@@ -207,16 +207,11 @@ class MainActivity : SimpleActivity(), NavigationListener {
         }
     }
 
-    private fun shouldGoToTodayBeVisible(): Boolean {
-        return if (config.storedView == WEEKLY_VIEW) {
-            week_view_view_pager.currentItem != mDefaultWeeklyPage
-        } else if (config.storedView == MONTHLY_VIEW) {
-            main_view_pager.currentItem != mDefaultMonthlyPage
-        } else if (config.storedView == YEARLY_VIEW) {
-            main_view_pager.currentItem != mDefaultYearlyPage
-        } else {
-            false
-        }
+    private fun shouldGoToTodayBeVisible() = when {
+        config.storedView == WEEKLY_VIEW -> week_view_view_pager.currentItem != mDefaultWeeklyPage
+        config.storedView == MONTHLY_VIEW -> main_view_pager.currentItem != mDefaultMonthlyPage
+        config.storedView == YEARLY_VIEW -> main_view_pager.currentItem != mDefaultYearlyPage
+        else -> false
     }
 
     private fun showFilterDialog() {
@@ -281,14 +276,11 @@ class MainActivity : SimpleActivity(), NavigationListener {
 
     private fun updateViewPager() {
         resetTitle()
-        if (config.storedView == YEARLY_VIEW) {
-            fillYearlyViewPager()
-        } else if (config.storedView == EVENTS_LIST_VIEW) {
-            fillEventsList()
-        } else if (config.storedView == WEEKLY_VIEW) {
-            fillWeeklyViewPager()
-        } else {
-            openMonthlyToday()
+        when {
+            config.storedView == YEARLY_VIEW -> fillYearlyViewPager()
+            config.storedView == EVENTS_LIST_VIEW -> fillEventsList()
+            config.storedView == WEEKLY_VIEW -> fillWeeklyViewPager()
+            else -> openMonthlyToday()
         }
 
         mWeekScrollY = 0
@@ -300,14 +292,11 @@ class MainActivity : SimpleActivity(), NavigationListener {
     }
 
     private fun refreshViewPager() {
-        if (config.storedView == YEARLY_VIEW) {
-            (main_view_pager.adapter as MyYearPagerAdapter).refreshEvents(main_view_pager.currentItem)
-        } else if (config.storedView == EVENTS_LIST_VIEW) {
-            fillEventsList()
-        } else if (config.storedView == WEEKLY_VIEW) {
-            (week_view_view_pager.adapter as MyWeekPagerAdapter).refreshEvents(week_view_view_pager.currentItem)
-        } else {
-            (main_view_pager.adapter as MyMonthPagerAdapter).refreshEvents(main_view_pager.currentItem)
+        when {
+            config.storedView == YEARLY_VIEW -> (main_view_pager.adapter as MyYearPagerAdapter).refreshEvents(main_view_pager.currentItem)
+            config.storedView == EVENTS_LIST_VIEW -> fillEventsList()
+            config.storedView == WEEKLY_VIEW -> (week_view_view_pager.adapter as MyWeekPagerAdapter).refreshEvents(week_view_view_pager.currentItem)
+            else -> (main_view_pager.adapter as MyMonthPagerAdapter).refreshEvents(main_view_pager.currentItem)
         }
     }
 
@@ -326,21 +315,21 @@ class MainActivity : SimpleActivity(), NavigationListener {
     }
 
     private fun tryImportEventsFromFile(uri: Uri) {
-        if (uri.scheme == "file") {
-            importEventsDialog(uri.path)
-        } else if (uri.scheme == "content") {
-            val tempFile = getTempFile()
-            if (tempFile == null) {
-                toast(R.string.unknown_error_occurred)
-                return
-            }
+        when {
+            uri.scheme == "file" -> importEventsDialog(uri.path)
+            uri.scheme == "content" -> {
+                val tempFile = getTempFile()
+                if (tempFile == null) {
+                    toast(R.string.unknown_error_occurred)
+                    return
+                }
 
-            val inputStream = contentResolver.openInputStream(uri)
-            val out = FileOutputStream(tempFile)
-            inputStream.copyTo(out)
-            importEventsDialog(tempFile.absolutePath)
-        } else {
-            toast(R.string.invalid_file_format)
+                val inputStream = contentResolver.openInputStream(uri)
+                val out = FileOutputStream(tempFile)
+                inputStream.copyTo(out)
+                importEventsDialog(tempFile.absolutePath)
+            }
+            else -> toast(R.string.invalid_file_format)
         }
     }
 
