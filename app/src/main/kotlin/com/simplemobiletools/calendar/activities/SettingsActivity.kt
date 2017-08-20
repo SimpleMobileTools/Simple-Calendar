@@ -142,11 +142,11 @@ class SettingsActivity : SimpleActivity() {
 
             Thread({
                 if (newCalendarIds.isNotEmpty()) {
-                    val eventTypeNames = dbHelper.fetchEventTypes().map { it.title.toLowerCase() } as ArrayList<String>
+                    val existingEventTypeNames = dbHelper.fetchEventTypes().map { it.title.toLowerCase() } as ArrayList<String>
                     getSyncedCalDAVCalendars().forEach {
-                        if (!eventTypeNames.contains(it.displayName.toLowerCase())) {
+                        if (!existingEventTypeNames.contains(it.displayName.toLowerCase())) {
                             val eventType = EventType(0, it.displayName, it.color, it.id)
-                            eventTypeNames.add(it.displayName.toLowerCase())
+                            existingEventTypeNames.add(it.displayName.toLowerCase())
                             dbHelper.insertEventType(eventType)
                         }
                     }

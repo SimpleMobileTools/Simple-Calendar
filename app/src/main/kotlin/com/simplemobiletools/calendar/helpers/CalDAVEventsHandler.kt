@@ -120,7 +120,7 @@ class CalDAVEventsHandler(val context: Context) {
                         existingEvent.id = 0
                         if (existingEvent.hashCode() != event.hashCode()) {
                             event.id = originalEventId
-                            context.dbHelper.update(event) {
+                            context.dbHelper.update(event, false) {
                             }
                         }
                     } else {
@@ -149,7 +149,7 @@ class CalDAVEventsHandler(val context: Context) {
         }
     }
 
-    fun addCalDAVEvent(event: Event) {
+    fun insertCalDAVEvent(event: Event) {
         val calendarId = event.getCalDAVCalendarId()
         val uri = CalendarContract.Events.CONTENT_URI
         val calendarValues = ContentValues().apply {
@@ -185,6 +185,10 @@ class CalDAVEventsHandler(val context: Context) {
 
         val importId = getCalDAVEventImportId(calendarId, eventRemoteID)
         context.dbHelper.updateEventImportIdAndSource(event.id, importId, "$CALDAV-$calendarId")
+    }
+
+    fun updateCalDAVEvent(event: Event) {
+
     }
 
     private fun getDurationCode(event: Event): String {

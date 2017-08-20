@@ -200,13 +200,13 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         context.scheduleReminder(event, this)
 
         if (addToCalDAV) {
-            CalDAVEventsHandler(context).addCalDAVEvent(event)
+            CalDAVEventsHandler(context).insertCalDAVEvent(event)
         }
 
         callback(event.id)
     }
 
-    fun update(event: Event, callback: () -> Unit) {
+    fun update(event: Event, updateAtCalDAV: Boolean, callback: () -> Unit) {
         val selectionArgs = arrayOf(event.id.toString())
         val values = fillEventValues(event)
         val selection = "$COL_ID = ?"
@@ -222,6 +222,9 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
         context.updateWidgets()
         context.scheduleReminder(event, this)
+        if (updateAtCalDAV) {
+            CalDAVEventsHandler(context).updateCalDAVEvent(event)
+        }
         callback()
     }
 

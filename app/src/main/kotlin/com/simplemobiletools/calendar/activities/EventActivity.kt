@@ -532,7 +532,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             if (mRepeatInterval > 0 && wasRepeatable) {
                 EditRepeatingEventDialog(this) {
                     if (it) {
-                        dbHelper.update(mEvent) {
+                        dbHelper.update(mEvent, true) {
                             eventUpdated()
                         }
                     } else {
@@ -546,7 +546,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
                     }
                 }
             } else {
-                dbHelper.update(mEvent) {
+                dbHelper.update(mEvent, true) {
                     eventUpdated()
                 }
             }
