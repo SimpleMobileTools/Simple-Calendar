@@ -6,8 +6,10 @@ import android.content.Context
 import android.database.Cursor
 import android.provider.CalendarContract
 import android.provider.CalendarContract.Reminders
+import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.hasCalendarPermission
+import com.simplemobiletools.calendar.extensions.scheduleCalDAVSync
 import com.simplemobiletools.calendar.models.CalDAVCalendar
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.commons.extensions.getIntValue
@@ -16,6 +18,14 @@ import com.simplemobiletools.commons.extensions.getStringValue
 import java.util.*
 
 class CalDAVEventsHandler(val context: Context) {
+    fun refreshCalendars() {
+        getCalDAVCalendars(context.config.caldavSyncedCalendarIDs).forEach {
+            val eventTypeId = context.dbHelper.getEventTypeIdWithTitle(it.displayName)
+            CalDAVEventsHandler(context).fetchCalDAVCalendarEvents(it.id, eventTypeId)
+        }
+        context.scheduleCalDAVSync(true)
+    }
+
     fun getCalDAVCalendars(ids: String = ""): List<CalDAVCalendar> {
         val calendars = ArrayList<CalDAVCalendar>()
         if (!context.hasCalendarPermission()) {

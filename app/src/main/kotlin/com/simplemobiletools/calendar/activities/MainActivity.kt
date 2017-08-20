@@ -87,6 +87,8 @@ class MainActivity : SimpleActivity(), NavigationListener {
         if (!hasCalendarPermission()) {
             config.caldavSync = false
         }
+
+        recheckCalDAVCalendars()
     }
 
     override fun onResume() {

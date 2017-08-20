@@ -21,6 +21,7 @@ import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.models.Event
+import com.simplemobiletools.calendar.receivers.CalDAVSyncReceiver
 import com.simplemobiletools.calendar.receivers.NotificationReceiver
 import com.simplemobiletools.calendar.services.SnoozeService
 import com.simplemobiletools.commons.extensions.getContrastColor
@@ -233,6 +234,25 @@ fun Context.launchNewEventIntent(startNewTask: Boolean = false, today: Boolean =
 fun Context.getNewEventTimestampFromCode(dayCode: String) = Formatter.getLocalDateTimeFromCode(dayCode).withTime(13, 0, 0, 0).seconds()
 
 fun Context.getCurrentOffset() = SimpleDateFormat("Z", Locale.getDefault()).format(Date())
+
+fun Context.recheckCalDAVCalendars() {
+    if (config.caldavSync) {
+        CalDAVEventsHandler(this).refreshCalendars()
+    }
+}
+
+fun Context.scheduleCalDAVSync(activate: Boolean) {
+    val syncIntent = Intent(this, CalDAVSyncReceiver::class.java)
+    val pendingIntent = PendingIntent.getBroadcast(this, 0, syncIntent, PendingIntent.FLAG_CANCEL_CURRENT)
+    val alarm = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+
+    if (activate) {
+        val syncCheckInterval = 4 * AlarmManager.INTERVAL_HOUR
+        alarm.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + syncCheckInterval, syncCheckInterval, pendingIntent)
+    } else {
+        alarm.cancel(pendingIntent)
+    }
+}
 
 val Context.config: Config get() = Config.newInstance(this)
 

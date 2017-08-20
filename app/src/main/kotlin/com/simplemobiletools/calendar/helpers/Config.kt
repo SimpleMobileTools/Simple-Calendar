@@ -4,6 +4,7 @@ import android.content.Context
 import android.media.RingtoneManager
 import android.text.format.DateFormat
 import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.extensions.scheduleCalDAVSync
 import com.simplemobiletools.commons.helpers.BaseConfig
 import java.util.*
 
@@ -72,7 +73,10 @@ class Config(context: Context) : BaseConfig(context) {
 
     var caldavSync: Boolean
         get() = prefs.getBoolean(CALDAV_SYNC, false)
-        set(caldavSync) = prefs.edit().putBoolean(CALDAV_SYNC, caldavSync).apply()
+        set(caldavSync) {
+            context.scheduleCalDAVSync(caldavSync)
+            prefs.edit().putBoolean(CALDAV_SYNC, caldavSync).apply()
+        }
 
     var caldavSyncedCalendarIDs: String
         get() = prefs.getString(CALDAV_SYNCED_CALENDAR_IDS, "")

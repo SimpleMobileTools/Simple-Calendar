@@ -127,6 +127,8 @@
 
         <receiver android:name=".receivers.NotificationReceiver"/>
 
+        <receiver android:name=".receivers.CalDAVSyncReceiver"/>
+
         <receiver android:name=".receivers.BootCompletedReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
