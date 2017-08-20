@@ -17,6 +17,11 @@
         android:title="@string/filter"
         app:showAsAction="ifRoom"/>
     <item
+        android:id="@+id/refresh_caldav_accounts"
+        android:icon="@drawable/ic_repeat"
+        android:title="@string/refresh_caldav_accounts"
+        app:showAsAction="ifRoom"/>
+    <item
         android:id="@+id/add_holidays"
         android:title="@string/add_holidays"
         app:showAsAction="never"/>

@@ -203,6 +203,7 @@
     <string name="select_caldav_calendars">Zvoľte kalendáre pre synchronizáciu</string>
     <string name="manage_synced_calendars">Spravovať synchronizované kalendáre</string>
     <string name="store_locally_only">Uložiť iba lokálne</string>
+    <string name="refresh_caldav_accounts">Obnoviť CalDAV účty Refresh CalDAV accounts</string>
 
     <plurals name="by_minutes">
         <item quantity="one">%1$d minútu</item>
