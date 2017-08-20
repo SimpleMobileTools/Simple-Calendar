@@ -229,6 +229,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
             putBoolean(ContentResolver.SYNC_EXTRAS_EXPEDITED, true)
             ContentResolver.requestSync(null, uri.authority, this)
         }
+        scheduleCalDAVSync(true)
     }
 
     private val calDAVSyncObserver = object : ContentObserver(Handler()) {
