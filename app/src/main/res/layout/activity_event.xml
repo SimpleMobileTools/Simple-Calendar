@@ -10,8 +10,7 @@
     <RelativeLayout
         android:id="@+id/event_holder"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/medium_margin">
+        android:layout_height="wrap_content">
 
         <com.simplemobiletools.commons.views.MyEditText
             android:id="@+id/event_title"
@@ -321,7 +320,6 @@
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:layout_below="@+id/event_repetition_limit_holder"
-            android:layout_marginBottom="@dimen/medium_margin"
             android:layout_marginTop="@dimen/medium_margin"
             android:background="@color/darker_divider"
             android:importantForAccessibility="no"/>
@@ -345,6 +343,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_repetition_divider"
+            android:layout_marginBottom="@dimen/medium_margin"
+            android:layout_marginTop="@dimen/medium_margin"
             android:layout_toEndOf="@+id/event_caldav_calendar_image"
             android:layout_toRightOf="@+id/event_caldav_calendar_image"
             android:background="?attr/selectableItemBackground"
@@ -383,8 +383,6 @@
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:layout_below="@+id/event_caldav_calendar_holder"
-            android:layout_marginBottom="@dimen/medium_margin"
-            android:layout_marginTop="@dimen/medium_margin"
             android:background="@color/darker_divider"
             android:importantForAccessibility="no"
             android:visibility="gone"/>
@@ -407,6 +405,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_caldav_calendar_divider"
+            android:layout_marginBottom="@dimen/medium_margin"
+            android:layout_marginTop="@dimen/medium_margin"
             android:layout_toEndOf="@+id/event_type_image"
             android:layout_toRightOf="@+id/event_type_image"
             android:background="?attr/selectableItemBackground">
