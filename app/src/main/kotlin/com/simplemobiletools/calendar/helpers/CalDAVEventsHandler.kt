@@ -150,10 +150,48 @@ class CalDAVEventsHandler(val context: Context) {
     }
 
     fun insertCalDAVEvent(event: Event) {
-        val calendarId = event.getCalDAVCalendarId()
         val uri = CalendarContract.Events.CONTENT_URI
-        val calendarValues = ContentValues().apply {
-            put(CalendarContract.Events.CALENDAR_ID, calendarId)
+        val values = fillEventContentValues(event)
+        val newUri = context.contentResolver.insert(uri, values)
+
+        val calendarId = event.getCalDAVCalendarId()
+        val eventRemoteID = java.lang.Long.parseLong(newUri.lastPathSegment)
+        event.importId = getCalDAVEventImportId(calendarId, eventRemoteID)
+
+        setupCalDAVEventReminders(event)
+        setupCalDAVEventImportId(event)
+    }
+
+    fun updateCalDAVEvent(event: Event) {
+        val uri = CalendarContract.Events.CONTENT_URI
+        val values = fillEventContentValues(event)
+        val eventRemoteID = event.getCalDAVEventId()
+        val newUri = ContentUris.withAppendedId(uri, eventRemoteID)
+        context.contentResolver.update(newUri, values, null, null)
+
+        setupCalDAVEventReminders(event)
+        setupCalDAVEventImportId(event)
+    }
+
+    private fun setupCalDAVEventReminders(event: Event) {
+        clearEventReminders(event)
+        event.getReminders().forEach {
+            ContentValues().apply {
+                put(Reminders.MINUTES, it)
+                put(Reminders.EVENT_ID, event.getCalDAVEventId())
+                put(Reminders.METHOD, Reminders.METHOD_ALERT)
+                context.contentResolver.insert(Reminders.CONTENT_URI, this)
+            }
+        }
+    }
+
+    private fun setupCalDAVEventImportId(event: Event) {
+        context.dbHelper.updateEventImportIdAndSource(event.id, event.importId, "$CALDAV-${event.getCalDAVCalendarId()}")
+    }
+
+    private fun fillEventContentValues(event: Event): ContentValues {
+        return ContentValues().apply {
+            put(CalendarContract.Events.CALENDAR_ID, event.getCalDAVCalendarId())
             put(CalendarContract.Events.TITLE, event.title)
             put(CalendarContract.Events.DESCRIPTION, event.description)
             put(CalendarContract.Events.DTSTART, event.startTS * 1000L)
@@ -166,29 +204,18 @@ class CalDAVEventsHandler(val context: Context) {
 
             if (event.repeatInterval > 0) {
                 put(CalendarContract.Events.DURATION, getDurationCode(event))
+                putNull(CalendarContract.Events.DTEND)
             } else {
                 put(CalendarContract.Events.DTEND, event.endTS * 1000L)
+                putNull(CalendarContract.Events.DURATION)
             }
         }
-
-        val newUri = context.contentResolver.insert(uri, calendarValues)
-        val eventRemoteID = java.lang.Long.parseLong(newUri.lastPathSegment)
-
-        event.getReminders().forEach {
-            ContentValues().apply {
-                put(Reminders.MINUTES, it)
-                put(Reminders.EVENT_ID, eventRemoteID)
-                put(Reminders.METHOD, Reminders.METHOD_ALERT)
-                context.contentResolver.insert(Reminders.CONTENT_URI, this)
-            }
-        }
-
-        val importId = getCalDAVEventImportId(calendarId, eventRemoteID)
-        context.dbHelper.updateEventImportIdAndSource(event.id, importId, "$CALDAV-$calendarId")
     }
 
-    fun updateCalDAVEvent(event: Event) {
-
+    private fun clearEventReminders(event: Event) {
+        val selection = "${Reminders.EVENT_ID} = ?"
+        val selectionArgs = arrayOf(event.getCalDAVEventId().toString())
+        context.contentResolver.delete(Reminders.CONTENT_URI, selection, selectionArgs)
     }
 
     private fun getDurationCode(event: Event): String {
