@@ -1,6 +1,5 @@
 package com.simplemobiletools.calendar.models
 
-import com.simplemobiletools.calendar.extensions.parseCalendarIdFromSource
 import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
