@@ -1,5 +1,6 @@
 package com.simplemobiletools.calendar.models
 
+import com.simplemobiletools.calendar.extensions.parseCalendarIdFromSource
 import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
@@ -88,8 +89,7 @@ data class Event(var id: Int = 0, var startTS: Int = 0, var endTS: Int = 0, var 
             wantedDay = firstProperDay + ((daysCnt - firstProperDay) / 7) * 7
         }
 
-        val addedProperOrder = properMonth.withDayOfMonth(wantedDay)
-        return addedProperOrder
+        return properMonth.withDayOfMonth(wantedDay)
     }
 
     fun getIsAllDay() = flags and FLAG_ALL_DAY != 0

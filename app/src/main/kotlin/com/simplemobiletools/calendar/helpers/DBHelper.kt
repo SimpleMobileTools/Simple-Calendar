@@ -199,7 +199,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         context.updateWidgets()
         context.scheduleReminder(event, this)
 
-        if (addToCalDAV) {
+        if (addToCalDAV && event.source != SOURCE_SIMPLE_CALENDAR) {
             CalDAVEventsHandler(context).insertCalDAVEvent(event)
         }
 
@@ -222,7 +222,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
         context.updateWidgets()
         context.scheduleReminder(event, this)
-        if (updateAtCalDAV) {
+        if (updateAtCalDAV && event.source != SOURCE_SIMPLE_CALENDAR) {
             CalDAVEventsHandler(context).updateCalDAVEvent(event)
         }
         callback()

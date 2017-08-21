@@ -489,6 +489,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         }
 
         val wasRepeatable = mEvent.repeatInterval > 0
+        val oldSource = mEvent.source
         val newImportId = if (mEvent.id != 0) mEvent.importId else UUID.randomUUID().toString().replace("-", "") + System.currentTimeMillis().toString()
 
         val newEventType = if (!config.caldavSync || config.lastUsedCaldavCalendar == 0) mEventTypeId else dbHelper.getEventTypeIdWithCalDAVCalendarId(config.lastUsedCaldavCalendar)
@@ -514,6 +515,12 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             isDstIncluded = TimeZone.getDefault().inDaylightTime(Date())
             lastUpdated = System.currentTimeMillis()
             source = newSource
+        }
+
+        // recreate the event if it was moved in a different CalDAV calendar
+        if (mEvent.id != 0 && oldSource != newSource) {
+            dbHelper.deleteEvents(arrayOf(mEvent.id.toString()), true)
+            mEvent.id = 0
         }
 
         storeEvent(wasRepeatable)
