@@ -142,7 +142,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
         menuInflater.inflate(R.menu.menu_main, menu)
         menu.findItem(R.id.filter).isVisible = mShouldFilterBeVisible
         menu.findItem(R.id.go_to_today).isVisible = shouldGoToTodayBeVisible()
-        menu.findItem(R.id.refresh_caldav_accounts).isVisible = config.caldavSync
+        menu.findItem(R.id.refresh_caldav_calendars).isVisible = config.caldavSync
         return true
     }
 
@@ -151,7 +151,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
             R.id.change_view -> showViewDialog()
             R.id.go_to_today -> goToToday()
             R.id.filter -> showFilterDialog()
-            R.id.refresh_caldav_accounts -> refreshCalDAVAccounts()
+            R.id.refresh_caldav_calendars -> refreshCalDAVCalendars()
             R.id.add_holidays -> addHolidays()
             R.id.import_events -> tryImportEvents()
             R.id.export_events -> tryExportEvents()
@@ -220,7 +220,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
         }
     }
 
-    private fun refreshCalDAVAccounts() {
+    private fun refreshCalDAVCalendars() {
         toast(R.string.refreshing)
         val uri = CalendarContract.Calendars.CONTENT_URI
         contentResolver.registerContentObserver(uri, false, calDAVSyncObserver)

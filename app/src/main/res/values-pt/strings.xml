@@ -196,7 +196,7 @@
     <string name="select_caldav_calendars">Selecione os calendários a sincronizar</string>
     <string name="manage_synced_calendars">Gerir calendários sincronizados</string>
     <string name="store_locally_only">Store locally only</string>
-    <string name="refresh_caldav_accounts">Refresh CalDAV accounts</string>
+    <string name="refresh_caldav_calendars">Refresh CalDAV calendars</string>
     <string name="refreshing">Refreshing…</string>
     <string name="refreshing_complete">Refreshing complete</string>
 
