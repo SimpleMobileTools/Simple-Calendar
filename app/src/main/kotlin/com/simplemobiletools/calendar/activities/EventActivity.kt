@@ -391,13 +391,13 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             val calendars = CalDAVEventsHandler(applicationContext).getCalDAVCalendars().filter {
                 it.canWrite() && config.getSyncedCalendarIdsAsList().contains(it.id.toString())
             }
-            updateCurrentCalendarInfo(getCalendarWithId(calendars))
+            updateCurrentCalendarInfo(getCalendarWithId(calendars, getCalendarId()))
 
             event_caldav_calendar_holder.setOnClickListener {
                 hideKeyboard()
-                SelectEventCalendarDialog(this, calendars, config.lastUsedCaldavCalendar) {
+                SelectEventCalendarDialog(this, calendars, getCalendarId()) {
                     config.lastUsedCaldavCalendar = it
-                    updateCurrentCalendarInfo(getCalendarWithId(calendars))
+                    updateCurrentCalendarInfo(getCalendarWithId(calendars, it))
                 }
             }
         } else {
@@ -405,8 +405,10 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         }
     }
 
-    private fun getCalendarWithId(calendars: List<CalDAVCalendar>): CalDAVCalendar? =
-            calendars.firstOrNull { it.id == config.lastUsedCaldavCalendar }
+    private fun getCalendarId() = if (mEvent.source == SOURCE_SIMPLE_CALENDAR) config.lastUsedCaldavCalendar else mEvent.getCalDAVCalendarId()
+
+    private fun getCalendarWithId(calendars: List<CalDAVCalendar>, calendarId: Int): CalDAVCalendar? =
+            calendars.firstOrNull { it.id == calendarId }
 
     private fun updateCurrentCalendarInfo(currentCalendar: CalDAVCalendar?) {
         event_type_image.beVisibleIf(currentCalendar == null)
