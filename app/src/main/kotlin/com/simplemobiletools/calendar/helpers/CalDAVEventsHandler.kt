@@ -166,6 +166,8 @@ class CalDAVEventsHandler(val context: Context) {
         val uri = CalendarContract.Events.CONTENT_URI
         val values = fillEventContentValues(event)
         val eventRemoteID = event.getCalDAVEventId()
+        event.importId = getCalDAVEventImportId(event.getCalDAVCalendarId(), eventRemoteID)
+
         val newUri = ContentUris.withAppendedId(uri, eventRemoteID)
         context.contentResolver.update(newUri, values, null, null)
 
