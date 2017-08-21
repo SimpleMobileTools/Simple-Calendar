@@ -773,7 +773,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     }
 
     fun fetchEventTypes(): ArrayList<EventType> {
-        val eventTypes = ArrayList<EventType>(3)
+        val eventTypes = ArrayList<EventType>(4)
         val cols = arrayOf(COL_TYPE_ID, COL_TYPE_TITLE, COL_TYPE_COLOR)
         var cursor: Cursor? = null
         try {
