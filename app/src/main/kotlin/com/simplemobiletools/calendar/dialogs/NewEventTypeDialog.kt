@@ -55,6 +55,8 @@ class NewEventTypeDialog(val activity: Activity, var eventType: EventType? = nul
                 }
 
                 eventType!!.title = title
+                if (eventType!!.caldavCalendarId != 0)
+                    eventType!!.caldavDisplayName = title
 
                 val eventTypeId = if (isNewEvent) {
                     activity.dbHelper.insertEventType(eventType!!)

@@ -30,7 +30,7 @@ class SelectEventCalendarDialog(val activity: Activity, val calendars: List<CalD
         activity.dbHelper.getEventTypes {
             activity.runOnUiThread {
                 calendars.forEach {
-                    addRadioButton(it.displayName, it.id, it.color)
+                    addRadioButton(it.getFullTitle(), it.id, it.color)
                 }
                 addRadioButton(activity.getString(R.string.store_locally_only), STORE_LOCALLY_ONLY, Color.TRANSPARENT)
                 wasInit = true

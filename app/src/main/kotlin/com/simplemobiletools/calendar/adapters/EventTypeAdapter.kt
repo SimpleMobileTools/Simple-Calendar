@@ -111,7 +111,7 @@ class EventTypeAdapter(val activity: SimpleActivity, val mItems: List<EventType>
         fun bindView(multiSelectorCallback: ModalMultiSelectorCallback, multiSelector: MultiSelector, eventType: EventType, pos: Int): View {
 
             itemView.apply {
-                event_type_title.text = eventType.title
+                event_type_title.text = eventType.getDisplayTitle()
                 event_type_color.setBackgroundWithStroke(eventType.color, activity.config.backgroundColor)
                 toggleItemSelection(this, markedItems.contains(pos), pos)
 

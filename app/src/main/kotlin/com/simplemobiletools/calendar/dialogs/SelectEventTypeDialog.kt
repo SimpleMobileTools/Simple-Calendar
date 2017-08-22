@@ -34,7 +34,7 @@ class SelectEventTypeDialog(val activity: Activity, val currEventType: Int, val 
             eventTypes = it
             activity.runOnUiThread {
                 eventTypes.filter { it.caldavCalendarId == 0 }.forEach {
-                    addRadioButton(it.title, it.id, it.color)
+                    addRadioButton(it.getDisplayTitle(), it.id, it.color)
                 }
                 addRadioButton(activity.getString(R.string.add_new_type), NEW_TYPE_ID, Color.TRANSPARENT)
                 wasInit = true

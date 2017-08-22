@@ -51,7 +51,7 @@ class FilterEventTypeAdapter(val activity: SimpleActivity, val mItems: List<Even
             val id = eventType.id.toString()
             itemView.apply {
                 filter_event_type_checkbox.setColors(activity.config.textColor, activity.config.primaryColor, activity.config.backgroundColor)
-                filter_event_type_checkbox.text = eventType.title
+                filter_event_type_checkbox.text = eventType.getDisplayTitle()
                 filter_event_type_color.setBackgroundWithStroke(eventType.color, activity.config.backgroundColor)
 
                 filter_event_type_holder.setOnClickListener {

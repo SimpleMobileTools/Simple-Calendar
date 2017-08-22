@@ -46,7 +46,7 @@ class ImportEventsDialog(val activity: Activity, val path: String, val callback:
 
     private fun updateEventType(view: ViewGroup) {
         val eventType = context.dbHelper.getEventType(currEventTypeId)
-        view.import_event_type_title.text = eventType!!.title
+        view.import_event_type_title.text = eventType!!.getDisplayTitle()
         view.import_event_type_color.setBackgroundWithStroke(eventType.color, activity.config.backgroundColor)
     }
 
