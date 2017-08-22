@@ -774,7 +774,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
     fun fetchEventTypes(): ArrayList<EventType> {
         val eventTypes = ArrayList<EventType>(4)
-        val cols = arrayOf(COL_TYPE_ID, COL_TYPE_TITLE, COL_TYPE_COLOR)
+        val cols = arrayOf(COL_TYPE_ID, COL_TYPE_TITLE, COL_TYPE_COLOR, COL_TYPE_CALDAV_CALENDAR_ID)
         var cursor: Cursor? = null
         try {
             cursor = mDb.query(TYPES_TABLE_NAME, cols, null, null, null, null, "$COL_TYPE_TITLE ASC")
@@ -783,7 +783,8 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                     val id = cursor.getIntValue(COL_TYPE_ID)
                     val title = cursor.getStringValue(COL_TYPE_TITLE)
                     val color = cursor.getIntValue(COL_TYPE_COLOR)
-                    val eventType = EventType(id, title, color)
+                    val calendarId = cursor.getIntValue(COL_TYPE_CALDAV_CALENDAR_ID)
+                    val eventType = EventType(id, title, color, calendarId)
                     eventTypes.add(eventType)
                 } while (cursor.moveToNext())
             }
