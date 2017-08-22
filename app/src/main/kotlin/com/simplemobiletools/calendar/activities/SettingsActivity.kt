@@ -14,7 +14,7 @@ import com.simplemobiletools.calendar.dialogs.CustomEventReminderDialog
 import com.simplemobiletools.calendar.dialogs.SelectCalendarsDialog
 import com.simplemobiletools.calendar.dialogs.SnoozePickerDialog
 import com.simplemobiletools.calendar.extensions.*
-import com.simplemobiletools.calendar.helpers.CalDAVEventsHandler
+import com.simplemobiletools.calendar.helpers.CalDAVHandler
 import com.simplemobiletools.calendar.helpers.FONT_SIZE_LARGE
 import com.simplemobiletools.calendar.helpers.FONT_SIZE_MEDIUM
 import com.simplemobiletools.calendar.helpers.FONT_SIZE_SMALL
@@ -126,7 +126,7 @@ class SettingsActivity : SimpleActivity() {
             config.caldavSync = false
             settings_manage_synced_calendars_holder.beGone()
             config.getSyncedCalendarIdsAsList().forEach {
-                CalDAVEventsHandler(applicationContext).deleteCalDAVCalendarEvents(it.toLong())
+                CalDAVHandler(applicationContext).deleteCalDAVCalendarEvents(it.toLong())
             }
         }
     }
@@ -151,11 +151,11 @@ class SettingsActivity : SimpleActivity() {
                             dbHelper.insertEventType(eventType)
                         }
                     }
-                    CalDAVEventsHandler(applicationContext).refreshCalendars {}
+                    CalDAVHandler(applicationContext).refreshCalendars {}
                 }
 
                 oldCalendarIds.filter { !newCalendarIds.contains(it) }.forEach {
-                    CalDAVEventsHandler(applicationContext).deleteCalDAVCalendarEvents(it.toLong())
+                    CalDAVHandler(applicationContext).deleteCalDAVCalendarEvents(it.toLong())
                     val eventId = dbHelper.getEventTypeIdWithCalDAVCalendarId(it.toInt())
                     dbHelper.deleteEventTypes(arrayListOf(eventId), true) {}
                 }

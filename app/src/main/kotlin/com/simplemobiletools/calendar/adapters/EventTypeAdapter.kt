@@ -44,7 +44,7 @@ class EventTypeAdapter(val activity: SimpleActivity, val mItems: List<EventType>
         textColor = activity.config.textColor
     }
 
-    val multiSelectorMode = object : ModalMultiSelectorCallback(multiSelector) {
+    private val multiSelectorMode = object : ModalMultiSelectorCallback(multiSelector) {
         override fun onActionItemClicked(mode: ActionMode, item: MenuItem): Boolean {
             when (item.itemId) {
                 R.id.cab_delete -> askConfirmDelete()
@@ -133,7 +133,7 @@ class EventTypeAdapter(val activity: SimpleActivity, val mItems: List<EventType>
             return itemView
         }
 
-        fun viewClicked(multiSelector: MultiSelector, eventType: EventType, pos: Int) {
+        private fun viewClicked(multiSelector: MultiSelector, eventType: EventType, pos: Int) {
             if (multiSelector.isSelectable) {
                 val isSelected = multiSelector.selectedPositions.contains(layoutPosition)
                 multiSelector.setSelected(this, !isSelected)

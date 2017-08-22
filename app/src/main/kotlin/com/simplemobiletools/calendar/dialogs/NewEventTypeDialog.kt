@@ -56,11 +56,10 @@ class NewEventTypeDialog(val activity: Activity, var eventType: EventType? = nul
 
                 eventType!!.title = title
 
-                val eventTypeId: Int
-                if (isNewEvent) {
-                    eventTypeId = activity.dbHelper.insertEventType(eventType!!)
+                val eventTypeId = if (isNewEvent) {
+                    activity.dbHelper.insertEventType(eventType!!)
                 } else {
-                    eventTypeId = activity.dbHelper.updateEventType(eventType!!)
+                    activity.dbHelper.updateEventType(eventType!!)
                 }
 
                 if (eventTypeId != -1) {

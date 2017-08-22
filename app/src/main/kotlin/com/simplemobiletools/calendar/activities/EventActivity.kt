@@ -388,7 +388,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             event_caldav_calendar_holder.beVisible()
             event_caldav_calendar_divider.beVisible()
 
-            val calendars = CalDAVEventsHandler(applicationContext).getCalDAVCalendars().filter {
+            val calendars = CalDAVHandler(applicationContext).getCalDAVCalendars().filter {
                 it.canWrite() && config.getSyncedCalendarIdsAsList().contains(it.id.toString())
             }
             updateCurrentCalendarInfo(getCalendarWithId(calendars, getCalendarId()))
