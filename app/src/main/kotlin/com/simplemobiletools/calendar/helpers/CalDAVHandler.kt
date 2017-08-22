@@ -74,8 +74,28 @@ class CalDAVHandler(val context: Context) {
 
     private fun fillCalendarContentValues(eventType: EventType): ContentValues {
         return ContentValues().apply {
+            put(CalendarContract.Calendars.CALENDAR_COLOR_KEY, getEventTypeColorKey(eventType))
             put(CalendarContract.Calendars.CALENDAR_DISPLAY_NAME, eventType.title)
         }
+    }
+
+    private fun getEventTypeColorKey(eventType: EventType): Int {
+        val uri = CalendarContract.Colors.CONTENT_URI
+        val projection = arrayOf(CalendarContract.Colors.COLOR_KEY)
+        val selection = "${CalendarContract.Colors.COLOR_TYPE} = ? AND ${CalendarContract.Colors.COLOR} = ? AND ${CalendarContract.Colors.ACCOUNT_NAME} = ?"
+        val selectionArgs = arrayOf(CalendarContract.Colors.TYPE_CALENDAR.toString(), eventType.color.toString(), eventType.caldavEmail)
+
+        var cursor: Cursor? = null
+        try {
+            cursor = context.contentResolver.query(uri, projection, selection, selectionArgs, null)
+            if (cursor?.moveToFirst() == true) {
+                return cursor.getStringValue(CalendarContract.Colors.COLOR_KEY).toInt()
+            }
+        } finally {
+            cursor?.close()
+        }
+
+        return 1
     }
 
     private fun fetchCalDAVCalendarEvents(calendarId: Int, eventTypeId: Int) {
