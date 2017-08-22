@@ -47,7 +47,7 @@ class DayEventsAdapter(val activity: SimpleActivity, val mItems: List<Event>, va
         allDayString = activity.resources.getString(R.string.all_day)
     }
 
-    val multiSelectorMode = object : ModalMultiSelectorCallback(multiSelector) {
+    private val multiSelectorMode = object : ModalMultiSelectorCallback(multiSelector) {
         override fun onActionItemClicked(mode: ActionMode, item: MenuItem): Boolean {
             when (item.itemId) {
                 R.id.cab_share -> shareEvents()
@@ -162,7 +162,7 @@ class DayEventsAdapter(val activity: SimpleActivity, val mItems: List<Event>, va
             return itemView
         }
 
-        fun viewClicked(multiSelector: MultiSelector, event: Event, pos: Int) {
+        private fun viewClicked(multiSelector: MultiSelector, event: Event, pos: Int) {
             if (multiSelector.isSelectable) {
                 val isSelected = multiSelector.selectedPositions.contains(layoutPosition)
                 multiSelector.setSelected(this, !isSelected)

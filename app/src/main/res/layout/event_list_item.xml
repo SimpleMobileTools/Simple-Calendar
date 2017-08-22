@@ -22,15 +22,15 @@
             android:id="@+id/event_item_start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="13:00"
-            android:textSize="@dimen/day_text_size"/>
+            android:textSize="@dimen/day_text_size"
+            tools:text="13:00"/>
 
         <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/event_item_end"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_item_start"
-            tools:text="15:00"
+            android:text="15:00"
             android:textSize="@dimen/day_text_size"/>
 
         <com.simplemobiletools.commons.views.MyTextView
@@ -41,8 +41,8 @@
             android:layout_toRightOf="@+id/event_item_start"
             android:ellipsize="end"
             android:maxLines="1"
-            tools:text="Event title"
-            android:textSize="@dimen/day_text_size"/>
+            android:textSize="@dimen/day_text_size"
+            tools:text="Event title"/>
 
         <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/event_item_description"
@@ -54,8 +54,8 @@
             android:alpha=".4"
             android:ellipsize="end"
             android:maxLines="1"
-            tools:text="Event description"
-            android:textSize="@dimen/day_text_size"/>
+            android:textSize="@dimen/day_text_size"
+            tools:text="Event description"/>
 
     </RelativeLayout>
 </FrameLayout>
