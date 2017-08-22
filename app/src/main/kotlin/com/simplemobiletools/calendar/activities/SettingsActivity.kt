@@ -70,7 +70,7 @@ class SettingsActivity : SimpleActivity() {
         if (config.primaryColor != mStoredPrimaryColor) {
             dbHelper.getEventTypes {
                 if (it.filter { it.caldavCalendarId == 0 }.size == 1) {
-                    val eventType = it[0]
+                    val eventType = it.first { it.caldavCalendarId == 0 }
                     eventType.color = config.primaryColor
                     dbHelper.updateEventType(eventType)
                 }
@@ -156,6 +156,8 @@ class SettingsActivity : SimpleActivity() {
 
                 oldCalendarIds.filter { !newCalendarIds.contains(it) }.forEach {
                     CalDAVEventsHandler(applicationContext).deleteCalDAVCalendarEvents(it.toLong())
+                    val eventId = dbHelper.getEventTypeIdWithCalDAVCalendarId(it.toInt())
+                    dbHelper.deleteEventTypes(arrayListOf(eventId), true) {}
                 }
             }).start()
         }
