@@ -69,7 +69,7 @@ class SettingsActivity : SimpleActivity() {
     private fun checkPrimaryColor() {
         if (config.primaryColor != mStoredPrimaryColor) {
             dbHelper.getEventTypes {
-                if (it.size == 1) {
+                if (it.filter { it.caldavCalendarId == 0 }.size == 1) {
                     val eventType = it[0]
                     eventType.color = config.primaryColor
                     dbHelper.updateEventType(eventType)
