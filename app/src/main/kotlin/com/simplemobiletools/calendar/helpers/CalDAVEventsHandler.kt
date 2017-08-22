@@ -20,7 +20,7 @@ import java.util.*
 class CalDAVEventsHandler(val context: Context) {
     fun refreshCalendars(callback: () -> Unit) {
         getCalDAVCalendars(context.config.caldavSyncedCalendarIDs).forEach {
-            val eventTypeId = context.dbHelper.getEventTypeIdWithTitle(it.displayName)
+            val eventTypeId = context.dbHelper.getEventTypeIdWithTitle("${it.displayName} (${it.accountName})")
             CalDAVEventsHandler(context).fetchCalDAVCalendarEvents(it.id, eventTypeId)
         }
         context.scheduleCalDAVSync(true)
