@@ -271,6 +271,18 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     }
 
     fun updateEventType(eventType: EventType): Int {
+        return if (eventType.caldavCalendarId != 0) {
+            if (CalDAVHandler(context).updateCalDAVCalendar(eventType)) {
+                updateLocalEventType(eventType)
+            } else {
+                -1
+            }
+        } else {
+            updateLocalEventType(eventType)
+        }
+    }
+
+    private fun updateLocalEventType(eventType: EventType): Int {
         val selectionArgs = arrayOf(eventType.id.toString())
         val values = fillEventTypeValues(eventType)
         val selection = "$COL_TYPE_ID = ?"

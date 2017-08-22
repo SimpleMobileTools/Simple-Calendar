@@ -12,6 +12,7 @@ import com.simplemobiletools.calendar.extensions.hasCalendarPermission
 import com.simplemobiletools.calendar.extensions.scheduleCalDAVSync
 import com.simplemobiletools.calendar.models.CalDAVCalendar
 import com.simplemobiletools.calendar.models.Event
+import com.simplemobiletools.calendar.models.EventType
 import com.simplemobiletools.commons.extensions.getIntValue
 import com.simplemobiletools.commons.extensions.getLongValue
 import com.simplemobiletools.commons.extensions.getStringValue
@@ -62,6 +63,19 @@ class CalDAVHandler(val context: Context) {
             cursor?.close()
         }
         return calendars
+    }
+
+    fun updateCalDAVCalendar(eventType: EventType): Boolean {
+        val uri = CalendarContract.Calendars.CONTENT_URI
+        val values = fillCalendarContentValues(eventType)
+        val newUri = ContentUris.withAppendedId(uri, eventType.caldavCalendarId.toLong())
+        return context.contentResolver.update(newUri, values, null, null) == 1
+    }
+
+    private fun fillCalendarContentValues(eventType: EventType): ContentValues {
+        return ContentValues().apply {
+            put(CalendarContract.Calendars.CALENDAR_DISPLAY_NAME, eventType.title)
+        }
     }
 
     private fun fetchCalDAVCalendarEvents(calendarId: Int, eventTypeId: Int) {
