@@ -26,9 +26,16 @@ class UpdateEventTypeDialog(val activity: Activity, var eventType: EventType? = 
             setupColor(type_color)
             type_title.setText(eventType!!.title)
             type_color.setOnClickListener {
-                ColorPickerDialog(activity, eventType!!.color) {
-                    eventType!!.color = it
-                    setupColor(type_color)
+                if (eventType?.caldavCalendarId == 0) {
+                    ColorPickerDialog(activity, eventType!!.color) {
+                        eventType!!.color = it
+                        setupColor(type_color)
+                    }
+                } else {
+                    SelectEventTypeColorDialog(activity, eventType!!) {
+                        eventType!!.color = it
+                        setupColor(type_color)
+                    }
                 }
             }
         }

@@ -73,7 +73,9 @@ class CalDAVHandler(val context: Context) {
     }
 
     private fun fillCalendarContentValues(eventType: EventType): ContentValues {
+        val colorKey = getEventTypeColorKey(eventType)
         return ContentValues().apply {
+            put(CalendarContract.Calendars.CALENDAR_COLOR_KEY, colorKey)
             put(CalendarContract.Calendars.CALENDAR_DISPLAY_NAME, eventType.title)
         }
     }
@@ -94,9 +96,10 @@ class CalDAVHandler(val context: Context) {
             cursor?.close()
         }
 
-        return insertNewColor(eventType)
+        return -1
     }
 
+    // it doesnt work properly, needs better SyncAdapter handling
     private fun insertNewColor(eventType: EventType): Int {
         val maxId = getMaxColorId(eventType) + 1
 
@@ -141,6 +144,28 @@ class CalDAVHandler(val context: Context) {
         }
 
         return maxId
+    }
+
+    fun getAvailableCalDAVCalendarColors(eventType: EventType): ArrayList<Int> {
+        val colors = ArrayList<Int>()
+        val uri = CalendarContract.Colors.CONTENT_URI
+        val projection = arrayOf(CalendarContract.Colors.COLOR)
+        val selection = "${CalendarContract.Colors.COLOR_TYPE} = ? AND ${CalendarContract.Colors.ACCOUNT_NAME} = ?"
+        val selectionArgs = arrayOf(CalendarContract.Colors.TYPE_CALENDAR.toString(), eventType.caldavEmail)
+
+        var cursor: Cursor? = null
+        try {
+            cursor = context.contentResolver.query(uri, projection, selection, selectionArgs, null)
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
+                    colors.add(cursor.getIntValue(CalendarContract.Colors.COLOR))
+                } while (cursor.moveToNext())
+            }
+        } finally {
+            cursor?.close()
+        }
+
+        return colors
     }
 
     private fun fetchCalDAVCalendarEvents(calendarId: Int, eventTypeId: Int) {
