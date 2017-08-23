@@ -75,7 +75,7 @@ class UpdateEventTypeDialog(val activity: Activity, var eventType: EventType? = 
                     dismiss()
                     callback.invoke(eventTypeId)
                 } else {
-                    activity.toast(R.string.unknown_error_occurred)
+                    activity.toast(R.string.editing_calendar_failed)
                 }
             })
         }

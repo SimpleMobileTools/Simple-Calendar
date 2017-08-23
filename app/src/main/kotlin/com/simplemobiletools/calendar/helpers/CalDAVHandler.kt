@@ -83,7 +83,11 @@ class CalDAVHandler(val context: Context) {
         val uri = CalendarContract.Calendars.CONTENT_URI
         val values = fillCalendarContentValues(eventType)
         val newUri = ContentUris.withAppendedId(uri, eventType.caldavCalendarId.toLong())
-        return context.contentResolver.update(newUri, values, null, null) == 1
+        return try {
+            context.contentResolver.update(newUri, values, null, null) == 1
+        } catch (e: IllegalArgumentException) {
+            false
+        }
     }
 
     private fun fillCalendarContentValues(eventType: EventType): ContentValues {

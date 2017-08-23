@@ -204,6 +204,7 @@
     <string name="refresh_caldav_calendars">Refresh CalDAV calendars</string>
     <string name="refreshing">Refreshing…</string>
     <string name="refreshing_complete">Refreshing complete</string>
+    <string name="editing_calendar_failed">Editing calendar failed</string>
 
     <plurals name="by_minutes">
         <item quantity="one">%1$d minutę</item>

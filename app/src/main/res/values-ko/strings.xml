@@ -199,6 +199,7 @@
     <string name="refresh_caldav_calendars">CalDAV 캘린더들 새로고침</string>
     <string name="refreshing">새로고침 중…</string>
     <string name="refreshing_complete">새로고침 완료</string>
+    <string name="editing_calendar_failed">Editing calendar failed</string>
 
     <plurals name="by_minutes">
         <item quantity="one">%1$d 분</item>
