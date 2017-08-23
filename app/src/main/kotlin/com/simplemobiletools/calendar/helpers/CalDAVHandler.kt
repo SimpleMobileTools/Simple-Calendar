@@ -6,6 +6,7 @@ import android.content.Context
 import android.database.Cursor
 import android.provider.CalendarContract
 import android.provider.CalendarContract.Reminders
+import android.util.SparseIntArray
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.hasCalendarPermission
@@ -17,6 +18,7 @@ import com.simplemobiletools.commons.extensions.getIntValue
 import com.simplemobiletools.commons.extensions.getLongValue
 import com.simplemobiletools.commons.extensions.getStringValue
 import java.util.*
+import kotlin.collections.ArrayList
 
 class CalDAVHandler(val context: Context) {
     fun refreshCalendars(callback: () -> Unit) {
@@ -147,9 +149,9 @@ class CalDAVHandler(val context: Context) {
     }
 
     fun getAvailableCalDAVCalendarColors(eventType: EventType): ArrayList<Int> {
-        val colors = ArrayList<Int>()
+        val colors = SparseIntArray()
         val uri = CalendarContract.Colors.CONTENT_URI
-        val projection = arrayOf(CalendarContract.Colors.COLOR)
+        val projection = arrayOf(CalendarContract.Colors.COLOR, CalendarContract.Colors.COLOR_KEY)
         val selection = "${CalendarContract.Colors.COLOR_TYPE} = ? AND ${CalendarContract.Colors.ACCOUNT_NAME} = ?"
         val selectionArgs = arrayOf(CalendarContract.Colors.TYPE_CALENDAR.toString(), eventType.caldavEmail)
 
@@ -158,14 +160,21 @@ class CalDAVHandler(val context: Context) {
             cursor = context.contentResolver.query(uri, projection, selection, selectionArgs, null)
             if (cursor != null && cursor.moveToFirst()) {
                 do {
-                    colors.add(cursor.getIntValue(CalendarContract.Colors.COLOR))
+                    val colorKey = cursor.getIntValue(CalendarContract.Colors.COLOR_KEY)
+                    val color = cursor.getIntValue(CalendarContract.Colors.COLOR)
+                    colors.put(colorKey, color)
                 } while (cursor.moveToNext())
             }
         } finally {
             cursor?.close()
         }
 
-        return colors
+        val sortedColors = ArrayList<Int>(colors.size())
+        for (i in 0 until colors.size()) {
+            sortedColors.add(colors[i])
+        }
+
+        return sortedColors
     }
 
     private fun fetchCalDAVCalendarEvents(calendarId: Int, eventTypeId: Int) {
