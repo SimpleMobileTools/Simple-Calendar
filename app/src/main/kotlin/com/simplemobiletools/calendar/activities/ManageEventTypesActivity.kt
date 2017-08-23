@@ -25,7 +25,7 @@ class ManageEventTypesActivity : SimpleActivity(), DeleteEventTypesListener {
     }
 
     private fun showEventTypeDialog(eventType: EventType? = null) {
-        UpdateEventTypeDialog(this, eventType) {
+        UpdateEventTypeDialog(this, eventType!!.copy()) {
             getEventTypes()
         }
     }
