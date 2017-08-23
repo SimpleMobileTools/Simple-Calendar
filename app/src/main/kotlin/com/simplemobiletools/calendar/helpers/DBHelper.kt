@@ -289,7 +289,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
     }
 
-    private fun updateLocalEventType(eventType: EventType): Int {
+    fun updateLocalEventType(eventType: EventType): Int {
         val selectionArgs = arrayOf(eventType.id.toString())
         val values = fillEventTypeValues(eventType)
         val selection = "$COL_TYPE_ID = ?"
