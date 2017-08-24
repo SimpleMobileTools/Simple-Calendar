@@ -1,11 +1,13 @@
 package com.simplemobiletools.calendar.adapters
 
 import android.content.Context
+import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.ImageView
 import android.widget.TextView
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.helpers.Formatter
@@ -67,6 +69,7 @@ class EventListWidgetAdapterOld(val context: Context, val mEvents: List<ListItem
                 end?.setTextColor(mTextColor)
                 title.setTextColor(mTextColor)
                 description?.setTextColor(mTextColor)
+                color?.setColorFilter(mTextColor, PorterDuff.Mode.SRC_IN)
             }
         } else {
             val item = mEvents[position] as ListSection
@@ -100,5 +103,6 @@ class EventListWidgetAdapterOld(val context: Context, val mEvents: List<ListItem
         val description: TextView? = view.event_item_description
         val start: TextView? = view.event_item_start
         val end: TextView? = view.event_item_end
+        val color: ImageView? = view.event_item_color
     }
 }

@@ -16,6 +16,7 @@ import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.models.ListEvent
 import com.simplemobiletools.calendar.models.ListItem
 import com.simplemobiletools.calendar.models.ListSection
+import com.simplemobiletools.commons.extensions.getColoredIcon
 import org.joda.time.DateTime
 import java.util.*
 
@@ -39,6 +40,7 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
                 setTextViewText(R.id.event_item_title, item.title)
                 setTextViewText(R.id.event_item_description, item.description)
                 setTextViewText(R.id.event_item_start, if (item.isAllDay) allDayString else Formatter.getTimeFromTS(context, item.startTS))
+                setImageViewBitmap(R.id.event_item_color, context.resources.getColoredIcon(textColor, R.drawable.monthly_event_dot))
 
                 if (item.startTS == item.endTS) {
                     setViewVisibility(R.id.event_item_end, View.INVISIBLE)
