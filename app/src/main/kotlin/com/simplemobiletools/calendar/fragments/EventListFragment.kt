@@ -80,7 +80,7 @@ class EventListFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEvents
                 listItems.add(ListSection(day))
                 prevCode = code
             }
-            listItems.add(ListEvent(it.id, it.startTS, it.endTS, it.title, it.description, it.getIsAllDay()))
+            listItems.add(ListEvent(it.id, it.startTS, it.endTS, it.title, it.description, it.getIsAllDay(), it.color))
         }
 
         val eventsAdapter = EventListAdapter(activity as SimpleActivity, listItems, this) {

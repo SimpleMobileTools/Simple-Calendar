@@ -119,7 +119,7 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
                         listItems.add(ListSection(day))
                     prevCode = code
                 }
-                listItems.add(ListEvent(it.id, it.startTS, it.endTS, it.title, it.description, it.getIsAllDay()))
+                listItems.add(ListEvent(it.id, it.startTS, it.endTS, it.title, it.description, it.getIsAllDay(), it.color))
             }
 
             this@EventListWidgetAdapter.events = listItems

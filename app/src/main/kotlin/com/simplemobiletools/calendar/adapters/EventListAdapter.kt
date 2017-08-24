@@ -1,5 +1,6 @@
 package com.simplemobiletools.calendar.adapters
 
+import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
 import android.support.v7.view.ActionMode
 import android.support.v7.widget.RecyclerView
@@ -150,6 +151,8 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
                 event_item_description.text = item.description
                 event_item_start.text = if (item.isAllDay) allDayString else Formatter.getTimeFromTS(context, item.startTS)
                 event_item_end.beInvisibleIf(item.startTS == item.endTS)
+                event_item_color.setColorFilter(item.color, PorterDuff.Mode.SRC_IN)
+
                 toggleItemSelection(this, markedItems.contains(pos), pos)
 
                 if (item.startTS != item.endTS) {
