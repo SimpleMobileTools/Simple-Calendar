@@ -21,6 +21,7 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
     var mDays = 31
     var mFirstDay = 0
     var mTodaysId = 0
+    var mIsLandscape = false
 
     var mEvents: ArrayList<Int>? = null
 
@@ -68,14 +69,17 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
 
         mColoredPaint = Paint(mPaint)
         mColoredPaint.color = mColoredTextColor
+        mIsLandscape = resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
     }
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         if (mDayWidth == 0f) {
-            if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-                mDayWidth = (canvas.width / 9.2).toFloat()
-            } else mDayWidth = (canvas.width / 8).toFloat()
+            mDayWidth = if (mIsLandscape) {
+                (canvas.width / 9).toFloat()
+            } else {
+                (canvas.width / 7).toFloat()
+            }
         }
 
         var curId = 1 - mFirstDay
@@ -85,7 +89,8 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
                     canvas.drawText(curId.toString(), x * mDayWidth, y * mDayWidth, getPaint(curId))
 
                     if (curId == mTodaysId) {
-                        canvas.drawCircle(x * mDayWidth - mDayWidth / 7, y * mDayWidth - mDayWidth / 6, mDayWidth * 0.41f, mColoredPaint)
+                        val dividerConstant = if (mIsLandscape) 6 else 4
+                        canvas.drawCircle(x * mDayWidth - mDayWidth / dividerConstant, y * mDayWidth - mDayWidth / dividerConstant, mDayWidth * 0.41f, mColoredPaint)
                     }
                 }
                 curId++

@@ -1,0 +1,3 @@
+<resources>
+    <dimen name="yearly_month_padding">40dp</dimen>
+</resources>
