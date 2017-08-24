@@ -466,7 +466,12 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
         val args = TextUtils.join(", ", deleteIds)
         val selection = "$COL_TYPE_ID IN ($args)"
-        callback.invoke(mDb.delete(TYPES_TABLE_NAME, selection, null))
+        callback(mDb.delete(TYPES_TABLE_NAME, selection, null))
+    }
+
+    fun deleteEventTypesWithCalendarId(calendarIds: String) {
+        val selection = "$COL_TYPE_CALDAV_CALENDAR_ID IN ($calendarIds)"
+        mDb.delete(TYPES_TABLE_NAME, selection, null)
     }
 
     private fun deleteEventsWithType(eventTypeId: Int) {

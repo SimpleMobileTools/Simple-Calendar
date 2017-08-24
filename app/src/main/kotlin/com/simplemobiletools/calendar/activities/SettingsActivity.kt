@@ -9,6 +9,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Parcelable
 import android.support.v4.app.ActivityCompat
+import android.text.TextUtils
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.dialogs.CustomEventReminderDialog
 import com.simplemobiletools.calendar.dialogs.SelectCalendarsDialog
@@ -128,6 +129,7 @@ class SettingsActivity : SimpleActivity() {
             config.getSyncedCalendarIdsAsList().forEach {
                 CalDAVHandler(applicationContext).deleteCalDAVCalendarEvents(it.toLong())
             }
+            dbHelper.deleteEventTypesWithCalendarId(config.caldavSyncedCalendarIDs)
         }
     }
 
@@ -154,12 +156,14 @@ class SettingsActivity : SimpleActivity() {
                     CalDAVHandler(applicationContext).refreshCalendars {}
                 }
 
-                oldCalendarIds.filter { !newCalendarIds.contains(it) }.forEach {
+                val removedCalendarIds = oldCalendarIds.filter { !newCalendarIds.contains(it) }
+                removedCalendarIds.forEach {
                     CalDAVHandler(applicationContext).deleteCalDAVCalendarEvents(it.toLong())
                     dbHelper.getEventTypeWithCalDAVCalendarId(it.toInt())?.apply {
                         dbHelper.deleteEventTypes(arrayListOf(this), true) {}
                     }
                 }
+                dbHelper.deleteEventTypesWithCalendarId(TextUtils.join(",", removedCalendarIds))
             }).start()
         }
     }
