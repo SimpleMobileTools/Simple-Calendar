@@ -71,10 +71,10 @@ class EventTypeAdapter(val activity: SimpleActivity, val mItems: List<EventType>
 
     private fun askConfirmDelete() {
         val selections = multiSelector.selectedPositions
-        val ids = ArrayList<Int>(selections.size)
-        selections.forEach { ids.add((mItems[it]).id) }
+        val eventTypes = ArrayList<EventType>(selections.size)
+        selections.forEach { eventTypes.add(mItems[it]) }
 
-        if (activity.dbHelper.doEventTypesContainEvent(ids)) {
+        if (activity.dbHelper.doEventTypesContainEvent(eventTypes)) {
             val MOVE_EVENTS = 0
             val DELETE_EVENTS = 1
             val res = activity.resources
@@ -84,15 +84,15 @@ class EventTypeAdapter(val activity: SimpleActivity, val mItems: List<EventType>
             }
             RadioGroupDialog(activity, items, -1) {
                 actMode?.finish()
-                deleteEventTypes(it == DELETE_EVENTS, ids)
+                deleteEventTypes(it == DELETE_EVENTS, eventTypes)
             }
         } else {
-            deleteEventTypes(true, ids)
+            deleteEventTypes(true, eventTypes)
         }
     }
 
-    private fun deleteEventTypes(deleteEvents: Boolean, ids: ArrayList<Int>) {
-        listener?.deleteEventTypes(ids, deleteEvents)
+    private fun deleteEventTypes(deleteEvents: Boolean, eventTypes: ArrayList<EventType>) {
+        listener?.deleteEventTypes(eventTypes, deleteEvents)
         actMode?.finish()
     }
 

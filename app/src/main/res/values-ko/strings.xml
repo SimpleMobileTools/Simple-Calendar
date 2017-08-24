@@ -163,6 +163,7 @@
     <string name="select_event_type">이벤트 유형 선택</string>
     <string name="move_events_into_default">영향을 받는 이벤트들을 기본 유형으로 이동</string>
     <string name="remove_affected_events">영향을 받는 이벤트들을 영구적으로 제거</string>
+    <string name="unsync_caldav_calendar">To remove a CalDAV calendar you have to unsynchronize it</string>
 
     <!-- Holidays -->
     <string name="holidays">공휴일</string>

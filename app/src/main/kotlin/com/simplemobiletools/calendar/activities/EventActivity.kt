@@ -492,7 +492,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         val oldSource = mEvent.source
         val newImportId = if (mEvent.id != 0) mEvent.importId else UUID.randomUUID().toString().replace("-", "") + System.currentTimeMillis().toString()
 
-        val newEventType = if (!config.caldavSync || config.lastUsedCaldavCalendar == 0) mEventTypeId else dbHelper.getEventTypeIdWithCalDAVCalendarId(config.lastUsedCaldavCalendar)
+        val newEventType = if (!config.caldavSync || config.lastUsedCaldavCalendar == 0) mEventTypeId else dbHelper.getEventTypeWithCalDAVCalendarId(config.lastUsedCaldavCalendar)!!.id
         val newSource = if (!config.caldavSync || config.lastUsedCaldavCalendar == 0) SOURCE_SIMPLE_CALENDAR else "$CALDAV-${config.lastUsedCaldavCalendar}"
 
         val reminders = sortedSetOf(mReminder1Minutes, mReminder2Minutes, mReminder3Minutes).filter { it != REMINDER_OFF }

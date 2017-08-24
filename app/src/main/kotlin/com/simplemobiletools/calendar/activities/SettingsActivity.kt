@@ -156,8 +156,9 @@ class SettingsActivity : SimpleActivity() {
 
                 oldCalendarIds.filter { !newCalendarIds.contains(it) }.forEach {
                     CalDAVHandler(applicationContext).deleteCalDAVCalendarEvents(it.toLong())
-                    val eventId = dbHelper.getEventTypeIdWithCalDAVCalendarId(it.toInt())
-                    dbHelper.deleteEventTypes(arrayListOf(eventId), true) {}
+                    dbHelper.getEventTypeWithCalDAVCalendarId(it.toInt())?.apply {
+                        dbHelper.deleteEventTypes(arrayListOf(this), true) {}
+                    }
                 }
             }).start()
         }

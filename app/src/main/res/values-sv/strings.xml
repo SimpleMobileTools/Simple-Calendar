@@ -163,6 +163,7 @@
     <string name="select_event_type">Välj en händelsetyp</string>
     <string name="move_events_into_default">Flytta berörda händelser till standardhändelsetypen</string>
     <string name="remove_affected_events">Ta bort berörda händelser permanent</string>
+    <string name="unsync_caldav_calendar">To remove a CalDAV calendar you have to unsynchronize it</string>
 
     <!-- Holidays -->
     <string name="holidays">Helgdagar</string>

@@ -168,6 +168,7 @@
     <string name="select_event_type">Wybierz typ wydarzenia</string>
     <string name="move_events_into_default">Przenieś powiązane wydarzenia do domyślnego typu wydarzeń</string>
     <string name="remove_affected_events">Usuń nieodwracalnie powiązane wydarzenia</string>
+    <string name="unsync_caldav_calendar">To remove a CalDAV calendar you have to unsynchronize it</string>
 
     <!-- Holidays -->
     <string name="holidays">Święta</string>

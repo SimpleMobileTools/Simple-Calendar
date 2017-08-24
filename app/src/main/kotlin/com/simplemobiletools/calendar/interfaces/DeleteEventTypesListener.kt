@@ -1,7 +1,8 @@
 package com.simplemobiletools.calendar.interfaces
 
+import com.simplemobiletools.calendar.models.EventType
 import java.util.*
 
 interface DeleteEventTypesListener {
-    fun deleteEventTypes(ids: ArrayList<Int>, deleteEvents: Boolean)
+    fun deleteEventTypes(eventTypes: ArrayList<EventType>, deleteEvents: Boolean)
 }

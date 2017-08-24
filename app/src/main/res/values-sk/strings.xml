@@ -173,6 +173,7 @@
     <string name="importing_holidays_failed">Importovanie udalostí zlyhalo</string>
     <string name="move_events_into_default">Presunúť dotknuté udalosti do predvoleného typu udalostí</string>
     <string name="remove_affected_events">Natrvalo odstrániť dotknuté udalosti</string>
+    <string name="unsync_caldav_calendar">Na odstránenie CalDAV kalendára musíte vypnúť jeho synchronizáciu</string>
 
     <!-- Holidays -->
     <string name="holidays">Sviatky</string>

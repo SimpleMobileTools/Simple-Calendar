@@ -345,7 +345,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         return -1
     }
 
-    fun getEventTypeIdWithCalDAVCalendarId(calendarId: Int): Int {
+    fun getEventTypeWithCalDAVCalendarId(calendarId: Int): EventType? {
         val cols = arrayOf(COL_TYPE_ID)
         val selection = "$COL_TYPE_CALDAV_CALENDAR_ID = ?"
         val selectionArgs = arrayOf(calendarId.toString())
@@ -353,12 +353,12 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         try {
             cursor = mDb.query(TYPES_TABLE_NAME, cols, selection, selectionArgs, null, null, null)
             if (cursor?.moveToFirst() == true) {
-                return cursor.getIntValue(COL_TYPE_ID)
+                return getEventType(cursor.getIntValue(COL_TYPE_ID))
             }
         } finally {
             cursor?.close()
         }
-        return -1
+        return null
     }
 
     fun getEventType(id: Int): EventType? {
@@ -446,10 +446,9 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
     }
 
-    fun deleteEventTypes(ids: ArrayList<Int>, deleteEvents: Boolean, callback: (deletedCnt: Int) -> Unit) {
-        var deleteIds = ids
-        if (ids.contains(DBHelper.REGULAR_EVENT_TYPE_ID))
-            deleteIds = ids.filter { it != DBHelper.REGULAR_EVENT_TYPE_ID } as ArrayList<Int>
+    fun deleteEventTypes(eventTypes: ArrayList<EventType>, deleteEvents: Boolean, callback: (deletedCnt: Int) -> Unit) {
+        var deleteIds = eventTypes.filter { it.caldavCalendarId == 0 }.map { it.id }
+        deleteIds = deleteIds.filter { it != DBHelper.REGULAR_EVENT_TYPE_ID } as ArrayList<Int>
 
         val deletedSet = HashSet<String>()
         deleteIds.map { deletedSet.add(it.toString()) }
@@ -827,8 +826,8 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         return eventTypes
     }
 
-    fun doEventTypesContainEvent(types: ArrayList<Int>): Boolean {
-        val args = TextUtils.join(", ", types)
+    fun doEventTypesContainEvent(types: ArrayList<EventType>): Boolean {
+        val args = TextUtils.join(", ", types.map { it.id })
         val columns = arrayOf(COL_ID)
         val selection = "$COL_EVENT_TYPE IN ($args)"
         var cursor: Cursor? = null
