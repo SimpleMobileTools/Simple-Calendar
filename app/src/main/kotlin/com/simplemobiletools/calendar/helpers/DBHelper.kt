@@ -746,6 +746,11 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                 COL_IS_DST_INCLUDED, COL_LAST_UPDATED, COL_EVENT_SOURCE)
 
     private fun fillEvents(cursor: Cursor?): List<Event> {
+        val eventTypeColors = SparseIntArray()
+        val eventTypes = fetchEventTypes().forEach {
+            eventTypeColors.put(it.id, it.color)
+        }
+
         val events = ArrayList<Event>()
         try {
             if (cursor != null && cursor.moveToFirst()) {
@@ -768,11 +773,12 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                     val isDstIncluded = cursor.getIntValue(COL_IS_DST_INCLUDED) == 1
                     val lastUpdated = cursor.getLongValue(COL_LAST_UPDATED)
                     val source = cursor.getStringValue(COL_EVENT_SOURCE)
+                    val color = eventTypeColors[eventType]
 
                     val ignoreEventOccurrences = if (repeatInterval != 0) {
                         getIgnoredOccurrences(id)
                     } else {
-                        ArrayList<Int>()
+                        ArrayList()
                     }
 
                     if (repeatInterval > 0 && repeatInterval % MONTH == 0 && repeatRule == 0) {
@@ -781,7 +787,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
                     val event = Event(id, startTS, endTS, title, description, reminder1Minutes, reminder2Minutes, reminder3Minutes,
                             repeatInterval, importId, flags, repeatLimit, repeatRule, eventType, ignoreEventOccurrences, offset, isDstIncluded,
-                            0, lastUpdated, source)
+                            0, lastUpdated, source, color)
                     events.add(event)
                 } while (cursor.moveToNext())
             }

@@ -1,7 +1,6 @@
 package com.simplemobiletools.calendar.helpers
 
 import android.content.Context
-import android.util.SparseIntArray
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.getFilteredEvents
@@ -17,14 +16,10 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
     private val YEAR_PATTERN = "YYYY"
 
     private val mToday: String = DateTime().toString(Formatter.DAYCODE_PATTERN)
-    var mEvents: List<Event>
+    var mEvents = ArrayList<Event>()
     var mFilterEventTypes = true
 
     lateinit var mTargetDate: DateTime
-
-    init {
-        mEvents = ArrayList<Event>()
-    }
 
     fun updateMonthlyCalendar(targetDate: DateTime, filterEventTypes: Boolean = true) {
         mFilterEventTypes = filterEventTypes
@@ -32,7 +27,7 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
         val startTS = mTargetDate.minusMonths(1).seconds()
         val endTS = mTargetDate.plusMonths(1).seconds()
         mContext.dbHelper.getEvents(startTS, endTS) {
-            gotEvents(it)
+            gotEvents(it as ArrayList<Event>)
         }
     }
 
@@ -72,7 +67,7 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
 
             val newDay = curDay.withDayOfMonth(value)
             val dayCode = Formatter.getDayCodeFromDateTime(newDay)
-            val day = Day(value, isThisMonth, isToday, dayCode, false, newDay.weekOfWeekyear, ArrayList<Int>())
+            val day = Day(value, isThisMonth, isToday, dayCode, false, newDay.weekOfWeekyear, ArrayList())
             days.add(day)
             value++
         }
@@ -84,11 +79,6 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
     private fun markDaysWithEvents(days: ArrayList<Day>) {
         mContext.dbHelper.getEventTypes {
             val dayEvents = HashMap<String, ArrayList<Event>>()
-            val eventTypeColors = SparseIntArray()
-            it.forEach {
-                eventTypeColors.put(it.id, it.color)
-            }
-
             mEvents.forEach {
                 val startDateTime = Formatter.getDateTimeFromTS(it.startTS)
                 val endDateTime = Formatter.getDateTimeFromTS(it.endTS)
@@ -96,13 +86,13 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
 
                 var currDay = startDateTime
                 var dayCode = Formatter.getDayCodeFromDateTime(currDay)
-                var currDayEvents = (dayEvents[dayCode] ?: ArrayList<Event>()).apply { add(it) }
+                var currDayEvents = (dayEvents[dayCode] ?: ArrayList()).apply { add(it) }
                 dayEvents.put(dayCode, currDayEvents)
 
                 while (Formatter.getDayCodeFromDateTime(currDay) != endCode) {
                     currDay = currDay.plusDays(1)
                     dayCode = Formatter.getDayCodeFromDateTime(currDay)
-                    currDayEvents = (dayEvents[dayCode] ?: ArrayList<Event>()).apply { add(it) }
+                    currDayEvents = (dayEvents[dayCode] ?: ArrayList()).apply { add(it) }
                     dayEvents.put(dayCode, currDayEvents)
                 }
             }
@@ -113,7 +103,7 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
 
                 val events = dayEvents[it.code]
                 events!!.forEach {
-                    day.eventColors.add(eventTypeColors[it.eventType])
+                    day.eventColors.add(it.color)
                 }
             }
             mCallback.updateMonthlyCalendar(monthName, days)
@@ -137,11 +127,11 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
             return month
         }
 
-    fun gotEvents(events: MutableList<Event>) {
-        if (mFilterEventTypes)
-            mEvents = mContext.getFilteredEvents(events)
+    private fun gotEvents(events: ArrayList<Event>) {
+        mEvents = if (mFilterEventTypes)
+            mContext.getFilteredEvents(events) as ArrayList<Event>
         else
-            mEvents = events
+            events
 
         getDays()
     }

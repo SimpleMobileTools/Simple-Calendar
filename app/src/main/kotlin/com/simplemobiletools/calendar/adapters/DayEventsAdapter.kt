@@ -1,5 +1,7 @@
 package com.simplemobiletools.calendar.adapters
 
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.support.v7.view.ActionMode
 import android.support.v7.widget.RecyclerView
 import android.view.*
@@ -115,12 +117,13 @@ class DayEventsAdapter(val activity: SimpleActivity, val mItems: List<Event>, va
 
     class ViewHolder(val activity: SimpleActivity, view: View, val itemClick: (Event) -> (Unit)) : SwappingHolder(view, MultiSelector()) {
         fun bindView(multiSelectorCallback: ModalMultiSelectorCallback, multiSelector: MultiSelector, event: Event, pos: Int): View {
-
             itemView.apply {
                 event_item_title.text = event.title
                 event_item_description.text = event.description
                 event_item_start.text = if (event.getIsAllDay()) allDayString else Formatter.getTimeFromTS(context, event.startTS)
                 event_item_end.beInvisibleIf(event.startTS == event.endTS)
+                event_item_color.setColorFilter(event.color, PorterDuff.Mode.SRC_IN)
+
                 toggleItemSelection(this, markedItems.contains(pos), pos)
 
                 if (event.startTS != event.endTS) {
