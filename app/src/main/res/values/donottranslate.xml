@@ -1,6 +1,7 @@
 <resources>
 
     <!-- Release notes -->
+    <string name="release_88">Replaced Google Sync with CalDAV sync, please check Settings for enabling it</string>
     <string name="release_86">Added an initial implementation of Google sync, use with caution (will always be optional)</string>
     <string name="release_84">Added a setting for changing the widget font size</string>
     <string name="release_80">Allow editing specific instances of repeating events</string>
