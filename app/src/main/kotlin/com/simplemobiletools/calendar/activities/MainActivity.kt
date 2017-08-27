@@ -95,6 +95,12 @@ class MainActivity : SimpleActivity(), NavigationListener {
         }
 
         recheckCalDAVCalendars {}
+
+        if (config.googleSync) {
+            val ids = dbHelper.getGoogleSyncEvents().map { it.id.toString() }.toTypedArray()
+            dbHelper.deleteEvents(ids, false)
+            config.googleSync = false
+        }
     }
 
     override fun onResume() {

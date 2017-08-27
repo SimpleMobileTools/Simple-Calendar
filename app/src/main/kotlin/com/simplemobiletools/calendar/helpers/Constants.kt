@@ -47,6 +47,7 @@ val CALDAV_SYNCED_CALENDAR_IDS = "caldav_synced_calendar_ids"
 val LAST_USED_CALDAV_CALENDAR = "last_used_caldav_calendar"
 val SNOOZE_DELAY = "snooze_delay"
 val DISPLAY_PAST_EVENTS = "display_past_events"
+val GOOGLE_SYNC = "google_sync" // deprecated
 
 val letterIDs = intArrayOf(R.string.sunday_letter, R.string.monday_letter, R.string.tuesday_letter, R.string.wednesday_letter,
         R.string.thursday_letter, R.string.friday_letter, R.string.saturday_letter)
@@ -121,3 +122,6 @@ val FONT_SIZE_LARGE = 2
 
 val SOURCE_SIMPLE_CALENDAR = "simple-calendar"
 val SOURCE_IMPORTED_ICS = "imported-ics"
+
+// deprecated
+val SOURCE_GOOGLE_CALENDAR = 1

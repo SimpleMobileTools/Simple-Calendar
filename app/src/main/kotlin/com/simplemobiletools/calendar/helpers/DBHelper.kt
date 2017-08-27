@@ -37,6 +37,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private val COL_IS_DST_INCLUDED = "is_dst_included"
     private val COL_LAST_UPDATED = "last_updated"
     private val COL_EVENT_SOURCE = "event_source"
+    private val COL_SOURCE = "source"   // deprecated
 
     private val META_TABLE_NAME = "events_meta"
     private val COL_EVENT_ID = "event_id"
@@ -694,6 +695,12 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     fun getEventsWithIds(ids: List<Int>): ArrayList<Event> {
         val args = TextUtils.join(", ", ids)
         val selection = "$MAIN_TABLE_NAME.$COL_ID IN ($args)"
+        return getEvents(selection) as ArrayList<Event>
+    }
+
+    // get deprecated Google Sync events
+    fun getGoogleSyncEvents(): ArrayList<Event> {
+        val selection = "$MAIN_TABLE_NAME.$COL_SOURCE = $SOURCE_GOOGLE_CALENDAR"
         return getEvents(selection) as ArrayList<Event>
     }
 
