@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 2.7.0 *(2017-08-27)*
+----------------------------
+
+ * Replaced Google Sync with CalDAV sync, please check Settings for enabling it
+ * Improved Tablet support
+ * Added colored dots marking event types at multiple views
+
 Version 2.6.1 *(2017-07-30)*
 ----------------------------
 
