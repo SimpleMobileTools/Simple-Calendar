@@ -1,9 +1,6 @@
 # Joda
 -dontwarn org.joda.time.**
 
--keep class com.google.common.**
--dontwarn com.google.common.**
-
 -renamesourcefileattribute SourceFile
 -keepattributes SourceFile, LineNumberTable, Signature, RuntimeVisibleAnnotations,AnnotationDefault
 

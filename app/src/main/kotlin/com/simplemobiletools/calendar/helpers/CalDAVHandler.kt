@@ -33,8 +33,7 @@ class CalDAVHandler(val context: Context) {
                 dbHelper.updateLocalEventType(this)
             }
 
-            val eventTypeId = dbHelper.getEventTypeIdWithTitle(it.getFullTitle())
-            CalDAVHandler(context).fetchCalDAVCalendarEvents(it.id, eventTypeId)
+            CalDAVHandler(context).fetchCalDAVCalendarEvents(it.id, localEventType!!.id)
         }
         context.scheduleCalDAVSync(true)
         callback()

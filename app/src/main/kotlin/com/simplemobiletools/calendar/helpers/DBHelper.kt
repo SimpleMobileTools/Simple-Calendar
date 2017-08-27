@@ -758,7 +758,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
     private fun fillEvents(cursor: Cursor?): List<Event> {
         val eventTypeColors = SparseIntArray()
-        val eventTypes = fetchEventTypes().forEach {
+        fetchEventTypes().forEach {
             eventTypeColors.put(it.id, it.color)
         }
 
