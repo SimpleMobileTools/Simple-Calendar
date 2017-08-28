@@ -33,6 +33,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     private var mEventTypeId = DBHelper.REGULAR_EVENT_TYPE_ID
     private var mDialogTheme = 0
     private var mEventOccurrenceTS = 0
+    private var wasActivityInitialized = false
 
     lateinit var mEventStartDateTime: DateTime
     lateinit var mEventEndDateTime: DateTime
@@ -98,6 +99,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
         updateTextColors(event_scrollview)
         updateIconColors()
+        wasActivityInitialized = true
     }
 
     private fun setupEditEvent() {
@@ -442,8 +444,10 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_event, menu)
-        menu.findItem(R.id.delete).isVisible = mDialogTheme != 0 && mEvent.id != 0
-        menu.findItem(R.id.share).isVisible = mDialogTheme != 0 && mEvent.id != 0
+        if (wasActivityInitialized) {
+            menu.findItem(R.id.delete).isVisible = mDialogTheme != 0 && mEvent.id != 0
+            menu.findItem(R.id.share).isVisible = mDialogTheme != 0 && mEvent.id != 0
+        }
         return true
     }
 
