@@ -104,7 +104,13 @@ data class Event(var id: Int = 0, var startTS: Int = 0, var endTS: Int = 0, var 
         }
     }
 
-    fun getCalDAVEventId() = if (importId.contains("-")) (importId.split("-").lastOrNull() ?: "0").toString().toLong() else 0L
+    fun getCalDAVEventId(): Long {
+        return try {
+            (importId.split("-").lastOrNull() ?: "0").toString().toLong()
+        } catch (e: NumberFormatException) {
+            0L
+        }
+    }
 
     fun getCalDAVCalendarId() = if (source.contains("-")) (source.split("-").lastOrNull() ?: "0").toString().toInt() else 0
 }
