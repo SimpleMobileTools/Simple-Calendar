@@ -364,7 +364,11 @@ class CalDAVHandler(val context: Context) {
     fun deleteCalDAVEvent(event: Event) {
         val uri = CalendarContract.Events.CONTENT_URI
         val contentUri = ContentUris.withAppendedId(uri, event.getCalDAVEventId())
-        context.contentResolver.delete(contentUri, null, null)
+        try {
+            context.contentResolver.delete(contentUri, null, null)
+        } catch (ignored: SecurityException) {
+
+        }
     }
 
     private fun getCalDAVEventReminders(eventId: Long): List<Int> {
