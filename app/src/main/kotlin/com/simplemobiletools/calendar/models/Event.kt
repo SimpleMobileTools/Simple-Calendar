@@ -104,7 +104,7 @@ data class Event(var id: Int = 0, var startTS: Int = 0, var endTS: Int = 0, var 
         }
     }
 
-    fun getCalDAVEventId() = (importId.split("-").lastOrNull() ?: "0").toString().toLong()
+    fun getCalDAVEventId() = if (importId.contains("-")) (importId.split("-").lastOrNull() ?: "0").toString().toLong() else 0L
 
-    fun getCalDAVCalendarId() = (source.split("-").lastOrNull() ?: "0").toString().toInt()
+    fun getCalDAVCalendarId() = if (source.contains("-")) (source.split("-").lastOrNull() ?: "0").toString().toInt() else 0
 }
