@@ -217,7 +217,7 @@ class CalDAVHandler(val context: Context) {
                 do {
                     val id = cursor.getLongValue(CalendarContract.Events._ID)
                     val title = cursor.getStringValue(CalendarContract.Events.TITLE) ?: continue
-                    val description = cursor.getStringValue(CalendarContract.Events.DESCRIPTION)
+                    val description = cursor.getStringValue(CalendarContract.Events.DESCRIPTION) ?: ""
                     val startTS = (cursor.getLongValue(CalendarContract.Events.DTSTART) / 1000).toInt()
                     var endTS = (cursor.getLongValue(CalendarContract.Events.DTEND) / 1000).toInt()
                     val allDay = cursor.getIntValue(CalendarContract.Events.ALL_DAY)
@@ -366,7 +366,7 @@ class CalDAVHandler(val context: Context) {
         val contentUri = ContentUris.withAppendedId(uri, event.getCalDAVEventId())
         try {
             context.contentResolver.delete(contentUri, null, null)
-        } catch (ignored: SecurityException) {
+        } catch (ignored: Exception) {
 
         }
     }
