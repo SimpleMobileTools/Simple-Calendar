@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 2.7.4 *(2017-09-02)*
+----------------------------
+
+ * Fixed importing .ics files
+ * Made errors at importing events more verbose
+
 Version 2.7.3 *(2017-08-29)*
 ----------------------------
 
