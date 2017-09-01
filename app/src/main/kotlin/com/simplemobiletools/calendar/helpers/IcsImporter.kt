@@ -108,7 +108,7 @@ class IcsImporter {
                             event.endTS -= DAY
                         }
 
-                        activity.dbHelper.insert(event, true) {
+                        activity.dbHelper.insert(event, false) {
                             for (exceptionTS in curRepeatExceptions) {
                                 activity.dbHelper.addEventRepeatException(it, exceptionTS)
                             }
