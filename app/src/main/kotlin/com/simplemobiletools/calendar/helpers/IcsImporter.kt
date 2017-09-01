@@ -130,8 +130,8 @@ class IcsImporter {
     }
 
     private fun getTimestamp(fullString: String): Int {
-        try {
-            return if (fullString.startsWith(';')) {
+        return try {
+            if (fullString.startsWith(';')) {
                 val value = fullString.substring(fullString.lastIndexOf(':') + 1)
                 if (!value.contains("T"))
                     curFlags = curFlags or FLAG_ALL_DAY
@@ -142,7 +142,7 @@ class IcsImporter {
             }
         } catch (e: Exception) {
             eventsFailed++
-            return -1
+            -1
         }
     }
 
@@ -154,11 +154,11 @@ class IcsImporter {
         }
 
         val eventId = context.dbHelper.getEventTypeIdWithTitle(eventTypeTitle)
-        if (eventId == -1) {
+        curEventType = if (eventId == -1) {
             val eventType = EventType(0, eventTypeTitle, context.resources.getColor(R.color.color_primary))
-            curEventType = context.dbHelper.insertEventType(eventType)
+            context.dbHelper.insertEventType(eventType)
         } else {
-            curEventType = eventId
+            eventId
         }
     }
 
@@ -177,8 +177,8 @@ class IcsImporter {
         curDescription = ""
         curImportId = ""
         curFlags = 0
-        curReminderMinutes = ArrayList<Int>()
-        curRepeatExceptions = ArrayList<Int>()
+        curReminderMinutes = ArrayList()
+        curRepeatExceptions = ArrayList()
         curRepeatInterval = 0
         curRepeatLimit = 0
         curRepeatRule = 0
