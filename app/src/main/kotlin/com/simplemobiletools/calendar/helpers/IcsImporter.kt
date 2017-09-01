@@ -1,11 +1,14 @@
 package com.simplemobiletools.calendar.helpers
 
 import android.content.Context
+import android.widget.Toast
 import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.helpers.IcsImporter.ImportResult.*
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.models.EventType
+import com.simplemobiletools.commons.extensions.showErrorToast
 import java.io.File
 
 class IcsImporter {
@@ -32,15 +35,15 @@ class IcsImporter {
     var eventsImported = 0
     var eventsFailed = 0
 
-    fun importEvents(context: Context, path: String, defaultEventType: Int): ImportResult {
+    fun importEvents(activity: SimpleActivity, path: String, defaultEventType: Int): ImportResult {
         try {
-            val importIDs = context.dbHelper.getImportIds()
+            val importIDs = activity.dbHelper.getImportIds()
             var prevLine = ""
 
             val inputStream = if (path.contains("/")) {
                 File(path).inputStream()
             } else {
-                context.assets.open(path)
+                activity.assets.open(path)
             }
 
             inputStream.bufferedReader().use {
@@ -84,7 +87,7 @@ class IcsImporter {
                             curReminderMinutes.add(Parser().parseDurationSeconds(line.substring(TRIGGER.length)) / 60)
                     } else if (line.startsWith(CATEGORIES)) {
                         val categories = line.substring(CATEGORIES.length)
-                        tryAddCategories(categories, context)
+                        tryAddCategories(categories, activity)
                     } else if (line.startsWith(LAST_MODIFIED)) {
                         curLastModified = getTimestamp(line.substring(LAST_MODIFIED.length)) * 1000L
                     } else if (line.startsWith(EXDATE)) {
@@ -105,9 +108,9 @@ class IcsImporter {
                             event.endTS -= DAY
                         }
 
-                        context.dbHelper.insert(event, true) {
+                        activity.dbHelper.insert(event, true) {
                             for (exceptionTS in curRepeatExceptions) {
-                                context.dbHelper.addEventRepeatException(it, exceptionTS)
+                                activity.dbHelper.addEventRepeatException(it, exceptionTS)
                             }
                             eventsImported++
                             resetValues()
@@ -117,6 +120,7 @@ class IcsImporter {
                 }
             }
         } catch (e: Exception) {
+            activity.showErrorToast(e.toString(), Toast.LENGTH_LONG)
             eventsFailed++
         }
 
