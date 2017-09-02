@@ -225,7 +225,7 @@ class CalDAVHandler(val context: Context) {
                     val reminders = getCalDAVEventReminders(id)
 
                     if (endTS == 0) {
-                        val duration = cursor.getStringValue(CalendarContract.Events.DURATION)
+                        val duration = cursor.getStringValue(CalendarContract.Events.DURATION) ?: ""
                         endTS = startTS + Parser().parseDurationSeconds(duration)
                     }
 
