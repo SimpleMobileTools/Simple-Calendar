@@ -163,7 +163,7 @@
     <string name="select_event_type">Selecione um tipo de evento</string>
     <string name="move_events_into_default">Mover eventos afetados para o tipo de evento padrão</string>
     <string name="remove_affected_events">Remover permanentemente os eventos afetados</string>
-    <string name="unsync_caldav_calendar">To remove a CalDAV calendar you have to unsynchronize it</string>
+    <string name="unsync_caldav_calendar">Para remover um calendário CalDAV, tem que cancelar a sua sincronização</string>
 
     <!-- Holidays -->
     <string name="holidays">Feriados</string>
@@ -196,11 +196,11 @@
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Selecione os calendários a sincronizar</string>
     <string name="manage_synced_calendars">Gerir calendários sincronizados</string>
-    <string name="store_locally_only">Store locally only</string>
-    <string name="refresh_caldav_calendars">Refresh CalDAV calendars</string>
-    <string name="refreshing">Refreshing…</string>
-    <string name="refreshing_complete">Refreshing complete</string>
-    <string name="editing_calendar_failed">Editing calendar failed</string>
+    <string name="store_locally_only">Guardar apenas localmente</string>
+    <string name="refresh_caldav_calendars">Atualizar calendários CalDAV</string>
+    <string name="refreshing">A atualizar…</string>
+    <string name="refreshing_complete">Atualização terminada</string>
+    <string name="editing_calendar_failed">Falha ao editar o calendário</string>
 
     <plurals name="by_minutes">
         <item quantity="one">%1$d minuto</item>
@@ -275,7 +275,7 @@
 
         A permissão de armazenamento é necessária apenas para importar eventos de ficheiros .ics.
 
-        Internet and Contacts permissions are used only at Google sync.
+        A permissão para aceder à Internet e aos contactos apenas é utilizada para a sincronização Google.
 
         Esta aplicação é apenas parte de um conjunto mais vasto de aplicações. Saiba mais em http://www.simplemobiletools.com
     </string>
