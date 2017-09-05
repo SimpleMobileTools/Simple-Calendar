@@ -19,6 +19,11 @@ class IcsExporter {
 
     fun exportEvents(activity: SimpleActivity, file: File, events: ArrayList<Event>, callback: (result: ExportResult) -> Unit) {
         activity.getFileOutputStream(file) {
+            if (it == null) {
+                callback(EXPORT_FAIL)
+                return@getFileOutputStream
+            }
+
             it.bufferedWriter().use { out ->
                 out.writeLn(BEGIN_CALENDAR)
                 for (event in events) {
