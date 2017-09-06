@@ -221,17 +221,20 @@ private fun getSnoozePendingIntent(context: Context, event: Event): PendingInten
     return PendingIntent.getService(context, event.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 }
 
-fun Context.launchNewEventIntent(startNewTask: Boolean = false, today: Boolean = false) {
-    val code = Formatter.getDayCodeFromDateTime(DateTime(DateTimeZone.getDefault()).plusDays(if (today) 0 else 1))
+fun Context.launchNewEventIntent() {
+    val code = Formatter.getDayCodeFromDateTime(DateTime(DateTimeZone.getDefault()))
     Intent(applicationContext, EventActivity::class.java).apply {
         putExtra(NEW_EVENT_START_TS, getNewEventTimestampFromCode(code))
-        if (startNewTask)
-            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(this)
     }
 }
 
-fun Context.getNewEventTimestampFromCode(dayCode: String) = Formatter.getLocalDateTimeFromCode(dayCode).withTime(13, 0, 0, 0).seconds()
+fun Context.getNewEventTimestampFromCode(dayCode: String): Int {
+    val currHour = DateTime(System.currentTimeMillis(), DateTimeZone.getDefault()).hourOfDay
+    val dateTime = Formatter.getLocalDateTimeFromCode(dayCode).withHourOfDay(currHour)
+    return dateTime.plusHours(1).withMinuteOfHour(0).withSecondOfMinute(0).withMillisOfSecond(0).seconds()
+}
 
 fun Context.getCurrentOffset() = SimpleDateFormat("Z", Locale.getDefault()).format(Date())
 

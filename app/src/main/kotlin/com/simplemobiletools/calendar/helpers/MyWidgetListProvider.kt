@@ -87,7 +87,7 @@ class MyWidgetListProvider : AppWidgetProvider() {
         mContext = context
 
         when (intent.action) {
-            NEW_EVENT -> context.launchNewEventIntent(true, true)
+            NEW_EVENT -> context.launchNewEventIntent()
             LAUNCH_TODAY -> launchDayActivity()
             else -> super.onReceive(context, intent)
         }

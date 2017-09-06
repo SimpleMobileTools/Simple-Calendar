@@ -120,7 +120,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
         when (action) {
             PREV -> getPrevMonth()
             NEXT -> getNextMonth()
-            NEW_EVENT -> mContext.launchNewEventIntent(true)
+            NEW_EVENT -> mContext.launchNewEventIntent()
             else -> super.onReceive(context, intent)
         }
     }
