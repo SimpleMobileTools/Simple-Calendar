@@ -25,16 +25,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }
-        fdroid {
-            initWith debug
-        }
     }
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
         debug.java.srcDirs += 'src/debug/kotlin'
         release.java.srcDirs += 'src/release/kotlin'
-        fdroid.java.srcDirs += 'src/fdroid/kotlin'
     }
 
     lintOptions {
