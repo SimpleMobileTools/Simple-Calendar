@@ -453,9 +453,9 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.share -> shareEvent()
-            R.id.delete -> deleteEvent()
             R.id.save -> saveEvent()
+            R.id.delete -> deleteEvent()
+            R.id.share -> shareEvent()
             else -> return super.onOptionsItemSelected(item)
         }
         return true
