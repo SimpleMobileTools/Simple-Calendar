@@ -5,12 +5,12 @@
     <string name="weekly_view">Wochenansicht</string>
     <string name="monthly_view">Monatsansicht</string>
     <string name="yearly_view">Jahresansicht</string>
-    <string name="simple_event_list">Einfache Termin-Liste</string>
+    <string name="simple_event_list">Einfache Terminliste</string>
     <string name="no_upcoming_events">Keine anstehenden Termine</string>
     <string name="add_some_events">Du kannst neue Termine mit dem Plus Button unten rechts erstellen.</string>
     <string name="details">Details</string>
     <string name="go_to_today">Gehe zu Heute</string>
-    <string name="no_app_for_ics">No app capable of handling .ics files has been found</string>
+    <string name="no_app_for_ics">Keine Applikation kann .ics Dateien handhaben</string>
     <string name="snooze">Snooze</string>
 
     <!-- Widget titles -->
@@ -41,7 +41,7 @@
     <string name="years_raw">Jahre</string>
     <string name="repeat_till">Wiederholen bis</string>
     <string name="forever">unendlich</string>
-    <string name="event_is_repeatable">The event is repeatable</string>
+    <string name="event_is_repeatable">Termin ist wiederholbar</string>
     <string name="selection_contains_repetition">Die Auswahl enthält Events mit Wiederholungen</string>
     <string name="delete_one_only">Lösche nur die ausgewählte Wiederholung</string>
     <string name="delete_all_occurrences">Lösche alle Wiederholungen</string>
@@ -49,18 +49,18 @@
     <string name="update_all_occurrences">Ändere alle Wiederholungen</string>
     <string name="repeat_till_date">Wiederhole bis zu bestimmtem Datum</string>
     <string name="repeat_x_times">Wiederhole x Mal</string>
-    <string name="repeat_forever">Repeat forever</string>
+    <string name="repeat_forever">Immer wiederholen</string>
     <string name="times">Mal</string>
     <string name="repeat">Wiederholung</string>
-    <string name="repeat_on">Repeat on</string>
+    <string name="repeat_on">Wiederholen</string>
     <string name="every_day">Täglich</string>
     <string name="selected_days">an ausgewählten Tagen</string>
-    <string name="the_same_day">The same day</string>
-    <string name="the_last_day">The last day</string>
-    <string name="repeat_on_the_same_day">Repeat on the same day each month</string>
-    <string name="repeat_on_the_last_day">Repeat on the last day of the month</string>
-    <string name="repeat_every_m">Repeat every</string>
-    <string name="every_m">jeden</string>
+    <string name="the_same_day">Der gleiche Tag</string>
+    <string name="the_last_day">Der letzte Tag</string>
+    <string name="repeat_on_the_same_day">Am gleichen Tag jeden Monats wiederholen</string>
+    <string name="repeat_on_the_last_day">Am letzten Tag des Monats wiederholen</string>
+    <string name="repeat_every_m">Wiederhole jeden</string>
+    <string name="every_m">Jeden</string>
     <string name="first_m">ersten</string>
     <string name="second_m">zweiten</string>
     <string name="third_m">driten</string>
@@ -69,7 +69,7 @@
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
-    <string name="repeat_every_f">Repeat every</string>
+    <string name="repeat_every_f">Wiederhole jeden</string>
     <string name="every_f">Jeden</string>
     <string name="first_f">ersten</string>
     <string name="second_f">zweiten</string>
@@ -124,8 +124,8 @@
     </plurals>
 
     <!-- Export / Import -->
-    <string name="importing">Importing&#8230;</string>
-    <string name="exporting">Exporting&#8230;</string>
+    <string name="importing">Importiere&#8230;</string>
+    <string name="exporting">Exportiere&#8230;</string>
     <string name="import_events">Importiere Termine</string>
     <string name="export_events">Exportiere Termine</string>
     <string name="import_events_from_ics">Importiere Termine aus .ics Datei</string>
@@ -139,10 +139,10 @@
     <string name="invalid_file_format">Ungültiges Dateiformat</string>
     <string name="default_event_type">Standard-Termin-Typ</string>
     <string name="no_events_for_exporting">Keine Termine zum exportieren gefunden</string>
-    <string name="export_past_events_too">vergagene Termine auch exportieren</string>
-    <string name="include_event_types">Include event types</string>
-    <string name="filename_without_ics">Filename (without .ics)</string>
-    <string name="no_title">No title</string>
+    <string name="export_past_events_too">Vergangene Termine auch exportieren</string>
+    <string name="include_event_types">Beziehe Termintypen mit ein</string>
+    <string name="filename_without_ics">Dateiname (ohne .ics)</string>
+    <string name="no_title">Kein Titel</string>
 
     <!-- Event details -->
     <string name="title">Titel</string>
@@ -153,7 +153,7 @@
     <string name="week">Woche</string>
 
     <!-- Event types -->
-    <string name="event_types">Termin-Typen</string>
+    <string name="event_types">Termintypen</string>
     <string name="add_new_type">Füge einen neuen Typ hinzu</string>
     <string name="edit_type">Typ bearbeiten</string>
     <string name="type_already_exists">Typ mit diesem Namen existiert bereits</string>
@@ -161,18 +161,18 @@
     <string name="regular_event">Regelmässiger Termin</string>
     <string name="cannot_delete_default_type">Standart-Termin-Typ kann nicht gelöscht werden</string>
     <string name="select_event_type">Wähle einen Termin Typ</string>
-    <string name="move_events_into_default">Move affected events into the default event type</string>
-    <string name="remove_affected_events">Permanently remove affected events</string>
-    <string name="unsync_caldav_calendar">To remove a CalDAV calendar you have to unsynchronize it</string>
+    <string name="move_events_into_default">Verschiebe betroffene Termine in den Standard Termintyp</string>
+    <string name="remove_affected_events">Lösche betroffene Termine permanent</string>
+    <string name="unsync_caldav_calendar">Um CalDAV Kalender zu entfernen, musst du diese desynchronisieren</string>
 
     <!-- Holidays -->
-    <string name="holidays">Holidays</string>
-    <string name="add_holidays">Add holidays</string>
-    <string name="national_holidays">National holidays</string>
-    <string name="religious_holidays">Religious holidays</string>
-    <string name="holidays_imported_successfully">Holidays have been successfully imported into a new event type</string>
-    <string name="importing_some_holidays_failed">Importing some events failed</string>
-    <string name="importing_holidays_failed">Importing holidays failed</string>
+    <string name="holidays">Feiertage</string>
+    <string name="add_holidays">Feiertage hinzufügen</string>
+    <string name="national_holidays">Nationale Feiertage</string>
+    <string name="religious_holidays">Religiöse Feiertage</string>
+    <string name="holidays_imported_successfully">Feiertage wurden erfolgreich in einen neuen Termintypen importiert</string>
+    <string name="importing_some_holidays_failed">Importieren einiger Termine fehlgeschlagen</string>
+    <string name="importing_holidays_failed">Importieren von Feiertagen fehlgeschlagen</string>
 
     <!-- Settings -->
     <string name="manage_event_types">Verwalte Termin-Typen</string>
@@ -187,20 +187,20 @@
     <string name="no_ringtone_picker">Keine App zum Setzen des Klingentons gefunden</string>
     <string name="no_ringtone_selected">Kein Klingelton gewählt</string>
     <string name="day_end_before_start">Terminbeginn kann nicht vor Terminende liegen</string>
-    <string name="caldav_sync">CalDAV sync</string>
-    <string name="display_past_events">Display events from the past</string>
-    <string name="snooze_delay">Postpone reminder with Snooze by</string>
+    <string name="caldav_sync">CalDAV Sync</string>
+    <string name="display_past_events">Vergangene Termine anzeigen</string>
+    <string name="snooze_delay">Erinnerung mit Snooze verschieben um</string>
     <string name="widgets">Widgets</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
-    <string name="select_caldav_calendars">Select calendars to sync</string>
-    <string name="manage_synced_calendars">Manage synced calendars</string>
-    <string name="store_locally_only">Store locally only</string>
-    <string name="refresh_caldav_calendars">Refresh CalDAV calendars</string>
-    <string name="refreshing">Refreshing…</string>
-    <string name="refreshing_complete">Refreshing complete</string>
-    <string name="editing_calendar_failed">Editing calendar failed</string>
+    <string name="select_caldav_calendars">Wähle Kalender zur Synchronisierung</string>
+    <string name="manage_synced_calendars">Verwalte synchronisierte Kalender</string>
+    <string name="store_locally_only">Nur lokal speichern</string>
+    <string name="refresh_caldav_calendars">Aktualisiere CalDAV Kalender</string>
+    <string name="refreshing">Aktualisiere…</string>
+    <string name="refreshing_complete">Aktualisierung abgeschlossen</string>
+    <string name="editing_calendar_failed">Ändern des Kalenders fehlgeschlagen</string>
 
     <plurals name="by_minutes">
         <item quantity="one">%1$d minute</item>
@@ -212,7 +212,7 @@
         <item quantity="other">%1$d hours</item>
     </plurals>
 
-    <string name="never">Never</string>
+    <string name="never">Nie</string>
 
     <string name="january">Januar</string>
     <string name="february">Februar</string>
