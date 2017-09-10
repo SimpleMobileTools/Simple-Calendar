@@ -1,6 +1,15 @@
 Changelog
 ==========
 
+Version 2.7.5 *(2017-09-10)*
+----------------------------
+
+ * Fixed some CalDAV sync issues
+ * Use the next full hour as the default event time, not 13:00 the next day
+ * Color the days in yearly view based on event types
+ * Allow displaying past events in the event list widget
+ * Make sure the Save and Delete buttons have the highest priority at the actionmenu
+
 Version 2.7.4 *(2017-09-02)*
 ----------------------------
 
