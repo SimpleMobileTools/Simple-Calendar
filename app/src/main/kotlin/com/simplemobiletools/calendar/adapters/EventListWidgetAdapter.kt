@@ -21,14 +21,14 @@ import org.joda.time.DateTime
 import java.util.*
 
 class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteViewsService.RemoteViewsFactory {
-    val ITEM_EVENT = 0
-    val ITEM_HEADER = 1
+    private val ITEM_EVENT = 0
+    private val ITEM_HEADER = 1
 
-    var events = ArrayList<ListItem>()
-    val textColor = context.config.widgetTextColor
-    var mediumFontSize = context.config.getFontSize()
-    var todayDate = ""
-    val allDayString = context.resources.getString(R.string.all_day)
+    private val allDayString = context.resources.getString(R.string.all_day)
+    private var events = ArrayList<ListItem>()
+    private val textColor = context.config.widgetTextColor
+    private var mediumFontSize = context.config.getFontSize()
+    private var todayDate = ""
 
     override fun getViewAt(position: Int): RemoteViews? {
         val type = getItemViewType(position)
@@ -90,7 +90,7 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
         return remoteView
     }
 
-    fun getItemViewType(position: Int) = if (events[position] is ListEvent) ITEM_EVENT else ITEM_HEADER
+    private fun getItemViewType(position: Int) = if (events[position] is ListEvent) ITEM_EVENT else ITEM_HEADER
 
     override fun getLoadingView() = null
 
@@ -106,7 +106,7 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
 
     override fun onDataSetChanged() {
         mediumFontSize = context.config.getFontSize()
-        val fromTS = DateTime().seconds()
+        val fromTS = DateTime().seconds() - context.config.displayPastEvents * 60
         val toTS = DateTime().plusYears(1).seconds()
         context.dbHelper.getEventsInBackground(fromTS, toTS) {
             val listItems = ArrayList<ListItem>(it.size)
