@@ -48,7 +48,7 @@ class YearlyCalendarImpl(val callback: YearlyCalendar, val context: Context, val
         val day = dateTime.dayOfMonth
 
         if (arr[month] == null)
-            arr.put(month, ArrayList<Int>())
+            arr.put(month, ArrayList())
 
         if (dateTime.year == year)
             arr.get(month).add(day)

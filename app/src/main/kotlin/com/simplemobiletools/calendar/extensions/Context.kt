@@ -238,11 +238,11 @@ fun Context.getNewEventTimestampFromCode(dayCode: String): Int {
 
 fun Context.getCurrentOffset() = SimpleDateFormat("Z", Locale.getDefault()).format(Date())
 
-fun Context.getSyncedCalDAVCalendars() = CalDAVHandler(this).getCalDAVCalendars(config.caldavSyncedCalendarIDs)
+fun Context.getSyncedCalDAVCalendars() = CalDAVHandler(this).getCalDAVCalendars(null, config.caldavSyncedCalendarIDs)
 
 fun Context.recheckCalDAVCalendars(callback: () -> Unit) {
     if (config.caldavSync) {
-        CalDAVHandler(this).refreshCalendars(callback)
+        CalDAVHandler(this).refreshCalendars(null, callback)
     }
 }
 

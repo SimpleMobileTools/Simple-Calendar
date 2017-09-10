@@ -7,6 +7,7 @@ import android.database.Cursor
 import android.provider.CalendarContract
 import android.provider.CalendarContract.Reminders
 import android.util.SparseIntArray
+import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.hasCalendarPermission
@@ -17,13 +18,14 @@ import com.simplemobiletools.calendar.models.EventType
 import com.simplemobiletools.commons.extensions.getIntValue
 import com.simplemobiletools.commons.extensions.getLongValue
 import com.simplemobiletools.commons.extensions.getStringValue
+import com.simplemobiletools.commons.extensions.showErrorToast
 import java.util.*
 import kotlin.collections.ArrayList
 
 class CalDAVHandler(val context: Context) {
-    fun refreshCalendars(callback: () -> Unit) {
+    fun refreshCalendars(activity: SimpleActivity? = null, callback: () -> Unit) {
         val dbHelper = context.dbHelper
-        getCalDAVCalendars(context.config.caldavSyncedCalendarIDs).forEach {
+        getCalDAVCalendars(activity, context.config.caldavSyncedCalendarIDs).forEach {
             val localEventType = dbHelper.getEventTypeWithCalDAVCalendarId(it.id)
             localEventType?.apply {
                 title = it.displayName
@@ -33,13 +35,13 @@ class CalDAVHandler(val context: Context) {
                 dbHelper.updateLocalEventType(this)
             }
 
-            CalDAVHandler(context).fetchCalDAVCalendarEvents(it.id, localEventType!!.id)
+            CalDAVHandler(context).fetchCalDAVCalendarEvents(it.id, localEventType!!.id, activity)
         }
         context.scheduleCalDAVSync(true)
         callback()
     }
 
-    fun getCalDAVCalendars(ids: String = ""): List<CalDAVCalendar> {
+    fun getCalDAVCalendars(activity: SimpleActivity? = null, ids: String = ""): List<CalDAVCalendar> {
         val calendars = ArrayList<CalDAVCalendar>()
         if (!context.hasCalendarPermission()) {
             return calendars
@@ -70,6 +72,8 @@ class CalDAVHandler(val context: Context) {
                     calendars.add(calendar)
                 } while (cursor.moveToNext())
             }
+        } catch (e: Exception) {
+            activity?.showErrorToast(e)
         } finally {
             cursor?.close()
         }
@@ -183,14 +187,12 @@ class CalDAVHandler(val context: Context) {
         }
 
         val sortedColors = ArrayList<Int>(colors.size())
-        for (i in 0 until colors.size()) {
-            sortedColors.add(colors[i])
-        }
+        (0 until colors.size()).mapTo(sortedColors) { colors[it] }
 
         return sortedColors
     }
 
-    private fun fetchCalDAVCalendarEvents(calendarId: Int, eventTypeId: Int) {
+    private fun fetchCalDAVCalendarEvents(calendarId: Int, eventTypeId: Int, activity: SimpleActivity?) {
         val importIdsMap = HashMap<String, Event>()
         val fetchedEventIds = ArrayList<String>()
         val existingEvents = context.dbHelper.getEventsFromCalDAVCalendar(calendarId)
@@ -256,6 +258,8 @@ class CalDAVHandler(val context: Context) {
                     }
                 } while (cursor.moveToNext())
             }
+        } catch (e: Exception) {
+            activity?.showErrorToast(e)
         } finally {
             cursor?.close()
         }
@@ -396,5 +400,5 @@ class CalDAVHandler(val context: Context) {
         return reminders
     }
 
-    fun getCalDAVEventImportId(calendarId: Int, eventId: Long) = "$CALDAV-$calendarId-$eventId"
+    private fun getCalDAVEventImportId(calendarId: Int, eventId: Long) = "$CALDAV-$calendarId-$eventId"
 }

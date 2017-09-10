@@ -153,7 +153,7 @@ class SettingsActivity : SimpleActivity() {
                             dbHelper.insertEventType(eventType)
                         }
                     }
-                    CalDAVHandler(applicationContext).refreshCalendars {}
+                    CalDAVHandler(applicationContext).refreshCalendars(this) {}
                 }
 
                 val removedCalendarIds = oldCalendarIds.filter { !newCalendarIds.contains(it) }
