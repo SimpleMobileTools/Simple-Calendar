@@ -6,7 +6,7 @@
     <string name="monthly_view">Månadsvy</string>
     <string name="yearly_view">Årsvy</string>
     <string name="simple_event_list">Händelselista</string>
-    <string name="no_upcoming_events">Det ser ut som att du inte har några kommandechändelser.</string>
+    <string name="no_upcoming_events">Det ser ut som att du inte har några kommande händelser.</string>
     <string name="add_some_events">Du kan lägga till händelser via plus-knappen som du ser längst ner.</string>
     <string name="details">Detaljer</string>
     <string name="go_to_today">Gå till idag</string>
@@ -22,9 +22,9 @@
     <string name="edit_event">Redigera händelse</string>
     <string name="new_event">Ny händelse</string>
     <string name="title_empty">Titeln får inte vara tom</string>
-    <string name="end_before_start">Händelsen kan inte sluta före den har startat</string>
+    <string name="end_before_start">Händelsen kan inte sluta innan den har startat</string>
     <string name="event_added">Händelsen tillagd</string>
-    <string name="past_event_added">Händelsen ät tillagd</string>
+    <string name="past_event_added">Händelsen är tillagd</string>
     <string name="event_updated">Händelsen uppdaterad</string>
     <string name="filter">Filtrera</string>
     <string name="filter_events_by_type">Filtrera händelser efter typ</string>
@@ -142,7 +142,7 @@
     <string name="export_past_events_too">Exportera även tidigare händelser</string>
     <string name="include_event_types">Inkludera händelsetyper</string>
     <string name="filename_without_ics">Filnamn (utan .ics)</string>
-    <string name="no_title">No title</string>
+    <string name="no_title">Ingen titel</string>
 
     <!-- Event details -->
     <string name="title">Titel</string>
@@ -163,7 +163,7 @@
     <string name="select_event_type">Välj en händelsetyp</string>
     <string name="move_events_into_default">Flytta berörda händelser till standardhändelsetypen</string>
     <string name="remove_affected_events">Ta bort berörda händelser permanent</string>
-    <string name="unsync_caldav_calendar">To remove a CalDAV calendar you have to unsynchronize it</string>
+    <string name="unsync_caldav_calendar">Du måste sluta synkronisera CalDAV-kalendern innan du kan ta bort den</string>
 
     <!-- Holidays -->
     <string name="holidays">Helgdagar</string>
@@ -187,20 +187,20 @@
     <string name="no_ringtone_picker">Hittade ingen app som kan ställa in ljudet</string>
     <string name="no_ringtone_selected">Ingen</string>
     <string name="day_end_before_start">Dagen kan inte börja innan den tar slut</string>
-    <string name="caldav_sync">CalDAV sync</string>
+    <string name="caldav_sync">CalDAV-synkronisering</string>
     <string name="display_past_events">Visa tidigare händelser</string>
     <string name="snooze_delay">Skjut upp påminnelse med Snooza</string>
-    <string name="widgets">Widgets</string>
+    <string name="widgets">Widgetar</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
-    <string name="select_caldav_calendars">Select calendars to sync</string>
-    <string name="manage_synced_calendars">Manage synced calendars</string>
-    <string name="store_locally_only">Store locally only</string>
-    <string name="refresh_caldav_calendars">Refresh CalDAV calendars</string>
-    <string name="refreshing">Refreshing…</string>
-    <string name="refreshing_complete">Refreshing complete</string>
-    <string name="editing_calendar_failed">Editing calendar failed</string>
+    <string name="select_caldav_calendars">Välj de kalendrar som du vill synkronisera</string>
+    <string name="manage_synced_calendars">Hantera synkroniserade kalendrar</string>
+    <string name="store_locally_only">Spara bara lokalt</string>
+    <string name="refresh_caldav_calendars">Uppdatera CalDAV-kalendrar</string>
+    <string name="refreshing">Uppdaterar…</string>
+    <string name="refreshing_complete">Uppdateringen är klar</string>
+    <string name="editing_calendar_failed">Det gick inte att redigera kalendern</string>
 
     <plurals name="by_minutes">
         <item quantity="one">%1$d minut</item>
@@ -267,9 +267,9 @@
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">En enkel kalender med händelser, anpassningsbar widget och utan reklam.</string>
     <string name="app_long_description">
-        En fristående kalender utan några andra kalenderintegration. Du kan enkelt skapa återkommande händelser och ställa in påminnelser, den kan också visa veckonumret.
+        En fristående kalender utan någon annan kalenderintegration. Du kan enkelt skapa återkommande händelser och ställa in påminnelser, den kan också visa veckonumret.
 
-        Innehåller en skalbart 4x4 widget där du kan ändra textfärgen och färgen på bakgrunden.
+        Innehåller en skalbar 4x4 widget där du kan ändra textfärgen och färgen på bakgrunden.
 
         Innehåller ingen reklam eller onödiga behörigheter. Det är helt och hållet opensource, innehåller anpassningsbara färger.
 
