@@ -19,7 +19,7 @@ import com.simplemobiletools.calendar.extensions.getAppropriateTheme
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.interfaces.NavigationListener
-import com.simplemobiletools.calendar.models.Day
+import com.simplemobiletools.calendar.models.DayMonthly
 import com.simplemobiletools.commons.extensions.adjustAlpha
 import com.simplemobiletools.commons.extensions.beGone
 import com.simplemobiletools.commons.extensions.beVisibleIf
@@ -82,7 +82,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         mCalendar.updateMonthlyCalendar(Formatter.getDateTimeFromCode(mDayCode))
     }
 
-    override fun updateMonthlyCalendar(month: String, days: List<Day>) {
+    override fun updateMonthlyCalendar(month: String, days: List<DayMonthly>) {
         activity?.runOnUiThread {
             mHolder.top_value.text = month
             mHolder.top_value.setTextColor(mConfig.textColor)
@@ -156,7 +156,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         }
     }
 
-    private fun updateDays(days: List<Day>) {
+    private fun updateDays(days: List<DayMonthly>) {
         val displayWeekNumbers = mConfig.displayWeekNumbers
         val len = days.size
 
@@ -210,7 +210,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         }
     }
 
-    private fun getDayDotColor(day: Day, defaultColor: Int): Int {
+    private fun getDayDotColor(day: DayMonthly, defaultColor: Int): Int {
         val colors = day.eventColors.distinct()
         return if (colors.size == 1)
             colors[0]

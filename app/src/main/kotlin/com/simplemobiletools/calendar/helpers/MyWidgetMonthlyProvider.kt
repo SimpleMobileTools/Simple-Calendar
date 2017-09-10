@@ -18,7 +18,7 @@ import com.simplemobiletools.calendar.activities.SplashActivity
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.launchNewEventIntent
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
-import com.simplemobiletools.calendar.models.Day
+import com.simplemobiletools.calendar.models.DayMonthly
 import com.simplemobiletools.commons.extensions.adjustAlpha
 import org.joda.time.DateTime
 
@@ -135,7 +135,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
         mCalendar?.getMonth(mTargetDate)
     }
 
-    fun updateDays(days: List<Day>) {
+    fun updateDays(days: List<DayMonthly>) {
         val displayWeekNumbers = mContext.config.displayWeekNumbers
         val len = days.size
         val packageName = mContext.packageName
@@ -215,7 +215,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
         mRemoteViews?.setTextViewText(R.id.top_value, month)
     }
 
-    override fun updateMonthlyCalendar(month: String, days: List<Day>) {
+    override fun updateMonthlyCalendar(month: String, days: List<DayMonthly>) {
         try {
             updateMonth(month)
             updateDays(days)

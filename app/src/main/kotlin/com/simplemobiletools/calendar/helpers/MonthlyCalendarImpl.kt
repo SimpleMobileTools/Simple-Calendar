@@ -6,7 +6,7 @@ import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.getFilteredEvents
 import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
-import com.simplemobiletools.calendar.models.Day
+import com.simplemobiletools.calendar.models.DayMonthly
 import com.simplemobiletools.calendar.models.Event
 import org.joda.time.DateTime
 import java.util.*
@@ -36,7 +36,7 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
     }
 
     fun getDays() {
-        val days = ArrayList<Day>(DAYS_CNT)
+        val days = ArrayList<DayMonthly>(DAYS_CNT)
 
         val currMonthDays = mTargetDate.dayOfMonth().maximumValue
         var firstDayIndex = mTargetDate.withDayOfMonth(1).dayOfWeek
@@ -67,7 +67,7 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
 
             val newDay = curDay.withDayOfMonth(value)
             val dayCode = Formatter.getDayCodeFromDateTime(newDay)
-            val day = Day(value, isThisMonth, isToday, dayCode, false, newDay.weekOfWeekyear, ArrayList())
+            val day = DayMonthly(value, isThisMonth, isToday, dayCode, false, newDay.weekOfWeekyear, ArrayList())
             days.add(day)
             value++
         }
@@ -76,7 +76,7 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
     }
 
     // it works more often than not, dont touch
-    private fun markDaysWithEvents(days: ArrayList<Day>) {
+    private fun markDaysWithEvents(days: ArrayList<DayMonthly>) {
         mContext.dbHelper.getEventTypes {
             val dayEvents = HashMap<String, ArrayList<Event>>()
             mEvents.forEach {

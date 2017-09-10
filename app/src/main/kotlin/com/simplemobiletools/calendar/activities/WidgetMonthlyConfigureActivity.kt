@@ -17,7 +17,7 @@ import com.simplemobiletools.calendar.helpers.LOW_ALPHA
 import com.simplemobiletools.calendar.helpers.MonthlyCalendarImpl
 import com.simplemobiletools.calendar.helpers.MyWidgetMonthlyProvider
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
-import com.simplemobiletools.calendar.models.Day
+import com.simplemobiletools.calendar.models.DayMonthly
 import com.simplemobiletools.commons.dialogs.ColorPickerDialog
 import com.simplemobiletools.commons.extensions.adjustAlpha
 import com.simplemobiletools.commons.extensions.beVisible
@@ -29,7 +29,7 @@ import org.joda.time.DateTime
 
 class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
     lateinit var mRes: Resources
-    private var mDays: List<Day>? = null
+    private var mDays: List<DayMonthly>? = null
     private var mPackageName = ""
 
     private var mBgAlpha = 0f
@@ -192,7 +192,7 @@ class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
         }
     }
 
-    override fun updateMonthlyCalendar(month: String, days: List<Day>) {
+    override fun updateMonthlyCalendar(month: String, days: List<DayMonthly>) {
         runOnUiThread {
             mDays = days
             updateMonth(month)

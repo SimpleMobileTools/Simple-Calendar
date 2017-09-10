@@ -1,7 +1,7 @@
 package com.simplemobiletools.calendar.interfaces
 
-import com.simplemobiletools.calendar.models.Day
+import com.simplemobiletools.calendar.models.DayMonthly
 
 interface MonthlyCalendar {
-    fun updateMonthlyCalendar(month: String, days: List<Day>)
+    fun updateMonthlyCalendar(month: String, days: List<DayMonthly>)
 }
