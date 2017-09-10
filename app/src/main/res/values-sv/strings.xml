@@ -188,6 +188,7 @@
     <string name="no_ringtone_selected">Ingen</string>
     <string name="day_end_before_start">Dagen kan inte börja innan den tar slut</string>
     <string name="caldav_sync">CalDAV-synkronisering</string>
+    <string name="event_lists">Event lists</string>
     <string name="display_past_events">Visa tidigare händelser</string>
     <string name="snooze_delay">Skjut upp påminnelse med Snooza</string>
     <string name="widgets">Widgetar</string>

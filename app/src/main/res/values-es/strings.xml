@@ -188,6 +188,7 @@
     <string name="no_ringtone_selected">Ninguno</string>
     <string name="day_end_before_start">El día no puede terminar antes de que comience</string>
     <string name="caldav_sync">CalDAV sync</string>
+    <string name="event_lists">Event lists</string>
     <string name="display_past_events">Display events from the past</string>
     <string name="snooze_delay">Postpone reminder with Snooze by</string>
     <string name="widgets">Widgets</string>

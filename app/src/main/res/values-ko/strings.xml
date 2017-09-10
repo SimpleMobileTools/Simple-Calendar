@@ -188,6 +188,7 @@
     <string name="no_ringtone_selected">없음</string>
     <string name="day_end_before_start">요일은 시작하기 전에 끝날 수 없습니다</string>
     <string name="caldav_sync">CalDAV 동기화</string>
+    <string name="event_lists">Event lists</string>
     <string name="display_past_events">과거의 이벤트 표시</string>
     <string name="snooze_delay">스누즈 알림 시간</string>
     <string name="widgets">위젯</string>

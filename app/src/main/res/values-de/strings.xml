@@ -188,6 +188,7 @@
     <string name="no_ringtone_selected">Kein Klingelton gewählt</string>
     <string name="day_end_before_start">Terminbeginn kann nicht vor Terminende liegen</string>
     <string name="caldav_sync">CalDAV Sync</string>
+    <string name="event_lists">Event lists</string>
     <string name="display_past_events">Vergangene Termine anzeigen</string>
     <string name="snooze_delay">Erinnerung mit Snooze verschieben um</string>
     <string name="widgets">Widgets</string>
