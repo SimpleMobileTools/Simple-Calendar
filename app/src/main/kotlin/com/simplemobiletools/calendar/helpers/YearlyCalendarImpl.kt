@@ -6,6 +6,7 @@ import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.getFilteredEvents
 import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.interfaces.YearlyCalendar
+import com.simplemobiletools.calendar.models.DayYearly
 import com.simplemobiletools.calendar.models.Event
 import org.joda.time.DateTime
 import java.util.*
@@ -23,34 +24,38 @@ class YearlyCalendarImpl(val callback: YearlyCalendar, val context: Context, val
 
     private fun gotEvents(events: MutableList<Event>) {
         val filtered = context.getFilteredEvents(events)
-        val arr = SparseArray<ArrayList<Int>>(12)
+        val arr = SparseArray<ArrayList<DayYearly>>(12)
 
-        for ((id, startTS, endTS) in filtered) {
-            val startDateTime = Formatter.getDateTimeFromTS(startTS)
-            markDay(arr, startDateTime)
+        filtered.forEach {
+            val startDateTime = Formatter.getDateTimeFromTS(it.startTS)
+            markDay(arr, startDateTime, it)
 
             val startCode = Formatter.getDayCodeFromDateTime(startDateTime)
-            val endDateTime = Formatter.getDateTimeFromTS(endTS)
+            val endDateTime = Formatter.getDateTimeFromTS(it.endTS)
             val endCode = Formatter.getDayCodeFromDateTime(endDateTime)
             if (startCode != endCode) {
                 var currDateTime = startDateTime
                 while (Formatter.getDayCodeFromDateTime(currDateTime) != endCode) {
                     currDateTime = currDateTime.plusDays(1)
-                    markDay(arr, currDateTime)
+                    markDay(arr, currDateTime, it)
                 }
             }
         }
         callback.updateYearlyCalendar(arr)
     }
 
-    private fun markDay(arr: SparseArray<ArrayList<Int>>, dateTime: DateTime) {
+    private fun markDay(arr: SparseArray<ArrayList<DayYearly>>, dateTime: DateTime, event: Event) {
         val month = dateTime.monthOfYear
         val day = dateTime.dayOfMonth
 
-        if (arr[month] == null)
+        if (arr[month] == null) {
             arr.put(month, ArrayList())
+            for (i in 1..32)
+                arr.get(month).add(DayYearly())
+        }
 
-        if (dateTime.year == year)
-            arr.get(month).add(day)
+        if (dateTime.year == year) {
+            arr.get(month)[day].addColor(event.color)
+        }
     }
 }

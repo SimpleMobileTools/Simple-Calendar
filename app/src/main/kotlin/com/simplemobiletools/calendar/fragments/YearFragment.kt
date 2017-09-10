@@ -14,6 +14,7 @@ import com.simplemobiletools.calendar.helpers.YEAR_LABEL
 import com.simplemobiletools.calendar.helpers.YearlyCalendarImpl
 import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.interfaces.YearlyCalendar
+import com.simplemobiletools.calendar.models.DayYearly
 import com.simplemobiletools.calendar.views.SmallMonthView
 import com.simplemobiletools.commons.extensions.updateTextColors
 import kotlinx.android.synthetic.main.fragment_year.view.*
@@ -89,7 +90,7 @@ class YearFragment : Fragment(), YearlyCalendar {
         mListener = listener
     }
 
-    override fun updateYearlyCalendar(events: SparseArray<ArrayList<Int>>) {
+    override fun updateYearlyCalendar(events: SparseArray<ArrayList<DayYearly>>) {
         if (!isAdded)
             return
 

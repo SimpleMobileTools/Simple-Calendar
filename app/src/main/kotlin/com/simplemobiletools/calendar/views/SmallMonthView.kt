@@ -9,18 +9,18 @@ import android.view.View
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.helpers.MEDIUM_ALPHA
+import com.simplemobiletools.calendar.models.DayYearly
 import com.simplemobiletools.commons.extensions.adjustAlpha
 import java.util.*
 
 class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(context, attrs, defStyle) {
     private var paint: Paint
-    private var coloredPaint: Paint
+    private var todayCirclePaint: Paint
     private var dayWidth = 0f
     private var textColor = 0
-    private var coloredTextColor = 0
     private var days = 31
     private var isLandscape = false
-    private var mEvents: ArrayList<Int>? = null
+    private var mEvents: ArrayList<DayYearly>? = null
 
     var firstDay = 0
     var todaysId = 0
@@ -32,7 +32,7 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
         invalidate()
     }
 
-    fun setEvents(events: ArrayList<Int>?) {
+    fun setEvents(events: ArrayList<DayYearly>?) {
         mEvents = events
         post { invalidate() }
     }
@@ -51,7 +51,6 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
 
         val baseColor = context.config.textColor
         textColor = baseColor.adjustAlpha(MEDIUM_ALPHA)
-        coloredTextColor = context.config.primaryColor.adjustAlpha(MEDIUM_ALPHA)
 
         paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
             color = textColor
@@ -59,8 +58,8 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
             textAlign = Paint.Align.RIGHT
         }
 
-        coloredPaint = Paint(paint)
-        coloredPaint.color = coloredTextColor
+        todayCirclePaint = Paint(paint)
+        todayCirclePaint.color = context.config.primaryColor.adjustAlpha(MEDIUM_ALPHA)
         isLandscape = resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
     }
 
@@ -82,7 +81,7 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
 
                     if (curId == todaysId) {
                         val dividerConstant = if (isLandscape) 6 else 4
-                        canvas.drawCircle(x * dayWidth - dayWidth / dividerConstant, y * dayWidth - dayWidth / dividerConstant, dayWidth * 0.41f, coloredPaint)
+                        canvas.drawCircle(x * dayWidth - dayWidth / dividerConstant, y * dayWidth - dayWidth / dividerConstant, dayWidth * 0.41f, todayCirclePaint)
                     }
                 }
                 curId++
@@ -90,5 +89,14 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
         }
     }
 
-    private fun getPaint(curId: Int) = if (mEvents?.contains(curId) == true) coloredPaint else paint
+    private fun getPaint(curId: Int): Paint {
+        val colors = mEvents?.get(curId)?.eventColors ?: HashSet()
+        if (colors.isNotEmpty()) {
+            val curPaint = Paint(paint)
+            curPaint.color = colors.first()
+            return curPaint
+        }
+
+        return paint
+    }
 }
