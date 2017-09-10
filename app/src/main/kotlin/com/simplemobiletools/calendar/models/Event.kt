@@ -24,21 +24,18 @@ data class Event(var id: Int = 0, var startTS: Int = 0, var endTS: Int = 0, var 
         newStart = when (repeatInterval) {
             DAY -> currStart.plusDays(1)
             else -> {
-                if (repeatInterval % YEAR == 0) {
-                    currStart.plusYears(repeatInterval / YEAR)
-                } else if (repeatInterval % MONTH == 0) {
-                    if (repeatRule == REPEAT_MONTH_SAME_DAY) {
-                        addMonthsWithSameDay(currStart, original)
-                    } else if (repeatRule == REPEAT_MONTH_EVERY_XTH_DAY) {
-                        addXthDayInterval(currStart, original)
-                    } else {
-                        currStart.plusMonths(repeatInterval / MONTH).dayOfMonth().withMaximumValue()
+                when {
+                    repeatInterval % YEAR == 0 -> currStart.plusYears(repeatInterval / YEAR)
+                    repeatInterval % MONTH == 0 -> when (repeatRule) {
+                        REPEAT_MONTH_SAME_DAY -> addMonthsWithSameDay(currStart, original)
+                        REPEAT_MONTH_EVERY_XTH_DAY -> addXthDayInterval(currStart, original)
+                        else -> currStart.plusMonths(repeatInterval / MONTH).dayOfMonth().withMaximumValue()
                     }
-                } else if (repeatInterval % WEEK == 0) {
-                    // step through weekly repetition by days too, as events can trigger multiple times a week
-                    currStart.plusDays(1)
-                } else {
-                    currStart.plusSeconds(repeatInterval)
+                    repeatInterval % WEEK == 0 -> {
+                        // step through weekly repetition by days too, as events can trigger multiple times a week
+                        currStart.plusDays(1)
+                    }
+                    else -> currStart.plusSeconds(repeatInterval)
                 }
             }
         }
