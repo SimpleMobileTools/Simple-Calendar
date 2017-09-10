@@ -19,10 +19,11 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
     private var textColor = 0
     private var coloredTextColor = 0
     private var days = 31
-    private var firstDay = 0
-    private var todaysId = 0
     private var isLandscape = false
     private var mEvents: ArrayList<Int>? = null
+
+    var firstDay = 0
+    var todaysId = 0
 
     constructor(context: Context, attrs: AttributeSet) : this(context, attrs, 0)
 
@@ -31,17 +32,9 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
         invalidate()
     }
 
-    fun setFirstDay(firstDay: Int) {
-        this.firstDay = firstDay
-    }
-
     fun setEvents(events: ArrayList<Int>?) {
         mEvents = events
         post { invalidate() }
-    }
-
-    fun setTodaysId(id: Int) {
-        todaysId = id
     }
 
     init {

@@ -67,7 +67,7 @@ class YearFragment : Fragment(), YearlyCalendar {
             if (!mSundayFirst)
                 dayOfWeek--
 
-            monthView.setFirstDay(dayOfWeek)
+            monthView.firstDay = dayOfWeek
             monthView.setOnClickListener {
                 mListener?.goToDateTime(DateTime().withDate(mYear, i, 1))
             }
@@ -81,7 +81,7 @@ class YearFragment : Fragment(), YearlyCalendar {
             monthLabel.setTextColor(context.config.primaryColor)
 
             val monthView = mView.findViewById(res.getIdentifier("month_${now.monthOfYear}", "id", activity.packageName)) as SmallMonthView
-            monthView.setTodaysId(now.dayOfMonth)
+            monthView.todaysId = now.dayOfMonth
         }
     }
 
