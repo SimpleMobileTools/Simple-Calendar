@@ -43,8 +43,8 @@
     <string name="forever">Opakovat navždy</string>
     <string name="event_is_repeatable">Událost se opakuje</string>
     <string name="selection_contains_repetition">Výběr zahrnuje opakující se události</string>
-    <string name="delete_one_only">Vymazet pouze vybrané výskyty</string>
-    <string name="delete_all_occurrences">Vymazet všechny výskyty</string>
+    <string name="delete_one_only">Vymazat pouze vybrané výskyty</string>
+    <string name="delete_all_occurrences">Vymazat všechny výskyty</string>
     <string name="update_one_only">Změnit pouze vybrané výskyty</string>
     <string name="update_all_occurrences">Změnit všechny výskyty</string>
     <string name="repeat_till_date">Opakovat až do</string>
@@ -79,21 +79,25 @@
 
     <plurals name="days">
         <item quantity="one">%1$d den</item>
+        <item quantity="few">%1$d dni</item>
         <item quantity="other">%1$d dní</item>
     </plurals>
 
     <plurals name="weeks">
         <item quantity="one">%1$d týden</item>
+        <item quantity="few">%1$d týdni</item>
         <item quantity="other">%1$d týdnů</item>
     </plurals>
 
     <plurals name="months">
         <item quantity="one">%1$d měsíc</item>
+        <item quantity="few">%1$d měsíce</item>
         <item quantity="other">%1$d měsíců</item>
     </plurals>
 
     <plurals name="years">
         <item quantity="one">%1$d rok</item>
+        <item quantity="few">%1$d roky</item>
         <item quantity="other">%1$d roků</item>
     </plurals>
 
@@ -110,16 +114,19 @@
 
     <plurals name="minutes_before">
         <item quantity="one">před %1$d minutou</item>
+        <item quantity="few">před %1$d minutami</item>
         <item quantity="other">před %1$d minutami</item>
     </plurals>
 
     <plurals name="hours_before">
         <item quantity="one">před %1$d hodinou</item>
+        <item quantity="few">před %1$d hodinami</item>
         <item quantity="other">před %1$d hodinami</item>
     </plurals>
 
     <plurals name="days_before">
         <item quantity="one">před %1$d dnem</item>
+        <item quantity="few">před %1$d dnami</item>
         <item quantity="other">před %1$d dny</item>
     </plurals>
 
@@ -186,7 +193,7 @@
     <string name="default_event_reminder">Standardní připomenutí události</string>
     <string name="no_ringtone_picker">Nebyla nalezena žádná aplikace, která by mohla nastavit vyzvánění</string>
     <string name="no_ringtone_selected">žádný</string>
-    <string name="day_end_before_start">Den nemúže skončit dřív, než začne</string>
+    <string name="day_end_before_start">Den nemůže skončit dřív, než začne</string>
     <string name="caldav_sync">CalDAV sync</string>
     <string name="event_lists">Seznamy událostí</string>
     <string name="display_past_events">Zobrazit minulé události</string>
@@ -204,13 +211,15 @@
     <string name="editing_calendar_failed">Editování kalendáře se nezdařilo</string>
 
     <plurals name="by_minutes">
-        <item quantity="one">%1$d minuta</item>
-        <item quantity="other">%1$d minuty</item>
+        <item quantity="one">%1$d minutu</item>
+        <item quantity="few">%1$d minuty</item>
+        <item quantity="other">%1$d minut</item>
     </plurals>
 
     <plurals name="by_hours">
         <item quantity="one">%1$d hodina</item>
-        <item quantity="other">%1$d hodiny</item>
+        <item quantity="few">%1$d hodiny</item>
+        <item quantity="other">%1$d hodin</item>
     </plurals>
 
     <string name="never">Nikdy</string>
@@ -266,7 +275,7 @@
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Jednoduchý kalendář s událostmi, přizpůsobitelné widgeta a žádné reklamy.</string>
+    <string name="app_short_description">Jednoduchý kalendář s událostmi, přizpůsobitelné widgety a žádné reklamy.</string>
     <string name="app_long_description">
         Jednoduchý kalendář s volitelnou synchronizací Google. Můžete snadno vytvářet opakující se události a nastavovat připomenutí, můžete také zobrazovat čísla týdnů.
 
