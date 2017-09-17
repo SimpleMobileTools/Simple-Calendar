@@ -10,7 +10,7 @@
     <string name="add_some_events">Vous pouvez ajouter des évènements avec le bouton Plus en bas.</string>
     <string name="details">Détails</string>
     <string name="go_to_today">Aller à aujourd\'hui</string>
-    <string name="no_app_for_ics">No app capable of handling .ics files has been found</string>
+    <string name="no_app_for_ics">Aucune app capable de manipuler des fichier .ics n\'a été trouvée</string>
     <string name="snooze">Snooze</string>
 
     <!-- Widget titles -->
@@ -41,41 +41,41 @@
     <string name="years_raw">années</string>
     <string name="repeat_till">Répéter jusqu\'à</string>
     <string name="forever">Pour toujours</string>
-    <string name="event_is_repeatable">The event is repeatable</string>
+    <string name="event_is_repeatable">L\'evénement est répétable</string>
     <string name="selection_contains_repetition">La sélection contient des evénements avec répétition</string>
     <string name="delete_one_only">Supprimer l\'occurrence sélectionnée seulement</string>
     <string name="delete_all_occurrences">Supprimer toutes les occurrences</string>
     <string name="update_one_only">Mettre à jour l\'occurrence sélectionnée seulement</string>
     <string name="update_all_occurrences">Mettre à jour toutes les occurrences</string>
-    <string name="repeat_till_date">Repeat till a date</string>
-    <string name="repeat_x_times">Repeat x times</string>
-    <string name="repeat_forever">Repeat forever</string>
-    <string name="times">times</string>
-    <string name="repeat">Repeat</string>
-    <string name="repeat_on">Repeat on</string>
-    <string name="every_day">Every day</string>
-    <string name="selected_days">On selected days</string>
-    <string name="the_same_day">The same day</string>
-    <string name="the_last_day">The last day</string>
-    <string name="repeat_on_the_same_day">Repeat on the same day each month</string>
-    <string name="repeat_on_the_last_day">Repeat on the last day of the month</string>
-    <string name="repeat_every_m">Repeat every</string>
-    <string name="every_m">Every</string>
-    <string name="first_m">first</string>
-    <string name="second_m">second</string>
-    <string name="third_m">third</string>
-    <string name="fourth_m">fourth</string>
-    <string name="last_m">last</string>
+    <string name="repeat_till_date">Répéter jusqu\'à une date</string>
+    <string name="repeat_x_times">Répéter x fois</string>
+    <string name="repeat_forever">Répéter éternellement</string>
+    <string name="times">fois</string>
+    <string name="repeat">Répéter</string>
+    <string name="repeat_on">Répéter le</string>
+    <string name="every_day">Chaque jour</string>
+    <string name="selected_days">Les jours sélectionnés</string>
+    <string name="the_same_day">Le même jour</string>
+    <string name="the_last_day">Le dernier jour</string>
+    <string name="repeat_on_the_same_day">Répéter le même jour de chaque mois</string>
+    <string name="repeat_on_the_last_day">Répéter le dernier jour de chaque mois</string>
+    <string name="repeat_every_m">Répéter chaque</string>
+    <string name="every_m">Chaque</string>
+    <string name="first_m">premier</string>
+    <string name="second_m">deuxième</string>
+    <string name="third_m">troisième</string>
+    <string name="fourth_m">quatrième</string>
+    <string name="last_m">dernier</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
-    <string name="repeat_every_f">Repeat every</string>
-    <string name="every_f">Every</string>
-    <string name="first_f">first</string>
-    <string name="second_f">second</string>
-    <string name="third_f">third</string>
-    <string name="fourth_f">fourth</string>
-    <string name="last_f">last</string>
+    <string name="repeat_every_f">Répéter chaque</string>
+    <string name="every_f">Chaque</string>
+    <string name="first_f">premier</string>
+    <string name="second_f">deuxième</string>
+    <string name="third_f">troisième</string>
+    <string name="fourth_f">quatrième</string>
+    <string name="last_f">dernier</string>
 
     <plurals name="days">
         <item quantity="one">%1$d jour</item>
@@ -124,25 +124,25 @@
     </plurals>
 
     <!-- Export / Import -->
-    <string name="importing">Importing&#8230;</string>
-    <string name="exporting">Exporting&#8230;</string>
+    <string name="importing">Importer&#8230;</string>
+    <string name="exporting">Exporter&#8230;</string>
     <string name="import_events">Importer des evénements</string>
-    <string name="export_events">Export events</string>
+    <string name="export_events">Exporter des evénements</string>
     <string name="import_events_from_ics">Importer des evénements depuis un fichier .ics</string>
-    <string name="export_events_to_ics">Export events to an .ics file</string>
+    <string name="export_events_to_ics">Exporter des evénements vers un fichier .ics</string>
     <string name="events_imported_successfully">Evénements importés avec succès</string>
-    <string name="events_exported_successfully">Events have been exported successfully</string>
+    <string name="events_exported_successfully">Evénements exportés avec succès</string>
     <string name="importing_events_failed">Import des evénements échoué</string>
-    <string name="exporting_events_failed">Exporting events failed</string>
+    <string name="exporting_events_failed">Export des evénements échoué</string>
     <string name="importing_some_events_failed">L\'import de certains evénements a échoué</string>
-    <string name="exporting_some_events_failed">Exporting some events failed</string>
+    <string name="exporting_some_events_failed">L\'export de certains evénaments a échoué</string>
     <string name="invalid_file_format">Format de fichier invalide</string>
     <string name="default_event_type">Type d\'evénement par défaut</string>
-    <string name="no_events_for_exporting">No events for exporting have been found</string>
-    <string name="export_past_events_too">Export past events too</string>
-    <string name="include_event_types">Include event types</string>
-    <string name="filename_without_ics">Filename (without .ics)</string>
-    <string name="no_title">No title</string>
+    <string name="no_events_for_exporting">Aucun evénement trouvé pour export</string>
+    <string name="export_past_events_too">Exporter aussi les evénements passés</string>
+    <string name="include_event_types">Inclure les types d\'evénement</string>
+    <string name="filename_without_ics">Nom de fichier (sans .ics)</string>
+    <string name="no_title">Pas de titre</string>
 
     <!-- Event details -->
     <string name="title">Titre</string>
@@ -161,18 +161,18 @@
     <string name="regular_event">Evénement régulier</string>
     <string name="cannot_delete_default_type">Le type d\'evénement par défuat ne peut pas être supprimé</string>
     <string name="select_event_type">Sélectionner un type d\'evénement</string>
-    <string name="move_events_into_default">Move affected events into the default event type</string>
-    <string name="remove_affected_events">Permanently remove affected events</string>
-    <string name="unsync_caldav_calendar">To remove a CalDAV calendar you have to unsynchronize it</string>
+    <string name="move_events_into_default">Déplacer les evénements affectés dans le type d\'evénement par défaut</string>
+    <string name="remove_affected_events">Supprimer de façon permanente les evénements affectés</string>
+    <string name="unsync_caldav_calendar">Pour supprimer un calendrier CalDAV vous devez le désynchroniser</string>
 
     <!-- Holidays -->
-    <string name="holidays">Holidays</string>
-    <string name="add_holidays">Add holidays</string>
-    <string name="national_holidays">National holidays</string>
-    <string name="religious_holidays">Religious holidays</string>
-    <string name="holidays_imported_successfully">Holidays have been successfully imported into a new event type</string>
-    <string name="importing_some_holidays_failed">Importing some events failed</string>
-    <string name="importing_holidays_failed">Importing holidays failed</string>
+    <string name="holidays">Jours fériés</string>
+    <string name="add_holidays">Ajouter des jours fériés</string>
+    <string name="national_holidays">Jours fériés nationaux</string>
+    <string name="religious_holidays">Jours fériés religieux</string>
+    <string name="holidays_imported_successfully">Les jour fériés ont été importés dans un nouveau type d\'evénement avec succès</string>
+    <string name="importing_some_holidays_failed">L\'import de certains evénements a échoué</string>
+    <string name="importing_holidays_failed">L\'import des jours fériés à échoué</string>
 
     <!-- Settings -->
     <string name="manage_event_types">Gestion des types d\'evénements</string>
@@ -187,21 +187,21 @@
     <string name="no_ringtone_picker">Aucune application capable de configurer la sonnerie trouvée</string>
     <string name="no_ringtone_selected">Aucune</string>
     <string name="day_end_before_start">Le jour ne peut pas se terminer plus tôt qu\'il ne débute</string>
-    <string name="caldav_sync">CalDAV sync</string>
-    <string name="event_lists">Event lists</string>
-    <string name="display_past_events">Display events from the past</string>
-    <string name="snooze_delay">Postpone reminder with Snooze by</string>
+    <string name="caldav_sync">Synchronisation CalDAV</string>
+    <string name="event_lists">Listes d\'evénements</string>
+    <string name="display_past_events">Afficher les evénements du passé</string>
+    <string name="snooze_delay">Reporter le rappel avec Snooze de</string>
     <string name="widgets">Widgets</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
-    <string name="select_caldav_calendars">Select calendars to sync</string>
-    <string name="manage_synced_calendars">Manage synced calendars</string>
-    <string name="store_locally_only">Store locally only</string>
-    <string name="refresh_caldav_calendars">Refresh CalDAV calendars</string>
-    <string name="refreshing">Refreshing…</string>
-    <string name="refreshing_complete">Refreshing complete</string>
-    <string name="editing_calendar_failed">Editing calendar failed</string>
+    <string name="select_caldav_calendars">Seléctionner les calendriers à synchroniser</string>
+    <string name="manage_synced_calendars">Gérer les calendriers synchronisés</string>
+    <string name="store_locally_only">Stocker uniquement localement</string>
+    <string name="refresh_caldav_calendars">Rafraîchir les calendriers CalDAV</string>
+    <string name="refreshing">Rafraîchissement…</string>
+    <string name="refreshing_complete">Rafraîchissement terminé</string>
+    <string name="editing_calendar_failed">Edition du calendrier échouée</string>
 
     <plurals name="by_minutes">
         <item quantity="one">%1$d minute</item>
@@ -209,11 +209,11 @@
     </plurals>
 
     <plurals name="by_hours">
-        <item quantity="one">%1$d hour</item>
-        <item quantity="other">%1$d hours</item>
+        <item quantity="one">%1$d heure</item>
+        <item quantity="other">%1$d heures</item>
     </plurals>
 
-    <string name="never">Never</string>
+    <string name="never">Jamais</string>
 
     <string name="january">Janvier</string>
     <string name="february">Février</string>
@@ -236,23 +236,23 @@
     <string name="saturday_letter">S</string>
     <string name="sunday_letter">D</string>
 
-    <string name="monday">Monday</string>
-    <string name="tuesday">Tuesday</string>
-    <string name="wednesday">Wednesday</string>
-    <string name="thursday">Thursday</string>
-    <string name="friday">Friday</string>
-    <string name="saturday">Saturday</string>
-    <string name="sunday">Sunday</string>
+    <string name="monday">Lundi</string>
+    <string name="tuesday">Mardi</string>
+    <string name="wednesday">Mercredi</string>
+    <string name="thursday">Jeudi</string>
+    <string name="friday">Vendredi</string>
+    <string name="saturday">Samedi</string>
+    <string name="sunday">Dimanche</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
-    <string name="monday_alt">Monday</string>
-    <string name="tuesday_alt">Tuesday</string>
-    <string name="wednesday_alt">Wednesday</string>
-    <string name="thursday_alt">Thursday</string>
-    <string name="friday_alt">Friday</string>
-    <string name="saturday_alt">Saturday</string>
-    <string name="sunday_alt">Sunday</string>
+    <string name="monday_alt">Lundi</string>
+    <string name="tuesday_alt">Mardi</string>
+    <string name="wednesday_alt">Mercredi</string>
+    <string name="thursday_alt">Jeudi</string>
+    <string name="friday_alt">Vendredi</string>
+    <string name="saturday_alt">Samedi</string>
+    <string name="sunday_alt">Dimanche</string>
 
     <!-- List widget config example events -->
     <string name="sample_title_1">Entraînement</string>
@@ -274,9 +274,9 @@
 
         Ne contient pas de publicités ou de permissions inutiles. Complètement opensource, fournit une personnalisation des couleurs.
 
-        The Storage permission is needed only for importing events from .ics files.
+        La permission d'accès au stockage est necéssaire uniquement pour importer des evénements depuis des fichiers .ics.
 
-        Internet and Contacts permissions are used only at Google sync.
+        Les permissions Internet et Contacts sont utilisées uniquement pour la synchronisation Google.
 
         Cette application est juste une pièce d\'une plus grosse série d\'applications. Vous pouvez trouver le reste de celles-ci à http://www.simplemobiletools.com
     </string>
