@@ -78,26 +78,26 @@
     <string name="last_f">ostatni(ą)</string>
 
     <plurals name="days">
-        <item quantity="one">%1$d dzień</item>
-        <item quantity="other">%1$d dni</item>
+        <item quantity="one">%d dzień</item>
+        <item quantity="other">%d dni</item>
     </plurals>
 
     <plurals name="weeks">
-        <item quantity="one">%1$d tydzień</item>
-        <item quantity="few">%1$d tygodnie</item>
-        <item quantity="other">%1$d tygodni</item>
+        <item quantity="one">%d tydzień</item>
+        <item quantity="few">%d tygodnie</item>
+        <item quantity="other">%d tygodni</item>
     </plurals>
 
     <plurals name="months">
-        <item quantity="one">%1$d miesiąc</item>
-        <item quantity="few">%1$d miesiące</item>
-        <item quantity="other">%1$d miesięcy</item>
+        <item quantity="one">%d miesiąc</item>
+        <item quantity="few">%d miesiące</item>
+        <item quantity="other">%d miesięcy</item>
     </plurals>
 
     <plurals name="years">
-        <item quantity="one">%1$d rok</item>
-        <item quantity="few">%1$d lata</item>
-        <item quantity="other">%1$d lat</item>
+        <item quantity="one">%d rok</item>
+        <item quantity="few">%d lata</item>
+        <item quantity="other">%d lat</item>
     </plurals>
 
     <!-- Event Reminders -->
@@ -112,25 +112,25 @@
     <string name="add_another_reminder">Dodaj inne przypomnienie</string>
 
     <plurals name="minutes_before">
-        <item quantity="one">%1$d minutę przed</item>
-        <item quantity="few">%1$d minuty przed</item>
-        <item quantity="other">%1$d minut before</item>
+        <item quantity="one">%d minutę przed</item>
+        <item quantity="few">%d minuty przed</item>
+        <item quantity="other">%d minut before</item>
     </plurals>
 
     <plurals name="hours_before">
-        <item quantity="one">%1$d godzinę przed</item>
-        <item quantity="few">%1$d godziny przed</item>
-        <item quantity="other">%1$d godzin przed</item>
+        <item quantity="one">%d godzinę przed</item>
+        <item quantity="few">%d godziny przed</item>
+        <item quantity="other">%d godzin przed</item>
     </plurals>
 
     <plurals name="days_before">
-        <item quantity="one">%1$d dzień przed</item>
-        <item quantity="other">%1$d dni przed</item>
+        <item quantity="one">%d dzień przed</item>
+        <item quantity="other">%d dni przed</item>
     </plurals>
 
     <!-- Export / Import -->
-    <string name="importing">Importuję&#8230;</string>
-    <string name="exporting">Eksportuję&#8230;</string>
+    <string name="importing">Importuję…</string>
+    <string name="exporting">Eksportuję…</string>
     <string name="import_events">Importuj wydarzenia</string>
     <string name="export_events">Eksportuj wydarzenia</string>
     <string name="import_events_from_ics">Importuj wydarzenia z pliku .ics</string>
@@ -141,7 +141,6 @@
     <string name="exporting_events_failed">Eksportowanie wydarzeń nie powiodło się</string>
     <string name="importing_some_events_failed">Importowanie niektórych wydarzeń nie powiodło się</string>
     <string name="exporting_some_events_failed">Eksportowanie niektórych wydarzeń nie powiodło się</string>
-    <string name="invalid_file_format">Nieprawidłowy format daty</string>
     <string name="default_event_type">Domyślny typ wydarzenia</string>
     <string name="no_events_for_exporting">Nie znalazłem wydarzeń do wyeksportowania</string>
     <string name="export_past_events_too">Eksportuj także wydarzenia z przeszłości</string>
@@ -209,15 +208,15 @@
     <string name="editing_calendar_failed">Editing calendar failed</string>
 
     <plurals name="by_minutes">
-        <item quantity="one">%1$d minutę</item>
-        <item quantity="few">%1$d minuty</item>
-        <item quantity="other">%1$d minut</item>
+        <item quantity="one">%d minutę</item>
+        <item quantity="few">%d minuty</item>
+        <item quantity="other">%d minut</item>
     </plurals>
 
     <plurals name="by_hours">
-        <item quantity="one">%1$d godzinę</item>
-        <item quantity="few">%1$d godziny</item>
-        <item quantity="other">%1$d godzin</item>
+        <item quantity="one">%d godzinę</item>
+        <item quantity="few">%d godziny</item>
+        <item quantity="other">%d godzin</item>
     </plurals>
 
     <string name="never">Nigdy</string>

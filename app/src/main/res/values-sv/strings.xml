@@ -78,23 +78,23 @@
     <string name="last_f">sista</string>
 
     <plurals name="days">
-        <item quantity="one">%1$d dag</item>
-        <item quantity="other">%1$d dagar</item>
+        <item quantity="one">%d dag</item>
+        <item quantity="other">%d dagar</item>
     </plurals>
 
     <plurals name="weeks">
-        <item quantity="one">%1$d vecka</item>
-        <item quantity="other">%1$d veckor</item>
+        <item quantity="one">%d vecka</item>
+        <item quantity="other">%d veckor</item>
     </plurals>
 
     <plurals name="months">
-        <item quantity="one">%1$d månad</item>
-        <item quantity="other">%1$d månader</item>
+        <item quantity="one">%d månad</item>
+        <item quantity="other">%d månader</item>
     </plurals>
 
     <plurals name="years">
-        <item quantity="one">%1$d år</item>
-        <item quantity="other">%1$d år</item>
+        <item quantity="one">%d år</item>
+        <item quantity="other">%d år</item>
     </plurals>
 
     <!-- Event Reminders -->
@@ -109,23 +109,23 @@
     <string name="add_another_reminder">Lägg till en annan påminnelse</string>
 
     <plurals name="minutes_before">
-        <item quantity="one">%1$d minut före</item>
-        <item quantity="other">%1$d minuter före</item>
+        <item quantity="one">%d minut före</item>
+        <item quantity="other">%d minuter före</item>
     </plurals>
 
     <plurals name="hours_before">
-        <item quantity="one">%1$d timme före</item>
-        <item quantity="other">%1$d timmar före</item>
+        <item quantity="one">%d timme före</item>
+        <item quantity="other">%d timmar före</item>
     </plurals>
 
     <plurals name="days_before">
-        <item quantity="one">%1$d dag före</item>
-        <item quantity="other">%1$d dagar före</item>
+        <item quantity="one">%d dag före</item>
+        <item quantity="other">%d dagar före</item>
     </plurals>
 
     <!-- Export / Import -->
-    <string name="importing">Importerar&#8230;</string>
-    <string name="exporting">Exporterar&#8230;</string>
+    <string name="importing">Importerar…</string>
+    <string name="exporting">Exporterar…</string>
     <string name="import_events">Importera händelser</string>
     <string name="export_events">Exportera händelser</string>
     <string name="import_events_from_ics">Importera händelser från en .ics-fil</string>
@@ -136,7 +136,6 @@
     <string name="exporting_events_failed">Händelser kunde inte exporteras</string>
     <string name="importing_some_events_failed">Vissa händelser kunde inte importeras</string>
     <string name="exporting_some_events_failed">Vissa händelser kunde inte exporteras</string>
-    <string name="invalid_file_format">Ogiltigt filformat</string>
     <string name="default_event_type">Standardhändelsetyp</string>
     <string name="no_events_for_exporting">Inga händelser har hittats för exportering</string>
     <string name="export_past_events_too">Exportera även tidigare händelser</string>
@@ -204,13 +203,13 @@
     <string name="editing_calendar_failed">Det gick inte att redigera kalendern</string>
 
     <plurals name="by_minutes">
-        <item quantity="one">%1$d minut</item>
-        <item quantity="other">%1$d minuter</item>
+        <item quantity="one">%d minut</item>
+        <item quantity="other">%d minuter</item>
     </plurals>
 
     <plurals name="by_hours">
-        <item quantity="one">%1$d timme</item>
-        <item quantity="other">%1$d timmar</item>
+        <item quantity="one">%d timme</item>
+        <item quantity="other">%d timmar</item>
     </plurals>
 
     <string name="never">Aldrig</string>

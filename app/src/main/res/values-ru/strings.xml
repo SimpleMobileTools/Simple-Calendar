@@ -78,31 +78,31 @@
     <string name="last_f">last</string>
 
     <plurals name="days">
-        <item quantity="one">%1$d день</item>
-        <item quantity="few">%1$d дня</item>
-        <item quantity="many">%1$d дней</item>
-        <item quantity="other">%1$d дня(-ей)</item>
+        <item quantity="one">%d день</item>
+        <item quantity="few">%d дня</item>
+        <item quantity="many">%d дней</item>
+        <item quantity="other">%d дня(-ей)</item>
     </plurals>
 
     <plurals name="weeks">
-        <item quantity="one">%1$d неделя</item>
-        <item quantity="few">%1$d недели</item>
-        <item quantity="many">%1$d недель</item>
-        <item quantity="other">%1$d недели(-ль)</item>
+        <item quantity="one">%d неделя</item>
+        <item quantity="few">%d недели</item>
+        <item quantity="many">%d недель</item>
+        <item quantity="other">%d недели(-ль)</item>
     </plurals>
 
     <plurals name="months">
-        <item quantity="one">%1$d месяц</item>
-        <item quantity="few">%1$d месяца</item>
-        <item quantity="many">%1$d месяцев</item>
-        <item quantity="other">%1$d месяца(-ев)</item>
+        <item quantity="one">%d месяц</item>
+        <item quantity="few">%d месяца</item>
+        <item quantity="many">%d месяцев</item>
+        <item quantity="other">%d месяца(-ев)</item>
     </plurals>
 
     <plurals name="years">
-        <item quantity="one">%1$d год</item>
-        <item quantity="few">%1$d года</item>
-        <item quantity="many">%1$d лет</item>
-        <item quantity="other">%1$d года(лет)</item>
+        <item quantity="one">%d год</item>
+        <item quantity="few">%d года</item>
+        <item quantity="many">%d лет</item>
+        <item quantity="other">%d года(лет)</item>
     </plurals>
 
     <!-- Event Reminders -->
@@ -117,24 +117,24 @@
     <string name="add_another_reminder">Добавить ещё одно напоминание</string>
 
     <plurals name="minutes_before">
-        <item quantity="one">%1$d минута до события</item>
-        <item quantity="few">%1$d минуты до события</item>
-        <item quantity="many">%1$d минут до события</item>
-        <item quantity="other">%1$d минут(-ы) до события</item>
+        <item quantity="one">%d минута до события</item>
+        <item quantity="few">%d минуты до события</item>
+        <item quantity="many">%d минут до события</item>
+        <item quantity="other">%d минут(-ы) до события</item>
     </plurals>
 
     <plurals name="hours_before">
-        <item quantity="one">%1$d час до события</item>
-        <item quantity="few">%1$d часа до события</item>
-        <item quantity="many">%1$d часов до события</item>
-        <item quantity="other">%1$d часа(-ов) до события</item>
+        <item quantity="one">%d час до события</item>
+        <item quantity="few">%d часа до события</item>
+        <item quantity="many">%d часов до события</item>
+        <item quantity="other">%d часа(-ов) до события</item>
     </plurals>
 
     <plurals name="days_before">
-        <item quantity="one">%1$d день до события</item>
-        <item quantity="few">%1$d дня до события</item>
-        <item quantity="many">%1$d дней до события</item>
-        <item quantity="other">%1$d дня(-ей) до события</item>
+        <item quantity="one">%d день до события</item>
+        <item quantity="few">%d дня до события</item>
+        <item quantity="many">%d дней до события</item>
+        <item quantity="other">%d дня(-ей) до события</item>
     </plurals>
 
     <!-- Export / Import -->
@@ -150,7 +150,6 @@
     <string name="exporting_events_failed">Не удалось экспортировать события</string>
     <string name="importing_some_events_failed">Не удалось импортировать некоторые события</string>
     <string name="exporting_some_events_failed">Не удалось экспортировать некоторые события</string>
-    <string name="invalid_file_format">Неправильный формат файла</string>
     <string name="default_event_type">Тип события по умолчанию</string>
     <string name="no_events_for_exporting">Не найдено событий для экспорта</string>
     <string name="export_past_events_too">Экспортировать прошедшие события</string>
@@ -218,15 +217,15 @@
     <string name="editing_calendar_failed">Editing calendar failed</string>
 
     <plurals name="by_minutes">
-        <item quantity="one">%1$d минута</item>
-        <item quantity="few">%1$d минуты</item>
-        <item quantity="many">%1$d минут</item>
+        <item quantity="one">%d минута</item>
+        <item quantity="few">%d минуты</item>
+        <item quantity="many">%d минут</item>
     </plurals>
 
     <plurals name="by_hours">
-        <item quantity="one">%1$d час</item>
-        <item quantity="few">%1$d часа</item>
-        <item quantity="many">%1$d часов</item>
+        <item quantity="one">%d час</item>
+        <item quantity="few">%d часа</item>
+        <item quantity="many">%d часов</item>
     </plurals>
 
     <string name="never">Никогда</string>

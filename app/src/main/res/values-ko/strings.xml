@@ -78,23 +78,23 @@
     <string name="last_f">last</string>
 
     <plurals name="days">
-        <item quantity="one">%1$d day</item>
-        <item quantity="other">%1$d days</item>
+        <item quantity="one">%d day</item>
+        <item quantity="other">%d days</item>
     </plurals>
 
     <plurals name="weeks">
-        <item quantity="one">%1$d week</item>
-        <item quantity="other">%1$d weeks</item>
+        <item quantity="one">%d week</item>
+        <item quantity="other">%d weeks</item>
     </plurals>
 
     <plurals name="months">
-        <item quantity="one">%1$d month</item>
-        <item quantity="other">%1$d months</item>
+        <item quantity="one">%d month</item>
+        <item quantity="other">%d months</item>
     </plurals>
 
     <plurals name="years">
-        <item quantity="one">%1$d year</item>
-        <item quantity="other">%1$d years</item>
+        <item quantity="one">%d year</item>
+        <item quantity="other">%d years</item>
     </plurals>
 
     <!-- Event Reminders -->
@@ -109,23 +109,23 @@
     <string name="add_another_reminder">다른 알림 추가</string>
 
     <plurals name="minutes_before">
-        <item quantity="one">%1$d 분 전</item>
-        <item quantity="other">%1$d 분 전</item>
+        <item quantity="one">%d 분 전</item>
+        <item quantity="other">%d 분 전</item>
     </plurals>
 
     <plurals name="hours_before">
-        <item quantity="one">%1$d 시간 전</item>
-        <item quantity="other">%1$d 시간 전</item>
+        <item quantity="one">%d 시간 전</item>
+        <item quantity="other">%d 시간 전</item>
     </plurals>
 
     <plurals name="days_before">
-        <item quantity="one">%1$d 일 전</item>
-        <item quantity="other">%1$d 일 전</item>
+        <item quantity="one">%d 일 전</item>
+        <item quantity="other">%d 일 전</item>
     </plurals>
 
     <!-- Export / Import -->
-    <string name="importing">가져 오는 중&#8230;</string>
-    <string name="exporting">내보내는 중&#8230;</string>
+    <string name="importing">가져 오는 중…</string>
+    <string name="exporting">내보내는 중…</string>
     <string name="import_events">이벤트들 가져 오기</string>
     <string name="export_events">이벤트들 내보내기</string>
     <string name="import_events_from_ics">.ics 파일에서 이벤트들 가져오기</string>
@@ -136,7 +136,6 @@
     <string name="exporting_events_failed">이벤트들을 내보내는데 실패</string>
     <string name="importing_some_events_failed">일부 이벤트들을 가져오는데 실패</string>
     <string name="exporting_some_events_failed">일부 이벤트들을 내보내는데 실패</string>
-    <string name="invalid_file_format">잘못된 파일 형식</string>
     <string name="default_event_type">기본 이벤트 유형</string>
     <string name="no_events_for_exporting">내보낼 이벤트가 없습니다</string>
     <string name="export_past_events_too">과거 이벤트들 내보내기</string>
@@ -204,13 +203,13 @@
     <string name="editing_calendar_failed">Editing calendar failed</string>
 
     <plurals name="by_minutes">
-        <item quantity="one">%1$d 분</item>
-        <item quantity="other">%1$d 분</item>
+        <item quantity="one">%d 분</item>
+        <item quantity="other">%d 분</item>
     </plurals>
 
     <plurals name="by_hours">
-        <item quantity="one">%1$d 시</item>
-        <item quantity="other">%1$d 시</item>
+        <item quantity="one">%d 시</item>
+        <item quantity="other">%d 시</item>
     </plurals>
 
     <string name="never">사용 안함</string>

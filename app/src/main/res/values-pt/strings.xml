@@ -78,23 +78,23 @@
     <string name="last_f">último</string>
 
     <plurals name="days">
-        <item quantity="one">%1$d dia</item>
-        <item quantity="other">%1$d dias</item>
+        <item quantity="one">%d dia</item>
+        <item quantity="other">%d dias</item>
     </plurals>
 
     <plurals name="weeks">
-        <item quantity="one">%1$d semana</item>
-        <item quantity="other">%1$d semanas</item>
+        <item quantity="one">%d semana</item>
+        <item quantity="other">%d semanas</item>
     </plurals>
 
     <plurals name="months">
-        <item quantity="one">%1$d mês</item>
-        <item quantity="other">%1$d meses</item>
+        <item quantity="one">%d mês</item>
+        <item quantity="other">%d meses</item>
     </plurals>
 
     <plurals name="years">
-        <item quantity="one">%1$d ano</item>
-        <item quantity="other">%1$d anos</item>
+        <item quantity="one">%d ano</item>
+        <item quantity="other">%d anos</item>
     </plurals>
 
     <!-- Event Reminders -->
@@ -109,23 +109,23 @@
     <string name="add_another_reminder">Adicionar outro lembrete</string>
 
     <plurals name="minutes_before">
-        <item quantity="one">%1$d minuto antes</item>
-        <item quantity="other">%1$d minutos antes</item>
+        <item quantity="one">%d minuto antes</item>
+        <item quantity="other">%d minutos antes</item>
     </plurals>
 
     <plurals name="hours_before">
-        <item quantity="one">%1$d hora antes</item>
-        <item quantity="other">%1$d horas antes</item>
+        <item quantity="one">%d hora antes</item>
+        <item quantity="other">%d horas antes</item>
     </plurals>
 
     <plurals name="days_before">
-        <item quantity="one">%1$d dia antes</item>
-        <item quantity="other">%1$d dias antes</item>
+        <item quantity="one">%d dia antes</item>
+        <item quantity="other">%d dias antes</item>
     </plurals>
 
     <!-- Export / Import -->
-    <string name="importing">A importar&#8230;</string>
-    <string name="exporting">A exportar&#8230;</string>
+    <string name="importing">A importar…</string>
+    <string name="exporting">A exportar…</string>
     <string name="import_events">Importar eventos</string>
     <string name="export_events">Exportar eventos</string>
     <string name="import_events_from_ics">Importar eventos de um ficheiro .ics</string>
@@ -136,7 +136,6 @@
     <string name="exporting_events_failed">Falha de exportação</string>
     <string name="importing_some_events_failed">Alguns eventos não foram importados</string>
     <string name="exporting_some_events_failed">Alguns eventos não foram exportados</string>
-    <string name="invalid_file_format">Formato de ficheiro inválido</string>
     <string name="default_event_type">Tipo de evento padrão</string>
     <string name="no_events_for_exporting">Não existem eventos para exportação</string>
     <string name="export_past_events_too">Exportar eventos antigos</string>
@@ -204,13 +203,13 @@
     <string name="editing_calendar_failed">Falha ao editar o calendário</string>
 
     <plurals name="by_minutes">
-        <item quantity="one">%1$d minuto</item>
-        <item quantity="other">%1$d minutos</item>
+        <item quantity="one">%d minuto</item>
+        <item quantity="other">%d minutos</item>
     </plurals>
 
     <plurals name="by_hours">
-        <item quantity="one">%1$d hora</item>
-        <item quantity="other">%1$d horas</item>
+        <item quantity="one">%d hora</item>
+        <item quantity="other">%d horas</item>
     </plurals>
 
     <string name="never">Nunca</string>

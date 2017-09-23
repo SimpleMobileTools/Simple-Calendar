@@ -78,23 +78,23 @@
     <string name="last_f">son</string>
 
     <plurals name="days">
-        <item quantity="one">%1$d gün</item>
-        <item quantity="other">günler %1$d</item>
+        <item quantity="one">%d gün</item>
+        <item quantity="other">günler %d</item>
     </plurals>
 
     <plurals name="weeks">
-        <item quantity="one">%1$d hafta</item>
-        <item quantity="other">haftalar %1$d</item>
+        <item quantity="one">%d hafta</item>
+        <item quantity="other">haftalar %d</item>
     </plurals>
 
     <plurals name="months">
-        <item quantity="one">%1$d ay</item>
-        <item quantity="other">aylar %1$d</item>
+        <item quantity="one">%d ay</item>
+        <item quantity="other">aylar %d</item>
     </plurals>
 
     <plurals name="years">
-        <item quantity="one">%1$d yıl</item>
-        <item quantity="other">yıllar %1$d</item>
+        <item quantity="one">%d yıl</item>
+        <item quantity="other">yıllar %d</item>
     </plurals>
 
     <!-- Event Reminders -->
@@ -109,23 +109,23 @@
     <string name="add_another_reminder">Başka bir hatırlatma ekle</string>
 
     <plurals name="minutes_before">
-        <item quantity="one">%1$d dakika önce</item>
-        <item quantity="other">%1$d dakika önce</item>
+        <item quantity="one">%d dakika önce</item>
+        <item quantity="other">%d dakika önce</item>
     </plurals>
 
     <plurals name="hours_before">
-        <item quantity="one">%1$d saat önce</item>
-        <item quantity="other">%1$d saat önce</item>
+        <item quantity="one">%d saat önce</item>
+        <item quantity="other">%d saat önce</item>
     </plurals>
 
     <plurals name="days_before">
-        <item quantity="one">%1$d önceki gün</item>
-        <item quantity="other">%1$d önceki gün</item>
+        <item quantity="one">%d önceki gün</item>
+        <item quantity="other">%d önceki gün</item>
     </plurals>
 
     <!-- Export / Import -->
-    <string name="importing">Importing&#8230;</string>
-    <string name="exporting">Exporting&#8230;</string>
+    <string name="importing">Importing…</string>
+    <string name="exporting">Exporting…</string>
     <string name="import_events">Olayları içe aktar</string>
     <string name="export_events">Olayları dışa aktar</string>
     <string name="import_events_from_ics">Bir .ics dosyasından olayları içe aktar</string>
@@ -136,7 +136,6 @@
     <string name="exporting_events_failed">Olayları dışa aktarma başarısız</string>
     <string name="importing_some_events_failed">Bazı etkinlikleri içe aktarma başarısız</string>
     <string name="exporting_some_events_failed">Bazı etkinlikleri dışa aktarma başarısız</string>
-    <string name="invalid_file_format">Geçersiz dosya biçimi</string>
     <string name="default_event_type">Varsayılan olay türü</string>
     <string name="no_events_for_exporting">Dışa aktarmak için etkinlik bulunamadı</string>
     <string name="export_past_events_too">Geçmişteki etkinlikleri de dışa aktar</string>
@@ -204,13 +203,13 @@
     <string name="editing_calendar_failed">Editing calendar failed</string>
 
     <plurals name="by_minutes">
-        <item quantity="one">%1$d minute</item>
-        <item quantity="other">%1$d minutes</item>
+        <item quantity="one">%d minute</item>
+        <item quantity="other">%d minutes</item>
     </plurals>
 
     <plurals name="by_hours">
-        <item quantity="one">%1$d hour</item>
-        <item quantity="other">%1$d hours</item>
+        <item quantity="one">%d hour</item>
+        <item quantity="other">%d hours</item>
     </plurals>
 
     <string name="never">Never</string>

@@ -78,27 +78,27 @@
     <string name="last_f">poslední</string>
 
     <plurals name="days">
-        <item quantity="one">%1$d den</item>
-        <item quantity="few">%1$d dni</item>
-        <item quantity="other">%1$d dní</item>
+        <item quantity="one">%d den</item>
+        <item quantity="few">%d dni</item>
+        <item quantity="other">%d dní</item>
     </plurals>
 
     <plurals name="weeks">
-        <item quantity="one">%1$d týden</item>
-        <item quantity="few">%1$d týdni</item>
-        <item quantity="other">%1$d týdnů</item>
+        <item quantity="one">%d týden</item>
+        <item quantity="few">%d týdni</item>
+        <item quantity="other">%d týdnů</item>
     </plurals>
 
     <plurals name="months">
-        <item quantity="one">%1$d měsíc</item>
-        <item quantity="few">%1$d měsíce</item>
-        <item quantity="other">%1$d měsíců</item>
+        <item quantity="one">%d měsíc</item>
+        <item quantity="few">%d měsíce</item>
+        <item quantity="other">%d měsíců</item>
     </plurals>
 
     <plurals name="years">
-        <item quantity="one">%1$d rok</item>
-        <item quantity="few">%1$d roky</item>
-        <item quantity="other">%1$d roků</item>
+        <item quantity="one">%d rok</item>
+        <item quantity="few">%d roky</item>
+        <item quantity="other">%d roků</item>
     </plurals>
 
     <!-- Event Reminders -->
@@ -113,26 +113,26 @@
     <string name="add_another_reminder">Přidat další připomenutí</string>
 
     <plurals name="minutes_before">
-        <item quantity="one">před %1$d minutou</item>
-        <item quantity="few">před %1$d minutami</item>
-        <item quantity="other">před %1$d minutami</item>
+        <item quantity="one">před %d minutou</item>
+        <item quantity="few">před %d minutami</item>
+        <item quantity="other">před %d minutami</item>
     </plurals>
 
     <plurals name="hours_before">
-        <item quantity="one">před %1$d hodinou</item>
-        <item quantity="few">před %1$d hodinami</item>
-        <item quantity="other">před %1$d hodinami</item>
+        <item quantity="one">před %d hodinou</item>
+        <item quantity="few">před %d hodinami</item>
+        <item quantity="other">před %d hodinami</item>
     </plurals>
 
     <plurals name="days_before">
-        <item quantity="one">před %1$d dnem</item>
-        <item quantity="few">před %1$d dnami</item>
-        <item quantity="other">před %1$d dny</item>
+        <item quantity="one">před %d dnem</item>
+        <item quantity="few">před %d dnami</item>
+        <item quantity="other">před %d dny</item>
     </plurals>
 
     <!-- Export / Import -->
-    <string name="importing">Importování&#8230;</string>
-    <string name="exporting">Exportování&#8230;</string>
+    <string name="importing">Importování…</string>
+    <string name="exporting">Exportování…</string>
     <string name="import_events">Import událostí</string>
     <string name="export_events">Export událostí</string>
     <string name="import_events_from_ics">Importovat kalendář ze souboru .ics</string>
@@ -143,7 +143,6 @@
     <string name="exporting_events_failed">Export kalendáře se nezdařil</string>
     <string name="importing_some_events_failed">Import některých událostí se nezdařil</string>
     <string name="exporting_some_events_failed">Export některých událostí se nezdařil</string>
-    <string name="invalid_file_format">Neplatný formát souboru</string>
     <string name="default_event_type">Defaultní typ události</string>
     <string name="no_events_for_exporting">Nebyly nalezeny žádné události pro export</string>
     <string name="export_past_events_too">Export i minulých událostí</string>
@@ -211,15 +210,15 @@
     <string name="editing_calendar_failed">Editování kalendáře se nezdařilo</string>
 
     <plurals name="by_minutes">
-        <item quantity="one">%1$d minutu</item>
-        <item quantity="few">%1$d minuty</item>
-        <item quantity="other">%1$d minut</item>
+        <item quantity="one">%d minutu</item>
+        <item quantity="few">%d minuty</item>
+        <item quantity="other">%d minut</item>
     </plurals>
 
     <plurals name="by_hours">
-        <item quantity="one">%1$d hodina</item>
-        <item quantity="few">%1$d hodiny</item>
-        <item quantity="other">%1$d hodin</item>
+        <item quantity="one">%d hodina</item>
+        <item quantity="few">%d hodiny</item>
+        <item quantity="other">%d hodin</item>
     </plurals>
 
     <string name="never">Nikdy</string>
