@@ -23,7 +23,7 @@ val REMINDER_OFF = -1
 
 val DAY = 86400
 val WEEK = 604800
-val MONTH = 2592000    // exact value not taken into account, Joda is used for adding months and years
+val MONTH = 2592001    // exact value not taken into account, Joda is used for adding months and years
 val YEAR = 31536000
 
 val DAY_MINUTES = 24 * 60

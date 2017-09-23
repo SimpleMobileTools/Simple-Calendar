@@ -64,7 +64,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private val mDb: SQLiteDatabase = writableDatabase
 
     companion object {
-        private val DB_VERSION = 17
+        private val DB_VERSION = 18
         val DB_NAME = "events.db"
         val REGULAR_EVENT_TYPE_ID = 1
         var dbInstance: DBHelper? = null
@@ -165,6 +165,10 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         if (oldVersion < 17) {
             db.execSQL("ALTER TABLE $TYPES_TABLE_NAME ADD COLUMN $COL_TYPE_CALDAV_DISPLAY_NAME TEXT DEFAULT ''")
             db.execSQL("ALTER TABLE $TYPES_TABLE_NAME ADD COLUMN $COL_TYPE_CALDAV_EMAIL TEXT DEFAULT ''")
+        }
+
+        if (oldVersion < 18) {
+            updateOldMonthlyEvents(db)
         }
     }
 
@@ -439,6 +443,32 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         val selectionArgs = arrayOf("$CALDAV-$calendarId")
         val cursor = getEventsCursor(selection, selectionArgs)
         return fillEvents(cursor).filter { it.importId.isNotEmpty() }
+    }
+
+    private fun updateOldMonthlyEvents(db: SQLiteDatabase) {
+        val OLD_MONTH = 2592000
+        val projection = arrayOf(COL_ID, COL_REPEAT_INTERVAL)
+        val selection = "$COL_REPEAT_INTERVAL != 0 AND $COL_REPEAT_INTERVAL % $OLD_MONTH == 0"
+        var cursor: Cursor? = null
+        try {
+            cursor = db.query(META_TABLE_NAME, projection, selection, null, null, null, null)
+            if (cursor?.moveToFirst() == true) {
+                do {
+                    val id = cursor.getIntValue(COL_ID)
+                    val repeatInterval = cursor.getIntValue(COL_REPEAT_INTERVAL)
+                    val multiplies = repeatInterval / OLD_MONTH
+
+                    val values = ContentValues().apply {
+                        put(COL_REPEAT_INTERVAL, multiplies * MONTH)
+                    }
+
+                    val updateSelection = "$COL_ID = $id"
+                    db.update(META_TABLE_NAME, values, updateSelection, null)
+                } while (cursor.moveToNext())
+            }
+        } finally {
+            cursor?.close()
+        }
     }
 
     fun addEventRepeatException(parentEventId: Int, occurrenceTS: Int) {

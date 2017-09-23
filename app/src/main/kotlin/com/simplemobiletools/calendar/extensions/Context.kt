@@ -126,39 +126,35 @@ fun Context.getFormattedMinutes(minutes: Int, showBefore: Boolean = true) = when
     else -> {
         if (minutes % 525600 == 0)
             resources.getQuantityString(R.plurals.years, minutes / 525600, minutes / 525600)
-        if (minutes % 43200 == 0)
-            resources.getQuantityString(R.plurals.months, minutes / 43200, minutes / 43200)
-        else if (minutes % 10080 == 0)
-            resources.getQuantityString(R.plurals.weeks, minutes / 10080, minutes / 10080)
-        else if (minutes % 1440 == 0)
-            resources.getQuantityString(R.plurals.days, minutes / 1440, minutes / 1440)
-        else if (minutes % 60 == 0) {
-            val base = if (showBefore) R.plurals.hours_before else R.plurals.by_hours
-            resources.getQuantityString(base, minutes / 60, minutes / 60)
-        } else {
-            val base = if (showBefore) R.plurals.minutes_before else R.plurals.by_minutes
-            resources.getQuantityString(base, minutes, minutes)
+
+        when {
+            minutes % 43200 == 0 -> resources.getQuantityString(R.plurals.months, minutes / 43200, minutes / 43200)
+            minutes % 10080 == 0 -> resources.getQuantityString(R.plurals.weeks, minutes / 10080, minutes / 10080)
+            minutes % 1440 == 0 -> resources.getQuantityString(R.plurals.days, minutes / 1440, minutes / 1440)
+            minutes % 60 == 0 -> {
+                val base = if (showBefore) R.plurals.hours_before else R.plurals.by_hours
+                resources.getQuantityString(base, minutes / 60, minutes / 60)
+            }
+            else -> {
+                val base = if (showBefore) R.plurals.minutes_before else R.plurals.by_minutes
+                resources.getQuantityString(base, minutes, minutes)
+            }
         }
     }
 }
 
-fun Context.getRepetitionText(seconds: Int): String {
-    val days = seconds / 60 / 60 / 24
-    return when (days) {
-        0 -> getString(R.string.no_repetition)
-        1 -> getString(R.string.daily)
-        7 -> getString(R.string.weekly)
-        30 -> getString(R.string.monthly)
-        365 -> getString(R.string.yearly)
-        else -> {
-            if (days % 365 == 0)
-                resources.getQuantityString(R.plurals.years, days / 365, days / 365)
-            else if (days % 30 == 0)
-                resources.getQuantityString(R.plurals.months, days / 30, days / 30)
-            else if (days % 7 == 0)
-                resources.getQuantityString(R.plurals.weeks, days / 7, days / 7)
-            else
-                resources.getQuantityString(R.plurals.days, days, days)
+fun Context.getRepetitionText(seconds: Int) = when (seconds) {
+    0 -> getString(R.string.no_repetition)
+    DAY -> getString(R.string.daily)
+    WEEK -> getString(R.string.weekly)
+    MONTH -> getString(R.string.monthly)
+    YEAR -> getString(R.string.yearly)
+    else -> {
+        when {
+            seconds % YEAR == 0 -> resources.getQuantityString(R.plurals.years, seconds / YEAR, seconds / YEAR)
+            seconds % MONTH == 0 -> resources.getQuantityString(R.plurals.months, seconds / MONTH, seconds / MONTH)
+            seconds % WEEK == 0 -> resources.getQuantityString(R.plurals.weeks, seconds / WEEK, seconds / WEEK)
+            else -> resources.getQuantityString(R.plurals.days, seconds / DAY, seconds / DAY)
         }
     }
 }

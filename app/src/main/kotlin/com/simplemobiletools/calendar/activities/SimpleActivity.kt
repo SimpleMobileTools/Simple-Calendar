@@ -1,6 +1,5 @@
 package com.simplemobiletools.calendar.activities
 
-import android.os.Bundle
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.dialogs.CustomEventReminderDialog
 import com.simplemobiletools.calendar.dialogs.CustomEventRepeatIntervalDialog
@@ -18,10 +17,6 @@ import java.util.TreeSet
 import kotlin.collections.ArrayList
 
 open class SimpleActivity : BaseSimpleActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     protected fun showEventReminderDialog(curMinutes: Int, callback: (minutes: Int) -> Unit) {
         hideKeyboard()
         val minutes = TreeSet<Int>()
@@ -34,8 +29,7 @@ open class SimpleActivity : BaseSimpleActivity() {
         }
 
         val items = ArrayList<RadioItem>(minutes.size + 1)
-        minutes.mapIndexedTo(items, {
-            index, value ->
+        minutes.mapIndexedTo(items, { index, value ->
             RadioItem(index, getFormattedMinutes(value), value)
         })
 
@@ -71,8 +65,7 @@ open class SimpleActivity : BaseSimpleActivity() {
         }
 
         val items = ArrayList<RadioItem>(seconds.size + 1)
-        seconds.mapIndexedTo(items, {
-            index, value ->
+        seconds.mapIndexedTo(items, { index, value ->
             RadioItem(index, getRepetitionText(value), value)
         })
 
