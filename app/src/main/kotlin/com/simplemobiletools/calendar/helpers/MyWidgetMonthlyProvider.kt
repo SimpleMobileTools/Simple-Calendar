@@ -20,6 +20,8 @@ import com.simplemobiletools.calendar.extensions.launchNewEventIntent
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.models.DayMonthly
 import com.simplemobiletools.commons.extensions.adjustAlpha
+import com.simplemobiletools.commons.extensions.setBackgroundColor
+import com.simplemobiletools.commons.extensions.setTextSize
 import org.joda.time.DateTime
 
 class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
@@ -65,7 +67,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
             mLargerFontSize = getFontSize() + 3f
 
             mRemoteViews = RemoteViews(mContext.packageName, R.layout.fragment_month_widget)
-            mRemoteViews?.setInt(R.id.calendar_holder, "setBackgroundColor", widgetBgColor)
+            mRemoteViews?.setBackgroundColor(R.id.calendar_holder, widgetBgColor)
         }
 
         mIntent = Intent(mContext, MyWidgetMonthlyProvider::class.java)
@@ -139,16 +141,18 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
         val displayWeekNumbers = mContext.config.displayWeekNumbers
         val len = days.size
         val packageName = mContext.packageName
-        mRemoteViews?.setInt(R.id.week_num, "setTextColor", mTextColor)
-        mRemoteViews?.setFloat(R.id.week_num, "setTextSize", mSmallerFontSize)
-        mRemoteViews?.setViewVisibility(R.id.week_num, if (displayWeekNumbers) View.VISIBLE else View.GONE)
+        mRemoteViews?.apply {
+            setTextColor(R.id.week_num, mTextColor)
+            setTextSize(R.id.week_num, mSmallerFontSize)
+            setViewVisibility(R.id.week_num, if (displayWeekNumbers) View.VISIBLE else View.GONE)
+        }
 
         for (i in 0..5) {
             val id = mRes.getIdentifier("week_num_$i", "id", packageName)
             mRemoteViews?.apply {
                 setTextViewText(id, days[i * 7 + 3].weekOfYear.toString() + ":")
-                setInt(id, "setTextColor", mTextColor)
-                setFloat(id, "setTextSize", mSmallerFontSize)
+                setTextColor(id, mTextColor)
+                setTextSize(id, mSmallerFontSize)
                 setViewVisibility(id, if (displayWeekNumbers) View.VISIBLE else View.GONE)
             }
         }
@@ -182,8 +186,8 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
                 mRemoteViews?.setViewVisibility(circleId, View.GONE)
             }
 
-            mRemoteViews?.setInt(id, "setTextColor", curTextColor)
-            mRemoteViews?.setFloat(id, "setTextSize", mMediumFontSize)
+            mRemoteViews?.setTextColor(id, curTextColor)
+            mRemoteViews?.setTextSize(id, mMediumFontSize)
             setupDayOpenIntent(id, day.code)
         }
     }
@@ -198,8 +202,8 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
     }
 
     private fun updateTopViews() {
-        mRemoteViews?.setInt(R.id.top_value, "setTextColor", mTextColor)
-        mRemoteViews?.setFloat(R.id.top_value, "setTextSize", mLargerFontSize)
+        mRemoteViews?.setTextColor(R.id.top_value, mTextColor)
+        mRemoteViews?.setTextSize(R.id.top_value, mLargerFontSize)
 
         var bmp = getColoredIcon(mContext, mTextColor, R.drawable.ic_pointer_left)
         mRemoteViews?.setImageViewBitmap(R.id.top_left_arrow, bmp)
@@ -230,8 +234,8 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
         val letters = letterIDs
         for (i in 0..6) {
             val id = mRes.getIdentifier("label_$i", "id", packageName)
-            mRemoteViews?.setInt(id, "setTextColor", mTextColor)
-            mRemoteViews?.setFloat(id, "setTextSize", mSmallerFontSize)
+            mRemoteViews?.setTextColor(id, mTextColor)
+            mRemoteViews?.setTextSize(id, mSmallerFontSize)
 
             var index = i
             if (!mSundayFirst)

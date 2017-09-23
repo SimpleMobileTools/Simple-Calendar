@@ -16,6 +16,8 @@ import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.launchNewEventIntent
 import com.simplemobiletools.calendar.services.WidgetService
 import com.simplemobiletools.commons.extensions.getColoredIcon
+import com.simplemobiletools.commons.extensions.setBackgroundColor
+import com.simplemobiletools.commons.extensions.setTextSize
 import org.joda.time.DateTime
 
 class MyWidgetListProvider : AppWidgetProvider() {
@@ -43,15 +45,15 @@ class MyWidgetListProvider : AppWidgetProvider() {
 
         mWidgetManager = AppWidgetManager.getInstance(context)
 
-        mRemoteViews = RemoteViews(context.packageName, R.layout.widget_event_list)
         mIntent = Intent(context, MyWidgetListProvider::class.java)
+        mRemoteViews = RemoteViews(context.packageName, R.layout.widget_event_list).apply {
+            setBackgroundColor(R.id.widget_event_list_holder, context.config.widgetBgColor)
+            setTextColor(R.id.widget_event_list_empty, mTextColor)
+            setTextSize(R.id.widget_event_list_empty, context.config.getFontSize())
 
-        mRemoteViews.setInt(R.id.widget_event_list_holder, "setBackgroundColor", context.config.widgetBgColor)
-        mRemoteViews.setInt(R.id.widget_event_list_empty, "setTextColor", mTextColor)
-        mRemoteViews.setFloat(R.id.widget_event_list_empty, "setTextSize", context.config.getFontSize())
-
-        mRemoteViews.setInt(R.id.widget_event_list_today, "setTextColor", mTextColor)
-        mRemoteViews.setFloat(R.id.widget_event_list_today, "setTextSize", context.config.getFontSize() + 3)
+            setTextColor(R.id.widget_event_list_today, mTextColor)
+            setTextSize(R.id.widget_event_list_today, context.config.getFontSize() + 3)
+        }
 
         val now = (System.currentTimeMillis() / 1000).toInt()
         val todayCode = Formatter.getDayCodeFromTS(now)
