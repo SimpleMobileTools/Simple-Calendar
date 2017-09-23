@@ -9,7 +9,7 @@ import com.simplemobiletools.commons.extensions.beVisibleIf
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import kotlinx.android.synthetic.main.dialog_delete_event.view.*
 
-class DeleteEventDialog(val activity: Activity, eventIds: List<Int>, val callback: (allOccurrences: Boolean) -> Unit) : AlertDialog.Builder(activity) {
+class DeleteEventDialog(val activity: Activity, eventIds: List<Int>, val callback: (allOccurrences: Boolean) -> Unit) {
     val dialog: AlertDialog?
 
     init {
@@ -36,6 +36,6 @@ class DeleteEventDialog(val activity: Activity, eventIds: List<Int>, val callbac
     private fun dialogConfirmed(view: ViewGroup, hasRepeatableEvent: Boolean) {
         val deleteAllOccurrences = !hasRepeatableEvent || view.delete_event_radio_view.checkedRadioButtonId == R.id.delete_event_all
         dialog?.dismiss()
-        callback.invoke(deleteAllOccurrences)
+        callback(deleteAllOccurrences)
     }
 }

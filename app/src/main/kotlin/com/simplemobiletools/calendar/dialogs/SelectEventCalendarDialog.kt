@@ -63,7 +63,7 @@ class SelectEventCalendarDialog(val activity: Activity, val calendars: List<CalD
         if (!wasInit)
             return
 
-        callback.invoke(typeId)
+        callback(typeId)
         dialog?.dismiss()
     }
 }

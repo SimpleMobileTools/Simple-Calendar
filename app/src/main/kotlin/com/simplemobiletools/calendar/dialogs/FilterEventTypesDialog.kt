@@ -11,7 +11,7 @@ import com.simplemobiletools.commons.extensions.setupDialogStuff
 import kotlinx.android.synthetic.main.dialog_filter_event_types.view.*
 import java.util.*
 
-class FilterEventTypesDialog(val activity: SimpleActivity, val callback: () -> Unit) : AlertDialog.Builder(activity) {
+class FilterEventTypesDialog(val activity: SimpleActivity, val callback: () -> Unit) {
     var dialog: AlertDialog
     var eventTypes = ArrayList<EventType>()
     val view = activity.layoutInflater.inflate(R.layout.dialog_filter_event_types, null)
@@ -35,7 +35,7 @@ class FilterEventTypesDialog(val activity: SimpleActivity, val callback: () -> U
         val selectedItems = (view.filter_event_types_list.adapter as FilterEventTypeAdapter).getSelectedItemsSet()
         if (activity.config.displayEventTypes != selectedItems) {
             activity.config.displayEventTypes = selectedItems
-            callback.invoke()
+            callback()
         }
         dialog.dismiss()
     }

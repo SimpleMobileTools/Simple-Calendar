@@ -8,8 +8,7 @@ import com.simplemobiletools.commons.extensions.setupDialogStuff
 import com.simplemobiletools.commons.views.MyAppCompatCheckbox
 import kotlinx.android.synthetic.main.dialog_vertical_linear_layout.view.*
 
-class RepeatRuleWeeklyDialog(val activity: Activity, val curRepeatRule: Int, val callback: (repeatRule: Int) -> Unit) :
-        AlertDialog.Builder(activity) {
+class RepeatRuleWeeklyDialog(val activity: Activity, val curRepeatRule: Int, val callback: (repeatRule: Int) -> Unit) {
     val dialog: AlertDialog
     val view = activity.layoutInflater.inflate(R.layout.dialog_vertical_linear_layout, null)
 
@@ -46,7 +45,7 @@ class RepeatRuleWeeklyDialog(val activity: Activity, val curRepeatRule: Int, val
     private fun getRepeatRuleSum(): Int {
         var sum = 0
         val cnt = view.dialog_vertical_linear_layout.childCount
-        for (i in 0..cnt - 1) {
+        for (i in 0 until cnt) {
             val child = view.dialog_vertical_linear_layout.getChildAt(i)
             if (child is MyAppCompatCheckbox) {
                 if (child.isChecked)

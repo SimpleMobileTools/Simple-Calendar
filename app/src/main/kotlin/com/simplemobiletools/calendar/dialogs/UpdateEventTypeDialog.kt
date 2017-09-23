@@ -15,7 +15,7 @@ import com.simplemobiletools.commons.extensions.toast
 import com.simplemobiletools.commons.extensions.value
 import kotlinx.android.synthetic.main.dialog_event_type.view.*
 
-class UpdateEventTypeDialog(val activity: Activity, var eventType: EventType? = null, val callback: (eventTypeId: Int) -> Unit) : AlertDialog.Builder(activity) {
+class UpdateEventTypeDialog(val activity: Activity, var eventType: EventType? = null, val callback: (eventTypeId: Int) -> Unit) {
     var isNewEvent = eventType == null
 
     init {
@@ -73,7 +73,7 @@ class UpdateEventTypeDialog(val activity: Activity, var eventType: EventType? = 
 
                 if (eventTypeId != -1) {
                     dismiss()
-                    callback.invoke(eventTypeId)
+                    callback(eventTypeId)
                 } else {
                     activity.toast(R.string.editing_calendar_failed)
                 }

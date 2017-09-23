@@ -9,8 +9,7 @@ import com.simplemobiletools.commons.extensions.setupDialogStuff
 import com.simplemobiletools.commons.extensions.value
 import kotlinx.android.synthetic.main.dialog_snooze_picker.view.*
 
-class SnoozePickerDialog(val activity: SimpleActivity, val minutes: Int, val callback: (newMinutes: Int) -> Unit)
-    : AlertDialog.Builder(activity) {
+class SnoozePickerDialog(val activity: SimpleActivity, val minutes: Int, val callback: (newMinutes: Int) -> Unit) {
     init {
         val view = (activity.layoutInflater.inflate(R.layout.dialog_snooze_picker, null) as ViewGroup).apply {
             snooze_picker_label.text = snooze_picker_label.text.toString().capitalize()

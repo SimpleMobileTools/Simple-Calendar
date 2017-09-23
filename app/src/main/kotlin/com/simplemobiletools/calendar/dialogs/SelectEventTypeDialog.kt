@@ -69,12 +69,12 @@ class SelectEventTypeDialog(val activity: Activity, val currEventType: Int, val 
 
         if (typeId == NEW_TYPE_ID) {
             UpdateEventTypeDialog(activity) {
-                callback.invoke(it)
+                callback(it)
                 activity.hideKeyboard()
                 dialog?.dismiss()
             }
         } else {
-            callback.invoke(typeId)
+            callback(typeId)
             dialog?.dismiss()
         }
     }

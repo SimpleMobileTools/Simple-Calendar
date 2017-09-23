@@ -8,7 +8,7 @@ import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import kotlinx.android.synthetic.main.dialog_edit_repeating_event.view.*
 
-class EditRepeatingEventDialog(val activity: SimpleActivity, val callback: (allOccurrences: Boolean) -> Unit) : AlertDialog.Builder(activity) {
+class EditRepeatingEventDialog(val activity: SimpleActivity, val callback: (allOccurrences: Boolean) -> Unit) {
     var dialog: AlertDialog
 
     init {

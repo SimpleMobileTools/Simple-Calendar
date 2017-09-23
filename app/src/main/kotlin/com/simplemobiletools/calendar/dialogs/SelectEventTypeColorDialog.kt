@@ -55,7 +55,7 @@ class SelectEventTypeColorDialog(val activity: Activity, val eventType: EventTyp
         if (!wasInit)
             return
 
-        callback.invoke(colors[colorKey])
+        callback(colors[colorKey])
         dialog?.dismiss()
     }
 }

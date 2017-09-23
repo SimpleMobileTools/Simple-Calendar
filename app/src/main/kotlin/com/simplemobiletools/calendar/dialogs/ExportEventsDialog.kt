@@ -11,8 +11,7 @@ import com.simplemobiletools.commons.extensions.*
 import kotlinx.android.synthetic.main.dialog_export_events.view.*
 import java.io.File
 
-class ExportEventsDialog(val activity: SimpleActivity, val path: String, val callback: (exportPastEvents: Boolean, file: File, eventTypes: HashSet<String>) -> Unit)
-    : AlertDialog.Builder(activity) {
+class ExportEventsDialog(val activity: SimpleActivity, val path: String, val callback: (exportPastEvents: Boolean, file: File, eventTypes: HashSet<String>) -> Unit) {
 
     init {
         val view = (activity.layoutInflater.inflate(R.layout.dialog_export_events, null) as ViewGroup).apply {
@@ -42,20 +41,20 @@ class ExportEventsDialog(val activity: SimpleActivity, val path: String, val cal
             activity.setupDialogStuff(view, this, R.string.export_events)
             getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener({
                 val filename = view.export_events_filename.value
-                if (filename.isEmpty()) {
-                    activity.toast(R.string.empty_name)
-                } else if (filename.isAValidFilename()) {
-                    val file = File(path, "$filename.ics")
-                    if (file.exists()) {
-                        activity.toast(R.string.name_taken)
-                        return@setOnClickListener
-                    }
+                when {
+                    filename.isEmpty() -> activity.toast(R.string.empty_name)
+                    filename.isAValidFilename() -> {
+                        val file = File(path, "$filename.ics")
+                        if (file.exists()) {
+                            activity.toast(R.string.name_taken)
+                            return@setOnClickListener
+                        }
 
-                    val eventTypes = (view.export_events_types_list.adapter as FilterEventTypeAdapter).getSelectedItemsSet()
-                    callback(view.export_events_checkbox.isChecked, file, eventTypes)
-                    dismiss()
-                } else {
-                    activity.toast(R.string.invalid_name)
+                        val eventTypes = (view.export_events_types_list.adapter as FilterEventTypeAdapter).getSelectedItemsSet()
+                        callback(view.export_events_checkbox.isChecked, file, eventTypes)
+                        dismiss()
+                    }
+                    else -> activity.toast(R.string.invalid_name)
                 }
             })
         }

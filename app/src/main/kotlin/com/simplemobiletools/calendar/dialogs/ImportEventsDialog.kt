@@ -14,7 +14,7 @@ import com.simplemobiletools.commons.extensions.setupDialogStuff
 import com.simplemobiletools.commons.extensions.toast
 import kotlinx.android.synthetic.main.dialog_import_events.view.*
 
-class ImportEventsDialog(val activity: SimpleActivity, val path: String, val callback: (refreshView: Boolean) -> Unit) : AlertDialog.Builder(activity) {
+class ImportEventsDialog(val activity: SimpleActivity, val path: String, val callback: (refreshView: Boolean) -> Unit) {
     var currEventTypeId = DBHelper.REGULAR_EVENT_TYPE_ID
 
     init {
@@ -45,7 +45,7 @@ class ImportEventsDialog(val activity: SimpleActivity, val path: String, val cal
     }
 
     private fun updateEventType(view: ViewGroup) {
-        val eventType = context.dbHelper.getEventType(currEventTypeId)
+        val eventType = activity.dbHelper.getEventType(currEventTypeId)
         view.import_event_type_title.text = eventType!!.getDisplayTitle()
         view.import_event_type_color.setBackgroundWithStroke(eventType.color, activity.config.backgroundColor)
     }
@@ -56,6 +56,6 @@ class ImportEventsDialog(val activity: SimpleActivity, val path: String, val cal
             IMPORT_PARTIAL -> R.string.importing_some_events_failed
             else -> R.string.importing_events_failed
         })
-        callback.invoke(result != IMPORT_FAIL)
+        callback(result != IMPORT_FAIL)
     }
 }

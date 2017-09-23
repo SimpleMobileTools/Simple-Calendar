@@ -17,8 +17,7 @@ import kotlinx.android.synthetic.main.dialog_repeat_limit_type_picker.view.*
 import org.joda.time.DateTime
 import java.util.*
 
-class RepeatLimitTypePickerDialog(val activity: Activity, var repeatLimit: Int, val startTS: Int, val callback: (repeatLimit: Int) -> Unit) :
-        AlertDialog.Builder(activity) {
+class RepeatLimitTypePickerDialog(val activity: Activity, var repeatLimit: Int, val startTS: Int, val callback: (repeatLimit: Int) -> Unit) {
     lateinit var dialog: AlertDialog
     var view: View
 
@@ -45,14 +44,13 @@ class RepeatLimitTypePickerDialog(val activity: Activity, var repeatLimit: Int, 
         }
     }
 
-    private fun getCheckedItem(): Int {
-        return if (repeatLimit > 0)
-            R.id.repeat_type_till_date
-        else if (repeatLimit < 0) {
+    private fun getCheckedItem() = when {
+        repeatLimit > 0 -> R.id.repeat_type_till_date
+        repeatLimit < 0 -> {
             view.repeat_type_count.setText((-repeatLimit).toString())
             R.id.repeat_type_x_times
-        } else
-            R.id.repeat_type_forever
+        }
+        else -> R.id.repeat_type_forever
     }
 
     private fun updateRepeatLimitText() {
@@ -95,10 +93,10 @@ class RepeatLimitTypePickerDialog(val activity: Activity, var repeatLimit: Int, 
 
     private val repetitionLimitDateSetListener = DatePickerDialog.OnDateSetListener { v, year, monthOfYear, dayOfMonth ->
         val repeatLimitDateTime = DateTime().withDate(year, monthOfYear + 1, dayOfMonth).withTime(23, 59, 59, 0)
-        if (repeatLimitDateTime.seconds() < startTS) {
-            repeatLimit = 0
+        repeatLimit = if (repeatLimitDateTime.seconds() < startTS) {
+            0
         } else {
-            repeatLimit = repeatLimitDateTime.seconds()
+            repeatLimitDateTime.seconds()
         }
         callback(repeatLimit)
         dialog.dismiss()
