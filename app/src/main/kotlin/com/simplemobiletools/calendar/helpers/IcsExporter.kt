@@ -14,8 +14,8 @@ class IcsExporter {
         EXPORT_FAIL, EXPORT_OK, EXPORT_PARTIAL
     }
 
-    var eventsExported = 0
-    var eventsFailed = 0
+    private var eventsExported = 0
+    private var eventsFailed = 0
 
     fun exportEvents(activity: SimpleActivity, file: File, events: ArrayList<Event>, callback: (result: ExportResult) -> Unit) {
         activity.getFileOutputStream(file) {
@@ -54,12 +54,11 @@ class IcsExporter {
                 out.writeLn(END_CALENDAR)
             }
 
-            callback(if (eventsExported == 0) {
-                EXPORT_FAIL
-            } else if (eventsFailed > 0) {
-                EXPORT_PARTIAL
-            } else {
-                EXPORT_OK
+
+            callback(when {
+                eventsExported == 0 -> EXPORT_FAIL
+                eventsFailed > 0 -> EXPORT_PARTIAL
+                else -> EXPORT_OK
             })
         }
     }
@@ -72,10 +71,12 @@ class IcsExporter {
 
     private fun checkReminder(minutes: Int, out: BufferedWriter) {
         if (minutes != -1) {
-            out.writeLn(BEGIN_ALARM)
-            out.writeLn("$ACTION$DISPLAY")
-            out.writeLn("$TRIGGER-${Parser().getDurationCode(minutes)}")
-            out.writeLn(END_ALARM)
+            out.apply {
+                writeLn(BEGIN_ALARM)
+                writeLn("$ACTION$DISPLAY")
+                writeLn("$TRIGGER-${Parser().getDurationCode(minutes)}")
+                writeLn(END_ALARM)
+            }
         }
     }
 

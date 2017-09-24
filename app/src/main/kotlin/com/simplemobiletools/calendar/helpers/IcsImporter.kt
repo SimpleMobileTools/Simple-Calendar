@@ -16,28 +16,28 @@ class IcsImporter {
         IMPORT_FAIL, IMPORT_OK, IMPORT_PARTIAL
     }
 
-    var curStart = -1
-    var curEnd = -1
-    var curTitle = ""
-    var curDescription = ""
-    var curImportId = ""
-    var curFlags = 0
-    var curReminderMinutes = ArrayList<Int>()
-    var curRepeatExceptions = ArrayList<Int>()
-    var curRepeatInterval = 0
-    var curRepeatLimit = 0
-    var curRepeatRule = 0
-    var curEventType = DBHelper.REGULAR_EVENT_TYPE_ID
-    var curLastModified = 0L
-    var isNotificationDescription = false
-    var lastReminderAction = ""
+    private var curStart = -1
+    private var curEnd = -1
+    private var curTitle = ""
+    private var curDescription = ""
+    private var curImportId = ""
+    private var curFlags = 0
+    private var curReminderMinutes = ArrayList<Int>()
+    private var curRepeatExceptions = ArrayList<Int>()
+    private var curRepeatInterval = 0
+    private var curRepeatLimit = 0
+    private var curRepeatRule = 0
+    private var curEventType = DBHelper.REGULAR_EVENT_TYPE_ID
+    private var curLastModified = 0L
+    private var isNotificationDescription = false
+    private var lastReminderAction = ""
 
-    var eventsImported = 0
-    var eventsFailed = 0
+    private var eventsImported = 0
+    private var eventsFailed = 0
 
     fun importEvents(activity: SimpleActivity, path: String, defaultEventType: Int): ImportResult {
         try {
-            val importIDs = activity.dbHelper.getImportIds()
+            val existingEvents = activity.dbHelper.getEventsWithImportIds()
             var prevLine = ""
 
             val inputStream = if (path.contains("/")) {
@@ -73,7 +73,7 @@ class IcsImporter {
                     } else if (line.startsWith(DESCRIPTION) && !isNotificationDescription) {
                         curDescription = line.substring(DESCRIPTION.length).replace("\\n", "\n")
                     } else if (line.startsWith(UID)) {
-                        curImportId = line.substring(UID.length)
+                        curImportId = line.substring(UID.length).trim()
                     } else if (line.startsWith(RRULE)) {
                         val repeatRule = Parser().parseRepeatInterval(line.substring(RRULE.length), curStart)
                         curRepeatRule = repeatRule.repeatRule
@@ -93,11 +93,16 @@ class IcsImporter {
                     } else if (line.startsWith(EXDATE)) {
                         curRepeatExceptions.add(getTimestamp(line.substring(EXDATE.length)))
                     } else if (line == END_EVENT) {
-                        if (curTitle.isEmpty() || curStart == -1 || curEnd == -1 || importIDs.contains(curImportId))
+                        if (curStart != -1 && curEnd == -1)
+                            curEnd = curStart
+
+                        if (curTitle.isEmpty() || curStart == -1)
                             continue
 
-                        if (curImportId.isNotEmpty())
-                            importIDs.add(curImportId)
+                        val eventToUpdate = existingEvents.firstOrNull { curImportId == it.importId }
+                        if (eventToUpdate != null && eventToUpdate.lastUpdated >= curLastModified) {
+                            continue
+                        }
 
                         val event = Event(0, curStart, curEnd, curTitle, curDescription, curReminderMinutes.getOrElse(0, { -1 }),
                                 curReminderMinutes.getOrElse(1, { -1 }), curReminderMinutes.getOrElse(2, { -1 }), curRepeatInterval,
@@ -108,28 +113,32 @@ class IcsImporter {
                             event.endTS -= DAY
                         }
 
-                        activity.dbHelper.insert(event, false) {
-                            for (exceptionTS in curRepeatExceptions) {
-                                activity.dbHelper.addEventRepeatException(it, exceptionTS)
+                        if (eventToUpdate == null) {
+                            activity.dbHelper.insert(event, false) {
+                                for (exceptionTS in curRepeatExceptions) {
+                                    activity.dbHelper.addEventRepeatException(it, exceptionTS)
+                                }
+                                existingEvents.add(event)
                             }
-                            eventsImported++
-                            resetValues()
+                        } else {
+                            event.id = eventToUpdate.id
+                            activity.dbHelper.update(event, true) {}
                         }
+                        eventsImported++
+                        resetValues()
                     }
                     prevLine = line
                 }
             }
         } catch (e: Exception) {
-            activity.showErrorToast(e.toString(), Toast.LENGTH_LONG)
+            activity.showErrorToast(e, Toast.LENGTH_LONG)
             eventsFailed++
         }
 
-        return if (eventsImported == 0) {
-            IMPORT_FAIL
-        } else if (eventsFailed > 0) {
-            IMPORT_PARTIAL
-        } else {
-            IMPORT_OK
+        return when {
+            eventsImported == 0 -> IMPORT_FAIL
+            eventsFailed > 0 -> IMPORT_PARTIAL
+            else -> IMPORT_OK
         }
     }
 

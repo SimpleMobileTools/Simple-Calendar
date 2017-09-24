@@ -212,7 +212,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         context.updateWidgets()
         context.scheduleReminder(event, this)
 
-        if (addToCalDAV && event.source != SOURCE_SIMPLE_CALENDAR) {
+        if (addToCalDAV && event.source != SOURCE_SIMPLE_CALENDAR && context.config.caldavSync) {
             CalDAVHandler(context).insertCalDAVEvent(event)
         }
 
@@ -235,7 +235,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
         context.updateWidgets()
         context.scheduleReminder(event, this)
-        if (updateAtCalDAV && event.source != SOURCE_SIMPLE_CALENDAR) {
+        if (updateAtCalDAV && event.source != SOURCE_SIMPLE_CALENDAR && context.config.caldavSync) {
             CalDAVHandler(context).updateCalDAVEvent(event)
         }
         callback()
@@ -408,7 +408,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             context.cancelNotification(it.toInt())
         }
 
-        if (deleteFromCalDAV) {
+        if (deleteFromCalDAV && context.config.caldavSync) {
             events.forEach {
                 CalDAVHandler(context).deleteCalDAVEvent(it)
             }
@@ -533,24 +533,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         mDb.update(MAIN_TABLE_NAME, values, selection, selectionArgs)
     }
 
-    fun getImportIds(): ArrayList<String> {
-        val ids = ArrayList<String>()
-        val columns = arrayOf(COL_IMPORT_ID)
-        val selection = "$COL_IMPORT_ID IS NOT NULL"
-        var cursor: Cursor? = null
-        try {
-            cursor = mDb.query(MAIN_TABLE_NAME, columns, selection, null, null, null, null)
-            if (cursor != null && cursor.moveToFirst()) {
-                do {
-                    val id = cursor.getStringValue(COL_IMPORT_ID)
-                    ids.add(id)
-                } while (cursor.moveToNext())
-            }
-        } finally {
-            cursor?.close()
-        }
-        return ids.filter { it.trim().isNotEmpty() } as ArrayList<String>
-    }
+    fun getEventsWithImportIds() = getEvents("").filter { it.importId.trim().isNotEmpty() } as ArrayList<Event>
 
     fun getEventWithId(id: Int): Event? {
         val selection = "$MAIN_TABLE_NAME.$COL_ID = ?"
