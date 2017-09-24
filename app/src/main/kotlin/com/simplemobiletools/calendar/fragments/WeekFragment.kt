@@ -30,8 +30,8 @@ import org.joda.time.Days
 import java.util.*
 
 class WeekFragment : Fragment(), WeeklyCalendar {
-    val CLICK_DURATION_THRESHOLD = 150
-    val PLUS_FADEOUT_DELAY = 5000L
+    private val CLICK_DURATION_THRESHOLD = 150
+    private val PLUS_FADEOUT_DELAY = 5000L
 
     private var mListener: WeekScrollListener? = null
     private var mWeekTimestamp = 0
@@ -291,7 +291,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         allDayHolders.add(allDaysLine)
     }
 
-    fun addCurrentTimeIndicator(minuteHeight: Float) {
+    private fun addCurrentTimeIndicator(minuteHeight: Float) {
         if (todayColumnIndex != -1) {
             val minutes = DateTime().minuteOfDay
             val todayColumn = getColumnWithId(todayColumnIndex)
@@ -323,6 +323,9 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
     private fun addAllDayEvent(event: Event) {
         (inflater.inflate(R.layout.week_all_day_event_marker, null, false) as TextView).apply {
+            if (activity == null)
+                return
+
             background = ColorDrawable(MainActivity.eventTypeColors.get(event.eventType, primaryColor))
             text = event.title
 
@@ -333,10 +336,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             val maxTS = Math.min(endDateTime.seconds(), mWeekTimestamp + WEEK_SECONDS)
             val startDateTimeInWeek = Formatter.getDateTimeFromTS(minTS)
             val firstDayIndex = (startDateTimeInWeek.dayOfWeek - if (context.config.isSundayFirst) 0 else 1) % 7
-            val daysCnt = Days.daysBetween(Formatter.getDateTimeFromTS(minTS), Formatter.getDateTimeFromTS(maxTS)).days
-
-            if (activity == null)
-                return
+            val daysCnt = Days.daysBetween(Formatter.getDateTimeFromTS(minTS).toLocalDate(), Formatter.getDateTimeFromTS(maxTS).toLocalDate()).days
 
             var doesEventFit: Boolean
             val cnt = allDayRows.size - 1
