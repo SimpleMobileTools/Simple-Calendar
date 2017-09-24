@@ -1,6 +1,14 @@
 Changelog
 ==========
 
+Version 2.7.6 *(2017-09-24)*
+----------------------------
+
+ * Add support for events repeating every 30 days
+ * Fix event type color at the Event list widget
+ * Fix a glitch at wrongly displayed events lasting through midnight
+ * Update events imported via .ics files, check last-modified field
+
 Version 2.7.5 *(2017-09-10)*
 ----------------------------
 
