@@ -126,25 +126,23 @@ class Parser {
         else -> ";$UNTIL=${Formatter.getDayCodeFromTS(event.repeatLimit)}"
     }
 
-    private fun getByDay(event: Event): String {
-        return if (event.repeatInterval.isXWeeklyRepetition()) {
+    private fun getByDay(event: Event) = when {
+        event.repeatInterval.isXWeeklyRepetition() -> {
             val days = getByDayString(event.repeatRule)
             ";$BYDAY=$days"
-        } else if (event.repeatInterval.isXMonthlyRepetition()) {
-            if (event.repeatRule == REPEAT_MONTH_LAST_DAY) {
-                ";$BYMONTHDAY=-1"
-            } else if (event.repeatRule == REPEAT_MONTH_EVERY_XTH_DAY) {
+        }
+        event.repeatInterval.isXMonthlyRepetition() -> when {
+            event.repeatRule == REPEAT_MONTH_LAST_DAY -> ";$BYMONTHDAY=-1"
+            event.repeatRule == REPEAT_MONTH_EVERY_XTH_DAY -> {
                 val start = Formatter.getDateTimeFromTS(event.startTS)
                 val dayOfMonth = start.dayOfMonth
                 val order = (dayOfMonth - 1) / 7 + 1
                 val day = getDayLetters(start.dayOfWeek)
                 ";$BYDAY=$order$day"
-            } else {
-                ""
             }
-        } else {
-            ""
+            else -> ""
         }
+        else -> ""
     }
 
     private fun getByDayString(rule: Int): String {
