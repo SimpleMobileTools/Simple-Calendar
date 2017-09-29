@@ -41,7 +41,7 @@
     <string name="years_raw">лет</string>
     <string name="repeat_till">Повторять до</string>
     <string name="forever">Бесконечно</string>
-    <string name="event_is_repeatable">The event is repeatable</string>
+    <string name="event_is_repeatable">Это событие может повторяться</string>
     <string name="selection_contains_repetition">В выбранном есть повторяющиеся события</string>
     <string name="delete_one_only">Удалить только выбранное</string>
     <string name="delete_all_occurrences">Удалить все связанные</string>
@@ -52,13 +52,13 @@
     <string name="repeat_forever">Повторять бесконечно</string>
     <string name="times">раз</string>
     <string name="repeat">Повторять</string>
-    <string name="repeat_on">Repeat on</string>
+    <string name="repeat_on">Повторять по</string>
     <string name="every_day">Каждый день</string>
     <string name="selected_days">В выбранные дни</string>
-    <string name="the_same_day">The same day</string>
-    <string name="the_last_day">The last day</string>
+    <string name="the_same_day">Этот же день</string>
+    <string name="the_last_day">Последний день</string>
     <string name="repeat_on_the_same_day">Повторять в этот же день каждый месяц</string>
-    <string name="repeat_on_the_last_day">Repeat on the last day of the month</string>
+    <string name="repeat_on_the_last_day">Повторять в последний день месяца</string>
     <string name="repeat_every_m">Repeat every</string>
     <string name="every_m">Every</string>
     <string name="first_m">first</string>
@@ -155,7 +155,7 @@
     <string name="export_past_events_too">Экспортировать прошедшие события</string>
     <string name="include_event_types">Включать типы событий</string>
     <string name="filename_without_ics">Имя файла (без .ics)</string>
-    <string name="no_title">No title</string>
+    <string name="no_title">Без заголовка</string>
 
     <!-- Event details -->
     <string name="title">Заголовок</string>
@@ -200,21 +200,21 @@
     <string name="no_ringtone_picker">Не найдено приложение для выбора рингтона</string>
     <string name="no_ringtone_selected">Нет</string>
     <string name="day_end_before_start">Конец дня не может быть раньше начала</string>
-    <string name="caldav_sync">CalDAV sync</string>
-    <string name="event_lists">Event lists</string>
+    <string name="caldav_sync">Синхронизация по CalDAV</string>
+    <string name="event_lists">Списки событий</string>
     <string name="display_past_events">Показывать прошедшие события</string>
     <string name="snooze_delay">Postpone reminder with Snooze by</string>
-    <string name="widgets">Widgets</string>
+    <string name="widgets">Виджеты</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
-    <string name="select_caldav_calendars">Select calendars to sync</string>
-    <string name="manage_synced_calendars">Manage synced calendars</string>
-    <string name="store_locally_only">Store locally only</string>
-    <string name="refresh_caldav_calendars">Refresh CalDAV calendars</string>
-    <string name="refreshing">Refreshing…</string>
-    <string name="refreshing_complete">Refreshing complete</string>
-    <string name="editing_calendar_failed">Editing calendar failed</string>
+    <string name="select_caldav_calendars">Выберите календари для синхронизации</string>
+    <string name="manage_synced_calendars">Управление календарями для синхронизации</string>
+    <string name="store_locally_only">Хранить только локально</string>
+    <string name="refresh_caldav_calendars">Обновить календари из CalDAV</string>
+    <string name="refreshing">Обновление…</string>
+    <string name="refreshing_complete">Обновление завершено</string>
+    <string name="editing_calendar_failed">Не удалось изменить календарь</string>
 
     <plurals name="by_minutes">
         <item quantity="one">%d минута</item>
