@@ -81,12 +81,26 @@ class MainActivity : SimpleActivity(), NavigationListener {
         calendar_fab.setOnClickListener { launchNewEventIntent() }
         checkWhatsNewDialog()
         storeStoragePaths()
+
         if (resources.getBoolean(R.bool.portrait_only))
             requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
         if (intent?.action == Intent.ACTION_VIEW && intent.data != null) {
-            tryImportEventsFromFile(intent.data)
+            val uri = intent.data
+            if (uri.authority == "com.android.calendar") {
+                // clicking date on a widget: content://com.android.calendar/time/1507309245683
+                if (intent?.extras?.getBoolean("DETAIL_VIEW", false) == true) {
+                    val timestamp = uri.pathSegments.last()
+                    if (timestamp.areDigitsOnly()) {
+                        openDayAt(timestamp.toLong())
+                        return
+                    }
+                }
+            } else {
+                tryImportEventsFromFile(uri)
+            }
         }
+
         storeStateVariables()
         updateViewPager()
 
@@ -576,6 +590,14 @@ class MainActivity : SimpleActivity(), NavigationListener {
     override fun goToDateTime(dateTime: DateTime) {
         fillMonthlyViewPager(Formatter.getDayCodeFromDateTime(dateTime))
         mIsMonthSelected = true
+    }
+
+    private fun openDayAt(timestamp: Long) {
+        val dayCode = Formatter.getDayCodeFromTS((timestamp / 1000).toInt())
+        Intent(this, DayActivity::class.java).apply {
+            putExtra(DAY_CODE, dayCode)
+            startActivity(this)
+        }
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
