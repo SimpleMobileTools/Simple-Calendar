@@ -78,9 +78,9 @@ class MainActivity : SimpleActivity(), NavigationListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        storeStoragePaths()
         calendar_fab.setOnClickListener { launchNewEventIntent() }
         checkWhatsNewDialog()
-        storeStoragePaths()
 
         if (resources.getBoolean(R.bool.portrait_only))
             requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
@@ -88,7 +88,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
         if (intent?.action == Intent.ACTION_VIEW && intent.data != null) {
             val uri = intent.data
             if (uri.authority == "com.android.calendar") {
-                // clicking date on a widget: content://com.android.calendar/time/1507309245683
+                // clicking date on a third party widget: content://com.android.calendar/time/1507309245683
                 if (intent?.extras?.getBoolean("DETAIL_VIEW", false) == true) {
                     val timestamp = uri.pathSegments.last()
                     if (timestamp.areDigitsOnly()) {
