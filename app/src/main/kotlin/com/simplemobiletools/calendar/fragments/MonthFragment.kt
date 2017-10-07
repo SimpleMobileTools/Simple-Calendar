@@ -235,7 +235,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
 
             (View.inflate(context, R.layout.day_monthly_item_view, null) as TextView).apply {
                 setTextColor(textColor)
-                text = it.title
+                text = it.title.replace(" ", "\u00A0")  // allow word break by char
                 gravity = Gravity.START
                 background = backgroundDrawable
                 layoutParams = eventLayoutParams
