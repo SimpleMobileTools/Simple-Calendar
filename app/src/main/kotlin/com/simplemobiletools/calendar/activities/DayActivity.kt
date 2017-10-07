@@ -88,7 +88,7 @@ class DayActivity : SimpleActivity(), NavigationListener, ViewPager.OnPageChange
     }
 
     private fun getDays(code: String) {
-        mPagerDays = ArrayList<String>(PREFILLED_DAYS)
+        mPagerDays = ArrayList(PREFILLED_DAYS)
         val today = Formatter.getDateTimeFromCode(code)
         for (i in -PREFILLED_DAYS / 2..PREFILLED_DAYS / 2) {
             mPagerDays!!.add(Formatter.getDayCodeFromDateTime(today.plusDays(i)))

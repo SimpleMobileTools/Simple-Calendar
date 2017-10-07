@@ -85,7 +85,7 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEventsListen
         mListener = listener
     }
 
-    fun pickDay() {
+    private fun pickDay() {
         activity.setTheme(context.getAppropriateTheme())
         val view = getLayoutInflater(arguments).inflate(R.layout.date_picker, null)
         val datePicker = view.findViewById(R.id.date_picker) as DatePicker
@@ -135,7 +135,7 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEventsListen
         }
         mHolder.day_events.adapter = eventsAdapter
         DividerItemDecoration(context, DividerItemDecoration.VERTICAL).apply {
-            setDrawable(context.resources.getDrawable(com.simplemobiletools.commons.R.drawable.divider))
+            setDrawable(context.resources.getDrawable(R.drawable.divider))
             mHolder.day_events.addItemDecoration(this)
         }
     }

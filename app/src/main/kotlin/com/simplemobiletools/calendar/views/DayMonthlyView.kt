@@ -13,7 +13,9 @@ import android.widget.TextView
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.helpers.LOW_ALPHA
+import com.simplemobiletools.calendar.helpers.MEDIUM_ALPHA
 import com.simplemobiletools.calendar.models.DayMonthly
+import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.commons.extensions.adjustAlpha
 import com.simplemobiletools.commons.extensions.getContrastColor
 import com.simplemobiletools.commons.extensions.onGlobalLayout
@@ -23,6 +25,8 @@ class DayMonthlyView(context: Context, attrs: AttributeSet, defStyle: Int) : Lin
 
     private var textColor = context.config.textColor
     private var weakTextColor = textColor.adjustAlpha(LOW_ALPHA)
+    private var res = context.resources
+    private var dividerMargin = res.displayMetrics.density.toInt()
 
     init {
         orientation = LinearLayout.VERTICAL
@@ -31,6 +35,14 @@ class DayMonthlyView(context: Context, attrs: AttributeSet, defStyle: Int) : Lin
 
     fun setDay(day: DayMonthly) {
         removeAllViews()
+        addDayNumber(day)
+
+        day.dayEvents.forEach {
+            addDayEvent(it)
+        }
+    }
+
+    private fun addDayNumber(day: DayMonthly) {
         (View.inflate(context, R.layout.day_monthly_item_view, null) as TextView).apply {
             setTextColor(if (day.isThisMonth) textColor else weakTextColor)
             text = day.value.toString()
@@ -40,19 +52,35 @@ class DayMonthlyView(context: Context, attrs: AttributeSet, defStyle: Int) : Lin
 
             if (day.isToday) {
                 val primaryColor = context.config.primaryColor
-                setTextColor(primaryColor.getContrastColor())
+                setTextColor(primaryColor.getContrastColor().adjustAlpha(MEDIUM_ALPHA))
 
                 onGlobalLayout {
                     val height = this@apply.height
                     if (height > 0) {
-                        val baseDrawable = context.resources.getDrawable(R.drawable.monthly_today_circle)
+                        val baseDrawable = res.getDrawable(R.drawable.monthly_today_circle)
                         val bitmap = (baseDrawable as BitmapDrawable).bitmap
-                        val scaledDrawable = BitmapDrawable(resources, Bitmap.createScaledBitmap(bitmap, height, height, true))
-                        scaledDrawable.setColorFilter(primaryColor, PorterDuff.Mode.SRC_IN)
+                        val scaledDrawable = BitmapDrawable(res, Bitmap.createScaledBitmap(bitmap, height, height, true))
+                        scaledDrawable.mutate().setColorFilter(primaryColor, PorterDuff.Mode.SRC_IN)
                         background = scaledDrawable
                     }
                 }
             }
+        }
+    }
+
+    private fun addDayEvent(event: Event) {
+        val backgroundDrawable = res.getDrawable(R.drawable.day_monthly_event_background)
+        backgroundDrawable.mutate().setColorFilter(event.color, PorterDuff.Mode.SRC_IN)
+        val eventLayoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        eventLayoutParams.setMargins(dividerMargin, dividerMargin, dividerMargin, dividerMargin)
+
+        (View.inflate(context, R.layout.day_monthly_item_view, null) as TextView).apply {
+            setTextColor(event.color.getContrastColor().adjustAlpha(MEDIUM_ALPHA))
+            text = event.title
+            gravity = Gravity.START
+            background = backgroundDrawable
+            layoutParams = eventLayoutParams
+            addView(this)
         }
     }
 }

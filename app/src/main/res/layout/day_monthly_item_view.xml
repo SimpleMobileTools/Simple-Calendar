@@ -5,5 +5,11 @@
     android:id="@+id/day_monthly_number_id"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:textSize="@dimen/smaller_text_size"
+    android:layout_marginLeft="@dimen/tiny_margin"
+    android:layout_marginRight="@dimen/tiny_margin"
+    android:ellipsize="none"
+    android:maxLines="1"
+    android:paddingLeft="@dimen/tiny_margin"
+    android:paddingRight="@dimen/tiny_margin"
+    android:textSize="@dimen/small_text_size"
     tools:text="1"/>
