@@ -24,6 +24,10 @@ import org.joda.time.DateTime
 import java.util.*
 
 class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
+    companion object {
+        val STORED_LOCALLY_ONLY = 0
+    }
+
     private var mReminder1Minutes = 0
     private var mReminder2Minutes = 0
     private var mReminder3Minutes = 0
@@ -33,6 +37,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     private var mEventTypeId = DBHelper.REGULAR_EVENT_TYPE_ID
     private var mDialogTheme = 0
     private var mEventOccurrenceTS = 0
+    private var mEventCalendarId = STORED_LOCALLY_ONLY
     private var wasActivityInitialized = false
 
     lateinit var mEventStartDateTime: DateTime
@@ -120,6 +125,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         mRepeatLimit = mEvent.repeatLimit
         mRepeatRule = mEvent.repeatRule
         mEventTypeId = mEvent.eventType
+        mEventCalendarId = mEvent.getCalDAVCalendarId()
         checkRepeatTexts(mRepeatInterval)
     }
 
@@ -397,7 +403,12 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
             event_caldav_calendar_holder.setOnClickListener {
                 hideKeyboard()
-                SelectEventCalendarDialog(this, calendars, getCalendarId()) {
+                SelectEventCalendarDialog(this, calendars, mEventCalendarId) {
+                    if (mEventCalendarId != STORED_LOCALLY_ONLY && it == STORED_LOCALLY_ONLY) {
+                        mEventTypeId = DBHelper.REGULAR_EVENT_TYPE_ID
+                        updateEventType()
+                    }
+                    mEventCalendarId = it
                     config.lastUsedCaldavCalendar = it
                     updateCurrentCalendarInfo(getCalendarWithId(calendars, it))
                 }
@@ -421,17 +432,13 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         if (currentCalendar == null) {
             event_caldav_calendar_name.apply {
                 text = getString(R.string.store_locally_only)
-                apply {
-                    setPadding(paddingLeft, paddingTop, paddingRight, resources.getDimension(R.dimen.medium_margin).toInt())
-                }
+                setPadding(paddingLeft, paddingTop, paddingRight, resources.getDimension(R.dimen.medium_margin).toInt())
             }
         } else {
             event_caldav_calendar_email.text = currentCalendar.accountName
             event_caldav_calendar_name.apply {
                 text = currentCalendar.displayName
-                apply {
-                    setPadding(paddingLeft, paddingTop, paddingRight, resources.getDimension(R.dimen.tiny_margin).toInt())
-                }
+                setPadding(paddingLeft, paddingTop, paddingRight, resources.getDimension(R.dimen.tiny_margin).toInt())
             }
         }
     }

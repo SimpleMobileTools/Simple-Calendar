@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.activities.EventActivity.Companion.STORED_LOCALLY_ONLY
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.models.CalDAVCalendar
@@ -17,8 +18,6 @@ import kotlinx.android.synthetic.main.dialog_select_radio_group.view.*
 import kotlinx.android.synthetic.main.radio_button_with_color.view.*
 
 class SelectEventCalendarDialog(val activity: Activity, val calendars: List<CalDAVCalendar>, val currCalendarId: Int, val callback: (id: Int) -> Unit) {
-    private val STORE_LOCALLY_ONLY = 0
-
     private val dialog: AlertDialog?
     private val radioGroup: RadioGroup
     private var wasInit = false
@@ -32,7 +31,7 @@ class SelectEventCalendarDialog(val activity: Activity, val calendars: List<CalD
                 calendars.forEach {
                     addRadioButton(it.getFullTitle(), it.id, it.color)
                 }
-                addRadioButton(activity.getString(R.string.store_locally_only), STORE_LOCALLY_ONLY, Color.TRANSPARENT)
+                addRadioButton(activity.getString(R.string.store_locally_only), STORED_LOCALLY_ONLY, Color.TRANSPARENT)
                 wasInit = true
                 activity.updateTextColors(view.dialog_radio_holder)
             }
@@ -60,10 +59,9 @@ class SelectEventCalendarDialog(val activity: Activity, val calendars: List<CalD
     }
 
     private fun viewClicked(typeId: Int) {
-        if (!wasInit)
-            return
-
-        callback(typeId)
-        dialog?.dismiss()
+        if (wasInit) {
+            callback(typeId)
+            dialog?.dismiss()
+        }
     }
 }
