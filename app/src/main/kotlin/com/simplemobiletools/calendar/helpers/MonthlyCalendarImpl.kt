@@ -10,13 +10,14 @@ import com.simplemobiletools.calendar.models.DayMonthly
 import com.simplemobiletools.calendar.models.Event
 import org.joda.time.DateTime
 import java.util.*
+import kotlin.collections.ArrayList
 
 class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context) {
     private val DAYS_CNT = 42
     private val YEAR_PATTERN = "YYYY"
 
     private val mToday: String = DateTime().toString(Formatter.DAYCODE_PATTERN)
-    var mEvents = ArrayList<Event>()
+    private var mEvents = ArrayList<Event>()
     var mFilterEventTypes = true
 
     lateinit var mTargetDate: DateTime
@@ -49,25 +50,29 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
         var value = prevMonthDays - firstDayIndex + 1
         var curDay: DateTime = mTargetDate
 
-        for (i in 0..DAYS_CNT - 1) {
-            if (i < firstDayIndex) {
-                isThisMonth = false
-                curDay = mTargetDate.withDayOfMonth(1).minusMonths(1)
-            } else if (i == firstDayIndex) {
-                value = 1
-                isThisMonth = true
-                curDay = mTargetDate
-            } else if (value == currMonthDays + 1) {
-                value = 1
-                isThisMonth = false
-                curDay = mTargetDate.withDayOfMonth(1).plusMonths(1)
+        for (i in 0 until DAYS_CNT) {
+            when {
+                i < firstDayIndex -> {
+                    isThisMonth = false
+                    curDay = mTargetDate.withDayOfMonth(1).minusMonths(1)
+                }
+                i == firstDayIndex -> {
+                    value = 1
+                    isThisMonth = true
+                    curDay = mTargetDate
+                }
+                value == currMonthDays + 1 -> {
+                    value = 1
+                    isThisMonth = false
+                    curDay = mTargetDate.withDayOfMonth(1).plusMonths(1)
+                }
             }
 
             isToday = isThisMonth && isToday(mTargetDate, value)
 
             val newDay = curDay.withDayOfMonth(value)
             val dayCode = Formatter.getDayCodeFromDateTime(newDay)
-            val day = DayMonthly(value, isThisMonth, isToday, dayCode, false, newDay.weekOfWeekyear, ArrayList())
+            val day = DayMonthly(value, isThisMonth, isToday, dayCode, newDay.weekOfWeekyear, ArrayList())
             days.add(day)
             value++
         }
@@ -98,13 +103,7 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
             }
 
             days.filter { dayEvents.keys.contains(it.code) }.forEach {
-                val day = it
-                day.hasEvent = true
-
-                val events = dayEvents[it.code]
-                events!!.forEach {
-                    day.eventColors.add(it.color)
-                }
+                it.dayEvents = dayEvents[it.code]!!
             }
             mCallback.updateMonthlyCalendar(monthName, days)
         }

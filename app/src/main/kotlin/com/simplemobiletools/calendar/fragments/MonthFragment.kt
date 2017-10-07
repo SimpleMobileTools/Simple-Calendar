@@ -20,6 +20,7 @@ import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.models.DayMonthly
+import com.simplemobiletools.calendar.views.DayMonthlyView
 import com.simplemobiletools.commons.extensions.adjustAlpha
 import com.simplemobiletools.commons.extensions.beGone
 import com.simplemobiletools.commons.extensions.beVisibleIf
@@ -117,7 +118,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         }
     }
 
-    fun showMonthDialog() {
+    private fun showMonthDialog() {
         activity.setTheme(context.getAppropriateTheme())
         val view = getLayoutInflater(arguments).inflate(R.layout.date_picker, null)
         val datePicker = view.findViewById(R.id.date_picker) as DatePicker
@@ -174,48 +175,14 @@ class MonthFragment : Fragment(), MonthlyCalendar {
             }
         }
 
-        val weakerText = mTextColor.adjustAlpha(MEDIUM_ALPHA)
-
-        for (i in 0..len - 1) {
+        for (i in 0 until len) {
             val day = days[i]
-            var curTextColor = mWeakTextColor
 
-            if (day.isThisMonth) {
-                curTextColor = mTextColor
-            }
-
-            (mHolder.findViewById(mRes.getIdentifier("day_$i", "id", mPackageName)) as TextView).apply {
-                text = day.value.toString()
-                setTextColor(curTextColor)
+            (mHolder.findViewById(mRes.getIdentifier("day_$i", "id", mPackageName)) as DayMonthlyView).apply {
+                setDay(day)
                 setOnClickListener { openDay(day.code) }
-
-                background = if (!day.isThisMonth) {
-                    null
-                } else if (day.isToday && day.hasEvent) {
-                    val drawable = mRes.getDrawable(R.drawable.monthly_day_with_event_today).mutate()
-                    drawable.setColorFilter(getDayDotColor(day, weakerText), PorterDuff.Mode.SRC_IN)
-                    drawable
-                } else if (day.isToday) {
-                    val todayCircle = mRes.getDrawable(R.drawable.circle_empty)
-                    todayCircle.setColorFilter(weakerText, PorterDuff.Mode.SRC_IN)
-                    todayCircle
-                } else if (day.hasEvent) {
-                    val drawable = mRes.getDrawable(R.drawable.monthly_day_dot).mutate()
-                    drawable.setColorFilter(getDayDotColor(day, weakerText), PorterDuff.Mode.SRC_IN)
-                    drawable
-                } else {
-                    null
-                }
             }
         }
-    }
-
-    private fun getDayDotColor(day: DayMonthly, defaultColor: Int): Int {
-        val colors = day.eventColors.distinct()
-        return if (colors.size == 1)
-            colors[0]
-        else
-            defaultColor
     }
 
     private fun openDay(code: String) {

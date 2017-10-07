@@ -157,7 +157,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
             }
         }
 
-        for (i in 0..len - 1) {
+        for (i in 0 until len) {
             val day = days[i]
             val id = mRes.getIdentifier("day_$i", "id", packageName)
             var curTextColor = mWeakTextColor
@@ -167,7 +167,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
             }
 
             val text = day.value.toString()
-            if (day.hasEvent) {
+            if (day.hasEvent()) {
                 val underlinedText = SpannableString(text)
                 underlinedText.setSpan(UnderlineSpan(), 0, text.length, 0)
                 mRemoteViews?.setTextViewText(id, underlinedText)

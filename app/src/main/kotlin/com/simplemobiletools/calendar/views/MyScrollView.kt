@@ -11,7 +11,7 @@ class MyScrollView : ScrollView {
 
     constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(context, attrs, defStyle)
 
-    var scrollViewListener: ScrollViewListener? = null
+    private var scrollViewListener: ScrollViewListener? = null
 
     fun setOnScrollviewListener(scrollViewListener: ScrollViewListener) {
         this.scrollViewListener = scrollViewListener

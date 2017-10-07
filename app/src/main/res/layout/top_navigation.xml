@@ -10,7 +10,8 @@
         android:layout_height="match_parent"
         android:layout_alignBottom="@+id/top_value"
         android:layout_alignTop="@+id/top_value"
-        android:padding="@dimen/activity_margin"
+        android:paddingLeft="@dimen/activity_margin"
+        android:paddingRight="@dimen/activity_margin"
         android:src="@drawable/ic_pointer_left"/>
 
     <com.simplemobiletools.commons.views.MyTextView
@@ -21,8 +22,8 @@
         android:layout_toLeftOf="@+id/top_right_arrow"
         android:layout_toRightOf="@+id/top_left_arrow"
         android:gravity="center"
-        android:paddingBottom="@dimen/activity_margin"
-        android:paddingTop="@dimen/activity_margin"
+        android:paddingBottom="@dimen/normal_margin"
+        android:paddingTop="@dimen/normal_margin"
         android:textSize="@dimen/month_text_size"/>
 
     <ImageView
@@ -33,7 +34,8 @@
         android:layout_alignBottom="@+id/top_value"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/top_value"
-        android:padding="@dimen/activity_margin"
+        android:paddingLeft="@dimen/activity_margin"
+        android:paddingRight="@dimen/activity_margin"
         android:src="@drawable/ic_pointer_right"/>
 
 </merge>

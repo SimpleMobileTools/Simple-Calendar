@@ -81,7 +81,7 @@ class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
         MonthlyCalendarImpl(this, applicationContext).updateMonthlyCalendar(DateTime(), false)
     }
 
-    fun saveConfig() {
+    private fun saveConfig() {
         storeWidgetColors()
         requestWidgetUpdate()
 
@@ -99,14 +99,14 @@ class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
         }
     }
 
-    fun pickBackgroundColor() {
+    private fun pickBackgroundColor() {
         ColorPickerDialog(this, mBgColorWithoutTransparency) {
             mBgColorWithoutTransparency = it
             updateBgColor()
         }
     }
 
-    fun pickTextColor() {
+    private fun pickTextColor() {
         ColorPickerDialog(this, mTextColor) {
             mTextColorWithoutTransparency = it
             updateTextColors()
@@ -159,7 +159,7 @@ class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
         val todayCircle = resources.getDrawable(R.drawable.circle_empty)
         todayCircle.setColorFilter(mTextColor, PorterDuff.Mode.SRC_IN)
 
-        for (i in 0..len - 1) {
+        for (i in 0 until len) {
             val day = mDays!![i]
             var curTextColor = mWeakTextColor
 
@@ -171,7 +171,7 @@ class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
                 text = day.value.toString()
                 setTextColor(curTextColor)
 
-                paintFlags = if (day.hasEvent) (paintFlags or Paint.UNDERLINE_TEXT_FLAG) else (paintFlags.removeFlag(Paint.UNDERLINE_TEXT_FLAG))
+                paintFlags = if (day.hasEvent()) (paintFlags or Paint.UNDERLINE_TEXT_FLAG) else (paintFlags.removeFlag(Paint.UNDERLINE_TEXT_FLAG))
                 background = if (day.isToday) todayCircle else null
             }
         }
