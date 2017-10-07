@@ -37,6 +37,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
     private var mDayCode = ""
     private var mPackageName = ""
     private var dividerMargin = 0
+    private var dayLabelHeight = 0
 
     var listener: NavigationListener? = null
 
@@ -205,19 +206,26 @@ class MonthFragment : Fragment(), MonthlyCalendar {
             if (day.isToday) {
                 val primaryColor = context.config.primaryColor
                 setTextColor(primaryColor.getContrastColor().adjustAlpha(MEDIUM_ALPHA))
-
-                onGlobalLayout {
-                    val height = this@apply.height
-                    if (height > 0) {
-                        val baseDrawable = mRes.getDrawable(R.drawable.monthly_today_circle)
-                        val bitmap = (baseDrawable as BitmapDrawable).bitmap
-                        val scaledDrawable = BitmapDrawable(mRes, Bitmap.createScaledBitmap(bitmap, height, height, true))
-                        scaledDrawable.mutate().setColorFilter(primaryColor, PorterDuff.Mode.SRC_IN)
-                        background = scaledDrawable
+                if (dayLabelHeight == 0) {
+                    onGlobalLayout {
+                        if (this@apply.height > 0) {
+                            dayLabelHeight = this@apply.height
+                            updateDayLabelHeight(this, primaryColor)
+                        }
                     }
+                } else {
+                    updateDayLabelHeight(this, primaryColor)
                 }
             }
         }
+    }
+
+    private fun updateDayLabelHeight(textView: TextView, primaryColor: Int) {
+        val baseDrawable = mRes.getDrawable(R.drawable.monthly_today_circle)
+        val bitmap = (baseDrawable as BitmapDrawable).bitmap
+        val scaledDrawable = BitmapDrawable(mRes, Bitmap.createScaledBitmap(bitmap, dayLabelHeight, dayLabelHeight, true))
+        scaledDrawable.mutate().setColorFilter(primaryColor, PorterDuff.Mode.SRC_IN)
+        textView.background = scaledDrawable
     }
 
     private fun addDayEvents(day: DayMonthly, linearLayout: LinearLayout) {
