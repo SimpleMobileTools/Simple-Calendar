@@ -24,7 +24,6 @@ import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.models.DayMonthly
-import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.commons.extensions.*
 import kotlinx.android.synthetic.main.first_row.*
 import kotlinx.android.synthetic.main.fragment_month.view.*
@@ -180,9 +179,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
 
                 removeAllViews()
                 addDayNumber(day, this)
-                day.dayEvents.forEach {
-                    addDayEvent(it, this)
-                }
+                addDayEvents(day, this)
             }
         }
     }
@@ -222,20 +219,28 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         }
     }
 
-    private fun addDayEvent(event: Event, linearLayout: LinearLayout) {
-        val backgroundDrawable = mRes.getDrawable(R.drawable.day_monthly_event_background)
-        backgroundDrawable.mutate().setColorFilter(event.color, PorterDuff.Mode.SRC_IN)
+    private fun addDayEvents(day: DayMonthly, linearLayout: LinearLayout) {
+        day.dayEvents.forEach {
+            val backgroundDrawable = mRes.getDrawable(R.drawable.day_monthly_event_background)
+            backgroundDrawable.mutate().setColorFilter(it.color, PorterDuff.Mode.SRC_IN)
 
-        val eventLayoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-        eventLayoutParams.setMargins(dividerMargin, dividerMargin, dividerMargin, dividerMargin)
+            val eventLayoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+            eventLayoutParams.setMargins(dividerMargin, dividerMargin, dividerMargin, dividerMargin)
 
-        (View.inflate(context, R.layout.day_monthly_item_view, null) as TextView).apply {
-            setTextColor(event.color.getContrastColor().adjustAlpha(MEDIUM_ALPHA))
-            text = event.title
-            gravity = Gravity.START
-            background = backgroundDrawable
-            layoutParams = eventLayoutParams
-            linearLayout.addView(this)
+            var textColor = it.color.getContrastColor().adjustAlpha(MEDIUM_ALPHA)
+            if (!day.isThisMonth) {
+                backgroundDrawable.alpha = 64
+                textColor = textColor.adjustAlpha(0.25f)
+            }
+
+            (View.inflate(context, R.layout.day_monthly_item_view, null) as TextView).apply {
+                setTextColor(textColor)
+                text = it.title
+                gravity = Gravity.START
+                background = backgroundDrawable
+                layoutParams = eventLayoutParams
+                linearLayout.addView(this)
+            }
         }
     }
 }
