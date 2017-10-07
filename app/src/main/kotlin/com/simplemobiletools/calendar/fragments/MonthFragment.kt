@@ -2,14 +2,18 @@ package com.simplemobiletools.calendar.fragments
 
 import android.content.Intent
 import android.content.res.Resources
+import android.graphics.Bitmap
 import android.graphics.PorterDuff
+import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AlertDialog
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
+import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.simplemobiletools.calendar.R
@@ -20,22 +24,19 @@ import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.models.DayMonthly
-import com.simplemobiletools.calendar.views.DayMonthlyView
-import com.simplemobiletools.commons.extensions.adjustAlpha
-import com.simplemobiletools.commons.extensions.beGone
-import com.simplemobiletools.commons.extensions.beVisibleIf
-import com.simplemobiletools.commons.extensions.setupDialogStuff
+import com.simplemobiletools.calendar.models.Event
+import com.simplemobiletools.commons.extensions.*
 import kotlinx.android.synthetic.main.first_row.*
 import kotlinx.android.synthetic.main.fragment_month.view.*
 import kotlinx.android.synthetic.main.top_navigation.view.*
 import org.joda.time.DateTime
 
 class MonthFragment : Fragment(), MonthlyCalendar {
-    private var mPackageName = ""
     private var mTextColor = 0
     private var mWeakTextColor = 0
     private var mSundayFirst = false
     private var mDayCode = ""
+    private var dividerMargin = 0
 
     var listener: NavigationListener? = null
 
@@ -47,6 +48,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.fragment_month, container, false)
         mRes = resources
+        dividerMargin = mRes.displayMetrics.density.toInt()
 
         mHolder = view.calendar_holder
         mDayCode = arguments.getString(DAY_CODE)
@@ -55,7 +57,6 @@ class MonthFragment : Fragment(), MonthlyCalendar {
 
         setupButtons()
 
-        mPackageName = activity.packageName
         setupLabels()
         mCalendar = MonthlyCalendarImpl(this, context)
 
@@ -146,7 +147,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
             if (!mSundayFirst)
                 index = (index + 1) % letters.size
 
-            (mHolder.findViewById(mRes.getIdentifier("label_$i", "id", mPackageName)) as TextView).apply {
+            (mHolder.findViewById(mRes.getIdentifier("label_$i", "id", activity.packageName)) as TextView).apply {
                 setTextColor(mTextColor)
                 text = getString(letters[index])
             }
@@ -154,6 +155,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
     }
 
     private fun updateDays(days: List<DayMonthly>) {
+        val packageName = activity.packageName
         val displayWeekNumbers = mConfig.displayWeekNumbers
         val len = days.size
 
@@ -164,7 +166,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         week_num.beVisibleIf(displayWeekNumbers)
 
         for (i in 0..5) {
-            (mHolder.findViewById(mRes.getIdentifier("week_num_$i", "id", mPackageName)) as TextView).apply {
+            (mHolder.findViewById(mRes.getIdentifier("week_num_$i", "id", packageName)) as TextView).apply {
                 text = "${days[i * 7 + 3].weekOfYear}:"
                 setTextColor(mTextColor)
                 beVisibleIf(displayWeekNumbers)
@@ -172,21 +174,68 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         }
 
         for (i in 0 until len) {
-            (mHolder.findViewById(mRes.getIdentifier("day_$i", "id", mPackageName)) as DayMonthlyView).apply {
+            (mHolder.findViewById(mRes.getIdentifier("day_$i", "id", packageName)) as LinearLayout).apply {
                 val day = days[i]
-                setDay(day)
                 setOnClickListener { openDay(day.code) }
+
+                removeAllViews()
+                addDayNumber(day, this)
+                day.dayEvents.forEach {
+                    addDayEvent(it, this)
+                }
             }
         }
     }
 
     private fun openDay(code: String) {
-        if (code.isEmpty())
-            return
+        if (code.isNotEmpty()) {
+            Intent(context, DayActivity::class.java).apply {
+                putExtra(DAY_CODE, code)
+                startActivity(this)
+            }
+        }
+    }
 
-        Intent(context, DayActivity::class.java).apply {
-            putExtra(DAY_CODE, code)
-            startActivity(this)
+    private fun addDayNumber(day: DayMonthly, linearLayout: LinearLayout) {
+        (View.inflate(context, R.layout.day_monthly_item_view, null) as TextView).apply {
+            setTextColor(if (day.isThisMonth) mTextColor else mWeakTextColor)
+            text = day.value.toString()
+            gravity = Gravity.TOP or Gravity.CENTER_HORIZONTAL
+            layoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+            linearLayout.addView(this)
+
+            if (day.isToday) {
+                val primaryColor = context.config.primaryColor
+                setTextColor(primaryColor.getContrastColor().adjustAlpha(MEDIUM_ALPHA))
+
+                onGlobalLayout {
+                    val height = this@apply.height
+                    if (height > 0) {
+                        val baseDrawable = mRes.getDrawable(R.drawable.monthly_today_circle)
+                        val bitmap = (baseDrawable as BitmapDrawable).bitmap
+                        val scaledDrawable = BitmapDrawable(mRes, Bitmap.createScaledBitmap(bitmap, height, height, true))
+                        scaledDrawable.mutate().setColorFilter(primaryColor, PorterDuff.Mode.SRC_IN)
+                        background = scaledDrawable
+                    }
+                }
+            }
+        }
+    }
+
+    private fun addDayEvent(event: Event, linearLayout: LinearLayout) {
+        val backgroundDrawable = mRes.getDrawable(R.drawable.day_monthly_event_background)
+        backgroundDrawable.mutate().setColorFilter(event.color, PorterDuff.Mode.SRC_IN)
+
+        val eventLayoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        eventLayoutParams.setMargins(dividerMargin, dividerMargin, dividerMargin, dividerMargin)
+
+        (View.inflate(context, R.layout.day_monthly_item_view, null) as TextView).apply {
+            setTextColor(event.color.getContrastColor().adjustAlpha(MEDIUM_ALPHA))
+            text = event.title
+            gravity = Gravity.START
+            background = backgroundDrawable
+            layoutParams = eventLayoutParams
+            linearLayout.addView(this)
         }
     }
 }

@@ -22,6 +22,7 @@
             android:layout_weight="2"/>
 
         <LinearLayout
+            android:id="@+id/month_line_holder_1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="2"
@@ -36,50 +37,65 @@
                 android:background="#2200ff00"
                 android:visibility="gone"/>
 
-            <com.simplemobiletools.calendar.views.DayMonthlyView
+            <LinearLayout
                 android:id="@+id/day_0"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"/>
 
-            <com.simplemobiletools.calendar.views.DayMonthlyView
+            <LinearLayout
                 android:id="@+id/day_1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"/>
 
-            <com.simplemobiletools.calendar.views.DayMonthlyView
+            <LinearLayout
                 android:id="@+id/day_2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"/>
 
-            <com.simplemobiletools.calendar.views.DayMonthlyView
+            <LinearLayout
                 android:id="@+id/day_3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"/>
 
-            <com.simplemobiletools.calendar.views.DayMonthlyView
+            <LinearLayout
                 android:id="@+id/day_4"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"/>
 
-            <com.simplemobiletools.calendar.views.DayMonthlyView
+            <LinearLayout
                 android:id="@+id/day_5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"/>
 
-            <com.simplemobiletools.calendar.views.DayMonthlyView
+            <LinearLayout
                 android:id="@+id/day_6"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"/>
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/month_line_holder_2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="2"
@@ -91,53 +107,67 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#220000ff"
                 android:visibility="gone"/>
 
-            <com.simplemobiletools.calendar.views.DayMonthlyView
+            <LinearLayout
                 android:id="@+id/day_7"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"/>
 
-            <com.simplemobiletools.calendar.views.DayMonthlyView
+            <LinearLayout
                 android:id="@+id/day_8"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"/>
 
-            <com.simplemobiletools.calendar.views.DayMonthlyView
+            <LinearLayout
                 android:id="@+id/day_9"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"/>
 
-            <com.simplemobiletools.calendar.views.DayMonthlyView
+            <LinearLayout
                 android:id="@+id/day_10"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"/>
 
-            <com.simplemobiletools.calendar.views.DayMonthlyView
+            <LinearLayout
                 android:id="@+id/day_11"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"/>
 
-            <com.simplemobiletools.calendar.views.DayMonthlyView
+            <LinearLayout
                 android:id="@+id/day_12"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"/>
 
-            <com.simplemobiletools.calendar.views.DayMonthlyView
+            <LinearLayout
                 android:id="@+id/day_13"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"/>
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/month_line_holder_3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="2"
@@ -152,50 +182,65 @@
                 android:background="#22ff0000"
                 android:visibility="gone"/>
 
-            <com.simplemobiletools.calendar.views.DayMonthlyView
+            <LinearLayout
                 android:id="@+id/day_14"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"/>
 
-            <com.simplemobiletools.calendar.views.DayMonthlyView
+            <LinearLayout
                 android:id="@+id/day_15"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"/>
 
-            <com.simplemobiletools.calendar.views.DayMonthlyView
+            <LinearLayout
                 android:id="@+id/day_16"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"/>
 
-            <com.simplemobiletools.calendar.views.DayMonthlyView
+            <LinearLayout
                 android:id="@+id/day_17"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"/>
 
-            <com.simplemobiletools.calendar.views.DayMonthlyView
+            <LinearLayout
                 android:id="@+id/day_18"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"/>
 
-            <com.simplemobiletools.calendar.views.DayMonthlyView
+            <LinearLayout
                 android:id="@+id/day_19"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"/>
 
-            <com.simplemobiletools.calendar.views.DayMonthlyView
+            <LinearLayout
                 android:id="@+id/day_20"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"/>
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/month_line_holder_4"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="2"
@@ -209,50 +254,65 @@
                 android:layout_weight="1"
                 android:visibility="gone"/>
 
-            <com.simplemobiletools.calendar.views.DayMonthlyView
+            <LinearLayout
                 android:id="@+id/day_21"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"/>
 
-            <com.simplemobiletools.calendar.views.DayMonthlyView
+            <LinearLayout
                 android:id="@+id/day_22"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"/>
 
-            <com.simplemobiletools.calendar.views.DayMonthlyView
+            <LinearLayout
                 android:id="@+id/day_23"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"/>
 
-            <com.simplemobiletools.calendar.views.DayMonthlyView
+            <LinearLayout
                 android:id="@+id/day_24"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"/>
 
-            <com.simplemobiletools.calendar.views.DayMonthlyView
+            <LinearLayout
                 android:id="@+id/day_25"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"/>
 
-            <com.simplemobiletools.calendar.views.DayMonthlyView
+            <LinearLayout
                 android:id="@+id/day_26"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"/>
 
-            <com.simplemobiletools.calendar.views.DayMonthlyView
+            <LinearLayout
                 android:id="@+id/day_27"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"/>
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/month_line_holder_5"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="2"
@@ -266,50 +326,65 @@
                 android:layout_weight="1"
                 android:visibility="gone"/>
 
-            <com.simplemobiletools.calendar.views.DayMonthlyView
+            <LinearLayout
                 android:id="@+id/day_28"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"/>
 
-            <com.simplemobiletools.calendar.views.DayMonthlyView
+            <LinearLayout
                 android:id="@+id/day_29"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"/>
 
-            <com.simplemobiletools.calendar.views.DayMonthlyView
+            <LinearLayout
                 android:id="@+id/day_30"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"/>
 
-            <com.simplemobiletools.calendar.views.DayMonthlyView
+            <LinearLayout
                 android:id="@+id/day_31"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"/>
 
-            <com.simplemobiletools.calendar.views.DayMonthlyView
+            <LinearLayout
                 android:id="@+id/day_32"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"/>
 
-            <com.simplemobiletools.calendar.views.DayMonthlyView
+            <LinearLayout
                 android:id="@+id/day_33"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"/>
 
-            <com.simplemobiletools.calendar.views.DayMonthlyView
+            <LinearLayout
                 android:id="@+id/day_34"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"/>
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/month_line_holder_6"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="2"
@@ -323,47 +398,61 @@
                 android:layout_weight="1"
                 android:visibility="gone"/>
 
-            <com.simplemobiletools.calendar.views.DayMonthlyView
+            <LinearLayout
                 android:id="@+id/day_35"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"/>
 
-            <com.simplemobiletools.calendar.views.DayMonthlyView
+            <LinearLayout
                 android:id="@+id/day_36"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"/>
 
-            <com.simplemobiletools.calendar.views.DayMonthlyView
+            <LinearLayout
                 android:id="@+id/day_37"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"/>
 
-            <com.simplemobiletools.calendar.views.DayMonthlyView
+            <LinearLayout
                 android:id="@+id/day_38"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"/>
 
-            <com.simplemobiletools.calendar.views.DayMonthlyView
+            <LinearLayout
                 android:id="@+id/day_39"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"/>
 
-            <com.simplemobiletools.calendar.views.DayMonthlyView
+            <LinearLayout
                 android:id="@+id/day_40"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"/>
 
-            <com.simplemobiletools.calendar.views.DayMonthlyView
+            <LinearLayout
                 android:id="@+id/day_41"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"/>
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>
