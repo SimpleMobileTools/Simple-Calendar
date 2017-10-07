@@ -37,7 +37,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
     private var mSundayFirst = false
     private var mDayCode = ""
 
-    private var mListener: NavigationListener? = null
+    var listener: NavigationListener? = null
 
     lateinit var mRes: Resources
     lateinit var mHolder: RelativeLayout
@@ -91,10 +91,6 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         }
     }
 
-    fun setListener(listener: NavigationListener) {
-        mListener = listener
-    }
-
     private fun setupButtons() {
         val baseColor = mConfig.textColor
         mTextColor = baseColor
@@ -107,11 +103,11 @@ class MonthFragment : Fragment(), MonthlyCalendar {
             top_right_arrow.background = null
 
             top_left_arrow.setOnClickListener {
-                mListener?.goLeft()
+                listener?.goLeft()
             }
 
             top_right_arrow.setOnClickListener {
-                mListener?.goRight()
+                listener?.goRight()
             }
 
             top_value.setOnClickListener { showMonthDialog() }
@@ -139,7 +135,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         val month = datePicker.month + 1
         val year = datePicker.year
         val newDateTime = dateTime.withDate(year, month, 1)
-        mListener?.goToDateTime(newDateTime)
+        listener?.goToDateTime(newDateTime)
     }
 
     private fun setupLabels() {
@@ -176,9 +172,8 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         }
 
         for (i in 0 until len) {
-            val day = days[i]
-
             (mHolder.findViewById(mRes.getIdentifier("day_$i", "id", mPackageName)) as DayMonthlyView).apply {
+                val day = days[i]
                 setDay(day)
                 setOnClickListener { openDay(day.code) }
             }
