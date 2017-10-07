@@ -30,11 +30,10 @@
 
             <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/week_num_0"
-                style="@style/MetaView"
+                style="@style/WeekNumberStyle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#2200ff00"
                 android:visibility="gone"/>
 
             <LinearLayout
@@ -103,7 +102,7 @@
 
             <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/week_num_1"
-                style="@style/MetaView"
+                style="@style/WeekNumberStyle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -175,11 +174,10 @@
 
             <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/week_num_2"
-                style="@style/MetaView"
+                style="@style/WeekNumberStyle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#22ff0000"
                 android:visibility="gone"/>
 
             <LinearLayout
@@ -248,7 +246,7 @@
 
             <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/week_num_3"
-                style="@style/MetaView"
+                style="@style/WeekNumberStyle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -320,7 +318,7 @@
 
             <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/week_num_4"
-                style="@style/MetaView"
+                style="@style/WeekNumberStyle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -392,7 +390,7 @@
 
             <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/week_num_5"
-                style="@style/MetaView"
+                style="@style/WeekNumberStyle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

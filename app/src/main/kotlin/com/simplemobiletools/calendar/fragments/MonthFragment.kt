@@ -35,6 +35,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
     private var mWeakTextColor = 0
     private var mSundayFirst = false
     private var mDayCode = ""
+    private var mPackageName = ""
     private var dividerMargin = 0
 
     var listener: NavigationListener? = null
@@ -48,6 +49,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         val view = inflater!!.inflate(R.layout.fragment_month, container, false)
         mRes = resources
         dividerMargin = mRes.displayMetrics.density.toInt()
+        mPackageName = activity.packageName
 
         mHolder = view.calendar_holder
         mDayCode = arguments.getString(DAY_CODE)
@@ -146,7 +148,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
             if (!mSundayFirst)
                 index = (index + 1) % letters.size
 
-            (mHolder.findViewById(mRes.getIdentifier("label_$i", "id", activity.packageName)) as TextView).apply {
+            (mHolder.findViewById(mRes.getIdentifier("label_$i", "id", mPackageName)) as TextView).apply {
                 setTextColor(mTextColor)
                 text = getString(letters[index])
             }
@@ -154,7 +156,6 @@ class MonthFragment : Fragment(), MonthlyCalendar {
     }
 
     private fun updateDays(days: List<DayMonthly>) {
-        val packageName = activity.packageName
         val displayWeekNumbers = mConfig.displayWeekNumbers
         val len = days.size
 
@@ -165,7 +166,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         week_num.beVisibleIf(displayWeekNumbers)
 
         for (i in 0..5) {
-            (mHolder.findViewById(mRes.getIdentifier("week_num_$i", "id", packageName)) as TextView).apply {
+            (mHolder.findViewById(mRes.getIdentifier("week_num_$i", "id", mPackageName)) as TextView).apply {
                 text = "${days[i * 7 + 3].weekOfYear}:"
                 setTextColor(mTextColor)
                 beVisibleIf(displayWeekNumbers)
@@ -173,7 +174,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         }
 
         for (i in 0 until len) {
-            (mHolder.findViewById(mRes.getIdentifier("day_$i", "id", packageName)) as LinearLayout).apply {
+            (mHolder.findViewById(mRes.getIdentifier("day_$i", "id", mPackageName)) as LinearLayout).apply {
                 val day = days[i]
                 setOnClickListener { openDay(day.code) }
 
