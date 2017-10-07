@@ -18,6 +18,7 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
 
     private val mToday: String = DateTime().toString(Formatter.DAYCODE_PATTERN)
     private var mEvents = ArrayList<Event>()
+    private var days = ArrayList<DayMonthly>(DAYS_CNT)
     var mFilterEventTypes = true
 
     lateinit var mTargetDate: DateTime
@@ -37,47 +38,51 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
     }
 
     fun getDays() {
-        val days = ArrayList<DayMonthly>(DAYS_CNT)
+        if (days.isEmpty()) {
+            val currMonthDays = mTargetDate.dayOfMonth().maximumValue
+            var firstDayIndex = mTargetDate.withDayOfMonth(1).dayOfWeek
+            if (!mContext.config.isSundayFirst)
+                firstDayIndex -= 1
+            val prevMonthDays = mTargetDate.minusMonths(1).dayOfMonth().maximumValue
 
-        val currMonthDays = mTargetDate.dayOfMonth().maximumValue
-        var firstDayIndex = mTargetDate.withDayOfMonth(1).dayOfWeek
-        if (!mContext.config.isSundayFirst)
-            firstDayIndex -= 1
-        val prevMonthDays = mTargetDate.minusMonths(1).dayOfMonth().maximumValue
+            var isThisMonth = false
+            var isToday: Boolean
+            var value = prevMonthDays - firstDayIndex + 1
+            var curDay: DateTime = mTargetDate
 
-        var isThisMonth = false
-        var isToday: Boolean
-        var value = prevMonthDays - firstDayIndex + 1
-        var curDay: DateTime = mTargetDate
+            for (i in 0 until DAYS_CNT) {
+                when {
+                    i < firstDayIndex -> {
+                        isThisMonth = false
+                        curDay = mTargetDate.withDayOfMonth(1).minusMonths(1)
+                    }
+                    i == firstDayIndex -> {
+                        value = 1
+                        isThisMonth = true
+                        curDay = mTargetDate
+                    }
+                    value == currMonthDays + 1 -> {
+                        value = 1
+                        isThisMonth = false
+                        curDay = mTargetDate.withDayOfMonth(1).plusMonths(1)
+                    }
+                }
 
-        for (i in 0 until DAYS_CNT) {
-            when {
-                i < firstDayIndex -> {
-                    isThisMonth = false
-                    curDay = mTargetDate.withDayOfMonth(1).minusMonths(1)
-                }
-                i == firstDayIndex -> {
-                    value = 1
-                    isThisMonth = true
-                    curDay = mTargetDate
-                }
-                value == currMonthDays + 1 -> {
-                    value = 1
-                    isThisMonth = false
-                    curDay = mTargetDate.withDayOfMonth(1).plusMonths(1)
-                }
+                isToday = isThisMonth && isToday(mTargetDate, value)
+
+                val newDay = curDay.withDayOfMonth(value)
+                val dayCode = Formatter.getDayCodeFromDateTime(newDay)
+                val day = DayMonthly(value, isThisMonth, isToday, dayCode, newDay.weekOfWeekyear, ArrayList())
+                days.add(day)
+                value++
             }
-
-            isToday = isThisMonth && isToday(mTargetDate, value)
-
-            val newDay = curDay.withDayOfMonth(value)
-            val dayCode = Formatter.getDayCodeFromDateTime(newDay)
-            val day = DayMonthly(value, isThisMonth, isToday, dayCode, newDay.weekOfWeekyear, ArrayList())
-            days.add(day)
-            value++
         }
 
-        markDaysWithEvents(days)
+        if (mEvents.isEmpty()) {
+            mCallback.updateMonthlyCalendar(monthName, days)
+        } else {
+            markDaysWithEvents(days)
+        }
     }
 
     // it works more often than not, dont touch
