@@ -11,22 +11,28 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.res.Resources
 import android.graphics.Color
+import android.graphics.PorterDuff
 import android.net.Uri
 import android.os.Build
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.NotificationCompat
+import android.view.Gravity
+import android.view.View
+import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.TextView
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
+import com.simplemobiletools.calendar.models.DayMonthly
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.receivers.CalDAVSyncReceiver
 import com.simplemobiletools.calendar.receivers.NotificationReceiver
 import com.simplemobiletools.calendar.services.SnoozeService
-import com.simplemobiletools.commons.extensions.getContrastColor
-import com.simplemobiletools.commons.extensions.isKitkatPlus
-import com.simplemobiletools.commons.extensions.isLollipopPlus
+import com.simplemobiletools.commons.extensions.*
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 import java.text.SimpleDateFormat
@@ -261,3 +267,61 @@ fun Context.scheduleCalDAVSync(activate: Boolean) {
 val Context.config: Config get() = Config.newInstance(this)
 
 val Context.dbHelper: DBHelper get() = DBHelper.newInstance(this)
+
+fun Context.addDayNumber(rawTextColor: Int, day: DayMonthly, linearLayout: LinearLayout, dayLabelHeight: Int, callback: (Int) -> Unit) {
+    var textColor = rawTextColor
+    if (!day.isThisMonth)
+        textColor = textColor.adjustAlpha(LOW_ALPHA)
+
+    (View.inflate(this, R.layout.day_monthly_item_view, null) as TextView).apply {
+        setTextColor(textColor)
+        text = day.value.toString()
+        gravity = Gravity.TOP or Gravity.CENTER_HORIZONTAL
+        layoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        linearLayout.addView(this)
+
+        if (day.isToday) {
+            val primaryColor = config.primaryColor
+            setTextColor(config.primaryColor.getContrastColor().adjustAlpha(MEDIUM_ALPHA))
+            if (dayLabelHeight == 0) {
+                onGlobalLayout {
+                    val height = this@apply.height
+                    if (height > 0) {
+                        callback(height)
+                        addTodaysBackground(this, resources, height, primaryColor)
+                    }
+                }
+            } else {
+                addTodaysBackground(this, resources, dayLabelHeight, primaryColor)
+            }
+        }
+    }
+}
+
+private fun addTodaysBackground(textView: TextView, res: Resources, dayLabelHeight: Int, mPrimaryColor: Int) =
+        textView.addResizedBackgroundDrawable(res, dayLabelHeight, mPrimaryColor)
+
+fun Context.addDayEvents(day: DayMonthly, linearLayout: LinearLayout, res: Resources, dividerMargin: Int) {
+    day.dayEvents.forEach {
+        val backgroundDrawable = res.getDrawable(R.drawable.day_monthly_event_background)
+        backgroundDrawable.mutate().setColorFilter(it.color, PorterDuff.Mode.SRC_IN)
+
+        val eventLayoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        eventLayoutParams.setMargins(dividerMargin, dividerMargin, dividerMargin, dividerMargin)
+
+        var textColor = it.color.getContrastColor().adjustAlpha(MEDIUM_ALPHA)
+        if (!day.isThisMonth) {
+            backgroundDrawable.alpha = 64
+            textColor = textColor.adjustAlpha(0.25f)
+        }
+
+        (View.inflate(this, R.layout.day_monthly_item_view, null) as TextView).apply {
+            setTextColor(textColor)
+            text = it.title.replace(" ", "\u00A0")  // allow word break by char
+            gravity = Gravity.START
+            background = backgroundDrawable
+            layoutParams = eventLayoutParams
+            linearLayout.addView(this)
+        }
+    }
+}
