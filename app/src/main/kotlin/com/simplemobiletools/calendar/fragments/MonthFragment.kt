@@ -170,7 +170,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
 
         for (i in 0..5) {
             (mHolder.findViewById(mRes.getIdentifier("week_num_$i", "id", mPackageName)) as TextView).apply {
-                text = "${days[i * 7 + 3].weekOfYear}:"
+                text = "${days[i * 7 + 3].weekOfYear}:"     // fourth day of the week matters
                 setTextColor(mTextColor)
                 beVisibleIf(displayWeekNumbers)
             }
