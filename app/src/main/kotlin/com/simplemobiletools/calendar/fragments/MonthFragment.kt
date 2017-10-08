@@ -100,22 +100,23 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         mTextColor = baseColor
         mPrimaryColor = mConfig.primaryColor
 
-        mHolder.apply {
-            top_left_arrow.drawable.mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP)
-            top_right_arrow.drawable.mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP)
-            top_left_arrow.background = null
-            top_right_arrow.background = null
-
-            top_left_arrow.setOnClickListener {
+        mHolder.top_left_arrow.apply {
+            drawable.mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP)
+            background = null
+            setOnClickListener {
                 listener?.goLeft()
             }
+        }
 
-            top_right_arrow.setOnClickListener {
+        mHolder.top_right_arrow.apply {
+            drawable.mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP)
+            background = null
+            setOnClickListener {
                 listener?.goRight()
             }
-
-            top_value.setOnClickListener { showMonthDialog() }
         }
+
+        mHolder.top_value.setOnClickListener { showMonthDialog() }
     }
 
     private fun showMonthDialog() {
@@ -182,9 +183,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
                 setOnClickListener { openDay(day.code) }
 
                 removeAllViews()
-                context.addDayNumber(mTextColor, day, this, dayLabelHeight) {
-                    dayLabelHeight = it
-                }
+                context.addDayNumber(mTextColor, day, this, dayLabelHeight) { dayLabelHeight = it }
                 context.addDayEvents(day, this, mRes, dividerMargin)
             }
         }

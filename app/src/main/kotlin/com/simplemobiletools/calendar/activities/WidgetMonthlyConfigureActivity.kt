@@ -166,9 +166,7 @@ class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
                 val day = mDays!![i]
                 removeAllViews()
 
-                context.addDayNumber(mTextColor, day, this, dayLabelHeight) {
-                    dayLabelHeight = it
-                }
+                context.addDayNumber(mTextColor, day, this, dayLabelHeight) { dayLabelHeight = it }
                 context.addDayEvents(day, this, mRes, dividerMargin)
             }
         }
