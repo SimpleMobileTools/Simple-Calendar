@@ -76,7 +76,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
 
         mCalendar.apply {
             mTargetDate = Formatter.getDateTimeFromCode(mDayCode)
-            getDays()    // prefill the screen asap, even if without events
+            getDays(false)    // prefill the screen asap, even if without events
         }
         updateCalendar()
     }
