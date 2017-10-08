@@ -136,7 +136,9 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
         val addHours = if (intent.getBooleanExtra(NEW_EVENT_SET_HOUR_DURATION, false)) 1 else 0
         mEventEndDateTime = mEventStartDateTime.plusHours(addHours)
-        mEventCalendarId = config.lastUsedCaldavCalendar
+
+        val isLastCaldavCalendarOK = config.caldavSync && config.getSyncedCalendarIdsAsList().contains(config.lastUsedCaldavCalendar.toString())
+        mEventCalendarId = if (isLastCaldavCalendarOK) config.lastUsedCaldavCalendar else STORED_LOCALLY_ONLY
     }
 
     private fun showReminder1Dialog() {
