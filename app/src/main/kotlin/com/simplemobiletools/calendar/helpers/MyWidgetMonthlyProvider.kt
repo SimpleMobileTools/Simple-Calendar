@@ -8,9 +8,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.res.Resources
 import android.graphics.*
-import android.graphics.drawable.Drawable
-import android.text.SpannableString
-import android.text.style.UnderlineSpan
 import android.view.View
 import android.widget.RemoteViews
 import com.simplemobiletools.calendar.R
@@ -20,6 +17,7 @@ import com.simplemobiletools.calendar.extensions.launchNewEventIntent
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.models.DayMonthly
 import com.simplemobiletools.commons.extensions.adjustAlpha
+import com.simplemobiletools.commons.extensions.getContrastColor
 import com.simplemobiletools.commons.extensions.setBackgroundColor
 import com.simplemobiletools.commons.extensions.setTextSize
 import org.joda.time.DateTime
@@ -30,7 +28,6 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
     private val NEW_EVENT = "new_event"
 
     private var mTextColor = 0
-    private var mWeakTextColor = 0
     private var mCalendar: MonthlyCalendarImpl? = null
     private var mRemoteViews: RemoteViews? = null
 
@@ -61,7 +58,6 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
 
         context.config.apply {
             mTextColor = widgetTextColor
-            mWeakTextColor = widgetTextColor.adjustAlpha(LOW_ALPHA)
             mMediumFontSize = getFontSize()
             mSmallerFontSize = getFontSize() - 3f
             mLargerFontSize = getFontSize() + 3f
@@ -116,6 +112,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
     override fun onReceive(context: Context, intent: Intent) {
         if (mCalendar == null || mRemoteViews == null) {
             initVariables(context)
+            return
         }
 
         val action = intent.action
@@ -137,11 +134,14 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
         mCalendar?.getMonth(mTargetDate)
     }
 
-    fun updateDays(days: List<DayMonthly>) {
+    private fun updateDays(days: List<DayMonthly>) {
+        if (mRemoteViews == null)
+            return
+
         val displayWeekNumbers = mContext.config.displayWeekNumbers
         val len = days.size
         val packageName = mContext.packageName
-        mRemoteViews?.apply {
+        mRemoteViews!!.apply {
             setTextColor(R.id.week_num, mTextColor)
             setTextSize(R.id.week_num, mSmallerFontSize)
             setViewVisibility(R.id.week_num, if (displayWeekNumbers) View.VISIBLE else View.GONE)
@@ -149,56 +149,39 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
 
         for (i in 0..5) {
             val id = mRes.getIdentifier("week_num_$i", "id", packageName)
-            mRemoteViews?.apply {
-                setTextViewText(id, days[i * 7 + 3].weekOfYear.toString() + ":")
+            mRemoteViews!!.apply {
+                setTextViewText(id, "${days[i * 7 + 3].weekOfYear}:")    // fourth day of the week matters
                 setTextColor(id, mTextColor)
                 setTextSize(id, mSmallerFontSize)
                 setViewVisibility(id, if (displayWeekNumbers) View.VISIBLE else View.GONE)
             }
         }
 
+        val weakTextColor = mTextColor.adjustAlpha(LOW_ALPHA)
         for (i in 0 until len) {
             val day = days[i]
+            var textColor = if (day.isThisMonth) mTextColor else weakTextColor
+            val primaryColor = mContext.config.primaryColor
+            if (day.isToday)
+                textColor = primaryColor.getContrastColor()
+
             val id = mRes.getIdentifier("day_$i", "id", packageName)
-            var curTextColor = mWeakTextColor
 
-            if (day.isThisMonth) {
-                curTextColor = mTextColor
+            mRemoteViews!!.apply {
+                removeAllViews(id)
+                val newRemoteView = RemoteViews(packageName, R.layout.day_monthly_item_view).apply {
+                    setTextViewText(R.id.day_monthly_number_id, day.value.toString())
+                    setTextColor(R.id.day_monthly_number_id, textColor)
+
+                    if (day.isToday) {
+                        setViewPadding(R.id.day_monthly_number_id, 10, 0, 10, 0)
+                        setBackgroundColor(R.id.day_monthly_number_id, primaryColor)
+                    }
+                }
+                addView(id, newRemoteView)
+                setupDayOpenIntent(id, day.code)
             }
-
-            val text = day.value.toString()
-            if (day.hasEvent()) {
-                val underlinedText = SpannableString(text)
-                underlinedText.setSpan(UnderlineSpan(), 0, text.length, 0)
-                mRemoteViews?.setTextViewText(id, underlinedText)
-            } else {
-                mRemoteViews?.setTextViewText(id, text)
-            }
-
-            val circleId = mRes.getIdentifier("day_${i}_circle", "id", packageName)
-            if (day.isToday) {
-                val wantedSize = mContext.resources.displayMetrics.widthPixels / 7
-                val drawable = mContext.resources.getDrawable(R.drawable.circle_empty)
-                drawable.setColorFilter(mTextColor, PorterDuff.Mode.SRC_IN)
-                mRemoteViews?.setImageViewBitmap(circleId, drawableToBitmap(drawable, wantedSize))
-                mRemoteViews?.setViewVisibility(circleId, View.VISIBLE)
-            } else {
-                mRemoteViews?.setViewVisibility(circleId, View.GONE)
-            }
-
-            mRemoteViews?.setTextColor(id, curTextColor)
-            mRemoteViews?.setTextSize(id, mMediumFontSize)
-            setupDayOpenIntent(id, day.code)
         }
-    }
-
-    fun drawableToBitmap(drawable: Drawable, size: Int): Bitmap {
-        val bitmap = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888)
-        Canvas(bitmap).apply {
-            drawable.setBounds(0, 0, width, height)
-            drawable.draw(this)
-        }
-        return bitmap
     }
 
     private fun updateTopViews() {
@@ -215,7 +198,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
         mRemoteViews?.setImageViewBitmap(R.id.top_new_event, bmp)
     }
 
-    fun updateMonth(month: String) {
+    private fun updateMonth(month: String) {
         mRemoteViews?.setTextViewText(R.id.top_value, month)
     }
 

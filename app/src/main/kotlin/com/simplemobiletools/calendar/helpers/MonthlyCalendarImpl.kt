@@ -34,6 +34,7 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
     }
 
     fun getMonth(targetDate: DateTime) {
+        days.clear()
         updateMonthlyCalendar(targetDate)
     }
 
