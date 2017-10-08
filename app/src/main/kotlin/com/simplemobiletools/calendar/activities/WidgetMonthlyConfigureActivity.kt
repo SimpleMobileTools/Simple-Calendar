@@ -4,15 +4,22 @@ import android.app.Activity
 import android.appwidget.AppWidgetManager
 import android.content.Intent
 import android.content.res.Resources
+import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.PorterDuff
+import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.Gravity
+import android.view.View
+import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.SeekBar
 import android.widget.TextView
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.helpers.LOW_ALPHA
+import com.simplemobiletools.calendar.helpers.MEDIUM_ALPHA
 import com.simplemobiletools.calendar.helpers.MonthlyCalendarImpl
 import com.simplemobiletools.calendar.helpers.MyWidgetMonthlyProvider
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
@@ -20,6 +27,8 @@ import com.simplemobiletools.calendar.models.DayMonthly
 import com.simplemobiletools.commons.dialogs.ColorPickerDialog
 import com.simplemobiletools.commons.extensions.adjustAlpha
 import com.simplemobiletools.commons.extensions.beVisible
+import com.simplemobiletools.commons.extensions.getContrastColor
+import com.simplemobiletools.commons.extensions.onGlobalLayout
 import kotlinx.android.synthetic.main.first_row.*
 import kotlinx.android.synthetic.main.top_navigation.*
 import kotlinx.android.synthetic.main.widget_config_monthly.*
@@ -29,6 +38,8 @@ class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
     lateinit var mRes: Resources
     private var mDays: List<DayMonthly>? = null
     private var mPackageName = ""
+    private var dividerMargin = 0
+    private var dayLabelHeight = 0
 
     private var mBgAlpha = 0f
     private var mWidgetId = 0
@@ -42,7 +53,6 @@ class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
         super.onCreate(savedInstanceState)
         setResult(Activity.RESULT_CANCELED)
         setContentView(R.layout.widget_config_monthly)
-        mPackageName = packageName
         initVariables()
 
         val extras = intent.extras
@@ -58,7 +68,9 @@ class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
     }
 
     private fun initVariables() {
+        mPackageName = packageName
         mRes = resources
+        dividerMargin = mRes.displayMetrics.density.toInt()
 
         mTextColorWithoutTransparency = config.widgetTextColor
         updateTextColors()
@@ -158,20 +170,12 @@ class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
         todayCircle.setColorFilter(mTextColor, PorterDuff.Mode.SRC_IN)
 
         for (i in 0 until len) {
-            val day = mDays!![i]
-            var curTextColor = mWeakTextColor
-
-            if (day.isThisMonth) {
-                curTextColor = mTextColor
+            (findViewById(mRes.getIdentifier("day_$i", "id", mPackageName)) as LinearLayout).apply {
+                val day = mDays!![i]
+                removeAllViews()
+                addDayNumber(day, this)
+                addDayEvents(day, this)
             }
-
-            /*(findViewById(mRes.getIdentifier("day_$i", "id", mPackageName)) as TextView).apply {
-                text = day.value.toString()
-                setTextColor(curTextColor)
-
-                paintFlags = if (day.hasEvent()) (paintFlags or Paint.UNDERLINE_TEXT_FLAG) else (paintFlags.removeFlag(Paint.UNDERLINE_TEXT_FLAG))
-                background = if (day.isToday) todayCircle else null
-            }*/
         }
     }
 
@@ -206,6 +210,64 @@ class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
         for (i in 0..6) {
             (findViewById(mRes.getIdentifier("label_$i", "id", mPackageName)) as TextView).apply {
                 setTextColor(mTextColor)
+            }
+        }
+    }
+
+    private fun addDayNumber(day: DayMonthly, linearLayout: LinearLayout) {
+        (View.inflate(this, R.layout.day_monthly_item_view, null) as TextView).apply {
+            setTextColor(if (day.isThisMonth) mTextColor else mWeakTextColor)
+            text = day.value.toString()
+            gravity = Gravity.TOP or Gravity.CENTER_HORIZONTAL
+            layoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+            linearLayout.addView(this)
+
+            if (day.isToday) {
+                val primaryColor = context.config.primaryColor
+                setTextColor(primaryColor.getContrastColor().adjustAlpha(MEDIUM_ALPHA))
+                if (dayLabelHeight == 0) {
+                    onGlobalLayout {
+                        if (this@apply.height > 0) {
+                            dayLabelHeight = this@apply.height
+                            updateDayLabelHeight(this, primaryColor)
+                        }
+                    }
+                } else {
+                    updateDayLabelHeight(this, primaryColor)
+                }
+            }
+        }
+    }
+
+    private fun updateDayLabelHeight(textView: TextView, primaryColor: Int) {
+        val baseDrawable = mRes.getDrawable(R.drawable.monthly_today_circle)
+        val bitmap = (baseDrawable as BitmapDrawable).bitmap
+        val scaledDrawable = BitmapDrawable(mRes, Bitmap.createScaledBitmap(bitmap, dayLabelHeight, dayLabelHeight, true))
+        scaledDrawable.mutate().setColorFilter(primaryColor, PorterDuff.Mode.SRC_IN)
+        textView.background = scaledDrawable
+    }
+
+    private fun addDayEvents(day: DayMonthly, linearLayout: LinearLayout) {
+        day.dayEvents.forEach {
+            val backgroundDrawable = mRes.getDrawable(R.drawable.day_monthly_event_background)
+            backgroundDrawable.mutate().setColorFilter(it.color, PorterDuff.Mode.SRC_IN)
+
+            val eventLayoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+            eventLayoutParams.setMargins(dividerMargin, dividerMargin, dividerMargin, dividerMargin)
+
+            var textColor = it.color.getContrastColor().adjustAlpha(MEDIUM_ALPHA)
+            if (!day.isThisMonth) {
+                backgroundDrawable.alpha = 64
+                textColor = textColor.adjustAlpha(0.25f)
+            }
+
+            (View.inflate(this, R.layout.day_monthly_item_view, null) as TextView).apply {
+                setTextColor(textColor)
+                text = it.title.replace(" ", "\u00A0")  // allow word break by char
+                gravity = Gravity.START
+                background = backgroundDrawable
+                layoutParams = eventLayoutParams
+                linearLayout.addView(this)
             }
         }
     }
