@@ -19,7 +19,7 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
     private val mToday: String = DateTime().toString(Formatter.DAYCODE_PATTERN)
     private var mEvents = ArrayList<Event>()
     private var days = ArrayList<DayMonthly>(DAYS_CNT)
-    var mFilterEventTypes = true
+    private var mFilterEventTypes = true
 
     lateinit var mTargetDate: DateTime
 

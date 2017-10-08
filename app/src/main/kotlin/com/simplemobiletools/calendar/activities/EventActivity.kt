@@ -399,7 +399,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             val calendars = CalDAVHandler(applicationContext).getCalDAVCalendars().filter {
                 it.canWrite() && config.getSyncedCalendarIdsAsList().contains(it.id.toString())
             }
-            updateCurrentCalendarInfo(getCalendarWithId(calendars, getCalendarId()))
+            updateCurrentCalendarInfo(if (mEventCalendarId == STORED_LOCALLY_ONLY) null else getCalendarWithId(calendars, getCalendarId()))
 
             event_caldav_calendar_holder.setOnClickListener {
                 hideKeyboard()
@@ -503,8 +503,17 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         val oldSource = mEvent.source
         val newImportId = if (mEvent.id != 0) mEvent.importId else UUID.randomUUID().toString().replace("-", "") + System.currentTimeMillis().toString()
 
-        val newEventType = if (!config.caldavSync || config.lastUsedCaldavCalendar == 0) mEventTypeId else dbHelper.getEventTypeWithCalDAVCalendarId(config.lastUsedCaldavCalendar)!!.id
-        val newSource = if (!config.caldavSync || config.lastUsedCaldavCalendar == 0) SOURCE_SIMPLE_CALENDAR else "$CALDAV-${config.lastUsedCaldavCalendar}"
+        val newEventType = if (!config.caldavSync || config.lastUsedCaldavCalendar == 0 || mEventCalendarId == STORED_LOCALLY_ONLY) {
+            mEventTypeId
+        } else {
+            dbHelper.getEventTypeWithCalDAVCalendarId(config.lastUsedCaldavCalendar)!!.id
+        }
+
+        val newSource = if (!config.caldavSync || config.lastUsedCaldavCalendar == 0 || mEventCalendarId == STORED_LOCALLY_ONLY) {
+            SOURCE_SIMPLE_CALENDAR
+        } else {
+            "$CALDAV-${config.lastUsedCaldavCalendar}"
+        }
 
         val reminders = sortedSetOf(mReminder1Minutes, mReminder2Minutes, mReminder3Minutes).filter { it != REMINDER_OFF }
         val newDescription = event_description.value

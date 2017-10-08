@@ -318,7 +318,6 @@ fun Context.addDayEvents(day: DayMonthly, linearLayout: LinearLayout, res: Resou
         (View.inflate(this, R.layout.day_monthly_item_view, null) as TextView).apply {
             setTextColor(textColor)
             text = it.title.replace(" ", "\u00A0")  // allow word break by char
-            gravity = Gravity.START
             background = backgroundDrawable
             layoutParams = eventLayoutParams
             linearLayout.addView(this)
