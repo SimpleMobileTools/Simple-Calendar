@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 2.8.0 *(2017-10-08)*
+----------------------------
+
+ * Reworked the monthly view layout
+ * Misc performance/ux improvements
+
 Version 2.7.6 *(2017-09-24)*
 ----------------------------
 
