@@ -94,11 +94,6 @@ fun Context.scheduleNextEventReminder(event: Event, dbHelper: DBHelper) {
     }
 }
 
-fun Context.scheduleReminder(event: Event, dbHelper: DBHelper) {
-    if (event.getReminders().isNotEmpty())
-        scheduleNextEventReminder(event, dbHelper)
-}
-
 fun Context.scheduleEventIn(notifTS: Long, event: Event) {
     if (notifTS < System.currentTimeMillis())
         return
