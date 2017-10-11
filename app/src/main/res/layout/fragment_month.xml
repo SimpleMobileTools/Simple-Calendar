@@ -7,19 +7,20 @@
 
     <include layout="@layout/top_navigation"/>
 
+    <include
+        android:id="@+id/first_row"
+        layout="@layout/first_row"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/top_value"/>
+
     <LinearLayout
         android:id="@+id/table_holder"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/top_value"
+        android:layout_below="@+id/first_row"
         android:gravity="center"
         android:orientation="vertical">
-
-        <include
-            layout="@layout/first_row"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="2"/>
 
         <LinearLayout
             android:id="@+id/month_line_holder_1"

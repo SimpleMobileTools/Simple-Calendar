@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_weight="1"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:paddingBottom="@dimen/small_margin"
+    android:paddingTop="@dimen/small_margin">
 
     <com.simplemobiletools.commons.views.MyTextView
         android:id="@+id/week_num"

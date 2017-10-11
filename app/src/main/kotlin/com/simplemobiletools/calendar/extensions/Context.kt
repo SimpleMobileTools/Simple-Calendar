@@ -302,7 +302,7 @@ fun Context.addDayEvents(day: DayMonthly, linearLayout: LinearLayout, res: Resou
         backgroundDrawable.mutate().setColorFilter(it.color, PorterDuff.Mode.SRC_IN)
 
         val eventLayoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-        eventLayoutParams.setMargins(dividerMargin, dividerMargin, dividerMargin, dividerMargin)
+        eventLayoutParams.setMargins(dividerMargin, 0, dividerMargin, dividerMargin)
 
         var textColor = it.color.getContrastColor().adjustAlpha(MEDIUM_ALPHA)
         if (!day.isThisMonth) {
