@@ -29,7 +29,6 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
 
     private var mTextColor = 0
     private var mCalendar: MonthlyCalendarImpl? = null
-    private var mRemoteViews: RemoteViews? = null
 
     private var mSmallerFontSize = 0f
     private var mMediumFontSize = 0f
@@ -42,6 +41,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
 
     companion object {
         private var mTargetDate = DateTime()
+        private var mRemoteViews: RemoteViews? = null
     }
 
     override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
@@ -112,7 +112,6 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
     override fun onReceive(context: Context, intent: Intent) {
         if (mCalendar == null || mRemoteViews == null) {
             initVariables(context)
-            return
         }
 
         val action = intent.action
@@ -178,10 +177,10 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
                     backgroundColor = backgroundColor.adjustAlpha(0.25f)
                 }
 
-                val newRemoteView = RemoteViews(packageName, R.layout.day_monthly_item_view).apply {
-                    setTextViewText(R.id.day_monthly_id, it.title.replace(" ", "\u00A0"))
-                    setTextColor(R.id.day_monthly_id, eventTextColor)
-                    setBackgroundColor(R.id.day_monthly_id, backgroundColor)
+                val newRemoteView = RemoteViews(packageName, R.layout.day_monthly_event_view).apply {
+                    setTextViewText(R.id.day_monthly_event_id, it.title.replace(" ", "\u00A0"))
+                    setTextColor(R.id.day_monthly_event_id, eventTextColor)
+                    setBackgroundColor(R.id.day_monthly_event_id, backgroundColor)
                 }
                 mRemoteViews!!.addView(id, newRemoteView)
             }
@@ -189,13 +188,13 @@ class MyWidgetMonthlyProvider : AppWidgetProvider(), MonthlyCalendar {
     }
 
     private fun addDayNumber(day: DayMonthly, packageName: String, textColor: Int, id: Int, primaryColor: Int) {
-        val newRemoteView = RemoteViews(packageName, R.layout.day_monthly_item_view).apply {
-            setTextViewText(R.id.day_monthly_id, day.value.toString())
-            setTextColor(R.id.day_monthly_id, textColor)
+        val newRemoteView = RemoteViews(packageName, R.layout.day_monthly_number_view).apply {
+            setTextViewText(R.id.day_monthly_number_id, day.value.toString())
+            setTextColor(R.id.day_monthly_number_id, textColor)
 
             if (day.isToday) {
-                setViewPadding(R.id.day_monthly_id, 10, 0, 10, 0)
-                setBackgroundColor(R.id.day_monthly_id, primaryColor)
+                setViewPadding(R.id.day_monthly_number_id, 10, 0, 10, 0)
+                setBackgroundColor(R.id.day_monthly_number_id, primaryColor)
             }
         }
         mRemoteViews!!.addView(id, newRemoteView)

@@ -2,7 +2,7 @@
 <TextView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/day_monthly_id"
+    android:id="@+id/day_monthly_event_id"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="@dimen/tiny_margin"
@@ -12,5 +12,5 @@
     android:maxLines="1"
     android:paddingLeft="@dimen/tiny_margin"
     android:paddingRight="@dimen/tiny_margin"
-    android:textSize="@dimen/smaller_text_size"
+    android:textSize="@dimen/day_monthly_text_size"
     tools:text="1"/>

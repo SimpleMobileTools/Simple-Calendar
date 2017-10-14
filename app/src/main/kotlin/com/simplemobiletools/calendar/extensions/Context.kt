@@ -268,7 +268,7 @@ fun Context.addDayNumber(rawTextColor: Int, day: DayMonthly, linearLayout: Linea
     if (!day.isThisMonth)
         textColor = textColor.adjustAlpha(LOW_ALPHA)
 
-    (View.inflate(this, R.layout.day_monthly_item_view, null) as TextView).apply {
+    (View.inflate(this, R.layout.day_monthly_number_view, null) as TextView).apply {
         setTextColor(textColor)
         text = day.value.toString()
         gravity = Gravity.TOP or Gravity.CENTER_HORIZONTAL
@@ -310,7 +310,7 @@ fun Context.addDayEvents(day: DayMonthly, linearLayout: LinearLayout, res: Resou
             textColor = textColor.adjustAlpha(0.25f)
         }
 
-        (View.inflate(this, R.layout.day_monthly_item_view, null) as TextView).apply {
+        (View.inflate(this, R.layout.day_monthly_event_view, null) as TextView).apply {
             setTextColor(textColor)
             text = it.title.replace(" ", "\u00A0")  // allow word break by char
             background = backgroundDrawable
