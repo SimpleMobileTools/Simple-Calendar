@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 2.8.2 *(2017-10-14)*
+----------------------------
+
+ * Increasing the monthly widget font size
+ * Couple smaller improvements to monthly widget
+
 Version 2.8.1 *(2017-10-09)*
 ----------------------------
 
