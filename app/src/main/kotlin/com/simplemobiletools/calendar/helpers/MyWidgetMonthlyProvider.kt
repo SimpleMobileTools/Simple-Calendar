@@ -66,6 +66,8 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
         }
     }
 
+    private fun getComponentName(context: Context) = ComponentName(context, MyWidgetMonthlyProvider::class.java)
+
     private fun setupIntent(context: Context, views: RemoteViews, action: String, id: Int) {
         Intent(context, MyWidgetMonthlyProvider::class.java).apply {
             this.action = action
@@ -87,8 +89,6 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
             views.setOnClickPendingIntent(id, pendingIntent)
         }
     }
-
-    private fun getComponentName(context: Context) = ComponentName(context, MyWidgetMonthlyProvider::class.java)
 
     override fun onReceive(context: Context, intent: Intent) {
         when (intent.action) {

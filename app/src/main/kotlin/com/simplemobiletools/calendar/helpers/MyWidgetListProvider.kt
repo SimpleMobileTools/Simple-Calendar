@@ -6,7 +6,6 @@ import android.appwidget.AppWidgetProvider
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
-import android.content.res.Resources
 import android.net.Uri
 import android.widget.RemoteViews
 import com.simplemobiletools.calendar.R
@@ -24,82 +23,73 @@ class MyWidgetListProvider : AppWidgetProvider() {
     private val NEW_EVENT = "new_event"
     private val LAUNCH_TODAY = "launch_today"
 
-    private var mTextColor = 0
-
-    lateinit var mRemoteViews: RemoteViews
-    lateinit var mRes: Resources
-    lateinit var mWidgetManager: AppWidgetManager
-    lateinit var mIntent: Intent
-    lateinit var mContext: Context
-
     override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
         initVariables(context)
         super.onUpdate(context, appWidgetManager, appWidgetIds)
     }
 
     private fun initVariables(context: Context) {
-        mContext = context
-        mRes = context.resources
+        val fontSize = context.config.getFontSize()
+        val textColor = context.config.widgetTextColor
 
-        mTextColor = context.config.widgetTextColor
+        val appWidgetManager = AppWidgetManager.getInstance(context)
+        appWidgetManager.getAppWidgetIds(getComponentName(context)).forEach {
+            val views = RemoteViews(context.packageName, R.layout.widget_event_list).apply {
+                setBackgroundColor(R.id.widget_event_list_holder, context.config.widgetBgColor)
+                setTextColor(R.id.widget_event_list_empty, textColor)
+                setTextSize(R.id.widget_event_list_empty, fontSize)
 
-        mWidgetManager = AppWidgetManager.getInstance(context)
+                setTextColor(R.id.widget_event_list_today, textColor)
+                setTextSize(R.id.widget_event_list_today, fontSize + 3)
+            }
 
-        mIntent = Intent(context, MyWidgetListProvider::class.java)
-        mRemoteViews = RemoteViews(context.packageName, R.layout.widget_event_list).apply {
-            setBackgroundColor(R.id.widget_event_list_holder, context.config.widgetBgColor)
-            setTextColor(R.id.widget_event_list_empty, mTextColor)
-            setTextSize(R.id.widget_event_list_empty, context.config.getFontSize())
+            val now = (System.currentTimeMillis() / 1000).toInt()
+            val todayCode = Formatter.getDayCodeFromTS(now)
+            val todayText = Formatter.getDayTitle(context, todayCode)
+            views.setTextViewText(R.id.widget_event_list_today, todayText)
 
-            setTextColor(R.id.widget_event_list_today, mTextColor)
-            setTextSize(R.id.widget_event_list_today, context.config.getFontSize() + 3)
+            views.setImageViewBitmap(R.id.widget_event_new_event, context.resources.getColoredIcon(textColor, R.drawable.ic_plus))
+            setupIntent(context, views, NEW_EVENT, R.id.widget_event_new_event)
+            setupIntent(context, views, LAUNCH_TODAY, R.id.widget_event_list_today)
+
+            Intent(context, WidgetService::class.java).apply {
+                data = Uri.parse(this.toUri(Intent.URI_INTENT_SCHEME))
+                views.setRemoteAdapter(R.id.widget_event_list, this)
+            }
+
+            val startActivityIntent = Intent(context, SplashActivity::class.java)
+            val startActivityPendingIntent = PendingIntent.getActivity(context, 0, startActivityIntent, PendingIntent.FLAG_UPDATE_CURRENT)
+            views.setPendingIntentTemplate(R.id.widget_event_list, startActivityPendingIntent)
+            views.setEmptyView(R.id.widget_event_list, R.id.widget_event_list_empty)
+
+            appWidgetManager.updateAppWidget(it, views)
+            appWidgetManager.notifyAppWidgetViewDataChanged(it, R.id.widget_event_list)
         }
-
-        val now = (System.currentTimeMillis() / 1000).toInt()
-        val todayCode = Formatter.getDayCodeFromTS(now)
-        val todayText = Formatter.getDayTitle(context, todayCode)
-        mRemoteViews.setTextViewText(R.id.widget_event_list_today, todayText)
-
-        mRemoteViews.setImageViewBitmap(R.id.widget_event_new_event, context.resources.getColoredIcon(mTextColor, R.drawable.ic_plus))
-        setupIntent(NEW_EVENT, R.id.widget_event_new_event)
-        setupIntent(LAUNCH_TODAY, R.id.widget_event_list_today)
-
-        Intent(context, WidgetService::class.java).apply {
-            data = Uri.parse(this.toUri(Intent.URI_INTENT_SCHEME))
-            mRemoteViews.setRemoteAdapter(R.id.widget_event_list, this)
-        }
-
-        val startActivityIntent = Intent(context, SplashActivity::class.java)
-        val startActivityPendingIntent = PendingIntent.getActivity(context, 0, startActivityIntent, PendingIntent.FLAG_UPDATE_CURRENT)
-        mRemoteViews.setPendingIntentTemplate(R.id.widget_event_list, startActivityPendingIntent)
-        mRemoteViews.setEmptyView(R.id.widget_event_list, R.id.widget_event_list_empty)
-
-        val appWidgetIds = mWidgetManager.getAppWidgetIds(ComponentName(context, MyWidgetListProvider::class.java))
-        mWidgetManager.updateAppWidget(appWidgetIds, mRemoteViews)
-        mWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.widget_event_list)
     }
 
-    private fun setupIntent(action: String, id: Int) {
-        mIntent.action = action
-        val pendingIntent = PendingIntent.getBroadcast(mContext, 0, mIntent, 0)
-        mRemoteViews.setOnClickPendingIntent(id, pendingIntent)
+    private fun getComponentName(context: Context) = ComponentName(context, MyWidgetListProvider::class.java)
+
+    private fun setupIntent(context: Context, views: RemoteViews, action: String, id: Int) {
+        Intent(context, MyWidgetListProvider::class.java).apply {
+            this.action = action
+            val pendingIntent = PendingIntent.getBroadcast(context, 0, this, 0)
+            views.setOnClickPendingIntent(id, pendingIntent)
+        }
     }
 
     override fun onReceive(context: Context, intent: Intent) {
-        mContext = context
-
         when (intent.action) {
             NEW_EVENT -> context.launchNewEventIntent()
-            LAUNCH_TODAY -> launchDayActivity()
+            LAUNCH_TODAY -> launchDayActivity(context)
             else -> super.onReceive(context, intent)
         }
     }
 
-    private fun launchDayActivity() {
-        Intent(mContext, DayActivity::class.java).apply {
+    private fun launchDayActivity(context: Context) {
+        Intent(context, DayActivity::class.java).apply {
             putExtra(DAY_CODE, Formatter.getDayCodeFromDateTime(DateTime()))
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            mContext.startActivity(this)
+            context.startActivity(this)
         }
     }
 }
