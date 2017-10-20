@@ -3,81 +3,72 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_weight="1"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:paddingBottom="@dimen/small_margin"
+    android:paddingTop="@dimen/small_margin">
 
     <TextView
         android:id="@+id/week_num"
-        style="@style/DayView"
+        style="@style/MetaView"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        tools:text="#"
-        android:visibility="gone"
-        tools:visibility="visible"/>
+        android:text="#"/>
 
     <TextView
         android:id="@+id/label_0"
-        style="@style/DayView"
+        style="@style/MetaView"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:text="@string/monday_letter"
-        android:textStyle="bold"/>
+        android:text="@string/monday_letter"/>
 
     <TextView
         android:id="@+id/label_1"
-        style="@style/DayView"
+        style="@style/MetaView"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:text="@string/tuesday_letter"
-        android:textStyle="bold"/>
+        android:text="@string/tuesday_letter"/>
 
     <TextView
         android:id="@+id/label_2"
-        style="@style/DayView"
+        style="@style/MetaView"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:text="@string/wednesday_letter"
-        android:textStyle="bold"/>
+        android:text="@string/wednesday_letter"/>
 
     <TextView
         android:id="@+id/label_3"
-        style="@style/DayView"
+        style="@style/MetaView"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:text="@string/thursday_letter"
-        android:textStyle="bold"/>
+        android:text="@string/thursday_letter"/>
 
     <TextView
         android:id="@+id/label_4"
-        style="@style/DayView"
+        style="@style/MetaView"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:text="@string/friday_letter"
-        android:textStyle="bold"/>
+        android:text="@string/friday_letter"/>
 
     <TextView
         android:id="@+id/label_5"
-        style="@style/DayView"
+        style="@style/MetaView"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:text="@string/saturday_letter"
-        android:textStyle="bold"/>
+        android:text="@string/saturday_letter"/>
 
     <TextView
         android:id="@+id/label_6"
-        style="@style/DayView"
+        style="@style/MetaView"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:text="@string/sunday_letter"
-        android:textStyle="bold"/>
+        android:text="@string/sunday_letter"/>
 
 </LinearLayout>

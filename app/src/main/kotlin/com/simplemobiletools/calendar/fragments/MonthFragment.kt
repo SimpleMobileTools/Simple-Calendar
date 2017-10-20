@@ -1,5 +1,6 @@
 package com.simplemobiletools.calendar.fragments
 
+import android.content.Context
 import android.content.Intent
 import android.content.res.Resources
 import android.graphics.PorterDuff
@@ -61,9 +62,6 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         setupLabels()
         mCalendar = MonthlyCalendarImpl(this, context)
 
-        val padding = mRes.getDimension(R.dimen.activity_margin).toInt()
-        view.calendar_holder.setPadding(padding, padding, padding, padding)
-
         return view
     }
 
@@ -85,7 +83,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         mCalendar.updateMonthlyCalendar(Formatter.getDateTimeFromCode(mDayCode))
     }
 
-    override fun updateMonthlyCalendar(month: String, days: List<DayMonthly>) {
+    override fun updateMonthlyCalendar(context: Context, month: String, days: List<DayMonthly>) {
         activity?.runOnUiThread {
             mHolder.top_value.apply {
                 text = month

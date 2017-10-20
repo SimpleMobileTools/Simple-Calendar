@@ -2,6 +2,7 @@ package com.simplemobiletools.calendar.activities
 
 import android.app.Activity
 import android.appwidget.AppWidgetManager
+import android.content.Context
 import android.content.Intent
 import android.content.res.Resources
 import android.graphics.Color
@@ -187,7 +188,7 @@ class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
         }
     }
 
-    override fun updateMonthlyCalendar(month: String, days: List<DayMonthly>) {
+    override fun updateMonthlyCalendar(context: Context, month: String, days: List<DayMonthly>) {
         runOnUiThread {
             mDays = days
             top_value.text = month
