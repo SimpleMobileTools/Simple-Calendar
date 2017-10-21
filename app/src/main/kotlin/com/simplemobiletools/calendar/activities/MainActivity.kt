@@ -111,6 +111,8 @@ class MainActivity : SimpleActivity(), NavigationListener {
             dbHelper.deleteEvents(ids, false)
             config.googleSync = false
         }
+
+        checkOpenIntents()
     }
 
     override fun onResume() {
@@ -192,6 +194,23 @@ class MainActivity : SimpleActivity(), NavigationListener {
         mStoredPrimaryColor = config.primaryColor
         mStoredBackgroundColor = config.backgroundColor
         mStoredDayCode = Formatter.getTodayCode()
+    }
+
+    private fun checkOpenIntents() {
+        val dayCodeToOpen = intent.getStringExtra(DAY_CODE) ?: ""
+        if (dayCodeToOpen.isNotEmpty()) {
+            openDayCode(dayCodeToOpen)
+        }
+
+        val eventIdToOpen = intent.getIntExtra(EVENT_ID, 0)
+        val eventOccurrenceToOpen = intent.getIntExtra(EVENT_OCCURRENCE_TS, 0)
+        if (eventIdToOpen != 0 && eventOccurrenceToOpen != 0) {
+            Intent(this, EventActivity::class.java).apply {
+                putExtra(EVENT_ID, eventIdToOpen)
+                putExtra(EVENT_OCCURRENCE_TS, eventOccurrenceToOpen)
+                startActivity(this)
+            }
+        }
     }
 
     private fun showViewDialog() {
@@ -661,6 +680,10 @@ class MainActivity : SimpleActivity(), NavigationListener {
 
     private fun openDayAt(timestamp: Long) {
         val dayCode = Formatter.getDayCodeFromTS((timestamp / 1000).toInt())
+        openDayCode(dayCode)
+    }
+
+    private fun openDayCode(dayCode: String) {
         Intent(this, DayActivity::class.java).apply {
             putExtra(DAY_CODE, dayCode)
             startActivity(this)
