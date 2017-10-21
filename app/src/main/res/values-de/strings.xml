@@ -28,6 +28,7 @@
     <string name="event_updated">Termin erfolgreich aktualisiert</string>
     <string name="filter">Sortieren</string>
     <string name="filter_events_by_type">Sortiere Termine nach Typ</string>
+    <string name="location">Location</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Wiederholung</string>

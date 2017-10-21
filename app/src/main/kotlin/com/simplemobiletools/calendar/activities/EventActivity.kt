@@ -70,8 +70,9 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             mReminder2Minutes = -1
             mReminder3Minutes = -1
             val startTS = intent.getIntExtra(NEW_EVENT_START_TS, 0)
-            if (startTS == 0)
+            if (startTS == 0) {
                 return
+            }
 
             setupNewEvent(Formatter.getDateTimeFromTS(startTS))
         }
@@ -82,6 +83,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         updateEndTexts()
         updateEventType()
         updateCalDAVCalendar()
+        updateLocation()
 
         event_start_date.setOnClickListener { setupStartDate() }
         event_start_time.setOnClickListener { setupStartTime() }
@@ -115,6 +117,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         mEventStartDateTime = Formatter.getDateTimeFromTS(realStart)
         mEventEndDateTime = Formatter.getDateTimeFromTS(realStart + duration)
         event_title.setText(mEvent.title)
+        event_location.setText(mEvent.location)
         event_description.setText(mEvent.description)
         event_description.movementMethod = LinkMovementMethod.getInstance()
 
@@ -201,16 +204,20 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     }
 
     private fun checkRepetitionLimitText() {
-        event_repetition_limit.text = if (mRepeatLimit == 0) {
-            event_repetition_limit_label.text = getString(R.string.repeat)
-            resources.getString(R.string.forever)
-        } else if (mRepeatLimit > 0) {
-            event_repetition_limit_label.text = getString(R.string.repeat_till)
-            val repeatLimitDateTime = Formatter.getDateTimeFromTS(mRepeatLimit)
-            Formatter.getFullDate(applicationContext, repeatLimitDateTime)
-        } else {
-            event_repetition_limit_label.text = getString(R.string.repeat)
-            "${-mRepeatLimit} ${getString(R.string.times)}"
+        event_repetition_limit.text = when {
+            mRepeatLimit == 0 -> {
+                event_repetition_limit_label.text = getString(R.string.repeat)
+                resources.getString(R.string.forever)
+            }
+            mRepeatLimit > 0 -> {
+                event_repetition_limit_label.text = getString(R.string.repeat_till)
+                val repeatLimitDateTime = Formatter.getDateTimeFromTS(mRepeatLimit)
+                Formatter.getFullDate(applicationContext, repeatLimitDateTime)
+            }
+            else -> {
+                event_repetition_limit_label.text = getString(R.string.repeat)
+                "${-mRepeatLimit} ${getString(R.string.times)}"
+            }
         }
     }
 
@@ -446,6 +453,10 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         }
     }
 
+    private fun updateLocation() {
+        event_location.setText(mEvent.location)
+    }
+
     private fun toggleAllDay(isChecked: Boolean) {
         hideKeyboard()
         event_start_time.beGoneIf(isChecked)
@@ -519,12 +530,11 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         }
 
         val reminders = sortedSetOf(mReminder1Minutes, mReminder2Minutes, mReminder3Minutes).filter { it != REMINDER_OFF }
-        val newDescription = event_description.value
         mEvent.apply {
             startTS = newStartTS
             endTS = newEndTS
             title = newTitle
-            description = newDescription
+            description = event_description.value
             reminder1Minutes = reminders.elementAtOrElse(0) { REMINDER_OFF }
             reminder2Minutes = reminders.elementAtOrElse(1) { REMINDER_OFF }
             reminder3Minutes = reminders.elementAtOrElse(2) { REMINDER_OFF }
@@ -538,6 +548,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             isDstIncluded = TimeZone.getDefault().inDaylightTime(Date())
             lastUpdated = System.currentTimeMillis()
             source = newSource
+            location = event_location.value
         }
 
         // recreate the event if it was moved in a different CalDAV calendar

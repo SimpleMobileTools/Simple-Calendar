@@ -28,6 +28,7 @@
     <string name="event_updated">Событие успешно обновлено</string>
     <string name="filter">Фильтрация</string>
     <string name="filter_events_by_type">Фильтровать события по типу</string>
+    <string name="location">Location</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Повторять</string>

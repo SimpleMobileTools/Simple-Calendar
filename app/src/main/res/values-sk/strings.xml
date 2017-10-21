@@ -28,6 +28,7 @@
     <string name="event_updated">Udalosť bola úspešne upravená</string>
     <string name="filter">Filtrovať</string>
     <string name="filter_events_by_type">Filtrovať udalosti podľa typu</string>
+    <string name="location">Miesto</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Opakovanie</string>

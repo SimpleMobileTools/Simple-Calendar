@@ -209,7 +209,8 @@ class CalDAVHandler(val context: Context) {
                 CalendarContract.Events.DTEND,
                 CalendarContract.Events.DURATION,
                 CalendarContract.Events.ALL_DAY,
-                CalendarContract.Events.RRULE)
+                CalendarContract.Events.RRULE,
+                CalendarContract.Events.EVENT_LOCATION)
 
         val selection = "${CalendarContract.Events.CALENDAR_ID} = $calendarId"
         var cursor: Cursor? = null
@@ -224,6 +225,7 @@ class CalDAVHandler(val context: Context) {
                     var endTS = (cursor.getLongValue(CalendarContract.Events.DTEND) / 1000).toInt()
                     val allDay = cursor.getIntValue(CalendarContract.Events.ALL_DAY)
                     val rrule = cursor.getStringValue(CalendarContract.Events.RRULE) ?: ""
+                    val location = cursor.getStringValue(CalendarContract.Events.EVENT_LOCATION) ?: ""
                     val reminders = getCalDAVEventReminders(id)
 
                     if (endTS == 0) {
@@ -235,7 +237,8 @@ class CalDAVHandler(val context: Context) {
                     val repeatRule = Parser().parseRepeatInterval(rrule, startTS)
                     val event = Event(0, startTS, endTS, title, description, reminders.getOrElse(0, { -1 }),
                             reminders.getOrElse(1, { -1 }), reminders.getOrElse(2, { -1 }), repeatRule.repeatInterval,
-                            importId, allDay, repeatRule.repeatLimit, repeatRule.repeatRule, eventTypeId, source = "$CALDAV-$calendarId")
+                            importId, allDay, repeatRule.repeatLimit, repeatRule.repeatRule, eventTypeId, source = "$CALDAV-$calendarId",
+                            location = location)
 
                     if (event.getIsAllDay() && endTS > startTS) {
                         event.endTS -= DAY
@@ -330,6 +333,7 @@ class CalDAVHandler(val context: Context) {
             put(CalendarContract.Events.ALL_DAY, if (event.getIsAllDay()) 1 else 0)
             put(CalendarContract.Events.RRULE, Parser().getRepeatCode(event))
             put(CalendarContract.Events.EVENT_TIMEZONE, TimeZone.getDefault().toString())
+            put(CalendarContract.Events.EVENT_LOCATION, event.location)
 
             if (event.getIsAllDay() && event.endTS > event.startTS)
                 event.endTS += DAY

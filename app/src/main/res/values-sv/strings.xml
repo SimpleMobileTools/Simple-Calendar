@@ -28,6 +28,7 @@
     <string name="event_updated">Händelsen uppdaterad</string>
     <string name="filter">Filtrera</string>
     <string name="filter_events_by_type">Filtrera händelser efter typ</string>
+    <string name="location">Location</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Upprepning</string>

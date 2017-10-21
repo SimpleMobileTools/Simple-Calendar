@@ -37,6 +37,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private val COL_IS_DST_INCLUDED = "is_dst_included"
     private val COL_LAST_UPDATED = "last_updated"
     private val COL_EVENT_SOURCE = "event_source"
+    private val COL_LOCATION = "location"
     private val COL_SOURCE = "source"   // deprecated
 
     private val META_TABLE_NAME = "events_meta"
@@ -64,7 +65,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private val mDb: SQLiteDatabase = writableDatabase
 
     companion object {
-        private val DB_VERSION = 18
+        private val DB_VERSION = 19
         val DB_NAME = "events.db"
         val REGULAR_EVENT_TYPE_ID = 1
         var dbInstance: DBHelper? = null
@@ -84,7 +85,8 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         db.execSQL("CREATE TABLE $MAIN_TABLE_NAME ($COL_ID INTEGER PRIMARY KEY AUTOINCREMENT, $COL_START_TS INTEGER, $COL_END_TS INTEGER, " +
                 "$COL_TITLE TEXT, $COL_DESCRIPTION TEXT, $COL_REMINDER_MINUTES INTEGER, $COL_REMINDER_MINUTES_2 INTEGER, $COL_REMINDER_MINUTES_3 INTEGER, " +
                 "$COL_IMPORT_ID TEXT, $COL_FLAGS INTEGER, $COL_EVENT_TYPE INTEGER NOT NULL DEFAULT $REGULAR_EVENT_TYPE_ID, " +
-                "$COL_PARENT_EVENT_ID INTEGER, $COL_OFFSET TEXT, $COL_IS_DST_INCLUDED INTEGER, $COL_LAST_UPDATED INTEGER, $COL_EVENT_SOURCE TEXT)")
+                "$COL_PARENT_EVENT_ID INTEGER, $COL_OFFSET TEXT, $COL_IS_DST_INCLUDED INTEGER, $COL_LAST_UPDATED INTEGER, $COL_EVENT_SOURCE TEXT, " +
+                "$COL_LOCATION TEXT)")
 
         createMetaTable(db)
         createTypesTable(db)
@@ -169,6 +171,10 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
         if (oldVersion < 18) {
             updateOldMonthlyEvents(db)
+        }
+
+        if (oldVersion < 19) {
+            db.execSQL("ALTER TABLE $MAIN_TABLE_NAME ADD COLUMN $COL_LOCATION TEXT DEFAULT ''")
         }
     }
 
@@ -258,6 +264,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             put(COL_IS_DST_INCLUDED, if (event.isDstIncluded) 1 else 0)
             put(COL_LAST_UPDATED, event.lastUpdated)
             put(COL_EVENT_SOURCE, event.source)
+            put(COL_LOCATION, event.location)
         }
     }
 
@@ -767,7 +774,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private val allColumns: Array<String>
         get() = arrayOf("$MAIN_TABLE_NAME.$COL_ID", COL_START_TS, COL_END_TS, COL_TITLE, COL_DESCRIPTION, COL_REMINDER_MINUTES, COL_REMINDER_MINUTES_2,
                 COL_REMINDER_MINUTES_3, COL_REPEAT_INTERVAL, COL_REPEAT_RULE, COL_IMPORT_ID, COL_FLAGS, COL_REPEAT_LIMIT, COL_EVENT_TYPE, COL_OFFSET,
-                COL_IS_DST_INCLUDED, COL_LAST_UPDATED, COL_EVENT_SOURCE)
+                COL_IS_DST_INCLUDED, COL_LAST_UPDATED, COL_EVENT_SOURCE, COL_LOCATION)
 
     private fun fillEvents(cursor: Cursor?): List<Event> {
         val eventTypeColors = SparseIntArray()
@@ -776,7 +783,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
 
         val events = ArrayList<Event>()
-        try {
+        cursor.use { cursor ->
             if (cursor != null && cursor.moveToFirst()) {
                 do {
                     val id = cursor.getIntValue(COL_ID)
@@ -797,6 +804,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                     val isDstIncluded = cursor.getIntValue(COL_IS_DST_INCLUDED) == 1
                     val lastUpdated = cursor.getLongValue(COL_LAST_UPDATED)
                     val source = cursor.getStringValue(COL_EVENT_SOURCE)
+                    val location = cursor.getStringValue(COL_LOCATION)
                     val color = eventTypeColors[eventType]
 
                     val ignoreEventOccurrences = if (repeatInterval != 0) {
@@ -811,12 +819,10 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
                     val event = Event(id, startTS, endTS, title, description, reminder1Minutes, reminder2Minutes, reminder3Minutes,
                             repeatInterval, importId, flags, repeatLimit, repeatRule, eventType, ignoreEventOccurrences, offset, isDstIncluded,
-                            0, lastUpdated, source, color)
+                            0, lastUpdated, source, color, location)
                     events.add(event)
                 } while (cursor.moveToNext())
             }
-        } finally {
-            cursor?.close()
         }
         return events
     }

@@ -28,6 +28,7 @@
     <string name="event_updated">Bejegyzés frissítve</string>
     <string name="filter">Filter</string>
     <string name="filter_events_by_type">Filter events by type</string>
+    <string name="location">Location</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Ismétlés</string>

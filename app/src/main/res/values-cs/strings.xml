@@ -28,6 +28,7 @@
     <string name="event_updated">Událost úspěšně změněna</string>
     <string name="filter">Filtrovat</string>
     <string name="filter_events_by_type">Filtrovat události podle typu</string>
+    <string name="location">Location</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Opakovaná událost</string>

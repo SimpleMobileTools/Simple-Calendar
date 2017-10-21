@@ -29,6 +29,7 @@ class IcsImporter {
     private var curRepeatRule = 0
     private var curEventType = DBHelper.REGULAR_EVENT_TYPE_ID
     private var curLastModified = 0L
+    private var curLocation = ""
     private var isNotificationDescription = false
     private var lastReminderAction = ""
 
@@ -92,6 +93,8 @@ class IcsImporter {
                         curLastModified = getTimestamp(line.substring(LAST_MODIFIED.length)) * 1000L
                     } else if (line.startsWith(EXDATE)) {
                         curRepeatExceptions.add(getTimestamp(line.substring(EXDATE.length)))
+                    } else if (line.startsWith(LOCATION)) {
+                        curLocation = line.substring(LOCATION.length)
                     } else if (line == END_EVENT) {
                         if (curStart != -1 && curEnd == -1)
                             curEnd = curStart
@@ -107,7 +110,7 @@ class IcsImporter {
                         val event = Event(0, curStart, curEnd, curTitle, curDescription, curReminderMinutes.getOrElse(0, { -1 }),
                                 curReminderMinutes.getOrElse(1, { -1 }), curReminderMinutes.getOrElse(2, { -1 }), curRepeatInterval,
                                 curImportId, curFlags, curRepeatLimit, curRepeatRule, curEventType, lastUpdated = curLastModified,
-                                source = SOURCE_IMPORTED_ICS)
+                                source = SOURCE_IMPORTED_ICS, location = curLocation)
 
                         if (event.getIsAllDay() && curEnd > curStart) {
                             event.endTS -= DAY
@@ -197,6 +200,7 @@ class IcsImporter {
         curRepeatRule = 0
         curEventType = DBHelper.REGULAR_EVENT_TYPE_ID
         curLastModified = 0L
+        curLocation = ""
         isNotificationDescription = false
         lastReminderAction = ""
     }

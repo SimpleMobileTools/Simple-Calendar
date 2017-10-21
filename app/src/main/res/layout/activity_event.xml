@@ -28,10 +28,26 @@
             android:textSize="@dimen/day_text_size"/>
 
         <com.simplemobiletools.commons.views.MyEditText
-            android:id="@+id/event_description"
+            android:id="@+id/event_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_title"
+            android:layout_marginLeft="@dimen/activity_margin"
+            android:layout_marginRight="@dimen/activity_margin"
+            android:layout_marginTop="@dimen/activity_margin"
+            android:hint="@string/location"
+            android:inputType="textCapWords"
+            android:maxLength="80"
+            android:maxLines="1"
+            android:minEms="20"
+            android:textCursorDrawable="@null"
+            android:textSize="@dimen/day_text_size"/>
+
+        <com.simplemobiletools.commons.views.MyEditText
+            android:id="@+id/event_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/event_location"
             android:layout_marginLeft="@dimen/activity_margin"
             android:layout_marginRight="@dimen/activity_margin"
             android:layout_marginTop="@dimen/activity_margin"
