@@ -26,6 +26,10 @@
         android:title="@string/add_holidays"
         app:showAsAction="never"/>
     <item
+        android:id="@+id/add_birthdays"
+        android:title="@string/add_birthdays"
+        app:showAsAction="never"/>
+    <item
         android:id="@+id/import_events"
         android:title="@string/import_events_from_ics"
         app:showAsAction="never"/>

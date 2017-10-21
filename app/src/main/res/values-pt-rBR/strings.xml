@@ -97,6 +97,13 @@
         <item quantity="other">%d anos</item>
     </plurals>
 
+    <!-- Birthdays -->
+    <string name="birthdays">Birthdays</string>
+    <string name="add_birthdays">Add contact birthdays</string>
+    <string name="no_contacts_permission">Cannot obtain birthdays without the Contacts permission</string>
+    <string name="no_birthdays">No birthdays have been found</string>
+    <string name="birthdays_added">Birthdays added successfully</string>
+
     <!-- Event Reminders -->
     <string name="reminder">Lembrete</string>
     <string name="no_reminder">Sem lembrete</string>

@@ -6,10 +6,12 @@ import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.database.ContentObserver
+import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.provider.CalendarContract
+import android.provider.ContactsContract
 import android.support.v4.app.ActivityCompat
 import android.support.v4.view.ViewPager
 import android.util.SparseIntArray
@@ -45,6 +47,7 @@ import com.simplemobiletools.commons.models.Release
 import kotlinx.android.synthetic.main.activity_main.*
 import org.joda.time.DateTime
 import java.io.FileOutputStream
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -53,8 +56,9 @@ class MainActivity : SimpleActivity(), NavigationListener {
     private val PREFILLED_MONTHS = 97
     private val PREFILLED_YEARS = 31
     private val PREFILLED_WEEKS = 61
-    private val STORAGE_PERMISSION_IMPORT = 1
-    private val STORAGE_PERMISSION_EXPORT = 2
+    private val PERMISSION_STORAGE_IMPORT = 1
+    private val PERMISSION_STORAGE_EXPORT = 2
+    private val PERMISSION_CONTACTS = 3
 
     private var mIsMonthSelected = false
     private var mStoredTextColor = 0
@@ -173,6 +177,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
             R.id.filter -> showFilterDialog()
             R.id.refresh_caldav_calendars -> refreshCalDAVCalendars()
             R.id.add_holidays -> addHolidays()
+            R.id.add_birthdays -> tryAddBirthdays()
             R.id.import_events -> tryImportEvents()
             R.id.export_events -> tryExportEvents()
             R.id.settings -> launchSettings()
@@ -284,6 +289,49 @@ class MainActivity : SimpleActivity(), NavigationListener {
         }
     }
 
+    private fun tryAddBirthdays() {
+        if (hasContactsPermission()) {
+            Thread({
+                addBirthdays()
+            }).start()
+        } else {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_CONTACTS), PERMISSION_CONTACTS)
+        }
+    }
+
+    private fun addBirthdays() {
+        var birthdaysAdded = 0
+        val uri = ContactsContract.Data.CONTENT_URI
+        val projection = arrayOf(ContactsContract.Contacts.DISPLAY_NAME,
+                ContactsContract.CommonDataKinds.Event.CONTACT_ID,
+                ContactsContract.CommonDataKinds.Event.START_DATE)
+
+        val selection = "${ContactsContract.Data.MIMETYPE} = ? AND ${ContactsContract.CommonDataKinds.Event.TYPE} = ?"
+        val selectionArgs = arrayOf(ContactsContract.CommonDataKinds.Event.CONTENT_ITEM_TYPE, ContactsContract.CommonDataKinds.Event.TYPE_BIRTHDAY.toString())
+        var cursor: Cursor? = null
+        try {
+            cursor = contentResolver.query(uri, projection, selection, selectionArgs, null)
+            if (cursor?.moveToFirst() == true) {
+                do {
+                    val contactId = cursor.getIntValue(ContactsContract.CommonDataKinds.Event.CONTACT_ID)
+                    val name = cursor.getStringValue(ContactsContract.Contacts.DISPLAY_NAME)
+                    val birthDay = cursor.getStringValue(ContactsContract.CommonDataKinds.Event.START_DATE)
+                    val formatter = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                    val timestamp = formatter.parse(birthDay).time / 1000
+                    birthdaysAdded++
+                } while (cursor.moveToNext())
+            }
+        } catch (e: Exception) {
+            showErrorToast(e)
+        } finally {
+            cursor?.close()
+        }
+
+        runOnUiThread {
+            toast(if (birthdaysAdded > 0) R.string.birthdays_added else R.string.no_birthdays)
+        }
+    }
+
     private fun handleParseResult(result: IcsImporter.ImportResult) {
         toast(when (result) {
             IcsImporter.ImportResult.IMPORT_OK -> R.string.holidays_imported_successfully
@@ -329,7 +377,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
         if (hasReadStoragePermission()) {
             importEvents()
         } else {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), STORAGE_PERMISSION_IMPORT)
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), PERMISSION_STORAGE_IMPORT)
         }
     }
 
@@ -372,7 +420,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
         if (hasReadStoragePermission()) {
             exportEvents()
         } else {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), STORAGE_PERMISSION_EXPORT)
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), PERMISSION_STORAGE_EXPORT)
         }
     }
 
@@ -604,10 +652,10 @@ class MainActivity : SimpleActivity(), NavigationListener {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
         if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            if (requestCode == STORAGE_PERMISSION_IMPORT) {
-                importEvents()
-            } else if (requestCode == STORAGE_PERMISSION_EXPORT) {
-                exportEvents()
+            when (requestCode) {
+                PERMISSION_STORAGE_IMPORT -> importEvents()
+                PERMISSION_STORAGE_EXPORT -> exportEvents()
+                PERMISSION_CONTACTS -> Thread({ addBirthdays() }).start()
             }
         }
     }

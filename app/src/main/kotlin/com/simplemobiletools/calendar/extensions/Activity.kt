@@ -12,7 +12,7 @@ import com.simplemobiletools.calendar.helpers.IcsExporter
 import com.simplemobiletools.commons.extensions.toast
 import java.io.File
 
-fun Activity.hasGetAccountsPermission() = ContextCompat.checkSelfPermission(this, Manifest.permission.GET_ACCOUNTS) == PackageManager.PERMISSION_GRANTED
+fun Activity.hasContactsPermission() = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED
 
 fun SimpleActivity.shareEvents(ids: List<Int>) {
     val file = getTempFile()
