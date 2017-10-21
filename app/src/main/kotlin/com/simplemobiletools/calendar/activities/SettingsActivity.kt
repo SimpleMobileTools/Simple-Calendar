@@ -1,14 +1,11 @@
 package com.simplemobiletools.calendar.activities
 
-import android.Manifest
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.content.res.Resources
 import android.media.RingtoneManager
 import android.net.Uri
 import android.os.Bundle
 import android.os.Parcelable
-import android.support.v4.app.ActivityCompat
 import android.text.TextUtils
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.dialogs.CustomEventReminderDialog
@@ -25,12 +22,12 @@ import com.simplemobiletools.commons.extensions.beGone
 import com.simplemobiletools.commons.extensions.beVisibleIf
 import com.simplemobiletools.commons.extensions.toast
 import com.simplemobiletools.commons.extensions.updateTextColors
+import com.simplemobiletools.commons.helpers.PERMISSION_WRITE_CALENDAR
 import com.simplemobiletools.commons.models.RadioItem
 import kotlinx.android.synthetic.main.activity_settings.*
 
 class SettingsActivity : SimpleActivity() {
     private val GET_RINGTONE_URI = 1
-    private val CALENDAR_PERMISSION = 5
 
     lateinit var res: Resources
     private var mStoredPrimaryColor = 0
@@ -106,10 +103,10 @@ class SettingsActivity : SimpleActivity() {
             if (config.caldavSync) {
                 toggleCaldavSync(false)
             } else {
-                if (hasCalendarPermission()) {
-                    toggleCaldavSync(true)
-                } else {
-                    ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_CALENDAR), CALENDAR_PERMISSION)
+                handlePermission(PERMISSION_WRITE_CALENDAR) {
+                    if (it) {
+                        toggleCaldavSync(true)
+                    }
                 }
             }
         }
@@ -349,16 +346,6 @@ class SettingsActivity : SimpleActivity() {
                     settings_reminder_sound.text = RingtoneManager.getRingtone(this, uri as Uri)?.getTitle(this)
                     config.reminderSound = uri.toString()
                 }
-            }
-        }
-    }
-
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-
-        if (requestCode == CALENDAR_PERMISSION) {
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                toggleCaldavSync(true)
             }
         }
     }

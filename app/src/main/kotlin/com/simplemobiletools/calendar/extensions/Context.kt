@@ -1,6 +1,5 @@
 package com.simplemobiletools.calendar.extensions
 
-import android.Manifest
 import android.annotation.TargetApi
 import android.app.AlarmManager
 import android.app.Notification
@@ -10,13 +9,11 @@ import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.content.res.Resources
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.net.Uri
 import android.os.Build
-import android.support.v4.content.ContextCompat
 import android.support.v7.app.NotificationCompat
 import android.view.Gravity
 import android.view.View
@@ -37,8 +34,6 @@ import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 import java.text.SimpleDateFormat
 import java.util.*
-
-fun Context.hasCalendarPermission() = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_CALENDAR) == PackageManager.PERMISSION_GRANTED
 
 fun Context.updateWidgets() {
     val widgetsCnt = AppWidgetManager.getInstance(this).getAppWidgetIds(ComponentName(this, MyWidgetMonthlyProvider::class.java))

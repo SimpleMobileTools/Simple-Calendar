@@ -1,10 +1,8 @@
 package com.simplemobiletools.calendar.activities
 
-import android.Manifest
 import android.content.ContentResolver
 import android.content.Intent
 import android.content.pm.ActivityInfo
-import android.content.pm.PackageManager
 import android.database.ContentObserver
 import android.database.Cursor
 import android.net.Uri
@@ -12,7 +10,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.provider.CalendarContract
 import android.provider.ContactsContract
-import android.support.v4.app.ActivityCompat
 import android.support.v4.view.ViewPager
 import android.util.SparseIntArray
 import android.view.Menu
@@ -39,9 +36,7 @@ import com.simplemobiletools.calendar.views.MyScrollView
 import com.simplemobiletools.commons.dialogs.FilePickerDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.LICENSE_JODA
-import com.simplemobiletools.commons.helpers.LICENSE_KOTLIN
-import com.simplemobiletools.commons.helpers.LICENSE_STETHO
+import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.models.RadioItem
 import com.simplemobiletools.commons.models.Release
 import kotlinx.android.synthetic.main.activity_main.*
@@ -56,9 +51,6 @@ class MainActivity : SimpleActivity(), NavigationListener {
     private val PREFILLED_MONTHS = 97
     private val PREFILLED_YEARS = 31
     private val PREFILLED_WEEKS = 61
-    private val PERMISSION_STORAGE_IMPORT = 1
-    private val PERMISSION_STORAGE_EXPORT = 2
-    private val PERMISSION_CONTACTS = 3
 
     private var mIsMonthSelected = false
     private var mStoredTextColor = 0
@@ -108,7 +100,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
         storeStateVariables()
         updateViewPager()
 
-        if (!hasCalendarPermission()) {
+        if (!hasPermission(PERMISSION_WRITE_CALENDAR)) {
             config.caldavSync = false
         }
 
@@ -293,12 +285,14 @@ class MainActivity : SimpleActivity(), NavigationListener {
     }
 
     private fun tryAddBirthdays() {
-        if (hasContactsPermission()) {
-            Thread({
-                addBirthdays()
-            }).start()
-        } else {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_CONTACTS), PERMISSION_CONTACTS)
+        handlePermission(PERMISSION_READ_CONTACTS) {
+            if (it) {
+                Thread({
+                    addBirthdays()
+                }).start()
+            } else {
+                toast(R.string.no_contacts_permission)
+            }
         }
     }
 
@@ -399,10 +393,10 @@ class MainActivity : SimpleActivity(), NavigationListener {
     }
 
     private fun tryImportEvents() {
-        if (hasReadStoragePermission()) {
-            importEvents()
-        } else {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), PERMISSION_STORAGE_IMPORT)
+        handlePermission(PERMISSION_READ_STORAGE) {
+            if (it) {
+                importEvents()
+            }
         }
     }
 
@@ -442,10 +436,10 @@ class MainActivity : SimpleActivity(), NavigationListener {
     }
 
     private fun tryExportEvents() {
-        if (hasReadStoragePermission()) {
-            exportEvents()
-        } else {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), PERMISSION_STORAGE_EXPORT)
+        handlePermission(PERMISSION_WRITE_STORAGE) {
+            if (it) {
+                exportEvents()
+            }
         }
     }
 
@@ -670,18 +664,6 @@ class MainActivity : SimpleActivity(), NavigationListener {
         Intent(this, DayActivity::class.java).apply {
             putExtra(DAY_CODE, dayCode)
             startActivity(this)
-        }
-    }
-
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-
-        if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            when (requestCode) {
-                PERMISSION_STORAGE_IMPORT -> importEvents()
-                PERMISSION_STORAGE_EXPORT -> exportEvents()
-                PERMISSION_CONTACTS -> Thread({ addBirthdays() }).start()
-            }
         }
     }
 
