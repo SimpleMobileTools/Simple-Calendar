@@ -421,7 +421,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_caldav_calendar_divider"
-            android:layout_marginBottom="@dimen/medium_margin"
             android:layout_marginTop="@dimen/medium_margin"
             android:layout_toEndOf="@+id/event_type_image"
             android:layout_toRightOf="@+id/event_type_image"
@@ -451,5 +450,15 @@
                 android:clickable="false"/>
 
         </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/event_type_divider"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_below="@+id/event_type_holder"
+            android:layout_marginBottom="@dimen/medium_margin"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:background="@color/darker_divider"
+            android:importantForAccessibility="no"/>
     </RelativeLayout>
 </ScrollView>

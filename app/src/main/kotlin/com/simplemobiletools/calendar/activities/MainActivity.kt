@@ -300,10 +300,18 @@ class MainActivity : SimpleActivity(), NavigationListener {
     }
 
     private fun addBirthdays() {
+        val birthdays = getString(R.string.birthdays)
+        var eventTypeId = dbHelper.getEventTypeIdWithTitle(birthdays)
+        if (eventTypeId == -1) {
+            val eventType = EventType(0, birthdays, resources.getColor(R.color.default_birthdays_color))
+            eventTypeId = dbHelper.insertEventType(eventType)
+        }
+
         var birthdaysAdded = 0
         val uri = ContactsContract.Data.CONTENT_URI
         val projection = arrayOf(ContactsContract.Contacts.DISPLAY_NAME,
                 ContactsContract.CommonDataKinds.Event.CONTACT_ID,
+                ContactsContract.CommonDataKinds.Event.CONTACT_LAST_UPDATED_TIMESTAMP,
                 ContactsContract.CommonDataKinds.Event.START_DATE)
 
         val selection = "${ContactsContract.Data.MIMETYPE} = ? AND ${ContactsContract.CommonDataKinds.Event.TYPE} = ?"
@@ -313,12 +321,19 @@ class MainActivity : SimpleActivity(), NavigationListener {
             cursor = contentResolver.query(uri, projection, selection, selectionArgs, null)
             if (cursor?.moveToFirst() == true) {
                 do {
-                    val contactId = cursor.getIntValue(ContactsContract.CommonDataKinds.Event.CONTACT_ID)
+                    val contactId = cursor.getIntValue(ContactsContract.CommonDataKinds.Event.CONTACT_ID).toString()
                     val name = cursor.getStringValue(ContactsContract.Contacts.DISPLAY_NAME)
                     val birthDay = cursor.getStringValue(ContactsContract.CommonDataKinds.Event.START_DATE)
                     val formatter = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-                    val timestamp = formatter.parse(birthDay).time / 1000
-                    birthdaysAdded++
+                    val timestamp = (formatter.parse(birthDay).time / 1000).toInt()
+                    val lastUpdated = cursor.getLongValue(ContactsContract.CommonDataKinds.Event.CONTACT_LAST_UPDATED_TIMESTAMP)
+                    val event = Event(0, timestamp, timestamp, name, importId = contactId, flags = FLAG_ALL_DAY, repeatInterval = YEAR,
+                            eventType = eventTypeId, source = SOURCE_CONTACT_BIRTHDAY, lastUpdated = lastUpdated)
+
+                    dbHelper.insert(event, false) {
+                        birthdaysAdded++
+                    }
+
                 } while (cursor.moveToNext())
             }
         } catch (e: Exception) {
