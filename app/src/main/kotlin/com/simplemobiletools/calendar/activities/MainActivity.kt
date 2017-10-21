@@ -285,6 +285,11 @@ class MainActivity : SimpleActivity(), NavigationListener {
                 }
                 val result = IcsImporter().importEvents(this, it as String, eventTypeId)
                 handleParseResult(result)
+                if (result != IcsImporter.ImportResult.IMPORT_FAIL) {
+                    runOnUiThread {
+                        updateViewPager()
+                    }
+                }
             }).start()
         }
     }
