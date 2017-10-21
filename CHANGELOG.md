@@ -1,6 +1,15 @@
 Changelog
 ==========
 
+Version 2.9.0 *(2017-10-21)*
+----------------------------
+
+ * Added a Location field
+ * Allow adding Contact birthdays
+ * Rewrote the widgets, making them more reliable
+ * After opening the app from widget and pressing Back, go to the main screen
+ * Many other performance and stability improvements
+
 Version 2.8.2 *(2017-10-14)*
 ----------------------------
 
