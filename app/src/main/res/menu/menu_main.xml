@@ -14,7 +14,7 @@
     <item
         android:id="@+id/filter"
         android:icon="@drawable/ic_filter"
-        android:title="@string/filter"
+        android:title="@string/filter_events_by_type"
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/refresh_caldav_calendars"
