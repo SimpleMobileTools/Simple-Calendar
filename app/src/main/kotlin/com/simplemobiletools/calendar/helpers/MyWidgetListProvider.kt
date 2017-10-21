@@ -25,7 +25,6 @@ class MyWidgetListProvider : AppWidgetProvider() {
 
     override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
         initVariables(context)
-        super.onUpdate(context, appWidgetManager, appWidgetIds)
     }
 
     private fun initVariables(context: Context) {
