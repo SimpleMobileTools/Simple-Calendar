@@ -224,6 +224,8 @@
     <string name="refreshing">Обновление…</string>
     <string name="refreshing_complete">Обновление завершено</string>
     <string name="editing_calendar_failed">Не удалось изменить календарь</string>
+    <string name="syncing">Syncing…</string>
+    <string name="synchronization_completed">Sync completed</string>
 
     <plurals name="by_minutes">
         <item quantity="one">%d минута</item>

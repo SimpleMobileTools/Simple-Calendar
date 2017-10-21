@@ -217,6 +217,8 @@
     <string name="refreshing">Obnovuji…</string>
     <string name="refreshing_complete">Obnovování dokončeno</string>
     <string name="editing_calendar_failed">Editování kalendáře se nezdařilo</string>
+    <string name="syncing">Syncing…</string>
+    <string name="synchronization_completed">Sync completed</string>
 
     <plurals name="by_minutes">
         <item quantity="one">%d minutu</item>

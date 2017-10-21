@@ -142,6 +142,7 @@ class SettingsActivity : SimpleActivity() {
             settings_manage_synced_calendars_holder.beVisibleIf(newCalendarIds.isNotEmpty())
             settings_caldav_sync.isChecked = newCalendarIds.isNotEmpty()
             config.caldavSync = newCalendarIds.isNotEmpty()
+            toast(R.string.syncing)
 
             Thread({
                 if (newCalendarIds.isNotEmpty()) {
@@ -165,6 +166,7 @@ class SettingsActivity : SimpleActivity() {
                     }
                 }
                 dbHelper.deleteEventTypesWithCalendarId(TextUtils.join(",", removedCalendarIds))
+                toast(R.string.synchronization_completed)
             }).start()
         }
     }

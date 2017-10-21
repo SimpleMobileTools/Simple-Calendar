@@ -210,6 +210,8 @@
     <string name="refreshing">새로고침 중…</string>
     <string name="refreshing_complete">새로고침 완료</string>
     <string name="editing_calendar_failed">Editing calendar failed</string>
+    <string name="syncing">Syncing…</string>
+    <string name="synchronization_completed">Sync completed</string>
 
     <plurals name="by_minutes">
         <item quantity="one">%d 분</item>

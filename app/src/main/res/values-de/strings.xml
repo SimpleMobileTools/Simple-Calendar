@@ -210,6 +210,8 @@
     <string name="refreshing">Aktualisiere…</string>
     <string name="refreshing_complete">Aktualisierung abgeschlossen</string>
     <string name="editing_calendar_failed">Ändern des Kalenders fehlgeschlagen</string>
+    <string name="syncing">Syncing…</string>
+    <string name="synchronization_completed">Sync completed</string>
 
     <plurals name="by_minutes">
         <item quantity="one">%d minute</item>

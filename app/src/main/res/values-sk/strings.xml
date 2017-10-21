@@ -217,6 +217,8 @@
     <string name="refreshing">Obnovuje sa…</string>
     <string name="refreshing_complete">Obnovovanie ukončené</string>
     <string name="editing_calendar_failed">Úprava kalendára zlyhala</string>
+    <string name="syncing">Synchronizujem…</string>
+    <string name="synchronization_completed">Synchronizácia ukončená</string>
 
     <plurals name="by_minutes">
         <item quantity="one">%d minútu</item>

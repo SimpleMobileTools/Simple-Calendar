@@ -215,6 +215,8 @@
     <string name="refreshing">Refreshing…</string>
     <string name="refreshing_complete">Refreshing complete</string>
     <string name="editing_calendar_failed">Editing calendar failed</string>
+    <string name="syncing">Syncing…</string>
+    <string name="synchronization_completed">Sync completed</string>
 
     <plurals name="by_minutes">
         <item quantity="one">%d minutę</item>
