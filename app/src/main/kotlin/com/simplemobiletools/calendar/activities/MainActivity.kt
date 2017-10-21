@@ -356,8 +356,12 @@ class MainActivity : SimpleActivity(), NavigationListener {
         }
 
         runOnUiThread {
-            toast(if (birthdaysAdded > 0) R.string.birthdays_added else R.string.no_birthdays)
-            updateViewPager()
+            if (birthdaysAdded > 0) {
+                toast(R.string.birthdays_added)
+                updateViewPager()
+            } else {
+                toast(R.string.no_birthdays)
+            }
         }
     }
 
