@@ -289,11 +289,11 @@
 
         Obsahuje přizpůsobitelný widget 4x4, kde můžete měnit barvu textu, stejně jako alfu a barvu pozadí.
 
-         Neobsahuje žádné reklamy ani zbytečná oprávnění. Je plně opensource, umožňuje měnit barvy.
+        Neobsahuje žádné reklamy ani zbytečná oprávnění. Je plně opensource, umožňuje měnit barvy.
 
         Povolení úložiště je potřeba pouze pro export nebo import událostí ze souborů .ics.
 
-        Povolení k Internetu a kontaktům jsou nutná pouze pro synchronizaci Google.
+        Contacts permission is used only at importing contact birthdays.
 
         Tato aplikace je součástí větší sady aplikací. Tyto a další aplikace najdete na http://www.simplemobiletools.com
     </string>

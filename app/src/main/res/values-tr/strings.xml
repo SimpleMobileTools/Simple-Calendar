@@ -284,7 +284,7 @@
 
         Depolama izni yalnızca .ics dosyalarından olayları içe aktarmak için gereklidir.
 
-        Internet and Contacts permissions are used only at Google sync.
+        Contacts permission is used only at importing contact birthdays.
 
         Bu uygulama, daha büyük bir uygulama serisinden sadece bir parça. Geri kalanını şu adresten bulabilirsiniz: http://www.simplemobiletools.com
     </string>

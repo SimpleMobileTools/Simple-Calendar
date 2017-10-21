@@ -289,9 +289,9 @@
 
         Nie zawiera żadnych żadnych reklam, nie potrzebuje masy uprawnień. Jest w pełni otwartoźródłowy. Kolory w aplikacji można dowolnie modyfikować.
 
-        Uprawnienie "Pamięć" potrzebne jest tylko w celu eksportowania i importowania wydarzeń z plików .ics.
+        The Storage permission is needed only for exporting or importing events from .ics files.
 
-        Uprawnienia "Internet" i "Kontakty" potrzebne są tylko w celach synchronizacji z Dyskiem Google.
+        Contacts permission is used only at importing contact birthdays.
 
         Niniejsza aplikacja jest tylko częścią naszej kolekcji prostych narzędzi. Ta, jak i pozostałe, dostępne są na stronie http://www.simplemobiletools.com
     </string>

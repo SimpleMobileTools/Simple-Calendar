@@ -282,9 +282,9 @@
 
         कोई भी विज्ञापन व अनावश्यक अनुमतियों की आवश्यकता नहीं। यह पूर्ण रूप से ओपन सोर्स हैं, और काली थीम हैं।
 
-        The Storage permission is needed only for importing events from .ics files.
+        The Storage permission is needed only for exporting or importing events from .ics files.
 
-        Internet and Contacts permissions are used only at Google sync.
+        Contacts permission is used only at importing contact birthdays.
 
         This app is just one piece of a bigger series of apps. You can find the rest of them at http://www.simplemobiletools.com
     </string>

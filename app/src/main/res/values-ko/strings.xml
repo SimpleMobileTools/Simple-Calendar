@@ -284,7 +284,7 @@
 
         저장 권한은 .ics 파일에서 이벤트를 가져오는 경우에만 필요합니다.
 
-        인터넷, 주소록 권한은 Google 동기화에서만 사용됩니다.
+        Contacts permission is used only at importing contact birthdays.
 
         이 앱은 더 큰 시리즈의 앱들 중 하나입니다. 나머지는 http://www.simplemobiletools.com 에서 찾을 수 있습니다.
     </string>

@@ -282,9 +282,9 @@
 
         広告や不要なアクセス許可は含まれていません。 完全にオープンソースで、ダークテーマも提供しています。
 
-        The Storage permission is needed only for importing events from .ics files.
+        The Storage permission is needed only for exporting or importing events from .ics files.
 
-        Internet and Contacts permissions are used only at Google sync.
+        Contacts permission is used only at importing contact birthdays.
 
         このアプリは、大きな一連のアプリの一つです。 他のアプリは http://www.simplemobiletools.com で見つけることができます
     </string>

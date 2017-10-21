@@ -282,9 +282,9 @@
 
         Nincsenek reklámok, és nem igényel szükségtelen engedélyeket. A forráskódja teljesen nyílt, és sötét téma is beállítható.
 
-        The Storage permission is needed only for importing events from .ics files.
+        The Storage permission is needed only for exporting or importing events from .ics files.
 
-        Internet and Contacts permissions are used only at Google sync.
+        Contacts permission is used only at importing contact birthdays.
 
         Ez az alkalmazás egy nagyobb alkalmazás-sorozat része. A továbbiak itt találhatók: http://www.simplemobiletools.com
     </string>

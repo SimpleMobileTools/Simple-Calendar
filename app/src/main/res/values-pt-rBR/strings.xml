@@ -284,7 +284,7 @@
 
         A permissão de armazenamento é necessária apenas para importar eventos dos arquivos .ics.
 
-        Internet and Contacts permissions are used only at Google sync.
+        Contacts permission is used only at importing contact birthdays.
 
         Este aplicativo é apenas parte de um conjunto mais vasto de aplicações. Saiba mais em http://www.simplemobiletools.com
     </string>

@@ -300,7 +300,7 @@
 
         Разрешение для доступа к памяти требуется только для экспорта или импорта событий из файлов .ics.
 
-        Internet and Contacts permissions are used only at Google sync.
+        Contacts permission is used only at importing contact birthdays.
 
         Это приложение является лишь частью более крупной серии приложений. Вы можете найти остальные на http://www.simplemobiletools.com
     </string>

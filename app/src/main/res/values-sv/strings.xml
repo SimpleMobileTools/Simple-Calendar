@@ -284,7 +284,7 @@
 
         Lagringsbehörigheten behövs bara för att importera händelser från .ics-filer.
 
-        Internet and Contacts permissions are used only at Google sync.
+        Contacts permission is used only at importing contact birthdays.
 
         Detta är bara en app i en serie av appar. Du hittar resten av dem här http://www.simplemobiletools.com
     </string>
