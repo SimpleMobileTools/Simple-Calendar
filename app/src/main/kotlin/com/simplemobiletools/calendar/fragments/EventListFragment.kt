@@ -70,7 +70,8 @@ class EventListFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEvents
         prevEventsHash = hash
         mEvents = filtered
         val listItems = ArrayList<ListItem>(mEvents.size)
-        val sorted = mEvents.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { it.description }))
+        val replaceDescription = context.config.replaceDescription
+        val sorted = mEvents.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { if (replaceDescription) it.location else it.description }))
         val sublist = sorted.subList(0, Math.min(sorted.size, 100))
         var prevCode = ""
         sublist.forEach {
@@ -80,7 +81,7 @@ class EventListFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEvents
                 listItems.add(ListSection(day))
                 prevCode = code
             }
-            listItems.add(ListEvent(it.id, it.startTS, it.endTS, it.title, it.description, it.getIsAllDay(), it.color))
+            listItems.add(ListEvent(it.id, it.startTS, it.endTS, it.title, it.description, it.getIsAllDay(), it.color, it.location))
         }
 
         val eventsAdapter = EventListAdapter(activity as SimpleActivity, listItems, this) {

@@ -174,7 +174,8 @@ fun Context.notifyEvent(event: Event) {
     val startTime = Formatter.getTimeFromTS(this, event.startTS)
     val endTime = Formatter.getTimeFromTS(this, event.endTS)
     val timeRange = if (event.getIsAllDay()) getString(R.string.all_day) else getFormattedEventTime(startTime, endTime)
-    val notification = getNotification(this, pendingIntent, event, "$timeRange ${event.description}")
+    val descriptionOrLocation = if (config.replaceDescription) event.location else event.description
+    val notification = getNotification(this, pendingIntent, event, "$timeRange $descriptionOrLocation")
     val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
     notificationManager.notify(event.id, notification)
 }

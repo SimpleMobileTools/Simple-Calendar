@@ -1,6 +1,5 @@
 package com.simplemobiletools.calendar.adapters
 
-import android.graphics.Color
 import android.graphics.PorterDuff
 import android.support.v7.view.ActionMode
 import android.support.v7.widget.RecyclerView
@@ -31,22 +30,26 @@ class DayEventsAdapter(val activity: SimpleActivity, val mItems: List<Event>, va
         val markedItems = HashSet<Int>()
         var textColor = 0
         var allDayString = ""
+        var replaceDescriptionWithLocation = false
 
         fun toggleItemSelection(itemView: View, select: Boolean, pos: Int = -1) {
             itemView.event_item_frame.isSelected = select
-            if (pos == -1)
+            if (pos == -1) {
                 return
+            }
 
-            if (select)
+            if (select) {
                 markedItems.add(pos)
-            else
+            } else {
                 markedItems.remove(pos)
+            }
         }
     }
 
     init {
         textColor = activity.config.textColor
         allDayString = activity.resources.getString(R.string.all_day)
+        replaceDescriptionWithLocation = activity.config.replaceDescription
     }
 
     private val multiSelectorMode = object : ModalMultiSelectorCallback(multiSelector) {
@@ -119,7 +122,7 @@ class DayEventsAdapter(val activity: SimpleActivity, val mItems: List<Event>, va
         fun bindView(multiSelectorCallback: ModalMultiSelectorCallback, multiSelector: MultiSelector, event: Event, pos: Int): View {
             itemView.apply {
                 event_item_title.text = event.title
-                event_item_description.text = event.description
+                event_item_description.text = if (replaceDescriptionWithLocation) event.location else event.description
                 event_item_start.text = if (event.getIsAllDay()) allDayString else Formatter.getTimeFromTS(context, event.startTS)
                 event_item_end.beInvisibleIf(event.startTS == event.endTS)
                 event_item_color.setColorFilter(event.color, PorterDuff.Mode.SRC_IN)

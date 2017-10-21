@@ -244,7 +244,8 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         val minimalHeight = mRes.getDimension(R.dimen.weekly_view_minimal_event_height).toInt()
 
         var hadAllDayEvent = false
-        val sorted = filtered.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { it.description }))
+        val replaceDescription = context.config.replaceDescription
+        val sorted = filtered.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { if (replaceDescription) it.location else it.description }))
         for (event in sorted) {
             if (event.getIsAllDay() || Formatter.getDayCodeFromTS(event.startTS) != Formatter.getDayCodeFromTS(event.endTS)) {
                 hadAllDayEvent = true

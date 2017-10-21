@@ -28,7 +28,6 @@
     <string name="event_updated">Událost úspěšně změněna</string>
     <string name="filter">Filtrovat</string>
     <string name="filter_events_by_type">Filtrovat události podle typu</string>
-    <string name="location">Location</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Opakovaná událost</string>
@@ -153,6 +152,7 @@
 
     <!-- Event details -->
     <string name="title">Název</string>
+    <string name="location">Location</string>
     <string name="description">Popis</string>
     <string name="all_day">Celý den</string>
 
@@ -199,6 +199,7 @@
     <string name="display_past_events">Zobrazit minulé události</string>
     <string name="snooze_delay">Odložit připomenutí pomocí funkce Snooze by</string>
     <string name="widgets">Widgety</string>
+    <string name="replace_description_with_location">Replace Description with Location at list view entries</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

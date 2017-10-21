@@ -47,6 +47,7 @@ val CALDAV_SYNCED_CALENDAR_IDS = "caldav_synced_calendar_ids"
 val LAST_USED_CALDAV_CALENDAR = "last_used_caldav_calendar"
 val SNOOZE_DELAY = "snooze_delay"
 val DISPLAY_PAST_EVENTS = "display_past_events"
+val REPLACE_DESCRIPTION = "replace_description"
 val GOOGLE_SYNC = "google_sync" // deprecated
 
 val letterIDs = intArrayOf(R.string.sunday_letter, R.string.monday_letter, R.string.tuesday_letter, R.string.wednesday_letter,

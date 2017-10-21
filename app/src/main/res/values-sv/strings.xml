@@ -28,7 +28,6 @@
     <string name="event_updated">Händelsen uppdaterad</string>
     <string name="filter">Filtrera</string>
     <string name="filter_events_by_type">Filtrera händelser efter typ</string>
-    <string name="location">Location</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Upprepning</string>
@@ -146,6 +145,7 @@
 
     <!-- Event details -->
     <string name="title">Titel</string>
+    <string name="location">Location</string>
     <string name="description">Beskrivning</string>
     <string name="all_day">Heldag</string>
 
@@ -192,6 +192,7 @@
     <string name="display_past_events">Visa tidigare händelser</string>
     <string name="snooze_delay">Skjut upp påminnelse med Snooza</string>
     <string name="widgets">Widgetar</string>
+    <string name="replace_description_with_location">Replace Description with Location at list view entries</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

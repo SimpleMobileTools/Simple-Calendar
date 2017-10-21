@@ -28,7 +28,6 @@
     <string name="event_updated">イベントを正常に更新しました</string>
     <string name="filter">Filter</string>
     <string name="filter_events_by_type">Filter events by type</string>
-    <string name="location">Location</string>
 
     <!-- Event Repetition -->
     <string name="repetition">繰り返し</string>
@@ -146,6 +145,7 @@
 
     <!-- Event details -->
     <string name="title">タイトル</string>
+    <string name="location">Location</string>
     <string name="description">説明</string>
     <string name="all_day">All-day</string>
 
@@ -192,6 +192,7 @@
     <string name="display_past_events">Display events from the past</string>
     <string name="snooze_delay">Postpone reminder with Snooze by</string>
     <string name="widgets">Widgets</string>
+    <string name="replace_description_with_location">Replace Description with Location at list view entries</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

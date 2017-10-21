@@ -42,6 +42,7 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
         var redTextColor = 0
         var todayDate = ""
         var allDayString = ""
+        var replaceDescriptionWithLocation = false
 
         fun toggleItemSelection(itemView: View, select: Boolean, pos: Int = -1) {
             itemView.event_item_frame.isSelected = select
@@ -56,17 +57,20 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
     }
 
     init {
-        val res = activity.resources
-        allDayString = res.getString(R.string.all_day)
-        topDivider = res.getDrawable(R.drawable.divider_width)
+        activity.resources.apply {
+            allDayString = getString(R.string.all_day)
+            topDivider = getDrawable(R.drawable.divider_width)
+            redTextColor = getColor(R.color.red_text)
+        }
+
         textColor = activity.config.textColor
-        redTextColor = res.getColor(R.color.red_text)
         primaryColor = activity.config.primaryColor
         val mTodayCode = Formatter.getDayCodeFromTS(mNow)
         todayDate = Formatter.getDayTitle(activity, mTodayCode)
+        replaceDescriptionWithLocation = activity.config.replaceDescription
     }
 
-    val multiSelectorMode = object : ModalMultiSelectorCallback(multiSelector) {
+    private val multiSelectorMode = object : ModalMultiSelectorCallback(multiSelector) {
         override fun onActionItemClicked(mode: ActionMode, item: MenuItem): Boolean {
             when (item.itemId) {
                 R.id.cab_share -> shareEvents()
@@ -128,17 +132,19 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
         val layoutId = if (viewType == ITEM_EVENT) R.layout.event_list_item else R.layout.event_list_section
         val view = LayoutInflater.from(parent?.context).inflate(layoutId, parent, false)
 
-        return if (viewType == ITEM_EVENT)
+        return if (viewType == ITEM_EVENT) {
             EventListAdapter.ViewHolder(activity, view, itemClick)
-        else
+        } else {
             EventListAdapter.SectionHolder(view)
+        }
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (holder.itemViewType == ITEM_EVENT)
+        if (holder.itemViewType == ITEM_EVENT) {
             views.add((holder as ViewHolder).bindView(multiSelectorMode, multiSelector, mItems[position], position))
-        else
+        } else {
             (holder as SectionHolder).bindView(mItems[position])
+        }
     }
 
     override fun getItemCount() = mItems.size
@@ -148,7 +154,7 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
             val item = listItem as ListEvent
             itemView.apply {
                 event_item_title.text = item.title
-                event_item_description.text = item.description
+                event_item_description.text = if (replaceDescriptionWithLocation) item.location else item.description
                 event_item_start.text = if (item.isAllDay) allDayString else Formatter.getTimeFromTS(context, item.startTS)
                 event_item_end.beInvisibleIf(item.startTS == item.endTS)
                 event_item_color.setColorFilter(item.color, PorterDuff.Mode.SRC_IN)

@@ -28,7 +28,6 @@
     <string name="event_updated">Событие успешно обновлено</string>
     <string name="filter">Фильтрация</string>
     <string name="filter_events_by_type">Фильтровать события по типу</string>
-    <string name="location">Location</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Повторять</string>
@@ -160,6 +159,7 @@
 
     <!-- Event details -->
     <string name="title">Заголовок</string>
+    <string name="location">Location</string>
     <string name="description">Описание</string>
     <string name="all_day">Весь день</string>
 
@@ -206,6 +206,7 @@
     <string name="display_past_events">Показывать прошедшие события</string>
     <string name="snooze_delay">Postpone reminder with Snooze by</string>
     <string name="widgets">Виджеты</string>
+    <string name="replace_description_with_location">Replace Description with Location at list view entries</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

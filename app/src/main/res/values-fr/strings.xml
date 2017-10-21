@@ -28,7 +28,6 @@
     <string name="event_updated">Evénement ajouté avec succès</string>
     <string name="filter">Filtrer</string>
     <string name="filter_events_by_type">Filtrer les evénements par type</string>
-    <string name="location">Location</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Répétition</string>
@@ -146,6 +145,7 @@
 
     <!-- Event details -->
     <string name="title">Titre</string>
+    <string name="location">Location</string>
     <string name="description">Description</string>
     <string name="all_day">Journée</string>
 
@@ -192,6 +192,7 @@
     <string name="display_past_events">Afficher les evénements du passé</string>
     <string name="snooze_delay">Reporter le rappel avec Snooze de</string>
     <string name="widgets">Widgets</string>
+    <string name="replace_description_with_location">Replace Description with Location at list view entries</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

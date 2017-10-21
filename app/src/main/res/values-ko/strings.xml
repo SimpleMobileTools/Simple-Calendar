@@ -28,7 +28,6 @@
     <string name="event_updated">이벤트를 수정했습니다</string>
     <string name="filter">필터</string>
     <string name="filter_events_by_type">유형별 이벤트</string>
-    <string name="location">Location</string>
 
     <!-- Event Repetition -->
     <string name="repetition">반복</string>
@@ -146,6 +145,7 @@
 
     <!-- Event details -->
     <string name="title">제목</string>
+    <string name="location">Location</string>
     <string name="description">설명</string>
     <string name="all_day">하루 종일</string>
 
@@ -192,6 +192,7 @@
     <string name="display_past_events">과거의 이벤트 표시</string>
     <string name="snooze_delay">스누즈 알림 시간</string>
     <string name="widgets">위젯</string>
+    <string name="replace_description_with_location">Replace Description with Location at list view entries</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

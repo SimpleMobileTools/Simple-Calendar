@@ -27,6 +27,7 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
     private val allDayString = context.resources.getString(R.string.all_day)
     private var events = ArrayList<ListItem>()
     private val textColor = context.config.widgetTextColor
+    private val replaceDescription = context.config.replaceDescription
     private var mediumFontSize = context.config.getFontSize()
     private var todayDate = ""
 
@@ -38,7 +39,7 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
             val item = events[position] as ListEvent
             remoteView = RemoteViews(context.packageName, R.layout.event_list_item_widget).apply {
                 setTextViewText(R.id.event_item_title, item.title)
-                setTextViewText(R.id.event_item_description, item.description)
+                setTextViewText(R.id.event_item_description, if (replaceDescription) item.location else item.description)
                 setTextViewText(R.id.event_item_start, if (item.isAllDay) allDayString else Formatter.getTimeFromTS(context, item.startTS))
                 setImageViewBitmap(R.id.event_item_color, context.resources.getColoredIcon(item.color, R.drawable.monthly_event_dot))
 
@@ -110,7 +111,8 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
         val toTS = DateTime().plusYears(1).seconds()
         context.dbHelper.getEventsInBackground(fromTS, toTS) {
             val listItems = ArrayList<ListItem>(it.size)
-            val sorted = it.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { it.description }))
+            val replaceDescription = context.config.replaceDescription
+            val sorted = it.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { if (replaceDescription) it.location else it.description }))
             val sublist = sorted.subList(0, Math.min(sorted.size, 100))
             var prevCode = ""
             sublist.forEach {
@@ -121,7 +123,7 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
                         listItems.add(ListSection(day))
                     prevCode = code
                 }
-                listItems.add(ListEvent(it.id, it.startTS, it.endTS, it.title, it.description, it.getIsAllDay(), it.color))
+                listItems.add(ListEvent(it.id, it.startTS, it.endTS, it.title, it.description, it.getIsAllDay(), it.color, it.location))
             }
 
             this@EventListWidgetAdapter.events = listItems
@@ -132,6 +134,5 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
 
     override fun getCount() = events.size
 
-    override fun onDestroy() {
-    }
+    override fun onDestroy() {}
 }

@@ -49,6 +49,7 @@ class SettingsActivity : SimpleActivity() {
         setupManageEventTypes()
         setupHourFormat()
         setupSundayFirst()
+        setupReplaceDescription()
         setupWeekNumbers()
         setupWeeklyStart()
         setupWeeklyEnd()
@@ -173,6 +174,14 @@ class SettingsActivity : SimpleActivity() {
         settings_sunday_first_holder.setOnClickListener {
             settings_sunday_first.toggle()
             config.isSundayFirst = settings_sunday_first.isChecked
+        }
+    }
+
+    private fun setupReplaceDescription() {
+        settings_replace_description.isChecked = config.replaceDescription
+        settings_replace_description_holder.setOnClickListener {
+            settings_replace_description.toggle()
+            config.replaceDescription = settings_replace_description.isChecked
         }
     }
 

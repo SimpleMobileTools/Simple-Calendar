@@ -30,13 +30,15 @@ class EventTypeAdapter(val activity: SimpleActivity, val mItems: List<EventType>
 
         fun toggleItemSelection(itemView: View, select: Boolean, pos: Int = -1) {
             itemView.event_item_frame.isSelected = select
-            if (pos == -1)
+            if (pos == -1) {
                 return
+            }
 
-            if (select)
+            if (select) {
                 markedItems.add(pos)
-            else
+            } else {
                 markedItems.remove(pos)
+            }
         }
     }
 
