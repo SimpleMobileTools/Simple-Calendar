@@ -25,6 +25,7 @@ class YearFragment : Fragment(), YearlyCalendar {
     private var mListener: NavigationListener? = null
     private var mYear = 0
     private var mSundayFirst = false
+    private var lastHash = 0
 
     lateinit var mView: View
     lateinit var mCalendar: YearlyCalendarImpl
@@ -90,10 +91,14 @@ class YearFragment : Fragment(), YearlyCalendar {
         mListener = listener
     }
 
-    override fun updateYearlyCalendar(events: SparseArray<ArrayList<DayYearly>>) {
+    override fun updateYearlyCalendar(events: SparseArray<ArrayList<DayYearly>>, hashCode: Int) {
         if (!isAdded)
             return
 
+        if (hashCode == lastHash) {
+            return
+        }
+        lastHash = hashCode
         val res = resources
         for (i in 1..12) {
             val monthView = mView.findViewById(res.getIdentifier("month_$i", "id", context.packageName)) as SmallMonthView

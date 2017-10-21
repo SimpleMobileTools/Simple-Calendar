@@ -32,6 +32,7 @@ import java.util.*
 class EventListFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEventsListener {
     private var mEvents: List<Event> = ArrayList()
     private var prevEventsHash = 0
+    private var lastHash = 0
     lateinit var mView: View
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -61,6 +62,12 @@ class EventListFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEvents
     private fun receivedEvents(events: MutableList<Event>) {
         if (context == null || activity == null)
             return
+
+        val newHash = events.hashCode()
+        if (newHash == lastHash) {
+            return
+        }
+        lastHash = newHash
 
         val filtered = context.getFilteredEvents(events)
         val hash = filtered.hashCode()

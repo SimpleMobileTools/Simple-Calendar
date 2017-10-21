@@ -40,6 +40,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private var maxScrollY = -1
     private var mWasDestroyed = false
     private var primaryColor = 0
+    private var lastHash = 0
     private var isFragmentVisible = false
     private var wasFragmentInit = false
     private var wasExtraHeightAdded = false
@@ -214,6 +215,11 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     }
 
     override fun updateWeeklyCalendar(events: ArrayList<Event>) {
+        val newHash = events.hashCode()
+        if (newHash == lastHash) {
+            return
+        }
+        lastHash = newHash
         this.events = events
         updateEvents()
     }

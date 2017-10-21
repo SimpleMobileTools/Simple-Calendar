@@ -180,7 +180,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
     }
 
     private val monthlyCalendar = object : MonthlyCalendar {
-        override fun updateMonthlyCalendar(context: Context, month: String, days: List<DayMonthly>) {
+        override fun updateMonthlyCalendar(context: Context, month: String, days: List<DayMonthly>, checkedEvents: Boolean) {
             val appWidgetManager = AppWidgetManager.getInstance(context)
             appWidgetManager.getAppWidgetIds(getComponentName(context)).forEach {
                 val views = RemoteViews(context.packageName, R.layout.fragment_month_widget)

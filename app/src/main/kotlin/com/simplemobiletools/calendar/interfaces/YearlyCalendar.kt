@@ -5,5 +5,5 @@ import com.simplemobiletools.calendar.models.DayYearly
 import java.util.*
 
 interface YearlyCalendar {
-    fun updateYearlyCalendar(events: SparseArray<ArrayList<DayYearly>>)
+    fun updateYearlyCalendar(events: SparseArray<ArrayList<DayYearly>>, hashCode: Int)
 }

@@ -188,7 +188,7 @@ class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
         }
     }
 
-    override fun updateMonthlyCalendar(context: Context, month: String, days: List<DayMonthly>) {
+    override fun updateMonthlyCalendar(context: Context, month: String, days: List<DayMonthly>, checkedEvents: Boolean) {
         runOnUiThread {
             mDays = days
             top_value.text = month

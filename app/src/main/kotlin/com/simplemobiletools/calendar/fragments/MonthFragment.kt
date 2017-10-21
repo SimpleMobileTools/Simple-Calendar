@@ -39,6 +39,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
     private var mDayCode = ""
     private var mPackageName = ""
     private var dayLabelHeight = 0
+    private var lastHash = 0L
 
     var listener: NavigationListener? = null
 
@@ -83,7 +84,13 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         mCalendar.updateMonthlyCalendar(Formatter.getDateTimeFromCode(mDayCode))
     }
 
-    override fun updateMonthlyCalendar(context: Context, month: String, days: List<DayMonthly>) {
+    override fun updateMonthlyCalendar(context: Context, month: String, days: List<DayMonthly>, checkedEvents: Boolean) {
+        val newHash = month.hashCode() + days.hashCode().toLong()
+        if ((lastHash != 0L && !checkedEvents) || lastHash == newHash) {
+            return
+        }
+        lastHash = newHash
+
         activity?.runOnUiThread {
             mHolder.top_value.apply {
                 text = month

@@ -41,7 +41,7 @@ class YearlyCalendarImpl(val callback: YearlyCalendar, val context: Context, val
                 }
             }
         }
-        callback.updateYearlyCalendar(arr)
+        callback.updateYearlyCalendar(arr, events.hashCode())
     }
 
     private fun markDay(arr: SparseArray<ArrayList<DayYearly>>, dateTime: DateTime, event: Event) {

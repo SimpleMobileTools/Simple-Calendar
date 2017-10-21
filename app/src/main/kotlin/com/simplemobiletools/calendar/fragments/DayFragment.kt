@@ -36,6 +36,7 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEventsListen
     private var mTextColor = 0
     private var mDayCode = ""
     private var mListener: NavigationListener? = null
+    private var lastHash = 0
 
     lateinit var mRes: Resources
     lateinit var mHolder: RelativeLayout
@@ -118,6 +119,12 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEventsListen
     }
 
     private fun receivedEvents(events: List<Event>) {
+        val newHash = events.hashCode()
+        if (newHash == lastHash) {
+            return
+        }
+        lastHash = newHash
+
         val replaceDescription = context.config.replaceDescription
         val sorted = ArrayList<Event>(events.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, {
             if (replaceDescription) it.location else it.description
