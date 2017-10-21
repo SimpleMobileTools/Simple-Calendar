@@ -307,6 +307,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
             eventTypeId = dbHelper.insertEventType(eventType)
         }
 
+        val birthdayImportIDs = dbHelper.getBirthdays().map { it.importId }
         var birthdaysAdded = 0
         val uri = ContactsContract.Data.CONTENT_URI
         val projection = arrayOf(ContactsContract.Contacts.DISPLAY_NAME,
@@ -330,10 +331,11 @@ class MainActivity : SimpleActivity(), NavigationListener {
                     val event = Event(0, timestamp, timestamp, name, importId = contactId, flags = FLAG_ALL_DAY, repeatInterval = YEAR,
                             eventType = eventTypeId, source = SOURCE_CONTACT_BIRTHDAY, lastUpdated = lastUpdated)
 
-                    dbHelper.insert(event, false) {
-                        birthdaysAdded++
+                    if (!birthdayImportIDs.contains(contactId)) {
+                        dbHelper.insert(event, false) {
+                            birthdaysAdded++
+                        }
                     }
-
                 } while (cursor.moveToNext())
             }
         } catch (e: Exception) {
@@ -344,6 +346,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
 
         runOnUiThread {
             toast(if (birthdaysAdded > 0) R.string.birthdays_added else R.string.no_birthdays)
+            updateViewPager()
         }
     }
 

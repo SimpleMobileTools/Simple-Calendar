@@ -394,6 +394,13 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         return null
     }
 
+    fun getBirthdays(): List<Event> {
+        val selection = "$MAIN_TABLE_NAME.$COL_EVENT_SOURCE = ?"
+        val selectionArgs = arrayOf(SOURCE_CONTACT_BIRTHDAY)
+        val cursor = getEventsCursor(selection, selectionArgs)
+        return fillEvents(cursor)
+    }
+
     fun deleteEvents(ids: Array<String>, deleteFromCalDAV: Boolean) {
         val args = TextUtils.join(", ", ids)
         val selection = "$MAIN_TABLE_NAME.$COL_ID IN ($args)"
@@ -547,10 +554,11 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         val selectionArgs = arrayOf(id.toString())
         val cursor = getEventsCursor(selection, selectionArgs)
         val events = fillEvents(cursor)
-        return if (!events.isEmpty())
+        return if (events.isNotEmpty()) {
             events[0]
-        else
+        } else {
             null
+        }
     }
 
     fun getEvents(fromTS: Int, toTS: Int, eventId: Int = -1, callback: (events: MutableList<Event>) -> Unit) {
