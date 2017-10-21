@@ -33,7 +33,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private val CLICK_DURATION_THRESHOLD = 150
     private val PLUS_FADEOUT_DELAY = 5000L
 
-    private var mListener: WeekScrollListener? = null
+    var mListener: WeekScrollListener? = null
     private var mWeekTimestamp = 0
     private var mRowHeight = 0
     private var minScrollY = -1
@@ -423,10 +423,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     }
 
     private fun getColumnWithId(id: Int) = mView.findViewById(mRes.getIdentifier("week_column_$id", "id", context.packageName)) as ViewGroup
-
-    fun setListener(listener: WeekScrollListener) {
-        mListener = listener
-    }
 
     fun updateScrollY(y: Int) {
         if (wasFragmentInit)

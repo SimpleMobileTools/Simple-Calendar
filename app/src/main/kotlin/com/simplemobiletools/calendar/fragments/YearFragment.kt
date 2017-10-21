@@ -22,7 +22,7 @@ import org.joda.time.DateTime
 import java.util.*
 
 class YearFragment : Fragment(), YearlyCalendar {
-    private var mListener: NavigationListener? = null
+    var mListener: NavigationListener? = null
     private var mYear = 0
     private var mSundayFirst = false
     private var lastHash = 0
@@ -85,10 +85,6 @@ class YearFragment : Fragment(), YearlyCalendar {
             val monthView = mView.findViewById(res.getIdentifier("month_${now.monthOfYear}", "id", activity.packageName)) as SmallMonthView
             monthView.todaysId = now.dayOfMonth
         }
-    }
-
-    fun setListener(listener: NavigationListener) {
-        mListener = listener
     }
 
     override fun updateYearlyCalendar(events: SparseArray<ArrayList<DayYearly>>, hashCode: Int) {

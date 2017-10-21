@@ -22,7 +22,7 @@ class MyDayPagerAdapter(fm: FragmentManager, private val mCodes: List<String>, p
 
         val fragment = DayFragment()
         fragment.arguments = bundle
-        fragment.setListener(mListener)
+        fragment.mListener = mListener
 
         mFragments.put(position, fragment)
         return fragment

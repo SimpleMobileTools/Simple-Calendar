@@ -33,9 +33,9 @@ import org.joda.time.DateTime
 import java.util.*
 
 class DayFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEventsListener {
+    var mListener: NavigationListener? = null
     private var mTextColor = 0
     private var mDayCode = ""
-    private var mListener: NavigationListener? = null
     private var lastHash = 0
 
     lateinit var mRes: Resources
@@ -80,10 +80,6 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEventsListen
                 mListener?.goRight()
             }
         }
-    }
-
-    fun setListener(listener: NavigationListener) {
-        mListener = listener
     }
 
     private fun pickDay() {
