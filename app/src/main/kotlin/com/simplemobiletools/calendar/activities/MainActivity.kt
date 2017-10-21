@@ -124,7 +124,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
     override fun onResume() {
         super.onResume()
         if (mStoredTextColor != config.textColor || mStoredBackgroundColor != config.backgroundColor || mStoredPrimaryColor != config.primaryColor
-                || mStoredDayCode != getCurrentDayCode()) {
+                || mStoredDayCode != Formatter.getTodayCode()) {
             updateViewPager()
         }
 
@@ -199,10 +199,8 @@ class MainActivity : SimpleActivity(), NavigationListener {
         mStoredTextColor = config.textColor
         mStoredPrimaryColor = config.primaryColor
         mStoredBackgroundColor = config.backgroundColor
-        mStoredDayCode = getCurrentDayCode()
+        mStoredDayCode = Formatter.getTodayCode()
     }
-
-    private fun getCurrentDayCode() = Formatter.getDayCodeFromTS((System.currentTimeMillis() / 1000).toInt())
 
     private fun showViewDialog() {
         val res = resources
@@ -304,6 +302,14 @@ class MainActivity : SimpleActivity(), NavigationListener {
         }
     }
 
+    private fun handleParseResult(result: IcsImporter.ImportResult) {
+        toast(when (result) {
+            IcsImporter.ImportResult.IMPORT_OK -> R.string.holidays_imported_successfully
+            IcsImporter.ImportResult.IMPORT_PARTIAL -> R.string.importing_some_holidays_failed
+            else -> R.string.importing_holidays_failed
+        }, Toast.LENGTH_LONG)
+    }
+
     private fun addBirthdays() {
         val birthdays = getString(R.string.birthdays)
         var eventTypeId = dbHelper.getEventTypeIdWithTitle(birthdays)
@@ -353,14 +359,6 @@ class MainActivity : SimpleActivity(), NavigationListener {
             toast(if (birthdaysAdded > 0) R.string.birthdays_added else R.string.no_birthdays)
             updateViewPager()
         }
-    }
-
-    private fun handleParseResult(result: IcsImporter.ImportResult) {
-        toast(when (result) {
-            IcsImporter.ImportResult.IMPORT_OK -> R.string.holidays_imported_successfully
-            IcsImporter.ImportResult.IMPORT_PARTIAL -> R.string.importing_some_holidays_failed
-            else -> R.string.importing_holidays_failed
-        }, Toast.LENGTH_LONG)
     }
 
     private fun updateView(view: Int) {

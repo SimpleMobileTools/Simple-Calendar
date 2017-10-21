@@ -54,6 +54,8 @@ object Formatter {
         return "$month $day $year"
     }
 
+    fun getTodayCode() = Formatter.getDayCodeFromTS((System.currentTimeMillis() / 1000).toInt())
+
     fun getHours(context: Context, dateTime: DateTime) = dateTime.toString(getHourPattern(context))
 
     fun getTime(context: Context, dateTime: DateTime) = dateTime.toString(getTimePattern(context))
