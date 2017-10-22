@@ -106,11 +106,11 @@
     </plurals>
 
     <!-- Birthdays -->
-    <string name="birthdays">Birthdays</string>
-    <string name="add_birthdays">Add contact birthdays</string>
-    <string name="no_contacts_permission">Cannot obtain birthdays without the Contacts permission</string>
-    <string name="no_birthdays">No birthdays have been found</string>
-    <string name="birthdays_added">Birthdays added successfully</string>
+    <string name="birthdays">Дни рождения</string>
+    <string name="add_birthdays">Добавить дни рождения контактов</string>
+    <string name="no_contacts_permission">Для получения дней рождения нужен доступ к контактам</string>
+    <string name="no_birthdays">Дни рождения не найдены</string>
+    <string name="birthdays_added">Дни рождения успешно добавлены</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Напоминание</string>
@@ -166,7 +166,7 @@
 
     <!-- Event details -->
     <string name="title">Заголовок</string>
-    <string name="location">Location</string>
+    <string name="location">Расположение</string>
     <string name="description">Описание</string>
     <string name="all_day">Весь день</string>
 
@@ -213,7 +213,7 @@
     <string name="display_past_events">Показывать прошедшие события</string>
     <string name="snooze_delay">Postpone reminder with Snooze by</string>
     <string name="widgets">Виджеты</string>
-    <string name="replace_description_with_location">Replace Description with Location at list view entries</string>
+    <string name="replace_description_with_location">Показывать расположение вместо описания в списке событий</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -224,8 +224,8 @@
     <string name="refreshing">Обновление…</string>
     <string name="refreshing_complete">Обновление завершено</string>
     <string name="editing_calendar_failed">Не удалось изменить календарь</string>
-    <string name="syncing">Syncing…</string>
-    <string name="synchronization_completed">Sync completed</string>
+    <string name="syncing">Синхронизация…</string>
+    <string name="synchronization_completed">Синхронизация завершена</string>
 
     <plurals name="by_minutes">
         <item quantity="one">%d минута</item>
