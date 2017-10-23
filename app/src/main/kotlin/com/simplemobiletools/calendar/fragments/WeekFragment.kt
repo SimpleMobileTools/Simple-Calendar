@@ -22,7 +22,9 @@ import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.interfaces.WeeklyCalendar
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.views.MyScrollView
+import com.simplemobiletools.commons.extensions.adjustAlpha
 import com.simplemobiletools.commons.extensions.beGone
+import com.simplemobiletools.commons.extensions.getContrastColor
 import kotlinx.android.synthetic.main.fragment_week.*
 import kotlinx.android.synthetic.main.fragment_week.view.*
 import org.joda.time.DateTime
@@ -266,7 +268,9 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 val duration = endDateTime.minuteOfDay - startMinutes
 
                 (inflater.inflate(R.layout.week_event_marker, null, false) as TextView).apply {
-                    background = ColorDrawable(MainActivity.eventTypeColors.get(event.eventType, primaryColor))
+                    val backgroundColor = MainActivity.eventTypeColors.get(event.eventType, primaryColor)
+                    background = ColorDrawable(backgroundColor)
+                    setTextColor(backgroundColor.getContrastColor().adjustAlpha(MEDIUM_ALPHA))
                     text = event.title
                     layout.addView(this)
                     y = startMinutes * minuteHeight
@@ -333,7 +337,9 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             if (activity == null)
                 return
 
-            background = ColorDrawable(MainActivity.eventTypeColors.get(event.eventType, primaryColor))
+            val backgroundColor = MainActivity.eventTypeColors.get(event.eventType, primaryColor)
+            background = ColorDrawable(backgroundColor)
+            setTextColor(backgroundColor.getContrastColor().adjustAlpha(MEDIUM_ALPHA))
             text = event.title
 
             val startDateTime = Formatter.getDateTimeFromTS(event.startTS)
