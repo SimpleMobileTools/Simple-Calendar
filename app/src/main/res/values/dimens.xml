@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="yearly_padding_side">10dp</dimen>
     <dimen name="yearly_padding_half">3dp</dimen>
