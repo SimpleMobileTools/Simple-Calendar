@@ -36,6 +36,7 @@ class SettingsActivity : SimpleActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
         res = resources
+        mStoredPrimaryColor = config.primaryColor
         setupCaldavSync()
     }
 
