@@ -11,7 +11,7 @@
     <string name="details">Подробности</string>
     <string name="go_to_today">Сегодня</string>
     <string name="no_app_for_ics">Не найдено приложение для просмотра файлов .ics</string>
-    <string name="snooze">Snooze</string>
+    <string name="snooze">Отложить</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Календарь на месяц</string>
@@ -166,7 +166,7 @@
 
     <!-- Event details -->
     <string name="title">Заголовок</string>
-    <string name="location">Расположение</string>
+    <string name="location">Место</string>
     <string name="description">Описание</string>
     <string name="all_day">Весь день</string>
 
@@ -182,9 +182,9 @@
     <string name="regular_event">Обычное событие</string>
     <string name="cannot_delete_default_type">Тип событий по умолчанию не может быть удалён</string>
     <string name="select_event_type">Выбрать тип события</string>
-    <string name="move_events_into_default">Move affected events into the default event type</string>
-    <string name="remove_affected_events">Permanently remove affected events</string>
-    <string name="unsync_caldav_calendar">To remove a CalDAV calendar you have to unsynchronize it</string>
+    <string name="move_events_into_default">Установить затронутым событиям тип по умолчанию</string>
+    <string name="remove_affected_events">Навсегда удалить затронутые события</string>
+    <string name="unsync_caldav_calendar">Чтобы удалить календарь CalDAV, нужно отключить синхронизацию с ним</string>
 
     <!-- Holidays -->
     <string name="holidays">Праздники</string>
@@ -211,9 +211,9 @@
     <string name="caldav_sync">Синхронизация по CalDAV</string>
     <string name="event_lists">Списки событий</string>
     <string name="display_past_events">Показывать прошедшие события</string>
-    <string name="snooze_delay">Postpone reminder with Snooze by</string>
+    <string name="snooze_delay">Отложить напоминание на</string>
     <string name="widgets">Виджеты</string>
-    <string name="replace_description_with_location">Показывать расположение вместо описания в списке событий</string>
+    <string name="replace_description_with_location">Показывать место вместо описания в списке событий</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -302,7 +302,7 @@
 
         Разрешение для доступа к памяти требуется только для экспорта или импорта событий из файлов .ics.
 
-        Contacts permission is used only at importing contact birthdays.
+        Разрешение на чтение контактов требуется только при импорте дней рождения.
 
         Это приложение является лишь частью более крупной серии приложений. Вы можете найти остальные на http://www.simplemobiletools.com
     </string>
