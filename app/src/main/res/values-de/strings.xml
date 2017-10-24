@@ -99,11 +99,11 @@
     </plurals>
 
     <!-- Birthdays -->
-    <string name="birthdays">Birthdays</string>
-    <string name="add_birthdays">Add contact birthdays</string>
-    <string name="no_contacts_permission">Cannot obtain birthdays without the Contacts permission</string>
-    <string name="no_birthdays">No birthdays have been found</string>
-    <string name="birthdays_added">Birthdays added successfully</string>
+    <string name="birthdays">Geburtstage</string>
+    <string name="add_birthdays">Kontaktgeburtstage hinzufügen</string>
+    <string name="no_contacts_permission">Ohne Kontakte Erlaubnis können die Geburtstage nicht geholt werden</string>
+    <string name="no_birthdays">Keine Geburtstage gefunden</string>
+    <string name="birthdays_added">Geburtstage erfolgreich hinzugefügt</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Erinnerung</string>
@@ -153,7 +153,7 @@
 
     <!-- Event details -->
     <string name="title">Titel</string>
-    <string name="location">Location</string>
+    <string name="location">Ort</string>
     <string name="description">Beschreibung</string>
     <string name="all_day">Ganztags</string>
 
@@ -200,7 +200,7 @@
     <string name="display_past_events">Vergangene Termine anzeigen</string>
     <string name="snooze_delay">Erinnerung mit Snooze verschieben um</string>
     <string name="widgets">Widgets</string>
-    <string name="replace_description_with_location">Replace Description with Location at list view entries</string>
+    <string name="replace_description_with_location">Ersetze Beschreibung mit Ort bei Listeneinträgen</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -211,7 +211,7 @@
     <string name="refreshing">Aktualisiere…</string>
     <string name="refreshing_complete">Aktualisierung abgeschlossen</string>
     <string name="editing_calendar_failed">Ändern des Kalenders fehlgeschlagen</string>
-    <string name="syncing">Syncing…</string>
+    <string name="syncing">Synchronisiere…</string>
     <string name="synchronization_completed">Sync completed</string>
 
     <plurals name="by_minutes">
