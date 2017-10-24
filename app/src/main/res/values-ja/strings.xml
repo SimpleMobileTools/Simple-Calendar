@@ -1,4 +1,5 @@
-﻿<resources>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
     <string name="app_name">シンプル カレンダー</string>
     <string name="app_launcher_name">カレンダー</string>
     <string name="change_view">ビューの変更</string>
