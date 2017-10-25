@@ -349,8 +349,12 @@ class MainActivity : SimpleActivity(), NavigationListener {
                     val contactId = cursor.getIntValue(ContactsContract.CommonDataKinds.Event.CONTACT_ID).toString()
                     val name = cursor.getStringValue(ContactsContract.Contacts.DISPLAY_NAME)
                     val birthDay = cursor.getStringValue(ContactsContract.CommonDataKinds.Event.START_DATE)
-                    val formatter = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-                    val timestamp = (formatter.parse(birthDay).time / 1000).toInt()
+                    val containsYear = birthDay.length > 7
+                    val pattern = if (containsYear) "yyyy-MM-dd" else "--MM-dd"
+                    val formatter = SimpleDateFormat(pattern, Locale.getDefault())
+                    var timestamp = (formatter.parse(birthDay).time / 1000).toInt()
+                    if (!containsYear)
+                        timestamp += 45 * YEAR  // set year to 2015
                     val lastUpdated = cursor.getLongValue(ContactsContract.CommonDataKinds.Event.CONTACT_LAST_UPDATED_TIMESTAMP)
                     val event = Event(0, timestamp, timestamp, name, importId = contactId, flags = FLAG_ALL_DAY, repeatInterval = YEAR,
                             eventType = eventTypeId, source = SOURCE_CONTACT_BIRTHDAY, lastUpdated = lastUpdated)
