@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 2.9.1 *(2017-10-25)*
+----------------------------
+
+ * Fix a glitch at automatically reseting regular event type color
+ * Use contrast color at weekly view for event labels
+ * Properly handle birthdays without a year specified
+
 Version 2.9.0 *(2017-10-21)*
 ----------------------------
 
