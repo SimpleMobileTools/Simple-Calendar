@@ -147,7 +147,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         if (oldVersion < 13) {
             try {
                 createExceptionsTable(db)
-            } catch (ignored: SQLiteException) {
+            } catch (ignored: Exception) {
                 db.execSQL("ALTER TABLE $EXCEPTIONS_TABLE_NAME ADD COLUMN $COL_CHILD_EVENT_ID INTEGER NOT NULL DEFAULT 0")
             }
         }
