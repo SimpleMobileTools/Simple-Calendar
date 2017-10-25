@@ -791,8 +791,8 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
 
         val events = ArrayList<Event>()
-        cursor.use { cursor ->
-            if (cursor != null && cursor.moveToFirst()) {
+        cursor?.use {
+            if (cursor.moveToFirst()) {
                 do {
                     val id = cursor.getIntValue(COL_ID)
                     val startTS = cursor.getIntValue(COL_START_TS)
