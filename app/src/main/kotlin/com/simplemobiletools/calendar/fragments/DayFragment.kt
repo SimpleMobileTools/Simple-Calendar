@@ -116,7 +116,7 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEventsListen
 
     private fun receivedEvents(events: List<Event>) {
         val newHash = events.hashCode()
-        if (newHash == lastHash) {
+        if (newHash == lastHash || !isAdded) {
             return
         }
         lastHash = newHash
