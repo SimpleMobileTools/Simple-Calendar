@@ -273,7 +273,7 @@ fun Context.addDayNumber(rawTextColor: Int, day: DayMonthly, linearLayout: Linea
 
         if (day.isToday) {
             val primaryColor = config.primaryColor
-            setTextColor(config.primaryColor.getContrastColor().adjustAlpha(MEDIUM_ALPHA))
+            setTextColor(config.primaryColor.getContrastColor())
             if (dayLabelHeight == 0) {
                 onGlobalLayout {
                     val height = this@apply.height
@@ -300,7 +300,7 @@ fun Context.addDayEvents(day: DayMonthly, linearLayout: LinearLayout, res: Resou
         val eventLayoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         eventLayoutParams.setMargins(dividerMargin, 0, dividerMargin, dividerMargin)
 
-        var textColor = it.color.getContrastColor().adjustAlpha(MEDIUM_ALPHA)
+        var textColor = it.color.getContrastColor()
         if (!day.isThisMonth) {
             backgroundDrawable.alpha = 64
             textColor = textColor.adjustAlpha(0.25f)

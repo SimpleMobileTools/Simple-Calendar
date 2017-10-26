@@ -147,7 +147,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
 
             day.dayEvents.forEach {
                 var backgroundColor = it.color
-                var eventTextColor = backgroundColor.getContrastColor().adjustAlpha(MEDIUM_ALPHA)
+                var eventTextColor = backgroundColor.getContrastColor()
 
                 if (!day.isThisMonth) {
                     eventTextColor = eventTextColor.adjustAlpha(0.25f)
