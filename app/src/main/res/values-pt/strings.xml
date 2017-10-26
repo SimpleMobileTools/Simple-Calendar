@@ -99,11 +99,11 @@
     </plurals>
 
     <!-- Birthdays -->
-    <string name="birthdays">Birthdays</string>
-    <string name="add_birthdays">Add contact birthdays</string>
-    <string name="no_contacts_permission">Cannot obtain birthdays without the Contacts permission</string>
-    <string name="no_birthdays">No birthdays have been found</string>
-    <string name="birthdays_added">Birthdays added successfully</string>
+    <string name="birthdays">Aniversários</string>
+    <string name="add_birthdays">Adicionar aniverário dos contactos</string>
+    <string name="no_contacts_permission">Não consegue obter os aniversários sem dar permissão para aceder aos contactos</string>
+    <string name="no_birthdays">Não foram encontrados aniversários</string>
+    <string name="birthdays_added">Aniversários adicionados com sucesso</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Lembrete</string>
@@ -200,7 +200,7 @@
     <string name="display_past_events">Mostrar eventos passados</string>
     <string name="snooze_delay">Adiar lembrete com a opção Snooze</string>
     <string name="widgets">Widgets</string>
-    <string name="replace_description_with_location">Replace Description with Location at list view entries</string>
+    <string name="replace_description_with_location">Substituir descrição e localização nas entradas da vista de lista</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -211,8 +211,8 @@
     <string name="refreshing">A atualizar…</string>
     <string name="refreshing_complete">Atualização terminada</string>
     <string name="editing_calendar_failed">Falha ao editar o calendário</string>
-    <string name="syncing">Syncing…</string>
-    <string name="synchronization_completed">Sync completed</string>
+    <string name="syncing">A sincronizar…</string>
+    <string name="synchronization_completed">Sincronização terminada</string>
 
     <plurals name="by_minutes">
         <item quantity="one">%d minuto</item>
@@ -285,10 +285,10 @@
 
         Não contém anúncios nem permissões desnecessárias. Disponibiliza um tema escuro e é totalmente \'open source\'.
 
-        A permissão de armazenamento é necessária apenas para importar eventos de ficheiros .ics.
+        A permissão de armazenamento apenas é utilizada para importar eventos de ficheiros .ics.
 
-        Contacts permission is used only at importing contact birthdays.
-
+        A permissão aos contactos apenas é utilizada para importar os aniversários
+        
         Esta aplicação é apenas parte de um conjunto mais vasto de aplicações. Saiba mais em http://www.simplemobiletools.com
     </string>
 
