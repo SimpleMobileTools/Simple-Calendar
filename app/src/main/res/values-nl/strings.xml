@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Simple Calendar</string>
+    <string name="app_launcher_name">Agenda</string>
+    <string name="change_view">Weergave</string>
+    <string name="weekly_view">Week</string>
+    <string name="monthly_view">Maand</string>
+    <string name="yearly_view">Jaar</string>
+    <string name="simple_event_list">Lijst</string>
+    <string name="no_upcoming_events">Niets gepland.</string>
+    <string name="add_some_events">Gebruik de plus-knop om iets te plannen.</string>
+    <string name="details">Details</string>
+    <string name="go_to_today">Naar vandaag</string>
+    <string name="no_app_for_ics">Geen app gevonden waarmee .ics-bestanden kunnen worden geopend</string>
+    <string name="snooze">Uitstellen</string>
+
+    <!-- Widget titles -->
+    <string name="widget_monthly">Maandweergave</string>
+    <string name="widget_list">Afsprakenlijst</string>
+
+    <!-- Event -->
+    <string name="event">Afspraak</string>
+    <string name="edit_event">Afspraak bewerken</string>
+    <string name="new_event">Nieuwe afspraak</string>
+    <string name="title_empty">Titel kan niet leeg zijn</string>
+    <string name="end_before_start">De begintijd valt na de eindtijd</string>
+    <string name="event_added">Afspraak gemaakt</string>
+    <string name="past_event_added">Afgelopen afspraak toegevoegd</string>
+    <string name="event_updated">Afspraak bijgewerkt</string>
+    <string name="filter">Filter</string>
+    <string name="filter_events_by_type">Afspraken op type filteren</string>
+
+    <!-- Event Repetition -->
+    <string name="repetition">Herhaling</string>
+    <string name="no_repetition">Niet herhalen</string>
+    <string name="daily">Dagelijks</string>
+    <string name="weekly">Wekelijks</string>
+    <string name="monthly">Maandelijks</string>
+    <string name="yearly">Jaarlijks</string>
+    <string name="weeks_raw">weken</string>
+    <string name="months_raw">maanden</string>
+    <string name="years_raw">jaren</string>
+    <string name="repeat_till">Herhalen tot</string>
+    <string name="forever">Blijven herhalen</string>
+    <string name="event_is_repeatable">De afspraak wordt herhaald</string>
+    <string name="selection_contains_repetition">De selectie bevat herhaalde afspraken</string>
+    <string name="delete_one_only">Alleen huidige afspraak verwijderen</string>
+    <string name="delete_all_occurrences">Al deze afspraken verwijderen</string>
+    <string name="update_one_only">Alleen huidige afspraak bijwerken</string>
+    <string name="update_all_occurrences">Alle afspraken bijwerken</string>
+    <string name="repeat_till_date">Herhalen tot een datum</string>
+    <string name="repeat_x_times">Aantal keren herhalen</string>
+    <string name="repeat_forever">Voor altijd herhalen</string>
+    <string name="times">keer</string>
+    <string name="repeat">Herhalen</string>
+    <string name="repeat_on">Herhalen op</string>
+    <string name="every_day">Iedere dag</string>
+    <string name="selected_days">Op de volgende dagen</string>
+    <string name="the_same_day">Dezelfde dag</string>
+    <string name="the_last_day">De laatste dag</string>
+    <string name="repeat_on_the_same_day">Op dezelfde dag van de maand herhalen</string>
+    <string name="repeat_on_the_last_day">Op de laatste dag van de maand herhalen</string>
+    <string name="repeat_every_m">Herhalen op elke</string>
+    <string name="every_m">Elke</string>
+    <string name="first_m">eerste</string>
+    <string name="second_m">tweede</string>
+    <string name="third_m">derde</string>
+    <string name="fourth_m">vierde</string>
+    <string name="last_m">laatste</string>
+
+    <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
+    <!-- used in repetition, like "Every first Sunday" -->
+    <string name="repeat_every_f">Herhalen op elke</string>
+    <string name="every_f">Elke</string>
+    <string name="first_f">eerste</string>
+    <string name="second_f">tweede</string>
+    <string name="third_f">derde</string>
+    <string name="fourth_f">vierde</string>
+    <string name="last_f">laatste</string>
+
+    <plurals name="days">
+        <item quantity="one">%d dag</item>
+        <item quantity="other">%d dagen</item>
+    </plurals>
+
+    <plurals name="weeks">
+        <item quantity="one">%d week</item>
+        <item quantity="other">%d weken</item>
+    </plurals>
+
+    <plurals name="months">
+        <item quantity="one">%d maand</item>
+        <item quantity="other">%d maanden</item>
+    </plurals>
+
+    <plurals name="years">
+        <item quantity="one">%d jaar</item>
+        <item quantity="other">%d jaren</item>
+    </plurals>
+
+    <!-- Birthdays -->
+    <string name="birthdays">Verjaardagen</string>
+    <string name="add_birthdays">Verjaardagen van contacten toevoegen</string>
+    <string name="no_contacts_permission">Kan geen verjaardagen van contacten ophalen zonder deze permissie</string>
+    <string name="no_birthdays">Geen verjaardagen van contacten gevonden</string>
+    <string name="birthdays_added">Verjaardagen van contacten toegevoegd</string>
+
+    <!-- Event Reminders -->
+    <string name="reminder">Herinnering</string>
+    <string name="no_reminder">Geen herinnering</string>
+    <string name="at_start">Als afspraak begint</string>
+    <string name="custom">Aangepast</string>
+    <string name="before">van tevoren</string>
+    <string name="minutes_raw">minuten</string>
+    <string name="hours_raw">uren</string>
+    <string name="days_raw">dagen</string>
+    <string name="add_another_reminder">Herinnering toevoegen</string>
+
+    <plurals name="minutes_before">
+        <item quantity="one">%d minuut van tevoren</item>
+        <item quantity="other">%d minuten van tevoren</item>
+    </plurals>
+
+    <plurals name="hours_before">
+        <item quantity="one">%d uur van tevoren</item>
+        <item quantity="other">%d uren van tevoren</item>
+    </plurals>
+
+    <plurals name="days_before">
+        <item quantity="one">%d dag van tevoren</item>
+        <item quantity="other">%d dagen van tevoren</item>
+    </plurals>
+
+    <!-- Export / Import -->
+    <string name="importing">Importeren…</string>
+    <string name="exporting">Exporteren…</string>
+    <string name="import_events">Afspraken importeren</string>
+    <string name="export_events">Afspraken exporteren</string>
+    <string name="import_events_from_ics">Afspraken uit een .ics-bestand importeren</string>
+    <string name="export_events_to_ics">Afspraken naar een .ics-bestand exporteren</string>
+    <string name="events_imported_successfully">Afspraken zijn geïmporteerd</string>
+    <string name="events_exported_successfully">Afspraken zijn geëxporteerd</string>
+    <string name="importing_events_failed">Fout bij importeren van afspraken</string>
+    <string name="exporting_events_failed">Fout bij exporteren van afspraken</string>
+    <string name="importing_some_events_failed">Sommige afspraken konden niet worden geïmporteerd</string>
+    <string name="exporting_some_events_failed">Sommige afspraken konden niet worden geëxporteerd</string>
+    <string name="default_event_type">Standaard afspraaktype</string>
+    <string name="no_events_for_exporting">Geen te exporteren afspraken gevonden</string>
+    <string name="export_past_events_too">Afspraken uit verleden ook exporteren</string>
+    <string name="include_event_types">Afspraaktypes weergeven</string>
+    <string name="filename_without_ics">Bestandsnaam (zonder .ics)</string>
+    <string name="no_title">Geen titel</string>
+
+    <!-- Event details -->
+    <string name="title">Titel</string>
+    <string name="location">Locatie</string>
+    <string name="description">Beschrijving</string>
+    <string name="all_day">Hele dag</string>
+
+    <!-- Weekly view -->
+    <string name="week">Week</string>
+
+    <!-- Event types -->
+    <string name="event_types">Afspraaktypes</string>
+    <string name="add_new_type">Type toevoegen</string>
+    <string name="edit_type">Type bewerken</string>
+    <string name="type_already_exists">Type met deze naam bestaat al</string>
+    <string name="color">Kleur</string>
+    <string name="regular_event">Normale afspraak</string>
+    <string name="cannot_delete_default_type">Standaardtype kan niet worden verwijderd</string>
+    <string name="select_event_type">Selecteer een afspraaktype</string>
+    <string name="move_events_into_default">Afspraken van dit type verplaatsen naar het standaardtype</string>
+    <string name="remove_affected_events">Afspraken van dit type permanent verwijderen</string>
+    <string name="unsync_caldav_calendar">Zet synchroniseren uit (Android-instellingen &gt; Accounts) om een CalDAV-agenda te verwijderen</string>
+
+    <!-- Holidays -->
+    <string name="holidays">Feestdagen</string>
+    <string name="add_holidays">Feestdagen toevoegen</string>
+    <string name="national_holidays">Nationale feestdagen</string>
+    <string name="religious_holidays">Religieuze feestdagen</string>
+    <string name="holidays_imported_successfully">Feestdagen geïmporteerd als nieuw afspraaktype</string>
+    <string name="importing_some_holidays_failed">Sommige feestdagen konden niet worden geïmporteerd</string>
+    <string name="importing_holidays_failed">Fout bij importeren van feestdagen</string>
+
+    <!-- Settings -->
+    <string name="manage_event_types">Afspraaktypes beheren</string>
+    <string name="use_24_hour_format">24-uursformaat gebruiken</string>
+    <string name="sunday_first">Zondag als eerste dag van de week</string>
+    <string name="start_day_at">Dag starten om</string>
+    <string name="end_day_at">Dag beëindigen om</string>
+    <string name="week_numbers">Weeknummers tonen</string>
+    <string name="vibrate">Trillen bij notificaties</string>
+    <string name="reminder_sound">Geluid voor herinnering</string>
+    <string name="default_event_reminder">Standaardherinnering</string>
+    <string name="no_ringtone_picker">Geen app gevonden om geluid te kiezen</string>
+    <string name="no_ringtone_selected">Geen</string>
+    <string name="day_end_before_start">De begintijd valt na de eindtijd</string>
+    <string name="caldav_sync">CalDAV-synchronisatie</string>
+    <string name="event_lists">Afsprakenlijst</string>
+    <string name="display_past_events">Afgelopen afspraken tonen</string>
+    <string name="snooze_delay">Herinnering uitstellen met</string>
+    <string name="widgets">Widgets</string>
+    <string name="replace_description_with_location">Beschrijving vervangen door Locatie in lijstweergave</string>
+
+    <!-- CalDAV sync -->
+    <string name="caldav">CalDAV</string>
+    <string name="select_caldav_calendars">Selecteer te synchroniseren agenda\'s</string>
+    <string name="manage_synced_calendars">Gesynchroniseerde agenda\'s beheren</string>
+    <string name="store_locally_only">Alleen lokaal opslaan</string>
+    <string name="refresh_caldav_calendars">CalDAV-agenda\'s synchroniseren</string>
+    <string name="refreshing">Verversen…</string>
+    <string name="refreshing_complete">Agenda\'s ververst</string>
+    <string name="editing_calendar_failed">Agenda bijwerken mislukt</string>
+    <string name="syncing">Synchroniseren…</string>
+    <string name="synchronization_completed">Synchroniseren voltooid</string>
+
+    <plurals name="by_minutes">
+        <item quantity="one">%d minuut</item>
+        <item quantity="other">%d minuten</item>
+    </plurals>
+
+    <plurals name="by_hours">
+        <item quantity="one">%d uur</item>
+        <item quantity="other">%d uren</item>
+    </plurals>
+
+    <string name="never">Nooit</string>
+
+    <string name="january">Januari</string>
+    <string name="february">Februari</string>
+    <string name="march">Maart</string>
+    <string name="april">April</string>
+    <string name="may">Mei</string>
+    <string name="june">Juni</string>
+    <string name="july">Juli</string>
+    <string name="august">Augustus</string>
+    <string name="september">September</string>
+    <string name="october">Oktober</string>
+    <string name="november">November</string>
+    <string name="december">December</string>
+
+    <string name="monday_letter">M</string>
+    <string name="tuesday_letter">D</string>
+    <string name="wednesday_letter">W</string>
+    <string name="thursday_letter">D</string>
+    <string name="friday_letter">V</string>
+    <string name="saturday_letter">Z</string>
+    <string name="sunday_letter">Z</string>
+
+    <string name="monday">Maandag</string>
+    <string name="tuesday">Dinsdag</string>
+    <string name="wednesday">Woensdag</string>
+    <string name="thursday">Donderdag</string>
+    <string name="friday">Vrijdag</string>
+    <string name="saturday">Zaterdag</string>
+    <string name="sunday">Zondag</string>
+
+    <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
+    <!-- used in repetition, like "Every last Sunday" -->
+    <string name="monday_alt">maandag</string>
+    <string name="tuesday_alt">dinsdag</string>
+    <string name="wednesday_alt">woensdag</string>
+    <string name="thursday_alt">donderdag</string>
+    <string name="friday_alt">vrijdag</string>
+    <string name="saturday_alt">zaterdag</string>
+    <string name="sunday_alt">zondag</string>
+
+    <!-- List widget config example events -->
+    <string name="sample_title_1">Training</string>
+    <string name="sample_description_1">Hardlopen</string>
+    <string name="sample_title_2">Afspraak met Willem</string>
+    <string name="sample_description_2">Op de Markt</string>
+    <string name="sample_title_3">Bibliotheek</string>
+    <string name="sample_title_4">Lunch met Jacquelien</string>
+    <string name="sample_description_4">Aan de kade</string>
+    <string name="sample_title_5">Koffietijd</string>
+
+    <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
+    <!-- Short description has to have less than 80 chars -->
+    <string name="app_short_description">Een simpele agenda met aan te passen widget en zonder advertenties.</string>
+    <string name="app_long_description">
+        Een simpele agenda met optionele CalDAV-synchronisatie. Creëer met gemak herhaalde afspraken met herinneringen. Kan weeknummers tonen.
+
+        Heeft een 4x4 widget, waarbij grootte, achtergrond- en tekstkleuren zijn aan te passen.
+
+        Bevat geen advertenties of onnodige permissies. Volledig open-source. Kleuren van de app kunnen worden aangepast.
+
+        De permissie voor externe opslag is alleen nodig voor het importeren/exporteren van afspraken in .ics-bestanden.
+
+        De permissie voor contacten wordt alleen gebruikt voor het importeren van verjaardagen van contacten.
+
+        Deze app is onderdeel van een grotere verzameling. Vind de andere apps op http://www.simplemobiletools.com
+    </string>
+
+    <!--
+        Haven't found some strings? There's more at
+        https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
+    -->
+</resources>
