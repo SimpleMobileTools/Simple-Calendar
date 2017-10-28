@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Deiziataer Eeun</string>
+    <string name="app_launcher_name">Deiziataer</string>
+    <string name="change_view">Kemmañ ar gwel</string>
+    <string name="weekly_view">Gwel sizhuniek</string>
+    <string name="monthly_view">Gwel miziek</string>
+    <string name="yearly_view">Gwel bloaziek</string>
+    <string name="simple_event_list">Roll darvoudoù een</string>
+    <string name="no_upcoming_events">War a-seblant n\'ho peus darvoud ebet da zont.</string>
+    <string name="add_some_events">Gallout a rit ouzhpennañ reoù gant an afell \"Mui\" en traoñ.</string>
+    <string name="details">Munudoù</string>
+    <string name="go_to_today">Mont da hiziv</string>
+    <string name="no_app_for_ics">N\'eus bet kavet arload ebet gouest da verañ restroù .ics</string>
+    <string name="snooze">Daleañ</string>
+
+    <!-- Widget titles -->
+    <string name="widget_monthly">Deiziataer miziek</string>
+    <string name="widget_list">Roll darvoudoù</string>
+
+    <!-- Event -->
+    <string name="event">Darvoud</string>
+    <string name="edit_event">Embann an darvoud</string>
+    <string name="new_event">Darvoud nevez</string>
+    <string name="title_empty">N\'hall ket an titl bezañ goullo</string>
+    <string name="end_before_start">N\'hall ket an darvoud echuiñ abretoc\'h eget ma krog</string>
+    <string name="event_added">Darvoud ouzhpennet gant berzh</string>
+    <string name="past_event_added">Darvoud en amzer tremenet ouzhpennet gant berzh</string>
+    <string name="event_updated">Darvoud hizivaet gant berzh</string>
+    <string name="filter">Sil</string>
+    <string name="filter_events_by_type">Silañ an darvoudoù dre rizh</string>
+
+    <!-- Event Repetition -->
+    <string name="repetition">Addegouezh</string>
+    <string name="no_repetition">Addegouezh ebet</string>
+    <string name="daily">Pemdeziek</string>
+    <string name="weekly">Sizhuniek</string>
+    <string name="monthly">Miziek</string>
+    <string name="yearly">Bloaziek</string>
+    <string name="weeks_raw">sizhun</string>
+    <string name="months_raw">a vizioù</string>
+    <string name="years_raw">a vloavezhioù</string>
+    <string name="repeat_till">addegouezhout betek</string>
+    <string name="forever">Da viken</string>
+    <string name="event_is_repeatable">An darvoud a c\'hall addegouezhout</string>
+    <string name="selection_contains_repetition">Darvoudoù a c\'hall addegouezhout a zo en diuzad</string>
+    <string name="delete_one_only">Dilemel an degouezh bremanel nemetken</string>
+    <string name="delete_all_occurrences">Dilemel an holl zegouezhioù</string>
+    <string name="update_one_only">Hizivaat an degouezh diuzet hepken</string>
+    <string name="update_all_occurrences">Hizivaat an holl zegouezhioù</string>
+    <string name="repeat_till_date">Addegouezhout betek un deiziad</string>
+    <string name="repeat_x_times">Addegouezhout X gwech</string>
+    <string name="repeat_forever">Addegouezhout da viken</string>
+    <string name="times">a wechoù</string>
+    <string name="repeat">Addegouezh</string>
+    <string name="repeat_on">Addegouezh gweredekaet</string>
+    <string name="every_day">Bemdez</string>
+    <string name="selected_days">En devezhioù diuzet</string>
+    <string name="the_same_day">An hevelep devezh</string>
+    <string name="the_last_day">An devezh diwezhañ</string>
+    <string name="repeat_on_the_same_day">Addegouezh en hevelep devezh bep miz</string>
+    <string name="repeat_on_the_last_day">Addegouezh e devezh diwezhañ bep miz</string>
+    <string name="repeat_every_m">Addegouezh bep</string>
+    <string name="every_m">Bep</string>
+    <string name="first_m">kentañ</string>
+    <string name="second_m">eil</string>
+    <string name="third_m">trede</string>
+    <string name="fourth_m">pevare</string>
+    <string name="last_m">diwezhañ</string>
+
+    <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
+    <!-- used in repetition, like "Every first Sunday" -->
+    <string name="repeat_every_f">Addegouezh bep</string>
+    <string name="every_f">Bep</string>
+    <string name="first_f">kentañ</string>
+    <string name="second_f">eil</string>
+    <string name="third_f">trede</string>
+    <string name="fourth_f">pevare</string>
+    <string name="last_f">diwezhañ</string>
+
+    <plurals name="days">
+        <item quantity="one">%ddevezh</item>
+        <item quantity="other">%da zevezhioù</item>
+    </plurals>
+
+    <plurals name="weeks">
+        <item quantity="one">%dsizhun</item>
+        <item quantity="other">%dsizhun</item>
+    </plurals>
+
+    <plurals name="months">
+        <item quantity="one">%dmiz</item>
+        <item quantity="other">%da vizioù</item>
+    </plurals>
+
+    <plurals name="years">
+        <item quantity="one">%da vloavezhioù</item>
+        <item quantity="other">%da vloavezhioù</item>
+    </plurals>
+
+    <!-- Birthdays -->
+    <string name="birthdays">Deizioù-ha-bloaz</string>
+    <string name="add_birthdays">Ouzhpennañ deizioù-ha-bloaz an darempredoù</string>
+    <string name="no_contacts_permission">N\'haller ket kaout an deizioù-ha-bloaz hep an aotre Darempredoù</string>
+    <string name="no_birthdays">N\'eus ket kavet deiz-ha-bloaz bet</string>
+    <string name="birthdays_added">Ouzhpennet an deizioù-ha-bloaz gant berzh</string>
+
+    <!-- Event Reminders -->
+    <string name="reminder">Adc\'halv</string>
+    <string name="no_reminder">Adc\'halv ebet</string>
+    <string name="at_start">D\'an deroù</string>
+    <string name="custom">Personelaet</string>
+    <string name="before">a-raok</string>
+    <string name="minutes_raw">a vunutennoù</string>
+    <string name="hours_raw">eur</string>
+    <string name="days_raw">a zevezhioù</string>
+    <string name="add_another_reminder">Ouzhpennañ un adc\'halv all</string>
+
+    <plurals name="minutes_before">
+        <item quantity="one">%dvunutenn a-raok</item>
+        <item quantity="other">%da vunutennoù a-raok</item>
+    </plurals>
+
+    <plurals name="hours_before">
+        <item quantity="one">%deur a-raok</item>
+        <item quantity="other">%deur a-raok</item>
+    </plurals>
+
+    <plurals name="days_before">
+        <item quantity="one">%da zevezhioù a-raok</item>
+        <item quantity="other">%da zevezhioù a-raok</item>
+    </plurals>
+
+    <!-- Export / Import -->
+    <string name="importing">Oc\'h enporzhiañ...</string>
+    <string name="exporting">Oc\'h ezporzhiañ...</string>
+    <string name="import_events">Enporzhiañ darvoudoù</string>
+    <string name="export_events">Ezporzhiañ darvoudoù</string>
+    <string name="import_events_from_ics">Enporzhiañ darvoudoù adalek ur restr .ics</string>
+    <string name="export_events_to_ics">Ezporzhiañ darvoudoù betek ur restr .ics</string>
+    <string name="events_imported_successfully">Enporzhiet eo bet an darvoudoù gant berzh</string>
+    <string name="events_exported_successfully">Ezporzhiet eo bet an darvoudoù gant berzh</string>
+    <string name="importing_events_failed">C\'hwitadenn en ur enporzhiañ an darvoudoù</string>
+    <string name="exporting_events_failed">C\'hwitadenn en ur ezporzhiañ an darvoudoù</string>
+    <string name="importing_some_events_failed">C\'hwitadenn en ur enporzhiañ ul lodenn eus an darvoudoù</string>
+    <string name="exporting_some_events_failed">C\'hwitadenn en ur ezporzhiañ ul lodenn eus an darvoudoù</string>
+    <string name="default_event_type">Doare darvoud dre ziouer</string>
+    <string name="no_events_for_exporting">N\'eus bet kavet darvoud ebet da enporzhiañ</string>
+    <string name="export_past_events_too">Ezporzhiañ an darvoudoù tremenet ivez</string>
+    <string name="include_event_types">Enkorfañ doareoù an darvoudoù ivez</string>
+    <string name="filename_without_ics">Anv ar restr (hep .ics)</string>
+    <string name="no_title">Hep titl</string>
+
+    <!-- Event details -->
+    <string name="title">Titl</string>
+    <string name="location">Lec\'hiadur</string>
+    <string name="description">Deskrivadur</string>
+    <string name="all_day">Devezh-pad</string>
+
+    <!-- Weekly view -->
+    <string name="week">Sizhun</string>
+
+    <!-- Event types -->
+    <string name="event_types">Doareoù an darvoud</string>
+    <string name="add_new_type">Ouzhpennañ un doare darvoud nevez</string>
+    <string name="edit_type">Embann an doare darvoud</string>
+    <string name="type_already_exists">Un doare darvoud gant an titl-mañ a zo anezhañ endeo</string>
+    <string name="color">Liv</string>
+    <string name="regular_event">Darvoud ordinal</string>
+    <string name="cannot_delete_default_type">N\'haller ket dilemel an doare darvoud dre ziouer</string>
+    <string name="select_event_type">Diuzit un doare darvoud</string>
+    <string name="move_events_into_default">Dilec\'hiañ an darvoudoù tizhet en doare darvoud dre ziouer</string>
+    <string name="remove_affected_events">Dilemel an darvoudoù tizhet</string>
+    <string name="unsync_caldav_calendar">Da zilemel un deiziataer CalDAV eo ret deoc\'h e zic\'houbredañ</string>
+
+    <!-- Holidays -->
+    <string name="holidays">Devezhioù gouel</string>
+    <string name="add_holidays">Ouzhpennañ devezhioù gouel</string>
+    <string name="national_holidays">Devezhioù gouel broadel</string>
+    <string name="religious_holidays">Devezhioù gouel relijiel</string>
+    <string name="holidays_imported_successfully">An devezhioù gouel a zo bet enporzhiet en un doare darvoud nevez gant berzh</string>
+    <string name="importing_some_holidays_failed">C\'hwitadenn en ur enporzhiañ ul lodenn eus an darvoudoù</string>
+    <string name="importing_holidays_failed">C\'hwitadenn en ur enporzhiañ ul lodenn eus an devezhioù gouel</string>
+
+    <!-- Settings -->
+    <string name="manage_event_types">Merañ an doareoù darvoudoù</string>
+    <string name="use_24_hour_format">Arverañ ar mentrezh 24eur</string>
+    <string name="sunday_first">Disul eo an devezh kentañ</string>
+    <string name="start_day_at">Kregiñ an devezh da</string>
+    <string name="end_day_at">Echuiñ an devezh da</string>
+    <string name="week_numbers">Diskouez niverennoù ar sizhun</string>
+    <string name="vibrate">Froumal evit ar rebuzadurioù adc\'halv</string>
+    <string name="reminder_sound">Soniri adc\'halv</string>
+    <string name="default_event_reminder">Adc\'halv darvoud dre ziouer</string>
+    <string name="no_ringtone_picker">N\'eus bet kavet arload ebet gouest da arventennañ ur soniri</string>
+    <string name="no_ringtone_selected">Hini ebet</string>
+    <string name="day_end_before_start">An devezh n\'hall ket echuiñ abretoc\'h eget ma krog</string>
+    <string name="caldav_sync">Goubredañ CalDAV</string>
+    <string name="event_lists">Roll an darvoudoù</string>
+    <string name="display_past_events">Skrammañ darvoudoù an amzer tremenet</string>
+    <string name="snooze_delay">Daleañ an adc\'halv eus</string>
+    <string name="widgets">Widjetoù</string>
+    <string name="replace_description_with_location">Amsaviñ an deskrivadur gant al lec\'hiadur er gwell roll enankadoù </string>
+
+    <!-- CalDAV sync -->
+    <string name="caldav">CalDAV</string>
+    <string name="select_caldav_calendars">Diuzañ an deiziataerioù da c\'houbredañ</string>
+    <string name="manage_synced_calendars">Merañ an deiziataerioù goubredet</string>
+    <string name="store_locally_only">Kadavi~nen un doare lec\'hel</string>
+    <string name="refresh_caldav_calendars">Azgrenaat an deiziataerioù CalDAV</string>
+    <string name="refreshing">Oc\'h azgrenaat...</string>
+    <string name="refreshing_complete">Echuet an azgrenaat</string>
+    <string name="editing_calendar_failed">C\'hwitadenn en ur embann an deiziataer</string>
+    <string name="syncing">O c\'houbredañ...</string>
+    <string name="synchronization_completed">Echuet gant ar goubredañ</string>
+
+    <plurals name="by_minutes">
+        <item quantity="one">%dvunutenn</item>
+        <item quantity="other">%da vunutennoù</item>
+    </plurals>
+
+    <plurals name="by_hours">
+        <item quantity="one">%deur</item>
+        <item quantity="other">%da eurioù</item>
+    </plurals>
+
+    <string name="never">Morse</string>
+
+    <string name="january">Genver</string>
+    <string name="february">C\'hwevrer</string>
+    <string name="march">Meurzh</string>
+    <string name="april">Ebrel</string>
+    <string name="may">Mae</string>
+    <string name="june">Mezheven</string>
+    <string name="july">Gouere</string>
+    <string name="august">Eost</string>
+    <string name="september">Gwengolo</string>
+    <string name="october">Here</string>
+    <string name="november">Du</string>
+    <string name="december">Kerzu</string>
+
+    <string name="monday_letter">L</string>
+    <string name="tuesday_letter">Meu</string>
+    <string name="wednesday_letter">Mer</string>
+    <string name="thursday_letter">Y</string>
+    <string name="friday_letter">G</string>
+    <string name="saturday_letter">Sa</string>
+    <string name="sunday_letter">Su</string>
+
+    <string name="monday">Lun</string>
+    <string name="tuesday">Meurzh</string>
+    <string name="wednesday">Merc\'her</string>
+    <string name="thursday">Yaou</string>
+    <string name="friday">Gwener</string>
+    <string name="saturday">Sadorn</string>
+    <string name="sunday">Sul</string>
+
+    <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
+    <!-- used in repetition, like "Every last Sunday" -->
+    <string name="monday_alt">Lun</string>
+    <string name="tuesday_alt">Meurzh</string>
+    <string name="wednesday_alt">Merc\'her</string>
+    <string name="thursday_alt">Yaou</string>
+    <string name="friday_alt">Gwener</string>
+    <string name="saturday_alt">Sadorn</string>
+    <string name="sunday_alt">Sul</string>
+
+    <!-- List widget config example events -->
+    <string name="sample_title_1">Embregerezh korf</string>
+    <string name="sample_description_1">Embregerezh an divc\'harr</string>
+    <string name="sample_title_2">Emgav gant Yann</string>
+    <string name="sample_description_2">E liorzh an eskopti</string>
+    <string name="sample_title_3">Levraoueg</string>
+    <string name="sample_title_4">Merenn gant Maiwenn</string>
+    <string name="sample_description_4">Er c\'hrampouezhti</string>
+    <string name="sample_title_5">Banne kafe</string>
+
+    <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
+    <!-- Short description has to have less than 80 chars -->
+    <string name="app_short_description">Un deiziataer eeun gant darvoudoù, widjetoù personelaus ha tamm bruderezh ebet.</string>
+    <string name="app_long_description">
+        Un deiziataer eeun gant ur goubredañ diret da zeiziataer Google. Aes eo krouiñ darvoudoù a addegouezh ha lakaat adc\'halvoù. Gallout a ra ivez diskouez niverenn ar sizhunvezhioù.
+
+        Dont a ra gant ur widjet 4x4 a c\'haller adventañ ha personelaat liv an destenn, an alfa ha liv an drekleur.
+
+        N\'eus tamm bruderezh ebet ha n\'eo goulennet aotre arbennik ebet. Digor eo e darzh ha gallout a rit personelaat al livioù.
+
+        Ret eo reiñ an aotre kadaviñ evit ezporzhiañ hag enporzhiañ darvoudoù gant restroù .ics.
+
+        Ret eo reiñ an aotre Darempredoù evit enporzhiañ deizioù-ha-bloaz an darempredoù.
+
+        An arload-mañ a zo ul lodenn eus un heuliad arloadoù brasoc\'h. Gallout a rit o kavout anezho war http://www.simplemobiletools.com
+    </string>
+
+    <!--
+        Haven't found some strings? There's more at
+        https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
+    -->
+</resources>
