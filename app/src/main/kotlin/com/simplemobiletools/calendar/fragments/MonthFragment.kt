@@ -127,8 +127,8 @@ class MonthFragment : Fragment(), MonthlyCalendar {
     private fun showMonthDialog() {
         activity.setTheme(context.getAppropriateTheme())
         val view = getLayoutInflater(arguments).inflate(R.layout.date_picker, null)
-        val datePicker = view.findViewById(R.id.date_picker) as DatePicker
-        datePicker.findViewById(Resources.getSystem().getIdentifier("day", "id", "android")).beGone()
+        val datePicker = view.findViewById<DatePicker>(R.id.date_picker)
+        datePicker.findViewById<View>(Resources.getSystem().getIdentifier("day", "id", "android")).beGone()
 
         val dateTime = DateTime(mCalendar.mTargetDate.toString())
         datePicker.init(dateTime.year, dateTime.monthOfYear - 1, 1, null)
@@ -156,7 +156,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
             if (!mSundayFirst)
                 index = (index + 1) % letters.size
 
-            (mHolder.findViewById(mRes.getIdentifier("label_$i", "id", mPackageName)) as TextView).apply {
+            mHolder.findViewById<TextView>(mRes.getIdentifier("label_$i", "id", mPackageName)).apply {
                 setTextColor(mTextColor)
                 text = getString(letters[index])
             }
@@ -174,7 +174,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         week_num.beVisibleIf(displayWeekNumbers)
 
         for (i in 0..5) {
-            (mHolder.findViewById(mRes.getIdentifier("week_num_$i", "id", mPackageName)) as TextView).apply {
+            mHolder.findViewById<TextView>(mRes.getIdentifier("week_num_$i", "id", mPackageName)).apply {
                 text = "${days[i * 7 + 3].weekOfYear}:"     // fourth day of the week matters
                 setTextColor(mTextColor)
                 beVisibleIf(displayWeekNumbers)
@@ -183,7 +183,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
 
         val dividerMargin = mRes.displayMetrics.density.toInt()
         for (i in 0 until len) {
-            (mHolder.findViewById(mRes.getIdentifier("day_$i", "id", mPackageName)) as LinearLayout).apply {
+            mHolder.findViewById<LinearLayout>(mRes.getIdentifier("day_$i", "id", mPackageName)).apply {
                 val day = days[i]
                 setOnClickListener { openDay(day.code) }
 

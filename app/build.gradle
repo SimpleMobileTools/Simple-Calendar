@@ -3,13 +3,13 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    compileSdkVersion 26
+    buildToolsVersion "26.0.2"
 
     defaultConfig {
         applicationId "com.simplemobiletools.calendar"
         minSdkVersion 16
-        targetSdkVersion 25
+        targetSdkVersion 26
         versionCode 99
         versionName "2.9.1"
         multiDexEnabled true
@@ -44,7 +44,7 @@ ext {
 }
 
 dependencies {
-    compile 'com.simplemobiletools:commons:2.31.11'
+    compile 'com.simplemobiletools:commons:2.34.2'
     compile 'joda-time:joda-time:2.9.1'
     compile 'com.facebook.stetho:stetho:1.4.1'
     compile 'com.bignerdranch.android:recyclerview-multiselect:0.2'

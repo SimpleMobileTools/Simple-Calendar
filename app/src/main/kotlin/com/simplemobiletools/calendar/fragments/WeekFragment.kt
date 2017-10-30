@@ -135,7 +135,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         for (i in 0..6) {
             val dayCode = Formatter.getDayCodeFromDateTime(curDay)
             val dayLetter = getDayLetter(curDay.dayOfWeek)
-            (mView.findViewById(mRes.getIdentifier("week_day_label_$i", "id", context.packageName)) as TextView).apply {
+            mView.findViewById<TextView>(mRes.getIdentifier("week_day_label_$i", "id", context.packageName)).apply {
                 text = "$dayLetter\n${curDay.dayOfMonth}"
                 setTextColor(if (todayCode == dayCode) primaryColor else textColor)
                 if (todayCode == dayCode)
@@ -427,7 +427,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         mWasDestroyed = true
     }
 
-    private fun getColumnWithId(id: Int) = mView.findViewById(mRes.getIdentifier("week_column_$id", "id", context.packageName)) as ViewGroup
+    private fun getColumnWithId(id: Int) = mView.findViewById<ViewGroup>(mRes.getIdentifier("week_column_$id", "id", context.packageName))
 
     fun updateScrollY(y: Int) {
         if (wasFragmentInit)

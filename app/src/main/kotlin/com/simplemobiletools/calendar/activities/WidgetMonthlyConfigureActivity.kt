@@ -153,7 +153,7 @@ class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
             week_num.beVisible()
 
             for (i in 0..5) {
-                (findViewById(mRes.getIdentifier("week_num_$i", "id", mPackageName)) as TextView).apply {
+                findViewById<TextView>(mRes.getIdentifier("week_num_$i", "id", mPackageName)).apply {
                     text = "${mDays!![i * 7 + 3].weekOfYear}:"
                     setTextColor(mTextColor)
                     beVisible()
@@ -163,7 +163,7 @@ class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
 
         val dividerMargin = mRes.displayMetrics.density.toInt()
         for (i in 0 until len) {
-            (findViewById(mRes.getIdentifier("day_$i", "id", mPackageName)) as LinearLayout).apply {
+            findViewById<LinearLayout>(mRes.getIdentifier("day_$i", "id", mPackageName)).apply {
                 val day = mDays!![i]
                 removeAllViews()
 
@@ -198,7 +198,7 @@ class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
 
     private fun updateLabels() {
         for (i in 0..6) {
-            (findViewById(mRes.getIdentifier("label_$i", "id", mPackageName)) as TextView).apply {
+            findViewById<TextView>(mRes.getIdentifier("label_$i", "id", mPackageName)).apply {
                 setTextColor(mTextColor)
             }
         }

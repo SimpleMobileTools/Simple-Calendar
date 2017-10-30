@@ -85,7 +85,7 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEventsListen
     private fun pickDay() {
         activity.setTheme(context.getAppropriateTheme())
         val view = getLayoutInflater(arguments).inflate(R.layout.date_picker, null)
-        val datePicker = view.findViewById(R.id.date_picker) as DatePicker
+        val datePicker = view.findViewById<DatePicker>(R.id.date_picker)
 
         val dateTime = Formatter.getDateTimeFromCode(mDayCode)
         datePicker.init(dateTime.year, dateTime.monthOfYear - 1, dateTime.dayOfMonth, null)
