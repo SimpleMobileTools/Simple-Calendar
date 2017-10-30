@@ -26,6 +26,8 @@ class IcsExporter {
 
             it.bufferedWriter().use { out ->
                 out.writeLn(BEGIN_CALENDAR)
+                out.writeLn(CALENDAR_PRODID)
+                out.writeLn(CALENDAR_VERSION)
                 for (event in events) {
                     out.writeLn(BEGIN_EVENT)
                     event.title.replace("\n", "\\n").let { if (it.isNotEmpty()) out.writeLn("$SUMMARY:$it") }
