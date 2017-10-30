@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <external-path name="external_files" path="."/>
+    <cache-path name="shared_events" path="events/"/>
+    <root-path name="external_files" path="/storage/" />
+</paths>

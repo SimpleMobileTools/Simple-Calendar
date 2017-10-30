@@ -11,7 +11,6 @@
     <string name="add_some_events">Puede añadir algunos con el botón Más en la parte inferior.</string>
     <string name="details">Detalles</string>
     <string name="go_to_today">Ir al día de hoy</string>
-    <string name="no_app_for_ics">No se ha encontrado ninguna aplicación capaz de manejar archivos .ics</string>
     <string name="snooze">Snooze</string>
 
     <!-- Widget titles -->

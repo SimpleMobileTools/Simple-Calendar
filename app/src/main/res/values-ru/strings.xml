@@ -11,7 +11,6 @@
     <string name="add_some_events">Вы можете их добавить, нажав на кнопку с плюсом внизу.</string>
     <string name="details">Подробности</string>
     <string name="go_to_today">Сегодня</string>
-    <string name="no_app_for_ics">Не найдено приложение для просмотра файлов .ics</string>
     <string name="snooze">Отложить</string>
 
     <!-- Widget titles -->
