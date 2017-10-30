@@ -8,7 +8,7 @@
     <string name="yearly_view">Vue annuelle</string>
     <string name="simple_event_list">Liste simple d\'événements</string>
     <string name="no_upcoming_events">Il semblerait que vous n\'ayez aucun événement à venir.</string>
-    <string name="add_some_events">Vous pouvez ajouter des évènements avec le bouton Plus en bas.</string>
+    <string name="add_some_events">Vous pouvez ajouter des événements avec le bouton + en bas.</string>
     <string name="details">Détails</string>
     <string name="go_to_today">Aller à aujourd\'hui</string>
     <string name="no_app_for_ics">Aucune app capable de manipuler des fichier .ics n\'a été trouvée</string>
@@ -44,9 +44,9 @@
     <string name="forever">Pour toujours</string>
     <string name="event_is_repeatable">L\'événement est répétable</string>
     <string name="selection_contains_repetition">La sélection contient des événements avec répétition</string>
-    <string name="delete_one_only">Supprimer l\'occurrence sélectionnée seulement</string>
+    <string name="delete_one_only">Supprimer seulement l\'occurrence sélectionnée</string>
     <string name="delete_all_occurrences">Supprimer toutes les occurrences</string>
-    <string name="update_one_only">Mettre à jour l\'occurrence sélectionnée seulement</string>
+    <string name="update_one_only">Mettre à jour seulement l\'occurrence sélectionnée</string>
     <string name="update_all_occurrences">Mettre à jour toutes les occurrences</string>
     <string name="repeat_till_date">Répéter jusqu\'à une date</string>
     <string name="repeat_x_times">Répéter x fois</string>
@@ -143,7 +143,7 @@
     <string name="importing_events_failed">Import des événements échoué</string>
     <string name="exporting_events_failed">Export des événements échoué</string>
     <string name="importing_some_events_failed">L\'import de certains événements a échoué</string>
-    <string name="exporting_some_events_failed">L\'export de certains evénaments a échoué</string>
+    <string name="exporting_some_events_failed">L\'export de certains événements a échoué</string>
     <string name="default_event_type">Type d\'événement par défaut</string>
     <string name="no_events_for_exporting">Aucun événement trouvé pour export</string>
     <string name="export_past_events_too">Exporter aussi les événements passés</string>
@@ -153,7 +153,7 @@
 
     <!-- Détails d'un événement -->
     <string name="title">Titre</string>
-    <string name="location">Location</string>
+    <string name="location">Lieu</string>
     <string name="description">Description</string>
     <string name="all_day">Journée</string>
 
@@ -166,7 +166,7 @@
     <string name="edit_type">Éditer le type</string>
     <string name="type_already_exists">Un type avec ce titre existe déjà</string>
     <string name="color">Couleur</string>
-    <string name="regular_event">Événement régulier</string>
+    <string name="regular_event">Événement ordinnaire</string>
     <string name="cannot_delete_default_type">Le type d\'événement par défaut ne peut pas être supprimé</string>
     <string name="select_event_type">Sélectionner un type d\'événement</string>
     <string name="move_events_into_default">Déplacer les événements affectés dans le type d\'événement par défaut</string>
@@ -180,7 +180,7 @@
     <string name="religious_holidays">Jours fériés religieux</string>
     <string name="holidays_imported_successfully">Les jours fériés ont été importés dans un nouveau type d\'événement avec succès</string>
     <string name="importing_some_holidays_failed">L\'import de certains événements a échoué</string>
-    <string name="importing_holidays_failed">L\'import des jours fériés à échoué</string>
+    <string name="importing_holidays_failed">L\'import des jours fériés a échoué</string>
 
     <!-- Paramètres -->
     <string name="manage_event_types">Gestion des types d\'événements</string>
@@ -277,7 +277,7 @@
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Un calendrier simple avec événements, widget personnalisable, sans publicités.</string>
+    <string name="app_short_description">Un calendrier simple avec événements, widget personnalisable, sans publicité.</string>
     <string name="app_long_description">
         Un calendrier hors ligne sans aucune autre intégration de calendrier. Vous pouvez aisément créer des événements récurrents et configurer des rappels, il est aussi possible d\'afficher les numéros de semaine.
 
@@ -287,7 +287,7 @@
 
         La permission d\'accès au stockage est necéssaire uniquement pour importer des événements depuis des fichiers .ics.
 
-        Contacts permission is used only at importing contact birthdays.
+        La permission Contacts ne sert qu\'à importer l\'anniversaire de vos contacts.
 
         Cette application est juste une pièce d\'une plus grosse série d\'applications. Vous pouvez trouver le reste de celles-ci à http://www.simplemobiletools.com
     </string>
