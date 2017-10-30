@@ -31,7 +31,8 @@ class IcsImporter {
     private var curLastModified = 0L
     private var curLocation = ""
     private var isNotificationDescription = false
-    private var lastReminderAction = ""
+    private var isProperReminderAction = false
+    private var curReminderTriggerMinutes = -1
 
     private var eventsImported = 0
     private var eventsFailed = 0
@@ -82,10 +83,9 @@ class IcsImporter {
                         curRepeatLimit = repeatRule.repeatLimit
                     } else if (line.startsWith(ACTION)) {
                         isNotificationDescription = true
-                        lastReminderAction = line.substring(ACTION.length)
+                        isProperReminderAction = line.substring(ACTION.length) == DISPLAY
                     } else if (line.startsWith(TRIGGER)) {
-                        if (lastReminderAction == DISPLAY)
-                            curReminderMinutes.add(Parser().parseDurationSeconds(line.substring(TRIGGER.length)) / 60)
+                        curReminderTriggerMinutes = Parser().parseDurationSeconds(line.substring(TRIGGER.length)) / 60
                     } else if (line.startsWith(CATEGORIES)) {
                         val categories = line.substring(CATEGORIES.length)
                         tryAddCategories(categories, activity)
@@ -95,6 +95,10 @@ class IcsImporter {
                         curRepeatExceptions.add(getTimestamp(line.substring(EXDATE.length)))
                     } else if (line.startsWith(LOCATION)) {
                         curLocation = line.substring(LOCATION.length)
+                    } else if (line == END_ALARM) {
+                        if (isProperReminderAction && curReminderTriggerMinutes != -1) {
+                            curReminderMinutes.add(curReminderTriggerMinutes)
+                        }
                     } else if (line == END_EVENT) {
                         if (curStart != -1 && curEnd == -1)
                             curEnd = curStart
@@ -202,6 +206,7 @@ class IcsImporter {
         curLastModified = 0L
         curLocation = ""
         isNotificationDescription = false
-        lastReminderAction = ""
+        isProperReminderAction = false
+        curReminderTriggerMinutes = -1
     }
 }
