@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 2.9.2 *(2017-10-30)*
+----------------------------
+
+ * Add PRODID and VERSION to the exported ICS file
+ * Handle parsing more formats of contact birthdays
+ * Increase the opacity of event titles at weekly and monthly view
+
 Version 2.9.1 *(2017-10-25)*
 ----------------------------
 
