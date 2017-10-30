@@ -333,6 +333,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
 
         val birthdayImportIDs = dbHelper.getBirthdays().map { it.importId }
         var birthdaysAdded = 0
+        val dateFormats = getBirthdayFormats()
         val uri = ContactsContract.Data.CONTENT_URI
         val projection = arrayOf(ContactsContract.Contacts.DISPLAY_NAME,
                 ContactsContract.CommonDataKinds.Event.CONTACT_ID,
@@ -349,19 +350,27 @@ class MainActivity : SimpleActivity(), NavigationListener {
                     val contactId = cursor.getIntValue(ContactsContract.CommonDataKinds.Event.CONTACT_ID).toString()
                     val name = cursor.getStringValue(ContactsContract.Contacts.DISPLAY_NAME)
                     val birthDay = cursor.getStringValue(ContactsContract.CommonDataKinds.Event.START_DATE)
-                    val containsYear = birthDay.length > 7
-                    val pattern = if (containsYear) "yyyy-MM-dd" else "--MM-dd"
-                    val formatter = SimpleDateFormat(pattern, Locale.getDefault())
-                    var timestamp = (formatter.parse(birthDay).time / 1000).toInt()
-                    if (!containsYear)
-                        timestamp += 45 * YEAR  // set year to 2015
-                    val lastUpdated = cursor.getLongValue(ContactsContract.CommonDataKinds.Event.CONTACT_LAST_UPDATED_TIMESTAMP)
-                    val event = Event(0, timestamp, timestamp, name, importId = contactId, flags = FLAG_ALL_DAY, repeatInterval = YEAR,
-                            eventType = eventTypeId, source = SOURCE_CONTACT_BIRTHDAY, lastUpdated = lastUpdated)
 
-                    if (!birthdayImportIDs.contains(contactId)) {
-                        dbHelper.insert(event, false) {
-                            birthdaysAdded++
+                    for (format in dateFormats) {
+                        try {
+                            val formatter = SimpleDateFormat(format, Locale.getDefault())
+                            val date = formatter.parse(birthDay)
+                            if (date.year < 1970)
+                                date.year = 70
+
+                            val timestamp = (date.time / 1000).toInt()
+
+                            val lastUpdated = cursor.getLongValue(ContactsContract.CommonDataKinds.Event.CONTACT_LAST_UPDATED_TIMESTAMP)
+                            val event = Event(0, timestamp, timestamp, name, importId = contactId, flags = FLAG_ALL_DAY, repeatInterval = YEAR,
+                                    eventType = eventTypeId, source = SOURCE_CONTACT_BIRTHDAY, lastUpdated = lastUpdated)
+
+                            if (!birthdayImportIDs.contains(contactId)) {
+                                dbHelper.insert(event, false) {
+                                    birthdaysAdded++
+                                }
+                            }
+                            break
+                        } catch (e: Exception) {
                         }
                     }
                 } while (cursor.moveToNext())
@@ -381,6 +390,21 @@ class MainActivity : SimpleActivity(), NavigationListener {
             }
         }
     }
+
+    private fun getBirthdayFormats() = arrayListOf(
+            "yyyy-MM-dd",
+            "yyyyMMdd",
+            "yyyy.MM.dd",
+            "yy-MM-dd",
+            "yyMMdd",
+            "yy.MM.dd",
+            "yy/MM/dd",
+            "MM-dd",
+            "--MM-dd",
+            "MMdd",
+            "MM/dd",
+            "MM.dd"
+    )
 
     private fun updateView(view: Int) {
         calendar_fab.beGoneIf(view == YEARLY_VIEW)
