@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Einfacher Kalender</string>
+    <string name="app_name">Schlichter Kalender</string>
     <string name="app_launcher_name">Kalender</string>
     <string name="change_view">Ansicht ändern</string>
     <string name="weekly_view">Wochenansicht</string>
     <string name="monthly_view">Monatsansicht</string>
     <string name="yearly_view">Jahresansicht</string>
-    <string name="simple_event_list">Einfache Terminliste</string>
+    <string name="simple_event_list">Schlichte Terminliste</string>
     <string name="no_upcoming_events">Keine anstehenden Termine</string>
-    <string name="add_some_events">Du kannst neue Termine mit dem Plus Button unten rechts erstellen.</string>
+    <string name="add_some_events">Du kannst neue Termine mit dem Hinzufügen Button unten rechts erstellen.</string>
     <string name="details">Details</string>
     <string name="go_to_today">Gehe zu Heute</string>
     <string name="snooze">Snooze</string>
@@ -63,7 +63,7 @@
     <string name="every_m">Jeden</string>
     <string name="first_m">ersten</string>
     <string name="second_m">zweiten</string>
-    <string name="third_m">driten</string>
+    <string name="third_m">dritten</string>
     <string name="fourth_m">vierten</string>
     <string name="last_m">letzten</string>
 
@@ -100,7 +100,7 @@
     <!-- Birthdays -->
     <string name="birthdays">Geburtstage</string>
     <string name="add_birthdays">Kontaktgeburtstage hinzufügen</string>
-    <string name="no_contacts_permission">Ohne Kontakte Erlaubnis können die Geburtstage nicht geholt werden</string>
+    <string name="no_contacts_permission">Ohne Kontakte Berechtigung können die Geburtstage nicht hinzugefügt werden</string>
     <string name="no_birthdays">Keine Geburtstage gefunden</string>
     <string name="birthdays_added">Geburtstage erfolgreich hinzugefügt</string>
 
@@ -166,8 +166,8 @@
     <string name="type_already_exists">Typ mit diesem Namen existiert bereits</string>
     <string name="color">Farbe</string>
     <string name="regular_event">Regelmässiger Termin</string>
-    <string name="cannot_delete_default_type">Standart-Termin-Typ kann nicht gelöscht werden</string>
-    <string name="select_event_type">Wähle einen Termin Typ</string>
+    <string name="cannot_delete_default_type">Standard Termintyp kann nicht gelöscht werden</string>
+    <string name="select_event_type">Wähle einen Termintyp</string>
     <string name="move_events_into_default">Verschiebe betroffene Termine in den Standard Termintyp</string>
     <string name="remove_affected_events">Lösche betroffene Termine permanent</string>
     <string name="unsync_caldav_calendar">Um CalDAV Kalender zu entfernen, musst du diese desynchronisieren</string>
@@ -183,19 +183,19 @@
 
     <!-- Settings -->
     <string name="manage_event_types">Verwalte Termin-Typen</string>
-    <string name="use_24_hour_format">Verwende 24 h Format</string>
+    <string name="use_24_hour_format">Verwende 24 Stunden Format</string>
     <string name="sunday_first">Sonntag als erster Wochentag</string>
     <string name="start_day_at">Wochenansicht beginnt am</string>
     <string name="end_day_at">Wochenansicht endet am</string>
     <string name="week_numbers">Zeige Kalenderwoche an</string>
-    <string name="vibrate">Vibration bei Errinerung</string>
+    <string name="vibrate">Vibration bei Erinnerung</string>
     <string name="reminder_sound">Erinnerungston</string>
     <string name="default_event_reminder">Standard Termin Erinnerung</string>
-    <string name="no_ringtone_picker">Keine App zum Setzen des Klingentons gefunden</string>
+    <string name="no_ringtone_picker">Keine App zum Setzen des Klingeltons gefunden</string>
     <string name="no_ringtone_selected">Kein Klingelton gewählt</string>
     <string name="day_end_before_start">Terminbeginn kann nicht vor Terminende liegen</string>
     <string name="caldav_sync">CalDAV Sync</string>
-    <string name="event_lists">Event lists</string>
+    <string name="event_lists">Terminlisten</string>
     <string name="display_past_events">Vergangene Termine anzeigen</string>
     <string name="snooze_delay">Erinnerung mit Snooze verschieben um</string>
     <string name="widgets">Widgets</string>
@@ -211,16 +211,16 @@
     <string name="refreshing_complete">Aktualisierung abgeschlossen</string>
     <string name="editing_calendar_failed">Ändern des Kalenders fehlgeschlagen</string>
     <string name="syncing">Synchronisiere…</string>
-    <string name="synchronization_completed">Sync completed</string>
+    <string name="synchronization_completed">Synchronisation erfolgreich</string>
 
     <plurals name="by_minutes">
-        <item quantity="one">%d minute</item>
-        <item quantity="other">%d minutes</item>
+        <item quantity="one">%d Minute</item>
+        <item quantity="other">%d Minuten</item>
     </plurals>
 
     <plurals name="by_hours">
-        <item quantity="one">%d hour</item>
-        <item quantity="other">%d hours</item>
+        <item quantity="one">%d Stunde</item>
+        <item quantity="other">%d Stunden</item>
     </plurals>
 
     <string name="never">Nie</string>
@@ -267,28 +267,28 @@
     <!-- List widget config example events -->
     <string name="sample_title_1">Training</string>
     <string name="sample_description_1">Beintraining</string>
-    <string name="sample_title_2">Treffen mit John</string>
+    <string name="sample_title_2">Treffen mit Paul</string>
     <string name="sample_description_2">Im Steingarten</string>
     <string name="sample_title_3">Bibliothek</string>
-    <string name="sample_title_4">Essen mit Mary</string>
-    <string name="sample_description_4">im Sternen</string>
-    <string name="sample_title_5">Kaffee-Pause</string>
+    <string name="sample_title_4">Essen mit Marie</string>
+    <string name="sample_description_4">Im Einkaufszentrum</string>
+    <string name="sample_title_5">Kaffeepause</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Ein einfacher Kalender mit Events, personalisierbaren Widgets ohne Werbung.</string>
+    <string name="app_short_description">Ein einfacher Kalender mit personalisierbaren Widgets, ganz ohne Werbung.</string>
     <string name="app_long_description">
-        Ein eigenständiger Kalender. Einfaches Erstellen wiederholender Events sowie Erinnerungen, inkl. optionaler Anzeige der Kalenderwochen.
+        Ein schlichter Kalender mit optionaler Google Synchronisation. Du kannst ganz einfach wiederholende Termine sowie Erinnerungen hinzufügen inklusive optionaler Anzeige der Kalenderwochen.
 
-        Enthält ein skalierbares 4x4 Widget, bei welchem die Schriftfarbe sowie die Hintergrundfarbe anpassbar sind.
+        Enthält ein skalierbares 4x4 Widget, bei welchem die Schriftfarbe sowie die Hintergrundfarbe und Transparenz anpassbar sind.
         
-        Dieser Kalender enthält weder Werbung noch unnötige App-Berechtigungen und ist vollständig Open Source.
+        Beinhaltet keine Werbung und benötigt keine unnötigen Berechtigungen. Die App ist komplett Open Source und bietet nach Wunsch anpassbare Farben.
 
-        Berechtigung Speicher ist nur für das Importieren von .ics Termin-Dateien notwendig.
+        Die Speicher-Berechtigung ist nur für das Importieren von .ics Termin-Dateien notwendig.
 
-        Contacts permission is used only at importing contact birthdays.
+        Die Kontakte-Berechtigung wird nur für das Importieren von Geburtstagen benötigt.
 
-        Diese App ist Teil einer grösseren Serie von Apps. Diese findet man unter http://www.simplemobiletools.com
+        Diese App ist nur eine von vielen unserer Apps. Du kannst alle anderen hier finden: http://www.simplemobiletools.com
     </string>
 
     <!--
