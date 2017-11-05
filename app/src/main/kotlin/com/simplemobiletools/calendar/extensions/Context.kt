@@ -244,7 +244,7 @@ fun Context.recheckCalDAVCalendars(callback: () -> Unit) {
 
 fun Context.scheduleCalDAVSync(activate: Boolean) {
     val syncIntent = Intent(this, CalDAVSyncReceiver::class.java)
-    val pendingIntent = PendingIntent.getBroadcast(this, 0, syncIntent, PendingIntent.FLAG_CANCEL_CURRENT)
+    val pendingIntent = PendingIntent.getBroadcast(this, 0, syncIntent, PendingIntent.FLAG_UPDATE_CURRENT)
     val alarm = getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
     if (activate) {
