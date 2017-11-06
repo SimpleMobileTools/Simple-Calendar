@@ -15,10 +15,7 @@ import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.launchNewEventIntent
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.models.DayMonthly
-import com.simplemobiletools.commons.extensions.adjustAlpha
-import com.simplemobiletools.commons.extensions.getContrastColor
-import com.simplemobiletools.commons.extensions.setBackgroundColor
-import com.simplemobiletools.commons.extensions.setTextSize
+import com.simplemobiletools.commons.extensions.*
 import org.joda.time.DateTime
 
 class MyWidgetMonthlyProvider : AppWidgetProvider() {
@@ -125,7 +122,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
         for (i in 0..5) {
             val id = res.getIdentifier("week_num_$i", "id", packageName)
             views.apply {
-                setTextViewText(id, "${days[i * 7 + 3].weekOfYear}:")    // fourth day of the week matters at determining week of the year
+                setText(id, "${days[i * 7 + 3].weekOfYear}:")    // fourth day of the week matters at determining week of the year
                 setTextColor(id, textColor)
                 setTextSize(id, smallerFontSize)
                 setViewVisibility(id, if (displayWeekNumbers) View.VISIBLE else View.GONE)
@@ -155,7 +152,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
                 }
 
                 val newRemoteView = RemoteViews(packageName, R.layout.day_monthly_event_view).apply {
-                    setTextViewText(R.id.day_monthly_event_id, it.title.replace(" ", "\u00A0"))
+                    setText(R.id.day_monthly_event_id, it.title.replace(" ", "\u00A0"))
                     setTextColor(R.id.day_monthly_event_id, eventTextColor)
                     setTextSize(R.id.day_monthly_event_id, smallerFontSize - 3f)
                     setBackgroundColor(R.id.day_monthly_event_id, backgroundColor)
@@ -167,7 +164,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
 
     private fun addDayNumber(context: Context, views: RemoteViews, day: DayMonthly, textColor: Int, id: Int, primaryColor: Int) {
         val newRemoteView = RemoteViews(context.packageName, R.layout.day_monthly_number_view).apply {
-            setTextViewText(R.id.day_monthly_number_id, day.value.toString())
+            setText(R.id.day_monthly_number_id, day.value.toString())
             setTextColor(R.id.day_monthly_number_id, textColor)
             setTextSize(R.id.day_monthly_number_id, context.config.getFontSize() - 3f)
 
@@ -184,7 +181,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
             val appWidgetManager = AppWidgetManager.getInstance(context)
             appWidgetManager.getAppWidgetIds(getComponentName(context)).forEach {
                 val views = RemoteViews(context.packageName, R.layout.fragment_month_widget)
-                views.setTextViewText(R.id.top_value, month)
+                views.setText(R.id.top_value, month)
                 updateDays(context, views, days)
                 appWidgetManager.updateAppWidget(it, views)
             }
@@ -206,7 +203,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
             if (!sundayFirst)
                 index = (index + 1) % letters.size
 
-            views.setTextViewText(id, res.getString(letters[index]))
+            views.setText(id, res.getString(letters[index]))
         }
     }
 

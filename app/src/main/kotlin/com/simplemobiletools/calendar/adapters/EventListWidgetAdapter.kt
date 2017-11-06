@@ -16,7 +16,9 @@ import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.models.ListEvent
 import com.simplemobiletools.calendar.models.ListItem
 import com.simplemobiletools.calendar.models.ListSection
-import com.simplemobiletools.commons.extensions.getColoredIcon
+import com.simplemobiletools.commons.extensions.getColoredBitmap
+import com.simplemobiletools.commons.extensions.setText
+import com.simplemobiletools.commons.extensions.setTextSize
 import org.joda.time.DateTime
 import java.util.*
 
@@ -38,10 +40,10 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
         if (type == ITEM_EVENT) {
             val item = events[position] as ListEvent
             remoteView = RemoteViews(context.packageName, R.layout.event_list_item_widget).apply {
-                setTextViewText(R.id.event_item_title, item.title)
-                setTextViewText(R.id.event_item_description, if (replaceDescription) item.location else item.description)
-                setTextViewText(R.id.event_item_start, if (item.isAllDay) allDayString else Formatter.getTimeFromTS(context, item.startTS))
-                setImageViewBitmap(R.id.event_item_color, context.resources.getColoredIcon(item.color, R.drawable.monthly_event_dot))
+                setText(R.id.event_item_title, item.title)
+                setText(R.id.event_item_description, if (replaceDescription) item.location else item.description)
+                setText(R.id.event_item_start, if (item.isAllDay) allDayString else Formatter.getTimeFromTS(context, item.startTS))
+                setImageViewBitmap(R.id.event_item_color, context.resources.getColoredBitmap(R.drawable.monthly_event_dot, item.color))
 
                 if (item.startTS == item.endTS) {
                     setViewVisibility(R.id.event_item_end, View.INVISIBLE)
@@ -60,18 +62,18 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
                     } else if (item.isAllDay) {
                         setViewVisibility(R.id.event_item_end, View.INVISIBLE)
                     }
-                    setTextViewText(R.id.event_item_end, endString)
+                    setText(R.id.event_item_end, endString)
                 }
 
-                setInt(R.id.event_item_title, "setTextColor", textColor)
-                setInt(R.id.event_item_description, "setTextColor", textColor)
-                setInt(R.id.event_item_start, "setTextColor", textColor)
-                setInt(R.id.event_item_end, "setTextColor", textColor)
+                setTextColor(R.id.event_item_title, textColor)
+                setTextColor(R.id.event_item_description, textColor)
+                setTextColor(R.id.event_item_start, textColor)
+                setTextColor(R.id.event_item_end, textColor)
 
-                setFloat(R.id.event_item_title, "setTextSize", mediumFontSize)
-                setFloat(R.id.event_item_description, "setTextSize", mediumFontSize)
-                setFloat(R.id.event_item_start, "setTextSize", mediumFontSize)
-                setFloat(R.id.event_item_end, "setTextSize", mediumFontSize)
+                setTextSize(R.id.event_item_title, mediumFontSize)
+                setTextSize(R.id.event_item_description, mediumFontSize)
+                setTextSize(R.id.event_item_start, mediumFontSize)
+                setTextSize(R.id.event_item_end, mediumFontSize)
 
                 Intent().apply {
                     putExtra(EVENT_ID, item.id)
@@ -82,9 +84,9 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
         } else {
             val item = events[position] as ListSection
             remoteView = RemoteViews(context.packageName, R.layout.event_list_section_widget).apply {
-                setInt(R.id.event_item_title, "setTextColor", textColor)
-                setFloat(R.id.event_item_title, "setTextSize", mediumFontSize)
-                setTextViewText(R.id.event_item_title, item.title)
+                setTextColor(R.id.event_item_title, textColor)
+                setTextSize(R.id.event_item_title, mediumFontSize)
+                setText(R.id.event_item_title, item.title)
             }
         }
 
