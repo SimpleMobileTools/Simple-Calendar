@@ -255,9 +255,9 @@ fun Context.scheduleCalDAVSync(activate: Boolean) {
     }
 }
 
-val Context.config: Config get() = Config.newInstance(this)
+val Context.config: Config get() = Config.newInstance(applicationContext)
 
-val Context.dbHelper: DBHelper get() = DBHelper.newInstance(this)
+val Context.dbHelper: DBHelper get() = DBHelper.newInstance(applicationContext)
 
 fun Context.addDayNumber(rawTextColor: Int, day: DayMonthly, linearLayout: LinearLayout, dayLabelHeight: Int, callback: (Int) -> Unit) {
     var textColor = rawTextColor
