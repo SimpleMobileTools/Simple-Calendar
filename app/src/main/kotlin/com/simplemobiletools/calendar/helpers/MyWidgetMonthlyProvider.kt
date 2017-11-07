@@ -190,7 +190,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
 
     private fun updateDayLabels(context: Context, views: RemoteViews, textColor: Int) {
         val sundayFirst = context.config.isSundayFirst
-        val smallerFontSize = context.config.getFontSize() - 3f
+        val smallerFontSize = context.config.getFontSize()
         val res = context.resources
         val packageName = context.packageName
         val letters = letterIDs
