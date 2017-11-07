@@ -108,9 +108,14 @@
     <!-- Birthdays -->
     <string name="birthdays">Дни рождения</string>
     <string name="add_birthdays">Добавить дни рождения контактов</string>
-    <string name="no_contacts_permission">Для получения дней рождения нужен доступ к контактам</string>
     <string name="no_birthdays">Дни рождения не найдены</string>
     <string name="birthdays_added">Дни рождения успешно добавлены</string>
+
+    <!-- Anniversaries -->
+    <string name="anniversaries">Anniversaries</string>
+    <string name="add_anniversaries">Add contact anniversaries</string>
+    <string name="no_anniversaries">No anniversaries have been found</string>
+    <string name="anniversaries_added">Anniversaries added successfully</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Напоминание</string>

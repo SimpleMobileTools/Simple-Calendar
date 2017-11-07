@@ -100,9 +100,14 @@
     <!-- Birthdays -->
     <string name="birthdays">Birthdays</string>
     <string name="add_birthdays">Add contact birthdays</string>
-    <string name="no_contacts_permission">Cannot obtain birthdays without the Contacts permission</string>
     <string name="no_birthdays">No birthdays have been found</string>
     <string name="birthdays_added">Birthdays added successfully</string>
+
+    <!-- Anniversaries -->
+    <string name="anniversaries">Anniversaries</string>
+    <string name="add_anniversaries">Add contact anniversaries</string>
+    <string name="no_anniversaries">No anniversaries have been found</string>
+    <string name="anniversaries_added">Anniversaries added successfully</string>
 
     <!-- Event Reminders -->
     <string name="reminder">रिमाइंडर</string>

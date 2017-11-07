@@ -100,9 +100,14 @@
     <!-- Birthdays -->
     <string name="birthdays">Deizioù-ha-bloaz</string>
     <string name="add_birthdays">Ouzhpennañ deizioù-ha-bloaz an darempredoù</string>
-    <string name="no_contacts_permission">N\'haller ket kaout an deizioù-ha-bloaz hep an aotre Darempredoù</string>
     <string name="no_birthdays">N\'eus ket kavet deiz-ha-bloaz bet</string>
     <string name="birthdays_added">Ouzhpennet an deizioù-ha-bloaz gant berzh</string>
+
+    <!-- Anniversaries -->
+    <string name="anniversaries">Anniversaries</string>
+    <string name="add_anniversaries">Add contact anniversaries</string>
+    <string name="no_anniversaries">No anniversaries have been found</string>
+    <string name="anniversaries_added">Anniversaries added successfully</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Adc\'halv</string>

@@ -100,9 +100,14 @@
     <!-- Birthdays -->
     <string name="birthdays">Verjaardagen</string>
     <string name="add_birthdays">Verjaardagen van contacten toevoegen</string>
-    <string name="no_contacts_permission">Kan geen verjaardagen van contacten ophalen zonder deze permissie</string>
     <string name="no_birthdays">Geen verjaardagen van contacten gevonden</string>
     <string name="birthdays_added">Verjaardagen van contacten toegevoegd</string>
+
+    <!-- Anniversaries -->
+    <string name="anniversaries">Anniversaries</string>
+    <string name="add_anniversaries">Add contact anniversaries</string>
+    <string name="no_anniversaries">No anniversaries have been found</string>
+    <string name="anniversaries_added">Anniversaries added successfully</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Herinnering</string>
