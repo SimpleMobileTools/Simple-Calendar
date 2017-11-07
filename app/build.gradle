@@ -3,13 +3,13 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.2"
+    compileSdkVersion 27
+    buildToolsVersion "27.0.1"
 
     defaultConfig {
         applicationId "com.simplemobiletools.calendar"
         minSdkVersion 16
-        targetSdkVersion 26
+        targetSdkVersion 27
         versionCode 100
         versionName "2.9.2"
         multiDexEnabled true
@@ -40,16 +40,16 @@ android {
 }
 
 ext {
-    leakCanaryVersion = '1.5.2'
+    leakCanaryVersion = '1.5.4'
 }
 
 dependencies {
-    compile 'com.simplemobiletools:commons:2.36.2'
-    compile 'joda-time:joda-time:2.9.1'
-    compile 'com.facebook.stetho:stetho:1.4.1'
+    compile 'com.simplemobiletools:commons:2.37.1'
+    compile 'joda-time:joda-time:2.9.9'
+    compile 'com.facebook.stetho:stetho:1.5.0'
     compile 'com.bignerdranch.android:recyclerview-multiselect:0.2'
-    compile 'com.android.support:multidex:1.0.1'
-    compile 'com.google.code.gson:gson:2.8.0'
+    compile 'com.android.support:multidex:1.0.2'
+    compile 'com.google.code.gson:gson:2.8.2'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     debugCompile "com.squareup.leakcanary:leakcanary-android:$leakCanaryVersion"

@@ -48,20 +48,20 @@ class MonthFragment : Fragment(), MonthlyCalendar {
     lateinit var mConfig: Config
     lateinit var mCalendar: MonthlyCalendarImpl
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater!!.inflate(R.layout.fragment_month, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val view = inflater.inflate(R.layout.fragment_month, container, false)
         mRes = resources
-        mPackageName = activity.packageName
+        mPackageName = activity!!.packageName
 
         mHolder = view.calendar_holder
-        mDayCode = arguments.getString(DAY_CODE)
-        mConfig = context.config
+        mDayCode = arguments!!.getString(DAY_CODE)
+        mConfig = context!!.config
         mSundayFirst = mConfig.isSundayFirst
 
         setupButtons()
 
         setupLabels()
-        mCalendar = MonthlyCalendarImpl(this, context)
+        mCalendar = MonthlyCalendarImpl(this, context!!)
 
         return view
     }
@@ -125,15 +125,15 @@ class MonthFragment : Fragment(), MonthlyCalendar {
     }
 
     private fun showMonthDialog() {
-        activity.setTheme(context.getAppropriateTheme())
-        val view = getLayoutInflater(arguments).inflate(R.layout.date_picker, null)
+        activity!!.setTheme(context!!.getAppropriateTheme())
+        val view = layoutInflater.inflate(R.layout.date_picker, null)
         val datePicker = view.findViewById<DatePicker>(R.id.date_picker)
         datePicker.findViewById<View>(Resources.getSystem().getIdentifier("day", "id", "android")).beGone()
 
         val dateTime = DateTime(mCalendar.mTargetDate.toString())
         datePicker.init(dateTime.year, dateTime.monthOfYear - 1, 1, null)
 
-        AlertDialog.Builder(context)
+        AlertDialog.Builder(context!!)
                 .setNegativeButton(R.string.cancel, null)
                 .setPositiveButton(R.string.ok) { dialog, which -> positivePressed(dateTime, datePicker) }
                 .create().apply {

@@ -30,20 +30,20 @@ class YearFragment : Fragment(), YearlyCalendar {
     lateinit var mView: View
     lateinit var mCalendar: YearlyCalendarImpl
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        mView = inflater!!.inflate(R.layout.fragment_year, container, false)
-        mYear = arguments.getInt(YEAR_LABEL)
-        context.updateTextColors(mView.calendar_holder)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        mView = inflater.inflate(R.layout.fragment_year, container, false)
+        mYear = arguments!!.getInt(YEAR_LABEL)
+        context!!.updateTextColors(mView.calendar_holder)
         setupMonths()
 
-        mCalendar = YearlyCalendarImpl(this, context, mYear)
+        mCalendar = YearlyCalendarImpl(this, context!!, mYear)
 
         return mView
     }
 
     override fun onResume() {
         super.onResume()
-        val sundayFirst = context.config.isSundayFirst
+        val sundayFirst = context!!.config.isSundayFirst
         if (sundayFirst != mSundayFirst) {
             mSundayFirst = sundayFirst
             setupMonths()
@@ -64,7 +64,7 @@ class YearFragment : Fragment(), YearlyCalendar {
         markCurrentMonth(res)
 
         for (i in 1..12) {
-            val monthView = mView.findViewById<SmallMonthView>(res.getIdentifier("month_" + i, "id", activity.packageName))
+            val monthView = mView.findViewById<SmallMonthView>(res.getIdentifier("month_" + i, "id", context!!.packageName))
             var dayOfWeek = dateTime.withMonthOfYear(i).dayOfWeek().get()
             if (!mSundayFirst)
                 dayOfWeek--
@@ -79,10 +79,10 @@ class YearFragment : Fragment(), YearlyCalendar {
     private fun markCurrentMonth(res: Resources) {
         val now = DateTime()
         if (now.year == mYear) {
-            val monthLabel = mView.findViewById<TextView>(res.getIdentifier("month_${now.monthOfYear}_label", "id", activity.packageName))
-            monthLabel.setTextColor(context.config.primaryColor)
+            val monthLabel = mView.findViewById<TextView>(res.getIdentifier("month_${now.monthOfYear}_label", "id", context!!.packageName))
+            monthLabel.setTextColor(context!!.config.primaryColor)
 
-            val monthView = mView.findViewById<SmallMonthView>(res.getIdentifier("month_${now.monthOfYear}", "id", activity.packageName))
+            val monthView = mView.findViewById<SmallMonthView>(res.getIdentifier("month_${now.monthOfYear}", "id", context!!.packageName))
             monthView.todaysId = now.dayOfMonth
         }
     }
@@ -97,7 +97,7 @@ class YearFragment : Fragment(), YearlyCalendar {
         lastHash = hashCode
         val res = resources
         for (i in 1..12) {
-            val monthView = mView.findViewById<SmallMonthView>(res.getIdentifier("month_$i", "id", context.packageName))
+            val monthView = mView.findViewById<SmallMonthView>(res.getIdentifier("month_$i", "id", context!!.packageName))
             monthView.setEvents(events.get(i))
         }
     }

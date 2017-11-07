@@ -14,7 +14,7 @@ import android.graphics.Color
 import android.graphics.PorterDuff
 import android.net.Uri
 import android.os.Build
-import android.support.v7.app.NotificationCompat
+import android.support.v4.app.NotificationCompat
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
@@ -96,10 +96,11 @@ fun Context.scheduleEventIn(notifTS: Long, event: Event) {
     val pendingIntent = getNotificationIntent(applicationContext, event)
     val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
-    if (isKitkatPlus())
+    if (isKitkatPlus()) {
         alarmManager.setExact(AlarmManager.RTC_WAKEUP, notifTS, pendingIntent)
-    else
+    } else {
         alarmManager.set(AlarmManager.RTC_WAKEUP, notifTS, pendingIntent)
+    }
 }
 
 fun Context.cancelNotification(id: Int) {

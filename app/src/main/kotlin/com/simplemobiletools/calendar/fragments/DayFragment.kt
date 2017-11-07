@@ -46,8 +46,8 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEventsListen
         mRes = resources
         mHolder = view.day_holder
 
-        mDayCode = arguments.getString(DAY_CODE)
-        val day = Formatter.getDayTitle(activity.applicationContext, mDayCode)
+        mDayCode = arguments!!.getString(DAY_CODE)
+        val day = Formatter.getDayTitle(context!!, mDayCode)
         mHolder.top_value.apply {
             text = day
             setOnClickListener { pickDay() }
@@ -64,7 +64,7 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEventsListen
     }
 
     private fun setupButtons() {
-        mTextColor = context.config.textColor
+        mTextColor = context!!.config.textColor
 
         mHolder.apply {
             top_left_arrow.drawable.mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP)
@@ -83,14 +83,14 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEventsListen
     }
 
     private fun pickDay() {
-        activity.setTheme(context.getAppropriateTheme())
-        val view = getLayoutInflater(arguments).inflate(R.layout.date_picker, null)
+        activity!!.setTheme(context!!.getAppropriateTheme())
+        val view = layoutInflater.inflate(R.layout.date_picker, null)
         val datePicker = view.findViewById<DatePicker>(R.id.date_picker)
 
         val dateTime = Formatter.getDateTimeFromCode(mDayCode)
         datePicker.init(dateTime.year, dateTime.monthOfYear - 1, dateTime.dayOfMonth, null)
 
-        AlertDialog.Builder(context)
+        AlertDialog.Builder(context!!)
                 .setNegativeButton(R.string.cancel, null)
                 .setPositiveButton(R.string.ok) { dialog, which -> positivePressed(dateTime, datePicker) }
                 .create().apply {
@@ -109,7 +109,7 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEventsListen
     fun checkEvents() {
         val startTS = Formatter.getDayStartTS(mDayCode)
         val endTS = Formatter.getDayEndTS(mDayCode)
-        DBHelper.newInstance(context, this).getEvents(startTS, endTS) {
+        DBHelper.newInstance(context!!, this).getEvents(startTS, endTS) {
             receivedEvents(it)
         }
     }
@@ -121,7 +121,7 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEventsListen
         }
         lastHash = newHash
 
-        val replaceDescription = context.config.replaceDescription
+        val replaceDescription = context!!.config.replaceDescription
         val sorted = ArrayList<Event>(events.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, {
             if (replaceDescription) it.location else it.description
         })))
@@ -142,13 +142,13 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEventsListen
         }
         mHolder.day_events.adapter = eventsAdapter
         DividerItemDecoration(context, DividerItemDecoration.VERTICAL).apply {
-            setDrawable(context.resources.getDrawable(R.drawable.divider))
+            setDrawable(context!!.resources.getDrawable(R.drawable.divider))
             mHolder.day_events.addItemDecoration(this)
         }
     }
 
     private fun editEvent(event: Event) {
-        Intent(activity.applicationContext, EventActivity::class.java).apply {
+        Intent(context, EventActivity::class.java).apply {
             putExtra(EVENT_ID, event.id)
             putExtra(EVENT_OCCURRENCE_TS, event.startTS)
             startActivity(this)
@@ -157,12 +157,12 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEventsListen
 
     override fun deleteItems(ids: ArrayList<Int>) {
         val eventIDs = Array(ids.size, { i -> (ids[i].toString()) })
-        DBHelper.newInstance(activity.applicationContext, this).deleteEvents(eventIDs, true)
+        DBHelper.newInstance(context!!, this).deleteEvents(eventIDs, true)
     }
 
     override fun addEventRepeatException(parentIds: ArrayList<Int>, timestamps: ArrayList<Int>) {
         parentIds.forEachIndexed { index, value ->
-            context.dbHelper.addEventRepeatException(parentIds[index], timestamps[index])
+            context!!.dbHelper.addEventRepeatException(parentIds[index], timestamps[index])
         }
         (activity as DayActivity).recheckEvents()
     }

@@ -35,8 +35,8 @@ class EventListFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEvents
     private var lastHash = 0
     lateinit var mView: View
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        mView = inflater!!.inflate(R.layout.fragment_event_list, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        mView = inflater.inflate(R.layout.fragment_event_list, container, false)
         val placeholderText = String.format(getString(R.string.two_string_placeholder), "${getString(R.string.no_upcoming_events)}\n", getString(R.string.add_some_events))
         mView.calendar_empty_list_placeholder.text = placeholderText
         return mView
@@ -48,9 +48,9 @@ class EventListFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEvents
     }
 
     private fun checkEvents() {
-        val fromTS = DateTime().seconds() - context.config.displayPastEvents * 60
+        val fromTS = DateTime().seconds() - context!!.config.displayPastEvents * 60
         val toTS = DateTime().plusYears(1).seconds()
-        context.dbHelper.getEvents(fromTS, toTS) {
+        context!!.dbHelper.getEvents(fromTS, toTS) {
             receivedEvents(it)
         }
     }
@@ -69,7 +69,7 @@ class EventListFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEvents
         }
         lastHash = newHash
 
-        val filtered = context.getFilteredEvents(events)
+        val filtered = context!!.getFilteredEvents(events)
         val hash = filtered.hashCode()
         if (prevEventsHash == hash)
             return
@@ -77,14 +77,14 @@ class EventListFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEvents
         prevEventsHash = hash
         mEvents = filtered
         val listItems = ArrayList<ListItem>(mEvents.size)
-        val replaceDescription = context.config.replaceDescription
+        val replaceDescription = context!!.config.replaceDescription
         val sorted = mEvents.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { if (replaceDescription) it.location else it.description }))
         val sublist = sorted.subList(0, Math.min(sorted.size, 100))
         var prevCode = ""
         sublist.forEach {
             val code = Formatter.getDayCodeFromTS(it.startTS)
             if (code != prevCode) {
-                val day = Formatter.getDayTitle(context, code)
+                val day = Formatter.getDayTitle(context!!, code)
                 listItems.add(ListSection(day))
                 prevCode = code
             }
@@ -106,11 +106,11 @@ class EventListFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEvents
         mView.calendar_empty_list_placeholder.beVisibleIf(mEvents.isEmpty())
         mView.calendar_events_list.beGoneIf(mEvents.isEmpty())
         if (activity != null)
-            mView.calendar_empty_list_placeholder.setTextColor(activity.config.textColor)
+            mView.calendar_empty_list_placeholder.setTextColor(activity!!.config.textColor)
     }
 
     private fun editEvent(event: ListEvent) {
-        Intent(activity.applicationContext, EventActivity::class.java).apply {
+        Intent(context, EventActivity::class.java).apply {
             putExtra(EVENT_ID, event.id)
             putExtra(EVENT_OCCURRENCE_TS, event.startTS)
             startActivity(this)
@@ -119,12 +119,12 @@ class EventListFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEvents
 
     override fun deleteItems(ids: ArrayList<Int>) {
         val eventIDs = Array(ids.size, { i -> (ids[i].toString()) })
-        DBHelper.newInstance(activity.applicationContext, this).deleteEvents(eventIDs, true)
+        DBHelper.newInstance(context!!, this).deleteEvents(eventIDs, true)
     }
 
     override fun addEventRepeatException(parentIds: ArrayList<Int>, timestamps: ArrayList<Int>) {
         parentIds.forEachIndexed { index, value ->
-            context.dbHelper.addEventRepeatException(value, timestamps[index])
+            context!!.dbHelper.addEventRepeatException(value, timestamps[index])
         }
         checkEvents()
     }
