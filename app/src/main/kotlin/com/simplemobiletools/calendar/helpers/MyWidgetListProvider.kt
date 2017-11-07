@@ -25,10 +25,10 @@ class MyWidgetListProvider : AppWidgetProvider() {
     private val LAUNCH_TODAY = "launch_today"
 
     override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
-        initVariables(context)
+        performUpdate(context)
     }
 
-    private fun initVariables(context: Context) {
+    private fun performUpdate(context: Context) {
         val fontSize = context.config.getFontSize()
         val textColor = context.config.widgetTextColor
 
