@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 2.10.0 *(2017-11-07)*
+----------------------------
+
+ * Allow adding contact anniversaries
+ * Couple monthly view improvements
+ * Remove the wrongly added Fingerprint permission
+
 Version 2.9.2 *(2017-10-30)*
 ----------------------------
 
