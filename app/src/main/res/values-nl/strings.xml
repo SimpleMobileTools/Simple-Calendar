@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Simple Calendar</string>
+    <string name="app_name">Eenvoudige Agenda</string>
     <string name="app_launcher_name">Agenda</string>
     <string name="change_view">Weergave</string>
     <string name="weekly_view">Week</string>
@@ -104,10 +104,10 @@
     <string name="birthdays_added">Verjaardagen van contacten toegevoegd</string>
 
     <!-- Anniversaries -->
-    <string name="anniversaries">Anniversaries</string>
-    <string name="add_anniversaries">Add contact anniversaries</string>
-    <string name="no_anniversaries">No anniversaries have been found</string>
-    <string name="anniversaries_added">Anniversaries added successfully</string>
+    <string name="anniversaries">Feestdagen</string>
+    <string name="add_anniversaries">Feestdagen van contacten toevoegen</string>
+    <string name="no_anniversaries">Geen feestdagen gevonden</string>
+    <string name="anniversaries_added">Feestdagen toegevoegd</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Herinnering</string>
