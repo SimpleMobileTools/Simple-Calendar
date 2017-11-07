@@ -8,8 +8,10 @@
     android:layout_margin="1dp"
     android:ellipsize="none"
     android:gravity="start"
+    android:hyphenationFrequency="none"
     android:maxLines="1"
     android:paddingLeft="@dimen/tiny_margin"
     android:paddingRight="@dimen/tiny_margin"
     android:textSize="@dimen/day_monthly_text_size"
+    tools:targetApi="m"
     tools:text="1"/>
