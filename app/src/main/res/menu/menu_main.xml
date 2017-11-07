@@ -30,6 +30,10 @@
         android:title="@string/add_birthdays"
         app:showAsAction="never"/>
     <item
+        android:id="@+id/add_anniversaries"
+        android:title="@string/add_anniversaries"
+        app:showAsAction="never"/>
+    <item
         android:id="@+id/import_events"
         android:title="@string/import_events_from_ics"
         app:showAsAction="never"/>

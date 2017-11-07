@@ -5,4 +5,5 @@
     <color name="red_text">#FFF62F2F</color>
     <color name="default_birthdays_color">#FF303DF6</color>
     <color name="default_holidays_color">#FF64DD17</color>
+    <color name="default_anniversaries_color">#FFF63030</color>
 </resources>

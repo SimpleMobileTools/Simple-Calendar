@@ -172,6 +172,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
             R.id.refresh_caldav_calendars -> refreshCalDAVCalendars()
             R.id.add_holidays -> addHolidays()
             R.id.add_birthdays -> tryAddBirthdays()
+            R.id.add_anniversaries -> tryAddAnniversaries()
             R.id.import_events -> tryImportEvents()
             R.id.export_events -> tryExportEvents()
             R.id.settings -> launchSettings()
@@ -315,6 +316,18 @@ class MainActivity : SimpleActivity(), NavigationListener {
         }
     }
 
+    private fun tryAddAnniversaries() {
+        handlePermission(PERMISSION_READ_CONTACTS) {
+            if (it) {
+                Thread({
+                    addAnniversaries()
+                }).start()
+            } else {
+                toast(R.string.no_contacts_permission)
+            }
+        }
+    }
+
     private fun handleParseResult(result: IcsImporter.ImportResult) {
         toast(when (result) {
             IcsImporter.ImportResult.IMPORT_OK -> R.string.holidays_imported_successfully
@@ -324,16 +337,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
     }
 
     private fun addBirthdays() {
-        val birthdays = getString(R.string.birthdays)
-        var eventTypeId = dbHelper.getEventTypeIdWithTitle(birthdays)
-        if (eventTypeId == -1) {
-            val eventType = EventType(0, birthdays, resources.getColor(R.color.default_birthdays_color))
-            eventTypeId = dbHelper.insertEventType(eventType)
-        }
-
-        val birthdayImportIDs = dbHelper.getBirthdays().map { it.importId }
-        var birthdaysAdded = 0
-        val dateFormats = getBirthdayFormats()
+        var eventsAdded = 0
         val uri = ContactsContract.Data.CONTENT_URI
         val projection = arrayOf(ContactsContract.Contacts.DISPLAY_NAME,
                 ContactsContract.CommonDataKinds.Event.CONTACT_ID,
@@ -346,27 +350,30 @@ class MainActivity : SimpleActivity(), NavigationListener {
         try {
             cursor = contentResolver.query(uri, projection, selection, selectionArgs, null)
             if (cursor?.moveToFirst() == true) {
+                val dateFormats = getDateFormats()
+                val importIDs = dbHelper.getBirthdays().map { it.importId }
+                val eventTypeId = getBirthdaysEventTypeId()
+
                 do {
                     val contactId = cursor.getIntValue(ContactsContract.CommonDataKinds.Event.CONTACT_ID).toString()
                     val name = cursor.getStringValue(ContactsContract.Contacts.DISPLAY_NAME)
-                    val birthDay = cursor.getStringValue(ContactsContract.CommonDataKinds.Event.START_DATE)
+                    val startDate = cursor.getStringValue(ContactsContract.CommonDataKinds.Event.START_DATE)
 
                     for (format in dateFormats) {
                         try {
                             val formatter = SimpleDateFormat(format, Locale.getDefault())
-                            val date = formatter.parse(birthDay)
-                            if (date.year < 1970)
+                            val date = formatter.parse(startDate)
+                            if (date.year < 70)
                                 date.year = 70
 
                             val timestamp = (date.time / 1000).toInt()
-
                             val lastUpdated = cursor.getLongValue(ContactsContract.CommonDataKinds.Event.CONTACT_LAST_UPDATED_TIMESTAMP)
                             val event = Event(0, timestamp, timestamp, name, importId = contactId, flags = FLAG_ALL_DAY, repeatInterval = YEAR,
                                     eventType = eventTypeId, source = SOURCE_CONTACT_BIRTHDAY, lastUpdated = lastUpdated)
 
-                            if (!birthdayImportIDs.contains(contactId)) {
+                            if (!importIDs.contains(contactId)) {
                                 dbHelper.insert(event, false) {
-                                    birthdaysAdded++
+                                    eventsAdded++
                                 }
                             }
                             break
@@ -382,7 +389,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
         }
 
         runOnUiThread {
-            if (birthdaysAdded > 0) {
+            if (eventsAdded > 0) {
                 toast(R.string.birthdays_added)
                 updateViewPager()
             } else {
@@ -391,7 +398,21 @@ class MainActivity : SimpleActivity(), NavigationListener {
         }
     }
 
-    private fun getBirthdayFormats() = arrayListOf(
+    private fun getBirthdaysEventTypeId(): Int {
+        val birthdays = getString(R.string.birthdays)
+        var eventTypeId = dbHelper.getEventTypeIdWithTitle(birthdays)
+        if (eventTypeId == -1) {
+            val eventType = EventType(0, birthdays, resources.getColor(R.color.default_birthdays_color))
+            eventTypeId = dbHelper.insertEventType(eventType)
+        }
+        return eventTypeId
+    }
+
+    private fun addAnniversaries() {
+
+    }
+
+    private fun getDateFormats() = arrayListOf(
             "yyyy-MM-dd",
             "yyyyMMdd",
             "yyyy.MM.dd",

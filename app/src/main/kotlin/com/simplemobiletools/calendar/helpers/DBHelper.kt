@@ -401,6 +401,13 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         return fillEvents(cursor)
     }
 
+    fun getAnniversaries(): List<Event> {
+        val selection = "$MAIN_TABLE_NAME.$COL_EVENT_SOURCE = ?"
+        val selectionArgs = arrayOf(SOURCE_CONTACT_ANNIVERSARY)
+        val cursor = getEventsCursor(selection, selectionArgs)
+        return fillEvents(cursor)
+    }
+
     fun deleteEvents(ids: Array<String>, deleteFromCalDAV: Boolean) {
         val args = TextUtils.join(", ", ids)
         val selection = "$MAIN_TABLE_NAME.$COL_ID IN ($args)"

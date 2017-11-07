@@ -127,6 +127,7 @@ val FONT_SIZE_LARGE = 2
 val SOURCE_SIMPLE_CALENDAR = "simple-calendar"
 val SOURCE_IMPORTED_ICS = "imported-ics"
 val SOURCE_CONTACT_BIRTHDAY = "contact-birthday"
+val SOURCE_CONTACT_ANNIVERSARY = "contact-anniversary"
 
 // deprecated
 val SOURCE_GOOGLE_CALENDAR = 1
