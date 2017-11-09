@@ -47,7 +47,7 @@ ext {
 }
 
 dependencies {
-    compile 'com.simplemobiletools:commons:2.37.2'
+    compile 'com.simplemobiletools:commons:2.38.2'
     compile 'joda-time:joda-time:2.9.9'
     compile 'com.facebook.stetho:stetho:1.5.0'
     compile 'com.bignerdranch.android:recyclerview-multiselect:0.2'
