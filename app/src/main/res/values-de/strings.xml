@@ -104,10 +104,10 @@
     <string name="birthdays_added">Geburtstage erfolgreich hinzugefügt</string>
 
     <!-- Anniversaries -->
-    <string name="anniversaries">Anniversaries</string>
-    <string name="add_anniversaries">Add contact anniversaries</string>
-    <string name="no_anniversaries">No anniversaries have been found</string>
-    <string name="anniversaries_added">Anniversaries added successfully</string>
+    <string name="anniversaries">Jahrestage</string>
+    <string name="add_anniversaries">Kontakt zu Jahrestagen hinzufügen</string>
+    <string name="no_anniversaries">Es wurden keine Jahrestage gefunden</string>
+    <string name="anniversaries_added">Jahrestage erfolgreich hinzugefügt</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Erinnerung</string>
