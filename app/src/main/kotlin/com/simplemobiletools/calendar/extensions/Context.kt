@@ -96,10 +96,10 @@ fun Context.scheduleEventIn(notifTS: Long, event: Event) {
     val pendingIntent = getNotificationIntent(applicationContext, event)
     val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
-    if (isKitkatPlus()) {
-        alarmManager.setExact(AlarmManager.RTC_WAKEUP, notifTS, pendingIntent)
-    } else {
-        alarmManager.set(AlarmManager.RTC_WAKEUP, notifTS, pendingIntent)
+    when {
+        isMarshmallowPlus() -> alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, notifTS, pendingIntent)
+        isKitkatPlus() -> alarmManager.setExact(AlarmManager.RTC_WAKEUP, notifTS, pendingIntent)
+        else -> alarmManager.set(AlarmManager.RTC_WAKEUP, notifTS, pendingIntent)
     }
 }
 
