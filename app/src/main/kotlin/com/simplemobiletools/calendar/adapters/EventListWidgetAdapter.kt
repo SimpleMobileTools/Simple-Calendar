@@ -22,7 +22,7 @@ import com.simplemobiletools.commons.extensions.setTextSize
 import org.joda.time.DateTime
 import java.util.*
 
-class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteViewsService.RemoteViewsFactory {
+class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteViewsFactory {
     private val ITEM_EVENT = 0
     private val ITEM_HEADER = 1
 
