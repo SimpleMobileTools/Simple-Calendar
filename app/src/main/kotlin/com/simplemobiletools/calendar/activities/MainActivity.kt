@@ -53,6 +53,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
     private val PREFILLED_WEEKS = 61
 
     private var mIsMonthSelected = false
+    private var mStoredUseEnglish = false
     private var mStoredTextColor = 0
     private var mStoredBackgroundColor = 0
     private var mStoredPrimaryColor = 0
@@ -117,6 +118,11 @@ class MainActivity : SimpleActivity(), NavigationListener {
 
     override fun onResume() {
         super.onResume()
+        if (mStoredUseEnglish != config.useEnglish) {
+            restartActivity()
+            return
+        }
+
         if (mStoredTextColor != config.textColor || mStoredBackgroundColor != config.backgroundColor || mStoredPrimaryColor != config.primaryColor
                 || mStoredDayCode != Formatter.getTodayCode()) {
             updateViewPager()
@@ -143,11 +149,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
 
     override fun onPause() {
         super.onPause()
-        mStoredTextColor = config.textColor
-        mStoredIsSundayFirst = config.isSundayFirst
-        mStoredBackgroundColor = config.backgroundColor
-        mStoredPrimaryColor = config.primaryColor
-        mStoredUse24HourFormat = config.use24hourFormat
+        storeStateVariables()
     }
 
     override fun onStop() {
@@ -158,9 +160,12 @@ class MainActivity : SimpleActivity(), NavigationListener {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
-        menu.findItem(R.id.filter).isVisible = mShouldFilterBeVisible
-        menu.findItem(R.id.go_to_today).isVisible = shouldGoToTodayBeVisible()
-        menu.findItem(R.id.refresh_caldav_calendars).isVisible = config.caldavSync
+        updateMenuTextSize(resources, menu)
+        menu.apply {
+            findItem(R.id.filter).isVisible = mShouldFilterBeVisible
+            findItem(R.id.go_to_today).isVisible = shouldGoToTodayBeVisible()
+            findItem(R.id.refresh_caldav_calendars).isVisible = config.caldavSync
+        }
         return true
     }
 
@@ -191,9 +196,13 @@ class MainActivity : SimpleActivity(), NavigationListener {
     }
 
     private fun storeStateVariables() {
-        mStoredTextColor = config.textColor
-        mStoredPrimaryColor = config.primaryColor
-        mStoredBackgroundColor = config.backgroundColor
+        config.apply {
+            mStoredUseEnglish = useEnglish
+            mStoredIsSundayFirst = isSundayFirst
+            mStoredTextColor = textColor
+            mStoredPrimaryColor = primaryColor
+            mStoredBackgroundColor = backgroundColor
+        }
         mStoredDayCode = Formatter.getTodayCode()
     }
 
