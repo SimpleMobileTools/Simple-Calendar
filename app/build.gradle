@@ -34,7 +34,6 @@ android {
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
-        debug.java.srcDirs += 'src/debug/kotlin'
     }
 
     lintOptions {
@@ -48,7 +47,7 @@ ext {
 }
 
 dependencies {
-    compile 'com.simplemobiletools:commons:2.38.6'
+    compile 'com.simplemobiletools:commons:2.38.9'
     compile 'joda-time:joda-time:2.9.9'
     compile 'com.facebook.stetho:stetho:1.5.0'
     compile 'com.bignerdranch.android:recyclerview-multiselect:0.2'
