@@ -13,17 +13,20 @@ import kotlinx.android.synthetic.main.dialog_custom_event_reminder.view.*
 class CustomEventReminderDialog(val activity: Activity, val selectedMinutes: Int = 0, val callback: (minutes: Int) -> Unit) {
     var dialog: AlertDialog
     var view = (activity.layoutInflater.inflate(R.layout.dialog_custom_event_reminder, null) as ViewGroup).apply {
-        if (selectedMinutes == 0) {
-            dialog_radio_view.check(R.id.dialog_radio_minutes)
-        } else if (selectedMinutes % 1440 == 0) {
-            dialog_radio_view.check(R.id.dialog_radio_days)
-            dialog_custom_reminder_value.setText((selectedMinutes / 1440).toString())
-        } else if (selectedMinutes % 60 == 0) {
-            dialog_radio_view.check(R.id.dialog_radio_hours)
-            dialog_custom_reminder_value.setText((selectedMinutes / 60).toString())
-        } else {
-            dialog_radio_view.check(R.id.dialog_radio_minutes)
-            dialog_custom_reminder_value.setText(selectedMinutes.toString())
+        when {
+            selectedMinutes == 0 -> dialog_radio_view.check(R.id.dialog_radio_minutes)
+            selectedMinutes % 1440 == 0 -> {
+                dialog_radio_view.check(R.id.dialog_radio_days)
+                dialog_custom_reminder_value.setText((selectedMinutes / 1440).toString())
+            }
+            selectedMinutes % 60 == 0 -> {
+                dialog_radio_view.check(R.id.dialog_radio_hours)
+                dialog_custom_reminder_value.setText((selectedMinutes / 60).toString())
+            }
+            else -> {
+                dialog_radio_view.check(R.id.dialog_radio_minutes)
+                dialog_custom_reminder_value.setText(selectedMinutes.toString())
+            }
         }
     }
 
