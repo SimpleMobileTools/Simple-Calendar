@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Simple Calendar</string>
-    <string name="app_launcher_name">Simple Calendar</string>
+    <string name="app_name">Prosty Kalendarz</string>
+    <string name="app_launcher_name">Kalendarz</string>
     <string name="change_view">Zmień widok</string>
     <string name="weekly_view">Tydzień</string>
     <string name="monthly_view">Miesiąc</string>
     <string name="yearly_view">Rok</string>
     <string name="simple_event_list">Prosta lista zdarzeń</string>
     <string name="no_upcoming_events">Wygląda na to, że nie masz żadnych nadchodzących wydarzeń.</string>
-    <string name="add_some_events">Możesz je dodawać za pomocą przycisku \"+\" na dole.</string>
+    <string name="add_some_events">Możesz je dodawać za pomocą przycisku \"+\" znajdującego na dole.</string>
     <string name="details">Szczegóły</string>
     <string name="go_to_today">Przejdź do dnia dzisiejszego</string>
     <string name="snooze">Drzemka</string>
@@ -22,7 +22,7 @@
     <string name="edit_event">Edytuj wydarzenie</string>
     <string name="new_event">Nowe wydarzenie</string>
     <string name="title_empty">Tytuł nie może być pusty</string>
-    <string name="end_before_start">Wydarzenie nie może zakończyć się wcześniej niż się zaczyna</string>
+    <string name="end_before_start">Wydarzenie nie może zakończyć się wcześniej, niż się zaczyna</string>
     <string name="event_added">Wydarzenie zostało dodane</string>
     <string name="past_event_added">Wydarzenie z przeszłości zostało dodane</string>
     <string name="event_updated">Wydarzenie zostało zaktualizowane</string>
@@ -101,16 +101,16 @@
     </plurals>
 
     <!-- Birthdays -->
-    <string name="birthdays">Birthdays</string>
-    <string name="add_birthdays">Add contact birthdays</string>
-    <string name="no_birthdays">No birthdays have been found</string>
-    <string name="birthdays_added">Birthdays added successfully</string>
+    <string name="birthdays">Urodziny</string>
+    <string name="add_birthdays">Dodaj urodziny kontaktów</string>
+    <string name="no_birthdays">Nie znaleziono żadnych urodzin</string>
+    <string name="birthdays_added">Urodziny zostały dodane</string>
 
     <!-- Anniversaries -->
-    <string name="anniversaries">Anniversaries</string>
-    <string name="add_anniversaries">Add contact anniversaries</string>
-    <string name="no_anniversaries">No anniversaries have been found</string>
-    <string name="anniversaries_added">Anniversaries added successfully</string>
+    <string name="anniversaries">Rocznice</string>
+    <string name="add_anniversaries">Dodaj rocznice kontaktów</string>
+    <string name="no_anniversaries">Nie znaleziono żadnych rocznic</string>
+    <string name="anniversaries_added">Rocznice zostały dodane</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Przypomnienie</string>
@@ -162,7 +162,7 @@
 
     <!-- Event details -->
     <string name="title">Tytuł</string>
-    <string name="location">Location</string>
+    <string name="location">Lokalizacja</string>
     <string name="description">Opis</string>
     <string name="all_day">Całodniowe</string>
 
@@ -180,7 +180,7 @@
     <string name="select_event_type">Wybierz typ wydarzenia</string>
     <string name="move_events_into_default">Przenieś powiązane wydarzenia do domyślnego typu wydarzeń</string>
     <string name="remove_affected_events">Usuń nieodwracalnie powiązane wydarzenia</string>
-    <string name="unsync_caldav_calendar">To remove a CalDAV calendar you have to unsynchronize it</string>
+    <string name="unsync_caldav_calendar">Aby usunąć kalendarz CalDAV, musisz wyłączyć jego synchronizację</string>
 
     <!-- Holidays -->
     <string name="holidays">Święta</string>
@@ -204,24 +204,24 @@
     <string name="no_ringtone_picker">Nie znalazłem aplikacji mogącej ustawiać dzwonki</string>
     <string name="no_ringtone_selected">Żaden</string>
     <string name="day_end_before_start">Dzień nie może zakończyć się wcześniej niż się zaczyna</string>
-    <string name="caldav_sync">CalDAV sync</string>
-    <string name="event_lists">Event lists</string>
+    <string name="caldav_sync">Synchronizacja CalDAV</string>
+    <string name="event_lists">Lista wydarzeń</string>
     <string name="display_past_events">Pokazuj wydarzenia z przeszłości</string>
     <string name="snooze_delay">Opóźnij przypomnienie o</string>
     <string name="widgets">Widżety</string>
-    <string name="replace_description_with_location">Replace Description with Location at list view entries</string>
+    <string name="replace_description_with_location">Zastąp Opis z Lokalizacją w widoku wejść</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
-    <string name="select_caldav_calendars">Select calendars to sync</string>
-    <string name="manage_synced_calendars">Manage synced calendars</string>
-    <string name="store_locally_only">Store locally only</string>
-    <string name="refresh_caldav_calendars">Refresh CalDAV calendars</string>
-    <string name="refreshing">Refreshing…</string>
-    <string name="refreshing_complete">Refreshing complete</string>
-    <string name="editing_calendar_failed">Editing calendar failed</string>
-    <string name="syncing">Syncing…</string>
-    <string name="synchronization_completed">Sync completed</string>
+    <string name="select_caldav_calendars">Wybierz kalendarze, które chcesz zsynchronizować</string>
+    <string name="manage_synced_calendars">Zarządzaj zsynchronizowanymi kalendarzami</string>
+    <string name="store_locally_only">Przechowuj lokalnie</string>
+    <string name="refresh_caldav_calendars">Odśwież kalendarze CalDAV</string>
+    <string name="refreshing">Odświeżanie…</string>
+    <string name="refreshing_complete">Odświeżanie zakończone</string>
+    <string name="editing_calendar_failed">Edytowanie kalendarza nie powiodło się</string>
+    <string name="syncing">Synchronizowanie…</string>
+    <string name="synchronization_completed">Synchronizacja zakończona</string>
 
     <plurals name="by_minutes">
         <item quantity="one">%d minutę</item>
@@ -290,15 +290,15 @@
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Prosty kalendarz z wydarzeniami, widżetami i bez reklam.</string>
     <string name="app_long_description">"
-        Prosty kalendarz z obsługą synchornizacji z Dyskiem Google. Z łatwością możesz dzięki temu tworzyć wydarzenia i przypomnienia, które nigdy nie zaginą.
-        
+        Prosty kalendarz z obsługą synchornizacji z Dyskiem Google. Dzięki niemu możesz z łatwością tworzyć wydarzenia i przypomnienia, które nigdy nie zaginą.
+
         Zawiera widżet 4x4 z możliwością ustawiania koloru tekstu i tła, a dla tego drugiego również stopień przezroczystości.
 
         Nie zawiera żadnych żadnych reklam, nie potrzebuje masy uprawnień. Jest w pełni otwartoźródłowy. Kolory w aplikacji można dowolnie modyfikować.
 
-        The Storage permission is needed only for exporting or importing events from .ics files.
+        Uprawniena pamięci są potrzebne tylko do eksportowania lub importowania wydarzeń z plików .isc.
 
-        Contacts permission is used only at importing contact birthdays.
+        Uprawnienia kontaktów są używane tylko do importowania urodzin.
 
         Niniejsza aplikacja jest tylko częścią naszej kolekcji prostych narzędzi. Ta, jak i pozostałe, dostępne są na stronie http://www.simplemobiletools.com
     </string>
