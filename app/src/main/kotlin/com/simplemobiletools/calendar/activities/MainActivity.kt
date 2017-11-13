@@ -566,7 +566,8 @@ class MainActivity : SimpleActivity(), NavigationListener {
     }
 
     private fun launchAbout() {
-        startAboutActivity(R.string.app_name, LICENSE_KOTLIN or LICENSE_JODA or LICENSE_STETHO or LICENSE_MULTISELECT, BuildConfig.VERSION_NAME)
+        startAboutActivity(R.string.app_name, LICENSE_KOTLIN or LICENSE_JODA or LICENSE_STETHO or LICENSE_MULTISELECT or LICENSE_GSON or
+                LICENSE_LEAK_CANARY, BuildConfig.VERSION_NAME)
     }
 
     private fun resetTitle() {
