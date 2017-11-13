@@ -3,7 +3,6 @@ package com.simplemobiletools.calendar.activities
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
-import android.graphics.PorterDuff
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
 import android.view.Menu
@@ -732,11 +731,12 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     }
 
     private fun updateIconColors() {
-        event_time_image.setColorFilter(config.textColor, PorterDuff.Mode.SRC_IN)
-        event_repetition_image.setColorFilter(config.textColor, PorterDuff.Mode.SRC_IN)
-        event_reminder_image.setColorFilter(config.textColor, PorterDuff.Mode.SRC_IN)
-        event_type_image.setColorFilter(config.textColor, PorterDuff.Mode.SRC_IN)
-        event_caldav_calendar_image.setColorFilter(config.textColor, PorterDuff.Mode.SRC_IN)
+        val textColor = config.textColor
+        event_time_image.applyColorFilter(textColor)
+        event_repetition_image.applyColorFilter(textColor)
+        event_reminder_image.applyColorFilter(textColor)
+        event_type_image.applyColorFilter(textColor)
+        event_caldav_calendar_image.applyColorFilter(textColor)
     }
 
     override fun eventInserted(event: Event) {

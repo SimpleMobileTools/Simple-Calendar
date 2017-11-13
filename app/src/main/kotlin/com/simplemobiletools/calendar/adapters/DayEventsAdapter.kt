@@ -1,6 +1,5 @@
 package com.simplemobiletools.calendar.adapters
 
-import android.graphics.PorterDuff
 import android.view.View
 import android.view.ViewGroup
 import com.simplemobiletools.calendar.R
@@ -10,6 +9,7 @@ import com.simplemobiletools.calendar.extensions.shareEvents
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.interfaces.DeleteEventsListener
 import com.simplemobiletools.calendar.models.Event
+import com.simplemobiletools.commons.extensions.applyColorFilter
 import com.simplemobiletools.commons.extensions.beInvisible
 import com.simplemobiletools.commons.extensions.beInvisibleIf
 import kotlinx.android.synthetic.main.event_item_day_view.view.*
@@ -55,7 +55,7 @@ class DayEventsAdapter(activity: SimpleActivity, val events: List<Event>, val li
             event_item_description.text = if (replaceDescriptionWithLocation) event.location else event.description
             event_item_start.text = if (event.getIsAllDay()) allDayString else Formatter.getTimeFromTS(context, event.startTS)
             event_item_end.beInvisibleIf(event.startTS == event.endTS)
-            event_item_color.setColorFilter(event.color, PorterDuff.Mode.SRC_IN)
+            event_item_color.applyColorFilter(event.color)
 
             if (event.startTS != event.endTS) {
                 val startCode = Formatter.getDayCodeFromTS(event.startTS)

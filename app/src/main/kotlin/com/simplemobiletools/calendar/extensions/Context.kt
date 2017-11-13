@@ -11,7 +11,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.res.Resources
 import android.graphics.Color
-import android.graphics.PorterDuff
 import android.net.Uri
 import android.os.Build
 import android.support.v4.app.NotificationCompat
@@ -298,7 +297,7 @@ fun Context.addDayEvents(day: DayMonthly, linearLayout: LinearLayout, res: Resou
     val eventLayoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
 
     day.dayEvents.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title })).forEach {
-        backgroundDrawable.mutate().setColorFilter(it.color, PorterDuff.Mode.SRC_IN)
+        backgroundDrawable.applyColorFilter(it.color)
         eventLayoutParams.setMargins(dividerMargin, 0, dividerMargin, dividerMargin)
 
         var textColor = it.color.getContrastColor()

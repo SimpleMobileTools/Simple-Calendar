@@ -2,7 +2,6 @@ package com.simplemobiletools.calendar.fragments
 
 import android.content.Intent
 import android.content.res.Resources
-import android.graphics.PorterDuff
 import android.graphics.Rect
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -22,6 +21,7 @@ import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.interfaces.WeeklyCalendar
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.views.MyScrollView
+import com.simplemobiletools.commons.extensions.applyColorFilter
 import com.simplemobiletools.commons.extensions.beGone
 import com.simplemobiletools.commons.extensions.getContrastColor
 import kotlinx.android.synthetic.main.fragment_week.*
@@ -306,7 +306,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             val minutes = DateTime().minuteOfDay
             val todayColumn = getColumnWithId(todayColumnIndex)
             (inflater.inflate(R.layout.week_now_marker, null, false) as ImageView).apply {
-                setColorFilter(primaryColor, PorterDuff.Mode.SRC_IN)
+                applyColorFilter(primaryColor)
                 mView.week_events_holder.addView(this, 0)
                 val extraWidth = (todayColumn.width * 0.3).toInt()
                 val markerHeight = resources.getDimension(R.dimen.weekly_view_now_height).toInt()

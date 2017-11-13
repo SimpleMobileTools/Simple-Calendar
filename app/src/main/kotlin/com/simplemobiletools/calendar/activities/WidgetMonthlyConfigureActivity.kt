@@ -6,7 +6,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.res.Resources
 import android.graphics.Color
-import android.graphics.PorterDuff
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.LinearLayout
@@ -23,6 +22,7 @@ import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.models.DayMonthly
 import com.simplemobiletools.commons.dialogs.ColorPickerDialog
 import com.simplemobiletools.commons.extensions.adjustAlpha
+import com.simplemobiletools.commons.extensions.applyColorFilter
 import com.simplemobiletools.commons.extensions.beVisible
 import kotlinx.android.synthetic.main.first_row.*
 import kotlinx.android.synthetic.main.top_navigation.*
@@ -130,8 +130,8 @@ class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
         mWeakTextColor = mTextColorWithoutTransparency.adjustAlpha(LOW_ALPHA)
         mPrimaryColor = config.primaryColor
 
-        top_left_arrow.drawable.mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP)
-        top_right_arrow.drawable.mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP)
+        top_left_arrow.applyColorFilter(mTextColor)
+        top_right_arrow.applyColorFilter(mTextColor)
         top_value.setTextColor(mTextColor)
         config_text_color.setBackgroundColor(mTextColor)
         config_save.setTextColor(mTextColor)

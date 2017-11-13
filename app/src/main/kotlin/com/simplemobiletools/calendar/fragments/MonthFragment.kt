@@ -3,7 +3,6 @@ package com.simplemobiletools.calendar.fragments
 import android.content.Context
 import android.content.Intent
 import android.content.res.Resources
-import android.graphics.PorterDuff
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AlertDialog
@@ -24,6 +23,7 @@ import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.models.DayMonthly
+import com.simplemobiletools.commons.extensions.applyColorFilter
 import com.simplemobiletools.commons.extensions.beGone
 import com.simplemobiletools.commons.extensions.beVisibleIf
 import com.simplemobiletools.commons.extensions.setupDialogStuff
@@ -106,7 +106,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         mPrimaryColor = mConfig.primaryColor
 
         mHolder.top_left_arrow.apply {
-            drawable.mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP)
+            applyColorFilter(mTextColor)
             background = null
             setOnClickListener {
                 listener?.goLeft()
@@ -114,7 +114,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         }
 
         mHolder.top_right_arrow.apply {
-            drawable.mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP)
+            applyColorFilter(mTextColor)
             background = null
             setOnClickListener {
                 listener?.goRight()

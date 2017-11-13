@@ -1,7 +1,6 @@
 package com.simplemobiletools.calendar.adapters
 
 import android.content.Context
-import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +13,7 @@ import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.models.ListEvent
 import com.simplemobiletools.calendar.models.ListItem
 import com.simplemobiletools.calendar.models.ListSection
+import com.simplemobiletools.commons.extensions.applyColorFilter
 import com.simplemobiletools.commons.extensions.beInvisibleIf
 import kotlinx.android.synthetic.main.event_list_item_widget.view.*
 
@@ -69,7 +69,7 @@ class EventListWidgetAdapterOld(val context: Context, val mEvents: List<ListItem
                 end?.setTextColor(mTextColor)
                 title.setTextColor(mTextColor)
                 description?.setTextColor(mTextColor)
-                color?.setColorFilter(mTextColor, PorterDuff.Mode.SRC_IN)
+                color?.applyColorFilter(mTextColor)
             }
         } else {
             val item = mEvents[position] as ListSection

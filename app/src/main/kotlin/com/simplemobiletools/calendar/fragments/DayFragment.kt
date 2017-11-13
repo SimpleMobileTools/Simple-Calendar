@@ -2,7 +2,6 @@ package com.simplemobiletools.calendar.fragments
 
 import android.content.Intent
 import android.content.res.Resources
-import android.graphics.PorterDuff
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AlertDialog
@@ -26,6 +25,7 @@ import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.interfaces.DeleteEventsListener
 import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.models.Event
+import com.simplemobiletools.commons.extensions.applyColorFilter
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import kotlinx.android.synthetic.main.fragment_day.view.*
 import kotlinx.android.synthetic.main.top_navigation.view.*
@@ -67,8 +67,8 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEventsListen
         mTextColor = context!!.config.textColor
 
         mHolder.apply {
-            top_left_arrow.drawable.mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP)
-            top_right_arrow.drawable.mutate().setColorFilter(mTextColor, PorterDuff.Mode.SRC_ATOP)
+            top_left_arrow.applyColorFilter(mTextColor)
+            top_right_arrow.applyColorFilter(mTextColor)
             top_left_arrow.background = null
             top_right_arrow.background = null
 
