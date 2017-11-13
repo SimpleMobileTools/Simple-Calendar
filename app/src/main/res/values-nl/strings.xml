@@ -24,7 +24,6 @@
     <string name="title_empty">Titel kan niet leeg zijn</string>
     <string name="end_before_start">De begintijd valt na de eindtijd</string>
     <string name="event_added">Afspraak gemaakt</string>
-    <string name="past_event_added">Afgelopen afspraak toegevoegd</string>
     <string name="event_updated">Afspraak bijgewerkt</string>
     <string name="filter">Filter</string>
     <string name="filter_events_by_type">Afspraken op type filteren</string>

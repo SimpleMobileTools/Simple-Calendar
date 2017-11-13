@@ -24,7 +24,6 @@
     <string name="title_empty">N\'hall ket an titl bezañ goullo</string>
     <string name="end_before_start">N\'hall ket an darvoud echuiñ abretoc\'h eget ma krog</string>
     <string name="event_added">Darvoud ouzhpennet gant berzh</string>
-    <string name="past_event_added">Darvoud en amzer tremenet ouzhpennet gant berzh</string>
     <string name="event_updated">Darvoud hizivaet gant berzh</string>
     <string name="filter">Sil</string>
     <string name="filter_events_by_type">Silañ an darvoudoù dre rizh</string>

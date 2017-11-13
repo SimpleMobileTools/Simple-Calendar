@@ -24,7 +24,6 @@
     <string name="title_empty">Titel darf nicht leer sein</string>
     <string name="end_before_start">Der Termin darf nicht früher enden als er beginnt</string>
     <string name="event_added">Termin erfolgreich hinzugefügt</string>
-    <string name="past_event_added">Termin erfolgreich in der Vergangenheit hinzugefügt</string>
     <string name="event_updated">Termin erfolgreich aktualisiert</string>
     <string name="filter">Sortieren</string>
     <string name="filter_events_by_type">Sortiere Termine nach Typ</string>

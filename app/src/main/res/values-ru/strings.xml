@@ -24,7 +24,6 @@
     <string name="title_empty">Заголовок не может быть пустым</string>
     <string name="end_before_start">Событие не может завершаться раньше, чем начинается</string>
     <string name="event_added">Событие успешно добавлено</string>
-    <string name="past_event_added">Событие в прошлом успешно создано</string>
     <string name="event_updated">Событие успешно обновлено</string>
     <string name="filter">Фильтрация</string>
     <string name="filter_events_by_type">Фильтровать события по типу</string>

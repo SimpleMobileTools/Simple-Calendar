@@ -24,7 +24,6 @@
     <string name="title_empty">Titeln får inte vara tom</string>
     <string name="end_before_start">Händelsen kan inte sluta innan den har startat</string>
     <string name="event_added">Händelsen tillagd</string>
-    <string name="past_event_added">Händelsen är tillagd</string>
     <string name="event_updated">Händelsen uppdaterad</string>
     <string name="filter">Filtrera</string>
     <string name="filter_events_by_type">Filtrera händelser efter typ</string>

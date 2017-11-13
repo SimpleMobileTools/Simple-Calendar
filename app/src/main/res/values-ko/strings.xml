@@ -24,7 +24,6 @@
     <string name="title_empty">제목을 입력해주세요</string>
     <string name="end_before_start">이벤트가 시작되기 전에 끝날 수 없습니다</string>
     <string name="event_added">이벤트가 성공적으로 추가되었습니다</string>
-    <string name="past_event_added">과거의 이벤트가 성공적으로 추가되었습니다</string>
     <string name="event_updated">이벤트를 수정했습니다</string>
     <string name="filter">필터</string>
     <string name="filter_events_by_type">유형별 이벤트</string>

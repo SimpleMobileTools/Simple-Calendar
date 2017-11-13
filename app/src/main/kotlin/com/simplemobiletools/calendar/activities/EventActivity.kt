@@ -565,7 +565,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         if (mEvent.id == 0) {
             dbHelper.insert(mEvent, true) {
                 if (DateTime.now().isAfter(mEventStartDateTime.millis)) {
-                    toast(R.string.past_event_added)
+                    notifyEvent(mEvent)
                 } else {
                     toast(R.string.event_added)
                 }

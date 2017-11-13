@@ -24,7 +24,6 @@
     <string name="title_empty">Il titolo non può essere vuoto</string>
     <string name="end_before_start">L\'evento non può terminare prima del suo inizio</string>
     <string name="event_added">Evento aggiunto correttamente</string>
-    <string name="past_event_added">Event in the past added successfully</string>
     <string name="event_updated">Evento aggiornato correttamente</string>
     <string name="filter">Filtro</string>
     <string name="filter_events_by_type">Filtra eventi per tipologia</string>

@@ -24,7 +24,6 @@
     <string name="title_empty">Tytuł nie może być pusty</string>
     <string name="end_before_start">Wydarzenie nie może zakończyć się wcześniej, niż się zaczyna</string>
     <string name="event_added">Wydarzenie zostało dodane</string>
-    <string name="past_event_added">Wydarzenie z przeszłości zostało dodane</string>
     <string name="event_updated">Wydarzenie zostało zaktualizowane</string>
     <string name="filter">Filtr</string>
     <string name="filter_events_by_type">Filtruj wydarzenia według typu</string>

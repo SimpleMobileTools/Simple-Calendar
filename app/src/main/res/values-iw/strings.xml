@@ -24,7 +24,6 @@
     <string name="title_empty">הכותרת לא יכולה להיות ריקה</string>
     <string name="end_before_start">האירוע לא יכול להיגמר מוקדם משהוא מתחיל</string>
     <string name="event_added">האירוע הוסף בהצלחה</string>
-    <string name="past_event_added">אירוע בעבר הוסף בהצלחה</string>
     <string name="event_updated">האירוע עודכן בהצלחה</string>
     <string name="filter">Filter</string>
     <string name="filter_events_by_type">Filter events by type</string>

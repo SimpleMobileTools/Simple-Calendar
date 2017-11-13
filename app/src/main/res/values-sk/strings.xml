@@ -24,7 +24,6 @@
     <string name="title_empty">Prosím zadajte názov</string>
     <string name="end_before_start">Udalosť nemôže skončiť skôr ako by začala</string>
     <string name="event_added">Udalosť bola úspešne pridaná</string>
-    <string name="past_event_added">Udalosť v minulosti bola úspešne pridaná</string>
     <string name="event_updated">Udalosť bola úspešne upravená</string>
     <string name="filter">Filtrovať</string>
     <string name="filter_events_by_type">Filtrovať udalosti podľa typu</string>

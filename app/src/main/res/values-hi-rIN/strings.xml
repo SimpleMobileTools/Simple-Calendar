@@ -24,7 +24,6 @@
     <string name="title_empty">शीर्षक रिक्त नहीं हो सकता</string>
     <string name="end_before_start">इवेंट शुरू होने से पहले खत्म नहीं हो सकता</string>
     <string name="event_added">इवेंट सफलतापूर्वक जोड़ा गया</string>
-    <string name="past_event_added">भुत में इवेंट सफलतापूर्वक जोड़ा गया</string>
     <string name="event_updated">इवेंट सफलतापूर्वक अपडेट किया गया</string>
     <string name="filter">Filter</string>
     <string name="filter_events_by_type">Filter events by type</string>

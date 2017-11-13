@@ -24,7 +24,6 @@
     <string name="title_empty">Doplňte název</string>
     <string name="end_before_start">Konec události nemůže být dříve než začátek</string>
     <string name="event_added">Událost úspěšně přidána</string>
-    <string name="past_event_added">Předchozí událost úspěšně přidána</string>
     <string name="event_updated">Událost úspěšně změněna</string>
     <string name="filter">Filtrovat</string>
     <string name="filter_events_by_type">Filtrovat události podle typu</string>
