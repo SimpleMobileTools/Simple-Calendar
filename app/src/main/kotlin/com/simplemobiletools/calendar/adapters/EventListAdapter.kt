@@ -36,7 +36,7 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
         val markedItems = HashSet<Int>()
 
         var topDivider: Drawable? = null
-        var mNow = (System.currentTimeMillis() / 1000).toInt()
+        var now = (System.currentTimeMillis() / 1000).toInt()
         var primaryColor = 0
         var textColor = 0
         var redTextColor = 0
@@ -65,7 +65,7 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
 
         textColor = activity.config.textColor
         primaryColor = activity.config.primaryColor
-        val mTodayCode = Formatter.getDayCodeFromTS(mNow)
+        val mTodayCode = Formatter.getDayCodeFromTS(now)
         todayDate = Formatter.getDayTitle(activity, mTodayCode)
         replaceDescriptionWithLocation = activity.config.replaceDescription
     }
@@ -181,15 +181,15 @@ class EventListAdapter(val activity: SimpleActivity, val mItems: List<ListItem>,
 
                 var startTextColor = textColor
                 var endTextColor = textColor
-                if (item.startTS <= mNow && item.endTS <= mNow) {
+                if (item.startTS <= now && item.endTS <= now) {
                     if (item.isAllDay) {
-                        if (Formatter.getDayCodeFromTS(item.startTS) == Formatter.getDayCodeFromTS(mNow))
+                        if (Formatter.getDayCodeFromTS(item.startTS) == Formatter.getDayCodeFromTS(now))
                             startTextColor = primaryColor
                     } else {
                         startTextColor = redTextColor
                     }
                     endTextColor = redTextColor
-                } else if (item.startTS <= mNow && item.endTS >= mNow) {
+                } else if (item.startTS <= now && item.endTS >= now) {
                     startTextColor = primaryColor
                 }
 

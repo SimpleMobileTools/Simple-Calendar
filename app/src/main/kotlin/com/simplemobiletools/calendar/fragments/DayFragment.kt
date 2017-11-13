@@ -140,7 +140,7 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEventsListen
             return
 
         val eventsAdapter = DayEventsAdapter(activity as SimpleActivity, events, this) {
-            editEvent(it)
+            editEvent(it as Event)
         }
 
         mHolder.day_events.adapter = eventsAdapter
