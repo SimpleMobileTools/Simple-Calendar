@@ -16,10 +16,11 @@ import java.util.*
 
 abstract class MyAdapter(val activity: SimpleActivity, val itemClick: (Any) -> Unit) : RecyclerView.Adapter<MyAdapter.ViewHolder>() {
     protected val config = activity.config
+    protected val resources = activity.resources
     protected var actMode: ActionMode? = null
     protected var primaryColor = config.primaryColor
     protected var textColor = config.textColor
-    protected var itemViews = SparseArray<View>()
+    protected val itemViews = SparseArray<View>()
     protected val selectedPositions = HashSet<Int>()
     protected val multiSelector = MultiSelector()
 

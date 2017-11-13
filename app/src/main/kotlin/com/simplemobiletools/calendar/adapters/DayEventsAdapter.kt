@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.event_item_day_view.view.*
 class DayEventsAdapter(activity: SimpleActivity, val events: List<Event>, val listener: DeleteEventsListener?, itemClick: (Any) -> Unit) :
         MyAdapter(activity, itemClick) {
 
-    private var allDayString = activity.resources.getString(R.string.all_day)
+    private var allDayString = resources.getString(R.string.all_day)
     private var replaceDescriptionWithLocation = config.replaceDescription
 
     override fun getActionMenuId() = R.menu.cab_day
@@ -31,33 +31,6 @@ class DayEventsAdapter(activity: SimpleActivity, val events: List<Event>, val li
         when (id) {
             R.id.cab_share -> shareEvents()
             R.id.cab_delete -> askConfirmDelete()
-        }
-    }
-
-    private fun shareEvents() {
-        val eventIds = ArrayList<Int>(selectedPositions.size)
-        selectedPositions.forEach {
-            eventIds.add(events[it].id)
-        }
-        activity.shareEvents(eventIds.distinct())
-        finishActMode()
-    }
-
-    private fun askConfirmDelete() {
-        val eventIds = ArrayList<Int>(selectedPositions.size)
-        val timestamps = ArrayList<Int>(selectedPositions.size)
-        selectedPositions.forEach {
-            eventIds.add(events[it].id)
-            timestamps.add(events[it].startTS)
-        }
-
-        DeleteEventDialog(activity, eventIds) {
-            if (it) {
-                listener?.deleteItems(eventIds)
-            } else {
-                listener?.addEventRepeatException(eventIds, timestamps)
-            }
-            finishActMode()
         }
     }
 
@@ -107,6 +80,33 @@ class DayEventsAdapter(activity: SimpleActivity, val events: List<Event>, val li
             event_item_end.setTextColor(textColor)
             event_item_title.setTextColor(textColor)
             event_item_description.setTextColor(textColor)
+        }
+    }
+
+    private fun shareEvents() {
+        val eventIds = ArrayList<Int>(selectedPositions.size)
+        selectedPositions.forEach {
+            eventIds.add(events[it].id)
+        }
+        activity.shareEvents(eventIds.distinct())
+        finishActMode()
+    }
+
+    private fun askConfirmDelete() {
+        val eventIds = ArrayList<Int>(selectedPositions.size)
+        val timestamps = ArrayList<Int>(selectedPositions.size)
+        selectedPositions.forEach {
+            eventIds.add(events[it].id)
+            timestamps.add(events[it].startTS)
+        }
+
+        DeleteEventDialog(activity, eventIds) {
+            if (it) {
+                listener?.deleteItems(eventIds)
+            } else {
+                listener?.addEventRepeatException(eventIds, timestamps)
+            }
+            finishActMode()
         }
     }
 }

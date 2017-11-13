@@ -34,7 +34,7 @@ class ManageEventTypesActivity : SimpleActivity(), DeleteEventTypesListener {
         dbHelper.getEventTypes {
             runOnUiThread {
                 manage_event_types_list.adapter = EventTypeAdapter(this, it, this) {
-                    showEventTypeDialog(it)
+                    showEventTypeDialog(it as EventType)
                 }
             }
         }
