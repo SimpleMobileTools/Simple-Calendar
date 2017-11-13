@@ -110,7 +110,7 @@ class DayActivity : SimpleActivity(), NavigationListener, ViewPager.OnPageChange
 
     override fun onPageSelected(position: Int) {
         mPagerPos = position
-        (view_pager.adapter as MyDayPagerAdapter).destroyMultiselector()
+        (view_pager.adapter as MyDayPagerAdapter).destroyMultiselector(position)
     }
 
     override fun goLeft() {

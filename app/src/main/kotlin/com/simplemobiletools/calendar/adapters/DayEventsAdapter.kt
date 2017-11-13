@@ -3,6 +3,7 @@ package com.simplemobiletools.calendar.adapters
 import android.graphics.PorterDuff
 import android.support.v7.view.ActionMode
 import android.support.v7.widget.RecyclerView
+import android.util.SparseArray
 import android.view.*
 import com.bignerdranch.android.multiselector.ModalMultiSelectorCallback
 import com.bignerdranch.android.multiselector.MultiSelector
@@ -17,39 +18,51 @@ import com.simplemobiletools.calendar.interfaces.DeleteEventsListener
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.commons.extensions.beInvisible
 import com.simplemobiletools.commons.extensions.beInvisibleIf
+import com.simplemobiletools.commons.interfaces.MyAdapterListener
 import kotlinx.android.synthetic.main.event_item_day_view.view.*
 import java.util.*
 
-class DayEventsAdapter(val activity: SimpleActivity, val mItems: List<Event>, val listener: DeleteEventsListener?, val itemClick: (Event) -> Unit) :
+class DayEventsAdapter(val activity: SimpleActivity, val events: List<Event>, val listener: DeleteEventsListener?, val itemClick: (Event) -> Unit) :
         RecyclerView.Adapter<DayEventsAdapter.ViewHolder>() {
-    val multiSelector = MultiSelector()
-    val views = ArrayList<View>()
+    private val config = activity.config
+    private var actMode: ActionMode? = null
+    private var textColor = config.textColor
+    private val multiSelector = MultiSelector()
+    private var itemViews = SparseArray<View>()
+    private val selectedPositions = HashSet<Int>()
+    private var allDayString = activity.resources.getString(R.string.all_day)
+    private var replaceDescriptionWithLocation = config.replaceDescription
 
-    companion object {
-        var actMode: ActionMode? = null
-        val markedItems = HashSet<Int>()
-        var textColor = 0
-        var allDayString = ""
-        var replaceDescriptionWithLocation = false
-
-        fun toggleItemSelection(itemView: View, select: Boolean, pos: Int = -1) {
-            itemView.event_item_frame.isSelected = select
-            if (pos == -1) {
-                return
+    fun toggleItemSelection(select: Boolean, pos: Int) {
+        if (select) {
+            if (itemViews[pos] != null) {
+                selectedPositions.add(pos)
             }
-
-            if (select) {
-                markedItems.add(pos)
-            } else {
-                markedItems.remove(pos)
-            }
+        } else {
+            selectedPositions.remove(pos)
         }
+
+        itemViews[pos].event_item_frame.isSelected = select
+
+        if (selectedPositions.isEmpty()) {
+            finishActMode()
+            return
+        }
+
+        updateTitle(selectedPositions.size)
     }
 
-    init {
-        textColor = activity.config.textColor
-        allDayString = activity.resources.getString(R.string.all_day)
-        replaceDescriptionWithLocation = activity.config.replaceDescription
+    private fun updateTitle(cnt: Int) {
+        actMode?.title = "$cnt / ${events.size}"
+        actMode?.invalidate()
+    }
+
+    private val adapterListener = object : MyAdapterListener {
+        override fun toggleItemSelectionAdapter(select: Boolean, position: Int) {
+            toggleItemSelection(select, position)
+        }
+
+        override fun getSelectedPositions() = selectedPositions
     }
 
     private val multiSelectorMode = object : ModalMultiSelectorCallback(multiSelector) {
@@ -73,19 +86,26 @@ class DayEventsAdapter(val activity: SimpleActivity, val mItems: List<Event>, va
 
         override fun onDestroyActionMode(actionMode: ActionMode?) {
             super.onDestroyActionMode(actionMode)
-            views.forEach { toggleItemSelection(it, false) }
-            markedItems.clear()
+            selectedPositions.forEach {
+                itemViews[it].event_item_frame.isSelected = false
+            }
+            selectedPositions.clear()
+            actMode = null
         }
+    }
+
+    fun finishActMode() {
+        actMode?.finish()
     }
 
     private fun shareEvents() {
         val selections = multiSelector.selectedPositions
         val eventIds = ArrayList<Int>(selections.size)
         selections.forEach {
-            eventIds.add(mItems[it].id)
+            eventIds.add(events[it].id)
         }
         activity.shareEvents(eventIds.distinct())
-        actMode?.finish()
+        finishActMode()
     }
 
     private fun askConfirmDelete() {
@@ -93,8 +113,8 @@ class DayEventsAdapter(val activity: SimpleActivity, val mItems: List<Event>, va
         val eventIds = ArrayList<Int>(selections.size)
         val timestamps = ArrayList<Int>(selections.size)
         selections.forEach {
-            eventIds.add(mItems[it].id)
-            timestamps.add(mItems[it].startTS)
+            eventIds.add(events[it].id)
+            timestamps.add(events[it].startTS)
         }
 
         DeleteEventDialog(activity, eventIds) {
@@ -103,31 +123,32 @@ class DayEventsAdapter(val activity: SimpleActivity, val mItems: List<Event>, va
             } else {
                 listener?.addEventRepeatException(eventIds, timestamps)
             }
-            actMode?.finish()
+            finishActMode()
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent?.context).inflate(R.layout.event_item_day_view, parent, false)
-        return ViewHolder(activity, view, itemClick)
+        return ViewHolder(view, adapterListener, activity, multiSelectorMode, multiSelector, itemClick)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        views.add(holder.bindView(multiSelectorMode, multiSelector, mItems[position], position))
+        val event = events[position]
+        itemViews.put(position, holder.bindView(event, textColor, replaceDescriptionWithLocation, allDayString))
+        toggleItemSelection(selectedPositions.contains(position), position)
     }
 
-    override fun getItemCount() = mItems.size
+    override fun getItemCount() = events.size
 
-    class ViewHolder(val activity: SimpleActivity, view: View, val itemClick: (Event) -> (Unit)) : SwappingHolder(view, MultiSelector()) {
-        fun bindView(multiSelectorCallback: ModalMultiSelectorCallback, multiSelector: MultiSelector, event: Event, pos: Int): View {
+    class ViewHolder(view: View, val adapterListener: MyAdapterListener, val activity: SimpleActivity, val multiSelectorCallback: ModalMultiSelectorCallback,
+                     val multiSelector: MultiSelector, val itemClick: (Event) -> (Unit)) : SwappingHolder(view, MultiSelector()) {
+        fun bindView(event: Event, textColor: Int, replaceDescriptionWithLocation: Boolean, allDayString: String): View {
             itemView.apply {
                 event_item_title.text = event.title
                 event_item_description.text = if (replaceDescriptionWithLocation) event.location else event.description
                 event_item_start.text = if (event.getIsAllDay()) allDayString else Formatter.getTimeFromTS(context, event.startTS)
                 event_item_end.beInvisibleIf(event.startTS == event.endTS)
                 event_item_color.setColorFilter(event.color, PorterDuff.Mode.SRC_IN)
-
-                toggleItemSelection(this, markedItems.contains(pos), pos)
 
                 if (event.startTS != event.endTS) {
                     val startCode = Formatter.getDayCodeFromTS(event.startTS)
@@ -152,37 +173,26 @@ class DayEventsAdapter(val activity: SimpleActivity, val mItems: List<Event>, va
                 event_item_title.setTextColor(textColor)
                 event_item_description.setTextColor(textColor)
 
-                setOnClickListener { viewClicked(multiSelector, event, pos) }
-                setOnLongClickListener {
-                    if (!multiSelector.isSelectable) {
-                        activity.startSupportActionMode(multiSelectorCallback)
-                        multiSelector.setSelected(this@ViewHolder, true)
-                        actMode?.title = multiSelector.selectedPositions.size.toString()
-                        toggleItemSelection(itemView, true, pos)
-                        actMode?.invalidate()
-                    }
-                    true
-                }
+                setOnClickListener { viewClicked(event) }
+                setOnLongClickListener { viewLongClicked(); true }
             }
 
             return itemView
         }
 
-        private fun viewClicked(multiSelector: MultiSelector, event: Event, pos: Int) {
+        private fun viewClicked(event: Event) {
             if (multiSelector.isSelectable) {
-                val isSelected = multiSelector.selectedPositions.contains(layoutPosition)
-                multiSelector.setSelected(this, !isSelected)
-                toggleItemSelection(itemView, !isSelected, pos)
-
-                val selectedCnt = multiSelector.selectedPositions.size
-                if (selectedCnt == 0) {
-                    actMode?.finish()
-                } else {
-                    actMode?.title = selectedCnt.toString()
-                }
-                actMode?.invalidate()
+                val isSelected = adapterListener.getSelectedPositions().contains(adapterPosition)
+                adapterListener.toggleItemSelectionAdapter(!isSelected, adapterPosition)
             } else {
                 itemClick(event)
+            }
+        }
+
+        private fun viewLongClicked() {
+            if (!multiSelector.isSelectable) {
+                activity.startSupportActionMode(multiSelectorCallback)
+                adapterListener.toggleItemSelectionAdapter(true, adapterPosition)
             }
         }
     }
