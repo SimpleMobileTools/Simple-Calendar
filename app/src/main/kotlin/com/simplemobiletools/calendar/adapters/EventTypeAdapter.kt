@@ -7,6 +7,7 @@ import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.interfaces.DeleteEventTypesListener
 import com.simplemobiletools.calendar.models.EventType
+import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.setBackgroundWithStroke
 import com.simplemobiletools.commons.models.RadioItem
@@ -69,7 +70,9 @@ class EventTypeAdapter(activity: SimpleActivity, val eventTypes: List<EventType>
                 deleteEventTypes(it == DELETE_EVENTS, eventTypes)
             }
         } else {
-            deleteEventTypes(true, eventTypes)
+            ConfirmationDialog(activity) {
+                deleteEventTypes(true, eventTypes)
+            }
         }
     }
 
