@@ -117,21 +117,20 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEventsListen
     }
 
     private fun receivedEvents(events: List<Event>) {
-        val newHash = events.hashCode()
+        val filtered = context?.getFilteredEvents(events) ?: ArrayList()
+        val newHash = filtered.hashCode()
         if (newHash == lastHash || !isAdded) {
             return
         }
         lastHash = newHash
 
         val replaceDescription = context!!.config.replaceDescription
-        val sorted = ArrayList<Event>(events.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, {
+        val sorted = ArrayList<Event>(filtered.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, {
             if (replaceDescription) it.location else it.description
         })))
 
-        val filtered = context?.getFilteredEvents(sorted) ?: ArrayList()
-
         activity?.runOnUiThread {
-            updateEvents(filtered)
+            updateEvents(sorted)
         }
     }
 
