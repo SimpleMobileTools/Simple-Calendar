@@ -7,7 +7,6 @@ import android.content.Intent
 import android.content.res.Resources
 import android.graphics.Color
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.widget.LinearLayout
 import android.widget.SeekBar
 import android.widget.TextView
@@ -29,7 +28,7 @@ import kotlinx.android.synthetic.main.top_navigation.*
 import kotlinx.android.synthetic.main.widget_config_monthly.*
 import org.joda.time.DateTime
 
-class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
+class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
     lateinit var mRes: Resources
     private var mDays: List<DayMonthly>? = null
     private var mPackageName = ""
@@ -60,6 +59,12 @@ class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
         config_save.setOnClickListener { saveConfig() }
         config_bg_color.setOnClickListener { pickBackgroundColor() }
         config_text_color.setOnClickListener { pickTextColor() }
+        config_bg_seekbar.setColors(mTextColor, mPrimaryColor, mPrimaryColor)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        window.decorView.setBackgroundColor(0)
     }
 
     private fun initVariables() {
@@ -67,7 +72,7 @@ class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
         mRes = resources
 
         mTextColorWithoutTransparency = config.widgetTextColor
-        updateTextColors()
+        updateColors()
 
         mBgColor = config.widgetBgColor
         if (mBgColor == 1) {
@@ -113,7 +118,7 @@ class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
     private fun pickTextColor() {
         ColorPickerDialog(this, mTextColor) {
             mTextColorWithoutTransparency = it
-            updateTextColors()
+            updateColors()
             updateDays()
         }
     }
@@ -125,7 +130,7 @@ class WidgetMonthlyConfigureActivity : AppCompatActivity(), MonthlyCalendar {
         }
     }
 
-    private fun updateTextColors() {
+    private fun updateColors() {
         mTextColor = mTextColorWithoutTransparency
         mWeakTextColor = mTextColorWithoutTransparency.adjustAlpha(LOW_ALPHA)
         mPrimaryColor = config.primaryColor

@@ -30,7 +30,7 @@
         android:layout_toRightOf="@+id/config_bg_color"
         android:background="@android:color/white">
 
-        <SeekBar
+        <com.simplemobiletools.commons.views.MySeekBar
             android:id="@+id/config_bg_seekbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -57,4 +57,5 @@
         android:text="@android:string/ok"
         android:textColor="@android:color/white"
         android:textSize="@dimen/big_text_size"/>
+
 </RelativeLayout>
