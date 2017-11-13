@@ -19,6 +19,7 @@ import com.simplemobiletools.calendar.helpers.FONT_SIZE_SMALL
 import com.simplemobiletools.calendar.models.EventType
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
+import com.simplemobiletools.commons.helpers.PERMISSION_READ_CALENDAR
 import com.simplemobiletools.commons.helpers.PERMISSION_WRITE_CALENDAR
 import com.simplemobiletools.commons.models.RadioItem
 import kotlinx.android.synthetic.main.activity_settings.*
@@ -115,7 +116,11 @@ class SettingsActivity : SimpleActivity() {
             } else {
                 handlePermission(PERMISSION_WRITE_CALENDAR) {
                     if (it) {
-                        toggleCaldavSync(true)
+                        handlePermission(PERMISSION_READ_CALENDAR) {
+                            if (it) {
+                                toggleCaldavSync(true)
+                            }
+                        }
                     }
                 }
             }

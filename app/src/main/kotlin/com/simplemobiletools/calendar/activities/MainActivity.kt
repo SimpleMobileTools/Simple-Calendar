@@ -101,7 +101,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
         storeStateVariables()
         updateViewPager()
 
-        if (!hasPermission(PERMISSION_WRITE_CALENDAR)) {
+        if (!hasPermission(PERMISSION_WRITE_CALENDAR) || !hasPermission(PERMISSION_READ_CALENDAR)) {
             config.caldavSync = false
         }
 

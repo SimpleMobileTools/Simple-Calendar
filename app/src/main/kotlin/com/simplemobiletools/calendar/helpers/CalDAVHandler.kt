@@ -15,6 +15,7 @@ import com.simplemobiletools.calendar.models.CalDAVCalendar
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.models.EventType
 import com.simplemobiletools.commons.extensions.*
+import com.simplemobiletools.commons.helpers.PERMISSION_READ_CALENDAR
 import com.simplemobiletools.commons.helpers.PERMISSION_WRITE_CALENDAR
 import java.util.*
 import kotlin.collections.ArrayList
@@ -40,7 +41,7 @@ class CalDAVHandler(val context: Context) {
 
     fun getCalDAVCalendars(activity: SimpleActivity? = null, ids: String = ""): List<CalDAVCalendar> {
         val calendars = ArrayList<CalDAVCalendar>()
-        if (!context.hasPermission(PERMISSION_WRITE_CALENDAR)) {
+        if (!context.hasPermission(PERMISSION_WRITE_CALENDAR) || !context.hasPermission(PERMISSION_READ_CALENDAR)) {
             return calendars
         }
 
