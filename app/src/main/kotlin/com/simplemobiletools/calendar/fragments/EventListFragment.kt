@@ -92,8 +92,11 @@ class EventListFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEvents
         }
 
         val eventsAdapter = EventListAdapter(activity as SimpleActivity, listItems, this) {
-            editEvent(it)
+            if (it is ListEvent) {
+                editEvent(it)
+            }
         }
+
         activity?.runOnUiThread {
             mView.calendar_events_list.apply {
                 this@apply.adapter = eventsAdapter
