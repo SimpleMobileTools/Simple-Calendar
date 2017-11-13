@@ -26,6 +26,8 @@ abstract class MyAdapter(val activity: SimpleActivity, val itemClick: (Any) -> U
 
     abstract fun getActionMenuId(): Int
 
+    abstract fun getSelectableItemCount(): Int
+
     abstract fun markItemSelection(select: Boolean, pos: Int)
 
     abstract fun actionItemPressed(id: Int)
@@ -50,7 +52,7 @@ abstract class MyAdapter(val activity: SimpleActivity, val itemClick: (Any) -> U
     }
 
     private fun updateTitle(cnt: Int) {
-        actMode?.title = "$cnt / $itemCount"
+        actMode?.title = "$cnt / ${getSelectableItemCount()}"
         actMode?.invalidate()
     }
 

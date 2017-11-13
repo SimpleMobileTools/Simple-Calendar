@@ -32,6 +32,8 @@ class EventListAdapter(activity: SimpleActivity, val listItems: List<ListItem>, 
 
     override fun getActionMenuId() = R.menu.cab_event_list
 
+    override fun getSelectableItemCount() = listItems.filter { it is ListEvent }.size
+
     override fun markItemSelection(select: Boolean, pos: Int) {
         itemViews[pos]?.event_item_frame?.isSelected = select
     }

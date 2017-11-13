@@ -22,6 +22,8 @@ class DayEventsAdapter(activity: SimpleActivity, val events: List<Event>, val li
 
     override fun getActionMenuId() = R.menu.cab_day
 
+    override fun getSelectableItemCount() = events.size
+
     override fun markItemSelection(select: Boolean, pos: Int) {
         itemViews[pos].event_item_frame.isSelected = select
     }
