@@ -1,7 +1,6 @@
 package com.simplemobiletools.calendar.adapters
 
 import android.graphics.PorterDuff
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.simplemobiletools.calendar.R
@@ -35,7 +34,7 @@ class DayEventsAdapter(activity: SimpleActivity, val events: List<Event>, val li
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent?.context).inflate(R.layout.event_item_day_view, parent, false)
+        val view = activity.layoutInflater.inflate(R.layout.event_item_day_view, parent, false)
         return createViewHolder(view)
     }
 

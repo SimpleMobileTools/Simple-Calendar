@@ -100,7 +100,7 @@ class Config(context: Context) : BaseConfig(context) {
         addDisplayEventTypes(HashSet<String>(Arrays.asList(type)))
     }
 
-    fun addDisplayEventTypes(types: Set<String>) {
+    private fun addDisplayEventTypes(types: Set<String>) {
         val currDisplayEventTypes = HashSet<String>(displayEventTypes)
         currDisplayEventTypes.addAll(types)
         displayEventTypes = currDisplayEventTypes
@@ -112,11 +112,11 @@ class Config(context: Context) : BaseConfig(context) {
         displayEventTypes = currDisplayEventTypes
     }
 
-    fun getDefaultNotificationSound(): String {
-        try {
-            return RingtoneManager.getActualDefaultRingtoneUri(context, RingtoneManager.TYPE_NOTIFICATION)?.toString() ?: ""
+    private fun getDefaultNotificationSound(): String {
+        return try {
+            RingtoneManager.getActualDefaultRingtoneUri(context, RingtoneManager.TYPE_NOTIFICATION)?.toString() ?: ""
         } catch (e: Exception) {
-            return ""
+            ""
         }
     }
 
@@ -126,7 +126,7 @@ class Config(context: Context) : BaseConfig(context) {
         else -> getLargeFontSize()
     }
 
-    fun getSmallFontSize() = getMediumFontSize() - 3f
-    fun getMediumFontSize() = context.resources.getDimension(R.dimen.day_text_size) / context.resources.displayMetrics.density
-    fun getLargeFontSize() = getMediumFontSize() + 3f
+    private fun getSmallFontSize() = getMediumFontSize() - 3f
+    private fun getMediumFontSize() = context.resources.getDimension(R.dimen.day_text_size) / context.resources.displayMetrics.density
+    private fun getLargeFontSize() = getMediumFontSize() + 3f
 }
