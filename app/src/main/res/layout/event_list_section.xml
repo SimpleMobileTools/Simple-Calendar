@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.simplemobiletools.commons.views.MyTextView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/event_item_title"
+    android:id="@+id/event_section_title"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:clickable="false"
     android:drawablePadding="1dp"
     android:drawableTop="@drawable/divider_width"
+    android:focusable="false"
     android:paddingTop="@dimen/medium_margin"
     android:textSize="@dimen/normal_text_size"
     android:textStyle="bold"/>

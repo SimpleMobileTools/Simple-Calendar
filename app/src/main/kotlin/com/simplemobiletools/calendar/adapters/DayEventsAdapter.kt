@@ -12,13 +12,18 @@ import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.commons.extensions.applyColorFilter
 import com.simplemobiletools.commons.extensions.beInvisible
 import com.simplemobiletools.commons.extensions.beInvisibleIf
+import com.simplemobiletools.commons.views.MyRecyclerView
 import kotlinx.android.synthetic.main.event_item_day_view.view.*
 
-class DayEventsAdapter(activity: SimpleActivity, val events: List<Event>, val listener: DeleteEventsListener?, itemClick: (Any) -> Unit) :
-        MyAdapter(activity, itemClick) {
+class DayEventsAdapter(activity: SimpleActivity, val events: List<Event>, val listener: DeleteEventsListener?, recyclerView: MyRecyclerView,
+                       itemClick: (Any) -> Unit) : MyAdapter(activity, itemClick) {
 
     private var allDayString = resources.getString(R.string.all_day)
     private var replaceDescriptionWithLocation = config.replaceDescription
+
+    init {
+        setDragListenerRecyclerView(recyclerView)
+    }
 
     override fun getActionMenuId() = R.menu.cab_day
 
@@ -47,13 +52,14 @@ class DayEventsAdapter(activity: SimpleActivity, val events: List<Event>, val li
         }
         itemViews.put(position, view)
         toggleItemSelection(selectedPositions.contains(position), position)
+        holder.itemView.tag = holder
     }
 
     override fun getItemCount() = events.size
 
     private fun setupView(view: View, event: Event) {
         view.apply {
-            event_item_title.text = event.title
+            event_section_title.text = event.title
             event_item_description.text = if (replaceDescriptionWithLocation) event.location else event.description
             event_item_start.text = if (event.getIsAllDay()) allDayString else Formatter.getTimeFromTS(context, event.startTS)
             event_item_end.beInvisibleIf(event.startTS == event.endTS)
@@ -79,7 +85,7 @@ class DayEventsAdapter(activity: SimpleActivity, val events: List<Event>, val li
 
             event_item_start.setTextColor(textColor)
             event_item_end.setTextColor(textColor)
-            event_item_title.setTextColor(textColor)
+            event_section_title.setTextColor(textColor)
             event_item_description.setTextColor(textColor)
         }
     }
@@ -90,7 +96,6 @@ class DayEventsAdapter(activity: SimpleActivity, val events: List<Event>, val li
             eventIds.add(events[it].id)
         }
         activity.shareEvents(eventIds.distinct())
-        finishActMode()
     }
 
     private fun askConfirmDelete() {

@@ -138,7 +138,7 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEventsListen
         if (activity == null)
             return
 
-        val eventsAdapter = DayEventsAdapter(activity as SimpleActivity, events, this) {
+        val eventsAdapter = DayEventsAdapter(activity as SimpleActivity, events, this, mHolder.day_events) {
             editEvent(it as Event)
         }
 

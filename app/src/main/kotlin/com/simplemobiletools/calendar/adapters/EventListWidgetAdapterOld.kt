@@ -99,7 +99,7 @@ class EventListWidgetAdapterOld(val context: Context, val mEvents: List<ListItem
     override fun getItemId(position: Int) = 0L
 
     internal class ViewHolder(view: View) {
-        val title = view.event_item_title
+        val title = view.event_section_title
         val description: TextView? = view.event_item_description
         val start: TextView? = view.event_item_start
         val end: TextView? = view.event_item_end

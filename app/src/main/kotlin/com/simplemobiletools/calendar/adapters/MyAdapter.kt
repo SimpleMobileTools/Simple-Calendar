@@ -12,17 +12,20 @@ import com.bignerdranch.android.multiselector.SwappingHolder
 import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.commons.interfaces.MyAdapterListener
+import com.simplemobiletools.commons.views.MyRecyclerView
 import java.util.*
 
 abstract class MyAdapter(val activity: SimpleActivity, val itemClick: (Any) -> Unit) : RecyclerView.Adapter<MyAdapter.ViewHolder>() {
     protected val config = activity.config
-    protected val resources = activity.resources
-    protected var actMode: ActionMode? = null
+    protected val resources = activity.resources!!
     protected var primaryColor = config.primaryColor
     protected var textColor = config.textColor
     protected val itemViews = SparseArray<View>()
     protected val selectedPositions = HashSet<Int>()
-    protected val multiSelector = MultiSelector()
+
+    private val multiSelector = MultiSelector()
+    private var actMode: ActionMode? = null
+    private var myRecyclerView: MyRecyclerView? = null
 
     abstract fun getActionMenuId(): Int
 
@@ -56,12 +59,74 @@ abstract class MyAdapter(val activity: SimpleActivity, val itemClick: (Any) -> U
         actMode?.invalidate()
     }
 
+    protected fun setDragListenerRecyclerView(recyclerView: MyRecyclerView) {
+        myRecyclerView = recyclerView
+        myRecyclerView!!.setupDragListener(object : MyRecyclerView.MyDragListener {
+            override fun selectItem(position: Int) {
+                selectItemPosition(position)
+            }
+
+            override fun selectRange(initialSelection: Int, lastDraggedIndex: Int, minReached: Int, maxReached: Int) {
+                selectItemRange(initialSelection, lastDraggedIndex, minReached, maxReached)
+            }
+        })
+    }
+
+    fun selectItemPosition(pos: Int) {
+        toggleItemSelection(true, pos)
+    }
+
+    fun selectItemRange(from: Int, to: Int, min: Int, max: Int) {
+        if (from == to) {
+            (min..max).filter { it != from }.forEach { toggleItemSelection(false, it) }
+            return
+        }
+
+        if (to < from) {
+            for (i in to..from) {
+                toggleItemSelection(true, i)
+            }
+
+            if (min > -1 && min < to) {
+                (min until to).filter { it != from }.forEach { toggleItemSelection(false, it) }
+            }
+
+            if (max > -1) {
+                for (i in from + 1..max) {
+                    toggleItemSelection(false, i)
+                }
+            }
+        } else {
+            for (i in from..to) {
+                toggleItemSelection(true, i)
+            }
+
+            if (max > -1 && max > to) {
+                (to + 1..max).filter { it != from }.forEach { toggleItemSelection(false, it) }
+            }
+
+            if (min > -1) {
+                for (i in min until from) {
+                    toggleItemSelection(false, i)
+                }
+            }
+        }
+    }
+
+    fun finishActMode() {
+        actMode?.finish()
+    }
+
     private val adapterListener = object : MyAdapterListener {
         override fun toggleItemSelectionAdapter(select: Boolean, position: Int) {
             toggleItemSelection(select, position)
         }
 
         override fun getSelectedPositions() = selectedPositions
+
+        override fun itemLongClicked(position: Int) {
+            myRecyclerView?.setDragSelectActive(position)
+        }
     }
 
     private val multiSelectorMode = object : ModalMultiSelectorCallback(multiSelector) {
@@ -89,10 +154,6 @@ abstract class MyAdapter(val activity: SimpleActivity, val itemClick: (Any) -> U
         }
     }
 
-    fun finishActMode() {
-        actMode?.finish()
-    }
-
     protected fun createViewHolder(view: View) = ViewHolder(view, adapterListener, activity, multiSelectorMode, multiSelector, itemClick)
 
     class ViewHolder(view: View, val adapterListener: MyAdapterListener, val activity: SimpleActivity, val multiSelectorCallback: ModalMultiSelectorCallback,
@@ -100,8 +161,14 @@ abstract class MyAdapter(val activity: SimpleActivity, val itemClick: (Any) -> U
         fun bindView(any: Any, callback: (itemView: View) -> Unit): View {
             return itemView.apply {
                 callback(this)
-                itemView.setOnClickListener { viewClicked(any) }
-                itemView.setOnLongClickListener { viewLongClicked(); true }
+
+                if (isClickable) {
+                    setOnClickListener { viewClicked(any) }
+                    setOnLongClickListener { viewLongClicked(); true }
+                } else {
+                    setOnClickListener(null)
+                    setOnLongClickListener(null)
+                }
             }
         }
 
@@ -119,6 +186,8 @@ abstract class MyAdapter(val activity: SimpleActivity, val itemClick: (Any) -> U
                 activity.startSupportActionMode(multiSelectorCallback)
                 adapterListener.toggleItemSelectionAdapter(true, adapterPosition)
             }
+
+            adapterListener.itemLongClicked(adapterPosition)
         }
     }
 }

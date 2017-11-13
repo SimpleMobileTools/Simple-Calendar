@@ -24,7 +24,7 @@
         android:textSize="@dimen/day_text_size"/>
 
     <TextView
-        android:id="@+id/event_item_title"
+        android:id="@+id/event_section_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/big_margin"
@@ -40,7 +40,7 @@
         android:id="@+id/event_item_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/event_item_title"
+        android:layout_below="@+id/event_section_title"
         android:layout_marginLeft="@dimen/big_margin"
         android:layout_toLeftOf="@+id/event_item_color"
         android:layout_toRightOf="@+id/event_item_end"
@@ -55,10 +55,10 @@
         android:id="@+id/event_item_color"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_alignBottom="@+id/event_item_title"
+        android:layout_alignBottom="@+id/event_section_title"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/event_item_title"
+        android:layout_alignTop="@+id/event_section_title"
         android:paddingRight="@dimen/activity_margin"
         android:src="@drawable/monthly_event_dot"/>
 

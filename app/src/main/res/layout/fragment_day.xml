@@ -8,7 +8,7 @@
 
     <include layout="@layout/top_navigation"/>
 
-    <android.support.v7.widget.RecyclerView
+    <com.simplemobiletools.commons.views.MyRecyclerView
         android:id="@+id/day_events"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

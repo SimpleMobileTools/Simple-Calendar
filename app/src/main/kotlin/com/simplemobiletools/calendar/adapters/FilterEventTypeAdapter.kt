@@ -44,6 +44,8 @@ class FilterEventTypeAdapter(val activity: SimpleActivity, val eventTypes: List<
         }
 
         override fun getSelectedPositions() = selectedPositions
+
+        override fun itemLongClicked(position: Int) {}
     }
 
     fun getSelectedItemsSet(): HashSet<String> {

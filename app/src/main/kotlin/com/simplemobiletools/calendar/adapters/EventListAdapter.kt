@@ -70,7 +70,7 @@ class EventListAdapter(activity: SimpleActivity, val listItems: List<ListItem>, 
 
     private fun setupListEvent(view: View, listEvent: ListEvent) {
         view.apply {
-            event_item_title.text = listEvent.title
+            event_section_title.text = listEvent.title
             event_item_description.text = if (replaceDescriptionWithLocation) listEvent.location else listEvent.description
             event_item_start.text = if (listEvent.isAllDay) allDayString else Formatter.getTimeFromTS(context, listEvent.startTS)
             event_item_end.beInvisibleIf(listEvent.startTS == listEvent.endTS)
@@ -110,13 +110,13 @@ class EventListAdapter(activity: SimpleActivity, val listItems: List<ListItem>, 
 
             event_item_start.setTextColor(startTextColor)
             event_item_end.setTextColor(endTextColor)
-            event_item_title.setTextColor(startTextColor)
+            event_section_title.setTextColor(startTextColor)
             event_item_description.setTextColor(startTextColor)
         }
     }
 
     private fun setupListSection(view: View, listSection: ListSection, position: Int) {
-        view.event_item_title.apply {
+        view.event_section_title.apply {
             text = listSection.title
             setCompoundDrawablesWithIntrinsicBounds(null, if (position == 0) null else topDivider, null, null)
             setTextColor(if (listSection.title == todayDate) primaryColor else textColor)
