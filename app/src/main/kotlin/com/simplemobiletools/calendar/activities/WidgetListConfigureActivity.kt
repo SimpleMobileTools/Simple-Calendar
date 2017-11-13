@@ -8,7 +8,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.widget.SeekBar
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.adapters.EventListWidgetAdapterOld
+import com.simplemobiletools.calendar.adapters.EventListAdapter
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.helpers.Formatter
@@ -33,7 +33,7 @@ class WidgetListConfigureActivity : SimpleActivity() {
     private var mTextColorWithoutTransparency = 0
     private var mTextColor = 0
 
-    private var mEventsAdapter: EventListWidgetAdapterOld? = null
+    private var mEventsAdapter: EventListAdapter? = null
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,8 +49,10 @@ class WidgetListConfigureActivity : SimpleActivity() {
         if (mWidgetId == AppWidgetManager.INVALID_APPWIDGET_ID)
             finish()
 
-        mEventsAdapter = EventListWidgetAdapterOld(this, getListItems())
-        mEventsAdapter!!.setTextColor(mTextColor)
+        mEventsAdapter = EventListAdapter(this, getListItems(), null) {
+
+        }
+        mEventsAdapter!!.updateTextColor(mTextColor)
         config_events_list.adapter = mEventsAdapter
 
         config_save.setOnClickListener { saveConfig() }
@@ -127,7 +129,7 @@ class WidgetListConfigureActivity : SimpleActivity() {
 
     private fun updateColors() {
         mTextColor = mTextColorWithoutTransparency
-        mEventsAdapter?.setTextColor(mTextColor)
+        mEventsAdapter?.updateTextColor(mTextColor)
         config_text_color.setBackgroundColor(mTextColor)
         config_save.setTextColor(mTextColor)
     }

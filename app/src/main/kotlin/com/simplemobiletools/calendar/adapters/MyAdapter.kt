@@ -117,6 +117,11 @@ abstract class MyAdapter(val activity: SimpleActivity, val itemClick: (Any) -> U
         actMode?.finish()
     }
 
+    fun updateTextColor(textColor: Int) {
+        this.textColor = textColor
+        notifyDataSetChanged()
+    }
+
     private val adapterListener = object : MyAdapterListener {
         override fun toggleItemSelectionAdapter(select: Boolean, position: Int) {
             toggleItemSelection(select, position)
