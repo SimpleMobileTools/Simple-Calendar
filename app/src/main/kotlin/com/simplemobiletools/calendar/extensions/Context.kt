@@ -294,11 +294,11 @@ private fun addTodaysBackground(textView: TextView, res: Resources, dayLabelHeig
         textView.addResizedBackgroundDrawable(res, dayLabelHeight, mPrimaryColor, R.drawable.monthly_today_circle)
 
 fun Context.addDayEvents(day: DayMonthly, linearLayout: LinearLayout, res: Resources, dividerMargin: Int) {
-    day.dayEvents.forEach {
-        val backgroundDrawable = res.getDrawable(R.drawable.day_monthly_event_background)
-        backgroundDrawable.mutate().setColorFilter(it.color, PorterDuff.Mode.SRC_IN)
+    val backgroundDrawable = res.getDrawable(R.drawable.day_monthly_event_background)
+    val eventLayoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
 
-        val eventLayoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+    day.dayEvents.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title })).forEach {
+        backgroundDrawable.mutate().setColorFilter(it.color, PorterDuff.Mode.SRC_IN)
         eventLayoutParams.setMargins(dividerMargin, 0, dividerMargin, dividerMargin)
 
         var textColor = it.color.getContrastColor()
