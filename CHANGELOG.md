@@ -1,6 +1,14 @@
 Changelog
 ==========
 
+Version 2.11.0 *(2017-11-13)*
+----------------------------
+
+ * Adding a toggle for using English language on non-english devices
+ * Adding an Adaptive launcher icon
+ * Really fixing CalDAV sync
+ * Many other smaller improvements under the hood
+
 Version 2.10.1 *(2017-11-08)*
 ----------------------------
 
