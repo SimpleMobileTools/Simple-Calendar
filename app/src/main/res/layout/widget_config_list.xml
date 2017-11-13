@@ -22,8 +22,8 @@
 
     <Button
         android:id="@+id/config_bg_color"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/widget_colorpicker_size"
+        android:layout_height="@dimen/widget_colorpicker_size"
         android:layout_above="@+id/config_text_color"/>
 
     <RelativeLayout
@@ -46,8 +46,8 @@
 
     <Button
         android:id="@+id/config_text_color"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/widget_colorpicker_size"
+        android:layout_height="@dimen/widget_colorpicker_size"
         android:layout_alignParentBottom="true"/>
 
     <Button
@@ -62,4 +62,5 @@
         android:text="@android:string/ok"
         android:textColor="@android:color/white"
         android:textSize="@dimen/big_text_size"/>
+
 </RelativeLayout>
