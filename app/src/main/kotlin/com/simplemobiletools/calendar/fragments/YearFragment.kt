@@ -94,6 +94,7 @@ class YearFragment : Fragment(), YearlyCalendar {
         if (hashCode == lastHash) {
             return
         }
+
         lastHash = hashCode
         val res = resources
         for (i in 1..12) {

@@ -202,6 +202,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
             mStoredTextColor = textColor
             mStoredPrimaryColor = primaryColor
             mStoredBackgroundColor = backgroundColor
+            mStoredUse24HourFormat = use24hourFormat
         }
         mStoredDayCode = Formatter.getTodayCode()
     }
@@ -480,7 +481,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
 
     private fun refreshViewPager() {
         when {
-            config.storedView == YEARLY_VIEW -> (main_view_pager.adapter as? MyYearPagerAdapter)?.refreshEvents(main_view_pager.currentItem)
+            config.storedView == YEARLY_VIEW && !mIsMonthSelected -> (main_view_pager.adapter as? MyYearPagerAdapter)?.refreshEvents(main_view_pager.currentItem)
             config.storedView == EVENTS_LIST_VIEW -> fillEventsList()
             config.storedView == WEEKLY_VIEW -> (week_view_view_pager.adapter as? MyWeekPagerAdapter)?.refreshEvents(week_view_view_pager.currentItem)
             else -> (main_view_pager.adapter as? MyMonthPagerAdapter)?.refreshEvents(main_view_pager.currentItem)

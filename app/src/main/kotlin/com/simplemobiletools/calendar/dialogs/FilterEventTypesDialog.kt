@@ -6,14 +6,11 @@ import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.adapters.FilterEventTypeAdapter
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
-import com.simplemobiletools.calendar.models.EventType
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import kotlinx.android.synthetic.main.dialog_filter_event_types.view.*
-import java.util.*
 
 class FilterEventTypesDialog(val activity: SimpleActivity, val callback: () -> Unit) {
     var dialog: AlertDialog
-    var eventTypes = ArrayList<EventType>()
     val view = activity.layoutInflater.inflate(R.layout.dialog_filter_event_types, null)
 
     init {
