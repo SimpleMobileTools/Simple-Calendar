@@ -16,6 +16,7 @@ import com.simplemobiletools.calendar.helpers.DAY_CODE
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.helpers.NEW_EVENT_START_TS
 import com.simplemobiletools.calendar.interfaces.NavigationListener
+import com.simplemobiletools.commons.extensions.isActivityDestroyed
 import com.simplemobiletools.commons.extensions.updateTextColors
 import kotlinx.android.synthetic.main.activity_day.*
 import org.joda.time.DateTime
@@ -43,9 +44,11 @@ class DayActivity : SimpleActivity(), NavigationListener, ViewPager.OnPageChange
         updateTextColors(day_coordinator)
 
         dbHelper.getEventTypes {
-            eventTypeColors.clear()
-            it.map { eventTypeColors.put(it.id, it.color) }
-            invalidateOptionsMenu()
+            if (!isActivityDestroyed()) {
+                eventTypeColors.clear()
+                it.map { eventTypeColors.put(it.id, it.color) }
+                invalidateOptionsMenu()
+            }
         }
     }
 
