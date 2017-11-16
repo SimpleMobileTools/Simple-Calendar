@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.adapters.EventTypeAdapter
+import com.simplemobiletools.calendar.adapters.ManageEventTypesAdapter
 import com.simplemobiletools.calendar.dialogs.UpdateEventTypeDialog
 import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.helpers.DBHelper
@@ -33,7 +33,7 @@ class ManageEventTypesActivity : SimpleActivity(), DeleteEventTypesListener {
     private fun getEventTypes() {
         dbHelper.getEventTypes {
             runOnUiThread {
-                val adapter = EventTypeAdapter(this, it, this, manage_event_types_list) {
+                val adapter = ManageEventTypesAdapter(this, it, this, manage_event_types_list) {
                     showEventTypeDialog(it as EventType)
                 }
                 adapter.setupDragListener(true)

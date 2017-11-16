@@ -18,8 +18,8 @@ import com.simplemobiletools.commons.views.MyRecyclerView
 import kotlinx.android.synthetic.main.item_event_type.view.*
 import java.util.*
 
-class EventTypeAdapter(activity: SimpleActivity, val eventTypes: List<EventType>, val listener: DeleteEventTypesListener?, recyclerView: MyRecyclerView,
-                       itemClick: (Any) -> Unit) : MyRecyclerViewAdapter(activity, recyclerView, itemClick) {
+class ManageEventTypesAdapter(activity: SimpleActivity, val eventTypes: List<EventType>, val listener: DeleteEventTypesListener?, recyclerView: MyRecyclerView,
+                              itemClick: (Any) -> Unit) : MyRecyclerViewAdapter(activity, recyclerView, itemClick) {
 
     private val config = activity.config
 
