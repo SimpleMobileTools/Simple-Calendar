@@ -49,9 +49,7 @@ class WidgetListConfigureActivity : SimpleActivity() {
         if (mWidgetId == AppWidgetManager.INVALID_APPWIDGET_ID)
             finish()
 
-        mEventsAdapter = EventListAdapter(this, getListItems(), null) {
-
-        }
+        mEventsAdapter = EventListAdapter(this, getListItems(), false, null, config_events_list) {}
         mEventsAdapter!!.updateTextColor(mTextColor)
         config_events_list.adapter = mEventsAdapter
 

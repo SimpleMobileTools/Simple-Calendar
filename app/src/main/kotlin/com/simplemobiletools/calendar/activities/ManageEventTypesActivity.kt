@@ -33,9 +33,11 @@ class ManageEventTypesActivity : SimpleActivity(), DeleteEventTypesListener {
     private fun getEventTypes() {
         dbHelper.getEventTypes {
             runOnUiThread {
-                manage_event_types_list.adapter = EventTypeAdapter(this, it, this) {
+                val adapter = EventTypeAdapter(this, it, this, manage_event_types_list) {
                     showEventTypeDialog(it as EventType)
                 }
+                adapter.setupDragListener(true)
+                manage_event_types_list.adapter = adapter
             }
         }
     }

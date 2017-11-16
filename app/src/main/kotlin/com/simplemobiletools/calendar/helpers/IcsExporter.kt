@@ -1,10 +1,10 @@
 package com.simplemobiletools.calendar.helpers
 
-import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.writeLn
 import com.simplemobiletools.calendar.helpers.IcsExporter.ExportResult.*
 import com.simplemobiletools.calendar.models.Event
+import com.simplemobiletools.commons.activities.BaseSimpleActivity
 import com.simplemobiletools.commons.extensions.getFileOutputStream
 import java.io.BufferedWriter
 import java.io.File
@@ -17,7 +17,7 @@ class IcsExporter {
     private var eventsExported = 0
     private var eventsFailed = 0
 
-    fun exportEvents(activity: SimpleActivity, file: File, events: ArrayList<Event>, callback: (result: ExportResult) -> Unit) {
+    fun exportEvents(activity: BaseSimpleActivity, file: File, events: ArrayList<Event>, callback: (result: ExportResult) -> Unit) {
         activity.getFileOutputStream(file) {
             if (it == null) {
                 callback(EXPORT_FAIL)

@@ -91,7 +91,7 @@ class EventListFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEvents
             listItems.add(ListEvent(it.id, it.startTS, it.endTS, it.title, it.description, it.getIsAllDay(), it.color, it.location))
         }
 
-        val eventsAdapter = EventListAdapter(activity as SimpleActivity, listItems, this) {
+        val eventsAdapter = EventListAdapter(activity as SimpleActivity, listItems, true, this, mView.calendar_events_list) {
             if (it is ListEvent) {
                 editEvent(it)
             }

@@ -1,14 +1,17 @@
 package com.simplemobiletools.calendar.adapters
 
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.dialogs.DeleteEventDialog
+import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.shareEvents
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.interfaces.DeleteEventsListener
 import com.simplemobiletools.calendar.models.Event
+import com.simplemobiletools.commons.adapters.MyRecyclerViewAdapter
 import com.simplemobiletools.commons.extensions.applyColorFilter
 import com.simplemobiletools.commons.extensions.beInvisible
 import com.simplemobiletools.commons.extensions.beInvisibleIf
@@ -16,21 +19,24 @@ import com.simplemobiletools.commons.views.MyRecyclerView
 import kotlinx.android.synthetic.main.event_item_day_view.view.*
 
 class DayEventsAdapter(activity: SimpleActivity, val events: List<Event>, val listener: DeleteEventsListener?, recyclerView: MyRecyclerView,
-                       itemClick: (Any) -> Unit) : MyAdapter(activity, itemClick) {
+                       itemClick: (Any) -> Unit) : MyRecyclerViewAdapter(activity, recyclerView, itemClick) {
 
+    private val config = activity.config
     private var allDayString = resources.getString(R.string.all_day)
     private var replaceDescriptionWithLocation = config.replaceDescription
 
     init {
-        setDragListenerRecyclerView(recyclerView)
+        selectableItemCount = events.count()
     }
 
     override fun getActionMenuId() = R.menu.cab_day
 
-    override fun getSelectableItemCount() = events.size
+    override fun prepareActionMode(menu: Menu) {}
 
-    override fun markItemSelection(select: Boolean, pos: Int) {
-        itemViews[pos].event_item_frame.isSelected = select
+    override fun prepareItemSelection(view: View) {}
+
+    override fun markItemSelection(select: Boolean, view: View?) {
+        view?.event_item_frame?.isSelected = select
     }
 
     override fun actionItemPressed(id: Int) {
@@ -40,19 +46,14 @@ class DayEventsAdapter(activity: SimpleActivity, val events: List<Event>, val li
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
-        val view = activity.layoutInflater.inflate(R.layout.event_item_day_view, parent, false)
-        return createViewHolder(view)
-    }
+    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int) = createViewHolder(R.layout.event_item_day_view, parent)
 
-    override fun onBindViewHolder(holder: MyAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MyRecyclerViewAdapter.ViewHolder, position: Int) {
         val event = events[position]
         val view = holder.bindView(event) {
             setupView(it, event)
         }
-        itemViews.put(position, view)
-        toggleItemSelection(selectedPositions.contains(position), position)
-        holder.itemView.tag = holder
+        bindViewHolder(holder, position, view)
     }
 
     override fun getItemCount() = events.size

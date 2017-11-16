@@ -1,16 +1,15 @@
 package com.simplemobiletools.calendar.extensions
 
-import android.app.Activity
 import com.simplemobiletools.calendar.BuildConfig
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.helpers.IcsExporter
+import com.simplemobiletools.commons.activities.BaseSimpleActivity
 import com.simplemobiletools.commons.extensions.getFilePublicUri
 import com.simplemobiletools.commons.extensions.shareUri
 import com.simplemobiletools.commons.extensions.toast
 import java.io.File
 
-fun SimpleActivity.shareEvents(ids: List<Int>) {
+fun BaseSimpleActivity.shareEvents(ids: List<Int>) {
     val file = getTempFile()
     if (file == null) {
         toast(R.string.unknown_error_occurred)
@@ -26,7 +25,7 @@ fun SimpleActivity.shareEvents(ids: List<Int>) {
     }
 }
 
-fun Activity.getTempFile(): File? {
+fun BaseSimpleActivity.getTempFile(): File? {
     val folder = File(cacheDir, "events")
     if (!folder.exists()) {
         if (!folder.mkdir()) {

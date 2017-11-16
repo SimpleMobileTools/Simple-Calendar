@@ -141,6 +141,7 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEventsListen
         val eventsAdapter = DayEventsAdapter(activity as SimpleActivity, events, this, mHolder.day_events) {
             editEvent(it as Event)
         }
+        eventsAdapter.setupDragListener(true)
 
         mHolder.day_events.adapter = eventsAdapter
         DividerItemDecoration(context, DividerItemDecoration.VERTICAL).apply {
