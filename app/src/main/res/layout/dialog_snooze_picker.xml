@@ -24,6 +24,7 @@
         android:ems="6"
         android:inputType="number"
         android:maxLength="5"
-        android:paddingTop="@dimen/normal_margin"/>
+        android:paddingTop="@dimen/normal_margin"
+        android:textSize="@dimen/normal_text_size"/>
 
 </LinearLayout>
