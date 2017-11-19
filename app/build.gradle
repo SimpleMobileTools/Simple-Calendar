@@ -47,30 +47,17 @@ ext {
 }
 
 dependencies {
-    compile 'com.simplemobiletools:commons:2.39.9'
+    compile 'com.simplemobiletools:commons:2.41.4'
     compile 'joda-time:joda-time:2.9.9'
     compile 'com.facebook.stetho:stetho:1.5.0'
     compile 'com.android.support:multidex:1.0.2'
     compile 'com.google.code.gson:gson:2.8.2'
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     debugCompile "com.squareup.leakcanary:leakcanary-android:$leakCanaryVersion"
     releaseCompile "com.squareup.leakcanary:leakcanary-android-no-op:$leakCanaryVersion"
 }
 
-buildscript {
-    ext.kotlin_version = '1.1.60'
-    repositories {
-        mavenCentral()
-    }
-
-    dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version"
-    }
-}
-
-def Properties props = new Properties()
+Properties props = new Properties()
 def propFile = new File('signing.properties')
 if (propFile.canRead()) {
     props.load(new FileInputStream(propFile))
