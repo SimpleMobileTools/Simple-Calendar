@@ -97,16 +97,16 @@
     </plurals>
 
     <!-- Birthdays -->
-    <string name="birthdays">Aniversários</string>
-    <string name="add_birthdays">Adicionar aniverário dos contactos</string>
-    <string name="no_birthdays">Não foram encontrados aniversários</string>
-    <string name="birthdays_added">Aniversários adicionados com sucesso</string>
+    <string name="birthdays">Data de nascimento</string>
+    <string name="add_birthdays">Adicionar data de nascimento dos contactos</string>
+    <string name="no_birthdays">Não foram encontradas datas de nascimento</string>
+    <string name="birthdays_added">Datas de nascimento adicionadas com sucesso</string>
 
     <!-- Anniversaries -->
-    <string name="anniversaries">Anniversaries</string>
-    <string name="add_anniversaries">Add contact anniversaries</string>
-    <string name="no_anniversaries">No anniversaries have been found</string>
-    <string name="anniversaries_added">Anniversaries added successfully</string>
+    <string name="anniversaries">Aniversários</string>
+    <string name="add_anniversaries">Addicionar aniversários dos contactos</string>
+    <string name="no_anniversaries">Não foram encontrados aniversários</string>
+    <string name="anniversaries_added">Aniversários adicionados com sucesso</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Lembrete</string>
