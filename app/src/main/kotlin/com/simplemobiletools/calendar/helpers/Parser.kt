@@ -41,7 +41,7 @@ class Parser {
                 if (repeatInterval.isXWeeklyRepetition()) {
                     repeatRule = handleRepeatRule(value)
                 } else if (repeatInterval.isXMonthlyRepetition()) {
-                    repeatRule = REPEAT_MONTH_ORDER_WEEKDAY
+                    repeatRule = if (value.startsWith("-1")) REPEAT_MONTH_ORDER_WEEKDAY_USE_LAST else REPEAT_MONTH_ORDER_WEEKDAY
                 }
             } else if (key == BYMONTHDAY && value.toInt() == -1) {
                 repeatRule = REPEAT_MONTH_LAST_DAY
@@ -131,12 +131,13 @@ class Parser {
             val days = getByDayString(event.repeatRule)
             ";$BYDAY=$days"
         }
-        event.repeatInterval.isXMonthlyRepetition() -> when {
-            event.repeatRule == REPEAT_MONTH_LAST_DAY -> ";$BYMONTHDAY=-1"
-            event.repeatRule == REPEAT_MONTH_ORDER_WEEKDAY -> {
+        event.repeatInterval.isXMonthlyRepetition() -> when (event.repeatRule) {
+            REPEAT_MONTH_LAST_DAY -> ";$BYMONTHDAY=-1"
+            REPEAT_MONTH_ORDER_WEEKDAY_USE_LAST, REPEAT_MONTH_ORDER_WEEKDAY -> {
                 val start = Formatter.getDateTimeFromTS(event.startTS)
                 val dayOfMonth = start.dayOfMonth
-                val order = (dayOfMonth - 1) / 7 + 1
+                val isLastWeekday = start.monthOfYear != start.plusDays(7).monthOfYear
+                val order = if (isLastWeekday) "-1" else ((dayOfMonth - 1) / 7 + 1).toString()
                 val day = getDayLetters(start.dayOfWeek)
                 ";$BYDAY=$order$day"
             }

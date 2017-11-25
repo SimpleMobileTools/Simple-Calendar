@@ -57,7 +57,6 @@ class IcsExporter {
                 out.writeLn(END_CALENDAR)
             }
 
-
             callback(when {
                 eventsExported == 0 -> EXPORT_FAIL
                 eventsFailed > 0 -> EXPORT_PARTIAL

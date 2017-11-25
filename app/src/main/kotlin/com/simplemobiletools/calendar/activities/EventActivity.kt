@@ -227,16 +227,19 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
                 setRepeatRule(it)
             }
         } else if (mRepeatInterval.isXMonthlyRepetition()) {
-            val items = arrayListOf(
-                    RadioItem(REPEAT_MONTH_SAME_DAY, getString(R.string.repeat_on_the_same_day)),
-                    RadioItem(REPEAT_MONTH_ORDER_WEEKDAY, getRepeatXthDayString(true, REPEAT_MONTH_ORDER_WEEKDAY)))
+            val items = arrayListOf(RadioItem(REPEAT_MONTH_SAME_DAY, getString(R.string.repeat_on_the_same_day)))
 
             // split Every Last Sunday and Every Fourth Sunday of the month, if the month has 4 sundays
             if (isLastWeekDayOfMonth()) {
                 val order = (mEventStartDateTime.dayOfMonth - 1) / 7 + 1
                 if (order == 4) {
+                    items.add(RadioItem(REPEAT_MONTH_ORDER_WEEKDAY, getRepeatXthDayString(true, REPEAT_MONTH_ORDER_WEEKDAY)))
+                    items.add(RadioItem(REPEAT_MONTH_ORDER_WEEKDAY_USE_LAST, getRepeatXthDayString(true, REPEAT_MONTH_ORDER_WEEKDAY_USE_LAST)))
+                } else if (order == 5) {
                     items.add(RadioItem(REPEAT_MONTH_ORDER_WEEKDAY_USE_LAST, getRepeatXthDayString(true, REPEAT_MONTH_ORDER_WEEKDAY_USE_LAST)))
                 }
+            } else {
+                items.add(RadioItem(REPEAT_MONTH_ORDER_WEEKDAY, getRepeatXthDayString(true, REPEAT_MONTH_ORDER_WEEKDAY)))
             }
 
             if (isLastDayOfTheMonth()) {
