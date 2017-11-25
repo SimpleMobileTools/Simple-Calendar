@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 2.12.0 *(2017-11-26)*
+----------------------------
+
+ * Allow setting repetition on every for example 4th sunday, even if a month has only 4
+ * Some rewrites to the list views
+
 Version 2.11.0 *(2017-11-13)*
 ----------------------------
 
