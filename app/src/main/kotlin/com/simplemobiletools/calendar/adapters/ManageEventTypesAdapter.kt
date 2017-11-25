@@ -21,8 +21,6 @@ import java.util.*
 class ManageEventTypesAdapter(activity: SimpleActivity, val eventTypes: List<EventType>, val listener: DeleteEventTypesListener?, recyclerView: MyRecyclerView,
                               itemClick: (Any) -> Unit) : MyRecyclerViewAdapter(activity, recyclerView, itemClick) {
 
-    private val config = activity.config
-
     init {
         selectableItemCount = eventTypes.size
     }
@@ -58,7 +56,7 @@ class ManageEventTypesAdapter(activity: SimpleActivity, val eventTypes: List<Eve
     private fun setupView(view: View, eventType: EventType) {
         view.apply {
             event_type_title.text = eventType.getDisplayTitle()
-            event_type_color.setBackgroundWithStroke(eventType.color, config.backgroundColor)
+            event_type_color.setBackgroundWithStroke(eventType.color, activity.config.backgroundColor)
             event_type_title.setTextColor(textColor)
         }
     }

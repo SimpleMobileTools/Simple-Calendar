@@ -21,9 +21,8 @@ import kotlinx.android.synthetic.main.event_item_day_view.view.*
 class DayEventsAdapter(activity: SimpleActivity, val events: List<Event>, val listener: DeleteEventsListener?, recyclerView: MyRecyclerView,
                        itemClick: (Any) -> Unit) : MyRecyclerViewAdapter(activity, recyclerView, itemClick) {
 
-    private val config = activity.config
     private var allDayString = resources.getString(R.string.all_day)
-    private var replaceDescriptionWithLocation = config.replaceDescription
+    private var replaceDescriptionWithLocation = activity.config.replaceDescription
 
     init {
         selectableItemCount = events.count()

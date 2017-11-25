@@ -24,13 +24,12 @@ import java.util.*
 class EventListAdapter(activity: SimpleActivity, val listItems: List<ListItem>, val allowLongClick: Boolean, val listener: DeleteEventsListener?,
                        recyclerView: MyRecyclerView, itemClick: (Any) -> Unit) : MyRecyclerViewAdapter(activity, recyclerView, itemClick) {
 
-    private val config = activity.config
     private val ITEM_EVENT = 0
     private val ITEM_HEADER = 1
 
     private val topDivider = resources.getDrawable(R.drawable.divider_width)
     private val allDayString = resources.getString(R.string.all_day)
-    private val replaceDescriptionWithLocation = config.replaceDescription
+    private val replaceDescriptionWithLocation = activity.config.replaceDescription
     private val redTextColor = resources.getColor(R.color.red_text)
     private val now = (System.currentTimeMillis() / 1000).toInt()
     private val todayDate = Formatter.getDayTitle(activity, Formatter.getDayCodeFromTS(now))
