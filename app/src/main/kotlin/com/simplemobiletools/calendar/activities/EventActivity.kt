@@ -282,7 +282,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
     private fun getOrderString(repeatRule: Int): String {
         val dayOfMonth = mEventStartDateTime.dayOfMonth
         var order = (dayOfMonth - 1) / 7 + 1
-        if (order == 4 && repeatRule == REPEAT_MONTH_ORDER_WEEKDAY_USE_LAST) {
+        if (order == 4 && isLastWeekDayOfMonth() && repeatRule == REPEAT_MONTH_ORDER_WEEKDAY_USE_LAST) {
             order = -1
         }
 
