@@ -64,10 +64,10 @@ val SUNDAY = 64
 val EVERY_DAY = 127
 
 // repeat_rule for monthly repetition
-val REPEAT_MONTH_SAME_DAY = 1               // ie 25th every month
-val REPEAT_MONTH_ORDER_WEEKDAY = 2          // ie every 4th sunday, even if a month has 4 sundays only (will stay 4th even at months with 5)
-val REPEAT_MONTH_LAST_DAY = 3               // ie every last day of the month
-val REPEAT_MONTH_LAST_WEEKDAY = 4           // ie every last sunday
+val REPEAT_MONTH_SAME_DAY = 1                   // ie 25th every month
+val REPEAT_MONTH_ORDER_WEEKDAY_USE_LAST = 2     // ie every xth sunday. 4th if a month has 4 sundays, 5th if 5
+val REPEAT_MONTH_LAST_DAY = 3                   // ie every last day of the month
+val REPEAT_MONTH_ORDER_WEEKDAY = 4              // ie every 4th sunday, even if a month has 4 sundays only (will stay 4th even at months with 5)
 
 // special event flags
 val FLAG_ALL_DAY = 1

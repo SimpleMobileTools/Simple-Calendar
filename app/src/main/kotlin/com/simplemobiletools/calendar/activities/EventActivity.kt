@@ -235,7 +235,7 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
             if (isLastWeekDayOfMonth()) {
                 val order = (mEventStartDateTime.dayOfMonth - 1) / 7 + 1
                 if (order == 4) {
-                    items.add(RadioItem(REPEAT_MONTH_LAST_WEEKDAY, getRepeatXthDayString(true, REPEAT_MONTH_LAST_WEEKDAY)))
+                    items.add(RadioItem(REPEAT_MONTH_ORDER_WEEKDAY_USE_LAST, getRepeatXthDayString(true, REPEAT_MONTH_ORDER_WEEKDAY_USE_LAST)))
                 }
             }
 
@@ -278,7 +278,11 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
 
     private fun getOrderString(repeatRule: Int): String {
         val dayOfMonth = mEventStartDateTime.dayOfMonth
-        val order = if (repeatRule == REPEAT_MONTH_LAST_WEEKDAY) -1 else (dayOfMonth - 1) / 7 + 1
+        var order = (dayOfMonth - 1) / 7 + 1
+        if (order == 4 && repeatRule == REPEAT_MONTH_ORDER_WEEKDAY_USE_LAST) {
+            order = -1
+        }
+
         val isMale = isMaleGender(mEventStartDateTime.dayOfWeek)
         return getString(when (order) {
             1 -> if (isMale) R.string.first_m else R.string.first_f
@@ -313,7 +317,9 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         if (mRepeatInterval.isXWeeklyRepetition()) {
             event_repetition_rule.text = if (mRepeatRule == EVERY_DAY) getString(R.string.every_day) else getSelectedDaysString()
         } else if (mRepeatInterval.isXMonthlyRepetition()) {
-            val repeatString = if (mRepeatRule == REPEAT_MONTH_ORDER_WEEKDAY || mRepeatRule == REPEAT_MONTH_LAST_WEEKDAY) R.string.repeat else R.string.repeat_on
+            val repeatString = if (mRepeatRule == REPEAT_MONTH_ORDER_WEEKDAY_USE_LAST || mRepeatRule == REPEAT_MONTH_ORDER_WEEKDAY)
+                R.string.repeat else R.string.repeat_on
+
             event_repetition_rule_label.text = getString(repeatString)
             event_repetition_rule.text = getMonthlyRepetitionRuleText()
         }
