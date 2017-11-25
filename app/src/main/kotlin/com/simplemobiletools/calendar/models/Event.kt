@@ -28,7 +28,8 @@ data class Event(var id: Int = 0, var startTS: Int = 0, var endTS: Int = 0, var 
                     repeatInterval % YEAR == 0 -> currStart.plusYears(repeatInterval / YEAR)
                     repeatInterval % MONTH == 0 -> when (repeatRule) {
                         REPEAT_MONTH_SAME_DAY -> addMonthsWithSameDay(currStart, original)
-                        REPEAT_MONTH_EVERY_XTH_DAY -> addXthDayInterval(currStart, original)
+                        REPEAT_MONTH_ORDER_WEEKDAY -> addXthDayInterval(currStart, original, false)
+                        REPEAT_MONTH_LAST_WEEKDAY -> addXthDayInterval(currStart, original, true)
                         else -> currStart.plusMonths(repeatInterval / MONTH).dayOfMonth().withMaximumValue()
                     }
                     repeatInterval % WEEK == 0 -> {
@@ -60,7 +61,7 @@ data class Event(var id: Int = 0, var startTS: Int = 0, var endTS: Int = 0, var 
     }
 
     // handle monthly repetitions like Third Monday
-    private fun addXthDayInterval(currStart: DateTime, original: Event): DateTime {
+    private fun addXthDayInterval(currStart: DateTime, original: Event, forceLastWeekday: Boolean): DateTime {
         val day = currStart.dayOfWeek
         var order = (currStart.dayOfMonth - 1) / 7
         val properMonth = currStart.withDayOfMonth(7).plusMonths(repeatInterval / MONTH).withDayOfWeek(day)
@@ -69,7 +70,7 @@ data class Event(var id: Int = 0, var startTS: Int = 0, var endTS: Int = 0, var 
             firstProperDay = properMonth.dayOfMonth
 
         // check if it should be for example Fourth Monday, or Last Monday
-        if (order == 3 || order == 4) {
+        if (forceLastWeekday && (order == 3 || order == 4)) {
             val originalDateTime = Formatter.getDateTimeFromTS(original.startTS)
             val isLastWeekday = originalDateTime.monthOfYear != originalDateTime.plusDays(7).monthOfYear
             if (isLastWeekday)
