@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Simple Calendar</string>
+    <string name="app_launcher_name">Kalender</string>
+    <string name="change_view">Endre visning</string>
+    <string name="weekly_view">Ukevisning</string>
+    <string name="monthly_view">Månedsvisning</string>
+    <string name="yearly_view">Årsvisning</string>
+    <string name="simple_event_list">Enkel hendelsesliste</string>
+    <string name="no_upcoming_events">Ser ut som du ikke har noen kommende hendelser.</string>
+    <string name="add_some_events">Du kan legge til noen med Pluss-knappen nederst.</string>
+    <string name="details">Detaljer</string>
+    <string name="go_to_today">Gå til idag</string>
+    <string name="snooze">Snooze</string>
+
+    <!-- Widget titles -->
+    <string name="widget_monthly">Månedskalender</string>
+    <string name="widget_list">Hendelsesliste</string>
+
+    <!-- Event -->
+    <string name="event">Hendelse</string>
+    <string name="edit_event">Rediger hendelse</string>
+    <string name="new_event">Ny hendelse</string>
+    <string name="title_empty">Tittel kan ikke være tom</string>
+    <string name="end_before_start">Hendelsen kan ikke slutte tidligere enn den starter</string>
+    <string name="event_added">Hendelse vellykket lagt til</string>
+    <string name="event_updated">Hendelse vellykket oppdatert</string>
+    <string name="filter">Filter</string>
+    <string name="filter_events_by_type">Filtrer hendelser etter type</string>
+
+    <!-- Event Repetition -->
+    <string name="repetition">Gjentagelse</string>
+    <string name="no_repetition">Ingen gjentagelse</string>
+    <string name="daily">Daglig</string>
+    <string name="weekly">Ukentlig</string>
+    <string name="monthly">Månedlig</string>
+    <string name="yearly">Årlig</string>
+    <string name="weeks_raw">uker</string>
+    <string name="months_raw">måneder</string>
+    <string name="years_raw">år</string>
+    <string name="repeat_till">Gjenta til</string>
+    <string name="forever">For alltid</string>
+    <string name="event_is_repeatable">Hendelsen er repeterbar</string>
+    <string name="selection_contains_repetition">Markeringen inneholder gjentagende hendelser</string>
+    <string name="delete_one_only">Slett bare den merkede forekomsten</string>
+    <string name="delete_all_occurrences">Slett alle forekomster</string>
+    <string name="update_one_only">Oppdater bare den merkede forekomsten</string>
+    <string name="update_all_occurrences">Oppdater alle forekomster</string>
+    <string name="repeat_till_date">Gjenta til en dato</string>
+    <string name="repeat_x_times">Gjenta x ganger</string>
+    <string name="repeat_forever">Gjenta for alltid</string>
+    <string name="times">ganger</string>
+    <string name="repeat">Gjenta</string>
+    <string name="repeat_on">Gjenta</string>
+    <string name="every_day">Hver dag</string>
+    <string name="selected_days">På valgte dager</string>
+    <string name="the_same_day">Den samme dagen</string>
+    <string name="the_last_day">Den siste dagen</string>
+    <string name="repeat_on_the_same_day">Gjenta på den samme dagen hver måned</string>
+    <string name="repeat_on_the_last_day">Gjenta på den siste dagen i måneden</string>
+    <string name="repeat_every_m">Gjenta hver</string>
+    <string name="every_m">Hver</string>
+    <string name="first_m">første</string>
+    <string name="second_m">andre</string>
+    <string name="third_m">tredje</string>
+    <string name="fourth_m">fjerde</string>
+    <string name="last_m">siste</string>
+
+    <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
+    <!-- used in repetition, like "Every first Sunday" -->
+    <string name="repeat_every_f">Gjenta hver</string>
+    <string name="every_f">Hver</string>
+    <string name="first_f">første</string>
+    <string name="second_f">andre</string>
+    <string name="third_f">tredje</string>
+    <string name="fourth_f">fjerde</string>
+    <string name="last_f">siste</string>
+
+    <plurals name="days">
+        <item quantity="one">%d dag</item>
+        <item quantity="other">%d dager</item>
+    </plurals>
+
+    <plurals name="weeks">
+        <item quantity="one">%d uke</item>
+        <item quantity="other">%d uker</item>
+    </plurals>
+
+    <plurals name="months">
+        <item quantity="one">%d måned</item>
+        <item quantity="other">%d måneder</item>
+    </plurals>
+
+    <plurals name="years">
+        <item quantity="one">%d år</item>
+        <item quantity="other">%d år</item>
+    </plurals>
+
+    <!-- Birthdays -->
+    <string name="birthdays">Bursdager</string>
+    <string name="add_birthdays">Legg til kontaktbursdager</string>
+    <string name="no_birthdays">Ingen bursdager er funnet</string>
+    <string name="birthdays_added">Bursdager vellykket lagt til</string>
+
+    <!-- Anniversaries -->
+    <string name="anniversaries">Jubileer</string>
+    <string name="add_anniversaries">Legg til kontaktjubileer</string>
+    <string name="no_anniversaries">Ingen jubileer er funnet</string>
+    <string name="anniversaries_added">Jubileer vellykket lagt til</string>
+
+    <!-- Event Reminders -->
+    <string name="reminder">Påminnelse</string>
+    <string name="no_reminder">Ingen påminnelse</string>
+    <string name="at_start">Ved start</string>
+    <string name="custom">Tilpasset</string>
+    <string name="before">før</string>
+    <string name="minutes_raw">minutter</string>
+    <string name="hours_raw">timer</string>
+    <string name="days_raw">dager</string>
+    <string name="add_another_reminder">Legg til en annen påminnelse</string>
+
+    <plurals name="minutes_before">
+        <item quantity="one">%d minutt før</item>
+        <item quantity="other">%d minutter før</item>
+    </plurals>
+
+    <plurals name="hours_before">
+        <item quantity="one">%d time før</item>
+        <item quantity="other">%d timer før</item>
+    </plurals>
+
+    <plurals name="days_before">
+        <item quantity="one">%d dag før</item>
+        <item quantity="other">%d dager før</item>
+    </plurals>
+
+    <!-- Export / Import -->
+    <string name="importing">Importerer…</string>
+    <string name="exporting">Eksporterer…</string>
+    <string name="import_events">Importer hendelser</string>
+    <string name="export_events">Eksporter hendelser</string>
+    <string name="import_events_from_ics">Importer hendelser fra en .ics-fil</string>
+    <string name="export_events_to_ics">Eksporter hendelser til en .ics-fil</string>
+    <string name="events_imported_successfully">Hendelser er vellykket importert</string>
+    <string name="events_exported_successfully">Hendelser er vellykket eksportert</string>
+    <string name="importing_events_failed">Importering av hendelser feilet</string>
+    <string name="exporting_events_failed">Eksportering av hendelser feilet</string>
+    <string name="importing_some_events_failed">Importering av noen hendelser feilet</string>
+    <string name="exporting_some_events_failed">Eksportering av noen hendelser feilet</string>
+    <string name="default_event_type">Standard hendelsestype</string>
+    <string name="no_events_for_exporting">Ingen hendelser for eksportering er funnet</string>
+    <string name="export_past_events_too">Eksporter fortidige hendelser også</string>
+    <string name="include_event_types">Inkluder hendelsestyper</string>
+    <string name="filename_without_ics">Filnavn (uten .ics)</string>
+    <string name="no_title">Ingen tittel</string>
+
+    <!-- Event details -->
+    <string name="title">Tittel</string>
+    <string name="location">Sted</string>
+    <string name="description">Beskrivelse</string>
+    <string name="all_day">Hele dagen</string>
+
+    <!-- Weekly view -->
+    <string name="week">Uke</string>
+
+    <!-- Event types -->
+    <string name="event_types">Hendelsestyper</string>
+    <string name="add_new_type">Legg til en ny type</string>
+    <string name="edit_type">Rediger type</string>
+    <string name="type_already_exists">Type med denne tittelen finnes allerede</string>
+    <string name="color">Farge</string>
+    <string name="regular_event">Vanlig hendelse</string>
+    <string name="cannot_delete_default_type">Standard hendelsestype kan ikke slettes</string>
+    <string name="select_event_type">Velg en hendelsestype</string>
+    <string name="move_events_into_default">Flytt berørte hendelser til standardhendelsestypen</string>
+    <string name="remove_affected_events">Fjern berørte hendelser permanent</string>
+    <string name="unsync_caldav_calendar">For å fjerne en CalDAV-kalender må du desynkronisere den</string>
+
+    <!-- Holidays -->
+    <string name="holidays">Off. fridager</string>
+    <string name="add_holidays">Legg til off. fridager</string>
+    <string name="national_holidays">Nasjonale off. fridager</string>
+    <string name="religious_holidays">Religiøse off. fridager</string>
+    <string name="holidays_imported_successfully">Off. fridager er vellykket importert til en ny hendelsestype</string>
+    <string name="importing_some_holidays_failed">Importering av noen hendelser feilet</string>
+    <string name="importing_holidays_failed">Importering av off. fridager feilet</string>
+
+    <!-- Settings -->
+    <string name="manage_event_types">Behandle hendelsestyper</string>
+    <string name="use_24_hour_format">Bruk 24-timers format</string>
+    <string name="sunday_first">Søndag som første ukedag</string>
+    <string name="start_day_at">Start dag kl.</string>
+    <string name="end_day_at">Avslutt dag kl.</string>
+    <string name="week_numbers">Vis ukenummer</string>
+    <string name="vibrate">Vibrer ved påminnelsesvarsel</string>
+    <string name="reminder_sound">Påminnelseslyd</string>
+    <string name="default_event_reminder">Standard hendelsespåminnelse</string>
+    <string name="no_ringtone_picker">Ingen app i stand til å sette ringetone funnet</string>
+    <string name="no_ringtone_selected">Ingen</string>
+    <string name="day_end_before_start">Dagen kan ikke slutte tidligere enn den starter</string>
+    <string name="caldav_sync">CalDAV-synkronisering</string>
+    <string name="event_lists">Hendelseslister</string>
+    <string name="display_past_events">Vis hendelser fra fortiden</string>
+    <string name="snooze_delay">Utsett påminnelser med Snooze med</string>
+    <string name="widgets">Moduler</string>
+    <string name="replace_description_with_location">Erstatt Beskrivelse med Sted i listevisningen</string>
+
+    <!-- CalDAV sync -->
+    <string name="caldav">CalDAV</string>
+    <string name="select_caldav_calendars">Velg kalendere å synkronisere</string>
+    <string name="manage_synced_calendars">Behandle synkroniserte kalendere</string>
+    <string name="store_locally_only">Lagre bare lokalt</string>
+    <string name="refresh_caldav_calendars">Gjenoppfrisk CalDAV-kalendere</string>
+    <string name="refreshing">Gjenoppfrisker…</string>
+    <string name="refreshing_complete">Gjenoppfrisking fullført</string>
+    <string name="editing_calendar_failed">Redigering av kalender feilet</string>
+    <string name="syncing">Synkroniserer…</string>
+    <string name="synchronization_completed">Synkronisering fullført</string>
+
+    <plurals name="by_minutes">
+        <item quantity="one">%d minutt</item>
+        <item quantity="other">%d minutter</item>
+    </plurals>
+
+    <plurals name="by_hours">
+        <item quantity="one">%d time</item>
+        <item quantity="other">%d timer</item>
+    </plurals>
+
+    <string name="never">Aldri</string>
+
+    <string name="january">Januar</string>
+    <string name="february">Februar</string>
+    <string name="march">Mars</string>
+    <string name="april">April</string>
+    <string name="may">Mai</string>
+    <string name="june">Juni</string>
+    <string name="july">Juli</string>
+    <string name="august">August</string>
+    <string name="september">September</string>
+    <string name="october">Oktober</string>
+    <string name="november">November</string>
+    <string name="december">Desember</string>
+
+    <string name="monday_letter">M</string>
+    <string name="tuesday_letter">T</string>
+    <string name="wednesday_letter">O</string>
+    <string name="thursday_letter">T</string>
+    <string name="friday_letter">F</string>
+    <string name="saturday_letter">L</string>
+    <string name="sunday_letter">S</string>
+
+    <string name="monday">Mandag</string>
+    <string name="tuesday">Tirsdag</string>
+    <string name="wednesday">Onsdag</string>
+    <string name="thursday">Torsdag</string>
+    <string name="friday">Fredag</string>
+    <string name="saturday">Lørdag</string>
+    <string name="sunday">Søndag</string>
+
+    <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
+    <!-- used in repetition, like "Every last Sunday" -->
+    <string name="monday_alt">Mandag</string>
+    <string name="tuesday_alt">Tirsdag</string>
+    <string name="wednesday_alt">Onsdag</string>
+    <string name="thursday_alt">Torsdag</string>
+    <string name="friday_alt">Fredag</string>
+    <string name="saturday_alt">Lørdag</string>
+    <string name="sunday_alt">Søndag</string>
+
+    <!-- List widget config example events -->
+    <string name="sample_title_1">Workout</string>
+    <string name="sample_description_1">Leg day</string>
+    <string name="sample_title_2">Meeting with John</string>
+    <string name="sample_description_2">In Rockstone garden</string>
+    <string name="sample_title_3">Library</string>
+    <string name="sample_title_4">Lunch with Mary</string>
+    <string name="sample_description_4">In the Plaza</string>
+    <string name="sample_title_5">Coffee time</string>
+
+    <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
+    <!-- Short description has to have less than 80 chars -->
+    <string name="app_short_description">A simple calendar with events, customizable widget and no ads.</string>
+    <string name="app_long_description">
+        A simple calendar with optional Google synchronization. You can easily create recurring events and setup reminders, it can also display week numbers.
+
+        Contains a resizable 4x4 widget where you can customize the color of the text, as well as the alpha and the color of the background.
+
+        Contains no ads or unnecessary permissions. It is fully opensource, provides customizable colors.
+
+        The Storage permission is needed only for exporting or importing events from .ics files.
+
+        Contacts permission is used only at importing contact birthdays.
+
+        This app is just one piece of a bigger series of apps. You can find the rest of them at http://www.simplemobiletools.com
+    </string>
+
+    <!--
+        Haven't found some strings? There's more at
+        https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
+    -->
+</resources>
