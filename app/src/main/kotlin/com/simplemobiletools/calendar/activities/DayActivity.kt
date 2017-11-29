@@ -54,7 +54,6 @@ class DayActivity : SimpleActivity(), NavigationListener, ViewPager.OnPageChange
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_day, menu)
-        updateMenuTextSize(resources, menu)
         menu.findItem(R.id.filter).isVisible = eventTypeColors.size() > 1 || config.displayEventTypes.isEmpty()
         return true
     }
