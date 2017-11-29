@@ -36,6 +36,7 @@ class WidgetListConfigureActivity : SimpleActivity() {
     private var mEventsAdapter: EventListAdapter? = null
 
     public override fun onCreate(savedInstanceState: Bundle?) {
+        useDynamicTheme = false
         super.onCreate(savedInstanceState)
         setResult(Activity.RESULT_CANCELED)
         setContentView(R.layout.widget_config_list)

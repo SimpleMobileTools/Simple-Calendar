@@ -44,6 +44,7 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
     private var mPrimaryColor = 0
 
     public override fun onCreate(savedInstanceState: Bundle?) {
+        useDynamicTheme = false
         super.onCreate(savedInstanceState)
         setResult(Activity.RESULT_CANCELED)
         setContentView(R.layout.widget_config_monthly)
