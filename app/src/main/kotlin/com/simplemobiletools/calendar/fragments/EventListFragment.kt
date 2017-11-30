@@ -14,7 +14,6 @@ import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.getFilteredEvents
 import com.simplemobiletools.calendar.extensions.seconds
-import com.simplemobiletools.calendar.helpers.DBHelper
 import com.simplemobiletools.calendar.helpers.EVENT_ID
 import com.simplemobiletools.calendar.helpers.EVENT_OCCURRENCE_TS
 import com.simplemobiletools.calendar.helpers.Formatter
@@ -29,7 +28,7 @@ import kotlinx.android.synthetic.main.fragment_event_list.view.*
 import org.joda.time.DateTime
 import java.util.*
 
-class EventListFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEventsListener {
+class EventListFragment : Fragment(), DeleteEventsListener {
     private var mEvents: List<Event> = ArrayList()
     private var prevEventsHash = 0
     private var lastHash = 0
@@ -53,10 +52,6 @@ class EventListFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEvents
         context!!.dbHelper.getEvents(fromTS, toTS) {
             receivedEvents(it)
         }
-    }
-
-    override fun gotEvents(events: MutableList<Event>) {
-        receivedEvents(events)
     }
 
     private fun receivedEvents(events: MutableList<Event>) {
@@ -130,14 +125,5 @@ class EventListFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEvents
             context!!.dbHelper.addEventRepeatException(value, timestamps[index])
         }
         checkEvents()
-    }
-
-    override fun eventInserted(event: Event) {
-        checkEvents()
-    }
-
-    override fun eventsDeleted(cnt: Int) {
-        checkEvents()
-        checkPlaceholderVisibility()
     }
 }
