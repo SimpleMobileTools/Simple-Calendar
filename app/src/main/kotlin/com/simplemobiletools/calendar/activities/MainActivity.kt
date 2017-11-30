@@ -75,7 +75,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        storeStoragePaths()
+        appLaunched()
         calendar_fab.setOnClickListener { launchNewEventIntent() }
         checkWhatsNewDialog()
 
