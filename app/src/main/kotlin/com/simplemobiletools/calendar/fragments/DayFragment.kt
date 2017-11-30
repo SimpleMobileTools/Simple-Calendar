@@ -5,7 +5,6 @@ import android.content.res.Resources
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AlertDialog
-import android.support.v7.widget.DividerItemDecoration
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -138,15 +137,12 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEventsListen
         if (activity == null)
             return
 
-        val eventsAdapter = DayEventsAdapter(activity as SimpleActivity, events, this, mHolder.day_events) {
+        DayEventsAdapter(activity as SimpleActivity, events, this, mHolder.day_events) {
             editEvent(it as Event)
-        }
-        eventsAdapter.setupDragListener(true)
-
-        mHolder.day_events.adapter = eventsAdapter
-        DividerItemDecoration(context, DividerItemDecoration.VERTICAL).apply {
-            setDrawable(context!!.resources.getDrawable(R.drawable.divider))
-            mHolder.day_events.addItemDecoration(this)
+        }.apply {
+            setupDragListener(true)
+            addVerticalDividers(true)
+            mHolder.day_events.adapter = this
         }
     }
 

@@ -62,11 +62,11 @@ class EventListAdapter(activity: SimpleActivity, val listItems: List<ListItem>, 
 
     override fun onBindViewHolder(holder: MyRecyclerViewAdapter.ViewHolder, position: Int) {
         val listItem = listItems[position]
-        val view = holder.bindView(listItem, allowLongClick) {
+        val view = holder.bindView(listItem, allowLongClick) { itemView, layoutPosition ->
             if (listItem is ListSection) {
-                setupListSection(it, listItem, position)
+                setupListSection(itemView, listItem, position)
             } else if (listItem is ListEvent) {
-                setupListEvent(it, listItem)
+                setupListEvent(itemView, listItem)
             }
         }
         bindViewHolder(holder, position, view)

@@ -49,8 +49,8 @@ class DayEventsAdapter(activity: SimpleActivity, val events: List<Event>, val li
 
     override fun onBindViewHolder(holder: MyRecyclerViewAdapter.ViewHolder, position: Int) {
         val event = events[position]
-        val view = holder.bindView(event) {
-            setupView(it, event)
+        val view = holder.bindView(event) { itemView, layoutPosition ->
+            setupView(itemView, event)
         }
         bindViewHolder(holder, position, view)
     }

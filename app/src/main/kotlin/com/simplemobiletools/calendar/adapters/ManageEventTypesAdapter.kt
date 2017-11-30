@@ -45,8 +45,8 @@ class ManageEventTypesAdapter(activity: SimpleActivity, val eventTypes: List<Eve
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val eventType = eventTypes[position]
-        val view = holder.bindView(eventType) {
-            setupView(it, eventType)
+        val view = holder.bindView(eventType) { itemView, layoutPosition ->
+            setupView(itemView, eventType)
         }
         bindViewHolder(holder, position, view)
     }
