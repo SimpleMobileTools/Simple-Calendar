@@ -122,7 +122,7 @@ class EventListFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEvents
 
     override fun deleteItems(ids: ArrayList<Int>) {
         val eventIDs = Array(ids.size, { i -> (ids[i].toString()) })
-        DBHelper.newInstance(context!!, this).deleteEvents(eventIDs, true)
+        context!!.dbHelper.deleteEvents(eventIDs, true)
     }
 
     override fun addEventRepeatException(parentIds: ArrayList<Int>, timestamps: ArrayList<Int>) {

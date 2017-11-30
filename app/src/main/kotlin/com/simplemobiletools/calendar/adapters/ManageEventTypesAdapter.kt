@@ -7,23 +7,21 @@ import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
+import com.simplemobiletools.calendar.helpers.DBHelper
 import com.simplemobiletools.calendar.interfaces.DeleteEventTypesListener
 import com.simplemobiletools.calendar.models.EventType
 import com.simplemobiletools.commons.adapters.MyRecyclerViewAdapter
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.setBackgroundWithStroke
+import com.simplemobiletools.commons.extensions.toast
 import com.simplemobiletools.commons.models.RadioItem
 import com.simplemobiletools.commons.views.MyRecyclerView
 import kotlinx.android.synthetic.main.item_event_type.view.*
 import java.util.*
 
-class ManageEventTypesAdapter(activity: SimpleActivity, val eventTypes: List<EventType>, val listener: DeleteEventTypesListener?, recyclerView: MyRecyclerView,
+class ManageEventTypesAdapter(activity: SimpleActivity, val eventTypes: ArrayList<EventType>, val listener: DeleteEventTypesListener?, recyclerView: MyRecyclerView,
                               itemClick: (Any) -> Unit) : MyRecyclerViewAdapter(activity, recyclerView, itemClick) {
-
-    init {
-        selectableItemCount = eventTypes.size
-    }
 
     override fun getActionMenuId() = R.menu.cab_event_type
 
@@ -40,6 +38,8 @@ class ManageEventTypesAdapter(activity: SimpleActivity, val eventTypes: List<Eve
             R.id.cab_delete -> askConfirmDelete()
         }
     }
+
+    override fun getSelectableItemCount() = eventTypes.size
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int) = createViewHolder(R.layout.item_event_type, parent)
 
@@ -74,18 +74,34 @@ class ManageEventTypesAdapter(activity: SimpleActivity, val eventTypes: List<Eve
                 add(RadioItem(DELETE_EVENTS, res.getString(R.string.remove_affected_events)))
             }
             RadioGroupDialog(activity, items, -1) {
-                finishActMode()
-                deleteEventTypes(it == DELETE_EVENTS, eventTypes)
+                deleteEventTypes(it == DELETE_EVENTS)
             }
         } else {
             ConfirmationDialog(activity) {
-                deleteEventTypes(true, eventTypes)
+                deleteEventTypes(true)
             }
         }
     }
 
-    private fun deleteEventTypes(deleteEvents: Boolean, eventTypes: ArrayList<EventType>) {
-        listener?.deleteEventTypes(eventTypes, deleteEvents)
-        finishActMode()
+    private fun deleteEventTypes(deleteEvents: Boolean) {
+        val eventTypesToDelete = ArrayList<EventType>(selectedPositions.size)
+
+        for (pos in selectedPositions) {
+            if (eventTypes[pos].id == DBHelper.REGULAR_EVENT_TYPE_ID) {
+                activity.toast(R.string.cannot_delete_default_type)
+                selectedPositions.remove(pos)
+                toggleItemSelection(false, pos)
+                break
+            }
+        }
+
+        selectedPositions.sortedDescending().forEach {
+            val eventType = eventTypes[it]
+            eventTypesToDelete.add(eventType)
+        }
+
+        eventTypes.removeAll(eventTypesToDelete)
+        listener?.deleteEventTypes(eventTypesToDelete, deleteEvents)
+        removeSelectedItems()
     }
 }

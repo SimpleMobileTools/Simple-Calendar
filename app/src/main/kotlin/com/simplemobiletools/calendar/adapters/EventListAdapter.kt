@@ -21,7 +21,7 @@ import com.simplemobiletools.commons.views.MyRecyclerView
 import kotlinx.android.synthetic.main.event_list_item.view.*
 import java.util.*
 
-class EventListAdapter(activity: SimpleActivity, val listItems: List<ListItem>, val allowLongClick: Boolean, val listener: DeleteEventsListener?,
+class EventListAdapter(activity: SimpleActivity, val listItems: ArrayList<ListItem>, val allowLongClick: Boolean, val listener: DeleteEventsListener?,
                        recyclerView: MyRecyclerView, itemClick: (Any) -> Unit) : MyRecyclerViewAdapter(activity, recyclerView, itemClick) {
 
     private val ITEM_EVENT = 0
@@ -33,10 +33,6 @@ class EventListAdapter(activity: SimpleActivity, val listItems: List<ListItem>, 
     private val redTextColor = resources.getColor(R.color.red_text)
     private val now = (System.currentTimeMillis() / 1000).toInt()
     private val todayDate = Formatter.getDayTitle(activity, Formatter.getDayCodeFromTS(now))
-
-    init {
-        selectableItemCount = listItems.filter { it is ListEvent }.size
-    }
 
     override fun getActionMenuId() = R.menu.cab_event_list
 
@@ -54,6 +50,8 @@ class EventListAdapter(activity: SimpleActivity, val listItems: List<ListItem>, 
             R.id.cab_delete -> askConfirmDelete()
         }
     }
+
+    override fun getSelectableItemCount() = listItems.filter { it is ListEvent }.size
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): MyRecyclerViewAdapter.ViewHolder {
         val layoutId = if (viewType == ITEM_EVENT) R.layout.event_list_item else R.layout.event_list_section
@@ -150,12 +148,19 @@ class EventListAdapter(activity: SimpleActivity, val listItems: List<ListItem>, 
         }
 
         DeleteEventDialog(activity, eventIds) {
+            val listItemsToDelete = ArrayList<ListItem>(selectedPositions.size)
+            selectedPositions.sortedDescending().forEach {
+                val listItem = listItems[it]
+                listItemsToDelete.add(listItem)
+            }
+            listItems.removeAll(listItemsToDelete)
+
             if (it) {
                 listener?.deleteItems(eventIds)
             } else {
                 listener?.addEventRepeatException(eventIds, timestamps)
             }
-            finishActMode()
+            removeSelectedItems()
         }
     }
 }

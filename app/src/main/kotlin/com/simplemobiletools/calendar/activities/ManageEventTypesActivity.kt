@@ -7,7 +7,6 @@ import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.adapters.ManageEventTypesAdapter
 import com.simplemobiletools.calendar.dialogs.UpdateEventTypeDialog
 import com.simplemobiletools.calendar.extensions.dbHelper
-import com.simplemobiletools.calendar.helpers.DBHelper
 import com.simplemobiletools.calendar.interfaces.DeleteEventTypesListener
 import com.simplemobiletools.calendar.models.EventType
 import com.simplemobiletools.commons.extensions.toast
@@ -56,18 +55,12 @@ class ManageEventTypesActivity : SimpleActivity(), DeleteEventTypesListener {
     }
 
     override fun deleteEventTypes(eventTypes: ArrayList<EventType>, deleteEvents: Boolean) {
-        if (eventTypes.map { it.id }.contains(DBHelper.REGULAR_EVENT_TYPE_ID)) {
-            toast(R.string.cannot_delete_default_type)
-        }
-
         if (eventTypes.any { it.caldavCalendarId != 0 }) {
             toast(R.string.unsync_caldav_calendar)
         }
 
         dbHelper.deleteEventTypes(eventTypes, deleteEvents) {
-            if (it > 0) {
-                getEventTypes()
-            } else {
+            if (it == 0) {
                 toast(R.string.unknown_error_occurred)
             }
         }

@@ -18,15 +18,11 @@ import com.simplemobiletools.commons.extensions.beInvisibleIf
 import com.simplemobiletools.commons.views.MyRecyclerView
 import kotlinx.android.synthetic.main.event_item_day_view.view.*
 
-class DayEventsAdapter(activity: SimpleActivity, val events: List<Event>, val listener: DeleteEventsListener?, recyclerView: MyRecyclerView,
+class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, val listener: DeleteEventsListener?, recyclerView: MyRecyclerView,
                        itemClick: (Any) -> Unit) : MyRecyclerViewAdapter(activity, recyclerView, itemClick) {
 
     private var allDayString = resources.getString(R.string.all_day)
     private var replaceDescriptionWithLocation = activity.config.replaceDescription
-
-    init {
-        selectableItemCount = events.count()
-    }
 
     override fun getActionMenuId() = R.menu.cab_day
 
@@ -44,6 +40,8 @@ class DayEventsAdapter(activity: SimpleActivity, val events: List<Event>, val li
             R.id.cab_delete -> askConfirmDelete()
         }
     }
+
+    override fun getSelectableItemCount() = events.size
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int) = createViewHolder(R.layout.event_item_day_view, parent)
 
@@ -107,12 +105,19 @@ class DayEventsAdapter(activity: SimpleActivity, val events: List<Event>, val li
         }
 
         DeleteEventDialog(activity, eventIds) {
+            val eventsToDelete = ArrayList<Event>(selectedPositions.size)
+            selectedPositions.sortedDescending().forEach {
+                val event = events[it]
+                eventsToDelete.add(event)
+            }
+            events.removeAll(eventsToDelete)
+
             if (it) {
                 listener?.deleteItems(eventIds)
             } else {
                 listener?.addEventRepeatException(eventIds, timestamps)
             }
-            finishActMode()
+            removeSelectedItems()
         }
     }
 }
