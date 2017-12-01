@@ -73,7 +73,7 @@ class ManageEventTypesAdapter(activity: SimpleActivity, val eventTypes: ArrayLis
                 add(RadioItem(MOVE_EVENTS, res.getString(R.string.move_events_into_default)))
                 add(RadioItem(DELETE_EVENTS, res.getString(R.string.remove_affected_events)))
             }
-            RadioGroupDialog(activity, items, -1) {
+            RadioGroupDialog(activity, items) {
                 deleteEventTypes(it == DELETE_EVENTS)
             }
         } else {

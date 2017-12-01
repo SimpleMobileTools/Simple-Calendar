@@ -292,7 +292,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
 
     private fun addHolidays() {
         val items = getHolidayRadioItems()
-        RadioGroupDialog(this, items, -1) {
+        RadioGroupDialog(this, items) {
             toast(R.string.importing)
             Thread {
                 val holidays = getString(R.string.holidays)
