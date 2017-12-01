@@ -160,7 +160,7 @@ class EventListAdapter(activity: SimpleActivity, val listItems: ArrayList<ListIt
             } else {
                 listener?.addEventRepeatException(eventIds, timestamps)
             }
-            removeSelectedItems()
+            finishActMode()
         }
     }
 }

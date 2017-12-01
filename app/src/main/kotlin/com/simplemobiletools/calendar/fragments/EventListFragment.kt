@@ -118,6 +118,7 @@ class EventListFragment : Fragment(), DeleteEventsListener {
     override fun deleteItems(ids: ArrayList<Int>) {
         val eventIDs = Array(ids.size, { i -> (ids[i].toString()) })
         context!!.dbHelper.deleteEvents(eventIDs, true)
+        checkEvents()
     }
 
     override fun addEventRepeatException(parentIds: ArrayList<Int>, timestamps: ArrayList<Int>) {
