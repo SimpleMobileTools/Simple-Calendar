@@ -294,7 +294,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
         val items = getHolidayRadioItems()
         RadioGroupDialog(this, items, -1) {
             toast(R.string.importing)
-            Thread({
+            Thread {
                 val holidays = getString(R.string.holidays)
                 var eventTypeId = dbHelper.getEventTypeIdWithTitle(holidays)
                 if (eventTypeId == -1) {
@@ -308,14 +308,14 @@ class MainActivity : SimpleActivity(), NavigationListener {
                         updateViewPager()
                     }
                 }
-            }).start()
+            }.start()
         }
     }
 
     private fun tryAddBirthdays() {
         handlePermission(PERMISSION_READ_CONTACTS) {
             if (it) {
-                Thread({
+                Thread {
                     addContactEvents(true) {
                         if (it > 0) {
                             toast(R.string.birthdays_added)
@@ -324,7 +324,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
                             toast(R.string.no_birthdays)
                         }
                     }
-                }).start()
+                }.start()
             } else {
                 toast(R.string.no_contacts_permission)
             }
@@ -334,7 +334,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
     private fun tryAddAnniversaries() {
         handlePermission(PERMISSION_READ_CONTACTS) {
             if (it) {
-                Thread({
+                Thread {
                     addContactEvents(false) {
                         if (it > 0) {
                             toast(R.string.anniversaries_added)
@@ -343,7 +343,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
                             toast(R.string.no_anniversaries)
                         }
                     }
-                }).start()
+                }.start()
             } else {
                 toast(R.string.no_contacts_permission)
             }
@@ -541,7 +541,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
         FilePickerDialog(this, pickFile = false) {
             val path = it
             ExportEventsDialog(this, path) { exportPastEvents, file, eventTypes ->
-                Thread({
+                Thread {
                     val events = dbHelper.getEventsToExport(exportPastEvents).filter { eventTypes.contains(it.eventType.toString()) }
                     if (events.isEmpty()) {
                         toast(R.string.no_events_for_exporting)
@@ -555,7 +555,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
                             })
                         }
                     }
-                }).start()
+                }.start()
             }
         }
     }
@@ -665,7 +665,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
                 weeklyAdapter.updateScrollY(week_view_view_pager.currentItem, y)
             }
         })
-        week_view_hours_scrollview.setOnTouchListener({ view, motionEvent -> true })
+        week_view_hours_scrollview.setOnTouchListener{ view, motionEvent -> true }
     }
 
     fun updateHoursTopMargin(margin: Int) {

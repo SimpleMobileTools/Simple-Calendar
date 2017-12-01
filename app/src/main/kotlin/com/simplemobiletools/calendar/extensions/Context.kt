@@ -237,10 +237,10 @@ fun Context.getSyncedCalDAVCalendars() = CalDAVHandler(applicationContext).getCa
 
 fun Context.recheckCalDAVCalendars(callback: () -> Unit) {
     if (config.caldavSync) {
-        Thread({
+        Thread {
             CalDAVHandler(applicationContext).refreshCalendars(null, callback)
             updateWidgets()
-        }).start()
+        }.start()
     }
 }
 

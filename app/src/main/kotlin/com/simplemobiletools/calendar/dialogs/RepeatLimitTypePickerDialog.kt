@@ -39,8 +39,9 @@ class RepeatLimitTypePickerDialog(val activity: Activity, var repeatLimit: Int, 
                 .setPositiveButton(R.string.ok, { dialogInterface, i -> confirmRepetition() })
                 .setNegativeButton(R.string.cancel, null)
                 .create().apply {
-            activity.setupDialogStuff(view, this)
-            activity.currentFocus?.clearFocus()
+            activity.setupDialogStuff(view, this) {
+                activity.currentFocus?.clearFocus()
+            }
         }
     }
 

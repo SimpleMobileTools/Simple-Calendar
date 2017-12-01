@@ -156,7 +156,7 @@ class SettingsActivity : SimpleActivity() {
             config.caldavSync = newCalendarIds.isNotEmpty()
             toast(R.string.syncing)
 
-            Thread({
+            Thread {
                 if (newCalendarIds.isNotEmpty()) {
                     val existingEventTypeNames = dbHelper.fetchEventTypes().map { it.getDisplayTitle().toLowerCase() } as ArrayList<String>
                     getSyncedCalDAVCalendars().forEach {
@@ -179,7 +179,7 @@ class SettingsActivity : SimpleActivity() {
                 }
                 dbHelper.deleteEventTypesWithCalendarId(TextUtils.join(",", removedCalendarIds))
                 toast(R.string.synchronization_completed)
-            }).start()
+            }.start()
         }
     }
 

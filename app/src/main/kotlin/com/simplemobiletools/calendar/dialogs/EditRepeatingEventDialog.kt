@@ -19,8 +19,9 @@ class EditRepeatingEventDialog(val activity: SimpleActivity, val callback: (allO
 
         dialog = AlertDialog.Builder(activity)
                 .create().apply {
-            activity.setupDialogStuff(view, this)
-            window!!.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
+            activity.setupDialogStuff(view, this) {
+                window!!.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
+            }
         }
     }
 

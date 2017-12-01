@@ -32,15 +32,16 @@ class ImportEventsDialog(val activity: SimpleActivity, val path: String, val cal
                 .setPositiveButton(R.string.ok, null)
                 .setNegativeButton(R.string.cancel, null)
                 .create().apply {
-            activity.setupDialogStuff(view, this, R.string.import_events)
-            getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener({
-                activity.toast(R.string.importing)
-                Thread({
-                    val result = IcsImporter().importEvents(activity, path, currEventTypeId)
-                    handleParseResult(result)
-                    dismiss()
-                }).start()
-            })
+            activity.setupDialogStuff(view, this, R.string.import_events) {
+                getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
+                    activity.toast(R.string.importing)
+                    Thread {
+                        val result = IcsImporter().importEvents(activity, path, currEventTypeId)
+                        handleParseResult(result)
+                        dismiss()
+                    }.start()
+                }
+            }
         }
     }
 

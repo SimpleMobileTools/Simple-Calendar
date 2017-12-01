@@ -137,7 +137,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
                 .setNegativeButton(R.string.cancel, null)
                 .setPositiveButton(R.string.ok) { dialog, which -> positivePressed(dateTime, datePicker) }
                 .create().apply {
-            context.setupDialogStuff(view, this)
+            activity?.setupDialogStuff(view, this)
         }
     }
 

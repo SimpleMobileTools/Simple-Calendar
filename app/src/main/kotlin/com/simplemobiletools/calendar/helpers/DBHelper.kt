@@ -573,9 +573,9 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     }
 
     fun getEvents(fromTS: Int, toTS: Int, eventId: Int = -1, callback: (events: MutableList<Event>) -> Unit) {
-        Thread({
+        Thread {
             getEventsInBackground(fromTS, toTS, eventId, callback)
-        }).start()
+        }.start()
     }
 
     fun getEventsInBackground(fromTS: Int, toTS: Int, eventId: Int = -1, callback: (events: MutableList<Event>) -> Unit) {
@@ -847,9 +847,9 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     }
 
     fun getEventTypes(callback: (types: ArrayList<EventType>) -> Unit) {
-        Thread({
+        Thread {
             callback(fetchEventTypes())
-        }).start()
+        }.start()
     }
 
     fun fetchEventTypes(): ArrayList<EventType> {

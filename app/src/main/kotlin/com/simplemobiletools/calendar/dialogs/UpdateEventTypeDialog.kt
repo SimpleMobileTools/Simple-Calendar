@@ -45,39 +45,40 @@ class UpdateEventTypeDialog(val activity: Activity, var eventType: EventType? = 
                 .setNegativeButton(R.string.cancel, null)
                 .create().apply {
             window!!.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
-            activity.setupDialogStuff(view, this, if (isNewEvent) R.string.add_new_type else R.string.edit_type)
-            getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener({
-                val title = view.type_title.value
-                val eventIdWithTitle = activity.dbHelper.getEventTypeIdWithTitle(title)
-                var isEventTypeTitleTaken = isNewEvent && eventIdWithTitle != -1
-                if (!isEventTypeTitleTaken)
-                    isEventTypeTitleTaken = !isNewEvent && eventType!!.id != eventIdWithTitle && eventIdWithTitle != -1
+            activity.setupDialogStuff(view, this, if (isNewEvent) R.string.add_new_type else R.string.edit_type) {
+                getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
+                    val title = view.type_title.value
+                    val eventIdWithTitle = activity.dbHelper.getEventTypeIdWithTitle(title)
+                    var isEventTypeTitleTaken = isNewEvent && eventIdWithTitle != -1
+                    if (!isEventTypeTitleTaken)
+                        isEventTypeTitleTaken = !isNewEvent && eventType!!.id != eventIdWithTitle && eventIdWithTitle != -1
 
-                if (title.isEmpty()) {
-                    activity.toast(R.string.title_empty)
-                    return@setOnClickListener
-                } else if (isEventTypeTitleTaken) {
-                    activity.toast(R.string.type_already_exists)
-                    return@setOnClickListener
+                    if (title.isEmpty()) {
+                        activity.toast(R.string.title_empty)
+                        return@setOnClickListener
+                    } else if (isEventTypeTitleTaken) {
+                        activity.toast(R.string.type_already_exists)
+                        return@setOnClickListener
+                    }
+
+                    eventType!!.title = title
+                    if (eventType!!.caldavCalendarId != 0)
+                        eventType!!.caldavDisplayName = title
+
+                    val eventTypeId = if (isNewEvent) {
+                        activity.dbHelper.insertEventType(eventType!!)
+                    } else {
+                        activity.dbHelper.updateEventType(eventType!!)
+                    }
+
+                    if (eventTypeId != -1) {
+                        dismiss()
+                        callback(eventTypeId)
+                    } else {
+                        activity.toast(R.string.editing_calendar_failed)
+                    }
                 }
-
-                eventType!!.title = title
-                if (eventType!!.caldavCalendarId != 0)
-                    eventType!!.caldavDisplayName = title
-
-                val eventTypeId = if (isNewEvent) {
-                    activity.dbHelper.insertEventType(eventType!!)
-                } else {
-                    activity.dbHelper.updateEventType(eventType!!)
-                }
-
-                if (eventTypeId != -1) {
-                    dismiss()
-                    callback(eventTypeId)
-                } else {
-                    activity.toast(R.string.editing_calendar_failed)
-                }
-            })
+            }
         }
     }
 

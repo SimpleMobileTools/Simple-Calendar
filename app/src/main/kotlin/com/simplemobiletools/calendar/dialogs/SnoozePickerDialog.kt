@@ -20,14 +20,15 @@ class SnoozePickerDialog(val activity: SimpleActivity, val minutes: Int, val cal
                 .setPositiveButton(R.string.ok, null)
                 .setNegativeButton(R.string.cancel, null)
                 .create().apply {
-            activity.setupDialogStuff(view, this)
-            window!!.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
-            getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener({
-                val value = view.snooze_picker.value
-                val minutes = Integer.valueOf(if (value.isEmpty() || value == "0") "1" else value)
-                callback(minutes)
-                dismiss()
-            })
+            activity.setupDialogStuff(view, this) {
+                window!!.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
+                getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
+                    val value = view.snooze_picker.value
+                    val minutes = Integer.valueOf(if (value.isEmpty() || value == "0") "1" else value)
+                    callback(minutes)
+                    dismiss()
+                }
+            }
         }
     }
 }
