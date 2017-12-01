@@ -15,7 +15,6 @@
         android:layout_below="@+id/top_value"
         android:clipToPadding="false"
         android:overScrollMode="never"
-        android:paddingLeft="@dimen/activity_margin"
         app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
 
 </RelativeLayout>
