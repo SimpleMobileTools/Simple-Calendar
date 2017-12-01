@@ -35,7 +35,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 fun Context.updateWidgets() {
-    val widgetsCnt = AppWidgetManager.getInstance(applicationContext).getAppWidgetIds(ComponentName(this, MyWidgetMonthlyProvider::class.java))
+    val widgetsCnt = AppWidgetManager.getInstance(applicationContext).getAppWidgetIds(ComponentName(applicationContext, MyWidgetMonthlyProvider::class.java))
     if (widgetsCnt.isNotEmpty()) {
         val ids = intArrayOf(R.xml.widget_monthly_info)
         Intent(applicationContext, MyWidgetMonthlyProvider::class.java).apply {
@@ -49,7 +49,7 @@ fun Context.updateWidgets() {
 }
 
 fun Context.updateListWidget() {
-    val widgetsCnt = AppWidgetManager.getInstance(applicationContext).getAppWidgetIds(ComponentName(this, MyWidgetListProvider::class.java))
+    val widgetsCnt = AppWidgetManager.getInstance(applicationContext).getAppWidgetIds(ComponentName(applicationContext, MyWidgetListProvider::class.java))
     if (widgetsCnt.isNotEmpty()) {
         val ids = intArrayOf(R.xml.widget_list_info)
         Intent(applicationContext, MyWidgetListProvider::class.java).apply {

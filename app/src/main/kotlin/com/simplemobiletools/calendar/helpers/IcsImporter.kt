@@ -92,7 +92,11 @@ class IcsImporter {
                     } else if (line.startsWith(LAST_MODIFIED)) {
                         curLastModified = getTimestamp(line.substring(LAST_MODIFIED.length)) * 1000L
                     } else if (line.startsWith(EXDATE)) {
-                        curRepeatExceptions.add(getTimestamp(line.substring(EXDATE.length)))
+                        var value = line.substring(EXDATE.length)
+                        if (value.endsWith('}'))
+                            value = value.substring(0, value.length - 1)
+
+                        curRepeatExceptions.add(getTimestamp(value))
                     } else if (line.startsWith(LOCATION)) {
                         curLocation = line.substring(LOCATION.length)
                     } else if (line == END_ALARM) {
