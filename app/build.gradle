@@ -21,14 +21,10 @@ android {
     }
 
     buildTypes {
-        debug {
-            buildConfigField "boolean", "USE_LEAK_CANARY", "true"
-        }
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
-            buildConfigField "boolean", "USE_LEAK_CANARY", "false"
         }
     }
 
@@ -47,7 +43,7 @@ ext {
 }
 
 dependencies {
-    implementation 'com.simplemobiletools:commons:3.0.20'
+    implementation 'com.simplemobiletools:commons:3.0.21'
     implementation 'joda-time:joda-time:2.9.9'
     implementation 'com.facebook.stetho:stetho:1.5.0'
     implementation 'com.android.support:multidex:1.0.2'
