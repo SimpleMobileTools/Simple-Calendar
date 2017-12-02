@@ -30,6 +30,10 @@ import org.joda.time.DateTimeZone
 import java.text.SimpleDateFormat
 import java.util.*
 
+val Context.config: Config get() = Config.newInstance(applicationContext)
+
+val Context.dbHelper: DBHelper get() = DBHelper.newInstance(applicationContext)
+
 fun Context.updateWidgets() {
     val widgetsCnt = AppWidgetManager.getInstance(applicationContext).getAppWidgetIds(ComponentName(applicationContext, MyWidgetMonthlyProvider::class.java))
     if (widgetsCnt.isNotEmpty()) {
@@ -265,10 +269,6 @@ fun Context.scheduleCalDAVSync(activate: Boolean) {
         alarm.cancel(pendingIntent)
     }
 }
-
-val Context.config: Config get() = Config.newInstance(applicationContext)
-
-val Context.dbHelper: DBHelper get() = DBHelper.newInstance(applicationContext)
 
 fun Context.addDayNumber(rawTextColor: Int, day: DayMonthly, linearLayout: LinearLayout, dayLabelHeight: Int, callback: (Int) -> Unit) {
     var textColor = rawTextColor
