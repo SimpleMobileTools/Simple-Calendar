@@ -19,7 +19,9 @@ import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.getAppropriateTheme
 import com.simplemobiletools.calendar.extensions.getFilteredEvents
-import com.simplemobiletools.calendar.helpers.*
+import com.simplemobiletools.calendar.helpers.DAY_CODE
+import com.simplemobiletools.calendar.helpers.EVENT_ID
+import com.simplemobiletools.calendar.helpers.EVENT_OCCURRENCE_TS
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.interfaces.DeleteEventsListener
 import com.simplemobiletools.calendar.interfaces.NavigationListener
@@ -31,7 +33,7 @@ import kotlinx.android.synthetic.main.top_navigation.view.*
 import org.joda.time.DateTime
 import java.util.*
 
-class DayFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEventsListener {
+class DayFragment : Fragment(), DeleteEventsListener {
     var mListener: NavigationListener? = null
     private var mTextColor = 0
     private var mDayCode = ""
@@ -110,7 +112,7 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEventsListen
     fun checkEvents() {
         val startTS = Formatter.getDayStartTS(mDayCode)
         val endTS = Formatter.getDayEndTS(mDayCode)
-        DBHelper.newInstance(context!!, this).getEvents(startTS, endTS) {
+        context!!.dbHelper.getEvents(startTS, endTS) {
             receivedEvents(it)
         }
     }
@@ -164,16 +166,5 @@ class DayFragment : Fragment(), DBHelper.EventUpdateListener, DeleteEventsListen
             context!!.dbHelper.addEventRepeatException(parentIds[index], timestamps[index])
         }
         (activity as DayActivity).recheckEvents()
-    }
-
-    override fun eventInserted(event: Event) {
-    }
-
-    override fun eventsDeleted(cnt: Int) {
-        (activity as DayActivity).recheckEvents()
-    }
-
-    override fun gotEvents(events: MutableList<Event>) {
-        receivedEvents(events)
     }
 }

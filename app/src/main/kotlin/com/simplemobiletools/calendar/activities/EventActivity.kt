@@ -22,7 +22,7 @@ import kotlinx.android.synthetic.main.activity_event.*
 import org.joda.time.DateTime
 import java.util.*
 
-class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
+class EventActivity : SimpleActivity() {
     companion object {
         val STORED_LOCALLY_ONLY = 0
     }
@@ -752,14 +752,5 @@ class EventActivity : SimpleActivity(), DBHelper.EventUpdateListener {
         event_reminder_image.applyColorFilter(textColor)
         event_type_image.applyColorFilter(textColor)
         event_caldav_calendar_image.applyColorFilter(textColor)
-    }
-
-    override fun eventInserted(event: Event) {
-    }
-
-    override fun eventsDeleted(cnt: Int) {
-    }
-
-    override fun gotEvents(events: MutableList<Event>) {
     }
 }

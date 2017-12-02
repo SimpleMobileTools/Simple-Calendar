@@ -70,10 +70,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         val REGULAR_EVENT_TYPE_ID = 1
         var dbInstance: DBHelper? = null
 
-        private var mEventsListener: EventUpdateListener? = null
-
-        fun newInstance(context: Context, callback: EventUpdateListener? = null): DBHelper {
-            mEventsListener = callback
+        fun newInstance(context: Context): DBHelper {
             if (dbInstance == null)
                 dbInstance = DBHelper(context)
 
@@ -427,7 +424,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         mDb.delete(EXCEPTIONS_TABLE_NAME, exceptionSelection, null)
 
         context.updateWidgets()
-        mEventsListener?.eventsDeleted(ids.size)
 
         ids.forEach {
             context.cancelNotification(it.toInt())
@@ -960,13 +956,5 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         } finally {
             cursor?.close()
         }
-    }
-
-    interface EventUpdateListener {
-        fun eventInserted(event: Event)
-
-        fun eventsDeleted(cnt: Int)
-
-        fun gotEvents(events: MutableList<Event>)
     }
 }
