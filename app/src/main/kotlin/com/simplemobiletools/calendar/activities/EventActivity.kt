@@ -23,10 +23,6 @@ import org.joda.time.DateTime
 import java.util.*
 
 class EventActivity : SimpleActivity() {
-    companion object {
-        val STORED_LOCALLY_ONLY = 0
-    }
-
     private var mReminder1Minutes = 0
     private var mReminder2Minutes = 0
     private var mReminder3Minutes = 0

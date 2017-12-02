@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.activities.EventActivity.Companion.STORED_LOCALLY_ONLY
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
+import com.simplemobiletools.calendar.helpers.STORED_LOCALLY_ONLY
 import com.simplemobiletools.calendar.models.CalDAVCalendar
 import com.simplemobiletools.commons.extensions.setBackgroundWithStroke
 import com.simplemobiletools.commons.extensions.setupDialogStuff
