@@ -121,6 +121,7 @@
     <string name="hours_raw">godziny</string>
     <string name="days_raw">dni</string>
     <string name="add_another_reminder">Dodaj inne przypomnienie</string>
+    <string name="event_reminders">Event reminders</string>
 
     <plurals name="minutes_before">
         <item quantity="one">%d minutę przed</item>

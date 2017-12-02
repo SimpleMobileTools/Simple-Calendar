@@ -118,6 +118,7 @@
     <string name="hours_raw">heures</string>
     <string name="days_raw">jours</string>
     <string name="add_another_reminder">Ajouter un autre rappel</string>
+    <string name="event_reminders">Event reminders</string>
 
     <plurals name="minutes_before">
         <item quantity="one">%d minute avant</item>

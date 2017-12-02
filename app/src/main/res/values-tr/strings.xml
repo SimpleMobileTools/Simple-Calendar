@@ -118,6 +118,7 @@
     <string name="hours_raw">saatler</string>
     <string name="days_raw">günler</string>
     <string name="add_another_reminder">Başka bir hatırlatma ekle</string>
+    <string name="event_reminders">Event reminders</string>
 
     <plurals name="minutes_before">
         <item quantity="one">%d dakika önce</item>

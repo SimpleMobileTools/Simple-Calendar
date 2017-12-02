@@ -122,6 +122,7 @@
     <string name="hours_raw">hodiny</string>
     <string name="days_raw">dni</string>
     <string name="add_another_reminder">Pridať ďalšiu pripomienku</string>
+    <string name="event_reminders">Pripomienky udalostí</string>
 
     <plurals name="minutes_before">
         <item quantity="one">%d minútu vopred</item>

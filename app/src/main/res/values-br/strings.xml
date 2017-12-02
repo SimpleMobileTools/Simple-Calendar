@@ -118,6 +118,7 @@
     <string name="hours_raw">eur</string>
     <string name="days_raw">a zevezhioù</string>
     <string name="add_another_reminder">Ouzhpennañ un adc\'halv all</string>
+    <string name="event_reminders">Event reminders</string>
 
     <plurals name="minutes_before">
         <item quantity="one">%dvunutenn a-raok</item>

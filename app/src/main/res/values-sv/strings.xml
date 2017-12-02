@@ -118,6 +118,7 @@
     <string name="hours_raw">timmar</string>
     <string name="days_raw">dagar</string>
     <string name="add_another_reminder">Lägg till en annan påminnelse</string>
+    <string name="event_reminders">Event reminders</string>
 
     <plurals name="minutes_before">
         <item quantity="one">%d minut före</item>

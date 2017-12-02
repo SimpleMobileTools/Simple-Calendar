@@ -1,10 +1,7 @@
 package com.simplemobiletools.calendar.extensions
 
-import android.annotation.TargetApi
-import android.app.AlarmManager
-import android.app.Notification
-import android.app.NotificationManager
-import android.app.PendingIntent
+import android.annotation.SuppressLint
+import android.app.*
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Context
@@ -12,7 +9,6 @@ import android.content.Intent
 import android.content.res.Resources
 import android.graphics.Color
 import android.net.Uri
-import android.os.Build
 import android.support.v4.app.NotificationCompat
 import android.view.Gravity
 import android.view.View
@@ -73,7 +69,6 @@ fun Context.scheduleNextEventReminder(event: Event, dbHelper: DBHelper) {
 
     val now = (System.currentTimeMillis() / 1000).toInt()
     val reminderSeconds = event.getReminders().reversed().map { it * 60 }
-
     dbHelper.getEvents(now, now + YEAR, event.id) {
         if (it.isNotEmpty()) {
             for (curEvent in it) {
@@ -175,8 +170,21 @@ fun Context.notifyEvent(event: Event) {
     notificationManager.notify(event.id, notification)
 }
 
-@TargetApi(Build.VERSION_CODES.LOLLIPOP)
+@SuppressLint("NewApi")
 private fun getNotification(context: Context, pendingIntent: PendingIntent, event: Event, content: String): Notification {
+    val channelId = "reminder_channel"
+    if (context.isOreoPlus()) {
+        val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val name = context.resources.getString(R.string.event_reminders)
+        val importance = NotificationManager.IMPORTANCE_HIGH
+        NotificationChannel(channelId, name, importance).apply {
+            enableLights(true)
+            lightColor = event.color
+            enableVibration(false)
+            notificationManager.createNotificationChannel(this)
+        }
+    }
+
     val soundUri = Uri.parse(context.config.reminderSound)
     val builder = NotificationCompat.Builder(context)
             .setContentTitle(event.title)
@@ -187,6 +195,7 @@ private fun getNotification(context: Context, pendingIntent: PendingIntent, even
             .setDefaults(Notification.DEFAULT_LIGHTS)
             .setAutoCancel(true)
             .setSound(soundUri)
+            .setChannelId(channelId)
             .addAction(R.drawable.ic_snooze, context.getString(R.string.snooze), getSnoozePendingIntent(context, event))
 
     if (context.isLollipopPlus())

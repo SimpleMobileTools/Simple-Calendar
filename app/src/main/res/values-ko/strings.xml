@@ -118,6 +118,7 @@
     <string name="hours_raw">시간</string>
     <string name="days_raw">일</string>
     <string name="add_another_reminder">다른 알림 추가</string>
+    <string name="event_reminders">Event reminders</string>
 
     <plurals name="minutes_before">
         <item quantity="one">%d 분 전</item>

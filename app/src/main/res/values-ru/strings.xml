@@ -126,6 +126,7 @@
     <string name="hours_raw">часов</string>
     <string name="days_raw">дней</string>
     <string name="add_another_reminder">Добавить ещё одно напоминание</string>
+    <string name="event_reminders">Event reminders</string>
 
     <plurals name="minutes_before">
         <item quantity="one">%d минута до события</item>
