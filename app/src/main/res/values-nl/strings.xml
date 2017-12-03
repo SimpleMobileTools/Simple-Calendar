@@ -118,7 +118,7 @@
     <string name="hours_raw">uren</string>
     <string name="days_raw">dagen</string>
     <string name="add_another_reminder">Herinnering toevoegen</string>
-    <string name="event_reminders">Event reminders</string>
+    <string name="event_reminders">Herinneringen</string>
 
     <plurals name="minutes_before">
         <item quantity="one">%d minuut van tevoren</item>
