@@ -633,7 +633,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
         week_view_hours_holder.removeAllViews()
         val hourDateTime = DateTime().withDate(2000, 1, 1).withTime(0, 0, 0, 0)
         for (i in 1..23) {
-            val formattedHours = Formatter.getHours(this, hourDateTime.withHourOfDay(i))
+            val formattedHours = Formatter.getHours(applicationContext, hourDateTime.withHourOfDay(i))
             (layoutInflater.inflate(R.layout.weekly_view_hour_textview, null, false) as TextView).apply {
                 text = formattedHours
                 setTextColor(mStoredTextColor)
@@ -684,14 +684,14 @@ class MainActivity : SimpleActivity(), NavigationListener {
     private fun setupWeeklyActionbarTitle(timestamp: Int) {
         val startDateTime = Formatter.getDateTimeFromTS(timestamp)
         val endDateTime = Formatter.getDateTimeFromTS(timestamp + WEEK_SECONDS)
-        val startMonthName = Formatter.getMonthName(this, startDateTime.monthOfYear)
+        val startMonthName = Formatter.getMonthName(applicationContext, startDateTime.monthOfYear)
         if (startDateTime.monthOfYear == endDateTime.monthOfYear) {
             var newTitle = startMonthName
             if (startDateTime.year != DateTime().year)
                 newTitle += " - ${startDateTime.year}"
             title = newTitle
         } else {
-            val endMonthName = Formatter.getMonthName(this, endDateTime.monthOfYear)
+            val endMonthName = Formatter.getMonthName(applicationContext, endDateTime.monthOfYear)
             title = "$startMonthName - $endMonthName"
         }
         supportActionBar?.subtitle = "${getString(R.string.week)} ${startDateTime.plusDays(3).weekOfWeekyear}"
