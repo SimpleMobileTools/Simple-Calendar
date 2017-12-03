@@ -8,6 +8,7 @@ import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.helpers.IcsImporter.ImportResult.*
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.models.EventType
+import com.simplemobiletools.commons.extensions.areDigitsOnly
 import com.simplemobiletools.commons.extensions.showErrorToast
 import java.io.File
 
@@ -30,6 +31,7 @@ class IcsImporter {
     private var curEventType = DBHelper.REGULAR_EVENT_TYPE_ID
     private var curLastModified = 0L
     private var curLocation = ""
+    private var curCategoryColor = -2
     private var isNotificationDescription = false
     private var isProperReminderAction = false
     private var curReminderTriggerMinutes = -1
@@ -86,6 +88,11 @@ class IcsImporter {
                         isProperReminderAction = line.substring(ACTION.length) == DISPLAY
                     } else if (line.startsWith(TRIGGER)) {
                         curReminderTriggerMinutes = Parser().parseDurationSeconds(line.substring(TRIGGER.length)) / 60
+                    } else if (line.startsWith(CATEGORY_COLOR)) {
+                        val color = line.substring(CATEGORY_COLOR.length)
+                        if (color.trimStart('-').areDigitsOnly()) {
+                            curCategoryColor = Integer.parseInt(color)
+                        }
                     } else if (line.startsWith(CATEGORIES)) {
                         val categories = line.substring(CATEGORIES.length)
                         tryAddCategories(categories, activity)
@@ -179,7 +186,8 @@ class IcsImporter {
 
         val eventId = context.dbHelper.getEventTypeIdWithTitle(eventTypeTitle)
         curEventType = if (eventId == -1) {
-            val eventType = EventType(0, eventTypeTitle, context.resources.getColor(R.color.color_primary))
+            val newTypeColor = if (curCategoryColor == -2) context.resources.getColor(R.color.color_primary) else curCategoryColor
+            val eventType = EventType(0, eventTypeTitle, newTypeColor)
             context.dbHelper.insertEventType(eventType)
         } else {
             eventId
@@ -208,6 +216,7 @@ class IcsImporter {
         curRepeatRule = 0
         curEventType = DBHelper.REGULAR_EVENT_TYPE_ID
         curLastModified = 0L
+        curCategoryColor = -2
         curLocation = ""
         isNotificationDescription = false
         isProperReminderAction = false

@@ -99,6 +99,9 @@ val BYDAY = "BYDAY"
 val BYMONTHDAY = "BYMONTHDAY"
 val LOCATION = "LOCATION:"
 
+// this tag isn't a standard ICS tag, but there's no official way of adding a category color in an ics file
+val CATEGORY_COLOR = "CATEGORY_COLOR:"
+
 val DISPLAY = "DISPLAY"
 val FREQ = "FREQ"
 val UNTIL = "UNTIL"
