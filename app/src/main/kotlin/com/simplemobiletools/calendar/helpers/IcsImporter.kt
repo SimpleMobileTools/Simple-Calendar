@@ -117,7 +117,7 @@ class IcsImporter(val activity: SimpleActivity) {
                         if (curTitle.isEmpty() || curStart == -1)
                             continue
 
-                        val eventToUpdate = existingEvents.firstOrNull { curImportId == it.importId }
+                        val eventToUpdate = existingEvents.firstOrNull { curImportId.isNotEmpty() && curImportId == it.importId }
                         if (eventToUpdate != null && eventToUpdate.lastUpdated >= curLastModified) {
                             continue
                         }
