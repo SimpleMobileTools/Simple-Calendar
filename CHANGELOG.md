@@ -1,6 +1,14 @@
 Changelog
 ==========
 
+Version 3.0.0 *(2017-12-04)*
+----------------------------
+
+ * Improved primary color customization
+ * Fixed notifications on Android 8
+ * Fixed a couple issues with importing events
+ * Properly export/import custom event type colors
+
 Version 2.12.0 *(2017-11-26)*
 ----------------------------
 
