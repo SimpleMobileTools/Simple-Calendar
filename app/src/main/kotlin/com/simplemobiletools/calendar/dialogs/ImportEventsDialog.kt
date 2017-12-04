@@ -36,7 +36,7 @@ class ImportEventsDialog(val activity: SimpleActivity, val path: String, val cal
                 getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
                     activity.toast(R.string.importing)
                     Thread {
-                        val result = IcsImporter().importEvents(activity, path, currEventTypeId)
+                        val result = IcsImporter(activity).importEvents(path, currEventTypeId)
                         handleParseResult(result)
                         dismiss()
                     }.start()

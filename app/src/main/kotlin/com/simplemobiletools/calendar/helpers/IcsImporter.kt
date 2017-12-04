@@ -12,7 +12,7 @@ import com.simplemobiletools.commons.extensions.areDigitsOnly
 import com.simplemobiletools.commons.extensions.showErrorToast
 import java.io.File
 
-class IcsImporter {
+class IcsImporter(val activity: SimpleActivity) {
     enum class ImportResult {
         IMPORT_FAIL, IMPORT_OK, IMPORT_PARTIAL
     }
@@ -39,7 +39,7 @@ class IcsImporter {
     private var eventsImported = 0
     private var eventsFailed = 0
 
-    fun importEvents(activity: SimpleActivity, path: String, defaultEventType: Int): ImportResult {
+    fun importEvents(path: String, defaultEventType: Int): ImportResult {
         try {
             val existingEvents = activity.dbHelper.getEventsWithImportIds()
             var prevLine = ""
@@ -172,6 +172,7 @@ class IcsImporter {
                 Parser().parseDateTimeValue(fullString.substring(1))
             }
         } catch (e: Exception) {
+            activity.showErrorToast(e, Toast.LENGTH_LONG)
             eventsFailed++
             -1
         }

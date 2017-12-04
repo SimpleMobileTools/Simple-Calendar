@@ -301,7 +301,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
                     val eventType = EventType(0, holidays, resources.getColor(R.color.default_holidays_color))
                     eventTypeId = dbHelper.insertEventType(eventType)
                 }
-                val result = IcsImporter().importEvents(this, it as String, eventTypeId)
+                val result = IcsImporter(this).importEvents(it as String, eventTypeId)
                 handleParseResult(result)
                 if (result != IcsImporter.ImportResult.IMPORT_FAIL) {
                     runOnUiThread {
