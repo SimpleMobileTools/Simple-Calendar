@@ -108,7 +108,7 @@ class EventActivity : SimpleActivity() {
         val realStart = if (mEventOccurrenceTS == 0) mEvent.startTS else mEventOccurrenceTS
         val duration = mEvent.endTS - mEvent.startTS
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
-        title = resources.getString(R.string.edit_event)
+        supportActionBar?.title = resources.getString(R.string.edit_event)
         mEventStartDateTime = Formatter.getDateTimeFromTS(realStart)
         mEventEndDateTime = Formatter.getDateTimeFromTS(realStart + duration)
         event_title.setText(mEvent.title)
@@ -129,7 +129,7 @@ class EventActivity : SimpleActivity() {
 
     private fun setupNewEvent(dateTime: DateTime) {
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
-        title = resources.getString(R.string.new_event)
+        supportActionBar?.title = resources.getString(R.string.new_event)
         mEventStartDateTime = dateTime
 
         val addHours = if (intent.getBooleanExtra(NEW_EVENT_SET_HOUR_DURATION, false)) 1 else 0

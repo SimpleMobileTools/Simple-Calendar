@@ -570,7 +570,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
     }
 
     private fun resetTitle() {
-        title = getString(R.string.app_launcher_name)
+        supportActionBar?.title = getString(R.string.app_launcher_name)
         supportActionBar?.subtitle = ""
     }
 
@@ -595,7 +595,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
                     invalidateOptionsMenu()
                     if (config.storedView == YEARLY_VIEW) {
                         val dateTime = Formatter.getDateTimeFromCode(codes[position])
-                        title = "${getString(R.string.app_launcher_name)} - ${Formatter.getYear(dateTime)}"
+                        supportActionBar?.title = "${getString(R.string.app_launcher_name)} - ${Formatter.getYear(dateTime)}"
                     }
                 }
             })
@@ -665,7 +665,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
                 weeklyAdapter.updateScrollY(week_view_view_pager.currentItem, y)
             }
         })
-        week_view_hours_scrollview.setOnTouchListener{ view, motionEvent -> true }
+        week_view_hours_scrollview.setOnTouchListener { view, motionEvent -> true }
     }
 
     fun updateHoursTopMargin(margin: Int) {
@@ -689,10 +689,10 @@ class MainActivity : SimpleActivity(), NavigationListener {
             var newTitle = startMonthName
             if (startDateTime.year != DateTime().year)
                 newTitle += " - ${startDateTime.year}"
-            title = newTitle
+            supportActionBar?.title = newTitle
         } else {
             val endMonthName = Formatter.getMonthName(applicationContext, endDateTime.monthOfYear)
-            title = "$startMonthName - $endMonthName"
+            supportActionBar?.title = "$startMonthName - $endMonthName"
         }
         supportActionBar?.subtitle = "${getString(R.string.week)} ${startDateTime.plusDays(3).weekOfWeekyear}"
     }
@@ -716,14 +716,15 @@ class MainActivity : SimpleActivity(), NavigationListener {
 
                 override fun onPageSelected(position: Int) {
                     invalidateOptionsMenu()
-                    if (position < years.size)
-                        title = "${getString(R.string.app_launcher_name)} - ${years[position]}"
+                    if (position < years.size) {
+                        supportActionBar?.title = "${getString(R.string.app_launcher_name)} - ${years[position]}"
+                    }
                 }
             })
             currentItem = mDefaultYearlyPage
             beVisible()
         }
-        title = "${getString(R.string.app_launcher_name)} - ${years[years.size / 2]}"
+        supportActionBar?.title = "${getString(R.string.app_launcher_name)} - ${years[years.size / 2]}"
         calendar_event_list_holder.beGone()
     }
 
