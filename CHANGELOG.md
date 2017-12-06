@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 3.0.1 *(2017-12-06)*
+----------------------------
+
+ * Fixed missing launcher icons on some devices
+ * Properly name the Holidays event type on non-english devices
+
 Version 3.0.0 *(2017-12-04)*
 ----------------------------
 
