@@ -59,7 +59,7 @@
         android:fontFamily="sans-serif-light"
         android:paddingLeft="@dimen/activity_margin"
         android:paddingRight="@dimen/activity_margin"
-        android:text="@android:string/ok"
+        android:text="@string/ok"
         android:textColor="@android:color/white"
         android:textSize="@dimen/big_text_size"/>
 
