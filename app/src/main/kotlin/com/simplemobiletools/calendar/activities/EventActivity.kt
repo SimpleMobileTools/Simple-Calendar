@@ -575,7 +575,9 @@ class EventActivity : SimpleActivity() {
         if (mEvent.id == 0) {
             dbHelper.insert(mEvent, true) {
                 if (DateTime.now().isAfter(mEventStartDateTime.millis)) {
-                    notifyEvent(mEvent)
+                    if (mEvent.getReminders().isNotEmpty()) {
+                        notifyEvent(mEvent)
+                    }
                 } else {
                     toast(R.string.event_added)
                 }
