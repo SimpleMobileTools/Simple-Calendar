@@ -538,7 +538,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
     }
 
     private fun exportEvents() {
-        FilePickerDialog(this, pickFile = false) {
+        FilePickerDialog(this, pickFile = false, showFAB = true) {
             val path = it
             ExportEventsDialog(this, path) { exportPastEvents, file, eventTypes ->
                 Thread {
