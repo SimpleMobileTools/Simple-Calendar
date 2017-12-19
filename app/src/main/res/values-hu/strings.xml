@@ -25,7 +25,6 @@
     <string name="end_before_start">Az eseménynek nem lehet vége a kezdete előtt</string>
     <string name="event_added">Bejegyzés hozzáadva</string>
     <string name="event_updated">Bejegyzés frissítve</string>
-    <string name="filter">Filter</string>
     <string name="filter_events_by_type">Filter events by type</string>
 
     <!-- Event Repetition -->

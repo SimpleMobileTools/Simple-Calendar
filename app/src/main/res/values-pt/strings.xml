@@ -25,7 +25,6 @@
     <string name="end_before_start">O evento não pode terminar antes de iniciar</string>
     <string name="event_added">Evento adicionado com sucesso</string>
     <string name="event_updated">Evento atualizado com sucesso</string>
-    <string name="filter">Filtrar</string>
     <string name="filter_events_by_type">Filtrar eventos por tipo</string>
 
     <!-- Event Repetition -->

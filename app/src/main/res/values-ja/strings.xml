@@ -25,7 +25,6 @@
     <string name="end_before_start">イベントの終了は開始よりも前にできません</string>
     <string name="event_added">イベントを正常に追加しました</string>
     <string name="event_updated">イベントを正常に更新しました</string>
-    <string name="filter">Filter</string>
     <string name="filter_events_by_type">Filter events by type</string>
 
     <!-- Event Repetition -->

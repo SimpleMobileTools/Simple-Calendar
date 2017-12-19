@@ -25,7 +25,6 @@
     <string name="end_before_start">Etkinlik, başlamasından önce sona eremez</string>
     <string name="event_added">Etkinlik başarıyla eklendi</string>
     <string name="event_updated">Etkinlik başarıyla güncellendi</string>
-    <string name="filter">Filtre</string>
     <string name="filter_events_by_type">Etkinlikleri türe göre filtreleyin</string>
 
     <!-- Event Repetition -->

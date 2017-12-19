@@ -25,7 +25,6 @@
     <string name="end_before_start">Hendelsen kan ikke slutte tidligere enn den starter</string>
     <string name="event_added">Hendelse vellykket lagt til</string>
     <string name="event_updated">Hendelse vellykket oppdatert</string>
-    <string name="filter">Filter</string>
     <string name="filter_events_by_type">Filtrer hendelser etter type</string>
 
     <!-- Event Repetition -->
