@@ -97,16 +97,16 @@
     </plurals>
 
     <!-- Birthdays -->
-    <string name="birthdays">Birthdays</string>
-    <string name="add_birthdays">Add contact birthdays</string>
-    <string name="no_birthdays">No birthdays have been found</string>
-    <string name="birthdays_added">Birthdays added successfully</string>
+    <string name="birthdays">생일</string>
+    <string name="add_birthdays">연락처의 생일 추가</string>
+    <string name="no_birthdays">조회된 생일이 없음</string>
+    <string name="birthdays_added">생일 추가 완료</string>
 
     <!-- Anniversaries -->
-    <string name="anniversaries">Anniversaries</string>
-    <string name="add_anniversaries">Add contact anniversaries</string>
-    <string name="no_anniversaries">No anniversaries have been found</string>
-    <string name="anniversaries_added">Anniversaries added successfully</string>
+    <string name="anniversaries">기념일</string>
+    <string name="add_anniversaries">연락처의 기념일 추가</string>
+    <string name="no_anniversaries">조회된 기념일 없음</string>
+    <string name="anniversaries_added">기념일 추가 완료</string>
 
     <!-- Event Reminders -->
     <string name="reminder">알림</string>
@@ -190,8 +190,8 @@
     <string name="manage_event_types">이벤트 유형 관리</string>
     <string name="use_24_hour_format">24시간 형식 사용</string>
     <string name="sunday_first">일요일부터</string>
-    <string name="start_day_at">시작 요일</string>
-    <string name="end_day_at">마지막 요일</string>
+    <string name="start_day_at">시작 시간</string>
+    <string name="end_day_at">종료 시간</string>
     <string name="week_numbers">주 번호 표시</string>
     <string name="vibrate">알림 시 진동</string>
     <string name="reminder_sound">알림 소리</string>
@@ -204,7 +204,7 @@
     <string name="display_past_events">과거의 이벤트 표시</string>
     <string name="snooze_delay">스누즈 알림 시간</string>
     <string name="widgets">위젯</string>
-    <string name="replace_description_with_location">Replace Description with Location at list view entries</string>
+    <string name="replace_description_with_location">목록보기의 설명정보를 위치정보로 대체</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -214,9 +214,9 @@
     <string name="refresh_caldav_calendars">CalDAV 캘린더들 새로고침</string>
     <string name="refreshing">새로고침 중…</string>
     <string name="refreshing_complete">새로고침 완료</string>
-    <string name="editing_calendar_failed">Editing calendar failed</string>
-    <string name="syncing">Syncing…</string>
-    <string name="synchronization_completed">Sync completed</string>
+    <string name="editing_calendar_failed">변경 실패</string>
+    <string name="syncing">동기화중…</string>
+    <string name="synchronization_completed">동기화 완료</string>
 
     <plurals name="by_minutes">
         <item quantity="one">%d 분</item>
