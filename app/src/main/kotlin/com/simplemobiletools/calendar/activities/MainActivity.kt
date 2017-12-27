@@ -438,21 +438,6 @@ class MainActivity : SimpleActivity(), NavigationListener {
         return eventTypeId
     }
 
-    private fun getDateFormats() = arrayListOf(
-            "yyyy-MM-dd",
-            "yyyyMMdd",
-            "yyyy.MM.dd",
-            "yy-MM-dd",
-            "yyMMdd",
-            "yy.MM.dd",
-            "yy/MM/dd",
-            "MM-dd",
-            "--MM-dd",
-            "MMdd",
-            "MM/dd",
-            "MM.dd"
-    )
-
     private fun updateView(view: Int) {
         calendar_fab.beGoneIf(view == YEARLY_VIEW)
         mIsMonthSelected = view == MONTHLY_VIEW
