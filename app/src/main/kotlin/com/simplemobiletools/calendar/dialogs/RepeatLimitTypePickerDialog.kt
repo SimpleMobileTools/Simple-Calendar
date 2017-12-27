@@ -7,9 +7,9 @@ import android.support.v7.app.AlertDialog
 import android.view.View
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.config
-import com.simplemobiletools.calendar.extensions.getAppropriateTheme
 import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.helpers.Formatter
+import com.simplemobiletools.commons.extensions.getDialogTheme
 import com.simplemobiletools.commons.extensions.isLollipopPlus
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import com.simplemobiletools.commons.extensions.value
@@ -82,7 +82,7 @@ class RepeatLimitTypePickerDialog(val activity: Activity, var repeatLimit: Int, 
     private fun showRepetitionLimitDialog() {
         val now = (System.currentTimeMillis() / 1000).toInt()
         val repeatLimitDateTime = Formatter.getDateTimeFromTS(if (repeatLimit != 0) repeatLimit else now)
-        val datepicker = DatePickerDialog(activity, activity.getAppropriateTheme(), repetitionLimitDateSetListener, repeatLimitDateTime.year,
+        val datepicker = DatePickerDialog(activity, activity.getDialogTheme(), repetitionLimitDateSetListener, repeatLimitDateTime.year,
                 repeatLimitDateTime.monthOfYear - 1, repeatLimitDateTime.dayOfMonth)
 
         if (activity.isLollipopPlus()) {

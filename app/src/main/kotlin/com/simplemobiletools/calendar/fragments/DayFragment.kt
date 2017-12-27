@@ -17,7 +17,6 @@ import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.adapters.DayEventsAdapter
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
-import com.simplemobiletools.calendar.extensions.getAppropriateTheme
 import com.simplemobiletools.calendar.extensions.getFilteredEvents
 import com.simplemobiletools.calendar.helpers.DAY_CODE
 import com.simplemobiletools.calendar.helpers.EVENT_ID
@@ -27,6 +26,7 @@ import com.simplemobiletools.calendar.interfaces.DeleteEventsListener
 import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.commons.extensions.applyColorFilter
+import com.simplemobiletools.commons.extensions.getDialogTheme
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import kotlinx.android.synthetic.main.fragment_day.view.*
 import kotlinx.android.synthetic.main.top_navigation.view.*
@@ -86,7 +86,7 @@ class DayFragment : Fragment(), DeleteEventsListener {
     fun getDayEventsAdapter() = mHolder.day_events?.adapter as? DayEventsAdapter
 
     private fun pickDay() {
-        activity!!.setTheme(context!!.getAppropriateTheme())
+        activity!!.setTheme(context!!.getDialogTheme())
         val view = layoutInflater.inflate(R.layout.date_picker, null)
         val datePicker = view.findViewById<DatePicker>(R.id.date_picker)
 

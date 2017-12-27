@@ -18,15 +18,11 @@ import com.simplemobiletools.calendar.activities.DayActivity
 import com.simplemobiletools.calendar.extensions.addDayEvents
 import com.simplemobiletools.calendar.extensions.addDayNumber
 import com.simplemobiletools.calendar.extensions.config
-import com.simplemobiletools.calendar.extensions.getAppropriateTheme
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.models.DayMonthly
-import com.simplemobiletools.commons.extensions.applyColorFilter
-import com.simplemobiletools.commons.extensions.beGone
-import com.simplemobiletools.commons.extensions.beVisibleIf
-import com.simplemobiletools.commons.extensions.setupDialogStuff
+import com.simplemobiletools.commons.extensions.*
 import kotlinx.android.synthetic.main.first_row.*
 import kotlinx.android.synthetic.main.fragment_month.view.*
 import kotlinx.android.synthetic.main.top_navigation.view.*
@@ -125,7 +121,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
     }
 
     private fun showMonthDialog() {
-        activity!!.setTheme(context!!.getAppropriateTheme())
+        activity!!.setTheme(context!!.getDialogTheme())
         val view = layoutInflater.inflate(R.layout.date_picker, null)
         val datePicker = view.findViewById<DatePicker>(R.id.date_picker)
         datePicker.findViewById<View>(Resources.getSystem().getIdentifier("day", "id", "android")).beGone()

@@ -45,7 +45,7 @@ class EventActivity : SimpleActivity() {
 
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_cross)
         val intent = intent ?: return
-        mDialogTheme = getAppropriateTheme()
+        mDialogTheme = getDialogTheme()
 
         val eventId = intent.getIntExtra(EVENT_ID, 0)
         val event = dbHelper.getEventWithId(eventId)

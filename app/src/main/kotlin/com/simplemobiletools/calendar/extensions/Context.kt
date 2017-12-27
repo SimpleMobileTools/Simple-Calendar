@@ -7,7 +7,6 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.res.Resources
-import android.graphics.Color
 import android.net.Uri
 import android.support.v4.app.NotificationCompat
 import android.view.Gravity
@@ -112,8 +111,6 @@ private fun getNotificationIntent(context: Context, event: Event): PendingIntent
     intent.putExtra(EVENT_OCCURRENCE_TS, event.startTS)
     return PendingIntent.getBroadcast(context, event.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 }
-
-fun Context.getAppropriateTheme() = if (config.backgroundColor.getContrastColor() == Color.WHITE) R.style.MyDialogTheme_Dark else R.style.MyDialogTheme
 
 fun Context.getFormattedMinutes(minutes: Int, showBefore: Boolean = true) = when (minutes) {
     -1 -> getString(R.string.no_reminder)
