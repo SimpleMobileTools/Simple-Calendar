@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Simple Calendar</string>
-    <string name="app_launcher_name">Simple Calendar</string>
+    <string name="app_launcher_name">Calendario</string>
     <string name="change_view">Cambiar vista</string>
     <string name="weekly_view">Vista semanal</string>
     <string name="monthly_view">Vista mensual</string>
     <string name="yearly_view">Vista anual</string>
-    <string name="simple_event_list">Lista de eventos sencilla</string>
-    <string name="no_upcoming_events">Parece que no tienes ningún evento próximo.</string>
-    <string name="add_some_events">Puede añadir algunos con el botón Más en la parte inferior.</string>
-    <string name="details">Detalles</string>
-    <string name="go_to_today">Ir al día de hoy</string>
-    <string name="snooze">Snooze</string>
+    <string name="simple_event_list">Lista de eventos simple</string>
+    <string name="no_upcoming_events">Semella que non ten ningún evento próximo.</string>
+    <string name="add_some_events">Pode engadir algún co botón Máis na parte inferior.</string>
+    <string name="details">Detalle</string>
+    <string name="go_to_today">Ir ao día de hoxe</string>
+    <string name="snooze">Retrasar</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Calendario mensual</string>
-    <string name="widget_list">Lista de eventos del calendario</string>
+    <string name="widget_list">Lista de eventos do calendario</string>
 
     <!-- Event -->
     <string name="event">Evento</string>
