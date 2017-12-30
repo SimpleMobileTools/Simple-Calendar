@@ -282,17 +282,17 @@
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Ein einfacher Kalender mit personalisierbaren Widgets, ganz ohne Werbung.</string>
     <string name="app_long_description">
-        Ein schlichter Kalender mit optionaler Google Synchronisation. Du kannst ganz einfach wiederholende Termine sowie Erinnerungen hinzufügen inklusive optionaler Anzeige der Kalenderwochen.
+        Ein schlichter Kalender mit optionaler Google Synchronisation. Du kannst ganz einfach wiederholende Termine sowie Erinnerungen erstellen, inklusive optionaler Anzeige der Kalenderwoche.
 
         Enthält ein skalierbares 4x4 Widget, bei welchem die Schriftfarbe sowie die Hintergrundfarbe und Transparenz anpassbar sind.
         
-        Beinhaltet keine Werbung und benötigt keine unnötigen Berechtigungen. Die App ist komplett Open Source und bietet nach Wunsch anpassbare Farben.
+        Beinhaltet keine Werbung oder unnötige Berechtigungen. Sie ist komplett Open Source, alle verwendeten Farben sind anpassbar.
 
         Die Speicher-Berechtigung ist nur für das Importieren von .ics Termin-Dateien notwendig.
 
         Die Kontakte-Berechtigung wird nur für das Importieren von Geburtstagen benötigt.
 
-        Diese App ist nur eine von vielen unserer Apps. Du kannst alle anderen hier finden: http://www.simplemobiletools.com
+        Diese App ist nur eine aus einer größeren Serie von schlichten Apps. Der Rest davon findet sich auf http://www.simplemobiletools.com
     </string>
 
     <!--
