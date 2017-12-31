@@ -107,8 +107,7 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, v
         DeleteEventDialog(activity, eventIds) {
             val eventsToDelete = ArrayList<Event>(selectedPositions.size)
             selectedPositions.sortedDescending().forEach {
-                val event = events[it]
-                eventsToDelete.add(event)
+                eventsToDelete.add(events[it])
             }
             events.removeAll(eventsToDelete)
 
