@@ -8,7 +8,7 @@
     <string name="yearly_view">Vista anual</string>
     <string name="simple_event_list">Lista de eventos sencilla</string>
     <string name="no_upcoming_events">Parece que no tienes ningún evento próximo.</string>
-    <string name="add_some_events">Puede añadir algunos con el botón Más en la parte inferior.</string>
+    <string name="add_some_events">Puede añadir eventos con el botón Más en la parte inferior.</string>
     <string name="details">Detalles</string>
     <string name="go_to_today">Ir al día de hoy</string>
     <string name="snooze">Snooze</string>
@@ -39,8 +39,8 @@
     <string name="years_raw">años</string>
     <string name="repeat_till">Repetir hasta</string>
     <string name="forever">Siempre</string>
-    <string name="event_is_repeatable">The event is repeatable</string>
-    <string name="selection_contains_repetition">La selección contiene eventos repetitivos</string>
+    <string name="event_is_repeatable">Este evento se repite</string>
+    <string name="selection_contains_repetition">La selección contiene repetición de eventos</string>
     <string name="delete_one_only">Eliminar sólo el evento seleccionado</string>
     <string name="delete_all_occurrences">Eliminar todos los eventos</string>
     <string name="update_one_only">Actualizar sólo el evento seleccionado</string>
@@ -96,16 +96,16 @@
     </plurals>
 
     <!-- Birthdays -->
-    <string name="birthdays">Birthdays</string>
-    <string name="add_birthdays">Add contact birthdays</string>
-    <string name="no_birthdays">No birthdays have been found</string>
-    <string name="birthdays_added">Birthdays added successfully</string>
+    <string name="birthdays">Cumpleaños</string>
+    <string name="add_birthdays">Añadir cumpleaños de contactos</string>
+    <string name="no_birthdays">No se han encontrado cumpleaños</string>
+    <string name="birthdays_added">Los cumpleaños se han añadido correctamente</string>
 
     <!-- Anniversaries -->
-    <string name="anniversaries">Anniversaries</string>
-    <string name="add_anniversaries">Add contact anniversaries</string>
-    <string name="no_anniversaries">No anniversaries have been found</string>
-    <string name="anniversaries_added">Anniversaries added successfully</string>
+    <string name="anniversaries">Aniversarios</string>
+    <string name="add_anniversaries">Añadir aniversarios de contactos</string>
+    <string name="no_anniversaries">No se han encontrado aniversarios</string>
+    <string name="anniversaries_added">Los aniversarios se han añadido correctamente</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Recordatorio</string>
@@ -117,7 +117,7 @@
     <string name="hours_raw">horas</string>
     <string name="days_raw">días</string>
     <string name="add_another_reminder">Agregar otro recordatorio</string>
-    <string name="event_reminders">Event reminders</string>
+    <string name="event_reminders">Recordatorio de eventos</string>
 
     <plurals name="minutes_before">
         <item quantity="one">%d minuto antes</item>
@@ -135,28 +135,28 @@
     </plurals>
 
     <!-- Export / Import -->
-    <string name="importing">Importing…</string>
-    <string name="exporting">Exporting…</string>
+    <string name="importing">Importando…</string>
+    <string name="exporting">Exportando…</string>
     <string name="import_events">Importar eventos</string>
     <string name="export_events">Exportar eventos</string>
     <string name="import_events_from_ics">Importar eventos desde un archivo .ics</string>
     <string name="export_events_to_ics">Exportar eventos desde un archivo .ics</string>
-    <string name="events_imported_successfully">Eventos importados exitosamente</string>
-    <string name="events_exported_successfully">Los eventos han sido exportados exitosamente</string>
-    <string name="importing_events_failed">Error en la importación de eventos</string>
-    <string name="exporting_events_failed">Error en la exportación de eventos</string>
+    <string name="events_imported_successfully">Eventos se han importado con éxito</string>
+    <string name="events_exported_successfully">Eventos se han exportado con éxito</string>
+    <string name="importing_events_failed">Error al importar eventos</string>
+    <string name="exporting_events_failed">Error al exportar eventos</string>
     <string name="importing_some_events_failed">Error al importar algunos eventos</string>
     <string name="exporting_some_events_failed">Error al exportar algunos eventos</string>
     <string name="default_event_type">Tipo de evento predeterminado</string>
-    <string name="no_events_for_exporting">No se han encontrado eventos para la exportación</string>
-    <string name="export_past_events_too">También exportar eventos pasados</string>
-    <string name="include_event_types">Include event types</string>
-    <string name="filename_without_ics">Filename (without .ics)</string>
-    <string name="no_title">No title</string>
+    <string name="no_events_for_exporting">No se han encontrado eventos para exportar</string>
+    <string name="export_past_events_too">Exportar también eventos pasados</string>
+    <string name="include_event_types">Incluir tipos de evento</string>
+    <string name="filename_without_ics">Nombre del archivo (sin .ics)</string>
+    <string name="no_title">Sin título</string>
 
     <!-- Event details -->
     <string name="title">Título</string>
-    <string name="location">Location</string>
+    <string name="location">Ubicación</string>
     <string name="description">Descripción</string>
     <string name="all_day">Todo el día</string>
 
@@ -172,18 +172,18 @@
     <string name="regular_event">Evento regular</string>
     <string name="cannot_delete_default_type">No se puede eliminar el tipo de evento predeterminado</string>
     <string name="select_event_type">Seleccione un tipo de evento</string>
-    <string name="move_events_into_default">Move affected events into the default event type</string>
-    <string name="remove_affected_events">Permanently remove affected events</string>
-    <string name="unsync_caldav_calendar">To remove a CalDAV calendar you have to unsynchronize it</string>
+    <string name="move_events_into_default">Establecer eventos seleccionados como tipo de evento predeterminado</string>
+    <string name="remove_affected_events">Eliminar permanentemente los eventos seleccionados</string>
+    <string name="unsync_caldav_calendar">Para eliminar un calendario CalDAV debes parar la sincronización</string>
 
     <!-- Holidays -->
-    <string name="holidays">Holidays</string>
-    <string name="add_holidays">Add holidays</string>
-    <string name="national_holidays">National holidays</string>
-    <string name="religious_holidays">Religious holidays</string>
-    <string name="holidays_imported_successfully">Holidays have been successfully imported into a new event type</string>
-    <string name="importing_some_holidays_failed">Importing some events failed</string>
-    <string name="importing_holidays_failed">Importing holidays failed</string>
+    <string name="holidays">Días festivos</string>
+    <string name="add_holidays">Añadir festivos</string>
+    <string name="national_holidays">Fiestas nacionales</string>
+    <string name="religious_holidays">Fiestas regionales</string>
+    <string name="holidays_imported_successfully">Los días festivos se han importado correctamente a un nuevo tipo de evento</string>
+    <string name="importing_some_holidays_failed">Ha habido un fallo al importar eventos</string>
+    <string name="importing_holidays_failed">Ha habido un fallo al importar días festivos</string>
 
     <!-- Settings -->
     <string name="manage_event_types">Gestionar tipos de eventos</string>
@@ -198,36 +198,36 @@
     <string name="no_ringtone_picker">No se ha encontrado ninguna aplicación capaz de establecer el tono de llamada</string>
     <string name="no_ringtone_selected">Ninguno</string>
     <string name="day_end_before_start">El día no puede terminar antes de que comience</string>
-    <string name="caldav_sync">CalDAV sync</string>
-    <string name="event_lists">Event lists</string>
-    <string name="display_past_events">Display events from the past</string>
-    <string name="snooze_delay">Postpone reminder with Snooze by</string>
+    <string name="caldav_sync">Sincronizar CalDAV</string>
+    <string name="event_lists">Listas de eventos</string>
+    <string name="display_past_events">Mostrar eventos pasados</string>
+    <string name="snooze_delay">Retrasar recordatorio durante</string>
     <string name="widgets">Widgets</string>
-    <string name="replace_description_with_location">Replace Description with Location at list view entries</string>
+    <string name="replace_description_with_location">Remplazar la descripción con la ubicación al mostrar entradas</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
-    <string name="select_caldav_calendars">Select calendars to sync</string>
-    <string name="manage_synced_calendars">Manage synced calendars</string>
-    <string name="store_locally_only">Store locally only</string>
-    <string name="refresh_caldav_calendars">Refresh CalDAV calendars</string>
-    <string name="refreshing">Refreshing…</string>
-    <string name="refreshing_complete">Refreshing complete</string>
-    <string name="editing_calendar_failed">Editing calendar failed</string>
-    <string name="syncing">Syncing…</string>
-    <string name="synchronization_completed">Sync completed</string>
+    <string name="select_caldav_calendars">Selecciona los calendarios a sincronizar</string>
+    <string name="manage_synced_calendars">Gestionar los calendarios sincronizados</string>
+    <string name="store_locally_only">Almacenar sólo en local</string>
+    <string name="refresh_caldav_calendars">Actualizar los calendarios CalDAV</string>
+    <string name="refreshing">Actualizando…</string>
+    <string name="refreshing_complete">Actualización completada</string>
+    <string name="editing_calendar_failed">Edición de calendario fallida</string>
+    <string name="syncing">Sincronizando…</string>
+    <string name="synchronization_completed">Sincronización completa</string>
 
     <plurals name="by_minutes">
-        <item quantity="one">%d minute</item>
-        <item quantity="other">%d minutes</item>
+        <item quantity="one">%d minuto</item>
+        <item quantity="other">%d minutos</item>
     </plurals>
 
     <plurals name="by_hours">
-        <item quantity="one">%d hour</item>
-        <item quantity="other">%d hours</item>
+        <item quantity="one">%d hora</item>
+        <item quantity="other">%d horas</item>
     </plurals>
 
-    <string name="never">Never</string>
+    <string name="never">Nunca</string>
 
     <string name="january">Enero</string>
     <string name="february">Febrero</string>
@@ -282,17 +282,17 @@
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Un sencillo calendario con eventos, widget personalizable y sin anuncios.</string>
     <string name="app_long_description">
-        Un calendario sin conexión sin ninguna otra integración con el calendario. Usted puede crear fácilmente eventos recurrentes y configurar recordatorios. También muestra los números de semana.
+        Un simple calendario con sincronización opcional con Google. Puedes crear fácilmente eventos que se repitan y configurar recordatorios, o que te muestre los días de la semana.
 
-        Contiene un widget 4x4 de tamaño variable en el que se puede personalizar el color del texto, así como el alfa y el color del fondo.
+        Contiene un widget 4x4 redimensionable donde puedes personalizar el color del texto, así como la transparencia y el color del fondo.
 
-        No contiene anuncios ni permisos innecesarios. Es totalmente de código abierto y ofrece un tema oscuro también.
+        No contiene anuncios ni permisos innecesarios. Es completamente de código abierto, permite personalizar los colores.
 
-        The Storage permission is needed only for importing events from .ics files.
+        El permiso de almacenamiento sólo se necesita para exportar o importar eventos desde archivos .ics.
 
-        Contacts permission is used only at importing contact birthdays.
+        El permiso de contactos se usa sólo para importar los cumpleaños de los contactos.
 
-        Esta aplicación es solo una parte de una serie más grande de aplicaciones. Puede encontrar el resto de ellas en http://www.simplemobiletools.com
+        Esta aplicación es sólo una parte de una mayor serie de aplicaciones. Puede encontrar el resto en http://www.simplemobiletools.com
     </string>
 
     <!--
