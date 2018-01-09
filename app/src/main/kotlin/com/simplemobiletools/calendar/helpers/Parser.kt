@@ -83,7 +83,7 @@ class Parser {
             parseLongFormat(edited, value.endsWith("Z"))
         } else {
             val dateTimeFormat = DateTimeFormat.forPattern("yyyyMMdd")
-            dateTimeFormat.parseDateTime(edited).withZoneRetainFields(DateTimeZone.getDefault()).withHourOfDay(1).seconds()
+            dateTimeFormat.parseDateTime(edited).withHourOfDay(5).seconds()
         }
     }
 
