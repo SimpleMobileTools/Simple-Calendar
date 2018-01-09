@@ -758,6 +758,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
         LinkedHashMap<String, String>().apply {
             put("Algeria", "algeria.ics")
             put("Argentina", "argentina.ics")
+            put("Australia", "australia.ics")
             put("België", "belgium.ics")
             put("Bolivia", "bolivia.ics")
             put("Brasil", "brazil.ics")
