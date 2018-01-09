@@ -14,7 +14,7 @@
 
         <com.simplemobiletools.commons.views.MyEditText
             android:id="@+id/event_title"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/activity_margin"
             android:layout_marginRight="@dimen/activity_margin"
@@ -29,12 +29,12 @@
 
         <com.simplemobiletools.commons.views.MyEditText
             android:id="@+id/event_location"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_title"
             android:layout_marginLeft="@dimen/activity_margin"
-            android:layout_marginRight="@dimen/activity_margin"
             android:layout_marginTop="@dimen/activity_margin"
+            android:layout_toLeftOf="@+id/event_location_button"
             android:hint="@string/location"
             android:inputType="textCapWords"
             android:maxLength="80"
@@ -43,9 +43,24 @@
             android:textCursorDrawable="@null"
             android:textSize="@dimen/day_text_size"/>
 
+        <ImageView
+            android:id="@+id/event_location_button"
+            style="@style/MyBorderlessBackgroundStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignBottom="@+id/event_location"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/event_location"
+            android:layout_marginEnd="@dimen/activity_margin"
+            android:layout_marginRight="@dimen/activity_margin"
+            android:paddingLeft="@dimen/medium_margin"
+            android:paddingRight="@dimen/medium_margin"
+            android:src="@drawable/ic_map"/>
+
         <com.simplemobiletools.commons.views.MyEditText
             android:id="@+id/event_description"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_location"
             android:layout_marginLeft="@dimen/activity_margin"

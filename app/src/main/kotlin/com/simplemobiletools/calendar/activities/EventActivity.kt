@@ -80,6 +80,7 @@ class EventActivity : SimpleActivity() {
         updateCalDAVCalendar()
         updateLocation()
 
+        event_location_button.setOnClickListener { setupLocation() }
         event_start_date.setOnClickListener { setupStartDate() }
         event_start_time.setOnClickListener { setupStartTime() }
         event_end_date.setOnClickListener { setupEndDate() }
@@ -650,6 +651,10 @@ class EventActivity : SimpleActivity() {
         event_end_time.setTextColor(textColor)
     }
 
+    private fun setupLocation() {
+
+    }
+
     @SuppressLint("NewApi")
     private fun setupStartDate() {
         hideKeyboard()
@@ -750,5 +755,6 @@ class EventActivity : SimpleActivity() {
         event_reminder_image.applyColorFilter(textColor)
         event_type_image.applyColorFilter(textColor)
         event_caldav_calendar_image.applyColorFilter(textColor)
+        event_location_button.applyColorFilter(config.primaryColor)
     }
 }
