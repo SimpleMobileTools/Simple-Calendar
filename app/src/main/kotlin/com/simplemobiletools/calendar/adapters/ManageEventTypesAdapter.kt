@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.item_event_type.view.*
 import java.util.*
 
 class ManageEventTypesAdapter(activity: SimpleActivity, val eventTypes: ArrayList<EventType>, val listener: DeleteEventTypesListener?, recyclerView: MyRecyclerView,
-                              itemClick: (Any) -> Unit) : MyRecyclerViewAdapter(activity, recyclerView, itemClick) {
+                              itemClick: (Any) -> Unit) : MyRecyclerViewAdapter(activity, recyclerView, null, itemClick) {
 
     override fun getActionMenuId() = R.menu.cab_event_type
 

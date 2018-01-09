@@ -19,7 +19,7 @@ import com.simplemobiletools.commons.views.MyRecyclerView
 import kotlinx.android.synthetic.main.event_item_day_view.view.*
 
 class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, val listener: DeleteEventsListener?, recyclerView: MyRecyclerView,
-                       itemClick: (Any) -> Unit) : MyRecyclerViewAdapter(activity, recyclerView, itemClick) {
+                       itemClick: (Any) -> Unit) : MyRecyclerViewAdapter(activity, recyclerView, null, itemClick) {
 
     private var allDayString = resources.getString(R.string.all_day)
     private var replaceDescriptionWithLocation = activity.config.replaceDescription
