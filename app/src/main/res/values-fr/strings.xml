@@ -13,11 +13,11 @@
     <string name="go_to_today">Aller à aujourd\'hui</string>
     <string name="snooze">Snooze</string>
 
-    <!-- Titres des widgets -->
+    <!-- Widget titles -->
     <string name="widget_monthly">Calendrier mensuel</string>
     <string name="widget_list">Liste d\'événements du calendrier</string>
 
-    <!-- Événement -->
+    <!-- Event -->
     <string name="event">Événement</string>
     <string name="edit_event">Éditer l\'événement</string>
     <string name="new_event">Nouvel événement</string>
@@ -26,6 +26,7 @@
     <string name="event_added">Événement ajouté avec succès</string>
     <string name="event_updated">Événement ajouté avec succès</string>
     <string name="filter_events_by_type">Filtrer les événements par type</string>
+    <string name="please_fill_location">Please fill in a location to be shown on the map</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Répétition</string>
@@ -154,7 +155,7 @@
     <string name="filename_without_ics">Nom de fichier (sans .ics)</string>
     <string name="no_title">Pas de titre</string>
 
-    <!-- Détails d'un événement -->
+    <!-- Event details -->
     <string name="title">Titre</string>
     <string name="location">Lieu</string>
     <string name="description">Description</string>
@@ -163,7 +164,7 @@
     <!-- Weekly view -->
     <string name="week">Semaine</string>
 
-    <!-- Types d'événement -->
+    <!-- Event types -->
     <string name="event_types">Type d\'événement</string>
     <string name="add_new_type">Ajouter un nouveau type</string>
     <string name="edit_type">Éditer le type</string>
@@ -176,7 +177,7 @@
     <string name="remove_affected_events">Supprimer de façon permanente les événements affectés</string>
     <string name="unsync_caldav_calendar">Pour supprimer un calendrier CalDAV vous devez le désynchroniser</string>
 
-    <!-- Anniversaires -->
+    <!-- Holidays -->
     <string name="holidays">Jours fériés</string>
     <string name="add_holidays">Ajouter des jours fériés</string>
     <string name="national_holidays">Jours fériés nationaux</string>
@@ -185,7 +186,7 @@
     <string name="importing_some_holidays_failed">L\'import de certains événements a échoué</string>
     <string name="importing_holidays_failed">L\'import des jours fériés a échoué</string>
 
-    <!-- Paramètres -->
+    <!-- Settings -->
     <string name="manage_event_types">Gestion des types d\'événements</string>
     <string name="use_24_hour_format">Utiliser le format 24 heures</string>
     <string name="sunday_first">Dimanche en premier jour</string>

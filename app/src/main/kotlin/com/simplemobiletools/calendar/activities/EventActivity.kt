@@ -3,6 +3,8 @@ package com.simplemobiletools.calendar.activities
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
 import android.view.Menu
@@ -80,7 +82,7 @@ class EventActivity : SimpleActivity() {
         updateCalDAVCalendar()
         updateLocation()
 
-        event_location_button.setOnClickListener { setupLocation() }
+        event_show_on_map.setOnClickListener { showOnMap() }
         event_start_date.setOnClickListener { setupStartDate() }
         event_start_time.setOnClickListener { setupStartTime() }
         event_end_date.setOnClickListener { setupEndDate() }
@@ -651,8 +653,20 @@ class EventActivity : SimpleActivity() {
         event_end_time.setTextColor(textColor)
     }
 
-    private fun setupLocation() {
+    private fun showOnMap() {
+        if (event_location.value.isEmpty()) {
+            toast(R.string.please_fill_location)
+            return
+        }
 
+        val location = Uri.encode(event_location.value)
+        val uri = Uri.parse("geo:0,0?q=$location")
+        val intent = Intent(Intent.ACTION_VIEW, uri)
+        if (intent.resolveActivity(packageManager) != null) {
+            startActivity(intent)
+        } else {
+            toast(R.string.no_app_found)
+        }
     }
 
     @SuppressLint("NewApi")
@@ -755,6 +769,6 @@ class EventActivity : SimpleActivity() {
         event_reminder_image.applyColorFilter(textColor)
         event_type_image.applyColorFilter(textColor)
         event_caldav_calendar_image.applyColorFilter(textColor)
-        event_location_button.applyColorFilter(config.primaryColor)
+        event_show_on_map.applyColorFilter(getAdjustedPrimaryColor())
     }
 }

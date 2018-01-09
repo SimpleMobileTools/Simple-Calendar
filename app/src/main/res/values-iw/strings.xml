@@ -27,6 +27,7 @@
     <string name="event_updated">האירוע עודכן בהצלחה</string>
     <string name="filter">Filter</string>
     <string name="filter_events_by_type">Filter events by type</string>
+    <string name="please_fill_location">Please fill in a location to be shown on the map</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Repetition</string>

@@ -34,7 +34,7 @@
             android:layout_below="@+id/event_title"
             android:layout_marginLeft="@dimen/activity_margin"
             android:layout_marginTop="@dimen/activity_margin"
-            android:layout_toLeftOf="@+id/event_location_button"
+            android:layout_toLeftOf="@+id/event_show_on_map"
             android:hint="@string/location"
             android:inputType="textCapWords"
             android:maxLength="80"
@@ -44,7 +44,7 @@
             android:textSize="@dimen/day_text_size"/>
 
         <ImageView
-            android:id="@+id/event_location_button"
+            android:id="@+id/event_show_on_map"
             style="@style/MyBorderlessBackgroundStyle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -54,9 +54,9 @@
             android:layout_alignTop="@+id/event_location"
             android:layout_marginEnd="@dimen/activity_margin"
             android:layout_marginRight="@dimen/activity_margin"
-            android:paddingLeft="@dimen/medium_margin"
-            android:paddingRight="@dimen/medium_margin"
-            android:src="@drawable/ic_map"/>
+            android:paddingLeft="@dimen/small_margin"
+            android:paddingRight="@dimen/small_margin"
+            android:src="@drawable/ic_place"/>
 
         <com.simplemobiletools.commons.views.MyEditText
             android:id="@+id/event_description"

@@ -26,6 +26,7 @@
     <string name="event_added">Evento aggiunto correttamente</string>
     <string name="event_updated">Evento aggiornato correttamente</string>
     <string name="filter_events_by_type">Filtra eventi per tipologia</string>
+    <string name="please_fill_location">Please fill in a location to be shown on the map</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Ripeti</string>

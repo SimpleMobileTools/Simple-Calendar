@@ -26,6 +26,7 @@
     <string name="event_added">Etkinlik başarıyla eklendi</string>
     <string name="event_updated">Etkinlik başarıyla güncellendi</string>
     <string name="filter_events_by_type">Etkinlikleri türe göre filtreleyin</string>
+    <string name="please_fill_location">Please fill in a location to be shown on the map</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Tekrarla</string>
