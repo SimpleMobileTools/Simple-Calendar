@@ -24,7 +24,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
     private val NEW_EVENT = "new_event"
 
     companion object {
-        var targetDate = DateTime.now()
+        private var targetDate = DateTime.now()
     }
 
     override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
@@ -32,36 +32,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
     }
 
     private fun performUpdate(context: Context) {
-        val largerFontSize = context.config.getFontSize() + 3f
-        val textColor = context.config.widgetTextColor
-        val resources = context.resources
-
-        val appWidgetManager = AppWidgetManager.getInstance(context)
-        appWidgetManager.getAppWidgetIds(getComponentName(context)).forEach {
-            val views = RemoteViews(context.packageName, R.layout.fragment_month_widget)
-            views.setBackgroundColor(R.id.calendar_holder, context.config.widgetBgColor)
-
-            views.setTextColor(R.id.top_value, textColor)
-            views.setTextSize(R.id.top_value, largerFontSize)
-
-            var bmp = resources.getColoredBitmap(R.drawable.ic_pointer_left, textColor)
-            views.setImageViewBitmap(R.id.top_left_arrow, bmp)
-
-            bmp = resources.getColoredBitmap(R.drawable.ic_pointer_right, textColor)
-            views.setImageViewBitmap(R.id.top_right_arrow, bmp)
-
-            bmp = resources.getColoredBitmap(R.drawable.ic_plus, textColor)
-            views.setImageViewBitmap(R.id.top_new_event, bmp)
-
-            setupIntent(context, views, PREV, R.id.top_left_arrow)
-            setupIntent(context, views, NEXT, R.id.top_right_arrow)
-            setupIntent(context, views, NEW_EVENT, R.id.top_new_event)
-            setupAppOpenIntent(context, views, R.id.top_value)
-            updateDayLabels(context, views, resources, textColor)
-
-            appWidgetManager.updateAppWidget(it, views)
-            MonthlyCalendarImpl(monthlyCalendar, context).getMonth(targetDate)
-        }
+        MonthlyCalendarImpl(monthlyCalendar, context).getMonth(targetDate)
     }
 
     private fun getComponentName(context: Context) = ComponentName(context, MyWidgetMonthlyProvider::class.java)
@@ -176,11 +147,36 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
 
     private val monthlyCalendar = object : MonthlyCalendar {
         override fun updateMonthlyCalendar(context: Context, month: String, days: List<DayMonthly>, checkedEvents: Boolean) {
+            val largerFontSize = context.config.getFontSize() + 3f
+            val textColor = context.config.widgetTextColor
+            val resources = context.resources
+
             val appWidgetManager = AppWidgetManager.getInstance(context)
             appWidgetManager.getAppWidgetIds(getComponentName(context)).forEach {
                 val views = RemoteViews(context.packageName, R.layout.fragment_month_widget)
                 views.setText(R.id.top_value, month)
+
+                views.setBackgroundColor(R.id.calendar_holder, context.config.widgetBgColor)
+
+                views.setTextColor(R.id.top_value, textColor)
+                views.setTextSize(R.id.top_value, largerFontSize)
+
+                var bmp = resources.getColoredBitmap(R.drawable.ic_pointer_left, textColor)
+                views.setImageViewBitmap(R.id.top_left_arrow, bmp)
+
+                bmp = resources.getColoredBitmap(R.drawable.ic_pointer_right, textColor)
+                views.setImageViewBitmap(R.id.top_right_arrow, bmp)
+
+                bmp = resources.getColoredBitmap(R.drawable.ic_plus, textColor)
+                views.setImageViewBitmap(R.id.top_new_event, bmp)
+                updateDayLabels(context, views, resources, textColor)
                 updateDays(context, views, days)
+
+                setupIntent(context, views, PREV, R.id.top_left_arrow)
+                setupIntent(context, views, NEXT, R.id.top_right_arrow)
+                setupIntent(context, views, NEW_EVENT, R.id.top_new_event)
+                setupAppOpenIntent(context, views, R.id.top_value)
+
                 appWidgetManager.updateAppWidget(it, views)
             }
         }
