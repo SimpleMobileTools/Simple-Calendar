@@ -578,7 +578,7 @@ class EventActivity : SimpleActivity() {
         if (mEvent.id == 0) {
             dbHelper.insert(mEvent, true) {
                 if (DateTime.now().isAfter(mEventStartDateTime.millis)) {
-                    if (mEvent.getReminders().isNotEmpty()) {
+                    if (mEvent.repeatInterval == 0 && mEvent.getReminders().isNotEmpty()) {
                         notifyEvent(mEvent)
                     }
                 } else {
