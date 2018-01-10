@@ -226,7 +226,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         callback(event.id)
     }
 
-    fun update(event: Event, updateAtCalDAV: Boolean, callback: () -> Unit) {
+    fun update(event: Event, updateAtCalDAV: Boolean, callback: (() -> Unit)? = null) {
         val selectionArgs = arrayOf(event.id.toString())
         val values = fillEventValues(event)
         val selection = "$COL_ID = ?"
@@ -245,7 +245,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         if (updateAtCalDAV && event.source != SOURCE_SIMPLE_CALENDAR && context.config.caldavSync) {
             CalDAVHandler(context).updateCalDAVEvent(event)
         }
-        callback()
+        callback?.invoke()
     }
 
     private fun fillEventValues(event: Event): ContentValues {

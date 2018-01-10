@@ -140,7 +140,7 @@ class IcsImporter(val activity: SimpleActivity) {
                             }
                         } else {
                             event.id = eventToUpdate.id
-                            activity.dbHelper.update(event, true) {}
+                            activity.dbHelper.update(event, true)
                         }
                         eventsImported++
                         resetValues()
