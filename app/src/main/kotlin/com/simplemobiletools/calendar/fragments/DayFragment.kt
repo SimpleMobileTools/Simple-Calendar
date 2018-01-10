@@ -163,7 +163,7 @@ class DayFragment : Fragment(), DeleteEventsListener {
 
     override fun addEventRepeatException(parentIds: ArrayList<Int>, timestamps: ArrayList<Int>) {
         parentIds.forEachIndexed { index, value ->
-            context!!.dbHelper.addEventRepeatException(parentIds[index], timestamps[index])
+            context!!.dbHelper.addEventRepeatException(parentIds[index], timestamps[index], true)
         }
         (activity as DayActivity).recheckEvents()
     }

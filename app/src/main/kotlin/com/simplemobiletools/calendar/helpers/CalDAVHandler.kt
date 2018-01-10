@@ -22,15 +22,14 @@ import kotlin.collections.ArrayList
 
 class CalDAVHandler(val context: Context) {
     fun refreshCalendars(activity: SimpleActivity? = null, callback: () -> Unit) {
-        val dbHelper = context.dbHelper
         for (calendar in getCalDAVCalendars(activity, context.config.caldavSyncedCalendarIDs)) {
-            val localEventType = dbHelper.getEventTypeWithCalDAVCalendarId(calendar.id) ?: continue
+            val localEventType = context.dbHelper.getEventTypeWithCalDAVCalendarId(calendar.id) ?: continue
             localEventType.apply {
                 title = calendar.displayName
                 caldavDisplayName = calendar.displayName
                 caldavEmail = calendar.accountName
                 color = calendar.color
-                dbHelper.updateLocalEventType(this)
+                context.dbHelper.updateLocalEventType(this)
             }
 
             CalDAVHandler(context).fetchCalDAVCalendarEvents(calendar.id, localEventType.id, activity)
@@ -264,7 +263,7 @@ class CalDAVHandler(val context: Context) {
                             val parentEventId = context.dbHelper.getEventIdWithImportId(parentImportId)
                             if (parentEventId != 0) {
                                 event.parentId = parentEventId
-                                context.dbHelper.addEventRepeatException(parentEventId, (originalInstanceTime / 1000).toInt(), event.importId)
+                                context.dbHelper.addEventRepeatException(parentEventId, (originalInstanceTime / 1000).toInt(), false, event.importId)
                             }
                         }
 
@@ -391,6 +390,23 @@ class CalDAVHandler(val context: Context) {
             context.contentResolver.delete(contentUri, null, null)
         } catch (ignored: Exception) {
 
+        }
+    }
+
+    fun insertEventRepeatException(event: Event, occurrenceTS: Int) {
+        val uri = CalendarContract.Events.CONTENT_URI
+        val values = fillEventRepeatExceptionValues(event, occurrenceTS)
+        context.contentResolver.insert(uri, values)
+    }
+
+    private fun fillEventRepeatExceptionValues(event: Event, occurrenceTS: Int): ContentValues {
+        return ContentValues().apply {
+            put(CalendarContract.Events.CALENDAR_ID, event.getCalDAVCalendarId())
+            put(CalendarContract.Events.DTSTART, 0)
+            put(CalendarContract.Events.DTEND, 0)
+            put(CalendarContract.Events.ORIGINAL_ID, event.getCalDAVEventId())
+            put(CalendarContract.Events.EVENT_TIMEZONE, TimeZone.getDefault().toString())
+            put(CalendarContract.Events.ORIGINAL_INSTANCE_TIME, occurrenceTS * 1000L)
         }
     }
 

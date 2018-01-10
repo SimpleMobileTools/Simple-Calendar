@@ -123,7 +123,7 @@ class EventListFragment : Fragment(), DeleteEventsListener {
 
     override fun addEventRepeatException(parentIds: ArrayList<Int>, timestamps: ArrayList<Int>) {
         parentIds.forEachIndexed { index, value ->
-            context!!.dbHelper.addEventRepeatException(value, timestamps[index])
+            context!!.dbHelper.addEventRepeatException(value, timestamps[index], true)
         }
         checkEvents()
     }

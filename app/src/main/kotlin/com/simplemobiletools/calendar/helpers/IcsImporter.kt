@@ -134,7 +134,7 @@ class IcsImporter(val activity: SimpleActivity) {
                         if (eventToUpdate == null) {
                             activity.dbHelper.insert(event, false) {
                                 for (exceptionTS in curRepeatExceptions) {
-                                    activity.dbHelper.addEventRepeatException(it, exceptionTS)
+                                    activity.dbHelper.addEventRepeatException(it, exceptionTS, false)
                                 }
                                 existingEvents.add(event)
                             }

@@ -505,7 +505,7 @@ class EventActivity : SimpleActivity() {
             if (it) {
                 dbHelper.deleteEvents(arrayOf(mEvent.id.toString()), true)
             } else {
-                dbHelper.addEventRepeatException(mEvent.id, mEventOccurrenceTS)
+                dbHelper.addEventRepeatException(mEvent.id, mEventOccurrenceTS, true)
             }
             finish()
         }
@@ -595,7 +595,7 @@ class EventActivity : SimpleActivity() {
                             eventUpdated()
                         }
                     } else {
-                        dbHelper.addEventRepeatException(mEvent.id, mEventOccurrenceTS)
+                        dbHelper.addEventRepeatException(mEvent.id, mEventOccurrenceTS, true)
                         mEvent.parentId = mEvent.id
                         mEvent.id = 0
                         dbHelper.insert(mEvent, true) {
