@@ -495,6 +495,9 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     fun addEventRepeatException(parentEventId: Int, occurrenceTS: Int) {
         fillExceptionValues(parentEventId, occurrenceTS) {
             mDb.insert(EXCEPTIONS_TABLE_NAME, null, it)
+
+            val parentEvent = getEventWithId(parentEventId)
+            context.scheduleNextEventReminder(parentEvent, this)
         }
     }
 

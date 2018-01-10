@@ -66,9 +66,10 @@ fun Context.scheduleAllEvents() {
     }
 }
 
-fun Context.scheduleNextEventReminder(event: Event, dbHelper: DBHelper) {
-    if (event.getReminders().isEmpty())
+fun Context.scheduleNextEventReminder(event: Event?, dbHelper: DBHelper) {
+    if (event == null || event.getReminders().isEmpty()) {
         return
+    }
 
     val now = (System.currentTimeMillis() / 1000).toInt()
     val reminderSeconds = event.getReminders().reversed().map { it * 60 }
