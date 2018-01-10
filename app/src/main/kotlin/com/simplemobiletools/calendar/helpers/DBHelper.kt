@@ -565,9 +565,21 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         val cursor = getEventsCursor(selection, selectionArgs)
         val events = fillEvents(cursor)
         return if (events.isNotEmpty()) {
-            events[0]
+            events.first()
         } else {
             null
+        }
+    }
+
+    fun getEventIdWithImportId(id: String): Int {
+        val selection = "$MAIN_TABLE_NAME.$COL_IMPORT_ID = ?"
+        val selectionArgs = arrayOf(id)
+        val cursor = getEventsCursor(selection, selectionArgs)
+        val events = fillEvents(cursor)
+        return if (events.isNotEmpty()) {
+            events.first().id
+        } else {
+            0
         }
     }
 
