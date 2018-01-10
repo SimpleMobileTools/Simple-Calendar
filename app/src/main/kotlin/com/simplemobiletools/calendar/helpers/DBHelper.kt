@@ -319,7 +319,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
     }
 
-    private fun fillExceptionValues(parentEventId: Int, occurrenceTS: Int, callback: (values: ContentValues) -> Unit) {
+    private fun fillExceptionValues(parentEventId: Int, occurrenceTS: Int, childImportId: String?, callback: (values: ContentValues) -> Unit) {
         val childEvent = getEventWithId(parentEventId)
         if (childEvent == null) {
             callback(ContentValues())
@@ -331,11 +331,15 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             parentId = parentEventId
             startTS = 0
             endTS = 0
+            if (childImportId != null) {
+                importId = childImportId
+            }
         }
 
         insert(childEvent, false) {
             callback(ContentValues().apply {
                 put(COL_PARENT_EVENT_ID, parentEventId)
+                put(COL_OCCURRENCE_TIMESTAMP, occurrenceTS)
                 put(COL_OCCURRENCE_DAYCODE, Formatter.getDayCodeFromTS(occurrenceTS))
                 put(COL_CHILD_EVENT_ID, it)
             })
@@ -492,8 +496,8 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
     }
 
-    fun addEventRepeatException(parentEventId: Int, occurrenceTS: Int) {
-        fillExceptionValues(parentEventId, occurrenceTS) {
+    fun addEventRepeatException(parentEventId: Int, occurrenceTS: Int, childImportId: String? = null) {
+        fillExceptionValues(parentEventId, occurrenceTS, childImportId) {
             mDb.insert(EXCEPTIONS_TABLE_NAME, null, it)
 
             val parentEvent = getEventWithId(parentEventId)

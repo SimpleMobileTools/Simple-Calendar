@@ -240,8 +240,7 @@ class CalDAVHandler(val context: Context) {
                     val repeatRule = Parser().parseRepeatInterval(rrule, startTS)
                     val event = Event(0, startTS, endTS, title, description, reminders.getOrElse(0, { -1 }),
                             reminders.getOrElse(1, { -1 }), reminders.getOrElse(2, { -1 }), repeatRule.repeatInterval,
-                            importId, allDay, repeatRule.repeatLimit, repeatRule.repeatRule, eventTypeId, lastUpdated = System.currentTimeMillis(),
-                            source = source, location = location)
+                            importId, allDay, repeatRule.repeatLimit, repeatRule.repeatRule, eventTypeId, source = source, location = location)
 
                     if (event.getIsAllDay() && endTS > startTS) {
                         event.endTS -= DAY
@@ -252,7 +251,7 @@ class CalDAVHandler(val context: Context) {
                         val existingEvent = importIdsMap[importId]
                         val originalEventId = existingEvent!!.id
                         existingEvent.id = 0
-                        if (existingEvent.hashCode() != event.hashCode()) {
+                        if (existingEvent.hashCode() != event.hashCode() && title.isNotEmpty()) {
                             event.id = originalEventId
                             context.dbHelper.update(event, false) {
                             }
@@ -264,7 +263,7 @@ class CalDAVHandler(val context: Context) {
                             val parentEventId = context.dbHelper.getEventIdWithImportId(parentImportId)
                             if (parentEventId != 0) {
                                 event.parentId = parentEventId
-                                context.dbHelper.addEventRepeatException(parentEventId, (originalInstanceTime / 1000).toInt())
+                                context.dbHelper.addEventRepeatException(parentEventId, (originalInstanceTime / 1000).toInt(), event.importId)
                             }
                         }
 
