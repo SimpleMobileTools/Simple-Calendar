@@ -202,7 +202,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     }
 
     fun insert(event: Event, addToCalDAV: Boolean, callback: (id: Int) -> Unit) {
-        if (event.startTS > event.endTS || event.title.trim().isEmpty()) {
+        if (event.startTS > event.endTS) {
             callback(0)
             return
         }
@@ -577,7 +577,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         val cursor = getEventsCursor(selection, selectionArgs)
         val events = fillEvents(cursor)
         return if (events.isNotEmpty()) {
-            events.first().id
+            events.minBy { it.id }?.id ?: 0
         } else {
             0
         }

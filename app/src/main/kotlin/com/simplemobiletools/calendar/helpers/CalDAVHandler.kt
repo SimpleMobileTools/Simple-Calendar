@@ -240,8 +240,8 @@ class CalDAVHandler(val context: Context) {
                     val repeatRule = Parser().parseRepeatInterval(rrule, startTS)
                     val event = Event(0, startTS, endTS, title, description, reminders.getOrElse(0, { -1 }),
                             reminders.getOrElse(1, { -1 }), reminders.getOrElse(2, { -1 }), repeatRule.repeatInterval,
-                            importId, allDay, repeatRule.repeatLimit, repeatRule.repeatRule, eventTypeId, source = source,
-                            location = location)
+                            importId, allDay, repeatRule.repeatLimit, repeatRule.repeatRule, eventTypeId, lastUpdated = System.currentTimeMillis(),
+                            source = source, location = location)
 
                     if (event.getIsAllDay() && endTS > startTS) {
                         event.endTS -= DAY
@@ -258,16 +258,19 @@ class CalDAVHandler(val context: Context) {
                             }
                         }
                     } else {
-                        context.dbHelper.insert(event, false) {
-                            importIdsMap.put(event.importId, event)
+                        // if the event is an exception from another events repeat rule, find the original parent event
+                        if (originalInstanceTime != 0L) {
+                            val parentImportId = "$source-$originalId"
+                            val parentEventId = context.dbHelper.getEventIdWithImportId(parentImportId)
+                            if (parentEventId != 0) {
+                                event.parentId = parentEventId
+                                context.dbHelper.addEventRepeatException(parentEventId, (originalInstanceTime / 1000).toInt())
+                            }
+                        }
 
-                            // if the event is an exception from another events repeat rule, find the original parent event
-                            if (originalInstanceTime != 0L) {
-                                val parentImportId = "$source-$originalId"
-                                val parentEventId = context.dbHelper.getEventIdWithImportId(parentImportId)
-                                if (parentEventId != 0) {
-                                    context.dbHelper.addEventRepeatException(parentEventId, (originalInstanceTime / 1000).toInt())
-                                }
+                        if (title.isNotEmpty()) {
+                            context.dbHelper.insert(event, false) {
+                                importIdsMap.put(event.importId, event)
                             }
                         }
                     }
