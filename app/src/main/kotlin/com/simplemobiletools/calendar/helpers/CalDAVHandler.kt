@@ -251,6 +251,8 @@ class CalDAVHandler(val context: Context) {
                         val existingEvent = importIdsMap[importId]
                         val originalEventId = existingEvent!!.id
                         existingEvent.id = 0
+                        existingEvent.color = 0
+                        existingEvent.ignoreEventOccurrences = ArrayList()
                         if (existingEvent.hashCode() != event.hashCode() && title.isNotEmpty()) {
                             event.id = originalEventId
                             context.dbHelper.update(event, false)
