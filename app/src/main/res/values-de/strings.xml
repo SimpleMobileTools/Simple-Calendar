@@ -26,7 +26,7 @@
     <string name="event_added">Termin erfolgreich hinzugefügt</string>
     <string name="event_updated">Termin erfolgreich aktualisiert</string>
     <string name="filter_events_by_type">Sortiere Termine nach Typ</string>
-    <string name="please_fill_location">Please fill in a location to be shown on the map</string>
+    <string name="please_fill_location">Please fill in a location to be shown on a map</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Wiederholung</string>

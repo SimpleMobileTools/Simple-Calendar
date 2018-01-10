@@ -26,7 +26,7 @@
     <string name="event_added">Wydarzenie zostało dodane</string>
     <string name="event_updated">Wydarzenie zostało zaktualizowane</string>
     <string name="filter_events_by_type">Filtruj wydarzenia według typu</string>
-    <string name="please_fill_location">Please fill in a location to be shown on the map</string>
+    <string name="please_fill_location">Please fill in a location to be shown on a map</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Powtórzenie</string>

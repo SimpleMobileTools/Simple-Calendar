@@ -26,7 +26,7 @@
     <string name="event_added">Afspraak gemaakt</string>
     <string name="event_updated">Afspraak bijgewerkt</string>
     <string name="filter_events_by_type">Afspraken op type filteren</string>
-    <string name="please_fill_location">Please fill in a location to be shown on the map</string>
+    <string name="please_fill_location">Please fill in a location to be shown on a map</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Herhaling</string>

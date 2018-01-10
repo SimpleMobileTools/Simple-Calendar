@@ -26,7 +26,7 @@
     <string name="event_added">Bejegyzés hozzáadva</string>
     <string name="event_updated">Bejegyzés frissítve</string>
     <string name="filter_events_by_type">Filter events by type</string>
-    <string name="please_fill_location">Please fill in a location to be shown on the map</string>
+    <string name="please_fill_location">Please fill in a location to be shown on a map</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Ismétlés</string>

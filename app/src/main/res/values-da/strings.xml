@@ -26,7 +26,7 @@
     <string name="event_added">Begivenhed tilføjet</string>
     <string name="event_updated">Begivenhed ændret</string>
     <string name="filter_events_by_type">Filtrer begivenheder efter type</string>
-    <string name="please_fill_location">Please fill in a location to be shown on the map</string>
+    <string name="please_fill_location">Please fill in a location to be shown on a map</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Gentagelse</string>

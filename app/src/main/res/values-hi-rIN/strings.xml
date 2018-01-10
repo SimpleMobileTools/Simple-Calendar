@@ -27,7 +27,7 @@
     <string name="event_updated">इवेंट सफलतापूर्वक अपडेट किया गया</string>
     <string name="filter">Filter</string>
     <string name="filter_events_by_type">Filter events by type</string>
-    <string name="please_fill_location">Please fill in a location to be shown on the map</string>
+    <string name="please_fill_location">Please fill in a location to be shown on a map</string>
 
     <!-- Event Repetition -->
     <string name="repetition">दुहराव</string>

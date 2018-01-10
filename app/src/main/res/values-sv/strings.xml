@@ -26,7 +26,7 @@
     <string name="event_added">Händelsen tillagd</string>
     <string name="event_updated">Händelsen uppdaterad</string>
     <string name="filter_events_by_type">Filtrera händelser efter typ</string>
-    <string name="please_fill_location">Please fill in a location to be shown on the map</string>
+    <string name="please_fill_location">Please fill in a location to be shown on a map</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Upprepning</string>
