@@ -1,5 +1,6 @@
 package com.simplemobiletools.calendar.activities
 
+import android.accounts.Account
 import android.content.ContentResolver
 import android.content.Intent
 import android.content.pm.ActivityInfo
@@ -47,7 +48,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class MainActivity : SimpleActivity(), NavigationListener {
-    private val CALDAV_SYNC_DELAY = 2000L
+    private val CALDAV_SYNC_DELAY = 1000L
     private val PREFILLED_MONTHS = 97
     private val PREFILLED_YEARS = 31
     private val PREFILLED_WEEKS = 61
@@ -260,10 +261,19 @@ class MainActivity : SimpleActivity(), NavigationListener {
         toast(R.string.refreshing)
         val uri = CalendarContract.Calendars.CONTENT_URI
         contentResolver.registerContentObserver(uri, false, calDAVSyncObserver)
+
+        val accounts = HashSet<Account>()
+        val calendars = CalDAVHandler(applicationContext).getCalDAVCalendars(this, config.caldavSyncedCalendarIDs)
+        calendars.forEach {
+            accounts.add(Account(it.accountName, it.accountType))
+        }
+
         Bundle().apply {
             putBoolean(ContentResolver.SYNC_EXTRAS_MANUAL, true)
             putBoolean(ContentResolver.SYNC_EXTRAS_EXPEDITED, true)
-            ContentResolver.requestSync(null, uri.authority, this)
+            accounts.forEach {
+                ContentResolver.requestSync(it, uri.authority, this)
+            }
         }
         scheduleCalDAVSync(true)
     }
