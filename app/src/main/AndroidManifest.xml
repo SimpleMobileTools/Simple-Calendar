@@ -95,8 +95,16 @@
 
         <activity
             android:name=".activities.EventActivity"
-            android:label="@string/event"
-            android:parentActivityName=".activities.DayActivity"/>
+            android:parentActivityName=".activities.DayActivity">
+
+            <intent-filter>
+                <action android:name="android.intent.action.EDIT"/>
+                <action android:name="android.intent.action.INSERT"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="vnd.android.cursor.item/event"/>
+            </intent-filter>
+        </activity>
 
         <activity
             android:name=".activities.SettingsActivity"

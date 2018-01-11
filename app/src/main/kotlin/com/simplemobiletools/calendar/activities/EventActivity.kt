@@ -66,12 +66,7 @@ class EventActivity : SimpleActivity() {
             mReminder1Minutes = config.defaultReminderMinutes
             mReminder2Minutes = -1
             mReminder3Minutes = -1
-            val startTS = intent.getIntExtra(NEW_EVENT_START_TS, 0)
-            if (startTS == 0) {
-                return
-            }
-
-            setupNewEvent(Formatter.getDateTimeFromTS(startTS))
+            setupNewEvent()
         }
 
         checkReminderTexts()
@@ -80,7 +75,6 @@ class EventActivity : SimpleActivity() {
         updateEndTexts()
         updateEventType()
         updateCalDAVCalendar()
-        updateLocation()
 
         event_show_on_map.setOnClickListener { showOnMap() }
         event_start_date.setOnClickListener { setupStartDate() }
@@ -130,16 +124,31 @@ class EventActivity : SimpleActivity() {
         checkRepeatTexts(mRepeatInterval)
     }
 
-    private fun setupNewEvent(dateTime: DateTime) {
+    private fun setupNewEvent() {
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
         supportActionBar?.title = resources.getString(R.string.new_event)
-        mEventStartDateTime = dateTime
-
-        val addHours = if (intent.getBooleanExtra(NEW_EVENT_SET_HOUR_DURATION, false)) 1 else 0
-        mEventEndDateTime = mEventStartDateTime.plusHours(addHours)
-
         val isLastCaldavCalendarOK = config.caldavSync && config.getSyncedCalendarIdsAsList().contains(config.lastUsedCaldavCalendar.toString())
         mEventCalendarId = if (isLastCaldavCalendarOK) config.lastUsedCaldavCalendar else STORED_LOCALLY_ONLY
+
+        if (intent.action == Intent.ACTION_EDIT || intent.action == Intent.ACTION_INSERT) {
+            val startTS = (intent.getLongExtra("beginTime", System.currentTimeMillis()) / 1000).toInt()
+            mEventStartDateTime = Formatter.getDateTimeFromTS(startTS)
+
+            val endTS = (intent.getLongExtra("endTime", System.currentTimeMillis()) / 1000).toInt()
+            mEventEndDateTime = Formatter.getDateTimeFromTS(endTS)
+
+            event_title.setText(intent.getStringExtra("title"))
+            event_location.setText(intent.getStringExtra("eventLocation"))
+            event_description.setText(intent.getStringExtra("description"))
+            event_description.movementMethod = LinkMovementMethod.getInstance()
+        } else {
+            val startTS = intent.getIntExtra(NEW_EVENT_START_TS, 0)
+            val dateTime = Formatter.getDateTimeFromTS(startTS)
+            mEventStartDateTime = dateTime
+
+            val addHours = if (intent.getBooleanExtra(NEW_EVENT_SET_HOUR_DURATION, false)) 1 else 0
+            mEventEndDateTime = mEventStartDateTime.plusHours(addHours)
+        }
     }
 
     private fun showReminder1Dialog() {
@@ -465,10 +474,6 @@ class EventActivity : SimpleActivity() {
                 setPadding(paddingLeft, paddingTop, paddingRight, resources.getDimension(R.dimen.tiny_margin).toInt())
             }
         }
-    }
-
-    private fun updateLocation() {
-        event_location.setText(mEvent.location)
     }
 
     private fun toggleAllDay(isChecked: Boolean) {
