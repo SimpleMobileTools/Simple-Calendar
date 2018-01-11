@@ -1,6 +1,17 @@
 Changelog
 ==========
 
+Version 3.1.0 *(2018-01-11)*
+----------------------------
+
+ * Made some CalDAV sync improvements, especially related to repeatable event exceptions
+ * Added a Map button to event location, to display the location in a third party map
+ * Handle INSERT and EDIT intent
+ * Made Dark theme the default
+ * Updated both event list and monthly widget, hopelly making them more reliable
+ * Added holidays in Australia
+ * Hopefully fixed the off-by-one error at importing/syncing all-day events/holidays
+
 Version 3.0.1 *(2017-12-06)*
 ----------------------------
 
