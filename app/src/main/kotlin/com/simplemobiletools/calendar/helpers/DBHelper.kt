@@ -765,12 +765,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         return getEvents(selection) as ArrayList<Event>
     }
 
-    // get deprecated Google Sync events
-    fun getGoogleSyncEvents(): ArrayList<Event> {
-        val selection = "$MAIN_TABLE_NAME.$COL_SOURCE = $SOURCE_GOOGLE_CALENDAR"
-        return getEvents(selection) as ArrayList<Event>
-    }
-
     fun getEventsAtReboot(): List<Event> {
         val selection = "$COL_REMINDER_MINUTES != -1 AND ($COL_START_TS > ? OR $COL_REPEAT_INTERVAL != 0) AND $COL_START_TS != 0"
         val selectionArgs = arrayOf(DateTime.now().seconds().toString())
