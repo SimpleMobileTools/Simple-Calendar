@@ -7,6 +7,7 @@ import android.support.v7.app.AlertDialog
 import android.view.View
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.config
+import com.simplemobiletools.calendar.extensions.getNowSeconds
 import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.commons.extensions.getDialogTheme
@@ -56,7 +57,7 @@ class RepeatLimitTypePickerDialog(val activity: Activity, var repeatLimit: Int, 
 
     private fun updateRepeatLimitText() {
         if (repeatLimit <= 0)
-            repeatLimit = (System.currentTimeMillis() / 1000).toInt()
+            repeatLimit = activity.getNowSeconds()
 
         val repeatLimitDateTime = Formatter.getDateTimeFromTS(repeatLimit)
         view.repeat_type_date.text = Formatter.getFullDate(activity, repeatLimitDateTime)
@@ -80,8 +81,7 @@ class RepeatLimitTypePickerDialog(val activity: Activity, var repeatLimit: Int, 
 
     @SuppressLint("NewApi")
     private fun showRepetitionLimitDialog() {
-        val now = (System.currentTimeMillis() / 1000).toInt()
-        val repeatLimitDateTime = Formatter.getDateTimeFromTS(if (repeatLimit != 0) repeatLimit else now)
+        val repeatLimitDateTime = Formatter.getDateTimeFromTS(if (repeatLimit != 0) repeatLimit else activity.getNowSeconds())
         val datepicker = DatePickerDialog(activity, activity.getDialogTheme(), repetitionLimitDateSetListener, repeatLimitDateTime.year,
                 repeatLimitDateTime.monthOfYear - 1, repeatLimitDateTime.dayOfMonth)
 

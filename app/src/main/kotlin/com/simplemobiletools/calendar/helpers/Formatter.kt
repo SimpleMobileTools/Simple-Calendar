@@ -3,6 +3,7 @@ package com.simplemobiletools.calendar.helpers
 import android.content.Context
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.config
+import com.simplemobiletools.calendar.extensions.getNowSeconds
 import com.simplemobiletools.calendar.extensions.seconds
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
@@ -57,7 +58,7 @@ object Formatter {
         return "$month $day $year"
     }
 
-    fun getTodayCode() = Formatter.getDayCodeFromTS((System.currentTimeMillis() / 1000).toInt())
+    fun getTodayCode(context: Context) = Formatter.getDayCodeFromTS(context.getNowSeconds())
 
     fun getHours(context: Context, dateTime: DateTime) = dateTime.toString(getHourPattern(context))
 

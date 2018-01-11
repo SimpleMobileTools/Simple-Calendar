@@ -7,6 +7,7 @@ import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.dialogs.DeleteEventDialog
 import com.simplemobiletools.calendar.extensions.config
+import com.simplemobiletools.calendar.extensions.getNowSeconds
 import com.simplemobiletools.calendar.extensions.shareEvents
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.interfaces.DeleteEventsListener
@@ -31,7 +32,7 @@ class EventListAdapter(activity: SimpleActivity, val listItems: ArrayList<ListIt
     private val allDayString = resources.getString(R.string.all_day)
     private val replaceDescriptionWithLocation = activity.config.replaceDescription
     private val redTextColor = resources.getColor(R.color.red_text)
-    private val now = (System.currentTimeMillis() / 1000).toInt()
+    private val now = activity.getNowSeconds()
     private val todayDate = Formatter.getDayTitle(activity, Formatter.getDayCodeFromTS(now))
 
     override fun getActionMenuId() = R.menu.cab_event_list

@@ -7,6 +7,7 @@ import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.adapters.FilterEventTypeAdapter
 import com.simplemobiletools.calendar.extensions.dbHelper
+import com.simplemobiletools.calendar.extensions.getNowSeconds
 import com.simplemobiletools.commons.extensions.*
 import kotlinx.android.synthetic.main.dialog_export_events.view.*
 import java.io.File
@@ -16,7 +17,7 @@ class ExportEventsDialog(val activity: SimpleActivity, val path: String, val cal
     init {
         val view = (activity.layoutInflater.inflate(R.layout.dialog_export_events, null) as ViewGroup).apply {
             export_events_folder.text = activity.humanizePath(path)
-            export_events_filename.setText("events_${System.currentTimeMillis() / 1000}")
+            export_events_filename.setText("events_${activity.getNowSeconds()}")
 
             activity.dbHelper.getEventTypes {
                 val eventTypes = HashSet<String>()

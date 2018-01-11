@@ -120,7 +120,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
         }
 
         if (mStoredTextColor != config.textColor || mStoredBackgroundColor != config.backgroundColor || mStoredPrimaryColor != config.primaryColor
-                || mStoredDayCode != Formatter.getTodayCode()) {
+                || mStoredDayCode != Formatter.getTodayCode(applicationContext)) {
             updateViewPager()
         }
 
@@ -198,7 +198,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
             mStoredBackgroundColor = backgroundColor
             mStoredUse24HourFormat = use24hourFormat
         }
-        mStoredDayCode = Formatter.getTodayCode()
+        mStoredDayCode = Formatter.getTodayCode(applicationContext)
     }
 
     private fun checkOpenIntents() {

@@ -39,6 +39,8 @@ val Context.config: Config get() = Config.newInstance(applicationContext)
 
 val Context.dbHelper: DBHelper get() = DBHelper.newInstance(applicationContext)
 
+fun Context.getNowSeconds() = (System.currentTimeMillis() / 1000).toInt()
+
 fun Context.updateWidgets() {
     val widgetsCnt = AppWidgetManager.getInstance(applicationContext).getAppWidgetIds(ComponentName(applicationContext, MyWidgetMonthlyProvider::class.java))
     if (widgetsCnt.isNotEmpty()) {
@@ -77,7 +79,7 @@ fun Context.scheduleNextEventReminder(event: Event?, dbHelper: DBHelper) {
         return
     }
 
-    val now = (System.currentTimeMillis() / 1000).toInt()
+    val now = getNowSeconds()
     val reminderSeconds = event.getReminders().reversed().map { it * 60 }
     dbHelper.getEvents(now, now + YEAR, event.id) {
         if (it.isNotEmpty()) {

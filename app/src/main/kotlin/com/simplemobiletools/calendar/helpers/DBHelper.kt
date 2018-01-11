@@ -732,7 +732,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
     fun getRunningEvents(): List<Event> {
         val events = ArrayList<Event>()
-        val ts = (System.currentTimeMillis() / 1000).toInt()
+        val ts = context.getNowSeconds()
 
         val selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_REPEAT_INTERVAL IS 0 AND $COL_START_TS != 0"
         val selectionArgs = arrayOf(ts.toString(), ts.toString())
@@ -773,7 +773,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     }
 
     fun getEventsToExport(includePast: Boolean): ArrayList<Event> {
-        val currTime = (System.currentTimeMillis() / 1000).toString()
+        val currTime = context.getNowSeconds().toString()
         var events = ArrayList<Event>()
 
         // non repeating events
