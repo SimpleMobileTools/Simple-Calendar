@@ -1,7 +1,5 @@
 package com.simplemobiletools.calendar.activities
 
-import android.accounts.Account
-import android.content.ContentResolver
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.database.ContentObserver
@@ -9,7 +7,6 @@ import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
-import android.provider.CalendarContract
 import android.provider.ContactsContract
 import android.support.v4.view.ViewPager
 import android.util.SparseIntArray
@@ -53,20 +50,22 @@ class MainActivity : SimpleActivity(), NavigationListener {
     private val PREFILLED_YEARS = 31
     private val PREFILLED_WEEKS = 61
 
+    private var showCalDAVRefreshToast = false
     private var mIsMonthSelected = false
-    private var mStoredUseEnglish = false
-    private var mStoredTextColor = 0
-    private var mStoredBackgroundColor = 0
-    private var mStoredPrimaryColor = 0
-    private var mStoredDayCode = ""
-    private var mStoredIsSundayFirst = false
-    private var mStoredUse24HourFormat = false
     private var mShouldFilterBeVisible = false
     private var mCalDAVSyncHandler = Handler()
 
     private var mDefaultWeeklyPage = 0
     private var mDefaultMonthlyPage = 0
     private var mDefaultYearlyPage = 0
+
+    private var mStoredTextColor = 0
+    private var mStoredBackgroundColor = 0
+    private var mStoredPrimaryColor = 0
+    private var mStoredDayCode = ""
+    private var mStoredIsSundayFirst = false
+    private var mStoredUse24HourFormat = false
+    private var mStoredUseEnglish = false
 
     companion object {
         var mWeekScrollY = 0
@@ -106,7 +105,10 @@ class MainActivity : SimpleActivity(), NavigationListener {
             config.caldavSync = false
         }
 
-        recheckCalDAVCalendars {}
+        if (config.caldavSync) {
+            refreshCalDAVCalendars(false)
+        }
+
         checkOpenIntents()
     }
 
@@ -166,7 +168,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
             R.id.change_view -> showViewDialog()
             R.id.go_to_today -> goToToday()
             R.id.filter -> showFilterDialog()
-            R.id.refresh_caldav_calendars -> refreshCalDAVCalendars()
+            R.id.refresh_caldav_calendars -> refreshCalDAVCalendars(true)
             R.id.add_holidays -> addHolidays()
             R.id.add_birthdays -> tryAddBirthdays()
             R.id.add_anniversaries -> tryAddAnniversaries()
@@ -244,10 +246,10 @@ class MainActivity : SimpleActivity(), NavigationListener {
         }
     }
 
-    private fun shouldGoToTodayBeVisible() = when {
-        config.storedView == WEEKLY_VIEW -> week_view_view_pager.currentItem != mDefaultWeeklyPage
-        config.storedView == MONTHLY_VIEW -> main_view_pager.currentItem != mDefaultMonthlyPage
-        config.storedView == YEARLY_VIEW -> main_view_pager.currentItem != mDefaultYearlyPage
+    private fun shouldGoToTodayBeVisible() = when (config.storedView) {
+        WEEKLY_VIEW -> week_view_view_pager.currentItem != mDefaultWeeklyPage
+        MONTHLY_VIEW -> main_view_pager.currentItem != mDefaultMonthlyPage
+        YEARLY_VIEW -> main_view_pager.currentItem != mDefaultYearlyPage
         else -> false
     }
 
@@ -257,24 +259,13 @@ class MainActivity : SimpleActivity(), NavigationListener {
         }
     }
 
-    private fun refreshCalDAVCalendars() {
-        toast(R.string.refreshing)
-        val uri = CalendarContract.Calendars.CONTENT_URI
-        contentResolver.registerContentObserver(uri, false, calDAVSyncObserver)
-
-        val accounts = HashSet<Account>()
-        val calendars = CalDAVHandler(applicationContext).getCalDAVCalendars(this, config.caldavSyncedCalendarIDs)
-        calendars.forEach {
-            accounts.add(Account(it.accountName, it.accountType))
+    private fun refreshCalDAVCalendars(showRefreshToast: Boolean) {
+        showCalDAVRefreshToast = showRefreshToast
+        if (showRefreshToast) {
+            toast(R.string.refreshing)
         }
 
-        Bundle().apply {
-            putBoolean(ContentResolver.SYNC_EXTRAS_MANUAL, true)
-            putBoolean(ContentResolver.SYNC_EXTRAS_EXPEDITED, true)
-            accounts.forEach {
-                ContentResolver.requestSync(it, uri.authority, this)
-            }
-        }
+        syncCalDAVCalendars(this, calDAVSyncObserver)
         scheduleCalDAVSync(true)
     }
 
@@ -286,7 +277,9 @@ class MainActivity : SimpleActivity(), NavigationListener {
                 mCalDAVSyncHandler.postDelayed({
                     recheckCalDAVCalendars {
                         refreshViewPager()
-                        toast(R.string.refreshing_complete)
+                        if (showCalDAVRefreshToast) {
+                            toast(R.string.refreshing_complete)
+                        }
                     }
                 }, CALDAV_SYNC_DELAY)
             }

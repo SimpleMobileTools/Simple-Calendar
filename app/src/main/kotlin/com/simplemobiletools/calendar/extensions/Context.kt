@@ -1,13 +1,18 @@
 package com.simplemobiletools.calendar.extensions
 
+import android.accounts.Account
 import android.annotation.SuppressLint
 import android.app.*
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
+import android.content.ContentResolver
 import android.content.Context
 import android.content.Intent
 import android.content.res.Resources
+import android.database.ContentObserver
 import android.net.Uri
+import android.os.Bundle
+import android.provider.CalendarContract
 import android.support.v4.app.NotificationCompat
 import android.view.Gravity
 import android.view.View
@@ -16,6 +21,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.EventActivity
+import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.models.DayMonthly
@@ -266,6 +272,28 @@ fun Context.scheduleCalDAVSync(activate: Boolean) {
     } else {
         alarm.cancel(pendingIntent)
     }
+}
+
+fun Context.syncCalDAVCalendars(activity: SimpleActivity?, calDAVSyncObserver: ContentObserver) {
+    Thread {
+        val uri = CalendarContract.Calendars.CONTENT_URI
+        contentResolver.unregisterContentObserver(calDAVSyncObserver)
+        contentResolver.registerContentObserver(uri, false, calDAVSyncObserver)
+
+        val accounts = HashSet<Account>()
+        val calendars = CalDAVHandler(applicationContext).getCalDAVCalendars(activity, config.caldavSyncedCalendarIDs)
+        calendars.forEach {
+            accounts.add(Account(it.accountName, it.accountType))
+        }
+
+        Bundle().apply {
+            putBoolean(ContentResolver.SYNC_EXTRAS_MANUAL, true)
+            putBoolean(ContentResolver.SYNC_EXTRAS_EXPEDITED, true)
+            accounts.forEach {
+                ContentResolver.requestSync(it, uri.authority, this)
+            }
+        }
+    }.start()
 }
 
 fun Context.addDayNumber(rawTextColor: Int, day: DayMonthly, linearLayout: LinearLayout, dayLabelHeight: Int, callback: (Int) -> Unit) {
