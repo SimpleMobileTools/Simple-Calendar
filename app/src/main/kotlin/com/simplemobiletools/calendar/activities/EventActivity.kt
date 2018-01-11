@@ -596,8 +596,14 @@ class EventActivity : SimpleActivity() {
                         }
                     } else {
                         dbHelper.addEventRepeatException(mEvent.id, mEventOccurrenceTS, true)
-                        mEvent.parentId = mEvent.id
-                        mEvent.id = 0
+                        mEvent.apply {
+                            parentId = id
+                            id = 0
+                            repeatRule = 0
+                            repeatInterval = 0
+                            repeatLimit = 0
+                        }
+
                         dbHelper.insert(mEvent, true) {
                             toast(R.string.event_updated)
                             finish()

@@ -337,11 +337,12 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
 
         insert(childEvent, false) {
+            val childEventId = it
             val exceptionValues = ContentValues().apply {
                 put(COL_PARENT_EVENT_ID, parentEventId)
                 put(COL_OCCURRENCE_TIMESTAMP, occurrenceTS)
                 put(COL_OCCURRENCE_DAYCODE, Formatter.getDayCodeFromTS(occurrenceTS))
-                put(COL_CHILD_EVENT_ID, it)
+                put(COL_CHILD_EVENT_ID, childEventId)
             }
             callback(exceptionValues)
 
@@ -349,7 +350,9 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                 if (addToCalDAV && context.config.caldavSync) {
                     val parentEvent = getEventWithId(parentEventId)
                     if (parentEvent != null) {
-                        CalDAVHandler(context).insertEventRepeatException(parentEvent, occurrenceTS)
+                        val newId = CalDAVHandler(context).insertEventRepeatException(parentEvent, occurrenceTS)
+                        val newImportId = "${parentEvent.source}-$newId"
+                        updateEventImportIdAndSource(childEventId, newImportId, parentEvent.source)
                     }
                 }
             }.start()

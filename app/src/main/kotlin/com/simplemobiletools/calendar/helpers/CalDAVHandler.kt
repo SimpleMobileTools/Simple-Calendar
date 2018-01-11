@@ -249,9 +249,15 @@ class CalDAVHandler(val context: Context) {
                     if (importIdsMap.containsKey(event.importId)) {
                         val existingEvent = importIdsMap[importId]
                         val originalEventId = existingEvent!!.id
-                        existingEvent.id = 0
-                        existingEvent.color = 0
-                        existingEvent.ignoreEventOccurrences = ArrayList()
+
+                        existingEvent.apply {
+                            this.id = 0
+                            color = 0
+                            ignoreEventOccurrences = ArrayList()
+                            lastUpdated = 0L
+                            offset = ""
+                        }
+
                         if (existingEvent.hashCode() != event.hashCode() && title.isNotEmpty()) {
                             event.id = originalEventId
                             context.dbHelper.update(event, false)
@@ -393,10 +399,11 @@ class CalDAVHandler(val context: Context) {
         }
     }
 
-    fun insertEventRepeatException(event: Event, occurrenceTS: Int) {
+    fun insertEventRepeatException(event: Event, occurrenceTS: Int): Long {
         val uri = CalendarContract.Events.CONTENT_URI
         val values = fillEventRepeatExceptionValues(event, occurrenceTS)
-        context.contentResolver.insert(uri, values)
+        val newUri = context.contentResolver.insert(uri, values)
+        return java.lang.Long.parseLong(newUri.lastPathSegment)
     }
 
     private fun fillEventRepeatExceptionValues(event: Event, occurrenceTS: Int): ContentValues {
