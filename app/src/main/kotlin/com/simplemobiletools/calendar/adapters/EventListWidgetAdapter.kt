@@ -31,7 +31,6 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
     private val textColor = context.config.widgetTextColor
     private val replaceDescription = context.config.replaceDescription
     private var mediumFontSize = context.config.getFontSize()
-    private var todayDate = ""
 
     override fun getViewAt(position: Int): RemoteViews? {
         val type = getItemViewType(position)
@@ -99,11 +98,7 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
 
     override fun getViewTypeCount() = 2
 
-    override fun onCreate() {
-        val now = (System.currentTimeMillis() / 1000).toInt()
-        val todayCode = Formatter.getDayCodeFromTS(now)
-        todayDate = Formatter.getDayTitle(context, todayCode)
-    }
+    override fun onCreate() {}
 
     override fun getItemId(position: Int) = position.toLong()
 
@@ -121,8 +116,7 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
                 val code = Formatter.getDayCodeFromTS(it.startTS)
                 if (code != prevCode) {
                     val day = Formatter.getDayTitle(context, code)
-                    if (day != todayDate)
-                        listItems.add(ListSection(day))
+                    listItems.add(ListSection(day))
                     prevCode = code
                 }
                 listItems.add(ListEvent(it.id, it.startTS, it.endTS, it.title, it.description, it.getIsAllDay(), it.color, it.location))
