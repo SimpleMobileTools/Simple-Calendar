@@ -136,24 +136,14 @@
     </plurals>
 
     <!-- Export / Import -->
-    <string name="importing">Oc\'h enporzhiañ...</string>
-    <string name="exporting">Oc\'h ezporzhiañ...</string>
     <string name="import_events">Enporzhiañ darvoudoù</string>
     <string name="export_events">Ezporzhiañ darvoudoù</string>
     <string name="import_events_from_ics">Enporzhiañ darvoudoù adalek ur restr .ics</string>
     <string name="export_events_to_ics">Ezporzhiañ darvoudoù betek ur restr .ics</string>
-    <string name="events_imported_successfully">Enporzhiet eo bet an darvoudoù gant berzh</string>
-    <string name="events_exported_successfully">Ezporzhiet eo bet an darvoudoù gant berzh</string>
-    <string name="importing_events_failed">C\'hwitadenn en ur enporzhiañ an darvoudoù</string>
-    <string name="exporting_events_failed">C\'hwitadenn en ur ezporzhiañ an darvoudoù</string>
-    <string name="importing_some_events_failed">C\'hwitadenn en ur enporzhiañ ul lodenn eus an darvoudoù</string>
-    <string name="exporting_some_events_failed">C\'hwitadenn en ur ezporzhiañ ul lodenn eus an darvoudoù</string>
     <string name="default_event_type">Doare darvoud dre ziouer</string>
-    <string name="no_events_for_exporting">N\'eus bet kavet darvoud ebet da enporzhiañ</string>
     <string name="export_past_events_too">Ezporzhiañ an darvoudoù tremenet ivez</string>
     <string name="include_event_types">Enkorfañ doareoù an darvoudoù ivez</string>
     <string name="filename_without_ics">Anv ar restr (hep .ics)</string>
-    <string name="no_title">Hep titl</string>
 
     <!-- Event details -->
     <string name="title">Titl</string>

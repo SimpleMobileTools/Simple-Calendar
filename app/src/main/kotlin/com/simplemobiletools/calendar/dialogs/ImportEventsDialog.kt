@@ -53,9 +53,9 @@ class ImportEventsDialog(val activity: SimpleActivity, val path: String, val cal
 
     private fun handleParseResult(result: IcsImporter.ImportResult) {
         activity.toast(when (result) {
-            IMPORT_OK -> R.string.events_imported_successfully
-            IMPORT_PARTIAL -> R.string.importing_some_events_failed
-            else -> R.string.importing_events_failed
+            IMPORT_OK -> R.string.importing_successful
+            IMPORT_PARTIAL -> R.string.importing_some_entries_failed
+            else -> R.string.importing_failed
         })
         callback(result != IMPORT_FAIL)
     }

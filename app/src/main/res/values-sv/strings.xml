@@ -136,24 +136,14 @@
     </plurals>
 
     <!-- Export / Import -->
-    <string name="importing">Importerar…</string>
-    <string name="exporting">Exporterar…</string>
     <string name="import_events">Importera händelser</string>
     <string name="export_events">Exportera händelser</string>
     <string name="import_events_from_ics">Importera händelser från en .ics-fil</string>
     <string name="export_events_to_ics">Exportera händelser till en .ics-fil</string>
-    <string name="events_imported_successfully">Händelser har importerats</string>
-    <string name="events_exported_successfully">Händelser har exporterats</string>
-    <string name="importing_events_failed">Händelser kunde inte importeras</string>
-    <string name="exporting_events_failed">Händelser kunde inte exporteras</string>
-    <string name="importing_some_events_failed">Vissa händelser kunde inte importeras</string>
-    <string name="exporting_some_events_failed">Vissa händelser kunde inte exporteras</string>
     <string name="default_event_type">Standardhändelsetyp</string>
-    <string name="no_events_for_exporting">Inga händelser har hittats för exportering</string>
     <string name="export_past_events_too">Exportera även tidigare händelser</string>
     <string name="include_event_types">Inkludera händelsetyper</string>
     <string name="filename_without_ics">Filnamn (utan .ics)</string>
-    <string name="no_title">Ingen titel</string>
 
     <!-- Event details -->
     <string name="title">Titel</string>

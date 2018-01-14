@@ -136,24 +136,14 @@
     </plurals>
 
     <!-- Export / Import -->
-    <string name="importing">Importando…</string>
-    <string name="exporting">Exportando…</string>
     <string name="import_events">Importar eventos</string>
     <string name="export_events">Exportar eventos</string>
     <string name="import_events_from_ics">Importar eventos desde un archivo .ics</string>
     <string name="export_events_to_ics">Exportar eventos desde un archivo .ics</string>
-    <string name="events_imported_successfully">Eventos se han importado con éxito</string>
-    <string name="events_exported_successfully">Eventos se han exportado con éxito</string>
-    <string name="importing_events_failed">Error al importar eventos</string>
-    <string name="exporting_events_failed">Error al exportar eventos</string>
-    <string name="importing_some_events_failed">Error al importar algunos eventos</string>
-    <string name="exporting_some_events_failed">Error al exportar algunos eventos</string>
     <string name="default_event_type">Tipo de evento predeterminado</string>
-    <string name="no_events_for_exporting">No se han encontrado eventos para exportar</string>
     <string name="export_past_events_too">Exportar también eventos pasados</string>
     <string name="include_event_types">Incluir tipos de evento</string>
     <string name="filename_without_ics">Nombre del archivo (sin .ics)</string>
-    <string name="no_title">Sin título</string>
 
     <!-- Event details -->
     <string name="title">Título</string>

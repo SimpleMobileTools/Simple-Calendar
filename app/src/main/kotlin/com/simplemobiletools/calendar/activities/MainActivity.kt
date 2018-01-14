@@ -525,14 +525,14 @@ class MainActivity : SimpleActivity(), NavigationListener {
                 Thread {
                     val events = dbHelper.getEventsToExport(exportPastEvents).filter { eventTypes.contains(it.eventType.toString()) }
                     if (events.isEmpty()) {
-                        toast(R.string.no_events_for_exporting)
+                        toast(R.string.no_entries_for_exporting)
                     } else {
                         toast(R.string.exporting)
                         IcsExporter().exportEvents(this, file, events as ArrayList<Event>) {
                             toast(when (it) {
-                                IcsExporter.ExportResult.EXPORT_OK -> R.string.events_exported_successfully
-                                IcsExporter.ExportResult.EXPORT_PARTIAL -> R.string.exporting_some_events_failed
-                                else -> R.string.exporting_events_failed
+                                IcsExporter.ExportResult.EXPORT_OK -> R.string.exporting_successful
+                                IcsExporter.ExportResult.EXPORT_PARTIAL -> R.string.exporting_some_entries_failed
+                                else -> R.string.exporting_failed
                             })
                         }
                     }

@@ -136,24 +136,14 @@
     </plurals>
 
     <!-- Export / Import -->
-    <string name="importing">Importing…</string>
-    <string name="exporting">Exporting…</string>
     <string name="import_events">Olayları içe aktar</string>
     <string name="export_events">Olayları dışa aktar</string>
     <string name="import_events_from_ics">Bir .ics dosyasından olayları içe aktar</string>
     <string name="export_events_to_ics">Etkinlikleri bir .ics dosyasına aktarın</string>
-    <string name="events_imported_successfully">Olaylar başarıyla içe aktarıldı</string>
-    <string name="events_exported_successfully">Olaylar başarıyla dışa aktarıldı</string>
-    <string name="importing_events_failed">Etkinlikler içe aktarma başarısız</string>
-    <string name="exporting_events_failed">Olayları dışa aktarma başarısız</string>
-    <string name="importing_some_events_failed">Bazı etkinlikleri içe aktarma başarısız</string>
-    <string name="exporting_some_events_failed">Bazı etkinlikleri dışa aktarma başarısız</string>
     <string name="default_event_type">Varsayılan olay türü</string>
-    <string name="no_events_for_exporting">Dışa aktarmak için etkinlik bulunamadı</string>
     <string name="export_past_events_too">Geçmişteki etkinlikleri de dışa aktar</string>
     <string name="include_event_types">Include event types</string>
     <string name="filename_without_ics">Filename (without .ics)</string>
-    <string name="no_title">No title</string>
 
     <!-- Event details -->
     <string name="title">Başlık</string>

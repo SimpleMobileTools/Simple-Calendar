@@ -143,24 +143,14 @@
     </plurals>
 
     <!-- Export / Import -->
-    <string name="importing">Importování…</string>
-    <string name="exporting">Exportování…</string>
     <string name="import_events">Import událostí</string>
     <string name="export_events">Export událostí</string>
     <string name="import_events_from_ics">Importovat kalendář ze souboru .ics</string>
     <string name="export_events_to_ics">Exportovat kalendář do souboru .ics</string>
-    <string name="events_imported_successfully">Kalendář byl importován úspěšně</string>
-    <string name="events_exported_successfully">Kalendář byl exportován úspěšně</string>
-    <string name="importing_events_failed">Import kalendáře se nezdařil</string>
-    <string name="exporting_events_failed">Export kalendáře se nezdařil</string>
-    <string name="importing_some_events_failed">Import některých událostí se nezdařil</string>
-    <string name="exporting_some_events_failed">Export některých událostí se nezdařil</string>
     <string name="default_event_type">Defaultní typ události</string>
-    <string name="no_events_for_exporting">Nebyly nalezeny žádné události pro export</string>
     <string name="export_past_events_too">Export i minulých událostí</string>
     <string name="include_event_types">Zahrnout typy událostí</string>
     <string name="filename_without_ics">Název souboru (bez .ics)</string>
-    <string name="no_title">Bez názvu</string>
 
     <!-- Event details -->
     <string name="title">Název</string>

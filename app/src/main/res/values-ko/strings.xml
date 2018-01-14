@@ -136,24 +136,14 @@
     </plurals>
 
     <!-- Export / Import -->
-    <string name="importing">가져 오는 중…</string>
-    <string name="exporting">내보내는 중…</string>
     <string name="import_events">이벤트들 가져 오기</string>
     <string name="export_events">이벤트들 내보내기</string>
     <string name="import_events_from_ics">.ics 파일에서 이벤트들 가져오기</string>
     <string name="export_events_to_ics">.ics 파일로 이벤트들 내보내기</string>
-    <string name="events_imported_successfully">이벤트들을 성공적으로 가져왔습니다</string>
-    <string name="events_exported_successfully">이벤트들을 성공적으로 내보냈습니다</string>
-    <string name="importing_events_failed">이벤트들을 가져오는데 실패</string>
-    <string name="exporting_events_failed">이벤트들을 내보내는데 실패</string>
-    <string name="importing_some_events_failed">일부 이벤트들을 가져오는데 실패</string>
-    <string name="exporting_some_events_failed">일부 이벤트들을 내보내는데 실패</string>
     <string name="default_event_type">기본 이벤트 유형</string>
-    <string name="no_events_for_exporting">내보낼 이벤트가 없습니다</string>
     <string name="export_past_events_too">과거 이벤트들 내보내기</string>
     <string name="include_event_types">이벤트 유형 포함</string>
     <string name="filename_without_ics">파일이름 (.ics 없이)</string>
-    <string name="no_title">제목 없음</string>
 
     <!-- Event details -->
     <string name="title">제목</string>

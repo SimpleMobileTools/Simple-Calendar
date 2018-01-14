@@ -136,24 +136,14 @@
     </plurals>
 
     <!-- Export / Import -->
-    <string name="importing">Importeren…</string>
-    <string name="exporting">Exporteren…</string>
     <string name="import_events">Afspraken importeren</string>
     <string name="export_events">Afspraken exporteren</string>
     <string name="import_events_from_ics">Afspraken uit een .ics-bestand importeren</string>
     <string name="export_events_to_ics">Afspraken naar een .ics-bestand exporteren</string>
-    <string name="events_imported_successfully">Afspraken zijn geïmporteerd</string>
-    <string name="events_exported_successfully">Afspraken zijn geëxporteerd</string>
-    <string name="importing_events_failed">Fout bij importeren van afspraken</string>
-    <string name="exporting_events_failed">Fout bij exporteren van afspraken</string>
-    <string name="importing_some_events_failed">Sommige afspraken konden niet worden geïmporteerd</string>
-    <string name="exporting_some_events_failed">Sommige afspraken konden niet worden geëxporteerd</string>
     <string name="default_event_type">Standaard afspraaktype</string>
-    <string name="no_events_for_exporting">Geen te exporteren afspraken gevonden</string>
     <string name="export_past_events_too">Afspraken uit verleden ook exporteren</string>
     <string name="include_event_types">Afspraaktypes weergeven</string>
     <string name="filename_without_ics">Bestandsnaam (zonder .ics)</string>
-    <string name="no_title">Geen titel</string>
 
     <!-- Event details -->
     <string name="title">Titel</string>
