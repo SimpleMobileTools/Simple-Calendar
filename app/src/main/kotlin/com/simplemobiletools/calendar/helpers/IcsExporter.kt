@@ -1,11 +1,11 @@
 package com.simplemobiletools.calendar.helpers
 
 import com.simplemobiletools.calendar.extensions.dbHelper
-import com.simplemobiletools.calendar.extensions.writeLn
 import com.simplemobiletools.calendar.helpers.IcsExporter.ExportResult.*
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.commons.activities.BaseSimpleActivity
 import com.simplemobiletools.commons.extensions.getFileOutputStream
+import com.simplemobiletools.commons.extensions.writeLn
 import java.io.BufferedWriter
 import java.io.File
 
