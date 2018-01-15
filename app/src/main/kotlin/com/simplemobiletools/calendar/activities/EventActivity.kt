@@ -101,6 +101,25 @@ class EventActivity : SimpleActivity() {
         wasActivityInitialized = true
     }
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_event, menu)
+        if (wasActivityInitialized) {
+            menu.findItem(R.id.delete).isVisible = mEvent.id != 0
+            menu.findItem(R.id.share).isVisible = mEvent.id != 0
+        }
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.save -> saveEvent()
+            R.id.delete -> deleteEvent()
+            R.id.share -> shareEvent()
+            else -> return super.onOptionsItemSelected(item)
+        }
+        return true
+    }
+
     private fun setupEditEvent() {
         val realStart = if (mEventOccurrenceTS == 0) mEvent.startTS else mEventOccurrenceTS
         val duration = mEvent.endTS - mEvent.startTS
@@ -480,25 +499,6 @@ class EventActivity : SimpleActivity() {
         hideKeyboard()
         event_start_time.beGoneIf(isChecked)
         event_end_time.beGoneIf(isChecked)
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_event, menu)
-        if (wasActivityInitialized) {
-            menu.findItem(R.id.delete).isVisible = mEvent.id != 0
-            menu.findItem(R.id.share).isVisible = mEvent.id != 0
-        }
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.save -> saveEvent()
-            R.id.delete -> deleteEvent()
-            R.id.share -> shareEvent()
-            else -> return super.onOptionsItemSelected(item)
-        }
-        return true
     }
 
     private fun shareEvent() {

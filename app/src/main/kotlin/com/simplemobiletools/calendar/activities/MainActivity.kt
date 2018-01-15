@@ -477,13 +477,13 @@ class MainActivity : SimpleActivity(), NavigationListener {
 
     private fun importEvents() {
         FilePickerDialog(this) {
-            importEventsDialog(it)
+            showImportEventsDialog(it)
         }
     }
 
     private fun tryImportEventsFromFile(uri: Uri) {
         when {
-            uri.scheme == "file" -> importEventsDialog(uri.path)
+            uri.scheme == "file" -> showImportEventsDialog(uri.path)
             uri.scheme == "content" -> {
                 val tempFile = getTempFile()
                 if (tempFile == null) {
@@ -494,13 +494,13 @@ class MainActivity : SimpleActivity(), NavigationListener {
                 val inputStream = contentResolver.openInputStream(uri)
                 val out = FileOutputStream(tempFile)
                 inputStream.copyTo(out)
-                importEventsDialog(tempFile.absolutePath)
+                showImportEventsDialog(tempFile.absolutePath)
             }
             else -> toast(R.string.invalid_file_format)
         }
     }
 
-    private fun importEventsDialog(path: String) {
+    private fun showImportEventsDialog(path: String) {
         ImportEventsDialog(this, path) {
             if (it) {
                 runOnUiThread {
