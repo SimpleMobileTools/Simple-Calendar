@@ -520,8 +520,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
 
     private fun exportEvents() {
         FilePickerDialog(this, pickFile = false, showFAB = true) {
-            val path = it
-            ExportEventsDialog(this, path) { exportPastEvents, file, eventTypes ->
+            ExportEventsDialog(this, it) { exportPastEvents, file, eventTypes ->
                 Thread {
                     val events = dbHelper.getEventsToExport(exportPastEvents).filter { eventTypes.contains(it.eventType.toString()) }
                     if (events.isEmpty()) {

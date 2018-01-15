@@ -82,7 +82,7 @@
             android:layout_below="@+id/event_description"
             android:layout_marginBottom="@dimen/normal_margin"
             android:layout_marginTop="@dimen/activity_margin"
-            android:background="@color/darker_divider"
+            android:background="@color/divider_grey"
             android:importantForAccessibility="no"/>
 
         <ImageView
@@ -178,7 +178,7 @@
             android:layout_below="@+id/event_end_date"
             android:layout_marginBottom="@dimen/medium_margin"
             android:layout_marginTop="@dimen/medium_margin"
-            android:background="@color/darker_divider"
+            android:background="@color/divider_grey"
             android:importantForAccessibility="no"/>
 
         <ImageView
@@ -245,7 +245,7 @@
             android:layout_below="@+id/event_reminder_3"
             android:layout_marginBottom="@dimen/medium_margin"
             android:layout_marginTop="@dimen/medium_margin"
-            android:background="@color/darker_divider"
+            android:background="@color/divider_grey"
             android:importantForAccessibility="no"/>
 
         <ImageView
@@ -352,7 +352,7 @@
             android:layout_height="1px"
             android:layout_below="@+id/event_repetition_limit_holder"
             android:layout_marginTop="@dimen/medium_margin"
-            android:background="@color/darker_divider"
+            android:background="@color/divider_grey"
             android:importantForAccessibility="no"/>
 
         <ImageView
@@ -414,7 +414,7 @@
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:layout_below="@+id/event_caldav_calendar_holder"
-            android:background="@color/darker_divider"
+            android:background="@color/divider_grey"
             android:importantForAccessibility="no"
             android:visibility="gone"/>
 
@@ -472,7 +472,7 @@
             android:layout_height="1px"
             android:layout_below="@+id/event_type_holder"
             android:layout_marginTop="@dimen/medium_margin"
-            android:background="@color/darker_divider"
+            android:background="@color/divider_grey"
             android:importantForAccessibility="no"/>
     </RelativeLayout>
 </ScrollView>

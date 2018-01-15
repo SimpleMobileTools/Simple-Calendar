@@ -258,7 +258,7 @@
             android:id="@+id/caldav_divider"
             android:layout_width="match_parent"
             android:layout_height="1px"
-            android:background="@color/divider_strong"
+            android:background="@color/divider_grey"
             android:importantForAccessibility="no"/>
 
         <com.simplemobiletools.commons.views.MyTextView
@@ -271,7 +271,7 @@
             android:alpha="0.6"
             android:text="@string/caldav"
             android:textAllCaps="true"
-            android:textColor="@color/divider_strong"
+            android:textColor="@color/divider_grey"
             android:textSize="@dimen/small_text_size"/>
 
         <RelativeLayout
@@ -320,7 +320,7 @@
             android:id="@+id/weekly_view_divider"
             android:layout_width="match_parent"
             android:layout_height="1px"
-            android:background="@color/divider_strong"
+            android:background="@color/divider_grey"
             android:importantForAccessibility="no"/>
 
         <com.simplemobiletools.commons.views.MyTextView
@@ -333,7 +333,7 @@
             android:alpha="0.6"
             android:text="@string/weekly_view"
             android:textAllCaps="true"
-            android:textColor="@color/divider_strong"
+            android:textColor="@color/divider_grey"
             android:textSize="@dimen/small_text_size"/>
 
         <RelativeLayout
@@ -409,7 +409,7 @@
             android:id="@+id/monthly_view_divider"
             android:layout_width="match_parent"
             android:layout_height="1px"
-            android:background="@color/divider_strong"
+            android:background="@color/divider_grey"
             android:importantForAccessibility="no"/>
 
         <com.simplemobiletools.commons.views.MyTextView
@@ -422,7 +422,7 @@
             android:alpha="0.6"
             android:text="@string/monthly_view"
             android:textAllCaps="true"
-            android:textColor="@color/divider_strong"
+            android:textColor="@color/divider_grey"
             android:textSize="@dimen/small_text_size"/>
 
         <RelativeLayout
@@ -449,7 +449,7 @@
             android:id="@+id/events_list_view_divider"
             android:layout_width="match_parent"
             android:layout_height="1px"
-            android:background="@color/divider_strong"
+            android:background="@color/divider_grey"
             android:importantForAccessibility="no"/>
 
         <com.simplemobiletools.commons.views.MyTextView
@@ -462,7 +462,7 @@
             android:alpha="0.6"
             android:text="@string/event_lists"
             android:textAllCaps="true"
-            android:textColor="@color/divider_strong"
+            android:textColor="@color/divider_grey"
             android:textSize="@dimen/small_text_size"/>
 
         <RelativeLayout
@@ -503,7 +503,7 @@
             android:id="@+id/widgets_divider"
             android:layout_width="match_parent"
             android:layout_height="1px"
-            android:background="@color/divider_strong"
+            android:background="@color/divider_grey"
             android:importantForAccessibility="no"/>
 
         <com.simplemobiletools.commons.views.MyTextView
@@ -516,7 +516,7 @@
             android:alpha="0.6"
             android:text="@string/widgets"
             android:textAllCaps="true"
-            android:textColor="@color/divider_strong"
+            android:textColor="@color/divider_grey"
             android:textSize="@dimen/small_text_size"/>
 
         <RelativeLayout

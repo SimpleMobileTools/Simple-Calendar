@@ -11,6 +11,6 @@
     android:layout_marginTop="@dimen/activity_margin"
     android:alpha="0.6"
     android:textAllCaps="true"
-    android:textColor="@color/divider_strong"
+    android:textColor="@color/divider_grey"
     android:textSize="@dimen/small_text_size"
     tools:text="Account"/>
