@@ -11,14 +11,18 @@ Contains no ads or unnecessary permissions. It is fully open-source, provides cu
 
 The Storage permission is needed only for exporting or importing events from .ics files.
 
+The Contacts permission is used only at importing contact birthdays and anniversaries.
+
 This app is just one piece of a bigger series of apps. You can find the rest of them at http://www.simplemobiletools.com
 
 <a href='https://play.google.com/store/apps/details?id=com.simplemobiletools.calendar'><img src='http://simplemobiletools.github.io/assets/public/google-play.png' alt='Get it on Google Play' height='45' /></a>
 <a href='https://f-droid.org/app/com.simplemobiletools.calendar'><img src='http://simplemobiletools.github.io/assets/public/f-droid.png' alt='Get it on F-Droid' height='45' /></a>
 
-<img alt="App image" src="screenshots/app_2.png" width="250" />
-<img alt="App image" src="screenshots/app_4.png" width="250" />
-<img alt="App image" src="screenshots/app.png" width="250" />
+<div style="display:flex;">
+<img style="margin-left:20px;" alt="App image" src="screenshots/app.png" width="30%">
+<img style="margin-left:20px;" alt="App image" src="screenshots/app_5.png" width="30%">
+<img style="margin-left:20px;" alt="App image" src="screenshots/app_6.png" width="30%">
+</div>
 
 License
 -------
