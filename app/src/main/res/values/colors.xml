@@ -5,8 +5,4 @@
     <color name="default_birthdays_color">#FF303DF6</color>
     <color name="default_holidays_color">#FF64DD17</color>
     <color name="default_anniversaries_color">#FFF63030</color>
-
-    <!-- Default colors -->
-    <color name="default_text_color">@color/theme_dark_text_color</color>
-    <color name="default_background_color">@color/theme_dark_background_color</color>
 </resources>

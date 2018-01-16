@@ -22,7 +22,7 @@ This app is just one piece of a bigger series of apps. You can find the rest of 
 
 License
 -------
-    Copyright 2017 SimpleMobileTools
+    Copyright 2016-present SimpleMobileTools
     
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
