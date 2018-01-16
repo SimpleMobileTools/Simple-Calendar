@@ -23,6 +23,7 @@ import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.views.MyScrollView
 import com.simplemobiletools.commons.extensions.applyColorFilter
 import com.simplemobiletools.commons.extensions.beGone
+import com.simplemobiletools.commons.extensions.getAdjustedPrimaryColor
 import com.simplemobiletools.commons.extensions.getContrastColor
 import kotlinx.android.synthetic.main.fragment_week.*
 import kotlinx.android.synthetic.main.fragment_week.view.*
@@ -62,7 +63,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         mRowHeight = (context!!.resources.getDimension(R.dimen.weekly_view_row_height)).toInt()
         minScrollY = mRowHeight * context!!.config.startWeeklyAt
         mWeekTimestamp = arguments!!.getInt(WEEK_START_TIMESTAMP)
-        primaryColor = context!!.config.primaryColor
+        primaryColor = context!!.getAdjustedPrimaryColor()
         mRes = resources
         allDayRows.add(HashSet())
 
@@ -189,12 +190,13 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
                     val rowHeight = resources.getDimension(R.dimen.weekly_view_row_height)
                     val hour = (event.y / rowHeight).toInt()
-                    selectedGrid = (inflater.inflate(R.layout.week_grid_item, null, false) as View).apply {
+                    selectedGrid = (inflater.inflate(R.layout.week_grid_item, null, false) as ImageView).apply {
                         view.addView(this)
                         background = ColorDrawable(primaryColor)
                         layoutParams.width = view.width
                         layoutParams.height = rowHeight.toInt()
                         y = hour * rowHeight
+                        applyColorFilter(primaryColor.getContrastColor())
 
                         setOnClickListener {
                             val timestamp = mWeekTimestamp + index * DAY_SECONDS + hour * 60 * 60

@@ -30,7 +30,6 @@ import org.joda.time.DateTime
 
 class MonthFragment : Fragment(), MonthlyCalendar {
     private var mTextColor = 0
-    private var mPrimaryColor = 0
     private var mSundayFirst = false
     private var mDayCode = ""
     private var mPackageName = ""
@@ -99,7 +98,6 @@ class MonthFragment : Fragment(), MonthlyCalendar {
     private fun setupButtons() {
         val baseColor = mConfig.textColor
         mTextColor = baseColor
-        mPrimaryColor = mConfig.primaryColor
 
         mHolder.top_left_arrow.apply {
             applyColorFilter(mTextColor)

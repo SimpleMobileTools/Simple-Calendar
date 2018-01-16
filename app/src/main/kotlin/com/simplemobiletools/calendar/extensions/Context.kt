@@ -311,8 +311,8 @@ fun Context.addDayNumber(rawTextColor: Int, day: DayMonthly, linearLayout: Linea
         linearLayout.addView(this)
 
         if (day.isToday) {
-            val primaryColor = config.primaryColor
-            setTextColor(config.primaryColor.getContrastColor())
+            val primaryColor = getAdjustedPrimaryColor()
+            setTextColor(primaryColor.getContrastColor())
             if (dayLabelHeight == 0) {
                 onGlobalLayout {
                     val height = this@apply.height
