@@ -281,7 +281,7 @@
 
         A permissão de armazenamento é necessária apenas para importar eventos dos arquivos .ics.
 
-        Contacts permission is used only at importing contact birthdays.
+        The Contacts permission is used only at importing contact birthdays and anniversaries.
 
         Este aplicativo é apenas parte de um conjunto mais vasto de aplicações. Saiba mais em http://www.simplemobiletools.com
     </string>

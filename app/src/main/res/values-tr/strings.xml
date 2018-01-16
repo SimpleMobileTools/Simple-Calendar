@@ -281,7 +281,7 @@
 
         Depolama izni yalnızca .ics dosyalarından olayları içe aktarmak için gereklidir.
 
-        Contacts permission is used only at importing contact birthdays.
+        The Contacts permission is used only at importing contact birthdays and anniversaries.
 
         Bu uygulama, daha büyük bir uygulama serisinden sadece bir parça. Geri kalanını şu adresten bulabilirsiniz: http://www.simplemobiletools.com
     </string>

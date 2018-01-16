@@ -282,7 +282,7 @@
 
         The Storage permission is needed only for exporting or importing events from .ics files.
 
-        Contacts permission is used only at importing contact birthdays.
+        The Contacts permission is used only at importing contact birthdays and anniversaries.
 
         This app is just one piece of a bigger series of apps. You can find the rest of them at http://www.simplemobiletools.com
     </string>
