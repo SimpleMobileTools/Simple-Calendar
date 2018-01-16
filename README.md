@@ -19,9 +19,9 @@ This app is just one piece of a bigger series of apps. You can find the rest of 
 <a href='https://f-droid.org/app/com.simplemobiletools.calendar'><img src='http://simplemobiletools.github.io/assets/public/f-droid.png' alt='Get it on F-Droid' height='45' /></a>
 
 <div style="display:flex;">
-<img style="margin-left:20px;" alt="App image" src="screenshots/app.png" width="30%">
-<img style="margin-left:20px;" alt="App image" src="screenshots/app_5.png" width="30%">
-<img style="margin-left:20px;" alt="App image" src="screenshots/app_6.png" width="30%">
+<img alt="App image" src="screenshots/app.png" width="30%">
+<img alt="App image" src="screenshots/app_5.png" width="30%">
+<img alt="App image" src="screenshots/app_6.png" width="30%">
 </div>
 
 License
