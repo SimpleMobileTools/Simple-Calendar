@@ -58,6 +58,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
     private var mIsMonthSelected = false
     private var mShouldFilterBeVisible = false
     private var mIsSearchOpen = false
+    private var mLatestSearchQuery = ""
     private var mCalDAVSyncHandler = Handler()
     private var mSearchMenuItem: MenuItem? = null
 
@@ -220,8 +221,8 @@ class MainActivity : SimpleActivity(), NavigationListener {
                 override fun onQueryTextSubmit(query: String) = false
 
                 override fun onQueryTextChange(newText: String): Boolean {
-                    if (mIsSearchOpen) {
-
+                    if (mIsSearchOpen && newText.length >= 3) {
+                        searchQueryChanged(newText)
                     }
                     return true
                 }
@@ -767,6 +768,15 @@ class MainActivity : SimpleActivity(), NavigationListener {
         main_weekly_scrollview.beGone()
         calendar_event_list_holder.beVisible()
         supportFragmentManager.beginTransaction().replace(R.id.calendar_event_list_holder, EventListFragment(), "").commit()
+    }
+
+    private fun searchQueryChanged(text: String) {
+        mLatestSearchQuery = text
+        dbHelper.getEventsWithSearchQuery(text) { searchedText, events ->
+            if (searchedText == mLatestSearchQuery) {
+
+            }
+        }
     }
 
     override fun goLeft() {
