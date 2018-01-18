@@ -100,8 +100,9 @@ class IcsImporter(val activity: SimpleActivity) {
                         curLastModified = getTimestamp(line.substring(LAST_MODIFIED.length)) * 1000L
                     } else if (line.startsWith(EXDATE)) {
                         var value = line.substring(EXDATE.length)
-                        if (value.endsWith('}'))
+                        if (value.endsWith('}')) {
                             value = value.substring(0, value.length - 1)
+                        }
 
                         curRepeatExceptions.add(getTimestamp(value))
                     } else if (line.startsWith(LOCATION)) {
@@ -164,8 +165,9 @@ class IcsImporter(val activity: SimpleActivity) {
         return try {
             if (fullString.startsWith(';')) {
                 val value = fullString.substring(fullString.lastIndexOf(':') + 1)
-                if (!value.contains("T"))
+                if (!value.contains("T")) {
                     curFlags = curFlags or FLAG_ALL_DAY
+                }
 
                 Parser().parseDateTimeValue(value)
             } else {

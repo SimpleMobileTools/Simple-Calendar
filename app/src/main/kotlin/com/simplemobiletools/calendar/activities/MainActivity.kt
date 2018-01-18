@@ -1,5 +1,7 @@
 package com.simplemobiletools.calendar.activities
 
+import android.app.SearchManager
+import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.database.ContentObserver
@@ -8,7 +10,9 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.provider.ContactsContract
+import android.support.v4.view.MenuItemCompat
 import android.support.v4.view.ViewPager
+import android.support.v7.widget.SearchView
 import android.util.SparseIntArray
 import android.view.Menu
 import android.view.MenuItem
@@ -53,7 +57,9 @@ class MainActivity : SimpleActivity(), NavigationListener {
     private var showCalDAVRefreshToast = false
     private var mIsMonthSelected = false
     private var mShouldFilterBeVisible = false
+    private var mIsSearchOpen = false
     private var mCalDAVSyncHandler = Handler()
+    private var mSearchMenuItem: MenuItem? = null
 
     private var mDefaultWeeklyPage = 0
     private var mDefaultMonthlyPage = 0
@@ -151,6 +157,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
         super.onStop()
         mCalDAVSyncHandler.removeCallbacksAndMessages(null)
         contentResolver.unregisterContentObserver(calDAVSyncObserver)
+        closeSearch()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -160,6 +167,8 @@ class MainActivity : SimpleActivity(), NavigationListener {
             findItem(R.id.go_to_today).isVisible = shouldGoToTodayBeVisible()
             findItem(R.id.refresh_caldav_calendars).isVisible = config.caldavSync
         }
+
+        setupSearch(menu)
         return true
     }
 
@@ -201,6 +210,43 @@ class MainActivity : SimpleActivity(), NavigationListener {
         mStoredDayCode = Formatter.getTodayCode(applicationContext)
     }
 
+    private fun setupSearch(menu: Menu) {
+        val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        mSearchMenuItem = menu.findItem(R.id.search)
+        (mSearchMenuItem!!.actionView as SearchView).apply {
+            setSearchableInfo(searchManager.getSearchableInfo(componentName))
+            isSubmitButtonEnabled = false
+            setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String) = false
+
+                override fun onQueryTextChange(newText: String): Boolean {
+                    if (mIsSearchOpen) {
+
+                    }
+                    return true
+                }
+            })
+        }
+
+        MenuItemCompat.setOnActionExpandListener(mSearchMenuItem, object : MenuItemCompat.OnActionExpandListener {
+            override fun onMenuItemActionExpand(item: MenuItem?): Boolean {
+                mIsSearchOpen = true
+                return true
+            }
+
+            override fun onMenuItemActionCollapse(item: MenuItem?): Boolean {
+                mIsSearchOpen = false
+                return true
+            }
+        })
+    }
+
+    private fun closeSearch() {
+        if (mSearchMenuItem != null) {
+            MenuItemCompat.collapseActionView(mSearchMenuItem)
+        }
+    }
+
     private fun checkOpenIntents() {
         val dayCodeToOpen = intent.getStringExtra(DAY_CODE) ?: ""
         if (dayCodeToOpen.isNotEmpty()) {
@@ -227,6 +273,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
                 RadioItem(EVENTS_LIST_VIEW, res.getString(R.string.simple_event_list)))
 
         RadioGroupDialog(this, items, config.storedView) {
+            closeSearch()
             updateView(it as Int)
             invalidateOptionsMenu()
         }
