@@ -3,6 +3,7 @@
     <string name="app_name">Simple Calendar</string>
     <string name="app_launcher_name">Calendar</string>
     <string name="change_view">Změnit zobrazení</string>
+    <string name="daily_view">Daily view</string>
     <string name="weekly_view">Týdenní kalendář</string>
     <string name="monthly_view">Měsíční kalendář</string>
     <string name="yearly_view">Roční kalendář</string>

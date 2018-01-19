@@ -3,6 +3,7 @@
     <string name="app_name">לוח שנה פשוט</string>
     <string name="app_launcher_name">לוח שנה</string>
     <string name="change_view">שינוי תצפית</string>
+    <string name="daily_view">Daily view</string>
     <string name="weekly_view">תצפית שבועית</string>
     <string name="monthly_view">תצפית חודשית</string>
     <string name="yearly_view">תצפית שנתית</string>

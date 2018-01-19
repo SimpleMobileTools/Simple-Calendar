@@ -3,6 +3,7 @@
     <string name="app_name">Simple Calendar</string>
     <string name="app_launcher_name">Календарь</string>
     <string name="change_view">Отображение</string>
+    <string name="daily_view">Daily view</string>
     <string name="weekly_view">На неделю</string>
     <string name="monthly_view">На месяц</string>
     <string name="yearly_view">На год</string>

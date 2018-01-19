@@ -3,6 +3,7 @@
     <string name="app_name">Simple Calendar</string>
     <string name="app_launcher_name">Calendario</string>
     <string name="change_view">Cambia vista</string>
+    <string name="daily_view">Daily view</string>
     <string name="weekly_view">Vista settimanale</string>
     <string name="monthly_view">Vista Mensile</string>
     <string name="yearly_view">Vista annuale</string>

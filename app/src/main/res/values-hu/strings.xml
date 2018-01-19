@@ -3,7 +3,8 @@
     <string name="app_name">Egyszerű naptár</string>
     <string name="app_launcher_name">Naptár</string>
     <string name="change_view">Nézet megváltoztatása</string>
-    <string name="weekly_view">Weekly view</string>
+    <string name="daily_view">Napi nézet</string>
+    <string name="weekly_view">Heti nézet</string>
     <string name="monthly_view">Havi nézet</string>
     <string name="yearly_view">Éves nézet</string>
     <string name="simple_event_list">Egyszerű bejegyzéslista</string>

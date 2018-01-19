@@ -3,6 +3,7 @@
     <string name="app_name">Simpel kalender</string>
     <string name="app_launcher_name">Kalender</string>
     <string name="change_view">Skift udseende</string>
+    <string name="daily_view">Daily view</string>
     <string name="weekly_view">Ugentlig</string>
     <string name="monthly_view">Monthly view</string>
     <string name="yearly_view">Månedlig</string>
