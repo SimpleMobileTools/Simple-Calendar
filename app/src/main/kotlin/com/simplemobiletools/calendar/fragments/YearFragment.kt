@@ -27,9 +27,9 @@ class YearFragment : Fragment(), YearlyCalendar {
     private var mYear = 0
     private var mSundayFirst = false
     private var lastHash = 0
+    private var mCalendar: YearlyCalendarImpl? = null
 
     lateinit var mView: View
-    lateinit var mCalendar: YearlyCalendarImpl
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mView = inflater.inflate(R.layout.fragment_year, container, false)
@@ -53,7 +53,7 @@ class YearFragment : Fragment(), YearlyCalendar {
     }
 
     fun updateEvents() {
-        mCalendar.getEvents(mYear)
+        mCalendar?.getEvents(mYear)
     }
 
     fun setupMonths() {
