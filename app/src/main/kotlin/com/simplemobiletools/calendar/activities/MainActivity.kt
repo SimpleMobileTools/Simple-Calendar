@@ -65,6 +65,7 @@ class MainActivity : SimpleActivity(), NavigationListener, RefreshRecyclerViewLi
     private var mLatestSearchQuery = ""
     private var mCalDAVSyncHandler = Handler()
     private var mSearchMenuItem: MenuItem? = null
+    private var mIsGoToTodayVisible = true
 
     private var mDefaultWeeklyPage = 0
     private var mDefaultMonthlyPage = 0
@@ -168,13 +169,16 @@ class MainActivity : SimpleActivity(), NavigationListener, RefreshRecyclerViewLi
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
+        mIsGoToTodayVisible = shouldGoToTodayBeVisible()
         menu.apply {
             findItem(R.id.filter).isVisible = mShouldFilterBeVisible
-            findItem(R.id.go_to_today).isVisible = shouldGoToTodayBeVisible()
+            findItem(R.id.go_to_today).isVisible = mIsGoToTodayVisible
             findItem(R.id.refresh_caldav_calendars).isVisible = config.caldavSync
         }
 
-        setupSearch(menu)
+        if (mSearchMenuItem == null) {
+            setupSearch(menu)
+        }
         return true
     }
 
@@ -630,7 +634,10 @@ class MainActivity : SimpleActivity(), NavigationListener, RefreshRecyclerViewLi
                 }
 
                 override fun onPageSelected(position: Int) {
-                    invalidateOptionsMenu()
+                    if (mIsGoToTodayVisible != shouldGoToTodayBeVisible()) {
+                        invalidateOptionsMenu()
+                    }
+
                     if (config.storedView == YEARLY_VIEW) {
                         val dateTime = Formatter.getDateTimeFromCode(codes[position])
                         supportActionBar?.title = "${getString(R.string.app_launcher_name)} - ${Formatter.getYear(dateTime)}"
@@ -690,7 +697,10 @@ class MainActivity : SimpleActivity(), NavigationListener, RefreshRecyclerViewLi
                 }
 
                 override fun onPageSelected(position: Int) {
-                    invalidateOptionsMenu()
+                    if (mIsGoToTodayVisible != shouldGoToTodayBeVisible()) {
+                        invalidateOptionsMenu()
+                    }
+
                     setupWeeklyActionbarTitle(weekTSs[position])
                 }
             })
@@ -753,7 +763,10 @@ class MainActivity : SimpleActivity(), NavigationListener, RefreshRecyclerViewLi
                 }
 
                 override fun onPageSelected(position: Int) {
-                    invalidateOptionsMenu()
+                    if (mIsGoToTodayVisible != shouldGoToTodayBeVisible()) {
+                        invalidateOptionsMenu()
+                    }
+
                     if (position < years.size) {
                         supportActionBar?.title = "${getString(R.string.app_launcher_name)} - ${years[position]}"
                     }
