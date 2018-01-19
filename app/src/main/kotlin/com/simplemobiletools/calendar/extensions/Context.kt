@@ -24,8 +24,7 @@ import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
-import com.simplemobiletools.calendar.models.DayMonthly
-import com.simplemobiletools.calendar.models.Event
+import com.simplemobiletools.calendar.models.*
 import com.simplemobiletools.calendar.receivers.CalDAVSyncReceiver
 import com.simplemobiletools.calendar.receivers.NotificationReceiver
 import com.simplemobiletools.calendar.services.SnoozeService
@@ -353,4 +352,22 @@ fun Context.addDayEvents(day: DayMonthly, linearLayout: LinearLayout, res: Resou
             linearLayout.addView(this)
         }
     }
+}
+
+fun Context.getEventListItems(events: List<Event>): ArrayList<ListItem> {
+    val listItems = ArrayList<ListItem>(events.size)
+    val replaceDescription = config.replaceDescription
+    val sorted = events.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { if (replaceDescription) it.location else it.description }))
+    val sublist = sorted.subList(0, Math.min(sorted.size, 100))
+    var prevCode = ""
+    sublist.forEach {
+        val code = Formatter.getDayCodeFromTS(it.startTS)
+        if (code != prevCode) {
+            val day = Formatter.getDayTitle(this, code)
+            listItems.add(ListSection(day))
+            prevCode = code
+        }
+        listItems.add(ListEvent(it.id, it.startTS, it.endTS, it.title, it.description, it.getIsAllDay(), it.color, it.location))
+    }
+    return listItems
 }

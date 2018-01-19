@@ -7,10 +7,10 @@ import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.dialogs.DeleteEventDialog
 import com.simplemobiletools.calendar.extensions.config
+import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.getNowSeconds
 import com.simplemobiletools.calendar.extensions.shareEvents
 import com.simplemobiletools.calendar.helpers.Formatter
-import com.simplemobiletools.calendar.interfaces.DeleteEventsListener
 import com.simplemobiletools.calendar.models.ListEvent
 import com.simplemobiletools.calendar.models.ListItem
 import com.simplemobiletools.calendar.models.ListSection
@@ -18,11 +18,12 @@ import com.simplemobiletools.commons.adapters.MyRecyclerViewAdapter
 import com.simplemobiletools.commons.extensions.applyColorFilter
 import com.simplemobiletools.commons.extensions.beInvisible
 import com.simplemobiletools.commons.extensions.beInvisibleIf
+import com.simplemobiletools.commons.interfaces.RefreshRecyclerViewListener
 import com.simplemobiletools.commons.views.MyRecyclerView
 import kotlinx.android.synthetic.main.event_list_item.view.*
 import java.util.*
 
-class EventListAdapter(activity: SimpleActivity, val listItems: ArrayList<ListItem>, val allowLongClick: Boolean, val listener: DeleteEventsListener?,
+class EventListAdapter(activity: SimpleActivity, val listItems: ArrayList<ListItem>, val allowLongClick: Boolean, val listener: RefreshRecyclerViewListener?,
                        recyclerView: MyRecyclerView, itemClick: (Any) -> Unit) : MyRecyclerViewAdapter(activity, recyclerView, null, itemClick) {
 
     private val ITEM_EVENT = 0
@@ -157,10 +158,14 @@ class EventListAdapter(activity: SimpleActivity, val listItems: ArrayList<ListIt
             listItems.removeAll(listItemsToDelete)
 
             if (it) {
-                listener?.deleteItems(eventIds)
+                val eventIDs = Array(eventIds.size, { i -> (eventIds[i].toString()) })
+                activity.dbHelper.deleteEvents(eventIDs, true)
             } else {
-                listener?.addEventRepeatException(eventIds, timestamps)
+                eventIds.forEachIndexed { index, value ->
+                    activity.dbHelper.addEventRepeatException(value, timestamps[index], true)
+                }
             }
+            listener?.refreshItems()
             finishActMode()
         }
     }

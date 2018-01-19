@@ -10,25 +10,19 @@ import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.adapters.EventListAdapter
-import com.simplemobiletools.calendar.extensions.config
-import com.simplemobiletools.calendar.extensions.dbHelper
-import com.simplemobiletools.calendar.extensions.getFilteredEvents
-import com.simplemobiletools.calendar.extensions.seconds
+import com.simplemobiletools.calendar.extensions.*
 import com.simplemobiletools.calendar.helpers.EVENT_ID
 import com.simplemobiletools.calendar.helpers.EVENT_OCCURRENCE_TS
-import com.simplemobiletools.calendar.helpers.Formatter
-import com.simplemobiletools.calendar.interfaces.DeleteEventsListener
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.models.ListEvent
-import com.simplemobiletools.calendar.models.ListItem
-import com.simplemobiletools.calendar.models.ListSection
 import com.simplemobiletools.commons.extensions.beGoneIf
 import com.simplemobiletools.commons.extensions.beVisibleIf
+import com.simplemobiletools.commons.interfaces.RefreshRecyclerViewListener
 import kotlinx.android.synthetic.main.fragment_event_list.view.*
 import org.joda.time.DateTime
 import java.util.*
 
-class EventListFragment : Fragment(), DeleteEventsListener {
+class EventListFragment : Fragment(), RefreshRecyclerViewListener {
     private var mEvents: List<Event> = ArrayList()
     private var prevEventsHash = 0
     private var lastHash = 0
@@ -71,20 +65,7 @@ class EventListFragment : Fragment(), DeleteEventsListener {
 
         prevEventsHash = hash
         mEvents = filtered
-        val listItems = ArrayList<ListItem>(mEvents.size)
-        val replaceDescription = context!!.config.replaceDescription
-        val sorted = mEvents.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { if (replaceDescription) it.location else it.description }))
-        val sublist = sorted.subList(0, Math.min(sorted.size, 100))
-        var prevCode = ""
-        sublist.forEach {
-            val code = Formatter.getDayCodeFromTS(it.startTS)
-            if (code != prevCode) {
-                val day = Formatter.getDayTitle(context!!, code)
-                listItems.add(ListSection(day))
-                prevCode = code
-            }
-            listItems.add(ListEvent(it.id, it.startTS, it.endTS, it.title, it.description, it.getIsAllDay(), it.color, it.location))
-        }
+        val listItems = context!!.getEventListItems(mEvents)
 
         val eventsAdapter = EventListAdapter(activity as SimpleActivity, listItems, true, this, mView.calendar_events_list) {
             if (it is ListEvent) {
@@ -93,9 +74,7 @@ class EventListFragment : Fragment(), DeleteEventsListener {
         }
 
         activity?.runOnUiThread {
-            mView.calendar_events_list.apply {
-                this@apply.adapter = eventsAdapter
-            }
+            mView.calendar_events_list.adapter = eventsAdapter
             checkPlaceholderVisibility()
         }
     }
@@ -115,16 +94,7 @@ class EventListFragment : Fragment(), DeleteEventsListener {
         }
     }
 
-    override fun deleteItems(ids: ArrayList<Int>) {
-        val eventIDs = Array(ids.size, { i -> (ids[i].toString()) })
-        context!!.dbHelper.deleteEvents(eventIDs, true)
-        checkEvents()
-    }
-
-    override fun addEventRepeatException(parentIds: ArrayList<Int>, timestamps: ArrayList<Int>) {
-        parentIds.forEachIndexed { index, value ->
-            context!!.dbHelper.addEventRepeatException(value, timestamps[index], true)
-        }
+    override fun refreshItems() {
         checkEvents()
     }
 }

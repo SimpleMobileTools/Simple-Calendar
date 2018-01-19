@@ -110,10 +110,12 @@
             android:textSize="@dimen/bigger_text_size"/>
 
         <com.simplemobiletools.commons.views.MyRecyclerView
-            android:id="@+id/search_results"
+            android:id="@+id/search_results_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:scrollbars="vertical"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
 
     </RelativeLayout>
-
 </android.support.design.widget.CoordinatorLayout>

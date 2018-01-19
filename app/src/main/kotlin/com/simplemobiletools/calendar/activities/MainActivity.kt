@@ -21,6 +21,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.simplemobiletools.calendar.BuildConfig
 import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.adapters.EventListAdapter
 import com.simplemobiletools.calendar.adapters.MyMonthPagerAdapter
 import com.simplemobiletools.calendar.adapters.MyWeekPagerAdapter
 import com.simplemobiletools.calendar.adapters.MyYearPagerAdapter
@@ -35,11 +36,13 @@ import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.models.EventType
+import com.simplemobiletools.calendar.models.ListEvent
 import com.simplemobiletools.calendar.views.MyScrollView
 import com.simplemobiletools.commons.dialogs.FilePickerDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
+import com.simplemobiletools.commons.interfaces.RefreshRecyclerViewListener
 import com.simplemobiletools.commons.models.RadioItem
 import com.simplemobiletools.commons.models.Release
 import kotlinx.android.synthetic.main.activity_main.*
@@ -49,7 +52,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-class MainActivity : SimpleActivity(), NavigationListener {
+class MainActivity : SimpleActivity(), NavigationListener, RefreshRecyclerViewListener {
     private val CALDAV_SYNC_DELAY = 1000L
     private val PREFILLED_MONTHS = 97
     private val PREFILLED_YEARS = 31
@@ -783,10 +786,33 @@ class MainActivity : SimpleActivity(), NavigationListener {
         if (text.length >= 2) {
             dbHelper.getEventsWithSearchQuery(text) { searchedText, events ->
                 if (searchedText == mLatestSearchQuery) {
+                    runOnUiThread {
+                        search_results_list.beVisibleIf(events.isNotEmpty())
+                        search_placeholder.beVisibleIf(events.isEmpty())
+                        val listItems = getEventListItems(events)
+                        val eventsAdapter = EventListAdapter(this, listItems, true, this, search_results_list) {
+                            if (it is ListEvent) {
+                                Intent(applicationContext, EventActivity::class.java).apply {
+                                    putExtra(EVENT_ID, it.id)
+                                    startActivity(this)
+                                }
+                            }
+                        }
 
+                        search_results_list.adapter = eventsAdapter
+                    }
                 }
             }
+        } else {
+            search_placeholder.beVisible()
+            search_results_list.beGone()
         }
+    }
+
+    // only used at active search
+    override fun refreshItems() {
+        searchQueryChanged(mLatestSearchQuery)
+        refreshViewPager()
     }
 
     override fun goLeft() {
