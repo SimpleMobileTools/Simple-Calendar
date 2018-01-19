@@ -18,7 +18,8 @@ import kotlinx.android.synthetic.main.dialog_select_radio_group.view.*
 import kotlinx.android.synthetic.main.radio_button_with_color.view.*
 import java.util.*
 
-class SelectEventTypeDialog(val activity: Activity, val currEventType: Int, val callback: (checkedId: Int) -> Unit) {
+class SelectEventTypeDialog(val activity: Activity, val currEventType: Int, val showCalDAVCalendars: Boolean,
+                            val callback: (eventType: EventType) -> Unit) {
     private val NEW_TYPE_ID = -2
 
     private val dialog: AlertDialog?
@@ -33,10 +34,11 @@ class SelectEventTypeDialog(val activity: Activity, val currEventType: Int, val 
         activity.dbHelper.getEventTypes {
             eventTypes = it
             activity.runOnUiThread {
-                eventTypes.filter { it.caldavCalendarId == 0 }.forEach {
-                    addRadioButton(it.getDisplayTitle(), it.id, it.color)
+                eventTypes.filter { showCalDAVCalendars || it.caldavCalendarId == 0 }.forEach {
+                    addRadioButton(it)
                 }
-                addRadioButton(activity.getString(R.string.add_new_type), NEW_TYPE_ID, Color.TRANSPARENT)
+                val newEventType = EventType(NEW_TYPE_ID, activity.getString(R.string.add_new_type), Color.TRANSPARENT, 0)
+                addRadioButton(newEventType)
                 wasInit = true
                 activity.updateTextColors(view.dialog_radio_holder)
             }
@@ -48,33 +50,35 @@ class SelectEventTypeDialog(val activity: Activity, val currEventType: Int, val 
         }
     }
 
-    private fun addRadioButton(title: String, typeId: Int, color: Int) {
+    private fun addRadioButton(eventType: EventType) {
         val view = activity.layoutInflater.inflate(R.layout.radio_button_with_color, null)
         (view.dialog_radio_button as RadioButton).apply {
-            text = title
-            isChecked = typeId == currEventType
-            id = typeId
+            text = eventType.getDisplayTitle()
+            isChecked = eventType.id == currEventType
+            id = eventType.id
         }
 
-        if (color != Color.TRANSPARENT)
-            view.dialog_radio_color.setBackgroundWithStroke(color, activity.config.backgroundColor)
+        if (eventType.color != Color.TRANSPARENT) {
+            view.dialog_radio_color.setBackgroundWithStroke(eventType.color, activity.config.backgroundColor)
+        }
 
-        view.setOnClickListener { viewClicked(typeId) }
+        view.setOnClickListener { viewClicked(eventType) }
         radioGroup.addView(view, RadioGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT))
     }
 
-    private fun viewClicked(typeId: Int) {
-        if (!wasInit)
+    private fun viewClicked(eventType: EventType) {
+        if (!wasInit) {
             return
+        }
 
-        if (typeId == NEW_TYPE_ID) {
+        if (eventType.id == NEW_TYPE_ID) {
             UpdateEventTypeDialog(activity) {
                 callback(it)
                 activity.hideKeyboard()
                 dialog?.dismiss()
             }
         } else {
-            callback(typeId)
+            callback(eventType)
             dialog?.dismiss()
         }
     }

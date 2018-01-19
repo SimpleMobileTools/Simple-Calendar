@@ -385,8 +385,8 @@ class EventActivity : SimpleActivity() {
 
     private fun showEventTypeDialog() {
         hideKeyboard()
-        SelectEventTypeDialog(this, mEventTypeId) {
-            mEventTypeId = it
+        SelectEventTypeDialog(this, mEventTypeId, false) {
+            mEventTypeId = it.id
             updateEventType()
         }
     }

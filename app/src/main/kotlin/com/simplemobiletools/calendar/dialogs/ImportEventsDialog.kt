@@ -16,13 +16,15 @@ import kotlinx.android.synthetic.main.dialog_import_events.view.*
 
 class ImportEventsDialog(val activity: SimpleActivity, val path: String, val callback: (refreshView: Boolean) -> Unit) {
     var currEventTypeId = DBHelper.REGULAR_EVENT_TYPE_ID
+    var currEventTypeCalDAVCalendarId = 0
 
     init {
         val view = (activity.layoutInflater.inflate(R.layout.dialog_import_events, null) as ViewGroup).apply {
             updateEventType(this)
             import_event_type_holder.setOnClickListener {
-                SelectEventTypeDialog(activity, currEventTypeId) {
-                    currEventTypeId = it
+                SelectEventTypeDialog(activity, currEventTypeId, true) {
+                    currEventTypeId = it.id
+                    currEventTypeCalDAVCalendarId = it.caldavCalendarId
                     updateEventType(this)
                 }
             }
@@ -36,7 +38,7 @@ class ImportEventsDialog(val activity: SimpleActivity, val path: String, val cal
                 getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
                     activity.toast(R.string.importing)
                     Thread {
-                        val result = IcsImporter(activity).importEvents(path, currEventTypeId)
+                        val result = IcsImporter(activity).importEvents(path, currEventTypeId, currEventTypeCalDAVCalendarId)
                         handleParseResult(result)
                         dismiss()
                     }.start()

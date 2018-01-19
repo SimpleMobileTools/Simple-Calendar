@@ -355,7 +355,7 @@ class MainActivity : SimpleActivity(), NavigationListener, RefreshRecyclerViewLi
                     val eventType = EventType(0, holidays, resources.getColor(R.color.default_holidays_color))
                     eventTypeId = dbHelper.insertEventType(eventType)
                 }
-                val result = IcsImporter(this).importEvents(it as String, eventTypeId)
+                val result = IcsImporter(this).importEvents(it as String, eventTypeId, 0)
                 handleParseResult(result)
                 if (result != IcsImporter.ImportResult.IMPORT_FAIL) {
                     runOnUiThread {

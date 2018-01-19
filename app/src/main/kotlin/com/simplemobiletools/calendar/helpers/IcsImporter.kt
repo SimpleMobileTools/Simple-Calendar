@@ -39,7 +39,7 @@ class IcsImporter(val activity: SimpleActivity) {
     private var eventsImported = 0
     private var eventsFailed = 0
 
-    fun importEvents(path: String, defaultEventType: Int): ImportResult {
+    fun importEvents(path: String, defaultEventType: Int, calDAVCalendarId: Int): ImportResult {
         try {
             val existingEvents = activity.dbHelper.getEventsWithImportIds()
             var prevLine = ""
@@ -112,30 +112,34 @@ class IcsImporter(val activity: SimpleActivity) {
                             curReminderMinutes.add(curReminderTriggerMinutes)
                         }
                     } else if (line == END_EVENT) {
-                        if (curStart != -1 && curEnd == -1)
+                        if (curStart != -1 && curEnd == -1) {
                             curEnd = curStart
+                        }
 
-                        if (curTitle.isEmpty() || curStart == -1)
+                        if (curTitle.isEmpty() || curStart == -1) {
                             continue
+                        }
+
 
                         val eventToUpdate = existingEvents.firstOrNull { curImportId.isNotEmpty() && curImportId == it.importId }
                         if (eventToUpdate != null && eventToUpdate.lastUpdated >= curLastModified) {
                             continue
                         }
 
+                        val source = if (calDAVCalendarId == 0) SOURCE_IMPORTED_ICS else "$CALDAV-$calDAVCalendarId"
                         val event = Event(0, curStart, curEnd, curTitle, curDescription, curReminderMinutes.getOrElse(0, { -1 }),
                                 curReminderMinutes.getOrElse(1, { -1 }), curReminderMinutes.getOrElse(2, { -1 }), curRepeatInterval,
                                 curImportId, curFlags, curRepeatLimit, curRepeatRule, curEventType, lastUpdated = curLastModified,
-                                source = SOURCE_IMPORTED_ICS, location = curLocation)
+                                source = source, location = curLocation)
 
                         if (event.getIsAllDay() && curEnd > curStart) {
                             event.endTS -= DAY
                         }
 
                         if (eventToUpdate == null) {
-                            activity.dbHelper.insert(event, false) {
+                            activity.dbHelper.insert(event, true) {
                                 for (exceptionTS in curRepeatExceptions) {
-                                    activity.dbHelper.addEventRepeatException(it, exceptionTS, false)
+                                    activity.dbHelper.addEventRepeatException(it, exceptionTS, true)
                                 }
                                 existingEvents.add(event)
                             }
