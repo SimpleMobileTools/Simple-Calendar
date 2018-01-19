@@ -53,8 +53,9 @@ class IcsImporter(val activity: SimpleActivity) {
             inputStream.bufferedReader().use {
                 while (true) {
                     var line = it.readLine() ?: break
-                    if (line.trim().isEmpty())
+                    if (line.trim().isEmpty()) {
                         continue
+                    }
 
                     if (line.substring(0, 1) == " ") {
                         line = prevLine + line.trim()
