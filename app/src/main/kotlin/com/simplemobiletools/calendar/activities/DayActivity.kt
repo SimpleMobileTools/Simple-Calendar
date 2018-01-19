@@ -35,8 +35,9 @@ class DayActivity : SimpleActivity(), NavigationListener, ViewPager.OnPageChange
 
         val intent = intent ?: return
         mDayCode = intent.getStringExtra(DAY_CODE)
-        if (mDayCode.isEmpty())
+        if (mDayCode.isEmpty()) {
             return
+        }
 
         fillViewPager(mDayCode)
 

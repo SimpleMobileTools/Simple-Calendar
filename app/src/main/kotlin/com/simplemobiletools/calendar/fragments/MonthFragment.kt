@@ -33,8 +33,8 @@ class MonthFragment : Fragment(), MonthlyCalendar {
     private var mSundayFirst = false
     private var mDayCode = ""
     private var mPackageName = ""
-    private var dayLabelHeight = 0
-    private var lastHash = 0L
+    private var mDayLabelHeight = 0
+    private var mLastHash = 0L
     private var mCalendar: MonthlyCalendarImpl? = null
 
     var listener: NavigationListener? = null
@@ -47,14 +47,12 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         val view = inflater.inflate(R.layout.fragment_month, container, false)
         mRes = resources
         mPackageName = activity!!.packageName
-
         mHolder = view.calendar_holder
         mDayCode = arguments!!.getString(DAY_CODE)
         mConfig = context!!.config
         mSundayFirst = mConfig.isSundayFirst
 
         setupButtons()
-
         setupLabels()
         mCalendar = MonthlyCalendarImpl(this, context!!)
 
@@ -72,6 +70,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
             mTargetDate = Formatter.getDateTimeFromCode(mDayCode)
             getDays(false)    // prefill the screen asap, even if without events
         }
+
         updateCalendar()
     }
 
@@ -81,10 +80,11 @@ class MonthFragment : Fragment(), MonthlyCalendar {
 
     override fun updateMonthlyCalendar(context: Context, month: String, days: List<DayMonthly>, checkedEvents: Boolean) {
         val newHash = month.hashCode() + days.hashCode().toLong()
-        if ((lastHash != 0L && !checkedEvents) || lastHash == newHash) {
+        if ((mLastHash != 0L && !checkedEvents) || mLastHash == newHash) {
             return
         }
-        lastHash = newHash
+
+        mLastHash = newHash
 
         activity?.runOnUiThread {
             mHolder.top_value.apply {
@@ -96,8 +96,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
     }
 
     private fun setupButtons() {
-        val baseColor = mConfig.textColor
-        mTextColor = baseColor
+        mTextColor = mConfig.textColor
 
         mHolder.top_left_arrow.apply {
             applyColorFilter(mTextColor)
@@ -115,7 +114,12 @@ class MonthFragment : Fragment(), MonthlyCalendar {
             }
         }
 
-        mHolder.top_value.setOnClickListener { showMonthDialog() }
+        mHolder.top_value.apply {
+            setTextColor(mConfig.textColor)
+            setOnClickListener {
+                showMonthDialog()
+            }
+        }
     }
 
     private fun showMonthDialog() {
@@ -182,7 +186,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
                 setOnClickListener { openDay(day.code) }
 
                 removeAllViews()
-                context.addDayNumber(mTextColor, day, this, dayLabelHeight) { dayLabelHeight = it }
+                context.addDayNumber(mTextColor, day, this, mDayLabelHeight) { mDayLabelHeight = it }
                 context.addDayEvents(day, this, mRes, dividerMargin)
             }
         }

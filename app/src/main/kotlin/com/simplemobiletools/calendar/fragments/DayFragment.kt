@@ -48,13 +48,6 @@ class DayFragment : Fragment(), DeleteEventsListener {
         mHolder = view.day_holder
 
         mDayCode = arguments!!.getString(DAY_CODE)
-        val day = Formatter.getDayTitle(context!!, mDayCode)
-        mHolder.top_value.apply {
-            text = day
-            setOnClickListener { pickDay() }
-            setTextColor(context.config.textColor)
-        }
-
         setupButtons()
         return view
     }
@@ -67,19 +60,27 @@ class DayFragment : Fragment(), DeleteEventsListener {
     private fun setupButtons() {
         mTextColor = context!!.config.textColor
 
-        mHolder.apply {
-            top_left_arrow.applyColorFilter(mTextColor)
-            top_right_arrow.applyColorFilter(mTextColor)
-            top_left_arrow.background = null
-            top_right_arrow.background = null
-
-            top_left_arrow.setOnClickListener {
+        mHolder.top_left_arrow.apply {
+            applyColorFilter(mTextColor)
+            background = null
+            setOnClickListener {
                 mListener?.goLeft()
             }
+        }
 
-            top_right_arrow.setOnClickListener {
+        mHolder.top_right_arrow.apply {
+            applyColorFilter(mTextColor)
+            background = null
+            setOnClickListener {
                 mListener?.goRight()
             }
+        }
+
+        val day = Formatter.getDayTitle(context!!, mDayCode)
+        mHolder.top_value.apply {
+            text = day
+            setOnClickListener { pickDay() }
+            setTextColor(context.config.textColor)
         }
     }
 
