@@ -101,7 +101,8 @@ class ManageEventTypesAdapter(activity: SimpleActivity, val eventTypes: ArrayLis
         }
 
         eventTypes.removeAll(eventTypesToDelete)
-        listener?.deleteEventTypes(eventTypesToDelete, deleteEvents)
-        removeSelectedItems()
+        if (listener?.deleteEventTypes(eventTypesToDelete, deleteEvents) == true) {
+            removeSelectedItems()
+        }
     }
 }

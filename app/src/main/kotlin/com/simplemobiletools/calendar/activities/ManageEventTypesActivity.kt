@@ -54,9 +54,12 @@ class ManageEventTypesActivity : SimpleActivity(), DeleteEventTypesListener {
         return true
     }
 
-    override fun deleteEventTypes(eventTypes: ArrayList<EventType>, deleteEvents: Boolean) {
+    override fun deleteEventTypes(eventTypes: ArrayList<EventType>, deleteEvents: Boolean): Boolean {
         if (eventTypes.any { it.caldavCalendarId != 0 }) {
             toast(R.string.unsync_caldav_calendar)
+            if (eventTypes.size == 1) {
+                return false
+            }
         }
 
         dbHelper.deleteEventTypes(eventTypes, deleteEvents) {
@@ -64,5 +67,6 @@ class ManageEventTypesActivity : SimpleActivity(), DeleteEventTypesListener {
                 toast(R.string.unknown_error_occurred)
             }
         }
+        return true
     }
 }
