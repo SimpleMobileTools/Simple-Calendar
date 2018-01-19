@@ -35,13 +35,13 @@ class MonthFragment : Fragment(), MonthlyCalendar {
     private var mPackageName = ""
     private var dayLabelHeight = 0
     private var lastHash = 0L
+    private var mCalendar: MonthlyCalendarImpl? = null
 
     var listener: NavigationListener? = null
 
     lateinit var mRes: Resources
     lateinit var mHolder: RelativeLayout
     lateinit var mConfig: Config
-    lateinit var mCalendar: MonthlyCalendarImpl
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_month, container, false)
@@ -68,7 +68,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
             setupLabels()
         }
 
-        mCalendar.apply {
+        mCalendar!!.apply {
             mTargetDate = Formatter.getDateTimeFromCode(mDayCode)
             getDays(false)    // prefill the screen asap, even if without events
         }
@@ -76,7 +76,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
     }
 
     fun updateCalendar() {
-        mCalendar.updateMonthlyCalendar(Formatter.getDateTimeFromCode(mDayCode))
+        mCalendar?.updateMonthlyCalendar(Formatter.getDateTimeFromCode(mDayCode))
     }
 
     override fun updateMonthlyCalendar(context: Context, month: String, days: List<DayMonthly>, checkedEvents: Boolean) {
@@ -124,7 +124,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         val datePicker = view.findViewById<DatePicker>(R.id.date_picker)
         datePicker.findViewById<View>(Resources.getSystem().getIdentifier("day", "id", "android")).beGone()
 
-        val dateTime = DateTime(mCalendar.mTargetDate.toString())
+        val dateTime = DateTime(mCalendar!!.mTargetDate.toString())
         datePicker.init(dateTime.year, dateTime.monthOfYear - 1, 1, null)
 
         AlertDialog.Builder(context!!)
