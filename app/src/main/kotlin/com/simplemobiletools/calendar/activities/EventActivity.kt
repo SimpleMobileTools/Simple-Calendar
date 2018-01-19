@@ -23,8 +23,10 @@ import com.simplemobiletools.commons.models.RadioItem
 import kotlinx.android.synthetic.main.activity_event.*
 import org.joda.time.DateTime
 import java.util.*
+import java.util.regex.Pattern
 
 class EventActivity : SimpleActivity() {
+    private val LAT_LON_PATTERN = "^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?)([,;])\\s*[-+]?(180(\\.0+)?|((1[0-7]\\d)|([1-9]?\\d))(\\.\\d+)?)\$"
     private var mReminder1Minutes = 0
     private var mReminder2Minutes = 0
     private var mReminder3Minutes = 0
@@ -670,8 +672,19 @@ class EventActivity : SimpleActivity() {
             return
         }
 
-        val location = Uri.encode(event_location.value)
-        val uri = Uri.parse("geo:0,0?q=$location")
+        val pattern = Pattern.compile(LAT_LON_PATTERN)
+        val locationValue = event_location.value
+        val uri = if (pattern.matcher(locationValue).find()) {
+            val delimiter = if (locationValue.contains(';')) ";" else ","
+            val parts = locationValue.split(delimiter)
+            val latitude = parts.first()
+            val longitude = parts.last()
+            Uri.parse("geo:$latitude,$longitude")
+        } else {
+            val location = Uri.encode(locationValue)
+            Uri.parse("geo:0,0?q=$location")
+        }
+
         val intent = Intent(Intent.ACTION_VIEW, uri)
         if (intent.resolveActivity(packageManager) != null) {
             startActivity(intent)
