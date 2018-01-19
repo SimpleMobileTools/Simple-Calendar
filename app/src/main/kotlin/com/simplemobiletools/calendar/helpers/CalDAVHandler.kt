@@ -234,6 +234,7 @@ class CalDAVHandler(val context: Context) {
                     val originalInstanceTime = cursor.getLongValue(CalendarContract.Events.ORIGINAL_INSTANCE_TIME)
                     val reminders = getCalDAVEventReminders(id)
 
+                    // make sure all-day events start at 5am in the users timezone
                     if (allDay == 1 && timeZone == "UTC") {
                         val offset = DateTimeZone.getDefault().getOffset(System.currentTimeMillis()) / 1000
                         val FIVE_HOURS = 5 * 60 * 60
