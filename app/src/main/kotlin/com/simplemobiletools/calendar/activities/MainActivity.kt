@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.database.ContentObserver
 import android.database.Cursor
+import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
@@ -147,6 +148,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
 
         updateWidgets()
         updateTextColors(calendar_coordinator)
+        search_holder.background = ColorDrawable(config.backgroundColor)
     }
 
     override fun onPause() {
@@ -221,7 +223,7 @@ class MainActivity : SimpleActivity(), NavigationListener {
                 override fun onQueryTextSubmit(query: String) = false
 
                 override fun onQueryTextChange(newText: String): Boolean {
-                    if (mIsSearchOpen && newText.length >= 3) {
+                    if (mIsSearchOpen) {
                         searchQueryChanged(newText)
                     }
                     return true
@@ -232,11 +234,16 @@ class MainActivity : SimpleActivity(), NavigationListener {
         MenuItemCompat.setOnActionExpandListener(mSearchMenuItem, object : MenuItemCompat.OnActionExpandListener {
             override fun onMenuItemActionExpand(item: MenuItem?): Boolean {
                 mIsSearchOpen = true
+                search_holder.beVisible()
+                calendar_fab.beGone()
+                searchQueryChanged("")
                 return true
             }
 
             override fun onMenuItemActionCollapse(item: MenuItem?): Boolean {
                 mIsSearchOpen = false
+                search_holder.beGone()
+                calendar_fab.beVisible()
                 return true
             }
         })
@@ -772,9 +779,12 @@ class MainActivity : SimpleActivity(), NavigationListener {
 
     private fun searchQueryChanged(text: String) {
         mLatestSearchQuery = text
-        dbHelper.getEventsWithSearchQuery(text) { searchedText, events ->
-            if (searchedText == mLatestSearchQuery) {
+        search_placeholder_2.beGoneIf(text.length >= 2)
+        if (text.length >= 2) {
+            dbHelper.getEventsWithSearchQuery(text) { searchedText, events ->
+                if (searchedText == mLatestSearchQuery) {
 
+                }
             }
         }
     }

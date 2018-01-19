@@ -23,9 +23,9 @@
                 android:id="@+id/week_view_hours_divider"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:importantForAccessibility="no"
                 android:layout_alignRight="@+id/week_view_hours_scrollview"
-                android:background="@drawable/stroke_bottom_right"/>
+                android:background="@drawable/stroke_bottom_right"
+                android:importantForAccessibility="no"/>
 
             <com.simplemobiletools.calendar.views.MyScrollView
                 android:id="@+id/week_view_hours_scrollview"
@@ -75,5 +75,45 @@
         android:src="@drawable/ic_plus"
         app:backgroundTint="@color/color_primary"
         app:rippleColor="@color/pressed_item_foreground"/>
+
+    <RelativeLayout
+        android:id="@+id/search_holder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:visibility="gone">
+
+        <com.simplemobiletools.commons.views.MyTextView
+            android:id="@+id/search_placeholder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/activity_margin"
+            android:gravity="center"
+            android:paddingLeft="@dimen/activity_margin"
+            android:paddingRight="@dimen/activity_margin"
+            android:text="@string/no_items_found"
+            android:textSize="@dimen/bigger_text_size"/>
+
+        <com.simplemobiletools.commons.views.MyTextView
+            android:id="@+id/search_placeholder_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/search_placeholder"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:paddingBottom="@dimen/medium_margin"
+            android:paddingLeft="@dimen/activity_margin"
+            android:paddingRight="@dimen/activity_margin"
+            android:paddingTop="@dimen/medium_margin"
+            android:text="@string/type_2_characters"
+            android:textSize="@dimen/bigger_text_size"/>
+
+        <com.simplemobiletools.commons.views.MyRecyclerView
+            android:id="@+id/search_results"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>
