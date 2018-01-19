@@ -88,7 +88,6 @@ class MainActivity : SimpleActivity(), NavigationListener, RefreshRecyclerViewLi
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         appLaunched()
-        calendar_fab.setOnClickListener { launchNewEventIntent() }
         checkWhatsNewDialog()
 
         if (resources.getBoolean(R.bool.portrait_only))
@@ -121,6 +120,7 @@ class MainActivity : SimpleActivity(), NavigationListener, RefreshRecyclerViewLi
             refreshCalDAVCalendars(false)
         }
 
+        calendar_fab.setOnClickListener { launchNewEventIntent() }
         checkOpenIntents()
     }
 
@@ -176,9 +176,7 @@ class MainActivity : SimpleActivity(), NavigationListener, RefreshRecyclerViewLi
             findItem(R.id.refresh_caldav_calendars).isVisible = config.caldavSync
         }
 
-        if (mSearchMenuItem == null) {
-            setupSearch(menu)
-        }
+        setupSearch(menu)
         return true
     }
 
