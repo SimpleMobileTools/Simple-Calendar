@@ -143,13 +143,13 @@ class MainActivity : SimpleActivity(), NavigationListener, RefreshRecyclerViewLi
             invalidateOptionsMenu()
         }
 
-        storeStateVariables()
         if (config.storedView == WEEKLY_VIEW) {
             if (mStoredIsSundayFirst != config.isSundayFirst || mStoredUse24HourFormat != config.use24hourFormat) {
                 fillWeeklyViewPager()
             }
         }
 
+        storeStateVariables()
         updateWidgets()
         updateTextColors(calendar_coordinator)
         search_holder.background = ColorDrawable(config.backgroundColor)
