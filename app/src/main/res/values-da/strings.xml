@@ -2,11 +2,11 @@
 <resources>
     <string name="app_name">Simpel kalender</string>
     <string name="app_launcher_name">Kalender</string>
-    <string name="change_view">Skift udseende</string>
-    <string name="daily_view">Daily view</string>
+    <string name="change_view">Skift visning</string>
+    <string name="daily_view">Daglig</string>
     <string name="weekly_view">Ugentlig</string>
-    <string name="monthly_view">Monthly view</string>
-    <string name="yearly_view">Månedlig</string>
+    <string name="monthly_view">Månedlig</string>
+    <string name="yearly_view">Årlig</string>
     <string name="simple_event_list">Begivenhedsliste</string>
     <string name="no_upcoming_events">Du ser ikke ud til at have nogen forestående begivenheder.</string>
     <string name="add_some_events">Du kan tilføje nogle med plus-knappen nederst.</string>
