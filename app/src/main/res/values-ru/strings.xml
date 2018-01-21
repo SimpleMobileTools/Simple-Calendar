@@ -3,7 +3,7 @@
     <string name="app_name">Simple Calendar</string>
     <string name="app_launcher_name">Календарь</string>
     <string name="change_view">Отображение</string>
-    <string name="daily_view">Daily view</string>
+    <string name="daily_view">На день</string>
     <string name="weekly_view">На неделю</string>
     <string name="monthly_view">На месяц</string>
     <string name="yearly_view">На год</string>
@@ -27,7 +27,7 @@
     <string name="event_added">Событие успешно добавлено</string>
     <string name="event_updated">Событие успешно обновлено</string>
     <string name="filter_events_by_type">Фильтровать события по типу</string>
-    <string name="please_fill_location">Please fill in a location to be shown on a map</string>
+    <string name="please_fill_location">Пожалуйста, введите место, которое будет показано на карте</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Повторять</string>
@@ -127,7 +127,7 @@
     <string name="hours_raw">часов</string>
     <string name="days_raw">дней</string>
     <string name="add_another_reminder">Добавить ещё одно напоминание</string>
-    <string name="event_reminders">Event reminders</string>
+    <string name="event_reminders">Напоминания о событиях</string>
 
     <plurals name="minutes_before">
         <item quantity="one">%d минута до события</item>
