@@ -26,18 +26,30 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
     private var mEvents: List<Event> = ArrayList()
     private var prevEventsHash = 0
     private var lastHash = 0
+    private var use24HourFormat = false
     lateinit var mView: View
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mView = inflater.inflate(R.layout.fragment_event_list, container, false)
         val placeholderText = String.format(getString(R.string.two_string_placeholder), "${getString(R.string.no_upcoming_events)}\n", getString(R.string.add_some_events))
         mView.calendar_empty_list_placeholder.text = placeholderText
+        use24HourFormat = context!!.config.use24hourFormat
         return mView
     }
 
     override fun onResume() {
         super.onResume()
         checkEvents()
+        val use24Hour = context!!.config.use24hourFormat
+        if (use24Hour != use24HourFormat) {
+            use24HourFormat = use24Hour
+            (mView.calendar_events_list.adapter as? EventListAdapter)?.toggle24HourFormat(use24HourFormat)
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        use24HourFormat = context!!.config.use24hourFormat
     }
 
     private fun checkEvents() {

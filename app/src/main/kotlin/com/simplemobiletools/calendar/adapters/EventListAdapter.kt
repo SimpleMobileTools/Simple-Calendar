@@ -35,6 +35,7 @@ class EventListAdapter(activity: SimpleActivity, val listItems: ArrayList<ListIt
     private val redTextColor = resources.getColor(R.color.red_text)
     private val now = activity.getNowSeconds()
     private val todayDate = Formatter.getDayTitle(activity, Formatter.getDayCodeFromTS(now))
+    private var use24HourFormat = activity.config.use24hourFormat
 
     override fun getActionMenuId() = R.menu.cab_event_list
 
@@ -75,6 +76,11 @@ class EventListAdapter(activity: SimpleActivity, val listItems: ArrayList<ListIt
     override fun getItemCount() = listItems.size
 
     override fun getItemViewType(position: Int) = if (listItems[position] is ListEvent) ITEM_EVENT else ITEM_HEADER
+
+    fun toggle24HourFormat(use24HourFormat: Boolean) {
+        this.use24HourFormat = use24HourFormat
+        notifyDataSetChanged()
+    }
 
     private fun setupListEvent(view: View, listEvent: ListEvent) {
         view.apply {

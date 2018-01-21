@@ -40,6 +40,11 @@ class YearFragment : Fragment(), YearlyCalendar {
         return mView
     }
 
+    override fun onPause() {
+        super.onPause()
+        mSundayFirst = context!!.config.isSundayFirst
+    }
+
     override fun onResume() {
         super.onResume()
         val sundayFirst = context!!.config.isSundayFirst

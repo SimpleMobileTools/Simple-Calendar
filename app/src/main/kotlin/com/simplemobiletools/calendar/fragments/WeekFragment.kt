@@ -101,15 +101,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         return mView
     }
 
-    override fun setMenuVisibility(menuVisible: Boolean) {
-        super.setMenuVisibility(menuVisible)
-        isFragmentVisible = menuVisible
-        if (isFragmentVisible && wasFragmentInit) {
-            mListener?.updateHoursTopMargin(mView.week_top_holder.height)
-            checkScrollLimits(mView.week_events_scrollview.scrollY)
-        }
-    }
-
     override fun onPause() {
         super.onPause()
         wasExtraHeightAdded = true
@@ -140,6 +131,15 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         })
     }
 
+    override fun setMenuVisibility(menuVisible: Boolean) {
+        super.setMenuVisibility(menuVisible)
+        isFragmentVisible = menuVisible
+        if (isFragmentVisible && wasFragmentInit) {
+            mListener?.updateHoursTopMargin(mView.week_top_holder.height)
+            checkScrollLimits(mView.week_events_scrollview.scrollY)
+        }
+    }
+
     private fun setupDayLabels() {
         var curDay = Formatter.getDateTimeFromTS(mWeekTimestamp)
         val textColor = context!!.config.textColor
@@ -150,8 +150,9 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             mView.findViewById<TextView>(mRes.getIdentifier("week_day_label_$i", "id", context!!.packageName)).apply {
                 text = "$dayLetter\n${curDay.dayOfMonth}"
                 setTextColor(if (todayCode == dayCode) primaryColor else textColor)
-                if (todayCode == dayCode)
+                if (todayCode == dayCode) {
                     todayColumnIndex = i
+                }
             }
             curDay = curDay.plusDays(1)
         }
@@ -174,9 +175,8 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             mView.week_events_scrollview.scrollY = minScrollY
         } else if (maxScrollY != -1 && y > maxScrollY) {
             mView.week_events_scrollview.scrollY = maxScrollY
-        } else {
-            if (isFragmentVisible)
-                mListener?.scrollTo(y)
+        } else if (isFragmentVisible) {
+            mListener?.scrollTo(y)
         }
     }
 
@@ -238,7 +238,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         updateEvents()
     }
 
-    fun updateEvents() {
+    private fun updateEvents() {
         if (mWasDestroyed)
             return
 
@@ -360,7 +360,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             val minTS = Math.max(startDateTime.seconds(), mWeekTimestamp)
             val maxTS = Math.min(endDateTime.seconds(), mWeekTimestamp + WEEK_SECONDS)
             val startDateTimeInWeek = Formatter.getDateTimeFromTS(minTS)
-            val firstDayIndex = (startDateTimeInWeek.dayOfWeek - if (context.config.isSundayFirst) 0 else 1) % 7
+            val firstDayIndex = (startDateTimeInWeek.dayOfWeek - if (context!!.config.isSundayFirst) 0 else 1) % 7
             val daysCnt = Days.daysBetween(Formatter.getDateTimeFromTS(minTS).toLocalDate(), Formatter.getDateTimeFromTS(maxTS).toLocalDate()).days
 
             var doesEventFit: Boolean

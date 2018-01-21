@@ -59,6 +59,11 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         return view
     }
 
+    override fun onPause() {
+        super.onPause()
+        mSundayFirst = context!!.config.isSundayFirst
+    }
+
     override fun onResume() {
         super.onResume()
         if (mConfig.isSundayFirst != mSundayFirst) {

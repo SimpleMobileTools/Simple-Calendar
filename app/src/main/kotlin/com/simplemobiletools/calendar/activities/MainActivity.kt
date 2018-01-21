@@ -129,7 +129,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
         if (config.storedView == WEEKLY_VIEW) {
             if (mStoredIsSundayFirst != config.isSundayFirst || mStoredUse24HourFormat != config.use24hourFormat) {
-
+                updateViewPager()
             }
         }
 
