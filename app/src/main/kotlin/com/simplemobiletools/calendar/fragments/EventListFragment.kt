@@ -2,7 +2,6 @@ package com.simplemobiletools.calendar.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,7 +21,7 @@ import kotlinx.android.synthetic.main.fragment_event_list.view.*
 import org.joda.time.DateTime
 import java.util.*
 
-class EventListFragment : Fragment(), RefreshRecyclerViewListener {
+class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
     private var mEvents: List<Event> = ArrayList()
     private var prevEventsHash = 0
     private var lastHash = 0
@@ -60,8 +59,9 @@ class EventListFragment : Fragment(), RefreshRecyclerViewListener {
 
         val filtered = context!!.getFilteredEvents(events)
         val hash = filtered.hashCode()
-        if (prevEventsHash == hash)
+        if (prevEventsHash == hash) {
             return
+        }
 
         prevEventsHash = hash
         mEvents = filtered
@@ -95,6 +95,13 @@ class EventListFragment : Fragment(), RefreshRecyclerViewListener {
     }
 
     override fun refreshItems() {
+        checkEvents()
+    }
+
+    override fun goToToday() {
+    }
+
+    override fun refreshEvents() {
         checkEvents()
     }
 }

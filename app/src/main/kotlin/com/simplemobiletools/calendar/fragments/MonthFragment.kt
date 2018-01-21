@@ -47,7 +47,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         val view = inflater.inflate(R.layout.fragment_month, container, false)
         mRes = resources
         mPackageName = activity!!.packageName
-        mHolder = view.calendar_holder
+        mHolder = view.month_calendar_holder
         mDayCode = arguments!!.getString(DAY_CODE)
         mConfig = context!!.config
         mSundayFirst = mConfig.isSundayFirst
@@ -74,7 +74,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         updateCalendar()
     }
 
-    fun updateCalendar() {
+    private fun updateCalendar() {
         mCalendar?.updateMonthlyCalendar(Formatter.getDateTimeFromCode(mDayCode))
     }
 

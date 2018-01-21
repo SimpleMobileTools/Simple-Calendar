@@ -9,10 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.activities.MainActivity
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.helpers.YEAR_LABEL
 import com.simplemobiletools.calendar.helpers.YearlyCalendarImpl
-import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.interfaces.YearlyCalendar
 import com.simplemobiletools.calendar.models.DayYearly
 import com.simplemobiletools.calendar.views.SmallMonthView
@@ -23,7 +23,6 @@ import org.joda.time.DateTime
 import java.util.*
 
 class YearFragment : Fragment(), YearlyCalendar {
-    var mListener: NavigationListener? = null
     private var mYear = 0
     private var mSundayFirst = false
     private var lastHash = 0
@@ -38,7 +37,6 @@ class YearFragment : Fragment(), YearlyCalendar {
         setupMonths()
 
         mCalendar = YearlyCalendarImpl(this, context!!, mYear)
-
         return mView
     }
 
@@ -56,7 +54,7 @@ class YearFragment : Fragment(), YearlyCalendar {
         mCalendar?.getEvents(mYear)
     }
 
-    fun setupMonths() {
+    private fun setupMonths() {
         val dateTime = DateTime().withDate(mYear, 2, 1).withHourOfDay(12)
         val days = dateTime.dayOfMonth().maximumValue
         mView.month_2.setDays(days)
@@ -67,12 +65,13 @@ class YearFragment : Fragment(), YearlyCalendar {
         for (i in 1..12) {
             val monthView = mView.findViewById<SmallMonthView>(res.getIdentifier("month_" + i, "id", context!!.packageName))
             var dayOfWeek = dateTime.withMonthOfYear(i).dayOfWeek().get()
-            if (!mSundayFirst)
+            if (!mSundayFirst) {
                 dayOfWeek--
+            }
 
             monthView.firstDay = dayOfWeek
             monthView.setOnClickListener {
-                mListener?.goToDateTime(DateTime().withDate(mYear, i, 1))
+                (activity as MainActivity).openMonthFromYearly(DateTime().withDate(mYear, i, 1))
             }
         }
     }

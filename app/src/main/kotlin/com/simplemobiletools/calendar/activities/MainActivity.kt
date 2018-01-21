@@ -12,32 +12,24 @@ import android.os.Bundle
 import android.os.Handler
 import android.provider.ContactsContract
 import android.support.v4.view.MenuItemCompat
-import android.support.v4.view.ViewPager
 import android.support.v7.widget.SearchView
 import android.util.SparseIntArray
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.TextView
 import android.widget.Toast
 import com.simplemobiletools.calendar.BuildConfig
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.adapters.EventListAdapter
-import com.simplemobiletools.calendar.adapters.MyMonthPagerAdapter
-import com.simplemobiletools.calendar.adapters.MyWeekPagerAdapter
-import com.simplemobiletools.calendar.adapters.MyYearPagerAdapter
 import com.simplemobiletools.calendar.dialogs.ExportEventsDialog
 import com.simplemobiletools.calendar.dialogs.FilterEventTypesDialog
 import com.simplemobiletools.calendar.dialogs.ImportEventsDialog
 import com.simplemobiletools.calendar.extensions.*
-import com.simplemobiletools.calendar.fragments.EventListFragment
-import com.simplemobiletools.calendar.fragments.WeekFragment
+import com.simplemobiletools.calendar.fragments.*
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
-import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.models.EventType
 import com.simplemobiletools.calendar.models.ListEvent
-import com.simplemobiletools.calendar.views.MyScrollView
 import com.simplemobiletools.commons.dialogs.FilePickerDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
@@ -52,11 +44,8 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-class MainActivity : SimpleActivity(), NavigationListener, RefreshRecyclerViewListener {
+class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private val CALDAV_SYNC_DELAY = 1000L
-    private val PREFILLED_MONTHS = 97
-    private val PREFILLED_YEARS = 31
-    private val PREFILLED_WEEKS = 61
 
     private var showCalDAVRefreshToast = false
     private var mIsMonthSelected = false
@@ -65,11 +54,10 @@ class MainActivity : SimpleActivity(), NavigationListener, RefreshRecyclerViewLi
     private var mLatestSearchQuery = ""
     private var mCalDAVSyncHandler = Handler()
     private var mSearchMenuItem: MenuItem? = null
-    private var mIsGoToTodayVisible = true
-
-    private var mDefaultWeeklyPage = 0
-    private var mDefaultMonthlyPage = 0
-    private var mDefaultYearlyPage = 0
+    private var currentFragment: MyFragmentHolder? = null
+    private var shouldGoToTodayBeVisible = false
+    private var eventTypeColors = SparseIntArray()
+    private var goToTodayButton: MenuItem? = null
 
     private var mStoredTextColor = 0
     private var mStoredBackgroundColor = 0
@@ -79,19 +67,15 @@ class MainActivity : SimpleActivity(), NavigationListener, RefreshRecyclerViewLi
     private var mStoredUse24HourFormat = false
     private var mStoredUseEnglish = false
 
-    companion object {
-        var mWeekScrollY = 0
-        var eventTypeColors = SparseIntArray()
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         appLaunched()
         checkWhatsNewDialog()
 
-        if (resources.getBoolean(R.bool.portrait_only))
+        if (resources.getBoolean(R.bool.portrait_only)) {
             requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        }
 
         if (intent?.action == Intent.ACTION_VIEW && intent.data != null) {
             val uri = intent.data
@@ -145,7 +129,7 @@ class MainActivity : SimpleActivity(), NavigationListener, RefreshRecyclerViewLi
 
         if (config.storedView == WEEKLY_VIEW) {
             if (mStoredIsSundayFirst != config.isSundayFirst || mStoredUse24HourFormat != config.use24hourFormat) {
-                fillWeeklyViewPager()
+
             }
         }
 
@@ -169,10 +153,10 @@ class MainActivity : SimpleActivity(), NavigationListener, RefreshRecyclerViewLi
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
-        mIsGoToTodayVisible = shouldGoToTodayBeVisible()
         menu.apply {
+            goToTodayButton = findItem(R.id.go_to_today)
             findItem(R.id.filter).isVisible = mShouldFilterBeVisible
-            findItem(R.id.go_to_today).isVisible = mIsGoToTodayVisible
+            findItem(R.id.go_to_today).isVisible = shouldGoToTodayBeVisible && config.storedView != EVENTS_LIST_VIEW
             findItem(R.id.refresh_caldav_calendars).isVisible = config.caldavSync
         }
 
@@ -286,37 +270,34 @@ class MainActivity : SimpleActivity(), NavigationListener, RefreshRecyclerViewLi
                 RadioItem(EVENTS_LIST_VIEW, res.getString(R.string.simple_event_list)))
 
         RadioGroupDialog(this, items, config.storedView) {
+            mIsMonthSelected = false
+            calendar_fab.beVisibleIf(it as Int != YEARLY_VIEW)
+            resetActionBarTitle()
             closeSearch()
-            updateView(it as Int)
+            updateView(it)
+            shouldGoToTodayBeVisible = false
             invalidateOptionsMenu()
         }
     }
 
     private fun goToToday() {
-        if (config.storedView == WEEKLY_VIEW) {
-            week_view_view_pager.currentItem = mDefaultWeeklyPage
-        } else if (config.storedView == MONTHLY_VIEW) {
-            main_view_pager.currentItem = mDefaultMonthlyPage
-        } else if (config.storedView == YEARLY_VIEW) {
-            if (mIsMonthSelected) {
-                openMonthlyToday()
-            } else {
-                main_view_pager.currentItem = mDefaultYearlyPage
-            }
-        }
+        currentFragment?.goToToday()
     }
 
-    private fun shouldGoToTodayBeVisible() = when (config.storedView) {
-        WEEKLY_VIEW -> week_view_view_pager.currentItem != mDefaultWeeklyPage
-        MONTHLY_VIEW -> main_view_pager.currentItem != mDefaultMonthlyPage
-        YEARLY_VIEW -> main_view_pager.currentItem != mDefaultYearlyPage
-        else -> false
+    private fun resetActionBarTitle() {
+        supportActionBar?.title = getString(R.string.app_launcher_name)
+        supportActionBar?.subtitle = ""
     }
 
     private fun showFilterDialog() {
         FilterEventTypesDialog(this) {
             refreshViewPager()
         }
+    }
+
+    fun toggleGoToTodayVisibility(beVisible: Boolean) {
+        shouldGoToTodayBeVisible = beVisible
+        invalidateOptionsMenu()
     }
 
     private fun refreshCalDAVCalendars(showRefreshToast: Boolean) {
@@ -357,6 +338,7 @@ class MainActivity : SimpleActivity(), NavigationListener, RefreshRecyclerViewLi
                     val eventType = EventType(0, holidays, resources.getColor(R.color.default_holidays_color))
                     eventTypeId = dbHelper.insertEventType(eventType)
                 }
+
                 val result = IcsImporter(this).importEvents(it as String, eventTypeId, 0)
                 handleParseResult(result)
                 if (result != IcsImporter.ImportResult.IMPORT_FAIL) {
@@ -499,32 +481,43 @@ class MainActivity : SimpleActivity(), NavigationListener, RefreshRecyclerViewLi
         mIsMonthSelected = view == MONTHLY_VIEW
         config.storedView = view
         updateViewPager()
+        if (goToTodayButton?.isVisible == true) {
+            shouldGoToTodayBeVisible = false
+            invalidateOptionsMenu()
+        }
     }
 
     private fun updateViewPager() {
-        resetTitle()
-        when {
-            config.storedView == YEARLY_VIEW -> fillYearlyViewPager()
-            config.storedView == EVENTS_LIST_VIEW -> fillEventsList()
-            config.storedView == WEEKLY_VIEW -> fillWeeklyViewPager()
-            else -> openMonthlyToday()
+        val fragment = getFragmentsHolder()
+        currentFragment = fragment
+        val bundle = Bundle()
+
+        when (config.storedView) {
+            MONTHLY_VIEW -> bundle.putString(DAY_CODE, Formatter.getTodayCode(applicationContext))
+            WEEKLY_VIEW -> bundle.putString(WEEK_START_DATE_TIME, getThisWeekDateTime())
         }
 
-        mWeekScrollY = 0
+        fragment.arguments = bundle
+        supportFragmentManager.beginTransaction().replace(R.id.fragments_holder, fragment, "").commit()
     }
 
-    private fun openMonthlyToday() {
-        val targetDay = DateTime().toString(Formatter.DAYCODE_PATTERN)
-        fillMonthlyViewPager(targetDay)
+    private fun getThisWeekDateTime(): String {
+        var thisweek = DateTime().withDayOfWeek(1).withTimeAtStartOfDay().minusDays(if (config.isSundayFirst) 1 else 0)
+        if (DateTime().minusDays(7).seconds() > thisweek.seconds()) {
+            thisweek = thisweek.plusDays(7)
+        }
+        return thisweek.toString()
+    }
+
+    private fun getFragmentsHolder() = when (config.storedView) {
+        MONTHLY_VIEW -> MonthFragmentsHolder()
+        YEARLY_VIEW -> YearFragmentsHolder()
+        EVENTS_LIST_VIEW -> EventListFragment()
+        else -> WeekFragmentsHolder()
     }
 
     private fun refreshViewPager() {
-        when {
-            config.storedView == YEARLY_VIEW && !mIsMonthSelected -> (main_view_pager.adapter as? MyYearPagerAdapter)?.refreshEvents(main_view_pager.currentItem)
-            config.storedView == EVENTS_LIST_VIEW -> fillEventsList()
-            config.storedView == WEEKLY_VIEW -> (week_view_view_pager.adapter as? MyWeekPagerAdapter)?.refreshEvents(week_view_view_pager.currentItem)
-            else -> (main_view_pager.adapter as? MyMonthPagerAdapter)?.refreshEvents(main_view_pager.currentItem)
-        }
+        currentFragment?.refreshEvents()
     }
 
     private fun tryImportEvents() {
@@ -609,188 +602,6 @@ class MainActivity : SimpleActivity(), NavigationListener, RefreshRecyclerViewLi
                 BuildConfig.VERSION_NAME)
     }
 
-    private fun resetTitle() {
-        supportActionBar?.title = getString(R.string.app_launcher_name)
-        supportActionBar?.subtitle = ""
-    }
-
-    private fun fillMonthlyViewPager(targetDay: String) {
-        main_weekly_scrollview.beGone()
-        calendar_fab.beVisible()
-        val codes = getMonths(targetDay)
-        val monthlyAdapter = MyMonthPagerAdapter(supportFragmentManager, codes, this)
-        mDefaultMonthlyPage = codes.size / 2
-
-        main_view_pager.apply {
-            adapter = monthlyAdapter
-            beVisible()
-            addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-                override fun onPageScrollStateChanged(state: Int) {
-                }
-
-                override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-                }
-
-                override fun onPageSelected(position: Int) {
-                    if (mIsGoToTodayVisible != shouldGoToTodayBeVisible()) {
-                        invalidateOptionsMenu()
-                    }
-
-                    if (config.storedView == YEARLY_VIEW) {
-                        val dateTime = Formatter.getDateTimeFromCode(codes[position])
-                        supportActionBar?.title = "${getString(R.string.app_launcher_name)} - ${Formatter.getYear(dateTime)}"
-                    }
-                }
-            })
-            currentItem = mDefaultMonthlyPage
-        }
-        calendar_event_list_holder.beGone()
-    }
-
-    private fun getMonths(code: String): List<String> {
-        val months = ArrayList<String>(PREFILLED_MONTHS)
-        val today = Formatter.getDateTimeFromCode(code)
-        for (i in -PREFILLED_MONTHS / 2..PREFILLED_MONTHS / 2) {
-            months.add(Formatter.getDayCodeFromDateTime(today.plusMonths(i)))
-        }
-
-        return months
-    }
-
-    private fun fillWeeklyViewPager() {
-        var thisweek = DateTime().withDayOfWeek(1).withTimeAtStartOfDay().minusDays(if (config.isSundayFirst) 1 else 0)
-        if (DateTime().minusDays(7).seconds() > thisweek.seconds()) {
-            thisweek = thisweek.plusDays(7)
-        }
-        val weekTSs = getWeekTimestamps(thisweek.seconds())
-        val weeklyAdapter = MyWeekPagerAdapter(supportFragmentManager, weekTSs, object : WeekFragment.WeekScrollListener {
-            override fun scrollTo(y: Int) {
-                week_view_hours_scrollview.scrollY = y
-                mWeekScrollY = y
-            }
-        })
-        main_view_pager.beGone()
-        calendar_event_list_holder.beGone()
-        main_weekly_scrollview.beVisible()
-
-        week_view_hours_holder.removeAllViews()
-        val hourDateTime = DateTime().withDate(2000, 1, 1).withTime(0, 0, 0, 0)
-        for (i in 1..23) {
-            val formattedHours = Formatter.getHours(applicationContext, hourDateTime.withHourOfDay(i))
-            (layoutInflater.inflate(R.layout.weekly_view_hour_textview, null, false) as TextView).apply {
-                text = formattedHours
-                setTextColor(mStoredTextColor)
-                week_view_hours_holder.addView(this)
-            }
-        }
-
-        mDefaultWeeklyPage = weekTSs.size / 2
-        week_view_view_pager.apply {
-            adapter = weeklyAdapter
-            addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-                override fun onPageScrollStateChanged(state: Int) {
-                }
-
-                override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-                }
-
-                override fun onPageSelected(position: Int) {
-                    if (mIsGoToTodayVisible != shouldGoToTodayBeVisible()) {
-                        invalidateOptionsMenu()
-                    }
-
-                    setupWeeklyActionbarTitle(weekTSs[position])
-                }
-            })
-            currentItem = mDefaultWeeklyPage
-        }
-
-        week_view_hours_scrollview.setOnScrollviewListener(object : MyScrollView.ScrollViewListener {
-            override fun onScrollChanged(scrollView: MyScrollView, x: Int, y: Int, oldx: Int, oldy: Int) {
-                mWeekScrollY = y
-                weeklyAdapter.updateScrollY(week_view_view_pager.currentItem, y)
-            }
-        })
-        week_view_hours_scrollview.setOnTouchListener { view, motionEvent -> true }
-    }
-
-    fun updateHoursTopMargin(margin: Int) {
-        week_view_hours_divider.layoutParams.height = margin
-        week_view_hours_scrollview.requestLayout()
-    }
-
-    private fun getWeekTimestamps(targetWeekTS: Int): List<Int> {
-        val weekTSs = ArrayList<Int>(PREFILLED_WEEKS)
-        for (i in -PREFILLED_WEEKS / 2..PREFILLED_WEEKS / 2) {
-            weekTSs.add(Formatter.getDateTimeFromTS(targetWeekTS).plusWeeks(i).seconds())
-        }
-        return weekTSs
-    }
-
-    private fun setupWeeklyActionbarTitle(timestamp: Int) {
-        val startDateTime = Formatter.getDateTimeFromTS(timestamp)
-        val endDateTime = Formatter.getDateTimeFromTS(timestamp + WEEK_SECONDS)
-        val startMonthName = Formatter.getMonthName(applicationContext, startDateTime.monthOfYear)
-        if (startDateTime.monthOfYear == endDateTime.monthOfYear) {
-            var newTitle = startMonthName
-            if (startDateTime.year != DateTime().year)
-                newTitle += " - ${startDateTime.year}"
-            supportActionBar?.title = newTitle
-        } else {
-            val endMonthName = Formatter.getMonthName(applicationContext, endDateTime.monthOfYear)
-            supportActionBar?.title = "$startMonthName - $endMonthName"
-        }
-        supportActionBar?.subtitle = "${getString(R.string.week)} ${startDateTime.plusDays(3).weekOfWeekyear}"
-    }
-
-    private fun fillYearlyViewPager() {
-        main_weekly_scrollview.beGone()
-        calendar_fab.beGone()
-        val targetYear = DateTime().toString(Formatter.YEAR_PATTERN).toInt()
-        val years = getYears(targetYear)
-        val yearlyAdapter = MyYearPagerAdapter(supportFragmentManager, years, this)
-
-        mDefaultYearlyPage = years.size / 2
-        main_view_pager.apply {
-            adapter = yearlyAdapter
-            addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-                override fun onPageScrollStateChanged(state: Int) {
-                }
-
-                override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-                }
-
-                override fun onPageSelected(position: Int) {
-                    if (mIsGoToTodayVisible != shouldGoToTodayBeVisible()) {
-                        invalidateOptionsMenu()
-                    }
-
-                    if (position < years.size) {
-                        supportActionBar?.title = "${getString(R.string.app_launcher_name)} - ${years[position]}"
-                    }
-                }
-            })
-            currentItem = mDefaultYearlyPage
-            beVisible()
-        }
-        supportActionBar?.title = "${getString(R.string.app_launcher_name)} - ${years[years.size / 2]}"
-        calendar_event_list_holder.beGone()
-    }
-
-    private fun getYears(targetYear: Int): List<Int> {
-        val years = ArrayList<Int>(PREFILLED_YEARS)
-        years += targetYear - PREFILLED_YEARS / 2..targetYear + PREFILLED_YEARS / 2
-        return years
-    }
-
-    private fun fillEventsList() {
-        main_view_pager.adapter = null
-        main_view_pager.beGone()
-        main_weekly_scrollview.beGone()
-        calendar_event_list_holder.beVisible()
-        supportFragmentManager.beginTransaction().replace(R.id.calendar_event_list_holder, EventListFragment(), "").commit()
-    }
-
     private fun searchQueryChanged(text: String) {
         mLatestSearchQuery = text
         search_placeholder_2.beGoneIf(text.length >= 2)
@@ -826,17 +637,15 @@ class MainActivity : SimpleActivity(), NavigationListener, RefreshRecyclerViewLi
         refreshViewPager()
     }
 
-    override fun goLeft() {
-        main_view_pager.currentItem = main_view_pager.currentItem - 1
-    }
-
-    override fun goRight() {
-        main_view_pager.currentItem = main_view_pager.currentItem + 1
-    }
-
-    override fun goToDateTime(dateTime: DateTime) {
-        fillMonthlyViewPager(Formatter.getDayCodeFromDateTime(dateTime))
+    fun openMonthFromYearly(dateTime: DateTime) {
         mIsMonthSelected = true
+        val fragment = MonthFragmentsHolder()
+        currentFragment = fragment
+        val bundle = Bundle()
+        bundle.putString(DAY_CODE, Formatter.getDayCodeFromDateTime(dateTime))
+        fragment.arguments = bundle
+        supportFragmentManager.beginTransaction().replace(R.id.fragments_holder, fragment, "").commit()
+        resetActionBarTitle()
     }
 
     private fun openDayAt(timestamp: Long) {

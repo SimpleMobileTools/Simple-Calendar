@@ -6,18 +6,20 @@ import android.graphics.Rect
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.SparseIntArray
 import android.view.*
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.EventActivity
-import com.simplemobiletools.calendar.activities.MainActivity
 import com.simplemobiletools.calendar.extensions.config
+import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.getFilteredEvents
 import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
+import com.simplemobiletools.calendar.interfaces.WeekFragmentListener
 import com.simplemobiletools.calendar.interfaces.WeeklyCalendar
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.views.MyScrollView
@@ -35,7 +37,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private val CLICK_DURATION_THRESHOLD = 150
     private val PLUS_FADEOUT_DELAY = 5000L
 
-    var mListener: WeekScrollListener? = null
+    var mListener: WeekFragmentListener? = null
     private var mWeekTimestamp = 0
     private var mRowHeight = 0
     private var minScrollY = -1
@@ -52,20 +54,30 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private var events = ArrayList<Event>()
     private var allDayHolders = ArrayList<RelativeLayout>()
     private var allDayRows = ArrayList<HashSet<Int>>()
+    private var eventTypeColors = SparseIntArray()
 
     lateinit var inflater: LayoutInflater
     lateinit var mView: View
     lateinit var mCalendar: WeeklyCalendarImpl
     lateinit var mRes: Resources
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        this.inflater = inflater
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        context!!.dbHelper.getEventTypes {
+            it.map { eventTypeColors.put(it.id, it.color) }
+        }
+
         mRowHeight = (context!!.resources.getDimension(R.dimen.weekly_view_row_height)).toInt()
         minScrollY = mRowHeight * context!!.config.startWeeklyAt
         mWeekTimestamp = arguments!!.getInt(WEEK_START_TIMESTAMP)
         primaryColor = context!!.getAdjustedPrimaryColor()
         mRes = resources
         allDayRows.add(HashSet())
+        mCalendar = WeeklyCalendarImpl(this, context!!)
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        this.inflater = inflater
 
         mView = inflater.inflate(R.layout.fragment_week, container, false).apply {
             week_events_scrollview.setOnScrollviewListener(object : MyScrollView.ScrollViewListener {
@@ -77,7 +89,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             week_events_scrollview.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
                 override fun onGlobalLayout() {
                     week_events_scrollview.viewTreeObserver.removeOnGlobalLayoutListener(this)
-                    updateScrollY(Math.max(MainActivity.mWeekScrollY, minScrollY))
+                    updateScrollY(Math.max(mListener?.getCurrScrollY() ?: 0, minScrollY))
                 }
             })
         }
@@ -85,7 +97,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         (0..6).map { inflater.inflate(R.layout.stroke_vertical_divider, mView.week_vertical_grid_holder) }
         (0..23).map { inflater.inflate(R.layout.stroke_horizontal_divider, mView.week_horizontal_grid_holder) }
 
-        mCalendar = WeeklyCalendarImpl(this, context!!)
         wasFragmentInit = true
         return mView
     }
@@ -94,7 +105,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         super.setMenuVisibility(menuVisible)
         isFragmentVisible = menuVisible
         if (isFragmentVisible && wasFragmentInit) {
-            (activity as MainActivity).updateHoursTopMargin(mView.week_top_holder.height)
+            mListener?.updateHoursTopMargin(mView.week_top_holder.height)
             checkScrollLimits(mView.week_events_scrollview.scrollY)
         }
     }
@@ -269,7 +280,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 val duration = endDateTime.minuteOfDay - startMinutes
 
                 (inflater.inflate(R.layout.week_event_marker, null, false) as TextView).apply {
-                    val backgroundColor = MainActivity.eventTypeColors.get(event.eventType, primaryColor)
+                    val backgroundColor = eventTypeColors.get(event.eventType, primaryColor)
                     background = ColorDrawable(backgroundColor)
                     setTextColor(backgroundColor.getContrastColor())
                     text = event.title
@@ -327,7 +338,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             override fun onGlobalLayout() {
                 mView.week_top_holder.viewTreeObserver.removeOnGlobalLayoutListener(this)
                 if (isFragmentVisible && activity != null) {
-                    (activity as MainActivity).updateHoursTopMargin(mView.week_top_holder.height)
+                    mListener?.updateHoursTopMargin(mView.week_top_holder.height)
                 }
             }
         })
@@ -338,7 +349,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             if (activity == null)
                 return
 
-            val backgroundColor = MainActivity.eventTypeColors.get(event.eventType, primaryColor)
+            val backgroundColor = eventTypeColors.get(event.eventType, primaryColor)
             background = ColorDrawable(backgroundColor)
             setTextColor(backgroundColor.getContrastColor())
             text = event.title
@@ -413,7 +424,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
                 mView.week_top_holder.viewTreeObserver.removeOnGlobalLayoutListener(this)
                 if (isFragmentVisible) {
-                    (activity as MainActivity).updateHoursTopMargin(mView.week_top_holder.height)
+                    mListener?.updateHoursTopMargin(mView.week_top_holder.height)
                 }
 
                 if (!wasExtraHeightAdded) {
@@ -434,9 +445,5 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     fun updateScrollY(y: Int) {
         if (wasFragmentInit)
             mView.week_events_scrollview.scrollY = y
-    }
-
-    interface WeekScrollListener {
-        fun scrollTo(y: Int)
     }
 }
