@@ -112,10 +112,10 @@
     <string name="birthdays_added">Дни рождения успешно добавлены</string>
 
     <!-- Anniversaries -->
-    <string name="anniversaries">Anniversaries</string>
-    <string name="add_anniversaries">Add contact anniversaries</string>
-    <string name="no_anniversaries">No anniversaries have been found</string>
-    <string name="anniversaries_added">Anniversaries added successfully</string>
+    <string name="anniversaries">Годовщины</string>
+    <string name="add_anniversaries">Добавить годовщины контактов</string>
+    <string name="no_anniversaries">Годовщины не найдены</string>
+    <string name="anniversaries_added">Годовщины добавлены успешно</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Напоминание</string>
