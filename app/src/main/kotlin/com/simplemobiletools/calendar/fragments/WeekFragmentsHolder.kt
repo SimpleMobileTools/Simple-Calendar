@@ -43,8 +43,6 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
         return weekHolder
     }
 
-    private fun shouldGoToTodayBeVisible() = currentWeekTS != thisWeekTS
-
     private fun setupFragment() {
         val weekTSs = getWeekTimestamps(currentWeekTS)
         val weeklyAdapter = MyWeekPagerAdapter(activity!!.supportFragmentManager, weekTSs, this)
@@ -126,6 +124,12 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
 
     override fun refreshEvents() {
         setupFragment()
+    }
+
+    override fun shouldGoToTodayBeVisible() = currentWeekTS != thisWeekTS
+
+    override fun updateActionBarTitle() {
+        setupWeeklyActionbarTitle(currentWeekTS)
     }
 
     override fun scrollTo(y: Int) {

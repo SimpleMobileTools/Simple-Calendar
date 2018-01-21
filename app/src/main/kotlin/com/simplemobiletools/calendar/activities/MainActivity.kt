@@ -48,16 +48,15 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private val CALDAV_SYNC_DELAY = 1000L
 
     private var showCalDAVRefreshToast = false
-    private var mIsMonthSelected = false
     private var mShouldFilterBeVisible = false
     private var mIsSearchOpen = false
     private var mLatestSearchQuery = ""
     private var mCalDAVSyncHandler = Handler()
     private var mSearchMenuItem: MenuItem? = null
-    private var currentFragment: MyFragmentHolder? = null
     private var shouldGoToTodayBeVisible = false
-    private var eventTypeColors = SparseIntArray()
     private var goToTodayButton: MenuItem? = null
+    private var eventTypeColors = SparseIntArray()
+    private var currentFragments = ArrayList<MyFragmentHolder>()
 
     private var mStoredTextColor = 0
     private var mStoredBackgroundColor = 0
@@ -105,6 +104,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
 
         calendar_fab.setOnClickListener { launchNewEventIntent() }
+        calendar_fab.beVisibleIf(config.storedView != YEARLY_VIEW)
         checkOpenIntents()
     }
 
@@ -183,8 +183,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     override fun onBackPressed() {
-        if (mIsMonthSelected && config.storedView == YEARLY_VIEW) {
-            updateView(YEARLY_VIEW)
+        if (currentFragments.size > 1) {
+            removeTopFragment()
         } else {
             super.onBackPressed()
         }
@@ -270,7 +270,6 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                 RadioItem(EVENTS_LIST_VIEW, res.getString(R.string.simple_event_list)))
 
         RadioGroupDialog(this, items, config.storedView) {
-            mIsMonthSelected = false
             calendar_fab.beVisibleIf(it as Int != YEARLY_VIEW)
             resetActionBarTitle()
             closeSearch()
@@ -281,7 +280,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     private fun goToToday() {
-        currentFragment?.goToToday()
+        currentFragments.last().goToToday()
     }
 
     private fun resetActionBarTitle() {
@@ -297,7 +296,9 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     fun toggleGoToTodayVisibility(beVisible: Boolean) {
         shouldGoToTodayBeVisible = beVisible
-        invalidateOptionsMenu()
+        if (goToTodayButton?.isVisible != beVisible) {
+            invalidateOptionsMenu()
+        }
     }
 
     private fun refreshCalDAVCalendars(showRefreshToast: Boolean) {
@@ -478,7 +479,6 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     private fun updateView(view: Int) {
         calendar_fab.beGoneIf(view == YEARLY_VIEW)
-        mIsMonthSelected = view == MONTHLY_VIEW
         config.storedView = view
         updateViewPager()
         if (goToTodayButton?.isVisible == true) {
@@ -489,7 +489,11 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     private fun updateViewPager() {
         val fragment = getFragmentsHolder()
-        currentFragment = fragment
+        currentFragments.forEach {
+            supportFragmentManager.beginTransaction().remove(it).commit()
+        }
+        currentFragments.clear()
+        currentFragments.add(fragment)
         val bundle = Bundle()
 
         when (config.storedView) {
@@ -498,7 +502,18 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
 
         fragment.arguments = bundle
-        supportFragmentManager.beginTransaction().replace(R.id.fragments_holder, fragment, "").commit()
+        supportFragmentManager.beginTransaction().add(R.id.fragments_holder, fragment).commit()
+    }
+
+    fun openMonthFromYearly(dateTime: DateTime) {
+        val fragment = MonthFragmentsHolder()
+        currentFragments.add(fragment)
+        val bundle = Bundle()
+        bundle.putString(DAY_CODE, Formatter.getDayCodeFromDateTime(dateTime))
+        fragment.arguments = bundle
+        supportFragmentManager.beginTransaction().add(R.id.fragments_holder, fragment).commit()
+        resetActionBarTitle()
+        calendar_fab.beVisible()
     }
 
     private fun getThisWeekDateTime(): String {
@@ -516,8 +531,16 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         else -> WeekFragmentsHolder()
     }
 
+    private fun removeTopFragment() {
+        supportFragmentManager.beginTransaction().remove(currentFragments.last()).commit()
+        currentFragments.removeAt(currentFragments.size - 1)
+        toggleGoToTodayVisibility(currentFragments.first().shouldGoToTodayBeVisible())
+        currentFragments.first().updateActionBarTitle()
+        calendar_fab.beGoneIf(currentFragments.size == 1 && config.storedView == YEARLY_VIEW)
+    }
+
     private fun refreshViewPager() {
-        currentFragment?.refreshEvents()
+        currentFragments.last().refreshEvents()
     }
 
     private fun tryImportEvents() {
@@ -635,17 +658,6 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     override fun refreshItems() {
         searchQueryChanged(mLatestSearchQuery)
         refreshViewPager()
-    }
-
-    fun openMonthFromYearly(dateTime: DateTime) {
-        mIsMonthSelected = true
-        val fragment = MonthFragmentsHolder()
-        currentFragment = fragment
-        val bundle = Bundle()
-        bundle.putString(DAY_CODE, Formatter.getDayCodeFromDateTime(dateTime))
-        fragment.arguments = bundle
-        supportFragmentManager.beginTransaction().replace(R.id.fragments_holder, fragment, "").commit()
-        resetActionBarTitle()
     }
 
     private fun openDayAt(timestamp: Long) {

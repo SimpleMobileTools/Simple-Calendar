@@ -1,5 +1,6 @@
 package com.simplemobiletools.calendar.fragments
 
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.support.v4.view.ViewPager
 import android.view.LayoutInflater
@@ -8,12 +9,13 @@ import android.view.ViewGroup
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.MainActivity
 import com.simplemobiletools.calendar.adapters.MyMonthPagerAdapter
+import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.getMonthCode
 import com.simplemobiletools.calendar.helpers.DAY_CODE
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.commons.views.MyViewPager
-import kotlinx.android.synthetic.main.fragment_viewpager_holder.view.*
+import kotlinx.android.synthetic.main.fragment_months_holder.view.*
 import org.joda.time.DateTime
 
 class MonthFragmentsHolder : MyFragmentHolder(), NavigationListener {
@@ -32,13 +34,12 @@ class MonthFragmentsHolder : MyFragmentHolder(), NavigationListener {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_viewpager_holder, container, false)
-        viewPager = view.fragment_viewpager
+        val view = inflater.inflate(R.layout.fragment_months_holder, container, false)
+        view.background = ColorDrawable(context!!.config.backgroundColor)
+        viewPager = view.fragment_months_viewpager
         setupFragment()
         return view
     }
-
-    private fun shouldGoToTodayBeVisible() = currentDayCode.getMonthCode() != todayDayCode.getMonthCode()
 
     private fun setupFragment() {
         val codes = getMonths(currentDayCode)
@@ -97,5 +98,11 @@ class MonthFragmentsHolder : MyFragmentHolder(), NavigationListener {
 
     override fun refreshEvents() {
         setupFragment()
+    }
+
+    override fun shouldGoToTodayBeVisible() = currentDayCode.getMonthCode() != todayDayCode.getMonthCode()
+
+    override fun updateActionBarTitle() {
+        (activity as MainActivity).supportActionBar?.title = getString(R.string.app_launcher_name)
     }
 }

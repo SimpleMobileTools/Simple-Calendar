@@ -10,7 +10,7 @@ import com.simplemobiletools.calendar.activities.MainActivity
 import com.simplemobiletools.calendar.adapters.MyYearPagerAdapter
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.commons.views.MyViewPager
-import kotlinx.android.synthetic.main.fragment_viewpager_holder.view.*
+import kotlinx.android.synthetic.main.fragment_years_holder.view.*
 import org.joda.time.DateTime
 
 class YearFragmentsHolder : MyFragmentHolder() {
@@ -29,13 +29,11 @@ class YearFragmentsHolder : MyFragmentHolder() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_viewpager_holder, container, false)
-        viewPager = view.fragment_viewpager
+        val view = inflater.inflate(R.layout.fragment_years_holder, container, false)
+        viewPager = view.fragment_years_viewpager
         setupFragment()
         return view
     }
-
-    private fun shouldGoToTodayBeVisible() = currentYear != todayYear
 
     private fun setupFragment() {
         val years = getYears(currentYear)
@@ -66,8 +64,7 @@ class YearFragmentsHolder : MyFragmentHolder() {
             })
             currentItem = defaultYearlyPage
         }
-
-        (activity as? MainActivity)?.supportActionBar?.title = "${getString(R.string.app_launcher_name)} - ${years[years.size / 2]}"
+        updateActionBarTitle()
     }
 
     private fun getYears(targetYear: Int): List<Int> {
@@ -83,5 +80,11 @@ class YearFragmentsHolder : MyFragmentHolder() {
 
     override fun refreshEvents() {
         setupFragment()
+    }
+
+    override fun shouldGoToTodayBeVisible() = currentYear != todayYear
+
+    override fun updateActionBarTitle() {
+        (activity as? MainActivity)?.supportActionBar?.title = "${getString(R.string.app_launcher_name)} - $currentYear"
     }
 }

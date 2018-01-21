@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.EventActivity
+import com.simplemobiletools.calendar.activities.MainActivity
 import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.adapters.EventListAdapter
 import com.simplemobiletools.calendar.extensions.*
@@ -103,5 +104,11 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
 
     override fun refreshEvents() {
         checkEvents()
+    }
+
+    override fun shouldGoToTodayBeVisible() = false
+
+    override fun updateActionBarTitle() {
+        (activity as MainActivity).supportActionBar?.title = getString(R.string.app_launcher_name)
     }
 }
