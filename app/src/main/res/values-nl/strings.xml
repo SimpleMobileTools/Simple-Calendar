@@ -3,7 +3,7 @@
     <string name="app_name">Eenvoudige Agenda</string>
     <string name="app_launcher_name">Agenda</string>
     <string name="change_view">Weergave</string>
-    <string name="daily_view">Daily view</string>
+    <string name="daily_view">Dag</string>
     <string name="weekly_view">Week</string>
     <string name="monthly_view">Maand</string>
     <string name="yearly_view">Jaar</string>
@@ -278,11 +278,11 @@
 
         Heeft een 4x4 widget, waarbij grootte, achtergrond- en tekstkleuren zijn aan te passen.
 
-        Bevat geen advertenties of onnodige permissies. Volledig open-source. Kleuren van de app kunnen worden aangepast.
+        Bevat geen advertenties of onnodige machtigingen. Volledig open-source. Kleuren van de app kunnen worden aangepast.
 
-        De permissie voor externe opslag is alleen nodig voor het importeren/exporteren van afspraken in .ics-bestanden.
+        De machtiging voor externe opslag is alleen nodig voor het importeren/exporteren van afspraken in .ics-bestanden.
 
-        De permissie voor contacten wordt alleen gebruikt voor het importeren van verjaardagen van contacten.
+        De machtiging voor contacten wordt alleen gebruikt voor het importeren van verjaardagen en feestdagen.
 
         Deze app is onderdeel van een grotere verzameling. Vind de andere apps op http://www.simplemobiletools.com
     </string>
