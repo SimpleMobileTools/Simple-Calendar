@@ -66,6 +66,7 @@ class DayFragmentsHolder : MyFragmentHolder(), NavigationListener {
             })
             currentItem = defaultDaylyPage
         }
+        updateActionBarTitle()
     }
 
     private fun getDays(code: String): List<String> {

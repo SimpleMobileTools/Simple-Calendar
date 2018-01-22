@@ -246,8 +246,12 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     private fun checkOpenIntents() {
         val dayCodeToOpen = intent.getStringExtra(DAY_CODE) ?: ""
+        val openMonth = intent.getBooleanExtra(OPEN_MONTH, false)
         if (dayCodeToOpen.isNotEmpty()) {
-            openDayCode(dayCodeToOpen)
+            calendar_fab.beGone()
+            config.storedView = if (openMonth) MONTHLY_VIEW else DAILY_VIEW
+            updateViewPager(dayCodeToOpen)
+            return
         }
 
         val eventIdToOpen = intent.getIntExtra(EVENT_ID, 0)
@@ -488,7 +492,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
     }
 
-    private fun updateViewPager() {
+    private fun updateViewPager(dayCode: String? = Formatter.getTodayCode(applicationContext)) {
         val fragment = getFragmentsHolder()
         currentFragments.forEach {
             supportFragmentManager.beginTransaction().remove(it).commit()
@@ -498,7 +502,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         val bundle = Bundle()
 
         when (config.storedView) {
-            DAILY_VIEW,  MONTHLY_VIEW -> bundle.putString(DAY_CODE, Formatter.getTodayCode(applicationContext))
+            DAILY_VIEW, MONTHLY_VIEW -> bundle.putString(DAY_CODE, dayCode)
             WEEKLY_VIEW -> bundle.putString(WEEK_START_DATE_TIME, getThisWeekDateTime())
         }
 

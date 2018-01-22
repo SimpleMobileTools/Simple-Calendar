@@ -15,6 +15,7 @@ val WEEK_START_TIMESTAMP = "week_start_timestamp"
 val NEW_EVENT_SET_HOUR_DURATION = "new_event_set_hour_duration"
 val WEEK_START_DATE_TIME = "week_start_date_time"
 val CALDAV = "Caldav"
+val OPEN_MONTH = "open_month"
 
 val MONTHLY_VIEW = 1
 val YEARLY_VIEW = 2

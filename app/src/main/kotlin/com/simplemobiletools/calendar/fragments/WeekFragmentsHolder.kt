@@ -90,6 +90,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
             }
         })
         weekHolder!!.week_view_hours_scrollview.setOnTouchListener { view, motionEvent -> true }
+        updateActionBarTitle()
     }
 
     private fun getWeekTimestamps(targetSeconds: Int): List<Int> {

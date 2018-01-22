@@ -66,6 +66,7 @@ class MonthFragmentsHolder : MyFragmentHolder(), NavigationListener {
             })
             currentItem = defaultMonthlyPage
         }
+        updateActionBarTitle()
     }
 
     private fun getMonths(code: String): List<String> {

@@ -45,10 +45,13 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
         }
     }
 
-    private fun setupAppOpenIntent(context: Context, views: RemoteViews, id: Int) {
-        val intent = Intent(context, SplashActivity::class.java)
-        val pendingIntent = PendingIntent.getActivity(context, 0, intent, 0)
-        views.setOnClickPendingIntent(id, pendingIntent)
+    private fun setupAppOpenIntent(context: Context, views: RemoteViews, id: Int, dayCode: String) {
+        Intent(context, SplashActivity::class.java).apply {
+            putExtra(DAY_CODE, dayCode)
+            putExtra(OPEN_MONTH, true)
+            val pendingIntent = PendingIntent.getActivity(context, Integer.parseInt(dayCode.substring(0, 6)), this, 0)
+            views.setOnClickPendingIntent(id, pendingIntent)
+        }
     }
 
     private fun setupDayOpenIntent(context: Context, views: RemoteViews, id: Int, dayCode: String) {
@@ -175,7 +178,9 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
                 setupIntent(context, views, PREV, R.id.top_left_arrow)
                 setupIntent(context, views, NEXT, R.id.top_right_arrow)
                 setupIntent(context, views, NEW_EVENT, R.id.top_new_event)
-                setupAppOpenIntent(context, views, R.id.top_value)
+
+                val monthCode = days.firstOrNull { it.code.substring(6) == "01" }?.code ?: Formatter.getTodayCode(context)
+                setupAppOpenIntent(context, views, R.id.top_value, monthCode)
 
                 appWidgetManager.updateAppWidget(it, views)
             }
