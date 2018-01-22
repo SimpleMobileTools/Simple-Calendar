@@ -517,6 +517,15 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         calendar_fab.beVisible()
     }
 
+    fun openDayFromMonthly(dateTime: DateTime) {
+        val fragment = DayFragmentsHolder()
+        currentFragments.add(fragment)
+        val bundle = Bundle()
+        bundle.putString(DAY_CODE, Formatter.getDayCodeFromDateTime(dateTime))
+        fragment.arguments = bundle
+        supportFragmentManager.beginTransaction().add(R.id.fragments_holder, fragment).commit()
+    }
+
     private fun getThisWeekDateTime(): String {
         var thisweek = DateTime().withDayOfWeek(1).withTimeAtStartOfDay().minusDays(if (config.isSundayFirst) 1 else 0)
         if (DateTime().minusDays(7).seconds() > thisweek.seconds()) {
@@ -536,8 +545,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private fun removeTopFragment() {
         supportFragmentManager.beginTransaction().remove(currentFragments.last()).commit()
         currentFragments.removeAt(currentFragments.size - 1)
-        toggleGoToTodayVisibility(currentFragments.first().shouldGoToTodayBeVisible())
-        currentFragments.first().updateActionBarTitle()
+        toggleGoToTodayVisibility(currentFragments.last().shouldGoToTodayBeVisible())
+        currentFragments.last().updateActionBarTitle()
         calendar_fab.beGoneIf(currentFragments.size == 1 && config.storedView == YEARLY_VIEW)
     }
 

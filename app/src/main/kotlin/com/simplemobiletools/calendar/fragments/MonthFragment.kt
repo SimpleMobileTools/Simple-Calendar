@@ -1,7 +1,6 @@
 package com.simplemobiletools.calendar.fragments
 
 import android.content.Context
-import android.content.Intent
 import android.content.res.Resources
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -14,7 +13,7 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.activities.DayActivity
+import com.simplemobiletools.calendar.activities.MainActivity
 import com.simplemobiletools.calendar.extensions.addDayEvents
 import com.simplemobiletools.calendar.extensions.addDayNumber
 import com.simplemobiletools.calendar.extensions.config
@@ -188,20 +187,13 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         for (i in 0 until len) {
             mHolder.findViewById<LinearLayout>(mRes.getIdentifier("day_$i", "id", mPackageName)).apply {
                 val day = days[i]
-                setOnClickListener { openDay(day.code) }
+                setOnClickListener {
+                    (activity as MainActivity).openDayFromMonthly(Formatter.getDateTimeFromCode(day.code))
+                }
 
                 removeAllViews()
                 context.addDayNumber(mTextColor, day, this, mDayLabelHeight) { mDayLabelHeight = it }
                 context.addDayEvents(day, this, mRes, dividerMargin)
-            }
-        }
-    }
-
-    private fun openDay(code: String) {
-        if (code.isNotEmpty()) {
-            Intent(context, DayActivity::class.java).apply {
-                putExtra(DAY_CODE, code)
-                startActivity(this)
             }
         }
     }
