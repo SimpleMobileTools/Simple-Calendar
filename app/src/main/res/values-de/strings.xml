@@ -274,7 +274,7 @@
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Ein einfacher Kalender mit personalisierbaren Widgets, ganz ohne Werbung.</string>
     <string name="app_long_description">
-        Ein schlichter Kalender mit optionaler Google Synchronisation. Du kannst ganz einfach wiederholende Termine sowie Erinnerungen erstellen, inklusive optionaler Anzeige der Kalenderwoche.
+        Ein schlichter Kalender mit optionaler CalDAV Synchronisation. Du kannst ganz einfach wiederholende Termine sowie Erinnerungen erstellen, inklusive optionaler Anzeige der Kalenderwoche.
 
         Enthält ein skalierbares 4x4 Widget, bei welchem die Schriftfarbe sowie die Hintergrundfarbe und Transparenz anpassbar sind.
         

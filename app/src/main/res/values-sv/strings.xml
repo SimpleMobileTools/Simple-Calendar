@@ -274,7 +274,7 @@
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">En enkel kalender med händelser, en anpassningsbar widget och ingen reklam.</string>
     <string name="app_long_description">
-        En enkel kalender med valfri Google-synkronisering. Du kan enkelt skapa återkommande händelser och ställa in påminnelser. Den kan också visa veckonummer.
+        En enkel kalender med valfri CalDAV-synkronisering. Du kan enkelt skapa återkommande händelser och ställa in påminnelser. Den kan också visa veckonummer.
 
         Har en justerbar 4x4-widget med anpassningsbar textfärg, bakgrundsfärg och bakgrundsgenomskinlighet.
 

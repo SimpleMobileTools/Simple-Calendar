@@ -280,7 +280,7 @@
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Prosty kalendarz z wydarzeniami, widżetami i bez reklam.</string>
-    <string name="app_long_description">"
+    <string name="app_long_description">
         Prosty kalendarz z obsługą synchornizacji z Dyskiem Google. Dzięki niemu możesz z łatwością tworzyć wydarzenia i przypomnienia, które nigdy nie zaginą.
 
         Zawiera widżet 4x4 z możliwością ustawiania koloru tekstu i tła, a dla tego drugiego również stopień przezroczystości.

@@ -274,7 +274,7 @@
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Un deiziataer eeun gant darvoudoù, widjetoù personelaus ha tamm bruderezh ebet.</string>
     <string name="app_long_description">
-        Un deiziataer eeun gant ur goubredañ diret da zeiziataer Google. Aes eo krouiñ darvoudoù a addegouezh ha lakaat adc\'halvoù. Gallout a ra ivez diskouez niverenn ar sizhunvezhioù.
+        Un deiziataer eeun gant ur goubredañ diret da zeiziataer CalDAV. Aes eo krouiñ darvoudoù a addegouezh ha lakaat adc\'halvoù. Gallout a ra ivez diskouez niverenn ar sizhunvezhioù.
 
         Dont a ra gant ur widjet 4x4 a c\'haller adventañ ha personelaat liv an destenn, an alfa ha liv an drekleur.
 

@@ -283,7 +283,7 @@
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Jednoduchý kalendář s událostmi, přizpůsobitelné widgety a žádné reklamy.</string>
     <string name="app_long_description">
-        Jednoduchý kalendář s volitelnou synchronizací Google. Můžete snadno vytvářet opakující se události a nastavovat připomenutí, můžete také zobrazovat čísla týdnů.
+        Jednoduchý kalendář s volitelnou synchronizací CalDAV. Můžete snadno vytvářet opakující se události a nastavovat připomenutí, můžete také zobrazovat čísla týdnů.
 
         Obsahuje přizpůsobitelný widget 4x4, kde můžete měnit barvu textu, stejně jako alfu a barvu pozadí.
 

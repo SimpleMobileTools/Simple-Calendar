@@ -283,9 +283,9 @@
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Jednoduchý kalendár s udalosťami, upraviteľným widgetom a bez reklám.</string>
     <string name="app_long_description">
-        Jednoduchý kalendár s možnosťou Google synchronizácie. Viete si jednoducho vytvoriť opakujúce sa udalosti s pripomienkami, alebo zobraziť čísla týždňov.
+        Jednoduchý kalendár s možnosťou CalDAV synchronizácie. Viete si jednoducho vytvoriť opakujúce sa udalosti s pripomienkami, alebo zobraziť čísla týždňov.
 
-        Obsahuje škálovateľný 4x4 widget, kde viete upraviť farbu textu, ako aj priehľadnosť a farbu pozadia.
+        Obsahuje škálovateľné widgety s mesačným náhľadom alebo zoznamom udalostí, kde viete upraviť farbu textu, ako aj priehľadnosť a farbu pozadia.
 
         Neobsahuje žiadne reklamy a nepotrebné oprávnenia. Je opensource, poskytuje možnosť zmeny farieb.
 

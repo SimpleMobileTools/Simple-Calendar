@@ -274,7 +274,7 @@
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Un sencillo calendario con eventos, widget personalizable y sin anuncios.</string>
     <string name="app_long_description">
-        Un simple calendario con sincronización opcional con Google. Puedes crear fácilmente eventos que se repitan y configurar recordatorios, o que te muestre los días de la semana.
+        Un simple calendario con sincronización opcional con CalDAV. Puedes crear fácilmente eventos que se repitan y configurar recordatorios, o que te muestre los días de la semana.
 
         Contiene un widget 4x4 redimensionable donde puedes personalizar el color del texto, así como la transparencia y el color del fondo.
 

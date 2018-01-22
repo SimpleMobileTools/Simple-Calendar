@@ -274,7 +274,7 @@
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">En simpel reklamefri kalender med begivenheder og en widget der kan tilpasses.</string>
     <string name="app_long_description">
-        En simpel kalender med mulighed for at synkronisere med Google. Nem opsætning af gentagne begivenheder og af påmindelser.
+        En simpel kalender med mulighed for at synkronisere med CalDAV. Nem opsætning af gentagne begivenheder og af påmindelser.
 
         Indeholder en skalerbar 4x4 widget med mulighed for at tilpasse tekstfarve samt alfa og farve på baggrunden.
 
