@@ -677,14 +677,9 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     private fun openDayAt(timestamp: Long) {
         val dayCode = Formatter.getDayCodeFromTS((timestamp / 1000).toInt())
-        openDayCode(dayCode)
-    }
-
-    private fun openDayCode(dayCode: String) {
-        Intent(this, DayActivity::class.java).apply {
-            putExtra(DAY_CODE, dayCode)
-            startActivity(this)
-        }
+        calendar_fab.beGone()
+        config.storedView = DAILY_VIEW
+        updateViewPager(dayCode)
     }
 
     private fun getHolidayRadioItems(): ArrayList<RadioItem> {
