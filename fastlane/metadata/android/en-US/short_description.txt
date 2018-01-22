@@ -1,0 +1,1 @@
+A simple calendar with events, customizable widget and no ads.
