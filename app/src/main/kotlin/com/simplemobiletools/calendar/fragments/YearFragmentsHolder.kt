@@ -87,4 +87,6 @@ class YearFragmentsHolder : MyFragmentHolder() {
     override fun updateActionBarTitle() {
         (activity as? MainActivity)?.supportActionBar?.title = "${getString(R.string.app_launcher_name)} - $currentYear"
     }
+
+    override fun getNewEventDayCode() = Formatter.getTodayCode(context!!)
 }

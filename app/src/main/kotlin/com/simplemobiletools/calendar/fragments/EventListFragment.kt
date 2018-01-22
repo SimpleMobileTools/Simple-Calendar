@@ -13,6 +13,7 @@ import com.simplemobiletools.calendar.adapters.EventListAdapter
 import com.simplemobiletools.calendar.extensions.*
 import com.simplemobiletools.calendar.helpers.EVENT_ID
 import com.simplemobiletools.calendar.helpers.EVENT_OCCURRENCE_TS
+import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.models.ListEvent
 import com.simplemobiletools.commons.extensions.beGoneIf
@@ -124,4 +125,6 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
     override fun updateActionBarTitle() {
         (activity as MainActivity).supportActionBar?.title = getString(R.string.app_launcher_name)
     }
+
+    override fun getNewEventDayCode() = Formatter.getTodayCode(context!!)
 }

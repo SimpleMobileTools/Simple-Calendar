@@ -103,7 +103,9 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             refreshCalDAVCalendars(false)
         }
 
-        calendar_fab.setOnClickListener { launchNewEventIntent() }
+        calendar_fab.setOnClickListener {
+            launchNewEventIntent(currentFragments.last().getNewEventDayCode())
+        }
         calendar_fab.beVisibleIf(config.storedView != YEARLY_VIEW)
         checkOpenIntents()
     }

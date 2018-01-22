@@ -105,4 +105,6 @@ class DayFragmentsHolder : MyFragmentHolder(), NavigationListener {
     override fun updateActionBarTitle() {
         (activity as MainActivity).supportActionBar?.title = getString(R.string.app_launcher_name)
     }
+
+    override fun getNewEventDayCode() = currentDayCode
 }

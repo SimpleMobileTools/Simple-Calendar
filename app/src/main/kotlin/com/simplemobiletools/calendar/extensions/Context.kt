@@ -232,10 +232,9 @@ private fun getSnoozePendingIntent(context: Context, event: Event): PendingInten
     return PendingIntent.getService(context, event.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 }
 
-fun Context.launchNewEventIntent() {
-    val code = Formatter.getDayCodeFromDateTime(DateTime(DateTimeZone.getDefault()))
+fun Context.launchNewEventIntent(dayCode: String = Formatter.getTodayCode(this)) {
     Intent(applicationContext, EventActivity::class.java).apply {
-        putExtra(NEW_EVENT_START_TS, getNewEventTimestampFromCode(code))
+        putExtra(NEW_EVENT_START_TS, getNewEventTimestampFromCode(dayCode))
         addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(this)
     }
