@@ -1,6 +1,15 @@
 Changelog
 ==========
 
+Version 3.2.0 *(2018-01-22)*
+----------------------------
+
+ * Added an initial implementation of Search
+ * Fixed an off-by-one issue at syncing all-day CalDAV events
+ * Added a Daily View
+ * Allow importing events from .ics files directly in a CalDAV account
+ * Try parsing latitude and longitude coordinates from the Location field
+
 Version 3.1.0 *(2018-01-11)*
 ----------------------------
 
