@@ -552,7 +552,10 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         supportFragmentManager.beginTransaction().remove(currentFragments.last()).commit()
         currentFragments.removeAt(currentFragments.size - 1)
         toggleGoToTodayVisibility(currentFragments.last().shouldGoToTodayBeVisible())
-        currentFragments.last().updateActionBarTitle()
+        currentFragments.last().apply {
+            refreshEvents()
+            updateActionBarTitle()
+        }
         calendar_fab.beGoneIf(currentFragments.size == 1 && config.storedView == YEARLY_VIEW)
     }
 
