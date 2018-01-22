@@ -20,6 +20,7 @@ val MONTHLY_VIEW = 1
 val YEARLY_VIEW = 2
 val EVENTS_LIST_VIEW = 3
 val WEEKLY_VIEW = 4
+val DAILY_VIEW = 5
 
 val REMINDER_OFF = -1
 

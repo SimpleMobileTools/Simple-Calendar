@@ -264,6 +264,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private fun showViewDialog() {
         val res = resources
         val items = arrayListOf(
+                RadioItem(DAILY_VIEW, res.getString(R.string.daily_view)),
                 RadioItem(WEEKLY_VIEW, res.getString(R.string.weekly_view)),
                 RadioItem(MONTHLY_VIEW, res.getString(R.string.monthly_view)),
                 RadioItem(YEARLY_VIEW, res.getString(R.string.yearly_view)),
@@ -497,7 +498,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         val bundle = Bundle()
 
         when (config.storedView) {
-            MONTHLY_VIEW -> bundle.putString(DAY_CODE, Formatter.getTodayCode(applicationContext))
+            DAILY_VIEW,  MONTHLY_VIEW -> bundle.putString(DAY_CODE, Formatter.getTodayCode(applicationContext))
             WEEKLY_VIEW -> bundle.putString(WEEK_START_DATE_TIME, getThisWeekDateTime())
         }
 
@@ -525,6 +526,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     private fun getFragmentsHolder() = when (config.storedView) {
+        DAILY_VIEW -> DayFragmentsHolder()
         MONTHLY_VIEW -> MonthFragmentsHolder()
         YEARLY_VIEW -> YearFragmentsHolder()
         EVENTS_LIST_VIEW -> EventListFragment()
