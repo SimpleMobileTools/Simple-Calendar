@@ -364,7 +364,7 @@ fun Context.getEventListItems(events: List<Event>): ArrayList<ListItem> {
         val code = Formatter.getDayCodeFromTS(it.startTS)
         if (code != prevCode) {
             val day = Formatter.getDayTitle(this, code)
-            listItems.add(ListSection(day))
+            listItems.add(ListSection(day, code))
             prevCode = code
         }
         listItems.add(ListEvent(it.id, it.startTS, it.endTS, it.title, it.description, it.getIsAllDay(), it.color, it.location))

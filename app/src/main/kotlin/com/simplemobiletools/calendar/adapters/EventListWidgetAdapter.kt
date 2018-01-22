@@ -7,9 +7,11 @@ import android.widget.RemoteViews
 import android.widget.RemoteViewsService
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.R.id.event_item_holder
+import com.simplemobiletools.calendar.R.id.event_section_title
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.seconds
+import com.simplemobiletools.calendar.helpers.DAY_CODE
 import com.simplemobiletools.calendar.helpers.EVENT_ID
 import com.simplemobiletools.calendar.helpers.EVENT_OCCURRENCE_TS
 import com.simplemobiletools.calendar.helpers.Formatter
@@ -86,6 +88,11 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
                 setTextColor(R.id.event_section_title, textColor)
                 setTextSize(R.id.event_section_title, mediumFontSize)
                 setText(R.id.event_section_title, item.title)
+
+                Intent().apply {
+                    putExtra(DAY_CODE, item.code)
+                    setOnClickFillInIntent(event_section_title, this)
+                }
             }
         }
 
@@ -116,7 +123,7 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
                 val code = Formatter.getDayCodeFromTS(it.startTS)
                 if (code != prevCode) {
                     val day = Formatter.getDayTitle(context, code)
-                    listItems.add(ListSection(day))
+                    listItems.add(ListSection(day, code))
                     prevCode = code
                 }
                 listItems.add(ListEvent(it.id, it.startTS, it.endTS, it.title, it.description, it.getIsAllDay(), it.color, it.location))

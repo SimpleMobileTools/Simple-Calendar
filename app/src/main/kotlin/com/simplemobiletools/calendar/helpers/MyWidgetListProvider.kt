@@ -9,7 +9,6 @@ import android.content.Intent
 import android.net.Uri
 import android.widget.RemoteViews
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.activities.DayActivity
 import com.simplemobiletools.calendar.activities.SplashActivity
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.getNowSeconds
@@ -85,7 +84,7 @@ class MyWidgetListProvider : AppWidgetProvider() {
     }
 
     private fun launchDayActivity(context: Context) {
-        Intent(context, DayActivity::class.java).apply {
+        Intent(context, SplashActivity::class.java).apply {
             putExtra(DAY_CODE, Formatter.getDayCodeFromDateTime(DateTime()))
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             context.startActivity(this)

@@ -145,7 +145,7 @@ class WidgetListConfigureActivity : SimpleActivity() {
         var dateTime = DateTime.now().withTime(0, 0, 0, 0).plusDays(1)
         var code = Formatter.getDayCodeFromTS(dateTime.seconds())
         var day = Formatter.getDayTitle(this, code)
-        listItems.add(ListSection(day))
+        listItems.add(ListSection(day, code))
 
         var time = dateTime.withHourOfDay(7)
         listItems.add(ListEvent(1, time.seconds(), time.plusMinutes(30).seconds(), getString(R.string.sample_title_1), getString(R.string.sample_description_1), false, config.primaryColor))
@@ -155,7 +155,7 @@ class WidgetListConfigureActivity : SimpleActivity() {
         dateTime = dateTime.plusDays(1)
         code = Formatter.getDayCodeFromTS(dateTime.seconds())
         day = Formatter.getDayTitle(this, code)
-        listItems.add(ListSection(day))
+        listItems.add(ListSection(day, code))
 
         time = dateTime.withHourOfDay(8)
         listItems.add(ListEvent(3, time.seconds(), time.plusHours(1).seconds(), getString(R.string.sample_title_3), "", false, config.primaryColor))

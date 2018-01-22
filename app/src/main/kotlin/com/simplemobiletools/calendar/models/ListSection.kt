@@ -1,5 +1,3 @@
 package com.simplemobiletools.calendar.models
 
-class ListSection(val title: String, val isToday: Boolean = false) : ListItem() {
-    override fun toString() = "ListSection {title=$title, isToday=$isToday}"
-}
+data class ListSection(val title: String, val code: String, val isToday: Boolean = false) : ListItem()
