@@ -1,7 +1,6 @@
 package com.simplemobiletools.calendar.fragments
 
 import android.support.v4.app.Fragment
-import org.joda.time.DateTime
 
 abstract class MyFragmentHolder : Fragment() {
     abstract fun goToToday()

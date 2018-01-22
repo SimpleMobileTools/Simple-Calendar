@@ -557,7 +557,11 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     private fun refreshViewPager() {
-        currentFragments.last().refreshEvents()
+        if (!isActivityDestroyed()) {
+            runOnUiThread {
+                currentFragments.last().refreshEvents()
+            }
+        }
     }
 
     private fun tryImportEvents() {
