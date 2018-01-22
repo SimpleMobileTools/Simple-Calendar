@@ -11,7 +11,6 @@ import android.view.ViewGroup
 import android.widget.DatePicker
 import android.widget.RelativeLayout
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.activities.DayActivity
 import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.adapters.DayEventsAdapter
@@ -22,7 +21,6 @@ import com.simplemobiletools.calendar.helpers.DAY_CODE
 import com.simplemobiletools.calendar.helpers.EVENT_ID
 import com.simplemobiletools.calendar.helpers.EVENT_OCCURRENCE_TS
 import com.simplemobiletools.calendar.helpers.Formatter
-import com.simplemobiletools.calendar.interfaces.DeleteEventsListener
 import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.commons.extensions.applyColorFilter
@@ -33,7 +31,7 @@ import kotlinx.android.synthetic.main.top_navigation.view.*
 import org.joda.time.DateTime
 import java.util.*
 
-class DayFragment : Fragment(), DeleteEventsListener {
+class DayFragment : Fragment() {
     var mListener: NavigationListener? = null
     private var mTextColor = 0
     private var mDayCode = ""
@@ -140,7 +138,7 @@ class DayFragment : Fragment(), DeleteEventsListener {
         if (activity == null)
             return
 
-        DayEventsAdapter(activity as SimpleActivity, events, this, mHolder.day_events) {
+        DayEventsAdapter(activity as SimpleActivity, events, mHolder.day_events) {
             editEvent(it as Event)
         }.apply {
             setupDragListener(true)
@@ -155,17 +153,5 @@ class DayFragment : Fragment(), DeleteEventsListener {
             putExtra(EVENT_OCCURRENCE_TS, event.startTS)
             startActivity(this)
         }
-    }
-
-    override fun deleteItems(ids: ArrayList<Int>) {
-        val eventIDs = Array(ids.size, { i -> (ids[i].toString()) })
-        context!!.dbHelper.deleteEvents(eventIDs, true)
-    }
-
-    override fun addEventRepeatException(parentIds: ArrayList<Int>, timestamps: ArrayList<Int>) {
-        parentIds.forEachIndexed { index, value ->
-            context!!.dbHelper.addEventRepeatException(parentIds[index], timestamps[index], true)
-        }
-        (activity as DayActivity).recheckEvents()
     }
 }

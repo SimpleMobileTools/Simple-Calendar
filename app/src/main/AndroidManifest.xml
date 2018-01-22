@@ -97,13 +97,8 @@
             android:parentActivityName="com.simplemobiletools.commons.activities.AboutActivity"/>
 
         <activity
-            android:name=".activities.DayActivity"
-            android:label="@string/details"
-            android:parentActivityName=".activities.MainActivity"/>
-
-        <activity
             android:name=".activities.EventActivity"
-            android:parentActivityName=".activities.DayActivity">
+            android:parentActivityName=".activities.MainActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.EDIT"/>

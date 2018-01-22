@@ -7,9 +7,9 @@ import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.dialogs.DeleteEventDialog
 import com.simplemobiletools.calendar.extensions.config
+import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.shareEvents
 import com.simplemobiletools.calendar.helpers.Formatter
-import com.simplemobiletools.calendar.interfaces.DeleteEventsListener
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.commons.adapters.MyRecyclerViewAdapter
 import com.simplemobiletools.commons.extensions.applyColorFilter
@@ -18,8 +18,8 @@ import com.simplemobiletools.commons.extensions.beInvisibleIf
 import com.simplemobiletools.commons.views.MyRecyclerView
 import kotlinx.android.synthetic.main.event_item_day_view.view.*
 
-class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, val listener: DeleteEventsListener?, recyclerView: MyRecyclerView,
-                       itemClick: (Any) -> Unit) : MyRecyclerViewAdapter(activity, recyclerView, null, itemClick) {
+class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, recyclerView: MyRecyclerView, itemClick: (Any) -> Unit)
+    : MyRecyclerViewAdapter(activity, recyclerView, null, itemClick) {
 
     private var allDayString = resources.getString(R.string.all_day)
     private var replaceDescriptionWithLocation = activity.config.replaceDescription
@@ -112,9 +112,12 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, v
             events.removeAll(eventsToDelete)
 
             if (it) {
-                listener?.deleteItems(eventIds)
+                val eventIDs = Array(eventIds.size, { i -> (eventIds[i].toString()) })
+                activity.dbHelper.deleteEvents(eventIDs, true)
             } else {
-                listener?.addEventRepeatException(eventIds, timestamps)
+                eventIds.forEachIndexed { index, value ->
+                    activity.dbHelper.addEventRepeatException(value, timestamps[index], true)
+                }
             }
             removeSelectedItems()
         }
