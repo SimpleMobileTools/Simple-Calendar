@@ -59,6 +59,7 @@ class SettingsActivity : SimpleActivity() {
         setupFontSize()
         updateTextColors(settings_holder)
         checkPrimaryColor()
+        setupSectionColors()
     }
 
     override fun onPause() {
@@ -75,6 +76,13 @@ class SettingsActivity : SimpleActivity() {
                     dbHelper.updateEventType(eventType)
                 }
             }
+        }
+    }
+
+    private fun setupSectionColors() {
+        val adjustedPrimaryColor = getAdjustedPrimaryColor()
+        arrayListOf(reminders_label, caldav_label, weekly_view_label, monthly_view_label, simple_event_list_label, simple_font_size_label).forEach {
+            it.setTextColor(adjustedPrimaryColor)
         }
     }
 

@@ -109,27 +109,7 @@
 
         </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/settings_replace_description_holder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/medium_margin"
-            android:background="?attr/selectableItemBackground"
-            android:padding="@dimen/activity_margin">
-
-            <com.simplemobiletools.commons.views.MySwitchCompat
-                android:id="@+id/settings_replace_description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:clickable="false"
-                android:paddingLeft="@dimen/medium_margin"
-                android:paddingStart="@dimen/medium_margin"
-                android:text="@string/replace_description_with_location"/>
-
-        </RelativeLayout>
-
-        <ImageView
+        <View
             android:id="@+id/reminders_divider"
             android:layout_width="match_parent"
             android:layout_height="1px"
@@ -143,11 +123,9 @@
             android:layout_marginLeft="@dimen/big_margin"
             android:layout_marginStart="@dimen/big_margin"
             android:layout_marginTop="@dimen/activity_margin"
-            android:alpha="0.6"
             android:text="@string/event_reminders"
             android:textAllCaps="true"
-            android:textColor="@color/divider_grey"
-            android:textSize="@dimen/small_text_size"/>
+            android:textSize="@dimen/smaller_text_size"/>
 
         <RelativeLayout
             android:id="@+id/settings_vibrate_holder"
@@ -274,7 +252,7 @@
 
         </RelativeLayout>
 
-        <ImageView
+        <View
             android:id="@+id/caldav_divider"
             android:layout_width="match_parent"
             android:layout_height="1px"
@@ -288,11 +266,9 @@
             android:layout_marginLeft="@dimen/big_margin"
             android:layout_marginStart="@dimen/big_margin"
             android:layout_marginTop="@dimen/activity_margin"
-            android:alpha="0.6"
             android:text="@string/caldav"
             android:textAllCaps="true"
-            android:textColor="@color/divider_grey"
-            android:textSize="@dimen/small_text_size"/>
+            android:textSize="@dimen/smaller_text_size"/>
 
         <RelativeLayout
             android:id="@+id/settings_caldav_sync_holder"
@@ -336,7 +312,7 @@
 
         </RelativeLayout>
 
-        <ImageView
+        <View
             android:id="@+id/weekly_view_divider"
             android:layout_width="match_parent"
             android:layout_height="1px"
@@ -350,11 +326,9 @@
             android:layout_marginLeft="@dimen/big_margin"
             android:layout_marginStart="@dimen/big_margin"
             android:layout_marginTop="@dimen/activity_margin"
-            android:alpha="0.6"
             android:text="@string/weekly_view"
             android:textAllCaps="true"
-            android:textColor="@color/divider_grey"
-            android:textSize="@dimen/small_text_size"/>
+            android:textSize="@dimen/smaller_text_size"/>
 
         <RelativeLayout
             android:id="@+id/settings_start_weekly_at_holder"
@@ -425,7 +399,7 @@
 
         </RelativeLayout>
 
-        <ImageView
+        <View
             android:id="@+id/monthly_view_divider"
             android:layout_width="match_parent"
             android:layout_height="1px"
@@ -439,11 +413,9 @@
             android:layout_marginLeft="@dimen/big_margin"
             android:layout_marginStart="@dimen/big_margin"
             android:layout_marginTop="@dimen/activity_margin"
-            android:alpha="0.6"
             android:text="@string/monthly_view"
             android:textAllCaps="true"
-            android:textColor="@color/divider_grey"
-            android:textSize="@dimen/small_text_size"/>
+            android:textSize="@dimen/smaller_text_size"/>
 
         <RelativeLayout
             android:id="@+id/settings_week_numbers_holder"
@@ -465,7 +437,7 @@
 
         </RelativeLayout>
 
-        <ImageView
+        <View
             android:id="@+id/events_list_view_divider"
             android:layout_width="match_parent"
             android:layout_height="1px"
@@ -479,11 +451,29 @@
             android:layout_marginLeft="@dimen/big_margin"
             android:layout_marginStart="@dimen/big_margin"
             android:layout_marginTop="@dimen/activity_margin"
-            android:alpha="0.6"
             android:text="@string/event_lists"
             android:textAllCaps="true"
-            android:textColor="@color/divider_grey"
-            android:textSize="@dimen/small_text_size"/>
+            android:textSize="@dimen/smaller_text_size"/>
+
+        <RelativeLayout
+            android:id="@+id/settings_replace_description_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:background="?attr/selectableItemBackground"
+            android:padding="@dimen/activity_margin">
+
+            <com.simplemobiletools.commons.views.MySwitchCompat
+                android:id="@+id/settings_replace_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:clickable="false"
+                android:paddingLeft="@dimen/medium_margin"
+                android:paddingStart="@dimen/medium_margin"
+                android:text="@string/replace_description_with_location"/>
+
+        </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/settings_display_past_events_holder"
@@ -519,7 +509,7 @@
 
         </RelativeLayout>
 
-        <ImageView
+        <View
             android:id="@+id/widgets_divider"
             android:layout_width="match_parent"
             android:layout_height="1px"
@@ -533,11 +523,9 @@
             android:layout_marginLeft="@dimen/big_margin"
             android:layout_marginStart="@dimen/big_margin"
             android:layout_marginTop="@dimen/activity_margin"
-            android:alpha="0.6"
             android:text="@string/widgets"
             android:textAllCaps="true"
-            android:textColor="@color/divider_grey"
-            android:textSize="@dimen/small_text_size"/>
+            android:textSize="@dimen/smaller_text_size"/>
 
         <RelativeLayout
             android:id="@+id/settings_font_size_holder"
