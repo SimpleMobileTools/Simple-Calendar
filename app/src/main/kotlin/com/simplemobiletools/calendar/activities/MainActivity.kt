@@ -249,6 +249,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private fun checkOpenIntents() {
         val dayCodeToOpen = intent.getStringExtra(DAY_CODE) ?: ""
         val openMonth = intent.getBooleanExtra(OPEN_MONTH, false)
+        intent.removeExtra(OPEN_MONTH)
+        intent.removeExtra(DAY_CODE)
         if (dayCodeToOpen.isNotEmpty()) {
             calendar_fab.beVisible()
             config.storedView = if (openMonth) MONTHLY_VIEW else DAILY_VIEW
@@ -258,6 +260,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
         val eventIdToOpen = intent.getIntExtra(EVENT_ID, 0)
         val eventOccurrenceToOpen = intent.getIntExtra(EVENT_OCCURRENCE_TS, 0)
+        intent.removeExtra(EVENT_ID)
+        intent.removeExtra(EVENT_OCCURRENCE_TS)
         if (eventIdToOpen != 0 && eventOccurrenceToOpen != 0) {
             Intent(this, EventActivity::class.java).apply {
                 putExtra(EVENT_ID, eventIdToOpen)
