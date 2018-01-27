@@ -159,6 +159,10 @@ class SettingsActivity : SimpleActivity() {
 
         SelectCalendarsDialog(this) {
             val newCalendarIds = config.getSyncedCalendarIdsAsList()
+            if (newCalendarIds.isEmpty() && !config.caldavSync) {
+                return@SelectCalendarsDialog
+            }
+
             settings_manage_synced_calendars_holder.beVisibleIf(newCalendarIds.isNotEmpty())
             settings_caldav_sync.isChecked = newCalendarIds.isNotEmpty()
             config.caldavSync = newCalendarIds.isNotEmpty()
