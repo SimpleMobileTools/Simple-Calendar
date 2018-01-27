@@ -71,6 +71,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         setContentView(R.layout.activity_main)
         appLaunched()
         checkWhatsNewDialog()
+        calendar_fab.beVisibleIf(config.storedView != YEARLY_VIEW)
 
         if (resources.getBoolean(R.bool.portrait_only)) {
             requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
@@ -106,7 +107,6 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         calendar_fab.setOnClickListener {
             launchNewEventIntent(currentFragments.last().getNewEventDayCode())
         }
-        calendar_fab.beVisibleIf(config.storedView != YEARLY_VIEW)
         checkOpenIntents()
     }
 
@@ -250,7 +250,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         val dayCodeToOpen = intent.getStringExtra(DAY_CODE) ?: ""
         val openMonth = intent.getBooleanExtra(OPEN_MONTH, false)
         if (dayCodeToOpen.isNotEmpty()) {
-            calendar_fab.beGone()
+            calendar_fab.beVisible()
             config.storedView = if (openMonth) MONTHLY_VIEW else DAILY_VIEW
             updateViewPager(dayCodeToOpen)
             return
@@ -485,7 +485,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     private fun updateView(view: Int) {
-        calendar_fab.beGoneIf(view == YEARLY_VIEW)
+        calendar_fab.beVisibleIf(view != YEARLY_VIEW)
         config.storedView = view
         updateViewPager()
         if (goToTodayButton?.isVisible == true) {
@@ -686,7 +686,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     private fun openDayAt(timestamp: Long) {
         val dayCode = Formatter.getDayCodeFromTS((timestamp / 1000).toInt())
-        calendar_fab.beGone()
+        calendar_fab.beVisible()
         config.storedView = DAILY_VIEW
         updateViewPager(dayCode)
     }
