@@ -3,7 +3,7 @@
     <string name="app_name">Simple Calendar</string>
     <string name="app_launcher_name">Kalender</string>
     <string name="change_view">Endre visning</string>
-    <string name="daily_view">Daily view</string>
+    <string name="daily_view">Dagvisning</string>
     <string name="weekly_view">Ukevisning</string>
     <string name="monthly_view">Månedsvisning</string>
     <string name="yearly_view">Årsvisning</string>
@@ -261,14 +261,14 @@
     <string name="sunday_alt">Søndag</string>
 
     <!-- List widget config example events -->
-    <string name="sample_title_1">Workout</string>
-    <string name="sample_description_1">Leg day</string>
-    <string name="sample_title_2">Meeting with John</string>
-    <string name="sample_description_2">In Rockstone garden</string>
-    <string name="sample_title_3">Library</string>
-    <string name="sample_title_4">Lunch with Mary</string>
-    <string name="sample_description_4">In the Plaza</string>
-    <string name="sample_title_5">Coffee time</string>
+    <string name="sample_title_1">Treningsøkt</string>
+    <string name="sample_description_1">Beintrening</string>
+    <string name="sample_title_2">Møte med John</string>
+    <string name="sample_description_2">I hagen</string>
+    <string name="sample_title_3">Bibliotek</string>
+    <string name="sample_title_4">Lunsj med Mari</string>
+    <string name="sample_description_4">På torget</string>
+    <string name="sample_title_5">Kaffepause</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
