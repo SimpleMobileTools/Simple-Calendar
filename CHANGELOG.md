@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 3.2.2 *(2018-01-27)*
+----------------------------
+
+ * Fixed some cases of reminders not triggering
+ * Properly handle importing events with multiple lines long description
+ * Properly show the New Event button whenever appropriate
+
 Version 3.2.1 *(2018-01-22)*
 ----------------------------
 
