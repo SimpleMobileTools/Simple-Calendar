@@ -19,12 +19,14 @@ class NotificationReceiver : BroadcastReceiver() {
 
         context.updateListWidget()
         val id = intent.getIntExtra(EVENT_ID, -1)
-        if (id == -1)
+        if (id == -1) {
             return
+        }
 
         val event = context.dbHelper.getEventWithId(id)
-        if (event == null || event.getReminders().isEmpty())
+        if (event == null || event.getReminders().isEmpty()) {
             return
+        }
 
         if (!event.ignoreEventOccurrences.contains(Formatter.getDayCodeFromTS(event.startTS).toInt())) {
             context.notifyEvent(event)

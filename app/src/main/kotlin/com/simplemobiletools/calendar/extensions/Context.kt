@@ -19,6 +19,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import com.simplemobiletools.calendar.BuildConfig
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.activities.SimpleActivity
@@ -31,6 +32,7 @@ import com.simplemobiletools.calendar.services.SnoozeService
 import com.simplemobiletools.commons.extensions.*
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
+import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -95,8 +97,9 @@ fun Context.scheduleNextEventReminder(event: Event?, dbHelper: DBHelper) {
 }
 
 fun Context.scheduleEventIn(notifTS: Long, event: Event) {
-    if (notifTS < System.currentTimeMillis())
+    if (notifTS < System.currentTimeMillis()) {
         return
+    }
 
     val pendingIntent = getNotificationIntent(applicationContext, event)
     val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
@@ -194,7 +197,11 @@ private fun getNotification(context: Context, pendingIntent: PendingIntent, even
         }
     }
 
-    val soundUri = Uri.parse(context.config.reminderSound)
+    var soundUri = Uri.parse(context.config.reminderSound)
+    if (soundUri.scheme == "file") {
+        soundUri = context.getFilePublicUri(File(soundUri.path), BuildConfig.APPLICATION_ID)
+    }
+
     val builder = NotificationCompat.Builder(context)
             .setContentTitle(event.title)
             .setContentText(content)
