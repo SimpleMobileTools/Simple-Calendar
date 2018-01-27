@@ -34,6 +34,7 @@ class IcsImporter(val activity: SimpleActivity) {
     private var curCategoryColor = -2
     private var isNotificationDescription = false
     private var isProperReminderAction = false
+    private var isDescription = false
     private var curReminderTriggerMinutes = -1
 
     private var eventsImported = 0
@@ -62,6 +63,14 @@ class IcsImporter(val activity: SimpleActivity) {
                         eventsFailed--
                     }
 
+                    if (isDescription) {
+                        if (line.startsWith('\t')) {
+                            curDescription += line.trimStart('\t').replace("\\n", "\n")
+                        } else {
+                            isDescription = false
+                        }
+                    }
+
                     if (line == BEGIN_EVENT) {
                         resetValues()
                         curEventType = defaultEventType
@@ -77,6 +86,7 @@ class IcsImporter(val activity: SimpleActivity) {
                         curTitle = getTitle(curTitle).replace("\\n", "\n")
                     } else if (line.startsWith(DESCRIPTION) && !isNotificationDescription) {
                         curDescription = line.substring(DESCRIPTION.length).replace("\\n", "\n")
+                        isDescription = true
                     } else if (line.startsWith(UID)) {
                         curImportId = line.substring(UID.length).trim()
                     } else if (line.startsWith(RRULE)) {
