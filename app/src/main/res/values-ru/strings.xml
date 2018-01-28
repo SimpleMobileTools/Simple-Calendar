@@ -59,23 +59,23 @@
     <string name="the_last_day">Последний день</string>
     <string name="repeat_on_the_same_day">Повторять в этот же день каждый месяц</string>
     <string name="repeat_on_the_last_day">Повторять в последний день месяца</string>
-    <string name="repeat_every_m">Repeat every</string>
-    <string name="every_m">Every</string>
-    <string name="first_m">first</string>
-    <string name="second_m">second</string>
-    <string name="third_m">third</string>
-    <string name="fourth_m">fourth</string>
-    <string name="last_m">last</string>
+    <string name="repeat_every_m">Повторять каждый</string>
+    <string name="every_m">Каждый</string>
+    <string name="first_m">первый</string>
+    <string name="second_m">второй</string>
+    <string name="third_m">третий</string>
+    <string name="fourth_m">четвёртый</string>
+    <string name="last_m">последний</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
-    <string name="repeat_every_f">Repeat every</string>
-    <string name="every_f">Every</string>
-    <string name="first_f">first</string>
-    <string name="second_f">second</string>
-    <string name="third_f">third</string>
-    <string name="fourth_f">fourth</string>
-    <string name="last_f">last</string>
+    <string name="repeat_every_f">Повторять каждый</string>
+    <string name="every_f">Каждый</string>
+    <string name="first_f">первый</string>
+    <string name="second_f">второй</string>
+    <string name="third_f">третий</string>
+    <string name="fourth_f">четвёртый</string>
+    <string name="last_f">последний</string>
 
     <plurals name="days">
         <item quantity="one">%d день</item>
@@ -193,7 +193,7 @@
 
     <!-- Settings -->
     <string name="manage_event_types">Управление типами событий</string>
-    <string name="use_24_hour_format">Использовать 24-х часовой формат</string>
+    <string name="use_24_hour_format">Использовать 24-часовой формат</string>
     <string name="sunday_first">Воскресенье - начало недели</string>
     <string name="start_day_at">Начало дня (неделя)</string>
     <string name="end_day_at">Окончание дня (неделя)</string>
@@ -280,7 +280,7 @@
     <string name="sample_title_1">Тренировка</string>
     <string name="sample_description_1">День ног</string>
     <string name="sample_title_2">Встреча с Женей</string>
-    <string name="sample_description_2">У метро Невский проспект</string>
+    <string name="sample_description_2">У метро "Невский проспект"</string>
     <string name="sample_title_3">Библиотека</string>
     <string name="sample_title_4">Ужин с Машей</string>
     <string name="sample_description_4">В КЭТ на Караванной</string>
@@ -300,7 +300,7 @@
 
         Разрешение на чтение контактов требуется только при импорте дней рождения.
 
-        Это приложение является лишь частью более крупной серии приложений. Вы можете найти остальные на http://www.simplemobiletools.com
+        Это приложение является лишь частью крупной серии приложений. Вы можете найти остальные на http://www.simplemobiletools.com
     </string>
 
     <!--
