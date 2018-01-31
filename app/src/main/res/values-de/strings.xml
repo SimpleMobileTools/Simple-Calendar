@@ -186,7 +186,6 @@
     <string name="week_numbers">Zeige Kalenderwoche an</string>
     <string name="vibrate">Vibration bei Erinnerung</string>
     <string name="reminder_sound">Erinnerungston</string>
-    <string name="default_event_reminder">Standard Termin Erinnerung</string>
     <string name="no_ringtone_picker">Keine App zum Setzen des Klingeltons gefunden</string>
     <string name="no_ringtone_selected">Kein Klingelton gewählt</string>
     <string name="day_end_before_start">Terminbeginn kann nicht vor Terminende liegen</string>

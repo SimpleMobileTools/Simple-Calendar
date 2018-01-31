@@ -186,7 +186,6 @@
     <string name="week_numbers">Vis ugenumre</string>
     <string name="vibrate">Vibrer under påmindelser</string>
     <string name="reminder_sound">Lyd til påmindelser</string>
-    <string name="default_event_reminder">Påmindelsesstandard</string>
     <string name="no_ringtone_picker">Der blev ikke fundet en app til indstilling af ringetone</string>
     <string name="no_ringtone_selected">Ingen</string>
     <string name="day_end_before_start">Dagen skal starte inden den slutter!</string>

@@ -191,7 +191,6 @@
     <string name="week_numbers">Pokazuj numery tygodnia</string>
     <string name="vibrate">Powiadamiaj wibracjami o wydarzeniu</string>
     <string name="reminder_sound">Dźwięk powiadomień</string>
-    <string name="default_event_reminder">Domyślne przypomnienie o wydarzeniach</string>
     <string name="no_ringtone_picker">Nie znalazłem aplikacji mogącej ustawiać dzwonki</string>
     <string name="no_ringtone_selected">Żaden</string>
     <string name="day_end_before_start">Dzień nie może zakończyć się wcześniej niż się zaczyna</string>

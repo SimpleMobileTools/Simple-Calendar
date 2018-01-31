@@ -186,7 +186,6 @@
     <string name="week_numbers">주 번호 표시</string>
     <string name="vibrate">알림 시 진동</string>
     <string name="reminder_sound">알림 소리</string>
-    <string name="default_event_reminder">기본 이벤트 알림</string>
     <string name="no_ringtone_picker">벨소리를 설정할 수 있는 앱이 없습니다</string>
     <string name="no_ringtone_selected">없음</string>
     <string name="day_end_before_start">요일은 시작하기 전에 끝날 수 없습니다</string>

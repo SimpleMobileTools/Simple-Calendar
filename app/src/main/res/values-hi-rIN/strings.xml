@@ -187,7 +187,6 @@
     <string name="week_numbers">सफ्ताह क्रमांक दिखाए</string>
     <string name="vibrate">Vibrate on reminder notification</string>
     <string name="reminder_sound">Reminder sound</string>
-    <string name="default_event_reminder">Default event reminder</string>
     <string name="no_ringtone_picker">No app capable of setting ringtone found</string>
     <string name="no_ringtone_selected">None</string>
     <string name="day_end_before_start">The day cannot end earlier than it starts</string>

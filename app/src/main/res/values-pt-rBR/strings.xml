@@ -186,7 +186,6 @@
     <string name="week_numbers">Mostrar número das semanas</string>
     <string name="vibrate">Vibrar ao notificar sobre o lembrete</string>
     <string name="reminder_sound">Som do lembrete</string>
-    <string name="default_event_reminder">Lembrete padrão</string>
     <string name="no_ringtone_picker">Não foi encontrado nenhum aplicativo capaz de definir o som</string>
     <string name="no_ringtone_selected">Nenhum</string>
     <string name="day_end_before_start">O dia final não pode ser antes do início</string>

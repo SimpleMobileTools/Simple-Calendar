@@ -53,7 +53,15 @@ class Config(context: Context) : BaseConfig(context) {
 
     var defaultReminderMinutes: Int
         get() = prefs.getInt(REMINDER_MINUTES, 10)
-        set(mins) = prefs.edit().putInt(REMINDER_MINUTES, mins).apply()
+        set(defaultReminderMinutes) = prefs.edit().putInt(REMINDER_MINUTES, defaultReminderMinutes).apply()
+
+    var defaultReminderMinutes2: Int
+        get() = prefs.getInt(REMINDER_MINUTES_2, REMINDER_OFF)
+        set(defaultReminderMinutes2) = prefs.edit().putInt(REMINDER_MINUTES_2, defaultReminderMinutes2).apply()
+
+    var defaultReminderMinutes3: Int
+        get() = prefs.getInt(REMINDER_MINUTES_3, REMINDER_OFF)
+        set(defaultReminderMinutes3) = prefs.edit().putInt(REMINDER_MINUTES_3, defaultReminderMinutes3).apply()
 
     var snoozeDelay: Int
         get() = prefs.getInt(SNOOZE_DELAY, 10)

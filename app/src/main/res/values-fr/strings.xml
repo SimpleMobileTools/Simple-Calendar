@@ -186,7 +186,6 @@
     <string name="week_numbers">Afficher les numéros de semaine</string>
     <string name="vibrate">Vibrer à la notification de rappel</string>
     <string name="reminder_sound">Son de rappel</string>
-    <string name="default_event_reminder">Rappel d\'événement par défaut</string>
     <string name="no_ringtone_picker">Aucune application capable de configurer la sonnerie trouvée</string>
     <string name="no_ringtone_selected">Aucune</string>
     <string name="day_end_before_start">Le jour ne peut pas se terminer plus tôt qu\'il ne débute</string>

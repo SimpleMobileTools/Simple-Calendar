@@ -56,7 +56,6 @@ class SettingsActivity : SimpleActivity() {
         setupVibrate()
         setupReminderSound()
         setupSnoozeDelay()
-        setupEventReminder()
         setupDisplayPastEvents()
         setupFontSize()
         updateTextColors(settings_holder)
@@ -298,18 +297,6 @@ class SettingsActivity : SimpleActivity() {
 
     private fun updateSnoozeText() {
         settings_snooze_delay.text = res.getQuantityString(R.plurals.by_minutes, config.snoozeDelay, config.snoozeDelay)
-    }
-
-    private fun setupEventReminder() {
-        var reminderMinutes = config.defaultReminderMinutes
-        settings_default_reminder.text = getFormattedMinutes(reminderMinutes)
-        settings_default_reminder_holder.setOnClickListener {
-            showEventReminderDialog(reminderMinutes) {
-                config.defaultReminderMinutes = it
-                reminderMinutes = it
-                settings_default_reminder.text = getFormattedMinutes(it)
-            }
-        }
     }
 
     private fun getHoursString(hours: Int): String {

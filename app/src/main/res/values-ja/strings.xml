@@ -186,7 +186,6 @@
     <string name="week_numbers">週番号を表示</string>
     <string name="vibrate">リマインダー通知で振動</string>
     <string name="reminder_sound">Reminder sound</string>
-    <string name="default_event_reminder">デフォルトのイベント リマインダー</string>
     <string name="no_ringtone_picker">No app capable of setting ringtone found</string>
     <string name="no_ringtone_selected">None</string>
     <string name="day_end_before_start">The day cannot end earlier than it starts</string>

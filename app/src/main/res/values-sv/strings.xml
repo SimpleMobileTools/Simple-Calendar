@@ -186,7 +186,6 @@
     <string name="week_numbers">Visa veckonumret i månadsvyn</string>
     <string name="vibrate">Vibrera vid påminnelseaviseringen</string>
     <string name="reminder_sound">Påminnelseljud</string>
-    <string name="default_event_reminder">Standardhändelsepåminnelse</string>
     <string name="no_ringtone_picker">Hittade ingen app som kan ställa in ljudet</string>
     <string name="no_ringtone_selected">Ingen</string>
     <string name="day_end_before_start">Dagen kan inte börja innan den tar slut</string>
