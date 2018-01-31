@@ -241,9 +241,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     private fun closeSearch() {
-        if (mSearchMenuItem != null) {
-            MenuItemCompat.collapseActionView(mSearchMenuItem)
-        }
+        mSearchMenuItem?.collapseActionView()
     }
 
     private fun checkOpenIntents() {
