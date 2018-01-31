@@ -7,6 +7,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Parcelable
 import android.text.TextUtils
+import com.simplemobiletools.calendar.BuildConfig
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.dialogs.CustomEventReminderDialog
 import com.simplemobiletools.calendar.dialogs.SelectCalendarsDialog
@@ -23,6 +24,7 @@ import com.simplemobiletools.commons.helpers.PERMISSION_READ_CALENDAR
 import com.simplemobiletools.commons.helpers.PERMISSION_WRITE_CALENDAR
 import com.simplemobiletools.commons.models.RadioItem
 import kotlinx.android.synthetic.main.activity_settings.*
+import java.io.File
 import java.util.*
 
 class SettingsActivity : SimpleActivity() {
@@ -367,12 +369,20 @@ class SettingsActivity : SimpleActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode == RESULT_OK) {
             if (requestCode == GET_RINGTONE_URI) {
-                val uri = data?.getParcelableExtra<Parcelable>(RingtoneManager.EXTRA_RINGTONE_PICKED_URI)
+                var uri = data?.getParcelableExtra<Parcelable>(RingtoneManager.EXTRA_RINGTONE_PICKED_URI)
+
                 if (uri == null) {
                     config.reminderSound = ""
                 } else {
-                    settings_reminder_sound.text = RingtoneManager.getRingtone(this, uri as Uri)?.getTitle(this)
-                    config.reminderSound = uri.toString()
+                    try {
+                        if ((uri as Uri).scheme == "file") {
+                            uri = getFilePublicUri(File(uri.path), BuildConfig.APPLICATION_ID)
+                        }
+                        settings_reminder_sound.text = RingtoneManager.getRingtone(this, uri)?.getTitle(this)
+                        config.reminderSound = uri.toString()
+                    } catch (e: Exception) {
+                        showErrorToast(e)
+                    }
                 }
             }
         }

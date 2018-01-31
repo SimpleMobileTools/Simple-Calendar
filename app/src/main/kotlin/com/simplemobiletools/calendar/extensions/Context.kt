@@ -199,7 +199,10 @@ private fun getNotification(context: Context, pendingIntent: PendingIntent, even
 
     var soundUri = Uri.parse(context.config.reminderSound)
     if (soundUri.scheme == "file") {
-        soundUri = context.getFilePublicUri(File(soundUri.path), BuildConfig.APPLICATION_ID)
+        try {
+            soundUri = context.getFilePublicUri(File(soundUri.path), BuildConfig.APPLICATION_ID)
+        } catch (ignored: Exception) {
+        }
     }
 
     val builder = NotificationCompat.Builder(context)
