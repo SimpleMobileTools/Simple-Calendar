@@ -499,7 +499,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private fun updateViewPager(dayCode: String? = Formatter.getTodayCode(applicationContext)) {
         val fragment = getFragmentsHolder()
         currentFragments.forEach {
-            supportFragmentManager.beginTransaction().remove(it).commit()
+            supportFragmentManager.beginTransaction().remove(it).commitNow()
         }
         currentFragments.clear()
         currentFragments.add(fragment)
