@@ -427,7 +427,9 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     }
 
     fun deleteAllEvents() {
-
+        val cursor = getEventsCursor()
+        val events = fillEvents(cursor).map { it.id.toString() }.toTypedArray()
+        deleteEvents(events, true)
     }
 
     fun deleteEvents(ids: Array<String>, deleteFromCalDAV: Boolean) {
