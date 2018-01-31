@@ -18,6 +18,7 @@ import com.simplemobiletools.calendar.helpers.FONT_SIZE_LARGE
 import com.simplemobiletools.calendar.helpers.FONT_SIZE_MEDIUM
 import com.simplemobiletools.calendar.helpers.FONT_SIZE_SMALL
 import com.simplemobiletools.calendar.models.EventType
+import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.PERMISSION_READ_CALENDAR
@@ -49,6 +50,7 @@ class SettingsActivity : SimpleActivity() {
         setupManageEventTypes()
         setupHourFormat()
         setupSundayFirst()
+        setupDeleteAllEvents()
         setupReplaceDescription()
         setupWeekNumbers()
         setupWeeklyStart()
@@ -201,6 +203,14 @@ class SettingsActivity : SimpleActivity() {
         settings_sunday_first_holder.setOnClickListener {
             settings_sunday_first.toggle()
             config.isSundayFirst = settings_sunday_first.isChecked
+        }
+    }
+
+    private fun setupDeleteAllEvents() {
+        settings_delete_all_events_holder.setOnClickListener {
+            ConfirmationDialog(this, messageId = R.string.delete_all_events_confirmation) {
+                dbHelper.deleteAllEvents()
+            }
         }
     }
 

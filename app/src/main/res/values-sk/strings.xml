@@ -202,6 +202,8 @@
     <string name="snooze_delay">Posunúť pripomienku s Odložiť o</string>
     <string name="widgets">Widgety</string>
     <string name="replace_description_with_location">Nahradiť Popis udalosti Miestom v listových zobrazeniach</string>
+    <string name="delete_all_events">Odstrániť všetky udalosti</string>
+    <string name="delete_all_events_confirmation">Ste si istý, že chcete odstrániť všetky udalosti? Všetky typy udalostí a nastavenia ostanú nedotknuté.</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

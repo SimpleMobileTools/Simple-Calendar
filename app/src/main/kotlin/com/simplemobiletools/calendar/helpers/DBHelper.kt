@@ -426,6 +426,10 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         return fillEvents(cursor)
     }
 
+    fun deleteAllEvents() {
+
+    }
+
     fun deleteEvents(ids: Array<String>, deleteFromCalDAV: Boolean) {
         val args = TextUtils.join(", ", ids)
         val selection = "$MAIN_TABLE_NAME.$COL_ID IN ($args)"

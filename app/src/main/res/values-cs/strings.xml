@@ -202,6 +202,8 @@
     <string name="snooze_delay">Odložit připomenutí pomocí funkce Snooze by</string>
     <string name="widgets">Widgety</string>
     <string name="replace_description_with_location">Replace Description with Location at list view entries</string>
+    <string name="delete_all_events">Delete all events</string>
+    <string name="delete_all_events_confirmation">Are you sure you want to delete all events? This will leave your event types and other settings intact.</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

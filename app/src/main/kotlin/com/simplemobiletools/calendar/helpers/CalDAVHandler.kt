@@ -412,7 +412,6 @@ class CalDAVHandler(val context: Context) {
         try {
             context.contentResolver.delete(contentUri, null, null)
         } catch (ignored: Exception) {
-
         }
     }
 

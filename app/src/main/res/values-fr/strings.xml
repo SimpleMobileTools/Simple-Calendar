@@ -195,6 +195,8 @@
     <string name="snooze_delay">Reporter le rappel avec Snooze de</string>
     <string name="widgets">Widgets</string>
     <string name="replace_description_with_location">Remplacer la description par la position dans la vue sous forme de liste</string>
+    <string name="delete_all_events">Delete all events</string>
+    <string name="delete_all_events_confirmation">Are you sure you want to delete all events? This will leave your event types and other settings intact.</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
