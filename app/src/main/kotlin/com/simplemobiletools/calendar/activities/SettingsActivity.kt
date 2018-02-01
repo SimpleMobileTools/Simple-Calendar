@@ -11,7 +11,6 @@ import com.simplemobiletools.calendar.BuildConfig
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.dialogs.CustomEventReminderDialog
 import com.simplemobiletools.calendar.dialogs.SelectCalendarsDialog
-import com.simplemobiletools.calendar.dialogs.SnoozePickerDialog
 import com.simplemobiletools.calendar.extensions.*
 import com.simplemobiletools.calendar.helpers.CalDAVHandler
 import com.simplemobiletools.calendar.helpers.FONT_SIZE_LARGE
@@ -50,6 +49,7 @@ class SettingsActivity : SimpleActivity() {
         setupManageEventTypes()
         setupHourFormat()
         setupSundayFirst()
+        setupAvoidWhatsNew()
         setupDeleteAllEvents()
         setupReplaceDescription()
         setupWeekNumbers()
@@ -202,6 +202,14 @@ class SettingsActivity : SimpleActivity() {
         settings_sunday_first_holder.setOnClickListener {
             settings_sunday_first.toggle()
             config.isSundayFirst = settings_sunday_first.isChecked
+        }
+    }
+
+    private fun setupAvoidWhatsNew() {
+        settings_avoid_whats_new.isChecked = config.avoidWhatsNew
+        settings_avoid_whats_new_holder.setOnClickListener {
+            settings_avoid_whats_new.toggle()
+            config.avoidWhatsNew = settings_avoid_whats_new.isChecked
         }
     }
 
