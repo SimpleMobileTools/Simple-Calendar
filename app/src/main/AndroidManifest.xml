@@ -119,6 +119,10 @@
             android:label="@string/event_types"
             android:parentActivityName=".activities.SettingsActivity"/>
 
+        <activity
+            android:name=".activities.SnoozeReminderActivity"
+            android:theme="@style/Theme.Transparent"/>
+
         <receiver
             android:name=".helpers.MyWidgetMonthlyProvider"
             android:icon="@drawable/img_widget_monthly_preview"
@@ -148,8 +152,6 @@
         <service
             android:name=".services.WidgetService"
             android:permission="android.permission.BIND_REMOTEVIEWS"/>
-
-        <service android:name=".services.SnoozeService"/>
 
         <receiver android:name=".receivers.NotificationReceiver"/>
 

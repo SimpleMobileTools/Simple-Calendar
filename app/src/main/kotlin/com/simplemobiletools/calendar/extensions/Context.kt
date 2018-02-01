@@ -23,12 +23,12 @@ import com.simplemobiletools.calendar.BuildConfig
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.activities.SimpleActivity
+import com.simplemobiletools.calendar.activities.SnoozeReminderActivity
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.models.*
 import com.simplemobiletools.calendar.receivers.CalDAVSyncReceiver
 import com.simplemobiletools.calendar.receivers.NotificationReceiver
-import com.simplemobiletools.calendar.services.SnoozeService
 import com.simplemobiletools.commons.extensions.*
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
@@ -217,11 +217,13 @@ private fun getNotification(context: Context, pendingIntent: PendingIntent, even
             .setChannelId(channelId)
             .addAction(R.drawable.ic_snooze, context.getString(R.string.snooze), getSnoozePendingIntent(context, event))
 
-    if (context.isLollipopPlus())
+    if (context.isLollipopPlus()) {
         builder.setVisibility(Notification.VISIBILITY_PUBLIC)
+    }
 
-    if (context.config.vibrateOnReminder)
+    if (context.config.vibrateOnReminder) {
         builder.setVibrate(longArrayOf(0, 300, 300, 300))
+    }
 
     return builder.build()
 }
@@ -236,10 +238,9 @@ private fun getPendingIntent(context: Context, event: Event): PendingIntent {
 }
 
 private fun getSnoozePendingIntent(context: Context, event: Event): PendingIntent {
-    val intent = Intent(context, SnoozeService::class.java).setAction("snooze")
+    val intent = Intent(context, SnoozeReminderActivity::class.java).setAction("snooze")
     intent.putExtra(EVENT_ID, event.id)
-    intent.putExtra(EVENT_OCCURRENCE_TS, event.startTS)
-    return PendingIntent.getService(context, event.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+    return PendingIntent.getActivity(context, event.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 }
 
 fun Context.launchNewEventIntent(dayCode: String = Formatter.getTodayCode(this)) {

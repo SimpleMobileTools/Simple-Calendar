@@ -45,31 +45,37 @@ fun BaseSimpleActivity.getTempFile(): File? {
     return File(folder, "events.ics")
 }
 
-fun Activity.showEventReminderDialog(curMinutes: Int, callback: (minutes: Int) -> Unit) {
+fun Activity.showEventReminderDialog(curMinutes: Int, isSnoozePicker: Boolean = false, cancelCallback: (() -> Unit)? = null, callback: (minutes: Int) -> Unit) {
     hideKeyboard()
     val minutes = TreeSet<Int>()
     minutes.apply {
-        add(-1)
-        add(0)
+        if (!isSnoozePicker) {
+            add(-1)
+            add(0)
+        }
+        add(5)
         add(10)
+        add(20)
         add(30)
+        add(60)
         add(curMinutes)
     }
 
     val items = ArrayList<RadioItem>(minutes.size + 1)
     minutes.mapIndexedTo(items, { index, value ->
-        RadioItem(index, getFormattedMinutes(value), value)
+        RadioItem(index, getFormattedMinutes(value, !isSnoozePicker), value)
     })
 
     var selectedIndex = 0
     minutes.forEachIndexed { index, value ->
-        if (value == curMinutes)
+        if (value == curMinutes) {
             selectedIndex = index
+        }
     }
 
     items.add(RadioItem(-2, getString(R.string.custom)))
 
-    RadioGroupDialog(this, items, selectedIndex) {
+    RadioGroupDialog(this, items, selectedIndex, showOKButton = isSnoozePicker, cancelCallback = cancelCallback) {
         if (it == -2) {
             CustomEventReminderDialog(this) {
                 callback(it)
