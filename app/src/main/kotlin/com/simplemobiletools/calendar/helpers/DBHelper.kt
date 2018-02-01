@@ -38,7 +38,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private val COL_LAST_UPDATED = "last_updated"
     private val COL_EVENT_SOURCE = "event_source"
     private val COL_LOCATION = "location"
-    private val COL_SOURCE = "source"   // deprecated
 
     private val META_TABLE_NAME = "events_meta"
     private val COL_EVENT_ID = "event_id"
@@ -65,9 +64,9 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private val mDb: SQLiteDatabase = writableDatabase
 
     companion object {
-        private val DB_VERSION = 19
-        val DB_NAME = "events.db"
-        val REGULAR_EVENT_TYPE_ID = 1
+        private const val DB_VERSION = 19
+        const val DB_NAME = "events.db"
+        const val REGULAR_EVENT_TYPE_ID = 1
         var dbInstance: DBHelper? = null
 
         fun newInstance(context: Context): DBHelper {
