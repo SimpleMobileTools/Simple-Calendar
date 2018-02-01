@@ -1,6 +1,17 @@
 Changelog
 ==========
 
+Version 3.2.3 *(2018-02-01)*
+----------------------------
+
+ * Fixed blank screens in some cases
+ * Make sure the Add New Event button works when opening the app from a widget
+ * Removed the "Default event reminder" from settings, remember last used values
+ * Allow selecting Snooze interval at pressing Snooze
+ * Allow disabling displaying of What's New
+ * Add a Back button at the actionmenu when opening a subview
+ * Allow deleting all events at once without reseting event types and other settings
+
 Version 3.2.2 *(2018-01-27)*
 ----------------------------
 
