@@ -72,7 +72,11 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         appLaunched()
         checkWhatsNewDialog()
         calendar_fab.beVisibleIf(config.storedView != YEARLY_VIEW)
+        calendar_fab.setOnClickListener {
+            launchNewEventIntent(currentFragments.last().getNewEventDayCode())
+        }
 
+        storeStateVariables()
         if (resources.getBoolean(R.bool.portrait_only)) {
             requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         }
@@ -93,7 +97,6 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             }
         }
 
-        storeStateVariables()
         updateViewPager()
 
         if (!hasPermission(PERMISSION_WRITE_CALENDAR) || !hasPermission(PERMISSION_READ_CALENDAR)) {
@@ -104,9 +107,6 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             refreshCalDAVCalendars(false)
         }
 
-        calendar_fab.setOnClickListener {
-            launchNewEventIntent(currentFragments.last().getNewEventDayCode())
-        }
         checkOpenIntents()
     }
 
