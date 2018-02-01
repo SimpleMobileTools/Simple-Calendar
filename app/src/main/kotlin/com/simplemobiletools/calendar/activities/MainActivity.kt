@@ -179,6 +179,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             R.id.export_events -> tryExportEvents()
             R.id.settings -> launchSettings()
             R.id.about -> launchAbout()
+            android.R.id.home -> onBackPressed()
             else -> return super.onOptionsItemSelected(item)
         }
         return true
@@ -523,6 +524,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         supportFragmentManager.beginTransaction().add(R.id.fragments_holder, fragment).commit()
         resetActionBarTitle()
         calendar_fab.beVisible()
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     fun openDayFromMonthly(dateTime: DateTime) {
@@ -532,6 +534,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         bundle.putString(DAY_CODE, Formatter.getDayCodeFromDateTime(dateTime))
         fragment.arguments = bundle
         supportFragmentManager.beginTransaction().add(R.id.fragments_holder, fragment).commit()
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     private fun getThisWeekDateTime(): String {
@@ -559,6 +562,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             updateActionBarTitle()
         }
         calendar_fab.beGoneIf(currentFragments.size == 1 && config.storedView == YEARLY_VIEW)
+        supportActionBar?.setDisplayHomeAsUpEnabled(currentFragments.size > 1)
     }
 
     private fun refreshViewPager() {

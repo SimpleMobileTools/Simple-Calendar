@@ -334,10 +334,11 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun getDisplayPastEventsText(displayPastEvents: Int): String {
-        return if (displayPastEvents == 0)
+        return if (displayPastEvents == 0) {
             getString(R.string.never)
-        else
+        } else {
             getFormattedMinutes(displayPastEvents, false)
+        }
     }
 
     private fun setupFontSize() {
