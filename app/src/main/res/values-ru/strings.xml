@@ -206,7 +206,6 @@
     <string name="caldav_sync">Синхронизация по CalDAV</string>
     <string name="event_lists">Списки событий</string>
     <string name="display_past_events">Показывать прошедшие события</string>
-    <string name="snooze_delay">Отложить напоминание на</string>
     <string name="widgets">Виджеты</string>
     <string name="replace_description_with_location">Показывать место вместо описания в списке событий</string>
     <string name="delete_all_events">Delete all events</string>

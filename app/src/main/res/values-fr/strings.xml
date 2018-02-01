@@ -192,7 +192,6 @@
     <string name="caldav_sync">Synchronisation CalDAV</string>
     <string name="event_lists">Listes d\'événements</string>
     <string name="display_past_events">Afficher les événements du passé</string>
-    <string name="snooze_delay">Reporter le rappel avec Snooze de</string>
     <string name="widgets">Widgets</string>
     <string name="replace_description_with_location">Remplacer la description par la position dans la vue sous forme de liste</string>
     <string name="delete_all_events">Delete all events</string>

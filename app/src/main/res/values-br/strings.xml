@@ -192,7 +192,6 @@
     <string name="caldav_sync">Goubredañ CalDAV</string>
     <string name="event_lists">Roll an darvoudoù</string>
     <string name="display_past_events">Skrammañ darvoudoù an amzer tremenet</string>
-    <string name="snooze_delay">Daleañ an adc\'halv eus</string>
     <string name="widgets">Widjetoù</string>
     <string name="replace_description_with_location">Amsaviñ an deskrivadur gant al lec\'hiadur er gwell roll enankadoù </string>
     <string name="delete_all_events">Delete all events</string>
