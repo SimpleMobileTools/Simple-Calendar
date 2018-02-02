@@ -208,8 +208,8 @@
     <string name="display_past_events">Показывать прошедшие события</string>
     <string name="widgets">Виджеты</string>
     <string name="replace_description_with_location">Показывать место вместо описания в списке событий</string>
-    <string name="delete_all_events">Delete all events</string>
-    <string name="delete_all_events_confirmation">Are you sure you want to delete all events? This will leave your event types and other settings intact.</string>
+    <string name="delete_all_events">Удалить все события</string>
+    <string name="delete_all_events_confirmation">Вы действительно хотите удалить все события? Это не затронет ваши типы событий и другие настройки.</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
