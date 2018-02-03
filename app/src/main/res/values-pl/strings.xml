@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Prosty Kalendarz</string>
-    <string name="app_launcher_name">Kalendarz</string>
+    <string name="app_launcher_name">Prosty Kalendarz</string>
     <string name="change_view">Zmień widok</string>
-    <string name="daily_view">Daily view</string>
+    <string name="daily_view">Dzień</string>
     <string name="weekly_view">Tydzień</string>
     <string name="monthly_view">Miesiąc</string>
     <string name="yearly_view">Rok</string>
@@ -15,8 +15,8 @@
     <string name="snooze">Drzemka</string>
 
     <!-- Widget titles -->
-    <string name="widget_monthly">Simple Calendar - widok miesięczny</string>
-    <string name="widget_list">Simple Calendar - lista wydarzeń</string>
+    <string name="widget_monthly">Prosty Kalendarz - widok miesięczny</string>
+    <string name="widget_list">Prosty Kalendarz - lista wydarzeń</string>
 
     <!-- Event -->
     <string name="event">Wydarzenie</string>
@@ -27,7 +27,7 @@
     <string name="event_added">Wydarzenie zostało dodane</string>
     <string name="event_updated">Wydarzenie zostało zaktualizowane</string>
     <string name="filter_events_by_type">Filtruj wydarzenia według typu</string>
-    <string name="please_fill_location">Please fill in a location to be shown on a map</string>
+    <string name="please_fill_location">Wpisz lokalizację, która ma być pokazana na mapie</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Powtórzenie</string>
@@ -122,7 +122,7 @@
     <string name="hours_raw">godziny</string>
     <string name="days_raw">dni</string>
     <string name="add_another_reminder">Dodaj inne przypomnienie</string>
-    <string name="event_reminders">Event reminders</string>
+    <string name="event_reminders">Przypomnienia</string>
 
     <plurals name="minutes_before">
         <item quantity="one">%d minutę przed</item>
@@ -198,9 +198,9 @@
     <string name="event_lists">Lista wydarzeń</string>
     <string name="display_past_events">Pokazuj wydarzenia z przeszłości</string>
     <string name="widgets">Widżety</string>
-    <string name="replace_description_with_location">Zastąp Opis z Lokalizacją w widoku wejść</string>
-    <string name="delete_all_events">Delete all events</string>
-    <string name="delete_all_events_confirmation">Are you sure you want to delete all events? This will leave your event types and other settings intact.</string>
+    <string name="replace_description_with_location">Zastępuj opis na lokalizację we wpisach widoku listy</string>
+    <string name="delete_all_events">Usuń wszystkie wydarzenia</string>
+    <string name="delete_all_events_confirmation">Czy na pewno mam usunąć wszystkie wydarzenia? Nie naruszy to typów wydarzeń i innych ustawień.</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
