@@ -14,7 +14,7 @@
         android:paddingTop="@dimen/medium_margin"
         android:scrollbars="vertical"
         android:visibility="gone"
-        app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
+        app:layoutManager="com.simplemobiletools.commons.views.MyLinearLayoutManager"/>
 
     <com.simplemobiletools.commons.views.MyTextView
         android:id="@+id/calendar_empty_list_placeholder"

@@ -8,4 +8,4 @@
     android:clipToPadding="false"
     android:overScrollMode="never"
     android:paddingTop="@dimen/medium_margin"
-    app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
+    app:layoutManager="com.simplemobiletools.commons.views.MyLinearLayoutManager"/>
