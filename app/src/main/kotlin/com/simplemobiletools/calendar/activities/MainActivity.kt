@@ -97,7 +97,9 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             }
         }
 
-        updateViewPager()
+        if (!checkOpenIntents()) {
+            updateViewPager()
+        }
 
         if (!hasPermission(PERMISSION_WRITE_CALENDAR) || !hasPermission(PERMISSION_READ_CALENDAR)) {
             config.caldavSync = false
@@ -106,8 +108,6 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         if (config.caldavSync) {
             refreshCalDAVCalendars(false)
         }
-
-        checkOpenIntents()
     }
 
     override fun onResume() {
@@ -245,7 +245,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         mSearchMenuItem?.collapseActionView()
     }
 
-    private fun checkOpenIntents() {
+    private fun checkOpenIntents(): Boolean {
         val dayCodeToOpen = intent.getStringExtra(DAY_CODE) ?: ""
         val openMonth = intent.getBooleanExtra(OPEN_MONTH, false)
         intent.removeExtra(OPEN_MONTH)
@@ -254,7 +254,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             calendar_fab.beVisible()
             config.storedView = if (openMonth) MONTHLY_VIEW else DAILY_VIEW
             updateViewPager(dayCodeToOpen)
-            return
+            return true
         }
 
         val eventIdToOpen = intent.getIntExtra(EVENT_ID, 0)
@@ -267,7 +267,10 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                 putExtra(EVENT_OCCURRENCE_TS, eventOccurrenceToOpen)
                 startActivity(this)
             }
+            return false
         }
+
+        return false
     }
 
     private fun showViewDialog() {
