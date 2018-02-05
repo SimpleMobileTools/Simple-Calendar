@@ -137,7 +137,10 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
         storeStateVariables()
         updateWidgets()
-        updateTextColors(calendar_coordinator)
+        if (config.storedView != EVENTS_LIST_VIEW) {
+            updateTextColors(calendar_coordinator)
+        }
+        calendar_fab.setColors(config.textColor, getAdjustedPrimaryColor(), config.backgroundColor)
         search_holder.background = ColorDrawable(config.backgroundColor)
     }
 
