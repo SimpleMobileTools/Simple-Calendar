@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 3.2.4 *(2018-02-05)*
+----------------------------
+
+ * Fixed blank screens in some cases
+ * Misc smaller improvements
+
 Version 3.2.3 *(2018-02-01)*
 ----------------------------
 
