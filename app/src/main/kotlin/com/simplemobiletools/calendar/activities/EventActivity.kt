@@ -450,7 +450,7 @@ class EventActivity : SimpleActivity() {
             event_caldav_calendar_holder.beVisible()
             event_caldav_calendar_divider.beVisible()
 
-            val calendars = CalDAVHandler(applicationContext).getCalDAVCalendars().filter {
+            val calendars = CalDAVHandler(applicationContext).getCalDAVCalendars(this).filter {
                 it.canWrite() && config.getSyncedCalendarIdsAsList().contains(it.id.toString())
             }
             updateCurrentCalendarInfo(if (mEventCalendarId == STORED_LOCALLY_ONLY) null else getCalendarWithId(calendars, getCalendarId()))

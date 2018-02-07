@@ -19,7 +19,7 @@ class SelectEventTypeColorDialog(val activity: Activity, val eventType: EventTyp
     private val dialog: AlertDialog?
     private val radioGroup: RadioGroup
     private var wasInit = false
-    private val colors = CalDAVHandler(activity).getAvailableCalDAVCalendarColors(eventType)
+    private val colors = CalDAVHandler(activity.applicationContext).getAvailableCalDAVCalendarColors(eventType)
 
     init {
         val view = activity.layoutInflater.inflate(R.layout.dialog_select_radio_group, null) as ViewGroup
