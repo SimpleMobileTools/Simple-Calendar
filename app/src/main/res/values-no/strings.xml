@@ -192,6 +192,7 @@
     <string name="caldav_sync">CalDAV-synkronisering</string>
     <string name="event_lists">Hendelseslister</string>
     <string name="display_past_events">Vis hendelser fra fortiden</string>
+    <string name="snooze_delay">Utsett påminnelser med Snooze med</string>
     <string name="widgets">Moduler</string>
     <string name="replace_description_with_location">Erstatt Beskrivelse med Sted i listevisningen</string>
     <string name="delete_all_events">Delete all events</string>

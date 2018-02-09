@@ -192,6 +192,7 @@
     <string name="caldav_sync">CalDAV-synkronisering</string>
     <string name="event_lists">Händelselistor</string>
     <string name="display_past_events">Visa tidigare händelser</string>
+    <string name="snooze_delay">Skjut upp påminnelse med Snooza</string>
     <string name="widgets">Widgetar</string>
     <string name="replace_description_with_location">Ersätt Beskrivning med Plats i listvyn</string>
     <string name="delete_all_events">Delete all events</string>

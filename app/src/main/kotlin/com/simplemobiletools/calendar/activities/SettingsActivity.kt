@@ -57,6 +57,7 @@ class SettingsActivity : SimpleActivity() {
         setupWeeklyEnd()
         setupVibrate()
         setupReminderSound()
+        setupSnoozeDelay()
         setupDisplayPastEvents()
         setupFontSize()
         updateTextColors(settings_holder)
@@ -300,6 +301,20 @@ class SettingsActivity : SimpleActivity() {
             settings_vibrate.toggle()
             config.vibrateOnReminder = settings_vibrate.isChecked
         }
+    }
+
+    private fun setupSnoozeDelay() {
+        updateSnoozeText()
+        settings_snooze_delay_holder.setOnClickListener {
+            SnoozePickerDialog(this, config.snoozeDelay) {
+                config.snoozeDelay = it
+                updateSnoozeText()
+            }
+        }
+    }
+
+    private fun updateSnoozeText() {
+        settings_snooze_delay.text = res.getQuantityString(R.plurals.by_minutes, config.snoozeDelay, config.snoozeDelay)
     }
 
     private fun getHoursString(hours: Int): String {

@@ -192,6 +192,7 @@
     <string name="caldav_sync">CalDAV Sync</string>
     <string name="event_lists">Terminlisten</string>
     <string name="display_past_events">Vergangene Termine anzeigen</string>
+    <string name="snooze_delay">Erinnerung mit Snooze verschieben um</string>
     <string name="widgets">Widgets</string>
     <string name="replace_description_with_location">Ersetze Beschreibung mit Ort bei Listeneinträgen</string>
     <string name="delete_all_events">Alle Termine löschen</string>

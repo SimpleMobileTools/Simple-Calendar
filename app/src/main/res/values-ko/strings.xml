@@ -192,6 +192,7 @@
     <string name="caldav_sync">CalDAV 동기화</string>
     <string name="event_lists">Event lists</string>
     <string name="display_past_events">과거의 이벤트 표시</string>
+    <string name="snooze_delay">스누즈 알림 시간</string>
     <string name="widgets">위젯</string>
     <string name="replace_description_with_location">목록보기의 설명정보를 위치정보로 대체</string>
     <string name="delete_all_events">Delete all events</string>
