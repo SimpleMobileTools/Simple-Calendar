@@ -63,6 +63,10 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getInt(REMINDER_MINUTES_3, REMINDER_OFF)
         set(defaultReminderMinutes3) = prefs.edit().putInt(REMINDER_MINUTES_3, defaultReminderMinutes3).apply()
 
+    var useSameSnooze: Boolean
+        get() = prefs.getBoolean(USE_SAME_SNOOZE, false)
+        set(useSameSnooze) = prefs.edit().putBoolean(USE_SAME_SNOOZE, useSameSnooze).apply()
+
     var snoozeDelay: Int
         get() = prefs.getInt(SNOOZE_DELAY, 10)
         set(snoozeDelay) = prefs.edit().putInt(SNOOZE_DELAY, snoozeDelay).apply()

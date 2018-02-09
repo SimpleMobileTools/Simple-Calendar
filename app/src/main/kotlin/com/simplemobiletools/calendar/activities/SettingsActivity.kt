@@ -11,7 +11,6 @@ import com.simplemobiletools.calendar.BuildConfig
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.dialogs.CustomEventReminderDialog
 import com.simplemobiletools.calendar.dialogs.SelectCalendarsDialog
-import com.simplemobiletools.calendar.dialogs.SnoozePickerDialog
 import com.simplemobiletools.calendar.extensions.*
 import com.simplemobiletools.calendar.helpers.CalDAVHandler
 import com.simplemobiletools.calendar.helpers.FONT_SIZE_LARGE
@@ -58,6 +57,7 @@ class SettingsActivity : SimpleActivity() {
         setupWeeklyEnd()
         setupVibrate()
         setupReminderSound()
+        setupUseSameSnooze()
         setupSnoozeDelay()
         setupDisplayPastEvents()
         setupFontSize()
@@ -304,10 +304,20 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
+    private fun setupUseSameSnooze() {
+        settings_snooze_delay_holder.beVisibleIf(config.useSameSnooze)
+        settings_use_same_snooze.isChecked = config.useSameSnooze
+        settings_use_same_snooze_holder.setOnClickListener {
+            settings_use_same_snooze.toggle()
+            config.useSameSnooze = settings_use_same_snooze.isChecked
+            settings_snooze_delay_holder.beVisibleIf(config.useSameSnooze)
+        }
+    }
+
     private fun setupSnoozeDelay() {
         updateSnoozeText()
         settings_snooze_delay_holder.setOnClickListener {
-            SnoozePickerDialog(this, config.snoozeDelay) {
+            showEventReminderDialog(config.snoozeDelay, true) {
                 config.snoozeDelay = it
                 updateSnoozeText()
             }

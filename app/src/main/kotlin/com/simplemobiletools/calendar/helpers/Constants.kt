@@ -54,6 +54,7 @@ const val LAST_USED_CALDAV_CALENDAR = "last_used_caldav_calendar"
 const val SNOOZE_DELAY = "snooze_delay"
 const val DISPLAY_PAST_EVENTS = "display_past_events"
 const val REPLACE_DESCRIPTION = "replace_description"
+const val USE_SAME_SNOOZE = "use_same_snooze"
 
 val letterIDs = intArrayOf(R.string.sunday_letter, R.string.monday_letter, R.string.tuesday_letter, R.string.wednesday_letter,
         R.string.thursday_letter, R.string.friday_letter, R.string.saturday_letter)
