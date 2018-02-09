@@ -518,7 +518,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
 
         fragment.arguments = bundle
-        supportFragmentManager.beginTransaction().add(R.id.fragments_holder, fragment).commit()
+        supportFragmentManager.beginTransaction().add(R.id.fragments_holder, fragment).commitNow()
     }
 
     fun openMonthFromYearly(dateTime: DateTime) {
@@ -527,7 +527,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         val bundle = Bundle()
         bundle.putString(DAY_CODE, Formatter.getDayCodeFromDateTime(dateTime))
         fragment.arguments = bundle
-        supportFragmentManager.beginTransaction().add(R.id.fragments_holder, fragment).commit()
+        supportFragmentManager.beginTransaction().add(R.id.fragments_holder, fragment).commitNow()
         resetActionBarTitle()
         calendar_fab.beVisible()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -539,7 +539,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         val bundle = Bundle()
         bundle.putString(DAY_CODE, Formatter.getDayCodeFromDateTime(dateTime))
         fragment.arguments = bundle
-        supportFragmentManager.beginTransaction().add(R.id.fragments_holder, fragment).commit()
+        supportFragmentManager.beginTransaction().add(R.id.fragments_holder, fragment).commitNow()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
