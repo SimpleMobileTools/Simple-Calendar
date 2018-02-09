@@ -11,6 +11,7 @@ import com.simplemobiletools.calendar.BuildConfig
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.dialogs.CustomEventReminderDialog
 import com.simplemobiletools.calendar.dialogs.SelectCalendarsDialog
+import com.simplemobiletools.calendar.dialogs.SnoozePickerDialog
 import com.simplemobiletools.calendar.extensions.*
 import com.simplemobiletools.calendar.helpers.CalDAVHandler
 import com.simplemobiletools.calendar.helpers.FONT_SIZE_LARGE

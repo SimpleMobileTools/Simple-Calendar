@@ -192,6 +192,7 @@
     <string name="caldav_sync">CalDAV sync</string>
     <string name="event_lists">Begivenhedsliste</string>
     <string name="display_past_events">Vis overståede begivenheder</string>
+    <string name="use_same_snooze">Always use same snooze interval</string>
     <string name="snooze_delay">Udsæt påmindelsen med en snooze på</string>
     <string name="widgets">Widgets</string>
     <string name="replace_description_with_location">Erstat beskrivelse med sted på visningen af begivenhedslisten</string>
