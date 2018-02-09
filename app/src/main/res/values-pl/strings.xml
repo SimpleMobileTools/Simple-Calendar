@@ -200,7 +200,7 @@
     <string name="use_same_snooze">Always use same snooze interval</string>
     <string name="snooze_delay">Opóźnij przypomnienie o</string>
     <string name="widgets">Widżety</string>
-    <string name="replace_description_with_location">Zastępuj opis na lokalizację we wpisach widoku listy</string>
+    <string name="replace_description_with_location">Replace event description with location</string>
     <string name="delete_all_events">Usuń wszystkie wydarzenia</string>
     <string name="delete_all_events_confirmation">Czy na pewno mam usunąć wszystkie wydarzenia? Nie naruszy to typów wydarzeń i innych ustawień.</string>
 

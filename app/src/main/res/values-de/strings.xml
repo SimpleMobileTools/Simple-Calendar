@@ -195,7 +195,7 @@
     <string name="use_same_snooze">Always use same snooze interval</string>
     <string name="snooze_delay">Erinnerung mit Snooze verschieben um</string>
     <string name="widgets">Widgets</string>
-    <string name="replace_description_with_location">Ersetze Beschreibung mit Ort bei Listeneinträgen</string>
+    <string name="replace_description_with_location">Replace event description with location</string>
     <string name="delete_all_events">Alle Termine löschen</string>
     <string name="delete_all_events_confirmation">Bist du sicher, dass du alle Termine löschen willst? Deine Termintypen und Einstellungen bleiben erhalten.</string>
 

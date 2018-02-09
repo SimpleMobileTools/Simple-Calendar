@@ -195,7 +195,7 @@
     <string name="use_same_snooze">Always use same snooze interval</string>
     <string name="snooze_delay">Utsett påminnelser med Snooze</string>
     <string name="widgets">Moduler</string>
-    <string name="replace_description_with_location">Erstatt Beskrivelse med Sted i listevisningen</string>
+    <string name="replace_description_with_location">Replace event description with location</string>
     <string name="delete_all_events">Slett alle hendelser</string>
     <string name="delete_all_events_confirmation">Er du sikker på at du vil slette alle hendelser? Dine hendelsestyper og andre innstillinger blir beholdt.</string>
 

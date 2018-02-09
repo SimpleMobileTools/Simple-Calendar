@@ -204,7 +204,7 @@
     <string name="use_same_snooze">Always use same snooze interval</string>
     <string name="snooze_delay">Retrasar recordatorio con Snooze</string>
     <string name="widgets">Widgets</string>
-    <string name="replace_description_with_location">Sustituír Descrición coa Localización na vista de entradas</string>
+    <string name="replace_description_with_location">Replace event description with location</string>
     <string name="delete_all_events">Delete all events</string>
     <string name="delete_all_events_confirmation">Are you sure you want to delete all events? This will leave your event types and other settings intact.</string>
 
