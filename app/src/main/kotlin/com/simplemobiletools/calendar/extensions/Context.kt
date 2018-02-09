@@ -29,6 +29,7 @@ import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.models.*
 import com.simplemobiletools.calendar.receivers.CalDAVSyncReceiver
 import com.simplemobiletools.calendar.receivers.NotificationReceiver
+import com.simplemobiletools.calendar.services.SnoozeService
 import com.simplemobiletools.commons.extensions.*
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
@@ -238,9 +239,22 @@ private fun getPendingIntent(context: Context, event: Event): PendingIntent {
 }
 
 private fun getSnoozePendingIntent(context: Context, event: Event): PendingIntent {
-    val intent = Intent(context, SnoozeReminderActivity::class.java).setAction("snooze")
+    val snoozeClass = if (context.config.useSameSnooze) SnoozeService::class.java else SnoozeReminderActivity::class.java
+    val intent = Intent(context, snoozeClass).setAction("Snoozeee")
     intent.putExtra(EVENT_ID, event.id)
-    return PendingIntent.getActivity(context, event.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+    return if (context.config.useSameSnooze) {
+        PendingIntent.getService(context, event.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+    } else {
+        PendingIntent.getActivity(context, event.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+    }
+}
+
+fun Context.rescheduleReminder(event: Event?, minutes: Int) {
+    if (event != null) {
+        applicationContext.scheduleEventIn(System.currentTimeMillis() + minutes * 60000, event)
+        val manager = applicationContext.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        manager.cancel(event.id)
+    }
 }
 
 fun Context.launchNewEventIntent(dayCode: String = Formatter.getTodayCode(this)) {
