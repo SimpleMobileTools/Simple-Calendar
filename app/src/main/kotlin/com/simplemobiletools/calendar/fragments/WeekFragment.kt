@@ -109,7 +109,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     override fun onResume() {
         super.onResume()
         setupDayLabels()
-        mCalendar.updateWeeklyCalendar(mWeekTimestamp)
+        updateCalendar()
 
         mView.week_events_scrollview.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
@@ -138,6 +138,10 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             mListener?.updateHoursTopMargin(mView.week_top_holder.height)
             checkScrollLimits(mView.week_events_scrollview.scrollY)
         }
+    }
+
+    fun updateCalendar() {
+        mCalendar.updateWeeklyCalendar(mWeekTimestamp)
     }
 
     private fun setupDayLabels() {
@@ -233,18 +237,21 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         if (newHash == lastHash) {
             return
         }
+
         lastHash = newHash
         this.events = events
         updateEvents()
     }
 
     private fun updateEvents() {
-        if (mWasDestroyed)
+        if (mWasDestroyed) {
             return
+        }
 
         activity!!.runOnUiThread {
-            if (context != null && isAdded)
+            if (context != null && isAdded) {
                 addEvents()
+            }
         }
     }
 
@@ -443,7 +450,8 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private fun getColumnWithId(id: Int) = mView.findViewById<ViewGroup>(mRes.getIdentifier("week_column_$id", "id", context!!.packageName))
 
     fun updateScrollY(y: Int) {
-        if (wasFragmentInit)
+        if (wasFragmentInit) {
             mView.week_events_scrollview.scrollY = y
+        }
     }
 }

@@ -124,7 +124,8 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
     }
 
     override fun refreshEvents() {
-        setupFragment()
+        val viewPager = weekHolder?.week_view_view_pager
+        (viewPager?.adapter as? MyWeekPagerAdapter)?.updateCalendars(viewPager.currentItem)
     }
 
     override fun shouldGoToTodayBeVisible() = currentWeekTS != thisWeekTS
