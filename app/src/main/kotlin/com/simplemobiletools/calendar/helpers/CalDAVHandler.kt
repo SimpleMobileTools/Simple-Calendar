@@ -259,6 +259,8 @@ class CalDAVHandler(val context: Context) {
                             importId, allDay, repeatRule.repeatLimit, repeatRule.repeatRule, eventTypeId, source = source, location = location)
 
                     if (event.getIsAllDay() && endTS > startTS) {
+                        event.startTS = Formatter.getShiftedImportTimestamp(event.startTS)
+                        event.endTS = Formatter.getShiftedImportTimestamp(event.endTS)
                         event.endTS -= DAY
                     }
 

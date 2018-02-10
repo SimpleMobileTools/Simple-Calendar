@@ -99,4 +99,6 @@ object Formatter {
         else
             "0"
     }
+
+    fun getShiftedImportTimestamp(ts: Int) = getDateTimeFromTS(ts).toDateTime(DateTimeZone.UTC).withZoneRetainFields(DateTimeZone.getDefault()).withTime(5, 0, 0, 0).seconds()
 }
