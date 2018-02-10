@@ -37,6 +37,7 @@ class YearFragment : Fragment(), YearlyCalendar {
         setupMonths()
 
         mCalendar = YearlyCalendarImpl(this, context!!, mYear)
+
         return mView
     }
 
@@ -52,10 +53,10 @@ class YearFragment : Fragment(), YearlyCalendar {
             mSundayFirst = sundayFirst
             setupMonths()
         }
-        updateEvents()
+        updateCalendar()
     }
 
-    fun updateEvents() {
+    fun updateCalendar() {
         mCalendar?.getEvents(mYear)
     }
 

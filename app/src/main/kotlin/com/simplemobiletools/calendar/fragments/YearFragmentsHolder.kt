@@ -79,7 +79,7 @@ class YearFragmentsHolder : MyFragmentHolder() {
     }
 
     override fun refreshEvents() {
-        setupFragment()
+        (viewPager?.adapter as? MyYearPagerAdapter)?.updateCalendars(viewPager?.currentItem ?: 0)
     }
 
     override fun shouldGoToTodayBeVisible() = currentYear != todayYear
