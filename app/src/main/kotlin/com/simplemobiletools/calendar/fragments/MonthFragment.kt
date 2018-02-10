@@ -78,7 +78,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         updateCalendar()
     }
 
-    private fun updateCalendar() {
+    fun updateCalendar() {
         mCalendar?.updateMonthlyCalendar(Formatter.getDateTimeFromCode(mDayCode))
     }
 
