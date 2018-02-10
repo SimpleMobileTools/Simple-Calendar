@@ -1,6 +1,15 @@
 Changelog
 ==========
 
+Version 3.3.0 *(2018-02-10)*
+----------------------------
+
+ * Fixed blank or duplicate views in some cases (yes, again)
+ * Fixed off-by-one day error at syncing all-day events via Nextcloud
+ * Make default filenames at export more user-friendly
+ * Improved the performance by removing some unnecessary redraws
+ * Added a toggle for switching between default snooze interval or always showing an interval picker
+
 Version 3.2.4 *(2018-02-05)*
 ----------------------------
 
