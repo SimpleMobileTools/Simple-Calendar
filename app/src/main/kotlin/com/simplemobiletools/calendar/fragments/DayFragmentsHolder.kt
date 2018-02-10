@@ -97,7 +97,7 @@ class DayFragmentsHolder : MyFragmentHolder(), NavigationListener {
     }
 
     override fun refreshEvents() {
-        setupFragment()
+        (viewPager?.adapter as? MyDayPagerAdapter)?.updateCalendars(viewPager?.currentItem ?: 0)
     }
 
     override fun shouldGoToTodayBeVisible() = currentDayCode != todayDayCode

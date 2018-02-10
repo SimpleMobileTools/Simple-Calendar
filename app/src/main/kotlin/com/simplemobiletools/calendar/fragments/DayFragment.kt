@@ -52,7 +52,7 @@ class DayFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        checkEvents()
+        updateCalendar()
     }
 
     private fun setupButtons() {
@@ -108,7 +108,7 @@ class DayFragment : Fragment() {
         mListener?.goToDateTime(newDateTime)
     }
 
-    fun checkEvents() {
+    fun updateCalendar() {
         val startTS = Formatter.getDayStartTS(mDayCode)
         val endTS = Formatter.getDayEndTS(mDayCode)
         context!!.dbHelper.getEvents(startTS, endTS) {

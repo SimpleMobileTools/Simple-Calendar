@@ -25,18 +25,13 @@ class MyDayPagerAdapter(fm: FragmentManager, private val mCodes: List<String>, p
         fragment.mListener = mListener
 
         mFragments.put(position, fragment)
+
         return fragment
     }
 
-    fun checkDayEvents(pos: Int) {
+    fun updateCalendars(pos: Int) {
         for (i in -1..1) {
-            mFragments[pos + i]?.checkEvents()
-        }
-    }
-
-    fun destroyMultiselector(pos: Int) {
-        for (i in -1..1) {
-            mFragments[pos + i]?.getDayEventsAdapter()?.finishActMode()
+            mFragments[pos + i]?.updateCalendar()
         }
     }
 }
