@@ -8,9 +8,8 @@ import com.simplemobiletools.calendar.dialogs.CustomEventRepeatIntervalDialog
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.commons.activities.BaseSimpleActivity
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
-import com.simplemobiletools.commons.extensions.getFilePublicUri
 import com.simplemobiletools.commons.extensions.hideKeyboard
-import com.simplemobiletools.commons.extensions.shareUri
+import com.simplemobiletools.commons.extensions.sharePathIntent
 import com.simplemobiletools.commons.extensions.toast
 import com.simplemobiletools.commons.models.RadioItem
 import java.io.File
@@ -27,8 +26,7 @@ fun BaseSimpleActivity.shareEvents(ids: List<Int>) {
     val events = dbHelper.getEventsWithIds(ids)
     IcsExporter().exportEvents(this, file, events) {
         if (it == IcsExporter.ExportResult.EXPORT_OK) {
-            val uri = getFilePublicUri(file, BuildConfig.APPLICATION_ID)
-            shareUri(uri, BuildConfig.APPLICATION_ID)
+            sharePathIntent(file.absolutePath, BuildConfig.APPLICATION_ID)
         }
     }
 }

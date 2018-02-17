@@ -226,9 +226,9 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     }
 
     fun update(event: Event, updateAtCalDAV: Boolean, callback: (() -> Unit)? = null) {
-        val selectionArgs = arrayOf(event.id.toString())
         val values = fillEventValues(event)
         val selection = "$COL_ID = ?"
+        val selectionArgs = arrayOf(event.id.toString())
         mDb.update(MAIN_TABLE_NAME, values, selection, selectionArgs)
 
         if (event.repeatInterval == 0) {
