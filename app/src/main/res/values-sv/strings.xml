@@ -3,7 +3,7 @@
     <string name="app_name">Simple Calendar</string>
     <string name="app_launcher_name">Kalender</string>
     <string name="change_view">Ändra vy</string>
-    <string name="daily_view">Daily view</string>
+    <string name="daily_view">Dagsvy</string>
     <string name="weekly_view">Veckovy</string>
     <string name="monthly_view">Månadsvy</string>
     <string name="yearly_view">Årsvy</string>
@@ -24,10 +24,10 @@
     <string name="new_event">Ny händelse</string>
     <string name="title_empty">Titeln får inte vara tom</string>
     <string name="end_before_start">Händelsen kan inte sluta innan den har startat</string>
-    <string name="event_added">Händelsen tillagd</string>
-    <string name="event_updated">Händelsen uppdaterad</string>
+    <string name="event_added">Händelsen har lagts till</string>
+    <string name="event_updated">Händelsen har uppdaterats</string>
     <string name="filter_events_by_type">Filtrera händelser efter typ</string>
-    <string name="please_fill_location">Please fill in a location to be shown on a map</string>
+    <string name="please_fill_location">Du måste ange en plats som kan visas på en karta</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Upprepning</string>
@@ -192,12 +192,12 @@
     <string name="caldav_sync">CalDAV-synkronisering</string>
     <string name="event_lists">Händelselistor</string>
     <string name="display_past_events">Visa tidigare händelser</string>
-    <string name="use_same_snooze">Always use same snooze interval</string>
+    <string name="use_same_snooze">Använd alltid samma snooze-intervall</string>
     <string name="snooze_delay">Skjut upp påminnelse med Snooza</string>
     <string name="widgets">Widgetar</string>
-    <string name="replace_description_with_location">Replace event description with location</string>
-    <string name="delete_all_events">Delete all events</string>
-    <string name="delete_all_events_confirmation">Are you sure you want to delete all events? This will leave your event types and other settings intact.</string>
+    <string name="replace_description_with_location">Ersätt händelsebeskrivning med plats</string>
+    <string name="delete_all_events">Ta bort alla händelser</string>
+    <string name="delete_all_events_confirmation">Är du säker på att du vill ta bort alla händelser? Dina händelsetyper och andra inställningar påverkas inte av borttagningen.</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -284,7 +284,7 @@
 
         Lagringsbehörigheten behövs bara för att exportera eller importera händelser från .ics-filer.
 
-        Kontaktbehörigheten används bara för att importera kontakters födelsedagar.
+        Kontaktbehörigheten används bara för att importera kontakters födelsedagar och årsdagar.
 
         Denna app är bara en del av en större serie appar. Du hittar resten av dem på http://www.simplemobiletools.com
     </string>
