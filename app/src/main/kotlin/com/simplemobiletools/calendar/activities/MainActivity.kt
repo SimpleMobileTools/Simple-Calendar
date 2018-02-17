@@ -123,10 +123,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
 
         dbHelper.getEventTypes {
-            eventTypeColors.clear()
-            it.map { eventTypeColors.put(it.id, it.color) }
-            mShouldFilterBeVisible = eventTypeColors.size() > 1 || config.displayEventTypes.isEmpty()
-            invalidateOptionsMenu()
+            mShouldFilterBeVisible = it.size > 1 || config.displayEventTypes.isEmpty()
         }
 
         if (config.storedView == WEEKLY_VIEW) {
@@ -162,10 +159,17 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             goToTodayButton = findItem(R.id.go_to_today)
             findItem(R.id.filter).isVisible = mShouldFilterBeVisible
             findItem(R.id.go_to_today).isVisible = shouldGoToTodayBeVisible && config.storedView != EVENTS_LIST_VIEW
-            findItem(R.id.refresh_caldav_calendars).isVisible = config.caldavSync
         }
 
         setupSearch(menu)
+        return true
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        menu!!.apply {
+            findItem(R.id.refresh_caldav_calendars).isVisible = config.caldavSync
+        }
+
         return true
     }
 
