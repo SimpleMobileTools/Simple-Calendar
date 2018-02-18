@@ -574,8 +574,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     private fun refreshViewPager() {
-        if (!isActivityDestroyed()) {
-            runOnUiThread {
+        runOnUiThread {
+            if (!isActivityDestroyed()) {
                 currentFragments.last().refreshEvents()
             }
         }
