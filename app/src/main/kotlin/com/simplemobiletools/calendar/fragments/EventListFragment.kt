@@ -1,6 +1,7 @@
 package com.simplemobiletools.calendar.fragments
 
 import android.content.Intent
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -34,6 +35,8 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
         mView = inflater.inflate(R.layout.fragment_event_list, container, false)
         val placeholderText = String.format(getString(R.string.two_string_placeholder), "${getString(R.string.no_upcoming_events)}\n", getString(R.string.add_some_events))
         mView.calendar_empty_list_placeholder.text = placeholderText
+        mView.background = ColorDrawable(context!!.config.backgroundColor)
+        mView.calendar_events_list_holder?.id = (System.currentTimeMillis() / 1000).toInt()
         use24HourFormat = context!!.config.use24hourFormat
         updateActionBarTitle()
         return mView
