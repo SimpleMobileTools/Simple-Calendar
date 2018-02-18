@@ -224,9 +224,8 @@ class CalDAVHandler(val context: Context) {
                     val id = cursor.getLongValue(CalendarContract.Events._ID)
                     val title = cursor.getStringValue(CalendarContract.Events.TITLE) ?: ""
                     val description = cursor.getStringValue(CalendarContract.Events.DESCRIPTION) ?: ""
-                    var startTS = (cursor.getLongValue(CalendarContract.Events.DTSTART) / 1000).toInt()
+                    val startTS = (cursor.getLongValue(CalendarContract.Events.DTSTART) / 1000).toInt()
                     var endTS = (cursor.getLongValue(CalendarContract.Events.DTEND) / 1000).toInt()
-                    val timeZone = cursor.getStringValue(CalendarContract.Events.EVENT_TIMEZONE) ?: "UTC"
                     val allDay = cursor.getIntValue(CalendarContract.Events.ALL_DAY)
                     val rrule = cursor.getStringValue(CalendarContract.Events.RRULE) ?: ""
                     val location = cursor.getStringValue(CalendarContract.Events.EVENT_LOCATION) ?: ""
