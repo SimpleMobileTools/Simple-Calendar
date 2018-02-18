@@ -234,18 +234,6 @@ class CalDAVHandler(val context: Context) {
                     val originalInstanceTime = cursor.getLongValue(CalendarContract.Events.ORIGINAL_INSTANCE_TIME)
                     val reminders = getCalDAVEventReminders(id)
 
-                    // make sure all-day events start at 5am in the users timezone
-                    if (allDay == 1 && timeZone == "UTC") {
-                        val offset = DateTimeZone.getDefault().getOffset(System.currentTimeMillis()) / 1000
-                        val FIVE_HOURS = 5 * 60 * 60
-                        startTS -= offset
-                        startTS += FIVE_HOURS
-                        if (endTS != 0) {
-                            endTS -= offset
-                            endTS += FIVE_HOURS
-                        }
-                    }
-
                     if (endTS == 0) {
                         val duration = cursor.getStringValue(CalendarContract.Events.DURATION) ?: ""
                         endTS = startTS + Parser().parseDurationSeconds(duration)
@@ -258,10 +246,12 @@ class CalDAVHandler(val context: Context) {
                             reminders.getOrElse(1, { -1 }), reminders.getOrElse(2, { -1 }), repeatRule.repeatInterval,
                             importId, allDay, repeatRule.repeatLimit, repeatRule.repeatRule, eventTypeId, source = source, location = location)
 
-                    if (event.getIsAllDay() && endTS > startTS) {
+                    if (event.getIsAllDay()) {
                         event.startTS = Formatter.getShiftedImportTimestamp(event.startTS)
                         event.endTS = Formatter.getShiftedImportTimestamp(event.endTS)
-                        event.endTS -= DAY
+                        if (event.endTS > event.startTS) {
+                            event.endTS -= DAY
+                        }
                     }
 
                     fetchedEventIds.add(importId)
