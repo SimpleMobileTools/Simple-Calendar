@@ -13,7 +13,6 @@ import android.os.Handler
 import android.provider.ContactsContract
 import android.support.v4.view.MenuItemCompat
 import android.support.v7.widget.SearchView
-import android.util.SparseIntArray
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -55,7 +54,6 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private var mSearchMenuItem: MenuItem? = null
     private var shouldGoToTodayBeVisible = false
     private var goToTodayButton: MenuItem? = null
-    private var eventTypeColors = SparseIntArray()
     private var currentFragments = ArrayList<MyFragmentHolder>()
 
     private var mStoredTextColor = 0

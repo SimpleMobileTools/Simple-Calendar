@@ -22,7 +22,7 @@ class DayFragmentsHolder : MyFragmentHolder(), NavigationListener {
     private val PREFILLED_DAYS = 121
 
     private var viewPager: MyViewPager? = null
-    private var defaultDaylyPage = 0
+    private var defaultDailyPage = 0
     private var todayDayCode = ""
     private var currentDayCode = ""
     private var isGoToTodayVisible = false
@@ -44,7 +44,8 @@ class DayFragmentsHolder : MyFragmentHolder(), NavigationListener {
     private fun setupFragment() {
         val codes = getDays(currentDayCode)
         val dailyAdapter = MyDayPagerAdapter(activity!!.supportFragmentManager, codes, this)
-        defaultDaylyPage = codes.size / 2
+        defaultDailyPage = codes.size / 2
+
 
         viewPager!!.apply {
             adapter = dailyAdapter
@@ -64,7 +65,7 @@ class DayFragmentsHolder : MyFragmentHolder(), NavigationListener {
                     }
                 }
             })
-            currentItem = defaultDaylyPage
+            currentItem = defaultDailyPage
         }
         updateActionBarTitle()
     }

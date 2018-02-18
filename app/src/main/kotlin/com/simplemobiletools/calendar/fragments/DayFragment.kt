@@ -82,8 +82,6 @@ class DayFragment : Fragment() {
         }
     }
 
-    fun getDayEventsAdapter() = mHolder.day_events?.adapter as? DayEventsAdapter
-
     private fun pickDay() {
         activity!!.setTheme(context!!.getDialogTheme())
         val view = layoutInflater.inflate(R.layout.date_picker, null)
