@@ -100,5 +100,5 @@ object Formatter {
             "0"
     }
 
-    fun getShiftedImportTimestamp(ts: Int) = getDateTimeFromTS(ts).toDateTime(DateTimeZone.UTC).withZoneRetainFields(DateTimeZone.getDefault()).withTime(5, 0, 0, 0).seconds()
+    fun getShiftedImportTimestamp(ts: Int) = getDateTimeFromTS(ts).withTime(5, 0, 0, 0).seconds()
 }
