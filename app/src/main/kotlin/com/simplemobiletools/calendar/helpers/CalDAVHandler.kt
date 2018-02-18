@@ -17,7 +17,6 @@ import com.simplemobiletools.calendar.models.EventType
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.PERMISSION_READ_CALENDAR
 import com.simplemobiletools.commons.helpers.PERMISSION_WRITE_CALENDAR
-import org.joda.time.DateTimeZone
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -197,7 +196,7 @@ class CalDAVHandler(val context: Context) {
         val fetchedEventIds = ArrayList<String>()
         val existingEvents = context.dbHelper.getEventsFromCalDAVCalendar(calendarId)
         existingEvents.forEach {
-            importIdsMap.put(it.importId, it)
+            importIdsMap[it.importId] = it
         }
 
         val uri = CalendarContract.Events.CONTENT_URI
@@ -283,7 +282,7 @@ class CalDAVHandler(val context: Context) {
 
                         if (title.isNotEmpty()) {
                             context.dbHelper.insert(event, false) {
-                                importIdsMap.put(event.importId, event)
+                                importIdsMap[event.importId] = event
                             }
                         }
                     }

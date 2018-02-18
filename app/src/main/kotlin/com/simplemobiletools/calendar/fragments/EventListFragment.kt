@@ -27,7 +27,6 @@ import java.util.*
 class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
     private var mEvents: List<Event> = ArrayList()
     private var prevEventsHash = 0
-    private var lastHash = 0
     private var use24HourFormat = false
     lateinit var mView: View
 
@@ -66,14 +65,9 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
     }
 
     private fun receivedEvents(events: MutableList<Event>) {
-        if (context == null || activity == null)
-            return
-
-        val newHash = events.hashCode()
-        if (newHash == lastHash) {
+        if (context == null || activity == null) {
             return
         }
-        lastHash = newHash
 
         val filtered = context!!.getFilteredEvents(events)
         val hash = filtered.hashCode()
