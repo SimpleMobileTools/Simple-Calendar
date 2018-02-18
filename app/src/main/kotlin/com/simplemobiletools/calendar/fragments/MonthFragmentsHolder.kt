@@ -37,6 +37,7 @@ class MonthFragmentsHolder : MyFragmentHolder(), NavigationListener {
         val view = inflater.inflate(R.layout.fragment_months_holder, container, false)
         view.background = ColorDrawable(context!!.config.backgroundColor)
         viewPager = view.fragment_months_viewpager
+        viewPager?.id = (System.currentTimeMillis() / 1000).toInt()
         setupFragment()
         return view
     }
