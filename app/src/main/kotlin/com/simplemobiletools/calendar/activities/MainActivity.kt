@@ -659,8 +659,14 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     private fun launchAbout() {
+        val faqItems = arrayOf(
+                FAQItem(R.string.faq_1_title_commons, R.string.faq_1_text_commons),
+                FAQItem(R.string.faq_2_title_commons, R.string.faq_2_text_commons),
+                FAQItem(getString(R.string.faq_1_title), getString(R.string.faq_1_text)),
+                FAQItem(getString(R.string.faq_2_title), getString(R.string.faq_2_text)))
+
         startAboutActivity(R.string.app_name, LICENSE_KOTLIN or LICENSE_JODA or LICENSE_STETHO or LICENSE_MULTISELECT or LICENSE_LEAK_CANARY,
-                BuildConfig.VERSION_NAME)
+                BuildConfig.VERSION_NAME, faqItems)
     }
 
     private fun searchQueryChanged(text: String) {
