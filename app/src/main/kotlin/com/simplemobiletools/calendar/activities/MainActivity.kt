@@ -522,6 +522,10 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     fun openMonthFromYearly(dateTime: DateTime) {
+        if (currentFragments.last() is MonthFragmentsHolder) {
+            return
+        }
+
         val fragment = MonthFragmentsHolder()
         currentFragments.add(fragment)
         val bundle = Bundle()
@@ -534,6 +538,10 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     fun openDayFromMonthly(dateTime: DateTime) {
+        if (currentFragments.last() is DayFragmentsHolder) {
+            return
+        }
+
         val fragment = DayFragmentsHolder()
         currentFragments.add(fragment)
         val bundle = Bundle()
