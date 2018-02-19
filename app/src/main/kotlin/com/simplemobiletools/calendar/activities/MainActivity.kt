@@ -34,6 +34,7 @@ import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.interfaces.RefreshRecyclerViewListener
+import com.simplemobiletools.commons.models.FAQItem
 import com.simplemobiletools.commons.models.RadioItem
 import com.simplemobiletools.commons.models.Release
 import kotlinx.android.synthetic.main.activity_main.*
