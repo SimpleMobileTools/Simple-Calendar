@@ -170,7 +170,7 @@
     <string name="cannot_delete_default_type">Domyślne wydarzenie nie może zostać usunięte</string>
     <string name="select_event_type">Wybierz typ wydarzenia</string>
     <string name="move_events_into_default">Przenieś powiązane wydarzenia do domyślnego typu wydarzeń</string>
-    <string name="remove_affected_events">Usuń nieodwracalnie powiązane wydarzenia</string>
+    <string name="remove_affected_events">Usuń powiązane wydarzenia</string>
     <string name="unsync_caldav_calendar">Aby usunąć kalendarz CalDAV, musisz wyłączyć jego synchronizację</string>
 
     <!-- Holidays -->
@@ -197,10 +197,10 @@
     <string name="caldav_sync">Synchronizacja CalDAV</string>
     <string name="event_lists">Lista wydarzeń</string>
     <string name="display_past_events">Pokazuj wydarzenia z przeszłości</string>
-    <string name="use_same_snooze">Always use same snooze interval</string>
+    <string name="use_same_snooze">Zawsze używaj tego samego przedziału przypomnienia</string>
     <string name="snooze_delay">Opóźnij przypomnienie o</string>
     <string name="widgets">Widżety</string>
-    <string name="replace_description_with_location">Replace event description with location</string>
+    <string name="replace_description_with_location">Zamieniaj opis wydarzenia na lokalizację</string>
     <string name="delete_all_events">Usuń wszystkie wydarzenia</string>
     <string name="delete_all_events_confirmation">Czy na pewno mam usunąć wszystkie wydarzenia? Nie naruszy to typów wydarzeń i innych ustawień.</string>
 
@@ -280,22 +280,20 @@
     <string name="sample_title_5">Czas na kawę</string>
 
     <!-- FAQ -->
-    <string name="faq_1_title">How can I remove the holidays imported via the \"Add holidays\" button?</string>
-    <string name="faq_1_text">Holidays created that way are inserted in a new event type called \"Holidays\". You can go in Settings -> Manage Event Types,
-        long press the given event type and delete it by selecting the trashbin.</string>
-    <string name="faq_2_title">Can I sync my events via Google Calendar, or other service supporting CalDAV?</string>
-    <string name="faq_2_text">Yes, just toggle \"CalDAV sync\" in the app settings and select the calendars you want to sync. However, you will need some third party app handling the synchronization between the device and servers.
-        In case you want to synchronize a Google calendar, their official Calendar app will do the job. For other calendars you will need a third party sync adapter, for example DAVdroid.</string>
+    <string name="faq_1_title">Jak mogę usunąć święta zaimportowane przez przycisk \'Dodaj święta\'?</string>
+    <string name="faq_1_text">Święta dodane w ten sposób są wprowadzane do nowego typu wydarzeń - \'Święta\'. Usunąć je możesz, przechodząc do ustawień aplikacji, a następnie w sekcji \'Zarządzaj typami wydarzeń\' usunąć ową kategorię, klikając ikonę kosza.</string>
+    <string name="faq_2_title">Czy mogę zsychronizować moje wydarzenia z Kalendarzem Google lub inną usługą wspierającą CalDAV?</string>
+    <string name="faq_2_text">Tak. Wystarczy włączyć opcję \'Synchronizacja CalDAV\' w ustawieniach aplikacji i wybrać kalendarze do synchronizacji. Jeśli chcesz zsynchronizować wydarzenia z Kalendarzem Google, oficjalna aplikacja kalendarza powinna wystarczyć. W innych przypadkach potrzebna może być zewnętrzna aplikacja, np. DAVdroid.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Prosty kalendarz z wydarzeniami, widżetami i bez reklam.</string>
     <string name="app_long_description">
-        Prosty kalendarz z obsługą synchornizacji z Dyskiem Google. Dzięki niemu możesz z łatwością tworzyć wydarzenia i przypomnienia, które nigdy nie zaginą.
+        Prosty kalendarz z obsługą synchronizacji z Dyskiem Google. Dzięki niemu możesz z łatwością tworzyć wydarzenia i przypomnienia, które nigdy nie zaginą.
 
         Zawiera widżet 4x4 z możliwością ustawiania koloru tekstu i tła, a dla tego drugiego również stopień przezroczystości.
 
-        Nie zawiera żadnych żadnych reklam, nie potrzebuje masy uprawnień. Jest w pełni otwartoźródłowy. Kolory w aplikacji można dowolnie modyfikować.
+        Nie zawiera żadnych żadnych reklam, nie potrzebuje masy uprawnień, jest w pełni otwartoźródłowy, kolory można dowolnie modyfikować.
 
         Uprawniena pamięci są potrzebne tylko do eksportowania lub importowania wydarzeń z plików .isc.
 
