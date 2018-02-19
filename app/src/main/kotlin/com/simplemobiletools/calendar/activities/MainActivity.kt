@@ -272,20 +272,18 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                 putExtra(EVENT_OCCURRENCE_TS, eventOccurrenceToOpen)
                 startActivity(this)
             }
-            return false
         }
 
         return false
     }
 
     private fun showViewDialog() {
-        val res = resources
         val items = arrayListOf(
-                RadioItem(DAILY_VIEW, res.getString(R.string.daily_view)),
-                RadioItem(WEEKLY_VIEW, res.getString(R.string.weekly_view)),
-                RadioItem(MONTHLY_VIEW, res.getString(R.string.monthly_view)),
-                RadioItem(YEARLY_VIEW, res.getString(R.string.yearly_view)),
-                RadioItem(EVENTS_LIST_VIEW, res.getString(R.string.simple_event_list)))
+                RadioItem(DAILY_VIEW, getString(R.string.daily_view)),
+                RadioItem(WEEKLY_VIEW, getString(R.string.weekly_view)),
+                RadioItem(MONTHLY_VIEW, getString(R.string.monthly_view)),
+                RadioItem(YEARLY_VIEW, getString(R.string.yearly_view)),
+                RadioItem(EVENTS_LIST_VIEW, getString(R.string.simple_event_list)))
 
         RadioGroupDialog(this, items, config.storedView) {
             calendar_fab.beVisibleIf(it as Int != YEARLY_VIEW)
