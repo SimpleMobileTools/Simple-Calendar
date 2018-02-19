@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 3.3.1 *(2018-02-19)*
+----------------------------
+
+ * Improved CalDAV all-day event importing (by angelsl)
+ * Added a FAQ section with a couple initial items
+ * Once again fixed some cases of blank or duplicate views
+
 Version 3.3.0 *(2018-02-10)*
 ----------------------------
 
