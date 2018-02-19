@@ -34,7 +34,7 @@ class YearFragmentsHolder : MyFragmentHolder() {
         val view = inflater.inflate(R.layout.fragment_years_holder, container, false)
         view.background = ColorDrawable(context!!.config.backgroundColor)
         viewPager = view.fragment_years_viewpager
-        viewPager?.id = (System.currentTimeMillis() / 1000).toInt()
+        viewPager?.id = (System.currentTimeMillis() % 100000).toInt()
         setupFragment()
         return view
     }

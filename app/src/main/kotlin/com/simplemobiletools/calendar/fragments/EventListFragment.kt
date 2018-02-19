@@ -35,7 +35,7 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
         val placeholderText = String.format(getString(R.string.two_string_placeholder), "${getString(R.string.no_upcoming_events)}\n", getString(R.string.add_some_events))
         mView.calendar_empty_list_placeholder.text = placeholderText
         mView.background = ColorDrawable(context!!.config.backgroundColor)
-        mView.calendar_events_list_holder?.id = (System.currentTimeMillis() / 1000).toInt()
+        mView.calendar_events_list_holder?.id = (System.currentTimeMillis() % 100000).toInt()
         use24HourFormat = context!!.config.use24hourFormat
         updateActionBarTitle()
         return mView
