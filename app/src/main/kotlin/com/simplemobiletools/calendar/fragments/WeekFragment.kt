@@ -107,6 +107,10 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         updateCalendar()
 
         mScrollView.onGlobalLayout {
+            if (context == null) {
+                return@onGlobalLayout
+            }
+
             minScrollY = mRowHeight * context!!.config.startWeeklyAt
             maxScrollY = mRowHeight * context!!.config.endWeeklyAt
 
