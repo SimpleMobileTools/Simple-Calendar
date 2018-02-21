@@ -78,6 +78,8 @@ object Formatter {
 
     fun getDateTimeFromTS(ts: Int) = DateTime(ts * 1000L, DateTimeZone.getDefault())
 
+    fun getUTCDateTimeFromTS(ts: Int) = DateTime(ts * 1000L, DateTimeZone.UTC)
+
     // use manually translated month names, as DateFormat and Joda have issues with a lot of languages
     fun getMonthName(context: Context, id: Int) = context.resources.getStringArray(R.array.months)[id - 1]
 
@@ -94,11 +96,12 @@ object Formatter {
 
     fun getDayCodeFromTS(ts: Int): String {
         val daycode = getDateTimeFromTS(ts).toString(DAYCODE_PATTERN)
-        return if (daycode.isNotEmpty())
+        return if (daycode.isNotEmpty()) {
             daycode
-        else
+        } else {
             "0"
+        }
     }
 
-    fun getShiftedImportTimestamp(ts: Int) = getDateTimeFromTS(ts).withTime(5, 0, 0, 0).seconds()
+    fun getShiftedImportTimestamp(ts: Int) = getUTCDateTimeFromTS(ts).withTime(13, 0, 0, 0).withZoneRetainFields(DateTimeZone.getDefault()).seconds()
 }
