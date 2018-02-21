@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 3.3.2 *(2018-02-21)*
+----------------------------
+
+ * Try fixing the off-by-one issue at CalDAV syncing all-day events
+ * Couple stability improvements
+
 Version 3.3.1 *(2018-02-19)*
 ----------------------------
 
