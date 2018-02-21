@@ -273,12 +273,12 @@
     <string name="sample_title_5">Kaffepause</string>
 
     <!-- FAQ -->
-    <string name="faq_1_title">How can I remove the holidays imported via the \"Add holidays\" button?</string>
-    <string name="faq_1_text">Holidays created that way are inserted in a new event type called \"Holidays\". You can go in Settings -> Manage Event Types,
-        long press the given event type and delete it by selecting the trashbin.</string>
-    <string name="faq_2_title">Can I sync my events via Google Calendar, or other service supporting CalDAV?</string>
-    <string name="faq_2_text">Yes, just toggle \"CalDAV sync\" in the app settings and select the calendars you want to sync. However, you will need some third party app handling the synchronization between the device and servers.
-        In case you want to synchronize a Google calendar, their official Calendar app will do the job. For other calendars you will need a third party sync adapter, for example DAVdroid.</string>
+    <string name="faq_1_title">Hvordan kan jeg fjerne off. fridager importert via  meny - \"Legg til off. fridager\"?</string>
+    <string name="faq_1_text">Off. fridager opprettet på denne måten settes inn i en ny hendelsestype kalt \"Off. fridager\". Gå til Innstillinger -> Behandle hendelsestyper,
+        lang-trykk hendelsestypen og slett den ved å velge søppelbøtten.</string>
+    <string name="faq_2_title">Kan jeg synkronisere hendelsene mine via Google Kalender eller annen tjeneste som støtter CalDAV?</string>
+    <string name="faq_2_text">Ja, bare aktiver \"CalDAV-synkronisering\" i innstillingene og velg kalenderne du vil synkronisere. Du trenger imidlertid program som håndterer synkroniseringen mellom enheten og serverne.
+        Hvis du vil synkronisere en Google-kalender, vil deres offisielle kalenderapp gjøre jobben. For andre kalendere trenger du en annen synkroniseringsapp, for eksempel DAVdroid.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
