@@ -218,7 +218,9 @@ class SettingsActivity : SimpleActivity() {
     private fun setupDeleteAllEvents() {
         settings_delete_all_events_holder.setOnClickListener {
             ConfirmationDialog(this, messageId = R.string.delete_all_events_confirmation) {
-                dbHelper.deleteAllEvents()
+                Thread {
+                    dbHelper.deleteAllEvents()
+                }.start()
             }
         }
     }
