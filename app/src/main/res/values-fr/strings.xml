@@ -3,7 +3,7 @@
     <string name="app_name">Calendrier simple</string>
     <string name="app_launcher_name">Calendrier</string>
     <string name="change_view">Changer de vue</string>
-    <string name="daily_view">Daily view</string>
+    <string name="daily_view">Vue quotidienne</string>
     <string name="weekly_view">Vue hebdomadaire</string>
     <string name="monthly_view">Vue mensuelle</string>
     <string name="yearly_view">Vue annuelle</string>
@@ -12,7 +12,7 @@
     <string name="add_some_events">Vous pouvez ajouter des événements avec le bouton + en bas.</string>
     <string name="details">Détails</string>
     <string name="go_to_today">Aller à aujourd\'hui</string>
-    <string name="snooze">Snooze</string>
+    <string name="snooze">Sommeiller</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Calendrier mensuel</string>
@@ -27,7 +27,7 @@
     <string name="event_added">Événement ajouté avec succès</string>
     <string name="event_updated">Événement ajouté avec succès</string>
     <string name="filter_events_by_type">Filtrer les événements par type</string>
-    <string name="please_fill_location">Please fill in a location to be shown on a map</string>
+    <string name="please_fill_location">S'il vous plaît remplir un emplacement pour être affiché sur une carte</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Répétition</string>
@@ -104,10 +104,10 @@
     <string name="birthdays_added">Anniversaires ajoutés avec succès</string>
 
     <!-- Anniversaries -->
-    <string name="anniversaries">Anniversaries</string>
-    <string name="add_anniversaries">Add contact anniversaries</string>
-    <string name="no_anniversaries">No anniversaries have been found</string>
-    <string name="anniversaries_added">Anniversaries added successfully</string>
+    <string name="anniversaries">Anniversaires</string>
+    <string name="add_anniversaries">Ajouter des anniversaires de contact</string>
+    <string name="no_anniversaries">Aucun anniversaire n'a été trouvé</string>
+    <string name="anniversaries_added">Anniversaires ajoutés avec succès</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Rappel</string>
@@ -119,7 +119,7 @@
     <string name="hours_raw">heures</string>
     <string name="days_raw">jours</string>
     <string name="add_another_reminder">Ajouter un autre rappel</string>
-    <string name="event_reminders">Event reminders</string>
+    <string name="event_reminders">Rappels d'événements</string>
 
     <plurals name="minutes_before">
         <item quantity="one">%d minute avant</item>
@@ -192,12 +192,12 @@
     <string name="caldav_sync">Synchronisation CalDAV</string>
     <string name="event_lists">Listes d\'événements</string>
     <string name="display_past_events">Afficher les événements du passé</string>
-    <string name="use_same_snooze">Always use same snooze interval</string>
+    <string name="use_same_snooze">Toujours utiliser le même intervalle de répétition</string>
     <string name="snooze_delay">Reporter le rappel avec Snooze de</string>
     <string name="widgets">Widgets</string>
-    <string name="replace_description_with_location">Replace event description with location</string>
-    <string name="delete_all_events">Delete all events</string>
-    <string name="delete_all_events_confirmation">Are you sure you want to delete all events? This will leave your event types and other settings intact.</string>
+    <string name="replace_description_with_location">Remplacer la description de l'événement par l'emplacement</string>
+    <string name="delete_all_events">Supprimer tous les événements</string>
+    <string name="delete_all_events_confirmation">Êtes-vous sûr de vouloir supprimer tous les événements? Cela laissera vos types d'événements et autres paramètres intacts.</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
