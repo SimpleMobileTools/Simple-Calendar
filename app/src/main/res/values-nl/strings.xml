@@ -273,12 +273,12 @@
     <string name="sample_title_5">Koffietijd</string>
 
     <!-- FAQ -->
-    <string name="faq_1_title">How can I remove the holidays imported via the \"Add holidays\" button?</string>
-    <string name="faq_1_text">Holidays created that way are inserted in a new event type called \"Holidays\". You can go in Settings -> Manage Event Types,
-        long press the given event type and delete it by selecting the trashbin.</string>
-    <string name="faq_2_title">Can I sync my events via Google Calendar, or other service supporting CalDAV?</string>
-    <string name="faq_2_text">Yes, just toggle \"CalDAV sync\" in the app settings and select the calendars you want to sync. However, you will need some third party app handling the synchronization between the device and servers.
-        In case you want to synchronize a Google calendar, their official Calendar app will do the job. For other calendars you will need a third party sync adapter, for example DAVdroid.</string>
+    <string name="faq_1_title">Hoe kan ik de feestdagen die zijn geïmporteerd via \"Feestdagen toevoegen\" weer verwijderen?</string>
+    <string name="faq_1_text">Deze feestdagen hebben het afspraaktype \"Feestdagen\". Om de feestdagen te verwijderen, ga naar Instellingen -> Afspraaktypes beheren,
+        druk lang op \"Feestdagen\" en druk vervolgens op de prullenbak.</string>
+    <string name="faq_2_title">Kan ik mijn afspraken synchroniseren met Google Calendar of een andere service die CalDAV ondersteunt?</string>
+    <string name="faq_2_text">Schakel \"CalDAV-synchronisatie\" in bij Instellingen en selecteer vervolgens de agenda\'s die gesynchroniseerd moeten worden. Er is wel een app nodig die de synchronisatie tussen het apparaat en de service zelf afhandelt.
+        Betreft het een agenda van Google Calendar, dan voldoet hun officiële app. Voor andere services zal een adapter zoals DAVdroid benodigd zijn.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
