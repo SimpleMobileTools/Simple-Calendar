@@ -1,12 +1,12 @@
 package com.simplemobiletools.calendar.dialogs
 
-import android.app.Activity
 import android.support.v7.app.AlertDialog
 import android.support.v7.widget.SwitchCompat
 import android.text.TextUtils
 import android.view.ViewGroup
 import android.widget.RelativeLayout
 import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.helpers.CalDAVHandler
 import com.simplemobiletools.commons.extensions.setupDialogStuff
@@ -14,14 +14,14 @@ import kotlinx.android.synthetic.main.calendar_item_account.view.*
 import kotlinx.android.synthetic.main.calendar_item_calendar.view.*
 import kotlinx.android.synthetic.main.dialog_select_calendars.view.*
 
-class SelectCalendarsDialog(val activity: Activity, val callback: () -> Unit) {
+class SelectCalendarsDialog(val activity: SimpleActivity, val callback: () -> Unit) {
     var prevAccount = ""
     var dialog: AlertDialog
     var view = (activity.layoutInflater.inflate(R.layout.dialog_select_calendars, null) as ViewGroup)
 
     init {
         val ids = activity.config.getSyncedCalendarIdsAsList()
-        val calendars = CalDAVHandler(activity).getCalDAVCalendars()
+        val calendars = CalDAVHandler(activity.applicationContext).getCalDAVCalendars(activity)
         val sorted = calendars.sortedWith(compareBy({ it.accountName }, { it.displayName }))
         sorted.forEach {
             if (prevAccount != it.accountName) {

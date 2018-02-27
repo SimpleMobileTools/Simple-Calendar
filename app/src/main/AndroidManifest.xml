@@ -97,6 +97,11 @@
             android:parentActivityName="com.simplemobiletools.commons.activities.AboutActivity"/>
 
         <activity
+            android:name="com.simplemobiletools.commons.activities.FAQActivity"
+            android:label="@string/frequently_asked_questions"
+            android:parentActivityName="com.simplemobiletools.commons.activities.AboutActivity"/>
+
+        <activity
             android:name=".activities.EventActivity"
             android:parentActivityName=".activities.MainActivity">
 
@@ -118,6 +123,10 @@
             android:name=".activities.ManageEventTypesActivity"
             android:label="@string/event_types"
             android:parentActivityName=".activities.SettingsActivity"/>
+
+        <activity
+            android:name=".activities.SnoozeReminderActivity"
+            android:theme="@style/Theme.Transparent"/>
 
         <receiver
             android:name=".helpers.MyWidgetMonthlyProvider"

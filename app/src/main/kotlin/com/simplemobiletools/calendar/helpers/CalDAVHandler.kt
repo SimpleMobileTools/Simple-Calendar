@@ -17,7 +17,6 @@ import com.simplemobiletools.calendar.models.EventType
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.PERMISSION_READ_CALENDAR
 import com.simplemobiletools.commons.helpers.PERMISSION_WRITE_CALENDAR
-import org.joda.time.DateTimeZone
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -197,7 +196,7 @@ class CalDAVHandler(val context: Context) {
         val fetchedEventIds = ArrayList<String>()
         val existingEvents = context.dbHelper.getEventsFromCalDAVCalendar(calendarId)
         existingEvents.forEach {
-            importIdsMap.put(it.importId, it)
+            importIdsMap[it.importId] = it
         }
 
         val uri = CalendarContract.Events.CONTENT_URI
@@ -224,27 +223,14 @@ class CalDAVHandler(val context: Context) {
                     val id = cursor.getLongValue(CalendarContract.Events._ID)
                     val title = cursor.getStringValue(CalendarContract.Events.TITLE) ?: ""
                     val description = cursor.getStringValue(CalendarContract.Events.DESCRIPTION) ?: ""
-                    var startTS = (cursor.getLongValue(CalendarContract.Events.DTSTART) / 1000).toInt()
+                    val startTS = (cursor.getLongValue(CalendarContract.Events.DTSTART) / 1000).toInt()
                     var endTS = (cursor.getLongValue(CalendarContract.Events.DTEND) / 1000).toInt()
-                    val timeZone = cursor.getStringValue(CalendarContract.Events.EVENT_TIMEZONE) ?: "UTC"
                     val allDay = cursor.getIntValue(CalendarContract.Events.ALL_DAY)
                     val rrule = cursor.getStringValue(CalendarContract.Events.RRULE) ?: ""
                     val location = cursor.getStringValue(CalendarContract.Events.EVENT_LOCATION) ?: ""
                     val originalId = cursor.getStringValue(CalendarContract.Events.ORIGINAL_ID)
                     val originalInstanceTime = cursor.getLongValue(CalendarContract.Events.ORIGINAL_INSTANCE_TIME)
                     val reminders = getCalDAVEventReminders(id)
-
-                    // make sure all-day events start at 5am in the users timezone
-                    if (allDay == 1 && timeZone == "UTC") {
-                        val offset = DateTimeZone.getDefault().getOffset(System.currentTimeMillis()) / 1000
-                        val FIVE_HOURS = 5 * 60 * 60
-                        startTS -= offset
-                        startTS += FIVE_HOURS
-                        if (endTS != 0) {
-                            endTS -= offset
-                            endTS += FIVE_HOURS
-                        }
-                    }
 
                     if (endTS == 0) {
                         val duration = cursor.getStringValue(CalendarContract.Events.DURATION) ?: ""
@@ -258,8 +244,12 @@ class CalDAVHandler(val context: Context) {
                             reminders.getOrElse(1, { -1 }), reminders.getOrElse(2, { -1 }), repeatRule.repeatInterval,
                             importId, allDay, repeatRule.repeatLimit, repeatRule.repeatRule, eventTypeId, source = source, location = location)
 
-                    if (event.getIsAllDay() && endTS > startTS) {
-                        event.endTS -= DAY
+                    if (event.getIsAllDay()) {
+                        event.startTS = Formatter.getShiftedImportTimestamp(event.startTS)
+                        event.endTS = Formatter.getShiftedImportTimestamp(event.endTS)
+                        if (event.endTS > event.startTS) {
+                            event.endTS -= DAY
+                        }
                     }
 
                     fetchedEventIds.add(importId)
@@ -292,7 +282,7 @@ class CalDAVHandler(val context: Context) {
 
                         if (title.isNotEmpty()) {
                             context.dbHelper.insert(event, false) {
-                                importIdsMap.put(event.importId, event)
+                                importIdsMap[event.importId] = event
                             }
                         }
                     }
@@ -412,7 +402,6 @@ class CalDAVHandler(val context: Context) {
         try {
             context.contentResolver.delete(contentUri, null, null)
         } catch (ignored: Exception) {
-
         }
     }
 

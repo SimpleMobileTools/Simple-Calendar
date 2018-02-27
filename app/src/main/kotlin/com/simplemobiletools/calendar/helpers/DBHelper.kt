@@ -38,7 +38,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private val COL_LAST_UPDATED = "last_updated"
     private val COL_EVENT_SOURCE = "event_source"
     private val COL_LOCATION = "location"
-    private val COL_SOURCE = "source"   // deprecated
 
     private val META_TABLE_NAME = "events_meta"
     private val COL_EVENT_ID = "event_id"
@@ -65,9 +64,9 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private val mDb: SQLiteDatabase = writableDatabase
 
     companion object {
-        private val DB_VERSION = 19
-        val DB_NAME = "events.db"
-        val REGULAR_EVENT_TYPE_ID = 1
+        private const val DB_VERSION = 19
+        const val DB_NAME = "events.db"
+        const val REGULAR_EVENT_TYPE_ID = 1
         var dbInstance: DBHelper? = null
 
         fun newInstance(context: Context): DBHelper {
@@ -161,11 +160,11 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             db.execSQL("ALTER TABLE $MAIN_TABLE_NAME ADD COLUMN $COL_EVENT_SOURCE TEXT DEFAULT ''")
         }
 
-        if (oldVersion < 16) {
+        if (oldVersion in 7..15) {
             db.execSQL("ALTER TABLE $TYPES_TABLE_NAME ADD COLUMN $COL_TYPE_CALDAV_CALENDAR_ID INTEGER NOT NULL DEFAULT 0")
         }
 
-        if (oldVersion < 17) {
+        if (oldVersion in 7..17) {
             db.execSQL("ALTER TABLE $TYPES_TABLE_NAME ADD COLUMN $COL_TYPE_CALDAV_DISPLAY_NAME TEXT DEFAULT ''")
             db.execSQL("ALTER TABLE $TYPES_TABLE_NAME ADD COLUMN $COL_TYPE_CALDAV_EMAIL TEXT DEFAULT ''")
         }
@@ -227,9 +226,9 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     }
 
     fun update(event: Event, updateAtCalDAV: Boolean, callback: (() -> Unit)? = null) {
-        val selectionArgs = arrayOf(event.id.toString())
         val values = fillEventValues(event)
         val selection = "$COL_ID = ?"
+        val selectionArgs = arrayOf(event.id.toString())
         mDb.update(MAIN_TABLE_NAME, values, selection, selectionArgs)
 
         if (event.repeatInterval == 0) {
@@ -424,6 +423,12 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         val selectionArgs = arrayOf(SOURCE_CONTACT_ANNIVERSARY)
         val cursor = getEventsCursor(selection, selectionArgs)
         return fillEvents(cursor)
+    }
+
+    fun deleteAllEvents() {
+        val cursor = getEventsCursor()
+        val events = fillEvents(cursor).map { it.id.toString() }.toTypedArray()
+        deleteEvents(events, true)
     }
 
     fun deleteEvents(ids: Array<String>, deleteFromCalDAV: Boolean) {

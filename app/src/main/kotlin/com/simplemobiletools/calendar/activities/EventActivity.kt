@@ -66,8 +66,8 @@ class EventActivity : SimpleActivity() {
         } else {
             mEvent = Event()
             mReminder1Minutes = config.defaultReminderMinutes
-            mReminder2Minutes = -1
-            mReminder3Minutes = -1
+            mReminder2Minutes = config.defaultReminderMinutes3
+            mReminder3Minutes = config.defaultReminderMinutes2
             setupNewEvent()
         }
 
@@ -450,7 +450,7 @@ class EventActivity : SimpleActivity() {
             event_caldav_calendar_holder.beVisible()
             event_caldav_calendar_divider.beVisible()
 
-            val calendars = CalDAVHandler(applicationContext).getCalDAVCalendars().filter {
+            val calendars = CalDAVHandler(applicationContext).getCalDAVCalendars(this).filter {
                 it.canWrite() && config.getSyncedCalendarIdsAsList().contains(it.id.toString())
             }
             updateCurrentCalendarInfo(if (mEventCalendarId == STORED_LOCALLY_ONLY) null else getCalendarWithId(calendars, getCalendarId()))
@@ -551,14 +551,24 @@ class EventActivity : SimpleActivity() {
         }
 
         val reminders = sortedSetOf(mReminder1Minutes, mReminder2Minutes, mReminder3Minutes).filter { it != REMINDER_OFF }
+        val reminder1 = reminders.getOrElse(0, { REMINDER_OFF })
+        val reminder2 = reminders.getOrElse(1, { REMINDER_OFF })
+        val reminder3 = reminders.getOrElse(2, { REMINDER_OFF })
+
+        config.apply {
+            defaultReminderMinutes = reminder1
+            defaultReminderMinutes2 = reminder2
+            defaultReminderMinutes3 = reminder3
+        }
+
         mEvent.apply {
             startTS = newStartTS
             endTS = newEndTS
             title = newTitle
             description = event_description.value
-            reminder1Minutes = reminders.elementAtOrElse(0) { REMINDER_OFF }
-            reminder2Minutes = reminders.elementAtOrElse(1) { REMINDER_OFF }
-            reminder3Minutes = reminders.elementAtOrElse(2) { REMINDER_OFF }
+            reminder1Minutes = reminder1
+            reminder2Minutes = reminder2
+            reminder3Minutes = reminder3
             repeatInterval = mRepeatInterval
             importId = newImportId
             flags = if (event_all_day.isChecked) (mEvent.flags or FLAG_ALL_DAY) else (mEvent.flags.removeFlag(FLAG_ALL_DAY))

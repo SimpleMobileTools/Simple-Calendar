@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Simple Calendar</string>
-    <string name="app_launcher_name">Simple Calendar</string>
+    <string name="app_launcher_name">Calendar</string>
     <string name="change_view">Cambiar vista</string>
     <string name="daily_view">Daily view</string>
     <string name="weekly_view">Vista semanal</string>
@@ -186,16 +186,18 @@
     <string name="week_numbers">Mostrar los números de la semana</string>
     <string name="vibrate">Vibración en notificación de recordatorio</string>
     <string name="reminder_sound">Sonido de recordatorio</string>
-    <string name="default_event_reminder">Recordatorio predeterminado de un evento</string>
     <string name="no_ringtone_picker">No se ha encontrado ninguna aplicación capaz de establecer el tono de llamada</string>
     <string name="no_ringtone_selected">Ninguno</string>
     <string name="day_end_before_start">El día no puede terminar antes de que comience</string>
     <string name="caldav_sync">Sincronizar CalDAV</string>
     <string name="event_lists">Listas de eventos</string>
     <string name="display_past_events">Mostrar eventos pasados</string>
+    <string name="use_same_snooze">Always use same snooze interval</string>
     <string name="snooze_delay">Retrasar recordatorio durante</string>
     <string name="widgets">Widgets</string>
-    <string name="replace_description_with_location">Remplazar la descripción con la ubicación al mostrar entradas</string>
+    <string name="replace_description_with_location">Replace event description with location</string>
+    <string name="delete_all_events">Delete all events</string>
+    <string name="delete_all_events_confirmation">Are you sure you want to delete all events? This will leave your event types and other settings intact.</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -236,7 +238,7 @@
 
     <string name="monday_letter">L</string>
     <string name="tuesday_letter">M</string>
-    <string name="wednesday_letter">X</string>
+    <string name="wednesday_letter">M</string>
     <string name="thursday_letter">J</string>
     <string name="friday_letter">V</string>
     <string name="saturday_letter">S</string>
@@ -269,6 +271,14 @@
     <string name="sample_title_4">Almuerzo con María</string>
     <string name="sample_description_4">En la plaza</string>
     <string name="sample_title_5">Hora de café</string>
+
+    <!-- FAQ -->
+    <string name="faq_1_title">How can I remove the holidays imported via the \"Add holidays\" button?</string>
+    <string name="faq_1_text">Holidays created that way are inserted in a new event type called \"Holidays\". You can go in Settings -> Manage Event Types,
+        long press the given event type and delete it by selecting the trashbin.</string>
+    <string name="faq_2_title">Can I sync my events via Google Calendar, or other service supporting CalDAV?</string>
+    <string name="faq_2_text">Yes, just toggle \"CalDAV sync\" in the app settings and select the calendars you want to sync. However, you will need some third party app handling the synchronization between the device and servers.
+        In case you want to synchronize a Google calendar, their official Calendar app will do the job. For other calendars you will need a third party sync adapter, for example DAVdroid.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->

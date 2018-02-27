@@ -1,5 +1,6 @@
 package com.simplemobiletools.calendar.fragments
 
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.support.v4.view.ViewPager
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.MainActivity
 import com.simplemobiletools.calendar.adapters.MyYearPagerAdapter
+import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.commons.views.MyViewPager
 import kotlinx.android.synthetic.main.fragment_years_holder.view.*
@@ -30,7 +32,9 @@ class YearFragmentsHolder : MyFragmentHolder() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_years_holder, container, false)
+        view.background = ColorDrawable(context!!.config.backgroundColor)
         viewPager = view.fragment_years_viewpager
+        viewPager!!.id = (System.currentTimeMillis() % 100000).toInt()
         setupFragment()
         return view
     }
@@ -79,7 +83,7 @@ class YearFragmentsHolder : MyFragmentHolder() {
     }
 
     override fun refreshEvents() {
-        setupFragment()
+        (viewPager?.adapter as? MyYearPagerAdapter)?.updateCalendars(viewPager?.currentItem ?: 0)
     }
 
     override fun shouldGoToTodayBeVisible() = currentYear != todayYear

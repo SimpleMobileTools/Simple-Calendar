@@ -1,5 +1,6 @@
 package com.simplemobiletools.calendar.fragments
 
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.support.v4.view.ViewPager
 import android.view.LayoutInflater
@@ -39,6 +40,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         weekHolder = inflater.inflate(R.layout.fragment_week_holder, container, false) as ViewGroup
+        weekHolder!!.background = ColorDrawable(context!!.config.backgroundColor)
         setupFragment()
         return weekHolder
     }
@@ -124,7 +126,8 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
     }
 
     override fun refreshEvents() {
-        setupFragment()
+        val viewPager = weekHolder?.week_view_view_pager
+        (viewPager?.adapter as? MyWeekPagerAdapter)?.updateCalendars(viewPager.currentItem)
     }
 
     override fun shouldGoToTodayBeVisible() = currentWeekTS != thisWeekTS

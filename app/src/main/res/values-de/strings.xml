@@ -186,16 +186,18 @@
     <string name="week_numbers">Zeige Kalenderwoche an</string>
     <string name="vibrate">Vibration bei Erinnerung</string>
     <string name="reminder_sound">Erinnerungston</string>
-    <string name="default_event_reminder">Standard Termin Erinnerung</string>
     <string name="no_ringtone_picker">Keine App zum Setzen des Klingeltons gefunden</string>
     <string name="no_ringtone_selected">Kein Klingelton gewählt</string>
     <string name="day_end_before_start">Terminbeginn kann nicht vor Terminende liegen</string>
     <string name="caldav_sync">CalDAV Sync</string>
     <string name="event_lists">Terminlisten</string>
     <string name="display_past_events">Vergangene Termine anzeigen</string>
+    <string name="use_same_snooze">Always use same snooze interval</string>
     <string name="snooze_delay">Erinnerung mit Snooze verschieben um</string>
     <string name="widgets">Widgets</string>
-    <string name="replace_description_with_location">Ersetze Beschreibung mit Ort bei Listeneinträgen</string>
+    <string name="replace_description_with_location">Replace event description with location</string>
+    <string name="delete_all_events">Alle Termine löschen</string>
+    <string name="delete_all_events_confirmation">Bist du sicher, dass du alle Termine löschen willst? Deine Termintypen und Einstellungen bleiben erhalten.</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -269,6 +271,14 @@
     <string name="sample_title_4">Essen mit Marie</string>
     <string name="sample_description_4">Im Einkaufszentrum</string>
     <string name="sample_title_5">Kaffeepause</string>
+
+    <!-- FAQ -->
+    <string name="faq_1_title">How can I remove the holidays imported via the \"Add holidays\" button?</string>
+    <string name="faq_1_text">Holidays created that way are inserted in a new event type called \"Holidays\". You can go in Settings -> Manage Event Types,
+        long press the given event type and delete it by selecting the trashbin.</string>
+    <string name="faq_2_title">Can I sync my events via Google Calendar, or other service supporting CalDAV?</string>
+    <string name="faq_2_text">Yes, just toggle \"CalDAV sync\" in the app settings and select the calendars you want to sync. However, you will need some third party app handling the synchronization between the device and servers.
+        In case you want to synchronize a Google calendar, their official Calendar app will do the job. For other calendars you will need a third party sync adapter, for example DAVdroid.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->

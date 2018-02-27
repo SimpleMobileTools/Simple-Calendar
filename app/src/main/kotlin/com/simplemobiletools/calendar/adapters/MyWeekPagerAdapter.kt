@@ -31,4 +31,10 @@ class MyWeekPagerAdapter(fm: FragmentManager, val mWeekTimestamps: List<Int>, va
         mFragments[pos - 1]?.updateScrollY(y)
         mFragments[pos + 1]?.updateScrollY(y)
     }
+
+    fun updateCalendars(pos: Int) {
+        for (i in -1..1) {
+            mFragments[pos + i]?.updateCalendar()
+        }
+    }
 }

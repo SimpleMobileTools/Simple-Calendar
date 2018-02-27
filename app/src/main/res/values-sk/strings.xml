@@ -193,16 +193,18 @@
     <string name="week_numbers">Zobraziť čísla týždňov</string>
     <string name="vibrate">Vibrovať pri pripomienke</string>
     <string name="reminder_sound">Zvučka pripomienky</string>
-    <string name="default_event_reminder">Predvolená hodnota pripomienky</string>
     <string name="no_ringtone_picker">Nenašla sa žiadna aplikácia na zmenu zvučky</string>
     <string name="no_ringtone_selected">Žiadna</string>
     <string name="day_end_before_start">Deň nemôže skončiť skôr než začne</string>
     <string name="caldav_sync">CalDAV synchronizácia</string>
     <string name="event_lists">Zoznamy udalostí</string>
     <string name="display_past_events">Zobraziť minulé udalosti spred</string>
+    <string name="use_same_snooze">Použiť stále rovnaký odklad s Odložiť</string>
     <string name="snooze_delay">Posunúť pripomienku s Odložiť o</string>
     <string name="widgets">Widgety</string>
-    <string name="replace_description_with_location">Nahradiť Popis udalosti Miestom v listových zobrazeniach</string>
+    <string name="replace_description_with_location">Nahradiť popis udalosti miestom</string>
+    <string name="delete_all_events">Odstrániť všetky udalosti</string>
+    <string name="delete_all_events_confirmation">Ste si istý, že chcete odstrániť všetky udalosti? Všetky typy udalostí a nastavenia ostanú nedotknuté.</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -278,6 +280,14 @@
     <string name="sample_title_4">Obed s Katkou</string>
     <string name="sample_description_4">V supermarkete</string>
     <string name="sample_title_5">Káva</string>
+
+    <!-- FAQ -->
+    <string name="faq_1_title">Ako môžem odstrániť sviatky pridané pomocou tlačidla \"Pridať sviatky\"?</string>
+    <string name="faq_1_text">Sviatky vytvorené daným spôsobom sú pridané do typu udalosti \"Sviatky\". Môžete teda ísť do Nastavenia -> Spravovať typy udalostí,
+        podržať daný typ a vymazať ho pomocou smetného koša.</string>
+    <string name="faq_2_title">Viem si zosynchronizovať udalosti pomocou Google Kalendára, alebo inej služby podporujúcej CalDAV?</string>
+    <string name="faq_2_text">Áno, stačí aktivovať funkciu \"CalDAV synchronizácia\" v nastaveniach a zvoliť si správne kalendáre. Pre synchronizáciu medzi zariadením a serverom ale budete potrebovať synchronizačný adaptér od tretej strany.
+        Ak chcete synchronizovať Google kalendár, ich oficiálna aplikácia Kalendár to spraví. Pre iné kalendáre budete potrebovať inú synchronizačnú aplikáciu, napr. DAVdroid.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->

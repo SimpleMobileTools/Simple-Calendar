@@ -1,6 +1,45 @@
 Changelog
 ==========
 
+Version 3.3.2 *(2018-02-21)*
+----------------------------
+
+ * Try fixing the off-by-one issue at CalDAV syncing all-day events
+ * Couple stability improvements
+
+Version 3.3.1 *(2018-02-19)*
+----------------------------
+
+ * Improved CalDAV all-day event importing (by angelsl)
+ * Added a FAQ section with a couple initial items
+ * Once again fixed some cases of blank or duplicate views
+
+Version 3.3.0 *(2018-02-10)*
+----------------------------
+
+ * Fixed blank or duplicate views in some cases (yes, again)
+ * Fixed off-by-one day error at syncing all-day events via Nextcloud
+ * Make default filenames at export more user-friendly
+ * Improved the performance by removing some unnecessary redraws
+ * Added a toggle for switching between default snooze interval or always showing an interval picker
+
+Version 3.2.4 *(2018-02-05)*
+----------------------------
+
+ * Fixed blank screens in some cases
+ * Misc smaller improvements
+
+Version 3.2.3 *(2018-02-01)*
+----------------------------
+
+ * Fixed blank screens in some cases
+ * Make sure the Add New Event button works when opening the app from a widget
+ * Removed the "Default event reminder" from settings, remember last used values
+ * Allow selecting Snooze interval at pressing Snooze
+ * Allow disabling displaying of What's New
+ * Add a Back button at the actionmenu when opening a subview
+ * Allow deleting all events at once without reseting event types and other settings
+
 Version 3.2.2 *(2018-01-27)*
 ----------------------------
 

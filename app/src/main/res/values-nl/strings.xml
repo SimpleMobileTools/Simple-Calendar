@@ -47,7 +47,7 @@
     <string name="delete_all_occurrences">Al deze afspraken verwijderen</string>
     <string name="update_one_only">Alleen huidige afspraak bijwerken</string>
     <string name="update_all_occurrences">Alle afspraken bijwerken</string>
-    <string name="repeat_till_date">Herhalen tot een datum</string>
+    <string name="repeat_till_date">Herhalen tot datum</string>
     <string name="repeat_x_times">Aantal keren herhalen</string>
     <string name="repeat_forever">Voor altijd herhalen</string>
     <string name="times">keer</string>
@@ -139,8 +139,8 @@
     <!-- Export / Import -->
     <string name="import_events">Afspraken importeren</string>
     <string name="export_events">Afspraken exporteren</string>
-    <string name="import_events_from_ics">Afspraken uit een .ics-bestand importeren</string>
-    <string name="export_events_to_ics">Afspraken naar een .ics-bestand exporteren</string>
+    <string name="import_events_from_ics">Afspraken uit .ics-bestand importeren</string>
+    <string name="export_events_to_ics">Afspraken naar .ics-bestand exporteren</string>
     <string name="default_event_type">Standaard afspraaktype</string>
     <string name="export_past_events_too">Afspraken uit verleden ook exporteren</string>
     <string name="include_event_types">Afspraaktypes weergeven</string>
@@ -186,16 +186,18 @@
     <string name="week_numbers">Weeknummers tonen</string>
     <string name="vibrate">Trillen bij notificaties</string>
     <string name="reminder_sound">Geluid voor herinnering</string>
-    <string name="default_event_reminder">Standaardherinnering</string>
     <string name="no_ringtone_picker">Geen app gevonden om geluid te kiezen</string>
     <string name="no_ringtone_selected">Geen</string>
     <string name="day_end_before_start">De begintijd valt na de eindtijd</string>
     <string name="caldav_sync">CalDAV-synchronisatie</string>
     <string name="event_lists">Afsprakenlijst</string>
     <string name="display_past_events">Afgelopen afspraken tonen</string>
+    <string name="use_same_snooze">Altijd dezelfde interval voor uitstellen gebruiken</string>
     <string name="snooze_delay">Herinnering uitstellen met</string>
     <string name="widgets">Widgets</string>
-    <string name="replace_description_with_location">Beschrijving vervangen door Locatie in lijstweergave</string>
+    <string name="replace_description_with_location">Beschrijving vervangen door locatie van afspraken</string>
+    <string name="delete_all_events">Alle afspraken verwijderen</string>
+    <string name="delete_all_events_confirmation">Alle afspraken verwijderen? Afspraaktypes en andere instellingen blijven behouden.</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -269,6 +271,14 @@
     <string name="sample_title_4">Lunch met Jacquelien</string>
     <string name="sample_description_4">Aan de kade</string>
     <string name="sample_title_5">Koffietijd</string>
+
+    <!-- FAQ -->
+    <string name="faq_1_title">Hoe kan ik de feestdagen die zijn geïmporteerd via \"Feestdagen toevoegen\" weer verwijderen?</string>
+    <string name="faq_1_text">Deze feestdagen hebben het afspraaktype \"Feestdagen\". Om de feestdagen te verwijderen, ga naar Instellingen -> Afspraaktypes beheren,
+        druk lang op \"Feestdagen\" en druk vervolgens op de prullenbak.</string>
+    <string name="faq_2_title">Kan ik mijn afspraken synchroniseren met Google Calendar of een andere service die CalDAV ondersteunt?</string>
+    <string name="faq_2_text">Schakel \"CalDAV-synchronisatie\" in bij Instellingen en selecteer vervolgens de agenda\'s die gesynchroniseerd moeten worden. Er is wel een app nodig die de synchronisatie tussen het apparaat en de service zelf afhandelt.
+        Betreft het een agenda van Google Calendar, dan voldoet hun officiële app. Voor andere services zal een adapter zoals DAVdroid benodigd zijn.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->

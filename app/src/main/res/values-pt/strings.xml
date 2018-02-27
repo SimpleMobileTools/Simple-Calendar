@@ -3,7 +3,7 @@
     <string name="app_name">Simple Calendar</string>
     <string name="app_launcher_name">Calendário</string>
     <string name="change_view">Mudar vista</string>
-    <string name="daily_view">Daily view</string>
+    <string name="daily_view">Vista diária</string>
     <string name="weekly_view">Vista semanal</string>
     <string name="monthly_view">Vista mensal</string>
     <string name="yearly_view">Vista anual</string>
@@ -27,7 +27,7 @@
     <string name="event_added">Evento adicionado com sucesso</string>
     <string name="event_updated">Evento atualizado com sucesso</string>
     <string name="filter_events_by_type">Filtrar eventos por tipo</string>
-    <string name="please_fill_location">Please fill in a location to be shown on a map</string>
+    <string name="please_fill_location">Introduza a localização para a mostrar no maps</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Repetição</string>
@@ -186,16 +186,18 @@
     <string name="week_numbers">Mostrar número das semanas</string>
     <string name="vibrate">Vibrar ao notificar sobre o lembrete</string>
     <string name="reminder_sound">Som do lembrete</string>
-    <string name="default_event_reminder">Lembrete padrão</string>
     <string name="no_ringtone_picker">Não foi encontrada uma aplicação capaz de definir o som</string>
     <string name="no_ringtone_selected">Nenhum</string>
     <string name="day_end_before_start">O dia final não pode ser antes do inicial</string>
     <string name="caldav_sync">Sincronização CalDAV</string>
     <string name="event_lists">Lista de eventos</string>
     <string name="display_past_events">Mostrar eventos passados</string>
+    <string name="use_same_snooze">Usar sempre o mesmo intervalo para snooze</string>
     <string name="snooze_delay">Adiar lembrete com a opção Snooze</string>
     <string name="widgets">Widgets</string>
-    <string name="replace_description_with_location">Substituir descrição e localização nas entradas da vista de lista</string>
+    <string name="replace_description_with_location">Substituir descrição pela localização do evento</string>
+    <string name="delete_all_events">Apagar todos os eventos</string>
+    <string name="delete_all_events_confirmation">Tem a certeza de que deseja apagar todos os eventos? Esta ação não afeta os tipos de eventos nem as outras definições.</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -269,6 +271,14 @@
     <string name="sample_title_4">Almoçar com a Maria</string>
     <string name="sample_description_4">Ir ao mercado</string>
     <string name="sample_title_5">Beber um café</string>
+
+    <!-- FAQ -->
+    <string name="faq_1_title">How can I remove the holidays imported via the \"Add holidays\" button?</string>
+    <string name="faq_1_text">Holidays created that way are inserted in a new event type called \"Holidays\". You can go in Settings -> Manage Event Types,
+        long press the given event type and delete it by selecting the trashbin.</string>
+    <string name="faq_2_title">Can I sync my events via Google Calendar, or other service supporting CalDAV?</string>
+    <string name="faq_2_text">Yes, just toggle \"CalDAV sync\" in the app settings and select the calendars you want to sync. However, you will need some third party app handling the synchronization between the device and servers.
+        In case you want to synchronize a Google calendar, their official Calendar app will do the job. For other calendars you will need a third party sync adapter, for example DAVdroid.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->

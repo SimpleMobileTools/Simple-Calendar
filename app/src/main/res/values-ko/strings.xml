@@ -186,16 +186,18 @@
     <string name="week_numbers">주 번호 표시</string>
     <string name="vibrate">알림 시 진동</string>
     <string name="reminder_sound">알림 소리</string>
-    <string name="default_event_reminder">기본 이벤트 알림</string>
     <string name="no_ringtone_picker">벨소리를 설정할 수 있는 앱이 없습니다</string>
     <string name="no_ringtone_selected">없음</string>
     <string name="day_end_before_start">요일은 시작하기 전에 끝날 수 없습니다</string>
     <string name="caldav_sync">CalDAV 동기화</string>
     <string name="event_lists">Event lists</string>
     <string name="display_past_events">과거의 이벤트 표시</string>
+    <string name="use_same_snooze">Always use same snooze interval</string>
     <string name="snooze_delay">스누즈 알림 시간</string>
     <string name="widgets">위젯</string>
-    <string name="replace_description_with_location">목록보기의 설명정보를 위치정보로 대체</string>
+    <string name="replace_description_with_location">Replace event description with location</string>
+    <string name="delete_all_events">Delete all events</string>
+    <string name="delete_all_events_confirmation">Are you sure you want to delete all events? This will leave your event types and other settings intact.</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -269,6 +271,14 @@
     <string name="sample_title_4">Lunch with Mary</string>
     <string name="sample_description_4">In the Plaza</string>
     <string name="sample_title_5">Coffee time</string>
+
+    <!-- FAQ -->
+    <string name="faq_1_title">How can I remove the holidays imported via the \"Add holidays\" button?</string>
+    <string name="faq_1_text">Holidays created that way are inserted in a new event type called \"Holidays\". You can go in Settings -> Manage Event Types,
+        long press the given event type and delete it by selecting the trashbin.</string>
+    <string name="faq_2_title">Can I sync my events via Google Calendar, or other service supporting CalDAV?</string>
+    <string name="faq_2_text">Yes, just toggle \"CalDAV sync\" in the app settings and select the calendars you want to sync. However, you will need some third party app handling the synchronization between the device and servers.
+        In case you want to synchronize a Google calendar, their official Calendar app will do the job. For other calendars you will need a third party sync adapter, for example DAVdroid.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->

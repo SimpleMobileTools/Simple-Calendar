@@ -23,6 +23,7 @@ import com.simplemobiletools.calendar.BuildConfig
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.activities.SimpleActivity
+import com.simplemobiletools.calendar.activities.SnoozeReminderActivity
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.models.*
@@ -199,7 +200,10 @@ private fun getNotification(context: Context, pendingIntent: PendingIntent, even
 
     var soundUri = Uri.parse(context.config.reminderSound)
     if (soundUri.scheme == "file") {
-        soundUri = context.getFilePublicUri(File(soundUri.path), BuildConfig.APPLICATION_ID)
+        try {
+            soundUri = context.getFilePublicUri(File(soundUri.path), BuildConfig.APPLICATION_ID)
+        } catch (ignored: Exception) {
+        }
     }
 
     val builder = NotificationCompat.Builder(context)
@@ -214,11 +218,13 @@ private fun getNotification(context: Context, pendingIntent: PendingIntent, even
             .setChannelId(channelId)
             .addAction(R.drawable.ic_snooze, context.getString(R.string.snooze), getSnoozePendingIntent(context, event))
 
-    if (context.isLollipopPlus())
+    if (context.isLollipopPlus()) {
         builder.setVisibility(Notification.VISIBILITY_PUBLIC)
+    }
 
-    if (context.config.vibrateOnReminder)
+    if (context.config.vibrateOnReminder) {
         builder.setVibrate(longArrayOf(0, 300, 300, 300))
+    }
 
     return builder.build()
 }
@@ -233,10 +239,22 @@ private fun getPendingIntent(context: Context, event: Event): PendingIntent {
 }
 
 private fun getSnoozePendingIntent(context: Context, event: Event): PendingIntent {
-    val intent = Intent(context, SnoozeService::class.java).setAction("snooze")
+    val snoozeClass = if (context.config.useSameSnooze) SnoozeService::class.java else SnoozeReminderActivity::class.java
+    val intent = Intent(context, snoozeClass).setAction("Snoozeee")
     intent.putExtra(EVENT_ID, event.id)
-    intent.putExtra(EVENT_OCCURRENCE_TS, event.startTS)
-    return PendingIntent.getService(context, event.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+    return if (context.config.useSameSnooze) {
+        PendingIntent.getService(context, event.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+    } else {
+        PendingIntent.getActivity(context, event.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+    }
+}
+
+fun Context.rescheduleReminder(event: Event?, minutes: Int) {
+    if (event != null) {
+        applicationContext.scheduleEventIn(System.currentTimeMillis() + minutes * 60000, event)
+        val manager = applicationContext.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        manager.cancel(event.id)
+    }
 }
 
 fun Context.launchNewEventIntent(dayCode: String = Formatter.getTodayCode(this)) {
@@ -275,7 +293,10 @@ fun Context.scheduleCalDAVSync(activate: Boolean) {
 
     if (activate) {
         val syncCheckInterval = 4 * AlarmManager.INTERVAL_HOUR
-        alarm.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + syncCheckInterval, syncCheckInterval, pendingIntent)
+        try {
+            alarm.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + syncCheckInterval, syncCheckInterval, pendingIntent)
+        } catch (ignored: SecurityException) {
+        }
     } else {
         alarm.cancel(pendingIntent)
     }

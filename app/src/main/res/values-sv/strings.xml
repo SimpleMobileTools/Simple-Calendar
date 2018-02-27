@@ -3,7 +3,7 @@
     <string name="app_name">Simple Calendar</string>
     <string name="app_launcher_name">Kalender</string>
     <string name="change_view">Ändra vy</string>
-    <string name="daily_view">Daily view</string>
+    <string name="daily_view">Dagsvy</string>
     <string name="weekly_view">Veckovy</string>
     <string name="monthly_view">Månadsvy</string>
     <string name="yearly_view">Årsvy</string>
@@ -24,10 +24,10 @@
     <string name="new_event">Ny händelse</string>
     <string name="title_empty">Titeln får inte vara tom</string>
     <string name="end_before_start">Händelsen kan inte sluta innan den har startat</string>
-    <string name="event_added">Händelsen tillagd</string>
-    <string name="event_updated">Händelsen uppdaterad</string>
+    <string name="event_added">Händelsen har lagts till</string>
+    <string name="event_updated">Händelsen har uppdaterats</string>
     <string name="filter_events_by_type">Filtrera händelser efter typ</string>
-    <string name="please_fill_location">Please fill in a location to be shown on a map</string>
+    <string name="please_fill_location">Du måste ange en plats som kan visas på en karta</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Upprepning</string>
@@ -186,16 +186,18 @@
     <string name="week_numbers">Visa veckonumret i månadsvyn</string>
     <string name="vibrate">Vibrera vid påminnelseaviseringen</string>
     <string name="reminder_sound">Påminnelseljud</string>
-    <string name="default_event_reminder">Standardhändelsepåminnelse</string>
     <string name="no_ringtone_picker">Hittade ingen app som kan ställa in ljudet</string>
     <string name="no_ringtone_selected">Ingen</string>
     <string name="day_end_before_start">Dagen kan inte börja innan den tar slut</string>
     <string name="caldav_sync">CalDAV-synkronisering</string>
     <string name="event_lists">Händelselistor</string>
     <string name="display_past_events">Visa tidigare händelser</string>
+    <string name="use_same_snooze">Använd alltid samma snooze-intervall</string>
     <string name="snooze_delay">Skjut upp påminnelse med Snooza</string>
     <string name="widgets">Widgetar</string>
-    <string name="replace_description_with_location">Ersätt Beskrivning med Plats i listvyn</string>
+    <string name="replace_description_with_location">Ersätt händelsebeskrivning med plats</string>
+    <string name="delete_all_events">Ta bort alla händelser</string>
+    <string name="delete_all_events_confirmation">Är du säker på att du vill ta bort alla händelser? Dina händelsetyper och andra inställningar påverkas inte av borttagningen.</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -270,6 +272,14 @@
     <string name="sample_description_4">På stranden</string>
     <string name="sample_title_5">Kaffedags</string>
 
+    <!-- FAQ -->
+    <string name="faq_1_title">How can I remove the holidays imported via the \"Add holidays\" button?</string>
+    <string name="faq_1_text">Holidays created that way are inserted in a new event type called \"Holidays\". You can go in Settings -> Manage Event Types,
+        long press the given event type and delete it by selecting the trashbin.</string>
+    <string name="faq_2_title">Can I sync my events via Google Calendar, or other service supporting CalDAV?</string>
+    <string name="faq_2_text">Yes, just toggle \"CalDAV sync\" in the app settings and select the calendars you want to sync. However, you will need some third party app handling the synchronization between the device and servers.
+        In case you want to synchronize a Google calendar, their official Calendar app will do the job. For other calendars you will need a third party sync adapter, for example DAVdroid.</string>
+
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">En enkel kalender med händelser, en anpassningsbar widget och ingen reklam.</string>
@@ -282,7 +292,7 @@
 
         Lagringsbehörigheten behövs bara för att exportera eller importera händelser från .ics-filer.
 
-        Kontaktbehörigheten används bara för att importera kontakters födelsedagar.
+        Kontaktbehörigheten används bara för att importera kontakters födelsedagar och årsdagar.
 
         Denna app är bara en del av en större serie appar. Du hittar resten av dem på http://www.simplemobiletools.com
     </string>

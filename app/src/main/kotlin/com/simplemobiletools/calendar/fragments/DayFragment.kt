@@ -52,7 +52,7 @@ class DayFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        checkEvents()
+        updateCalendar()
     }
 
     private fun setupButtons() {
@@ -82,8 +82,6 @@ class DayFragment : Fragment() {
         }
     }
 
-    fun getDayEventsAdapter() = mHolder.day_events?.adapter as? DayEventsAdapter
-
     private fun pickDay() {
         activity!!.setTheme(context!!.getDialogTheme())
         val view = layoutInflater.inflate(R.layout.date_picker, null)
@@ -108,7 +106,7 @@ class DayFragment : Fragment() {
         mListener?.goToDateTime(newDateTime)
     }
 
-    fun checkEvents() {
+    fun updateCalendar() {
         val startTS = Formatter.getDayStartTS(mDayCode)
         val endTS = Formatter.getDayEndTS(mDayCode)
         context!!.dbHelper.getEvents(startTS, endTS) {

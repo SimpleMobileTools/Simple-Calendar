@@ -6,6 +6,7 @@ import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.commons.activities.BaseSimpleActivity
 import com.simplemobiletools.commons.extensions.getFileOutputStream
 import com.simplemobiletools.commons.extensions.writeLn
+import com.simplemobiletools.commons.models.FileDirItem
 import java.io.BufferedWriter
 import java.io.File
 
@@ -18,7 +19,8 @@ class IcsExporter {
     private var eventsFailed = 0
 
     fun exportEvents(activity: BaseSimpleActivity, file: File, events: ArrayList<Event>, callback: (result: ExportResult) -> Unit) {
-        activity.getFileOutputStream(file) {
+        val fileDirItem = FileDirItem(file.absolutePath, file.name)
+        activity.getFileOutputStream(fileDirItem) {
             if (it == null) {
                 callback(EXPORT_FAIL)
                 return@getFileOutputStream

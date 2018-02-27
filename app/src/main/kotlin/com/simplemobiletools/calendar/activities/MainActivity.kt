@@ -13,7 +13,6 @@ import android.os.Handler
 import android.provider.ContactsContract
 import android.support.v4.view.MenuItemCompat
 import android.support.v7.widget.SearchView
-import android.util.SparseIntArray
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -35,6 +34,7 @@ import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.interfaces.RefreshRecyclerViewListener
+import com.simplemobiletools.commons.models.FAQItem
 import com.simplemobiletools.commons.models.RadioItem
 import com.simplemobiletools.commons.models.Release
 import kotlinx.android.synthetic.main.activity_main.*
@@ -55,7 +55,6 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private var mSearchMenuItem: MenuItem? = null
     private var shouldGoToTodayBeVisible = false
     private var goToTodayButton: MenuItem? = null
-    private var eventTypeColors = SparseIntArray()
     private var currentFragments = ArrayList<MyFragmentHolder>()
 
     private var mStoredTextColor = 0
@@ -72,7 +71,11 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         appLaunched()
         checkWhatsNewDialog()
         calendar_fab.beVisibleIf(config.storedView != YEARLY_VIEW)
+        calendar_fab.setOnClickListener {
+            launchNewEventIntent(currentFragments.last().getNewEventDayCode())
+        }
 
+        storeStateVariables()
         if (resources.getBoolean(R.bool.portrait_only)) {
             requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         }
@@ -93,8 +96,9 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             }
         }
 
-        storeStateVariables()
-        updateViewPager()
+        if (!checkOpenIntents()) {
+            updateViewPager()
+        }
 
         if (!hasPermission(PERMISSION_WRITE_CALENDAR) || !hasPermission(PERMISSION_READ_CALENDAR)) {
             config.caldavSync = false
@@ -103,11 +107,6 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         if (config.caldavSync) {
             refreshCalDAVCalendars(false)
         }
-
-        calendar_fab.setOnClickListener {
-            launchNewEventIntent(currentFragments.last().getNewEventDayCode())
-        }
-        checkOpenIntents()
     }
 
     override fun onResume() {
@@ -123,10 +122,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
 
         dbHelper.getEventTypes {
-            eventTypeColors.clear()
-            it.map { eventTypeColors.put(it.id, it.color) }
-            mShouldFilterBeVisible = eventTypeColors.size() > 1 || config.displayEventTypes.isEmpty()
-            invalidateOptionsMenu()
+            mShouldFilterBeVisible = it.size > 1 || config.displayEventTypes.isEmpty()
         }
 
         if (config.storedView == WEEKLY_VIEW) {
@@ -137,7 +133,10 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
         storeStateVariables()
         updateWidgets()
-        updateTextColors(calendar_coordinator)
+        if (config.storedView != EVENTS_LIST_VIEW) {
+            updateTextColors(calendar_coordinator)
+        }
+        calendar_fab.setColors(config.textColor, getAdjustedPrimaryColor(), config.backgroundColor)
         search_holder.background = ColorDrawable(config.backgroundColor)
     }
 
@@ -159,10 +158,17 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             goToTodayButton = findItem(R.id.go_to_today)
             findItem(R.id.filter).isVisible = mShouldFilterBeVisible
             findItem(R.id.go_to_today).isVisible = shouldGoToTodayBeVisible && config.storedView != EVENTS_LIST_VIEW
-            findItem(R.id.refresh_caldav_calendars).isVisible = config.caldavSync
         }
 
         setupSearch(menu)
+        return true
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        menu!!.apply {
+            findItem(R.id.refresh_caldav_calendars).isVisible = config.caldavSync
+        }
+
         return true
     }
 
@@ -179,6 +185,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             R.id.export_events -> tryExportEvents()
             R.id.settings -> launchSettings()
             R.id.about -> launchAbout()
+            android.R.id.home -> onBackPressed()
             else -> return super.onOptionsItemSelected(item)
         }
         return true
@@ -241,12 +248,10 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     private fun closeSearch() {
-        if (mSearchMenuItem != null) {
-            MenuItemCompat.collapseActionView(mSearchMenuItem)
-        }
+        mSearchMenuItem?.collapseActionView()
     }
 
-    private fun checkOpenIntents() {
+    private fun checkOpenIntents(): Boolean {
         val dayCodeToOpen = intent.getStringExtra(DAY_CODE) ?: ""
         val openMonth = intent.getBooleanExtra(OPEN_MONTH, false)
         intent.removeExtra(OPEN_MONTH)
@@ -255,7 +260,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             calendar_fab.beVisible()
             config.storedView = if (openMonth) MONTHLY_VIEW else DAILY_VIEW
             updateViewPager(dayCodeToOpen)
-            return
+            return true
         }
 
         val eventIdToOpen = intent.getIntExtra(EVENT_ID, 0)
@@ -269,16 +274,17 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                 startActivity(this)
             }
         }
+
+        return false
     }
 
     private fun showViewDialog() {
-        val res = resources
         val items = arrayListOf(
-                RadioItem(DAILY_VIEW, res.getString(R.string.daily_view)),
-                RadioItem(WEEKLY_VIEW, res.getString(R.string.weekly_view)),
-                RadioItem(MONTHLY_VIEW, res.getString(R.string.monthly_view)),
-                RadioItem(YEARLY_VIEW, res.getString(R.string.yearly_view)),
-                RadioItem(EVENTS_LIST_VIEW, res.getString(R.string.simple_event_list)))
+                RadioItem(DAILY_VIEW, getString(R.string.daily_view)),
+                RadioItem(WEEKLY_VIEW, getString(R.string.weekly_view)),
+                RadioItem(MONTHLY_VIEW, getString(R.string.monthly_view)),
+                RadioItem(YEARLY_VIEW, getString(R.string.yearly_view)),
+                RadioItem(EVENTS_LIST_VIEW, getString(R.string.simple_event_list)))
 
         RadioGroupDialog(this, items, config.storedView) {
             calendar_fab.beVisibleIf(it as Int != YEARLY_VIEW)
@@ -501,7 +507,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private fun updateViewPager(dayCode: String? = Formatter.getTodayCode(applicationContext)) {
         val fragment = getFragmentsHolder()
         currentFragments.forEach {
-            supportFragmentManager.beginTransaction().remove(it).commit()
+            supportFragmentManager.beginTransaction().remove(it).commitNow()
         }
         currentFragments.clear()
         currentFragments.add(fragment)
@@ -513,27 +519,37 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
 
         fragment.arguments = bundle
-        supportFragmentManager.beginTransaction().add(R.id.fragments_holder, fragment).commit()
+        supportFragmentManager.beginTransaction().add(R.id.fragments_holder, fragment).commitNow()
     }
 
     fun openMonthFromYearly(dateTime: DateTime) {
+        if (currentFragments.last() is MonthFragmentsHolder) {
+            return
+        }
+
         val fragment = MonthFragmentsHolder()
         currentFragments.add(fragment)
         val bundle = Bundle()
         bundle.putString(DAY_CODE, Formatter.getDayCodeFromDateTime(dateTime))
         fragment.arguments = bundle
-        supportFragmentManager.beginTransaction().add(R.id.fragments_holder, fragment).commit()
+        supportFragmentManager.beginTransaction().add(R.id.fragments_holder, fragment).commitNow()
         resetActionBarTitle()
         calendar_fab.beVisible()
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     fun openDayFromMonthly(dateTime: DateTime) {
+        if (currentFragments.last() is DayFragmentsHolder) {
+            return
+        }
+
         val fragment = DayFragmentsHolder()
         currentFragments.add(fragment)
         val bundle = Bundle()
         bundle.putString(DAY_CODE, Formatter.getDayCodeFromDateTime(dateTime))
         fragment.arguments = bundle
-        supportFragmentManager.beginTransaction().add(R.id.fragments_holder, fragment).commit()
+        supportFragmentManager.beginTransaction().add(R.id.fragments_holder, fragment).commitNow()
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     private fun getThisWeekDateTime(): String {
@@ -561,11 +577,12 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             updateActionBarTitle()
         }
         calendar_fab.beGoneIf(currentFragments.size == 1 && config.storedView == YEARLY_VIEW)
+        supportActionBar?.setDisplayHomeAsUpEnabled(currentFragments.size > 1)
     }
 
     private fun refreshViewPager() {
-        if (!isActivityDestroyed()) {
-            runOnUiThread {
+        runOnUiThread {
+            if (!isActivityDestroyed()) {
                 currentFragments.last().refreshEvents()
             }
         }
@@ -649,8 +666,15 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     private fun launchAbout() {
+        val faqItems = arrayListOf(
+                FAQItem(R.string.faq_1_title_commons, R.string.faq_1_text_commons),
+                FAQItem(R.string.faq_2_title_commons, R.string.faq_2_text_commons),
+                FAQItem(R.string.faq_4_title_commons, R.string.faq_4_text_commons),
+                FAQItem(getString(R.string.faq_1_title), getString(R.string.faq_1_text)),
+                FAQItem(getString(R.string.faq_2_title), getString(R.string.faq_2_text)))
+
         startAboutActivity(R.string.app_name, LICENSE_KOTLIN or LICENSE_JODA or LICENSE_STETHO or LICENSE_MULTISELECT or LICENSE_LEAK_CANARY,
-                BuildConfig.VERSION_NAME)
+                BuildConfig.VERSION_NAME, faqItems)
     }
 
     private fun searchQueryChanged(text: String) {

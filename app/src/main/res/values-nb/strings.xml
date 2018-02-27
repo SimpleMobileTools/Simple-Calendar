@@ -186,16 +186,18 @@
     <string name="week_numbers">Vis ukenummer</string>
     <string name="vibrate">Vibrer ved påminnelsesvarsel</string>
     <string name="reminder_sound">Påminnelseslyd</string>
-    <string name="default_event_reminder">Standard hendelsespåminnelse</string>
     <string name="no_ringtone_picker">Ingen app i stand til å sette ringetone funnet</string>
     <string name="no_ringtone_selected">Ingen</string>
     <string name="day_end_before_start">Dagen kan ikke slutte tidligere enn den starter</string>
     <string name="caldav_sync">CalDAV-synkronisering</string>
     <string name="event_lists">Hendelseslister</string>
     <string name="display_past_events">Vis hendelser fra fortiden</string>
+    <string name="use_same_snooze">Bruk alltid samme intervall for Snooze</string>
     <string name="snooze_delay">Utsett påminnelser med Snooze</string>
     <string name="widgets">Moduler</string>
-    <string name="replace_description_with_location">Erstatt Beskrivelse med Sted i listevisningen</string>
+    <string name="replace_description_with_location">Erstatt hendelsesbeskrivelse med sted</string>
+    <string name="delete_all_events">Slett alle hendelser</string>
+    <string name="delete_all_events_confirmation">Er du sikker på at du vil slette alle hendelser? Dine hendelsestyper og andre innstillinger blir beholdt.</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -269,6 +271,14 @@
     <string name="sample_title_4">Lunsj med Mari</string>
     <string name="sample_description_4">På torget</string>
     <string name="sample_title_5">Kaffepause</string>
+
+    <!-- FAQ -->
+    <string name="faq_1_title">Hvordan kan jeg fjerne off. fridager importert via  meny - \"Legg til off. fridager\"?</string>
+    <string name="faq_1_text">Off. fridager opprettet på denne måten settes inn i en ny hendelsestype kalt \"Off. fridager\". Gå til Innstillinger -> Behandle hendelsestyper,
+        lang-trykk hendelsestypen og slett den ved å velge søppelbøtten.</string>
+    <string name="faq_2_title">Kan jeg synkronisere hendelsene mine via Google Kalender eller annen tjeneste som støtter CalDAV?</string>
+    <string name="faq_2_text">Ja, bare aktiver \"CalDAV-synkronisering\" i innstillingene og velg kalenderne du vil synkronisere. Du trenger imidlertid program som håndterer synkroniseringen mellom enheten og serverne.
+        Hvis du vil synkronisere en Google-kalender, vil deres offisielle kalenderapp gjøre jobben. For andre kalendere trenger du en annen synkroniseringsapp, for eksempel DAVdroid.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->

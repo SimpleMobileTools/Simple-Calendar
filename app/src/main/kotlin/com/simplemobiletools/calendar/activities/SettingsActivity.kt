@@ -7,22 +7,24 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Parcelable
 import android.text.TextUtils
+import com.simplemobiletools.calendar.BuildConfig
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.dialogs.CustomEventReminderDialog
 import com.simplemobiletools.calendar.dialogs.SelectCalendarsDialog
-import com.simplemobiletools.calendar.dialogs.SnoozePickerDialog
 import com.simplemobiletools.calendar.extensions.*
 import com.simplemobiletools.calendar.helpers.CalDAVHandler
 import com.simplemobiletools.calendar.helpers.FONT_SIZE_LARGE
 import com.simplemobiletools.calendar.helpers.FONT_SIZE_MEDIUM
 import com.simplemobiletools.calendar.helpers.FONT_SIZE_SMALL
 import com.simplemobiletools.calendar.models.EventType
+import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.PERMISSION_READ_CALENDAR
 import com.simplemobiletools.commons.helpers.PERMISSION_WRITE_CALENDAR
 import com.simplemobiletools.commons.models.RadioItem
 import kotlinx.android.synthetic.main.activity_settings.*
+import java.io.File
 import java.util.*
 
 class SettingsActivity : SimpleActivity() {
@@ -47,14 +49,16 @@ class SettingsActivity : SimpleActivity() {
         setupManageEventTypes()
         setupHourFormat()
         setupSundayFirst()
+        setupAvoidWhatsNew()
+        setupDeleteAllEvents()
         setupReplaceDescription()
         setupWeekNumbers()
         setupWeeklyStart()
         setupWeeklyEnd()
         setupVibrate()
         setupReminderSound()
+        setupUseSameSnooze()
         setupSnoozeDelay()
-        setupEventReminder()
         setupDisplayPastEvents()
         setupFontSize()
         updateTextColors(settings_holder)
@@ -203,6 +207,24 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
+    private fun setupAvoidWhatsNew() {
+        settings_avoid_whats_new.isChecked = config.avoidWhatsNew
+        settings_avoid_whats_new_holder.setOnClickListener {
+            settings_avoid_whats_new.toggle()
+            config.avoidWhatsNew = settings_avoid_whats_new.isChecked
+        }
+    }
+
+    private fun setupDeleteAllEvents() {
+        settings_delete_all_events_holder.setOnClickListener {
+            ConfirmationDialog(this, messageId = R.string.delete_all_events_confirmation) {
+                Thread {
+                    dbHelper.deleteAllEvents()
+                }.start()
+            }
+        }
+    }
+
     private fun setupReplaceDescription() {
         settings_replace_description.isChecked = config.replaceDescription
         settings_replace_description_holder.setOnClickListener {
@@ -284,10 +306,20 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
+    private fun setupUseSameSnooze() {
+        settings_snooze_delay_holder.beVisibleIf(config.useSameSnooze)
+        settings_use_same_snooze.isChecked = config.useSameSnooze
+        settings_use_same_snooze_holder.setOnClickListener {
+            settings_use_same_snooze.toggle()
+            config.useSameSnooze = settings_use_same_snooze.isChecked
+            settings_snooze_delay_holder.beVisibleIf(config.useSameSnooze)
+        }
+    }
+
     private fun setupSnoozeDelay() {
         updateSnoozeText()
         settings_snooze_delay_holder.setOnClickListener {
-            SnoozePickerDialog(this, config.snoozeDelay) {
+            showEventReminderDialog(config.snoozeDelay, true) {
                 config.snoozeDelay = it
                 updateSnoozeText()
             }
@@ -296,18 +328,6 @@ class SettingsActivity : SimpleActivity() {
 
     private fun updateSnoozeText() {
         settings_snooze_delay.text = res.getQuantityString(R.plurals.by_minutes, config.snoozeDelay, config.snoozeDelay)
-    }
-
-    private fun setupEventReminder() {
-        var reminderMinutes = config.defaultReminderMinutes
-        settings_default_reminder.text = getFormattedMinutes(reminderMinutes)
-        settings_default_reminder_holder.setOnClickListener {
-            showEventReminderDialog(reminderMinutes) {
-                config.defaultReminderMinutes = it
-                reminderMinutes = it
-                settings_default_reminder.text = getFormattedMinutes(it)
-            }
-        }
     }
 
     private fun getHoursString(hours: Int): String {
@@ -335,10 +355,11 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun getDisplayPastEventsText(displayPastEvents: Int): String {
-        return if (displayPastEvents == 0)
+        return if (displayPastEvents == 0) {
             getString(R.string.never)
-        else
+        } else {
             getFormattedMinutes(displayPastEvents, false)
+        }
     }
 
     private fun setupFontSize() {
@@ -367,12 +388,20 @@ class SettingsActivity : SimpleActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode == RESULT_OK) {
             if (requestCode == GET_RINGTONE_URI) {
-                val uri = data?.getParcelableExtra<Parcelable>(RingtoneManager.EXTRA_RINGTONE_PICKED_URI)
+                var uri = data?.getParcelableExtra<Parcelable>(RingtoneManager.EXTRA_RINGTONE_PICKED_URI)
+
                 if (uri == null) {
                     config.reminderSound = ""
                 } else {
-                    settings_reminder_sound.text = RingtoneManager.getRingtone(this, uri as Uri)?.getTitle(this)
-                    config.reminderSound = uri.toString()
+                    try {
+                        if ((uri as Uri).scheme == "file") {
+                            uri = getFilePublicUri(File(uri.path), BuildConfig.APPLICATION_ID)
+                        }
+                        settings_reminder_sound.text = RingtoneManager.getRingtone(this, uri)?.getTitle(this)
+                        config.reminderSound = uri.toString()
+                    } catch (e: Exception) {
+                        showErrorToast(e)
+                    }
                 }
             }
         }
