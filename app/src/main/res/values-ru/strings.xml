@@ -206,10 +206,10 @@
     <string name="caldav_sync">Синхронизация по CalDAV</string>
     <string name="event_lists">Списки событий</string>
     <string name="display_past_events">Показывать прошедшие события</string>
-    <string name="use_same_snooze">Always use same snooze interval</string>
+    <string name="use_same_snooze">Всегда использовать один и тот же интервал повтора</string>
     <string name="snooze_delay">Отложить напоминание на</string>
     <string name="widgets">Виджеты</string>
-    <string name="replace_description_with_location">Replace event description with location</string>
+    <string name="replace_description_with_location">Заменить описание события местоположением</string>
     <string name="delete_all_events">Удалить все события</string>
     <string name="delete_all_events_confirmation">Вы действительно хотите удалить все события? Это не затронет ваши типы событий и другие настройки.</string>
 
@@ -289,12 +289,12 @@
     <string name="sample_title_5">Время для кофе</string>
 
     <!-- FAQ -->
-    <string name="faq_1_title">How can I remove the holidays imported via the \"Add holidays\" button?</string>
-    <string name="faq_1_text">Holidays created that way are inserted in a new event type called \"Holidays\". You can go in Settings -> Manage Event Types,
-        long press the given event type and delete it by selecting the trashbin.</string>
-    <string name="faq_2_title">Can I sync my events via Google Calendar, or other service supporting CalDAV?</string>
-    <string name="faq_2_text">Yes, just toggle \"CalDAV sync\" in the app settings and select the calendars you want to sync. However, you will need some third party app handling the synchronization between the device and servers.
-        In case you want to synchronize a Google calendar, their official Calendar app will do the job. For other calendars you will need a third party sync adapter, for example DAVdroid.</string>
+    <string name="faq_1_title">Как удалить праздники, импортированные с помощью кнопки \"Добавить праздники\"?</string>
+    <string name="faq_1_text">Праздники, созданные таким образом, вставляются в новый тип события, называемый \"Праздники\". Можно перейти в \"Настройки\" -> \"Управление типами событий\",
+        затем длительное нажатие на данном типе события и его удаление нажатием на \"корзину\".</string>
+    <string name="faq_2_title">Можно ли синхронизировать события с помощью Календаря Google или других служб, поддерживающих CalDAV?</string>
+    <string name="faq_2_text">Да, просто включите \"CalDAV-синхронизация\" в настройках приложения и выберите календари, которые хотите синхронизировать. Тем не менее, вам потребуется стороннее приложение, обрабатывающее синхронизацию между устройством и сервером.
+        Если вы хотите синхронизировать Календарь Google, их официальное приложение выполнит данную работу. Для других календарей вам понадобится сторонний инструмент синхронизации, например DAVdroid.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
