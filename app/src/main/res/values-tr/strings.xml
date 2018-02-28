@@ -221,21 +221,6 @@
         <item quantity="other">%d hours</item>
     </plurals>
 
-    <string name="never">Never</string>
-
-    <string name="january">Ocak</string>
-    <string name="february">Şubat</string>
-    <string name="march">Mart</string>
-    <string name="april">Nisan</string>
-    <string name="may">Mayıs</string>
-    <string name="june">Haziran</string>
-    <string name="july">Temmuz</string>
-    <string name="august">Ağustos</string>
-    <string name="september">Eylül</string>
-    <string name="october">Ekim</string>
-    <string name="november">Kasım</string>
-    <string name="december">Aralık</string>
-
     <string name="monday_letter">M</string>
     <string name="tuesday_letter">T</string>
     <string name="wednesday_letter">W</string>
@@ -243,14 +228,6 @@
     <string name="friday_letter">F</string>
     <string name="saturday_letter">S</string>
     <string name="sunday_letter">S</string>
-
-    <string name="monday">Pazartesi</string>
-    <string name="tuesday">Salı</string>
-    <string name="wednesday">Çarşamba</string>
-    <string name="thursday">Perşembe</string>
-    <string name="friday">Cuma</string>
-    <string name="saturday">Cumartesi</string>
-    <string name="sunday">Pazar</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->

@@ -221,21 +221,6 @@
         <item quantity="other">%d timer</item>
     </plurals>
 
-    <string name="never">Aldrig</string>
-
-    <string name="january">Januar</string>
-    <string name="february">Februar</string>
-    <string name="march">Marts</string>
-    <string name="april">April</string>
-    <string name="may">Maj</string>
-    <string name="june">Juni</string>
-    <string name="july">Juli</string>
-    <string name="august">August</string>
-    <string name="september">September</string>
-    <string name="october">Oktober</string>
-    <string name="november">November</string>
-    <string name="december">December</string>
-
     <string name="monday_letter">M</string>
     <string name="tuesday_letter">T</string>
     <string name="wednesday_letter">O</string>
@@ -243,14 +228,6 @@
     <string name="friday_letter">F</string>
     <string name="saturday_letter">L</string>
     <string name="sunday_letter">S</string>
-
-    <string name="monday">Mandag</string>
-    <string name="tuesday">Tirsdag</string>
-    <string name="wednesday">Onsdag</string>
-    <string name="thursday">Torsdag</string>
-    <string name="friday">Fredag</string>
-    <string name="saturday">Lørdag</string>
-    <string name="sunday">Søndag</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->

@@ -230,21 +230,6 @@
         <item quantity="other">%d hodin</item>
     </plurals>
 
-    <string name="never">Nikdy</string>
-
-    <string name="january">leden</string>
-    <string name="february">únor</string>
-    <string name="march">březen</string>
-    <string name="april">duben</string>
-    <string name="may">květen</string>
-    <string name="june">červen</string>
-    <string name="july">červenec</string>
-    <string name="august">srpen</string>
-    <string name="september">září</string>
-    <string name="october">říjen</string>
-    <string name="november">listopad</string>
-    <string name="december">prosinec</string>
-
     <string name="monday_letter">P</string>
     <string name="tuesday_letter">Ú</string>
     <string name="wednesday_letter">S</string>
@@ -252,14 +237,6 @@
     <string name="friday_letter">P</string>
     <string name="saturday_letter">S</string>
     <string name="sunday_letter">N</string>
-
-    <string name="monday">Pondělí</string>
-    <string name="tuesday">Úterý</string>
-    <string name="wednesday">Středa</string>
-    <string name="thursday">Čtvrtek</string>
-    <string name="friday">Pátek</string>
-    <string name="saturday">Sobota</string>
-    <string name="sunday">Neděle</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->

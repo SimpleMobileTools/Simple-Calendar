@@ -221,21 +221,6 @@
         <item quantity="other">%da eurioù</item>
     </plurals>
 
-    <string name="never">Morse</string>
-
-    <string name="january">Genver</string>
-    <string name="february">C\'hwevrer</string>
-    <string name="march">Meurzh</string>
-    <string name="april">Ebrel</string>
-    <string name="may">Mae</string>
-    <string name="june">Mezheven</string>
-    <string name="july">Gouere</string>
-    <string name="august">Eost</string>
-    <string name="september">Gwengolo</string>
-    <string name="october">Here</string>
-    <string name="november">Du</string>
-    <string name="december">Kerzu</string>
-
     <string name="monday_letter">L</string>
     <string name="tuesday_letter">Meu</string>
     <string name="wednesday_letter">Mer</string>
@@ -243,14 +228,6 @@
     <string name="friday_letter">G</string>
     <string name="saturday_letter">Sa</string>
     <string name="sunday_letter">Su</string>
-
-    <string name="monday">Lun</string>
-    <string name="tuesday">Meurzh</string>
-    <string name="wednesday">Merc\'her</string>
-    <string name="thursday">Yaou</string>
-    <string name="friday">Gwener</string>
-    <string name="saturday">Sadorn</string>
-    <string name="sunday">Sul</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->

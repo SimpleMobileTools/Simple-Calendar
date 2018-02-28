@@ -221,21 +221,6 @@
         <item quantity="other">%d uren</item>
     </plurals>
 
-    <string name="never">Nooit</string>
-
-    <string name="january">Januari</string>
-    <string name="february">Februari</string>
-    <string name="march">Maart</string>
-    <string name="april">April</string>
-    <string name="may">Mei</string>
-    <string name="june">Juni</string>
-    <string name="july">Juli</string>
-    <string name="august">Augustus</string>
-    <string name="september">September</string>
-    <string name="october">Oktober</string>
-    <string name="november">November</string>
-    <string name="december">December</string>
-
     <string name="monday_letter">M</string>
     <string name="tuesday_letter">D</string>
     <string name="wednesday_letter">W</string>
@@ -243,14 +228,6 @@
     <string name="friday_letter">V</string>
     <string name="saturday_letter">Z</string>
     <string name="sunday_letter">Z</string>
-
-    <string name="monday">Maandag</string>
-    <string name="tuesday">Dinsdag</string>
-    <string name="wednesday">Woensdag</string>
-    <string name="thursday">Donderdag</string>
-    <string name="friday">Vrijdag</string>
-    <string name="saturday">Zaterdag</string>
-    <string name="sunday">Zondag</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->

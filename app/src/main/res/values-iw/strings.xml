@@ -222,21 +222,6 @@
         <item quantity="other">%d hours</item>
     </plurals>
 
-    <string name="never">Never</string>
-
-    <string name="january">ינואר</string>
-    <string name="february">פברואר</string>
-    <string name="march">מרץ</string>
-    <string name="april">אפריל</string>
-    <string name="may">מאי</string>
-    <string name="june">יוני</string>
-    <string name="july">יולי</string>
-    <string name="august">אוגוסט</string>
-    <string name="september">ספטמבר</string>
-    <string name="october">אוקטובר</string>
-    <string name="november">נובמבר</string>
-    <string name="december">דצמבר</string>
-
     <string name="monday_letter">ב\'</string>
     <string name="tuesday_letter">ג\'</string>
     <string name="wednesday_letter">ד\'</string>
@@ -244,14 +229,6 @@
     <string name="friday_letter">ו\'</string>
     <string name="saturday_letter">ש\'</string>
     <string name="sunday_letter">א\'</string>
-
-    <string name="monday">Monday</string>
-    <string name="tuesday">Tuesday</string>
-    <string name="wednesday">Wednesday</string>
-    <string name="thursday">Thursday</string>
-    <string name="friday">Friday</string>
-    <string name="saturday">Saturday</string>
-    <string name="sunday">Sunday</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
