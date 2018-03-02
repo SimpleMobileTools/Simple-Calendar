@@ -184,6 +184,48 @@ fun Context.notifyEvent(event: Event) {
 }
 
 @SuppressLint("NewApi")
+private fun getPublicNotification(context: Context, pendingIntent: PendingIntent, event: Event): Notification {
+    val channelId = "reminder_channel"
+    if (context.isOreoPlus()) {
+        val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val name = context.resources.getString(R.string.event_reminders)
+        val importance = NotificationManager.IMPORTANCE_HIGH
+        NotificationChannel(channelId, name, importance).apply {
+            enableLights(true)
+            lightColor = event.color
+            enableVibration(false)
+            notificationManager.createNotificationChannel(this)
+        }
+    }
+
+    var soundUri = Uri.parse(context.config.reminderSound)
+    if (soundUri.scheme == "file") {
+        try {
+            soundUri = context.getFilePublicUri(File(soundUri.path), BuildConfig.APPLICATION_ID)
+        } catch (ignored: Exception) {
+        }
+    }
+
+    val builder = NotificationCompat.Builder(context)
+            .setContentTitle(event.title)
+            .setContentText(context.getString(R.string.content_public_notification))
+            .setSmallIcon(R.drawable.ic_calendar)
+            .setContentIntent(pendingIntent)
+            .setPriority(Notification.PRIORITY_HIGH)
+            .setDefaults(Notification.DEFAULT_LIGHTS)
+            .setAutoCancel(true)
+            .setSound(soundUri)
+            .setChannelId(channelId)
+            .addAction(R.drawable.ic_snooze, context.getString(R.string.snooze), getSnoozePendingIntent(context, event))
+
+    if (context.config.vibrateOnReminder) {
+        builder.setVibrate(longArrayOf(0, 300, 300, 300))
+    }
+
+    return builder.build()
+}
+
+@SuppressLint("NewApi")
 private fun getNotification(context: Context, pendingIntent: PendingIntent, event: Event, content: String): Notification {
     val channelId = "reminder_channel"
     if (context.isOreoPlus()) {
@@ -217,10 +259,7 @@ private fun getNotification(context: Context, pendingIntent: PendingIntent, even
             .setSound(soundUri)
             .setChannelId(channelId)
             .addAction(R.drawable.ic_snooze, context.getString(R.string.snooze), getSnoozePendingIntent(context, event))
-
-    if (context.isLollipopPlus()) {
-        builder.setVisibility(Notification.VISIBILITY_PUBLIC)
-    }
+            .setPublicVersion(getPublicNotification(context, pendingIntent, event))
 
     if (context.config.vibrateOnReminder) {
         builder.setVibrate(longArrayOf(0, 300, 300, 300))

@@ -273,6 +273,7 @@
 
         This app is just one piece of a bigger series of apps. You can find the rest of them at http://www.simplemobiletools.com
     </string>
+    <string name="content_public_notification">An event will start soon</string>
 
     <!--
         Haven't found some strings? There's more at
