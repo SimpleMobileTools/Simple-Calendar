@@ -228,21 +228,6 @@
         <item quantity="other">%d godzin</item>
     </plurals>
 
-    <string name="never">Nigdy</string>
-
-    <string name="january">Styczeń</string>
-    <string name="february">Luty</string>
-    <string name="march">Marzec</string>
-    <string name="april">Kwiecień</string>
-    <string name="may">Maj</string>
-    <string name="june">Czerwiec</string>
-    <string name="july">Lipiec</string>
-    <string name="august">Sierpień</string>
-    <string name="september">Wrzesień</string>
-    <string name="october">Październik</string>
-    <string name="november">Listopad</string>
-    <string name="december">Grudzień</string>
-
     <string name="monday_letter">Pn</string>
     <string name="tuesday_letter">Wt</string>
     <string name="wednesday_letter">Śr</string>
@@ -250,14 +235,6 @@
     <string name="friday_letter">Pt</string>
     <string name="saturday_letter">Sb</string>
     <string name="sunday_letter">Nd</string>
-
-    <string name="monday">Poniedziałek</string>
-    <string name="tuesday">Wtorek</string>
-    <string name="wednesday">Środa</string>
-    <string name="thursday">Czwartek</string>
-    <string name="friday">Piątek</string>
-    <string name="saturday">Sobota</string>
-    <string name="sunday">Niedziela</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->

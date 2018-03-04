@@ -237,21 +237,6 @@
         <item quantity="many">%d часов</item>
     </plurals>
 
-    <string name="never">Никогда</string>
-
-    <string name="january">Январь</string>
-    <string name="february">Февраль</string>
-    <string name="march">Март</string>
-    <string name="april">Апрель</string>
-    <string name="may">Май</string>
-    <string name="june">Июнь</string>
-    <string name="july">Июль</string>
-    <string name="august">Август</string>
-    <string name="september">Сентябрь</string>
-    <string name="october">Октябрь</string>
-    <string name="november">Ноябрь</string>
-    <string name="december">Декабрь</string>
-
     <string name="monday_letter">ПН</string>
     <string name="tuesday_letter">ВТ</string>
     <string name="wednesday_letter">СР</string>
@@ -259,14 +244,6 @@
     <string name="friday_letter">ПТ</string>
     <string name="saturday_letter">СБ</string>
     <string name="sunday_letter">ВС</string>
-
-    <string name="monday">Понедельник</string>
-    <string name="tuesday">Вторник</string>
-    <string name="wednesday">Среда</string>
-    <string name="thursday">Четверг</string>
-    <string name="friday">Пятница</string>
-    <string name="saturday">Суббота</string>
-    <string name="sunday">Воскресенье</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->

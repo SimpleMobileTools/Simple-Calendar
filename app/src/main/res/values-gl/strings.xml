@@ -3,6 +3,7 @@
     <string name="app_name">Simple Calendar</string>
     <string name="app_launcher_name">Calendario</string>
     <string name="change_view">Cambiar vista</string>
+    <string name="daily_view">Daily view</string>
     <string name="weekly_view">Vista semanal</string>
     <string name="monthly_view">Vista mensual</string>
     <string name="yearly_view">Vista anual</string>
@@ -26,6 +27,7 @@
     <string name="event_added">Evento engadido con éxito</string>
     <string name="event_updated">O evento foi actualizado correctamente</string>
     <string name="filter_events_by_type">Filtrar eventos por tipo</string>
+    <string name="please_fill_location">Please fill in a location to be shown on a map</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Repetición</string>
@@ -135,24 +137,14 @@
     </plurals>
 
     <!-- Export / Import -->
-    <string name="importing">Importando…</string>
-    <string name="exporting">Exportando…</string>
     <string name="import_events">Importar eventos</string>
     <string name="export_events">Exportar eventos</string>
     <string name="import_events_from_ics">Importar eventos desde un ficheiro .ics</string>
     <string name="export_events_to_ics">Exportar eventos desde un ficheiro .ics</string>
-    <string name="events_imported_successfully">Eventos importados correctamente</string>
-    <string name="events_exported_successfully">Eventos exportados correctamente</string>
-    <string name="importing_events_failed">Fallo ao importar eventos</string>
-    <string name="exporting_events_failed">Fallo ao exportar eventos</string>
-    <string name="importing_some_events_failed">Fallo ao importar algúns eventos</string>
-    <string name="exporting_some_events_failed">Fallo ao exportar algúns eventos</string>
     <string name="default_event_type">Tipo de evento predeterminado</string>
-    <string name="no_events_for_exporting">Non se atoparon eventos para exportar</string>
     <string name="export_past_events_too">Exportar tamén eventos pasados</string>
     <string name="include_event_types">Incluír tipos de eventos</string>
     <string name="filename_without_ics">Nome de ficheiro (sin .ics)</string>
-    <string name="no_title">Sin título</string>
 
     <!-- Event details -->
     <string name="title">Título</string>
@@ -194,7 +186,6 @@
     <string name="week_numbers">Mostrar os números da semana</string>
     <string name="vibrate">Vibrar coa notificación de recordatorio</string>
     <string name="reminder_sound">Son de recordatorio</string>
-    <string name="default_event_reminder">Recordatorio predeterminado de un evento</string>
     <string name="no_ringtone_picker">Non se atopou ningunha aplicación capaz de establecer o ton de aviso</string>
     <string name="no_ringtone_selected">Ningún</string>
     <string name="day_end_before_start">O día non puede rematar antes de que comece</string>
@@ -230,21 +221,6 @@
         <item quantity="other">%d horas</item>
     </plurals>
 
-    <string name="never">Nunca</string>
-
-    <string name="january">Xaneiro</string>
-    <string name="february">Febreiro</string>
-    <string name="march">Marzo</string>
-    <string name="april">Abril</string>
-    <string name="may">Maio</string>
-    <string name="june">Xuño</string>
-    <string name="july">Xullo</string>
-    <string name="august">Agosto</string>
-    <string name="september">Setembro</string>
-    <string name="october">Outubro</string>
-    <string name="november">Novembro</string>
-    <string name="december">Nadal</string>
-
     <string name="monday_letter">S</string>
     <string name="tuesday_letter">T</string>
     <string name="wednesday_letter">C</string>
@@ -252,14 +228,6 @@
     <string name="friday_letter">Se</string>
     <string name="saturday_letter">Sa</string>
     <string name="sunday_letter">D</string>
-
-    <string name="monday">Segunda</string>
-    <string name="tuesday">Terceira</string>
-    <string name="wednesday">Cuarta</string>
-    <string name="thursday">Quinta</string>
-    <string name="friday">Sexta</string>
-    <string name="saturday">Sábado</string>
-    <string name="sunday">Domingo</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->

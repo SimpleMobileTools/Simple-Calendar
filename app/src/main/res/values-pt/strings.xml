@@ -221,21 +221,6 @@
         <item quantity="other">%d horas</item>
     </plurals>
 
-    <string name="never">Nunca</string>
-
-    <string name="january">janeiro</string>
-    <string name="february">fevereiro</string>
-    <string name="march">março</string>
-    <string name="april">abril</string>
-    <string name="may">maio</string>
-    <string name="june">junho</string>
-    <string name="july">julho</string>
-    <string name="august">agosto</string>
-    <string name="september">setembro</string>
-    <string name="october">outubro</string>
-    <string name="november">novembro</string>
-    <string name="december">dezembro</string>
-
     <string name="monday_letter">S</string>
     <string name="tuesday_letter">T</string>
     <string name="wednesday_letter">Q</string>
@@ -243,14 +228,6 @@
     <string name="friday_letter">S</string>
     <string name="saturday_letter">S</string>
     <string name="sunday_letter">D</string>
-
-    <string name="monday">segunda</string>
-    <string name="tuesday">terça</string>
-    <string name="wednesday">quarta</string>
-    <string name="thursday">quinta</string>
-    <string name="friday">sexta</string>
-    <string name="saturday">sábado</string>
-    <string name="sunday">domingo</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->

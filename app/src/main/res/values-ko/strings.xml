@@ -221,21 +221,6 @@
         <item quantity="other">%d 시</item>
     </plurals>
 
-    <string name="never">사용 안함</string>
-
-    <string name="january">1월</string>
-    <string name="february">2월</string>
-    <string name="march">3월</string>
-    <string name="april">4월</string>
-    <string name="may">5월</string>
-    <string name="june">6월</string>
-    <string name="july">7월</string>
-    <string name="august">8월</string>
-    <string name="september">9월</string>
-    <string name="october">10월</string>
-    <string name="november">11월</string>
-    <string name="december">12월</string>
-
     <string name="monday_letter">월</string>
     <string name="tuesday_letter">화</string>
     <string name="wednesday_letter">수</string>
@@ -243,14 +228,6 @@
     <string name="friday_letter">금</string>
     <string name="saturday_letter">토</string>
     <string name="sunday_letter">일</string>
-
-    <string name="monday">월요일</string>
-    <string name="tuesday">화요일</string>
-    <string name="wednesday">수요일</string>
-    <string name="thursday">목요일</string>
-    <string name="friday">금요일</string>
-    <string name="saturday">토요일</string>
-    <string name="sunday">일요일</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->

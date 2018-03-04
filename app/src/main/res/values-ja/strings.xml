@@ -221,21 +221,6 @@
         <item quantity="other">%d hours</item>
     </plurals>
 
-    <string name="never">Never</string>
-
-    <string name="january">1月</string>
-    <string name="february">2月</string>
-    <string name="march">3月</string>
-    <string name="april">4月</string>
-    <string name="may">5月</string>
-    <string name="june">6月</string>
-    <string name="july">7月</string>
-    <string name="august">8月</string>
-    <string name="september">9月</string>
-    <string name="october">10月</string>
-    <string name="november">11月</string>
-    <string name="december">12月</string>
-
     <string name="monday_letter">月</string>
     <string name="tuesday_letter">火</string>
     <string name="wednesday_letter">水</string>
@@ -243,14 +228,6 @@
     <string name="friday_letter">金</string>
     <string name="saturday_letter">土</string>
     <string name="sunday_letter">日</string>
-
-    <string name="monday">Monday</string>
-    <string name="tuesday">Tuesday</string>
-    <string name="wednesday">Wednesday</string>
-    <string name="thursday">Thursday</string>
-    <string name="friday">Friday</string>
-    <string name="saturday">Saturday</string>
-    <string name="sunday">Sunday</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
