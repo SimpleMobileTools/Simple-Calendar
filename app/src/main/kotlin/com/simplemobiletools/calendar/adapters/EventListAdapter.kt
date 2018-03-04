@@ -56,7 +56,7 @@ class EventListAdapter(activity: SimpleActivity, val listItems: ArrayList<ListIt
 
     override fun getSelectableItemCount() = listItems.filter { it is ListEvent }.size
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): MyRecyclerViewAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyRecyclerViewAdapter.ViewHolder {
         val layoutId = if (viewType == ITEM_EVENT) R.layout.event_list_item else R.layout.event_list_section
         return createViewHolder(layoutId, parent)
     }

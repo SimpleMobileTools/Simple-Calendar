@@ -55,7 +55,7 @@ class FilterEventTypeAdapter(val activity: SimpleActivity, val eventTypes: List<
         return selectedItemsSet
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = activity.layoutInflater.inflate(R.layout.filter_event_type_view, parent, false)
         return ViewHolder(view, adapterListener, activity)
     }

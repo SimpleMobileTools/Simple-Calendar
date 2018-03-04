@@ -10,7 +10,6 @@
     <string name="simple_event_list">Simple event list</string>
     <string name="no_upcoming_events">Seems like you don\'t have any upcoming events.</string>
     <string name="add_some_events">You can add some with the Plus button at the bottom.</string>
-    <string name="details">Details</string>
     <string name="go_to_today">Go to today</string>
     <string name="snooze">Snooze</string>
 
@@ -179,8 +178,6 @@
 
     <!-- Settings -->
     <string name="manage_event_types">Manage event types</string>
-    <string name="use_24_hour_format">Use 24-hour format</string>
-    <string name="sunday_first">Sunday as first day</string>
     <string name="start_day_at">Start day at</string>
     <string name="end_day_at">End day at</string>
     <string name="week_numbers">Show week numbers</string>
@@ -194,7 +191,6 @@
     <string name="display_past_events">Display events from the past</string>
     <string name="use_same_snooze">Always use same snooze interval</string>
     <string name="snooze_delay">Postpone reminder with Snooze by</string>
-    <string name="widgets">Widgets</string>
     <string name="replace_description_with_location">Replace event description with location</string>
     <string name="delete_all_events">Delete all events</string>
     <string name="delete_all_events_confirmation">Are you sure you want to delete all events? This will leave your event types and other settings intact.</string>

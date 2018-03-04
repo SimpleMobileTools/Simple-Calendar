@@ -10,7 +10,6 @@
     <string name="simple_event_list">רשימת אירועים פשוטה</string>
     <string name="no_upcoming_events">נראה שאין לך אירועים בזמן הקרוב.</string>
     <string name="add_some_events">ניתן להוסיף אירועים בעזרת כפתור הפלוס למטה.</string>
-    <string name="details">פרטים</string>
     <string name="go_to_today">Go to today</string>
     <string name="snooze">Snooze</string>
 
@@ -180,8 +179,6 @@
 
     <!-- Settings -->
     <string name="manage_event_types">Manage event types</string>
-    <string name="use_24_hour_format">Use 24-hour format</string>
-    <string name="sunday_first">יום א\' בתור היום הראשון בשבוע</string>
     <string name="start_day_at">התחלת תצפית שבועית בשעה</string>
     <string name="end_day_at">התחלת תצפית שבועית בשעה</string>
     <string name="week_numbers">הצגת מספרי השבועות בתצפית חודשית</string>
@@ -195,7 +192,6 @@
     <string name="display_past_events">Display events from the past</string>
     <string name="use_same_snooze">Always use same snooze interval</string>
     <string name="snooze_delay">Postpone reminder with Snooze by</string>
-    <string name="widgets">Widgets</string>
     <string name="replace_description_with_location">Replace event description with location</string>
     <string name="delete_all_events">Delete all events</string>
     <string name="delete_all_events_confirmation">Are you sure you want to delete all events? This will leave your event types and other settings intact.</string>

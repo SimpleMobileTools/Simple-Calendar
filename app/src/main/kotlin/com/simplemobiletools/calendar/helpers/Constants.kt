@@ -35,8 +35,6 @@ const val DAY_SECONDS = 24 * 60 * 60
 const val WEEK_SECONDS = 7 * DAY_SECONDS
 
 // Shared Preferences
-const val USE_24_HOUR_FORMAT = "use_24_hour_format"
-const val SUNDAY_FIRST = "sunday_first"
 const val WEEK_NUMBERS = "week_numbers"
 const val START_WEEKLY_AT = "start_weekly_at"
 const val END_WEEKLY_AT = "end_weekly_at"
@@ -59,15 +57,6 @@ const val USE_SAME_SNOOZE = "use_same_snooze"
 val letterIDs = intArrayOf(R.string.sunday_letter, R.string.monday_letter, R.string.tuesday_letter, R.string.wednesday_letter,
         R.string.thursday_letter, R.string.friday_letter, R.string.saturday_letter)
 
-// repeat_rule for weekly repetition
-const val MONDAY = 1
-const val TUESDAY = 2
-const val WEDNESDAY = 4
-const val THURSDAY = 8
-const val FRIDAY = 16
-const val SATURDAY = 32
-const val SUNDAY = 64
-const val EVERY_DAY = 127
 
 // repeat_rule for monthly repetition
 const val REPEAT_MONTH_SAME_DAY = 1                   // ie 25th every month

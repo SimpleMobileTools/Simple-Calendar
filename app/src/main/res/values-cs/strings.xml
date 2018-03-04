@@ -10,7 +10,6 @@
     <string name="simple_event_list">Jednoduchý seznam událostí</string>
     <string name="no_upcoming_events">Nemáte žádné nadcházející události.</string>
     <string name="add_some_events">Přidejte událost tlačítkem Plus dole.</string>
-    <string name="details">Detaily</string>
     <string name="go_to_today">Přejít na dnešek</string>
     <string name="snooze">Snooze</string>
 
@@ -186,8 +185,6 @@
 
     <!-- Settings -->
     <string name="manage_event_types">Správa typů událostí</string>
-    <string name="use_24_hour_format">24h formát</string>
-    <string name="sunday_first">Neděle jako první den</string>
     <string name="start_day_at">Počátek dne v</string>
     <string name="end_day_at">Konec dne v</string>
     <string name="week_numbers">Zobrazovat číslo týdne</string>
@@ -201,7 +198,6 @@
     <string name="display_past_events">Zobrazit minulé události</string>
     <string name="use_same_snooze">Always use same snooze interval</string>
     <string name="snooze_delay">Odložit připomenutí pomocí funkce Snooze by</string>
-    <string name="widgets">Widgety</string>
     <string name="replace_description_with_location">Replace event description with location</string>
     <string name="delete_all_events">Delete all events</string>
     <string name="delete_all_events_confirmation">Are you sure you want to delete all events? This will leave your event types and other settings intact.</string>

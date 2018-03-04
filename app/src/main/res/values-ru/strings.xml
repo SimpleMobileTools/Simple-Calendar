@@ -10,7 +10,6 @@
     <string name="simple_event_list">Простой список событий</string>
     <string name="no_upcoming_events">Похоже, у вас нет предстоящих событий.</string>
     <string name="add_some_events">Вы можете их добавить, нажав на кнопку с плюсом внизу.</string>
-    <string name="details">Подробности</string>
     <string name="go_to_today">Сегодня</string>
     <string name="snooze">Отложить</string>
 
@@ -193,8 +192,6 @@
 
     <!-- Settings -->
     <string name="manage_event_types">Управление типами событий</string>
-    <string name="use_24_hour_format">Использовать 24-часовой формат</string>
-    <string name="sunday_first">Воскресенье - начало недели</string>
     <string name="start_day_at">Начало дня (неделя)</string>
     <string name="end_day_at">Окончание дня (неделя)</string>
     <string name="week_numbers">Отображать номера недель</string>
@@ -208,7 +205,6 @@
     <string name="display_past_events">Показывать прошедшие события</string>
     <string name="use_same_snooze">Всегда использовать один и тот же интервал повтора</string>
     <string name="snooze_delay">Отложить напоминание на</string>
-    <string name="widgets">Виджеты</string>
     <string name="replace_description_with_location">Заменить описание события местоположением</string>
     <string name="delete_all_events">Удалить все события</string>
     <string name="delete_all_events_confirmation">Вы действительно хотите удалить все события? Это не затронет ваши типы событий и другие настройки.</string>

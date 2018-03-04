@@ -15,7 +15,6 @@ class RepeatRuleWeeklyDialog(val activity: Activity, val curRepeatRule: Int, val
 
     init {
         val days = activity.resources.getStringArray(R.array.week_days)
-        val res = activity.resources
         val checkboxes = ArrayList<MyAppCompatCheckbox>(7)
         for (i in 0..6) {
             val pow = Math.pow(2.0, i.toDouble()).toInt()
@@ -39,8 +38,8 @@ class RepeatRuleWeeklyDialog(val activity: Activity, val curRepeatRule: Int, val
                 .setPositiveButton(R.string.ok, { dialog, which -> callback(getRepeatRuleSum()) })
                 .setNegativeButton(R.string.cancel, null)
                 .create().apply {
-            activity.setupDialogStuff(view, this)
-        }
+                    activity.setupDialogStuff(view, this)
+                }
     }
 
     private fun getRepeatRuleSum(): Int {

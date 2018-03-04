@@ -19,6 +19,7 @@ import com.simplemobiletools.calendar.models.CalDAVCalendar
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
+import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.models.RadioItem
 import kotlinx.android.synthetic.main.activity_event.*
 import org.joda.time.DateTime
@@ -347,7 +348,7 @@ class EventActivity : SimpleActivity() {
 
     private fun checkRepetitionRuleText() {
         if (mRepeatInterval.isXWeeklyRepetition()) {
-            event_repetition_rule.text = if (mRepeatRule == EVERY_DAY) getString(R.string.every_day) else getSelectedDaysString()
+            event_repetition_rule.text = if (mRepeatRule == EVERY_DAY_BIT) getString(R.string.every_day) else getSelectedDaysString(mRepeatRule)
         } else if (mRepeatInterval.isXMonthlyRepetition()) {
             val repeatString = if (mRepeatRule == REPEAT_MONTH_ORDER_WEEKDAY_USE_LAST || mRepeatRule == REPEAT_MONTH_ORDER_WEEKDAY)
                 R.string.repeat else R.string.repeat_on
@@ -355,26 +356,6 @@ class EventActivity : SimpleActivity() {
             event_repetition_rule_label.text = getString(repeatString)
             event_repetition_rule.text = getMonthlyRepetitionRuleText()
         }
-    }
-
-    private fun getSelectedDaysString(): String {
-        var days = ""
-        if (mRepeatRule and MONDAY != 0)
-            days += "${getString(R.string.monday).substringTo(3)}, "
-        if (mRepeatRule and TUESDAY != 0)
-            days += "${getString(R.string.tuesday).substringTo(3)}, "
-        if (mRepeatRule and WEDNESDAY != 0)
-            days += "${getString(R.string.wednesday).substringTo(3)}, "
-        if (mRepeatRule and THURSDAY != 0)
-            days += "${getString(R.string.thursday).substringTo(3)}, "
-        if (mRepeatRule and FRIDAY != 0)
-            days += "${getString(R.string.friday).substringTo(3)}, "
-        if (mRepeatRule and SATURDAY != 0)
-            days += "${getString(R.string.saturday).substringTo(3)}, "
-        if (mRepeatRule and SUNDAY != 0)
-            days += "${getString(R.string.sunday).substringTo(3)}, "
-
-        return days.trim().trimEnd(',')
     }
 
     private fun getMonthlyRepetitionRuleText() = when (mRepeatRule) {
@@ -786,7 +767,7 @@ class EventActivity : SimpleActivity() {
     private fun checkRepeatRule() {
         if (mRepeatInterval.isXWeeklyRepetition()) {
             val day = mRepeatRule
-            if (day == MONDAY || day == TUESDAY || day == WEDNESDAY || day == THURSDAY || day == FRIDAY || day == SATURDAY || day == SUNDAY) {
+            if (day == MONDAY_BIT || day == TUESDAY_BIT || day == WEDNESDAY_BIT || day == THURSDAY_BIT || day == FRIDAY_BIT || day == SATURDAY_BIT || day == SUNDAY_BIT) {
                 setRepeatRule(Math.pow(2.0, (mEventStartDateTime.dayOfWeek - 1).toDouble()).toInt())
             }
         } else if (mRepeatInterval.isXMonthlyRepetition()) {

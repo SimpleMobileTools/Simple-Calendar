@@ -10,7 +10,6 @@
     <string name="simple_event_list">Händelselista</string>
     <string name="no_upcoming_events">Det ser ut som att du inte har några kommande händelser.</string>
     <string name="add_some_events">Du kan lägga till händelser via plus-knappen som du ser längst ner.</string>
-    <string name="details">Detaljer</string>
     <string name="go_to_today">Gå till idag</string>
     <string name="snooze">Snooza</string>
 
@@ -179,8 +178,6 @@
 
     <!-- Settings -->
     <string name="manage_event_types">Hantera händelsetyper</string>
-    <string name="use_24_hour_format">Använd 24-timmarsformat</string>
-    <string name="sunday_first">Söndag är första dagen</string>
     <string name="start_day_at">Starta veckovydagen vid</string>
     <string name="end_day_at">Sluta veckovydagen vid</string>
     <string name="week_numbers">Visa veckonumret i månadsvyn</string>
@@ -194,7 +191,6 @@
     <string name="display_past_events">Visa tidigare händelser</string>
     <string name="use_same_snooze">Använd alltid samma snooze-intervall</string>
     <string name="snooze_delay">Skjut upp påminnelse med Snooza</string>
-    <string name="widgets">Widgetar</string>
     <string name="replace_description_with_location">Ersätt händelsebeskrivning med plats</string>
     <string name="delete_all_events">Ta bort alla händelser</string>
     <string name="delete_all_events_confirmation">Är du säker på att du vill ta bort alla händelser? Dina händelsetyper och andra inställningar påverkas inte av borttagningen.</string>

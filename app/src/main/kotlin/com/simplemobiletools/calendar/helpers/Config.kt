@@ -2,7 +2,6 @@ package com.simplemobiletools.calendar.helpers
 
 import android.content.Context
 import android.media.RingtoneManager
-import android.text.format.DateFormat
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.scheduleCalDAVSync
 import com.simplemobiletools.commons.helpers.BaseConfig
@@ -12,20 +11,6 @@ class Config(context: Context) : BaseConfig(context) {
     companion object {
         fun newInstance(context: Context) = Config(context)
     }
-
-    var isSundayFirst: Boolean
-        get() {
-            val isSundayFirst = Calendar.getInstance(Locale.getDefault()).firstDayOfWeek == Calendar.SUNDAY
-            return prefs.getBoolean(SUNDAY_FIRST, isSundayFirst)
-        }
-        set(sundayFirst) = prefs.edit().putBoolean(SUNDAY_FIRST, sundayFirst).apply()
-
-    var use24hourFormat: Boolean
-        get() {
-            val use24hourFormat = DateFormat.is24HourFormat(context)
-            return prefs.getBoolean(USE_24_HOUR_FORMAT, use24hourFormat)
-        }
-        set(use24hourFormat) = prefs.edit().putBoolean(USE_24_HOUR_FORMAT, use24hourFormat).apply()
 
     var displayWeekNumbers: Boolean
         get() = prefs.getBoolean(WEEK_NUMBERS, false)

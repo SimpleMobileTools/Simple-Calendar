@@ -10,7 +10,6 @@
     <string name="simple_event_list">Roll darvoudoù een</string>
     <string name="no_upcoming_events">War a-seblant n\'ho peus darvoud ebet da zont.</string>
     <string name="add_some_events">Gallout a rit ouzhpennañ reoù gant an afell \"Mui\" en traoñ.</string>
-    <string name="details">Munudoù</string>
     <string name="go_to_today">Mont da hiziv</string>
     <string name="snooze">Daleañ</string>
 
@@ -179,8 +178,6 @@
 
     <!-- Settings -->
     <string name="manage_event_types">Merañ an doareoù darvoudoù</string>
-    <string name="use_24_hour_format">Arverañ ar mentrezh 24eur</string>
-    <string name="sunday_first">Disul eo an devezh kentañ</string>
     <string name="start_day_at">Kregiñ an devezh da</string>
     <string name="end_day_at">Echuiñ an devezh da</string>
     <string name="week_numbers">Diskouez niverennoù ar sizhun</string>
@@ -194,7 +191,6 @@
     <string name="display_past_events">Skrammañ darvoudoù an amzer tremenet</string>
     <string name="use_same_snooze">Always use same snooze interval</string>
     <string name="snooze_delay">Daleañ an adc\'halv eus</string>
-    <string name="widgets">Widjetoù</string>
     <string name="replace_description_with_location">Replace event description with location</string>
     <string name="delete_all_events">Delete all events</string>
     <string name="delete_all_events_confirmation">Are you sure you want to delete all events? This will leave your event types and other settings intact.</string>

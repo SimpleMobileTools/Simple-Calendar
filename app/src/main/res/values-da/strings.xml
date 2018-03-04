@@ -10,7 +10,6 @@
     <string name="simple_event_list">Begivenhedsliste</string>
     <string name="no_upcoming_events">Du ser ikke ud til at have nogen forestående begivenheder.</string>
     <string name="add_some_events">Du kan tilføje nogle med plus-knappen nederst.</string>
-    <string name="details">Detaljeret</string>
     <string name="go_to_today">Gå til i dag</string>
     <string name="snooze">Snooze</string>
 
@@ -179,8 +178,6 @@
 
     <!-- Settings -->
     <string name="manage_event_types">Håndter begivenhedstyper</string>
-    <string name="use_24_hour_format">Anvend 24-timersformat</string>
-    <string name="sunday_first">Søndag som første dag</string>
     <string name="start_day_at">Start dagen kl.</string>
     <string name="end_day_at">Slut dagen kl.</string>
     <string name="week_numbers">Vis ugenumre</string>
@@ -194,7 +191,6 @@
     <string name="display_past_events">Vis overståede begivenheder</string>
     <string name="use_same_snooze">Brug altid samme snooze-tid</string>
     <string name="snooze_delay">Udsæt påmindelsen med en snooze på</string>
-    <string name="widgets">Widgets</string>
     <string name="replace_description_with_location">Erstat beskrivelse med sted</string>
     <string name="delete_all_events">Slet alle begivenheder</string>
     <string name="delete_all_events_confirmation">Er du sikker på at du vil slette alle begivenheder? Dine begivenhedstyper og andre indstillinger vil forblive intakte.</string>

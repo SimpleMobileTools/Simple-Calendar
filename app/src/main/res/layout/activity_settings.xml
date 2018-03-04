@@ -97,7 +97,7 @@
                 android:clickable="false"
                 android:paddingLeft="@dimen/medium_margin"
                 android:paddingStart="@dimen/medium_margin"
-                android:text="@string/use_24_hour_format"/>
+                android:text="@string/use_24_hour_time_format"/>
 
         </RelativeLayout>
 

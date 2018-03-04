@@ -10,7 +10,6 @@
     <string name="simple_event_list">Prosta lista zdarzeń</string>
     <string name="no_upcoming_events">Wygląda na to, że nie masz żadnych nadchodzących wydarzeń.</string>
     <string name="add_some_events">Możesz je dodawać za pomocą przycisku \"+\" znajdującego na dole.</string>
-    <string name="details">Szczegóły</string>
     <string name="go_to_today">Przejdź do dnia dzisiejszego</string>
     <string name="snooze">Drzemka</string>
 
@@ -184,8 +183,6 @@
 
     <!-- Settings -->
     <string name="manage_event_types">Zarządzaj typami wydarzeń</string>
-    <string name="use_24_hour_format">Używaj 24-godzinnego formatu czasu</string>
-    <string name="sunday_first">Niedziela jako pierwszy dzień tygodnia</string>
     <string name="start_day_at">Początek dnia</string>
     <string name="end_day_at">Koniec dnia</string>
     <string name="week_numbers">Pokazuj numery tygodnia</string>
@@ -199,7 +196,6 @@
     <string name="display_past_events">Pokazuj wydarzenia z przeszłości</string>
     <string name="use_same_snooze">Zawsze używaj tego samego przedziału przypomnienia</string>
     <string name="snooze_delay">Opóźnij przypomnienie o</string>
-    <string name="widgets">Widżety</string>
     <string name="replace_description_with_location">Zamieniaj opis wydarzenia na lokalizację</string>
     <string name="delete_all_events">Usuń wszystkie wydarzenia</string>
     <string name="delete_all_events_confirmation">Czy na pewno mam usunąć wszystkie wydarzenia? Nie naruszy to typów wydarzeń i innych ustawień.</string>

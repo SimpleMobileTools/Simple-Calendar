@@ -10,7 +10,6 @@
     <string name="simple_event_list">Jednoduchý zoznam</string>
     <string name="no_upcoming_events">Nemáte žiadne naplánované udalosti.</string>
     <string name="add_some_events">Viete ich pridať pomocou tlačidla Plus v pravom dolnom rohu.</string>
-    <string name="details">Detaily</string>
     <string name="go_to_today">Prejsť na dnešok</string>
     <string name="snooze">Odložiť</string>
 
@@ -186,8 +185,6 @@
 
     <!-- Settings -->
     <string name="manage_event_types">Spravovať typy udalostí</string>
-    <string name="use_24_hour_format">Použiť 24 hodinový formát</string>
-    <string name="sunday_first">Začať týždeň nedeľou</string>
     <string name="start_day_at">Začať deň o</string>
     <string name="end_day_at">Ukončiť deň o</string>
     <string name="week_numbers">Zobraziť čísla týždňov</string>
@@ -201,7 +198,6 @@
     <string name="display_past_events">Zobraziť minulé udalosti spred</string>
     <string name="use_same_snooze">Použiť stále rovnaký odklad s Odložiť</string>
     <string name="snooze_delay">Posunúť pripomienku s Odložiť o</string>
-    <string name="widgets">Widgety</string>
     <string name="replace_description_with_location">Nahradiť popis udalosti miestom</string>
     <string name="delete_all_events">Odstrániť všetky udalosti</string>
     <string name="delete_all_events_confirmation">Ste si istý, že chcete odstrániť všetky udalosti? Všetky typy udalostí a nastavenia ostanú nedotknuté.</string>
