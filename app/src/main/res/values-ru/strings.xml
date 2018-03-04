@@ -233,14 +233,6 @@
         <item quantity="many">%d часов</item>
     </plurals>
 
-    <string name="monday_letter">ПН</string>
-    <string name="tuesday_letter">ВТ</string>
-    <string name="wednesday_letter">СР</string>
-    <string name="thursday_letter">ЧТ</string>
-    <string name="friday_letter">ПТ</string>
-    <string name="saturday_letter">СБ</string>
-    <string name="sunday_letter">ВС</string>
-
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">Понедельник</string>

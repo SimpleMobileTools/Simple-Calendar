@@ -217,14 +217,6 @@
         <item quantity="other">%d hours</item>
     </plurals>
 
-    <string name="monday_letter">月</string>
-    <string name="tuesday_letter">火</string>
-    <string name="wednesday_letter">水</string>
-    <string name="thursday_letter">木</string>
-    <string name="friday_letter">金</string>
-    <string name="saturday_letter">土</string>
-    <string name="sunday_letter">日</string>
-
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">Monday</string>

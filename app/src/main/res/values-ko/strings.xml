@@ -217,14 +217,6 @@
         <item quantity="other">%d 시</item>
     </plurals>
 
-    <string name="monday_letter">월</string>
-    <string name="tuesday_letter">화</string>
-    <string name="wednesday_letter">수</string>
-    <string name="thursday_letter">목</string>
-    <string name="friday_letter">금</string>
-    <string name="saturday_letter">토</string>
-    <string name="sunday_letter">일</string>
-
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">Monday</string>

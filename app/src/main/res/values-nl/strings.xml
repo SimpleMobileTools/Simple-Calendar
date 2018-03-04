@@ -217,14 +217,6 @@
         <item quantity="other">%d uren</item>
     </plurals>
 
-    <string name="monday_letter">M</string>
-    <string name="tuesday_letter">D</string>
-    <string name="wednesday_letter">W</string>
-    <string name="thursday_letter">D</string>
-    <string name="friday_letter">V</string>
-    <string name="saturday_letter">Z</string>
-    <string name="sunday_letter">Z</string>
-
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">maandag</string>

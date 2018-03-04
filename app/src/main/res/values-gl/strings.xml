@@ -217,14 +217,6 @@
         <item quantity="other">%d horas</item>
     </plurals>
 
-    <string name="monday_letter">S</string>
-    <string name="tuesday_letter">T</string>
-    <string name="wednesday_letter">C</string>
-    <string name="thursday_letter">Q</string>
-    <string name="friday_letter">Se</string>
-    <string name="saturday_letter">Sa</string>
-    <string name="sunday_letter">D</string>
-
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">Segunda</string>

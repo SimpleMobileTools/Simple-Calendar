@@ -218,14 +218,6 @@
         <item quantity="other">%d hours</item>
     </plurals>
 
-    <string name="monday_letter">ב\'</string>
-    <string name="tuesday_letter">ג\'</string>
-    <string name="wednesday_letter">ד\'</string>
-    <string name="thursday_letter">ה\'</string>
-    <string name="friday_letter">ו\'</string>
-    <string name="saturday_letter">ש\'</string>
-    <string name="sunday_letter">א\'</string>
-
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">Monday</string>
