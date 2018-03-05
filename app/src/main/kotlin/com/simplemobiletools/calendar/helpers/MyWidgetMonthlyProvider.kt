@@ -191,18 +191,18 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
         val sundayFirst = context.config.isSundayFirst
         val smallerFontSize = context.config.getFontSize()
         val packageName = context.packageName
-        val letters = letterIDs
+        val letters = context.resources.getStringArray(R.array.week_day_letters)
         for (i in 0..6) {
             val id = resources.getIdentifier("label_$i", "id", packageName)
             views.setTextColor(id, textColor)
             views.setTextSize(id, smallerFontSize)
 
             var index = i
-            if (!sundayFirst) {
-                index = (index + 1) % letters.size
+            if (sundayFirst) {
+                index = (index + 6) % letters.size
             }
 
-            views.setText(id, resources.getString(letters[index]))
+            views.setText(id, letters[index])
         }
     }
 }

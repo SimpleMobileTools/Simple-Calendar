@@ -1,7 +1,5 @@
 package com.simplemobiletools.calendar.helpers
 
-import com.simplemobiletools.calendar.R
-
 const val LOW_ALPHA = .3f
 const val MEDIUM_ALPHA = .6f
 const val STORED_LOCALLY_ONLY = 0
@@ -53,10 +51,6 @@ const val SNOOZE_DELAY = "snooze_delay"
 const val DISPLAY_PAST_EVENTS = "display_past_events"
 const val REPLACE_DESCRIPTION = "replace_description"
 const val USE_SAME_SNOOZE = "use_same_snooze"
-
-val letterIDs = intArrayOf(R.string.sunday_letter, R.string.monday_letter, R.string.tuesday_letter, R.string.wednesday_letter,
-        R.string.thursday_letter, R.string.friday_letter, R.string.saturday_letter)
-
 
 // repeat_rule for monthly repetition
 const val REPEAT_MONTH_SAME_DAY = 1                   // ie 25th every month
