@@ -327,16 +327,10 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun updateSnoozeText() {
-        settings_snooze_delay.text = res.getQuantityString(R.plurals.by_minutes, config.snoozeTime, config.snoozeTime)
+        settings_snooze_delay.text = formatMinutesToTimeString(config.snoozeTime)
     }
 
-    private fun getHoursString(hours: Int): String {
-        return if (hours < 10) {
-            "0$hours:00"
-        } else {
-            "$hours:00"
-        }
-    }
+    private fun getHoursString(hours: Int) = String.format("%02d:00", hours)
 
     private fun setupDisplayPastEvents() {
         var displayPastEvents = config.displayPastEvents
@@ -385,10 +379,10 @@ class SettingsActivity : SimpleActivity() {
         else -> R.string.large
     })
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
         if (resultCode == RESULT_OK) {
             if (requestCode == GET_RINGTONE_URI) {
-                var uri = data?.getParcelableExtra<Parcelable>(RingtoneManager.EXTRA_RINGTONE_PICKED_URI)
+                var uri = resultData?.getParcelableExtra<Parcelable>(RingtoneManager.EXTRA_RINGTONE_PICKED_URI)
 
                 if (uri == null) {
                     config.reminderSound = ""

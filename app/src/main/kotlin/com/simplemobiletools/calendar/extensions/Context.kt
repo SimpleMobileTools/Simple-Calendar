@@ -244,7 +244,7 @@ private fun getPendingIntent(context: Context, event: Event): PendingIntent {
 
 private fun getSnoozePendingIntent(context: Context, event: Event): PendingIntent {
     val snoozeClass = if (context.config.useSameSnooze) SnoozeService::class.java else SnoozeReminderActivity::class.java
-    val intent = Intent(context, snoozeClass).setAction("Snoozeee")
+    val intent = Intent(context, snoozeClass).setAction("Snooze")
     intent.putExtra(EVENT_ID, event.id)
     return if (context.config.useSameSnooze) {
         PendingIntent.getService(context, event.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
