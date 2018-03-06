@@ -2,17 +2,13 @@ package com.simplemobiletools.calendar.dialogs
 
 import android.app.Activity
 import android.support.v7.app.AlertDialog
-import android.view.WindowManager
 import android.widget.ImageView
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.models.EventType
 import com.simplemobiletools.commons.dialogs.ColorPickerDialog
-import com.simplemobiletools.commons.extensions.setBackgroundWithStroke
-import com.simplemobiletools.commons.extensions.setupDialogStuff
-import com.simplemobiletools.commons.extensions.toast
-import com.simplemobiletools.commons.extensions.value
+import com.simplemobiletools.commons.extensions.*
 import kotlinx.android.synthetic.main.dialog_event_type.view.*
 
 class UpdateEventTypeDialog(val activity: Activity, var eventType: EventType? = null, val callback: (eventType: EventType) -> Unit) {
@@ -44,42 +40,42 @@ class UpdateEventTypeDialog(val activity: Activity, var eventType: EventType? = 
                 .setPositiveButton(R.string.ok, null)
                 .setNegativeButton(R.string.cancel, null)
                 .create().apply {
-            window!!.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
-            activity.setupDialogStuff(view, this, if (isNewEvent) R.string.add_new_type else R.string.edit_type) {
-                getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
-                    val title = view.type_title.value
-                    val eventIdWithTitle = activity.dbHelper.getEventTypeIdWithTitle(title)
-                    var isEventTypeTitleTaken = isNewEvent && eventIdWithTitle != -1
-                    if (!isEventTypeTitleTaken)
-                        isEventTypeTitleTaken = !isNewEvent && eventType!!.id != eventIdWithTitle && eventIdWithTitle != -1
+                    activity.setupDialogStuff(view, this, if (isNewEvent) R.string.add_new_type else R.string.edit_type) {
+                        showKeyboard(view.type_title)
+                        getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
+                            val title = view.type_title.value
+                            val eventIdWithTitle = activity.dbHelper.getEventTypeIdWithTitle(title)
+                            var isEventTypeTitleTaken = isNewEvent && eventIdWithTitle != -1
+                            if (!isEventTypeTitleTaken)
+                                isEventTypeTitleTaken = !isNewEvent && eventType!!.id != eventIdWithTitle && eventIdWithTitle != -1
 
-                    if (title.isEmpty()) {
-                        activity.toast(R.string.title_empty)
-                        return@setOnClickListener
-                    } else if (isEventTypeTitleTaken) {
-                        activity.toast(R.string.type_already_exists)
-                        return@setOnClickListener
-                    }
+                            if (title.isEmpty()) {
+                                activity.toast(R.string.title_empty)
+                                return@setOnClickListener
+                            } else if (isEventTypeTitleTaken) {
+                                activity.toast(R.string.type_already_exists)
+                                return@setOnClickListener
+                            }
 
-                    eventType!!.title = title
-                    if (eventType!!.caldavCalendarId != 0)
-                        eventType!!.caldavDisplayName = title
+                            eventType!!.title = title
+                            if (eventType!!.caldavCalendarId != 0)
+                                eventType!!.caldavDisplayName = title
 
-                    eventType!!.id = if (isNewEvent) {
-                        activity.dbHelper.insertEventType(eventType!!)
-                    } else {
-                        activity.dbHelper.updateEventType(eventType!!)
-                    }
+                            eventType!!.id = if (isNewEvent) {
+                                activity.dbHelper.insertEventType(eventType!!)
+                            } else {
+                                activity.dbHelper.updateEventType(eventType!!)
+                            }
 
-                    if (eventType!!.id != -1) {
-                        dismiss()
-                        callback(eventType!!)
-                    } else {
-                        activity.toast(R.string.editing_calendar_failed)
+                            if (eventType!!.id != -1) {
+                                dismiss()
+                                callback(eventType!!)
+                            } else {
+                                activity.toast(R.string.editing_calendar_failed)
+                            }
+                        }
                     }
                 }
-            }
-        }
     }
 
     private fun setupColor(view: ImageView) {

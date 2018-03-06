@@ -3,7 +3,6 @@ package com.simplemobiletools.calendar.dialogs
 import android.app.Activity
 import android.support.v7.app.AlertDialog
 import android.view.ViewGroup
-import android.view.WindowManager
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.helpers.DAY
 import com.simplemobiletools.calendar.helpers.MONTH
@@ -11,6 +10,7 @@ import com.simplemobiletools.calendar.helpers.WEEK
 import com.simplemobiletools.calendar.helpers.YEAR
 import com.simplemobiletools.commons.extensions.hideKeyboard
 import com.simplemobiletools.commons.extensions.setupDialogStuff
+import com.simplemobiletools.commons.extensions.showKeyboard
 import com.simplemobiletools.commons.extensions.value
 import kotlinx.android.synthetic.main.dialog_custom_event_repeat_interval.view.*
 
@@ -25,9 +25,10 @@ class CustomEventRepeatIntervalDialog(val activity: Activity, val callback: (sec
                 .setPositiveButton(R.string.ok, { dialogInterface, i -> confirmRepeatInterval() })
                 .setNegativeButton(R.string.cancel, null)
                 .create().apply {
-            window!!.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
-            activity.setupDialogStuff(view, this)
-        }
+                    activity.setupDialogStuff(view, this) {
+                        showKeyboard(view.dialog_custom_repeat_interval_value)
+                    }
+                }
     }
 
     private fun confirmRepeatInterval() {

@@ -3,21 +3,22 @@ package com.simplemobiletools.calendar.dialogs
 import android.app.Activity
 import android.support.v7.app.AlertDialog
 import android.view.ViewGroup
-import android.view.WindowManager
 import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.helpers.DAY_MINUTES
 import com.simplemobiletools.commons.extensions.hideKeyboard
 import com.simplemobiletools.commons.extensions.setupDialogStuff
+import com.simplemobiletools.commons.extensions.showKeyboard
 import com.simplemobiletools.commons.extensions.value
 import kotlinx.android.synthetic.main.dialog_custom_event_reminder.view.*
 
-class CustomEventReminderDialog(val activity: Activity, val selectedMinutes: Int = 0, val callback: (minutes: Int) -> Unit) {
+class CustomIntervalPickerDialog(val activity: Activity, val selectedMinutes: Int = 0, val callback: (minutes: Int) -> Unit) {
     var dialog: AlertDialog
     var view = (activity.layoutInflater.inflate(R.layout.dialog_custom_event_reminder, null) as ViewGroup).apply {
         when {
             selectedMinutes == 0 -> dialog_radio_view.check(R.id.dialog_radio_minutes)
-            selectedMinutes % 1440 == 0 -> {
+            selectedMinutes % DAY_MINUTES == 0 -> {
                 dialog_radio_view.check(R.id.dialog_radio_days)
-                dialog_custom_reminder_value.setText((selectedMinutes / 1440).toString())
+                dialog_custom_reminder_value.setText((selectedMinutes / DAY_MINUTES).toString())
             }
             selectedMinutes % 60 == 0 -> {
                 dialog_radio_view.check(R.id.dialog_radio_hours)
@@ -35,9 +36,10 @@ class CustomEventReminderDialog(val activity: Activity, val selectedMinutes: Int
                 .setPositiveButton(R.string.ok, { dialogInterface, i -> confirmReminder() })
                 .setNegativeButton(R.string.cancel, null)
                 .create().apply {
-            window!!.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
-            activity.setupDialogStuff(view, this)
-        }
+                    activity.setupDialogStuff(view, this) {
+                        showKeyboard(view.dialog_custom_reminder_value)
+                    }
+                }
     }
 
     private fun confirmReminder() {

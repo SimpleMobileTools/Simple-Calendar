@@ -3,8 +3,8 @@ package com.simplemobiletools.calendar.extensions
 import android.app.Activity
 import com.simplemobiletools.calendar.BuildConfig
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.dialogs.CustomEventReminderDialog
 import com.simplemobiletools.calendar.dialogs.CustomEventRepeatIntervalDialog
+import com.simplemobiletools.calendar.dialogs.CustomIntervalPickerDialog
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.commons.activities.BaseSimpleActivity
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
@@ -75,7 +75,7 @@ fun Activity.showEventReminderDialog(curMinutes: Int, isSnoozePicker: Boolean = 
 
     RadioGroupDialog(this, items, selectedIndex, showOKButton = isSnoozePicker, cancelCallback = cancelCallback) {
         if (it == -2) {
-            CustomEventReminderDialog(this) {
+            CustomIntervalPickerDialog(this) {
                 callback(it)
             }
         } else {

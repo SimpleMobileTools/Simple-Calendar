@@ -9,7 +9,7 @@ import android.os.Parcelable
 import android.text.TextUtils
 import com.simplemobiletools.calendar.BuildConfig
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.dialogs.CustomEventReminderDialog
+import com.simplemobiletools.calendar.dialogs.CustomIntervalPickerDialog
 import com.simplemobiletools.calendar.dialogs.SelectCalendarsDialog
 import com.simplemobiletools.calendar.extensions.*
 import com.simplemobiletools.calendar.helpers.CalDAVHandler
@@ -336,7 +336,7 @@ class SettingsActivity : SimpleActivity() {
         var displayPastEvents = config.displayPastEvents
         updatePastEventsText(displayPastEvents)
         settings_display_past_events_holder.setOnClickListener {
-            CustomEventReminderDialog(this, displayPastEvents) {
+            CustomIntervalPickerDialog(this, displayPastEvents) {
                 displayPastEvents = it
                 config.displayPastEvents = it
                 updatePastEventsText(it)
