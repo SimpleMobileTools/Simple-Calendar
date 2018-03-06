@@ -11,7 +11,6 @@
     <string name="no_upcoming_events">War a-seblant n\'ho peus darvoud ebet da zont.</string>
     <string name="add_some_events">Gallout a rit ouzhpennañ reoù gant an afell \"Mui\" en traoñ.</string>
     <string name="go_to_today">Mont da hiziv</string>
-    <string name="snooze">Daleañ</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Deiziataer miziek</string>
@@ -169,8 +168,6 @@
     <string name="caldav_sync">Goubredañ CalDAV</string>
     <string name="event_lists">Roll an darvoudoù</string>
     <string name="display_past_events">Skrammañ darvoudoù an amzer tremenet</string>
-    <string name="use_same_snooze">Always use same snooze interval</string>
-    <string name="snooze_delay">Daleañ an adc\'halv eus</string>
     <string name="replace_description_with_location">Replace event description with location</string>
     <string name="delete_all_events">Delete all events</string>
     <string name="delete_all_events_confirmation">Are you sure you want to delete all events? This will leave your event types and other settings intact.</string>

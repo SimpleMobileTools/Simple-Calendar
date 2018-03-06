@@ -307,27 +307,27 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun setupUseSameSnooze() {
-        settings_snooze_delay_holder.beVisibleIf(config.useSameSnooze)
+        settings_snooze_time_holder.beVisibleIf(config.useSameSnooze)
         settings_use_same_snooze.isChecked = config.useSameSnooze
         settings_use_same_snooze_holder.setOnClickListener {
             settings_use_same_snooze.toggle()
             config.useSameSnooze = settings_use_same_snooze.isChecked
-            settings_snooze_delay_holder.beVisibleIf(config.useSameSnooze)
+            settings_snooze_time_holder.beVisibleIf(config.useSameSnooze)
         }
     }
 
     private fun setupSnoozeDelay() {
         updateSnoozeText()
-        settings_snooze_delay_holder.setOnClickListener {
-            showEventReminderDialog(config.snoozeDelay, true) {
-                config.snoozeDelay = it
+        settings_snooze_time_holder.setOnClickListener {
+            showEventReminderDialog(config.snoozeTime, true) {
+                config.snoozeTime = it
                 updateSnoozeText()
             }
         }
     }
 
     private fun updateSnoozeText() {
-        settings_snooze_delay.text = res.getQuantityString(R.plurals.by_minutes, config.snoozeDelay, config.snoozeDelay)
+        settings_snooze_delay.text = res.getQuantityString(R.plurals.by_minutes, config.snoozeTime, config.snoozeTime)
     }
 
     private fun getHoursString(hours: Int): String {

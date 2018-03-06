@@ -12,10 +12,10 @@ class SnoozeReminderActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        showEventReminderDialog(config.snoozeDelay, true, cancelCallback = { dialogCancelled() }) {
+        showEventReminderDialog(config.snoozeTime, true, cancelCallback = { dialogCancelled() }) {
             val eventId = intent.getIntExtra(EVENT_ID, 0)
             val event = dbHelper.getEventWithId(eventId)
-            config.snoozeDelay = it
+            config.snoozeTime = it
             rescheduleReminder(event, it)
             finishActivity()
         }

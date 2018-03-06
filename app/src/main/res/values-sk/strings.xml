@@ -11,7 +11,6 @@
     <string name="no_upcoming_events">Nemáte žiadne naplánované udalosti.</string>
     <string name="add_some_events">Viete ich pridať pomocou tlačidla Plus v pravom dolnom rohu.</string>
     <string name="go_to_today">Prejsť na dnešok</string>
-    <string name="snooze">Odložiť</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Kalendár mesačný</string>
@@ -172,8 +171,6 @@
     <string name="caldav_sync">CalDAV synchronizácia</string>
     <string name="event_lists">Zoznamy udalostí</string>
     <string name="display_past_events">Zobraziť minulé udalosti spred</string>
-    <string name="use_same_snooze">Použiť stále rovnaký odklad s Odložiť</string>
-    <string name="snooze_delay">Posunúť pripomienku s Odložiť o</string>
     <string name="replace_description_with_location">Nahradiť popis udalosti miestom</string>
     <string name="delete_all_events">Odstrániť všetky udalosti</string>
     <string name="delete_all_events_confirmation">Ste si istý, že chcete odstrániť všetky udalosti? Všetky typy udalostí a nastavenia ostanú nedotknuté.</string>

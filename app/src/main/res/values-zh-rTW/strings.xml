@@ -11,7 +11,6 @@
     <string name="no_upcoming_events">看來你近期沒有任何活動。</string>
     <string name="add_some_events">你可以用底部的[加號]按鈕添加一些活動。</string>
     <string name="go_to_today">前往今天</string>
-    <string name="snooze">延遲</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">月曆</string>
@@ -169,8 +168,6 @@
     <string name="caldav_sync">CalDAV同步</string>
     <string name="event_lists">活動列表</string>
     <string name="display_past_events">顯示過去的活動</string>
-    <string name="use_same_snooze">總是使用相同延遲間隔</string>
-    <string name="snooze_delay">再次提醒的延遲時間</string>
     <string name="replace_description_with_location">活動描述改成地點</string>
     <string name="delete_all_events">刪除全部活動</string>
     <string name="delete_all_events_confirmation">你確定要刪除全部活動嗎?會完整留下你的活動類型和其他設定。</string>

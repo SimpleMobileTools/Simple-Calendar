@@ -11,7 +11,6 @@
     <string name="no_upcoming_events">Du ser ikke ud til at have nogen forestående begivenheder.</string>
     <string name="add_some_events">Du kan tilføje nogle med plus-knappen nederst.</string>
     <string name="go_to_today">Gå til i dag</string>
-    <string name="snooze">Snooze</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Månedlig kalender</string>
@@ -169,8 +168,6 @@
     <string name="caldav_sync">CalDAV sync</string>
     <string name="event_lists">Begivenhedsliste</string>
     <string name="display_past_events">Vis overståede begivenheder</string>
-    <string name="use_same_snooze">Brug altid samme snooze-tid</string>
-    <string name="snooze_delay">Udsæt påmindelsen med en snooze på</string>
     <string name="replace_description_with_location">Erstat beskrivelse med sted</string>
     <string name="delete_all_events">Slet alle begivenheder</string>
     <string name="delete_all_events_confirmation">Er du sikker på at du vil slette alle begivenheder? Dine begivenhedstyper og andre indstillinger vil forblive intakte.</string>

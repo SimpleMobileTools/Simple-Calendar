@@ -11,7 +11,6 @@
     <string name="no_upcoming_events">Wygląda na to, że nie masz żadnych nadchodzących wydarzeń.</string>
     <string name="add_some_events">Możesz je dodawać za pomocą przycisku \"+\" znajdującego na dole.</string>
     <string name="go_to_today">Przejdź do dnia dzisiejszego</string>
-    <string name="snooze">Drzemka</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Prosty Kalendarz - widok miesięczny</string>
@@ -171,8 +170,6 @@
     <string name="caldav_sync">Synchronizacja CalDAV</string>
     <string name="event_lists">Lista wydarzeń</string>
     <string name="display_past_events">Pokazuj wydarzenia z przeszłości</string>
-    <string name="use_same_snooze">Zawsze używaj tego samego przedziału przypomnienia</string>
-    <string name="snooze_delay">Opóźnij przypomnienie o</string>
     <string name="replace_description_with_location">Zamieniaj opis wydarzenia na lokalizację</string>
     <string name="delete_all_events">Usuń wszystkie wydarzenia</string>
     <string name="delete_all_events_confirmation">Czy na pewno mam usunąć wszystkie wydarzenia? Nie naruszy to typów wydarzeń i innych ustawień.</string>

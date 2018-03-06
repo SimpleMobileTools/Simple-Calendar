@@ -11,7 +11,6 @@
     <string name="no_upcoming_events">Niets gepland.</string>
     <string name="add_some_events">Gebruik de plus-knop om iets te plannen.</string>
     <string name="go_to_today">Naar vandaag</string>
-    <string name="snooze">Uitstellen</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Maandweergave</string>
@@ -169,8 +168,6 @@
     <string name="caldav_sync">CalDAV-synchronisatie</string>
     <string name="event_lists">Afsprakenlijst</string>
     <string name="display_past_events">Afgelopen afspraken tonen</string>
-    <string name="use_same_snooze">Altijd dezelfde interval voor uitstellen gebruiken</string>
-    <string name="snooze_delay">Herinnering uitstellen met</string>
     <string name="replace_description_with_location">Beschrijving vervangen door locatie van afspraken</string>
     <string name="delete_all_events">Alle afspraken verwijderen</string>
     <string name="delete_all_events_confirmation">Alle afspraken verwijderen? Afspraaktypes en andere instellingen blijven behouden.</string>

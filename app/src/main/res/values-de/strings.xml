@@ -11,7 +11,6 @@
     <string name="no_upcoming_events">Keine anstehenden Termine</string>
     <string name="add_some_events">Du kannst neue Termine mit dem Hinzufügen Button unten rechts erstellen.</string>
     <string name="go_to_today">Gehe zu Heute</string>
-    <string name="snooze">Snooze</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Monatskalender</string>
@@ -169,8 +168,6 @@
     <string name="caldav_sync">CalDAV Synchronisierung</string>
     <string name="event_lists">Terminlisten</string>
     <string name="display_past_events">Vergangene Termine anzeigen</string>
-    <string name="use_same_snooze">Immer dasselbe Snooze-Intervall nutzen</string>
-    <string name="snooze_delay">Erinnerung mit Snooze verschieben um</string>
     <string name="replace_description_with_location">Ersetze Terminbeschreibung mit Ort</string>
     <string name="delete_all_events">Alle Termine löschen</string>
     <string name="delete_all_events_confirmation">Bist du sicher, dass du alle Termine löschen willst? Deine Termintypen und Einstellungen bleiben erhalten.</string>

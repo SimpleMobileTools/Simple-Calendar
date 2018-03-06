@@ -11,7 +11,6 @@
     <string name="no_upcoming_events">Nemáte žádné nadcházející události.</string>
     <string name="add_some_events">Přidejte událost tlačítkem Plus dole.</string>
     <string name="go_to_today">Přejít na dnešek</string>
-    <string name="snooze">Snooze</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Měsíční kalendář</string>
@@ -172,8 +171,6 @@
     <string name="caldav_sync">CalDAV sync</string>
     <string name="event_lists">Seznamy událostí</string>
     <string name="display_past_events">Zobrazit minulé události</string>
-    <string name="use_same_snooze">Always use same snooze interval</string>
-    <string name="snooze_delay">Odložit připomenutí pomocí funkce Snooze by</string>
     <string name="replace_description_with_location">Replace event description with location</string>
     <string name="delete_all_events">Delete all events</string>
     <string name="delete_all_events_confirmation">Are you sure you want to delete all events? This will leave your event types and other settings intact.</string>

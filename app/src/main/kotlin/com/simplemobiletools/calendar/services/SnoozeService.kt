@@ -11,6 +11,6 @@ class SnoozeService : IntentService("Snooze") {
     override fun onHandleIntent(intent: Intent) {
         val eventId = intent.getIntExtra(EVENT_ID, 0)
         val event = dbHelper.getEventWithId(eventId)
-        rescheduleReminder(event, config.snoozeDelay)
+        rescheduleReminder(event, config.snoozeTime)
     }
 }

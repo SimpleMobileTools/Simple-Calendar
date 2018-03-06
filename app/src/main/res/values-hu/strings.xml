@@ -11,7 +11,6 @@
     <string name="no_upcoming_events">Seems like you don\'t have any upcoming events.</string>
     <string name="add_some_events">You can add some with the Plus button at the bottom.</string>
     <string name="go_to_today">Go to today</string>
-    <string name="snooze">Snooze</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Havi naptár</string>
@@ -169,8 +168,6 @@
     <string name="caldav_sync">CalDAV sync</string>
     <string name="event_lists">Event lists</string>
     <string name="display_past_events">Display events from the past</string>
-    <string name="use_same_snooze">Always use same snooze interval</string>
-    <string name="snooze_delay">Postpone reminder with Snooze by</string>
     <string name="replace_description_with_location">Replace event description with location</string>
     <string name="delete_all_events">Delete all events</string>
     <string name="delete_all_events_confirmation">Are you sure you want to delete all events? This will leave your event types and other settings intact.</string>

@@ -31,6 +31,10 @@ import com.simplemobiletools.calendar.receivers.CalDAVSyncReceiver
 import com.simplemobiletools.calendar.receivers.NotificationReceiver
 import com.simplemobiletools.calendar.services.SnoozeService
 import com.simplemobiletools.commons.extensions.*
+import com.simplemobiletools.commons.helpers.isKitkatPlus
+import com.simplemobiletools.commons.helpers.isLollipopPlus
+import com.simplemobiletools.commons.helpers.isMarshmallowPlus
+import com.simplemobiletools.commons.helpers.isOreoPlus
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 import java.io.File
@@ -186,7 +190,7 @@ fun Context.notifyEvent(event: Event) {
 @SuppressLint("NewApi")
 private fun getNotification(context: Context, pendingIntent: PendingIntent, event: Event, content: String): Notification {
     val channelId = "reminder_channel"
-    if (context.isOreoPlus()) {
+    if (isOreoPlus()) {
         val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val name = context.resources.getString(R.string.event_reminders)
         val importance = NotificationManager.IMPORTANCE_HIGH
@@ -218,7 +222,7 @@ private fun getNotification(context: Context, pendingIntent: PendingIntent, even
             .setChannelId(channelId)
             .addAction(R.drawable.ic_snooze, context.getString(R.string.snooze), getSnoozePendingIntent(context, event))
 
-    if (context.isLollipopPlus()) {
+    if (isLollipopPlus()) {
         builder.setVisibility(Notification.VISIBILITY_PUBLIC)
     }
 

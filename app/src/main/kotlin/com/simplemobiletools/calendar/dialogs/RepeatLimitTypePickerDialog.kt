@@ -11,9 +11,9 @@ import com.simplemobiletools.calendar.extensions.getNowSeconds
 import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.commons.extensions.getDialogTheme
-import com.simplemobiletools.commons.extensions.isLollipopPlus
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import com.simplemobiletools.commons.extensions.value
+import com.simplemobiletools.commons.helpers.isLollipopPlus
 import kotlinx.android.synthetic.main.dialog_repeat_limit_type_picker.view.*
 import org.joda.time.DateTime
 import java.util.*
@@ -40,10 +40,10 @@ class RepeatLimitTypePickerDialog(val activity: Activity, var repeatLimit: Int, 
                 .setPositiveButton(R.string.ok, { dialogInterface, i -> confirmRepetition() })
                 .setNegativeButton(R.string.cancel, null)
                 .create().apply {
-            activity.setupDialogStuff(view, this) {
-                activity.currentFocus?.clearFocus()
-            }
-        }
+                    activity.setupDialogStuff(view, this) {
+                        activity.currentFocus?.clearFocus()
+                    }
+                }
     }
 
     private fun getCheckedItem() = when {
@@ -86,7 +86,7 @@ class RepeatLimitTypePickerDialog(val activity: Activity, var repeatLimit: Int, 
         val datepicker = DatePickerDialog(activity, activity.getDialogTheme(), repetitionLimitDateSetListener, repeatLimitDateTime.year,
                 repeatLimitDateTime.monthOfYear - 1, repeatLimitDateTime.dayOfMonth)
 
-        if (activity.isLollipopPlus()) {
+        if (isLollipopPlus()) {
             datepicker.datePicker.firstDayOfWeek = if (activity.config.isSundayFirst) Calendar.SUNDAY else Calendar.MONDAY
         }
 

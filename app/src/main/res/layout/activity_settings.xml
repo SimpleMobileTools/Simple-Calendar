@@ -269,7 +269,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/settings_snooze_delay_holder"
+            android:id="@+id/settings_snooze_time_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/medium_margin"
@@ -280,7 +280,7 @@
             android:paddingTop="@dimen/bigger_margin">
 
             <com.simplemobiletools.commons.views.MyTextView
-                android:id="@+id/settings_snooze_delay_label"
+                android:id="@+id/settings_snooze_time_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -288,7 +288,7 @@
                 android:layout_toStartOf="@+id/settings_snooze_delay"
                 android:paddingLeft="@dimen/medium_margin"
                 android:paddingRight="@dimen/medium_margin"
-                android:text="@string/snooze_delay"/>
+                android:text="@string/snooze_time"/>
 
             <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/settings_snooze_delay"
