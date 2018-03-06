@@ -76,30 +76,6 @@
     <string name="fourth_f">čtvrtý</string>
     <string name="last_f">poslední</string>
 
-    <plurals name="days">
-        <item quantity="one">%d den</item>
-        <item quantity="few">%d dni</item>
-        <item quantity="other">%d dní</item>
-    </plurals>
-
-    <plurals name="weeks">
-        <item quantity="one">%d týden</item>
-        <item quantity="few">%d týdni</item>
-        <item quantity="other">%d týdnů</item>
-    </plurals>
-
-    <plurals name="months">
-        <item quantity="one">%d měsíc</item>
-        <item quantity="few">%d měsíce</item>
-        <item quantity="other">%d měsíců</item>
-    </plurals>
-
-    <plurals name="years">
-        <item quantity="one">%d rok</item>
-        <item quantity="few">%d roky</item>
-        <item quantity="other">%d roků</item>
-    </plurals>
-
     <!-- Birthdays -->
     <string name="birthdays">Birthdays</string>
     <string name="add_birthdays">Add contact birthdays</string>

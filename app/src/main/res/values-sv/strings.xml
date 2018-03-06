@@ -76,26 +76,6 @@
     <string name="fourth_f">fjärde</string>
     <string name="last_f">sista</string>
 
-    <plurals name="days">
-        <item quantity="one">%d dag</item>
-        <item quantity="other">%d dagar</item>
-    </plurals>
-
-    <plurals name="weeks">
-        <item quantity="one">%d vecka</item>
-        <item quantity="other">%d veckor</item>
-    </plurals>
-
-    <plurals name="months">
-        <item quantity="one">%d månad</item>
-        <item quantity="other">%d månader</item>
-    </plurals>
-
-    <plurals name="years">
-        <item quantity="one">%d år</item>
-        <item quantity="other">%d år</item>
-    </plurals>
-
     <!-- Birthdays -->
     <string name="birthdays">Födelsedagar</string>
     <string name="add_birthdays">Lägg till kontakters födelsedagar</string>

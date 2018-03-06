@@ -76,26 +76,6 @@
     <string name="fourth_f">pevare</string>
     <string name="last_f">diwezhañ</string>
 
-    <plurals name="days">
-        <item quantity="one">%ddevezh</item>
-        <item quantity="other">%da zevezhioù</item>
-    </plurals>
-
-    <plurals name="weeks">
-        <item quantity="one">%dsizhun</item>
-        <item quantity="other">%dsizhun</item>
-    </plurals>
-
-    <plurals name="months">
-        <item quantity="one">%dmiz</item>
-        <item quantity="other">%da vizioù</item>
-    </plurals>
-
-    <plurals name="years">
-        <item quantity="one">%da vloavezhioù</item>
-        <item quantity="other">%da vloavezhioù</item>
-    </plurals>
-
     <!-- Birthdays -->
     <string name="birthdays">Deizioù-ha-bloaz</string>
     <string name="add_birthdays">Ouzhpennañ deizioù-ha-bloaz an darempredoù</string>

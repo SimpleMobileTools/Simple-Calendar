@@ -76,26 +76,6 @@
     <string name="fourth_f">fjerde</string>
     <string name="last_f">siste</string>
 
-    <plurals name="days">
-        <item quantity="one">%d dag</item>
-        <item quantity="other">%d dager</item>
-    </plurals>
-
-    <plurals name="weeks">
-        <item quantity="one">%d uke</item>
-        <item quantity="other">%d uker</item>
-    </plurals>
-
-    <plurals name="months">
-        <item quantity="one">%d måned</item>
-        <item quantity="other">%d måneder</item>
-    </plurals>
-
-    <plurals name="years">
-        <item quantity="one">%d år</item>
-        <item quantity="other">%d år</item>
-    </plurals>
-
     <!-- Birthdays -->
     <string name="birthdays">Bursdager</string>
     <string name="add_birthdays">Legg til kontaktbursdager</string>

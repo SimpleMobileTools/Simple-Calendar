@@ -76,26 +76,6 @@
     <string name="fourth_f">dördüncü</string>
     <string name="last_f">son</string>
 
-    <plurals name="days">
-        <item quantity="one">%d gün</item>
-        <item quantity="other">günler %d</item>
-    </plurals>
-
-    <plurals name="weeks">
-        <item quantity="one">%d hafta</item>
-        <item quantity="other">haftalar %d</item>
-    </plurals>
-
-    <plurals name="months">
-        <item quantity="one">%d ay</item>
-        <item quantity="other">aylar %d</item>
-    </plurals>
-
-    <plurals name="years">
-        <item quantity="one">%d yıl</item>
-        <item quantity="other">yıllar %d</item>
-    </plurals>
-
     <!-- Birthdays -->
     <string name="birthdays">Birthdays</string>
     <string name="add_birthdays">Add contact birthdays</string>

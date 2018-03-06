@@ -69,10 +69,11 @@ class RepeatLimitTypePickerDialog(val activity: Activity, var repeatLimit: Int, 
             R.id.repeat_type_forever -> callback(0)
             else -> {
                 var count = view.repeat_type_count.value
-                if (count.isEmpty())
-                    count = "0"
-                else
-                    count = "-$count"
+                count = if (count.isEmpty()) {
+                    "0"
+                } else {
+                    "-$count"
+                }
                 callback(count.toInt())
             }
         }

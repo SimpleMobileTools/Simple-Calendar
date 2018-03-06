@@ -76,26 +76,6 @@
     <string name="fourth_f">quarto</string>
     <string name="last_f">último</string>
 
-    <plurals name="days">
-        <item quantity="one">%d dia</item>
-        <item quantity="other">%d dias</item>
-    </plurals>
-
-    <plurals name="weeks">
-        <item quantity="one">%d semana</item>
-        <item quantity="other">%d semanas</item>
-    </plurals>
-
-    <plurals name="months">
-        <item quantity="one">%d mês</item>
-        <item quantity="other">%d meses</item>
-    </plurals>
-
-    <plurals name="years">
-        <item quantity="one">%d ano</item>
-        <item quantity="other">%d anos</item>
-    </plurals>
-
     <!-- Birthdays -->
     <string name="birthdays">Data de nascimento</string>
     <string name="add_birthdays">Adicionar data de nascimento dos contactos</string>
