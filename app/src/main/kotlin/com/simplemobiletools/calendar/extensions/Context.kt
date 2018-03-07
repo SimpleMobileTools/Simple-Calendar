@@ -128,29 +128,6 @@ private fun getNotificationIntent(context: Context, event: Event): PendingIntent
     return PendingIntent.getBroadcast(context, event.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 }
 
-fun Context.getFormattedMinutes(minutes: Int, showBefore: Boolean = true) = when (minutes) {
-    -1 -> getString(R.string.no_reminder)
-    0 -> getString(R.string.at_start)
-    else -> {
-        if (minutes % 525600 == 0)
-            resources.getQuantityString(R.plurals.years, minutes / 525600, minutes / 525600)
-
-        when {
-            minutes % 43200 == 0 -> resources.getQuantityString(R.plurals.months, minutes / 43200, minutes / 43200)
-            minutes % 10080 == 0 -> resources.getQuantityString(R.plurals.weeks, minutes / 10080, minutes / 10080)
-            minutes % 1440 == 0 -> resources.getQuantityString(R.plurals.days, minutes / 1440, minutes / 1440)
-            minutes % 60 == 0 -> {
-                val base = if (showBefore) R.plurals.hours_before else R.plurals.by_hours
-                resources.getQuantityString(base, minutes / 60, minutes / 60)
-            }
-            else -> {
-                val base = if (showBefore) R.plurals.minutes_before else R.plurals.by_minutes
-                resources.getQuantityString(base, minutes, minutes)
-            }
-        }
-    }
-}
-
 fun Context.getRepetitionText(seconds: Int) = when (seconds) {
     0 -> getString(R.string.no_repetition)
     DAY -> getString(R.string.daily)

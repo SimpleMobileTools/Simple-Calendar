@@ -89,33 +89,9 @@
 
     <!-- Event Reminders -->
     <string name="reminder">Pripomenka</string>
-    <string name="no_reminder">Žiadna pripomienka</string>
-    <string name="at_start">Na začiatku</string>
-    <string name="custom">Vlastná</string>
     <string name="before">pred</string>
-    <string name="minutes_raw">minúty</string>
-    <string name="hours_raw">hodiny</string>
-    <string name="days_raw">dni</string>
     <string name="add_another_reminder">Pridať ďalšiu pripomienku</string>
     <string name="event_reminders">Pripomienky udalostí</string>
-
-    <plurals name="minutes_before">
-        <item quantity="one">%d minútu vopred</item>
-        <item quantity="few">%d minúty vopred</item>
-        <item quantity="other">%d minút vopred</item>
-    </plurals>
-
-    <plurals name="hours_before">
-        <item quantity="one">%d hodinu vopred</item>
-        <item quantity="few">%d hodiny vopred</item>
-        <item quantity="other">%d hodín vopred</item>
-    </plurals>
-
-    <plurals name="days_before">
-        <item quantity="one">%d deň vopred</item>
-        <item quantity="few">%d dni vopred</item>
-        <item quantity="other">%d dní vopred</item>
-    </plurals>
 
     <!-- Export / Import -->
     <string name="import_events">Importovať udalosti</string>
@@ -186,18 +162,6 @@
     <string name="editing_calendar_failed">Úprava kalendára zlyhala</string>
     <string name="syncing">Synchronizujem…</string>
     <string name="synchronization_completed">Synchronizácia ukončená</string>
-
-    <plurals name="by_minutes">
-        <item quantity="one">%d minútu</item>
-        <item quantity="few">%d minúty</item>
-        <item quantity="other">%d minút</item>
-    </plurals>
-
-    <plurals name="by_hours">
-        <item quantity="one">%d hodinu</item>
-        <item quantity="few">%d hodiny</item>
-        <item quantity="other">%d hodín</item>
-    </plurals>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->

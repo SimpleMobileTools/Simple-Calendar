@@ -89,30 +89,9 @@
 
     <!-- Event Reminders -->
     <string name="reminder">Påmindelse</string>
-    <string name="no_reminder">Ingen påmindelse</string>
-    <string name="at_start">Ved start</string>
-    <string name="custom">Tilpas</string>
     <string name="before">før</string>
-    <string name="minutes_raw">minutter</string>
-    <string name="hours_raw">timer</string>
-    <string name="days_raw">dage</string>
     <string name="add_another_reminder">Tilføj en påmindelse mere</string>
     <string name="event_reminders">Påmindelser</string>
-
-    <plurals name="minutes_before">
-        <item quantity="one">%d minut før start</item>
-        <item quantity="other">%d minutter før start</item>
-    </plurals>
-
-    <plurals name="hours_before">
-        <item quantity="one">%d time før start</item>
-        <item quantity="other">%d timer før start</item>
-    </plurals>
-
-    <plurals name="days_before">
-        <item quantity="one">%d dag før start</item>
-        <item quantity="other">%d dage før start</item>
-    </plurals>
 
     <!-- Export / Import -->
     <string name="import_events">Importer begivenheder</string>
@@ -183,16 +162,6 @@
     <string name="editing_calendar_failed">Redigering af kalenderen mislykkedes</string>
     <string name="syncing">Synkroniserer…</string>
     <string name="synchronization_completed">Synkronisering gennemført</string>
-
-    <plurals name="by_minutes">
-        <item quantity="one">%d minut</item>
-        <item quantity="other">%d minutter</item>
-    </plurals>
-
-    <plurals name="by_hours">
-        <item quantity="one">%d time</item>
-        <item quantity="other">%d timer</item>
-    </plurals>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->

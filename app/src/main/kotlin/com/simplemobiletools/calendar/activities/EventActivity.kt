@@ -174,21 +174,21 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun showReminder1Dialog() {
-        showEventReminderDialog(mReminder1Minutes) {
+        showPickIntervalDialog(mReminder1Minutes) {
             mReminder1Minutes = it
             checkReminderTexts()
         }
     }
 
     private fun showReminder2Dialog() {
-        showEventReminderDialog(mReminder2Minutes) {
+        showPickIntervalDialog(mReminder2Minutes) {
             mReminder2Minutes = it
             checkReminderTexts()
         }
     }
 
     private fun showReminder3Dialog() {
-        showEventReminderDialog(mReminder3Minutes) {
+        showPickIntervalDialog(mReminder3Minutes) {
             mReminder3Minutes = it
             checkReminderTexts()
         }

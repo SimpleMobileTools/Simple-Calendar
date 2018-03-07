@@ -4,7 +4,6 @@ import android.app.Activity
 import com.simplemobiletools.calendar.BuildConfig
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.dialogs.CustomEventRepeatIntervalDialog
-import com.simplemobiletools.calendar.dialogs.CustomIntervalPickerDialog
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.commons.activities.BaseSimpleActivity
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
@@ -41,47 +40,6 @@ fun BaseSimpleActivity.getTempFile(): File? {
     }
 
     return File(folder, "events.ics")
-}
-
-fun Activity.showEventReminderDialog(curMinutes: Int, isSnoozePicker: Boolean = false, cancelCallback: (() -> Unit)? = null, callback: (minutes: Int) -> Unit) {
-    hideKeyboard()
-    val minutes = TreeSet<Int>()
-    minutes.apply {
-        if (!isSnoozePicker) {
-            add(-1)
-            add(0)
-        }
-        add(5)
-        add(10)
-        add(20)
-        add(30)
-        add(60)
-        add(curMinutes)
-    }
-
-    val items = ArrayList<RadioItem>(minutes.size + 1)
-    minutes.mapIndexedTo(items, { index, value ->
-        RadioItem(index, getFormattedMinutes(value, !isSnoozePicker), value)
-    })
-
-    var selectedIndex = 0
-    minutes.forEachIndexed { index, value ->
-        if (value == curMinutes) {
-            selectedIndex = index
-        }
-    }
-
-    items.add(RadioItem(-2, getString(R.string.custom)))
-
-    RadioGroupDialog(this, items, selectedIndex, showOKButton = isSnoozePicker, cancelCallback = cancelCallback) {
-        if (it == -2) {
-            CustomIntervalPickerDialog(this) {
-                callback(it)
-            }
-        } else {
-            callback(it as Int)
-        }
-    }
 }
 
 fun Activity.showEventRepeatIntervalDialog(curSeconds: Int, callback: (minutes: Int) -> Unit) {

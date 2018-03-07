@@ -89,30 +89,9 @@
 
     <!-- Event Reminders -->
     <string name="reminder">提醒</string>
-    <string name="no_reminder">不提醒</string>
-    <string name="at_start">準時</string>
-    <string name="custom">自訂</string>
     <string name="before">前</string>
-    <string name="minutes_raw">分鐘</string>
-    <string name="hours_raw">小時</string>
-    <string name="days_raw">天</string>
     <string name="add_another_reminder">新增另一個提醒</string>
     <string name="event_reminders">活動提醒</string>
-
-    <plurals name="minutes_before">
-        <item quantity="one">%d分鐘前</item>
-        <item quantity="other">%d分鐘前</item>
-    </plurals>
-
-    <plurals name="hours_before">
-        <item quantity="one">%d小時前</item>
-        <item quantity="other">%d小時前</item>
-    </plurals>
-
-    <plurals name="days_before">
-        <item quantity="one">%d天前</item>
-        <item quantity="other">%d天前</item>
-    </plurals>
 
     <!-- Export / Import -->
     <string name="import_events">匯入活動</string>
@@ -183,16 +162,6 @@
     <string name="editing_calendar_failed">編輯行事曆失敗</string>
     <string name="syncing">同步中…</string>
     <string name="synchronization_completed">同步完成</string>
-
-    <plurals name="by_minutes">
-        <item quantity="one">%d分鐘</item>
-        <item quantity="other">%d分鐘</item>
-    </plurals>
-
-    <plurals name="by_hours">
-        <item quantity="one">%d小時</item>
-        <item quantity="other">%d小時</item>
-    </plurals>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->

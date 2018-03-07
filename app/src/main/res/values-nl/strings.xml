@@ -89,30 +89,9 @@
 
     <!-- Event Reminders -->
     <string name="reminder">Herinnering</string>
-    <string name="no_reminder">Geen herinnering</string>
-    <string name="at_start">Als afspraak begint</string>
-    <string name="custom">Aangepast</string>
     <string name="before">van tevoren</string>
-    <string name="minutes_raw">minuten</string>
-    <string name="hours_raw">uren</string>
-    <string name="days_raw">dagen</string>
     <string name="add_another_reminder">Herinnering toevoegen</string>
     <string name="event_reminders">Herinneringen</string>
-
-    <plurals name="minutes_before">
-        <item quantity="one">%d minuut van tevoren</item>
-        <item quantity="other">%d minuten van tevoren</item>
-    </plurals>
-
-    <plurals name="hours_before">
-        <item quantity="one">%d uur van tevoren</item>
-        <item quantity="other">%d uren van tevoren</item>
-    </plurals>
-
-    <plurals name="days_before">
-        <item quantity="one">%d dag van tevoren</item>
-        <item quantity="other">%d dagen van tevoren</item>
-    </plurals>
 
     <!-- Export / Import -->
     <string name="import_events">Afspraken importeren</string>
@@ -183,16 +162,6 @@
     <string name="editing_calendar_failed">Agenda bijwerken mislukt</string>
     <string name="syncing">Synchroniseren…</string>
     <string name="synchronization_completed">Synchroniseren voltooid</string>
-
-    <plurals name="by_minutes">
-        <item quantity="one">%d minuut</item>
-        <item quantity="other">%d minuten</item>
-    </plurals>
-
-    <plurals name="by_hours">
-        <item quantity="one">%d uur</item>
-        <item quantity="other">%d uren</item>
-    </plurals>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->

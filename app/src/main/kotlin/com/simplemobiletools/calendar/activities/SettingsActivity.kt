@@ -9,7 +9,6 @@ import android.os.Parcelable
 import android.text.TextUtils
 import com.simplemobiletools.calendar.BuildConfig
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.dialogs.CustomIntervalPickerDialog
 import com.simplemobiletools.calendar.dialogs.SelectCalendarsDialog
 import com.simplemobiletools.calendar.extensions.*
 import com.simplemobiletools.calendar.helpers.CalDAVHandler
@@ -18,6 +17,7 @@ import com.simplemobiletools.calendar.helpers.FONT_SIZE_MEDIUM
 import com.simplemobiletools.calendar.helpers.FONT_SIZE_SMALL
 import com.simplemobiletools.calendar.models.EventType
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
+import com.simplemobiletools.commons.dialogs.CustomIntervalPickerDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.PERMISSION_READ_CALENDAR
@@ -319,7 +319,7 @@ class SettingsActivity : SimpleActivity() {
     private fun setupSnoozeDelay() {
         updateSnoozeText()
         settings_snooze_time_holder.setOnClickListener {
-            showEventReminderDialog(config.snoozeTime, true) {
+            showPickIntervalDialog(config.snoozeTime, true) {
                 config.snoozeTime = it
                 updateSnoozeText()
             }

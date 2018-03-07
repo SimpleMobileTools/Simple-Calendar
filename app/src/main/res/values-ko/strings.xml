@@ -89,30 +89,9 @@
 
     <!-- Event Reminders -->
     <string name="reminder">알림</string>
-    <string name="no_reminder">알림 없음</string>
-    <string name="at_start">시작할 때</string>
-    <string name="custom">사용자 정의</string>
     <string name="before">전</string>
-    <string name="minutes_raw">분</string>
-    <string name="hours_raw">시간</string>
-    <string name="days_raw">일</string>
     <string name="add_another_reminder">다른 알림 추가</string>
     <string name="event_reminders">Event reminders</string>
-
-    <plurals name="minutes_before">
-        <item quantity="one">%d 분 전</item>
-        <item quantity="other">%d 분 전</item>
-    </plurals>
-
-    <plurals name="hours_before">
-        <item quantity="one">%d 시간 전</item>
-        <item quantity="other">%d 시간 전</item>
-    </plurals>
-
-    <plurals name="days_before">
-        <item quantity="one">%d 일 전</item>
-        <item quantity="other">%d 일 전</item>
-    </plurals>
 
     <!-- Export / Import -->
     <string name="import_events">이벤트들 가져 오기</string>
@@ -183,16 +162,6 @@
     <string name="editing_calendar_failed">변경 실패</string>
     <string name="syncing">동기화중…</string>
     <string name="synchronization_completed">동기화 완료</string>
-
-    <plurals name="by_minutes">
-        <item quantity="one">%d 분</item>
-        <item quantity="other">%d 분</item>
-    </plurals>
-
-    <plurals name="by_hours">
-        <item quantity="one">%d 시</item>
-        <item quantity="other">%d 시</item>
-    </plurals>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->

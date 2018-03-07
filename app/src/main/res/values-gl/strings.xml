@@ -89,30 +89,9 @@
 
     <!-- Event Reminders -->
     <string name="reminder">Recordatorio</string>
-    <string name="no_reminder">Sin recordatorio</string>
-    <string name="at_start">Ao inicio</string>
-    <string name="custom">Personalizado</string>
     <string name="before">antes</string>
-    <string name="minutes_raw">minutos</string>
-    <string name="hours_raw">horas</string>
-    <string name="days_raw">días</string>
     <string name="add_another_reminder">Engadir outro recordatorio</string>
     <string name="event_reminders">Recordatorios de eventos</string>
-
-    <plurals name="minutes_before">
-        <item quantity="one">%d minuto antes</item>
-        <item quantity="other">%d minutos antes</item>
-    </plurals>
-
-    <plurals name="hours_before">
-        <item quantity="one">%d hora antes</item>
-        <item quantity="other">%d horas antes</item>
-    </plurals>
-
-    <plurals name="days_before">
-        <item quantity="one">%d día antes</item>
-        <item quantity="other">%d días antes</item>
-    </plurals>
 
     <!-- Export / Import -->
     <string name="import_events">Importar eventos</string>
@@ -183,16 +162,6 @@
     <string name="editing_calendar_failed">Fallou a edición do calendario</string>
     <string name="syncing">Sincronizando…</string>
     <string name="synchronization_completed">Sincronización completa</string>
-
-    <plurals name="by_minutes">
-        <item quantity="one">%d minuto</item>
-        <item quantity="other">%d minutos</item>
-    </plurals>
-
-    <plurals name="by_hours">
-        <item quantity="one">%d hora</item>
-        <item quantity="other">%d horas</item>
-    </plurals>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
