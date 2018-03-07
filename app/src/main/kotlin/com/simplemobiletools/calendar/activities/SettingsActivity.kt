@@ -58,7 +58,7 @@ class SettingsActivity : SimpleActivity() {
         setupVibrate()
         setupReminderSound()
         setupUseSameSnooze()
-        setupSnoozeDelay()
+        setupSnoozeTime()
         setupDisplayPastEvents()
         setupFontSize()
         updateTextColors(settings_holder)
@@ -316,18 +316,18 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
-    private fun setupSnoozeDelay() {
-        updateSnoozeText()
+    private fun setupSnoozeTime() {
+        updateSnoozeTime()
         settings_snooze_time_holder.setOnClickListener {
             showPickIntervalDialog(config.snoozeTime, true) {
                 config.snoozeTime = it
-                updateSnoozeText()
+                updateSnoozeTime()
             }
         }
     }
 
-    private fun updateSnoozeText() {
-        settings_snooze_delay.text = formatMinutesToTimeString(config.snoozeTime)
+    private fun updateSnoozeTime() {
+        settings_snooze_time.text = formatMinutesToTimeString(config.snoozeTime)
     }
 
     private fun getHoursString(hours: Int) = String.format("%02d:00", hours)
