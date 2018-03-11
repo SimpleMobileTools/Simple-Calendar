@@ -9,7 +9,6 @@ import android.os.Parcelable
 import android.text.TextUtils
 import com.simplemobiletools.calendar.BuildConfig
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.dialogs.CustomEventReminderDialog
 import com.simplemobiletools.calendar.dialogs.SelectCalendarsDialog
 import com.simplemobiletools.calendar.extensions.*
 import com.simplemobiletools.calendar.helpers.CalDAVHandler
@@ -18,6 +17,7 @@ import com.simplemobiletools.calendar.helpers.FONT_SIZE_MEDIUM
 import com.simplemobiletools.calendar.helpers.FONT_SIZE_SMALL
 import com.simplemobiletools.calendar.models.EventType
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
+import com.simplemobiletools.commons.dialogs.CustomIntervalPickerDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.PERMISSION_READ_CALENDAR
@@ -58,7 +58,7 @@ class SettingsActivity : SimpleActivity() {
         setupVibrate()
         setupReminderSound()
         setupUseSameSnooze()
-        setupSnoozeDelay()
+        setupSnoozeTime()
         setupDisplayPastEvents()
         setupFontSize()
         updateTextColors(settings_holder)
@@ -307,42 +307,36 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun setupUseSameSnooze() {
-        settings_snooze_delay_holder.beVisibleIf(config.useSameSnooze)
+        settings_snooze_time_holder.beVisibleIf(config.useSameSnooze)
         settings_use_same_snooze.isChecked = config.useSameSnooze
         settings_use_same_snooze_holder.setOnClickListener {
             settings_use_same_snooze.toggle()
             config.useSameSnooze = settings_use_same_snooze.isChecked
-            settings_snooze_delay_holder.beVisibleIf(config.useSameSnooze)
+            settings_snooze_time_holder.beVisibleIf(config.useSameSnooze)
         }
     }
 
-    private fun setupSnoozeDelay() {
-        updateSnoozeText()
-        settings_snooze_delay_holder.setOnClickListener {
-            showEventReminderDialog(config.snoozeDelay, true) {
-                config.snoozeDelay = it
-                updateSnoozeText()
+    private fun setupSnoozeTime() {
+        updateSnoozeTime()
+        settings_snooze_time_holder.setOnClickListener {
+            showPickIntervalDialog(config.snoozeTime, true) {
+                config.snoozeTime = it
+                updateSnoozeTime()
             }
         }
     }
 
-    private fun updateSnoozeText() {
-        settings_snooze_delay.text = res.getQuantityString(R.plurals.by_minutes, config.snoozeDelay, config.snoozeDelay)
+    private fun updateSnoozeTime() {
+        settings_snooze_time.text = formatMinutesToTimeString(config.snoozeTime)
     }
 
-    private fun getHoursString(hours: Int): String {
-        return if (hours < 10) {
-            "0$hours:00"
-        } else {
-            "$hours:00"
-        }
-    }
+    private fun getHoursString(hours: Int) = String.format("%02d:00", hours)
 
     private fun setupDisplayPastEvents() {
         var displayPastEvents = config.displayPastEvents
         updatePastEventsText(displayPastEvents)
         settings_display_past_events_holder.setOnClickListener {
-            CustomEventReminderDialog(this, displayPastEvents) {
+            CustomIntervalPickerDialog(this, displayPastEvents) {
                 displayPastEvents = it
                 config.displayPastEvents = it
                 updatePastEventsText(it)
@@ -385,10 +379,10 @@ class SettingsActivity : SimpleActivity() {
         else -> R.string.large
     })
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
         if (resultCode == RESULT_OK) {
             if (requestCode == GET_RINGTONE_URI) {
-                var uri = data?.getParcelableExtra<Parcelable>(RingtoneManager.EXTRA_RINGTONE_PICKED_URI)
+                var uri = resultData?.getParcelableExtra<Parcelable>(RingtoneManager.EXTRA_RINGTONE_PICKED_URI)
 
                 if (uri == null) {
                     config.reminderSound = ""

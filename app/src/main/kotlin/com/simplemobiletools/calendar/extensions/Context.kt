@@ -31,6 +31,10 @@ import com.simplemobiletools.calendar.receivers.CalDAVSyncReceiver
 import com.simplemobiletools.calendar.receivers.NotificationReceiver
 import com.simplemobiletools.calendar.services.SnoozeService
 import com.simplemobiletools.commons.extensions.*
+import com.simplemobiletools.commons.helpers.isKitkatPlus
+import com.simplemobiletools.commons.helpers.isLollipopPlus
+import com.simplemobiletools.commons.helpers.isMarshmallowPlus
+import com.simplemobiletools.commons.helpers.isOreoPlus
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 import java.io.File
@@ -124,29 +128,6 @@ private fun getNotificationIntent(context: Context, event: Event): PendingIntent
     return PendingIntent.getBroadcast(context, event.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 }
 
-fun Context.getFormattedMinutes(minutes: Int, showBefore: Boolean = true) = when (minutes) {
-    -1 -> getString(R.string.no_reminder)
-    0 -> getString(R.string.at_start)
-    else -> {
-        if (minutes % 525600 == 0)
-            resources.getQuantityString(R.plurals.years, minutes / 525600, minutes / 525600)
-
-        when {
-            minutes % 43200 == 0 -> resources.getQuantityString(R.plurals.months, minutes / 43200, minutes / 43200)
-            minutes % 10080 == 0 -> resources.getQuantityString(R.plurals.weeks, minutes / 10080, minutes / 10080)
-            minutes % 1440 == 0 -> resources.getQuantityString(R.plurals.days, minutes / 1440, minutes / 1440)
-            minutes % 60 == 0 -> {
-                val base = if (showBefore) R.plurals.hours_before else R.plurals.by_hours
-                resources.getQuantityString(base, minutes / 60, minutes / 60)
-            }
-            else -> {
-                val base = if (showBefore) R.plurals.minutes_before else R.plurals.by_minutes
-                resources.getQuantityString(base, minutes, minutes)
-            }
-        }
-    }
-}
-
 fun Context.getRepetitionText(seconds: Int) = when (seconds) {
     0 -> getString(R.string.no_repetition)
     DAY -> getString(R.string.daily)
@@ -186,7 +167,7 @@ fun Context.notifyEvent(event: Event) {
 @SuppressLint("NewApi")
 private fun getNotification(context: Context, pendingIntent: PendingIntent, event: Event, content: String): Notification {
     val channelId = "reminder_channel"
-    if (context.isOreoPlus()) {
+    if (isOreoPlus()) {
         val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val name = context.resources.getString(R.string.event_reminders)
         val importance = NotificationManager.IMPORTANCE_HIGH
@@ -218,7 +199,7 @@ private fun getNotification(context: Context, pendingIntent: PendingIntent, even
             .setChannelId(channelId)
             .addAction(R.drawable.ic_snooze, context.getString(R.string.snooze), getSnoozePendingIntent(context, event))
 
-    if (context.isLollipopPlus()) {
+    if (isLollipopPlus()) {
         builder.setVisibility(Notification.VISIBILITY_PUBLIC)
     }
 
@@ -240,7 +221,7 @@ private fun getPendingIntent(context: Context, event: Event): PendingIntent {
 
 private fun getSnoozePendingIntent(context: Context, event: Event): PendingIntent {
     val snoozeClass = if (context.config.useSameSnooze) SnoozeService::class.java else SnoozeReminderActivity::class.java
-    val intent = Intent(context, snoozeClass).setAction("Snoozeee")
+    val intent = Intent(context, snoozeClass).setAction("Snooze")
     intent.putExtra(EVENT_ID, event.id)
     return if (context.config.useSameSnooze) {
         PendingIntent.getService(context, event.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
@@ -355,7 +336,7 @@ fun Context.addDayNumber(rawTextColor: Int, day: DayMonthly, linearLayout: Linea
 }
 
 private fun addTodaysBackground(textView: TextView, res: Resources, dayLabelHeight: Int, mPrimaryColor: Int) =
-        textView.addResizedBackgroundDrawable(res, dayLabelHeight, mPrimaryColor, R.drawable.monthly_today_circle)
+        textView.addResizedBackgroundDrawable(res, dayLabelHeight, mPrimaryColor, R.drawable.ic_circle_filled)
 
 fun Context.addDayEvents(day: DayMonthly, linearLayout: LinearLayout, res: Resources, dividerMargin: Int) {
     val eventLayoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)

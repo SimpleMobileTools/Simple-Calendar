@@ -46,10 +46,10 @@ ext {
 }
 
 dependencies {
-    implementation 'com.simplemobiletools:commons:3.14.1'
+    implementation 'com.simplemobiletools:commons:3.15.6'
     implementation 'joda-time:joda-time:2.9.9'
     implementation 'com.facebook.stetho:stetho:1.5.0'
-    implementation 'com.android.support:multidex:1.0.2'
+    implementation 'com.android.support:multidex:1.0.3'
     implementation 'com.google.code.gson:gson:2.8.2'
 
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakCanaryVersion"

@@ -10,9 +10,7 @@
     <string name="simple_event_list">간단한 이벤트 목록</string>
     <string name="no_upcoming_events">다가올 이벤트가 없는 것 같습니다.</string>
     <string name="add_some_events">아래의 더하기 버튼을 눌러 추가할 수 있습니다.</string>
-    <string name="details">상세</string>
     <string name="go_to_today">오늘로 이동</string>
-    <string name="snooze">스누즈</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">월별 달력</string>
@@ -77,26 +75,6 @@
     <string name="fourth_f">fourth</string>
     <string name="last_f">last</string>
 
-    <plurals name="days">
-        <item quantity="one">%d day</item>
-        <item quantity="other">%d days</item>
-    </plurals>
-
-    <plurals name="weeks">
-        <item quantity="one">%d week</item>
-        <item quantity="other">%d weeks</item>
-    </plurals>
-
-    <plurals name="months">
-        <item quantity="one">%d month</item>
-        <item quantity="other">%d months</item>
-    </plurals>
-
-    <plurals name="years">
-        <item quantity="one">%d year</item>
-        <item quantity="other">%d years</item>
-    </plurals>
-
     <!-- Birthdays -->
     <string name="birthdays">생일</string>
     <string name="add_birthdays">연락처의 생일 추가</string>
@@ -111,30 +89,9 @@
 
     <!-- Event Reminders -->
     <string name="reminder">알림</string>
-    <string name="no_reminder">알림 없음</string>
-    <string name="at_start">시작할 때</string>
-    <string name="custom">사용자 정의</string>
     <string name="before">전</string>
-    <string name="minutes_raw">분</string>
-    <string name="hours_raw">시간</string>
-    <string name="days_raw">일</string>
     <string name="add_another_reminder">다른 알림 추가</string>
     <string name="event_reminders">Event reminders</string>
-
-    <plurals name="minutes_before">
-        <item quantity="one">%d 분 전</item>
-        <item quantity="other">%d 분 전</item>
-    </plurals>
-
-    <plurals name="hours_before">
-        <item quantity="one">%d 시간 전</item>
-        <item quantity="other">%d 시간 전</item>
-    </plurals>
-
-    <plurals name="days_before">
-        <item quantity="one">%d 일 전</item>
-        <item quantity="other">%d 일 전</item>
-    </plurals>
 
     <!-- Export / Import -->
     <string name="import_events">이벤트들 가져 오기</string>
@@ -179,8 +136,6 @@
 
     <!-- Settings -->
     <string name="manage_event_types">이벤트 유형 관리</string>
-    <string name="use_24_hour_format">24시간 형식 사용</string>
-    <string name="sunday_first">일요일부터</string>
     <string name="start_day_at">시작 시간</string>
     <string name="end_day_at">종료 시간</string>
     <string name="week_numbers">주 번호 표시</string>
@@ -192,9 +147,6 @@
     <string name="caldav_sync">CalDAV 동기화</string>
     <string name="event_lists">Event lists</string>
     <string name="display_past_events">과거의 이벤트 표시</string>
-    <string name="use_same_snooze">Always use same snooze interval</string>
-    <string name="snooze_delay">스누즈 알림 시간</string>
-    <string name="widgets">위젯</string>
     <string name="replace_description_with_location">Replace event description with location</string>
     <string name="delete_all_events">Delete all events</string>
     <string name="delete_all_events_confirmation">Are you sure you want to delete all events? This will leave your event types and other settings intact.</string>
@@ -210,24 +162,6 @@
     <string name="editing_calendar_failed">변경 실패</string>
     <string name="syncing">동기화중…</string>
     <string name="synchronization_completed">동기화 완료</string>
-
-    <plurals name="by_minutes">
-        <item quantity="one">%d 분</item>
-        <item quantity="other">%d 분</item>
-    </plurals>
-
-    <plurals name="by_hours">
-        <item quantity="one">%d 시</item>
-        <item quantity="other">%d 시</item>
-    </plurals>
-
-    <string name="monday_letter">월</string>
-    <string name="tuesday_letter">화</string>
-    <string name="wednesday_letter">수</string>
-    <string name="thursday_letter">목</string>
-    <string name="friday_letter">금</string>
-    <string name="saturday_letter">토</string>
-    <string name="sunday_letter">일</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->

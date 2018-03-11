@@ -10,9 +10,7 @@
     <string name="simple_event_list">Простой список событий</string>
     <string name="no_upcoming_events">Похоже, у вас нет предстоящих событий.</string>
     <string name="add_some_events">Вы можете их добавить, нажав на кнопку с плюсом внизу.</string>
-    <string name="details">Подробности</string>
     <string name="go_to_today">Сегодня</string>
-    <string name="snooze">Отложить</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Календарь на месяц</string>
@@ -77,34 +75,6 @@
     <string name="fourth_f">четвёртый</string>
     <string name="last_f">последний</string>
 
-    <plurals name="days">
-        <item quantity="one">%d день</item>
-        <item quantity="few">%d дня</item>
-        <item quantity="many">%d дней</item>
-        <item quantity="other">%d дня(-ей)</item>
-    </plurals>
-
-    <plurals name="weeks">
-        <item quantity="one">%d неделя</item>
-        <item quantity="few">%d недели</item>
-        <item quantity="many">%d недель</item>
-        <item quantity="other">%d недели(-ль)</item>
-    </plurals>
-
-    <plurals name="months">
-        <item quantity="one">%d месяц</item>
-        <item quantity="few">%d месяца</item>
-        <item quantity="many">%d месяцев</item>
-        <item quantity="other">%d месяца(-ев)</item>
-    </plurals>
-
-    <plurals name="years">
-        <item quantity="one">%d год</item>
-        <item quantity="few">%d года</item>
-        <item quantity="many">%d лет</item>
-        <item quantity="other">%d года(лет)</item>
-    </plurals>
-
     <!-- Birthdays -->
     <string name="birthdays">Дни рождения</string>
     <string name="add_birthdays">Добавить дни рождения контактов</string>
@@ -119,36 +89,9 @@
 
     <!-- Event Reminders -->
     <string name="reminder">Напоминание</string>
-    <string name="no_reminder">Без напоминания</string>
-    <string name="at_start">С наступлением события</string>
-    <string name="custom">Настраиваемое</string>
     <string name="before">до события</string>
-    <string name="minutes_raw">минут</string>
-    <string name="hours_raw">часов</string>
-    <string name="days_raw">дней</string>
     <string name="add_another_reminder">Добавить ещё одно напоминание</string>
     <string name="event_reminders">Напоминания о событиях</string>
-
-    <plurals name="minutes_before">
-        <item quantity="one">%d минута до события</item>
-        <item quantity="few">%d минуты до события</item>
-        <item quantity="many">%d минут до события</item>
-        <item quantity="other">%d минут(-ы) до события</item>
-    </plurals>
-
-    <plurals name="hours_before">
-        <item quantity="one">%d час до события</item>
-        <item quantity="few">%d часа до события</item>
-        <item quantity="many">%d часов до события</item>
-        <item quantity="other">%d часа(-ов) до события</item>
-    </plurals>
-
-    <plurals name="days_before">
-        <item quantity="one">%d день до события</item>
-        <item quantity="few">%d дня до события</item>
-        <item quantity="many">%d дней до события</item>
-        <item quantity="other">%d дня(-ей) до события</item>
-    </plurals>
 
     <!-- Export / Import -->
     <string name="import_events">Импорт событий</string>
@@ -193,8 +136,6 @@
 
     <!-- Settings -->
     <string name="manage_event_types">Управление типами событий</string>
-    <string name="use_24_hour_format">Использовать 24-часовой формат</string>
-    <string name="sunday_first">Воскресенье - начало недели</string>
     <string name="start_day_at">Начало дня (неделя)</string>
     <string name="end_day_at">Окончание дня (неделя)</string>
     <string name="week_numbers">Отображать номера недель</string>
@@ -206,9 +147,6 @@
     <string name="caldav_sync">Синхронизация по CalDAV</string>
     <string name="event_lists">Списки событий</string>
     <string name="display_past_events">Показывать прошедшие события</string>
-    <string name="use_same_snooze">Всегда использовать один и тот же интервал повтора</string>
-    <string name="snooze_delay">Отложить напоминание на</string>
-    <string name="widgets">Виджеты</string>
     <string name="replace_description_with_location">Заменить описание события местоположением</string>
     <string name="delete_all_events">Удалить все события</string>
     <string name="delete_all_events_confirmation">Вы действительно хотите удалить все события? Это не затронет ваши типы событий и другие настройки.</string>
@@ -224,26 +162,6 @@
     <string name="editing_calendar_failed">Не удалось изменить календарь</string>
     <string name="syncing">Синхронизация…</string>
     <string name="synchronization_completed">Синхронизация завершена</string>
-
-    <plurals name="by_minutes">
-        <item quantity="one">%d минута</item>
-        <item quantity="few">%d минуты</item>
-        <item quantity="many">%d минут</item>
-    </plurals>
-
-    <plurals name="by_hours">
-        <item quantity="one">%d час</item>
-        <item quantity="few">%d часа</item>
-        <item quantity="many">%d часов</item>
-    </plurals>
-
-    <string name="monday_letter">ПН</string>
-    <string name="tuesday_letter">ВТ</string>
-    <string name="wednesday_letter">СР</string>
-    <string name="thursday_letter">ЧТ</string>
-    <string name="friday_letter">ПТ</string>
-    <string name="saturday_letter">СБ</string>
-    <string name="sunday_letter">ВС</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->

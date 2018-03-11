@@ -10,9 +10,7 @@
     <string name="simple_event_list">Lijst</string>
     <string name="no_upcoming_events">Niets gepland.</string>
     <string name="add_some_events">Gebruik de plus-knop om iets te plannen.</string>
-    <string name="details">Details</string>
     <string name="go_to_today">Naar vandaag</string>
-    <string name="snooze">Uitstellen</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Maandweergave</string>
@@ -77,26 +75,6 @@
     <string name="fourth_f">vierde</string>
     <string name="last_f">laatste</string>
 
-    <plurals name="days">
-        <item quantity="one">%d dag</item>
-        <item quantity="other">%d dagen</item>
-    </plurals>
-
-    <plurals name="weeks">
-        <item quantity="one">%d week</item>
-        <item quantity="other">%d weken</item>
-    </plurals>
-
-    <plurals name="months">
-        <item quantity="one">%d maand</item>
-        <item quantity="other">%d maanden</item>
-    </plurals>
-
-    <plurals name="years">
-        <item quantity="one">%d jaar</item>
-        <item quantity="other">%d jaren</item>
-    </plurals>
-
     <!-- Birthdays -->
     <string name="birthdays">Verjaardagen</string>
     <string name="add_birthdays">Verjaardagen van contacten toevoegen</string>
@@ -111,30 +89,9 @@
 
     <!-- Event Reminders -->
     <string name="reminder">Herinnering</string>
-    <string name="no_reminder">Geen herinnering</string>
-    <string name="at_start">Als afspraak begint</string>
-    <string name="custom">Aangepast</string>
     <string name="before">van tevoren</string>
-    <string name="minutes_raw">minuten</string>
-    <string name="hours_raw">uren</string>
-    <string name="days_raw">dagen</string>
     <string name="add_another_reminder">Herinnering toevoegen</string>
     <string name="event_reminders">Herinneringen</string>
-
-    <plurals name="minutes_before">
-        <item quantity="one">%d minuut van tevoren</item>
-        <item quantity="other">%d minuten van tevoren</item>
-    </plurals>
-
-    <plurals name="hours_before">
-        <item quantity="one">%d uur van tevoren</item>
-        <item quantity="other">%d uren van tevoren</item>
-    </plurals>
-
-    <plurals name="days_before">
-        <item quantity="one">%d dag van tevoren</item>
-        <item quantity="other">%d dagen van tevoren</item>
-    </plurals>
 
     <!-- Export / Import -->
     <string name="import_events">Afspraken importeren</string>
@@ -179,8 +136,6 @@
 
     <!-- Settings -->
     <string name="manage_event_types">Afspraaktypes beheren</string>
-    <string name="use_24_hour_format">24-uursformaat gebruiken</string>
-    <string name="sunday_first">Zondag als eerste dag van de week</string>
     <string name="start_day_at">Dag starten om</string>
     <string name="end_day_at">Dag beëindigen om</string>
     <string name="week_numbers">Weeknummers tonen</string>
@@ -192,9 +147,6 @@
     <string name="caldav_sync">CalDAV-synchronisatie</string>
     <string name="event_lists">Afsprakenlijst</string>
     <string name="display_past_events">Afgelopen afspraken tonen</string>
-    <string name="use_same_snooze">Altijd dezelfde interval voor uitstellen gebruiken</string>
-    <string name="snooze_delay">Herinnering uitstellen met</string>
-    <string name="widgets">Widgets</string>
     <string name="replace_description_with_location">Beschrijving vervangen door locatie van afspraken</string>
     <string name="delete_all_events">Alle afspraken verwijderen</string>
     <string name="delete_all_events_confirmation">Alle afspraken verwijderen? Afspraaktypes en andere instellingen blijven behouden.</string>
@@ -210,24 +162,6 @@
     <string name="editing_calendar_failed">Agenda bijwerken mislukt</string>
     <string name="syncing">Synchroniseren…</string>
     <string name="synchronization_completed">Synchroniseren voltooid</string>
-
-    <plurals name="by_minutes">
-        <item quantity="one">%d minuut</item>
-        <item quantity="other">%d minuten</item>
-    </plurals>
-
-    <plurals name="by_hours">
-        <item quantity="one">%d uur</item>
-        <item quantity="other">%d uren</item>
-    </plurals>
-
-    <string name="monday_letter">M</string>
-    <string name="tuesday_letter">D</string>
-    <string name="wednesday_letter">W</string>
-    <string name="thursday_letter">D</string>
-    <string name="friday_letter">V</string>
-    <string name="saturday_letter">Z</string>
-    <string name="sunday_letter">Z</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->

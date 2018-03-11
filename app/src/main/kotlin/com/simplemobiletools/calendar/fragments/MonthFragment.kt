@@ -17,7 +17,10 @@ import com.simplemobiletools.calendar.activities.MainActivity
 import com.simplemobiletools.calendar.extensions.addDayEvents
 import com.simplemobiletools.calendar.extensions.addDayNumber
 import com.simplemobiletools.calendar.extensions.config
-import com.simplemobiletools.calendar.helpers.*
+import com.simplemobiletools.calendar.helpers.Config
+import com.simplemobiletools.calendar.helpers.DAY_CODE
+import com.simplemobiletools.calendar.helpers.Formatter
+import com.simplemobiletools.calendar.helpers.MonthlyCalendarImpl
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.models.DayMonthly
@@ -139,8 +142,8 @@ class MonthFragment : Fragment(), MonthlyCalendar {
                 .setNegativeButton(R.string.cancel, null)
                 .setPositiveButton(R.string.ok) { dialog, which -> positivePressed(dateTime, datePicker) }
                 .create().apply {
-            activity?.setupDialogStuff(view, this)
-        }
+                    activity?.setupDialogStuff(view, this)
+                }
     }
 
     private fun positivePressed(dateTime: DateTime, datePicker: DatePicker) {
@@ -151,16 +154,16 @@ class MonthFragment : Fragment(), MonthlyCalendar {
     }
 
     private fun setupLabels() {
-        val letters = letterIDs
-
+        val letters = context!!.resources.getStringArray(R.array.week_day_letters)
         for (i in 0..6) {
             var index = i
-            if (!mSundayFirst)
-                index = (index + 1) % letters.size
+            if (mSundayFirst) {
+                index = (index + 6) % letters.size
+            }
 
             mHolder.findViewById<TextView>(mRes.getIdentifier("label_$i", "id", mPackageName)).apply {
                 setTextColor(mTextColor)
-                text = getString(letters[index])
+                text = letters[index]
             }
         }
     }

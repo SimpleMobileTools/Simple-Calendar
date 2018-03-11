@@ -5,6 +5,7 @@ import com.simplemobiletools.calendar.extensions.isXWeeklyRepetition
 import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.models.RepeatRule
+import com.simplemobiletools.commons.helpers.*
 import org.joda.time.DateTimeZone
 import org.joda.time.format.DateTimeFormat
 
@@ -61,19 +62,19 @@ class Parser {
     private fun handleRepeatRule(value: String): Int {
         var newRepeatRule = 0
         if (value.contains(MO))
-            newRepeatRule = newRepeatRule or MONDAY
+            newRepeatRule = newRepeatRule or MONDAY_BIT
         if (value.contains(TU))
-            newRepeatRule = newRepeatRule or TUESDAY
+            newRepeatRule = newRepeatRule or TUESDAY_BIT
         if (value.contains(WE))
-            newRepeatRule = newRepeatRule or WEDNESDAY
+            newRepeatRule = newRepeatRule or WEDNESDAY_BIT
         if (value.contains(TH))
-            newRepeatRule = newRepeatRule or THURSDAY
+            newRepeatRule = newRepeatRule or THURSDAY_BIT
         if (value.contains(FR))
-            newRepeatRule = newRepeatRule or FRIDAY
+            newRepeatRule = newRepeatRule or FRIDAY_BIT
         if (value.contains(SA))
-            newRepeatRule = newRepeatRule or SATURDAY
+            newRepeatRule = newRepeatRule or SATURDAY_BIT
         if (value.contains(SU))
-            newRepeatRule = newRepeatRule or SUNDAY
+            newRepeatRule = newRepeatRule or SUNDAY_BIT
         return newRepeatRule
     }
 
@@ -148,19 +149,19 @@ class Parser {
 
     private fun getByDayString(rule: Int): String {
         var result = ""
-        if (rule and MONDAY != 0)
+        if (rule and MONDAY_BIT != 0)
             result += "$MO,"
-        if (rule and TUESDAY != 0)
+        if (rule and TUESDAY_BIT != 0)
             result += "$TU,"
-        if (rule and WEDNESDAY != 0)
+        if (rule and WEDNESDAY_BIT != 0)
             result += "$WE,"
-        if (rule and THURSDAY != 0)
+        if (rule and THURSDAY_BIT != 0)
             result += "$TH,"
-        if (rule and FRIDAY != 0)
+        if (rule and FRIDAY_BIT != 0)
             result += "$FR,"
-        if (rule and SATURDAY != 0)
+        if (rule and SATURDAY_BIT != 0)
             result += "$SA,"
-        if (rule and SUNDAY != 0)
+        if (rule and SUNDAY_BIT != 0)
             result += "$SU,"
         return result.trimEnd(',')
     }

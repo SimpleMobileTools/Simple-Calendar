@@ -10,9 +10,7 @@
     <string name="simple_event_list">Jednoduchý seznam událostí</string>
     <string name="no_upcoming_events">Nemáte žádné nadcházející události.</string>
     <string name="add_some_events">Přidejte událost tlačítkem Plus dole.</string>
-    <string name="details">Detaily</string>
     <string name="go_to_today">Přejít na dnešek</string>
-    <string name="snooze">Snooze</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Měsíční kalendář</string>
@@ -77,30 +75,6 @@
     <string name="fourth_f">čtvrtý</string>
     <string name="last_f">poslední</string>
 
-    <plurals name="days">
-        <item quantity="one">%d den</item>
-        <item quantity="few">%d dni</item>
-        <item quantity="other">%d dní</item>
-    </plurals>
-
-    <plurals name="weeks">
-        <item quantity="one">%d týden</item>
-        <item quantity="few">%d týdni</item>
-        <item quantity="other">%d týdnů</item>
-    </plurals>
-
-    <plurals name="months">
-        <item quantity="one">%d měsíc</item>
-        <item quantity="few">%d měsíce</item>
-        <item quantity="other">%d měsíců</item>
-    </plurals>
-
-    <plurals name="years">
-        <item quantity="one">%d rok</item>
-        <item quantity="few">%d roky</item>
-        <item quantity="other">%d roků</item>
-    </plurals>
-
     <!-- Birthdays -->
     <string name="birthdays">Birthdays</string>
     <string name="add_birthdays">Add contact birthdays</string>
@@ -115,33 +89,9 @@
 
     <!-- Event Reminders -->
     <string name="reminder">Připomenutí</string>
-    <string name="no_reminder">Žádné připomenutí</string>
-    <string name="at_start">na začátku</string>
-    <string name="custom">uživatelsky</string>
     <string name="before">před</string>
-    <string name="minutes_raw">minut</string>
-    <string name="hours_raw">hodin</string>
-    <string name="days_raw">dnů</string>
     <string name="add_another_reminder">Přidat další připomenutí</string>
     <string name="event_reminders">Event reminders</string>
-
-    <plurals name="minutes_before">
-        <item quantity="one">před %d minutou</item>
-        <item quantity="few">před %d minutami</item>
-        <item quantity="other">před %d minutami</item>
-    </plurals>
-
-    <plurals name="hours_before">
-        <item quantity="one">před %d hodinou</item>
-        <item quantity="few">před %d hodinami</item>
-        <item quantity="other">před %d hodinami</item>
-    </plurals>
-
-    <plurals name="days_before">
-        <item quantity="one">před %d dnem</item>
-        <item quantity="few">před %d dnami</item>
-        <item quantity="other">před %d dny</item>
-    </plurals>
 
     <!-- Export / Import -->
     <string name="import_events">Import událostí</string>
@@ -186,8 +136,6 @@
 
     <!-- Settings -->
     <string name="manage_event_types">Správa typů událostí</string>
-    <string name="use_24_hour_format">24h formát</string>
-    <string name="sunday_first">Neděle jako první den</string>
     <string name="start_day_at">Počátek dne v</string>
     <string name="end_day_at">Konec dne v</string>
     <string name="week_numbers">Zobrazovat číslo týdne</string>
@@ -199,9 +147,6 @@
     <string name="caldav_sync">CalDAV sync</string>
     <string name="event_lists">Seznamy událostí</string>
     <string name="display_past_events">Zobrazit minulé události</string>
-    <string name="use_same_snooze">Always use same snooze interval</string>
-    <string name="snooze_delay">Odložit připomenutí pomocí funkce Snooze by</string>
-    <string name="widgets">Widgety</string>
     <string name="replace_description_with_location">Replace event description with location</string>
     <string name="delete_all_events">Delete all events</string>
     <string name="delete_all_events_confirmation">Are you sure you want to delete all events? This will leave your event types and other settings intact.</string>
@@ -217,26 +162,6 @@
     <string name="editing_calendar_failed">Editování kalendáře se nezdařilo</string>
     <string name="syncing">Syncing…</string>
     <string name="synchronization_completed">Sync completed</string>
-
-    <plurals name="by_minutes">
-        <item quantity="one">%d minutu</item>
-        <item quantity="few">%d minuty</item>
-        <item quantity="other">%d minut</item>
-    </plurals>
-
-    <plurals name="by_hours">
-        <item quantity="one">%d hodina</item>
-        <item quantity="few">%d hodiny</item>
-        <item quantity="other">%d hodin</item>
-    </plurals>
-
-    <string name="monday_letter">P</string>
-    <string name="tuesday_letter">Ú</string>
-    <string name="wednesday_letter">S</string>
-    <string name="thursday_letter">Č</string>
-    <string name="friday_letter">P</string>
-    <string name="saturday_letter">S</string>
-    <string name="sunday_letter">N</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->

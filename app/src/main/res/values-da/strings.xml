@@ -10,9 +10,7 @@
     <string name="simple_event_list">Begivenhedsliste</string>
     <string name="no_upcoming_events">Du ser ikke ud til at have nogen forestående begivenheder.</string>
     <string name="add_some_events">Du kan tilføje nogle med plus-knappen nederst.</string>
-    <string name="details">Detaljeret</string>
     <string name="go_to_today">Gå til i dag</string>
-    <string name="snooze">Snooze</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Månedlig kalender</string>
@@ -77,26 +75,6 @@
     <string name="fourth_f">fjerde</string>
     <string name="last_f">sidste</string>
 
-    <plurals name="days">
-        <item quantity="one">%d dag</item>
-        <item quantity="other">%d dage</item>
-    </plurals>
-
-    <plurals name="weeks">
-        <item quantity="one">%d uge</item>
-        <item quantity="other">%d uger</item>
-    </plurals>
-
-    <plurals name="months">
-        <item quantity="one">%d måned</item>
-        <item quantity="other">%d måneder</item>
-    </plurals>
-
-    <plurals name="years">
-        <item quantity="one">%d år</item>
-        <item quantity="other">%d år</item>
-    </plurals>
-
     <!-- Birthdays -->
     <string name="birthdays">Fødselsdag</string>
     <string name="add_birthdays">Tilføj dine kontakters fødselsdage</string>
@@ -111,30 +89,9 @@
 
     <!-- Event Reminders -->
     <string name="reminder">Påmindelse</string>
-    <string name="no_reminder">Ingen påmindelse</string>
-    <string name="at_start">Ved start</string>
-    <string name="custom">Tilpas</string>
     <string name="before">før</string>
-    <string name="minutes_raw">minutter</string>
-    <string name="hours_raw">timer</string>
-    <string name="days_raw">dage</string>
     <string name="add_another_reminder">Tilføj en påmindelse mere</string>
     <string name="event_reminders">Påmindelser</string>
-
-    <plurals name="minutes_before">
-        <item quantity="one">%d minut før start</item>
-        <item quantity="other">%d minutter før start</item>
-    </plurals>
-
-    <plurals name="hours_before">
-        <item quantity="one">%d time før start</item>
-        <item quantity="other">%d timer før start</item>
-    </plurals>
-
-    <plurals name="days_before">
-        <item quantity="one">%d dag før start</item>
-        <item quantity="other">%d dage før start</item>
-    </plurals>
 
     <!-- Export / Import -->
     <string name="import_events">Importer begivenheder</string>
@@ -179,8 +136,6 @@
 
     <!-- Settings -->
     <string name="manage_event_types">Håndter begivenhedstyper</string>
-    <string name="use_24_hour_format">Anvend 24-timersformat</string>
-    <string name="sunday_first">Søndag som første dag</string>
     <string name="start_day_at">Start dagen kl.</string>
     <string name="end_day_at">Slut dagen kl.</string>
     <string name="week_numbers">Vis ugenumre</string>
@@ -192,9 +147,6 @@
     <string name="caldav_sync">CalDAV sync</string>
     <string name="event_lists">Begivenhedsliste</string>
     <string name="display_past_events">Vis overståede begivenheder</string>
-    <string name="use_same_snooze">Brug altid samme snooze-tid</string>
-    <string name="snooze_delay">Udsæt påmindelsen med en snooze på</string>
-    <string name="widgets">Widgets</string>
     <string name="replace_description_with_location">Erstat beskrivelse med sted</string>
     <string name="delete_all_events">Slet alle begivenheder</string>
     <string name="delete_all_events_confirmation">Er du sikker på at du vil slette alle begivenheder? Dine begivenhedstyper og andre indstillinger vil forblive intakte.</string>
@@ -210,24 +162,6 @@
     <string name="editing_calendar_failed">Redigering af kalenderen mislykkedes</string>
     <string name="syncing">Synkroniserer…</string>
     <string name="synchronization_completed">Synkronisering gennemført</string>
-
-    <plurals name="by_minutes">
-        <item quantity="one">%d minut</item>
-        <item quantity="other">%d minutter</item>
-    </plurals>
-
-    <plurals name="by_hours">
-        <item quantity="one">%d time</item>
-        <item quantity="other">%d timer</item>
-    </plurals>
-
-    <string name="monday_letter">M</string>
-    <string name="tuesday_letter">T</string>
-    <string name="wednesday_letter">O</string>
-    <string name="thursday_letter">T</string>
-    <string name="friday_letter">F</string>
-    <string name="saturday_letter">L</string>
-    <string name="sunday_letter">S</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->

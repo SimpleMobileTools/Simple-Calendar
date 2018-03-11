@@ -2,9 +2,9 @@ package com.simplemobiletools.calendar.dialogs
 
 import android.support.v7.app.AlertDialog
 import android.view.ViewGroup
-import android.view.WindowManager
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.SimpleActivity
+import com.simplemobiletools.commons.extensions.hideKeyboard
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import kotlinx.android.synthetic.main.dialog_edit_repeating_event.view.*
 
@@ -19,10 +19,10 @@ class EditRepeatingEventDialog(val activity: SimpleActivity, val callback: (allO
 
         dialog = AlertDialog.Builder(activity)
                 .create().apply {
-            activity.setupDialogStuff(view, this) {
-                window!!.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
-            }
-        }
+                    activity.setupDialogStuff(view, this) {
+                        hideKeyboard()
+                    }
+                }
     }
 
     private fun sendResult(allOccurrences: Boolean) {

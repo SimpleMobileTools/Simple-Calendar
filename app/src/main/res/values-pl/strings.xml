@@ -10,9 +10,7 @@
     <string name="simple_event_list">Prosta lista zdarzeń</string>
     <string name="no_upcoming_events">Wygląda na to, że nie masz żadnych nadchodzących wydarzeń.</string>
     <string name="add_some_events">Możesz je dodawać za pomocą przycisku \"+\" znajdującego na dole.</string>
-    <string name="details">Szczegóły</string>
     <string name="go_to_today">Przejdź do dnia dzisiejszego</string>
-    <string name="snooze">Drzemka</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Prosty Kalendarz - widok miesięczny</string>
@@ -77,29 +75,6 @@
     <string name="fourth_f">czwarty(ą)</string>
     <string name="last_f">ostatni(ą)</string>
 
-    <plurals name="days">
-        <item quantity="one">%d dzień</item>
-        <item quantity="other">%d dni</item>
-    </plurals>
-
-    <plurals name="weeks">
-        <item quantity="one">%d tydzień</item>
-        <item quantity="few">%d tygodnie</item>
-        <item quantity="other">%d tygodni</item>
-    </plurals>
-
-    <plurals name="months">
-        <item quantity="one">%d miesiąc</item>
-        <item quantity="few">%d miesiące</item>
-        <item quantity="other">%d miesięcy</item>
-    </plurals>
-
-    <plurals name="years">
-        <item quantity="one">%d rok</item>
-        <item quantity="few">%d lata</item>
-        <item quantity="other">%d lat</item>
-    </plurals>
-
     <!-- Birthdays -->
     <string name="birthdays">Urodziny</string>
     <string name="add_birthdays">Dodaj urodziny kontaktów</string>
@@ -114,32 +89,9 @@
 
     <!-- Event Reminders -->
     <string name="reminder">Przypomnienie</string>
-    <string name="no_reminder">Brak przypomnienia</string>
-    <string name="at_start">Przy rozpoczęciu</string>
-    <string name="custom">Własne</string>
     <string name="before">przed</string>
-    <string name="minutes_raw">minuty</string>
-    <string name="hours_raw">godziny</string>
-    <string name="days_raw">dni</string>
     <string name="add_another_reminder">Dodaj inne przypomnienie</string>
     <string name="event_reminders">Przypomnienia</string>
-
-    <plurals name="minutes_before">
-        <item quantity="one">%d minutę przed</item>
-        <item quantity="few">%d minuty przed</item>
-        <item quantity="other">%d minut before</item>
-    </plurals>
-
-    <plurals name="hours_before">
-        <item quantity="one">%d godzinę przed</item>
-        <item quantity="few">%d godziny przed</item>
-        <item quantity="other">%d godzin przed</item>
-    </plurals>
-
-    <plurals name="days_before">
-        <item quantity="one">%d dzień przed</item>
-        <item quantity="other">%d dni przed</item>
-    </plurals>
 
     <!-- Export / Import -->
     <string name="import_events">Importuj wydarzenia</string>
@@ -184,8 +136,6 @@
 
     <!-- Settings -->
     <string name="manage_event_types">Zarządzaj typami wydarzeń</string>
-    <string name="use_24_hour_format">Używaj 24-godzinnego formatu czasu</string>
-    <string name="sunday_first">Niedziela jako pierwszy dzień tygodnia</string>
     <string name="start_day_at">Początek dnia</string>
     <string name="end_day_at">Koniec dnia</string>
     <string name="week_numbers">Pokazuj numery tygodnia</string>
@@ -197,9 +147,6 @@
     <string name="caldav_sync">Synchronizacja CalDAV</string>
     <string name="event_lists">Lista wydarzeń</string>
     <string name="display_past_events">Pokazuj wydarzenia z przeszłości</string>
-    <string name="use_same_snooze">Zawsze używaj tego samego przedziału przypomnienia</string>
-    <string name="snooze_delay">Opóźnij przypomnienie o</string>
-    <string name="widgets">Widżety</string>
     <string name="replace_description_with_location">Zamieniaj opis wydarzenia na lokalizację</string>
     <string name="delete_all_events">Usuń wszystkie wydarzenia</string>
     <string name="delete_all_events_confirmation">Czy na pewno mam usunąć wszystkie wydarzenia? Nie naruszy to typów wydarzeń i innych ustawień.</string>
@@ -215,26 +162,6 @@
     <string name="editing_calendar_failed">Edytowanie kalendarza nie powiodło się</string>
     <string name="syncing">Synchronizowanie…</string>
     <string name="synchronization_completed">Synchronizacja zakończona</string>
-
-    <plurals name="by_minutes">
-        <item quantity="one">%d minutę</item>
-        <item quantity="few">%d minuty</item>
-        <item quantity="other">%d minut</item>
-    </plurals>
-
-    <plurals name="by_hours">
-        <item quantity="one">%d godzinę</item>
-        <item quantity="few">%d godziny</item>
-        <item quantity="other">%d godzin</item>
-    </plurals>
-
-    <string name="monday_letter">Pn</string>
-    <string name="tuesday_letter">Wt</string>
-    <string name="wednesday_letter">Śr</string>
-    <string name="thursday_letter">Cz</string>
-    <string name="friday_letter">Pt</string>
-    <string name="saturday_letter">Sb</string>
-    <string name="sunday_letter">Nd</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->

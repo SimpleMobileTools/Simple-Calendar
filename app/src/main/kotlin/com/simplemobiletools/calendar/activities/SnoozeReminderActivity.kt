@@ -5,17 +5,17 @@ import android.support.v7.app.AppCompatActivity
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.rescheduleReminder
-import com.simplemobiletools.calendar.extensions.showEventReminderDialog
 import com.simplemobiletools.calendar.helpers.EVENT_ID
+import com.simplemobiletools.commons.extensions.showPickIntervalDialog
 
 class SnoozeReminderActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        showEventReminderDialog(config.snoozeDelay, true, cancelCallback = { dialogCancelled() }) {
+        showPickIntervalDialog(config.snoozeTime, true, cancelCallback = { dialogCancelled() }) {
             val eventId = intent.getIntExtra(EVENT_ID, 0)
             val event = dbHelper.getEventWithId(eventId)
-            config.snoozeDelay = it
+            config.snoozeTime = it
             rescheduleReminder(event, it)
             finishActivity()
         }

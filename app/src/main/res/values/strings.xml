@@ -10,9 +10,7 @@
     <string name="simple_event_list">Simple event list</string>
     <string name="no_upcoming_events">Seems like you don\'t have any upcoming events.</string>
     <string name="add_some_events">You can add some with the Plus button at the bottom.</string>
-    <string name="details">Details</string>
     <string name="go_to_today">Go to today</string>
-    <string name="snooze">Snooze</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Calendar monthly</string>
@@ -77,26 +75,6 @@
     <string name="fourth_f">fourth</string>
     <string name="last_f">last</string>
 
-    <plurals name="days">
-        <item quantity="one">%d day</item>
-        <item quantity="other">%d days</item>
-    </plurals>
-
-    <plurals name="weeks">
-        <item quantity="one">%d week</item>
-        <item quantity="other">%d weeks</item>
-    </plurals>
-
-    <plurals name="months">
-        <item quantity="one">%d month</item>
-        <item quantity="other">%d months</item>
-    </plurals>
-
-    <plurals name="years">
-        <item quantity="one">%d year</item>
-        <item quantity="other">%d years</item>
-    </plurals>
-
     <!-- Birthdays -->
     <string name="birthdays">Birthdays</string>
     <string name="add_birthdays">Add contact birthdays</string>
@@ -111,30 +89,9 @@
 
     <!-- Event Reminders -->
     <string name="reminder">Reminder</string>
-    <string name="no_reminder">No reminder</string>
-    <string name="at_start">At start</string>
-    <string name="custom">Custom</string>
     <string name="before">before</string>
-    <string name="minutes_raw">minutes</string>
-    <string name="hours_raw">hours</string>
-    <string name="days_raw">days</string>
     <string name="add_another_reminder">Add another reminder</string>
     <string name="event_reminders">Event reminders</string>
-
-    <plurals name="minutes_before">
-        <item quantity="one">%d minute before</item>
-        <item quantity="other">%d minutes before</item>
-    </plurals>
-
-    <plurals name="hours_before">
-        <item quantity="one">%d hour before</item>
-        <item quantity="other">%d hours before</item>
-    </plurals>
-
-    <plurals name="days_before">
-        <item quantity="one">%d day before</item>
-        <item quantity="other">%d days before</item>
-    </plurals>
 
     <!-- Export / Import -->
     <string name="import_events">Import events</string>
@@ -179,8 +136,6 @@
 
     <!-- Settings -->
     <string name="manage_event_types">Manage event types</string>
-    <string name="use_24_hour_format">Use 24-hour format</string>
-    <string name="sunday_first">Sunday as first day</string>
     <string name="start_day_at">Start day at</string>
     <string name="end_day_at">End day at</string>
     <string name="week_numbers">Show week numbers</string>
@@ -192,9 +147,6 @@
     <string name="caldav_sync">CalDAV sync</string>
     <string name="event_lists">Event lists</string>
     <string name="display_past_events">Display events from the past</string>
-    <string name="use_same_snooze">Always use same snooze interval</string>
-    <string name="snooze_delay">Postpone reminder with Snooze by</string>
-    <string name="widgets">Widgets</string>
     <string name="replace_description_with_location">Replace event description with location</string>
     <string name="delete_all_events">Delete all events</string>
     <string name="delete_all_events_confirmation">Are you sure you want to delete all events? This will leave your event types and other settings intact.</string>
@@ -210,24 +162,6 @@
     <string name="editing_calendar_failed">Editing calendar failed</string>
     <string name="syncing">Syncing…</string>
     <string name="synchronization_completed">Sync completed</string>
-
-    <plurals name="by_minutes">
-        <item quantity="one">%d minute</item>
-        <item quantity="other">%d minutes</item>
-    </plurals>
-
-    <plurals name="by_hours">
-        <item quantity="one">%d hour</item>
-        <item quantity="other">%d hours</item>
-    </plurals>
-
-    <string name="monday_letter">M</string>
-    <string name="tuesday_letter">T</string>
-    <string name="wednesday_letter">W</string>
-    <string name="thursday_letter">T</string>
-    <string name="friday_letter">F</string>
-    <string name="saturday_letter">S</string>
-    <string name="sunday_letter">S</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->

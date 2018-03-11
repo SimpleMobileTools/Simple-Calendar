@@ -10,9 +10,7 @@
     <string name="simple_event_list">Liste simple d\'événements</string>
     <string name="no_upcoming_events">Il semblerait que vous n\'ayez aucun événement à venir.</string>
     <string name="add_some_events">Vous pouvez ajouter des événements avec le bouton + en bas.</string>
-    <string name="details">Détails</string>
     <string name="go_to_today">Aller à aujourd\'hui</string>
-    <string name="snooze">Sommeiller</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Calendrier mensuel</string>
@@ -27,7 +25,7 @@
     <string name="event_added">Événement ajouté avec succès</string>
     <string name="event_updated">Événement ajouté avec succès</string>
     <string name="filter_events_by_type">Filtrer les événements par type</string>
-    <string name="please_fill_location">S'il vous plaît remplir un emplacement pour être affiché sur une carte</string>
+    <string name="please_fill_location">S\'il vous plaît remplir un emplacement pour être affiché sur une carte</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Répétition</string>
@@ -77,26 +75,6 @@
     <string name="fourth_f">quatrième</string>
     <string name="last_f">dernier</string>
 
-    <plurals name="days">
-        <item quantity="one">%d jour</item>
-        <item quantity="other">%d jours</item>
-    </plurals>
-
-    <plurals name="weeks">
-        <item quantity="one">%d semaine</item>
-        <item quantity="other">%d semaines</item>
-    </plurals>
-
-    <plurals name="months">
-        <item quantity="one">%d mois</item>
-        <item quantity="other">%d mois</item>
-    </plurals>
-
-    <plurals name="years">
-        <item quantity="one">%d an</item>
-        <item quantity="other">%d ans</item>
-    </plurals>
-
     <!-- Birthdays -->
     <string name="birthdays">Anniversaires</string>
     <string name="add_birthdays">Ajouter les anniversaires des contacts</string>
@@ -106,35 +84,14 @@
     <!-- Anniversaries -->
     <string name="anniversaries">Anniversaires</string>
     <string name="add_anniversaries">Ajouter des anniversaires de contact</string>
-    <string name="no_anniversaries">Aucun anniversaire n'a été trouvé</string>
+    <string name="no_anniversaries">Aucun anniversaire n\'a été trouvé</string>
     <string name="anniversaries_added">Anniversaires ajoutés avec succès</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Rappel</string>
-    <string name="no_reminder">Pas de rappel</string>
-    <string name="at_start">Au démarrage</string>
-    <string name="custom">Personnalisé</string>
     <string name="before">avant</string>
-    <string name="minutes_raw">minutes</string>
-    <string name="hours_raw">heures</string>
-    <string name="days_raw">jours</string>
     <string name="add_another_reminder">Ajouter un autre rappel</string>
-    <string name="event_reminders">Rappels d'événements</string>
-
-    <plurals name="minutes_before">
-        <item quantity="one">%d minute avant</item>
-        <item quantity="other">%d minutes avant</item>
-    </plurals>
-
-    <plurals name="hours_before">
-        <item quantity="one">%d heure avant</item>
-        <item quantity="other">%d heures avant</item>
-    </plurals>
-
-    <plurals name="days_before">
-        <item quantity="one">%d jour avant</item>
-        <item quantity="other">%d jours avant</item>
-    </plurals>
+    <string name="event_reminders">Rappels d\'événements</string>
 
     <!-- Export / Import -->
     <string name="import_events">Importer des événements</string>
@@ -179,8 +136,6 @@
 
     <!-- Settings -->
     <string name="manage_event_types">Gestion des types d\'événements</string>
-    <string name="use_24_hour_format">Utiliser le format 24 heures</string>
-    <string name="sunday_first">Dimanche en premier jour</string>
     <string name="start_day_at">Jour de début de la vue hebdomadaire</string>
     <string name="end_day_at">Jour de fin de la vue hebdomadaire</string>
     <string name="week_numbers">Afficher les numéros de semaine</string>
@@ -192,12 +147,9 @@
     <string name="caldav_sync">Synchronisation CalDAV</string>
     <string name="event_lists">Listes d\'événements</string>
     <string name="display_past_events">Afficher les événements du passé</string>
-    <string name="use_same_snooze">Toujours utiliser le même intervalle de répétition</string>
-    <string name="snooze_delay">Reporter le rappel avec Snooze de</string>
-    <string name="widgets">Widgets</string>
-    <string name="replace_description_with_location">Remplacer la description de l'événement par l'emplacement</string>
+    <string name="replace_description_with_location">Remplacer la description de l\'événement par l\'emplacement</string>
     <string name="delete_all_events">Supprimer tous les événements</string>
-    <string name="delete_all_events_confirmation">Êtes-vous sûr de vouloir supprimer tous les événements? Cela laissera vos types d'événements et autres paramètres intacts.</string>
+    <string name="delete_all_events_confirmation">Êtes-vous sûr de vouloir supprimer tous les événements? Cela laissera vos types d\'événements et autres paramètres intacts.</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -210,24 +162,6 @@
     <string name="editing_calendar_failed">Édition du calendrier échouée</string>
     <string name="syncing">Synchronisation…</string>
     <string name="synchronization_completed">Synchronisation terminée</string>
-
-    <plurals name="by_minutes">
-        <item quantity="one">%d minute</item>
-        <item quantity="other">%d minutes</item>
-    </plurals>
-
-    <plurals name="by_hours">
-        <item quantity="one">%d heure</item>
-        <item quantity="other">%d heures</item>
-    </plurals>
-
-    <string name="monday_letter">L</string>
-    <string name="tuesday_letter">M</string>
-    <string name="wednesday_letter">M</string>
-    <string name="thursday_letter">J</string>
-    <string name="friday_letter">V</string>
-    <string name="saturday_letter">S</string>
-    <string name="sunday_letter">D</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
