@@ -25,7 +25,7 @@
     <string name="event_added">Événement ajouté avec succès</string>
     <string name="event_updated">Événement ajouté avec succès</string>
     <string name="filter_events_by_type">Filtrer les événements par type</string>
-    <string name="please_fill_location">S\'il vous plaît remplir un emplacement pour être affiché sur une carte</string>
+    <string name="please_fill_location">Veuillez remplir un emplacement pour être affiché sur une carte</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Répétition</string>
@@ -149,7 +149,7 @@
     <string name="display_past_events">Afficher les événements du passé</string>
     <string name="replace_description_with_location">Remplacer la description de l\'événement par l\'emplacement</string>
     <string name="delete_all_events">Supprimer tous les événements</string>
-    <string name="delete_all_events_confirmation">Êtes-vous sûr de vouloir supprimer tous les événements? Cela laissera vos types d\'événements et autres paramètres intacts.</string>
+    <string name="delete_all_events_confirmation">Êtes-vous sûr de vouloir supprimer tous les événements ? Cela laissera vos types d\'événements et autres paramètres intacts.</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -184,12 +184,12 @@
     <string name="sample_title_5">Heure du café</string>
 
     <!-- FAQ -->
-    <string name="faq_1_title">How can I remove the holidays imported via the \"Add holidays\" button?</string>
-    <string name="faq_1_text">Holidays created that way are inserted in a new event type called \"Holidays\". You can go in Settings -> Manage Event Types,
-        long press the given event type and delete it by selecting the trashbin.</string>
-    <string name="faq_2_title">Can I sync my events via Google Calendar, or other service supporting CalDAV?</string>
-    <string name="faq_2_text">Yes, just toggle \"CalDAV sync\" in the app settings and select the calendars you want to sync. However, you will need some third party app handling the synchronization between the device and servers.
-        In case you want to synchronize a Google calendar, their official Calendar app will do the job. For other calendars you will need a third party sync adapter, for example DAVdroid.</string>
+    <string name="faq_1_title">Comment supprimer les congés importés par le bouton « Ajouter des jours fériés » ?</string>
+	<string name="faq_1_text">Les jours fériés ajoutés de cette manière sont du type « Jours fériés ». Vous pouvez aller dans « Paramètres » puis « Gestion des types d\'événements », 
+		faire un appui long sur « Jours fériés » et les supprimer en appuyant sur la corbeille.</string>
+    <string name="faq_2_title">Puis-je synchroniser mes événements via Google Agenda, ou tout autre service proposant la synchronisation CalDAV ?</string>
+	<string name="faq_2_text">Oui, il faut juste activer l\'option « Synchronisation CalDAV » dans les paramètres de l\'application puis choisir les calendriers à synchroniser. Une application tierce pour gérer la synchronisation entre votre appareil et les serveurs sera par contre nécessaire. 
+		Dans le cas d\'un calendrier Google Agenda, l\'application officielle fera l\'affaire. Pour les autres calendriers, il vous faudra une application comme DAVdroid par exemple.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
