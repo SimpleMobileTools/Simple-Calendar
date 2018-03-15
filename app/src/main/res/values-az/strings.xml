@@ -193,7 +193,7 @@
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Hadisələri, dəyişdirilə bilən widgeti olan, reklam ehtiva etməyən sadə bir kamera.</string>
+    <string name="app_short_description">Hadisələri, dəyişdirilə bilən widgeti olan, reklam ehtiva etməyən sadə bir kalendar.</string>
     <string name="app_long_description">
         CalDAV sinxronizasiyalı sadə bir kalendar. Siz asanca təkrarlanan hadisələrinizi və xatırladıcılarınızı yarada bilərsiniz, hətta həftə nömrələrini də göstərə bilir.
 
@@ -201,7 +201,7 @@
 
         Lazımsız reklam və ya icazə mövcud deyil. Tamamilə açıqlisanslıdır, rəng dəyişmə parametrləri var.
 
-        Yaddaş icazəsi yalnız .ics faylından hadisələri çıxarmaq və ya ona daxil etmək üçün istifadə olunur.
+        Yaddaş icazəsi yalnız .ics faylından hadisələri çıxarmaq və ya daxil etmək üçün istifadə olunur.
 
         Kontakt icazəsi yalnız kontakt ad günlərini və il dönümlərini daxil etmək üçün istifadə olunur.
 
