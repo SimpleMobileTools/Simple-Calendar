@@ -4,7 +4,6 @@ import android.app.Activity
 import android.graphics.Color
 import android.support.v7.app.AlertDialog
 import android.view.ViewGroup
-import android.widget.RadioButton
 import android.widget.RadioGroup
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.config
@@ -14,6 +13,7 @@ import com.simplemobiletools.commons.extensions.hideKeyboard
 import com.simplemobiletools.commons.extensions.setBackgroundWithStroke
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import com.simplemobiletools.commons.extensions.updateTextColors
+import com.simplemobiletools.commons.views.MyCompatRadioButton
 import kotlinx.android.synthetic.main.dialog_select_radio_group.view.*
 import kotlinx.android.synthetic.main.radio_button_with_color.view.*
 import java.util.*
@@ -46,13 +46,13 @@ class SelectEventTypeDialog(val activity: Activity, val currEventType: Int, val 
 
         dialog = AlertDialog.Builder(activity)
                 .create().apply {
-            activity.setupDialogStuff(view, this)
-        }
+                    activity.setupDialogStuff(view, this)
+                }
     }
 
     private fun addRadioButton(eventType: EventType) {
         val view = activity.layoutInflater.inflate(R.layout.radio_button_with_color, null)
-        (view.dialog_radio_button as RadioButton).apply {
+        (view.dialog_radio_button as MyCompatRadioButton).apply {
             text = eventType.getDisplayTitle()
             isChecked = eventType.id == currEventType
             id = eventType.id
