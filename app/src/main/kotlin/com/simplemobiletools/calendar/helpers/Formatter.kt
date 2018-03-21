@@ -7,7 +7,9 @@ import com.simplemobiletools.calendar.extensions.getNowSeconds
 import com.simplemobiletools.calendar.extensions.seconds
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
+import org.joda.time.LocalDate
 import org.joda.time.format.DateTimeFormat
+import java.text.DateFormat
 
 object Formatter {
     val DAYCODE_PATTERN = "YYYYMMdd"
@@ -76,6 +78,8 @@ object Formatter {
 
     fun getDayCodeFromDateTime(dateTime: DateTime) = dateTime.toString(DAYCODE_PATTERN)
 
+    fun getDateFromTS(ts: Int) = LocalDate(ts * 1000L, DateTimeZone.getDefault())
+
     fun getDateTimeFromTS(ts: Int) = DateTime(ts * 1000L, DateTimeZone.getDefault())
 
     fun getUTCDateTimeFromTS(ts: Int) = DateTime(ts * 1000L, DateTimeZone.UTC)
@@ -104,4 +108,6 @@ object Formatter {
     }
 
     fun getShiftedImportTimestamp(ts: Int) = getUTCDateTimeFromTS(ts).withTime(13, 0, 0, 0).withZoneRetainFields(DateTimeZone.getDefault()).seconds()
+
+    fun getDayAndMonth(localDate: LocalDate) = localDate.toString("dd.MM.")
 }
