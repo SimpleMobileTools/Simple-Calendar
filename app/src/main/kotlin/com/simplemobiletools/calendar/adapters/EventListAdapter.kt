@@ -35,7 +35,7 @@ class EventListAdapter(activity: SimpleActivity, val listItems: ArrayList<ListIt
     private val redTextColor = resources.getColor(R.color.red_text)
     private val now = activity.getNowSeconds()
     private val todayDate = Formatter.getDayTitle(activity, Formatter.getDayCodeFromTS(now))
-    private var use24HourFormat = activity.config.use24hourFormat
+    private var use24HourFormat = activity.config.use24HourFormat
 
     override fun getActionMenuId() = R.menu.cab_event_list
 

@@ -9,7 +9,6 @@ import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 import org.joda.time.LocalDate
 import org.joda.time.format.DateTimeFormat
-import java.text.DateFormat
 
 object Formatter {
     val DAYCODE_PATTERN = "YYYYMMdd"
@@ -89,9 +88,9 @@ object Formatter {
 
     fun getYear(dateTime: DateTime) = dateTime.toString(YEAR_PATTERN)
 
-    fun getHourPattern(context: Context) = if (context.config.use24hourFormat) PATTERN_HOURS_24 else PATTERN_HOURS_12
+    fun getHourPattern(context: Context) = if (context.config.use24HourFormat) PATTERN_HOURS_24 else PATTERN_HOURS_12
 
-    fun getTimePattern(context: Context) = if (context.config.use24hourFormat) PATTERN_TIME_24 else PATTERN_TIME_12
+    fun getTimePattern(context: Context) = if (context.config.use24HourFormat) PATTERN_TIME_24 else PATTERN_TIME_12
 
     fun getExportedTime(ts: Long): String {
         val dateTime = DateTime(ts, DateTimeZone.UTC)

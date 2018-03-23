@@ -126,7 +126,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
 
         if (config.storedView == WEEKLY_VIEW) {
-            if (mStoredIsSundayFirst != config.isSundayFirst || mStoredUse24HourFormat != config.use24hourFormat) {
+            if (mStoredIsSundayFirst != config.isSundayFirst || mStoredUse24HourFormat != config.use24HourFormat) {
                 updateViewPager()
             }
         }
@@ -206,7 +206,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             mStoredTextColor = textColor
             mStoredPrimaryColor = primaryColor
             mStoredBackgroundColor = backgroundColor
-            mStoredUse24HourFormat = use24hourFormat
+            mStoredUse24HourFormat = use24HourFormat
         }
         mStoredDayCode = Formatter.getTodayCode(applicationContext)
     }
@@ -673,7 +673,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                 FAQItem(getString(R.string.faq_1_title), getString(R.string.faq_1_text)),
                 FAQItem(getString(R.string.faq_2_title), getString(R.string.faq_2_text)))
 
-        startAboutActivity(R.string.app_name, LICENSE_KOTLIN or LICENSE_JODA or LICENSE_STETHO or LICENSE_MULTISELECT or LICENSE_LEAK_CANARY,
+        startAboutActivity(R.string.app_name, LICENSE_JODA or LICENSE_STETHO or LICENSE_MULTISELECT or LICENSE_LEAK_CANARY,
                 BuildConfig.VERSION_NAME, faqItems)
     }
 

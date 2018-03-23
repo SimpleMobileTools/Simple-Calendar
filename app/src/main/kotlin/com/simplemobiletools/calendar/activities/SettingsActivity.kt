@@ -113,10 +113,10 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun setupHourFormat() {
-        settings_hour_format.isChecked = config.use24hourFormat
+        settings_hour_format.isChecked = config.use24HourFormat
         settings_hour_format_holder.setOnClickListener {
             settings_hour_format.toggle()
-            config.use24hourFormat = settings_hour_format.isChecked
+            config.use24HourFormat = settings_hour_format.isChecked
         }
     }
 
@@ -319,8 +319,8 @@ class SettingsActivity : SimpleActivity() {
     private fun setupSnoozeTime() {
         updateSnoozeTime()
         settings_snooze_time_holder.setOnClickListener {
-            showPickIntervalDialog(config.snoozeTime, true) {
-                config.snoozeTime = it
+            showPickSecondsDialog(config.snoozeTime * 60, true) {
+                config.snoozeTime = it / 60
                 updateSnoozeTime()
             }
         }

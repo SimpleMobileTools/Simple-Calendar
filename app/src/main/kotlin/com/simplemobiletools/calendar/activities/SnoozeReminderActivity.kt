@@ -6,17 +6,17 @@ import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.rescheduleReminder
 import com.simplemobiletools.calendar.helpers.EVENT_ID
-import com.simplemobiletools.commons.extensions.showPickIntervalDialog
+import com.simplemobiletools.commons.extensions.showPickSecondsDialog
 
 class SnoozeReminderActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        showPickIntervalDialog(config.snoozeTime, true, cancelCallback = { dialogCancelled() }) {
+        showPickSecondsDialog(config.snoozeTime * 60, true, cancelCallback = { dialogCancelled() }) {
             val eventId = intent.getIntExtra(EVENT_ID, 0)
             val event = dbHelper.getEventWithId(eventId)
-            config.snoozeTime = it
-            rescheduleReminder(event, it)
+            config.snoozeTime = it / 60
+            rescheduleReminder(event, it / 60)
             finishActivity()
         }
     }
