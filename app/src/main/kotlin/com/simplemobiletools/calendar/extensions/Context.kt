@@ -37,6 +37,7 @@ import com.simplemobiletools.commons.helpers.isMarshmallowPlus
 import com.simplemobiletools.commons.helpers.isOreoPlus
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
+import org.joda.time.LocalDate
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
@@ -157,9 +158,19 @@ fun Context.notifyEvent(event: Event) {
     val pendingIntent = getPendingIntent(applicationContext, event)
     val startTime = Formatter.getTimeFromTS(applicationContext, event.startTS)
     val endTime = Formatter.getTimeFromTS(applicationContext, event.endTS)
+    val startDate = Formatter.getDateFromTS(event.startTS)
+    val displayedStartDate: String
+    if (startDate == LocalDate.now()) {
+        displayedStartDate = ""
+    } else if (startDate == LocalDate.now().plusDays(1)) {
+        displayedStartDate = getString(R.string.tomorrow)
+    } else /* At least 2 days in the future */ {
+        displayedStartDate = Formatter.getDayAndMonth(startDate)
+    }
     val timeRange = if (event.getIsAllDay()) getString(R.string.all_day) else getFormattedEventTime(startTime, endTime)
     val descriptionOrLocation = if (config.replaceDescription) event.location else event.description
-    val notification = getNotification(applicationContext, pendingIntent, event, "$timeRange $descriptionOrLocation")
+    val content = arrayOf(displayedStartDate, timeRange, descriptionOrLocation).joinToString(" ")
+    val notification = getNotification(applicationContext, pendingIntent, event, content)
     val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
     notificationManager.notify(event.id, notification)
 }
@@ -210,7 +221,7 @@ private fun getNotification(context: Context, pendingIntent: PendingIntent, even
     return builder.build()
 }
 
-private fun getFormattedEventTime(startTime: String, endTime: String) = if (startTime == endTime) startTime else "$startTime - $endTime"
+private fun getFormattedEventTime(startTime: String, endTime: String) = if (startTime == endTime) startTime else "$startTime\u2013$endTime"
 
 private fun getPendingIntent(context: Context, event: Event): PendingIntent {
     val intent = Intent(context, EventActivity::class.java)

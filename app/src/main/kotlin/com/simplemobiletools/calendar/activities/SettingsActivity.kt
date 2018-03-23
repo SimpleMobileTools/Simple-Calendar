@@ -336,10 +336,11 @@ class SettingsActivity : SimpleActivity() {
         var displayPastEvents = config.displayPastEvents
         updatePastEventsText(displayPastEvents)
         settings_display_past_events_holder.setOnClickListener {
-            CustomIntervalPickerDialog(this, displayPastEvents) {
-                displayPastEvents = it
-                config.displayPastEvents = it
-                updatePastEventsText(it)
+            CustomIntervalPickerDialog(this, displayPastEvents * 60) {
+                val result = it / 60
+                displayPastEvents = result
+                config.displayPastEvents = result
+                updatePastEventsText(result)
             }
         }
     }

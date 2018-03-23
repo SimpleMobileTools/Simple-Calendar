@@ -89,6 +89,7 @@
 
     <!-- Event Reminders -->
     <string name="reminder">Erinnerung</string>
+    <string name="tomorrow">Morgen</string>
     <string name="before">vorher</string>
     <string name="add_another_reminder">Füge eine weitere Erinnerung hinzu</string>
     <string name="event_reminders">Ereignis Erinnerungen</string>
