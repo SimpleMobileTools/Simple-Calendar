@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.DatePicker
 import android.widget.RelativeLayout
 import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.activities.MainActivity
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.helpers.Config
 import com.simplemobiletools.calendar.helpers.DAY_CODE
@@ -166,7 +167,9 @@ class MonthFragment : Fragment(), MonthlyCalendar {
     }
 
     private fun updateDays(days: ArrayList<DayMonthly>) {
-        mHolder.month_view_wrapper.updateDays(days)
+        mHolder.month_view_wrapper.updateDays(days) {
+            (activity as MainActivity).openDayFromMonthly(Formatter.getDateTimeFromCode(it.code))
+        }
 
         /*val displayWeekNumbers = mConfig.displayWeekNumbers
         val len = days.size

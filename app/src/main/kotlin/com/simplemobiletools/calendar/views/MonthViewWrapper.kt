@@ -18,6 +18,7 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
     private var days = ArrayList<DayMonthly>()
     private var inflater: LayoutInflater
     private var monthView: MonthView
+    private var dayClickCallback: ((day: DayMonthly) -> Unit)? = null
 
     constructor(context: Context, attrs: AttributeSet) : this(context, attrs, 0)
 
@@ -37,7 +38,8 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
         }
     }
 
-    fun updateDays(newDays: ArrayList<DayMonthly>) {
+    fun updateDays(newDays: ArrayList<DayMonthly>, callback: ((DayMonthly) -> Unit)? = null) {
+        dayClickCallback = callback
         days = newDays
         if (dayWidth != 0f) {
             addViews()
@@ -80,7 +82,7 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
             x = xPos
             y = yPos
             setOnClickListener {
-
+                dayClickCallback?.invoke(day)
             }
             addView(this)
         }
