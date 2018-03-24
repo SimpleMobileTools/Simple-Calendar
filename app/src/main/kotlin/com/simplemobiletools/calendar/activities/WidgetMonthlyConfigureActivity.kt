@@ -203,10 +203,10 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
     }
 
     private fun updateLabels() {
-        for (i in 0..6) {
+        /*for (i in 0..6) {
             findViewById<TextView>(mRes.getIdentifier("label_$i", "id", mPackageName)).apply {
                 setTextColor(mTextColor)
             }
-        }
+        }*/
     }
 }

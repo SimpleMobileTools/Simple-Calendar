@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/month_calendar_holder"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,19 +8,10 @@
 
     <include layout="@layout/top_navigation"/>
 
-    <include
-        android:id="@+id/first_row"
-        layout="@layout/first_row"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/top_value"
-        tools:ignore="UnknownIdInLayout"/>
-
     <com.simplemobiletools.calendar.views.MonthView
         android:id="@+id/month_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/first_row"
-        android:layout_centerInParent="true"/>
+        android:layout_below="@+id/top_left_arrow"/>
 
 </RelativeLayout>

@@ -12,6 +12,7 @@ import com.simplemobiletools.calendar.models.DayMonthly
 import com.simplemobiletools.commons.extensions.adjustAlpha
 import com.simplemobiletools.commons.extensions.getAdjustedPrimaryColor
 import com.simplemobiletools.commons.extensions.getContrastColor
+import com.simplemobiletools.commons.extensions.moveLastItemToFront
 
 // used in the Monthly view fragment, 1 view per screen
 class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(context, attrs, defStyle) {
@@ -21,6 +22,8 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     private var primaryColor = 0
     private var textColor = 0
     private var weakTextColor = 0
+    private var weekDaysLetterHeight = 0
+    private var dayLetters = ArrayList<String>()
     private var days = ArrayList<DayMonthly>()
 
     constructor(context: Context, attrs: AttributeSet) : this(context, attrs, 0)
@@ -30,10 +33,17 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         textColor = context.config.textColor
         weakTextColor = textColor.adjustAlpha(LOW_ALPHA)
 
+        val normalTextSize = resources.getDimensionPixelSize(R.dimen.normal_text_size).toFloat()
         paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
             color = textColor
-            textSize = resources.getDimensionPixelSize(R.dimen.normal_text_size).toFloat()
+            textSize = normalTextSize
             textAlign = Paint.Align.CENTER
+        }
+
+        weekDaysLetterHeight = 2 * normalTextSize.toInt()
+        dayLetters = context.resources.getStringArray(R.array.week_day_letters).toList() as ArrayList<String>
+        if (context.config.isSundayFirst) {
+            dayLetters.moveLastItemToFront()
         }
     }
 
@@ -49,7 +59,12 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         }
 
         if (dayHeight == 0f) {
-            dayHeight = (canvas.height / 6).toFloat()
+            dayHeight = ((canvas.height - weekDaysLetterHeight) / 6).toFloat()
+        }
+
+        for (i in 0..6) {
+            val xPos = (i + 1) * dayWidth - dayWidth / 2
+            canvas.drawText(dayLetters[i], xPos, weekDaysLetterHeight / 2f, paint)
         }
 
         var curId = 0
@@ -58,7 +73,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
                 val day = days.getOrNull(curId)
                 if (day != null) {
                     val xPos = x * dayWidth - dayWidth / 2
-                    val yPos = y * dayHeight
+                    val yPos = y * dayHeight + weekDaysLetterHeight
                     if (day.isToday) {
                         canvas.drawCircle(xPos, yPos + paint.textSize * 0.7f, paint.textSize * 0.75f, getCirclePaint(day))
                     }

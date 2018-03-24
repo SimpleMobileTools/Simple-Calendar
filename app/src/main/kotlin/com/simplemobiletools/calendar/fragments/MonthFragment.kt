@@ -10,7 +10,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
 import android.widget.RelativeLayout
-import android.widget.TextView
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.helpers.Config
@@ -152,7 +151,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
     }
 
     private fun setupLabels() {
-        val letters = context!!.resources.getStringArray(R.array.week_day_letters)
+        /*val letters = context!!.resources.getStringArray(R.array.week_day_letters)
         for (i in 0..6) {
             var index = i
             if (mSundayFirst) {
@@ -163,7 +162,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
                 setTextColor(mTextColor)
                 text = letters[index]
             }
-        }
+        }*/
     }
 
     private fun updateDays(days: ArrayList<DayMonthly>) {
