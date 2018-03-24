@@ -13,6 +13,7 @@ import com.simplemobiletools.commons.extensions.adjustAlpha
 import com.simplemobiletools.commons.extensions.getAdjustedPrimaryColor
 import com.simplemobiletools.commons.extensions.getContrastColor
 import com.simplemobiletools.commons.extensions.moveLastItemToFront
+import org.joda.time.DateTime
 
 // used in the Monthly view fragment, 1 view per screen
 class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(context, attrs, defStyle) {
@@ -23,6 +24,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     private var textColor = 0
     private var weakTextColor = 0
     private var weekDaysLetterHeight = 0
+    private var currDayOfWeek = 0
     private var dayLetters = ArrayList<String>()
     private var days = ArrayList<DayMonthly>()
 
@@ -42,11 +44,13 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
 
         weekDaysLetterHeight = 2 * normalTextSize.toInt()
         initWeekDayLetters()
+        setupCurrentDayOfWeekIndex()
     }
 
     fun updateDays(newDays: ArrayList<DayMonthly>) {
         days = newDays
         initWeekDayLetters()
+        setupCurrentDayOfWeekIndex()
         invalidate()
     }
 
@@ -62,7 +66,11 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
 
         for (i in 0..6) {
             val xPos = (i + 1) * dayWidth - dayWidth / 2
-            canvas.drawText(dayLetters[i], xPos, weekDaysLetterHeight / 2f, paint)
+            var weekDayLetterPaint = paint
+            if (i == currDayOfWeek) {
+                weekDayLetterPaint = getColoredPaint(primaryColor)
+            }
+            canvas.drawText(dayLetters[i], xPos, weekDaysLetterHeight / 2f, weekDayLetterPaint)
         }
 
         var curId = 0
@@ -115,6 +123,20 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         dayLetters = context.resources.getStringArray(R.array.week_day_letters).toList() as ArrayList<String>
         if (context.config.isSundayFirst) {
             dayLetters.moveLastItemToFront()
+        }
+    }
+
+    private fun setupCurrentDayOfWeekIndex() {
+        if (days.firstOrNull { it.isToday && it.isThisMonth } == null) {
+            currDayOfWeek = -1
+            return
+        }
+
+        currDayOfWeek = DateTime().dayOfWeek
+        if (context.config.isSundayFirst) {
+            currDayOfWeek %= 7
+        } else {
+            currDayOfWeek--
         }
     }
 }
