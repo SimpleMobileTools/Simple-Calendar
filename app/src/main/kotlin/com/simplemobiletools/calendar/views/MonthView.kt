@@ -36,13 +36,14 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         weakTextColor = textColor.adjustAlpha(LOW_ALPHA)
 
         val normalTextSize = resources.getDimensionPixelSize(R.dimen.normal_text_size).toFloat()
+        weekDaysLetterHeight = 2 * normalTextSize.toInt()
+
         paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
             color = textColor
             textSize = normalTextSize
             textAlign = Paint.Align.CENTER
         }
 
-        weekDaysLetterHeight = 2 * normalTextSize.toInt()
         initWeekDayLetters()
         setupCurrentDayOfWeekIndex()
     }
@@ -57,11 +58,11 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         if (dayWidth == 0f) {
-            dayWidth = (canvas.width / 7).toFloat()
+            dayWidth = canvas.width / 7f
         }
 
         if (dayHeight == 0f) {
-            dayHeight = ((canvas.height - weekDaysLetterHeight) / 6).toFloat()
+            dayHeight = (canvas.height - weekDaysLetterHeight) / 6f
         }
 
         for (i in 0..6) {
@@ -75,10 +76,10 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
 
         var curId = 0
         for (y in 0..5) {
-            for (x in 1..7) {
+            for (x in 0..6) {
                 val day = days.getOrNull(curId)
                 if (day != null) {
-                    val xPos = x * dayWidth - dayWidth / 2
+                    val xPos = x * dayWidth + dayWidth / 2
                     val yPos = y * dayHeight + weekDaysLetterHeight
                     if (day.isToday) {
                         canvas.drawCircle(xPos, yPos + paint.textSize * 0.7f, paint.textSize * 0.75f, getCirclePaint(day))

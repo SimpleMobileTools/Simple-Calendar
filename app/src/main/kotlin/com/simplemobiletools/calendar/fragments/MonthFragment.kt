@@ -166,7 +166,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
     }
 
     private fun updateDays(days: ArrayList<DayMonthly>) {
-        mHolder.month_view.updateDays(days)
+        mHolder.month_view_wrapper.updateDays(days)
 
         /*val displayWeekNumbers = mConfig.displayWeekNumbers
         val len = days.size
