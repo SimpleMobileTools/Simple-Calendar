@@ -9,13 +9,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
-import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.activities.MainActivity
-import com.simplemobiletools.calendar.extensions.addDayEvents
-import com.simplemobiletools.calendar.extensions.addDayNumber
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.helpers.Config
 import com.simplemobiletools.calendar.helpers.DAY_CODE
@@ -24,8 +20,10 @@ import com.simplemobiletools.calendar.helpers.MonthlyCalendarImpl
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.models.DayMonthly
-import com.simplemobiletools.commons.extensions.*
-import kotlinx.android.synthetic.main.first_row.*
+import com.simplemobiletools.commons.extensions.applyColorFilter
+import com.simplemobiletools.commons.extensions.beGone
+import com.simplemobiletools.commons.extensions.getDialogTheme
+import com.simplemobiletools.commons.extensions.setupDialogStuff
 import kotlinx.android.synthetic.main.fragment_month.view.*
 import kotlinx.android.synthetic.main.top_navigation.view.*
 import org.joda.time.DateTime
@@ -169,7 +167,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
     }
 
     private fun updateDays(days: List<DayMonthly>) {
-        val displayWeekNumbers = mConfig.displayWeekNumbers
+        /*val displayWeekNumbers = mConfig.displayWeekNumbers
         val len = days.size
 
         if (week_num == null)
@@ -198,6 +196,6 @@ class MonthFragment : Fragment(), MonthlyCalendar {
                 context.addDayNumber(mTextColor, day, this, mDayLabelHeight) { mDayLabelHeight = it }
                 context.addDayEvents(day, this, mRes, dividerMargin)
             }
-        }
+        }*/
     }
 }

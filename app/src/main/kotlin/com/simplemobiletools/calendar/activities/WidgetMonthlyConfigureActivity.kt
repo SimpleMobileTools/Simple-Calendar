@@ -152,7 +152,7 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
     }
 
     private fun updateDays() {
-        val len = mDays!!.size
+        /*val len = mDays!!.size
 
         if (applicationContext.config.displayWeekNumbers) {
             week_num.setTextColor(mTextColor)
@@ -176,7 +176,7 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
                 context.addDayNumber(mTextColor, day, this, dayLabelHeight) { dayLabelHeight = it }
                 context.addDayEvents(day, this, mRes, dividerMargin)
             }
-        }
+        }*/
     }
 
     private val bgSeekbarChangeListener = object : SeekBar.OnSeekBarChangeListener {
