@@ -41,14 +41,12 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         }
 
         weekDaysLetterHeight = 2 * normalTextSize.toInt()
-        dayLetters = context.resources.getStringArray(R.array.week_day_letters).toList() as ArrayList<String>
-        if (context.config.isSundayFirst) {
-            dayLetters.moveLastItemToFront()
-        }
+        initWeekDayLetters()
     }
 
     fun updateDays(newDays: ArrayList<DayMonthly>) {
         days = newDays
+        initWeekDayLetters()
         invalidate()
     }
 
@@ -111,5 +109,12 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         }
         curPaint.color = paintColor
         return curPaint
+    }
+
+    private fun initWeekDayLetters() {
+        dayLetters = context.resources.getStringArray(R.array.week_day_letters).toList() as ArrayList<String>
+        if (context.config.isSundayFirst) {
+            dayLetters.moveLastItemToFront()
+        }
     }
 }
