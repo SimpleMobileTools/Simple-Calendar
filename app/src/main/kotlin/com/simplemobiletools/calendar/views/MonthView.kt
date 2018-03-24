@@ -10,6 +10,7 @@ import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.helpers.LOW_ALPHA
 import com.simplemobiletools.calendar.models.DayMonthly
 import com.simplemobiletools.commons.extensions.adjustAlpha
+import com.simplemobiletools.commons.extensions.getAdjustedPrimaryColor
 import com.simplemobiletools.commons.extensions.getContrastColor
 
 // used in the Monthly view fragment, 1 view per screen
@@ -17,17 +18,17 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     private var paint: Paint
     private var dayWidth = 0f
     private var dayHeight = 0f
+    private var primaryColor = 0
     private var textColor = 0
     private var weakTextColor = 0
-    private var todayTextColor = 0
     private var days = ArrayList<DayMonthly>()
 
     constructor(context: Context, attrs: AttributeSet) : this(context, attrs, 0)
 
     init {
+        primaryColor = context.getAdjustedPrimaryColor()
         textColor = context.config.textColor
         weakTextColor = textColor.adjustAlpha(LOW_ALPHA)
-        todayTextColor = context.config.primaryColor.getContrastColor()
 
         paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
             color = textColor
@@ -56,17 +57,22 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
             for (x in 1..7) {
                 val day = days.getOrNull(curId)
                 if (day != null) {
-                    canvas.drawText(day.value.toString(), x * dayWidth - dayWidth / 2, y * dayHeight + paint.textSize, getPaint(day))
+                    val xPos = x * dayWidth - dayWidth / 2
+                    val yPos = y * dayHeight
+                    if (day.isToday) {
+                        canvas.drawCircle(xPos, yPos + paint.textSize * 0.7f, paint.textSize * 0.75f, getCirclePaint(day))
+                    }
+                    canvas.drawText(day.value.toString(), xPos, yPos + paint.textSize, getTextPaint(day))
                 }
                 curId++
             }
         }
     }
 
-    private fun getPaint(day: DayMonthly): Paint {
+    private fun getTextPaint(day: DayMonthly): Paint {
         var paintColor = textColor
         if (day.isToday) {
-            paintColor = paintColor.getContrastColor()
+            paintColor = primaryColor.getContrastColor()
         }
 
         if (!day.isThisMonth) {
@@ -79,6 +85,16 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     private fun getColoredPaint(color: Int): Paint {
         val curPaint = Paint(paint)
         curPaint.color = color
+        return curPaint
+    }
+
+    private fun getCirclePaint(day: DayMonthly): Paint {
+        val curPaint = Paint(paint)
+        var paintColor = primaryColor
+        if (!day.isThisMonth) {
+            paintColor = paintColor.adjustAlpha(LOW_ALPHA)
+        }
+        curPaint.color = paintColor
         return curPaint
     }
 }
