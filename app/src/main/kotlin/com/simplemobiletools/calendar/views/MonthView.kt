@@ -84,25 +84,11 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         dayVerticalOffsets.clear()
-        if (dayWidth == 0f) {
-            dayWidth = canvas.width / 7f
+        if (dayWidth == 0f || dayHeight == 0f) {
+            measureDaySize(canvas)
         }
 
-        if (dayHeight == 0f) {
-            dayHeight = (canvas.height - weekDaysLetterHeight) / ROW_COUNT.toFloat()
-            availableHeightForEvents = dayHeight.toInt() - weekDaysLetterHeight
-            maxEventsPerDay = availableHeightForEvents / eventTitleHeight
-        }
-
-        // week day letters
-        for (i in 0..6) {
-            val xPos = (i + 1) * dayWidth - dayWidth / 2
-            var weekDayLetterPaint = paint
-            if (i == currDayOfWeek) {
-                weekDayLetterPaint = getColoredPaint(primaryColor)
-            }
-            canvas.drawText(dayLetters[i], xPos, weekDaysLetterHeight / 2f, weekDayLetterPaint)
-        }
+        addWeekDayLetters(canvas)
 
         var curId = 0
         for (y in 0 until ROW_COUNT) {
@@ -133,7 +119,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
                         val maxTS = Math.min(endDateTime.seconds(), Int.MAX_VALUE)
                         val daysCnt = Days.daysBetween(Formatter.getDateTimeFromTS(minTS).toLocalDate(), Formatter.getDateTimeFromTS(maxTS).toLocalDate()).days + 1
 
-                        // background rectangle
+                        // event background rectangle
                         val backgroundY = yPos + verticalOffset
                         val bgLeft = xPos + smallPadding
                         val bgTop = backgroundY + smallPadding - eventTitleHeight
@@ -150,6 +136,24 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
                 curId++
             }
         }
+    }
+
+    private fun addWeekDayLetters(canvas: Canvas) {
+        for (i in 0..6) {
+            val xPos = (i + 1) * dayWidth - dayWidth / 2
+            var weekDayLetterPaint = paint
+            if (i == currDayOfWeek) {
+                weekDayLetterPaint = getColoredPaint(primaryColor)
+            }
+            canvas.drawText(dayLetters[i], xPos, weekDaysLetterHeight / 2f, weekDayLetterPaint)
+        }
+    }
+
+    private fun measureDaySize(canvas: Canvas) {
+        dayWidth = canvas.width / 7f
+        dayHeight = (canvas.height - weekDaysLetterHeight) / ROW_COUNT.toFloat()
+        availableHeightForEvents = dayHeight.toInt() - weekDaysLetterHeight
+        maxEventsPerDay = availableHeightForEvents / eventTitleHeight
     }
 
     private fun drawEventTitle(title: String, canvas: Canvas, x: Float, y: Float, eventColor: Int, daysCnt: Int) {
