@@ -3,7 +3,10 @@ package com.simplemobiletools.calendar.views
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
+import android.text.TextPaint
+import android.text.TextUtils
 import android.util.AttributeSet
+import android.util.SparseIntArray
 import android.view.View
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.config
@@ -18,15 +21,19 @@ import org.joda.time.DateTime
 // used in the Monthly view fragment, 1 view per screen
 class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(context, attrs, defStyle) {
     private var paint: Paint
+    private var eventTitlePaint: TextPaint
     private var dayWidth = 0f
     private var dayHeight = 0f
     private var primaryColor = 0
     private var textColor = 0
     private var weakTextColor = 0
     private var weekDaysLetterHeight = 0
+    private var eventTitleHeight = 0
     private var currDayOfWeek = 0
+    private var eventTitlePadding = 0
     private var dayLetters = ArrayList<String>()
     private var days = ArrayList<DayMonthly>()
+    private var dayVerticalOffsets = SparseIntArray()
 
     constructor(context: Context, attrs: AttributeSet) : this(context, attrs, 0)
 
@@ -35,13 +42,22 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         textColor = context.config.textColor
         weakTextColor = textColor.adjustAlpha(LOW_ALPHA)
 
-        val normalTextSize = resources.getDimensionPixelSize(R.dimen.normal_text_size).toFloat()
-        weekDaysLetterHeight = 2 * normalTextSize.toInt()
+        eventTitlePadding = resources.getDimensionPixelSize(R.dimen.tiny_margin)
+        val normalTextSize = resources.getDimensionPixelSize(R.dimen.normal_text_size)
+        weekDaysLetterHeight = 2 * normalTextSize
 
         paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
             color = textColor
-            textSize = normalTextSize
+            textSize = normalTextSize.toFloat()
             textAlign = Paint.Align.CENTER
+        }
+
+        val smallerTextSize = resources.getDimensionPixelSize(R.dimen.smaller_text_size)
+        eventTitleHeight = smallerTextSize + 2 * eventTitlePadding
+        eventTitlePaint = TextPaint(Paint.ANTI_ALIAS_FLAG).apply {
+            color = textColor
+            textSize = smallerTextSize.toFloat()
+            textAlign = Paint.Align.LEFT
         }
 
         initWeekDayLetters()
@@ -79,16 +95,28 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
             for (x in 0..6) {
                 val day = days.getOrNull(curId)
                 if (day != null) {
-                    val xPos = x * dayWidth + dayWidth / 2
+                    val xPos = x * dayWidth
                     val yPos = y * dayHeight + weekDaysLetterHeight
+                    val xPosCenter = xPos + dayWidth / 2
                     if (day.isToday) {
-                        canvas.drawCircle(xPos, yPos + paint.textSize * 0.7f, paint.textSize * 0.75f, getCirclePaint(day))
+                        canvas.drawCircle(xPosCenter, yPos + paint.textSize * 0.7f, paint.textSize * 0.75f, getCirclePaint(day))
                     }
-                    canvas.drawText(day.value.toString(), xPos, yPos + paint.textSize, getTextPaint(day))
+                    canvas.drawText(day.value.toString(), xPosCenter, yPos + paint.textSize, getTextPaint(day))
+                    dayVerticalOffsets.put(day.indexOnMonthView, weekDaysLetterHeight)
+
+                    day.dayEvents.forEach {
+                        drawEventTitle(it.title, canvas, xPos, yPos + dayVerticalOffsets[day.indexOnMonthView])
+                        dayVerticalOffsets.put(day.indexOnMonthView, dayVerticalOffsets[day.indexOnMonthView] + eventTitleHeight)
+                    }
                 }
                 curId++
             }
         }
+    }
+
+    private fun drawEventTitle(title: String, canvas: Canvas, x: Float, y: Float) {
+        val ellipsized = TextUtils.ellipsize(title, eventTitlePaint, dayWidth - 2 * eventTitlePadding, TextUtils.TruncateAt.END)
+        canvas.drawText(title, 0, ellipsized.length, x + eventTitlePadding, y, eventTitlePaint)
     }
 
     private fun getTextPaint(day: DayMonthly): Paint {
