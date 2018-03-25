@@ -11,6 +11,8 @@ import android.util.SparseIntArray
 import android.view.View
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.config
+import com.simplemobiletools.calendar.extensions.seconds
+import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.helpers.LOW_ALPHA
 import com.simplemobiletools.calendar.models.DayMonthly
 import com.simplemobiletools.commons.extensions.adjustAlpha
@@ -18,6 +20,7 @@ import com.simplemobiletools.commons.extensions.getAdjustedPrimaryColor
 import com.simplemobiletools.commons.extensions.getContrastColor
 import com.simplemobiletools.commons.extensions.moveLastItemToFront
 import org.joda.time.DateTime
+import org.joda.time.Days
 
 // used in the Monthly view fragment, 1 view per screen
 class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(context, attrs, defStyle) {
@@ -114,16 +117,22 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
                     day.dayEvents.forEach {
                         val verticalOffset = dayVerticalOffsets[day.indexOnMonthView]
 
+                        val startDateTime = Formatter.getDateTimeFromTS(it.startTS)
+                        val endDateTime = Formatter.getDateTimeFromTS(it.endTS)
+                        val minTS = Math.max(startDateTime.seconds(), 0)
+                        val maxTS = Math.min(endDateTime.seconds(), Int.MAX_VALUE)
+                        val daysCnt = Days.daysBetween(Formatter.getDateTimeFromTS(minTS).toLocalDate(), Formatter.getDateTimeFromTS(maxTS).toLocalDate()).days + 1
+
                         // background rectangle
                         val backgroundY = yPos + verticalOffset
                         val bgLeft = xPos + smallPadding
                         val bgTop = backgroundY + smallPadding - eventTitleHeight
-                        val bgRight = xPos + dayWidth - smallPadding
+                        val bgRight = xPos - smallPadding + dayWidth * daysCnt
                         val bgBottom = backgroundY + smallPadding * 2
                         bgRectF.set(bgLeft, bgTop, bgRight, bgBottom)
                         canvas.drawRoundRect(bgRectF, BG_CORNER_RADIUS, BG_CORNER_RADIUS, getColoredPaint(it.color))
 
-                        drawEventTitle(it.title, canvas, xPos, yPos + verticalOffset, it.color)
+                        drawEventTitle(it.title, canvas, xPos, yPos + verticalOffset, it.color, daysCnt)
                         dayVerticalOffsets.put(day.indexOnMonthView, verticalOffset + eventTitleHeight + smallPadding * 2)
                     }
                 }
@@ -132,8 +141,8 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         }
     }
 
-    private fun drawEventTitle(title: String, canvas: Canvas, x: Float, y: Float, eventColor: Int) {
-        val ellipsized = TextUtils.ellipsize(title, eventTitlePaint, dayWidth - smallPadding * 4, TextUtils.TruncateAt.END)
+    private fun drawEventTitle(title: String, canvas: Canvas, x: Float, y: Float, eventColor: Int, daysCnt: Int) {
+        val ellipsized = TextUtils.ellipsize(title, eventTitlePaint, dayWidth * daysCnt - smallPadding * 4, TextUtils.TruncateAt.END)
         canvas.drawText(title, 0, ellipsized.length, x + smallPadding * 2, y, getEventTitlePaint(eventColor))
     }
 
