@@ -121,6 +121,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
 
                     day.dayEvents.forEach {
                         if (shownDayEvents >= maxEventsPerDay) {
+                            canvas.drawText("...", xPosCenter, yPos + paint.textSize * 2 + maxEventsPerDay * eventTitleHeight, getTextPaint(day))
                             return@forEach
                         }
 
