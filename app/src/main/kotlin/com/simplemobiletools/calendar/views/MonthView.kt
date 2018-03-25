@@ -38,6 +38,8 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     private var eventTitleHeight = 0
     private var currDayOfWeek = 0
     private var smallPadding = 0
+    private var availableHeightForEvents = 0
+    private var maxEventsPerDay = 0
     private var bgRectF = RectF()
     private var dayLetters = ArrayList<String>()
     private var days = ArrayList<DayMonthly>()
@@ -88,6 +90,8 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
 
         if (dayHeight == 0f) {
             dayHeight = (canvas.height - weekDaysLetterHeight) / ROW_COUNT.toFloat()
+            availableHeightForEvents = dayHeight.toInt() - weekDaysLetterHeight
+            maxEventsPerDay = availableHeightForEvents / eventTitleHeight
         }
 
         // week day letters
@@ -103,6 +107,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         var curId = 0
         for (y in 0 until ROW_COUNT) {
             for (x in 0..6) {
+                var shownDayEvents = 0
                 val day = days.getOrNull(curId)
                 if (day != null) {
                     dayVerticalOffsets.put(day.indexOnMonthView, dayVerticalOffsets[day.indexOnMonthView] + weekDaysLetterHeight)
@@ -115,6 +120,10 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
                     canvas.drawText(day.value.toString(), xPosCenter, yPos + paint.textSize, getTextPaint(day))
 
                     day.dayEvents.forEach {
+                        if (shownDayEvents >= maxEventsPerDay) {
+                            return@forEach
+                        }
+
                         val verticalOffset = dayVerticalOffsets[day.indexOnMonthView]
 
                         val startDateTime = Formatter.getDateTimeFromTS(it.startTS)
@@ -134,6 +143,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
 
                         drawEventTitle(it.title, canvas, xPos, yPos + verticalOffset, it.color, daysCnt)
                         dayVerticalOffsets.put(day.indexOnMonthView, verticalOffset + eventTitleHeight + smallPadding * 2)
+                        shownDayEvents++
                     }
                 }
                 curId++
