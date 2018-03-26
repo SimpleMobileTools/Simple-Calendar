@@ -94,8 +94,8 @@ class DayFragment : Fragment() {
                 .setNegativeButton(R.string.cancel, null)
                 .setPositiveButton(R.string.ok) { dialog, which -> positivePressed(dateTime, datePicker) }
                 .create().apply {
-            activity?.setupDialogStuff(view, this)
-        }
+                    activity?.setupDialogStuff(view, this)
+                }
     }
 
     private fun positivePressed(dateTime: DateTime, datePicker: DatePicker) {
@@ -123,7 +123,7 @@ class DayFragment : Fragment() {
         lastHash = newHash
 
         val replaceDescription = context!!.config.replaceDescription
-        val sorted = ArrayList<Event>(filtered.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, {
+        val sorted = ArrayList<Event>(filtered.sortedWith(compareBy({ !it.getIsAllDay() }, { it.startTS }, { it.endTS }, { it.title }, {
             if (replaceDescription) it.location else it.description
         })))
 
