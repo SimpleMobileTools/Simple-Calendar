@@ -35,12 +35,10 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     private var dayHeight = 0f
     private var primaryColor = 0
     private var textColor = 0
-    private var weakTextColor = 0
     private var weekDaysLetterHeight = 0
     private var eventTitleHeight = 0
     private var currDayOfWeek = 0
     private var smallPadding = 0
-    private var availableHeightForEvents = 0
     private var maxEventsPerDay = 0
     private var showWeekNumbers = false
     private var allEvents = ArrayList<MonthViewEvent>()
@@ -56,7 +54,6 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         primaryColor = context.getAdjustedPrimaryColor()
         textColor = context.config.textColor
         showWeekNumbers = context.config.showWeekNumbers
-        weakTextColor = textColor.adjustAlpha(LOW_ALPHA)
 
         smallPadding = resources.displayMetrics.density.toInt()
         val normalTextSize = resources.getDimensionPixelSize(R.dimen.normal_text_size)
@@ -157,7 +154,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     private fun measureDaySize(canvas: Canvas) {
         dayWidth = canvas.width / 7f
         dayHeight = (canvas.height - weekDaysLetterHeight) / ROW_COUNT.toFloat()
-        availableHeightForEvents = dayHeight.toInt() - weekDaysLetterHeight
+        val availableHeightForEvents = dayHeight.toInt() - weekDaysLetterHeight
         maxEventsPerDay = availableHeightForEvents / eventTitleHeight
     }
 
