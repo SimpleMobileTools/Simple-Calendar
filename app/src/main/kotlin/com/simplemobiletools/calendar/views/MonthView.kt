@@ -169,6 +169,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         val bgLeft = xPos + smallPadding
         val bgTop = backgroundY + smallPadding - eventTitleHeight
         var bgRight = xPos - smallPadding + dayWidth * event.daysCnt
+        val bgBottom = backgroundY + smallPadding * 2
         if (bgRight > canvas.width.toFloat()) {
             bgRight = canvas.width.toFloat() - smallPadding
             val newStartDayIndex = (event.startDayIndex / 7 + 1) * 7
@@ -176,11 +177,12 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
             drawEvent(newEvent, canvas)
         }
 
-        val bgBottom = backgroundY + smallPadding * 2
+        val startDayIndex = days[event.originalStartDayIndex]
+        val endDayIndex = days[event.startDayIndex + event.daysCnt - 1]
         bgRectF.set(bgLeft, bgTop, bgRight, bgBottom)
-        canvas.drawRoundRect(bgRectF, BG_CORNER_RADIUS, BG_CORNER_RADIUS, getEventBackgroundColor(event, days[event.originalStartDayIndex], days[event.startDayIndex + event.daysCnt - 1]))
+        canvas.drawRoundRect(bgRectF, BG_CORNER_RADIUS, BG_CORNER_RADIUS, getEventBackgroundColor(event, startDayIndex, endDayIndex))
 
-        drawEventTitle(event.title, canvas, xPos, yPos + verticalOffset, bgRight - bgLeft, event.color, days[event.originalStartDayIndex], days[event.startDayIndex + event.daysCnt - 1])
+        drawEventTitle(event.title, canvas, xPos, yPos + verticalOffset, bgRight - bgLeft, event.color, startDayIndex, endDayIndex)
         dayVerticalOffsets.put(event.startDayIndex, verticalOffset + eventTitleHeight + smallPadding * 2)
 
         for (i in 0 until event.daysCnt) {
