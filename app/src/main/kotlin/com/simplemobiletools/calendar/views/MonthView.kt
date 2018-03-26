@@ -166,9 +166,9 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
             val bgRight = xPos - smallPadding + dayWidth * event.daysCnt
             val bgBottom = backgroundY + smallPadding * 2
             bgRectF.set(bgLeft, bgTop, bgRight, bgBottom)
-            canvas.drawRoundRect(bgRectF, BG_CORNER_RADIUS, BG_CORNER_RADIUS, getColoredPaint(event.color))
+            canvas.drawRoundRect(bgRectF, BG_CORNER_RADIUS, BG_CORNER_RADIUS, getEventBackgroundColor(event, days[event.startDayIndex]))
 
-            drawEventTitle(event.title, canvas, xPos, yPos + verticalOffset, event.color, event.daysCnt)
+            drawEventTitle(event.title, canvas, xPos, yPos + verticalOffset, event.color, event.daysCnt, days[event.startDayIndex])
             dayVerticalOffsets.put(event.startDayIndex, verticalOffset + eventTitleHeight + smallPadding * 2)
 
             for (i in 0 until event.daysCnt) {
@@ -177,9 +177,9 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         }
     }
 
-    private fun drawEventTitle(title: String, canvas: Canvas, x: Float, y: Float, eventColor: Int, daysCnt: Int) {
+    private fun drawEventTitle(title: String, canvas: Canvas, x: Float, y: Float, eventColor: Int, daysCnt: Int, day: DayMonthly) {
         val ellipsized = TextUtils.ellipsize(title, eventTitlePaint, dayWidth * daysCnt - smallPadding * 4, TextUtils.TruncateAt.END)
-        canvas.drawText(title, 0, ellipsized.length, x + smallPadding * 2, y, getEventTitlePaint(eventColor))
+        canvas.drawText(title, 0, ellipsized.length, x + smallPadding * 2, y, getEventTitlePaint(eventColor, day))
     }
 
     private fun getTextPaint(day: DayMonthly): Paint {
@@ -201,9 +201,23 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         return curPaint
     }
 
-    private fun getEventTitlePaint(color: Int): Paint {
+    private fun getEventBackgroundColor(event: MonthViewEvent, day: DayMonthly): Paint {
+        var paintColor = event.color
+        if (!day.isThisMonth) {
+            paintColor = paintColor.adjustAlpha(LOW_ALPHA)
+        }
+
+        return getColoredPaint(paintColor)
+    }
+
+    private fun getEventTitlePaint(color: Int, day: DayMonthly): Paint {
+        var paintColor = color.getContrastColor()
+        if (!day.isThisMonth) {
+            paintColor = paintColor.adjustAlpha(LOW_ALPHA)
+        }
+
         val curPaint = Paint(eventTitlePaint)
-        curPaint.color = color.getContrastColor()
+        curPaint.color = paintColor
         return curPaint
     }
 
