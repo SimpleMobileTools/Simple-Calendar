@@ -100,6 +100,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         dayVerticalOffsets.clear()
+        dayEventsCount.clear()
         if (dayWidth == 0f || dayHeight == 0f) {
             measureDaySize(canvas)
         }
@@ -183,10 +184,10 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         canvas.drawRoundRect(bgRectF, BG_CORNER_RADIUS, BG_CORNER_RADIUS, getEventBackgroundColor(event, startDayIndex, endDayIndex))
 
         drawEventTitle(event.title, canvas, xPos, yPos + verticalOffset, bgRight - bgLeft, event.color, startDayIndex, endDayIndex)
-        dayVerticalOffsets.put(event.startDayIndex, verticalOffset + eventTitleHeight + smallPadding * 2)
 
-        for (i in 0 until event.daysCnt) {
+        for (i in 0 until Math.min(event.daysCnt, 7 - event.startDayIndex % 7)) {
             dayEventsCount.put(event.startDayIndex + i, dayEventsCount[event.startDayIndex + i] + 1)
+            dayVerticalOffsets.put(event.startDayIndex + i, verticalOffset + eventTitleHeight + smallPadding * 2)
         }
     }
 
