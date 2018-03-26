@@ -605,6 +605,18 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
     }
 
+    fun getEventIdWithLastImportId(id: String): Int {
+        val selection = "$MAIN_TABLE_NAME.$COL_IMPORT_ID LIKE ?"
+        val selectionArgs = arrayOf("%-$id")
+        val cursor = getEventsCursor(selection, selectionArgs)
+        val events = fillEvents(cursor)
+        return if (events.isNotEmpty()) {
+            events.minBy { it.id }?.id ?: 0
+        } else {
+            0
+        }
+    }
+
     fun getEventsWithSearchQuery(text: String, callback: (searchedText: String, events: List<Event>) -> Unit) {
         Thread {
             val searchQuery = "%$text%"

@@ -83,8 +83,20 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         if (intent?.action == Intent.ACTION_VIEW && intent.data != null) {
             val uri = intent.data
             if (uri.authority == "com.android.calendar") {
-                // clicking date on a third party widget: content://com.android.calendar/time/1507309245683
-                if (intent?.extras?.getBoolean("DETAIL_VIEW", false) == true) {
+                if (uri.path.startsWith("/events")) {
+                    // intents like content://com.android.calendar/events/1756
+                    val eventId = uri.lastPathSegment
+                    val id = dbHelper.getEventIdWithLastImportId(eventId)
+                    if (id != 0) {
+                        Intent(this, EventActivity::class.java).apply {
+                            putExtra(EVENT_ID, id)
+                            startActivity(this)
+                        }
+                    } else {
+                        toast(R.string.unknown_error_occurred)
+                    }
+                } else if (intent?.extras?.getBoolean("DETAIL_VIEW", false) == true) {
+                    // clicking date on a third party widget: content://com.android.calendar/time/1507309245683
                     val timestamp = uri.pathSegments.last()
                     if (timestamp.areDigitsOnly()) {
                         openDayAt(timestamp.toLong())
