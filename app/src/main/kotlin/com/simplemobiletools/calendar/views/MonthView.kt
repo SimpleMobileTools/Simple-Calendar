@@ -149,36 +149,47 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
 
     private fun drawEvents(canvas: Canvas) {
         for (event in allEvents) {
-            val verticalOffset = dayVerticalOffsets[event.startDayIndex]
-            val xPos = event.startDayIndex % 7 * dayWidth
-            val yPos = (event.startDayIndex / 7) * dayHeight
-            val xPosCenter = xPos + dayWidth / 2
-
-            if (dayEventsCount[event.startDayIndex] >= maxEventsPerDay) {
-                canvas.drawText("...", xPosCenter, yPos + verticalOffset - eventTitleHeight / 2, getTextPaint(days[event.startDayIndex]))
-                continue
-            }
-
-            // event background rectangle
-            val backgroundY = yPos + verticalOffset
-            val bgLeft = xPos + smallPadding
-            val bgTop = backgroundY + smallPadding - eventTitleHeight
-            val bgRight = xPos - smallPadding + dayWidth * event.daysCnt
-            val bgBottom = backgroundY + smallPadding * 2
-            bgRectF.set(bgLeft, bgTop, bgRight, bgBottom)
-            canvas.drawRoundRect(bgRectF, BG_CORNER_RADIUS, BG_CORNER_RADIUS, getEventBackgroundColor(event, days[event.startDayIndex]))
-
-            drawEventTitle(event.title, canvas, xPos, yPos + verticalOffset, event.color, event.daysCnt, days[event.startDayIndex])
-            dayVerticalOffsets.put(event.startDayIndex, verticalOffset + eventTitleHeight + smallPadding * 2)
-
-            for (i in 0 until event.daysCnt) {
-                dayEventsCount.put(event.startDayIndex + i, dayEventsCount[event.startDayIndex + i] + 1)
-            }
+            drawEvent(event, canvas)
         }
     }
 
-    private fun drawEventTitle(title: String, canvas: Canvas, x: Float, y: Float, eventColor: Int, daysCnt: Int, day: DayMonthly) {
-        val ellipsized = TextUtils.ellipsize(title, eventTitlePaint, dayWidth * daysCnt - smallPadding * 4, TextUtils.TruncateAt.END)
+    private fun drawEvent(event: MonthViewEvent, canvas: Canvas) {
+        val verticalOffset = dayVerticalOffsets[event.startDayIndex]
+        val xPos = event.startDayIndex % 7 * dayWidth
+        val yPos = (event.startDayIndex / 7) * dayHeight
+        val xPosCenter = xPos + dayWidth / 2
+
+        if (dayEventsCount[event.startDayIndex] >= maxEventsPerDay) {
+            canvas.drawText("...", xPosCenter, yPos + verticalOffset - eventTitleHeight / 2, getTextPaint(days[event.startDayIndex]))
+            return
+        }
+
+        // event background rectangle
+        val backgroundY = yPos + verticalOffset
+        val bgLeft = xPos + smallPadding
+        val bgTop = backgroundY + smallPadding - eventTitleHeight
+        var bgRight = xPos - smallPadding + dayWidth * event.daysCnt
+        if (bgRight > canvas.width.toFloat()) {
+            bgRight = canvas.width.toFloat() - smallPadding
+            val newStartDayIndex = (event.startDayIndex / 7 + 1) * 7
+            val newEvent = event.copy(startDayIndex = newStartDayIndex, daysCnt = event.daysCnt - (newStartDayIndex - event.startDayIndex))
+            drawEvent(newEvent, canvas)
+        }
+
+        val bgBottom = backgroundY + smallPadding * 2
+        bgRectF.set(bgLeft, bgTop, bgRight, bgBottom)
+        canvas.drawRoundRect(bgRectF, BG_CORNER_RADIUS, BG_CORNER_RADIUS, getEventBackgroundColor(event, days[event.startDayIndex]))
+
+        drawEventTitle(event.title, canvas, xPos, yPos + verticalOffset, bgRight - bgLeft, event.color, days[event.startDayIndex])
+        dayVerticalOffsets.put(event.startDayIndex, verticalOffset + eventTitleHeight + smallPadding * 2)
+
+        for (i in 0 until event.daysCnt) {
+            dayEventsCount.put(event.startDayIndex + i, dayEventsCount[event.startDayIndex + i] + 1)
+        }
+    }
+
+    private fun drawEventTitle(title: String, canvas: Canvas, x: Float, y: Float, availableWidth: Float, eventColor: Int, day: DayMonthly) {
+        val ellipsized = TextUtils.ellipsize(title, eventTitlePaint, availableWidth - smallPadding, TextUtils.TruncateAt.END)
         canvas.drawText(title, 0, ellipsized.length, x + smallPadding * 2, y, getEventTitlePaint(eventColor, day))
     }
 
