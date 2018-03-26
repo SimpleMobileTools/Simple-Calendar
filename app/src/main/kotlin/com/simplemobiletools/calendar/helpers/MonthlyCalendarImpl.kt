@@ -94,13 +94,15 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
 
                 var currDay = startDateTime
                 var dayCode = Formatter.getDayCodeFromDateTime(currDay)
-                var currDayEvents = (dayEvents[dayCode] ?: ArrayList()).apply { add(it) }
+                var currDayEvents = dayEvents[dayCode] ?: ArrayList()
+                currDayEvents.add(it)
                 dayEvents[dayCode] = currDayEvents
 
                 while (Formatter.getDayCodeFromDateTime(currDay) != endCode) {
                     currDay = currDay.plusDays(1)
                     dayCode = Formatter.getDayCodeFromDateTime(currDay)
-                    currDayEvents = (dayEvents[dayCode] ?: ArrayList()).apply { add(it) }
+                    currDayEvents = dayEvents[dayCode] ?: ArrayList()
+                    currDayEvents.add(it)
                     dayEvents[dayCode] = currDayEvents
                 }
             }
