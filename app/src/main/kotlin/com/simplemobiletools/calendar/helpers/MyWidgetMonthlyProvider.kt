@@ -82,7 +82,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
     }
 
     private fun updateDays(context: Context, views: RemoteViews, days: List<DayMonthly>) {
-        val displayWeekNumbers = context.config.displayWeekNumbers
+        val displayWeekNumbers = context.config.showWeekNumbers
         val textColor = context.config.widgetTextColor
         val smallerFontSize = context.config.getFontSize() - 3f
         val res = context.resources

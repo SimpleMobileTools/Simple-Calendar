@@ -42,6 +42,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     private var smallPadding = 0
     private var availableHeightForEvents = 0
     private var maxEventsPerDay = 0
+    private var showWeekNumbers = false
     private var allEvents = ArrayList<MonthViewEvent>()
     private var bgRectF = RectF()
     private var dayLetters = ArrayList<String>()
@@ -54,6 +55,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     init {
         primaryColor = context.getAdjustedPrimaryColor()
         textColor = context.config.textColor
+        showWeekNumbers = context.config.showWeekNumbers
         weakTextColor = textColor.adjustAlpha(LOW_ALPHA)
 
         smallPadding = resources.displayMetrics.density.toInt()
@@ -82,6 +84,12 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         days = newDays
         initWeekDayLetters()
         setupCurrentDayOfWeekIndex()
+        showWeekNumbers = context.config.showWeekNumbers
+        groupAllEvents()
+        invalidate()
+    }
+
+    private fun groupAllEvents() {
         days.forEach {
             val day = it
             day.dayEvents.forEach {
@@ -99,7 +107,6 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         }
 
         allEvents = allEvents.sortedWith(compareBy({ -it.daysCnt }, { !it.isAllDay }, { it.startTS }, { it.startDayIndex }, { it.title })).toMutableList() as ArrayList<MonthViewEvent>
-        invalidate()
     }
 
     override fun onDraw(canvas: Canvas) {

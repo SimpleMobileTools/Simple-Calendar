@@ -268,10 +268,10 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun setupWeekNumbers() {
-        settings_week_numbers.isChecked = config.displayWeekNumbers
+        settings_week_numbers.isChecked = config.showWeekNumbers
         settings_week_numbers_holder.setOnClickListener {
             settings_week_numbers.toggle()
-            config.displayWeekNumbers = settings_week_numbers.isChecked
+            config.showWeekNumbers = settings_week_numbers.isChecked
         }
     }
 

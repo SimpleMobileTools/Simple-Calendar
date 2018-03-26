@@ -12,9 +12,9 @@ class Config(context: Context) : BaseConfig(context) {
         fun newInstance(context: Context) = Config(context)
     }
 
-    var displayWeekNumbers: Boolean
+    var showWeekNumbers: Boolean
         get() = prefs.getBoolean(WEEK_NUMBERS, false)
-        set(displayWeekNumbers) = prefs.edit().putBoolean(WEEK_NUMBERS, displayWeekNumbers).apply()
+        set(showWeekNumbers) = prefs.edit().putBoolean(WEEK_NUMBERS, showWeekNumbers).apply()
 
     var startWeeklyAt: Int
         get() = prefs.getInt(START_WEEKLY_AT, 7)
