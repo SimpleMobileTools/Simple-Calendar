@@ -86,6 +86,8 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
             val day = it
             day.dayEvents.forEach {
                 val event = it
+
+                // make sure we properly handle events lasting multiple days and repeating ones
                 val lastEvent = allEvents.lastOrNull { it.id == event.id }
                 val daysCnt = getEventLastingDaysCount(event)
                 if (lastEvent == null || lastEvent.startDayIndex + daysCnt < day.indexOnMonthView) {
@@ -123,6 +125,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
                     if (day.isToday) {
                         canvas.drawCircle(xPosCenter, yPos + paint.textSize * 0.7f, paint.textSize * 0.75f, getCirclePaint(day))
                     }
+
                     canvas.drawText(day.value.toString(), xPosCenter, yPos + paint.textSize, getTextPaint(day))
                     dayVerticalOffsets.put(day.indexOnMonthView, (verticalOffset + paint.textSize * 2).toInt())
                 }
@@ -177,12 +180,14 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         if (bgRight > canvas.width.toFloat()) {
             bgRight = canvas.width.toFloat() - smallPadding
             val newStartDayIndex = (event.startDayIndex / 7 + 1) * 7
-            val newEvent = event.copy(startDayIndex = newStartDayIndex, daysCnt = event.daysCnt - (newStartDayIndex - event.startDayIndex))
-            drawEvent(newEvent, canvas)
+            if (newStartDayIndex < 42) {
+                val newEvent = event.copy(startDayIndex = newStartDayIndex, daysCnt = event.daysCnt - (newStartDayIndex - event.startDayIndex))
+                drawEvent(newEvent, canvas)
+            }
         }
 
         val startDayIndex = days[event.originalStartDayIndex]
-        val endDayIndex = days[event.startDayIndex + event.daysCnt - 1]
+        val endDayIndex = days[Math.min(event.startDayIndex + event.daysCnt - 1, 41)]
         bgRectF.set(bgLeft, bgTop, bgRight, bgBottom)
         canvas.drawRoundRect(bgRectF, BG_CORNER_RADIUS, BG_CORNER_RADIUS, getEventBackgroundColor(event, startDayIndex, endDayIndex))
 
@@ -269,9 +274,18 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         }
     }
 
+    // take into account cases when an event starts on the previous screen, subtract those days
     private fun getEventLastingDaysCount(event: Event): Int {
         val startDateTime = Formatter.getDateTimeFromTS(event.startTS)
         val endDateTime = Formatter.getDateTimeFromTS(event.endTS)
-        return Days.daysBetween(Formatter.getDateTimeFromTS(startDateTime.seconds()).toLocalDate(), Formatter.getDateTimeFromTS(endDateTime.seconds()).toLocalDate()).days + 1
+        val code = days.first().code
+        val screenStartDateTime = Formatter.getDateTimeFromCode(code).toLocalDate()
+        var eventStartDateTime = Formatter.getDateTimeFromTS(startDateTime.seconds()).toLocalDate()
+        val eventEndDateTime = Formatter.getDateTimeFromTS(endDateTime.seconds()).toLocalDate()
+        val diff = Days.daysBetween(screenStartDateTime, eventStartDateTime).days
+        if (diff < 0) {
+            eventStartDateTime = screenStartDateTime
+        }
+        return Days.daysBetween(eventStartDateTime, eventEndDateTime).days + 1
     }
 }
