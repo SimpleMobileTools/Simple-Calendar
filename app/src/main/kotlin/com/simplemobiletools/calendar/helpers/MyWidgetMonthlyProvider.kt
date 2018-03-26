@@ -182,7 +182,10 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
                 val monthCode = days.firstOrNull { it.code.substring(6) == "01" }?.code ?: Formatter.getTodayCode(context)
                 setupAppOpenIntent(context, views, R.id.top_value, monthCode)
 
-                appWidgetManager.updateAppWidget(it, views)
+                try {
+                    appWidgetManager.updateAppWidget(it, views)
+                } catch (ignored: RuntimeException) {
+                }
             }
         }
     }
