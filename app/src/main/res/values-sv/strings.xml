@@ -130,7 +130,7 @@
     <string name="add_holidays">Lägg till helgdagar</string>
     <string name="national_holidays">Nationella helgdagar</string>
     <string name="religious_holidays">Religiösa helgdagar</string>
-    <string name="holidays_imported_successfully">Helgdagar har importerats till en ny händelsetyp</string>
+    <string name="holidays_imported_successfully">Holidays have been successfully imported into the \"Holidays\" event type</string>
     <string name="importing_some_holidays_failed">Vissa händelser kunde inte importeras</string>
     <string name="importing_holidays_failed">Helgdagar kunde inte importeras</string>
 

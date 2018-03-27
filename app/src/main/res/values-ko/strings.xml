@@ -130,7 +130,7 @@
     <string name="add_holidays">공휴일 추가</string>
     <string name="national_holidays">국경일</string>
     <string name="religious_holidays">종교 휴일</string>
-    <string name="holidays_imported_successfully">공휴일을 새 이벤트 유형으로 가져왔습니다</string>
+    <string name="holidays_imported_successfully">Holidays have been successfully imported into the \"Holidays\" event type</string>
     <string name="importing_some_holidays_failed">일부 이벤트를 가져오지 못했습니다</string>
     <string name="importing_holidays_failed">공휴일을 가져오는데 실패했습니다</string>
 

@@ -130,7 +130,7 @@
     <string name="add_holidays">Legg til off. fridager</string>
     <string name="national_holidays">Nasjonale off. fridager</string>
     <string name="religious_holidays">Religiøse off. fridager</string>
-    <string name="holidays_imported_successfully">Off. fridager er vellykket importert til en ny hendelsestype</string>
+    <string name="holidays_imported_successfully">Holidays have been successfully imported into the \"Holidays\" event type</string>
     <string name="importing_some_holidays_failed">Importering av noen hendelser feilet</string>
     <string name="importing_holidays_failed">Importering av off. fridager feilet</string>
 

@@ -130,7 +130,7 @@
     <string name="add_holidays">Ouzhpennañ devezhioù gouel</string>
     <string name="national_holidays">Devezhioù gouel broadel</string>
     <string name="religious_holidays">Devezhioù gouel relijiel</string>
-    <string name="holidays_imported_successfully">An devezhioù gouel a zo bet enporzhiet en un doare darvoud nevez gant berzh</string>
+    <string name="holidays_imported_successfully">Holidays have been successfully imported into the \"Holidays\" event type</string>
     <string name="importing_some_holidays_failed">C\'hwitadenn en ur enporzhiañ ul lodenn eus an darvoudoù</string>
     <string name="importing_holidays_failed">C\'hwitadenn en ur enporzhiañ ul lodenn eus an devezhioù gouel</string>
 

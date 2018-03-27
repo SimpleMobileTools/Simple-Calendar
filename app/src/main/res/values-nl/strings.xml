@@ -130,7 +130,7 @@
     <string name="add_holidays">Feestdagen toevoegen</string>
     <string name="national_holidays">Nationale feestdagen</string>
     <string name="religious_holidays">Religieuze feestdagen</string>
-    <string name="holidays_imported_successfully">Feestdagen geïmporteerd als nieuw afspraaktype</string>
+    <string name="holidays_imported_successfully">Holidays have been successfully imported into the \"Holidays\" event type</string>
     <string name="importing_some_holidays_failed">Sommige feestdagen konden niet worden geïmporteerd</string>
     <string name="importing_holidays_failed">Fout bij importeren van feestdagen</string>
 

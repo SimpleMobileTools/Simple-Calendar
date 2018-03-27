@@ -130,7 +130,7 @@
     <string name="add_holidays">Добавить праздники</string>
     <string name="national_holidays">Национальные праздники</string>
     <string name="religious_holidays">Религиозные праздники</string>
-    <string name="holidays_imported_successfully">Праздники были успешно импортированы в новый тип событий</string>
+    <string name="holidays_imported_successfully">Holidays have been successfully imported into the \"Holidays\" event type</string>
     <string name="importing_some_holidays_failed">Не удалось импортировать некоторые события</string>
     <string name="importing_holidays_failed">Не удалось импортировать праздники</string>
 

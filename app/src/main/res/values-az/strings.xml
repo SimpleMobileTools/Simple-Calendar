@@ -130,7 +130,7 @@
     <string name="add_holidays">Bayram əlavə et</string>
     <string name="national_holidays">Milli bayramlar</string>
     <string name="religious_holidays">Dini bayramlar</string>
-    <string name="holidays_imported_successfully">Bayramlar uğurla yeni hadisə tipinə daxil edildi</string>
+    <string name="holidays_imported_successfully">Holidays have been successfully imported into the \"Holidays\" event type</string>
     <string name="importing_some_holidays_failed">Bəzi bayramları daxil etmək alınmadı</string>
     <string name="importing_holidays_failed">Bayramları daxil etmək alınmadı</string>
 

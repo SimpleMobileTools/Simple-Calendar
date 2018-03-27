@@ -130,7 +130,7 @@
     <string name="add_holidays">Adicionar feriados</string>
     <string name="national_holidays">Feriados nacionais</string>
     <string name="religious_holidays">Feriados religiosos</string>
-    <string name="holidays_imported_successfully">Os feriados foram importados para um novo tipo de evento</string>
+    <string name="holidays_imported_successfully">Holidays have been successfully imported into the \"Holidays\" event type</string>
     <string name="importing_some_holidays_failed">Alguns eventos não foram importados</string>
     <string name="importing_holidays_failed">Falha ao importar os feriados</string>
 

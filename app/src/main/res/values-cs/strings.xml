@@ -130,7 +130,7 @@
     <string name="add_holidays">Přidat svátek</string>
     <string name="national_holidays">Státní svátky</string>
     <string name="religious_holidays">Církevní svátky</string>
-    <string name="holidays_imported_successfully">Svátky byly úspěšně importovány do nového typu události</string>
+    <string name="holidays_imported_successfully">Holidays have been successfully imported into the \"Holidays\" event type</string>
     <string name="importing_some_holidays_failed">Import některých událostí se nezdařil</string>
     <string name="importing_holidays_failed">Import svátků nezdařil</string>
 

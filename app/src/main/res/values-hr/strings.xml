@@ -130,7 +130,7 @@
     <string name="add_holidays">Dodaj praznik</string>
     <string name="national_holidays">Nacionalni praznici</string>
     <string name="religious_holidays">Vjerski praznici</string>
-    <string name="holidays_imported_successfully">Praznici su uspješno uvezeni u novu vrstu događaja</string>
+    <string name="holidays_imported_successfully">Holidays have been successfully imported into the \"Holidays\" event type</string>
     <string name="importing_some_holidays_failed">Uvoz nekih događaja nije uspio</string>
     <string name="importing_holidays_failed">Uvoz praznika nije uspio</string>
 

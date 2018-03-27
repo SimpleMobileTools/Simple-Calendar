@@ -130,7 +130,7 @@
     <string name="add_holidays">Engadir días festivos</string>
     <string name="national_holidays">Festivo nacional</string>
     <string name="religious_holidays">Festas relixiosas</string>
-    <string name="holidays_imported_successfully">Engadíronse correctamente os días festivos nun novo tipo de evento</string>
+    <string name="holidays_imported_successfully">Holidays have been successfully imported into the \"Holidays\" event type</string>
     <string name="importing_some_holidays_failed">Fallou a importación de algúns eventos</string>
     <string name="importing_holidays_failed">Fallou a importación de días festivos</string>
 
