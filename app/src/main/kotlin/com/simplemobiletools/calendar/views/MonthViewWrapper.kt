@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.models.DayMonthly
 import com.simplemobiletools.commons.extensions.onGlobalLayout
 import kotlinx.android.synthetic.main.month_view.view.*
@@ -18,6 +19,7 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
     private var days = ArrayList<DayMonthly>()
     private var inflater: LayoutInflater
     private var monthView: MonthView
+    private var horizontalOffset = 0
     private var dayClickCallback: ((day: DayMonthly) -> Unit)? = null
 
     constructor(context: Context, attrs: AttributeSet) : this(context, attrs, 0)
@@ -28,9 +30,9 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
 
         inflater = LayoutInflater.from(context)
         monthView = inflater.inflate(R.layout.month_view, this).month_view
+        setupHorizontalOffset()
 
         onGlobalLayout {
-            measureSizes()
             if (!wereViewsAdded && days.isNotEmpty()) {
                 addViews()
                 monthView.updateDays(days)
@@ -39,22 +41,21 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
     }
 
     fun updateDays(newDays: ArrayList<DayMonthly>, callback: ((DayMonthly) -> Unit)? = null) {
+        setupHorizontalOffset()
+        measureSizes()
         dayClickCallback = callback
         days = newDays
-        if (dayWidth != 0f) {
-            addViews()
-            monthView.updateDays(days)
-        }
+        addViews()
+        monthView.updateDays(days)
+    }
+
+    private fun setupHorizontalOffset() {
+        horizontalOffset = if (context.config.showWeekNumbers) resources.getDimensionPixelSize(R.dimen.smaller_text_size) * 2 else 0
     }
 
     private fun measureSizes() {
-        if (dayWidth == 0f) {
-            dayWidth = width / 7f
-        }
-
-        if (dayHeight == 0f) {
-            dayHeight = (height - weekDaysLetterHeight) / 6f
-        }
+        dayWidth = (width - horizontalOffset) / 7f
+        dayHeight = (height - weekDaysLetterHeight) / 6f
     }
 
     private fun addViews() {
@@ -66,7 +67,7 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
             for (x in 0..6) {
                 val day = days.getOrNull(curId)
                 if (day != null) {
-                    val xPos = x * dayWidth
+                    val xPos = x * dayWidth + horizontalOffset
                     val yPos = y * dayHeight + weekDaysLetterHeight
                     addViewBackground(xPos, yPos, day)
                 }
