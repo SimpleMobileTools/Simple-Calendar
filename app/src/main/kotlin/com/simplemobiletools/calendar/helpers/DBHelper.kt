@@ -225,6 +225,35 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         callback(event.id)
     }
 
+    fun insertEvents(events: ArrayList<Event>, addToCalDAV: Boolean) {
+        mDb.beginTransaction()
+        try {
+            for (event in events) {
+                if (event.startTS > event.endTS) {
+                    continue
+                }
+
+                val eventValues = fillEventValues(event)
+                val id = mDb.insert(MAIN_TABLE_NAME, null, eventValues)
+                event.id = id.toInt()
+
+                if (event.repeatInterval != 0 && event.parentId == 0) {
+                    val metaValues = fillMetaValues(event)
+                    mDb.insert(META_TABLE_NAME, null, metaValues)
+                }
+
+                context.scheduleNextEventReminder(event, this)
+                if (addToCalDAV && event.source != SOURCE_SIMPLE_CALENDAR && context.config.caldavSync) {
+                    CalDAVHandler(context).insertCalDAVEvent(event)
+                }
+            }
+            mDb.setTransactionSuccessful()
+        } finally {
+            mDb.endTransaction()
+            context.updateWidgets()
+        }
+    }
+
     fun update(event: Event, updateAtCalDAV: Boolean, callback: (() -> Unit)? = null) {
         val values = fillEventValues(event)
         val selection = "$COL_ID = ?"
