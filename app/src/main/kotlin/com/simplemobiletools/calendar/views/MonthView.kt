@@ -47,7 +47,6 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     private var dayLetters = ArrayList<String>()
     private var days = ArrayList<DayMonthly>()
     private var dayVerticalOffsets = SparseIntArray()
-    private var dayEventsCount = SparseIntArray()
 
     constructor(context: Context, attrs: AttributeSet) : this(context, attrs, 0)
 
@@ -111,7 +110,6 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         dayVerticalOffsets.clear()
-        dayEventsCount.clear()
         measureDaySize(canvas)
 
         addWeekDayLetters(canvas)
@@ -186,7 +184,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         val yPos = (event.startDayIndex / 7) * dayHeight
         val xPosCenter = xPos + dayWidth / 2
 
-        if (dayEventsCount[event.startDayIndex] >= maxEventsPerDay) {
+        if (verticalOffset - eventTitleHeight * 2 > dayHeight) {
             canvas.drawText("...", xPosCenter, yPos + verticalOffset - eventTitleHeight / 2, getTextPaint(days[event.startDayIndex]))
             return
         }
@@ -214,7 +212,6 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         drawEventTitle(event.title, canvas, xPos, yPos + verticalOffset, bgRight - bgLeft - smallPadding, event.color, startDayIndex, endDayIndex)
 
         for (i in 0 until Math.min(event.daysCnt, 7 - event.startDayIndex % 7)) {
-            dayEventsCount.put(event.startDayIndex + i, dayEventsCount[event.startDayIndex + i] + 1)
             dayVerticalOffsets.put(event.startDayIndex + i, verticalOffset + eventTitleHeight + smallPadding * 2)
         }
     }
