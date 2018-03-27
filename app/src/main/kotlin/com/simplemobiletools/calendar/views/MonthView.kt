@@ -40,6 +40,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     private var currDayOfWeek = 0
     private var smallPadding = 0
     private var maxEventsPerDay = 0
+    private var horizontalOffset = 0
     private var showWeekNumbers = false
     private var allEvents = ArrayList<MonthViewEvent>()
     private var bgRectF = RectF()
@@ -79,9 +80,10 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
 
     fun updateDays(newDays: ArrayList<DayMonthly>) {
         days = newDays
+        showWeekNumbers = context.config.showWeekNumbers
+        horizontalOffset = if (showWeekNumbers) eventTitleHeight * 2 else 0
         initWeekDayLetters()
         setupCurrentDayOfWeekIndex()
-        showWeekNumbers = context.config.showWeekNumbers
         groupAllEvents()
         invalidate()
     }
@@ -110,11 +112,12 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         super.onDraw(canvas)
         dayVerticalOffsets.clear()
         dayEventsCount.clear()
-        if (dayWidth == 0f || dayHeight == 0f) {
-            measureDaySize(canvas)
-        }
+        measureDaySize(canvas)
 
         addWeekDayLetters(canvas)
+        if (showWeekNumbers) {
+            addWeekNumbers(canvas)
+        }
 
         var curId = 0
         for (y in 0 until ROW_COUNT) {
@@ -123,7 +126,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
                 if (day != null) {
                     dayVerticalOffsets.put(day.indexOnMonthView, dayVerticalOffsets[day.indexOnMonthView] + weekDaysLetterHeight)
                     val verticalOffset = dayVerticalOffsets[day.indexOnMonthView]
-                    val xPos = x * dayWidth
+                    val xPos = x * dayWidth + horizontalOffset
                     val yPos = y * dayHeight + verticalOffset
                     val xPosCenter = xPos + dayWidth / 2
                     if (day.isToday) {
@@ -142,7 +145,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
 
     private fun addWeekDayLetters(canvas: Canvas) {
         for (i in 0..6) {
-            val xPos = (i + 1) * dayWidth - dayWidth / 2
+            val xPos = horizontalOffset + (i + 1) * dayWidth - dayWidth / 2
             var weekDayLetterPaint = paint
             if (i == currDayOfWeek) {
                 weekDayLetterPaint = getColoredPaint(primaryColor)
@@ -151,8 +154,21 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         }
     }
 
+    private fun addWeekNumbers(canvas: Canvas) {
+        val weekNumberPaint = Paint(paint)
+        weekNumberPaint.textAlign = Paint.Align.RIGHT
+
+        for (i in 0 until ROW_COUNT) {
+            // fourth day of the week matters
+            val id = "${days[i * 7 + 3].weekOfYear}:"
+
+            val yPos = i * dayHeight + weekDaysLetterHeight
+            canvas.drawText(id, horizontalOffset.toFloat(), yPos + paint.textSize, weekNumberPaint)
+        }
+    }
+
     private fun measureDaySize(canvas: Canvas) {
-        dayWidth = canvas.width / 7f
+        dayWidth = (canvas.width - horizontalOffset) / 7f
         dayHeight = (canvas.height - weekDaysLetterHeight) / ROW_COUNT.toFloat()
         val availableHeightForEvents = dayHeight.toInt() - weekDaysLetterHeight
         maxEventsPerDay = availableHeightForEvents / eventTitleHeight
@@ -166,7 +182,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
 
     private fun drawEvent(event: MonthViewEvent, canvas: Canvas) {
         val verticalOffset = dayVerticalOffsets[event.startDayIndex]
-        val xPos = event.startDayIndex % 7 * dayWidth
+        val xPos = event.startDayIndex % 7 * dayWidth + horizontalOffset
         val yPos = (event.startDayIndex / 7) * dayHeight
         val xPosCenter = xPos + dayWidth / 2
 

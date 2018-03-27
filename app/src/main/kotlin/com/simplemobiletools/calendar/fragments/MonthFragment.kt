@@ -31,6 +31,7 @@ import org.joda.time.DateTime
 class MonthFragment : Fragment(), MonthlyCalendar {
     private var mTextColor = 0
     private var mSundayFirst = false
+    private var mShowWeekNumbers = false
     private var mDayCode = ""
     private var mPackageName = ""
     private var mDayLabelHeight = 0
@@ -50,7 +51,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         mHolder = view.month_calendar_holder
         mDayCode = arguments!!.getString(DAY_CODE)
         mConfig = context!!.config
-        mSundayFirst = mConfig.isSundayFirst
+        storeStateVariables()
 
         setupButtons()
         setupLabels()
@@ -61,14 +62,17 @@ class MonthFragment : Fragment(), MonthlyCalendar {
 
     override fun onPause() {
         super.onPause()
-        mSundayFirst = context!!.config.isSundayFirst
+        storeStateVariables()
     }
 
     override fun onResume() {
         super.onResume()
         if (mConfig.isSundayFirst != mSundayFirst) {
-            mSundayFirst = mConfig.isSundayFirst
             setupLabels()
+        }
+
+        if (mConfig.showWeekNumbers != mShowWeekNumbers) {
+            mLastHash = -1L
         }
 
         mCalendar!!.apply {
@@ -76,7 +80,15 @@ class MonthFragment : Fragment(), MonthlyCalendar {
             getDays(false)    // prefill the screen asap, even if without events
         }
 
+        storeStateVariables()
         updateCalendar()
+    }
+
+    private fun storeStateVariables() {
+        mConfig.apply {
+            mSundayFirst = isSundayFirst
+            mShowWeekNumbers = showWeekNumbers
+        }
     }
 
     fun updateCalendar() {
