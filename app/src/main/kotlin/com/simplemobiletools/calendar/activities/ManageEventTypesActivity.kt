@@ -62,11 +62,13 @@ class ManageEventTypesActivity : SimpleActivity(), DeleteEventTypesListener {
             }
         }
 
-        dbHelper.deleteEventTypes(eventTypes, deleteEvents) {
-            if (it == 0) {
-                toast(R.string.unknown_error_occurred)
+        Thread {
+            dbHelper.deleteEventTypes(eventTypes, deleteEvents) {
+                if (it == 0) {
+                    toast(R.string.unknown_error_occurred)
+                }
             }
-        }
+        }.start()
         return true
     }
 }
