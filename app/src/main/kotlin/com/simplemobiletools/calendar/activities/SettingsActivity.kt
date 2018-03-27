@@ -319,7 +319,7 @@ class SettingsActivity : SimpleActivity() {
     private fun setupSnoozeTime() {
         updateSnoozeTime()
         settings_snooze_time_holder.setOnClickListener {
-            showPickSecondsDialog(config.snoozeTime * 60, true) {
+            showPickSecondsDialogHelper(config.snoozeTime, true) {
                 config.snoozeTime = it / 60
                 updateSnoozeTime()
             }

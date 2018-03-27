@@ -174,21 +174,21 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun showReminder1Dialog() {
-        showPickSecondsDialog(mReminder1Minutes * 60) {
+        showPickSecondsDialogHelper(mReminder1Minutes) {
             mReminder1Minutes = if (it <= 0) it else it / 60
             checkReminderTexts()
         }
     }
 
     private fun showReminder2Dialog() {
-        showPickSecondsDialog(mReminder2Minutes * 60) {
+        showPickSecondsDialogHelper(mReminder2Minutes) {
             mReminder2Minutes = if (it <= 0) it else it / 60
             checkReminderTexts()
         }
     }
 
     private fun showReminder3Dialog() {
-        showPickSecondsDialog(mReminder3Minutes * 60) {
+        showPickSecondsDialogHelper(mReminder3Minutes) {
             mReminder3Minutes = if (it <= 0) it else it / 60
             checkReminderTexts()
         }
