@@ -58,7 +58,12 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
 
     private fun measureSizes() {
         dayWidth = (width - horizontalOffset) / 7f
-        dayHeight = (height - weekDaysLetterHeight) / 6f
+
+        // avoid updating the height when coming back from a new event screen, when the keyboard was visible
+        val newHeight = (height - weekDaysLetterHeight) / 6f
+        if (newHeight > dayHeight) {
+            dayHeight = (height - weekDaysLetterHeight) / 6f
+        }
     }
 
     private fun addViews() {
