@@ -10,6 +10,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.res.Resources
 import android.database.ContentObserver
+import android.media.AudioManager
 import android.net.Uri
 import android.os.Bundle
 import android.provider.CalendarContract
@@ -204,7 +205,7 @@ private fun getNotification(context: Context, pendingIntent: PendingIntent, even
             .setPriority(Notification.PRIORITY_HIGH)
             .setDefaults(Notification.DEFAULT_LIGHTS)
             .setAutoCancel(true)
-            .setSound(soundUri)
+            .setSound(soundUri, AudioManager.STREAM_SYSTEM)
             .setChannelId(channelId)
             .addAction(R.drawable.ic_snooze, context.getString(R.string.snooze), getSnoozePendingIntent(context, event))
 
