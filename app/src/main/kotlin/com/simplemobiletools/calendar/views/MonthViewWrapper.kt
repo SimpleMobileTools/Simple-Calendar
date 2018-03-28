@@ -34,6 +34,7 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
 
         onGlobalLayout {
             if (!wereViewsAdded && days.isNotEmpty()) {
+                measureSizes()
                 addViews()
                 monthView.updateDays(days)
             }
@@ -45,7 +46,9 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
         measureSizes()
         dayClickCallback = callback
         days = newDays
-        addViews()
+        if (dayWidth != 0f && dayHeight != 0f) {
+            addViews()
+        }
         monthView.updateDays(days)
     }
 
