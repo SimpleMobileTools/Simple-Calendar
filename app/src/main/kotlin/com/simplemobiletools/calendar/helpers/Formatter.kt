@@ -107,6 +107,4 @@ object Formatter {
     }
 
     fun getShiftedImportTimestamp(ts: Int) = getUTCDateTimeFromTS(ts).withTime(13, 0, 0, 0).withZoneRetainFields(DateTimeZone.getDefault()).seconds()
-
-    fun getDayAndMonth(localDate: LocalDate) = localDate.toString("dd.MM.")
 }

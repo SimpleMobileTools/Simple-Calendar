@@ -162,7 +162,7 @@ fun Context.notifyEvent(event: Event) {
     val displayedStartDate = when (startDate) {
         LocalDate.now() -> ""
         LocalDate.now().plusDays(1) -> getString(R.string.tomorrow)
-        else -> Formatter.getDayAndMonth(startDate)
+        else -> "${Formatter.getDateFromCode(this, Formatter.getDayCodeFromTS(event.startTS))},"
     }
 
     val timeRange = if (event.getIsAllDay()) getString(R.string.all_day) else getFormattedEventTime(startTime, endTime)
