@@ -9,7 +9,7 @@
     <string name="yearly_view">Godišnji pregled</string>
     <string name="simple_event_list">Jednostavan popis događaja</string>
     <string name="no_upcoming_events">Izgleda da nemate nadolazećih događaja.</string>
-    <string name="add_some_events">Možete dodati neke događaje s gumbom Plus na dnu.</string>
+    <string name="add_some_events">Možete dodati neke događaje pomoću ikone Plus na dnu.</string>
     <string name="go_to_today">Idi na danas</string>
 
     <!-- Widget titles -->
@@ -130,7 +130,7 @@
     <string name="add_holidays">Dodaj praznik</string>
     <string name="national_holidays">Nacionalni praznici</string>
     <string name="religious_holidays">Vjerski praznici</string>
-    <string name="holidays_imported_successfully">Holidays have been successfully imported into the \"Holidays\" event type</string>
+    <string name="holidays_imported_successfully">Praznici su uspješno uvezeni u tip događaja \"Praznici\"</string>
     <string name="importing_some_holidays_failed">Uvoz nekih događaja nije uspio</string>
     <string name="importing_holidays_failed">Uvoz praznika nije uspio</string>
 
