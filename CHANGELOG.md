@@ -1,6 +1,14 @@
 Changelog
 ==========
 
+Version 3.4.0 *(2018-02-28)*
+----------------------------
+
+ * Rewrote the monthly view
+ * Improved the performance at importing events from ics files
+ * Added many new country holidays
+ * Handle some new third party intents
+
 Version 3.3.2 *(2018-02-21)*
 ----------------------------
 
