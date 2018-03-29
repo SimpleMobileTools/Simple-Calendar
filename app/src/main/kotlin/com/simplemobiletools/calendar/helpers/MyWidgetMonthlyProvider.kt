@@ -24,7 +24,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
     private val NEW_EVENT = "new_event"
 
     companion object {
-        private var targetDate = DateTime.now()
+        private var targetDate = DateTime.now().withDayOfMonth(1)
     }
 
     override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
