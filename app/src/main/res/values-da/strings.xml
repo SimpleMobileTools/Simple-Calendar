@@ -130,7 +130,7 @@
     <string name="add_holidays">Tilføj helligdage</string>
     <string name="national_holidays">Nationale helligdage</string>
     <string name="religious_holidays">Religiøse helligdage</string>
-    <string name="holidays_imported_successfully">Holidays have been successfully imported into the \"Holidays\" event type</string>
+    <string name="holidays_imported_successfully">Helligdage er importeret til typen \"Helligdage\"</string>
     <string name="importing_some_holidays_failed">Nogle helligdages blev ikke importeret</string>
     <string name="importing_holidays_failed">Import af helligdage mislykkedes</string>
 
