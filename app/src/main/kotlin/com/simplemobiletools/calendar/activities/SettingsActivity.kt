@@ -278,11 +278,12 @@ class SettingsActivity : SimpleActivity() {
         settings_reminder_sound.text = config.reminderSoundTitle
 
         settings_reminder_sound_holder.setOnClickListener {
-            SelectAlarmSoundDialog(this, config.reminderSoundUri, AudioManager.STREAM_NOTIFICATION, GET_RINGTONE_URI, ALARM_SOUND_TYPE_NOTIFICATION, onAlarmPicked = {
-                if (it != null) {
-                    updateReminderSound(it)
-                }
-            }, onAlarmSoundDeleted = {
+            SelectAlarmSoundDialog(this, config.reminderSoundUri, AudioManager.STREAM_NOTIFICATION, GET_RINGTONE_URI, ALARM_SOUND_TYPE_NOTIFICATION, false,
+                    onAlarmPicked = {
+                        if (it != null) {
+                            updateReminderSound(it)
+                        }
+                    }, onAlarmSoundDeleted = {
                 if (it.uri == config.reminderSoundUri) {
                     val defaultAlarm = getDefaultAlarmSound(ALARM_SOUND_TYPE_NOTIFICATION)
                     updateReminderSound(defaultAlarm)
