@@ -34,7 +34,6 @@ class MonthFragment : Fragment(), MonthlyCalendar {
     private var mShowWeekNumbers = false
     private var mDayCode = ""
     private var mPackageName = ""
-    private var mDayLabelHeight = 0
     private var mLastHash = 0L
     private var mCalendar: MonthlyCalendarImpl? = null
 
@@ -54,7 +53,6 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         storeStateVariables()
 
         setupButtons()
-        setupLabels()
         mCalendar = MonthlyCalendarImpl(this, context!!)
 
         return view
@@ -67,10 +65,6 @@ class MonthFragment : Fragment(), MonthlyCalendar {
 
     override fun onResume() {
         super.onResume()
-        if (mConfig.isSundayFirst != mSundayFirst) {
-            setupLabels()
-        }
-
         if (mConfig.showWeekNumbers != mShowWeekNumbers) {
             mLastHash = -1L
         }
@@ -163,55 +157,9 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         listener?.goToDateTime(newDateTime)
     }
 
-    private fun setupLabels() {
-        /*val letters = context!!.resources.getStringArray(R.array.week_day_letters)
-        for (i in 0..6) {
-            var index = i
-            if (mSundayFirst) {
-                index = (index + 6) % letters.size
-            }
-
-            mHolder.findViewById<TextView>(mRes.getIdentifier("label_$i", "id", mPackageName)).apply {
-                setTextColor(mTextColor)
-                text = letters[index]
-            }
-        }*/
-    }
-
     private fun updateDays(days: ArrayList<DayMonthly>) {
         mHolder.month_view_wrapper.updateDays(days) {
             (activity as MainActivity).openDayFromMonthly(Formatter.getDateTimeFromCode(it.code))
         }
-
-        /*val displayWeekNumbers = mConfig.displayWeekNumbers
-        val len = days.size
-
-        if (week_num == null)
-            return
-
-        week_num.setTextColor(mTextColor)
-        week_num.beVisibleIf(displayWeekNumbers)
-
-        for (i in 0..5) {
-            mHolder.findViewById<TextView>(mRes.getIdentifier("week_num_$i", "id", mPackageName)).apply {
-                text = "${days[i * 7 + 3].weekOfYear}:"     // fourth day of the week matters
-                setTextColor(mTextColor)
-                beVisibleIf(displayWeekNumbers)
-            }
-        }
-
-        val dividerMargin = mRes.displayMetrics.density.toInt()
-        for (i in 0 until len) {
-            mHolder.findViewById<LinearLayout>(mRes.getIdentifier("day_$i", "id", mPackageName)).apply {
-                val day = days[i]
-                setOnClickListener {
-                    (activity as MainActivity).openDayFromMonthly(Formatter.getDateTimeFromCode(day.code))
-                }
-
-                removeAllViews()
-                context.addDayNumber(mTextColor, day, this, mDayLabelHeight) { mDayLabelHeight = it }
-                context.addDayEvents(day, this, mRes, dividerMargin)
-            }
-        }*/
     }
 }
