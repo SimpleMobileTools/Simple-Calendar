@@ -2,6 +2,7 @@
 <resources>
 
     <!-- Release notes -->
+    <string name="release_117">Reworked custom notification sound picking, should be more reliable</string>
     <string name="release_98">
         Added a Location field\n
         Allow adding Contact birthdays
