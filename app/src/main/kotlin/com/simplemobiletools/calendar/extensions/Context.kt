@@ -21,7 +21,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
-import com.simplemobiletools.calendar.BuildConfig
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.activities.SimpleActivity
@@ -38,7 +37,6 @@ import com.simplemobiletools.commons.helpers.isOreoPlus
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 import org.joda.time.LocalDate
-import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -163,17 +161,17 @@ fun Context.notifyEvent(event: Event) {
     val timeRange = if (event.getIsAllDay()) getString(R.string.all_day) else getFormattedEventTime(startTime, endTime)
     val descriptionOrLocation = if (config.replaceDescription) event.location else event.description
     val content = "$displayedStartDate $timeRange $descriptionOrLocation".trim()
-    val notification = getNotification(applicationContext, pendingIntent, event, content)
+    val notification = getNotification(pendingIntent, event, content)
     val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
     notificationManager.notify(event.id, notification)
 }
 
 @SuppressLint("NewApi")
-private fun getNotification(context: Context, pendingIntent: PendingIntent, event: Event, content: String): Notification {
+fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content: String): Notification {
     val channelId = "reminder_channel"
     if (isOreoPlus()) {
-        val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        val name = context.resources.getString(R.string.event_reminders)
+        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val name = resources.getString(R.string.event_reminders)
         val importance = NotificationManager.IMPORTANCE_HIGH
         NotificationChannel(channelId, name, importance).apply {
             enableLights(true)
@@ -183,15 +181,10 @@ private fun getNotification(context: Context, pendingIntent: PendingIntent, even
         }
     }
 
-    var soundUri = Uri.parse(context.config.reminderSound)
-    if (soundUri.scheme == "file") {
-        try {
-            soundUri = context.getFilePublicUri(File(soundUri.path), BuildConfig.APPLICATION_ID)
-        } catch (ignored: Exception) {
-        }
-    }
+    val soundUri = Uri.parse(config.reminderSoundUri)
+    grantReadUriPermission(config.reminderSoundUri)
 
-    val builder = NotificationCompat.Builder(context)
+    val builder = NotificationCompat.Builder(this)
             .setContentTitle(event.title)
             .setContentText(content)
             .setSmallIcon(R.drawable.ic_calendar)
@@ -199,15 +192,15 @@ private fun getNotification(context: Context, pendingIntent: PendingIntent, even
             .setPriority(Notification.PRIORITY_HIGH)
             .setDefaults(Notification.DEFAULT_LIGHTS)
             .setAutoCancel(true)
-            .setSound(soundUri, AudioManager.STREAM_SYSTEM)
+            .setSound(soundUri, AudioManager.STREAM_NOTIFICATION)
             .setChannelId(channelId)
-            .addAction(R.drawable.ic_snooze, context.getString(R.string.snooze), getSnoozePendingIntent(context, event))
+            .addAction(R.drawable.ic_snooze, getString(R.string.snooze), getSnoozePendingIntent(this, event))
 
     if (isLollipopPlus()) {
         builder.setVisibility(Notification.VISIBILITY_PUBLIC)
     }
 
-    if (context.config.vibrateOnReminder) {
+    if (config.vibrateOnReminder) {
         builder.setVibrate(longArrayOf(0, 300, 300, 300))
     }
 

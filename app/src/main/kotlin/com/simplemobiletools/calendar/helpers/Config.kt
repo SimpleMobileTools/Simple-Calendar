@@ -1,9 +1,11 @@
 package com.simplemobiletools.calendar.helpers
 
 import android.content.Context
-import android.media.RingtoneManager
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.scheduleCalDAVSync
+import com.simplemobiletools.commons.extensions.getDefaultAlarmTitle
+import com.simplemobiletools.commons.extensions.getDefaultAlarmUri
+import com.simplemobiletools.commons.helpers.ALARM_SOUND_TYPE_NOTIFICATION
 import com.simplemobiletools.commons.helpers.BaseConfig
 import java.util.*
 
@@ -28,9 +30,13 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getBoolean(VIBRATE, false)
         set(vibrate) = prefs.edit().putBoolean(VIBRATE, vibrate).apply()
 
-    var reminderSound: String
-        get() = prefs.getString(REMINDER_SOUND, getDefaultNotificationSound())
-        set(path) = prefs.edit().putString(REMINDER_SOUND, path).apply()
+    var reminderSoundUri: String
+        get() = prefs.getString(REMINDER_SOUND_URI, context.getDefaultAlarmUri(ALARM_SOUND_TYPE_NOTIFICATION).toString())
+        set(reminderSoundUri) = prefs.edit().putString(REMINDER_SOUND_URI, reminderSoundUri).apply()
+
+    var reminderSoundTitle: String
+        get() = prefs.getString(REMINDER_SOUND_TITLE, context.getDefaultAlarmTitle(ALARM_SOUND_TYPE_NOTIFICATION))
+        set(reminderSoundTitle) = prefs.edit().putString(REMINDER_SOUND_TITLE, reminderSoundTitle).apply()
 
     var storedView: Int
         get() = prefs.getInt(VIEW, MONTHLY_VIEW)
@@ -95,14 +101,6 @@ class Config(context: Context) : BaseConfig(context) {
         val currDisplayEventTypes = HashSet<String>(displayEventTypes)
         currDisplayEventTypes.removeAll(types)
         displayEventTypes = currDisplayEventTypes
-    }
-
-    private fun getDefaultNotificationSound(): String {
-        return try {
-            RingtoneManager.getActualDefaultRingtoneUri(context, RingtoneManager.TYPE_NOTIFICATION)?.toString() ?: ""
-        } catch (e: Exception) {
-            ""
-        }
     }
 
     fun getFontSize() = when (fontSize) {
