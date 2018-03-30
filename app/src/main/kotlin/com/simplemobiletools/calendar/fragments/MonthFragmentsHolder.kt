@@ -108,5 +108,5 @@ class MonthFragmentsHolder : MyFragmentHolder(), NavigationListener {
         (activity as MainActivity).supportActionBar?.title = getString(R.string.app_launcher_name)
     }
 
-    override fun getNewEventDayCode() = currentDayCode
+    override fun getNewEventDayCode() = if (shouldGoToTodayBeVisible()) currentDayCode else todayDayCode
 }
