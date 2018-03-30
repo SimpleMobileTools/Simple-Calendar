@@ -158,7 +158,8 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
 
         for (i in 0 until ROW_COUNT) {
             // fourth day of the week matters
-            val id = "${days[i * 7 + 3].weekOfYear}:"
+            val weekOfYear = days.getOrNull(i * 7 + 3)?.weekOfYear ?: 1
+            val id = "$weekOfYear:"
 
             val yPos = i * dayHeight + weekDaysLetterHeight
             canvas.drawText(id, horizontalOffset.toFloat(), yPos + paint.textSize, weekNumberPaint)
