@@ -14,6 +14,7 @@ import android.media.AudioManager
 import android.net.Uri
 import android.os.Bundle
 import android.provider.CalendarContract
+import android.support.v4.app.AlarmManagerCompat
 import android.support.v4.app.NotificationCompat
 import android.view.Gravity
 import android.view.View
@@ -32,9 +33,7 @@ import com.simplemobiletools.calendar.receivers.CalDAVSyncReceiver
 import com.simplemobiletools.calendar.receivers.NotificationReceiver
 import com.simplemobiletools.calendar.services.SnoozeService
 import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.isKitkatPlus
 import com.simplemobiletools.commons.helpers.isLollipopPlus
-import com.simplemobiletools.commons.helpers.isMarshmallowPlus
 import com.simplemobiletools.commons.helpers.isOreoPlus
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
@@ -110,12 +109,7 @@ fun Context.scheduleEventIn(notifTS: Long, event: Event) {
 
     val pendingIntent = getNotificationIntent(applicationContext, event)
     val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-
-    when {
-        isMarshmallowPlus() -> alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, notifTS, pendingIntent)
-        isKitkatPlus() -> alarmManager.setExact(AlarmManager.RTC_WAKEUP, notifTS, pendingIntent)
-        else -> alarmManager.set(AlarmManager.RTC_WAKEUP, notifTS, pendingIntent)
-    }
+    AlarmManagerCompat.setExactAndAllowWhileIdle(alarmManager, AlarmManager.RTC_WAKEUP, notifTS, pendingIntent)
 }
 
 fun Context.cancelNotification(id: Int) {
