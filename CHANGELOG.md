@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 3.4.1 *(2018-03-30)*
+----------------------------
+
+ * Reworked custom notification sound, should be more reliable
+ * Fixed some glitches related to the monthly view
+ * Misc smaller bugfixes and stability improvements
+
 Version 3.4.0 *(2018-02-28)*
 ----------------------------
 
