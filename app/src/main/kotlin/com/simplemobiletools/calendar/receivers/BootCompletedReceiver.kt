@@ -9,11 +9,13 @@ import com.simplemobiletools.calendar.extensions.scheduleAllEvents
 
 class BootCompletedReceiver : BroadcastReceiver() {
 
-    override fun onReceive(context: Context, arg1: Intent) {
-        context.apply {
-            scheduleAllEvents()
-            notifyRunningEvents()
-            recheckCalDAVCalendars {}
-        }
+    override fun onReceive(context: Context, intent: Intent) {
+        Thread {
+            context.apply {
+                scheduleAllEvents()
+                notifyRunningEvents()
+                recheckCalDAVCalendars {}
+            }
+        }.start()
     }
 }
