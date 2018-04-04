@@ -130,7 +130,7 @@
     <string name="add_holidays">Įtraukti atostogas</string>
     <string name="national_holidays">Nacionalinės atostogos</string>
     <string name="religious_holidays">Religinės atostogos</string>
-    <string name="holidays_imported_successfully">Holidays have been successfully imported into the \"Holidays\" event type</string>
+    <string name="holidays_imported_successfully">Atostogos buvo sėkmingai importuotos į \"Atostogos\" įvykio tipą</string>
     <string name="importing_some_holidays_failed">Kai kurių įvykių importavimas nepavyko</string>
     <string name="importing_holidays_failed">Atostogų importavimas nepavyko</string>
 
@@ -205,7 +205,7 @@
 
         Kontaktų leidimas naudojamas tik importuoti kontaktų gimtadienius ir sukaktis.
 
-        Ši programėle yra vienintelė iš keletos mūsų programėlių. Likusias Jūs galite rasti čia http://www.simplemobiletools.com
+        Ši programėle yra viena iš keletos mūsų programėlių. Likusias Jūs galite rasti čia http://www.simplemobiletools.com
     </string>
 
     <!--
