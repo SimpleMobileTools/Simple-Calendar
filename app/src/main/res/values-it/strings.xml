@@ -3,18 +3,18 @@
     <string name="app_name">Simple Calendar</string>
     <string name="app_launcher_name">Calendario</string>
     <string name="change_view">Cambia vista</string>
-    <string name="daily_view">Daily view</string>
+    <string name="daily_view">Vista giornaliera</string>
     <string name="weekly_view">Vista settimanale</string>
-    <string name="monthly_view">Vista Mensile</string>
+    <string name="monthly_view">Vista mensile</string>
     <string name="yearly_view">Vista annuale</string>
-    <string name="simple_event_list">Simple event list</string>
-    <string name="no_upcoming_events">Seems like you don\'t have any upcoming events.</string>
-    <string name="add_some_events">You can add some with the Plus button at the bottom.</string>
-    <string name="go_to_today">Go to today</string>
+    <string name="simple_event_list">Lista eventi semplice</string>
+    <string name="no_upcoming_events">Sembra che tu non abbia nessun evento imminente.</string>
+    <string name="add_some_events">Puoi aggiungerne qualcuno con il bottone \'+\' in basso.</string>
+    <string name="go_to_today">Vai a oggi</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Calendario mensile</string>
-    <string name="widget_list">Calendar event list</string>
+    <string name="widget_list">Lista eventi calendario</string>
 
     <!-- Event -->
     <string name="event">Evento</string>
@@ -33,7 +33,7 @@
     <string name="daily">Giornalmente</string>
     <string name="weekly">Settimanalmente</string>
     <string name="monthly">Mensilmente</string>
-    <string name="yearly">Annulamente</string>
+    <string name="yearly">Annualmente</string>
     <string name="weeks_raw">Settimane</string>
     <string name="months_raw">Mesi</string>
     <string name="years_raw">Anni</string>
@@ -45,10 +45,10 @@
     <string name="delete_all_occurrences">Elimina tutte le occorrenze</string>
     <string name="update_one_only">Aggiorna solamente l\'occorenza selezionata</string>
     <string name="update_all_occurrences">Aggiorna tutte le occorenze</string>
-    <string name="repeat_till_date">Repeat till a date</string>
+    <string name="repeat_till_date">Ripeti fino a una data</string>
     <string name="repeat_x_times">Ripeti x volte</string>
     <string name="repeat_forever">Ripeti per sempre</string>
-    <string name="times">times</string>
+    <string name="times">volte</string>
     <string name="repeat">Ripeti</string>
     <string name="repeat_on">Repeat on</string>
     <string name="every_day">Ogni giorno</string>
@@ -76,80 +76,80 @@
     <string name="last_f">last</string>
 
     <!-- Birthdays -->
-    <string name="birthdays">Birthdays</string>
-    <string name="add_birthdays">Add contact birthdays</string>
-    <string name="no_birthdays">No birthdays have been found</string>
-    <string name="birthdays_added">Birthdays added successfully</string>
+    <string name="birthdays">Compleanni</string>
+    <string name="add_birthdays">Aggiungi compleanni contatti</string>
+    <string name="no_birthdays">Nessun compleanno trovato</string>
+    <string name="birthdays_added">Compleanni aggiunti con successo</string>
 
     <!-- Anniversaries -->
-    <string name="anniversaries">Anniversaries</string>
-    <string name="add_anniversaries">Add contact anniversaries</string>
-    <string name="no_anniversaries">No anniversaries have been found</string>
-    <string name="anniversaries_added">Anniversaries added successfully</string>
+    <string name="anniversaries">Anniversari</string>
+    <string name="add_anniversaries">Aggiungi anniversari contatti</string>
+    <string name="no_anniversaries">Nessun anniversario trovato</string>
+    <string name="anniversaries_added">Anniversari aggiunti con successo</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Promemoria</string>
-    <string name="before">before</string>
-    <string name="add_another_reminder">Add another reminder</string>
-    <string name="event_reminders">Event reminders</string>
+    <string name="before">prima</string>
+    <string name="add_another_reminder">Aggiungi un altro promemoria</string>
+    <string name="event_reminders">Promemoria eventi</string>
 
     <!-- Export / Import -->
-    <string name="import_events">Import events</string>
-    <string name="export_events">Export events</string>
-    <string name="import_events_from_ics">Import events from an .ics file</string>
-    <string name="export_events_to_ics">Export events to an .ics file</string>
-    <string name="default_event_type">Default event type</string>
-    <string name="export_past_events_too">Export past events too</string>
-    <string name="include_event_types">Include event types</string>
-    <string name="filename_without_ics">Filename (without .ics)</string>
+    <string name="import_events">Importa eventi</string>
+    <string name="export_events">Esporta eventi</string>
+    <string name="import_events_from_ics">Importa eventi da un file .ics</string>
+    <string name="export_events_to_ics">Esporta eventi in un file .ics</string>
+    <string name="default_event_type">Tipo evento predefinito</string>
+    <string name="export_past_events_too">Esporta anche eventi passati</string>
+    <string name="include_event_types">Includi tipi evento</string>
+    <string name="filename_without_ics">Nome file (senza .ics)</string>
 
     <!-- Event details -->
     <string name="title">Titolo</string>
-    <string name="location">Location</string>
+    <string name="location">Posizione</string>
     <string name="description">Descrizione</string>
     <string name="all_day">All-day</string>
 
     <!-- Weekly view -->
-    <string name="week">Week</string>
+    <string name="week">Settimana</string>
 
     <!-- Event types -->
-    <string name="event_types">Event types</string>
-    <string name="add_new_type">Add a new type</string>
-    <string name="edit_type">Edit type</string>
-    <string name="type_already_exists">Type with this title already exists</string>
-    <string name="color">Color</string>
-    <string name="regular_event">Regular event</string>
-    <string name="cannot_delete_default_type">Default event type cannot be deleted</string>
-    <string name="select_event_type">Select an event type</string>
+    <string name="event_types">Tipi evento</string>
+    <string name="add_new_type">Aggiungi nuovo tipo</string>
+    <string name="edit_type">Modifica tipo</string>
+    <string name="type_already_exists">Un tipo con questo titolo esiste già</string>
+    <string name="color">Colore</string>
+    <string name="regular_event">Evento regolare</string>
+    <string name="cannot_delete_default_type">Il tipo di evento predefinito non può essere cancellato</string>
+    <string name="select_event_type">Seleziona un tipo di evento</string>
     <string name="move_events_into_default">Move affected events into the default event type</string>
     <string name="remove_affected_events">Permanently remove affected events</string>
-    <string name="unsync_caldav_calendar">To remove a CalDAV calendar you have to unsynchronize it</string>
+    <string name="unsync_caldav_calendar">Per rimuovere un calendario CalDAV devi desincronizzarlo</string>
 
     <!-- Holidays -->
-    <string name="holidays">Holidays</string>
-    <string name="add_holidays">Add holidays</string>
-    <string name="national_holidays">National holidays</string>
-    <string name="religious_holidays">Religious holidays</string>
-    <string name="holidays_imported_successfully">Holidays have been successfully imported into the \"Holidays\" event type</string>
-    <string name="importing_some_holidays_failed">Importing some events failed</string>
-    <string name="importing_holidays_failed">Importing holidays failed</string>
+    <string name="holidays">Feste</string>
+    <string name="add_holidays">Aggiungi feste</string>
+    <string name="national_holidays">Feste nazionali</string>
+    <string name="religious_holidays">Feste religiose</string>
+    <string name="holidays_imported_successfully">Le feste sono state importate nel tipo evento \"Feste\" con successo</string>
+    <string name="importing_some_holidays_failed">Importo di alcuni eventi fallito</string>
+    <string name="importing_holidays_failed">Importo delle feste fallito</string>
 
     <!-- Settings -->
-    <string name="manage_event_types">Manage event types</string>
+    <string name="manage_event_types">Gestisci tipi evento</string>
     <string name="start_day_at">Start day at</string>
     <string name="end_day_at">End day at</string>
-    <string name="week_numbers">Show week numbers</string>
+    <string name="week_numbers">Mostra numero settimane</string>
     <string name="vibrate">Vibrate on reminder notification</string>
-    <string name="reminder_sound">Reminder sound</string>
+    <string name="reminder_sound">Suoneria promemoria</string>
     <string name="no_ringtone_picker">No app capable of setting ringtone found</string>
     <string name="no_ringtone_selected">None</string>
-    <string name="day_end_before_start">The day cannot end earlier than it starts</string>
+    <string name="day_end_before_start">Il giorno non può finire prima che cominci</string>
     <string name="caldav_sync">CalDAV sync</string>
     <string name="event_lists">Event lists</string>
-    <string name="display_past_events">Display events from the past</string>
-    <string name="replace_description_with_location">Replace event description with location</string>
-    <string name="delete_all_events">Delete all events</string>
-    <string name="delete_all_events_confirmation">Are you sure you want to delete all events? This will leave your event types and other settings intact.</string>
+    <string name="display_past_events">Mostra eventi passati</string>
+    <string name="replace_description_with_location">Sostituisci la descrizione con la posizione</string>
+    <string name="delete_all_events">Cancella tutti gli eventi</string>
+    <string name="delete_all_events_confirmation">Vuoi cancellare tutti gli eventi? Questo lascerà i tuoi tipi evento e le altre impostazioni invariate.</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
