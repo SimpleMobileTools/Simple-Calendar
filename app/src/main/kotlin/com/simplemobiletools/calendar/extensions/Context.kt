@@ -184,14 +184,10 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
     val soundUri = Uri.parse(config.reminderSoundUri)
     grantReadUriPermission(config.reminderSoundUri)
 
-    val contentTitle = when (publicVersion) {
-        false -> event.title
-        true -> resources.getString(R.string.app_name)
-    }
-    val contentText = when (publicVersion) {
-        false -> content
-        true -> resources.getString(R.string.public_event_notification_text)
-    }
+    val contentTitle = if (publicVersion) resources.getString(R.string.app_name) else event.title
+
+    val contentText = if (publicVersion) resources.getString(R.string.public_event_notification_text) else content
+
     val builder = NotificationCompat.Builder(this)
             .setContentTitle(contentTitle)
             .setContentText(contentText)
