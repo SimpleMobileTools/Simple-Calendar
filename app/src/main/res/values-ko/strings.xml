@@ -26,6 +26,7 @@
     <string name="event_updated">이벤트를 수정했습니다</string>
     <string name="filter_events_by_type">유형별 이벤트</string>
     <string name="please_fill_location">Please fill in a location to be shown on a map</string>
+    <string name="public_event_notification_text">An event is upcoming</string>
 
     <!-- Event Repetition -->
     <string name="repetition">반복</string>

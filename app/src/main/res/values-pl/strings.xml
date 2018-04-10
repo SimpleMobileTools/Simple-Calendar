@@ -26,6 +26,7 @@
     <string name="event_updated">Wydarzenie zostało zaktualizowane</string>
     <string name="filter_events_by_type">Filtruj wydarzenia według typu</string>
     <string name="please_fill_location">Wpisz lokalizację, która ma być pokazana na mapie</string>
+    <string name="public_event_notification_text">An event is upcoming</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Powtórzenie</string>

@@ -26,6 +26,7 @@
     <string name="event_updated">Begivenhed ændret</string>
     <string name="filter_events_by_type">Filtrer begivenheder efter type</string>
     <string name="please_fill_location">Indtast et sted der kan vises på et kort</string>
+    <string name="public_event_notification_text">An event is upcoming</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Gentagelse</string>

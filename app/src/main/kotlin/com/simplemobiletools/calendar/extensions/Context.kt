@@ -167,7 +167,7 @@ fun Context.notifyEvent(event: Event) {
 }
 
 @SuppressLint("NewApi")
-fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content: String): Notification {
+fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content: String, publicVersion: Boolean = false): Notification {
     val channelId = "reminder_channel"
     if (isOreoPlus()) {
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
@@ -184,9 +184,17 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
     val soundUri = Uri.parse(config.reminderSoundUri)
     grantReadUriPermission(config.reminderSoundUri)
 
+    val contentTitle = when (publicVersion) {
+        false -> event.title
+        true -> resources.getString(R.string.app_name)
+    }
+    val contentText = when (publicVersion) {
+        false -> content
+        true -> resources.getString(R.string.public_event_notification_text)
+    }
     val builder = NotificationCompat.Builder(this)
-            .setContentTitle(event.title)
-            .setContentText(content)
+            .setContentTitle(contentTitle)
+            .setContentText(contentText)
             .setSmallIcon(R.drawable.ic_calendar)
             .setContentIntent(pendingIntent)
             .setPriority(Notification.PRIORITY_HIGH)
@@ -196,12 +204,12 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
             .setChannelId(channelId)
             .addAction(R.drawable.ic_snooze, getString(R.string.snooze), getSnoozePendingIntent(this, event))
 
-    if (isLollipopPlus()) {
-        builder.setVisibility(Notification.VISIBILITY_PUBLIC)
-    }
-
     if (config.vibrateOnReminder) {
         builder.setVibrate(longArrayOf(0, 300, 300, 300))
+    }
+
+    if (!publicVersion) {
+        builder.setPublicVersion(getNotification(pendingIntent, event, content, true))
     }
 
     return builder.build()

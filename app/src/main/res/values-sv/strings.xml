@@ -26,6 +26,7 @@
     <string name="event_updated">Händelsen har uppdaterats</string>
     <string name="filter_events_by_type">Filtrera händelser efter typ</string>
     <string name="please_fill_location">Du måste ange en plats som kan visas på en karta</string>
+    <string name="public_event_notification_text">An event is upcoming</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Upprepning</string>
