@@ -26,6 +26,7 @@
     <string name="event_updated">Événement ajouté avec succès</string>
     <string name="filter_events_by_type">Filtrer les événements par type</string>
     <string name="please_fill_location">Veuillez remplir un emplacement pour être affiché sur une carte</string>
+    <string name="public_event_notification_text">An event is upcoming</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Répétition</string>

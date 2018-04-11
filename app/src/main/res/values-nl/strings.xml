@@ -26,6 +26,7 @@
     <string name="event_updated">Afspraak bijgewerkt</string>
     <string name="filter_events_by_type">Afspraken op type filteren</string>
     <string name="please_fill_location">Vul de locatie in om deze op de kaart te tonen</string>
+    <string name="public_event_notification_text">An event is upcoming</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Herhaling</string>

@@ -26,6 +26,7 @@
     <string name="event_updated">Termin erfolgreich aktualisiert</string>
     <string name="filter_events_by_type">Sortiere Termine nach Typ</string>
     <string name="please_fill_location">Bitte trage einen Ort ein, der auf einer Karte angezeigt werden soll</string>
+    <string name="public_event_notification_text">Ein Termin steht an</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Wiederholung</string>

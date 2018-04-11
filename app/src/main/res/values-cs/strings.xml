@@ -26,6 +26,7 @@
     <string name="event_updated">Událost úspěšně změněna</string>
     <string name="filter_events_by_type">Filtrovat události podle typu</string>
     <string name="please_fill_location">Please fill in a location to be shown on a map</string>
+    <string name="public_event_notification_text">An event is upcoming</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Opakovaná událost</string>

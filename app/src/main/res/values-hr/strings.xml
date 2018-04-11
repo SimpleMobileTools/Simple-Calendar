@@ -26,6 +26,7 @@
     <string name="event_updated">Događaj je uspješno ažuriran</string>
     <string name="filter_events_by_type">Sortiranje prema vrsti događaja</string>
     <string name="please_fill_location">Ispunite lokaciju za prikazivanje na karti</string>
+    <string name="public_event_notification_text">An event is upcoming</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Ponavljanje</string>

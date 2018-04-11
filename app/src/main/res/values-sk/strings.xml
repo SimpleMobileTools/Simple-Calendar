@@ -26,6 +26,7 @@
     <string name="event_updated">Udalosť bola úspešne upravená</string>
     <string name="filter_events_by_type">Filtrovať udalosti podľa typu</string>
     <string name="please_fill_location">Prosím zadajte polohu, ktorá má byť zobrazená na mape</string>
+    <string name="public_event_notification_text">An event is upcoming</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Opakovanie</string>
