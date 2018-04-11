@@ -26,7 +26,7 @@
     <string name="event_updated">Afspraak bijgewerkt</string>
     <string name="filter_events_by_type">Afspraken op type filteren</string>
     <string name="please_fill_location">Vul de locatie in om deze op de kaart te tonen</string>
-    <string name="public_event_notification_text">An event is upcoming</string>
+    <string name="public_event_notification_text">Afspraak aanstaande</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Herhaling</string>
@@ -151,7 +151,7 @@
     <string name="replace_description_with_location">Beschrijving vervangen door locatie van afspraken</string>
     <string name="delete_all_events">Alle afspraken verwijderen</string>
     <string name="delete_all_events_confirmation">Alle afspraken verwijderen? Afspraaktypes en andere instellingen blijven behouden.</string>
-    <string name="show_a_grid">Show a grid</string>
+    <string name="show_a_grid">Rasterlijnen tonen</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
