@@ -47,12 +47,11 @@ val Context.dbHelper: DBHelper get() = DBHelper.newInstance(applicationContext)
 fun Context.getNowSeconds() = (System.currentTimeMillis() / 1000).toInt()
 
 fun Context.updateWidgets() {
-    val widgetsCnt = AppWidgetManager.getInstance(applicationContext).getAppWidgetIds(ComponentName(applicationContext, MyWidgetMonthlyProvider::class.java))
-    if (widgetsCnt.isNotEmpty()) {
-        val ids = intArrayOf(R.xml.widget_monthly_info)
+    val widgetIDs = AppWidgetManager.getInstance(applicationContext).getAppWidgetIds(ComponentName(applicationContext, MyWidgetMonthlyProvider::class.java))
+    if (widgetIDs.isNotEmpty()) {
         Intent(applicationContext, MyWidgetMonthlyProvider::class.java).apply {
             action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
-            putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
+            putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, widgetIDs)
             sendBroadcast(this)
         }
     }
@@ -61,12 +60,11 @@ fun Context.updateWidgets() {
 }
 
 fun Context.updateListWidget() {
-    val widgetsCnt = AppWidgetManager.getInstance(applicationContext).getAppWidgetIds(ComponentName(applicationContext, MyWidgetListProvider::class.java))
-    if (widgetsCnt.isNotEmpty()) {
-        val ids = intArrayOf(R.xml.widget_list_info)
+    val widgetIDs = AppWidgetManager.getInstance(applicationContext).getAppWidgetIds(ComponentName(applicationContext, MyWidgetListProvider::class.java))
+    if (widgetIDs.isNotEmpty()) {
         Intent(applicationContext, MyWidgetListProvider::class.java).apply {
             action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
-            putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
+            putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, widgetIDs)
             sendBroadcast(this)
         }
     }
