@@ -151,6 +151,7 @@
     <string name="replace_description_with_location">Hadisə əlavəsini məkan ilə dəyiş</string>
     <string name="delete_all_events">Bütün hadisələri sil</string>
     <string name="delete_all_events_confirmation">Bütün hadisələri silmək istədiyinizə əminsiniz? Bu hadisələri və parametrlərini bütövlüklə siləcək.</string>
+    <string name="show_a_grid">Show a grid</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -206,7 +207,7 @@
 
         Kontakt icazəsi yalnız kontakt ad günlərini və il dönümlərini daxil etmək üçün istifadə olunur.
 
-        Bu, böyük bir tətbiq seriyasının yalnız bir hissəsidir. Digər tətbiqləri buradan əldə edə bilərsiniz http://www.simplemobiletools.com
+        Bu, böyük bir tətbiq seriyasının yalnız bir hissəsidir. Digər tətbiqləri buradan əldə edə bilərsiniz https://www.simplemobiletools.com
     </string>
 
     <!--

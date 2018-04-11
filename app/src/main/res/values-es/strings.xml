@@ -151,6 +151,7 @@
     <string name="replace_description_with_location">Replace event description with location</string>
     <string name="delete_all_events">Delete all events</string>
     <string name="delete_all_events_confirmation">Are you sure you want to delete all events? This will leave your event types and other settings intact.</string>
+    <string name="show_a_grid">Show a grid</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -206,7 +207,7 @@
 
         El permiso de contactos se usa sólo para importar los cumpleaños de los contactos.
 
-        Esta aplicación es sólo una parte de una mayor serie de aplicaciones. Puede encontrar el resto en http://www.simplemobiletools.com
+        Esta aplicación es sólo una parte de una mayor serie de aplicaciones. Puede encontrar el resto en https://www.simplemobiletools.com
     </string>
 
     <!--

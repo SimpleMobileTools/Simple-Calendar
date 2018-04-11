@@ -152,6 +152,7 @@
     <string name="replace_description_with_location">Replace event description with location</string>
     <string name="delete_all_events">Delete all events</string>
     <string name="delete_all_events_confirmation">Are you sure you want to delete all events? This will leave your event types and other settings intact.</string>
+    <string name="show_a_grid">Show a grid</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -196,7 +197,7 @@
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">לוח שנה פשוט עם אירועים, וויג\'ט בעיצוב אישי וללא פרסומות</string>
-    <string name="app_long_description">לוח שנה אוף-ליין ללא כל אינטגרציה עם לוח שנה אחר. אפשר בקלות ליצור אירועים מחזוריים ותזכורות אליהם. יש אפשרות להציג את מספרי השבועות. מכיל וויג\'ט 4×4 שניתן להתאים אישית את גודלו, צבע הטקסט והרקע שלו, ושקיפותו. אין פרסומות או דרישות להרשאות בלתי-נחוצות. קוד המקור לגמרי פתוח, וניתן לעצב את צבעי הממשק.\nאפליקציה זו היא רק פיסה אחת מתוך סדרה גדולה יותר של אפליקציות. ניתן למצוא את השאר בכתובת  http://www.simplemobiletools.com</string>
+    <string name="app_long_description">לוח שנה אוף-ליין ללא כל אינטגרציה עם לוח שנה אחר. אפשר בקלות ליצור אירועים מחזוריים ותזכורות אליהם. יש אפשרות להציג את מספרי השבועות. מכיל וויג\'ט 4×4 שניתן להתאים אישית את גודלו, צבע הטקסט והרקע שלו, ושקיפותו. אין פרסומות או דרישות להרשאות בלתי-נחוצות. קוד המקור לגמרי פתוח, וניתן לעצב את צבעי הממשק.\nאפליקציה זו היא רק פיסה אחת מתוך סדרה גדולה יותר של אפליקציות. ניתן למצוא את השאר בכתובת  https://www.simplemobiletools.com</string>
 
     <!--
         Haven't found some strings? There's more at

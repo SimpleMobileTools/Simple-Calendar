@@ -151,6 +151,7 @@
     <string name="replace_description_with_location">Erstatt hendelsesbeskrivelse med sted</string>
     <string name="delete_all_events">Slett alle hendelser</string>
     <string name="delete_all_events_confirmation">Er du sikker på at du vil slette alle hendelser? Dine hendelsestyper og andre innstillinger blir beholdt.</string>
+    <string name="show_a_grid">Show a grid</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -206,7 +207,7 @@
 
         The Contacts permission is used only at importing contact birthdays and anniversaries.
 
-        This app is just one piece of a bigger series of apps. You can find the rest of them at http://www.simplemobiletools.com
+        This app is just one piece of a bigger series of apps. You can find the rest of them at https://www.simplemobiletools.com
     </string>
 
     <!--

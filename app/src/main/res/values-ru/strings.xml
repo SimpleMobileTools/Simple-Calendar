@@ -151,6 +151,7 @@
     <string name="replace_description_with_location">Заменить описание события местоположением</string>
     <string name="delete_all_events">Удалить все события</string>
     <string name="delete_all_events_confirmation">Вы действительно хотите удалить все события? Это не затронет ваши типы событий и другие настройки.</string>
+    <string name="show_a_grid">Show a grid</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -206,7 +207,7 @@
 
         Разрешение на чтение контактов требуется только при импорте дней рождения.
 
-        Это приложение является лишь частью крупной серии приложений. Вы можете найти остальные на http://www.simplemobiletools.com
+        Это приложение является лишь частью крупной серии приложений. Вы можете найти остальные на https://www.simplemobiletools.com
     </string>
 
     <!--

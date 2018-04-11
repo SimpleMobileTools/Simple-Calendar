@@ -151,6 +151,7 @@
     <string name="replace_description_with_location">Zamijenite opis događaja s lokacijom</string>
     <string name="delete_all_events">Izbriši sve događaje</string>
     <string name="delete_all_events_confirmation">Jeste li sigurni da želite izbrisati sve događaje? To će ostaviti Vaše vrste događaja i druge postavke netaknutima.</string>
+    <string name="show_a_grid">Show a grid</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -206,7 +207,7 @@
 
         Dopuštenje za kontakte upotrebljava se samo pri uvozu rođendana i obljetnica kontakata.
 
-        Ova je aplikacija samo dio većeg broja aplikacija. Možete pronaći ostatak na http://www.simplemobiletools.com
+        Ova je aplikacija samo dio većeg broja aplikacija. Možete pronaći ostatak na https://www.simplemobiletools.com
     </string>
 
     <!--

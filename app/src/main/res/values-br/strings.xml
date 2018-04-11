@@ -151,6 +151,7 @@
     <string name="replace_description_with_location">Replace event description with location</string>
     <string name="delete_all_events">Delete all events</string>
     <string name="delete_all_events_confirmation">Are you sure you want to delete all events? This will leave your event types and other settings intact.</string>
+    <string name="show_a_grid">Show a grid</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -206,7 +207,7 @@
 
         Ret eo reiñ an aotre Darempredoù evit enporzhiañ deizioù-ha-bloaz an darempredoù.
 
-        An arload-mañ a zo ul lodenn eus un heuliad arloadoù brasoc\'h. Gallout a rit o kavout anezho war http://www.simplemobiletools.com
+        An arload-mañ a zo ul lodenn eus un heuliad arloadoù brasoc\'h. Gallout a rit o kavout anezho war https://www.simplemobiletools.com
     </string>
 
     <!--

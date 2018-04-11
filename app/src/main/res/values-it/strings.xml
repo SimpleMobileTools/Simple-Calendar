@@ -151,6 +151,7 @@
     <string name="replace_description_with_location">Sostituisci la descrizione con la posizione</string>
     <string name="delete_all_events">Cancella tutti gli eventi</string>
     <string name="delete_all_events_confirmation">Vuoi cancellare tutti gli eventi? Questo lascerà i tuoi tipi evento e le altre impostazioni invariate.</string>
+    <string name="show_a_grid">Show a grid</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -206,7 +207,7 @@
 
         The Contacts permission is used only at importing contact birthdays and anniversaries.
 
-        This app is just one piece of a bigger series of apps. You can find the rest of them at http://www.simplemobiletools.com
+        This app is just one piece of a bigger series of apps. You can find the rest of them at https://www.simplemobiletools.com
     </string>
 
     <!--

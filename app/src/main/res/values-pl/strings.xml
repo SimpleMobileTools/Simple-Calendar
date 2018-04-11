@@ -151,6 +151,7 @@
     <string name="replace_description_with_location">Zamieniaj opis wydarzenia na lokalizację</string>
     <string name="delete_all_events">Usuń wszystkie wydarzenia</string>
     <string name="delete_all_events_confirmation">Czy na pewno mam usunąć wszystkie wydarzenia? Nie naruszy to typów wydarzeń i innych ustawień.</string>
+    <string name="show_a_grid">Show a grid</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -204,7 +205,7 @@
 
         Uprawnienia kontaktów są używane tylko do importowania urodzin.
 
-        Niniejsza aplikacja jest tylko częścią naszej kolekcji prostych narzędzi. Ta, jak i pozostałe, dostępne są na stronie http://www.simplemobiletools.com
+        Niniejsza aplikacja jest tylko częścią naszej kolekcji prostych narzędzi. Ta, jak i pozostałe, dostępne są na stronie https://www.simplemobiletools.com
     </string>
 
     <!--

@@ -151,6 +151,7 @@
     <string name="replace_description_with_location">Pakeisti įvykio apibūdinimą į įvykio vietą</string>
     <string name="delete_all_events">Ištrinti visus įvykius</string>
     <string name="delete_all_events_confirmation">Ar Jūs tikrai norite ištrinti visus įvykius? Tai neištrins įvykių tipų ir kitų nustatymų.</string>
+    <string name="show_a_grid">Show a grid</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -206,7 +207,7 @@
 
         Kontaktų leidimas naudojamas tik importuoti kontaktų gimtadienius ir sukaktis.
 
-        Ši programėle yra viena iš keletos mūsų programėlių. Likusias Jūs galite rasti čia http://www.simplemobiletools.com
+        Ši programėle yra viena iš keletos mūsų programėlių. Likusias Jūs galite rasti čia https://www.simplemobiletools.com
     </string>
 
     <!--

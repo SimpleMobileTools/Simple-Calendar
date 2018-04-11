@@ -151,6 +151,7 @@
     <string name="replace_description_with_location">Beschrijving vervangen door locatie van afspraken</string>
     <string name="delete_all_events">Alle afspraken verwijderen</string>
     <string name="delete_all_events_confirmation">Alle afspraken verwijderen? Afspraaktypes en andere instellingen blijven behouden.</string>
+    <string name="show_a_grid">Show a grid</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -206,7 +207,7 @@
 
         De machtiging voor contacten wordt alleen gebruikt voor het importeren van verjaardagen en feestdagen.
 
-        Deze app is onderdeel van een grotere verzameling. Vind de andere apps op http://www.simplemobiletools.com
+        Deze app is onderdeel van een grotere verzameling. Vind de andere apps op https://www.simplemobiletools.com
     </string>
 
     <!--
