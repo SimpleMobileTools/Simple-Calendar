@@ -26,6 +26,7 @@
     <string name="event_updated">Событие успешно обновлено</string>
     <string name="filter_events_by_type">Фильтровать события по типу</string>
     <string name="please_fill_location">Пожалуйста, введите место, которое будет показано на карте</string>
+    <string name="public_event_notification_text">An event is upcoming</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Повторять</string>

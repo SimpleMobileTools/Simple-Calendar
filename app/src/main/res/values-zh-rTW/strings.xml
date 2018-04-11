@@ -26,6 +26,7 @@
     <string name="event_updated">活動更新成功</string>
     <string name="filter_events_by_type">依類型篩選活動</string>
     <string name="please_fill_location">請填入要顯示在地圖上的地點</string>
+    <string name="public_event_notification_text">An event is upcoming</string>
 
     <!-- Event Repetition -->
     <string name="repetition">重複</string>
