@@ -139,7 +139,6 @@ class DayFragment : Fragment() {
         DayEventsAdapter(activity as SimpleActivity, events, mHolder.day_events) {
             editEvent(it as Event)
         }.apply {
-            setupDragListener(true)
             addVerticalDividers(true)
             mHolder.day_events.adapter = this
         }

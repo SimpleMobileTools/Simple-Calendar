@@ -35,7 +35,6 @@ class ManageEventTypesActivity : SimpleActivity(), DeleteEventTypesListener {
                 val adapter = ManageEventTypesAdapter(this, it, this, manage_event_types_list) {
                     showEventTypeDialog(it as EventType)
                 }
-                adapter.setupDragListener(true)
                 manage_event_types_list.adapter = adapter
             }
         }

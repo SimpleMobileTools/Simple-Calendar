@@ -32,6 +32,7 @@ import com.simplemobiletools.calendar.receivers.CalDAVSyncReceiver
 import com.simplemobiletools.calendar.receivers.NotificationReceiver
 import com.simplemobiletools.calendar.services.SnoozeService
 import com.simplemobiletools.commons.extensions.*
+import com.simplemobiletools.commons.helpers.SILENT
 import com.simplemobiletools.commons.helpers.isOreoPlus
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
@@ -178,8 +179,12 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
         }
     }
 
-    val soundUri = Uri.parse(config.reminderSoundUri)
-    grantReadUriPermission(config.reminderSoundUri)
+    var soundUri = config.reminderSoundUri
+    if (soundUri == SILENT) {
+        soundUri = ""
+    } else {
+        grantReadUriPermission(soundUri)
+    }
 
     val contentTitle = if (publicVersion) resources.getString(R.string.app_name) else event.title
     val contentText = if (publicVersion) resources.getString(R.string.public_event_notification_text) else content
@@ -192,7 +197,7 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
             .setPriority(Notification.PRIORITY_HIGH)
             .setDefaults(Notification.DEFAULT_LIGHTS)
             .setAutoCancel(true)
-            .setSound(soundUri, AudioManager.STREAM_NOTIFICATION)
+            .setSound(Uri.parse(soundUri), AudioManager.STREAM_NOTIFICATION)
             .setChannelId(channelId)
             .addAction(R.drawable.ic_snooze, getString(R.string.snooze), getSnoozePendingIntent(this, event))
 
