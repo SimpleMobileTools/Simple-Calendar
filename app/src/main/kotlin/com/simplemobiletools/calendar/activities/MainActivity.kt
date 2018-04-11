@@ -209,6 +209,12 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
     }
 
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+        checkOpenIntents()
+    }
+
     private fun storeStateVariables() {
         config.apply {
             mStoredIsSundayFirst = isSundayFirst
