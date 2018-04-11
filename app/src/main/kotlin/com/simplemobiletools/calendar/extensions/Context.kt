@@ -10,6 +10,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.res.Resources
 import android.database.ContentObserver
+import android.media.AudioAttributes
 import android.media.AudioManager
 import android.net.Uri
 import android.os.Bundle
@@ -166,8 +167,22 @@ fun Context.notifyEvent(event: Event) {
 
 @SuppressLint("NewApi")
 fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content: String, publicVersion: Boolean = false): Notification {
-    val channelId = "reminder_channel"
+    var soundUri = config.reminderSoundUri
+    if (soundUri == SILENT) {
+        soundUri = ""
+    } else {
+        grantReadUriPermission(soundUri)
+    }
+
+    val channelId = "my_reminder_channel_$soundUri"
     if (isOreoPlus()) {
+        val audioAttributes = AudioAttributes.Builder()
+                .setUsage(AudioAttributes.USAGE_NOTIFICATION)
+                .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                .setLegacyStreamType(AudioManager.STREAM_NOTIFICATION)
+                .setFlags(AudioAttributes.FLAG_AUDIBILITY_ENFORCED)
+                .build()
+
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val name = resources.getString(R.string.event_reminders)
         val importance = NotificationManager.IMPORTANCE_HIGH
@@ -175,15 +190,9 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
             enableLights(true)
             lightColor = event.color
             enableVibration(false)
+            setSound(Uri.parse(soundUri), audioAttributes)
             notificationManager.createNotificationChannel(this)
         }
-    }
-
-    var soundUri = config.reminderSoundUri
-    if (soundUri == SILENT) {
-        soundUri = ""
-    } else {
-        grantReadUriPermission(soundUri)
     }
 
     val contentTitle = if (publicVersion) resources.getString(R.string.app_name) else event.title
