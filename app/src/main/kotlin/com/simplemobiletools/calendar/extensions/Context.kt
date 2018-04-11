@@ -32,7 +32,6 @@ import com.simplemobiletools.calendar.receivers.CalDAVSyncReceiver
 import com.simplemobiletools.calendar.receivers.NotificationReceiver
 import com.simplemobiletools.calendar.services.SnoozeService
 import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.isLollipopPlus
 import com.simplemobiletools.commons.helpers.isOreoPlus
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
@@ -183,7 +182,6 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
     grantReadUriPermission(config.reminderSoundUri)
 
     val contentTitle = if (publicVersion) resources.getString(R.string.app_name) else event.title
-
     val contentText = if (publicVersion) resources.getString(R.string.public_event_notification_text) else content
 
     val builder = NotificationCompat.Builder(this)
