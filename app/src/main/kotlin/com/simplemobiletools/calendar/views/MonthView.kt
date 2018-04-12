@@ -151,10 +151,16 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     }
 
     private fun drawGrid(canvas: Canvas) {
+        // vertical lines
         for (i in 0..6) {
-            canvas.drawLine(i * dayWidth, 0f, i * dayWidth, canvas.height.toFloat(), gridPaint)
+            var lineX = i * dayWidth
+            if (showWeekNumbers) {
+                lineX += horizontalOffset
+            }
+            canvas.drawLine(lineX, 0f, lineX, canvas.height.toFloat(), gridPaint)
         }
 
+        // horizontal lines
         canvas.drawLine(0f, 0f, canvas.width.toFloat(), 0f, gridPaint)
         for (i in 0..5) {
             canvas.drawLine(0f, i * dayHeight + weekDaysLetterHeight, canvas.width.toFloat(), i * dayHeight + weekDaysLetterHeight, gridPaint)
@@ -182,7 +188,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
             val id = "$weekOfYear:"
 
             val yPos = i * dayHeight + weekDaysLetterHeight
-            canvas.drawText(id, horizontalOffset.toFloat(), yPos + paint.textSize, weekNumberPaint)
+            canvas.drawText(id, horizontalOffset.toFloat() * 0.9f, yPos + paint.textSize, weekNumberPaint)
         }
     }
 
