@@ -85,6 +85,10 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getBoolean(REPLACE_DESCRIPTION, false)
         set(replaceDescription) = prefs.edit().putBoolean(REPLACE_DESCRIPTION, replaceDescription).apply()
 
+    var showGrid: Boolean
+        get() = prefs.getBoolean(SHOW_GRID, false)
+        set(showGrid) = prefs.edit().putBoolean(SHOW_GRID, showGrid).apply()
+
     fun getSyncedCalendarIdsAsList() = caldavSyncedCalendarIDs.split(",").filter { it.trim().isNotEmpty() } as ArrayList<String>
 
     fun addDisplayEventType(type: String) {

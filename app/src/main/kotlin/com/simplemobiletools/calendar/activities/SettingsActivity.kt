@@ -52,6 +52,7 @@ class SettingsActivity : SimpleActivity() {
         setupDeleteAllEvents()
         setupReplaceDescription()
         setupWeekNumbers()
+        setupShowGrid()
         setupWeeklyStart()
         setupWeeklyEnd()
         setupVibrate()
@@ -271,6 +272,14 @@ class SettingsActivity : SimpleActivity() {
         settings_week_numbers_holder.setOnClickListener {
             settings_week_numbers.toggle()
             config.showWeekNumbers = settings_week_numbers.isChecked
+        }
+    }
+
+    private fun setupShowGrid() {
+        settings_show_grid.isChecked = config.showGrid
+        settings_show_grid_holder.setOnClickListener {
+            settings_show_grid.toggle()
+            config.showGrid = settings_show_grid.isChecked
         }
     }
 

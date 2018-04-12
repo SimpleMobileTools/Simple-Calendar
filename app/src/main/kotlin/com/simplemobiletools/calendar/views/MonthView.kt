@@ -31,6 +31,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
 
     private var paint: Paint
     private var eventTitlePaint: TextPaint
+    private var gridPaint: Paint
     private var dayWidth = 0f
     private var dayHeight = 0f
     private var primaryColor = 0
@@ -63,6 +64,10 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
             color = textColor
             textSize = normalTextSize.toFloat()
             textAlign = Paint.Align.CENTER
+        }
+
+        gridPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+            color = textColor.adjustAlpha(LOW_ALPHA)
         }
 
         val smallerTextSize = resources.getDimensionPixelSize(R.dimen.smaller_text_size)
@@ -112,6 +117,10 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         dayVerticalOffsets.clear()
         measureDaySize(canvas)
 
+        if (context.config.showGrid) {
+            drawGrid(canvas)
+        }
+
         addWeekDayLetters(canvas)
         if (showWeekNumbers) {
             addWeekNumbers(canvas)
@@ -141,6 +150,17 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         drawEvents(canvas)
     }
 
+    private fun drawGrid(canvas: Canvas) {
+        for (i in 0..6) {
+            canvas.drawLine(i * dayWidth, 0f, i * dayWidth, canvas.height.toFloat(), gridPaint)
+        }
+
+        canvas.drawLine(0f, 0f, canvas.width.toFloat(), 0f, gridPaint)
+        for (i in 0..5) {
+            canvas.drawLine(0f, i * dayHeight + weekDaysLetterHeight, canvas.width.toFloat(), i * dayHeight + weekDaysLetterHeight, gridPaint)
+        }
+    }
+
     private fun addWeekDayLetters(canvas: Canvas) {
         for (i in 0..6) {
             val xPos = horizontalOffset + (i + 1) * dayWidth - dayWidth / 2
@@ -148,7 +168,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
             if (i == currDayOfWeek) {
                 weekDayLetterPaint = getColoredPaint(primaryColor)
             }
-            canvas.drawText(dayLetters[i], xPos, weekDaysLetterHeight / 2f, weekDayLetterPaint)
+            canvas.drawText(dayLetters[i], xPos, weekDaysLetterHeight * 0.7f, weekDayLetterPaint)
         }
     }
 
