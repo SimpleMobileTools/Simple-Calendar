@@ -36,7 +36,7 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
         mView.calendar_empty_list_placeholder.text = placeholderText
         mView.background = ColorDrawable(context!!.config.backgroundColor)
         mView.calendar_events_list_holder?.id = (System.currentTimeMillis() % 100000).toInt()
-        use24HourFormat = context!!.config.use24hourFormat
+        use24HourFormat = context!!.config.use24HourFormat
         updateActionBarTitle()
         return mView
     }
@@ -44,7 +44,7 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
     override fun onResume() {
         super.onResume()
         checkEvents()
-        val use24Hour = context!!.config.use24hourFormat
+        val use24Hour = context!!.config.use24HourFormat
         if (use24Hour != use24HourFormat) {
             use24HourFormat = use24Hour
             (mView.calendar_events_list.adapter as? EventListAdapter)?.toggle24HourFormat(use24HourFormat)
@@ -53,7 +53,7 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
 
     override fun onPause() {
         super.onPause()
-        use24HourFormat = context!!.config.use24hourFormat
+        use24HourFormat = context!!.config.use24HourFormat
     }
 
     private fun checkEvents() {

@@ -72,7 +72,7 @@ class MonthFragmentsHolder : MyFragmentHolder(), NavigationListener {
 
     private fun getMonths(code: String): List<String> {
         val months = ArrayList<String>(PREFILLED_MONTHS)
-        val today = Formatter.getDateTimeFromCode(code)
+        val today = Formatter.getDateTimeFromCode(code).withDayOfMonth(1)
         for (i in -PREFILLED_MONTHS / 2..PREFILLED_MONTHS / 2) {
             months.add(Formatter.getDayCodeFromDateTime(today.plusMonths(i)))
         }
@@ -108,5 +108,5 @@ class MonthFragmentsHolder : MyFragmentHolder(), NavigationListener {
         (activity as MainActivity).supportActionBar?.title = getString(R.string.app_launcher_name)
     }
 
-    override fun getNewEventDayCode() = currentDayCode
+    override fun getNewEventDayCode() = if (shouldGoToTodayBeVisible()) currentDayCode else todayDayCode
 }

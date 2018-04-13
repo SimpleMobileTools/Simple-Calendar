@@ -26,6 +26,7 @@
     <string name="event_updated">Įvykis atnaujintas sėkmingai</string>
     <string name="filter_events_by_type">Filtruoti įvykius pagal tipą</string>
     <string name="please_fill_location">Prašome įvesti vietą, kad būtų rodoma žemėlapyje</string>
+    <string name="public_event_notification_text">An event is upcoming</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Pasikartojimas</string>
@@ -130,7 +131,7 @@
     <string name="add_holidays">Įtraukti atostogas</string>
     <string name="national_holidays">Nacionalinės atostogos</string>
     <string name="religious_holidays">Religinės atostogos</string>
-    <string name="holidays_imported_successfully">Atostogos sėkmingai importuotos į naujo įvykio tipą</string>
+    <string name="holidays_imported_successfully">Atostogos buvo sėkmingai importuotos į \"Atostogos\" įvykio tipą</string>
     <string name="importing_some_holidays_failed">Kai kurių įvykių importavimas nepavyko</string>
     <string name="importing_holidays_failed">Atostogų importavimas nepavyko</string>
 
@@ -150,6 +151,7 @@
     <string name="replace_description_with_location">Pakeisti įvykio apibūdinimą į įvykio vietą</string>
     <string name="delete_all_events">Ištrinti visus įvykius</string>
     <string name="delete_all_events_confirmation">Ar Jūs tikrai norite ištrinti visus įvykius? Tai neištrins įvykių tipų ir kitų nustatymų.</string>
+    <string name="show_a_grid">Show a grid</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -203,9 +205,9 @@
 
         Saugyklos leidimas reikalingas tik eksportuoti ir importuoti įvykius iš .ics bylų.
 
-        Contaktų leidimas naudojamas tik importuoti kontaktų gimtadienius ir sukaktis.
+        Kontaktų leidimas naudojamas tik importuoti kontaktų gimtadienius ir sukaktis.
 
-        Ši programėle yra vienintelė iš keletos mūsų programėlių. Likusias Jūs galite rasti čia http://www.simplemobiletools.com
+        Ši programėle yra viena iš keletos mūsų programėlių. Likusias Jūs galite rasti čia https://www.simplemobiletools.com
     </string>
 
     <!--

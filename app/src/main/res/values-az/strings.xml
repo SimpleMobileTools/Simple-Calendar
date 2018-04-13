@@ -26,6 +26,7 @@
     <string name="event_updated">Hadisə uğurla yeniləndi</string>
     <string name="filter_events_by_type">Hadisələri yazıya görə sırala</string>
     <string name="please_fill_location">Xahiş olunur məkan parametrini doldurun ki hadisədə görünsün</string>
+    <string name="public_event_notification_text">An event is upcoming</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Təkrarlama</string>
@@ -130,7 +131,7 @@
     <string name="add_holidays">Bayram əlavə et</string>
     <string name="national_holidays">Milli bayramlar</string>
     <string name="religious_holidays">Dini bayramlar</string>
-    <string name="holidays_imported_successfully">Bayramlar uğurla yeni hadisə tipinə daxil edildi</string>
+    <string name="holidays_imported_successfully">Holidays have been successfully imported into the \"Holidays\" event type</string>
     <string name="importing_some_holidays_failed">Bəzi bayramları daxil etmək alınmadı</string>
     <string name="importing_holidays_failed">Bayramları daxil etmək alınmadı</string>
 
@@ -150,6 +151,7 @@
     <string name="replace_description_with_location">Hadisə əlavəsini məkan ilə dəyiş</string>
     <string name="delete_all_events">Bütün hadisələri sil</string>
     <string name="delete_all_events_confirmation">Bütün hadisələri silmək istədiyinizə əminsiniz? Bu hadisələri və parametrlərini bütövlüklə siləcək.</string>
+    <string name="show_a_grid">Show a grid</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -205,7 +207,7 @@
 
         Kontakt icazəsi yalnız kontakt ad günlərini və il dönümlərini daxil etmək üçün istifadə olunur.
 
-        Bu, böyük bir tətbiq seriyasının yalnız bir hissəsidir. Digər tətbiqləri buradan əldə edə bilərsiniz http://www.simplemobiletools.com
+        Bu, böyük bir tətbiq seriyasının yalnız bir hissəsidir. Digər tətbiqləri buradan əldə edə bilərsiniz https://www.simplemobiletools.com
     </string>
 
     <!--

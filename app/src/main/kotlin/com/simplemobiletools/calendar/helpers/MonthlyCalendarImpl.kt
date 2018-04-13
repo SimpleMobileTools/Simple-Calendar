@@ -25,8 +25,8 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
     fun updateMonthlyCalendar(targetDate: DateTime, filterEventTypes: Boolean = true) {
         mFilterEventTypes = filterEventTypes
         mTargetDate = targetDate
-        val startTS = mTargetDate.minusMonths(1).seconds()
-        val endTS = mTargetDate.plusMonths(1).seconds()
+        val startTS = mTargetDate.minusDays(7).seconds()
+        val endTS = mTargetDate.plusDays(43).seconds()
         mContext.dbHelper.getEvents(startTS, endTS) {
             gotEvents(it as ArrayList<Event>)
         }
@@ -47,7 +47,7 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
         var isThisMonth = false
         var isToday: Boolean
         var value = prevMonthDays - firstDayIndex + 1
-        var curDay: DateTime = mTargetDate
+        var curDay = mTargetDate
 
         for (i in 0 until DAYS_CNT) {
             when {
@@ -67,11 +67,11 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
                 }
             }
 
-            isToday = isThisMonth && isToday(mTargetDate, value)
+            isToday = isToday(curDay, value)
 
             val newDay = curDay.withDayOfMonth(value)
             val dayCode = Formatter.getDayCodeFromDateTime(newDay)
-            val day = DayMonthly(value, isThisMonth, isToday, dayCode, newDay.weekOfWeekyear, ArrayList())
+            val day = DayMonthly(value, isThisMonth, isToday, dayCode, newDay.weekOfWeekyear, ArrayList(), i)
             days.add(day)
             value++
         }
@@ -94,14 +94,16 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
 
                 var currDay = startDateTime
                 var dayCode = Formatter.getDayCodeFromDateTime(currDay)
-                var currDayEvents = (dayEvents[dayCode] ?: ArrayList()).apply { add(it) }
-                dayEvents.put(dayCode, currDayEvents)
+                var currDayEvents = dayEvents[dayCode] ?: ArrayList()
+                currDayEvents.add(it)
+                dayEvents[dayCode] = currDayEvents
 
                 while (Formatter.getDayCodeFromDateTime(currDay) != endCode) {
                     currDay = currDay.plusDays(1)
                     dayCode = Formatter.getDayCodeFromDateTime(currDay)
-                    currDayEvents = (dayEvents[dayCode] ?: ArrayList()).apply { add(it) }
-                    dayEvents.put(dayCode, currDayEvents)
+                    currDayEvents = dayEvents[dayCode] ?: ArrayList()
+                    currDayEvents.add(it)
+                    dayEvents[dayCode] = currDayEvents
                 }
             }
 
@@ -113,10 +115,8 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
     }
 
     private fun isToday(targetDate: DateTime, curDayInMonth: Int): Boolean {
-        return if (curDayInMonth > targetDate.dayOfMonth().maximumValue)
-            false
-        else
-            targetDate.withDayOfMonth(curDayInMonth).toString(Formatter.DAYCODE_PATTERN) == mToday
+        val targetMonthDays = targetDate.dayOfMonth().maximumValue
+        return targetDate.withDayOfMonth(Math.min(curDayInMonth, targetMonthDays)).toString(Formatter.DAYCODE_PATTERN) == mToday
     }
 
     private val monthName: String

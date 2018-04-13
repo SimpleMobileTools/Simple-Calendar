@@ -143,7 +143,9 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         val todayCode = Formatter.getDayCodeFromDateTime(DateTime())
         for (i in 0..6) {
             val dayCode = Formatter.getDayCodeFromDateTime(curDay)
-            val dayLetter = getDayLetter(curDay.dayOfWeek)
+            val dayLetters = mRes.getStringArray(R.array.week_day_letters).toList() as ArrayList<String>
+            val dayLetter = dayLetters[curDay.dayOfWeek - 1]
+
             mView.findViewById<TextView>(mRes.getIdentifier("week_day_label_$i", "id", context!!.packageName)).apply {
                 text = "$dayLetter\n${curDay.dayOfMonth}"
                 setTextColor(if (todayCode == dayCode) primaryColor else textColor)
@@ -153,18 +155,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             }
             curDay = curDay.plusDays(1)
         }
-    }
-
-    private fun getDayLetter(pos: Int): String {
-        return mRes.getString(when (pos) {
-            1 -> R.string.monday_letter
-            2 -> R.string.tuesday_letter
-            3 -> R.string.wednesday_letter
-            4 -> R.string.thursday_letter
-            5 -> R.string.friday_letter
-            6 -> R.string.saturday_letter
-            else -> R.string.sunday_letter
-        })
     }
 
     private fun checkScrollLimits(y: Int) {
@@ -359,10 +349,10 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
             val minTS = Math.max(startDateTime.seconds(), mWeekTimestamp)
             val maxTS = Math.min(endDateTime.seconds(), mWeekTimestamp + WEEK_SECONDS)
-            val startDateTimeInWeek = Formatter.getDateTimeFromTS(minTS)
-            val firstDayIndex = (startDateTimeInWeek.dayOfWeek - if (context!!.config.isSundayFirst) 0 else 1) % 7
             val daysCnt = Days.daysBetween(Formatter.getDateTimeFromTS(minTS).toLocalDate(), Formatter.getDateTimeFromTS(maxTS).toLocalDate()).days
 
+            val startDateTimeInWeek = Formatter.getDateTimeFromTS(minTS)
+            val firstDayIndex = (startDateTimeInWeek.dayOfWeek - if (context!!.config.isSundayFirst) 0 else 1) % 7
             var doesEventFit: Boolean
             val cnt = allDayRows.size - 1
             var wasEventHandled = false
@@ -383,7 +373,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                         wasEventHandled = true
                     } else if (index == cnt) {
                         if (allDayRows.size == index + 1) {
-                            allDayRows.add(HashSet<Int>())
+                            allDayRows.add(HashSet())
                             addNewLine()
                             drawAtLine++
                             wasEventHandled = true

@@ -24,7 +24,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
     private val NEW_EVENT = "new_event"
 
     companion object {
-        private var targetDate = DateTime.now()
+        private var targetDate = DateTime.now().withDayOfMonth(1)
     }
 
     override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
@@ -82,7 +82,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
     }
 
     private fun updateDays(context: Context, views: RemoteViews, days: List<DayMonthly>) {
-        val displayWeekNumbers = context.config.displayWeekNumbers
+        val displayWeekNumbers = context.config.showWeekNumbers
         val textColor = context.config.widgetTextColor
         val smallerFontSize = context.config.getFontSize() - 3f
         val res = context.resources
@@ -149,7 +149,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
     }
 
     private val monthlyCalendar = object : MonthlyCalendar {
-        override fun updateMonthlyCalendar(context: Context, month: String, days: List<DayMonthly>, checkedEvents: Boolean) {
+        override fun updateMonthlyCalendar(context: Context, month: String, days: ArrayList<DayMonthly>, checkedEvents: Boolean) {
             val largerFontSize = context.config.getFontSize() + 3f
             val textColor = context.config.widgetTextColor
             val resources = context.resources
@@ -182,7 +182,10 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
                 val monthCode = days.firstOrNull { it.code.substring(6) == "01" }?.code ?: Formatter.getTodayCode(context)
                 setupAppOpenIntent(context, views, R.id.top_value, monthCode)
 
-                appWidgetManager.updateAppWidget(it, views)
+                try {
+                    appWidgetManager.updateAppWidget(it, views)
+                } catch (ignored: RuntimeException) {
+                }
             }
         }
     }

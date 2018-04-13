@@ -26,6 +26,7 @@
     <string name="event_updated">Evento atualizado com sucesso</string>
     <string name="filter_events_by_type">Filtrar eventos por tipo</string>
     <string name="please_fill_location">Please fill in a location to be shown on a map</string>
+    <string name="public_event_notification_text">An event is upcoming</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Repetição</string>
@@ -130,7 +131,7 @@
     <string name="add_holidays">Add holidays</string>
     <string name="national_holidays">National holidays</string>
     <string name="religious_holidays">Religious holidays</string>
-    <string name="holidays_imported_successfully">Holidays have been successfully imported into a new event type</string>
+    <string name="holidays_imported_successfully">Holidays have been successfully imported into the \"Holidays\" event type</string>
     <string name="importing_some_holidays_failed">Importing some events failed</string>
     <string name="importing_holidays_failed">Importing holidays failed</string>
 
@@ -150,6 +151,7 @@
     <string name="replace_description_with_location">Replace event description with location</string>
     <string name="delete_all_events">Delete all events</string>
     <string name="delete_all_events_confirmation">Are you sure you want to delete all events? This will leave your event types and other settings intact.</string>
+    <string name="show_a_grid">Show a grid</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -205,7 +207,7 @@
 
         The Contacts permission is used only at importing contact birthdays and anniversaries.
 
-        Este aplicativo é apenas parte de um conjunto mais vasto de aplicações. Saiba mais em http://www.simplemobiletools.com
+        Este aplicativo é apenas parte de um conjunto mais vasto de aplicações. Saiba mais em https://www.simplemobiletools.com
     </string>
 
     <!--

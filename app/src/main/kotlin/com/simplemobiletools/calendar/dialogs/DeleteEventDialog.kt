@@ -29,8 +29,8 @@ class DeleteEventDialog(val activity: Activity, eventIds: List<Int>, val callbac
                 .setPositiveButton(R.string.yes, { dialog, which -> dialogConfirmed(view as ViewGroup, hasRepeatableEvent) })
                 .setNegativeButton(R.string.no, null)
                 .create().apply {
-            activity.setupDialogStuff(view, this)
-        }
+                    activity.setupDialogStuff(view, this)
+                }
     }
 
     private fun dialogConfirmed(view: ViewGroup, hasRepeatableEvent: Boolean) {

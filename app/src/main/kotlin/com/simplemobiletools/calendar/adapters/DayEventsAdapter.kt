@@ -24,6 +24,10 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
     private var allDayString = resources.getString(R.string.all_day)
     private var replaceDescriptionWithLocation = activity.config.replaceDescription
 
+    init {
+        setupDragListener(true)
+    }
+
     override fun getActionMenuId() = R.menu.cab_day
 
     override fun prepareActionMode(menu: Menu) {}

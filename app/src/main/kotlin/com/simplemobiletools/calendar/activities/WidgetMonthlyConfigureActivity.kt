@@ -88,7 +88,7 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
         config_bg_seekbar.progress = (mBgAlpha * 100).toInt()
         updateBgColor()
 
-        MonthlyCalendarImpl(this, applicationContext).updateMonthlyCalendar(DateTime(), false)
+        MonthlyCalendarImpl(this, applicationContext).updateMonthlyCalendar(DateTime().withDayOfMonth(1), false)
     }
 
     private fun saveConfig() {
@@ -110,15 +110,15 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
     }
 
     private fun pickBackgroundColor() {
-        ColorPickerDialog(this, mBgColorWithoutTransparency) {
-            mBgColorWithoutTransparency = it
+        ColorPickerDialog(this, mBgColorWithoutTransparency) { wasPositivePressed, color ->
+            mBgColorWithoutTransparency = color
             updateBgColor()
         }
     }
 
     private fun pickTextColor() {
-        ColorPickerDialog(this, mTextColor) {
-            mTextColorWithoutTransparency = it
+        ColorPickerDialog(this, mTextColor) { wasPositivePressed, color ->
+            mTextColorWithoutTransparency = color
             updateColors()
             updateDays()
         }
@@ -154,7 +154,7 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
     private fun updateDays() {
         val len = mDays!!.size
 
-        if (applicationContext.config.displayWeekNumbers) {
+        if (applicationContext.config.showWeekNumbers) {
             week_num.setTextColor(mTextColor)
             week_num.beVisible()
 
@@ -194,7 +194,7 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
         }
     }
 
-    override fun updateMonthlyCalendar(context: Context, month: String, days: List<DayMonthly>, checkedEvents: Boolean) {
+    override fun updateMonthlyCalendar(context: Context, month: String, days: ArrayList<DayMonthly>, checkedEvents: Boolean) {
         runOnUiThread {
             mDays = days
             top_value.text = month

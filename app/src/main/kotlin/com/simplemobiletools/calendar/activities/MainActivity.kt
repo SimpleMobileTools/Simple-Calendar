@@ -63,12 +63,15 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private var mStoredDayCode = ""
     private var mStoredIsSundayFirst = false
     private var mStoredUse24HourFormat = false
-    private var mStoredUseEnglish = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         appLaunched()
+
+        // just get a reference to the database to make sure it is created properly
+        dbHelper
+
         checkWhatsNewDialog()
         calendar_fab.beVisibleIf(config.storedView != YEARLY_VIEW)
         calendar_fab.setOnClickListener {
@@ -83,8 +86,20 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         if (intent?.action == Intent.ACTION_VIEW && intent.data != null) {
             val uri = intent.data
             if (uri.authority == "com.android.calendar") {
-                // clicking date on a third party widget: content://com.android.calendar/time/1507309245683
-                if (intent?.extras?.getBoolean("DETAIL_VIEW", false) == true) {
+                if (uri.path.startsWith("/events")) {
+                    // intents like content://com.android.calendar/events/1756
+                    val eventId = uri.lastPathSegment
+                    val id = dbHelper.getEventIdWithLastImportId(eventId)
+                    if (id != 0) {
+                        Intent(this, EventActivity::class.java).apply {
+                            putExtra(EVENT_ID, id)
+                            startActivity(this)
+                        }
+                    } else {
+                        toast(R.string.unknown_error_occurred)
+                    }
+                } else if (intent?.extras?.getBoolean("DETAIL_VIEW", false) == true) {
+                    // clicking date on a third party widget: content://com.android.calendar/time/1507309245683
                     val timestamp = uri.pathSegments.last()
                     if (timestamp.areDigitsOnly()) {
                         openDayAt(timestamp.toLong())
@@ -111,11 +126,6 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     override fun onResume() {
         super.onResume()
-        if (mStoredUseEnglish != config.useEnglish) {
-            restartActivity()
-            return
-        }
-
         if (mStoredTextColor != config.textColor || mStoredBackgroundColor != config.backgroundColor || mStoredPrimaryColor != config.primaryColor
                 || mStoredDayCode != Formatter.getTodayCode(applicationContext)) {
             updateViewPager()
@@ -126,7 +136,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
 
         if (config.storedView == WEEKLY_VIEW) {
-            if (mStoredIsSundayFirst != config.isSundayFirst || mStoredUse24HourFormat != config.use24hourFormat) {
+            if (mStoredIsSundayFirst != config.isSundayFirst || mStoredUse24HourFormat != config.use24HourFormat) {
                 updateViewPager()
             }
         }
@@ -199,14 +209,19 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
     }
 
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+        checkOpenIntents()
+    }
+
     private fun storeStateVariables() {
         config.apply {
-            mStoredUseEnglish = useEnglish
             mStoredIsSundayFirst = isSundayFirst
             mStoredTextColor = textColor
             mStoredPrimaryColor = primaryColor
             mStoredBackgroundColor = backgroundColor
-            mStoredUse24HourFormat = use24hourFormat
+            mStoredUse24HourFormat = use24HourFormat
         }
         mStoredDayCode = Formatter.getTodayCode(applicationContext)
     }
@@ -647,8 +662,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                     if (events.isEmpty()) {
                         toast(R.string.no_entries_for_exporting)
                     } else {
-                        toast(R.string.exporting)
-                        IcsExporter().exportEvents(this, file, events as ArrayList<Event>) {
+                        IcsExporter().exportEvents(this, file, events as ArrayList<Event>, true) {
                             toast(when (it) {
                                 IcsExporter.ExportResult.EXPORT_OK -> R.string.exporting_successful
                                 IcsExporter.ExportResult.EXPORT_PARTIAL -> R.string.exporting_some_entries_failed
@@ -673,7 +687,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                 FAQItem(getString(R.string.faq_1_title), getString(R.string.faq_1_text)),
                 FAQItem(getString(R.string.faq_2_title), getString(R.string.faq_2_text)))
 
-        startAboutActivity(R.string.app_name, LICENSE_KOTLIN or LICENSE_JODA or LICENSE_STETHO or LICENSE_MULTISELECT or LICENSE_LEAK_CANARY,
+        startAboutActivity(R.string.app_name, LICENSE_JODA or LICENSE_STETHO or LICENSE_MULTISELECT or LICENSE_LEAK_CANARY,
                 BuildConfig.VERSION_NAME, faqItems)
     }
 
@@ -730,7 +744,10 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             put("Bolivia", "bolivia.ics")
             put("Brasil", "brazil.ics")
             put("Canada", "canada.ics")
+            put("China", "china.ics")
+            put("Colombia", "colombia.ics")
             put("Česká republika", "czech.ics")
+            put("Danmark", "denmark.ics")
             put("Deutschland", "germany.ics")
             put("Eesti", "estonia.ics")
             put("España", "spain.ics")
@@ -738,10 +755,17 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             put("France", "france.ics")
             put("Hanguk", "southkorea.ics")
             put("Hellas", "greece.ics")
+            put("Hrvatska", "croatia.ics")
             put("India", "india.ics")
+            put("Indonesia", "indonesia.ics")
             put("Ísland", "iceland.ics")
             put("Italia", "italy.ics")
+            put("Latvija", "latvia.ics")
+            put("Lietuva", "lithuania.ics")
+            put("Luxemburg", "luxembourg.ics")
+            put("Makedonija", "macedonia.ics")
             put("Magyarország", "hungary.ics")
+            put("México", "mexico.ics")
             put("Nederland", "netherlands.ics")
             put("日本", "japan.ics")
             put("Norge", "norway.ics")
@@ -750,11 +774,15 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             put("Polska", "poland.ics")
             put("Portugal", "portugal.ics")
             put("Россия", "russia.ics")
+            put("România", "romania.ics")
             put("Schweiz", "switzerland.ics")
+            put("Srbija", "serbia.ics")
             put("Slovenija", "slovenia.ics")
             put("Slovensko", "slovakia.ics")
+            put("South Africa", "southafrica.ics")
             put("Suomi", "finland.ics")
             put("Sverige", "sweden.ics")
+            put("Ukraine", "ukraine.ics")
             put("United Kingdom", "unitedkingdom.ics")
             put("United States", "unitedstates.ics")
 
@@ -794,6 +822,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             add(Release(86, R.string.release_86))
             add(Release(88, R.string.release_88))
             add(Release(98, R.string.release_98))
+            add(Release(117, R.string.release_117))
             checkWhatsNew(this, BuildConfig.VERSION_CODE)
         }
     }

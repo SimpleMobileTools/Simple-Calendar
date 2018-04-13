@@ -1,6 +1,30 @@
 Changelog
 ==========
 
+Version 3.4.2 *(2018-04-13)*
+----------------------------
+
+ * Hide public notification content if desired so (by fraang)
+ * Added optional grid on the monthly view
+ * Allow exporting events on SD cards
+ * Allow selecting No Sound as a reminder sound
+ * Set default event status for CalDAV events as Confirmed
+
+Version 3.4.1 *(2018-03-30)*
+----------------------------
+
+ * Reworked custom notification sound, should be more reliable
+ * Fixed some glitches related to the monthly view
+ * Misc smaller bugfixes and stability improvements
+
+Version 3.4.0 *(2018-02-28)*
+----------------------------
+
+ * Rewrote the monthly view
+ * Improved the performance at importing events from ics files
+ * Added many new country holidays
+ * Handle some new third party intents
+
 Version 3.3.2 *(2018-02-21)*
 ----------------------------
 

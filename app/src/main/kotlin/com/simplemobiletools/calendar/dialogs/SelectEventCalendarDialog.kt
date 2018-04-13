@@ -39,8 +39,8 @@ class SelectEventCalendarDialog(val activity: Activity, val calendars: List<CalD
 
         dialog = AlertDialog.Builder(activity)
                 .create().apply {
-            activity.setupDialogStuff(view, this)
-        }
+                    activity.setupDialogStuff(view, this)
+                }
     }
 
     private fun addRadioButton(title: String, typeId: Int, color: Int) {

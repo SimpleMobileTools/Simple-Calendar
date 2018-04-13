@@ -26,6 +26,7 @@
     <string name="event_updated">Darvoud hizivaet gant berzh</string>
     <string name="filter_events_by_type">Silañ an darvoudoù dre rizh</string>
     <string name="please_fill_location">Please fill in a location to be shown on a map</string>
+    <string name="public_event_notification_text">An event is upcoming</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Addegouezh</string>
@@ -130,7 +131,7 @@
     <string name="add_holidays">Ouzhpennañ devezhioù gouel</string>
     <string name="national_holidays">Devezhioù gouel broadel</string>
     <string name="religious_holidays">Devezhioù gouel relijiel</string>
-    <string name="holidays_imported_successfully">An devezhioù gouel a zo bet enporzhiet en un doare darvoud nevez gant berzh</string>
+    <string name="holidays_imported_successfully">Holidays have been successfully imported into the \"Holidays\" event type</string>
     <string name="importing_some_holidays_failed">C\'hwitadenn en ur enporzhiañ ul lodenn eus an darvoudoù</string>
     <string name="importing_holidays_failed">C\'hwitadenn en ur enporzhiañ ul lodenn eus an devezhioù gouel</string>
 
@@ -150,6 +151,7 @@
     <string name="replace_description_with_location">Replace event description with location</string>
     <string name="delete_all_events">Delete all events</string>
     <string name="delete_all_events_confirmation">Are you sure you want to delete all events? This will leave your event types and other settings intact.</string>
+    <string name="show_a_grid">Show a grid</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -205,7 +207,7 @@
 
         Ret eo reiñ an aotre Darempredoù evit enporzhiañ deizioù-ha-bloaz an darempredoù.
 
-        An arload-mañ a zo ul lodenn eus un heuliad arloadoù brasoc\'h. Gallout a rit o kavout anezho war http://www.simplemobiletools.com
+        An arload-mañ a zo ul lodenn eus un heuliad arloadoù brasoc\'h. Gallout a rit o kavout anezho war https://www.simplemobiletools.com
     </string>
 
     <!--

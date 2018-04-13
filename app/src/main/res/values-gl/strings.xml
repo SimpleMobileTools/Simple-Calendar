@@ -26,6 +26,7 @@
     <string name="event_updated">O evento foi actualizado correctamente</string>
     <string name="filter_events_by_type">Filtrar eventos por tipo</string>
     <string name="please_fill_location">Please fill in a location to be shown on a map</string>
+    <string name="public_event_notification_text">An event is upcoming</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Repetición</string>
@@ -130,7 +131,7 @@
     <string name="add_holidays">Engadir días festivos</string>
     <string name="national_holidays">Festivo nacional</string>
     <string name="religious_holidays">Festas relixiosas</string>
-    <string name="holidays_imported_successfully">Engadíronse correctamente os días festivos nun novo tipo de evento</string>
+    <string name="holidays_imported_successfully">Holidays have been successfully imported into the \"Holidays\" event type</string>
     <string name="importing_some_holidays_failed">Fallou a importación de algúns eventos</string>
     <string name="importing_holidays_failed">Fallou a importación de días festivos</string>
 
@@ -150,6 +151,7 @@
     <string name="replace_description_with_location">Replace event description with location</string>
     <string name="delete_all_events">Delete all events</string>
     <string name="delete_all_events_confirmation">Are you sure you want to delete all events? This will leave your event types and other settings intact.</string>
+    <string name="show_a_grid">Show a grid</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -205,7 +207,7 @@
 
         O permiso aos Contactos só é preciso se quere importar os cumpleanos dos contactos.
 
-        Esta aplicación é parte de unha serie máis grande de aplicativos. Puede atopar o resto en http://www.simplemobiletools.com
+        Esta aplicación é parte de unha serie máis grande de aplicativos. Puede atopar o resto en https://www.simplemobiletools.com
     </string>
 
     <!--

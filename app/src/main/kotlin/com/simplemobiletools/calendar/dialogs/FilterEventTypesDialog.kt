@@ -22,8 +22,8 @@ class FilterEventTypesDialog(val activity: SimpleActivity, val callback: () -> U
                 .setPositiveButton(R.string.ok, { dialogInterface, i -> confirmEventTypes() })
                 .setNegativeButton(R.string.cancel, null)
                 .create().apply {
-            activity.setupDialogStuff(view, this, R.string.filter_events_by_type)
-        }
+                    activity.setupDialogStuff(view, this, R.string.filter_events_by_type)
+                }
     }
 
     private fun confirmEventTypes() {

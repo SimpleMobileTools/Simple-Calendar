@@ -8,7 +8,7 @@
     <string name="monthly_view">月曆</string>
     <string name="yearly_view">年曆</string>
     <string name="simple_event_list">簡易活動列表</string>
-    <string name="no_upcoming_events">看來你近期沒有任何活動。</string>
+    <string name="no_upcoming_events">你近期似乎沒有任何活動。</string>
     <string name="add_some_events">你可以用底部的[加號]按鈕添加一些活動。</string>
     <string name="go_to_today">前往今天</string>
 
@@ -26,6 +26,7 @@
     <string name="event_updated">活動更新成功</string>
     <string name="filter_events_by_type">依類型篩選活動</string>
     <string name="please_fill_location">請填入要顯示在地圖上的地點</string>
+    <string name="public_event_notification_text">An event is upcoming</string>
 
     <!-- Event Repetition -->
     <string name="repetition">重複</string>
@@ -130,7 +131,7 @@
     <string name="add_holidays">添加節日</string>
     <string name="national_holidays">國定節日</string>
     <string name="religious_holidays">宗教節日</string>
-    <string name="holidays_imported_successfully">節日成功匯入新活動類型</string>
+    <string name="holidays_imported_successfully">節日已成功匯入"節日"活動類型</string>
     <string name="importing_some_holidays_failed">匯入一些活動失敗</string>
     <string name="importing_holidays_failed">匯入節日失敗</string>
 
@@ -150,6 +151,7 @@
     <string name="replace_description_with_location">活動描述改成地點</string>
     <string name="delete_all_events">刪除全部活動</string>
     <string name="delete_all_events_confirmation">你確定要刪除全部活動嗎?會完整留下你的活動類型和其他設定。</string>
+    <string name="show_a_grid">Show a grid</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -205,7 +207,7 @@
 
         聯絡人權限只是用來匯入聯絡人生日和紀念日。
 
-        這程式只是一系列眾多應用程式的其中一項，你可以在這發現更多 http://www.simplemobiletools.com
+        這程式只是一系列眾多應用程式的其中一項，你可以在這發現更多 https://www.simplemobiletools.com
     </string>
 
     <!--

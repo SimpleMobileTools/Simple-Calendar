@@ -26,6 +26,7 @@
     <string name="event_updated">Událost úspěšně změněna</string>
     <string name="filter_events_by_type">Filtrovat události podle typu</string>
     <string name="please_fill_location">Please fill in a location to be shown on a map</string>
+    <string name="public_event_notification_text">An event is upcoming</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Opakovaná událost</string>
@@ -130,7 +131,7 @@
     <string name="add_holidays">Přidat svátek</string>
     <string name="national_holidays">Státní svátky</string>
     <string name="religious_holidays">Církevní svátky</string>
-    <string name="holidays_imported_successfully">Svátky byly úspěšně importovány do nového typu události</string>
+    <string name="holidays_imported_successfully">Holidays have been successfully imported into the \"Holidays\" event type</string>
     <string name="importing_some_holidays_failed">Import některých událostí se nezdařil</string>
     <string name="importing_holidays_failed">Import svátků nezdařil</string>
 
@@ -150,6 +151,7 @@
     <string name="replace_description_with_location">Replace event description with location</string>
     <string name="delete_all_events">Delete all events</string>
     <string name="delete_all_events_confirmation">Are you sure you want to delete all events? This will leave your event types and other settings intact.</string>
+    <string name="show_a_grid">Show a grid</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -205,7 +207,7 @@
 
         The Contacts permission is used only at importing contact birthdays and anniversaries.
 
-        Tato aplikace je součástí větší sady aplikací. Tyto a další aplikace najdete na http://www.simplemobiletools.com
+        Tato aplikace je součástí větší sady aplikací. Tyto a další aplikace najdete na https://www.simplemobiletools.com
     </string>
 
     <!--

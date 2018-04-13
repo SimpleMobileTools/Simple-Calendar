@@ -26,6 +26,7 @@
     <string name="event_updated">Udalosť bola úspešne upravená</string>
     <string name="filter_events_by_type">Filtrovať udalosti podľa typu</string>
     <string name="please_fill_location">Prosím zadajte polohu, ktorá má byť zobrazená na mape</string>
+    <string name="public_event_notification_text">Blíži sa udalosť</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Opakovanie</string>
@@ -121,9 +122,6 @@
     <string name="regular_event">Bežná udalosť</string>
     <string name="cannot_delete_default_type">Predvolený typ nie je možné vymazať</string>
     <string name="select_event_type">Zvoľte typ udalosti</string>
-    <string name="holidays_imported_successfully">Sviatky boli úspešne importované do nového typu udalostí</string>
-    <string name="importing_some_holidays_failed">Importovanie niektorých sviatkov zlyhalo</string>
-    <string name="importing_holidays_failed">Importovanie udalostí zlyhalo</string>
     <string name="move_events_into_default">Presunúť dotknuté udalosti do predvoleného typu udalostí</string>
     <string name="remove_affected_events">Natrvalo odstrániť dotknuté udalosti</string>
     <string name="unsync_caldav_calendar">Na odstránenie CalDAV kalendára musíte vypnúť jeho synchronizáciu</string>
@@ -133,6 +131,9 @@
     <string name="add_holidays">Pridať sviatky</string>
     <string name="national_holidays">Štátne sviatky</string>
     <string name="religious_holidays">Náboženské sviatky</string>
+    <string name="holidays_imported_successfully">Sviatky boli úspešne importované do nového typu udalostí \"Sviatky\"</string>
+    <string name="importing_some_holidays_failed">Importovanie niektorých sviatkov zlyhalo</string>
+    <string name="importing_holidays_failed">Importovanie udalostí zlyhalo</string>
 
     <!-- Settings -->
     <string name="manage_event_types">Spravovať typy udalostí</string>
@@ -150,6 +151,7 @@
     <string name="replace_description_with_location">Nahradiť popis udalosti miestom</string>
     <string name="delete_all_events">Odstrániť všetky udalosti</string>
     <string name="delete_all_events_confirmation">Ste si istý, že chcete odstrániť všetky udalosti? Všetky typy udalostí a nastavenia ostanú nedotknuté.</string>
+    <string name="show_a_grid">Zobraziť mriežku</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -205,7 +207,7 @@
 
         Oprávnenie ku kontaktom je používané iba pri pridávaní narodenín alebo výročí kontaktov.
 
-        Táto aplikácia je iba jednou zo skupiny aplikácií. Ostatné viete nájsť na http://www.simplemobiletools.com
+        Táto aplikácia je iba jednou zo skupiny aplikácií. Ostatné viete nájsť na https://www.simplemobiletools.com
     </string>
 
     <!--

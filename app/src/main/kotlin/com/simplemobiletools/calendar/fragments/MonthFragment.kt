@@ -9,13 +9,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
-import android.widget.LinearLayout
 import android.widget.RelativeLayout
-import android.widget.TextView
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.MainActivity
-import com.simplemobiletools.calendar.extensions.addDayEvents
-import com.simplemobiletools.calendar.extensions.addDayNumber
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.helpers.Config
 import com.simplemobiletools.calendar.helpers.DAY_CODE
@@ -24,8 +20,10 @@ import com.simplemobiletools.calendar.helpers.MonthlyCalendarImpl
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.interfaces.NavigationListener
 import com.simplemobiletools.calendar.models.DayMonthly
-import com.simplemobiletools.commons.extensions.*
-import kotlinx.android.synthetic.main.first_row.*
+import com.simplemobiletools.commons.extensions.applyColorFilter
+import com.simplemobiletools.commons.extensions.beGone
+import com.simplemobiletools.commons.extensions.getDialogTheme
+import com.simplemobiletools.commons.extensions.setupDialogStuff
 import kotlinx.android.synthetic.main.fragment_month.view.*
 import kotlinx.android.synthetic.main.top_navigation.view.*
 import org.joda.time.DateTime
@@ -33,9 +31,9 @@ import org.joda.time.DateTime
 class MonthFragment : Fragment(), MonthlyCalendar {
     private var mTextColor = 0
     private var mSundayFirst = false
+    private var mShowWeekNumbers = false
     private var mDayCode = ""
     private var mPackageName = ""
-    private var mDayLabelHeight = 0
     private var mLastHash = 0L
     private var mCalendar: MonthlyCalendarImpl? = null
 
@@ -52,10 +50,9 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         mHolder = view.month_calendar_holder
         mDayCode = arguments!!.getString(DAY_CODE)
         mConfig = context!!.config
-        mSundayFirst = mConfig.isSundayFirst
+        storeStateVariables()
 
         setupButtons()
-        setupLabels()
         mCalendar = MonthlyCalendarImpl(this, context!!)
 
         return view
@@ -63,14 +60,13 @@ class MonthFragment : Fragment(), MonthlyCalendar {
 
     override fun onPause() {
         super.onPause()
-        mSundayFirst = context!!.config.isSundayFirst
+        storeStateVariables()
     }
 
     override fun onResume() {
         super.onResume()
-        if (mConfig.isSundayFirst != mSundayFirst) {
-            mSundayFirst = mConfig.isSundayFirst
-            setupLabels()
+        if (mConfig.showWeekNumbers != mShowWeekNumbers) {
+            mLastHash = -1L
         }
 
         mCalendar!!.apply {
@@ -78,14 +74,22 @@ class MonthFragment : Fragment(), MonthlyCalendar {
             getDays(false)    // prefill the screen asap, even if without events
         }
 
+        storeStateVariables()
         updateCalendar()
+    }
+
+    private fun storeStateVariables() {
+        mConfig.apply {
+            mSundayFirst = isSundayFirst
+            mShowWeekNumbers = showWeekNumbers
+        }
     }
 
     fun updateCalendar() {
         mCalendar?.updateMonthlyCalendar(Formatter.getDateTimeFromCode(mDayCode))
     }
 
-    override fun updateMonthlyCalendar(context: Context, month: String, days: List<DayMonthly>, checkedEvents: Boolean) {
+    override fun updateMonthlyCalendar(context: Context, month: String, days: ArrayList<DayMonthly>, checkedEvents: Boolean) {
         val newHash = month.hashCode() + days.hashCode().toLong()
         if ((mLastHash != 0L && !checkedEvents) || mLastHash == newHash) {
             return
@@ -153,51 +157,9 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         listener?.goToDateTime(newDateTime)
     }
 
-    private fun setupLabels() {
-        val letters = context!!.resources.getStringArray(R.array.week_day_letters)
-        for (i in 0..6) {
-            var index = i
-            if (mSundayFirst) {
-                index = (index + 6) % letters.size
-            }
-
-            mHolder.findViewById<TextView>(mRes.getIdentifier("label_$i", "id", mPackageName)).apply {
-                setTextColor(mTextColor)
-                text = letters[index]
-            }
-        }
-    }
-
-    private fun updateDays(days: List<DayMonthly>) {
-        val displayWeekNumbers = mConfig.displayWeekNumbers
-        val len = days.size
-
-        if (week_num == null)
-            return
-
-        week_num.setTextColor(mTextColor)
-        week_num.beVisibleIf(displayWeekNumbers)
-
-        for (i in 0..5) {
-            mHolder.findViewById<TextView>(mRes.getIdentifier("week_num_$i", "id", mPackageName)).apply {
-                text = "${days[i * 7 + 3].weekOfYear}:"     // fourth day of the week matters
-                setTextColor(mTextColor)
-                beVisibleIf(displayWeekNumbers)
-            }
-        }
-
-        val dividerMargin = mRes.displayMetrics.density.toInt()
-        for (i in 0 until len) {
-            mHolder.findViewById<LinearLayout>(mRes.getIdentifier("day_$i", "id", mPackageName)).apply {
-                val day = days[i]
-                setOnClickListener {
-                    (activity as MainActivity).openDayFromMonthly(Formatter.getDateTimeFromCode(day.code))
-                }
-
-                removeAllViews()
-                context.addDayNumber(mTextColor, day, this, mDayLabelHeight) { mDayLabelHeight = it }
-                context.addDayEvents(day, this, mRes, dividerMargin)
-            }
+    private fun updateDays(days: ArrayList<DayMonthly>) {
+        mHolder.month_view_wrapper.updateDays(days) {
+            (activity as MainActivity).openDayFromMonthly(Formatter.getDateTimeFromCode(it.code))
         }
     }
 }

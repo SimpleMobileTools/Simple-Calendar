@@ -23,6 +23,10 @@ import java.util.*
 class ManageEventTypesAdapter(activity: SimpleActivity, val eventTypes: ArrayList<EventType>, val listener: DeleteEventTypesListener?, recyclerView: MyRecyclerView,
                               itemClick: (Any) -> Unit) : MyRecyclerViewAdapter(activity, recyclerView, null, itemClick) {
 
+    init {
+        setupDragListener(true)
+    }
+
     override fun getActionMenuId() = R.menu.cab_event_type
 
     override fun prepareActionMode(menu: Menu) {}

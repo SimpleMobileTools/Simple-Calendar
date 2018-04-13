@@ -26,6 +26,7 @@
     <string name="event_updated">Termin erfolgreich aktualisiert</string>
     <string name="filter_events_by_type">Sortiere Termine nach Typ</string>
     <string name="please_fill_location">Bitte trage einen Ort ein, der auf einer Karte angezeigt werden soll</string>
+    <string name="public_event_notification_text">Ein Termin steht an</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Wiederholung</string>
@@ -89,7 +90,6 @@
 
     <!-- Event Reminders -->
     <string name="reminder">Erinnerung</string>
-    <string name="tomorrow">Morgen</string>
     <string name="before">vorher</string>
     <string name="add_another_reminder">Füge eine weitere Erinnerung hinzu</string>
     <string name="event_reminders">Ereignis Erinnerungen</string>
@@ -131,7 +131,7 @@
     <string name="add_holidays">Feiertage hinzufügen</string>
     <string name="national_holidays">Nationale Feiertage</string>
     <string name="religious_holidays">Religiöse Feiertage</string>
-    <string name="holidays_imported_successfully">Feiertage wurden erfolgreich in einen neuen Termintypen importiert</string>
+    <string name="holidays_imported_successfully">Feiertage sind erfolgreich in den \"Feiertage\"-Termintyp importiert worden</string>
     <string name="importing_some_holidays_failed">Importieren einiger Termine fehlgeschlagen</string>
     <string name="importing_holidays_failed">Importieren von Feiertagen fehlgeschlagen</string>
 
@@ -151,6 +151,7 @@
     <string name="replace_description_with_location">Ersetze Terminbeschreibung mit Ort</string>
     <string name="delete_all_events">Alle Termine löschen</string>
     <string name="delete_all_events_confirmation">Bist du sicher, dass du alle Termine löschen willst? Deine Termintypen und Einstellungen bleiben erhalten.</string>
+    <string name="show_a_grid">Show a grid</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -207,7 +208,7 @@
 
         Die Kontakte-Berechtigung wird nur für das Importieren von Geburtstagen benötigt.
 
-        Diese App ist nur eine aus einer größeren Serie von schlichten Apps. Der Rest davon findet sich auf http://www.simplemobiletools.com
+        Diese App ist nur eine aus einer größeren Serie von schlichten Apps. Der Rest davon findet sich auf https://www.simplemobiletools.com
     </string>
 
     <!--

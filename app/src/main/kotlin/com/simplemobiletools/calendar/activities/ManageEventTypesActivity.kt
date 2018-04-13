@@ -35,7 +35,6 @@ class ManageEventTypesActivity : SimpleActivity(), DeleteEventTypesListener {
                 val adapter = ManageEventTypesAdapter(this, it, this, manage_event_types_list) {
                     showEventTypeDialog(it as EventType)
                 }
-                adapter.setupDragListener(true)
                 manage_event_types_list.adapter = adapter
             }
         }
@@ -62,11 +61,13 @@ class ManageEventTypesActivity : SimpleActivity(), DeleteEventTypesListener {
             }
         }
 
-        dbHelper.deleteEventTypes(eventTypes, deleteEvents) {
-            if (it == 0) {
-                toast(R.string.unknown_error_occurred)
+        Thread {
+            dbHelper.deleteEventTypes(eventTypes, deleteEvents) {
+                if (it == 0) {
+                    toast(R.string.unknown_error_occurred)
+                }
             }
-        }
+        }.start()
         return true
     }
 }

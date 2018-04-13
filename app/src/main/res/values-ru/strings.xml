@@ -26,6 +26,7 @@
     <string name="event_updated">Событие успешно обновлено</string>
     <string name="filter_events_by_type">Фильтровать события по типу</string>
     <string name="please_fill_location">Пожалуйста, введите место, которое будет показано на карте</string>
+    <string name="public_event_notification_text">An event is upcoming</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Повторять</string>
@@ -130,7 +131,7 @@
     <string name="add_holidays">Добавить праздники</string>
     <string name="national_holidays">Национальные праздники</string>
     <string name="religious_holidays">Религиозные праздники</string>
-    <string name="holidays_imported_successfully">Праздники были успешно импортированы в новый тип событий</string>
+    <string name="holidays_imported_successfully">Holidays have been successfully imported into the \"Holidays\" event type</string>
     <string name="importing_some_holidays_failed">Не удалось импортировать некоторые события</string>
     <string name="importing_holidays_failed">Не удалось импортировать праздники</string>
 
@@ -150,6 +151,7 @@
     <string name="replace_description_with_location">Заменить описание события местоположением</string>
     <string name="delete_all_events">Удалить все события</string>
     <string name="delete_all_events_confirmation">Вы действительно хотите удалить все события? Это не затронет ваши типы событий и другие настройки.</string>
+    <string name="show_a_grid">Show a grid</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -205,7 +207,7 @@
 
         Разрешение на чтение контактов требуется только при импорте дней рождения.
 
-        Это приложение является лишь частью крупной серии приложений. Вы можете найти остальные на http://www.simplemobiletools.com
+        Это приложение является лишь частью крупной серии приложений. Вы можете найти остальные на https://www.simplemobiletools.com
     </string>
 
     <!--

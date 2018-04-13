@@ -26,6 +26,7 @@
     <string name="event_updated">Händelsen har uppdaterats</string>
     <string name="filter_events_by_type">Filtrera händelser efter typ</string>
     <string name="please_fill_location">Du måste ange en plats som kan visas på en karta</string>
+    <string name="public_event_notification_text">An event is upcoming</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Upprepning</string>
@@ -130,7 +131,7 @@
     <string name="add_holidays">Lägg till helgdagar</string>
     <string name="national_holidays">Nationella helgdagar</string>
     <string name="religious_holidays">Religiösa helgdagar</string>
-    <string name="holidays_imported_successfully">Helgdagar har importerats till en ny händelsetyp</string>
+    <string name="holidays_imported_successfully">Holidays have been successfully imported into the \"Holidays\" event type</string>
     <string name="importing_some_holidays_failed">Vissa händelser kunde inte importeras</string>
     <string name="importing_holidays_failed">Helgdagar kunde inte importeras</string>
 
@@ -150,6 +151,7 @@
     <string name="replace_description_with_location">Ersätt händelsebeskrivning med plats</string>
     <string name="delete_all_events">Ta bort alla händelser</string>
     <string name="delete_all_events_confirmation">Är du säker på att du vill ta bort alla händelser? Dina händelsetyper och andra inställningar påverkas inte av borttagningen.</string>
+    <string name="show_a_grid">Show a grid</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -205,7 +207,7 @@
 
         Kontaktbehörigheten används bara för att importera kontakters födelsedagar och årsdagar.
 
-        Denna app är bara en del av en större serie appar. Du hittar resten av dem på http://www.simplemobiletools.com
+        Denna app är bara en del av en större serie appar. Du hittar resten av dem på https://www.simplemobiletools.com
     </string>
 
     <!--

@@ -361,6 +361,7 @@ class CalDAVHandler(val context: Context) {
             put(CalendarContract.Events.RRULE, Parser().getRepeatCode(event))
             put(CalendarContract.Events.EVENT_TIMEZONE, TimeZone.getDefault().toString())
             put(CalendarContract.Events.EVENT_LOCATION, event.location)
+            put(CalendarContract.Events.STATUS, CalendarContract.Events.STATUS_CONFIRMED)
 
             if (event.getIsAllDay() && event.endTS > event.startTS)
                 event.endTS += DAY

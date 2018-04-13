@@ -37,7 +37,8 @@ const val WEEK_NUMBERS = "week_numbers"
 const val START_WEEKLY_AT = "start_weekly_at"
 const val END_WEEKLY_AT = "end_weekly_at"
 const val VIBRATE = "vibrate"
-const val REMINDER_SOUND = "reminder_sound"
+const val REMINDER_SOUND_URI = "reminder_sound_uri"
+const val REMINDER_SOUND_TITLE = "reminder_sound_title"
 const val VIEW = "view"
 const val REMINDER_MINUTES = "reminder_minutes"
 const val REMINDER_MINUTES_2 = "reminder_minutes_2"
@@ -49,6 +50,7 @@ const val CALDAV_SYNCED_CALENDAR_IDS = "caldav_synced_calendar_ids"
 const val LAST_USED_CALDAV_CALENDAR = "last_used_caldav_calendar"
 const val DISPLAY_PAST_EVENTS = "display_past_events"
 const val REPLACE_DESCRIPTION = "replace_description"
+const val SHOW_GRID = "show_grid"
 
 // repeat_rule for monthly repetition
 const val REPEAT_MONTH_SAME_DAY = 1                   // ie 25th every month

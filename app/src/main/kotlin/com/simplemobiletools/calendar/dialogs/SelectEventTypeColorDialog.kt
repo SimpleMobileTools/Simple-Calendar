@@ -32,8 +32,8 @@ class SelectEventTypeColorDialog(val activity: Activity, val eventType: EventTyp
         wasInit = true
         dialog = AlertDialog.Builder(activity)
                 .create().apply {
-            activity.setupDialogStuff(view, this)
-        }
+                    activity.setupDialogStuff(view, this)
+                }
     }
 
     private fun addRadioButton(colorKey: Int, color: Int) {

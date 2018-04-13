@@ -10,16 +10,18 @@ import android.content.Context
 import android.content.Intent
 import android.content.res.Resources
 import android.database.ContentObserver
+import android.media.AudioAttributes
+import android.media.AudioManager
 import android.net.Uri
 import android.os.Bundle
 import android.provider.CalendarContract
+import android.support.v4.app.AlarmManagerCompat
 import android.support.v4.app.NotificationCompat
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
-import com.simplemobiletools.calendar.BuildConfig
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.activities.SimpleActivity
@@ -31,14 +33,11 @@ import com.simplemobiletools.calendar.receivers.CalDAVSyncReceiver
 import com.simplemobiletools.calendar.receivers.NotificationReceiver
 import com.simplemobiletools.calendar.services.SnoozeService
 import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.isKitkatPlus
-import com.simplemobiletools.commons.helpers.isLollipopPlus
-import com.simplemobiletools.commons.helpers.isMarshmallowPlus
+import com.simplemobiletools.commons.helpers.SILENT
 import com.simplemobiletools.commons.helpers.isOreoPlus
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 import org.joda.time.LocalDate
-import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -49,12 +48,11 @@ val Context.dbHelper: DBHelper get() = DBHelper.newInstance(applicationContext)
 fun Context.getNowSeconds() = (System.currentTimeMillis() / 1000).toInt()
 
 fun Context.updateWidgets() {
-    val widgetsCnt = AppWidgetManager.getInstance(applicationContext).getAppWidgetIds(ComponentName(applicationContext, MyWidgetMonthlyProvider::class.java))
-    if (widgetsCnt.isNotEmpty()) {
-        val ids = intArrayOf(R.xml.widget_monthly_info)
+    val widgetIDs = AppWidgetManager.getInstance(applicationContext).getAppWidgetIds(ComponentName(applicationContext, MyWidgetMonthlyProvider::class.java))
+    if (widgetIDs.isNotEmpty()) {
         Intent(applicationContext, MyWidgetMonthlyProvider::class.java).apply {
             action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
-            putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
+            putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, widgetIDs)
             sendBroadcast(this)
         }
     }
@@ -63,12 +61,11 @@ fun Context.updateWidgets() {
 }
 
 fun Context.updateListWidget() {
-    val widgetsCnt = AppWidgetManager.getInstance(applicationContext).getAppWidgetIds(ComponentName(applicationContext, MyWidgetListProvider::class.java))
-    if (widgetsCnt.isNotEmpty()) {
-        val ids = intArrayOf(R.xml.widget_list_info)
+    val widgetIDs = AppWidgetManager.getInstance(applicationContext).getAppWidgetIds(ComponentName(applicationContext, MyWidgetListProvider::class.java))
+    if (widgetIDs.isNotEmpty()) {
         Intent(applicationContext, MyWidgetListProvider::class.java).apply {
             action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
-            putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
+            putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, widgetIDs)
             sendBroadcast(this)
         }
     }
@@ -109,12 +106,7 @@ fun Context.scheduleEventIn(notifTS: Long, event: Event) {
 
     val pendingIntent = getNotificationIntent(applicationContext, event)
     val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-
-    when {
-        isMarshmallowPlus() -> alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, notifTS, pendingIntent)
-        isKitkatPlus() -> alarmManager.setExact(AlarmManager.RTC_WAKEUP, notifTS, pendingIntent)
-        else -> alarmManager.set(AlarmManager.RTC_WAKEUP, notifTS, pendingIntent)
-    }
+    AlarmManagerCompat.setExactAndAllowWhileIdle(alarmManager, AlarmManager.RTC_WAKEUP, notifTS, pendingIntent)
 }
 
 fun Context.cancelNotification(id: Int) {
@@ -159,69 +151,77 @@ fun Context.notifyEvent(event: Event) {
     val startTime = Formatter.getTimeFromTS(applicationContext, event.startTS)
     val endTime = Formatter.getTimeFromTS(applicationContext, event.endTS)
     val startDate = Formatter.getDateFromTS(event.startTS)
-    val displayedStartDate: String
-    if (startDate == LocalDate.now()) {
-        displayedStartDate = ""
-    } else if (startDate == LocalDate.now().plusDays(1)) {
-        displayedStartDate = getString(R.string.tomorrow)
-    } else /* At least 2 days in the future */ {
-        displayedStartDate = Formatter.getDayAndMonth(startDate)
+    val displayedStartDate = when (startDate) {
+        LocalDate.now() -> ""
+        LocalDate.now().plusDays(1) -> getString(R.string.tomorrow)
+        else -> "${Formatter.getDateFromCode(this, Formatter.getDayCodeFromTS(event.startTS))},"
     }
+
     val timeRange = if (event.getIsAllDay()) getString(R.string.all_day) else getFormattedEventTime(startTime, endTime)
     val descriptionOrLocation = if (config.replaceDescription) event.location else event.description
-    val content = arrayOf(displayedStartDate, timeRange, descriptionOrLocation).joinToString(" ")
-    val notification = getNotification(applicationContext, pendingIntent, event, content)
+    val content = "$displayedStartDate $timeRange $descriptionOrLocation".trim()
+    val notification = getNotification(pendingIntent, event, content)
     val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
     notificationManager.notify(event.id, notification)
 }
 
 @SuppressLint("NewApi")
-private fun getNotification(context: Context, pendingIntent: PendingIntent, event: Event, content: String): Notification {
-    val channelId = "reminder_channel"
+fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content: String, publicVersion: Boolean = false): Notification {
+    var soundUri = config.reminderSoundUri
+    if (soundUri == SILENT) {
+        soundUri = ""
+    } else {
+        grantReadUriPermission(soundUri)
+    }
+
+    val channelId = "my_reminder_channel_$soundUri"
     if (isOreoPlus()) {
-        val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        val name = context.resources.getString(R.string.event_reminders)
+        val audioAttributes = AudioAttributes.Builder()
+                .setUsage(AudioAttributes.USAGE_NOTIFICATION)
+                .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                .setLegacyStreamType(AudioManager.STREAM_NOTIFICATION)
+                .setFlags(AudioAttributes.FLAG_AUDIBILITY_ENFORCED)
+                .build()
+
+        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val name = resources.getString(R.string.event_reminders)
         val importance = NotificationManager.IMPORTANCE_HIGH
         NotificationChannel(channelId, name, importance).apply {
             enableLights(true)
             lightColor = event.color
             enableVibration(false)
+            setSound(Uri.parse(soundUri), audioAttributes)
             notificationManager.createNotificationChannel(this)
         }
     }
 
-    var soundUri = Uri.parse(context.config.reminderSound)
-    if (soundUri.scheme == "file") {
-        try {
-            soundUri = context.getFilePublicUri(File(soundUri.path), BuildConfig.APPLICATION_ID)
-        } catch (ignored: Exception) {
-        }
-    }
+    val contentTitle = if (publicVersion) resources.getString(R.string.app_name) else event.title
+    val contentText = if (publicVersion) resources.getString(R.string.public_event_notification_text) else content
 
-    val builder = NotificationCompat.Builder(context)
-            .setContentTitle(event.title)
-            .setContentText(content)
+    val builder = NotificationCompat.Builder(this)
+            .setContentTitle(contentTitle)
+            .setContentText(contentText)
             .setSmallIcon(R.drawable.ic_calendar)
             .setContentIntent(pendingIntent)
             .setPriority(Notification.PRIORITY_HIGH)
             .setDefaults(Notification.DEFAULT_LIGHTS)
             .setAutoCancel(true)
-            .setSound(soundUri)
+            .setSound(Uri.parse(soundUri), AudioManager.STREAM_NOTIFICATION)
             .setChannelId(channelId)
-            .addAction(R.drawable.ic_snooze, context.getString(R.string.snooze), getSnoozePendingIntent(context, event))
+            .addAction(R.drawable.ic_snooze, getString(R.string.snooze), getSnoozePendingIntent(this, event))
 
-    if (isLollipopPlus()) {
-        builder.setVisibility(Notification.VISIBILITY_PUBLIC)
+    if (config.vibrateOnReminder) {
+        builder.setVibrate(longArrayOf(0, 300, 300, 300))
     }
 
-    if (context.config.vibrateOnReminder) {
-        builder.setVibrate(longArrayOf(0, 300, 300, 300))
+    if (!publicVersion) {
+        builder.setPublicVersion(getNotification(pendingIntent, event, content, true))
     }
 
     return builder.build()
 }
 
-private fun getFormattedEventTime(startTime: String, endTime: String) = if (startTime == endTime) startTime else "$startTime\u2013$endTime"
+private fun getFormattedEventTime(startTime: String, endTime: String) = if (startTime == endTime) startTime else "$startTime \u2013 $endTime"
 
 private fun getPendingIntent(context: Context, event: Event): PendingIntent {
     val intent = Intent(context, EventActivity::class.java)

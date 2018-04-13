@@ -15,14 +15,20 @@ class NotificationReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         val powerManager = context.getSystemService(Context.POWER_SERVICE) as PowerManager
         val wakelock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "Simple Calendar")
-        wakelock.acquire(5000)
+        wakelock.acquire(3000)
 
-        context.updateListWidget()
+        Thread {
+            handleIntent(context, intent)
+        }.start()
+    }
+
+    private fun handleIntent(context: Context, intent: Intent) {
         val id = intent.getIntExtra(EVENT_ID, -1)
         if (id == -1) {
             return
         }
 
+        context.updateListWidget()
         val event = context.dbHelper.getEventWithId(id)
         if (event == null || event.getReminders().isEmpty()) {
             return

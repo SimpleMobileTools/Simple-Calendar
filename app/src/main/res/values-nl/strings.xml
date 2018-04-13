@@ -26,6 +26,7 @@
     <string name="event_updated">Afspraak bijgewerkt</string>
     <string name="filter_events_by_type">Afspraken op type filteren</string>
     <string name="please_fill_location">Vul de locatie in om deze op de kaart te tonen</string>
+    <string name="public_event_notification_text">Afspraak aanstaande</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Herhaling</string>
@@ -130,7 +131,7 @@
     <string name="add_holidays">Feestdagen toevoegen</string>
     <string name="national_holidays">Nationale feestdagen</string>
     <string name="religious_holidays">Religieuze feestdagen</string>
-    <string name="holidays_imported_successfully">Feestdagen geïmporteerd als nieuw afspraaktype</string>
+    <string name="holidays_imported_successfully">De feestdagen zijn geïmporteerd onder afspraaktype \"Feestdagen\"</string>
     <string name="importing_some_holidays_failed">Sommige feestdagen konden niet worden geïmporteerd</string>
     <string name="importing_holidays_failed">Fout bij importeren van feestdagen</string>
 
@@ -150,6 +151,7 @@
     <string name="replace_description_with_location">Beschrijving vervangen door locatie van afspraken</string>
     <string name="delete_all_events">Alle afspraken verwijderen</string>
     <string name="delete_all_events_confirmation">Alle afspraken verwijderen? Afspraaktypes en andere instellingen blijven behouden.</string>
+    <string name="show_a_grid">Rasterlijnen tonen</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -205,7 +207,7 @@
 
         De machtiging voor contacten wordt alleen gebruikt voor het importeren van verjaardagen en feestdagen.
 
-        Deze app is onderdeel van een grotere verzameling. Vind de andere apps op http://www.simplemobiletools.com
+        Deze app is onderdeel van een grotere verzameling. Vind de andere apps op https://www.simplemobiletools.com
     </string>
 
     <!--

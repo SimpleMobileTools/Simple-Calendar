@@ -43,6 +43,7 @@ class IcsImporter(val activity: SimpleActivity) {
     fun importEvents(path: String, defaultEventType: Int, calDAVCalendarId: Int): ImportResult {
         try {
             val existingEvents = activity.dbHelper.getEventsWithImportIds()
+            val eventsToInsert = ArrayList<Event>()
             var prevLine = ""
 
             val inputStream = if (path.contains("/")) {
@@ -131,7 +132,6 @@ class IcsImporter(val activity: SimpleActivity) {
                             continue
                         }
 
-
                         val eventToUpdate = existingEvents.firstOrNull { curImportId.isNotEmpty() && curImportId == it.importId }
                         if (eventToUpdate != null && eventToUpdate.lastUpdated >= curLastModified) {
                             continue
@@ -148,11 +148,15 @@ class IcsImporter(val activity: SimpleActivity) {
                         }
 
                         if (eventToUpdate == null) {
-                            activity.dbHelper.insert(event, true) {
-                                for (exceptionTS in curRepeatExceptions) {
-                                    activity.dbHelper.addEventRepeatException(it, exceptionTS, true)
+                            if (curRepeatExceptions.isEmpty()) {
+                                eventsToInsert.add(event)
+                            } else {
+                                activity.dbHelper.insert(event, true) {
+                                    for (exceptionTS in curRepeatExceptions) {
+                                        activity.dbHelper.addEventRepeatException(it, exceptionTS, true)
+                                    }
+                                    existingEvents.add(event)
                                 }
-                                existingEvents.add(event)
                             }
                         } else {
                             event.id = eventToUpdate.id
@@ -164,6 +168,8 @@ class IcsImporter(val activity: SimpleActivity) {
                     prevLine = line
                 }
             }
+
+            activity.dbHelper.insertEvents(eventsToInsert, true)
         } catch (e: Exception) {
             activity.showErrorToast(e, Toast.LENGTH_LONG)
             eventsFailed++

@@ -26,6 +26,7 @@
     <string name="event_updated">Événement ajouté avec succès</string>
     <string name="filter_events_by_type">Filtrer les événements par type</string>
     <string name="please_fill_location">Veuillez remplir un emplacement pour être affiché sur une carte</string>
+    <string name="public_event_notification_text">An event is upcoming</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Répétition</string>
@@ -130,7 +131,7 @@
     <string name="add_holidays">Ajouter des jours fériés</string>
     <string name="national_holidays">Jours fériés nationaux</string>
     <string name="religious_holidays">Jours fériés religieux</string>
-    <string name="holidays_imported_successfully">Les jours fériés ont été importés dans un nouveau type d\'événement avec succès</string>
+    <string name="holidays_imported_successfully">Holidays have been successfully imported into the \"Holidays\" event type</string>
     <string name="importing_some_holidays_failed">L\'import de certains événements a échoué</string>
     <string name="importing_holidays_failed">L\'import des jours fériés a échoué</string>
 
@@ -150,6 +151,7 @@
     <string name="replace_description_with_location">Remplacer la description de l\'événement par l\'emplacement</string>
     <string name="delete_all_events">Supprimer tous les événements</string>
     <string name="delete_all_events_confirmation">Êtes-vous sûr de vouloir supprimer tous les événements ? Cela laissera vos types d\'événements et autres paramètres intacts.</string>
+    <string name="show_a_grid">Show a grid</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -205,7 +207,7 @@
 
         La permission Contacts ne sert qu\'à importer l\'anniversaire de vos contacts.
 
-        Cette application est juste une pièce d\'une plus grosse série d\'applications. Vous pouvez trouver le reste de celles-ci à http://www.simplemobiletools.com
+        Cette application est juste une pièce d\'une plus grosse série d\'applications. Vous pouvez trouver le reste de celles-ci à https://www.simplemobiletools.com
     </string>
 
     <!--

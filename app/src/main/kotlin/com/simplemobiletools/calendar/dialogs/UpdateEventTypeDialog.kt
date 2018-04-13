@@ -23,8 +23,8 @@ class UpdateEventTypeDialog(val activity: Activity, var eventType: EventType? = 
             type_title.setText(eventType!!.title)
             type_color.setOnClickListener {
                 if (eventType?.caldavCalendarId == 0) {
-                    ColorPickerDialog(activity, eventType!!.color) {
-                        eventType!!.color = it
+                    ColorPickerDialog(activity, eventType!!.color) { wasPositivePressed, color ->
+                        eventType!!.color = color
                         setupColor(type_color)
                     }
                 } else {

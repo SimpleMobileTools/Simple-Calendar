@@ -174,22 +174,22 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun showReminder1Dialog() {
-        showPickIntervalDialog(mReminder1Minutes) {
-            mReminder1Minutes = it
+        showPickSecondsDialogHelper(mReminder1Minutes) {
+            mReminder1Minutes = if (it <= 0) it else it / 60
             checkReminderTexts()
         }
     }
 
     private fun showReminder2Dialog() {
-        showPickIntervalDialog(mReminder2Minutes) {
-            mReminder2Minutes = it
+        showPickSecondsDialogHelper(mReminder2Minutes) {
+            mReminder2Minutes = if (it <= 0) it else it / 60
             checkReminderTexts()
         }
     }
 
     private fun showReminder3Dialog() {
-        showPickIntervalDialog(mReminder3Minutes) {
-            mReminder3Minutes = it
+        showPickSecondsDialogHelper(mReminder3Minutes) {
+            mReminder3Minutes = if (it <= 0) it else it / 60
             checkReminderTexts()
         }
     }
@@ -700,7 +700,7 @@ class EventActivity : SimpleActivity() {
 
     private fun setupStartTime() {
         hideKeyboard()
-        TimePickerDialog(this, mDialogTheme, startTimeSetListener, mEventStartDateTime.hourOfDay, mEventStartDateTime.minuteOfHour, config.use24hourFormat).show()
+        TimePickerDialog(this, mDialogTheme, startTimeSetListener, mEventStartDateTime.hourOfDay, mEventStartDateTime.minuteOfHour, config.use24HourFormat).show()
     }
 
     @SuppressLint("NewApi")
@@ -718,7 +718,7 @@ class EventActivity : SimpleActivity() {
 
     private fun setupEndTime() {
         hideKeyboard()
-        TimePickerDialog(this, mDialogTheme, endTimeSetListener, mEventEndDateTime.hourOfDay, mEventEndDateTime.minuteOfHour, config.use24hourFormat).show()
+        TimePickerDialog(this, mDialogTheme, endTimeSetListener, mEventEndDateTime.hourOfDay, mEventEndDateTime.minuteOfHour, config.use24HourFormat).show()
     }
 
     private val startDateSetListener = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->

@@ -36,8 +36,8 @@ class SelectCalendarsDialog(val activity: SimpleActivity, val callback: () -> Un
                 .setPositiveButton(R.string.ok, { dialogInterface, i -> confirmSelection() })
                 .setNegativeButton(R.string.cancel, null)
                 .create().apply {
-            activity.setupDialogStuff(view, this, R.string.select_caldav_calendars)
-        }
+                    activity.setupDialogStuff(view, this, R.string.select_caldav_calendars)
+                }
     }
 
     private fun addCalendarItem(isEvent: Boolean, text: String, tag: Int = 0, shouldCheck: Boolean = false) {

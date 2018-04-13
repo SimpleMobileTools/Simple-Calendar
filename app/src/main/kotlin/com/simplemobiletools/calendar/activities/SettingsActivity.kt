@@ -2,12 +2,9 @@ package com.simplemobiletools.calendar.activities
 
 import android.content.Intent
 import android.content.res.Resources
-import android.media.RingtoneManager
-import android.net.Uri
+import android.media.AudioManager
 import android.os.Bundle
-import android.os.Parcelable
 import android.text.TextUtils
-import com.simplemobiletools.calendar.BuildConfig
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.dialogs.SelectCalendarsDialog
 import com.simplemobiletools.calendar.extensions.*
@@ -19,12 +16,14 @@ import com.simplemobiletools.calendar.models.EventType
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.CustomIntervalPickerDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
+import com.simplemobiletools.commons.dialogs.SelectAlarmSoundDialog
 import com.simplemobiletools.commons.extensions.*
+import com.simplemobiletools.commons.helpers.ALARM_SOUND_TYPE_NOTIFICATION
 import com.simplemobiletools.commons.helpers.PERMISSION_READ_CALENDAR
 import com.simplemobiletools.commons.helpers.PERMISSION_WRITE_CALENDAR
+import com.simplemobiletools.commons.models.AlarmSound
 import com.simplemobiletools.commons.models.RadioItem
 import kotlinx.android.synthetic.main.activity_settings.*
-import java.io.File
 import java.util.*
 
 class SettingsActivity : SimpleActivity() {
@@ -53,6 +52,7 @@ class SettingsActivity : SimpleActivity() {
         setupDeleteAllEvents()
         setupReplaceDescription()
         setupWeekNumbers()
+        setupShowGrid()
         setupWeeklyStart()
         setupWeeklyEnd()
         setupVibrate()
@@ -102,7 +102,7 @@ class SettingsActivity : SimpleActivity() {
         settings_use_english_holder.setOnClickListener {
             settings_use_english.toggle()
             config.useEnglish = settings_use_english.isChecked
-            useEnglishToggled()
+            System.exit(0)
         }
     }
 
@@ -113,10 +113,10 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun setupHourFormat() {
-        settings_hour_format.isChecked = config.use24hourFormat
+        settings_hour_format.isChecked = config.use24HourFormat
         settings_hour_format_holder.setOnClickListener {
             settings_hour_format.toggle()
-            config.use24hourFormat = settings_hour_format.isChecked
+            config.use24HourFormat = settings_hour_format.isChecked
         }
     }
 
@@ -268,34 +268,43 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun setupWeekNumbers() {
-        settings_week_numbers.isChecked = config.displayWeekNumbers
+        settings_week_numbers.isChecked = config.showWeekNumbers
         settings_week_numbers_holder.setOnClickListener {
             settings_week_numbers.toggle()
-            config.displayWeekNumbers = settings_week_numbers.isChecked
+            config.showWeekNumbers = settings_week_numbers.isChecked
+        }
+    }
+
+    private fun setupShowGrid() {
+        settings_show_grid.isChecked = config.showGrid
+        settings_show_grid_holder.setOnClickListener {
+            settings_show_grid.toggle()
+            config.showGrid = settings_show_grid.isChecked
         }
     }
 
     private fun setupReminderSound() {
-        val noRingtone = res.getString(R.string.no_ringtone_selected)
-        if (config.reminderSound.isEmpty()) {
-            settings_reminder_sound.text = noRingtone
-        } else {
-            settings_reminder_sound.text = RingtoneManager.getRingtone(this, Uri.parse(config.reminderSound))?.getTitle(this) ?: noRingtone
-        }
+        settings_reminder_sound.text = config.reminderSoundTitle
 
         settings_reminder_sound_holder.setOnClickListener {
-            Intent(RingtoneManager.ACTION_RINGTONE_PICKER).apply {
-                putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_NOTIFICATION)
-                putExtra(RingtoneManager.EXTRA_RINGTONE_TITLE, res.getString(R.string.reminder_sound))
-                putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, Uri.parse(config.reminderSound))
-
-                if (resolveActivity(packageManager) != null)
-                    startActivityForResult(this, GET_RINGTONE_URI)
-                else {
-                    toast(R.string.no_ringtone_picker)
+            SelectAlarmSoundDialog(this, config.reminderSoundUri, AudioManager.STREAM_NOTIFICATION, GET_RINGTONE_URI, ALARM_SOUND_TYPE_NOTIFICATION, false,
+                    onAlarmPicked = {
+                        if (it != null) {
+                            updateReminderSound(it)
+                        }
+                    }, onAlarmSoundDeleted = {
+                if (it.uri == config.reminderSoundUri) {
+                    val defaultAlarm = getDefaultAlarmSound(ALARM_SOUND_TYPE_NOTIFICATION)
+                    updateReminderSound(defaultAlarm)
                 }
-            }
+            })
         }
+    }
+
+    private fun updateReminderSound(alarmSound: AlarmSound) {
+        config.reminderSoundTitle = alarmSound.title
+        config.reminderSoundUri = alarmSound.uri
+        settings_reminder_sound.text = alarmSound.title
     }
 
     private fun setupVibrate() {
@@ -319,8 +328,8 @@ class SettingsActivity : SimpleActivity() {
     private fun setupSnoozeTime() {
         updateSnoozeTime()
         settings_snooze_time_holder.setOnClickListener {
-            showPickIntervalDialog(config.snoozeTime, true) {
-                config.snoozeTime = it
+            showPickSecondsDialogHelper(config.snoozeTime, true) {
+                config.snoozeTime = it / 60
                 updateSnoozeTime()
             }
         }
@@ -381,24 +390,10 @@ class SettingsActivity : SimpleActivity() {
     })
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
-        if (resultCode == RESULT_OK) {
-            if (requestCode == GET_RINGTONE_URI) {
-                var uri = resultData?.getParcelableExtra<Parcelable>(RingtoneManager.EXTRA_RINGTONE_PICKED_URI)
-
-                if (uri == null) {
-                    config.reminderSound = ""
-                } else {
-                    try {
-                        if ((uri as Uri).scheme == "file") {
-                            uri = getFilePublicUri(File(uri.path), BuildConfig.APPLICATION_ID)
-                        }
-                        settings_reminder_sound.text = RingtoneManager.getRingtone(this, uri)?.getTitle(this)
-                        config.reminderSound = uri.toString()
-                    } catch (e: Exception) {
-                        showErrorToast(e)
-                    }
-                }
-            }
+        super.onActivityResult(requestCode, resultCode, resultData)
+        if (requestCode == GET_RINGTONE_URI && resultCode == RESULT_OK && resultData != null) {
+            val newAlarmSound = storeNewYourAlarmSound(resultData)
+            updateReminderSound(newAlarmSound)
         }
     }
 }
