@@ -1,6 +1,15 @@
 Changelog
 ==========
 
+Version 3.4.2 *(2018-04-13)*
+----------------------------
+
+ * Hide public notification content if desired so (by fraang)
+ * Added optional grid on the monthly view
+ * Allow exporting events on SD cards
+ * Allow selecting No Sound as a reminder sound
+ * Set default event status for CalDAV events as Confirmed
+
 Version 3.4.1 *(2018-03-30)*
 ----------------------------
 
