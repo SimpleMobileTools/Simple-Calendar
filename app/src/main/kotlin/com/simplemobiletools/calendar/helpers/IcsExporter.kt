@@ -1,10 +1,12 @@
 package com.simplemobiletools.calendar.helpers
 
+import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.helpers.IcsExporter.ExportResult.*
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.commons.activities.BaseSimpleActivity
 import com.simplemobiletools.commons.extensions.getFileOutputStream
+import com.simplemobiletools.commons.extensions.toast
 import com.simplemobiletools.commons.extensions.writeLn
 import com.simplemobiletools.commons.models.FileDirItem
 import java.io.BufferedWriter
@@ -18,12 +20,16 @@ class IcsExporter {
     private var eventsExported = 0
     private var eventsFailed = 0
 
-    fun exportEvents(activity: BaseSimpleActivity, file: File, events: ArrayList<Event>, callback: (result: ExportResult) -> Unit) {
+    fun exportEvents(activity: BaseSimpleActivity, file: File, events: ArrayList<Event>, showExportingToast: Boolean, callback: (result: ExportResult) -> Unit) {
         val fileDirItem = FileDirItem(file.absolutePath, file.name)
-        activity.getFileOutputStream(fileDirItem) {
+        activity.getFileOutputStream(fileDirItem, true) {
             if (it == null) {
                 callback(EXPORT_FAIL)
                 return@getFileOutputStream
+            }
+
+            if (showExportingToast) {
+                activity.toast(R.string.exporting)
             }
 
             it.bufferedWriter().use { out ->

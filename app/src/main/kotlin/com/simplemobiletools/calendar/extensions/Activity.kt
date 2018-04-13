@@ -23,7 +23,7 @@ fun BaseSimpleActivity.shareEvents(ids: List<Int>) {
     }
 
     val events = dbHelper.getEventsWithIds(ids)
-    IcsExporter().exportEvents(this, file, events) {
+    IcsExporter().exportEvents(this, file, events, false) {
         if (it == IcsExporter.ExportResult.EXPORT_OK) {
             sharePathIntent(file.absolutePath, BuildConfig.APPLICATION_ID)
         }
