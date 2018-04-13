@@ -26,7 +26,7 @@
     <string name="event_updated">Hendelse vellykket oppdatert</string>
     <string name="filter_events_by_type">Filtrer hendelser etter type</string>
     <string name="please_fill_location">Oppfør et sted som skal vises på et kart</string>
-    <string name="public_event_notification_text">An event is upcoming</string>
+    <string name="public_event_notification_text">En hendelse er forestående</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Gjentagelse</string>
@@ -151,7 +151,7 @@
     <string name="replace_description_with_location">Erstatt hendelsesbeskrivelse med sted</string>
     <string name="delete_all_events">Slett alle hendelser</string>
     <string name="delete_all_events_confirmation">Er du sikker på at du vil slette alle hendelser? Dine hendelsestyper og andre innstillinger blir beholdt.</string>
-    <string name="show_a_grid">Show a grid</string>
+    <string name="show_a_grid">Vis rutenett</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
