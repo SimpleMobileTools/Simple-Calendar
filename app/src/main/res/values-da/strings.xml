@@ -151,7 +151,7 @@
     <string name="replace_description_with_location">Erstat beskrivelse med sted</string>
     <string name="delete_all_events">Slet alle begivenheder</string>
     <string name="delete_all_events_confirmation">Er du sikker på at du vil slette alle begivenheder? Dine begivenhedstyper og andre indstillinger vil forblive intakte.</string>
-    <string name="show_a_grid">Show a grid</string>
+    <string name="show_a_grid">Vis i tern</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
