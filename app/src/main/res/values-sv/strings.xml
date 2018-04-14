@@ -8,7 +8,7 @@
     <string name="monthly_view">Månadsvy</string>
     <string name="yearly_view">Årsvy</string>
     <string name="simple_event_list">Händelselista</string>
-    <string name="no_upcoming_events">Det ser ut som att du inte har några kommande händelser.</string>
+    <string name="no_upcoming_events">Det verkar som att du inte har några kommande händelser.</string>
     <string name="add_some_events">Du kan lägga till händelser via plus-knappen som du ser längst ner.</string>
     <string name="go_to_today">Gå till idag</string>
 
@@ -26,7 +26,7 @@
     <string name="event_updated">Händelsen har uppdaterats</string>
     <string name="filter_events_by_type">Filtrera händelser efter typ</string>
     <string name="please_fill_location">Du måste ange en plats som kan visas på en karta</string>
-    <string name="public_event_notification_text">An event is upcoming</string>
+    <string name="public_event_notification_text">Du har en kommande händelse</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Upprepning</string>
@@ -131,7 +131,7 @@
     <string name="add_holidays">Lägg till helgdagar</string>
     <string name="national_holidays">Nationella helgdagar</string>
     <string name="religious_holidays">Religiösa helgdagar</string>
-    <string name="holidays_imported_successfully">Holidays have been successfully imported into the \"Holidays\" event type</string>
+    <string name="holidays_imported_successfully">Helgdagarna har importerats till händelsetypen \"Helgdagar\"</string>
     <string name="importing_some_holidays_failed">Vissa händelser kunde inte importeras</string>
     <string name="importing_holidays_failed">Helgdagar kunde inte importeras</string>
 
@@ -151,7 +151,7 @@
     <string name="replace_description_with_location">Ersätt händelsebeskrivning med plats</string>
     <string name="delete_all_events">Ta bort alla händelser</string>
     <string name="delete_all_events_confirmation">Är du säker på att du vill ta bort alla händelser? Dina händelsetyper och andra inställningar påverkas inte av borttagningen.</string>
-    <string name="show_a_grid">Show a grid</string>
+    <string name="show_a_grid">Visa ett rutnät</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -199,7 +199,7 @@
     <string name="app_long_description">
         En enkel kalender med valfri CalDAV-synkronisering. Du kan enkelt skapa återkommande händelser och ställa in påminnelser. Den kan också visa veckonummer.
 
-        Har en justerbar 4x4-widget med anpassningsbar textfärg, bakgrundsfärg och bakgrundsgenomskinlighet.
+        Har en widget med en månadsvy och en händelselista. Du kan anpassa widgetens textfärg, bakgrundsfärg och bakgrundsgenomskinlighet.
 
         Innehåller ingen reklam eller onödiga behörigheter. Den har helt öppen källkod och anpassningsbara färger.
 
