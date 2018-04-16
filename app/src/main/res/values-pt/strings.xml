@@ -8,8 +8,8 @@
     <string name="monthly_view">Vista mensal</string>
     <string name="yearly_view">Vista anual</string>
     <string name="simple_event_list">Lista de eventos</string>
-    <string name="no_upcoming_events">Parece que você não tem eventos para breve.</string>
-    <string name="add_some_events">Pode adicionar um evento através do botão existente na base do ecrã.</string>
+    <string name="no_upcoming_events">Parece que você não tem eventos para breve</string>
+    <string name="add_some_events">Pode adicionar um evento através do botão existente na base do ecrã</string>
     <string name="go_to_today">Ir para hoje</string>
 
     <!-- Widget titles -->
@@ -26,7 +26,7 @@
     <string name="event_updated">Evento atualizado com sucesso</string>
     <string name="filter_events_by_type">Filtrar eventos por tipo</string>
     <string name="please_fill_location">Introduza a localização para a mostrar no maps</string>
-    <string name="public_event_notification_text">An event is upcoming</string>
+    <string name="public_event_notification_text">Está para breve um evento</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Repetição</string>
@@ -84,7 +84,7 @@
 
     <!-- Anniversaries -->
     <string name="anniversaries">Aniversários</string>
-    <string name="add_anniversaries">Addicionar aniversários dos contactos</string>
+    <string name="add_anniversaries">Adicionar aniversários dos contactos</string>
     <string name="no_anniversaries">Não foram encontrados aniversários</string>
     <string name="anniversaries_added">Aniversários adicionados com sucesso</string>
 
@@ -151,7 +151,7 @@
     <string name="replace_description_with_location">Substituir descrição pela localização do evento</string>
     <string name="delete_all_events">Apagar todos os eventos</string>
     <string name="delete_all_events_confirmation">Tem a certeza de que deseja apagar todos os eventos? Esta ação não afeta os tipos de eventos nem as outras definições.</string>
-    <string name="show_a_grid">Show a grid</string>
+    <string name="show_a_grid">Mostrar grelha</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
