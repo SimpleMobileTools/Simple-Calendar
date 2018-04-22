@@ -3,15 +3,15 @@
 
 A simple calendar with events and a customizable widget.
 
-An offline calendar without any other calendar integration. You can easily create recurring events and setup reminders, it can also display week numbers.
+An offline calendar without any other calendar integration. You can easily create recurring events and setup reminders. It can also display week numbers.
 
 Contains a resizable 4x4 widget where you can customize the color of the text, as well as the alpha and the color of the background.
 
-Contains no ads or unnecessary permissions. It is fully open-source, provides customizable colors.
+Contains no ads or unnecessary permissions. It is fully open-source, and provides customizable colors.
 
 The Storage permission is needed only for exporting or importing events from .ics files.
 
-The Contacts permission is used only at importing contact birthdays and anniversaries.
+The Contacts permission is used only for importing contact birthdays and anniversaries.
 
 This app is just one piece of a bigger series of apps. You can find the rest of them at http://www.simplemobiletools.com
 
