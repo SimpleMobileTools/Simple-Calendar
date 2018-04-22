@@ -124,7 +124,7 @@
     <string name="select_event_type">Select an event type</string>
     <string name="move_events_into_default">Move affected events into the default event type</string>
     <string name="remove_affected_events">Permanently remove affected events</string>
-    <string name="unsync_caldav_calendar">To remove a CalDAV calendar you have to unsynchronize it</string>
+    <string name="unsync_caldav_calendar">To remove a CalDAV calendar, you have to unsynchronize it</string>
 
     <!-- Holidays -->
     <string name="holidays">Holidays</string>
@@ -188,26 +188,26 @@
     <!-- FAQ -->
     <string name="faq_1_title">How can I remove the holidays imported via the \"Add holidays\" button?</string>
     <string name="faq_1_text">Holidays created that way are inserted in a new event type called \"Holidays\". You can go in Settings -> Manage Event Types,
-        long press the given event type and delete it by selecting the trashbin.</string>
-    <string name="faq_2_title">Can I sync my events via Google Calendar, or other service supporting CalDAV?</string>
-    <string name="faq_2_text">Yes, just toggle \"CalDAV sync\" in the app settings and select the calendars you want to sync. However, you will need some third party app handling the synchronization between the device and servers.
-        In case you want to synchronize a Google calendar, their official Calendar app will do the job. For other calendars you will need a third party sync adapter, for example DAVdroid.</string>
+        long press the given event type, and delete it by selecting the trashbin.</string>
+    <string name="faq_2_title">Can I sync my events via Google Calendar, or other services supporting CalDAV?</string>
+    <string name="faq_2_text">Yes, just toggle \"CalDAV sync\" in the app settings and select the calendars you want to sync. However, you will need a third-party app to handle the synchronization between the device and the servers.
+        In case you want to synchronize a Google calendar, their official Calendar app will do the job. For other calendars you will need a third party sync adapter (for example, DAVdroid).</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">A simple calendar with events, customizable widget and no ads.</string>
+    <string name="app_short_description">A simple calendar with events, a customizable widget, and no ads.</string>
     <string name="app_long_description">
-        A simple calendar with optional CalDAV synchronization. You can easily create recurring events and setup reminders, it can also display week numbers.
+        A simple calendar with optional CalDAV synchronization. You can easily create recurring events and setup reminders. It can also display week numbers.
 
         Contains a monthly view and an event list widget where you can customize the color of the text, as well as the alpha and the color of the background.
 
-        Contains no ads or unnecessary permissions. It is fully opensource, provides customizable colors.
+        Contains no ads or unnecessary permissions. It is fully open-source, and provides customizable colors.
 
         The Storage permission is needed only for exporting or importing events from .ics files.
 
         The Contacts permission is used only at importing contact birthdays and anniversaries.
 
-        This app is just one piece of a bigger series of apps. You can find the rest of them at https://www.simplemobiletools.com
+        This app is just one piece of a bigger series of apps. You can find the rest of them at https://simplemobiletools.github.io.
     </string>
 
     <!--

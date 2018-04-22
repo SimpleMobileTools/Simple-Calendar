@@ -3,19 +3,19 @@
 
 A simple calendar with events and a customizable widget.
 
-An offline calendar without any other calendar integration. You can easily create recurring events and setup reminders, it can also display week numbers.
+An offline calendar without any other calendar integration. You can easily create recurring events and setup reminders. It can also display week numbers.
 
 Contains a resizable 4x4 widget where you can customize the color of the text, as well as the alpha and the color of the background.
 
-Contains no ads or unnecessary permissions. It is fully open-source, provides customizable colors.
+Contains no ads or unnecessary permissions. It is fully open-source, and provides customizable colors.
 
 The Storage permission is needed only for exporting or importing events from .ics files.
 
-The Contacts permission is used only at importing contact birthdays and anniversaries.
+The Contacts permission is used only for importing contact birthdays and anniversaries.
 
-This app is just one piece of a bigger series of apps. You can find the rest of them at http://www.simplemobiletools.com
+This app is just one piece of a bigger series of apps. You can find the rest of them at https://simplemobiletools.github.io.
 
-<a href='https://play.google.com/store/apps/details?id=com.simplemobiletools.calendar'><img src='http://simplemobiletools.github.io/assets/public/google-play.png' alt='Get it on Google Play' height='45' /></a>
+<a href='https://play.google.com/store/apps/details?id=com.simplemobiletools.calendar'><img src='https://simplemobiletools.github.io/assets/public/google-play.png' alt='Get it on Google Play' height='45' /></a>
 <a href='https://f-droid.org/packages/com.simplemobiletools.calendar'><img src='http://simplemobiletools.github.io/assets/public/f-droid.png' alt='Get it on F-Droid' height='45' /></a>
 
 <div style="display:flex;">
