@@ -7,7 +7,7 @@ An offline calendar without any other calendar integration. You can easily creat
 
 Contains a resizable 4x4 widget where you can customize the color of the text, as well as the alpha and the color of the background.
 
-Contains no ads or unnecessary permissions. It is fully open-source and provides customizable colors.
+Contains no ads or unnecessary permissions. It is fully open-source, and provides customizable colors.
 
 The Storage permission is needed only for exporting or importing events from .ics files.
 
