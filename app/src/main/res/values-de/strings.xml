@@ -151,7 +151,7 @@
     <string name="replace_description_with_location">Ersetze Terminbeschreibung mit Ort</string>
     <string name="delete_all_events">Alle Termine löschen</string>
     <string name="delete_all_events_confirmation">Bist du sicher, dass du alle Termine löschen willst? Deine Termintypen und Einstellungen bleiben erhalten.</string>
-    <string name="show_a_grid">Show a grid</string>
+    <string name="show_a_grid">Raster anzeigen</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
