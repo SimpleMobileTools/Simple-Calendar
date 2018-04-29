@@ -83,10 +83,10 @@
     <string name="birthdays_added">Anniversaires ajoutés avec succès</string>
 
     <!-- Anniversaries -->
-    <string name="anniversaries">Anniversaires</string>
-    <string name="add_anniversaries">Ajouter des anniversaires de contact</string>
-    <string name="no_anniversaries">Aucun anniversaire n\'a été trouvé</string>
-    <string name="anniversaries_added">Anniversaires ajoutés avec succès</string>
+    <string name="anniversaries">Anniversaires d\'évènements</string>
+    <string name="add_anniversaries">Ajouter des anniversaires d\'évènements de contact</string>
+    <string name="no_anniversaries">Aucun anniversaire d\'évènements n\'a été trouvé</string>
+    <string name="anniversaries_added">Anniversaires d\'évènements ajoutés avec succès</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Rappel</string>
