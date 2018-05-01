@@ -10,7 +10,7 @@ import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.models.EventType
 import com.simplemobiletools.commons.extensions.hideKeyboard
-import com.simplemobiletools.commons.extensions.setBackgroundWithStroke
+import com.simplemobiletools.commons.extensions.setFillWithStroke
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import com.simplemobiletools.commons.extensions.updateTextColors
 import com.simplemobiletools.commons.views.MyCompatRadioButton
@@ -59,7 +59,7 @@ class SelectEventTypeDialog(val activity: Activity, val currEventType: Int, val 
         }
 
         if (eventType.color != Color.TRANSPARENT) {
-            view.dialog_radio_color.setBackgroundWithStroke(eventType.color, activity.config.backgroundColor)
+            view.dialog_radio_color.setFillWithStroke(eventType.color, activity.config.backgroundColor)
         }
 
         view.setOnClickListener { viewClicked(eventType) }

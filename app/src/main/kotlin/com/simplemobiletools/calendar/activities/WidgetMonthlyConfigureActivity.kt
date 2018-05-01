@@ -23,6 +23,7 @@ import com.simplemobiletools.commons.dialogs.ColorPickerDialog
 import com.simplemobiletools.commons.extensions.adjustAlpha
 import com.simplemobiletools.commons.extensions.applyColorFilter
 import com.simplemobiletools.commons.extensions.beVisible
+import com.simplemobiletools.commons.extensions.setFillWithStroke
 import kotlinx.android.synthetic.main.first_row.*
 import kotlinx.android.synthetic.main.top_navigation.*
 import kotlinx.android.synthetic.main.widget_config_monthly.*
@@ -111,16 +112,20 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
 
     private fun pickBackgroundColor() {
         ColorPickerDialog(this, mBgColorWithoutTransparency) { wasPositivePressed, color ->
-            mBgColorWithoutTransparency = color
-            updateBgColor()
+            if (wasPositivePressed) {
+                mBgColorWithoutTransparency = color
+                updateBgColor()
+            }
         }
     }
 
     private fun pickTextColor() {
         ColorPickerDialog(this, mTextColor) { wasPositivePressed, color ->
-            mTextColorWithoutTransparency = color
-            updateColors()
-            updateDays()
+            if (wasPositivePressed) {
+                mTextColorWithoutTransparency = color
+                updateColors()
+                updateDays()
+            }
         }
     }
 

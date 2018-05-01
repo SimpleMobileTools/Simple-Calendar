@@ -9,7 +9,7 @@ import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.helpers.DBHelper
 import com.simplemobiletools.calendar.helpers.IcsImporter
 import com.simplemobiletools.calendar.helpers.IcsImporter.ImportResult.*
-import com.simplemobiletools.commons.extensions.setBackgroundWithStroke
+import com.simplemobiletools.commons.extensions.setFillWithStroke
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import com.simplemobiletools.commons.extensions.toast
 import kotlinx.android.synthetic.main.dialog_import_events.view.*
@@ -50,7 +50,7 @@ class ImportEventsDialog(val activity: SimpleActivity, val path: String, val cal
     private fun updateEventType(view: ViewGroup) {
         val eventType = activity.dbHelper.getEventType(currEventTypeId)
         view.import_event_type_title.text = eventType!!.getDisplayTitle()
-        view.import_event_type_color.setBackgroundWithStroke(eventType.color, activity.config.backgroundColor)
+        view.import_event_type_color.setFillWithStroke(eventType.color, activity.config.backgroundColor)
     }
 
     private fun handleParseResult(result: IcsImporter.ImportResult) {

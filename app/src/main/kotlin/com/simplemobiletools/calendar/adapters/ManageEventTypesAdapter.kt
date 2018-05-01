@@ -13,7 +13,7 @@ import com.simplemobiletools.calendar.models.EventType
 import com.simplemobiletools.commons.adapters.MyRecyclerViewAdapter
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
-import com.simplemobiletools.commons.extensions.setBackgroundWithStroke
+import com.simplemobiletools.commons.extensions.setFillWithStroke
 import com.simplemobiletools.commons.extensions.toast
 import com.simplemobiletools.commons.models.RadioItem
 import com.simplemobiletools.commons.views.MyRecyclerView
@@ -60,7 +60,7 @@ class ManageEventTypesAdapter(activity: SimpleActivity, val eventTypes: ArrayLis
     private fun setupView(view: View, eventType: EventType) {
         view.apply {
             event_type_title.text = eventType.getDisplayTitle()
-            event_type_color.setBackgroundWithStroke(eventType.color, activity.config.backgroundColor)
+            event_type_color.setFillWithStroke(eventType.color, activity.config.backgroundColor)
             event_type_title.setTextColor(textColor)
         }
     }

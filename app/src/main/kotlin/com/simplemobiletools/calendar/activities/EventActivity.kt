@@ -421,7 +421,7 @@ class EventActivity : SimpleActivity() {
         val eventType = dbHelper.getEventType(mEventTypeId)
         if (eventType != null) {
             event_type.text = eventType.title
-            event_type_color.setBackgroundWithStroke(eventType.color, config.backgroundColor)
+            event_type_color.setFillWithStroke(eventType.color, config.backgroundColor)
         }
     }
 

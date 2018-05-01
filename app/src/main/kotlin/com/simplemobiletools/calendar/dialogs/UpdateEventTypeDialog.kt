@@ -24,8 +24,10 @@ class UpdateEventTypeDialog(val activity: Activity, var eventType: EventType? = 
             type_color.setOnClickListener {
                 if (eventType?.caldavCalendarId == 0) {
                     ColorPickerDialog(activity, eventType!!.color) { wasPositivePressed, color ->
-                        eventType!!.color = color
-                        setupColor(type_color)
+                        if (wasPositivePressed) {
+                            eventType!!.color = color
+                            setupColor(type_color)
+                        }
                     }
                 } else {
                     SelectEventTypeColorDialog(activity, eventType!!) {
@@ -79,6 +81,6 @@ class UpdateEventTypeDialog(val activity: Activity, var eventType: EventType? = 
     }
 
     private fun setupColor(view: ImageView) {
-        view.setBackgroundWithStroke(eventType!!.color, activity.config.backgroundColor)
+        view.setFillWithStroke(eventType!!.color, activity.config.backgroundColor)
     }
 }
