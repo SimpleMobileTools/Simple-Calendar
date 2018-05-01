@@ -61,6 +61,7 @@ class SettingsActivity : SimpleActivity() {
         setupSnoozeTime()
         setupDisplayPastEvents()
         setupFontSize()
+        setupCustomizeWidgetColors()
         updateTextColors(settings_holder)
         checkPrimaryColor()
         setupSectionColors()
@@ -388,6 +389,12 @@ class SettingsActivity : SimpleActivity() {
         FONT_SIZE_MEDIUM -> R.string.medium
         else -> R.string.large
     })
+
+    private fun setupCustomizeWidgetColors() {
+        settings_customize_widget_colors_holder.setOnClickListener {
+
+        }
+    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
         super.onActivityResult(requestCode, resultCode, resultData)
