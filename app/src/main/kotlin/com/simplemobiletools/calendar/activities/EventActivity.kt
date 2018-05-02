@@ -60,6 +60,12 @@ class EventActivity : SimpleActivity() {
             return
         }
 
+        if (dbHelper.getEventType(config.lastUsedLocalEventTypeId) == null) {
+            config.lastUsedLocalEventTypeId = DBHelper.REGULAR_EVENT_TYPE_ID
+        }
+
+        mEventTypeId = config.lastUsedLocalEventTypeId
+
         if (event != null) {
             mEvent = event
             mEventOccurrenceTS = intent.getIntExtra(EVENT_OCCURRENCE_TS, 0)
@@ -440,7 +446,7 @@ class EventActivity : SimpleActivity() {
                 hideKeyboard()
                 SelectEventCalendarDialog(this, calendars, mEventCalendarId) {
                     if (mEventCalendarId != STORED_LOCALLY_ONLY && it == STORED_LOCALLY_ONLY) {
-                        mEventTypeId = DBHelper.REGULAR_EVENT_TYPE_ID
+                        mEventTypeId = config.lastUsedLocalEventTypeId
                         updateEventType()
                     }
                     mEventCalendarId = it
@@ -522,10 +528,11 @@ class EventActivity : SimpleActivity() {
         val newEventType = if (!config.caldavSync || config.lastUsedCaldavCalendar == 0 || mEventCalendarId == STORED_LOCALLY_ONLY) {
             mEventTypeId
         } else {
-            dbHelper.getEventTypeWithCalDAVCalendarId(config.lastUsedCaldavCalendar)?.id ?: DBHelper.REGULAR_EVENT_TYPE_ID
+            dbHelper.getEventTypeWithCalDAVCalendarId(config.lastUsedCaldavCalendar)?.id ?: config.lastUsedLocalEventTypeId
         }
 
         val newSource = if (!config.caldavSync || config.lastUsedCaldavCalendar == 0 || mEventCalendarId == STORED_LOCALLY_ONLY) {
+            config.lastUsedLocalEventTypeId = newEventType
             SOURCE_SIMPLE_CALENDAR
         } else {
             "$CALDAV-${config.lastUsedCaldavCalendar}"
