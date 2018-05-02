@@ -83,32 +83,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         }
 
-        if (intent?.action == Intent.ACTION_VIEW && intent.data != null) {
-            val uri = intent.data
-            if (uri.authority == "com.android.calendar") {
-                if (uri.path.startsWith("/events")) {
-                    // intents like content://com.android.calendar/events/1756
-                    val eventId = uri.lastPathSegment
-                    val id = dbHelper.getEventIdWithLastImportId(eventId)
-                    if (id != 0) {
-                        Intent(this, EventActivity::class.java).apply {
-                            putExtra(EVENT_ID, id)
-                            startActivity(this)
-                        }
-                    } else {
-                        toast(R.string.unknown_error_occurred)
-                    }
-                } else if (intent?.extras?.getBoolean("DETAIL_VIEW", false) == true) {
-                    // clicking date on a third party widget: content://com.android.calendar/time/1507309245683
-                    val timestamp = uri.pathSegments.last()
-                    if (timestamp.areDigitsOnly()) {
-                        openDayAt(timestamp.toLong())
-                        return
-                    }
-                }
-            } else {
-                tryImportEventsFromFile(uri)
-            }
+        if (!checkViewIntents()) {
+            return
         }
 
         if (!checkOpenIntents()) {
@@ -213,6 +189,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         super.onNewIntent(intent)
         setIntent(intent)
         checkOpenIntents()
+        checkViewIntents()
     }
 
     private fun storeStateVariables() {
@@ -291,6 +268,37 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
 
         return false
+    }
+
+    private fun checkViewIntents(): Boolean {
+        if (intent?.action == Intent.ACTION_VIEW && intent.data != null) {
+            val uri = intent.data
+            if (uri.authority == "com.android.calendar") {
+                if (uri.path.startsWith("/events")) {
+                    // intents like content://com.android.calendar/events/1756
+                    val eventId = uri.lastPathSegment
+                    val id = dbHelper.getEventIdWithLastImportId(eventId)
+                    if (id != 0) {
+                        Intent(this, EventActivity::class.java).apply {
+                            putExtra(EVENT_ID, id)
+                            startActivity(this)
+                        }
+                    } else {
+                        toast(R.string.unknown_error_occurred)
+                    }
+                } else if (intent?.extras?.getBoolean("DETAIL_VIEW", false) == true) {
+                    // clicking date on a third party widget: content://com.android.calendar/time/1507309245683
+                    val timestamp = uri.pathSegments.last()
+                    if (timestamp.areDigitsOnly()) {
+                        openDayAt(timestamp.toLong())
+                        return false
+                    }
+                }
+            } else {
+                tryImportEventsFromFile(uri)
+            }
+        }
+        return true
     }
 
     private fun showViewDialog() {
