@@ -19,12 +19,34 @@ class ImportEventsDialog(val activity: SimpleActivity, val path: String, val cal
     var currEventTypeCalDAVCalendarId = 0
 
     init {
+        val config = activity.config
+        if (activity.dbHelper.getEventType(config.lastUsedLocalEventTypeId) == null) {
+            config.lastUsedLocalEventTypeId = DBHelper.REGULAR_EVENT_TYPE_ID
+        }
+
+        val isLastCaldavCalendarOK = config.caldavSync && config.getSyncedCalendarIdsAsList().contains(config.lastUsedCaldavCalendarId.toString())
+        currEventTypeId = if (isLastCaldavCalendarOK) {
+            val lastUsedCalDAVCalendar = activity.dbHelper.getEventTypeWithCalDAVCalendarId(config.lastUsedCaldavCalendarId)
+            if (lastUsedCalDAVCalendar != null) {
+                currEventTypeCalDAVCalendarId = config.lastUsedCaldavCalendarId
+                lastUsedCalDAVCalendar.id
+            } else {
+                DBHelper.REGULAR_EVENT_TYPE_ID
+            }
+        } else {
+            config.lastUsedLocalEventTypeId
+        }
+
         val view = (activity.layoutInflater.inflate(R.layout.dialog_import_events, null) as ViewGroup).apply {
             updateEventType(this)
             import_event_type_holder.setOnClickListener {
                 SelectEventTypeDialog(activity, currEventTypeId, true) {
                     currEventTypeId = it.id
                     currEventTypeCalDAVCalendarId = it.caldavCalendarId
+
+                    config.lastUsedLocalEventTypeId = it.id
+                    config.lastUsedCaldavCalendarId = it.caldavCalendarId
+
                     updateEventType(this)
                 }
             }
