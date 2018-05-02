@@ -103,6 +103,7 @@
     <string name="export_past_events_too">Exportar también eventos pasados</string>
     <string name="include_event_types">Incluir tipos de evento</string>
     <string name="filename_without_ics">Nombre del archivo (sin .ics)</string>
+    <string name="override_event_types">Override event types in the file</string>
 
     <!-- Event details -->
     <string name="title">Título</string>

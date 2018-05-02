@@ -103,6 +103,7 @@
     <string name="export_past_events_too">과거 이벤트들 내보내기</string>
     <string name="include_event_types">이벤트 유형 포함</string>
     <string name="filename_without_ics">파일이름 (.ics 없이)</string>
+    <string name="override_event_types">Override event types in the file</string>
 
     <!-- Event details -->
     <string name="title">제목</string>

@@ -103,6 +103,7 @@
     <string name="export_past_events_too">Exportovať aj minulé udalosti</string>
     <string name="include_event_types">Zahrnúť typy udalostí</string>
     <string name="filename_without_ics">Názov súboru (bez .ics)</string>
+    <string name="override_event_types">Nahradiť typy udalostí v súbore</string>
 
     <!-- Event details -->
     <string name="title">Názov</string>

@@ -102,7 +102,8 @@
     <string name="default_event_type">Standart hadisə tipi</string>
     <string name="export_past_events_too">Keçmiş hadisələri də xaric et</string>
     <string name="include_event_types">Hadisə tiplərini ehtiva et</string>
-    <string name="filename_without_ics">Fayl adı (.ics'sız)</string>
+    <string name="filename_without_ics">Fayl adı (.ics\'sız)</string>
+    <string name="override_event_types">Override event types in the file</string>
 
     <!-- Event details -->
     <string name="title">Başlıq</string>

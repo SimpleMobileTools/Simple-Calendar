@@ -103,6 +103,7 @@
     <string name="export_past_events_too">Izvoz prošlih događaja</string>
     <string name="include_event_types">Uključi vrste događaja</string>
     <string name="filename_without_ics">Naziv datoteke (bez .ics)</string>
+    <string name="override_event_types">Override event types in the file</string>
 
     <!-- Event details -->
     <string name="title">Naslov</string>

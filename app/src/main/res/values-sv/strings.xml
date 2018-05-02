@@ -103,6 +103,7 @@
     <string name="export_past_events_too">Exportera även tidigare händelser</string>
     <string name="include_event_types">Inkludera händelsetyper</string>
     <string name="filename_without_ics">Filnamn (utan .ics)</string>
+    <string name="override_event_types">Override event types in the file</string>
 
     <!-- Event details -->
     <string name="title">Titel</string>

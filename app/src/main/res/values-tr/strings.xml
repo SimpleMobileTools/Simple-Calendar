@@ -103,6 +103,7 @@
     <string name="export_past_events_too">Geçmişteki etkinlikleri de dışa aktar</string>
     <string name="include_event_types">Include event types</string>
     <string name="filename_without_ics">Filename (without .ics)</string>
+    <string name="override_event_types">Override event types in the file</string>
 
     <!-- Event details -->
     <string name="title">Başlık</string>
