@@ -875,7 +875,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
     private fun fillEvents(cursor: Cursor?): List<Event> {
         val eventTypeColors = SparseIntArray()
-        fetchEventTypes().forEach {
+        getEventTypesSync().forEach {
             eventTypeColors.put(it.id, it.color)
         }
 
@@ -917,6 +917,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                     val event = Event(id, startTS, endTS, title, description, reminder1Minutes, reminder2Minutes, reminder3Minutes,
                             repeatInterval, importId, flags, repeatLimit, repeatRule, eventType, ignoreEventOccurrences, offset, isDstIncluded,
                             0, lastUpdated, source, color, location)
+
                     events.add(event)
                 } while (cursor.moveToNext())
             }
@@ -926,11 +927,11 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
     fun getEventTypes(callback: (types: ArrayList<EventType>) -> Unit) {
         Thread {
-            callback(fetchEventTypes())
+            callback(getEventTypesSync())
         }.start()
     }
 
-    fun fetchEventTypes(): ArrayList<EventType> {
+    fun getEventTypesSync(): ArrayList<EventType> {
         val eventTypes = ArrayList<EventType>(4)
         val cols = arrayOf(COL_TYPE_ID, COL_TYPE_TITLE, COL_TYPE_COLOR, COL_TYPE_CALDAV_CALENDAR_ID, COL_TYPE_CALDAV_DISPLAY_NAME, COL_TYPE_CALDAV_EMAIL)
         var cursor: Cursor? = null
@@ -951,6 +952,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         } finally {
             cursor?.close()
         }
+
         return eventTypes
     }
 
