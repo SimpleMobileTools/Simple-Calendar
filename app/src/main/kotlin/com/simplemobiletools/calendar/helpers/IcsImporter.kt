@@ -85,9 +85,9 @@ class IcsImporter(val activity: SimpleActivity) {
                         curEnd = curStart + Parser().parseDurationSeconds(duration)
                     } else if (line.startsWith(SUMMARY) && !isNotificationDescription) {
                         curTitle = line.substring(SUMMARY.length)
-                        curTitle = getTitle(curTitle).replace("\\n", "\n")
+                        curTitle = getTitle(curTitle).replace("\\n", "\n").replace("\\,", ",")
                     } else if (line.startsWith(DESCRIPTION) && !isNotificationDescription) {
-                        curDescription = line.substring(DESCRIPTION.length).replace("\\n", "\n")
+                        curDescription = line.substring(DESCRIPTION.length).replace("\\n", "\n").replace("\\,", ",")
                         isDescription = true
                     } else if (line.startsWith(UID)) {
                         curImportId = line.substring(UID.length).trim()
@@ -119,7 +119,7 @@ class IcsImporter(val activity: SimpleActivity) {
 
                         curRepeatExceptions.add(getTimestamp(value))
                     } else if (line.startsWith(LOCATION)) {
-                        curLocation = line.substring(LOCATION.length)
+                        curLocation = line.substring(LOCATION.length).replace("\\,", ",")
                     } else if (line == END_ALARM) {
                         if (isProperReminderAction && curReminderTriggerMinutes != -1) {
                             curReminderMinutes.add(curReminderTriggerMinutes)
