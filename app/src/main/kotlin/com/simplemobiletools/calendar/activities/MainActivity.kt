@@ -380,7 +380,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                     eventTypeId = dbHelper.insertEventType(eventType)
                 }
 
-                val result = IcsImporter(this).importEvents(it as String, eventTypeId, 0)
+                val result = IcsImporter(this).importEvents(it as String, eventTypeId, 0, false)
                 handleParseResult(result)
                 if (result != IcsImporter.ImportResult.IMPORT_FAIL) {
                     runOnUiThread {
