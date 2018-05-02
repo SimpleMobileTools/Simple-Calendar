@@ -51,6 +51,7 @@ const val LAST_USED_CALDAV_CALENDAR = "last_used_caldav_calendar"
 const val DISPLAY_PAST_EVENTS = "display_past_events"
 const val REPLACE_DESCRIPTION = "replace_description"
 const val SHOW_GRID = "show_grid"
+const val IS_CUSTOMIZING_COLORS = "is_customizing_colors"
 
 // repeat_rule for monthly repetition
 const val REPEAT_MONTH_SAME_DAY = 1                   // ie 25th every month

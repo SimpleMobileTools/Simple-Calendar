@@ -8,10 +8,7 @@ import android.text.TextUtils
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.dialogs.SelectCalendarsDialog
 import com.simplemobiletools.calendar.extensions.*
-import com.simplemobiletools.calendar.helpers.CalDAVHandler
-import com.simplemobiletools.calendar.helpers.FONT_SIZE_LARGE
-import com.simplemobiletools.calendar.helpers.FONT_SIZE_MEDIUM
-import com.simplemobiletools.calendar.helpers.FONT_SIZE_SMALL
+import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.models.EventType
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.CustomIntervalPickerDialog
@@ -392,7 +389,10 @@ class SettingsActivity : SimpleActivity() {
 
     private fun setupCustomizeWidgetColors() {
         settings_customize_widget_colors_holder.setOnClickListener {
-
+            Intent(this, WidgetListConfigureActivity::class.java).apply {
+                putExtra(IS_CUSTOMIZING_COLORS, true)
+                startActivity(this)
+            }
         }
     }
 
