@@ -60,7 +60,8 @@ class EventActivity : SimpleActivity() {
             return
         }
 
-        if (dbHelper.getEventType(config.lastUsedLocalEventTypeId) == null) {
+        val localEventType = dbHelper.getEventType(config.lastUsedLocalEventTypeId)
+        if (localEventType == null || localEventType.caldavCalendarId != 0) {
             config.lastUsedLocalEventTypeId = DBHelper.REGULAR_EVENT_TYPE_ID
         }
 
