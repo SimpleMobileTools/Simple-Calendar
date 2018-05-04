@@ -155,6 +155,7 @@
     <string name="delete_all_events_confirmation">Jeste li sigurni da želite izbrisati sve događaje? To će ostaviti Vaše vrste događaja i druge postavke netaknutima.</string>
     <string name="show_a_grid">Prikaži mrežu</string>
     <string name="loop_reminders">Loop reminders until dismissed</string>
+    <string name="dim_past_events">Dim past events</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

@@ -155,6 +155,7 @@
     <string name="delete_all_events_confirmation">Ste si istý, že chcete odstrániť všetky udalosti? Všetky typy udalostí a nastavenia ostanú nedotknuté.</string>
     <string name="show_a_grid">Zobraziť mriežku</string>
     <string name="loop_reminders">Opakovať pripomienky až po odstránenie</string>
+    <string name="dim_past_events">Stlmiť minulé udalosti</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

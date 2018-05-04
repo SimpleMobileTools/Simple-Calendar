@@ -155,6 +155,7 @@
     <string name="delete_all_events_confirmation">Er du sikker på at du vil slette alle hendelser? Dine hendelsestyper og andre innstillinger blir beholdt.</string>
     <string name="show_a_grid">Vis rutenett</string>
     <string name="loop_reminders">Loop reminders until dismissed</string>
+    <string name="dim_past_events">Dim past events</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

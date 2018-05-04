@@ -155,6 +155,7 @@
     <string name="delete_all_events_confirmation">Är du säker på att du vill ta bort alla händelser? Dina händelsetyper och andra inställningar påverkas inte av borttagningen.</string>
     <string name="show_a_grid">Visa ett rutnät</string>
     <string name="loop_reminders">Loop reminders until dismissed</string>
+    <string name="dim_past_events">Dim past events</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
