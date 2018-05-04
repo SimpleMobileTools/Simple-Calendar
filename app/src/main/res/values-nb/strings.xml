@@ -20,6 +20,7 @@
     <string name="event">Hendelse</string>
     <string name="edit_event">Rediger hendelse</string>
     <string name="new_event">Ny hendelse</string>
+    <string name="duplicate_event">Duplicate event</string>
     <string name="title_empty">Tittel kan ikke være tom</string>
     <string name="end_before_start">Hendelsen kan ikke slutte tidligere enn den starter</string>
     <string name="event_added">Hendelse vellykket lagt til</string>

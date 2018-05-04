@@ -20,6 +20,7 @@
     <string name="event">Udalosť</string>
     <string name="edit_event">Upraviť udalosť</string>
     <string name="new_event">Nová udalosť</string>
+    <string name="duplicate_event">Duplikovať udalosť</string>
     <string name="title_empty">Prosím zadajte názov</string>
     <string name="end_before_start">Udalosť nemôže skončiť skôr ako by začala</string>
     <string name="event_added">Udalosť bola úspešne pridaná</string>

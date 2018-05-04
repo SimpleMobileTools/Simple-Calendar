@@ -20,6 +20,7 @@
     <string name="event">Событие</string>
     <string name="edit_event">Редактировать событие</string>
     <string name="new_event">Новое событие</string>
+    <string name="duplicate_event">Duplicate event</string>
     <string name="title_empty">Заголовок не может быть пустым</string>
     <string name="end_before_start">Событие не может завершаться раньше, чем начинается</string>
     <string name="event_added">Событие успешно добавлено</string>

@@ -20,6 +20,7 @@
     <string name="event">Darvoud</string>
     <string name="edit_event">Embann an darvoud</string>
     <string name="new_event">Darvoud nevez</string>
+    <string name="duplicate_event">Duplicate event</string>
     <string name="title_empty">N\'hall ket an titl bezañ goullo</string>
     <string name="end_before_start">N\'hall ket an darvoud echuiñ abretoc\'h eget ma krog</string>
     <string name="event_added">Darvoud ouzhpennet gant berzh</string>

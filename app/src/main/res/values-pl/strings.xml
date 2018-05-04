@@ -20,6 +20,7 @@
     <string name="event">Wydarzenie</string>
     <string name="edit_event">Edytuj wydarzenie</string>
     <string name="new_event">Nowe wydarzenie</string>
+    <string name="duplicate_event">Duplicate event</string>
     <string name="title_empty">Tytuł nie może być pusty</string>
     <string name="end_before_start">Wydarzenie nie może zakończyć się wcześniej, niż się zaczyna</string>
     <string name="event_added">Wydarzenie zostało dodane</string>

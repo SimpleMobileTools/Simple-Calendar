@@ -20,6 +20,7 @@
     <string name="event">Událost</string>
     <string name="edit_event">Upravit událost</string>
     <string name="new_event">Nová událost</string>
+    <string name="duplicate_event">Duplicate event</string>
     <string name="title_empty">Doplňte název</string>
     <string name="end_before_start">Konec události nemůže být dříve než začátek</string>
     <string name="event_added">Událost úspěšně přidána</string>

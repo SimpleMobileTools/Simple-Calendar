@@ -20,6 +20,7 @@
     <string name="event">Begivenhed</string>
     <string name="edit_event">Rediger begivenhed</string>
     <string name="new_event">Ny begivenhed</string>
+    <string name="duplicate_event">Duplicate event</string>
     <string name="title_empty">Indtast titel</string>
     <string name="end_before_start">Begivenheden skal starte inden den slutter</string>
     <string name="event_added">Begivenhed tilføjet</string>

@@ -20,6 +20,7 @@
     <string name="event">活動</string>
     <string name="edit_event">編輯活動</string>
     <string name="new_event">新活動</string>
+    <string name="duplicate_event">Duplicate event</string>
     <string name="title_empty">標題不能是空白的</string>
     <string name="end_before_start">活動結束時間不能比開始早</string>
     <string name="event_added">活動添加成功</string>

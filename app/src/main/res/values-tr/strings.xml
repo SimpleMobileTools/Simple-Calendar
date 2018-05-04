@@ -20,6 +20,7 @@
     <string name="event">Durum</string>
     <string name="edit_event">Etkinliği Düzenle</string>
     <string name="new_event">Yeni Etkinlik</string>
+    <string name="duplicate_event">Duplicate event</string>
     <string name="title_empty">Başlık başlığı boş olamaz</string>
     <string name="end_before_start">Etkinlik, başlamasından önce sona eremez</string>
     <string name="event_added">Etkinlik başarıyla eklendi</string>

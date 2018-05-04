@@ -20,6 +20,7 @@
     <string name="event">Bejegyzés</string>
     <string name="edit_event">Bejegyzés szerkesztése</string>
     <string name="new_event">Új bejegyzés</string>
+    <string name="duplicate_event">Duplicate event</string>
     <string name="title_empty">A cím nem lehet üres</string>
     <string name="end_before_start">Az eseménynek nem lehet vége a kezdete előtt</string>
     <string name="event_added">Bejegyzés hozzáadva</string>

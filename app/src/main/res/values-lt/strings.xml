@@ -20,6 +20,7 @@
     <string name="event">Įvykis</string>
     <string name="edit_event">Redaguoti įvykį</string>
     <string name="new_event">Naujas įvykis</string>
+    <string name="duplicate_event">Duplicate event</string>
     <string name="title_empty">Pavadinimas negali būti tuščias</string>
     <string name="end_before_start">TĮvykis negali pasibaigti anksčiau nei jis prasideda</string>
     <string name="event_added">Įvykis įtrauktas sėkmingai</string>

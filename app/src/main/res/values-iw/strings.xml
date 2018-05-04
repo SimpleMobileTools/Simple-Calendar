@@ -20,6 +20,7 @@
     <string name="event">אירוע</string>
     <string name="edit_event">ערוך</string>
     <string name="new_event">אירוע חדש</string>
+    <string name="duplicate_event">Duplicate event</string>
     <string name="title_empty">הכותרת לא יכולה להיות ריקה</string>
     <string name="end_before_start">האירוע לא יכול להיגמר מוקדם משהוא מתחיל</string>
     <string name="event_added">האירוע הוסף בהצלחה</string>

@@ -20,6 +20,7 @@
     <string name="event">इवेंट</string>
     <string name="edit_event">इवेंट एडिट करें</string>
     <string name="new_event">नया इवेंट</string>
+    <string name="duplicate_event">Duplicate event</string>
     <string name="title_empty">शीर्षक रिक्त नहीं हो सकता</string>
     <string name="end_before_start">इवेंट शुरू होने से पहले खत्म नहीं हो सकता</string>
     <string name="event_added">इवेंट सफलतापूर्वक जोड़ा गया</string>

@@ -20,6 +20,7 @@
     <string name="event">Händelse</string>
     <string name="edit_event">Redigera händelse</string>
     <string name="new_event">Ny händelse</string>
+    <string name="duplicate_event">Duplicate event</string>
     <string name="title_empty">Titeln får inte vara tom</string>
     <string name="end_before_start">Händelsen kan inte sluta innan den har startat</string>
     <string name="event_added">Händelsen har lagts till</string>
