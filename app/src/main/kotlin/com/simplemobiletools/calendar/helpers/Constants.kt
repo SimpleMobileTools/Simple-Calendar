@@ -87,7 +87,7 @@ const val STATUS = "STATUS:"
 const val EXDATE = "EXDATE"
 const val BYDAY = "BYDAY"
 const val BYMONTHDAY = "BYMONTHDAY"
-const val LOCATION = "LOCATION:"
+const val LOCATION = "LOCATION"
 
 // this tag isn't a standard ICS tag, but there's no official way of adding a category color in an ics file
 const val CATEGORY_COLOR = "CATEGORY_COLOR:"

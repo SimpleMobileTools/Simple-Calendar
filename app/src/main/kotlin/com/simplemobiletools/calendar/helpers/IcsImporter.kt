@@ -119,7 +119,7 @@ class IcsImporter(val activity: SimpleActivity) {
 
                         curRepeatExceptions.add(getTimestamp(value))
                     } else if (line.startsWith(LOCATION)) {
-                        curLocation = line.substring(LOCATION.length).replace("\\,", ",")
+                        curLocation = getLocation(line.substring(LOCATION.length).replace("\\,", ","))
                     } else if (line == END_ALARM) {
                         if (isProperReminderAction && curReminderTriggerMinutes != -1) {
                             curReminderMinutes.add(curReminderTriggerMinutes)
@@ -200,6 +200,14 @@ class IcsImporter(val activity: SimpleActivity) {
             activity.showErrorToast(e, Toast.LENGTH_LONG)
             eventsFailed++
             -1
+        }
+    }
+
+    private fun getLocation(fullString: String): String {
+        return if (fullString.startsWith(":")) {
+            fullString.trimStart(':')
+        } else {
+            fullString.substringAfter(':').trim()
         }
     }
 

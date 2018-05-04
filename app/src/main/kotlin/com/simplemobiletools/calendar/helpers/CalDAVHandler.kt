@@ -182,8 +182,6 @@ class CalDAVHandler(val context: Context) {
                     colors.put(colorKey, color)
                 } while (cursor.moveToNext())
             }
-        } catch (e: Exception) {
-            Log.e("DEBUG", "exc $e")
         } finally {
             cursor?.close()
         }
