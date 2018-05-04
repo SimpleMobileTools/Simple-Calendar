@@ -1,7 +1,6 @@
 package com.simplemobiletools.calendar.fragments
 
 import android.content.Intent
-import android.content.res.Resources
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AlertDialog
@@ -37,12 +36,10 @@ class DayFragment : Fragment() {
     private var mDayCode = ""
     private var lastHash = 0
 
-    lateinit var mRes: Resources
     lateinit var mHolder: RelativeLayout
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_day, container, false)
-        mRes = resources
         mHolder = view.day_holder
 
         mDayCode = arguments!!.getString(DAY_CODE)

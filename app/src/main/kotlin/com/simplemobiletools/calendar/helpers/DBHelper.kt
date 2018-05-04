@@ -788,7 +788,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
     fun getRunningEvents(): List<Event> {
         val events = ArrayList<Event>()
-        val ts = context.getNowSeconds()
+        val ts = getNowSeconds()
 
         val selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_REPEAT_INTERVAL IS 0 AND $COL_START_TS != 0"
         val selectionArgs = arrayOf(ts.toString(), ts.toString())
@@ -829,7 +829,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     }
 
     fun getEventsToExport(includePast: Boolean): ArrayList<Event> {
-        val currTime = context.getNowSeconds().toString()
+        val currTime = getNowSeconds().toString()
         var events = ArrayList<Event>()
 
         // non repeating events
@@ -914,7 +914,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                         repeatRule = REPEAT_MONTH_SAME_DAY
                     }
 
-                    val isPastEvent = endTS < System.currentTimeMillis() / 1000
+                    val isPastEvent = endTS < getNowSeconds()
 
                     val event = Event(id, startTS, endTS, title, description, reminder1Minutes, reminder2Minutes, reminder3Minutes,
                             repeatInterval, importId, flags, repeatLimit, repeatRule, eventType, ignoreEventOccurrences, offset, isDstIncluded,
@@ -1044,5 +1044,5 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
     }
 
-    private fun getIsPastEvent(event: Event) = event.endTS < System.currentTimeMillis() / 1000
+    private fun getIsPastEvent(event: Event) = event.endTS < getNowSeconds()
 }

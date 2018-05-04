@@ -47,8 +47,6 @@ val Context.config: Config get() = Config.newInstance(applicationContext)
 
 val Context.dbHelper: DBHelper get() = DBHelper.newInstance(applicationContext)
 
-fun Context.getNowSeconds() = (System.currentTimeMillis() / 1000).toInt()
-
 fun Context.updateWidgets() {
     val widgetIDs = AppWidgetManager.getInstance(applicationContext).getAppWidgetIds(ComponentName(applicationContext, MyWidgetMonthlyProvider::class.java))
     if (widgetIDs.isNotEmpty()) {
@@ -150,7 +148,7 @@ fun Context.notifyRunningEvents() {
 
 fun Context.notifyEvent(originalEvent: Event) {
     var event = originalEvent.copy()
-    val currentSeconds = (System.currentTimeMillis() / 1000).toInt()
+    val currentSeconds = getNowSeconds()
 
     // make sure refer to the proper repeatable event instance with "Tomorrow", or the specific date
     if (event.repeatInterval != 0 && event.startTS - event.reminder1Minutes * 60 < currentSeconds) {
@@ -401,14 +399,20 @@ fun Context.getEventListItems(events: List<Event>): ArrayList<ListItem> {
     val sorted = events.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { if (replaceDescription) it.location else it.description }))
     val sublist = sorted.subList(0, Math.min(sorted.size, 100))
     var prevCode = ""
+    val now = getNowSeconds()
+    val today = Formatter.getDayTitle(this, Formatter.getDayCodeFromTS(now))
+
     sublist.forEach {
         val code = Formatter.getDayCodeFromTS(it.startTS)
         if (code != prevCode) {
             val day = Formatter.getDayTitle(this, code)
-            listItems.add(ListSection(day, code))
+            val isToday = day == today
+            val listSection = ListSection(day, code, isToday, !isToday && it.startTS < now)
+            listItems.add(listSection)
             prevCode = code
         }
-        listItems.add(ListEvent(it.id, it.startTS, it.endTS, it.title, it.description, it.getIsAllDay(), it.color, it.location))
+        val listEvent = ListEvent(it.id, it.startTS, it.endTS, it.title, it.description, it.getIsAllDay(), it.color, it.location, it.isPastEvent)
+        listItems.add(listEvent)
     }
     return listItems
 }

@@ -44,7 +44,6 @@
         android:layout_marginLeft="@dimen/big_margin"
         android:layout_toLeftOf="@+id/event_item_color"
         android:layout_toRightOf="@+id/event_item_end"
-        android:alpha=".4"
         android:ellipsize="end"
         android:maxLines="1"
         android:paddingRight="@dimen/activity_margin"

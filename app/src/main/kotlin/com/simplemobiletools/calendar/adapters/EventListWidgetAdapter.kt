@@ -11,13 +11,12 @@ import com.simplemobiletools.calendar.R.id.event_section_title
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.seconds
-import com.simplemobiletools.calendar.helpers.DAY_CODE
-import com.simplemobiletools.calendar.helpers.EVENT_ID
-import com.simplemobiletools.calendar.helpers.EVENT_OCCURRENCE_TS
+import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.models.ListEvent
 import com.simplemobiletools.calendar.models.ListItem
 import com.simplemobiletools.calendar.models.ListSection
+import com.simplemobiletools.commons.extensions.adjustAlpha
 import com.simplemobiletools.commons.extensions.getColoredBitmap
 import com.simplemobiletools.commons.extensions.setText
 import com.simplemobiletools.commons.extensions.setTextSize
@@ -31,12 +30,15 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
     private val allDayString = context.resources.getString(R.string.all_day)
     private var events = ArrayList<ListItem>()
     private val textColor = context.config.widgetTextColor
+    private val weakTextColor = textColor.adjustAlpha(LOW_ALPHA)
     private val replaceDescription = context.config.replaceDescription
+    private val dimPastEvents = context.config.dimPastEvents
     private var mediumFontSize = context.config.getFontSize()
 
     override fun getViewAt(position: Int): RemoteViews? {
         val type = getItemViewType(position)
         val remoteView: RemoteViews
+        var curTextColor = textColor
 
         if (type == ITEM_EVENT) {
             val item = events[position] as ListEvent
@@ -66,10 +68,14 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
                     setText(R.id.event_item_end, endString)
                 }
 
-                setTextColor(R.id.event_section_title, textColor)
-                setTextColor(R.id.event_item_description, textColor)
-                setTextColor(R.id.event_item_start, textColor)
-                setTextColor(R.id.event_item_end, textColor)
+                if (dimPastEvents && item.isPastEvent) {
+                    curTextColor = weakTextColor
+                }
+
+                setTextColor(R.id.event_section_title, curTextColor)
+                setTextColor(R.id.event_item_description, curTextColor)
+                setTextColor(R.id.event_item_start, curTextColor)
+                setTextColor(R.id.event_item_end, curTextColor)
 
                 setTextSize(R.id.event_section_title, mediumFontSize)
                 setTextSize(R.id.event_item_description, mediumFontSize)
@@ -84,8 +90,12 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
             }
         } else {
             val item = events[position] as ListSection
+            if (dimPastEvents && item.isPastSection) {
+                curTextColor = weakTextColor
+            }
+
             remoteView = RemoteViews(context.packageName, R.layout.event_list_section_widget).apply {
-                setTextColor(R.id.event_section_title, textColor)
+                setTextColor(R.id.event_section_title, curTextColor)
                 setTextSize(R.id.event_section_title, mediumFontSize)
                 setText(R.id.event_section_title, item.title)
 
@@ -119,14 +129,21 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
             val sorted = it.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { if (replaceDescription) it.location else it.description }))
             val sublist = sorted.subList(0, Math.min(sorted.size, 100))
             var prevCode = ""
+            val now = getNowSeconds()
+            val today = Formatter.getDayTitle(context, Formatter.getDayCodeFromTS(now))
+
             sublist.forEach {
                 val code = Formatter.getDayCodeFromTS(it.startTS)
                 if (code != prevCode) {
                     val day = Formatter.getDayTitle(context, code)
-                    listItems.add(ListSection(day, code))
+                    val isToday = day == today
+                    val listSection = ListSection(day, code, isToday, !isToday && it.startTS < now)
+                    listItems.add(listSection)
                     prevCode = code
                 }
-                listItems.add(ListEvent(it.id, it.startTS, it.endTS, it.title, it.description, it.getIsAllDay(), it.color, it.location))
+
+                val listEvent = ListEvent(it.id, it.startTS, it.endTS, it.title, it.description, it.getIsAllDay(), it.color, it.location, it.isPastEvent)
+                listItems.add(listEvent)
             }
 
             this@EventListWidgetAdapter.events = listItems

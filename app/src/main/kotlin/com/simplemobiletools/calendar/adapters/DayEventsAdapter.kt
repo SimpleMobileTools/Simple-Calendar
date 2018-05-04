@@ -10,8 +10,10 @@ import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.shareEvents
 import com.simplemobiletools.calendar.helpers.Formatter
+import com.simplemobiletools.calendar.helpers.LOW_ALPHA
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.commons.adapters.MyRecyclerViewAdapter
+import com.simplemobiletools.commons.extensions.adjustAlpha
 import com.simplemobiletools.commons.extensions.applyColorFilter
 import com.simplemobiletools.commons.extensions.beInvisible
 import com.simplemobiletools.commons.extensions.beInvisibleIf
@@ -21,8 +23,9 @@ import kotlinx.android.synthetic.main.event_item_day_view.view.*
 class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, recyclerView: MyRecyclerView, itemClick: (Any) -> Unit)
     : MyRecyclerViewAdapter(activity, recyclerView, null, itemClick) {
 
-    private var allDayString = resources.getString(R.string.all_day)
-    private var replaceDescriptionWithLocation = activity.config.replaceDescription
+    private val allDayString = resources.getString(R.string.all_day)
+    private val replaceDescriptionWithLocation = activity.config.replaceDescription
+    private val dimPastEvents = activity.config.dimPastEvents
 
     init {
         setupDragListener(true)
@@ -85,10 +88,15 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
                 }
             }
 
-            event_item_start.setTextColor(textColor)
-            event_item_end.setTextColor(textColor)
-            event_section_title.setTextColor(textColor)
-            event_item_description.setTextColor(textColor)
+            var newTextColor = textColor
+            if (dimPastEvents && event.isPastEvent) {
+                newTextColor = newTextColor.adjustAlpha(LOW_ALPHA)
+            }
+
+            event_item_start.setTextColor(newTextColor)
+            event_item_end.setTextColor(newTextColor)
+            event_section_title.setTextColor(newTextColor)
+            event_item_description.setTextColor(newTextColor)
         }
     }
 

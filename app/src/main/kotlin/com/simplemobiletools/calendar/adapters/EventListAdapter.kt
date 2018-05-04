@@ -8,13 +8,15 @@ import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.dialogs.DeleteEventDialog
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
-import com.simplemobiletools.calendar.extensions.getNowSeconds
 import com.simplemobiletools.calendar.extensions.shareEvents
 import com.simplemobiletools.calendar.helpers.Formatter
+import com.simplemobiletools.calendar.helpers.LOW_ALPHA
+import com.simplemobiletools.calendar.helpers.getNowSeconds
 import com.simplemobiletools.calendar.models.ListEvent
 import com.simplemobiletools.calendar.models.ListItem
 import com.simplemobiletools.calendar.models.ListSection
 import com.simplemobiletools.commons.adapters.MyRecyclerViewAdapter
+import com.simplemobiletools.commons.extensions.adjustAlpha
 import com.simplemobiletools.commons.extensions.applyColorFilter
 import com.simplemobiletools.commons.extensions.beInvisible
 import com.simplemobiletools.commons.extensions.beInvisibleIf
@@ -32,9 +34,8 @@ class EventListAdapter(activity: SimpleActivity, val listItems: ArrayList<ListIt
     private val topDivider = resources.getDrawable(R.drawable.divider_width)
     private val allDayString = resources.getString(R.string.all_day)
     private val replaceDescriptionWithLocation = activity.config.replaceDescription
-    private val redTextColor = resources.getColor(R.color.red_text)
-    private val now = activity.getNowSeconds()
-    private val todayDate = Formatter.getDayTitle(activity, Formatter.getDayCodeFromTS(now))
+    private val dimPastEvents = activity.config.dimPastEvents
+    private val now = getNowSeconds()
     private var use24HourFormat = activity.config.use24HourFormat
 
     override fun getActionMenuId() = R.menu.cab_event_list
@@ -112,12 +113,15 @@ class EventListAdapter(activity: SimpleActivity, val listItems: ArrayList<ListIt
             var endTextColor = textColor
             if (listEvent.startTS <= now && listEvent.endTS <= now) {
                 if (listEvent.isAllDay) {
-                    if (Formatter.getDayCodeFromTS(listEvent.startTS) == Formatter.getDayCodeFromTS(now))
+                    if (Formatter.getDayCodeFromTS(listEvent.startTS) == Formatter.getDayCodeFromTS(now)) {
                         startTextColor = primaryColor
-                } else {
-                    startTextColor = redTextColor
+                    }
                 }
-                endTextColor = redTextColor
+
+                if (dimPastEvents && listEvent.isPastEvent) {
+                    startTextColor = startTextColor.adjustAlpha(LOW_ALPHA)
+                    endTextColor = endTextColor.adjustAlpha(LOW_ALPHA)
+                }
             } else if (listEvent.startTS <= now && listEvent.endTS >= now) {
                 startTextColor = primaryColor
             }
@@ -133,7 +137,11 @@ class EventListAdapter(activity: SimpleActivity, val listItems: ArrayList<ListIt
         view.event_section_title.apply {
             text = listSection.title
             setCompoundDrawablesWithIntrinsicBounds(null, if (position == 0) null else topDivider, null, null)
-            setTextColor(if (listSection.title == todayDate) primaryColor else textColor)
+            var color = if (listSection.isToday) primaryColor else textColor
+            if (dimPastEvents && listSection.isPastSection) {
+                color = color.adjustAlpha(LOW_ALPHA)
+            }
+            setTextColor(color)
         }
     }
 
