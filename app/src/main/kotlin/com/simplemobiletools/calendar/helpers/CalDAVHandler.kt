@@ -182,12 +182,15 @@ class CalDAVHandler(val context: Context) {
                     colors.put(colorKey, color)
                 } while (cursor.moveToNext())
             }
+        } catch (e: Exception) {
+            Log.e("DEBUG", "exc $e")
         } finally {
             cursor?.close()
         }
 
-        val sortedColors = ArrayList<Int>(colors.size())
+        var sortedColors = ArrayList<Int>(colors.size())
         (0 until colors.size()).mapTo(sortedColors) { colors[it] }
+        sortedColors = sortedColors.distinct() as ArrayList<Int>
 
         return sortedColors
     }
