@@ -416,8 +416,8 @@ class CalDAVHandler(val context: Context) {
     private fun fillEventRepeatExceptionValues(event: Event, occurrenceTS: Int): ContentValues {
         return ContentValues().apply {
             put(CalendarContract.Events.CALENDAR_ID, event.getCalDAVCalendarId())
-            put(CalendarContract.Events.DTSTART, 0)
-            put(CalendarContract.Events.DTEND, 0)
+            put(CalendarContract.Events.DTSTART, occurrenceTS)
+            put(CalendarContract.Events.DTEND, occurrenceTS + (event.endTS - event.startTS))
             put(CalendarContract.Events.ORIGINAL_ID, event.getCalDAVEventId())
             put(CalendarContract.Events.EVENT_TIMEZONE, TimeZone.getDefault().toString())
             put(CalendarContract.Events.ORIGINAL_INSTANCE_TIME, occurrenceTS * 1000L)
