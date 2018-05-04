@@ -358,10 +358,16 @@ class CalDAVHandler(val context: Context) {
             put(CalendarContract.Events.DESCRIPTION, event.description)
             put(CalendarContract.Events.DTSTART, event.startTS * 1000L)
             put(CalendarContract.Events.ALL_DAY, if (event.getIsAllDay()) 1 else 0)
-            put(CalendarContract.Events.RRULE, Parser().getRepeatCode(event))
             put(CalendarContract.Events.EVENT_TIMEZONE, TimeZone.getDefault().toString())
             put(CalendarContract.Events.EVENT_LOCATION, event.location)
             put(CalendarContract.Events.STATUS, CalendarContract.Events.STATUS_CONFIRMED)
+
+            val repeatRule = Parser().getRepeatCode(event)
+            if (repeatRule.isEmpty()) {
+                putNull(CalendarContract.Events.RRULE)
+            } else {
+                put(CalendarContract.Events.RRULE, repeatRule)
+            }
 
             if (event.getIsAllDay() && event.endTS > event.startTS)
                 event.endTS += DAY
