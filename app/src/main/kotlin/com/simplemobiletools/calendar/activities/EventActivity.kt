@@ -71,6 +71,10 @@ class EventActivity : SimpleActivity() {
             mEvent = event
             mEventOccurrenceTS = intent.getIntExtra(EVENT_OCCURRENCE_TS, 0)
             setupEditEvent()
+
+            if (intent.getBooleanExtra(IS_DUPLICATE_INTENT, false)) {
+                mEvent.id = 0
+            }
         } else {
             mEvent = Event()
             mReminder1Minutes = config.defaultReminderMinutes
@@ -116,6 +120,7 @@ class EventActivity : SimpleActivity() {
         if (wasActivityInitialized) {
             menu.findItem(R.id.delete).isVisible = mEvent.id != 0
             menu.findItem(R.id.share).isVisible = mEvent.id != 0
+            menu.findItem(R.id.duplicate).isVisible = mEvent.id != 0
         }
         return true
     }
@@ -124,6 +129,7 @@ class EventActivity : SimpleActivity() {
         when (item.itemId) {
             R.id.save -> saveEvent()
             R.id.delete -> deleteEvent()
+            R.id.duplicate -> duplicateEvent()
             R.id.share -> shareEvent()
             else -> return super.onOptionsItemSelected(item)
         }
@@ -513,6 +519,16 @@ class EventActivity : SimpleActivity() {
             }
             finish()
         }
+    }
+
+    private fun duplicateEvent() {
+        Intent(this, EventActivity::class.java).apply {
+            putExtra(EVENT_ID, mEvent.id)
+            putExtra(EVENT_OCCURRENCE_TS, mEventOccurrenceTS)
+            putExtra(IS_DUPLICATE_INTENT, true)
+            startActivity(this)
+        }
+        finish()
     }
 
     private fun saveEvent() {

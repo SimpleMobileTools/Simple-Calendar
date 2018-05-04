@@ -7,6 +7,7 @@ const val STORED_LOCALLY_ONLY = 0
 const val DAY_CODE = "day_code"
 const val YEAR_LABEL = "year"
 const val EVENT_ID = "event_id"
+const val IS_DUPLICATE_INTENT = "is_duplicate_intent"
 const val EVENT_OCCURRENCE_TS = "event_occurrence_ts"
 const val NEW_EVENT_START_TS = "new_event_start_ts"
 const val WEEK_START_TIMESTAMP = "week_start_timestamp"
