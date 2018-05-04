@@ -153,6 +153,7 @@
     <string name="delete_all_events">Alle afspraken verwijderen</string>
     <string name="delete_all_events_confirmation">Alle afspraken verwijderen? Afspraaktypes en andere instellingen blijven behouden.</string>
     <string name="show_a_grid">Rasterlijnen tonen</string>
+    <string name="loop_reminders">Loop reminders until dismissed</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

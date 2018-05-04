@@ -228,14 +228,19 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
             .addAction(R.drawable.ic_snooze, getString(R.string.snooze), getSnoozePendingIntent(this, event))
 
     if (config.vibrateOnReminder) {
-        builder.setVibrate(longArrayOf(0, 300, 300, 300))
+        val vibrateArray = LongArray(2) { 500 }
+        builder.setVibrate(vibrateArray)
     }
 
     if (!publicVersion) {
         builder.setPublicVersion(getNotification(pendingIntent, event, content, true))
     }
 
-    return builder.build()
+    val notification = builder.build()
+    if (config.loopReminders) {
+        notification.flags = notification.flags or Notification.FLAG_INSISTENT
+    }
+    return notification
 }
 
 private fun getFormattedEventTime(startTime: String, endTime: String) = if (startTime == endTime) startTime else "$startTime \u2013 $endTime"

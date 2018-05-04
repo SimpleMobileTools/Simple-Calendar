@@ -153,6 +153,7 @@
     <string name="delete_all_events">Bütün hadisələri sil</string>
     <string name="delete_all_events_confirmation">Bütün hadisələri silmək istədiyinizə əminsiniz? Bu hadisələri və parametrlərini bütövlüklə siləcək.</string>
     <string name="show_a_grid">Show a grid</string>
+    <string name="loop_reminders">Loop reminders until dismissed</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

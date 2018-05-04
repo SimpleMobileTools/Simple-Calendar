@@ -55,6 +55,7 @@ class SettingsActivity : SimpleActivity() {
         setupVibrate()
         setupReminderSound()
         setupUseSameSnooze()
+        setupLoopReminders()
         setupSnoozeTime()
         setupDisplayPastEvents()
         setupFontSize()
@@ -314,6 +315,14 @@ class SettingsActivity : SimpleActivity() {
         settings_vibrate_holder.setOnClickListener {
             settings_vibrate.toggle()
             config.vibrateOnReminder = settings_vibrate.isChecked
+        }
+    }
+
+    private fun setupLoopReminders() {
+        settings_loop_reminders.isChecked = config.loopReminders
+        settings_loop_reminders_holder.setOnClickListener {
+            settings_loop_reminders.toggle()
+            config.loopReminders = settings_loop_reminders.isChecked
         }
     }
 

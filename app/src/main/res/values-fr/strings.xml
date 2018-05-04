@@ -153,6 +153,7 @@
     <string name="delete_all_events">Supprimer tous les événements</string>
     <string name="delete_all_events_confirmation">Êtes-vous sûr de vouloir supprimer tous les événements ? Cela laissera vos types d\'événements et autres paramètres intacts.</string>
     <string name="show_a_grid">Show a grid</string>
+    <string name="loop_reminders">Loop reminders until dismissed</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

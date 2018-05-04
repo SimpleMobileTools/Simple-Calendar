@@ -93,6 +93,10 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getBoolean(SHOW_GRID, false)
         set(showGrid) = prefs.edit().putBoolean(SHOW_GRID, showGrid).apply()
 
+    var loopReminders: Boolean
+        get() = prefs.getBoolean(LOOP_REMINDERS, false)
+        set(loopReminders) = prefs.edit().putBoolean(LOOP_REMINDERS, loopReminders).apply()
+
     fun getSyncedCalendarIdsAsList() = caldavSyncedCalendarIDs.split(",").filter { it.trim().isNotEmpty() } as ArrayList<String>
 
     fun addDisplayEventType(type: String) {

@@ -153,6 +153,7 @@
     <string name="delete_all_events">Izbriši sve događaje</string>
     <string name="delete_all_events_confirmation">Jeste li sigurni da želite izbrisati sve događaje? To će ostaviti Vaše vrste događaja i druge postavke netaknutima.</string>
     <string name="show_a_grid">Prikaži mrežu</string>
+    <string name="loop_reminders">Loop reminders until dismissed</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -160,10 +161,10 @@
     <string name="manage_synced_calendars">Upravljanje sinkroniziranim kalendarima</string>
     <string name="store_locally_only">Pohrani samo lokalno</string>
     <string name="refresh_caldav_calendars">Osvježi CalDAV kalendare</string>
-    <string name="refreshing">Osvježavanje...</string>
+    <string name="refreshing">Osvježavanje…</string>
     <string name="refreshing_complete">Osvježavanje završeno</string>
     <string name="editing_calendar_failed">Uređivanje kalendara nije uspjelo</string>
-    <string name="syncing">Sinkronizacija...</string>
+    <string name="syncing">Sinkronizacija…</string>
     <string name="synchronization_completed">Sinkronizacija završena</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->

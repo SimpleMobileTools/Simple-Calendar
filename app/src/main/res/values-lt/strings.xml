@@ -153,6 +153,7 @@
     <string name="delete_all_events">Ištrinti visus įvykius</string>
     <string name="delete_all_events_confirmation">Ar Jūs tikrai norite ištrinti visus įvykius? Tai neištrins įvykių tipų ir kitų nustatymų.</string>
     <string name="show_a_grid">Rodyti tinklelį</string>
+    <string name="loop_reminders">Loop reminders until dismissed</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
