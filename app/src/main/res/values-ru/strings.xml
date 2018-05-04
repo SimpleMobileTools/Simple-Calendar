@@ -156,6 +156,7 @@
     <string name="show_a_grid">Показывать сетку</string>
     <string name="loop_reminders">Loop reminders until dismissed</string>
     <string name="dim_past_events">Dim past events</string>
+    <string name="events">Events</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
