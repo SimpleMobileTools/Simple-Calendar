@@ -33,7 +33,9 @@ import com.simplemobiletools.calendar.receivers.CalDAVSyncReceiver
 import com.simplemobiletools.calendar.receivers.NotificationReceiver
 import com.simplemobiletools.calendar.services.SnoozeService
 import com.simplemobiletools.commons.extensions.*
+import com.simplemobiletools.commons.helpers.DAY_SECONDS
 import com.simplemobiletools.commons.helpers.SILENT
+import com.simplemobiletools.commons.helpers.YEAR_SECONDS
 import com.simplemobiletools.commons.helpers.isOreoPlus
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
@@ -146,11 +148,26 @@ fun Context.notifyRunningEvents() {
     dbHelper.getRunningEvents().forEach { notifyEvent(it) }
 }
 
-fun Context.notifyEvent(event: Event) {
+fun Context.notifyEvent(originalEvent: Event) {
+    var event = originalEvent.copy()
+    val currentSeconds = (System.currentTimeMillis() / 1000).toInt()
+
+    // make sure refer to the proper repeatable event instance with "Tomorrow", or the specific date
+    if (event.repeatInterval != 0 && event.startTS - event.reminder1Minutes * 60 < currentSeconds) {
+        val events = dbHelper.getRepeatableEventsFor(currentSeconds - DAY_SECONDS, currentSeconds + YEAR_SECONDS, event.id)
+        for (currEvent in events) {
+            event = currEvent
+            if (event.startTS - event.reminder1Minutes * 60 > currentSeconds) {
+                break
+            }
+        }
+    }
+
     val pendingIntent = getPendingIntent(applicationContext, event)
     val startTime = Formatter.getTimeFromTS(applicationContext, event.startTS)
     val endTime = Formatter.getTimeFromTS(applicationContext, event.endTS)
     val startDate = Formatter.getDateFromTS(event.startTS)
+
     val displayedStartDate = when (startDate) {
         LocalDate.now() -> ""
         LocalDate.now().plusDays(1) -> getString(R.string.tomorrow)

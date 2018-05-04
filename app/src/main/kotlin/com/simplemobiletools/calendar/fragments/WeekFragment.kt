@@ -24,6 +24,8 @@ import com.simplemobiletools.calendar.interfaces.WeeklyCalendar
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.views.MyScrollView
 import com.simplemobiletools.commons.extensions.*
+import com.simplemobiletools.commons.helpers.DAY_SECONDS
+import com.simplemobiletools.commons.helpers.WEEK_SECONDS
 import kotlinx.android.synthetic.main.fragment_week.*
 import kotlinx.android.synthetic.main.fragment_week.view.*
 import org.joda.time.DateTime

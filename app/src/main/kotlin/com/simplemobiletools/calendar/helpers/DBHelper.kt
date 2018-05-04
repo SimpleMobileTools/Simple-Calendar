@@ -680,7 +680,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         callback(filtered)
     }
 
-    private fun getRepeatableEventsFor(fromTS: Int, toTS: Int, eventId: Int = -1): List<Event> {
+    fun getRepeatableEventsFor(fromTS: Int, toTS: Int, eventId: Int = -1): List<Event> {
         val newEvents = ArrayList<Event>()
 
         // get repeatable events
