@@ -472,15 +472,24 @@ class EventActivity : SimpleActivity() {
         event_caldav_calendar_email.beGoneIf(currentCalendar == null)
 
         if (currentCalendar == null) {
+            val mediumMargin = resources.getDimension(R.dimen.medium_margin).toInt()
             event_caldav_calendar_name.apply {
                 text = getString(R.string.store_locally_only)
-                setPadding(paddingLeft, paddingTop, paddingRight, resources.getDimension(R.dimen.medium_margin).toInt())
+                setPadding(paddingLeft, paddingTop, paddingRight, mediumMargin)
+            }
+
+            event_caldav_calendar_holder.apply {
+                setPadding(paddingLeft, mediumMargin, paddingRight, mediumMargin)
             }
         } else {
             event_caldav_calendar_email.text = currentCalendar.accountName
             event_caldav_calendar_name.apply {
                 text = currentCalendar.displayName
                 setPadding(paddingLeft, paddingTop, paddingRight, resources.getDimension(R.dimen.tiny_margin).toInt())
+            }
+
+            event_caldav_calendar_holder.apply {
+                setPadding(paddingLeft, 0, paddingRight, 0)
             }
         }
     }
