@@ -60,6 +60,7 @@ class SettingsActivity : SimpleActivity() {
         setupDisplayPastEvents()
         setupFontSize()
         setupCustomizeWidgetColors()
+        setupDimEvents()
         updateTextColors(settings_holder)
         checkPrimaryColor()
         setupSectionColors()
@@ -84,7 +85,7 @@ class SettingsActivity : SimpleActivity() {
 
     private fun setupSectionColors() {
         val adjustedPrimaryColor = getAdjustedPrimaryColor()
-        arrayListOf(reminders_label, caldav_label, weekly_view_label, monthly_view_label, simple_event_list_label, simple_font_size_label).forEach {
+        arrayListOf(reminders_label, caldav_label, weekly_view_label, monthly_view_label, simple_event_list_label, simple_font_size_label, events_label).forEach {
             it.setTextColor(adjustedPrimaryColor)
         }
     }
@@ -406,6 +407,14 @@ class SettingsActivity : SimpleActivity() {
                 putExtra(IS_CUSTOMIZING_COLORS, true)
                 startActivity(this)
             }
+        }
+    }
+
+    private fun setupDimEvents() {
+        settings_dim_past_events.isChecked = config.dimPastEvents
+        settings_dim_past_events_holder.setOnClickListener {
+            settings_dim_past_events.toggle()
+            config.dimPastEvents = settings_dim_past_events.isChecked
         }
     }
 
