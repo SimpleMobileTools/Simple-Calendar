@@ -20,7 +20,7 @@
     <string name="event">Afspraak</string>
     <string name="edit_event">Afspraak bewerken</string>
     <string name="new_event">Nieuwe afspraak</string>
-    <string name="duplicate_event">Duplicate event</string>
+    <string name="duplicate_event">Afspraak namaken</string>
     <string name="title_empty">Titel kan niet leeg zijn</string>
     <string name="end_before_start">De begintijd valt na de eindtijd</string>
     <string name="event_added">Afspraak gemaakt</string>
@@ -154,9 +154,9 @@
     <string name="delete_all_events">Alle afspraken verwijderen</string>
     <string name="delete_all_events_confirmation">Alle afspraken verwijderen? Afspraaktypes en andere instellingen blijven behouden.</string>
     <string name="show_a_grid">Rasterlijnen tonen</string>
-    <string name="loop_reminders">Loop reminders until dismissed</string>
-    <string name="dim_past_events">Dim past events</string>
-    <string name="events">Events</string>
+    <string name="loop_reminders">Herinneringen blijven herhalen totdat ze zijn uitgezet</string>
+    <string name="dim_past_events">Afgelopen afspraken dimmen</string>
+    <string name="events">Afspraken</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
