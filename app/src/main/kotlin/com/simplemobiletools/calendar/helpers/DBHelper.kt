@@ -674,7 +674,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
         events.addAll(getRepeatableEventsFor(fromTS, toTS, eventId))
 
-        events.addAll(getAllDayEvents(fromTS, toTS, eventId))
+        events.addAll(getAllDayEvents(fromTS, eventId))
 
         val filtered = events.distinct().filterNot { it.ignoreEventOccurrences.contains(Formatter.getDayCodeFromTS(it.startTS).toInt()) } as MutableList<Event>
         callback(filtered)
@@ -709,11 +709,11 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                 if (event.repeatInterval.isXWeeklyRepetition()) {
                     if (event.startTS.isTsOnProperDay(event)) {
                         if (isOnProperWeek(event, startTimes)) {
-                            events.add(event.copy())
+                            events.add(event.copy(isPastEvent = event.getIsPastEvent()))
                         }
                     }
                 } else {
-                    events.add(event.copy())
+                    events.add(event.copy(isPastEvent = event.getIsPastEvent()))
                 }
             }
 
@@ -721,14 +721,14 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                 if (event.repeatInterval.isXWeeklyRepetition()) {
                     if (event.endTS >= toTS && event.startTS.isTsOnProperDay(event)) {
                         if (isOnProperWeek(event, startTimes)) {
-                            events.add(event.copy())
+                            events.add(event.copy(isPastEvent = event.getIsPastEvent()))
                         }
                     }
                 } else {
                     val dayCode = Formatter.getDayCodeFromTS(fromTS)
                     val endDayCode = Formatter.getDayCodeFromTS(event.endTS)
                     if (dayCode == endDayCode) {
-                        events.add(event.copy())
+                        events.add(event.copy(isPastEvent = event.getIsPastEvent()))
                     }
                 }
             }
@@ -745,7 +745,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                 if (event.startTS.isTsOnProperDay(event)) {
                     if (isOnProperWeek(event, startTimes)) {
                         if (event.endTS >= fromTS) {
-                            events.add(event.copy())
+                            events.add(event.copy(isPastEvent = event.getIsPastEvent()))
                         }
                         event.repeatLimit++
                     }
@@ -757,7 +757,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                     val dayCode = Formatter.getDayCodeFromTS(fromTS)
                     val endDayCode = Formatter.getDayCodeFromTS(event.endTS)
                     if (dayCode == endDayCode) {
-                        events.add(event.copy())
+                        events.add(event.copy(isPastEvent = event.getIsPastEvent()))
                     }
                 }
                 event.repeatLimit++
@@ -767,7 +767,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         return events
     }
 
-    private fun getAllDayEvents(fromTS: Int, toTS: Int, eventId: Int = -1): List<Event> {
+    private fun getAllDayEvents(fromTS: Int, eventId: Int = -1): List<Event> {
         val events = ArrayList<Event>()
         var selection = "($COL_FLAGS & $FLAG_ALL_DAY) != 0"
         if (eventId != -1)
@@ -914,9 +914,11 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                         repeatRule = REPEAT_MONTH_SAME_DAY
                     }
 
+                    val isPastEvent = endTS < System.currentTimeMillis() / 1000
+
                     val event = Event(id, startTS, endTS, title, description, reminder1Minutes, reminder2Minutes, reminder3Minutes,
                             repeatInterval, importId, flags, repeatLimit, repeatRule, eventType, ignoreEventOccurrences, offset, isDstIncluded,
-                            0, lastUpdated, source, color, location)
+                            0, lastUpdated, source, color, location, isPastEvent)
 
                     events.add(event)
                 } while (cursor.moveToNext())

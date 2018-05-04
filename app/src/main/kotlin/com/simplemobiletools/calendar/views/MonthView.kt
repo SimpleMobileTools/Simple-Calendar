@@ -43,6 +43,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     private var maxEventsPerDay = 0
     private var horizontalOffset = 0
     private var showWeekNumbers = false
+    private var dimPastEvents = true
     private var allEvents = ArrayList<MonthViewEvent>()
     private var bgRectF = RectF()
     private var dayLetters = ArrayList<String>()
@@ -55,6 +56,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         primaryColor = context.getAdjustedPrimaryColor()
         textColor = context.config.textColor
         showWeekNumbers = context.config.showWeekNumbers
+        dimPastEvents = context.config.dimPastEvents
 
         smallPadding = resources.displayMetrics.density.toInt()
         val normalTextSize = resources.getDimensionPixelSize(R.dimen.normal_text_size)
@@ -103,7 +105,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
                 val daysCnt = getEventLastingDaysCount(event)
                 if (lastEvent == null || lastEvent.startDayIndex + daysCnt <= day.indexOnMonthView) {
                     val monthViewEvent = MonthViewEvent(event.id, event.title, event.startTS, event.color, day.indexOnMonthView,
-                            daysCnt, day.indexOnMonthView, event.getIsAllDay())
+                            daysCnt, day.indexOnMonthView, event.getIsAllDay(), event.isPastEvent)
                     allEvents.add(monthViewEvent)
                 }
             }
@@ -236,16 +238,16 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         bgRectF.set(bgLeft, bgTop, bgRight, bgBottom)
         canvas.drawRoundRect(bgRectF, BG_CORNER_RADIUS, BG_CORNER_RADIUS, getEventBackgroundColor(event, startDayIndex, endDayIndex))
 
-        drawEventTitle(event.title, canvas, xPos, yPos + verticalOffset, bgRight - bgLeft - smallPadding, event.color, startDayIndex, endDayIndex)
+        drawEventTitle(event, canvas, xPos, yPos + verticalOffset, bgRight - bgLeft - smallPadding, startDayIndex, endDayIndex)
 
         for (i in 0 until Math.min(event.daysCnt, 7 - event.startDayIndex % 7)) {
             dayVerticalOffsets.put(event.startDayIndex + i, verticalOffset + eventTitleHeight + smallPadding * 2)
         }
     }
 
-    private fun drawEventTitle(title: String, canvas: Canvas, x: Float, y: Float, availableWidth: Float, eventColor: Int, startDay: DayMonthly, endDay: DayMonthly) {
-        val ellipsized = TextUtils.ellipsize(title, eventTitlePaint, availableWidth - smallPadding, TextUtils.TruncateAt.END)
-        canvas.drawText(title, 0, ellipsized.length, x + smallPadding * 2, y, getEventTitlePaint(eventColor, startDay, endDay))
+    private fun drawEventTitle(event: MonthViewEvent, canvas: Canvas, x: Float, y: Float, availableWidth: Float, startDay: DayMonthly, endDay: DayMonthly) {
+        val ellipsized = TextUtils.ellipsize(event.title, eventTitlePaint, availableWidth - smallPadding, TextUtils.TruncateAt.END)
+        canvas.drawText(event.title, 0, ellipsized.length, x + smallPadding * 2, y, getEventTitlePaint(event, startDay, endDay))
     }
 
     private fun getTextPaint(startDay: DayMonthly): Paint {
@@ -269,16 +271,16 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
 
     private fun getEventBackgroundColor(event: MonthViewEvent, startDay: DayMonthly, endDay: DayMonthly): Paint {
         var paintColor = event.color
-        if (!startDay.isThisMonth && !endDay.isThisMonth) {
+        if ((!startDay.isThisMonth && !endDay.isThisMonth) || (dimPastEvents && event.isPastEvent)) {
             paintColor = paintColor.adjustAlpha(LOW_ALPHA)
         }
 
         return getColoredPaint(paintColor)
     }
 
-    private fun getEventTitlePaint(color: Int, startDay: DayMonthly, endDay: DayMonthly): Paint {
-        var paintColor = color.getContrastColor()
-        if (!startDay.isThisMonth && !endDay.isThisMonth) {
+    private fun getEventTitlePaint(event: MonthViewEvent, startDay: DayMonthly, endDay: DayMonthly): Paint {
+        var paintColor = event.color.getContrastColor()
+        if ((!startDay.isThisMonth && !endDay.isThisMonth) || (dimPastEvents && event.isPastEvent)) {
             paintColor = paintColor.adjustAlpha(LOW_ALPHA)
         }
 

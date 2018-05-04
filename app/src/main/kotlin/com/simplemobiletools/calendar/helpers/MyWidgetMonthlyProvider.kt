@@ -84,6 +84,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
     private fun updateDays(context: Context, views: RemoteViews, days: List<DayMonthly>) {
         val displayWeekNumbers = context.config.showWeekNumbers
         val textColor = context.config.widgetTextColor
+        val dimPastEvents = context.config.dimPastEvents
         val smallerFontSize = context.config.getFontSize() - 3f
         val res = context.resources
         val len = days.size
@@ -117,7 +118,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
                 var backgroundColor = it.color
                 var eventTextColor = backgroundColor.getContrastColor()
 
-                if (!day.isThisMonth) {
+                if (!day.isThisMonth || (dimPastEvents && it.getIsPastEvent())) {
                     eventTextColor = eventTextColor.adjustAlpha(0.25f)
                     backgroundColor = backgroundColor.adjustAlpha(0.25f)
                 }
