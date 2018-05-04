@@ -709,11 +709,11 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                 if (event.repeatInterval.isXWeeklyRepetition()) {
                     if (event.startTS.isTsOnProperDay(event)) {
                         if (isOnProperWeek(event, startTimes)) {
-                            events.add(event.copy(isPastEvent = event.getIsPastEvent()))
+                            events.add(event.copy(isPastEvent = getIsPastEvent(event)))
                         }
                     }
                 } else {
-                    events.add(event.copy(isPastEvent = event.getIsPastEvent()))
+                    events.add(event.copy(isPastEvent = getIsPastEvent(event)))
                 }
             }
 
@@ -721,14 +721,14 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                 if (event.repeatInterval.isXWeeklyRepetition()) {
                     if (event.endTS >= toTS && event.startTS.isTsOnProperDay(event)) {
                         if (isOnProperWeek(event, startTimes)) {
-                            events.add(event.copy(isPastEvent = event.getIsPastEvent()))
+                            events.add(event.copy(isPastEvent = getIsPastEvent(event)))
                         }
                     }
                 } else {
                     val dayCode = Formatter.getDayCodeFromTS(fromTS)
                     val endDayCode = Formatter.getDayCodeFromTS(event.endTS)
                     if (dayCode == endDayCode) {
-                        events.add(event.copy(isPastEvent = event.getIsPastEvent()))
+                        events.add(event.copy(isPastEvent = getIsPastEvent(event)))
                     }
                 }
             }
@@ -745,7 +745,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                 if (event.startTS.isTsOnProperDay(event)) {
                     if (isOnProperWeek(event, startTimes)) {
                         if (event.endTS >= fromTS) {
-                            events.add(event.copy(isPastEvent = event.getIsPastEvent()))
+                            events.add(event.copy(isPastEvent = getIsPastEvent(event)))
                         }
                         event.repeatLimit++
                     }
@@ -757,7 +757,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                     val dayCode = Formatter.getDayCodeFromTS(fromTS)
                     val endDayCode = Formatter.getDayCodeFromTS(event.endTS)
                     if (dayCode == endDayCode) {
-                        events.add(event.copy(isPastEvent = event.getIsPastEvent()))
+                        events.add(event.copy(isPastEvent = getIsPastEvent(event)))
                     }
                 }
                 event.repeatLimit++
@@ -1043,4 +1043,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             cursor?.close()
         }
     }
+
+    private fun getIsPastEvent(event: Event) = event.endTS < System.currentTimeMillis() / 1000
 }

@@ -112,6 +112,4 @@ data class Event(var id: Int = 0, var startTS: Int = 0, var endTS: Int = 0, var 
     }
 
     fun getCalDAVCalendarId() = if (source.startsWith(CALDAV)) (source.split("-").lastOrNull() ?: "0").toString().toInt() else 0
-
-    fun getIsPastEvent() = endTS < System.currentTimeMillis() / 1000
 }

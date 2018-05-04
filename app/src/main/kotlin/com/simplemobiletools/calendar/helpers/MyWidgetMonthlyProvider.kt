@@ -118,7 +118,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
                 var backgroundColor = it.color
                 var eventTextColor = backgroundColor.getContrastColor()
 
-                if (!day.isThisMonth || (dimPastEvents && it.getIsPastEvent())) {
+                if (!day.isThisMonth || (dimPastEvents && it.isPastEvent)) {
                     eventTextColor = eventTextColor.adjustAlpha(0.25f)
                     backgroundColor = backgroundColor.adjustAlpha(0.25f)
                 }
