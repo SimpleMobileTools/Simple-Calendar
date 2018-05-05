@@ -38,6 +38,21 @@ class EventListAdapter(activity: SimpleActivity, val listItems: ArrayList<ListIt
     private val now = getNowSeconds()
     private var use24HourFormat = activity.config.use24HourFormat
 
+    init {
+        var firstNonPastSectionIndex = 0
+        listItems.forEachIndexed { index, listItem ->
+            if (firstNonPastSectionIndex == 0 && listItem is ListSection) {
+                if (!listItem.isPastSection) {
+                    firstNonPastSectionIndex = index
+                }
+            }
+        }
+
+        activity.runOnUiThread {
+            recyclerView.scrollToPosition(firstNonPastSectionIndex)
+        }
+    }
+
     override fun getActionMenuId() = R.menu.cab_event_list
 
     override fun prepareActionMode(menu: Menu) {}
