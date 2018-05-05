@@ -38,75 +38,84 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
     override fun getViewAt(position: Int): RemoteViews? {
         val type = getItemViewType(position)
         val remoteView: RemoteViews
-        var curTextColor = textColor
 
         if (type == ITEM_EVENT) {
-            val item = events[position] as ListEvent
-            remoteView = RemoteViews(context.packageName, R.layout.event_list_item_widget).apply {
-                setText(R.id.event_section_title, item.title)
-                setText(R.id.event_item_description, if (replaceDescription) item.location else item.description)
-                setText(R.id.event_item_start, if (item.isAllDay) allDayString else Formatter.getTimeFromTS(context, item.startTS))
-                setImageViewBitmap(R.id.event_item_color, context.resources.getColoredBitmap(R.drawable.monthly_event_dot, item.color))
-
-                if (item.startTS == item.endTS) {
-                    setViewVisibility(R.id.event_item_end, View.INVISIBLE)
-                } else {
-                    setViewVisibility(R.id.event_item_end, View.VISIBLE)
-                    var endString = Formatter.getTimeFromTS(context, item.endTS)
-                    val startCode = Formatter.getDayCodeFromTS(item.startTS)
-                    val endCode = Formatter.getDayCodeFromTS(item.endTS)
-
-                    if (startCode != endCode) {
-                        if (item.isAllDay) {
-                            endString = Formatter.getDateFromCode(context, endCode, true)
-                        } else {
-                            endString += " (${Formatter.getDateFromCode(context, endCode, true)})"
-                        }
-                    } else if (item.isAllDay) {
-                        setViewVisibility(R.id.event_item_end, View.INVISIBLE)
-                    }
-                    setText(R.id.event_item_end, endString)
-                }
-
-                if (dimPastEvents && item.isPastEvent) {
-                    curTextColor = weakTextColor
-                }
-
-                setTextColor(R.id.event_section_title, curTextColor)
-                setTextColor(R.id.event_item_description, curTextColor)
-                setTextColor(R.id.event_item_start, curTextColor)
-                setTextColor(R.id.event_item_end, curTextColor)
-
-                setTextSize(R.id.event_section_title, mediumFontSize)
-                setTextSize(R.id.event_item_description, mediumFontSize)
-                setTextSize(R.id.event_item_start, mediumFontSize)
-                setTextSize(R.id.event_item_end, mediumFontSize)
-
-                Intent().apply {
-                    putExtra(EVENT_ID, item.id)
-                    putExtra(EVENT_OCCURRENCE_TS, item.startTS)
-                    setOnClickFillInIntent(event_item_holder, this)
-                }
-            }
+            remoteView = RemoteViews(context.packageName, R.layout.event_list_item_widget)
+            setupListEvent(remoteView, events[position] as ListEvent)
         } else {
-            val item = events[position] as ListSection
-            if (dimPastEvents && item.isPastSection) {
-                curTextColor = weakTextColor
-            }
-
-            remoteView = RemoteViews(context.packageName, R.layout.event_list_section_widget).apply {
-                setTextColor(R.id.event_section_title, curTextColor)
-                setTextSize(R.id.event_section_title, mediumFontSize)
-                setText(R.id.event_section_title, item.title)
-
-                Intent().apply {
-                    putExtra(DAY_CODE, item.code)
-                    setOnClickFillInIntent(event_section_title, this)
-                }
-            }
+            remoteView = RemoteViews(context.packageName, R.layout.event_list_section_widget)
+            setupListSection(remoteView, events[position] as ListSection)
         }
 
         return remoteView
+    }
+
+    private fun setupListEvent(remoteView: RemoteViews, item: ListEvent) {
+        var curTextColor = textColor
+        remoteView.apply {
+            setText(R.id.event_section_title, item.title)
+            setText(R.id.event_item_description, if (replaceDescription) item.location else item.description)
+            setText(R.id.event_item_start, if (item.isAllDay) allDayString else Formatter.getTimeFromTS(context, item.startTS))
+            setImageViewBitmap(R.id.event_item_color, context.resources.getColoredBitmap(R.drawable.monthly_event_dot, item.color))
+
+            if (item.startTS == item.endTS) {
+                setViewVisibility(R.id.event_item_end, View.INVISIBLE)
+            } else {
+                setViewVisibility(R.id.event_item_end, View.VISIBLE)
+                var endString = Formatter.getTimeFromTS(context, item.endTS)
+                val startCode = Formatter.getDayCodeFromTS(item.startTS)
+                val endCode = Formatter.getDayCodeFromTS(item.endTS)
+
+                if (startCode != endCode) {
+                    if (item.isAllDay) {
+                        endString = Formatter.getDateFromCode(context, endCode, true)
+                    } else {
+                        endString += " (${Formatter.getDateFromCode(context, endCode, true)})"
+                    }
+                } else if (item.isAllDay) {
+                    setViewVisibility(R.id.event_item_end, View.INVISIBLE)
+                }
+                setText(R.id.event_item_end, endString)
+            }
+
+            if (dimPastEvents && item.isPastEvent) {
+                curTextColor = weakTextColor
+            }
+
+            setTextColor(R.id.event_section_title, curTextColor)
+            setTextColor(R.id.event_item_description, curTextColor)
+            setTextColor(R.id.event_item_start, curTextColor)
+            setTextColor(R.id.event_item_end, curTextColor)
+
+            setTextSize(R.id.event_section_title, mediumFontSize)
+            setTextSize(R.id.event_item_description, mediumFontSize)
+            setTextSize(R.id.event_item_start, mediumFontSize)
+            setTextSize(R.id.event_item_end, mediumFontSize)
+
+            Intent().apply {
+                putExtra(EVENT_ID, item.id)
+                putExtra(EVENT_OCCURRENCE_TS, item.startTS)
+                setOnClickFillInIntent(event_item_holder, this)
+            }
+        }
+    }
+
+    private fun setupListSection(remoteView: RemoteViews, item: ListSection) {
+        var curTextColor = textColor
+        if (dimPastEvents && item.isPastSection) {
+            curTextColor = weakTextColor
+        }
+
+        remoteView.apply {
+            setTextColor(R.id.event_section_title, curTextColor)
+            setTextSize(R.id.event_section_title, mediumFontSize)
+            setText(R.id.event_section_title, item.title)
+
+            Intent().apply {
+                putExtra(DAY_CODE, item.code)
+                setOnClickFillInIntent(event_section_title, this)
+            }
+        }
     }
 
     private fun getItemViewType(position: Int) = if (events[position] is ListEvent) ITEM_EVENT else ITEM_HEADER
