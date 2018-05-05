@@ -7,6 +7,7 @@ import com.simplemobiletools.commons.extensions.getDefaultAlarmTitle
 import com.simplemobiletools.commons.extensions.getDefaultAlarmUri
 import com.simplemobiletools.commons.helpers.ALARM_SOUND_TYPE_NOTIFICATION
 import com.simplemobiletools.commons.helpers.BaseConfig
+import com.simplemobiletools.commons.helpers.DAY_MINUTES
 import java.util.*
 
 class Config(context: Context) : BaseConfig(context) {
@@ -55,7 +56,7 @@ class Config(context: Context) : BaseConfig(context) {
         set(defaultReminderMinutes3) = prefs.edit().putInt(REMINDER_MINUTES_3, defaultReminderMinutes3).apply()
 
     var displayPastEvents: Int
-        get() = prefs.getInt(DISPLAY_PAST_EVENTS, 0)
+        get() = prefs.getInt(DISPLAY_PAST_EVENTS, DAY_MINUTES)
         set(displayPastEvents) = prefs.edit().putInt(DISPLAY_PAST_EVENTS, displayPastEvents).apply()
 
     var displayEventTypes: Set<String>
