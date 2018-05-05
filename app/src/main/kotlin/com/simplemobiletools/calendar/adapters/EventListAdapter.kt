@@ -165,10 +165,12 @@ class EventListAdapter(activity: SimpleActivity, val listItems: ArrayList<ListIt
     private fun shareEvents() {
         val eventIds = ArrayList<Int>(selectedPositions.size)
         selectedPositions.forEach {
-            eventIds.add((listItems[it] as ListEvent).id)
+            val item = listItems[it]
+            if (item is ListEvent) {
+                eventIds.add(item.id)
+            }
         }
         activity.shareEvents(eventIds.distinct())
-        finishActMode()
     }
 
     private fun askConfirmDelete() {
