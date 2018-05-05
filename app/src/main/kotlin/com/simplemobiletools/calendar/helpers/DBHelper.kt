@@ -652,7 +652,11 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             val selection = "$MAIN_TABLE_NAME.$COL_TITLE LIKE ? OR $MAIN_TABLE_NAME.$COL_LOCATION LIKE ? OR $MAIN_TABLE_NAME.$COL_DESCRIPTION LIKE ?"
             val selectionArgs = arrayOf(searchQuery, searchQuery, searchQuery)
             val cursor = getEventsCursor(selection, selectionArgs)
-            callback(text, fillEvents(cursor))
+            val events = fillEvents(cursor)
+
+            val displayEventTypes = context.config.displayEventTypes
+            val filteredEvents = events.filter { displayEventTypes.contains(it.eventType.toString()) }
+            callback(text, filteredEvents)
         }.start()
     }
 
