@@ -39,17 +39,19 @@ class EventListAdapter(activity: SimpleActivity, val listItems: ArrayList<ListIt
     private var use24HourFormat = activity.config.use24HourFormat
 
     init {
-        var firstNonPastSectionIndex = 0
+        var firstNonPastSectionIndex = -1
         listItems.forEachIndexed { index, listItem ->
-            if (firstNonPastSectionIndex == 0 && listItem is ListSection) {
+            if (firstNonPastSectionIndex == -1 && listItem is ListSection) {
                 if (!listItem.isPastSection) {
                     firstNonPastSectionIndex = index
                 }
             }
         }
 
-        activity.runOnUiThread {
-            recyclerView.scrollToPosition(firstNonPastSectionIndex)
+        if (firstNonPastSectionIndex != -1) {
+            activity.runOnUiThread {
+                recyclerView.scrollToPosition(firstNonPastSectionIndex)
+            }
         }
     }
 
