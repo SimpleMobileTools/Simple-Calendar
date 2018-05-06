@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.fragment_months_holder.view.*
 import org.joda.time.DateTime
 
 class MonthFragmentsHolder : MyFragmentHolder(), NavigationListener {
-    private val PREFILLED_MONTHS = 97
+    private val PREFILLED_MONTHS = 251
 
     private var viewPager: MyViewPager? = null
     private var defaultMonthlyPage = 0

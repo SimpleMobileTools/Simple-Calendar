@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.fragment_years_holder.view.*
 import org.joda.time.DateTime
 
 class YearFragmentsHolder : MyFragmentHolder() {
-    private val PREFILLED_YEARS = 31
+    private val PREFILLED_YEARS = 61
 
     private var viewPager: MyViewPager? = null
     private var defaultYearlyPage = 0

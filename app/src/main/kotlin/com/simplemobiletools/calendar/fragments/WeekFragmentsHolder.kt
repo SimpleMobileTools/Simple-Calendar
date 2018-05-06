@@ -22,7 +22,7 @@ import kotlinx.android.synthetic.main.fragment_week_holder.view.*
 import org.joda.time.DateTime
 
 class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
-    private val PREFILLED_WEEKS = 61
+    private val PREFILLED_WEEKS = 151
 
     private var weekHolder: ViewGroup? = null
     private var defaultWeeklyPage = 0

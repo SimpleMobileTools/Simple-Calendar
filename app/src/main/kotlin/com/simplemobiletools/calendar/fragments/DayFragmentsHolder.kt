@@ -19,7 +19,7 @@ import org.joda.time.DateTime
 import java.util.*
 
 class DayFragmentsHolder : MyFragmentHolder(), NavigationListener {
-    private val PREFILLED_DAYS = 121
+    private val PREFILLED_DAYS = 251
 
     private var viewPager: MyViewPager? = null
     private var defaultDailyPage = 0
