@@ -397,12 +397,11 @@ fun Context.getEventListItems(events: List<Event>): ArrayList<ListItem> {
     val listItems = ArrayList<ListItem>(events.size)
     val replaceDescription = config.replaceDescription
     val sorted = events.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { if (replaceDescription) it.location else it.description }))
-    val sublist = sorted.subList(0, Math.min(sorted.size, 100))
     var prevCode = ""
     val now = getNowSeconds()
     val today = Formatter.getDayTitle(this, Formatter.getDayCodeFromTS(now))
 
-    sublist.forEach {
+    sorted.forEach {
         val code = Formatter.getDayCodeFromTS(it.startTS)
         if (code != prevCode) {
             val day = Formatter.getDayTitle(this, code)

@@ -136,12 +136,11 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
             val listItems = ArrayList<ListItem>(it.size)
             val replaceDescription = context.config.replaceDescription
             val sorted = it.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { if (replaceDescription) it.location else it.description }))
-            val sublist = sorted.subList(0, Math.min(sorted.size, 100))
             var prevCode = ""
             val now = getNowSeconds()
             val today = Formatter.getDayTitle(context, Formatter.getDayCodeFromTS(now))
 
-            sublist.forEach {
+            sorted.forEach {
                 val code = Formatter.getDayCodeFromTS(it.startTS)
                 if (code != prevCode) {
                     val day = Formatter.getDayTitle(context, code)
