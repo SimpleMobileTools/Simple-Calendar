@@ -3,6 +3,7 @@ package com.simplemobiletools.calendar.models
 import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
+import com.simplemobiletools.commons.helpers.DAY_SECONDS
 import org.joda.time.DateTime
 import java.io.Serializable
 import java.util.*
@@ -20,12 +21,14 @@ data class Event(var id: Int = 0, var startTS: Int = 0, var endTS: Int = 0, var 
     }
 
     fun addIntervalTime(original: Event) {
-        val currStart = Formatter.getDateTimeFromTS(startTS)
-        val newStart: DateTime
-        newStart = when (repeatInterval) {
-            DAY -> currStart.plusDays(1)
+        when (repeatInterval) {
+            DAY -> {
+                startTS += DAY_SECONDS
+                endTS += DAY_SECONDS
+            }
             else -> {
-                when {
+                val currStart = Formatter.getDateTimeFromTS(startTS)
+                val newStart = when {
                     repeatInterval % YEAR == 0 -> currStart.plusYears(repeatInterval / YEAR)
                     repeatInterval % MONTH == 0 -> when (repeatRule) {
                         REPEAT_MONTH_SAME_DAY -> addMonthsWithSameDay(currStart, original)
@@ -39,12 +42,12 @@ data class Event(var id: Int = 0, var startTS: Int = 0, var endTS: Int = 0, var 
                     }
                     else -> currStart.plusSeconds(repeatInterval)
                 }
+                val newStartTS = newStart.seconds()
+                val newEndTS = newStartTS + (endTS - startTS)
+                startTS = newStartTS
+                endTS = newEndTS
             }
         }
-        val newStartTS = newStart.seconds()
-        val newEndTS = newStartTS + (endTS - startTS)
-        startTS = newStartTS
-        endTS = newEndTS
     }
 
     // if an event should happen on 31st with Same Day monthly repetition, dont show it at all at months with 30 or less days
