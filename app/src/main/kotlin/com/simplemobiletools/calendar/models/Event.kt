@@ -37,10 +37,16 @@ data class Event(var id: Int = 0, var startTS: Int = 0, var endTS: Int = 0, var 
                         else -> currStart.plusMonths(repeatInterval / MONTH).dayOfMonth().withMaximumValue()
                     }
                     repeatInterval % WEEK == 0 -> {
-                        // step through weekly repetition by days too, as events can trigger multiple times a week
-                        currStart.plusDays(1)
+                        // step through weekly repetition by days, as events can trigger multiple times a week
+                        startTS += DAY_SECONDS
+                        endTS += DAY_SECONDS
+                        return
                     }
-                    else -> currStart.plusSeconds(repeatInterval)
+                    else -> {
+                        startTS += repeatInterval
+                        endTS += repeatInterval
+                        return
+                    }
                 }
                 val newStartTS = newStart.seconds()
                 val newEndTS = newStartTS + (endTS - startTS)
