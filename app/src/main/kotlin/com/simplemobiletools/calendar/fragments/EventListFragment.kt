@@ -69,13 +69,18 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
         maxFetchedTS = DateTime().plusMonths(6).seconds()
         context!!.dbHelper.getEvents(minFetchedTS, maxFetchedTS) {
             receivedEvents(it, false)
-            if (it.size < 20) {
-                fetchNextPeriod(false)
+            if (it.size < 30) {
+                minFetchedTS -= FETCH_INTERVAL
+                maxFetchedTS += FETCH_INTERVAL
+                context!!.dbHelper.getEvents(minFetchedTS, maxFetchedTS) {
+                    mEvents = it
+                    receivedEvents(mEvents, false, true)
+                }
             }
         }
     }
 
-    private fun receivedEvents(events: ArrayList<Event>, scrollAfterUpdating: Boolean) {
+    private fun receivedEvents(events: ArrayList<Event>, scrollAfterUpdating: Boolean, forceRecreation: Boolean = false) {
         if (context == null || activity == null) {
             return
         }
@@ -92,7 +97,7 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
 
         activity?.runOnUiThread {
             val currAdapter = mView.calendar_events_list.adapter
-            if (currAdapter == null) {
+            if (currAdapter == null || forceRecreation) {
                 EventListAdapter(activity as SimpleActivity, listItems, true, this, mView.calendar_events_list) {
                     if (it is ListEvent) {
                         editEvent(it)
@@ -102,6 +107,10 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
                 }
 
                 mView.calendar_events_list.endlessScrollListener = object : MyRecyclerView.EndlessScrollListener {
+                    override fun updateTop() {
+                        fetchPreviousPeriod()
+                    }
+
                     override fun updateBottom() {
                         fetchNextPeriod(true)
                     }
@@ -128,6 +137,15 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
             putExtra(EVENT_ID, event.id)
             putExtra(EVENT_OCCURRENCE_TS, event.startTS)
             startActivity(this)
+        }
+    }
+
+    private fun fetchPreviousPeriod() {
+        val oldMinFetchedTS = minFetchedTS - 1
+        minFetchedTS -= FETCH_INTERVAL
+        context!!.dbHelper.getEvents(minFetchedTS, oldMinFetchedTS) {
+            mEvents.addAll(0, it)
+            receivedEvents(mEvents, false)
         }
     }
 
