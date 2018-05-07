@@ -25,7 +25,7 @@ import com.simplemobiletools.commons.views.MyRecyclerView
 import kotlinx.android.synthetic.main.event_list_item.view.*
 import java.util.*
 
-class EventListAdapter(activity: SimpleActivity, val listItems: ArrayList<ListItem>, val allowLongClick: Boolean, val listener: RefreshRecyclerViewListener?,
+class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListItem>, val allowLongClick: Boolean, val listener: RefreshRecyclerViewListener?,
                        recyclerView: MyRecyclerView, itemClick: (Any) -> Unit) : MyRecyclerViewAdapter(activity, recyclerView, null, itemClick) {
 
     private val ITEM_EVENT = 0
@@ -37,6 +37,7 @@ class EventListAdapter(activity: SimpleActivity, val listItems: ArrayList<ListIt
     private val dimPastEvents = activity.config.dimPastEvents
     private val now = getNowSeconds()
     private var use24HourFormat = activity.config.use24HourFormat
+    private var currentItemsHash = listItems.hashCode()
 
     init {
         var firstNonPastSectionIndex = -1
@@ -98,6 +99,16 @@ class EventListAdapter(activity: SimpleActivity, val listItems: ArrayList<ListIt
     fun toggle24HourFormat(use24HourFormat: Boolean) {
         this.use24HourFormat = use24HourFormat
         notifyDataSetChanged()
+    }
+
+    fun updateListItems(newListItems: ArrayList<ListItem>) {
+        if (newListItems.hashCode() != currentItemsHash) {
+            currentItemsHash = newListItems.hashCode()
+            listItems = newListItems.clone() as ArrayList<ListItem>
+            recyclerView.resetItemCount()
+            notifyDataSetChanged()
+            finishActMode()
+        }
     }
 
     private fun setupListEvent(view: View, listEvent: ListEvent) {

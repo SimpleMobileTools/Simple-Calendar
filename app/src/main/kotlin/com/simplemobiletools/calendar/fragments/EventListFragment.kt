@@ -19,15 +19,23 @@ import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.models.ListEvent
 import com.simplemobiletools.commons.extensions.beGoneIf
 import com.simplemobiletools.commons.extensions.beVisibleIf
+import com.simplemobiletools.commons.helpers.MONTH_SECONDS
 import com.simplemobiletools.commons.interfaces.RefreshRecyclerViewListener
+import com.simplemobiletools.commons.views.MyRecyclerView
 import kotlinx.android.synthetic.main.fragment_event_list.view.*
 import org.joda.time.DateTime
 import java.util.*
 
 class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
-    private var mEvents: List<Event> = ArrayList()
+    private var FETCH_INTERVAL = 6 * MONTH_SECONDS
+
+    private var mEvents = ArrayList<Event>()
     private var prevEventsHash = 0
+    private var minFetchedTS = 0
+    private var maxFetchedTS = 0
+
     private var use24HourFormat = false
+
     lateinit var mView: View
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -57,14 +65,17 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
     }
 
     private fun checkEvents() {
-        val fromTS = DateTime().seconds() - context!!.config.displayPastEvents * 60
-        val toTS = DateTime().plusYears(1).seconds()
-        context!!.dbHelper.getEvents(fromTS, toTS) {
+        minFetchedTS = DateTime().minusMonths(3).seconds()
+        maxFetchedTS = DateTime().plusMonths(6).seconds()
+        context!!.dbHelper.getEvents(minFetchedTS, maxFetchedTS) {
             receivedEvents(it)
+            if (it.size < 20) {
+                fetchNextPeriod()
+            }
         }
     }
 
-    private fun receivedEvents(events: MutableList<Event>) {
+    private fun receivedEvents(events: ArrayList<Event>) {
         if (context == null || activity == null) {
             return
         }
@@ -79,14 +90,25 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
         mEvents = filtered
         val listItems = context!!.getEventListItems(mEvents)
 
-        val eventsAdapter = EventListAdapter(activity as SimpleActivity, listItems, true, this, mView.calendar_events_list) {
-            if (it is ListEvent) {
-                editEvent(it)
-            }
-        }
-
         activity?.runOnUiThread {
-            mView.calendar_events_list.adapter = eventsAdapter
+            val currAdapter = mView.calendar_events_list.adapter
+            if (currAdapter == null) {
+                EventListAdapter(activity as SimpleActivity, listItems, true, this, mView.calendar_events_list) {
+                    if (it is ListEvent) {
+                        editEvent(it)
+                    }
+                }.apply {
+                    mView.calendar_events_list.adapter = this
+                }
+
+                mView.calendar_events_list.endlessScrollListener = object : MyRecyclerView.EndlessScrollListener {
+                    override fun updateBottom() {
+                        fetchNextPeriod()
+                    }
+                }
+            } else {
+                (currAdapter as EventListAdapter).updateListItems(listItems)
+            }
             checkPlaceholderVisibility()
         }
     }
@@ -103,6 +125,15 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
             putExtra(EVENT_ID, event.id)
             putExtra(EVENT_OCCURRENCE_TS, event.startTS)
             startActivity(this)
+        }
+    }
+
+    private fun fetchNextPeriod() {
+        val oldMaxFetchedTS = maxFetchedTS + 1
+        maxFetchedTS += FETCH_INTERVAL
+        context!!.dbHelper.getEvents(oldMaxFetchedTS, maxFetchedTS) {
+            mEvents.addAll(it)
+            receivedEvents(mEvents)
         }
     }
 
