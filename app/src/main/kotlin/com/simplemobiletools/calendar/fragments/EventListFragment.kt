@@ -68,14 +68,14 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
         minFetchedTS = DateTime().minusMonths(3).seconds()
         maxFetchedTS = DateTime().plusMonths(6).seconds()
         context!!.dbHelper.getEvents(minFetchedTS, maxFetchedTS) {
-            receivedEvents(it)
+            receivedEvents(it, false)
             if (it.size < 20) {
-                fetchNextPeriod()
+                fetchNextPeriod(false)
             }
         }
     }
 
-    private fun receivedEvents(events: ArrayList<Event>) {
+    private fun receivedEvents(events: ArrayList<Event>, scrollAfterUpdating: Boolean) {
         if (context == null || activity == null) {
             return
         }
@@ -103,11 +103,14 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
 
                 mView.calendar_events_list.endlessScrollListener = object : MyRecyclerView.EndlessScrollListener {
                     override fun updateBottom() {
-                        fetchNextPeriod()
+                        fetchNextPeriod(true)
                     }
                 }
             } else {
                 (currAdapter as EventListAdapter).updateListItems(listItems)
+                if (scrollAfterUpdating) {
+                    mView.calendar_events_list.smoothScrollBy(0, context!!.resources.getDimension(R.dimen.endless_scroll_move_height).toInt())
+                }
             }
             checkPlaceholderVisibility()
         }
@@ -128,12 +131,12 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
         }
     }
 
-    private fun fetchNextPeriod() {
+    private fun fetchNextPeriod(scrollAfterUpdating: Boolean) {
         val oldMaxFetchedTS = maxFetchedTS + 1
         maxFetchedTS += FETCH_INTERVAL
         context!!.dbHelper.getEvents(oldMaxFetchedTS, maxFetchedTS) {
             mEvents.addAll(it)
-            receivedEvents(mEvents)
+            receivedEvents(mEvents, scrollAfterUpdating)
         }
     }
 
