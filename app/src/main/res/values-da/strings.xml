@@ -20,7 +20,7 @@
     <string name="event">Begivenhed</string>
     <string name="edit_event">Rediger begivenhed</string>
     <string name="new_event">Ny begivenhed</string>
-    <string name="duplicate_event">Duplicate event</string>
+    <string name="duplicate_event">Kopier begivenhed</string>
     <string name="title_empty">Indtast titel</string>
     <string name="end_before_start">Begivenheden skal starte inden den slutter</string>
     <string name="event_added">Begivenhed tilføjet</string>
@@ -154,9 +154,9 @@
     <string name="delete_all_events">Slet alle begivenheder</string>
     <string name="delete_all_events_confirmation">Er du sikker på at du vil slette alle begivenheder? Dine begivenhedstyper og andre indstillinger vil forblive intakte.</string>
     <string name="show_a_grid">Vis gitter</string>
-    <string name="loop_reminders">Loop reminders until dismissed</string>
-    <string name="dim_past_events">Dim past events</string>
-    <string name="events">Events</string>
+    <string name="loop_reminders">Fortsæt påmindelser indtil jeg stopper dem</string>
+    <string name="dim_past_events">Nedton gamle begivenheder</string>
+    <string name="events">Begivenheder</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
