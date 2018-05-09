@@ -30,7 +30,6 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
     private var FETCH_INTERVAL = 6 * MONTH_SECONDS
 
     private var mEvents = ArrayList<Event>()
-    private var prevEventsHash = 0
     private var minFetchedTS = 0
     private var maxFetchedTS = 0
 
@@ -85,14 +84,7 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
             return
         }
 
-        val filtered = context!!.getFilteredEvents(events)
-        val hash = filtered.hashCode()
-        if (prevEventsHash == hash) {
-            return
-        }
-
-        prevEventsHash = hash
-        mEvents = filtered
+        mEvents = context!!.getFilteredEvents(events)
         val listItems = context!!.getEventListItems(mEvents)
 
         activity?.runOnUiThread {
