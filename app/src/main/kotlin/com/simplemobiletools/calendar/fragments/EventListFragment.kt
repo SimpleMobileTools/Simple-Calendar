@@ -34,6 +34,7 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
     private var mEvents = ArrayList<Event>()
     private var minFetchedTS = 0
     private var maxFetchedTS = 0
+    private var wereInitialEventsAdded = false
 
     private var use24HourFormat = false
 
@@ -64,6 +65,7 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
             use24HourFormat = use24Hour
             (mView.calendar_events_list.adapter as? EventListAdapter)?.toggle24HourFormat(use24HourFormat)
         }
+        wereInitialEventsAdded = true
     }
 
     override fun onPause() {
@@ -81,7 +83,7 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
                 maxFetchedTS += FETCH_INTERVAL
                 context!!.dbHelper.getEvents(minFetchedTS, maxFetchedTS) {
                     mEvents = it
-                    receivedEvents(mEvents, false, true)
+                    receivedEvents(mEvents, false, !wereInitialEventsAdded)
                 }
             }
         }
