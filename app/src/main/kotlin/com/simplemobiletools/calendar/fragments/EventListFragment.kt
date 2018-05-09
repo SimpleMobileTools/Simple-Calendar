@@ -19,6 +19,8 @@ import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.models.ListEvent
 import com.simplemobiletools.commons.extensions.beGoneIf
 import com.simplemobiletools.commons.extensions.beVisibleIf
+import com.simplemobiletools.commons.extensions.getAdjustedPrimaryColor
+import com.simplemobiletools.commons.extensions.underlineText
 import com.simplemobiletools.commons.helpers.MONTH_SECONDS
 import com.simplemobiletools.commons.interfaces.RefreshRecyclerViewListener
 import com.simplemobiletools.commons.views.MyRecyclerView
@@ -39,10 +41,16 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mView = inflater.inflate(R.layout.fragment_event_list, container, false)
-        val placeholderText = String.format(getString(R.string.two_string_placeholder), "${getString(R.string.no_upcoming_events)}\n", getString(R.string.add_some_events))
-        mView.calendar_empty_list_placeholder.text = placeholderText
         mView.background = ColorDrawable(context!!.config.backgroundColor)
         mView.calendar_events_list_holder?.id = (System.currentTimeMillis() % 100000).toInt()
+        mView.calendar_empty_list_placeholder_2.apply {
+            setTextColor(context.getAdjustedPrimaryColor())
+            underlineText()
+            setOnClickListener {
+                context.launchNewEventIntent(getNewEventDayCode())
+            }
+        }
+
         use24HourFormat = context!!.config.use24HourFormat
         updateActionBarTitle()
         return mView
@@ -119,6 +127,7 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
 
     private fun checkPlaceholderVisibility() {
         mView.calendar_empty_list_placeholder.beVisibleIf(mEvents.isEmpty())
+        mView.calendar_empty_list_placeholder_2.beVisibleIf(mEvents.isEmpty())
         mView.calendar_events_list.beGoneIf(mEvents.isEmpty())
         if (activity != null)
             mView.calendar_empty_list_placeholder.setTextColor(activity!!.config.textColor)

@@ -9,7 +9,6 @@
     <string name="yearly_view">Jahresansicht</string>
     <string name="simple_event_list">Schlichte Terminliste</string>
     <string name="no_upcoming_events">Keine anstehenden Termine</string>
-    <string name="add_some_events">Du kannst neue Termine mit dem Hinzufügen Button unten rechts erstellen.</string>
     <string name="go_to_today">Gehe zu Heute</string>
 
     <!-- Widget titles -->
@@ -20,6 +19,7 @@
     <string name="event">Termin</string>
     <string name="edit_event">Termin bearbeiten</string>
     <string name="new_event">Neuer Termin</string>
+    <string name="create_new_event">Create a new event</string>
     <string name="duplicate_event">Duplicate event</string>
     <string name="title_empty">Titel darf nicht leer sein</string>
     <string name="end_before_start">Der Termin darf nicht früher enden als er beginnt</string>

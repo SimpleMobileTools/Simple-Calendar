@@ -9,7 +9,6 @@
     <string name="yearly_view">İllik görünüş</string>
     <string name="simple_event_list">Sadə hadisələr siyahısı</string>
     <string name="no_upcoming_events">Deyəsən yaxınlarda heçbir hadisə yoxdur.</string>
-    <string name="add_some_events">Aşağıdakı Plus düyməsindən əlavə edin .</string>
     <string name="go_to_today">Bugünə get</string>
 
     <!-- Widget titles -->
@@ -20,6 +19,7 @@
     <string name="event">Hadisə</string>
     <string name="edit_event">Hadisəni Dəyiş</string>
     <string name="new_event">Yeni Hadisə</string>
+    <string name="create_new_event">Create a new event</string>
     <string name="duplicate_event">Duplicate event</string>
     <string name="title_empty">Başlıq boş ola bilməz</string>
     <string name="end_before_start">Hadisə başladığı gündən əvvəl ola bilməz</string>

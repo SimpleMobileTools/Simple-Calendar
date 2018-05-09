@@ -9,7 +9,6 @@
     <string name="yearly_view">Vue annuelle</string>
     <string name="simple_event_list">Liste simple d\'événements</string>
     <string name="no_upcoming_events">Il semblerait que vous n\'ayez aucun événement à venir.</string>
-    <string name="add_some_events">Vous pouvez ajouter des événements avec le bouton + en bas.</string>
     <string name="go_to_today">Aller à aujourd\'hui</string>
 
     <!-- Widget titles -->
@@ -20,6 +19,7 @@
     <string name="event">Événement</string>
     <string name="edit_event">Éditer l\'événement</string>
     <string name="new_event">Nouvel événement</string>
+    <string name="create_new_event">Create a new event</string>
     <string name="duplicate_event">Duplicate event</string>
     <string name="title_empty">Le titre ne peut pas être vide</string>
     <string name="end_before_start">L\'événement ne peut pas se terminer plus tôt qu\'il ne commence</string>

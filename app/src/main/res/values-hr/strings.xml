@@ -9,7 +9,6 @@
     <string name="yearly_view">Godišnji pregled</string>
     <string name="simple_event_list">Jednostavan popis događaja</string>
     <string name="no_upcoming_events">Izgleda da nemate nadolazećih događaja.</string>
-    <string name="add_some_events">Možete dodati neke događaje pomoću ikone Plus na dnu.</string>
     <string name="go_to_today">Idi na danas</string>
 
     <!-- Widget titles -->
@@ -20,6 +19,7 @@
     <string name="event">Događaj</string>
     <string name="edit_event">Uredi događaj</string>
     <string name="new_event">Novi događaj</string>
+    <string name="create_new_event">Create a new event</string>
     <string name="duplicate_event">Duplicate event</string>
     <string name="title_empty">Naslov ne može biti prazan</string>
     <string name="end_before_start">Događaj ne može završiti prije nego što počne</string>

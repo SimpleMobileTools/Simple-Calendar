@@ -9,7 +9,6 @@
     <string name="yearly_view">Årlig</string>
     <string name="simple_event_list">Begivenhedsliste</string>
     <string name="no_upcoming_events">Du ser ikke ud til at have nogen forestående begivenheder.</string>
-    <string name="add_some_events">Du kan tilføje nogle med plus-knappen nederst.</string>
     <string name="go_to_today">Gå til i dag</string>
 
     <!-- Widget titles -->
@@ -20,6 +19,7 @@
     <string name="event">Begivenhed</string>
     <string name="edit_event">Rediger begivenhed</string>
     <string name="new_event">Ny begivenhed</string>
+    <string name="create_new_event">Create a new event</string>
     <string name="duplicate_event">Kopier begivenhed</string>
     <string name="title_empty">Indtast titel</string>
     <string name="end_before_start">Begivenheden skal starte inden den slutter</string>
