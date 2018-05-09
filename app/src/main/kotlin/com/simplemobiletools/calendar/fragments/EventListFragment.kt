@@ -30,6 +30,7 @@ import java.util.*
 
 class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
     private var FETCH_INTERVAL = 6 * MONTH_SECONDS
+    private var MIN_EVENTS_TRESHOLD = 30
 
     private var mEvents = ArrayList<Event>()
     private var minFetchedTS = 0
@@ -65,7 +66,6 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
             use24HourFormat = use24Hour
             (mView.calendar_events_list.adapter as? EventListAdapter)?.toggle24HourFormat(use24HourFormat)
         }
-        wereInitialEventsAdded = true
     }
 
     override fun onPause() {
@@ -74,18 +74,25 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
     }
 
     private fun checkEvents() {
-        minFetchedTS = DateTime().minusMonths(3).seconds()
-        maxFetchedTS = DateTime().plusMonths(6).seconds()
+        if (!wereInitialEventsAdded) {
+            minFetchedTS = DateTime().minusMonths(3).seconds()
+            maxFetchedTS = DateTime().plusMonths(6).seconds()
+        }
+
         context!!.dbHelper.getEvents(minFetchedTS, maxFetchedTS) {
-            receivedEvents(it, false)
-            if (it.size < 30) {
-                minFetchedTS -= FETCH_INTERVAL
-                maxFetchedTS += FETCH_INTERVAL
+            if (it.size >= MIN_EVENTS_TRESHOLD) {
+                receivedEvents(it, false)
+            } else {
+                if (!wereInitialEventsAdded) {
+                    minFetchedTS -= FETCH_INTERVAL
+                    maxFetchedTS += FETCH_INTERVAL
+                }
                 context!!.dbHelper.getEvents(minFetchedTS, maxFetchedTS) {
                     mEvents = it
                     receivedEvents(mEvents, false, !wereInitialEventsAdded)
                 }
             }
+            wereInitialEventsAdded = true
         }
     }
 
