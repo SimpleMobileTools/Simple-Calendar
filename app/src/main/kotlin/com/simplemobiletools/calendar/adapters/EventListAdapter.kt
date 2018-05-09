@@ -189,8 +189,11 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
         val timestamps = ArrayList<Int>(selectedPositions.size)
 
         selectedPositions.forEach {
-            eventIds.add((listItems[it] as ListEvent).id)
-            timestamps.add((listItems[it] as ListEvent).startTS)
+            val item = listItems[it]
+            if (item is ListEvent) {
+                eventIds.add(item.id)
+                timestamps.add(item.startTS)
+            }
         }
 
         DeleteEventDialog(activity, eventIds) {
