@@ -1,6 +1,19 @@
 Changelog
 ==========
 
+Version 4.0.0 *(2018-05-10)*
+----------------------------
+
+ * Allow changing the app launcher color
+ * Allow setting reminder looping till dismissed
+ * Added a button in Settings for changing widget colors without recreating them
+ * Added optional dimming of past events
+ * Make Event List view an endless scrollview
+ * Added some more advanced yearly repetition rules
+ * Improved some country holidays
+ * Many CalDAV related improvements
+ * Many other smaller bugfixes and performance/UX improvements
+
 Version 3.4.2 *(2018-04-13)*
 ----------------------------
 
