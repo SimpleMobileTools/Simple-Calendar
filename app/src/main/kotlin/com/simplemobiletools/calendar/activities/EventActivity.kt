@@ -853,7 +853,7 @@ class EventActivity : SimpleActivity() {
             if (day == MONDAY_BIT || day == TUESDAY_BIT || day == WEDNESDAY_BIT || day == THURSDAY_BIT || day == FRIDAY_BIT || day == SATURDAY_BIT || day == SUNDAY_BIT) {
                 setRepeatRule(Math.pow(2.0, (mEventStartDateTime.dayOfWeek - 1).toDouble()).toInt())
             }
-        } else if (mRepeatInterval.isXMonthlyRepetition()) {
+        } else if (mRepeatInterval.isXMonthlyRepetition() || mRepeatInterval.isXYearlyRepetition()) {
             if (mRepeatRule == REPEAT_LAST_DAY && !isLastDayOfTheMonth())
                 mRepeatRule = REPEAT_SAME_DAY
             checkRepetitionRuleText()
