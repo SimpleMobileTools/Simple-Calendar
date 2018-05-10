@@ -914,7 +914,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                         ArrayList()
                     }
 
-                    if (repeatInterval > 0 && repeatInterval % MONTH == 0 && repeatRule == 0) {
+                    if (repeatInterval > 0 && repeatRule == 0 && (repeatInterval % MONTH == 0 || repeatInterval % YEAR == 0)) {
                         repeatRule = REPEAT_SAME_DAY
                     }
 

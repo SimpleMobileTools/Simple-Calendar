@@ -17,7 +17,7 @@ data class Event(var id: Int = 0, var startTS: Int = 0, var endTS: Int = 0, var 
     : Serializable {
 
     companion object {
-        private val serialVersionUID = -32456795132345616L
+        private const val serialVersionUID = -32456795132345616L
     }
 
     fun addIntervalTime(original: Event) {
