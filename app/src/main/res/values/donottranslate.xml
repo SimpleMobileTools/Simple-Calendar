@@ -2,6 +2,10 @@
 <resources>
 
     <!-- Release notes -->
+    <string name="release_119">
+        Allow changing the app launcher icon color\n
+        Added support for more advanced yearly repetition rules
+    </string>
     <string name="release_117">Reworked custom notification sound picking, should be more reliable</string>
     <string name="release_98">
         Added a Location field\n
