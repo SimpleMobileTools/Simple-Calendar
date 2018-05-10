@@ -54,10 +54,10 @@ const val LOOP_REMINDERS = "loop_reminders"
 const val DIM_PAST_EVENTS = "dim_past_events"
 
 // repeat_rule for monthly repetition
-const val REPEAT_MONTH_SAME_DAY = 1                   // ie 25th every month
-const val REPEAT_MONTH_ORDER_WEEKDAY_USE_LAST = 2     // ie every xth sunday. 4th if a month has 4 sundays, 5th if 5
-const val REPEAT_MONTH_LAST_DAY = 3                   // ie every last day of the month
-const val REPEAT_MONTH_ORDER_WEEKDAY = 4              // ie every 4th sunday, even if a month has 4 sundays only (will stay 4th even at months with 5)
+const val REPEAT_SAME_DAY = 1                           // i.e. 25th every month, or 3rd june (if yearly repetition)
+const val REPEAT_ORDER_WEEKDAY_USE_LAST = 2             // i.e. every last sunday. 4th if a month has 4 sundays, 5th if 5 (or last sunday in june, if yearly)
+const val REPEAT_LAST_DAY = 3                           // i.e. every last day of the month
+const val REPEAT_ORDER_WEEKDAY = 4                      // i.e. every 4th sunday, even if a month has 4 sundays only (will stay 4th even at months with 5)
 
 // special event flags
 const val FLAG_ALL_DAY = 1

@@ -31,9 +31,9 @@ data class Event(var id: Int = 0, var startTS: Int = 0, var endTS: Int = 0, var 
                 val newStart = when {
                     repeatInterval % YEAR == 0 -> currStart.plusYears(repeatInterval / YEAR)
                     repeatInterval % MONTH == 0 -> when (repeatRule) {
-                        REPEAT_MONTH_SAME_DAY -> addMonthsWithSameDay(currStart, original)
-                        REPEAT_MONTH_ORDER_WEEKDAY_USE_LAST -> addXthDayInterval(currStart, original, true)
-                        REPEAT_MONTH_ORDER_WEEKDAY -> addXthDayInterval(currStart, original, false)
+                        REPEAT_SAME_DAY -> addMonthsWithSameDay(currStart, original)
+                        REPEAT_ORDER_WEEKDAY_USE_LAST -> addXthDayInterval(currStart, original, true)
+                        REPEAT_ORDER_WEEKDAY -> addXthDayInterval(currStart, original, false)
                         else -> currStart.plusMonths(repeatInterval / MONTH).dayOfMonth().withMaximumValue()
                     }
                     repeatInterval % WEEK == 0 -> {

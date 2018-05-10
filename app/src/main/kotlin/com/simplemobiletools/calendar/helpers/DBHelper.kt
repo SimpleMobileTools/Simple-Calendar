@@ -915,7 +915,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                     }
 
                     if (repeatInterval > 0 && repeatInterval % MONTH == 0 && repeatRule == 0) {
-                        repeatRule = REPEAT_MONTH_SAME_DAY
+                        repeatRule = REPEAT_SAME_DAY
                     }
 
                     val isPastEvent = endTS < getNowSeconds()
@@ -1033,7 +1033,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                     val start = cursor.getIntValue(COL_REPEAT_START)
                     var rule = Math.pow(2.0, (Formatter.getDateTimeFromTS(start).dayOfWeek - 1).toDouble()).toInt()
                     if (interval == MONTH) {
-                        rule = REPEAT_MONTH_SAME_DAY
+                        rule = REPEAT_SAME_DAY
                     }
 
                     val values = ContentValues()
