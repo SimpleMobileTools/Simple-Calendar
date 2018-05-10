@@ -57,8 +57,9 @@
     <string name="selected_days">På markerade dagar</string>
     <string name="the_same_day">Samma dag</string>
     <string name="the_last_day">Den sista dagen</string>
-    <string name="repeat_on_the_same_day">Upprepa på samma dag varje månad</string>
-    <string name="repeat_on_the_last_day">Upprepa på månadens sista dag</string>
+    <string name="repeat_on_the_same_day_monthly">Upprepa på samma dag varje månad</string>
+    <string name="repeat_on_the_last_day_monthly">Upprepa på månadens sista dag</string>
+    <string name="repeat_on_the_same_day_yearly">Repeat on the same day every year</string>
     <string name="repeat_every_m">Upprepa varje</string>
     <string name="every_m">Varje</string>
     <string name="first_m">första</string>

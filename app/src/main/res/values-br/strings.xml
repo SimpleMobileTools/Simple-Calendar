@@ -57,8 +57,9 @@
     <string name="selected_days">En devezhioù diuzet</string>
     <string name="the_same_day">An hevelep devezh</string>
     <string name="the_last_day">An devezh diwezhañ</string>
-    <string name="repeat_on_the_same_day">Addegouezh en hevelep devezh bep miz</string>
-    <string name="repeat_on_the_last_day">Addegouezh e devezh diwezhañ bep miz</string>
+    <string name="repeat_on_the_same_day_monthly">Addegouezh en hevelep devezh bep miz</string>
+    <string name="repeat_on_the_last_day_monthly">Addegouezh e devezh diwezhañ bep miz</string>
+    <string name="repeat_on_the_same_day_yearly">Repeat on the same day every year</string>
     <string name="repeat_every_m">Addegouezh bep</string>
     <string name="every_m">Bep</string>
     <string name="first_m">kentañ</string>

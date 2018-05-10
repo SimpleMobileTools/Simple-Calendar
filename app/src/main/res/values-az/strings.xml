@@ -57,8 +57,9 @@
     <string name="selected_days">Seçilmiş günlərdə</string>
     <string name="the_same_day">Eyni gün</string>
     <string name="the_last_day">Son gün</string>
-    <string name="repeat_on_the_same_day">Hər ayın eyni günü təkrarla</string>
-    <string name="repeat_on_the_last_day">Hər ayın son günü təkrarla</string>
+    <string name="repeat_on_the_same_day_monthly">Hər ayın eyni günü təkrarla</string>
+    <string name="repeat_on_the_last_day_monthly">Hər ayın son günü təkrarla</string>
+    <string name="repeat_on_the_same_day_yearly">Repeat on the same day every year</string>
     <string name="repeat_every_m">Təkrarla hər</string>
     <string name="every_m">Hər</string>
     <string name="first_m">birinci</string>

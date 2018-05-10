@@ -57,8 +57,9 @@
     <string name="selected_days">Vo vybraných dňoch</string>
     <string name="the_same_day">Rovnaký deň</string>
     <string name="the_last_day">Posledný deň</string>
-    <string name="repeat_on_the_same_day">Opakovať každý mesiac v rovnaký deň</string>
-    <string name="repeat_on_the_last_day">Opakovať posledný deň v mesiaci</string>
+    <string name="repeat_on_the_same_day_monthly">Opakovať každý mesiac v rovnaký deň</string>
+    <string name="repeat_on_the_last_day_monthly">Opakovať posledný deň v mesiaci</string>
+    <string name="repeat_on_the_same_day_yearly">Opakovať každý rok v rovnaký deň</string>
     <string name="repeat_every_m">Opakovať každý</string>
     <string name="every_m">Každý</string>
     <string name="first_m">prvý</string>

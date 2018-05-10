@@ -57,8 +57,9 @@
     <string name="selected_days">On selected days</string>
     <string name="the_same_day">同一天</string>
     <string name="the_last_day">最後一天</string>
-    <string name="repeat_on_the_same_day">重複每月同一天</string>
-    <string name="repeat_on_the_last_day">重複每月最後一天</string>
+    <string name="repeat_on_the_same_day_monthly">重複每月同一天</string>
+    <string name="repeat_on_the_last_day_monthly">重複每月最後一天</string>
+    <string name="repeat_on_the_same_day_yearly">Repeat on the same day every year</string>
     <string name="repeat_every_m">重複每月</string>
     <string name="every_m">每月</string>
     <string name="first_m">第一個</string>

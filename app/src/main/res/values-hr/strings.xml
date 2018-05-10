@@ -57,8 +57,9 @@
     <string name="selected_days">Na odabrane dane</string>
     <string name="the_same_day">Isti dan</string>
     <string name="the_last_day">Zadnji dan</string>
-    <string name="repeat_on_the_same_day">Ponovi isti dan svaki mjesec</string>
-    <string name="repeat_on_the_last_day">Ponovi zadnjeg dana u mjesecu</string>
+    <string name="repeat_on_the_same_day_monthly">Ponovi isti dan svaki mjesec</string>
+    <string name="repeat_on_the_last_day_monthly">Ponovi zadnjeg dana u mjesecu</string>
+    <string name="repeat_on_the_same_day_yearly">Repeat on the same day every year</string>
     <string name="repeat_every_m">Ponovi svaki</string>
     <string name="every_m">Svaki</string>
     <string name="first_m">prvi</string>

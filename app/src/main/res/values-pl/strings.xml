@@ -57,8 +57,9 @@
     <string name="selected_days">Przez wybrane dni</string>
     <string name="the_same_day">Tego samego dnia</string>
     <string name="the_last_day">Ostatniego dnia</string>
-    <string name="repeat_on_the_same_day">Powtarzaj tego samego dnia każdego miesiąca</string>
-    <string name="repeat_on_the_last_day">Powtarzaj ostatniego dnia każdego miesiąca</string>
+    <string name="repeat_on_the_same_day_monthly">Powtarzaj tego samego dnia każdego miesiąca</string>
+    <string name="repeat_on_the_last_day_monthly">Powtarzaj ostatniego dnia każdego miesiąca</string>
+    <string name="repeat_on_the_same_day_yearly">Repeat on the same day every year</string>
     <string name="repeat_every_m">Powtarzaj w każdy(ą)</string>
     <string name="every_m">Każdy(ą)</string>
     <string name="first_m">pierwszy(ą)</string>

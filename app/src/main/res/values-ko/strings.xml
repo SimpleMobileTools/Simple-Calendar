@@ -57,8 +57,9 @@
     <string name="selected_days">선택한 요일에</string>
     <string name="the_same_day">같은 날</string>
     <string name="the_last_day">마지막 날</string>
-    <string name="repeat_on_the_same_day">매월 같은 날 반복</string>
-    <string name="repeat_on_the_last_day">매월 매지막 날 반복</string>
+    <string name="repeat_on_the_same_day_monthly">매월 같은 날 반복</string>
+    <string name="repeat_on_the_last_day_monthly">매월 매지막 날 반복</string>
+    <string name="repeat_on_the_same_day_yearly">Repeat on the same day every year</string>
     <string name="repeat_every_m">매일 반복</string>
     <string name="every_m">매일</string>
     <string name="first_m">첫 번째</string>

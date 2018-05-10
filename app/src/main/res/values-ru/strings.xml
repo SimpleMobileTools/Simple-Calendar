@@ -57,8 +57,9 @@
     <string name="selected_days">В выбранные дни</string>
     <string name="the_same_day">Этот же день</string>
     <string name="the_last_day">Последний день</string>
-    <string name="repeat_on_the_same_day">Повторять в этот же день каждый месяц</string>
-    <string name="repeat_on_the_last_day">Повторять в последний день месяца</string>
+    <string name="repeat_on_the_same_day_monthly">Повторять в этот же день каждый месяц</string>
+    <string name="repeat_on_the_last_day_monthly">Повторять в последний день месяца</string>
+    <string name="repeat_on_the_same_day_yearly">Repeat on the same day every year</string>
     <string name="repeat_every_m">Повторять каждый</string>
     <string name="every_m">Каждый</string>
     <string name="first_m">первый</string>

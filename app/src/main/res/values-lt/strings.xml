@@ -57,8 +57,9 @@
     <string name="selected_days">Pasirinktomis dienomis</string>
     <string name="the_same_day">Tą pačią dieną</string>
     <string name="the_last_day">Paskutinę dieną</string>
-    <string name="repeat_on_the_same_day">Pakartoti tą pačią kiekvieno mėnesio dieną</string>
-    <string name="repeat_on_the_last_day">Pakartoti paskutinę mėnesio dieną</string>
+    <string name="repeat_on_the_same_day_monthly">Pakartoti tą pačią kiekvieno mėnesio dieną</string>
+    <string name="repeat_on_the_last_day_monthly">Pakartoti paskutinę mėnesio dieną</string>
+    <string name="repeat_on_the_same_day_yearly">Repeat on the same day every year</string>
     <string name="repeat_every_m">Pakartoti kiekvieną</string>
     <string name="every_m">Kiekvieną</string>
     <string name="first_m">Pirmą</string>

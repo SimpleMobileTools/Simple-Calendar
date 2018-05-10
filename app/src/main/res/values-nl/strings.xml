@@ -57,8 +57,9 @@
     <string name="selected_days">Op de volgende dagen</string>
     <string name="the_same_day">Dezelfde dag</string>
     <string name="the_last_day">De laatste dag</string>
-    <string name="repeat_on_the_same_day">Op dezelfde dag van de maand herhalen</string>
-    <string name="repeat_on_the_last_day">Op de laatste dag van de maand herhalen</string>
+    <string name="repeat_on_the_same_day_monthly">Op dezelfde dag van de maand herhalen</string>
+    <string name="repeat_on_the_last_day_monthly">Op de laatste dag van de maand herhalen</string>
+    <string name="repeat_on_the_same_day_yearly">Repeat on the same day every year</string>
     <string name="repeat_every_m">Herhalen op elke</string>
     <string name="every_m">Elke</string>
     <string name="first_m">eerste</string>

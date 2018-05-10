@@ -57,8 +57,9 @@
     <string name="selected_days">På valgte dager</string>
     <string name="the_same_day">Den samme dagen</string>
     <string name="the_last_day">Den siste dagen</string>
-    <string name="repeat_on_the_same_day">Gjenta på den samme dagen hver måned</string>
-    <string name="repeat_on_the_last_day">Gjenta på den siste dagen i måneden</string>
+    <string name="repeat_on_the_same_day_monthly">Gjenta på den samme dagen hver måned</string>
+    <string name="repeat_on_the_last_day_monthly">Gjenta på den siste dagen i måneden</string>
+    <string name="repeat_on_the_same_day_yearly">Repeat on the same day every year</string>
     <string name="repeat_every_m">Gjenta hver</string>
     <string name="every_m">Hver</string>
     <string name="first_m">første</string>

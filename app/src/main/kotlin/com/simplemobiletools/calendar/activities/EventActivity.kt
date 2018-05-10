@@ -265,34 +265,50 @@ class EventActivity : SimpleActivity() {
 
     private fun showRepetitionRuleDialog() {
         hideKeyboard()
-        if (mRepeatInterval.isXWeeklyRepetition()) {
-            RepeatRuleWeeklyDialog(this, mRepeatRule) {
+        when {
+            mRepeatInterval.isXWeeklyRepetition() -> RepeatRuleWeeklyDialog(this, mRepeatRule) {
                 setRepeatRule(it)
             }
-        } else if (mRepeatInterval.isXMonthlyRepetition()) {
-            val items = arrayListOf(RadioItem(REPEAT_SAME_DAY, getString(R.string.repeat_on_the_same_day)))
-
-            // split Every Last Sunday and Every Fourth Sunday of the month, if the month has 4 sundays
-            if (isLastWeekDayOfMonth()) {
-                val order = (mEventStartDateTime.dayOfMonth - 1) / 7 + 1
-                if (order == 4) {
-                    items.add(RadioItem(REPEAT_ORDER_WEEKDAY, getRepeatXthDayString(true, REPEAT_ORDER_WEEKDAY)))
-                    items.add(RadioItem(REPEAT_ORDER_WEEKDAY_USE_LAST, getRepeatXthDayString(true, REPEAT_ORDER_WEEKDAY_USE_LAST)))
-                } else if (order == 5) {
-                    items.add(RadioItem(REPEAT_ORDER_WEEKDAY_USE_LAST, getRepeatXthDayString(true, REPEAT_ORDER_WEEKDAY_USE_LAST)))
+            mRepeatInterval.isXMonthlyRepetition() -> {
+                val items = getAvailableMonthlyRepetitionRules()
+                RadioGroupDialog(this, items, mRepeatRule) {
+                    setRepeatRule(it as Int)
                 }
-            } else {
-                items.add(RadioItem(REPEAT_ORDER_WEEKDAY, getRepeatXthDayString(true, REPEAT_ORDER_WEEKDAY)))
             }
-
-            if (isLastDayOfTheMonth()) {
-                items.add(RadioItem(REPEAT_LAST_DAY, getString(R.string.repeat_on_the_last_day)))
-            }
-
-            RadioGroupDialog(this, items, mRepeatRule) {
-                setRepeatRule(it as Int)
+            mRepeatInterval.isXYearlyRepetition() -> {
+                val items = getAvailableYearlyRepetitionRules()
+                RadioGroupDialog(this, items, mRepeatRule) {
+                    setRepeatRule(it as Int)
+                }
             }
         }
+    }
+
+    private fun getAvailableMonthlyRepetitionRules(): ArrayList<RadioItem> {
+        val items = arrayListOf(RadioItem(REPEAT_SAME_DAY, getString(R.string.repeat_on_the_same_day_monthly)))
+
+        // split Every Last Sunday and Every Fourth Sunday of the month, if the month has 4 sundays
+        if (isLastWeekDayOfMonth()) {
+            val order = (mEventStartDateTime.dayOfMonth - 1) / 7 + 1
+            if (order == 4) {
+                items.add(RadioItem(REPEAT_ORDER_WEEKDAY, getRepeatXthDayString(true, REPEAT_ORDER_WEEKDAY)))
+                items.add(RadioItem(REPEAT_ORDER_WEEKDAY_USE_LAST, getRepeatXthDayString(true, REPEAT_ORDER_WEEKDAY_USE_LAST)))
+            } else if (order == 5) {
+                items.add(RadioItem(REPEAT_ORDER_WEEKDAY_USE_LAST, getRepeatXthDayString(true, REPEAT_ORDER_WEEKDAY_USE_LAST)))
+            }
+        } else {
+            items.add(RadioItem(REPEAT_ORDER_WEEKDAY, getRepeatXthDayString(true, REPEAT_ORDER_WEEKDAY)))
+        }
+
+        if (isLastDayOfTheMonth()) {
+            items.add(RadioItem(REPEAT_LAST_DAY, getString(R.string.repeat_on_the_last_day_monthly)))
+        }
+        return items
+    }
+
+    private fun getAvailableYearlyRepetitionRules(): ArrayList<RadioItem> {
+        val items = arrayListOf(RadioItem(REPEAT_SAME_DAY, getString(R.string.repeat_on_the_same_day_monthly)))
+        return items
     }
 
     private fun isLastDayOfTheMonth() = mEventStartDateTime.dayOfMonth == mEventStartDateTime.dayOfMonth().withMaximumValue().dayOfMonth
@@ -372,7 +388,11 @@ class EventActivity : SimpleActivity() {
                 event_repetition_rule.text = getMonthlyRepetitionRuleText()
             }
             mRepeatInterval.isXYearlyRepetition() -> {
+                val repeatString = if (mRepeatRule == REPEAT_ORDER_WEEKDAY_USE_LAST || mRepeatRule == REPEAT_ORDER_WEEKDAY)
+                    R.string.repeat else R.string.repeat_on
 
+                event_repetition_rule_label.text = getString(repeatString)
+                event_repetition_rule.text = getYearlyRepetitionRuleText()
             }
         }
     }
@@ -381,6 +401,11 @@ class EventActivity : SimpleActivity() {
         REPEAT_SAME_DAY -> getString(R.string.the_same_day)
         REPEAT_LAST_DAY -> getString(R.string.the_last_day)
         else -> getRepeatXthDayString(false, mRepeatRule)
+    }
+
+    private fun getYearlyRepetitionRuleText() = when (mRepeatRule) {
+        REPEAT_SAME_DAY -> getString(R.string.the_same_day)
+        else -> ""
     }
 
     private fun showEventTypeDialog() {
