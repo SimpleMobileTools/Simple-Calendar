@@ -53,7 +53,7 @@ const val IS_CUSTOMIZING_COLORS = "is_customizing_colors"
 const val LOOP_REMINDERS = "loop_reminders"
 const val DIM_PAST_EVENTS = "dim_past_events"
 
-// repeat_rule for monthly repetition
+// repeat_rule for monthly and yearly repetition
 const val REPEAT_SAME_DAY = 1                           // i.e. 25th every month, or 3rd june (if yearly repetition)
 const val REPEAT_ORDER_WEEKDAY_USE_LAST = 2             // i.e. every last sunday. 4th if a month has 4 sundays, 5th if 5 (or last sunday in june, if yearly)
 const val REPEAT_LAST_DAY = 3                           // i.e. every last day of the month
@@ -86,6 +86,7 @@ const val STATUS = "STATUS:"
 const val EXDATE = "EXDATE"
 const val BYDAY = "BYDAY"
 const val BYMONTHDAY = "BYMONTHDAY"
+const val BYMONTH = "BYMONTH"
 const val LOCATION = "LOCATION"
 
 // this tag isn't a standard ICS tag, but there's no official way of adding a category color in an ics file

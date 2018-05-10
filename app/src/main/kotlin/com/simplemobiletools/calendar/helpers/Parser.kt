@@ -2,6 +2,7 @@ package com.simplemobiletools.calendar.helpers
 
 import com.simplemobiletools.calendar.extensions.isXMonthlyRepetition
 import com.simplemobiletools.calendar.extensions.isXWeeklyRepetition
+import com.simplemobiletools.calendar.extensions.isXYearlyRepetition
 import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.models.RepeatRule
@@ -29,7 +30,7 @@ class Parser {
                 if (value == WEEKLY) {
                     val start = Formatter.getDateTimeFromTS(startTS)
                     repeatRule = Math.pow(2.0, (start.dayOfWeek - 1).toDouble()).toInt()
-                } else if (value == MONTHLY) {
+                } else if (value == MONTHLY || value == YEARLY) {
                     repeatRule = REPEAT_SAME_DAY
                 }
             } else if (key == COUNT) {
@@ -41,7 +42,7 @@ class Parser {
             } else if (key == BYDAY) {
                 if (repeatInterval.isXWeeklyRepetition()) {
                     repeatRule = handleRepeatRule(value)
-                } else if (repeatInterval.isXMonthlyRepetition()) {
+                } else if (repeatInterval.isXMonthlyRepetition() || repeatInterval.isXYearlyRepetition()) {
                     repeatRule = if (value.startsWith("-1")) REPEAT_ORDER_WEEKDAY_USE_LAST else REPEAT_ORDER_WEEKDAY
                 }
             } else if (key == BYMONTHDAY && value.toInt() == -1) {
