@@ -4,7 +4,10 @@
     <!-- Release notes -->
     <string name="release_119">
         Allow changing the app launcher icon color\n
-        Added support for more advanced yearly repetition rules
+        Added support for more advanced yearly repetition rules\n
+        Allow setting reminder looping till dismissed\n
+        Added a button in Settings for changing widget colors without recreating them\n
+        Added optional dimming of past events
     </string>
     <string name="release_117">Reworked custom notification sound picking, should be more reliable</string>
     <string name="release_98">
