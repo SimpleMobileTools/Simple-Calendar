@@ -9,7 +9,6 @@
     <string name="yearly_view">Årlig</string>
     <string name="simple_event_list">Begivenhedsliste</string>
     <string name="no_upcoming_events">Du ser ikke ud til at have nogen forestående begivenheder.</string>
-    <string name="add_some_events">Du kan tilføje nogle med plus-knappen nederst.</string>
     <string name="go_to_today">Gå til i dag</string>
 
     <!-- Widget titles -->
@@ -20,6 +19,8 @@
     <string name="event">Begivenhed</string>
     <string name="edit_event">Rediger begivenhed</string>
     <string name="new_event">Ny begivenhed</string>
+    <string name="create_new_event">Create a new event</string>
+    <string name="duplicate_event">Kopier begivenhed</string>
     <string name="title_empty">Indtast titel</string>
     <string name="end_before_start">Begivenheden skal starte inden den slutter</string>
     <string name="event_added">Begivenhed tilføjet</string>
@@ -56,8 +57,9 @@
     <string name="selected_days">På valgte dage</string>
     <string name="the_same_day">Samme dag</string>
     <string name="the_last_day">Sidste dag</string>
-    <string name="repeat_on_the_same_day">Gentag på samme dato hver måned</string>
-    <string name="repeat_on_the_last_day">Gentag på månedens sidste dag</string>
+    <string name="repeat_on_the_same_day_monthly">Gentag på samme dato hver måned</string>
+    <string name="repeat_on_the_last_day_monthly">Gentag på månedens sidste dag</string>
+    <string name="repeat_on_the_same_day_yearly">Repeat on the same day every year</string>
     <string name="repeat_every_m">Gentag hver</string>
     <string name="every_m">Hver</string>
     <string name="first_m">første</string>
@@ -103,6 +105,7 @@
     <string name="export_past_events_too">Eksporter også tidligere begivenheder</string>
     <string name="include_event_types">Inkluder begivenhedstyper</string>
     <string name="filename_without_ics">Filnavn (uden .ics)</string>
+    <string name="override_event_types">Overskriv begivenhedstyper i filen</string>
 
     <!-- Event details -->
     <string name="title">Titel</string>
@@ -152,6 +155,9 @@
     <string name="delete_all_events">Slet alle begivenheder</string>
     <string name="delete_all_events_confirmation">Er du sikker på at du vil slette alle begivenheder? Dine begivenhedstyper og andre indstillinger vil forblive intakte.</string>
     <string name="show_a_grid">Vis gitter</string>
+    <string name="loop_reminders">Fortsæt påmindelser indtil jeg stopper dem</string>
+    <string name="dim_past_events">Nedton gamle begivenheder</string>
+    <string name="events">Begivenheder</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -186,12 +192,11 @@
     <string name="sample_title_5">Kaffetid!</string>
 
     <!-- FAQ -->
-    <string name="faq_1_title">How can I remove the holidays imported via the \"Add holidays\" button?</string>
-    <string name="faq_1_text">Holidays created that way are inserted in a new event type called \"Holidays\". You can go in Settings -> Manage Event Types,
-        long press the given event type and delete it by selecting the trashbin.</string>
-    <string name="faq_2_title">Can I sync my events via Google Calendar, or other service supporting CalDAV?</string>
-    <string name="faq_2_text">Yes, just toggle \"CalDAV sync\" in the app settings and select the calendars you want to sync. However, you will need some third party app handling the synchronization between the device and servers.
-        In case you want to synchronize a Google calendar, their official Calendar app will do the job. For other calendars you will need a third party sync adapter, for example DAVdroid.</string>
+    <string name="faq_1_title">Hvordan kan jeg fjerne helligdage der er importeret med funktionen \"Tilføj helligdage\"?</string>
+    <string name="faq_1_text">Helligdage oprettet på den måde er indsat under begivenhedstypen \"Helligdage\". Gå til Indstillinger -> Håndter begivenhedstyper. Efter et par sekunders pres på en type kan du slette den ved at klikke på papirkurven.</string>
+    <string name="faq_2_title">Kan jeg synkronisere mine begivenheder med Googles kalender elleer en anden kalender der understøtter CalDAV?</string>
+    <string name="faq_2_text">Ja, klik på \"CalDAV sync\" i appens indstillinger og vælg de kalendere du vil synkronisere. Det kræver dog at du har en app til at synkronisere mellem din enhed og kalenderservere.
+        Hvis du vil synkronisere en Googlekalender, kan deres officielle app klare det. For andre kalenderes vedkommende kan du bruge en 3. partsapp som for eksempel DAVdroid.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->

@@ -9,7 +9,6 @@
     <string name="yearly_view">Metų peržiūra</string>
     <string name="simple_event_list">Paprastas įvykių sąrašas</string>
     <string name="no_upcoming_events">Atrodo jog Jūs neturite jokių įvyksiančių įvykių.</string>
-    <string name="add_some_events">Jūs galte pridėti įvykius su pliuso mygtuku apačioje.</string>
     <string name="go_to_today">Eiti į šiandieną</string>
 
     <!-- Widget titles -->
@@ -20,6 +19,8 @@
     <string name="event">Įvykis</string>
     <string name="edit_event">Redaguoti įvykį</string>
     <string name="new_event">Naujas įvykis</string>
+    <string name="create_new_event">Create a new event</string>
+    <string name="duplicate_event">Duplicate event</string>
     <string name="title_empty">Pavadinimas negali būti tuščias</string>
     <string name="end_before_start">TĮvykis negali pasibaigti anksčiau nei jis prasideda</string>
     <string name="event_added">Įvykis įtrauktas sėkmingai</string>
@@ -56,8 +57,9 @@
     <string name="selected_days">Pasirinktomis dienomis</string>
     <string name="the_same_day">Tą pačią dieną</string>
     <string name="the_last_day">Paskutinę dieną</string>
-    <string name="repeat_on_the_same_day">Pakartoti tą pačią kiekvieno mėnesio dieną</string>
-    <string name="repeat_on_the_last_day">Pakartoti paskutinę mėnesio dieną</string>
+    <string name="repeat_on_the_same_day_monthly">Pakartoti tą pačią kiekvieno mėnesio dieną</string>
+    <string name="repeat_on_the_last_day_monthly">Pakartoti paskutinę mėnesio dieną</string>
+    <string name="repeat_on_the_same_day_yearly">Repeat on the same day every year</string>
     <string name="repeat_every_m">Pakartoti kiekvieną</string>
     <string name="every_m">Kiekvieną</string>
     <string name="first_m">Pirmą</string>
@@ -103,6 +105,7 @@
     <string name="export_past_events_too">Taip pat eksportuoti praėjusius įvykius</string>
     <string name="include_event_types">Įtraukti įvykių tipus</string>
     <string name="filename_without_ics">Bylos pavadinimas (be .ics)</string>
+    <string name="override_event_types">Override event types in the file</string>
 
     <!-- Event details -->
     <string name="title">Pavadinimas</string>
@@ -152,6 +155,9 @@
     <string name="delete_all_events">Ištrinti visus įvykius</string>
     <string name="delete_all_events_confirmation">Ar Jūs tikrai norite ištrinti visus įvykius? Tai neištrins įvykių tipų ir kitų nustatymų.</string>
     <string name="show_a_grid">Rodyti tinklelį</string>
+    <string name="loop_reminders">Loop reminders until dismissed</string>
+    <string name="dim_past_events">Dim past events</string>
+    <string name="events">Events</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

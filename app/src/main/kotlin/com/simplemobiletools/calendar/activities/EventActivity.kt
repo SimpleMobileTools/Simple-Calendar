@@ -60,10 +60,21 @@ class EventActivity : SimpleActivity() {
             return
         }
 
+        val localEventType = dbHelper.getEventType(config.lastUsedLocalEventTypeId)
+        if (localEventType == null || localEventType.caldavCalendarId != 0) {
+            config.lastUsedLocalEventTypeId = DBHelper.REGULAR_EVENT_TYPE_ID
+        }
+
+        mEventTypeId = config.lastUsedLocalEventTypeId
+
         if (event != null) {
             mEvent = event
             mEventOccurrenceTS = intent.getIntExtra(EVENT_OCCURRENCE_TS, 0)
             setupEditEvent()
+
+            if (intent.getBooleanExtra(IS_DUPLICATE_INTENT, false)) {
+                mEvent.id = 0
+            }
         } else {
             mEvent = Event()
             mReminder1Minutes = config.defaultReminderMinutes
@@ -109,6 +120,7 @@ class EventActivity : SimpleActivity() {
         if (wasActivityInitialized) {
             menu.findItem(R.id.delete).isVisible = mEvent.id != 0
             menu.findItem(R.id.share).isVisible = mEvent.id != 0
+            menu.findItem(R.id.duplicate).isVisible = mEvent.id != 0
         }
         return true
     }
@@ -117,6 +129,7 @@ class EventActivity : SimpleActivity() {
         when (item.itemId) {
             R.id.save -> saveEvent()
             R.id.delete -> deleteEvent()
+            R.id.duplicate -> duplicateEvent()
             R.id.share -> shareEvent()
             else -> return super.onOptionsItemSelected(item)
         }
@@ -149,8 +162,8 @@ class EventActivity : SimpleActivity() {
     private fun setupNewEvent() {
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
         supportActionBar?.title = resources.getString(R.string.new_event)
-        val isLastCaldavCalendarOK = config.caldavSync && config.getSyncedCalendarIdsAsList().contains(config.lastUsedCaldavCalendar.toString())
-        mEventCalendarId = if (isLastCaldavCalendarOK) config.lastUsedCaldavCalendar else STORED_LOCALLY_ONLY
+        val isLastCaldavCalendarOK = config.caldavSync && config.getSyncedCalendarIdsAsList().contains(config.lastUsedCaldavCalendarId.toString())
+        mEventCalendarId = if (isLastCaldavCalendarOK) config.lastUsedCaldavCalendarId else STORED_LOCALLY_ONLY
 
         if (intent.action == Intent.ACTION_EDIT || intent.action == Intent.ACTION_INSERT) {
             val startTS = (intent.getLongExtra("beginTime", System.currentTimeMillis()) / 1000).toInt()
@@ -208,7 +221,7 @@ class EventActivity : SimpleActivity() {
         if (mRepeatInterval.isXWeeklyRepetition()) {
             setRepeatRule(Math.pow(2.0, (mEventStartDateTime.dayOfWeek - 1).toDouble()).toInt())
         } else if (mRepeatInterval.isXMonthlyRepetition()) {
-            setRepeatRule(REPEAT_MONTH_SAME_DAY)
+            setRepeatRule(REPEAT_SAME_DAY)
         }
     }
 
@@ -216,7 +229,7 @@ class EventActivity : SimpleActivity() {
         event_repetition_limit_holder.beGoneIf(limit == 0)
         checkRepetitionLimitText()
 
-        event_repetition_rule_holder.beVisibleIf(mRepeatInterval.isXWeeklyRepetition() || mRepeatInterval.isXMonthlyRepetition())
+        event_repetition_rule_holder.beVisibleIf(mRepeatInterval.isXWeeklyRepetition() || mRepeatInterval.isXMonthlyRepetition() || mRepeatInterval.isXYearlyRepetition())
         checkRepetitionRuleText()
     }
 
@@ -252,34 +265,50 @@ class EventActivity : SimpleActivity() {
 
     private fun showRepetitionRuleDialog() {
         hideKeyboard()
-        if (mRepeatInterval.isXWeeklyRepetition()) {
-            RepeatRuleWeeklyDialog(this, mRepeatRule) {
+        when {
+            mRepeatInterval.isXWeeklyRepetition() -> RepeatRuleWeeklyDialog(this, mRepeatRule) {
                 setRepeatRule(it)
             }
-        } else if (mRepeatInterval.isXMonthlyRepetition()) {
-            val items = arrayListOf(RadioItem(REPEAT_MONTH_SAME_DAY, getString(R.string.repeat_on_the_same_day)))
-
-            // split Every Last Sunday and Every Fourth Sunday of the month, if the month has 4 sundays
-            if (isLastWeekDayOfMonth()) {
-                val order = (mEventStartDateTime.dayOfMonth - 1) / 7 + 1
-                if (order == 4) {
-                    items.add(RadioItem(REPEAT_MONTH_ORDER_WEEKDAY, getRepeatXthDayString(true, REPEAT_MONTH_ORDER_WEEKDAY)))
-                    items.add(RadioItem(REPEAT_MONTH_ORDER_WEEKDAY_USE_LAST, getRepeatXthDayString(true, REPEAT_MONTH_ORDER_WEEKDAY_USE_LAST)))
-                } else if (order == 5) {
-                    items.add(RadioItem(REPEAT_MONTH_ORDER_WEEKDAY_USE_LAST, getRepeatXthDayString(true, REPEAT_MONTH_ORDER_WEEKDAY_USE_LAST)))
+            mRepeatInterval.isXMonthlyRepetition() -> {
+                val items = getAvailableMonthlyRepetitionRules()
+                RadioGroupDialog(this, items, mRepeatRule) {
+                    setRepeatRule(it as Int)
                 }
-            } else {
-                items.add(RadioItem(REPEAT_MONTH_ORDER_WEEKDAY, getRepeatXthDayString(true, REPEAT_MONTH_ORDER_WEEKDAY)))
             }
-
-            if (isLastDayOfTheMonth()) {
-                items.add(RadioItem(REPEAT_MONTH_LAST_DAY, getString(R.string.repeat_on_the_last_day)))
-            }
-
-            RadioGroupDialog(this, items, mRepeatRule) {
-                setRepeatRule(it as Int)
+            mRepeatInterval.isXYearlyRepetition() -> {
+                val items = getAvailableYearlyRepetitionRules()
+                RadioGroupDialog(this, items, mRepeatRule) {
+                    setRepeatRule(it as Int)
+                }
             }
         }
+    }
+
+    private fun getAvailableMonthlyRepetitionRules(): ArrayList<RadioItem> {
+        val items = arrayListOf(RadioItem(REPEAT_SAME_DAY, getString(R.string.repeat_on_the_same_day_monthly)))
+
+        // split Every Last Sunday and Every Fourth Sunday of the month, if the month has 4 sundays
+        if (isLastWeekDayOfMonth()) {
+            val order = (mEventStartDateTime.dayOfMonth - 1) / 7 + 1
+            if (order == 4) {
+                items.add(RadioItem(REPEAT_ORDER_WEEKDAY, getRepeatXthDayString(true, REPEAT_ORDER_WEEKDAY)))
+                items.add(RadioItem(REPEAT_ORDER_WEEKDAY_USE_LAST, getRepeatXthDayString(true, REPEAT_ORDER_WEEKDAY_USE_LAST)))
+            } else if (order == 5) {
+                items.add(RadioItem(REPEAT_ORDER_WEEKDAY_USE_LAST, getRepeatXthDayString(true, REPEAT_ORDER_WEEKDAY_USE_LAST)))
+            }
+        } else {
+            items.add(RadioItem(REPEAT_ORDER_WEEKDAY, getRepeatXthDayString(true, REPEAT_ORDER_WEEKDAY)))
+        }
+
+        if (isLastDayOfTheMonth()) {
+            items.add(RadioItem(REPEAT_LAST_DAY, getString(R.string.repeat_on_the_last_day_monthly)))
+        }
+        return items
+    }
+
+    private fun getAvailableYearlyRepetitionRules(): ArrayList<RadioItem> {
+        val items = arrayListOf(RadioItem(REPEAT_SAME_DAY, getString(R.string.repeat_on_the_same_day_monthly)))
+        return items
     }
 
     private fun isLastDayOfTheMonth() = mEventStartDateTime.dayOfMonth == mEventStartDateTime.dayOfMonth().withMaximumValue().dayOfMonth
@@ -312,7 +341,7 @@ class EventActivity : SimpleActivity() {
     private fun getOrderString(repeatRule: Int): String {
         val dayOfMonth = mEventStartDateTime.dayOfMonth
         var order = (dayOfMonth - 1) / 7 + 1
-        if (order == 4 && isLastWeekDayOfMonth() && repeatRule == REPEAT_MONTH_ORDER_WEEKDAY_USE_LAST) {
+        if (order == 4 && isLastWeekDayOfMonth() && repeatRule == REPEAT_ORDER_WEEKDAY_USE_LAST) {
             order = -1
         }
 
@@ -347,21 +376,36 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun checkRepetitionRuleText() {
-        if (mRepeatInterval.isXWeeklyRepetition()) {
-            event_repetition_rule.text = if (mRepeatRule == EVERY_DAY_BIT) getString(R.string.every_day) else getSelectedDaysString(mRepeatRule)
-        } else if (mRepeatInterval.isXMonthlyRepetition()) {
-            val repeatString = if (mRepeatRule == REPEAT_MONTH_ORDER_WEEKDAY_USE_LAST || mRepeatRule == REPEAT_MONTH_ORDER_WEEKDAY)
-                R.string.repeat else R.string.repeat_on
+        when {
+            mRepeatInterval.isXWeeklyRepetition() -> {
+                event_repetition_rule.text = if (mRepeatRule == EVERY_DAY_BIT) getString(R.string.every_day) else getSelectedDaysString(mRepeatRule)
+            }
+            mRepeatInterval.isXMonthlyRepetition() -> {
+                val repeatString = if (mRepeatRule == REPEAT_ORDER_WEEKDAY_USE_LAST || mRepeatRule == REPEAT_ORDER_WEEKDAY)
+                    R.string.repeat else R.string.repeat_on
 
-            event_repetition_rule_label.text = getString(repeatString)
-            event_repetition_rule.text = getMonthlyRepetitionRuleText()
+                event_repetition_rule_label.text = getString(repeatString)
+                event_repetition_rule.text = getMonthlyRepetitionRuleText()
+            }
+            mRepeatInterval.isXYearlyRepetition() -> {
+                val repeatString = if (mRepeatRule == REPEAT_ORDER_WEEKDAY_USE_LAST || mRepeatRule == REPEAT_ORDER_WEEKDAY)
+                    R.string.repeat else R.string.repeat_on
+
+                event_repetition_rule_label.text = getString(repeatString)
+                event_repetition_rule.text = getYearlyRepetitionRuleText()
+            }
         }
     }
 
     private fun getMonthlyRepetitionRuleText() = when (mRepeatRule) {
-        REPEAT_MONTH_SAME_DAY -> getString(R.string.the_same_day)
-        REPEAT_MONTH_LAST_DAY -> getString(R.string.the_last_day)
+        REPEAT_SAME_DAY -> getString(R.string.the_same_day)
+        REPEAT_LAST_DAY -> getString(R.string.the_last_day)
         else -> getRepeatXthDayString(false, mRepeatRule)
+    }
+
+    private fun getYearlyRepetitionRuleText() = when (mRepeatRule) {
+        REPEAT_SAME_DAY -> getString(R.string.the_same_day)
+        else -> ""
     }
 
     private fun showEventTypeDialog() {
@@ -421,7 +465,7 @@ class EventActivity : SimpleActivity() {
         val eventType = dbHelper.getEventType(mEventTypeId)
         if (eventType != null) {
             event_type.text = eventType.title
-            event_type_color.setBackgroundWithStroke(eventType.color, config.backgroundColor)
+            event_type_color.setFillWithStroke(eventType.color, config.backgroundColor)
         }
     }
 
@@ -440,11 +484,11 @@ class EventActivity : SimpleActivity() {
                 hideKeyboard()
                 SelectEventCalendarDialog(this, calendars, mEventCalendarId) {
                     if (mEventCalendarId != STORED_LOCALLY_ONLY && it == STORED_LOCALLY_ONLY) {
-                        mEventTypeId = DBHelper.REGULAR_EVENT_TYPE_ID
+                        mEventTypeId = config.lastUsedLocalEventTypeId
                         updateEventType()
                     }
                     mEventCalendarId = it
-                    config.lastUsedCaldavCalendar = it
+                    config.lastUsedCaldavCalendarId = it
                     updateCurrentCalendarInfo(getCalendarWithId(calendars, it))
                 }
             }
@@ -453,7 +497,7 @@ class EventActivity : SimpleActivity() {
         }
     }
 
-    private fun getCalendarId() = if (mEvent.source == SOURCE_SIMPLE_CALENDAR) config.lastUsedCaldavCalendar else mEvent.getCalDAVCalendarId()
+    private fun getCalendarId() = if (mEvent.source == SOURCE_SIMPLE_CALENDAR) config.lastUsedCaldavCalendarId else mEvent.getCalDAVCalendarId()
 
     private fun getCalendarWithId(calendars: List<CalDAVCalendar>, calendarId: Int): CalDAVCalendar? =
             calendars.firstOrNull { it.id == calendarId }
@@ -465,15 +509,24 @@ class EventActivity : SimpleActivity() {
         event_caldav_calendar_email.beGoneIf(currentCalendar == null)
 
         if (currentCalendar == null) {
+            val mediumMargin = resources.getDimension(R.dimen.medium_margin).toInt()
             event_caldav_calendar_name.apply {
                 text = getString(R.string.store_locally_only)
-                setPadding(paddingLeft, paddingTop, paddingRight, resources.getDimension(R.dimen.medium_margin).toInt())
+                setPadding(paddingLeft, paddingTop, paddingRight, mediumMargin)
+            }
+
+            event_caldav_calendar_holder.apply {
+                setPadding(paddingLeft, mediumMargin, paddingRight, mediumMargin)
             }
         } else {
             event_caldav_calendar_email.text = currentCalendar.accountName
             event_caldav_calendar_name.apply {
                 text = currentCalendar.displayName
                 setPadding(paddingLeft, paddingTop, paddingRight, resources.getDimension(R.dimen.tiny_margin).toInt())
+            }
+
+            event_caldav_calendar_holder.apply {
+                setPadding(paddingLeft, 0, paddingRight, 0)
             }
         }
     }
@@ -499,6 +552,16 @@ class EventActivity : SimpleActivity() {
         }
     }
 
+    private fun duplicateEvent() {
+        Intent(this, EventActivity::class.java).apply {
+            putExtra(EVENT_ID, mEvent.id)
+            putExtra(EVENT_OCCURRENCE_TS, mEventOccurrenceTS)
+            putExtra(IS_DUPLICATE_INTENT, true)
+            startActivity(this)
+        }
+        finish()
+    }
+
     private fun saveEvent() {
         val newTitle = event_title.value
         if (newTitle.isEmpty()) {
@@ -519,16 +582,17 @@ class EventActivity : SimpleActivity() {
         val oldSource = mEvent.source
         val newImportId = if (mEvent.id != 0) mEvent.importId else UUID.randomUUID().toString().replace("-", "") + System.currentTimeMillis().toString()
 
-        val newEventType = if (!config.caldavSync || config.lastUsedCaldavCalendar == 0 || mEventCalendarId == STORED_LOCALLY_ONLY) {
+        val newEventType = if (!config.caldavSync || config.lastUsedCaldavCalendarId == 0 || mEventCalendarId == STORED_LOCALLY_ONLY) {
             mEventTypeId
         } else {
-            dbHelper.getEventTypeWithCalDAVCalendarId(config.lastUsedCaldavCalendar)?.id ?: DBHelper.REGULAR_EVENT_TYPE_ID
+            dbHelper.getEventTypeWithCalDAVCalendarId(config.lastUsedCaldavCalendarId)?.id ?: config.lastUsedLocalEventTypeId
         }
 
-        val newSource = if (!config.caldavSync || config.lastUsedCaldavCalendar == 0 || mEventCalendarId == STORED_LOCALLY_ONLY) {
+        val newSource = if (!config.caldavSync || config.lastUsedCaldavCalendarId == 0 || mEventCalendarId == STORED_LOCALLY_ONLY) {
+            config.lastUsedLocalEventTypeId = newEventType
             SOURCE_SIMPLE_CALENDAR
         } else {
-            "$CALDAV-${config.lastUsedCaldavCalendar}"
+            "$CALDAV-${config.lastUsedCaldavCalendarId}"
         }
 
         val reminders = sortedSetOf(mReminder1Minutes, mReminder2Minutes, mReminder3Minutes).filter { it != REMINDER_OFF }
@@ -771,8 +835,8 @@ class EventActivity : SimpleActivity() {
                 setRepeatRule(Math.pow(2.0, (mEventStartDateTime.dayOfWeek - 1).toDouble()).toInt())
             }
         } else if (mRepeatInterval.isXMonthlyRepetition()) {
-            if (mRepeatRule == REPEAT_MONTH_LAST_DAY && !isLastDayOfTheMonth())
-                mRepeatRule = REPEAT_MONTH_SAME_DAY
+            if (mRepeatRule == REPEAT_LAST_DAY && !isLastDayOfTheMonth())
+                mRepeatRule = REPEAT_SAME_DAY
             checkRepetitionRuleText()
         }
     }

@@ -20,7 +20,7 @@
         android:paddingTop="@dimen/medium_margin"
         app:layoutManager="com.simplemobiletools.commons.views.MyLinearLayoutManager"/>
 
-    <Button
+    <ImageView
         android:id="@+id/config_bg_color"
         android:layout_width="@dimen/widget_colorpicker_size"
         android:layout_height="@dimen/widget_colorpicker_size"
@@ -44,7 +44,7 @@
             android:paddingRight="@dimen/activity_margin"/>
     </RelativeLayout>
 
-    <Button
+    <ImageView
         android:id="@+id/config_text_color"
         android:layout_width="@dimen/widget_colorpicker_size"
         android:layout_height="@dimen/widget_colorpicker_size"

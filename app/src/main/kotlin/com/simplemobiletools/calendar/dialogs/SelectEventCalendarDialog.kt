@@ -11,7 +11,7 @@ import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.helpers.STORED_LOCALLY_ONLY
 import com.simplemobiletools.calendar.models.CalDAVCalendar
-import com.simplemobiletools.commons.extensions.setBackgroundWithStroke
+import com.simplemobiletools.commons.extensions.setFillWithStroke
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import com.simplemobiletools.commons.extensions.updateTextColors
 import kotlinx.android.synthetic.main.dialog_select_radio_group.view.*
@@ -52,7 +52,7 @@ class SelectEventCalendarDialog(val activity: Activity, val calendars: List<CalD
         }
 
         if (color != Color.TRANSPARENT)
-            view.dialog_radio_color.setBackgroundWithStroke(color, activity.config.backgroundColor)
+            view.dialog_radio_color.setFillWithStroke(color, activity.config.backgroundColor)
 
         view.setOnClickListener { viewClicked(typeId) }
         radioGroup.addView(view, RadioGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT))

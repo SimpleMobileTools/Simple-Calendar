@@ -9,7 +9,6 @@
     <string name="yearly_view">Ročný</string>
     <string name="simple_event_list">Jednoduchý zoznam</string>
     <string name="no_upcoming_events">Nemáte žiadne naplánované udalosti.</string>
-    <string name="add_some_events">Viete ich pridať pomocou tlačidla Plus v pravom dolnom rohu.</string>
     <string name="go_to_today">Prejsť na dnešok</string>
 
     <!-- Widget titles -->
@@ -20,6 +19,8 @@
     <string name="event">Udalosť</string>
     <string name="edit_event">Upraviť udalosť</string>
     <string name="new_event">Nová udalosť</string>
+    <string name="create_new_event">Vytvoriť novú udalosť</string>
+    <string name="duplicate_event">Duplikovať udalosť</string>
     <string name="title_empty">Prosím zadajte názov</string>
     <string name="end_before_start">Udalosť nemôže skončiť skôr ako by začala</string>
     <string name="event_added">Udalosť bola úspešne pridaná</string>
@@ -56,8 +57,9 @@
     <string name="selected_days">Vo vybraných dňoch</string>
     <string name="the_same_day">Rovnaký deň</string>
     <string name="the_last_day">Posledný deň</string>
-    <string name="repeat_on_the_same_day">Opakovať každý mesiac v rovnaký deň</string>
-    <string name="repeat_on_the_last_day">Opakovať posledný deň v mesiaci</string>
+    <string name="repeat_on_the_same_day_monthly">Opakovať každý mesiac v rovnaký deň</string>
+    <string name="repeat_on_the_last_day_monthly">Opakovať posledný deň v mesiaci</string>
+    <string name="repeat_on_the_same_day_yearly">Opakovať každý rok v rovnaký deň</string>
     <string name="repeat_every_m">Opakovať každý</string>
     <string name="every_m">Každý</string>
     <string name="first_m">prvý</string>
@@ -103,6 +105,7 @@
     <string name="export_past_events_too">Exportovať aj minulé udalosti</string>
     <string name="include_event_types">Zahrnúť typy udalostí</string>
     <string name="filename_without_ics">Názov súboru (bez .ics)</string>
+    <string name="override_event_types">Nahradiť typy udalostí v súbore</string>
 
     <!-- Event details -->
     <string name="title">Názov</string>
@@ -152,6 +155,9 @@
     <string name="delete_all_events">Odstrániť všetky udalosti</string>
     <string name="delete_all_events_confirmation">Ste si istý, že chcete odstrániť všetky udalosti? Všetky typy udalostí a nastavenia ostanú nedotknuté.</string>
     <string name="show_a_grid">Zobraziť mriežku</string>
+    <string name="loop_reminders">Opakovať pripomienky až po odstránenie</string>
+    <string name="dim_past_events">Stlmiť minulé udalosti</string>
+    <string name="events">Udalosti</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

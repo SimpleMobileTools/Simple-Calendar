@@ -3,6 +3,7 @@ package com.simplemobiletools.calendar.models
 import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
+import com.simplemobiletools.commons.helpers.DAY_SECONDS
 import org.joda.time.DateTime
 import java.io.Serializable
 import java.util.*
@@ -12,38 +13,47 @@ data class Event(var id: Int = 0, var startTS: Int = 0, var endTS: Int = 0, var 
                  var importId: String = "", var flags: Int = 0, var repeatLimit: Int = 0, var repeatRule: Int = 0,
                  var eventType: Int = DBHelper.REGULAR_EVENT_TYPE_ID, var ignoreEventOccurrences: ArrayList<Int> = ArrayList(),
                  var offset: String = "", var isDstIncluded: Boolean = false, var parentId: Int = 0, var lastUpdated: Long = 0L,
-                 var source: String = SOURCE_SIMPLE_CALENDAR, var color: Int = 0, var location: String = "") : Serializable {
+                 var source: String = SOURCE_SIMPLE_CALENDAR, var color: Int = 0, var location: String = "", var isPastEvent: Boolean = false)
+    : Serializable {
 
     companion object {
         private val serialVersionUID = -32456795132345616L
     }
 
     fun addIntervalTime(original: Event) {
-        val currStart = Formatter.getDateTimeFromTS(startTS)
-        val newStart: DateTime
-        newStart = when (repeatInterval) {
-            DAY -> currStart.plusDays(1)
+        when (repeatInterval) {
+            DAY -> {
+                startTS += DAY_SECONDS
+                endTS += DAY_SECONDS
+            }
             else -> {
-                when {
+                val currStart = Formatter.getDateTimeFromTS(startTS)
+                val newStart = when {
                     repeatInterval % YEAR == 0 -> currStart.plusYears(repeatInterval / YEAR)
                     repeatInterval % MONTH == 0 -> when (repeatRule) {
-                        REPEAT_MONTH_SAME_DAY -> addMonthsWithSameDay(currStart, original)
-                        REPEAT_MONTH_ORDER_WEEKDAY_USE_LAST -> addXthDayInterval(currStart, original, true)
-                        REPEAT_MONTH_ORDER_WEEKDAY -> addXthDayInterval(currStart, original, false)
+                        REPEAT_SAME_DAY -> addMonthsWithSameDay(currStart, original)
+                        REPEAT_ORDER_WEEKDAY_USE_LAST -> addXthDayInterval(currStart, original, true)
+                        REPEAT_ORDER_WEEKDAY -> addXthDayInterval(currStart, original, false)
                         else -> currStart.plusMonths(repeatInterval / MONTH).dayOfMonth().withMaximumValue()
                     }
                     repeatInterval % WEEK == 0 -> {
-                        // step through weekly repetition by days too, as events can trigger multiple times a week
-                        currStart.plusDays(1)
+                        // step through weekly repetition by days, as events can trigger multiple times a week
+                        startTS += DAY_SECONDS
+                        endTS += DAY_SECONDS
+                        return
                     }
-                    else -> currStart.plusSeconds(repeatInterval)
+                    else -> {
+                        startTS += repeatInterval
+                        endTS += repeatInterval
+                        return
+                    }
                 }
+                val newStartTS = newStart.seconds()
+                val newEndTS = newStartTS + (endTS - startTS)
+                startTS = newStartTS
+                endTS = newEndTS
             }
         }
-        val newStartTS = newStart.seconds()
-        val newEndTS = newStartTS + (endTS - startTS)
-        startTS = newStartTS
-        endTS = newEndTS
     }
 
     // if an event should happen on 31st with Same Day monthly repetition, dont show it at all at months with 30 or less days

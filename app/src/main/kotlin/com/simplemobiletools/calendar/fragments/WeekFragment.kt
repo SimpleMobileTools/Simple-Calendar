@@ -24,6 +24,8 @@ import com.simplemobiletools.calendar.interfaces.WeeklyCalendar
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.views.MyScrollView
 import com.simplemobiletools.commons.extensions.*
+import com.simplemobiletools.commons.helpers.DAY_SECONDS
+import com.simplemobiletools.commons.helpers.WEEK_SECONDS
 import kotlinx.android.synthetic.main.fragment_week.*
 import kotlinx.android.synthetic.main.fragment_week.view.*
 import org.joda.time.DateTime
@@ -45,6 +47,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private var isFragmentVisible = false
     private var wasFragmentInit = false
     private var wasExtraHeightAdded = false
+    private var dimPastEvents = true
     private var clickStartTime = 0L
     private var selectedGrid: View? = null
     private var todayColumnIndex = -1
@@ -68,6 +71,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         mRowHeight = (context!!.resources.getDimension(R.dimen.weekly_view_row_height)).toInt()
         minScrollY = mRowHeight * context!!.config.startWeeklyAt
         mWeekTimestamp = arguments!!.getInt(WEEK_START_TIMESTAMP)
+        dimPastEvents = context!!.config.dimPastEvents
         primaryColor = context!!.getAdjustedPrimaryColor()
         mRes = resources
         allDayRows.add(HashSet())
@@ -270,9 +274,15 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 val duration = endDateTime.minuteOfDay - startMinutes
 
                 (inflater.inflate(R.layout.week_event_marker, null, false) as TextView).apply {
-                    val backgroundColor = eventTypeColors.get(event.eventType, primaryColor)
+                    var backgroundColor = eventTypeColors.get(event.eventType, primaryColor)
+                    var textColor = backgroundColor.getContrastColor()
+                    if (dimPastEvents && event.isPastEvent) {
+                        backgroundColor = backgroundColor.adjustAlpha(LOW_ALPHA)
+                        textColor = textColor.adjustAlpha(LOW_ALPHA)
+                    }
+
                     background = ColorDrawable(backgroundColor)
-                    setTextColor(backgroundColor.getContrastColor())
+                    setTextColor(textColor)
                     text = event.title
                     layout.addView(this)
                     y = startMinutes * minuteHeight
@@ -339,9 +349,15 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             if (activity == null)
                 return
 
-            val backgroundColor = eventTypeColors.get(event.eventType, primaryColor)
+            var backgroundColor = eventTypeColors.get(event.eventType, primaryColor)
+            var textColor = backgroundColor.getContrastColor()
+            if (dimPastEvents && event.isPastEvent) {
+                backgroundColor = backgroundColor.adjustAlpha(LOW_ALPHA)
+                textColor = textColor.adjustAlpha(LOW_ALPHA)
+            }
             background = ColorDrawable(backgroundColor)
-            setTextColor(backgroundColor.getContrastColor())
+
+            setTextColor(textColor)
             text = event.title
 
             val startDateTime = Formatter.getDateTimeFromTS(event.startTS)

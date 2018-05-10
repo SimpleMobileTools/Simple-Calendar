@@ -17,6 +17,7 @@
     <dimen name="repeat_type_margin_start">40dp</dimen>
 
     <dimen name="yearly_month_padding">0dp</dimen>
+    <dimen name="endless_scroll_move_height">24dp</dimen>
 
     <dimen name="day_monthly_text_size">11sp</dimen>
     <dimen name="meta_text_size">14sp</dimen>

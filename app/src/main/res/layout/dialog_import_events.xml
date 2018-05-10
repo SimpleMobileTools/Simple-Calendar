@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingLeft="@dimen/activity_margin"
     android:paddingRight="@dimen/activity_margin"
     android:paddingTop="@dimen/activity_margin">
 
@@ -13,6 +12,7 @@
         android:id="@+id/import_events_event_type_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_margin"
         android:text="@string/default_event_type"
         android:textSize="@dimen/smaller_text_size"/>
 
@@ -20,6 +20,7 @@
         android:id="@+id/import_event_type_holder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_margin"
         android:background="?attr/selectableItemBackground"
         android:padding="@dimen/small_margin">
 
@@ -42,4 +43,14 @@
             android:clickable="false"/>
 
     </RelativeLayout>
+
+    <com.simplemobiletools.commons.views.MyAppCompatCheckbox
+        android:id="@+id/import_events_checkbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/normal_margin"
+        android:paddingBottom="@dimen/activity_margin"
+        android:paddingTop="@dimen/activity_margin"
+        android:text="@string/override_event_types"/>
+
 </LinearLayout>

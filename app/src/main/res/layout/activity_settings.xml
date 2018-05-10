@@ -147,28 +147,6 @@
 
         </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/settings_delete_all_events_holder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/medium_margin"
-            android:background="?attr/selectableItemBackground"
-            android:paddingBottom="@dimen/bigger_margin"
-            android:paddingLeft="@dimen/normal_margin"
-            android:paddingRight="@dimen/normal_margin"
-            android:paddingTop="@dimen/bigger_margin">
-
-            <com.simplemobiletools.commons.views.MyTextView
-                android:id="@+id/settings_delete_all_events"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:paddingLeft="@dimen/medium_margin"
-                android:paddingRight="@dimen/medium_margin"
-                android:text="@string/delete_all_events"/>
-
-        </RelativeLayout>
-
         <View
             android:id="@+id/reminders_divider"
             android:layout_width="match_parent"
@@ -207,6 +185,29 @@
                 android:paddingLeft="@dimen/medium_margin"
                 android:paddingStart="@dimen/medium_margin"
                 android:text="@string/vibrate"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/settings_loop_reminders_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:background="?attr/selectableItemBackground"
+            android:paddingBottom="@dimen/activity_margin"
+            android:paddingLeft="@dimen/normal_margin"
+            android:paddingRight="@dimen/normal_margin"
+            android:paddingTop="@dimen/activity_margin">
+
+            <com.simplemobiletools.commons.views.MySwitchCompat
+                android:id="@+id/settings_loop_reminders"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:clickable="false"
+                android:paddingLeft="@dimen/medium_margin"
+                android:paddingStart="@dimen/medium_margin"
+                android:text="@string/loop_reminders"/>
 
         </RelativeLayout>
 
@@ -498,7 +499,6 @@
             android:id="@+id/settings_show_grid_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/medium_margin"
             android:background="?attr/selectableItemBackground"
             android:paddingBottom="@dimen/activity_margin"
             android:paddingLeft="@dimen/normal_margin"
@@ -615,10 +615,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackground"
-            android:paddingBottom="@dimen/bigger_margin"
+            android:paddingBottom="@dimen/activity_margin"
             android:paddingLeft="@dimen/normal_margin"
             android:paddingRight="@dimen/normal_margin"
-            android:paddingTop="@dimen/bigger_margin">
+            android:paddingTop="@dimen/activity_margin">
 
             <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/settings_font_size_label"
@@ -641,6 +641,89 @@
                 android:layout_marginRight="@dimen/small_margin"
                 android:background="@null"
                 android:clickable="false"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/settings_customize_widget_colors_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:paddingBottom="@dimen/activity_margin"
+            android:paddingLeft="@dimen/normal_margin"
+            android:paddingRight="@dimen/normal_margin"
+            android:paddingTop="@dimen/activity_margin">
+
+            <com.simplemobiletools.commons.views.MyTextView
+                android:id="@+id/settings_customize_widget_colors_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingLeft="@dimen/medium_margin"
+                android:paddingStart="@dimen/medium_margin"
+                android:text="@string/customize_widget_colors"/>
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/events_divider"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/divider_grey"
+            android:importantForAccessibility="no"/>
+
+        <com.simplemobiletools.commons.views.MyTextView
+            android:id="@+id/events_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/bigger_margin"
+            android:layout_marginStart="@dimen/bigger_margin"
+            android:layout_marginTop="@dimen/activity_margin"
+            android:text="@string/events"
+            android:textAllCaps="true"
+            android:textSize="@dimen/smaller_text_size"/>
+
+        <RelativeLayout
+            android:id="@+id/settings_dim_past_events_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:background="?attr/selectableItemBackground"
+            android:paddingBottom="@dimen/activity_margin"
+            android:paddingLeft="@dimen/normal_margin"
+            android:paddingRight="@dimen/normal_margin"
+            android:paddingTop="@dimen/activity_margin">
+
+            <com.simplemobiletools.commons.views.MySwitchCompat
+                android:id="@+id/settings_dim_past_events"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:clickable="false"
+                android:paddingLeft="@dimen/medium_margin"
+                android:paddingStart="@dimen/medium_margin"
+                android:text="@string/dim_past_events"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/settings_delete_all_events_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:paddingBottom="@dimen/bigger_margin"
+            android:paddingLeft="@dimen/normal_margin"
+            android:paddingRight="@dimen/normal_margin"
+            android:paddingTop="@dimen/bigger_margin">
+
+            <com.simplemobiletools.commons.views.MyTextView
+                android:id="@+id/settings_delete_all_events"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingLeft="@dimen/medium_margin"
+                android:paddingRight="@dimen/medium_margin"
+                android:text="@string/delete_all_events"/>
 
         </RelativeLayout>
     </LinearLayout>

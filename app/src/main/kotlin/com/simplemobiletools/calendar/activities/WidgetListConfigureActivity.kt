@@ -3,7 +3,6 @@ package com.simplemobiletools.calendar.activities
 import android.app.Activity
 import android.appwidget.AppWidgetManager
 import android.content.Intent
-import android.content.res.Resources
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.SeekBar
@@ -12,20 +11,19 @@ import com.simplemobiletools.calendar.adapters.EventListAdapter
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.helpers.Formatter
+import com.simplemobiletools.calendar.helpers.IS_CUSTOMIZING_COLORS
 import com.simplemobiletools.calendar.helpers.MyWidgetListProvider
 import com.simplemobiletools.calendar.models.ListEvent
 import com.simplemobiletools.calendar.models.ListItem
 import com.simplemobiletools.calendar.models.ListSection
 import com.simplemobiletools.commons.dialogs.ColorPickerDialog
 import com.simplemobiletools.commons.extensions.adjustAlpha
+import com.simplemobiletools.commons.extensions.setFillWithStroke
 import kotlinx.android.synthetic.main.widget_config_list.*
 import org.joda.time.DateTime
 import java.util.*
 
 class WidgetListConfigureActivity : SimpleActivity() {
-    lateinit var mRes: Resources
-    private var mPackageName = ""
-
     private var mBgAlpha = 0f
     private var mWidgetId = 0
     private var mBgColorWithoutTransparency = 0
@@ -34,21 +32,21 @@ class WidgetListConfigureActivity : SimpleActivity() {
     private var mTextColor = 0
 
     private var mEventsAdapter: EventListAdapter? = null
+    private var mIsCustomizingColors = false
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         useDynamicTheme = false
         super.onCreate(savedInstanceState)
         setResult(Activity.RESULT_CANCELED)
         setContentView(R.layout.widget_config_list)
-        mPackageName = packageName
         initVariables()
 
-        val extras = intent.extras
-        if (extras != null)
-            mWidgetId = extras.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID)
+        mIsCustomizingColors = intent.extras?.getBoolean(IS_CUSTOMIZING_COLORS) ?: false
+        mWidgetId = intent.extras?.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID) ?: AppWidgetManager.INVALID_APPWIDGET_ID
 
-        if (mWidgetId == AppWidgetManager.INVALID_APPWIDGET_ID)
+        if (mWidgetId == AppWidgetManager.INVALID_APPWIDGET_ID && !mIsCustomizingColors) {
             finish()
+        }
 
         mEventsAdapter = EventListAdapter(this, getListItems(), false, null, config_events_list) {}
         mEventsAdapter!!.updateTextColor(mTextColor)
@@ -68,8 +66,6 @@ class WidgetListConfigureActivity : SimpleActivity() {
     }
 
     private fun initVariables() {
-        mRes = resources
-
         mTextColorWithoutTransparency = config.widgetTextColor
         updateColors()
 
@@ -107,15 +103,19 @@ class WidgetListConfigureActivity : SimpleActivity() {
 
     private fun pickBackgroundColor() {
         ColorPickerDialog(this, mBgColorWithoutTransparency) { wasPositivePressed, color ->
-            mBgColorWithoutTransparency = color
-            updateBgColor()
+            if (wasPositivePressed) {
+                mBgColorWithoutTransparency = color
+                updateBgColor()
+            }
         }
     }
 
     private fun pickTextColor() {
         ColorPickerDialog(this, mTextColor) { wasPositivePressed, color ->
-            mTextColorWithoutTransparency = color
-            updateColors()
+            if (wasPositivePressed) {
+                mTextColorWithoutTransparency = color
+                updateColors()
+            }
         }
     }
 
@@ -129,14 +129,14 @@ class WidgetListConfigureActivity : SimpleActivity() {
     private fun updateColors() {
         mTextColor = mTextColorWithoutTransparency
         mEventsAdapter?.updateTextColor(mTextColor)
-        config_text_color.setBackgroundColor(mTextColor)
+        config_text_color.setFillWithStroke(mTextColor, Color.BLACK)
         config_save.setTextColor(mTextColor)
     }
 
     private fun updateBgColor() {
         mBgColor = mBgColorWithoutTransparency.adjustAlpha(mBgAlpha)
         config_events_list.setBackgroundColor(mBgColor)
-        config_bg_color.setBackgroundColor(mBgColor)
+        config_bg_color.setFillWithStroke(mBgColor, Color.BLACK)
         config_save.setBackgroundColor(mBgColor)
     }
 
@@ -145,7 +145,7 @@ class WidgetListConfigureActivity : SimpleActivity() {
         var dateTime = DateTime.now().withTime(0, 0, 0, 0).plusDays(1)
         var code = Formatter.getDayCodeFromTS(dateTime.seconds())
         var day = Formatter.getDayTitle(this, code)
-        listItems.add(ListSection(day, code))
+        listItems.add(ListSection(day, code, false, false))
 
         var time = dateTime.withHourOfDay(7)
         listItems.add(ListEvent(1, time.seconds(), time.plusMinutes(30).seconds(), getString(R.string.sample_title_1), getString(R.string.sample_description_1), false, config.primaryColor))
@@ -155,7 +155,7 @@ class WidgetListConfigureActivity : SimpleActivity() {
         dateTime = dateTime.plusDays(1)
         code = Formatter.getDayCodeFromTS(dateTime.seconds())
         day = Formatter.getDayTitle(this, code)
-        listItems.add(ListSection(day, code))
+        listItems.add(ListSection(day, code, false, false))
 
         time = dateTime.withHourOfDay(8)
         listItems.add(ListEvent(3, time.seconds(), time.plusHours(1).seconds(), getString(R.string.sample_title_3), "", false, config.primaryColor))

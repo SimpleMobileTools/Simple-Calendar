@@ -9,7 +9,6 @@
     <string name="yearly_view">Vista anual</string>
     <string name="simple_event_list">Lista de eventos</string>
     <string name="no_upcoming_events">Parece que você não tem eventos para breve</string>
-    <string name="add_some_events">Pode adicionar um evento através do botão existente na base do ecrã</string>
     <string name="go_to_today">Ir para hoje</string>
 
     <!-- Widget titles -->
@@ -20,6 +19,8 @@
     <string name="event">Evento</string>
     <string name="edit_event">Editar evento</string>
     <string name="new_event">Novo evento</string>
+    <string name="create_new_event">Create a new event</string>
+    <string name="duplicate_event">Duplicate event</string>
     <string name="title_empty">O título não pode estar vazio</string>
     <string name="end_before_start">O evento não pode terminar antes de iniciar</string>
     <string name="event_added">Evento adicionado com sucesso</string>
@@ -56,8 +57,9 @@
     <string name="selected_days">Dias selecionados</string>
     <string name="the_same_day">Mesmo dia</string>
     <string name="the_last_day">Último dia</string>
-    <string name="repeat_on_the_same_day">Repetir no mesmo dia de cada mês</string>
-    <string name="repeat_on_the_last_day">Repetir no último dia de cada mês</string>
+    <string name="repeat_on_the_same_day_monthly">Repetir no mesmo dia de cada mês</string>
+    <string name="repeat_on_the_last_day_monthly">Repetir no último dia de cada mês</string>
+    <string name="repeat_on_the_same_day_yearly">Repeat on the same day every year</string>
     <string name="repeat_every_m">Repetir</string>
     <string name="every_m">A cada</string>
     <string name="first_m">primeira</string>
@@ -103,6 +105,7 @@
     <string name="export_past_events_too">Exportar eventos antigos</string>
     <string name="include_event_types">Incluir tipos de eventos</string>
     <string name="filename_without_ics">Nome do ficheiro (sem .ics)</string>
+    <string name="override_event_types">Override event types in the file</string>
 
     <!-- Event details -->
     <string name="title">Título</string>
@@ -152,6 +155,9 @@
     <string name="delete_all_events">Apagar todos os eventos</string>
     <string name="delete_all_events_confirmation">Tem a certeza de que deseja apagar todos os eventos? Esta ação não afeta os tipos de eventos nem as outras definições.</string>
     <string name="show_a_grid">Mostrar grelha</string>
+    <string name="loop_reminders">Loop reminders until dismissed</string>
+    <string name="dim_past_events">Dim past events</string>
+    <string name="events">Events</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

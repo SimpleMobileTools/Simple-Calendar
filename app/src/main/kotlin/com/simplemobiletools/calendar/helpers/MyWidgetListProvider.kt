@@ -11,7 +11,6 @@ import android.widget.RemoteViews
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.SplashActivity
 import com.simplemobiletools.calendar.extensions.config
-import com.simplemobiletools.calendar.extensions.getNowSeconds
 import com.simplemobiletools.calendar.extensions.launchNewEventIntent
 import com.simplemobiletools.calendar.services.WidgetService
 import com.simplemobiletools.commons.extensions.getColoredBitmap
@@ -43,7 +42,7 @@ class MyWidgetListProvider : AppWidgetProvider() {
                 setTextSize(R.id.widget_event_list_today, fontSize)
             }
 
-            val todayText = Formatter.getLongestDate(context.getNowSeconds())
+            val todayText = Formatter.getLongestDate(getNowSeconds())
             views.setText(R.id.widget_event_list_today, todayText)
 
             views.setImageViewBitmap(R.id.widget_event_new_event, context.resources.getColoredBitmap(R.drawable.ic_plus, textColor))

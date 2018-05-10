@@ -3,7 +3,6 @@ package com.simplemobiletools.calendar.helpers
 import android.content.Context
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.config
-import com.simplemobiletools.calendar.extensions.getNowSeconds
 import com.simplemobiletools.calendar.extensions.seconds
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
@@ -11,17 +10,17 @@ import org.joda.time.LocalDate
 import org.joda.time.format.DateTimeFormat
 
 object Formatter {
-    val DAYCODE_PATTERN = "YYYYMMdd"
-    val YEAR_PATTERN = "YYYY"
-    val TIME_PATTERN = "HHmmss"
-    private val DAY_PATTERN = "d"
-    private val DAY_OF_WEEK_PATTERN = "EEE"
-    private val LONGEST_PATTERN = "MMMM dd YYYY (EEEE)"
-    private val PATTERN_TIME_12 = "hh:mm a"
-    private val PATTERN_TIME_24 = "HH:mm"
+    const val DAYCODE_PATTERN = "YYYYMMdd"
+    const val YEAR_PATTERN = "YYYY"
+    const val TIME_PATTERN = "HHmmss"
+    private const val DAY_PATTERN = "d"
+    private const val DAY_OF_WEEK_PATTERN = "EEE"
+    private const val LONGEST_PATTERN = "MMMM dd YYYY (EEEE)"
+    private const val PATTERN_TIME_12 = "hh:mm a"
+    private const val PATTERN_TIME_24 = "HH:mm"
 
-    private val PATTERN_HOURS_12 = "h a"
-    private val PATTERN_HOURS_24 = "HH"
+    private const val PATTERN_HOURS_12 = "h a"
+    private const val PATTERN_HOURS_24 = "HH"
 
     fun getDateFromCode(context: Context, dayCode: String, shortMonth: Boolean = false): String {
         val dateTime = getDateTimeFromCode(dayCode)
@@ -59,7 +58,7 @@ object Formatter {
         return "$month $day $year"
     }
 
-    fun getTodayCode(context: Context) = Formatter.getDayCodeFromTS(context.getNowSeconds())
+    fun getTodayCode(context: Context) = Formatter.getDayCodeFromTS(getNowSeconds())
 
     fun getHours(context: Context, dateTime: DateTime) = dateTime.toString(getHourPattern(context))
 

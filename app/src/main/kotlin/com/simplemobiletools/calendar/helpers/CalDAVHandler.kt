@@ -22,7 +22,8 @@ import kotlin.collections.ArrayList
 
 class CalDAVHandler(val context: Context) {
     fun refreshCalendars(activity: SimpleActivity? = null, callback: () -> Unit) {
-        for (calendar in getCalDAVCalendars(activity, context.config.caldavSyncedCalendarIDs)) {
+        val calDAVCalendars = getCalDAVCalendars(activity, context.config.caldavSyncedCalendarIDs)
+        for (calendar in calDAVCalendars) {
             val localEventType = context.dbHelper.getEventTypeWithCalDAVCalendarId(calendar.id) ?: continue
             localEventType.apply {
                 title = calendar.displayName
@@ -185,8 +186,9 @@ class CalDAVHandler(val context: Context) {
             cursor?.close()
         }
 
-        val sortedColors = ArrayList<Int>(colors.size())
+        var sortedColors = ArrayList<Int>(colors.size())
         (0 until colors.size()).mapTo(sortedColors) { colors[it] }
+        sortedColors = sortedColors.distinct() as ArrayList<Int>
 
         return sortedColors
     }
@@ -358,10 +360,16 @@ class CalDAVHandler(val context: Context) {
             put(CalendarContract.Events.DESCRIPTION, event.description)
             put(CalendarContract.Events.DTSTART, event.startTS * 1000L)
             put(CalendarContract.Events.ALL_DAY, if (event.getIsAllDay()) 1 else 0)
-            put(CalendarContract.Events.RRULE, Parser().getRepeatCode(event))
             put(CalendarContract.Events.EVENT_TIMEZONE, TimeZone.getDefault().toString())
             put(CalendarContract.Events.EVENT_LOCATION, event.location)
             put(CalendarContract.Events.STATUS, CalendarContract.Events.STATUS_CONFIRMED)
+
+            val repeatRule = Parser().getRepeatCode(event)
+            if (repeatRule.isEmpty()) {
+                putNull(CalendarContract.Events.RRULE)
+            } else {
+                put(CalendarContract.Events.RRULE, repeatRule)
+            }
 
             if (event.getIsAllDay() && event.endTS > event.startTS)
                 event.endTS += DAY
@@ -416,8 +424,8 @@ class CalDAVHandler(val context: Context) {
     private fun fillEventRepeatExceptionValues(event: Event, occurrenceTS: Int): ContentValues {
         return ContentValues().apply {
             put(CalendarContract.Events.CALENDAR_ID, event.getCalDAVCalendarId())
-            put(CalendarContract.Events.DTSTART, 0)
-            put(CalendarContract.Events.DTEND, 0)
+            put(CalendarContract.Events.DTSTART, occurrenceTS)
+            put(CalendarContract.Events.DTEND, occurrenceTS + (event.endTS - event.startTS))
             put(CalendarContract.Events.ORIGINAL_ID, event.getCalDAVEventId())
             put(CalendarContract.Events.EVENT_TIMEZONE, TimeZone.getDefault().toString())
             put(CalendarContract.Events.ORIGINAL_INSTANCE_TIME, occurrenceTS * 1000L)

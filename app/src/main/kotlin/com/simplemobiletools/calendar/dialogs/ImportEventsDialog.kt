@@ -9,7 +9,7 @@ import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.helpers.DBHelper
 import com.simplemobiletools.calendar.helpers.IcsImporter
 import com.simplemobiletools.calendar.helpers.IcsImporter.ImportResult.*
-import com.simplemobiletools.commons.extensions.setBackgroundWithStroke
+import com.simplemobiletools.commons.extensions.setFillWithStroke
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import com.simplemobiletools.commons.extensions.toast
 import kotlinx.android.synthetic.main.dialog_import_events.view.*
@@ -19,12 +19,34 @@ class ImportEventsDialog(val activity: SimpleActivity, val path: String, val cal
     var currEventTypeCalDAVCalendarId = 0
 
     init {
+        val config = activity.config
+        if (activity.dbHelper.getEventType(config.lastUsedLocalEventTypeId) == null) {
+            config.lastUsedLocalEventTypeId = DBHelper.REGULAR_EVENT_TYPE_ID
+        }
+
+        val isLastCaldavCalendarOK = config.caldavSync && config.getSyncedCalendarIdsAsList().contains(config.lastUsedCaldavCalendarId.toString())
+        currEventTypeId = if (isLastCaldavCalendarOK) {
+            val lastUsedCalDAVCalendar = activity.dbHelper.getEventTypeWithCalDAVCalendarId(config.lastUsedCaldavCalendarId)
+            if (lastUsedCalDAVCalendar != null) {
+                currEventTypeCalDAVCalendarId = config.lastUsedCaldavCalendarId
+                lastUsedCalDAVCalendar.id
+            } else {
+                DBHelper.REGULAR_EVENT_TYPE_ID
+            }
+        } else {
+            config.lastUsedLocalEventTypeId
+        }
+
         val view = (activity.layoutInflater.inflate(R.layout.dialog_import_events, null) as ViewGroup).apply {
             updateEventType(this)
             import_event_type_holder.setOnClickListener {
                 SelectEventTypeDialog(activity, currEventTypeId, true) {
                     currEventTypeId = it.id
                     currEventTypeCalDAVCalendarId = it.caldavCalendarId
+
+                    config.lastUsedLocalEventTypeId = it.id
+                    config.lastUsedCaldavCalendarId = it.caldavCalendarId
+
                     updateEventType(this)
                 }
             }
@@ -38,7 +60,8 @@ class ImportEventsDialog(val activity: SimpleActivity, val path: String, val cal
                         getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
                             activity.toast(R.string.importing)
                             Thread {
-                                val result = IcsImporter(activity).importEvents(path, currEventTypeId, currEventTypeCalDAVCalendarId)
+                                val overrideFileEventTypes = view.import_events_checkbox.isChecked
+                                val result = IcsImporter(activity).importEvents(path, currEventTypeId, currEventTypeCalDAVCalendarId, overrideFileEventTypes)
                                 handleParseResult(result)
                                 dismiss()
                             }.start()
@@ -50,7 +73,7 @@ class ImportEventsDialog(val activity: SimpleActivity, val path: String, val cal
     private fun updateEventType(view: ViewGroup) {
         val eventType = activity.dbHelper.getEventType(currEventTypeId)
         view.import_event_type_title.text = eventType!!.getDisplayTitle()
-        view.import_event_type_color.setBackgroundWithStroke(eventType.color, activity.config.backgroundColor)
+        view.import_event_type_color.setFillWithStroke(eventType.color, activity.config.backgroundColor)
     }
 
     private fun handleParseResult(result: IcsImporter.ImportResult) {

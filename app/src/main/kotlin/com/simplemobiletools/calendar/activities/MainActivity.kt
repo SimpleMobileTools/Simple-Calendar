@@ -63,11 +63,12 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private var mStoredDayCode = ""
     private var mStoredIsSundayFirst = false
     private var mStoredUse24HourFormat = false
+    private var mStoredDimPastEvents = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        appLaunched()
+        appLaunched(BuildConfig.APPLICATION_ID)
 
         // just get a reference to the database to make sure it is created properly
         dbHelper
@@ -83,32 +84,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         }
 
-        if (intent?.action == Intent.ACTION_VIEW && intent.data != null) {
-            val uri = intent.data
-            if (uri.authority == "com.android.calendar") {
-                if (uri.path.startsWith("/events")) {
-                    // intents like content://com.android.calendar/events/1756
-                    val eventId = uri.lastPathSegment
-                    val id = dbHelper.getEventIdWithLastImportId(eventId)
-                    if (id != 0) {
-                        Intent(this, EventActivity::class.java).apply {
-                            putExtra(EVENT_ID, id)
-                            startActivity(this)
-                        }
-                    } else {
-                        toast(R.string.unknown_error_occurred)
-                    }
-                } else if (intent?.extras?.getBoolean("DETAIL_VIEW", false) == true) {
-                    // clicking date on a third party widget: content://com.android.calendar/time/1507309245683
-                    val timestamp = uri.pathSegments.last()
-                    if (timestamp.areDigitsOnly()) {
-                        openDayAt(timestamp.toLong())
-                        return
-                    }
-                }
-            } else {
-                tryImportEventsFromFile(uri)
-            }
+        if (!checkViewIntents()) {
+            return
         }
 
         if (!checkOpenIntents()) {
@@ -127,7 +104,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     override fun onResume() {
         super.onResume()
         if (mStoredTextColor != config.textColor || mStoredBackgroundColor != config.backgroundColor || mStoredPrimaryColor != config.primaryColor
-                || mStoredDayCode != Formatter.getTodayCode(applicationContext)) {
+                || mStoredDayCode != Formatter.getTodayCode(applicationContext) || mStoredDimPastEvents != config.dimPastEvents) {
             updateViewPager()
         }
 
@@ -146,6 +123,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         if (config.storedView != EVENTS_LIST_VIEW) {
             updateTextColors(calendar_coordinator)
         }
+        search_placeholder.setTextColor(config.textColor)
+        search_placeholder_2.setTextColor(config.textColor)
         calendar_fab.setColors(config.textColor, getAdjustedPrimaryColor(), config.backgroundColor)
         search_holder.background = ColorDrawable(config.backgroundColor)
     }
@@ -213,6 +192,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         super.onNewIntent(intent)
         setIntent(intent)
         checkOpenIntents()
+        checkViewIntents()
     }
 
     private fun storeStateVariables() {
@@ -222,6 +202,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             mStoredPrimaryColor = primaryColor
             mStoredBackgroundColor = backgroundColor
             mStoredUse24HourFormat = use24HourFormat
+            mStoredDimPastEvents = dimPastEvents
         }
         mStoredDayCode = Formatter.getTodayCode(applicationContext)
     }
@@ -291,6 +272,37 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
 
         return false
+    }
+
+    private fun checkViewIntents(): Boolean {
+        if (intent?.action == Intent.ACTION_VIEW && intent.data != null) {
+            val uri = intent.data
+            if (uri.authority == "com.android.calendar") {
+                if (uri.path.startsWith("/events")) {
+                    // intents like content://com.android.calendar/events/1756
+                    val eventId = uri.lastPathSegment
+                    val id = dbHelper.getEventIdWithLastImportId(eventId)
+                    if (id != 0) {
+                        Intent(this, EventActivity::class.java).apply {
+                            putExtra(EVENT_ID, id)
+                            startActivity(this)
+                        }
+                    } else {
+                        toast(R.string.unknown_error_occurred)
+                    }
+                } else if (intent?.extras?.getBoolean("DETAIL_VIEW", false) == true) {
+                    // clicking date on a third party widget: content://com.android.calendar/time/1507309245683
+                    val timestamp = uri.pathSegments.last()
+                    if (timestamp.areDigitsOnly()) {
+                        openDayAt(timestamp.toLong())
+                        return false
+                    }
+                }
+            } else {
+                tryImportEventsFromFile(uri)
+            }
+        }
+        return true
     }
 
     private fun showViewDialog() {
@@ -372,7 +384,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                     eventTypeId = dbHelper.insertEventType(eventType)
                 }
 
-                val result = IcsImporter(this).importEvents(it as String, eventTypeId, 0)
+                val result = IcsImporter(this).importEvents(it as String, eventTypeId, 0, false)
                 handleParseResult(result)
                 if (result != IcsImporter.ImportResult.IMPORT_FAIL) {
                     runOnUiThread {

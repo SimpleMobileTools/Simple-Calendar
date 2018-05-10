@@ -13,16 +13,16 @@ import com.simplemobiletools.calendar.adapters.MyWeekPagerAdapter
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.helpers.Formatter
-import com.simplemobiletools.calendar.helpers.WEEK_SECONDS
 import com.simplemobiletools.calendar.helpers.WEEK_START_DATE_TIME
 import com.simplemobiletools.calendar.interfaces.WeekFragmentListener
 import com.simplemobiletools.calendar.views.MyScrollView
+import com.simplemobiletools.commons.helpers.WEEK_SECONDS
 import kotlinx.android.synthetic.main.fragment_week_holder.*
 import kotlinx.android.synthetic.main.fragment_week_holder.view.*
 import org.joda.time.DateTime
 
 class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
-    private val PREFILLED_WEEKS = 61
+    private val PREFILLED_WEEKS = 151
 
     private var weekHolder: ViewGroup? = null
     private var defaultWeeklyPage = 0

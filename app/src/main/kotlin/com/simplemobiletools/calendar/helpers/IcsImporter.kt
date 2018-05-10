@@ -28,7 +28,7 @@ class IcsImporter(val activity: SimpleActivity) {
     private var curRepeatInterval = 0
     private var curRepeatLimit = 0
     private var curRepeatRule = 0
-    private var curEventType = DBHelper.REGULAR_EVENT_TYPE_ID
+    private var curEventTypeId = DBHelper.REGULAR_EVENT_TYPE_ID
     private var curLastModified = 0L
     private var curLocation = ""
     private var curCategoryColor = -2
@@ -40,8 +40,9 @@ class IcsImporter(val activity: SimpleActivity) {
     private var eventsImported = 0
     private var eventsFailed = 0
 
-    fun importEvents(path: String, defaultEventType: Int, calDAVCalendarId: Int): ImportResult {
+    fun importEvents(path: String, defaultEventTypeId: Int, calDAVCalendarId: Int, overrideFileEventTypes: Boolean): ImportResult {
         try {
+            val eventTypes = activity.dbHelper.getEventTypesSync()
             val existingEvents = activity.dbHelper.getEventsWithImportIds()
             val eventsToInsert = ArrayList<Event>()
             var prevLine = ""
@@ -74,7 +75,7 @@ class IcsImporter(val activity: SimpleActivity) {
 
                     if (line == BEGIN_EVENT) {
                         resetValues()
-                        curEventType = defaultEventType
+                        curEventTypeId = defaultEventTypeId
                     } else if (line.startsWith(DTSTART)) {
                         curStart = getTimestamp(line.substring(DTSTART.length))
                     } else if (line.startsWith(DTEND)) {
@@ -84,9 +85,9 @@ class IcsImporter(val activity: SimpleActivity) {
                         curEnd = curStart + Parser().parseDurationSeconds(duration)
                     } else if (line.startsWith(SUMMARY) && !isNotificationDescription) {
                         curTitle = line.substring(SUMMARY.length)
-                        curTitle = getTitle(curTitle).replace("\\n", "\n")
+                        curTitle = getTitle(curTitle).replace("\\n", "\n").replace("\\,", ",")
                     } else if (line.startsWith(DESCRIPTION) && !isNotificationDescription) {
-                        curDescription = line.substring(DESCRIPTION.length).replace("\\n", "\n")
+                        curDescription = line.substring(DESCRIPTION.length).replace("\\n", "\n").replace("\\,", ",")
                         isDescription = true
                     } else if (line.startsWith(UID)) {
                         curImportId = line.substring(UID.length).trim()
@@ -105,7 +106,7 @@ class IcsImporter(val activity: SimpleActivity) {
                         if (color.trimStart('-').areDigitsOnly()) {
                             curCategoryColor = Integer.parseInt(color)
                         }
-                    } else if (line.startsWith(CATEGORIES)) {
+                    } else if (line.startsWith(CATEGORIES) && !overrideFileEventTypes) {
                         val categories = line.substring(CATEGORIES.length)
                         tryAddCategories(categories, activity)
                     } else if (line.startsWith(LAST_MODIFIED)) {
@@ -118,7 +119,7 @@ class IcsImporter(val activity: SimpleActivity) {
 
                         curRepeatExceptions.add(getTimestamp(value))
                     } else if (line.startsWith(LOCATION)) {
-                        curLocation = line.substring(LOCATION.length)
+                        curLocation = getLocation(line.substring(LOCATION.length).replace("\\,", ","))
                     } else if (line == END_ALARM) {
                         if (isProperReminderAction && curReminderTriggerMinutes != -1) {
                             curReminderMinutes.add(curReminderTriggerMinutes)
@@ -137,10 +138,11 @@ class IcsImporter(val activity: SimpleActivity) {
                             continue
                         }
 
-                        val source = if (calDAVCalendarId == 0) SOURCE_IMPORTED_ICS else "$CALDAV-$calDAVCalendarId"
+                        val eventType = eventTypes.firstOrNull { it.id == curEventTypeId }
+                        val source = if (calDAVCalendarId == 0 || eventType?.isSyncedEventType() == false) SOURCE_IMPORTED_ICS else "$CALDAV-$calDAVCalendarId"
                         val event = Event(0, curStart, curEnd, curTitle, curDescription, curReminderMinutes.getOrElse(0, { -1 }),
                                 curReminderMinutes.getOrElse(1, { -1 }), curReminderMinutes.getOrElse(2, { -1 }), curRepeatInterval,
-                                curImportId, curFlags, curRepeatLimit, curRepeatRule, curEventType, lastUpdated = curLastModified,
+                                curImportId, curFlags, curRepeatLimit, curRepeatRule, curEventTypeId, lastUpdated = curLastModified,
                                 source = source, location = curLocation)
 
                         if (event.getIsAllDay() && curEnd > curStart) {
@@ -201,6 +203,14 @@ class IcsImporter(val activity: SimpleActivity) {
         }
     }
 
+    private fun getLocation(fullString: String): String {
+        return if (fullString.startsWith(":")) {
+            fullString.trimStart(':')
+        } else {
+            fullString.substringAfter(':').trim()
+        }
+    }
+
     private fun tryAddCategories(categories: String, context: Context) {
         val eventTypeTitle = if (categories.contains(",")) {
             categories.split(",")[0]
@@ -209,7 +219,7 @@ class IcsImporter(val activity: SimpleActivity) {
         }
 
         val eventId = context.dbHelper.getEventTypeIdWithTitle(eventTypeTitle)
-        curEventType = if (eventId == -1) {
+        curEventTypeId = if (eventId == -1) {
             val newTypeColor = if (curCategoryColor == -2) context.resources.getColor(R.color.color_primary) else curCategoryColor
             val eventType = EventType(0, eventTypeTitle, newTypeColor)
             context.dbHelper.insertEventType(eventType)
@@ -238,7 +248,7 @@ class IcsImporter(val activity: SimpleActivity) {
         curRepeatInterval = 0
         curRepeatLimit = 0
         curRepeatRule = 0
-        curEventType = DBHelper.REGULAR_EVENT_TYPE_ID
+        curEventTypeId = DBHelper.REGULAR_EVENT_TYPE_ID
         curLastModified = 0L
         curCategoryColor = -2
         curLocation = ""

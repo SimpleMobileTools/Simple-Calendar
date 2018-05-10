@@ -7,6 +7,7 @@ const val STORED_LOCALLY_ONLY = 0
 const val DAY_CODE = "day_code"
 const val YEAR_LABEL = "year"
 const val EVENT_ID = "event_id"
+const val IS_DUPLICATE_INTENT = "is_duplicate_intent"
 const val EVENT_OCCURRENCE_TS = "event_occurrence_ts"
 const val NEW_EVENT_START_TS = "new_event_start_ts"
 const val WEEK_START_TIMESTAMP = "week_start_timestamp"
@@ -28,10 +29,6 @@ const val WEEK = 604800
 const val MONTH = 2592001    // exact value not taken into account, Joda is used for adding months and years
 const val YEAR = 31536000
 
-const val DAY_MINUTES = 24 * 60
-const val DAY_SECONDS = 24 * 60 * 60
-const val WEEK_SECONDS = 7 * DAY_SECONDS
-
 // Shared Preferences
 const val WEEK_NUMBERS = "week_numbers"
 const val START_WEEKLY_AT = "start_weekly_at"
@@ -48,15 +45,19 @@ const val FONT_SIZE = "font_size"
 const val CALDAV_SYNC = "caldav_sync"
 const val CALDAV_SYNCED_CALENDAR_IDS = "caldav_synced_calendar_ids"
 const val LAST_USED_CALDAV_CALENDAR = "last_used_caldav_calendar"
+const val LAST_USED_LOCAL_EVENT_TYPE_ID = "last_used_local_event_type_id"
 const val DISPLAY_PAST_EVENTS = "display_past_events"
 const val REPLACE_DESCRIPTION = "replace_description"
 const val SHOW_GRID = "show_grid"
+const val IS_CUSTOMIZING_COLORS = "is_customizing_colors"
+const val LOOP_REMINDERS = "loop_reminders"
+const val DIM_PAST_EVENTS = "dim_past_events"
 
 // repeat_rule for monthly repetition
-const val REPEAT_MONTH_SAME_DAY = 1                   // ie 25th every month
-const val REPEAT_MONTH_ORDER_WEEKDAY_USE_LAST = 2     // ie every xth sunday. 4th if a month has 4 sundays, 5th if 5
-const val REPEAT_MONTH_LAST_DAY = 3                   // ie every last day of the month
-const val REPEAT_MONTH_ORDER_WEEKDAY = 4              // ie every 4th sunday, even if a month has 4 sundays only (will stay 4th even at months with 5)
+const val REPEAT_SAME_DAY = 1                           // i.e. 25th every month, or 3rd june (if yearly repetition)
+const val REPEAT_ORDER_WEEKDAY_USE_LAST = 2             // i.e. every last sunday. 4th if a month has 4 sundays, 5th if 5 (or last sunday in june, if yearly)
+const val REPEAT_LAST_DAY = 3                           // i.e. every last day of the month
+const val REPEAT_ORDER_WEEKDAY = 4                      // i.e. every 4th sunday, even if a month has 4 sundays only (will stay 4th even at months with 5)
 
 // special event flags
 const val FLAG_ALL_DAY = 1
@@ -85,7 +86,7 @@ const val STATUS = "STATUS:"
 const val EXDATE = "EXDATE"
 const val BYDAY = "BYDAY"
 const val BYMONTHDAY = "BYMONTHDAY"
-const val LOCATION = "LOCATION:"
+const val LOCATION = "LOCATION"
 
 // this tag isn't a standard ICS tag, but there's no official way of adding a category color in an ics file
 const val CATEGORY_COLOR = "CATEGORY_COLOR:"
@@ -121,3 +122,5 @@ const val SOURCE_SIMPLE_CALENDAR = "simple-calendar"
 const val SOURCE_IMPORTED_ICS = "imported-ics"
 const val SOURCE_CONTACT_BIRTHDAY = "contact-birthday"
 const val SOURCE_CONTACT_ANNIVERSARY = "contact-anniversary"
+
+fun getNowSeconds() = (System.currentTimeMillis() / 1000).toInt()

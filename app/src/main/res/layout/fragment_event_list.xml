@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
+        android:overScrollMode="never"
         android:paddingTop="@dimen/medium_margin"
         android:scrollbars="vertical"
         android:visibility="gone"
@@ -20,10 +21,26 @@
         android:id="@+id/calendar_empty_list_placeholder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:lineSpacingExtra="1dp"
-        android:padding="@dimen/big_margin"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/activity_margin"
+        android:gravity="center"
+        android:paddingLeft="@dimen/activity_margin"
+        android:paddingRight="@dimen/activity_margin"
         android:text="@string/no_upcoming_events"
+        android:textSize="@dimen/bigger_text_size"
+        android:visibility="gone"/>
+
+    <com.simplemobiletools.commons.views.MyTextView
+        android:id="@+id/calendar_empty_list_placeholder_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/calendar_empty_list_placeholder"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:paddingBottom="@dimen/medium_margin"
+        android:paddingTop="@dimen/medium_margin"
+        android:text="@string/create_new_event"
+        android:textSize="@dimen/bigger_text_size"
         android:visibility="gone"/>
 
 </RelativeLayout>

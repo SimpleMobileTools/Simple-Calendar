@@ -18,14 +18,14 @@
         android:paddingBottom="@dimen/medium_margin"
         android:paddingTop="@dimen/medium_margin">
 
-        <com.simplemobiletools.commons.views.MyTextView
+        <TextView
             android:id="@+id/event_item_start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/day_text_size"
             tools:text="13:00"/>
 
-        <com.simplemobiletools.commons.views.MyTextView
+        <TextView
             android:id="@+id/event_item_end"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -33,7 +33,7 @@
             android:text="15:00"
             android:textSize="@dimen/day_text_size"/>
 
-        <com.simplemobiletools.commons.views.MyTextView
+        <TextView
             android:id="@+id/event_section_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
             android:textSize="@dimen/day_text_size"
             tools:text="Event title"/>
 
-        <com.simplemobiletools.commons.views.MyTextView
+        <TextView
             android:id="@+id/event_item_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -54,7 +54,6 @@
             android:layout_marginLeft="@dimen/activity_margin"
             android:layout_toLeftOf="@+id/event_item_color"
             android:layout_toRightOf="@+id/event_item_end"
-            android:alpha=".4"
             android:ellipsize="end"
             android:maxLines="1"
             android:paddingRight="@dimen/activity_margin"

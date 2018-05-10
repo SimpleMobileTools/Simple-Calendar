@@ -8,10 +8,7 @@ import android.text.TextUtils
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.dialogs.SelectCalendarsDialog
 import com.simplemobiletools.calendar.extensions.*
-import com.simplemobiletools.calendar.helpers.CalDAVHandler
-import com.simplemobiletools.calendar.helpers.FONT_SIZE_LARGE
-import com.simplemobiletools.calendar.helpers.FONT_SIZE_MEDIUM
-import com.simplemobiletools.calendar.helpers.FONT_SIZE_SMALL
+import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.models.EventType
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.CustomIntervalPickerDialog
@@ -58,9 +55,12 @@ class SettingsActivity : SimpleActivity() {
         setupVibrate()
         setupReminderSound()
         setupUseSameSnooze()
+        setupLoopReminders()
         setupSnoozeTime()
         setupDisplayPastEvents()
         setupFontSize()
+        setupCustomizeWidgetColors()
+        setupDimEvents()
         updateTextColors(settings_holder)
         checkPrimaryColor()
         setupSectionColors()
@@ -85,7 +85,7 @@ class SettingsActivity : SimpleActivity() {
 
     private fun setupSectionColors() {
         val adjustedPrimaryColor = getAdjustedPrimaryColor()
-        arrayListOf(reminders_label, caldav_label, weekly_view_label, monthly_view_label, simple_event_list_label, simple_font_size_label).forEach {
+        arrayListOf(reminders_label, caldav_label, weekly_view_label, monthly_view_label, simple_event_list_label, simple_font_size_label, events_label).forEach {
             it.setTextColor(adjustedPrimaryColor)
         }
     }
@@ -170,11 +170,13 @@ class SettingsActivity : SimpleActivity() {
             settings_manage_synced_calendars_holder.beVisibleIf(newCalendarIds.isNotEmpty())
             settings_caldav_sync.isChecked = newCalendarIds.isNotEmpty()
             config.caldavSync = newCalendarIds.isNotEmpty()
-            toast(R.string.syncing)
+            if (settings_caldav_sync.isChecked) {
+                toast(R.string.syncing)
+            }
 
             Thread {
                 if (newCalendarIds.isNotEmpty()) {
-                    val existingEventTypeNames = dbHelper.fetchEventTypes().map { it.getDisplayTitle().toLowerCase() } as ArrayList<String>
+                    val existingEventTypeNames = dbHelper.getEventTypesSync().map { it.getDisplayTitle().toLowerCase() } as ArrayList<String>
                     getSyncedCalDAVCalendars().forEach {
                         val calendarTitle = it.getFullTitle()
                         if (!existingEventTypeNames.contains(calendarTitle.toLowerCase())) {
@@ -194,7 +196,9 @@ class SettingsActivity : SimpleActivity() {
                     }
                 }
                 dbHelper.deleteEventTypesWithCalendarId(TextUtils.join(",", removedCalendarIds))
-                toast(R.string.synchronization_completed)
+                if (settings_caldav_sync.isChecked) {
+                    toast(R.string.synchronization_completed)
+                }
             }.start()
         }
     }
@@ -315,6 +319,14 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
+    private fun setupLoopReminders() {
+        settings_loop_reminders.isChecked = config.loopReminders
+        settings_loop_reminders_holder.setOnClickListener {
+            settings_loop_reminders.toggle()
+            config.loopReminders = settings_loop_reminders.isChecked
+        }
+    }
+
     private fun setupUseSameSnooze() {
         settings_snooze_time_holder.beVisibleIf(config.useSameSnooze)
         settings_use_same_snooze.isChecked = config.useSameSnooze
@@ -388,6 +400,23 @@ class SettingsActivity : SimpleActivity() {
         FONT_SIZE_MEDIUM -> R.string.medium
         else -> R.string.large
     })
+
+    private fun setupCustomizeWidgetColors() {
+        settings_customize_widget_colors_holder.setOnClickListener {
+            Intent(this, WidgetListConfigureActivity::class.java).apply {
+                putExtra(IS_CUSTOMIZING_COLORS, true)
+                startActivity(this)
+            }
+        }
+    }
+
+    private fun setupDimEvents() {
+        settings_dim_past_events.isChecked = config.dimPastEvents
+        settings_dim_past_events_holder.setOnClickListener {
+            settings_dim_past_events.toggle()
+            config.dimPastEvents = settings_dim_past_events.isChecked
+        }
+    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
         super.onActivityResult(requestCode, resultCode, resultData)

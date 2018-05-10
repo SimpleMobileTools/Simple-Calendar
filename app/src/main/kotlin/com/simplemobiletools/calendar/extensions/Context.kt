@@ -33,7 +33,9 @@ import com.simplemobiletools.calendar.receivers.CalDAVSyncReceiver
 import com.simplemobiletools.calendar.receivers.NotificationReceiver
 import com.simplemobiletools.calendar.services.SnoozeService
 import com.simplemobiletools.commons.extensions.*
+import com.simplemobiletools.commons.helpers.DAY_SECONDS
 import com.simplemobiletools.commons.helpers.SILENT
+import com.simplemobiletools.commons.helpers.YEAR_SECONDS
 import com.simplemobiletools.commons.helpers.isOreoPlus
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
@@ -44,8 +46,6 @@ import java.util.*
 val Context.config: Config get() = Config.newInstance(applicationContext)
 
 val Context.dbHelper: DBHelper get() = DBHelper.newInstance(applicationContext)
-
-fun Context.getNowSeconds() = (System.currentTimeMillis() / 1000).toInt()
 
 fun Context.updateWidgets() {
     val widgetIDs = AppWidgetManager.getInstance(applicationContext).getAppWidgetIds(ComponentName(applicationContext, MyWidgetMonthlyProvider::class.java))
@@ -137,20 +137,35 @@ fun Context.getRepetitionText(seconds: Int) = when (seconds) {
     }
 }
 
-fun Context.getFilteredEvents(events: List<Event>): List<Event> {
+fun Context.getFilteredEvents(events: List<Event>): ArrayList<Event> {
     val displayEventTypes = config.displayEventTypes
-    return events.filter { displayEventTypes.contains(it.eventType.toString()) }
+    return events.filter { displayEventTypes.contains(it.eventType.toString()) } as ArrayList<Event>
 }
 
 fun Context.notifyRunningEvents() {
     dbHelper.getRunningEvents().forEach { notifyEvent(it) }
 }
 
-fun Context.notifyEvent(event: Event) {
+fun Context.notifyEvent(originalEvent: Event) {
+    var event = originalEvent.copy()
+    val currentSeconds = getNowSeconds()
+
+    // make sure refer to the proper repeatable event instance with "Tomorrow", or the specific date
+    if (event.repeatInterval != 0 && event.startTS - event.reminder1Minutes * 60 < currentSeconds) {
+        val events = dbHelper.getRepeatableEventsFor(currentSeconds - DAY_SECONDS, currentSeconds + YEAR_SECONDS, event.id)
+        for (currEvent in events) {
+            event = currEvent
+            if (event.startTS - event.reminder1Minutes * 60 > currentSeconds) {
+                break
+            }
+        }
+    }
+
     val pendingIntent = getPendingIntent(applicationContext, event)
     val startTime = Formatter.getTimeFromTS(applicationContext, event.startTS)
     val endTime = Formatter.getTimeFromTS(applicationContext, event.endTS)
     val startDate = Formatter.getDateFromTS(event.startTS)
+
     val displayedStartDate = when (startDate) {
         LocalDate.now() -> ""
         LocalDate.now().plusDays(1) -> getString(R.string.tomorrow)
@@ -211,14 +226,19 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
             .addAction(R.drawable.ic_snooze, getString(R.string.snooze), getSnoozePendingIntent(this, event))
 
     if (config.vibrateOnReminder) {
-        builder.setVibrate(longArrayOf(0, 300, 300, 300))
+        val vibrateArray = LongArray(2) { 500 }
+        builder.setVibrate(vibrateArray)
     }
 
     if (!publicVersion) {
         builder.setPublicVersion(getNotification(pendingIntent, event, content, true))
     }
 
-    return builder.build()
+    val notification = builder.build()
+    if (config.loopReminders) {
+        notification.flags = notification.flags or Notification.FLAG_INSISTENT
+    }
+    return notification
 }
 
 private fun getFormattedEventTime(startTime: String, endTime: String) = if (startTime == endTime) startTime else "$startTime \u2013 $endTime"
@@ -346,8 +366,8 @@ fun Context.addDayNumber(rawTextColor: Int, day: DayMonthly, linearLayout: Linea
     }
 }
 
-private fun addTodaysBackground(textView: TextView, res: Resources, dayLabelHeight: Int, mPrimaryColor: Int) =
-        textView.addResizedBackgroundDrawable(res, dayLabelHeight, mPrimaryColor, R.drawable.ic_circle_filled)
+private fun addTodaysBackground(textView: TextView, res: Resources, dayLabelHeight: Int, primaryColor: Int) =
+        textView.addResizedBackgroundDrawable(res, dayLabelHeight, primaryColor, R.drawable.ic_circle_filled)
 
 fun Context.addDayEvents(day: DayMonthly, linearLayout: LinearLayout, res: Resources, dividerMargin: Int) {
     val eventLayoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
@@ -377,16 +397,21 @@ fun Context.getEventListItems(events: List<Event>): ArrayList<ListItem> {
     val listItems = ArrayList<ListItem>(events.size)
     val replaceDescription = config.replaceDescription
     val sorted = events.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { if (replaceDescription) it.location else it.description }))
-    val sublist = sorted.subList(0, Math.min(sorted.size, 100))
     var prevCode = ""
-    sublist.forEach {
+    val now = getNowSeconds()
+    val today = Formatter.getDayTitle(this, Formatter.getDayCodeFromTS(now))
+
+    sorted.forEach {
         val code = Formatter.getDayCodeFromTS(it.startTS)
         if (code != prevCode) {
             val day = Formatter.getDayTitle(this, code)
-            listItems.add(ListSection(day, code))
+            val isToday = day == today
+            val listSection = ListSection(day, code, isToday, !isToday && it.startTS < now)
+            listItems.add(listSection)
             prevCode = code
         }
-        listItems.add(ListEvent(it.id, it.startTS, it.endTS, it.title, it.description, it.getIsAllDay(), it.color, it.location))
+        val listEvent = ListEvent(it.id, it.startTS, it.endTS, it.title, it.description, it.getIsAllDay(), it.color, it.location, it.isPastEvent)
+        listItems.add(listEvent)
     }
     return listItems
 }

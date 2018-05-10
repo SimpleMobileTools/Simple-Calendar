@@ -7,6 +7,7 @@ import com.simplemobiletools.commons.extensions.getDefaultAlarmTitle
 import com.simplemobiletools.commons.extensions.getDefaultAlarmUri
 import com.simplemobiletools.commons.helpers.ALARM_SOUND_TYPE_NOTIFICATION
 import com.simplemobiletools.commons.helpers.BaseConfig
+import com.simplemobiletools.commons.helpers.DAY_MINUTES
 import java.util.*
 
 class Config(context: Context) : BaseConfig(context) {
@@ -55,7 +56,7 @@ class Config(context: Context) : BaseConfig(context) {
         set(defaultReminderMinutes3) = prefs.edit().putInt(REMINDER_MINUTES_3, defaultReminderMinutes3).apply()
 
     var displayPastEvents: Int
-        get() = prefs.getInt(DISPLAY_PAST_EVENTS, 0)
+        get() = prefs.getInt(DISPLAY_PAST_EVENTS, DAY_MINUTES)
         set(displayPastEvents) = prefs.edit().putInt(DISPLAY_PAST_EVENTS, displayPastEvents).apply()
 
     var displayEventTypes: Set<String>
@@ -77,9 +78,13 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getString(CALDAV_SYNCED_CALENDAR_IDS, "")
         set(calendarIDs) = prefs.edit().putString(CALDAV_SYNCED_CALENDAR_IDS, calendarIDs).apply()
 
-    var lastUsedCaldavCalendar: Int
+    var lastUsedCaldavCalendarId: Int
         get() = prefs.getInt(LAST_USED_CALDAV_CALENDAR, getSyncedCalendarIdsAsList().first().toInt())
         set(calendarId) = prefs.edit().putInt(LAST_USED_CALDAV_CALENDAR, calendarId).apply()
+
+    var lastUsedLocalEventTypeId: Int
+        get() = prefs.getInt(LAST_USED_LOCAL_EVENT_TYPE_ID, DBHelper.REGULAR_EVENT_TYPE_ID)
+        set(lastUsedLocalEventTypeId) = prefs.edit().putInt(LAST_USED_LOCAL_EVENT_TYPE_ID, lastUsedLocalEventTypeId).apply()
 
     var replaceDescription: Boolean
         get() = prefs.getBoolean(REPLACE_DESCRIPTION, false)
@@ -88,6 +93,14 @@ class Config(context: Context) : BaseConfig(context) {
     var showGrid: Boolean
         get() = prefs.getBoolean(SHOW_GRID, false)
         set(showGrid) = prefs.edit().putBoolean(SHOW_GRID, showGrid).apply()
+
+    var loopReminders: Boolean
+        get() = prefs.getBoolean(LOOP_REMINDERS, false)
+        set(loopReminders) = prefs.edit().putBoolean(LOOP_REMINDERS, loopReminders).apply()
+
+    var dimPastEvents: Boolean
+        get() = prefs.getBoolean(DIM_PAST_EVENTS, true)
+        set(dimPastEvents) = prefs.edit().putBoolean(DIM_PAST_EVENTS, dimPastEvents).apply()
 
     fun getSyncedCalendarIdsAsList() = caldavSyncedCalendarIDs.split(",").filter { it.trim().isNotEmpty() } as ArrayList<String>
 

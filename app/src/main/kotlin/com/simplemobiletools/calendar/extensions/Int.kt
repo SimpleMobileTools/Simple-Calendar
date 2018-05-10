@@ -3,6 +3,7 @@ package com.simplemobiletools.calendar.extensions
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.helpers.MONTH
 import com.simplemobiletools.calendar.helpers.WEEK
+import com.simplemobiletools.calendar.helpers.YEAR
 import com.simplemobiletools.calendar.models.Event
 
 fun Int.isTsOnProperDay(event: Event): Boolean {
@@ -14,3 +15,5 @@ fun Int.isTsOnProperDay(event: Event): Boolean {
 fun Int.isXWeeklyRepetition() = this != 0 && this % WEEK == 0
 
 fun Int.isXMonthlyRepetition() = this != 0 && this % MONTH == 0
+
+fun Int.isXYearlyRepetition() = this != 0 && this % YEAR == 0
