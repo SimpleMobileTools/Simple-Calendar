@@ -304,9 +304,7 @@
                 android:layout_toEndOf="@+id/event_repetition_rule_label"
                 android:layout_toRightOf="@+id/event_repetition_rule_label"
                 android:clickable="false"
-                android:ellipsize="end"
                 android:gravity="end"
-                android:lines="1"
                 android:padding="@dimen/activity_margin"
                 android:text="@string/every_day"
                 android:textSize="@dimen/day_text_size"/>

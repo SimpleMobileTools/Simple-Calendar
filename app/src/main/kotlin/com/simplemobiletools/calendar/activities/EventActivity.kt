@@ -307,7 +307,8 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun getAvailableYearlyRepetitionRules(): ArrayList<RadioItem> {
-        val items = arrayListOf(RadioItem(REPEAT_SAME_DAY, getString(R.string.repeat_on_the_same_day_monthly)))
+        val items = arrayListOf(RadioItem(REPEAT_SAME_DAY, getString(R.string.repeat_on_the_same_day_yearly)))
+        items.add(RadioItem(REPEAT_ORDER_WEEKDAY, getRepeatXthDayInMonthString(true, REPEAT_ORDER_WEEKDAY)))
         return items
     }
 
@@ -367,6 +368,12 @@ class EventActivity : SimpleActivity() {
         })
     }
 
+    private fun getRepeatXthDayInMonthString(includeBase: Boolean, repeatRule: Int): String {
+        val weekDayString = getRepeatXthDayString(includeBase, repeatRule)
+        val monthString = resources.getStringArray(R.array.in_months)[mEventStartDateTime.monthOfYear - 1]
+        return "$weekDayString $monthString"
+    }
+
     private fun setRepeatRule(rule: Int) {
         mRepeatRule = rule
         checkRepetitionRuleText()
@@ -405,6 +412,7 @@ class EventActivity : SimpleActivity() {
 
     private fun getYearlyRepetitionRuleText() = when (mRepeatRule) {
         REPEAT_SAME_DAY -> getString(R.string.the_same_day)
+        REPEAT_ORDER_WEEKDAY -> getRepeatXthDayInMonthString(false, mRepeatRule)
         else -> ""
     }
 
