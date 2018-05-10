@@ -218,10 +218,10 @@ class EventActivity : SimpleActivity() {
         updateRepetitionText()
         checkRepeatTexts(interval)
 
-        if (mRepeatInterval.isXWeeklyRepetition()) {
-            setRepeatRule(Math.pow(2.0, (mEventStartDateTime.dayOfWeek - 1).toDouble()).toInt())
-        } else if (mRepeatInterval.isXMonthlyRepetition()) {
-            setRepeatRule(REPEAT_SAME_DAY)
+        when {
+            mRepeatInterval.isXWeeklyRepetition() -> setRepeatRule(Math.pow(2.0, (mEventStartDateTime.dayOfWeek - 1).toDouble()).toInt())
+            mRepeatInterval.isXMonthlyRepetition() -> setRepeatRule(REPEAT_SAME_DAY)
+            mRepeatInterval.isXYearlyRepetition() -> setRepeatRule(REPEAT_SAME_DAY)
         }
     }
 
