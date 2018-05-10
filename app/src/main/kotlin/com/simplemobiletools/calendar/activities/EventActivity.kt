@@ -424,8 +424,7 @@ class EventActivity : SimpleActivity() {
 
     private fun getYearlyRepetitionRuleText() = when (mRepeatRule) {
         REPEAT_SAME_DAY -> getString(R.string.the_same_day)
-        REPEAT_ORDER_WEEKDAY -> getRepeatXthDayInMonthString(false, mRepeatRule)
-        else -> ""
+        else -> getRepeatXthDayInMonthString(false, mRepeatRule)
     }
 
     private fun showEventTypeDialog() {
