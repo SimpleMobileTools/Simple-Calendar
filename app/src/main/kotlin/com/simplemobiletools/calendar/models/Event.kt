@@ -17,7 +17,7 @@ data class Event(var id: Int = 0, var startTS: Int = 0, var endTS: Int = 0, var 
     : Serializable {
 
     companion object {
-        private val serialVersionUID = -32456795132345616L
+        private const val serialVersionUID = -32456795132345616L
     }
 
     fun addIntervalTime(original: Event) {
@@ -29,11 +29,15 @@ data class Event(var id: Int = 0, var startTS: Int = 0, var endTS: Int = 0, var 
             else -> {
                 val currStart = Formatter.getDateTimeFromTS(startTS)
                 val newStart = when {
-                    repeatInterval % YEAR == 0 -> currStart.plusYears(repeatInterval / YEAR)
+                    repeatInterval % YEAR == 0 -> when (repeatRule) {
+                        REPEAT_ORDER_WEEKDAY -> addXthDayInterval(currStart, original, false)
+                        REPEAT_ORDER_WEEKDAY_USE_LAST -> addXthDayInterval(currStart, original, true)
+                        else -> currStart.plusYears(repeatInterval / YEAR)
+                    }
                     repeatInterval % MONTH == 0 -> when (repeatRule) {
                         REPEAT_SAME_DAY -> addMonthsWithSameDay(currStart, original)
-                        REPEAT_ORDER_WEEKDAY_USE_LAST -> addXthDayInterval(currStart, original, true)
                         REPEAT_ORDER_WEEKDAY -> addXthDayInterval(currStart, original, false)
+                        REPEAT_ORDER_WEEKDAY_USE_LAST -> addXthDayInterval(currStart, original, true)
                         else -> currStart.plusMonths(repeatInterval / MONTH).dayOfMonth().withMaximumValue()
                     }
                     repeatInterval % WEEK == 0 -> {
