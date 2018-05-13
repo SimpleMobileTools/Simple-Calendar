@@ -157,7 +157,7 @@
     <string name="show_a_grid">Vis rutenett</string>
     <string name="loop_reminders">Gjenta påminnelser inntil avvist</string>
     <string name="dim_past_events">Dim tidligere hendelser</string>
-    <string name="events">Events</string>
+    <string name="events">Hendelser</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
