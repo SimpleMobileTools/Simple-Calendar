@@ -188,7 +188,9 @@ class CalDAVHandler(val context: Context) {
 
         var sortedColors = ArrayList<Int>(colors.size())
         (0 until colors.size()).mapTo(sortedColors) { colors[it] }
-        sortedColors = sortedColors.distinct() as ArrayList<Int>
+        if (sortedColors.isNotEmpty()) {
+            sortedColors = sortedColors.distinct() as ArrayList<Int>
+        }
 
         return sortedColors
     }
