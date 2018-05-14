@@ -528,6 +528,7 @@ class EventActivity : SimpleActivity() {
         event_caldav_calendar_email.beGoneIf(currentCalendar == null)
 
         if (currentCalendar == null) {
+            mEventCalendarId = STORED_LOCALLY_ONLY
             val mediumMargin = resources.getDimension(R.dimen.medium_margin).toInt()
             event_caldav_calendar_name.apply {
                 text = getString(R.string.store_locally_only)
