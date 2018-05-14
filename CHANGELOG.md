@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 4.0.1 *(2018-05-14)*
+----------------------------
+
+ * Fix app not opening at clicking widgets
+ * Couple stability improvements
+
 Version 4.0.0 *(2018-05-10)*
 ----------------------------
 
