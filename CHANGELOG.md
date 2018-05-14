@@ -1,6 +1,11 @@
 Changelog
 ==========
 
+Version 4.0.2 *(2018-05-14)*
+----------------------------
+
+ * Make sure we store the proper calendar ID at events
+
 Version 4.0.1 *(2018-05-14)*
 ----------------------------
 
