@@ -49,7 +49,6 @@ const val LAST_USED_LOCAL_EVENT_TYPE_ID = "last_used_local_event_type_id"
 const val DISPLAY_PAST_EVENTS = "display_past_events"
 const val REPLACE_DESCRIPTION = "replace_description"
 const val SHOW_GRID = "show_grid"
-const val IS_CUSTOMIZING_COLORS = "is_customizing_colors"
 const val LOOP_REMINDERS = "loop_reminders"
 const val DIM_PAST_EVENTS = "dim_past_events"
 

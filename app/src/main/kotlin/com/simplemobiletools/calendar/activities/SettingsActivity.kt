@@ -6,9 +6,13 @@ import android.media.AudioManager
 import android.os.Bundle
 import android.text.TextUtils
 import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.R.id.*
 import com.simplemobiletools.calendar.dialogs.SelectCalendarsDialog
 import com.simplemobiletools.calendar.extensions.*
-import com.simplemobiletools.calendar.helpers.*
+import com.simplemobiletools.calendar.helpers.CalDAVHandler
+import com.simplemobiletools.calendar.helpers.FONT_SIZE_LARGE
+import com.simplemobiletools.calendar.helpers.FONT_SIZE_MEDIUM
+import com.simplemobiletools.calendar.helpers.FONT_SIZE_SMALL
 import com.simplemobiletools.calendar.models.EventType
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.CustomIntervalPickerDialog
@@ -16,6 +20,7 @@ import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.dialogs.SelectAlarmSoundDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.ALARM_SOUND_TYPE_NOTIFICATION
+import com.simplemobiletools.commons.helpers.IS_CUSTOMIZING_COLORS
 import com.simplemobiletools.commons.helpers.PERMISSION_READ_CALENDAR
 import com.simplemobiletools.commons.helpers.PERMISSION_WRITE_CALENDAR
 import com.simplemobiletools.commons.models.AlarmSound
