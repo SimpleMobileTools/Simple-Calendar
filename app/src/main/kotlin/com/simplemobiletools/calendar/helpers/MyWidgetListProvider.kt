@@ -9,6 +9,7 @@ import android.content.Intent
 import android.net.Uri
 import android.widget.RemoteViews
 import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.activities.SplashActivity
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.launchNewEventIntent
 import com.simplemobiletools.calendar.services.WidgetService
@@ -50,7 +51,7 @@ class MyWidgetListProvider : AppWidgetProvider() {
                 views.setRemoteAdapter(R.id.widget_event_list, this)
             }
 
-            val startActivityIntent = context.getLaunchIntent()
+            val startActivityIntent = context.getLaunchIntent() ?: Intent(context, SplashActivity::class.java)
             val startActivityPendingIntent = PendingIntent.getActivity(context, 0, startActivityIntent, PendingIntent.FLAG_UPDATE_CURRENT)
             views.setPendingIntentTemplate(R.id.widget_event_list, startActivityPendingIntent)
             views.setEmptyView(R.id.widget_event_list, R.id.widget_event_list_empty)
@@ -79,7 +80,7 @@ class MyWidgetListProvider : AppWidgetProvider() {
     }
 
     private fun launchDayActivity(context: Context) {
-        context.getLaunchIntent().apply {
+        (context.getLaunchIntent() ?: Intent(context, SplashActivity::class.java)).apply {
             putExtra(DAY_CODE, Formatter.getDayCodeFromDateTime(DateTime()))
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             context.startActivity(this)

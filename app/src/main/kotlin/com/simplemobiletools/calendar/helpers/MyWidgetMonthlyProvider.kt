@@ -10,6 +10,7 @@ import android.content.res.Resources
 import android.view.View
 import android.widget.RemoteViews
 import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.activities.SplashActivity
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.launchNewEventIntent
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
@@ -45,7 +46,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
     }
 
     private fun setupAppOpenIntent(context: Context, views: RemoteViews, id: Int, dayCode: String) {
-        context.getLaunchIntent().apply {
+        (context.getLaunchIntent() ?: Intent(context, SplashActivity::class.java)).apply {
             putExtra(DAY_CODE, dayCode)
             putExtra(OPEN_MONTH, true)
             val pendingIntent = PendingIntent.getActivity(context, Integer.parseInt(dayCode.substring(0, 6)), this, 0)
@@ -54,7 +55,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
     }
 
     private fun setupDayOpenIntent(context: Context, views: RemoteViews, id: Int, dayCode: String) {
-        context.getLaunchIntent().apply {
+        (context.getLaunchIntent() ?: Intent(context, SplashActivity::class.java)).apply {
             putExtra(DAY_CODE, dayCode)
             val pendingIntent = PendingIntent.getActivity(context, Integer.parseInt(dayCode), this, 0)
             views.setOnClickPendingIntent(id, pendingIntent)
