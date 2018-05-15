@@ -6,7 +6,6 @@ import android.media.AudioManager
 import android.os.Bundle
 import android.text.TextUtils
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.R.id.*
 import com.simplemobiletools.calendar.dialogs.SelectCalendarsDialog
 import com.simplemobiletools.calendar.extensions.*
 import com.simplemobiletools.calendar.helpers.CalDAVHandler
