@@ -32,7 +32,6 @@ class WidgetListConfigureActivity : SimpleActivity() {
     private var mTextColor = 0
 
     private var mEventsAdapter: EventListAdapter? = null
-    private var mIsCustomizingColors = false
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         useDynamicTheme = false
@@ -41,10 +40,10 @@ class WidgetListConfigureActivity : SimpleActivity() {
         setContentView(R.layout.widget_config_list)
         initVariables()
 
-        mIsCustomizingColors = intent.extras?.getBoolean(IS_CUSTOMIZING_COLORS) ?: false
+        val isCustomizingColors = intent.extras?.getBoolean(IS_CUSTOMIZING_COLORS) ?: false
         mWidgetId = intent.extras?.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID) ?: AppWidgetManager.INVALID_APPWIDGET_ID
 
-        if (mWidgetId == AppWidgetManager.INVALID_APPWIDGET_ID && !mIsCustomizingColors) {
+        if (mWidgetId == AppWidgetManager.INVALID_APPWIDGET_ID && !isCustomizingColors) {
             finish()
         }
 
