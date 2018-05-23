@@ -200,11 +200,11 @@
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Etkinlikler, özelleştirilebilir widget'lı reklamsız basit bir takvim.</string>
+    <string name="app_short_description">Etkinlikler, özelleştirilebilir widget\'lı reklamsız basit bir takvim.</string>
     <string name="app_long_description">
         İsteğe bağlı CalDAV senkronizasyonu ile basit bir takvim. Kolayca tekrarlanan etkinlikler oluşturabilir ve hatırlatıcılar ayarlayabilir, ayrıca hafta sayılarını görüntüleyebilirsiniz.
 
-        Metnin renginin yanı sıra alfa ve arka plan rengini özelleştirebileceğiniz aylık görünüm ve etkinlik listesi widget'ı içerir.
+        Metnin renginin yanı sıra alfa ve arka plan rengini özelleştirebileceğiniz aylık görünüm ve etkinlik listesi widget\'ı içerir.
 
         Reklam veya gereksiz izinler içermez. Tamamen açık kaynaktır, özelleştirilebilir renkler sağlar.
 
