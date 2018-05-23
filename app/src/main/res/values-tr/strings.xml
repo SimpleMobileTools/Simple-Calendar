@@ -200,7 +200,7 @@
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Etkinlikler, özelleştirilebilir widget ile reklamsız basit bir takvim.</string>
+    <string name="app_short_description">Etkinlikler, özelleştirilebilir widget\'lı reklamsız basit bir takvim.</string>
     <string name="app_long_description">
         İsteğe bağlı CalDAV senkronizasyonu ile basit bir takvim. Kolayca tekrarlanan etkinlikler oluşturabilir ve hatırlatıcılar ayarlayabilir, ayrıca hafta sayılarını görüntüleyebilirsiniz.
 
