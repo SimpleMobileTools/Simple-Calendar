@@ -154,10 +154,10 @@ fun Context.notifyEvent(originalEvent: Event) {
     if (event.repeatInterval != 0 && event.startTS - event.reminder1Minutes * 60 < currentSeconds) {
         val events = dbHelper.getRepeatableEventsFor(currentSeconds - DAY_SECONDS, currentSeconds + YEAR_SECONDS, event.id)
         for (currEvent in events) {
-            event = currEvent
-            if (event.startTS - event.reminder1Minutes * 60 > currentSeconds) {
+            if (currEvent.startTS - currEvent.reminder1Minutes * 60 > currentSeconds) {
                 break
             }
+            event = currEvent
         }
     }
 
