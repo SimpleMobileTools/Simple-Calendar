@@ -756,7 +756,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                 }
             } else {
                 if (event.endTS >= fromTS) {
-                    events.add(event.copy())
+                    events.add(event.copy(isPastEvent = getIsPastEvent(event)))
                 } else if (event.getIsAllDay()) {
                     val dayCode = Formatter.getDayCodeFromTS(fromTS)
                     val endDayCode = Formatter.getDayCodeFromTS(event.endTS)
