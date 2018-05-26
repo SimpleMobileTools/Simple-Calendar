@@ -220,13 +220,14 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     }
 
     override fun updateWeeklyCalendar(events: ArrayList<Event>) {
-        val newHash = events.hashCode()
+        val newEvents = context!!.getFilteredEvents(events)
+        val newHash = newEvents.hashCode()
         if (newHash == lastHash) {
             return
         }
 
         lastHash = newHash
-        this.events = events
+        this.events = newEvents
         updateEvents()
     }
 
@@ -243,8 +244,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     }
 
     private fun addEvents() {
-        val filtered = context!!.getFilteredEvents(events)
-
         initGrid()
         allDayHolders.clear()
         allDayRows.clear()
@@ -259,7 +258,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
         var hadAllDayEvent = false
         val replaceDescription = context!!.config.replaceDescription
-        val sorted = filtered.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { if (replaceDescription) it.location else it.description }))
+        val sorted = events.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { if (replaceDescription) it.location else it.description }))
         for (event in sorted) {
             if (event.getIsAllDay() || Formatter.getDayCodeFromTS(event.startTS) != Formatter.getDayCodeFromTS(event.endTS)) {
                 hadAllDayEvent = true
