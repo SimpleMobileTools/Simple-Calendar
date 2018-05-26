@@ -192,9 +192,9 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
     val channelId = "my_reminder_channel_$soundUri"
     if (isOreoPlus()) {
         val audioAttributes = AudioAttributes.Builder()
-                .setUsage(AudioAttributes.USAGE_NOTIFICATION)
+                .setUsage(AudioAttributes.USAGE_ALARM)
                 .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-                .setLegacyStreamType(AudioManager.STREAM_NOTIFICATION)
+                .setLegacyStreamType(AudioManager.STREAM_ALARM)
                 .setFlags(AudioAttributes.FLAG_AUDIBILITY_ENFORCED)
                 .build()
 
@@ -202,6 +202,7 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
         val name = resources.getString(R.string.event_reminders)
         val importance = NotificationManager.IMPORTANCE_HIGH
         NotificationChannel(channelId, name, importance).apply {
+            setBypassDnd(true)
             enableLights(true)
             lightColor = event.color
             enableVibration(false)
