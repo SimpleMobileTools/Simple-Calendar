@@ -221,7 +221,7 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
             .setPriority(Notification.PRIORITY_HIGH)
             .setDefaults(Notification.DEFAULT_LIGHTS)
             .setAutoCancel(true)
-            .setSound(Uri.parse(soundUri), AudioManager.STREAM_NOTIFICATION)
+            .setSound(Uri.parse(soundUri), AudioManager.STREAM_ALARM)
             .setChannelId(channelId)
             .addAction(R.drawable.ic_snooze, getString(R.string.snooze), getSnoozePendingIntent(this, event))
 
