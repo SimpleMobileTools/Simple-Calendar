@@ -40,8 +40,11 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
         val remoteView: RemoteViews
 
         if (type == ITEM_EVENT) {
-            remoteView = RemoteViews(context.packageName, R.layout.event_list_item_widget)
-            setupListEvent(remoteView, events[position] as ListEvent)
+            val event = events[position] as ListEvent
+            val detailField = if (replaceDescription) event.location else event.description
+            val layout = if (event.startTS == event.endTS && detailField.isEmpty()) R.layout.event_list_item_widget_simple else R.layout.event_list_item_widget
+            remoteView = RemoteViews(context.packageName, layout)
+            setupListEvent(remoteView, event)
         } else {
             remoteView = RemoteViews(context.packageName, R.layout.event_list_section_widget)
             setupListSection(remoteView, events[position] as ListSection)
@@ -122,7 +125,7 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
 
     override fun getLoadingView() = null
 
-    override fun getViewTypeCount() = 2
+    override fun getViewTypeCount() = 3
 
     override fun onCreate() {}
 

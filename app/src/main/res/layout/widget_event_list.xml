@@ -40,7 +40,6 @@
         android:layout_below="@+id/widget_event_new_event"
         android:clipToPadding="false"
         android:divider="@null"
-        android:dividerHeight="@dimen/small_margin"
         android:paddingBottom="@dimen/small_margin"
         android:paddingLeft="@dimen/medium_margin"/>
 
