@@ -1,6 +1,14 @@
 Changelog
 ==========
 
+Version 4.0.4 *(2018-05-27)*
+----------------------------
+
+ * Make sure the alarm rings properly at DND mode
+ * Improved the UK holidays and added Singapore ones
+ * Make Event list items more compact when possible
+ * Couple other UX improvements and bugfixes
+
 Version 4.0.3 *(2018-05-15)*
 ----------------------------
 
