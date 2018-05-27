@@ -10,7 +10,7 @@
         android:id="@+id/event_item_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/activity_margin"
+        android:layout_marginLeft="@dimen/medium_margin"
         android:textSize="@dimen/day_text_size"
         tools:text="13:00"/>
 
@@ -19,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/event_item_start"
-        android:layout_marginLeft="@dimen/activity_margin"
+        android:layout_marginLeft="@dimen/medium_margin"
         android:text="15:00"
         android:textSize="@dimen/day_text_size"/>
 
@@ -27,12 +27,12 @@
         android:id="@+id/event_section_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/big_margin"
+        android:layout_marginLeft="@dimen/normal_margin"
         android:layout_toLeftOf="@+id/event_item_color"
         android:layout_toRightOf="@+id/event_item_start"
         android:ellipsize="end"
         android:maxLines="1"
-        android:paddingRight="@dimen/activity_margin"
+        android:paddingRight="@dimen/small_margin"
         android:textSize="@dimen/day_text_size"
         tools:text="Event title"/>
 
@@ -41,12 +41,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/event_section_title"
-        android:layout_marginLeft="@dimen/big_margin"
+        android:layout_marginLeft="@dimen/normal_margin"
         android:layout_toLeftOf="@+id/event_item_color"
         android:layout_toRightOf="@+id/event_item_end"
         android:ellipsize="end"
         android:maxLines="1"
-        android:paddingRight="@dimen/activity_margin"
+        android:paddingRight="@dimen/small_margin"
         android:textSize="@dimen/day_text_size"
         tools:text="Event description"/>
 
@@ -58,7 +58,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/event_section_title"
-        android:paddingRight="@dimen/activity_margin"
+        android:paddingRight="@dimen/medium_margin"
         android:src="@drawable/monthly_event_dot"/>
 
 </RelativeLayout>
