@@ -99,8 +99,8 @@
     <!-- Export / Import -->
     <string name="import_events">Etkinlikleri içe aktar</string>
     <string name="export_events">Etkinlikleri dışa aktar</string>
-    <string name="import_events_from_ics">Etkinlikleri bir .ics dosyasından içe aktar</string>
-    <string name="export_events_to_ics">Etkinlikleri bir .ics dosyasına aktar</string>
+    <string name="import_events_from_ics">Etkinlikleri .ics dosyasından içe aktar</string>
+    <string name="export_events_to_ics">Etkinlikleri .ics dosyasına aktar</string>
     <string name="default_event_type">Varsayılan etkinlik türü</string>
     <string name="export_past_events_too">Geçmiş etkinlikleri de dışa aktar</string>
     <string name="include_event_types">Etkinlik türlerini ekle</string>
@@ -140,8 +140,8 @@
 
     <!-- Settings -->
     <string name="manage_event_types">Etkinlik türlerini yönet</string>
-    <string name="start_day_at">Başlangıç günü</string>
-    <string name="end_day_at">Bitiş günü</string>
+    <string name="start_day_at">Gün başlangıcı</string>
+    <string name="end_day_at">Gün bitişi</string>
     <string name="week_numbers">Hafta sayılarını göster</string>
     <string name="vibrate">Hatırlatma bildiriminde titre</string>
     <string name="reminder_sound">Hatırlatma sesi</string>
