@@ -20,13 +20,13 @@ class WeeklyViewGrid(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        val rowHeight = height / ROWS_CNT
+        val rowHeight = height / ROWS_CNT.toFloat()
         for (i in 0 until ROWS_CNT) {
             val y = rowHeight * i.toFloat()
             canvas.drawLine(0f, y, width.toFloat(), y, paint)
         }
 
-        val rowWidth = width / COLS_CNT
+        val rowWidth = width / COLS_CNT.toFloat()
         for (i in 0 until COLS_CNT) {
             val x = rowWidth * i.toFloat()
             canvas.drawLine(x, 0f, x, height.toFloat(), paint)
