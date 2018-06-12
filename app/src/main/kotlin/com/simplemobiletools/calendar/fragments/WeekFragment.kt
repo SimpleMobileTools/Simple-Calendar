@@ -38,19 +38,19 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
     var mListener: WeekFragmentListener? = null
     private var mWeekTimestamp = 0
-    private var mRowHeight = 0
+    private var mRowHeight = 0f
     private var minScrollY = -1
     private var maxScrollY = -1
-    private var mWasDestroyed = false
+    private var todayColumnIndex = -1
+    private var clickStartTime = 0L
     private var primaryColor = 0
     private var lastHash = 0
+    private var mWasDestroyed = false
     private var isFragmentVisible = false
     private var wasFragmentInit = false
     private var wasExtraHeightAdded = false
     private var dimPastEvents = true
-    private var clickStartTime = 0L
     private var selectedGrid: View? = null
-    private var todayColumnIndex = -1
     private var events = ArrayList<Event>()
     private var allDayHolders = ArrayList<RelativeLayout>()
     private var allDayRows = ArrayList<HashSet<Int>>()
@@ -68,8 +68,8 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             it.map { eventTypeColors.put(it.id, it.color) }
         }
 
-        mRowHeight = (context!!.resources.getDimension(R.dimen.weekly_view_row_height)).toInt()
-        minScrollY = mRowHeight * context!!.config.startWeeklyAt
+        mRowHeight = context!!.resources.getDimension(R.dimen.weekly_view_row_height)
+        minScrollY = mRowHeight.toInt() * context!!.config.startWeeklyAt
         mWeekTimestamp = arguments!!.getInt(WEEK_START_TIMESTAMP)
         dimPastEvents = context!!.config.dimPastEvents
         primaryColor = context!!.getAdjustedPrimaryColor()
@@ -115,8 +115,8 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 return@onGlobalLayout
             }
 
-            minScrollY = mRowHeight * context!!.config.startWeeklyAt
-            maxScrollY = mRowHeight * context!!.config.endWeeklyAt
+            minScrollY = mRowHeight.toInt() * context!!.config.startWeeklyAt
+            maxScrollY = mRowHeight.toInt() * context!!.config.endWeeklyAt
 
             val bounds = Rect()
             week_events_holder.getGlobalVisibleRect(bounds)
@@ -190,14 +190,14 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                     selectedGrid?.animation?.cancel()
                     selectedGrid?.beGone()
 
-                    val rowHeight = resources.getDimension(R.dimen.weekly_view_row_height)
-                    val hour = (event.y / rowHeight).toInt()
+                    //val rowHeight = resources.getDimension(R.dimen.weekly_view_row_height)
+                    val hour = (event.y / mRowHeight).toInt()
                     selectedGrid = (inflater.inflate(R.layout.week_grid_item, null, false) as ImageView).apply {
                         view.addView(this)
                         background = ColorDrawable(primaryColor)
                         layoutParams.width = view.width
-                        layoutParams.height = rowHeight.toInt()
-                        y = hour * rowHeight
+                        layoutParams.height = mRowHeight.toInt()
+                        y = hour * mRowHeight
                         applyColorFilter(primaryColor.getContrastColor())
 
                         setOnClickListener {
@@ -213,8 +213,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                         }
                     }
                 }
-            }
-            else -> {
             }
         }
     }
