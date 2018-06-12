@@ -81,6 +81,7 @@
         android:id="@+id/week_top_holder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/stroke_bottom"
         android:gravity="center_vertical">
 
         <LinearLayout

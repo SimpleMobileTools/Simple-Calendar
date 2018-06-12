@@ -399,7 +399,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
             allDayHolders[drawAtLine].addView(this)
             (layoutParams as RelativeLayout.LayoutParams).apply {
-                topMargin = mRes.getDimension(R.dimen.tiny_margin).toInt()
                 leftMargin = getColumnWithId(firstDayIndex).x.toInt()
                 bottomMargin = 1
                 width = getColumnWithId(Math.min(firstDayIndex + daysCnt, 6)).right - leftMargin - 1
