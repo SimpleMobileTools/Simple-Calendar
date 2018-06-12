@@ -214,12 +214,12 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
     val contentTitle = if (publicVersion) resources.getString(R.string.app_name) else event.title
     val contentText = if (publicVersion) resources.getString(R.string.public_event_notification_text) else content
 
-    val builder = NotificationCompat.Builder(this)
+    val builder = NotificationCompat.Builder(this, channelId)
             .setContentTitle(contentTitle)
             .setContentText(contentText)
             .setSmallIcon(R.drawable.ic_calendar)
             .setContentIntent(pendingIntent)
-            .setPriority(Notification.PRIORITY_HIGH)
+            .setPriority(NotificationCompat.PRIORITY_MAX)
             .setDefaults(Notification.DEFAULT_LIGHTS)
             .setAutoCancel(true)
             .setSound(Uri.parse(soundUri), AudioManager.STREAM_ALARM)
