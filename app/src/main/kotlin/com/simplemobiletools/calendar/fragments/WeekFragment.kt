@@ -69,7 +69,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         }
 
         mRowHeight = context!!.resources.getDimension(R.dimen.weekly_view_row_height)
-        minScrollY = mRowHeight.toInt() * context!!.config.startWeeklyAt
+        minScrollY = (mRowHeight * context!!.config.startWeeklyAt).toInt()
         mWeekTimestamp = arguments!!.getInt(WEEK_START_TIMESTAMP)
         dimPastEvents = context!!.config.dimPastEvents
         primaryColor = context!!.getAdjustedPrimaryColor()
@@ -112,8 +112,8 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 return@onGlobalLayout
             }
 
-            minScrollY = mRowHeight.toInt() * context!!.config.startWeeklyAt
-            maxScrollY = mRowHeight.toInt() * context!!.config.endWeeklyAt
+            minScrollY = (mRowHeight * context!!.config.startWeeklyAt).toInt()
+            maxScrollY = (mRowHeight * context!!.config.endWeeklyAt).toInt()
 
             val bounds = Rect()
             week_events_holder.getGlobalVisibleRect(bounds)
