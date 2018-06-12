@@ -220,6 +220,10 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     }
 
     override fun updateWeeklyCalendar(events: ArrayList<Event>) {
+        if (context == null) {
+            return
+        }
+
         val newEvents = context!!.getFilteredEvents(events)
         val newHash = newEvents.hashCode()
         if (newHash == lastHash) {
