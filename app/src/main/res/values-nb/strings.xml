@@ -44,6 +44,7 @@
     <string name="event_is_repeatable">Hendelsen er repeterbar</string>
     <string name="selection_contains_repetition">Markeringen inneholder gjentagende hendelser</string>
     <string name="delete_one_only">Slett bare den merkede forekomsten</string>
+    <string name="delete_future_occurrences">Delete this and all future occurrences</string>
     <string name="delete_all_occurrences">Slett alle forekomster</string>
     <string name="update_one_only">Oppdater bare den merkede forekomsten</string>
     <string name="update_all_occurrences">Oppdater alle forekomster</string>

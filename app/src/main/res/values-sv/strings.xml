@@ -44,6 +44,7 @@
     <string name="event_is_repeatable">Händelsen är återkommande</string>
     <string name="selection_contains_repetition">Markeringen innehåller återkommande händelser</string>
     <string name="delete_one_only">Ta bara bort den markerade förekomsten</string>
+    <string name="delete_future_occurrences">Delete this and all future occurrences</string>
     <string name="delete_all_occurrences">Ta bort alla förekomster</string>
     <string name="update_one_only">Uppdatera bara den markerade förekomsten</string>
     <string name="update_all_occurrences">Uppdatera alla förekomster</string>

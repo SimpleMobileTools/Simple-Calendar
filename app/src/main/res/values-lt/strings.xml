@@ -44,6 +44,7 @@
     <string name="event_is_repeatable">Įvykis pakartojamas</string>
     <string name="selection_contains_repetition">Pasirinkimas susideda iš pasikartojančių įvykių</string>
     <string name="delete_one_only">Ištrinti tik pasirinktą įvykį</string>
+    <string name="delete_future_occurrences">Delete this and all future occurrences</string>
     <string name="delete_all_occurrences">Ištrinti visus įvykius</string>
     <string name="update_one_only">Atnaujinti tik pasirinktą įvykį</string>
     <string name="update_all_occurrences">Atnaujinti visus įvykius</string>

@@ -44,6 +44,7 @@
     <string name="event_is_repeatable">Událost se opakuje</string>
     <string name="selection_contains_repetition">Výběr zahrnuje opakující se události</string>
     <string name="delete_one_only">Vymazat pouze vybrané výskyty</string>
+    <string name="delete_future_occurrences">Delete this and all future occurrences</string>
     <string name="delete_all_occurrences">Vymazat všechny výskyty</string>
     <string name="update_one_only">Změnit pouze vybrané výskyty</string>
     <string name="update_all_occurrences">Změnit všechny výskyty</string>

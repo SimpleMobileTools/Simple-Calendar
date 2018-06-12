@@ -44,6 +44,7 @@
     <string name="event_is_repeatable">Termin ist wiederholbar</string>
     <string name="selection_contains_repetition">Die Auswahl enthält Ereignisse mit Wiederholungen</string>
     <string name="delete_one_only">Lösche nur die ausgewählte Wiederholung</string>
+    <string name="delete_future_occurrences">Delete this and all future occurrences</string>
     <string name="delete_all_occurrences">Lösche alle Wiederholungen</string>
     <string name="update_one_only">Ändere nur die ausgewählte Wiederholung</string>
     <string name="update_all_occurrences">Ändere alle Wiederholungen</string>

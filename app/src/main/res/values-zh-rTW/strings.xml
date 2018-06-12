@@ -44,6 +44,7 @@
     <string name="event_is_repeatable">這是個重複活動</string>
     <string name="selection_contains_repetition">選擇的項目含有重複活動</string>
     <string name="delete_one_only">只刪除選擇的事件</string>
+    <string name="delete_future_occurrences">Delete this and all future occurrences</string>
     <string name="delete_all_occurrences">刪除全部事件</string>
     <string name="update_one_only">只更新選擇的事件</string>
     <string name="update_all_occurrences">更新全部事件</string>

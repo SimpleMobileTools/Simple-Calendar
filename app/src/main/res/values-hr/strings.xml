@@ -44,6 +44,7 @@
     <string name="event_is_repeatable">Događaj je ponovljiv</string>
     <string name="selection_contains_repetition">Odabir sadrži ponavljajuće događaje</string>
     <string name="delete_one_only">Izbriši samo odabrano ponavljanje</string>
+    <string name="delete_future_occurrences">Delete this and all future occurrences</string>
     <string name="delete_all_occurrences">Izbriši sva ponavljanja</string>
     <string name="update_one_only">Ažuriraj samo odabrano ponavljanje</string>
     <string name="update_all_occurrences">Ažuriraj sva ponavljanja</string>

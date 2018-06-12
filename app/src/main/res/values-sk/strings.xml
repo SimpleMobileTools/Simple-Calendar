@@ -44,6 +44,7 @@
     <string name="event_is_repeatable">Udalosť je opakujúca sa</string>
     <string name="selection_contains_repetition">Výber obsahuje opakujúce sa udalosti</string>
     <string name="delete_one_only">Vymazať iba označené opakovania</string>
+    <string name="delete_future_occurrences">Vymazať toto a všetky budúce opakovania</string>
     <string name="delete_all_occurrences">Vymazať všetky opakovania</string>
     <string name="update_one_only">Upraviť iba označené opakovania</string>
     <string name="update_all_occurrences">Upraviť všetky opakovania</string>
