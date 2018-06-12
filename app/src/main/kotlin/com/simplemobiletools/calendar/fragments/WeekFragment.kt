@@ -93,9 +93,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             updateScrollY(Math.max(mListener?.getCurrScrollY() ?: 0, minScrollY))
         }
 
-        (0..6).map { inflater.inflate(R.layout.stroke_vertical_divider, mView.week_vertical_grid_holder) }
-        (0..23).map { inflater.inflate(R.layout.stroke_horizontal_divider, mView.week_horizontal_grid_holder) }
-
         wasFragmentInit = true
         return mView
     }
@@ -239,7 +236,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         }
 
         activity!!.runOnUiThread {
-            if (context != null && isAdded) {
+            if (context != null && activity != null && isAdded) {
                 addEvents()
             }
         }
@@ -347,9 +344,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
     private fun addAllDayEvent(event: Event) {
         (inflater.inflate(R.layout.week_all_day_event_marker, null, false) as TextView).apply {
-            if (activity == null)
-                return
-
             var backgroundColor = eventTypeColors.get(event.eventType, primaryColor)
             var textColor = backgroundColor.getContrastColor()
             if (dimPastEvents && event.isPastEvent) {
