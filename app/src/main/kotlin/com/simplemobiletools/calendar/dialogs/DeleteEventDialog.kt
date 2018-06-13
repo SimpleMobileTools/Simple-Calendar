@@ -4,7 +4,6 @@ import android.app.Activity
 import android.support.v7.app.AlertDialog
 import android.view.ViewGroup
 import com.simplemobiletools.calendar.R
-import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.helpers.DELETE_ALL_OCCURRENCES
 import com.simplemobiletools.calendar.helpers.DELETE_FUTURE_OCCURRENCES
 import com.simplemobiletools.calendar.helpers.DELETE_SELECTED_OCCURRENCE
@@ -12,13 +11,10 @@ import com.simplemobiletools.commons.extensions.beVisibleIf
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import kotlinx.android.synthetic.main.dialog_delete_event.view.*
 
-class DeleteEventDialog(val activity: Activity, eventIds: List<Int>, val callback: (deleteRule: Int) -> Unit) {
+class DeleteEventDialog(val activity: Activity, eventIds: List<Int>, hasRepeatableEvent: Boolean, val callback: (deleteRule: Int) -> Unit) {
     val dialog: AlertDialog?
 
     init {
-        val events = activity.dbHelper.getEventsWithIds(eventIds)
-        val hasRepeatableEvent = events.any { it.repeatInterval > 0 }
-
         val view = activity.layoutInflater.inflate(R.layout.dialog_delete_event, null).apply {
             delete_event_repeat_description.beVisibleIf(hasRepeatableEvent)
             delete_event_radio_view.beVisibleIf(hasRepeatableEvent)

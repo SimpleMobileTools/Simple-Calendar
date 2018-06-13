@@ -212,7 +212,8 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
             }
         }
 
-        DeleteEventDialog(activity, eventIds) {
+        val hasRepeatableEvent = eventsToDelete.any { it.isRepeatable }
+        DeleteEventDialog(activity, eventIds, hasRepeatableEvent) {
             listItems.removeAll(eventsToDelete)
 
             when (it) {

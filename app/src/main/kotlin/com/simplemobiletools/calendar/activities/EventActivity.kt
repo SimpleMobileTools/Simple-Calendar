@@ -562,7 +562,7 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun deleteEvent() {
-        DeleteEventDialog(this, arrayListOf(mEvent.id)) {
+        DeleteEventDialog(this, arrayListOf(mEvent.id), mEvent.repeatInterval > 0) {
             when (it) {
                 DELETE_SELECTED_OCCURRENCE -> dbHelper.addEventRepeatException(mEvent.id, mEventOccurrenceTS, true)
                 DELETE_FUTURE_OCCURRENCES -> dbHelper.addEventRepeatLimit(mEvent.id, mEventOccurrenceTS)

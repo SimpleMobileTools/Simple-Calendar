@@ -118,7 +118,8 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
             timestamps.add(event.startTS)
         }
 
-        DeleteEventDialog(activity, eventIds) {
+        val hasRepeatableEvent = eventsToDelete.any { it.repeatInterval > 0 }
+        DeleteEventDialog(activity, eventIds, hasRepeatableEvent) {
             events.removeAll(eventsToDelete)
 
             when (it) {
