@@ -1,6 +1,14 @@
 Changelog
 ==========
 
+Version 4.1.0 *(2018-06-13)*
+----------------------------
+
+ * Make reminders on Android Oreo more reliable
+ * Allow deleting only future occurrences of repeating events
+ * Fixed some visual glitches at the weekly view
+ * Multiple CalDAV event related improvements
+
 Version 4.0.4 *(2018-05-27)*
 ----------------------------
 
