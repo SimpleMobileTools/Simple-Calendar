@@ -559,8 +559,9 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         val deletedSet = HashSet<String>()
         deleteIds.map { deletedSet.add(it.toString()) }
         context.config.removeDisplayEventTypes(deletedSet)
-        if (deleteIds.isEmpty())
+        if (deleteIds.isEmpty()) {
             return
+        }
 
         for (eventTypeId in deleteIds) {
             if (deleteEvents) {

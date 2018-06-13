@@ -9,8 +9,7 @@ import com.simplemobiletools.calendar.dialogs.DeleteEventDialog
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.shareEvents
-import com.simplemobiletools.calendar.helpers.Formatter
-import com.simplemobiletools.calendar.helpers.LOW_ALPHA
+import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.commons.adapters.MyRecyclerViewAdapter
 import com.simplemobiletools.commons.extensions.adjustAlpha
@@ -123,12 +122,18 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
             }
             events.removeAll(eventsToDelete)
 
-            if (it) {
-                val eventIDs = Array(eventIds.size, { i -> (eventIds[i].toString()) })
-                activity.dbHelper.deleteEvents(eventIDs, true)
-            } else {
-                eventIds.forEachIndexed { index, value ->
-                    activity.dbHelper.addEventRepeatException(value, timestamps[index], true)
+            when (it) {
+                DELETE_SELECTED_OCCURRENCE -> {
+                    eventIds.forEachIndexed { index, value ->
+                        activity.dbHelper.addEventRepeatException(value, timestamps[index], true)
+                    }
+                }
+                DELETE_FUTURE_OCCURRENCES -> {
+
+                }
+                DELETE_ALL_OCCURRENCES -> {
+                    val eventIDs = Array(eventIds.size, { i -> (eventIds[i].toString()) })
+                    activity.dbHelper.deleteEvents(eventIDs, true)
                 }
             }
             removeSelectedItems()

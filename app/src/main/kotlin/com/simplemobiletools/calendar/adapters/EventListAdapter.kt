@@ -9,9 +9,8 @@ import com.simplemobiletools.calendar.dialogs.DeleteEventDialog
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.shareEvents
+import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
-import com.simplemobiletools.calendar.helpers.LOW_ALPHA
-import com.simplemobiletools.calendar.helpers.getNowSeconds
 import com.simplemobiletools.calendar.models.ListEvent
 import com.simplemobiletools.calendar.models.ListItem
 import com.simplemobiletools.calendar.models.ListSection
@@ -219,12 +218,18 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
             }
             listItems.removeAll(listItemsToDelete)
 
-            if (it) {
-                val eventIDs = Array(eventIds.size, { i -> (eventIds[i].toString()) })
-                activity.dbHelper.deleteEvents(eventIDs, true)
-            } else {
-                eventIds.forEachIndexed { index, value ->
-                    activity.dbHelper.addEventRepeatException(value, timestamps[index], true)
+            when (it) {
+                DELETE_SELECTED_OCCURRENCE -> {
+                    eventIds.forEachIndexed { index, value ->
+                        activity.dbHelper.addEventRepeatException(value, timestamps[index], true)
+                    }
+                }
+                DELETE_FUTURE_OCCURRENCES -> {
+
+                }
+                DELETE_ALL_OCCURRENCES -> {
+                    val eventIDs = Array(eventIds.size, { i -> (eventIds[i].toString()) })
+                    activity.dbHelper.deleteEvents(eventIDs, true)
                 }
             }
             listener?.refreshItems()
