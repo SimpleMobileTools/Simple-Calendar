@@ -129,7 +129,9 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
                     }
                 }
                 DELETE_FUTURE_OCCURRENCES -> {
-
+                    eventIds.forEachIndexed { index, value ->
+                        activity.dbHelper.addEventRepeatLimit(value, timestamps[index])
+                    }
                 }
                 DELETE_ALL_OCCURRENCES -> {
                     val eventIDs = Array(eventIds.size, { i -> (eventIds[i].toString()) })

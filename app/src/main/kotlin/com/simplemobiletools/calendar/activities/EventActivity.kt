@@ -565,9 +565,7 @@ class EventActivity : SimpleActivity() {
         DeleteEventDialog(this, arrayListOf(mEvent.id)) {
             when (it) {
                 DELETE_SELECTED_OCCURRENCE -> dbHelper.addEventRepeatException(mEvent.id, mEventOccurrenceTS, true)
-                DELETE_FUTURE_OCCURRENCES -> {
-
-                }
+                DELETE_FUTURE_OCCURRENCES -> dbHelper.addEventRepeatLimit(mEvent.id, mEventOccurrenceTS)
                 DELETE_ALL_OCCURRENCES -> dbHelper.deleteEvents(arrayOf(mEvent.id.toString()), true)
             }
             finish()
