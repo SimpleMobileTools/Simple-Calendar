@@ -426,3 +426,22 @@ fun Context.getEventListItems(events: List<Event>): ArrayList<ListItem> {
     }
     return listItems
 }
+
+fun Context.handleEventDeleting(eventIds: List<Int>, timestamps: List<Int>, action: Int) {
+    when (action) {
+        DELETE_SELECTED_OCCURRENCE -> {
+            eventIds.forEachIndexed { index, value ->
+                dbHelper.addEventRepeatException(value, timestamps[index], true)
+            }
+        }
+        DELETE_FUTURE_OCCURRENCES -> {
+            eventIds.forEachIndexed { index, value ->
+                dbHelper.addEventRepeatLimit(value, timestamps[index])
+            }
+        }
+        DELETE_ALL_OCCURRENCES -> {
+            val eventIDs = Array(eventIds.size, { i -> (eventIds[i].toString()) })
+            dbHelper.deleteEvents(eventIDs, true)
+        }
+    }
+}
