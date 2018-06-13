@@ -16,7 +16,6 @@ import com.simplemobiletools.calendar.models.EventType
 import com.simplemobiletools.commons.extensions.getIntValue
 import com.simplemobiletools.commons.extensions.getLongValue
 import com.simplemobiletools.commons.extensions.getStringValue
-import com.simplemobiletools.commons.helpers.DAY_SECONDS
 import org.joda.time.DateTime
 import java.util.*
 import kotlin.collections.ArrayList
@@ -555,11 +554,19 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
     fun addEventRepeatLimit(eventId: Int, limitTS: Int) {
         val values = ContentValues()
-        values.put(COL_REPEAT_LIMIT, limitTS - DAY_SECONDS)
+        val time = Formatter.getDateTimeFromTS(limitTS)
+        values.put(COL_REPEAT_LIMIT, limitTS - time.hourOfDay)
 
         val selection = "$COL_EVENT_ID = ?"
         val selectionArgs = arrayOf(eventId.toString())
         mDb.update(META_TABLE_NAME, values, selection, selectionArgs)
+
+        if (context.config.caldavSync) {
+            val event = getEventWithId(eventId)
+            if (event?.getCalDAVCalendarId() != 0) {
+                CalDAVHandler(context).updateCalDAVEvent(event!!)
+            }
+        }
     }
 
     fun deleteEventTypes(eventTypes: ArrayList<EventType>, deleteEvents: Boolean, callback: (deletedCnt: Int) -> Unit) {
