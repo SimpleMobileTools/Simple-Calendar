@@ -326,21 +326,25 @@ fun Context.syncCalDAVCalendars(activity: SimpleActivity?, calDAVSyncObserver: C
         val uri = CalendarContract.Calendars.CONTENT_URI
         contentResolver.unregisterContentObserver(calDAVSyncObserver)
         contentResolver.registerContentObserver(uri, false, calDAVSyncObserver)
-
-        val accounts = HashSet<Account>()
-        val calendars = CalDAVHandler(applicationContext).getCalDAVCalendars(activity, config.caldavSyncedCalendarIDs)
-        calendars.forEach {
-            accounts.add(Account(it.accountName, it.accountType))
-        }
-
-        Bundle().apply {
-            putBoolean(ContentResolver.SYNC_EXTRAS_MANUAL, true)
-            putBoolean(ContentResolver.SYNC_EXTRAS_EXPEDITED, true)
-            accounts.forEach {
-                ContentResolver.requestSync(it, uri.authority, this)
-            }
-        }
+        refreshCalDAVCalendars(activity, config.caldavSyncedCalendarIDs)
     }.start()
+}
+
+fun Context.refreshCalDAVCalendars(activity: SimpleActivity?, ids: String) {
+    val uri = CalendarContract.Calendars.CONTENT_URI
+    val accounts = HashSet<Account>()
+    val calendars = CalDAVHandler(applicationContext).getCalDAVCalendars(activity, ids)
+    calendars.forEach {
+        accounts.add(Account(it.accountName, it.accountType))
+    }
+
+    Bundle().apply {
+        putBoolean(ContentResolver.SYNC_EXTRAS_MANUAL, true)
+        putBoolean(ContentResolver.SYNC_EXTRAS_EXPEDITED, true)
+        accounts.forEach {
+            ContentResolver.requestSync(it, uri.authority, this)
+        }
+    }
 }
 
 fun Context.addDayNumber(rawTextColor: Int, day: DayMonthly, linearLayout: LinearLayout, dayLabelHeight: Int, callback: (Int) -> Unit) {

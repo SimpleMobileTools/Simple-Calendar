@@ -10,6 +10,7 @@ import android.util.SparseIntArray
 import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
+import com.simplemobiletools.calendar.extensions.refreshCalDAVCalendars
 import com.simplemobiletools.calendar.extensions.scheduleCalDAVSync
 import com.simplemobiletools.calendar.models.CalDAVCalendar
 import com.simplemobiletools.calendar.models.Event
@@ -324,6 +325,7 @@ class CalDAVHandler(val context: Context) {
 
         setupCalDAVEventReminders(event)
         setupCalDAVEventImportId(event)
+        refreshCalDAVCalendar(event)
     }
 
     fun updateCalDAVEvent(event: Event) {
@@ -337,6 +339,7 @@ class CalDAVHandler(val context: Context) {
 
         setupCalDAVEventReminders(event)
         setupCalDAVEventImportId(event)
+        refreshCalDAVCalendar(event)
     }
 
     private fun setupCalDAVEventReminders(event: Event) {
@@ -414,12 +417,14 @@ class CalDAVHandler(val context: Context) {
             context.contentResolver.delete(contentUri, null, null)
         } catch (ignored: Exception) {
         }
+        refreshCalDAVCalendar(event)
     }
 
     fun insertEventRepeatException(event: Event, occurrenceTS: Int): Long {
         val uri = CalendarContract.Events.CONTENT_URI
         val values = fillEventRepeatExceptionValues(event, occurrenceTS)
         val newUri = context.contentResolver.insert(uri, values)
+        refreshCalDAVCalendar(event)
         return java.lang.Long.parseLong(newUri.lastPathSegment)
     }
 
@@ -460,4 +465,6 @@ class CalDAVHandler(val context: Context) {
     }
 
     private fun getCalDAVEventImportId(calendarId: Int, eventId: Long) = "$CALDAV-$calendarId-$eventId"
+
+    private fun refreshCalDAVCalendar(event: Event) = context.refreshCalDAVCalendars(null, event.getCalDAVCalendarId().toString())
 }
