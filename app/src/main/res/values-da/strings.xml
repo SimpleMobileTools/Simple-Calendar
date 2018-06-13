@@ -44,7 +44,7 @@
     <string name="event_is_repeatable">Begivenheden kan gentages</string>
     <string name="selection_contains_repetition">Valget indeholder gentagne begivenheder</string>
     <string name="delete_one_only">Slet kun denne forekomst</string>
-    <string name="delete_future_occurrences">Delete this and all future occurrences</string>
+    <string name="delete_future_occurrences">Slet denne og alle fremtidige forekomster</string>
     <string name="delete_all_occurrences">Slet alle forekomster</string>
     <string name="update_one_only">Opdater kun denne forekomst</string>
     <string name="update_all_occurrences">Opdater alle forekomster</string>
