@@ -122,19 +122,23 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
         DeleteEventDialog(activity, eventIds, hasRepeatableEvent) {
             events.removeAll(eventsToDelete)
 
+            val nonRepeatingEventIDs = eventsToDelete.filter { it.repeatInterval == 0 }.map { it.id.toString() }.toTypedArray()
+            activity.dbHelper.deleteEvents(nonRepeatingEventIDs, true)
+
+            val repeatingEventIDs = eventsToDelete.filter { it.repeatInterval != 0 }.map { it.id }
             when (it) {
                 DELETE_SELECTED_OCCURRENCE -> {
-                    eventIds.forEachIndexed { index, value ->
+                    repeatingEventIDs.forEachIndexed { index, value ->
                         activity.dbHelper.addEventRepeatException(value, timestamps[index], true)
                     }
                 }
                 DELETE_FUTURE_OCCURRENCES -> {
-                    eventIds.forEachIndexed { index, value ->
+                    repeatingEventIDs.forEachIndexed { index, value ->
                         activity.dbHelper.addEventRepeatLimit(value, timestamps[index])
                     }
                 }
                 DELETE_ALL_OCCURRENCES -> {
-                    val eventIDs = Array(eventIds.size, { i -> (eventIds[i].toString()) })
+                    val eventIDs = Array(repeatingEventIDs.size, { i -> (repeatingEventIDs[i].toString()) })
                     activity.dbHelper.deleteEvents(eventIDs, true)
                 }
             }
