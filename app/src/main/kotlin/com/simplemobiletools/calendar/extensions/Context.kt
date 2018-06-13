@@ -421,7 +421,7 @@ fun Context.getEventListItems(events: List<Event>): ArrayList<ListItem> {
             listItems.add(listSection)
             prevCode = code
         }
-        val listEvent = ListEvent(it.id, it.startTS, it.endTS, it.title, it.description, it.getIsAllDay(), it.color, it.location, it.isPastEvent)
+        val listEvent = ListEvent(it.id, it.startTS, it.endTS, it.title, it.description, it.getIsAllDay(), it.color, it.location, it.isPastEvent, it.repeatInterval > 0)
         listItems.add(listEvent)
     }
     return listItems

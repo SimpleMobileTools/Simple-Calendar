@@ -110,16 +110,15 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
     private fun askConfirmDelete() {
         val eventIds = ArrayList<Int>(selectedPositions.size)
         val timestamps = ArrayList<Int>(selectedPositions.size)
+        val eventsToDelete = ArrayList<Event>(selectedPositions.size)
         selectedPositions.forEach {
-            eventIds.add(events[it].id)
-            timestamps.add(events[it].startTS)
+            val event = events[it]
+            eventsToDelete.add(event)
+            eventIds.add(event.id)
+            timestamps.add(event.startTS)
         }
 
         DeleteEventDialog(activity, eventIds) {
-            val eventsToDelete = ArrayList<Event>(selectedPositions.size)
-            selectedPositions.sortedDescending().forEach {
-                eventsToDelete.add(events[it])
-            }
             events.removeAll(eventsToDelete)
 
             when (it) {

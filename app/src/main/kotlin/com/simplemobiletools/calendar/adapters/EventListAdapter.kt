@@ -201,22 +201,19 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
     private fun askConfirmDelete() {
         val eventIds = ArrayList<Int>(selectedPositions.size)
         val timestamps = ArrayList<Int>(selectedPositions.size)
+        val eventsToDelete = ArrayList<ListEvent>(selectedPositions.size)
 
-        selectedPositions.forEach {
+        selectedPositions.sortedDescending().forEach {
             val item = listItems[it]
             if (item is ListEvent) {
                 eventIds.add(item.id)
                 timestamps.add(item.startTS)
+                eventsToDelete.add(item)
             }
         }
 
         DeleteEventDialog(activity, eventIds) {
-            val listItemsToDelete = ArrayList<ListItem>(selectedPositions.size)
-            selectedPositions.sortedDescending().forEach {
-                val listItem = listItems[it]
-                listItemsToDelete.add(listItem)
-            }
-            listItems.removeAll(listItemsToDelete)
+            listItems.removeAll(eventsToDelete)
 
             when (it) {
                 DELETE_SELECTED_OCCURRENCE -> {
