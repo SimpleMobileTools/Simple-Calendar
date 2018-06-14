@@ -43,9 +43,9 @@
     <string name="forever">Бесконечно</string>
     <string name="event_is_repeatable">Это событие может повторяться</string>
     <string name="selection_contains_repetition">В выбранном есть повторяющиеся события</string>
-    <string name="delete_one_only">Удалить только выбранное</string>
-    <string name="delete_future_occurrences">Delete this and all future occurrences</string>
-    <string name="delete_all_occurrences">Удалить все связанные</string>
+    <string name="delete_one_only">Удалить только это событие</string>
+    <string name="delete_future_occurrences">Удалить это и все будущие события</string>
+    <string name="delete_all_occurrences">Удалить все связанные события</string>
     <string name="update_one_only">Обновить только выбранное</string>
     <string name="update_all_occurrences">Обновить все связанные</string>
     <string name="repeat_till_date">Повторять до даты</string>
