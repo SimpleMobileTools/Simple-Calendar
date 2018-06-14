@@ -49,9 +49,10 @@ const val LAST_USED_LOCAL_EVENT_TYPE_ID = "last_used_local_event_type_id"
 const val DISPLAY_PAST_EVENTS = "display_past_events"
 const val REPLACE_DESCRIPTION = "replace_description"
 const val SHOW_GRID = "show_grid"
-const val IS_CUSTOMIZING_COLORS = "is_customizing_colors"
 const val LOOP_REMINDERS = "loop_reminders"
 const val DIM_PAST_EVENTS = "dim_past_events"
+const val LAST_SOUND_URI = "last_sound_uri"
+const val LAST_REMINDER_CHANNEL_ID = "last_reminder_channel_ID"
 
 // repeat_rule for monthly and yearly repetition
 const val REPEAT_SAME_DAY = 1                           // i.e. 25th every month, or 3rd june (if yearly repetition)
@@ -123,5 +124,9 @@ const val SOURCE_SIMPLE_CALENDAR = "simple-calendar"
 const val SOURCE_IMPORTED_ICS = "imported-ics"
 const val SOURCE_CONTACT_BIRTHDAY = "contact-birthday"
 const val SOURCE_CONTACT_ANNIVERSARY = "contact-anniversary"
+
+const val DELETE_SELECTED_OCCURRENCE = 0
+const val DELETE_FUTURE_OCCURRENCES = 1
+const val DELETE_ALL_OCCURRENCES = 2
 
 fun getNowSeconds() = (System.currentTimeMillis() / 1000).toInt()

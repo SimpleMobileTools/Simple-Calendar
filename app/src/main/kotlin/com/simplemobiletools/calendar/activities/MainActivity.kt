@@ -470,8 +470,9 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                         try {
                             val formatter = SimpleDateFormat(format, Locale.getDefault())
                             val date = formatter.parse(startDate)
-                            if (date.year < 70)
+                            if (date.year < 70) {
                                 date.year = 70
+                            }
 
                             val timestamp = (date.time / 1000).toInt()
                             val source = if (birthdays) SOURCE_CONTACT_BIRTHDAY else SOURCE_CONTACT_ANNIVERSARY
@@ -788,6 +789,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             put("Россия", "russia.ics")
             put("România", "romania.ics")
             put("Schweiz", "switzerland.ics")
+            put("Singapore", "singapore.ics")
             put("Srbija", "serbia.ics")
             put("Slovenija", "slovenia.ics")
             put("Slovensko", "slovakia.ics")

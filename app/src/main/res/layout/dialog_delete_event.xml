@@ -40,6 +40,14 @@
             android:text="@string/delete_one_only"/>
 
         <com.simplemobiletools.commons.views.MyCompatRadioButton
+            android:id="@+id/delete_event_future"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/normal_margin"
+            android:paddingTop="@dimen/normal_margin"
+            android:text="@string/delete_future_occurrences"/>
+
+        <com.simplemobiletools.commons.views.MyCompatRadioButton
             android:id="@+id/delete_event_all"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

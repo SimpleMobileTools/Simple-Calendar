@@ -39,6 +39,14 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getString(REMINDER_SOUND_TITLE, context.getDefaultAlarmTitle(ALARM_SOUND_TYPE_NOTIFICATION))
         set(reminderSoundTitle) = prefs.edit().putString(REMINDER_SOUND_TITLE, reminderSoundTitle).apply()
 
+    var lastSoundUri: String
+        get() = prefs.getString(LAST_SOUND_URI, "")
+        set(lastSoundUri) = prefs.edit().putString(LAST_SOUND_URI, lastSoundUri).apply()
+
+    var lastReminderChannel: Long
+        get() = prefs.getLong(LAST_REMINDER_CHANNEL_ID, 0L)
+        set(lastReminderChannel) = prefs.edit().putLong(LAST_REMINDER_CHANNEL_ID, lastReminderChannel).apply()
+
     var storedView: Int
         get() = prefs.getInt(VIEW, MONTHLY_VIEW)
         set(view) = prefs.edit().putInt(VIEW, view).apply()

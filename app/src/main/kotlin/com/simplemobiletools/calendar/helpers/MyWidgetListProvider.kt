@@ -13,10 +13,7 @@ import com.simplemobiletools.calendar.activities.SplashActivity
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.launchNewEventIntent
 import com.simplemobiletools.calendar.services.WidgetService
-import com.simplemobiletools.commons.extensions.getColoredBitmap
-import com.simplemobiletools.commons.extensions.setBackgroundColor
-import com.simplemobiletools.commons.extensions.setText
-import com.simplemobiletools.commons.extensions.setTextSize
+import com.simplemobiletools.commons.extensions.*
 import org.joda.time.DateTime
 
 class MyWidgetListProvider : AppWidgetProvider() {
@@ -54,7 +51,7 @@ class MyWidgetListProvider : AppWidgetProvider() {
                 views.setRemoteAdapter(R.id.widget_event_list, this)
             }
 
-            val startActivityIntent = Intent(context, SplashActivity::class.java)
+            val startActivityIntent = context.getLaunchIntent() ?: Intent(context, SplashActivity::class.java)
             val startActivityPendingIntent = PendingIntent.getActivity(context, 0, startActivityIntent, PendingIntent.FLAG_UPDATE_CURRENT)
             views.setPendingIntentTemplate(R.id.widget_event_list, startActivityPendingIntent)
             views.setEmptyView(R.id.widget_event_list, R.id.widget_event_list_empty)
@@ -83,7 +80,7 @@ class MyWidgetListProvider : AppWidgetProvider() {
     }
 
     private fun launchDayActivity(context: Context) {
-        Intent(context, SplashActivity::class.java).apply {
+        (context.getLaunchIntent() ?: Intent(context, SplashActivity::class.java)).apply {
             putExtra(DAY_CODE, Formatter.getDayCodeFromDateTime(DateTime()))
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             context.startActivity(this)

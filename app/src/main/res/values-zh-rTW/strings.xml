@@ -19,15 +19,15 @@
     <string name="event">活動</string>
     <string name="edit_event">編輯活動</string>
     <string name="new_event">新活動</string>
-    <string name="create_new_event">Create a new event</string>
-    <string name="duplicate_event">Duplicate event</string>
+    <string name="create_new_event">建立一個新活動</string>
+    <string name="duplicate_event">重複的活動</string>
     <string name="title_empty">標題不能是空白的</string>
     <string name="end_before_start">活動結束時間不能比開始早</string>
     <string name="event_added">活動添加成功</string>
     <string name="event_updated">活動更新成功</string>
     <string name="filter_events_by_type">依類型篩選活動</string>
     <string name="please_fill_location">請填入要顯示在地圖上的地點</string>
-    <string name="public_event_notification_text">An event is upcoming</string>
+    <string name="public_event_notification_text">一個活動即將到來</string>
 
     <!-- Event Repetition -->
     <string name="repetition">重複</string>
@@ -44,6 +44,7 @@
     <string name="event_is_repeatable">這是個重複活動</string>
     <string name="selection_contains_repetition">選擇的項目含有重複活動</string>
     <string name="delete_one_only">只刪除選擇的事件</string>
+    <string name="delete_future_occurrences">Delete this and all future occurrences</string>
     <string name="delete_all_occurrences">刪除全部事件</string>
     <string name="update_one_only">只更新選擇的事件</string>
     <string name="update_all_occurrences">更新全部事件</string>
@@ -59,7 +60,7 @@
     <string name="the_last_day">最後一天</string>
     <string name="repeat_on_the_same_day_monthly">重複每月同一天</string>
     <string name="repeat_on_the_last_day_monthly">重複每月最後一天</string>
-    <string name="repeat_on_the_same_day_yearly">Repeat on the same day every year</string>
+    <string name="repeat_on_the_same_day_yearly">重複每年同一天</string>
     <string name="repeat_every_m">重複每月</string>
     <string name="every_m">每月</string>
     <string name="first_m">第一個</string>
@@ -105,7 +106,7 @@
     <string name="export_past_events_too">也匯出過去的活動</string>
     <string name="include_event_types">包含活動類型</string>
     <string name="filename_without_ics">檔案名稱 (不含.ics)</string>
-    <string name="override_event_types">Override event types in the file</string>
+    <string name="override_event_types">覆寫檔案內的活動類型</string>
 
     <!-- Event details -->
     <string name="title">標題</string>
@@ -154,10 +155,10 @@
     <string name="replace_description_with_location">活動描述改成地點</string>
     <string name="delete_all_events">刪除全部活動</string>
     <string name="delete_all_events_confirmation">你確定要刪除全部活動嗎?會完整留下你的活動類型和其他設定。</string>
-    <string name="show_a_grid">Show a grid</string>
-    <string name="loop_reminders">Loop reminders until dismissed</string>
-    <string name="dim_past_events">Dim past events</string>
-    <string name="events">Events</string>
+    <string name="show_a_grid">顯示網格</string>
+    <string name="loop_reminders">不斷重複提醒直到解除</string>
+    <string name="dim_past_events">淡化過去的活動</string>
+    <string name="events">活動</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

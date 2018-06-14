@@ -8,6 +8,7 @@ import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.dialogs.DeleteEventDialog
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
+import com.simplemobiletools.calendar.extensions.handleEventDeleting
 import com.simplemobiletools.calendar.extensions.shareEvents
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.helpers.LOW_ALPHA
@@ -111,26 +112,23 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
     private fun askConfirmDelete() {
         val eventIds = ArrayList<Int>(selectedPositions.size)
         val timestamps = ArrayList<Int>(selectedPositions.size)
+        val eventsToDelete = ArrayList<Event>(selectedPositions.size)
         selectedPositions.forEach {
-            eventIds.add(events[it].id)
-            timestamps.add(events[it].startTS)
+            val event = events[it]
+            eventsToDelete.add(event)
+            eventIds.add(event.id)
+            timestamps.add(event.startTS)
         }
 
-        DeleteEventDialog(activity, eventIds) {
-            val eventsToDelete = ArrayList<Event>(selectedPositions.size)
-            selectedPositions.sortedDescending().forEach {
-                eventsToDelete.add(events[it])
-            }
+        val hasRepeatableEvent = eventsToDelete.any { it.repeatInterval > 0 }
+        DeleteEventDialog(activity, eventIds, hasRepeatableEvent) {
             events.removeAll(eventsToDelete)
 
-            if (it) {
-                val eventIDs = Array(eventIds.size, { i -> (eventIds[i].toString()) })
-                activity.dbHelper.deleteEvents(eventIDs, true)
-            } else {
-                eventIds.forEachIndexed { index, value ->
-                    activity.dbHelper.addEventRepeatException(value, timestamps[index], true)
-                }
-            }
+            val nonRepeatingEventIDs = eventsToDelete.filter { it.repeatInterval == 0 }.map { it.id.toString() }.toTypedArray()
+            activity.dbHelper.deleteEvents(nonRepeatingEventIDs, true)
+
+            val repeatingEventIDs = eventsToDelete.filter { it.repeatInterval != 0 }.map { it.id }
+            activity.handleEventDeleting(repeatingEventIDs, timestamps, it)
             removeSelectedItems()
         }
     }

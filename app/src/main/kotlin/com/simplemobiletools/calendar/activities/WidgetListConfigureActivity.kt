@@ -11,7 +11,6 @@ import com.simplemobiletools.calendar.adapters.EventListAdapter
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.helpers.Formatter
-import com.simplemobiletools.calendar.helpers.IS_CUSTOMIZING_COLORS
 import com.simplemobiletools.calendar.helpers.MyWidgetListProvider
 import com.simplemobiletools.calendar.models.ListEvent
 import com.simplemobiletools.calendar.models.ListItem
@@ -19,6 +18,7 @@ import com.simplemobiletools.calendar.models.ListSection
 import com.simplemobiletools.commons.dialogs.ColorPickerDialog
 import com.simplemobiletools.commons.extensions.adjustAlpha
 import com.simplemobiletools.commons.extensions.setFillWithStroke
+import com.simplemobiletools.commons.helpers.IS_CUSTOMIZING_COLORS
 import kotlinx.android.synthetic.main.widget_config_list.*
 import org.joda.time.DateTime
 import java.util.*
@@ -32,7 +32,6 @@ class WidgetListConfigureActivity : SimpleActivity() {
     private var mTextColor = 0
 
     private var mEventsAdapter: EventListAdapter? = null
-    private var mIsCustomizingColors = false
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         useDynamicTheme = false
@@ -41,10 +40,10 @@ class WidgetListConfigureActivity : SimpleActivity() {
         setContentView(R.layout.widget_config_list)
         initVariables()
 
-        mIsCustomizingColors = intent.extras?.getBoolean(IS_CUSTOMIZING_COLORS) ?: false
+        val isCustomizingColors = intent.extras?.getBoolean(IS_CUSTOMIZING_COLORS) ?: false
         mWidgetId = intent.extras?.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID) ?: AppWidgetManager.INVALID_APPWIDGET_ID
 
-        if (mWidgetId == AppWidgetManager.INVALID_APPWIDGET_ID && !mIsCustomizingColors) {
+        if (mWidgetId == AppWidgetManager.INVALID_APPWIDGET_ID && !isCustomizingColors) {
             finish()
         }
 

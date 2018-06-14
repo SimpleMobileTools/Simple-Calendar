@@ -5,12 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/week_vertical_grid_holder"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"/>
-
     <com.simplemobiletools.calendar.views.MyScrollView
         android:id="@+id/week_events_scrollview"
         android:layout_width="match_parent"
@@ -25,11 +19,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <LinearLayout
+            <com.simplemobiletools.calendar.views.WeeklyViewGrid
                 android:id="@+id/week_horizontal_grid_holder"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/weekly_view_events_height"
-                android:orientation="vertical"/>
+                android:layout_height="@dimen/weekly_view_events_height"/>
 
             <LinearLayout
                 android:id="@+id/week_events_columns_holder"
@@ -95,6 +88,7 @@
             android:id="@+id/week_letters_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/stroke_bottom"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingBottom="@dimen/small_margin">

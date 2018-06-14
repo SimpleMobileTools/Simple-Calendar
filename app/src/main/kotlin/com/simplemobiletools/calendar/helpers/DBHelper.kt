@@ -552,6 +552,23 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
     }
 
+    fun addEventRepeatLimit(eventId: Int, limitTS: Int) {
+        val values = ContentValues()
+        val time = Formatter.getDateTimeFromTS(limitTS)
+        values.put(COL_REPEAT_LIMIT, limitTS - time.hourOfDay)
+
+        val selection = "$COL_EVENT_ID = ?"
+        val selectionArgs = arrayOf(eventId.toString())
+        mDb.update(META_TABLE_NAME, values, selection, selectionArgs)
+
+        if (context.config.caldavSync) {
+            val event = getEventWithId(eventId)
+            if (event?.getCalDAVCalendarId() != 0) {
+                CalDAVHandler(context).updateCalDAVEvent(event!!)
+            }
+        }
+    }
+
     fun deleteEventTypes(eventTypes: ArrayList<EventType>, deleteEvents: Boolean, callback: (deletedCnt: Int) -> Unit) {
         var deleteIds = eventTypes.filter { it.caldavCalendarId == 0 }.map { it.id }
         deleteIds = deleteIds.filter { it != DBHelper.REGULAR_EVENT_TYPE_ID } as ArrayList<Int>
@@ -559,8 +576,9 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         val deletedSet = HashSet<String>()
         deleteIds.map { deletedSet.add(it.toString()) }
         context.config.removeDisplayEventTypes(deletedSet)
-        if (deleteIds.isEmpty())
+        if (deleteIds.isEmpty()) {
             return
+        }
 
         for (eventTypeId in deleteIds) {
             if (deleteEvents) {
@@ -756,7 +774,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                 }
             } else {
                 if (event.endTS >= fromTS) {
-                    events.add(event.copy())
+                    events.add(event.copy(isPastEvent = getIsPastEvent(event)))
                 } else if (event.getIsAllDay()) {
                     val dayCode = Formatter.getDayCodeFromTS(fromTS)
                     val endDayCode = Formatter.getDayCodeFromTS(event.endTS)

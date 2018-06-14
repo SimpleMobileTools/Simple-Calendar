@@ -38,19 +38,19 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
     var mListener: WeekFragmentListener? = null
     private var mWeekTimestamp = 0
-    private var mRowHeight = 0
+    private var mRowHeight = 0f
     private var minScrollY = -1
     private var maxScrollY = -1
-    private var mWasDestroyed = false
+    private var todayColumnIndex = -1
+    private var clickStartTime = 0L
     private var primaryColor = 0
     private var lastHash = 0
+    private var mWasDestroyed = false
     private var isFragmentVisible = false
     private var wasFragmentInit = false
     private var wasExtraHeightAdded = false
     private var dimPastEvents = true
-    private var clickStartTime = 0L
     private var selectedGrid: View? = null
-    private var todayColumnIndex = -1
     private var events = ArrayList<Event>()
     private var allDayHolders = ArrayList<RelativeLayout>()
     private var allDayRows = ArrayList<HashSet<Int>>()
@@ -68,8 +68,8 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             it.map { eventTypeColors.put(it.id, it.color) }
         }
 
-        mRowHeight = (context!!.resources.getDimension(R.dimen.weekly_view_row_height)).toInt()
-        minScrollY = mRowHeight * context!!.config.startWeeklyAt
+        mRowHeight = context!!.resources.getDimension(R.dimen.weekly_view_row_height)
+        minScrollY = (mRowHeight * context!!.config.startWeeklyAt).toInt()
         mWeekTimestamp = arguments!!.getInt(WEEK_START_TIMESTAMP)
         dimPastEvents = context!!.config.dimPastEvents
         primaryColor = context!!.getAdjustedPrimaryColor()
@@ -93,9 +93,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             updateScrollY(Math.max(mListener?.getCurrScrollY() ?: 0, minScrollY))
         }
 
-        (0..6).map { inflater.inflate(R.layout.stroke_vertical_divider, mView.week_vertical_grid_holder) }
-        (0..23).map { inflater.inflate(R.layout.stroke_horizontal_divider, mView.week_horizontal_grid_holder) }
-
         wasFragmentInit = true
         return mView
     }
@@ -115,8 +112,8 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 return@onGlobalLayout
             }
 
-            minScrollY = mRowHeight * context!!.config.startWeeklyAt
-            maxScrollY = mRowHeight * context!!.config.endWeeklyAt
+            minScrollY = (mRowHeight * context!!.config.startWeeklyAt).toInt()
+            maxScrollY = (mRowHeight * context!!.config.endWeeklyAt).toInt()
 
             val bounds = Rect()
             week_events_holder.getGlobalVisibleRect(bounds)
@@ -190,14 +187,14 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                     selectedGrid?.animation?.cancel()
                     selectedGrid?.beGone()
 
-                    val rowHeight = resources.getDimension(R.dimen.weekly_view_row_height)
-                    val hour = (event.y / rowHeight).toInt()
+                    //val rowHeight = resources.getDimension(R.dimen.weekly_view_row_height)
+                    val hour = (event.y / mRowHeight).toInt()
                     selectedGrid = (inflater.inflate(R.layout.week_grid_item, null, false) as ImageView).apply {
                         view.addView(this)
                         background = ColorDrawable(primaryColor)
                         layoutParams.width = view.width
-                        layoutParams.height = rowHeight.toInt()
-                        y = hour * rowHeight
+                        layoutParams.height = mRowHeight.toInt()
+                        y = hour * mRowHeight
                         applyColorFilter(primaryColor.getContrastColor())
 
                         setOnClickListener {
@@ -214,19 +211,22 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                     }
                 }
             }
-            else -> {
-            }
         }
     }
 
     override fun updateWeeklyCalendar(events: ArrayList<Event>) {
-        val newHash = events.hashCode()
+        if (context == null) {
+            return
+        }
+
+        val newEvents = context!!.getFilteredEvents(events)
+        val newHash = newEvents.hashCode()
         if (newHash == lastHash) {
             return
         }
 
         lastHash = newHash
-        this.events = events
+        this.events = newEvents
         updateEvents()
     }
 
@@ -236,15 +236,13 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         }
 
         activity!!.runOnUiThread {
-            if (context != null && isAdded) {
+            if (context != null && activity != null && isAdded) {
                 addEvents()
             }
         }
     }
 
     private fun addEvents() {
-        val filtered = context!!.getFilteredEvents(events)
-
         initGrid()
         allDayHolders.clear()
         allDayRows.clear()
@@ -259,7 +257,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
         var hadAllDayEvent = false
         val replaceDescription = context!!.config.replaceDescription
-        val sorted = filtered.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { if (replaceDescription) it.location else it.description }))
+        val sorted = events.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { if (replaceDescription) it.location else it.description }))
         for (event in sorted) {
             if (event.getIsAllDay() || Formatter.getDayCodeFromTS(event.startTS) != Formatter.getDayCodeFromTS(event.endTS)) {
                 hadAllDayEvent = true
@@ -346,9 +344,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
     private fun addAllDayEvent(event: Event) {
         (inflater.inflate(R.layout.week_all_day_event_marker, null, false) as TextView).apply {
-            if (activity == null)
-                return
-
             var backgroundColor = eventTypeColors.get(event.eventType, primaryColor)
             var textColor = backgroundColor.getContrastColor()
             if (dimPastEvents && event.isPastEvent) {
@@ -404,7 +399,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
             allDayHolders[drawAtLine].addView(this)
             (layoutParams as RelativeLayout.LayoutParams).apply {
-                topMargin = mRes.getDimension(R.dimen.tiny_margin).toInt()
                 leftMargin = getColumnWithId(firstDayIndex).x.toInt()
                 bottomMargin = 1
                 width = getColumnWithId(Math.min(firstDayIndex + daysCnt, 6)).right - leftMargin - 1

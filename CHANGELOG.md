@@ -1,6 +1,38 @@
 Changelog
 ==========
 
+Version 4.1.0 *(2018-06-13)*
+----------------------------
+
+ * Make reminders on Android Oreo more reliable
+ * Allow deleting only future occurrences of repeating events
+ * Fixed some visual glitches at the weekly view
+ * Multiple CalDAV event related improvements
+
+Version 4.0.4 *(2018-05-27)*
+----------------------------
+
+ * Make sure the alarm rings properly at DND mode
+ * Improved the UK holidays and added Singapore ones
+ * Make Event list items more compact when possible
+ * Couple other UX improvements and bugfixes
+
+Version 4.0.3 *(2018-05-15)*
+----------------------------
+
+ * Fixing some widget related crashes
+
+Version 4.0.2 *(2018-05-14)*
+----------------------------
+
+ * Make sure we store the proper calendar ID at events
+
+Version 4.0.1 *(2018-05-14)*
+----------------------------
+
+ * Fix app not opening at clicking widgets
+ * Couple stability improvements
+
 Version 4.0.0 *(2018-05-10)*
 ----------------------------
 

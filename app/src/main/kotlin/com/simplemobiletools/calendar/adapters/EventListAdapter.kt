@@ -8,6 +8,7 @@ import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.dialogs.DeleteEventDialog
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
+import com.simplemobiletools.calendar.extensions.handleEventDeleting
 import com.simplemobiletools.calendar.extensions.shareEvents
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.helpers.LOW_ALPHA
@@ -29,11 +30,12 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
                        recyclerView: MyRecyclerView, itemClick: (Any) -> Unit) : MyRecyclerViewAdapter(activity, recyclerView, null, itemClick) {
 
     private val ITEM_EVENT = 0
-    private val ITEM_HEADER = 1
+    private val ITEM_EVENT_SIMPLE = 1
+    private val ITEM_HEADER = 2
 
     private val topDivider = resources.getDrawable(R.drawable.divider_width)
     private val allDayString = resources.getString(R.string.all_day)
-    private val replaceDescriptionWithLocation = activity.config.replaceDescription
+    private val replaceDescription = activity.config.replaceDescription
     private val dimPastEvents = activity.config.dimPastEvents
     private val now = getNowSeconds()
     private var use24HourFormat = activity.config.use24HourFormat
@@ -76,7 +78,11 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
     override fun getSelectableItemCount() = listItems.filter { it is ListEvent }.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyRecyclerViewAdapter.ViewHolder {
-        val layoutId = if (viewType == ITEM_EVENT) R.layout.event_list_item else R.layout.event_list_section
+        val layoutId = when (viewType) {
+            ITEM_EVENT -> R.layout.event_list_item
+            ITEM_EVENT_SIMPLE -> R.layout.event_list_item_simple
+            else -> R.layout.event_list_section
+        }
         return createViewHolder(layoutId, parent)
     }
 
@@ -94,7 +100,17 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
 
     override fun getItemCount() = listItems.size
 
-    override fun getItemViewType(position: Int) = if (listItems[position] is ListEvent) ITEM_EVENT else ITEM_HEADER
+    override fun getItemViewType(position: Int) = if (listItems[position] is ListEvent) {
+        val event = listItems[position] as ListEvent
+        val detailField = if (replaceDescription) event.location else event.description
+        if (event.startTS == event.endTS && detailField.isEmpty()) {
+            ITEM_EVENT_SIMPLE
+        } else {
+            ITEM_EVENT
+        }
+    } else {
+        ITEM_HEADER
+    }
 
     fun toggle24HourFormat(use24HourFormat: Boolean) {
         this.use24HourFormat = use24HourFormat
@@ -114,16 +130,16 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
     private fun setupListEvent(view: View, listEvent: ListEvent) {
         view.apply {
             event_section_title.text = listEvent.title
-            event_item_description.text = if (replaceDescriptionWithLocation) listEvent.location else listEvent.description
+            event_item_description?.text = if (replaceDescription) listEvent.location else listEvent.description
             event_item_start.text = if (listEvent.isAllDay) allDayString else Formatter.getTimeFromTS(context, listEvent.startTS)
-            event_item_end.beInvisibleIf(listEvent.startTS == listEvent.endTS)
+            event_item_end?.beInvisibleIf(listEvent.startTS == listEvent.endTS)
             event_item_color.applyColorFilter(listEvent.color)
 
             if (listEvent.startTS != listEvent.endTS) {
-                val startCode = Formatter.getDayCodeFromTS(listEvent.startTS)
-                val endCode = Formatter.getDayCodeFromTS(listEvent.endTS)
+                event_item_end?.apply {
+                    val startCode = Formatter.getDayCodeFromTS(listEvent.startTS)
+                    val endCode = Formatter.getDayCodeFromTS(listEvent.endTS)
 
-                event_item_end.apply {
                     text = Formatter.getTimeFromTS(context, listEvent.endTS)
                     if (startCode != endCode) {
                         if (listEvent.isAllDay) {
@@ -155,9 +171,9 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
             }
 
             event_item_start.setTextColor(startTextColor)
-            event_item_end.setTextColor(endTextColor)
+            event_item_end?.setTextColor(endTextColor)
             event_section_title.setTextColor(startTextColor)
-            event_item_description.setTextColor(startTextColor)
+            event_item_description?.setTextColor(startTextColor)
         }
     }
 
@@ -187,31 +203,26 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
     private fun askConfirmDelete() {
         val eventIds = ArrayList<Int>(selectedPositions.size)
         val timestamps = ArrayList<Int>(selectedPositions.size)
+        val eventsToDelete = ArrayList<ListEvent>(selectedPositions.size)
 
-        selectedPositions.forEach {
+        selectedPositions.sortedDescending().forEach {
             val item = listItems[it]
             if (item is ListEvent) {
                 eventIds.add(item.id)
                 timestamps.add(item.startTS)
+                eventsToDelete.add(item)
             }
         }
 
-        DeleteEventDialog(activity, eventIds) {
-            val listItemsToDelete = ArrayList<ListItem>(selectedPositions.size)
-            selectedPositions.sortedDescending().forEach {
-                val listItem = listItems[it]
-                listItemsToDelete.add(listItem)
-            }
-            listItems.removeAll(listItemsToDelete)
+        val hasRepeatableEvent = eventsToDelete.any { it.isRepeatable }
+        DeleteEventDialog(activity, eventIds, hasRepeatableEvent) {
+            listItems.removeAll(eventsToDelete)
 
-            if (it) {
-                val eventIDs = Array(eventIds.size, { i -> (eventIds[i].toString()) })
-                activity.dbHelper.deleteEvents(eventIDs, true)
-            } else {
-                eventIds.forEachIndexed { index, value ->
-                    activity.dbHelper.addEventRepeatException(value, timestamps[index], true)
-                }
-            }
+            val nonRepeatingEventIDs = eventsToDelete.filter { !it.isRepeatable }.map { it.id.toString() }.toTypedArray()
+            activity.dbHelper.deleteEvents(nonRepeatingEventIDs, true)
+
+            val repeatingEventIDs = eventsToDelete.filter { it.isRepeatable }.map { it.id }
+            activity.handleEventDeleting(repeatingEventIDs, timestamps, it)
             listener?.refreshItems()
             finishActMode()
         }

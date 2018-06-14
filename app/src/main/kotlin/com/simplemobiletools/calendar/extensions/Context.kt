@@ -154,10 +154,10 @@ fun Context.notifyEvent(originalEvent: Event) {
     if (event.repeatInterval != 0 && event.startTS - event.reminder1Minutes * 60 < currentSeconds) {
         val events = dbHelper.getRepeatableEventsFor(currentSeconds - DAY_SECONDS, currentSeconds + YEAR_SECONDS, event.id)
         for (currEvent in events) {
-            event = currEvent
-            if (event.startTS - event.reminder1Minutes * 60 > currentSeconds) {
+            if (currEvent.startTS - currEvent.reminder1Minutes * 60 > currentSeconds) {
                 break
             }
+            event = currEvent
         }
     }
 
@@ -189,12 +189,18 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
         grantReadUriPermission(soundUri)
     }
 
-    val channelId = "my_reminder_channel_$soundUri"
+    // create a new channel for every new sound uri as the new Android Oreo notification system is fundamentally broken
+    if (soundUri != config.lastSoundUri) {
+        config.lastReminderChannel = System.currentTimeMillis()
+        config.lastSoundUri = soundUri
+    }
+
+    val channelId = "simple_calendar_${config.lastReminderChannel}"
     if (isOreoPlus()) {
         val audioAttributes = AudioAttributes.Builder()
-                .setUsage(AudioAttributes.USAGE_NOTIFICATION)
+                .setUsage(AudioAttributes.USAGE_ALARM)
                 .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-                .setLegacyStreamType(AudioManager.STREAM_NOTIFICATION)
+                .setLegacyStreamType(AudioManager.STREAM_ALARM)
                 .setFlags(AudioAttributes.FLAG_AUDIBILITY_ENFORCED)
                 .build()
 
@@ -202,6 +208,7 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
         val name = resources.getString(R.string.event_reminders)
         val importance = NotificationManager.IMPORTANCE_HIGH
         NotificationChannel(channelId, name, importance).apply {
+            setBypassDnd(true)
             enableLights(true)
             lightColor = event.color
             enableVibration(false)
@@ -213,15 +220,15 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
     val contentTitle = if (publicVersion) resources.getString(R.string.app_name) else event.title
     val contentText = if (publicVersion) resources.getString(R.string.public_event_notification_text) else content
 
-    val builder = NotificationCompat.Builder(this)
+    val builder = NotificationCompat.Builder(this, channelId)
             .setContentTitle(contentTitle)
             .setContentText(contentText)
             .setSmallIcon(R.drawable.ic_calendar)
             .setContentIntent(pendingIntent)
-            .setPriority(Notification.PRIORITY_HIGH)
+            .setPriority(NotificationCompat.PRIORITY_MAX)
             .setDefaults(Notification.DEFAULT_LIGHTS)
             .setAutoCancel(true)
-            .setSound(Uri.parse(soundUri), AudioManager.STREAM_NOTIFICATION)
+            .setSound(Uri.parse(soundUri), AudioManager.STREAM_ALARM)
             .setChannelId(channelId)
             .addAction(R.drawable.ic_snooze, getString(R.string.snooze), getSnoozePendingIntent(this, event))
 
@@ -304,7 +311,7 @@ fun Context.scheduleCalDAVSync(activate: Boolean) {
     val alarm = getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
     if (activate) {
-        val syncCheckInterval = 4 * AlarmManager.INTERVAL_HOUR
+        val syncCheckInterval = 2 * AlarmManager.INTERVAL_HOUR
         try {
             alarm.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + syncCheckInterval, syncCheckInterval, pendingIntent)
         } catch (ignored: SecurityException) {
@@ -319,21 +326,25 @@ fun Context.syncCalDAVCalendars(activity: SimpleActivity?, calDAVSyncObserver: C
         val uri = CalendarContract.Calendars.CONTENT_URI
         contentResolver.unregisterContentObserver(calDAVSyncObserver)
         contentResolver.registerContentObserver(uri, false, calDAVSyncObserver)
-
-        val accounts = HashSet<Account>()
-        val calendars = CalDAVHandler(applicationContext).getCalDAVCalendars(activity, config.caldavSyncedCalendarIDs)
-        calendars.forEach {
-            accounts.add(Account(it.accountName, it.accountType))
-        }
-
-        Bundle().apply {
-            putBoolean(ContentResolver.SYNC_EXTRAS_MANUAL, true)
-            putBoolean(ContentResolver.SYNC_EXTRAS_EXPEDITED, true)
-            accounts.forEach {
-                ContentResolver.requestSync(it, uri.authority, this)
-            }
-        }
+        refreshCalDAVCalendars(activity, config.caldavSyncedCalendarIDs)
     }.start()
+}
+
+fun Context.refreshCalDAVCalendars(activity: SimpleActivity?, ids: String) {
+    val uri = CalendarContract.Calendars.CONTENT_URI
+    val accounts = HashSet<Account>()
+    val calendars = CalDAVHandler(applicationContext).getCalDAVCalendars(activity, ids)
+    calendars.forEach {
+        accounts.add(Account(it.accountName, it.accountType))
+    }
+
+    Bundle().apply {
+        putBoolean(ContentResolver.SYNC_EXTRAS_MANUAL, true)
+        putBoolean(ContentResolver.SYNC_EXTRAS_EXPEDITED, true)
+        accounts.forEach {
+            ContentResolver.requestSync(it, uri.authority, this)
+        }
+    }
 }
 
 fun Context.addDayNumber(rawTextColor: Int, day: DayMonthly, linearLayout: LinearLayout, dayLabelHeight: Int, callback: (Int) -> Unit) {
@@ -410,8 +421,27 @@ fun Context.getEventListItems(events: List<Event>): ArrayList<ListItem> {
             listItems.add(listSection)
             prevCode = code
         }
-        val listEvent = ListEvent(it.id, it.startTS, it.endTS, it.title, it.description, it.getIsAllDay(), it.color, it.location, it.isPastEvent)
+        val listEvent = ListEvent(it.id, it.startTS, it.endTS, it.title, it.description, it.getIsAllDay(), it.color, it.location, it.isPastEvent, it.repeatInterval > 0)
         listItems.add(listEvent)
     }
     return listItems
+}
+
+fun Context.handleEventDeleting(eventIds: List<Int>, timestamps: List<Int>, action: Int) {
+    when (action) {
+        DELETE_SELECTED_OCCURRENCE -> {
+            eventIds.forEachIndexed { index, value ->
+                dbHelper.addEventRepeatException(value, timestamps[index], true)
+            }
+        }
+        DELETE_FUTURE_OCCURRENCES -> {
+            eventIds.forEachIndexed { index, value ->
+                dbHelper.addEventRepeatLimit(value, timestamps[index])
+            }
+        }
+        DELETE_ALL_OCCURRENCES -> {
+            val eventIDs = Array(eventIds.size, { i -> (eventIds[i].toString()) })
+            dbHelper.deleteEvents(eventIDs, true)
+        }
+    }
 }

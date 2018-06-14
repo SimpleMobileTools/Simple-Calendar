@@ -185,10 +185,12 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         weekNumberPaint.textAlign = Paint.Align.RIGHT
 
         for (i in 0 until ROW_COUNT) {
+            val weekDays = days.subList(i * 7, i * 7 + 7)
+            weekNumberPaint.color = if (weekDays.any { it.isToday }) primaryColor else textColor
+
             // fourth day of the week matters
             val weekOfYear = days.getOrNull(i * 7 + 3)?.weekOfYear ?: 1
             val id = "$weekOfYear:"
-
             val yPos = i * dayHeight + weekDaysLetterHeight
             canvas.drawText(id, horizontalOffset.toFloat() * 0.9f, yPos + paint.textSize, weekNumberPaint)
         }

@@ -8,7 +8,10 @@ import android.text.TextUtils
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.dialogs.SelectCalendarsDialog
 import com.simplemobiletools.calendar.extensions.*
-import com.simplemobiletools.calendar.helpers.*
+import com.simplemobiletools.calendar.helpers.CalDAVHandler
+import com.simplemobiletools.calendar.helpers.FONT_SIZE_LARGE
+import com.simplemobiletools.calendar.helpers.FONT_SIZE_MEDIUM
+import com.simplemobiletools.calendar.helpers.FONT_SIZE_SMALL
 import com.simplemobiletools.calendar.models.EventType
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.CustomIntervalPickerDialog
@@ -16,6 +19,7 @@ import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.dialogs.SelectAlarmSoundDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.ALARM_SOUND_TYPE_NOTIFICATION
+import com.simplemobiletools.commons.helpers.IS_CUSTOMIZING_COLORS
 import com.simplemobiletools.commons.helpers.PERMISSION_READ_CALENDAR
 import com.simplemobiletools.commons.helpers.PERMISSION_WRITE_CALENDAR
 import com.simplemobiletools.commons.models.AlarmSound
@@ -85,7 +89,7 @@ class SettingsActivity : SimpleActivity() {
 
     private fun setupSectionColors() {
         val adjustedPrimaryColor = getAdjustedPrimaryColor()
-        arrayListOf(reminders_label, caldav_label, weekly_view_label, monthly_view_label, simple_event_list_label, simple_font_size_label, events_label).forEach {
+        arrayListOf(reminders_label, caldav_label, weekly_view_label, monthly_view_label, simple_event_list_label, widgets_label, events_label).forEach {
             it.setTextColor(adjustedPrimaryColor)
         }
     }
@@ -291,7 +295,7 @@ class SettingsActivity : SimpleActivity() {
         settings_reminder_sound.text = config.reminderSoundTitle
 
         settings_reminder_sound_holder.setOnClickListener {
-            SelectAlarmSoundDialog(this, config.reminderSoundUri, AudioManager.STREAM_NOTIFICATION, GET_RINGTONE_URI, ALARM_SOUND_TYPE_NOTIFICATION, false,
+            SelectAlarmSoundDialog(this, config.reminderSoundUri, AudioManager.STREAM_ALARM, GET_RINGTONE_URI, ALARM_SOUND_TYPE_NOTIFICATION, false,
                     onAlarmPicked = {
                         if (it != null) {
                             updateReminderSound(it)

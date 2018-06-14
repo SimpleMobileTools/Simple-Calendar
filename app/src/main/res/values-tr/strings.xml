@@ -3,12 +3,12 @@
     <string name="app_name">Basit Takvim</string>
     <string name="app_launcher_name">Takvim</string>
     <string name="change_view">Görünümü değiştir</string>
-    <string name="daily_view">Daily view</string>
+    <string name="daily_view">Günlük görünüm</string>
     <string name="weekly_view">Haftalık görünüm</string>
     <string name="monthly_view">Aylık görünüm</string>
     <string name="yearly_view">Yıllık görünüm</string>
-    <string name="simple_event_list">Basit durum listesi</string>
-    <string name="no_upcoming_events">Gelecekteki etkinliğiniz yok gibi görünüyor.</string>
+    <string name="simple_event_list">Basit etkinlik listesi</string>
+    <string name="no_upcoming_events">Yaklaşan etkinlikleriniz yok gibi görünüyor.</string>
     <string name="go_to_today">Bugüne git</string>
 
     <!-- Widget titles -->
@@ -19,15 +19,15 @@
     <string name="event">Durum</string>
     <string name="edit_event">Etkinliği Düzenle</string>
     <string name="new_event">Yeni Etkinlik</string>
-    <string name="create_new_event">Create a new event</string>
-    <string name="duplicate_event">Duplicate event</string>
-    <string name="title_empty">Başlık başlığı boş olamaz</string>
-    <string name="end_before_start">Etkinlik, başlamasından önce sona eremez</string>
+    <string name="create_new_event">Yeni etkinlik oluştur</string>
+    <string name="duplicate_event">Tekrarlanan etkinlik</string>
+    <string name="title_empty">Başlık boş olamaz</string>
+    <string name="end_before_start">Etkinlik başladığından daha erken bitemez</string>
     <string name="event_added">Etkinlik başarıyla eklendi</string>
     <string name="event_updated">Etkinlik başarıyla güncellendi</string>
-    <string name="filter_events_by_type">Etkinlikleri türe göre filtreleyin</string>
-    <string name="please_fill_location">Please fill in a location to be shown on a map</string>
-    <string name="public_event_notification_text">An event is upcoming</string>
+    <string name="filter_events_by_type">Etkinlikleri türe göre filtrele</string>
+    <string name="please_fill_location">Lütfen haritada gösterilecek bir yeri doldurun</string>
+    <string name="public_event_notification_text">Bir etkinlik yaklaşıyor</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Tekrarla</string>
@@ -36,31 +36,32 @@
     <string name="weekly">Haftalık</string>
     <string name="monthly">Aylık</string>
     <string name="yearly">Yıllık</string>
-    <string name="weeks_raw">haftalar</string>
-    <string name="months_raw">aylar</string>
-    <string name="years_raw">yıllar</string>
-    <string name="repeat_till">Kadar tekrarla:</string>
-    <string name="forever">Sonsuza dek</string>
-    <string name="event_is_repeatable">The event is repeatable</string>
-    <string name="selection_contains_repetition">Seçim, tekrar eden etkinlikleri içeriyor</string>
-    <string name="delete_one_only">Yalnızca seçilen olayı sil</string>
-    <string name="delete_all_occurrences">Tüm tekrarlamaları sil</string>
-    <string name="update_one_only">Sadece seçilen olayı güncelle</string>
-    <string name="update_all_occurrences">Tüm olayları güncelle</string>
-    <string name="repeat_till_date">Tarihe kadar tekrarla</string>
-    <string name="repeat_x_times">X süresini tekrarla</string>
+    <string name="weeks_raw">hafta</string>
+    <string name="months_raw">ay</string>
+    <string name="years_raw">yıl</string>
+    <string name="repeat_till">Şu kadar tekrarla:</string>
+    <string name="forever">Sonsuza kadar</string>
+    <string name="event_is_repeatable">Etkinlik tekrarlanabilir</string>
+    <string name="selection_contains_repetition">Seçim tekrarlanan etkinlikleri içeriyor</string>
+    <string name="delete_one_only">Yalnızca seçilen etkinlikleri sil</string>
+    <string name="delete_future_occurrences">Delete this and all future occurrences</string>
+    <string name="delete_all_occurrences">Tüm tekrarlanan etkinlikleri sil</string>
+    <string name="update_one_only">Yalnızca seçilen etkinlikleri güncelle</string>
+    <string name="update_all_occurrences">Tüm etkinlikleri güncelle</string>
+    <string name="repeat_till_date">Şu tarihe kadar tekrarla</string>
+    <string name="repeat_x_times">X kere tekrarla</string>
     <string name="repeat_forever">Sonsuza kadar tekrarla</string>
-    <string name="times">zamanlar</string>
+    <string name="times">kere</string>
     <string name="repeat">Tekrarla</string>
     <string name="repeat_on">Tekrarlama açık</string>
     <string name="every_day">Her gün</string>
     <string name="selected_days">Seçilen günlerde</string>
     <string name="the_same_day">Aynı gün</string>
     <string name="the_last_day">Son gün</string>
-    <string name="repeat_on_the_same_day_monthly">Her ay aynı gün tekrar edin</string>
-    <string name="repeat_on_the_last_day_monthly">Ayın son gününde tekrar et</string>
-    <string name="repeat_on_the_same_day_yearly">Repeat on the same day every year</string>
-    <string name="repeat_every_m">Her seferinde tekrarla</string>
+    <string name="repeat_on_the_same_day_monthly">Her ay aynı günde tekrarla</string>
+    <string name="repeat_on_the_last_day_monthly">Ayın son gününde tekrarla</string>
+    <string name="repeat_on_the_same_day_yearly">Her yıl aynı günde tekrarla</string>
+    <string name="repeat_every_m">Her tekrar</string>
     <string name="every_m">Her</string>
     <string name="first_m">ilk</string>
     <string name="second_m">ikinci</string>
@@ -70,7 +71,7 @@
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
-    <string name="repeat_every_f">Her seferinde tekrarla</string>
+    <string name="repeat_every_f">Her tekrar</string>
     <string name="every_f">Her</string>
     <string name="first_f">ilk</string>
     <string name="second_f">ikinci</string>
@@ -79,37 +80,37 @@
     <string name="last_f">son</string>
 
     <!-- Birthdays -->
-    <string name="birthdays">Birthdays</string>
-    <string name="add_birthdays">Add contact birthdays</string>
-    <string name="no_birthdays">No birthdays have been found</string>
-    <string name="birthdays_added">Birthdays added successfully</string>
+    <string name="birthdays">Doğum günleri</string>
+    <string name="add_birthdays">Kişi doğum günlerini ekle</string>
+    <string name="no_birthdays">Hiçbir doğum günü bulunamadı</string>
+    <string name="birthdays_added">Doğum günleri başarıyla eklendi</string>
 
     <!-- Anniversaries -->
-    <string name="anniversaries">Anniversaries</string>
-    <string name="add_anniversaries">Add contact anniversaries</string>
-    <string name="no_anniversaries">No anniversaries have been found</string>
-    <string name="anniversaries_added">Anniversaries added successfully</string>
+    <string name="anniversaries">Yıldönümleri</string>
+    <string name="add_anniversaries">Kişi yıldönümlerini ekle</string>
+    <string name="no_anniversaries">Yıldönümleri bulunamadı</string>
+    <string name="anniversaries_added">Yıldönümleri başarıyla eklendi</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Hatırlatma</string>
     <string name="before">önce</string>
-    <string name="add_another_reminder">Başka bir hatırlatma ekle</string>
-    <string name="event_reminders">Event reminders</string>
+    <string name="add_another_reminder">Başka hatırlatma ekle</string>
+    <string name="event_reminders">Etkinlik hatırlatıcılar</string>
 
     <!-- Export / Import -->
-    <string name="import_events">Olayları içe aktar</string>
-    <string name="export_events">Olayları dışa aktar</string>
-    <string name="import_events_from_ics">Bir .ics dosyasından olayları içe aktar</string>
-    <string name="export_events_to_ics">Etkinlikleri bir .ics dosyasına aktarın</string>
-    <string name="default_event_type">Varsayılan olay türü</string>
-    <string name="export_past_events_too">Geçmişteki etkinlikleri de dışa aktar</string>
-    <string name="include_event_types">Include event types</string>
-    <string name="filename_without_ics">Filename (without .ics)</string>
-    <string name="override_event_types">Override event types in the file</string>
+    <string name="import_events">Etkinlikleri içe aktar</string>
+    <string name="export_events">Etkinlikleri dışa aktar</string>
+    <string name="import_events_from_ics">Etkinlikleri .ics dosyasından içe aktar</string>
+    <string name="export_events_to_ics">Etkinlikleri .ics dosyasına aktar</string>
+    <string name="default_event_type">Varsayılan etkinlik türü</string>
+    <string name="export_past_events_too">Geçmiş etkinlikleri de dışa aktar</string>
+    <string name="include_event_types">Etkinlik türlerini ekle</string>
+    <string name="filename_without_ics">Dosya adı (.ics olmadan)</string>
+    <string name="override_event_types">Dosyadaki etkinlik türlerini geçersiz kıl</string>
 
     <!-- Event details -->
     <string name="title">Başlık</string>
-    <string name="location">Location</string>
+    <string name="location">Konum</string>
     <string name="description">Açıklama</string>
     <string name="all_day">Tüm-gün</string>
 
@@ -117,59 +118,59 @@
     <string name="week">Hafta</string>
 
     <!-- Event types -->
-    <string name="event_types">Olay türleri</string>
-    <string name="add_new_type">Yeni bir tür ekle</string>
+    <string name="event_types">Etkinlik türleri</string>
+    <string name="add_new_type">Yeni tür ekle</string>
     <string name="edit_type">Türü düzenle</string>
-    <string name="type_already_exists">Bu başlığı taşıyan tür zaten var</string>
+    <string name="type_already_exists">Bu başlığı taşıyan bir tür zaten var</string>
     <string name="color">Renk</string>
     <string name="regular_event">Düzenli etkinlik</string>
-    <string name="cannot_delete_default_type">Varsayılan etkinlik türü silinemiyor</string>
+    <string name="cannot_delete_default_type">Varsayılan etkinlik türü silinemez</string>
     <string name="select_event_type">Bir etkinlik türü seçin</string>
-    <string name="move_events_into_default">Move affected events into the default event type</string>
-    <string name="remove_affected_events">Permanently remove affected events</string>
-    <string name="unsync_caldav_calendar">To remove a CalDAV calendar you have to unsynchronize it</string>
+    <string name="move_events_into_default">Etkilenen etkinlikleri varsayılan etkinlik türüne taşı</string>
+    <string name="remove_affected_events">Etkilenen etkinlikleri kalıcı olarak kaldır</string>
+    <string name="unsync_caldav_calendar">CalDAV takvimini kaldırmak için, senkronizasyonu kaldırmalısınız</string>
 
     <!-- Holidays -->
-    <string name="holidays">Holidays</string>
+    <string name="holidays">Tatiller</string>
     <string name="add_holidays">Tatil ekle</string>
-    <string name="national_holidays">National holidays</string>
-    <string name="religious_holidays">Religious holidays</string>
-    <string name="holidays_imported_successfully">Holidays have been successfully imported into the \"Holidays\" event type</string>
-    <string name="importing_some_holidays_failed">Importing some events failed</string>
-    <string name="importing_holidays_failed">Importing holidays failed</string>
+    <string name="national_holidays">Ulusal tatiller</string>
+    <string name="religious_holidays">Dini tatiller</string>
+    <string name="holidays_imported_successfully">Tatiller \"Tatiller\" etkinlik türüne başarıyla aktarıldı</string>
+    <string name="importing_some_holidays_failed">Bazı etkinlikler içe aktarılamadı</string>
+    <string name="importing_holidays_failed">Tatiller içe aktarılamadı</string>
 
     <!-- Settings -->
-    <string name="manage_event_types">Olay türlerini yönet</string>
-    <string name="start_day_at">Haftalık görüntüleme gününü şu saatte başlatın</string>
-    <string name="end_day_at">Haftalık görüntüleme gününü bitiştir</string>
-    <string name="week_numbers">Aylık görünümde hafta sayılarını göster</string>
-    <string name="vibrate">Hatırlatma bildiriminde titreşim</string>
+    <string name="manage_event_types">Etkinlik türlerini yönet</string>
+    <string name="start_day_at">Gün başlangıcı</string>
+    <string name="end_day_at">Gün bitişi</string>
+    <string name="week_numbers">Hafta sayılarını göster</string>
+    <string name="vibrate">Hatırlatma bildiriminde titre</string>
     <string name="reminder_sound">Hatırlatma sesi</string>
-    <string name="no_ringtone_picker">Zil sesi ayarlayabilen hiçbir uygulama bulunamadı</string>
-    <string name="no_ringtone_selected">Boş</string>
-    <string name="day_end_before_start">Gün başlamadan önce bitemez</string>
-    <string name="caldav_sync">CalDAV sync</string>
-    <string name="event_lists">Event lists</string>
-    <string name="display_past_events">Display events from the past</string>
-    <string name="replace_description_with_location">Replace event description with location</string>
-    <string name="delete_all_events">Delete all events</string>
-    <string name="delete_all_events_confirmation">Are you sure you want to delete all events? This will leave your event types and other settings intact.</string>
-    <string name="show_a_grid">Show a grid</string>
-    <string name="loop_reminders">Loop reminders until dismissed</string>
-    <string name="dim_past_events">Dim past events</string>
-    <string name="events">Events</string>
+    <string name="no_ringtone_picker">Zil sesi ayarlayabilen uygulama yok</string>
+    <string name="no_ringtone_selected">Hiçbiri</string>
+    <string name="day_end_before_start">Gün başladığından daha erken bitemez</string>
+    <string name="caldav_sync">CalDAV senkronizasyonu</string>
+    <string name="event_lists">Etkinlik listeleri</string>
+    <string name="display_past_events">Geçmişten gelen etkinlikleri görüntüle</string>
+    <string name="replace_description_with_location">Etkinlik açıklamasını konumla değiştir</string>
+    <string name="delete_all_events">Tüm etkinlikleri sil</string>
+    <string name="delete_all_events_confirmation">Tüm etkinlikleri silmek istediğinizden emin misiniz? Bu, etkinlik türlerinizi ve diğer ayarlarınızı bozulmamış halde bırakır.</string>
+    <string name="show_a_grid">Izgara göster</string>
+    <string name="loop_reminders">Kapatılana kadar hatırlatıcıları tekrarla</string>
+    <string name="dim_past_events">Geçmiş etkinlikleri karart</string>
+    <string name="events">Etkinlikler</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
-    <string name="select_caldav_calendars">Select calendars to sync</string>
-    <string name="manage_synced_calendars">Manage synced calendars</string>
-    <string name="store_locally_only">Store locally only</string>
-    <string name="refresh_caldav_calendars">Refresh CalDAV calendars</string>
-    <string name="refreshing">Refreshing…</string>
-    <string name="refreshing_complete">Refreshing complete</string>
-    <string name="editing_calendar_failed">Editing calendar failed</string>
-    <string name="syncing">Syncing…</string>
-    <string name="synchronization_completed">Sync completed</string>
+    <string name="select_caldav_calendars">Senkronize edilecek takvimleri seç</string>
+    <string name="manage_synced_calendars">Senkronize edilmiş takvimleri yönet</string>
+    <string name="store_locally_only">Yalnızca yerel olarak depola</string>
+    <string name="refresh_caldav_calendars">CalDAV takvimlerini yenile</string>
+    <string name="refreshing">Yenileniyor…</string>
+    <string name="refreshing_complete">Yenileme tamamlandı</string>
+    <string name="editing_calendar_failed">Takvim düzenlenme başarısız</string>
+    <string name="syncing">Senkronize ediliyor…</string>
+    <string name="synchronization_completed">Senkronizasyon tamamlandı</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
@@ -182,38 +183,37 @@
     <string name="sunday_alt">Pazar</string>
 
     <!-- List widget config example events -->
-    <string name="sample_title_1">Egzersiz yapma</string>
-    <string name="sample_description_1">Etap günü</string>
-    <string name="sample_title_2">John ile görüşme</string>
-    <string name="sample_description_2">Rockstone bahçesinde</string>
+    <string name="sample_title_1">Egzersiz</string>
+    <string name="sample_description_1">Bacak günü</string>
+    <string name="sample_title_2">Can ile buluşma</string>
+    <string name="sample_description_2">Gülhane parkında</string>
     <string name="sample_title_3">Kütüphane</string>
-    <string name="sample_title_4">Mary ile öğle yemeği</string>
-    <string name="sample_description_4">Plaza\'da</string>
+    <string name="sample_title_4">Merve ile öğle yemeği</string>
+    <string name="sample_description_4">Şehir meydanında</string>
     <string name="sample_title_5">Kahve zamanı</string>
 
     <!-- FAQ -->
-    <string name="faq_1_title">How can I remove the holidays imported via the \"Add holidays\" button?</string>
-    <string name="faq_1_text">Holidays created that way are inserted in a new event type called \"Holidays\". You can go in Settings -> Manage Event Types,
-        long press the given event type and delete it by selecting the trashbin.</string>
-    <string name="faq_2_title">Can I sync my events via Google Calendar, or other service supporting CalDAV?</string>
-    <string name="faq_2_text">Yes, just toggle \"CalDAV sync\" in the app settings and select the calendars you want to sync. However, you will need some third party app handling the synchronization between the device and servers.
-        In case you want to synchronize a Google calendar, their official Calendar app will do the job. For other calendars you will need a third party sync adapter, for example DAVdroid.</string>
+    <string name="faq_1_title">\"Tatil ekle\" düğmesiyle içe aktarılan tatilleri nasıl kaldırabilirim?</string>
+    <string name="faq_1_text">Tatiller, \"Tatiller\" olarak adlandırılan yeni bir etkinlik türüne eklenir. Ayarlar -> Etkinlik Türlerini Yönet\'e gidip, belirlenen etkinlik türüne uzun basıp çöp kutusunu seçerek silebilirsiniz.</string>
+    <string name="faq_2_title">Etkinliklerimi Google Takvim\'le veya CalDAV\'ı destekleyen başka bir hizmetle senkronize edebilir miyim?</string>
+    <string name="faq_2_text">Evet, uygulama ayarlarından \"CalDAV senkronizasyonu\" seçeneğini işaretleyin ve senkronize etmek istediğiniz takvimleri seçin. Bununla birlikte, cihaz ve sunucular arasındaki senkronizasyonu ele alan bazı üçüncü taraf uygulamalarına ihtiyacınız olacaktır.
+        Bu durumda bir Google takvimini senkronize etmek istiyorsanız, resmi Takvim uygulaması işi yapar. Diğer takvimler için, DAVdroid gibi üçüncü taraf senkronizasyon adaptörüne ihtiyacınız olacaktır.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Etkinlikler, özelleştirilebilir widget ve reklamsız basit bir takvim.</string>
+    <string name="app_short_description">Etkinlikler, özelleştirilebilir widget\'lı reklamsız basit bir takvim.</string>
     <string name="app_long_description">
-        Başka bir takvim entegrasyonu gerektirmeyen çevrimdışı bir takvim. Yinelenen etkinlikler kolayca oluşturabilir ve hatırlatıcılar oluşturabilir, haftanın sayılarını da gösterebilir.
+        İsteğe bağlı CalDAV senkronizasyonu ile basit bir takvim. Kolayca tekrarlanan etkinlikler oluşturabilir ve hatırlatıcılar ayarlayabilir, ayrıca hafta sayılarını görüntüleyebilirsiniz.
 
-        Metnin rengini, ayrıca alfa ve arka plan rengini özelleştirebileceğiniz resizable 4x4 bir widget içerir.
+        Metnin renginin yanı sıra alfa ve arka plan rengini özelleştirebileceğiniz aylık görünüm ve etkinlik listesi widget\'ı içerir.
 
-        Reklam içermeyen veya gereksiz izinler. Tamamen açık kaynaktır, özelleştirilebilir renkler sağlar.
+        Reklam veya gereksiz izinler içermez. Tamamen açık kaynaktır, özelleştirilebilir renkler sağlar.
 
-        Depolama izni yalnızca .ics dosyalarından olayları içe aktarmak için gereklidir.
+        Depolama izni yalnızca .ics dosyalarındaki etkinlikleri dışa veya içe aktarmak için gereklidir.
 
-        The Contacts permission is used only at importing contact birthdays and anniversaries.
+        Kişiler izni yalnızca doğum günlerini ve yıldönümlerini içe aktarırken kullanılır.
 
-        Bu uygulama, daha büyük bir uygulama serisinden sadece bir parça. Geri kalanını şu adresten bulabilirsiniz: https://www.simplemobiletools.com
+        Bu uygulama, daha büyük bir uygulama serisinden sadece bir parça. Geri kalanı http://www.simplemobiletools.com adresinde bulabilirsiniz
     </string>
 
     <!--

@@ -528,6 +528,7 @@ class EventActivity : SimpleActivity() {
         event_caldav_calendar_email.beGoneIf(currentCalendar == null)
 
         if (currentCalendar == null) {
+            mEventCalendarId = STORED_LOCALLY_ONLY
             val mediumMargin = resources.getDimension(R.dimen.medium_margin).toInt()
             event_caldav_calendar_name.apply {
                 text = getString(R.string.store_locally_only)
@@ -561,11 +562,11 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun deleteEvent() {
-        DeleteEventDialog(this, arrayListOf(mEvent.id)) {
-            if (it) {
-                dbHelper.deleteEvents(arrayOf(mEvent.id.toString()), true)
-            } else {
-                dbHelper.addEventRepeatException(mEvent.id, mEventOccurrenceTS, true)
+        DeleteEventDialog(this, arrayListOf(mEvent.id), mEvent.repeatInterval > 0) {
+            when (it) {
+                DELETE_SELECTED_OCCURRENCE -> dbHelper.addEventRepeatException(mEvent.id, mEventOccurrenceTS, true)
+                DELETE_FUTURE_OCCURRENCES -> dbHelper.addEventRepeatLimit(mEvent.id, mEventOccurrenceTS)
+                DELETE_ALL_OCCURRENCES -> dbHelper.deleteEvents(arrayOf(mEvent.id.toString()), true)
             }
             finish()
         }

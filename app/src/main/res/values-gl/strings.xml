@@ -44,6 +44,7 @@
     <string name="event_is_repeatable">O evento é repetible</string>
     <string name="selection_contains_repetition">A seleción contén eventos recurrentes</string>
     <string name="delete_one_only">Eliminar só o evento selecionado</string>
+    <string name="delete_future_occurrences">Delete this and all future occurrences</string>
     <string name="delete_all_occurrences">Eliminar todos os eventos</string>
     <string name="update_one_only">Actualizar só o evento selecionado</string>
     <string name="update_all_occurrences">Actualizar todos os eventos</string>
