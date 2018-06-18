@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Prosty Kalendarz</string>
-    <string name="app_launcher_name">Prosty Kalendarz</string>
+    <string name="app_name">Prosty kalendarz</string>
+    <string name="app_launcher_name">Prosty kalendarz</string>
     <string name="change_view">Zmień widok</string>
     <string name="daily_view">Dzień</string>
     <string name="weekly_view">Tydzień</string>
@@ -19,15 +19,15 @@
     <string name="event">Wydarzenie</string>
     <string name="edit_event">Edytuj wydarzenie</string>
     <string name="new_event">Nowe wydarzenie</string>
-    <string name="create_new_event">Create a new event</string>
-    <string name="duplicate_event">Duplicate event</string>
+    <string name="create_new_event">Utwórz nowe wydarzenie</string>
+    <string name="duplicate_event">Skopiuj wydarzenie</string>
     <string name="title_empty">Tytuł nie może być pusty</string>
     <string name="end_before_start">Wydarzenie nie może zakończyć się wcześniej, niż się zaczyna</string>
     <string name="event_added">Wydarzenie zostało dodane</string>
     <string name="event_updated">Wydarzenie zostało zaktualizowane</string>
     <string name="filter_events_by_type">Filtruj wydarzenia według typu</string>
     <string name="please_fill_location">Wpisz lokalizację, która ma być pokazana na mapie</string>
-    <string name="public_event_notification_text">An event is upcoming</string>
+    <string name="public_event_notification_text">Nadchodzi wydarzenie</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Powtórzenie</string>
@@ -44,7 +44,7 @@
     <string name="event_is_repeatable">Wydarzenie jest powtarzalne</string>
     <string name="selection_contains_repetition">Wybór zawiera powtarzające się wydarzenia</string>
     <string name="delete_one_only">Usuń tylko wybrane wystąpienie</string>
-    <string name="delete_future_occurrences">Delete this and all future occurrences</string>
+    <string name="delete_future_occurrences">Usuń to i wyszystkie przyszłe wystąpienia</string>
     <string name="delete_all_occurrences">Usuń wszystkie wystąpienia</string>
     <string name="update_one_only">Zaktualizuj tylko wybrane wystąpienia</string>
     <string name="update_all_occurrences">Zaktualizuj wszystkie wystąpienia</string>
@@ -106,7 +106,7 @@
     <string name="export_past_events_too">Eksportuj także wydarzenia z przeszłości</string>
     <string name="include_event_types">Dołącz typy wydarzeń</string>
     <string name="filename_without_ics">Nazwa pliku (bez końcówki \".ics\")</string>
-    <string name="override_event_types">Override event types in the file</string>
+    <string name="override_event_types">Nadpisz typy wydarzeń w pliku</string>
 
     <!-- Event details -->
     <string name="title">Tytuł</string>
@@ -135,7 +135,7 @@
     <string name="add_holidays">Dodaj święto</string>
     <string name="national_holidays">Święta państwowe</string>
     <string name="religious_holidays">Święta religijne</string>
-    <string name="holidays_imported_successfully">Holidays have been successfully imported into the \"Holidays\" event type</string>
+    <string name="holidays_imported_successfully">Święta zostały pomyślnie zaimportowane do kategorii wydarzeń \"Święta\"</string>
     <string name="importing_some_holidays_failed">Importowanie niektórych świąt nie powiodło się</string>
     <string name="importing_holidays_failed">Importowanie świąt nie powiodło się</string>
 
@@ -155,10 +155,10 @@
     <string name="replace_description_with_location">Zamieniaj opis wydarzenia na lokalizację</string>
     <string name="delete_all_events">Usuń wszystkie wydarzenia</string>
     <string name="delete_all_events_confirmation">Czy na pewno mam usunąć wszystkie wydarzenia? Nie naruszy to typów wydarzeń i innych ustawień.</string>
-    <string name="show_a_grid">Show a grid</string>
-    <string name="loop_reminders">Loop reminders until dismissed</string>
-    <string name="dim_past_events">Dim past events</string>
-    <string name="events">Events</string>
+    <string name="show_a_grid">Pokazuj siatkę</string>
+    <string name="loop_reminders">Powtarzaj przypomnienia aż do ich wyłączenia</string>
+    <string name="dim_past_events">Przyciemniaj przeszłe wydarzenia</string>
+    <string name="events">Wydarzenia</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
