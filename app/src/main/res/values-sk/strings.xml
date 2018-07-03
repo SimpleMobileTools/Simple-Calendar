@@ -159,6 +159,10 @@
     <string name="loop_reminders">Opakovať pripomienky až po odstránenie</string>
     <string name="dim_past_events">Stlmiť minulé udalosti</string>
     <string name="events">Udalosti</string>
+    <string name="reminder_stream">Zvukový kanál používaný pripomienkami</string>
+    <string name="system_stream">Systémový</string>
+    <string name="alarm_stream">Výstražný</string>
+    <string name="notification_stream">Pripomienkový</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
