@@ -17,6 +17,7 @@ import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.models.CalDAVCalendar
 import com.simplemobiletools.calendar.models.Event
+import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
@@ -101,7 +102,17 @@ class EventActivity : SimpleActivity() {
         event_repetition_rule_holder.setOnClickListener { showRepetitionRuleDialog() }
         event_repetition_limit_holder.setOnClickListener { showRepetitionTypePicker() }
 
-        event_reminder_1.setOnClickListener { showReminder1Dialog() }
+        event_reminder_1.setOnClickListener {
+            if (config.wasAlarmWarningShown) {
+                showReminder1Dialog()
+            } else {
+                ConfirmationDialog(this, messageId = R.string.reminder_warning, positive = R.string.ok, negative = 0) {
+                    config.wasAlarmWarningShown = true
+                    showReminder1Dialog()
+                }
+            }
+        }
+
         event_reminder_2.setOnClickListener { showReminder2Dialog() }
         event_reminder_3.setOnClickListener { showReminder3Dialog() }
 
