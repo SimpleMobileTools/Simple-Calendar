@@ -1,6 +1,7 @@
 package com.simplemobiletools.calendar.helpers
 
 import android.content.Context
+import android.media.AudioManager
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.scheduleCalDAVSync
 import com.simplemobiletools.commons.extensions.getDefaultAlarmTitle
@@ -93,6 +94,10 @@ class Config(context: Context) : BaseConfig(context) {
     var lastUsedLocalEventTypeId: Int
         get() = prefs.getInt(LAST_USED_LOCAL_EVENT_TYPE_ID, DBHelper.REGULAR_EVENT_TYPE_ID)
         set(lastUsedLocalEventTypeId) = prefs.edit().putInt(LAST_USED_LOCAL_EVENT_TYPE_ID, lastUsedLocalEventTypeId).apply()
+
+    var reminderAudioStream: Int
+        get() = prefs.getInt(REMINDER_AUDIO_STREAM, AudioManager.STREAM_ALARM)
+        set(reminderAudioStream) = prefs.edit().putInt(REMINDER_AUDIO_STREAM, reminderAudioStream).apply()
 
     var replaceDescription: Boolean
         get() = prefs.getBoolean(REPLACE_DESCRIPTION, false)

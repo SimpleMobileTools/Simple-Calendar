@@ -31,10 +31,10 @@ class ManageEventTypesAdapter(activity: SimpleActivity, val eventTypes: ArrayLis
 
     override fun prepareActionMode(menu: Menu) {}
 
-    override fun prepareItemSelection(view: View) {}
+    override fun prepareItemSelection(viewHolder: ViewHolder) {}
 
-    override fun markItemSelection(select: Boolean, view: View?) {
-        view?.event_item_frame?.isSelected = select
+    override fun markViewHolderSelection(select: Boolean, viewHolder: ViewHolder?) {
+        viewHolder?.itemView?.event_item_frame?.isSelected = select
     }
 
     override fun actionItemPressed(id: Int) {
@@ -45,11 +45,13 @@ class ManageEventTypesAdapter(activity: SimpleActivity, val eventTypes: ArrayLis
 
     override fun getSelectableItemCount() = eventTypes.size
 
+    override fun getIsItemSelectable(position: Int) = true
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = createViewHolder(R.layout.item_event_type, parent)
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val eventType = eventTypes[position]
-        val view = holder.bindView(eventType) { itemView, layoutPosition ->
+        val view = holder.bindView(eventType, true, true) { itemView, layoutPosition ->
             setupView(itemView, eventType)
         }
         bindViewHolder(holder, position, view)

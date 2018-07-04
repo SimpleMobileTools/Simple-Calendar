@@ -159,6 +159,10 @@
     <string name="loop_reminders">Циклические напоминания до отключения</string>
     <string name="dim_past_events">Прошедшие события отображать тусклыми</string>
     <string name="events">События</string>
+    <string name="reminder_stream">Audio stream used by reminders</string>
+    <string name="system_stream">System</string>
+    <string name="alarm_stream">Alarm</string>
+    <string name="notification_stream">Notification</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

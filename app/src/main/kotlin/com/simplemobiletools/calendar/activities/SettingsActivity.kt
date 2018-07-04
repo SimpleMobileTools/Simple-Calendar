@@ -58,6 +58,7 @@ class SettingsActivity : SimpleActivity() {
         setupWeeklyEnd()
         setupVibrate()
         setupReminderSound()
+        setupReminderAudioStream()
         setupUseSameSnooze()
         setupLoopReminders()
         setupSnoozeTime()
@@ -295,7 +296,7 @@ class SettingsActivity : SimpleActivity() {
         settings_reminder_sound.text = config.reminderSoundTitle
 
         settings_reminder_sound_holder.setOnClickListener {
-            SelectAlarmSoundDialog(this, config.reminderSoundUri, AudioManager.STREAM_ALARM, GET_RINGTONE_URI, ALARM_SOUND_TYPE_NOTIFICATION, false,
+            SelectAlarmSoundDialog(this, config.reminderSoundUri, config.reminderAudioStream, GET_RINGTONE_URI, ALARM_SOUND_TYPE_NOTIFICATION, false,
                     onAlarmPicked = {
                         if (it != null) {
                             updateReminderSound(it)
@@ -314,6 +315,27 @@ class SettingsActivity : SimpleActivity() {
         config.reminderSoundUri = alarmSound.uri
         settings_reminder_sound.text = alarmSound.title
     }
+
+    private fun setupReminderAudioStream() {
+        settings_reminder_audio_stream.text = getAudioStreamText()
+        settings_reminder_audio_stream_holder.setOnClickListener {
+            val items = arrayListOf(
+                    RadioItem(AudioManager.STREAM_ALARM, res.getString(R.string.alarm_stream)),
+                    RadioItem(AudioManager.STREAM_SYSTEM, res.getString(R.string.system_stream)),
+                    RadioItem(AudioManager.STREAM_NOTIFICATION, res.getString(R.string.notification_stream)))
+
+            RadioGroupDialog(this@SettingsActivity, items, config.reminderAudioStream) {
+                config.reminderAudioStream = it as Int
+                settings_reminder_audio_stream.text = getAudioStreamText()
+            }
+        }
+    }
+
+    private fun getAudioStreamText() = getString(when (config.reminderAudioStream) {
+        AudioManager.STREAM_ALARM -> R.string.alarm_stream
+        AudioManager.STREAM_SYSTEM -> R.string.system_stream
+        else -> R.string.notification_stream
+    })
 
     private fun setupVibrate() {
         settings_vibrate.isChecked = config.vibrateOnReminder

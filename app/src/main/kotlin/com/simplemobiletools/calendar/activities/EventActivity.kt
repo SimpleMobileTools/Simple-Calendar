@@ -17,6 +17,7 @@ import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.models.CalDAVCalendar
 import com.simplemobiletools.calendar.models.Event
+import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
@@ -101,7 +102,17 @@ class EventActivity : SimpleActivity() {
         event_repetition_rule_holder.setOnClickListener { showRepetitionRuleDialog() }
         event_repetition_limit_holder.setOnClickListener { showRepetitionTypePicker() }
 
-        event_reminder_1.setOnClickListener { showReminder1Dialog() }
+        event_reminder_1.setOnClickListener {
+            if (config.wasAlarmWarningShown) {
+                showReminder1Dialog()
+            } else {
+                ConfirmationDialog(this, messageId = R.string.reminder_warning, positive = R.string.ok, negative = 0) {
+                    config.wasAlarmWarningShown = true
+                    showReminder1Dialog()
+                }
+            }
+        }
+
         event_reminder_2.setOnClickListener { showReminder2Dialog() }
         event_reminder_3.setOnClickListener { showReminder3Dialog() }
 
@@ -146,7 +157,9 @@ class EventActivity : SimpleActivity() {
         event_title.setText(mEvent.title)
         event_location.setText(mEvent.location)
         event_description.setText(mEvent.description)
-        event_description.movementMethod = LinkMovementMethod.getInstance()
+        if (event_description.value.isNotEmpty()) {
+            event_description.movementMethod = LinkMovementMethod.getInstance()
+        }
 
         mReminder1Minutes = mEvent.reminder1Minutes
         mReminder2Minutes = mEvent.reminder2Minutes
@@ -175,7 +188,9 @@ class EventActivity : SimpleActivity() {
             event_title.setText(intent.getStringExtra("title"))
             event_location.setText(intent.getStringExtra("eventLocation"))
             event_description.setText(intent.getStringExtra("description"))
-            event_description.movementMethod = LinkMovementMethod.getInstance()
+            if (event_description.value.isNotEmpty()) {
+                event_description.movementMethod = LinkMovementMethod.getInstance()
+            }
         } else {
             val startTS = intent.getIntExtra(NEW_EVENT_START_TS, 0)
             val dateTime = Formatter.getDateTimeFromTS(startTS)
@@ -616,9 +631,9 @@ class EventActivity : SimpleActivity() {
         }
 
         val reminders = sortedSetOf(mReminder1Minutes, mReminder2Minutes, mReminder3Minutes).filter { it != REMINDER_OFF }
-        val reminder1 = reminders.getOrElse(0, { REMINDER_OFF })
-        val reminder2 = reminders.getOrElse(1, { REMINDER_OFF })
-        val reminder3 = reminders.getOrElse(2, { REMINDER_OFF })
+        val reminder1 = reminders.getOrElse(0) { REMINDER_OFF }
+        val reminder2 = reminders.getOrElse(1) { REMINDER_OFF }
+        val reminder3 = reminders.getOrElse(2) { REMINDER_OFF }
 
         config.apply {
             defaultReminderMinutes = reminder1

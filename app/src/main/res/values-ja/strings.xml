@@ -3,30 +3,30 @@
     <string name="app_name">シンプル カレンダー</string>
     <string name="app_launcher_name">カレンダー</string>
     <string name="change_view">ビューの変更</string>
-    <string name="daily_view">Daily view</string>
-    <string name="weekly_view">Weekly view</string>
-    <string name="monthly_view">月ビュー</string>
-    <string name="yearly_view">年ビュー</string>
-    <string name="simple_event_list">シンプル イベント リスト</string>
-    <string name="no_upcoming_events">Seems like you don\'t have any upcoming events.</string>
-    <string name="go_to_today">Go to today</string>
+    <string name="daily_view">日</string>
+    <string name="weekly_view">週</string>
+    <string name="monthly_view">月</string>
+    <string name="yearly_view">年</string>
+    <string name="simple_event_list">シンプル 予定 リスト</string>
+    <string name="no_upcoming_events">今後の予定はありません。</string>
+    <string name="go_to_today">今日へ移動</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">カレンダー月</string>
-    <string name="widget_list">カレンダー イベント リスト</string>
+    <string name="widget_list">カレンダー 予定 リスト</string>
 
     <!-- Event -->
-    <string name="event">イベント</string>
-    <string name="edit_event">イベントを編集</string>
-    <string name="new_event">新しいイベント</string>
-    <string name="create_new_event">Create a new event</string>
-    <string name="duplicate_event">Duplicate event</string>
+    <string name="event">予定</string>
+    <string name="edit_event">予定を編集</string>
+    <string name="new_event">新しい予定</string>
+    <string name="create_new_event">新しい予定を作成</string>
+    <string name="duplicate_event">予定を複製</string>
     <string name="title_empty">タイトルは空にできません</string>
-    <string name="end_before_start">イベントの終了は開始よりも前にできません</string>
-    <string name="event_added">イベントを正常に追加しました</string>
-    <string name="event_updated">イベントを正常に更新しました</string>
-    <string name="filter_events_by_type">Filter events by type</string>
-    <string name="please_fill_location">Please fill in a location to be shown on a map</string>
+    <string name="end_before_start">予定の終了は開始よりも前にできません</string>
+    <string name="event_added">予定を正常に追加しました</string>
+    <string name="event_updated">予定を正常に更新しました</string>
+    <string name="filter_events_by_type">種類によって予定をフィルタリング</string>
+    <string name="please_fill_location">地図上に表示する場所を入力してください</string>
     <string name="public_event_notification_text">An event is upcoming</string>
 
     <!-- Event Repetition -->
@@ -36,9 +36,9 @@
     <string name="weekly">毎週</string>
     <string name="monthly">毎月</string>
     <string name="yearly">毎年</string>
-    <string name="weeks_raw">weeks</string>
-    <string name="months_raw">months</string>
-    <string name="years_raw">years</string>
+    <string name="weeks_raw">週</string>
+    <string name="months_raw">月</string>
+    <string name="years_raw">年</string>
     <string name="repeat_till">Repeat till</string>
     <string name="forever">Forever</string>
     <string name="event_is_repeatable">The event is repeatable</string>
@@ -80,52 +80,52 @@
     <string name="last_f">last</string>
 
     <!-- Birthdays -->
-    <string name="birthdays">Birthdays</string>
-    <string name="add_birthdays">Add contact birthdays</string>
-    <string name="no_birthdays">No birthdays have been found</string>
-    <string name="birthdays_added">Birthdays added successfully</string>
+    <string name="birthdays">誕生日</string>
+    <string name="add_birthdays">連絡先の誕生日を追加</string>
+    <string name="no_birthdays">誕生日は見つかりませんでした</string>
+    <string name="birthdays_added">誕生日が正常に追加されました</string>
 
     <!-- Anniversaries -->
-    <string name="anniversaries">Anniversaries</string>
-    <string name="add_anniversaries">Add contact anniversaries</string>
-    <string name="no_anniversaries">No anniversaries have been found</string>
-    <string name="anniversaries_added">Anniversaries added successfully</string>
+    <string name="anniversaries">記念日</string>
+    <string name="add_anniversaries">連絡先の記念日を追加</string>
+    <string name="no_anniversaries">記念日は見つかりませんでした</string>
+    <string name="anniversaries_added">記念日が正常に追加されました</string>
 
     <!-- Event Reminders -->
     <string name="reminder">リマインダー</string>
     <string name="before">前</string>
     <string name="add_another_reminder">Add another reminder</string>
-    <string name="event_reminders">Event reminders</string>
+    <string name="event_reminders">予定のリマインダー</string>
 
     <!-- Export / Import -->
-    <string name="import_events">Import events</string>
-    <string name="export_events">Export events</string>
-    <string name="import_events_from_ics">Import events from an .ics file</string>
-    <string name="export_events_to_ics">Export events to an .ics file</string>
-    <string name="default_event_type">Default event type</string>
-    <string name="export_past_events_too">Export past events too</string>
-    <string name="include_event_types">Include event types</string>
-    <string name="filename_without_ics">Filename (without .ics)</string>
-    <string name="override_event_types">Override event types in the file</string>
+    <string name="import_events">予定をインポート</string>
+    <string name="export_events">予定をエクスポート</string>
+    <string name="import_events_from_ics">.ics ファイルから予定をインポートする</string>
+    <string name="export_events_to_ics">.ics ファイルに予定をエクスポートする</string>
+    <string name="default_event_type">既定の予定の種類</string>
+    <string name="export_past_events_too">過去の予定もエクスポートする</string>
+    <string name="include_event_types">予定の種類を含める</string>
+    <string name="filename_without_ics">ファイル名 (.ics を除く)</string>
+    <string name="override_event_types">ファイル内の予定の種類を上書きする</string>
 
     <!-- Event details -->
     <string name="title">タイトル</string>
-    <string name="location">Location</string>
+    <string name="location">場所</string>
     <string name="description">説明</string>
-    <string name="all_day">All-day</string>
+    <string name="all_day">終日</string>
 
     <!-- Weekly view -->
-    <string name="week">Week</string>
+    <string name="week">週</string>
 
     <!-- Event types -->
-    <string name="event_types">Event types</string>
-    <string name="add_new_type">Add a new type</string>
-    <string name="edit_type">Edit type</string>
-    <string name="type_already_exists">Type with this title already exists</string>
-    <string name="color">Color</string>
-    <string name="regular_event">Regular event</string>
+    <string name="event_types">予定の種類</string>
+    <string name="add_new_type">新しい種類を追加</string>
+    <string name="edit_type">種類を編集</string>
+    <string name="type_already_exists">このタイトルの種類は既に存在します</string>
+    <string name="color">色</string>
+    <string name="regular_event">通常の予定</string>
     <string name="cannot_delete_default_type">Default event type cannot be deleted</string>
-    <string name="select_event_type">Select an event type</string>
+    <string name="select_event_type">予定の種類を選択</string>
     <string name="move_events_into_default">Move affected events into the default event type</string>
     <string name="remove_affected_events">Permanently remove affected events</string>
     <string name="unsync_caldav_calendar">To remove a CalDAV calendar you have to unsynchronize it</string>
@@ -140,7 +140,7 @@
     <string name="importing_holidays_failed">Importing holidays failed</string>
 
     <!-- Settings -->
-    <string name="manage_event_types">Manage event types</string>
+    <string name="manage_event_types">予定の種類を管理</string>
     <string name="start_day_at">Start day at</string>
     <string name="end_day_at">End day at</string>
     <string name="week_numbers">週番号を表示</string>
@@ -157,20 +157,24 @@
     <string name="delete_all_events_confirmation">Are you sure you want to delete all events? This will leave your event types and other settings intact.</string>
     <string name="show_a_grid">Show a grid</string>
     <string name="loop_reminders">Loop reminders until dismissed</string>
-    <string name="dim_past_events">Dim past events</string>
-    <string name="events">Events</string>
+    <string name="dim_past_events">過去の予定を薄い色で表示</string>
+    <string name="events">予定</string>
+    <string name="reminder_stream">Audio stream used by reminders</string>
+    <string name="system_stream">System</string>
+    <string name="alarm_stream">Alarm</string>
+    <string name="notification_stream">Notification</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
-    <string name="select_caldav_calendars">Select calendars to sync</string>
-    <string name="manage_synced_calendars">Manage synced calendars</string>
-    <string name="store_locally_only">Store locally only</string>
-    <string name="refresh_caldav_calendars">Refresh CalDAV calendars</string>
-    <string name="refreshing">Refreshing…</string>
-    <string name="refreshing_complete">Refreshing complete</string>
-    <string name="editing_calendar_failed">Editing calendar failed</string>
-    <string name="syncing">Syncing…</string>
-    <string name="synchronization_completed">Sync completed</string>
+    <string name="select_caldav_calendars">同期するカレンダーを選択</string>
+    <string name="manage_synced_calendars">同期したカレンダーの管理</string>
+    <string name="store_locally_only">端末内にのみ保存</string>
+    <string name="refresh_caldav_calendars">CalDAVカレンダーを更新</string>
+    <string name="refreshing">更新中…</string>
+    <string name="refreshing_complete">更新が完了しました</string>
+    <string name="editing_calendar_failed">カレンダーを編集できませんでした</string>
+    <string name="syncing">同期中…</string>
+    <string name="synchronization_completed">同期が完了しました</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
@@ -202,17 +206,17 @@
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">イベント、カスタマイズ可能なウィジェットのあるシンプルなカレンダー。広告はありません。</string>
+    <string name="app_short_description">予定、カスタマイズ可能なウィジェットのあるシンプルなカレンダー。広告はありません。</string>
     <string name="app_long_description">
-        他のカレンダーとは統合されていないオフラインカレンダー。 簡単に定期的なイベントを作成し、リマインダーを設定することができます。また、週番号も表示することができます。
+        CalDAVとの同期オプションも備えた、シンプルなカレンダー。 簡単に定期的な予定を作成し、リマインダーを設定することができます。また、週番号も表示することができます。
 
-        サイズ変更が可能な 4x4 ウィジェットが含まれており、文字の色や背景のアルファや色をカスタマイズすることができます。
+        サイズ変更が可能な 4x4 ウィジェットが含まれており、文字色や背景色、透明度をカスタマイズすることができます。
 
-        広告や不要なアクセス許可は含まれていません。 完全にオープンソースで、ダークテーマも提供しています。
+        広告や不要なアクセス権限は含まれていません。 完全にオープンソースで、ダークテーマも提供しています。
 
-        The Storage permission is needed only for exporting or importing events from .ics files.
+        ストレージへのアクセス権限は、.icsファイルから予定をインポート/エクスポートするために必要です。
 
-        The Contacts permission is used only at importing contact birthdays and anniversaries.
+        連絡先へのアクセス権限は、誕生日や記念日をインポートするために必要です。
 
         このアプリは、大きな一連のアプリの一つです。 他のアプリは https://www.simplemobiletools.com で見つけることができます
     </string>

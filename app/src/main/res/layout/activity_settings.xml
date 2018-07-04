@@ -247,6 +247,40 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/settings_reminder_audio_stream_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:paddingBottom="@dimen/activity_margin"
+            android:paddingLeft="@dimen/normal_margin"
+            android:paddingRight="@dimen/normal_margin"
+            android:paddingTop="@dimen/activity_margin">
+
+            <com.simplemobiletools.commons.views.MyTextView
+                android:id="@+id/settings_reminder_audio_stream_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/settings_reminder_audio_stream"
+                android:layout_toStartOf="@+id/settings_reminder_audio_stream"
+                android:paddingLeft="@dimen/medium_margin"
+                android:paddingRight="@dimen/medium_margin"
+                android:text="@string/reminder_stream"/>
+
+            <com.simplemobiletools.commons.views.MyTextView
+                android:id="@+id/settings_reminder_audio_stream"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="@dimen/small_margin"
+                android:layout_marginRight="@dimen/small_margin"
+                android:background="@null"
+                android:clickable="false"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
             android:id="@+id/settings_use_same_snooze_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
