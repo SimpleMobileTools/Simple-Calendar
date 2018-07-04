@@ -146,7 +146,9 @@ class EventActivity : SimpleActivity() {
         event_title.setText(mEvent.title)
         event_location.setText(mEvent.location)
         event_description.setText(mEvent.description)
-        event_description.movementMethod = LinkMovementMethod.getInstance()
+        if (event_description.value.isNotEmpty()) {
+            event_description.movementMethod = LinkMovementMethod.getInstance()
+        }
 
         mReminder1Minutes = mEvent.reminder1Minutes
         mReminder2Minutes = mEvent.reminder2Minutes
@@ -175,7 +177,9 @@ class EventActivity : SimpleActivity() {
             event_title.setText(intent.getStringExtra("title"))
             event_location.setText(intent.getStringExtra("eventLocation"))
             event_description.setText(intent.getStringExtra("description"))
-            event_description.movementMethod = LinkMovementMethod.getInstance()
+            if (event_description.value.isNotEmpty()) {
+                event_description.movementMethod = LinkMovementMethod.getInstance()
+            }
         } else {
             val startTS = intent.getIntExtra(NEW_EVENT_START_TS, 0)
             val dateTime = Formatter.getDateTimeFromTS(startTS)
