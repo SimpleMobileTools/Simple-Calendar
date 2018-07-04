@@ -58,6 +58,7 @@ class SettingsActivity : SimpleActivity() {
         setupWeeklyEnd()
         setupVibrate()
         setupReminderSound()
+        setupReminderAudioStream()
         setupUseSameSnooze()
         setupLoopReminders()
         setupSnoozeTime()
@@ -314,6 +315,27 @@ class SettingsActivity : SimpleActivity() {
         config.reminderSoundUri = alarmSound.uri
         settings_reminder_sound.text = alarmSound.title
     }
+
+    private fun setupReminderAudioStream() {
+        settings_reminder_audio_stream.text = getAudioStreamText()
+        settings_reminder_audio_stream_holder.setOnClickListener {
+            val items = arrayListOf(
+                    RadioItem(AudioManager.STREAM_ALARM, res.getString(R.string.alarm_stream)),
+                    RadioItem(AudioManager.STREAM_SYSTEM, res.getString(R.string.system_stream)),
+                    RadioItem(AudioManager.STREAM_NOTIFICATION, res.getString(R.string.notification_stream)))
+
+            RadioGroupDialog(this@SettingsActivity, items, config.reminderAudioStream) {
+                config.reminderAudioStream = it as Int
+                settings_reminder_audio_stream.text = getAudioStreamText()
+            }
+        }
+    }
+
+    private fun getAudioStreamText() = getString(when (config.reminderAudioStream) {
+        AudioManager.STREAM_ALARM -> R.string.alarm_stream
+        AudioManager.STREAM_SYSTEM -> R.string.system_stream
+        else -> R.string.notification_stream
+    })
 
     private fun setupVibrate() {
         settings_vibrate.isChecked = config.vibrateOnReminder
