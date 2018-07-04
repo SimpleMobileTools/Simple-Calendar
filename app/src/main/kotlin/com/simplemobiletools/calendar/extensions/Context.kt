@@ -77,8 +77,9 @@ fun Context.scheduleAllEvents() {
     }
 }
 
-fun Context.scheduleNextEventReminder(event: Event?, dbHelper: DBHelper) {
-    if (event == null || event.getReminders().isEmpty()) {
+fun Context.scheduleNextEventReminder(event: Event, dbHelper: DBHelper, activity: SimpleActivity? = null) {
+    if (event.getReminders().isEmpty()) {
+        activity?.toast(R.string.saving)
         return
     }
 
@@ -89,18 +90,27 @@ fun Context.scheduleNextEventReminder(event: Event?, dbHelper: DBHelper) {
             for (curEvent in it) {
                 for (curReminder in reminderSeconds) {
                     if (curEvent.getEventStartTS() - curReminder > now) {
-                        scheduleEventIn((curEvent.getEventStartTS() - curReminder) * 1000L, curEvent)
+                        scheduleEventIn((curEvent.getEventStartTS() - curReminder) * 1000L, curEvent, activity)
                         return@getEvents
                     }
                 }
             }
         }
+
+        activity?.toast(R.string.saving)
     }
 }
 
-fun Context.scheduleEventIn(notifTS: Long, event: Event) {
+fun Context.scheduleEventIn(notifTS: Long, event: Event, activity: SimpleActivity? = null) {
     if (notifTS < System.currentTimeMillis()) {
+        activity?.toast(R.string.saving)
         return
+    }
+
+    if (activity != null) {
+        val secondsTillNotification = (notifTS - System.currentTimeMillis()) / 1000
+        val msg = String.format(getString(R.string.reminder_triggers_in), formatSecondsToTimeString(secondsTillNotification.toInt()))
+        activity.toast(msg)
     }
 
     val pendingIntent = getNotificationIntent(applicationContext, event)
