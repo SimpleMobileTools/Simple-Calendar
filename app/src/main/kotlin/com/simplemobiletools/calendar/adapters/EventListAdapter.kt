@@ -62,10 +62,10 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
 
     override fun prepareActionMode(menu: Menu) {}
 
-    override fun prepareItemSelection(view: View) {}
+    override fun prepareItemSelection(viewHolder: ViewHolder) {}
 
-    override fun markItemSelection(select: Boolean, view: View?) {
-        view?.event_item_frame?.isSelected = select
+    override fun markViewHolderSelection(select: Boolean, viewHolder: ViewHolder?) {
+        viewHolder?.itemView?.event_item_frame?.isSelected = select
     }
 
     override fun actionItemPressed(id: Int) {
@@ -76,6 +76,8 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
     }
 
     override fun getSelectableItemCount() = listItems.filter { it is ListEvent }.size
+
+    override fun getIsItemSelectable(position: Int) = listItems[position] is ListEvent
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyRecyclerViewAdapter.ViewHolder {
         val layoutId = when (viewType) {
@@ -88,7 +90,7 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
 
     override fun onBindViewHolder(holder: MyRecyclerViewAdapter.ViewHolder, position: Int) {
         val listItem = listItems[position]
-        val view = holder.bindView(listItem, allowLongClick) { itemView, layoutPosition ->
+        val view = holder.bindView(listItem, true, allowLongClick) { itemView, layoutPosition ->
             if (listItem is ListSection) {
                 setupListSection(itemView, listItem, position)
             } else if (listItem is ListEvent) {
