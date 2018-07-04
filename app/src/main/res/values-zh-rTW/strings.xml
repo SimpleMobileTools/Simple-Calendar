@@ -163,6 +163,7 @@
     <string name="system_stream">System</string>
     <string name="alarm_stream">Alarm</string>
     <string name="notification_stream">Notification</string>
+    <string name="ring_stream">Ring</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

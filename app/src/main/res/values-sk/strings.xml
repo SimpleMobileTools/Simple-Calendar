@@ -163,6 +163,7 @@
     <string name="system_stream">Systémový</string>
     <string name="alarm_stream">Výstražný</string>
     <string name="notification_stream">Pripomienkový</string>
+    <string name="ring_stream">Zvoniaci</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
