@@ -620,9 +620,9 @@ class EventActivity : SimpleActivity() {
         }
 
         val reminders = sortedSetOf(mReminder1Minutes, mReminder2Minutes, mReminder3Minutes).filter { it != REMINDER_OFF }
-        val reminder1 = reminders.getOrElse(0, { REMINDER_OFF })
-        val reminder2 = reminders.getOrElse(1, { REMINDER_OFF })
-        val reminder3 = reminders.getOrElse(2, { REMINDER_OFF })
+        val reminder1 = reminders.getOrElse(0) { REMINDER_OFF }
+        val reminder2 = reminders.getOrElse(1) { REMINDER_OFF }
+        val reminder3 = reminders.getOrElse(2) { REMINDER_OFF }
 
         config.apply {
             defaultReminderMinutes = reminder1
