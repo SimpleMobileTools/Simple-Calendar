@@ -124,7 +124,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         }
 
         addWeekDayLetters(canvas)
-        if (showWeekNumbers) {
+        if (showWeekNumbers && days.isNotEmpty()) {
             addWeekNumbers(canvas)
         }
 
