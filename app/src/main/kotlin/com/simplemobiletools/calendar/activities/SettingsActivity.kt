@@ -296,7 +296,7 @@ class SettingsActivity : SimpleActivity() {
         settings_reminder_sound.text = config.reminderSoundTitle
 
         settings_reminder_sound_holder.setOnClickListener {
-            SelectAlarmSoundDialog(this, config.reminderSoundUri, AudioManager.STREAM_ALARM, GET_RINGTONE_URI, ALARM_SOUND_TYPE_NOTIFICATION, false,
+            SelectAlarmSoundDialog(this, config.reminderSoundUri, config.reminderAudioStream, GET_RINGTONE_URI, ALARM_SOUND_TYPE_NOTIFICATION, false,
                     onAlarmPicked = {
                         if (it != null) {
                             updateReminderSound(it)

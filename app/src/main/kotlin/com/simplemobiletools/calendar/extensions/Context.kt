@@ -11,7 +11,6 @@ import android.content.Intent
 import android.content.res.Resources
 import android.database.ContentObserver
 import android.media.AudioAttributes
-import android.media.AudioManager
 import android.net.Uri
 import android.os.Bundle
 import android.provider.CalendarContract
@@ -200,7 +199,7 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
         val audioAttributes = AudioAttributes.Builder()
                 .setUsage(AudioAttributes.USAGE_ALARM)
                 .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-                .setLegacyStreamType(AudioManager.STREAM_ALARM)
+                .setLegacyStreamType(config.reminderAudioStream)
                 .setFlags(AudioAttributes.FLAG_AUDIBILITY_ENFORCED)
                 .build()
 
@@ -228,7 +227,7 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
             .setPriority(NotificationCompat.PRIORITY_MAX)
             .setDefaults(Notification.DEFAULT_LIGHTS)
             .setAutoCancel(true)
-            .setSound(Uri.parse(soundUri), AudioManager.STREAM_ALARM)
+            .setSound(Uri.parse(soundUri), config.reminderAudioStream)
             .setChannelId(channelId)
             .addAction(R.drawable.ic_snooze, getString(R.string.snooze), getSnoozePendingIntent(this, event))
 
