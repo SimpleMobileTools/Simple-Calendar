@@ -3,11 +3,11 @@
 
 A simple calendar with events and a customizable widget.
 
-An offline calendar without any other calendar integration. You can easily create recurring events and setup reminders, it can also display week numbers.
+A simple calendar with optional CalDAV synchronization. You can easily create recurring events and setup reminders, it can also display week numbers.
 
-Contains a resizable 4x4 widget where you can customize the color of the text, as well as the alpha and the color of the background.
+Contains a monthly view and an event list widget where you can customize the color of the text, as well as the alpha and the color of the background.
 
-Contains no ads or unnecessary permissions. It is fully open-source, provides customizable colors.
+Contains no ads or unnecessary permissions. It is fully opensource, provides customizable colors.
 
 The Storage permission is needed only for exporting or importing events from .ics files.
 
