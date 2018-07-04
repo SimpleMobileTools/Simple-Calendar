@@ -159,11 +159,11 @@
     <string name="loop_reminders">Kapatılana kadar hatırlatıcıları tekrarla</string>
     <string name="dim_past_events">Geçmiş etkinlikleri karart</string>
     <string name="events">Etkinlikler</string>
-    <string name="reminder_stream">Audio stream used by reminders</string>
-    <string name="system_stream">System</string>
+    <string name="reminder_stream">Hatırlatıcılar tarafından kullanılan ses akışı</string>
+    <string name="system_stream">Sistem</string>
     <string name="alarm_stream">Alarm</string>
-    <string name="notification_stream">Notification</string>
-    <string name="ring_stream">Ring</string>
+    <string name="notification_stream">Bildirim</string>
+    <string name="ring_stream">Zil sesi</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
