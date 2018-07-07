@@ -673,13 +673,11 @@ class EventActivity : SimpleActivity() {
 
     private fun storeEvent(wasRepeatable: Boolean) {
         if (mEvent.id == 0) {
-            dbHelper.insert(mEvent, true) {
+            dbHelper.insert(mEvent, true, this) {
                 if (DateTime.now().isAfter(mEventStartDateTime.millis)) {
                     if (mEvent.repeatInterval == 0 && mEvent.getReminders().isNotEmpty()) {
                         notifyEvent(mEvent)
                     }
-                } else {
-                    toast(R.string.event_added)
                 }
 
                 finish()
@@ -688,8 +686,8 @@ class EventActivity : SimpleActivity() {
             if (mRepeatInterval > 0 && wasRepeatable) {
                 EditRepeatingEventDialog(this) {
                     if (it) {
-                        dbHelper.update(mEvent, true) {
-                            eventUpdated()
+                        dbHelper.update(mEvent, true, this) {
+                            finish()
                         }
                     } else {
                         dbHelper.addEventRepeatException(mEvent.id, mEventOccurrenceTS, true)
@@ -701,23 +699,17 @@ class EventActivity : SimpleActivity() {
                             repeatLimit = 0
                         }
 
-                        dbHelper.insert(mEvent, true) {
-                            toast(R.string.event_updated)
+                        dbHelper.insert(mEvent, true, this) {
                             finish()
                         }
                     }
                 }
             } else {
-                dbHelper.update(mEvent, true) {
-                    eventUpdated()
+                dbHelper.update(mEvent, true, this) {
+                    finish()
                 }
             }
         }
-    }
-
-    private fun eventUpdated() {
-        toast(R.string.event_updated)
-        finish()
     }
 
     private fun updateStartTexts() {

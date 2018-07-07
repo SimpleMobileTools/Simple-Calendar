@@ -163,6 +163,7 @@
     <string name="system_stream">Cистема</string>
     <string name="alarm_stream">Будильник</string>
     <string name="notification_stream">Уведомление</string>
+    <string name="ring_stream">Ring</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

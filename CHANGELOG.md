@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 4.1.1 *(2018-07-04)*
+----------------------------
+
+ * Allow customizing the audio stream used by reminders
+ * Show the time remaining till the reminder appears
+ * Couple other UX and stability improvements
+
 Version 4.1.0 *(2018-06-13)*
 ----------------------------
 

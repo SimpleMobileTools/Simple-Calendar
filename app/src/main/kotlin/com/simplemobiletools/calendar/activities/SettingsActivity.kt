@@ -322,7 +322,8 @@ class SettingsActivity : SimpleActivity() {
             val items = arrayListOf(
                     RadioItem(AudioManager.STREAM_ALARM, res.getString(R.string.alarm_stream)),
                     RadioItem(AudioManager.STREAM_SYSTEM, res.getString(R.string.system_stream)),
-                    RadioItem(AudioManager.STREAM_NOTIFICATION, res.getString(R.string.notification_stream)))
+                    RadioItem(AudioManager.STREAM_NOTIFICATION, res.getString(R.string.notification_stream)),
+                    RadioItem(AudioManager.STREAM_RING, res.getString(R.string.ring_stream)))
 
             RadioGroupDialog(this@SettingsActivity, items, config.reminderAudioStream) {
                 config.reminderAudioStream = it as Int
@@ -334,7 +335,8 @@ class SettingsActivity : SimpleActivity() {
     private fun getAudioStreamText() = getString(when (config.reminderAudioStream) {
         AudioManager.STREAM_ALARM -> R.string.alarm_stream
         AudioManager.STREAM_SYSTEM -> R.string.system_stream
-        else -> R.string.notification_stream
+        AudioManager.STREAM_NOTIFICATION -> R.string.notification_stream
+        else -> R.string.ring_stream
     })
 
     private fun setupVibrate() {

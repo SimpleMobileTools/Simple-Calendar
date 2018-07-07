@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteQueryBuilder
 import android.text.TextUtils
 import android.util.SparseIntArray
 import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.extensions.*
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.models.EventType
@@ -200,7 +201,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         addEventType(eventType, db)
     }
 
-    fun insert(event: Event, addToCalDAV: Boolean, callback: (id: Int) -> Unit) {
+    fun insert(event: Event, addToCalDAV: Boolean, activity: SimpleActivity? = null, callback: (id: Int) -> Unit) {
         if (event.startTS > event.endTS) {
             callback(0)
             return
@@ -216,7 +217,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
 
         context.updateWidgets()
-        context.scheduleNextEventReminder(event, this)
+        context.scheduleNextEventReminder(event, this, activity)
 
         if (addToCalDAV && event.source != SOURCE_SIMPLE_CALENDAR && context.config.caldavSync) {
             CalDAVHandler(context).insertCalDAVEvent(event)
@@ -254,7 +255,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
     }
 
-    fun update(event: Event, updateAtCalDAV: Boolean, callback: (() -> Unit)? = null) {
+    fun update(event: Event, updateAtCalDAV: Boolean, activity: SimpleActivity? = null, callback: (() -> Unit)? = null) {
         val values = fillEventValues(event)
         val selection = "$COL_ID = ?"
         val selectionArgs = arrayOf(event.id.toString())
@@ -269,7 +270,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
 
         context.updateWidgets()
-        context.scheduleNextEventReminder(event, this)
+        context.scheduleNextEventReminder(event, this, activity)
         if (updateAtCalDAV && event.source != SOURCE_SIMPLE_CALENDAR && context.config.caldavSync) {
             CalDAVHandler(context).updateCalDAVEvent(event)
         }
@@ -548,7 +549,9 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             mDb.insert(EXCEPTIONS_TABLE_NAME, null, it)
 
             val parentEvent = getEventWithId(parentEventId)
-            context.scheduleNextEventReminder(parentEvent, this)
+            if (parentEvent != null) {
+                context.scheduleNextEventReminder(parentEvent, this)
+            }
         }
     }
 
