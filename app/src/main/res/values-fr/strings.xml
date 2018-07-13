@@ -159,7 +159,7 @@
     <string name="loop_reminders">Boucles de rappel jusqu\'à ce qu\'il soit rejeté</string>
     <string name="dim_past_events">Diminuer l\'affichage des événements passés</string>
     <string name="events">Evénements</string>
-    <string name="reminder_stream">Audio stream used by reminders</string>
+    <string name="reminder_stream">Flux audio utilisé par les rappels</string>
     <string name="system_stream">System</string>
     <string name="alarm_stream">Alarm</string>
     <string name="notification_stream">Notification</string>
