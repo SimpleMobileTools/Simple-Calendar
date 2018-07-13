@@ -44,7 +44,7 @@
     <string name="event_is_repeatable">L\'événement est répétable</string>
     <string name="selection_contains_repetition">La sélection contient des événements avec répétition</string>
     <string name="delete_one_only">Supprimer seulement l\'occurrence sélectionnée</string>
-    <string name="delete_future_occurrences">Delete this and all future occurrences</string>
+    <string name="delete_future_occurrences">Supprimer ceci et toutes les occurrences futures</string>
     <string name="delete_all_occurrences">Supprimer toutes les occurrences</string>
     <string name="update_one_only">Mettre à jour seulement l\'occurrence sélectionnée</string>
     <string name="update_all_occurrences">Mettre à jour toutes les occurrences</string>
@@ -159,9 +159,9 @@
     <string name="loop_reminders">Boucles de rappel jusqu\'à ce qu\'il soit rejeté</string>
     <string name="dim_past_events">Diminuer l\'affichage des événements passés</string>
     <string name="events">Evénements</string>
-    <string name="reminder_stream">Audio stream used by reminders</string>
+    <string name="reminder_stream">Flux audio utilisé par les rappels</string>
     <string name="system_stream">System</string>
-    <string name="alarm_stream">Alarm</string>
+    <string name="alarm_stream">Alarme</string>
     <string name="notification_stream">Notification</string>
     <string name="ring_stream">Ring</string>
 
