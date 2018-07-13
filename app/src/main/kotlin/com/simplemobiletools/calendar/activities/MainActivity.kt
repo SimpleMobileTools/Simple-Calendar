@@ -328,8 +328,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     private fun resetActionBarTitle() {
-        supportActionBar?.title = getString(R.string.app_launcher_name)
-        supportActionBar?.subtitle = ""
+        updateActionBarTitle(getString(R.string.app_launcher_name))
+        updateActionBarSubtitle("")
     }
 
     private fun showFilterDialog() {

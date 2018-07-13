@@ -13,6 +13,7 @@ import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.helpers.DAY_CODE
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.interfaces.NavigationListener
+import com.simplemobiletools.commons.extensions.updateActionBarTitle
 import com.simplemobiletools.commons.views.MyViewPager
 import kotlinx.android.synthetic.main.fragment_days_holder.view.*
 import org.joda.time.DateTime
@@ -105,7 +106,7 @@ class DayFragmentsHolder : MyFragmentHolder(), NavigationListener {
     override fun shouldGoToTodayBeVisible() = currentDayCode != todayDayCode
 
     override fun updateActionBarTitle() {
-        (activity as MainActivity).supportActionBar?.title = getString(R.string.app_launcher_name)
+        (activity as MainActivity).updateActionBarTitle(getString(R.string.app_launcher_name))
     }
 
     override fun getNewEventDayCode() = currentDayCode
