@@ -152,7 +152,9 @@ fun Context.getFilteredEvents(events: List<Event>): ArrayList<Event> {
 }
 
 fun Context.notifyRunningEvents() {
-    dbHelper.getRunningEvents().forEach { notifyEvent(it) }
+    dbHelper.getRunningEvents().filter { it.getReminders().isNotEmpty() }.forEach {
+        notifyEvent(it)
+    }
 }
 
 fun Context.notifyEvent(originalEvent: Event) {
