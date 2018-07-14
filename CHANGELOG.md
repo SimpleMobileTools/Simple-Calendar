@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 4.1.2 *(2018-07-14)*
+----------------------------
+
+ * Made reminder sounds more reliable on Android Oreo
+ * Properly fetch running events at reboot, notify only if needed
+ * Couple UX and stability improvements
+
 Version 4.1.1 *(2018-07-04)*
 ----------------------------
 
