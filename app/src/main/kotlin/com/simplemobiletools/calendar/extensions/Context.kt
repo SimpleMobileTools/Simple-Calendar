@@ -204,13 +204,12 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
         config.lastSoundUri = soundUri
     }
 
-    val channelId = "simple_calendar_${config.lastReminderChannel}"
+    val channelId = "simple_calendar_${config.lastReminderChannel}_${config.reminderAudioStream}"
     if (isOreoPlus()) {
         val audioAttributes = AudioAttributes.Builder()
                 .setUsage(AudioAttributes.USAGE_ALARM)
                 .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
                 .setLegacyStreamType(config.reminderAudioStream)
-                .setFlags(AudioAttributes.FLAG_AUDIBILITY_ENFORCED)
                 .build()
 
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
