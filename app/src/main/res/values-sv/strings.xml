@@ -44,7 +44,7 @@
     <string name="event_is_repeatable">Händelsen är återkommande</string>
     <string name="selection_contains_repetition">Markeringen innehåller återkommande händelser</string>
     <string name="delete_one_only">Ta bara bort den markerade förekomsten</string>
-    <string name="delete_future_occurrences">Delete this and all future occurrences</string>
+    <string name="delete_future_occurrences">Ta bort denna och alla framtida förekomster</string>
     <string name="delete_all_occurrences">Ta bort alla förekomster</string>
     <string name="update_one_only">Uppdatera bara den markerade förekomsten</string>
     <string name="update_all_occurrences">Uppdatera alla förekomster</string>
@@ -143,10 +143,10 @@
     <string name="manage_event_types">Hantera händelsetyper</string>
     <string name="start_day_at">Starta veckovydagen vid</string>
     <string name="end_day_at">Sluta veckovydagen vid</string>
-    <string name="week_numbers">Visa veckonumret i månadsvyn</string>
+    <string name="week_numbers">Visa veckonummer</string>
     <string name="vibrate">Vibrera vid påminnelseaviseringen</string>
     <string name="reminder_sound">Påminnelseljud</string>
-    <string name="no_ringtone_picker">Hittade ingen app som kan ställa in ljudet</string>
+    <string name="no_ringtone_picker">Ingen app som kan ställa in en ringsignal hittades</string>
     <string name="no_ringtone_selected">Ingen</string>
     <string name="day_end_before_start">Dagen kan inte börja innan den tar slut</string>
     <string name="caldav_sync">CalDAV-synkronisering</string>
@@ -159,10 +159,10 @@
     <string name="loop_reminders">Upprepa påminnelser tills de tas bort</string>
     <string name="dim_past_events">Tona ned tidigare händelser</string>
     <string name="events">Händelser</string>
-    <string name="reminder_stream">Audio stream used by reminders</string>
+    <string name="reminder_stream">Ljudström för påminnelser</string>
     <string name="system_stream">System</string>
     <string name="alarm_stream">Alarm</string>
-    <string name="notification_stream">Notification</string>
+    <string name="notification_stream">Avisering</string>
     <string name="ring_stream">Ring</string>
 
     <!-- CalDAV sync -->
