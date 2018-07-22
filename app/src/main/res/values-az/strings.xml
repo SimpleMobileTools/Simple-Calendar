@@ -27,7 +27,7 @@
     <string name="event_updated">Hadisə uğurla yeniləndi</string>
     <string name="filter_events_by_type">Hadisələri yazıya görə sırala</string>
     <string name="please_fill_location">Xahiş olunur məkan parametrini doldurun ki hadisədə görünsün</string>
-    <string name="public_event_notification_text">An event is upcoming</string>
+    <string name="public_event_notification_text">Bir hadisə günü yaxınlaşır</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Təkrarlama</string>
@@ -44,7 +44,7 @@
     <string name="event_is_repeatable">Bu hadisə təkrarlanabilər</string>
     <string name="selection_contains_repetition">Seçim təkrarlanan hadisələr ehtiva edir</string>
     <string name="delete_one_only">Yalnız seçilmiş hadisəni sil</string>
-    <string name="delete_future_occurrences">Delete this and all future occurrences</string>
+    <string name="delete_future_occurrences">Bunu və bütün gələcək hadisələri sil</string>
     <string name="delete_all_occurrences">Bütün hadisələri sil</string>
     <string name="update_one_only">Yalnız seçilmiş hadisəni yenilə</string>
     <string name="update_all_occurrences">Bütün hadisələri yenilə</string>
@@ -60,7 +60,7 @@
     <string name="the_last_day">Son gün</string>
     <string name="repeat_on_the_same_day_monthly">Hər ayın eyni günü təkrarla</string>
     <string name="repeat_on_the_last_day_monthly">Hər ayın son günü təkrarla</string>
-    <string name="repeat_on_the_same_day_yearly">Repeat on the same day every year</string>
+    <string name="repeat_on_the_same_day_yearly">Hər ilin eyni gündə təkrarla</string>
     <string name="repeat_every_m">Təkrarla hər</string>
     <string name="every_m">Hər</string>
     <string name="first_m">birinci</string>
@@ -71,7 +71,7 @@
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
-    <string name="repeat_every_f">Repeat every</string>
+    <string name="repeat_every_f">Təkrarla hər</string>
     <string name="every_f">Hər</string>
     <string name="first_f">birinci</string>
     <string name="second_f">ikinci</string>
@@ -106,7 +106,7 @@
     <string name="export_past_events_too">Keçmiş hadisələri də xaric et</string>
     <string name="include_event_types">Hadisə tiplərini ehtiva et</string>
     <string name="filename_without_ics">Fayl adı (.ics\'sız)</string>
-    <string name="override_event_types">Override event types in the file</string>
+    <string name="override_event_types">Faylın içərisində hadisə tiplərini üstünə yaz</string>
 
     <!-- Event details -->
     <string name="title">Başlıq</string>
@@ -135,7 +135,7 @@
     <string name="add_holidays">Bayram əlavə et</string>
     <string name="national_holidays">Milli bayramlar</string>
     <string name="religious_holidays">Dini bayramlar</string>
-    <string name="holidays_imported_successfully">Holidays have been successfully imported into the \"Holidays\" event type</string>
+    <string name="holidays_imported_successfully">Bayramlar uğurla \"Bayramlar\" hadisə tipinə daxil edildi</string>
     <string name="importing_some_holidays_failed">Bəzi bayramları daxil etmək alınmadı</string>
     <string name="importing_holidays_failed">Bayramları daxil etmək alınmadı</string>
 
@@ -155,15 +155,15 @@
     <string name="replace_description_with_location">Hadisə əlavəsini məkan ilə dəyiş</string>
     <string name="delete_all_events">Bütün hadisələri sil</string>
     <string name="delete_all_events_confirmation">Bütün hadisələri silmək istədiyinizə əminsiniz? Bu hadisələri və parametrlərini bütövlüklə siləcək.</string>
-    <string name="show_a_grid">Show a grid</string>
-    <string name="loop_reminders">Loop reminders until dismissed</string>
-    <string name="dim_past_events">Dim past events</string>
-    <string name="events">Events</string>
-    <string name="reminder_stream">Audio stream used by reminders</string>
-    <string name="system_stream">System</string>
-    <string name="alarm_stream">Alarm</string>
-    <string name="notification_stream">Notification</string>
-    <string name="ring_stream">Ring</string>
+    <string name="show_a_grid">Cədvəl göstər</string>
+    <string name="loop_reminders">Buraxılana qədər xatırladıcıları təkrarla</string>
+    <string name="dim_past_events">Keçmiş hadisələri qaralt</string>
+    <string name="events">Hadisələr</string>
+    <string name="reminder_stream">Xatırladıcılar tərəfindən işlədilən səs axışı</string>
+    <string name="system_stream">Sistem</string>
+    <string name="alarm_stream">Zəng</string>
+    <string name="notification_stream">Bildiriş</string>
+    <string name="ring_stream">Zəng səsi</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
