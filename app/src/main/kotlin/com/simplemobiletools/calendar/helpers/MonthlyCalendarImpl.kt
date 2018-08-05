@@ -79,7 +79,7 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
         if (markDaysWithEvents) {
             markDaysWithEvents(days)
         } else {
-            mCallback.updateMonthlyCalendar(mContext, monthName, days, false)
+            mCallback.updateMonthlyCalendar(mContext, monthName, days, false, mTargetDate)
         }
     }
 
@@ -110,7 +110,7 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
             days.filter { dayEvents.keys.contains(it.code) }.forEach {
                 it.dayEvents = dayEvents[it.code]!!
             }
-            mCallback.updateMonthlyCalendar(mContext, monthName, days, true)
+            mCallback.updateMonthlyCalendar(mContext, monthName, days, true, mTargetDate)
         }
     }
 

@@ -21,6 +21,7 @@ import org.joda.time.DateTime
 class MyWidgetMonthlyProvider : AppWidgetProvider() {
     private val PREV = "prev"
     private val NEXT = "next"
+    private val GO_TO_TODAY = "go_to_today"
     private val NEW_EVENT = "new_event"
 
     companion object {
@@ -66,6 +67,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
         when (intent.action) {
             PREV -> getPrevMonth(context)
             NEXT -> getNextMonth(context)
+            GO_TO_TODAY -> goToToday(context)
             NEW_EVENT -> context.launchNewEventIntent()
             else -> super.onReceive(context, intent)
         }
@@ -78,6 +80,11 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
 
     private fun getNextMonth(context: Context) {
         targetDate = targetDate!!.plusMonths(1)
+        MonthlyCalendarImpl(monthlyCalendar, context).getMonth(targetDate!!)
+    }
+
+    private fun goToToday(context: Context) {
+        targetDate = DateTime.now().withDayOfMonth(1)
         MonthlyCalendarImpl(monthlyCalendar, context).getMonth(targetDate!!)
     }
 
@@ -150,7 +157,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
     }
 
     private val monthlyCalendar = object : MonthlyCalendar {
-        override fun updateMonthlyCalendar(context: Context, month: String, days: ArrayList<DayMonthly>, checkedEvents: Boolean) {
+        override fun updateMonthlyCalendar(context: Context, month: String, days: ArrayList<DayMonthly>, checkedEvents: Boolean, currTargetDate: DateTime) {
             val largerFontSize = context.config.getFontSize() + 3f
             val textColor = context.config.widgetTextColor
             val resources = context.resources
@@ -171,13 +178,21 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
                 bmp = resources.getColoredBitmap(R.drawable.ic_pointer_right, textColor)
                 views.setImageViewBitmap(R.id.top_right_arrow, bmp)
 
+                bmp = resources.getColoredBitmap(R.drawable.ic_today, textColor)
+                views.setImageViewBitmap(R.id.top_go_to_today, bmp)
+
                 bmp = resources.getColoredBitmap(R.drawable.ic_plus, textColor)
                 views.setImageViewBitmap(R.id.top_new_event, bmp)
+
+                val shouldGoToTodayBeVisible = currTargetDate.withTime(0, 0, 0, 0) != DateTime.now().withDayOfMonth(1).withTime(0, 0, 0, 0)
+                views.setVisibleIf(R.id.top_go_to_today, shouldGoToTodayBeVisible)
+
                 updateDayLabels(context, views, resources, textColor)
                 updateDays(context, views, days)
 
                 setupIntent(context, views, PREV, R.id.top_left_arrow)
                 setupIntent(context, views, NEXT, R.id.top_right_arrow)
+                setupIntent(context, views, GO_TO_TODAY, R.id.top_go_to_today)
                 setupIntent(context, views, NEW_EVENT, R.id.top_new_event)
 
                 val monthCode = days.firstOrNull { it.code.substring(6) == "01" }?.code ?: Formatter.getTodayCode(context)

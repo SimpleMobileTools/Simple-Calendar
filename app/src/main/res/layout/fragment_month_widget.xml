@@ -38,10 +38,22 @@
         android:layout_height="match_parent"
         android:layout_alignBottom="@+id/top_value"
         android:layout_alignTop="@+id/top_value"
-        android:layout_toLeftOf="@+id/top_new_event"
+        android:layout_toLeftOf="@+id/top_go_to_today"
         android:paddingLeft="@dimen/medium_margin"
         android:paddingRight="@dimen/medium_margin"
         android:src="@drawable/ic_pointer_right"/>
+
+    <ImageView
+        android:id="@+id/top_go_to_today"
+        style="@style/ArrowStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignBottom="@+id/top_value"
+        android:layout_alignTop="@+id/top_value"
+        android:layout_toLeftOf="@+id/top_new_event"
+        android:paddingLeft="@dimen/medium_margin"
+        android:paddingRight="@dimen/medium_margin"
+        android:src="@drawable/ic_today"/>
 
     <ImageView
         android:id="@+id/top_new_event"
