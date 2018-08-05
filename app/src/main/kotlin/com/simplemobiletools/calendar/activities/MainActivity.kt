@@ -693,6 +693,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     private fun launchAbout() {
+        val licenses = LICENSE_JODA or LICENSE_STETHO or LICENSE_MULTISELECT or LICENSE_LEAK_CANARY
+
         val faqItems = arrayListOf(
                 FAQItem(R.string.faq_1_title_commons, R.string.faq_1_text_commons),
                 FAQItem(R.string.faq_2_title_commons, R.string.faq_2_text_commons),
@@ -700,8 +702,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                 FAQItem(getString(R.string.faq_1_title), getString(R.string.faq_1_text)),
                 FAQItem(getString(R.string.faq_2_title), getString(R.string.faq_2_text)))
 
-        startAboutActivity(R.string.app_name, LICENSE_JODA or LICENSE_STETHO or LICENSE_MULTISELECT or LICENSE_LEAK_CANARY,
-                BuildConfig.VERSION_NAME, faqItems)
+        startAboutActivity(R.string.app_name, licenses, BuildConfig.VERSION_NAME, faqItems, true)
     }
 
     private fun searchQueryChanged(text: String) {
