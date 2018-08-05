@@ -203,6 +203,9 @@
     <string name="faq_2_title">Kan jeg synkronisere mine begivenheder med Googles kalender elleer en anden kalender der understøtter CalDAV?</string>
     <string name="faq_2_text">Ja, klik på \"CalDAV sync\" i appens indstillinger og vælg de kalendere du vil synkronisere. Det kræver dog at du har en app til at synkronisere mellem din enhed og kalenderservere.
         Hvis du vil synkronisere en Googlekalender, kan deres officielle app klare det. For andre kalenderes vedkommende kan du bruge en 3. partsapp som for eksempel DAVdroid.</string>
+    <string name="faq_3_title">I see the visual reminders, but hear no audio. What can I do?</string>
+    <string name="faq_3_text">Not just displaying the actual reminder, but playing the audio is hugely affected by the system too. If you can\'t hear any sound, try going in the app settings,
+        pressing the \"Audio stream used by reminders\" option and changing it to a different value. If it still won\'t work, check your sound settings, if the particular stream isn\'t muted.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->

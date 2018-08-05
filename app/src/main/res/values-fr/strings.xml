@@ -106,7 +106,7 @@
     <string name="export_past_events_too">Exporter aussi les événements passés</string>
     <string name="include_event_types">Inclure les types d\'événement</string>
     <string name="filename_without_ics">Nom de fichier (sans .ics)</string>
-    <string name="override_event_types">Remplacer les types d'événement dans le fichier</string>
+    <string name="override_event_types">Remplacer les types d\'événement dans le fichier</string>
 
     <!-- Event details -->
     <string name="title">Titre</string>
@@ -204,6 +204,9 @@
     <string name="faq_2_title">Puis-je synchroniser mes événements via Google Agenda, ou tout autre service proposant la synchronisation CalDAV ?</string>
 	<string name="faq_2_text">Oui, il faut juste activer l\'option « Synchronisation CalDAV » dans les paramètres de l\'application puis choisir les calendriers à synchroniser. Une application tierce pour gérer la synchronisation entre votre appareil et les serveurs sera par contre nécessaire. 
 		Dans le cas d\'un calendrier Google Agenda, l\'application officielle fera l\'affaire. Pour les autres calendriers, il vous faudra une application comme DAVdroid par exemple.</string>
+    <string name="faq_3_title">I see the visual reminders, but hear no audio. What can I do?</string>
+    <string name="faq_3_text">Not just displaying the actual reminder, but playing the audio is hugely affected by the system too. If you can\'t hear any sound, try going in the app settings,
+        pressing the \"Audio stream used by reminders\" option and changing it to a different value. If it still won\'t work, check your sound settings, if the particular stream isn\'t muted.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->

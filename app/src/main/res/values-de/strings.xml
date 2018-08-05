@@ -203,8 +203,11 @@
         Du kannst in den Einstellungen -> Verwalte Termin-Typen auf den Termin-Typ gedrückt halten und über das Papierkorbsymbol löschen.</string>
     <string name="faq_2_title">Kann ich meine Termine über Google Kalender oder andere CalDAV unterstützende Dienste synchronisieren?</string>
     <string name="faq_2_text">Ja, aktiviere \"CalDAV Synchronisierung\" in den Einstellungen und wähle die Kalender aus, die du synchronisieren willst. 
-        Jedoch benötigst du eine separate App, die die Synchronisierung zwischen Gerät und Servern handhabt. Falls du einen Google Kalender synchronisieren willst, kann die offizielle Kalender-App dies übernehmen. 
+        Jedoch benötigst du eine separate App, die Synchronisierung zwischen Gerät und Servern handhabt. Falls du einen Google Kalender synchronisieren willst, kann die offizielle Kalender-App dies übernehmen.
         Für andere Kalender benötigst du einen Synchronisierungsadapter, wie z. B. DAVdroid.</string>
+    <string name="faq_3_title">I see the visual reminders, but hear no audio. What can I do?</string>
+    <string name="faq_3_text">Not just displaying the actual reminder, but playing the audio is hugely affected by the system too. If you can\'t hear any sound, try going in the app settings,
+        pressing the \"Audio stream used by reminders\" option and changing it to a different value. If it still won\'t work, check your sound settings, if the particular stream isn\'t muted.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
