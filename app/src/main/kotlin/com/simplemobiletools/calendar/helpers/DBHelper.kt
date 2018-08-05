@@ -976,6 +976,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                     eventTypes.add(eventType)
                 } while (cursor.moveToNext())
             }
+        } catch (ignored: Exception) {
         } finally {
             cursor?.close()
         }
