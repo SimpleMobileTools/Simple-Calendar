@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 4.1.3 *(2018-08-06)*
+----------------------------
+
+ * Added a Go To Today button at the monthly widget
+ * Increase the allowed length of event titles, locations, descriptions
+ * Couple other stability and UX improvements
+
 Version 4.1.2 *(2018-07-14)*
 ----------------------------
 
