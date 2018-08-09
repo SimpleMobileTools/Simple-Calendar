@@ -99,6 +99,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         if (!checkOpenIntents()) {
             updateViewPager()
         }
+
+        checkAppOnSDCard()
     }
 
     override fun onResume() {
