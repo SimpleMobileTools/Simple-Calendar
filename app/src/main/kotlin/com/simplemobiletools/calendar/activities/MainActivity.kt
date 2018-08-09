@@ -84,20 +84,20 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         }
 
-        if (!checkViewIntents()) {
-            return
-        }
-
-        if (!checkOpenIntents()) {
-            updateViewPager()
-        }
-
         if (!hasPermission(PERMISSION_WRITE_CALENDAR) || !hasPermission(PERMISSION_READ_CALENDAR)) {
             config.caldavSync = false
         }
 
         if (config.caldavSync) {
             refreshCalDAVCalendars(false)
+        }
+
+        if (!checkViewIntents()) {
+            return
+        }
+
+        if (!checkOpenIntents()) {
+            updateViewPager()
         }
     }
 
