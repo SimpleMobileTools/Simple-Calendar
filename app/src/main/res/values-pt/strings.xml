@@ -93,7 +93,7 @@
 
     <!-- Event Reminders -->
     <string name="reminder">Lembrete</string>
-    <string name="before">antes</string>
+    <string name="before">Antes</string>
     <string name="add_another_reminder">Adicionar outro lembrete</string>
     <string name="event_reminders">Lembretes para eventos</string>
 
@@ -159,11 +159,11 @@
     <string name="loop_reminders">Mostrar lembretes até serem descartados</string>
     <string name="dim_past_events">Desvanecer eventos passados</string>
     <string name="events">Eventos</string>
-    <string name="reminder_stream">Audio stream used by reminders</string>
-    <string name="system_stream">System</string>
-    <string name="alarm_stream">Alarm</string>
-    <string name="notification_stream">Notification</string>
-    <string name="ring_stream">Ring</string>
+    <string name="reminder_stream">Fluxo áudio a utilizar nos lembretes</string>
+    <string name="system_stream">Sistema</string>
+    <string name="alarm_stream">Alarmw</string>
+    <string name="notification_stream">Notificação</string>
+    <string name="ring_stream">Toque</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
