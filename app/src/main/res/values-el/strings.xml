@@ -100,19 +100,19 @@
     <!-- Export / Import -->
     <string name="import_events">Εισαγωγή εκδηλώσεων</string>
     <string name="export_events">Εξαγωγή εκδηλώσεων</string>
-    <string name="import_events_from_ics">Εισαγωγή εκδηλώσεων απο ένα .ics αρχείο</string>
-    <string name="export_events_to_ics">Εξαγωγή εκδηλώσεων σε ένα .ics αρχείο</string>
+    <string name="import_events_from_ics">Εισαγωγή απο ένα .ics αρχείο</string>
+    <string name="export_events_to_ics">Εξαγωγή σε ένα .ics αρχείο</string>
     <string name="default_event_type">Προεπιλεγμένος τύπος εκδήλωσης</string>
     <string name="export_past_events_too">Εξαγωγή προηγούμενων εκδηλώσεων επίσης</string>
     <string name="include_event_types">Συμπερίληψη τύπων εκδηλώσεων</string>
     <string name="filename_without_ics">Όνομα αρχείου (χωρίς .ics)</string>
-    <string name="override_event_types">Καταργήστε τους τύπους εκδηλώσεων στο αρχείο</string>
+    <string name="override_event_types">Κατάργηση τύπων εκδηλώσεων στο αρχείο</string>
 
     <!-- Event details -->
     <string name="title">Τίτλος</string>
     <string name="location">Τοποθεσία</string>
     <string name="description">Περιγραφή</string>
-    <string name="all_day">Ολοήμερα</string>
+    <string name="all_day">Ημερήσια</string>
 
     <!-- Weekly view -->
     <string name="week">Εβδομάδα</string>
@@ -123,7 +123,7 @@
     <string name="edit_type">Επεξεργασία τύπου</string>
     <string name="type_already_exists">Ο τύπος με αυτόν τον τίτλο υπάρχει ήδη</string>
     <string name="color">Χρώμα</string>
-    <string name="regular_event">Κνονική εκδήλωση</string>
+    <string name="regular_event">Κανονική εκδήλωση</string>
     <string name="cannot_delete_default_type">Ο προεπιλεγμένος τύπος εκδήλωσης δεν μπορεί να διαγραφεί</string>
     <string name="select_event_type">Επιλέξτε έναν τύπο εκδήλωσης</string>
     <string name="move_events_into_default">Μετακινήστε τις επηρεαζόμενες εκδηλώσεις στον προεπιλεγμένο τύπο</string>
@@ -151,13 +151,13 @@
     <string name="day_end_before_start">Η ημέρα δεν μπορεί να τελειώσει νωρίτερα από ότι ξεκινά</string>
     <string name="caldav_sync">CalDAV sync</string>
     <string name="event_lists">Λίστες εκδηλώσεων</string>
-    <string name="display_past_events">Εμφάνιση συμβάντων από το παρελθόν</string>
+    <string name="display_past_events">Εμφάνιση προηγούμενων συμβάντων</string>
     <string name="replace_description_with_location">Αντικατάσταση περιγραφής εκδήλωσης με τοποθεσία</string>
     <string name="delete_all_events">Διαγραφή όλων των εκδηλώσεων</string>
     <string name="delete_all_events_confirmation">Είστε βέβαιοι ότι θέλετε να διαγράψετε όλες τις εκδηλώσεις; Αυτό θα αφήσει τους τύπους και άλλες ρυθμίσεις ανέπαφες.</string>
     <string name="show_a_grid">Εμφάνιση πλέγματος</string>
     <string name="loop_reminders">Συνεχής επανάληψη μέχρι να απορριφθεί</string>
-    <string name="dim_past_events">Μείωση των περασμένων</string>
+    <string name="dim_past_events">Μείωση των προηγούμενων</string>
     <string name="events">Εκδηλώσεις</string>
     <string name="reminder_stream">Ροή ήχου που χρησιμοποιείται από τις υπενθυμίσεις</string>
     <string name="system_stream">Σύστημα</string>
