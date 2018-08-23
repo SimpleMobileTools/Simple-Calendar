@@ -162,7 +162,7 @@
     <string name="reminder_stream">Audio Ausgabekanal für Erinnerungen</string>
     <string name="system_stream">Medien</string>
     <string name="alarm_stream">Wecker</string>
-    <string name="notification_stream">Benachrichtigung/string>
+    <string name="notification_stream">Benachrichtigung</string>
     <string name="ring_stream">Klingelton</string>
 
     <!-- CalDAV sync -->
