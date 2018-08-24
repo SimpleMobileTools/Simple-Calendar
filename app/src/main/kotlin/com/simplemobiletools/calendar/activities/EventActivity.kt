@@ -29,6 +29,17 @@ import java.util.regex.Pattern
 
 class EventActivity : SimpleActivity() {
     private val LAT_LON_PATTERN = "^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?)([,;])\\s*[-+]?(180(\\.0+)?|((1[0-7]\\d)|([1-9]?\\d))(\\.\\d+)?)\$"
+    private val START_TS = "START_TS"
+    private val END_TS = "END_TS"
+    private val REMINDER_1_MINUTES = "REMINDER_1_MINUTES"
+    private val REMINDER_2_MINUTES = "REMINDER_2_MINUTES"
+    private val REMINDER_3_MINUTES = "REMINDER_3_MINUTES"
+    private val REPEAT_INTERVAL = "REPEAT_INTERVAL"
+    private val REPEAT_LIMIT = "REPEAT_LIMIT"
+    private val REPEAT_RULE = "REPEAT_RULE"
+    private val EVENT_TYPE_ID = "EVENT_TYPE_ID"
+    private val EVENT_CALENDAR_ID = "EVENT_CALENDAR_ID"
+
     private var mReminder1Minutes = 0
     private var mReminder2Minutes = 0
     private var mReminder3Minutes = 0
@@ -71,7 +82,9 @@ class EventActivity : SimpleActivity() {
         if (event != null) {
             mEvent = event
             mEventOccurrenceTS = intent.getIntExtra(EVENT_OCCURRENCE_TS, 0)
-            setupEditEvent()
+            if (savedInstanceState == null) {
+                setupEditEvent()
+            }
 
             if (intent.getBooleanExtra(IS_DUPLICATE_INTENT, false)) {
                 mEvent.id = 0
@@ -81,15 +94,17 @@ class EventActivity : SimpleActivity() {
             mReminder1Minutes = config.defaultReminderMinutes
             mReminder2Minutes = config.defaultReminderMinutes3
             mReminder3Minutes = config.defaultReminderMinutes2
-            setupNewEvent()
+
+            if (savedInstanceState == null) {
+                setupNewEvent()
+            }
         }
 
-        checkReminderTexts()
-        updateRepetitionText()
-        updateStartTexts()
-        updateEndTexts()
-        updateEventType()
-        updateCalDAVCalendar()
+        if (savedInstanceState == null) {
+            updateTexts()
+            updateEventType()
+            updateCalDAVCalendar()
+        }
 
         event_show_on_map.setOnClickListener { showOnMap() }
         event_start_date.setOnClickListener { setupStartDate() }
@@ -147,11 +162,60 @@ class EventActivity : SimpleActivity() {
         return true
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt(START_TS, mEventStartDateTime.seconds())
+        outState.putInt(END_TS, mEventEndDateTime.seconds())
+
+        outState.putInt(REMINDER_1_MINUTES, mReminder1Minutes)
+        outState.putInt(REMINDER_2_MINUTES, mReminder2Minutes)
+        outState.putInt(REMINDER_3_MINUTES, mReminder3Minutes)
+
+        outState.putInt(REPEAT_INTERVAL, mRepeatInterval)
+        outState.putInt(REPEAT_LIMIT, mRepeatLimit)
+        outState.putInt(REPEAT_RULE, mRepeatRule)
+
+        outState.putInt(EVENT_TYPE_ID, mEventTypeId)
+        outState.putInt(EVENT_CALENDAR_ID, mEventCalendarId)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        savedInstanceState.apply {
+            mEventStartDateTime = Formatter.getDateTimeFromTS(getInt(START_TS))
+            mEventEndDateTime = Formatter.getDateTimeFromTS(getInt(END_TS))
+
+            mReminder1Minutes = getInt(REMINDER_1_MINUTES)
+            mReminder2Minutes = getInt(REMINDER_2_MINUTES)
+            mReminder3Minutes = getInt(REMINDER_3_MINUTES)
+
+            mRepeatInterval = getInt(REPEAT_INTERVAL)
+            mRepeatLimit = getInt(REPEAT_LIMIT)
+            mRepeatRule = getInt(REPEAT_RULE)
+
+            mEventTypeId = getInt(EVENT_TYPE_ID)
+            mEventCalendarId = getInt(EVENT_CALENDAR_ID)
+        }
+
+        checkRepeatTexts(mRepeatInterval)
+        checkRepeatRule()
+        updateTexts()
+        updateEventType()
+        updateCalDAVCalendar()
+    }
+
+    private fun updateTexts() {
+        updateRepetitionText()
+        checkReminderTexts()
+        updateStartTexts()
+        updateEndTexts()
+    }
+
     private fun setupEditEvent() {
         val realStart = if (mEventOccurrenceTS == 0) mEvent.startTS else mEventOccurrenceTS
         val duration = mEvent.endTS - mEvent.startTS
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
-        supportActionBar?.title = resources.getString(R.string.edit_event)
+        updateActionBarTitle(getString(R.string.edit_event))
         mEventStartDateTime = Formatter.getDateTimeFromTS(realStart)
         mEventEndDateTime = Formatter.getDateTimeFromTS(realStart + duration)
         event_title.setText(mEvent.title)
@@ -174,7 +238,7 @@ class EventActivity : SimpleActivity() {
 
     private fun setupNewEvent() {
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
-        supportActionBar?.title = resources.getString(R.string.new_event)
+        updateActionBarTitle(getString(R.string.new_event))
         val isLastCaldavCalendarOK = config.caldavSync && config.getSyncedCalendarIdsAsList().contains(config.lastUsedCaldavCalendarId.toString())
         mEventCalendarId = if (isLastCaldavCalendarOK) config.lastUsedCaldavCalendarId else STORED_LOCALLY_ONLY
 
@@ -862,8 +926,9 @@ class EventActivity : SimpleActivity() {
                 setRepeatRule(Math.pow(2.0, (mEventStartDateTime.dayOfWeek - 1).toDouble()).toInt())
             }
         } else if (mRepeatInterval.isXMonthlyRepetition() || mRepeatInterval.isXYearlyRepetition()) {
-            if (mRepeatRule == REPEAT_LAST_DAY && !isLastDayOfTheMonth())
+            if (mRepeatRule == REPEAT_LAST_DAY && !isLastDayOfTheMonth()) {
                 mRepeatRule = REPEAT_SAME_DAY
+            }
             checkRepetitionRuleText()
         }
     }

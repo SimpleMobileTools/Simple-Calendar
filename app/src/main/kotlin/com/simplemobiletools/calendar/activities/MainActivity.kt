@@ -84,6 +84,14 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         }
 
+        if (!hasPermission(PERMISSION_WRITE_CALENDAR) || !hasPermission(PERMISSION_READ_CALENDAR)) {
+            config.caldavSync = false
+        }
+
+        if (config.caldavSync) {
+            refreshCalDAVCalendars(false)
+        }
+
         if (!checkViewIntents()) {
             return
         }
@@ -92,13 +100,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             updateViewPager()
         }
 
-        if (!hasPermission(PERMISSION_WRITE_CALENDAR) || !hasPermission(PERMISSION_READ_CALENDAR)) {
-            config.caldavSync = false
-        }
-
-        if (config.caldavSync) {
-            refreshCalDAVCalendars(false)
-        }
+        checkAppOnSDCard()
     }
 
     override fun onResume() {
@@ -328,8 +330,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     private fun resetActionBarTitle() {
-        supportActionBar?.title = getString(R.string.app_launcher_name)
-        supportActionBar?.subtitle = ""
+        updateActionBarTitle(getString(R.string.app_launcher_name))
+        updateActionBarSubtitle("")
     }
 
     private fun showFilterDialog() {
@@ -693,15 +695,17 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     private fun launchAbout() {
+        val licenses = LICENSE_JODA or LICENSE_STETHO or LICENSE_MULTISELECT or LICENSE_LEAK_CANARY
+
         val faqItems = arrayListOf(
                 FAQItem(R.string.faq_1_title_commons, R.string.faq_1_text_commons),
                 FAQItem(R.string.faq_2_title_commons, R.string.faq_2_text_commons),
                 FAQItem(R.string.faq_4_title_commons, R.string.faq_4_text_commons),
                 FAQItem(getString(R.string.faq_1_title), getString(R.string.faq_1_text)),
-                FAQItem(getString(R.string.faq_2_title), getString(R.string.faq_2_text)))
+                FAQItem(getString(R.string.faq_2_title), getString(R.string.faq_2_text)),
+                FAQItem(getString(R.string.faq_3_title), getString(R.string.faq_3_text)))
 
-        startAboutActivity(R.string.app_name, LICENSE_JODA or LICENSE_STETHO or LICENSE_MULTISELECT or LICENSE_LEAK_CANARY,
-                BuildConfig.VERSION_NAME, faqItems)
+        startAboutActivity(R.string.app_name, licenses, BuildConfig.VERSION_NAME, faqItems, true)
     }
 
     private fun searchQueryChanged(text: String) {

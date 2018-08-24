@@ -44,7 +44,7 @@
     <string name="event_is_repeatable">L\'événement est répétable</string>
     <string name="selection_contains_repetition">La sélection contient des événements avec répétition</string>
     <string name="delete_one_only">Supprimer seulement l\'occurrence sélectionnée</string>
-    <string name="delete_future_occurrences">Delete this and all future occurrences</string>
+    <string name="delete_future_occurrences">Supprimer ceci et toutes les occurrences futures</string>
     <string name="delete_all_occurrences">Supprimer toutes les occurrences</string>
     <string name="update_one_only">Mettre à jour seulement l\'occurrence sélectionnée</string>
     <string name="update_all_occurrences">Mettre à jour toutes les occurrences</string>
@@ -106,7 +106,7 @@
     <string name="export_past_events_too">Exporter aussi les événements passés</string>
     <string name="include_event_types">Inclure les types d\'événement</string>
     <string name="filename_without_ics">Nom de fichier (sans .ics)</string>
-    <string name="override_event_types">Remplacer les types d'événement dans le fichier</string>
+    <string name="override_event_types">Remplacer les types d\'événement dans le fichier</string>
 
     <!-- Event details -->
     <string name="title">Titre</string>
@@ -159,9 +159,9 @@
     <string name="loop_reminders">Boucles de rappel jusqu\'à ce qu\'il soit rejeté</string>
     <string name="dim_past_events">Diminuer l\'affichage des événements passés</string>
     <string name="events">Evénements</string>
-    <string name="reminder_stream">Audio stream used by reminders</string>
+    <string name="reminder_stream">Flux audio utilisé par les rappels</string>
     <string name="system_stream">System</string>
-    <string name="alarm_stream">Alarm</string>
+    <string name="alarm_stream">Alarme</string>
     <string name="notification_stream">Notification</string>
     <string name="ring_stream">Ring</string>
 
@@ -204,6 +204,9 @@
     <string name="faq_2_title">Puis-je synchroniser mes événements via Google Agenda, ou tout autre service proposant la synchronisation CalDAV ?</string>
 	<string name="faq_2_text">Oui, il faut juste activer l\'option « Synchronisation CalDAV » dans les paramètres de l\'application puis choisir les calendriers à synchroniser. Une application tierce pour gérer la synchronisation entre votre appareil et les serveurs sera par contre nécessaire. 
 		Dans le cas d\'un calendrier Google Agenda, l\'application officielle fera l\'affaire. Pour les autres calendriers, il vous faudra une application comme DAVdroid par exemple.</string>
+    <string name="faq_3_title">I see the visual reminders, but hear no audio. What can I do?</string>
+    <string name="faq_3_text">Not just displaying the actual reminder, but playing the audio is hugely affected by the system too. If you can\'t hear any sound, try going in the app settings,
+        pressing the \"Audio stream used by reminders\" option and changing it to a different value. If it still won\'t work, check your sound settings, if the particular stream isn\'t muted.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->

@@ -44,7 +44,7 @@
     <string name="event_is_repeatable">Termin ist wiederholbar</string>
     <string name="selection_contains_repetition">Die Auswahl enthält Ereignisse mit Wiederholungen</string>
     <string name="delete_one_only">Lösche nur die ausgewählte Wiederholung</string>
-    <string name="delete_future_occurrences">Delete this and all future occurrences</string>
+    <string name="delete_future_occurrences">Lösche diese und zukünftige Wiederholungen</string>
     <string name="delete_all_occurrences">Lösche alle Wiederholungen</string>
     <string name="update_one_only">Ändere nur die ausgewählte Wiederholung</string>
     <string name="update_all_occurrences">Ändere alle Wiederholungen</string>
@@ -159,11 +159,11 @@
     <string name="loop_reminders">Erinnerungen wiederholen bis sie verworfen werden</string>
     <string name="dim_past_events">Vergangene Termine ausgrauen</string>
     <string name="events">Termine</string>
-    <string name="reminder_stream">Audio stream used by reminders</string>
-    <string name="system_stream">System</string>
-    <string name="alarm_stream">Alarm</string>
-    <string name="notification_stream">Notification</string>
-    <string name="ring_stream">Ring</string>
+    <string name="reminder_stream">Audio Ausgabekanal für Erinnerungen</string>
+    <string name="system_stream">Medien</string>
+    <string name="alarm_stream">Wecker</string>
+    <string name="notification_stream">Benachrichtigung</string>
+    <string name="ring_stream">Klingelton</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -203,8 +203,11 @@
         Du kannst in den Einstellungen -> Verwalte Termin-Typen auf den Termin-Typ gedrückt halten und über das Papierkorbsymbol löschen.</string>
     <string name="faq_2_title">Kann ich meine Termine über Google Kalender oder andere CalDAV unterstützende Dienste synchronisieren?</string>
     <string name="faq_2_text">Ja, aktiviere \"CalDAV Synchronisierung\" in den Einstellungen und wähle die Kalender aus, die du synchronisieren willst. 
-        Jedoch benötigst du eine separate App, die die Synchronisierung zwischen Gerät und Servern handhabt. Falls du einen Google Kalender synchronisieren willst, kann die offizielle Kalender-App dies übernehmen. 
+        Jedoch benötigst du eine separate App, die Synchronisierung zwischen Gerät und Servern handhabt. Falls du einen Google Kalender synchronisieren willst, kann die offizielle Kalender-App dies übernehmen.
         Für andere Kalender benötigst du einen Synchronisierungsadapter, wie z. B. DAVdroid.</string>
+    <string name="faq_3_title">Ich sehe die Erinenrungen, aber ich höre keinen Ton. Was kann ich tun?</string>
+    <string name="faq_3_text">Erinnerungen nicht nur anzeigen, sondern Töne dazu abspielen ist ebenfalls stark vom jeweiligen (Android) System abhängig. Wenn Du keine Töne hörst, versuche in den App Einstellungen,
+        die Option \"Audio Ausgabekanal für Erinnerungen\" anzuklicken und eine andere Option auszuwählen. Wenn das immer noch nichts ändert, prüfe Deine Lautstärkeeinstellungen. of der gewählte Kanal nicht auf lautlos steht.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->

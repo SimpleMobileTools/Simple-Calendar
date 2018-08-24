@@ -204,6 +204,9 @@
     <string name="faq_2_title">Kan ik mijn afspraken synchroniseren met Google Calendar of een andere service die CalDAV ondersteunt?</string>
     <string name="faq_2_text">Schakel \"CalDAV-synchronisatie\" in bij Instellingen en selecteer vervolgens de agenda\'s die gesynchroniseerd moeten worden. Er is wel een app nodig die de synchronisatie tussen het apparaat en de service zelf afhandelt.
         Betreft het een agenda van Google Calendar, dan voldoet hun officiële app. Voor andere services zal een adapter zoals DAVdroid benodigd zijn.</string>
+    <string name="faq_3_title">Ik krijg wel herinneringen, maar ik hoor geen notificatiegeluid. Wat kan ik doen?</string>
+    <string name="faq_3_text">Geluiden afspelen bij een herinnering is sterk afhankelijk van het systeem. Als er geen geluid te horen is, ga dan naar instellingen en pas de optie
+        \"Type geluiden voor herinneringen gebruiken\" aan. Als dat niet werkt, controleer dan bij de geluidsinstellingen van Android of het volume van dit geluidstype niet te laag is ingesteld.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->

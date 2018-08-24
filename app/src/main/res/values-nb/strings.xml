@@ -44,7 +44,7 @@
     <string name="event_is_repeatable">Hendelsen er repeterbar</string>
     <string name="selection_contains_repetition">Markeringen inneholder gjentagende hendelser</string>
     <string name="delete_one_only">Slett bare den merkede forekomsten</string>
-    <string name="delete_future_occurrences">Delete this and all future occurrences</string>
+    <string name="delete_future_occurrences">Slett denne og alle framtidige forekomster</string>
     <string name="delete_all_occurrences">Slett alle forekomster</string>
     <string name="update_one_only">Oppdater bare den merkede forekomsten</string>
     <string name="update_all_occurrences">Oppdater alle forekomster</string>
@@ -159,11 +159,11 @@
     <string name="loop_reminders">Gjenta påminnelser inntil avvist</string>
     <string name="dim_past_events">Dim tidligere hendelser</string>
     <string name="events">Hendelser</string>
-    <string name="reminder_stream">Audio stream used by reminders</string>
+    <string name="reminder_stream">Lydtype brukt for påminnelser</string>
     <string name="system_stream">System</string>
     <string name="alarm_stream">Alarm</string>
-    <string name="notification_stream">Notification</string>
-    <string name="ring_stream">Ring</string>
+    <string name="notification_stream">Varsel</string>
+    <string name="ring_stream">Ringetone</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -204,6 +204,9 @@
     <string name="faq_2_title">Kan jeg synkronisere hendelsene mine via Google Kalender eller annen tjeneste som støtter CalDAV?</string>
     <string name="faq_2_text">Ja, bare aktiver \"CalDAV-synkronisering\" i innstillingene og velg kalenderne du vil synkronisere. Du trenger imidlertid program som håndterer synkroniseringen mellom enheten og serverne.
         Hvis du vil synkronisere en Google-kalender, vil deres offisielle kalenderapp gjøre jobben. For andre kalendere trenger du en annen synkroniseringsapp, for eksempel DAVdroid.</string>
+    <string name="faq_3_title">I see the visual reminders, but hear no audio. What can I do?</string>
+    <string name="faq_3_text">Not just displaying the actual reminder, but playing the audio is hugely affected by the system too. If you can\'t hear any sound, try going in the app settings,
+        pressing the \"Audio stream used by reminders\" option and changing it to a different value. If it still won\'t work, check your sound settings, if the particular stream isn\'t muted.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->

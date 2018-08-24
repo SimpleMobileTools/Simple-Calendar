@@ -44,6 +44,7 @@ class SettingsActivity : SimpleActivity() {
     override fun onResume() {
         super.onResume()
 
+        setupPurchaseThankYou()
         setupCustomizeColors()
         setupUseEnglish()
         setupManageEventTypes()
@@ -92,6 +93,13 @@ class SettingsActivity : SimpleActivity() {
         val adjustedPrimaryColor = getAdjustedPrimaryColor()
         arrayListOf(reminders_label, caldav_label, weekly_view_label, monthly_view_label, simple_event_list_label, widgets_label, events_label).forEach {
             it.setTextColor(adjustedPrimaryColor)
+        }
+    }
+
+    private fun setupPurchaseThankYou() {
+        settings_purchase_thank_you_holder.beVisibleIf(config.appRunCount > 10 && !isThankYouInstalled())
+        settings_purchase_thank_you_holder.setOnClickListener {
+            launchPurchaseThankYouIntent()
         }
     }
 

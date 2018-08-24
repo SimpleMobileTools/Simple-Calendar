@@ -245,8 +245,8 @@ class CalDAVHandler(val context: Context) {
                     val importId = getCalDAVEventImportId(calendarId, id)
                     val source = "$CALDAV-$calendarId"
                     val repeatRule = Parser().parseRepeatInterval(rrule, startTS)
-                    val event = Event(0, startTS, endTS, title, description, reminders.getOrElse(0, { -1 }),
-                            reminders.getOrElse(1, { -1 }), reminders.getOrElse(2, { -1 }), repeatRule.repeatInterval,
+                    val event = Event(0, startTS, endTS, title, description, reminders.getOrElse(0) { -1 },
+                            reminders.getOrElse(1) { -1 }, reminders.getOrElse(2) { -1 }, repeatRule.repeatInterval,
                             importId, allDay, repeatRule.repeatLimit, repeatRule.repeatRule, eventTypeId, source = source, location = location)
 
                     if (event.getIsAllDay()) {

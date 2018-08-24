@@ -815,7 +815,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         val events = ArrayList<Event>()
         val ts = getNowSeconds()
 
-        val selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_REPEAT_INTERVAL IS 0 AND $COL_START_TS != 0"
+        val selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_REPEAT_INTERVAL IS NULL AND $COL_START_TS != 0"
         val selectionArgs = arrayOf(ts.toString(), ts.toString())
         val cursor = getEventsCursor(selection, selectionArgs)
         events.addAll(fillEvents(cursor))
@@ -976,6 +976,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                     eventTypes.add(eventType)
                 } while (cursor.moveToNext())
             }
+        } catch (ignored: Exception) {
         } finally {
             cursor?.close()
         }

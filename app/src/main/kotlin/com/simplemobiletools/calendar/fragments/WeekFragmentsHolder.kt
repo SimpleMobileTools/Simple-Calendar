@@ -16,6 +16,8 @@ import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.helpers.WEEK_START_DATE_TIME
 import com.simplemobiletools.calendar.interfaces.WeekFragmentListener
 import com.simplemobiletools.calendar.views.MyScrollView
+import com.simplemobiletools.commons.extensions.updateActionBarSubtitle
+import com.simplemobiletools.commons.extensions.updateActionBarTitle
 import com.simplemobiletools.commons.helpers.WEEK_SECONDS
 import kotlinx.android.synthetic.main.fragment_week_holder.*
 import kotlinx.android.synthetic.main.fragment_week_holder.view.*
@@ -112,12 +114,12 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
             if (startDateTime.year != DateTime().year) {
                 newTitle += " - ${startDateTime.year}"
             }
-            (activity as? MainActivity)?.supportActionBar?.title = newTitle
+            (activity as MainActivity).updateActionBarTitle(newTitle)
         } else {
             val endMonthName = Formatter.getMonthName(context!!, endDateTime.monthOfYear)
-            (activity as? MainActivity)?.supportActionBar?.title = "$startMonthName - $endMonthName"
+            (activity as MainActivity).updateActionBarTitle("$startMonthName - $endMonthName")
         }
-        (activity as? MainActivity)?.supportActionBar?.subtitle = "${getString(R.string.week)} ${startDateTime.plusDays(3).weekOfWeekyear}"
+        (activity as MainActivity).updateActionBarSubtitle("${getString(R.string.week)} ${startDateTime.plusDays(3).weekOfWeekyear}")
     }
 
     override fun goToToday() {

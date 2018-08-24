@@ -204,6 +204,9 @@
     <string name="faq_2_title">Viem si zosynchronizovať udalosti pomocou Google Kalendára, alebo inej služby podporujúcej CalDAV?</string>
     <string name="faq_2_text">Áno, stačí aktivovať funkciu \"CalDAV synchronizácia\" v nastaveniach a zvoliť si správne kalendáre. Pre synchronizáciu medzi zariadením a serverom ale budete potrebovať synchronizačný adaptér od tretej strany.
         Ak chcete synchronizovať Google kalendár, ich oficiálna aplikácia Kalendár to spraví. Pre iné kalendáre budete potrebovať inú synchronizačnú aplikáciu, napr. DAVdroid.</string>
+    <string name="faq_3_title">Vidím vizuálnu pripomienku, ale nepočujem žiadny zvuk. Čo s tým viem spraviť?</string>
+    <string name="faq_3_text">Nie len zobrazovanie pripomienok, ale aj prehrávanie zvuku je ovplyvnené systémom. Ak nepočujete zvuk, skúste ísť do nastavení apky, použiť možnosť \"Zvukový kanál používaný pripomienkami\" a
+        zmeniť zvolenú hodnotu. Ak to ešte stále nebude fungovať, skúste sa pozrieť do zvukových nastavení vášho systému, či daný kanál nie je stlmený.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->

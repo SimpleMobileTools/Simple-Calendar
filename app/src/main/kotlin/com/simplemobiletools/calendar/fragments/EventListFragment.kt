@@ -17,10 +17,7 @@ import com.simplemobiletools.calendar.helpers.EVENT_OCCURRENCE_TS
 import com.simplemobiletools.calendar.helpers.Formatter
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.calendar.models.ListEvent
-import com.simplemobiletools.commons.extensions.beGoneIf
-import com.simplemobiletools.commons.extensions.beVisibleIf
-import com.simplemobiletools.commons.extensions.getAdjustedPrimaryColor
-import com.simplemobiletools.commons.extensions.underlineText
+import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.MONTH_SECONDS
 import com.simplemobiletools.commons.interfaces.RefreshRecyclerViewListener
 import com.simplemobiletools.commons.views.MyRecyclerView
@@ -182,7 +179,7 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
     override fun shouldGoToTodayBeVisible() = false
 
     override fun updateActionBarTitle() {
-        (activity as MainActivity).supportActionBar?.title = getString(R.string.app_launcher_name)
+        (activity as? MainActivity)?.updateActionBarTitle(getString(R.string.app_launcher_name))
     }
 
     override fun getNewEventDayCode() = Formatter.getTodayCode(context!!)
