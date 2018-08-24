@@ -22,7 +22,7 @@
     <string name="create_new_event">Создать новое событие</string>
     <string name="duplicate_event">Дублировать событие</string>
     <string name="title_empty">Заголовок не может быть пустым</string>
-    <string name="end_before_start">Событие не может завершаться раньше, чем начинается</string>
+    <string name="end_before_start">Событие не может завершаться раньше, чем начинаться</string>
     <string name="event_added">Событие успешно добавлено</string>
     <string name="event_updated">Событие успешно обновлено</string>
     <string name="filter_events_by_type">Фильтровать события по типу</string>
@@ -204,9 +204,9 @@
     <string name="faq_2_title">Можно ли синхронизировать события с помощью Календаря Google или других служб, поддерживающих CalDAV?</string>
     <string name="faq_2_text">Да, просто включите \"Cинхронизацию CalDAV\" в настройках приложения и выберите календари, которые хотите синхронизировать. Тем не менее, вам потребуется стороннее приложение, обрабатывающее синхронизацию между устройством и сервером.
         Если вы хотите синхронизировать Календарь Google, то их официальное приложение выполнит данную работу. Для других календарей вам понадобится сторонний инструмент синхронизации, например DAVdroid.</string>
-    <string name="faq_3_title">I see the visual reminders, but hear no audio. What can I do?</string>
-    <string name="faq_3_text">Not just displaying the actual reminder, but playing the audio is hugely affected by the system too. If you can\'t hear any sound, try going in the app settings,
-        pressing the \"Audio stream used by reminders\" option and changing it to a different value. If it still won\'t work, check your sound settings, if the particular stream isn\'t muted.</string>
+    <string name="faq_3_title">Я вижу напоминания, но не слышу звука. Что можно сделать?</string>
+    <string name="faq_3_text">Не только отображение напоминания, но и воспроизведение звука сильно зависит от системы. Если звук не слышен, откройти настройки приложения,
+        выберите параметр \"Аудиопоток, используемый напоминаниями\" и измените его на другое значение. Если звук по-прежнему не будет слышен, проверьте в настройка устройства, что данный поток не отключён.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
