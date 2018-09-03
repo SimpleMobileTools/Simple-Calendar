@@ -8,7 +8,7 @@
     <string name="monthly_view">Vista mensal</string>
     <string name="yearly_view">Vista anual</string>
     <string name="simple_event_list">Lista de eventos</string>
-    <string name="no_upcoming_events">Parece que você não tem eventos próximos.</string>
+    <string name="no_upcoming_events">Parece que você não tem próximos eventos.</string>
     <string name="go_to_today">Ir para hoje</string>
 
     <!-- Widget titles -->
@@ -20,7 +20,7 @@
     <string name="edit_event">Editar evento</string>
     <string name="new_event">Novo evento</string>
     <string name="create_new_event">Crie um novo evento</string>
-    <string name="duplicate_event">Duplicate event</string>
+    <string name="duplicate_event">Evento duplicado</string>
     <string name="title_empty">O título não pode ficar vazio</string>
     <string name="end_before_start">O evento não pode terminar antes de iniciar</string>
     <string name="event_added">Evento adicionado com sucesso</string>
@@ -53,7 +53,7 @@
     <string name="repeat_forever">Repetir para sempre</string>
     <string name="times">vezes</string>
     <string name="repeat">Repetir</string>
-    <string name="repeat_on">Repetir</string>
+    <string name="repeat_on">Repetir em</string>
     <string name="every_day">Todo dia</string>
     <string name="selected_days">Em dias selecionados</string>
     <string name="the_same_day">O mesmo dia</string>
@@ -128,12 +128,12 @@
     <string name="select_event_type">Selecione um tipo de evento</string>
     <string name="move_events_into_default">Mover eventos afetados para o tipo de evento padrão</string>
     <string name="remove_affected_events">Remover permanentemente eventos afetados</string>
-    <string name="unsync_caldav_calendar">Para remover um calendário do CalDAV, você deve desassincroná-lo</string>
+    <string name="unsync_caldav_calendar">Para remover um calendário do CalDAV você deve desativar a sincronização</string>
 
     <!-- Holidays -->
-    <string name="holidays">Ferias</string>
-    <string name="add_holidays">Adicionar Ferias</string>
-    <string name="national_holidays">feriados nacionais</string>
+    <string name="holidays">Feriados</string>
+    <string name="add_holidays">Adicionar feriados</string>
+    <string name="national_holidays">Feriados nacionais</string>
     <string name="religious_holidays">Feriados religiosos</string>
     <string name="holidays_imported_successfully">Os feriados foram importados com sucesso para o tipo de evento \ "Feriados \"</string>
     <string name="importing_some_holidays_failed">A importação de alguns eventos falhou</string>
@@ -149,21 +149,21 @@
     <string name="no_ringtone_picker">Não foi encontrado nenhum aplicativo capaz de definir o som</string>
     <string name="no_ringtone_selected">Nenhum</string>
     <string name="day_end_before_start">O dia final não pode ser antes do início</string>
-    <string name="caldav_sync">CalDAV sync</string>
+    <string name="caldav_sync">Sincronização CalDAV</string>
     <string name="event_lists">Listas de eventos</string>
     <string name="display_past_events">Exibir eventos do passado</string>
     <string name="replace_description_with_location">Substituir descrição do evento por localização</string>
-    <string name="delete_all_events">Delete todos eventos</string>
+    <string name="delete_all_events">Deletar todos os eventos</string>
     <string name="delete_all_events_confirmation">Tem certeza de que deseja excluir todos os eventos? Isso deixará seus tipos de eventos e outras configurações intactas.</string>
     <string name="show_a_grid">Mostrar uma grid</string>
     <string name="loop_reminders">Lembretes de loop até que seja dispensado</string>
-    <string name="dim_past_events">Escurecer passado eventos</string>
+    <string name="dim_past_events">Escurecer eventos passados</string>
     <string name="events">Eventos</string>
-    <string name="reminder_stream">Audio stream used by reminders</string>
-    <string name="system_stream">System</string>
-    <string name="alarm_stream">Alarm</string>
-    <string name="notification_stream">Notification</string>
-    <string name="ring_stream">Ring</string>
+    <string name="reminder_stream">Fonte de áudio usada pelos lembretes</string>
+    <string name="system_stream">Sistema</string>
+    <string name="alarm_stream">Alarme</string>
+    <string name="notification_stream">Notificação</string>
+    <string name="ring_stream">Toque</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -173,7 +173,7 @@
     <string name="refresh_caldav_calendars">Recarregar Calendarios CalDAV </string>
     <string name="refreshing">Recarregando…</string>
     <string name="refreshing_complete">Carregamento completo</string>
-    <string name="editing_calendar_failed">O calendário de edição falhou</string>
+    <string name="editing_calendar_failed">A edição do calendário falhou</string>
     <string name="syncing">Sincronizando…</string>
     <string name="synchronization_completed">Sincronização completa</string>
 
@@ -184,7 +184,7 @@
     <string name="wednesday_alt">Quarta</string>
     <string name="thursday_alt">Quinta</string>
     <string name="friday_alt">Sexta</string>
-    <string name="saturday_alt">Sabado</string>
+    <string name="saturday_alt">Sábado</string>
     <string name="sunday_alt">Domingo</string>
 
     <!-- List widget config example events -->
@@ -204,9 +204,9 @@
     <string name="faq_2_title">Posso sincronizar meus eventos por meio do Google Agenda ou de outro serviço de suporte CalDAV?</string>
     <string name="faq_2_text">Sim, basta ativar \ "CalDAV sync \" nas configurações do aplicativo e selecionar os calendários que você deseja sincronizar. No entanto, você precisará de algum aplicativo de terceiros que manipule a sincronização entre o dispositivo e os servidores.
          Caso você queira sincronizar um calendário do Google, o aplicativo oficial do Google Agenda fará o trabalho. Para outros calendários, você precisará de um adaptador de sincronização de terceiros, por exemplo, o DAVdroid.</string>
-    <string name="faq_3_title">I see the visual reminders, but hear no audio. What can I do?</string>
-    <string name="faq_3_text">Not just displaying the actual reminder, but playing the audio is hugely affected by the system too. If you can\'t hear any sound, try going in the app settings,
-        pressing the \"Audio stream used by reminders\" option and changing it to a different value. If it still won\'t work, check your sound settings, if the particular stream isn\'t muted.</string>
+    <string name="faq_3_title">Vejo os lembrete, mas não ouço áudio. O que posso fazer?</string>
+    <string name="faq_3_text">A exibição do lembrete e o áudio são fortemente influenciados pelas configurações do sistema. Se você não consegue ouvir o som, verifique as configurações do aplicativo,
+selecionando a opção \"Fonte de áudio usada pelos lembretes\" e modificando o seu valor. Se isso não funcionar, verifique as configurações, especialmente se o som não está mudo.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
