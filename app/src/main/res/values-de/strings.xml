@@ -8,7 +8,7 @@
     <string name="monthly_view">Monatsansicht</string>
     <string name="yearly_view">Jahresansicht</string>
     <string name="simple_event_list">Einfache Terminliste</string>
-    <string name="no_upcoming_events">Keine anstehenden Termine</string>
+    <string name="no_upcoming_events">Scheint so, als hättest du keine anstehenden Termine.</string>
     <string name="go_to_today">Springe zu Heute</string>
 
     <!-- Widget titles -->
@@ -20,12 +20,12 @@
     <string name="edit_event">Termin bearbeiten</string>
     <string name="new_event">Neuer Termin</string>
     <string name="create_new_event">Neuen Termin erstellen</string>
-    <string name="duplicate_event">Event duplizieren</string>
+    <string name="duplicate_event">Termin duplizieren</string>
     <string name="title_empty">Titel darf nicht leer sein</string>
     <string name="end_before_start">Der Termin darf nicht früher enden als er beginnt</string>
     <string name="event_added">Termin erfolgreich hinzugefügt</string>
     <string name="event_updated">Termin erfolgreich aktualisiert</string>
-    <string name="filter_events_by_type">Sortiere Termine nach Typ</string>
+    <string name="filter_events_by_type">Termine nach Typ sortieren</string>
     <string name="please_fill_location">Bitte trage einen Ort ein, der auf einer Karte angezeigt werden soll</string>
     <string name="public_event_notification_text">Ein Termin steht an</string>
 
@@ -42,20 +42,20 @@
     <string name="repeat_till">Wiederholen bis</string>
     <string name="forever">unendlich</string>
     <string name="event_is_repeatable">Termin ist wiederholbar</string>
-    <string name="selection_contains_repetition">Die Auswahl enthält Ereignisse mit Wiederholungen</string>
-    <string name="delete_one_only">Lösche nur die ausgewählte Wiederholung</string>
-    <string name="delete_future_occurrences">Lösche diese und zukünftige Wiederholungen</string>
-    <string name="delete_all_occurrences">Lösche alle Wiederholungen</string>
-    <string name="update_one_only">Ändere nur die ausgewählte Wiederholung</string>
-    <string name="update_all_occurrences">Ändere alle Wiederholungen</string>
-    <string name="repeat_till_date">Wiederhole bis zu bestimmtem Datum</string>
-    <string name="repeat_x_times">Wiederhole x Mal</string>
+    <string name="selection_contains_repetition">Die Auswahl enthält Termine mit Wiederholungen</string>
+    <string name="delete_one_only">Nur die ausgewählte Wiederholung löschen</string>
+    <string name="delete_future_occurrences">Diese und zukünftige Wiederholungen löschen</string>
+    <string name="delete_all_occurrences">Alle Wiederholungen löschen</string>
+    <string name="update_one_only">Nur die ausgewählte Wiederholung ändern</string>
+    <string name="update_all_occurrences">Alle Wiederholungen ändern</string>
+    <string name="repeat_till_date">Bis zu bestimmtem Datum wiederholen</string>
+    <string name="repeat_x_times">x Mal wiederholen</string>
     <string name="repeat_forever">Immer wiederholen</string>
     <string name="times">Mal</string>
     <string name="repeat">Wiederholung</string>
     <string name="repeat_on">Wiederholen</string>
     <string name="every_day">Täglich</string>
-    <string name="selected_days">an ausgewählten Tagen</string>
+    <string name="selected_days">An ausgewählten Tagen</string>
     <string name="the_same_day">Der gleiche Tag</string>
     <string name="the_last_day">Der letzte Tag</string>
     <string name="repeat_on_the_same_day_monthly">Am gleichen Tag jeden Monats wiederholen</string>
@@ -94,19 +94,19 @@
     <!-- Event Reminders -->
     <string name="reminder">Erinnerung</string>
     <string name="before">vorher</string>
-    <string name="add_another_reminder">Füge eine weitere Erinnerung hinzu</string>
-    <string name="event_reminders">Ereignis Erinnerungen</string>
+    <string name="add_another_reminder">Weitere Erinnerung hinzufügen</string>
+    <string name="event_reminders">Termin-Erinnerungen</string>
 
     <!-- Export / Import -->
-    <string name="import_events">Importiere Termine</string>
-    <string name="export_events">Exportiere Termine</string>
-    <string name="import_events_from_ics">Importiere Termine aus .ics Datei</string>
-    <string name="export_events_to_ics">Exportiere Termine als .ics Datei</string>
-    <string name="default_event_type">Standard-Termin-Typ</string>
+    <string name="import_events">Termine importieren</string>
+    <string name="export_events">Termine exportieren</string>
+    <string name="import_events_from_ics">Termine aus .ics-Datei importieren</string>
+    <string name="export_events_to_ics">Termine als .ics-Datei exportieren</string>
+    <string name="default_event_type">Standard-Termintyp</string>
     <string name="export_past_events_too">Vergangene Termine auch exportieren</string>
-    <string name="include_event_types">Beziehe Termintypen mit ein</string>
+    <string name="include_event_types">Termintypen miteinbeziehen</string>
     <string name="filename_without_ics">Dateiname (ohne .ics)</string>
-    <string name="override_event_types">Überschreibe Termintypen in der Datei</string>
+    <string name="override_event_types">Termintypen in der Datei überschreiben</string>
 
     <!-- Event details -->
     <string name="title">Titel</string>
@@ -119,16 +119,16 @@
 
     <!-- Event types -->
     <string name="event_types">Termintypen</string>
-    <string name="add_new_type">Füge einen neuen Typ hinzu</string>
+    <string name="add_new_type">Neuen Typ hinzufügen</string>
     <string name="edit_type">Typ bearbeiten</string>
     <string name="type_already_exists">Typ mit diesem Namen existiert bereits</string>
     <string name="color">Farbe</string>
-    <string name="regular_event">Regelmässiger Termin</string>
-    <string name="cannot_delete_default_type">Standard Termintyp kann nicht gelöscht werden</string>
-    <string name="select_event_type">Wähle einen Termintyp</string>
-    <string name="move_events_into_default">Verschiebe betroffene Termine in den Standard Termintyp</string>
-    <string name="remove_affected_events">Lösche betroffene Termine permanent</string>
-    <string name="unsync_caldav_calendar">Um CalDAV Kalender zu entfernen, musst du diese desynchronisieren</string>
+    <string name="regular_event">Regelmäßiger Termin</string>
+    <string name="cannot_delete_default_type">Standard-Termintyp kann nicht gelöscht werden</string>
+    <string name="select_event_type">Wähle einen Termintyp aus</string>
+    <string name="move_events_into_default">Betroffene Termine in den Standard-Termintyp verschieben</string>
+    <string name="remove_affected_events">Betroffene Termine dauerhaft löschen</string>
+    <string name="unsync_caldav_calendar">Um einen CalDAV-Kalender zu entfernen, musst du ihn desynchronisieren</string>
 
     <!-- Holidays -->
     <string name="holidays">Feiertage</string>
@@ -140,26 +140,26 @@
     <string name="importing_holidays_failed">Importieren von Feiertagen fehlgeschlagen</string>
 
     <!-- Settings -->
-    <string name="manage_event_types">Verwalte Termin-Typen</string>
+    <string name="manage_event_types">Termintypen verwalten</string>
     <string name="start_day_at">Wochenansicht beginnt am</string>
     <string name="end_day_at">Wochenansicht endet am</string>
-    <string name="week_numbers">Zeige Kalenderwoche an</string>
+    <string name="week_numbers">Kalenderwoche anzeigen</string>
     <string name="vibrate">Vibration bei Erinnerung</string>
     <string name="reminder_sound">Erinnerungston</string>
-    <string name="no_ringtone_picker">Keine App zum Setzen des Klingeltons gefunden</string>
-    <string name="no_ringtone_selected">Kein Klingelton gewählt</string>
+    <string name="no_ringtone_picker">Keine App zum Einstellen des Klingeltons gefunden</string>
+    <string name="no_ringtone_selected">Kein Klingelton ausgewählt</string>
     <string name="day_end_before_start">Terminbeginn kann nicht vor Terminende liegen</string>
-    <string name="caldav_sync">CalDAV Synchronisierung</string>
+    <string name="caldav_sync">CalDAV-Synchronisierung</string>
     <string name="event_lists">Terminlisten</string>
     <string name="display_past_events">Vergangene Termine anzeigen</string>
-    <string name="replace_description_with_location">Ersetze Terminbeschreibung mit Ort</string>
+    <string name="replace_description_with_location">Terminbeschreibung mit Ort ersetzen</string>
     <string name="delete_all_events">Alle Termine löschen</string>
     <string name="delete_all_events_confirmation">Bist du sicher, dass du alle Termine löschen willst? Deine Termintypen und Einstellungen bleiben erhalten.</string>
     <string name="show_a_grid">Raster anzeigen</string>
     <string name="loop_reminders">Erinnerungen wiederholen bis sie verworfen werden</string>
     <string name="dim_past_events">Vergangene Termine ausgrauen</string>
     <string name="events">Termine</string>
-    <string name="reminder_stream">Audio Ausgabekanal für Erinnerungen</string>
+    <string name="reminder_stream">Audio-Ausgabekanal für Erinnerungen</string>
     <string name="system_stream">Medien</string>
     <string name="alarm_stream">Wecker</string>
     <string name="notification_stream">Benachrichtigung</string>
@@ -167,14 +167,14 @@
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
-    <string name="select_caldav_calendars">Wähle Kalender zur Synchronisierung</string>
-    <string name="manage_synced_calendars">Verwalte synchronisierte Kalender</string>
+    <string name="select_caldav_calendars">Kalender zur Synchronisierung auswählen</string>
+    <string name="manage_synced_calendars">Synchronisierte Kalender verwalten</string>
     <string name="store_locally_only">Nur lokal speichern</string>
-    <string name="refresh_caldav_calendars">Aktualisiere CalDAV Kalender</string>
-    <string name="refreshing">Aktualisiere…</string>
+    <string name="refresh_caldav_calendars">CalDAV-Kalender aktualisieren</string>
+    <string name="refreshing">Wird aktualisiert…</string>
     <string name="refreshing_complete">Aktualisierung abgeschlossen</string>
     <string name="editing_calendar_failed">Ändern des Kalenders fehlgeschlagen</string>
-    <string name="syncing">Synchronisiere…</string>
+    <string name="syncing">Wird synchronisiert…</string>
     <string name="synchronization_completed">Synchronisation erfolgreich</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
@@ -199,23 +199,23 @@
 
     <!-- FAQ -->
     <string name="faq_1_title">Wie kann ich Feiertage löschen, die über \"Feiertage hinzufügen\" importiert wurden?</string>
-    <string name="faq_1_text">Die über diesen Weg erstellten Feiertage sind als Termin-Typ \"Feiertage\" deklariert. 
-        Du kannst in den Einstellungen -> Verwalte Termin-Typen auf den Termin-Typ gedrückt halten und über das Papierkorbsymbol löschen.</string>
+    <string name="faq_1_text">Die über diesen Weg erstellten Feiertage sind als Termintyp \"Feiertage\" deklariert. 
+        Du kannst in den Einstellungen -> Termintypen verwalten auf den Termintyp gedrückt halten und über das Papierkorbsymbol löschen.</string>
     <string name="faq_2_title">Kann ich meine Termine über Google Kalender oder andere CalDAV unterstützende Dienste synchronisieren?</string>
-    <string name="faq_2_text">Ja, aktiviere \"CalDAV Synchronisierung\" in den Einstellungen und wähle die Kalender aus, die du synchronisieren willst. 
+    <string name="faq_2_text">Ja, aktiviere \"CalDAV-Synchronisierung\" in den Einstellungen und wähle die Kalender aus, die du synchronisieren willst. 
         Jedoch benötigst du eine separate App, die Synchronisierung zwischen Gerät und Servern handhabt. Falls du einen Google Kalender synchronisieren willst, kann die offizielle Kalender-App dies übernehmen.
         Für andere Kalender benötigst du einen Synchronisierungsadapter, wie z. B. DAVdroid.</string>
     <string name="faq_3_title">Ich sehe die Erinenrungen, aber ich höre keinen Ton. Was kann ich tun?</string>
     <string name="faq_3_text">Erinnerungen nicht nur anzeigen, sondern Töne dazu abspielen ist ebenfalls stark vom jeweiligen (Android) System abhängig. Wenn Du keine Töne hörst, versuche in den App Einstellungen,
-        die Option \"Audio Ausgabekanal für Erinnerungen\" anzuklicken und eine andere Option auszuwählen. Wenn das immer noch nichts ändert, prüfe Deine Lautstärkeeinstellungen. of der gewählte Kanal nicht auf lautlos steht.</string>
+        die Option \"Audio-Ausgabekanal für Erinnerungen\" anzuklicken und eine andere Option auszuwählen. Wenn das immer noch nichts ändert, prüfe Deine Lautstärkeeinstellungen. of der gewählte Kanal nicht auf lautlos steht.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Ein einfacher Kalender mit personalisierbaren Widgets, ganz ohne Werbung.</string>
+    <string name="app_short_description">Ein einfacher Kalender mit personalisierbaren Bedienelementen, ganz ohne Werbung.</string>
     <string name="app_long_description">
-        Ein schlichter Kalender mit optionaler CalDAV Synchronisation. Du kannst ganz einfach wiederholende Termine sowie Erinnerungen erstellen, inklusive optionaler Anzeige der Kalenderwoche.
+        Ein schlichter Kalender mit optionaler CalDAV-Synchronisation. Du kannst ganz einfach wiederholende Termine sowie Erinnerungen erstellen, inklusive optionaler Anzeige der Kalenderwoche.
 
-        Enthält ein skalierbares 4x4 Widget, bei welchem die Schriftfarbe sowie die Hintergrundfarbe und Transparenz anpassbar sind.
+        Enthält ein skalierbares 4x4 Bedienelement, bei welchem die Schriftfarbe sowie die Hintergrundfarbe und Transparenz anpassbar sind.
         
         Beinhaltet keine Werbung oder unnötige Berechtigungen. Sie ist komplett Open Source, alle verwendeten Farben sind anpassbar.
 
