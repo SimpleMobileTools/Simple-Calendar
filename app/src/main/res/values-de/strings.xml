@@ -205,13 +205,13 @@
     <string name="faq_2_text">Ja, aktiviere \"CalDAV-Synchronisierung\" in den Einstellungen und wähle die Kalender aus, die du synchronisieren willst. 
         Jedoch benötigst du eine separate App, die Synchronisierung zwischen Gerät und Servern handhabt. Falls du einen Google Kalender synchronisieren willst, kann die offizielle Kalender-App dies übernehmen.
         Für andere Kalender benötigst du einen Synchronisierungsadapter, wie z. B. DAVdroid.</string>
-    <string name="faq_3_title">Ich sehe die Erinenrungen, aber ich höre keinen Ton. Was kann ich tun?</string>
+    <string name="faq_3_title">Ich sehe die Erinnerungen, aber ich höre keinen Ton. Was kann ich tun?</string>
     <string name="faq_3_text">Erinnerungen nicht nur anzeigen, sondern Töne dazu abspielen ist ebenfalls stark vom jeweiligen (Android) System abhängig. Wenn Du keine Töne hörst, versuche in den App Einstellungen,
         die Option \"Audio-Ausgabekanal für Erinnerungen\" anzuklicken und eine andere Option auszuwählen. Wenn das immer noch nichts ändert, prüfe Deine Lautstärkeeinstellungen. of der gewählte Kanal nicht auf lautlos steht.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Ein einfacher Kalender mit personalisierbaren Bedienelementen, ganz ohne Werbung.</string>
+    <string name="app_short_description">Ein einfacher Kalender mit personalisierbaren Bedienelementen und ohne Werbung.</string>
     <string name="app_long_description">
         Ein schlichter Kalender mit optionaler CalDAV-Synchronisation. Du kannst ganz einfach wiederholende Termine sowie Erinnerungen erstellen, inklusive optionaler Anzeige der Kalenderwoche.
 
