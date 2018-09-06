@@ -49,7 +49,7 @@
     <string name="update_one_only">Actualizar sólo el evento seleccionado</string>
     <string name="update_all_occurrences">Actualizar todos los eventos</string>
     <string name="repeat_till_date">Repetir hasta la fecha</string>
-    <string name="repeat_x_times">Repetir x veces</string>
+    <string name="stop_repeating_after_x">Stop repeating after x occurrences</string>
     <string name="repeat_forever">Repetir por siempre</string>
     <string name="times">veces</string>
     <string name="repeat">Repetir</string>

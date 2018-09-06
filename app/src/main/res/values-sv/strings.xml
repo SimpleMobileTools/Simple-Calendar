@@ -49,7 +49,7 @@
     <string name="update_one_only">Uppdatera bara den markerade förekomsten</string>
     <string name="update_all_occurrences">Uppdatera alla förekomster</string>
     <string name="repeat_till_date">Upprepa till ett datum</string>
-    <string name="repeat_x_times">Upprepa x gånger</string>
+    <string name="stop_repeating_after_x">Stop repeating after x occurrences</string>
     <string name="repeat_forever">Upprepa alltid</string>
     <string name="times">gånger</string>
     <string name="repeat">Upprepa</string>

@@ -49,7 +49,7 @@
     <string name="update_one_only">只更新選擇的事件</string>
     <string name="update_all_occurrences">更新全部事件</string>
     <string name="repeat_till_date">重複直到某日</string>
-    <string name="repeat_x_times">重複幾次</string>
+    <string name="stop_repeating_after_x">Stop repeating after x occurrences</string>
     <string name="repeat_forever">永遠重複</string>
     <string name="times">次</string>
     <string name="repeat">重複</string>

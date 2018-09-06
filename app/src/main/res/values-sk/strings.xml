@@ -49,7 +49,7 @@
     <string name="update_one_only">Upraviť iba označené opakovania</string>
     <string name="update_all_occurrences">Upraviť všetky opakovania</string>
     <string name="repeat_till_date">Opakovať po dátum</string>
-    <string name="repeat_x_times">Opakovať x krát</string>
+    <string name="stop_repeating_after_x">Ukončiť opakovanie po x opakovaniach</string>
     <string name="repeat_forever">Opakovať navždy</string>
     <string name="times">krát</string>
     <string name="repeat">Opakovať</string>

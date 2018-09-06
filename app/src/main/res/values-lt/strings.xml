@@ -49,7 +49,7 @@
     <string name="update_one_only">Atnaujinti tik pasirinktą įvykį</string>
     <string name="update_all_occurrences">Atnaujinti visus įvykius</string>
     <string name="repeat_till_date">Pakartoti iki datos</string>
-    <string name="repeat_x_times">Pakartoti x kartus/ų</string>
+    <string name="stop_repeating_after_x">Stop repeating after x occurrences</string>
     <string name="repeat_forever">Karoti amžinai</string>
     <string name="times">laikai</string>
     <string name="repeat">Kartoti</string>

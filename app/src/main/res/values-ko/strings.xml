@@ -49,7 +49,7 @@
     <string name="update_one_only">선택한 항목만 변경</string>
     <string name="update_all_occurrences">모든 항목 변경</string>
     <string name="repeat_till_date">날짜까지 반복</string>
-    <string name="repeat_x_times">횟수 반복</string>
+    <string name="stop_repeating_after_x">Stop repeating after x occurrences</string>
     <string name="repeat_forever">영원히 반복</string>
     <string name="times">번</string>
     <string name="repeat">반복</string>

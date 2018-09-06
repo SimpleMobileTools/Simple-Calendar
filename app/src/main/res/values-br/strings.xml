@@ -49,7 +49,7 @@
     <string name="update_one_only">Hizivaat an degouezh diuzet hepken</string>
     <string name="update_all_occurrences">Hizivaat an holl zegouezhioù</string>
     <string name="repeat_till_date">Addegouezhout betek un deiziad</string>
-    <string name="repeat_x_times">Addegouezhout X gwech</string>
+    <string name="stop_repeating_after_x">Stop repeating after x occurrences</string>
     <string name="repeat_forever">Addegouezhout da viken</string>
     <string name="times">a wechoù</string>
     <string name="repeat">Addegouezh</string>

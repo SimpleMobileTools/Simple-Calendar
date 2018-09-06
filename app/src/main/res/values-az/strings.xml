@@ -49,7 +49,7 @@
     <string name="update_one_only">Yalnız seçilmiş hadisəni yenilə</string>
     <string name="update_all_occurrences">Bütün hadisələri yenilə</string>
     <string name="repeat_till_date">Bir vaxta qədər təkrarla</string>
-    <string name="repeat_x_times">X dəfə təkrarla</string>
+    <string name="stop_repeating_after_x">Stop repeating after x occurrences</string>
     <string name="repeat_forever">Sonsuz təkrarla</string>
     <string name="times">təkrar sayı</string>
     <string name="repeat">Təkrarla</string>

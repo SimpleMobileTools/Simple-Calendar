@@ -49,7 +49,7 @@
     <string name="update_one_only">Opdater kun denne forekomst</string>
     <string name="update_all_occurrences">Opdater alle forekomster</string>
     <string name="repeat_till_date">Gentag indtil</string>
-    <string name="repeat_x_times">Antal gentagelser</string>
+    <string name="stop_repeating_after_x">Stop repeating after x occurrences</string>
     <string name="repeat_forever">For altid</string>
     <string name="times">gange</string>
     <string name="repeat">Gentag</string>

@@ -49,7 +49,7 @@
     <string name="update_one_only">Ενημέρωση μόνο του επιλεγμένου περιστατικού</string>
     <string name="update_all_occurrences">Ενημέρωση όλων των περιστατικών</string>
     <string name="repeat_till_date">Επαναλάβετε μέχρι μια ημερομηνία</string>
-    <string name="repeat_x_times">Επαναλάβετε x φορές</string>
+    <string name="stop_repeating_after_x">Stop repeating after x occurrences</string>
     <string name="repeat_forever">Επαναλάβετε για πάντα</string>
     <string name="times">times</string>
     <string name="repeat">Επανάληψη</string>

@@ -49,7 +49,7 @@
     <string name="update_one_only">Ažuriraj samo odabrano ponavljanje</string>
     <string name="update_all_occurrences">Ažuriraj sva ponavljanja</string>
     <string name="repeat_till_date">Ponovi do datuma</string>
-    <string name="repeat_x_times">Ponovi x puta</string>
+    <string name="stop_repeating_after_x">Stop repeating after x occurrences</string>
     <string name="repeat_forever">Ponovi zauvijek</string>
     <string name="times">puta</string>
     <string name="repeat">Ponavljanje</string>

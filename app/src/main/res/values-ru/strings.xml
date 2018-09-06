@@ -49,7 +49,7 @@
     <string name="update_one_only">Обновить только выбранное</string>
     <string name="update_all_occurrences">Обновить все связанные</string>
     <string name="repeat_till_date">Повторять до даты</string>
-    <string name="repeat_x_times">Повторять x раз</string>
+    <string name="stop_repeating_after_x">Stop repeating after x occurrences</string>
     <string name="repeat_forever">Повторять бесконечно</string>
     <string name="times">раз</string>
     <string name="repeat">Повторять</string>

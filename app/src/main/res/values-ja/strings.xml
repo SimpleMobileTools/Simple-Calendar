@@ -49,7 +49,7 @@
     <string name="update_one_only">Update the selected occurrence only</string>
     <string name="update_all_occurrences">Update all occurrences</string>
     <string name="repeat_till_date">Repeat till a date</string>
-    <string name="repeat_x_times">Repeat x times</string>
+    <string name="stop_repeating_after_x">Stop repeating after x occurrences</string>
     <string name="repeat_forever">Repeat forever</string>
     <string name="times">times</string>
     <string name="repeat">Repeat</string>

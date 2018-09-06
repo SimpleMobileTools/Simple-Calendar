@@ -49,7 +49,7 @@
     <string name="update_one_only">Změnit pouze vybrané výskyty</string>
     <string name="update_all_occurrences">Změnit všechny výskyty</string>
     <string name="repeat_till_date">Opakovat až do</string>
-    <string name="repeat_x_times">Opakovat x krát</string>
+    <string name="stop_repeating_after_x">Stop repeating after x occurrences</string>
     <string name="repeat_forever">Opakovat navždy</string>
     <string name="times">krát</string>
     <string name="repeat">Opakovat</string>

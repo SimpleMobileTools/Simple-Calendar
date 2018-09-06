@@ -49,7 +49,7 @@
     <string name="update_one_only">Atualizar a ocorrência selecionada</string>
     <string name="update_all_occurrences">Atualizar todas as ocorrências</string>
     <string name="repeat_till_date">Repetir até à data</string>
-    <string name="repeat_x_times">Repetir x vezes</string>
+    <string name="stop_repeating_after_x">Stop repeating after x occurrences</string>
     <string name="repeat_forever">Repetir eternamente</string>
     <string name="times">vezes</string>
     <string name="repeat">Repetição</string>
