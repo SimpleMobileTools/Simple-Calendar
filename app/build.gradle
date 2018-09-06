@@ -41,18 +41,11 @@ android {
     }
 }
 
-ext {
-    leakCanaryVersion = '1.5.4'
-}
-
 dependencies {
     implementation 'com.simplemobiletools:commons:4.6.10'
     implementation 'joda-time:joda-time:2.9.9'
     implementation 'com.facebook.stetho:stetho:1.5.0'
     implementation 'com.android.support:multidex:1.0.3'
-
-    debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakCanaryVersion"
-    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leakCanaryVersion"
 }
 
 Properties props = new Properties()
