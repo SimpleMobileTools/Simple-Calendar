@@ -939,7 +939,12 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                         repeatRule = REPEAT_SAME_DAY
                     }
 
-                    val isPastEvent = endTS < getNowSeconds()
+                    val endTSToCheck = if (startTS < getNowSeconds() && flags and FLAG_ALL_DAY != 0) {
+                        Formatter.getDayEndTS(Formatter.getDayCodeFromTS(endTS))
+                    } else {
+                        endTS
+                    }
+                    val isPastEvent = endTSToCheck < getNowSeconds()
 
                     val event = Event(id, startTS, endTS, title, description, reminder1Minutes, reminder2Minutes, reminder3Minutes,
                             repeatInterval, importId, flags, repeatLimit, repeatRule, eventType, ignoreEventOccurrences, offset, isDstIncluded,
@@ -1070,5 +1075,12 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
     }
 
-    private fun getIsPastEvent(event: Event) = event.endTS < getNowSeconds()
+    private fun getIsPastEvent(event: Event): Boolean {
+        val endTSToCheck = if (event.startTS < getNowSeconds() && event.getIsAllDay()) {
+            Formatter.getDayEndTS(Formatter.getDayCodeFromTS(event.endTS))
+        } else {
+            event.endTS
+        }
+        return endTSToCheck < getNowSeconds()
+    }
 }
