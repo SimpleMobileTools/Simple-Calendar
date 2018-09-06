@@ -928,6 +928,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                     val source = cursor.getStringValue(COL_EVENT_SOURCE)
                     val location = cursor.getStringValue(COL_LOCATION)
                     val color = eventTypeColors[eventType]
+                    val isPastEvent = false
 
                     val ignoreEventOccurrences = if (repeatInterval != 0) {
                         getIgnoredOccurrences(id)
@@ -939,16 +940,10 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                         repeatRule = REPEAT_SAME_DAY
                     }
 
-                    val endTSToCheck = if (startTS < getNowSeconds() && flags and FLAG_ALL_DAY != 0) {
-                        Formatter.getDayEndTS(Formatter.getDayCodeFromTS(endTS))
-                    } else {
-                        endTS
-                    }
-                    val isPastEvent = endTSToCheck < getNowSeconds()
-
                     val event = Event(id, startTS, endTS, title, description, reminder1Minutes, reminder2Minutes, reminder3Minutes,
                             repeatInterval, importId, flags, repeatLimit, repeatRule, eventType, ignoreEventOccurrences, offset, isDstIncluded,
                             0, lastUpdated, source, color, location, isPastEvent)
+                    event.isPastEvent = getIsPastEvent(event)
 
                     events.add(event)
                 } while (cursor.moveToNext())
