@@ -691,7 +691,7 @@ class EventActivity : SimpleActivity() {
             config.lastUsedLocalEventTypeId = newEventType
             SOURCE_SIMPLE_CALENDAR
         } else {
-            "$CALDAV-${config.lastUsedCaldavCalendarId}"
+            "$CALDAV-$mEventCalendarId"
         }
 
         val reminders = sortedSetOf(mReminder1Minutes, mReminder2Minutes, mReminder3Minutes).filter { it != REMINDER_OFF }
