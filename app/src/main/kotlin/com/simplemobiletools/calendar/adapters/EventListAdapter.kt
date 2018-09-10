@@ -24,6 +24,7 @@ import com.simplemobiletools.commons.extensions.beInvisibleIf
 import com.simplemobiletools.commons.interfaces.RefreshRecyclerViewListener
 import com.simplemobiletools.commons.views.MyRecyclerView
 import kotlinx.android.synthetic.main.event_list_item.view.*
+import kotlinx.android.synthetic.main.event_list_section.view.*
 import java.util.*
 
 class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListItem>, val allowLongClick: Boolean, val listener: RefreshRecyclerViewListener?,
@@ -131,7 +132,7 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
 
     private fun setupListEvent(view: View, listEvent: ListEvent) {
         view.apply {
-            event_section_title.text = listEvent.title
+            event_item_title.text = listEvent.title
             event_item_description?.text = if (replaceDescription) listEvent.location else listEvent.description
             event_item_start.text = if (listEvent.isAllDay) allDayString else Formatter.getTimeFromTS(context, listEvent.startTS)
             event_item_end?.beInvisibleIf(listEvent.startTS == listEvent.endTS)
@@ -172,7 +173,7 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
 
             event_item_start.setTextColor(startTextColor)
             event_item_end?.setTextColor(endTextColor)
-            event_section_title.setTextColor(startTextColor)
+            event_item_title.setTextColor(startTextColor)
             event_item_description?.setTextColor(startTextColor)
         }
     }

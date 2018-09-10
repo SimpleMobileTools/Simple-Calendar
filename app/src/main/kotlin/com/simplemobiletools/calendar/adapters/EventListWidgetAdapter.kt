@@ -56,7 +56,7 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
     private fun setupListEvent(remoteView: RemoteViews, item: ListEvent) {
         var curTextColor = textColor
         remoteView.apply {
-            setText(R.id.event_section_title, item.title)
+            setText(R.id.event_item_title, item.title)
             setText(R.id.event_item_description, if (replaceDescription) item.location else item.description)
             setText(R.id.event_item_start, if (item.isAllDay) allDayString else Formatter.getTimeFromTS(context, item.startTS))
             setImageViewBitmap(R.id.event_item_color, context.resources.getColoredBitmap(R.drawable.monthly_event_dot, item.color))
@@ -85,12 +85,12 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
                 curTextColor = weakTextColor
             }
 
-            setTextColor(R.id.event_section_title, curTextColor)
+            setTextColor(R.id.event_item_title, curTextColor)
             setTextColor(R.id.event_item_description, curTextColor)
             setTextColor(R.id.event_item_start, curTextColor)
             setTextColor(R.id.event_item_end, curTextColor)
 
-            setTextSize(R.id.event_section_title, mediumFontSize)
+            setTextSize(R.id.event_item_title, mediumFontSize)
             setTextSize(R.id.event_item_description, mediumFontSize)
             setTextSize(R.id.event_item_start, mediumFontSize)
             setTextSize(R.id.event_item_end, mediumFontSize)
