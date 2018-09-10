@@ -119,8 +119,7 @@ fun Context.scheduleEventIn(notifTS: Long, event: Event, activity: SimpleActivit
 }
 
 fun Context.cancelNotification(id: Int) {
-    val intent = Intent(applicationContext, NotificationReceiver::class.java)
-    PendingIntent.getBroadcast(applicationContext, id, intent, PendingIntent.FLAG_UPDATE_CURRENT).cancel()
+    (getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager).cancel(id)
 }
 
 private fun getNotificationIntent(context: Context, event: Event): PendingIntent {

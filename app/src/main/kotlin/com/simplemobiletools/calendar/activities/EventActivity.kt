@@ -89,6 +89,8 @@ class EventActivity : SimpleActivity() {
             if (intent.getBooleanExtra(IS_DUPLICATE_INTENT, false)) {
                 mEvent.id = 0
             }
+
+            cancelNotification(mEvent.id)
         } else {
             mEvent = Event()
             mReminder1Minutes = config.defaultReminderMinutes
