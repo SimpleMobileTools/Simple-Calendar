@@ -29,8 +29,8 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
 
     private val allDayString = context.resources.getString(R.string.all_day)
     private var events = ArrayList<ListItem>()
-    private val textColor = context.config.widgetTextColor
-    private val weakTextColor = textColor.adjustAlpha(LOW_ALPHA)
+    private var textColor = context.config.widgetTextColor
+    private var weakTextColor = textColor.adjustAlpha(LOW_ALPHA)
     private val replaceDescription = context.config.replaceDescription
     private val dimPastEvents = context.config.dimPastEvents
     private var mediumFontSize = context.config.getFontSize()
@@ -132,6 +132,8 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
     override fun getItemId(position: Int) = position.toLong()
 
     override fun onDataSetChanged() {
+        textColor = context.config.widgetTextColor
+        weakTextColor = textColor.adjustAlpha(LOW_ALPHA)
         mediumFontSize = context.config.getFontSize()
         val fromTS = DateTime().seconds() - context.config.displayPastEvents * 60
         val toTS = DateTime().plusYears(1).seconds()
