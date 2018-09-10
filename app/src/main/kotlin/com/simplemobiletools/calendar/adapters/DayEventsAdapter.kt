@@ -67,7 +67,7 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
 
     private fun setupView(view: View, event: Event) {
         view.apply {
-            event_section_title.text = event.title
+            event_item_title.text = event.title
             event_item_description.text = if (replaceDescriptionWithLocation) event.location else event.description
             event_item_start.text = if (event.getIsAllDay()) allDayString else Formatter.getTimeFromTS(context, event.startTS)
             event_item_end.beInvisibleIf(event.startTS == event.endTS)
@@ -98,7 +98,7 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
 
             event_item_start.setTextColor(newTextColor)
             event_item_end.setTextColor(newTextColor)
-            event_section_title.setTextColor(newTextColor)
+            event_item_title.setTextColor(newTextColor)
             event_item_description.setTextColor(newTextColor)
         }
     }
