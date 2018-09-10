@@ -11,6 +11,8 @@ import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.handleEventDeleting
 import com.simplemobiletools.calendar.extensions.shareEvents
 import com.simplemobiletools.calendar.helpers.Formatter
+import com.simplemobiletools.calendar.helpers.ITEM_EVENT
+import com.simplemobiletools.calendar.helpers.ITEM_EVENT_SIMPLE
 import com.simplemobiletools.calendar.helpers.LOW_ALPHA
 import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.commons.adapters.MyRecyclerViewAdapter
@@ -53,7 +55,13 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
 
     override fun getIsItemSelectable(position: Int) = true
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = createViewHolder(R.layout.event_item_day_view, parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyRecyclerViewAdapter.ViewHolder {
+        val layoutId = when (viewType) {
+            ITEM_EVENT -> R.layout.event_item_day_view
+            else -> R.layout.event_item_day_view_simple
+        }
+        return createViewHolder(layoutId, parent)
+    }
 
     override fun onBindViewHolder(holder: MyRecyclerViewAdapter.ViewHolder, position: Int) {
         val event = events[position]
@@ -65,12 +73,22 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
 
     override fun getItemCount() = events.size
 
+    override fun getItemViewType(position: Int): Int {
+        val event = events[position]
+        val detailField = if (replaceDescriptionWithLocation) event.location else event.description
+        return if (event.startTS == event.endTS && detailField.isEmpty()) {
+            ITEM_EVENT_SIMPLE
+        } else {
+            ITEM_EVENT
+        }
+    }
+
     private fun setupView(view: View, event: Event) {
         view.apply {
             event_item_title.text = event.title
-            event_item_description.text = if (replaceDescriptionWithLocation) event.location else event.description
+            event_item_description?.text = if (replaceDescriptionWithLocation) event.location else event.description
             event_item_start.text = if (event.getIsAllDay()) allDayString else Formatter.getTimeFromTS(context, event.startTS)
-            event_item_end.beInvisibleIf(event.startTS == event.endTS)
+            event_item_end?.beInvisibleIf(event.startTS == event.endTS)
             event_item_color_bar.background.applyColorFilter(event.color)
 
             if (event.startTS != event.endTS) {
@@ -97,9 +115,9 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
             }
 
             event_item_start.setTextColor(newTextColor)
-            event_item_end.setTextColor(newTextColor)
+            event_item_end?.setTextColor(newTextColor)
             event_item_title.setTextColor(newTextColor)
-            event_item_description.setTextColor(newTextColor)
+            event_item_description?.setTextColor(newTextColor)
         }
     }
 
