@@ -136,7 +136,7 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
             event_item_description?.text = if (replaceDescription) listEvent.location else listEvent.description
             event_item_start.text = if (listEvent.isAllDay) allDayString else Formatter.getTimeFromTS(context, listEvent.startTS)
             event_item_end?.beInvisibleIf(listEvent.startTS == listEvent.endTS)
-            event_item_color.applyColorFilter(listEvent.color)
+            event_item_color_bar.background.applyColorFilter(listEvent.color)
 
             if (listEvent.startTS != listEvent.endTS) {
                 event_item_end?.apply {

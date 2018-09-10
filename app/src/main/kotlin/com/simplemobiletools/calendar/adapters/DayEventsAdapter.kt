@@ -71,7 +71,7 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
             event_item_description.text = if (replaceDescriptionWithLocation) event.location else event.description
             event_item_start.text = if (event.getIsAllDay()) allDayString else Formatter.getTimeFromTS(context, event.startTS)
             event_item_end.beInvisibleIf(event.startTS == event.endTS)
-            event_item_color.applyColorFilter(event.color)
+            event_item_color_bar.background.applyColorFilter(event.color)
 
             if (event.startTS != event.endTS) {
                 val startCode = Formatter.getDayCodeFromTS(event.startTS)

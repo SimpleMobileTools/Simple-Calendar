@@ -16,14 +16,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="@dimen/medium_margin"
-        android:paddingLeft="@dimen/activity_margin"
         android:paddingRight="@dimen/activity_margin"
         android:paddingTop="@dimen/small_margin">
+
+        <ImageView
+            android:id="@+id/event_item_color_bar"
+            android:layout_width="@dimen/event_color_bar_width"
+            android:layout_height="match_parent"
+            android:layout_alignBottom="@+id/event_item_start"
+            android:layout_alignTop="@+id/event_item_start"
+            android:layout_marginRight="@dimen/small_margin"
+            android:background="@drawable/event_list_color_bar"
+            android:paddingBottom="@dimen/tiny_margin"
+            android:paddingTop="@dimen/tiny_margin"/>
 
         <TextView
             android:id="@+id/event_item_start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/event_item_color_bar"
             android:textSize="@dimen/day_text_size"
             tools:text="13:00"/>
 
@@ -32,24 +43,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/activity_margin"
-            android:layout_toLeftOf="@+id/event_item_color"
             android:layout_toRightOf="@+id/event_item_start"
             android:ellipsize="end"
             android:maxLines="1"
             android:paddingRight="@dimen/activity_margin"
             android:textSize="@dimen/day_text_size"
             tools:text="Event title"/>
-
-        <ImageView
-            android:id="@+id/event_item_color"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignBottom="@+id/event_item_title"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignTop="@+id/event_item_title"
-            android:paddingRight="@dimen/medium_margin"
-            android:src="@drawable/monthly_event_dot"/>
 
     </RelativeLayout>
 </FrameLayout>

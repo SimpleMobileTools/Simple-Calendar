@@ -17,7 +17,7 @@ import com.simplemobiletools.calendar.models.ListEvent
 import com.simplemobiletools.calendar.models.ListItem
 import com.simplemobiletools.calendar.models.ListSection
 import com.simplemobiletools.commons.extensions.adjustAlpha
-import com.simplemobiletools.commons.extensions.getColoredBitmap
+import com.simplemobiletools.commons.extensions.setBackgroundColor
 import com.simplemobiletools.commons.extensions.setText
 import com.simplemobiletools.commons.extensions.setTextSize
 import org.joda.time.DateTime
@@ -59,7 +59,7 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
             setText(R.id.event_item_title, item.title)
             setText(R.id.event_item_description, if (replaceDescription) item.location else item.description)
             setText(R.id.event_item_start, if (item.isAllDay) allDayString else Formatter.getTimeFromTS(context, item.startTS))
-            setImageViewBitmap(R.id.event_item_color, context.resources.getColoredBitmap(R.drawable.monthly_event_dot, item.color))
+            setBackgroundColor(R.id.event_item_color_bar, item.color)
 
             if (item.startTS == item.endTS) {
                 setViewVisibility(R.id.event_item_end, View.INVISIBLE)

@@ -25,4 +25,7 @@
     <dimen name="month_text_size">22sp</dimen>
 
     <dimen name="year_view_day_text_size">8sp</dimen>
+
+    <dimen name="event_color_bar_width">4dp</dimen>
+    <dimen name="event_color_bar_height">100dp</dimen>
 </resources>
