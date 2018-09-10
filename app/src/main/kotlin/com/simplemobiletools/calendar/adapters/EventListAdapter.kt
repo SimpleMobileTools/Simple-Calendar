@@ -157,11 +157,11 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
 
             var startTextColor = textColor
             var endTextColor = textColor
-            if (listEvent.isAllDay) {
-                if (Formatter.getDayCodeFromTS(listEvent.startTS) == Formatter.getDayCodeFromTS(now)) {
+            if (listEvent.isAllDay || listEvent.startTS <= now && listEvent.endTS <= now) {
+                if (listEvent.isAllDay && Formatter.getDayCodeFromTS(listEvent.startTS) == Formatter.getDayCodeFromTS(now)) {
                     startTextColor = primaryColor
                 }
-            } else if (listEvent.startTS <= now && listEvent.endTS <= now) {
+
                 if (dimPastEvents && listEvent.isPastEvent) {
                     startTextColor = startTextColor.adjustAlpha(LOW_ALPHA)
                     endTextColor = endTextColor.adjustAlpha(LOW_ALPHA)
