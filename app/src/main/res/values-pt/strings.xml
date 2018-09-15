@@ -26,7 +26,7 @@
     <string name="event_added">Evento adicionado com sucesso</string>
     <string name="event_updated">Evento atualizado com sucesso</string>
     <string name="filter_events_by_type">Filtrar eventos por tipo</string>
-    <string name="please_fill_location">Introduza a localização para a mostrar no maps</string>
+    <string name="please_fill_location">Introduza a localização para a mostrar no mapa</string>
     <string name="public_event_notification_text">Está para breve um evento</string>
 
     <!-- Event Repetition -->
@@ -44,12 +44,12 @@
     <string name="event_is_repeatable">O evento é repetível</string>
     <string name="selection_contains_repetition">A seleção contém eventos recorrentes</string>
     <string name="delete_one_only">Apagar a ocorrência selecionada</string>
-    <string name="delete_future_occurrences">Delete this and all future occurrences</string>
+    <string name="delete_future_occurrences">Apagar esta e todas as ocorrências futuras</string>
     <string name="delete_all_occurrences">Apagar todas as ocorrências</string>
     <string name="update_one_only">Atualizar a ocorrência selecionada</string>
     <string name="update_all_occurrences">Atualizar todas as ocorrências</string>
     <string name="repeat_till_date">Repetir até à data</string>
-    <string name="stop_repeating_after_x">Stop repeating after x occurrences</string>
+    <string name="stop_repeating_after_x">Parar de repetir após x ocorrências</string>
     <string name="repeat_forever">Repetir eternamente</string>
     <string name="times">vezes</string>
     <string name="repeat">Repetição</string>
@@ -60,7 +60,7 @@
     <string name="the_last_day">Último dia</string>
     <string name="repeat_on_the_same_day_monthly">Repetir no mesmo dia de cada mês</string>
     <string name="repeat_on_the_last_day_monthly">Repetir no último dia de cada mês</string>
-    <string name="repeat_on_the_same_day_yearly">Repeat on the same day every year</string>
+    <string name="repeat_on_the_same_day_yearly">Repetir no mesmo dia de cada ano</string>
     <string name="repeat_every_m">Repetir</string>
     <string name="every_m">A cada</string>
     <string name="first_m">primeira</string>
@@ -106,7 +106,7 @@
     <string name="export_past_events_too">Exportar eventos antigos</string>
     <string name="include_event_types">Incluir tipos de eventos</string>
     <string name="filename_without_ics">Nome do ficheiro (sem .ics)</string>
-    <string name="override_event_types">Override event types in the file</string>
+    <string name="override_event_types">Substituir tipo de eventos no ficheiro</string>
 
     <!-- Event details -->
     <string name="title">Título</string>
@@ -161,7 +161,7 @@
     <string name="events">Eventos</string>
     <string name="reminder_stream">Fluxo áudio a utilizar nos lembretes</string>
     <string name="system_stream">Sistema</string>
-    <string name="alarm_stream">Alarmw</string>
+    <string name="alarm_stream">Alarme</string>
     <string name="notification_stream">Notificação</string>
     <string name="ring_stream">Toque</string>
 
