@@ -19,15 +19,15 @@
     <string name="event">Događaj</string>
     <string name="edit_event">Uredi događaj</string>
     <string name="new_event">Novi događaj</string>
-    <string name="create_new_event">Create a new event</string>
-    <string name="duplicate_event">Duplicate event</string>
+    <string name="create_new_event">Stvori novi događaj</string>
+    <string name="duplicate_event">Dupliciraj događaj</string>
     <string name="title_empty">Naslov ne može biti prazan</string>
     <string name="end_before_start">Događaj ne može završiti prije nego što počne</string>
     <string name="event_added">Događaj je uspješno dodan</string>
     <string name="event_updated">Događaj je uspješno ažuriran</string>
     <string name="filter_events_by_type">Sortiranje prema vrsti događaja</string>
     <string name="please_fill_location">Ispunite lokaciju za prikazivanje na karti</string>
-    <string name="public_event_notification_text">An event is upcoming</string>
+    <string name="public_event_notification_text">Nadolazi Vam događaj</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Ponavljanje</string>
@@ -44,12 +44,12 @@
     <string name="event_is_repeatable">Događaj je ponovljiv</string>
     <string name="selection_contains_repetition">Odabir sadrži ponavljajuće događaje</string>
     <string name="delete_one_only">Izbriši samo odabrano ponavljanje</string>
-    <string name="delete_future_occurrences">Delete this and all future occurrences</string>
+    <string name="delete_future_occurrences">Izbrišite ovo i sva buduća ponavljanja</string>
     <string name="delete_all_occurrences">Izbriši sva ponavljanja</string>
     <string name="update_one_only">Ažuriraj samo odabrano ponavljanje</string>
     <string name="update_all_occurrences">Ažuriraj sva ponavljanja</string>
     <string name="repeat_till_date">Ponovi do datuma</string>
-    <string name="stop_repeating_after_x">Stop repeating after x occurrences</string>
+    <string name="stop_repeating_after_x">Prestani ponavljati nakon x pojavljivanja</string>
     <string name="repeat_forever">Ponovi zauvijek</string>
     <string name="times">puta</string>
     <string name="repeat">Ponavljanje</string>
@@ -60,7 +60,7 @@
     <string name="the_last_day">Zadnji dan</string>
     <string name="repeat_on_the_same_day_monthly">Ponovi isti dan svaki mjesec</string>
     <string name="repeat_on_the_last_day_monthly">Ponovi zadnjeg dana u mjesecu</string>
-    <string name="repeat_on_the_same_day_yearly">Repeat on the same day every year</string>
+    <string name="repeat_on_the_same_day_yearly">Ponovi istog dana svake godine</string>
     <string name="repeat_every_m">Ponovi svaki</string>
     <string name="every_m">Svaki</string>
     <string name="first_m">prvi</string>
@@ -156,14 +156,15 @@
     <string name="delete_all_events">Izbriši sve događaje</string>
     <string name="delete_all_events_confirmation">Jeste li sigurni da želite izbrisati sve događaje? To će ostaviti Vaše vrste događaja i druge postavke netaknutima.</string>
     <string name="show_a_grid">Prikaži mrežu</string>
-    <string name="loop_reminders">Loop reminders until dismissed</string>
-    <string name="dim_past_events">Dim past events</string>
-    <string name="events">Events</string>
-    <string name="reminder_stream">Audio stream used by reminders</string>
-    <string name="system_stream">System</string>
+    <string name="loop_reminders">Ponavljaj podsjetnike sve dok ih ne odbacim</string>
+    <string name="dim_past_events">Zatamni događaje koji su završili</string>
+    <string name="events">Događaji</string>
+    <string name="reminder_stream">Audio izlazni kanal za podsjetnike</string>
+    <string name="system_stream">Sustav</string>
     <string name="alarm_stream">Alarm</string>
-    <string name="notification_stream">Notification</string>
-    <string name="ring_stream">Ring</string>
+    <string name="notification_stream">Obavijest</string>
+    <string name="ring_stream">ZvoPrikaz podsjetnika, ali i reprodukcija zvuka, jako ovise o Android sustavu. Ako ne čujete zvuk, pokušajte otići u postavke aplikacije,
+        odaberite \"Audio izlazni kanal za podsjetnike\" te je promjenite na drugačiju vrijednost. Ako i dalje neće raditi, provjerite postavke zvuka, da odabrani kanal nije utišan.njava</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -204,9 +205,9 @@
     <string name="faq_2_title">Mogu li sinkronizirati događaje putem Google Kalendara ili druge usluge koje podržavaju CalDAV?</string>
     <string name="faq_2_text">Da, samo uključite \"CalDAV sinkronizacija\" u postavkama aplikacije i odaberite kalendare koje želite sinkronizirati. Međutim, potrebna je aplikacija  između Vašeg uređaja i poslužitelja.
         U slučaju da želite sinkronizirati Google kalendar, njihova službena aplikacija Kalendar obavlja navedeni posao. Za ostale kalendare potreban Vam je aplikacija treće strane za upravljanje sinkronizacijom, na primjer DAVdroid.</string>
-    <string name="faq_3_title">I see the visual reminders, but hear no audio. What can I do?</string>
-    <string name="faq_3_text">Not just displaying the actual reminder, but playing the audio is hugely affected by the system too. If you can\'t hear any sound, try going in the app settings,
-        pressing the \"Audio stream used by reminders\" option and changing it to a different value. If it still won\'t work, check your sound settings, if the particular stream isn\'t muted.</string>
+    <string name="faq_3_title">Vidim vizualne podsjetnike, ali ne čujem zvuk. Što mogu učiniti</string>
+    <string name="faq_3_text">Prikaz podsjetnika, ali i reprodukcija zvuka, jako ovise o Android sustavu. Ako ne čujete zvuk, pokušajte otići u postavke aplikacije,
+        odaberite \"Audio izlazni kanal za podsjetnike\" te je promjenite na drugačiju vrijednost. Ako i dalje neće raditi, provjerite postavke zvuka, da odabrani kanal nije utišan.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
