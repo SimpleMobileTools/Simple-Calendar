@@ -3,7 +3,7 @@
     <string name="app_name">Simple Calendar</string>
     <string name="app_launcher_name">Calendar</string>
     <string name="change_view">Změnit zobrazení</string>
-    <string name="daily_view">Daily view</string>
+    <string name="daily_view">Denní kalendář</string>
     <string name="weekly_view">Týdenní kalendář</string>
     <string name="monthly_view">Měsíční kalendář</string>
     <string name="yearly_view">Roční kalendář</string>
@@ -19,15 +19,15 @@
     <string name="event">Událost</string>
     <string name="edit_event">Upravit událost</string>
     <string name="new_event">Nová událost</string>
-    <string name="create_new_event">Create a new event</string>
-    <string name="duplicate_event">Duplicate event</string>
+    <string name="create_new_event">Vytvořit novou událost</string>
+    <string name="duplicate_event">Zkopírovat událost</string>
     <string name="title_empty">Doplňte název</string>
     <string name="end_before_start">Konec události nemůže být dříve než začátek</string>
     <string name="event_added">Událost úspěšně přidána</string>
     <string name="event_updated">Událost úspěšně změněna</string>
     <string name="filter_events_by_type">Filtrovat události podle typu</string>
-    <string name="please_fill_location">Please fill in a location to be shown on a map</string>
-    <string name="public_event_notification_text">An event is upcoming</string>
+    <string name="please_fill_location">Vyplňte prosím místo, které se zobrazí na mapě</string>
+    <string name="public_event_notification_text">Událost právě nastává</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Opakovaná událost</string>
@@ -44,12 +44,12 @@
     <string name="event_is_repeatable">Událost se opakuje</string>
     <string name="selection_contains_repetition">Výběr zahrnuje opakující se události</string>
     <string name="delete_one_only">Vymazat pouze vybrané výskyty</string>
-    <string name="delete_future_occurrences">Delete this and all future occurrences</string>
+    <string name="delete_future_occurrences">Smaž tento a jakékoliv budoucí výskyty</string>
     <string name="delete_all_occurrences">Vymazat všechny výskyty</string>
     <string name="update_one_only">Změnit pouze vybrané výskyty</string>
     <string name="update_all_occurrences">Změnit všechny výskyty</string>
     <string name="repeat_till_date">Opakovat až do</string>
-    <string name="stop_repeating_after_x">Stop repeating after x occurrences</string>
+    <string name="stop_repeating_after_x">Zastavit opakování po x výskytech</string>
     <string name="repeat_forever">Opakovat navždy</string>
     <string name="times">krát</string>
     <string name="repeat">Opakovat</string>
@@ -60,7 +60,7 @@
     <string name="the_last_day">poslední den</string>
     <string name="repeat_on_the_same_day_monthly">Opakovat ve stejný den každý měsíc</string>
     <string name="repeat_on_the_last_day_monthly">Opakovat poslední den v měsíci</string>
-    <string name="repeat_on_the_same_day_yearly">Repeat on the same day every year</string>
+    <string name="repeat_on_the_same_day_yearly">Opakovat ve stejný den každý rok</string>
     <string name="repeat_every_m">Opakovat každý</string>
     <string name="every_m">každý</string>
     <string name="first_m">první</string>
@@ -80,10 +80,10 @@
     <string name="last_f">poslední</string>
 
     <!-- Birthdays -->
-    <string name="birthdays">Birthdays</string>
-    <string name="add_birthdays">Add contact birthdays</string>
-    <string name="no_birthdays">No birthdays have been found</string>
-    <string name="birthdays_added">Birthdays added successfully</string>
+    <string name="birthdays">Narozeniny</string>
+    <string name="add_birthdays">Přidat narozeniny z kontaktů</string>
+    <string name="no_birthdays">Žádné narozeniny nebyly nalezeny</string>
+    <string name="birthdays_added">Narozeniny byly úspěšně přidány</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Anniversaries</string>
@@ -128,16 +128,16 @@
     <string name="select_event_type">Vyberte typ události</string>
     <string name="move_events_into_default">Přesunout vybrané události na výchozí typ události</string>
     <string name="remove_affected_events">Trvale odebrat vybrané události</string>
-    <string name="unsync_caldav_calendar">Chcete-li odebrat kalendář CalDAV, musíte jej desynchronizovat</string>
+    <string name="unsync_caldav_calendar">Chcete-li odebrat kalendář CalDAV, musíte vypnout synchronizaci</string>
 
     <!-- Holidays -->
     <string name="holidays">Svátky</string>
     <string name="add_holidays">Přidat svátek</string>
     <string name="national_holidays">Státní svátky</string>
     <string name="religious_holidays">Církevní svátky</string>
-    <string name="holidays_imported_successfully">Holidays have been successfully imported into the \"Holidays\" event type</string>
+    <string name="holidays_imported_successfully">Svátky byly úspěšně naimportovány</string>
     <string name="importing_some_holidays_failed">Import některých událostí se nezdařil</string>
-    <string name="importing_holidays_failed">Import svátků nezdařil</string>
+    <string name="importing_holidays_failed">Import svátků se nezdařil</string>
 
     <!-- Settings -->
     <string name="manage_event_types">Správa typů událostí</string>
@@ -149,21 +149,21 @@
     <string name="no_ringtone_picker">Nebyla nalezena žádná aplikace, která by mohla nastavit vyzvánění</string>
     <string name="no_ringtone_selected">žádný</string>
     <string name="day_end_before_start">Den nemůže skončit dřív, než začne</string>
-    <string name="caldav_sync">CalDAV sync</string>
+    <string name="caldav_sync">CalDAV synchronizace</string>
     <string name="event_lists">Seznamy událostí</string>
     <string name="display_past_events">Zobrazit minulé události</string>
-    <string name="replace_description_with_location">Replace event description with location</string>
-    <string name="delete_all_events">Delete all events</string>
-    <string name="delete_all_events_confirmation">Are you sure you want to delete all events? This will leave your event types and other settings intact.</string>
-    <string name="show_a_grid">Show a grid</string>
-    <string name="loop_reminders">Loop reminders until dismissed</string>
-    <string name="dim_past_events">Dim past events</string>
-    <string name="events">Events</string>
-    <string name="reminder_stream">Audio stream used by reminders</string>
-    <string name="system_stream">System</string>
-    <string name="alarm_stream">Alarm</string>
-    <string name="notification_stream">Notification</string>
-    <string name="ring_stream">Ring</string>
+    <string name="replace_description_with_location">Nahradit popis udalosti lokací</string>
+    <string name="delete_all_events">Smazat všechny události</string>
+    <string name="delete_all_events_confirmation">Opravdu chcete smazat všechny události? Typy událostí a ostatní nastavení zůstanou neporušené.</string>
+    <string name="show_a_grid">Zobrazit mřížku</string>
+    <string name="loop_reminders">Připomínat až do vypnutí</string>
+    <string name="dim_past_events">Smazat minulé události</string>
+    <string name="events">Události</string>
+    <string name="reminder_stream">Zvuk upomínky</string>
+    <string name="system_stream">Systémový</string>
+    <string name="alarm_stream">Budík</string>
+    <string name="notification_stream">Notifikace</string>
+    <string name="ring_stream">Zvonek</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -174,8 +174,8 @@
     <string name="refreshing">Obnovuji…</string>
     <string name="refreshing_complete">Obnovování dokončeno</string>
     <string name="editing_calendar_failed">Editování kalendáře se nezdařilo</string>
-    <string name="syncing">Syncing…</string>
-    <string name="synchronization_completed">Sync completed</string>
+    <string name="syncing">Synchronizuji…</string>
+    <string name="synchronization_completed">Synchronizace dokončena</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
@@ -214,13 +214,13 @@
     <string name="app_long_description">
         Jednoduchý kalendář s volitelnou synchronizací CalDAV. Můžete snadno vytvářet opakující se události a nastavovat připomenutí, můžete také zobrazovat čísla týdnů.
 
-        Obsahuje přizpůsobitelný widget 4x4, kde můžete měnit barvu textu, stejně jako alfu a barvu pozadí.
+        Obsahuje přizpůsobitelný widget 4x4, kde můžete měnit barvu textu, stejně jako průhlednost a barvu pozadí.
 
-        Neobsahuje žádné reklamy ani zbytečná oprávnění. Je plně opensource, umožňuje měnit barvy.
+        Neobsahuje žádné reklamy ani zbytečná oprávnění. Je plně OpenSource, umožňuje měnit barvy.
 
         Povolení úložiště je potřeba pouze pro export nebo import událostí ze souborů .ics.
 
-        The Contacts permission is used only at importing contact birthdays and anniversaries.
+        Povolení kontaktů se používá pouze při importu narozenin a výročí.
 
         Tato aplikace je součástí větší sady aplikací. Tyto a další aplikace najdete na https://www.simplemobiletools.com
     </string>
