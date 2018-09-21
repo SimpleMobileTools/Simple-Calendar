@@ -107,15 +107,16 @@ fun Context.scheduleEventIn(notifTS: Long, event: Event, activity: SimpleActivit
         return
     }
 
+    val newNotifTS = notifTS + 1000
     if (activity != null) {
-        val secondsTillNotification = (notifTS - System.currentTimeMillis()) / 1000
+        val secondsTillNotification = (newNotifTS - System.currentTimeMillis()) / 1000
         val msg = String.format(getString(R.string.reminder_triggers_in), formatSecondsToTimeString(secondsTillNotification.toInt()))
         activity.toast(msg)
     }
 
     val pendingIntent = getNotificationIntent(applicationContext, event)
     val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-    AlarmManagerCompat.setExactAndAllowWhileIdle(alarmManager, AlarmManager.RTC_WAKEUP, notifTS, pendingIntent)
+    AlarmManagerCompat.setExactAndAllowWhileIdle(alarmManager, AlarmManager.RTC_WAKEUP, newNotifTS, pendingIntent)
 }
 
 fun Context.cancelNotification(id: Int) {
