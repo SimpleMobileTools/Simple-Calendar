@@ -106,7 +106,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     override fun onResume() {
         super.onResume()
         if (mStoredTextColor != config.textColor || mStoredBackgroundColor != config.backgroundColor || mStoredPrimaryColor != config.primaryColor
-                || mStoredDayCode != Formatter.getTodayCode(applicationContext) || mStoredDimPastEvents != config.dimPastEvents) {
+                || mStoredDayCode != Formatter.getTodayCode() || mStoredDimPastEvents != config.dimPastEvents) {
             updateViewPager()
         }
 
@@ -206,7 +206,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             mStoredUse24HourFormat = use24HourFormat
             mStoredDimPastEvents = dimPastEvents
         }
-        mStoredDayCode = Formatter.getTodayCode(applicationContext)
+        mStoredDayCode = Formatter.getTodayCode()
     }
 
     private fun setupSearch(menu: Menu) {
@@ -534,7 +534,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
     }
 
-    private fun updateViewPager(dayCode: String? = Formatter.getTodayCode(applicationContext)) {
+    private fun updateViewPager(dayCode: String? = Formatter.getTodayCode()) {
         val fragment = getFragmentsHolder()
         currentFragments.forEach {
             supportFragmentManager.beginTransaction().remove(it).commitNow()

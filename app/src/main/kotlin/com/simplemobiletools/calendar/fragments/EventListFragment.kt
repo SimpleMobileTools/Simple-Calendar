@@ -182,5 +182,5 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
         (activity as? MainActivity)?.updateActionBarTitle(getString(R.string.app_launcher_name))
     }
 
-    override fun getNewEventDayCode() = Formatter.getTodayCode(context!!)
+    override fun getNewEventDayCode() = Formatter.getTodayCode()
 }
