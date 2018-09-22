@@ -94,9 +94,9 @@ class EventActivity : SimpleActivity() {
             cancelNotification(mEvent.id)
         } else {
             mEvent = Event()
-            mReminder1Minutes = config.defaultReminderMinutes
-            mReminder2Minutes = config.defaultReminderMinutes3
-            mReminder3Minutes = config.defaultReminderMinutes2
+            mReminder1Minutes = if (config.useDefaultReminder) config.defaultReminderMinutes else config.defaultReminder1
+            mReminder2Minutes = if (config.useDefaultReminder) config.defaultReminderMinutes2 else config.defaultReminder2
+            mReminder3Minutes = if (config.useDefaultReminder) config.defaultReminderMinutes3 else config.defaultReminder3
 
             if (savedInstanceState == null) {
                 setupNewEvent()
@@ -715,9 +715,11 @@ class EventActivity : SimpleActivity() {
         val reminder3 = reminders.getOrElse(2) { REMINDER_OFF }
 
         config.apply {
-            defaultReminderMinutes = reminder1
-            defaultReminderMinutes2 = reminder2
-            defaultReminderMinutes3 = reminder3
+            if (useDefaultReminder) {
+                defaultReminderMinutes = reminder1
+                defaultReminderMinutes2 = reminder2
+                defaultReminderMinutes3 = reminder3
+            }
         }
 
         mEvent.apply {
