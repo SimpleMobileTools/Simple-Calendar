@@ -6,6 +6,7 @@ import android.app.TimePickerDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.support.v4.app.NotificationManagerCompat
 import android.text.method.LinkMovementMethod
 import android.view.Menu
 import android.view.MenuItem
@@ -120,12 +121,14 @@ class EventActivity : SimpleActivity() {
         event_repetition_limit_holder.setOnClickListener { showRepetitionTypePicker() }
 
         event_reminder_1.setOnClickListener {
-            if (config.wasAlarmWarningShown) {
-                showReminder1Dialog()
-            } else {
-                ConfirmationDialog(this, messageId = R.string.reminder_warning, positive = R.string.ok, negative = 0) {
-                    config.wasAlarmWarningShown = true
+            handleNotificationAvailability() {
+                if (config.wasAlarmWarningShown) {
                     showReminder1Dialog()
+                } else {
+                    ConfirmationDialog(this, messageId = R.string.reminder_warning, positive = R.string.ok, negative = 0) {
+                        config.wasAlarmWarningShown = true
+                        showReminder1Dialog()
+                    }
                 }
             }
         }
@@ -264,6 +267,16 @@ class EventActivity : SimpleActivity() {
 
             val addHours = if (intent.getBooleanExtra(NEW_EVENT_SET_HOUR_DURATION, false)) 1 else 0
             mEventEndDateTime = mEventStartDateTime.plusHours(addHours)
+        }
+    }
+
+    private fun handleNotificationAvailability(callback: () -> Unit) {
+        if (NotificationManagerCompat.from(applicationContext).areNotificationsEnabled()) {
+            callback()
+        } else {
+            ConfirmationDialog(this, messageId = R.string.notifications_disabled, positive = R.string.ok, negative = 0) {
+                callback()
+            }
         }
     }
 
