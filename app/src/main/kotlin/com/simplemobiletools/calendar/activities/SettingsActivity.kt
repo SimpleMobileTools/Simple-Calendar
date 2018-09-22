@@ -392,12 +392,12 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun setupDefaultReminder() {
-        settings_use_default_reminder.isChecked = config.useDefaultReminder
-        toggleDefaultRemindersVisibility(!config.useDefaultReminder)
-        settings_use_default_reminder_holder.setOnClickListener {
-            settings_use_default_reminder.toggle()
-            config.useDefaultReminder = settings_use_default_reminder.isChecked
-            toggleDefaultRemindersVisibility(!settings_use_default_reminder.isChecked)
+        settings_use_last_event_reminders.isChecked = config.usePreviousEventReminders
+        toggleDefaultRemindersVisibility(!config.usePreviousEventReminders)
+        settings_use_last_event_reminders_holder.setOnClickListener {
+            settings_use_last_event_reminders.toggle()
+            config.usePreviousEventReminders = settings_use_last_event_reminders.isChecked
+            toggleDefaultRemindersVisibility(!settings_use_last_event_reminders.isChecked)
         }
     }
 

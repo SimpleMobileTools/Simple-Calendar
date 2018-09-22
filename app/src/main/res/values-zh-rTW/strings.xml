@@ -164,7 +164,7 @@
     <string name="alarm_stream">鬧鐘</string>
     <string name="notification_stream">通知</string>
     <string name="ring_stream">鈴聲</string>
-    <string name="use_default_reminder">Use the last events\' reminders as the default for new event</string>
+    <string name="use_last_event_reminders">Use the last events\' reminders as the default for new event</string>
     <string name="default_reminder_1">Default reminder 1</string>
     <string name="default_reminder_2">Default reminder 2</string>
     <string name="default_reminder_3">Default reminder 3</string>

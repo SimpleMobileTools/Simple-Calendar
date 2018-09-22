@@ -164,7 +164,7 @@
     <string name="alarm_stream">Výstražný</string>
     <string name="notification_stream">Pripomienkový</string>
     <string name="ring_stream">Zvoniaci</string>
-    <string name="use_default_reminder">Použiť pripomienky poslednej udalosti ako predvolené pre novú udalosť</string>
+    <string name="use_last_event_reminders">Použiť pripomienky poslednej udalosti ako predvolené pre novú udalosť</string>
     <string name="default_reminder_1">Predvolená pripomienka 1</string>
     <string name="default_reminder_2">Predvolená pripomienka 2</string>
     <string name="default_reminder_3">Predvolená pripomienka 3</string>

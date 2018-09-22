@@ -52,17 +52,17 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getInt(VIEW, MONTHLY_VIEW)
         set(view) = prefs.edit().putInt(VIEW, view).apply()
 
-    var defaultReminderMinutes: Int
-        get() = prefs.getInt(REMINDER_MINUTES, 10)
-        set(defaultReminderMinutes) = prefs.edit().putInt(REMINDER_MINUTES, defaultReminderMinutes).apply()
+    var lastEventReminderMinutes: Int
+        get() = prefs.getInt(LAST_EVENT_REMINDER_MINUTES, 10)
+        set(lastEventReminderMinutes) = prefs.edit().putInt(LAST_EVENT_REMINDER_MINUTES, lastEventReminderMinutes).apply()
 
-    var defaultReminderMinutes2: Int
-        get() = prefs.getInt(REMINDER_MINUTES_2, REMINDER_OFF)
-        set(defaultReminderMinutes2) = prefs.edit().putInt(REMINDER_MINUTES_2, defaultReminderMinutes2).apply()
+    var lastEventReminderMinutes2: Int
+        get() = prefs.getInt(LAST_EVENT_REMINDER_MINUTES_2, REMINDER_OFF)
+        set(lastEventReminderMinutes2) = prefs.edit().putInt(LAST_EVENT_REMINDER_MINUTES_2, lastEventReminderMinutes2).apply()
 
-    var defaultReminderMinutes3: Int
-        get() = prefs.getInt(REMINDER_MINUTES_3, REMINDER_OFF)
-        set(defaultReminderMinutes3) = prefs.edit().putInt(REMINDER_MINUTES_3, defaultReminderMinutes3).apply()
+    var lastEventReminderMinutes3: Int
+        get() = prefs.getInt(LAST_EVENT_REMINDER_MINUTES_3, REMINDER_OFF)
+        set(lastEventReminderMinutes3) = prefs.edit().putInt(LAST_EVENT_REMINDER_MINUTES_3, lastEventReminderMinutes3).apply()
 
     var displayPastEvents: Int
         get() = prefs.getInt(DISPLAY_PAST_EVENTS, DAY_MINUTES)
@@ -143,9 +143,9 @@ class Config(context: Context) : BaseConfig(context) {
     private fun getMediumFontSize() = context.resources.getDimension(R.dimen.day_text_size) / context.resources.displayMetrics.density
     private fun getLargeFontSize() = getMediumFontSize() + 3f
 
-    var useDefaultReminder: Boolean
-        get() = prefs.getBoolean(USE_DEFAULT_REMINDER, true)
-        set(useDefaultReminder) = prefs.edit().putBoolean(USE_DEFAULT_REMINDER, useDefaultReminder).apply()
+    var usePreviousEventReminders: Boolean
+        get() = prefs.getBoolean(USE_PREVIOUS_EVENT_REMINDERS, true)
+        set(usePreviousEventReminders) = prefs.edit().putBoolean(USE_PREVIOUS_EVENT_REMINDERS, usePreviousEventReminders).apply()
 
     var defaultReminder1: Int
         get() = prefs.getInt(DEFAULT_REMINDER_1, 10)
