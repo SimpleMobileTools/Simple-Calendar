@@ -1,6 +1,14 @@
 Changelog
 ==========
 
+Version 4.2.1 *(2018-09-22)*
+----------------------------
+
+ * Fixed some crashes related to specific invalid times in some timezones
+ * Added some holidays in Malaysia and Australia by youdly
+ * Added a new warning if the app notifications are disabled by the system
+ * Some other translation improvements and bugfixes
+
 Version 4.2.0 *(2018-09-10)*
 ----------------------------
 
