@@ -58,6 +58,10 @@ const val DIM_PAST_EVENTS = "dim_past_events"
 const val LAST_SOUND_URI = "last_sound_uri"
 const val LAST_REMINDER_CHANNEL_ID = "last_reminder_channel_ID"
 const val REMINDER_AUDIO_STREAM = "reminder_audio_stream"
+const val USE_DEFAULT_REMINDER = "use_default_reminder"
+const val DEFAULT_REMINDER_1 = "default_reminder_1"
+const val DEFAULT_REMINDER_2 = "default_reminder_2"
+const val DEFAULT_REMINDER_3 = "default_reminder_3"
 
 // repeat_rule for monthly and yearly repetition
 const val REPEAT_SAME_DAY = 1                           // i.e. 25th every month, or 3rd june (if yearly repetition)

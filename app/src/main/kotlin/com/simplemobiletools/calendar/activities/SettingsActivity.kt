@@ -63,6 +63,10 @@ class SettingsActivity : SimpleActivity() {
         setupUseSameSnooze()
         setupLoopReminders()
         setupSnoozeTime()
+        setupDefaultReminder()
+        setupDefaultReminder1()
+        setupDefaultReminder2()
+        setupDefaultReminder3()
         setupDisplayPastEvents()
         setupFontSize()
         setupCustomizeWidgetColors()
@@ -385,6 +389,52 @@ class SettingsActivity : SimpleActivity() {
 
     private fun updateSnoozeTime() {
         settings_snooze_time.text = formatMinutesToTimeString(config.snoozeTime)
+    }
+
+    private fun setupDefaultReminder() {
+        settings_use_default_reminder.isChecked = config.useDefaultReminder
+        toggleDefaultRemindersVisibility(!config.useDefaultReminder)
+        settings_use_default_reminder_holder.setOnClickListener {
+            settings_use_default_reminder.toggle()
+            config.useDefaultReminder = settings_use_default_reminder.isChecked
+            toggleDefaultRemindersVisibility(!settings_use_default_reminder.isChecked)
+        }
+    }
+
+    private fun setupDefaultReminder1() {
+        settings_default_reminder_1.text = getFormattedMinutes(config.defaultReminder1)
+        settings_default_reminder_1_holder.setOnClickListener {
+            showPickSecondsDialogHelper(config.defaultReminder1) {
+                config.defaultReminder1 = if (it <= 0) it else it / 60
+                settings_default_reminder_1.text = getFormattedMinutes(config.defaultReminder1)
+            }
+        }
+    }
+
+    private fun setupDefaultReminder2() {
+        settings_default_reminder_2.text = getFormattedMinutes(config.defaultReminder2)
+        settings_default_reminder_2_holder.setOnClickListener {
+            showPickSecondsDialogHelper(config.defaultReminder2) {
+                config.defaultReminder2 = if (it <= 0) it else it / 60
+                settings_default_reminder_2.text = getFormattedMinutes(config.defaultReminder2)
+            }
+        }
+    }
+
+    private fun setupDefaultReminder3() {
+        settings_default_reminder_3.text = getFormattedMinutes(config.defaultReminder3)
+        settings_default_reminder_3_holder.setOnClickListener {
+            showPickSecondsDialogHelper(config.defaultReminder3) {
+                config.defaultReminder3 = if (it <= 0) it else it / 60
+                settings_default_reminder_3.text = getFormattedMinutes(config.defaultReminder3)
+            }
+        }
+    }
+
+    private fun toggleDefaultRemindersVisibility(show: Boolean) {
+        arrayOf(settings_default_reminder_1_holder, settings_default_reminder_2_holder, settings_default_reminder_3_holder).forEach {
+            it.beVisibleIf(show)
+        }
     }
 
     private fun getHoursString(hours: Int) = String.format("%02d:00", hours)

@@ -142,4 +142,20 @@ class Config(context: Context) : BaseConfig(context) {
     private fun getSmallFontSize() = getMediumFontSize() - 3f
     private fun getMediumFontSize() = context.resources.getDimension(R.dimen.day_text_size) / context.resources.displayMetrics.density
     private fun getLargeFontSize() = getMediumFontSize() + 3f
+
+    var useDefaultReminder: Boolean
+        get() = prefs.getBoolean(USE_DEFAULT_REMINDER, true)
+        set(useDefaultReminder) = prefs.edit().putBoolean(USE_DEFAULT_REMINDER, useDefaultReminder).apply()
+
+    var defaultReminder1: Int
+        get() = prefs.getInt(DEFAULT_REMINDER_1, 10)
+        set(defaultReminder1) = prefs.edit().putInt(DEFAULT_REMINDER_1, defaultReminder1).apply()
+
+    var defaultReminder2: Int
+        get() = prefs.getInt(DEFAULT_REMINDER_2, REMINDER_OFF)
+        set(defaultReminder2) = prefs.edit().putInt(DEFAULT_REMINDER_2, defaultReminder2).apply()
+
+    var defaultReminder3: Int
+        get() = prefs.getInt(DEFAULT_REMINDER_3, REMINDER_OFF)
+        set(defaultReminder3) = prefs.edit().putInt(DEFAULT_REMINDER_3, defaultReminder3).apply()
 }
