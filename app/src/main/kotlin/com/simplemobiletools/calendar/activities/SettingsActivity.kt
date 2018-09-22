@@ -8,10 +8,7 @@ import android.text.TextUtils
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.dialogs.SelectCalendarsDialog
 import com.simplemobiletools.calendar.extensions.*
-import com.simplemobiletools.calendar.helpers.CalDAVHandler
-import com.simplemobiletools.calendar.helpers.FONT_SIZE_LARGE
-import com.simplemobiletools.calendar.helpers.FONT_SIZE_MEDIUM
-import com.simplemobiletools.calendar.helpers.FONT_SIZE_SMALL
+import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.models.EventType
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.CustomIntervalPickerDialog
@@ -79,6 +76,14 @@ class SettingsActivity : SimpleActivity() {
     override fun onPause() {
         super.onPause()
         mStoredPrimaryColor = config.primaryColor
+    }
+
+    override fun onStop() {
+        super.onStop()
+        val reminders = sortedSetOf(config.defaultReminder1, config.defaultReminder2, config.defaultReminder3).filter { it != REMINDER_OFF }
+        config.defaultReminder1 = reminders.getOrElse(0) { REMINDER_OFF }
+        config.defaultReminder2 = reminders.getOrElse(1) { REMINDER_OFF }
+        config.defaultReminder3 = reminders.getOrElse(2) { REMINDER_OFF }
     }
 
     private fun checkPrimaryColor() {
