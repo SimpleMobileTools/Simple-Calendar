@@ -165,6 +165,10 @@
     <string name="alarm_stream">Alarm</string>
     <string name="notification_stream">Notification</string>
     <string name="ring_stream">Ring</string>
+    <string name="default_event_reminder">Use the last events\' reminders as the default for new event</string>
+    <string name="default_reminder_1">Default reminder 1</string>
+    <string name="default_reminder_2">Default reminder 2</string>
+    <string name="default_reminder_3">Default reminder 3</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
