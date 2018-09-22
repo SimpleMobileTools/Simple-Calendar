@@ -2,7 +2,7 @@
 <resources>
 
     <!-- Release notes -->
-    <string name="release_129">Allow setting default event reminders, not always reuse the last events' ones</string>
+    <string name="release_129">Allow setting default event reminders, not always reuse the last events\' ones</string>
     <string name="release_119">
         Allow changing the app launcher icon color\n
         Added support for more advanced yearly repetition rules\n
