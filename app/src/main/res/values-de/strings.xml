@@ -25,7 +25,7 @@
     <string name="end_before_start">Der Termin darf nicht früher enden als er beginnt</string>
     <string name="event_added">Termin erfolgreich hinzugefügt</string>
     <string name="event_updated">Termin erfolgreich aktualisiert</string>
-    <string name="filter_events_by_type">Termine nach Typ sortieren</string>
+    <string name="filter_events_by_type">Termine nach Typ filtern</string>
     <string name="please_fill_location">Bitte trage einen Ort ein, der auf einer Karte angezeigt werden soll</string>
     <string name="public_event_notification_text">Ein Termin steht an</string>
 
@@ -81,13 +81,13 @@
 
     <!-- Birthdays -->
     <string name="birthdays">Geburtstage</string>
-    <string name="add_birthdays">Kontaktgeburtstage hinzufügen</string>
+    <string name="add_birthdays">Geburtstage der Kontakte hinzufügen</string>
     <string name="no_birthdays">Keine Geburtstage gefunden</string>
     <string name="birthdays_added">Geburtstage erfolgreich hinzugefügt</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Jahrestage</string>
-    <string name="add_anniversaries">Kontakt zu Jahrestagen hinzufügen</string>
+    <string name="add_anniversaries">Jahrestage der Kontakte hinzufügen</string>
     <string name="no_anniversaries">Es wurden keine Jahrestage gefunden</string>
     <string name="anniversaries_added">Jahrestage erfolgreich hinzugefügt</string>
 
