@@ -49,7 +49,7 @@
     <string name="update_one_only">Upraviť iba označené opakovania</string>
     <string name="update_all_occurrences">Upraviť všetky opakovania</string>
     <string name="repeat_till_date">Opakovať po dátum</string>
-    <string name="repeat_x_times">Opakovať x krát</string>
+    <string name="stop_repeating_after_x">Ukončiť opakovanie po x opakovaniach</string>
     <string name="repeat_forever">Opakovať navždy</string>
     <string name="times">krát</string>
     <string name="repeat">Opakovať</string>
@@ -164,6 +164,10 @@
     <string name="alarm_stream">Výstražný</string>
     <string name="notification_stream">Pripomienkový</string>
     <string name="ring_stream">Zvoniaci</string>
+    <string name="use_last_event_reminders">Použiť pripomienky poslednej udalosti ako predvolené pre novú udalosť</string>
+    <string name="default_reminder_1">Predvolená pripomienka 1</string>
+    <string name="default_reminder_2">Predvolená pripomienka 2</string>
+    <string name="default_reminder_3">Predvolená pripomienka 3</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

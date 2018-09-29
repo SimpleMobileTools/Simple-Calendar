@@ -49,7 +49,7 @@
     <string name="update_one_only">Обновить только выбранное</string>
     <string name="update_all_occurrences">Обновить все связанные</string>
     <string name="repeat_till_date">Повторять до даты</string>
-    <string name="repeat_x_times">Повторять x раз</string>
+    <string name="stop_repeating_after_x">Перестать повторять после x раза</string>
     <string name="repeat_forever">Повторять бесконечно</string>
     <string name="times">раз</string>
     <string name="repeat">Повторять</string>
@@ -164,6 +164,10 @@
     <string name="alarm_stream">Будильник</string>
     <string name="notification_stream">Уведомление</string>
     <string name="ring_stream">Звонок</string>
+    <string name="use_last_event_reminders">Use the last events\' reminders as the default for new event</string>
+    <string name="default_reminder_1">Default reminder 1</string>
+    <string name="default_reminder_2">Default reminder 2</string>
+    <string name="default_reminder_3">Default reminder 3</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

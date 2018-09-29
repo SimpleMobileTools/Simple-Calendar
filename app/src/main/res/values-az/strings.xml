@@ -49,7 +49,7 @@
     <string name="update_one_only">Yalnız seçilmiş hadisəni yenilə</string>
     <string name="update_all_occurrences">Bütün hadisələri yenilə</string>
     <string name="repeat_till_date">Bir vaxta qədər təkrarla</string>
-    <string name="repeat_x_times">X dəfə təkrarla</string>
+    <string name="stop_repeating_after_x">Stop repeating after x occurrences</string>
     <string name="repeat_forever">Sonsuz təkrarla</string>
     <string name="times">təkrar sayı</string>
     <string name="repeat">Təkrarla</string>
@@ -164,6 +164,10 @@
     <string name="alarm_stream">Zəng</string>
     <string name="notification_stream">Bildiriş</string>
     <string name="ring_stream">Zəng səsi</string>
+    <string name="use_last_event_reminders">Use the last events\' reminders as the default for new event</string>
+    <string name="default_reminder_1">Default reminder 1</string>
+    <string name="default_reminder_2">Default reminder 2</string>
+    <string name="default_reminder_3">Default reminder 3</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

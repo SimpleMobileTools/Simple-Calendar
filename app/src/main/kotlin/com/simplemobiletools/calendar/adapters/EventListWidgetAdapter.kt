@@ -17,7 +17,7 @@ import com.simplemobiletools.calendar.models.ListEvent
 import com.simplemobiletools.calendar.models.ListItem
 import com.simplemobiletools.calendar.models.ListSection
 import com.simplemobiletools.commons.extensions.adjustAlpha
-import com.simplemobiletools.commons.extensions.getColoredBitmap
+import com.simplemobiletools.commons.extensions.setBackgroundColor
 import com.simplemobiletools.commons.extensions.setText
 import com.simplemobiletools.commons.extensions.setTextSize
 import org.joda.time.DateTime
@@ -29,8 +29,8 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
 
     private val allDayString = context.resources.getString(R.string.all_day)
     private var events = ArrayList<ListItem>()
-    private val textColor = context.config.widgetTextColor
-    private val weakTextColor = textColor.adjustAlpha(LOW_ALPHA)
+    private var textColor = context.config.widgetTextColor
+    private var weakTextColor = textColor.adjustAlpha(LOW_ALPHA)
     private val replaceDescription = context.config.replaceDescription
     private val dimPastEvents = context.config.dimPastEvents
     private var mediumFontSize = context.config.getFontSize()
@@ -56,10 +56,10 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
     private fun setupListEvent(remoteView: RemoteViews, item: ListEvent) {
         var curTextColor = textColor
         remoteView.apply {
-            setText(R.id.event_section_title, item.title)
+            setText(R.id.event_item_title, item.title)
             setText(R.id.event_item_description, if (replaceDescription) item.location else item.description)
             setText(R.id.event_item_start, if (item.isAllDay) allDayString else Formatter.getTimeFromTS(context, item.startTS))
-            setImageViewBitmap(R.id.event_item_color, context.resources.getColoredBitmap(R.drawable.monthly_event_dot, item.color))
+            setBackgroundColor(R.id.event_item_color_bar, item.color)
 
             if (item.startTS == item.endTS) {
                 setViewVisibility(R.id.event_item_end, View.INVISIBLE)
@@ -85,12 +85,12 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
                 curTextColor = weakTextColor
             }
 
-            setTextColor(R.id.event_section_title, curTextColor)
+            setTextColor(R.id.event_item_title, curTextColor)
             setTextColor(R.id.event_item_description, curTextColor)
             setTextColor(R.id.event_item_start, curTextColor)
             setTextColor(R.id.event_item_end, curTextColor)
 
-            setTextSize(R.id.event_section_title, mediumFontSize)
+            setTextSize(R.id.event_item_title, mediumFontSize)
             setTextSize(R.id.event_item_description, mediumFontSize)
             setTextSize(R.id.event_item_start, mediumFontSize)
             setTextSize(R.id.event_item_end, mediumFontSize)
@@ -132,6 +132,8 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
     override fun getItemId(position: Int) = position.toLong()
 
     override fun onDataSetChanged() {
+        textColor = context.config.widgetTextColor
+        weakTextColor = textColor.adjustAlpha(LOW_ALPHA)
         mediumFontSize = context.config.getFontSize()
         val fromTS = DateTime().seconds() - context.config.displayPastEvents * 60
         val toTS = DateTime().plusYears(1).seconds()

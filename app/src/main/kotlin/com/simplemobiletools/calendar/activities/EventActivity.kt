@@ -6,6 +6,7 @@ import android.app.TimePickerDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.support.v4.app.NotificationManagerCompat
 import android.text.method.LinkMovementMethod
 import android.view.Menu
 import android.view.MenuItem
@@ -89,11 +90,13 @@ class EventActivity : SimpleActivity() {
             if (intent.getBooleanExtra(IS_DUPLICATE_INTENT, false)) {
                 mEvent.id = 0
             }
+
+            cancelNotification(mEvent.id)
         } else {
             mEvent = Event()
-            mReminder1Minutes = config.defaultReminderMinutes
-            mReminder2Minutes = config.defaultReminderMinutes3
-            mReminder3Minutes = config.defaultReminderMinutes2
+            mReminder1Minutes = if (config.usePreviousEventReminders) config.lastEventReminderMinutes else config.defaultReminder1
+            mReminder2Minutes = if (config.usePreviousEventReminders) config.lastEventReminderMinutes2 else config.defaultReminder2
+            mReminder3Minutes = if (config.usePreviousEventReminders) config.lastEventReminderMinutes3 else config.defaultReminder3
 
             if (savedInstanceState == null) {
                 setupNewEvent()
@@ -118,12 +121,14 @@ class EventActivity : SimpleActivity() {
         event_repetition_limit_holder.setOnClickListener { showRepetitionTypePicker() }
 
         event_reminder_1.setOnClickListener {
-            if (config.wasAlarmWarningShown) {
-                showReminder1Dialog()
-            } else {
-                ConfirmationDialog(this, messageId = R.string.reminder_warning, positive = R.string.ok, negative = 0) {
-                    config.wasAlarmWarningShown = true
+            handleNotificationAvailability() {
+                if (config.wasAlarmWarningShown) {
                     showReminder1Dialog()
+                } else {
+                    ConfirmationDialog(this, messageId = R.string.reminder_warning, positive = R.string.ok, negative = 0) {
+                        config.wasAlarmWarningShown = true
+                        showReminder1Dialog()
+                    }
                 }
             }
         }
@@ -262,6 +267,16 @@ class EventActivity : SimpleActivity() {
 
             val addHours = if (intent.getBooleanExtra(NEW_EVENT_SET_HOUR_DURATION, false)) 1 else 0
             mEventEndDateTime = mEventStartDateTime.plusHours(addHours)
+        }
+    }
+
+    private fun handleNotificationAvailability(callback: () -> Unit) {
+        if (NotificationManagerCompat.from(applicationContext).areNotificationsEnabled()) {
+            callback()
+        } else {
+            ConfirmationDialog(this, messageId = R.string.notifications_disabled, positive = R.string.ok, negative = 0) {
+                callback()
+            }
         }
     }
 
@@ -691,7 +706,7 @@ class EventActivity : SimpleActivity() {
             config.lastUsedLocalEventTypeId = newEventType
             SOURCE_SIMPLE_CALENDAR
         } else {
-            "$CALDAV-${config.lastUsedCaldavCalendarId}"
+            "$CALDAV-$mEventCalendarId"
         }
 
         val reminders = sortedSetOf(mReminder1Minutes, mReminder2Minutes, mReminder3Minutes).filter { it != REMINDER_OFF }
@@ -700,9 +715,11 @@ class EventActivity : SimpleActivity() {
         val reminder3 = reminders.getOrElse(2) { REMINDER_OFF }
 
         config.apply {
-            defaultReminderMinutes = reminder1
-            defaultReminderMinutes2 = reminder2
-            defaultReminderMinutes3 = reminder3
+            if (usePreviousEventReminders) {
+                lastEventReminderMinutes = reminder1
+                lastEventReminderMinutes2 = reminder2
+                lastEventReminderMinutes3 = reminder3
+            }
         }
 
         mEvent.apply {

@@ -8,10 +8,7 @@ import android.text.TextUtils
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.dialogs.SelectCalendarsDialog
 import com.simplemobiletools.calendar.extensions.*
-import com.simplemobiletools.calendar.helpers.CalDAVHandler
-import com.simplemobiletools.calendar.helpers.FONT_SIZE_LARGE
-import com.simplemobiletools.calendar.helpers.FONT_SIZE_MEDIUM
-import com.simplemobiletools.calendar.helpers.FONT_SIZE_SMALL
+import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.models.EventType
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.CustomIntervalPickerDialog
@@ -63,6 +60,10 @@ class SettingsActivity : SimpleActivity() {
         setupUseSameSnooze()
         setupLoopReminders()
         setupSnoozeTime()
+        setupDefaultReminder()
+        setupDefaultReminder1()
+        setupDefaultReminder2()
+        setupDefaultReminder3()
         setupDisplayPastEvents()
         setupFontSize()
         setupCustomizeWidgetColors()
@@ -75,6 +76,14 @@ class SettingsActivity : SimpleActivity() {
     override fun onPause() {
         super.onPause()
         mStoredPrimaryColor = config.primaryColor
+    }
+
+    override fun onStop() {
+        super.onStop()
+        val reminders = sortedSetOf(config.defaultReminder1, config.defaultReminder2, config.defaultReminder3).filter { it != REMINDER_OFF }
+        config.defaultReminder1 = reminders.getOrElse(0) { REMINDER_OFF }
+        config.defaultReminder2 = reminders.getOrElse(1) { REMINDER_OFF }
+        config.defaultReminder3 = reminders.getOrElse(2) { REMINDER_OFF }
     }
 
     private fun checkPrimaryColor() {
@@ -385,6 +394,52 @@ class SettingsActivity : SimpleActivity() {
 
     private fun updateSnoozeTime() {
         settings_snooze_time.text = formatMinutesToTimeString(config.snoozeTime)
+    }
+
+    private fun setupDefaultReminder() {
+        settings_use_last_event_reminders.isChecked = config.usePreviousEventReminders
+        toggleDefaultRemindersVisibility(!config.usePreviousEventReminders)
+        settings_use_last_event_reminders_holder.setOnClickListener {
+            settings_use_last_event_reminders.toggle()
+            config.usePreviousEventReminders = settings_use_last_event_reminders.isChecked
+            toggleDefaultRemindersVisibility(!settings_use_last_event_reminders.isChecked)
+        }
+    }
+
+    private fun setupDefaultReminder1() {
+        settings_default_reminder_1.text = getFormattedMinutes(config.defaultReminder1)
+        settings_default_reminder_1_holder.setOnClickListener {
+            showPickSecondsDialogHelper(config.defaultReminder1) {
+                config.defaultReminder1 = if (it <= 0) it else it / 60
+                settings_default_reminder_1.text = getFormattedMinutes(config.defaultReminder1)
+            }
+        }
+    }
+
+    private fun setupDefaultReminder2() {
+        settings_default_reminder_2.text = getFormattedMinutes(config.defaultReminder2)
+        settings_default_reminder_2_holder.setOnClickListener {
+            showPickSecondsDialogHelper(config.defaultReminder2) {
+                config.defaultReminder2 = if (it <= 0) it else it / 60
+                settings_default_reminder_2.text = getFormattedMinutes(config.defaultReminder2)
+            }
+        }
+    }
+
+    private fun setupDefaultReminder3() {
+        settings_default_reminder_3.text = getFormattedMinutes(config.defaultReminder3)
+        settings_default_reminder_3_holder.setOnClickListener {
+            showPickSecondsDialogHelper(config.defaultReminder3) {
+                config.defaultReminder3 = if (it <= 0) it else it / 60
+                settings_default_reminder_3.text = getFormattedMinutes(config.defaultReminder3)
+            }
+        }
+    }
+
+    private fun toggleDefaultRemindersVisibility(show: Boolean) {
+        arrayOf(settings_default_reminder_1_holder, settings_default_reminder_2_holder, settings_default_reminder_3_holder).forEach {
+            it.beVisibleIf(show)
+        }
     }
 
     private fun getHoursString(hours: Int) = String.format("%02d:00", hours)

@@ -49,7 +49,7 @@
     <string name="update_one_only">Alleen huidige afspraak bijwerken</string>
     <string name="update_all_occurrences">Alle afspraken bijwerken</string>
     <string name="repeat_till_date">Herhalen tot datum</string>
-    <string name="repeat_x_times">Aantal keren herhalen</string>
+    <string name="stop_repeating_after_x">Herhaling stoppen na x keer</string>
     <string name="repeat_forever">Voor altijd herhalen</string>
     <string name="times">keer</string>
     <string name="repeat">Herhalen</string>
@@ -102,7 +102,7 @@
     <string name="export_events">Afspraken exporteren</string>
     <string name="import_events_from_ics">Afspraken uit .ics-bestand importeren</string>
     <string name="export_events_to_ics">Afspraken naar .ics-bestand exporteren</string>
-    <string name="default_event_type">Standaard afspraaktype</string>
+    <string name="default_event_type">Standaardtype afspraken</string>
     <string name="export_past_events_too">Afspraken uit verleden ook exporteren</string>
     <string name="include_event_types">Afspraaktypes weergeven</string>
     <string name="filename_without_ics">Bestandsnaam (zonder .ics)</string>
@@ -164,6 +164,10 @@
     <string name="alarm_stream">Alarm</string>
     <string name="notification_stream">Notificatie</string>
     <string name="ring_stream">Beltoon</string>
+    <string name="use_last_event_reminders">Ingestelde herinneringen bij laatste afspraak als standaard voor nieuwe afspraken gebruiken</string>
+    <string name="default_reminder_1">Standaardherinnering 1</string>
+    <string name="default_reminder_2">Standaardherinnering 2</string>
+    <string name="default_reminder_3">Standaardherinnering 3</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

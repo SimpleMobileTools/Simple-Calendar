@@ -49,7 +49,7 @@
     <string name="update_one_only">Uppdatera bara den markerade förekomsten</string>
     <string name="update_all_occurrences">Uppdatera alla förekomster</string>
     <string name="repeat_till_date">Upprepa till ett datum</string>
-    <string name="repeat_x_times">Upprepa x gånger</string>
+    <string name="stop_repeating_after_x">Stop repeating after x occurrences</string>
     <string name="repeat_forever">Upprepa alltid</string>
     <string name="times">gånger</string>
     <string name="repeat">Upprepa</string>
@@ -164,6 +164,10 @@
     <string name="alarm_stream">Alarm</string>
     <string name="notification_stream">Avisering</string>
     <string name="ring_stream">Ring</string>
+    <string name="use_last_event_reminders">Use the last events\' reminders as the default for new event</string>
+    <string name="default_reminder_1">Default reminder 1</string>
+    <string name="default_reminder_2">Default reminder 2</string>
+    <string name="default_reminder_3">Default reminder 3</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

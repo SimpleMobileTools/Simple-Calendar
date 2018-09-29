@@ -33,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/small_margin"
-            android:text="@string/repeat_x_times"/>
+            android:text="@string/stop_repeating_after_x"/>
 
         <com.simplemobiletools.commons.views.MyEditText
             android:id="@+id/repeat_type_count"

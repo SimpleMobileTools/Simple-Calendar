@@ -32,8 +32,8 @@ import com.simplemobiletools.calendar.receivers.CalDAVSyncReceiver
 import com.simplemobiletools.calendar.receivers.NotificationReceiver
 import com.simplemobiletools.calendar.services.SnoozeService
 import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.DAY_SECONDS
 import com.simplemobiletools.commons.helpers.SILENT
+import com.simplemobiletools.commons.helpers.WEEK_SECONDS
 import com.simplemobiletools.commons.helpers.YEAR_SECONDS
 import com.simplemobiletools.commons.helpers.isOreoPlus
 import org.joda.time.DateTime
@@ -107,20 +107,20 @@ fun Context.scheduleEventIn(notifTS: Long, event: Event, activity: SimpleActivit
         return
     }
 
+    val newNotifTS = notifTS + 1000
     if (activity != null) {
-        val secondsTillNotification = (notifTS - System.currentTimeMillis()) / 1000
+        val secondsTillNotification = (newNotifTS - System.currentTimeMillis()) / 1000
         val msg = String.format(getString(R.string.reminder_triggers_in), formatSecondsToTimeString(secondsTillNotification.toInt()))
         activity.toast(msg)
     }
 
     val pendingIntent = getNotificationIntent(applicationContext, event)
     val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-    AlarmManagerCompat.setExactAndAllowWhileIdle(alarmManager, AlarmManager.RTC_WAKEUP, notifTS, pendingIntent)
+    AlarmManagerCompat.setExactAndAllowWhileIdle(alarmManager, AlarmManager.RTC_WAKEUP, newNotifTS, pendingIntent)
 }
 
 fun Context.cancelNotification(id: Int) {
-    val intent = Intent(applicationContext, NotificationReceiver::class.java)
-    PendingIntent.getBroadcast(applicationContext, id, intent, PendingIntent.FLAG_UPDATE_CURRENT).cancel()
+    (getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager).cancel(id)
 }
 
 private fun getNotificationIntent(context: Context, event: Event): PendingIntent {
@@ -161,13 +161,16 @@ fun Context.notifyEvent(originalEvent: Event) {
     var event = originalEvent.copy()
     val currentSeconds = getNowSeconds()
 
+    var eventStartTS = if (event.getIsAllDay()) Formatter.getDayStartTS(Formatter.getDayCodeFromTS(event.startTS)) else event.startTS
     // make sure refer to the proper repeatable event instance with "Tomorrow", or the specific date
-    if (event.repeatInterval != 0 && event.startTS - event.reminder1Minutes * 60 < currentSeconds) {
-        val events = dbHelper.getRepeatableEventsFor(currentSeconds - DAY_SECONDS, currentSeconds + YEAR_SECONDS, event.id)
+    if (event.repeatInterval != 0 && eventStartTS - event.reminder1Minutes * 60 < currentSeconds) {
+        val events = dbHelper.getRepeatableEventsFor(currentSeconds - WEEK_SECONDS, currentSeconds + YEAR_SECONDS, event.id)
         for (currEvent in events) {
-            if (currEvent.startTS - currEvent.reminder1Minutes * 60 > currentSeconds) {
+            eventStartTS = if (currEvent.getIsAllDay()) Formatter.getDayStartTS(Formatter.getDayCodeFromTS(currEvent.startTS)) else currEvent.startTS
+            if (eventStartTS - currEvent.reminder1Minutes * 60 > currentSeconds) {
                 break
             }
+
             event = currEvent
         }
     }
@@ -286,7 +289,7 @@ fun Context.rescheduleReminder(event: Event?, minutes: Int) {
     }
 }
 
-fun Context.launchNewEventIntent(dayCode: String = Formatter.getTodayCode(this)) {
+fun Context.launchNewEventIntent(dayCode: String = Formatter.getTodayCode()) {
     Intent(applicationContext, EventActivity::class.java).apply {
         putExtra(NEW_EVENT_START_TS, getNewEventTimestampFromCode(dayCode))
         addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)

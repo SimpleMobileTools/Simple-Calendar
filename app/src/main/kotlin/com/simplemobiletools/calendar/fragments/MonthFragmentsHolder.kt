@@ -31,7 +31,7 @@ class MonthFragmentsHolder : MyFragmentHolder(), NavigationListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         currentDayCode = arguments?.getString(DAY_CODE) ?: ""
-        todayDayCode = Formatter.getTodayCode(context!!)
+        todayDayCode = Formatter.getTodayCode()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

@@ -37,7 +37,7 @@ class RepeatLimitTypePickerDialog(val activity: Activity, var repeatLimit: Int, 
         updateRepeatLimitText()
 
         dialog = AlertDialog.Builder(activity)
-                .setPositiveButton(R.string.ok, { dialogInterface, i -> confirmRepetition() })
+                .setPositiveButton(R.string.ok) { dialogInterface, i -> confirmRepetition() }
                 .setNegativeButton(R.string.cancel, null)
                 .create().apply {
                     activity.setupDialogStuff(view, this) {

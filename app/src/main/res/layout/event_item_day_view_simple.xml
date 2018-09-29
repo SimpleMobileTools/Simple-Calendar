@@ -17,13 +17,13 @@
         android:layout_height="wrap_content"
         android:paddingBottom="@dimen/medium_margin"
         android:paddingRight="@dimen/activity_margin"
-        android:paddingTop="@dimen/small_margin">
+        android:paddingTop="@dimen/medium_margin">
 
         <ImageView
             android:id="@+id/event_item_color_bar"
             android:layout_width="@dimen/event_color_bar_width"
             android:layout_height="match_parent"
-            android:layout_alignBottom="@+id/event_item_end"
+            android:layout_alignBottom="@+id/event_item_start"
             android:layout_alignTop="@+id/event_item_start"
             android:layout_marginRight="@dimen/small_margin"
             android:background="@drawable/event_list_color_bar"
@@ -39,16 +39,6 @@
             tools:text="13:00"/>
 
         <TextView
-            android:id="@+id/event_item_end"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/event_item_start"
-            android:layout_toRightOf="@+id/event_item_color_bar"
-            android:includeFontPadding="false"
-            android:text="15:00"
-            android:textSize="@dimen/day_text_size"/>
-
-        <TextView
             android:id="@+id/event_item_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -59,20 +49,6 @@
             android:paddingRight="@dimen/activity_margin"
             android:textSize="@dimen/day_text_size"
             tools:text="Event title"/>
-
-        <TextView
-            android:id="@+id/event_item_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/event_item_title"
-            android:layout_marginLeft="@dimen/activity_margin"
-            android:layout_toRightOf="@+id/event_item_end"
-            android:ellipsize="end"
-            android:includeFontPadding="false"
-            android:maxLines="1"
-            android:paddingRight="@dimen/activity_margin"
-            android:textSize="@dimen/day_text_size"
-            tools:text="Event description"/>
 
     </RelativeLayout>
 </FrameLayout>

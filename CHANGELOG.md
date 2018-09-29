@@ -1,6 +1,23 @@
 Changelog
 ==========
 
+Version 4.2.1 *(2018-09-22)*
+----------------------------
+
+ * Fixed some crashes related to specific invalid times in some timezones
+ * Added some holidays in Malaysia and Australia by youdly
+ * Added a new warning if the app notifications are disabled by the system
+ * Some other translation improvements and bugfixes
+
+Version 4.2.0 *(2018-09-10)*
+----------------------------
+
+ * Replaced colored event type dots with bars for better visibility
+ * Fixed some wrong reminder date data
+ * Properly highlight running all-day events
+ * Fix a glitch with CalDAV events being saved in the wrong calendar
+ * Couple other smaller UX and translation improvements
+
 Version 4.1.3 *(2018-08-06)*
 ----------------------------
 

@@ -10,9 +10,8 @@ import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.extensions.handleEventDeleting
 import com.simplemobiletools.calendar.extensions.shareEvents
+import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
-import com.simplemobiletools.calendar.helpers.LOW_ALPHA
-import com.simplemobiletools.calendar.helpers.getNowSeconds
 import com.simplemobiletools.calendar.models.ListEvent
 import com.simplemobiletools.calendar.models.ListItem
 import com.simplemobiletools.calendar.models.ListSection
@@ -24,14 +23,11 @@ import com.simplemobiletools.commons.extensions.beInvisibleIf
 import com.simplemobiletools.commons.interfaces.RefreshRecyclerViewListener
 import com.simplemobiletools.commons.views.MyRecyclerView
 import kotlinx.android.synthetic.main.event_list_item.view.*
+import kotlinx.android.synthetic.main.event_list_section.view.*
 import java.util.*
 
 class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListItem>, val allowLongClick: Boolean, val listener: RefreshRecyclerViewListener?,
                        recyclerView: MyRecyclerView, itemClick: (Any) -> Unit) : MyRecyclerViewAdapter(activity, recyclerView, null, itemClick) {
-
-    private val ITEM_EVENT = 0
-    private val ITEM_EVENT_SIMPLE = 1
-    private val ITEM_HEADER = 2
 
     private val topDivider = resources.getDrawable(R.drawable.divider_width)
     private val allDayString = resources.getString(R.string.all_day)
@@ -131,11 +127,11 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
 
     private fun setupListEvent(view: View, listEvent: ListEvent) {
         view.apply {
-            event_section_title.text = listEvent.title
+            event_item_title.text = listEvent.title
             event_item_description?.text = if (replaceDescription) listEvent.location else listEvent.description
             event_item_start.text = if (listEvent.isAllDay) allDayString else Formatter.getTimeFromTS(context, listEvent.startTS)
             event_item_end?.beInvisibleIf(listEvent.startTS == listEvent.endTS)
-            event_item_color.applyColorFilter(listEvent.color)
+            event_item_color_bar.background.applyColorFilter(listEvent.color)
 
             if (listEvent.startTS != listEvent.endTS) {
                 event_item_end?.apply {
@@ -157,11 +153,9 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
 
             var startTextColor = textColor
             var endTextColor = textColor
-            if (listEvent.startTS <= now && listEvent.endTS <= now) {
-                if (listEvent.isAllDay) {
-                    if (Formatter.getDayCodeFromTS(listEvent.startTS) == Formatter.getDayCodeFromTS(now)) {
-                        startTextColor = primaryColor
-                    }
+            if (listEvent.isAllDay || listEvent.startTS <= now && listEvent.endTS <= now) {
+                if (listEvent.isAllDay && Formatter.getDayCodeFromTS(listEvent.startTS) == Formatter.getDayCodeFromTS(now)) {
+                    startTextColor = primaryColor
                 }
 
                 if (dimPastEvents && listEvent.isPastEvent) {
@@ -174,7 +168,7 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
 
             event_item_start.setTextColor(startTextColor)
             event_item_end?.setTextColor(endTextColor)
-            event_section_title.setTextColor(startTextColor)
+            event_item_title.setTextColor(startTextColor)
             event_item_description?.setTextColor(startTextColor)
         }
     }

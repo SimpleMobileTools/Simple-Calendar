@@ -49,7 +49,7 @@
     <string name="update_one_only">Oppdater bare den merkede forekomsten</string>
     <string name="update_all_occurrences">Oppdater alle forekomster</string>
     <string name="repeat_till_date">Gjenta til en dato</string>
-    <string name="repeat_x_times">Gjenta x ganger</string>
+    <string name="stop_repeating_after_x">Stopp å gjenta etter x forekomster</string>
     <string name="repeat_forever">Gjenta for alltid</string>
     <string name="times">ganger</string>
     <string name="repeat">Gjenta</string>
@@ -164,6 +164,10 @@
     <string name="alarm_stream">Alarm</string>
     <string name="notification_stream">Varsel</string>
     <string name="ring_stream">Ringetone</string>
+    <string name="use_last_event_reminders">Use the last events\' reminders as the default for new event</string>
+    <string name="default_reminder_1">Default reminder 1</string>
+    <string name="default_reminder_2">Default reminder 2</string>
+    <string name="default_reminder_3">Default reminder 3</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

@@ -106,7 +106,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     override fun onResume() {
         super.onResume()
         if (mStoredTextColor != config.textColor || mStoredBackgroundColor != config.backgroundColor || mStoredPrimaryColor != config.primaryColor
-                || mStoredDayCode != Formatter.getTodayCode(applicationContext) || mStoredDimPastEvents != config.dimPastEvents) {
+                || mStoredDayCode != Formatter.getTodayCode() || mStoredDimPastEvents != config.dimPastEvents) {
             updateViewPager()
         }
 
@@ -206,7 +206,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             mStoredUse24HourFormat = use24HourFormat
             mStoredDimPastEvents = dimPastEvents
         }
-        mStoredDayCode = Formatter.getTodayCode(applicationContext)
+        mStoredDayCode = Formatter.getTodayCode()
     }
 
     private fun setupSearch(menu: Menu) {
@@ -534,7 +534,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
     }
 
-    private fun updateViewPager(dayCode: String? = Formatter.getTodayCode(applicationContext)) {
+    private fun updateViewPager(dayCode: String? = Formatter.getTodayCode()) {
         val fragment = getFragmentsHolder()
         currentFragments.forEach {
             supportFragmentManager.beginTransaction().remove(it).commitNow()
@@ -781,6 +781,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             put("Lietuva", "lithuania.ics")
             put("Luxemburg", "luxembourg.ics")
             put("Makedonija", "macedonia.ics")
+            put("Malaysia", "malaysia.ics")
             put("Magyarország", "hungary.ics")
             put("México", "mexico.ics")
             put("Nederland", "netherlands.ics")
@@ -842,6 +843,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             add(Release(98, R.string.release_98))
             add(Release(117, R.string.release_117))
             add(Release(119, R.string.release_119))
+            add(Release(129, R.string.release_129))
             checkWhatsNew(this, BuildConfig.VERSION_CODE)
         }
     }

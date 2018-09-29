@@ -24,6 +24,10 @@ const val DAILY_VIEW = 5
 
 const val REMINDER_OFF = -1
 
+const val ITEM_EVENT = 0
+const val ITEM_EVENT_SIMPLE = 1
+const val ITEM_HEADER = 2
+
 const val DAY = 86400
 const val WEEK = 604800
 const val MONTH = 2592001    // exact value not taken into account, Joda is used for adding months and years
@@ -37,9 +41,9 @@ const val VIBRATE = "vibrate"
 const val REMINDER_SOUND_URI = "reminder_sound_uri"
 const val REMINDER_SOUND_TITLE = "reminder_sound_title"
 const val VIEW = "view"
-const val REMINDER_MINUTES = "reminder_minutes"
-const val REMINDER_MINUTES_2 = "reminder_minutes_2"
-const val REMINDER_MINUTES_3 = "reminder_minutes_3"
+const val LAST_EVENT_REMINDER_MINUTES = "reminder_minutes"
+const val LAST_EVENT_REMINDER_MINUTES_2 = "reminder_minutes_2"
+const val LAST_EVENT_REMINDER_MINUTES_3 = "reminder_minutes_3"
 const val DISPLAY_EVENT_TYPES = "display_event_types"
 const val FONT_SIZE = "font_size"
 const val CALDAV_SYNC = "caldav_sync"
@@ -54,6 +58,10 @@ const val DIM_PAST_EVENTS = "dim_past_events"
 const val LAST_SOUND_URI = "last_sound_uri"
 const val LAST_REMINDER_CHANNEL_ID = "last_reminder_channel_ID"
 const val REMINDER_AUDIO_STREAM = "reminder_audio_stream"
+const val USE_PREVIOUS_EVENT_REMINDERS = "use_previous_event_reminders"
+const val DEFAULT_REMINDER_1 = "default_reminder_1"
+const val DEFAULT_REMINDER_2 = "default_reminder_2"
+const val DEFAULT_REMINDER_3 = "default_reminder_3"
 
 // repeat_rule for monthly and yearly repetition
 const val REPEAT_SAME_DAY = 1                           // i.e. 25th every month, or 3rd june (if yearly repetition)

@@ -49,7 +49,7 @@
     <string name="update_one_only">Opdater kun denne forekomst</string>
     <string name="update_all_occurrences">Opdater alle forekomster</string>
     <string name="repeat_till_date">Gentag indtil</string>
-    <string name="repeat_x_times">Antal gentagelser</string>
+    <string name="stop_repeating_after_x">Stop repeating after x occurrences</string>
     <string name="repeat_forever">For altid</string>
     <string name="times">gange</string>
     <string name="repeat">Gentag</string>
@@ -164,6 +164,10 @@
     <string name="alarm_stream">Alarm</string>
     <string name="notification_stream">Notifikation</string>
     <string name="ring_stream">Ring</string>
+    <string name="use_last_event_reminders">Brug den sidst opsatte påmindelse som standard for påmindelser</string>
+    <string name="default_reminder_1">Påmindelse 1</string>
+    <string name="default_reminder_2">Påmindelse 2</string>
+    <string name="default_reminder_3">Påmindelse 3</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -203,7 +207,7 @@
     <string name="faq_2_title">Kan jeg synkronisere mine begivenheder med Googles kalender eller en anden kalender der understøtter CalDAV?</string>
     <string name="faq_2_text">Ja, klik på \"CalDAV sync\" i appens indstillinger og vælg de kalendere du vil synkronisere. Det kræver dog at du har en app til at synkronisere mellem din enhed og kalenderservere.
         Hvis du vil synkronisere en Googlekalender, kan deres officielle app klare det. For andre kalenderes vedkommende kan du bruge en 3. partsapp som for eksempel DAVdroid.</string>
-    <string name="faq_3_title">Jeg kan mine påmindelser, men der er ingen lyd på. Hvad kan jeg gøre ved det?</string>
+    <string name="faq_3_title">Jeg kan se mine påmindelser, men der er ingen lyd på. Hvad kan jeg gøre ved det?</string>
     <string name="faq_3_text">Såvel visning af påmindelser som afspilning af lyd til dem, er afhængig af systemet. Hvis ikke du kan høre nogen lyd, kan du prøve at gå ind i appens indstillinger. Her kan du trykke på \"Audio-stream anvendt af påmindelser\"  og vælge en anden indstilling. Virker det stadig ikke skal du tjekke i dine lydindstillinger om lyden i det aktuelle valg er slået fra.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->

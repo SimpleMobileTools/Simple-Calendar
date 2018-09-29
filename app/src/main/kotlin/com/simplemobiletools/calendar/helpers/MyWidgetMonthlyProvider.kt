@@ -195,7 +195,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
                 setupIntent(context, views, GO_TO_TODAY, R.id.top_go_to_today)
                 setupIntent(context, views, NEW_EVENT, R.id.top_new_event)
 
-                val monthCode = days.firstOrNull { it.code.substring(6) == "01" }?.code ?: Formatter.getTodayCode(context)
+                val monthCode = days.firstOrNull { it.code.substring(6) == "01" }?.code ?: Formatter.getTodayCode()
                 setupAppOpenIntent(context, views, R.id.top_value, monthCode)
 
                 try {
