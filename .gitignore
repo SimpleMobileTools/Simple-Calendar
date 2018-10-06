@@ -23,3 +23,10 @@
 debug.keystore
 release.keystore
 signing.properties
+
+*/.idea/
+*/gradle/
+*/gradlew
+*/gradlew.bat
+*/local.properties
+
