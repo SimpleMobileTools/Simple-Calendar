@@ -103,7 +103,7 @@
     <string name="import_events_from_ics">Importovat kalendář ze souboru .ics</string>
     <string name="export_events_to_ics">Exportovat kalendář do souboru .ics</string>
     <string name="default_event_type">Přednastavený typ události</string>
-    <string name="export_past_events_too">Exportovat i již uplynulé události</string>
+    <string name="export_past_events_too">Exportovat i uplynulé události</string>
     <string name="include_event_types">Zahrnout typy událostí</string>
     <string name="filename_without_ics">Název souboru (bez .ics)</string>
     <string name="override_event_types">Přepsat typ události v souboru</string>
@@ -160,7 +160,7 @@
     <string name="dim_past_events">Smazat minulé události</string>
     <string name="events">Události</string>
     <string name="reminder_stream">Zvuk upomínky</string>
-    <string name="system_stream">System</string>
+    <string name="system_stream">Systém</string>
     <string name="alarm_stream">Budík</string>
     <string name="notification_stream">Notifikace</string>
     <string name="ring_stream">Vyzvánění</string>
