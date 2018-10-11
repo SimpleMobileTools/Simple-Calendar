@@ -86,10 +86,10 @@
     <string name="birthdays_added">Narozeniny byly úspěšně přidány</string>
 
     <!-- Anniversaries -->
-    <string name="anniversaries">Anniversaries</string>
-    <string name="add_anniversaries">Add contact anniversaries</string>
-    <string name="no_anniversaries">No anniversaries have been found</string>
-    <string name="anniversaries_added">Anniversaries added successfully</string>
+    <string name="anniversaries">Výročí</string>
+    <string name="add_anniversaries">Přidat výročí</string>
+    <string name="no_anniversaries">Žádné výročí nebylo nalezeno</string>
+    <string name="anniversaries_added">Výročí bylo úspěšně přidáno</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Připomenutí</string>
@@ -164,10 +164,10 @@
     <string name="alarm_stream">Budík</string>
     <string name="notification_stream">Notifikace</string>
     <string name="ring_stream">Zvonek</string>
-    <string name="use_last_event_reminders">Use the last events\' reminders as the default for new event</string>
-    <string name="default_reminder_1">Default reminder 1</string>
-    <string name="default_reminder_2">Default reminder 2</string>
-    <string name="default_reminder_3">Default reminder 3</string>
+    <string name="use_last_event_reminders">Použij poslední připomenutou událost jako výchozí pro novou událost</string>
+    <string name="default_reminder_1">Výchozí připomenutí 1</string>
+    <string name="default_reminder_2">Výchozí připomenutí 2</string>
+    <string name="default_reminder_3">Výchozí připomenutí 3</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -202,15 +202,15 @@
     <string name="sample_title_5">na kafe</string>
 
     <!-- FAQ -->
-    <string name="faq_1_title">How can I remove the holidays imported via the \"Add holidays\" button?</string>
-    <string name="faq_1_text">Holidays created that way are inserted in a new event type called \"Holidays\". You can go in Settings -> Manage Event Types,
-        long press the given event type and delete it by selecting the trashbin.</string>
-    <string name="faq_2_title">Can I sync my events via Google Calendar, or other service supporting CalDAV?</string>
-    <string name="faq_2_text">Yes, just toggle \"CalDAV sync\" in the app settings and select the calendars you want to sync. However, you will need some third party app handling the synchronization between the device and servers.
-        In case you want to synchronize a Google calendar, their official Calendar app will do the job. For other calendars you will need a third party sync adapter, for example DAVdroid.</string>
-    <string name="faq_3_title">I see the visual reminders, but hear no audio. What can I do?</string>
-    <string name="faq_3_text">Not just displaying the actual reminder, but playing the audio is hugely affected by the system too. If you can\'t hear any sound, try going in the app settings,
-        pressing the \"Audio stream used by reminders\" option and changing it to a different value. If it still won\'t work, check your sound settings, if the particular stream isn\'t muted.</string>
+    <string name="faq_1_title">Jak mohu odstranit svátky importované přes tlačítko \"Přidat svátek\"?</string>
+    <string name="faq_1_text">Svátky vytvořené touto cestou jsou vloženy s novým typem události \"Svátky\". Odstranit jej můžete přes: Nastavení -> Správa typů událostí ->
+        dlouze podržte daný typ události a stisknete tlačítko s ikonou koše pro odstranění.</string>
+    <string name="faq_2_title">Mohu synchronizovat své události přes Google Kalendář nebo přes jinou službu podporující CalDav?</string>
+    <string name="faq_2_text">Ano, zapnutím \"CalDAV sync\" v nastavení aplikace a vybráním kalendáře se kterým se chcete synchronizovat. Budete ovšem potřebovat nějakou aplikaci třetí strany pro samotné synchronizovaní mezi zařízením a servery.
+        Pokud chcete synchronizovat Google kalendář, tak oficiální aplikace Google toto zvládne. Pro jiné kalendáře potřebujete synchronizační adaptér třetí strany, například DAVdroid.</string>
+    <string name="faq_3_title">Vizuálně vidím připomínku, ale neslyším žádný zvuk. Co mám dělat?</string>
+    <string name="faq_3_text">Nejenom zobrazování aktuální připomínky, ale i přehrávání zvuku je dost ovlivněno operačním systémem. Pokud neslyšíte žádný zvuk, zkuste jít do nastavení aplikace,
+        vyberte: \"Zvuk upomínky\" a změňte na něco jiného. Pokud zvuk stále nefunguje, zkontrolujte zda není zvuk vypnut v nastavení vašeho systému.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
