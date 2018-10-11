@@ -164,10 +164,10 @@
     <string name="alarm_stream">Alarme</string>
     <string name="notification_stream">Notificação</string>
     <string name="ring_stream">Toque</string>
-    <string name="use_last_event_reminders">Use the last events\' reminders as the default for new event</string>
-    <string name="default_reminder_1">Default reminder 1</string>
-    <string name="default_reminder_2">Default reminder 2</string>
-    <string name="default_reminder_3">Default reminder 3</string>
+    <string name="use_last_event_reminders">Utilize os lembretes dos últimos eventos como definição para os novos eventos</string>
+    <string name="default_reminder_1">Lembrete 1</string>
+    <string name="default_reminder_2">Lembrete 2</string>
+    <string name="default_reminder_3">Lembrete 3</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
