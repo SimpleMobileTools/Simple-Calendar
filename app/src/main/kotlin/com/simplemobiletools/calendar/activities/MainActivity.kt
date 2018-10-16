@@ -698,7 +698,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     private fun launchAbout() {
-        val licenses = LICENSE_JODA or LICENSE_STETHO or LICENSE_LEAK_CANARY
+        val licenses = LICENSE_JODA or LICENSE_STETHO
 
         val faqItems = arrayListOf(
                 FAQItem(R.string.faq_1_title_commons, R.string.faq_1_text_commons),
