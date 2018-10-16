@@ -76,6 +76,14 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
         val detailField = if (replaceDescriptionWithLocation) event.location else event.description
         return if (event.startTS == event.endTS && detailField.isEmpty()) {
             ITEM_EVENT_SIMPLE
+        } else if (event.getIsAllDay()) {
+            val startCode = Formatter.getDayCodeFromTS(event.startTS)
+            val endCode = Formatter.getDayCodeFromTS(event.endTS)
+            if (startCode == endCode) {
+                ITEM_EVENT_SIMPLE
+            } else {
+                ITEM_EVENT
+            }
         } else {
             ITEM_EVENT
         }
@@ -94,7 +102,7 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
                 val startCode = Formatter.getDayCodeFromTS(event.startTS)
                 val endCode = Formatter.getDayCodeFromTS(event.endTS)
 
-                event_item_end.apply {
+                event_item_end?.apply {
                     text = Formatter.getTimeFromTS(context, event.endTS)
                     if (startCode != endCode) {
                         if (event.getIsAllDay()) {

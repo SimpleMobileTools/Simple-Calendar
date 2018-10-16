@@ -41,8 +41,7 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
 
         if (type == ITEM_EVENT) {
             val event = events[position] as ListEvent
-            val detailField = if (replaceDescription) event.location else event.description
-            val layout = if (event.startTS == event.endTS && detailField.isEmpty()) R.layout.event_list_item_widget_simple else R.layout.event_list_item_widget
+            val layout = getItemViewLayout(event)
             remoteView = RemoteViews(context.packageName, layout)
             setupListEvent(remoteView, event)
         } else {
@@ -51,6 +50,23 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
         }
 
         return remoteView
+    }
+
+    fun getItemViewLayout(event: ListEvent): Int {
+        val detailField = if (replaceDescription) event.location else event.description
+        return if (event.startTS == event.endTS && detailField.isEmpty()) {
+            R.layout.event_list_item_widget_simple
+        } else if (event.isAllDay) {
+            val startCode = Formatter.getDayCodeFromTS(event.startTS)
+            val endCode = Formatter.getDayCodeFromTS(event.endTS)
+            if (startCode == endCode) {
+                R.layout.event_list_item_widget_simple
+            } else {
+                R.layout.event_list_item_widget
+            }
+        } else {
+            R.layout.event_list_item_widget
+        }
     }
 
     private fun setupListEvent(remoteView: RemoteViews, item: ListEvent) {

@@ -102,6 +102,14 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
         val detailField = if (replaceDescription) event.location else event.description
         if (event.startTS == event.endTS && detailField.isEmpty()) {
             ITEM_EVENT_SIMPLE
+        } else if (event.isAllDay) {
+            val startCode = Formatter.getDayCodeFromTS(event.startTS)
+            val endCode = Formatter.getDayCodeFromTS(event.endTS)
+            if (startCode == endCode) {
+                ITEM_EVENT_SIMPLE
+            } else {
+                ITEM_EVENT
+            }
         } else {
             ITEM_EVENT
         }
