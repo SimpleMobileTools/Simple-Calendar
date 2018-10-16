@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 5.0.0 *(2018-10-16)*
+----------------------------
+
+ * Increased the minimal required Android OS version to 5
+ * Some translation and stability improvements
+
 Version 4.2.1 *(2018-09-22)*
 ----------------------------
 
