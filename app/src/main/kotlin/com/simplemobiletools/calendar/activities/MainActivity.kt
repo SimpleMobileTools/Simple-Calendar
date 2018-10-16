@@ -578,8 +578,11 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         val bundle = Bundle()
         bundle.putString(DAY_CODE, Formatter.getDayCodeFromDateTime(dateTime))
         fragment.arguments = bundle
-        supportFragmentManager.beginTransaction().add(R.id.fragments_holder, fragment).commitNow()
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        try {
+            supportFragmentManager.beginTransaction().add(R.id.fragments_holder, fragment).commitNow()
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        } catch (e: Exception) {
+        }
     }
 
     private fun getThisWeekDateTime(): String {
