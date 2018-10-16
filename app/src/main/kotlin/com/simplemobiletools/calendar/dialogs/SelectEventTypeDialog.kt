@@ -2,7 +2,7 @@ package com.simplemobiletools.calendar.dialogs
 
 import android.app.Activity
 import android.graphics.Color
-import android.support.v7.app.AlertDialog
+import androidx.appcompat.app.AlertDialog
 import android.view.ViewGroup
 import android.widget.RadioGroup
 import com.simplemobiletools.calendar.R

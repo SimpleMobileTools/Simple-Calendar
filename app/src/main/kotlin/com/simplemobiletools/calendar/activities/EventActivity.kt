@@ -6,11 +6,11 @@ import android.app.TimePickerDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.support.v4.app.NotificationManagerCompat
 import android.text.method.LinkMovementMethod
 import android.view.Menu
 import android.view.MenuItem
 import android.view.WindowManager
+import androidx.core.app.NotificationManagerCompat
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.dialogs.*
 import com.simplemobiletools.calendar.extensions.*
@@ -863,10 +863,7 @@ class EventActivity : SimpleActivity() {
         val datepicker = DatePickerDialog(this, mDialogTheme, startDateSetListener, mEventStartDateTime.year, mEventStartDateTime.monthOfYear - 1,
                 mEventStartDateTime.dayOfMonth)
 
-        if (isLollipopPlus()) {
-            datepicker.datePicker.firstDayOfWeek = if (config.isSundayFirst) Calendar.SUNDAY else Calendar.MONDAY
-        }
-
+        datepicker.datePicker.firstDayOfWeek = if (config.isSundayFirst) Calendar.SUNDAY else Calendar.MONDAY
         datepicker.show()
     }
 
@@ -881,10 +878,7 @@ class EventActivity : SimpleActivity() {
         val datepicker = DatePickerDialog(this, mDialogTheme, endDateSetListener, mEventEndDateTime.year, mEventEndDateTime.monthOfYear - 1,
                 mEventEndDateTime.dayOfMonth)
 
-        if (isLollipopPlus()) {
-            datepicker.datePicker.firstDayOfWeek = if (config.isSundayFirst) Calendar.SUNDAY else Calendar.MONDAY
-        }
-
+        datepicker.datePicker.firstDayOfWeek = if (config.isSundayFirst) Calendar.SUNDAY else Calendar.MONDAY
         datepicker.show()
     }
 

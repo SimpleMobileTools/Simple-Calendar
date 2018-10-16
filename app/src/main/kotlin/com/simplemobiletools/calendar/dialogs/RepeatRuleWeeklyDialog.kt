@@ -1,7 +1,7 @@
 package com.simplemobiletools.calendar.dialogs
 
 import android.app.Activity
-import android.support.v7.app.AlertDialog
+import androidx.appcompat.app.AlertDialog
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.commons.extensions.setupDialogStuff

@@ -11,11 +11,11 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.provider.ContactsContract
-import android.support.v4.view.MenuItemCompat
-import android.support.v7.widget.SearchView
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
+import androidx.core.view.MenuItemCompat
 import com.simplemobiletools.calendar.BuildConfig
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.adapters.EventListAdapter
@@ -612,7 +612,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     private fun refreshViewPager() {
         runOnUiThread {
-            if (!isActivityDestroyed()) {
+            if (!isDestroyed) {
                 currentFragments.last().refreshEvents()
             }
         }
@@ -695,7 +695,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     private fun launchAbout() {
-        val licenses = LICENSE_JODA or LICENSE_STETHO or LICENSE_MULTISELECT or LICENSE_LEAK_CANARY
+        val licenses = LICENSE_JODA or LICENSE_STETHO or LICENSE_LEAK_CANARY
 
         val faqItems = arrayListOf(
                 FAQItem(R.string.faq_1_title_commons, R.string.faq_1_text_commons),

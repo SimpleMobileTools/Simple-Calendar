@@ -1,8 +1,8 @@
 package com.simplemobiletools.calendar.dialogs
 
-import android.support.v7.app.AlertDialog
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import androidx.appcompat.app.AlertDialog
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.adapters.FilterEventTypeAdapter
@@ -21,7 +21,7 @@ class ExportEventsDialog(val activity: SimpleActivity, val path: String, val cal
 
             activity.dbHelper.getEventTypes {
                 val eventTypes = HashSet<String>()
-                it.mapTo(eventTypes, { it.id.toString() })
+                it.mapTo(eventTypes) { it.id.toString() }
 
                 activity.runOnUiThread {
                     export_events_types_list.adapter = FilterEventTypeAdapter(activity, it, eventTypes)

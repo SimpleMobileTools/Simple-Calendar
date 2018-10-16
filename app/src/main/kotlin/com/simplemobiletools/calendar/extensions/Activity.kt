@@ -55,9 +55,9 @@ fun Activity.showEventRepeatIntervalDialog(curSeconds: Int, callback: (minutes: 
     }
 
     val items = ArrayList<RadioItem>(seconds.size + 1)
-    seconds.mapIndexedTo(items, { index, value ->
+    seconds.mapIndexedTo(items) { index, value ->
         RadioItem(index, getRepetitionText(value), value)
-    })
+    }
 
     var selectedIndex = 0
     seconds.forEachIndexed { index, value ->

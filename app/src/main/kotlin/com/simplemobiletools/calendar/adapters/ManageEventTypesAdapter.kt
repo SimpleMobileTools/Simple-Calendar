@@ -31,12 +31,6 @@ class ManageEventTypesAdapter(activity: SimpleActivity, val eventTypes: ArrayLis
 
     override fun prepareActionMode(menu: Menu) {}
 
-    override fun prepareItemSelection(viewHolder: ViewHolder) {}
-
-    override fun markViewHolderSelection(select: Boolean, viewHolder: ViewHolder?) {
-        viewHolder?.itemView?.event_item_frame?.isSelected = select
-    }
-
     override fun actionItemPressed(id: Int) {
         when (id) {
             R.id.cab_delete -> askConfirmDelete()
@@ -47,20 +41,29 @@ class ManageEventTypesAdapter(activity: SimpleActivity, val eventTypes: ArrayLis
 
     override fun getIsItemSelectable(position: Int) = true
 
+    override fun getItemSelectionKey(position: Int) = eventTypes.getOrNull(position)?.id
+
+    override fun getItemKeyPosition(key: Int) = eventTypes.indexOfFirst { it.id == key }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = createViewHolder(R.layout.item_event_type, parent)
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val eventType = eventTypes[position]
-        val view = holder.bindView(eventType, true, true) { itemView, layoutPosition ->
+        holder.bindView(eventType, true, true) { itemView, layoutPosition ->
             setupView(itemView, eventType)
         }
-        bindViewHolder(holder, position, view)
+        bindViewHolder(holder)
     }
 
     override fun getItemCount() = eventTypes.size
 
+    private fun getItemWithKey(key: Int): EventType? = eventTypes.firstOrNull { it.id == key }
+
+    private fun getSelectedItems() = eventTypes.filter { selectedKeys.contains(it.id) } as ArrayList<EventType>
+
     private fun setupView(view: View, eventType: EventType) {
         view.apply {
+            event_item_frame.isSelected = selectedKeys.contains(eventType.id)
             event_type_title.text = eventType.getDisplayTitle()
             event_type_color.setFillWithStroke(eventType.color, activity.config.backgroundColor)
             event_type_title.setTextColor(textColor)
@@ -68,8 +71,7 @@ class ManageEventTypesAdapter(activity: SimpleActivity, val eventTypes: ArrayLis
     }
 
     private fun askConfirmDelete() {
-        val eventTypes = ArrayList<EventType>(selectedPositions.size)
-        selectedPositions.forEach { eventTypes.add(this.eventTypes[it]) }
+        val eventTypes = eventTypes.filter { selectedKeys.contains(it.id) } as ArrayList<EventType>
 
         if (activity.dbHelper.doEventTypesContainEvent(eventTypes)) {
             val MOVE_EVENTS = 0
@@ -90,25 +92,22 @@ class ManageEventTypesAdapter(activity: SimpleActivity, val eventTypes: ArrayLis
     }
 
     private fun deleteEventTypes(deleteEvents: Boolean) {
-        val eventTypesToDelete = ArrayList<EventType>(selectedPositions.size)
+        val eventTypesToDelete = getSelectedItems()
 
-        for (pos in selectedPositions) {
-            if (eventTypes[pos].id == DBHelper.REGULAR_EVENT_TYPE_ID) {
+        for (key in selectedKeys) {
+            val type = getItemWithKey(key) ?: continue
+            if (type.id == DBHelper.REGULAR_EVENT_TYPE_ID) {
                 activity.toast(R.string.cannot_delete_default_type)
-                selectedPositions.remove(pos)
-                toggleItemSelection(false, pos)
+                eventTypesToDelete.remove(type)
+                toggleItemSelection(false, getItemKeyPosition(type.id))
                 break
             }
         }
 
-        selectedPositions.sortedDescending().forEach {
-            val eventType = eventTypes[it]
-            eventTypesToDelete.add(eventType)
-        }
-
-        eventTypes.removeAll(eventTypesToDelete)
         if (listener?.deleteEventTypes(eventTypesToDelete, deleteEvents) == true) {
-            removeSelectedItems()
+            val positions = getSelectedItemPositions()
+            eventTypes.removeAll(eventTypesToDelete)
+            removeSelectedItems(positions)
         }
     }
 }
