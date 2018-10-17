@@ -1,6 +1,11 @@
 Changelog
 ==========
 
+Version 5.0.1 *(2018-10-17)*
+----------------------------
+
+ * Fixed transparent date/time picker backgrounds
+
 Version 5.0.0 *(2018-10-16)*
 ----------------------------
 
