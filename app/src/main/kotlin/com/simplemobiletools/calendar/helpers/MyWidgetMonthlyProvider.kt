@@ -49,7 +49,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
     private fun setupAppOpenIntent(context: Context, views: RemoteViews, id: Int, dayCode: String) {
         (context.getLaunchIntent() ?: Intent(context, SplashActivity::class.java)).apply {
             putExtra(DAY_CODE, dayCode)
-            putExtra(OPEN_MONTH, true)
+            putExtra(VIEW_TO_OPEN, MONTHLY_VIEW)
             val pendingIntent = PendingIntent.getActivity(context, Integer.parseInt(dayCode.substring(0, 6)), this, 0)
             views.setOnClickPendingIntent(id, pendingIntent)
         }
