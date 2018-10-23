@@ -74,7 +74,9 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
     override fun getItemViewType(position: Int): Int {
         val event = events[position]
         val detailField = if (replaceDescriptionWithLocation) event.location else event.description
-        return if (event.startTS == event.endTS && detailField.isEmpty()) {
+        return if (detailField.isNotEmpty()) {
+            ITEM_EVENT
+        } else if (event.startTS == event.endTS) {
             ITEM_EVENT_SIMPLE
         } else if (event.getIsAllDay()) {
             val startCode = Formatter.getDayCodeFromTS(event.startTS)

@@ -52,9 +52,11 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
         return remoteView
     }
 
-    fun getItemViewLayout(event: ListEvent): Int {
+    private fun getItemViewLayout(event: ListEvent): Int {
         val detailField = if (replaceDescription) event.location else event.description
-        return if (event.startTS == event.endTS && detailField.isEmpty()) {
+        return if (detailField.isNotEmpty()) {
+            R.layout.event_list_item_widget
+        } else if (event.startTS == event.endTS) {
             R.layout.event_list_item_widget_simple
         } else if (event.isAllDay) {
             val startCode = Formatter.getDayCodeFromTS(event.startTS)

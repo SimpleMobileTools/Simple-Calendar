@@ -100,7 +100,9 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
     override fun getItemViewType(position: Int) = if (listItems[position] is ListEvent) {
         val event = listItems[position] as ListEvent
         val detailField = if (replaceDescription) event.location else event.description
-        if (event.startTS == event.endTS && detailField.isEmpty()) {
+        if (detailField.isNotEmpty()) {
+            ITEM_EVENT
+        } else if (event.startTS == event.endTS) {
             ITEM_EVENT_SIMPLE
         } else if (event.isAllDay) {
             val startCode = Formatter.getDayCodeFromTS(event.startTS)
