@@ -169,6 +169,8 @@
     <string name="default_reminder_1">Default reminder 1</string>
     <string name="default_reminder_2">Default reminder 2</string>
     <string name="default_reminder_3">Default reminder 3</string>
+    <string name="default_view">Default view</string>
+    <string name="last_view">Last view</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
