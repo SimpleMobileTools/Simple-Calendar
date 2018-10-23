@@ -168,8 +168,8 @@
     <string name="default_reminder_1">Promemoria predefinito 1</string>
     <string name="default_reminder_2">Promemoria predefinito 2</string>
     <string name="default_reminder_3">Promemoria predefinito 3</string>
-    <string name="view_to_open_from_widget">View to open from the event list widget</string>
-    <string name="last_view">Last view</string>
+    <string name="view_to_open_from_widget">Vista da aprire dalla lista degli eventi del widget</string>
+    <string name="last_view">Ultima vista</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
