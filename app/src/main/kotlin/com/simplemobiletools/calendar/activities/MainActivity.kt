@@ -92,6 +92,10 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             refreshCalDAVCalendars(false)
         }
 
+        swipe_refresh_layout.setOnRefreshListener {
+            refreshCalDAVCalendars(false) 
+        }
+
         if (!checkViewIntents()) {
             return
         }
@@ -129,6 +133,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         search_placeholder_2.setTextColor(config.textColor)
         calendar_fab.setColors(config.textColor, getAdjustedPrimaryColor(), config.backgroundColor)
         search_holder.background = ColorDrawable(config.backgroundColor)
+        swipe_refresh_layout.isEnabled = config.caldavSync
     }
 
     override fun onPause() {
@@ -368,6 +373,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                         if (showCalDAVRefreshToast) {
                             toast(R.string.refreshing_complete)
                         }
+                        swipe_refresh_layout.isRefreshing = false
                     }
                 }, CALDAV_SYNC_DELAY)
             }
