@@ -15,7 +15,7 @@ object Formatter {
     const val TIME_PATTERN = "HHmmss"
     private const val DAY_PATTERN = "d"
     private const val DAY_OF_WEEK_PATTERN = "EEE"
-    private const val LONGEST_PATTERN = "MMMM dd YYYY (EEEE)"
+    private const val LONGEST_PATTERN = "MMMM d YYYY (EEEE)"
     private const val PATTERN_TIME_12 = "hh:mm a"
     private const val PATTERN_TIME_24 = "HH:mm"
 
