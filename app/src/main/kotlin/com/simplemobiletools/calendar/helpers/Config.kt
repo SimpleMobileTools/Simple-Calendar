@@ -78,7 +78,7 @@ class Config(context: Context) : BaseConfig(context) {
 
     var defaultView: Int
         get() = prefs.getInt(DEFAULT_VIEW, DAILY_VIEW)
-        set(size) = prefs.edit().putInt(DEFAULT_VIEW, size).apply()
+        set(defaultView) = prefs.edit().putInt(DEFAULT_VIEW, defaultView).apply()
 
     var caldavSync: Boolean
         get() = prefs.getBoolean(CALDAV_SYNC, false)
