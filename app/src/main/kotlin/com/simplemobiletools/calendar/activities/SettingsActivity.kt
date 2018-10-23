@@ -67,6 +67,7 @@ class SettingsActivity : SimpleActivity() {
         setupDisplayPastEvents()
         setupFontSize()
         setupCustomizeWidgetColors()
+        setupDefaultView()
         setupDimEvents()
         updateTextColors(settings_holder)
         checkPrimaryColor()
@@ -500,6 +501,35 @@ class SettingsActivity : SimpleActivity() {
             }
         }
     }
+
+    private fun setupDefaultView() {
+        settings_default_view.text = getDefaultViewText()
+        settings_default_view_holder.setOnClickListener {
+            val items = arrayListOf(
+                    RadioItem(DAILY_VIEW, res.getString(R.string.daily_view)),
+                    RadioItem(WEEKLY_VIEW, res.getString(R.string.weekly_view)),
+                    RadioItem(MONTHLY_VIEW, res.getString(R.string.monthly_view)),
+                    RadioItem(YEARLY_VIEW, res.getString(R.string.yearly_view)),
+                    RadioItem(EVENTS_LIST_VIEW, res.getString(R.string.simple_event_list)),
+                    RadioItem(LAST_VIEW, res.getString(R.string.last_view)))
+
+            RadioGroupDialog(this@SettingsActivity, items, config.defaultView) {
+                config.defaultView = it as Int
+                settings_default_view.text = getDefaultViewText()
+                updateWidgets()
+                updateListWidget()
+            }
+        }
+    }
+
+    private fun getDefaultViewText() = getString(when (config.defaultView) {
+        DAILY_VIEW -> R.string.daily_view
+        WEEKLY_VIEW -> R.string.weekly_view
+        MONTHLY_VIEW -> R.string.monthly_view
+        YEARLY_VIEW -> R.string.yearly_view
+        EVENTS_LIST_VIEW -> R.string.simple_event_list
+        else -> R.string.last_view
+    })
 
     private fun setupDimEvents() {
         settings_dim_past_events.isChecked = config.dimPastEvents

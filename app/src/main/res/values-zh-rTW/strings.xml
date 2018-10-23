@@ -168,6 +168,8 @@
     <string name="default_reminder_1">預設提醒1</string>
     <string name="default_reminder_2">預設提醒2</string>
     <string name="default_reminder_3">預設提醒3</string>
+    <string name="default_view">Default view</string>
+    <string name="last_view">Last view</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

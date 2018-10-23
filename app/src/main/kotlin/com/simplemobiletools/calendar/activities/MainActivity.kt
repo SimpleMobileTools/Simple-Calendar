@@ -251,12 +251,12 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     private fun checkOpenIntents(): Boolean {
         val dayCodeToOpen = intent.getStringExtra(DAY_CODE) ?: ""
-        val openMonth = intent.getBooleanExtra(OPEN_MONTH, false)
-        intent.removeExtra(OPEN_MONTH)
+        val viewToOpen = intent.getIntExtra(VIEW_TO_OPEN, DAILY_VIEW)
+        intent.removeExtra(VIEW_TO_OPEN)
         intent.removeExtra(DAY_CODE)
         if (dayCodeToOpen.isNotEmpty()) {
             calendar_fab.beVisible()
-            config.storedView = if (openMonth) MONTHLY_VIEW else DAILY_VIEW
+            if (viewToOpen != LAST_VIEW) {config.storedView = viewToOpen}
             updateViewPager(dayCodeToOpen)
             return true
         }

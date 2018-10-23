@@ -76,6 +76,10 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getInt(FONT_SIZE, FONT_SIZE_MEDIUM)
         set(size) = prefs.edit().putInt(FONT_SIZE, size).apply()
 
+    var defaultView: Int
+        get() = prefs.getInt(DEFAULT_VIEW, DAILY_VIEW)
+        set(defaultView) = prefs.edit().putInt(DEFAULT_VIEW, defaultView).apply()
+
     var caldavSync: Boolean
         get() = prefs.getBoolean(CALDAV_SYNC, false)
         set(caldavSync) {
