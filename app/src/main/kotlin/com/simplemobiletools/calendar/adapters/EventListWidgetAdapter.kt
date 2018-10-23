@@ -132,6 +132,7 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
 
             Intent().apply {
                 putExtra(DAY_CODE, item.code)
+                putExtra(VIEW_TO_OPEN, context.config.listWidgetViewToOpen)
                 setOnClickFillInIntent(event_section_title, this)
             }
         }
