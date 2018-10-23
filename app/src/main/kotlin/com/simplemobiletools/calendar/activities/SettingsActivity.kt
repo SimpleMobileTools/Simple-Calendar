@@ -7,7 +7,10 @@ import android.os.Bundle
 import android.text.TextUtils
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.dialogs.SelectCalendarsDialog
-import com.simplemobiletools.calendar.extensions.*
+import com.simplemobiletools.calendar.extensions.config
+import com.simplemobiletools.calendar.extensions.dbHelper
+import com.simplemobiletools.calendar.extensions.getSyncedCalDAVCalendars
+import com.simplemobiletools.calendar.extensions.updateWidgets
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.models.EventType
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
@@ -67,7 +70,7 @@ class SettingsActivity : SimpleActivity() {
         setupDisplayPastEvents()
         setupFontSize()
         setupCustomizeWidgetColors()
-        setupDefaultView()
+        setupViewToOpenFromListWidget()
         setupDimEvents()
         updateTextColors(settings_holder)
         checkPrimaryColor()
@@ -482,7 +485,6 @@ class SettingsActivity : SimpleActivity() {
                 config.fontSize = it as Int
                 settings_font_size.text = getFontSizeText()
                 updateWidgets()
-                updateListWidget()
             }
         }
     }
@@ -502,9 +504,9 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
-    private fun setupDefaultView() {
-        settings_default_view.text = getDefaultViewText()
-        settings_default_view_holder.setOnClickListener {
+    private fun setupViewToOpenFromListWidget() {
+        settings_list_widget_view_to_open.text = getDefaultViewText()
+        settings_list_widget_view_to_open_holder.setOnClickListener {
             val items = arrayListOf(
                     RadioItem(DAILY_VIEW, res.getString(R.string.daily_view)),
                     RadioItem(WEEKLY_VIEW, res.getString(R.string.weekly_view)),
@@ -513,16 +515,15 @@ class SettingsActivity : SimpleActivity() {
                     RadioItem(EVENTS_LIST_VIEW, res.getString(R.string.simple_event_list)),
                     RadioItem(LAST_VIEW, res.getString(R.string.last_view)))
 
-            RadioGroupDialog(this@SettingsActivity, items, config.defaultView) {
-                config.defaultView = it as Int
-                settings_default_view.text = getDefaultViewText()
+            RadioGroupDialog(this@SettingsActivity, items, config.listWidgetViewToOpen) {
+                config.listWidgetViewToOpen = it as Int
+                settings_list_widget_view_to_open.text = getDefaultViewText()
                 updateWidgets()
-                updateListWidget()
             }
         }
     }
 
-    private fun getDefaultViewText() = getString(when (config.defaultView) {
+    private fun getDefaultViewText() = getString(when (config.listWidgetViewToOpen) {
         DAILY_VIEW -> R.string.daily_view
         WEEKLY_VIEW -> R.string.weekly_view
         MONTHLY_VIEW -> R.string.monthly_view

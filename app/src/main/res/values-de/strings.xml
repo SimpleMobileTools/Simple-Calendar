@@ -168,8 +168,8 @@
     <string name="default_reminder_1">Standarderinnerung 1</string>
     <string name="default_reminder_2">Standarderinnerung 2</string>
     <string name="default_reminder_3">Standarderinnerung 3</string>
+    <string name="view_to_open_from_widget">Standardansicht</string>
     <string name="last_view">Letzte Ansicht</string>
-    <string name="default_view">Standardansicht</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

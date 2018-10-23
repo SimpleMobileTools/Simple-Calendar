@@ -82,7 +82,7 @@ class MyWidgetListProvider : AppWidgetProvider() {
     private fun launchCalenderInDefaultView(context: Context) {
         (context.getLaunchIntent() ?: Intent(context, SplashActivity::class.java)).apply {
             putExtra(DAY_CODE, Formatter.getDayCodeFromDateTime(DateTime()))
-            putExtra(VIEW_TO_OPEN, context.config.defaultView)
+            putExtra(VIEW_TO_OPEN, context.config.listWidgetViewToOpen)
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             context.startActivity(this)
         }
