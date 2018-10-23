@@ -26,7 +26,7 @@ object Formatter {
         val dateTime = getDateTimeFromCode(dayCode)
         val day = dateTime.toString(DAY_PATTERN)
         val year = dateTime.toString(YEAR_PATTERN)
-        val monthIndex = Integer.valueOf(dayCode.substring(4, 6))!!
+        val monthIndex = Integer.valueOf(dayCode.substring(4, 6))
         var month = getMonthName(context, monthIndex)
         if (shortMonth)
             month = month.substring(0, Math.min(month.length, 3))

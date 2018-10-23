@@ -93,7 +93,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
 
         swipe_refresh_layout.setOnRefreshListener {
-            refreshCalDAVCalendars(false) 
+            refreshCalDAVCalendars(false)
         }
 
         if (!checkViewIntents()) {
@@ -261,7 +261,9 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         intent.removeExtra(DAY_CODE)
         if (dayCodeToOpen.isNotEmpty()) {
             calendar_fab.beVisible()
-            if (viewToOpen != LAST_VIEW) {config.storedView = viewToOpen}
+            if (viewToOpen != LAST_VIEW) {
+                config.storedView = viewToOpen
+            }
             updateViewPager(dayCodeToOpen)
             return true
         }
