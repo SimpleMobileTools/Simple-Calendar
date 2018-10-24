@@ -683,12 +683,16 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
     fun getEvents(fromTS: Int, toTS: Int, eventId: Int = -1, callback: (events: ArrayList<Event>) -> Unit) {
         Thread {
-            getEventsInBackground(fromTS, toTS, eventId, callback)
+            getEventsInBackground(fromTS = fromTS, toTS = toTS, eventId = eventId, callback = callback)
         }.start()
     }
 
-    fun getEventsInBackground(fromTS: Int, toTS: Int, eventId: Int = -1, callback: (events: ArrayList<Event>) -> Unit) {
-        val events = ArrayList<Event>()
+    fun getEventsInBackground(fromTS: Int,
+                              toTS: Int,
+                              eventId: Int = -1,
+                              filterEventType: Boolean = false,
+                              callback: (events: ArrayList<Event>) -> Unit) {
+        var events = ArrayList<Event>()
 
         var selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_REPEAT_INTERVAL IS NULL AND $COL_START_TS != 0"
         if (eventId != -1)
@@ -701,8 +705,17 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
         events.addAll(getAllDayEvents(fromTS, eventId))
 
-        val filtered = events.distinct().filterNot { it.ignoreEventOccurrences.contains(Formatter.getDayCodeFromTS(it.startTS).toInt()) } as ArrayList<Event>
-        callback(filtered)
+        val displayEventTypes = context.config.displayEventTypes
+        if (filterEventType) {
+            events = events.filter {
+                displayEventTypes.contains(it.toString())
+            } as ArrayList<Event>
+        }
+
+        events = events
+                .distinct()
+                .filterNot { it.ignoreEventOccurrences.contains(Formatter.getDayCodeFromTS(it.startTS).toInt()) } as ArrayList<Event>
+        callback(events)
     }
 
     fun getRepeatableEventsFor(fromTS: Int, toTS: Int, eventId: Int = -1): List<Event> {
