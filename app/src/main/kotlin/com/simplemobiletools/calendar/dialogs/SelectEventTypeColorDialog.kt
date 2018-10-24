@@ -36,6 +36,10 @@ class SelectEventTypeColorDialog(val activity: Activity, val eventType: EventTyp
         dialog = AlertDialog.Builder(activity)
                 .create().apply {
                     activity.setupDialogStuff(view, this)
+
+                    if (colors.isEmpty()) {
+                        showCustomColorPicker()
+                    }
                 }
     }
 
@@ -66,8 +70,8 @@ class SelectEventTypeColorDialog(val activity: Activity, val eventType: EventTyp
         ColorPickerDialog(activity, activity.config.primaryColor) { wasPositivePressed, color ->
             if (wasPositivePressed) {
                 callback(color)
-                dialog?.dismiss()
             }
+            dialog?.dismiss()
         }
     }
 }
