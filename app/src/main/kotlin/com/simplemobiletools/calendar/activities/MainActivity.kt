@@ -344,6 +344,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private fun showFilterDialog() {
         FilterEventTypesDialog(this) {
             refreshViewPager()
+            updateWidgets()
         }
     }
 
