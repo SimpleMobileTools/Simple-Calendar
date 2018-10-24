@@ -683,15 +683,11 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
     fun getEvents(fromTS: Int, toTS: Int, eventId: Int = -1, callback: (events: ArrayList<Event>) -> Unit) {
         Thread {
-            getEventsInBackground(fromTS, toTS, eventId, callback = callback)
+            getEventsInBackground(fromTS, toTS, eventId, callback)
         }.start()
     }
 
-    fun getEventsInBackground(fromTS: Int,
-                              toTS: Int,
-                              eventId: Int = -1,
-                              filterEventType: Boolean = false,
-                              callback: (events: ArrayList<Event>) -> Unit) {
+    fun getEventsInBackground(fromTS: Int, toTS: Int, eventId: Int = -1, callback: (events: ArrayList<Event>) -> Unit) {
         var events = ArrayList<Event>()
 
         var selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_REPEAT_INTERVAL IS NULL AND $COL_START_TS != 0"
@@ -705,12 +701,10 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
         events.addAll(getAllDayEvents(fromTS, eventId))
 
-        if (filterEventType) {
-            val displayEventTypes = context.config.displayEventTypes
-            events = events.filter {
-                displayEventTypes.contains(it.eventType.toString())
-            } as ArrayList<Event>
-        }
+        val displayEventTypes = context.config.displayEventTypes
+        events = events.filter {
+            displayEventTypes.contains(it.eventType.toString())
+        } as ArrayList<Event>
 
         events = events
                 .asSequence()

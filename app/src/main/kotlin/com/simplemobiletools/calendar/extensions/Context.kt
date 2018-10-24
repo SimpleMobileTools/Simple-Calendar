@@ -146,11 +146,6 @@ fun Context.getRepetitionText(seconds: Int) = when (seconds) {
     }
 }
 
-fun Context.getFilteredEvents(events: List<Event>): ArrayList<Event> {
-    val displayEventTypes = config.displayEventTypes
-    return events.filter { displayEventTypes.contains(it.eventType.toString()) } as ArrayList<Event>
-}
-
 fun Context.notifyRunningEvents() {
     dbHelper.getRunningEvents().filter { it.getReminders().isNotEmpty() }.forEach {
         notifyEvent(it)

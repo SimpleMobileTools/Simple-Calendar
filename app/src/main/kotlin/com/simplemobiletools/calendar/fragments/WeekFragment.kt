@@ -5,17 +5,16 @@ import android.content.res.Resources
 import android.graphics.Rect
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.util.SparseIntArray
 import android.view.*
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
-import com.simplemobiletools.calendar.extensions.getFilteredEvents
 import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.helpers.*
 import com.simplemobiletools.calendar.helpers.Formatter
@@ -219,14 +218,13 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             return
         }
 
-        val newEvents = context!!.getFilteredEvents(events)
-        val newHash = newEvents.hashCode()
+        val newHash = events.hashCode()
         if (newHash == lastHash) {
             return
         }
 
         lastHash = newHash
-        this.events = newEvents
+        this.events = events
         updateEvents()
     }
 

@@ -98,7 +98,7 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
             return
         }
 
-        mEvents = context!!.getFilteredEvents(events)
+        mEvents = events
         val listItems = context!!.getEventListItems(mEvents)
 
         activity?.runOnUiThread {
