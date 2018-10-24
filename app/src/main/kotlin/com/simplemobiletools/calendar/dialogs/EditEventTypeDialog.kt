@@ -1,8 +1,8 @@
 package com.simplemobiletools.calendar.dialogs
 
 import android.app.Activity
-import androidx.appcompat.app.AlertDialog
 import android.widget.ImageView
+import androidx.appcompat.app.AlertDialog
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
@@ -11,7 +11,7 @@ import com.simplemobiletools.commons.dialogs.ColorPickerDialog
 import com.simplemobiletools.commons.extensions.*
 import kotlinx.android.synthetic.main.dialog_event_type.view.*
 
-class UpdateEventTypeDialog(val activity: Activity, var eventType: EventType? = null, val callback: (eventType: EventType) -> Unit) {
+class EditEventTypeDialog(val activity: Activity, var eventType: EventType? = null, val callback: (eventType: EventType) -> Unit) {
     var isNewEvent = eventType == null
 
     init {

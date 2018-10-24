@@ -5,7 +5,7 @@ import android.view.Menu
 import android.view.MenuItem
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.adapters.ManageEventTypesAdapter
-import com.simplemobiletools.calendar.dialogs.UpdateEventTypeDialog
+import com.simplemobiletools.calendar.dialogs.EditEventTypeDialog
 import com.simplemobiletools.calendar.extensions.dbHelper
 import com.simplemobiletools.calendar.interfaces.DeleteEventTypesListener
 import com.simplemobiletools.calendar.models.EventType
@@ -24,7 +24,7 @@ class ManageEventTypesActivity : SimpleActivity(), DeleteEventTypesListener {
     }
 
     private fun showEventTypeDialog(eventType: EventType? = null) {
-        UpdateEventTypeDialog(this, eventType?.copy()) {
+        EditEventTypeDialog(this, eventType?.copy()) {
             getEventTypes()
         }
     }
