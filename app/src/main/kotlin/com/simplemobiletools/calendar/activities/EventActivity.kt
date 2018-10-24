@@ -705,10 +705,10 @@ class EventActivity : SimpleActivity() {
         val newEventType = if (!config.caldavSync || config.lastUsedCaldavCalendarId == 0 || mEventCalendarId == STORED_LOCALLY_ONLY) {
             mEventTypeId
         } else {
-            dbHelper.getEventTypeWithCalDAVCalendarId(config.lastUsedCaldavCalendarId)?.id ?: config.lastUsedLocalEventTypeId
+            dbHelper.getEventTypeWithCalDAVCalendarId(mEventCalendarId)?.id ?: config.lastUsedLocalEventTypeId
         }
 
-        val newSource = if (!config.caldavSync || config.lastUsedCaldavCalendarId == 0 || mEventCalendarId == STORED_LOCALLY_ONLY) {
+        val newSource = if (!config.caldavSync || mEventCalendarId == STORED_LOCALLY_ONLY) {
             config.lastUsedLocalEventTypeId = newEventType
             SOURCE_SIMPLE_CALENDAR
         } else {

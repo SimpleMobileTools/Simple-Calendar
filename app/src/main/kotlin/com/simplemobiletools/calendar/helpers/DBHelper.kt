@@ -602,7 +602,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         val selectionArgs = arrayOf(eventTypeId.toString())
         val cursor = getEventsCursor(selection, selectionArgs)
         val events = fillEvents(cursor)
-        val eventIDs = Array(events.size, { i -> (events[i].id.toString()) })
+        val eventIDs = Array(events.size) { i -> (events[i].id.toString()) }
         deleteEvents(eventIDs, true)
     }
 
@@ -985,7 +985,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     }
 
     fun getEventTypesSync(): ArrayList<EventType> {
-        val eventTypes = ArrayList<EventType>(4)
+        val eventTypes = ArrayList<EventType>()
         val cols = arrayOf(COL_TYPE_ID, COL_TYPE_TITLE, COL_TYPE_COLOR, COL_TYPE_CALDAV_CALENDAR_ID, COL_TYPE_CALDAV_DISPLAY_NAME, COL_TYPE_CALDAV_EMAIL)
         var cursor: Cursor? = null
         try {
