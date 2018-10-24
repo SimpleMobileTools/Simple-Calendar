@@ -1,8 +1,8 @@
 package com.simplemobiletools.calendar.dialogs
 
 import android.app.Activity
-import androidx.appcompat.app.AlertDialog
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.helpers.DAY
 import com.simplemobiletools.calendar.helpers.MONTH
@@ -22,7 +22,7 @@ class CustomEventRepeatIntervalDialog(val activity: Activity, val callback: (sec
         view.dialog_radio_view.check(R.id.dialog_radio_days)
 
         dialog = AlertDialog.Builder(activity)
-                .setPositiveButton(R.string.ok, { dialogInterface, i -> confirmRepeatInterval() })
+                .setPositiveButton(R.string.ok) { dialogInterface, i -> confirmRepeatInterval() }
                 .setNegativeButton(R.string.cancel, null)
                 .create().apply {
                     activity.setupDialogStuff(view, this) {

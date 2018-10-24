@@ -2,9 +2,9 @@ package com.simplemobiletools.calendar.dialogs
 
 import android.app.Activity
 import android.graphics.Color
-import androidx.appcompat.app.AlertDialog
 import android.view.ViewGroup
 import android.widget.RadioGroup
+import androidx.appcompat.app.AlertDialog
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper

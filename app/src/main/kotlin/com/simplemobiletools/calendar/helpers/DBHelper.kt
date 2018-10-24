@@ -569,7 +569,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     }
 
     fun deleteEventTypes(eventTypes: ArrayList<EventType>, deleteEvents: Boolean, callback: (deletedCnt: Int) -> Unit) {
-        var deleteIds = eventTypes.filter { it.caldavCalendarId == 0 }.map { it.id }
+        var deleteIds = eventTypes.asSequence().filter { it.caldavCalendarId == 0 }.map { it.id }.toList()
         deleteIds = deleteIds.filter { it != DBHelper.REGULAR_EVENT_TYPE_ID } as ArrayList<Int>
 
         val deletedSet = HashSet<String>()
@@ -693,8 +693,8 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         if (applyTypeFilter) {
             val displayEventTypes = context.config.displayEventTypes
             if (displayEventTypes.isNotEmpty()) {
-                val types = displayEventTypes.joinToString(",", "(", ")")
-                selection += " AND $COL_EVENT_TYPE IN $types"
+                val types = TextUtils.join(",", displayEventTypes)
+                selection += " AND $COL_EVENT_TYPE IN ($types)"
             }
         }
 
@@ -717,7 +717,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     fun getRepeatableEventsFor(fromTS: Int, toTS: Int, eventId: Int = -1, applyTypeFilter: Boolean = false): List<Event> {
         val newEvents = ArrayList<Event>()
 
-        // get repeatable events
         var selection = "$COL_REPEAT_INTERVAL != 0 AND $COL_START_TS <= $toTS AND $COL_START_TS != 0"
         if (eventId != -1)
             selection += " AND $MAIN_TABLE_NAME.$COL_ID = $eventId"
@@ -725,8 +724,8 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         if (applyTypeFilter) {
             val displayEventTypes = context.config.displayEventTypes
             if (displayEventTypes.isNotEmpty()) {
-                val types = displayEventTypes.joinToString(",", "(", ")")
-                selection += " AND $COL_EVENT_TYPE IN $types"
+                val types = TextUtils.join(",", displayEventTypes)
+                selection += " AND $COL_EVENT_TYPE IN ($types)"
             }
         }
 
@@ -819,8 +818,8 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         if (applyTypeFilter) {
             val displayEventTypes = context.config.displayEventTypes
             if (displayEventTypes.isNotEmpty()) {
-                val types = displayEventTypes.joinToString(",", "(", ")")
-                selection += " AND $COL_EVENT_TYPE IN $types"
+                val types = TextUtils.join(",", displayEventTypes)
+                selection += " AND $COL_EVENT_TYPE IN ($types)"
             }
         }
 
@@ -830,7 +829,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         return events
     }
 
-    // check if its the proper week, for events repeating by x weeks
+    // check if its the proper week, for events repeating every x weeks
     private fun isOnProperWeek(event: Event, startTimes: SparseIntArray): Boolean {
         val initialWeekOfYear = Formatter.getDateTimeFromTS(startTimes[event.id]).weekOfWeekyear
         val currentWeekOfYear = Formatter.getDateTimeFromTS(event.startTS).weekOfWeekyear

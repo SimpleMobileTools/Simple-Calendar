@@ -200,7 +200,7 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
     private fun askConfirmDelete() {
         val eventIds = selectedKeys.toMutableList()
         val eventsToDelete = listItems.filter { selectedKeys.contains((it as? ListEvent)?.id) } as List<ListEvent>
-        val timestamps = eventsToDelete.map { (it as? ListEvent)?.startTS }.filterNotNull()
+        val timestamps = eventsToDelete.mapNotNull { (it as? ListEvent)?.startTS }
 
         val hasRepeatableEvent = eventsToDelete.any { it.isRepeatable }
         DeleteEventDialog(activity, eventIds, hasRepeatableEvent) {

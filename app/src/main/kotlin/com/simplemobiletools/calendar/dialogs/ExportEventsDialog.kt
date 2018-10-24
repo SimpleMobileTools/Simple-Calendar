@@ -17,7 +17,7 @@ class ExportEventsDialog(val activity: SimpleActivity, val path: String, val cal
     init {
         val view = (activity.layoutInflater.inflate(R.layout.dialog_export_events, null) as ViewGroup).apply {
             export_events_folder.text = activity.humanizePath(path)
-            export_events_filename.setText("events_${activity.getCurrentFormattedDateTime()}")
+            export_events_filename.setText("${activity.getString(R.string.events)}_${activity.getCurrentFormattedDateTime()}")
 
             activity.dbHelper.getEventTypes {
                 val eventTypes = HashSet<String>()

@@ -1,6 +1,5 @@
 package com.simplemobiletools.calendar.activities
 
-import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
@@ -94,9 +93,11 @@ class EventActivity : SimpleActivity() {
             cancelNotification(mEvent.id)
         } else {
             mEvent = Event()
-            mReminder1Minutes = if (config.usePreviousEventReminders) config.lastEventReminderMinutes else config.defaultReminder1
-            mReminder2Minutes = if (config.usePreviousEventReminders) config.lastEventReminderMinutes2 else config.defaultReminder2
-            mReminder3Minutes = if (config.usePreviousEventReminders) config.lastEventReminderMinutes3 else config.defaultReminder3
+            config.apply {
+                mReminder1Minutes = if (usePreviousEventReminders) lastEventReminderMinutes1 else defaultReminder1
+                mReminder2Minutes = if (usePreviousEventReminders) lastEventReminderMinutes2 else defaultReminder2
+                mReminder3Minutes = if (usePreviousEventReminders) lastEventReminderMinutes3 else defaultReminder3
+            }
 
             if (savedInstanceState == null) {
                 setupNewEvent()
@@ -121,7 +122,7 @@ class EventActivity : SimpleActivity() {
         event_repetition_limit_holder.setOnClickListener { showRepetitionTypePicker() }
 
         event_reminder_1.setOnClickListener {
-            handleNotificationAvailability() {
+            handleNotificationAvailability {
                 if (config.wasAlarmWarningShown) {
                     showReminder1Dialog()
                 } else {
@@ -722,7 +723,7 @@ class EventActivity : SimpleActivity() {
 
         config.apply {
             if (usePreviousEventReminders) {
-                lastEventReminderMinutes = reminder1
+                lastEventReminderMinutes1 = reminder1
                 lastEventReminderMinutes2 = reminder2
                 lastEventReminderMinutes3 = reminder3
             }
@@ -862,7 +863,6 @@ class EventActivity : SimpleActivity() {
         }
     }
 
-    @SuppressLint("NewApi")
     private fun setupStartDate() {
         hideKeyboard()
         config.backgroundColor.getContrastColor()
@@ -878,7 +878,6 @@ class EventActivity : SimpleActivity() {
         TimePickerDialog(this, mDialogTheme, startTimeSetListener, mEventStartDateTime.hourOfDay, mEventStartDateTime.minuteOfHour, config.use24HourFormat).show()
     }
 
-    @SuppressLint("NewApi")
     private fun setupEndDate() {
         hideKeyboard()
         val datepicker = DatePickerDialog(this, mDialogTheme, endDateSetListener, mEventEndDateTime.year, mEventEndDateTime.monthOfYear - 1,

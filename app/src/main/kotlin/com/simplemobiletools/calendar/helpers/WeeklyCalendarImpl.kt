@@ -7,14 +7,14 @@ import com.simplemobiletools.calendar.models.Event
 import com.simplemobiletools.commons.helpers.WEEK_SECONDS
 import java.util.*
 
-class WeeklyCalendarImpl(val mCallback: WeeklyCalendar, val mContext: Context) {
+class WeeklyCalendarImpl(val callback: WeeklyCalendar, val context: Context) {
     var mEvents = ArrayList<Event>()
 
     fun updateWeeklyCalendar(weekStartTS: Int) {
         val endTS = weekStartTS + WEEK_SECONDS
-        mContext.dbHelper.getEvents(weekStartTS, endTS, applyTypeFilter = true) {
+        context.dbHelper.getEvents(weekStartTS, endTS, applyTypeFilter = true) {
             mEvents = it
-            mCallback.updateWeeklyCalendar(it)
+            callback.updateWeeklyCalendar(it)
         }
     }
 }

@@ -1,8 +1,8 @@
 package com.simplemobiletools.calendar.dialogs
 
 import android.app.Activity
-import androidx.appcompat.app.AlertDialog
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.helpers.DELETE_ALL_OCCURRENCES
 import com.simplemobiletools.calendar.helpers.DELETE_FUTURE_OCCURRENCES
@@ -28,7 +28,7 @@ class DeleteEventDialog(val activity: Activity, eventIds: List<Int>, hasRepeatab
         }
 
         dialog = AlertDialog.Builder(activity)
-                .setPositiveButton(R.string.yes, { dialog, which -> dialogConfirmed(view as ViewGroup) })
+                .setPositiveButton(R.string.yes) { dialog, which -> dialogConfirmed(view as ViewGroup) }
                 .setNegativeButton(R.string.no, null)
                 .create().apply {
                     activity.setupDialogStuff(view, this)

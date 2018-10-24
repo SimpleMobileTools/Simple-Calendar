@@ -1,6 +1,5 @@
 package com.simplemobiletools.calendar.dialogs
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.view.View
@@ -24,14 +23,18 @@ class RepeatLimitTypePickerDialog(val activity: Activity, var repeatLimit: Int, 
     init {
         view = activity.layoutInflater.inflate(R.layout.dialog_repeat_limit_type_picker, null).apply {
             repeat_type_date.setOnClickListener { showRepetitionLimitDialog() }
-            repeat_type_forever.setOnClickListener { callback(0); dialog.dismiss() }
             repeat_type_count.setOnClickListener { dialog_radio_view.check(R.id.repeat_type_x_times) }
+            repeat_type_forever.setOnClickListener {
+                callback(0)
+                dialog.dismiss()
+            }
         }
 
         view.dialog_radio_view.check(getCheckedItem())
 
-        if (repeatLimit in 1..startTS)
+        if (repeatLimit in 1..startTS) {
             repeatLimit = startTS
+        }
 
         updateRepeatLimitText()
 
@@ -79,7 +82,6 @@ class RepeatLimitTypePickerDialog(val activity: Activity, var repeatLimit: Int, 
         dialog.dismiss()
     }
 
-    @SuppressLint("NewApi")
     private fun showRepetitionLimitDialog() {
         val repeatLimitDateTime = Formatter.getDateTimeFromTS(if (repeatLimit != 0) repeatLimit else getNowSeconds())
         val datepicker = DatePickerDialog(activity, activity.getDialogTheme(), repetitionLimitDateSetListener, repeatLimitDateTime.year,

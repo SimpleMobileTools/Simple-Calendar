@@ -1,7 +1,7 @@
 package com.simplemobiletools.calendar.dialogs
 
-import androidx.appcompat.app.AlertDialog
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.commons.extensions.hideKeyboard
