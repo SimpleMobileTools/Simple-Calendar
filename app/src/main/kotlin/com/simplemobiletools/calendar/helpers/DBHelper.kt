@@ -683,7 +683,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
     fun getEvents(fromTS: Int, toTS: Int, eventId: Int = -1, callback: (events: ArrayList<Event>) -> Unit) {
         Thread {
-            getEventsInBackground(fromTS, toTS, eventId, callback)
+            getEventsInBackground(fromTS, toTS, eventId, callback = callback)
         }.start()
     }
 
