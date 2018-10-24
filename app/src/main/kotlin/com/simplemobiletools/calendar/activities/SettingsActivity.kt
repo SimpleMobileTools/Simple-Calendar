@@ -38,7 +38,6 @@ class SettingsActivity : SimpleActivity() {
         setContentView(R.layout.activity_settings)
         res = resources
         mStoredPrimaryColor = config.primaryColor
-        setupCaldavSync()
     }
 
     override fun onResume() {
@@ -63,6 +62,9 @@ class SettingsActivity : SimpleActivity() {
         setupUseSameSnooze()
         setupLoopReminders()
         setupSnoozeTime()
+        setupCaldavSync()
+        setupManageSyncedCalendars()
+        setupPullToRefresh()
         setupDefaultReminder()
         setupDefaultReminder1()
         setupDefaultReminder2()
@@ -163,7 +165,18 @@ class SettingsActivity : SimpleActivity() {
                 }
             }
         }
+    }
 
+    private fun setupPullToRefresh() {
+        settings_caldav_pull_to_refresh_holder.beVisibleIf(config.caldavSync)
+        settings_caldav_pull_to_refresh.isChecked = config.pullToRefresh
+        settings_caldav_pull_to_refresh_holder.setOnClickListener {
+            settings_caldav_pull_to_refresh.toggle()
+            config.pullToRefresh = settings_caldav_pull_to_refresh.isChecked
+        }
+    }
+
+    private fun setupManageSyncedCalendars() {
         settings_manage_synced_calendars_holder.beVisibleIf(config.caldavSync)
         settings_manage_synced_calendars_holder.setOnClickListener {
             showCalendarPicker()
@@ -177,6 +190,7 @@ class SettingsActivity : SimpleActivity() {
             settings_caldav_sync.isChecked = false
             config.caldavSync = false
             settings_manage_synced_calendars_holder.beGone()
+            settings_caldav_pull_to_refresh_holder.beGone()
             config.getSyncedCalendarIdsAsList().forEach {
                 CalDAVHandler(applicationContext).deleteCalDAVCalendarEvents(it.toLong())
             }
@@ -194,6 +208,7 @@ class SettingsActivity : SimpleActivity() {
             }
 
             settings_manage_synced_calendars_holder.beVisibleIf(newCalendarIds.isNotEmpty())
+            settings_caldav_pull_to_refresh_holder.beVisibleIf(newCalendarIds.isNotEmpty())
             settings_caldav_sync.isChecked = newCalendarIds.isNotEmpty()
             config.caldavSync = newCalendarIds.isNotEmpty()
             if (settings_caldav_sync.isChecked) {

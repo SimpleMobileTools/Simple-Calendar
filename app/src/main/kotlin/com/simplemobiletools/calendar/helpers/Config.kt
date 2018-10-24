@@ -162,4 +162,8 @@ class Config(context: Context) : BaseConfig(context) {
     var defaultReminder3: Int
         get() = prefs.getInt(DEFAULT_REMINDER_3, REMINDER_OFF)
         set(defaultReminder3) = prefs.edit().putInt(DEFAULT_REMINDER_3, defaultReminder3).apply()
+
+    var pullToRefresh: Boolean
+        get() = prefs.getBoolean(PULL_TO_REFRESH, false)
+        set(pullToRefresh) = prefs.edit().putBoolean(PULL_TO_REFRESH, pullToRefresh).apply()
 }

@@ -530,6 +530,29 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/settings_caldav_pull_to_refresh_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:background="?attr/selectableItemBackground"
+            android:paddingLeft="@dimen/normal_margin"
+            android:paddingTop="@dimen/activity_margin"
+            android:paddingRight="@dimen/normal_margin"
+            android:paddingBottom="@dimen/activity_margin">
+
+            <com.simplemobiletools.commons.views.MySwitchCompat
+                android:id="@+id/settings_caldav_pull_to_refresh"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:clickable="false"
+                android:paddingStart="@dimen/medium_margin"
+                android:paddingLeft="@dimen/medium_margin"
+                android:text="@string/enable_pull_to_refresh"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
             android:id="@+id/settings_manage_synced_calendars_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
