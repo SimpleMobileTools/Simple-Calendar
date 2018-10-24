@@ -56,8 +56,9 @@ class SelectEventCalendarDialog(val activity: Activity, val calendars: List<CalD
             id = typeId
         }
 
-        if (color != Color.TRANSPARENT)
+        if (typeId != STORED_LOCALLY_ONLY) {
             view.dialog_radio_color.setFillWithStroke(color, activity.config.backgroundColor)
+        }
 
         view.setOnClickListener { viewClicked(typeId) }
         radioGroup.addView(view, RadioGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT))

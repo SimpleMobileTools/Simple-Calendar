@@ -1,11 +1,10 @@
 package com.simplemobiletools.calendar.dialogs
 
 import android.app.Activity
-import android.graphics.Color
-import androidx.appcompat.app.AlertDialog
 import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import androidx.appcompat.app.AlertDialog
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.helpers.CalDAVHandler
@@ -39,15 +38,15 @@ class SelectEventTypeColorDialog(val activity: Activity, val eventType: EventTyp
     private fun addRadioButton(colorKey: Int, color: Int) {
         val view = activity.layoutInflater.inflate(R.layout.radio_button_with_color, null)
         (view.dialog_radio_button as RadioButton).apply {
-            text = String.format("#%06X", 0xFFFFFF and color)
+            text = if (color == 0) activity.getString(R.string.transparent) else String.format("#%06X", 0xFFFFFF and color)
             isChecked = color == eventType.color
             id = colorKey
         }
 
-        if (color != Color.TRANSPARENT)
-            view.dialog_radio_color.setFillWithStroke(color, activity.config.backgroundColor)
-
-        view.setOnClickListener { viewClicked(colorKey) }
+        view.dialog_radio_color.setFillWithStroke(color, activity.config.backgroundColor)
+        view.setOnClickListener {
+            viewClicked(colorKey)
+        }
         radioGroup.addView(view, RadioGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT))
     }
 
