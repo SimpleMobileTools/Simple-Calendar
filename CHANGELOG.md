@@ -1,6 +1,17 @@
 Changelog
 ==========
 
+Version 5.1.0 *(2018-10-24)*
+----------------------------
+
+ * Add optional pull-to-refresh for refreshing CalDAV events on some views (by azisuazusa)
+ * Allow setting a default view to be opened from the Event List widget (by knusprjg)
+ * Apply selected filters on all views, including widgets
+ * Allow changing any CalDAV calendars color, even if only locally
+ * Fix some glitches related to saving CalDAV events in a wrong calendar
+ * Some performance improvements related to fetching events
+ * Couple other smaller stability/ux improvements
+
 Version 5.0.1 *(2018-10-17)*
 ----------------------------
 
