@@ -683,7 +683,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
     fun getEvents(fromTS: Int, toTS: Int, eventId: Int = -1, callback: (events: ArrayList<Event>) -> Unit) {
         Thread {
-            getEventsInBackground(fromTS = fromTS, toTS = toTS, eventId = eventId, callback = callback)
+            getEventsInBackground(fromTS, toTS, eventId, callback)
         }.start()
     }
 
@@ -705,16 +705,18 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
         events.addAll(getAllDayEvents(fromTS, eventId))
 
-        val displayEventTypes = context.config.displayEventTypes
         if (filterEventType) {
+            val displayEventTypes = context.config.displayEventTypes
             events = events.filter {
-                displayEventTypes.contains(it.toString())
+                displayEventTypes.contains(it.eventType.toString())
             } as ArrayList<Event>
         }
 
         events = events
+                .asSequence()
                 .distinct()
-                .filterNot { it.ignoreEventOccurrences.contains(Formatter.getDayCodeFromTS(it.startTS).toInt()) } as ArrayList<Event>
+                .filterNot { it.ignoreEventOccurrences.contains(Formatter.getDayCodeFromTS(it.startTS).toInt()) }
+                .toMutableList() as ArrayList<Event>
         callback(events)
     }
 
