@@ -403,6 +403,17 @@
                 android:textSize="@dimen/meta_text_size"
                 tools:text="hello@simplemobiletools.com"/>
 
+            <ImageView
+                android:id="@+id/event_caldav_calendar_color"
+                android:layout_width="@dimen/color_sample_size"
+                android:layout_height="@dimen/color_sample_size"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/activity_margin"
+                android:layout_marginRight="@dimen/activity_margin"
+                android:clickable="false"/>
+
         </RelativeLayout>
 
         <ImageView
@@ -433,6 +444,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_caldav_calendar_divider"
             android:layout_marginTop="@dimen/medium_margin"
+            android:layout_marginBottom="@dimen/medium_margin"
             android:layout_toEndOf="@+id/event_type_image"
             android:layout_toRightOf="@+id/event_type_image"
             android:background="?attr/selectableItemBackground">
@@ -467,7 +479,6 @@
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:layout_below="@+id/event_type_holder"
-            android:layout_marginTop="@dimen/medium_margin"
             android:background="@color/divider_grey"
             android:importantForAccessibility="no"/>
     </RelativeLayout>
