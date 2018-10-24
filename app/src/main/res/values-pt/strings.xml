@@ -182,6 +182,7 @@
     <string name="editing_calendar_failed">Falha ao editar o calendário</string>
     <string name="syncing">A sincronizar…</string>
     <string name="synchronization_completed">Sincronização terminada</string>
+    <string name="select_a_different_caldav_color">Select a different color (might be applied locally only)</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->

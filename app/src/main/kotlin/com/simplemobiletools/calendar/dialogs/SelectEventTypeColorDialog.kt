@@ -9,9 +9,10 @@ import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.helpers.CalDAVHandler
 import com.simplemobiletools.calendar.models.EventType
+import com.simplemobiletools.commons.dialogs.ColorPickerDialog
 import com.simplemobiletools.commons.extensions.setFillWithStroke
 import com.simplemobiletools.commons.extensions.setupDialogStuff
-import kotlinx.android.synthetic.main.dialog_select_radio_group.view.*
+import kotlinx.android.synthetic.main.dialog_select_event_type_color.view.*
 import kotlinx.android.synthetic.main.radio_button_with_color.view.*
 
 class SelectEventTypeColorDialog(val activity: Activity, val eventType: EventType, val callback: (color: Int) -> Unit) {
@@ -21,8 +22,11 @@ class SelectEventTypeColorDialog(val activity: Activity, val eventType: EventTyp
     private val colors = CalDAVHandler(activity.applicationContext).getAvailableCalDAVCalendarColors(eventType)
 
     init {
-        val view = activity.layoutInflater.inflate(R.layout.dialog_select_radio_group, null) as ViewGroup
-        radioGroup = view.dialog_radio_group
+        val view = activity.layoutInflater.inflate(R.layout.dialog_select_event_type_color, null) as ViewGroup
+        radioGroup = view.dialog_select_event_type_color_radio
+        view.dialog_select_event_type_other_value.setOnClickListener {
+            showCustomColorPicker()
+        }
 
         colors.forEachIndexed { index, value ->
             addRadioButton(index, value)
@@ -56,5 +60,14 @@ class SelectEventTypeColorDialog(val activity: Activity, val eventType: EventTyp
 
         callback(colors[colorKey])
         dialog?.dismiss()
+    }
+
+    private fun showCustomColorPicker() {
+        ColorPickerDialog(activity, activity.config.primaryColor) { wasPositivePressed, color ->
+            if (wasPositivePressed) {
+                callback(color)
+                dialog?.dismiss()
+            }
+        }
     }
 }

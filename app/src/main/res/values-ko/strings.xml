@@ -182,6 +182,7 @@
     <string name="editing_calendar_failed">변경 실패</string>
     <string name="syncing">동기화중…</string>
     <string name="synchronization_completed">동기화 완료</string>
+    <string name="select_a_different_caldav_color">Select a different color (might be applied locally only)</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
