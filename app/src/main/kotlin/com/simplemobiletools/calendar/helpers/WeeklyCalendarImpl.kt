@@ -11,9 +11,8 @@ class WeeklyCalendarImpl(val mCallback: WeeklyCalendar, val mContext: Context) {
     var mEvents = ArrayList<Event>()
 
     fun updateWeeklyCalendar(weekStartTS: Int) {
-        val startTS = weekStartTS
-        val endTS = startTS + WEEK_SECONDS
-        mContext.dbHelper.getEvents(startTS, endTS) {
+        val endTS = weekStartTS + WEEK_SECONDS
+        mContext.dbHelper.getEvents(weekStartTS, endTS, applyTypeFilter = true) {
             mEvents = it
             mCallback.updateWeeklyCalendar(it)
         }

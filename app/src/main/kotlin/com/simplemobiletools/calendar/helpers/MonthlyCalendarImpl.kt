@@ -24,7 +24,7 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
         mTargetDate = targetDate
         val startTS = mTargetDate.minusDays(7).seconds()
         val endTS = mTargetDate.plusDays(43).seconds()
-        mContext.dbHelper.getEvents(startTS, endTS) {
+        mContext.dbHelper.getEvents(startTS, endTS, applyTypeFilter = true) {
             gotEvents(it)
         }
     }

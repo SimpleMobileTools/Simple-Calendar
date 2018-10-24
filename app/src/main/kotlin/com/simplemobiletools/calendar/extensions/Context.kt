@@ -85,7 +85,7 @@ fun Context.scheduleNextEventReminder(event: Event, dbHelper: DBHelper, activity
 
     val now = getNowSeconds()
     val reminderSeconds = event.getReminders().reversed().map { it * 60 }
-    dbHelper.getEvents(now, now + YEAR, event.id) {
+    dbHelper.getEvents(now, now + YEAR, event.id, false) {
         if (it.isNotEmpty()) {
             for (curEvent in it) {
                 for (curReminder in reminderSeconds) {
