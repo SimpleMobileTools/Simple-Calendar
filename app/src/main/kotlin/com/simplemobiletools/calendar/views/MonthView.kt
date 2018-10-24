@@ -302,7 +302,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     }
 
     private fun initWeekDayLetters() {
-        dayLetters = context.resources.getStringArray(R.array.week_day_letters).toList() as ArrayList<String>
+        dayLetters = context.resources.getStringArray(R.array.week_day_letters).toMutableList() as ArrayList<String>
         if (context.config.isSundayFirst) {
             dayLetters.moveLastItemToFront()
         }

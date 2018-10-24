@@ -198,7 +198,7 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
     private fun shareEvents() = activity.shareEvents(selectedKeys.distinct())
 
     private fun askConfirmDelete() {
-        val eventIds = selectedKeys.toList()
+        val eventIds = selectedKeys.toMutableList()
         val eventsToDelete = listItems.filter { selectedKeys.contains((it as? ListEvent)?.id) } as List<ListEvent>
         val timestamps = eventsToDelete.map { (it as? ListEvent)?.startTS }.filterNotNull()
 

@@ -133,7 +133,7 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
     private fun shareEvents() = activity.shareEvents(selectedKeys.distinct())
 
     private fun askConfirmDelete() {
-        val eventIds = selectedKeys.toList()
+        val eventIds = selectedKeys.toMutableList()
         val eventsToDelete = events.filter { selectedKeys.contains(it.id) }
         val timestamps = eventsToDelete.map { it.startTS }
         val positions = getSelectedItemPositions()
