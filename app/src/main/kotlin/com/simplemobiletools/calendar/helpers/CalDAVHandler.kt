@@ -30,7 +30,6 @@ class CalDAVHandler(val context: Context) {
                 title = calendar.displayName
                 caldavDisplayName = calendar.displayName
                 caldavEmail = calendar.accountName
-                color = calendar.color
                 context.dbHelper.updateLocalEventType(this)
             }
 
@@ -81,14 +80,13 @@ class CalDAVHandler(val context: Context) {
         return calendars
     }
 
-    fun updateCalDAVCalendar(eventType: EventType): Boolean {
+    fun updateCalDAVCalendar(eventType: EventType) {
         val uri = CalendarContract.Calendars.CONTENT_URI
         val values = fillCalendarContentValues(eventType)
         val newUri = ContentUris.withAppendedId(uri, eventType.caldavCalendarId.toLong())
-        return try {
-            context.contentResolver.update(newUri, values, null, null) == 1
+        try {
+            context.contentResolver.update(newUri, values, null, null)
         } catch (e: IllegalArgumentException) {
-            false
         }
     }
 

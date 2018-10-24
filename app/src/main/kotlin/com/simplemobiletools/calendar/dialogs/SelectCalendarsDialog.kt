@@ -1,10 +1,10 @@
 package com.simplemobiletools.calendar.dialogs
 
-import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.widget.SwitchCompat
 import android.text.TextUtils
 import android.view.ViewGroup
 import android.widget.RelativeLayout
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.SwitchCompat
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.extensions.config
@@ -33,7 +33,7 @@ class SelectCalendarsDialog(val activity: SimpleActivity, val callback: () -> Un
         }
 
         dialog = AlertDialog.Builder(activity)
-                .setPositiveButton(R.string.ok, { dialogInterface, i -> confirmSelection() })
+                .setPositiveButton(R.string.ok) { dialogInterface, i -> confirmSelection() }
                 .setNegativeButton(R.string.cancel, null)
                 .create().apply {
                     activity.setupDialogStuff(view, this, R.string.select_caldav_calendars)
