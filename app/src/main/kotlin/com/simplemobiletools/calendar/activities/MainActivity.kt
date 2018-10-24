@@ -188,6 +188,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     override fun onBackPressed() {
+        swipe_refresh_layout.isRefreshing = false
         if (currentFragments.size > 1) {
             removeTopFragment()
         } else {
