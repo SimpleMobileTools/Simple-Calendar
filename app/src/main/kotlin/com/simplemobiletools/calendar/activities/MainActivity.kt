@@ -18,6 +18,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuItemCompat
 import com.simplemobiletools.calendar.BuildConfig
 import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.R.id.*
 import com.simplemobiletools.calendar.adapters.EventListAdapter
 import com.simplemobiletools.calendar.dialogs.ExportEventsDialog
 import com.simplemobiletools.calendar.dialogs.FilterEventTypesDialog
@@ -375,7 +376,9 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                         if (showCalDAVRefreshToast) {
                             toast(R.string.refreshing_complete)
                         }
-                        swipe_refresh_layout.isRefreshing = false
+                        runOnUiThread {
+                            swipe_refresh_layout.isRefreshing = false
+                        }
                     }
                 }, CALDAV_SYNC_DELAY)
             }
