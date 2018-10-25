@@ -19,15 +19,15 @@
     <string name="event">Evento</string>
     <string name="edit_event">Modifica evento</string>
     <string name="new_event">Nuovo evento</string>
-    <string name="create_new_event">Create a new event</string>
-    <string name="duplicate_event">Duplicate event</string>
+    <string name="create_new_event">Crea un nuovo evento</string>
+    <string name="duplicate_event">Duplica evento</string>
     <string name="title_empty">Il titolo non può essere vuoto</string>
-    <string name="end_before_start">L\'evento non può terminare prima del suo inizio</string>
+    <string name="end_before_start">L\'evento non può terminare prima del suo ianizio</string>
     <string name="event_added">Evento aggiunto correttamente</string>
     <string name="event_updated">Evento aggiornato correttamente</string>
     <string name="filter_events_by_type">Filtra eventi per tipologia</string>
-    <string name="please_fill_location">Please fill in a location to be shown on a map</string>
-    <string name="public_event_notification_text">An event is upcoming</string>
+    <string name="please_fill_location">Riempire la posizione per essere mostrata su una mappa</string>
+    <string name="public_event_notification_text">Un evento è imminente</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Ripeti</string>
@@ -44,24 +44,24 @@
     <string name="event_is_repeatable">L\'evento è ripetibile</string>
     <string name="selection_contains_repetition">La selezione contiene eventi ripetuti</string>
     <string name="delete_one_only">Elimina solamente l\'occorenza selezionata</string>
-    <string name="delete_future_occurrences">Delete this and all future occurrences</string>
+    <string name="delete_future_occurrences">Rimuovi questo e tutte le future occorrenze</string>
     <string name="delete_all_occurrences">Elimina tutte le occorrenze</string>
     <string name="update_one_only">Aggiorna solamente l\'occorenza selezionata</string>
     <string name="update_all_occurrences">Aggiorna tutte le occorenze</string>
     <string name="repeat_till_date">Ripeti fino a una data</string>
-    <string name="stop_repeating_after_x">Stop repeating after x occurrences</string>
+    <string name="stop_repeating_after_x">Smetti di ripetere dopo x occorrenze</string>
     <string name="repeat_forever">Ripeti per sempre</string>
     <string name="times">volte</string>
     <string name="repeat">Ripeti</string>
-    <string name="repeat_on">Repeat on</string>
+    <string name="repeat_on">Ripeti</string>
     <string name="every_day">Ogni giorno</string>
     <string name="selected_days">On selected days</string>
     <string name="the_same_day">Lo stesso giorno</string>
     <string name="the_last_day">L\'ultimo giorno</string>
     <string name="repeat_on_the_same_day_monthly">Ripeti lo stesso giorno ogni mese </string>
-    <string name="repeat_on_the_last_day_monthly">Repeat on the last day of the month</string>
-    <string name="repeat_on_the_same_day_yearly">Repeat on the same day every year</string>
-    <string name="repeat_every_m">Repeat every</string>
+    <string name="repeat_on_the_last_day_monthly">Ripeti l\'ultimo giorno del mese</string>
+    <string name="repeat_on_the_same_day_yearly">Ripeti lo stesso giorno ogni anno</string>
+    <string name="repeat_every_m">Ripeti ogni</string>
     <string name="every_m">Tutti</string>
     <string name="first_m">primo</string>
     <string name="second_m">secondo</string>
@@ -106,13 +106,13 @@
     <string name="export_past_events_too">Esporta anche eventi passati</string>
     <string name="include_event_types">Includi tipi evento</string>
     <string name="filename_without_ics">Nome file (senza .ics)</string>
-    <string name="override_event_types">Override event types in the file</string>
+    <string name="override_event_types">Sovrascrivi i tipi di eventi nel file</string>
 
     <!-- Event details -->
     <string name="title">Titolo</string>
     <string name="location">Posizione</string>
     <string name="description">Descrizione</string>
-    <string name="all_day">All-day</string>
+    <string name="all_day">Tutto il giorno</string>
 
     <!-- Weekly view -->
     <string name="week">Settimana</string>
@@ -126,8 +126,8 @@
     <string name="regular_event">Evento regolare</string>
     <string name="cannot_delete_default_type">Il tipo di evento predefinito non può essere cancellato</string>
     <string name="select_event_type">Seleziona un tipo di evento</string>
-    <string name="move_events_into_default">Move affected events into the default event type</string>
-    <string name="remove_affected_events">Permanently remove affected events</string>
+    <string name="move_events_into_default">Muovi gli eventi segnati con il tipo di eventi predefinito</string>
+    <string name="remove_affected_events">Rimuovi in maniera permanente gli eventi segnati</string>
     <string name="unsync_caldav_calendar">Per rimuovere un calendario CalDAV devi desincronizzarlo</string>
 
     <!-- Holidays -->
@@ -141,92 +141,95 @@
 
     <!-- Settings -->
     <string name="manage_event_types">Gestisci tipi evento</string>
-    <string name="start_day_at">Start day at</string>
-    <string name="end_day_at">End day at</string>
+    <string name="start_day_at">Il giorno inizia alle</string>
+    <string name="end_day_at">Il giorno finisce alle</string>
     <string name="week_numbers">Mostra numero settimane</string>
-    <string name="vibrate">Vibrate on reminder notification</string>
+    <string name="vibrate">Vibra per le notifiche di promemoria</string>
     <string name="reminder_sound">Suoneria promemoria</string>
-    <string name="no_ringtone_picker">No app capable of setting ringtone found</string>
-    <string name="no_ringtone_selected">None</string>
+    <string name="no_ringtone_picker">Non è stata trovata nessuna applicazione per impostare la suoneria</string>
+    <string name="no_ringtone_selected">Nessuna</string>
     <string name="day_end_before_start">Il giorno non può finire prima che cominci</string>
-    <string name="caldav_sync">CalDAV sync</string>
-    <string name="event_lists">Event lists</string>
+    <string name="caldav_sync">Sincronizzazione CalDAV</string>
+    <string name="event_lists">Liste degli eventi</string>
     <string name="display_past_events">Mostra eventi passati</string>
     <string name="replace_description_with_location">Sostituisci la descrizione con la posizione</string>
     <string name="delete_all_events">Cancella tutti gli eventi</string>
     <string name="delete_all_events_confirmation">Vuoi cancellare tutti gli eventi? Questo lascerà i tuoi tipi evento e le altre impostazioni invariate.</string>
-    <string name="show_a_grid">Show a grid</string>
-    <string name="loop_reminders">Loop reminders until dismissed</string>
-    <string name="dim_past_events">Dim past events</string>
-    <string name="events">Events</string>
-    <string name="reminder_stream">Audio stream used by reminders</string>
-    <string name="system_stream">System</string>
-    <string name="alarm_stream">Alarm</string>
-    <string name="notification_stream">Notification</string>
-    <string name="ring_stream">Ring</string>
-    <string name="use_last_event_reminders">Use the last events\' reminders as the default for new event</string>
-    <string name="default_reminder_1">Default reminder 1</string>
-    <string name="default_reminder_2">Default reminder 2</string>
-    <string name="default_reminder_3">Default reminder 3</string>
+    <string name="show_a_grid">Mostra una griglia</string>
+    <string name="loop_reminders">Manda in loop i promemoria finchè non vengono rimossi</string>
+    <string name="dim_past_events">Rimuovi gli eventi passati</string>
+    <string name="events">Eventi</string>
+    <string name="reminder_stream">Canale audio utilizzato per i promomemoria</string>
+    <string name="system_stream">Sistema</string>
+    <string name="alarm_stream">Allarme</string>
+    <string name="notification_stream">Notitica</string>
+    <string name="ring_stream">Squillo</string>
+    <string name="use_last_event_reminders">Utilizza l\'ultimo promemoria come predefinito per nuovi eventi</string>
+    <string name="default_reminder_1">Promemoria predefinito 1</string>
+    <string name="default_reminder_2">Promemoria predefinito 2</string>
+    <string name="default_reminder_3">Promemoria predefinito 3</string>
+    <string name="view_to_open_from_widget">Vista da aprire dalla lista degli eventi del widget</string>
+    <string name="last_view">Ultima vista</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
-    <string name="select_caldav_calendars">Select calendars to sync</string>
-    <string name="manage_synced_calendars">Manage synced calendars</string>
-    <string name="store_locally_only">Store locally only</string>
-    <string name="refresh_caldav_calendars">Refresh CalDAV calendars</string>
-    <string name="refreshing">Refreshing…</string>
-    <string name="refreshing_complete">Refreshing complete</string>
-    <string name="editing_calendar_failed">Editing calendar failed</string>
-    <string name="syncing">Syncing…</string>
-    <string name="synchronization_completed">Sync completed</string>
+    <string name="select_caldav_calendars">Seleziona un calendario da sincronizzare</string>
+    <string name="manage_synced_calendars">Gestisci i calendari sincronizzati</string>
+    <string name="store_locally_only">Salva solamente in locale</string>
+    <string name="refresh_caldav_calendars">Aggiorna i calendari CalDAV</string>
+    <string name="refreshing">Aggiornamento in corso…</string>
+    <string name="refreshing_complete">Aggiornamento completato</string>
+    <string name="editing_calendar_failed">Impossibile modificare il calendario</string>
+    <string name="syncing">Sincronizzazione in corso…</string>
+    <string name="synchronization_completed">Sincronizzazione completata</string>
+    <string name="select_a_different_caldav_color">Seleziona un colore differente (potrebbe essere applicato solamente in locale)</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
-    <string name="monday_alt">Monday</string>
-    <string name="tuesday_alt">Tuesday</string>
-    <string name="wednesday_alt">Wednesday</string>
-    <string name="thursday_alt">Thursday</string>
-    <string name="friday_alt">Friday</string>
-    <string name="saturday_alt">Saturday</string>
-    <string name="sunday_alt">Sunday</string>
+    <string name="monday_alt">Lunedì</string>
+    <string name="tuesday_alt">Martedì</string>
+    <string name="wednesday_alt">Mercoledì</string>
+    <string name="thursday_alt">Giovedì</string>
+    <string name="friday_alt">Venerdì</string>
+    <string name="saturday_alt">Sabato</string>
+    <string name="sunday_alt">Domenica</string>
 
     <!-- List widget config example events -->
-    <string name="sample_title_1">Workout</string>
-    <string name="sample_description_1">Leg day</string>
-    <string name="sample_title_2">Meeting with John</string>
-    <string name="sample_description_2">In Rockstone garden</string>
-    <string name="sample_title_3">Library</string>
-    <string name="sample_title_4">Lunch with Mary</string>
-    <string name="sample_description_4">In the Plaza</string>
-    <string name="sample_title_5">Coffee time</string>
+    <string name="sample_title_1">Allenamento</string>
+    <string name="sample_description_1">Gambe</string>
+    <string name="sample_title_2">Incontro con Giovanni</string>
+    <string name="sample_description_2">Nel giardino di Milano</string>
+    <string name="sample_title_3">Liberia</string>
+    <string name="sample_title_4">Pranzo con Maria</string>
+    <string name="sample_description_4">Nel ristorante Magione</string>
+    <string name="sample_title_5">Pausa caffè</string>
 
     <!-- FAQ -->
-    <string name="faq_1_title">How can I remove the holidays imported via the \"Add holidays\" button?</string>
-    <string name="faq_1_text">Holidays created that way are inserted in a new event type called \"Holidays\". You can go in Settings -> Manage Event Types,
-        long press the given event type and delete it by selecting the trashbin.</string>
-    <string name="faq_2_title">Can I sync my events via Google Calendar, or other service supporting CalDAV?</string>
-    <string name="faq_2_text">Yes, just toggle \"CalDAV sync\" in the app settings and select the calendars you want to sync. However, you will need some third party app handling the synchronization between the device and servers.
-        In case you want to synchronize a Google calendar, their official Calendar app will do the job. For other calendars you will need a third party sync adapter, for example DAVdroid.</string>
-    <string name="faq_3_title">I see the visual reminders, but hear no audio. What can I do?</string>
-    <string name="faq_3_text">Not just displaying the actual reminder, but playing the audio is hugely affected by the system too. If you can\'t hear any sound, try going in the app settings,
-        pressing the \"Audio stream used by reminders\" option and changing it to a different value. If it still won\'t work, check your sound settings, if the particular stream isn\'t muted.</string>
+    <string name="faq_1_title">Come posso rimuovere i le festività importate tramite il pulsante \"Aggiungi festività\"?</string>
+    <string name="faq_1_text">Le festività create in questo modo sono inseriti in eventi di tipo \"Festività\". Puoi andare in Impostazioni -> Gestisci tipi di eventi,
+        tenere premuto sul tipo desiderato ed eliminaro selezionando il cestino.</string>
+    <string name="faq_2_title">Posso sincronizzare i miei eventi tramite Google Calendar, od altri servizi che supportano CalDAV?</string>
+    <string name="faq_2_text">Sì, basta commutare l\'opzione \"Sincronizzazione CalDAV\" nelle impostazioni dell\'applicazione e selezionare i calendari da sincronizzare. Comunque è necessaria un\'applicazione di terze parti per gestire la sincronizzazione tra dispositivo e server.
+        In caso si voglia sincronizzare con Google Calendar, la loro applicazione ufficiale effettua questo lavoro. Per altri calendari è necessario un adattatore di terze parti, per esempio DAVdroid.</string>
+    <string name="faq_3_title">Visualizzo i promemoria, ma non sento l\'audio. Cosa posso fare?</string>
+    <string name="faq_3_text">Non solo visualizzare l\'attuale promemoria, ma anche riprodurre l\'audio è un lavoro prettamente del sistema. Se non senti alcun suono, prova ad andare nelle impostazioni dell\'applicazione,
+        premi l\'opzione \"Canale audio utilizzato per il promemoria\" e cambia il canale. Se ancora non funziona, controlla le tue impostazioni dell\'audio, in particolare se il canale è stato mutato.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">A simple calendar with events, customizable widget and no ads.</string>
+    <string name="app_short_description">Un semplice calendario con eventi, widget personalizzabili e senza pubblicità.</string>
     <string name="app_long_description">
-        A simple calendar with optional CalDAV synchronization. You can easily create recurring events and setup reminders, it can also display week numbers.
+        Un semplice calendario con l\'opzione di sincronizzazione CalDAV. Puoi facilmente creare eventi ricorrenti ed impostare promemoria, mostra anche il numero di settimana.
 
-        Contains a monthly view and an event list widget where you can customize the color of the text, as well as the alpha and the color of the background.
+        Contiene una vista mensile ed un widget con la lista degli eventi, con il colore del testo personalizzabile, come per la trasparenza ed il colore dello sfondo,
 
-        Contains no ads or unnecessary permissions. It is fully opensource, provides customizable colors.
+        Non contiene pubblicità o permessi non necessari. È completamente opensource, fornisce anche colori personalizzabili.
 
-        The Storage permission is needed only for exporting or importing events from .ics files.
+        Il permesso di archiviazione è necesario solamente per esportare od importare venti da file .ics.
 
-        The Contacts permission is used only at importing contact birthdays and anniversaries.
+        Il permesso dei contatti è usato solamente per importare i compleanni e gli anniversari.
 
-        This app is just one piece of a bigger series of apps. You can find the rest of them at https://www.simplemobiletools.com
+        Questa applicazione è solamente una di una serie. Puoi trovare le altre su https://www.simplemobiletools.com
     </string>
 
     <!--

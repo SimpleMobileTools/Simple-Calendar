@@ -69,9 +69,9 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
         super.onDraw(canvas)
         if (dayWidth == 0f) {
             dayWidth = if (isLandscape) {
-                (canvas.width / 9).toFloat()
+                width / 9f
             } else {
-                (canvas.width / 7).toFloat()
+                width / 7f
             }
         }
 

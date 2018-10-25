@@ -168,6 +168,8 @@
     <string name="default_reminder_1">Default reminder 1</string>
     <string name="default_reminder_2">Default reminder 2</string>
     <string name="default_reminder_3">Default reminder 3</string>
+    <string name="view_to_open_from_widget">View to open from the event list widget</string>
+    <string name="last_view">Last view</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -180,6 +182,7 @@
     <string name="editing_calendar_failed">Takvim düzenlenme başarısız</string>
     <string name="syncing">Senkronize ediliyor…</string>
     <string name="synchronization_completed">Senkronizasyon tamamlandı</string>
+    <string name="select_a_different_caldav_color">Select a different color (might be applied locally only)</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->

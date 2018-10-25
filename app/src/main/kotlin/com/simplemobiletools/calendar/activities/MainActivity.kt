@@ -11,13 +11,14 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.provider.ContactsContract
-import android.support.v4.view.MenuItemCompat
-import android.support.v7.widget.SearchView
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
+import androidx.core.view.MenuItemCompat
 import com.simplemobiletools.calendar.BuildConfig
 import com.simplemobiletools.calendar.R
+import com.simplemobiletools.calendar.R.id.*
 import com.simplemobiletools.calendar.adapters.EventListAdapter
 import com.simplemobiletools.calendar.dialogs.ExportEventsDialog
 import com.simplemobiletools.calendar.dialogs.FilterEventTypesDialog
@@ -70,9 +71,6 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         setContentView(R.layout.activity_main)
         appLaunched(BuildConfig.APPLICATION_ID)
 
-        // just get a reference to the database to make sure it is created properly
-        dbHelper
-
         checkWhatsNewDialog()
         calendar_fab.beVisibleIf(config.storedView != YEARLY_VIEW)
         calendar_fab.setOnClickListener {
@@ -89,6 +87,10 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
 
         if (config.caldavSync) {
+            refreshCalDAVCalendars(false)
+        }
+
+        swipe_refresh_layout.setOnRefreshListener {
             refreshCalDAVCalendars(false)
         }
 
@@ -129,6 +131,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         search_placeholder_2.setTextColor(config.textColor)
         calendar_fab.setColors(config.textColor, getAdjustedPrimaryColor(), config.backgroundColor)
         search_holder.background = ColorDrawable(config.backgroundColor)
+        checkSwipeRefreshAvailability()
     }
 
     override fun onPause() {
@@ -183,6 +186,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     override fun onBackPressed() {
+        swipe_refresh_layout.isRefreshing = false
+        checkSwipeRefreshAvailability()
         if (currentFragments.size > 1) {
             removeTopFragment()
         } else {
@@ -251,12 +256,14 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     private fun checkOpenIntents(): Boolean {
         val dayCodeToOpen = intent.getStringExtra(DAY_CODE) ?: ""
-        val openMonth = intent.getBooleanExtra(OPEN_MONTH, false)
-        intent.removeExtra(OPEN_MONTH)
+        val viewToOpen = intent.getIntExtra(VIEW_TO_OPEN, DAILY_VIEW)
+        intent.removeExtra(VIEW_TO_OPEN)
         intent.removeExtra(DAY_CODE)
         if (dayCodeToOpen.isNotEmpty()) {
             calendar_fab.beVisible()
-            config.storedView = if (openMonth) MONTHLY_VIEW else DAILY_VIEW
+            if (viewToOpen != LAST_VIEW) {
+                config.storedView = viewToOpen
+            }
             updateViewPager(dayCodeToOpen)
             return true
         }
@@ -337,6 +344,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private fun showFilterDialog() {
         FilterEventTypesDialog(this) {
             refreshViewPager()
+            updateWidgets()
         }
     }
 
@@ -367,6 +375,9 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                         refreshViewPager()
                         if (showCalDAVRefreshToast) {
                             toast(R.string.refreshing_complete)
+                        }
+                        runOnUiThread {
+                            swipe_refresh_layout.isRefreshing = false
                         }
                     }
                 }, CALDAV_SYNC_DELAY)
@@ -527,6 +538,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private fun updateView(view: Int) {
         calendar_fab.beVisibleIf(view != YEARLY_VIEW)
         config.storedView = view
+        checkSwipeRefreshAvailability()
         updateViewPager()
         if (goToTodayButton?.isVisible == true) {
             shouldGoToTodayBeVisible = false
@@ -578,8 +590,11 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         val bundle = Bundle()
         bundle.putString(DAY_CODE, Formatter.getDayCodeFromDateTime(dateTime))
         fragment.arguments = bundle
-        supportFragmentManager.beginTransaction().add(R.id.fragments_holder, fragment).commitNow()
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        try {
+            supportFragmentManager.beginTransaction().add(R.id.fragments_holder, fragment).commitNow()
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        } catch (e: Exception) {
+        }
     }
 
     private fun getThisWeekDateTime(): String {
@@ -612,7 +627,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     private fun refreshViewPager() {
         runOnUiThread {
-            if (!isActivityDestroyed()) {
+            if (!isDestroyed) {
                 currentFragments.last().refreshEvents()
             }
         }
@@ -695,7 +710,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     private fun launchAbout() {
-        val licenses = LICENSE_JODA or LICENSE_STETHO or LICENSE_MULTISELECT or LICENSE_LEAK_CANARY
+        val licenses = LICENSE_JODA or LICENSE_STETHO
 
         val faqItems = arrayListOf(
                 FAQItem(R.string.faq_1_title_commons, R.string.faq_1_text_commons),
@@ -734,6 +749,13 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         } else {
             search_placeholder.beVisible()
             search_results_list.beGone()
+        }
+    }
+
+    private fun checkSwipeRefreshAvailability() {
+        swipe_refresh_layout.isEnabled = config.caldavSync && config.pullToRefresh && config.storedView != WEEKLY_VIEW
+        if (!swipe_refresh_layout.isEnabled) {
+            swipe_refresh_layout.isRefreshing = false
         }
     }
 

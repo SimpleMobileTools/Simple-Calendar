@@ -15,11 +15,11 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
     private var dayWidth = 0f
     private var dayHeight = 0f
     private var weekDaysLetterHeight = 0
+    private var horizontalOffset = 0
     private var wereViewsAdded = false
     private var days = ArrayList<DayMonthly>()
     private var inflater: LayoutInflater
     private var monthView: MonthView
-    private var horizontalOffset = 0
     private var dayClickCallback: ((day: DayMonthly) -> Unit)? = null
 
     constructor(context: Context, attrs: AttributeSet) : this(context, attrs, 0)

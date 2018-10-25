@@ -2,10 +2,10 @@ package com.simplemobiletools.calendar.fragments
 
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.support.v4.view.ViewPager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.viewpager.widget.ViewPager
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.MainActivity
 import com.simplemobiletools.calendar.adapters.MyMonthPagerAdapter

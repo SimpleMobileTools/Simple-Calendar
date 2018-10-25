@@ -2,20 +2,19 @@ package com.simplemobiletools.calendar.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
 import android.widget.RelativeLayout
+import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.Fragment
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.adapters.DayEventsAdapter
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
-import com.simplemobiletools.calendar.extensions.getFilteredEvents
 import com.simplemobiletools.calendar.helpers.DAY_CODE
 import com.simplemobiletools.calendar.helpers.EVENT_ID
 import com.simplemobiletools.calendar.helpers.EVENT_OCCURRENCE_TS
@@ -106,21 +105,20 @@ class DayFragment : Fragment() {
     fun updateCalendar() {
         val startTS = Formatter.getDayStartTS(mDayCode)
         val endTS = Formatter.getDayEndTS(mDayCode)
-        context?.dbHelper?.getEvents(startTS, endTS) {
+        context?.dbHelper?.getEvents(startTS, endTS, applyTypeFilter = true) {
             receivedEvents(it)
         }
     }
 
     private fun receivedEvents(events: List<Event>) {
-        val filtered = context?.getFilteredEvents(events) ?: ArrayList()
-        val newHash = filtered.hashCode()
+        val newHash = events.hashCode()
         if (newHash == lastHash || !isAdded) {
             return
         }
         lastHash = newHash
 
         val replaceDescription = context!!.config.replaceDescription
-        val sorted = ArrayList<Event>(filtered.sortedWith(compareBy({ !it.getIsAllDay() }, { it.startTS }, { it.endTS }, { it.title }, {
+        val sorted = ArrayList<Event>(events.sortedWith(compareBy({ !it.getIsAllDay() }, { it.startTS }, { it.endTS }, { it.title }, {
             if (replaceDescription) it.location else it.description
         })))
 

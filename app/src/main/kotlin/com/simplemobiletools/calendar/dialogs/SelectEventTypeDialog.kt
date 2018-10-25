@@ -2,9 +2,9 @@ package com.simplemobiletools.calendar.dialogs
 
 import android.app.Activity
 import android.graphics.Color
-import android.support.v7.app.AlertDialog
 import android.view.ViewGroup
 import android.widget.RadioGroup
+import androidx.appcompat.app.AlertDialog
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
@@ -72,7 +72,7 @@ class SelectEventTypeDialog(val activity: Activity, val currEventType: Int, val 
         }
 
         if (eventType.id == NEW_TYPE_ID) {
-            UpdateEventTypeDialog(activity) {
+            EditEventTypeDialog(activity) {
                 callback(it)
                 activity.hideKeyboard()
                 dialog?.dismiss()

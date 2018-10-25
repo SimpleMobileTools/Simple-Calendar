@@ -38,6 +38,7 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
     private var currentItemsHash = listItems.hashCode()
 
     init {
+        setupDragListener(true)
         var firstNonPastSectionIndex = -1
         listItems.forEachIndexed { index, listItem ->
             if (firstNonPastSectionIndex == -1 && listItem is ListSection) {
@@ -58,12 +59,6 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
 
     override fun prepareActionMode(menu: Menu) {}
 
-    override fun prepareItemSelection(viewHolder: ViewHolder) {}
-
-    override fun markViewHolderSelection(select: Boolean, viewHolder: ViewHolder?) {
-        viewHolder?.itemView?.event_item_frame?.isSelected = select
-    }
-
     override fun actionItemPressed(id: Int) {
         when (id) {
             R.id.cab_share -> shareEvents()
@@ -74,6 +69,10 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
     override fun getSelectableItemCount() = listItems.filter { it is ListEvent }.size
 
     override fun getIsItemSelectable(position: Int) = listItems[position] is ListEvent
+
+    override fun getItemSelectionKey(position: Int) = (listItems.getOrNull(position) as? ListEvent)?.id
+
+    override fun getItemKeyPosition(key: Int) = listItems.indexOfFirst { (it as? ListEvent)?.id == key }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyRecyclerViewAdapter.ViewHolder {
         val layoutId = when (viewType) {
@@ -86,14 +85,14 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
 
     override fun onBindViewHolder(holder: MyRecyclerViewAdapter.ViewHolder, position: Int) {
         val listItem = listItems[position]
-        val view = holder.bindView(listItem, true, allowLongClick) { itemView, layoutPosition ->
+        holder.bindView(listItem, true, allowLongClick) { itemView, layoutPosition ->
             if (listItem is ListSection) {
                 setupListSection(itemView, listItem, position)
             } else if (listItem is ListEvent) {
                 setupListEvent(itemView, listItem)
             }
         }
-        bindViewHolder(holder, position, view)
+        bindViewHolder(holder)
     }
 
     override fun getItemCount() = listItems.size
@@ -101,8 +100,18 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
     override fun getItemViewType(position: Int) = if (listItems[position] is ListEvent) {
         val event = listItems[position] as ListEvent
         val detailField = if (replaceDescription) event.location else event.description
-        if (event.startTS == event.endTS && detailField.isEmpty()) {
+        if (detailField.isNotEmpty()) {
+            ITEM_EVENT
+        } else if (event.startTS == event.endTS) {
             ITEM_EVENT_SIMPLE
+        } else if (event.isAllDay) {
+            val startCode = Formatter.getDayCodeFromTS(event.startTS)
+            val endCode = Formatter.getDayCodeFromTS(event.endTS)
+            if (startCode == endCode) {
+                ITEM_EVENT_SIMPLE
+            } else {
+                ITEM_EVENT
+            }
         } else {
             ITEM_EVENT
         }
@@ -127,6 +136,7 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
 
     private fun setupListEvent(view: View, listEvent: ListEvent) {
         view.apply {
+            event_item_frame.isSelected = selectedKeys.contains(listEvent.id)
             event_item_title.text = listEvent.title
             event_item_description?.text = if (replaceDescription) listEvent.location else listEvent.description
             event_item_start.text = if (listEvent.isAllDay) allDayString else Formatter.getTimeFromTS(context, listEvent.startTS)
@@ -185,30 +195,12 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
         }
     }
 
-    private fun shareEvents() {
-        val eventIds = ArrayList<Int>(selectedPositions.size)
-        selectedPositions.forEach {
-            val item = listItems[it]
-            if (item is ListEvent) {
-                eventIds.add(item.id)
-            }
-        }
-        activity.shareEvents(eventIds.distinct())
-    }
+    private fun shareEvents() = activity.shareEvents(selectedKeys.distinct())
 
     private fun askConfirmDelete() {
-        val eventIds = ArrayList<Int>(selectedPositions.size)
-        val timestamps = ArrayList<Int>(selectedPositions.size)
-        val eventsToDelete = ArrayList<ListEvent>(selectedPositions.size)
-
-        selectedPositions.sortedDescending().forEach {
-            val item = listItems[it]
-            if (item is ListEvent) {
-                eventIds.add(item.id)
-                timestamps.add(item.startTS)
-                eventsToDelete.add(item)
-            }
-        }
+        val eventIds = selectedKeys.toMutableList()
+        val eventsToDelete = listItems.filter { selectedKeys.contains((it as? ListEvent)?.id) } as List<ListEvent>
+        val timestamps = eventsToDelete.mapNotNull { (it as? ListEvent)?.startTS }
 
         val hasRepeatableEvent = eventsToDelete.any { it.isRepeatable }
         DeleteEventDialog(activity, eventIds, hasRepeatableEvent) {

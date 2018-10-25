@@ -49,7 +49,7 @@
     <string name="update_one_only">只更新選擇的事件</string>
     <string name="update_all_occurrences">更新全部事件</string>
     <string name="repeat_till_date">重複直到某日</string>
-    <string name="stop_repeating_after_x">Stop repeating after x occurrences</string>
+    <string name="stop_repeating_after_x">經過x次後停止重複</string>
     <string name="repeat_forever">永遠重複</string>
     <string name="times">次</string>
     <string name="repeat">重複</string>
@@ -164,10 +164,12 @@
     <string name="alarm_stream">鬧鐘</string>
     <string name="notification_stream">通知</string>
     <string name="ring_stream">鈴聲</string>
-    <string name="use_last_event_reminders">Use the last events\' reminders as the default for new event</string>
-    <string name="default_reminder_1">Default reminder 1</string>
-    <string name="default_reminder_2">Default reminder 2</string>
-    <string name="default_reminder_3">Default reminder 3</string>
+    <string name="use_last_event_reminders">使用最後活動的提醒作為新活動的預設</string>
+    <string name="default_reminder_1">預設提醒1</string>
+    <string name="default_reminder_2">預設提醒2</string>
+    <string name="default_reminder_3">預設提醒3</string>
+    <string name="view_to_open_from_widget">View to open from the event list widget</string>
+    <string name="last_view">Last view</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -180,6 +182,7 @@
     <string name="editing_calendar_failed">編輯行事曆失敗</string>
     <string name="syncing">同步中…</string>
     <string name="synchronization_completed">同步完成</string>
+    <string name="select_a_different_caldav_color">Select a different color (might be applied locally only)</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->

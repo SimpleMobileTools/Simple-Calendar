@@ -164,10 +164,12 @@
     <string name="alarm_stream">Alarme</string>
     <string name="notification_stream">Notificação</string>
     <string name="ring_stream">Toque</string>
-    <string name="use_last_event_reminders">Use the last events\' reminders as the default for new event</string>
-    <string name="default_reminder_1">Default reminder 1</string>
-    <string name="default_reminder_2">Default reminder 2</string>
-    <string name="default_reminder_3">Default reminder 3</string>
+    <string name="use_last_event_reminders">Utilize os lembretes dos últimos eventos como definição para os novos eventos</string>
+    <string name="default_reminder_1">Lembrete 1</string>
+    <string name="default_reminder_2">Lembrete 2</string>
+    <string name="default_reminder_3">Lembrete 3</string>
+    <string name="view_to_open_from_widget">View to open from the event list widget</string>
+    <string name="last_view">Last view</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -180,6 +182,7 @@
     <string name="editing_calendar_failed">Falha ao editar o calendário</string>
     <string name="syncing">A sincronizar…</string>
     <string name="synchronization_completed">Sincronização terminada</string>
+    <string name="select_a_different_caldav_color">Select a different color (might be applied locally only)</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->

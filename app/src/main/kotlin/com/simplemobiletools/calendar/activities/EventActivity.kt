@@ -1,16 +1,15 @@
 package com.simplemobiletools.calendar.activities
 
-import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.support.v4.app.NotificationManagerCompat
 import android.text.method.LinkMovementMethod
 import android.view.Menu
 import android.view.MenuItem
 import android.view.WindowManager
+import androidx.core.app.NotificationManagerCompat
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.dialogs.*
 import com.simplemobiletools.calendar.extensions.*
@@ -94,9 +93,11 @@ class EventActivity : SimpleActivity() {
             cancelNotification(mEvent.id)
         } else {
             mEvent = Event()
-            mReminder1Minutes = if (config.usePreviousEventReminders) config.lastEventReminderMinutes else config.defaultReminder1
-            mReminder2Minutes = if (config.usePreviousEventReminders) config.lastEventReminderMinutes2 else config.defaultReminder2
-            mReminder3Minutes = if (config.usePreviousEventReminders) config.lastEventReminderMinutes3 else config.defaultReminder3
+            config.apply {
+                mReminder1Minutes = if (usePreviousEventReminders) lastEventReminderMinutes1 else defaultReminder1
+                mReminder2Minutes = if (usePreviousEventReminders) lastEventReminderMinutes2 else defaultReminder2
+                mReminder3Minutes = if (usePreviousEventReminders) lastEventReminderMinutes3 else defaultReminder3
+            }
 
             if (savedInstanceState == null) {
                 setupNewEvent()
@@ -121,7 +122,7 @@ class EventActivity : SimpleActivity() {
         event_repetition_limit_holder.setOnClickListener { showRepetitionTypePicker() }
 
         event_reminder_1.setOnClickListener {
-            handleNotificationAvailability() {
+            handleNotificationAvailability {
                 if (config.wasAlarmWarningShown) {
                     showReminder1Dialog()
                 } else {
@@ -243,6 +244,7 @@ class EventActivity : SimpleActivity() {
 
     private fun setupNewEvent() {
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
+        event_title.requestFocus()
         updateActionBarTitle(getString(R.string.new_event))
         val isLastCaldavCalendarOK = config.caldavSync && config.getSyncedCalendarIdsAsList().contains(config.lastUsedCaldavCalendarId.toString())
         mEventCalendarId = if (isLastCaldavCalendarOK) config.lastUsedCaldavCalendarId else STORED_LOCALLY_ONLY
@@ -620,6 +622,7 @@ class EventActivity : SimpleActivity() {
         event_type_holder.beVisibleIf(currentCalendar == null)
         event_caldav_calendar_divider.beVisibleIf(currentCalendar == null)
         event_caldav_calendar_email.beGoneIf(currentCalendar == null)
+        event_caldav_calendar_color.beGoneIf(currentCalendar == null)
 
         if (currentCalendar == null) {
             mEventCalendarId = STORED_LOCALLY_ONLY
@@ -634,6 +637,10 @@ class EventActivity : SimpleActivity() {
             }
         } else {
             event_caldav_calendar_email.text = currentCalendar.accountName
+
+            val calendarColor = dbHelper.getEventTypeWithCalDAVCalendarId(currentCalendar.id)?.color ?: currentCalendar.color
+            event_caldav_calendar_color.setFillWithStroke(calendarColor, config.backgroundColor)
+
             event_caldav_calendar_name.apply {
                 text = currentCalendar.displayName
                 setPadding(paddingLeft, paddingTop, paddingRight, resources.getDimension(R.dimen.tiny_margin).toInt())
@@ -699,10 +706,10 @@ class EventActivity : SimpleActivity() {
         val newEventType = if (!config.caldavSync || config.lastUsedCaldavCalendarId == 0 || mEventCalendarId == STORED_LOCALLY_ONLY) {
             mEventTypeId
         } else {
-            dbHelper.getEventTypeWithCalDAVCalendarId(config.lastUsedCaldavCalendarId)?.id ?: config.lastUsedLocalEventTypeId
+            dbHelper.getEventTypeWithCalDAVCalendarId(mEventCalendarId)?.id ?: config.lastUsedLocalEventTypeId
         }
 
-        val newSource = if (!config.caldavSync || config.lastUsedCaldavCalendarId == 0 || mEventCalendarId == STORED_LOCALLY_ONLY) {
+        val newSource = if (!config.caldavSync || mEventCalendarId == STORED_LOCALLY_ONLY) {
             config.lastUsedLocalEventTypeId = newEventType
             SOURCE_SIMPLE_CALENDAR
         } else {
@@ -716,7 +723,7 @@ class EventActivity : SimpleActivity() {
 
         config.apply {
             if (usePreviousEventReminders) {
-                lastEventReminderMinutes = reminder1
+                lastEventReminderMinutes1 = reminder1
                 lastEventReminderMinutes2 = reminder2
                 lastEventReminderMinutes3 = reminder3
             }
@@ -856,17 +863,13 @@ class EventActivity : SimpleActivity() {
         }
     }
 
-    @SuppressLint("NewApi")
     private fun setupStartDate() {
         hideKeyboard()
         config.backgroundColor.getContrastColor()
         val datepicker = DatePickerDialog(this, mDialogTheme, startDateSetListener, mEventStartDateTime.year, mEventStartDateTime.monthOfYear - 1,
                 mEventStartDateTime.dayOfMonth)
 
-        if (isLollipopPlus()) {
-            datepicker.datePicker.firstDayOfWeek = if (config.isSundayFirst) Calendar.SUNDAY else Calendar.MONDAY
-        }
-
+        datepicker.datePicker.firstDayOfWeek = if (config.isSundayFirst) Calendar.SUNDAY else Calendar.MONDAY
         datepicker.show()
     }
 
@@ -875,16 +878,12 @@ class EventActivity : SimpleActivity() {
         TimePickerDialog(this, mDialogTheme, startTimeSetListener, mEventStartDateTime.hourOfDay, mEventStartDateTime.minuteOfHour, config.use24HourFormat).show()
     }
 
-    @SuppressLint("NewApi")
     private fun setupEndDate() {
         hideKeyboard()
         val datepicker = DatePickerDialog(this, mDialogTheme, endDateSetListener, mEventEndDateTime.year, mEventEndDateTime.monthOfYear - 1,
                 mEventEndDateTime.dayOfMonth)
 
-        if (isLollipopPlus()) {
-            datepicker.datePicker.firstDayOfWeek = if (config.isSundayFirst) Calendar.SUNDAY else Calendar.MONDAY
-        }
-
+        datepicker.datePicker.firstDayOfWeek = if (config.isSundayFirst) Calendar.SUNDAY else Calendar.MONDAY
         datepicker.show()
     }
 

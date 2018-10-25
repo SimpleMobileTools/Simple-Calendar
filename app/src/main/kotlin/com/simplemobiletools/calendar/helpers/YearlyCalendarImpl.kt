@@ -3,7 +3,6 @@ package com.simplemobiletools.calendar.helpers
 import android.content.Context
 import android.util.SparseArray
 import com.simplemobiletools.calendar.extensions.dbHelper
-import com.simplemobiletools.calendar.extensions.getFilteredEvents
 import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.interfaces.YearlyCalendar
 import com.simplemobiletools.calendar.models.DayYearly
@@ -17,16 +16,15 @@ class YearlyCalendarImpl(val callback: YearlyCalendar, val context: Context, val
         val startDateTime = DateTime().withTime(0, 0, 0, 0).withDate(year, 1, 1)
         val startTS = startDateTime.seconds()
         val endTS = startDateTime.plusYears(1).minusSeconds(1).seconds()
-        context.dbHelper.getEvents(startTS, endTS) {
+        context.dbHelper.getEvents(startTS, endTS, applyTypeFilter = true) {
             gotEvents(it)
         }
     }
 
     private fun gotEvents(events: MutableList<Event>) {
-        val filtered = context.getFilteredEvents(events)
         val arr = SparseArray<ArrayList<DayYearly>>(12)
 
-        filtered.forEach {
+        events.forEach {
             val startDateTime = Formatter.getDateTimeFromTS(it.startTS)
             markDay(arr, startDateTime, it)
 
@@ -41,7 +39,7 @@ class YearlyCalendarImpl(val callback: YearlyCalendar, val context: Context, val
                 }
             }
         }
-        callback.updateYearlyCalendar(arr, filtered.hashCode())
+        callback.updateYearlyCalendar(arr, events.hashCode())
     }
 
     private fun markDay(arr: SparseArray<ArrayList<DayYearly>>, dateTime: DateTime, event: Event) {

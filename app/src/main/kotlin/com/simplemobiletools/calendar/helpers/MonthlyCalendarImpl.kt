@@ -3,7 +3,6 @@ package com.simplemobiletools.calendar.helpers
 import android.content.Context
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
-import com.simplemobiletools.calendar.extensions.getFilteredEvents
 import com.simplemobiletools.calendar.extensions.seconds
 import com.simplemobiletools.calendar.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.models.DayMonthly
@@ -12,22 +11,20 @@ import org.joda.time.DateTime
 import java.util.*
 import kotlin.collections.ArrayList
 
-class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context) {
+class MonthlyCalendarImpl(val callback: MonthlyCalendar, val context: Context) {
     private val DAYS_CNT = 42
     private val YEAR_PATTERN = "YYYY"
 
     private val mToday: String = DateTime().toString(Formatter.DAYCODE_PATTERN)
     private var mEvents = ArrayList<Event>()
-    private var mFilterEventTypes = true
 
     lateinit var mTargetDate: DateTime
 
-    fun updateMonthlyCalendar(targetDate: DateTime, filterEventTypes: Boolean = true) {
-        mFilterEventTypes = filterEventTypes
+    fun updateMonthlyCalendar(targetDate: DateTime) {
         mTargetDate = targetDate
         val startTS = mTargetDate.minusDays(7).seconds()
         val endTS = mTargetDate.plusDays(43).seconds()
-        mContext.dbHelper.getEvents(startTS, endTS) {
+        context.dbHelper.getEvents(startTS, endTS, applyTypeFilter = true) {
             gotEvents(it)
         }
     }
@@ -40,7 +37,7 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
         val days = ArrayList<DayMonthly>(DAYS_CNT)
         val currMonthDays = mTargetDate.dayOfMonth().maximumValue
         var firstDayIndex = mTargetDate.withDayOfMonth(1).dayOfWeek
-        if (!mContext.config.isSundayFirst)
+        if (!context.config.isSundayFirst)
             firstDayIndex -= 1
         val prevMonthDays = mTargetDate.minusMonths(1).dayOfMonth().maximumValue
 
@@ -79,13 +76,13 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
         if (markDaysWithEvents) {
             markDaysWithEvents(days)
         } else {
-            mCallback.updateMonthlyCalendar(mContext, monthName, days, false, mTargetDate)
+            callback.updateMonthlyCalendar(context, monthName, days, false, mTargetDate)
         }
     }
 
     // it works more often than not, dont touch
     private fun markDaysWithEvents(days: ArrayList<DayMonthly>) {
-        mContext.dbHelper.getEventTypes {
+        context.dbHelper.getEventTypes {
             val dayEvents = HashMap<String, ArrayList<Event>>()
             mEvents.forEach {
                 val startDateTime = Formatter.getDateTimeFromTS(it.startTS)
@@ -110,7 +107,7 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
             days.filter { dayEvents.keys.contains(it.code) }.forEach {
                 it.dayEvents = dayEvents[it.code]!!
             }
-            mCallback.updateMonthlyCalendar(mContext, monthName, days, true, mTargetDate)
+            callback.updateMonthlyCalendar(context, monthName, days, true, mTargetDate)
         }
     }
 
@@ -121,7 +118,7 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
 
     private val monthName: String
         get() {
-            var month = Formatter.getMonthName(mContext, mTargetDate.monthOfYear)
+            var month = Formatter.getMonthName(context, mTargetDate.monthOfYear)
             val targetYear = mTargetDate.toString(YEAR_PATTERN)
             if (targetYear != DateTime().toString(YEAR_PATTERN)) {
                 month += " $targetYear"
@@ -130,12 +127,7 @@ class MonthlyCalendarImpl(val mCallback: MonthlyCalendar, val mContext: Context)
         }
 
     private fun gotEvents(events: ArrayList<Event>) {
-        mEvents = if (mFilterEventTypes) {
-            mContext.getFilteredEvents(events)
-        } else {
-            events
-        }
-
+        mEvents = events
         getDays(true)
     }
 }

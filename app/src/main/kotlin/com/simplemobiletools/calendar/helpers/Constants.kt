@@ -14,13 +14,14 @@ const val WEEK_START_TIMESTAMP = "week_start_timestamp"
 const val NEW_EVENT_SET_HOUR_DURATION = "new_event_set_hour_duration"
 const val WEEK_START_DATE_TIME = "week_start_date_time"
 const val CALDAV = "Caldav"
-const val OPEN_MONTH = "open_month"
+const val VIEW_TO_OPEN = "view_to_open"
 
 const val MONTHLY_VIEW = 1
 const val YEARLY_VIEW = 2
 const val EVENTS_LIST_VIEW = 3
 const val WEEKLY_VIEW = 4
 const val DAILY_VIEW = 5
+const val LAST_VIEW = 6
 
 const val REMINDER_OFF = -1
 
@@ -46,6 +47,7 @@ const val LAST_EVENT_REMINDER_MINUTES_2 = "reminder_minutes_2"
 const val LAST_EVENT_REMINDER_MINUTES_3 = "reminder_minutes_3"
 const val DISPLAY_EVENT_TYPES = "display_event_types"
 const val FONT_SIZE = "font_size"
+const val LIST_WIDGET_VIEW_TO_OPEN = "list_widget_view_to_open"
 const val CALDAV_SYNC = "caldav_sync"
 const val CALDAV_SYNCED_CALENDAR_IDS = "caldav_synced_calendar_ids"
 const val LAST_USED_CALDAV_CALENDAR = "last_used_caldav_calendar"
@@ -62,6 +64,7 @@ const val USE_PREVIOUS_EVENT_REMINDERS = "use_previous_event_reminders"
 const val DEFAULT_REMINDER_1 = "default_reminder_1"
 const val DEFAULT_REMINDER_2 = "default_reminder_2"
 const val DEFAULT_REMINDER_3 = "default_reminder_3"
+const val PULL_TO_REFRESH = "pull_to_refresh"
 
 // repeat_rule for monthly and yearly repetition
 const val REPEAT_SAME_DAY = 1                           // i.e. 25th every month, or 3rd june (if yearly repetition)

@@ -2,10 +2,10 @@ package com.simplemobiletools.calendar.dialogs
 
 import android.app.Activity
 import android.graphics.Color
-import android.support.v7.app.AlertDialog
 import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import androidx.appcompat.app.AlertDialog
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.dbHelper
@@ -29,6 +29,11 @@ class SelectEventCalendarDialog(val activity: Activity, val calendars: List<CalD
         activity.dbHelper.getEventTypes {
             activity.runOnUiThread {
                 calendars.forEach {
+                    val localEventType = activity.dbHelper.getEventTypeWithCalDAVCalendarId(it.id)
+                    if (localEventType != null) {
+                        it.color = localEventType.color
+                    }
+
                     addRadioButton(it.getFullTitle(), it.id, it.color)
                 }
                 addRadioButton(activity.getString(R.string.store_locally_only), STORED_LOCALLY_ONLY, Color.TRANSPARENT)
@@ -51,8 +56,9 @@ class SelectEventCalendarDialog(val activity: Activity, val calendars: List<CalD
             id = typeId
         }
 
-        if (color != Color.TRANSPARENT)
+        if (typeId != STORED_LOCALLY_ONLY) {
             view.dialog_radio_color.setFillWithStroke(color, activity.config.backgroundColor)
+        }
 
         view.setOnClickListener { viewClicked(typeId) }
         radioGroup.addView(view, RadioGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT))

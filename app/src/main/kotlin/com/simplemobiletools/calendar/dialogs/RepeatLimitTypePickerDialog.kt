@@ -1,10 +1,9 @@
 package com.simplemobiletools.calendar.dialogs
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.DatePickerDialog
-import android.support.v7.app.AlertDialog
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.extensions.seconds
@@ -13,7 +12,6 @@ import com.simplemobiletools.calendar.helpers.getNowSeconds
 import com.simplemobiletools.commons.extensions.getDialogTheme
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import com.simplemobiletools.commons.extensions.value
-import com.simplemobiletools.commons.helpers.isLollipopPlus
 import kotlinx.android.synthetic.main.dialog_repeat_limit_type_picker.view.*
 import org.joda.time.DateTime
 import java.util.*
@@ -25,14 +23,18 @@ class RepeatLimitTypePickerDialog(val activity: Activity, var repeatLimit: Int, 
     init {
         view = activity.layoutInflater.inflate(R.layout.dialog_repeat_limit_type_picker, null).apply {
             repeat_type_date.setOnClickListener { showRepetitionLimitDialog() }
-            repeat_type_forever.setOnClickListener { callback(0); dialog.dismiss() }
             repeat_type_count.setOnClickListener { dialog_radio_view.check(R.id.repeat_type_x_times) }
+            repeat_type_forever.setOnClickListener {
+                callback(0)
+                dialog.dismiss()
+            }
         }
 
         view.dialog_radio_view.check(getCheckedItem())
 
-        if (repeatLimit in 1..startTS)
+        if (repeatLimit in 1..startTS) {
             repeatLimit = startTS
+        }
 
         updateRepeatLimitText()
 
@@ -80,16 +82,12 @@ class RepeatLimitTypePickerDialog(val activity: Activity, var repeatLimit: Int, 
         dialog.dismiss()
     }
 
-    @SuppressLint("NewApi")
     private fun showRepetitionLimitDialog() {
         val repeatLimitDateTime = Formatter.getDateTimeFromTS(if (repeatLimit != 0) repeatLimit else getNowSeconds())
         val datepicker = DatePickerDialog(activity, activity.getDialogTheme(), repetitionLimitDateSetListener, repeatLimitDateTime.year,
                 repeatLimitDateTime.monthOfYear - 1, repeatLimitDateTime.dayOfMonth)
 
-        if (isLollipopPlus()) {
-            datepicker.datePicker.firstDayOfWeek = if (activity.config.isSundayFirst) Calendar.SUNDAY else Calendar.MONDAY
-        }
-
+        datepicker.datePicker.firstDayOfWeek = if (activity.config.isSundayFirst) Calendar.SUNDAY else Calendar.MONDAY
         datepicker.show()
     }
 

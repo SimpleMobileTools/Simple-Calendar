@@ -14,13 +14,13 @@ import android.media.AudioAttributes
 import android.net.Uri
 import android.os.Bundle
 import android.provider.CalendarContract
-import android.support.v4.app.AlarmManagerCompat
-import android.support.v4.app.NotificationCompat
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.app.AlarmManagerCompat
+import androidx.core.app.NotificationCompat
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.EventActivity
 import com.simplemobiletools.calendar.activities.SimpleActivity
@@ -85,7 +85,7 @@ fun Context.scheduleNextEventReminder(event: Event, dbHelper: DBHelper, activity
 
     val now = getNowSeconds()
     val reminderSeconds = event.getReminders().reversed().map { it * 60 }
-    dbHelper.getEvents(now, now + YEAR, event.id) {
+    dbHelper.getEvents(now, now + YEAR, event.id, false) {
         if (it.isNotEmpty()) {
             for (curEvent in it) {
                 for (curReminder in reminderSeconds) {
@@ -144,11 +144,6 @@ fun Context.getRepetitionText(seconds: Int) = when (seconds) {
             else -> resources.getQuantityString(R.plurals.days, seconds / DAY, seconds / DAY)
         }
     }
-}
-
-fun Context.getFilteredEvents(events: List<Event>): ArrayList<Event> {
-    val displayEventTypes = config.displayEventTypes
-    return events.filter { displayEventTypes.contains(it.eventType.toString()) } as ArrayList<Event>
 }
 
 fun Context.notifyRunningEvents() {
@@ -453,7 +448,7 @@ fun Context.handleEventDeleting(eventIds: List<Int>, timestamps: List<Int>, acti
             }
         }
         DELETE_ALL_OCCURRENCES -> {
-            val eventIDs = Array(eventIds.size, { i -> (eventIds[i].toString()) })
+            val eventIDs = Array(eventIds.size) { i -> (eventIds[i].toString()) }
             dbHelper.deleteEvents(eventIDs, true)
         }
     }

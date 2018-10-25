@@ -1,6 +1,6 @@
 package com.simplemobiletools.calendar.dialogs
 
-import android.support.v7.app.AlertDialog
+import androidx.appcompat.app.AlertDialog
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.adapters.FilterEventTypeAdapter
@@ -19,7 +19,7 @@ class FilterEventTypesDialog(val activity: SimpleActivity, val callback: () -> U
         view.filter_event_types_list.adapter = FilterEventTypeAdapter(activity, eventTypes, displayEventTypes)
 
         dialog = AlertDialog.Builder(activity)
-                .setPositiveButton(R.string.ok, { dialogInterface, i -> confirmEventTypes() })
+                .setPositiveButton(R.string.ok) { dialogInterface, i -> confirmEventTypes() }
                 .setNegativeButton(R.string.cancel, null)
                 .create().apply {
                     activity.setupDialogStuff(view, this, R.string.filter_events_by_type)

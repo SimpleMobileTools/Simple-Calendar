@@ -30,7 +30,6 @@ class CalDAVHandler(val context: Context) {
                 title = calendar.displayName
                 caldavDisplayName = calendar.displayName
                 caldavEmail = calendar.accountName
-                color = calendar.color
                 context.dbHelper.updateLocalEventType(this)
             }
 
@@ -81,14 +80,13 @@ class CalDAVHandler(val context: Context) {
         return calendars
     }
 
-    fun updateCalDAVCalendar(eventType: EventType): Boolean {
+    fun updateCalDAVCalendar(eventType: EventType) {
         val uri = CalendarContract.Calendars.CONTENT_URI
         val values = fillCalendarContentValues(eventType)
         val newUri = ContentUris.withAppendedId(uri, eventType.caldavCalendarId.toLong())
-        return try {
-            context.contentResolver.update(newUri, values, null, null) == 1
+        try {
+            context.contentResolver.update(newUri, values, null, null)
         } catch (e: IllegalArgumentException) {
-            false
         }
     }
 
@@ -117,53 +115,6 @@ class CalDAVHandler(val context: Context) {
         }
 
         return -1
-    }
-
-    // it doesnt work properly, needs better SyncAdapter handling
-    private fun insertNewColor(eventType: EventType): Int {
-        val maxId = getMaxColorId(eventType) + 1
-
-        val values = ContentValues().apply {
-            put(CalendarContract.Colors.COLOR_KEY, maxId)
-            put(CalendarContract.Colors.COLOR, eventType.color)
-            put(CalendarContract.Colors.ACCOUNT_NAME, eventType.caldavEmail)
-            put(CalendarContract.Colors.ACCOUNT_TYPE, "com.google")
-            put(CalendarContract.Colors.COLOR_TYPE, CalendarContract.Colors.TYPE_CALENDAR)
-        }
-
-        val uri = CalendarContract.Colors.CONTENT_URI.buildUpon()
-                .appendQueryParameter(CalendarContract.CALLER_IS_SYNCADAPTER, "true")
-                .appendQueryParameter(CalendarContract.Calendars.ACCOUNT_NAME, eventType.caldavEmail)
-                .appendQueryParameter(CalendarContract.Calendars.ACCOUNT_TYPE, "com.google")
-                .build()
-
-        return if (context.contentResolver.insert(uri, values) != null) {
-            maxId
-        } else {
-            0
-        }
-    }
-
-    private fun getMaxColorId(eventType: EventType): Int {
-        val uri = CalendarContract.Colors.CONTENT_URI
-        val projection = arrayOf(CalendarContract.Colors.COLOR_KEY, CalendarContract.Colors.COLOR)
-        val selection = "${CalendarContract.Colors.COLOR_TYPE} = ? AND ${CalendarContract.Colors.ACCOUNT_NAME} = ?"
-        val selectionArgs = arrayOf(CalendarContract.Colors.TYPE_CALENDAR.toString(), eventType.caldavEmail)
-        var maxId = 1
-
-        var cursor: Cursor? = null
-        try {
-            cursor = context.contentResolver.query(uri, projection, selection, selectionArgs, null)
-            if (cursor != null && cursor.moveToFirst()) {
-                do {
-                    maxId = Math.max(maxId, cursor.getIntValue(CalendarContract.Colors.COLOR_KEY))
-                } while (cursor.moveToNext())
-            }
-        } finally {
-            cursor?.close()
-        }
-
-        return maxId
     }
 
     fun getAvailableCalDAVCalendarColors(eventType: EventType): ArrayList<Int> {
@@ -309,9 +260,7 @@ class CalDAVHandler(val context: Context) {
             }
         }
 
-        eventIdsToDelete.forEach {
-            context.dbHelper.deleteEvents(eventIdsToDelete.toTypedArray(), false)
-        }
+        context.dbHelper.deleteEvents(eventIdsToDelete.toTypedArray(), false)
     }
 
     fun insertCalDAVEvent(event: Event) {

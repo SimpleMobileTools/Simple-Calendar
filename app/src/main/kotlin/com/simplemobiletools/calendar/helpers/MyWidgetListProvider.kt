@@ -18,7 +18,7 @@ import org.joda.time.DateTime
 
 class MyWidgetListProvider : AppWidgetProvider() {
     private val NEW_EVENT = "new_event"
-    private val LAUNCH_TODAY = "launch_today"
+    private val LAUNCH_CAL = "launch_cal"
 
     override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
         performUpdate(context)
@@ -44,7 +44,7 @@ class MyWidgetListProvider : AppWidgetProvider() {
 
             views.setImageViewBitmap(R.id.widget_event_new_event, context.resources.getColoredBitmap(R.drawable.ic_plus, textColor))
             setupIntent(context, views, NEW_EVENT, R.id.widget_event_new_event)
-            setupIntent(context, views, LAUNCH_TODAY, R.id.widget_event_list_today)
+            setupIntent(context, views, LAUNCH_CAL, R.id.widget_event_list_today)
 
             Intent(context, WidgetService::class.java).apply {
                 data = Uri.parse(this.toUri(Intent.URI_INTENT_SCHEME))
@@ -74,14 +74,15 @@ class MyWidgetListProvider : AppWidgetProvider() {
     override fun onReceive(context: Context, intent: Intent) {
         when (intent.action) {
             NEW_EVENT -> context.launchNewEventIntent()
-            LAUNCH_TODAY -> launchDayActivity(context)
+            LAUNCH_CAL -> launchCalenderInDefaultView(context)
             else -> super.onReceive(context, intent)
         }
     }
 
-    private fun launchDayActivity(context: Context) {
+    private fun launchCalenderInDefaultView(context: Context) {
         (context.getLaunchIntent() ?: Intent(context, SplashActivity::class.java)).apply {
             putExtra(DAY_CODE, Formatter.getDayCodeFromDateTime(DateTime()))
+            putExtra(VIEW_TO_OPEN, context.config.listWidgetViewToOpen)
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             context.startActivity(this)
         }

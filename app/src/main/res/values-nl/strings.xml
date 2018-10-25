@@ -168,6 +168,8 @@
     <string name="default_reminder_1">Standaardherinnering 1</string>
     <string name="default_reminder_2">Standaardherinnering 2</string>
     <string name="default_reminder_3">Standaardherinnering 3</string>
+    <string name="view_to_open_from_widget">Weergave bij openen vanuit widget met afsprakenlijst</string>
+    <string name="last_view">Last view</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -180,6 +182,7 @@
     <string name="editing_calendar_failed">Agenda bijwerken mislukt</string>
     <string name="syncing">Synchroniseren…</string>
     <string name="synchronization_completed">Synchroniseren voltooid</string>
+    <string name="select_a_different_caldav_color">Kies een andere kleur (mogelijk alleen voor dit apparaat)</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->

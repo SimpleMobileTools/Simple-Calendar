@@ -1,87 +1,69 @@
 package com.simplemobiletools.calendar.adapters
 
-import android.support.v7.widget.RecyclerView
-import android.util.SparseArray
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import com.simplemobiletools.calendar.R
 import com.simplemobiletools.calendar.activities.SimpleActivity
 import com.simplemobiletools.calendar.extensions.config
 import com.simplemobiletools.calendar.models.EventType
 import com.simplemobiletools.commons.extensions.getAdjustedPrimaryColor
 import com.simplemobiletools.commons.extensions.setFillWithStroke
-import com.simplemobiletools.commons.interfaces.MyAdapterListener
 import kotlinx.android.synthetic.main.filter_event_type_view.view.*
 import java.util.*
 
 class FilterEventTypeAdapter(val activity: SimpleActivity, val eventTypes: List<EventType>, val displayEventTypes: Set<String>) :
         RecyclerView.Adapter<FilterEventTypeAdapter.ViewHolder>() {
-    private val itemViews = SparseArray<View>()
-    private val selectedPositions = HashSet<Int>()
+    private val selectedKeys = HashSet<Int>()
 
     init {
         eventTypes.forEachIndexed { index, eventType ->
             if (displayEventTypes.contains(eventType.id.toString())) {
-                selectedPositions.add(index)
+                selectedKeys.add(eventType.id)
             }
         }
     }
 
-    private fun toggleItemSelection(select: Boolean, pos: Int) {
+    private fun toggleItemSelection(select: Boolean, eventType: EventType, pos: Int) {
         if (select) {
-            if (itemViews[pos] != null) {
-                selectedPositions.add(pos)
-            }
+            selectedKeys.add(eventType.id)
         } else {
-            selectedPositions.remove(pos)
+            selectedKeys.remove(eventType.id)
         }
 
-        itemViews[pos]?.filter_event_type_checkbox?.isChecked = select
+        notifyItemChanged(pos)
     }
 
-    private val adapterListener = object : MyAdapterListener {
-        override fun toggleItemSelectionAdapter(select: Boolean, position: Int) {
-            toggleItemSelection(select, position)
-        }
-
-        override fun getSelectedPositions() = selectedPositions
-
-        override fun itemLongClicked(position: Int) {}
-    }
-
-    fun getSelectedItemsSet(): HashSet<String> {
-        val selectedItemsSet = HashSet<String>(selectedPositions.size)
-        selectedPositions.forEach { selectedItemsSet.add(eventTypes[it].id.toString()) }
-        return selectedItemsSet
-    }
+    fun getSelectedItemsSet() = selectedKeys.asSequence().map { it.toString() }.toHashSet()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = activity.layoutInflater.inflate(R.layout.filter_event_type_view, parent, false)
-        return ViewHolder(view, adapterListener, activity)
+        return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val eventType = eventTypes[position]
-        itemViews.put(position, holder.bindView(eventType))
-        toggleItemSelection(selectedPositions.contains(position), position)
+        holder.bindView(eventType)
     }
 
     override fun getItemCount() = eventTypes.size
 
-    class ViewHolder(view: View, val adapterListener: MyAdapterListener, val activity: SimpleActivity) : RecyclerView.ViewHolder(view) {
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun bindView(eventType: EventType): View {
+            val isSelected = selectedKeys.contains(eventType.id)
             itemView.apply {
+                filter_event_type_checkbox.isChecked = isSelected
                 filter_event_type_checkbox.setColors(activity.config.textColor, activity.getAdjustedPrimaryColor(), activity.config.backgroundColor)
                 filter_event_type_checkbox.text = eventType.getDisplayTitle()
                 filter_event_type_color.setFillWithStroke(eventType.color, activity.config.backgroundColor)
-                filter_event_type_holder.setOnClickListener { viewClicked(!filter_event_type_checkbox.isChecked) }
+                filter_event_type_holder.setOnClickListener { viewClicked(!isSelected, eventType) }
             }
 
             return itemView
         }
 
-        private fun viewClicked(select: Boolean) {
-            adapterListener.toggleItemSelectionAdapter(select, adapterPosition)
+        private fun viewClicked(select: Boolean, eventType: EventType) {
+            toggleItemSelection(select, eventType, adapterPosition)
         }
     }
 }

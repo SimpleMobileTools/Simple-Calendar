@@ -52,7 +52,7 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getInt(VIEW, MONTHLY_VIEW)
         set(view) = prefs.edit().putInt(VIEW, view).apply()
 
-    var lastEventReminderMinutes: Int
+    var lastEventReminderMinutes1: Int
         get() = prefs.getInt(LAST_EVENT_REMINDER_MINUTES, 10)
         set(lastEventReminderMinutes) = prefs.edit().putInt(LAST_EVENT_REMINDER_MINUTES, lastEventReminderMinutes).apply()
 
@@ -75,6 +75,10 @@ class Config(context: Context) : BaseConfig(context) {
     var fontSize: Int
         get() = prefs.getInt(FONT_SIZE, FONT_SIZE_MEDIUM)
         set(size) = prefs.edit().putInt(FONT_SIZE, size).apply()
+
+    var listWidgetViewToOpen: Int
+        get() = prefs.getInt(LIST_WIDGET_VIEW_TO_OPEN, DAILY_VIEW)
+        set(viewToOpenFromListWidget) = prefs.edit().putInt(LIST_WIDGET_VIEW_TO_OPEN, viewToOpenFromListWidget).apply()
 
     var caldavSync: Boolean
         get() = prefs.getBoolean(CALDAV_SYNC, false)
@@ -158,4 +162,8 @@ class Config(context: Context) : BaseConfig(context) {
     var defaultReminder3: Int
         get() = prefs.getInt(DEFAULT_REMINDER_3, REMINDER_OFF)
         set(defaultReminder3) = prefs.edit().putInt(DEFAULT_REMINDER_3, defaultReminder3).apply()
+
+    var pullToRefresh: Boolean
+        get() = prefs.getBoolean(PULL_TO_REFRESH, false)
+        set(pullToRefresh) = prefs.edit().putBoolean(PULL_TO_REFRESH, pullToRefresh).apply()
 }
