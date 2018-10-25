@@ -1,6 +1,11 @@
 Changelog
 ==========
 
+Version 5.1.1 *(2018-10-25)*
+----------------------------
+
+ * Fixing a crash related to pull-to-refresh swiping
+
 Version 5.1.0 *(2018-10-24)*
 ----------------------------
 
