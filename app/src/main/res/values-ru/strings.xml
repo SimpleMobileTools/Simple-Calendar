@@ -2,12 +2,12 @@
 <resources>
     <string name="app_name">Simple Calendar</string>
     <string name="app_launcher_name">Календарь</string>
-    <string name="change_view">Отображение</string>
-    <string name="daily_view">На день</string>
-    <string name="weekly_view">На неделю</string>
-    <string name="monthly_view">На месяц</string>
-    <string name="yearly_view">На год</string>
-    <string name="simple_event_list">Простой список событий</string>
+    <string name="change_view">Режим</string>
+    <string name="daily_view">День</string>
+    <string name="weekly_view">Неделя</string>
+    <string name="monthly_view">Месяц</string>
+    <string name="yearly_view">Год</string>
+    <string name="simple_event_list">Список событий</string>
     <string name="no_upcoming_events">Похоже, у вас нет предстоящих событий.</string>
     <string name="go_to_today">Сегодня</string>
 
@@ -26,7 +26,7 @@
     <string name="event_added">Событие успешно добавлено</string>
     <string name="event_updated">Событие успешно обновлено</string>
     <string name="filter_events_by_type">Фильтровать события по типу</string>
-    <string name="please_fill_location">Пожалуйста, введите место, которое будет показано на карте</string>
+    <string name="please_fill_location">Пожалуйста, укажите место, которое будет показано на карте</string>
     <string name="public_event_notification_text">Предстоящее событие</string>
 
     <!-- Event Repetition -->
