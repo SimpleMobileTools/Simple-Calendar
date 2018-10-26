@@ -49,7 +49,7 @@
     <string name="update_one_only">Mettre à jour seulement l\'occurrence sélectionnée</string>
     <string name="update_all_occurrences">Mettre à jour toutes les occurrences</string>
     <string name="repeat_till_date">Répéter jusqu\'à une date</string>
-    <string name="stop_repeating_after_x">Stop repeating after x occurrences</string>
+    <string name="stop_repeating_after_x">Arrêter de répéter après x occurrences</string>
     <string name="repeat_forever">Répéter éternellement</string>
     <string name="times">fois</string>
     <string name="repeat">Répéter</string>
@@ -164,12 +164,12 @@
     <string name="alarm_stream">Alarme</string>
     <string name="notification_stream">Notification</string>
     <string name="ring_stream">Ring</string>
-    <string name="use_last_event_reminders">Use the last events\' reminders as the default for new event</string>
-    <string name="default_reminder_1">Default reminder 1</string>
-    <string name="default_reminder_2">Default reminder 2</string>
-    <string name="default_reminder_3">Default reminder 3</string>
-    <string name="view_to_open_from_widget">View to open from the event list widget</string>
-    <string name="last_view">Last view</string>
+    <string name="use_last_event_reminders">Utiliser les rappels des derniers événements comme valeur par défaut pour un nouvel événement</string>
+    <string name="default_reminder_1">Rappel par défaut 1</string>
+    <string name="default_reminder_2">Rappel par défaut 2</string>
+    <string name="default_reminder_3">Rappel par défaut 3</string>
+    <string name="view_to_open_from_widget">Affichage à ouvrir à partir du widget de liste d'événements</string>
+    <string name="last_view">Dernière vue</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -182,7 +182,7 @@
     <string name="editing_calendar_failed">Édition du calendrier échouée</string>
     <string name="syncing">Synchronisation…</string>
     <string name="synchronization_completed">Synchronisation terminée</string>
-    <string name="select_a_different_caldav_color">Select a different color (might be applied locally only)</string>
+    <string name="select_a_different_caldav_color">Sélectionnez une couleur différente (peut être appliqué localement uniquement)</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
@@ -211,9 +211,9 @@
     <string name="faq_2_title">Puis-je synchroniser mes événements via Google Agenda, ou tout autre service proposant la synchronisation CalDAV ?</string>
 	<string name="faq_2_text">Oui, il faut juste activer l\'option « Synchronisation CalDAV » dans les paramètres de l\'application puis choisir les calendriers à synchroniser. Une application tierce pour gérer la synchronisation entre votre appareil et les serveurs sera par contre nécessaire. 
 		Dans le cas d\'un calendrier Google Agenda, l\'application officielle fera l\'affaire. Pour les autres calendriers, il vous faudra une application comme DAVdroid par exemple.</string>
-    <string name="faq_3_title">I see the visual reminders, but hear no audio. What can I do?</string>
-    <string name="faq_3_text">Not just displaying the actual reminder, but playing the audio is hugely affected by the system too. If you can\'t hear any sound, try going in the app settings,
-        pressing the \"Audio stream used by reminders\" option and changing it to a different value. If it still won\'t work, check your sound settings, if the particular stream isn\'t muted.</string>
+    <string name="faq_3_title">Je vois les rappels visuels, mais n'entends aucun son. Que puis-je faire?</string>
+    <string name="faq_3_text">Pas seulement l'affichage du rappel, mais la lecture de l'audio est également énormément affectée par le système. Si vous n’entendez aucun son, essayez d’entrer dans les paramètres de l’application,
+        en appuyant sur l'option "Flux audio utilisé par les rappels" et en la modifiant. Si cela ne fonctionne toujours pas, vérifiez vos paramètres audio, si le flux particulier n’est pas mis en sourdine.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
