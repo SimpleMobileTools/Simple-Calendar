@@ -168,7 +168,7 @@
     <string name="default_reminder_1">Rappel par défaut 1</string>
     <string name="default_reminder_2">Rappel par défaut 2</string>
     <string name="default_reminder_3">Rappel par défaut 3</string>
-    <string name="view_to_open_from_widget">Affichage à ouvrir à partir du widget de liste d'événements</string>
+    <string name="view_to_open_from_widget">Affichage à ouvrir à partir du widget de liste d\'événements</string>
     <string name="last_view">Dernière vue</string>
 
     <!-- CalDAV sync -->
@@ -211,9 +211,9 @@
     <string name="faq_2_title">Puis-je synchroniser mes événements via Google Agenda, ou tout autre service proposant la synchronisation CalDAV ?</string>
 	<string name="faq_2_text">Oui, il faut juste activer l\'option « Synchronisation CalDAV » dans les paramètres de l\'application puis choisir les calendriers à synchroniser. Une application tierce pour gérer la synchronisation entre votre appareil et les serveurs sera par contre nécessaire. 
 		Dans le cas d\'un calendrier Google Agenda, l\'application officielle fera l\'affaire. Pour les autres calendriers, il vous faudra une application comme DAVdroid par exemple.</string>
-    <string name="faq_3_title">Je vois les rappels visuels, mais n'entends aucun son. Que puis-je faire?</string>
-    <string name="faq_3_text">Pas seulement l'affichage du rappel, mais la lecture de l'audio est également énormément affectée par le système. Si vous n’entendez aucun son, essayez d’entrer dans les paramètres de l’application,
-        en appuyant sur l'option "Flux audio utilisé par les rappels" et en la modifiant. Si cela ne fonctionne toujours pas, vérifiez vos paramètres audio, si le flux particulier n’est pas mis en sourdine.</string>
+    <string name="faq_3_title">Je vois les rappels visuels, mais n\'entends aucun son. Que puis-je faire?</string>
+    <string name="faq_3_text">Pas seulement l\'affichage du rappel, mais la lecture de l\'audio est également énormément affectée par le système. Si vous n’entendez aucun son, essayez d’entrer dans les paramètres de l’application,
+        en appuyant sur l\'option "Flux audio utilisé par les rappels" et en la modifiant. Si cela ne fonctionne toujours pas, vérifiez vos paramètres audio, si le flux particulier n’est pas mis en sourdine.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
