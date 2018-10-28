@@ -22,7 +22,7 @@
     <string name="create_new_event">Skapa en ny händelse</string>
     <string name="duplicate_event">Duplicera händelse</string>
     <string name="title_empty">Titeln får inte vara tom</string>
-    <string name="end_before_start">Händelsen kan inte sluta innan den har startat</string>
+    <string name="end_before_start">Händelsen kan inte sluta innan den börjar</string>
     <string name="event_added">Händelsen har lagts till</string>
     <string name="event_updated">Händelsen har uppdaterats</string>
     <string name="filter_events_by_type">Filtrera händelser efter typ</string>
@@ -49,7 +49,7 @@
     <string name="update_one_only">Uppdatera bara den markerade förekomsten</string>
     <string name="update_all_occurrences">Uppdatera alla förekomster</string>
     <string name="repeat_till_date">Upprepa till ett datum</string>
-    <string name="stop_repeating_after_x">Stop repeating after x occurrences</string>
+    <string name="stop_repeating_after_x">Sluta upprepa efter x förekomster</string>
     <string name="repeat_forever">Upprepa alltid</string>
     <string name="times">gånger</string>
     <string name="repeat">Upprepa</string>
@@ -121,7 +121,7 @@
     <string name="event_types">Händelsetyper</string>
     <string name="add_new_type">Lägg till en ny typ</string>
     <string name="edit_type">Redigera typ</string>
-    <string name="type_already_exists">En typ med denna titel finns redan</string>
+    <string name="type_already_exists">Det finns redan en typ med samma titel</string>
     <string name="color">Färg</string>
     <string name="regular_event">Regelbunden händelse</string>
     <string name="cannot_delete_default_type">Standardhändelsetypen kan inte tas bort</string>
@@ -144,11 +144,11 @@
     <string name="start_day_at">Starta veckovydagen vid</string>
     <string name="end_day_at">Sluta veckovydagen vid</string>
     <string name="week_numbers">Visa veckonummer</string>
-    <string name="vibrate">Vibrera vid påminnelseaviseringen</string>
+    <string name="vibrate">Vibrera vid påminnelseaviseringar</string>
     <string name="reminder_sound">Påminnelseljud</string>
     <string name="no_ringtone_picker">Ingen app som kan ställa in en ringsignal hittades</string>
     <string name="no_ringtone_selected">Ingen</string>
-    <string name="day_end_before_start">Dagen kan inte börja innan den tar slut</string>
+    <string name="day_end_before_start">Dagen kan inte sluta innan den börjar</string>
     <string name="caldav_sync">CalDAV-synkronisering</string>
     <string name="event_lists">Händelselistor</string>
     <string name="display_past_events">Visa tidigare händelser</string>
@@ -164,12 +164,12 @@
     <string name="alarm_stream">Alarm</string>
     <string name="notification_stream">Avisering</string>
     <string name="ring_stream">Ring</string>
-    <string name="use_last_event_reminders">Use the last events\' reminders as the default for new event</string>
-    <string name="default_reminder_1">Default reminder 1</string>
-    <string name="default_reminder_2">Default reminder 2</string>
-    <string name="default_reminder_3">Default reminder 3</string>
-    <string name="view_to_open_from_widget">View to open from the event list widget</string>
-    <string name="last_view">Last view</string>
+    <string name="use_last_event_reminders">Använd den senaste händelsens påminnelser som standard för nya händelser</string>
+    <string name="default_reminder_1">Standardpåminnelse 1</string>
+    <string name="default_reminder_2">Standardpåminnelse 2</string>
+    <string name="default_reminder_3">Standardpåminnelse 3</string>
+    <string name="view_to_open_from_widget">Vy som öppnas från händelselistwidgeten</string>
+    <string name="last_view">Senaste vy</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -182,7 +182,7 @@
     <string name="editing_calendar_failed">Det gick inte att redigera kalendern</string>
     <string name="syncing">Synkroniserar…</string>
     <string name="synchronization_completed">Synkroniseringen är klar</string>
-    <string name="select_a_different_caldav_color">Select a different color (might be applied locally only)</string>
+    <string name="select_a_different_caldav_color">Välj en annan färg (tillämpas kanske bara lokalt)</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
