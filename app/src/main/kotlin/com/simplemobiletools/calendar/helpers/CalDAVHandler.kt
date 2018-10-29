@@ -325,7 +325,7 @@ class CalDAVHandler(val context: Context) {
                 put(CalendarContract.Events.RRULE, repeatRule)
             }
 
-            if (event.getIsAllDay() && event.endTS > event.startTS)
+            if (event.getIsAllDay())
                 event.endTS += DAY
 
             if (event.repeatInterval > 0) {
