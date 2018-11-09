@@ -16,7 +16,7 @@ class EditEventTypeDialog(val activity: Activity, var eventType: EventType? = nu
 
     init {
         if (eventType == null)
-            eventType = EventType(0, "", activity.config.primaryColor)
+            eventType = EventType(null, "", activity.config.primaryColor)
 
         val view = activity.layoutInflater.inflate(R.layout.dialog_event_type, null).apply {
             setupColor(type_color)
@@ -47,9 +47,9 @@ class EditEventTypeDialog(val activity: Activity, var eventType: EventType? = nu
                         getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
                             val title = view.type_title.value
                             val eventIdWithTitle = activity.dbHelper.getEventTypeIdWithTitle(title)
-                            var isEventTypeTitleTaken = isNewEvent && eventIdWithTitle != -1
+                            var isEventTypeTitleTaken = isNewEvent && eventIdWithTitle != -1L
                             if (!isEventTypeTitleTaken)
-                                isEventTypeTitleTaken = !isNewEvent && eventType!!.id != eventIdWithTitle && eventIdWithTitle != -1
+                                isEventTypeTitleTaken = !isNewEvent && eventType!!.id != eventIdWithTitle && eventIdWithTitle != -1L
 
                             if (title.isEmpty()) {
                                 activity.toast(R.string.title_empty)
@@ -69,7 +69,7 @@ class EditEventTypeDialog(val activity: Activity, var eventType: EventType? = nu
                                 activity.dbHelper.updateEventType(eventType!!)
                             }
 
-                            if (eventType!!.id != -1) {
+                            if (eventType!!.id != -1L) {
                                 dismiss()
                                 callback(eventType!!)
                             } else {

@@ -5,7 +5,6 @@ import android.content.res.Resources
 import android.graphics.Rect
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.SparseIntArray
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -13,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
+import androidx.collection.LongSparseArray
 import androidx.fragment.app.Fragment
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.EventActivity
@@ -56,7 +56,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private var events = ArrayList<Event>()
     private var allDayHolders = ArrayList<RelativeLayout>()
     private var allDayRows = ArrayList<HashSet<Int>>()
-    private var eventTypeColors = SparseIntArray()
+    private var eventTypeColors = LongSparseArray<Int>()
 
     lateinit var inflater: LayoutInflater
     lateinit var mView: View
@@ -68,7 +68,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         context!!.dbHelper.getEventTypes {
-            it.map { eventTypeColors.put(it.id, it.color) }
+            it.map { eventTypeColors.put(it.id!!, it.color) }
         }
 
         mRes = context!!.resources

@@ -14,19 +14,19 @@ import java.util.*
 
 class FilterEventTypeAdapter(val activity: SimpleActivity, val eventTypes: List<EventType>, val displayEventTypes: Set<String>) :
         RecyclerView.Adapter<FilterEventTypeAdapter.ViewHolder>() {
-    private val selectedKeys = HashSet<Int>()
+    private val selectedKeys = HashSet<Long>()
 
     init {
         eventTypes.forEachIndexed { index, eventType ->
             if (displayEventTypes.contains(eventType.id.toString())) {
-                selectedKeys.add(eventType.id)
+                selectedKeys.add(eventType.id!!)
             }
         }
     }
 
     private fun toggleItemSelection(select: Boolean, eventType: EventType, pos: Int) {
         if (select) {
-            selectedKeys.add(eventType.id)
+            selectedKeys.add(eventType.id!!)
         } else {
             selectedKeys.remove(eventType.id)
         }

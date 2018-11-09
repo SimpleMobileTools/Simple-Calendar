@@ -181,7 +181,7 @@ class EventActivity : SimpleActivity() {
         outState.putInt(REPEAT_LIMIT, mRepeatLimit)
         outState.putInt(REPEAT_RULE, mRepeatRule)
 
-        outState.putInt(EVENT_TYPE_ID, mEventTypeId)
+        outState.putLong(EVENT_TYPE_ID, mEventTypeId)
         outState.putInt(EVENT_CALENDAR_ID, mEventCalendarId)
     }
 
@@ -199,7 +199,7 @@ class EventActivity : SimpleActivity() {
             mRepeatLimit = getInt(REPEAT_LIMIT)
             mRepeatRule = getInt(REPEAT_RULE)
 
-            mEventTypeId = getInt(EVENT_TYPE_ID)
+            mEventTypeId = getLong(EVENT_TYPE_ID)
             mEventCalendarId = getInt(EVENT_CALENDAR_ID)
         }
 
@@ -523,7 +523,7 @@ class EventActivity : SimpleActivity() {
     private fun showEventTypeDialog() {
         hideKeyboard()
         SelectEventTypeDialog(this, mEventTypeId, false) {
-            mEventTypeId = it.id
+            mEventTypeId = it.id!!
             updateEventType()
         }
     }

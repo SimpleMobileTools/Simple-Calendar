@@ -18,9 +18,9 @@ import kotlinx.android.synthetic.main.dialog_select_radio_group.view.*
 import kotlinx.android.synthetic.main.radio_button_with_color.view.*
 import java.util.*
 
-class SelectEventTypeDialog(val activity: Activity, val currEventType: Int, val showCalDAVCalendars: Boolean,
+class SelectEventTypeDialog(val activity: Activity, val currEventType: Long, val showCalDAVCalendars: Boolean,
                             val callback: (eventType: EventType) -> Unit) {
-    private val NEW_TYPE_ID = -2
+    private val NEW_TYPE_ID = -2L
 
     private val dialog: AlertDialog?
     private val radioGroup: RadioGroup
@@ -55,7 +55,7 @@ class SelectEventTypeDialog(val activity: Activity, val currEventType: Int, val 
         (view.dialog_radio_button as MyCompatRadioButton).apply {
             text = eventType.getDisplayTitle()
             isChecked = eventType.id == currEventType
-            id = eventType.id
+            id = eventType.id!!.toInt()
         }
 
         if (eventType.color != Color.TRANSPARENT) {

@@ -391,7 +391,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             Thread {
                 val holidays = getString(R.string.holidays)
                 var eventTypeId = dbHelper.getEventTypeIdWithTitle(holidays)
-                if (eventTypeId == -1) {
+                if (eventTypeId == -1L) {
                     val eventType = EventType(0, holidays, resources.getColor(R.color.default_holidays_color))
                     eventTypeId = dbHelper.insertEventType(eventType)
                 }
@@ -514,20 +514,20 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
     }
 
-    private fun getBirthdaysEventTypeId(): Int {
+    private fun getBirthdaysEventTypeId(): Long {
         val birthdays = getString(R.string.birthdays)
         var eventTypeId = dbHelper.getEventTypeIdWithTitle(birthdays)
-        if (eventTypeId == -1) {
+        if (eventTypeId == -1L) {
             val eventType = EventType(0, birthdays, resources.getColor(R.color.default_birthdays_color))
             eventTypeId = dbHelper.insertEventType(eventType)
         }
         return eventTypeId
     }
 
-    private fun getAnniversariesEventTypeId(): Int {
+    private fun getAnniversariesEventTypeId(): Long {
         val anniversaries = getString(R.string.anniversaries)
         var eventTypeId = dbHelper.getEventTypeIdWithTitle(anniversaries)
-        if (eventTypeId == -1) {
+        if (eventTypeId == -1L) {
             val eventType = EventType(0, anniversaries, resources.getColor(R.color.default_anniversaries_color))
             eventTypeId = dbHelper.insertEventType(eventType)
         }

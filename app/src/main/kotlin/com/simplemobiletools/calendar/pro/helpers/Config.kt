@@ -95,9 +95,9 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getInt(LAST_USED_CALDAV_CALENDAR, getSyncedCalendarIdsAsList().first().toInt())
         set(calendarId) = prefs.edit().putInt(LAST_USED_CALDAV_CALENDAR, calendarId).apply()
 
-    var lastUsedLocalEventTypeId: Int
-        get() = prefs.getInt(LAST_USED_LOCAL_EVENT_TYPE_ID, DBHelper.REGULAR_EVENT_TYPE_ID)
-        set(lastUsedLocalEventTypeId) = prefs.edit().putInt(LAST_USED_LOCAL_EVENT_TYPE_ID, lastUsedLocalEventTypeId).apply()
+    var lastUsedLocalEventTypeId: Long
+        get() = prefs.getLong(LAST_USED_LOCAL_EVENT_TYPE_ID, DBHelper.REGULAR_EVENT_TYPE_ID)
+        set(lastUsedLocalEventTypeId) = prefs.edit().putLong(LAST_USED_LOCAL_EVENT_TYPE_ID, lastUsedLocalEventTypeId).apply()
 
     var reminderAudioStream: Int
         get() = prefs.getInt(REMINDER_AUDIO_STREAM, AudioManager.STREAM_ALARM)

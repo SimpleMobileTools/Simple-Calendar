@@ -41,9 +41,9 @@ class ManageEventTypesAdapter(activity: SimpleActivity, val eventTypes: ArrayLis
 
     override fun getIsItemSelectable(position: Int) = true
 
-    override fun getItemSelectionKey(position: Int) = eventTypes.getOrNull(position)?.id
+    override fun getItemSelectionKey(position: Int) = eventTypes.getOrNull(position)?.id?.toInt()
 
-    override fun getItemKeyPosition(key: Int) = eventTypes.indexOfFirst { it.id == key }
+    override fun getItemKeyPosition(key: Int) = eventTypes.indexOfFirst { it.id?.toInt() == key }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = createViewHolder(R.layout.item_event_type, parent)
 
@@ -57,13 +57,13 @@ class ManageEventTypesAdapter(activity: SimpleActivity, val eventTypes: ArrayLis
 
     override fun getItemCount() = eventTypes.size
 
-    private fun getItemWithKey(key: Int): EventType? = eventTypes.firstOrNull { it.id == key }
+    private fun getItemWithKey(key: Int): EventType? = eventTypes.firstOrNull { it.id?.toInt() == key }
 
-    private fun getSelectedItems() = eventTypes.filter { selectedKeys.contains(it.id) } as ArrayList<EventType>
+    private fun getSelectedItems() = eventTypes.filter { selectedKeys.contains(it.id?.toInt()) } as ArrayList<EventType>
 
     private fun setupView(view: View, eventType: EventType) {
         view.apply {
-            event_item_frame.isSelected = selectedKeys.contains(eventType.id)
+            event_item_frame.isSelected = selectedKeys.contains(eventType.id?.toInt())
             event_type_title.text = eventType.getDisplayTitle()
             event_type_color.setFillWithStroke(eventType.color, activity.config.backgroundColor)
             event_type_title.setTextColor(textColor)
@@ -71,7 +71,7 @@ class ManageEventTypesAdapter(activity: SimpleActivity, val eventTypes: ArrayLis
     }
 
     private fun askConfirmDelete() {
-        val eventTypes = eventTypes.filter { selectedKeys.contains(it.id) } as ArrayList<EventType>
+        val eventTypes = eventTypes.filter { selectedKeys.contains(it.id?.toInt()) } as ArrayList<EventType>
 
         if (activity.dbHelper.doEventTypesContainEvent(eventTypes)) {
             val MOVE_EVENTS = 0
@@ -99,7 +99,7 @@ class ManageEventTypesAdapter(activity: SimpleActivity, val eventTypes: ArrayLis
             if (type.id == DBHelper.REGULAR_EVENT_TYPE_ID) {
                 activity.toast(R.string.cannot_delete_default_type)
                 eventTypesToDelete.remove(type)
-                toggleItemSelection(false, getItemKeyPosition(type.id))
+                toggleItemSelection(false, getItemKeyPosition(type.id!!.toInt()))
                 break
             }
         }

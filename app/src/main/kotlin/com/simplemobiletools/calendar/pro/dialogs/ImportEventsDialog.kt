@@ -29,7 +29,7 @@ class ImportEventsDialog(val activity: SimpleActivity, val path: String, val cal
             val lastUsedCalDAVCalendar = activity.dbHelper.getEventTypeWithCalDAVCalendarId(config.lastUsedCaldavCalendarId)
             if (lastUsedCalDAVCalendar != null) {
                 currEventTypeCalDAVCalendarId = config.lastUsedCaldavCalendarId
-                lastUsedCalDAVCalendar.id
+                lastUsedCalDAVCalendar.id!!
             } else {
                 DBHelper.REGULAR_EVENT_TYPE_ID
             }
@@ -41,10 +41,10 @@ class ImportEventsDialog(val activity: SimpleActivity, val path: String, val cal
             updateEventType(this)
             import_event_type_holder.setOnClickListener {
                 SelectEventTypeDialog(activity, currEventTypeId, true) {
-                    currEventTypeId = it.id
+                    currEventTypeId = it.id!!
                     currEventTypeCalDAVCalendarId = it.caldavCalendarId
 
-                    config.lastUsedLocalEventTypeId = it.id
+                    config.lastUsedLocalEventTypeId = it.id!!
                     config.lastUsedCaldavCalendarId = it.caldavCalendarId
 
                     updateEventType(this)

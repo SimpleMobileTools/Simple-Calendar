@@ -1,5 +1,6 @@
 package com.simplemobiletools.calendar.pro.helpers
 
+import android.annotation.SuppressLint
 import android.content.ContentUris
 import android.content.ContentValues
 import android.content.Context
@@ -33,12 +34,13 @@ class CalDAVHandler(val context: Context) {
                 context.dbHelper.updateLocalEventType(this)
             }
 
-            CalDAVHandler(context).fetchCalDAVCalendarEvents(calendar.id, localEventType.id, activity)
+            CalDAVHandler(context).fetchCalDAVCalendarEvents(calendar.id, localEventType.id!!, activity)
         }
         context.scheduleCalDAVSync(true)
         callback()
     }
 
+    @SuppressLint("MissingPermission")
     fun getCalDAVCalendars(activity: SimpleActivity? = null, ids: String = ""): List<CalDAVCalendar> {
         val calendars = ArrayList<CalDAVCalendar>()
         if (!context.hasPermission(PERMISSION_WRITE_CALENDAR) || !context.hasPermission(PERMISSION_READ_CALENDAR)) {
@@ -98,6 +100,7 @@ class CalDAVHandler(val context: Context) {
         }
     }
 
+    @SuppressLint("MissingPermission")
     private fun getEventTypeColorKey(eventType: EventType): Int {
         val uri = CalendarContract.Colors.CONTENT_URI
         val projection = arrayOf(CalendarContract.Colors.COLOR_KEY)
@@ -117,6 +120,7 @@ class CalDAVHandler(val context: Context) {
         return -1
     }
 
+    @SuppressLint("MissingPermission")
     fun getAvailableCalDAVCalendarColors(eventType: EventType): ArrayList<Int> {
         val colors = SparseIntArray()
         val uri = CalendarContract.Colors.CONTENT_URI
@@ -147,7 +151,8 @@ class CalDAVHandler(val context: Context) {
         return sortedColors
     }
 
-    private fun fetchCalDAVCalendarEvents(calendarId: Int, eventTypeId: Int, activity: SimpleActivity?) {
+    @SuppressLint("MissingPermission")
+    private fun fetchCalDAVCalendarEvents(calendarId: Int, eventTypeId: Long, activity: SimpleActivity?) {
         val importIdsMap = HashMap<String, Event>()
         val fetchedEventIds = ArrayList<String>()
         val existingEvents = context.dbHelper.getEventsFromCalDAVCalendar(calendarId)
@@ -263,6 +268,7 @@ class CalDAVHandler(val context: Context) {
         context.dbHelper.deleteEvents(eventIdsToDelete.toTypedArray(), false)
     }
 
+    @SuppressLint("MissingPermission")
     fun insertCalDAVEvent(event: Event) {
         val uri = CalendarContract.Events.CONTENT_URI
         val values = fillEventContentValues(event)
@@ -291,6 +297,7 @@ class CalDAVHandler(val context: Context) {
         refreshCalDAVCalendar(event)
     }
 
+    @SuppressLint("MissingPermission")
     private fun setupCalDAVEventReminders(event: Event) {
         clearEventReminders(event)
         event.getReminders().forEach {
@@ -338,6 +345,7 @@ class CalDAVHandler(val context: Context) {
         }
     }
 
+    @SuppressLint("MissingPermission")
     private fun clearEventReminders(event: Event) {
         val selection = "${Reminders.EVENT_ID} = ?"
         val selectionArgs = arrayOf(event.getCalDAVEventId().toString())
@@ -369,6 +377,7 @@ class CalDAVHandler(val context: Context) {
         refreshCalDAVCalendar(event)
     }
 
+    @SuppressLint("MissingPermission")
     fun insertEventRepeatException(event: Event, occurrenceTS: Int): Long {
         val uri = CalendarContract.Events.CONTENT_URI
         val values = fillEventRepeatExceptionValues(event, occurrenceTS)
@@ -388,6 +397,7 @@ class CalDAVHandler(val context: Context) {
         }
     }
 
+    @SuppressLint("MissingPermission")
     private fun getCalDAVEventReminders(eventId: Long): List<Int> {
         val reminders = ArrayList<Int>()
         val uri = CalendarContract.Reminders.CONTENT_URI

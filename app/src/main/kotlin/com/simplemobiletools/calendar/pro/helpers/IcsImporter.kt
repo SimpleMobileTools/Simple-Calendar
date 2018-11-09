@@ -40,7 +40,7 @@ class IcsImporter(val activity: SimpleActivity) {
     private var eventsImported = 0
     private var eventsFailed = 0
 
-    fun importEvents(path: String, defaultEventTypeId: Int, calDAVCalendarId: Int, overrideFileEventTypes: Boolean): ImportResult {
+    fun importEvents(path: String, defaultEventTypeId: Long, calDAVCalendarId: Int, overrideFileEventTypes: Boolean): ImportResult {
         try {
             val eventTypes = activity.dbHelper.getEventTypesSync()
             val existingEvents = activity.dbHelper.getEventsWithImportIds()
@@ -219,9 +219,9 @@ class IcsImporter(val activity: SimpleActivity) {
         }
 
         val eventId = context.dbHelper.getEventTypeIdWithTitle(eventTypeTitle)
-        curEventTypeId = if (eventId == -1) {
+        curEventTypeId = if (eventId == -1L) {
             val newTypeColor = if (curCategoryColor == -2) context.resources.getColor(R.color.color_primary) else curCategoryColor
-            val eventType = EventType(0, eventTypeTitle, newTypeColor)
+            val eventType = EventType(null, eventTypeTitle, newTypeColor)
             context.dbHelper.insertEventType(eventType)
         } else {
             eventId
