@@ -2,6 +2,10 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
 android {
     compileSdkVersion 28
     buildToolsVersion "28.0.3"
@@ -17,7 +21,12 @@ android {
     }
 
     signingConfigs {
-        release
+        release {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
+        }
     }
 
     buildTypes {
@@ -45,23 +54,4 @@ dependencies {
     implementation 'com.simplemobiletools:commons:5.3.15'
     implementation 'joda-time:joda-time:2.10.1'
     implementation 'androidx.multidex:multidex:2.0.0'
-}
-
-Properties props = new Properties()
-def propFile = new File('signing.properties')
-if (propFile.canRead()) {
-    props.load(new FileInputStream(propFile))
-
-    if (props != null && props.containsKey('STORE_FILE') && props.containsKey('KEY_ALIAS') && props.containsKey('PASSWORD')) {
-        android.signingConfigs.release.storeFile = file(props['STORE_FILE'])
-        android.signingConfigs.release.storePassword = props['PASSWORD']
-        android.signingConfigs.release.keyAlias = props['KEY_ALIAS']
-        android.signingConfigs.release.keyPassword = props['PASSWORD']
-    } else {
-        println 'signing.properties found but some entries are missing'
-        android.buildTypes.release.signingConfig = null
-    }
-} else {
-    println 'signing.properties not found'
-    android.buildTypes.release.signingConfig = null
 }
