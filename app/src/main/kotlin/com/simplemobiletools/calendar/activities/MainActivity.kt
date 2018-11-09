@@ -31,7 +31,6 @@ import com.simplemobiletools.calendar.models.EventType
 import com.simplemobiletools.calendar.models.ListEvent
 import com.simplemobiletools.commons.dialogs.FilePickerDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
-import com.simplemobiletools.commons.dialogs.UpgradeToProDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.interfaces.RefreshRecyclerViewListener
@@ -103,11 +102,6 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
 
         checkAppOnSDCard()
-
-        if (!config.wasInitialUpgradeToProShown) {
-            UpgradeToProDialog(this)
-            config.wasInitialUpgradeToProShown
-        }
     }
 
     override fun onResume() {
