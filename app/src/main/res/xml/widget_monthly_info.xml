@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <appwidget-provider
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:configure="com.simplemobiletools.calendar.activities.WidgetMonthlyConfigureActivity"
+    android:configure="com.simplemobiletools.calendar.pro.activities.WidgetMonthlyConfigureActivity"
     android:initialLayout="@layout/fragment_month"
     android:minHeight="@dimen/min_widget_height"
     android:minResizeHeight="110dp"
