@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 5.1.2 *(2018-11-09)*
+----------------------------
+
+ * Couple smaller UX improvements
+ * This version of the app is no longer maintained. Please upgrade to the Pro version. It is free till Nov 18 2018. You can find the Upgrade button at the top of the app Settings.
+
 Version 5.1.1 *(2018-10-25)*
 ----------------------------
 
