@@ -52,9 +52,9 @@ class EventActivity : SimpleActivity() {
     private var mEventCalendarId = STORED_LOCALLY_ONLY
     private var wasActivityInitialized = false
 
-    lateinit var mEventStartDateTime: DateTime
-    lateinit var mEventEndDateTime: DateTime
-    lateinit var mEvent: Event
+    lateinit private var mEventStartDateTime: DateTime
+    lateinit private var mEventEndDateTime: DateTime
+    lateinit private var mEvent: Event
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

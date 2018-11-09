@@ -4,7 +4,6 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
-import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
 import android.database.sqlite.SQLiteQueryBuilder
 import android.text.TextUtils
@@ -66,7 +65,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
     companion object {
         private const val DB_VERSION = 19
-        const val DB_NAME = "events.db"
+        const val DB_NAME = "events_old.db"
         const val REGULAR_EVENT_TYPE_ID = 1
         var dbInstance: DBHelper? = null
 
@@ -90,94 +89,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         createExceptionsTable(db)
     }
 
-    override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        if (oldVersion == 1) {
-            db.execSQL("ALTER TABLE $MAIN_TABLE_NAME ADD COLUMN $COL_REMINDER_MINUTES INTEGER DEFAULT -1")
-        }
-
-        if (oldVersion < 3) {
-            createMetaTable(db)
-        }
-
-        if (oldVersion < 4) {
-            db.execSQL("ALTER TABLE $MAIN_TABLE_NAME ADD COLUMN $COL_IMPORT_ID TEXT DEFAULT ''")
-        }
-
-        if (oldVersion < 5) {
-            db.execSQL("ALTER TABLE $MAIN_TABLE_NAME ADD COLUMN $COL_FLAGS INTEGER NOT NULL DEFAULT 0")
-            db.execSQL("ALTER TABLE $META_TABLE_NAME ADD COLUMN $COL_REPEAT_LIMIT INTEGER NOT NULL DEFAULT 0")
-        }
-
-        if (oldVersion < 6) {
-            db.execSQL("ALTER TABLE $MAIN_TABLE_NAME ADD COLUMN $COL_REMINDER_MINUTES_2 INTEGER NOT NULL DEFAULT -1")
-            db.execSQL("ALTER TABLE $MAIN_TABLE_NAME ADD COLUMN $COL_REMINDER_MINUTES_3 INTEGER NOT NULL DEFAULT -1")
-        }
-
-        if (oldVersion < 7) {
-            createTypesTable(db)
-            db.execSQL("ALTER TABLE $MAIN_TABLE_NAME ADD COLUMN $COL_EVENT_TYPE INTEGER NOT NULL DEFAULT $REGULAR_EVENT_TYPE_ID")
-        }
-
-        if (oldVersion < 8) {
-            db.execSQL("ALTER TABLE $MAIN_TABLE_NAME ADD COLUMN $COL_PARENT_EVENT_ID INTEGER NOT NULL DEFAULT 0")
-            createExceptionsTable(db)
-        }
-
-        if (oldVersion < 9) {
-            try {
-                db.execSQL("ALTER TABLE $EXCEPTIONS_TABLE_NAME ADD COLUMN $COL_OCCURRENCE_DAYCODE INTEGER NOT NULL DEFAULT 0")
-            } catch (ignored: SQLiteException) {
-            }
-            convertExceptionTimestampToDaycode(db)
-        }
-
-        if (oldVersion < 11) {
-            db.execSQL("ALTER TABLE $META_TABLE_NAME ADD COLUMN $COL_REPEAT_RULE INTEGER NOT NULL DEFAULT 0")
-            setupRepeatRules(db)
-        }
-
-        if (oldVersion < 12) {
-            db.execSQL("ALTER TABLE $MAIN_TABLE_NAME ADD COLUMN $COL_OFFSET TEXT DEFAULT ''")
-            db.execSQL("ALTER TABLE $MAIN_TABLE_NAME ADD COLUMN $COL_IS_DST_INCLUDED INTEGER NOT NULL DEFAULT 0")
-        }
-
-        if (oldVersion < 13) {
-            try {
-                createExceptionsTable(db)
-            } catch (e: Exception) {
-                try {
-                    db.execSQL("ALTER TABLE $EXCEPTIONS_TABLE_NAME ADD COLUMN $COL_CHILD_EVENT_ID INTEGER NOT NULL DEFAULT 0")
-                } catch (e: Exception) {
-
-                }
-            }
-        }
-
-        if (oldVersion < 14) {
-            db.execSQL("ALTER TABLE $MAIN_TABLE_NAME ADD COLUMN $COL_LAST_UPDATED INTEGER NOT NULL DEFAULT 0")
-        }
-
-        if (oldVersion < 15) {
-            db.execSQL("ALTER TABLE $MAIN_TABLE_NAME ADD COLUMN $COL_EVENT_SOURCE TEXT DEFAULT ''")
-        }
-
-        if (oldVersion in 7..15) {
-            db.execSQL("ALTER TABLE $TYPES_TABLE_NAME ADD COLUMN $COL_TYPE_CALDAV_CALENDAR_ID INTEGER NOT NULL DEFAULT 0")
-        }
-
-        if (oldVersion in 7..17) {
-            db.execSQL("ALTER TABLE $TYPES_TABLE_NAME ADD COLUMN $COL_TYPE_CALDAV_DISPLAY_NAME TEXT DEFAULT ''")
-            db.execSQL("ALTER TABLE $TYPES_TABLE_NAME ADD COLUMN $COL_TYPE_CALDAV_EMAIL TEXT DEFAULT ''")
-        }
-
-        if (oldVersion < 18) {
-            updateOldMonthlyEvents(db)
-        }
-
-        if (oldVersion < 19) {
-            db.execSQL("ALTER TABLE $MAIN_TABLE_NAME ADD COLUMN $COL_LOCATION TEXT DEFAULT ''")
-        }
-    }
+    override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {}
 
     private fun createMetaTable(db: SQLiteDatabase) {
         db.execSQL("CREATE TABLE $META_TABLE_NAME ($COL_ID INTEGER PRIMARY KEY AUTOINCREMENT, $COL_EVENT_ID INTEGER UNIQUE, $COL_REPEAT_START INTEGER, " +
@@ -512,32 +424,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         val selectionArgs = arrayOf("$CALDAV-$calendarId")
         val cursor = getEventsCursor(selection, selectionArgs)
         return fillEvents(cursor).filter { it.importId.isNotEmpty() }
-    }
-
-    private fun updateOldMonthlyEvents(db: SQLiteDatabase) {
-        val OLD_MONTH = 2592000
-        val projection = arrayOf(COL_ID, COL_REPEAT_INTERVAL)
-        val selection = "$COL_REPEAT_INTERVAL != 0 AND $COL_REPEAT_INTERVAL % $OLD_MONTH == 0"
-        var cursor: Cursor? = null
-        try {
-            cursor = db.query(META_TABLE_NAME, projection, selection, null, null, null, null)
-            if (cursor?.moveToFirst() == true) {
-                do {
-                    val id = cursor.getIntValue(COL_ID)
-                    val repeatInterval = cursor.getIntValue(COL_REPEAT_INTERVAL)
-                    val multiplies = repeatInterval / OLD_MONTH
-
-                    val values = ContentValues().apply {
-                        put(COL_REPEAT_INTERVAL, multiplies * MONTH)
-                    }
-
-                    val updateSelection = "$COL_ID = $id"
-                    db.update(META_TABLE_NAME, values, updateSelection, null)
-                } while (cursor.moveToNext())
-            }
-        } finally {
-            cursor?.close()
-        }
     }
 
     fun addEventRepeatException(parentEventId: Int, occurrenceTS: Int, addToCalDAV: Boolean, childImportId: String? = null) {
@@ -1040,59 +926,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             cursor?.close()
         }
         return daycodes
-    }
-
-    private fun convertExceptionTimestampToDaycode(db: SQLiteDatabase) {
-        val projection = arrayOf(COL_EXCEPTION_ID, COL_OCCURRENCE_TIMESTAMP)
-        var cursor: Cursor? = null
-        try {
-            cursor = db.query(EXCEPTIONS_TABLE_NAME, projection, null, null, null, null, null)
-            if (cursor?.moveToFirst() == true) {
-                do {
-                    val id = cursor.getIntValue(COL_EXCEPTION_ID)
-                    val ts = cursor.getIntValue(COL_OCCURRENCE_TIMESTAMP)
-                    val values = ContentValues()
-                    values.put(COL_OCCURRENCE_DAYCODE, Formatter.getDayCodeFromTS(ts))
-
-                    val selection = "$COL_EXCEPTION_ID = ?"
-                    val selectionArgs = arrayOf(id.toString())
-                    db.update(EXCEPTIONS_TABLE_NAME, values, selection, selectionArgs)
-                } while (cursor.moveToNext())
-            }
-        } finally {
-            cursor?.close()
-        }
-    }
-
-    private fun setupRepeatRules(db: SQLiteDatabase) {
-        val projection = arrayOf(COL_EVENT_ID, COL_REPEAT_INTERVAL, COL_REPEAT_START)
-        val selection = "$COL_REPEAT_INTERVAL != 0"
-        var cursor: Cursor? = null
-        try {
-            cursor = db.query(META_TABLE_NAME, projection, selection, null, null, null, null)
-            if (cursor?.moveToFirst() == true) {
-                do {
-                    val interval = cursor.getIntValue(COL_REPEAT_INTERVAL)
-                    if (interval != MONTH && interval % WEEK != 0)
-                        continue
-
-                    val eventId = cursor.getIntValue(COL_EVENT_ID)
-                    val start = cursor.getIntValue(COL_REPEAT_START)
-                    var rule = Math.pow(2.0, (Formatter.getDateTimeFromTS(start).dayOfWeek - 1).toDouble()).toInt()
-                    if (interval == MONTH) {
-                        rule = REPEAT_SAME_DAY
-                    }
-
-                    val values = ContentValues()
-                    values.put(COL_REPEAT_RULE, rule)
-                    val curSelection = "$COL_EVENT_ID = ?"
-                    val curSelectionArgs = arrayOf(eventId.toString())
-                    db.update(META_TABLE_NAME, values, curSelection, curSelectionArgs)
-                } while (cursor.moveToNext())
-            }
-        } finally {
-            cursor?.close()
-        }
     }
 
     private fun getIsPastEvent(event: Event): Boolean {
