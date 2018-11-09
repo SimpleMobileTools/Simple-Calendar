@@ -227,9 +227,6 @@ class EventActivity : SimpleActivity() {
         event_title.setText(mEvent.title)
         event_location.setText(mEvent.location)
         event_description.setText(mEvent.description)
-        if (event_description.value.isNotEmpty()) {
-            event_description.movementMethod = LinkMovementMethod.getInstance()
-        }
 
         mReminder1Minutes = mEvent.reminder1Minutes
         mReminder2Minutes = mEvent.reminder2Minutes
