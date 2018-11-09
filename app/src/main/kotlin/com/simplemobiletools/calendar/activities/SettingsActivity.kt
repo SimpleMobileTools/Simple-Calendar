@@ -43,7 +43,6 @@ class SettingsActivity : SimpleActivity() {
     override fun onResume() {
         super.onResume()
 
-        setupUpgradeToPro()
         setupCustomizeColors()
         setupUseEnglish()
         setupManageEventTypes()
@@ -107,13 +106,6 @@ class SettingsActivity : SimpleActivity() {
         val adjustedPrimaryColor = getAdjustedPrimaryColor()
         arrayListOf(reminders_label, caldav_label, weekly_view_label, monthly_view_label, simple_event_list_label, widgets_label, events_label).forEach {
             it.setTextColor(adjustedPrimaryColor)
-        }
-    }
-
-    private fun setupUpgradeToPro() {
-        settings_upgrade_to_pro_holder.beGoneIf(isAProApp())
-        settings_upgrade_to_pro_holder.setOnClickListener {
-            launchUpgradeToProIntent()
         }
     }
 
