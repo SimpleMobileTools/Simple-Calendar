@@ -145,7 +145,7 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
             val nonRepeatingEventIDs = eventsToDelete.asSequence().filter { it.repeatInterval == 0 }.map { it.id.toString() }.toList().toTypedArray()
             activity.dbHelper.deleteEvents(nonRepeatingEventIDs, true)
 
-            val repeatingEventIDs = eventsToDelete.asSequence().filter { it.repeatInterval != 0 }.map { it.id }.toList()
+            val repeatingEventIDs = eventsToDelete.asSequence().filter { it.repeatInterval != 0 }.map { it.id!! }.toList()
             activity.handleEventDeleting(repeatingEventIDs, timestamps, it)
             removeSelectedItems(positions)
         }

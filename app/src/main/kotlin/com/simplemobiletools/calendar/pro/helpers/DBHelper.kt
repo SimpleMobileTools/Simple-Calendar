@@ -136,7 +136,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             CalDAVHandler(context).insertCalDAVEvent(event)
         }
 
-        callback(event.id)
+        callback(event.id!!)
     }
 
     fun insertEvents(events: ArrayList<Event>, addToCalDAV: Boolean) {
@@ -537,7 +537,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         val cursor = getEventsCursor(selection, selectionArgs)
         val events = fillEvents(cursor)
         return if (events.isNotEmpty()) {
-            events.minBy { it.id }?.id ?: 0
+            events.minBy { it.id!! }?.id ?: 0
         } else {
             0
         }
@@ -549,7 +549,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         val cursor = getEventsCursor(selection, selectionArgs)
         val events = fillEvents(cursor)
         return if (events.isNotEmpty()) {
-            events.minBy { it.id }?.id ?: 0
+            events.minBy { it.id!! }?.id ?: 0
         } else {
             0
         }
@@ -624,7 +624,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         val events = getEvents(selection)
         val startTimes = SparseIntArray(events.size)
         events.forEach {
-            startTimes.put(it.id, it.startTS)
+            startTimes.put(it.id!!, it.startTS)
             if (it.repeatLimit >= 0) {
                 newEvents.addAll(getEventsRepeatingTillDateOrForever(fromTS, toTS, startTimes, it))
             } else {
@@ -723,7 +723,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
     // check if its the proper week, for events repeating every x weeks
     private fun isOnProperWeek(event: Event, startTimes: SparseIntArray): Boolean {
-        val initialWeekOfYear = Formatter.getDateTimeFromTS(startTimes[event.id]).weekOfWeekyear
+        val initialWeekOfYear = Formatter.getDateTimeFromTS(startTimes[event.id!!]).weekOfWeekyear
         val currentWeekOfYear = Formatter.getDateTimeFromTS(event.startTS).weekOfWeekyear
         return (currentWeekOfYear - initialWeekOfYear) % (event.repeatInterval / WEEK) == 0
     }

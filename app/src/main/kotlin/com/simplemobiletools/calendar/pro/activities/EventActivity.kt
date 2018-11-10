@@ -90,7 +90,7 @@ class EventActivity : SimpleActivity() {
                 mEvent.id = 0
             }
 
-            cancelNotification(mEvent.id)
+            cancelNotification(mEvent.id!!)
         } else {
             mEvent = Event()
             config.apply {
@@ -656,14 +656,14 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun shareEvent() {
-        shareEvents(arrayListOf(mEvent.id))
+        shareEvents(arrayListOf(mEvent.id!!))
     }
 
     private fun deleteEvent() {
-        DeleteEventDialog(this, arrayListOf(mEvent.id), mEvent.repeatInterval > 0) {
+        DeleteEventDialog(this, arrayListOf(mEvent.id!!), mEvent.repeatInterval > 0) {
             when (it) {
-                DELETE_SELECTED_OCCURRENCE -> dbHelper.addEventRepeatException(mEvent.id, mEventOccurrenceTS, true)
-                DELETE_FUTURE_OCCURRENCES -> dbHelper.addEventRepeatLimit(mEvent.id, mEventOccurrenceTS)
+                DELETE_SELECTED_OCCURRENCE -> dbHelper.addEventRepeatException(mEvent.id!!, mEventOccurrenceTS, true)
+                DELETE_FUTURE_OCCURRENCES -> dbHelper.addEventRepeatLimit(mEvent.id!!, mEventOccurrenceTS)
                 DELETE_ALL_OCCURRENCES -> dbHelper.deleteEvents(arrayOf(mEvent.id.toString()), true)
             }
             finish()
@@ -775,10 +775,10 @@ class EventActivity : SimpleActivity() {
                             finish()
                         }
                     } else {
-                        dbHelper.addEventRepeatException(mEvent.id, mEventOccurrenceTS, true)
+                        dbHelper.addEventRepeatException(mEvent.id!!, mEventOccurrenceTS, true)
                         mEvent.apply {
-                            parentId = id
-                            id = 0
+                            parentId = id!!
+                            id = null
                             repeatRule = 0
                             repeatInterval = 0
                             repeatLimit = 0

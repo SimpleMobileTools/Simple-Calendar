@@ -85,7 +85,7 @@ fun Context.scheduleNextEventReminder(event: Event, dbHelper: DBHelper, activity
 
     val now = getNowSeconds()
     val reminderSeconds = event.getReminders().reversed().map { it * 60 }
-    dbHelper.getEvents(now, now + YEAR, event.id, false) {
+    dbHelper.getEvents(now, now + YEAR, event.id!!, false) {
         if (it.isNotEmpty()) {
             for (curEvent in it) {
                 for (curReminder in reminderSeconds) {
@@ -127,7 +127,7 @@ private fun getNotificationIntent(context: Context, event: Event): PendingIntent
     val intent = Intent(context, NotificationReceiver::class.java)
     intent.putExtra(EVENT_ID, event.id)
     intent.putExtra(EVENT_OCCURRENCE_TS, event.startTS)
-    return PendingIntent.getBroadcast(context, event.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+    return PendingIntent.getBroadcast(context, event.id!!, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 }
 
 fun Context.getRepetitionText(seconds: Int) = when (seconds) {
@@ -159,7 +159,7 @@ fun Context.notifyEvent(originalEvent: Event) {
     var eventStartTS = if (event.getIsAllDay()) Formatter.getDayStartTS(Formatter.getDayCodeFromTS(event.startTS)) else event.startTS
     // make sure refer to the proper repeatable event instance with "Tomorrow", or the specific date
     if (event.repeatInterval != 0 && eventStartTS - event.reminder1Minutes * 60 < currentSeconds) {
-        val events = dbHelper.getRepeatableEventsFor(currentSeconds - WEEK_SECONDS, currentSeconds + YEAR_SECONDS, event.id)
+        val events = dbHelper.getRepeatableEventsFor(currentSeconds - WEEK_SECONDS, currentSeconds + YEAR_SECONDS, event.id!!)
         for (currEvent in events) {
             eventStartTS = if (currEvent.getIsAllDay()) Formatter.getDayStartTS(Formatter.getDayCodeFromTS(currEvent.startTS)) else currEvent.startTS
             if (eventStartTS - currEvent.reminder1Minutes * 60 > currentSeconds) {
@@ -186,7 +186,7 @@ fun Context.notifyEvent(originalEvent: Event) {
     val content = "$displayedStartDate $timeRange $descriptionOrLocation".trim()
     val notification = getNotification(pendingIntent, event, content)
     val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-    notificationManager.notify(event.id, notification)
+    notificationManager.notify(event.id!!, notification)
 }
 
 @SuppressLint("NewApi")
@@ -262,7 +262,7 @@ private fun getPendingIntent(context: Context, event: Event): PendingIntent {
     val intent = Intent(context, EventActivity::class.java)
     intent.putExtra(EVENT_ID, event.id)
     intent.putExtra(EVENT_OCCURRENCE_TS, event.startTS)
-    return PendingIntent.getActivity(context, event.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+    return PendingIntent.getActivity(context, event.id!!, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 }
 
 private fun getSnoozePendingIntent(context: Context, event: Event): PendingIntent {
@@ -270,9 +270,9 @@ private fun getSnoozePendingIntent(context: Context, event: Event): PendingInten
     val intent = Intent(context, snoozeClass).setAction("Snooze")
     intent.putExtra(EVENT_ID, event.id)
     return if (context.config.useSameSnooze) {
-        PendingIntent.getService(context, event.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        PendingIntent.getService(context, event.id!!, intent, PendingIntent.FLAG_UPDATE_CURRENT)
     } else {
-        PendingIntent.getActivity(context, event.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        PendingIntent.getActivity(context, event.id!!, intent, PendingIntent.FLAG_UPDATE_CURRENT)
     }
 }
 
@@ -280,7 +280,7 @@ fun Context.rescheduleReminder(event: Event?, minutes: Int) {
     if (event != null) {
         applicationContext.scheduleEventIn(System.currentTimeMillis() + minutes * 60000, event)
         val manager = applicationContext.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        manager.cancel(event.id)
+        manager.cancel(event.id!!)
     }
 }
 
@@ -429,7 +429,7 @@ fun Context.getEventListItems(events: List<Event>): ArrayList<ListItem> {
             listItems.add(listSection)
             prevCode = code
         }
-        val listEvent = ListEvent(it.id, it.startTS, it.endTS, it.title, it.description, it.getIsAllDay(), it.color, it.location, it.isPastEvent, it.repeatInterval > 0)
+        val listEvent = ListEvent(it.id!!, it.startTS, it.endTS, it.title, it.description, it.getIsAllDay(), it.color, it.location, it.isPastEvent, it.repeatInterval > 0)
         listItems.add(listEvent)
     }
     return listItems
