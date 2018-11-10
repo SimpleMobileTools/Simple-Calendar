@@ -92,7 +92,7 @@ class EventActivity : SimpleActivity() {
 
             cancelNotification(mEvent.id!!)
         } else {
-            mEvent = Event()
+            mEvent = Event(null)
             config.apply {
                 mReminder1Minutes = if (usePreviousEventReminders) lastEventReminderMinutes1 else defaultReminder1
                 mReminder2Minutes = if (usePreviousEventReminders) lastEventReminderMinutes2 else defaultReminder2
