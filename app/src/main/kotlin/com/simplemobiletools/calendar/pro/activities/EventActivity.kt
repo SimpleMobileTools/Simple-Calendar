@@ -777,7 +777,7 @@ class EventActivity : SimpleActivity() {
                     } else {
                         dbHelper.addEventRepeatException(mEvent.id!!, mEventOccurrenceTS, true)
                         mEvent.apply {
-                            parentId = id!!
+                            parentId = id!!.toLong()
                             id = null
                             repeatRule = 0
                             repeatInterval = 0
