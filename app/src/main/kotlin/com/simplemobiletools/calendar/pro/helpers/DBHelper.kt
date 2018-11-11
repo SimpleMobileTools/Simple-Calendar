@@ -61,7 +61,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private val COL_PARENT_EVENT_ID = "event_parent_id"
     private val COL_CHILD_EVENT_ID = "event_child_id"
 
-    private val mDb: SQLiteDatabase = writableDatabase
+    private val mDb = writableDatabase
 
     companion object {
         private const val DB_VERSION = 19
@@ -901,17 +901,21 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         return eventTypes
     }
 
-    fun doEventTypesContainEvent(types: ArrayList<EventType>): Boolean {
-        val args = TextUtils.join(", ", types.map { it.id })
-        val columns = arrayOf(COL_ID)
-        val selection = "$COL_EVENT_TYPE IN ($args)"
-        var cursor: Cursor? = null
-        try {
-            cursor = mDb.query(MAIN_TABLE_NAME, columns, selection, null, null, null, null)
-            return cursor?.moveToFirst() == true
-        } finally {
-            cursor?.close()
-        }
+    fun doEventTypesContainEvents(types: ArrayList<EventType>, callback: (contain: Boolean) -> Unit) {
+        Thread {
+            val args = TextUtils.join(", ", types.map { it.id })
+            val columns = arrayOf(COL_ID)
+            val selection = "$COL_EVENT_TYPE IN ($args)"
+            var cursor: Cursor? = null
+            try {
+                cursor = mDb.query(MAIN_TABLE_NAME, columns, selection, null, null, null, null)
+                callback(cursor?.moveToFirst() == true)
+            } catch (e: Exception) {
+                callback(false)
+            } finally {
+                cursor?.close()
+            }
+        }.start()
     }
 
     private fun getIgnoredOccurrences(eventId: Long): ArrayList<Int> {
