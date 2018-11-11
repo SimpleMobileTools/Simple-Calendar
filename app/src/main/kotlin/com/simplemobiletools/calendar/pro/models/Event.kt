@@ -7,7 +7,7 @@ import org.joda.time.DateTime
 import java.io.Serializable
 import java.util.*
 
-data class Event(var id: Int?, var startTS: Int = 0, var endTS: Int = 0, var title: String = "", var description: String = "",
+data class Event(var id: Long?, var startTS: Int = 0, var endTS: Int = 0, var title: String = "", var description: String = "",
                  var reminder1Minutes: Int = -1, var reminder2Minutes: Int = -1, var reminder3Minutes: Int = -1, var repeatInterval: Int = 0,
                  var importId: String = "", var flags: Int = 0, var repeatLimit: Int = 0, var repeatRule: Int = 0,
                  var eventType: Long = DBHelper.REGULAR_EVENT_TYPE_ID, var ignoreEventOccurrences: ArrayList<Int> = ArrayList(),

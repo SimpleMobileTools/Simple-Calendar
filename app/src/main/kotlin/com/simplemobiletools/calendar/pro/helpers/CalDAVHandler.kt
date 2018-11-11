@@ -235,8 +235,8 @@ class CalDAVHandler(val context: Context) {
                         if (originalInstanceTime != 0L) {
                             val parentImportId = "$source-$originalId"
                             val parentEventId = context.dbHelper.getEventIdWithImportId(parentImportId)
-                            if (parentEventId != 0) {
-                                event.parentId = parentEventId.toLong()
+                            if (parentEventId != 0L) {
+                                event.parentId = parentEventId
                                 context.dbHelper.addEventRepeatException(parentEventId, (originalInstanceTime / 1000).toInt(), false, event.importId)
                             }
                         }

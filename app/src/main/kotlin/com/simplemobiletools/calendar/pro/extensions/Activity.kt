@@ -15,7 +15,7 @@ import java.io.File
 import java.util.TreeSet
 import kotlin.collections.ArrayList
 
-fun BaseSimpleActivity.shareEvents(ids: List<Int>) {
+fun BaseSimpleActivity.shareEvents(ids: List<Long>) {
     val file = getTempFile()
     if (file == null) {
         toast(R.string.unknown_error_occurred)

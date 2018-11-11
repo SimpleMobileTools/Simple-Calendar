@@ -49,9 +49,9 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
 
     override fun getIsItemSelectable(position: Int) = true
 
-    override fun getItemSelectionKey(position: Int) = events.getOrNull(position)?.id
+    override fun getItemSelectionKey(position: Int) = events.getOrNull(position)?.id?.toInt()
 
-    override fun getItemKeyPosition(key: Int) = events.indexOfFirst { it.id == key }
+    override fun getItemKeyPosition(key: Int) = events.indexOfFirst { it.id?.toInt() == key }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyRecyclerViewAdapter.ViewHolder {
         val layoutId = when (viewType) {
@@ -93,7 +93,7 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
 
     private fun setupView(view: View, event: Event) {
         view.apply {
-            event_item_frame.isSelected = selectedKeys.contains(event.id)
+            event_item_frame.isSelected = selectedKeys.contains(event.id?.toInt())
             event_item_title.text = event.title
             event_item_description?.text = if (replaceDescriptionWithLocation) event.location else event.description
             event_item_start.text = if (event.getIsAllDay()) allDayString else Formatter.getTimeFromTS(context, event.startTS)
@@ -130,11 +130,11 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
         }
     }
 
-    private fun shareEvents() = activity.shareEvents(selectedKeys.distinct())
+    private fun shareEvents() = activity.shareEvents(selectedKeys.distinct().map { it.toLong() })
 
     private fun askConfirmDelete() {
-        val eventIds = selectedKeys.toMutableList()
-        val eventsToDelete = events.filter { selectedKeys.contains(it.id) }
+        val eventIds = selectedKeys.map { it.toLong() }.toMutableList()
+        val eventsToDelete = events.filter { selectedKeys.contains(it.id?.toInt()) }
         val timestamps = eventsToDelete.map { it.startTS }
         val positions = getSelectedItemPositions()
 

@@ -9,7 +9,7 @@ import com.simplemobiletools.calendar.pro.helpers.EVENT_ID
 
 class SnoozeService : IntentService("Snooze") {
     override fun onHandleIntent(intent: Intent) {
-        val eventId = intent.getIntExtra(EVENT_ID, 0)
+        val eventId = intent.getLongExtra(EVENT_ID, 0L)
         val event = dbHelper.getEventWithId(eventId)
         rescheduleReminder(event, config.snoozeTime)
     }

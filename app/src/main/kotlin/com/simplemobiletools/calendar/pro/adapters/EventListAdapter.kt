@@ -70,9 +70,9 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
 
     override fun getIsItemSelectable(position: Int) = listItems[position] is ListEvent
 
-    override fun getItemSelectionKey(position: Int) = (listItems.getOrNull(position) as? ListEvent)?.id
+    override fun getItemSelectionKey(position: Int) = (listItems.getOrNull(position) as? ListEvent)?.id?.toInt()
 
-    override fun getItemKeyPosition(key: Int) = listItems.indexOfFirst { (it as? ListEvent)?.id == key }
+    override fun getItemKeyPosition(key: Int) = listItems.indexOfFirst { (it as? ListEvent)?.id?.toInt() == key }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyRecyclerViewAdapter.ViewHolder {
         val layoutId = when (viewType) {
@@ -136,7 +136,7 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
 
     private fun setupListEvent(view: View, listEvent: ListEvent) {
         view.apply {
-            event_item_frame.isSelected = selectedKeys.contains(listEvent.id)
+            event_item_frame.isSelected = selectedKeys.contains(listEvent.id.toInt())
             event_item_title.text = listEvent.title
             event_item_description?.text = if (replaceDescription) listEvent.location else listEvent.description
             event_item_start.text = if (listEvent.isAllDay) allDayString else Formatter.getTimeFromTS(context, listEvent.startTS)
@@ -195,11 +195,11 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
         }
     }
 
-    private fun shareEvents() = activity.shareEvents(selectedKeys.distinct())
+    private fun shareEvents() = activity.shareEvents(selectedKeys.distinct().map { it.toLong() })
 
     private fun askConfirmDelete() {
-        val eventIds = selectedKeys.toMutableList()
-        val eventsToDelete = listItems.filter { selectedKeys.contains((it as? ListEvent)?.id) } as List<ListEvent>
+        val eventIds = selectedKeys.toMutableList().map { it.toLong() }
+        val eventsToDelete = listItems.filter { selectedKeys.contains((it as? ListEvent)?.id?.toInt()) } as List<ListEvent>
         val timestamps = eventsToDelete.mapNotNull { (it as? ListEvent)?.startTS }
 
         val hasRepeatableEvent = eventsToDelete.any { it.isRepeatable }

@@ -119,15 +119,15 @@ fun Context.scheduleEventIn(notifTS: Long, event: Event, activity: SimpleActivit
     AlarmManagerCompat.setExactAndAllowWhileIdle(alarmManager, AlarmManager.RTC_WAKEUP, newNotifTS, pendingIntent)
 }
 
-fun Context.cancelNotification(id: Int) {
-    (getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager).cancel(id)
+fun Context.cancelNotification(id: Long) {
+    (getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager).cancel(id.toInt())
 }
 
 private fun getNotificationIntent(context: Context, event: Event): PendingIntent {
     val intent = Intent(context, NotificationReceiver::class.java)
     intent.putExtra(EVENT_ID, event.id)
     intent.putExtra(EVENT_OCCURRENCE_TS, event.startTS)
-    return PendingIntent.getBroadcast(context, event.id!!, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+    return PendingIntent.getBroadcast(context, event.id!!.toInt(), intent, PendingIntent.FLAG_UPDATE_CURRENT)
 }
 
 fun Context.getRepetitionText(seconds: Int) = when (seconds) {
@@ -186,7 +186,7 @@ fun Context.notifyEvent(originalEvent: Event) {
     val content = "$displayedStartDate $timeRange $descriptionOrLocation".trim()
     val notification = getNotification(pendingIntent, event, content)
     val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-    notificationManager.notify(event.id!!, notification)
+    notificationManager.notify(event.id!!.toInt(), notification)
 }
 
 @SuppressLint("NewApi")
@@ -262,7 +262,7 @@ private fun getPendingIntent(context: Context, event: Event): PendingIntent {
     val intent = Intent(context, EventActivity::class.java)
     intent.putExtra(EVENT_ID, event.id)
     intent.putExtra(EVENT_OCCURRENCE_TS, event.startTS)
-    return PendingIntent.getActivity(context, event.id!!, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+    return PendingIntent.getActivity(context, event.id!!.toInt(), intent, PendingIntent.FLAG_UPDATE_CURRENT)
 }
 
 private fun getSnoozePendingIntent(context: Context, event: Event): PendingIntent {
@@ -270,17 +270,16 @@ private fun getSnoozePendingIntent(context: Context, event: Event): PendingInten
     val intent = Intent(context, snoozeClass).setAction("Snooze")
     intent.putExtra(EVENT_ID, event.id)
     return if (context.config.useSameSnooze) {
-        PendingIntent.getService(context, event.id!!, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        PendingIntent.getService(context, event.id!!.toInt(), intent, PendingIntent.FLAG_UPDATE_CURRENT)
     } else {
-        PendingIntent.getActivity(context, event.id!!, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        PendingIntent.getActivity(context, event.id!!.toInt(), intent, PendingIntent.FLAG_UPDATE_CURRENT)
     }
 }
 
 fun Context.rescheduleReminder(event: Event?, minutes: Int) {
     if (event != null) {
         applicationContext.scheduleEventIn(System.currentTimeMillis() + minutes * 60000, event)
-        val manager = applicationContext.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        manager.cancel(event.id!!)
+        cancelNotification(event.id!!)
     }
 }
 
@@ -435,7 +434,7 @@ fun Context.getEventListItems(events: List<Event>): ArrayList<ListItem> {
     return listItems
 }
 
-fun Context.handleEventDeleting(eventIds: List<Int>, timestamps: List<Int>, action: Int) {
+fun Context.handleEventDeleting(eventIds: List<Long>, timestamps: List<Int>, action: Int) {
     when (action) {
         DELETE_SELECTED_OCCURRENCE -> {
             eventIds.forEachIndexed { index, value ->

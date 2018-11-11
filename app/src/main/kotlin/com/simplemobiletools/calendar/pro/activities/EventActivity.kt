@@ -64,10 +64,10 @@ class EventActivity : SimpleActivity() {
         val intent = intent ?: return
         mDialogTheme = getDialogTheme()
 
-        val eventId = intent.getIntExtra(EVENT_ID, 0)
+        val eventId = intent.getLongExtra(EVENT_ID, 0)
         val event = dbHelper.getEventWithId(eventId)
 
-        if (eventId != 0 && event == null) {
+        if (eventId != 0L && event == null) {
             finish()
             return
         }
@@ -150,9 +150,9 @@ class EventActivity : SimpleActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_event, menu)
         if (wasActivityInitialized) {
-            menu.findItem(R.id.delete).isVisible = mEvent.id != 0
-            menu.findItem(R.id.share).isVisible = mEvent.id != 0
-            menu.findItem(R.id.duplicate).isVisible = mEvent.id != 0
+            menu.findItem(R.id.delete).isVisible = mEvent.id != 0L
+            menu.findItem(R.id.share).isVisible = mEvent.id != 0L
+            menu.findItem(R.id.duplicate).isVisible = mEvent.id != 0L
         }
         return true
     }
@@ -698,7 +698,7 @@ class EventActivity : SimpleActivity() {
 
         val wasRepeatable = mEvent.repeatInterval > 0
         val oldSource = mEvent.source
-        val newImportId = if (mEvent.id != 0) mEvent.importId else UUID.randomUUID().toString().replace("-", "") + System.currentTimeMillis().toString()
+        val newImportId = if (mEvent.id != 0L) mEvent.importId else UUID.randomUUID().toString().replace("-", "") + System.currentTimeMillis().toString()
 
         val newEventType = if (!config.caldavSync || config.lastUsedCaldavCalendarId == 0 || mEventCalendarId == STORED_LOCALLY_ONLY) {
             mEventTypeId
@@ -748,7 +748,7 @@ class EventActivity : SimpleActivity() {
         }
 
         // recreate the event if it was moved in a different CalDAV calendar
-        if (mEvent.id != 0 && oldSource != newSource) {
+        if (mEvent.id != 0L && oldSource != newSource) {
             dbHelper.deleteEvents(arrayOf(mEvent.id.toString()), true)
             mEvent.id = 0
         }
@@ -757,7 +757,7 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun storeEvent(wasRepeatable: Boolean) {
-        if (mEvent.id == 0) {
+        if (mEvent.id == 0L) {
             dbHelper.insert(mEvent, true, this) {
                 if (DateTime.now().isAfter(mEventStartDateTime.millis)) {
                     if (mEvent.repeatInterval == 0 && mEvent.getReminders().isNotEmpty()) {

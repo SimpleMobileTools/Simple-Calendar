@@ -13,7 +13,7 @@ class SplashActivity : BaseSplashActivity() {
                 startActivity(this)
             }
             intent.extras?.containsKey(EVENT_ID) == true -> Intent(this, MainActivity::class.java).apply {
-                putExtra(EVENT_ID, intent.getIntExtra(EVENT_ID, 0))
+                putExtra(EVENT_ID, intent.getLongExtra(EVENT_ID, 0L))
                 putExtra(EVENT_OCCURRENCE_TS, intent.getIntExtra(EVENT_OCCURRENCE_TS, 0))
                 startActivity(this)
             }

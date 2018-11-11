@@ -13,7 +13,7 @@ class SnoozeReminderActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         showPickSecondsDialogHelper(config.snoozeTime, true, cancelCallback = { dialogCancelled() }) {
-            val eventId = intent.getIntExtra(EVENT_ID, 0)
+            val eventId = intent.getLongExtra(EVENT_ID, 0L)
             val event = dbHelper.getEventWithId(eventId)
             config.snoozeTime = it / 60
             rescheduleReminder(event, it / 60)

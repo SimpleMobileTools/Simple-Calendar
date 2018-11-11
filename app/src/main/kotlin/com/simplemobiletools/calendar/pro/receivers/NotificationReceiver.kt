@@ -23,8 +23,8 @@ class NotificationReceiver : BroadcastReceiver() {
     }
 
     private fun handleIntent(context: Context, intent: Intent) {
-        val id = intent.getIntExtra(EVENT_ID, -1)
-        if (id == -1) {
+        val id = intent.getLongExtra(EVENT_ID, -1L)
+        if (id == -1L) {
             return
         }
 

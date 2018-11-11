@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.database.sqlite.SQLiteQueryBuilder
 import android.text.TextUtils
-import android.util.SparseIntArray
 import androidx.collection.LongSparseArray
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
@@ -114,7 +113,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         addEventType(eventType, db)
     }
 
-    fun insert(event: Event, addToCalDAV: Boolean, activity: SimpleActivity? = null, callback: (id: Int) -> Unit) {
+    fun insert(event: Event, addToCalDAV: Boolean, activity: SimpleActivity? = null, callback: (id: Long) -> Unit) {
         if (event.startTS > event.endTS) {
             callback(0)
             return
@@ -122,7 +121,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
         val eventValues = fillEventValues(event)
         val id = mDb.insert(MAIN_TABLE_NAME, null, eventValues)
-        event.id = id.toInt()
+        event.id = id
 
         if (event.repeatInterval != 0 && event.parentId == 0L) {
             val metaValues = fillMetaValues(event)
@@ -149,7 +148,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
                 val eventValues = fillEventValues(event)
                 val id = mDb.insert(MAIN_TABLE_NAME, null, eventValues)
-                event.id = id.toInt()
+                event.id = id
 
                 if (event.repeatInterval != 0 && event.parentId == 0L) {
                     val metaValues = fillMetaValues(event)
@@ -262,7 +261,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
     }
 
-    private fun fillExceptionValues(parentEventId: Int, occurrenceTS: Int, addToCalDAV: Boolean, childImportId: String?, callback: (values: ContentValues) -> Unit) {
+    private fun fillExceptionValues(parentEventId: Long, occurrenceTS: Int, addToCalDAV: Boolean, childImportId: String?, callback: (values: ContentValues) -> Unit) {
         val childEvent = getEventWithId(parentEventId)
         if (childEvent == null) {
             callback(ContentValues())
@@ -271,7 +270,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
         childEvent.apply {
             id = 0
-            parentId = parentEventId.toLong()
+            parentId = parentEventId
             startTS = 0
             endTS = 0
             if (childImportId != null) {
@@ -392,7 +391,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         context.updateWidgets()
 
         ids.forEach {
-            context.cancelNotification(it.toInt())
+            context.cancelNotification(it.toLong())
         }
 
         if (deleteFromCalDAV && context.config.caldavSync) {
@@ -432,7 +431,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         return fillEvents(cursor).filter { it.importId.isNotEmpty() }
     }
 
-    fun addEventRepeatException(parentEventId: Int, occurrenceTS: Int, addToCalDAV: Boolean, childImportId: String? = null) {
+    fun addEventRepeatException(parentEventId: Long, occurrenceTS: Int, addToCalDAV: Boolean, childImportId: String? = null) {
         fillExceptionValues(parentEventId, occurrenceTS, addToCalDAV, childImportId) {
             mDb.insert(EXCEPTIONS_TABLE_NAME, null, it)
 
@@ -443,7 +442,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
     }
 
-    fun addEventRepeatLimit(eventId: Int, limitTS: Int) {
+    fun addEventRepeatLimit(eventId: Long, limitTS: Int) {
         val values = ContentValues()
         val time = Formatter.getDateTimeFromTS(limitTS)
         values.put(COL_REPEAT_LIMIT, limitTS - time.hourOfDay)
@@ -507,7 +506,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         mDb.update(MAIN_TABLE_NAME, values, selection, selectionArgs)
     }
 
-    fun updateEventImportIdAndSource(eventId: Int, importId: String, source: String) {
+    fun updateEventImportIdAndSource(eventId: Long, importId: String, source: String) {
         val values = ContentValues()
         values.put(COL_IMPORT_ID, importId)
         values.put(COL_EVENT_SOURCE, source)
@@ -519,7 +518,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
     fun getEventsWithImportIds() = getEvents("").filter { it.importId.trim().isNotEmpty() } as ArrayList<Event>
 
-    fun getEventWithId(id: Int): Event? {
+    fun getEventWithId(id: Long): Event? {
         val selection = "$MAIN_TABLE_NAME.$COL_ID = ?"
         val selectionArgs = arrayOf(id.toString())
         val cursor = getEventsCursor(selection, selectionArgs)
@@ -531,27 +530,27 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
     }
 
-    fun getEventIdWithImportId(id: String): Int {
+    fun getEventIdWithImportId(id: String): Long {
         val selection = "$MAIN_TABLE_NAME.$COL_IMPORT_ID = ?"
         val selectionArgs = arrayOf(id)
         val cursor = getEventsCursor(selection, selectionArgs)
         val events = fillEvents(cursor)
         return if (events.isNotEmpty()) {
-            events.minBy { it.id!! }?.id ?: 0
+            events.minBy { it.id!! }?.id ?: 0L
         } else {
-            0
+            0L
         }
     }
 
-    fun getEventIdWithLastImportId(id: String): Int {
+    fun getEventIdWithLastImportId(id: String): Long {
         val selection = "$MAIN_TABLE_NAME.$COL_IMPORT_ID LIKE ?"
         val selectionArgs = arrayOf("%-$id")
         val cursor = getEventsCursor(selection, selectionArgs)
         val events = fillEvents(cursor)
         return if (events.isNotEmpty()) {
-            events.minBy { it.id!! }?.id ?: 0
+            events.minBy { it.id!! }?.id ?: 0L
         } else {
-            0
+            0L
         }
     }
 
@@ -569,18 +568,19 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }.start()
     }
 
-    fun getEvents(fromTS: Int, toTS: Int, eventId: Int = -1, applyTypeFilter: Boolean = false, callback: (events: ArrayList<Event>) -> Unit) {
+    fun getEvents(fromTS: Int, toTS: Int, eventId: Long = -1L, applyTypeFilter: Boolean = false, callback: (events: ArrayList<Event>) -> Unit) {
         Thread {
             getEventsInBackground(fromTS, toTS, eventId, applyTypeFilter, callback)
         }.start()
     }
 
-    fun getEventsInBackground(fromTS: Int, toTS: Int, eventId: Int = -1, applyTypeFilter: Boolean, callback: (events: ArrayList<Event>) -> Unit) {
+    fun getEventsInBackground(fromTS: Int, toTS: Int, eventId: Long = -1L, applyTypeFilter: Boolean, callback: (events: ArrayList<Event>) -> Unit) {
         var events = ArrayList<Event>()
 
         var selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_REPEAT_INTERVAL IS NULL AND $COL_START_TS != 0"
-        if (eventId != -1)
+        if (eventId != -1L) {
             selection += " AND $MAIN_TABLE_NAME.$COL_ID = $eventId"
+        }
 
         if (applyTypeFilter) {
             val displayEventTypes = context.config.displayEventTypes
@@ -606,11 +606,11 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         callback(events)
     }
 
-    fun getRepeatableEventsFor(fromTS: Int, toTS: Int, eventId: Int = -1, applyTypeFilter: Boolean = false): List<Event> {
+    fun getRepeatableEventsFor(fromTS: Int, toTS: Int, eventId: Long = -1L, applyTypeFilter: Boolean = false): List<Event> {
         val newEvents = ArrayList<Event>()
 
         var selection = "$COL_REPEAT_INTERVAL != 0 AND $COL_START_TS <= $toTS AND $COL_START_TS != 0"
-        if (eventId != -1)
+        if (eventId != -1L)
             selection += " AND $MAIN_TABLE_NAME.$COL_ID = $eventId"
 
         if (applyTypeFilter) {
@@ -622,7 +622,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
 
         val events = getEvents(selection)
-        val startTimes = SparseIntArray(events.size)
+        val startTimes = LongSparseArray<Int>()
         events.forEach {
             startTimes.put(it.id!!, it.startTS)
             if (it.repeatLimit >= 0) {
@@ -635,7 +635,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         return newEvents
     }
 
-    private fun getEventsRepeatingTillDateOrForever(fromTS: Int, toTS: Int, startTimes: SparseIntArray, event: Event): ArrayList<Event> {
+    private fun getEventsRepeatingTillDateOrForever(fromTS: Int, toTS: Int, startTimes: LongSparseArray<Int>, event: Event): ArrayList<Event> {
         val original = event.copy()
         val events = ArrayList<Event>()
         while (event.startTS <= toTS && (event.repeatLimit == 0 || event.repeatLimit >= event.startTS)) {
@@ -671,7 +671,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         return events
     }
 
-    private fun getEventsRepeatingXTimes(fromTS: Int, toTS: Int, startTimes: SparseIntArray, event: Event): ArrayList<Event> {
+    private fun getEventsRepeatingXTimes(fromTS: Int, toTS: Int, startTimes: LongSparseArray<Int>, event: Event): ArrayList<Event> {
         val original = event.copy()
         val events = ArrayList<Event>()
         while (event.repeatLimit < 0 && event.startTS <= toTS) {
@@ -701,10 +701,10 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         return events
     }
 
-    private fun getAllDayEvents(fromTS: Int, eventId: Int = -1, applyTypeFilter: Boolean = false): List<Event> {
+    private fun getAllDayEvents(fromTS: Int, eventId: Long = -1L, applyTypeFilter: Boolean = false): List<Event> {
         val events = ArrayList<Event>()
         var selection = "($COL_FLAGS & $FLAG_ALL_DAY) != 0"
-        if (eventId != -1)
+        if (eventId != -1L)
             selection += " AND $MAIN_TABLE_NAME.$COL_ID = $eventId"
 
         if (applyTypeFilter) {
@@ -722,8 +722,8 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     }
 
     // check if its the proper week, for events repeating every x weeks
-    private fun isOnProperWeek(event: Event, startTimes: SparseIntArray): Boolean {
-        val initialWeekOfYear = Formatter.getDateTimeFromTS(startTimes[event.id!!]).weekOfWeekyear
+    private fun isOnProperWeek(event: Event, startTimes: LongSparseArray<Int>): Boolean {
+        val initialWeekOfYear = Formatter.getDateTimeFromTS(startTimes[event.id!!]!!).weekOfWeekyear
         val currentWeekOfYear = Formatter.getDateTimeFromTS(event.startTS).weekOfWeekyear
         return (currentWeekOfYear - initialWeekOfYear) % (event.repeatInterval / WEEK) == 0
     }
@@ -757,7 +757,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         return events
     }
 
-    fun getEventsWithIds(ids: List<Int>): ArrayList<Event> {
+    fun getEventsWithIds(ids: List<Long>): ArrayList<Event> {
         val args = TextUtils.join(", ", ids)
         val selection = "$MAIN_TABLE_NAME.$COL_ID IN ($args)"
         return getEvents(selection) as ArrayList<Event>
@@ -825,7 +825,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         cursor?.use {
             if (cursor.moveToFirst()) {
                 do {
-                    val id = cursor.getIntValue(COL_ID)
+                    val id = cursor.getLongValue(COL_ID)
                     val startTS = cursor.getIntValue(COL_START_TS)
                     val endTS = cursor.getIntValue(COL_END_TS)
                     val reminder1Minutes = cursor.getIntValue(COL_REMINDER_MINUTES)
@@ -914,7 +914,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
     }
 
-    private fun getIgnoredOccurrences(eventId: Int): ArrayList<Int> {
+    private fun getIgnoredOccurrences(eventId: Long): ArrayList<Int> {
         val projection = arrayOf(COL_OCCURRENCE_DAYCODE)
         val selection = "$COL_PARENT_EVENT_ID = ?"
         val selectionArgs = arrayOf(eventId.toString())
