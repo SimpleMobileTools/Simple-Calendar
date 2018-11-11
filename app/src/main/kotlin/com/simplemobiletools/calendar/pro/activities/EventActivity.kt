@@ -765,7 +765,9 @@ class EventActivity : SimpleActivity() {
             mEvent.id = 0
         }
 
-        storeEvent(wasRepeatable)
+        Thread {
+            storeEvent(wasRepeatable)
+        }.start()
     }
 
     private fun storeEvent(wasRepeatable: Boolean) {
@@ -781,28 +783,34 @@ class EventActivity : SimpleActivity() {
             }
         } else {
             if (mRepeatInterval > 0 && wasRepeatable) {
-                EditRepeatingEventDialog(this) {
-                    if (it) {
-                        dbHelper.update(mEvent, true, this) {
-                            finish()
-                        }
-                    } else {
-                        dbHelper.addEventRepeatException(mEvent.id!!, mEventOccurrenceTS, true)
-                        mEvent.apply {
-                            parentId = id!!.toLong()
-                            id = null
-                            repeatRule = 0
-                            repeatInterval = 0
-                            repeatLimit = 0
-                        }
-
-                        dbHelper.insert(mEvent, true, this) {
-                            finish()
-                        }
-                    }
+                runOnUiThread {
+                    showEditRepeatingEventDialog()
                 }
             } else {
                 dbHelper.update(mEvent, true, this) {
+                    finish()
+                }
+            }
+        }
+    }
+
+    private fun showEditRepeatingEventDialog() {
+        EditRepeatingEventDialog(this) {
+            if (it) {
+                dbHelper.update(mEvent, true, this) {
+                    finish()
+                }
+            } else {
+                dbHelper.addEventRepeatException(mEvent.id!!, mEventOccurrenceTS, true)
+                mEvent.apply {
+                    parentId = id!!.toLong()
+                    id = null
+                    repeatRule = 0
+                    repeatInterval = 0
+                    repeatLimit = 0
+                }
+
+                dbHelper.insert(mEvent, true, this) {
                     finish()
                 }
             }
