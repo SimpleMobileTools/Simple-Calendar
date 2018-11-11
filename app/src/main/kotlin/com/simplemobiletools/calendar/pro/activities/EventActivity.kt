@@ -64,9 +64,16 @@ class EventActivity : SimpleActivity() {
         val intent = intent ?: return
         mDialogTheme = getDialogTheme()
 
-        val eventId = intent.getLongExtra(EVENT_ID, 0)
-        val event = dbHelper.getEventWithId(eventId)
+        val eventId = intent.getLongExtra(EVENT_ID, 0L)
+        Thread {
+            val event = dbHelper.getEventWithId(eventId)
+            runOnUiThread {
+                gotEvent(savedInstanceState, eventId, event)
+            }
+        }.start()
+    }
 
+    private fun gotEvent(savedInstanceState: Bundle?, eventId: Long, event: Event?) {
         if (eventId != 0L && event == null) {
             finish()
             return
