@@ -797,22 +797,26 @@ class EventActivity : SimpleActivity() {
     private fun showEditRepeatingEventDialog() {
         EditRepeatingEventDialog(this) {
             if (it) {
-                dbHelper.update(mEvent, true, this) {
-                    finish()
-                }
+                Thread {
+                    dbHelper.update(mEvent, true, this) {
+                        finish()
+                    }
+                }.start()
             } else {
-                dbHelper.addEventRepeatException(mEvent.id!!, mEventOccurrenceTS, true)
-                mEvent.apply {
-                    parentId = id!!.toLong()
-                    id = null
-                    repeatRule = 0
-                    repeatInterval = 0
-                    repeatLimit = 0
-                }
+                Thread {
+                    dbHelper.addEventRepeatException(mEvent.id!!, mEventOccurrenceTS, true)
+                    mEvent.apply {
+                        parentId = id!!.toLong()
+                        id = null
+                        repeatRule = 0
+                        repeatInterval = 0
+                        repeatLimit = 0
+                    }
 
-                dbHelper.insert(mEvent, true, this) {
-                    finish()
-                }
+                    dbHelper.insert(mEvent, true, this) {
+                        finish()
+                    }
+                }.start()
             }
         }
     }
