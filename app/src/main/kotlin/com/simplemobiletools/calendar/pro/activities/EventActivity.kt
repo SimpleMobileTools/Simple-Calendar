@@ -17,6 +17,7 @@ import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.models.CalDAVCalendar
 import com.simplemobiletools.calendar.pro.models.Event
+import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
@@ -67,19 +68,19 @@ class EventActivity : SimpleActivity() {
         val eventId = intent.getLongExtra(EVENT_ID, 0L)
         Thread {
             val event = dbHelper.getEventWithId(eventId)
+            if (eventId != 0L && event == null) {
+                finish()
+                return@Thread
+            }
+
+            val localEventType = dbHelper.getEventType(config.lastUsedLocalEventTypeId)
             runOnUiThread {
-                gotEvent(savedInstanceState, eventId, event)
+                gotEvent(savedInstanceState, localEventType, event)
             }
         }.start()
     }
 
-    private fun gotEvent(savedInstanceState: Bundle?, eventId: Long, event: Event?) {
-        if (eventId != 0L && event == null) {
-            finish()
-            return
-        }
-
-        val localEventType = dbHelper.getEventType(config.lastUsedLocalEventTypeId)
+    private fun gotEvent(savedInstanceState: Bundle?, localEventType: EventType?, event: Event?) {
         if (localEventType == null || localEventType.caldavCalendarId != 0) {
             config.lastUsedLocalEventTypeId = DBHelper.REGULAR_EVENT_TYPE_ID
         }
@@ -581,11 +582,15 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun updateEventType() {
-        val eventType = dbHelper.getEventType(mEventTypeId)
-        if (eventType != null) {
-            event_type.text = eventType.title
-            event_type_color.setFillWithStroke(eventType.color, config.backgroundColor)
-        }
+        Thread {
+            val eventType = dbHelper.getEventType(mEventTypeId)
+            if (eventType != null) {
+                runOnUiThread {
+                    event_type.text = eventType.title
+                    event_type_color.setFillWithStroke(eventType.color, config.backgroundColor)
+                }
+            }
+        }.start()
     }
 
     private fun updateCalDAVCalendar() {
