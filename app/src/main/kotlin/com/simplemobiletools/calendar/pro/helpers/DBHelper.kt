@@ -390,7 +390,8 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
         context.updateWidgets()
 
-        ids.forEach {
+        // temporary workaround, will be rewritten in Room
+        ids.filterNot { it == "null" }.forEach {
             context.cancelNotification(it.toLong())
         }
 
