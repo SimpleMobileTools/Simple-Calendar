@@ -45,36 +45,9 @@ class EditEventTypeDialog(val activity: Activity, var eventType: EventType? = nu
                     activity.setupDialogStuff(view, this, if (isNewEvent) R.string.add_new_type else R.string.edit_type) {
                         showKeyboard(view.type_title)
                         getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
-                            val title = view.type_title.value
-                            val eventIdWithTitle = activity.dbHelper.getEventTypeIdWithTitle(title)
-                            var isEventTypeTitleTaken = isNewEvent && eventIdWithTitle != -1L
-                            if (!isEventTypeTitleTaken)
-                                isEventTypeTitleTaken = !isNewEvent && eventType!!.id != eventIdWithTitle && eventIdWithTitle != -1L
-
-                            if (title.isEmpty()) {
-                                activity.toast(R.string.title_empty)
-                                return@setOnClickListener
-                            } else if (isEventTypeTitleTaken) {
-                                activity.toast(R.string.type_already_exists)
-                                return@setOnClickListener
-                            }
-
-                            eventType!!.title = title
-                            if (eventType!!.caldavCalendarId != 0)
-                                eventType!!.caldavDisplayName = title
-
-                            eventType!!.id = if (isNewEvent) {
-                                activity.dbHelper.insertEventType(eventType!!)
-                            } else {
-                                activity.dbHelper.updateEventType(eventType!!)
-                            }
-
-                            if (eventType!!.id != -1L) {
-                                dismiss()
-                                callback(eventType!!)
-                            } else {
-                                activity.toast(R.string.editing_calendar_failed)
-                            }
+                            Thread {
+                                eventTypeConfirmed(view.type_title.value, this)
+                            }.start()
                         }
                     }
                 }
@@ -82,5 +55,40 @@ class EditEventTypeDialog(val activity: Activity, var eventType: EventType? = nu
 
     private fun setupColor(view: ImageView) {
         view.setFillWithStroke(eventType!!.color, activity.config.backgroundColor)
+    }
+
+    private fun eventTypeConfirmed(title: String, dialog: AlertDialog) {
+        val eventIdWithTitle = activity.dbHelper.getEventTypeIdWithTitle(title)
+        var isEventTypeTitleTaken = isNewEvent && eventIdWithTitle != -1L
+        if (!isEventTypeTitleTaken) {
+            isEventTypeTitleTaken = !isNewEvent && eventType!!.id != eventIdWithTitle && eventIdWithTitle != -1L
+        }
+
+        if (title.isEmpty()) {
+            activity.toast(R.string.title_empty)
+            return
+        } else if (isEventTypeTitleTaken) {
+            activity.toast(R.string.type_already_exists)
+            return
+        }
+
+        eventType!!.title = title
+        if (eventType!!.caldavCalendarId != 0)
+            eventType!!.caldavDisplayName = title
+
+        eventType!!.id = if (isNewEvent) {
+            activity.dbHelper.insertEventType(eventType!!)
+        } else {
+            activity.dbHelper.updateEventType(eventType!!)
+        }
+
+        if (eventType!!.id != -1L) {
+            activity.runOnUiThread {
+                dialog.dismiss()
+                callback(eventType!!)
+            }
+        } else {
+            activity.toast(R.string.editing_calendar_failed)
+        }
     }
 }
