@@ -182,10 +182,13 @@ class SettingsActivity : SimpleActivity() {
             config.caldavSync = false
             settings_manage_synced_calendars_holder.beGone()
             settings_caldav_pull_to_refresh_holder.beGone()
-            config.getSyncedCalendarIdsAsList().forEach {
-                CalDAVHandler(applicationContext).deleteCalDAVCalendarEvents(it.toLong())
-            }
-            dbHelper.deleteEventTypesWithCalendarId(config.caldavSyncedCalendarIDs)
+
+            Thread {
+                config.getSyncedCalendarIdsAsList().forEach {
+                    CalDAVHandler(applicationContext).deleteCalDAVCalendarEvents(it.toLong())
+                }
+                dbHelper.deleteEventTypesWithCalendarId(config.caldavSyncedCalendarIDs)
+            }.start()
         }
     }
 
