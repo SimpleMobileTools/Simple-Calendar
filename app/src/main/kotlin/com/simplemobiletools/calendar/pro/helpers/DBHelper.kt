@@ -607,12 +607,15 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         events = events
                 .asSequence()
                 .distinct()
-                .filterNot { it.ignoreEventOccurrences.contains(Formatter.getDayCodeFromTS(it.startTS).toInt()) }
+                .filterNot { getIgnoredOccurrences(it).contains(Formatter.getDayCodeFromTS(it.startTS).toInt()) }
                 .toMutableList() as ArrayList<Event>
         callback(events)
     }
 
     fun getRepeatableEventsFor(fromTS: Int, toTS: Int, eventId: Long = -1L, applyTypeFilter: Boolean = false): List<Event> {
+        if (isOnMainThread()) {
+            Log.e("DEBUG", "dbhelper getRepeatableEventsFor")
+        }
         val newEvents = ArrayList<Event>()
 
         var selection = "$COL_REPEAT_INTERVAL != 0 AND $COL_START_TS <= $toTS AND $COL_START_TS != 0"
@@ -857,19 +860,13 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                     val color = eventTypeColors.get(eventType)!!
                     val isPastEvent = false
 
-                    val ignoreEventOccurrences = if (repeatInterval != 0) {
-                        getIgnoredOccurrences(id)
-                    } else {
-                        ArrayList()
-                    }
-
                     if (repeatInterval > 0 && repeatRule == 0 && (repeatInterval % MONTH == 0 || repeatInterval % YEAR == 0)) {
                         repeatRule = REPEAT_SAME_DAY
                     }
 
                     val event = Event(id, startTS, endTS, title, description, reminder1Minutes, reminder2Minutes, reminder3Minutes,
-                            repeatInterval, importId, flags, repeatLimit, repeatRule, eventType, ignoreEventOccurrences, offset, isDstIncluded,
-                            0, lastUpdated, source, color, location, isPastEvent)
+                            repeatInterval, importId, flags, repeatLimit, repeatRule, eventType, offset, isDstIncluded, 0, lastUpdated,
+                            source, color, location, isPastEvent)
                     event.isPastEvent = getIsPastEvent(event)
 
                     events.add(event)
@@ -928,10 +925,14 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }.start()
     }
 
-    private fun getIgnoredOccurrences(eventId: Long): ArrayList<Int> {
+    fun getIgnoredOccurrences(event: Event): ArrayList<Int> {
+        if (event.repeatInterval == 0) {
+            return ArrayList()
+        }
+
         val projection = arrayOf(COL_OCCURRENCE_DAYCODE)
         val selection = "$COL_PARENT_EVENT_ID = ?"
-        val selectionArgs = arrayOf(eventId.toString())
+        val selectionArgs = arrayOf(event.id.toString())
         val daycodes = ArrayList<Int>()
 
         var cursor: Cursor? = null

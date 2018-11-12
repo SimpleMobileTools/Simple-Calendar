@@ -221,7 +221,6 @@ class CalDAVHandler(val context: Context) {
                         existingEvent.apply {
                             this.id = null
                             color = 0
-                            ignoreEventOccurrences = ArrayList()
                             lastUpdated = 0L
                             offset = ""
                         }

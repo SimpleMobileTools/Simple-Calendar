@@ -58,7 +58,7 @@ class IcsExporter {
                     Parser().getRepeatCode(event).let { if (it.isNotEmpty()) out.writeLn("$RRULE$it") }
 
                     fillReminders(event, out)
-                    fillIgnoredOccurrences(event, out)
+                    fillIgnoredOccurrences(activity, event, out)
 
                     eventsExported++
                     out.writeLn(END_EVENT)
@@ -91,9 +91,9 @@ class IcsExporter {
         }
     }
 
-    private fun fillIgnoredOccurrences(event: Event, out: BufferedWriter) {
-        event.ignoreEventOccurrences.forEach {
-            out.writeLn("$EXDATE:$it}")
+    private fun fillIgnoredOccurrences(activity: BaseSimpleActivity, event: Event, out: BufferedWriter) {
+        activity.dbHelper.getIgnoredOccurrences(event).forEach {
+            out.writeLn("$EXDATE:$it")
         }
     }
 }
