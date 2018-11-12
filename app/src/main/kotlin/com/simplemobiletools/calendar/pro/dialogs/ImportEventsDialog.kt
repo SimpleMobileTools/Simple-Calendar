@@ -17,13 +17,20 @@ import kotlinx.android.synthetic.main.dialog_import_events.view.*
 class ImportEventsDialog(val activity: SimpleActivity, val path: String, val callback: (refreshView: Boolean) -> Unit) {
     var currEventTypeId = DBHelper.REGULAR_EVENT_TYPE_ID
     var currEventTypeCalDAVCalendarId = 0
+    val config = activity.config
 
     init {
-        val config = activity.config
-        if (activity.dbHelper.getEventType(config.lastUsedLocalEventTypeId) == null) {
-            config.lastUsedLocalEventTypeId = DBHelper.REGULAR_EVENT_TYPE_ID
-        }
+        Thread {
+            if (activity.dbHelper.getEventType(config.lastUsedLocalEventTypeId) == null) {
+                config.lastUsedLocalEventTypeId = DBHelper.REGULAR_EVENT_TYPE_ID
+            }
+            activity.runOnUiThread {
+                initDialog()
+            }
+        }.start()
+    }
 
+    private fun initDialog() {
         val isLastCaldavCalendarOK = config.caldavSync && config.getSyncedCalendarIdsAsList().contains(config.lastUsedCaldavCalendarId.toString())
         currEventTypeId = if (isLastCaldavCalendarOK) {
             val lastUsedCalDAVCalendar = activity.dbHelper.getEventTypeWithCalDAVCalendarId(config.lastUsedCaldavCalendarId)
@@ -71,9 +78,13 @@ class ImportEventsDialog(val activity: SimpleActivity, val path: String, val cal
     }
 
     private fun updateEventType(view: ViewGroup) {
-        val eventType = activity.dbHelper.getEventType(currEventTypeId)
-        view.import_event_type_title.text = eventType!!.getDisplayTitle()
-        view.import_event_type_color.setFillWithStroke(eventType.color, activity.config.backgroundColor)
+        Thread {
+            val eventType = activity.dbHelper.getEventType(currEventTypeId)
+            activity.runOnUiThread {
+                view.import_event_type_title.text = eventType!!.getDisplayTitle()
+                view.import_event_type_color.setFillWithStroke(eventType.color, activity.config.backgroundColor)
+            }
+        }.start()
     }
 
     private fun handleParseResult(result: IcsImporter.ImportResult) {
