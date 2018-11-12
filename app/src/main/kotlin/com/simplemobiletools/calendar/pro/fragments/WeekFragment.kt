@@ -270,7 +270,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 (inflater.inflate(R.layout.week_event_marker, null, false) as TextView).apply {
                     var backgroundColor = eventTypeColors.get(event.eventType, primaryColor)
                     var textColor = backgroundColor.getContrastColor()
-                    if (dimPastEvents && event.getIsPastEvent()) {
+                    if (dimPastEvents && event.isPastEvent) {
                         backgroundColor = backgroundColor.adjustAlpha(LOW_ALPHA)
                         textColor = textColor.adjustAlpha(LOW_ALPHA)
                     }
@@ -339,7 +339,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         (inflater.inflate(R.layout.week_all_day_event_marker, null, false) as TextView).apply {
             var backgroundColor = eventTypeColors.get(event.eventType, primaryColor)
             var textColor = backgroundColor.getContrastColor()
-            if (dimPastEvents && event.getIsPastEvent()) {
+            if (dimPastEvents && event.isPastEvent) {
                 backgroundColor = backgroundColor.adjustAlpha(LOW_ALPHA)
                 textColor = textColor.adjustAlpha(LOW_ALPHA)
             }

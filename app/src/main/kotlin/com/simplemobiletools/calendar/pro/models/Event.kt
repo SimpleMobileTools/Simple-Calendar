@@ -95,16 +95,6 @@ data class Event(var id: Long?, var startTS: Int = 0, var endTS: Int = 0, var ti
 
     fun getIsAllDay() = flags and FLAG_ALL_DAY != 0
 
-    fun getIsPastEvent() = flags and FLAG_IS_PAST_EVENT != 0
-
-    fun setIsPastEvent(isPastEvent: Boolean) {
-        flags = if (isPastEvent) {
-            flags.addBit(FLAG_IS_PAST_EVENT)
-        } else {
-            flags.removeBit(FLAG_IS_PAST_EVENT)
-        }
-    }
-
     fun getReminders() = setOf(reminder1Minutes, reminder2Minutes, reminder3Minutes).filter { it != REMINDER_OFF }
 
     // properly return the start time of all-day events as midnight
@@ -125,4 +115,23 @@ data class Event(var id: Long?, var startTS: Int = 0, var endTS: Int = 0, var ti
     }
 
     fun getCalDAVCalendarId() = if (source.startsWith(CALDAV)) (source.split("-").lastOrNull() ?: "0").toString().toInt() else 0
+
+    fun updateIsPastEvent() {
+        val endTSToCheck = if (startTS < getNowSeconds() && getIsAllDay()) {
+            Formatter.getDayEndTS(Formatter.getDayCodeFromTS(endTS))
+        } else {
+            endTS
+        }
+        isPastEvent = endTSToCheck < getNowSeconds()
+    }
+
+    var isPastEvent: Boolean
+        get() = flags and FLAG_IS_PAST_EVENT != 0
+        set(isPastEvent) {
+            flags = if (isPastEvent) {
+                flags.addBit(FLAG_IS_PAST_EVENT)
+            } else {
+                flags.removeBit(FLAG_IS_PAST_EVENT)
+            }
+        }
 }

@@ -650,14 +650,14 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                     if (event.startTS.isTsOnProperDay(event)) {
                         if (isOnProperWeek(event, startTimes)) {
                             event.copy().apply {
-                                setIsPastEvent(getIsPastEvent(this))
+                                updateIsPastEvent()
                                 events.add(this)
                             }
                         }
                     }
                 } else {
                     event.copy().apply {
-                        setIsPastEvent(getIsPastEvent(this))
+                        updateIsPastEvent()
                         events.add(this)
                     }
                 }
@@ -668,7 +668,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                     if (event.endTS >= toTS && event.startTS.isTsOnProperDay(event)) {
                         if (isOnProperWeek(event, startTimes)) {
                             event.copy().apply {
-                                setIsPastEvent(getIsPastEvent(this))
+                                updateIsPastEvent()
                                 events.add(this)
                             }
                         }
@@ -678,7 +678,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                     val endDayCode = Formatter.getDayCodeFromTS(event.endTS)
                     if (dayCode == endDayCode) {
                         event.copy().apply {
-                            setIsPastEvent(getIsPastEvent(this))
+                            updateIsPastEvent()
                             events.add(this)
                         }
                     }
@@ -698,7 +698,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                     if (isOnProperWeek(event, startTimes)) {
                         if (event.endTS >= fromTS) {
                             event.copy().apply {
-                                setIsPastEvent(getIsPastEvent(this))
+                                updateIsPastEvent()
                                 events.add(this)
                             }
                         }
@@ -708,7 +708,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             } else {
                 if (event.endTS >= fromTS) {
                     event.copy().apply {
-                        setIsPastEvent(getIsPastEvent(this))
+                        updateIsPastEvent()
                         events.add(this)
                     }
                 } else if (event.getIsAllDay()) {
@@ -716,7 +716,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                     val endDayCode = Formatter.getDayCodeFromTS(event.endTS)
                     if (dayCode == endDayCode) {
                         event.copy().apply {
-                            setIsPastEvent(getIsPastEvent(this))
+                            updateIsPastEvent()
                             events.add(this)
                         }
                     }
@@ -879,7 +879,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
                     val event = Event(id, startTS, endTS, title, description, reminder1Minutes, reminder2Minutes, reminder3Minutes,
                             repeatInterval, importId, flags, repeatLimit, repeatRule, eventType, 0, lastUpdated, source, color, location)
-                    event.setIsPastEvent(getIsPastEvent(event))
+                    event.updateIsPastEvent()
 
                     events.add(event)
                 } while (cursor.moveToNext())
@@ -959,14 +959,5 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             cursor?.close()
         }
         return daycodes
-    }
-
-    private fun getIsPastEvent(event: Event): Boolean {
-        val endTSToCheck = if (event.startTS < getNowSeconds() && event.getIsAllDay()) {
-            Formatter.getDayEndTS(Formatter.getDayCodeFromTS(event.endTS))
-        } else {
-            event.endTS
-        }
-        return endTSToCheck < getNowSeconds()
     }
 }
