@@ -12,7 +12,7 @@ class WeeklyCalendarImpl(val callback: WeeklyCalendar, val context: Context) {
 
     fun updateWeeklyCalendar(weekStartTS: Int) {
         val endTS = weekStartTS + WEEK_SECONDS
-        context.dbHelper.getEvents(weekStartTS, endTS, applyTypeFilter = true) {
+        context.dbHelper.getEvents(weekStartTS, endTS) {
             mEvents = it
             callback.updateWeeklyCalendar(it)
         }

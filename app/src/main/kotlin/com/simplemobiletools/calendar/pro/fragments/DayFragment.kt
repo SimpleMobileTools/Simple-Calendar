@@ -105,7 +105,7 @@ class DayFragment : Fragment() {
     fun updateCalendar() {
         val startTS = Formatter.getDayStartTS(mDayCode)
         val endTS = Formatter.getDayEndTS(mDayCode)
-        context?.dbHelper?.getEvents(startTS, endTS, applyTypeFilter = true) {
+        context?.dbHelper?.getEvents(startTS, endTS) {
             receivedEvents(it)
         }
     }

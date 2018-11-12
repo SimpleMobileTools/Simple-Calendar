@@ -569,7 +569,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }.start()
     }
 
-    fun getEvents(fromTS: Int, toTS: Int, eventId: Long = -1L, applyTypeFilter: Boolean = false, callback: (events: ArrayList<Event>) -> Unit) {
+    fun getEvents(fromTS: Int, toTS: Int, eventId: Long = -1L, applyTypeFilter: Boolean = true, callback: (events: ArrayList<Event>) -> Unit) {
         Thread {
             getEventsInBackground(fromTS, toTS, eventId, applyTypeFilter, callback)
         }.start()
@@ -585,7 +585,10 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
         if (applyTypeFilter) {
             val displayEventTypes = context.config.displayEventTypes
-            if (displayEventTypes.isNotEmpty()) {
+            if (displayEventTypes.isEmpty()) {
+                callback(ArrayList())
+                return
+            } else {
                 val types = TextUtils.join(",", displayEventTypes)
                 selection += " AND $COL_EVENT_TYPE IN ($types)"
             }
@@ -616,7 +619,9 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
         if (applyTypeFilter) {
             val displayEventTypes = context.config.displayEventTypes
-            if (displayEventTypes.isNotEmpty()) {
+            if (displayEventTypes.isEmpty()) {
+                return ArrayList()
+            } else {
                 val types = TextUtils.join(",", displayEventTypes)
                 selection += " AND $COL_EVENT_TYPE IN ($types)"
             }
@@ -710,7 +715,9 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
         if (applyTypeFilter) {
             val displayEventTypes = context.config.displayEventTypes
-            if (displayEventTypes.isNotEmpty()) {
+            if (displayEventTypes.isEmpty()) {
+                return ArrayList()
+            } else {
                 val types = TextUtils.join(",", displayEventTypes)
                 selection += " AND $COL_EVENT_TYPE IN ($types)"
             }
