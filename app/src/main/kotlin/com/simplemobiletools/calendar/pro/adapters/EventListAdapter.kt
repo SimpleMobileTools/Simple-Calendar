@@ -206,13 +206,17 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
         DeleteEventDialog(activity, eventIds, hasRepeatableEvent) {
             listItems.removeAll(eventsToDelete)
 
-            val nonRepeatingEventIDs = eventsToDelete.filter { !it.isRepeatable }.map { it.id.toString() }.toTypedArray()
-            activity.dbHelper.deleteEvents(nonRepeatingEventIDs, true)
+            Thread {
+                val nonRepeatingEventIDs = eventsToDelete.filter { !it.isRepeatable }.map { it.id.toString() }.toTypedArray()
+                activity.dbHelper.deleteEvents(nonRepeatingEventIDs, true)
 
-            val repeatingEventIDs = eventsToDelete.filter { it.isRepeatable }.map { it.id }
-            activity.handleEventDeleting(repeatingEventIDs, timestamps, it)
-            listener?.refreshItems()
-            finishActMode()
+                val repeatingEventIDs = eventsToDelete.filter { it.isRepeatable }.map { it.id }
+                activity.handleEventDeleting(repeatingEventIDs, timestamps, it)
+                activity.runOnUiThread {
+                    listener?.refreshItems()
+                    finishActMode()
+                }
+            }.start()
         }
     }
 }
