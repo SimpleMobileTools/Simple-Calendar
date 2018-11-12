@@ -16,18 +16,20 @@ import java.util.TreeSet
 import kotlin.collections.ArrayList
 
 fun BaseSimpleActivity.shareEvents(ids: List<Long>) {
-    val file = getTempFile()
-    if (file == null) {
-        toast(R.string.unknown_error_occurred)
-        return
-    }
-
-    val events = dbHelper.getEventsWithIds(ids)
-    IcsExporter().exportEvents(this, file, events, false) {
-        if (it == IcsExporter.ExportResult.EXPORT_OK) {
-            sharePathIntent(file.absolutePath, BuildConfig.APPLICATION_ID)
+    Thread {
+        val file = getTempFile()
+        if (file == null) {
+            toast(R.string.unknown_error_occurred)
+            return@Thread
         }
-    }
+
+        val events = dbHelper.getEventsWithIds(ids)
+        IcsExporter().exportEvents(this, file, events, false) {
+            if (it == IcsExporter.ExportResult.EXPORT_OK) {
+                sharePathIntent(file.absolutePath, BuildConfig.APPLICATION_ID)
+            }
+        }
+    }.start()
 }
 
 fun BaseSimpleActivity.getTempFile(): File? {
