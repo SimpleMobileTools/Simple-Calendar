@@ -222,7 +222,6 @@ class CalDAVHandler(val context: Context) {
                             this.id = null
                             color = 0
                             lastUpdated = 0L
-                            offset = ""
                         }
 
                         if (existingEvent.hashCode() != event.hashCode() && title.isNotEmpty()) {

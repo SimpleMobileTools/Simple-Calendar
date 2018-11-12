@@ -39,7 +39,6 @@ import com.simplemobiletools.commons.helpers.isOreoPlus
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 import org.joda.time.LocalDate
-import java.text.SimpleDateFormat
 import java.util.*
 
 val Context.config: Config get() = Config.newInstance(applicationContext)
@@ -298,8 +297,6 @@ fun Context.getNewEventTimestampFromCode(dayCode: String): Int {
     // make sure the date doesn't change
     return newDateTime.withDate(dateTime.year, dateTime.monthOfYear, dateTime.dayOfMonth).seconds()
 }
-
-fun Context.getCurrentOffset() = SimpleDateFormat("Z", Locale.getDefault()).format(Date())
 
 fun Context.getSyncedCalDAVCalendars() = CalDAVHandler(applicationContext).getCalDAVCalendars(null, config.caldavSyncedCalendarIDs)
 

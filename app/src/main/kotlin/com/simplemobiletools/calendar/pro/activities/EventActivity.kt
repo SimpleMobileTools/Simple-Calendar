@@ -766,8 +766,6 @@ class EventActivity : SimpleActivity() {
             repeatLimit = if (repeatInterval == 0) 0 else mRepeatLimit
             repeatRule = mRepeatRule
             eventType = newEventType
-            offset = getCurrentOffset()
-            isDstIncluded = TimeZone.getDefault().inDaylightTime(Date())
             lastUpdated = System.currentTimeMillis()
             source = newSource
             location = event_location.value
