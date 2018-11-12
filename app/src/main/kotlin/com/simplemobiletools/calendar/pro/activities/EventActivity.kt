@@ -779,7 +779,7 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun storeEvent(wasRepeatable: Boolean) {
-        if (mEvent.id == 0L) {
+        if (mEvent.id == 0L || mEvent.id == null) {
             dbHelper.insert(mEvent, true, this) {
                 if (DateTime.now().isAfter(mEventStartDateTime.millis)) {
                     if (mEvent.repeatInterval == 0 && mEvent.getReminders().isNotEmpty()) {
