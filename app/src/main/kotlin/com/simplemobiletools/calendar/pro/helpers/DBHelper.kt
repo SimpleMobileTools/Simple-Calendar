@@ -649,11 +649,17 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                 if (event.repeatInterval.isXWeeklyRepetition()) {
                     if (event.startTS.isTsOnProperDay(event)) {
                         if (isOnProperWeek(event, startTimes)) {
-                            events.add(event.copy(isPastEvent = getIsPastEvent(event)))
+                            event.copy().apply {
+                                setIsPastEvent(getIsPastEvent(this))
+                                events.add(this)
+                            }
                         }
                     }
                 } else {
-                    events.add(event.copy(isPastEvent = getIsPastEvent(event)))
+                    event.copy().apply {
+                        setIsPastEvent(getIsPastEvent(this))
+                        events.add(this)
+                    }
                 }
             }
 
@@ -661,14 +667,20 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                 if (event.repeatInterval.isXWeeklyRepetition()) {
                     if (event.endTS >= toTS && event.startTS.isTsOnProperDay(event)) {
                         if (isOnProperWeek(event, startTimes)) {
-                            events.add(event.copy(isPastEvent = getIsPastEvent(event)))
+                            event.copy().apply {
+                                setIsPastEvent(getIsPastEvent(this))
+                                events.add(this)
+                            }
                         }
                     }
                 } else {
                     val dayCode = Formatter.getDayCodeFromTS(fromTS)
                     val endDayCode = Formatter.getDayCodeFromTS(event.endTS)
                     if (dayCode == endDayCode) {
-                        events.add(event.copy(isPastEvent = getIsPastEvent(event)))
+                        event.copy().apply {
+                            setIsPastEvent(getIsPastEvent(this))
+                            events.add(this)
+                        }
                     }
                 }
             }
@@ -685,19 +697,28 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                 if (event.startTS.isTsOnProperDay(event)) {
                     if (isOnProperWeek(event, startTimes)) {
                         if (event.endTS >= fromTS) {
-                            events.add(event.copy(isPastEvent = getIsPastEvent(event)))
+                            event.copy().apply {
+                                setIsPastEvent(getIsPastEvent(this))
+                                events.add(this)
+                            }
                         }
                         event.repeatLimit++
                     }
                 }
             } else {
                 if (event.endTS >= fromTS) {
-                    events.add(event.copy(isPastEvent = getIsPastEvent(event)))
+                    event.copy().apply {
+                        setIsPastEvent(getIsPastEvent(this))
+                        events.add(this)
+                    }
                 } else if (event.getIsAllDay()) {
                     val dayCode = Formatter.getDayCodeFromTS(fromTS)
                     val endDayCode = Formatter.getDayCodeFromTS(event.endTS)
                     if (dayCode == endDayCode) {
-                        events.add(event.copy(isPastEvent = getIsPastEvent(event)))
+                        event.copy().apply {
+                            setIsPastEvent(getIsPastEvent(this))
+                            events.add(this)
+                        }
                     }
                 }
                 event.repeatLimit++
@@ -851,15 +872,14 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                     val source = cursor.getStringValue(COL_EVENT_SOURCE)
                     val location = cursor.getStringValue(COL_LOCATION)
                     val color = eventTypeColors.get(eventType)!!
-                    val isPastEvent = false
 
                     if (repeatInterval > 0 && repeatRule == 0 && (repeatInterval % MONTH == 0 || repeatInterval % YEAR == 0)) {
                         repeatRule = REPEAT_SAME_DAY
                     }
 
                     val event = Event(id, startTS, endTS, title, description, reminder1Minutes, reminder2Minutes, reminder3Minutes,
-                            repeatInterval, importId, flags, repeatLimit, repeatRule, eventType, 0, lastUpdated, source, color, location, isPastEvent)
-                    event.isPastEvent = getIsPastEvent(event)
+                            repeatInterval, importId, flags, repeatLimit, repeatRule, eventType, 0, lastUpdated, source, color, location)
+                    event.setIsPastEvent(getIsPastEvent(event))
 
                     events.add(event)
                 } while (cursor.moveToNext())

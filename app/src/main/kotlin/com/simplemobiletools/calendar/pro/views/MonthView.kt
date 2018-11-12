@@ -106,7 +106,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
                 val daysCnt = getEventLastingDaysCount(event)
                 if (lastEvent == null || lastEvent.startDayIndex + daysCnt <= day.indexOnMonthView) {
                     val monthViewEvent = MonthViewEvent(event.id!!, event.title, event.startTS, event.color, day.indexOnMonthView,
-                            daysCnt, day.indexOnMonthView, event.getIsAllDay(), event.isPastEvent)
+                            daysCnt, day.indexOnMonthView, event.getIsAllDay(), event.getIsPastEvent())
                     allEvents.add(monthViewEvent)
                 }
             }

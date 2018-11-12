@@ -119,7 +119,7 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
             }
 
             var newTextColor = textColor
-            if (dimPastEvents && event.isPastEvent) {
+            if (dimPastEvents && event.getIsPastEvent()) {
                 newTextColor = newTextColor.adjustAlpha(LOW_ALPHA)
             }
 

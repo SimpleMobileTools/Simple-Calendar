@@ -2,6 +2,8 @@ package com.simplemobiletools.calendar.pro.models
 
 import com.simplemobiletools.calendar.pro.extensions.seconds
 import com.simplemobiletools.calendar.pro.helpers.*
+import com.simplemobiletools.commons.extensions.addBit
+import com.simplemobiletools.commons.extensions.removeBit
 import org.joda.time.DateTime
 import java.io.Serializable
 
@@ -9,7 +11,7 @@ data class Event(var id: Long?, var startTS: Int = 0, var endTS: Int = 0, var ti
                  var reminder1Minutes: Int = -1, var reminder2Minutes: Int = -1, var reminder3Minutes: Int = -1, var repeatInterval: Int = 0,
                  var importId: String = "", var flags: Int = 0, var repeatLimit: Int = 0, var repeatRule: Int = 0,
                  var eventType: Long = DBHelper.REGULAR_EVENT_TYPE_ID, var parentId: Long = 0, var lastUpdated: Long = 0L,
-                 var source: String = SOURCE_SIMPLE_CALENDAR, var color: Int = 0, var location: String = "", var isPastEvent: Boolean = false)
+                 var source: String = SOURCE_SIMPLE_CALENDAR, var color: Int = 0, var location: String = "")
     : Serializable {
 
     companion object {
@@ -92,6 +94,16 @@ data class Event(var id: Long?, var startTS: Int = 0, var endTS: Int = 0, var ti
     }
 
     fun getIsAllDay() = flags and FLAG_ALL_DAY != 0
+
+    fun getIsPastEvent() = flags and FLAG_IS_PAST_EVENT != 0
+
+    fun setIsPastEvent(isPastEvent: Boolean) {
+        flags = if (isPastEvent) {
+            flags.addBit(FLAG_IS_PAST_EVENT)
+        } else {
+            flags.removeBit(FLAG_IS_PAST_EVENT)
+        }
+    }
 
     fun getReminders() = setOf(reminder1Minutes, reminder2Minutes, reminder3Minutes).filter { it != REMINDER_OFF }
 
