@@ -27,13 +27,15 @@ class SelectEventCalendarDialog(val activity: Activity, val calendars: List<CalD
         radioGroup = view.dialog_radio_group
 
         activity.dbHelper.getEventTypes {
+            calendars.forEach {
+                val localEventType = activity.dbHelper.getEventTypeWithCalDAVCalendarId(it.id)
+                if (localEventType != null) {
+                    it.color = localEventType.color
+                }
+            }
+
             activity.runOnUiThread {
                 calendars.forEach {
-                    val localEventType = activity.dbHelper.getEventTypeWithCalDAVCalendarId(it.id)
-                    if (localEventType != null) {
-                        it.color = localEventType.color
-                    }
-
                     addRadioButton(it.getFullTitle(), it.id, it.color)
                 }
                 addRadioButton(activity.getString(R.string.store_locally_only), STORED_LOCALLY_ONLY, Color.TRANSPARENT)

@@ -167,7 +167,7 @@ class EventActivity : SimpleActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.save -> saveEvent()
+            R.id.save -> saveCurrentEvent()
             R.id.delete -> deleteEvent()
             R.id.duplicate -> duplicateEvent()
             R.id.share -> shareEvent()
@@ -647,17 +647,21 @@ class EventActivity : SimpleActivity() {
         } else {
             event_caldav_calendar_email.text = currentCalendar.accountName
 
-            val calendarColor = dbHelper.getEventTypeWithCalDAVCalendarId(currentCalendar.id)?.color ?: currentCalendar.color
-            event_caldav_calendar_color.setFillWithStroke(calendarColor, config.backgroundColor)
+            Thread {
+                val calendarColor = dbHelper.getEventTypeWithCalDAVCalendarId(currentCalendar.id)?.color ?: currentCalendar.color
+                runOnUiThread {
+                    event_caldav_calendar_color.setFillWithStroke(calendarColor, config.backgroundColor)
 
-            event_caldav_calendar_name.apply {
-                text = currentCalendar.displayName
-                setPadding(paddingLeft, paddingTop, paddingRight, resources.getDimension(R.dimen.tiny_margin).toInt())
-            }
+                    event_caldav_calendar_name.apply {
+                        text = currentCalendar.displayName
+                        setPadding(paddingLeft, paddingTop, paddingRight, resources.getDimension(R.dimen.tiny_margin).toInt())
+                    }
 
-            event_caldav_calendar_holder.apply {
-                setPadding(paddingLeft, 0, paddingRight, 0)
-            }
+                    event_caldav_calendar_holder.apply {
+                        setPadding(paddingLeft, 0, paddingRight, 0)
+                    }
+                }
+            }.start()
         }
     }
 
@@ -690,6 +694,12 @@ class EventActivity : SimpleActivity() {
             startActivity(this)
         }
         finish()
+    }
+
+    private fun saveCurrentEvent() {
+        Thread {
+            saveEvent()
+        }.start()
     }
 
     private fun saveEvent() {
@@ -765,9 +775,7 @@ class EventActivity : SimpleActivity() {
             mEvent.id = 0
         }
 
-        Thread {
-            storeEvent(wasRepeatable)
-        }.start()
+        storeEvent(wasRepeatable)
     }
 
     private fun storeEvent(wasRepeatable: Boolean) {
