@@ -108,9 +108,11 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     }
 
     private fun addRegularEventType(db: SQLiteDatabase) {
-        val regularEvent = context.resources.getString(R.string.regular_event)
-        val eventType = EventType(REGULAR_EVENT_TYPE_ID, regularEvent, context.config.primaryColor)
-        addEventType(eventType, db)
+        Thread {
+            val regularEvent = context.resources.getString(R.string.regular_event)
+            val eventType = EventType(REGULAR_EVENT_TYPE_ID, regularEvent, context.config.primaryColor)
+            addEventType(eventType, db)
+        }.start()
     }
 
     fun insert(event: Event, addToCalDAV: Boolean, activity: SimpleActivity? = null, callback: (id: Long) -> Unit) {
