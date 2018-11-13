@@ -39,7 +39,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
     private val REPETITIONS_TABLE_NAME = "event_repetitions"
     private val COL_EVENT_ID = "event_id"
-    private val COL_REPEAT_START = "repeat_start"
     private val COL_REPEAT_INTERVAL = "repeat_interval"
     private val COL_REPEAT_RULE = "repeat_rule"
     private val COL_REPEAT_LIMIT = "repeat_limit"
@@ -85,7 +84,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {}
 
     private fun createRepetitionsTable(db: SQLiteDatabase) {
-        db.execSQL("CREATE TABLE $REPETITIONS_TABLE_NAME ($COL_ID INTEGER PRIMARY KEY AUTOINCREMENT, $COL_EVENT_ID INTEGER UNIQUE, $COL_REPEAT_START INTEGER, " +
+        db.execSQL("CREATE TABLE $REPETITIONS_TABLE_NAME ($COL_ID INTEGER PRIMARY KEY AUTOINCREMENT, $COL_EVENT_ID INTEGER UNIQUE, " +
                 "$COL_REPEAT_INTERVAL INTEGER, $COL_REPEAT_LIMIT INTEGER, $COL_REPEAT_RULE INTEGER)")
     }
 
@@ -206,7 +205,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private fun fillMetaValues(event: Event): ContentValues {
         return ContentValues().apply {
             put(COL_EVENT_ID, event.id)
-            put(COL_REPEAT_START, event.startTS)
             put(COL_REPEAT_INTERVAL, event.repeatInterval)
             put(COL_REPEAT_LIMIT, event.repeatLimit)
             put(COL_REPEAT_RULE, event.repeatRule)
