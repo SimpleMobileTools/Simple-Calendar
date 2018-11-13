@@ -26,7 +26,7 @@ class SelectEventCalendarDialog(val activity: Activity, val calendars: List<CalD
         val view = activity.layoutInflater.inflate(R.layout.dialog_select_radio_group, null) as ViewGroup
         radioGroup = view.dialog_radio_group
 
-        activity.dbHelper.getEventTypes {
+        Thread {
             calendars.forEach {
                 val localEventType = activity.dbHelper.getEventTypeWithCalDAVCalendarId(it.id)
                 if (localEventType != null) {
@@ -42,7 +42,7 @@ class SelectEventCalendarDialog(val activity: Activity, val calendars: List<CalD
                 wasInit = true
                 activity.updateTextColors(view.dialog_radio_holder)
             }
-        }
+        }.start()
 
         dialog = AlertDialog.Builder(activity)
                 .create().apply {

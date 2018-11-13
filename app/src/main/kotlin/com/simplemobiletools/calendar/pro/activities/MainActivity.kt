@@ -111,7 +111,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             updateViewPager()
         }
 
-        dbHelper.getEventTypes {
+        EventTypesHelper().getEventTypes(this) {
             mShouldFilterBeVisible = it.size > 1 || config.displayEventTypes.isEmpty()
         }
 

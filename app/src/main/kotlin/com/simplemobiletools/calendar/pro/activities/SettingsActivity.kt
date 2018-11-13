@@ -92,13 +92,14 @@ class SettingsActivity : SimpleActivity() {
 
     private fun checkPrimaryColor() {
         if (config.primaryColor != mStoredPrimaryColor) {
-            dbHelper.getEventTypes {
-                if (it.filter { it.caldavCalendarId == 0 }.size == 1) {
-                    val eventType = it.first { it.caldavCalendarId == 0 }
+            Thread {
+                val eventTypes = EventTypesHelper().getEventTypesSync(this)
+                if (eventTypes.filter { it.caldavCalendarId == 0 }.size == 1) {
+                    val eventType = eventTypes.first { it.caldavCalendarId == 0 }
                     eventType.color = config.primaryColor
                     dbHelper.updateEventType(eventType)
                 }
-            }
+            }.start()
         }
     }
 
@@ -211,7 +212,7 @@ class SettingsActivity : SimpleActivity() {
 
             Thread {
                 if (newCalendarIds.isNotEmpty()) {
-                    val existingEventTypeNames = dbHelper.getEventTypesSync().map { it.getDisplayTitle().toLowerCase() } as ArrayList<String>
+                    val existingEventTypeNames = EventTypesHelper().getEventTypesSync(applicationContext).map { it.getDisplayTitle().toLowerCase() } as ArrayList<String>
                     getSyncedCalDAVCalendars().forEach {
                         val calendarTitle = it.getFullTitle()
                         if (!existingEventTypeNames.contains(calendarTitle.toLowerCase())) {

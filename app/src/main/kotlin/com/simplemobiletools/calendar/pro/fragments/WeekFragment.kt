@@ -17,7 +17,6 @@ import androidx.fragment.app.Fragment
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.EventActivity
 import com.simplemobiletools.calendar.pro.extensions.config
-import com.simplemobiletools.calendar.pro.extensions.dbHelper
 import com.simplemobiletools.calendar.pro.extensions.seconds
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
@@ -58,16 +57,16 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private var allDayRows = ArrayList<HashSet<Int>>()
     private var eventTypeColors = LongSparseArray<Int>()
 
-    lateinit var inflater: LayoutInflater
-    lateinit var mView: View
-    lateinit var mScrollView: MyScrollView
-    lateinit var mCalendar: WeeklyCalendarImpl
-    lateinit var mRes: Resources
-    lateinit var mConfig: Config
+    private lateinit var inflater: LayoutInflater
+    private lateinit var mView: View
+    private lateinit var mScrollView: MyScrollView
+    private lateinit var mCalendar: WeeklyCalendarImpl
+    private lateinit var mRes: Resources
+    private lateinit var mConfig: Config
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        context!!.dbHelper.getEventTypes {
+        EventTypesHelper().getEventTypes(activity!!) {
             it.map { eventTypeColors.put(it.id!!, it.color) }
         }
 

@@ -82,33 +82,31 @@ class MonthlyCalendarImpl(val callback: MonthlyCalendar, val context: Context) {
 
     // it works more often than not, dont touch
     private fun markDaysWithEvents(days: ArrayList<DayMonthly>) {
-        context.dbHelper.getEventTypes {
-            val dayEvents = HashMap<String, ArrayList<Event>>()
-            mEvents.forEach {
-                val startDateTime = Formatter.getDateTimeFromTS(it.startTS)
-                val endDateTime = Formatter.getDateTimeFromTS(it.endTS)
-                val endCode = Formatter.getDayCodeFromDateTime(endDateTime)
+        val dayEvents = HashMap<String, ArrayList<Event>>()
+        mEvents.forEach {
+            val startDateTime = Formatter.getDateTimeFromTS(it.startTS)
+            val endDateTime = Formatter.getDateTimeFromTS(it.endTS)
+            val endCode = Formatter.getDayCodeFromDateTime(endDateTime)
 
-                var currDay = startDateTime
-                var dayCode = Formatter.getDayCodeFromDateTime(currDay)
-                var currDayEvents = dayEvents[dayCode] ?: ArrayList()
+            var currDay = startDateTime
+            var dayCode = Formatter.getDayCodeFromDateTime(currDay)
+            var currDayEvents = dayEvents[dayCode] ?: ArrayList()
+            currDayEvents.add(it)
+            dayEvents[dayCode] = currDayEvents
+
+            while (Formatter.getDayCodeFromDateTime(currDay) != endCode) {
+                currDay = currDay.plusDays(1)
+                dayCode = Formatter.getDayCodeFromDateTime(currDay)
+                currDayEvents = dayEvents[dayCode] ?: ArrayList()
                 currDayEvents.add(it)
                 dayEvents[dayCode] = currDayEvents
-
-                while (Formatter.getDayCodeFromDateTime(currDay) != endCode) {
-                    currDay = currDay.plusDays(1)
-                    dayCode = Formatter.getDayCodeFromDateTime(currDay)
-                    currDayEvents = dayEvents[dayCode] ?: ArrayList()
-                    currDayEvents.add(it)
-                    dayEvents[dayCode] = currDayEvents
-                }
             }
-
-            days.filter { dayEvents.keys.contains(it.code) }.forEach {
-                it.dayEvents = dayEvents[it.code]!!
-            }
-            callback.updateMonthlyCalendar(context, monthName, days, true, mTargetDate)
         }
+
+        days.filter { dayEvents.keys.contains(it.code) }.forEach {
+            it.dayEvents = dayEvents[it.code]!!
+        }
+        callback.updateMonthlyCalendar(context, monthName, days, true, mTargetDate)
     }
 
     private fun isToday(targetDate: DateTime, curDayInMonth: Int): Boolean {

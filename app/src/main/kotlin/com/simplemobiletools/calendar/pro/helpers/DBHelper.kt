@@ -838,7 +838,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
     private fun fillEvents(cursor: Cursor?): List<Event> {
         val eventTypeColors = LongSparseArray<Int>()
-        getEventTypesSync().forEach {
+        context.eventTypesDB.getEventTypes().forEach {
             eventTypeColors.put(it.id!!, it.color)
         }
 
@@ -878,38 +878,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             }
         }
         return events
-    }
-
-    fun getEventTypes(callback: (types: ArrayList<EventType>) -> Unit) {
-        Thread {
-            callback(getEventTypesSync())
-        }.start()
-    }
-
-    fun getEventTypesSync(): ArrayList<EventType> {
-        val eventTypes = ArrayList<EventType>()
-        val cols = arrayOf(COL_ID, COL_TYPE_TITLE, COL_TYPE_COLOR, COL_TYPE_CALDAV_CALENDAR_ID, COL_TYPE_CALDAV_DISPLAY_NAME, COL_TYPE_CALDAV_EMAIL)
-        var cursor: Cursor? = null
-        try {
-            cursor = mDb.query(TYPES_TABLE_NAME, cols, null, null, null, null, "$COL_TYPE_TITLE ASC")
-            if (cursor?.moveToFirst() == true) {
-                do {
-                    val id = cursor.getLongValue(COL_ID)
-                    val title = cursor.getStringValue(COL_TYPE_TITLE)
-                    val color = cursor.getIntValue(COL_TYPE_COLOR)
-                    val calendarId = cursor.getIntValue(COL_TYPE_CALDAV_CALENDAR_ID)
-                    val displayName = cursor.getStringValue(COL_TYPE_CALDAV_DISPLAY_NAME)
-                    val email = cursor.getStringValue(COL_TYPE_CALDAV_EMAIL)
-                    val eventType = EventType(id, title, color, calendarId, displayName, email)
-                    eventTypes.add(eventType)
-                } while (cursor.moveToNext())
-            }
-        } catch (ignored: Exception) {
-        } finally {
-            cursor?.close()
-        }
-
-        return eventTypes
     }
 
     fun doEventTypesContainEvents(types: ArrayList<EventType>, callback: (contain: Boolean) -> Unit) {

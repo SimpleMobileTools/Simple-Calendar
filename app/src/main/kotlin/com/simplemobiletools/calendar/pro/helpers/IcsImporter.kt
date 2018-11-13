@@ -42,7 +42,7 @@ class IcsImporter(val activity: SimpleActivity) {
 
     fun importEvents(path: String, defaultEventTypeId: Long, calDAVCalendarId: Int, overrideFileEventTypes: Boolean): ImportResult {
         try {
-            val eventTypes = activity.dbHelper.getEventTypesSync()
+            val eventTypes = EventTypesHelper().getEventTypesSync(activity)
             val existingEvents = activity.dbHelper.getEventsWithImportIds()
             val eventsToInsert = ArrayList<Event>()
             var prevLine = ""
