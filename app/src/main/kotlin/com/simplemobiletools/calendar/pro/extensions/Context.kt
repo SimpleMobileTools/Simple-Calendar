@@ -21,12 +21,17 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.app.AlarmManagerCompat
 import androidx.core.app.NotificationCompat
+import com.simplemobiletools.calendar.pro.EventsDatabase
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.EventActivity
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.activities.SnoozeReminderActivity
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
+import com.simplemobiletools.calendar.pro.interfaces.EventRepetitionExceptionsDao
+import com.simplemobiletools.calendar.pro.interfaces.EventRepetitionsDao
+import com.simplemobiletools.calendar.pro.interfaces.EventTypesDao
+import com.simplemobiletools.calendar.pro.interfaces.EventsDao
 import com.simplemobiletools.calendar.pro.models.*
 import com.simplemobiletools.calendar.pro.receivers.CalDAVSyncReceiver
 import com.simplemobiletools.calendar.pro.receivers.NotificationReceiver
@@ -42,6 +47,14 @@ import org.joda.time.LocalDate
 import java.util.*
 
 val Context.config: Config get() = Config.newInstance(applicationContext)
+
+val Context.eventsDB: EventsDao get() = EventsDatabase.getInstance(applicationContext).EventsDao()
+
+val Context.eventTypesDB: EventTypesDao get() = EventsDatabase.getInstance(applicationContext).EventTypesDao()
+
+val Context.eventRepetitionssDB: EventRepetitionsDao get() = EventsDatabase.getInstance(applicationContext).EventRepetitionsDao()
+
+val Context.eventRepetitionExceptionsDB: EventRepetitionExceptionsDao get() = EventsDatabase.getInstance(applicationContext).EventRepetitionExceptionsDao()
 
 val Context.dbHelper: DBHelper get() = DBHelper.newInstance(applicationContext)
 
