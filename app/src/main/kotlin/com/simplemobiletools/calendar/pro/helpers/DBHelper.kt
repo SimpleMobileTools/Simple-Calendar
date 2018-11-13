@@ -45,7 +45,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private val COL_REPEAT_LIMIT = "repeat_limit"
 
     private val TYPES_TABLE_NAME = "event_types"
-    private val COL_TYPE_ID = "event_type_id"
     private val COL_TYPE_TITLE = "event_type_title"
     private val COL_TYPE_COLOR = "event_type_color"
     private val COL_TYPE_CALDAV_CALENDAR_ID = "event_caldav_calendar_id"
@@ -53,7 +52,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private val COL_TYPE_CALDAV_EMAIL = "event_caldav_email"
 
     private val REPEAT_EXCEPTIONS_TABLE_NAME = "event_repeat_exceptions"
-    private val COL_EXCEPTION_ID = "event_exception_id"
     private val COL_OCCURRENCE_TIMESTAMP = "event_occurrence_timestamp"
     private val COL_OCCURRENCE_DAYCODE = "event_occurrence_daycode"
     private val COL_PARENT_EVENT_ID = "event_parent_id"
@@ -94,13 +92,13 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     }
 
     private fun createTypesTable(db: SQLiteDatabase) {
-        db.execSQL("CREATE TABLE $TYPES_TABLE_NAME ($COL_TYPE_ID INTEGER PRIMARY KEY AUTOINCREMENT, $COL_TYPE_TITLE TEXT, $COL_TYPE_COLOR INTEGER, " +
+        db.execSQL("CREATE TABLE $TYPES_TABLE_NAME ($COL_ID INTEGER PRIMARY KEY AUTOINCREMENT, $COL_TYPE_TITLE TEXT, $COL_TYPE_COLOR INTEGER, " +
                 "$COL_TYPE_CALDAV_CALENDAR_ID INTEGER, $COL_TYPE_CALDAV_DISPLAY_NAME TEXT, $COL_TYPE_CALDAV_EMAIL TEXT)")
         addRegularEventType(db)
     }
 
     private fun createExceptionsTable(db: SQLiteDatabase) {
-        db.execSQL("CREATE TABLE $REPEAT_EXCEPTIONS_TABLE_NAME ($COL_EXCEPTION_ID INTEGER PRIMARY KEY AUTOINCREMENT, $COL_PARENT_EVENT_ID INTEGER, " +
+        db.execSQL("CREATE TABLE $REPEAT_EXCEPTIONS_TABLE_NAME ($COL_ID INTEGER PRIMARY KEY AUTOINCREMENT, $COL_PARENT_EVENT_ID INTEGER, " +
                 "$COL_OCCURRENCE_TIMESTAMP INTEGER, $COL_OCCURRENCE_DAYCODE INTEGER, $COL_CHILD_EVENT_ID INTEGER)")
     }
 
@@ -217,9 +215,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
     }
 
-    private fun addEventType(eventType: EventType, db: SQLiteDatabase) {
-        insertEventType(eventType, db)
-    }
+    private fun addEventType(eventType: EventType, db: SQLiteDatabase) = insertEventType(eventType, db)
 
     fun insertEventType(eventType: EventType, db: SQLiteDatabase = mDb): Long {
         val values = fillEventTypeValues(eventType)
@@ -239,7 +235,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     fun updateLocalEventType(eventType: EventType): Long {
         val selectionArgs = arrayOf(eventType.id.toString())
         val values = fillEventTypeValues(eventType)
-        val selection = "$COL_TYPE_ID = ?"
+        val selection = "$COL_ID = ?"
         val updated = mDb.update(TYPES_TABLE_NAME, values, selection, selectionArgs)
         return if (updated > 0) {
             eventType.id!!
@@ -299,14 +295,14 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     }
 
     fun getEventTypeIdWithTitle(title: String): Long {
-        val cols = arrayOf(COL_TYPE_ID)
+        val cols = arrayOf(COL_ID)
         val selection = "$COL_TYPE_TITLE = ? COLLATE NOCASE"
         val selectionArgs = arrayOf(title)
         var cursor: Cursor? = null
         try {
             cursor = mDb.query(TYPES_TABLE_NAME, cols, selection, selectionArgs, null, null, null)
             if (cursor?.moveToFirst() == true) {
-                return cursor.getIntValue(COL_TYPE_ID).toLong()
+                return cursor.getIntValue(COL_ID).toLong()
             }
         } finally {
             cursor?.close()
@@ -315,14 +311,14 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     }
 
     fun getEventTypeWithCalDAVCalendarId(calendarId: Int): EventType? {
-        val cols = arrayOf(COL_TYPE_ID)
+        val cols = arrayOf(COL_ID)
         val selection = "$COL_TYPE_CALDAV_CALENDAR_ID = ?"
         val selectionArgs = arrayOf(calendarId.toString())
         var cursor: Cursor? = null
         try {
             cursor = mDb.query(TYPES_TABLE_NAME, cols, selection, selectionArgs, null, null, null)
             if (cursor?.moveToFirst() == true) {
-                return getEventType(cursor.getLongValue(COL_TYPE_ID))
+                return getEventType(cursor.getLongValue(COL_ID))
             }
         } finally {
             cursor?.close()
@@ -332,7 +328,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
     fun getEventType(id: Long): EventType? {
         val cols = arrayOf(COL_TYPE_TITLE, COL_TYPE_COLOR, COL_TYPE_CALDAV_CALENDAR_ID, COL_TYPE_CALDAV_DISPLAY_NAME, COL_TYPE_CALDAV_EMAIL)
-        val selection = "$COL_TYPE_ID = ?"
+        val selection = "$COL_ID = ?"
         val selectionArgs = arrayOf(id.toString())
         var cursor: Cursor? = null
         try {
@@ -477,7 +473,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
 
         val args = TextUtils.join(", ", deleteIds)
-        val selection = "$COL_TYPE_ID IN ($args)"
+        val selection = "$COL_ID IN ($args)"
         callback(mDb.delete(TYPES_TABLE_NAME, selection, null))
     }
 
@@ -608,11 +604,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     }
 
     fun getRepeatableEventsFor(fromTS: Int, toTS: Int, eventId: Long = -1L, applyTypeFilter: Boolean = false): List<Event> {
-        if (isOnMainThread()) {
-            Log.e("DEBUG", "dbhelper getRepeatableEventsFor")
-        }
         val newEvents = ArrayList<Event>()
-
         var selection = "$COL_REPEAT_INTERVAL != 0 AND $COL_START_TS <= $toTS AND $COL_START_TS != 0"
         if (eventId != -1L)
             selection += " AND $MAIN_TABLE_NAME.$COL_ID = $eventId"
@@ -659,7 +651,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                 } else {
                     event.copy().apply {
                         updateIsPastEvent()
-                        color = event.color
                         events.add(this)
                     }
                 }
@@ -767,7 +758,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     fun getRunningEvents(): List<Event> {
         val events = ArrayList<Event>()
         val ts = getNowSeconds()
-
         val selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_REPEAT_INTERVAL IS NULL AND $COL_START_TS != 0"
         val selectionArgs = arrayOf(ts.toString(), ts.toString())
         val cursor = getEventsCursor(selection, selectionArgs)
@@ -903,13 +893,13 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
     fun getEventTypesSync(): ArrayList<EventType> {
         val eventTypes = ArrayList<EventType>()
-        val cols = arrayOf(COL_TYPE_ID, COL_TYPE_TITLE, COL_TYPE_COLOR, COL_TYPE_CALDAV_CALENDAR_ID, COL_TYPE_CALDAV_DISPLAY_NAME, COL_TYPE_CALDAV_EMAIL)
+        val cols = arrayOf(COL_ID, COL_TYPE_TITLE, COL_TYPE_COLOR, COL_TYPE_CALDAV_CALENDAR_ID, COL_TYPE_CALDAV_DISPLAY_NAME, COL_TYPE_CALDAV_EMAIL)
         var cursor: Cursor? = null
         try {
             cursor = mDb.query(TYPES_TABLE_NAME, cols, null, null, null, null, "$COL_TYPE_TITLE ASC")
             if (cursor?.moveToFirst() == true) {
                 do {
-                    val id = cursor.getLongValue(COL_TYPE_ID)
+                    val id = cursor.getLongValue(COL_ID)
                     val title = cursor.getStringValue(COL_TYPE_TITLE)
                     val color = cursor.getIntValue(COL_TYPE_COLOR)
                     val calendarId = cursor.getIntValue(COL_TYPE_CALDAV_CALENDAR_ID)
