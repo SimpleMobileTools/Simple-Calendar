@@ -5,21 +5,18 @@ import com.simplemobiletools.calendar.pro.extensions.isXWeeklyRepetition
 import com.simplemobiletools.calendar.pro.extensions.isXYearlyRepetition
 import com.simplemobiletools.calendar.pro.extensions.seconds
 import com.simplemobiletools.calendar.pro.models.Event
-import com.simplemobiletools.calendar.pro.models.RepeatRule
+import com.simplemobiletools.calendar.pro.models.EventRepetition
 import com.simplemobiletools.commons.helpers.*
 import org.joda.time.DateTimeZone
 import org.joda.time.format.DateTimeFormat
 
 class Parser {
     // from RRULE:FREQ=DAILY;COUNT=5 to Daily, 5x...
-    fun parseRepeatInterval(fullString: String, startTS: Int): RepeatRule {
-        val parts = fullString.split(";")
+    fun parseRepeatInterval(fullString: String, startTS: Int): EventRepetition {
+        val parts = fullString.split(";").filter { it.isNotEmpty() }
         var repeatInterval = 0
         var repeatRule = 0
         var repeatLimit = 0
-        if (fullString.isEmpty()) {
-            return RepeatRule(repeatInterval, repeatRule, repeatLimit)
-        }
 
         for (part in parts) {
             val keyValue = part.split("=")
@@ -49,7 +46,7 @@ class Parser {
                 repeatRule = REPEAT_LAST_DAY
             }
         }
-        return RepeatRule(repeatInterval, repeatRule, repeatLimit)
+        return EventRepetition(null, repeatInterval, repeatRule, repeatLimit)
     }
 
     private fun getFrequencySeconds(interval: String) = when (interval) {
