@@ -140,10 +140,9 @@ class IcsImporter(val activity: SimpleActivity) {
 
                         val eventType = eventTypes.firstOrNull { it.id == curEventTypeId }
                         val source = if (calDAVCalendarId == 0 || eventType?.isSyncedEventType() == false) SOURCE_IMPORTED_ICS else "$CALDAV-$calDAVCalendarId"
-                        val event = Event(0, curStart, curEnd, curTitle, curDescription, curReminderMinutes.getOrElse(0) { -1 },
+                        val event = Event(0, curStart, curEnd, curTitle, curLocation, curDescription, curReminderMinutes.getOrElse(0) { -1 },
                                 curReminderMinutes.getOrElse(1) { -1 }, curReminderMinutes.getOrElse(2) { -1 }, curRepeatInterval,
-                                curImportId, curFlags, curRepeatLimit, curRepeatRule, curEventTypeId, lastUpdated = curLastModified,
-                                source = source, location = curLocation)
+                                curImportId, curFlags, curRepeatLimit, curRepeatRule, curEventTypeId, 0, curLastModified, source)
 
                         if (event.getIsAllDay() && curEnd > curStart) {
                             event.endTS -= DAY
