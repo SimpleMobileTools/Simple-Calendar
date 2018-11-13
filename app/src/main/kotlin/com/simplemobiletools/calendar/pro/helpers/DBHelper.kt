@@ -55,7 +55,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private val COL_OCCURRENCE_TIMESTAMP = "event_occurrence_timestamp"
     private val COL_OCCURRENCE_DAYCODE = "event_occurrence_daycode"
     private val COL_PARENT_EVENT_ID = "event_parent_id"
-    private val COL_CHILD_EVENT_ID = "event_child_id"
 
     private val mDb = writableDatabase
 
@@ -99,7 +98,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
     private fun createExceptionsTable(db: SQLiteDatabase) {
         db.execSQL("CREATE TABLE $REPEAT_EXCEPTIONS_TABLE_NAME ($COL_ID INTEGER PRIMARY KEY AUTOINCREMENT, $COL_PARENT_EVENT_ID INTEGER, " +
-                "$COL_OCCURRENCE_TIMESTAMP INTEGER, $COL_OCCURRENCE_DAYCODE INTEGER, $COL_CHILD_EVENT_ID INTEGER)")
+                "$COL_OCCURRENCE_TIMESTAMP INTEGER, $COL_OCCURRENCE_DAYCODE INTEGER)")
     }
 
     private fun addRegularEventType(db: SQLiteDatabase) {
@@ -277,7 +276,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                 put(COL_PARENT_EVENT_ID, parentEventId)
                 put(COL_OCCURRENCE_TIMESTAMP, occurrenceTS)
                 put(COL_OCCURRENCE_DAYCODE, Formatter.getDayCodeFromTS(occurrenceTS))
-                put(COL_CHILD_EVENT_ID, childEventId)
             }
             callback(exceptionValues)
 
@@ -651,6 +649,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                 } else {
                     event.copy().apply {
                         updateIsPastEvent()
+                        color = event.color
                         events.add(this)
                     }
                 }
