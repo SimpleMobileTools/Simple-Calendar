@@ -26,6 +26,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private val COL_START_TS = "start_ts"
     private val COL_END_TS = "end_ts"
     private val COL_TITLE = "title"
+    private val COL_LOCATION = "location"
     private val COL_DESCRIPTION = "description"
     private val COL_REMINDER_MINUTES = "reminder_minutes"
     private val COL_REMINDER_MINUTES_2 = "reminder_minutes_2"
@@ -35,7 +36,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private val COL_EVENT_TYPE = "event_type"
     private val COL_LAST_UPDATED = "last_updated"
     private val COL_EVENT_SOURCE = "event_source"
-    private val COL_LOCATION = "location"
 
     private val REPETITIONS_TABLE_NAME = "event_repetitions"
     private val COL_EVENT_ID = "event_id"
@@ -52,7 +52,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private val COL_TYPE_CALDAV_EMAIL = "event_caldav_email"
 
     private val REPEAT_EXCEPTIONS_TABLE_NAME = "event_repeat_exceptions"
-    private val COL_OCCURRENCE_TIMESTAMP = "event_occurrence_timestamp"
     private val COL_OCCURRENCE_DAYCODE = "event_occurrence_daycode"
     private val COL_PARENT_EVENT_ID = "event_parent_id"
 
@@ -98,7 +97,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
     private fun createExceptionsTable(db: SQLiteDatabase) {
         db.execSQL("CREATE TABLE $REPEAT_EXCEPTIONS_TABLE_NAME ($COL_ID INTEGER PRIMARY KEY AUTOINCREMENT, $COL_PARENT_EVENT_ID INTEGER, " +
-                "$COL_OCCURRENCE_TIMESTAMP INTEGER, $COL_OCCURRENCE_DAYCODE INTEGER)")
+                "$COL_OCCURRENCE_DAYCODE INTEGER)")
     }
 
     private fun addRegularEventType(db: SQLiteDatabase) {
@@ -274,7 +273,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             val childEventId = it
             val exceptionValues = ContentValues().apply {
                 put(COL_PARENT_EVENT_ID, parentEventId)
-                put(COL_OCCURRENCE_TIMESTAMP, occurrenceTS)
                 put(COL_OCCURRENCE_DAYCODE, Formatter.getDayCodeFromTS(occurrenceTS))
             }
             callback(exceptionValues)
