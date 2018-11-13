@@ -11,7 +11,7 @@ data class Event(var id: Long?, var startTS: Int = 0, var endTS: Int = 0, var ti
                  var reminder1Minutes: Int = -1, var reminder2Minutes: Int = -1, var reminder3Minutes: Int = -1, var repeatInterval: Int = 0,
                  var importId: String = "", var flags: Int = 0, var repeatLimit: Int = 0, var repeatRule: Int = 0,
                  var eventType: Long = DBHelper.REGULAR_EVENT_TYPE_ID, var parentId: Long = 0, var lastUpdated: Long = 0L,
-                 var source: String = SOURCE_SIMPLE_CALENDAR, var color: Int = 0)
+                 var source: String = SOURCE_SIMPLE_CALENDAR)
     : Serializable {
 
     companion object {
@@ -134,4 +134,6 @@ data class Event(var id: Long?, var startTS: Int = 0, var endTS: Int = 0, var ti
                 flags.removeBit(FLAG_IS_PAST_EVENT)
             }
         }
+
+    var color: Int = 0
 }

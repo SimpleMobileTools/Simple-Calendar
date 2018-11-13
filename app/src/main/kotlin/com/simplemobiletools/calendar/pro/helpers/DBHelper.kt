@@ -651,6 +651,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                         if (isOnProperWeek(event, startTimes)) {
                             event.copy().apply {
                                 updateIsPastEvent()
+                                color = event.color
                                 events.add(this)
                             }
                         }
@@ -658,6 +659,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                 } else {
                     event.copy().apply {
                         updateIsPastEvent()
+                        color = event.color
                         events.add(this)
                     }
                 }
@@ -669,6 +671,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                         if (isOnProperWeek(event, startTimes)) {
                             event.copy().apply {
                                 updateIsPastEvent()
+                                color = event.color
                                 events.add(this)
                             }
                         }
@@ -679,6 +682,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                     if (dayCode == endDayCode) {
                         event.copy().apply {
                             updateIsPastEvent()
+                            color = event.color
                             events.add(this)
                         }
                     }
@@ -699,6 +703,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                         if (event.endTS >= fromTS) {
                             event.copy().apply {
                                 updateIsPastEvent()
+                                color = event.color
                                 events.add(this)
                             }
                         }
@@ -709,6 +714,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                 if (event.endTS >= fromTS) {
                     event.copy().apply {
                         updateIsPastEvent()
+                        color = event.color
                         events.add(this)
                     }
                 } else if (event.getIsAllDay()) {
@@ -717,6 +723,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                     if (dayCode == endDayCode) {
                         event.copy().apply {
                             updateIsPastEvent()
+                            color = event.color
                             events.add(this)
                         }
                     }
@@ -871,15 +878,15 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                     val eventType = cursor.getLongValue(COL_EVENT_TYPE)
                     val lastUpdated = cursor.getLongValue(COL_LAST_UPDATED)
                     val source = cursor.getStringValue(COL_EVENT_SOURCE)
-                    val color = eventTypeColors.get(eventType)!!
 
                     if (repeatInterval > 0 && repeatRule == 0 && (repeatInterval % MONTH == 0 || repeatInterval % YEAR == 0)) {
                         repeatRule = REPEAT_SAME_DAY
                     }
 
                     val event = Event(id, startTS, endTS, title, location, description, reminder1Minutes, reminder2Minutes, reminder3Minutes,
-                            repeatInterval, importId, flags, repeatLimit, repeatRule, eventType, 0, lastUpdated, source, color)
+                            repeatInterval, importId, flags, repeatLimit, repeatRule, eventType, 0, lastUpdated, source)
                     event.updateIsPastEvent()
+                    event.color = eventTypeColors.get(eventType)!!
 
                     events.add(event)
                 } while (cursor.moveToNext())
