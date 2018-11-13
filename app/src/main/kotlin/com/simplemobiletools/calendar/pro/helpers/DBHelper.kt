@@ -854,12 +854,12 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                     val reminder3Minutes = cursor.getIntValue(COL_REMINDER_MINUTES_3)
                     val repeatInterval = cursor.getIntValue(COL_REPEAT_INTERVAL)
                     var repeatRule = cursor.getIntValue(COL_REPEAT_RULE)
+                    val repeatLimit = cursor.getIntValue(COL_REPEAT_LIMIT)
                     val title = cursor.getStringValue(COL_TITLE)
                     val location = cursor.getStringValue(COL_LOCATION)
                     val description = cursor.getStringValue(COL_DESCRIPTION)
                     val importId = cursor.getStringValue(COL_IMPORT_ID) ?: ""
                     val flags = cursor.getIntValue(COL_FLAGS)
-                    val repeatLimit = cursor.getIntValue(COL_REPEAT_LIMIT)
                     val eventType = cursor.getLongValue(COL_EVENT_TYPE)
                     val lastUpdated = cursor.getLongValue(COL_LAST_UPDATED)
                     val source = cursor.getStringValue(COL_EVENT_SOURCE)
@@ -869,7 +869,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                     }
 
                     val event = Event(id, startTS, endTS, title, location, description, reminder1Minutes, reminder2Minutes, reminder3Minutes,
-                            repeatInterval, importId, flags, repeatLimit, repeatRule, eventType, 0, lastUpdated, source)
+                            repeatInterval, repeatRule, repeatLimit, importId, flags, eventType, 0, lastUpdated, source)
                     event.updateIsPastEvent()
                     event.color = eventTypeColors.get(eventType)!!
 
