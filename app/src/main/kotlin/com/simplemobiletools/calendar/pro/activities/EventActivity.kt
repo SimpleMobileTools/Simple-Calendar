@@ -73,7 +73,7 @@ class EventActivity : SimpleActivity() {
                 return@Thread
             }
 
-            val localEventType = dbHelper.getEventType(config.lastUsedLocalEventTypeId)
+            val localEventType = eventTypesDB.getEventTypeWithId(config.lastUsedLocalEventTypeId)
             runOnUiThread {
                 gotEvent(savedInstanceState, localEventType, event)
             }
@@ -583,7 +583,7 @@ class EventActivity : SimpleActivity() {
 
     private fun updateEventType() {
         Thread {
-            val eventType = dbHelper.getEventType(mEventTypeId)
+            val eventType = eventTypesDB.getEventTypeWithId(mEventTypeId)
             if (eventType != null) {
                 runOnUiThread {
                     event_type.text = eventType.title
@@ -648,10 +648,11 @@ class EventActivity : SimpleActivity() {
             event_caldav_calendar_email.text = currentCalendar.accountName
 
             Thread {
-                val calendarColor = dbHelper.getEventTypeWithCalDAVCalendarId(currentCalendar.id)?.color ?: currentCalendar.color
+                val calendarColor = EventTypesHelper().getEventTypeWithCalDAVCalendarId(applicationContext, currentCalendar.id)?.color
+                        ?: currentCalendar.color
+
                 runOnUiThread {
                     event_caldav_calendar_color.setFillWithStroke(calendarColor, config.backgroundColor)
-
                     event_caldav_calendar_name.apply {
                         text = currentCalendar.displayName
                         setPadding(paddingLeft, paddingTop, paddingRight, resources.getDimension(R.dimen.tiny_margin).toInt())
@@ -710,7 +711,9 @@ class EventActivity : SimpleActivity() {
         val newTitle = event_title.value
         if (newTitle.isEmpty()) {
             toast(R.string.title_empty)
-            event_title.requestFocus()
+            runOnUiThread {
+                event_title.requestFocus()
+            }
             return
         }
 
@@ -729,7 +732,7 @@ class EventActivity : SimpleActivity() {
         val newEventType = if (!config.caldavSync || config.lastUsedCaldavCalendarId == 0 || mEventCalendarId == STORED_LOCALLY_ONLY) {
             mEventTypeId
         } else {
-            dbHelper.getEventTypeWithCalDAVCalendarId(mEventCalendarId)?.id ?: config.lastUsedLocalEventTypeId
+            EventTypesHelper().getEventTypeWithCalDAVCalendarId(applicationContext, mEventCalendarId)?.id ?: config.lastUsedLocalEventTypeId
         }
 
         val newSource = if (!config.caldavSync || mEventCalendarId == STORED_LOCALLY_ONLY) {

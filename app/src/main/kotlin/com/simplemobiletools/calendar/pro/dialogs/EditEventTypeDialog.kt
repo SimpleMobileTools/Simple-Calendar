@@ -5,7 +5,7 @@ import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.config
-import com.simplemobiletools.calendar.pro.extensions.dbHelper
+import com.simplemobiletools.calendar.pro.helpers.EventTypesHelper
 import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.commons.dialogs.ColorPickerDialog
 import com.simplemobiletools.commons.extensions.*
@@ -58,7 +58,7 @@ class EditEventTypeDialog(val activity: Activity, var eventType: EventType? = nu
     }
 
     private fun eventTypeConfirmed(title: String, dialog: AlertDialog) {
-        val eventIdWithTitle = activity.dbHelper.getEventTypeIdWithTitle(title)
+        val eventIdWithTitle = EventTypesHelper().getEventTypeIdWithTitle(activity, title)
         var isEventTypeTitleTaken = isNewEvent && eventIdWithTitle != -1L
         if (!isEventTypeTitleTaken) {
             isEventTypeTitleTaken = !isNewEvent && eventType!!.id != eventIdWithTitle && eventIdWithTitle != -1L
@@ -73,14 +73,11 @@ class EditEventTypeDialog(val activity: Activity, var eventType: EventType? = nu
         }
 
         eventType!!.title = title
-        if (eventType!!.caldavCalendarId != 0)
+        if (eventType!!.caldavCalendarId != 0) {
             eventType!!.caldavDisplayName = title
-
-        eventType!!.id = if (isNewEvent) {
-            activity.dbHelper.insertEventType(eventType!!)
-        } else {
-            activity.dbHelper.updateEventType(eventType!!)
         }
+
+        eventType!!.id = EventTypesHelper().insertOrUpdateEventTypeSync(activity, eventType!!)
 
         if (eventType!!.id != -1L) {
             activity.runOnUiThread {

@@ -2,6 +2,7 @@ package com.simplemobiletools.calendar.pro.helpers
 
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.dbHelper
+import com.simplemobiletools.calendar.pro.extensions.eventTypesDB
 import com.simplemobiletools.calendar.pro.helpers.IcsExporter.ExportResult.*
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.commons.activities.BaseSimpleActivity
@@ -41,8 +42,8 @@ class IcsExporter {
                     event.title.replace("\n", "\\n").let { if (it.isNotEmpty()) out.writeLn("$SUMMARY:$it") }
                     event.description.replace("\n", "\\n").let { if (it.isNotEmpty()) out.writeLn("$DESCRIPTION$it") }
                     event.importId.let { if (it.isNotEmpty()) out.writeLn("$UID$it") }
-                    event.eventType.let { out.writeLn("$CATEGORY_COLOR${activity.dbHelper.getEventType(it)?.color}") }
-                    event.eventType.let { out.writeLn("$CATEGORIES${activity.dbHelper.getEventType(it)?.title}") }
+                    event.eventType.let { out.writeLn("$CATEGORY_COLOR${activity.eventTypesDB.getEventTypeWithId(it)?.color}") }
+                    event.eventType.let { out.writeLn("$CATEGORIES${activity.eventTypesDB.getEventTypeWithId(it)?.title}") }
                     event.lastUpdated.let { out.writeLn("$LAST_MODIFIED:${Formatter.getExportedTime(it)}") }
                     event.location.let { if (it.isNotEmpty()) out.writeLn("$LOCATION:$it") }
 

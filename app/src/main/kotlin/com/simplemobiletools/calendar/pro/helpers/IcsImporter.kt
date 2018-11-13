@@ -1,6 +1,5 @@
 package com.simplemobiletools.calendar.pro.helpers
 
-import android.content.Context
 import android.widget.Toast
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
@@ -20,6 +19,7 @@ class IcsImporter(val activity: SimpleActivity) {
     private var curStart = -1
     private var curEnd = -1
     private var curTitle = ""
+    private var curLocation = ""
     private var curDescription = ""
     private var curImportId = ""
     private var curFlags = 0
@@ -30,7 +30,6 @@ class IcsImporter(val activity: SimpleActivity) {
     private var curRepeatRule = 0
     private var curEventTypeId = DBHelper.REGULAR_EVENT_TYPE_ID
     private var curLastModified = 0L
-    private var curLocation = ""
     private var curCategoryColor = -2
     private var isNotificationDescription = false
     private var isProperReminderAction = false
@@ -108,7 +107,7 @@ class IcsImporter(val activity: SimpleActivity) {
                         }
                     } else if (line.startsWith(CATEGORIES) && !overrideFileEventTypes) {
                         val categories = line.substring(CATEGORIES.length)
-                        tryAddCategories(categories, activity)
+                        tryAddCategories(categories)
                     } else if (line.startsWith(LAST_MODIFIED)) {
                         curLastModified = getTimestamp(line.substring(LAST_MODIFIED.length)) * 1000L
                     } else if (line.startsWith(EXDATE)) {
@@ -217,18 +216,18 @@ class IcsImporter(val activity: SimpleActivity) {
         }
     }
 
-    private fun tryAddCategories(categories: String, context: Context) {
+    private fun tryAddCategories(categories: String) {
         val eventTypeTitle = if (categories.contains(",")) {
             categories.split(",")[0]
         } else {
             categories
         }
 
-        val eventId = context.dbHelper.getEventTypeIdWithTitle(eventTypeTitle)
+        val eventId = EventTypesHelper().getEventTypeIdWithTitle(activity, eventTypeTitle)
         curEventTypeId = if (eventId == -1L) {
-            val newTypeColor = if (curCategoryColor == -2) context.resources.getColor(R.color.color_primary) else curCategoryColor
+            val newTypeColor = if (curCategoryColor == -2) activity.resources.getColor(R.color.color_primary) else curCategoryColor
             val eventType = EventType(null, eventTypeTitle, newTypeColor)
-            context.dbHelper.insertEventType(eventType)
+            EventTypesHelper().insertOrUpdateEventTypeSync(activity, eventType)
         } else {
             eventId
         }
@@ -246,6 +245,7 @@ class IcsImporter(val activity: SimpleActivity) {
         curStart = -1
         curEnd = -1
         curTitle = ""
+        curLocation = ""
         curDescription = ""
         curImportId = ""
         curFlags = 0
@@ -257,7 +257,6 @@ class IcsImporter(val activity: SimpleActivity) {
         curEventTypeId = DBHelper.REGULAR_EVENT_TYPE_ID
         curLastModified = 0L
         curCategoryColor = -2
-        curLocation = ""
         isNotificationDescription = false
         isProperReminderAction = false
         curReminderTriggerMinutes = -1

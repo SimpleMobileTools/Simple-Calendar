@@ -1,10 +1,11 @@
-package com.simplemobiletools.calendar.pro
+package com.simplemobiletools.calendar.pro.databases
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.helpers.DBHelper
 import com.simplemobiletools.calendar.pro.interfaces.EventRepetitionExceptionsDao
@@ -59,6 +60,7 @@ abstract class EventsDatabase : RoomDatabase() {
                 val regularEvent = context.resources.getString(R.string.regular_event)
                 val eventType = EventType(DBHelper.REGULAR_EVENT_TYPE_ID, regularEvent, context.config.primaryColor)
                 db!!.EventTypesDao().insertOrUpdate(eventType)
+                context.config.addDisplayEventType(DBHelper.REGULAR_EVENT_TYPE_ID.toString())
             }
         }
     }

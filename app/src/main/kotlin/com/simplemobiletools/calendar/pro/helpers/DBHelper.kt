@@ -8,7 +8,6 @@ import android.database.sqlite.SQLiteOpenHelper
 import android.database.sqlite.SQLiteQueryBuilder
 import android.text.TextUtils
 import androidx.collection.LongSparseArray
-import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.models.Event
@@ -91,20 +90,11 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private fun createTypesTable(db: SQLiteDatabase) {
         db.execSQL("CREATE TABLE $TYPES_TABLE_NAME ($COL_ID INTEGER PRIMARY KEY AUTOINCREMENT, $COL_TYPE_TITLE TEXT, $COL_TYPE_COLOR INTEGER, " +
                 "$COL_TYPE_CALDAV_CALENDAR_ID INTEGER, $COL_TYPE_CALDAV_DISPLAY_NAME TEXT, $COL_TYPE_CALDAV_EMAIL TEXT)")
-        addRegularEventType(db)
     }
 
     private fun createExceptionsTable(db: SQLiteDatabase) {
         db.execSQL("CREATE TABLE $REPEAT_EXCEPTIONS_TABLE_NAME ($COL_ID INTEGER PRIMARY KEY AUTOINCREMENT, $COL_PARENT_EVENT_ID INTEGER, " +
                 "$COL_OCCURRENCE_DAYCODE INTEGER)")
-    }
-
-    private fun addRegularEventType(db: SQLiteDatabase) {
-        Thread {
-            val regularEvent = context.resources.getString(R.string.regular_event)
-            val eventType = EventType(REGULAR_EVENT_TYPE_ID, regularEvent, context.config.primaryColor)
-            addEventType(eventType, db)
-        }.start()
     }
 
     fun insert(event: Event, addToCalDAV: Boolean, activity: SimpleActivity? = null, callback: (id: Long) -> Unit) {
@@ -211,45 +201,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
     }
 
-    private fun addEventType(eventType: EventType, db: SQLiteDatabase) = insertEventType(eventType, db)
-
-    fun insertEventType(eventType: EventType, db: SQLiteDatabase = mDb): Long {
-        val values = fillEventTypeValues(eventType)
-        val insertedId = db.insert(TYPES_TABLE_NAME, null, values)
-        context.config.addDisplayEventType(insertedId.toString())
-        return insertedId
-    }
-
-    fun updateEventType(eventType: EventType): Long {
-        if (eventType.caldavCalendarId != 0) {
-            CalDAVHandler(context).updateCalDAVCalendar(eventType)
-        }
-
-        return updateLocalEventType(eventType)
-    }
-
-    fun updateLocalEventType(eventType: EventType): Long {
-        val selectionArgs = arrayOf(eventType.id.toString())
-        val values = fillEventTypeValues(eventType)
-        val selection = "$COL_ID = ?"
-        val updated = mDb.update(TYPES_TABLE_NAME, values, selection, selectionArgs)
-        return if (updated > 0) {
-            eventType.id!!
-        } else {
-            -1
-        }
-    }
-
-    private fun fillEventTypeValues(eventType: EventType): ContentValues {
-        return ContentValues().apply {
-            put(COL_TYPE_TITLE, eventType.title)
-            put(COL_TYPE_COLOR, eventType.color)
-            put(COL_TYPE_CALDAV_CALENDAR_ID, eventType.caldavCalendarId)
-            put(COL_TYPE_CALDAV_DISPLAY_NAME, eventType.caldavDisplayName)
-            put(COL_TYPE_CALDAV_EMAIL, eventType.caldavEmail)
-        }
-    }
-
     private fun fillExceptionValues(parentEventId: Long, occurrenceTS: Int, addToCalDAV: Boolean, childImportId: String?, callback: (values: ContentValues) -> Unit) {
         val childEvent = getEventWithId(parentEventId)
         if (childEvent == null) {
@@ -286,59 +237,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                 }
             }.start()
         }
-    }
-
-    fun getEventTypeIdWithTitle(title: String): Long {
-        val cols = arrayOf(COL_ID)
-        val selection = "$COL_TYPE_TITLE = ? COLLATE NOCASE"
-        val selectionArgs = arrayOf(title)
-        var cursor: Cursor? = null
-        try {
-            cursor = mDb.query(TYPES_TABLE_NAME, cols, selection, selectionArgs, null, null, null)
-            if (cursor?.moveToFirst() == true) {
-                return cursor.getIntValue(COL_ID).toLong()
-            }
-        } finally {
-            cursor?.close()
-        }
-        return -1
-    }
-
-    fun getEventTypeWithCalDAVCalendarId(calendarId: Int): EventType? {
-        val cols = arrayOf(COL_ID)
-        val selection = "$COL_TYPE_CALDAV_CALENDAR_ID = ?"
-        val selectionArgs = arrayOf(calendarId.toString())
-        var cursor: Cursor? = null
-        try {
-            cursor = mDb.query(TYPES_TABLE_NAME, cols, selection, selectionArgs, null, null, null)
-            if (cursor?.moveToFirst() == true) {
-                return getEventType(cursor.getLongValue(COL_ID))
-            }
-        } finally {
-            cursor?.close()
-        }
-        return null
-    }
-
-    fun getEventType(id: Long): EventType? {
-        val cols = arrayOf(COL_TYPE_TITLE, COL_TYPE_COLOR, COL_TYPE_CALDAV_CALENDAR_ID, COL_TYPE_CALDAV_DISPLAY_NAME, COL_TYPE_CALDAV_EMAIL)
-        val selection = "$COL_ID = ?"
-        val selectionArgs = arrayOf(id.toString())
-        var cursor: Cursor? = null
-        try {
-            cursor = mDb.query(TYPES_TABLE_NAME, cols, selection, selectionArgs, null, null, null)
-            if (cursor?.moveToFirst() == true) {
-                val title = cursor.getStringValue(COL_TYPE_TITLE)
-                val color = cursor.getIntValue(COL_TYPE_COLOR)
-                val calendarId = cursor.getIntValue(COL_TYPE_CALDAV_CALENDAR_ID)
-                val displayName = cursor.getStringValue(COL_TYPE_CALDAV_DISPLAY_NAME)
-                val email = cursor.getStringValue(COL_TYPE_CALDAV_EMAIL)
-                return EventType(id, title, color, calendarId, displayName, email)
-            }
-        } finally {
-            cursor?.close()
-        }
-        return null
     }
 
     fun getBirthdays(): List<Event> {

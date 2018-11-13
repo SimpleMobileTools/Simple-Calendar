@@ -5,8 +5,9 @@ import androidx.appcompat.app.AlertDialog
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.extensions.config
-import com.simplemobiletools.calendar.pro.extensions.dbHelper
+import com.simplemobiletools.calendar.pro.extensions.eventTypesDB
 import com.simplemobiletools.calendar.pro.helpers.DBHelper
+import com.simplemobiletools.calendar.pro.helpers.EventTypesHelper
 import com.simplemobiletools.calendar.pro.helpers.IcsImporter
 import com.simplemobiletools.calendar.pro.helpers.IcsImporter.ImportResult.*
 import com.simplemobiletools.commons.extensions.setFillWithStroke
@@ -21,7 +22,7 @@ class ImportEventsDialog(val activity: SimpleActivity, val path: String, val cal
 
     init {
         Thread {
-            if (activity.dbHelper.getEventType(config.lastUsedLocalEventTypeId) == null) {
+            if (activity.eventTypesDB.getEventTypeWithId(config.lastUsedLocalEventTypeId) == null) {
                 config.lastUsedLocalEventTypeId = DBHelper.REGULAR_EVENT_TYPE_ID
             }
             activity.runOnUiThread {
@@ -33,7 +34,7 @@ class ImportEventsDialog(val activity: SimpleActivity, val path: String, val cal
     private fun initDialog() {
         val isLastCaldavCalendarOK = config.caldavSync && config.getSyncedCalendarIdsAsList().contains(config.lastUsedCaldavCalendarId.toString())
         currEventTypeId = if (isLastCaldavCalendarOK) {
-            val lastUsedCalDAVCalendar = activity.dbHelper.getEventTypeWithCalDAVCalendarId(config.lastUsedCaldavCalendarId)
+            val lastUsedCalDAVCalendar = EventTypesHelper().getEventTypeWithCalDAVCalendarId(activity, config.lastUsedCaldavCalendarId)
             if (lastUsedCalDAVCalendar != null) {
                 currEventTypeCalDAVCalendarId = config.lastUsedCaldavCalendarId
                 lastUsedCalDAVCalendar.id!!
@@ -79,7 +80,7 @@ class ImportEventsDialog(val activity: SimpleActivity, val path: String, val cal
 
     private fun updateEventType(view: ViewGroup) {
         Thread {
-            val eventType = activity.dbHelper.getEventType(currEventTypeId)
+            val eventType = activity.eventTypesDB.getEventTypeWithId(currEventTypeId)
             activity.runOnUiThread {
                 view.import_event_type_title.text = eventType!!.getDisplayTitle()
                 view.import_event_type_color.setFillWithStroke(eventType.color, activity.config.backgroundColor)

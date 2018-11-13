@@ -112,7 +112,11 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
 
         EventTypesHelper().getEventTypes(this) {
-            mShouldFilterBeVisible = it.size > 1 || config.displayEventTypes.isEmpty()
+            val newShouldFilterBeVisible = it.size > 1 || config.displayEventTypes.isEmpty()
+            if (newShouldFilterBeVisible != mShouldFilterBeVisible) {
+                mShouldFilterBeVisible = newShouldFilterBeVisible
+                invalidateOptionsMenu()
+            }
         }
 
         if (config.storedView == WEEKLY_VIEW) {
@@ -390,10 +394,10 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             toast(R.string.importing)
             Thread {
                 val holidays = getString(R.string.holidays)
-                var eventTypeId = dbHelper.getEventTypeIdWithTitle(holidays)
+                var eventTypeId = EventTypesHelper().getEventTypeIdWithTitle(applicationContext, holidays)
                 if (eventTypeId == -1L) {
-                    val eventType = EventType(0, holidays, resources.getColor(R.color.default_holidays_color))
-                    eventTypeId = dbHelper.insertEventType(eventType)
+                    val eventType = EventType(null, holidays, resources.getColor(R.color.default_holidays_color))
+                    eventTypeId = EventTypesHelper().insertOrUpdateEventTypeSync(applicationContext, eventType)
                 }
 
                 val result = IcsImporter(this).importEvents(it as String, eventTypeId, 0, false)
@@ -516,20 +520,20 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     private fun getBirthdaysEventTypeId(): Long {
         val birthdays = getString(R.string.birthdays)
-        var eventTypeId = dbHelper.getEventTypeIdWithTitle(birthdays)
+        var eventTypeId = EventTypesHelper().getEventTypeIdWithTitle(applicationContext, birthdays)
         if (eventTypeId == -1L) {
-            val eventType = EventType(0, birthdays, resources.getColor(R.color.default_birthdays_color))
-            eventTypeId = dbHelper.insertEventType(eventType)
+            val eventType = EventType(null, birthdays, resources.getColor(R.color.default_birthdays_color))
+            eventTypeId = EventTypesHelper().insertOrUpdateEventTypeSync(applicationContext, eventType)
         }
         return eventTypeId
     }
 
     private fun getAnniversariesEventTypeId(): Long {
         val anniversaries = getString(R.string.anniversaries)
-        var eventTypeId = dbHelper.getEventTypeIdWithTitle(anniversaries)
+        var eventTypeId = EventTypesHelper().getEventTypeIdWithTitle(applicationContext, anniversaries)
         if (eventTypeId == -1L) {
-            val eventType = EventType(0, anniversaries, resources.getColor(R.color.default_anniversaries_color))
-            eventTypeId = dbHelper.insertEventType(eventType)
+            val eventType = EventType(null, anniversaries, resources.getColor(R.color.default_anniversaries_color))
+            eventTypeId = EventTypesHelper().insertOrUpdateEventTypeSync(applicationContext, eventType)
         }
         return eventTypeId
     }

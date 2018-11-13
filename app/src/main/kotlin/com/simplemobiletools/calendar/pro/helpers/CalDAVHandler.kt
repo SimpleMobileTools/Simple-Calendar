@@ -26,12 +26,12 @@ class CalDAVHandler(val context: Context) {
     fun refreshCalendars(activity: SimpleActivity? = null, callback: () -> Unit) {
         val calDAVCalendars = getCalDAVCalendars(activity, context.config.caldavSyncedCalendarIDs)
         for (calendar in calDAVCalendars) {
-            val localEventType = context.dbHelper.getEventTypeWithCalDAVCalendarId(calendar.id) ?: continue
+            val localEventType = EventTypesHelper().getEventTypeWithCalDAVCalendarId(context, calendar.id) ?: continue
             localEventType.apply {
                 title = calendar.displayName
                 caldavDisplayName = calendar.displayName
                 caldavEmail = calendar.accountName
-                context.dbHelper.updateLocalEventType(this)
+                EventTypesHelper().insertOrUpdateEventTypeSync(context, this)
             }
 
             CalDAVHandler(context).fetchCalDAVCalendarEvents(calendar.id, localEventType.id!!, activity)
