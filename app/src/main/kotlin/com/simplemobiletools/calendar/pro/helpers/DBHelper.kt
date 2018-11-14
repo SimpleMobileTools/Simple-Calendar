@@ -98,20 +98,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
     }
 
-    fun getEventsWithSearchQuery(text: String, callback: (searchedText: String, events: List<Event>) -> Unit) {
-        Thread {
-            val searchQuery = "%$text%"
-            val selection = "$COL_TITLE LIKE ? OR $COL_LOCATION LIKE ? OR $COL_DESCRIPTION LIKE ?"
-            val selectionArgs = arrayOf(searchQuery, searchQuery, searchQuery)
-            val cursor = getEventsCursor(selection, selectionArgs)
-            val events = fillEvents(cursor)
-
-            val displayEventTypes = context.config.displayEventTypes
-            val filteredEvents = events.filter { displayEventTypes.contains(it.eventType.toString()) }
-            callback(text, filteredEvents)
-        }.start()
-    }
-
     fun getEvents(fromTS: Int, toTS: Int, eventId: Long = -1L, applyTypeFilter: Boolean = true, callback: (events: ArrayList<Event>) -> Unit) {
         Thread {
             getEventsInBackground(fromTS, toTS, eventId, applyTypeFilter, callback)

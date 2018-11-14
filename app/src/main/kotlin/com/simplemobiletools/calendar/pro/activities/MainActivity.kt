@@ -738,23 +738,21 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         mLatestSearchQuery = text
         search_placeholder_2.beGoneIf(text.length >= 2)
         if (text.length >= 2) {
-            dbHelper.getEventsWithSearchQuery(text) { searchedText, events ->
+            EventsHelper(applicationContext).getEventsWithSearchQuery(text, this) { searchedText, events ->
                 if (searchedText == mLatestSearchQuery) {
-                    runOnUiThread {
-                        search_results_list.beVisibleIf(events.isNotEmpty())
-                        search_placeholder.beVisibleIf(events.isEmpty())
-                        val listItems = getEventListItems(events)
-                        val eventsAdapter = EventListAdapter(this, listItems, true, this, search_results_list) {
-                            if (it is ListEvent) {
-                                Intent(applicationContext, EventActivity::class.java).apply {
-                                    putExtra(EVENT_ID, it.id)
-                                    startActivity(this)
-                                }
+                    search_results_list.beVisibleIf(events.isNotEmpty())
+                    search_placeholder.beVisibleIf(events.isEmpty())
+                    val listItems = getEventListItems(events)
+                    val eventsAdapter = EventListAdapter(this, listItems, true, this, search_results_list) {
+                        if (it is ListEvent) {
+                            Intent(applicationContext, EventActivity::class.java).apply {
+                                putExtra(EVENT_ID, it.id)
+                                startActivity(this)
                             }
                         }
-
-                        search_results_list.adapter = eventsAdapter
                     }
+
+                    search_results_list.adapter = eventsAdapter
                 }
             }
         } else {

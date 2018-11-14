@@ -50,6 +50,9 @@ interface EventsDao {
     @Query("SELECT id FROM events WHERE source = :source AND import_id != \"\"")
     fun getCalDAVCalendarEvents(source: String): List<Long>
 
+    @Query("SELECT * FROM events WHERE title LIKE :searchQuery OR location LIKE :searchQuery OR description LIKE :searchQuery")
+    fun getEventsForSearch(searchQuery: String): List<Event>
+
     @Query("UPDATE events SET event_type = $REGULAR_EVENT_TYPE_ID WHERE event_type = :eventTypeId")
     fun resetEventsWithType(eventTypeId: Long)
 

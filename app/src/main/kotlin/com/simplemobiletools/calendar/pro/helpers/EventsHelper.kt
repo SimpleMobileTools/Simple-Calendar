@@ -191,4 +191,16 @@ class EventsHelper(val context: Context) {
             callback(eventIds.isNotEmpty())
         }.start()
     }
+
+    fun getEventsWithSearchQuery(text: String, activity: Activity, callback: (searchedText: String, events: List<Event>) -> Unit) {
+        Thread {
+            val searchQuery = "%$text%"
+            val events = context.eventsDB.getEventsForSearch(searchQuery)
+            val displayEventTypes = context.config.displayEventTypes
+            val filteredEvents = events.filter { displayEventTypes.contains(it.eventType.toString()) }
+            activity.runOnUiThread {
+                callback(text, filteredEvents)
+            }
+        }.start()
+    }
 }
