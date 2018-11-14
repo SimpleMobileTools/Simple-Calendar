@@ -19,6 +19,7 @@ import androidx.core.view.MenuItemCompat
 import com.simplemobiletools.calendar.pro.BuildConfig
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.adapters.EventListAdapter
+import com.simplemobiletools.calendar.pro.databases.EventsDatabase
 import com.simplemobiletools.calendar.pro.dialogs.ExportEventsDialog
 import com.simplemobiletools.calendar.pro.dialogs.FilterEventTypesDialog
 import com.simplemobiletools.calendar.pro.dialogs.ImportEventsDialog
@@ -147,6 +148,13 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         mCalDAVSyncHandler.removeCallbacksAndMessages(null)
         contentResolver.unregisterContentObserver(calDAVSyncObserver)
         closeSearch()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if (!isChangingConfigurations) {
+            EventsDatabase.destroyInstance()
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
