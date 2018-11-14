@@ -9,7 +9,6 @@ import androidx.collection.LongSparseArray
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.EventRepetitionException
-import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.commons.extensions.getIntValue
 import com.simplemobiletools.commons.extensions.getLongValue
 import com.simplemobiletools.commons.extensions.getStringValue
@@ -102,7 +101,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     fun getEventsWithSearchQuery(text: String, callback: (searchedText: String, events: List<Event>) -> Unit) {
         Thread {
             val searchQuery = "%$text%"
-            val selection = "$MAIN_TABLE_NAME.$COL_TITLE LIKE ? OR $MAIN_TABLE_NAME.$COL_LOCATION LIKE ? OR $MAIN_TABLE_NAME.$COL_DESCRIPTION LIKE ?"
+            val selection = "$COL_TITLE LIKE ? OR $COL_LOCATION LIKE ? OR $COL_DESCRIPTION LIKE ?"
             val selectionArgs = arrayOf(searchQuery, searchQuery, searchQuery)
             val cursor = getEventsCursor(selection, selectionArgs)
             val events = fillEvents(cursor)
@@ -366,7 +365,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     }
 
     fun getEventsFromCalDAVCalendar(calendarId: Int): List<Event> {
-        val selection = "$MAIN_TABLE_NAME.$COL_EVENT_SOURCE = ?"
+        val selection = "$COL_EVENT_SOURCE = ?"
         val selectionArgs = arrayOf("$CALDAV-$calendarId")
         val cursor = getEventsCursor(selection, selectionArgs)
         return fillEvents(cursor)
@@ -422,22 +421,5 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             }
         }
         return events
-    }
-
-    fun doEventTypesContainEvents(types: ArrayList<EventType>, callback: (contain: Boolean) -> Unit) {
-        Thread {
-            val args = TextUtils.join(", ", types.map { it.id })
-            val columns = arrayOf(COL_ID)
-            val selection = "$COL_EVENT_TYPE IN ($args)"
-            var cursor: Cursor? = null
-            try {
-                cursor = mDb.query(MAIN_TABLE_NAME, columns, selection, null, null, null, null)
-                callback(cursor?.moveToFirst() == true)
-            } catch (e: Exception) {
-                callback(false)
-            } finally {
-                cursor?.close()
-            }
-        }.start()
     }
 }

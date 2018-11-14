@@ -29,6 +29,9 @@ interface EventsDao {
     @Query("SELECT id FROM events WHERE event_type = :eventTypeId")
     fun getEventIdsByEventType(eventTypeId: Long): List<Long>
 
+    @Query("SELECT id FROM events WHERE event_type IN (:eventTypeIds)")
+    fun getEventIdsByEventType(eventTypeIds: List<Long>): List<Long>
+
     @Query("SELECT * FROM events WHERE id IN (:ids)")
     fun getEventsWithIds(ids: List<Long>): List<Event>
 

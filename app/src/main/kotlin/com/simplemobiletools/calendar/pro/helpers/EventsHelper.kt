@@ -55,7 +55,7 @@ class EventsHelper(val context: Context) {
 
         for (eventTypeId in deleteIds) {
             if (deleteEvents) {
-                EventsHelper(context).deleteEventsWithType(eventTypeId!!)
+                deleteEventsWithType(eventTypeId!!)
             } else {
                 context.eventsDB.resetEventsWithType(eventTypeId!!)
             }
@@ -183,5 +183,12 @@ class EventsHelper(val context: Context) {
                 CalDAVHandler(context).updateCalDAVEvent(event!!)
             }
         }
+    }
+
+    fun doEventTypesContainEvents(eventTypeIds: ArrayList<Long>, callback: (contain: Boolean) -> Unit) {
+        Thread {
+            val eventIds = context.eventsDB.getEventIdsByEventType(eventTypeIds)
+            callback(eventIds.isNotEmpty())
+        }.start()
     }
 }
