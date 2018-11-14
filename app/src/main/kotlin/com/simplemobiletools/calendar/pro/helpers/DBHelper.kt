@@ -11,6 +11,7 @@ import androidx.collection.LongSparseArray
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.models.Event
+import com.simplemobiletools.calendar.pro.models.EventRepetitionException
 import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.commons.extensions.getIntValue
 import com.simplemobiletools.commons.extensions.getLongValue
@@ -33,6 +34,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private val COL_EVENT_TYPE = "event_type"
     private val COL_LAST_UPDATED = "last_updated"
     private val COL_EVENT_SOURCE = "event_source"
+    private val COL_PARENT_EVENT_ID = "event_parent_id"
 
     private val REPETITIONS_TABLE_NAME = "event_repetitions"
     private val COL_EVENT_ID = "event_id"
@@ -40,14 +42,10 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private val COL_REPEAT_RULE = "repeat_rule"
     private val COL_REPEAT_LIMIT = "repeat_limit"
 
-    private val REPEAT_EXCEPTIONS_TABLE_NAME = "event_repeat_exceptions"
-    private val COL_OCCURRENCE_DAYCODE = "event_occurrence_daycode"
-    private val COL_PARENT_EVENT_ID = "event_parent_id"
-
     private val mDb = writableDatabase
 
     companion object {
-        private const val DB_VERSION = 19
+        private const val DB_VERSION = 1
         const val DB_NAME = "events_old.db"
         const val REGULAR_EVENT_TYPE_ID = 1L
         var dbInstance: DBHelper? = null
@@ -67,7 +65,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                 "$COL_PARENT_EVENT_ID INTEGER, $COL_LAST_UPDATED INTEGER, $COL_EVENT_SOURCE TEXT, $COL_LOCATION TEXT)")
 
         createRepetitionsTable(db)
-        createExceptionsTable(db)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {}
@@ -75,11 +72,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private fun createRepetitionsTable(db: SQLiteDatabase) {
         db.execSQL("CREATE TABLE $REPETITIONS_TABLE_NAME ($COL_ID INTEGER PRIMARY KEY AUTOINCREMENT, $COL_EVENT_ID INTEGER UNIQUE, " +
                 "$COL_REPEAT_INTERVAL INTEGER, $COL_REPEAT_LIMIT INTEGER, $COL_REPEAT_RULE INTEGER)")
-    }
-
-    private fun createExceptionsTable(db: SQLiteDatabase) {
-        db.execSQL("CREATE TABLE $REPEAT_EXCEPTIONS_TABLE_NAME ($COL_ID INTEGER PRIMARY KEY AUTOINCREMENT, $COL_PARENT_EVENT_ID INTEGER, " +
-                "$COL_OCCURRENCE_DAYCODE INTEGER)")
     }
 
     fun insert(event: Event, addToCalDAV: Boolean, activity: SimpleActivity? = null, callback: (id: Long) -> Unit) {
@@ -186,12 +178,8 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
     }
 
-    private fun fillExceptionValues(parentEventId: Long, occurrenceTS: Int, addToCalDAV: Boolean, childImportId: String?, callback: (values: ContentValues) -> Unit) {
-        val childEvent = getEventWithId(parentEventId)
-        if (childEvent == null) {
-            callback(ContentValues())
-            return
-        }
+    private fun fillExceptionValues(parentEventId: Long, occurrenceTS: Int, addToCalDAV: Boolean, childImportId: String?, callback: (eventRepetitionException: EventRepetitionException) -> Unit) {
+        val childEvent = getEventWithId(parentEventId) ?: return
 
         childEvent.apply {
             id = 0
@@ -205,11 +193,8 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
         insert(childEvent, false) {
             val childEventId = it
-            val exceptionValues = ContentValues().apply {
-                put(COL_PARENT_EVENT_ID, parentEventId)
-                put(COL_OCCURRENCE_DAYCODE, Formatter.getDayCodeFromTS(occurrenceTS))
-            }
-            callback(exceptionValues)
+            val eventRepetitionException = EventRepetitionException(null, Formatter.getDayCodeFromTS(occurrenceTS), parentEventId)
+            callback(eventRepetitionException)
 
             Thread {
                 if (addToCalDAV && context.config.caldavSync) {
@@ -254,9 +239,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
         val metaSelection = "$COL_EVENT_ID IN ($args)"
         mDb.delete(REPETITIONS_TABLE_NAME, metaSelection, null)
-
-        val exceptionSelection = "$COL_PARENT_EVENT_ID IN ($args)"
-        mDb.delete(REPEAT_EXCEPTIONS_TABLE_NAME, exceptionSelection, null)
 
         context.updateWidgets()
 
@@ -304,7 +286,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
     fun addEventRepeatException(parentEventId: Long, occurrenceTS: Int, addToCalDAV: Boolean, childImportId: String? = null) {
         fillExceptionValues(parentEventId, occurrenceTS, addToCalDAV, childImportId) {
-            mDb.insert(REPEAT_EXCEPTIONS_TABLE_NAME, null, it)
+            context.eventRepetitionExceptionsDB.insert(it)
 
             val parentEvent = getEventWithId(parentEventId)
             if (parentEvent != null) {
@@ -446,7 +428,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         events = events
                 .asSequence()
                 .distinct()
-                .filterNot { getIgnoredOccurrences(it).contains(Formatter.getDayCodeFromTS(it.startTS).toInt()) }
+                .filterNot { EventTypesHelper().getEventRepetitionIgnoredOccurrences(context, it).contains(Formatter.getDayCodeFromTS(it.startTS)) }
                 .toMutableList() as ArrayList<Event>
         callback(events)
     }
@@ -749,29 +731,5 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                 cursor?.close()
             }
         }.start()
-    }
-
-    fun getIgnoredOccurrences(event: Event): ArrayList<Int> {
-        if (event.repeatInterval == 0) {
-            return ArrayList()
-        }
-
-        val projection = arrayOf(COL_OCCURRENCE_DAYCODE)
-        val selection = "$COL_PARENT_EVENT_ID = ?"
-        val selectionArgs = arrayOf(event.id.toString())
-        val daycodes = ArrayList<Int>()
-
-        var cursor: Cursor? = null
-        try {
-            cursor = mDb.query(REPEAT_EXCEPTIONS_TABLE_NAME, projection, selection, selectionArgs, null, null, COL_OCCURRENCE_DAYCODE)
-            if (cursor?.moveToFirst() == true) {
-                do {
-                    daycodes.add(cursor.getIntValue(COL_OCCURRENCE_DAYCODE))
-                } while (cursor.moveToNext())
-            }
-        } finally {
-            cursor?.close()
-        }
-        return daycodes
     }
 }

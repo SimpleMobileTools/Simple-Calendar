@@ -4,7 +4,9 @@ import android.app.Activity
 import android.content.Context
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.dbHelper
+import com.simplemobiletools.calendar.pro.extensions.eventRepetitionExceptionsDB
 import com.simplemobiletools.calendar.pro.extensions.eventTypesDB
+import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.EventType
 import java.util.*
 
@@ -62,5 +64,13 @@ class EventTypesHelper {
         }
 
         context.eventTypesDB.deleteEventTypes(typesToDelete)
+    }
+
+    fun getEventRepetitionIgnoredOccurrences(context: Context, event: Event): ArrayList<String> {
+        return if (event.id == null || event.repeatInterval == 0) {
+            ArrayList()
+        } else {
+            context.eventRepetitionExceptionsDB.getEventRepetitionExceptions(event.id!!).toMutableList() as ArrayList<String>
+        }
     }
 }

@@ -9,12 +9,13 @@ import com.simplemobiletools.calendar.pro.extensions.notifyEvent
 import com.simplemobiletools.calendar.pro.extensions.scheduleNextEventReminder
 import com.simplemobiletools.calendar.pro.extensions.updateListWidget
 import com.simplemobiletools.calendar.pro.helpers.EVENT_ID
+import com.simplemobiletools.calendar.pro.helpers.EventTypesHelper
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 
 class NotificationReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         val powerManager = context.getSystemService(Context.POWER_SERVICE) as PowerManager
-        val wakelock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "Simple Calendar")
+        val wakelock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "simplecalendar:notificationreceiver")
         wakelock.acquire(3000)
 
         Thread {
@@ -34,7 +35,7 @@ class NotificationReceiver : BroadcastReceiver() {
             return
         }
 
-        if (!context.dbHelper.getIgnoredOccurrences(event).contains(Formatter.getDayCodeFromTS(event.startTS).toInt())) {
+        if (!EventTypesHelper().getEventRepetitionIgnoredOccurrences(context, event).contains(Formatter.getDayCodeFromTS(event.startTS))) {
             context.notifyEvent(event)
         }
         context.scheduleNextEventReminder(event, context.dbHelper)
