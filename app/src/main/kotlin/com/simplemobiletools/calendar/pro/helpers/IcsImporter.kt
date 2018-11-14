@@ -41,7 +41,7 @@ class IcsImporter(val activity: SimpleActivity) {
 
     fun importEvents(path: String, defaultEventTypeId: Long, calDAVCalendarId: Int, overrideFileEventTypes: Boolean): ImportResult {
         try {
-            val eventTypes = EventTypesHelper().getEventTypesSync(activity)
+            val eventTypes = EventsHelper().getEventTypesSync(activity)
             val existingEvents = activity.dbHelper.getEventsWithImportIds()
             val eventsToInsert = ArrayList<Event>()
             var prevLine = ""
@@ -158,7 +158,7 @@ class IcsImporter(val activity: SimpleActivity) {
                             if (curRepeatExceptions.isEmpty()) {
                                 eventsToInsert.add(event)
                             } else {
-                                EventTypesHelper().insertEvent(activity, activity, event, true) {
+                                EventsHelper().insertEvent(activity, activity, event, true) {
                                     for (exceptionTS in curRepeatExceptions) {
                                         activity.dbHelper.addEventRepeatException(it, exceptionTS, true)
                                     }
@@ -176,7 +176,7 @@ class IcsImporter(val activity: SimpleActivity) {
                 }
             }
 
-            EventTypesHelper().insertEvents(activity, eventsToInsert, true)
+            EventsHelper().insertEvents(activity, eventsToInsert, true)
         } catch (e: Exception) {
             activity.showErrorToast(e, Toast.LENGTH_LONG)
             eventsFailed++
@@ -223,11 +223,11 @@ class IcsImporter(val activity: SimpleActivity) {
             categories
         }
 
-        val eventId = EventTypesHelper().getEventTypeIdWithTitle(activity, eventTypeTitle)
+        val eventId = EventsHelper().getEventTypeIdWithTitle(activity, eventTypeTitle)
         curEventTypeId = if (eventId == -1L) {
             val newTypeColor = if (curCategoryColor == -2) activity.resources.getColor(R.color.color_primary) else curCategoryColor
             val eventType = EventType(null, eventTypeTitle, newTypeColor)
-            EventTypesHelper().insertOrUpdateEventTypeSync(activity, eventType)
+            EventsHelper().insertOrUpdateEventTypeSync(activity, eventType)
         } else {
             eventId
         }

@@ -112,7 +112,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             updateViewPager()
         }
 
-        EventTypesHelper().getEventTypes(this) {
+        EventsHelper().getEventTypes(this) {
             val newShouldFilterBeVisible = it.size > 1 || config.displayEventTypes.isEmpty()
             if (newShouldFilterBeVisible != mShouldFilterBeVisible) {
                 mShouldFilterBeVisible = newShouldFilterBeVisible
@@ -402,10 +402,10 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             toast(R.string.importing)
             Thread {
                 val holidays = getString(R.string.holidays)
-                var eventTypeId = EventTypesHelper().getEventTypeIdWithTitle(applicationContext, holidays)
+                var eventTypeId = EventsHelper().getEventTypeIdWithTitle(applicationContext, holidays)
                 if (eventTypeId == -1L) {
                     val eventType = EventType(null, holidays, resources.getColor(R.color.default_holidays_color))
-                    eventTypeId = EventTypesHelper().insertOrUpdateEventTypeSync(applicationContext, eventType)
+                    eventTypeId = EventsHelper().insertOrUpdateEventTypeSync(applicationContext, eventType)
                 }
 
                 val result = IcsImporter(this).importEvents(it as String, eventTypeId, 0, false)
@@ -505,7 +505,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                                     eventType = eventTypeId, source = source, lastUpdated = lastUpdated)
 
                             if (!importIDs.contains(contactId)) {
-                                EventTypesHelper().insertEvent(applicationContext, null, event, false) {
+                                EventsHelper().insertEvent(applicationContext, null, event, false) {
                                     eventsAdded++
                                 }
                             }
@@ -528,20 +528,20 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     private fun getBirthdaysEventTypeId(): Long {
         val birthdays = getString(R.string.birthdays)
-        var eventTypeId = EventTypesHelper().getEventTypeIdWithTitle(applicationContext, birthdays)
+        var eventTypeId = EventsHelper().getEventTypeIdWithTitle(applicationContext, birthdays)
         if (eventTypeId == -1L) {
             val eventType = EventType(null, birthdays, resources.getColor(R.color.default_birthdays_color))
-            eventTypeId = EventTypesHelper().insertOrUpdateEventTypeSync(applicationContext, eventType)
+            eventTypeId = EventsHelper().insertOrUpdateEventTypeSync(applicationContext, eventType)
         }
         return eventTypeId
     }
 
     private fun getAnniversariesEventTypeId(): Long {
         val anniversaries = getString(R.string.anniversaries)
-        var eventTypeId = EventTypesHelper().getEventTypeIdWithTitle(applicationContext, anniversaries)
+        var eventTypeId = EventsHelper().getEventTypeIdWithTitle(applicationContext, anniversaries)
         if (eventTypeId == -1L) {
             val eventType = EventType(null, anniversaries, resources.getColor(R.color.default_anniversaries_color))
-            eventTypeId = EventTypesHelper().insertOrUpdateEventTypeSync(applicationContext, eventType)
+            eventTypeId = EventsHelper().insertOrUpdateEventTypeSync(applicationContext, eventType)
         }
         return eventTypeId
     }

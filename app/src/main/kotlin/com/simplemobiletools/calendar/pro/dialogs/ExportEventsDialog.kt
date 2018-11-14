@@ -6,7 +6,7 @@ import androidx.appcompat.app.AlertDialog
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.adapters.FilterEventTypeAdapter
-import com.simplemobiletools.calendar.pro.helpers.EventTypesHelper
+import com.simplemobiletools.calendar.pro.helpers.EventsHelper
 import com.simplemobiletools.commons.extensions.*
 import kotlinx.android.synthetic.main.dialog_export_events.view.*
 import java.io.File
@@ -19,7 +19,7 @@ class ExportEventsDialog(val activity: SimpleActivity, val path: String, val cal
             export_events_folder.text = activity.humanizePath(path)
             export_events_filename.setText("${activity.getString(R.string.events)}_${activity.getCurrentFormattedDateTime()}")
 
-            EventTypesHelper().getEventTypes(activity) {
+            EventsHelper().getEventTypes(activity) {
                 val eventTypes = HashSet<String>()
                 it.mapTo(eventTypes) { it.id.toString() }
 

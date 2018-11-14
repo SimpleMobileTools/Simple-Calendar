@@ -26,12 +26,12 @@ class CalDAVHandler(val context: Context) {
     fun refreshCalendars(activity: SimpleActivity? = null, callback: () -> Unit) {
         val calDAVCalendars = getCalDAVCalendars(activity, context.config.caldavSyncedCalendarIDs)
         for (calendar in calDAVCalendars) {
-            val localEventType = EventTypesHelper().getEventTypeWithCalDAVCalendarId(context, calendar.id) ?: continue
+            val localEventType = EventsHelper().getEventTypeWithCalDAVCalendarId(context, calendar.id) ?: continue
             localEventType.apply {
                 title = calendar.displayName
                 caldavDisplayName = calendar.displayName
                 caldavEmail = calendar.accountName
-                EventTypesHelper().insertOrUpdateEventTypeSync(context, this)
+                EventsHelper().insertOrUpdateEventTypeSync(context, this)
             }
 
             CalDAVHandler(context).fetchCalDAVCalendarEvents(calendar.id, localEventType.id!!, activity)
@@ -241,7 +241,7 @@ class CalDAVHandler(val context: Context) {
 
                         if (title.isNotEmpty()) {
                             importIdsMap[event.importId] = event
-                            EventTypesHelper().insertEvent(context, null, event, false)
+                            EventsHelper().insertEvent(context, null, event, false)
                         }
                     }
                 } while (cursor.moveToNext())

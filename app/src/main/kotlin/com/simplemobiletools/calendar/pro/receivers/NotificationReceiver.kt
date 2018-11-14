@@ -9,7 +9,7 @@ import com.simplemobiletools.calendar.pro.extensions.notifyEvent
 import com.simplemobiletools.calendar.pro.extensions.scheduleNextEventReminder
 import com.simplemobiletools.calendar.pro.extensions.updateListWidget
 import com.simplemobiletools.calendar.pro.helpers.EVENT_ID
-import com.simplemobiletools.calendar.pro.helpers.EventTypesHelper
+import com.simplemobiletools.calendar.pro.helpers.EventsHelper
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 
 class NotificationReceiver : BroadcastReceiver() {
@@ -35,7 +35,7 @@ class NotificationReceiver : BroadcastReceiver() {
             return
         }
 
-        if (!EventTypesHelper().getEventRepetitionIgnoredOccurrences(context, event).contains(Formatter.getDayCodeFromTS(event.startTS))) {
+        if (!EventsHelper().getEventRepetitionIgnoredOccurrences(context, event).contains(Formatter.getDayCodeFromTS(event.startTS))) {
             context.notifyEvent(event)
         }
         context.scheduleNextEventReminder(event, context.dbHelper)

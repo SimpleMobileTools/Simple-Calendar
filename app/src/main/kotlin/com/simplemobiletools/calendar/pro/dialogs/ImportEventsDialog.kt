@@ -7,7 +7,7 @@ import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.eventTypesDB
 import com.simplemobiletools.calendar.pro.helpers.DBHelper
-import com.simplemobiletools.calendar.pro.helpers.EventTypesHelper
+import com.simplemobiletools.calendar.pro.helpers.EventsHelper
 import com.simplemobiletools.calendar.pro.helpers.IcsImporter
 import com.simplemobiletools.calendar.pro.helpers.IcsImporter.ImportResult.*
 import com.simplemobiletools.commons.extensions.setFillWithStroke
@@ -34,7 +34,7 @@ class ImportEventsDialog(val activity: SimpleActivity, val path: String, val cal
     private fun initDialog() {
         val isLastCaldavCalendarOK = config.caldavSync && config.getSyncedCalendarIdsAsList().contains(config.lastUsedCaldavCalendarId)
         currEventTypeId = if (isLastCaldavCalendarOK) {
-            val lastUsedCalDAVCalendar = EventTypesHelper().getEventTypeWithCalDAVCalendarId(activity, config.lastUsedCaldavCalendarId)
+            val lastUsedCalDAVCalendar = EventsHelper().getEventTypeWithCalDAVCalendarId(activity, config.lastUsedCaldavCalendarId)
             if (lastUsedCalDAVCalendar != null) {
                 currEventTypeCalDAVCalendarId = config.lastUsedCaldavCalendarId
                 lastUsedCalDAVCalendar.id!!

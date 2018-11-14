@@ -8,7 +8,7 @@ import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.EventType
 import java.util.*
 
-class EventTypesHelper {
+class EventsHelper {
     fun getEventTypes(activity: Activity, callback: (notes: ArrayList<EventType>) -> Unit) {
         Thread {
             val eventTypes = activity.eventTypesDB.getEventTypes().toMutableList() as ArrayList<EventType>

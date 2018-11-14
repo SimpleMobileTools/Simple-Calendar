@@ -8,7 +8,7 @@ import android.widget.RadioGroup
 import androidx.appcompat.app.AlertDialog
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.config
-import com.simplemobiletools.calendar.pro.helpers.EventTypesHelper
+import com.simplemobiletools.calendar.pro.helpers.EventsHelper
 import com.simplemobiletools.calendar.pro.helpers.STORED_LOCALLY_ONLY
 import com.simplemobiletools.calendar.pro.models.CalDAVCalendar
 import com.simplemobiletools.commons.extensions.setFillWithStroke
@@ -28,7 +28,7 @@ class SelectEventCalendarDialog(val activity: Activity, val calendars: List<CalD
 
         Thread {
             calendars.forEach {
-                val localEventType = EventTypesHelper().getEventTypeWithCalDAVCalendarId(activity, it.id)
+                val localEventType = EventsHelper().getEventTypeWithCalDAVCalendarId(activity, it.id)
                 if (localEventType != null) {
                     it.color = localEventType.color
                 }
