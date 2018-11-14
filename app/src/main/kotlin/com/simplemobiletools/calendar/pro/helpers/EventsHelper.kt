@@ -9,16 +9,21 @@ import com.simplemobiletools.calendar.pro.models.EventType
 import java.util.*
 
 class EventsHelper(val context: Context) {
+    private val config = context.config
+    private val eventsDB = context.eventsDB
+    private val eventTypesDB = context.eventTypesDB
+    private val eventRepetitionsDB = context.eventRepetitionsDB
+
     fun getEventTypes(activity: Activity, callback: (notes: ArrayList<EventType>) -> Unit) {
         Thread {
-            val eventTypes = activity.eventTypesDB.getEventTypes().toMutableList() as ArrayList<EventType>
+            val eventTypes = eventTypesDB.getEventTypes().toMutableList() as ArrayList<EventType>
             activity.runOnUiThread {
                 callback(eventTypes)
             }
         }.start()
     }
 
-    fun getEventTypesSync() = context.eventTypesDB.getEventTypes().toMutableList() as ArrayList<EventType>
+    fun getEventTypesSync() = eventTypesDB.getEventTypes().toMutableList() as ArrayList<EventType>
 
     fun insertOrUpdateEventType(activity: Activity, eventType: EventType, callback: ((newEventTypeId: Long) -> Unit)? = null) {
         Thread {
@@ -34,20 +39,20 @@ class EventsHelper(val context: Context) {
             CalDAVHandler(context).updateCalDAVCalendar(eventType)
         }
 
-        val newId = context.eventTypesDB.insertOrUpdate(eventType)
-        context.config.addDisplayEventType(newId.toString())
+        val newId = eventTypesDB.insertOrUpdate(eventType)
+        config.addDisplayEventType(newId.toString())
         return newId
     }
 
-    fun getEventTypeIdWithTitle(title: String) = context.eventTypesDB.getEventTypeIdWithTitle(title) ?: -1L
+    fun getEventTypeIdWithTitle(title: String) = eventTypesDB.getEventTypeIdWithTitle(title) ?: -1L
 
-    fun getEventTypeWithCalDAVCalendarId(calendarId: Int) = context.eventTypesDB.getEventTypeWithCalDAVCalendarId(calendarId)
+    fun getEventTypeWithCalDAVCalendarId(calendarId: Int) = eventTypesDB.getEventTypeWithCalDAVCalendarId(calendarId)
 
     fun deleteEventTypes(eventTypes: ArrayList<EventType>, deleteEvents: Boolean) {
         val typesToDelete = eventTypes.asSequence().filter { it.caldavCalendarId == 0 && it.id != REGULAR_EVENT_TYPE_ID }.toMutableList()
         val deleteIds = typesToDelete.map { it.id }.toMutableList()
         val deletedSet = deleteIds.map { it.toString() }.toHashSet()
-        context.config.removeDisplayEventTypes(deletedSet)
+        config.removeDisplayEventTypes(deletedSet)
 
         if (deleteIds.isEmpty()) {
             return
@@ -57,11 +62,11 @@ class EventsHelper(val context: Context) {
             if (deleteEvents) {
                 deleteEventsWithType(eventTypeId!!)
             } else {
-                context.eventsDB.resetEventsWithType(eventTypeId!!)
+                eventsDB.resetEventsWithType(eventTypeId!!)
             }
         }
 
-        context.eventTypesDB.deleteEventTypes(typesToDelete)
+        eventTypesDB.deleteEventTypes(typesToDelete)
     }
 
     fun getEventRepetitionIgnoredOccurrences(event: Event): ArrayList<String> {
@@ -78,17 +83,17 @@ class EventsHelper(val context: Context) {
             return
         }
 
-        val id = context.eventsDB.insertOrUpdate(event)
+        val id = eventsDB.insertOrUpdate(event)
         event.id = id
 
         if (event.repeatInterval != 0 && event.parentId == 0L) {
-            context.eventRepetitionsDB.insertOrUpdate(event.getEventRepetition())
+            eventRepetitionsDB.insertOrUpdate(event.getEventRepetition())
         }
 
         context.updateWidgets()
         //context.scheduleNextEventReminder(event, this, activity)
 
-        if (addToCalDAV && event.source != SOURCE_SIMPLE_CALENDAR && context.config.caldavSync) {
+        if (addToCalDAV && event.source != SOURCE_SIMPLE_CALENDAR && config.caldavSync) {
             CalDAVHandler(context).insertCalDAVEvent(event)
         }
 
@@ -102,15 +107,15 @@ class EventsHelper(val context: Context) {
                     continue
                 }
 
-                val id = context.eventsDB.insertOrUpdate(event)
+                val id = eventsDB.insertOrUpdate(event)
                 event.id = id
 
                 if (event.repeatInterval != 0 && event.parentId == 0L) {
-                    context.eventRepetitionsDB.insertOrUpdate(event.getEventRepetition())
+                    eventRepetitionsDB.insertOrUpdate(event.getEventRepetition())
                 }
 
                 //context.scheduleNextEventReminder(event, this)
-                if (addToCalDAV && event.source != SOURCE_SIMPLE_CALENDAR && event.source != SOURCE_IMPORTED_ICS && context.config.caldavSync) {
+                if (addToCalDAV && event.source != SOURCE_SIMPLE_CALENDAR && event.source != SOURCE_IMPORTED_ICS && config.caldavSync) {
                     CalDAVHandler(context).insertCalDAVEvent(event)
                 }
             }
@@ -120,38 +125,38 @@ class EventsHelper(val context: Context) {
     }
 
     fun updateEvent(activity: Activity? = null, event: Event, updateAtCalDAV: Boolean, callback: (() -> Unit)? = null) {
-        context.eventsDB.insertOrUpdate(event)
+        eventsDB.insertOrUpdate(event)
 
         if (event.repeatInterval == 0) {
-            context.eventRepetitionsDB.deleteEventRepetitionsOfEvent(event.id!!)
+            eventRepetitionsDB.deleteEventRepetitionsOfEvent(event.id!!)
         } else {
-            context.eventRepetitionsDB.insertOrUpdate(event.getEventRepetition())
+            eventRepetitionsDB.insertOrUpdate(event.getEventRepetition())
         }
 
         context.updateWidgets()
         //context.scheduleNextEventReminder(event, this, activity)
-        if (updateAtCalDAV && event.source != SOURCE_SIMPLE_CALENDAR && context.config.caldavSync) {
+        if (updateAtCalDAV && event.source != SOURCE_SIMPLE_CALENDAR && config.caldavSync) {
             CalDAVHandler(context).updateCalDAVEvent(event)
         }
         callback?.invoke()
     }
 
     fun deleteAllEvents() {
-        val eventIds = context.eventsDB.getEventIds().toMutableList()
+        val eventIds = eventsDB.getEventIds().toMutableList()
         deleteEvents(eventIds, true)
     }
 
     fun deleteEvent(id: Long, deleteFromCalDAV: Boolean) = deleteEvents(arrayListOf(id), deleteFromCalDAV)
 
     fun deleteEvents(ids: MutableList<Long>, deleteFromCalDAV: Boolean) {
-        val eventsWithImportId = context.eventsDB.getEventsByIdsWithImportIds(ids)
-        context.eventsDB.deleteEvents(ids)
+        val eventsWithImportId = eventsDB.getEventsByIdsWithImportIds(ids)
+        eventsDB.deleteEvents(ids)
 
         ids.forEach {
             context.cancelNotification(it)
         }
 
-        if (deleteFromCalDAV && context.config.caldavSync) {
+        if (deleteFromCalDAV && config.caldavSync) {
             eventsWithImportId.forEach {
                 CalDAVHandler(context).deleteCalDAVEvent(it)
             }
@@ -161,24 +166,24 @@ class EventsHelper(val context: Context) {
         context.updateWidgets()
     }
 
-    fun deleteChildEvents(ids: MutableList<Long>, deleteFromCalDAV: Boolean) {
-        val childIds = context.eventsDB.getEventIdsWithParentIds(ids).toMutableList()
+    private fun deleteChildEvents(ids: MutableList<Long>, deleteFromCalDAV: Boolean) {
+        val childIds = eventsDB.getEventIdsWithParentIds(ids).toMutableList()
         if (childIds.isNotEmpty()) {
             deleteEvents(childIds, deleteFromCalDAV)
         }
     }
 
-    fun deleteEventsWithType(eventTypeId: Long) {
-        val eventIds = context.eventsDB.getEventIdsByEventType(eventTypeId).toMutableList()
+    private fun deleteEventsWithType(eventTypeId: Long) {
+        val eventIds = eventsDB.getEventIdsByEventType(eventTypeId).toMutableList()
         deleteEvents(eventIds, true)
     }
 
     fun addEventRepeatLimit(eventId: Long, limitTS: Int) {
         val time = Formatter.getDateTimeFromTS(limitTS)
-        context.eventRepetitionsDB.updateEventRepetitionLimit(limitTS - time.hourOfDay, eventId)
+        eventRepetitionsDB.updateEventRepetitionLimit(limitTS - time.hourOfDay, eventId)
 
-        if (context.config.caldavSync) {
-            val event = context.eventsDB.getEventWithId(eventId)
+        if (config.caldavSync) {
+            val event = eventsDB.getEventWithId(eventId)
             if (event?.getCalDAVCalendarId() != 0) {
                 CalDAVHandler(context).updateCalDAVEvent(event!!)
             }
@@ -187,7 +192,7 @@ class EventsHelper(val context: Context) {
 
     fun doEventTypesContainEvents(eventTypeIds: ArrayList<Long>, callback: (contain: Boolean) -> Unit) {
         Thread {
-            val eventIds = context.eventsDB.getEventIdsByEventType(eventTypeIds)
+            val eventIds = eventsDB.getEventIdsByEventType(eventTypeIds)
             callback(eventIds.isNotEmpty())
         }.start()
     }
@@ -195,8 +200,8 @@ class EventsHelper(val context: Context) {
     fun getEventsWithSearchQuery(text: String, activity: Activity, callback: (searchedText: String, events: List<Event>) -> Unit) {
         Thread {
             val searchQuery = "%$text%"
-            val events = context.eventsDB.getEventsForSearch(searchQuery)
-            val displayEventTypes = context.config.displayEventTypes
+            val events = eventsDB.getEventsForSearch(searchQuery)
+            val displayEventTypes = config.displayEventTypes
             val filteredEvents = events.filter { displayEventTypes.contains(it.eventType.toString()) }
             activity.runOnUiThread {
                 callback(text, filteredEvents)
