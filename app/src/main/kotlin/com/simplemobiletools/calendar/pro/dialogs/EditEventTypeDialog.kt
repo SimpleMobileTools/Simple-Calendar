@@ -58,7 +58,7 @@ class EditEventTypeDialog(val activity: Activity, var eventType: EventType? = nu
     }
 
     private fun eventTypeConfirmed(title: String, dialog: AlertDialog) {
-        val eventIdWithTitle = EventsHelper().getEventTypeIdWithTitle(activity, title)
+        val eventIdWithTitle = EventsHelper(activity).getEventTypeIdWithTitle(title)
         var isEventTypeTitleTaken = isNewEvent && eventIdWithTitle != -1L
         if (!isEventTypeTitleTaken) {
             isEventTypeTitleTaken = !isNewEvent && eventType!!.id != eventIdWithTitle && eventIdWithTitle != -1L
@@ -77,7 +77,7 @@ class EditEventTypeDialog(val activity: Activity, var eventType: EventType? = nu
             eventType!!.caldavDisplayName = title
         }
 
-        eventType!!.id = EventsHelper().insertOrUpdateEventTypeSync(activity, eventType!!)
+        eventType!!.id = EventsHelper(activity).insertOrUpdateEventTypeSync(eventType!!)
 
         if (eventType!!.id != -1L) {
             activity.runOnUiThread {

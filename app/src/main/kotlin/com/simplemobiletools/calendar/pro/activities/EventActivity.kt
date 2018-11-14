@@ -648,7 +648,7 @@ class EventActivity : SimpleActivity() {
             event_caldav_calendar_email.text = currentCalendar.accountName
 
             Thread {
-                val calendarColor = EventsHelper().getEventTypeWithCalDAVCalendarId(applicationContext, currentCalendar.id)?.color
+                val calendarColor = EventsHelper(applicationContext).getEventTypeWithCalDAVCalendarId(currentCalendar.id)?.color
                         ?: currentCalendar.color
 
                 runOnUiThread {
@@ -732,7 +732,7 @@ class EventActivity : SimpleActivity() {
         val newEventType = if (!config.caldavSync || config.lastUsedCaldavCalendarId == 0 || mEventCalendarId == STORED_LOCALLY_ONLY) {
             mEventTypeId
         } else {
-            EventsHelper().getEventTypeWithCalDAVCalendarId(applicationContext, mEventCalendarId)?.id ?: config.lastUsedLocalEventTypeId
+            EventsHelper(applicationContext).getEventTypeWithCalDAVCalendarId(mEventCalendarId)?.id ?: config.lastUsedLocalEventTypeId
         }
 
         val newSource = if (!config.caldavSync || mEventCalendarId == STORED_LOCALLY_ONLY) {
@@ -785,7 +785,7 @@ class EventActivity : SimpleActivity() {
 
     private fun storeEvent(wasRepeatable: Boolean) {
         if (mEvent.id == 0L || mEvent.id == null) {
-            EventsHelper().insertEvent(applicationContext, this, mEvent, true) {
+            EventsHelper(applicationContext).insertEvent(this, mEvent, true) {
                 if (DateTime.now().isAfter(mEventStartDateTime.millis)) {
                     if (mEvent.repeatInterval == 0 && mEvent.getReminders().isNotEmpty()) {
                         notifyEvent(mEvent)
@@ -800,7 +800,7 @@ class EventActivity : SimpleActivity() {
                     showEditRepeatingEventDialog()
                 }
             } else {
-                EventsHelper().updateEvent(applicationContext, this, mEvent, true) {
+                EventsHelper(applicationContext).updateEvent(this, mEvent, true) {
                     finish()
                 }
             }
@@ -811,7 +811,7 @@ class EventActivity : SimpleActivity() {
         EditRepeatingEventDialog(this) {
             if (it) {
                 Thread {
-                    EventsHelper().updateEvent(applicationContext, this, mEvent, true) {
+                    EventsHelper(applicationContext).updateEvent(this, mEvent, true) {
                         finish()
                     }
                 }.start()
@@ -826,7 +826,7 @@ class EventActivity : SimpleActivity() {
                         repeatLimit = 0
                     }
 
-                    EventsHelper().insertEvent(applicationContext, this, mEvent, true) {
+                    EventsHelper(applicationContext).insertEvent(this, mEvent, true) {
                         finish()
                     }
                 }.start()

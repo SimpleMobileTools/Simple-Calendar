@@ -28,7 +28,7 @@ class SelectEventCalendarDialog(val activity: Activity, val calendars: List<CalD
 
         Thread {
             calendars.forEach {
-                val localEventType = EventsHelper().getEventTypeWithCalDAVCalendarId(activity, it.id)
+                val localEventType = EventsHelper(activity).getEventTypeWithCalDAVCalendarId(it.id)
                 if (localEventType != null) {
                     it.color = localEventType.color
                 }

@@ -72,7 +72,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             }
         }
 
-        EventsHelper().insertEvent(context, null, childEvent, false) {
+        EventsHelper(context).insertEvent(null, childEvent, false) {
             val childEventId = it
             val eventRepetitionException = EventRepetitionException(null, Formatter.getDayCodeFromTS(occurrenceTS), parentEventId)
             callback(eventRepetitionException)
@@ -302,7 +302,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         events = events
                 .asSequence()
                 .distinct()
-                .filterNot { EventsHelper().getEventRepetitionIgnoredOccurrences(context, it).contains(Formatter.getDayCodeFromTS(it.startTS)) }
+                .filterNot { EventsHelper(context).getEventRepetitionIgnoredOccurrences(it).contains(Formatter.getDayCodeFromTS(it.startTS)) }
                 .toMutableList() as ArrayList<Event>
         callback(events)
     }

@@ -92,7 +92,7 @@ class IcsExporter {
     }
 
     private fun fillIgnoredOccurrences(activity: BaseSimpleActivity, event: Event, out: BufferedWriter) {
-        EventsHelper().getEventRepetitionIgnoredOccurrences(activity, event).forEach {
+        EventsHelper(activity).getEventRepetitionIgnoredOccurrences(event).forEach {
             out.writeLn("$EXDATE:$it")
         }
     }

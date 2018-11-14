@@ -30,7 +30,7 @@ class ManageEventTypesActivity : SimpleActivity(), DeleteEventTypesListener {
     }
 
     private fun getEventTypes() {
-        EventsHelper().getEventTypes(this) {
+        EventsHelper(applicationContext).getEventTypes(this) {
             val adapter = ManageEventTypesAdapter(this, it, this, manage_event_types_list) {
                 showEventTypeDialog(it as EventType)
             }
@@ -60,7 +60,7 @@ class ManageEventTypesActivity : SimpleActivity(), DeleteEventTypesListener {
         }
 
         Thread {
-            EventsHelper().deleteEventTypes(applicationContext, eventTypes, deleteEvents)
+            EventsHelper(applicationContext).deleteEventTypes(eventTypes, deleteEvents)
         }.start()
         return true
     }

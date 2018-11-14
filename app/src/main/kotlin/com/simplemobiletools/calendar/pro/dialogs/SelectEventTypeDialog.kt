@@ -31,7 +31,7 @@ class SelectEventTypeDialog(val activity: Activity, val currEventType: Long, val
         val view = activity.layoutInflater.inflate(R.layout.dialog_select_radio_group, null) as ViewGroup
         radioGroup = view.dialog_radio_group
 
-        EventsHelper().getEventTypes(activity) {
+        EventsHelper(activity).getEventTypes(activity) {
             eventTypes = it
             activity.runOnUiThread {
                 eventTypes.filter { showCalDAVCalendars || it.caldavCalendarId == 0 }.forEach {

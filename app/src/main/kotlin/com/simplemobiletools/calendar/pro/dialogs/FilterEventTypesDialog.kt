@@ -14,7 +14,7 @@ class FilterEventTypesDialog(val activity: SimpleActivity, val callback: () -> U
     private val view = activity.layoutInflater.inflate(R.layout.dialog_filter_event_types, null)
 
     init {
-        EventsHelper().getEventTypes(activity) {
+        EventsHelper(activity).getEventTypes(activity) {
             val displayEventTypes = activity.config.displayEventTypes
             view.filter_event_types_list.adapter = FilterEventTypeAdapter(activity, it, displayEventTypes)
 

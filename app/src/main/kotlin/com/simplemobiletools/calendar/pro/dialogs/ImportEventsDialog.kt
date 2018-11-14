@@ -34,7 +34,7 @@ class ImportEventsDialog(val activity: SimpleActivity, val path: String, val cal
     private fun initDialog() {
         val isLastCaldavCalendarOK = config.caldavSync && config.getSyncedCalendarIdsAsList().contains(config.lastUsedCaldavCalendarId)
         currEventTypeId = if (isLastCaldavCalendarOK) {
-            val lastUsedCalDAVCalendar = EventsHelper().getEventTypeWithCalDAVCalendarId(activity, config.lastUsedCaldavCalendarId)
+            val lastUsedCalDAVCalendar = EventsHelper(activity).getEventTypeWithCalDAVCalendarId(config.lastUsedCaldavCalendarId)
             if (lastUsedCalDAVCalendar != null) {
                 currEventTypeCalDAVCalendarId = config.lastUsedCaldavCalendarId
                 lastUsedCalDAVCalendar.id!!

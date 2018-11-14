@@ -8,7 +8,7 @@ import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.EventType
 import java.util.*
 
-class EventsHelper {
+class EventsHelper(val context: Context) {
     fun getEventTypes(activity: Activity, callback: (notes: ArrayList<EventType>) -> Unit) {
         Thread {
             val eventTypes = activity.eventTypesDB.getEventTypes().toMutableList() as ArrayList<EventType>
@@ -18,18 +18,18 @@ class EventsHelper {
         }.start()
     }
 
-    fun getEventTypesSync(context: Context) = context.eventTypesDB.getEventTypes().toMutableList() as ArrayList<EventType>
+    fun getEventTypesSync() = context.eventTypesDB.getEventTypes().toMutableList() as ArrayList<EventType>
 
     fun insertOrUpdateEventType(activity: Activity, eventType: EventType, callback: ((newEventTypeId: Long) -> Unit)? = null) {
         Thread {
-            val eventTypeId = insertOrUpdateEventTypeSync(activity, eventType)
+            val eventTypeId = insertOrUpdateEventTypeSync(eventType)
             activity.runOnUiThread {
                 callback?.invoke(eventTypeId)
             }
         }.start()
     }
 
-    fun insertOrUpdateEventTypeSync(context: Context, eventType: EventType): Long {
+    fun insertOrUpdateEventTypeSync(eventType: EventType): Long {
         if (eventType.id != null && eventType.id!! > 0 && eventType.caldavCalendarId != 0) {
             CalDAVHandler(context).updateCalDAVCalendar(eventType)
         }
@@ -39,11 +39,11 @@ class EventsHelper {
         return newId
     }
 
-    fun getEventTypeIdWithTitle(context: Context, title: String) = context.eventTypesDB.getEventTypeIdWithTitle(title) ?: -1L
+    fun getEventTypeIdWithTitle(title: String) = context.eventTypesDB.getEventTypeIdWithTitle(title) ?: -1L
 
-    fun getEventTypeWithCalDAVCalendarId(context: Context, calendarId: Int) = context.eventTypesDB.getEventTypeWithCalDAVCalendarId(calendarId)
+    fun getEventTypeWithCalDAVCalendarId(calendarId: Int) = context.eventTypesDB.getEventTypeWithCalDAVCalendarId(calendarId)
 
-    fun deleteEventTypes(context: Context, eventTypes: ArrayList<EventType>, deleteEvents: Boolean) {
+    fun deleteEventTypes(eventTypes: ArrayList<EventType>, deleteEvents: Boolean) {
         val typesToDelete = eventTypes.asSequence().filter { it.caldavCalendarId == 0 && it.id != DBHelper.REGULAR_EVENT_TYPE_ID }.toMutableList()
         val deleteIds = typesToDelete.map { it.id }.toMutableList()
         val deletedSet = deleteIds.map { it.toString() }.toHashSet()
@@ -64,7 +64,7 @@ class EventsHelper {
         context.eventTypesDB.deleteEventTypes(typesToDelete)
     }
 
-    fun getEventRepetitionIgnoredOccurrences(context: Context, event: Event): ArrayList<String> {
+    fun getEventRepetitionIgnoredOccurrences(event: Event): ArrayList<String> {
         return if (event.id == null || event.repeatInterval == 0) {
             ArrayList()
         } else {
@@ -72,7 +72,7 @@ class EventsHelper {
         }
     }
 
-    fun insertEvent(context: Context, activity: SimpleActivity? = null, event: Event, addToCalDAV: Boolean, callback: ((id: Long) -> Unit)? = null) {
+    fun insertEvent(activity: SimpleActivity? = null, event: Event, addToCalDAV: Boolean, callback: ((id: Long) -> Unit)? = null) {
         if (event.startTS > event.endTS) {
             callback?.invoke(0)
             return
@@ -95,31 +95,31 @@ class EventsHelper {
         callback?.invoke(event.id!!)
     }
 
-    fun insertEvents(activity: Activity, events: ArrayList<Event>, addToCalDAV: Boolean) {
+    fun insertEvents(events: ArrayList<Event>, addToCalDAV: Boolean) {
         try {
             for (event in events) {
                 if (event.startTS > event.endTS) {
                     continue
                 }
 
-                val id = activity.eventsDB.insertOrUpdate(event)
+                val id = context.eventsDB.insertOrUpdate(event)
                 event.id = id
 
                 if (event.repeatInterval != 0 && event.parentId == 0L) {
-                    activity.eventRepetitionsDB.insertOrUpdate(event.getEventRepetition())
+                    context.eventRepetitionsDB.insertOrUpdate(event.getEventRepetition())
                 }
 
                 //context.scheduleNextEventReminder(event, this)
-                if (addToCalDAV && event.source != SOURCE_SIMPLE_CALENDAR && event.source != SOURCE_IMPORTED_ICS && activity.config.caldavSync) {
-                    CalDAVHandler(activity).insertCalDAVEvent(event)
+                if (addToCalDAV && event.source != SOURCE_SIMPLE_CALENDAR && event.source != SOURCE_IMPORTED_ICS && context.config.caldavSync) {
+                    CalDAVHandler(context).insertCalDAVEvent(event)
                 }
             }
         } finally {
-            activity.updateWidgets()
+            context.updateWidgets()
         }
     }
 
-    fun updateEvent(context: Context, activity: Activity? = null, event: Event, updateAtCalDAV: Boolean, callback: (() -> Unit)? = null) {
+    fun updateEvent(activity: Activity? = null, event: Event, updateAtCalDAV: Boolean, callback: (() -> Unit)? = null) {
         context.eventsDB.insertOrUpdate(event)
 
         if (event.repeatInterval == 0) {

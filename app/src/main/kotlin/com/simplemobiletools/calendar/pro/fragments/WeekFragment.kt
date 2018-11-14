@@ -66,7 +66,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        EventsHelper().getEventTypes(activity!!) {
+        EventsHelper(activity!!).getEventTypes(activity!!) {
             it.map { eventTypeColors.put(it.id!!, it.color) }
         }
 

@@ -35,7 +35,7 @@ class NotificationReceiver : BroadcastReceiver() {
             return
         }
 
-        if (!EventsHelper().getEventRepetitionIgnoredOccurrences(context, event).contains(Formatter.getDayCodeFromTS(event.startTS))) {
+        if (!EventsHelper(context).getEventRepetitionIgnoredOccurrences(event).contains(Formatter.getDayCodeFromTS(event.startTS))) {
             context.notifyEvent(event)
         }
         context.scheduleNextEventReminder(event, context.dbHelper)

@@ -19,7 +19,7 @@ class ExportEventsDialog(val activity: SimpleActivity, val path: String, val cal
             export_events_folder.text = activity.humanizePath(path)
             export_events_filename.setText("${activity.getString(R.string.events)}_${activity.getCurrentFormattedDateTime()}")
 
-            EventsHelper().getEventTypes(activity) {
+            EventsHelper(activity).getEventTypes(activity) {
                 val eventTypes = HashSet<String>()
                 it.mapTo(eventTypes) { it.id.toString() }
 

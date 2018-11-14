@@ -26,12 +26,12 @@ class CalDAVHandler(val context: Context) {
     fun refreshCalendars(activity: SimpleActivity? = null, callback: () -> Unit) {
         val calDAVCalendars = getCalDAVCalendars(activity, context.config.caldavSyncedCalendarIDs)
         for (calendar in calDAVCalendars) {
-            val localEventType = EventsHelper().getEventTypeWithCalDAVCalendarId(context, calendar.id) ?: continue
+            val localEventType = EventsHelper(context).getEventTypeWithCalDAVCalendarId(calendar.id) ?: continue
             localEventType.apply {
                 title = calendar.displayName
                 caldavDisplayName = calendar.displayName
                 caldavEmail = calendar.accountName
-                EventsHelper().insertOrUpdateEventTypeSync(context, this)
+                EventsHelper(context).insertOrUpdateEventTypeSync(this)
             }
 
             CalDAVHandler(context).fetchCalDAVCalendarEvents(calendar.id, localEventType.id!!, activity)
@@ -226,7 +226,7 @@ class CalDAVHandler(val context: Context) {
 
                         if (existingEvent.hashCode() != event.hashCode() && title.isNotEmpty()) {
                             event.id = originalEventId
-                            EventsHelper().updateEvent(context, null, event, false)
+                            EventsHelper(context).updateEvent(null, event, false)
                         }
                     } else {
                         // if the event is an exception from another events repeat rule, find the original parent event
@@ -241,7 +241,7 @@ class CalDAVHandler(val context: Context) {
 
                         if (title.isNotEmpty()) {
                             importIdsMap[event.importId] = event
-                            EventsHelper().insertEvent(context, null, event, false)
+                            EventsHelper(context).insertEvent(null, event, false)
                         }
                     }
                 } while (cursor.moveToNext())

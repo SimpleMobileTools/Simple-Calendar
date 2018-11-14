@@ -41,7 +41,7 @@ class IcsImporter(val activity: SimpleActivity) {
 
     fun importEvents(path: String, defaultEventTypeId: Long, calDAVCalendarId: Int, overrideFileEventTypes: Boolean): ImportResult {
         try {
-            val eventTypes = EventsHelper().getEventTypesSync(activity)
+            val eventTypes = EventsHelper(activity).getEventTypesSync()
             val existingEvents = activity.dbHelper.getEventsWithImportIds()
             val eventsToInsert = ArrayList<Event>()
             var prevLine = ""
@@ -158,7 +158,7 @@ class IcsImporter(val activity: SimpleActivity) {
                             if (curRepeatExceptions.isEmpty()) {
                                 eventsToInsert.add(event)
                             } else {
-                                EventsHelper().insertEvent(activity, activity, event, true) {
+                                EventsHelper(activity).insertEvent(activity, event, true) {
                                     for (exceptionTS in curRepeatExceptions) {
                                         activity.dbHelper.addEventRepeatException(it, exceptionTS, true)
                                     }
@@ -167,7 +167,7 @@ class IcsImporter(val activity: SimpleActivity) {
                             }
                         } else {
                             event.id = eventToUpdate.id
-                            EventsHelper().updateEvent(activity, null, event, true)
+                            EventsHelper(activity).updateEvent(null, event, true)
                         }
                         eventsImported++
                         resetValues()
@@ -176,7 +176,7 @@ class IcsImporter(val activity: SimpleActivity) {
                 }
             }
 
-            EventsHelper().insertEvents(activity, eventsToInsert, true)
+            EventsHelper(activity).insertEvents(eventsToInsert, true)
         } catch (e: Exception) {
             activity.showErrorToast(e, Toast.LENGTH_LONG)
             eventsFailed++
@@ -223,11 +223,11 @@ class IcsImporter(val activity: SimpleActivity) {
             categories
         }
 
-        val eventId = EventsHelper().getEventTypeIdWithTitle(activity, eventTypeTitle)
+        val eventId = EventsHelper(activity).getEventTypeIdWithTitle(eventTypeTitle)
         curEventTypeId = if (eventId == -1L) {
             val newTypeColor = if (curCategoryColor == -2) activity.resources.getColor(R.color.color_primary) else curCategoryColor
             val eventType = EventType(null, eventTypeTitle, newTypeColor)
-            EventsHelper().insertOrUpdateEventTypeSync(activity, eventType)
+            EventsHelper(activity).insertOrUpdateEventTypeSync(eventType)
         } else {
             eventId
         }
