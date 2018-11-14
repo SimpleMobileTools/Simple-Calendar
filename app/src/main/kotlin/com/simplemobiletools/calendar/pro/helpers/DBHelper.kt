@@ -39,7 +39,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     companion object {
         private const val DB_VERSION = 1
         const val DB_NAME = "events_old.db"
-        const val REGULAR_EVENT_TYPE_ID = 1L
         var dbInstance: DBHelper? = null
 
         fun newInstance(context: Context): DBHelper {
@@ -101,18 +100,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
     }
 
-    fun addEventRepeatLimit(eventId: Long, limitTS: Int) {
-        val time = Formatter.getDateTimeFromTS(limitTS)
-        context.eventRepetitionsDB.updateEventRepetitionLimit(limitTS - time.hourOfDay, eventId)
-
-        if (context.config.caldavSync) {
-            val event = context.eventsDB.getEventWithId(eventId)
-            if (event?.getCalDAVCalendarId() != 0) {
-                CalDAVHandler(context).updateCalDAVEvent(event!!)
-            }
-        }
-    }
-
     fun deleteEventsWithType(eventTypeId: Long) {
         val selection = "$MAIN_TABLE_NAME.$COL_EVENT_TYPE = ?"
         val selectionArgs = arrayOf(eventTypeId.toString())
@@ -120,15 +107,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         val events = fillEvents(cursor)
         val eventIDs = events.mapNotNull { it.id }.toMutableList()
         EventsHelper(context).deleteEvents(eventIDs, true)
-    }
-
-    fun resetEventsWithType(eventTypeId: Long) {
-        val values = ContentValues()
-        values.put(COL_EVENT_TYPE, REGULAR_EVENT_TYPE_ID)
-
-        val selection = "$COL_EVENT_TYPE = ?"
-        val selectionArgs = arrayOf(eventTypeId.toString())
-        mDb.update(MAIN_TABLE_NAME, values, selection, selectionArgs)
     }
 
     fun updateEventImportIdAndSource(eventId: Long, importId: String, source: String) {

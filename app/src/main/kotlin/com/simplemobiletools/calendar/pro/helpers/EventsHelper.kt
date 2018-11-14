@@ -44,7 +44,7 @@ class EventsHelper(val context: Context) {
     fun getEventTypeWithCalDAVCalendarId(calendarId: Int) = context.eventTypesDB.getEventTypeWithCalDAVCalendarId(calendarId)
 
     fun deleteEventTypes(eventTypes: ArrayList<EventType>, deleteEvents: Boolean) {
-        val typesToDelete = eventTypes.asSequence().filter { it.caldavCalendarId == 0 && it.id != DBHelper.REGULAR_EVENT_TYPE_ID }.toMutableList()
+        val typesToDelete = eventTypes.asSequence().filter { it.caldavCalendarId == 0 && it.id != REGULAR_EVENT_TYPE_ID }.toMutableList()
         val deleteIds = typesToDelete.map { it.id }.toMutableList()
         val deletedSet = deleteIds.map { it.toString() }.toHashSet()
         context.config.removeDisplayEventTypes(deletedSet)
@@ -57,7 +57,7 @@ class EventsHelper(val context: Context) {
             if (deleteEvents) {
                 context.dbHelper.deleteEventsWithType(eventTypeId!!)
             } else {
-                context.dbHelper.resetEventsWithType(eventTypeId!!)
+                context.eventsDB.resetEventsWithType(eventTypeId!!)
             }
         }
 
@@ -165,6 +165,18 @@ class EventsHelper(val context: Context) {
         val childIds = context.eventsDB.getEventIdsWithParentIds(ids).toMutableList()
         if (childIds.isNotEmpty()) {
             deleteEvents(childIds, deleteFromCalDAV)
+        }
+    }
+
+    fun addEventRepeatLimit(eventId: Long, limitTS: Int) {
+        val time = Formatter.getDateTimeFromTS(limitTS)
+        context.eventRepetitionsDB.updateEventRepetitionLimit(limitTS - time.hourOfDay, eventId)
+
+        if (context.config.caldavSync) {
+            val event = context.eventsDB.getEventWithId(eventId)
+            if (event?.getCalDAVCalendarId() != 0) {
+                CalDAVHandler(context).updateCalDAVEvent(event!!)
+            }
         }
     }
 }

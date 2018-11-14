@@ -28,7 +28,7 @@ data class Event(
         @ColumnInfo(name = "repeat_limit") var repeatLimit: Int = 0,
         @ColumnInfo(name = "import_id") var importId: String = "",
         @ColumnInfo(name = "flags") var flags: Int = 0,
-        @ColumnInfo(name = "event_type") var eventType: Long = DBHelper.REGULAR_EVENT_TYPE_ID,
+        @ColumnInfo(name = "event_type") var eventType: Long = REGULAR_EVENT_TYPE_ID,
         @ColumnInfo(name = "parent_id") var parentId: Long = 0,
         @ColumnInfo(name = "last_updated") var lastUpdated: Long = 0L,
         @ColumnInfo(name = "source") var source: String = SOURCE_SIMPLE_CALENDAR)

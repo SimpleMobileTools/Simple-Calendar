@@ -29,7 +29,7 @@ class IcsImporter(val activity: SimpleActivity) {
     private var curRepeatInterval = 0
     private var curRepeatLimit = 0
     private var curRepeatRule = 0
-    private var curEventTypeId = DBHelper.REGULAR_EVENT_TYPE_ID
+    private var curEventTypeId = REGULAR_EVENT_TYPE_ID
     private var curLastModified = 0L
     private var curCategoryColor = -2
     private var isNotificationDescription = false
@@ -255,7 +255,7 @@ class IcsImporter(val activity: SimpleActivity) {
         curRepeatInterval = 0
         curRepeatLimit = 0
         curRepeatRule = 0
-        curEventTypeId = DBHelper.REGULAR_EVENT_TYPE_ID
+        curEventTypeId = REGULAR_EVENT_TYPE_ID
         curLastModified = 0L
         curCategoryColor = -2
         isNotificationDescription = false

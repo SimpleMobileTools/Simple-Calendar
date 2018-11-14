@@ -453,7 +453,7 @@ fun Context.handleEventDeleting(eventIds: List<Long>, timestamps: List<Int>, act
         }
         DELETE_FUTURE_OCCURRENCES -> {
             eventIds.forEachIndexed { index, value ->
-                dbHelper.addEventRepeatLimit(value, timestamps[index])
+                EventsHelper(this).addEventRepeatLimit(value, timestamps[index])
             }
         }
         DELETE_ALL_OCCURRENCES -> {

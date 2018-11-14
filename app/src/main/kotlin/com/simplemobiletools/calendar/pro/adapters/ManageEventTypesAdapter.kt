@@ -7,7 +7,7 @@ import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.dbHelper
-import com.simplemobiletools.calendar.pro.helpers.DBHelper
+import com.simplemobiletools.calendar.pro.helpers.REGULAR_EVENT_TYPE_ID
 import com.simplemobiletools.calendar.pro.interfaces.DeleteEventTypesListener
 import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.commons.adapters.MyRecyclerViewAdapter
@@ -100,7 +100,7 @@ class ManageEventTypesAdapter(activity: SimpleActivity, val eventTypes: ArrayLis
 
         for (key in selectedKeys) {
             val type = getItemWithKey(key) ?: continue
-            if (type.id == DBHelper.REGULAR_EVENT_TYPE_ID) {
+            if (type.id == REGULAR_EVENT_TYPE_ID) {
                 activity.toast(R.string.cannot_delete_default_type)
                 eventTypesToDelete.remove(type)
                 toggleItemSelection(false, getItemKeyPosition(type.id!!.toInt()))

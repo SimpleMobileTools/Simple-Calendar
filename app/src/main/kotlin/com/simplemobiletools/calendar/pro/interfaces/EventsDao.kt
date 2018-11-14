@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.simplemobiletools.calendar.pro.helpers.REGULAR_EVENT_TYPE_ID
 import com.simplemobiletools.calendar.pro.helpers.SOURCE_CONTACT_ANNIVERSARY
 import com.simplemobiletools.calendar.pro.helpers.SOURCE_CONTACT_BIRTHDAY
 import com.simplemobiletools.calendar.pro.models.Event
@@ -42,6 +43,9 @@ interface EventsDao {
 
     @Query("SELECT id FROM events WHERE source = :source AND import_id != \"\"")
     fun getCalDAVCalendarEvents(source: String): List<Long>
+
+    @Query("UPDATE events SET event_type = $REGULAR_EVENT_TYPE_ID WHERE event_type = :eventTypeId")
+    fun resetEventsWithType(eventTypeId: Long)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertOrUpdate(event: Event): Long

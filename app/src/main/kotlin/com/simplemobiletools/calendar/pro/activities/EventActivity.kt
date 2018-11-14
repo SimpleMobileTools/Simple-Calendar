@@ -47,7 +47,7 @@ class EventActivity : SimpleActivity() {
     private var mRepeatInterval = 0
     private var mRepeatLimit = 0
     private var mRepeatRule = 0
-    private var mEventTypeId = DBHelper.REGULAR_EVENT_TYPE_ID
+    private var mEventTypeId = REGULAR_EVENT_TYPE_ID
     private var mDialogTheme = 0
     private var mEventOccurrenceTS = 0
     private var mEventCalendarId = STORED_LOCALLY_ONLY
@@ -82,7 +82,7 @@ class EventActivity : SimpleActivity() {
 
     private fun gotEvent(savedInstanceState: Bundle?, localEventType: EventType?, event: Event?) {
         if (localEventType == null || localEventType.caldavCalendarId != 0) {
-            config.lastUsedLocalEventTypeId = DBHelper.REGULAR_EVENT_TYPE_ID
+            config.lastUsedLocalEventTypeId = REGULAR_EVENT_TYPE_ID
         }
 
         mEventTypeId = config.lastUsedLocalEventTypeId
@@ -681,7 +681,7 @@ class EventActivity : SimpleActivity() {
             Thread {
                 when (it) {
                     DELETE_SELECTED_OCCURRENCE -> dbHelper.addEventRepeatException(mEvent.id!!, mEventOccurrenceTS, true)
-                    DELETE_FUTURE_OCCURRENCES -> dbHelper.addEventRepeatLimit(mEvent.id!!, mEventOccurrenceTS)
+                    DELETE_FUTURE_OCCURRENCES -> EventsHelper(applicationContext).addEventRepeatLimit(mEvent.id!!, mEventOccurrenceTS)
                     DELETE_ALL_OCCURRENCES -> EventsHelper(applicationContext).deleteEvent(mEvent.id!!, true)
                 }
                 runOnUiThread {
