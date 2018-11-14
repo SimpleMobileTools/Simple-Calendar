@@ -301,8 +301,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                 if (uri.path.startsWith("/events")) {
                     // intents like content://com.android.calendar/events/1756
                     val eventId = uri.lastPathSegment
-                    val id = dbHelper.getEventIdWithLastImportId(eventId)
-                    if (id != 0L) {
+                    val id = eventsDB.getEventIdWithLastImportId("%-$eventId")
+                    if (id != null) {
                         Intent(this, EventActivity::class.java).apply {
                             putExtra(EVENT_ID, id)
                             startActivity(this)
