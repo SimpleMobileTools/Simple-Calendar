@@ -4,10 +4,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.os.PowerManager
-import com.simplemobiletools.calendar.pro.extensions.dbHelper
-import com.simplemobiletools.calendar.pro.extensions.notifyEvent
-import com.simplemobiletools.calendar.pro.extensions.scheduleNextEventReminder
-import com.simplemobiletools.calendar.pro.extensions.updateListWidget
+import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.EVENT_ID
 import com.simplemobiletools.calendar.pro.helpers.EventsHelper
 import com.simplemobiletools.calendar.pro.helpers.Formatter
@@ -30,7 +27,7 @@ class NotificationReceiver : BroadcastReceiver() {
         }
 
         context.updateListWidget()
-        val event = context.dbHelper.getEventWithId(id)
+        val event = context.eventsDB.getEventWithId(id)
         if (event == null || event.getReminders().isEmpty()) {
             return
         }

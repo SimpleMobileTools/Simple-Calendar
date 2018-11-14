@@ -60,7 +60,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {}
 
     private fun fillExceptionValues(parentEventId: Long, occurrenceTS: Int, addToCalDAV: Boolean, childImportId: String?, callback: (eventRepetitionException: EventRepetitionException) -> Unit) {
-        val childEvent = getEventWithId(parentEventId) ?: return
+        val childEvent = context.eventsDB.getEventWithId(parentEventId) ?: return
 
         childEvent.apply {
             id = 0
@@ -79,7 +79,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
             Thread {
                 if (addToCalDAV && context.config.caldavSync) {
-                    val parentEvent = getEventWithId(parentEventId)
+                    val parentEvent = context.eventsDB.getEventWithId(parentEventId)
                     if (parentEvent != null) {
                         val newId = CalDAVHandler(context).insertEventRepeatException(parentEvent, occurrenceTS)
                         val newImportId = "${parentEvent.source}-$newId"
@@ -152,7 +152,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         fillExceptionValues(parentEventId, occurrenceTS, addToCalDAV, childImportId) {
             context.eventRepetitionExceptionsDB.insert(it)
 
-            val parentEvent = getEventWithId(parentEventId)
+            val parentEvent = context.eventsDB.getEventWithId(parentEventId)
             if (parentEvent != null) {
                 context.scheduleNextEventReminder(parentEvent, this)
             }
@@ -164,7 +164,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         context.eventRepetitionsDB.updateEventRepetitionLimit(limitTS - time.hourOfDay, eventId)
 
         if (context.config.caldavSync) {
-            val event = getEventWithId(eventId)
+            val event = context.eventsDB.getEventWithId(eventId)
             if (event?.getCalDAVCalendarId() != 0) {
                 CalDAVHandler(context).updateCalDAVEvent(event!!)
             }
@@ -197,18 +197,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         val selection = "$MAIN_TABLE_NAME.$COL_ID = ?"
         val selectionArgs = arrayOf(eventId.toString())
         mDb.update(MAIN_TABLE_NAME, values, selection, selectionArgs)
-    }
-
-    fun getEventWithId(id: Long): Event? {
-        val selection = "$MAIN_TABLE_NAME.$COL_ID = ?"
-        val selectionArgs = arrayOf(id.toString())
-        val cursor = getEventsCursor(selection, selectionArgs)
-        val events = fillEvents(cursor)
-        return if (events.isNotEmpty()) {
-            events.first()
-        } else {
-            null
-        }
     }
 
     fun getEventIdWithImportId(id: String): Long {

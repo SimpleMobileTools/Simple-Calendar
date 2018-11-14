@@ -10,6 +10,9 @@ import com.simplemobiletools.calendar.pro.models.Event
 
 @Dao
 interface EventsDao {
+    @Query("SELECT * FROM events WHERE id = :id")
+    fun getEventWithId(id: Long): Event?
+
     @Query("SELECT * FROM events WHERE id IN (:ids)")
     fun getEventsWithIds(ids: List<Long>): List<Event>
 

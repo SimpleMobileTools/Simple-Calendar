@@ -67,7 +67,7 @@ class EventActivity : SimpleActivity() {
 
         val eventId = intent.getLongExtra(EVENT_ID, 0L)
         Thread {
-            val event = dbHelper.getEventWithId(eventId)
+            val event = eventsDB.getEventWithId(eventId)
             if (eventId != 0L && event == null) {
                 finish()
                 return@Thread
