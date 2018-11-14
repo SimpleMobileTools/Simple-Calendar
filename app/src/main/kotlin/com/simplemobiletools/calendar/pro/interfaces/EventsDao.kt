@@ -19,6 +19,9 @@ interface EventsDao {
     @Query("SELECT * FROM events WHERE source = \'$SOURCE_CONTACT_ANNIVERSARY\'")
     fun getAnniversaries(): List<Event>
 
+    @Query("SELECT * FROM events WHERE import_id != \"\"")
+    fun getEventsWithImportIds(): List<Event>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertOrUpdate(event: Event): Long
 }
