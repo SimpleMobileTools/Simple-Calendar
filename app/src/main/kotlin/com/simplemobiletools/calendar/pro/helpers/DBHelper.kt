@@ -11,6 +11,7 @@ import androidx.collection.LongSparseArray
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.models.Event
+import com.simplemobiletools.calendar.pro.models.EventRepetition
 import com.simplemobiletools.calendar.pro.models.EventRepetitionException
 import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.commons.extensions.getIntValue
@@ -85,8 +86,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         event.id = id
 
         if (event.repeatInterval != 0 && event.parentId == 0L) {
-            val metaValues = fillMetaValues(event)
-            mDb.insert(REPETITIONS_TABLE_NAME, null, metaValues)
+            context.eventRepetitionsDB.insertOrUpdate(getEventRepetition(event))
         }
 
         context.updateWidgets()
@@ -112,8 +112,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                 event.id = id
 
                 if (event.repeatInterval != 0 && event.parentId == 0L) {
-                    val metaValues = fillMetaValues(event)
-                    mDb.insert(REPETITIONS_TABLE_NAME, null, metaValues)
+                    context.eventRepetitionsDB.insertOrUpdate(getEventRepetition(event))
                 }
 
                 context.scheduleNextEventReminder(event, this)
@@ -135,11 +134,9 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         mDb.update(MAIN_TABLE_NAME, values, selection, selectionArgs)
 
         if (event.repeatInterval == 0) {
-            val metaSelection = "$COL_EVENT_ID = ?"
-            mDb.delete(REPETITIONS_TABLE_NAME, metaSelection, selectionArgs)
+            context.eventRepetitionsDB.deleteEventRepetitionsOfEvent(event.id!!)
         } else {
-            val metaValues = fillMetaValues(event)
-            mDb.insertWithOnConflict(REPETITIONS_TABLE_NAME, null, metaValues, SQLiteDatabase.CONFLICT_REPLACE)
+            context.eventRepetitionsDB.insertOrUpdate(getEventRepetition(event))
         }
 
         context.updateWidgets()
@@ -169,7 +166,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
     }
 
-    private fun fillMetaValues(event: Event): ContentValues {
+    private fun fillRepetitionValues(event: Event): ContentValues {
         return ContentValues().apply {
             put(COL_EVENT_ID, event.id)
             put(COL_REPEAT_INTERVAL, event.repeatInterval)
@@ -177,6 +174,8 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             put(COL_REPEAT_RULE, event.repeatRule)
         }
     }
+
+    private fun getEventRepetition(event: Event) = EventRepetition(null, event.id!!, event.repeatInterval, event.repeatRule, event.repeatLimit)
 
     private fun fillExceptionValues(parentEventId: Long, occurrenceTS: Int, addToCalDAV: Boolean, childImportId: String?, callback: (eventRepetitionException: EventRepetitionException) -> Unit) {
         val childEvent = getEventWithId(parentEventId) ?: return
@@ -236,9 +235,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         val events = fillEvents(cursor).filter { it.importId.isNotEmpty() }
 
         mDb.delete(MAIN_TABLE_NAME, selection, null)
-
-        val metaSelection = "$COL_EVENT_ID IN ($args)"
-        mDb.delete(REPETITIONS_TABLE_NAME, metaSelection, null)
 
         context.updateWidgets()
 

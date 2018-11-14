@@ -21,11 +21,11 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.app.AlarmManagerCompat
 import androidx.core.app.NotificationCompat
-import com.simplemobiletools.calendar.pro.databases.EventsDatabase
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.EventActivity
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.activities.SnoozeReminderActivity
+import com.simplemobiletools.calendar.pro.databases.EventsDatabase
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.interfaces.EventRepetitionExceptionsDao
@@ -52,7 +52,7 @@ val Context.eventsDB: EventsDao get() = EventsDatabase.getInstance(applicationCo
 
 val Context.eventTypesDB: EventTypesDao get() = EventsDatabase.getInstance(applicationContext).EventTypesDao()
 
-val Context.eventRepetitionssDB: EventRepetitionsDao get() = EventsDatabase.getInstance(applicationContext).EventRepetitionsDao()
+val Context.eventRepetitionsDB: EventRepetitionsDao get() = EventsDatabase.getInstance(applicationContext).EventRepetitionsDao()
 
 val Context.eventRepetitionExceptionsDB: EventRepetitionExceptionsDao get() = EventsDatabase.getInstance(applicationContext).EventRepetitionExceptionsDao()
 
