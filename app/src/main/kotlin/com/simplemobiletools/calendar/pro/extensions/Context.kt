@@ -47,15 +47,12 @@ import org.joda.time.LocalDate
 import java.util.*
 
 val Context.config: Config get() = Config.newInstance(applicationContext)
-
 val Context.eventsDB: EventsDao get() = EventsDatabase.getInstance(applicationContext).EventsDao()
-
 val Context.eventTypesDB: EventTypesDao get() = EventsDatabase.getInstance(applicationContext).EventTypesDao()
-
 val Context.eventRepetitionsDB: EventRepetitionsDao get() = EventsDatabase.getInstance(applicationContext).EventRepetitionsDao()
-
 val Context.eventRepetitionExceptionsDB: EventRepetitionExceptionsDao get() = EventsDatabase.getInstance(applicationContext).EventRepetitionExceptionsDao()
-
+val Context.eventsHelper: EventsHelper get() = EventsHelper(this)
+val Context.calDAVHelper: CalDAVHelper get() = CalDAVHelper(this)
 val Context.dbHelper: DBHelper get() = DBHelper.newInstance(applicationContext)
 
 fun Context.updateWidgets() {
@@ -311,12 +308,12 @@ fun Context.getNewEventTimestampFromCode(dayCode: String): Int {
     return newDateTime.withDate(dateTime.year, dateTime.monthOfYear, dateTime.dayOfMonth).seconds()
 }
 
-fun Context.getSyncedCalDAVCalendars() = CalDAVHandler(applicationContext).getCalDAVCalendars(null, config.caldavSyncedCalendarIDs)
+fun Context.getSyncedCalDAVCalendars() = calDAVHelper.getCalDAVCalendars(null, config.caldavSyncedCalendarIDs)
 
 fun Context.recheckCalDAVCalendars(callback: () -> Unit) {
     if (config.caldavSync) {
         Thread {
-            CalDAVHandler(applicationContext).refreshCalendars(null, callback)
+            calDAVHelper.refreshCalendars(null, callback)
             updateWidgets()
         }.start()
     }
@@ -350,7 +347,7 @@ fun Context.syncCalDAVCalendars(activity: SimpleActivity?, calDAVSyncObserver: C
 fun Context.refreshCalDAVCalendars(activity: SimpleActivity?, ids: String) {
     val uri = CalendarContract.Calendars.CONTENT_URI
     val accounts = HashSet<Account>()
-    val calendars = CalDAVHandler(applicationContext).getCalDAVCalendars(activity, ids)
+    val calendars = calDAVHelper.getCalDAVCalendars(activity, ids)
     calendars.forEach {
         accounts.add(Account(it.accountName, it.accountType))
     }
@@ -448,16 +445,16 @@ fun Context.handleEventDeleting(eventIds: List<Long>, timestamps: List<Int>, act
     when (action) {
         DELETE_SELECTED_OCCURRENCE -> {
             eventIds.forEachIndexed { index, value ->
-                EventsHelper(this).addEventRepeatException(value, timestamps[index], true)
+                eventsHelper.addEventRepeatException(value, timestamps[index], true)
             }
         }
         DELETE_FUTURE_OCCURRENCES -> {
             eventIds.forEachIndexed { index, value ->
-                EventsHelper(this).addEventRepeatLimit(value, timestamps[index])
+                eventsHelper.addEventRepeatLimit(value, timestamps[index])
             }
         }
         DELETE_ALL_OCCURRENCES -> {
-            EventsHelper(this).deleteEvents(eventIds.toMutableList(), true)
+            eventsHelper.deleteEvents(eventIds.toMutableList(), true)
         }
     }
 }

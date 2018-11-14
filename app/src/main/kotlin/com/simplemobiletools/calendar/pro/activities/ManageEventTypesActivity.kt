@@ -6,7 +6,7 @@ import android.view.MenuItem
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.adapters.ManageEventTypesAdapter
 import com.simplemobiletools.calendar.pro.dialogs.EditEventTypeDialog
-import com.simplemobiletools.calendar.pro.helpers.EventsHelper
+import com.simplemobiletools.calendar.pro.extensions.eventsHelper
 import com.simplemobiletools.calendar.pro.interfaces.DeleteEventTypesListener
 import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.commons.extensions.toast
@@ -30,7 +30,7 @@ class ManageEventTypesActivity : SimpleActivity(), DeleteEventTypesListener {
     }
 
     private fun getEventTypes() {
-        EventsHelper(applicationContext).getEventTypes(this) {
+        eventsHelper.getEventTypes(this) {
             val adapter = ManageEventTypesAdapter(this, it, this, manage_event_types_list) {
                 showEventTypeDialog(it as EventType)
             }
@@ -60,7 +60,7 @@ class ManageEventTypesActivity : SimpleActivity(), DeleteEventTypesListener {
         }
 
         Thread {
-            EventsHelper(applicationContext).deleteEventTypes(eventTypes, deleteEvents)
+            eventsHelper.deleteEventTypes(eventTypes, deleteEvents)
         }.start()
         return true
     }

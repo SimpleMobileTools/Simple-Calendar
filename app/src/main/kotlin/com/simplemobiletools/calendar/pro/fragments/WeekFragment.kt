@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.EventActivity
 import com.simplemobiletools.calendar.pro.extensions.config
+import com.simplemobiletools.calendar.pro.extensions.eventsHelper
 import com.simplemobiletools.calendar.pro.extensions.seconds
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
@@ -66,7 +67,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        EventsHelper(activity!!).getEventTypes(activity!!) {
+        context!!.eventsHelper.getEventTypes(activity!!) {
             it.map { eventTypeColors.put(it.id!!, it.color) }
         }
 

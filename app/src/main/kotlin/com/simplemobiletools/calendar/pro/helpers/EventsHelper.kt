@@ -37,7 +37,7 @@ class EventsHelper(val context: Context) {
 
     fun insertOrUpdateEventTypeSync(eventType: EventType): Long {
         if (eventType.id != null && eventType.id!! > 0 && eventType.caldavCalendarId != 0) {
-            CalDAVHandler(context).updateCalDAVCalendar(eventType)
+            context.calDAVHelper.updateCalDAVCalendar(eventType)
         }
 
         val newId = eventTypesDB.insertOrUpdate(eventType)
@@ -95,7 +95,7 @@ class EventsHelper(val context: Context) {
         //context.scheduleNextEventReminder(event, this, activity)
 
         if (addToCalDAV && event.source != SOURCE_SIMPLE_CALENDAR && config.caldavSync) {
-            CalDAVHandler(context).insertCalDAVEvent(event)
+            context.calDAVHelper.insertCalDAVEvent(event)
         }
 
         callback?.invoke(event.id!!)
@@ -117,7 +117,7 @@ class EventsHelper(val context: Context) {
 
                 //context.scheduleNextEventReminder(event, this)
                 if (addToCalDAV && event.source != SOURCE_SIMPLE_CALENDAR && event.source != SOURCE_IMPORTED_ICS && config.caldavSync) {
-                    CalDAVHandler(context).insertCalDAVEvent(event)
+                    context.calDAVHelper.insertCalDAVEvent(event)
                 }
             }
         } finally {
@@ -137,14 +137,16 @@ class EventsHelper(val context: Context) {
         context.updateWidgets()
         //context.scheduleNextEventReminder(event, this, activity)
         if (updateAtCalDAV && event.source != SOURCE_SIMPLE_CALENDAR && config.caldavSync) {
-            CalDAVHandler(context).updateCalDAVEvent(event)
+            context.calDAVHelper.updateCalDAVEvent(event)
         }
         callback?.invoke()
     }
 
     fun deleteAllEvents() {
-        val eventIds = eventsDB.getEventIds().toMutableList()
-        deleteEvents(eventIds, true)
+        Thread {
+            val eventIds = eventsDB.getEventIds().toMutableList()
+            deleteEvents(eventIds, true)
+        }.start()
     }
 
     fun deleteEvent(id: Long, deleteFromCalDAV: Boolean) = deleteEvents(arrayListOf(id), deleteFromCalDAV)
@@ -159,7 +161,7 @@ class EventsHelper(val context: Context) {
 
         if (deleteFromCalDAV && config.caldavSync) {
             eventsWithImportId.forEach {
-                CalDAVHandler(context).deleteCalDAVEvent(it)
+                context.calDAVHelper.deleteCalDAVEvent(it)
             }
         }
 
@@ -186,7 +188,7 @@ class EventsHelper(val context: Context) {
         if (config.caldavSync) {
             val event = eventsDB.getEventWithId(eventId)
             if (event?.getCalDAVCalendarId() != 0) {
-                CalDAVHandler(context).updateCalDAVEvent(event!!)
+                context.calDAVHelper.updateCalDAVEvent(event!!)
             }
         }
     }
@@ -211,7 +213,7 @@ class EventsHelper(val context: Context) {
     }
 
     fun addEventRepeatException(parentEventId: Long, occurrenceTS: Int, addToCalDAV: Boolean, childImportId: String? = null) {
-        EventsHelper(context).fillExceptionValues(parentEventId, occurrenceTS, addToCalDAV, childImportId) {
+        fillExceptionValues(parentEventId, occurrenceTS, addToCalDAV, childImportId) {
             context.eventRepetitionExceptionsDB.insert(it)
 
             val parentEvent = eventsDB.getEventWithId(parentEventId)
@@ -221,7 +223,7 @@ class EventsHelper(val context: Context) {
         }
     }
 
-    fun fillExceptionValues(parentEventId: Long, occurrenceTS: Int, addToCalDAV: Boolean, childImportId: String?, callback: (eventRepetitionException: EventRepetitionException) -> Unit) {
+    private fun fillExceptionValues(parentEventId: Long, occurrenceTS: Int, addToCalDAV: Boolean, childImportId: String?, callback: (eventRepetitionException: EventRepetitionException) -> Unit) {
         val childEvent = eventsDB.getEventWithId(parentEventId) ?: return
 
         childEvent.apply {
@@ -243,7 +245,7 @@ class EventsHelper(val context: Context) {
                 if (addToCalDAV && config.caldavSync) {
                     val parentEvent = eventsDB.getEventWithId(parentEventId)
                     if (parentEvent != null) {
-                        val newId = CalDAVHandler(context).insertEventRepeatException(parentEvent, occurrenceTS)
+                        val newId = context.calDAVHelper.insertEventRepeatException(parentEvent, occurrenceTS)
                         val newImportId = "${parentEvent.source}-$newId"
                         eventsDB.updateEventImportIdAndSource(newImportId, parentEvent.source, childEventId)
                     }

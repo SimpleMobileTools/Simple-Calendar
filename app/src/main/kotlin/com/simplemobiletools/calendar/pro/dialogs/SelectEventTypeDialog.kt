@@ -7,7 +7,7 @@ import android.widget.RadioGroup
 import androidx.appcompat.app.AlertDialog
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.config
-import com.simplemobiletools.calendar.pro.helpers.EventsHelper
+import com.simplemobiletools.calendar.pro.extensions.eventsHelper
 import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.commons.extensions.hideKeyboard
 import com.simplemobiletools.commons.extensions.setFillWithStroke
@@ -31,7 +31,7 @@ class SelectEventTypeDialog(val activity: Activity, val currEventType: Long, val
         val view = activity.layoutInflater.inflate(R.layout.dialog_select_radio_group, null) as ViewGroup
         radioGroup = view.dialog_radio_group
 
-        EventsHelper(activity).getEventTypes(activity) {
+        activity.eventsHelper.getEventTypes(activity) {
             eventTypes = it
             activity.runOnUiThread {
                 eventTypes.filter { showCalDAVCalendars || it.caldavCalendarId == 0 }.forEach {

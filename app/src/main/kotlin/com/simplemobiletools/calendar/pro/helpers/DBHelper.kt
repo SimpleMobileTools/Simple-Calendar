@@ -92,7 +92,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         events = events
                 .asSequence()
                 .distinct()
-                .filterNot { EventsHelper(context).getEventRepetitionIgnoredOccurrences(it).contains(Formatter.getDayCodeFromTS(it.startTS)) }
+                .filterNot { context.eventsHelper.getEventRepetitionIgnoredOccurrences(it).contains(Formatter.getDayCodeFromTS(it.startTS)) }
                 .toMutableList() as ArrayList<Event>
         callback(events)
     }

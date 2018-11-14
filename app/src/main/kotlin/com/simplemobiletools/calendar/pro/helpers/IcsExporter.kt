@@ -2,6 +2,7 @@ package com.simplemobiletools.calendar.pro.helpers
 
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.eventTypesDB
+import com.simplemobiletools.calendar.pro.extensions.eventsHelper
 import com.simplemobiletools.calendar.pro.helpers.IcsExporter.ExportResult.*
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.commons.activities.BaseSimpleActivity
@@ -92,7 +93,7 @@ class IcsExporter {
     }
 
     private fun fillIgnoredOccurrences(activity: BaseSimpleActivity, event: Event, out: BufferedWriter) {
-        EventsHelper(activity).getEventRepetitionIgnoredOccurrences(event).forEach {
+        activity.eventsHelper.getEventRepetitionIgnoredOccurrences(event).forEach {
             out.writeLn("$EXDATE:$it")
         }
     }

@@ -158,9 +158,9 @@ class EventActivity : SimpleActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_event, menu)
         if (wasActivityInitialized) {
-            menu.findItem(R.id.delete).isVisible = mEvent.id != 0L
-            menu.findItem(R.id.share).isVisible = mEvent.id != 0L
-            menu.findItem(R.id.duplicate).isVisible = mEvent.id != 0L
+            menu.findItem(R.id.delete).isVisible = mEvent.id != null
+            menu.findItem(R.id.share).isVisible = mEvent.id != null
+            menu.findItem(R.id.duplicate).isVisible = mEvent.id != null
         }
         return true
     }
@@ -599,7 +599,7 @@ class EventActivity : SimpleActivity() {
             event_caldav_calendar_holder.beVisible()
             event_caldav_calendar_divider.beVisible()
 
-            val calendars = CalDAVHandler(applicationContext).getCalDAVCalendars(this).filter {
+            val calendars = calDAVHelper.getCalDAVCalendars(this).filter {
                 it.canWrite() && config.getSyncedCalendarIdsAsList().contains(it.id)
             }
             updateCurrentCalendarInfo(if (mEventCalendarId == STORED_LOCALLY_ONLY) null else getCalendarWithId(calendars, getCalendarId()))
@@ -648,7 +648,7 @@ class EventActivity : SimpleActivity() {
             event_caldav_calendar_email.text = currentCalendar.accountName
 
             Thread {
-                val calendarColor = EventsHelper(applicationContext).getEventTypeWithCalDAVCalendarId(currentCalendar.id)?.color
+                val calendarColor = eventsHelper.getEventTypeWithCalDAVCalendarId(currentCalendar.id)?.color
                         ?: currentCalendar.color
 
                 runOnUiThread {
@@ -680,9 +680,9 @@ class EventActivity : SimpleActivity() {
         DeleteEventDialog(this, arrayListOf(mEvent.id!!), mEvent.repeatInterval > 0) {
             Thread {
                 when (it) {
-                    DELETE_SELECTED_OCCURRENCE -> EventsHelper(applicationContext).addEventRepeatException(mEvent.id!!, mEventOccurrenceTS, true)
-                    DELETE_FUTURE_OCCURRENCES -> EventsHelper(applicationContext).addEventRepeatLimit(mEvent.id!!, mEventOccurrenceTS)
-                    DELETE_ALL_OCCURRENCES -> EventsHelper(applicationContext).deleteEvent(mEvent.id!!, true)
+                    DELETE_SELECTED_OCCURRENCE -> eventsHelper.addEventRepeatException(mEvent.id!!, mEventOccurrenceTS, true)
+                    DELETE_FUTURE_OCCURRENCES -> eventsHelper.addEventRepeatLimit(mEvent.id!!, mEventOccurrenceTS)
+                    DELETE_ALL_OCCURRENCES -> eventsHelper.deleteEvent(mEvent.id!!, true)
                 }
                 runOnUiThread {
                     finish()
@@ -727,12 +727,12 @@ class EventActivity : SimpleActivity() {
 
         val wasRepeatable = mEvent.repeatInterval > 0
         val oldSource = mEvent.source
-        val newImportId = if (mEvent.id != 0L) mEvent.importId else UUID.randomUUID().toString().replace("-", "") + System.currentTimeMillis().toString()
+        val newImportId = if (mEvent.id != null) mEvent.importId else UUID.randomUUID().toString().replace("-", "") + System.currentTimeMillis().toString()
 
         val newEventType = if (!config.caldavSync || config.lastUsedCaldavCalendarId == 0 || mEventCalendarId == STORED_LOCALLY_ONLY) {
             mEventTypeId
         } else {
-            EventsHelper(applicationContext).getEventTypeWithCalDAVCalendarId(mEventCalendarId)?.id ?: config.lastUsedLocalEventTypeId
+            eventsHelper.getEventTypeWithCalDAVCalendarId(mEventCalendarId)?.id ?: config.lastUsedLocalEventTypeId
         }
 
         val newSource = if (!config.caldavSync || mEventCalendarId == STORED_LOCALLY_ONLY) {
@@ -775,8 +775,8 @@ class EventActivity : SimpleActivity() {
         }
 
         // recreate the event if it was moved in a different CalDAV calendar
-        if (mEvent.id != 0L && oldSource != newSource) {
-            EventsHelper(this).deleteEvent(mEvent.id!!, true)
+        if (mEvent.id != null && oldSource != newSource) {
+            eventsHelper.deleteEvent(mEvent.id!!, true)
             mEvent.id = null
         }
 
@@ -784,8 +784,8 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun storeEvent(wasRepeatable: Boolean) {
-        if (mEvent.id == 0L || mEvent.id == null) {
-            EventsHelper(applicationContext).insertEvent(this, mEvent, true) {
+        if (mEvent.id == null || mEvent.id == null) {
+            eventsHelper.insertEvent(this, mEvent, true) {
                 if (DateTime.now().isAfter(mEventStartDateTime.millis)) {
                     if (mEvent.repeatInterval == 0 && mEvent.getReminders().isNotEmpty()) {
                         notifyEvent(mEvent)
@@ -800,7 +800,7 @@ class EventActivity : SimpleActivity() {
                     showEditRepeatingEventDialog()
                 }
             } else {
-                EventsHelper(applicationContext).updateEvent(this, mEvent, true) {
+                eventsHelper.updateEvent(this, mEvent, true) {
                     finish()
                 }
             }
@@ -811,13 +811,13 @@ class EventActivity : SimpleActivity() {
         EditRepeatingEventDialog(this) {
             if (it) {
                 Thread {
-                    EventsHelper(applicationContext).updateEvent(this, mEvent, true) {
+                    eventsHelper.updateEvent(this, mEvent, true) {
                         finish()
                     }
                 }.start()
             } else {
                 Thread {
-                    EventsHelper(applicationContext).addEventRepeatException(mEvent.id!!, mEventOccurrenceTS, true)
+                    eventsHelper.addEventRepeatException(mEvent.id!!, mEventOccurrenceTS, true)
                     mEvent.apply {
                         parentId = id!!.toLong()
                         id = null
@@ -826,7 +826,7 @@ class EventActivity : SimpleActivity() {
                         repeatLimit = 0
                     }
 
-                    EventsHelper(applicationContext).insertEvent(this, mEvent, true) {
+                    eventsHelper.insertEvent(this, mEvent, true) {
                         finish()
                     }
                 }.start()

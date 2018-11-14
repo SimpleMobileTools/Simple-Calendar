@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.extensions.config
-import com.simplemobiletools.calendar.pro.helpers.EventsHelper
+import com.simplemobiletools.calendar.pro.extensions.eventsHelper
 import com.simplemobiletools.calendar.pro.helpers.REGULAR_EVENT_TYPE_ID
 import com.simplemobiletools.calendar.pro.interfaces.DeleteEventTypesListener
 import com.simplemobiletools.calendar.pro.models.EventType
@@ -73,7 +73,7 @@ class ManageEventTypesAdapter(activity: SimpleActivity, val eventTypes: ArrayLis
     private fun askConfirmDelete() {
         val eventTypes = eventTypes.filter { selectedKeys.contains(it.id?.toInt()) }.map { it.id } as ArrayList<Long>
 
-        EventsHelper(activity).doEventTypesContainEvents(eventTypes) {
+        activity.eventsHelper.doEventTypesContainEvents(eventTypes) {
             activity.runOnUiThread {
                 if (it) {
                     val MOVE_EVENTS = 0

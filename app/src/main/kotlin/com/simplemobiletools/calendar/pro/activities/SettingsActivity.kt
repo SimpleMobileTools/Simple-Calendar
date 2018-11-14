@@ -6,10 +6,7 @@ import android.media.AudioManager
 import android.os.Bundle
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.dialogs.SelectCalendarsDialog
-import com.simplemobiletools.calendar.pro.extensions.config
-import com.simplemobiletools.calendar.pro.extensions.eventTypesDB
-import com.simplemobiletools.calendar.pro.extensions.getSyncedCalDAVCalendars
-import com.simplemobiletools.calendar.pro.extensions.updateWidgets
+import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
@@ -92,11 +89,11 @@ class SettingsActivity : SimpleActivity() {
     private fun checkPrimaryColor() {
         if (config.primaryColor != mStoredPrimaryColor) {
             Thread {
-                val eventTypes = EventsHelper(applicationContext).getEventTypesSync()
+                val eventTypes = eventsHelper.getEventTypesSync()
                 if (eventTypes.filter { it.caldavCalendarId == 0 }.size == 1) {
                     val eventType = eventTypes.first { it.caldavCalendarId == 0 }
                     eventType.color = config.primaryColor
-                    EventsHelper(applicationContext).insertOrUpdateEventTypeSync(eventType)
+                    eventsHelper.insertOrUpdateEventTypeSync(eventType)
                 }
             }.start()
         }
@@ -185,7 +182,7 @@ class SettingsActivity : SimpleActivity() {
 
             Thread {
                 config.getSyncedCalendarIdsAsList().forEach {
-                    CalDAVHandler(applicationContext).deleteCalDAVCalendarEvents(it.toLong())
+                    calDAVHelper.deleteCalDAVCalendarEvents(it.toLong())
                 }
                 eventTypesDB.deleteEventTypesWithCalendarId(config.getSyncedCalendarIdsAsList())
             }.start()
@@ -211,23 +208,23 @@ class SettingsActivity : SimpleActivity() {
 
             Thread {
                 if (newCalendarIds.isNotEmpty()) {
-                    val existingEventTypeNames = EventsHelper(applicationContext).getEventTypesSync().map { it.getDisplayTitle().toLowerCase() } as ArrayList<String>
+                    val existingEventTypeNames = eventsHelper.getEventTypesSync().map { it.getDisplayTitle().toLowerCase() } as ArrayList<String>
                     getSyncedCalDAVCalendars().forEach {
                         val calendarTitle = it.getFullTitle()
                         if (!existingEventTypeNames.contains(calendarTitle.toLowerCase())) {
                             val eventType = EventType(null, it.displayName, it.color, it.id, it.displayName, it.accountName)
                             existingEventTypeNames.add(calendarTitle.toLowerCase())
-                            EventsHelper(applicationContext).insertOrUpdateEventType(this, eventType)
+                            eventsHelper.insertOrUpdateEventType(this, eventType)
                         }
                     }
-                    CalDAVHandler(applicationContext).refreshCalendars(this) {}
+                    calDAVHelper.refreshCalendars(this) {}
                 }
 
                 val removedCalendarIds = oldCalendarIds.filter { !newCalendarIds.contains(it) }
                 removedCalendarIds.forEach {
-                    CalDAVHandler(applicationContext).deleteCalDAVCalendarEvents(it.toLong())
-                    EventsHelper(applicationContext).getEventTypeWithCalDAVCalendarId(it)?.apply {
-                        EventsHelper(applicationContext).deleteEventTypes(arrayListOf(this), true)
+                    calDAVHelper.deleteCalDAVCalendarEvents(it.toLong())
+                    eventsHelper.getEventTypeWithCalDAVCalendarId(it)?.apply {
+                        eventsHelper.deleteEventTypes(arrayListOf(this), true)
                     }
                 }
 
@@ -250,9 +247,7 @@ class SettingsActivity : SimpleActivity() {
     private fun setupDeleteAllEvents() {
         settings_delete_all_events_holder.setOnClickListener {
             ConfirmationDialog(this, messageId = R.string.delete_all_events_confirmation) {
-                Thread {
-                    EventsHelper(applicationContext).deleteAllEvents()
-                }.start()
+                eventsHelper.deleteAllEvents()
             }
         }
     }

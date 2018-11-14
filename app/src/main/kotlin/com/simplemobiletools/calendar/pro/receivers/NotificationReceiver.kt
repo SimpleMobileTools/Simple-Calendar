@@ -6,7 +6,6 @@ import android.content.Intent
 import android.os.PowerManager
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.EVENT_ID
-import com.simplemobiletools.calendar.pro.helpers.EventsHelper
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 
 class NotificationReceiver : BroadcastReceiver() {
@@ -32,7 +31,7 @@ class NotificationReceiver : BroadcastReceiver() {
             return
         }
 
-        if (!EventsHelper(context).getEventRepetitionIgnoredOccurrences(event).contains(Formatter.getDayCodeFromTS(event.startTS))) {
+        if (!context.eventsHelper.getEventRepetitionIgnoredOccurrences(event).contains(Formatter.getDayCodeFromTS(event.startTS))) {
             context.notifyEvent(event)
         }
         context.scheduleNextEventReminder(event, context.dbHelper)
