@@ -8,5 +8,5 @@ import com.simplemobiletools.calendar.pro.models.Event
 @Dao
 interface EventsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(event: Event): Long
+    fun insertOrUpdate(event: Event): Long
 }

@@ -800,7 +800,7 @@ class EventActivity : SimpleActivity() {
                     showEditRepeatingEventDialog()
                 }
             } else {
-                dbHelper.update(mEvent, true, this) {
+                EventsHelper().updateEvent(applicationContext, this, mEvent, true) {
                     finish()
                 }
             }
@@ -811,7 +811,7 @@ class EventActivity : SimpleActivity() {
         EditRepeatingEventDialog(this) {
             if (it) {
                 Thread {
-                    dbHelper.update(mEvent, true, this) {
+                    EventsHelper().updateEvent(applicationContext, this, mEvent, true) {
                         finish()
                     }
                 }.start()

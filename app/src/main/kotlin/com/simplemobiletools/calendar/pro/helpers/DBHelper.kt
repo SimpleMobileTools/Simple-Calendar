@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.text.TextUtils
 import androidx.collection.LongSparseArray
-import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.EventRepetitionException
@@ -59,45 +58,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {}
-
-    fun update(event: Event, updateAtCalDAV: Boolean, activity: SimpleActivity? = null, callback: (() -> Unit)? = null) {
-        val values = fillEventValues(event)
-        val selection = "$COL_ID = ?"
-        val selectionArgs = arrayOf(event.id.toString())
-        mDb.update(MAIN_TABLE_NAME, values, selection, selectionArgs)
-
-        if (event.repeatInterval == 0) {
-            context.eventRepetitionsDB.deleteEventRepetitionsOfEvent(event.id!!)
-        } else {
-            context.eventRepetitionsDB.insertOrUpdate(event.getEventRepetition())
-        }
-
-        context.updateWidgets()
-        context.scheduleNextEventReminder(event, this, activity)
-        if (updateAtCalDAV && event.source != SOURCE_SIMPLE_CALENDAR && context.config.caldavSync) {
-            CalDAVHandler(context).updateCalDAVEvent(event)
-        }
-        callback?.invoke()
-    }
-
-    private fun fillEventValues(event: Event): ContentValues {
-        return ContentValues().apply {
-            put(COL_START_TS, event.startTS)
-            put(COL_END_TS, event.endTS)
-            put(COL_TITLE, event.title)
-            put(COL_DESCRIPTION, event.description)
-            put(COL_REMINDER_MINUTES, event.reminder1Minutes)
-            put(COL_REMINDER_MINUTES_2, event.reminder2Minutes)
-            put(COL_REMINDER_MINUTES_3, event.reminder3Minutes)
-            put(COL_IMPORT_ID, event.importId)
-            put(COL_FLAGS, event.flags)
-            put(COL_EVENT_TYPE, event.eventType)
-            put(COL_PARENT_EVENT_ID, event.parentId)
-            put(COL_LAST_UPDATED, event.lastUpdated)
-            put(COL_EVENT_SOURCE, event.source)
-            put(COL_LOCATION, event.location)
-        }
-    }
 
     private fun fillExceptionValues(parentEventId: Long, occurrenceTS: Int, addToCalDAV: Boolean, childImportId: String?, callback: (eventRepetitionException: EventRepetitionException) -> Unit) {
         val childEvent = getEventWithId(parentEventId) ?: return

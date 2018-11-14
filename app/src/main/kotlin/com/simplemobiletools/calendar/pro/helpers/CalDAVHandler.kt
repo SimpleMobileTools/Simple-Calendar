@@ -226,7 +226,7 @@ class CalDAVHandler(val context: Context) {
 
                         if (existingEvent.hashCode() != event.hashCode() && title.isNotEmpty()) {
                             event.id = originalEventId
-                            context.dbHelper.update(event, false)
+                            EventsHelper().updateEvent(context, null, event, false)
                         }
                     } else {
                         // if the event is an exception from another events repeat rule, find the original parent event

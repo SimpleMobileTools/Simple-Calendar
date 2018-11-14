@@ -78,7 +78,7 @@ class EventsHelper {
             return
         }
 
-        val id = context.eventsDB.insert(event)
+        val id = context.eventsDB.insertOrUpdate(event)
         event.id = id
 
         if (event.repeatInterval != 0 && event.parentId == 0L) {
@@ -102,7 +102,7 @@ class EventsHelper {
                     continue
                 }
 
-                val id = activity.eventsDB.insert(event)
+                val id = activity.eventsDB.insertOrUpdate(event)
                 event.id = id
 
                 if (event.repeatInterval != 0 && event.parentId == 0L) {
@@ -117,5 +117,22 @@ class EventsHelper {
         } finally {
             activity.updateWidgets()
         }
+    }
+
+    fun updateEvent(context: Context, activity: Activity? = null, event: Event, updateAtCalDAV: Boolean, callback: (() -> Unit)? = null) {
+        context.eventsDB.insertOrUpdate(event)
+
+        if (event.repeatInterval == 0) {
+            context.eventRepetitionsDB.deleteEventRepetitionsOfEvent(event.id!!)
+        } else {
+            context.eventRepetitionsDB.insertOrUpdate(event.getEventRepetition())
+        }
+
+        context.updateWidgets()
+        //context.scheduleNextEventReminder(event, this, activity)
+        if (updateAtCalDAV && event.source != SOURCE_SIMPLE_CALENDAR && context.config.caldavSync) {
+            CalDAVHandler(context).updateCalDAVEvent(event)
+        }
+        callback?.invoke()
     }
 }
