@@ -10,7 +10,6 @@ import androidx.collection.LongSparseArray
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.models.Event
-import com.simplemobiletools.calendar.pro.models.EventRepetition
 import com.simplemobiletools.calendar.pro.models.EventRepetitionException
 import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.commons.extensions.getIntValue
@@ -72,7 +71,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         event.id = id
 
         if (event.repeatInterval != 0 && event.parentId == 0L) {
-            context.eventRepetitionsDB.insertOrUpdate(getEventRepetition(event))
+            context.eventRepetitionsDB.insertOrUpdate(event.getEventRepetition())
         }
 
         context.updateWidgets()
@@ -98,7 +97,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                 event.id = id
 
                 if (event.repeatInterval != 0 && event.parentId == 0L) {
-                    context.eventRepetitionsDB.insertOrUpdate(getEventRepetition(event))
+                    context.eventRepetitionsDB.insertOrUpdate(event.getEventRepetition())
                 }
 
                 context.scheduleNextEventReminder(event, this)
@@ -122,7 +121,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         if (event.repeatInterval == 0) {
             context.eventRepetitionsDB.deleteEventRepetitionsOfEvent(event.id!!)
         } else {
-            context.eventRepetitionsDB.insertOrUpdate(getEventRepetition(event))
+            context.eventRepetitionsDB.insertOrUpdate(event.getEventRepetition())
         }
 
         context.updateWidgets()
@@ -151,8 +150,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             put(COL_LOCATION, event.location)
         }
     }
-
-    private fun getEventRepetition(event: Event) = EventRepetition(null, event.id!!, event.repeatInterval, event.repeatRule, event.repeatLimit)
 
     private fun fillExceptionValues(parentEventId: Long, occurrenceTS: Int, addToCalDAV: Boolean, childImportId: String?, callback: (eventRepetitionException: EventRepetitionException) -> Unit) {
         val childEvent = getEventWithId(parentEventId) ?: return
@@ -440,7 +437,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             if (event.endTS >= fromTS) {
                 if (event.repeatInterval.isXWeeklyRepetition()) {
                     if (event.startTS.isTsOnProperDay(event)) {
-                        if (isOnProperWeek(event, startTimes)) {
+                        if (event.isOnProperWeek(startTimes)) {
                             event.copy().apply {
                                 updateIsPastEvent()
                                 color = event.color
@@ -460,7 +457,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             if (event.getIsAllDay()) {
                 if (event.repeatInterval.isXWeeklyRepetition()) {
                     if (event.endTS >= toTS && event.startTS.isTsOnProperDay(event)) {
-                        if (isOnProperWeek(event, startTimes)) {
+                        if (event.isOnProperWeek(startTimes)) {
                             event.copy().apply {
                                 updateIsPastEvent()
                                 color = event.color
@@ -491,7 +488,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         while (event.repeatLimit < 0 && event.startTS <= toTS) {
             if (event.repeatInterval.isXWeeklyRepetition()) {
                 if (event.startTS.isTsOnProperDay(event)) {
-                    if (isOnProperWeek(event, startTimes)) {
+                    if (event.isOnProperWeek(startTimes)) {
                         if (event.endTS >= fromTS) {
                             event.copy().apply {
                                 updateIsPastEvent()
@@ -547,13 +544,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         val cursor = getEventsCursor(selection)
         events.addAll(fillEvents(cursor).filter { dayCode == Formatter.getDayCodeFromTS(it.startTS) })
         return events
-    }
-
-    // check if its the proper week, for events repeating every x weeks
-    private fun isOnProperWeek(event: Event, startTimes: LongSparseArray<Int>): Boolean {
-        val initialWeekOfYear = Formatter.getDateTimeFromTS(startTimes[event.id!!]!!).weekOfWeekyear
-        val currentWeekOfYear = Formatter.getDateTimeFromTS(event.startTS).weekOfWeekyear
-        return (currentWeekOfYear - initialWeekOfYear) % (event.repeatInterval / WEEK) == 0
     }
 
     fun getRunningEvents(): List<Event> {
