@@ -5,6 +5,7 @@ import com.simplemobiletools.calendar.pro.BuildConfig
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.dialogs.CustomEventRepeatIntervalDialog
 import com.simplemobiletools.calendar.pro.helpers.*
+import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.commons.activities.BaseSimpleActivity
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.hideKeyboard
@@ -23,7 +24,7 @@ fun BaseSimpleActivity.shareEvents(ids: List<Long>) {
             return@Thread
         }
 
-        val events = dbHelper.getEventsWithIds(ids)
+        val events = eventsDB.getEventsWithIds(ids) as ArrayList<Event>
         IcsExporter().exportEvents(this, file, events, false) {
             if (it == IcsExporter.ExportResult.EXPORT_OK) {
                 sharePathIntent(file.absolutePath, BuildConfig.APPLICATION_ID)

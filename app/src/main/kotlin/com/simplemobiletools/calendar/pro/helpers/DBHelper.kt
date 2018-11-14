@@ -483,12 +483,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         return events
     }
 
-    fun getEventsWithIds(ids: List<Long>): ArrayList<Event> {
-        val args = TextUtils.join(", ", ids)
-        val selection = "$MAIN_TABLE_NAME.$COL_ID IN ($args)"
-        return getEvents(selection) as ArrayList<Event>
-    }
-
     fun getEventsAtReboot(): List<Event> {
         //val selection = "$COL_REMINDER_MINUTES != -1 AND ($COL_START_TS > ? OR $COL_REPEAT_INTERVAL != 0) AND $COL_START_TS != 0"
         val selection = "$COL_REMINDER_MINUTES != -1 AND ($COL_START_TS > ?) AND $COL_START_TS != 0"
