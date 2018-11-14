@@ -55,7 +55,7 @@ class EventsHelper(val context: Context) {
 
         for (eventTypeId in deleteIds) {
             if (deleteEvents) {
-                context.dbHelper.deleteEventsWithType(eventTypeId!!)
+                EventsHelper(context).deleteEventsWithType(eventTypeId!!)
             } else {
                 context.eventsDB.resetEventsWithType(eventTypeId!!)
             }
@@ -138,7 +138,7 @@ class EventsHelper(val context: Context) {
 
     fun deleteAllEvents() {
         val eventIds = context.eventsDB.getEventIds().toMutableList()
-        EventsHelper(context).deleteEvents(eventIds, true)
+        deleteEvents(eventIds, true)
     }
 
     fun deleteEvent(id: Long, deleteFromCalDAV: Boolean) = deleteEvents(arrayListOf(id), deleteFromCalDAV)
@@ -166,6 +166,11 @@ class EventsHelper(val context: Context) {
         if (childIds.isNotEmpty()) {
             deleteEvents(childIds, deleteFromCalDAV)
         }
+    }
+
+    fun deleteEventsWithType(eventTypeId: Long) {
+        val eventIds = context.eventsDB.getEventIdsByEventType(eventTypeId).toMutableList()
+        deleteEvents(eventIds, true)
     }
 
     fun addEventRepeatLimit(eventId: Long, limitTS: Int) {

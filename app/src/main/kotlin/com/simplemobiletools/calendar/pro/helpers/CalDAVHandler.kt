@@ -305,7 +305,7 @@ class CalDAVHandler(val context: Context) {
     }
 
     private fun setupCalDAVEventImportId(event: Event) {
-        context.dbHelper.updateEventImportIdAndSource(event.id!!, event.importId, "$CALDAV-${event.getCalDAVCalendarId()}")
+        context.eventsDB.updateEventImportIdAndSource(event.importId, "$CALDAV-${event.getCalDAVCalendarId()}", event.id!!)
     }
 
     private fun fillEventContentValues(event: Event): ContentValues {

@@ -26,6 +26,9 @@ interface EventsDao {
     @Query("SELECT * FROM events WHERE id IN (:ids) AND import_id != \"\"")
     fun getEventsByIdsWithImportIds(ids: List<Long>): List<Event>
 
+    @Query("SELECT id FROM events WHERE event_type = :eventTypeId")
+    fun getEventIdsByEventType(eventTypeId: Long): List<Long>
+
     @Query("SELECT * FROM events WHERE id IN (:ids)")
     fun getEventsWithIds(ids: List<Long>): List<Event>
 
@@ -46,6 +49,9 @@ interface EventsDao {
 
     @Query("UPDATE events SET event_type = $REGULAR_EVENT_TYPE_ID WHERE event_type = :eventTypeId")
     fun resetEventsWithType(eventTypeId: Long)
+
+    @Query("UPDATE events SET import_id = :importId AND source = :source WHERE id = :id")
+    fun updateEventImportIdAndSource(importId: String, source: String, id: Long)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertOrUpdate(event: Event): Long

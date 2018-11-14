@@ -1,6 +1,5 @@
 package com.simplemobiletools.calendar.pro.helpers
 
-import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
@@ -82,7 +81,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                     if (parentEvent != null) {
                         val newId = CalDAVHandler(context).insertEventRepeatException(parentEvent, occurrenceTS)
                         val newImportId = "${parentEvent.source}-$newId"
-                        updateEventImportIdAndSource(childEventId, newImportId, parentEvent.source)
+                        context.eventsDB.updateEventImportIdAndSource(newImportId, parentEvent.source, childEventId)
                     }
                 }
             }.start()
@@ -98,25 +97,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                 context.scheduleNextEventReminder(parentEvent, this)
             }
         }
-    }
-
-    fun deleteEventsWithType(eventTypeId: Long) {
-        val selection = "$MAIN_TABLE_NAME.$COL_EVENT_TYPE = ?"
-        val selectionArgs = arrayOf(eventTypeId.toString())
-        val cursor = getEventsCursor(selection, selectionArgs)
-        val events = fillEvents(cursor)
-        val eventIDs = events.mapNotNull { it.id }.toMutableList()
-        EventsHelper(context).deleteEvents(eventIDs, true)
-    }
-
-    fun updateEventImportIdAndSource(eventId: Long, importId: String, source: String) {
-        val values = ContentValues()
-        values.put(COL_IMPORT_ID, importId)
-        values.put(COL_EVENT_SOURCE, source)
-
-        val selection = "$MAIN_TABLE_NAME.$COL_ID = ?"
-        val selectionArgs = arrayOf(eventId.toString())
-        mDb.update(MAIN_TABLE_NAME, values, selection, selectionArgs)
     }
 
     fun getEventsWithSearchQuery(text: String, callback: (searchedText: String, events: List<Event>) -> Unit) {
