@@ -356,8 +356,7 @@ class CalDAVHandler(val context: Context) {
     }
 
     fun deleteCalDAVCalendarEvents(calendarId: Long) {
-        val events = context.dbHelper.getCalDAVCalendarEvents(calendarId)
-        val eventIds = events.mapNotNull { it.id }.toMutableList()
+        val eventIds = context.eventsDB.getCalDAVCalendarEvents("$CALDAV-$calendarId").toMutableList()
         EventsHelper(context).deleteEvents(eventIds, false)
     }
 

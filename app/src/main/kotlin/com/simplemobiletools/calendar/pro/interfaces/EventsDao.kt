@@ -40,6 +40,9 @@ interface EventsDao {
     @Query("SELECT * FROM events WHERE import_id != \"\"")
     fun getEventsWithImportIds(): List<Event>
 
+    @Query("SELECT id FROM events WHERE source = :source AND import_id != \"\"")
+    fun getCalDAVCalendarEvents(source: String): List<Long>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertOrUpdate(event: Event): Long
 

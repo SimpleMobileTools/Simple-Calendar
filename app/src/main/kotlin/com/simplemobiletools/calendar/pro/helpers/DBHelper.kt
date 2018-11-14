@@ -90,13 +90,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
     }
 
-    fun getCalDAVCalendarEvents(calendarId: Long): List<Event> {
-        val selection = "$MAIN_TABLE_NAME.$COL_EVENT_SOURCE = (?)"
-        val selectionArgs = arrayOf("$CALDAV-$calendarId")
-        val cursor = getEventsCursor(selection, selectionArgs)
-        return fillEvents(cursor).filter { it.importId.isNotEmpty() }
-    }
-
     fun addEventRepeatException(parentEventId: Long, occurrenceTS: Int, addToCalDAV: Boolean, childImportId: String? = null) {
         fillExceptionValues(parentEventId, occurrenceTS, addToCalDAV, childImportId) {
             context.eventRepetitionExceptionsDB.insert(it)
