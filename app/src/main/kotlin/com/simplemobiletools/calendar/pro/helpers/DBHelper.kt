@@ -16,8 +16,6 @@ import com.simplemobiletools.commons.extensions.getIntValue
 import com.simplemobiletools.commons.extensions.getLongValue
 import com.simplemobiletools.commons.extensions.getStringValue
 import org.joda.time.DateTime
-import java.util.*
-import kotlin.collections.ArrayList
 
 class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
     private val MAIN_TABLE_NAME = "events"
@@ -41,13 +39,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private val COL_REPEAT_INTERVAL = "repeat_interval"
     private val COL_REPEAT_RULE = "repeat_rule"
     private val COL_REPEAT_LIMIT = "repeat_limit"
-
-    private val TYPES_TABLE_NAME = "event_types"
-    private val COL_TYPE_TITLE = "event_type_title"
-    private val COL_TYPE_COLOR = "event_type_color"
-    private val COL_TYPE_CALDAV_CALENDAR_ID = "event_caldav_calendar_id"
-    private val COL_TYPE_CALDAV_DISPLAY_NAME = "event_caldav_display_name"
-    private val COL_TYPE_CALDAV_EMAIL = "event_caldav_email"
 
     private val REPEAT_EXCEPTIONS_TABLE_NAME = "event_repeat_exceptions"
     private val COL_OCCURRENCE_DAYCODE = "event_occurrence_daycode"
@@ -76,7 +67,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                 "$COL_PARENT_EVENT_ID INTEGER, $COL_LAST_UPDATED INTEGER, $COL_EVENT_SOURCE TEXT, $COL_LOCATION TEXT)")
 
         createRepetitionsTable(db)
-        createTypesTable(db)
         createExceptionsTable(db)
     }
 
@@ -85,11 +75,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private fun createRepetitionsTable(db: SQLiteDatabase) {
         db.execSQL("CREATE TABLE $REPETITIONS_TABLE_NAME ($COL_ID INTEGER PRIMARY KEY AUTOINCREMENT, $COL_EVENT_ID INTEGER UNIQUE, " +
                 "$COL_REPEAT_INTERVAL INTEGER, $COL_REPEAT_LIMIT INTEGER, $COL_REPEAT_RULE INTEGER)")
-    }
-
-    private fun createTypesTable(db: SQLiteDatabase) {
-        db.execSQL("CREATE TABLE $TYPES_TABLE_NAME ($COL_ID INTEGER PRIMARY KEY AUTOINCREMENT, $COL_TYPE_TITLE TEXT, $COL_TYPE_COLOR INTEGER, " +
-                "$COL_TYPE_CALDAV_CALENDAR_ID INTEGER, $COL_TYPE_CALDAV_DISPLAY_NAME TEXT, $COL_TYPE_CALDAV_EMAIL TEXT)")
     }
 
     private fun createExceptionsTable(db: SQLiteDatabase) {
@@ -345,36 +330,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
     }
 
-    fun deleteEventTypes(eventTypes: ArrayList<EventType>, deleteEvents: Boolean, callback: (deletedCnt: Int) -> Unit) {
-        var deleteIds = eventTypes.asSequence().filter { it.caldavCalendarId == 0 }.map { it.id }.toList()
-        deleteIds = deleteIds.filter { it != REGULAR_EVENT_TYPE_ID } as ArrayList<Long>
-
-        val deletedSet = HashSet<String>()
-        deleteIds.map { deletedSet.add(it.toString()) }
-        context.config.removeDisplayEventTypes(deletedSet)
-        if (deleteIds.isEmpty()) {
-            return
-        }
-
-        for (eventTypeId in deleteIds) {
-            if (deleteEvents) {
-                deleteEventsWithType(eventTypeId)
-            } else {
-                resetEventsWithType(eventTypeId)
-            }
-        }
-
-        val args = TextUtils.join(", ", deleteIds)
-        val selection = "$COL_ID IN ($args)"
-        callback(mDb.delete(TYPES_TABLE_NAME, selection, null))
-    }
-
-    fun deleteEventTypesWithCalendarId(calendarIds: String) {
-        val selection = "$COL_TYPE_CALDAV_CALENDAR_ID IN ($calendarIds)"
-        mDb.delete(TYPES_TABLE_NAME, selection, null)
-    }
-
-    private fun deleteEventsWithType(eventTypeId: Long) {
+    fun deleteEventsWithType(eventTypeId: Long) {
         val selection = "$MAIN_TABLE_NAME.$COL_EVENT_TYPE = ?"
         val selectionArgs = arrayOf(eventTypeId.toString())
         val cursor = getEventsCursor(selection, selectionArgs)
@@ -383,7 +339,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         deleteEvents(eventIDs, true)
     }
 
-    private fun resetEventsWithType(eventTypeId: Long) {
+    fun resetEventsWithType(eventTypeId: Long) {
         val values = ContentValues()
         values.put(COL_EVENT_TYPE, REGULAR_EVENT_TYPE_ID)
 

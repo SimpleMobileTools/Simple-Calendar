@@ -6,7 +6,6 @@ import android.view.MenuItem
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.adapters.ManageEventTypesAdapter
 import com.simplemobiletools.calendar.pro.dialogs.EditEventTypeDialog
-import com.simplemobiletools.calendar.pro.extensions.dbHelper
 import com.simplemobiletools.calendar.pro.helpers.EventTypesHelper
 import com.simplemobiletools.calendar.pro.interfaces.DeleteEventTypesListener
 import com.simplemobiletools.calendar.pro.models.EventType
@@ -61,11 +60,7 @@ class ManageEventTypesActivity : SimpleActivity(), DeleteEventTypesListener {
         }
 
         Thread {
-            dbHelper.deleteEventTypes(eventTypes, deleteEvents) {
-                if (it == 0) {
-                    toast(R.string.unknown_error_occurred)
-                }
-            }
+            EventTypesHelper().deleteEventTypes(applicationContext, eventTypes, deleteEvents)
         }.start()
         return true
     }

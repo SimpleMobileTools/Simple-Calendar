@@ -3,8 +3,10 @@ package com.simplemobiletools.calendar.pro.helpers
 import android.app.Activity
 import android.content.Context
 import com.simplemobiletools.calendar.pro.extensions.config
+import com.simplemobiletools.calendar.pro.extensions.dbHelper
 import com.simplemobiletools.calendar.pro.extensions.eventTypesDB
 import com.simplemobiletools.calendar.pro.models.EventType
+import java.util.*
 
 class EventTypesHelper {
     fun getEventTypes(activity: Activity, callback: (notes: ArrayList<EventType>) -> Unit) {
@@ -40,4 +42,25 @@ class EventTypesHelper {
     fun getEventTypeIdWithTitle(context: Context, title: String) = context.eventTypesDB.getEventTypeIdWithTitle(title) ?: -1L
 
     fun getEventTypeWithCalDAVCalendarId(context: Context, calendarId: Int) = context.eventTypesDB.getEventTypeWithCalDAVCalendarId(calendarId)
+
+    fun deleteEventTypes(context: Context, eventTypes: ArrayList<EventType>, deleteEvents: Boolean) {
+        val typesToDelete = eventTypes.asSequence().filter { it.caldavCalendarId == 0 && it.id != DBHelper.REGULAR_EVENT_TYPE_ID }.toMutableList()
+        val deleteIds = typesToDelete.map { it.id }.toMutableList()
+        val deletedSet = deleteIds.map { it.toString() }.toHashSet()
+        context.config.removeDisplayEventTypes(deletedSet)
+
+        if (deleteIds.isEmpty()) {
+            return
+        }
+
+        for (eventTypeId in deleteIds) {
+            if (deleteEvents) {
+                context.dbHelper.deleteEventsWithType(eventTypeId!!)
+            } else {
+                context.dbHelper.resetEventsWithType(eventTypeId!!)
+            }
+        }
+
+        context.eventTypesDB.deleteEventTypes(typesToDelete)
+    }
 }

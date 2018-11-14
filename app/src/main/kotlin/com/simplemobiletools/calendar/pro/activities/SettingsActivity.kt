@@ -4,13 +4,9 @@ import android.content.Intent
 import android.content.res.Resources
 import android.media.AudioManager
 import android.os.Bundle
-import android.text.TextUtils
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.dialogs.SelectCalendarsDialog
-import com.simplemobiletools.calendar.pro.extensions.config
-import com.simplemobiletools.calendar.pro.extensions.dbHelper
-import com.simplemobiletools.calendar.pro.extensions.getSyncedCalDAVCalendars
-import com.simplemobiletools.calendar.pro.extensions.updateWidgets
+import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
@@ -188,7 +184,7 @@ class SettingsActivity : SimpleActivity() {
                 config.getSyncedCalendarIdsAsList().forEach {
                     CalDAVHandler(applicationContext).deleteCalDAVCalendarEvents(it.toLong())
                 }
-                dbHelper.deleteEventTypesWithCalendarId(config.caldavSyncedCalendarIDs)
+                eventTypesDB.deleteEventTypesWithCalendarId(config.getSyncedCalendarIdsAsList())
             }.start()
         }
     }
@@ -227,11 +223,12 @@ class SettingsActivity : SimpleActivity() {
                 val removedCalendarIds = oldCalendarIds.filter { !newCalendarIds.contains(it) }
                 removedCalendarIds.forEach {
                     CalDAVHandler(applicationContext).deleteCalDAVCalendarEvents(it.toLong())
-                    EventTypesHelper().getEventTypeWithCalDAVCalendarId(applicationContext, it.toInt())?.apply {
-                        dbHelper.deleteEventTypes(arrayListOf(this), true) {}
+                    EventTypesHelper().getEventTypeWithCalDAVCalendarId(applicationContext, it)?.apply {
+                        EventTypesHelper().deleteEventTypes(applicationContext, arrayListOf(this), true)
                     }
                 }
-                dbHelper.deleteEventTypesWithCalendarId(TextUtils.join(",", removedCalendarIds))
+
+                eventTypesDB.deleteEventTypesWithCalendarId(removedCalendarIds)
                 if (settings_caldav_sync.isChecked) {
                     toast(R.string.synchronization_completed)
                 }

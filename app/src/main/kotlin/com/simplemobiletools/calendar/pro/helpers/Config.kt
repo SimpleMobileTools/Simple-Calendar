@@ -119,7 +119,7 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getBoolean(DIM_PAST_EVENTS, true)
         set(dimPastEvents) = prefs.edit().putBoolean(DIM_PAST_EVENTS, dimPastEvents).apply()
 
-    fun getSyncedCalendarIdsAsList() = caldavSyncedCalendarIDs.split(",").filter { it.trim().isNotEmpty() } as ArrayList<String>
+    fun getSyncedCalendarIdsAsList() = caldavSyncedCalendarIDs.split(",").filter { it.trim().isNotEmpty() }.map { Integer.parseInt(it) }.toMutableList() as ArrayList<Int>
 
     fun addDisplayEventType(type: String) {
         addDisplayEventTypes(HashSet<String>(Arrays.asList(type)))

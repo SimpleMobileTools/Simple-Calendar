@@ -251,7 +251,7 @@ class EventActivity : SimpleActivity() {
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
         event_title.requestFocus()
         updateActionBarTitle(getString(R.string.new_event))
-        val isLastCaldavCalendarOK = config.caldavSync && config.getSyncedCalendarIdsAsList().contains(config.lastUsedCaldavCalendarId.toString())
+        val isLastCaldavCalendarOK = config.caldavSync && config.getSyncedCalendarIdsAsList().contains(config.lastUsedCaldavCalendarId)
         mEventCalendarId = if (isLastCaldavCalendarOK) config.lastUsedCaldavCalendarId else STORED_LOCALLY_ONLY
 
         if (intent.action == Intent.ACTION_EDIT || intent.action == Intent.ACTION_INSERT) {
@@ -600,7 +600,7 @@ class EventActivity : SimpleActivity() {
             event_caldav_calendar_divider.beVisible()
 
             val calendars = CalDAVHandler(applicationContext).getCalDAVCalendars(this).filter {
-                it.canWrite() && config.getSyncedCalendarIdsAsList().contains(it.id.toString())
+                it.canWrite() && config.getSyncedCalendarIdsAsList().contains(it.id)
             }
             updateCurrentCalendarInfo(if (mEventCalendarId == STORED_LOCALLY_ONLY) null else getCalendarWithId(calendars, getCalendarId()))
 

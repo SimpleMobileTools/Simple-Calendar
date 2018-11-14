@@ -29,7 +29,7 @@ class SelectCalendarsDialog(val activity: SimpleActivity, val callback: () -> Un
                 addCalendarItem(false, it.accountName)
             }
 
-            addCalendarItem(true, it.displayName, it.id, ids.contains(it.id.toString()))
+            addCalendarItem(true, it.displayName, it.id, ids.contains(it.id))
         }
 
         dialog = AlertDialog.Builder(activity)
