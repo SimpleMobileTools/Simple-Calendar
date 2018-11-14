@@ -5,7 +5,6 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import android.database.sqlite.SQLiteQueryBuilder
 import android.text.TextUtils
 import androidx.collection.LongSparseArray
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
@@ -37,12 +36,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     private val COL_EVENT_SOURCE = "event_source"
     private val COL_PARENT_EVENT_ID = "event_parent_id"
 
-    private val REPETITIONS_TABLE_NAME = "event_repetitions"
-    private val COL_EVENT_ID = "event_id"
-    private val COL_REPEAT_INTERVAL = "repeat_interval"
-    private val COL_REPEAT_RULE = "repeat_rule"
-    private val COL_REPEAT_LIMIT = "repeat_limit"
-
     private val mDb = writableDatabase
 
     companion object {
@@ -64,16 +57,9 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                 "$COL_TITLE TEXT, $COL_DESCRIPTION TEXT, $COL_REMINDER_MINUTES INTEGER, $COL_REMINDER_MINUTES_2 INTEGER, $COL_REMINDER_MINUTES_3 INTEGER, " +
                 "$COL_IMPORT_ID TEXT, $COL_FLAGS INTEGER, $COL_EVENT_TYPE INTEGER NOT NULL DEFAULT $REGULAR_EVENT_TYPE_ID, " +
                 "$COL_PARENT_EVENT_ID INTEGER, $COL_LAST_UPDATED INTEGER, $COL_EVENT_SOURCE TEXT, $COL_LOCATION TEXT)")
-
-        createRepetitionsTable(db)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {}
-
-    private fun createRepetitionsTable(db: SQLiteDatabase) {
-        db.execSQL("CREATE TABLE $REPETITIONS_TABLE_NAME ($COL_ID INTEGER PRIMARY KEY AUTOINCREMENT, $COL_EVENT_ID INTEGER UNIQUE, " +
-                "$COL_REPEAT_INTERVAL INTEGER, $COL_REPEAT_LIMIT INTEGER, $COL_REPEAT_RULE INTEGER)")
-    }
 
     fun insert(event: Event, addToCalDAV: Boolean, activity: SimpleActivity? = null, callback: (id: Long) -> Unit) {
         if (event.startTS > event.endTS) {
@@ -163,15 +149,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             put(COL_LAST_UPDATED, event.lastUpdated)
             put(COL_EVENT_SOURCE, event.source)
             put(COL_LOCATION, event.location)
-        }
-    }
-
-    private fun fillRepetitionValues(event: Event): ContentValues {
-        return ContentValues().apply {
-            put(COL_EVENT_ID, event.id)
-            put(COL_REPEAT_INTERVAL, event.repeatInterval)
-            put(COL_REPEAT_LIMIT, event.repeatLimit)
-            put(COL_REPEAT_RULE, event.repeatRule)
         }
     }
 
@@ -292,13 +269,8 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     }
 
     fun addEventRepeatLimit(eventId: Long, limitTS: Int) {
-        val values = ContentValues()
         val time = Formatter.getDateTimeFromTS(limitTS)
-        values.put(COL_REPEAT_LIMIT, limitTS - time.hourOfDay)
-
-        val selection = "$COL_EVENT_ID = ?"
-        val selectionArgs = arrayOf(eventId.toString())
-        mDb.update(REPETITIONS_TABLE_NAME, values, selection, selectionArgs)
+        context.eventRepetitionsDB.updateEventRepetitionLimit(limitTS - time.hourOfDay, eventId)
 
         if (context.config.caldavSync) {
             val event = getEventWithId(eventId)
@@ -397,7 +369,8 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     fun getEventsInBackground(fromTS: Int, toTS: Int, eventId: Long = -1L, applyTypeFilter: Boolean, callback: (events: ArrayList<Event>) -> Unit) {
         var events = ArrayList<Event>()
 
-        var selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_REPEAT_INTERVAL IS NULL AND $COL_START_TS != 0"
+        //var selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_REPEAT_INTERVAL IS NULL AND $COL_START_TS != 0"
+        var selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_START_TS != 0"
         if (eventId != -1L) {
             selection += " AND $MAIN_TABLE_NAME.$COL_ID = $eventId"
         }
@@ -417,7 +390,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         val cursor = getEventsCursor(selection, selectionArgs)
         events.addAll(fillEvents(cursor))
 
-        events.addAll(getRepeatableEventsFor(fromTS, toTS, eventId, applyTypeFilter))
+        //events.addAll(getRepeatableEventsFor(fromTS, toTS, eventId, applyTypeFilter))
 
         events.addAll(getAllDayEvents(fromTS, eventId, applyTypeFilter))
 
@@ -431,7 +404,8 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
     fun getRepeatableEventsFor(fromTS: Int, toTS: Int, eventId: Long = -1L, applyTypeFilter: Boolean = false): List<Event> {
         val newEvents = ArrayList<Event>()
-        var selection = "$COL_REPEAT_INTERVAL != 0 AND $COL_START_TS <= $toTS AND $COL_START_TS != 0"
+        //var selection = "$COL_REPEAT_INTERVAL != 0 AND $COL_START_TS <= $toTS AND $COL_START_TS != 0"
+        var selection = "$COL_START_TS <= $toTS AND $COL_START_TS != 0"
         if (eventId != -1L)
             selection += " AND $MAIN_TABLE_NAME.$COL_ID = $eventId"
 
@@ -585,7 +559,8 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     fun getRunningEvents(): List<Event> {
         val events = ArrayList<Event>()
         val ts = getNowSeconds()
-        val selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_REPEAT_INTERVAL IS NULL AND $COL_START_TS != 0"
+        //val selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_REPEAT_INTERVAL IS NULL AND $COL_START_TS != 0"
+        val selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_START_TS != 0"
         val selectionArgs = arrayOf(ts.toString(), ts.toString())
         val cursor = getEventsCursor(selection, selectionArgs)
         events.addAll(fillEvents(cursor))
@@ -617,7 +592,8 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     }
 
     fun getEventsAtReboot(): List<Event> {
-        val selection = "$COL_REMINDER_MINUTES != -1 AND ($COL_START_TS > ? OR $COL_REPEAT_INTERVAL != 0) AND $COL_START_TS != 0"
+        //val selection = "$COL_REMINDER_MINUTES != -1 AND ($COL_START_TS > ? OR $COL_REPEAT_INTERVAL != 0) AND $COL_START_TS != 0"
+        val selection = "$COL_REMINDER_MINUTES != -1 AND ($COL_START_TS > ?) AND $COL_START_TS != 0"
         val selectionArgs = arrayOf(DateTime.now().seconds().toString())
         val cursor = getEventsCursor(selection, selectionArgs)
         return fillEvents(cursor)
@@ -628,7 +604,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         var events = ArrayList<Event>()
 
         // non repeating events
-        var cursor = if (includePast) {
+        val cursor = if (includePast) {
             getEventsCursor()
         } else {
             val selection = "$COL_END_TS > ?"
@@ -638,12 +614,12 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         events.addAll(fillEvents(cursor))
 
         // repeating events
-        if (!includePast) {
+        /*if (!includePast) {
             val selection = "$COL_REPEAT_INTERVAL != 0 AND ($COL_REPEAT_LIMIT == 0 OR $COL_REPEAT_LIMIT > ?)"
             val selectionArgs = arrayOf(currTime)
             cursor = getEventsCursor(selection, selectionArgs)
             events.addAll(fillEvents(cursor))
-        }
+        }*/
 
         events = events.distinctBy { it.id } as ArrayList<Event>
         return events
@@ -657,16 +633,12 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     }
 
     private fun getEventsCursor(selection: String = "", selectionArgs: Array<String>? = null): Cursor? {
-        val builder = SQLiteQueryBuilder()
-        builder.tables = "$MAIN_TABLE_NAME LEFT OUTER JOIN $REPETITIONS_TABLE_NAME ON $COL_EVENT_ID = $MAIN_TABLE_NAME.$COL_ID"
-        val projection = allColumns
-        return builder.query(mDb, projection, selection, selectionArgs, "$MAIN_TABLE_NAME.$COL_ID", null, COL_START_TS)
+        return mDb.query(MAIN_TABLE_NAME, allColumns, selection, selectionArgs, null, null, COL_START_TS)
     }
 
     private val allColumns: Array<String>
         get() = arrayOf("$MAIN_TABLE_NAME.$COL_ID", COL_START_TS, COL_END_TS, COL_TITLE, COL_DESCRIPTION, COL_REMINDER_MINUTES, COL_REMINDER_MINUTES_2,
-                COL_REMINDER_MINUTES_3, COL_REPEAT_INTERVAL, COL_REPEAT_RULE, COL_IMPORT_ID, COL_FLAGS, COL_REPEAT_LIMIT, COL_EVENT_TYPE,
-                COL_LAST_UPDATED, COL_EVENT_SOURCE, COL_LOCATION)
+                COL_REMINDER_MINUTES_3, COL_IMPORT_ID, COL_FLAGS, COL_EVENT_TYPE, COL_LAST_UPDATED, COL_EVENT_SOURCE, COL_LOCATION)
 
     private fun fillEvents(cursor: Cursor?): List<Event> {
         val eventTypeColors = LongSparseArray<Int>()
@@ -684,9 +656,9 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
                     val reminder1Minutes = cursor.getIntValue(COL_REMINDER_MINUTES)
                     val reminder2Minutes = cursor.getIntValue(COL_REMINDER_MINUTES_2)
                     val reminder3Minutes = cursor.getIntValue(COL_REMINDER_MINUTES_3)
-                    val repeatInterval = cursor.getIntValue(COL_REPEAT_INTERVAL)
-                    var repeatRule = cursor.getIntValue(COL_REPEAT_RULE)
-                    val repeatLimit = cursor.getIntValue(COL_REPEAT_LIMIT)
+                    val repeatInterval = 0
+                    var repeatRule = 0
+                    val repeatLimit = 0
                     val title = cursor.getStringValue(COL_TITLE)
                     val location = cursor.getStringValue(COL_LOCATION)
                     val description = cursor.getStringValue(COL_DESCRIPTION)
