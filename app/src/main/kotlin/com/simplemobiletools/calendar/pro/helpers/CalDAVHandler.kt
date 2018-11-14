@@ -240,9 +240,8 @@ class CalDAVHandler(val context: Context) {
                         }
 
                         if (title.isNotEmpty()) {
-                            context.dbHelper.insert(event, false) {
-                                importIdsMap[event.importId] = event
-                            }
+                            importIdsMap[event.importId] = event
+                            context.dbHelper.insert(event, false) {}
                         }
                     }
                 } while (cursor.moveToNext())
