@@ -457,8 +457,7 @@ fun Context.handleEventDeleting(eventIds: List<Long>, timestamps: List<Int>, act
             }
         }
         DELETE_ALL_OCCURRENCES -> {
-            val eventIDs = Array(eventIds.size) { i -> (eventIds[i].toString()) }
-            dbHelper.deleteEvents(eventIDs, true)
+            dbHelper.deleteEvents(eventIds.toMutableList(), true)
         }
     }
 }

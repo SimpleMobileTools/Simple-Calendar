@@ -249,17 +249,17 @@ class CalDAVHandler(val context: Context) {
             cursor?.close()
         }
 
-        val eventIdsToDelete = ArrayList<String>()
+        val eventIdsToDelete = ArrayList<Long>()
         importIdsMap.keys.filter { !fetchedEventIds.contains(it) }.forEach {
             val caldavEventId = it
             existingEvents.forEach {
                 if (it.importId == caldavEventId) {
-                    eventIdsToDelete.add(it.id.toString())
+                    eventIdsToDelete.add(it.id!!)
                 }
             }
         }
 
-        context.dbHelper.deleteEvents(eventIdsToDelete.toTypedArray(), false)
+        context.dbHelper.deleteEvents(eventIdsToDelete.toMutableList(), false)
     }
 
     @SuppressLint("MissingPermission")
@@ -357,7 +357,7 @@ class CalDAVHandler(val context: Context) {
 
     fun deleteCalDAVCalendarEvents(calendarId: Long) {
         val events = context.dbHelper.getCalDAVCalendarEvents(calendarId)
-        val eventIds = events.map { it.id.toString() }.toTypedArray()
+        val eventIds = events.mapNotNull { it.id }.toMutableList()
         context.dbHelper.deleteEvents(eventIds, false)
     }
 

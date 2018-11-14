@@ -92,53 +92,53 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
     fun deleteAllEvents() {
         val cursor = getEventsCursor()
-        val events = fillEvents(cursor).map { it.id.toString() }.toTypedArray()
+        val events = fillEvents(cursor).mapNotNull { it.id }.toMutableList()
         deleteEvents(events, true)
     }
 
-    fun deleteEvents(ids: Array<String>, deleteFromCalDAV: Boolean) {
-        val args = TextUtils.join(", ", ids)
-        val selection = "$MAIN_TABLE_NAME.$COL_ID IN ($args)"
+    fun deleteEvents(ids: MutableList<Long>, deleteFromCalDAV: Boolean) {
+        val eventIds = TextUtils.join(", ", ids)
+        val selection = "$MAIN_TABLE_NAME.$COL_ID IN ($eventIds)"
         val cursor = getEventsCursor(selection)
-        val events = fillEvents(cursor).filter { it.importId.isNotEmpty() }
+        val eventsWithImportId = fillEvents(cursor).filter { it.importId.isNotEmpty() }
 
         mDb.delete(MAIN_TABLE_NAME, selection, null)
 
-        context.updateWidgets()
-
         // temporary workaround, will be rewritten in Room
-        ids.filterNot { it == "null" }.forEach {
-            context.cancelNotification(it.toLong())
+        ids.filterNot { it == 0L }.forEach {
+            context.cancelNotification(it)
         }
 
         if (deleteFromCalDAV && context.config.caldavSync) {
-            events.forEach {
+            eventsWithImportId.forEach {
                 CalDAVHandler(context).deleteCalDAVEvent(it)
             }
         }
 
-        deleteChildEvents(args, deleteFromCalDAV)
+        deleteChildEvents(ids, deleteFromCalDAV)
+        context.updateWidgets()
     }
 
-    private fun deleteChildEvents(ids: String, deleteFromCalDAV: Boolean) {
+    private fun deleteChildEvents(ids: MutableList<Long>, deleteFromCalDAV: Boolean) {
         val projection = arrayOf(COL_ID)
         val selection = "$COL_PARENT_EVENT_ID IN ($ids)"
-        val childIds = ArrayList<String>()
+        val childIds = ArrayList<Long>()
 
         var cursor: Cursor? = null
         try {
             cursor = mDb.query(MAIN_TABLE_NAME, projection, selection, null, null, null, null)
             if (cursor?.moveToFirst() == true) {
                 do {
-                    childIds.add(cursor.getStringValue(COL_ID))
+                    childIds.add(cursor.getLongValue(COL_ID))
                 } while (cursor.moveToNext())
             }
         } finally {
             cursor?.close()
         }
 
-        if (childIds.isNotEmpty())
-            deleteEvents(childIds.toTypedArray(), deleteFromCalDAV)
+        if (childIds.isNotEmpty()) {
+            deleteEvents(childIds, deleteFromCalDAV)
+        }
     }
 
     fun getCalDAVCalendarEvents(calendarId: Long): List<Event> {
@@ -176,7 +176,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         val selectionArgs = arrayOf(eventTypeId.toString())
         val cursor = getEventsCursor(selection, selectionArgs)
         val events = fillEvents(cursor)
-        val eventIDs = Array(events.size) { i -> (events[i].id.toString()) }
+        val eventIDs = events.mapNotNull { it.id }.toMutableList()
         deleteEvents(eventIDs, true)
     }
 
