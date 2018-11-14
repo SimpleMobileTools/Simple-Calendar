@@ -60,58 +60,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {}
 
-    fun insert(event: Event, addToCalDAV: Boolean, activity: SimpleActivity? = null, callback: (id: Long) -> Unit) {
-        if (event.startTS > event.endTS) {
-            callback(0)
-            return
-        }
-
-        val eventValues = fillEventValues(event)
-        val id = mDb.insert(MAIN_TABLE_NAME, null, eventValues)
-        event.id = id
-
-        if (event.repeatInterval != 0 && event.parentId == 0L) {
-            context.eventRepetitionsDB.insertOrUpdate(event.getEventRepetition())
-        }
-
-        context.updateWidgets()
-        context.scheduleNextEventReminder(event, this, activity)
-
-        if (addToCalDAV && event.source != SOURCE_SIMPLE_CALENDAR && context.config.caldavSync) {
-            CalDAVHandler(context).insertCalDAVEvent(event)
-        }
-
-        callback(event.id!!)
-    }
-
-    fun insertEvents(events: ArrayList<Event>, addToCalDAV: Boolean) {
-        mDb.beginTransaction()
-        try {
-            for (event in events) {
-                if (event.startTS > event.endTS) {
-                    continue
-                }
-
-                val eventValues = fillEventValues(event)
-                val id = mDb.insert(MAIN_TABLE_NAME, null, eventValues)
-                event.id = id
-
-                if (event.repeatInterval != 0 && event.parentId == 0L) {
-                    context.eventRepetitionsDB.insertOrUpdate(event.getEventRepetition())
-                }
-
-                context.scheduleNextEventReminder(event, this)
-                if (addToCalDAV && event.source != SOURCE_SIMPLE_CALENDAR && event.source != SOURCE_IMPORTED_ICS && context.config.caldavSync) {
-                    CalDAVHandler(context).insertCalDAVEvent(event)
-                }
-            }
-            mDb.setTransactionSuccessful()
-        } finally {
-            mDb.endTransaction()
-            context.updateWidgets()
-        }
-    }
-
     fun update(event: Event, updateAtCalDAV: Boolean, activity: SimpleActivity? = null, callback: (() -> Unit)? = null) {
         val values = fillEventValues(event)
         val selection = "$COL_ID = ?"
@@ -164,7 +112,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             }
         }
 
-        insert(childEvent, false) {
+        EventTypesHelper().insertEvent(context, null, childEvent, false) {
             val childEventId = it
             val eventRepetitionException = EventRepetitionException(null, Formatter.getDayCodeFromTS(occurrenceTS), parentEventId)
             callback(eventRepetitionException)

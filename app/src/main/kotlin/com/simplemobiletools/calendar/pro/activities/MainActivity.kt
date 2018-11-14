@@ -505,7 +505,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                                     eventType = eventTypeId, source = source, lastUpdated = lastUpdated)
 
                             if (!importIDs.contains(contactId)) {
-                                dbHelper.insert(event, false) {
+                                EventTypesHelper().insertEvent(applicationContext, null, event, false) {
                                     eventsAdded++
                                 }
                             }

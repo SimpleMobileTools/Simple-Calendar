@@ -785,7 +785,7 @@ class EventActivity : SimpleActivity() {
 
     private fun storeEvent(wasRepeatable: Boolean) {
         if (mEvent.id == 0L || mEvent.id == null) {
-            dbHelper.insert(mEvent, true, this) {
+            EventTypesHelper().insertEvent(applicationContext, this, mEvent, true) {
                 if (DateTime.now().isAfter(mEventStartDateTime.millis)) {
                     if (mEvent.repeatInterval == 0 && mEvent.getReminders().isNotEmpty()) {
                         notifyEvent(mEvent)
@@ -826,7 +826,7 @@ class EventActivity : SimpleActivity() {
                         repeatLimit = 0
                     }
 
-                    dbHelper.insert(mEvent, true, this) {
+                    EventTypesHelper().insertEvent(applicationContext, this, mEvent, true) {
                         finish()
                     }
                 }.start()

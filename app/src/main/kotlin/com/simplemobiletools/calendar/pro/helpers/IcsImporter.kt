@@ -158,7 +158,7 @@ class IcsImporter(val activity: SimpleActivity) {
                             if (curRepeatExceptions.isEmpty()) {
                                 eventsToInsert.add(event)
                             } else {
-                                activity.dbHelper.insert(event, true) {
+                                EventTypesHelper().insertEvent(activity, activity, event, true) {
                                     for (exceptionTS in curRepeatExceptions) {
                                         activity.dbHelper.addEventRepeatException(it, exceptionTS, true)
                                     }
@@ -176,7 +176,7 @@ class IcsImporter(val activity: SimpleActivity) {
                 }
             }
 
-            activity.dbHelper.insertEvents(eventsToInsert, true)
+            EventTypesHelper().insertEvents(activity, eventsToInsert, true)
         } catch (e: Exception) {
             activity.showErrorToast(e, Toast.LENGTH_LONG)
             eventsFailed++
