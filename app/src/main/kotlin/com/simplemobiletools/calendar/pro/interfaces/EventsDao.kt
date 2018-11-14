@@ -13,14 +13,23 @@ interface EventsDao {
     @Query("SELECT * FROM events WHERE id = :id")
     fun getEventWithId(id: Long): Event?
 
+    @Query("SELECT id FROM events")
+    fun getEventIds(): List<Long>
+
     @Query("SELECT id FROM events WHERE import_id = :importId")
     fun getEventIdWithImportId(importId: String): Long?
 
     @Query("SELECT id FROM events WHERE import_id LIKE :importId")
     fun getEventIdWithLastImportId(importId: String): Long?
 
+    @Query("SELECT * FROM events WHERE id IN (:ids) AND import_id != \"\"")
+    fun getEventsByIdsWithImportIds(ids: List<Long>): List<Event>
+
     @Query("SELECT * FROM events WHERE id IN (:ids)")
     fun getEventsWithIds(ids: List<Long>): List<Event>
+
+    @Query("SELECT id FROM events WHERE parent_id IN (:parentIds)")
+    fun getEventIdsWithParentIds(parentIds: List<Long>): List<Long>
 
     @Query("SELECT * FROM events WHERE source = \'$SOURCE_CONTACT_BIRTHDAY\'")
     fun getBirthdays(): List<Event>
@@ -33,4 +42,7 @@ interface EventsDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertOrUpdate(event: Event): Long
+
+    @Query("DELETE FROM events WHERE id IN (:ids)")
+    fun deleteEvents(ids: List<Long>)
 }

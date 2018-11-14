@@ -682,7 +682,7 @@ class EventActivity : SimpleActivity() {
                 when (it) {
                     DELETE_SELECTED_OCCURRENCE -> dbHelper.addEventRepeatException(mEvent.id!!, mEventOccurrenceTS, true)
                     DELETE_FUTURE_OCCURRENCES -> dbHelper.addEventRepeatLimit(mEvent.id!!, mEventOccurrenceTS)
-                    DELETE_ALL_OCCURRENCES -> dbHelper.deleteEvents(arrayListOf(mEvent.id!!), true)
+                    DELETE_ALL_OCCURRENCES -> EventsHelper(applicationContext).deleteEvent(mEvent.id!!, true)
                 }
                 runOnUiThread {
                     finish()
@@ -776,8 +776,8 @@ class EventActivity : SimpleActivity() {
 
         // recreate the event if it was moved in a different CalDAV calendar
         if (mEvent.id != 0L && oldSource != newSource) {
-            dbHelper.deleteEvents(arrayListOf(mEvent.id!!), true)
-            mEvent.id = 0
+            EventsHelper(this).deleteEvent(mEvent.id!!, true)
+            mEvent.id = null
         }
 
         storeEvent(wasRepeatable)

@@ -457,7 +457,7 @@ fun Context.handleEventDeleting(eventIds: List<Long>, timestamps: List<Int>, act
             }
         }
         DELETE_ALL_OCCURRENCES -> {
-            dbHelper.deleteEvents(eventIds.toMutableList(), true)
+            EventsHelper(this).deleteEvents(eventIds.toMutableList(), true)
         }
     }
 }

@@ -90,57 +90,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
     }
 
-    fun deleteAllEvents() {
-        val cursor = getEventsCursor()
-        val events = fillEvents(cursor).mapNotNull { it.id }.toMutableList()
-        deleteEvents(events, true)
-    }
-
-    fun deleteEvents(ids: MutableList<Long>, deleteFromCalDAV: Boolean) {
-        val eventIds = TextUtils.join(", ", ids)
-        val selection = "$MAIN_TABLE_NAME.$COL_ID IN ($eventIds)"
-        val cursor = getEventsCursor(selection)
-        val eventsWithImportId = fillEvents(cursor).filter { it.importId.isNotEmpty() }
-
-        mDb.delete(MAIN_TABLE_NAME, selection, null)
-
-        // temporary workaround, will be rewritten in Room
-        ids.filterNot { it == 0L }.forEach {
-            context.cancelNotification(it)
-        }
-
-        if (deleteFromCalDAV && context.config.caldavSync) {
-            eventsWithImportId.forEach {
-                CalDAVHandler(context).deleteCalDAVEvent(it)
-            }
-        }
-
-        deleteChildEvents(ids, deleteFromCalDAV)
-        context.updateWidgets()
-    }
-
-    private fun deleteChildEvents(ids: MutableList<Long>, deleteFromCalDAV: Boolean) {
-        val projection = arrayOf(COL_ID)
-        val selection = "$COL_PARENT_EVENT_ID IN ($ids)"
-        val childIds = ArrayList<Long>()
-
-        var cursor: Cursor? = null
-        try {
-            cursor = mDb.query(MAIN_TABLE_NAME, projection, selection, null, null, null, null)
-            if (cursor?.moveToFirst() == true) {
-                do {
-                    childIds.add(cursor.getLongValue(COL_ID))
-                } while (cursor.moveToNext())
-            }
-        } finally {
-            cursor?.close()
-        }
-
-        if (childIds.isNotEmpty()) {
-            deleteEvents(childIds, deleteFromCalDAV)
-        }
-    }
-
     fun getCalDAVCalendarEvents(calendarId: Long): List<Event> {
         val selection = "$MAIN_TABLE_NAME.$COL_EVENT_SOURCE = (?)"
         val selectionArgs = arrayOf("$CALDAV-$calendarId")
@@ -177,7 +126,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         val cursor = getEventsCursor(selection, selectionArgs)
         val events = fillEvents(cursor)
         val eventIDs = events.mapNotNull { it.id }.toMutableList()
-        deleteEvents(eventIDs, true)
+        EventsHelper(context).deleteEvents(eventIDs, true)
     }
 
     fun resetEventsWithType(eventTypeId: Long) {

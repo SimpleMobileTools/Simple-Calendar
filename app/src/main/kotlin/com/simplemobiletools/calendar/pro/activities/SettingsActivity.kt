@@ -6,7 +6,10 @@ import android.media.AudioManager
 import android.os.Bundle
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.dialogs.SelectCalendarsDialog
-import com.simplemobiletools.calendar.pro.extensions.*
+import com.simplemobiletools.calendar.pro.extensions.config
+import com.simplemobiletools.calendar.pro.extensions.eventTypesDB
+import com.simplemobiletools.calendar.pro.extensions.getSyncedCalDAVCalendars
+import com.simplemobiletools.calendar.pro.extensions.updateWidgets
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
@@ -248,7 +251,7 @@ class SettingsActivity : SimpleActivity() {
         settings_delete_all_events_holder.setOnClickListener {
             ConfirmationDialog(this, messageId = R.string.delete_all_events_confirmation) {
                 Thread {
-                    dbHelper.deleteAllEvents()
+                    EventsHelper(applicationContext).deleteAllEvents()
                 }.start()
             }
         }
