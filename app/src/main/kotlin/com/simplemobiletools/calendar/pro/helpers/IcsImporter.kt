@@ -3,7 +3,6 @@ package com.simplemobiletools.calendar.pro.helpers
 import android.widget.Toast
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
-import com.simplemobiletools.calendar.pro.extensions.dbHelper
 import com.simplemobiletools.calendar.pro.extensions.eventsDB
 import com.simplemobiletools.calendar.pro.helpers.IcsImporter.ImportResult.*
 import com.simplemobiletools.calendar.pro.models.Event
@@ -161,7 +160,7 @@ class IcsImporter(val activity: SimpleActivity) {
                             } else {
                                 EventsHelper(activity).insertEvent(activity, event, true) {
                                     for (exceptionTS in curRepeatExceptions) {
-                                        activity.dbHelper.addEventRepeatException(it, exceptionTS, true)
+                                        EventsHelper(activity).addEventRepeatException(it, exceptionTS, true)
                                     }
                                     existingEvents.add(event)
                                 }

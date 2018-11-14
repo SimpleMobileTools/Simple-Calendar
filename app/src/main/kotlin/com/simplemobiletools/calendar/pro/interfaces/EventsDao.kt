@@ -47,6 +47,9 @@ interface EventsDao {
     @Query("SELECT * FROM events WHERE import_id != \"\"")
     fun getEventsWithImportIds(): List<Event>
 
+    @Query("SELECT * FROM events WHERE source = :source")
+    fun getEventsFromCalDAVCalendar(source: String): List<Event>
+
     @Query("SELECT id FROM events WHERE source = :source AND import_id != \"\"")
     fun getCalDAVCalendarEvents(source: String): List<Long>
 

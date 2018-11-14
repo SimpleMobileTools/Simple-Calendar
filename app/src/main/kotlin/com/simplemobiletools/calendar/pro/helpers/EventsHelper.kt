@@ -5,6 +5,7 @@ import android.content.Context
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.models.Event
+import com.simplemobiletools.calendar.pro.models.EventRepetitionException
 import com.simplemobiletools.calendar.pro.models.EventType
 import java.util.*
 
@@ -207,5 +208,47 @@ class EventsHelper(val context: Context) {
                 callback(text, filteredEvents)
             }
         }.start()
+    }
+
+    fun addEventRepeatException(parentEventId: Long, occurrenceTS: Int, addToCalDAV: Boolean, childImportId: String? = null) {
+        EventsHelper(context).fillExceptionValues(parentEventId, occurrenceTS, addToCalDAV, childImportId) {
+            context.eventRepetitionExceptionsDB.insert(it)
+
+            val parentEvent = eventsDB.getEventWithId(parentEventId)
+            if (parentEvent != null) {
+                //context.scheduleNextEventReminder(parentEvent, this)
+            }
+        }
+    }
+
+    fun fillExceptionValues(parentEventId: Long, occurrenceTS: Int, addToCalDAV: Boolean, childImportId: String?, callback: (eventRepetitionException: EventRepetitionException) -> Unit) {
+        val childEvent = eventsDB.getEventWithId(parentEventId) ?: return
+
+        childEvent.apply {
+            id = 0
+            parentId = parentEventId
+            startTS = 0
+            endTS = 0
+            if (childImportId != null) {
+                importId = childImportId
+            }
+        }
+
+        insertEvent(null, childEvent, false) {
+            val childEventId = it
+            val eventRepetitionException = EventRepetitionException(null, Formatter.getDayCodeFromTS(occurrenceTS), parentEventId)
+            callback(eventRepetitionException)
+
+            Thread {
+                if (addToCalDAV && config.caldavSync) {
+                    val parentEvent = eventsDB.getEventWithId(parentEventId)
+                    if (parentEvent != null) {
+                        val newId = CalDAVHandler(context).insertEventRepeatException(parentEvent, occurrenceTS)
+                        val newImportId = "${parentEvent.source}-$newId"
+                        eventsDB.updateEventImportIdAndSource(newImportId, parentEvent.source, childEventId)
+                    }
+                }
+            }.start()
+        }
     }
 }

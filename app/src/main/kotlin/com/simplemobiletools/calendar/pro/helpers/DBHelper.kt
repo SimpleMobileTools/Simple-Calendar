@@ -8,7 +8,6 @@ import android.text.TextUtils
 import androidx.collection.LongSparseArray
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.models.Event
-import com.simplemobiletools.calendar.pro.models.EventRepetitionException
 import com.simplemobiletools.commons.extensions.getIntValue
 import com.simplemobiletools.commons.extensions.getLongValue
 import com.simplemobiletools.commons.extensions.getStringValue
@@ -55,48 +54,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {}
-
-    private fun fillExceptionValues(parentEventId: Long, occurrenceTS: Int, addToCalDAV: Boolean, childImportId: String?, callback: (eventRepetitionException: EventRepetitionException) -> Unit) {
-        val childEvent = context.eventsDB.getEventWithId(parentEventId) ?: return
-
-        childEvent.apply {
-            id = 0
-            parentId = parentEventId
-            startTS = 0
-            endTS = 0
-            if (childImportId != null) {
-                importId = childImportId
-            }
-        }
-
-        EventsHelper(context).insertEvent(null, childEvent, false) {
-            val childEventId = it
-            val eventRepetitionException = EventRepetitionException(null, Formatter.getDayCodeFromTS(occurrenceTS), parentEventId)
-            callback(eventRepetitionException)
-
-            Thread {
-                if (addToCalDAV && context.config.caldavSync) {
-                    val parentEvent = context.eventsDB.getEventWithId(parentEventId)
-                    if (parentEvent != null) {
-                        val newId = CalDAVHandler(context).insertEventRepeatException(parentEvent, occurrenceTS)
-                        val newImportId = "${parentEvent.source}-$newId"
-                        context.eventsDB.updateEventImportIdAndSource(newImportId, parentEvent.source, childEventId)
-                    }
-                }
-            }.start()
-        }
-    }
-
-    fun addEventRepeatException(parentEventId: Long, occurrenceTS: Int, addToCalDAV: Boolean, childImportId: String? = null) {
-        fillExceptionValues(parentEventId, occurrenceTS, addToCalDAV, childImportId) {
-            context.eventRepetitionExceptionsDB.insert(it)
-
-            val parentEvent = context.eventsDB.getEventWithId(parentEventId)
-            if (parentEvent != null) {
-                context.scheduleNextEventReminder(parentEvent, this)
-            }
-        }
-    }
 
     fun getEvents(fromTS: Int, toTS: Int, eventId: Long = -1L, applyTypeFilter: Boolean = true, callback: (events: ArrayList<Event>) -> Unit) {
         Thread {
@@ -348,13 +305,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
         events = events.distinctBy { it.id } as ArrayList<Event>
         return events
-    }
-
-    fun getEventsFromCalDAVCalendar(calendarId: Int): List<Event> {
-        val selection = "$COL_EVENT_SOURCE = ?"
-        val selectionArgs = arrayOf("$CALDAV-$calendarId")
-        val cursor = getEventsCursor(selection, selectionArgs)
-        return fillEvents(cursor)
     }
 
     private fun getEventsCursor(selection: String = "", selectionArgs: Array<String>? = null): Cursor? {

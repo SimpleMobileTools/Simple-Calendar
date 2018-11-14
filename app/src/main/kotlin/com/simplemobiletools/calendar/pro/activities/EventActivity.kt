@@ -680,7 +680,7 @@ class EventActivity : SimpleActivity() {
         DeleteEventDialog(this, arrayListOf(mEvent.id!!), mEvent.repeatInterval > 0) {
             Thread {
                 when (it) {
-                    DELETE_SELECTED_OCCURRENCE -> dbHelper.addEventRepeatException(mEvent.id!!, mEventOccurrenceTS, true)
+                    DELETE_SELECTED_OCCURRENCE -> EventsHelper(applicationContext).addEventRepeatException(mEvent.id!!, mEventOccurrenceTS, true)
                     DELETE_FUTURE_OCCURRENCES -> EventsHelper(applicationContext).addEventRepeatLimit(mEvent.id!!, mEventOccurrenceTS)
                     DELETE_ALL_OCCURRENCES -> EventsHelper(applicationContext).deleteEvent(mEvent.id!!, true)
                 }
@@ -817,7 +817,7 @@ class EventActivity : SimpleActivity() {
                 }.start()
             } else {
                 Thread {
-                    dbHelper.addEventRepeatException(mEvent.id!!, mEventOccurrenceTS, true)
+                    EventsHelper(applicationContext).addEventRepeatException(mEvent.id!!, mEventOccurrenceTS, true)
                     mEvent.apply {
                         parentId = id!!.toLong()
                         id = null

@@ -9,7 +9,10 @@ import android.provider.CalendarContract
 import android.provider.CalendarContract.Reminders
 import android.util.SparseIntArray
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
-import com.simplemobiletools.calendar.pro.extensions.*
+import com.simplemobiletools.calendar.pro.extensions.config
+import com.simplemobiletools.calendar.pro.extensions.eventsDB
+import com.simplemobiletools.calendar.pro.extensions.refreshCalDAVCalendars
+import com.simplemobiletools.calendar.pro.extensions.scheduleCalDAVSync
 import com.simplemobiletools.calendar.pro.models.CalDAVCalendar
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.EventType
@@ -152,7 +155,7 @@ class CalDAVHandler(val context: Context) {
     private fun fetchCalDAVCalendarEvents(calendarId: Int, eventTypeId: Long, activity: SimpleActivity?) {
         val importIdsMap = HashMap<String, Event>()
         val fetchedEventIds = ArrayList<String>()
-        val existingEvents = context.dbHelper.getEventsFromCalDAVCalendar(calendarId)
+        val existingEvents = context.eventsDB.getEventsFromCalDAVCalendar("$CALDAV-$calendarId")
         existingEvents.forEach {
             importIdsMap[it.importId] = it
         }
@@ -232,7 +235,7 @@ class CalDAVHandler(val context: Context) {
                             val parentEventId = context.eventsDB.getEventIdWithImportId(parentImportId)
                             if (parentEventId != null) {
                                 event.parentId = parentEventId
-                                context.dbHelper.addEventRepeatException(parentEventId, (originalInstanceTime / 1000).toInt(), false, event.importId)
+                                EventsHelper(context).addEventRepeatException(parentEventId, (originalInstanceTime / 1000).toInt(), false, event.importId)
                             }
                         }
 
