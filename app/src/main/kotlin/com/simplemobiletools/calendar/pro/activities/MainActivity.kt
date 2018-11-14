@@ -481,7 +481,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             cursor = contentResolver.query(uri, projection, selection, selectionArgs, null)
             if (cursor?.moveToFirst() == true) {
                 val dateFormats = getDateFormats()
-                val existingEvents = if (birthdays) dbHelper.getBirthdays() else dbHelper.getAnniversaries()
+                val existingEvents = if (birthdays) eventsDB.getBirthdays() else eventsDB.getAnniversaries()
                 val importIDs = existingEvents.map { it.importId }
                 val eventTypeId = if (birthdays) getBirthdaysEventTypeId() else getAnniversariesEventTypeId()
 

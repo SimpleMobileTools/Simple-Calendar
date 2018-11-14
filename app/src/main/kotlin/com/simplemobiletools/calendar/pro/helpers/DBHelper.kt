@@ -90,20 +90,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
     }
 
-    fun getBirthdays(): List<Event> {
-        val selection = "$MAIN_TABLE_NAME.$COL_EVENT_SOURCE = ?"
-        val selectionArgs = arrayOf(SOURCE_CONTACT_BIRTHDAY)
-        val cursor = getEventsCursor(selection, selectionArgs)
-        return fillEvents(cursor)
-    }
-
-    fun getAnniversaries(): List<Event> {
-        val selection = "$MAIN_TABLE_NAME.$COL_EVENT_SOURCE = ?"
-        val selectionArgs = arrayOf(SOURCE_CONTACT_ANNIVERSARY)
-        val cursor = getEventsCursor(selection, selectionArgs)
-        return fillEvents(cursor)
-    }
-
     fun deleteAllEvents() {
         val cursor = getEventsCursor()
         val events = fillEvents(cursor).map { it.id.toString() }.toTypedArray()
