@@ -55,49 +55,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {}
 
-    fun getEvents(fromTS: Int, toTS: Int, eventId: Long = -1L, applyTypeFilter: Boolean = true, callback: (events: ArrayList<Event>) -> Unit) {
-        Thread {
-            getEventsInBackground(fromTS, toTS, eventId, applyTypeFilter, callback)
-        }.start()
-    }
-
-    fun getEventsInBackground(fromTS: Int, toTS: Int, eventId: Long = -1L, applyTypeFilter: Boolean, callback: (events: ArrayList<Event>) -> Unit) {
-        var events = ArrayList<Event>()
-
-        //var selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_REPEAT_INTERVAL IS NULL AND $COL_START_TS != 0"
-        var selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_START_TS != 0"
-        if (eventId != -1L) {
-            selection += " AND $MAIN_TABLE_NAME.$COL_ID = $eventId"
-        }
-
-        if (applyTypeFilter) {
-            val displayEventTypes = context.config.displayEventTypes
-            if (displayEventTypes.isEmpty()) {
-                callback(ArrayList())
-                return
-            } else {
-                val types = TextUtils.join(",", displayEventTypes)
-                selection += " AND $COL_EVENT_TYPE IN ($types)"
-            }
-        }
-
-        val selectionArgs = arrayOf(toTS.toString(), fromTS.toString())
-        val cursor = getEventsCursor(selection, selectionArgs)
-        events.addAll(fillEvents(cursor))
-
-        //events.addAll(getRepeatableEventsFor(fromTS, toTS, eventId, applyTypeFilter))
-
-        events.addAll(getAllDayEvents(fromTS, eventId, applyTypeFilter))
-
-        events = events
-                .asSequence()
-                .distinct()
-                .filterNot { context.eventsHelper.getEventRepetitionIgnoredOccurrences(it).contains(Formatter.getDayCodeFromTS(it.startTS)) }
-                .toMutableList() as ArrayList<Event>
-        callback(events)
-    }
-
-    fun getRepeatableEventsFor(fromTS: Int, toTS: Int, eventId: Long = -1L, applyTypeFilter: Boolean = false): List<Event> {
+    fun getRepeatableEventsFor(fromTS: Long, toTS: Long, eventId: Long = -1L, applyTypeFilter: Boolean = false): List<Event> {
         val newEvents = ArrayList<Event>()
         //var selection = "$COL_REPEAT_INTERVAL != 0 AND $COL_START_TS <= $toTS AND $COL_START_TS != 0"
         var selection = "$COL_START_TS <= $toTS AND $COL_START_TS != 0"
@@ -115,7 +73,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
 
         val events = getEvents(selection)
-        val startTimes = LongSparseArray<Int>()
+        val startTimes = LongSparseArray<Long>()
         events.forEach {
             startTimes.put(it.id!!, it.startTS)
             if (it.repeatLimit >= 0) {
@@ -128,10 +86,10 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         return newEvents
     }
 
-    private fun getEventsRepeatingTillDateOrForever(fromTS: Int, toTS: Int, startTimes: LongSparseArray<Int>, event: Event): ArrayList<Event> {
+    private fun getEventsRepeatingTillDateOrForever(fromTS: Long, toTS: Long, startTimes: LongSparseArray<Long>, event: Event): ArrayList<Event> {
         val original = event.copy()
         val events = ArrayList<Event>()
-        while (event.startTS <= toTS && (event.repeatLimit == 0 || event.repeatLimit >= event.startTS)) {
+        while (event.startTS <= toTS && (event.repeatLimit == 0L || event.repeatLimit >= event.startTS)) {
             if (event.endTS >= fromTS) {
                 if (event.repeatInterval.isXWeeklyRepetition()) {
                     if (event.startTS.isTsOnProperDay(event)) {
@@ -180,7 +138,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         return events
     }
 
-    private fun getEventsRepeatingXTimes(fromTS: Int, toTS: Int, startTimes: LongSparseArray<Int>, event: Event): ArrayList<Event> {
+    private fun getEventsRepeatingXTimes(fromTS: Long, toTS: Long, startTimes: LongSparseArray<Long>, event: Event): ArrayList<Event> {
         val original = event.copy()
         val events = ArrayList<Event>()
         while (event.repeatLimit < 0 && event.startTS <= toTS) {
@@ -222,7 +180,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         return events
     }
 
-    private fun getAllDayEvents(fromTS: Int, eventId: Long = -1L, applyTypeFilter: Boolean = false): List<Event> {
+    private fun getAllDayEvents(fromTS: Long, eventId: Long = -1L, applyTypeFilter: Boolean = false): List<Event> {
         val events = ArrayList<Event>()
         var selection = "($COL_FLAGS & $FLAG_ALL_DAY) != 0"
         if (eventId != -1L)
@@ -326,14 +284,14 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
             if (cursor.moveToFirst()) {
                 do {
                     val id = cursor.getLongValue(COL_ID)
-                    val startTS = cursor.getIntValue(COL_START_TS)
-                    val endTS = cursor.getIntValue(COL_END_TS)
+                    val startTS = cursor.getLongValue(COL_START_TS)
+                    val endTS = cursor.getLongValue(COL_END_TS)
                     val reminder1Minutes = cursor.getIntValue(COL_REMINDER_MINUTES)
                     val reminder2Minutes = cursor.getIntValue(COL_REMINDER_MINUTES_2)
                     val reminder3Minutes = cursor.getIntValue(COL_REMINDER_MINUTES_3)
                     val repeatInterval = 0
                     var repeatRule = 0
-                    val repeatLimit = 0
+                    val repeatLimit = 0L
                     val title = cursor.getStringValue(COL_TITLE)
                     val location = cursor.getStringValue(COL_LOCATION)
                     val description = cursor.getStringValue(COL_DESCRIPTION)

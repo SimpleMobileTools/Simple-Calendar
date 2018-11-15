@@ -30,8 +30,8 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
     private var MIN_EVENTS_TRESHOLD = 30
 
     private var mEvents = ArrayList<Event>()
-    private var minFetchedTS = 0
-    private var maxFetchedTS = 0
+    private var minFetchedTS = 0L
+    private var maxFetchedTS = 0L
     private var wereInitialEventsAdded = false
 
     private var use24HourFormat = false
@@ -76,7 +76,7 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
             maxFetchedTS = DateTime().plusMonths(6).seconds()
         }
 
-        context!!.dbHelper.getEvents(minFetchedTS, maxFetchedTS) {
+        context!!.eventsHelper.getEvents(minFetchedTS, maxFetchedTS) {
             if (it.size >= MIN_EVENTS_TRESHOLD) {
                 receivedEvents(it, false)
             } else {
@@ -84,7 +84,7 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
                     minFetchedTS -= FETCH_INTERVAL
                     maxFetchedTS += FETCH_INTERVAL
                 }
-                context!!.dbHelper.getEvents(minFetchedTS, maxFetchedTS) {
+                context!!.eventsHelper.getEvents(minFetchedTS, maxFetchedTS) {
                     mEvents = it
                     receivedEvents(mEvents, false, !wereInitialEventsAdded)
                 }
@@ -150,7 +150,7 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
     private fun fetchPreviousPeriod() {
         val oldMinFetchedTS = minFetchedTS - 1
         minFetchedTS -= FETCH_INTERVAL
-        context!!.dbHelper.getEvents(minFetchedTS, oldMinFetchedTS) {
+        context!!.eventsHelper.getEvents(minFetchedTS, oldMinFetchedTS) {
             mEvents.addAll(0, it)
             receivedEvents(mEvents, false)
         }
@@ -159,7 +159,7 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
     private fun fetchNextPeriod(scrollAfterUpdating: Boolean) {
         val oldMaxFetchedTS = maxFetchedTS + 1
         maxFetchedTS += FETCH_INTERVAL
-        context!!.dbHelper.getEvents(oldMaxFetchedTS, maxFetchedTS) {
+        context!!.eventsHelper.getEvents(oldMaxFetchedTS, maxFetchedTS) {
             mEvents.addAll(it)
             receivedEvents(mEvents, scrollAfterUpdating)
         }

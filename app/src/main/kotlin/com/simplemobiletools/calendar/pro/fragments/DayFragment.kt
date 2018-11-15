@@ -14,7 +14,7 @@ import com.simplemobiletools.calendar.pro.activities.EventActivity
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.adapters.DayEventsAdapter
 import com.simplemobiletools.calendar.pro.extensions.config
-import com.simplemobiletools.calendar.pro.extensions.dbHelper
+import com.simplemobiletools.calendar.pro.extensions.eventsHelper
 import com.simplemobiletools.calendar.pro.helpers.DAY_CODE
 import com.simplemobiletools.calendar.pro.helpers.EVENT_ID
 import com.simplemobiletools.calendar.pro.helpers.EVENT_OCCURRENCE_TS
@@ -105,7 +105,7 @@ class DayFragment : Fragment() {
     fun updateCalendar() {
         val startTS = Formatter.getDayStartTS(mDayCode)
         val endTS = Formatter.getDayEndTS(mDayCode)
-        context?.dbHelper?.getEvents(startTS, endTS) {
+        context?.eventsHelper?.getEvents(startTS, endTS) {
             receivedEvents(it)
         }
     }

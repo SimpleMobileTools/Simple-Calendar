@@ -45,11 +45,11 @@ class EventActivity : SimpleActivity() {
     private var mReminder2Minutes = 0
     private var mReminder3Minutes = 0
     private var mRepeatInterval = 0
-    private var mRepeatLimit = 0
+    private var mRepeatLimit = 0L
     private var mRepeatRule = 0
     private var mEventTypeId = REGULAR_EVENT_TYPE_ID
     private var mDialogTheme = 0
-    private var mEventOccurrenceTS = 0
+    private var mEventOccurrenceTS = 0L
     private var mEventCalendarId = STORED_LOCALLY_ONLY
     private var wasActivityInitialized = false
 
@@ -89,7 +89,7 @@ class EventActivity : SimpleActivity() {
 
         if (event != null) {
             mEvent = event
-            mEventOccurrenceTS = intent.getIntExtra(EVENT_OCCURRENCE_TS, 0)
+            mEventOccurrenceTS = intent.getLongExtra(EVENT_OCCURRENCE_TS, 0L)
             if (savedInstanceState == null) {
                 setupEditEvent()
             }
@@ -178,16 +178,16 @@ class EventActivity : SimpleActivity() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putInt(START_TS, mEventStartDateTime.seconds())
-        outState.putInt(END_TS, mEventEndDateTime.seconds())
+        outState.putLong(START_TS, mEventStartDateTime.seconds())
+        outState.putLong(END_TS, mEventEndDateTime.seconds())
 
         outState.putInt(REMINDER_1_MINUTES, mReminder1Minutes)
         outState.putInt(REMINDER_2_MINUTES, mReminder2Minutes)
         outState.putInt(REMINDER_3_MINUTES, mReminder3Minutes)
 
         outState.putInt(REPEAT_INTERVAL, mRepeatInterval)
-        outState.putInt(REPEAT_LIMIT, mRepeatLimit)
         outState.putInt(REPEAT_RULE, mRepeatRule)
+        outState.putLong(REPEAT_LIMIT, mRepeatLimit)
 
         outState.putLong(EVENT_TYPE_ID, mEventTypeId)
         outState.putInt(EVENT_CALENDAR_ID, mEventCalendarId)
@@ -196,16 +196,16 @@ class EventActivity : SimpleActivity() {
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
         savedInstanceState.apply {
-            mEventStartDateTime = Formatter.getDateTimeFromTS(getInt(START_TS))
-            mEventEndDateTime = Formatter.getDateTimeFromTS(getInt(END_TS))
+            mEventStartDateTime = Formatter.getDateTimeFromTS(getLong(START_TS))
+            mEventEndDateTime = Formatter.getDateTimeFromTS(getLong(END_TS))
 
             mReminder1Minutes = getInt(REMINDER_1_MINUTES)
             mReminder2Minutes = getInt(REMINDER_2_MINUTES)
             mReminder3Minutes = getInt(REMINDER_3_MINUTES)
 
             mRepeatInterval = getInt(REPEAT_INTERVAL)
-            mRepeatLimit = getInt(REPEAT_LIMIT)
             mRepeatRule = getInt(REPEAT_RULE)
+            mRepeatLimit = getLong(REPEAT_LIMIT)
 
             mEventTypeId = getLong(EVENT_TYPE_ID)
             mEventCalendarId = getInt(EVENT_CALENDAR_ID)
@@ -226,7 +226,7 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun setupEditEvent() {
-        val realStart = if (mEventOccurrenceTS == 0) mEvent.startTS else mEventOccurrenceTS
+        val realStart = if (mEventOccurrenceTS == 0L) mEvent.startTS else mEventOccurrenceTS
         val duration = mEvent.endTS - mEvent.startTS
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
         updateActionBarTitle(getString(R.string.edit_event))
@@ -255,10 +255,10 @@ class EventActivity : SimpleActivity() {
         mEventCalendarId = if (isLastCaldavCalendarOK) config.lastUsedCaldavCalendarId else STORED_LOCALLY_ONLY
 
         if (intent.action == Intent.ACTION_EDIT || intent.action == Intent.ACTION_INSERT) {
-            val startTS = (intent.getLongExtra("beginTime", System.currentTimeMillis()) / 1000).toInt()
+            val startTS = intent.getLongExtra("beginTime", System.currentTimeMillis()) / 1000L
             mEventStartDateTime = Formatter.getDateTimeFromTS(startTS)
 
-            val endTS = (intent.getLongExtra("endTime", System.currentTimeMillis()) / 1000).toInt()
+            val endTS = intent.getLongExtra("endTime", System.currentTimeMillis()) / 1000L
             mEventEndDateTime = Formatter.getDateTimeFromTS(endTS)
 
             event_title.setText(intent.getStringExtra("title"))
@@ -268,7 +268,7 @@ class EventActivity : SimpleActivity() {
                 event_description.movementMethod = LinkMovementMethod.getInstance()
             }
         } else {
-            val startTS = intent.getIntExtra(NEW_EVENT_START_TS, 0)
+            val startTS = intent.getLongExtra(NEW_EVENT_START_TS, 0L)
             val dateTime = Formatter.getDateTimeFromTS(startTS)
             mEventStartDateTime = dateTime
 
@@ -341,14 +341,14 @@ class EventActivity : SimpleActivity() {
         }
     }
 
-    private fun setRepeatLimit(limit: Int) {
+    private fun setRepeatLimit(limit: Long) {
         mRepeatLimit = limit
         checkRepetitionLimitText()
     }
 
     private fun checkRepetitionLimitText() {
         event_repetition_limit.text = when {
-            mRepeatLimit == 0 -> {
+            mRepeatLimit == 0L -> {
                 event_repetition_limit_label.text = getString(R.string.repeat)
                 resources.getString(R.string.forever)
             }
@@ -946,7 +946,7 @@ class EventActivity : SimpleActivity() {
             updateStartDateText()
             checkRepeatRule()
 
-            mEventEndDateTime = mEventStartDateTime.plusSeconds(diff)
+            mEventEndDateTime = mEventStartDateTime.plusSeconds(diff.toInt())
             updateEndTexts()
         } else {
             mEventEndDateTime = mEventEndDateTime.withDate(year, month + 1, day)
@@ -961,7 +961,7 @@ class EventActivity : SimpleActivity() {
             mEventStartDateTime = mEventStartDateTime.withHourOfDay(hours).withMinuteOfHour(minutes)
             updateStartTimeText()
 
-            mEventEndDateTime = mEventStartDateTime.plusSeconds(diff)
+            mEventEndDateTime = mEventStartDateTime.plusSeconds(diff.toInt())
             updateEndTexts()
         } else {
             mEventEndDateTime = mEventEndDateTime.withHourOfDay(hours).withMinuteOfHour(minutes)

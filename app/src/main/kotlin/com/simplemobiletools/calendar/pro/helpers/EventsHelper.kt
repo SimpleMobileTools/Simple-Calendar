@@ -181,7 +181,7 @@ class EventsHelper(val context: Context) {
         deleteEvents(eventIds, true)
     }
 
-    fun addEventRepeatLimit(eventId: Long, limitTS: Int) {
+    fun addEventRepeatLimit(eventId: Long, limitTS: Long) {
         val time = Formatter.getDateTimeFromTS(limitTS)
         eventRepetitionsDB.updateEventRepetitionLimit(limitTS - time.hourOfDay, eventId)
 
@@ -212,7 +212,7 @@ class EventsHelper(val context: Context) {
         }.start()
     }
 
-    fun addEventRepeatException(parentEventId: Long, occurrenceTS: Int, addToCalDAV: Boolean, childImportId: String? = null) {
+    fun addEventRepeatException(parentEventId: Long, occurrenceTS: Long, addToCalDAV: Boolean, childImportId: String? = null) {
         fillExceptionValues(parentEventId, occurrenceTS, addToCalDAV, childImportId) {
             context.eventRepetitionExceptionsDB.insert(it)
 
@@ -223,7 +223,7 @@ class EventsHelper(val context: Context) {
         }
     }
 
-    private fun fillExceptionValues(parentEventId: Long, occurrenceTS: Int, addToCalDAV: Boolean, childImportId: String?, callback: (eventRepetitionException: EventRepetitionException) -> Unit) {
+    private fun fillExceptionValues(parentEventId: Long, occurrenceTS: Long, addToCalDAV: Boolean, childImportId: String?, callback: (eventRepetitionException: EventRepetitionException) -> Unit) {
         val childEvent = eventsDB.getEventWithId(parentEventId) ?: return
 
         childEvent.apply {
@@ -252,5 +252,47 @@ class EventsHelper(val context: Context) {
                 }
             }.start()
         }
+    }
+
+    fun getEvents(fromTS: Long, toTS: Long, eventId: Long = -1L, applyTypeFilter: Boolean = true, callback: (events: ArrayList<Event>) -> Unit) {
+        Thread {
+            getEventsSync(fromTS, toTS, eventId, applyTypeFilter, callback)
+        }.start()
+    }
+
+    fun getEventsSync(fromTS: Long, toTS: Long, eventId: Long = -1L, applyTypeFilter: Boolean, callback: (events: ArrayList<Event>) -> Unit) {
+        /*var events = ArrayList<Event>()
+
+        var selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_REPEAT_INTERVAL IS NULL AND $COL_START_TS != 0"
+        var selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_START_TS != 0"
+        if (eventId != -1L) {
+            selection += " AND $MAIN_TABLE_NAME.$COL_ID = $eventId"
+        }
+
+        if (applyTypeFilter) {
+            val displayEventTypes = context.config.displayEventTypes
+            if (displayEventTypes.isEmpty()) {
+                callback(ArrayList())
+                return
+            } else {
+                val types = TextUtils.join(",", displayEventTypes)
+                selection += " AND $COL_EVENT_TYPE IN ($types)"
+            }
+        }
+
+        val selectionArgs = arrayOf(toTS.toString(), fromTS.toString())
+        val cursor = getEventsCursor(selection, selectionArgs)
+        events.addAll(fillEvents(cursor))
+
+        events.addAll(getRepeatableEventsFor(fromTS, toTS, eventId, applyTypeFilter))
+
+        events.addAll(getAllDayEvents(fromTS, eventId, applyTypeFilter))
+
+        events = events
+                .asSequence()
+                .distinct()
+                .filterNot { context.eventsHelper.getEventRepetitionIgnoredOccurrences(it).contains(Formatter.getDayCodeFromTS(it.startTS)) }
+                .toMutableList() as ArrayList<Event>
+        callback(events)*/
     }
 }

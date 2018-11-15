@@ -2,7 +2,7 @@ package com.simplemobiletools.calendar.pro.helpers
 
 import android.content.Context
 import com.simplemobiletools.calendar.pro.extensions.config
-import com.simplemobiletools.calendar.pro.extensions.dbHelper
+import com.simplemobiletools.calendar.pro.extensions.eventsHelper
 import com.simplemobiletools.calendar.pro.extensions.seconds
 import com.simplemobiletools.calendar.pro.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.pro.models.DayMonthly
@@ -24,7 +24,7 @@ class MonthlyCalendarImpl(val callback: MonthlyCalendar, val context: Context) {
         mTargetDate = targetDate
         val startTS = mTargetDate.minusDays(7).seconds()
         val endTS = mTargetDate.plusDays(43).seconds()
-        context.dbHelper.getEvents(startTS, endTS) {
+        context.eventsHelper.getEvents(startTS, endTS) {
             gotEvents(it)
         }
     }

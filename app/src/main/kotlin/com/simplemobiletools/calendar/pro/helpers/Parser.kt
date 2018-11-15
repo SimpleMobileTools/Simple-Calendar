@@ -12,11 +12,11 @@ import org.joda.time.format.DateTimeFormat
 
 class Parser {
     // from RRULE:FREQ=DAILY;COUNT=5 to Daily, 5x...
-    fun parseRepeatInterval(fullString: String, startTS: Int): EventRepetition {
+    fun parseRepeatInterval(fullString: String, startTS: Long): EventRepetition {
         val parts = fullString.split(";").filter { it.isNotEmpty() }
         var repeatInterval = 0
         var repeatRule = 0
-        var repeatLimit = 0
+        var repeatLimit = 0L
 
         for (part in parts) {
             val keyValue = part.split("=")
@@ -31,7 +31,7 @@ class Parser {
                     repeatRule = REPEAT_SAME_DAY
                 }
             } else if (key == COUNT) {
-                repeatLimit = -value.toInt()
+                repeatLimit = -value.toLong()
             } else if (key == UNTIL) {
                 repeatLimit = parseDateTimeValue(value)
             } else if (key == INTERVAL) {
@@ -76,7 +76,7 @@ class Parser {
         return newRepeatRule
     }
 
-    fun parseDateTimeValue(value: String): Int {
+    fun parseDateTimeValue(value: String): Long {
         val edited = value.replace("T", "").replace("Z", "")
         return if (edited.length == 14) {
             parseLongFormat(edited, value.endsWith("Z"))
@@ -86,7 +86,7 @@ class Parser {
         }
     }
 
-    private fun parseLongFormat(digitString: String, useUTC: Boolean): Int {
+    private fun parseLongFormat(digitString: String, useUTC: Boolean): Long {
         val dateTimeFormat = DateTimeFormat.forPattern("yyyyMMddHHmmss")
         val dateTimeZone = if (useUTC) DateTimeZone.UTC else DateTimeZone.getDefault()
         return dateTimeFormat.parseDateTime(digitString).withZoneRetainFields(dateTimeZone).seconds()
@@ -121,7 +121,7 @@ class Parser {
     }
 
     private fun getRepeatLimitString(event: Event) = when {
-        event.repeatLimit == 0 -> ""
+        event.repeatLimit == 0L -> ""
         event.repeatLimit < 0 -> ";$COUNT=${-event.repeatLimit}"
         else -> ";$UNTIL=${Formatter.getDayCodeFromTS(event.repeatLimit)}"
     }
@@ -202,7 +202,7 @@ class Parser {
     private fun getDurationValue(duration: String, char: String) = Regex("[0-9]+(?=$char)").find(duration)?.value?.toInt() ?: 0
 
     // from 65 to P0DT1H5M0S
-    fun getDurationCode(minutes: Int): String {
+    fun getDurationCode(minutes: Long): String {
         var days = 0
         var hours = 0
         var remainder = minutes

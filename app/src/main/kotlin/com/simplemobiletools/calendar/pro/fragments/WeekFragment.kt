@@ -39,7 +39,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private val PLUS_FADEOUT_DELAY = 5000L
 
     var mListener: WeekFragmentListener? = null
-    private var mWeekTimestamp = 0
+    private var mWeekTimestamp = 0L
     private var mRowHeight = 0f
     private var minScrollY = -1
     private var maxScrollY = -1
@@ -75,7 +75,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         mConfig = context!!.config
         mRowHeight = mRes.getDimension(R.dimen.weekly_view_row_height)
         minScrollY = (mRowHeight * mConfig.startWeeklyAt).toInt()
-        mWeekTimestamp = arguments!!.getInt(WEEK_START_TIMESTAMP)
+        mWeekTimestamp = arguments!!.getLong(WEEK_START_TIMESTAMP)
         dimPastEvents = mConfig.dimPastEvents
         primaryColor = context!!.getAdjustedPrimaryColor()
         allDayRows.add(HashSet())

@@ -17,17 +17,17 @@ class IcsImporter(val activity: SimpleActivity) {
         IMPORT_FAIL, IMPORT_OK, IMPORT_PARTIAL
     }
 
-    private var curStart = -1
-    private var curEnd = -1
+    private var curStart = -1L
+    private var curEnd = -1L
     private var curTitle = ""
     private var curLocation = ""
     private var curDescription = ""
     private var curImportId = ""
     private var curFlags = 0
     private var curReminderMinutes = ArrayList<Int>()
-    private var curRepeatExceptions = ArrayList<Int>()
+    private var curRepeatExceptions = ArrayList<Long>()
     private var curRepeatInterval = 0
-    private var curRepeatLimit = 0
+    private var curRepeatLimit = 0L
     private var curRepeatRule = 0
     private var curEventTypeId = REGULAR_EVENT_TYPE_ID
     private var curLastModified = 0L
@@ -126,11 +126,11 @@ class IcsImporter(val activity: SimpleActivity) {
                             curReminderMinutes.add(curReminderTriggerMinutes)
                         }
                     } else if (line == END_EVENT) {
-                        if (curStart != -1 && curEnd == -1) {
+                        if (curStart != -1L && curEnd == -1L) {
                             curEnd = curStart
                         }
 
-                        if (curTitle.isEmpty() || curStart == -1) {
+                        if (curTitle.isEmpty() || curStart == -1L) {
                             continue
                         }
 
@@ -191,7 +191,7 @@ class IcsImporter(val activity: SimpleActivity) {
         }
     }
 
-    private fun getTimestamp(fullString: String): Int {
+    private fun getTimestamp(fullString: String): Long {
         return try {
             if (fullString.startsWith(';')) {
                 val value = fullString.substring(fullString.lastIndexOf(':') + 1)
@@ -244,8 +244,8 @@ class IcsImporter(val activity: SimpleActivity) {
     }
 
     private fun resetValues() {
-        curStart = -1
-        curEnd = -1
+        curStart = -1L
+        curEnd = -1L
         curTitle = ""
         curLocation = ""
         curDescription = ""
@@ -254,7 +254,7 @@ class IcsImporter(val activity: SimpleActivity) {
         curReminderMinutes = ArrayList()
         curRepeatExceptions = ArrayList()
         curRepeatInterval = 0
-        curRepeatLimit = 0
+        curRepeatLimit = 0L
         curRepeatRule = 0
         curEventTypeId = REGULAR_EVENT_TYPE_ID
         curLastModified = 0L

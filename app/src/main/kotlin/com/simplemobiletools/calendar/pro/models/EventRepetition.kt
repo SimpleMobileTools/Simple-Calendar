@@ -11,4 +11,4 @@ data class EventRepetition(
         @ColumnInfo(name = "event_id") val eventId: Long,
         @ColumnInfo(name = "repeat_interval") val repeatInterval: Int,
         @ColumnInfo(name = "repeat_rule") val repeatRule: Int,
-        @ColumnInfo(name = "repeat_limit") val repeatLimit: Int)
+        @ColumnInfo(name = "repeat_limit") val repeatLimit: Long)

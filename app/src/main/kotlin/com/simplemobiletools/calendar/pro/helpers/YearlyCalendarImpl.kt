@@ -2,7 +2,7 @@ package com.simplemobiletools.calendar.pro.helpers
 
 import android.content.Context
 import android.util.SparseArray
-import com.simplemobiletools.calendar.pro.extensions.dbHelper
+import com.simplemobiletools.calendar.pro.extensions.eventsHelper
 import com.simplemobiletools.calendar.pro.extensions.seconds
 import com.simplemobiletools.calendar.pro.interfaces.YearlyCalendar
 import com.simplemobiletools.calendar.pro.models.DayYearly
@@ -16,7 +16,7 @@ class YearlyCalendarImpl(val callback: YearlyCalendar, val context: Context, val
         val startDateTime = DateTime().withTime(0, 0, 0, 0).withDate(year, 1, 1)
         val startTS = startDateTime.seconds()
         val endTS = startDateTime.plusYears(1).minusSeconds(1).seconds()
-        context.dbHelper.getEvents(startTS, endTS) {
+        context.eventsHelper.getEvents(startTS, endTS) {
             gotEvents(it)
         }
     }

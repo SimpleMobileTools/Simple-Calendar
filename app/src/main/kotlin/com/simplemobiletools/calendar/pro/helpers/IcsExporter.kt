@@ -86,7 +86,7 @@ class IcsExporter {
             out.apply {
                 writeLn(BEGIN_ALARM)
                 writeLn("$ACTION$DISPLAY")
-                writeLn("$TRIGGER-${Parser().getDurationCode(minutes)}")
+                writeLn("$TRIGGER-${Parser().getDurationCode(minutes.toLong())}")
                 writeLn(END_ALARM)
             }
         }

@@ -15,5 +15,5 @@ interface EventRepetitionsDao {
     fun deleteEventRepetitionsOfEvent(eventId: Long)
 
     @Query("UPDATE event_repetitions SET repeat_limit = :repeatLimit WHERE event_id = :eventId")
-    fun updateEventRepetitionLimit(repeatLimit: Int, eventId: Long)
+    fun updateEventRepetitionLimit(repeatLimit: Long, eventId: Long)
 }

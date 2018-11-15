@@ -9,7 +9,7 @@ import com.simplemobiletools.calendar.pro.fragments.WeekFragment
 import com.simplemobiletools.calendar.pro.helpers.WEEK_START_TIMESTAMP
 import com.simplemobiletools.calendar.pro.interfaces.WeekFragmentListener
 
-class MyWeekPagerAdapter(fm: FragmentManager, val mWeekTimestamps: List<Int>, val mListener: WeekFragmentListener) : FragmentStatePagerAdapter(fm) {
+class MyWeekPagerAdapter(fm: FragmentManager, val mWeekTimestamps: List<Long>, val mListener: WeekFragmentListener) : FragmentStatePagerAdapter(fm) {
     private val mFragments = SparseArray<WeekFragment>()
 
     override fun getCount() = mWeekTimestamps.size
@@ -17,7 +17,7 @@ class MyWeekPagerAdapter(fm: FragmentManager, val mWeekTimestamps: List<Int>, va
     override fun getItem(position: Int): Fragment {
         val bundle = Bundle()
         val weekTimestamp = mWeekTimestamps[position]
-        bundle.putInt(WEEK_START_TIMESTAMP, weekTimestamp)
+        bundle.putLong(WEEK_START_TIMESTAMP, weekTimestamp)
 
         val fragment = WeekFragment()
         fragment.arguments = bundle

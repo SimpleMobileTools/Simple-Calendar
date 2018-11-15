@@ -17,6 +17,9 @@ interface EventsDao {
     @Query("SELECT id FROM events")
     fun getEventIds(): List<Long>
 
+    @Query("SELECT * FROM events WHERE start_ts <= :startTS AND end_ts >= :endTS AND start_ts != 0")
+    fun getEventsFromTo(startTS: Long, endTS: Long): List<Event>
+
     @Query("SELECT id FROM events WHERE import_id = :importId")
     fun getEventIdWithImportId(importId: String): Long?
 

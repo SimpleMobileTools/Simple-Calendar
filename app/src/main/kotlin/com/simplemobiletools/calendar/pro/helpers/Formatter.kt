@@ -46,7 +46,7 @@ object Formatter {
             date
     }
 
-    fun getLongestDate(ts: Int) = getDateTimeFromTS(ts).toString(LONGEST_PATTERN)
+    fun getLongestDate(ts: Long) = getDateTimeFromTS(ts).toString(LONGEST_PATTERN)
 
     fun getDate(context: Context, dateTime: DateTime, addDayOfWeek: Boolean = true) = getDayTitle(context, getDayCodeFromDateTime(dateTime), addDayOfWeek)
 
@@ -68,7 +68,7 @@ object Formatter {
 
     fun getLocalDateTimeFromCode(dayCode: String) = DateTimeFormat.forPattern(DAYCODE_PATTERN).withZone(DateTimeZone.getDefault()).parseLocalDate(dayCode).toDateTimeAtStartOfDay()
 
-    fun getTimeFromTS(context: Context, ts: Int) = getTime(context, getDateTimeFromTS(ts))
+    fun getTimeFromTS(context: Context, ts: Long) = getTime(context, getDateTimeFromTS(ts))
 
     fun getDayStartTS(dayCode: String) = getLocalDateTimeFromCode(dayCode).seconds()
 
@@ -76,11 +76,11 @@ object Formatter {
 
     fun getDayCodeFromDateTime(dateTime: DateTime) = dateTime.toString(DAYCODE_PATTERN)
 
-    fun getDateFromTS(ts: Int) = LocalDate(ts * 1000L, DateTimeZone.getDefault())
+    fun getDateFromTS(ts: Long) = LocalDate(ts * 1000L, DateTimeZone.getDefault())
 
-    fun getDateTimeFromTS(ts: Int) = DateTime(ts * 1000L, DateTimeZone.getDefault())
+    fun getDateTimeFromTS(ts: Long) = DateTime(ts * 1000L, DateTimeZone.getDefault())
 
-    fun getUTCDateTimeFromTS(ts: Int) = DateTime(ts * 1000L, DateTimeZone.UTC)
+    fun getUTCDateTimeFromTS(ts: Long) = DateTime(ts * 1000L, DateTimeZone.UTC)
 
     // use manually translated month names, as DateFormat and Joda have issues with a lot of languages
     fun getMonthName(context: Context, id: Int) = context.resources.getStringArray(R.array.months)[id - 1]
@@ -94,7 +94,7 @@ object Formatter {
         return "${dateTime.toString(DAYCODE_PATTERN)}T${dateTime.toString(TIME_PATTERN)}Z"
     }
 
-    fun getDayCodeFromTS(ts: Int): String {
+    fun getDayCodeFromTS(ts: Long): String {
         val daycode = getDateTimeFromTS(ts).toString(DAYCODE_PATTERN)
         return if (daycode.isNotEmpty()) {
             daycode
@@ -103,5 +103,5 @@ object Formatter {
         }
     }
 
-    fun getShiftedImportTimestamp(ts: Int) = getUTCDateTimeFromTS(ts).withTime(13, 0, 0, 0).withZoneRetainFields(DateTimeZone.getDefault()).seconds()
+    fun getShiftedImportTimestamp(ts: Long) = getUTCDateTimeFromTS(ts).withTime(13, 0, 0, 0).withZoneRetainFields(DateTimeZone.getDefault()).seconds()
 }

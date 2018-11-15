@@ -9,7 +9,7 @@ import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.R.id.event_item_holder
 import com.simplemobiletools.calendar.pro.R.id.event_section_title
 import com.simplemobiletools.calendar.pro.extensions.config
-import com.simplemobiletools.calendar.pro.extensions.dbHelper
+import com.simplemobiletools.calendar.pro.extensions.eventsHelper
 import com.simplemobiletools.calendar.pro.extensions.seconds
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
@@ -156,7 +156,7 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
         mediumFontSize = context.config.getFontSize()
         val fromTS = DateTime().seconds() - context.config.displayPastEvents * 60
         val toTS = DateTime().plusYears(1).seconds()
-        context.dbHelper.getEventsInBackground(fromTS, toTS, applyTypeFilter = true) {
+        context.eventsHelper.getEventsSync(fromTS, toTS, applyTypeFilter = true) {
             val listItems = ArrayList<ListItem>(it.size)
             val replaceDescription = context.config.replaceDescription
             val sorted = it.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { if (replaceDescription) it.location else it.description }))

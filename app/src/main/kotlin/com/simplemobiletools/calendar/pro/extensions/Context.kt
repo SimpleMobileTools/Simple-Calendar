@@ -94,7 +94,7 @@ fun Context.scheduleNextEventReminder(event: Event, dbHelper: DBHelper, activity
 
     val now = getNowSeconds()
     val reminderSeconds = event.getReminders().reversed().map { it * 60 }
-    dbHelper.getEvents(now, now + YEAR, event.id!!, false) {
+    eventsHelper.getEvents(now, now + YEAR, event.id!!, false) {
         if (it.isNotEmpty()) {
             for (curEvent in it) {
                 for (curReminder in reminderSeconds) {
@@ -300,7 +300,7 @@ fun Context.launchNewEventIntent(dayCode: String = Formatter.getTodayCode()) {
     }
 }
 
-fun Context.getNewEventTimestampFromCode(dayCode: String): Int {
+fun Context.getNewEventTimestampFromCode(dayCode: String): Long {
     val currHour = DateTime(System.currentTimeMillis(), DateTimeZone.getDefault()).hourOfDay
     val dateTime = Formatter.getLocalDateTimeFromCode(dayCode).withHourOfDay(currHour)
     val newDateTime = dateTime.plusHours(1).withMinuteOfHour(0).withSecondOfMinute(0).withMillisOfSecond(0)
@@ -441,7 +441,7 @@ fun Context.getEventListItems(events: List<Event>): ArrayList<ListItem> {
     return listItems
 }
 
-fun Context.handleEventDeleting(eventIds: List<Long>, timestamps: List<Int>, action: Int) {
+fun Context.handleEventDeleting(eventIds: List<Long>, timestamps: List<Long>, action: Int) {
     when (action) {
         DELETE_SELECTED_OCCURRENCE -> {
             eventIds.forEachIndexed { index, value ->

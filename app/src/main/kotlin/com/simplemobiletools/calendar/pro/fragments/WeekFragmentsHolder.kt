@@ -28,8 +28,8 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
 
     private var weekHolder: ViewGroup? = null
     private var defaultWeeklyPage = 0
-    private var thisWeekTS = 0
-    private var currentWeekTS = 0
+    private var thisWeekTS = 0L
+    private var currentWeekTS = 0L
     private var isGoToTodayVisible = false
     private var weekScrollY = 0
 
@@ -95,15 +95,15 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
         updateActionBarTitle()
     }
 
-    private fun getWeekTimestamps(targetSeconds: Int): List<Int> {
-        val weekTSs = ArrayList<Int>(PREFILLED_WEEKS)
+    private fun getWeekTimestamps(targetSeconds: Long): List<Long> {
+        val weekTSs = ArrayList<Long>(PREFILLED_WEEKS)
         for (i in -PREFILLED_WEEKS / 2..PREFILLED_WEEKS / 2) {
             weekTSs.add(Formatter.getDateTimeFromTS(targetSeconds).plusWeeks(i).seconds())
         }
         return weekTSs
     }
 
-    private fun setupWeeklyActionbarTitle(timestamp: Int) {
+    private fun setupWeeklyActionbarTitle(timestamp: Long) {
         val startDateTime = Formatter.getDateTimeFromTS(timestamp)
         val endDateTime = Formatter.getDateTimeFromTS(timestamp + WEEK_SECONDS)
         val startMonthName = Formatter.getMonthName(context!!, startDateTime.monthOfYear)

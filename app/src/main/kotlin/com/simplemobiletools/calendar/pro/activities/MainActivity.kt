@@ -498,10 +498,10 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                                 date.year = 70
                             }
 
-                            val timestamp = (date.time / 1000).toInt()
+                            val timestamp = date.time / 1000L
                             val source = if (birthdays) SOURCE_CONTACT_BIRTHDAY else SOURCE_CONTACT_ANNIVERSARY
                             val lastUpdated = cursor.getLongValue(ContactsContract.CommonDataKinds.Event.CONTACT_LAST_UPDATED_TIMESTAMP)
-                            val event = Event(0, timestamp, timestamp, name, importId = contactId, flags = FLAG_ALL_DAY, repeatInterval = YEAR,
+                            val event = Event(null, timestamp, timestamp, name, importId = contactId, flags = FLAG_ALL_DAY, repeatInterval = YEAR,
                                     eventType = eventTypeId, source = source, lastUpdated = lastUpdated)
 
                             if (!importIDs.contains(contactId)) {
@@ -775,7 +775,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     private fun openDayAt(timestamp: Long) {
-        val dayCode = Formatter.getDayCodeFromTS((timestamp / 1000).toInt())
+        val dayCode = Formatter.getDayCodeFromTS(timestamp / 1000L)
         calendar_fab.beVisible()
         config.storedView = DAILY_VIEW
         updateViewPager(dayCode)
