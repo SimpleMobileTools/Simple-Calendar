@@ -7,8 +7,7 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 import com.simplemobiletools.calendar.pro.extensions.seconds
 import com.simplemobiletools.calendar.pro.helpers.*
-import com.simplemobiletools.commons.extensions.addBit
-import com.simplemobiletools.commons.extensions.removeBit
+import com.simplemobiletools.commons.extensions.addBitIf
 import org.joda.time.DateTime
 import java.io.Serializable
 
@@ -157,11 +156,7 @@ data class Event(
     var isPastEvent: Boolean
         get() = flags and FLAG_IS_PAST_EVENT != 0
         set(isPastEvent) {
-            flags = if (isPastEvent) {
-                flags.addBit(FLAG_IS_PAST_EVENT)
-            } else {
-                flags.removeBit(FLAG_IS_PAST_EVENT)
-            }
+            flags = flags.addBitIf(isPastEvent, FLAG_IS_PAST_EVENT)
         }
 
     var color: Int = 0
