@@ -82,11 +82,11 @@ fun Context.updateListWidget() {
 fun Context.scheduleAllEvents() {
     val events = dbHelper.getEventsAtReboot()
     events.forEach {
-        scheduleNextEventReminder(it, dbHelper)
+        scheduleNextEventReminder(it)
     }
 }
 
-fun Context.scheduleNextEventReminder(event: Event, dbHelper: DBHelper, activity: SimpleActivity? = null) {
+fun Context.scheduleNextEventReminder(event: Event, activity: SimpleActivity? = null) {
     if (event.getReminders().isEmpty()) {
         activity?.toast(R.string.saving)
         return

@@ -11,14 +11,23 @@ import com.simplemobiletools.calendar.pro.models.Event
 
 @Dao
 interface EventsDao {
+    @Query("SELECT * FROM events")
+    fun getAllEvents(): List<Event>
+
     @Query("SELECT * FROM events WHERE id = :id")
     fun getEventWithId(id: Long): Event?
 
     @Query("SELECT id FROM events")
     fun getEventIds(): List<Long>
 
-    @Query("SELECT * FROM events WHERE start_ts <= :startTS AND end_ts >= :endTS AND start_ts != 0")
-    fun getEventsFromTo(startTS: Long, endTS: Long): List<Event>
+    @Query("SELECT * FROM events WHERE start_ts <= :toTS AND end_ts >= :fromTS")
+    fun getEventsFromTo(toTS: Long, fromTS: Long): List<Event>
+
+    @Query("SELECT * FROM events WHERE id = :id AND start_ts <= :toTS AND end_ts >= :fromTS")
+    fun getEventFromToWithId(id: Long, toTS: Long, fromTS: Long): List<Event>
+
+    @Query("SELECT * FROM events WHERE start_ts <= :toTS AND end_ts >= :fromTS AND start_ts != 0 AND event_type IN (:eventTypeIds)")
+    fun getEventsFromToWithTypes(toTS: Long, fromTS: Long, eventTypeIds: List<Long>): List<Event>
 
     @Query("SELECT id FROM events WHERE import_id = :importId")
     fun getEventIdWithImportId(importId: String): Long?

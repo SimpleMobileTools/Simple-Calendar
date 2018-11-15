@@ -2,6 +2,7 @@ package com.simplemobiletools.calendar.pro.helpers
 
 import android.app.Activity
 import android.content.Context
+import androidx.collection.LongSparseArray
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.models.Event
@@ -261,38 +262,50 @@ class EventsHelper(val context: Context) {
     }
 
     fun getEventsSync(fromTS: Long, toTS: Long, eventId: Long = -1L, applyTypeFilter: Boolean, callback: (events: ArrayList<Event>) -> Unit) {
-        /*var events = ArrayList<Event>()
+        var events: ArrayList<Event>
 
-        var selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_REPEAT_INTERVAL IS NULL AND $COL_START_TS != 0"
-        var selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_START_TS != 0"
-        if (eventId != -1L) {
-            selection += " AND $MAIN_TABLE_NAME.$COL_ID = $eventId"
-        }
+        //var selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_REPEAT_INTERVAL IS NULL AND $COL_START_TS != 0"
 
-        if (applyTypeFilter) {
+        events = if (applyTypeFilter) {
             val displayEventTypes = context.config.displayEventTypes
             if (displayEventTypes.isEmpty()) {
                 callback(ArrayList())
                 return
             } else {
-                val types = TextUtils.join(",", displayEventTypes)
-                selection += " AND $COL_EVENT_TYPE IN ($types)"
+                eventsDB.getEventsFromToWithTypes(toTS, fromTS, context.config.getDisplayEventTypessAsList()).toMutableList() as ArrayList<Event>
+            }
+        } else {
+            if (eventId == -1L) {
+                eventsDB.getEventsFromTo(toTS, fromTS).toMutableList() as ArrayList<Event>
+            } else {
+                eventsDB.getEventFromToWithId(eventId, toTS, fromTS).toMutableList() as ArrayList<Event>
             }
         }
 
-        val selectionArgs = arrayOf(toTS.toString(), fromTS.toString())
+        /*val selectionArgs = arrayOf(toTS.toString(), fromTS.toString())
         val cursor = getEventsCursor(selection, selectionArgs)
         events.addAll(fillEvents(cursor))
 
         events.addAll(getRepeatableEventsFor(fromTS, toTS, eventId, applyTypeFilter))
 
-        events.addAll(getAllDayEvents(fromTS, eventId, applyTypeFilter))
+        events.addAll(getAllDayEvents(fromTS, eventId, applyTypeFilter))*/
 
         events = events
                 .asSequence()
                 .distinct()
                 .filterNot { context.eventsHelper.getEventRepetitionIgnoredOccurrences(it).contains(Formatter.getDayCodeFromTS(it.startTS)) }
                 .toMutableList() as ArrayList<Event>
-        callback(events)*/
+
+        val eventTypeColors = LongSparseArray<Int>()
+        context.eventTypesDB.getEventTypes().forEach {
+            eventTypeColors.put(it.id!!, it.color)
+        }
+
+        events.forEach {
+            it.updateIsPastEvent()
+            it.color = eventTypeColors.get(it.eventType)!!
+        }
+
+        callback(events)
     }
 }
