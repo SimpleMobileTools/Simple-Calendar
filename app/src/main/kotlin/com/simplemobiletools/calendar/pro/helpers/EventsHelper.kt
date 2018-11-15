@@ -282,13 +282,7 @@ class EventsHelper(val context: Context) {
             }
         }
 
-        /*val selectionArgs = arrayOf(toTS.toString(), fromTS.toString())
-        val cursor = getEventsCursor(selection, selectionArgs)
-        events.addAll(fillEvents(cursor))
-
-        events.addAll(getRepeatableEventsFor(fromTS, toTS, eventId, applyTypeFilter))
-
-        events.addAll(getAllDayEvents(fromTS, eventId, applyTypeFilter))*/
+        // events.addAll(getRepeatableEventsFor(fromTS, toTS, eventId, applyTypeFilter))
 
         events = events
                 .asSequence()

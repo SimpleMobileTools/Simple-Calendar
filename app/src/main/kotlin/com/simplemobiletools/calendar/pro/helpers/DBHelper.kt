@@ -180,28 +180,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         return events
     }
 
-    private fun getAllDayEvents(fromTS: Long, eventId: Long = -1L, applyTypeFilter: Boolean = false): List<Event> {
-        val events = ArrayList<Event>()
-        var selection = "($COL_FLAGS & $FLAG_ALL_DAY) != 0"
-        if (eventId != -1L)
-            selection += " AND $MAIN_TABLE_NAME.$COL_ID = $eventId"
-
-        if (applyTypeFilter) {
-            val displayEventTypes = context.config.displayEventTypes
-            if (displayEventTypes.isEmpty()) {
-                return ArrayList()
-            } else {
-                val types = TextUtils.join(",", displayEventTypes)
-                selection += " AND $COL_EVENT_TYPE IN ($types)"
-            }
-        }
-
-        val dayCode = Formatter.getDayCodeFromTS(fromTS)
-        val cursor = getEventsCursor(selection)
-        events.addAll(fillEvents(cursor).filter { dayCode == Formatter.getDayCodeFromTS(it.startTS) })
-        return events
-    }
-
     fun getRunningEvents(): List<Event> {
         val events = ArrayList<Event>()
         val ts = getNowSeconds()
