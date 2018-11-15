@@ -85,8 +85,8 @@ class EventsHelper(val context: Context) {
             return
         }
 
-        val id = eventsDB.insertOrUpdate(event)
-        event.id = id
+        event.updateIsEventRepeatable()
+        event.id = eventsDB.insertOrUpdate(event)
 
         if (event.repeatInterval != 0 && event.parentId == 0L) {
             eventRepetitionsDB.insertOrUpdate(event.getEventRepetition())
@@ -109,8 +109,8 @@ class EventsHelper(val context: Context) {
                     continue
                 }
 
-                val id = eventsDB.insertOrUpdate(event)
-                event.id = id
+                event.updateIsEventRepeatable()
+                event.id = eventsDB.insertOrUpdate(event)
 
                 if (event.repeatInterval != 0 && event.parentId == 0L) {
                     eventRepetitionsDB.insertOrUpdate(event.getEventRepetition())
@@ -127,6 +127,7 @@ class EventsHelper(val context: Context) {
     }
 
     fun updateEvent(activity: Activity? = null, event: Event, updateAtCalDAV: Boolean, callback: (() -> Unit)? = null) {
+        event.updateIsEventRepeatable()
         eventsDB.insertOrUpdate(event)
 
         if (event.repeatInterval == 0) {

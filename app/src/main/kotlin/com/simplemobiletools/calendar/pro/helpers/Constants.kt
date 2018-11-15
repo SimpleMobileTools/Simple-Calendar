@@ -76,6 +76,7 @@ const val REPEAT_ORDER_WEEKDAY = 4                      // i.e. every 4th sunday
 // special event flags
 const val FLAG_ALL_DAY = 1
 const val FLAG_IS_PAST_EVENT = 2
+const val FLAG_IS_REPEATABLE = 4
 
 // constants related to ICS file exporting / importing
 const val BEGIN_CALENDAR = "BEGIN:VCALENDAR"
