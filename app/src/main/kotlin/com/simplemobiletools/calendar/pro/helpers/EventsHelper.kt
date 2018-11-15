@@ -93,7 +93,7 @@ class EventsHelper(val context: Context) {
         }
 
         context.updateWidgets()
-        //context.scheduleNextEventReminder(event, this, activity)
+        context.scheduleNextEventReminder(event, activity)
 
         if (addToCalDAV && event.source != SOURCE_SIMPLE_CALENDAR && config.caldavSync) {
             context.calDAVHelper.insertCalDAVEvent(event)
@@ -116,7 +116,7 @@ class EventsHelper(val context: Context) {
                     eventRepetitionsDB.insertOrUpdate(event.getEventRepetition())
                 }
 
-                //context.scheduleNextEventReminder(event, this)
+                context.scheduleNextEventReminder(event)
                 if (addToCalDAV && event.source != SOURCE_SIMPLE_CALENDAR && event.source != SOURCE_IMPORTED_ICS && config.caldavSync) {
                     context.calDAVHelper.insertCalDAVEvent(event)
                 }
@@ -126,7 +126,7 @@ class EventsHelper(val context: Context) {
         }
     }
 
-    fun updateEvent(activity: Activity? = null, event: Event, updateAtCalDAV: Boolean, callback: (() -> Unit)? = null) {
+    fun updateEvent(activity: SimpleActivity? = null, event: Event, updateAtCalDAV: Boolean, callback: (() -> Unit)? = null) {
         event.updateIsEventRepeatable()
         eventsDB.insertOrUpdate(event)
 
@@ -137,7 +137,7 @@ class EventsHelper(val context: Context) {
         }
 
         context.updateWidgets()
-        //context.scheduleNextEventReminder(event, this, activity)
+        context.scheduleNextEventReminder(event, activity)
         if (updateAtCalDAV && event.source != SOURCE_SIMPLE_CALENDAR && config.caldavSync) {
             context.calDAVHelper.updateCalDAVEvent(event)
         }
@@ -220,7 +220,7 @@ class EventsHelper(val context: Context) {
 
             val parentEvent = eventsDB.getEventWithId(parentEventId)
             if (parentEvent != null) {
-                //context.scheduleNextEventReminder(parentEvent, this)
+                context.scheduleNextEventReminder(parentEvent)
             }
         }
     }
