@@ -9,23 +9,19 @@ import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.helpers.REGULAR_EVENT_TYPE_ID
 import com.simplemobiletools.calendar.pro.interfaces.EventRepetitionExceptionsDao
-import com.simplemobiletools.calendar.pro.interfaces.EventRepetitionsDao
 import com.simplemobiletools.calendar.pro.interfaces.EventTypesDao
 import com.simplemobiletools.calendar.pro.interfaces.EventsDao
 import com.simplemobiletools.calendar.pro.models.Event
-import com.simplemobiletools.calendar.pro.models.EventRepetition
 import com.simplemobiletools.calendar.pro.models.EventRepetitionException
 import com.simplemobiletools.calendar.pro.models.EventType
 import java.util.concurrent.Executors
 
-@Database(entities = [Event::class, EventType::class, EventRepetition::class, EventRepetitionException::class], version = 1)
+@Database(entities = [Event::class, EventType::class, EventRepetitionException::class], version = 1)
 abstract class EventsDatabase : RoomDatabase() {
 
     abstract fun EventsDao(): EventsDao
 
     abstract fun EventTypesDao(): EventTypesDao
-
-    abstract fun EventRepetitionsDao(): EventRepetitionsDao
 
     abstract fun EventRepetitionExceptionsDao(): EventRepetitionExceptionsDao
 

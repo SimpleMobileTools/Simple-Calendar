@@ -74,6 +74,9 @@ interface EventsDao {
     @Query("UPDATE events SET import_id = :importId AND source = :source WHERE id = :id")
     fun updateEventImportIdAndSource(importId: String, source: String, id: Long)
 
+    @Query("UPDATE events SET repeat_limit = :repeatLimit WHERE id = :id")
+    fun updateEventRepetitionLimit(repeatLimit: Long, id: Long)
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertOrUpdate(event: Event): Long
 

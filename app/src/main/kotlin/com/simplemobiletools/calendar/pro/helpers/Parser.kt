@@ -46,7 +46,7 @@ class Parser {
                 repeatRule = REPEAT_LAST_DAY
             }
         }
-        return EventRepetition(null, 0, repeatInterval, repeatRule, repeatLimit)
+        return EventRepetition(repeatInterval, repeatRule, repeatLimit)
     }
 
     private fun getFrequencySeconds(interval: String) = when (interval) {

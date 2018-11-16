@@ -14,7 +14,6 @@ class EventsHelper(val context: Context) {
     private val config = context.config
     private val eventsDB = context.eventsDB
     private val eventTypesDB = context.eventTypesDB
-    private val eventRepetitionsDB = context.eventRepetitionsDB
 
     fun getEventTypes(activity: Activity, callback: (notes: ArrayList<EventType>) -> Unit) {
         Thread {
@@ -88,10 +87,6 @@ class EventsHelper(val context: Context) {
         event.updateIsEventRepeatable()
         event.id = eventsDB.insertOrUpdate(event)
 
-        if (event.repeatInterval != 0 && event.parentId == 0L) {
-            eventRepetitionsDB.insertOrUpdate(event.getEventRepetition())
-        }
-
         context.updateWidgets()
         context.scheduleNextEventReminder(event, activity)
 
@@ -112,10 +107,6 @@ class EventsHelper(val context: Context) {
                 event.updateIsEventRepeatable()
                 event.id = eventsDB.insertOrUpdate(event)
 
-                if (event.repeatInterval != 0 && event.parentId == 0L) {
-                    eventRepetitionsDB.insertOrUpdate(event.getEventRepetition())
-                }
-
                 context.scheduleNextEventReminder(event)
                 if (addToCalDAV && event.source != SOURCE_SIMPLE_CALENDAR && event.source != SOURCE_IMPORTED_ICS && config.caldavSync) {
                     context.calDAVHelper.insertCalDAVEvent(event)
@@ -129,12 +120,6 @@ class EventsHelper(val context: Context) {
     fun updateEvent(activity: SimpleActivity? = null, event: Event, updateAtCalDAV: Boolean, callback: (() -> Unit)? = null) {
         event.updateIsEventRepeatable()
         eventsDB.insertOrUpdate(event)
-
-        if (event.repeatInterval == 0) {
-            eventRepetitionsDB.deleteEventRepetitionsOfEvent(event.id!!)
-        } else {
-            eventRepetitionsDB.insertOrUpdate(event.getEventRepetition())
-        }
 
         context.updateWidgets()
         context.scheduleNextEventReminder(event, activity)
@@ -185,7 +170,7 @@ class EventsHelper(val context: Context) {
 
     fun addEventRepeatLimit(eventId: Long, limitTS: Long) {
         val time = Formatter.getDateTimeFromTS(limitTS)
-        eventRepetitionsDB.updateEventRepetitionLimit(limitTS - time.hourOfDay, eventId)
+        eventsDB.updateEventRepetitionLimit(limitTS - time.hourOfDay, eventId)
 
         if (config.caldavSync) {
             val event = eventsDB.getEventWithId(eventId)

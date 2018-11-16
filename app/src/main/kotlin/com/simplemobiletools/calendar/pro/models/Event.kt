@@ -135,8 +135,6 @@ data class Event(
 
     fun getCalDAVCalendarId() = if (source.startsWith(CALDAV)) (source.split("-").lastOrNull() ?: "0").toString().toInt() else 0
 
-    fun getEventRepetition() = EventRepetition(null, id!!, repeatInterval, repeatRule, repeatLimit)
-
     // check if its the proper week, for events repeating every x weeks
     fun isOnProperWeek(startTimes: LongSparseArray<Long>): Boolean {
         val initialWeekOfYear = Formatter.getDateTimeFromTS(startTimes[id!!]!!).weekOfWeekyear
