@@ -46,13 +46,10 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
-    private val CALDAV_SYNC_DELAY = 1000L
-
     private var showCalDAVRefreshToast = false
     private var mShouldFilterBeVisible = false
     private var mIsSearchOpen = false
     private var mLatestSearchQuery = ""
-    private var mCalDAVSyncHandler = Handler()
     private var mSearchMenuItem: MenuItem? = null
     private var shouldGoToTodayBeVisible = false
     private var goToTodayButton: MenuItem? = null
@@ -145,7 +142,6 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     override fun onStop() {
         super.onStop()
-        mCalDAVSyncHandler.removeCallbacksAndMessages(null)
         contentResolver.unregisterContentObserver(calDAVSyncObserver)
         closeSearch()
     }
@@ -380,18 +376,20 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         override fun onChange(selfChange: Boolean) {
             super.onChange(selfChange)
             if (!selfChange) {
-                mCalDAVSyncHandler.removeCallbacksAndMessages(null)
-                mCalDAVSyncHandler.postDelayed({
-                    recheckCalDAVCalendars {
-                        refreshViewPager()
-                        if (showCalDAVRefreshToast) {
-                            toast(R.string.refreshing_complete)
-                        }
-                        runOnUiThread {
-                            swipe_refresh_layout.isRefreshing = false
-                        }
-                    }
-                }, CALDAV_SYNC_DELAY)
+                calDAVChanged()
+            }
+        }
+    }
+
+    private fun calDAVChanged() {
+        contentResolver.unregisterContentObserver(calDAVSyncObserver)
+        recheckCalDAVCalendars {
+            refreshViewPager()
+            if (showCalDAVRefreshToast) {
+                toast(R.string.refreshing_complete)
+            }
+            runOnUiThread {
+                swipe_refresh_layout.isRefreshing = false
             }
         }
     }
