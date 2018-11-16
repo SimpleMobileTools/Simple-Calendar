@@ -245,11 +245,7 @@ class EventsHelper(val context: Context) {
     }
 
     fun getEventsSync(fromTS: Long, toTS: Long, eventId: Long = -1L, applyTypeFilter: Boolean, callback: (events: ArrayList<Event>) -> Unit) {
-        var events: ArrayList<Event>
-
-        //var selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_REPEAT_INTERVAL IS NULL AND $COL_START_TS != 0"
-
-        events = if (applyTypeFilter) {
+        var events = if (applyTypeFilter) {
             val displayEventTypes = context.config.displayEventTypes
             if (displayEventTypes.isEmpty()) {
                 callback(ArrayList())
@@ -265,7 +261,7 @@ class EventsHelper(val context: Context) {
             }
         }
 
-        // events.addAll(getRepeatableEventsFor(fromTS, toTS, eventId, applyTypeFilter))
+        events.addAll(getRepeatableEventsFor(fromTS, toTS, eventId, applyTypeFilter))
 
         events = events
                 .asSequence()
@@ -284,5 +280,129 @@ class EventsHelper(val context: Context) {
         }
 
         callback(events)
+    }
+
+    fun getRepeatableEventsFor(fromTS: Long, toTS: Long, eventId: Long = -1L, applyTypeFilter: Boolean = false): List<Event> {
+        val events = if (applyTypeFilter) {
+            val displayEventTypes = context.config.displayEventTypes
+            if (displayEventTypes.isEmpty()) {
+                return ArrayList()
+            } else {
+                eventsDB.getRepeatableEventsFromToWithTypes(toTS, context.config.getDisplayEventTypessAsList()).toMutableList() as ArrayList<Event>
+            }
+        } else {
+            if (eventId == -1L) {
+                eventsDB.getRepeatableEventsFromTo(toTS).toMutableList() as ArrayList<Event>
+            } else {
+                eventsDB.getRepeatableEventFromToWithId(eventId, toTS).toMutableList() as ArrayList<Event>
+            }
+        }
+
+        val startTimes = LongSparseArray<Long>()
+        val newEvents = ArrayList<Event>()
+        events.forEach {
+            startTimes.put(it.id!!, it.startTS)
+            if (it.repeatLimit >= 0) {
+                newEvents.addAll(getEventsRepeatingTillDateOrForever(fromTS, toTS, startTimes, it))
+            } else {
+                newEvents.addAll(getEventsRepeatingXTimes(fromTS, toTS, startTimes, it))
+            }
+        }
+
+        return newEvents
+    }
+
+    private fun getEventsRepeatingXTimes(fromTS: Long, toTS: Long, startTimes: LongSparseArray<Long>, event: Event): ArrayList<Event> {
+        val original = event.copy()
+        val events = ArrayList<Event>()
+        while (event.repeatLimit < 0 && event.startTS <= toTS) {
+            if (event.repeatInterval.isXWeeklyRepetition()) {
+                if (event.startTS.isTsOnProperDay(event)) {
+                    if (event.isOnProperWeek(startTimes)) {
+                        if (event.endTS >= fromTS) {
+                            event.copy().apply {
+                                updateIsPastEvent()
+                                color = event.color
+                                events.add(this)
+                            }
+                        }
+                        event.repeatLimit++
+                    }
+                }
+            } else {
+                if (event.endTS >= fromTS) {
+                    event.copy().apply {
+                        updateIsPastEvent()
+                        color = event.color
+                        events.add(this)
+                    }
+                } else if (event.getIsAllDay()) {
+                    val dayCode = Formatter.getDayCodeFromTS(fromTS)
+                    val endDayCode = Formatter.getDayCodeFromTS(event.endTS)
+                    if (dayCode == endDayCode) {
+                        event.copy().apply {
+                            updateIsPastEvent()
+                            color = event.color
+                            events.add(this)
+                        }
+                    }
+                }
+                event.repeatLimit++
+            }
+            event.addIntervalTime(original)
+        }
+        return events
+    }
+
+    private fun getEventsRepeatingTillDateOrForever(fromTS: Long, toTS: Long, startTimes: LongSparseArray<Long>, event: Event): ArrayList<Event> {
+        val original = event.copy()
+        val events = ArrayList<Event>()
+        while (event.startTS <= toTS && (event.repeatLimit == 0L || event.repeatLimit >= event.startTS)) {
+            if (event.endTS >= fromTS) {
+                if (event.repeatInterval.isXWeeklyRepetition()) {
+                    if (event.startTS.isTsOnProperDay(event)) {
+                        if (event.isOnProperWeek(startTimes)) {
+                            event.copy().apply {
+                                updateIsPastEvent()
+                                color = event.color
+                                events.add(this)
+                            }
+                        }
+                    }
+                } else {
+                    event.copy().apply {
+                        updateIsPastEvent()
+                        color = event.color
+                        events.add(this)
+                    }
+                }
+            }
+
+            if (event.getIsAllDay()) {
+                if (event.repeatInterval.isXWeeklyRepetition()) {
+                    if (event.endTS >= toTS && event.startTS.isTsOnProperDay(event)) {
+                        if (event.isOnProperWeek(startTimes)) {
+                            event.copy().apply {
+                                updateIsPastEvent()
+                                color = event.color
+                                events.add(this)
+                            }
+                        }
+                    }
+                } else {
+                    val dayCode = Formatter.getDayCodeFromTS(fromTS)
+                    val endDayCode = Formatter.getDayCodeFromTS(event.endTS)
+                    if (dayCode == endDayCode) {
+                        event.copy().apply {
+                            updateIsPastEvent()
+                            color = event.color
+                            events.add(this)
+                        }
+                    }
+                }
+            }
+            event.addIntervalTime(original)
+        }
+        return events
     }
 }

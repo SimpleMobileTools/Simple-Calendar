@@ -4,12 +4,8 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import android.text.TextUtils
 import androidx.collection.LongSparseArray
-import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.eventTypesDB
-import com.simplemobiletools.calendar.pro.extensions.isTsOnProperDay
-import com.simplemobiletools.calendar.pro.extensions.isXWeeklyRepetition
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.commons.extensions.getIntValue
 import com.simplemobiletools.commons.extensions.getLongValue
@@ -57,131 +53,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {}
 
-    fun getRepeatableEventsFor(fromTS: Long, toTS: Long, eventId: Long = -1L, applyTypeFilter: Boolean = false): List<Event> {
-        val newEvents = ArrayList<Event>()
-        //var selection = "$COL_REPEAT_INTERVAL != 0 AND $COL_START_TS <= $toTS AND $COL_START_TS != 0"
-        var selection = "$COL_START_TS <= $toTS AND $COL_START_TS != 0"
-        if (eventId != -1L)
-            selection += " AND $MAIN_TABLE_NAME.$COL_ID = $eventId"
-
-        if (applyTypeFilter) {
-            val displayEventTypes = context.config.displayEventTypes
-            if (displayEventTypes.isEmpty()) {
-                return ArrayList()
-            } else {
-                val types = TextUtils.join(",", displayEventTypes)
-                selection += " AND $COL_EVENT_TYPE IN ($types)"
-            }
-        }
-
-        val events = getEvents(selection)
-        val startTimes = LongSparseArray<Long>()
-        events.forEach {
-            startTimes.put(it.id!!, it.startTS)
-            if (it.repeatLimit >= 0) {
-                newEvents.addAll(getEventsRepeatingTillDateOrForever(fromTS, toTS, startTimes, it))
-            } else {
-                newEvents.addAll(getEventsRepeatingXTimes(fromTS, toTS, startTimes, it))
-            }
-        }
-
-        return newEvents
-    }
-
-    private fun getEventsRepeatingTillDateOrForever(fromTS: Long, toTS: Long, startTimes: LongSparseArray<Long>, event: Event): ArrayList<Event> {
-        val original = event.copy()
-        val events = ArrayList<Event>()
-        while (event.startTS <= toTS && (event.repeatLimit == 0L || event.repeatLimit >= event.startTS)) {
-            if (event.endTS >= fromTS) {
-                if (event.repeatInterval.isXWeeklyRepetition()) {
-                    if (event.startTS.isTsOnProperDay(event)) {
-                        if (event.isOnProperWeek(startTimes)) {
-                            event.copy().apply {
-                                updateIsPastEvent()
-                                color = event.color
-                                events.add(this)
-                            }
-                        }
-                    }
-                } else {
-                    event.copy().apply {
-                        updateIsPastEvent()
-                        color = event.color
-                        events.add(this)
-                    }
-                }
-            }
-
-            if (event.getIsAllDay()) {
-                if (event.repeatInterval.isXWeeklyRepetition()) {
-                    if (event.endTS >= toTS && event.startTS.isTsOnProperDay(event)) {
-                        if (event.isOnProperWeek(startTimes)) {
-                            event.copy().apply {
-                                updateIsPastEvent()
-                                color = event.color
-                                events.add(this)
-                            }
-                        }
-                    }
-                } else {
-                    val dayCode = Formatter.getDayCodeFromTS(fromTS)
-                    val endDayCode = Formatter.getDayCodeFromTS(event.endTS)
-                    if (dayCode == endDayCode) {
-                        event.copy().apply {
-                            updateIsPastEvent()
-                            color = event.color
-                            events.add(this)
-                        }
-                    }
-                }
-            }
-            event.addIntervalTime(original)
-        }
-        return events
-    }
-
-    private fun getEventsRepeatingXTimes(fromTS: Long, toTS: Long, startTimes: LongSparseArray<Long>, event: Event): ArrayList<Event> {
-        val original = event.copy()
-        val events = ArrayList<Event>()
-        while (event.repeatLimit < 0 && event.startTS <= toTS) {
-            if (event.repeatInterval.isXWeeklyRepetition()) {
-                if (event.startTS.isTsOnProperDay(event)) {
-                    if (event.isOnProperWeek(startTimes)) {
-                        if (event.endTS >= fromTS) {
-                            event.copy().apply {
-                                updateIsPastEvent()
-                                color = event.color
-                                events.add(this)
-                            }
-                        }
-                        event.repeatLimit++
-                    }
-                }
-            } else {
-                if (event.endTS >= fromTS) {
-                    event.copy().apply {
-                        updateIsPastEvent()
-                        color = event.color
-                        events.add(this)
-                    }
-                } else if (event.getIsAllDay()) {
-                    val dayCode = Formatter.getDayCodeFromTS(fromTS)
-                    val endDayCode = Formatter.getDayCodeFromTS(event.endTS)
-                    if (dayCode == endDayCode) {
-                        event.copy().apply {
-                            updateIsPastEvent()
-                            color = event.color
-                            events.add(this)
-                        }
-                    }
-                }
-                event.repeatLimit++
-            }
-            event.addIntervalTime(original)
-        }
-        return events
-    }
-
     fun getRunningEvents(): List<Event> {
         val events = ArrayList<Event>()
         val ts = getNowSeconds()
@@ -191,23 +62,7 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         val cursor = getEventsCursor(selection, selectionArgs)
         events.addAll(fillEvents(cursor))
 
-        events.addAll(getRepeatableEventsFor(ts, ts))
-        return events
-    }
-
-    private fun getEvents(selection: String): List<Event> {
-        val events = ArrayList<Event>()
-        var cursor: Cursor? = null
-        try {
-            cursor = getEventsCursor(selection)
-            if (cursor != null) {
-                val currEvents = fillEvents(cursor)
-                events.addAll(currEvents)
-            }
-        } finally {
-            cursor?.close()
-        }
-
+        //events.addAll(getRepeatableEventsFor(ts, ts))
         return events
     }
 

@@ -26,6 +26,15 @@ interface EventsDao {
     @Query("SELECT * FROM events WHERE start_ts <= :toTS AND end_ts >= :fromTS AND start_ts != 0 AND repeat_interval = 0 AND event_type IN (:eventTypeIds)")
     fun getOneTimeEventsFromToWithTypes(toTS: Long, fromTS: Long, eventTypeIds: List<Long>): List<Event>
 
+    @Query("SELECT * FROM events WHERE start_ts <= :toTS AND repeat_interval != 0")
+    fun getRepeatableEventsFromTo(toTS: Long): List<Event>
+
+    @Query("SELECT * FROM events WHERE id = :id AND start_ts <= :toTS AND repeat_interval != 0")
+    fun getRepeatableEventFromToWithId(id: Long, toTS: Long): List<Event>
+
+    @Query("SELECT * FROM events WHERE start_ts <= :toTS AND start_ts != 0 AND repeat_interval != 0 AND event_type IN (:eventTypeIds)")
+    fun getRepeatableEventsFromToWithTypes(toTS: Long, eventTypeIds: List<Long>): List<Event>
+
     @Query("SELECT * FROM events WHERE id IN (:ids) AND import_id != \"\"")
     fun getEventsByIdsWithImportIds(ids: List<Long>): List<Event>
 

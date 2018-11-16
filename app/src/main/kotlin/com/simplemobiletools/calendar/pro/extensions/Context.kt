@@ -166,7 +166,7 @@ fun Context.notifyEvent(originalEvent: Event) {
     var eventStartTS = if (event.getIsAllDay()) Formatter.getDayStartTS(Formatter.getDayCodeFromTS(event.startTS)) else event.startTS
     // make sure refer to the proper repeatable event instance with "Tomorrow", or the specific date
     if (event.repeatInterval != 0 && eventStartTS - event.reminder1Minutes * 60 < currentSeconds) {
-        val events = dbHelper.getRepeatableEventsFor(currentSeconds - WEEK_SECONDS, currentSeconds + YEAR_SECONDS, event.id!!)
+        val events = eventsHelper.getRepeatableEventsFor(currentSeconds - WEEK_SECONDS, currentSeconds + YEAR_SECONDS, event.id!!)
         for (currEvent in events) {
             eventStartTS = if (currEvent.getIsAllDay()) Formatter.getDayStartTS(Formatter.getDayCodeFromTS(currEvent.startTS)) else currEvent.startTS
             if (eventStartTS - currEvent.reminder1Minutes * 60 > currentSeconds) {
