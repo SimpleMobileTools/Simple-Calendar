@@ -248,7 +248,7 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun setupNewEvent() {
-        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
         event_title.requestFocus()
         updateActionBarTitle(getString(R.string.new_event))
         val isLastCaldavCalendarOK = config.caldavSync && config.getSyncedCalendarIdsAsList().contains(config.lastUsedCaldavCalendarId)
