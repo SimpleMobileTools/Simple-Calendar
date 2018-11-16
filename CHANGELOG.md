@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 6.0.0 *(2018-11-16)*
+----------------------------
+
+ * Initial Pro version
+ * Fully rewrote the database storing events
+ * Fixed some issues related to importing events from .ics files and CalDAV sync
+
 Version 5.1.2 *(2018-11-09)*
 ----------------------------
 
