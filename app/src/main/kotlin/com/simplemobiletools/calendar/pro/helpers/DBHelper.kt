@@ -53,19 +53,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {}
 
-    fun getRunningEvents(): List<Event> {
-        val events = ArrayList<Event>()
-        val ts = getNowSeconds()
-        //val selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_REPEAT_INTERVAL IS NULL AND $COL_START_TS != 0"
-        val selection = "$COL_START_TS <= ? AND $COL_END_TS >= ? AND $COL_START_TS != 0"
-        val selectionArgs = arrayOf(ts.toString(), ts.toString())
-        val cursor = getEventsCursor(selection, selectionArgs)
-        events.addAll(fillEvents(cursor))
-
-        //events.addAll(getRepeatableEventsFor(ts, ts))
-        return events
-    }
-
     fun getEventsToExport(includePast: Boolean): ArrayList<Event> {
         val currTime = getNowSeconds().toString()
         var events = ArrayList<Event>()

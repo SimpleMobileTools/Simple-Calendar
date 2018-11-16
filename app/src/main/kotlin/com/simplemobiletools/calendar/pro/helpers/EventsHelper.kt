@@ -8,7 +8,6 @@ import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.EventRepetitionException
 import com.simplemobiletools.calendar.pro.models.EventType
-import java.util.*
 
 class EventsHelper(val context: Context) {
     private val config = context.config
@@ -403,6 +402,13 @@ class EventsHelper(val context: Context) {
             }
             event.addIntervalTime(original)
         }
+        return events
+    }
+
+    fun getRunningEvents(): List<Event> {
+        val ts = getNowSeconds()
+        val events = eventsDB.getOneTimeEventsFromTo(ts, ts).toMutableList() as ArrayList<Event>
+        events.addAll(getRepeatableEventsFor(ts, ts))
         return events
     }
 }

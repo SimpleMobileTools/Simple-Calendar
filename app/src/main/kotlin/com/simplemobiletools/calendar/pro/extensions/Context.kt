@@ -78,7 +78,7 @@ fun Context.updateListWidget() {
 }
 
 fun Context.scheduleAllEvents() {
-    val events = eventsDB.getEventsAtReboot(DateTime.now().seconds())
+    val events = eventsDB.getEventsAtReboot(getNowSeconds())
     events.forEach {
         scheduleNextEventReminder(it)
     }
@@ -154,7 +154,7 @@ fun Context.getRepetitionText(seconds: Int) = when (seconds) {
 }
 
 fun Context.notifyRunningEvents() {
-    dbHelper.getRunningEvents().filter { it.getReminders().isNotEmpty() }.forEach {
+    eventsHelper.getRunningEvents().filter { it.getReminders().isNotEmpty() }.forEach {
         notifyEvent(it)
     }
 }
