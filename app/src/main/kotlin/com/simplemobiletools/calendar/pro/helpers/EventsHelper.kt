@@ -255,13 +255,13 @@ class EventsHelper(val context: Context) {
                 callback(ArrayList())
                 return
             } else {
-                eventsDB.getEventsFromToWithTypes(toTS, fromTS, context.config.getDisplayEventTypessAsList()).toMutableList() as ArrayList<Event>
+                eventsDB.getOneTimeEventsFromToWithTypes(toTS, fromTS, context.config.getDisplayEventTypessAsList()).toMutableList() as ArrayList<Event>
             }
         } else {
             if (eventId == -1L) {
-                eventsDB.getEventsFromTo(toTS, fromTS).toMutableList() as ArrayList<Event>
+                eventsDB.getOneTimeEventsFromTo(toTS, fromTS).toMutableList() as ArrayList<Event>
             } else {
-                eventsDB.getEventFromToWithId(eventId, toTS, fromTS).toMutableList() as ArrayList<Event>
+                eventsDB.getOneTimeEventFromToWithId(eventId, toTS, fromTS).toMutableList() as ArrayList<Event>
             }
         }
 

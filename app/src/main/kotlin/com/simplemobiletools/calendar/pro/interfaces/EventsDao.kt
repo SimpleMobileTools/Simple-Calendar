@@ -17,14 +17,14 @@ interface EventsDao {
     @Query("SELECT * FROM events WHERE id = :id")
     fun getEventWithId(id: Long): Event?
 
-    @Query("SELECT * FROM events WHERE start_ts <= :toTS AND end_ts >= :fromTS")
-    fun getEventsFromTo(toTS: Long, fromTS: Long): List<Event>
+    @Query("SELECT * FROM events WHERE start_ts <= :toTS AND end_ts >= :fromTS AND repeat_interval = 0")
+    fun getOneTimeEventsFromTo(toTS: Long, fromTS: Long): List<Event>
 
-    @Query("SELECT * FROM events WHERE id = :id AND start_ts <= :toTS AND end_ts >= :fromTS")
-    fun getEventFromToWithId(id: Long, toTS: Long, fromTS: Long): List<Event>
+    @Query("SELECT * FROM events WHERE id = :id AND start_ts <= :toTS AND end_ts >= :fromTS AND repeat_interval = 0")
+    fun getOneTimeEventFromToWithId(id: Long, toTS: Long, fromTS: Long): List<Event>
 
-    @Query("SELECT * FROM events WHERE start_ts <= :toTS AND end_ts >= :fromTS AND start_ts != 0 AND event_type IN (:eventTypeIds)")
-    fun getEventsFromToWithTypes(toTS: Long, fromTS: Long, eventTypeIds: List<Long>): List<Event>
+    @Query("SELECT * FROM events WHERE start_ts <= :toTS AND end_ts >= :fromTS AND start_ts != 0 AND repeat_interval = 0 AND event_type IN (:eventTypeIds)")
+    fun getOneTimeEventsFromToWithTypes(toTS: Long, fromTS: Long, eventTypeIds: List<Long>): List<Event>
 
     @Query("SELECT * FROM events WHERE id IN (:ids) AND import_id != \"\"")
     fun getEventsByIdsWithImportIds(ids: List<Long>): List<Event>
