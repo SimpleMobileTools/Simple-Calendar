@@ -229,9 +229,9 @@
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackground"
             android:paddingLeft="@dimen/normal_margin"
-            android:paddingTop="@dimen/activity_margin"
+            android:paddingTop="@dimen/bigger_margin"
             android:paddingRight="@dimen/normal_margin"
-            android:paddingBottom="@dimen/activity_margin">
+            android:paddingBottom="@dimen/bigger_margin">
 
             <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/settings_reminder_audio_stream_label"
