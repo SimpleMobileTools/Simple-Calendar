@@ -99,6 +99,9 @@ interface EventsDao {
     @Query("UPDATE events SET repeat_limit = :repeatLimit WHERE id = :id")
     fun updateEventRepetitionLimit(repeatLimit: Long, id: Long)
 
+    @Query("UPDATE events SET repetition_exceptions = :repetitionExceptions WHERE id = :id")
+    fun updateEventRepetitionExceptions(repetitionExceptions: ArrayList<String>, id: Long)
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertOrUpdate(event: Event): Long
 

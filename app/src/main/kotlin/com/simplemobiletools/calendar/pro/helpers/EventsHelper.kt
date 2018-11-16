@@ -6,7 +6,6 @@ import androidx.collection.LongSparseArray
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.models.Event
-import com.simplemobiletools.calendar.pro.models.EventRepetitionException
 import com.simplemobiletools.calendar.pro.models.EventType
 
 class EventsHelper(val context: Context) {
@@ -67,14 +66,6 @@ class EventsHelper(val context: Context) {
         }
 
         eventTypesDB.deleteEventTypes(typesToDelete)
-    }
-
-    fun getEventRepetitionIgnoredOccurrences(event: Event): ArrayList<String> {
-        return if (event.id == null || event.repeatInterval == 0) {
-            ArrayList()
-        } else {
-            context.eventRepetitionExceptionsDB.getEventRepetitionExceptions(event.id!!).toMutableList() as ArrayList<String>
-        }
     }
 
     fun insertEvent(activity: SimpleActivity? = null, event: Event, addToCalDAV: Boolean, callback: ((id: Long) -> Unit)? = null) {
@@ -196,21 +187,14 @@ class EventsHelper(val context: Context) {
     }
 
     fun addEventRepeatException(parentEventId: Long, occurrenceTS: Long, addToCalDAV: Boolean, childImportId: String? = null) {
-        fillExceptionValues(parentEventId, occurrenceTS, addToCalDAV, childImportId) {
-            context.eventRepetitionExceptionsDB.insert(it)
-
-            val parentEvent = eventsDB.getEventWithId(parentEventId)
-            if (parentEvent != null) {
-                context.scheduleNextEventReminder(parentEvent)
-            }
-        }
+        fillExceptionValues(parentEventId, occurrenceTS, addToCalDAV, childImportId)
     }
 
-    private fun fillExceptionValues(parentEventId: Long, occurrenceTS: Long, addToCalDAV: Boolean, childImportId: String?, callback: (eventRepetitionException: EventRepetitionException) -> Unit) {
+    private fun fillExceptionValues(parentEventId: Long, occurrenceTS: Long, addToCalDAV: Boolean, childImportId: String?) {
         val childEvent = eventsDB.getEventWithId(parentEventId) ?: return
 
         childEvent.apply {
-            id = 0
+            id = null
             parentId = parentEventId
             startTS = 0
             endTS = 0
@@ -221,17 +205,17 @@ class EventsHelper(val context: Context) {
 
         insertEvent(null, childEvent, false) {
             val childEventId = it
-            val eventRepetitionException = EventRepetitionException(null, Formatter.getDayCodeFromTS(occurrenceTS), parentEventId)
-            callback(eventRepetitionException)
-
             Thread {
+                val parentEvent = eventsDB.getEventWithId(parentEventId) ?: return@Thread
+                val parentEventRepetitionExceptions = parentEvent.repetitionExceptions
+                parentEventRepetitionExceptions.add(Formatter.getDayCodeFromTS(occurrenceTS))
+                eventsDB.updateEventRepetitionExceptions(parentEventRepetitionExceptions, parentEventId)
+                context.scheduleNextEventReminder(parentEvent)
+
                 if (addToCalDAV && config.caldavSync) {
-                    val parentEvent = eventsDB.getEventWithId(parentEventId)
-                    if (parentEvent != null) {
-                        val newId = context.calDAVHelper.insertEventRepeatException(parentEvent, occurrenceTS)
-                        val newImportId = "${parentEvent.source}-$newId"
-                        eventsDB.updateEventImportIdAndSource(newImportId, parentEvent.source, childEventId)
-                    }
+                    val newId = context.calDAVHelper.insertEventRepeatException(parentEvent, occurrenceTS)
+                    val newImportId = "${parentEvent.source}-$newId"
+                    eventsDB.updateEventImportIdAndSource(newImportId, parentEvent.source, childEventId)
                 }
             }.start()
         }
@@ -265,7 +249,7 @@ class EventsHelper(val context: Context) {
         events = events
                 .asSequence()
                 .distinct()
-                .filterNot { context.eventsHelper.getEventRepetitionIgnoredOccurrences(it).contains(Formatter.getDayCodeFromTS(it.startTS)) }
+                .filterNot { it.repetitionExceptions.contains(Formatter.getDayCodeFromTS(it.startTS)) }
                 .toMutableList() as ArrayList<Event>
 
         val eventTypeColors = LongSparseArray<Int>()
