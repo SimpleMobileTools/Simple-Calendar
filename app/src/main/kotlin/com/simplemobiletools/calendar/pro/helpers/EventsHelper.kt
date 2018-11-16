@@ -84,7 +84,6 @@ class EventsHelper(val context: Context) {
             return
         }
 
-        event.updateIsEventRepeatable()
         event.id = eventsDB.insertOrUpdate(event)
 
         context.updateWidgets()
@@ -104,7 +103,6 @@ class EventsHelper(val context: Context) {
                     continue
                 }
 
-                event.updateIsEventRepeatable()
                 event.id = eventsDB.insertOrUpdate(event)
 
                 context.scheduleNextEventReminder(event)
@@ -118,7 +116,6 @@ class EventsHelper(val context: Context) {
     }
 
     fun updateEvent(activity: SimpleActivity? = null, event: Event, updateAtCalDAV: Boolean, callback: (() -> Unit)? = null) {
-        event.updateIsEventRepeatable()
         eventsDB.insertOrUpdate(event)
 
         context.updateWidgets()

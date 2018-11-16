@@ -151,10 +151,6 @@ data class Event(
         isPastEvent = endTSToCheck < getNowSeconds()
     }
 
-    fun updateIsEventRepeatable() {
-        flags = flags.addBitIf(repeatInterval != 0, FLAG_IS_REPEATABLE)
-    }
-
     var isPastEvent: Boolean
         get() = flags and FLAG_IS_PAST_EVENT != 0
         set(isPastEvent) {
