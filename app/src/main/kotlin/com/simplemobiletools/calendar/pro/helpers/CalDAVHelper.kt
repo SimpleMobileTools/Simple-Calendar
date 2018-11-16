@@ -213,6 +213,18 @@ class CalDAVHelper(val context: Context) {
                     }
 
                     fetchedEventIds.add(importId)
+
+                    // if the event is an exception from another events repeat rule, find the original parent event
+                    if (originalInstanceTime != 0L) {
+                        val parentImportId = "$source-$originalId"
+                        val parentEventId = context.eventsDB.getEventIdWithImportId(parentImportId)
+                        if (parentEventId != null) {
+                            event.parentId = parentEventId
+                            eventsHelper.addEventRepetitionException(parentEventId, originalInstanceTime / 1000L, false)
+                            continue
+                        }
+                    }
+
                     if (importIdsMap.containsKey(event.importId)) {
                         val existingEvent = importIdsMap[importId]
                         val originalEventId = existingEvent!!.id
@@ -221,6 +233,7 @@ class CalDAVHelper(val context: Context) {
                             this.id = null
                             color = 0
                             lastUpdated = 0L
+                            repetitionExceptions = ArrayList()
                         }
 
                         if (existingEvent.hashCode() != event.hashCode() && title.isNotEmpty()) {
@@ -231,16 +244,6 @@ class CalDAVHelper(val context: Context) {
                         if (title.isNotEmpty()) {
                             importIdsMap[event.importId] = event
                             eventsHelper.insertEvent(null, event, false)
-                        }
-
-                        // if the event is an exception from another events repeat rule, find the original parent event
-                        if (originalInstanceTime != 0L) {
-                            val parentImportId = "$source-$originalId"
-                            val parentEventId = context.eventsDB.getEventIdWithImportId(parentImportId)
-                            if (parentEventId != null) {
-                                event.parentId = parentEventId
-                                eventsHelper.addEventRepeatException(parentEventId, originalInstanceTime / 1000L, false, event.importId)
-                            }
                         }
                     }
                 } while (cursor.moveToNext())

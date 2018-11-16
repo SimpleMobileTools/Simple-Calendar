@@ -186,39 +186,18 @@ class EventsHelper(val context: Context) {
         }.start()
     }
 
-    fun addEventRepeatException(parentEventId: Long, occurrenceTS: Long, addToCalDAV: Boolean, childImportId: String? = null) {
-        fillExceptionValues(parentEventId, occurrenceTS, addToCalDAV, childImportId)
-    }
+    fun addEventRepetitionException(parentEventId: Long, occurrenceTS: Long, addToCalDAV: Boolean) {
+        Thread {
+            val parentEvent = eventsDB.getEventWithId(parentEventId) ?: return@Thread
+            val parentEventRepetitionExceptions = parentEvent.repetitionExceptions
+            parentEventRepetitionExceptions.add(Formatter.getDayCodeFromTS(occurrenceTS))
+            eventsDB.updateEventRepetitionExceptions(parentEventRepetitionExceptions, parentEventId)
+            context.scheduleNextEventReminder(parentEvent)
 
-    private fun fillExceptionValues(parentEventId: Long, occurrenceTS: Long, addToCalDAV: Boolean, childImportId: String?) {
-        val childEvent = eventsDB.getEventWithId(parentEventId) ?: return
-
-        childEvent.apply {
-            id = null
-            parentId = parentEventId
-            startTS = 0
-            endTS = 0
-            if (childImportId != null) {
-                importId = childImportId
+            if (addToCalDAV && config.caldavSync) {
+                context.calDAVHelper.insertEventRepeatException(parentEvent, occurrenceTS)
             }
-        }
-
-        insertEvent(null, childEvent, false) {
-            val childEventId = it
-            Thread {
-                val parentEvent = eventsDB.getEventWithId(parentEventId) ?: return@Thread
-                val parentEventRepetitionExceptions = parentEvent.repetitionExceptions
-                parentEventRepetitionExceptions.add(Formatter.getDayCodeFromTS(occurrenceTS))
-                eventsDB.updateEventRepetitionExceptions(parentEventRepetitionExceptions, parentEventId)
-                context.scheduleNextEventReminder(parentEvent)
-
-                if (addToCalDAV && config.caldavSync) {
-                    val newId = context.calDAVHelper.insertEventRepeatException(parentEvent, occurrenceTS)
-                    val newImportId = "${parentEvent.source}-$newId"
-                    eventsDB.updateEventImportIdAndSource(newImportId, parentEvent.source, childEventId)
-                }
-            }.start()
-        }
+        }.start()
     }
 
     fun getEvents(fromTS: Long, toTS: Long, eventId: Long = -1L, applyTypeFilter: Boolean = true, callback: (events: ArrayList<Event>) -> Unit) {

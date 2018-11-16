@@ -162,7 +162,7 @@ class IcsImporter(val activity: SimpleActivity) {
                             } else {
                                 eventsHelper.insertEvent(activity, event, true) {
                                     for (exceptionTS in curRepeatExceptions) {
-                                        eventsHelper.addEventRepeatException(it, exceptionTS, true)
+                                        eventsHelper.addEventRepetitionException(it, exceptionTS, true)
                                     }
                                     existingEvents.add(event)
                                 }
