@@ -194,7 +194,7 @@ class IcsImporter(val activity: SimpleActivity) {
     private fun getTimestamp(fullString: String): Long {
         return try {
             if (fullString.startsWith(';')) {
-                val value = fullString.substring(fullString.lastIndexOf(':') + 1)
+                val value = fullString.substring(fullString.lastIndexOf(':') + 1).replace(" ", "")
                 if (!value.contains("T")) {
                     curFlags = curFlags or FLAG_ALL_DAY
                 }
