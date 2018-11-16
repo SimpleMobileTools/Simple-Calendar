@@ -53,32 +53,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {}
 
-    fun getEventsToExport(includePast: Boolean): ArrayList<Event> {
-        val currTime = getNowSeconds().toString()
-        var events = ArrayList<Event>()
-
-        // non repeating events
-        val cursor = if (includePast) {
-            getEventsCursor()
-        } else {
-            val selection = "$COL_END_TS > ?"
-            val selectionArgs = arrayOf(currTime)
-            getEventsCursor(selection, selectionArgs)
-        }
-        events.addAll(fillEvents(cursor))
-
-        // repeating events
-        /*if (!includePast) {
-            val selection = "$COL_REPEAT_INTERVAL != 0 AND ($COL_REPEAT_LIMIT == 0 OR $COL_REPEAT_LIMIT > ?)"
-            val selectionArgs = arrayOf(currTime)
-            cursor = getEventsCursor(selection, selectionArgs)
-            events.addAll(fillEvents(cursor))
-        }*/
-
-        events = events.distinctBy { it.id } as ArrayList<Event>
-        return events
-    }
-
     private fun getEventsCursor(selection: String = "", selectionArgs: Array<String>? = null): Cursor? {
         return mDb.query(MAIN_TABLE_NAME, allColumns, selection, selectionArgs, null, null, COL_START_TS)
     }

@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.dialog_export_events.view.*
 import java.io.File
 import java.util.*
 
-class ExportEventsDialog(val activity: SimpleActivity, val path: String, val callback: (exportPastEvents: Boolean, file: File, eventTypes: HashSet<String>) -> Unit) {
+class ExportEventsDialog(val activity: SimpleActivity, val path: String, val callback: (exportPastEvents: Boolean, file: File, eventTypes: ArrayList<Long>) -> Unit) {
 
     init {
         val view = (activity.layoutInflater.inflate(R.layout.dialog_export_events, null) as ViewGroup).apply {
@@ -49,7 +49,7 @@ class ExportEventsDialog(val activity: SimpleActivity, val path: String, val cal
                                         return@setOnClickListener
                                     }
 
-                                    val eventTypes = (view.export_events_types_list.adapter as FilterEventTypeAdapter).getSelectedItemsSet()
+                                    val eventTypes = (view.export_events_types_list.adapter as FilterEventTypeAdapter).getSelectedItemsList()
                                     callback(view.export_events_checkbox.isChecked, file, eventTypes)
                                     dismiss()
                                 }

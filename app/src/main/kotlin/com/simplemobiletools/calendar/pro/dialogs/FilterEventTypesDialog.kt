@@ -28,7 +28,7 @@ class FilterEventTypesDialog(val activity: SimpleActivity, val callback: () -> U
     }
 
     private fun confirmEventTypes() {
-        val selectedItems = (view.filter_event_types_list.adapter as FilterEventTypeAdapter).getSelectedItemsSet()
+        val selectedItems = (view.filter_event_types_list.adapter as FilterEventTypeAdapter).getSelectedItemsList().map { it.toString() }.toHashSet()
         if (activity.config.displayEventTypes != selectedItems) {
             activity.config.displayEventTypes = selectedItems
             callback()

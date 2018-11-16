@@ -34,7 +34,7 @@ class FilterEventTypeAdapter(val activity: SimpleActivity, val eventTypes: List<
         notifyItemChanged(pos)
     }
 
-    fun getSelectedItemsSet() = selectedKeys.asSequence().map { it.toString() }.toHashSet()
+    fun getSelectedItemsList() = selectedKeys.asSequence().map { it }.toMutableList() as ArrayList<Long>
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = activity.layoutInflater.inflate(R.layout.filter_event_type_view, parent, false)

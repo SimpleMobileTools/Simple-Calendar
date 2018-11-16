@@ -291,7 +291,7 @@ class EventsHelper(val context: Context) {
             }
         } else {
             if (eventId == -1L) {
-                eventsDB.getRepeatableEventsFromTo(toTS).toMutableList() as ArrayList<Event>
+                eventsDB.getRepeatableEventsFromToWithTypes(toTS).toMutableList() as ArrayList<Event>
             } else {
                 eventsDB.getRepeatableEventFromToWithId(eventId, toTS).toMutableList() as ArrayList<Event>
             }
@@ -409,6 +409,20 @@ class EventsHelper(val context: Context) {
         val ts = getNowSeconds()
         val events = eventsDB.getOneTimeEventsFromTo(ts, ts).toMutableList() as ArrayList<Event>
         events.addAll(getRepeatableEventsFor(ts, ts))
+        return events
+    }
+
+    fun getEventsToExport(includePast: Boolean, eventTypes: ArrayList<Long>): ArrayList<Event> {
+        val currTS = getNowSeconds()
+        var events = ArrayList<Event>()
+        if (includePast) {
+            events.addAll(eventsDB.getAllEventsWithTypes(eventTypes))
+        } else {
+            events.addAll(eventsDB.getOneTimeFutureEventsWithTypes(currTS, eventTypes))
+            events.addAll(eventsDB.getRepeatableFutureEventsWithTypes(currTS, eventTypes))
+        }
+
+        events = events.distinctBy { it.id } as ArrayList<Event>
         return events
     }
 }

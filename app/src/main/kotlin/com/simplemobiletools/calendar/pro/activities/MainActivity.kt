@@ -699,11 +699,11 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         FilePickerDialog(this, pickFile = false, showFAB = true) {
             ExportEventsDialog(this, it) { exportPastEvents, file, eventTypes ->
                 Thread {
-                    val events = dbHelper.getEventsToExport(exportPastEvents).filter { eventTypes.contains(it.eventType.toString()) }
+                    val events = eventsHelper.getEventsToExport(exportPastEvents, eventTypes)
                     if (events.isEmpty()) {
                         toast(R.string.no_entries_for_exporting)
                     } else {
-                        IcsExporter().exportEvents(this, file, events as ArrayList<Event>, true) {
+                        IcsExporter().exportEvents(this, file, events, true) {
                             toast(when (it) {
                                 IcsExporter.ExportResult.EXPORT_OK -> R.string.exporting_successful
                                 IcsExporter.ExportResult.EXPORT_PARTIAL -> R.string.exporting_some_entries_failed
