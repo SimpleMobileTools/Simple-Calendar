@@ -25,7 +25,7 @@ class IcsImporter(val activity: SimpleActivity) {
     private var curImportId = ""
     private var curFlags = 0
     private var curReminderMinutes = ArrayList<Int>()
-    private var curRepeatExceptions = ArrayList<Long>()
+    private var curRepeatExceptions = ArrayList<String>()
     private var curRepeatInterval = 0
     private var curRepeatLimit = 0L
     private var curRepeatRule = 0
@@ -118,7 +118,7 @@ class IcsImporter(val activity: SimpleActivity) {
                             value = value.substring(0, value.length - 1)
                         }
 
-                        curRepeatExceptions.add(getTimestamp(value))
+                        curRepeatExceptions.add(Formatter.getDayCodeFromTS(getTimestamp(value)))
                     } else if (line.startsWith(LOCATION)) {
                         curLocation = getLocation(line.substring(LOCATION.length).replace("\\,", ","))
                     } else if (line == END_ALARM) {
@@ -143,7 +143,7 @@ class IcsImporter(val activity: SimpleActivity) {
                         val source = if (calDAVCalendarId == 0 || eventType?.isSyncedEventType() == false) SOURCE_IMPORTED_ICS else "$CALDAV-$calDAVCalendarId"
                         val event = Event(null, curStart, curEnd, curTitle, curLocation, curDescription, curReminderMinutes.getOrElse(0) { -1 },
                                 curReminderMinutes.getOrElse(1) { -1 }, curReminderMinutes.getOrElse(2) { -1 }, curRepeatInterval, curRepeatRule,
-                                curRepeatLimit, ArrayList(), curImportId, curFlags, curEventTypeId, 0, curLastModified, source)
+                                curRepeatLimit, curRepeatExceptions, curImportId, curFlags, curEventTypeId, 0, curLastModified, source)
 
                         if (event.getIsAllDay() && curEnd > curStart) {
                             event.endTS -= DAY
@@ -157,16 +157,7 @@ class IcsImporter(val activity: SimpleActivity) {
                         }
 
                         if (eventToUpdate == null) {
-                            if (curRepeatExceptions.isEmpty()) {
-                                eventsToInsert.add(event)
-                            } else {
-                                eventsHelper.insertEvent(activity, event, true) {
-                                    for (exceptionTS in curRepeatExceptions) {
-                                        eventsHelper.addEventRepetitionException(it, exceptionTS, true)
-                                    }
-                                    existingEvents.add(event)
-                                }
-                            }
+                            eventsToInsert.add(event)
                         } else {
                             event.id = eventToUpdate.id
                             eventsHelper.updateEvent(null, event, true)
