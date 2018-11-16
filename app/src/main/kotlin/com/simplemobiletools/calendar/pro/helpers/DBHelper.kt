@@ -6,12 +6,14 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.text.TextUtils
 import androidx.collection.LongSparseArray
-import com.simplemobiletools.calendar.pro.extensions.*
+import com.simplemobiletools.calendar.pro.extensions.config
+import com.simplemobiletools.calendar.pro.extensions.eventTypesDB
+import com.simplemobiletools.calendar.pro.extensions.isTsOnProperDay
+import com.simplemobiletools.calendar.pro.extensions.isXWeeklyRepetition
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.commons.extensions.getIntValue
 import com.simplemobiletools.commons.extensions.getLongValue
 import com.simplemobiletools.commons.extensions.getStringValue
-import org.joda.time.DateTime
 
 class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
     private val MAIN_TABLE_NAME = "events"
@@ -207,14 +209,6 @@ class DBHelper private constructor(val context: Context) : SQLiteOpenHelper(cont
         }
 
         return events
-    }
-
-    fun getEventsAtReboot(): List<Event> {
-        //val selection = "$COL_REMINDER_MINUTES != -1 AND ($COL_START_TS > ? OR $COL_REPEAT_INTERVAL != 0) AND $COL_START_TS != 0"
-        val selection = "$COL_REMINDER_MINUTES != -1 AND ($COL_START_TS > ?) AND $COL_START_TS != 0"
-        val selectionArgs = arrayOf(DateTime.now().seconds().toString())
-        val cursor = getEventsCursor(selection, selectionArgs)
-        return fillEvents(cursor)
     }
 
     fun getEventsToExport(includePast: Boolean): ArrayList<Event> {

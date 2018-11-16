@@ -47,6 +47,10 @@ interface EventsDao {
     @Query("SELECT * FROM events WHERE id IN (:ids)")
     fun getEventsWithIds(ids: List<Long>): List<Event>
 
+    //val selection = "$COL_REMINDER_MINUTES != -1 AND ($COL_START_TS > ? OR $COL_REPEAT_INTERVAL != 0) AND $COL_START_TS != 0"
+    @Query("SELECT * FROM events WHERE reminder_1_minutes != -1 AND (start_ts > :currentTS OR repeat_interval != 0) AND start_ts != 0")
+    fun getEventsAtReboot(currentTS: Long): List<Event>
+
     @Query("SELECT id FROM events")
     fun getEventIds(): List<Long>
 

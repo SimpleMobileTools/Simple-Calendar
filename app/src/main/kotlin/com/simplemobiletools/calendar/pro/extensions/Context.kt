@@ -78,7 +78,7 @@ fun Context.updateListWidget() {
 }
 
 fun Context.scheduleAllEvents() {
-    val events = dbHelper.getEventsAtReboot()
+    val events = eventsDB.getEventsAtReboot(DateTime.now().seconds())
     events.forEach {
         scheduleNextEventReminder(it)
     }
