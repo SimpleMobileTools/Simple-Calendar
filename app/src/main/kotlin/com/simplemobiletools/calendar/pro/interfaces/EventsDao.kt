@@ -17,9 +17,6 @@ interface EventsDao {
     @Query("SELECT * FROM events WHERE id = :id")
     fun getEventWithId(id: Long): Event?
 
-    @Query("SELECT id FROM events")
-    fun getEventIds(): List<Long>
-
     @Query("SELECT * FROM events WHERE start_ts <= :toTS AND end_ts >= :fromTS")
     fun getEventsFromTo(toTS: Long, fromTS: Long): List<Event>
 
@@ -29,26 +26,11 @@ interface EventsDao {
     @Query("SELECT * FROM events WHERE start_ts <= :toTS AND end_ts >= :fromTS AND start_ts != 0 AND event_type IN (:eventTypeIds)")
     fun getEventsFromToWithTypes(toTS: Long, fromTS: Long, eventTypeIds: List<Long>): List<Event>
 
-    @Query("SELECT id FROM events WHERE import_id = :importId")
-    fun getEventIdWithImportId(importId: String): Long?
-
-    @Query("SELECT id FROM events WHERE import_id LIKE :importId")
-    fun getEventIdWithLastImportId(importId: String): Long?
-
     @Query("SELECT * FROM events WHERE id IN (:ids) AND import_id != \"\"")
     fun getEventsByIdsWithImportIds(ids: List<Long>): List<Event>
 
-    @Query("SELECT id FROM events WHERE event_type = :eventTypeId")
-    fun getEventIdsByEventType(eventTypeId: Long): List<Long>
-
-    @Query("SELECT id FROM events WHERE event_type IN (:eventTypeIds)")
-    fun getEventIdsByEventType(eventTypeIds: List<Long>): List<Long>
-
-    @Query("SELECT * FROM events WHERE id IN (:ids)")
-    fun getEventsWithIds(ids: List<Long>): List<Event>
-
-    @Query("SELECT id FROM events WHERE parent_id IN (:parentIds)")
-    fun getEventIdsWithParentIds(parentIds: List<Long>): List<Long>
+    @Query("SELECT * FROM events WHERE title LIKE :searchQuery OR location LIKE :searchQuery OR description LIKE :searchQuery")
+    fun getEventsForSearch(searchQuery: String): List<Event>
 
     @Query("SELECT * FROM events WHERE source = \'$SOURCE_CONTACT_BIRTHDAY\'")
     fun getBirthdays(): List<Event>
@@ -62,11 +44,29 @@ interface EventsDao {
     @Query("SELECT * FROM events WHERE source = :source")
     fun getEventsFromCalDAVCalendar(source: String): List<Event>
 
+    @Query("SELECT * FROM events WHERE id IN (:ids)")
+    fun getEventsWithIds(ids: List<Long>): List<Event>
+
+    @Query("SELECT id FROM events")
+    fun getEventIds(): List<Long>
+
+    @Query("SELECT id FROM events WHERE import_id = :importId")
+    fun getEventIdWithImportId(importId: String): Long?
+
+    @Query("SELECT id FROM events WHERE import_id LIKE :importId")
+    fun getEventIdWithLastImportId(importId: String): Long?
+
+    @Query("SELECT id FROM events WHERE event_type = :eventTypeId")
+    fun getEventIdsByEventType(eventTypeId: Long): List<Long>
+
+    @Query("SELECT id FROM events WHERE event_type IN (:eventTypeIds)")
+    fun getEventIdsByEventType(eventTypeIds: List<Long>): List<Long>
+
+    @Query("SELECT id FROM events WHERE parent_id IN (:parentIds)")
+    fun getEventIdsWithParentIds(parentIds: List<Long>): List<Long>
+
     @Query("SELECT id FROM events WHERE source = :source AND import_id != \"\"")
     fun getCalDAVCalendarEvents(source: String): List<Long>
-
-    @Query("SELECT * FROM events WHERE title LIKE :searchQuery OR location LIKE :searchQuery OR description LIKE :searchQuery")
-    fun getEventsForSearch(searchQuery: String): List<Event>
 
     @Query("UPDATE events SET event_type = $REGULAR_EVENT_TYPE_ID WHERE event_type = :eventTypeId")
     fun resetEventsWithType(eventTypeId: Long)
