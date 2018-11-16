@@ -51,7 +51,6 @@ val Context.eventTypesDB: EventTypesDao get() = EventsDatabase.getInstance(appli
 val Context.eventRepetitionExceptionsDB: EventRepetitionExceptionsDao get() = EventsDatabase.getInstance(applicationContext).EventRepetitionExceptionsDao()
 val Context.eventsHelper: EventsHelper get() = EventsHelper(this)
 val Context.calDAVHelper: CalDAVHelper get() = CalDAVHelper(this)
-val Context.dbHelper: DBHelper get() = DBHelper.newInstance(applicationContext)
 
 fun Context.updateWidgets() {
     val widgetIDs = AppWidgetManager.getInstance(applicationContext).getAppWidgetIds(ComponentName(applicationContext, MyWidgetMonthlyProvider::class.java))
