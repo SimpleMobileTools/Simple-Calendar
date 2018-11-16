@@ -189,9 +189,10 @@ class EventsHelper(val context: Context) {
     fun addEventRepetitionException(parentEventId: Long, occurrenceTS: Long, addToCalDAV: Boolean) {
         Thread {
             val parentEvent = eventsDB.getEventWithId(parentEventId) ?: return@Thread
-            val parentEventRepetitionExceptions = parentEvent.repetitionExceptions
-            parentEventRepetitionExceptions.add(Formatter.getDayCodeFromTS(occurrenceTS))
-            eventsDB.updateEventRepetitionExceptions(parentEventRepetitionExceptions, parentEventId)
+            var repetitionExceptions = parentEvent.repetitionExceptions
+            repetitionExceptions.add(Formatter.getDayCodeFromTS(occurrenceTS))
+            repetitionExceptions = repetitionExceptions.distinct().toMutableList() as ArrayList<String>
+            eventsDB.updateEventRepetitionExceptions(repetitionExceptions, parentEventId)
             context.scheduleNextEventReminder(parentEvent)
 
             if (addToCalDAV && config.caldavSync) {
