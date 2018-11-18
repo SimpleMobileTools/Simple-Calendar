@@ -168,8 +168,7 @@
     <string name="default_reminder_1">Varsayılan hatırlatıcı 1</string>
     <string name="default_reminder_2">Varsayılan hatırlatıcı 2</string>
     <string name="default_reminder_3">Varsayılan hatırlatıcı 3</string>
-    <string name="view_to_open_from_widget">Etkinlik listesi widget\'ından açılacak görünüm
-</string>
+    <string name="view_to_open_from_widget">Etkinlik listesi widget\'ından açılacak görünüm</string>
     <string name="last_view">Son görünüm</string>
 
     <!-- CalDAV sync -->
@@ -184,6 +183,7 @@
     <string name="syncing">Senkronize ediliyor…</string>
     <string name="synchronization_completed">Senkronizasyon tamamlandı</string>
     <string name="select_a_different_caldav_color">Farklı bir renk seçin (yalnızca yerel olarak uygulanabilir)</string>
+    <string name="insufficient_permissions">You are not allowed to write in the selected calendar</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
