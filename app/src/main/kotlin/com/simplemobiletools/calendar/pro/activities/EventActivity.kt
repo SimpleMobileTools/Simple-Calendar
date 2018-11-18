@@ -95,10 +95,10 @@ class EventActivity : SimpleActivity() {
             }
 
             if (intent.getBooleanExtra(IS_DUPLICATE_INTENT, false)) {
-                mEvent.id = 0
+                mEvent.id = null
+            } else {
+                cancelNotification(mEvent.id!!)
             }
-
-            cancelNotification(mEvent.id!!)
         } else {
             mEvent = Event(null)
             config.apply {
