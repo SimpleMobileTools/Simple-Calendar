@@ -39,7 +39,9 @@ class EventsHelper(val context: Context) {
         }
 
         val newId = eventTypesDB.insertOrUpdate(eventType)
-        config.addDisplayEventType(newId.toString())
+        if (eventType.id == null) {
+            config.addDisplayEventType(newId.toString())
+        }
         return newId
     }
 
