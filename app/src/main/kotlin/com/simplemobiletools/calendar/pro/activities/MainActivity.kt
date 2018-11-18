@@ -91,15 +91,13 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             refreshCalDAVCalendars(false)
         }
 
-        if (!checkViewIntents()) {
-            return
-        }
-
-        if (!checkOpenIntents()) {
-            updateViewPager()
-        }
-
         checkAppOnSDCard()
+
+        checkIsViewIntent {
+            if (!checkIsOpenIntent()) {
+                updateViewPager()
+            }
+        }
     }
 
     override fun onResume() {
@@ -205,8 +203,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
         setIntent(intent)
-        checkOpenIntents()
-        checkViewIntents()
+        checkIsOpenIntent()
+        checkIsViewIntent()
     }
 
     private fun storeStateVariables() {
@@ -261,7 +259,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         mSearchMenuItem?.collapseActionView()
     }
 
-    private fun checkOpenIntents(): Boolean {
+    private fun checkIsOpenIntent(): Boolean {
         val dayCodeToOpen = intent.getStringExtra(DAY_CODE) ?: ""
         val viewToOpen = intent.getIntExtra(VIEW_TO_OPEN, DAILY_VIEW)
         intent.removeExtra(VIEW_TO_OPEN)
@@ -290,35 +288,38 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         return false
     }
 
-    private fun checkViewIntents(): Boolean {
+    private fun checkIsViewIntent(callback: (() -> Unit)? = null) {
         if (intent?.action == Intent.ACTION_VIEW && intent.data != null) {
             val uri = intent.data
             if (uri.authority == "com.android.calendar") {
                 if (uri.path.startsWith("/events")) {
-                    // intents like content://com.android.calendar/events/1756
-                    val eventId = uri.lastPathSegment
-                    val id = eventsDB.getEventIdWithLastImportId("%-$eventId")
-                    if (id != null) {
-                        Intent(this, EventActivity::class.java).apply {
-                            putExtra(EVENT_ID, id)
-                            startActivity(this)
+                    Thread {
+                        // intents like content://com.android.calendar/events/1756
+                        val eventId = uri.lastPathSegment
+                        val id = eventsDB.getEventIdWithLastImportId("%-$eventId")
+                        if (id != null) {
+                            Intent(this, EventActivity::class.java).apply {
+                                putExtra(EVENT_ID, id)
+                                startActivity(this)
+                            }
+                            return@Thread
+                        } else {
+                            toast(R.string.unknown_error_occurred)
                         }
-                    } else {
-                        toast(R.string.unknown_error_occurred)
-                    }
+                    }.start()
                 } else if (intent?.extras?.getBoolean("DETAIL_VIEW", false) == true) {
                     // clicking date on a third party widget: content://com.android.calendar/time/1507309245683
                     val timestamp = uri.pathSegments.last()
                     if (timestamp.areDigitsOnly()) {
                         openDayAt(timestamp.toLong())
-                        return false
+                        return
                     }
                 }
             } else {
                 tryImportEventsFromFile(uri)
             }
         }
-        return true
+        callback?.invoke()
     }
 
     private fun showViewDialog() {
