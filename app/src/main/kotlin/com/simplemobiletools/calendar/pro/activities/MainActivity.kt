@@ -91,13 +91,13 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             refreshCalDAVCalendars(false)
         }
 
-        checkAppOnSDCard()
+        checkIsViewIntent()
 
-        checkIsViewIntent {
-            if (!checkIsOpenIntent()) {
-                updateViewPager()
-            }
+        if (!checkIsOpenIntent()) {
+            updateViewPager()
         }
+
+        checkAppOnSDCard()
     }
 
     override fun onResume() {
@@ -288,7 +288,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         return false
     }
 
-    private fun checkIsViewIntent(callback: (() -> Unit)? = null) {
+    private fun checkIsViewIntent() {
         if (intent?.action == Intent.ACTION_VIEW && intent.data != null) {
             val uri = intent.data
             if (uri.authority == "com.android.calendar") {
@@ -302,7 +302,6 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                                 putExtra(EVENT_ID, id)
                                 startActivity(this)
                             }
-                            return@Thread
                         } else {
                             toast(R.string.unknown_error_occurred)
                         }
@@ -319,7 +318,6 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                 tryImportEventsFromFile(uri)
             }
         }
-        callback?.invoke()
     }
 
     private fun showViewDialog() {
