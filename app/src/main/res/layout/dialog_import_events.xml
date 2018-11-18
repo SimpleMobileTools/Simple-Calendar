@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingRight="@dimen/activity_margin"
-    android:paddingTop="@dimen/activity_margin">
+    android:paddingTop="@dimen/activity_margin"
+    android:paddingRight="@dimen/activity_margin">
 
     <com.simplemobiletools.commons.views.MyTextView
         android:id="@+id/import_events_event_type_label"
@@ -29,6 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/import_event_type_color"
             android:paddingLeft="@dimen/medium_margin"
             android:paddingRight="@dimen/medium_margin"/>
 
@@ -49,8 +50,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/normal_margin"
-        android:paddingBottom="@dimen/activity_margin"
         android:paddingTop="@dimen/activity_margin"
+        android:paddingBottom="@dimen/activity_margin"
         android:text="@string/override_event_types"/>
 
 </LinearLayout>

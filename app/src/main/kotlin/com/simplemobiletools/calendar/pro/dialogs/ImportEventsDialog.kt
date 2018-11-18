@@ -25,6 +25,20 @@ class ImportEventsDialog(val activity: SimpleActivity, val path: String, val cal
             if (activity.eventTypesDB.getEventTypeWithId(config.lastUsedLocalEventTypeId) == null) {
                 config.lastUsedLocalEventTypeId = REGULAR_EVENT_TYPE_ID
             }
+
+            val isLastCaldavCalendarOK = config.caldavSync && config.getSyncedCalendarIdsAsList().contains(config.lastUsedCaldavCalendarId)
+            currEventTypeId = if (isLastCaldavCalendarOK) {
+                val lastUsedCalDAVCalendar = activity.eventsHelper.getEventTypeWithCalDAVCalendarId(config.lastUsedCaldavCalendarId)
+                if (lastUsedCalDAVCalendar != null) {
+                    currEventTypeCalDAVCalendarId = config.lastUsedCaldavCalendarId
+                    lastUsedCalDAVCalendar.id!!
+                } else {
+                    REGULAR_EVENT_TYPE_ID
+                }
+            } else {
+                config.lastUsedLocalEventTypeId
+            }
+
             activity.runOnUiThread {
                 initDialog()
             }
@@ -32,19 +46,6 @@ class ImportEventsDialog(val activity: SimpleActivity, val path: String, val cal
     }
 
     private fun initDialog() {
-        val isLastCaldavCalendarOK = config.caldavSync && config.getSyncedCalendarIdsAsList().contains(config.lastUsedCaldavCalendarId)
-        currEventTypeId = if (isLastCaldavCalendarOK) {
-            val lastUsedCalDAVCalendar = activity.eventsHelper.getEventTypeWithCalDAVCalendarId(config.lastUsedCaldavCalendarId)
-            if (lastUsedCalDAVCalendar != null) {
-                currEventTypeCalDAVCalendarId = config.lastUsedCaldavCalendarId
-                lastUsedCalDAVCalendar.id!!
-            } else {
-                REGULAR_EVENT_TYPE_ID
-            }
-        } else {
-            config.lastUsedLocalEventTypeId
-        }
-
         val view = (activity.layoutInflater.inflate(R.layout.dialog_import_events, null) as ViewGroup).apply {
             updateEventType(this)
             import_event_type_holder.setOnClickListener {
