@@ -13,11 +13,15 @@ class SnoozeReminderActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         showPickSecondsDialogHelper(config.snoozeTime, true, cancelCallback = { dialogCancelled() }) {
-            val eventId = intent.getLongExtra(EVENT_ID, 0L)
-            val event = eventsDB.getEventWithId(eventId)
-            config.snoozeTime = it / 60
-            rescheduleReminder(event, it / 60)
-            finishActivity()
+            Thread {
+                val eventId = intent.getLongExtra(EVENT_ID, 0L)
+                val event = eventsDB.getEventWithId(eventId)
+                config.snoozeTime = it / 60
+                rescheduleReminder(event, it / 60)
+                runOnUiThread {
+                    finishActivity()
+                }
+            }.start()
         }
     }
 
