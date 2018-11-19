@@ -183,7 +183,7 @@
     <string name="syncing">Synchroniseren…</string>
     <string name="synchronization_completed">Synchroniseren voltooid</string>
     <string name="select_a_different_caldav_color">Kies een andere kleur (mogelijk alleen voor dit apparaat)</string>
-    <string name="insufficient_permissions">You are not allowed to write in the selected calendar</string>
+    <string name="insufficient_permissions">Kan geen wijzigingen aanbrengen in deze agenda</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
