@@ -49,7 +49,7 @@
     <string name="update_one_only">Nur die ausgewählte Wiederholung ändern</string>
     <string name="update_all_occurrences">Alle Wiederholungen ändern</string>
     <string name="repeat_till_date">Bis zu bestimmtem Datum wiederholen</string>
-    <string name="stop_repeating_after_x">Stop repeating after x occurrences</string>
+    <string name="stop_repeating_after_x">Stopp nach x Wiederholungen</string>
     <string name="repeat_forever">Immer wiederholen</string>
     <string name="times">Mal</string>
     <string name="repeat">Wiederholung</string>
