@@ -41,7 +41,7 @@
     <string name="years_raw">anos</string>
     <string name="repeat_till">Repetir até</string>
     <string name="forever">Eternamente</string>
-    <string name="event_is_repeatable">O evento é repetível</string>
+    <string name="event_is_repeatable">O evento é recorrente</string>
     <string name="selection_contains_repetition">A seleção contém eventos recorrentes</string>
     <string name="delete_one_only">Apagar a ocorrência selecionada</string>
     <string name="delete_future_occurrences">Apagar esta e todas as ocorrências futuras</string>
@@ -183,7 +183,7 @@
     <string name="syncing">A sincronizar…</string>
     <string name="synchronization_completed">Sincronização terminada</string>
     <string name="select_a_different_caldav_color">Selecione uma cor diferente (pode ser aplicada apenas localmente)</string>
-    <string name="insufficient_permissions">You are not allowed to write in the selected calendar</string>
+    <string name="insufficient_permissions">Não tem permissão para escrever no calendário selecionado</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
