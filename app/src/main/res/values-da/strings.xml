@@ -168,7 +168,7 @@
     <string name="default_reminder_1">Påmindelse 1</string>
     <string name="default_reminder_2">Påmindelse 2</string>
     <string name="default_reminder_3">Påmindelse 3</string>
-    <string name="view_to_open_from_widget">Visning til brug i widget'en</string>
+    <string name="view_to_open_from_widget">Visning til brug i widget\'en</string>
     <string name="last_view">Last view</string>
 
     <!-- CalDAV sync -->
