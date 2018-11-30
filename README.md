@@ -15,8 +15,8 @@ The Contacts permission is used only at importing contact birthdays and annivers
 
 This app is just one piece of a bigger series of apps. You can find the rest of them at https://www.simplemobiletools.com
 
-<a href='https://play.google.com/store/apps/details?id=com.simplemobiletools.calendar'><img src='http://simplemobiletools.github.io/assets/public/google-play.png' alt='Get it on Google Play' height='45' /></a>
-<a href='https://f-droid.org/packages/com.simplemobiletools.calendar'><img src='http://simplemobiletools.github.io/assets/public/f-droid.png' alt='Get it on F-Droid' height='45' /></a>
+<a href='https://play.google.com/store/apps/details?id=com.simplemobiletools.calendar.pro'><img src='http://simplemobiletools.github.io/assets/public/google-play.png' alt='Get it on Google Play' height='45' /></a>
+<a href='https://f-droid.org/packages/com.simplemobiletools.calendar.pro'><img src='http://simplemobiletools.github.io/assets/public/f-droid.png' alt='Get it on F-Droid' height='45' /></a>
 
 <div style="display:flex;">
 <img alt="App image" src="fastlane/metadata/android/en-US/images/phoneScreenshots/app.png" width="30%">
