@@ -28,49 +28,51 @@ class IcsExporter {
                 return@getFileOutputStream
             }
 
-            if (showExportingToast) {
-                activity.toast(R.string.exporting)
-            }
-
-            it.bufferedWriter().use { out ->
-                out.writeLn(BEGIN_CALENDAR)
-                out.writeLn(CALENDAR_PRODID)
-                out.writeLn(CALENDAR_VERSION)
-                for (event in events) {
-                    out.writeLn(BEGIN_EVENT)
-                    event.title.replace("\n", "\\n").let { if (it.isNotEmpty()) out.writeLn("$SUMMARY:$it") }
-                    event.description.replace("\n", "\\n").let { if (it.isNotEmpty()) out.writeLn("$DESCRIPTION$it") }
-                    event.importId.let { if (it.isNotEmpty()) out.writeLn("$UID$it") }
-                    event.eventType.let { out.writeLn("$CATEGORY_COLOR${activity.eventTypesDB.getEventTypeWithId(it)?.color}") }
-                    event.eventType.let { out.writeLn("$CATEGORIES${activity.eventTypesDB.getEventTypeWithId(it)?.title}") }
-                    event.lastUpdated.let { out.writeLn("$LAST_MODIFIED:${Formatter.getExportedTime(it)}") }
-                    event.location.let { if (it.isNotEmpty()) out.writeLn("$LOCATION:$it") }
-
-                    if (event.getIsAllDay()) {
-                        out.writeLn("$DTSTART;$VALUE=$DATE:${Formatter.getDayCodeFromTS(event.startTS)}")
-                        out.writeLn("$DTEND;$VALUE=$DATE:${Formatter.getDayCodeFromTS(event.endTS + DAY)}")
-                    } else {
-                        event.startTS.let { out.writeLn("$DTSTART:${Formatter.getExportedTime(it * 1000L)}") }
-                        event.endTS.let { out.writeLn("$DTEND:${Formatter.getExportedTime(it * 1000L)}") }
-                    }
-
-                    out.writeLn("$STATUS$CONFIRMED")
-                    Parser().getRepeatCode(event).let { if (it.isNotEmpty()) out.writeLn("$RRULE$it") }
-
-                    fillReminders(event, out)
-                    fillIgnoredOccurrences(event, out)
-
-                    eventsExported++
-                    out.writeLn(END_EVENT)
+            Thread {
+                if (showExportingToast) {
+                    activity.toast(R.string.exporting)
                 }
-                out.writeLn(END_CALENDAR)
-            }
 
-            callback(when {
-                eventsExported == 0 -> EXPORT_FAIL
-                eventsFailed > 0 -> EXPORT_PARTIAL
-                else -> EXPORT_OK
-            })
+                it.bufferedWriter().use { out ->
+                    out.writeLn(BEGIN_CALENDAR)
+                    out.writeLn(CALENDAR_PRODID)
+                    out.writeLn(CALENDAR_VERSION)
+                    for (event in events) {
+                        out.writeLn(BEGIN_EVENT)
+                        event.title.replace("\n", "\\n").let { if (it.isNotEmpty()) out.writeLn("$SUMMARY:$it") }
+                        event.description.replace("\n", "\\n").let { if (it.isNotEmpty()) out.writeLn("$DESCRIPTION$it") }
+                        event.importId.let { if (it.isNotEmpty()) out.writeLn("$UID$it") }
+                        event.eventType.let { out.writeLn("$CATEGORY_COLOR${activity.eventTypesDB.getEventTypeWithId(it)?.color}") }
+                        event.eventType.let { out.writeLn("$CATEGORIES${activity.eventTypesDB.getEventTypeWithId(it)?.title}") }
+                        event.lastUpdated.let { out.writeLn("$LAST_MODIFIED:${Formatter.getExportedTime(it)}") }
+                        event.location.let { if (it.isNotEmpty()) out.writeLn("$LOCATION:$it") }
+
+                        if (event.getIsAllDay()) {
+                            out.writeLn("$DTSTART;$VALUE=$DATE:${Formatter.getDayCodeFromTS(event.startTS)}")
+                            out.writeLn("$DTEND;$VALUE=$DATE:${Formatter.getDayCodeFromTS(event.endTS + DAY)}")
+                        } else {
+                            event.startTS.let { out.writeLn("$DTSTART:${Formatter.getExportedTime(it * 1000L)}") }
+                            event.endTS.let { out.writeLn("$DTEND:${Formatter.getExportedTime(it * 1000L)}") }
+                        }
+
+                        out.writeLn("$STATUS$CONFIRMED")
+                        Parser().getRepeatCode(event).let { if (it.isNotEmpty()) out.writeLn("$RRULE$it") }
+
+                        fillReminders(event, out)
+                        fillIgnoredOccurrences(event, out)
+
+                        eventsExported++
+                        out.writeLn(END_EVENT)
+                    }
+                    out.writeLn(END_CALENDAR)
+                }
+
+                callback(when {
+                    eventsExported == 0 -> EXPORT_FAIL
+                    eventsFailed > 0 -> EXPORT_PARTIAL
+                    else -> EXPORT_OK
+                })
+            }.start()
         }
     }
 
