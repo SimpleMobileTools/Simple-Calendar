@@ -273,11 +273,11 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             return true
         }
 
-        val eventIdToOpen = intent.getLongExtra(EVENT_ID, 0)
-        val eventOccurrenceToOpen = intent.getIntExtra(EVENT_OCCURRENCE_TS, 0)
+        val eventIdToOpen = intent.getLongExtra(EVENT_ID, 0L)
+        val eventOccurrenceToOpen = intent.getLongExtra(EVENT_OCCURRENCE_TS, 0L)
         intent.removeExtra(EVENT_ID)
         intent.removeExtra(EVENT_OCCURRENCE_TS)
-        if (eventIdToOpen != 0L && eventOccurrenceToOpen != 0) {
+        if (eventIdToOpen != 0L && eventOccurrenceToOpen != 0L) {
             Intent(this, EventActivity::class.java).apply {
                 putExtra(EVENT_ID, eventIdToOpen)
                 putExtra(EVENT_OCCURRENCE_TS, eventOccurrenceToOpen)
