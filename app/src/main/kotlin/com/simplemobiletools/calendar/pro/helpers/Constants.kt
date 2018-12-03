@@ -104,6 +104,8 @@ const val BYDAY = "BYDAY"
 const val BYMONTHDAY = "BYMONTHDAY"
 const val BYMONTH = "BYMONTH"
 const val LOCATION = "LOCATION"
+const val RECURRENCE_ID = "RECURRENCE-ID"
+const val SEQUENCE = "SEQUENCE"
 
 // this tag isn't a standard ICS tag, but there's no official way of adding a category color in an ics file
 const val CATEGORY_COLOR = "CATEGORY_COLOR:"

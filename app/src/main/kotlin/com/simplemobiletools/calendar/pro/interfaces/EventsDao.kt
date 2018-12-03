@@ -20,6 +20,9 @@ interface EventsDao {
     @Query("SELECT * FROM events WHERE id = :id")
     fun getEventWithId(id: Long): Event?
 
+    @Query("SELECT * FROM events WHERE import_id = :importId")
+    fun getEventWithImportId(importId: String): Event?
+
     @Query("SELECT * FROM events WHERE start_ts <= :toTS AND end_ts >= :fromTS AND repeat_interval = 0")
     fun getOneTimeEventsFromTo(toTS: Long, fromTS: Long): List<Event>
 

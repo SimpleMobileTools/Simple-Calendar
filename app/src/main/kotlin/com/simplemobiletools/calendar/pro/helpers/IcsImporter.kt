@@ -23,6 +23,7 @@ class IcsImporter(val activity: SimpleActivity) {
     private var curLocation = ""
     private var curDescription = ""
     private var curImportId = ""
+    private var curRecurrenceDayCode = ""
     private var curFlags = 0
     private var curReminderMinutes = ArrayList<Int>()
     private var curRepeatExceptions = ArrayList<String>()
@@ -35,6 +36,7 @@ class IcsImporter(val activity: SimpleActivity) {
     private var isNotificationDescription = false
     private var isProperReminderAction = false
     private var isDescription = false
+    private var isSequence = false
     private var curReminderTriggerMinutes = -1
     private val eventsHelper = activity.eventsHelper
 
@@ -121,6 +123,11 @@ class IcsImporter(val activity: SimpleActivity) {
                         curRepeatExceptions.add(Formatter.getDayCodeFromTS(getTimestamp(value)))
                     } else if (line.startsWith(LOCATION)) {
                         curLocation = getLocation(line.substring(LOCATION.length).replace("\\,", ","))
+                    } else if (line.startsWith(RECURRENCE_ID)) {
+                        val timestamp = getTimestamp(line.substring(RECURRENCE_ID.length))
+                        curRecurrenceDayCode = Formatter.getDayCodeFromTS(timestamp)
+                    } else if (line.startsWith(SEQUENCE)) {
+                        isSequence = true
                     } else if (line == END_ALARM) {
                         if (isProperReminderAction && curReminderTriggerMinutes != -1) {
                             curReminderMinutes.add(curReminderTriggerMinutes)
@@ -157,7 +164,28 @@ class IcsImporter(val activity: SimpleActivity) {
                         }
 
                         if (eventToUpdate == null) {
-                            eventsToInsert.add(event)
+                            // if an event belongs to a sequence insert it immediately, to avoid some glitches with linked events
+                            if (isSequence) {
+                                if (curRecurrenceDayCode.isEmpty()) {
+                                    eventsHelper.insertEvent(null, event, true)
+                                } else {
+                                    // if an event contains the RECURRENCE-ID field, it is an exception to a recurring event, so update its parent too
+                                    val parentEvent = activity.eventsDB.getEventWithImportId(event.importId)
+                                    if (parentEvent != null) {
+                                        if (parentEvent.repetitionExceptions.contains(curRecurrenceDayCode)) {
+                                            continue
+                                        }
+
+                                        parentEvent.repetitionExceptions.add(curRecurrenceDayCode)
+                                        activity.eventsDB.insertOrUpdate(parentEvent)
+
+                                        event.parentId = parentEvent.id!!
+                                        eventsToInsert.add(event)
+                                    }
+                                }
+                            } else {
+                                eventsToInsert.add(event)
+                            }
                         } else {
                             event.id = eventToUpdate.id
                             eventsHelper.updateEvent(null, event, true)
@@ -241,6 +269,7 @@ class IcsImporter(val activity: SimpleActivity) {
         curLocation = ""
         curDescription = ""
         curImportId = ""
+        curRecurrenceDayCode = ""
         curFlags = 0
         curReminderMinutes = ArrayList()
         curRepeatExceptions = ArrayList()
@@ -252,6 +281,7 @@ class IcsImporter(val activity: SimpleActivity) {
         curCategoryColor = -2
         isNotificationDescription = false
         isProperReminderAction = false
+        isSequence = false
         curReminderTriggerMinutes = -1
     }
 }
