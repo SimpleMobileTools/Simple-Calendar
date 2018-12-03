@@ -141,7 +141,8 @@ class IcsImporter(val activity: SimpleActivity) {
                             continue
                         }
 
-                        val eventToUpdate = existingEvents.firstOrNull { curImportId.isNotEmpty() && curImportId == it.importId }
+                        // repeating event exceptions can have the same import id as their parents, so pick the latest event to update
+                        val eventToUpdate = existingEvents.filter { curImportId.isNotEmpty() && curImportId == it.importId }.sortedByDescending { it.lastUpdated }.firstOrNull()
                         if (eventToUpdate != null && eventToUpdate.lastUpdated >= curLastModified) {
                             continue
                         }
