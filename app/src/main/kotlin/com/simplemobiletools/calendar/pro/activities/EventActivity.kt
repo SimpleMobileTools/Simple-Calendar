@@ -555,19 +555,14 @@ class EventActivity : SimpleActivity() {
 
     private fun updateReminder1Text() {
         event_reminder_1.text = getFormattedMinutes(mReminder1Minutes)
-        if (mReminder1Minutes == REMINDER_OFF) {
-            mReminder2Minutes = REMINDER_OFF
-            mReminder3Minutes = REMINDER_OFF
-        }
     }
 
     private fun updateReminder2Text() {
         event_reminder_2.apply {
-            beGoneIf(mReminder1Minutes == REMINDER_OFF)
+            beGoneIf(event_reminder_2.isGone() && mReminder1Minutes == REMINDER_OFF)
             if (mReminder2Minutes == REMINDER_OFF) {
                 text = resources.getString(R.string.add_another_reminder)
                 alpha = 0.4f
-                mReminder3Minutes = REMINDER_OFF
             } else {
                 text = getFormattedMinutes(mReminder2Minutes)
                 alpha = 1f
@@ -577,7 +572,7 @@ class EventActivity : SimpleActivity() {
 
     private fun updateReminder3Text() {
         event_reminder_3.apply {
-            beGoneIf(mReminder2Minutes == REMINDER_OFF || mReminder1Minutes == REMINDER_OFF)
+            beGoneIf(event_reminder_3.isGone() && (mReminder2Minutes == REMINDER_OFF || mReminder1Minutes == REMINDER_OFF))
             if (mReminder3Minutes == REMINDER_OFF) {
                 text = resources.getString(R.string.add_another_reminder)
                 alpha = 0.4f
