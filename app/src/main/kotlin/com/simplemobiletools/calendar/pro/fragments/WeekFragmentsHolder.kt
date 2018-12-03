@@ -35,7 +35,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val dateTimeString = arguments?.getString(WEEK_START_DATE_TIME) ?: ""
+        val dateTimeString = arguments?.getString(WEEK_START_DATE_TIME) ?: return
         currentWeekTS = (DateTime.parse(dateTimeString) ?: DateTime()).seconds()
         thisWeekTS = currentWeekTS
     }
