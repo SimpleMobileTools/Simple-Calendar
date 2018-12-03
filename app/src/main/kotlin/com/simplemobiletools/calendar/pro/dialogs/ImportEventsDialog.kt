@@ -67,6 +67,7 @@ class ImportEventsDialog(val activity: SimpleActivity, val path: String, val cal
                 .create().apply {
                     activity.setupDialogStuff(view, this, R.string.import_events) {
                         getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
+                            getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(null)
                             activity.toast(R.string.importing)
                             Thread {
                                 val overrideFileEventTypes = view.import_events_checkbox.isChecked
