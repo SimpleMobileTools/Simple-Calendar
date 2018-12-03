@@ -178,23 +178,34 @@ class EventActivity : SimpleActivity() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putLong(START_TS, mEventStartDateTime.seconds())
-        outState.putLong(END_TS, mEventEndDateTime.seconds())
+        if (!wasActivityInitialized) {
+            return
+        }
 
-        outState.putInt(REMINDER_1_MINUTES, mReminder1Minutes)
-        outState.putInt(REMINDER_2_MINUTES, mReminder2Minutes)
-        outState.putInt(REMINDER_3_MINUTES, mReminder3Minutes)
+        outState.apply {
+            putLong(START_TS, mEventStartDateTime.seconds())
+            putLong(END_TS, mEventEndDateTime.seconds())
 
-        outState.putInt(REPEAT_INTERVAL, mRepeatInterval)
-        outState.putInt(REPEAT_RULE, mRepeatRule)
-        outState.putLong(REPEAT_LIMIT, mRepeatLimit)
+            putInt(REMINDER_1_MINUTES, mReminder1Minutes)
+            putInt(REMINDER_2_MINUTES, mReminder2Minutes)
+            putInt(REMINDER_3_MINUTES, mReminder3Minutes)
 
-        outState.putLong(EVENT_TYPE_ID, mEventTypeId)
-        outState.putInt(EVENT_CALENDAR_ID, mEventCalendarId)
+            putInt(REPEAT_INTERVAL, mRepeatInterval)
+            putInt(REPEAT_RULE, mRepeatRule)
+            putLong(REPEAT_LIMIT, mRepeatLimit)
+
+            putLong(EVENT_TYPE_ID, mEventTypeId)
+            putInt(EVENT_CALENDAR_ID, mEventCalendarId)
+        }
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
+        if (!savedInstanceState.containsKey(START_TS)) {
+            finish()
+            return
+        }
+
         savedInstanceState.apply {
             mEventStartDateTime = Formatter.getDateTimeFromTS(getLong(START_TS))
             mEventEndDateTime = Formatter.getDateTimeFromTS(getLong(END_TS))
