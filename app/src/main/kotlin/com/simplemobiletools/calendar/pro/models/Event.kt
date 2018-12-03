@@ -138,10 +138,11 @@ data class Event(
     fun getCalDAVCalendarId() = if (source.startsWith(CALDAV)) (source.split("-").lastOrNull() ?: "0").toString().toInt() else 0
 
     // check if its the proper week, for events repeating every x weeks
+    // get the week number since 1970, not just in the current year
     fun isOnProperWeek(startTimes: LongSparseArray<Long>): Boolean {
-        val initialWeekOfYear = Formatter.getDateTimeFromTS(startTimes[id!!]!!).weekOfWeekyear
-        val currentWeekOfYear = Formatter.getDateTimeFromTS(startTS).weekOfWeekyear
-        return (currentWeekOfYear - initialWeekOfYear) % (repeatInterval / WEEK) == 0
+        val initialWeekNumber = Formatter.getDateTimeFromTS(startTimes[id!!]!!).millis / (7 * 24 * 60 * 60 * 1000)
+        val currentWeekNumber = Formatter.getDateTimeFromTS(startTS).millis / (7 * 24 * 60 * 60 * 1000)
+        return (initialWeekNumber - currentWeekNumber) % (repeatInterval / WEEK) == 0L
     }
 
     fun updateIsPastEvent() {
