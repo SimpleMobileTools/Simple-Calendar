@@ -39,31 +39,32 @@ data class Event(
     }
 
     fun addIntervalTime(original: Event) {
-        val currStart = Formatter.getDateTimeFromTS(startTS)
+        val oldStart = Formatter.getDateTimeFromTS(startTS)
         val newStart: DateTime
         newStart = when (repeatInterval) {
-            DAY -> currStart.plusDays(1)
+            DAY -> oldStart.plusDays(1)
             else -> {
                 when {
                     repeatInterval % YEAR == 0 -> when (repeatRule) {
-                        REPEAT_ORDER_WEEKDAY -> addXthDayInterval(currStart, original, false)
-                        REPEAT_ORDER_WEEKDAY_USE_LAST -> addXthDayInterval(currStart, original, true)
-                        else -> currStart.plusYears(repeatInterval / YEAR)
+                        REPEAT_ORDER_WEEKDAY -> addXthDayInterval(oldStart, original, false)
+                        REPEAT_ORDER_WEEKDAY_USE_LAST -> addXthDayInterval(oldStart, original, true)
+                        else -> oldStart.plusYears(repeatInterval / YEAR)
                     }
                     repeatInterval % MONTH == 0 -> when (repeatRule) {
-                        REPEAT_SAME_DAY -> addMonthsWithSameDay(currStart, original)
-                        REPEAT_ORDER_WEEKDAY -> addXthDayInterval(currStart, original, false)
-                        REPEAT_ORDER_WEEKDAY_USE_LAST -> addXthDayInterval(currStart, original, true)
-                        else -> currStart.plusMonths(repeatInterval / MONTH).dayOfMonth().withMaximumValue()
+                        REPEAT_SAME_DAY -> addMonthsWithSameDay(oldStart, original)
+                        REPEAT_ORDER_WEEKDAY -> addXthDayInterval(oldStart, original, false)
+                        REPEAT_ORDER_WEEKDAY_USE_LAST -> addXthDayInterval(oldStart, original, true)
+                        else -> oldStart.plusMonths(repeatInterval / MONTH).dayOfMonth().withMaximumValue()
                     }
                     repeatInterval % WEEK == 0 -> {
                         // step through weekly repetition by days too, as events can trigger multiple times a week
-                        currStart.plusDays(1)
+                        oldStart.plusDays(1)
                     }
-                    else -> currStart.plusSeconds(repeatInterval)
+                    else -> oldStart.plusSeconds(repeatInterval)
                 }
             }
         }
+
         val newStartTS = newStart.seconds()
         val newEndTS = newStartTS + (endTS - startTS)
         startTS = newStartTS
