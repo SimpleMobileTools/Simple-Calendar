@@ -132,21 +132,23 @@ class EventsHelper(val context: Context) {
             return
         }
 
-        val eventsWithImportId = eventsDB.getEventsByIdsWithImportIds(ids)
-        eventsDB.deleteEvents(ids)
+        ids.getChoppedList().forEach {
+            val eventsWithImportId = eventsDB.getEventsByIdsWithImportIds(it)
+            eventsDB.deleteEvents(it)
 
-        ids.forEach {
-            context.cancelNotification(it)
-        }
-
-        if (deleteFromCalDAV && config.caldavSync) {
-            eventsWithImportId.forEach {
-                context.calDAVHelper.deleteCalDAVEvent(it)
+            it.forEach {
+                context.cancelNotification(it)
             }
-        }
 
-        deleteChildEvents(ids, deleteFromCalDAV)
-        context.updateWidgets()
+            if (deleteFromCalDAV && config.caldavSync) {
+                eventsWithImportId.forEach {
+                    context.calDAVHelper.deleteCalDAVEvent(it)
+                }
+            }
+
+            deleteChildEvents(it, deleteFromCalDAV)
+            context.updateWidgets()
+        }
     }
 
     private fun deleteChildEvents(ids: MutableList<Long>, deleteFromCalDAV: Boolean) {
