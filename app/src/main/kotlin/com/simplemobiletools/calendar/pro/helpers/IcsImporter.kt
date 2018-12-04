@@ -174,7 +174,8 @@ class IcsImporter(val activity: SimpleActivity) {
                                     val parentEvent = activity.eventsDB.getEventWithImportId(event.importId)
                                     if (parentEvent != null && !parentEvent.repetitionExceptions.contains(curRecurrenceDayCode)) {
                                         parentEvent.addRepetitionException(curRecurrenceDayCode)
-                                        activity.eventsDB.insertOrUpdate(parentEvent)
+                                        eventsHelper.insertEvent(null, parentEvent, true)
+
                                         event.parentId = parentEvent.id!!
                                         eventsToInsert.add(event)
                                     }

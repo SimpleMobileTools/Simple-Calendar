@@ -232,7 +232,7 @@ class CalDAVHelper(val context: Context) {
                         if (parentEvent != null && !parentEvent.repetitionExceptions.contains(originalDayCode)) {
                             event.parentId = parentEvent.id!!
                             parentEvent.addRepetitionException(originalDayCode)
-                            activity!!.eventsDB.insertOrUpdate(parentEvent)
+                            eventsHelper.insertEvent(null, parentEvent, false)
 
                             event.parentId = parentEvent.id!!
                             eventsHelper.insertEvent(null, event, false)
