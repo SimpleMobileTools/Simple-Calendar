@@ -37,6 +37,6 @@ class NotificationReceiver : BroadcastReceiver() {
         if (!event.repetitionExceptions.contains(Formatter.getDayCodeFromTS(event.startTS))) {
             context.notifyEvent(event)
         }
-        context.scheduleNextEventReminder(event)
+        context.scheduleNextEventReminder(event, false)
     }
 }

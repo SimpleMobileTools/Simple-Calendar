@@ -800,7 +800,7 @@ class EventActivity : SimpleActivity() {
 
     private fun storeEvent(wasRepeatable: Boolean) {
         if (mEvent.id == null || mEvent.id == null) {
-            eventsHelper.insertEvent(this, mEvent, true) {
+            eventsHelper.insertEvent(mEvent, true, true) {
                 if (DateTime.now().isAfter(mEventStartDateTime.millis)) {
                     if (mEvent.repeatInterval == 0 && mEvent.getReminders().isNotEmpty()) {
                         notifyEvent(mEvent)
@@ -815,7 +815,7 @@ class EventActivity : SimpleActivity() {
                     showEditRepeatingEventDialog()
                 }
             } else {
-                eventsHelper.updateEvent(this, mEvent, true) {
+                eventsHelper.updateEvent(mEvent, true, true) {
                     finish()
                 }
             }
@@ -826,7 +826,7 @@ class EventActivity : SimpleActivity() {
         EditRepeatingEventDialog(this) {
             if (it) {
                 Thread {
-                    eventsHelper.updateEvent(this, mEvent, true) {
+                    eventsHelper.updateEvent(mEvent, true, true) {
                         finish()
                     }
                 }.start()
@@ -841,7 +841,7 @@ class EventActivity : SimpleActivity() {
                         repeatLimit = 0
                     }
 
-                    eventsHelper.insertEvent(this, mEvent, true) {
+                    eventsHelper.insertEvent(mEvent, true, true) {
                         finish()
                     }
                 }.start()

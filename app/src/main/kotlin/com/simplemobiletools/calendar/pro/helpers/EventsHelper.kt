@@ -3,7 +3,6 @@ package com.simplemobiletools.calendar.pro.helpers
 import android.app.Activity
 import android.content.Context
 import androidx.collection.LongSparseArray
-import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.EventType
@@ -70,7 +69,7 @@ class EventsHelper(val context: Context) {
         eventTypesDB.deleteEventTypes(typesToDelete)
     }
 
-    fun insertEvent(activity: SimpleActivity? = null, event: Event, addToCalDAV: Boolean, callback: ((id: Long) -> Unit)? = null) {
+    fun insertEvent(event: Event, addToCalDAV: Boolean, showToasts: Boolean, callback: ((id: Long) -> Unit)? = null) {
         if (event.startTS > event.endTS) {
             callback?.invoke(0)
             return
@@ -79,7 +78,7 @@ class EventsHelper(val context: Context) {
         event.id = eventsDB.insertOrUpdate(event)
 
         context.updateWidgets()
-        context.scheduleNextEventReminder(event, activity)
+        context.scheduleNextEventReminder(event, showToasts)
 
         if (addToCalDAV && event.source != SOURCE_SIMPLE_CALENDAR && config.caldavSync) {
             context.calDAVHelper.insertCalDAVEvent(event)
@@ -97,7 +96,7 @@ class EventsHelper(val context: Context) {
 
                 event.id = eventsDB.insertOrUpdate(event)
 
-                context.scheduleNextEventReminder(event)
+                context.scheduleNextEventReminder(event, false)
                 if (addToCalDAV && event.source != SOURCE_SIMPLE_CALENDAR && event.source != SOURCE_IMPORTED_ICS && config.caldavSync) {
                     context.calDAVHelper.insertCalDAVEvent(event)
                 }
@@ -107,11 +106,11 @@ class EventsHelper(val context: Context) {
         }
     }
 
-    fun updateEvent(activity: SimpleActivity? = null, event: Event, updateAtCalDAV: Boolean, callback: (() -> Unit)? = null) {
+    fun updateEvent(event: Event, updateAtCalDAV: Boolean, showToasts: Boolean, callback: (() -> Unit)? = null) {
         eventsDB.insertOrUpdate(event)
 
         context.updateWidgets()
-        context.scheduleNextEventReminder(event, activity)
+        context.scheduleNextEventReminder(event, showToasts)
         if (updateAtCalDAV && event.source != SOURCE_SIMPLE_CALENDAR && config.caldavSync) {
             context.calDAVHelper.updateCalDAVEvent(event)
         }
@@ -201,7 +200,7 @@ class EventsHelper(val context: Context) {
             repetitionExceptions.add(Formatter.getDayCodeFromTS(occurrenceTS))
             repetitionExceptions = repetitionExceptions.distinct().toMutableList() as ArrayList<String>
             eventsDB.updateEventRepetitionExceptions(repetitionExceptions, parentEventId)
-            context.scheduleNextEventReminder(parentEvent)
+            context.scheduleNextEventReminder(parentEvent, false)
 
             if (addToCalDAV && config.caldavSync) {
                 context.calDAVHelper.insertEventRepeatException(parentEvent, occurrenceTS)

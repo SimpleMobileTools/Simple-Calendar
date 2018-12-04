@@ -490,7 +490,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                                     eventType = eventTypeId, source = source, lastUpdated = lastUpdated)
 
                             if (!importIDs.contains(contactId)) {
-                                eventsHelper.insertEvent(null, event, false) {
+                                eventsHelper.insertEvent(event, false, false) {
                                     eventsAdded++
                                 }
                             }

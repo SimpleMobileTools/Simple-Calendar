@@ -22,7 +22,6 @@ import androidx.core.app.AlarmManagerCompat
 import androidx.core.app.NotificationCompat
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.EventActivity
-import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.activities.SnoozeReminderActivity
 import com.simplemobiletools.calendar.pro.databases.EventsDatabase
 import com.simplemobiletools.calendar.pro.helpers.*
@@ -76,13 +75,15 @@ fun Context.updateListWidget() {
 fun Context.scheduleAllEvents() {
     val events = eventsDB.getEventsAtReboot(getNowSeconds())
     events.forEach {
-        scheduleNextEventReminder(it)
+        scheduleNextEventReminder(it, false)
     }
 }
 
-fun Context.scheduleNextEventReminder(event: Event, activity: SimpleActivity? = null) {
+fun Context.scheduleNextEventReminder(event: Event, showToasts: Boolean) {
     if (event.getReminders().isEmpty()) {
-        activity?.toast(R.string.saving)
+        if (showToasts) {
+            toast(R.string.saving)
+        }
         return
     }
 
@@ -93,28 +94,32 @@ fun Context.scheduleNextEventReminder(event: Event, activity: SimpleActivity? = 
             for (curEvent in it) {
                 for (curReminder in reminderSeconds) {
                     if (curEvent.getEventStartTS() - curReminder > now) {
-                        scheduleEventIn((curEvent.getEventStartTS() - curReminder) * 1000L, curEvent, activity)
+                        scheduleEventIn((curEvent.getEventStartTS() - curReminder) * 1000L, curEvent, showToasts)
                         return@getEvents
                     }
                 }
             }
         }
 
-        activity?.toast(R.string.saving)
+        if (showToasts) {
+            toast(R.string.saving)
+        }
     }
 }
 
-fun Context.scheduleEventIn(notifTS: Long, event: Event, activity: SimpleActivity? = null) {
+fun Context.scheduleEventIn(notifTS: Long, event: Event, showToasts: Boolean) {
     if (notifTS < System.currentTimeMillis()) {
-        activity?.toast(R.string.saving)
+        if (showToasts) {
+            toast(R.string.saving)
+        }
         return
     }
 
     val newNotifTS = notifTS + 1000
-    if (activity != null) {
+    if (showToasts) {
         val secondsTillNotification = (newNotifTS - System.currentTimeMillis()) / 1000
         val msg = String.format(getString(R.string.reminder_triggers_in), formatSecondsToTimeString(secondsTillNotification.toInt()))
-        activity.toast(msg)
+        toast(msg)
     }
 
     val pendingIntent = getNotificationIntent(applicationContext, event)
@@ -281,7 +286,7 @@ private fun getSnoozePendingIntent(context: Context, event: Event): PendingInten
 
 fun Context.rescheduleReminder(event: Event?, minutes: Int) {
     if (event != null) {
-        applicationContext.scheduleEventIn(System.currentTimeMillis() + minutes * 60000, event)
+        applicationContext.scheduleEventIn(System.currentTimeMillis() + minutes * 60000, event, false)
         cancelNotification(event.id!!)
     }
 }
@@ -427,10 +432,10 @@ fun Context.handleEventDeleting(eventIds: List<Long>, timestamps: List<Long>, ac
     }
 }
 
-fun Context.refreshCalDAVCalendars(ids: String, showErrorToasts: Boolean) {
+fun Context.refreshCalDAVCalendars(ids: String, showToasts: Boolean) {
     val uri = CalendarContract.Calendars.CONTENT_URI
     val accounts = HashSet<Account>()
-    val calendars = calDAVHelper.getCalDAVCalendars(ids, showErrorToasts)
+    val calendars = calDAVHelper.getCalDAVCalendars(ids, showToasts)
     calendars.forEach {
         accounts.add(Account(it.accountName, it.accountType))
     }

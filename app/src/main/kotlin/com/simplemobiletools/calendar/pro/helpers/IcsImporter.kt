@@ -168,13 +168,13 @@ class IcsImporter(val activity: SimpleActivity) {
                             // if an event belongs to a sequence insert it immediately, to avoid some glitches with linked events
                             if (isSequence) {
                                 if (curRecurrenceDayCode.isEmpty()) {
-                                    eventsHelper.insertEvent(null, event, true)
+                                    eventsHelper.insertEvent(event, true, false)
                                 } else {
                                     // if an event contains the RECURRENCE-ID field, it is an exception to a recurring event, so update its parent too
                                     val parentEvent = activity.eventsDB.getEventWithImportId(event.importId)
                                     if (parentEvent != null && !parentEvent.repetitionExceptions.contains(curRecurrenceDayCode)) {
                                         parentEvent.addRepetitionException(curRecurrenceDayCode)
-                                        eventsHelper.insertEvent(null, parentEvent, true)
+                                        eventsHelper.insertEvent(parentEvent, true, false)
 
                                         event.parentId = parentEvent.id!!
                                         eventsToInsert.add(event)
@@ -185,7 +185,7 @@ class IcsImporter(val activity: SimpleActivity) {
                             }
                         } else {
                             event.id = eventToUpdate.id
-                            eventsHelper.updateEvent(null, event, true)
+                            eventsHelper.updateEvent(event, true, false)
                         }
                         eventsImported++
                         resetValues()

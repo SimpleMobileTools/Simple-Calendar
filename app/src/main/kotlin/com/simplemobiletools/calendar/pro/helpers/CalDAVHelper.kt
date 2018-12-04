@@ -22,14 +22,14 @@ import kotlin.collections.ArrayList
 class CalDAVHelper(val context: Context) {
     private val eventsHelper = context.eventsHelper
 
-    fun refreshCalendars(showErrorToasts: Boolean, callback: () -> Unit) {
+    fun refreshCalendars(showToasts: Boolean, callback: () -> Unit) {
         if (isUpdatingCalDAV) {
             return
         }
 
         isUpdatingCalDAV = true
         try {
-            val calDAVCalendars = getCalDAVCalendars(context.config.caldavSyncedCalendarIDs, showErrorToasts)
+            val calDAVCalendars = getCalDAVCalendars(context.config.caldavSyncedCalendarIDs, showToasts)
             for (calendar in calDAVCalendars) {
                 val localEventType = eventsHelper.getEventTypeWithCalDAVCalendarId(calendar.id) ?: continue
                 localEventType.apply {
@@ -39,7 +39,7 @@ class CalDAVHelper(val context: Context) {
                     eventsHelper.insertOrUpdateEventTypeSync(this)
                 }
 
-                fetchCalDAVCalendarEvents(calendar.id, localEventType.id!!, showErrorToasts)
+                fetchCalDAVCalendarEvents(calendar.id, localEventType.id!!, showToasts)
             }
             context.scheduleCalDAVSync(true)
             callback()
@@ -49,7 +49,7 @@ class CalDAVHelper(val context: Context) {
     }
 
     @SuppressLint("MissingPermission")
-    fun getCalDAVCalendars(ids: String, showErrorToasts: Boolean): List<CalDAVCalendar> {
+    fun getCalDAVCalendars(ids: String, showToasts: Boolean): List<CalDAVCalendar> {
         val calendars = ArrayList<CalDAVCalendar>()
         if (!context.hasPermission(PERMISSION_WRITE_CALENDAR) || !context.hasPermission(PERMISSION_READ_CALENDAR)) {
             return calendars
@@ -83,7 +83,7 @@ class CalDAVHelper(val context: Context) {
                 } while (cursor.moveToNext())
             }
         } catch (e: Exception) {
-            if (showErrorToasts) {
+            if (showToasts) {
                 context.showErrorToast(e)
             }
         } finally {
@@ -162,7 +162,7 @@ class CalDAVHelper(val context: Context) {
     }
 
     @SuppressLint("MissingPermission")
-    private fun fetchCalDAVCalendarEvents(calendarId: Int, eventTypeId: Long, showErrorToasts: Boolean) {
+    private fun fetchCalDAVCalendarEvents(calendarId: Int, eventTypeId: Long, showToasts: Boolean) {
         val importIdsMap = HashMap<String, Event>()
         val fetchedEventIds = ArrayList<String>()
         val existingEvents = context.eventsDB.getEventsFromCalDAVCalendar("$CALDAV-$calendarId")
@@ -233,10 +233,10 @@ class CalDAVHelper(val context: Context) {
                         if (parentEvent != null && !parentEvent.repetitionExceptions.contains(originalDayCode)) {
                             event.parentId = parentEvent.id!!
                             parentEvent.addRepetitionException(originalDayCode)
-                            eventsHelper.insertEvent(null, parentEvent, false)
+                            eventsHelper.insertEvent(parentEvent, false, false)
 
                             event.parentId = parentEvent.id!!
-                            eventsHelper.insertEvent(null, event, false)
+                            eventsHelper.insertEvent(event, false, false)
                             continue
                         }
                     }
@@ -254,18 +254,18 @@ class CalDAVHelper(val context: Context) {
 
                         if (existingEvent.hashCode() != event.hashCode() && title.isNotEmpty()) {
                             event.id = originalEventId
-                            eventsHelper.updateEvent(null, event, false)
+                            eventsHelper.updateEvent(event, false, false)
                         }
                     } else {
                         if (title.isNotEmpty()) {
                             importIdsMap[event.importId] = event
-                            eventsHelper.insertEvent(null, event, false)
+                            eventsHelper.insertEvent(event, false, false)
                         }
                     }
                 } while (cursor.moveToNext())
             }
         } catch (e: Exception) {
-            if (showErrorToasts) {
+            if (showToasts) {
                 context.showErrorToast(e)
             }
         } finally {
