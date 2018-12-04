@@ -38,13 +38,13 @@ open class SimpleActivity : BaseSimpleActivity() {
 
     override fun getAppLauncherName() = getString(R.string.app_launcher_name)
 
-    fun Context.syncCalDAVCalendars(activity: SimpleActivity?, callback: () -> Unit) {
+    fun Context.syncCalDAVCalendars(callback: () -> Unit) {
         calDAVRefreshCallback = callback
         Thread {
             val uri = CalendarContract.Calendars.CONTENT_URI
             contentResolver.unregisterContentObserver(calDAVSyncObserver)
             contentResolver.registerContentObserver(uri, false, calDAVSyncObserver)
-            refreshCalDAVCalendars(activity, config.caldavSyncedCalendarIDs)
+            refreshCalDAVCalendars(config.caldavSyncedCalendarIDs, true)
         }.start()
     }
 

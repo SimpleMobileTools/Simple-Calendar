@@ -302,12 +302,12 @@ fun Context.getNewEventTimestampFromCode(dayCode: String): Long {
     return newDateTime.withDate(dateTime.year, dateTime.monthOfYear, dateTime.dayOfMonth).seconds()
 }
 
-fun Context.getSyncedCalDAVCalendars() = calDAVHelper.getCalDAVCalendars(null, config.caldavSyncedCalendarIDs)
+fun Context.getSyncedCalDAVCalendars() = calDAVHelper.getCalDAVCalendars(config.caldavSyncedCalendarIDs, false)
 
 fun Context.recheckCalDAVCalendars(callback: () -> Unit) {
     if (config.caldavSync) {
         Thread {
-            calDAVHelper.refreshCalendars(null, callback)
+            calDAVHelper.refreshCalendars(false, callback)
             updateWidgets()
         }.start()
     }
@@ -427,10 +427,10 @@ fun Context.handleEventDeleting(eventIds: List<Long>, timestamps: List<Long>, ac
     }
 }
 
-fun Context.refreshCalDAVCalendars(activity: SimpleActivity?, ids: String) {
+fun Context.refreshCalDAVCalendars(ids: String, showErrorToasts: Boolean) {
     val uri = CalendarContract.Calendars.CONTENT_URI
     val accounts = HashSet<Account>()
-    val calendars = calDAVHelper.getCalDAVCalendars(activity, ids)
+    val calendars = calDAVHelper.getCalDAVCalendars(ids, showErrorToasts)
     calendars.forEach {
         accounts.add(Account(it.accountName, it.accountType))
     }

@@ -21,7 +21,7 @@ class SelectCalendarsDialog(val activity: SimpleActivity, val callback: () -> Un
 
     init {
         val ids = activity.config.getSyncedCalendarIdsAsList()
-        val calendars = activity.calDAVHelper.getCalDAVCalendars(activity)
+        val calendars = activity.calDAVHelper.getCalDAVCalendars("", true)
         val sorted = calendars.sortedWith(compareBy({ it.accountName }, { it.displayName }))
         sorted.forEach {
             if (prevAccount != it.accountName) {

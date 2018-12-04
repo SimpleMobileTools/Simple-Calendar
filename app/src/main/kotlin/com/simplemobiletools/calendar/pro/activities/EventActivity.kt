@@ -605,7 +605,7 @@ class EventActivity : SimpleActivity() {
             event_caldav_calendar_holder.beVisible()
             event_caldav_calendar_divider.beVisible()
 
-            val calendars = calDAVHelper.getCalDAVCalendars(this).filter {
+            val calendars = calDAVHelper.getCalDAVCalendars("", true).filter {
                 config.getSyncedCalendarIdsAsList().contains(it.id)
             }
             updateCurrentCalendarInfo(if (mEventCalendarId == STORED_LOCALLY_ONLY) null else getCalendarWithId(calendars, getCalendarId()))
@@ -738,7 +738,7 @@ class EventActivity : SimpleActivity() {
         val newEventType = if (!config.caldavSync || config.lastUsedCaldavCalendarId == 0 || mEventCalendarId == STORED_LOCALLY_ONLY) {
             mEventTypeId
         } else {
-            calDAVHelper.getCalDAVCalendars(this).firstOrNull { it.id == mEventCalendarId }?.apply {
+            calDAVHelper.getCalDAVCalendars("", true).firstOrNull { it.id == mEventCalendarId }?.apply {
                 if (!canWrite()) {
                     runOnUiThread {
                         toast(R.string.insufficient_permissions)

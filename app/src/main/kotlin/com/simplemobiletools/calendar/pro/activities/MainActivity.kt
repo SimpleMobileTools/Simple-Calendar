@@ -364,8 +364,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             toast(R.string.refreshing)
         }
 
-        syncCalDAVCalendars(this) {
-            calDAVHelper.refreshCalendars(this) {
+        syncCalDAVCalendars {
+            calDAVHelper.refreshCalendars(true) {
                 calDAVChanged()
             }
         }

@@ -218,8 +218,8 @@ class SettingsActivity : SimpleActivity() {
                         }
                     }
 
-                    syncCalDAVCalendars(this) {
-                        calDAVHelper.refreshCalendars(this) {
+                    syncCalDAVCalendars {
+                        calDAVHelper.refreshCalendars(true) {
                             if (settings_caldav_sync.isChecked) {
                                 toast(R.string.synchronization_completed)
                             }
