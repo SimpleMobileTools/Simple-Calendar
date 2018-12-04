@@ -372,14 +372,12 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     private fun calDAVChanged() {
-        recheckCalDAVCalendars {
-            refreshViewPager()
-            if (showCalDAVRefreshToast) {
-                toast(R.string.refreshing_complete)
-            }
-            runOnUiThread {
-                swipe_refresh_layout.isRefreshing = false
-            }
+        refreshViewPager()
+        if (showCalDAVRefreshToast) {
+            toast(R.string.refreshing_complete)
+        }
+        runOnUiThread {
+            swipe_refresh_layout.isRefreshing = false
         }
     }
 
