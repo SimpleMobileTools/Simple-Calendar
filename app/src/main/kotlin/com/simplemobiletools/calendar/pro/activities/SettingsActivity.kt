@@ -217,7 +217,14 @@ class SettingsActivity : SimpleActivity() {
                             eventsHelper.insertOrUpdateEventType(this, eventType)
                         }
                     }
-                    calDAVHelper.refreshCalendars(this) {}
+
+                    syncCalDAVCalendars(this) {
+                        calDAVHelper.refreshCalendars(this) {
+                            if (settings_caldav_sync.isChecked) {
+                                toast(R.string.synchronization_completed)
+                            }
+                        }
+                    }
                 }
 
                 val removedCalendarIds = oldCalendarIds.filter { !newCalendarIds.contains(it) }
@@ -229,9 +236,6 @@ class SettingsActivity : SimpleActivity() {
                 }
 
                 eventTypesDB.deleteEventTypesWithCalendarId(removedCalendarIds)
-                if (settings_caldav_sync.isChecked) {
-                    toast(R.string.synchronization_completed)
-                }
             }.start()
         }
     }

@@ -4,12 +4,10 @@ import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
-import android.database.ContentObserver
 import android.database.Cursor
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
-import android.os.Handler
 import android.provider.ContactsContract
 import android.view.Menu
 import android.view.MenuItem
@@ -140,7 +138,6 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     override fun onStop() {
         super.onStop()
-        contentResolver.unregisterContentObserver(calDAVSyncObserver)
         closeSearch()
     }
 
@@ -367,21 +364,14 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             toast(R.string.refreshing)
         }
 
-        syncCalDAVCalendars(this, calDAVSyncObserver)
-        scheduleCalDAVSync(true)
-    }
-
-    private val calDAVSyncObserver = object : ContentObserver(Handler()) {
-        override fun onChange(selfChange: Boolean) {
-            super.onChange(selfChange)
-            if (!selfChange) {
+        syncCalDAVCalendars(this) {
+            calDAVHelper.refreshCalendars(this) {
                 calDAVChanged()
             }
         }
     }
 
     private fun calDAVChanged() {
-        contentResolver.unregisterContentObserver(calDAVSyncObserver)
         recheckCalDAVCalendars {
             refreshViewPager()
             if (showCalDAVRefreshToast) {

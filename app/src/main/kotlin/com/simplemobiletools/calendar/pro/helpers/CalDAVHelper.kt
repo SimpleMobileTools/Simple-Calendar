@@ -13,6 +13,7 @@ import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.models.CalDAVCalendar
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.EventType
+import com.simplemobiletools.calendar.pro.objects.States.isUpdatingCalDAV
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.PERMISSION_READ_CALENDAR
 import com.simplemobiletools.commons.helpers.PERMISSION_WRITE_CALENDAR
@@ -23,20 +24,29 @@ class CalDAVHelper(val context: Context) {
     private val eventsHelper = context.eventsHelper
 
     fun refreshCalendars(activity: SimpleActivity? = null, callback: () -> Unit) {
-        val calDAVCalendars = getCalDAVCalendars(activity, context.config.caldavSyncedCalendarIDs)
-        for (calendar in calDAVCalendars) {
-            val localEventType = eventsHelper.getEventTypeWithCalDAVCalendarId(calendar.id) ?: continue
-            localEventType.apply {
-                title = calendar.displayName
-                caldavDisplayName = calendar.displayName
-                caldavEmail = calendar.accountName
-                eventsHelper.insertOrUpdateEventTypeSync(this)
-            }
-
-            fetchCalDAVCalendarEvents(calendar.id, localEventType.id!!, activity)
+        if (isUpdatingCalDAV) {
+            return
         }
-        context.scheduleCalDAVSync(true)
-        callback()
+
+        isUpdatingCalDAV = true
+        try {
+            val calDAVCalendars = getCalDAVCalendars(activity, context.config.caldavSyncedCalendarIDs)
+            for (calendar in calDAVCalendars) {
+                val localEventType = eventsHelper.getEventTypeWithCalDAVCalendarId(calendar.id) ?: continue
+                localEventType.apply {
+                    title = calendar.displayName
+                    caldavDisplayName = calendar.displayName
+                    caldavEmail = calendar.accountName
+                    eventsHelper.insertOrUpdateEventTypeSync(this)
+                }
+
+                fetchCalDAVCalendarEvents(calendar.id, localEventType.id!!, activity)
+            }
+            context.scheduleCalDAVSync(true)
+            callback()
+        } finally {
+            isUpdatingCalDAV = false
+        }
     }
 
     @SuppressLint("MissingPermission")
