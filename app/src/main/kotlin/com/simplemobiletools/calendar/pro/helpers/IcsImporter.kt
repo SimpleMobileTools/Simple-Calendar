@@ -172,14 +172,9 @@ class IcsImporter(val activity: SimpleActivity) {
                                 } else {
                                     // if an event contains the RECURRENCE-ID field, it is an exception to a recurring event, so update its parent too
                                     val parentEvent = activity.eventsDB.getEventWithImportId(event.importId)
-                                    if (parentEvent != null) {
-                                        if (parentEvent.repetitionExceptions.contains(curRecurrenceDayCode)) {
-                                            continue
-                                        }
-
-                                        parentEvent.repetitionExceptions.add(curRecurrenceDayCode)
+                                    if (parentEvent != null && !parentEvent.repetitionExceptions.contains(curRecurrenceDayCode)) {
+                                        parentEvent.addRepetitionException(curRecurrenceDayCode)
                                         activity.eventsDB.insertOrUpdate(parentEvent)
-
                                         event.parentId = parentEvent.id!!
                                         eventsToInsert.add(event)
                                     }

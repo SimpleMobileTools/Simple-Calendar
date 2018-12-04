@@ -154,6 +154,13 @@ data class Event(
         isPastEvent = endTSToCheck < getNowSeconds()
     }
 
+    fun addRepetitionException(daycode: String) {
+        var newRepetitionExceptions = repetitionExceptions
+        newRepetitionExceptions.add(daycode)
+        newRepetitionExceptions = newRepetitionExceptions.distinct().toMutableList() as ArrayList<String>
+        repetitionExceptions = newRepetitionExceptions
+    }
+
     var isPastEvent: Boolean
         get() = flags and FLAG_IS_PAST_EVENT != 0
         set(isPastEvent) {

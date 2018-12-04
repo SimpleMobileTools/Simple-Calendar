@@ -227,10 +227,15 @@ class CalDAVHelper(val context: Context) {
                     // if the event is an exception from another events repeat rule, find the original parent event
                     if (originalInstanceTime != 0L) {
                         val parentImportId = "$source-$originalId"
-                        val parentEventId = context.eventsDB.getEventIdWithImportId(parentImportId)
-                        if (parentEventId != null) {
-                            event.parentId = parentEventId
-                            eventsHelper.addEventRepetitionException(parentEventId, originalInstanceTime / 1000L, false)
+                        val parentEvent = context.eventsDB.getEventWithImportId(parentImportId)
+                        val originalDayCode = Formatter.getDayCodeFromTS(originalInstanceTime / 1000L)
+                        if (parentEvent != null && !parentEvent.repetitionExceptions.contains(originalDayCode)) {
+                            event.parentId = parentEvent.id!!
+                            parentEvent.addRepetitionException(originalDayCode)
+                            activity!!.eventsDB.insertOrUpdate(parentEvent)
+
+                            event.parentId = parentEvent.id!!
+                            eventsHelper.insertEvent(null, event, false)
                             continue
                         }
                     }
