@@ -243,6 +243,7 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
             .setContentIntent(pendingIntent)
             .setPriority(NotificationCompat.PRIORITY_MAX)
             .setDefaults(Notification.DEFAULT_LIGHTS)
+            .setCategory(Notification.CATEGORY_EVENT)
             .setAutoCancel(true)
             .setSound(Uri.parse(soundUri), config.reminderAudioStream)
             .setChannelId(channelId)
