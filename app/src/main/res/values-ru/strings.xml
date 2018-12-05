@@ -183,17 +183,17 @@
     <string name="syncing">Синхронизация…</string>
     <string name="synchronization_completed">Синхронизация завершена</string>
     <string name="select_a_different_caldav_color">Выберите другой цвет (применяется локально)</string>
-    <string name="insufficient_permissions">You are not allowed to write in the selected calendar</string>
+    <string name="insufficient_permissions">Запись в выбранный календарь запрещена</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
-    <string name="monday_alt">Понедельник</string>
-    <string name="tuesday_alt">Вторник</string>
-    <string name="wednesday_alt">Среда</string>
-    <string name="thursday_alt">Четверг</string>
-    <string name="friday_alt">Пятница</string>
-    <string name="saturday_alt">Суббота</string>
-    <string name="sunday_alt">Воскресенье</string>
+    <string name="monday_alt">понедельник</string>
+    <string name="tuesday_alt">вторник</string>
+    <string name="wednesday_alt">среду</string>
+    <string name="thursday_alt">четверг</string>
+    <string name="friday_alt">пятницу</string>
+    <string name="saturday_alt">субботу</string>
+    <string name="sunday_alt">воскресенье</string>
 
     <!-- List widget config example events -->
     <string name="sample_title_1">Тренировка</string>
