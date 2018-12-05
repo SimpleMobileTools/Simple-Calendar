@@ -353,7 +353,9 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
             val minTS = Math.max(startDateTime.seconds(), mWeekTimestamp)
             val maxTS = Math.min(endDateTime.seconds(), mWeekTimestamp + WEEK_SECONDS)
-            if (minTS == maxTS) {
+
+            // fix a visual glitch with all-day events or events lasting multiple days starting at midnight on monday, being shown the previous week too
+            if (minTS == maxTS && (minTS - mWeekTimestamp == WEEK_SECONDS.toLong())) {
                 return
             }
 
