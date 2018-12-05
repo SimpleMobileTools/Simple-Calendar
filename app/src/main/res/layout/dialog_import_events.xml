@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/import_events_holder"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingRight="@dimen/activity_margin"
-    android:paddingTop="@dimen/activity_margin">
+    android:paddingTop="@dimen/activity_margin"
+    android:paddingRight="@dimen/activity_margin">
 
     <com.simplemobiletools.commons.views.MyTextView
         android:id="@+id/import_events_event_type_label"
@@ -26,11 +27,13 @@
 
         <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/import_event_type_title"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/import_event_type_color"
             android:paddingLeft="@dimen/medium_margin"
-            android:paddingRight="@dimen/medium_margin"/>
+            android:paddingRight="@dimen/medium_margin"
+            tools:text="@string/regular_event"/>
 
         <ImageView
             android:id="@+id/import_event_type_color"
@@ -49,8 +52,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/normal_margin"
-        android:paddingBottom="@dimen/activity_margin"
         android:paddingTop="@dimen/activity_margin"
+        android:paddingBottom="@dimen/activity_margin"
         android:text="@string/override_event_types"/>
 
 </LinearLayout>

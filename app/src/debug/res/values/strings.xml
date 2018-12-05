@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_launcher_name">Calendar_debug</string>
-    <string name="leak_canary_display_activity_label">Calendar Leaks</string>
 </resources>

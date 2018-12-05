@@ -1,6 +1,28 @@
 Changelog
 ==========
 
+Version 6.0.1 *(2018-11-18)*
+----------------------------
+
+ * Fixed some crashes and UX glitches
+
+Version 6.0.0 *(2018-11-16)*
+----------------------------
+
+ * Initial Pro version
+ * Fully rewrote the database storing events
+ * Fixed some issues related to importing events from .ics files and CalDAV sync
+
+Version 5.1.3 *(2018-11-29)*
+----------------------------
+
+ * This version of the app is no longer maintained, please upgrade to the Pro version. You can find the Upgrade button at the top of the app Settings.
+
+Version 5.1.2 *(2018-11-09)*
+----------------------------
+
+ * Couple smaller UX improvements
+
 Version 5.1.1 *(2018-10-25)*
 ----------------------------
 

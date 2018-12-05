@@ -383,9 +383,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/small_margin"
                 android:layout_marginLeft="@dimen/small_margin"
+                android:layout_toLeftOf="@+id/event_caldav_calendar_color"
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:paddingTop="@dimen/medium_margin"
+                android:paddingRight="@dimen/medium_margin"
                 android:paddingBottom="@dimen/tiny_margin"
                 android:textSize="@dimen/day_text_size"
                 tools:text="My calendar"/>
@@ -397,8 +399,10 @@
                 android:layout_below="@+id/event_caldav_calendar_name"
                 android:layout_marginStart="@dimen/small_margin"
                 android:layout_marginLeft="@dimen/small_margin"
+                android:layout_toLeftOf="@+id/event_caldav_calendar_color"
                 android:ellipsize="end"
                 android:maxLines="1"
+                android:paddingRight="@dimen/medium_margin"
                 android:paddingBottom="@dimen/medium_margin"
                 android:textSize="@dimen/meta_text_size"
                 tools:text="hello@simplemobiletools.com"/>

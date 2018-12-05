@@ -26,7 +26,7 @@
                 android:textAllCaps="true"
                 android:textSize="@dimen/normal_text_size"/>
 
-            <com.simplemobiletools.calendar.views.SmallMonthView
+            <com.simplemobiletools.calendar.pro.views.SmallMonthView
                 android:id="@+id/month_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -52,7 +52,7 @@
                 android:textAllCaps="true"
                 android:textSize="@dimen/normal_text_size"/>
 
-            <com.simplemobiletools.calendar.views.SmallMonthView
+            <com.simplemobiletools.calendar.pro.views.SmallMonthView
                 android:id="@+id/month_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -77,7 +77,7 @@
                 android:textAllCaps="true"
                 android:textSize="@dimen/normal_text_size"/>
 
-            <com.simplemobiletools.calendar.views.SmallMonthView
+            <com.simplemobiletools.calendar.pro.views.SmallMonthView
                 android:id="@+id/month_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -105,7 +105,7 @@
                 android:textAllCaps="true"
                 android:textSize="@dimen/normal_text_size"/>
 
-            <com.simplemobiletools.calendar.views.SmallMonthView
+            <com.simplemobiletools.calendar.pro.views.SmallMonthView
                 android:id="@+id/month_4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -131,7 +131,7 @@
                 android:textAllCaps="true"
                 android:textSize="@dimen/normal_text_size"/>
 
-            <com.simplemobiletools.calendar.views.SmallMonthView
+            <com.simplemobiletools.calendar.pro.views.SmallMonthView
                 android:id="@+id/month_5"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -156,7 +156,7 @@
                 android:textAllCaps="true"
                 android:textSize="@dimen/normal_text_size"/>
 
-            <com.simplemobiletools.calendar.views.SmallMonthView
+            <com.simplemobiletools.calendar.pro.views.SmallMonthView
                 android:id="@+id/month_6"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -184,7 +184,7 @@
                 android:textAllCaps="true"
                 android:textSize="@dimen/normal_text_size"/>
 
-            <com.simplemobiletools.calendar.views.SmallMonthView
+            <com.simplemobiletools.calendar.pro.views.SmallMonthView
                 android:id="@+id/month_7"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -208,7 +208,7 @@
                 android:textAllCaps="true"
                 android:textSize="@dimen/normal_text_size"/>
 
-            <com.simplemobiletools.calendar.views.SmallMonthView
+            <com.simplemobiletools.calendar.pro.views.SmallMonthView
                 android:id="@+id/month_8"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -233,7 +233,7 @@
                 android:textAllCaps="true"
                 android:textSize="@dimen/normal_text_size"/>
 
-            <com.simplemobiletools.calendar.views.SmallMonthView
+            <com.simplemobiletools.calendar.pro.views.SmallMonthView
                 android:id="@+id/month_9"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -262,7 +262,7 @@
                 android:textAllCaps="true"
                 android:textSize="@dimen/normal_text_size"/>
 
-            <com.simplemobiletools.calendar.views.SmallMonthView
+            <com.simplemobiletools.calendar.pro.views.SmallMonthView
                 android:id="@+id/month_10"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -287,7 +287,7 @@
                 android:textAllCaps="true"
                 android:textSize="@dimen/normal_text_size"/>
 
-            <com.simplemobiletools.calendar.views.SmallMonthView
+            <com.simplemobiletools.calendar.pro.views.SmallMonthView
                 android:id="@+id/month_11"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -314,7 +314,7 @@
                 android:textAllCaps="true"
                 android:textSize="@dimen/normal_text_size"/>
 
-            <com.simplemobiletools.calendar.views.SmallMonthView
+            <com.simplemobiletools.calendar.pro.views.SmallMonthView
                 android:id="@+id/month_12"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
