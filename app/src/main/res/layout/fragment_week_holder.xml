@@ -15,7 +15,7 @@
         <ImageView
             android:id="@+id/week_view_hours_divider"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignRight="@+id/week_view_hours_scrollview"
             android:background="@drawable/stroke_bottom_right"
             android:importantForAccessibility="no"/>
