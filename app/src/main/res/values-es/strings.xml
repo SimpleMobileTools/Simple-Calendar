@@ -168,7 +168,7 @@
     <string name="default_reminder_1">Recordatorio 1</string>
     <string name="default_reminder_2">Recordatorio 2</string>
     <string name="default_reminder_3">Recordatorio 3</string>
-    <string name="view_to_open_from_widget">Vista a abrir desde el widget</string>
+    <string name="view_to_open_from_widget">Vista por defecto al abrir desde el widget</string>
     <string name="last_view">Última vista</string>
 
     <!-- CalDAV sync -->
@@ -182,7 +182,7 @@
     <string name="editing_calendar_failed">Edición de calendario fallida</string>
     <string name="syncing">Sincronizando…</string>
     <string name="synchronization_completed">Sincronización completa</string>
-    <string name="select_a_different_caldav_color">Select a different color (might be applied locally only)</string>
+    <string name="select_a_different_caldav_color">Seleccionar un color diferente (localmente)</string>
     <string name="insufficient_permissions">No tiene permiso para modificar el calendario</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
@@ -206,9 +206,9 @@
     <string name="sample_title_5">Hora de café</string>
 
     <!-- FAQ -->
-    <string name="faq_1_title">How can I remove the holidays imported via the \"Add holidays\" button?</string>
-    <string name="faq_1_text">Holidays created that way are inserted in a new event type called \"Holidays\". You can go in Settings -> Manage Event Types,
-        long press the given event type and delete it by selecting the trashbin.</string>
+    <string name="faq_1_title">¿Cómo puedo eliminar las festivos importados a través del botón \"Añadir festivos\"?</string>
+    <string name="faq_1_text">Los eventos creados de esa manera tienen un tipo de evento llamado \"Días Festivos\". Puede seleccionarlos todos desde Ajustes->Gestionar tipos de eventos,
+        y usar una pulsación larga para eliminar el tipo de evento y todos sus eventos pulsando en la papelera.</string>
     <string name="faq_2_title">Can I sync my events via Google Calendar, or other service supporting CalDAV?</string>
     <string name="faq_2_text">Yes, just toggle \"CalDAV sync\" in the app settings and select the calendars you want to sync. However, you will need some third party app handling the synchronization between the device and servers.
         In case you want to synchronize a Google calendar, their official Calendar app will do the job. For other calendars you will need a third party sync adapter, for example DAVdroid.</string>
