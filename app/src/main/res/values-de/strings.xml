@@ -141,8 +141,8 @@
 
     <!-- Settings -->
     <string name="manage_event_types">Termintypen verwalten</string>
-    <string name="start_day_at">Wochenansicht beginnt am</string>
-    <string name="end_day_at">Wochenansicht endet am</string>
+    <string name="start_day_at">Wochenansicht beginnt um</string>
+    <string name="end_day_at">Wochenansicht endet um</string>
     <string name="week_numbers">Kalenderwoche anzeigen</string>
     <string name="vibrate">Vibration bei Erinnerung</string>
     <string name="reminder_sound">Erinnerungston</string>
