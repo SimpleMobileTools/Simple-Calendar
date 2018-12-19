@@ -164,12 +164,12 @@
     <string name="alarm_stream">Αφύπνιση</string>
     <string name="notification_stream">Ειδοποίηση</string>
     <string name="ring_stream">Κουδούνισμα</string>
-    <string name="use_last_event_reminders">Use the last events\' reminders as the default for new event</string>
-    <string name="default_reminder_1">Default reminder 1</string>
-    <string name="default_reminder_2">Default reminder 2</string>
-    <string name="default_reminder_3">Default reminder 3</string>
-    <string name="view_to_open_from_widget">View to open from the event list widget</string>
-    <string name="last_view">Last view</string>
+    <string name="use_last_event_reminders">Χρήση τελευταίων συμβάντων\' υπενθυμίσεις ως προεπιλογή για νέο συμβάν</string>
+    <string name="default_reminder_1">Προεπιλογή υπενθύμισης 1</string>
+    <string name="default_reminder_2">Προεπιλογή υπενθύμισης 2</string>
+    <string name="default_reminder_3">Προεπιλογή υπενθύμισης 3</string>
+    <string name="view_to_open_from_widget">Προβολή για να ανοίξετε από το widget λίστας συμβάντων</string>
+    <string name="last_view">Τελευταία προβολή</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -182,8 +182,8 @@
     <string name="editing_calendar_failed">Η επεξεργασία του ημερολογίου απέτυχε</string>
     <string name="syncing">Συγχρονισμός…</string>
     <string name="synchronization_completed">Ο συγχρονισμός ολοκληρώθηκε</string>
-    <string name="select_a_different_caldav_color">Select a different color (might be applied locally only)</string>
-    <string name="insufficient_permissions">You are not allowed to write in the selected calendar</string>
+    <string name="select_a_different_caldav_color">Επιλέξτε διαφορετικό χρώμα (μπορεί να εφαρμοστεί μόνο τοπικά)</string>
+    <string name="insufficient_permissions">Δεν επιτρέπεται η εγγραφή στο επιλεγμένο ημερολόγιο</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
