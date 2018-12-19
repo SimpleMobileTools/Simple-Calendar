@@ -124,7 +124,11 @@ fun Context.scheduleEventIn(notifTS: Long, event: Event, showToasts: Boolean) {
 
     val pendingIntent = getNotificationIntent(applicationContext, event)
     val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-    AlarmManagerCompat.setExactAndAllowWhileIdle(alarmManager, AlarmManager.RTC_WAKEUP, newNotifTS, pendingIntent)
+    try {
+        AlarmManagerCompat.setExactAndAllowWhileIdle(alarmManager, AlarmManager.RTC_WAKEUP, newNotifTS, pendingIntent)
+    } catch (e: Exception) {
+        showErrorToast(e)
+    }
 }
 
 fun Context.cancelNotification(id: Long) {
