@@ -399,7 +399,16 @@ fun Context.addDayEvents(day: DayMonthly, linearLayout: LinearLayout, res: Resou
 fun Context.getEventListItems(events: List<Event>): ArrayList<ListItem> {
     val listItems = ArrayList<ListItem>(events.size)
     val replaceDescription = config.replaceDescription
-    val sorted = events.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { if (replaceDescription) it.location else it.description }))
+
+    // move all-day events in front of others
+    val sorted = events.sortedWith(compareBy({
+        if (it.getIsAllDay()) {
+            Formatter.getDayStartTS(Formatter.getDayCodeFromTS(it.startTS))
+        } else {
+            it.startTS
+        }
+    }, { it.endTS }, { it.title }, { if (replaceDescription) it.location else it.description }))
+
     var prevCode = ""
     val now = getNowSeconds()
     val today = Formatter.getDayTitle(this, Formatter.getDayCodeFromTS(now))
