@@ -106,6 +106,7 @@
 
         <activity
             android:name=".activities.EventActivity"
+            android:launchMode="singleTask"
             android:parentActivityName=".activities.MainActivity">
 
             <intent-filter>
