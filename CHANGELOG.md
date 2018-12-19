@@ -1,6 +1,14 @@
 Changelog
 ==========
 
+Version 6.1.1 *(2018-12-19)*
+----------------------------
+
+ * Fixed one more case of CalDAV events getting duplicated
+ * Fixed the "New event" button sometimes not working properly
+ * Fixed some cases of empty weekly views at app launch
+ * Few other UX and stability improvements
+
 Version 6.1.0 *(2018-12-05)*
 ----------------------------
 
