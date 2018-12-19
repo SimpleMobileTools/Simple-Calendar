@@ -96,7 +96,7 @@ interface EventsDao {
     @Query("UPDATE events SET event_type = $REGULAR_EVENT_TYPE_ID WHERE event_type = :eventTypeId")
     fun resetEventsWithType(eventTypeId: Long)
 
-    @Query("UPDATE events SET import_id = :importId AND source = :source WHERE id = :id")
+    @Query("UPDATE events SET import_id = :importId, source = :source WHERE id = :id")
     fun updateEventImportIdAndSource(importId: String, source: String, id: Long)
 
     @Query("UPDATE events SET repeat_limit = :repeatLimit WHERE id = :id")
