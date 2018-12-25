@@ -701,13 +701,14 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun duplicateEvent() {
+        // the activity has the singleTask launchMode to avoid some glitches, so finish it before relaunching
+        finish()
         Intent(this, EventActivity::class.java).apply {
             putExtra(EVENT_ID, mEvent.id)
             putExtra(EVENT_OCCURRENCE_TS, mEventOccurrenceTS)
             putExtra(IS_DUPLICATE_INTENT, true)
             startActivity(this)
         }
-        finish()
     }
 
     private fun saveCurrentEvent() {
