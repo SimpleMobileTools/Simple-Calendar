@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 6.1.2 *(2018-12-25)*
+----------------------------
+
+ * Fixed "Duplicate Event" not working
+ * Fixed a glitch with weekly view sometimes being blank
+
 Version 6.1.1 *(2018-12-19)*
 ----------------------------
 
