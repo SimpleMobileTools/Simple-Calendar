@@ -19,13 +19,14 @@ import com.simplemobiletools.calendar.pro.views.MyScrollView
 import com.simplemobiletools.commons.extensions.updateActionBarSubtitle
 import com.simplemobiletools.commons.extensions.updateActionBarTitle
 import com.simplemobiletools.commons.helpers.WEEK_SECONDS
-import kotlinx.android.synthetic.main.fragment_week_holder.*
+import com.simplemobiletools.commons.views.MyViewPager
 import kotlinx.android.synthetic.main.fragment_week_holder.view.*
 import org.joda.time.DateTime
 
 class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
     private val PREFILLED_WEEKS = 151
 
+    private var viewPager: MyViewPager? = null
     private var weekHolder: ViewGroup? = null
     private var defaultWeeklyPage = 0
     private var thisWeekTS = 0L
@@ -43,6 +44,8 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         weekHolder = inflater.inflate(R.layout.fragment_week_holder, container, false) as ViewGroup
         weekHolder!!.background = ColorDrawable(context!!.config.backgroundColor)
+        viewPager = weekHolder!!.week_view_view_pager
+        viewPager!!.id = (System.currentTimeMillis() % 100000).toInt()
         setupFragment()
         return weekHolder
     }
@@ -64,7 +67,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
         }
 
         defaultWeeklyPage = weekTSs.size / 2
-        weekHolder!!.week_view_view_pager.apply {
+        viewPager!!.apply {
             adapter = weeklyAdapter
             addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
                 override fun onPageScrollStateChanged(state: Int) {}
@@ -88,7 +91,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
         weekHolder!!.week_view_hours_scrollview.setOnScrollviewListener(object : MyScrollView.ScrollViewListener {
             override fun onScrollChanged(scrollView: MyScrollView, x: Int, y: Int, oldx: Int, oldy: Int) {
                 weekScrollY = y
-                weeklyAdapter.updateScrollY(week_view_view_pager.currentItem, y)
+                weeklyAdapter.updateScrollY(viewPager!!.currentItem, y)
             }
         })
         weekHolder!!.week_view_hours_scrollview.setOnTouchListener { view, motionEvent -> true }
@@ -128,8 +131,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
     }
 
     override fun refreshEvents() {
-        val viewPager = weekHolder?.week_view_view_pager
-        (viewPager?.adapter as? MyWeekPagerAdapter)?.updateCalendars(viewPager.currentItem)
+        (viewPager?.adapter as? MyWeekPagerAdapter)?.updateCalendars(viewPager!!.currentItem)
     }
 
     override fun shouldGoToTodayBeVisible() = currentWeekTS != thisWeekTS
