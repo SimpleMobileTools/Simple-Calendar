@@ -22,7 +22,6 @@ class MyYearPagerAdapter(fm: FragmentManager, val mYears: List<Int>) : FragmentS
         fragment.arguments = bundle
 
         mFragments.put(position, fragment)
-
         return fragment
     }
 
