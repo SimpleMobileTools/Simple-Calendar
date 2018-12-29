@@ -219,7 +219,7 @@
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Ein einfacher Kalender mit personalisierbaren Bedienelementen und ohne Werbung.</string>
+    <string name="app_short_description">An offline calendar for your events without ads, respecting your privacy.</string>
     <string name="app_long_description">
         Ein schlichter Kalender mit optionaler CalDAV-Synchronisation. Du kannst ganz einfach wiederholende Termine sowie Erinnerungen erstellen, inklusive optionaler Anzeige der Kalenderwoche.
 

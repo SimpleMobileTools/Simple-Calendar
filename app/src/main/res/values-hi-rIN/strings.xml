@@ -219,7 +219,7 @@
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">एक सरल कैलेंडर इवेंट्स, कस्टमाइजेबल विजेट व बिना विज्ञापन के बिना।</string>
+    <string name="app_short_description">An offline calendar for your events without ads, respecting your privacy.</string>
     <string name="app_long_description">
         एक ऑफलाइन कैलेंडर बिना अन्य कैलेंडर इंटीग्रेशन के। आप आसानी से इवेंट्स व रिमाइंडर बना सकते हैं, यह सफ्ताह क्रमांक भी दर्शाता हैं।
 

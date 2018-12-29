@@ -216,7 +216,7 @@
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">En simpel reklamefri kalender med begivenheder og en widget der kan tilpasses.</string>
+    <string name="app_short_description">An offline calendar for your events without ads, respecting your privacy.</string>
     <string name="app_long_description">
         En simpel kalender med mulighed for at synkronisere med CalDAV. Nem opsætning af gentagne begivenheder og af påmindelser.
 

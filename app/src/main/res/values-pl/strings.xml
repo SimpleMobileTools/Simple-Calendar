@@ -216,7 +216,7 @@
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Prosty kalendarz z wydarzeniami, widżetami i bez reklam.</string>
+    <string name="app_short_description">An offline calendar for your events without ads, respecting your privacy.</string>
     <string name="app_long_description">
         Prosty kalendarz z obsługą synchronizacji z Dyskiem Google. Dzięki niemu możesz z łatwością tworzyć wydarzenia i przypomnienia, które nigdy nie zaginą.
 
