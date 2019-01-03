@@ -218,7 +218,7 @@
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Um calendário para adicionar eventos e com um widget personalizável.</string>
+    <string name="app_short_description">An offline calendar for your events without ads, respecting your privacy.</string>
     <string name="app_long_description">
         Um calendário local que não possui qualquer tipo de integração. Pode adicionar eventos e lembretes recorrentes e possui uma opção para mostrar o número da semana.
 

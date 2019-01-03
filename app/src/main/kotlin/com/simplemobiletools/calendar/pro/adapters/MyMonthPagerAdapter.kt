@@ -24,7 +24,6 @@ class MyMonthPagerAdapter(fm: FragmentManager, private val mCodes: List<String>,
         fragment.listener = mListener
 
         mFragments.put(position, fragment)
-
         return fragment
     }
 

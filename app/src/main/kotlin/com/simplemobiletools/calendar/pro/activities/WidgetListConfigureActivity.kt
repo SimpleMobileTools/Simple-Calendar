@@ -31,8 +31,6 @@ class WidgetListConfigureActivity : SimpleActivity() {
     private var mTextColorWithoutTransparency = 0
     private var mTextColor = 0
 
-    private var mEventsAdapter: EventListAdapter? = null
-
     public override fun onCreate(savedInstanceState: Bundle?) {
         useDynamicTheme = false
         super.onCreate(savedInstanceState)
@@ -47,9 +45,10 @@ class WidgetListConfigureActivity : SimpleActivity() {
             finish()
         }
 
-        mEventsAdapter = EventListAdapter(this, getListItems(), false, null, config_events_list) {}
-        mEventsAdapter!!.updateTextColor(mTextColor)
-        config_events_list.adapter = mEventsAdapter
+        EventListAdapter(this, getListItems(), false, null, config_events_list) {}.apply {
+            updateTextColor(mTextColor)
+            config_events_list.adapter = this
+        }
 
         config_save.setOnClickListener { saveConfig() }
         config_bg_color.setOnClickListener { pickBackgroundColor() }
@@ -127,7 +126,7 @@ class WidgetListConfigureActivity : SimpleActivity() {
 
     private fun updateColors() {
         mTextColor = mTextColorWithoutTransparency
-        mEventsAdapter?.updateTextColor(mTextColor)
+        (config_events_list.adapter as? EventListAdapter)?.updateTextColor(mTextColor)
         config_text_color.setFillWithStroke(mTextColor, Color.BLACK)
         config_save.setTextColor(mTextColor)
     }

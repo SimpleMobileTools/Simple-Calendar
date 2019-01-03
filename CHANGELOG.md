@@ -1,6 +1,29 @@
 Changelog
 ==========
 
+Version 6.1.2 *(2018-12-25)*
+----------------------------
+
+ * Fixed "Duplicate Event" not working
+ * Fixed a glitch with weekly view sometimes being blank
+
+Version 6.1.1 *(2018-12-19)*
+----------------------------
+
+ * Fixed one more case of CalDAV events getting duplicated
+ * Fixed the "New event" button sometimes not working properly
+ * Fixed some cases of empty weekly views at app launch
+ * Few other UX and stability improvements
+
+Version 6.1.0 *(2018-12-05)*
+----------------------------
+
+ * Many bugfixed related to CalDAV sync and event importing via .ics files
+ * Fixed a couple weekly view related glitches
+ * Open specific event details on clicking it from Event list widget
+ * Fix a glitch related to events repeating by X weeks for a long time
+ * Many other smaller fixes and performance/stability improvements
+
 Version 6.0.1 *(2018-11-18)*
 ----------------------------
 

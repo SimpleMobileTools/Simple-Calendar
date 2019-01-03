@@ -30,6 +30,7 @@ import java.util.regex.Pattern
 
 class EventActivity : SimpleActivity() {
     private val LAT_LON_PATTERN = "^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?)([,;])\\s*[-+]?(180(\\.0+)?|((1[0-7]\\d)|([1-9]?\\d))(\\.\\d+)?)\$"
+    private val EVENT = "EVENT"
     private val START_TS = "START_TS"
     private val END_TS = "END_TS"
     private val REMINDER_1_MINUTES = "REMINDER_1_MINUTES"
@@ -183,6 +184,7 @@ class EventActivity : SimpleActivity() {
         }
 
         outState.apply {
+            putSerializable(EVENT, mEvent)
             putLong(START_TS, mEventStartDateTime.seconds())
             putLong(END_TS, mEventEndDateTime.seconds())
 
@@ -207,6 +209,7 @@ class EventActivity : SimpleActivity() {
         }
 
         savedInstanceState.apply {
+            mEvent = getSerializable(EVENT) as Event
             mEventStartDateTime = Formatter.getDateTimeFromTS(getLong(START_TS))
             mEventEndDateTime = Formatter.getDateTimeFromTS(getLong(END_TS))
 
@@ -698,13 +701,14 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun duplicateEvent() {
+        // the activity has the singleTask launchMode to avoid some glitches, so finish it before relaunching
+        finish()
         Intent(this, EventActivity::class.java).apply {
             putExtra(EVENT_ID, mEvent.id)
             putExtra(EVENT_OCCURRENCE_TS, mEventOccurrenceTS)
             putExtra(IS_DUPLICATE_INTENT, true)
             startActivity(this)
         }
-        finish()
     }
 
     private fun saveCurrentEvent() {

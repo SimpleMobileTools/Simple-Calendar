@@ -12,8 +12,8 @@
         style="@style/ArrowStyle"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_alignBottom="@+id/top_value"
         android:layout_alignTop="@+id/top_value"
+        android:layout_alignBottom="@+id/top_value"
         android:paddingLeft="@dimen/medium_margin"
         android:paddingRight="@dimen/medium_margin"
         android:src="@drawable/ic_pointer_left"/>
@@ -23,46 +23,47 @@
         style="@style/MonthStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toLeftOf="@+id/top_right_arrow"
+        android:layout_toLeftOf="@+id/top_go_to_today"
         android:layout_toRightOf="@+id/top_left_arrow"
         android:gravity="center"
         android:lines="1"
-        android:paddingBottom="@dimen/medium_margin"
         android:paddingTop="@dimen/medium_margin"
-        android:textSize="@dimen/month_text_size"/>
-
-    <ImageView
-        android:id="@+id/top_right_arrow"
-        style="@style/ArrowStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_alignBottom="@+id/top_value"
-        android:layout_alignTop="@+id/top_value"
-        android:layout_toLeftOf="@+id/top_go_to_today"
-        android:paddingLeft="@dimen/medium_margin"
-        android:paddingRight="@dimen/medium_margin"
-        android:src="@drawable/ic_pointer_right"/>
+        android:paddingBottom="@dimen/medium_margin"
+        android:textSize="@dimen/month_text_size"
+        tools:text="January"/>
 
     <ImageView
         android:id="@+id/top_go_to_today"
         style="@style/ArrowStyle"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_alignBottom="@+id/top_value"
         android:layout_alignTop="@+id/top_value"
-        android:layout_toLeftOf="@+id/top_new_event"
+        android:layout_alignBottom="@+id/top_value"
+        android:layout_toLeftOf="@+id/top_right_arrow"
         android:paddingLeft="@dimen/medium_margin"
         android:paddingRight="@dimen/medium_margin"
         android:src="@drawable/ic_today"/>
+
+    <ImageView
+        android:id="@+id/top_right_arrow"
+        style="@style/ArrowStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignTop="@+id/top_value"
+        android:layout_alignBottom="@+id/top_value"
+        android:layout_toLeftOf="@+id/top_new_event"
+        android:paddingLeft="@dimen/medium_margin"
+        android:paddingRight="@dimen/medium_margin"
+        android:src="@drawable/ic_pointer_right"/>
 
     <ImageView
         android:id="@+id/top_new_event"
         style="@style/ArrowStyle"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:layout_alignTop="@+id/top_value"
         android:layout_alignBottom="@+id/top_value"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/top_value"
         android:paddingLeft="@dimen/medium_margin"
         android:paddingRight="@dimen/medium_margin"
         android:src="@drawable/ic_plus"/>

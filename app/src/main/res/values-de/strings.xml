@@ -141,8 +141,8 @@
 
     <!-- Settings -->
     <string name="manage_event_types">Termintypen verwalten</string>
-    <string name="start_day_at">Wochenansicht beginnt am</string>
-    <string name="end_day_at">Wochenansicht endet am</string>
+    <string name="start_day_at">Wochenansicht beginnt um</string>
+    <string name="end_day_at">Wochenansicht endet um</string>
     <string name="week_numbers">Kalenderwoche anzeigen</string>
     <string name="vibrate">Vibration bei Erinnerung</string>
     <string name="reminder_sound">Erinnerungston</string>
@@ -168,7 +168,7 @@
     <string name="default_reminder_1">Standarderinnerung 1</string>
     <string name="default_reminder_2">Standarderinnerung 2</string>
     <string name="default_reminder_3">Standarderinnerung 3</string>
-    <string name="view_to_open_from_widget">Standardansicht</string>
+    <string name="view_to_open_from_widget">Ansicht beim Öffnen durch das Terminlisten-Widget</string>
     <string name="last_view">Letzte Ansicht</string>
 
     <!-- CalDAV sync -->
@@ -182,8 +182,8 @@
     <string name="editing_calendar_failed">Ändern des Kalenders fehlgeschlagen</string>
     <string name="syncing">Wird synchronisiert…</string>
     <string name="synchronization_completed">Synchronisation erfolgreich</string>
-    <string name="select_a_different_caldav_color">Select a different color (might be applied locally only)</string>
-    <string name="insufficient_permissions">You are not allowed to write in the selected calendar</string>
+    <string name="select_a_different_caldav_color">Wähle eine andere Farbe (wird möglicherweise nur lokal angewendet)</string>
+    <string name="insufficient_permissions">Du hast keine Erlaubnis den gewählten Kalender zu bearbeiten</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
@@ -219,7 +219,7 @@
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Ein einfacher Kalender mit personalisierbaren Bedienelementen und ohne Werbung.</string>
+    <string name="app_short_description">An offline calendar for your events without ads, respecting your privacy.</string>
     <string name="app_long_description">
         Ein schlichter Kalender mit optionaler CalDAV-Synchronisation. Du kannst ganz einfach wiederholende Termine sowie Erinnerungen erstellen, inklusive optionaler Anzeige der Kalenderwoche.
 

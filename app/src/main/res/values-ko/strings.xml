@@ -218,7 +218,7 @@
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">사용자 정의 위젯이 있는 심플한 캘린더입니다. 그리고 광고가 없습니다.</string>
+    <string name="app_short_description">An offline calendar for your events without ads, respecting your privacy.</string>
     <string name="app_long_description">
         Google 동기화가 있는 심플한 캘린더입니다. 쉽게 반복 이벤트와 알림을 설정할 수 있으며, 주 번호도 표시할 수 있습니다.
 

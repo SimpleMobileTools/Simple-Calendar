@@ -3,6 +3,7 @@ package com.simplemobiletools.calendar.pro.helpers
 import android.app.Activity
 import android.content.Context
 import androidx.collection.LongSparseArray
+import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.EventType
@@ -246,7 +247,7 @@ class EventsHelper(val context: Context) {
 
         events.forEach {
             it.updateIsPastEvent()
-            it.color = eventTypeColors.get(it.eventType)!!
+            it.color = eventTypeColors.get(it.eventType) ?: context.resources.getColor(R.color.color_primary)
         }
 
         callback(events)

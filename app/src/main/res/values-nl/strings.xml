@@ -218,7 +218,7 @@
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Een simpele agenda met aan te passen widget en zonder advertenties.</string>
+    <string name="app_short_description">Een privacyvriendelijke advertentievrije agenda met aan te passen widget.</string>
     <string name="app_long_description">
         Een simpele agenda met optionele CalDAV-synchronisatie. Creëer met gemak herhaalde afspraken met herinneringen. Kan weeknummers tonen.
 

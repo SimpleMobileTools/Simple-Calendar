@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Simple Calendar</string>
+    <string name="app_name">Semplice calendario</string>
     <string name="app_launcher_name">Calendario</string>
     <string name="change_view">Cambia vista</string>
     <string name="daily_view">Vista giornaliera</string>
     <string name="weekly_view">Vista settimanale</string>
     <string name="monthly_view">Vista mensile</string>
     <string name="yearly_view">Vista annuale</string>
-    <string name="simple_event_list">Lista eventi semplice</string>
-    <string name="no_upcoming_events">Sembra che tu non abbia nessun evento imminente.</string>
+    <string name="simple_event_list">Lista semplice deli eventi</string>
+    <string name="no_upcoming_events">Non c\'è nessun evento imminente.</string>
     <string name="go_to_today">Vai a oggi</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Calendario mensile</string>
-    <string name="widget_list">Lista eventi calendario</string>
+    <string name="widget_list">Lista degli eventi del calendario</string>
 
     <!-- Event -->
     <string name="event">Evento</string>
@@ -22,7 +22,7 @@
     <string name="create_new_event">Crea un nuovo evento</string>
     <string name="duplicate_event">Duplica evento</string>
     <string name="title_empty">Il titolo non può essere vuoto</string>
-    <string name="end_before_start">L\'evento non può terminare prima del suo ianizio</string>
+    <string name="end_before_start">L\'evento non può terminare prima del suo inizio</string>
     <string name="event_added">Evento aggiunto correttamente</string>
     <string name="event_updated">Evento aggiornato correttamente</string>
     <string name="filter_events_by_type">Filtra eventi per tipologia</string>
@@ -53,9 +53,9 @@
     <string name="repeat_forever">Ripeti per sempre</string>
     <string name="times">volte</string>
     <string name="repeat">Ripeti</string>
-    <string name="repeat_on">Ripeti</string>
+    <string name="repeat_on">Ripeti su</string>
     <string name="every_day">Ogni giorno</string>
-    <string name="selected_days">On selected days</string>
+    <string name="selected_days">Nei giorni selezionati</string>
     <string name="the_same_day">Lo stesso giorno</string>
     <string name="the_last_day">L\'ultimo giorno</string>
     <string name="repeat_on_the_same_day_monthly">Ripeti lo stesso giorno ogni mese </string>
@@ -71,23 +71,23 @@
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
-    <string name="repeat_every_f">Repeat every</string>
-    <string name="every_f">Every</string>
-    <string name="first_f">first</string>
-    <string name="second_f">second</string>
-    <string name="third_f">third</string>
-    <string name="fourth_f">fourth</string>
-    <string name="last_f">last</string>
+    <string name="repeat_every_f">Ripeti ogni</string>
+    <string name="every_f">Ogni</string>
+    <string name="first_f">primo</string>
+    <string name="second_f">secondo</string>
+    <string name="third_f">terzo</string>
+    <string name="fourth_f">quarto</string>
+    <string name="last_f">ultimo</string>
 
     <!-- Birthdays -->
     <string name="birthdays">Compleanni</string>
-    <string name="add_birthdays">Aggiungi compleanni contatti</string>
+    <string name="add_birthdays">Aggiungi compleanni dai contatti</string>
     <string name="no_birthdays">Nessun compleanno trovato</string>
     <string name="birthdays_added">Compleanni aggiunti con successo</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Anniversari</string>
-    <string name="add_anniversaries">Aggiungi anniversari contatti</string>
+    <string name="add_anniversaries">Aggiungi anniversari dai contatti</string>
     <string name="no_anniversaries">Nessun anniversario trovato</string>
     <string name="anniversaries_added">Anniversari aggiunti con successo</string>
 
@@ -102,9 +102,9 @@
     <string name="export_events">Esporta eventi</string>
     <string name="import_events_from_ics">Importa eventi da un file .ics</string>
     <string name="export_events_to_ics">Esporta eventi in un file .ics</string>
-    <string name="default_event_type">Tipo evento predefinito</string>
-    <string name="export_past_events_too">Esporta anche eventi passati</string>
-    <string name="include_event_types">Includi tipi evento</string>
+    <string name="default_event_type">Tipo predefinito per un evento</string>
+    <string name="export_past_events_too">Esporta anche gli eventi passati</string>
+    <string name="include_event_types">Includi i tipi di evento</string>
     <string name="filename_without_ics">Nome file (senza .ics)</string>
     <string name="override_event_types">Sovrascrivi i tipi di eventi nel file</string>
 
@@ -118,7 +118,7 @@
     <string name="week">Settimana</string>
 
     <!-- Event types -->
-    <string name="event_types">Tipi evento</string>
+    <string name="event_types">Tipi di evento</string>
     <string name="add_new_type">Aggiungi nuovo tipo</string>
     <string name="edit_type">Modifica tipo</string>
     <string name="type_already_exists">Un tipo con questo titolo esiste già</string>
@@ -140,7 +140,7 @@
     <string name="importing_holidays_failed">Importo delle feste fallito</string>
 
     <!-- Settings -->
-    <string name="manage_event_types">Gestisci tipi evento</string>
+    <string name="manage_event_types">Gestisci i tipi di evento</string>
     <string name="start_day_at">Il giorno inizia alle</string>
     <string name="end_day_at">Il giorno finisce alle</string>
     <string name="week_numbers">Mostra numero settimane</string>
@@ -154,7 +154,7 @@
     <string name="display_past_events">Mostra eventi passati</string>
     <string name="replace_description_with_location">Sostituisci la descrizione con la posizione</string>
     <string name="delete_all_events">Cancella tutti gli eventi</string>
-    <string name="delete_all_events_confirmation">Vuoi cancellare tutti gli eventi? Questo lascerà i tuoi tipi evento e le altre impostazioni invariate.</string>
+    <string name="delete_all_events_confirmation">Vuoi cancellare tutti gli eventi? Questo lascerà i tuoi tipi di evento e le altre impostazioni invariate.</string>
     <string name="show_a_grid">Mostra una griglia</string>
     <string name="loop_reminders">Manda in loop i promemoria finchè non vengono rimossi</string>
     <string name="dim_past_events">Rimuovi gli eventi passati</string>
@@ -199,38 +199,38 @@
     <string name="sample_title_1">Allenamento</string>
     <string name="sample_description_1">Gambe</string>
     <string name="sample_title_2">Incontro con Giovanni</string>
-    <string name="sample_description_2">Nel giardino di Milano</string>
+    <string name="sample_description_2">Al giardino di Milano</string>
     <string name="sample_title_3">Liberia</string>
     <string name="sample_title_4">Pranzo con Maria</string>
-    <string name="sample_description_4">Nel ristorante Magione</string>
+    <string name="sample_description_4">Al ristorante Magione</string>
     <string name="sample_title_5">Pausa caffè</string>
 
     <!-- FAQ -->
-    <string name="faq_1_title">Come posso rimuovere i le festività importate tramite il pulsante \"Aggiungi festività\"?</string>
-    <string name="faq_1_text">Le festività create in questo modo sono inseriti in eventi di tipo \"Festività\". Puoi andare in Impostazioni -> Gestisci tipi di eventi,
-        tenere premuto sul tipo desiderato ed eliminaro selezionando il cestino.</string>
-    <string name="faq_2_title">Posso sincronizzare i miei eventi tramite Google Calendar, od altri servizi che supportano CalDAV?</string>
-    <string name="faq_2_text">Sì, basta commutare l\'opzione \"Sincronizzazione CalDAV\" nelle impostazioni dell\'applicazione e selezionare i calendari da sincronizzare. Comunque è necessaria un\'applicazione di terze parti per gestire la sincronizzazione tra dispositivo e server.
-        In caso si voglia sincronizzare con Google Calendar, la loro applicazione ufficiale effettua questo lavoro. Per altri calendari è necessario un adattatore di terze parti, per esempio DAVdroid.</string>
+    <string name="faq_1_title">Come posso rimuovere le festività importate tramite il pulsante \"Aggiungi festività\"?</string>
+    <string name="faq_1_text">Le festività create in questo modo sono inseriti in eventi di tipo \"Festività\". Andare in Impostazioni → Gestisci tipi di eventi,
+        tenere premuto sul tipo desiderato ed eliminarlo selezionando il cestino.</string>
+    <string name="faq_2_title">Posso sincronizzare i miei eventi tramite Google Calendar, o altri servizi che supportano CalDAV?</string>
+    <string name="faq_2_text">Sì, basta attivare l\'opzione \"Sincronizzazione CalDAV\" nelle impostazioni dell\'applicazione e selezionare i calendari da sincronizzare. Comunque è necessaria un\'applicazione di terze parti per gestire la sincronizzazione tra dispositivo e server.
+        In caso si voglia sincronizzare con Google Calendar, la loro applicazione ufficiale effettua questo lavoro. Per altri calendari sono necessarie applicazioni di terze parti, per esempio DAVdroid.</string>
     <string name="faq_3_title">Visualizzo i promemoria, ma non sento l\'audio. Cosa posso fare?</string>
-    <string name="faq_3_text">Non solo visualizzare l\'attuale promemoria, ma anche riprodurre l\'audio è un lavoro prettamente del sistema. Se non senti alcun suono, prova ad andare nelle impostazioni dell\'applicazione,
-        premi l\'opzione \"Canale audio utilizzato per il promemoria\" e cambia il canale. Se ancora non funziona, controlla le tue impostazioni dell\'audio, in particolare se il canale è stato mutato.</string>
+    <string name="faq_3_text">Non solo visualizzare l\'attuale promemoria, ma anche riprodurre l\'audio è un lavoro prettamente del sistema. Se non si sente alcun suono, provare ad andare nelle impostazioni dell\'applicazione,
+        premere l\'opzione \"Canale audio utilizzato per il promemoria\" e cambia il canale. Se ancora non funziona, controllare le impostazioni dell\'audio, in particolare se il canale è stato mutato.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Un semplice calendario con eventi, widget personalizzabili e senza pubblicità.</string>
+    <string name="app_short_description">Un calendario per gestire gli eventi senza pubblicità.</string>
     <string name="app_long_description">
-        Un semplice calendario con l\'opzione di sincronizzazione CalDAV. Puoi facilmente creare eventi ricorrenti ed impostare promemoria, mostra anche il numero di settimana.
+        Un semplice calendario con l\'opzione di sincronizzazione CalDAV. Si possono facilmente creare eventi ricorrenti e impostare promemoria, mostra anche il numero di settimana.
 
-        Contiene una vista mensile ed un widget con la lista degli eventi, con il colore del testo personalizzabile, come per la trasparenza ed il colore dello sfondo,
+        Contiene una vista mensile e un widget con la lista degli eventi, con il colore del testo personalizzabile, come per la trasparenza ed il colore dello sfondo.
 
-        Non contiene pubblicità o permessi non necessari. È completamente opensource, fornisce anche colori personalizzabili.
+        L\'applicazione non contiene pubblicità o permessi non necessari; è completamente opensource e la si può personalizzare con i propri colori preferiti.
 
-        Il permesso di archiviazione è necesario solamente per esportare od importare venti da file .ics.
-
+        Il permesso di archiviazione è necesario solamente per esportare od importare venti da file .ic
+        
         Il permesso dei contatti è usato solamente per importare i compleanni e gli anniversari.
 
-        Questa applicazione è solamente una di una serie. Puoi trovare le altre su https://www.simplemobiletools.com
+        Questa è solamente una delle tante applicazioni della serie Simple Mobile Tools. Si possono trovare le altre su https://www.simplemobiletools.com
     </string>
 
     <!--

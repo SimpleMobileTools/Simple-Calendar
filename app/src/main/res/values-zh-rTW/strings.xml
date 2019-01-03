@@ -218,7 +218,7 @@
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">一個有活動功能和可自訂的小工具，且沒有廣告的簡易行事曆。</string>
+    <string name="app_short_description">一個沒有廣告的離線行事曆，用來管理你的活動，並且尊重您的隱私。</string>
     <string name="app_long_description">
         一個有CalDAV同步選項的簡易行事曆。你可以輕鬆建立週期活動和設置提醒，也能顯示週數。
 

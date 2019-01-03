@@ -8,6 +8,7 @@ import android.database.Cursor
 import android.provider.CalendarContract
 import android.provider.CalendarContract.Reminders
 import android.util.SparseIntArray
+import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.models.CalDAVCalendar
 import com.simplemobiletools.calendar.pro.models.Event
@@ -318,11 +319,16 @@ class CalDAVHelper(val context: Context) {
     private fun setupCalDAVEventReminders(event: Event) {
         clearEventReminders(event)
         event.getReminders().forEach {
-            ContentValues().apply {
+            val contentValues = ContentValues().apply {
                 put(Reminders.MINUTES, it)
                 put(Reminders.EVENT_ID, event.getCalDAVEventId())
                 put(Reminders.METHOD, Reminders.METHOD_ALERT)
-                context.contentResolver.insert(Reminders.CONTENT_URI, this)
+            }
+
+            try {
+                context.contentResolver.insert(Reminders.CONTENT_URI, contentValues)
+            } catch (e: Exception) {
+                context.toast(R.string.unknown_error_occurred)
             }
         }
     }

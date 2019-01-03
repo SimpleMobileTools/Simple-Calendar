@@ -25,7 +25,6 @@ class MyDayPagerAdapter(fm: FragmentManager, private val mCodes: List<String>, p
         fragment.mListener = mListener
 
         mFragments.put(position, fragment)
-
         return fragment
     }
 
