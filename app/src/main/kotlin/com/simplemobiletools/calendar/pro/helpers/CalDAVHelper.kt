@@ -178,7 +178,6 @@ class CalDAVHelper(val context: Context) {
                 CalendarContract.Events.DESCRIPTION,
                 CalendarContract.Events.DTSTART,
                 CalendarContract.Events.DTEND,
-                CalendarContract.Events.EVENT_TIMEZONE,
                 CalendarContract.Events.DURATION,
                 CalendarContract.Events.ALL_DAY,
                 CalendarContract.Events.RRULE,
@@ -414,7 +413,7 @@ class CalDAVHelper(val context: Context) {
             put(CalendarContract.Events.DTSTART, occurrenceTS)
             put(CalendarContract.Events.DTEND, occurrenceTS + (event.endTS - event.startTS))
             put(CalendarContract.Events.ORIGINAL_ID, event.getCalDAVEventId())
-            put(CalendarContract.Events.EVENT_TIMEZONE, TimeZone.getDefault().toString())
+            put(CalendarContract.Events.EVENT_TIMEZONE, TimeZone.getDefault().id.toString())
             put(CalendarContract.Events.ORIGINAL_INSTANCE_TIME, occurrenceTS * 1000L)
         }
     }
