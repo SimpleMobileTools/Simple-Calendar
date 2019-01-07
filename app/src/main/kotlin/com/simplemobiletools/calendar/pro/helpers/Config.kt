@@ -3,6 +3,7 @@ package com.simplemobiletools.calendar.pro.helpers
 import android.content.Context
 import android.media.AudioManager
 import com.simplemobiletools.calendar.pro.R
+import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.scheduleCalDAVSync
 import com.simplemobiletools.commons.extensions.getDefaultAlarmTitle
 import com.simplemobiletools.commons.extensions.getDefaultAlarmUri
@@ -168,4 +169,8 @@ class Config(context: Context) : BaseConfig(context) {
     var pullToRefresh: Boolean
         get() = prefs.getBoolean(PULL_TO_REFRESH, false)
         set(pullToRefresh) = prefs.edit().putBoolean(PULL_TO_REFRESH, pullToRefresh).apply()
+
+    var lastVibrateOnReminder: Boolean
+        get() = prefs.getBoolean(LAST_VIBRATE_ON_REMINDER, context.config.vibrateOnReminder)
+        set(lastVibrateOnReminder) = prefs.edit().putBoolean(LAST_VIBRATE_ON_REMINDER, lastVibrateOnReminder).apply()
 }

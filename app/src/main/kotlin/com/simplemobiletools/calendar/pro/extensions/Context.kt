@@ -211,7 +211,7 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
     }
 
     // create a new channel for every new sound uri as the new Android Oreo notification system is fundamentally broken
-    if (soundUri != config.lastSoundUri) {
+    if (soundUri != config.lastSoundUri || config.lastVibrateOnReminder != config.vibrateOnReminder) {
         config.lastReminderChannel = System.currentTimeMillis()
         config.lastSoundUri = soundUri
     }
@@ -231,7 +231,7 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
             setBypassDnd(true)
             enableLights(true)
             lightColor = event.color
-            enableVibration(false)
+            enableVibration(config.vibrateOnReminder)
             setSound(Uri.parse(soundUri), audioAttributes)
             notificationManager.createNotificationChannel(this)
         }
@@ -266,6 +266,7 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
     if (config.loopReminders) {
         notification.flags = notification.flags or Notification.FLAG_INSISTENT
     }
+    config.lastVibrateOnReminder = config.vibrateOnReminder
     return notification
 }
 
