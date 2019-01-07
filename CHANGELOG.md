@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 6.2.0 *(2019-01-07)*
+----------------------------
+
+ * Fixed a few CalDAV sync related glitches
+ * Properly handle reminder vibrations
+
 Version 6.1.2 *(2018-12-25)*
 ----------------------------
 
