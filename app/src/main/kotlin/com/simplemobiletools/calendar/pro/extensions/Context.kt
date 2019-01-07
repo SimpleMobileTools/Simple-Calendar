@@ -210,8 +210,15 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
         grantReadUriPermission(soundUri)
     }
 
+    val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
     // create a new channel for every new sound uri as the new Android Oreo notification system is fundamentally broken
     if (soundUri != config.lastSoundUri || config.lastVibrateOnReminder != config.vibrateOnReminder) {
+        if (!publicVersion) {
+            val oldChannelId = "simple_calendar_${config.lastReminderChannel}_${config.reminderAudioStream}"
+            notificationManager.deleteNotificationChannel(oldChannelId)
+        }
+
+        config.lastVibrateOnReminder = config.vibrateOnReminder
         config.lastReminderChannel = System.currentTimeMillis()
         config.lastSoundUri = soundUri
     }
@@ -224,7 +231,6 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
                 .setLegacyStreamType(config.reminderAudioStream)
                 .build()
 
-        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val name = resources.getString(R.string.event_reminders)
         val importance = NotificationManager.IMPORTANCE_HIGH
         NotificationChannel(channelId, name, importance).apply {
@@ -266,7 +272,6 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
     if (config.loopReminders) {
         notification.flags = notification.flags or Notification.FLAG_INSISTENT
     }
-    config.lastVibrateOnReminder = config.vibrateOnReminder
     return notification
 }
 
