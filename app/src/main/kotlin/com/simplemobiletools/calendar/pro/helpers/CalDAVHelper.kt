@@ -179,6 +179,7 @@ class CalDAVHelper(val context: Context) {
                 CalendarContract.Events.DTSTART,
                 CalendarContract.Events.DTEND,
                 CalendarContract.Events.DURATION,
+                CalendarContract.Events.EXDATE,
                 CalendarContract.Events.ALL_DAY,
                 CalendarContract.Events.RRULE,
                 CalendarContract.Events.ORIGINAL_ID,
@@ -239,6 +240,12 @@ class CalDAVHelper(val context: Context) {
                             eventsHelper.insertEvent(event, false, false)
                             continue
                         }
+                    }
+
+                    // some calendars add repeatable event exceptions with using the "exdate" field, not by creating a child event that is an exception
+                    val exdate = cursor.getStringValue(CalendarContract.Events.EXDATE)
+                    if (exdate != null) {
+                        event.repetitionExceptions.add(exdate.substring(0, 8))
                     }
 
                     if (importIdsMap.containsKey(event.importId)) {
@@ -415,6 +422,7 @@ class CalDAVHelper(val context: Context) {
             put(CalendarContract.Events.ORIGINAL_ID, event.getCalDAVEventId())
             put(CalendarContract.Events.EVENT_TIMEZONE, TimeZone.getDefault().id.toString())
             put(CalendarContract.Events.ORIGINAL_INSTANCE_TIME, occurrenceTS * 1000L)
+            put(CalendarContract.Events.EXDATE, Formatter.getDayCodeFromTS(occurrenceTS))
         }
     }
 
