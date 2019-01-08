@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 6.2.1 *(2019-01-08)*
+----------------------------
+
+ * Fixed a CalDAV sync related glitches
+ * Fixed a glitch at showing notifications below Android Oreo
+
 Version 6.2.0 *(2019-01-07)*
 ----------------------------
 
