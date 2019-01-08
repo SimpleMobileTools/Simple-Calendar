@@ -214,8 +214,10 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
     // create a new channel for every new sound uri as the new Android Oreo notification system is fundamentally broken
     if (soundUri != config.lastSoundUri || config.lastVibrateOnReminder != config.vibrateOnReminder) {
         if (!publicVersion) {
-            val oldChannelId = "simple_calendar_${config.lastReminderChannel}_${config.reminderAudioStream}"
-            notificationManager.deleteNotificationChannel(oldChannelId)
+            if (isOreoPlus()) {
+                val oldChannelId = "simple_calendar_${config.lastReminderChannel}_${config.reminderAudioStream}"
+                notificationManager.deleteNotificationChannel(oldChannelId)
+            }
         }
 
         config.lastVibrateOnReminder = config.vibrateOnReminder
