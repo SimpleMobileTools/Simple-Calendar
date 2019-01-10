@@ -146,7 +146,7 @@
     <string name="week_numbers">Mostrar número das semanas</string>
     <string name="vibrate">Vibrar ao notificar sobre o lembrete</string>
     <string name="reminder_sound">Som do lembrete</string>
-    <string name="no_ringtone_picker">Não foi encontrada uma aplicação capaz de definir o som</string>
+    <string name="no_ringtone_picker">Não foi encontrada uma aplicação capaz de definir o toque</string>
     <string name="no_ringtone_selected">Nenhum</string>
     <string name="day_end_before_start">O dia final não pode ser antes do inicial</string>
     <string name="caldav_sync">Sincronização CalDAV</string>
@@ -164,7 +164,7 @@
     <string name="alarm_stream">Alarme</string>
     <string name="notification_stream">Notificação</string>
     <string name="ring_stream">Toque</string>
-    <string name="use_last_event_reminders">Utilize os lembretes dos últimos eventos como definição para os novos eventos</string>
+    <string name="use_last_event_reminders">Utilizar os lembretes dos últimos eventos como definição para os novos eventos</string>
     <string name="default_reminder_1">Lembrete 1</string>
     <string name="default_reminder_2">Lembrete 2</string>
     <string name="default_reminder_3">Lembrete 3</string>
@@ -218,7 +218,7 @@
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">An offline calendar for your events without ads, respecting your privacy.</string>
+    <string name="app_short_description">Aplicação para gerir os seus eventos, sem anúncios e com total privacidade.</string>
     <string name="app_long_description">
         Um calendário local que não possui qualquer tipo de integração. Pode adicionar eventos e lembretes recorrentes e possui uma opção para mostrar o número da semana.
 
