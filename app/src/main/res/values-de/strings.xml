@@ -123,7 +123,7 @@
     <string name="edit_type">Typ bearbeiten</string>
     <string name="type_already_exists">Typ mit diesem Namen existiert bereits</string>
     <string name="color">Farbe</string>
-    <string name="regular_event">Regelmäßiger Termin</string>
+    <string name="regular_event">Regulärer Termin</string>
     <string name="cannot_delete_default_type">Standard-Termintyp kann nicht gelöscht werden</string>
     <string name="select_event_type">Wähle einen Termintyp aus</string>
     <string name="move_events_into_default">Betroffene Termine in den Standard-Termintyp verschieben</string>
