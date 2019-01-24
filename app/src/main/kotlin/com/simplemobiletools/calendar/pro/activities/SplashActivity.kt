@@ -5,6 +5,8 @@ import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.commons.activities.BaseSplashActivity
 
 class SplashActivity : BaseSplashActivity() {
+    override fun getAppPackageName() = packageName
+
     override fun initActivity() {
         when {
             intent.extras?.containsKey(DAY_CODE) == true -> Intent(this, MainActivity::class.java).apply {
