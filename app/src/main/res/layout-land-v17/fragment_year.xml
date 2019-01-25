@@ -14,7 +14,6 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginEnd="@dimen/yearly_padding_full"
-            android:layout_marginRight="@dimen/yearly_padding_full"
             android:layout_weight="1">
 
             <com.simplemobiletools.commons.views.MyTextView
@@ -31,8 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/month_1_label"
-                android:layout_marginLeft="@dimen/yearly_month_padding"
-                android:layout_marginStart="@dimen/yearly_month_padding"/>
+                android:layout_marginStart="@dimen/yearly_month_padding" />
 
         </RelativeLayout>
 
@@ -58,7 +56,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/month_2_label"
-                android:layout_marginLeft="@dimen/yearly_month_padding"
                 android:layout_marginStart="@dimen/yearly_month_padding"/>
 
         </RelativeLayout>
@@ -67,7 +64,6 @@
             android:id="@+id/month_3_holder"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/yearly_padding_full"
             android:layout_marginStart="@dimen/yearly_padding_full"
             android:layout_weight="1">
 
@@ -85,7 +81,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/month_3_label"
-                android:layout_marginLeft="@dimen/yearly_month_padding"
                 android:layout_marginStart="@dimen/yearly_month_padding"/>
         </RelativeLayout>
 
@@ -94,7 +89,6 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginEnd="@dimen/yearly_padding_full"
-            android:layout_marginRight="@dimen/yearly_padding_full"
             android:layout_weight="1">
 
             <com.simplemobiletools.commons.views.MyTextView
@@ -111,7 +105,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/month_4_label"
-                android:layout_marginLeft="@dimen/yearly_month_padding"
                 android:layout_marginStart="@dimen/yearly_month_padding"
                 app:days="30"/>
         </RelativeLayout>
@@ -141,7 +134,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/month_5_label"
-                android:layout_marginLeft="@dimen/yearly_month_padding"
+                android:layout_marginStart="@dimen/yearly_month_padding"
                 android:layout_marginStart="@dimen/yearly_month_padding"/>
 
         </RelativeLayout>
@@ -150,7 +143,7 @@
             android:id="@+id/month_6_holder"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/yearly_padding_full"
+            android:layout_marginStart="@dimen/yearly_padding_full"
             android:layout_marginStart="@dimen/yearly_padding_full"
             android:layout_weight="1">
 
@@ -168,7 +161,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/month_6_label"
-                android:layout_marginLeft="@dimen/yearly_month_padding"
+                android:layout_marginStart="@dimen/yearly_month_padding"
                 android:layout_marginStart="@dimen/yearly_month_padding"
                 app:days="30"/>
         </RelativeLayout>
@@ -178,7 +171,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginEnd="@dimen/yearly_padding_full"
-            android:layout_marginRight="@dimen/yearly_padding_full"
+            android:layout_marginEnd="@dimen/yearly_padding_full"
             android:layout_weight="1">
 
             <com.simplemobiletools.commons.views.MyTextView
@@ -195,7 +188,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/month_7_label"
-                android:layout_marginLeft="@dimen/yearly_month_padding"
+                android:layout_marginStart="@dimen/yearly_month_padding"
                 android:layout_marginStart="@dimen/yearly_month_padding"/>
         </RelativeLayout>
 
@@ -221,7 +214,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/month_8_label"
-                android:layout_marginLeft="@dimen/yearly_month_padding"
+                android:layout_marginStart="@dimen/yearly_month_padding"
                 android:layout_marginStart="@dimen/yearly_month_padding"/>
         </RelativeLayout>
     </TableRow>
@@ -233,7 +226,7 @@
             android:id="@+id/month_9_holder"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/yearly_padding_full"
+            android:layout_marginStart="@dimen/yearly_padding_full"
             android:layout_marginStart="@dimen/yearly_padding_full"
             android:layout_weight="1">
 
@@ -251,7 +244,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/month_9_label"
-                android:layout_marginLeft="@dimen/yearly_month_padding"
+                android:layout_marginStart="@dimen/yearly_month_padding"
                 android:layout_marginStart="@dimen/yearly_month_padding"
                 app:days="30"/>
         </RelativeLayout>
@@ -261,7 +254,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginEnd="@dimen/yearly_padding_full"
-            android:layout_marginRight="@dimen/yearly_padding_full"
+            android:layout_marginEnd="@dimen/yearly_padding_full"
             android:layout_weight="1">
 
             <com.simplemobiletools.commons.views.MyTextView
@@ -278,7 +271,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/month_10_label"
-                android:layout_marginLeft="@dimen/yearly_month_padding"
+                android:layout_marginStart="@dimen/yearly_month_padding"
                 android:layout_marginStart="@dimen/yearly_month_padding"/>
         </RelativeLayout>
 
@@ -304,7 +297,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/month_11_label"
-                android:layout_marginLeft="@dimen/yearly_month_padding"
+                android:layout_marginStart="@dimen/yearly_month_padding"
                 android:layout_marginStart="@dimen/yearly_month_padding"
                 app:days="30"/>
         </RelativeLayout>
@@ -313,7 +306,7 @@
             android:id="@+id/month_12_holder"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/yearly_padding_full"
+            android:layout_marginStart="@dimen/yearly_padding_full"
             android:layout_marginStart="@dimen/yearly_padding_full"
             android:layout_weight="1">
 
@@ -331,7 +324,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/month_12_label"
-                android:layout_marginLeft="@dimen/yearly_month_padding"
+                android:layout_marginStart="@dimen/yearly_month_padding"
                 android:layout_marginStart="@dimen/yearly_month_padding"/>
 
         </RelativeLayout>
