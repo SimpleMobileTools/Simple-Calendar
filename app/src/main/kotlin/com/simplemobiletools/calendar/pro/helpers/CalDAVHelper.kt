@@ -244,7 +244,7 @@ class CalDAVHelper(val context: Context) {
 
                     // some calendars add repeatable event exceptions with using the "exdate" field, not by creating a child event that is an exception
                     val exdate = cursor.getStringValue(CalendarContract.Events.EXDATE) ?: ""
-                    if (exdate.isNotEmpty() && exdate.length > 8) {
+                    if (exdate.length > 8) {
                         val dates = exdate.split(",")
                         dates.forEach {
                             event.repetitionExceptions.add(it.substring(0, 8))
