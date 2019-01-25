@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 6.2.2 *(2019-01-25)*
+----------------------------
+
+ * Fixed some CalDAV sync glitches
+ * Increase the visibility of dimmed events on the monthly view
+
 Version 6.2.1 *(2019-01-08)*
 ----------------------------
 
