@@ -5,6 +5,6 @@
     android:layout_height="wrap_content"
     android:gravity="bottom|center_horizontal"
     android:minHeight="@dimen/weekly_view_row_height"
-    android:paddingLeft="@dimen/small_margin"
-    android:paddingRight="@dimen/small_margin"
+    android:paddingStart="@dimen/small_margin"
+    android:paddingEnd="@dimen/small_margin"
     android:textSize="@dimen/normal_text_size"/>

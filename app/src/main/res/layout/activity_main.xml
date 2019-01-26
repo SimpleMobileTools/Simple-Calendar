@@ -44,8 +44,8 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/activity_margin"
             android:gravity="center"
-            android:paddingLeft="@dimen/activity_margin"
-            android:paddingRight="@dimen/activity_margin"
+            android:paddingStart="@dimen/activity_margin"
+            android:paddingEnd="@dimen/activity_margin"
             android:text="@string/no_items_found"
             android:textSize="@dimen/bigger_text_size"/>
 
@@ -57,8 +57,8 @@
             android:layout_centerHorizontal="true"
             android:gravity="center"
             android:paddingBottom="@dimen/medium_margin"
-            android:paddingLeft="@dimen/activity_margin"
-            android:paddingRight="@dimen/activity_margin"
+            android:paddingStart="@dimen/activity_margin"
+            android:paddingEnd="@dimen/activity_margin"
             android:paddingTop="@dimen/medium_margin"
             android:text="@string/type_2_characters"
             android:textSize="@dimen/bigger_text_size"/>

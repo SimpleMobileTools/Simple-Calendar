@@ -14,8 +14,8 @@
         android:layout_height="match_parent"
         android:layout_alignTop="@+id/top_value"
         android:layout_alignBottom="@+id/top_value"
-        android:paddingLeft="@dimen/medium_margin"
-        android:paddingRight="@dimen/medium_margin"
+        android:paddingStart="@dimen/medium_margin"
+        android:paddingEnd="@dimen/medium_margin"
         android:src="@drawable/ic_pointer_left"/>
 
     <TextView
@@ -23,8 +23,8 @@
         style="@style/MonthStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toLeftOf="@+id/top_go_to_today"
-        android:layout_toRightOf="@+id/top_left_arrow"
+        android:layout_toStartOf="@+id/top_go_to_today"
+        android:layout_toEndOf="@+id/top_left_arrow"
         android:gravity="center"
         android:lines="1"
         android:paddingTop="@dimen/medium_margin"
@@ -39,9 +39,9 @@
         android:layout_height="match_parent"
         android:layout_alignTop="@+id/top_value"
         android:layout_alignBottom="@+id/top_value"
-        android:layout_toLeftOf="@+id/top_right_arrow"
-        android:paddingLeft="@dimen/medium_margin"
-        android:paddingRight="@dimen/medium_margin"
+        android:layout_toStartOf="@+id/top_right_arrow"
+        android:paddingStart="@dimen/medium_margin"
+        android:paddingEnd="@dimen/medium_margin"
         android:src="@drawable/ic_today"/>
 
     <ImageView
@@ -51,9 +51,9 @@
         android:layout_height="match_parent"
         android:layout_alignTop="@+id/top_value"
         android:layout_alignBottom="@+id/top_value"
-        android:layout_toLeftOf="@+id/top_new_event"
-        android:paddingLeft="@dimen/medium_margin"
-        android:paddingRight="@dimen/medium_margin"
+        android:layout_toStartOf="@+id/top_new_event"
+        android:paddingStart="@dimen/medium_margin"
+        android:paddingEnd="@dimen/medium_margin"
         android:src="@drawable/ic_pointer_right"/>
 
     <ImageView
@@ -63,9 +63,9 @@
         android:layout_height="match_parent"
         android:layout_alignTop="@+id/top_value"
         android:layout_alignBottom="@+id/top_value"
-        android:layout_alignParentRight="true"
-        android:paddingLeft="@dimen/medium_margin"
-        android:paddingRight="@dimen/medium_margin"
+        android:layout_alignParentEnd="true"
+        android:paddingStart="@dimen/medium_margin"
+        android:paddingEnd="@dimen/medium_margin"
         android:src="@drawable/ic_plus"/>
 
     <include

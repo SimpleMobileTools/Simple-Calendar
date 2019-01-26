@@ -10,8 +10,8 @@
         android:layout_height="match_parent"
         android:layout_alignBottom="@+id/top_value"
         android:layout_alignTop="@+id/top_value"
-        android:paddingLeft="@dimen/activity_margin"
-        android:paddingRight="@dimen/activity_margin"
+        android:paddingStart="@dimen/activity_margin"
+        android:paddingEnd="@dimen/activity_margin"
         android:src="@drawable/ic_pointer_left"/>
 
     <com.simplemobiletools.commons.views.MyTextView
@@ -19,8 +19,8 @@
         style="@style/MonthStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toLeftOf="@+id/top_right_arrow"
-        android:layout_toRightOf="@+id/top_left_arrow"
+        android:layout_toStartOf="@+id/top_right_arrow"
+        android:layout_toEndOf="@+id/top_left_arrow"
         android:gravity="center"
         android:paddingBottom="@dimen/normal_margin"
         android:paddingTop="@dimen/normal_margin"
@@ -32,10 +32,10 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_alignBottom="@+id/top_value"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/top_value"
-        android:paddingLeft="@dimen/activity_margin"
-        android:paddingRight="@dimen/activity_margin"
+        android:paddingStart="@dimen/activity_margin"
+        android:paddingEnd="@dimen/activity_margin"
         android:src="@drawable/ic_pointer_right"/>
 
 </merge>
