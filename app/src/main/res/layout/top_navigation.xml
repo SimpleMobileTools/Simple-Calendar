@@ -10,9 +10,10 @@
         android:layout_height="match_parent"
         android:layout_alignBottom="@+id/top_value"
         android:layout_alignTop="@+id/top_value"
-        android:paddingStart="@dimen/activity_margin"
-        android:paddingEnd="@dimen/activity_margin"
-        android:src="@drawable/ic_pointer_left"/>
+        android:paddingLeft="@dimen/activity_margin"
+        android:paddingRight="@dimen/activity_margin"
+        android:src="@drawable/ic_pointer_left"
+        android:autoMirrored="true"/>
 
     <com.simplemobiletools.commons.views.MyTextView
         android:id="@+id/top_value"
@@ -34,8 +35,9 @@
         android:layout_alignBottom="@+id/top_value"
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/top_value"
-        android:paddingStart="@dimen/activity_margin"
-        android:paddingEnd="@dimen/activity_margin"
-        android:src="@drawable/ic_pointer_right"/>
+        android:paddingLeft="@dimen/activity_margin"
+        android:paddingRight="@dimen/activity_margin"
+        android:src="@drawable/ic_pointer_right"
+        android:autoMirrored="true"/>
 
 </merge>

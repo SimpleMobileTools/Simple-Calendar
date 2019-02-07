@@ -458,7 +458,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/small_margin"
-                android:layout_marginLeft="@dimen/small_margin"
                 android:layout_marginEnd="@dimen/medium_margin"
                 android:layout_toStartOf="@+id/event_type_color"
                 android:paddingTop="@dimen/normal_margin"
