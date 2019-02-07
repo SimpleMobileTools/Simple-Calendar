@@ -2,7 +2,6 @@ package com.simplemobiletools.calendar.pro.fragments
 
 import android.content.Context
 import android.content.res.Resources
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,8 +9,6 @@ import android.view.ViewGroup
 import android.widget.DatePicker
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.MainActivity
@@ -118,6 +115,10 @@ class MonthFragment : Fragment(), MonthlyCalendar {
             setOnClickListener {
                 listener?.goLeft()
             }
+
+            val pointerLeft = context!!.getDrawable(R.drawable.ic_pointer_left)
+            pointerLeft?.isAutoMirrored = true
+            setImageDrawable(pointerLeft)
         }
 
         mHolder.top_right_arrow.apply {
@@ -126,6 +127,10 @@ class MonthFragment : Fragment(), MonthlyCalendar {
             setOnClickListener {
                 listener?.goRight()
             }
+
+            val pointerRight = context!!.getDrawable(R.drawable.ic_pointer_right)
+            pointerRight?.isAutoMirrored = true
+            setImageDrawable(pointerRight)
         }
 
         mHolder.top_value.apply {
@@ -133,19 +138,6 @@ class MonthFragment : Fragment(), MonthlyCalendar {
             setOnClickListener {
                 showMonthDialog()
             }
-        }
-
-        // support RTL
-        val pointerLeft :Drawable? = ResourcesCompat.getDrawable(resources,R.drawable.ic_pointer_left,null)
-        if(pointerLeft != null) {
-            pointerLeft.isAutoMirrored = true
-            mHolder.top_left_arrow.setImageDrawable(pointerLeft)
-        }
-
-        val pointerRight :Drawable? = ResourcesCompat.getDrawable(resources,R.drawable.ic_pointer_right,null)
-        if(pointerRight != null) {
-            pointerRight.isAutoMirrored = true
-            mHolder.top_right_arrow.setImageDrawable(pointerRight)
         }
     }
 

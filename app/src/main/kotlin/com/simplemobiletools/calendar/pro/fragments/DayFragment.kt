@@ -1,7 +1,6 @@
 package com.simplemobiletools.calendar.pro.fragments
 
 import android.content.Intent
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.DatePicker
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.EventActivity
@@ -37,7 +35,7 @@ class DayFragment : Fragment() {
     private var mDayCode = ""
     private var lastHash = 0
 
-    lateinit var mHolder: RelativeLayout
+    private lateinit var mHolder: RelativeLayout
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_day, container, false)
@@ -62,6 +60,10 @@ class DayFragment : Fragment() {
             setOnClickListener {
                 mListener?.goLeft()
             }
+
+            val pointerLeft = context!!.getDrawable(R.drawable.ic_pointer_left)
+            pointerLeft?.isAutoMirrored = true
+            setImageDrawable(pointerLeft)
         }
 
         mHolder.top_right_arrow.apply {
@@ -70,6 +72,10 @@ class DayFragment : Fragment() {
             setOnClickListener {
                 mListener?.goRight()
             }
+
+            val pointerRight = context!!.getDrawable(R.drawable.ic_pointer_right)
+            pointerRight?.isAutoMirrored = true
+            setImageDrawable(pointerRight)
         }
 
         val day = Formatter.getDayTitle(context!!, mDayCode)
@@ -77,19 +83,6 @@ class DayFragment : Fragment() {
             text = day
             setOnClickListener { pickDay() }
             setTextColor(context.config.textColor)
-        }
-
-        // support RTL
-        val pointerLeft : Drawable? = ResourcesCompat.getDrawable(resources,R.drawable.ic_pointer_left,null)
-        if(pointerLeft != null) {
-            pointerLeft.isAutoMirrored = true
-            mHolder.top_left_arrow.setImageDrawable(pointerLeft)
-        }
-
-        val pointerRight : Drawable? = ResourcesCompat.getDrawable(resources,R.drawable.ic_pointer_right,null)
-        if(pointerRight != null) {
-            pointerRight.isAutoMirrored = true
-            mHolder.top_right_arrow.setImageDrawable(pointerRight)
         }
     }
 
