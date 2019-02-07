@@ -8,7 +8,7 @@
     <string name="monthly_view">Месяц</string>
     <string name="yearly_view">Год</string>
     <string name="simple_event_list">Список событий</string>
-    <string name="no_upcoming_events">Похоже, у вас нет предстоящих событий.</string>
+    <string name="no_upcoming_events">Похоже, нет предстоящих событий.</string>
     <string name="go_to_today">Сегодня</string>
 
     <!-- Widget titles -->
@@ -49,11 +49,11 @@
     <string name="update_one_only">Обновить только выбранное</string>
     <string name="update_all_occurrences">Обновить все связанные</string>
     <string name="repeat_till_date">Повторять до даты</string>
-    <string name="stop_repeating_after_x">Перестать повторять после x раза</string>
+    <string name="stop_repeating_after_x">Повторять x раз</string>
     <string name="repeat_forever">Повторять бесконечно</string>
     <string name="times">раз</string>
     <string name="repeat">Повторять</string>
-    <string name="repeat_on">Повторять по</string>
+    <string name="repeat_on">Повторять в</string>
     <string name="every_day">Каждый день</string>
     <string name="selected_days">В выбранные дни</string>
     <string name="the_same_day">Этот же день</string>
@@ -100,8 +100,8 @@
     <!-- Export / Import -->
     <string name="import_events">Импорт событий</string>
     <string name="export_events">Экспорт событий</string>
-    <string name="import_events_from_ics">Импорт событий из файла .ics</string>
-    <string name="export_events_to_ics">Экспорт событий в файл .ics</string>
+    <string name="import_events_from_ics">Импорт событий из ics-файла</string>
+    <string name="export_events_to_ics">Экспорт событий в ics-файл</string>
     <string name="default_event_type">Тип события по умолчанию</string>
     <string name="export_past_events_too">Экспортировать прошедшие события</string>
     <string name="include_event_types">Включать типы событий</string>
@@ -143,21 +143,21 @@
     <string name="manage_event_types">Управление типами событий</string>
     <string name="start_day_at">Начало дня (неделя)</string>
     <string name="end_day_at">Окончание дня (неделя)</string>
-    <string name="week_numbers">Отображать номера недель</string>
+    <string name="week_numbers">Показывать номера недель</string>
     <string name="vibrate">Вибрация при напоминании</string>
     <string name="reminder_sound">Звук напоминания</string>
-    <string name="no_ringtone_picker">Не найдено приложение для выбора рингтона</string>
+    <string name="no_ringtone_picker">Не найдено приложение для выбора звука</string>
     <string name="no_ringtone_selected">Нет</string>
     <string name="day_end_before_start">Конец дня не может быть раньше начала</string>
     <string name="caldav_sync">Синхронизация по CalDAV</string>
     <string name="event_lists">Списки событий</string>
     <string name="display_past_events">Показывать прошедшие события</string>
-    <string name="replace_description_with_location">Заменить описание события местоположением</string>
+    <string name="replace_description_with_location">Заменять описание события местоположением</string>
     <string name="delete_all_events">Удалить все события</string>
-    <string name="delete_all_events_confirmation">Вы действительно хотите удалить все события? Это не затронет ваши типы событий и другие настройки.</string>
+    <string name="delete_all_events_confirmation">Вы действительно хотите удалить все события? Это не затронет типы событий и другие настройки.</string>
     <string name="show_a_grid">Показывать сетку</string>
     <string name="loop_reminders">Циклические напоминания до отключения</string>
-    <string name="dim_past_events">Прошедшие события отображать тусклыми</string>
+    <string name="dim_past_events">Показывать прошедшие события тусклыми</string>
     <string name="events">События</string>
     <string name="reminder_stream">Аудиопоток, используемый напоминаниями</string>
     <string name="system_stream">Cистема</string>

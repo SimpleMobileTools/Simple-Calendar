@@ -11,9 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingLeft="@dimen/activity_margin"
+        android:paddingStart="@dimen/activity_margin"
         android:paddingTop="@dimen/activity_margin"
-        android:paddingRight="@dimen/activity_margin">
+        android:paddingEnd="@dimen/activity_margin">
 
         <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/export_events_folder_label"
@@ -26,10 +26,10 @@
             android:id="@+id/export_events_folder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/activity_margin"
+            android:layout_marginStart="@dimen/activity_margin"
             android:layout_marginBottom="@dimen/activity_margin"
             android:paddingTop="@dimen/small_margin"
-            android:paddingRight="@dimen/small_margin"
+            android:paddingEnd="@dimen/small_margin"
             android:paddingBottom="@dimen/small_margin"/>
 
         <com.simplemobiletools.commons.views.MyTextView
@@ -43,10 +43,10 @@
             android:id="@+id/export_events_filename"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/activity_margin"
+            android:layout_marginStart="@dimen/activity_margin"
             android:layout_marginBottom="@dimen/activity_margin"
             android:paddingTop="@dimen/normal_margin"
-            android:paddingRight="@dimen/small_margin"
+            android:paddingEnd="@dimen/small_margin"
             android:textSize="@dimen/normal_text_size"/>
 
         <com.simplemobiletools.commons.views.MyAppCompatCheckbox

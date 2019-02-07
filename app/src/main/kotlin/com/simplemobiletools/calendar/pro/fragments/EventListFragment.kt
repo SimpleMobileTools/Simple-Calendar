@@ -102,6 +102,10 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
         val listItems = context!!.getEventListItems(mEvents)
 
         activity?.runOnUiThread {
+            if (activity == null) {
+                return@runOnUiThread
+            }
+
             val currAdapter = mView.calendar_events_list.adapter
             if (currAdapter == null || forceRecreation) {
                 EventListAdapter(activity as SimpleActivity, listItems, true, this, mView.calendar_events_list) {

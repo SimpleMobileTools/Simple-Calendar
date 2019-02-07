@@ -15,9 +15,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackground"
-            android:paddingLeft="@dimen/big_margin"
+            android:paddingStart="@dimen/big_margin"
             android:paddingTop="@dimen/activity_margin"
-            android:paddingRight="@dimen/activity_margin"
+            android:paddingEnd="@dimen/activity_margin"
             android:paddingBottom="@dimen/activity_margin"
             android:text="@string/select_a_different_caldav_color"
             android:textSize="@dimen/normal_text_size"/>
@@ -35,9 +35,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/dialog_select_event_type_other_divider"
-            android:paddingLeft="@dimen/activity_margin"
+            android:paddingStart="@dimen/activity_margin"
             android:paddingTop="@dimen/normal_margin"
-            android:paddingRight="@dimen/activity_margin"
+            android:paddingEnd="@dimen/activity_margin"
             android:paddingBottom="@dimen/normal_margin"/>
     </RelativeLayout>
 </ScrollView>
