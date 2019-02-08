@@ -85,6 +85,28 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             refreshCalDAVCalendars(false)
         }
 
+        if(hasPermission(PERMISSION_READ_CONTACTS))
+        {
+            Thread{
+                    addContactEvents(true) {
+                        if (it > 0)
+                        {
+                            toast(R.string.birthdays_sync_new)
+                            updateViewPager()
+                        }
+                        else
+                        {
+                            toast(R.string.birthdays_sync_none)
+                        }
+                    }
+                }.start()
+        }
+
+        if(!hasPermission(PERMISSION_READ_CONTACTS))
+        {
+            toast(R.string.birthdays_sync_unable)
+        }
+
         swipe_refresh_layout.setOnRefreshListener {
             refreshCalDAVCalendars(false)
         }
