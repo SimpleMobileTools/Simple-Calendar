@@ -26,6 +26,32 @@
             android:minEms="20"
             android:textCursorDrawable="@null"
             android:textSize="@dimen/day_text_size"/>
+        
+        <RelativeLayout
+            android:id="@+id/event_type_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/event_title"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:layout_marginBottom="@dimen/medium_margin"
+            android:layout_toEndOf="@+id/event_type_image"
+            android:layout_toRightOf="@+id/event_type_image"
+            android:background="?attr/selectableItemBackground">
+
+            <com.simplemobiletools.commons.views.MyTextView
+                android:id="@+id/event_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="@dimen/small_margin"
+                android:layout_marginLeft="@dimen/small_margin"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="@dimen/medium_margin"
+                android:paddingTop="@dimen/normal_margin"
+                android:paddingBottom="@dimen/normal_margin"
+                android:textSize="@dimen/day_text_size" />
+
+        </RelativeLayout>
 
         <com.simplemobiletools.commons.views.MyEditText
             android:id="@+id/event_location"
@@ -442,42 +468,7 @@
             android:padding="@dimen/medium_margin"
             android:src="@drawable/ic_color"/>
 
-        <RelativeLayout
-            android:id="@+id/event_type_holder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/event_caldav_calendar_divider"
-            android:layout_marginTop="@dimen/medium_margin"
-            android:layout_marginBottom="@dimen/medium_margin"
-            android:layout_toEndOf="@+id/event_type_image"
-            android:layout_toRightOf="@+id/event_type_image"
-            android:background="?attr/selectableItemBackground">
-
-            <com.simplemobiletools.commons.views.MyTextView
-                android:id="@+id/event_type"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/small_margin"
-                android:layout_marginLeft="@dimen/small_margin"
-                android:layout_marginEnd="@dimen/medium_margin"
-                android:layout_toStartOf="@+id/event_type_color"
-                android:paddingTop="@dimen/normal_margin"
-                android:paddingBottom="@dimen/normal_margin"
-                android:textSize="@dimen/day_text_size"/>
-
-            <ImageView
-                android:id="@+id/event_type_color"
-                android:layout_width="@dimen/color_sample_size"
-                android:layout_height="@dimen/color_sample_size"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="@dimen/activity_margin"
-                android:layout_marginRight="@dimen/activity_margin"
-                android:clickable="false"/>
-
-        </RelativeLayout>
-
+        
         <ImageView
             android:id="@+id/event_type_divider"
             android:layout_width="match_parent"
@@ -485,5 +476,18 @@
             android:layout_below="@+id/event_type_holder"
             android:background="@color/divider_grey"
             android:importantForAccessibility="no"/>
+        
+        <ImageView
+            android:id="@+id/event_type_color"
+            android:layout_width="@dimen/color_sample_size"
+            android:layout_height="@dimen/color_sample_size"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="27dp"
+            android:layout_marginRight="27dp"
+            android:clickable="false" />
+
     </RelativeLayout>
 </ScrollView>
