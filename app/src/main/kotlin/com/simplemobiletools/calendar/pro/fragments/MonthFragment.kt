@@ -115,6 +115,10 @@ class MonthFragment : Fragment(), MonthlyCalendar {
             setOnClickListener {
                 listener?.goLeft()
             }
+
+            val pointerLeft = context!!.getDrawable(R.drawable.ic_pointer_left)
+            pointerLeft?.isAutoMirrored = true
+            setImageDrawable(pointerLeft)
         }
 
         mHolder.top_right_arrow.apply {
@@ -123,6 +127,10 @@ class MonthFragment : Fragment(), MonthlyCalendar {
             setOnClickListener {
                 listener?.goRight()
             }
+
+            val pointerRight = context!!.getDrawable(R.drawable.ic_pointer_right)
+            pointerRight?.isAutoMirrored = true
+            setImageDrawable(pointerRight)
         }
 
         mHolder.top_value.apply {

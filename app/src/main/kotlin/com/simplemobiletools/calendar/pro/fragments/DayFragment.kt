@@ -35,7 +35,7 @@ class DayFragment : Fragment() {
     private var mDayCode = ""
     private var lastHash = 0
 
-    lateinit var mHolder: RelativeLayout
+    private lateinit var mHolder: RelativeLayout
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_day, container, false)
@@ -60,6 +60,10 @@ class DayFragment : Fragment() {
             setOnClickListener {
                 mListener?.goLeft()
             }
+
+            val pointerLeft = context!!.getDrawable(R.drawable.ic_pointer_left)
+            pointerLeft?.isAutoMirrored = true
+            setImageDrawable(pointerLeft)
         }
 
         mHolder.top_right_arrow.apply {
@@ -68,6 +72,10 @@ class DayFragment : Fragment() {
             setOnClickListener {
                 mListener?.goRight()
             }
+
+            val pointerRight = context!!.getDrawable(R.drawable.ic_pointer_right)
+            pointerRight?.isAutoMirrored = true
+            setImageDrawable(pointerRight)
         }
 
         val day = Formatter.getDayTitle(context!!, mDayCode)
