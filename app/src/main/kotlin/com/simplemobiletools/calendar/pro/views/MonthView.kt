@@ -24,6 +24,7 @@ import com.simplemobiletools.commons.extensions.getContrastColor
 import com.simplemobiletools.commons.extensions.moveLastItemToFront
 import org.joda.time.DateTime
 import org.joda.time.Days
+import java.util.TreeSet
 
 // used in the Monthly view fragment, 1 view per screen
 class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(context, attrs, defStyle) {
@@ -113,8 +114,20 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
             }
         }
 
-        allEvents = allEvents.asSequence().sortedWith(compareBy({ -it.daysCnt }, { !it.isAllDay }, { it.startTS }, { it.startDayIndex }, { it.title }))
-                .toMutableList() as ArrayList<MonthViewEvent>
+        // rearrange order of events so they are drawn on fewest possible number of lines
+        var eventsSet = allEvents.toSortedSet(compareBy({ it.startDayIndex }, { it.daysCnt }, { !it.isAllDay }, { it.startTS }, { it.title })) as TreeSet<MonthViewEvent>
+        var packedEvents = ArrayList<MonthViewEvent>()
+        var nextFreeDayIndexOnRow = 0
+        while(packedEvents.size < allEvents.size) {
+            var nextEventOnRow = eventsSet.ceiling(MonthViewEvent(0,"",0,0,nextFreeDayIndexOnRow,1000000000,0,false,false))
+            if(nextEventOnRow != null) {
+                packedEvents.add(nextEventOnRow)
+                nextFreeDayIndexOnRow = nextEventOnRow.startDayIndex + nextEventOnRow.daysCnt
+                eventsSet.remove(nextEventOnRow)
+            }
+            else nextFreeDayIndexOnRow = 0
+        }
+        allEvents = packedEvents
     }
 
     override fun onDraw(canvas: Canvas) {
@@ -209,7 +222,10 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     }
 
     private fun drawEvent(event: MonthViewEvent, canvas: Canvas) {
-        val verticalOffset = dayVerticalOffsets[event.startDayIndex]
+        var verticalOffset = 0
+        for (i in 0 until Math.min(event.daysCnt, 7 - event.startDayIndex % 7)) {
+            verticalOffset = Math.max(verticalOffset, dayVerticalOffsets[event.startDayIndex + i])
+        }
         val xPos = event.startDayIndex % 7 * dayWidth + horizontalOffset
         val yPos = (event.startDayIndex / 7) * dayHeight
         val xPosCenter = xPos + dayWidth / 2
