@@ -173,4 +173,8 @@ class Config(context: Context) : BaseConfig(context) {
     var lastVibrateOnReminder: Boolean
         get() = prefs.getBoolean(LAST_VIBRATE_ON_REMINDER, context.config.vibrateOnReminder)
         set(lastVibrateOnReminder) = prefs.edit().putBoolean(LAST_VIBRATE_ON_REMINDER, lastVibrateOnReminder).apply()
+
+    var defaultStartTime: Int
+        get() = prefs.getInt(DEFAULT_START_TIME, -1)
+        set(defaultStartTime) = prefs.edit().putInt(DEFAULT_START_TIME, defaultStartTime).apply()
 }
