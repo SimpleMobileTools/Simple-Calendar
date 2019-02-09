@@ -236,6 +236,7 @@
 
     <!-- Strings for settings of new event -->
     <string name="new_event_default_start">Neuer Termin startet standardmäßig um</string>
+    <string name="new_event_default_duration">Neuer Termin dauert standardmäßig</string>
 
     <!--
         Haven't found some strings? There's more at

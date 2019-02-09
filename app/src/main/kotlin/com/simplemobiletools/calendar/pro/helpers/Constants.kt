@@ -40,7 +40,6 @@ const val YEAR = 31536000
 const val WEEK_NUMBERS = "week_numbers"
 const val START_WEEKLY_AT = "start_weekly_at"
 const val END_WEEKLY_AT = "end_weekly_at"
-const val DEFAULT_START_TIME = "default_start_time"
 const val VIBRATE = "vibrate"
 const val REMINDER_SOUND_URI = "reminder_sound_uri"
 const val REMINDER_SOUND_TITLE = "reminder_sound_title"
@@ -69,6 +68,8 @@ const val DEFAULT_REMINDER_2 = "default_reminder_2"
 const val DEFAULT_REMINDER_3 = "default_reminder_3"
 const val PULL_TO_REFRESH = "pull_to_refresh"
 const val LAST_VIBRATE_ON_REMINDER = "last_vibrate_on_reminder"
+const val DEFAULT_START_TIME = "default_start_time"
+const val DEFAULT_DURATION = "default_duration"
 
 // repeat_rule for monthly and yearly repetition
 const val REPEAT_SAME_DAY = 1                           // i.e. 25th every month, or 3rd june (if yearly repetition)

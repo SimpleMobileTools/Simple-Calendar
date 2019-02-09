@@ -177,4 +177,8 @@ class Config(context: Context) : BaseConfig(context) {
     var defaultStartTime: Int
         get() = prefs.getInt(DEFAULT_START_TIME, -1)
         set(defaultStartTime) = prefs.edit().putInt(DEFAULT_START_TIME, defaultStartTime).apply()
+
+    var defaultDuration: Int
+        get() = prefs.getInt(DEFAULT_DURATION, 0)
+        set(defaultDuration) = prefs.edit().putInt(DEFAULT_DURATION, defaultDuration).apply()
 }

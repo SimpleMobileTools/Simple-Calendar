@@ -72,6 +72,7 @@ class SettingsActivity : SimpleActivity() {
         checkPrimaryColor()
         setupSectionColors()
         setupDefaultStartTime()
+        setupDefaultDuration()
     }
 
     override fun onPause() {
@@ -568,6 +569,31 @@ class SettingsActivity : SimpleActivity() {
                         settings_set_default_start_time.text = "/"
                     }
             }
+        }
+    }
+
+    private fun setupDefaultDuration() {
+        var defaultDuration = config.defaultDuration
+        updateDefaultDurationText(defaultDuration)
+        settings_set_default_duration_time_holder.setOnClickListener {
+            CustomIntervalPickerDialog(this, defaultDuration * 60) {
+                val result = it / 60
+                defaultDuration = result
+                config.defaultDuration = result
+                updateDefaultDurationText(result)
+            }
+        }
+    }
+
+    private fun updateDefaultDurationText(defaultDuration: Int) {
+        settings_set_default_duration_time.text = getDefaultDurationText(defaultDuration)
+    }
+
+    private fun getDefaultDurationText(defaultDuration: Int): String {
+        return if (defaultDuration == 0) {
+            "0 " + getString(R.string.minutes_raw)
+        } else {
+            getFormattedMinutes(defaultDuration, false)
         }
     }
 }

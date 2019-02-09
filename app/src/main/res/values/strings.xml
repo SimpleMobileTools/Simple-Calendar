@@ -234,7 +234,8 @@
     </string>
 
     <!-- Strings for settings of new event -->
-    <string name="new_event_default_start">Default time for new event</string>
+    <string name="new_event_default_start">Default start time of new event</string>
+    <string name="new_event_default_duration">Default duration of new event</string>
 
     <!--
         Haven't found some strings? There's more at
