@@ -617,7 +617,7 @@ class SettingsActivity : SimpleActivity() {
         updateDefaultEventTypeText()
         settings_default_event_type.text = getString(R.string.last_used_one)
         settings_default_event_type_holder.setOnClickListener {
-            SelectEventTypeDialog(this, config.defaultEventTypeId, true, false, true) {
+            SelectEventTypeDialog(this, config.defaultEventTypeId, true, false, true, true) {
                 config.defaultEventTypeId = it.id!!
                 updateDefaultEventTypeText()
             }

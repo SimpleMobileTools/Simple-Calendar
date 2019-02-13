@@ -105,7 +105,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             updateViewPager()
         }
 
-        eventsHelper.getEventTypes(this) {
+        eventsHelper.getEventTypes(this, false) {
             val newShouldFilterBeVisible = it.size > 1 || config.displayEventTypes.isEmpty()
             if (newShouldFilterBeVisible != mShouldFilterBeVisible) {
                 mShouldFilterBeVisible = newShouldFilterBeVisible

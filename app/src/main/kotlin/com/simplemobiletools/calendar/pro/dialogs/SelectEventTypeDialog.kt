@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.radio_button_with_color.view.*
 import java.util.*
 
 class SelectEventTypeDialog(val activity: Activity, val currEventType: Long, val showCalDAVCalendars: Boolean, val showNewEventTypeOption: Boolean,
-                            val addLastUsedOneAsFirstOption: Boolean, val callback: (eventType: EventType) -> Unit) {
+                            val addLastUsedOneAsFirstOption: Boolean, val showOnlyWritable: Boolean, val callback: (eventType: EventType) -> Unit) {
     private val NEW_EVENT_TYPE_ID = -2L
     private val LAST_USED_EVENT_TYPE_ID = -1L
 
@@ -32,7 +32,7 @@ class SelectEventTypeDialog(val activity: Activity, val currEventType: Long, val
         val view = activity.layoutInflater.inflate(R.layout.dialog_select_radio_group, null) as ViewGroup
         radioGroup = view.dialog_radio_group
 
-        activity.eventsHelper.getEventTypes(activity) {
+        activity.eventsHelper.getEventTypes(activity, showOnlyWritable) {
             eventTypes = it
             activity.runOnUiThread {
                 if (addLastUsedOneAsFirstOption) {

@@ -548,7 +548,7 @@ class EventActivity : SimpleActivity() {
 
     private fun showEventTypeDialog() {
         hideKeyboard()
-        SelectEventTypeDialog(this, mEventTypeId, false, true, false) {
+        SelectEventTypeDialog(this, mEventTypeId, false, true, false, true) {
             mEventTypeId = it.id!!
             updateEventType()
         }
@@ -613,7 +613,7 @@ class EventActivity : SimpleActivity() {
             event_caldav_calendar_divider.beVisible()
 
             val calendars = calDAVHelper.getCalDAVCalendars("", true).filter {
-                config.getSyncedCalendarIdsAsList().contains(it.id)
+                it.canWrite() && config.getSyncedCalendarIdsAsList().contains(it.id)
             }
             updateCurrentCalendarInfo(if (mEventCalendarId == STORED_LOCALLY_ONLY) null else getCalendarWithId(calendars, getCalendarId()))
 
