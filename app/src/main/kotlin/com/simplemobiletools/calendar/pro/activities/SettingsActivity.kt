@@ -199,6 +199,7 @@ class SettingsActivity : SimpleActivity() {
                     calDAVHelper.deleteCalDAVCalendarEvents(it.toLong())
                 }
                 eventTypesDB.deleteEventTypesWithCalendarId(config.getSyncedCalendarIdsAsList())
+                updateDefaultEventTypeText()
             }.start()
         }
     }
@@ -250,6 +251,7 @@ class SettingsActivity : SimpleActivity() {
                 }
 
                 eventTypesDB.deleteEventTypesWithCalendarId(removedCalendarIds)
+                updateDefaultEventTypeText()
             }.start()
         }
     }
@@ -615,7 +617,7 @@ class SettingsActivity : SimpleActivity() {
         updateDefaultEventTypeText()
         settings_default_event_type.text = getString(R.string.last_used_one)
         settings_default_event_type_holder.setOnClickListener {
-            SelectEventTypeDialog(this, config.defaultEventTypeId, false, false, true) {
+            SelectEventTypeDialog(this, config.defaultEventTypeId, true, false, true) {
                 config.defaultEventTypeId = it.id!!
                 updateDefaultEventTypeText()
             }
@@ -624,14 +626,20 @@ class SettingsActivity : SimpleActivity() {
 
     private fun updateDefaultEventTypeText() {
         if (config.defaultEventTypeId == -1L) {
-            settings_default_event_type.text = getString(R.string.last_used_one)
+            runOnUiThread {
+                settings_default_event_type.text = getString(R.string.last_used_one)
+            }
         } else {
             Thread {
                 val eventType = eventTypesDB.getEventTypeWithId(config.defaultEventTypeId)
                 if (eventType != null) {
+                    config.lastUsedCaldavCalendarId = eventType.caldavCalendarId
                     runOnUiThread {
                         settings_default_event_type.text = eventType.title
                     }
+                } else {
+                    config.defaultEventTypeId = -1
+                    updateDefaultEventTypeText()
                 }
             }.start()
         }
