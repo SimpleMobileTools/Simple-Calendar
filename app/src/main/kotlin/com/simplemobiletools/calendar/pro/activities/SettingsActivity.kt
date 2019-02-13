@@ -11,16 +11,14 @@ import com.simplemobiletools.calendar.pro.dialogs.SelectEventTypeDialog
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.models.EventType
-import com.simplemobiletools.commons.dialogs.ConfirmationDialog
-import com.simplemobiletools.commons.dialogs.CustomIntervalPickerDialog
-import com.simplemobiletools.commons.dialogs.RadioGroupDialog
-import com.simplemobiletools.commons.dialogs.SelectAlarmSoundDialog
+import com.simplemobiletools.commons.dialogs.*
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.models.AlarmSound
 import com.simplemobiletools.commons.models.RadioItem
 import kotlinx.android.synthetic.main.activity_settings.*
 import org.joda.time.DateTime
+import java.io.File
 import java.util.*
 
 class SettingsActivity : SimpleActivity() {
@@ -38,7 +36,10 @@ class SettingsActivity : SimpleActivity() {
 
     override fun onResume() {
         super.onResume()
+        setupSettingItems()
+    }
 
+    private fun setupSettingItems() {
         setupCustomizeColors()
         setupUseEnglish()
         setupManageEventTypes()
@@ -660,7 +661,6 @@ class SettingsActivity : SimpleActivity() {
                 put(WEEK_NUMBERS, config.showWeekNumbers)
                 put(START_WEEKLY_AT, config.startWeeklyAt)
                 put(END_WEEKLY_AT, config.endWeeklyAt)
-                put(END_WEEKLY_AT, config.endWeeklyAt)
                 put(VIBRATE, config.vibrateOnReminder)
                 put(LAST_EVENT_REMINDER_MINUTES, config.lastEventReminderMinutes1)
                 put(LAST_EVENT_REMINDER_MINUTES_2, config.lastEventReminderMinutes2)
@@ -672,7 +672,6 @@ class SettingsActivity : SimpleActivity() {
                 put(REPLACE_DESCRIPTION, config.replaceDescription)
                 put(SHOW_GRID, config.showGrid)
                 put(LOOP_REMINDERS, config.loopReminders)
-                put(REPLACE_DESCRIPTION, config.replaceDescription)
                 put(DIM_PAST_EVENTS, config.dimPastEvents)
                 put(USE_PREVIOUS_EVENT_REMINDERS, config.usePreviousEventReminders)
                 put(DEFAULT_REMINDER_1, config.defaultReminder1)
@@ -692,6 +691,87 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun setupImportSettings() {
+        settings_import_holder.setOnClickListener {
+            FilePickerDialog(this) {
+                Thread {
+                    try {
+                        parseFile(it)
+                    } catch (e: Exception) {
+                        showErrorToast(e)
+                    }
+                }.start()
+            }
+        }
+    }
 
+    private fun parseFile(path: String) {
+        val inputStream = File(path).inputStream()
+        var importedItems = 0
+        val configValues = LinkedHashMap<String, Any>()
+        inputStream.bufferedReader().use {
+            while (true) {
+                try {
+                    val line = it.readLine() ?: break
+                    val split = line.split("=".toRegex(), 2)
+                    if (split.size == 2) {
+                        configValues[split[0]] = split[1]
+                    }
+                    importedItems++
+                } catch (e: Exception) {
+                    showErrorToast(e)
+                }
+            }
+        }
+
+        for ((key, value) in configValues) {
+            when (key) {
+                IS_USING_SHARED_THEME -> config.isUsingSharedTheme = value.toBoolean()
+                TEXT_COLOR -> config.textColor = value.toInt()
+                BACKGROUND_COLOR -> config.backgroundColor = value.toInt()
+                PRIMARY_COLOR -> config.primaryColor = value.toInt()
+                APP_ICON_COLOR -> {
+                    if (getAppIconColors().contains(value.toInt())) {
+                        config.appIconColor = value.toInt()
+                        checkAppIconColor()
+                    }
+                }
+                USE_ENGLISH -> config.useEnglish = value.toBoolean()
+                WAS_USE_ENGLISH_TOGGLED -> config.wasUseEnglishToggled = value.toBoolean()
+                WIDGET_BG_COLOR -> config.widgetBgColor = value.toInt()
+                WIDGET_TEXT_COLOR -> config.widgetTextColor = value.toInt()
+                WEEK_NUMBERS -> config.showWeekNumbers = value.toBoolean()
+                START_WEEKLY_AT -> config.startWeeklyAt = value.toInt()
+                END_WEEKLY_AT -> config.endWeeklyAt = value.toInt()
+                VIBRATE -> config.vibrateOnReminder = value.toBoolean()
+                LAST_EVENT_REMINDER_MINUTES -> config.lastEventReminderMinutes1 = value.toInt()
+                LAST_EVENT_REMINDER_MINUTES_2 -> config.lastEventReminderMinutes2 = value.toInt()
+                LAST_EVENT_REMINDER_MINUTES_3 -> config.lastEventReminderMinutes3 = value.toInt()
+                DISPLAY_PAST_EVENTS -> config.displayPastEvents = value.toInt()
+                FONT_SIZE -> config.fontSize = value.toInt()
+                LIST_WIDGET_VIEW_TO_OPEN -> config.listWidgetViewToOpen = value.toInt()
+                REMINDER_AUDIO_STREAM -> config.reminderAudioStream = value.toInt()
+                REPLACE_DESCRIPTION -> config.replaceDescription = value.toBoolean()
+                SHOW_GRID -> config.showGrid = value.toBoolean()
+                LOOP_REMINDERS -> config.loopReminders = value.toBoolean()
+                DIM_PAST_EVENTS -> config.dimPastEvents = value.toBoolean()
+                USE_PREVIOUS_EVENT_REMINDERS -> config.usePreviousEventReminders = value.toBoolean()
+                DEFAULT_REMINDER_1 -> config.defaultReminder1 = value.toInt()
+                DEFAULT_REMINDER_2 -> config.defaultReminder2 = value.toInt()
+                DEFAULT_REMINDER_3 -> config.defaultReminder3 = value.toInt()
+                PULL_TO_REFRESH -> config.pullToRefresh = value.toBoolean()
+                DEFAULT_START_TIME -> config.defaultStartTime = value.toInt()
+                DEFAULT_DURATION -> config.defaultDuration = value.toInt()
+                USE_SAME_SNOOZE -> config.useSameSnooze = value.toBoolean()
+                SNOOZE_TIME -> config.snoozeTime = value.toInt()
+                USE_24_HOUR_FORMAT -> config.use24HourFormat = value.toBoolean()
+                SUNDAY_FIRST -> config.isSundayFirst = value.toBoolean()
+            }
+        }
+
+        toast(if (configValues.size > 0) R.string.settings_imported_successfully else R.string.no_entries_for_importing)
+        runOnUiThread {
+            setupSettingItems()
+            updateWidgets()
+        }
     }
 }
