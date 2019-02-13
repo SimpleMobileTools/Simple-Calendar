@@ -314,13 +314,14 @@ fun Context.launchNewEventIntent(dayCode: String = Formatter.getTodayCode()) {
 
 fun Context.getNewEventTimestampFromCode(dayCode: String): Long {
     val defaultStartTime = config.defaultStartTime
-    var currHour = DateTime(System.currentTimeMillis(), DateTimeZone.getDefault()).hourOfDay
+    val currHour = DateTime(System.currentTimeMillis(), DateTimeZone.getDefault()).hourOfDay
     var dateTime = Formatter.getLocalDateTimeFromCode(dayCode).withHourOfDay(currHour)
     var newDateTime = dateTime.plusHours(1).withMinuteOfHour(0).withSecondOfMinute(0).withMillisOfSecond(0)
 
     if (defaultStartTime != -1) {
-        currHour = defaultStartTime
-        dateTime = Formatter.getLocalDateTimeFromCode(dayCode).withHourOfDay(currHour)
+        val hours = defaultStartTime / 60
+        val minutes = defaultStartTime % 60
+        dateTime = Formatter.getLocalDateTimeFromCode(dayCode).withHourOfDay(hours).withMinuteOfHour(minutes)
         newDateTime = dateTime
     }
 

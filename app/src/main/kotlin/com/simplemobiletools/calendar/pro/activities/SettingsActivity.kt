@@ -1,5 +1,6 @@
 package com.simplemobiletools.calendar.pro.activities
 
+import android.app.TimePickerDialog
 import android.content.Intent
 import android.content.res.Resources
 import android.media.AudioManager
@@ -21,6 +22,7 @@ import com.simplemobiletools.commons.helpers.PERMISSION_WRITE_CALENDAR
 import com.simplemobiletools.commons.models.AlarmSound
 import com.simplemobiletools.commons.models.RadioItem
 import kotlinx.android.synthetic.main.activity_settings.*
+import org.joda.time.DateTime
 import java.util.*
 
 class SettingsActivity : SimpleActivity() {
@@ -555,21 +557,35 @@ class SettingsActivity : SimpleActivity() {
     private fun setupDefaultStartTime() {
         updateDefaultStartTimeText()
         settings_set_default_start_time_holder.setOnClickListener {
+            val currentDefaultTime = if (config.defaultStartTime == -1) -1 else 0
             val items = ArrayList<RadioItem>()
             items.add(RadioItem(-1, getString(R.string.next_full_hour)))
-            (0..24).mapTo(items) { RadioItem(it, getHoursString(it)) }
+            items.add(RadioItem(0, getString(R.string.other_time)))
 
-            RadioGroupDialog(this@SettingsActivity, items, config.defaultStartTime) {
-                config.defaultStartTime = it as Int
-                updateDefaultStartTimeText()
+            RadioGroupDialog(this@SettingsActivity, items, currentDefaultTime) {
+                if (it as Int == -1) {
+                    config.defaultStartTime = it
+                    updateDefaultStartTimeText()
+                } else {
+                    val timeListener = TimePickerDialog.OnTimeSetListener { view, hourOfDay, minute ->
+                        config.defaultStartTime = hourOfDay * 60 + minute
+                        updateDefaultStartTimeText()
+                    }
+
+                    val currentDateTime = DateTime.now()
+                    TimePickerDialog(this, getDialogTheme(), timeListener, currentDateTime.hourOfDay, currentDateTime.minuteOfHour, config.use24HourFormat).show()
+                }
             }
         }
     }
 
     private fun updateDefaultStartTimeText() {
-        settings_set_default_start_time.text = getHoursString(config.defaultStartTime)
         if (config.defaultStartTime == -1) {
             settings_set_default_start_time.text = getString(R.string.next_full_hour)
+        } else {
+            val hours = config.defaultStartTime / 60
+            val minutes = config.defaultStartTime % 60
+            settings_set_default_start_time.text = String.format("%02d:%02d", hours, minutes)
         }
     }
 
