@@ -71,6 +71,8 @@ class SettingsActivity : SimpleActivity() {
         updateTextColors(settings_holder)
         checkPrimaryColor()
         setupSectionColors()
+        setupDefaultStartTime()
+        setupDefaultDuration()
     }
 
     override fun onPause() {
@@ -101,7 +103,7 @@ class SettingsActivity : SimpleActivity() {
 
     private fun setupSectionColors() {
         val adjustedPrimaryColor = getAdjustedPrimaryColor()
-        arrayListOf(reminders_label, caldav_label, weekly_view_label, monthly_view_label, simple_event_list_label, widgets_label, events_label).forEach {
+        arrayListOf(reminders_label, caldav_label, weekly_view_label, monthly_view_label, simple_event_list_label, widgets_label, events_label, new_events_label).forEach {
             it.setTextColor(adjustedPrimaryColor)
         }
     }
@@ -297,6 +299,7 @@ class SettingsActivity : SimpleActivity() {
             }
         }
     }
+
 
     private fun setupWeekNumbers() {
         settings_week_numbers.isChecked = config.showWeekNumbers
@@ -546,6 +549,51 @@ class SettingsActivity : SimpleActivity() {
         if (requestCode == GET_RINGTONE_URI && resultCode == RESULT_OK && resultData != null) {
             val newAlarmSound = storeNewYourAlarmSound(resultData)
             updateReminderSound(newAlarmSound)
+        }
+    }
+
+    private fun setupDefaultStartTime() {
+        settings_set_default_start_time.text = getHoursString(config.defaultStartTime)
+        if (config.defaultStartTime == -1) {
+            settings_set_default_start_time.text = "/"
+        }
+        settings_set_default_start_time_holder.setOnClickListener {
+            val items = ArrayList<RadioItem>()
+            items.add(RadioItem(-1, "/"))
+            (0..24).mapTo(items) { RadioItem(it, getHoursString(it)) }
+
+            RadioGroupDialog(this@SettingsActivity, items, config.defaultStartTime) {
+                    config.defaultStartTime = it as Int
+                    settings_set_default_start_time.text = getHoursString(it)
+                    if (it == -1) {
+                        settings_set_default_start_time.text = "/"
+                    }
+            }
+        }
+    }
+
+    private fun setupDefaultDuration() {
+        var defaultDuration = config.defaultDuration
+        updateDefaultDurationText(defaultDuration)
+        settings_set_default_duration_time_holder.setOnClickListener {
+            CustomIntervalPickerDialog(this, defaultDuration * 60) {
+                val result = it / 60
+                defaultDuration = result
+                config.defaultDuration = result
+                updateDefaultDurationText(result)
+            }
+        }
+    }
+
+    private fun updateDefaultDurationText(defaultDuration: Int) {
+        settings_set_default_duration_time.text = getDefaultDurationText(defaultDuration)
+    }
+
+    private fun getDefaultDurationText(defaultDuration: Int): String {
+        return if (defaultDuration == 0) {
+            "0 " + getString(R.string.minutes_raw)
+        } else {
+            getFormattedMinutes(defaultDuration, false)
         }
     }
 }

@@ -286,8 +286,12 @@ class EventActivity : SimpleActivity() {
             val dateTime = Formatter.getDateTimeFromTS(startTS)
             mEventStartDateTime = dateTime
 
-            val addHours = if (intent.getBooleanExtra(NEW_EVENT_SET_HOUR_DURATION, false)) 1 else 0
-            mEventEndDateTime = mEventStartDateTime.plusHours(addHours)
+            val addMinutes = if (intent.getBooleanExtra(NEW_EVENT_SET_HOUR_DURATION, false)) {
+                60
+            } else {
+                config.defaultDuration
+            }
+            mEventEndDateTime = mEventStartDateTime.plusMinutes(addMinutes)
         }
     }
 

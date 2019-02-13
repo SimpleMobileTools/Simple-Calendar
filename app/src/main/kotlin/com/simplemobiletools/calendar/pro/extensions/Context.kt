@@ -313,9 +313,17 @@ fun Context.launchNewEventIntent(dayCode: String = Formatter.getTodayCode()) {
 }
 
 fun Context.getNewEventTimestampFromCode(dayCode: String): Long {
-    val currHour = DateTime(System.currentTimeMillis(), DateTimeZone.getDefault()).hourOfDay
-    val dateTime = Formatter.getLocalDateTimeFromCode(dayCode).withHourOfDay(currHour)
-    val newDateTime = dateTime.plusHours(1).withMinuteOfHour(0).withSecondOfMinute(0).withMillisOfSecond(0)
+    val defaultStartTime = config.defaultStartTime
+    var currHour = DateTime(System.currentTimeMillis(), DateTimeZone.getDefault()).hourOfDay
+    var dateTime = Formatter.getLocalDateTimeFromCode(dayCode).withHourOfDay(currHour)
+    var newDateTime = dateTime.plusHours(1).withMinuteOfHour(0).withSecondOfMinute(0).withMillisOfSecond(0)
+
+    if (defaultStartTime != -1) {
+        currHour = defaultStartTime
+        dateTime = Formatter.getLocalDateTimeFromCode(dayCode).withHourOfDay(currHour)
+        newDateTime = dateTime
+    }
+
     // make sure the date doesn't change
     return newDateTime.withDate(dateTime.year, dateTime.monthOfYear, dateTime.dayOfMonth).seconds()
 }
