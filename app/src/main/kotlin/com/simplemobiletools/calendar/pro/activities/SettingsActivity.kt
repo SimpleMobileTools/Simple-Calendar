@@ -7,6 +7,7 @@ import android.media.AudioManager
 import android.os.Bundle
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.dialogs.SelectCalendarsDialog
+import com.simplemobiletools.calendar.pro.dialogs.SelectEventTypeDialog
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.models.EventType
@@ -611,6 +612,28 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun setupDefaultEventType() {
+        updateDefaultEventTypeText()
         settings_default_event_type.text = getString(R.string.last_used_one)
+        settings_default_event_type_holder.setOnClickListener {
+            SelectEventTypeDialog(this, config.defaultEventTypeId, false, false, true) {
+                config.defaultEventTypeId = it.id!!
+                updateDefaultEventTypeText()
+            }
+        }
+    }
+
+    private fun updateDefaultEventTypeText() {
+        if (config.defaultEventTypeId == -1L) {
+            settings_default_event_type.text = getString(R.string.last_used_one)
+        } else {
+            Thread {
+                val eventType = eventTypesDB.getEventTypeWithId(config.defaultEventTypeId)
+                if (eventType != null) {
+                    runOnUiThread {
+                        settings_default_event_type.text = eventType.title
+                    }
+                }
+            }.start()
+        }
     }
 }

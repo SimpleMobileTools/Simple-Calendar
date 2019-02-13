@@ -88,7 +88,7 @@ class Config(context: Context) : BaseConfig(context) {
             prefs.edit().putBoolean(CALDAV_SYNC, caldavSync).apply()
         }
 
-    var caldavSyncedCalendarIDs: String
+    var caldavSyncedCalendarIds: String
         get() = prefs.getString(CALDAV_SYNCED_CALENDAR_IDS, "")
         set(calendarIDs) = prefs.edit().putString(CALDAV_SYNCED_CALENDAR_IDS, calendarIDs).apply()
 
@@ -120,7 +120,7 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getBoolean(DIM_PAST_EVENTS, true)
         set(dimPastEvents) = prefs.edit().putBoolean(DIM_PAST_EVENTS, dimPastEvents).apply()
 
-    fun getSyncedCalendarIdsAsList() = caldavSyncedCalendarIDs.split(",").filter { it.trim().isNotEmpty() }.map { Integer.parseInt(it) }.toMutableList() as ArrayList<Int>
+    fun getSyncedCalendarIdsAsList() = caldavSyncedCalendarIds.split(",").filter { it.trim().isNotEmpty() }.map { Integer.parseInt(it) }.toMutableList() as ArrayList<Int>
 
     fun getDisplayEventTypessAsList() = displayEventTypes.map { it.toLong() }.toMutableList() as ArrayList<Long>
 
@@ -182,7 +182,7 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getInt(DEFAULT_DURATION, 0)
         set(defaultDuration) = prefs.edit().putInt(DEFAULT_DURATION, defaultDuration).apply()
 
-    var defaultEventType: Long
-        get() = prefs.getLong(DEFAULT_EVENT_TYPE, REGULAR_EVENT_TYPE_ID)
-        set(defaultEventType) = prefs.edit().putLong(DEFAULT_EVENT_TYPE, defaultEventType).apply()
+    var defaultEventTypeId: Long
+        get() = prefs.getLong(DEFAULT_EVENT_TYPE_ID, -1L)
+        set(defaultEventTypeId) = prefs.edit().putLong(DEFAULT_EVENT_TYPE_ID, defaultEventTypeId).apply()
 }

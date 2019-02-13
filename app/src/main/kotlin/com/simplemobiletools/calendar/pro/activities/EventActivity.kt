@@ -86,7 +86,7 @@ class EventActivity : SimpleActivity() {
             config.lastUsedLocalEventTypeId = REGULAR_EVENT_TYPE_ID
         }
 
-        mEventTypeId = config.lastUsedLocalEventTypeId
+        mEventTypeId = if (config.defaultEventTypeId == -1L) config.lastUsedLocalEventTypeId else config.defaultEventTypeId
 
         if (event != null) {
             mEvent = event
@@ -548,7 +548,7 @@ class EventActivity : SimpleActivity() {
 
     private fun showEventTypeDialog() {
         hideKeyboard()
-        SelectEventTypeDialog(this, mEventTypeId, false) {
+        SelectEventTypeDialog(this, mEventTypeId, false, true, false) {
             mEventTypeId = it.id!!
             updateEventType()
         }

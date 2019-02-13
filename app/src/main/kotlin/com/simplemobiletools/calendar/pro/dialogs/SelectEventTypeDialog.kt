@@ -18,9 +18,10 @@ import kotlinx.android.synthetic.main.dialog_select_radio_group.view.*
 import kotlinx.android.synthetic.main.radio_button_with_color.view.*
 import java.util.*
 
-class SelectEventTypeDialog(val activity: Activity, val currEventType: Long, val showCalDAVCalendars: Boolean,
-                            val callback: (eventType: EventType) -> Unit) {
-    private val NEW_TYPE_ID = -2L
+class SelectEventTypeDialog(val activity: Activity, val currEventType: Long, val showCalDAVCalendars: Boolean, val showNewEventTypeOption: Boolean,
+                            val addLastUsedOneAsFirstOption: Boolean, val callback: (eventType: EventType) -> Unit) {
+    private val NEW_EVENT_TYPE_ID = -2L
+    private val LAST_USED_EVENT_TYPE_ID = -1L
 
     private val dialog: AlertDialog?
     private val radioGroup: RadioGroup
@@ -34,11 +35,17 @@ class SelectEventTypeDialog(val activity: Activity, val currEventType: Long, val
         activity.eventsHelper.getEventTypes(activity) {
             eventTypes = it
             activity.runOnUiThread {
+                if (addLastUsedOneAsFirstOption) {
+                    val lastUsedEventType = EventType(LAST_USED_EVENT_TYPE_ID, activity.getString(R.string.last_used_one), Color.TRANSPARENT, 0)
+                    addRadioButton(lastUsedEventType)
+                }
                 eventTypes.filter { showCalDAVCalendars || it.caldavCalendarId == 0 }.forEach {
                     addRadioButton(it)
                 }
-                val newEventType = EventType(NEW_TYPE_ID, activity.getString(R.string.add_new_type), Color.TRANSPARENT, 0)
-                addRadioButton(newEventType)
+                if (showNewEventTypeOption) {
+                    val newEventType = EventType(NEW_EVENT_TYPE_ID, activity.getString(R.string.add_new_type), Color.TRANSPARENT, 0)
+                    addRadioButton(newEventType)
+                }
                 wasInit = true
                 activity.updateTextColors(view.dialog_radio_holder)
             }
@@ -71,7 +78,7 @@ class SelectEventTypeDialog(val activity: Activity, val currEventType: Long, val
             return
         }
 
-        if (eventType.id == NEW_TYPE_ID) {
+        if (eventType.id == NEW_EVENT_TYPE_ID) {
             EditEventTypeDialog(activity) {
                 callback(it)
                 activity.hideKeyboard()

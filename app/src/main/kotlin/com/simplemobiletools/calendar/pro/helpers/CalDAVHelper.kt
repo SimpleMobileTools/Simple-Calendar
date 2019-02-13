@@ -32,7 +32,7 @@ class CalDAVHelper(val context: Context) {
 
         isUpdatingCalDAV = true
         try {
-            val calDAVCalendars = getCalDAVCalendars(context.config.caldavSyncedCalendarIDs, showToasts)
+            val calDAVCalendars = getCalDAVCalendars(context.config.caldavSyncedCalendarIds, showToasts)
             for (calendar in calDAVCalendars) {
                 val localEventType = eventsHelper.getEventTypeWithCalDAVCalendarId(calendar.id) ?: continue
                 localEventType.apply {
