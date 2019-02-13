@@ -28,7 +28,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:paddingStart="@dimen/medium_margin"
-                android:paddingLeft="@dimen/medium_margin"
                 android:text="@string/customize_colors"/>
 
         </RelativeLayout>
@@ -50,7 +49,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:paddingStart="@dimen/medium_margin"
-                android:paddingLeft="@dimen/medium_margin"
                 android:text="@string/manage_event_types"/>
 
         </RelativeLayout>
@@ -73,7 +71,6 @@
                 android:background="@null"
                 android:clickable="false"
                 android:paddingStart="@dimen/medium_margin"
-                android:paddingLeft="@dimen/medium_margin"
                 android:text="@string/use_english_language"/>
 
         </RelativeLayout>
@@ -96,7 +93,6 @@
                 android:background="@null"
                 android:clickable="false"
                 android:paddingStart="@dimen/medium_margin"
-                android:paddingLeft="@dimen/medium_margin"
                 android:text="@string/use_24_hour_time_format"/>
 
         </RelativeLayout>
@@ -119,7 +115,6 @@
                 android:background="@null"
                 android:clickable="false"
                 android:paddingStart="@dimen/medium_margin"
-                android:paddingLeft="@dimen/medium_margin"
                 android:text="@string/sunday_first"/>
 
         </RelativeLayout>
@@ -136,7 +131,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/bigger_margin"
-            android:layout_marginLeft="@dimen/bigger_margin"
             android:layout_marginTop="@dimen/activity_margin"
             android:text="@string/event_reminders"
             android:textAllCaps="true"
@@ -160,7 +154,6 @@
                 android:background="@null"
                 android:clickable="false"
                 android:paddingStart="@dimen/medium_margin"
-                android:paddingLeft="@dimen/medium_margin"
                 android:text="@string/vibrate"/>
 
         </RelativeLayout>
@@ -183,7 +176,6 @@
                 android:background="@null"
                 android:clickable="false"
                 android:paddingStart="@dimen/medium_margin"
-                android:paddingLeft="@dimen/medium_margin"
                 android:text="@string/loop_reminders"/>
 
         </RelativeLayout>
@@ -205,7 +197,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toStartOf="@+id/settings_reminder_sound"
-                android:layout_toLeftOf="@+id/settings_reminder_sound"
                 android:paddingStart="@dimen/medium_margin"
                 android:paddingEnd="@dimen/medium_margin"
                 android:text="@string/reminder_sound"/>
@@ -215,9 +206,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:layout_marginEnd="@dimen/small_margin"
-                android:layout_marginRight="@dimen/small_margin"
                 android:background="@null"
                 android:clickable="false"/>
 
@@ -239,7 +228,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toStartOf="@+id/settings_reminder_audio_stream"
-                android:layout_toLeftOf="@+id/settings_reminder_audio_stream"
                 android:paddingStart="@dimen/medium_margin"
                 android:paddingEnd="@dimen/medium_margin"
                 android:text="@string/reminder_stream"/>
@@ -249,9 +237,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:layout_marginEnd="@dimen/small_margin"
-                android:layout_marginRight="@dimen/small_margin"
                 android:background="@null"
                 android:clickable="false"/>
 
@@ -275,7 +261,6 @@
                 android:background="@null"
                 android:clickable="false"
                 android:paddingStart="@dimen/medium_margin"
-                android:paddingLeft="@dimen/medium_margin"
                 android:text="@string/use_same_snooze"/>
 
         </RelativeLayout>
@@ -297,7 +282,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toStartOf="@+id/settings_snooze_time"
-                android:layout_toLeftOf="@+id/settings_snooze_time"
                 android:paddingStart="@dimen/medium_margin"
                 android:paddingEnd="@dimen/medium_margin"
                 android:text="@string/snooze_time"/>
@@ -307,9 +291,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:layout_marginEnd="@dimen/small_margin"
-                android:layout_marginRight="@dimen/small_margin"
                 android:background="@null"
                 android:clickable="false"/>
 
@@ -327,7 +309,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/bigger_margin"
-            android:layout_marginLeft="@dimen/bigger_margin"
             android:layout_marginTop="@dimen/activity_margin"
             android:text="@string/caldav"
             android:textAllCaps="true"
@@ -351,7 +332,6 @@
                 android:background="@null"
                 android:clickable="false"
                 android:paddingStart="@dimen/medium_margin"
-                android:paddingLeft="@dimen/medium_margin"
                 android:text="@string/caldav_sync"/>
 
         </RelativeLayout>
@@ -374,7 +354,6 @@
                 android:background="@null"
                 android:clickable="false"
                 android:paddingStart="@dimen/medium_margin"
-                android:paddingLeft="@dimen/medium_margin"
                 android:text="@string/enable_pull_to_refresh"/>
 
         </RelativeLayout>
@@ -413,7 +392,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/bigger_margin"
-            android:layout_marginLeft="@dimen/bigger_margin"
             android:layout_marginTop="@dimen/activity_margin"
             android:text="@string/new_events"
             android:textAllCaps="true"
@@ -435,7 +413,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toStartOf="@+id/settings_set_default_start_time"
-                android:layout_toLeftOf="@+id/settings_set_default_start_time"
                 android:paddingLeft="@dimen/medium_margin"
                 android:paddingRight="@dimen/medium_margin"
                 android:text="@string/default_start_time"/>
@@ -445,9 +422,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:layout_marginEnd="@dimen/small_margin"
-                android:layout_marginRight="@dimen/small_margin"
                 android:background="@null"
                 android:clickable="false"/>
 
@@ -469,7 +444,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toStartOf="@+id/settings_set_default_duration_time"
-                android:layout_toLeftOf="@+id/settings_set_default_duration_time"
                 android:paddingLeft="@dimen/medium_margin"
                 android:paddingRight="@dimen/medium_margin"
                 android:text="@string/default_duration"/>
@@ -479,9 +453,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:layout_marginEnd="@dimen/small_margin"
-                android:layout_marginRight="@dimen/small_margin"
                 android:background="@null"
                 android:clickable="false"/>
 
@@ -505,7 +477,6 @@
                 android:background="@null"
                 android:clickable="false"
                 android:paddingStart="@dimen/medium_margin"
-                android:paddingLeft="@dimen/medium_margin"
                 android:text="@string/use_last_event_reminders"/>
 
         </RelativeLayout>
@@ -527,7 +498,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toStartOf="@+id/settings_default_reminder_1"
-                android:layout_toLeftOf="@+id/settings_default_reminder_1"
                 android:paddingStart="@dimen/medium_margin"
                 android:paddingEnd="@dimen/medium_margin"
                 android:text="@string/default_reminder_1"/>
@@ -537,9 +507,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:layout_marginEnd="@dimen/small_margin"
-                android:layout_marginRight="@dimen/small_margin"
                 android:background="@null"
                 android:clickable="false"/>
 
@@ -562,7 +530,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toStartOf="@+id/settings_default_reminder_2"
-                android:layout_toLeftOf="@+id/settings_default_reminder_2"
                 android:paddingStart="@dimen/medium_margin"
                 android:paddingEnd="@dimen/medium_margin"
                 android:text="@string/default_reminder_2"/>
@@ -572,9 +539,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:layout_marginEnd="@dimen/small_margin"
-                android:layout_marginRight="@dimen/small_margin"
                 android:background="@null"
                 android:clickable="false"/>
 
@@ -597,7 +562,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toStartOf="@+id/settings_default_reminder_3"
-                android:layout_toLeftOf="@+id/settings_default_reminder_3"
                 android:paddingStart="@dimen/medium_margin"
                 android:paddingEnd="@dimen/medium_margin"
                 android:text="@string/default_reminder_3"/>
@@ -607,9 +571,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:layout_marginEnd="@dimen/small_margin"
-                android:layout_marginRight="@dimen/small_margin"
                 android:background="@null"
                 android:clickable="false"/>
 
@@ -627,7 +589,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/bigger_margin"
-            android:layout_marginLeft="@dimen/bigger_margin"
             android:layout_marginTop="@dimen/activity_margin"
             android:text="@string/weekly_view"
             android:textAllCaps="true"
@@ -650,7 +611,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toStartOf="@+id/settings_start_weekly_at"
-                android:layout_toLeftOf="@+id/settings_start_weekly_at"
                 android:paddingStart="@dimen/medium_margin"
                 android:paddingEnd="@dimen/medium_margin"
                 android:text="@string/start_day_at"/>
@@ -660,9 +620,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:layout_marginEnd="@dimen/small_margin"
-                android:layout_marginRight="@dimen/small_margin"
                 android:background="@null"
                 android:clickable="false"/>
 
@@ -684,7 +642,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toStartOf="@+id/settings_end_weekly_at"
-                android:layout_toLeftOf="@+id/settings_end_weekly_at"
                 android:paddingStart="@dimen/medium_margin"
                 android:paddingEnd="@dimen/medium_margin"
                 android:text="@string/end_day_at"/>
@@ -694,9 +651,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:layout_marginEnd="@dimen/small_margin"
-                android:layout_marginRight="@dimen/small_margin"
                 android:background="@null"
                 android:clickable="false"/>
 
@@ -714,7 +669,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/bigger_margin"
-            android:layout_marginLeft="@dimen/bigger_margin"
             android:layout_marginTop="@dimen/activity_margin"
             android:text="@string/monthly_view"
             android:textAllCaps="true"
@@ -738,7 +692,6 @@
                 android:background="@null"
                 android:clickable="false"
                 android:paddingStart="@dimen/medium_margin"
-                android:paddingLeft="@dimen/medium_margin"
                 android:text="@string/week_numbers"/>
 
         </RelativeLayout>
@@ -760,7 +713,6 @@
                 android:background="@null"
                 android:clickable="false"
                 android:paddingStart="@dimen/medium_margin"
-                android:paddingLeft="@dimen/medium_margin"
                 android:text="@string/show_a_grid"/>
 
         </RelativeLayout>
@@ -777,7 +729,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/bigger_margin"
-            android:layout_marginLeft="@dimen/bigger_margin"
             android:layout_marginTop="@dimen/activity_margin"
             android:text="@string/event_lists"
             android:textAllCaps="true"
@@ -801,7 +752,6 @@
                 android:background="@null"
                 android:clickable="false"
                 android:paddingStart="@dimen/medium_margin"
-                android:paddingLeft="@dimen/medium_margin"
                 android:text="@string/replace_description_with_location"/>
 
         </RelativeLayout>
@@ -822,7 +772,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toStartOf="@+id/settings_display_past_events"
-                android:layout_toLeftOf="@+id/settings_display_past_events"
                 android:paddingStart="@dimen/medium_margin"
                 android:paddingEnd="@dimen/medium_margin"
                 android:text="@string/display_past_events"/>
@@ -832,9 +781,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:layout_marginEnd="@dimen/small_margin"
-                android:layout_marginRight="@dimen/small_margin"
                 android:background="@null"
                 android:clickable="false"/>
 
@@ -852,7 +799,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/bigger_margin"
-            android:layout_marginLeft="@dimen/bigger_margin"
             android:layout_marginTop="@dimen/activity_margin"
             android:text="@string/widgets"
             android:textAllCaps="true"
@@ -874,7 +820,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toStartOf="@+id/settings_font_size"
-                android:layout_toLeftOf="@+id/settings_font_size"
                 android:paddingStart="@dimen/medium_margin"
                 android:paddingEnd="@dimen/medium_margin"
                 android:text="@string/font_size"/>
@@ -884,9 +829,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:layout_marginEnd="@dimen/small_margin"
-                android:layout_marginRight="@dimen/small_margin"
                 android:background="@null"
                 android:clickable="false"/>
 
@@ -908,7 +851,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toStartOf="@+id/settings_list_widget_view_to_open"
-                android:layout_toLeftOf="@+id/settings_list_widget_view_to_open"
                 android:paddingStart="@dimen/medium_margin"
                 android:paddingEnd="@dimen/medium_margin"
                 android:text="@string/view_to_open_from_widget"/>
@@ -918,9 +860,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:layout_marginEnd="@dimen/small_margin"
-                android:layout_marginRight="@dimen/small_margin"
                 android:background="@null"
                 android:clickable="false"/>
 
@@ -942,7 +882,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:paddingStart="@dimen/medium_margin"
-                android:paddingLeft="@dimen/medium_margin"
                 android:text="@string/customize_widget_colors"/>
 
         </RelativeLayout>
@@ -959,7 +898,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/bigger_margin"
-            android:layout_marginLeft="@dimen/bigger_margin"
             android:layout_marginTop="@dimen/activity_margin"
             android:text="@string/events"
             android:textAllCaps="true"
@@ -983,7 +921,6 @@
                 android:background="@null"
                 android:clickable="false"
                 android:paddingStart="@dimen/medium_margin"
-                android:paddingLeft="@dimen/medium_margin"
                 android:text="@string/dim_past_events"/>
 
         </RelativeLayout>
