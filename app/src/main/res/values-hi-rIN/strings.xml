@@ -176,6 +176,7 @@
     <string name="next_full_hour">Next full hour</string>
     <string name="default_duration">Default duration</string>
     <string name="last_used_one">Last used one</string>
+    <string name="other_time">Other time</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
