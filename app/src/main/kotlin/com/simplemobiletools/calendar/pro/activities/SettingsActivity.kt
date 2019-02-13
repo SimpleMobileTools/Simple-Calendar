@@ -553,47 +553,43 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun setupDefaultStartTime() {
-        settings_set_default_start_time.text = getHoursString(config.defaultStartTime)
-        if (config.defaultStartTime == -1) {
-            settings_set_default_start_time.text = "/"
-        }
+        updateDefaultStartTimeText()
         settings_set_default_start_time_holder.setOnClickListener {
             val items = ArrayList<RadioItem>()
-            items.add(RadioItem(-1, "/"))
+            items.add(RadioItem(-1, getString(R.string.next_full_hour)))
             (0..24).mapTo(items) { RadioItem(it, getHoursString(it)) }
 
             RadioGroupDialog(this@SettingsActivity, items, config.defaultStartTime) {
-                    config.defaultStartTime = it as Int
-                    settings_set_default_start_time.text = getHoursString(it)
-                    if (it == -1) {
-                        settings_set_default_start_time.text = "/"
-                    }
+                config.defaultStartTime = it as Int
+                updateDefaultStartTimeText()
             }
+        }
+    }
+
+    private fun updateDefaultStartTimeText() {
+        settings_set_default_start_time.text = getHoursString(config.defaultStartTime)
+        if (config.defaultStartTime == -1) {
+            settings_set_default_start_time.text = getString(R.string.next_full_hour)
         }
     }
 
     private fun setupDefaultDuration() {
-        var defaultDuration = config.defaultDuration
-        updateDefaultDurationText(defaultDuration)
+        updateDefaultDurationText()
         settings_set_default_duration_time_holder.setOnClickListener {
-            CustomIntervalPickerDialog(this, defaultDuration * 60) {
+            CustomIntervalPickerDialog(this, config.defaultDuration * 60) {
                 val result = it / 60
-                defaultDuration = result
                 config.defaultDuration = result
-                updateDefaultDurationText(result)
+                updateDefaultDurationText()
             }
         }
     }
 
-    private fun updateDefaultDurationText(defaultDuration: Int) {
-        settings_set_default_duration_time.text = getDefaultDurationText(defaultDuration)
-    }
-
-    private fun getDefaultDurationText(defaultDuration: Int): String {
-        return if (defaultDuration == 0) {
-            "0 " + getString(R.string.minutes_raw)
+    private fun updateDefaultDurationText() {
+        val duration = config.defaultDuration
+        settings_set_default_duration_time.text = if (duration == 0) {
+            "0 ${getString(R.string.minutes_raw)}"
         } else {
-            getFormattedMinutes(defaultDuration, false)
+            getFormattedMinutes(duration, false)
         }
     }
 }
