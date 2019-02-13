@@ -60,6 +60,9 @@ class SettingsActivity : SimpleActivity() {
         setupSnoozeTime()
         setupCaldavSync()
         setupManageSyncedCalendars()
+        setupDefaultStartTime()
+        setupDefaultDuration()
+        setupDefaultEventType()
         setupPullToRefresh()
         setupDefaultReminder()
         setupDefaultReminder1()
@@ -73,8 +76,6 @@ class SettingsActivity : SimpleActivity() {
         updateTextColors(settings_holder)
         checkPrimaryColor()
         setupSectionColors()
-        setupDefaultStartTime()
-        setupDefaultDuration()
     }
 
     override fun onPause() {
@@ -88,6 +89,14 @@ class SettingsActivity : SimpleActivity() {
         config.defaultReminder1 = reminders.getOrElse(0) { REMINDER_OFF }
         config.defaultReminder2 = reminders.getOrElse(1) { REMINDER_OFF }
         config.defaultReminder3 = reminders.getOrElse(2) { REMINDER_OFF }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
+        super.onActivityResult(requestCode, resultCode, resultData)
+        if (requestCode == GET_RINGTONE_URI && resultCode == RESULT_OK && resultData != null) {
+            val newAlarmSound = storeNewYourAlarmSound(resultData)
+            updateReminderSound(newAlarmSound)
+        }
     }
 
     private fun checkPrimaryColor() {
@@ -546,17 +555,9 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
-        super.onActivityResult(requestCode, resultCode, resultData)
-        if (requestCode == GET_RINGTONE_URI && resultCode == RESULT_OK && resultData != null) {
-            val newAlarmSound = storeNewYourAlarmSound(resultData)
-            updateReminderSound(newAlarmSound)
-        }
-    }
-
     private fun setupDefaultStartTime() {
         updateDefaultStartTimeText()
-        settings_set_default_start_time_holder.setOnClickListener {
+        settings_default_start_time_holder.setOnClickListener {
             val currentDefaultTime = if (config.defaultStartTime == -1) -1 else 0
             val items = ArrayList<RadioItem>()
             items.add(RadioItem(-1, getString(R.string.next_full_hour)))
@@ -581,17 +582,17 @@ class SettingsActivity : SimpleActivity() {
 
     private fun updateDefaultStartTimeText() {
         if (config.defaultStartTime == -1) {
-            settings_set_default_start_time.text = getString(R.string.next_full_hour)
+            settings_default_start_time.text = getString(R.string.next_full_hour)
         } else {
             val hours = config.defaultStartTime / 60
             val minutes = config.defaultStartTime % 60
-            settings_set_default_start_time.text = String.format("%02d:%02d", hours, minutes)
+            settings_default_start_time.text = String.format("%02d:%02d", hours, minutes)
         }
     }
 
     private fun setupDefaultDuration() {
         updateDefaultDurationText()
-        settings_set_default_duration_time_holder.setOnClickListener {
+        settings_default_duration_holder.setOnClickListener {
             CustomIntervalPickerDialog(this, config.defaultDuration * 60) {
                 val result = it / 60
                 config.defaultDuration = result
@@ -602,10 +603,14 @@ class SettingsActivity : SimpleActivity() {
 
     private fun updateDefaultDurationText() {
         val duration = config.defaultDuration
-        settings_set_default_duration_time.text = if (duration == 0) {
+        settings_default_duration.text = if (duration == 0) {
             "0 ${getString(R.string.minutes_raw)}"
         } else {
             getFormattedMinutes(duration, false)
         }
+    }
+
+    private fun setupDefaultEventType() {
+        settings_default_event_type.text = getString(R.string.last_used_one)
     }
 }

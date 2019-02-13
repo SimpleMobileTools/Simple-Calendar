@@ -181,4 +181,8 @@ class Config(context: Context) : BaseConfig(context) {
     var defaultDuration: Int
         get() = prefs.getInt(DEFAULT_DURATION, 0)
         set(defaultDuration) = prefs.edit().putInt(DEFAULT_DURATION, defaultDuration).apply()
+
+    var defaultEventType: Long
+        get() = prefs.getLong(DEFAULT_EVENT_TYPE, REGULAR_EVENT_TYPE_ID)
+        set(defaultEventType) = prefs.edit().putLong(DEFAULT_EVENT_TYPE, defaultEventType).apply()
 }
