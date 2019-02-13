@@ -16,10 +16,7 @@ import com.simplemobiletools.commons.dialogs.CustomIntervalPickerDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.dialogs.SelectAlarmSoundDialog
 import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.ALARM_SOUND_TYPE_NOTIFICATION
-import com.simplemobiletools.commons.helpers.IS_CUSTOMIZING_COLORS
-import com.simplemobiletools.commons.helpers.PERMISSION_READ_CALENDAR
-import com.simplemobiletools.commons.helpers.PERMISSION_WRITE_CALENDAR
+import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.models.AlarmSound
 import com.simplemobiletools.commons.models.RadioItem
 import kotlinx.android.synthetic.main.activity_settings.*
@@ -77,6 +74,8 @@ class SettingsActivity : SimpleActivity() {
         updateTextColors(settings_holder)
         checkPrimaryColor()
         setupSectionColors()
+        setupExportSettings()
+        setupImportSettings()
     }
 
     override fun onPause() {
@@ -115,7 +114,8 @@ class SettingsActivity : SimpleActivity() {
 
     private fun setupSectionColors() {
         val adjustedPrimaryColor = getAdjustedPrimaryColor()
-        arrayListOf(reminders_label, caldav_label, weekly_view_label, monthly_view_label, simple_event_list_label, widgets_label, events_label, new_events_label).forEach {
+        arrayListOf(reminders_label, caldav_label, weekly_view_label, monthly_view_label, simple_event_list_label, widgets_label, events_label,
+                new_events_label, migrating_label).forEach {
             it.setTextColor(adjustedPrimaryColor)
         }
     }
@@ -643,5 +643,55 @@ class SettingsActivity : SimpleActivity() {
                 }
             }.start()
         }
+    }
+
+    private fun setupExportSettings() {
+        settings_export_holder.setOnClickListener {
+            val configItems = LinkedHashMap<String, Any>().apply {
+                put(IS_USING_SHARED_THEME, config.isUsingSharedTheme)
+                put(TEXT_COLOR, config.textColor)
+                put(BACKGROUND_COLOR, config.backgroundColor)
+                put(PRIMARY_COLOR, config.primaryColor)
+                put(APP_ICON_COLOR, config.appIconColor)
+                put(USE_ENGLISH, config.useEnglish)
+                put(WAS_USE_ENGLISH_TOGGLED, config.wasUseEnglishToggled)
+                put(WIDGET_BG_COLOR, config.widgetBgColor)
+                put(WIDGET_TEXT_COLOR, config.widgetTextColor)
+                put(WEEK_NUMBERS, config.showWeekNumbers)
+                put(START_WEEKLY_AT, config.startWeeklyAt)
+                put(END_WEEKLY_AT, config.endWeeklyAt)
+                put(END_WEEKLY_AT, config.endWeeklyAt)
+                put(VIBRATE, config.vibrateOnReminder)
+                put(LAST_EVENT_REMINDER_MINUTES, config.lastEventReminderMinutes1)
+                put(LAST_EVENT_REMINDER_MINUTES_2, config.lastEventReminderMinutes2)
+                put(LAST_EVENT_REMINDER_MINUTES_3, config.lastEventReminderMinutes3)
+                put(DISPLAY_PAST_EVENTS, config.displayPastEvents)
+                put(FONT_SIZE, config.fontSize)
+                put(LIST_WIDGET_VIEW_TO_OPEN, config.listWidgetViewToOpen)
+                put(REMINDER_AUDIO_STREAM, config.reminderAudioStream)
+                put(REPLACE_DESCRIPTION, config.replaceDescription)
+                put(SHOW_GRID, config.showGrid)
+                put(LOOP_REMINDERS, config.loopReminders)
+                put(REPLACE_DESCRIPTION, config.replaceDescription)
+                put(DIM_PAST_EVENTS, config.dimPastEvents)
+                put(USE_PREVIOUS_EVENT_REMINDERS, config.usePreviousEventReminders)
+                put(DEFAULT_REMINDER_1, config.defaultReminder1)
+                put(DEFAULT_REMINDER_2, config.defaultReminder2)
+                put(DEFAULT_REMINDER_3, config.defaultReminder3)
+                put(PULL_TO_REFRESH, config.pullToRefresh)
+                put(DEFAULT_START_TIME, config.defaultStartTime)
+                put(DEFAULT_DURATION, config.defaultDuration)
+                put(USE_SAME_SNOOZE, config.useSameSnooze)
+                put(SNOOZE_TIME, config.snoozeTime)
+                put(USE_24_HOUR_FORMAT, config.use24HourFormat)
+                put(SUNDAY_FIRST, config.isSundayFirst)
+            }
+
+            exportSettings(configItems, "calendar-settings.txt")
+        }
+    }
+
+    private fun setupImportSettings() {
+
     }
 }
