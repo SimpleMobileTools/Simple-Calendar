@@ -170,12 +170,12 @@
     <string name="default_reminder_3">Напоминание по умолчанию 3</string>
     <string name="view_to_open_from_widget">Режим, открывающийся из виджета списка событий</string>
     <string name="last_view">Последний использовавшийся</string>
-    <string name="new_events">New events</string>
-    <string name="default_start_time">Default start time</string>
-    <string name="next_full_hour">Next full hour</string>
-    <string name="default_duration">Default duration</string>
-    <string name="last_used_one">Last used one</string>
-    <string name="other_time">Other time</string>
+    <string name="new_events">Новые события</string>
+    <string name="default_start_time">Время начала по умолчанию</string>
+    <string name="next_full_hour">Следующий полный час</string>
+    <string name="default_duration">Продолжительность по умолчанию</string>
+    <string name="last_used_one">Последнее использованное</string>
+    <string name="other_time">Другое</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
