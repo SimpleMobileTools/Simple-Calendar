@@ -206,11 +206,11 @@ class CalDAVHelper(val context: Context) {
                     val originalInstanceTime = cursor.getLongValue(CalendarContract.Events.ORIGINAL_INSTANCE_TIME)
                     val reminders = getCalDAVEventReminders(id)
 
-                    if (startTS.toString().length == 13) {
+                    if (startTS.toString().length == 12 || startTS.toString().length == 13) {
                         startTS /= 1000L
                     }
 
-                    if (endTS.toString().length == 13) {
+                    if (endTS.toString().length == 12 || endTS.toString().length == 13) {
                         endTS /= 1000L
                     }
 
