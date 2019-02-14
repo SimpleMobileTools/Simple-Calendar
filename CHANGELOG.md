@@ -6,7 +6,7 @@ Version 6.3.0 *(2019-02-14)*
 
  * Allow setting default start time/duration/event type for new events\n
  * Allow exporting/importing settings
- * Fix a glitch with repeating events older than from year 2001
+ * Fixed a glitch with repeating events older than from year 2001
  * Fixed some glitches related to overlapping events on the monthly and weekly view
 
 Version 6.2.2 *(2019-01-25)*
