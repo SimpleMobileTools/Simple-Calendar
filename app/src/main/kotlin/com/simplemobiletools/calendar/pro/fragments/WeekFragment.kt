@@ -20,6 +20,7 @@ import com.simplemobiletools.calendar.pro.activities.EventActivity
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.eventsHelper
 import com.simplemobiletools.calendar.pro.extensions.seconds
+import com.simplemobiletools.calendar.pro.extensions.touch
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.interfaces.WeekFragmentListener
@@ -70,10 +71,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        context!!.eventsHelper.getEventTypes(activity!!, false) {
-            it.map { eventTypeColors.put(it.id!!, it.color) }
-        }
-
         mRes = context!!.resources
         mConfig = context!!.config
         mRowHeight = mRes.getDimension(R.dimen.weekly_view_row_height)
@@ -106,6 +103,10 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
     override fun onResume() {
         super.onResume()
+        context!!.eventsHelper.getEventTypes(activity!!, false) {
+            it.map { eventTypeColors.put(it.id!!, it.color) }
+        }
+
         setupDayLabels()
         updateCalendar()
 
@@ -294,13 +295,19 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 val dayCode = Formatter.getDayCodeFromDateTime(startDateTime)
                 var overlappingEvents = 0
                 var currentEventOverlapIndex = 0
-                eventTimeRanges[dayCode]!!.forEachIndexed { index, eventWeeklyView ->
-                    if (eventWeeklyView.range.contains(range)) {
-                        overlappingEvents++
-                    }
+                var foundCurrentEvent = false
 
-                    if (eventWeeklyView.id == event.id) {
-                        currentEventOverlapIndex = index
+                eventTimeRanges[dayCode]!!.forEachIndexed { index, eventWeeklyView ->
+                    if (eventWeeklyView.range.touch(range)) {
+                        overlappingEvents++
+
+                        if (eventWeeklyView.id == event.id) {
+                            foundCurrentEvent = true
+                        }
+
+                        if (!foundCurrentEvent) {
+                            currentEventOverlapIndex++
+                        }
                     }
                 }
 
