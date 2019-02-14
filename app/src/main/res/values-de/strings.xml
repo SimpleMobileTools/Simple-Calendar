@@ -123,7 +123,7 @@
     <string name="edit_type">Typ bearbeiten</string>
     <string name="type_already_exists">Typ mit diesem Namen existiert bereits</string>
     <string name="color">Farbe</string>
-    <string name="regular_event">Regelmäßiger Termin</string>
+    <string name="regular_event">Regulärer Termin</string>
     <string name="cannot_delete_default_type">Standard-Termintyp kann nicht gelöscht werden</string>
     <string name="select_event_type">Wähle einen Termintyp aus</string>
     <string name="move_events_into_default">Betroffene Termine in den Standard-Termintyp verschieben</string>
@@ -170,6 +170,12 @@
     <string name="default_reminder_3">Standarderinnerung 3</string>
     <string name="view_to_open_from_widget">Ansicht beim Öffnen durch das Terminlisten-Widget</string>
     <string name="last_view">Letzte Ansicht</string>
+    <string name="new_events">New events</string>
+    <string name="default_start_time">Default start time</string>
+    <string name="next_full_hour">Next full hour</string>
+    <string name="default_duration">Default duration</string>
+    <string name="last_used_one">Last used one</string>
+    <string name="other_time">Other time</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

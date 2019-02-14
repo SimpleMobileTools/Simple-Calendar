@@ -170,6 +170,12 @@
     <string name="default_reminder_3">Standaardherinnering 3</string>
     <string name="view_to_open_from_widget">Weergave bij openen vanuit widget met afsprakenlijst</string>
     <string name="last_view">Last view</string>
+    <string name="new_events">Nieuwe afspraken</string>
+    <string name="default_start_time">Standaard begintijd</string>
+    <string name="next_full_hour">Eerstvolgende hele uur</string>
+    <string name="default_duration">Standaard duur</string>
+    <string name="last_used_one">Laatst gebruikt</string>
+    <string name="other_time">Andere tijd</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

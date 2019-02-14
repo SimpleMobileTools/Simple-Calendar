@@ -14,6 +14,7 @@ import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.seconds
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.helpers.LOW_ALPHA
+import com.simplemobiletools.calendar.pro.helpers.MEDIUM_ALPHA
 import com.simplemobiletools.calendar.pro.models.DayMonthly
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.MonthViewEvent
@@ -208,7 +209,10 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     }
 
     private fun drawEvent(event: MonthViewEvent, canvas: Canvas) {
-        val verticalOffset = dayVerticalOffsets[event.startDayIndex]
+        var verticalOffset = 0
+        for (i in 0 until Math.min(event.daysCnt, 7 - event.startDayIndex % 7)) {
+            verticalOffset = Math.max(verticalOffset, dayVerticalOffsets[event.startDayIndex + i])
+        }
         val xPos = event.startDayIndex % 7 * dayWidth + horizontalOffset
         val yPos = (event.startDayIndex / 7) * dayHeight
         val xPosCenter = xPos + dayWidth / 2
@@ -257,7 +261,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         }
 
         if (!startDay.isThisMonth) {
-            paintColor = paintColor.adjustAlpha(LOW_ALPHA)
+            paintColor = paintColor.adjustAlpha(MEDIUM_ALPHA)
         }
 
         return getColoredPaint(paintColor)
@@ -272,7 +276,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     private fun getEventBackgroundColor(event: MonthViewEvent, startDay: DayMonthly, endDay: DayMonthly): Paint {
         var paintColor = event.color
         if ((!startDay.isThisMonth && !endDay.isThisMonth) || (dimPastEvents && event.isPastEvent)) {
-            paintColor = paintColor.adjustAlpha(LOW_ALPHA)
+            paintColor = paintColor.adjustAlpha(MEDIUM_ALPHA)
         }
 
         return getColoredPaint(paintColor)
@@ -281,7 +285,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     private fun getEventTitlePaint(event: MonthViewEvent, startDay: DayMonthly, endDay: DayMonthly): Paint {
         var paintColor = event.color.getContrastColor()
         if ((!startDay.isThisMonth && !endDay.isThisMonth) || (dimPastEvents && event.isPastEvent)) {
-            paintColor = paintColor.adjustAlpha(LOW_ALPHA)
+            paintColor = paintColor.adjustAlpha(MEDIUM_ALPHA)
         }
 
         val curPaint = Paint(eventTitlePaint)
@@ -293,7 +297,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         val curPaint = Paint(paint)
         var paintColor = primaryColor
         if (!day.isThisMonth) {
-            paintColor = paintColor.adjustAlpha(LOW_ALPHA)
+            paintColor = paintColor.adjustAlpha(MEDIUM_ALPHA)
         }
         curPaint.color = paintColor
         return curPaint

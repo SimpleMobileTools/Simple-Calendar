@@ -22,9 +22,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/event_type_color"
-            android:paddingLeft="@dimen/medium_margin"
-            android:paddingRight="@dimen/medium_margin"
+            android:layout_toStartOf="@+id/event_type_color"
+            android:paddingStart="@dimen/medium_margin"
+            android:paddingEnd="@dimen/medium_margin"
             tools:text="Event type"/>
 
         <ImageView

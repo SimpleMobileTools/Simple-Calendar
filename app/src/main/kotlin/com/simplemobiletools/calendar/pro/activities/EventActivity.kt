@@ -86,7 +86,7 @@ class EventActivity : SimpleActivity() {
             config.lastUsedLocalEventTypeId = REGULAR_EVENT_TYPE_ID
         }
 
-        mEventTypeId = config.lastUsedLocalEventTypeId
+        mEventTypeId = if (config.defaultEventTypeId == -1L) config.lastUsedLocalEventTypeId else config.defaultEventTypeId
 
         if (event != null) {
             mEvent = event
@@ -286,8 +286,12 @@ class EventActivity : SimpleActivity() {
             val dateTime = Formatter.getDateTimeFromTS(startTS)
             mEventStartDateTime = dateTime
 
-            val addHours = if (intent.getBooleanExtra(NEW_EVENT_SET_HOUR_DURATION, false)) 1 else 0
-            mEventEndDateTime = mEventStartDateTime.plusHours(addHours)
+            val addMinutes = if (intent.getBooleanExtra(NEW_EVENT_SET_HOUR_DURATION, false)) {
+                60
+            } else {
+                config.defaultDuration
+            }
+            mEventEndDateTime = mEventStartDateTime.plusMinutes(addMinutes)
         }
     }
 
@@ -544,7 +548,7 @@ class EventActivity : SimpleActivity() {
 
     private fun showEventTypeDialog() {
         hideKeyboard()
-        SelectEventTypeDialog(this, mEventTypeId, false) {
+        SelectEventTypeDialog(this, mEventTypeId, false, true, false, true) {
             mEventTypeId = it.id!!
             updateEventType()
         }
@@ -609,7 +613,7 @@ class EventActivity : SimpleActivity() {
             event_caldav_calendar_divider.beVisible()
 
             val calendars = calDAVHelper.getCalDAVCalendars("", true).filter {
-                config.getSyncedCalendarIdsAsList().contains(it.id)
+                it.canWrite() && config.getSyncedCalendarIdsAsList().contains(it.id)
             }
             updateCurrentCalendarInfo(if (mEventCalendarId == STORED_LOCALLY_ONLY) null else getCalendarWithId(calendars, getCalendarId()))
 

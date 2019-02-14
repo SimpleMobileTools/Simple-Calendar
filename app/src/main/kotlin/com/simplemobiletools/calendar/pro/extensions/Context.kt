@@ -210,8 +210,17 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
         grantReadUriPermission(soundUri)
     }
 
+    val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
     // create a new channel for every new sound uri as the new Android Oreo notification system is fundamentally broken
-    if (soundUri != config.lastSoundUri) {
+    if (soundUri != config.lastSoundUri || config.lastVibrateOnReminder != config.vibrateOnReminder) {
+        if (!publicVersion) {
+            if (isOreoPlus()) {
+                val oldChannelId = "simple_calendar_${config.lastReminderChannel}_${config.reminderAudioStream}"
+                notificationManager.deleteNotificationChannel(oldChannelId)
+            }
+        }
+
+        config.lastVibrateOnReminder = config.vibrateOnReminder
         config.lastReminderChannel = System.currentTimeMillis()
         config.lastSoundUri = soundUri
     }
@@ -224,14 +233,13 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
                 .setLegacyStreamType(config.reminderAudioStream)
                 .build()
 
-        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val name = resources.getString(R.string.event_reminders)
         val importance = NotificationManager.IMPORTANCE_HIGH
         NotificationChannel(channelId, name, importance).apply {
             setBypassDnd(true)
             enableLights(true)
             lightColor = event.color
-            enableVibration(false)
+            enableVibration(config.vibrateOnReminder)
             setSound(Uri.parse(soundUri), audioAttributes)
             notificationManager.createNotificationChannel(this)
         }
@@ -305,14 +313,23 @@ fun Context.launchNewEventIntent(dayCode: String = Formatter.getTodayCode()) {
 }
 
 fun Context.getNewEventTimestampFromCode(dayCode: String): Long {
+    val defaultStartTime = config.defaultStartTime
     val currHour = DateTime(System.currentTimeMillis(), DateTimeZone.getDefault()).hourOfDay
-    val dateTime = Formatter.getLocalDateTimeFromCode(dayCode).withHourOfDay(currHour)
-    val newDateTime = dateTime.plusHours(1).withMinuteOfHour(0).withSecondOfMinute(0).withMillisOfSecond(0)
+    var dateTime = Formatter.getLocalDateTimeFromCode(dayCode).withHourOfDay(currHour)
+    var newDateTime = dateTime.plusHours(1).withMinuteOfHour(0).withSecondOfMinute(0).withMillisOfSecond(0)
+
+    if (defaultStartTime != -1) {
+        val hours = defaultStartTime / 60
+        val minutes = defaultStartTime % 60
+        dateTime = Formatter.getLocalDateTimeFromCode(dayCode).withHourOfDay(hours).withMinuteOfHour(minutes)
+        newDateTime = dateTime
+    }
+
     // make sure the date doesn't change
     return newDateTime.withDate(dateTime.year, dateTime.monthOfYear, dateTime.dayOfMonth).seconds()
 }
 
-fun Context.getSyncedCalDAVCalendars() = calDAVHelper.getCalDAVCalendars(config.caldavSyncedCalendarIDs, false)
+fun Context.getSyncedCalDAVCalendars() = calDAVHelper.getCalDAVCalendars(config.caldavSyncedCalendarIds, false)
 
 fun Context.recheckCalDAVCalendars(callback: () -> Unit) {
     if (config.caldavSync) {

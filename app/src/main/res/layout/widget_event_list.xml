@@ -11,12 +11,12 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/widget_event_new_event"
         android:layout_alignTop="@+id/widget_event_new_event"
-        android:layout_toLeftOf="@+id/widget_event_new_event"
+        android:layout_toStartOf="@+id/widget_event_new_event"
         android:ellipsize="end"
         android:gravity="center_vertical"
         android:maxLines="1"
-        android:paddingLeft="@dimen/medium_margin"
-        android:paddingRight="@dimen/medium_margin"
+        android:paddingStart="@dimen/medium_margin"
+        android:paddingEnd="@dimen/medium_margin"
         android:textSize="@dimen/normal_text_size"/>
 
     <ImageView
@@ -24,11 +24,11 @@
         style="@style/ArrowStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:paddingBottom="@dimen/small_margin"
-        android:paddingLeft="@dimen/medium_margin"
-        android:paddingRight="@dimen/medium_margin"
+        android:paddingStart="@dimen/medium_margin"
+        android:paddingEnd="@dimen/medium_margin"
         android:paddingTop="@dimen/medium_margin"
         android:scaleType="fitCenter"
         android:src="@drawable/ic_plus"/>
@@ -41,7 +41,7 @@
         android:clipToPadding="false"
         android:divider="@null"
         android:paddingBottom="@dimen/small_margin"
-        android:paddingLeft="@dimen/medium_margin"/>
+        android:paddingStart="@dimen/medium_margin"/>
 
     <TextView
         android:id="@+id/widget_event_list_empty"
@@ -49,8 +49,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/widget_event_list_today"
         android:gravity="center_horizontal"
-        android:paddingLeft="@dimen/big_margin"
-        android:paddingRight="@dimen/big_margin"
+        android:paddingStart="@dimen/big_margin"
+        android:paddingEnd="@dimen/big_margin"
         android:text="@string/no_upcoming_events"
         android:textSize="@dimen/bigger_text_size"/>
 

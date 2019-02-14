@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Egyszerű naptár</string>
-    <string name="app_launcher_name">Naptár</string>
-    <string name="change_view">Nézet megváltoztatása</string>
-    <string name="daily_view">Napi nézet</string>
-    <string name="weekly_view">Heti nézet</string>
-    <string name="monthly_view">Havi nézet</string>
-    <string name="yearly_view">Éves nézet</string>
-    <string name="simple_event_list">Egyszerű bejegyzéslista</string>
+    <string name="app_name">التقويم الخاص</string>
+    <string name="app_launcher_name">التقويم</string>
+    <string name="change_view">تعديل العرض</string>
+    <string name="daily_view">عرض يومي</string>
+    <string name="weekly_view">عرض أسبوعي</string>
+    <string name="monthly_view">عرض شهري</string>
+    <string name="yearly_view">عرض سنوي</string>
+    <string name="simple_event_list">لائحة أحداث بسيطة</string>
     <string name="no_upcoming_events">Seems like you don\'t have any upcoming events.</string>
-    <string name="go_to_today">Go to today</string>
+    <string name="go_to_today">الذهاب الى اليوم</string>
 
     <!-- Widget titles -->
-    <string name="widget_monthly">Havi naptár</string>
-    <string name="widget_list">Bejegyzésnaptár</string>
+    <string name="widget_monthly">تقويم شهري</string>
+    <string name="widget_list">تقويم لائحة أحداث</string>
 
     <!-- Event -->
-    <string name="event">Bejegyzés</string>
-    <string name="edit_event">Bejegyzés szerkesztése</string>
-    <string name="new_event">Új bejegyzés</string>
-    <string name="create_new_event">Create a new event</string>
-    <string name="duplicate_event">Duplicate event</string>
-    <string name="title_empty">A cím nem lehet üres</string>
-    <string name="end_before_start">Az eseménynek nem lehet vége a kezdete előtt</string>
-    <string name="event_added">Bejegyzés hozzáadva</string>
-    <string name="event_updated">Bejegyzés frissítve</string>
-    <string name="filter_events_by_type">Filter events by type</string>
-    <string name="please_fill_location">Please fill in a location to be shown on a map</string>
+    <string name="event">حدث</string>
+    <string name="edit_event">تعديل حدث</string>
+    <string name="new_event">حدث جديد</string>
+    <string name="create_new_event">إضافة حدث جديد</string>
+    <string name="duplicate_event">تكرار حدث</string>
+    <string name="title_empty">العنوان لا يمكن تركه فارغاً</string>
+    <string name="end_before_start">لا يمكن أن ينتهي الحدث قبل بدايته</string>
+    <string name="event_added">تمت إضافة الحدث</string>
+    <string name="event_updated">تم تعديل الحدث</string>
+    <string name="filter_events_by_type">تصفية الأحداث حسب النوع</string>
+    <string name="please_fill_location">أدخل الإحداثية كي يتم عرضها على الخريطة</string>
     <string name="public_event_notification_text">An event is upcoming</string>
 
     <!-- Event Repetition -->
-    <string name="repetition">Ismétlés</string>
-    <string name="no_repetition">No repetition</string>
-    <string name="daily">Naponta</string>
-    <string name="weekly">Hetente</string>
-    <string name="monthly">Havonta</string>
-    <string name="yearly">Évente</string>
-    <string name="weeks_raw">weeks</string>
-    <string name="months_raw">months</string>
-    <string name="years_raw">years</string>
-    <string name="repeat_till">Repeat till</string>
-    <string name="forever">Forever</string>
-    <string name="event_is_repeatable">The event is repeatable</string>
+    <string name="repetition">تكرار</string>
+    <string name="no_repetition">بدون تكرار</string>
+    <string name="daily">يومي</string>
+    <string name="weekly">أسبوعي</string>
+    <string name="monthly">شهري</string>
+    <string name="yearly">سنوي</string>
+    <string name="weeks_raw">أسابيع</string>
+    <string name="months_raw">أشهر</string>
+    <string name="years_raw">سنوات</string>
+    <string name="repeat_till">تكرار حتى</string>
+    <string name="forever">للأبد</string>
+    <string name="event_is_repeatable">الحدث متكرر</string>
     <string name="selection_contains_repetition">The selection contains repeating events</string>
     <string name="delete_one_only">Delete the selected occurrence only</string>
     <string name="delete_future_occurrences">Delete this and all future occurrences</string>
@@ -52,100 +52,100 @@
     <string name="stop_repeating_after_x">Stop repeating after x occurrences</string>
     <string name="repeat_forever">Repeat forever</string>
     <string name="times">times</string>
-    <string name="repeat">Repeat</string>
-    <string name="repeat_on">Repeat on</string>
-    <string name="every_day">Every day</string>
+    <string name="repeat">تكرار</string>
+    <string name="repeat_on">تكرار عند</string>
+    <string name="every_day">كل يوم</string>
     <string name="selected_days">On selected days</string>
-    <string name="the_same_day">The same day</string>
-    <string name="the_last_day">The last day</string>
-    <string name="repeat_on_the_same_day_monthly">Repeat on the same day each month</string>
-    <string name="repeat_on_the_last_day_monthly">Repeat on the last day of the month</string>
-    <string name="repeat_on_the_same_day_yearly">Repeat on the same day every year</string>
-    <string name="repeat_every_m">Repeat every</string>
-    <string name="every_m">Every</string>
-    <string name="first_m">first</string>
-    <string name="second_m">second</string>
-    <string name="third_m">third</string>
-    <string name="fourth_m">fourth</string>
-    <string name="last_m">last</string>
+    <string name="the_same_day">نفس اليوم</string>
+    <string name="the_last_day">اليوم الأخير</string>
+    <string name="repeat_on_the_same_day_monthly">تكرار في نفس اليوم شهرياً</string>
+    <string name="repeat_on_the_last_day_monthly">تكرار في اليوم الأخير من الشهر</string>
+    <string name="repeat_on_the_same_day_yearly">تكرار في نفس اليوم سنوياً</string>
+    <string name="repeat_every_m">تكرار كل</string>
+    <string name="every_m">كل</string>
+    <string name="first_m">أول</string>
+    <string name="second_m">ثاني</string>
+    <string name="third_m">ثالث</string>
+    <string name="fourth_m">رابع</string>
+    <string name="last_m">أخير</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
-    <string name="repeat_every_f">Repeat every</string>
-    <string name="every_f">Every</string>
-    <string name="first_f">first</string>
-    <string name="second_f">second</string>
-    <string name="third_f">third</string>
-    <string name="fourth_f">fourth</string>
-    <string name="last_f">last</string>
+    <string name="repeat_every_f">تكرار كل</string>
+    <string name="every_f">كل</string>
+    <string name="first_f">أول</string>
+    <string name="second_f">ثاني</string>
+    <string name="third_f">ثالث</string>
+    <string name="fourth_f">رابع</string>
+    <string name="last_f">أخير</string>
 
     <!-- Birthdays -->
-    <string name="birthdays">Birthdays</string>
-    <string name="add_birthdays">Add contact birthdays</string>
-    <string name="no_birthdays">No birthdays have been found</string>
-    <string name="birthdays_added">Birthdays added successfully</string>
+    <string name="birthdays">تواريخ الميلاد</string>
+    <string name="add_birthdays">إضافة تاريخ ميلاد جهة إتصال</string>
+    <string name="no_birthdays">لم يتم إيجاد تواريخ ميلاد</string>
+    <string name="birthdays_added">تمت إضافة تواريخ الميلاد</string>
 
     <!-- Anniversaries -->
-    <string name="anniversaries">Anniversaries</string>
-    <string name="add_anniversaries">Add contact anniversaries</string>
-    <string name="no_anniversaries">No anniversaries have been found</string>
-    <string name="anniversaries_added">Anniversaries added successfully</string>
+    <string name="anniversaries">المناسبات</string>
+    <string name="add_anniversaries">إضافة مناسبات جهة إتصال</string>
+    <string name="no_anniversaries">لم يتم العثور على مناسبات</string>
+    <string name="anniversaries_added">تمت إضافة المناسبات</string>
 
     <!-- Event Reminders -->
-    <string name="reminder">Emlékeztető</string>
-    <string name="before">korábban</string>
-    <string name="add_another_reminder">Add another reminder</string>
-    <string name="event_reminders">Event reminders</string>
+    <string name="reminder">تذكير</string>
+    <string name="before">قبل</string>
+    <string name="add_another_reminder">إضافة تذكير آخر</string>
+    <string name="event_reminders">تذكيرات الحدث</string>
 
     <!-- Export / Import -->
-    <string name="import_events">Import events</string>
-    <string name="export_events">Export events</string>
-    <string name="import_events_from_ics">Import events from an .ics file</string>
-    <string name="export_events_to_ics">Export events to an .ics file</string>
-    <string name="default_event_type">Default event type</string>
-    <string name="export_past_events_too">Export past events too</string>
+    <string name="import_events">إستيراد الأحداث</string>
+    <string name="export_events">تصدير الأحداث</string>
+    <string name="import_events_from_ics">إستيراد أحداث من ملف ics</string>
+    <string name="export_events_to_ics">تصدير أحداث إلى ملف ics</string>
+    <string name="default_event_type">نوع حدث إفتراضي</string>
+    <string name="export_past_events_too">تصدير الأحداث السابقة أيضاً</string>
     <string name="include_event_types">Include event types</string>
     <string name="filename_without_ics">Filename (without .ics)</string>
     <string name="override_event_types">Override event types in the file</string>
 
     <!-- Event details -->
-    <string name="title">Név</string>
-    <string name="location">Location</string>
-    <string name="description">Leírás</string>
-    <string name="all_day">All-day</string>
+    <string name="title">العنوان</string>
+    <string name="location">المكان</string>
+    <string name="description">الوصف</string>
+    <string name="all_day">كامل اليوم</string>
 
     <!-- Weekly view -->
-    <string name="week">Week</string>
+    <string name="week">أسبوع</string>
 
     <!-- Event types -->
-    <string name="event_types">Event types</string>
-    <string name="add_new_type">Add a new type</string>
-    <string name="edit_type">Edit type</string>
-    <string name="type_already_exists">Type with this title already exists</string>
-    <string name="color">Color</string>
-    <string name="regular_event">Regular event</string>
-    <string name="cannot_delete_default_type">Default event type cannot be deleted</string>
-    <string name="select_event_type">Select an event type</string>
+    <string name="event_types">أنواع الأحداث</string>
+    <string name="add_new_type">إضافة نوع جديد</string>
+    <string name="edit_type">تعديل نوع</string>
+    <string name="type_already_exists">تم إستخدام هذا النوع مسبقاً</string>
+    <string name="color">اللون</string>
+    <string name="regular_event">حدث إعتيادي</string>
+    <string name="cannot_delete_default_type">لا يمكن حذف الحدث الإفتراضي</string>
+    <string name="select_event_type">إختيار نوع حدث</string>
     <string name="move_events_into_default">Move affected events into the default event type</string>
     <string name="remove_affected_events">Permanently remove affected events</string>
     <string name="unsync_caldav_calendar">To remove a CalDAV calendar you have to unsynchronize it</string>
 
     <!-- Holidays -->
-    <string name="holidays">Holidays</string>
-    <string name="add_holidays">Add holidays</string>
-    <string name="national_holidays">National holidays</string>
-    <string name="religious_holidays">Religious holidays</string>
+    <string name="holidays">العطل</string>
+    <string name="add_holidays">إضافة عطلة</string>
+    <string name="national_holidays">العطل الوطنية</string>
+    <string name="religious_holidays">العطل الدينية</string>
     <string name="holidays_imported_successfully">Holidays have been successfully imported into the \"Holidays\" event type</string>
     <string name="importing_some_holidays_failed">Importing some events failed</string>
     <string name="importing_holidays_failed">Importing holidays failed</string>
 
     <!-- Settings -->
-    <string name="manage_event_types">Manage event types</string>
-    <string name="start_day_at">Start day at</string>
-    <string name="end_day_at">End day at</string>
-    <string name="week_numbers">Hetek sorszámának mutatása</string>
-    <string name="vibrate">Emlékeztetőnél rezgés</string>
-    <string name="reminder_sound">Reminder sound</string>
+    <string name="manage_event_types">إدارة أنواع الأحداث</string>
+    <string name="start_day_at">بداية الحدث</string>
+    <string name="end_day_at">نهاية الحدث</string>
+    <string name="week_numbers">عرض أرقام الأسبوع</string>
+    <string name="vibrate">إهتزاز عند الإشعار</string>
+    <string name="reminder_sound">صوت التذكير</string>
     <string name="no_ringtone_picker">No app capable of setting ringtone found</string>
     <string name="no_ringtone_selected">None</string>
     <string name="day_end_before_start">The day cannot end earlier than it starts</string>
@@ -155,10 +155,10 @@
     <string name="replace_description_with_location">Replace event description with location</string>
     <string name="delete_all_events">Delete all events</string>
     <string name="delete_all_events_confirmation">Are you sure you want to delete all events? This will leave your event types and other settings intact.</string>
-    <string name="show_a_grid">Show a grid</string>
+    <string name="show_a_grid">إظهار شبكة</string>
     <string name="loop_reminders">Loop reminders until dismissed</string>
-    <string name="dim_past_events">Dim past events</string>
-    <string name="events">Events</string>
+    <string name="dim_past_events">إخفات الأحداث السابقة</string>
+    <string name="events">أحداث</string>
     <string name="reminder_stream">Audio stream used by reminders</string>
     <string name="system_stream">System</string>
     <string name="alarm_stream">Alarm</string>
@@ -193,13 +193,13 @@
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
-    <string name="monday_alt">Monday</string>
-    <string name="tuesday_alt">Tuesday</string>
-    <string name="wednesday_alt">Wednesday</string>
-    <string name="thursday_alt">Thursday</string>
-    <string name="friday_alt">Friday</string>
-    <string name="saturday_alt">Saturday</string>
-    <string name="sunday_alt">Sunday</string>
+    <string name="monday_alt">الإثنين</string>
+    <string name="tuesday_alt">الثلاثاء</string>
+    <string name="wednesday_alt">الأربعاء</string>
+    <string name="thursday_alt">الخميس</string>
+    <string name="friday_alt">الجمعة</string>
+    <string name="saturday_alt">السبت</string>
+    <string name="sunday_alt">الأحد</string>
 
     <!-- List widget config example events -->
     <string name="sample_title_1">Workout</string>
@@ -224,19 +224,19 @@
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">An offline calendar for your events without ads, respecting your privacy.</string>
+    <string name="app_short_description">Offline kalendár pre vaše udalosti bez reklám, rešpektujúca vaše súkromie.</string>
     <string name="app_long_description">
-        Egy egyszerű naptár, CalDAV integráció lehetőségével. Könnyedén lehet ismétlődő eseményeket és emlékeztetőket felvenni, és a hetek sorszámait is mutatja.
+        A simple calendar with optional CalDAV synchronization. You can easily create recurring events and setup reminders, it can also display week numbers.
 
-        Egy 4x4-es átméretezhető widget-et is biztosít, aminek beállíthatod a színét, az alfáját és a háttérszínét is.
+        Contains a monthly view and an event list widget where you can customize the color of the text, as well as the alpha and the color of the background.
 
-        Nincsenek reklámok, és nem igényel szükségtelen engedélyeket. A forráskódja teljesen nyílt, és sötét téma is beállítható.
+        Contains no ads or unnecessary permissions. It is fully opensource, provides customizable colors.
 
         The Storage permission is needed only for exporting or importing events from .ics files.
 
         The Contacts permission is used only at importing contact birthdays and anniversaries.
 
-        Ez az alkalmazás egy nagyobb alkalmazás-sorozat része. A továbbiak itt találhatók: https://www.simplemobiletools.com
+        This app is just one piece of a bigger series of apps. You can find the rest of them at https://www.simplemobiletools.com
     </string>
 
     <!--

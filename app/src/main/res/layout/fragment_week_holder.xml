@@ -16,7 +16,7 @@
             android:id="@+id/week_view_hours_divider"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignRight="@+id/week_view_hours_scrollview"
+            android:layout_alignEnd="@+id/week_view_hours_scrollview"
             android:background="@drawable/stroke_bottom_right"
             android:importantForAccessibility="no"/>
 
@@ -43,7 +43,7 @@
             android:id="@+id/week_view_view_pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_toRightOf="@+id/week_view_hours_scrollview"/>
+            android:layout_toEndOf="@+id/week_view_hours_scrollview"/>
 
     </RelativeLayout>
 </LinearLayout>

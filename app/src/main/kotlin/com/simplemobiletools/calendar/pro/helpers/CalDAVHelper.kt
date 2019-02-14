@@ -17,6 +17,8 @@ import com.simplemobiletools.calendar.pro.objects.States.isUpdatingCalDAV
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.PERMISSION_READ_CALENDAR
 import com.simplemobiletools.commons.helpers.PERMISSION_WRITE_CALENDAR
+import org.joda.time.DateTimeZone
+import org.joda.time.format.DateTimeFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -30,7 +32,7 @@ class CalDAVHelper(val context: Context) {
 
         isUpdatingCalDAV = true
         try {
-            val calDAVCalendars = getCalDAVCalendars(context.config.caldavSyncedCalendarIDs, showToasts)
+            val calDAVCalendars = getCalDAVCalendars(context.config.caldavSyncedCalendarIds, showToasts)
             for (calendar in calDAVCalendars) {
                 val localEventType = eventsHelper.getEventTypeWithCalDAVCalendarId(calendar.id) ?: continue
                 localEventType.apply {
@@ -178,8 +180,8 @@ class CalDAVHelper(val context: Context) {
                 CalendarContract.Events.DESCRIPTION,
                 CalendarContract.Events.DTSTART,
                 CalendarContract.Events.DTEND,
-                CalendarContract.Events.EVENT_TIMEZONE,
                 CalendarContract.Events.DURATION,
+                CalendarContract.Events.EXDATE,
                 CalendarContract.Events.ALL_DAY,
                 CalendarContract.Events.RRULE,
                 CalendarContract.Events.ORIGINAL_ID,
@@ -195,14 +197,22 @@ class CalDAVHelper(val context: Context) {
                     val id = cursor.getLongValue(CalendarContract.Events._ID)
                     val title = cursor.getStringValue(CalendarContract.Events.TITLE) ?: ""
                     val description = cursor.getStringValue(CalendarContract.Events.DESCRIPTION) ?: ""
-                    val startTS = cursor.getLongValue(CalendarContract.Events.DTSTART) / 1000L
-                    var endTS = cursor.getLongValue(CalendarContract.Events.DTEND) / 1000L
+                    var startTS = cursor.getLongValue(CalendarContract.Events.DTSTART)
+                    var endTS = cursor.getLongValue(CalendarContract.Events.DTEND)
                     val allDay = cursor.getIntValue(CalendarContract.Events.ALL_DAY)
                     val rrule = cursor.getStringValue(CalendarContract.Events.RRULE) ?: ""
                     val location = cursor.getStringValue(CalendarContract.Events.EVENT_LOCATION) ?: ""
                     val originalId = cursor.getStringValue(CalendarContract.Events.ORIGINAL_ID)
                     val originalInstanceTime = cursor.getLongValue(CalendarContract.Events.ORIGINAL_INSTANCE_TIME)
                     val reminders = getCalDAVEventReminders(id)
+
+                    if (startTS.toString().length == 12 || startTS.toString().length == 13) {
+                        startTS /= 1000L
+                    }
+
+                    if (endTS.toString().length == 12 || endTS.toString().length == 13) {
+                        endTS /= 1000L
+                    }
 
                     if (endTS == 0L) {
                         val duration = cursor.getStringValue(CalendarContract.Events.DURATION) ?: ""
@@ -237,8 +247,27 @@ class CalDAVHelper(val context: Context) {
                             eventsHelper.insertEvent(parentEvent, false, false)
 
                             event.parentId = parentEvent.id!!
+                            event.addRepetitionException(originalDayCode)
                             eventsHelper.insertEvent(event, false, false)
                             continue
+                        }
+                    }
+
+                    // some calendars add repeatable event exceptions with using the "exdate" field, not by creating a child event that is an exception
+                    val exdate = cursor.getStringValue(CalendarContract.Events.EXDATE) ?: ""
+                    if (exdate.length > 8) {
+                        val dates = exdate.split(",")
+                        dates.forEach {
+                            if (it.endsWith("Z")) {
+                                // convert for example "20190216T230000Z" to "20190217000000" in Slovakia in a weird way
+                                val formatter = DateTimeFormat.forPattern("yyyyMMdd'T'HHmmss'Z'")
+                                val offset = DateTimeZone.getDefault().getOffset(System.currentTimeMillis())
+                                val dt = formatter.parseDateTime(it).plusMillis(offset)
+                                val daycode = Formatter.getDayCodeFromDateTime(dt)
+                                event.repetitionExceptions.add(daycode)
+                            } else {
+                                event.repetitionExceptions.add(it.substring(0, 8))
+                            }
                         }
                     }
 
@@ -344,7 +373,7 @@ class CalDAVHelper(val context: Context) {
             put(CalendarContract.Events.DESCRIPTION, event.description)
             put(CalendarContract.Events.DTSTART, event.startTS * 1000L)
             put(CalendarContract.Events.ALL_DAY, if (event.getIsAllDay()) 1 else 0)
-            put(CalendarContract.Events.EVENT_TIMEZONE, TimeZone.getDefault().toString())
+            put(CalendarContract.Events.EVENT_TIMEZONE, TimeZone.getDefault().id.toString())
             put(CalendarContract.Events.EVENT_LOCATION, event.location)
             put(CalendarContract.Events.STATUS, CalendarContract.Events.STATUS_CONFIRMED)
 
@@ -414,8 +443,9 @@ class CalDAVHelper(val context: Context) {
             put(CalendarContract.Events.DTSTART, occurrenceTS)
             put(CalendarContract.Events.DTEND, occurrenceTS + (event.endTS - event.startTS))
             put(CalendarContract.Events.ORIGINAL_ID, event.getCalDAVEventId())
-            put(CalendarContract.Events.EVENT_TIMEZONE, TimeZone.getDefault().toString())
+            put(CalendarContract.Events.EVENT_TIMEZONE, TimeZone.getDefault().id.toString())
             put(CalendarContract.Events.ORIGINAL_INSTANCE_TIME, occurrenceTS * 1000L)
+            put(CalendarContract.Events.EXDATE, Formatter.getDayCodeFromTS(occurrenceTS))
         }
     }
 

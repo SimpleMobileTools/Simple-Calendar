@@ -1,26 +1,24 @@
 package com.simplemobiletools.calendar.pro.activities
 
+import android.app.TimePickerDialog
 import android.content.Intent
 import android.content.res.Resources
 import android.media.AudioManager
 import android.os.Bundle
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.dialogs.SelectCalendarsDialog
+import com.simplemobiletools.calendar.pro.dialogs.SelectEventTypeDialog
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.models.EventType
-import com.simplemobiletools.commons.dialogs.ConfirmationDialog
-import com.simplemobiletools.commons.dialogs.CustomIntervalPickerDialog
-import com.simplemobiletools.commons.dialogs.RadioGroupDialog
-import com.simplemobiletools.commons.dialogs.SelectAlarmSoundDialog
+import com.simplemobiletools.commons.dialogs.*
 import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.ALARM_SOUND_TYPE_NOTIFICATION
-import com.simplemobiletools.commons.helpers.IS_CUSTOMIZING_COLORS
-import com.simplemobiletools.commons.helpers.PERMISSION_READ_CALENDAR
-import com.simplemobiletools.commons.helpers.PERMISSION_WRITE_CALENDAR
+import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.models.AlarmSound
 import com.simplemobiletools.commons.models.RadioItem
 import kotlinx.android.synthetic.main.activity_settings.*
+import org.joda.time.DateTime
+import java.io.File
 import java.util.*
 
 class SettingsActivity : SimpleActivity() {
@@ -38,7 +36,10 @@ class SettingsActivity : SimpleActivity() {
 
     override fun onResume() {
         super.onResume()
+        setupSettingItems()
+    }
 
+    private fun setupSettingItems() {
         setupCustomizeColors()
         setupUseEnglish()
         setupManageEventTypes()
@@ -58,6 +59,9 @@ class SettingsActivity : SimpleActivity() {
         setupSnoozeTime()
         setupCaldavSync()
         setupManageSyncedCalendars()
+        setupDefaultStartTime()
+        setupDefaultDuration()
+        setupDefaultEventType()
         setupPullToRefresh()
         setupDefaultReminder()
         setupDefaultReminder1()
@@ -71,6 +75,8 @@ class SettingsActivity : SimpleActivity() {
         updateTextColors(settings_holder)
         checkPrimaryColor()
         setupSectionColors()
+        setupExportSettings()
+        setupImportSettings()
     }
 
     override fun onPause() {
@@ -84,6 +90,14 @@ class SettingsActivity : SimpleActivity() {
         config.defaultReminder1 = reminders.getOrElse(0) { REMINDER_OFF }
         config.defaultReminder2 = reminders.getOrElse(1) { REMINDER_OFF }
         config.defaultReminder3 = reminders.getOrElse(2) { REMINDER_OFF }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
+        super.onActivityResult(requestCode, resultCode, resultData)
+        if (requestCode == GET_RINGTONE_URI && resultCode == RESULT_OK && resultData != null) {
+            val newAlarmSound = storeNewYourAlarmSound(resultData)
+            updateReminderSound(newAlarmSound)
+        }
     }
 
     private fun checkPrimaryColor() {
@@ -101,7 +115,8 @@ class SettingsActivity : SimpleActivity() {
 
     private fun setupSectionColors() {
         val adjustedPrimaryColor = getAdjustedPrimaryColor()
-        arrayListOf(reminders_label, caldav_label, weekly_view_label, monthly_view_label, simple_event_list_label, widgets_label, events_label).forEach {
+        arrayListOf(reminders_label, caldav_label, weekly_view_label, monthly_view_label, simple_event_list_label, widgets_label, events_label,
+                new_events_label, migrating_label).forEach {
             it.setTextColor(adjustedPrimaryColor)
         }
     }
@@ -185,6 +200,7 @@ class SettingsActivity : SimpleActivity() {
                     calDAVHelper.deleteCalDAVCalendarEvents(it.toLong())
                 }
                 eventTypesDB.deleteEventTypesWithCalendarId(config.getSyncedCalendarIdsAsList())
+                updateDefaultEventTypeText()
             }.start()
         }
     }
@@ -236,6 +252,7 @@ class SettingsActivity : SimpleActivity() {
                 }
 
                 eventTypesDB.deleteEventTypesWithCalendarId(removedCalendarIds)
+                updateDefaultEventTypeText()
             }.start()
         }
     }
@@ -297,6 +314,7 @@ class SettingsActivity : SimpleActivity() {
             }
         }
     }
+
 
     private fun setupWeekNumbers() {
         settings_week_numbers.isChecked = config.showWeekNumbers
@@ -541,11 +559,219 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
-        super.onActivityResult(requestCode, resultCode, resultData)
-        if (requestCode == GET_RINGTONE_URI && resultCode == RESULT_OK && resultData != null) {
-            val newAlarmSound = storeNewYourAlarmSound(resultData)
-            updateReminderSound(newAlarmSound)
+    private fun setupDefaultStartTime() {
+        updateDefaultStartTimeText()
+        settings_default_start_time_holder.setOnClickListener {
+            val currentDefaultTime = if (config.defaultStartTime == -1) -1 else 0
+            val items = ArrayList<RadioItem>()
+            items.add(RadioItem(-1, getString(R.string.next_full_hour)))
+            items.add(RadioItem(0, getString(R.string.other_time)))
+
+            RadioGroupDialog(this@SettingsActivity, items, currentDefaultTime) {
+                if (it as Int == -1) {
+                    config.defaultStartTime = it
+                    updateDefaultStartTimeText()
+                } else {
+                    val timeListener = TimePickerDialog.OnTimeSetListener { view, hourOfDay, minute ->
+                        config.defaultStartTime = hourOfDay * 60 + minute
+                        updateDefaultStartTimeText()
+                    }
+
+                    val currentDateTime = DateTime.now()
+                    TimePickerDialog(this, getDialogTheme(), timeListener, currentDateTime.hourOfDay, currentDateTime.minuteOfHour, config.use24HourFormat).show()
+                }
+            }
+        }
+    }
+
+    private fun updateDefaultStartTimeText() {
+        if (config.defaultStartTime == -1) {
+            settings_default_start_time.text = getString(R.string.next_full_hour)
+        } else {
+            val hours = config.defaultStartTime / 60
+            val minutes = config.defaultStartTime % 60
+            settings_default_start_time.text = String.format("%02d:%02d", hours, minutes)
+        }
+    }
+
+    private fun setupDefaultDuration() {
+        updateDefaultDurationText()
+        settings_default_duration_holder.setOnClickListener {
+            CustomIntervalPickerDialog(this, config.defaultDuration * 60) {
+                val result = it / 60
+                config.defaultDuration = result
+                updateDefaultDurationText()
+            }
+        }
+    }
+
+    private fun updateDefaultDurationText() {
+        val duration = config.defaultDuration
+        settings_default_duration.text = if (duration == 0) {
+            "0 ${getString(R.string.minutes_raw)}"
+        } else {
+            getFormattedMinutes(duration, false)
+        }
+    }
+
+    private fun setupDefaultEventType() {
+        updateDefaultEventTypeText()
+        settings_default_event_type.text = getString(R.string.last_used_one)
+        settings_default_event_type_holder.setOnClickListener {
+            SelectEventTypeDialog(this, config.defaultEventTypeId, true, false, true, true) {
+                config.defaultEventTypeId = it.id!!
+                updateDefaultEventTypeText()
+            }
+        }
+    }
+
+    private fun updateDefaultEventTypeText() {
+        if (config.defaultEventTypeId == -1L) {
+            runOnUiThread {
+                settings_default_event_type.text = getString(R.string.last_used_one)
+            }
+        } else {
+            Thread {
+                val eventType = eventTypesDB.getEventTypeWithId(config.defaultEventTypeId)
+                if (eventType != null) {
+                    config.lastUsedCaldavCalendarId = eventType.caldavCalendarId
+                    runOnUiThread {
+                        settings_default_event_type.text = eventType.title
+                    }
+                } else {
+                    config.defaultEventTypeId = -1
+                    updateDefaultEventTypeText()
+                }
+            }.start()
+        }
+    }
+
+    private fun setupExportSettings() {
+        settings_export_holder.setOnClickListener {
+            val configItems = LinkedHashMap<String, Any>().apply {
+                put(IS_USING_SHARED_THEME, config.isUsingSharedTheme)
+                put(TEXT_COLOR, config.textColor)
+                put(BACKGROUND_COLOR, config.backgroundColor)
+                put(PRIMARY_COLOR, config.primaryColor)
+                put(APP_ICON_COLOR, config.appIconColor)
+                put(USE_ENGLISH, config.useEnglish)
+                put(WAS_USE_ENGLISH_TOGGLED, config.wasUseEnglishToggled)
+                put(WIDGET_BG_COLOR, config.widgetBgColor)
+                put(WIDGET_TEXT_COLOR, config.widgetTextColor)
+                put(WEEK_NUMBERS, config.showWeekNumbers)
+                put(START_WEEKLY_AT, config.startWeeklyAt)
+                put(END_WEEKLY_AT, config.endWeeklyAt)
+                put(VIBRATE, config.vibrateOnReminder)
+                put(LAST_EVENT_REMINDER_MINUTES, config.lastEventReminderMinutes1)
+                put(LAST_EVENT_REMINDER_MINUTES_2, config.lastEventReminderMinutes2)
+                put(LAST_EVENT_REMINDER_MINUTES_3, config.lastEventReminderMinutes3)
+                put(DISPLAY_PAST_EVENTS, config.displayPastEvents)
+                put(FONT_SIZE, config.fontSize)
+                put(LIST_WIDGET_VIEW_TO_OPEN, config.listWidgetViewToOpen)
+                put(REMINDER_AUDIO_STREAM, config.reminderAudioStream)
+                put(REPLACE_DESCRIPTION, config.replaceDescription)
+                put(SHOW_GRID, config.showGrid)
+                put(LOOP_REMINDERS, config.loopReminders)
+                put(DIM_PAST_EVENTS, config.dimPastEvents)
+                put(USE_PREVIOUS_EVENT_REMINDERS, config.usePreviousEventReminders)
+                put(DEFAULT_REMINDER_1, config.defaultReminder1)
+                put(DEFAULT_REMINDER_2, config.defaultReminder2)
+                put(DEFAULT_REMINDER_3, config.defaultReminder3)
+                put(PULL_TO_REFRESH, config.pullToRefresh)
+                put(DEFAULT_START_TIME, config.defaultStartTime)
+                put(DEFAULT_DURATION, config.defaultDuration)
+                put(USE_SAME_SNOOZE, config.useSameSnooze)
+                put(SNOOZE_TIME, config.snoozeTime)
+                put(USE_24_HOUR_FORMAT, config.use24HourFormat)
+                put(SUNDAY_FIRST, config.isSundayFirst)
+            }
+
+            exportSettings(configItems, "calendar-settings.txt")
+        }
+    }
+
+    private fun setupImportSettings() {
+        settings_import_holder.setOnClickListener {
+            FilePickerDialog(this) {
+                Thread {
+                    try {
+                        parseFile(it)
+                    } catch (e: Exception) {
+                        showErrorToast(e)
+                    }
+                }.start()
+            }
+        }
+    }
+
+    private fun parseFile(path: String) {
+        val inputStream = File(path).inputStream()
+        var importedItems = 0
+        val configValues = LinkedHashMap<String, Any>()
+        inputStream.bufferedReader().use {
+            while (true) {
+                try {
+                    val line = it.readLine() ?: break
+                    val split = line.split("=".toRegex(), 2)
+                    if (split.size == 2) {
+                        configValues[split[0]] = split[1]
+                    }
+                    importedItems++
+                } catch (e: Exception) {
+                    showErrorToast(e)
+                }
+            }
+        }
+
+        for ((key, value) in configValues) {
+            when (key) {
+                IS_USING_SHARED_THEME -> config.isUsingSharedTheme = value.toBoolean()
+                TEXT_COLOR -> config.textColor = value.toInt()
+                BACKGROUND_COLOR -> config.backgroundColor = value.toInt()
+                PRIMARY_COLOR -> config.primaryColor = value.toInt()
+                APP_ICON_COLOR -> {
+                    if (getAppIconColors().contains(value.toInt())) {
+                        config.appIconColor = value.toInt()
+                        checkAppIconColor()
+                    }
+                }
+                USE_ENGLISH -> config.useEnglish = value.toBoolean()
+                WAS_USE_ENGLISH_TOGGLED -> config.wasUseEnglishToggled = value.toBoolean()
+                WIDGET_BG_COLOR -> config.widgetBgColor = value.toInt()
+                WIDGET_TEXT_COLOR -> config.widgetTextColor = value.toInt()
+                WEEK_NUMBERS -> config.showWeekNumbers = value.toBoolean()
+                START_WEEKLY_AT -> config.startWeeklyAt = value.toInt()
+                END_WEEKLY_AT -> config.endWeeklyAt = value.toInt()
+                VIBRATE -> config.vibrateOnReminder = value.toBoolean()
+                LAST_EVENT_REMINDER_MINUTES -> config.lastEventReminderMinutes1 = value.toInt()
+                LAST_EVENT_REMINDER_MINUTES_2 -> config.lastEventReminderMinutes2 = value.toInt()
+                LAST_EVENT_REMINDER_MINUTES_3 -> config.lastEventReminderMinutes3 = value.toInt()
+                DISPLAY_PAST_EVENTS -> config.displayPastEvents = value.toInt()
+                FONT_SIZE -> config.fontSize = value.toInt()
+                LIST_WIDGET_VIEW_TO_OPEN -> config.listWidgetViewToOpen = value.toInt()
+                REMINDER_AUDIO_STREAM -> config.reminderAudioStream = value.toInt()
+                REPLACE_DESCRIPTION -> config.replaceDescription = value.toBoolean()
+                SHOW_GRID -> config.showGrid = value.toBoolean()
+                LOOP_REMINDERS -> config.loopReminders = value.toBoolean()
+                DIM_PAST_EVENTS -> config.dimPastEvents = value.toBoolean()
+                USE_PREVIOUS_EVENT_REMINDERS -> config.usePreviousEventReminders = value.toBoolean()
+                DEFAULT_REMINDER_1 -> config.defaultReminder1 = value.toInt()
+                DEFAULT_REMINDER_2 -> config.defaultReminder2 = value.toInt()
+                DEFAULT_REMINDER_3 -> config.defaultReminder3 = value.toInt()
+                PULL_TO_REFRESH -> config.pullToRefresh = value.toBoolean()
+                DEFAULT_START_TIME -> config.defaultStartTime = value.toInt()
+                DEFAULT_DURATION -> config.defaultDuration = value.toInt()
+                USE_SAME_SNOOZE -> config.useSameSnooze = value.toBoolean()
+                SNOOZE_TIME -> config.snoozeTime = value.toInt()
+                USE_24_HOUR_FORMAT -> config.use24HourFormat = value.toBoolean()
+                SUNDAY_FIRST -> config.isSundayFirst = value.toBoolean()
+            }
+        }
+
+        toast(if (configValues.size > 0) R.string.settings_imported_successfully else R.string.no_entries_for_importing)
+        runOnUiThread {
+            setupSettingItems()
+            updateWidgets()
         }
     }
 }

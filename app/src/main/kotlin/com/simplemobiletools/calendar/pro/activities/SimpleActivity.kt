@@ -44,7 +44,7 @@ open class SimpleActivity : BaseSimpleActivity() {
             val uri = CalendarContract.Calendars.CONTENT_URI
             contentResolver.unregisterContentObserver(calDAVSyncObserver)
             contentResolver.registerContentObserver(uri, false, calDAVSyncObserver)
-            refreshCalDAVCalendars(config.caldavSyncedCalendarIDs, true)
+            refreshCalDAVCalendars(config.caldavSyncedCalendarIds, true)
         }.start()
     }
 

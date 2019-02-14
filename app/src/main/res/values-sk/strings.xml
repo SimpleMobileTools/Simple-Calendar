@@ -170,6 +170,12 @@
     <string name="default_reminder_3">Predvolená pripomienka 3</string>
     <string name="view_to_open_from_widget">Otvoriť pohľad po kliknutí na widget so zoznamom udalostí</string>
     <string name="last_view">Posledný pohľad</string>
+    <string name="new_events">Nové udalosti</string>
+    <string name="default_start_time">Predvolený čas začiatku</string>
+    <string name="next_full_hour">Najbližšia celá hodina</string>
+    <string name="default_duration">Predvolená dĺžka</string>
+    <string name="last_used_one">Naposledy použitý</string>
+    <string name="other_time">Iný čas</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

@@ -67,6 +67,10 @@ const val DEFAULT_REMINDER_1 = "default_reminder_1"
 const val DEFAULT_REMINDER_2 = "default_reminder_2"
 const val DEFAULT_REMINDER_3 = "default_reminder_3"
 const val PULL_TO_REFRESH = "pull_to_refresh"
+const val LAST_VIBRATE_ON_REMINDER = "last_vibrate_on_reminder"
+const val DEFAULT_START_TIME = "default_start_time"
+const val DEFAULT_DURATION = "default_duration"
+const val DEFAULT_EVENT_TYPE_ID = "default_event_type_id"
 
 // repeat_rule for monthly and yearly repetition
 const val REPEAT_SAME_DAY = 1                           // i.e. 25th every month, or 3rd june (if yearly repetition)

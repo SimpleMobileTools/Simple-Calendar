@@ -170,6 +170,12 @@
     <string name="default_reminder_3">Standardpåminnelse 3</string>
     <string name="view_to_open_from_widget">Vy som öppnas från händelselistwidgeten</string>
     <string name="last_view">Senaste vy</string>
+    <string name="new_events">New events</string>
+    <string name="default_start_time">Default start time</string>
+    <string name="next_full_hour">Next full hour</string>
+    <string name="default_duration">Default duration</string>
+    <string name="last_used_one">Last used one</string>
+    <string name="other_time">Other time</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -183,7 +189,7 @@
     <string name="syncing">Synkroniserar…</string>
     <string name="synchronization_completed">Synkroniseringen är klar</string>
     <string name="select_a_different_caldav_color">Välj en annan färg (tillämpas kanske bara lokalt)</string>
-    <string name="insufficient_permissions">You are not allowed to write in the selected calendar</string>
+    <string name="insufficient_permissions">Du har inte behörighet att redigera den valda kalendern</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
@@ -218,11 +224,11 @@
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">An offline calendar for your events without ads, respecting your privacy.</string>
+    <string name="app_short_description">En offlinekalender för dina händelser utan reklam, respekterar din integritet.</string>
     <string name="app_long_description">
         En enkel kalender med valfri CalDAV-synkronisering. Du kan enkelt skapa återkommande händelser och ställa in påminnelser. Den kan också visa veckonummer.
 
-        Har en widget med en månadsvy och en händelselista. Du kan anpassa widgetens textfärg, bakgrundsfärg och bakgrundsgenomskinlighet.
+        Har en widget med en månadsvy och en widget med en händelselista. Du kan anpassa widgetarnas textfärger, bakgrundsfärger och bakgrundsgenomskinligheter.
 
         Innehåller ingen reklam eller onödiga behörigheter. Den har helt öppen källkod och anpassningsbara färger.
 

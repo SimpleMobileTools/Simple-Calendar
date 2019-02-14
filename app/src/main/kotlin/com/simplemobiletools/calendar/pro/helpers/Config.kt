@@ -3,6 +3,7 @@ package com.simplemobiletools.calendar.pro.helpers
 import android.content.Context
 import android.media.AudioManager
 import com.simplemobiletools.calendar.pro.R
+import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.scheduleCalDAVSync
 import com.simplemobiletools.commons.extensions.getDefaultAlarmTitle
 import com.simplemobiletools.commons.extensions.getDefaultAlarmUri
@@ -87,7 +88,7 @@ class Config(context: Context) : BaseConfig(context) {
             prefs.edit().putBoolean(CALDAV_SYNC, caldavSync).apply()
         }
 
-    var caldavSyncedCalendarIDs: String
+    var caldavSyncedCalendarIds: String
         get() = prefs.getString(CALDAV_SYNCED_CALENDAR_IDS, "")
         set(calendarIDs) = prefs.edit().putString(CALDAV_SYNCED_CALENDAR_IDS, calendarIDs).apply()
 
@@ -119,7 +120,7 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getBoolean(DIM_PAST_EVENTS, true)
         set(dimPastEvents) = prefs.edit().putBoolean(DIM_PAST_EVENTS, dimPastEvents).apply()
 
-    fun getSyncedCalendarIdsAsList() = caldavSyncedCalendarIDs.split(",").filter { it.trim().isNotEmpty() }.map { Integer.parseInt(it) }.toMutableList() as ArrayList<Int>
+    fun getSyncedCalendarIdsAsList() = caldavSyncedCalendarIds.split(",").filter { it.trim().isNotEmpty() }.map { Integer.parseInt(it) }.toMutableList() as ArrayList<Int>
 
     fun getDisplayEventTypessAsList() = displayEventTypes.map { it.toLong() }.toMutableList() as ArrayList<Long>
 
@@ -168,4 +169,20 @@ class Config(context: Context) : BaseConfig(context) {
     var pullToRefresh: Boolean
         get() = prefs.getBoolean(PULL_TO_REFRESH, false)
         set(pullToRefresh) = prefs.edit().putBoolean(PULL_TO_REFRESH, pullToRefresh).apply()
+
+    var lastVibrateOnReminder: Boolean
+        get() = prefs.getBoolean(LAST_VIBRATE_ON_REMINDER, context.config.vibrateOnReminder)
+        set(lastVibrateOnReminder) = prefs.edit().putBoolean(LAST_VIBRATE_ON_REMINDER, lastVibrateOnReminder).apply()
+
+    var defaultStartTime: Int
+        get() = prefs.getInt(DEFAULT_START_TIME, -1)
+        set(defaultStartTime) = prefs.edit().putInt(DEFAULT_START_TIME, defaultStartTime).apply()
+
+    var defaultDuration: Int
+        get() = prefs.getInt(DEFAULT_DURATION, 0)
+        set(defaultDuration) = prefs.edit().putInt(DEFAULT_DURATION, defaultDuration).apply()
+
+    var defaultEventTypeId: Long
+        get() = prefs.getLong(DEFAULT_EVENT_TYPE_ID, -1L)
+        set(defaultEventTypeId) = prefs.edit().putLong(DEFAULT_EVENT_TYPE_ID, defaultEventTypeId).apply()
 }

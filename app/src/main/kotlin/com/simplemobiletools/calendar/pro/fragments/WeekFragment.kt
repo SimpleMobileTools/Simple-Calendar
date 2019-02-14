@@ -5,6 +5,7 @@ import android.content.res.Resources
 import android.graphics.Rect
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Range
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -19,11 +20,13 @@ import com.simplemobiletools.calendar.pro.activities.EventActivity
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.eventsHelper
 import com.simplemobiletools.calendar.pro.extensions.seconds
+import com.simplemobiletools.calendar.pro.extensions.touch
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.interfaces.WeekFragmentListener
 import com.simplemobiletools.calendar.pro.interfaces.WeeklyCalendar
 import com.simplemobiletools.calendar.pro.models.Event
+import com.simplemobiletools.calendar.pro.models.EventWeeklyView
 import com.simplemobiletools.calendar.pro.views.MyScrollView
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.DAY_SECONDS
@@ -57,6 +60,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private var allDayHolders = ArrayList<RelativeLayout>()
     private var allDayRows = ArrayList<HashSet<Int>>()
     private var eventTypeColors = LongSparseArray<Int>()
+    private var eventTimeRanges = LinkedHashMap<String, ArrayList<EventWeeklyView>>()
 
     private lateinit var inflater: LayoutInflater
     private lateinit var mView: View
@@ -67,10 +71,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        context!!.eventsHelper.getEventTypes(activity!!) {
-            it.map { eventTypeColors.put(it.id!!, it.color) }
-        }
-
         mRes = context!!.resources
         mConfig = context!!.config
         mRowHeight = mRes.getDimension(R.dimen.weekly_view_row_height)
@@ -103,6 +103,10 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
     override fun onResume() {
         super.onResume()
+        context!!.eventsHelper.getEventTypes(activity!!, false) {
+            it.map { eventTypeColors.put(it.id!!, it.color) }
+        }
+
         setupDayLabels()
         updateCalendar()
 
@@ -242,6 +246,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         initGrid()
         allDayHolders.clear()
         allDayRows.clear()
+        eventTimeRanges.clear()
         allDayRows.add(HashSet())
         week_all_day_holder?.removeAllViews()
 
@@ -250,22 +255,61 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         val fullHeight = mRes.getDimension(R.dimen.weekly_view_events_height)
         val minuteHeight = fullHeight / (24 * 60)
         val minimalHeight = mRes.getDimension(R.dimen.weekly_view_minimal_event_height).toInt()
+        val density = Math.round(context!!.resources.displayMetrics.density)
 
         var hadAllDayEvent = false
         val replaceDescription = mConfig.replaceDescription
         val sorted = events.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { if (replaceDescription) it.location else it.description }))
         for (event in sorted) {
-            if (event.getIsAllDay() || Formatter.getDayCodeFromTS(event.startTS) != Formatter.getDayCodeFromTS(event.endTS)) {
+            val startDateTime = Formatter.getDateTimeFromTS(event.startTS)
+            val endDateTime = Formatter.getDateTimeFromTS(event.endTS)
+            if (!event.getIsAllDay() && Formatter.getDayCodeFromDateTime(startDateTime) == Formatter.getDayCodeFromDateTime(endDateTime)) {
+                val startMinutes = startDateTime.minuteOfDay
+                val duration = endDateTime.minuteOfDay - startMinutes
+                val range = Range(startMinutes, startMinutes + duration)
+                val eventWeekly = EventWeeklyView(event.id!!, range)
+
+                val dayCode = Formatter.getDayCodeFromDateTime(startDateTime)
+                if (!eventTimeRanges.containsKey(dayCode)) {
+                    eventTimeRanges[dayCode] = ArrayList()
+                }
+
+                eventTimeRanges[dayCode]?.add(eventWeekly)
+            }
+        }
+
+        for (event in sorted) {
+            val startDateTime = Formatter.getDateTimeFromTS(event.startTS)
+            val endDateTime = Formatter.getDateTimeFromTS(event.endTS)
+            if (event.getIsAllDay() || Formatter.getDayCodeFromDateTime(startDateTime) != Formatter.getDayCodeFromDateTime(endDateTime)) {
                 hadAllDayEvent = true
                 addAllDayEvent(event)
             } else {
-                val startDateTime = Formatter.getDateTimeFromTS(event.startTS)
-                val endDateTime = Formatter.getDateTimeFromTS(event.endTS)
                 val dayOfWeek = startDateTime.plusDays(if (mConfig.isSundayFirst) 1 else 0).dayOfWeek - 1
                 val layout = getColumnWithId(dayOfWeek)
 
                 val startMinutes = startDateTime.minuteOfDay
                 val duration = endDateTime.minuteOfDay - startMinutes
+                val range = Range(startMinutes, startMinutes + duration)
+
+                val dayCode = Formatter.getDayCodeFromDateTime(startDateTime)
+                var overlappingEvents = 0
+                var currentEventOverlapIndex = 0
+                var foundCurrentEvent = false
+
+                eventTimeRanges[dayCode]!!.forEachIndexed { index, eventWeeklyView ->
+                    if (eventWeeklyView.range.touch(range)) {
+                        overlappingEvents++
+
+                        if (eventWeeklyView.id == event.id) {
+                            foundCurrentEvent = true
+                        }
+
+                        if (!foundCurrentEvent) {
+                            currentEventOverlapIndex++
+                        }
+                    }
+                }
 
                 (inflater.inflate(R.layout.week_event_marker, null, false) as TextView).apply {
                     var backgroundColor = eventTypeColors.get(event.eventType, primaryColor)
@@ -282,11 +326,26 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                     y = startMinutes * minuteHeight
                     (layoutParams as RelativeLayout.LayoutParams).apply {
                         width = layout.width - 1
+                        width /= Math.max(overlappingEvents, 1)
+                        if (overlappingEvents > 1) {
+                            x = width * currentEventOverlapIndex.toFloat()
+                            if (currentEventOverlapIndex != 0) {
+                                x += density
+                            }
+
+                            width -= density
+                            if (currentEventOverlapIndex + 1 != overlappingEvents) {
+                                if (currentEventOverlapIndex != 0) {
+                                    width -= density
+                                }
+                            }
+                        }
+
                         minHeight = if (event.startTS == event.endTS) minimalHeight else (duration * minuteHeight).toInt() - 1
                     }
                     setOnClickListener {
                         Intent(context, EventActivity::class.java).apply {
-                            putExtra(EVENT_ID, event.id)
+                            putExtra(EVENT_ID, event.id!!)
                             putExtra(EVENT_OCCURRENCE_TS, event.startTS)
                             startActivity(this)
                         }

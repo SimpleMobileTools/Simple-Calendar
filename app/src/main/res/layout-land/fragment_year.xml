@@ -40,8 +40,8 @@
             android:id="@+id/month_2_holder"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/yearly_padding_half"
-            android:layout_marginRight="@dimen/yearly_padding_half"
+            android:layout_marginStart="@dimen/yearly_padding_half"
+            android:layout_marginEnd="@dimen/yearly_padding_half"
             android:layout_weight="1">
 
             <com.simplemobiletools.commons.views.MyTextView
@@ -123,8 +123,8 @@
             android:id="@+id/month_5_holder"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/yearly_padding_half"
-            android:layout_marginRight="@dimen/yearly_padding_half"
+            android:layout_marginStart="@dimen/yearly_padding_half"
+            android:layout_marginEnd="@dimen/yearly_padding_half"
             android:layout_weight="1">
 
             <com.simplemobiletools.commons.views.MyTextView
@@ -203,8 +203,8 @@
             android:id="@+id/month_8_holder"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/yearly_padding_half"
-            android:layout_marginRight="@dimen/yearly_padding_half"
+            android:layout_marginStart="@dimen/yearly_padding_half"
+            android:layout_marginEnd="@dimen/yearly_padding_half"
             android:layout_weight="1">
 
             <com.simplemobiletools.commons.views.MyTextView
@@ -286,8 +286,8 @@
             android:id="@+id/month_11_holder"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/yearly_padding_half"
-            android:layout_marginRight="@dimen/yearly_padding_half"
+            android:layout_marginStart="@dimen/yearly_padding_half"
+            android:layout_marginEnd="@dimen/yearly_padding_half"
             android:layout_weight="1">
 
             <com.simplemobiletools.commons.views.MyTextView
