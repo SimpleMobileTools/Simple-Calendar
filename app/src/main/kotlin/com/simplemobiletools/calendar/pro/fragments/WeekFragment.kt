@@ -326,15 +326,15 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                     y = startMinutes * minuteHeight
                     (layoutParams as RelativeLayout.LayoutParams).apply {
                         width = layout.width - 1
-                        width /= overlappingEvents
-                        x = width * currentEventOverlapIndex.toFloat()
+                        width /= Math.max(overlappingEvents, 1)
                         if (overlappingEvents > 1) {
+                            x = width * currentEventOverlapIndex.toFloat()
                             if (currentEventOverlapIndex != 0) {
                                 x += density
                             }
 
+                            width -= density
                             if (currentEventOverlapIndex + 1 != overlappingEvents) {
-                                width -= density
                                 if (currentEventOverlapIndex != 0) {
                                     width -= density
                                 }
