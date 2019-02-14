@@ -209,7 +209,10 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     }
 
     private fun drawEvent(event: MonthViewEvent, canvas: Canvas) {
-        val verticalOffset = dayVerticalOffsets[event.startDayIndex]
+        var verticalOffset = 0
+        for (i in 0 until Math.min(event.daysCnt, 7 - event.startDayIndex % 7)) {
+            verticalOffset = Math.max(verticalOffset, dayVerticalOffsets[event.startDayIndex + i])
+        }
         val xPos = event.startDayIndex % 7 * dayWidth + horizontalOffset
         val yPos = (event.startDayIndex / 7) * dayHeight
         val xPosCenter = xPos + dayWidth / 2
