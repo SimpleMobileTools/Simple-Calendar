@@ -87,24 +87,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
         if(hasPermission(PERMISSION_READ_CONTACTS))
         {
-            Thread{
-                    addContactEvents(true) {
-                        if (it > 0)
-                        {
-                            toast(R.string.birthdays_sync_new)
-                            updateViewPager()
-                        }
-                        else
-                        {
-                            toast(R.string.birthdays_sync_none)
-                        }
-                    }
-                }.start()
-        }
-
-        if(!hasPermission(PERMISSION_READ_CONTACTS))
-        {
-            toast(R.string.birthdays_sync_unable)
+            BirthdaysBackgroundSync()
         }
 
         swipe_refresh_layout.setOnRefreshListener {
@@ -426,6 +409,22 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
     }
 
+    private fun BirthdaysBackgroundSync()
+    {
+         Thread{
+                    addContactEvents(true) {
+                        if (it > 0)
+                        {
+                            toast(R.string.birthdays_sync_new)
+                            updateViewPager()
+                        }
+                        else
+                        {
+                            toast(R.string.birthdays_sync_none)
+                        }
+                    }
+                }.start()
+    }
     private fun tryAddBirthdays() {
         handlePermission(PERMISSION_READ_CONTACTS) {
             if (it) {
