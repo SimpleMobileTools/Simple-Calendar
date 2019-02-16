@@ -170,12 +170,12 @@
     <string name="default_reminder_3">預設提醒3</string>
     <string name="view_to_open_from_widget">從活動列表小工具開啟的檢視畫面</string>
     <string name="last_view">最後的檢視畫面</string>
-    <string name="new_events">New events</string>
-    <string name="default_start_time">Default start time</string>
-    <string name="next_full_hour">Next full hour</string>
-    <string name="default_duration">Default duration</string>
-    <string name="last_used_one">Last used one</string>
-    <string name="other_time">Other time</string>
+    <string name="new_events">新活動</string>
+    <string name="default_start_time">預設開始時間</string>
+    <string name="next_full_hour">整整下個小時</string>
+    <string name="default_duration">預設持續時間</string>
+    <string name="last_used_one">最後使用</string>
+    <string name="other_time">其他時間</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
