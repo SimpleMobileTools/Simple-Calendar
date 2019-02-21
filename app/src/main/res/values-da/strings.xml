@@ -169,13 +169,13 @@
     <string name="default_reminder_2">Påmindelse 2</string>
     <string name="default_reminder_3">Påmindelse 3</string>
     <string name="view_to_open_from_widget">Visning til brug i widget\'en</string>
-    <string name="last_view">Last view</string>
-    <string name="new_events">New events</string>
-    <string name="default_start_time">Default start time</string>
-    <string name="next_full_hour">Next full hour</string>
-    <string name="default_duration">Default duration</string>
-    <string name="last_used_one">Last used one</string>
-    <string name="other_time">Other time</string>
+    <string name="last_view">Seneste visning</string>
+    <string name="new_events">Nye begivenheder</string>
+    <string name="default_start_time">Standard starttidspunkt</string>
+    <string name="next_full_hour">Næste hele time</string>
+    <string name="default_duration">Standard varighed</string>
+    <string name="last_used_one">Senest brugte</string>
+    <string name="other_time">Anden tid</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
