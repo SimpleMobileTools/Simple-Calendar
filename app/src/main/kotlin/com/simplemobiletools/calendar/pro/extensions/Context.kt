@@ -408,6 +408,7 @@ fun Context.addDayEvents(day: DayMonthly, linearLayout: LinearLayout, res: Resou
             text = it.title.replace(" ", "\u00A0")  // allow word break by char
             background = backgroundDrawable
             layoutParams = eventLayoutParams
+            contentDescription = it.title
             linearLayout.addView(this)
         }
     }

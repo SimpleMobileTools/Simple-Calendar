@@ -322,6 +322,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                     background = ColorDrawable(backgroundColor)
                     setTextColor(textColor)
                     text = event.title
+                    contentDescription = text
                     layout.addView(this)
                     y = startMinutes * minuteHeight
                     (layoutParams as RelativeLayout.LayoutParams).apply {
@@ -406,6 +407,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
             setTextColor(textColor)
             text = event.title
+            contentDescription = text
 
             val startDateTime = Formatter.getDateTimeFromTS(event.startTS)
             val endDateTime = Formatter.getDateTimeFromTS(event.endTS)

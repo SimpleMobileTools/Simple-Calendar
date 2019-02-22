@@ -81,6 +81,7 @@ class DayFragment : Fragment() {
         val day = Formatter.getDayTitle(context!!, mDayCode)
         mHolder.top_value.apply {
             text = day
+            contentDescription = text
             setOnClickListener { pickDay() }
             setTextColor(context.config.textColor)
         }
