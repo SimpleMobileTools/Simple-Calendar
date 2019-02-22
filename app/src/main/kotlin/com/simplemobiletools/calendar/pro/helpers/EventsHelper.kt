@@ -253,9 +253,10 @@ class EventsHelper(val context: Context) {
             eventTypeColors.put(it.id!!, it.color)
         }
 
+        val primaryColor = context.resources.getColor(R.color.color_primary)
         events.forEach {
             it.updateIsPastEvent()
-            it.color = eventTypeColors.get(it.eventType) ?: context.resources.getColor(R.color.color_primary)
+            it.color = eventTypeColors.get(it.eventType) ?: primaryColor
         }
 
         callback(events)
