@@ -197,22 +197,14 @@ class CalDAVHelper(val context: Context) {
                     val id = cursor.getLongValue(CalendarContract.Events._ID)
                     val title = cursor.getStringValue(CalendarContract.Events.TITLE) ?: ""
                     val description = cursor.getStringValue(CalendarContract.Events.DESCRIPTION) ?: ""
-                    var startTS = cursor.getLongValue(CalendarContract.Events.DTSTART)
-                    var endTS = cursor.getLongValue(CalendarContract.Events.DTEND)
+                    val startTS = cursor.getLongValue(CalendarContract.Events.DTSTART) / 1000L
+                    var endTS = cursor.getLongValue(CalendarContract.Events.DTEND) / 1000L
                     val allDay = cursor.getIntValue(CalendarContract.Events.ALL_DAY)
                     val rrule = cursor.getStringValue(CalendarContract.Events.RRULE) ?: ""
                     val location = cursor.getStringValue(CalendarContract.Events.EVENT_LOCATION) ?: ""
                     val originalId = cursor.getStringValue(CalendarContract.Events.ORIGINAL_ID)
                     val originalInstanceTime = cursor.getLongValue(CalendarContract.Events.ORIGINAL_INSTANCE_TIME)
                     val reminders = getCalDAVEventReminders(id)
-
-                    if (startTS.toString().length == 12 || startTS.toString().length == 13) {
-                        startTS /= 1000L
-                    }
-
-                    if (endTS.toString().length == 12 || endTS.toString().length == 13) {
-                        endTS /= 1000L
-                    }
 
                     if (endTS == 0L) {
                         val duration = cursor.getStringValue(CalendarContract.Events.DURATION) ?: ""
