@@ -21,6 +21,7 @@ import com.simplemobiletools.calendar.pro.databases.EventsDatabase
 import com.simplemobiletools.calendar.pro.dialogs.ExportEventsDialog
 import com.simplemobiletools.calendar.pro.dialogs.FilterEventTypesDialog
 import com.simplemobiletools.calendar.pro.dialogs.ImportEventsDialog
+import com.simplemobiletools.calendar.pro.dialogs.SetRemindersDialog
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.fragments.*
 import com.simplemobiletools.calendar.pro.helpers.*
@@ -407,16 +408,19 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private fun tryAddBirthdays() {
         handlePermission(PERMISSION_READ_CONTACTS) {
             if (it) {
-                Thread {
-                    addContactEvents(true) {
-                        if (it > 0) {
-                            toast(R.string.birthdays_added)
-                            updateViewPager()
-                        } else {
-                            toast(R.string.no_birthdays)
+                SetRemindersDialog(this) {
+                    val reminders = it
+                    Thread {
+                        addContactEvents(true, reminders) {
+                            if (it > 0) {
+                                toast(R.string.birthdays_added)
+                                updateViewPager()
+                            } else {
+                                toast(R.string.no_birthdays)
+                            }
                         }
-                    }
-                }.start()
+                    }.start()
+                }
             } else {
                 toast(R.string.no_contacts_permission)
             }
@@ -426,16 +430,19 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private fun tryAddAnniversaries() {
         handlePermission(PERMISSION_READ_CONTACTS) {
             if (it) {
-                Thread {
-                    addContactEvents(false) {
-                        if (it > 0) {
-                            toast(R.string.anniversaries_added)
-                            updateViewPager()
-                        } else {
-                            toast(R.string.no_anniversaries)
+                SetRemindersDialog(this) {
+                    val reminders = it
+                    Thread {
+                        addContactEvents(false, reminders) {
+                            if (it > 0) {
+                                toast(R.string.anniversaries_added)
+                                updateViewPager()
+                            } else {
+                                toast(R.string.no_anniversaries)
+                            }
                         }
-                    }
-                }.start()
+                    }.start()
+                }
             } else {
                 toast(R.string.no_contacts_permission)
             }
@@ -450,7 +457,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }, Toast.LENGTH_LONG)
     }
 
-    private fun addContactEvents(birthdays: Boolean, callback: (Int) -> Unit) {
+    private fun addContactEvents(birthdays: Boolean, reminders: ArrayList<Int>, callback: (Int) -> Unit) {
         var eventsAdded = 0
         val uri = ContactsContract.Data.CONTENT_URI
         val projection = arrayOf(ContactsContract.Contacts.DISPLAY_NAME,
@@ -486,7 +493,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                             val timestamp = date.time / 1000L
                             val source = if (birthdays) SOURCE_CONTACT_BIRTHDAY else SOURCE_CONTACT_ANNIVERSARY
                             val lastUpdated = cursor.getLongValue(ContactsContract.CommonDataKinds.Event.CONTACT_LAST_UPDATED_TIMESTAMP)
-                            val event = Event(null, timestamp, timestamp, name, importId = contactId, flags = FLAG_ALL_DAY, repeatInterval = YEAR,
+                            val event = Event(null, timestamp, timestamp, name, reminder1Minutes = reminders[0], reminder2Minutes = reminders[1],
+                                    reminder3Minutes = reminders[2], importId = contactId, flags = FLAG_ALL_DAY, repeatInterval = YEAR,
                                     eventType = eventTypeId, source = source, lastUpdated = lastUpdated)
 
                             if (!importIDs.contains(contactId)) {
