@@ -494,7 +494,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                             val source = if (birthdays) SOURCE_CONTACT_BIRTHDAY else SOURCE_CONTACT_ANNIVERSARY
                             val lastUpdated = cursor.getLongValue(ContactsContract.CommonDataKinds.Event.CONTACT_LAST_UPDATED_TIMESTAMP)
                             val event = Event(null, timestamp, timestamp, name, reminder1Minutes = reminders[0], reminder2Minutes = reminders[1],
-                                    reminder3Minutes = reminders[2], importId = contactId, flags = FLAG_ALL_DAY, repeatInterval = YEAR,
+                                    reminder3Minutes = reminders[2], importId = contactId, flags = FLAG_ALL_DAY, repeatInterval = YEAR, repeatRule = REPEAT_SAME_DAY,
                                     eventType = eventTypeId, source = source, lastUpdated = lastUpdated)
 
                             if (!importIDs.contains(contactId)) {
