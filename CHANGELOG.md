@@ -1,10 +1,17 @@
 Changelog
 ==========
 
+Version 6.3.1 *(2019-02-23)*
+----------------------------
+
+ * Allow adding event reminders to birthdays/anniversaries
+ * Filled content description of some views to improve the UX of visually impaired people
+ * A few more stability and UX improvements here and there
+
 Version 6.3.0 *(2019-02-14)*
 ----------------------------
 
- * Allow setting default start time/duration/event type for new events\n
+ * Allow setting default start time/duration/event type for new events
  * Allow exporting/importing settings
  * Fixed a glitch with repeating events older than from year 2001
  * Fixed some glitches related to overlapping events on the monthly and weekly view
