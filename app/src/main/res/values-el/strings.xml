@@ -49,7 +49,7 @@
     <string name="update_one_only">Ενημέρωση μόνο του επιλεγμένου περιστατικού</string>
     <string name="update_all_occurrences">Ενημέρωση όλων των περιστατικών</string>
     <string name="repeat_till_date">Επαναλάβετε μέχρι μια ημερομηνία</string>
-    <string name="stop_repeating_after_x">Stop repeating after x occurrences</string>
+    <string name="stop_repeating_after_x">Παύση επαναλήψεων μετά από x εμφανίσεις</string>
     <string name="repeat_forever">Επαναλάβετε για πάντα</string>
     <string name="times">times</string>
     <string name="repeat">Επανάληψη</string>
@@ -175,7 +175,7 @@
     <string name="next_full_hour">Την επόμενη πλήρη ώρα</string>
     <string name="default_duration">Προεπιλεγμένη διάρκεια</string>
     <string name="last_used_one">Τελευταία χρήση</string>
-    <string name="other_time">Other time</string>
+    <string name="other_time">Άλλη ώρα</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
