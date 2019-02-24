@@ -224,7 +224,7 @@
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Jednoduchý kalendár s udalosťami, upraviteľným widgetom a bez reklám.</string>
+    <string name="app_short_description">Offline kalendár pre vaše udalosti bez reklám, rešpektujúca vaše súkromie.</string>
     <string name="app_long_description">
         Jednoduchý kalendár s možnosťou CalDAV synchronizácie. Viete si jednoducho vytvoriť opakujúce sa udalosti s pripomienkami, alebo zobraziť čísla týždňov.
 
