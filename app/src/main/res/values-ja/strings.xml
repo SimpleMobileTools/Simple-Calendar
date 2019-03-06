@@ -10,6 +10,7 @@
     <string name="simple_event_list">シンプル 予定 リスト</string>
     <string name="no_upcoming_events">今後の予定はありません。</string>
     <string name="go_to_today">今日へ移動</string>
+    <string name="go_to_date">Go to date</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">カレンダー月</string>

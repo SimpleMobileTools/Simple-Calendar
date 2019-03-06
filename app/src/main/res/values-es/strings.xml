@@ -10,6 +10,7 @@
     <string name="simple_event_list">Lista de eventos sencilla</string>
     <string name="no_upcoming_events">Parece que no tienes ningún evento próximo.</string>
     <string name="go_to_today">Ir al día de hoy</string>
+    <string name="go_to_date">Go to date</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Calendario mensual</string>

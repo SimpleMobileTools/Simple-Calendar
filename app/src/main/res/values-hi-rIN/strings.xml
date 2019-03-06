@@ -10,6 +10,7 @@
     <string name="simple_event_list">सरल इवेंट सूची</string>
     <string name="no_upcoming_events">Seems like you don\'t have any upcoming events.</string>
     <string name="go_to_today">Go to today</string>
+    <string name="go_to_date">Go to date</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Calendar monthly</string>

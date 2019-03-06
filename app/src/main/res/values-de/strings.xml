@@ -10,6 +10,7 @@
     <string name="simple_event_list">Einfache Terminliste</string>
     <string name="no_upcoming_events">Scheint so, als hättest du keine anstehenden Termine.</string>
     <string name="go_to_today">Springe zu Heute</string>
+    <string name="go_to_date">Go to date</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Monatskalender</string>

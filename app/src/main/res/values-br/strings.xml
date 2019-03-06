@@ -10,6 +10,7 @@
     <string name="simple_event_list">Roll darvoudoù een</string>
     <string name="no_upcoming_events">War a-seblant n\'ho peus darvoud ebet da zont.</string>
     <string name="go_to_today">Mont da hiziv</string>
+    <string name="go_to_date">Go to date</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Deiziataer miziek</string>

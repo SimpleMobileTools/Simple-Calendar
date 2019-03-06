@@ -10,6 +10,7 @@
     <string name="simple_event_list">Händelselista</string>
     <string name="no_upcoming_events">Det verkar som att du inte har några kommande händelser.</string>
     <string name="go_to_today">Gå till idag</string>
+    <string name="go_to_date">Go to date</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Kalender månadsvis</string>

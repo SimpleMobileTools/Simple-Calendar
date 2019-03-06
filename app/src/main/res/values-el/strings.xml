@@ -10,6 +10,7 @@
     <string name="simple_event_list">Απλή λίστα εκδηλώσεων</string>
     <string name="no_upcoming_events">Φαίνεται πως δεν έχετε επερχόμενες εκδηλώσεις.</string>
     <string name="go_to_today">Πηγαίνετε στο σήμερα</string>
+    <string name="go_to_date">Go to date</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Μηνιαίο ημερολόγιο</string>

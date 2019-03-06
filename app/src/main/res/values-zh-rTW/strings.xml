@@ -10,6 +10,7 @@
     <string name="simple_event_list">簡易活動列表</string>
     <string name="no_upcoming_events">你近期似乎沒有任何活動。</string>
     <string name="go_to_today">前往今天</string>
+    <string name="go_to_date">Go to date</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">月曆</string>

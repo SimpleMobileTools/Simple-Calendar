@@ -10,6 +10,7 @@
     <string name="simple_event_list">간단한 이벤트 목록</string>
     <string name="no_upcoming_events">다가올 이벤트가 없는 것 같습니다.</string>
     <string name="go_to_today">오늘로 이동</string>
+    <string name="go_to_date">Go to date</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">월별 달력</string>
