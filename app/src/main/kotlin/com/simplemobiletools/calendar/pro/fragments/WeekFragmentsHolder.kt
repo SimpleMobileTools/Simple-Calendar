@@ -130,6 +130,10 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
         setupFragment()
     }
 
+    override fun goToDate() {
+
+    }
+
     override fun refreshEvents() {
         (viewPager?.adapter as? MyWeekPagerAdapter)?.updateCalendars(viewPager!!.currentItem)
     }

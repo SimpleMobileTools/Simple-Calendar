@@ -99,6 +99,10 @@ class DayFragmentsHolder : MyFragmentHolder(), NavigationListener {
         setupFragment()
     }
 
+    override fun goToDate() {
+
+    }
+
     override fun refreshEvents() {
         (viewPager?.adapter as? MyDayPagerAdapter)?.updateCalendars(viewPager?.currentItem ?: 0)
     }

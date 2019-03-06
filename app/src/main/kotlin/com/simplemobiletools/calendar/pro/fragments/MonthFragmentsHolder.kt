@@ -99,6 +99,10 @@ class MonthFragmentsHolder : MyFragmentHolder(), NavigationListener {
         setupFragment()
     }
 
+    override fun goToDate() {
+
+    }
+
     override fun refreshEvents() {
         (viewPager?.adapter as? MyMonthPagerAdapter)?.updateCalendars(viewPager?.currentItem ?: 0)
     }

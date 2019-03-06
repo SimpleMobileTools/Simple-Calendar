@@ -173,6 +173,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         when (item.itemId) {
             R.id.change_view -> showViewDialog()
             R.id.go_to_today -> goToToday()
+            R.id.go_to_date -> goToDate()
             R.id.filter -> showFilterDialog()
             R.id.refresh_caldav_calendars -> refreshCalDAVCalendars(true)
             R.id.add_holidays -> addHolidays()
@@ -338,6 +339,10 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     private fun goToToday() {
         currentFragments.last().goToToday()
+    }
+
+    private fun goToDate() {
+        currentFragments.last().goToDate()
     }
 
     private fun resetActionBarTitle() {
