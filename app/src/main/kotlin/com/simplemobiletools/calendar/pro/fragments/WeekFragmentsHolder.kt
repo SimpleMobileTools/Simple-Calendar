@@ -151,12 +151,17 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
     }
 
     private fun dateSelected(dateTime: DateTime, datePicker: DatePicker) {
+        val isSundayFirst = context!!.config.isSundayFirst
         val month = datePicker.month + 1
         val year = datePicker.year
         val day = datePicker.dayOfMonth
-        val newDateTime = dateTime.withDate(year, month, day)
+        var newDateTime = dateTime.withDate(year, month, day)
 
-        var selectedWeek = newDateTime.withDayOfWeek(1).withTimeAtStartOfDay().minusDays(if (context!!.config.isSundayFirst) 1 else 0)
+        if (isSundayFirst) {
+            newDateTime = newDateTime.plusDays(1)
+        }
+
+        var selectedWeek = newDateTime.withDayOfWeek(1).withTimeAtStartOfDay().minusDays(if (isSundayFirst) 1 else 0)
         if (newDateTime.minusDays(7).seconds() > selectedWeek.seconds()) {
             selectedWeek = selectedWeek.plusDays(7)
         }
