@@ -175,7 +175,7 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
 
     override fun goToToday() {}
 
-    override fun goToDate() {}
+    override fun showGoToDateDialog() {}
 
     override fun refreshEvents() {
         checkEvents()

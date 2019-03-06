@@ -1,10 +1,13 @@
 package com.simplemobiletools.calendar.pro.fragments
 
+import android.content.res.Resources
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.DatePicker
+import androidx.appcompat.app.AlertDialog
 import androidx.viewpager.widget.ViewPager
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.MainActivity
@@ -14,6 +17,9 @@ import com.simplemobiletools.calendar.pro.extensions.getMonthCode
 import com.simplemobiletools.calendar.pro.helpers.DAY_CODE
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.interfaces.NavigationListener
+import com.simplemobiletools.commons.extensions.beGone
+import com.simplemobiletools.commons.extensions.getDialogTheme
+import com.simplemobiletools.commons.extensions.setupDialogStuff
 import com.simplemobiletools.commons.extensions.updateActionBarTitle
 import com.simplemobiletools.commons.views.MyViewPager
 import kotlinx.android.synthetic.main.fragment_months_holder.view.*
@@ -99,8 +105,28 @@ class MonthFragmentsHolder : MyFragmentHolder(), NavigationListener {
         setupFragment()
     }
 
-    override fun goToDate() {
+    override fun showGoToDateDialog() {
+        activity!!.setTheme(context!!.getDialogTheme())
+        val view = layoutInflater.inflate(R.layout.date_picker, null)
+        val datePicker = view.findViewById<DatePicker>(R.id.date_picker)
+        datePicker.findViewById<View>(Resources.getSystem().getIdentifier("day", "id", "android")).beGone()
 
+        val dateTime = DateTime(Formatter.getDateTimeFromCode(currentDayCode).toString())
+        datePicker.init(dateTime.year, dateTime.monthOfYear - 1, 1, null)
+
+        AlertDialog.Builder(context!!)
+                .setNegativeButton(R.string.cancel, null)
+                .setPositiveButton(R.string.ok) { dialog, which -> datePicked(dateTime, datePicker) }
+                .create().apply {
+                    activity?.setupDialogStuff(view, this)
+                }
+    }
+
+    private fun datePicked(dateTime: DateTime, datePicker: DatePicker) {
+        val month = datePicker.month + 1
+        val year = datePicker.year
+        val newDateTime = dateTime.withDate(year, month, 1)
+        goToDateTime(newDateTime)
     }
 
     override fun refreshEvents() {

@@ -6,9 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.DatePicker
 import android.widget.RelativeLayout
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.MainActivity
@@ -21,9 +19,6 @@ import com.simplemobiletools.calendar.pro.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.pro.interfaces.NavigationListener
 import com.simplemobiletools.calendar.pro.models.DayMonthly
 import com.simplemobiletools.commons.extensions.applyColorFilter
-import com.simplemobiletools.commons.extensions.beGone
-import com.simplemobiletools.commons.extensions.getDialogTheme
-import com.simplemobiletools.commons.extensions.setupDialogStuff
 import kotlinx.android.synthetic.main.fragment_month.view.*
 import kotlinx.android.synthetic.main.top_navigation.view.*
 import org.joda.time.DateTime
@@ -137,33 +132,9 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         mHolder.top_value.apply {
             setTextColor(mConfig.textColor)
             setOnClickListener {
-                showMonthDialog()
+                (activity as MainActivity).showGoToDateDialog()
             }
         }
-    }
-
-    private fun showMonthDialog() {
-        activity!!.setTheme(context!!.getDialogTheme())
-        val view = layoutInflater.inflate(R.layout.date_picker, null)
-        val datePicker = view.findViewById<DatePicker>(R.id.date_picker)
-        datePicker.findViewById<View>(Resources.getSystem().getIdentifier("day", "id", "android")).beGone()
-
-        val dateTime = DateTime(mCalendar!!.mTargetDate.toString())
-        datePicker.init(dateTime.year, dateTime.monthOfYear - 1, 1, null)
-
-        AlertDialog.Builder(context!!)
-                .setNegativeButton(R.string.cancel, null)
-                .setPositiveButton(R.string.ok) { dialog, which -> positivePressed(dateTime, datePicker) }
-                .create().apply {
-                    activity?.setupDialogStuff(view, this)
-                }
-    }
-
-    private fun positivePressed(dateTime: DateTime, datePicker: DatePicker) {
-        val month = datePicker.month + 1
-        val year = datePicker.year
-        val newDateTime = dateTime.withDate(year, month, 1)
-        listener?.goToDateTime(newDateTime)
     }
 
     private fun updateDays(days: ArrayList<DayMonthly>) {

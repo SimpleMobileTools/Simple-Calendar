@@ -83,7 +83,7 @@ class YearFragmentsHolder : MyFragmentHolder() {
         setupFragment()
     }
 
-    override fun goToDate() {
+    override fun showGoToDateDialog() {
 
     }
 

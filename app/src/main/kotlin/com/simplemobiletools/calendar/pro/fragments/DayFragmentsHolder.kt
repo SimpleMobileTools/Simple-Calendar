@@ -99,7 +99,7 @@ class DayFragmentsHolder : MyFragmentHolder(), NavigationListener {
         setupFragment()
     }
 
-    override fun goToDate() {
+    override fun showGoToDateDialog() {
 
     }
 

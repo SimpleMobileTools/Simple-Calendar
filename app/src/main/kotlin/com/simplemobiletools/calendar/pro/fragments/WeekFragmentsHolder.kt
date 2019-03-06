@@ -130,7 +130,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
         setupFragment()
     }
 
-    override fun goToDate() {
+    override fun showGoToDateDialog() {
 
     }
 
