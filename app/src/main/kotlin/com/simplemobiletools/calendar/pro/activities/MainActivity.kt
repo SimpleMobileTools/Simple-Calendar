@@ -271,7 +271,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         if (isNougatMR1Plus() && config.lastHandledShortcutColor != appIconColor) {
             val newEvent = getString(R.string.new_event)
             val manager = getSystemService(ShortcutManager::class.java)
-            val drawable = resources.getDrawable(R.drawable.shortcut_plus_orange)
+            val drawable = resources.getDrawable(R.drawable.shortcut_plus)
             (drawable as LayerDrawable).findDrawableByLayerId(R.id.shortcut_plus_background).applyColorFilter(appIconColor)
             val bmp = drawable.convertToBitmap()
 
