@@ -9,16 +9,13 @@
         android:shortcutDisabledMessage="@string/new_event"
         android:shortcutId="new_event"
         android:shortcutLongLabel="@string/new_event"
-        android:shortcutShortLabel="@string/new_event "
+        android:shortcutShortLabel="@string/new_event"
         tools:targetApi="n_mr1">
 
         <intent
             android:action="shortcut_new_event"
             android:targetClass="com.simplemobiletools.calendar.pro.activities.SplashActivity"
             android:targetPackage="${applicationId}"/>
-
-        <categories
-            android:name="android.shortcut.conversation"/>
 
     </shortcut>
 </shortcuts>
