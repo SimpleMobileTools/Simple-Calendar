@@ -1,11 +1,16 @@
 package com.simplemobiletools.calendar.pro.activities
 
+import android.annotation.SuppressLint
 import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
+import android.content.pm.ShortcutInfo
+import android.content.pm.ShortcutManager
 import android.database.Cursor
 import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Icon
+import android.graphics.drawable.LayerDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.ContactsContract
@@ -130,6 +135,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         calendar_fab.setColors(config.textColor, getAdjustedPrimaryColor(), config.backgroundColor)
         search_holder.background = ColorDrawable(config.backgroundColor)
         checkSwipeRefreshAvailability()
+        checkShortcuts()
     }
 
     override fun onPause() {
@@ -257,6 +263,30 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     private fun closeSearch() {
         mSearchMenuItem?.collapseActionView()
+    }
+
+    @SuppressLint("NewApi")
+    private fun checkShortcuts() {
+        val appIconColor = config.appIconColor
+        if (isNougatMR1Plus() && config.lastHandledShortcutColor != appIconColor) {
+            val newEvent = getString(R.string.new_event)
+            val manager = getSystemService(ShortcutManager::class.java)
+            val drawable = resources.getDrawable(R.drawable.shortcut_plus_orange)
+            (drawable as LayerDrawable).findDrawableByLayerId(R.id.shortcut_plus_background).applyColorFilter(appIconColor)
+            val bmp = drawable.convertToBitmap()
+
+            val intent = Intent(this, SplashActivity::class.java)
+            intent.action = SHORTCUT_NEW_EVENT
+            val shortcut = ShortcutInfo.Builder(this, "new_event")
+                    .setShortLabel(newEvent)
+                    .setLongLabel(newEvent)
+                    .setIcon(Icon.createWithBitmap(bmp))
+                    .setIntent(intent)
+                    .build()
+
+            manager.dynamicShortcuts = Arrays.asList(shortcut)
+            config.lastHandledShortcutColor = appIconColor
+        }
     }
 
     private fun checkIsOpenIntent(): Boolean {
