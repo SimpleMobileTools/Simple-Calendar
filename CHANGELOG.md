@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 6.3.2 *(2019-03-07)*
+----------------------------
+
+ * Added a "Go to date" to most views for easy jumping between dates
+ * Added an app shortcut for creating new events quickly, from Android 7.1+
+
 Version 6.3.1 *(2019-02-23)*
 ----------------------------
 
