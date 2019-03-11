@@ -25,6 +25,7 @@ import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.models.RadioItem
 import com.simplemobiletools.commons.views.MyTextView
 import kotlinx.android.synthetic.main.activity_event.*
+import kotlinx.android.synthetic.main.activity_event.view.*
 import org.joda.time.DateTime
 import java.util.*
 import java.util.regex.Pattern
@@ -172,9 +173,9 @@ class EventActivity : SimpleActivity() {
         }
 
         event_type_holder.setOnClickListener { showEventTypeDialog() }
-
-        if (mEvent.flags and FLAG_ALL_DAY != 0) {
-            event_all_day.toggle()
+        event_all_day.apply {
+            isChecked = mEvent.flags and FLAG_ALL_DAY != 0
+            jumpDrawablesToCurrentState()
         }
 
         updateTextColors(event_scrollview)
