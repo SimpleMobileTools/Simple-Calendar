@@ -23,6 +23,7 @@ import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.models.RadioItem
+import com.simplemobiletools.commons.views.MyTextView
 import kotlinx.android.synthetic.main.activity_event.*
 import org.joda.time.DateTime
 import java.util.*
@@ -45,6 +46,9 @@ class EventActivity : SimpleActivity() {
     private var mReminder1Minutes = 0
     private var mReminder2Minutes = 0
     private var mReminder3Minutes = 0
+    private var mReminder1Type = REMINDER_NOTIFICATION
+    private var mReminder2Type = REMINDER_NOTIFICATION
+    private var mReminder3Type = REMINDER_NOTIFICATION
     private var mRepeatInterval = 0
     private var mRepeatLimit = 0L
     private var mRepeatRule = 0
@@ -146,10 +150,32 @@ class EventActivity : SimpleActivity() {
         event_reminder_2.setOnClickListener { showReminder2Dialog() }
         event_reminder_3.setOnClickListener { showReminder3Dialog() }
 
+        event_reminder_1_type.setOnClickListener {
+            showReminderTypePicker(mReminder1Type) {
+                mReminder1Type = it
+                updateReminderTypeText(event_reminder_1_type, mReminder1Type)
+            }
+        }
+
+        event_reminder_2_type.setOnClickListener {
+            showReminderTypePicker(mReminder2Type) {
+                mReminder2Type = it
+                updateReminderTypeText(event_reminder_2_type, mReminder2Type)
+            }
+        }
+
+        event_reminder_3_type.setOnClickListener {
+            showReminderTypePicker(mReminder3Type) {
+                mReminder3Type = it
+                updateReminderTypeText(event_reminder_3_type, mReminder3Type)
+            }
+        }
+
         event_type_holder.setOnClickListener { showEventTypeDialog() }
 
-        if (mEvent.flags and FLAG_ALL_DAY != 0)
+        if (mEvent.flags and FLAG_ALL_DAY != 0) {
             event_all_day.toggle()
+        }
 
         updateTextColors(event_scrollview)
         updateIconColors()
@@ -253,6 +279,9 @@ class EventActivity : SimpleActivity() {
         mReminder1Minutes = mEvent.reminder1Minutes
         mReminder2Minutes = mEvent.reminder2Minutes
         mReminder3Minutes = mEvent.reminder3Minutes
+        mReminder1Type = mEvent.reminder1Type
+        mReminder2Type = mEvent.reminder2Type
+        mReminder3Type = mEvent.reminder3Type
         mRepeatInterval = mEvent.repeatInterval
         mRepeatLimit = mEvent.repeatLimit
         mRepeatRule = mEvent.repeatRule
@@ -558,10 +587,15 @@ class EventActivity : SimpleActivity() {
         updateReminder1Text()
         updateReminder2Text()
         updateReminder3Text()
+        updateReminderTypeTexts()
     }
 
     private fun updateReminder1Text() {
         event_reminder_1.text = getFormattedMinutes(mReminder1Minutes)
+        event_reminder_1_type.apply {
+            beVisibleIf(mReminder1Minutes != REMINDER_OFF)
+            text = getString(R.string.notification)
+        }
     }
 
     private fun updateReminder2Text() {
@@ -574,6 +608,11 @@ class EventActivity : SimpleActivity() {
                 text = getFormattedMinutes(mReminder2Minutes)
                 alpha = 1f
             }
+        }
+
+        event_reminder_2_type.apply {
+            beVisibleIf(mReminder2Minutes != REMINDER_OFF)
+            text = getString(R.string.notification)
         }
     }
 
@@ -588,6 +627,32 @@ class EventActivity : SimpleActivity() {
                 alpha = 1f
             }
         }
+
+        event_reminder_3_type.apply {
+            beVisibleIf(mReminder3Minutes != REMINDER_OFF)
+            text = getString(R.string.notification)
+        }
+    }
+
+    private fun showReminderTypePicker(currentValue: Int, callback: (Int) -> Unit) {
+        val items = arrayListOf(
+                RadioItem(REMINDER_NOTIFICATION, getString(R.string.notification)),
+                RadioItem(REMINDER_EMAIL, getString(R.string.email))
+        )
+        RadioGroupDialog(this, items, currentValue) {
+            callback(it as Int)
+        }
+    }
+
+    private fun updateReminderTypeTexts() {
+        updateReminderTypeText(event_reminder_1_type, mReminder1Type)
+        updateReminderTypeText(event_reminder_2_type, mReminder2Type)
+        updateReminderTypeText(event_reminder_3_type, mReminder3Type)
+    }
+
+    private fun updateReminderTypeText(view: MyTextView, type: Int) {
+        val text = getString(if (type == REMINDER_NOTIFICATION) R.string.notification else R.string.email)
+        view.text = text
     }
 
     private fun updateRepetitionText() {
@@ -765,10 +830,22 @@ class EventActivity : SimpleActivity() {
             "$CALDAV-$mEventCalendarId"
         }
 
-        val reminders = sortedSetOf(mReminder1Minutes, mReminder2Minutes, mReminder3Minutes).filter { it != REMINDER_OFF }
-        val reminder1 = reminders.getOrElse(0) { REMINDER_OFF }
-        val reminder2 = reminders.getOrElse(1) { REMINDER_OFF }
-        val reminder3 = reminders.getOrElse(2) { REMINDER_OFF }
+        val reminders = LinkedHashMap<Int, Int>().apply {
+            put(mReminder1Minutes, mReminder1Type)
+            put(mReminder2Minutes, mReminder2Type)
+            put(mReminder3Minutes, mReminder3Type)
+        }
+
+        val sortedReminders = reminders.toSortedMap().filter { it.key != REMINDER_OFF }
+        val keys = sortedReminders.keys.toList()
+        val reminder1 = keys.getOrElse(0) { REMINDER_OFF }
+        val reminder2 = keys.getOrElse(1) { REMINDER_OFF }
+        val reminder3 = keys.getOrElse(2) { REMINDER_OFF }
+
+        val types = sortedReminders.values.toList()
+        mReminder1Type = types.getOrElse(0) { REMINDER_NOTIFICATION }
+        mReminder2Type = types.getOrElse(1) { REMINDER_NOTIFICATION }
+        mReminder3Type = types.getOrElse(2) { REMINDER_NOTIFICATION }
 
         config.apply {
             if (usePreviousEventReminders) {
@@ -786,6 +863,9 @@ class EventActivity : SimpleActivity() {
             reminder1Minutes = reminder1
             reminder2Minutes = reminder2
             reminder3Minutes = reminder3
+            reminder1Type = mReminder1Type
+            reminder2Type = mReminder2Type
+            reminder3Type = mReminder3Type
             repeatInterval = mRepeatInterval
             importId = newImportId
             flags = mEvent.flags.addBitIf(event_all_day.isChecked, FLAG_ALL_DAY)

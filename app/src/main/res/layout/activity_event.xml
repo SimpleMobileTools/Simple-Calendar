@@ -187,11 +187,27 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_date_time_divider"
             android:layout_marginStart="@dimen/small_margin"
+            android:layout_toStartOf="@+id/event_reminder_1_type"
             android:layout_toEndOf="@+id/event_reminder_image"
             android:background="?attr/selectableItemBackground"
+            android:ellipsize="end"
+            android:lines="1"
             android:paddingTop="@dimen/activity_margin"
             android:paddingBottom="@dimen/activity_margin"
-            android:textSize="@dimen/day_text_size"/>
+            android:textSize="@dimen/day_text_size"
+            tools:text="@string/add_another_reminder"/>
+
+        <com.simplemobiletools.commons.views.MyTextView
+            android:id="@+id/event_reminder_1_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/event_date_time_divider"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="@dimen/small_margin"
+            android:background="?attr/selectableItemBackground"
+            android:padding="@dimen/activity_margin"
+            android:textSize="@dimen/day_text_size"
+            tools:text="@string/notification"/>
 
         <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/event_reminder_2"
@@ -199,13 +215,29 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_reminder_1"
             android:layout_alignStart="@+id/event_reminder_1"
+            android:layout_toStartOf="@+id/event_reminder_2_type"
             android:alpha="0.4"
             android:background="?attr/selectableItemBackground"
+            android:ellipsize="end"
+            android:lines="1"
             android:paddingTop="@dimen/activity_margin"
             android:paddingBottom="@dimen/activity_margin"
             android:text="@string/add_another_reminder"
             android:textSize="@dimen/day_text_size"
-            android:visibility="gone"/>
+            android:visibility="gone"
+            tools:text="@string/add_another_reminder"/>
+
+        <com.simplemobiletools.commons.views.MyTextView
+            android:id="@+id/event_reminder_2_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/event_reminder_1"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="@dimen/small_margin"
+            android:background="?attr/selectableItemBackground"
+            android:padding="@dimen/activity_margin"
+            android:textSize="@dimen/day_text_size"
+            tools:text="@string/notification"/>
 
         <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/event_reminder_3"
@@ -213,13 +245,29 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_reminder_2"
             android:layout_alignStart="@+id/event_reminder_1"
+            android:layout_toStartOf="@+id/event_reminder_3_type"
             android:alpha="0.4"
             android:background="?attr/selectableItemBackground"
+            android:ellipsize="end"
+            android:lines="1"
             android:paddingTop="@dimen/activity_margin"
             android:paddingBottom="@dimen/activity_margin"
             android:text="@string/add_another_reminder"
             android:textSize="@dimen/day_text_size"
-            android:visibility="gone"/>
+            android:visibility="gone"
+            tools:text="@string/add_another_reminder"/>
+
+        <com.simplemobiletools.commons.views.MyTextView
+            android:id="@+id/event_reminder_3_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/event_reminder_2"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="@dimen/small_margin"
+            android:background="?attr/selectableItemBackground"
+            android:padding="@dimen/activity_margin"
+            android:textSize="@dimen/day_text_size"
+            tools:text="@string/notification"/>
 
         <ImageView
             android:id="@+id/event_reminder_divider"
@@ -253,7 +301,8 @@
             android:background="?attr/selectableItemBackground"
             android:paddingTop="@dimen/normal_margin"
             android:paddingBottom="@dimen/normal_margin"
-            android:textSize="@dimen/day_text_size"/>
+            android:textSize="@dimen/day_text_size"
+            tools:text="@string/no_repetition"/>
 
         <RelativeLayout
             android:id="@+id/event_repetition_rule_holder"
