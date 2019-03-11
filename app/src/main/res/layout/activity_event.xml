@@ -50,9 +50,7 @@
             android:layout_alignTop="@+id/event_location"
             android:layout_alignBottom="@+id/event_location"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:layout_marginEnd="@dimen/activity_margin"
-            android:layout_marginRight="@dimen/activity_margin"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:paddingStart="@dimen/small_margin"
             android:paddingEnd="@dimen/small_margin"
@@ -104,13 +102,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_description_divider"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:layout_marginStart="@dimen/small_margin"
-            android:layout_marginLeft="@dimen/small_margin"
             android:layout_marginEnd="@dimen/normal_margin"
-            android:layout_marginRight="@dimen/normal_margin"
             android:layout_toEndOf="@+id/event_time_image"
-            android:layout_toRightOf="@+id/event_time_image"
             android:paddingTop="@dimen/normal_margin"
             android:paddingBottom="@dimen/normal_margin"
             android:text="@string/all_day"
@@ -123,11 +117,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_time_image"
             android:layout_alignStart="@+id/event_all_day"
-            android:layout_alignLeft="@+id/event_all_day"
             android:background="?attr/selectableItemBackground"
             android:paddingTop="@dimen/activity_margin"
             android:paddingEnd="@dimen/activity_margin"
-            android:paddingRight="@dimen/activity_margin"
             android:paddingBottom="@dimen/activity_margin"
             android:textSize="@dimen/day_text_size"
             tools:text="January 1 1970"/>
@@ -138,7 +130,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_time_image"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:background="?attr/selectableItemBackground"
             android:padding="@dimen/activity_margin"
             android:textSize="@dimen/day_text_size"
@@ -150,11 +141,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_start_date"
             android:layout_alignStart="@+id/event_all_day"
-            android:layout_alignLeft="@+id/event_all_day"
             android:background="?attr/selectableItemBackground"
             android:paddingTop="@dimen/activity_margin"
             android:paddingEnd="@dimen/activity_margin"
-            android:paddingRight="@dimen/activity_margin"
             android:paddingBottom="@dimen/activity_margin"
             android:textSize="@dimen/day_text_size"
             tools:text="January 1 1970"/>
@@ -165,7 +154,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_start_time"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:background="?attr/selectableItemBackground"
             android:padding="@dimen/activity_margin"
             android:textSize="@dimen/day_text_size"
@@ -189,7 +177,6 @@
             android:layout_alignTop="@+id/event_reminder_1"
             android:layout_alignBottom="@+id/event_reminder_1"
             android:layout_marginStart="@dimen/normal_margin"
-            android:layout_marginLeft="@dimen/normal_margin"
             android:alpha="0.8"
             android:padding="@dimen/medium_margin"
             android:src="@drawable/ic_bell"/>
@@ -200,9 +187,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_date_time_divider"
             android:layout_marginStart="@dimen/small_margin"
-            android:layout_marginLeft="@dimen/small_margin"
             android:layout_toEndOf="@+id/event_reminder_image"
-            android:layout_toRightOf="@+id/event_reminder_image"
             android:background="?attr/selectableItemBackground"
             android:paddingTop="@dimen/activity_margin"
             android:paddingBottom="@dimen/activity_margin"
@@ -214,7 +199,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_reminder_1"
             android:layout_alignStart="@+id/event_reminder_1"
-            android:layout_alignLeft="@+id/event_reminder_1"
             android:alpha="0.4"
             android:background="?attr/selectableItemBackground"
             android:paddingTop="@dimen/activity_margin"
@@ -229,7 +213,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_reminder_2"
             android:layout_alignStart="@+id/event_reminder_1"
-            android:layout_alignLeft="@+id/event_reminder_1"
             android:alpha="0.4"
             android:background="?attr/selectableItemBackground"
             android:paddingTop="@dimen/activity_margin"
@@ -256,7 +239,6 @@
             android:layout_alignTop="@+id/event_repetition"
             android:layout_alignBottom="@+id/event_repetition"
             android:layout_marginStart="@dimen/normal_margin"
-            android:layout_marginLeft="@dimen/normal_margin"
             android:alpha="0.8"
             android:padding="@dimen/medium_margin"
             android:src="@drawable/ic_repeat"/>
@@ -267,9 +249,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_reminder_divider"
             android:layout_marginStart="@dimen/small_margin"
-            android:layout_marginLeft="@dimen/small_margin"
             android:layout_toEndOf="@+id/event_repetition_image"
-            android:layout_toRightOf="@+id/event_repetition_image"
             android:background="?attr/selectableItemBackground"
             android:paddingTop="@dimen/normal_margin"
             android:paddingBottom="@dimen/normal_margin"
@@ -281,7 +261,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_repetition"
             android:layout_alignStart="@+id/event_repetition"
-            android:layout_alignLeft="@+id/event_repetition"
             android:background="?attr/selectableItemBackground"
             android:visibility="gone">
 
@@ -300,9 +279,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:layout_toEndOf="@+id/event_repetition_rule_label"
-                android:layout_toRightOf="@+id/event_repetition_rule_label"
                 android:clickable="false"
                 android:gravity="end"
                 android:padding="@dimen/activity_margin"
@@ -316,7 +293,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_repetition_rule_holder"
             android:layout_alignStart="@+id/event_repetition"
-            android:layout_alignLeft="@+id/event_repetition"
             android:background="?attr/selectableItemBackground"
             android:visibility="gone">
 
@@ -325,7 +301,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_toStartOf="@+id/event_repetition_limit"
-                android:layout_toLeftOf="@+id/event_repetition_limit"
                 android:clickable="false"
                 android:paddingTop="@dimen/activity_margin"
                 android:paddingBottom="@dimen/activity_margin"
@@ -337,7 +312,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:clickable="false"
                 android:padding="@dimen/activity_margin"
                 android:text="@string/forever"
@@ -361,7 +335,6 @@
             android:layout_alignTop="@+id/event_caldav_calendar_holder"
             android:layout_alignBottom="@+id/event_caldav_calendar_holder"
             android:layout_marginStart="@dimen/normal_margin"
-            android:layout_marginLeft="@dimen/normal_margin"
             android:alpha="0.8"
             android:padding="@dimen/medium_margin"
             android:src="@drawable/ic_calendar"
@@ -373,7 +346,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_repetition_divider"
             android:layout_toEndOf="@+id/event_caldav_calendar_image"
-            android:layout_toRightOf="@+id/event_caldav_calendar_image"
             android:background="?attr/selectableItemBackground"
             android:visibility="gone">
 
@@ -382,7 +354,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/small_margin"
-                android:layout_marginLeft="@dimen/small_margin"
                 android:layout_toStartOf="@+id/event_caldav_calendar_color"
                 android:ellipsize="end"
                 android:maxLines="1"
@@ -398,7 +369,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/event_caldav_calendar_name"
                 android:layout_marginStart="@dimen/small_margin"
-                android:layout_marginLeft="@dimen/small_margin"
                 android:layout_toStartOf="@+id/event_caldav_calendar_color"
                 android:ellipsize="end"
                 android:maxLines="1"
@@ -412,10 +382,8 @@
                 android:layout_width="@dimen/color_sample_size"
                 android:layout_height="@dimen/color_sample_size"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="@dimen/activity_margin"
-                android:layout_marginRight="@dimen/activity_margin"
                 android:clickable="false"/>
 
         </RelativeLayout>
@@ -437,7 +405,6 @@
             android:layout_alignTop="@+id/event_type_holder"
             android:layout_alignBottom="@+id/event_type_holder"
             android:layout_marginStart="@dimen/normal_margin"
-            android:layout_marginLeft="@dimen/normal_margin"
             android:alpha="0.8"
             android:padding="@dimen/medium_margin"
             android:src="@drawable/ic_color"/>
@@ -450,7 +417,6 @@
             android:layout_marginTop="@dimen/medium_margin"
             android:layout_marginBottom="@dimen/medium_margin"
             android:layout_toEndOf="@+id/event_type_image"
-            android:layout_toRightOf="@+id/event_type_image"
             android:background="?attr/selectableItemBackground">
 
             <com.simplemobiletools.commons.views.MyTextView
@@ -469,10 +435,8 @@
                 android:layout_width="@dimen/color_sample_size"
                 android:layout_height="@dimen/color_sample_size"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="@dimen/activity_margin"
-                android:layout_marginRight="@dimen/activity_margin"
                 android:clickable="false"/>
 
         </RelativeLayout>
