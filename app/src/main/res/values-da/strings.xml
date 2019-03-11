@@ -10,7 +10,7 @@
     <string name="simple_event_list">Begivenhedsliste</string>
     <string name="no_upcoming_events">Du ser ikke ud til at have nogen forestående begivenheder.</string>
     <string name="go_to_today">Gå til i dag</string>
-    <string name="go_to_date">Go to date</string>
+    <string name="go_to_date">Gå til dato</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Månedlig kalender</string>
@@ -99,7 +99,7 @@
     <string name="event_reminders">Påmindelser</string>
 
     <!-- Event attendees -->
-    <string name="add_another_attendee">Add another attendee</string>
+    <string name="add_another_attendee">Tilføj en anden deltager</string>
 
     <!-- Export / Import -->
     <string name="import_events">Importer begivenheder</string>
