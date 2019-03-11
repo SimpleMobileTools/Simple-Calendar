@@ -5,6 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.config
@@ -16,7 +17,7 @@ import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.EventType
 import java.util.concurrent.Executors
 
-@Database(entities = [Event::class, EventType::class], version = 1)
+@Database(entities = [Event::class, EventType::class], version = 2)
 @TypeConverters(Converters::class)
 abstract class EventsDatabase : RoomDatabase() {
 
@@ -38,6 +39,7 @@ abstract class EventsDatabase : RoomDatabase() {
                                         insertRegularEventType(context)
                                     }
                                 })
+                                .addMigrations(MIGRATION_1_2)
                                 .build()
                         db!!.openHelper.setWriteAheadLoggingEnabled(true)
                     }
@@ -56,6 +58,17 @@ abstract class EventsDatabase : RoomDatabase() {
                 val eventType = EventType(REGULAR_EVENT_TYPE_ID, regularEvent, context.config.primaryColor)
                 db!!.EventTypesDao().insertOrUpdate(eventType)
                 context.config.addDisplayEventType(REGULAR_EVENT_TYPE_ID.toString())
+            }
+        }
+
+        private val MIGRATION_1_2 = object : Migration(1, 2) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.apply {
+                    execSQL("ALTER TABLE events ADD COLUMN reminder_1_type INTEGER NOT NULL DEFAULT 0")
+                    execSQL("ALTER TABLE events ADD COLUMN reminder_2_type INTEGER NOT NULL DEFAULT 0")
+                    execSQL("ALTER TABLE events ADD COLUMN reminder_3_type INTEGER NOT NULL DEFAULT 0")
+                    execSQL("ALTER TABLE events ADD COLUMN attendees TEXT NOT NULL DEFAULT '[]'")
+                }
             }
         }
     }

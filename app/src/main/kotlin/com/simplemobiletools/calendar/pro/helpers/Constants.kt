@@ -151,4 +151,7 @@ const val DELETE_SELECTED_OCCURRENCE = 0
 const val DELETE_FUTURE_OCCURRENCES = 1
 const val DELETE_ALL_OCCURRENCES = 2
 
+const val REMINDER_NOTIFICATION = 0
+const val REMINDER_EMAIL = 1
+
 fun getNowSeconds() = System.currentTimeMillis() / 1000L
