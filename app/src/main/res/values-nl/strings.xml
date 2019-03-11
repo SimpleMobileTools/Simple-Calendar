@@ -99,7 +99,7 @@
     <string name="event_reminders">Herinneringen</string>
 
     <!-- Event attendees -->
-    <string name="add_another_attendee">Add another attendee</string>
+    <string name="add_another_attendee">Persoon uitnodigen</string>
 
     <!-- Export / Import -->
     <string name="import_events">Afspraken importeren</string>
