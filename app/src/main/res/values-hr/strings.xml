@@ -98,6 +98,9 @@
     <string name="add_another_reminder">Dodaj još jedan podsjetnik</string>
     <string name="event_reminders">Podsjetnici na događaj</string>
 
+    <!-- Event attendees -->
+    <string name="add_another_attendee">Add another attendee</string>
+
     <!-- Export / Import -->
     <string name="import_events">Uvezi događaje</string>
     <string name="export_events">Izvezi događaje</string>

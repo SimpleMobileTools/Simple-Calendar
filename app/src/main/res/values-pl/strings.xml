@@ -98,6 +98,9 @@
     <string name="add_another_reminder">Dodaj inne przypomnienie</string>
     <string name="event_reminders">Przypomnienia</string>
 
+    <!-- Event attendees -->
+    <string name="add_another_attendee">Add another attendee</string>
+
     <!-- Export / Import -->
     <string name="import_events">Importuj wydarzenia</string>
     <string name="export_events">Eksportuj wydarzenia</string>

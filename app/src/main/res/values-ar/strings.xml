@@ -98,6 +98,9 @@
     <string name="add_another_reminder">إضافة تذكير آخر</string>
     <string name="event_reminders">تذكيرات الحدث</string>
 
+    <!-- Event attendees -->
+    <string name="add_another_attendee">Add another attendee</string>
+
     <!-- Export / Import -->
     <string name="import_events">إستيراد الأحداث</string>
     <string name="export_events">تصدير الأحداث</string>

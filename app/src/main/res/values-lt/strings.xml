@@ -98,6 +98,9 @@
     <string name="add_another_reminder">Pridėti kitą priminimą</string>
     <string name="event_reminders">Įvykių priminimai</string>
 
+    <!-- Event attendees -->
+    <string name="add_another_attendee">Add another attendee</string>
+
     <!-- Export / Import -->
     <string name="import_events">Importuoti įvykius</string>
     <string name="export_events">Eksportuoti įvykius</string>
