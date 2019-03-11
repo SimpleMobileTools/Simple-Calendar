@@ -284,8 +284,11 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                     .setIntent(intent)
                     .build()
 
-            manager.dynamicShortcuts = Arrays.asList(shortcut)
-            config.lastHandledShortcutColor = appIconColor
+            try {
+                manager.dynamicShortcuts = Arrays.asList(shortcut)
+                config.lastHandledShortcutColor = appIconColor
+            } catch (ignored: Exception) {
+            }
         }
     }
 
