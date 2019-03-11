@@ -99,7 +99,7 @@
     <string name="event_reminders">Υπενθυμίσεις εκδηλώσεων</string>
 
     <!-- Event attendees -->
-    <string name="add_another_attendee">Add another attendee</string>
+    <string name="add_another_attendee">Προσθήκη άλλης συμμετοχής</string>
 
     <!-- Export / Import -->
     <string name="import_events">Εισαγωγή εκδηλώσεων</string>
