@@ -104,10 +104,11 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
 
     private fun getWeekTimestamps(targetSeconds: Long): List<Long> {
         val weekTSs = ArrayList<Long>(PREFILLED_WEEKS)
-        var currWeekTS = targetSeconds - (PREFILLED_WEEKS / 2 * WEEK_SECONDS)
+        val dateTime = Formatter.getDateTimeFromTS(targetSeconds)
+        var currentWeek = dateTime.minusWeeks(PREFILLED_WEEKS / 2)
         for (i in 0 until PREFILLED_WEEKS) {
-            weekTSs.add(currWeekTS)
-            currWeekTS += WEEK_SECONDS
+            weekTSs.add(currentWeek.seconds())
+            currentWeek = currentWeek.plusWeeks(1)
         }
         return weekTSs
     }
