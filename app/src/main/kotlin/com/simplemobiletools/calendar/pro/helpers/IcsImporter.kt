@@ -39,7 +39,7 @@ class IcsImporter(val activity: SimpleActivity) {
     private var isProperReminderAction = false
     private var isDescription = false
     private var isSequence = false
-    private var curReminderTriggerMinutes = -1
+    private var curReminderTriggerMinutes = REMINDER_OFF
     private var curReminderTriggerAction = REMINDER_NOTIFICATION
     private val eventsHelper = activity.eventsHelper
 
