@@ -120,7 +120,11 @@ data class Event(
 
     fun getIsAllDay() = flags and FLAG_ALL_DAY != 0
 
-    fun getReminders() = setOf(reminder1Minutes, reminder2Minutes, reminder3Minutes).filter { it != REMINDER_OFF }
+    fun getReminders() = setOf(
+            Reminder(reminder1Minutes, reminder1Type),
+            Reminder(reminder2Minutes, reminder2Type),
+            Reminder(reminder3Minutes, reminder3Type)
+    ).filter { it.minutes != REMINDER_OFF }
 
     // properly return the start time of all-day events as midnight
     fun getEventStartTS(): Long {
