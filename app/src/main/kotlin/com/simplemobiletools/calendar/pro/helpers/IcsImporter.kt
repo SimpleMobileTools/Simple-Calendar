@@ -8,6 +8,7 @@ import com.simplemobiletools.calendar.pro.extensions.eventsHelper
 import com.simplemobiletools.calendar.pro.helpers.IcsImporter.ImportResult.*
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.EventType
+import com.simplemobiletools.calendar.pro.models.Reminder
 import com.simplemobiletools.commons.extensions.areDigitsOnly
 import com.simplemobiletools.commons.extensions.showErrorToast
 import java.io.File
@@ -26,6 +27,7 @@ class IcsImporter(val activity: SimpleActivity) {
     private var curRecurrenceDayCode = ""
     private var curFlags = 0
     private var curReminderMinutes = ArrayList<Int>()
+    private var curReminderActions = ArrayList<Int>()
     private var curRepeatExceptions = ArrayList<String>()
     private var curRepeatInterval = 0
     private var curRepeatLimit = 0L
@@ -38,6 +40,7 @@ class IcsImporter(val activity: SimpleActivity) {
     private var isDescription = false
     private var isSequence = false
     private var curReminderTriggerMinutes = -1
+    private var curReminderTriggerAction = REMINDER_NOTIFICATION
     private val eventsHelper = activity.eventsHelper
 
     private var eventsImported = 0
@@ -101,7 +104,11 @@ class IcsImporter(val activity: SimpleActivity) {
                         curRepeatLimit = repeatRule.repeatLimit
                     } else if (line.startsWith(ACTION)) {
                         isNotificationDescription = true
-                        isProperReminderAction = line.substring(ACTION.length) == DISPLAY
+                        val action = line.substring(ACTION.length)
+                        isProperReminderAction = action == DISPLAY || action == EMAIL
+                        if (isProperReminderAction) {
+                            curReminderTriggerAction = if (action == DISPLAY) REMINDER_NOTIFICATION else REMINDER_EMAIL
+                        }
                     } else if (line.startsWith(TRIGGER)) {
                         curReminderTriggerMinutes = Parser().parseDurationSeconds(line.substring(TRIGGER.length)) / 60
                     } else if (line.startsWith(CATEGORY_COLOR)) {
@@ -129,8 +136,9 @@ class IcsImporter(val activity: SimpleActivity) {
                     } else if (line.startsWith(SEQUENCE)) {
                         isSequence = true
                     } else if (line == END_ALARM) {
-                        if (isProperReminderAction && curReminderTriggerMinutes != -1) {
+                        if (isProperReminderAction && curReminderTriggerMinutes != REMINDER_OFF) {
                             curReminderMinutes.add(curReminderTriggerMinutes)
+                            curReminderActions.add(curReminderTriggerAction)
                         }
                     } else if (line == END_EVENT) {
                         if (curStart != -1L && curEnd == -1L) {
@@ -147,10 +155,17 @@ class IcsImporter(val activity: SimpleActivity) {
                             continue
                         }
 
+                        var reminders = arrayListOf(
+                                Reminder(curReminderMinutes.getOrElse(0) { REMINDER_OFF }, curReminderActions.getOrElse(0) { REMINDER_NOTIFICATION }),
+                                Reminder(curReminderMinutes.getOrElse(1) { REMINDER_OFF }, curReminderActions.getOrElse(1) { REMINDER_NOTIFICATION }),
+                                Reminder(curReminderMinutes.getOrElse(2) { REMINDER_OFF }, curReminderActions.getOrElse(2) { REMINDER_NOTIFICATION })
+                        )
+                        reminders = reminders.filter { it.minutes != REMINDER_OFF }.sortedBy { it.minutes }.toMutableList() as ArrayList<Reminder>
+
                         val eventType = eventTypes.firstOrNull { it.id == curEventTypeId }
                         val source = if (calDAVCalendarId == 0 || eventType?.isSyncedEventType() == false) SOURCE_IMPORTED_ICS else "$CALDAV-$calDAVCalendarId"
-                        val event = Event(null, curStart, curEnd, curTitle, curLocation, curDescription, curReminderMinutes.getOrElse(0) { -1 },
-                                curReminderMinutes.getOrElse(1) { -1 }, curReminderMinutes.getOrElse(2) { -1 }, 0, 0, 0, curRepeatInterval, curRepeatRule,
+                        val event = Event(null, curStart, curEnd, curTitle, curLocation, curDescription, reminders[0].minutes,
+                                reminders[1].minutes, reminders[2].minutes, reminders[0].type, reminders[1].type, reminders[2].type, curRepeatInterval, curRepeatRule,
                                 curRepeatLimit, curRepeatExceptions, ArrayList(), curImportId, curFlags, curEventTypeId, 0, curLastModified, source)
 
                         if (event.getIsAllDay() && curEnd > curStart) {
@@ -269,6 +284,7 @@ class IcsImporter(val activity: SimpleActivity) {
         curRecurrenceDayCode = ""
         curFlags = 0
         curReminderMinutes = ArrayList()
+        curReminderActions = ArrayList()
         curRepeatExceptions = ArrayList()
         curRepeatInterval = 0
         curRepeatLimit = 0L
@@ -279,6 +295,7 @@ class IcsImporter(val activity: SimpleActivity) {
         isNotificationDescription = false
         isProperReminderAction = false
         isSequence = false
-        curReminderTriggerMinutes = -1
+        curReminderTriggerMinutes = REMINDER_OFF
+        curReminderTriggerAction = REMINDER_NOTIFICATION
     }
 }
