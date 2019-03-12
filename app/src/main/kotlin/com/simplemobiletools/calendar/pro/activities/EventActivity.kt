@@ -19,6 +19,7 @@ import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.models.CalDAVCalendar
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.EventType
+import com.simplemobiletools.calendar.pro.models.Reminder
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
@@ -154,21 +155,21 @@ class EventActivity : SimpleActivity() {
         event_reminder_1_type.setOnClickListener {
             showReminderTypePicker(mReminder1Type) {
                 mReminder1Type = it
-                updateReminderTypeImage(event_reminder_1_type, mReminder1Minutes, mReminder1Type)
+                updateReminderTypeImage(event_reminder_1_type, Reminder(mReminder1Minutes, mReminder1Type))
             }
         }
 
         event_reminder_2_type.setOnClickListener {
             showReminderTypePicker(mReminder2Type) {
                 mReminder2Type = it
-                updateReminderTypeImage(event_reminder_2_type, mReminder2Minutes, mReminder2Type)
+                updateReminderTypeImage(event_reminder_2_type, Reminder(mReminder2Minutes, mReminder2Type))
             }
         }
 
         event_reminder_3_type.setOnClickListener {
             showReminderTypePicker(mReminder3Type) {
                 mReminder3Type = it
-                updateReminderTypeImage(event_reminder_3_type, mReminder3Minutes, mReminder3Type)
+                updateReminderTypeImage(event_reminder_3_type, Reminder(mReminder3Minutes, mReminder3Type))
             }
         }
 
@@ -632,14 +633,14 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun updateReminderTypeImages() {
-        updateReminderTypeImage(event_reminder_1_type, mReminder1Minutes, mReminder1Type)
-        updateReminderTypeImage(event_reminder_2_type, mReminder2Minutes, mReminder2Type)
-        updateReminderTypeImage(event_reminder_3_type, mReminder3Minutes, mReminder3Type)
+        updateReminderTypeImage(event_reminder_1_type, Reminder(mReminder1Minutes, mReminder1Type))
+        updateReminderTypeImage(event_reminder_2_type, Reminder(mReminder2Minutes, mReminder2Type))
+        updateReminderTypeImage(event_reminder_3_type, Reminder(mReminder3Minutes, mReminder3Type))
     }
 
-    private fun updateReminderTypeImage(view: ImageView, minutes: Int, type: Int) {
-        view.beVisibleIf(minutes != REMINDER_OFF && mEventCalendarId != STORED_LOCALLY_ONLY)
-        val drawable = if (type == REMINDER_NOTIFICATION) R.drawable.ic_bell else R.drawable.ic_email
+    private fun updateReminderTypeImage(view: ImageView, reminder: Reminder) {
+        view.beVisibleIf(reminder.minutes != REMINDER_OFF && mEventCalendarId != STORED_LOCALLY_ONLY)
+        val drawable = if (reminder.type == REMINDER_NOTIFICATION) R.drawable.ic_bell else R.drawable.ic_email
         val icon = resources.getColoredDrawableWithColor(drawable, config.textColor)
         view.setImageDrawable(icon)
     }
@@ -820,28 +821,26 @@ class EventActivity : SimpleActivity() {
             "$CALDAV-$mEventCalendarId"
         }
 
-        val reminders = LinkedHashMap<Int, Int>().apply {
-            put(mReminder1Minutes, mReminder1Type)
-            put(mReminder2Minutes, mReminder2Type)
-            put(mReminder3Minutes, mReminder3Type)
-        }
+        var reminders = arrayListOf(
+                Reminder(mReminder1Minutes, mReminder1Type),
+                Reminder(mReminder2Minutes, mReminder2Type),
+                Reminder(mReminder3Minutes, mReminder3Type)
+        )
+        reminders = reminders.filter { it.minutes != REMINDER_OFF }.sortedBy { it.minutes }.toMutableList() as ArrayList<Reminder>
 
-        val sortedReminders = reminders.toSortedMap().filter { it.key != REMINDER_OFF }
-        val keys = sortedReminders.keys.toList()
-        val reminder1 = keys.getOrElse(0) { REMINDER_OFF }
-        val reminder2 = keys.getOrElse(1) { REMINDER_OFF }
-        val reminder3 = keys.getOrElse(2) { REMINDER_OFF }
+        val reminder1 = reminders.getOrNull(0) ?: Reminder(REMINDER_OFF, REMINDER_NOTIFICATION)
+        val reminder2 = reminders.getOrNull(1) ?: Reminder(REMINDER_OFF, REMINDER_NOTIFICATION)
+        val reminder3 = reminders.getOrNull(2) ?: Reminder(REMINDER_OFF, REMINDER_NOTIFICATION)
 
-        val types = sortedReminders.values.toList()
-        mReminder1Type = if (mEventCalendarId == STORED_LOCALLY_ONLY) REMINDER_NOTIFICATION else types.getOrElse(0) { REMINDER_NOTIFICATION }
-        mReminder2Type = if (mEventCalendarId == STORED_LOCALLY_ONLY) REMINDER_NOTIFICATION else types.getOrElse(1) { REMINDER_NOTIFICATION }
-        mReminder3Type = if (mEventCalendarId == STORED_LOCALLY_ONLY) REMINDER_NOTIFICATION else types.getOrElse(2) { REMINDER_NOTIFICATION }
+        mReminder1Type = if (mEventCalendarId == STORED_LOCALLY_ONLY) REMINDER_NOTIFICATION else reminder1.type
+        mReminder2Type = if (mEventCalendarId == STORED_LOCALLY_ONLY) REMINDER_NOTIFICATION else reminder2.type
+        mReminder3Type = if (mEventCalendarId == STORED_LOCALLY_ONLY) REMINDER_NOTIFICATION else reminder3.type
 
         config.apply {
             if (usePreviousEventReminders) {
-                lastEventReminderMinutes1 = reminder1
-                lastEventReminderMinutes2 = reminder2
-                lastEventReminderMinutes3 = reminder3
+                lastEventReminderMinutes1 = reminder1.minutes
+                lastEventReminderMinutes2 = reminder2.minutes
+                lastEventReminderMinutes3 = reminder3.minutes
             }
         }
 
@@ -850,9 +849,9 @@ class EventActivity : SimpleActivity() {
             endTS = newEndTS
             title = newTitle
             description = event_description.value
-            reminder1Minutes = reminder1
-            reminder2Minutes = reminder2
-            reminder3Minutes = reminder3
+            reminder1Minutes = reminder1.minutes
+            reminder2Minutes = reminder2.minutes
+            reminder3Minutes = reminder3.minutes
             reminder1Type = mReminder1Type
             reminder2Type = mReminder2Type
             reminder3Type = mReminder3Type
