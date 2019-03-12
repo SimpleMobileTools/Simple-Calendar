@@ -315,7 +315,6 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
-
     private fun setupWeekNumbers() {
         settings_week_numbers.isChecked = config.showWeekNumbers
         settings_week_numbers_holder.setOnClickListener {

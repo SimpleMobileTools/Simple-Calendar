@@ -53,7 +53,7 @@ class CalDAVHelper(val context: Context) {
     }
 
     @SuppressLint("MissingPermission")
-    fun getCalDAVCalendars(ids: String, showToasts: Boolean): List<CalDAVCalendar> {
+    fun getCalDAVCalendars(ids: String, showToasts: Boolean): ArrayList<CalDAVCalendar> {
         val calendars = ArrayList<CalDAVCalendar>()
         if (!context.hasPermission(PERMISSION_WRITE_CALENDAR) || !context.hasPermission(PERMISSION_READ_CALENDAR)) {
             return calendars
@@ -73,7 +73,7 @@ class CalDAVHelper(val context: Context) {
         var cursor: Cursor? = null
         try {
             cursor = context.contentResolver.query(uri, projection, selection, null, null)
-            if (cursor != null && cursor.moveToFirst()) {
+            if (cursor?.moveToFirst() == true) {
                 do {
                     val id = cursor.getIntValue(CalendarContract.Calendars._ID)
                     val displayName = cursor.getStringValue(CalendarContract.Calendars.CALENDAR_DISPLAY_NAME)
@@ -145,7 +145,7 @@ class CalDAVHelper(val context: Context) {
         var cursor: Cursor? = null
         try {
             cursor = context.contentResolver.query(uri, projection, selection, selectionArgs, null)
-            if (cursor != null && cursor.moveToFirst()) {
+            if (cursor?.moveToFirst() == true) {
                 do {
                     val colorKey = cursor.getIntValue(CalendarContract.Colors.COLOR_KEY)
                     val color = cursor.getIntValue(CalendarContract.Colors.COLOR)
@@ -193,7 +193,7 @@ class CalDAVHelper(val context: Context) {
         var cursor: Cursor? = null
         try {
             cursor = context.contentResolver.query(uri, projection, selection, null, null)
-            if (cursor != null && cursor.moveToFirst()) {
+            if (cursor?.moveToFirst() == true) {
                 do {
                     val id = cursor.getLongValue(CalendarContract.Events._ID)
                     val title = cursor.getStringValue(CalendarContract.Events.TITLE) ?: ""
@@ -457,7 +457,7 @@ class CalDAVHelper(val context: Context) {
         var cursor: Cursor? = null
         try {
             cursor = context.contentResolver.query(uri, projection, selection, null, null)
-            if (cursor != null && cursor.moveToFirst()) {
+            if (cursor?.moveToFirst() == true) {
                 do {
                     val minutes = cursor.getIntValue(CalendarContract.Reminders.MINUTES)
                     val method = cursor.getIntValue(CalendarContract.Reminders.METHOD)
