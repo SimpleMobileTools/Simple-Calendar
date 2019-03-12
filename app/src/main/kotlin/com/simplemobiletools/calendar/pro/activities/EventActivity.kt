@@ -9,6 +9,7 @@ import android.text.method.LinkMovementMethod
 import android.view.Menu
 import android.view.MenuItem
 import android.view.WindowManager
+import android.widget.ImageView
 import androidx.core.app.NotificationManagerCompat
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.dialogs.*
@@ -23,7 +24,6 @@ import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.models.RadioItem
-import com.simplemobiletools.commons.views.MyTextView
 import kotlinx.android.synthetic.main.activity_event.*
 import kotlinx.android.synthetic.main.activity_event.view.*
 import org.joda.time.DateTime
@@ -154,21 +154,21 @@ class EventActivity : SimpleActivity() {
         event_reminder_1_type.setOnClickListener {
             showReminderTypePicker(mReminder1Type) {
                 mReminder1Type = it
-                updateReminderTypeText(event_reminder_1_type, mReminder1Type)
+                updateReminderTypeImage(event_reminder_1_type, mReminder1Type)
             }
         }
 
         event_reminder_2_type.setOnClickListener {
             showReminderTypePicker(mReminder2Type) {
                 mReminder2Type = it
-                updateReminderTypeText(event_reminder_2_type, mReminder2Type)
+                updateReminderTypeImage(event_reminder_2_type, mReminder2Type)
             }
         }
 
         event_reminder_3_type.setOnClickListener {
             showReminderTypePicker(mReminder3Type) {
                 mReminder3Type = it
-                updateReminderTypeText(event_reminder_3_type, mReminder3Type)
+                updateReminderTypeImage(event_reminder_3_type, mReminder3Type)
             }
         }
 
@@ -593,10 +593,7 @@ class EventActivity : SimpleActivity() {
 
     private fun updateReminder1Text() {
         event_reminder_1.text = getFormattedMinutes(mReminder1Minutes)
-        event_reminder_1_type.apply {
-            beVisibleIf(mReminder1Minutes != REMINDER_OFF)
-            text = getString(R.string.notification)
-        }
+        event_reminder_1_type.beVisibleIf(mReminder1Minutes != REMINDER_OFF)
     }
 
     private fun updateReminder2Text() {
@@ -611,10 +608,7 @@ class EventActivity : SimpleActivity() {
             }
         }
 
-        event_reminder_2_type.apply {
-            beVisibleIf(mReminder2Minutes != REMINDER_OFF)
-            text = getString(R.string.notification)
-        }
+        event_reminder_2_type.beVisibleIf(mReminder2Minutes != REMINDER_OFF)
     }
 
     private fun updateReminder3Text() {
@@ -629,10 +623,7 @@ class EventActivity : SimpleActivity() {
             }
         }
 
-        event_reminder_3_type.apply {
-            beVisibleIf(mReminder3Minutes != REMINDER_OFF)
-            text = getString(R.string.notification)
-        }
+        event_reminder_3_type.beVisibleIf(mReminder3Minutes != REMINDER_OFF)
     }
 
     private fun showReminderTypePicker(currentValue: Int, callback: (Int) -> Unit) {
@@ -646,14 +637,15 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun updateReminderTypeTexts() {
-        updateReminderTypeText(event_reminder_1_type, mReminder1Type)
-        updateReminderTypeText(event_reminder_2_type, mReminder2Type)
-        updateReminderTypeText(event_reminder_3_type, mReminder3Type)
+        updateReminderTypeImage(event_reminder_1_type, mReminder1Type)
+        updateReminderTypeImage(event_reminder_2_type, mReminder2Type)
+        updateReminderTypeImage(event_reminder_3_type, mReminder3Type)
     }
 
-    private fun updateReminderTypeText(view: MyTextView, type: Int) {
-        val text = getString(if (type == REMINDER_NOTIFICATION) R.string.notification else R.string.email)
-        view.text = text
+    private fun updateReminderTypeImage(view: ImageView, type: Int) {
+        val drawable = if (type == REMINDER_NOTIFICATION) R.drawable.ic_bell else R.drawable.ic_email
+        val icon = resources.getColoredDrawableWithColor(drawable, config.textColor)
+        view.setImageDrawable(icon)
     }
 
     private fun updateRepetitionText() {
@@ -1095,5 +1087,8 @@ class EventActivity : SimpleActivity() {
         event_type_image.applyColorFilter(textColor)
         event_caldav_calendar_image.applyColorFilter(textColor)
         event_show_on_map.applyColorFilter(getAdjustedPrimaryColor())
+        event_reminder_1_type.applyColorFilter(textColor)
+        event_reminder_2_type.applyColorFilter(textColor)
+        event_reminder_3_type.applyColorFilter(textColor)
     }
 }

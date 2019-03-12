@@ -197,17 +197,18 @@
             android:textSize="@dimen/day_text_size"
             tools:text="@string/add_another_reminder"/>
 
-        <com.simplemobiletools.commons.views.MyTextView
+        <ImageView
             android:id="@+id/event_reminder_1_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/event_date_time_divider"
+            android:layout_alignTop="@+id/event_reminder_1"
+            android:layout_alignBottom="@+id/event_reminder_1"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="@dimen/small_margin"
+            android:alpha="0.8"
             android:background="?attr/selectableItemBackground"
             android:padding="@dimen/activity_margin"
-            android:textSize="@dimen/day_text_size"
-            tools:text="@string/notification"/>
+            android:src="@drawable/ic_bell"/>
 
         <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/event_reminder_2"
@@ -227,17 +228,18 @@
             android:visibility="gone"
             tools:text="@string/add_another_reminder"/>
 
-        <com.simplemobiletools.commons.views.MyTextView
+        <ImageView
             android:id="@+id/event_reminder_2_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/event_reminder_1"
+            android:layout_alignTop="@+id/event_reminder_2"
+            android:layout_alignBottom="@+id/event_reminder_2"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="@dimen/small_margin"
+            android:alpha="0.8"
             android:background="?attr/selectableItemBackground"
             android:padding="@dimen/activity_margin"
-            android:textSize="@dimen/day_text_size"
-            tools:text="@string/notification"/>
+            android:src="@drawable/ic_bell"/>
 
         <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/event_reminder_3"
@@ -257,17 +259,18 @@
             android:visibility="gone"
             tools:text="@string/add_another_reminder"/>
 
-        <com.simplemobiletools.commons.views.MyTextView
+        <ImageView
             android:id="@+id/event_reminder_3_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/event_reminder_2"
+            android:layout_alignTop="@+id/event_reminder_3"
+            android:layout_alignBottom="@+id/event_reminder_3"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="@dimen/small_margin"
+            android:alpha="0.8"
             android:background="?attr/selectableItemBackground"
             android:padding="@dimen/activity_margin"
-            android:textSize="@dimen/day_text_size"
-            tools:text="@string/notification"/>
+            android:src="@drawable/ic_bell"/>
 
         <ImageView
             android:id="@+id/event_reminder_divider"
