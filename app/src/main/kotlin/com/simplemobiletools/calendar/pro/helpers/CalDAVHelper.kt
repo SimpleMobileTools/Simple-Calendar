@@ -347,9 +347,9 @@ class CalDAVHelper(val context: Context) {
         clearEventReminders(event)
         event.getReminders().forEach {
             val contentValues = ContentValues().apply {
-                put(Reminders.MINUTES, it)
+                put(Reminders.MINUTES, it.minutes)
+                put(Reminders.METHOD, if (it.type == REMINDER_EMAIL) Reminders.METHOD_EMAIL else Reminders.METHOD_ALERT)
                 put(Reminders.EVENT_ID, event.getCalDAVEventId())
-                put(Reminders.METHOD, Reminders.METHOD_ALERT)
             }
 
             try {
