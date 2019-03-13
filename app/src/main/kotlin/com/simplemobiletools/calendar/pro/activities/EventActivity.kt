@@ -67,6 +67,7 @@ class EventActivity : SimpleActivity() {
     private var mEventOccurrenceTS = 0L
     private var mEventCalendarId = STORED_LOCALLY_ONLY
     private var mWasActivityInitialized = false
+    private var mWasContactsPermissionChecked = false
     private var mAttendees = ArrayList<Attendee>()
     private var mAttendeeViews = ArrayList<MyEditText>()
 
@@ -81,6 +82,7 @@ class EventActivity : SimpleActivity() {
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_cross)
         val intent = intent ?: return
         mDialogTheme = getDialogTheme()
+        mWasContactsPermissionChecked = hasPermission(PERMISSION_READ_CONTACTS)
 
         val eventId = intent.getLongExtra(EVENT_ID, 0L)
         Thread {
@@ -1131,8 +1133,13 @@ class EventActivity : SimpleActivity() {
         val attendeeHolder = layoutInflater.inflate(R.layout.item_attendee, event_attendees_holder, false) as RelativeLayout
         mAttendeeViews.add(attendeeHolder.event_attendee)
         attendeeHolder.event_attendee.onTextChangeListener {
-            if (value == null && mAttendeeViews.none { it.value.isEmpty() }) {
-                addAttendee()
+            if (mWasContactsPermissionChecked && value == null) {
+                checkNewAttendeeField(value)
+            } else {
+                handlePermission(PERMISSION_READ_CONTACTS) {
+                    checkNewAttendeeField(value)
+                    mWasContactsPermissionChecked = true
+                }
             }
         }
 
@@ -1140,6 +1147,12 @@ class EventActivity : SimpleActivity() {
         attendeeHolder.event_attendee.setColors(config.textColor, getAdjustedPrimaryColor(), config.backgroundColor)
         if (value != null) {
             attendeeHolder.event_attendee.setText(value)
+        }
+    }
+
+    private fun checkNewAttendeeField(value: String?) {
+        if (value == null && mAttendeeViews.none { it.value.isEmpty() }) {
+            addAttendee()
         }
     }
 
