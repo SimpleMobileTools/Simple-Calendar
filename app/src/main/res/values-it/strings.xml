@@ -99,7 +99,7 @@
     <string name="event_reminders">Promemoria eventi</string>
 
     <!-- Event attendees -->
-    <string name="add_another_attendee">Add another attendee</string>
+    <string name="add_another_attendee">Aggiungi un partecipante</string>
 
     <!-- Export / Import -->
     <string name="import_events">Importa eventi</string>
