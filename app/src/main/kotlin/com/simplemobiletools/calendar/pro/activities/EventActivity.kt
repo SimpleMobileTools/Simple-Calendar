@@ -13,12 +13,14 @@ import android.text.method.LinkMovementMethod
 import android.view.Menu
 import android.view.MenuItem
 import android.view.WindowManager
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import androidx.core.app.NotificationManagerCompat
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.simplemobiletools.calendar.pro.R
+import com.simplemobiletools.calendar.pro.adapters.AutoCompleteTextViewAdapter
 import com.simplemobiletools.calendar.pro.dialogs.*
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.*
@@ -29,7 +31,6 @@ import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.models.RadioItem
-import com.simplemobiletools.commons.views.MyEditText
 import kotlinx.android.synthetic.main.activity_event.*
 import kotlinx.android.synthetic.main.activity_event.view.*
 import kotlinx.android.synthetic.main.item_attendee.view.*
@@ -72,7 +73,7 @@ class EventActivity : SimpleActivity() {
     private var mWasActivityInitialized = false
     private var mWasContactsPermissionChecked = false
     private var mAttendees = ArrayList<Attendee>()
-    private var mAttendeeViews = ArrayList<MyEditText>()
+    private var mAttendeeViews = ArrayList<EditText>()
     private var mAvailableContacts = ArrayList<Attendee>()
 
     private lateinit var mEventStartDateTime: DateTime
@@ -1166,6 +1167,9 @@ class EventActivity : SimpleActivity() {
         if (value != null) {
             attendeeHolder.event_attendee.setText(value)
         }
+
+        val adapter = AutoCompleteTextViewAdapter(this, mAvailableContacts)
+        attendeeHolder.event_attendee.setAdapter(adapter)
     }
 
     private fun checkNewAttendeeField(value: String?) {
