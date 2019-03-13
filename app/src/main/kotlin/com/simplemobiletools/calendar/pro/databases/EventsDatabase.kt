@@ -67,7 +67,7 @@ abstract class EventsDatabase : RoomDatabase() {
                     execSQL("ALTER TABLE events ADD COLUMN reminder_1_type INTEGER NOT NULL DEFAULT 0")
                     execSQL("ALTER TABLE events ADD COLUMN reminder_2_type INTEGER NOT NULL DEFAULT 0")
                     execSQL("ALTER TABLE events ADD COLUMN reminder_3_type INTEGER NOT NULL DEFAULT 0")
-                    execSQL("ALTER TABLE events ADD COLUMN attendees TEXT NOT NULL DEFAULT '[]'")
+                    execSQL("ALTER TABLE events ADD COLUMN attendees TEXT NOT NULL DEFAULT ''")
                 }
             }
         }

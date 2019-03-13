@@ -12,15 +12,14 @@ import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import androidx.core.app.NotificationManagerCompat
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.dialogs.*
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
-import com.simplemobiletools.calendar.pro.models.CalDAVCalendar
-import com.simplemobiletools.calendar.pro.models.Event
-import com.simplemobiletools.calendar.pro.models.EventType
-import com.simplemobiletools.calendar.pro.models.Reminder
+import com.simplemobiletools.calendar.pro.models.*
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
@@ -67,6 +66,7 @@ class EventActivity : SimpleActivity() {
     private var mEventOccurrenceTS = 0L
     private var mEventCalendarId = STORED_LOCALLY_ONLY
     private var mWasActivityInitialized = false
+    private var mAttendees = ArrayList<Attendee>()
     private var mAttendeeViews = ArrayList<MyEditText>()
 
     private lateinit var mEventStartDateTime: DateTime
@@ -238,7 +238,7 @@ class EventActivity : SimpleActivity() {
             putInt(REPEAT_RULE, mRepeatRule)
             putLong(REPEAT_LIMIT, mRepeatLimit)
 
-            putStringArrayList(ATTENDEES, getAllAttendees())
+            putString(ATTENDEES, getAllAttendees())
 
             putLong(EVENT_TYPE_ID, mEventTypeId)
             putInt(EVENT_CALENDAR_ID, mEventCalendarId)
@@ -269,7 +269,8 @@ class EventActivity : SimpleActivity() {
             mRepeatRule = getInt(REPEAT_RULE)
             mRepeatLimit = getLong(REPEAT_LIMIT)
 
-            mEvent.attendees = getStringArrayList(ATTENDEES) as ArrayList<String>
+            mAttendees = Gson().fromJson<ArrayList<Attendee>>(getString(ATTENDEES), object : TypeToken<List<Attendee>>() {}.type)
+                    ?: ArrayList()
 
             mEventTypeId = getLong(EVENT_TYPE_ID)
             mEventCalendarId = getInt(EVENT_CALENDAR_ID)
@@ -313,6 +314,7 @@ class EventActivity : SimpleActivity() {
         mRepeatRule = mEvent.repeatRule
         mEventTypeId = mEvent.eventType
         mEventCalendarId = mEvent.getCalDAVCalendarId()
+        mAttendees = Gson().fromJson<ArrayList<Attendee>>(mEvent.attendees, object : TypeToken<List<Attendee>>() {}.type) ?: ArrayList()
         checkRepeatTexts(mRepeatInterval)
     }
 
@@ -892,7 +894,7 @@ class EventActivity : SimpleActivity() {
             flags = mEvent.flags.addBitIf(event_all_day.isChecked, FLAG_ALL_DAY)
             repeatLimit = if (repeatInterval == 0) 0 else mRepeatLimit
             repeatRule = mRepeatRule
-            attendees = if (mEventCalendarId == STORED_LOCALLY_ONLY) ArrayList() else getAllAttendees()
+            attendees = if (mEventCalendarId == STORED_LOCALLY_ONLY) "" else getAllAttendees()
             eventType = newEventType
             lastUpdated = System.currentTimeMillis()
             source = newSource
@@ -1109,8 +1111,8 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun updateAttendees() {
-        mEvent.attendees.forEach {
-            addAttendee(it)
+        mAttendees.forEach {
+            addAttendee(it.getPublicName())
         }
         addAttendee()
 
@@ -1140,7 +1142,14 @@ class EventActivity : SimpleActivity() {
         }
     }
 
-    private fun getAllAttendees() = mAttendeeViews.map { it.value }.filter { it.isNotEmpty() }.toMutableList() as ArrayList<String>
+    private fun getAllAttendees(): String {
+        val attendeeEmails = mAttendeeViews.map { it.value }.filter { it.isNotEmpty() }.toMutableList() as ArrayList<String>
+        val attendees = ArrayList<Attendee>()
+        attendeeEmails.mapTo(attendees) {
+            Attendee("", it, 0)
+        }
+        return Gson().toJson(attendees)
+    }
 
     private fun updateIconColors() {
         val textColor = config.textColor

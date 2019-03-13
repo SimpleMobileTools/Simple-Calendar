@@ -29,7 +29,7 @@ data class Event(
         @ColumnInfo(name = "repeat_rule") var repeatRule: Int = 0,
         @ColumnInfo(name = "repeat_limit") var repeatLimit: Long = 0L,
         @ColumnInfo(name = "repetition_exceptions") var repetitionExceptions: ArrayList<String> = ArrayList(),
-        @ColumnInfo(name = "attendees") var attendees: ArrayList<String> = ArrayList(),
+        @ColumnInfo(name = "attendees") var attendees: String = "",
         @ColumnInfo(name = "import_id") var importId: String = "",
         @ColumnInfo(name = "flags") var flags: Int = 0,
         @ColumnInfo(name = "event_type") var eventType: Long = REGULAR_EVENT_TYPE_ID,

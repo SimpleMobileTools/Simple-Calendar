@@ -8,6 +8,7 @@ import android.database.Cursor
 import android.provider.CalendarContract
 import android.provider.CalendarContract.Reminders
 import android.util.SparseIntArray
+import com.google.gson.Gson
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.models.*
@@ -203,6 +204,7 @@ class CalDAVHelper(val context: Context) {
                     val originalId = cursor.getStringValue(CalendarContract.Events.ORIGINAL_ID)
                     val originalInstanceTime = cursor.getLongValue(CalendarContract.Events.ORIGINAL_INSTANCE_TIME)
                     val reminders = getCalDAVEventReminders(id)
+                    val attendees = Gson().toJson(getCalDAVEventAttendees(id))
 
                     if (endTS == 0L) {
                         val duration = cursor.getStringValue(CalendarContract.Events.DURATION) ?: ""
@@ -219,7 +221,7 @@ class CalDAVHelper(val context: Context) {
                             reminder2?.minutes ?: REMINDER_OFF, reminder3?.minutes ?: REMINDER_OFF, reminder1?.type
                             ?: REMINDER_NOTIFICATION, reminder2?.type ?: REMINDER_NOTIFICATION, reminder3?.type
                             ?: REMINDER_NOTIFICATION, repeatRule.repeatInterval, repeatRule.repeatRule,
-                            repeatRule.repeatLimit, ArrayList(), ArrayList(), importId, allDay, eventTypeId, source = source)
+                            repeatRule.repeatLimit, ArrayList(), attendees, importId, allDay, eventTypeId, source = source)
 
                     if (event.getIsAllDay()) {
                         event.startTS = Formatter.getShiftedImportTimestamp(event.startTS)
