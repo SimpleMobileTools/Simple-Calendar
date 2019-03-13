@@ -33,6 +33,7 @@ import kotlinx.android.synthetic.main.item_attendee.view.*
 import org.joda.time.DateTime
 import java.util.*
 import java.util.regex.Pattern
+import kotlin.collections.ArrayList
 
 class EventActivity : SimpleActivity() {
     private val LAT_LON_PATTERN = "^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?)([,;])\\s*[-+]?(180(\\.0+)?|((1[0-7]\\d)|([1-9]?\\d))(\\.\\d+)?)\$"
@@ -48,6 +49,7 @@ class EventActivity : SimpleActivity() {
     private val REPEAT_INTERVAL = "REPEAT_INTERVAL"
     private val REPEAT_LIMIT = "REPEAT_LIMIT"
     private val REPEAT_RULE = "REPEAT_RULE"
+    private val ATTENDEES = "ATTENDEES"
     private val EVENT_TYPE_ID = "EVENT_TYPE_ID"
     private val EVENT_CALENDAR_ID = "EVENT_CALENDAR_ID"
 
@@ -236,6 +238,8 @@ class EventActivity : SimpleActivity() {
             putInt(REPEAT_RULE, mRepeatRule)
             putLong(REPEAT_LIMIT, mRepeatLimit)
 
+            putStringArrayList(ATTENDEES, getAllAttendees())
+
             putLong(EVENT_TYPE_ID, mEventTypeId)
             putInt(EVENT_CALENDAR_ID, mEventCalendarId)
         }
@@ -264,6 +268,8 @@ class EventActivity : SimpleActivity() {
             mRepeatInterval = getInt(REPEAT_INTERVAL)
             mRepeatRule = getInt(REPEAT_RULE)
             mRepeatLimit = getLong(REPEAT_LIMIT)
+
+            mEvent.attendees = getStringArrayList(ATTENDEES) as ArrayList<String>
 
             mEventTypeId = getLong(EVENT_TYPE_ID)
             mEventCalendarId = getInt(EVENT_CALENDAR_ID)
@@ -877,7 +883,7 @@ class EventActivity : SimpleActivity() {
             flags = mEvent.flags.addBitIf(event_all_day.isChecked, FLAG_ALL_DAY)
             repeatLimit = if (repeatInterval == 0) 0 else mRepeatLimit
             repeatRule = mRepeatRule
-            attendees = mAttendeeViews.map { it.value }.filter { it.isNotEmpty() }.toMutableList() as ArrayList<String>
+            attendees = getAllAttendees()
             eventType = newEventType
             lastUpdated = System.currentTimeMillis()
             source = newSource
@@ -1094,22 +1100,38 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun updateAttendees() {
+        mEvent.attendees.forEach {
+            addAttendee(it)
+        }
         addAttendee()
-        event_attendees_image.layoutParams.height = event_repetition_image.height
+
+        val imageHeight = event_repetition_image.height
+        if (imageHeight > 0) {
+            event_attendees_image.layoutParams.height = imageHeight
+        } else {
+            event_repetition_image.onGlobalLayout {
+                event_attendees_image.layoutParams.height = event_repetition_image.height
+            }
+        }
     }
 
-    private fun addAttendee() {
+    private fun addAttendee(value: String? = null) {
         val attendeeHolder = layoutInflater.inflate(R.layout.item_attendee, event_attendees_holder, false) as RelativeLayout
         mAttendeeViews.add(attendeeHolder.event_attendee)
         attendeeHolder.event_attendee.onTextChangeListener {
-            if (mAttendeeViews.none { it.value.isEmpty() }) {
+            if (value == null && mAttendeeViews.none { it.value.isEmpty() }) {
                 addAttendee()
             }
         }
 
         event_attendees_holder.addView(attendeeHolder)
         attendeeHolder.event_attendee.setColors(config.textColor, getAdjustedPrimaryColor(), config.backgroundColor)
+        if (value != null) {
+            attendeeHolder.event_attendee.setText(value)
+        }
     }
+
+    private fun getAllAttendees() = mAttendeeViews.map { it.value }.filter { it.isNotEmpty() }.toMutableList() as ArrayList<String>
 
     private fun updateIconColors() {
         val textColor = config.textColor
