@@ -9,6 +9,7 @@ import android.provider.CalendarContract
 import android.provider.CalendarContract.Reminders
 import android.util.SparseIntArray
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.models.*
@@ -323,6 +324,7 @@ class CalDAVHelper(val context: Context) {
         event.importId = getCalDAVEventImportId(calendarId, eventRemoteID)
 
         setupCalDAVEventReminders(event)
+        setupCalDAVEventAttendees(event)
         setupCalDAVEventImportId(event)
         refreshCalDAVCalendar(event)
     }
@@ -337,11 +339,11 @@ class CalDAVHelper(val context: Context) {
         context.contentResolver.update(newUri, values, null, null)
 
         setupCalDAVEventReminders(event)
+        setupCalDAVEventAttendees(event)
         setupCalDAVEventImportId(event)
         refreshCalDAVCalendar(event)
     }
 
-    @SuppressLint("MissingPermission")
     private fun setupCalDAVEventReminders(event: Event) {
         clearEventReminders(event)
         event.getReminders().forEach {
@@ -353,6 +355,25 @@ class CalDAVHelper(val context: Context) {
 
             try {
                 context.contentResolver.insert(Reminders.CONTENT_URI, contentValues)
+            } catch (e: Exception) {
+                context.toast(R.string.unknown_error_occurred)
+            }
+        }
+    }
+
+    private fun setupCalDAVEventAttendees(event: Event) {
+        clearEventAttendees(event)
+        val attendees = Gson().fromJson<ArrayList<Attendee>>(event.attendees, object : TypeToken<List<Attendee>>() {}.type) ?: ArrayList()
+        attendees.forEach {
+            val contentValues = ContentValues().apply {
+                put(CalendarContract.Attendees.ATTENDEE_NAME, it.name)
+                put(CalendarContract.Attendees.ATTENDEE_EMAIL, it.email)
+                put(CalendarContract.Attendees.ATTENDEE_STATUS, CalendarContract.Attendees.ATTENDEE_STATUS_ACCEPTED)
+                put(CalendarContract.Attendees.EVENT_ID, event.getCalDAVEventId())
+            }
+
+            try {
+                context.contentResolver.insert(CalendarContract.Attendees.CONTENT_URI, contentValues)
             } catch (e: Exception) {
                 context.toast(R.string.unknown_error_occurred)
             }
@@ -394,11 +415,16 @@ class CalDAVHelper(val context: Context) {
         }
     }
 
-    @SuppressLint("MissingPermission")
     private fun clearEventReminders(event: Event) {
         val selection = "${Reminders.EVENT_ID} = ?"
         val selectionArgs = arrayOf(event.getCalDAVEventId().toString())
         context.contentResolver.delete(Reminders.CONTENT_URI, selection, selectionArgs)
+    }
+
+    private fun clearEventAttendees(event: Event) {
+        val selection = "${CalendarContract.Attendees.EVENT_ID} = ?"
+        val selectionArgs = arrayOf(event.getCalDAVEventId().toString())
+        context.contentResolver.delete(CalendarContract.Attendees.CONTENT_URI, selection, selectionArgs)
     }
 
     private fun getDurationCode(event: Event): String {
@@ -425,7 +451,6 @@ class CalDAVHelper(val context: Context) {
         refreshCalDAVCalendar(event)
     }
 
-    @SuppressLint("MissingPermission")
     fun insertEventRepeatException(event: Event, occurrenceTS: Long): Long {
         val uri = CalendarContract.Events.CONTENT_URI
         val values = fillEventRepeatExceptionValues(event, occurrenceTS)

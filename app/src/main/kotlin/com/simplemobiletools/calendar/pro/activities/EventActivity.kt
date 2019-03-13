@@ -5,6 +5,7 @@ import android.app.TimePickerDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.provider.CalendarContract
 import android.text.method.LinkMovementMethod
 import android.view.Menu
 import android.view.MenuItem
@@ -1146,7 +1147,7 @@ class EventActivity : SimpleActivity() {
         val attendeeEmails = mAttendeeViews.map { it.value }.filter { it.isNotEmpty() }.toMutableList() as ArrayList<String>
         val attendees = ArrayList<Attendee>()
         attendeeEmails.mapTo(attendees) {
-            Attendee("", it, 0)
+            Attendee("", it, CalendarContract.Attendees.ATTENDEE_STATUS_INVITED)
         }
         return Gson().toJson(attendees)
     }
