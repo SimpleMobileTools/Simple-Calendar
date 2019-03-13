@@ -56,9 +56,9 @@ class EventActivity : SimpleActivity() {
     private val EVENT_TYPE_ID = "EVENT_TYPE_ID"
     private val EVENT_CALENDAR_ID = "EVENT_CALENDAR_ID"
 
-    private var mReminder1Minutes = 0
-    private var mReminder2Minutes = 0
-    private var mReminder3Minutes = 0
+    private var mReminder1Minutes = REMINDER_OFF
+    private var mReminder2Minutes = REMINDER_OFF
+    private var mReminder3Minutes = REMINDER_OFF
     private var mReminder1Type = REMINDER_NOTIFICATION
     private var mReminder2Type = REMINDER_NOTIFICATION
     private var mReminder3Type = REMINDER_NOTIFICATION
