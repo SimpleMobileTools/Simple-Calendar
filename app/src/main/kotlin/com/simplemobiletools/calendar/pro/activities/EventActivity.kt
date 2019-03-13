@@ -10,6 +10,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.WindowManager
 import android.widget.ImageView
+import android.widget.RelativeLayout
 import androidx.core.app.NotificationManagerCompat
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.dialogs.*
@@ -25,8 +26,10 @@ import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.models.RadioItem
+import com.simplemobiletools.commons.views.MyEditText
 import kotlinx.android.synthetic.main.activity_event.*
 import kotlinx.android.synthetic.main.activity_event.view.*
+import kotlinx.android.synthetic.main.item_attendee.view.*
 import org.joda.time.DateTime
 import java.util.*
 import java.util.regex.Pattern
@@ -58,7 +61,8 @@ class EventActivity : SimpleActivity() {
     private var mDialogTheme = 0
     private var mEventOccurrenceTS = 0L
     private var mEventCalendarId = STORED_LOCALLY_ONLY
-    private var wasActivityInitialized = false
+    private var mWasActivityInitialized = false
+    private var mAttendeeViews = ArrayList<MyEditText>()
 
     private lateinit var mEventStartDateTime: DateTime
     private lateinit var mEventEndDateTime: DateTime
@@ -123,6 +127,7 @@ class EventActivity : SimpleActivity() {
             updateTexts()
             updateEventType()
             updateCalDAVCalendar()
+            updateAttendees()
         }
 
         event_show_on_map.setOnClickListener { showOnMap() }
@@ -181,12 +186,12 @@ class EventActivity : SimpleActivity() {
 
         updateTextColors(event_scrollview)
         updateIconColors()
-        wasActivityInitialized = true
+        mWasActivityInitialized = true
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_event, menu)
-        if (wasActivityInitialized) {
+        if (mWasActivityInitialized) {
             menu.findItem(R.id.delete).isVisible = mEvent.id != null
             menu.findItem(R.id.share).isVisible = mEvent.id != null
             menu.findItem(R.id.duplicate).isVisible = mEvent.id != null
@@ -207,7 +212,7 @@ class EventActivity : SimpleActivity() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        if (!wasActivityInitialized) {
+        if (!mWasActivityInitialized) {
             return
         }
 
@@ -258,6 +263,7 @@ class EventActivity : SimpleActivity() {
         updateTexts()
         updateEventType()
         updateCalDAVCalendar()
+        updateAttendees()
     }
 
     private fun updateTexts() {
@@ -860,6 +866,7 @@ class EventActivity : SimpleActivity() {
             flags = mEvent.flags.addBitIf(event_all_day.isChecked, FLAG_ALL_DAY)
             repeatLimit = if (repeatInterval == 0) 0 else mRepeatLimit
             repeatRule = mRepeatRule
+            attendees = mAttendeeViews.map { it.value }.filter { it.isNotEmpty() }.toMutableList() as ArrayList<String>
             eventType = newEventType
             lastUpdated = System.currentTimeMillis()
             source = newSource
@@ -1075,6 +1082,24 @@ class EventActivity : SimpleActivity() {
         }
     }
 
+    private fun updateAttendees() {
+        addAttendee()
+        event_attendees_image.layoutParams.height = event_repetition_image.height
+    }
+
+    private fun addAttendee() {
+        val attendeeHolder = layoutInflater.inflate(R.layout.item_attendee, event_attendees_holder, false) as RelativeLayout
+        mAttendeeViews.add(attendeeHolder.event_attendee)
+        attendeeHolder.event_attendee.onTextChangeListener {
+            if (mAttendeeViews.none { it.value.isEmpty() }) {
+                addAttendee()
+            }
+        }
+
+        event_attendees_holder.addView(attendeeHolder)
+        attendeeHolder.event_attendee.setColors(config.textColor, getAdjustedPrimaryColor(), config.backgroundColor)
+    }
+
     private fun updateIconColors() {
         val textColor = config.textColor
         event_time_image.applyColorFilter(textColor)
@@ -1086,5 +1111,6 @@ class EventActivity : SimpleActivity() {
         event_reminder_1_type.applyColorFilter(textColor)
         event_reminder_2_type.applyColorFilter(textColor)
         event_reminder_3_type.applyColorFilter(textColor)
+        event_attendees_image.applyColorFilter(textColor)
     }
 }
