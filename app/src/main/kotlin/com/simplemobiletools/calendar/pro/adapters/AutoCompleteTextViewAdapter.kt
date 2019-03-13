@@ -8,6 +8,7 @@ import android.widget.Filter
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.models.Attendee
+import com.simplemobiletools.commons.extensions.normalizeString
 import kotlinx.android.synthetic.main.item_autocomplete.view.*
 
 class AutoCompleteTextViewAdapter(val activity: SimpleActivity, val contacts: ArrayList<Attendee>) : ArrayAdapter<Attendee>(activity, 0, contacts) {
@@ -30,8 +31,9 @@ class AutoCompleteTextViewAdapter(val activity: SimpleActivity, val contacts: Ar
             val filterResults = Filter.FilterResults()
             if (constraint != null) {
                 resultList.clear()
+                val searchString = constraint.toString().normalizeString()
                 contacts.forEach {
-                    if (it.email.contains(constraint, true)) {
+                    if (it.email.contains(searchString, true) || it.name.contains(searchString, true)) {
                         resultList.add(it)
                     }
                 }
