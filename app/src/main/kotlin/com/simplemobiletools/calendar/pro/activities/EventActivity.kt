@@ -288,6 +288,7 @@ class EventActivity : SimpleActivity() {
         checkReminderTexts()
         updateStartTexts()
         updateEndTexts()
+        updateAttendeesVisibility()
     }
 
     private fun setupEditEvent() {
@@ -661,6 +662,13 @@ class EventActivity : SimpleActivity() {
         updateReminderTypeImage(event_reminder_3_type, Reminder(mReminder3Minutes, mReminder3Type))
     }
 
+    private fun updateAttendeesVisibility() {
+        val isSyncedEvent = mEventCalendarId != STORED_LOCALLY_ONLY
+        event_attendees_image.beVisibleIf(isSyncedEvent)
+        event_attendees_holder.beVisibleIf(isSyncedEvent)
+        event_attendees_divider.beVisibleIf(isSyncedEvent)
+    }
+
     private fun updateReminderTypeImage(view: ImageView, reminder: Reminder) {
         view.beVisibleIf(reminder.minutes != REMINDER_OFF && mEventCalendarId != STORED_LOCALLY_ONLY)
         val drawable = if (reminder.type == REMINDER_NOTIFICATION) R.drawable.ic_bell else R.drawable.ic_email
@@ -706,6 +714,7 @@ class EventActivity : SimpleActivity() {
                     config.lastUsedCaldavCalendarId = it
                     updateCurrentCalendarInfo(getCalendarWithId(calendars, it))
                     updateReminderTypeImages()
+                    updateAttendeesVisibility()
                 }
             }
         } else {
@@ -883,7 +892,7 @@ class EventActivity : SimpleActivity() {
             flags = mEvent.flags.addBitIf(event_all_day.isChecked, FLAG_ALL_DAY)
             repeatLimit = if (repeatInterval == 0) 0 else mRepeatLimit
             repeatRule = mRepeatRule
-            attendees = getAllAttendees()
+            attendees = if (mEventCalendarId == STORED_LOCALLY_ONLY) ArrayList() else getAllAttendees()
             eventType = newEventType
             lastUpdated = System.currentTimeMillis()
             source = newSource
