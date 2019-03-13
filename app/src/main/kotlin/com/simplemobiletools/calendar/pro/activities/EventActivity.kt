@@ -3,9 +3,12 @@ package com.simplemobiletools.calendar.pro.activities
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
+import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
 import android.provider.CalendarContract
+import android.provider.ContactsContract
+import android.text.TextUtils
 import android.text.method.LinkMovementMethod
 import android.view.Menu
 import android.view.MenuItem
@@ -70,6 +73,7 @@ class EventActivity : SimpleActivity() {
     private var mWasContactsPermissionChecked = false
     private var mAttendees = ArrayList<Attendee>()
     private var mAttendeeViews = ArrayList<MyEditText>()
+    private var mAvailableContacts = ArrayList<Attendee>()
 
     private lateinit var mEventStartDateTime: DateTime
     private lateinit var mEventEndDateTime: DateTime
@@ -96,6 +100,7 @@ class EventActivity : SimpleActivity() {
             runOnUiThread {
                 gotEvent(savedInstanceState, localEventType, event)
             }
+            fillAvailableContacts()
         }.start()
     }
 
@@ -1113,6 +1118,19 @@ class EventActivity : SimpleActivity() {
         }
     }
 
+    private fun fillAvailableContacts() {
+        mAvailableContacts = getEmails()
+
+        val names = getNames()
+        mAvailableContacts.forEach {
+            val contactId = it.contactId
+            val name = names.firstOrNull { it.contactId == contactId }?.name
+            if (name != null) {
+                it.name = name
+            }
+        }
+    }
+
     private fun updateAttendees() {
         mAttendees.forEach {
             addAttendee(it.getPublicName())
@@ -1160,9 +1178,76 @@ class EventActivity : SimpleActivity() {
         val attendeeEmails = mAttendeeViews.map { it.value }.filter { it.isNotEmpty() }.toMutableList() as ArrayList<String>
         val attendees = ArrayList<Attendee>()
         attendeeEmails.mapTo(attendees) {
-            Attendee("", it, CalendarContract.Attendees.ATTENDEE_STATUS_INVITED)
+            Attendee(0, "", it, CalendarContract.Attendees.ATTENDEE_STATUS_INVITED)
         }
         return Gson().toJson(attendees)
+    }
+
+    private fun getNames(): List<Attendee> {
+        val contacts = ArrayList<Attendee>()
+        val uri = ContactsContract.Data.CONTENT_URI
+        val projection = arrayOf(
+                ContactsContract.Data.CONTACT_ID,
+                ContactsContract.CommonDataKinds.StructuredName.PREFIX,
+                ContactsContract.CommonDataKinds.StructuredName.GIVEN_NAME,
+                ContactsContract.CommonDataKinds.StructuredName.MIDDLE_NAME,
+                ContactsContract.CommonDataKinds.StructuredName.FAMILY_NAME,
+                ContactsContract.CommonDataKinds.StructuredName.SUFFIX)
+
+        val selection = "${ContactsContract.Data.MIMETYPE} = ?"
+        val selectionArgs = arrayOf(ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE)
+
+        var cursor: Cursor? = null
+        try {
+            cursor = contentResolver.query(uri, projection, selection, selectionArgs, null)
+            if (cursor?.moveToFirst() == true) {
+                do {
+                    val id = cursor.getIntValue(ContactsContract.Data.CONTACT_ID)
+                    val prefix = cursor.getStringValue(ContactsContract.CommonDataKinds.StructuredName.PREFIX) ?: ""
+                    val firstName = cursor.getStringValue(ContactsContract.CommonDataKinds.StructuredName.GIVEN_NAME) ?: ""
+                    val middleName = cursor.getStringValue(ContactsContract.CommonDataKinds.StructuredName.MIDDLE_NAME) ?: ""
+                    val surname = cursor.getStringValue(ContactsContract.CommonDataKinds.StructuredName.FAMILY_NAME) ?: ""
+                    val suffix = cursor.getStringValue(ContactsContract.CommonDataKinds.StructuredName.SUFFIX) ?: ""
+
+                    val names = arrayListOf(prefix, firstName, middleName, surname, suffix).filter { it.trim().isNotEmpty() }
+                    val fullName = TextUtils.join("", names)
+                    if (fullName.isNotEmpty()) {
+                        val contact = Attendee(id, fullName, "", 0)
+                        contacts.add(contact)
+                    }
+                } while (cursor.moveToNext())
+            }
+        } catch (ignored: Exception) {
+        } finally {
+            cursor?.close()
+        }
+        return contacts
+    }
+
+    private fun getEmails(): ArrayList<Attendee> {
+        val contacts = ArrayList<Attendee>()
+        val uri = ContactsContract.CommonDataKinds.Email.CONTENT_URI
+        val projection = arrayOf(
+                ContactsContract.Data.CONTACT_ID,
+                ContactsContract.CommonDataKinds.Email.DATA
+        )
+
+        var cursor: Cursor? = null
+        try {
+            cursor = contentResolver.query(uri, projection, null, null, null)
+            if (cursor?.moveToFirst() == true) {
+                do {
+                    val id = cursor.getIntValue(ContactsContract.Data.CONTACT_ID)
+                    val email = cursor.getStringValue(ContactsContract.CommonDataKinds.Email.DATA) ?: continue
+                    val contact = Attendee(id, "", email, 0)
+                    contacts.add(contact)
+                } while (cursor.moveToNext())
+            }
+        } catch (ignored: Exception) {
+        } finally {
+            cursor?.close()
+        }
+        return contacts
     }
 
     private fun updateIconColors() {
