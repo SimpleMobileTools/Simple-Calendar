@@ -10,10 +10,7 @@ import android.provider.CalendarContract.Reminders
 import android.util.SparseIntArray
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.*
-import com.simplemobiletools.calendar.pro.models.CalDAVCalendar
-import com.simplemobiletools.calendar.pro.models.Event
-import com.simplemobiletools.calendar.pro.models.EventType
-import com.simplemobiletools.calendar.pro.models.Reminder
+import com.simplemobiletools.calendar.pro.models.*
 import com.simplemobiletools.calendar.pro.objects.States.isUpdatingCalDAV
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.PERMISSION_READ_CALENDAR
@@ -472,6 +469,32 @@ class CalDAVHelper(val context: Context) {
             cursor?.close()
         }
         return reminders.sortedBy { it.minutes }
+    }
+
+    private fun getCalDAVEventAttendees(eventId: Long): List<Attendee> {
+        val attendees = ArrayList<Attendee>()
+        val uri = CalendarContract.Attendees.CONTENT_URI
+        val projection = arrayOf(
+                CalendarContract.Attendees.ATTENDEE_NAME,
+                CalendarContract.Attendees.ATTENDEE_EMAIL,
+                CalendarContract.Attendees.ATTENDEE_STATUS)
+        val selection = "${CalendarContract.Attendees.EVENT_ID} = $eventId"
+        var cursor: Cursor? = null
+        try {
+            cursor = context.contentResolver.query(uri, projection, selection, null, null)
+            if (cursor?.moveToFirst() == true) {
+                do {
+                    val name = cursor.getStringValue(CalendarContract.Attendees.ATTENDEE_NAME)
+                    val email = cursor.getStringValue(CalendarContract.Attendees.ATTENDEE_EMAIL)
+                    val status = cursor.getIntValue(CalendarContract.Attendees.ATTENDEE_STATUS)
+                    val attendee = Attendee(name, email, status)
+                    attendees.add(attendee)
+                } while (cursor.moveToNext())
+            }
+        } finally {
+            cursor?.close()
+        }
+        return attendees
     }
 
     private fun getCalDAVEventImportId(calendarId: Int, eventId: Long) = "$CALDAV-$calendarId-$eventId"
