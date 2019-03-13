@@ -42,6 +42,9 @@ class EventActivity : SimpleActivity() {
     private val REMINDER_1_MINUTES = "REMINDER_1_MINUTES"
     private val REMINDER_2_MINUTES = "REMINDER_2_MINUTES"
     private val REMINDER_3_MINUTES = "REMINDER_3_MINUTES"
+    private val REMINDER_1_TYPE = "REMINDER_1_TYPE"
+    private val REMINDER_2_TYPE = "REMINDER_2_TYPE"
+    private val REMINDER_3_TYPE = "REMINDER_3_TYPE"
     private val REPEAT_INTERVAL = "REPEAT_INTERVAL"
     private val REPEAT_LIMIT = "REPEAT_LIMIT"
     private val REPEAT_RULE = "REPEAT_RULE"
@@ -225,6 +228,10 @@ class EventActivity : SimpleActivity() {
             putInt(REMINDER_2_MINUTES, mReminder2Minutes)
             putInt(REMINDER_3_MINUTES, mReminder3Minutes)
 
+            putInt(REMINDER_1_TYPE, mReminder1Type)
+            putInt(REMINDER_2_TYPE, mReminder2Type)
+            putInt(REMINDER_3_TYPE, mReminder3Type)
+
             putInt(REPEAT_INTERVAL, mRepeatInterval)
             putInt(REPEAT_RULE, mRepeatRule)
             putLong(REPEAT_LIMIT, mRepeatLimit)
@@ -249,6 +256,10 @@ class EventActivity : SimpleActivity() {
             mReminder1Minutes = getInt(REMINDER_1_MINUTES)
             mReminder2Minutes = getInt(REMINDER_2_MINUTES)
             mReminder3Minutes = getInt(REMINDER_3_MINUTES)
+
+            mReminder1Type = getInt(REMINDER_1_TYPE)
+            mReminder2Type = getInt(REMINDER_2_TYPE)
+            mReminder3Type = getInt(REMINDER_3_TYPE)
 
             mRepeatInterval = getInt(REPEAT_INTERVAL)
             mRepeatRule = getInt(REPEAT_RULE)
