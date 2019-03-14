@@ -16,9 +16,6 @@
         android:layout_width="@dimen/avatar_size"
         android:layout_height="@dimen/avatar_size"
         android:layout_margin="@dimen/tiny_margin"
-        android:background="@drawable/attendee_circular_background"
-        android:padding="@dimen/medium_margin"
-        android:src="@drawable/ic_person"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 

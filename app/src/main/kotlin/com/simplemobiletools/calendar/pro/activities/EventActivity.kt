@@ -1125,9 +1125,15 @@ class EventActivity : SimpleActivity() {
         val names = getNames()
         mAvailableContacts.forEach {
             val contactId = it.contactId
-            val name = names.firstOrNull { it.contactId == contactId }?.name
+            val contact = names.firstOrNull { it.contactId == contactId }
+            val name = contact?.name
             if (name != null) {
                 it.name = name
+            }
+
+            val photoUri = contact?.photoUri
+            if (photoUri != null) {
+                it.photoUri = photoUri
             }
         }
     }
@@ -1197,7 +1203,7 @@ class EventActivity : SimpleActivity() {
                 ContactsContract.CommonDataKinds.StructuredName.MIDDLE_NAME,
                 ContactsContract.CommonDataKinds.StructuredName.FAMILY_NAME,
                 ContactsContract.CommonDataKinds.StructuredName.SUFFIX,
-                ContactsContract.CommonDataKinds.StructuredName.PHOTO_URI)
+                ContactsContract.CommonDataKinds.StructuredName.PHOTO_THUMBNAIL_URI)
 
         val selection = "${ContactsContract.Data.MIMETYPE} = ?"
         val selectionArgs = arrayOf(ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE)
@@ -1213,11 +1219,11 @@ class EventActivity : SimpleActivity() {
                     val middleName = cursor.getStringValue(ContactsContract.CommonDataKinds.StructuredName.MIDDLE_NAME) ?: ""
                     val surname = cursor.getStringValue(ContactsContract.CommonDataKinds.StructuredName.FAMILY_NAME) ?: ""
                     val suffix = cursor.getStringValue(ContactsContract.CommonDataKinds.StructuredName.SUFFIX) ?: ""
-                    val photoUri = cursor.getStringValue(ContactsContract.CommonDataKinds.StructuredName.PHOTO_URI) ?: ""
+                    val photoUri = cursor.getStringValue(ContactsContract.CommonDataKinds.StructuredName.PHOTO_THUMBNAIL_URI) ?: ""
 
                     val names = arrayListOf(prefix, firstName, middleName, surname, suffix).filter { it.trim().isNotEmpty() }
                     val fullName = TextUtils.join("", names)
-                    if (fullName.isNotEmpty()) {
+                    if (fullName.isNotEmpty() || photoUri.isNotEmpty()) {
                         val contact = Attendee(id, fullName, "", 0, photoUri)
                         contacts.add(contact)
                     }
