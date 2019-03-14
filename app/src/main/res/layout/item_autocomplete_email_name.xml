@@ -9,16 +9,31 @@
     android:paddingBottom="@dimen/medium_margin">
 
     <TextView
-        android:id="@+id/item_autocomplete_email"
+        android:id="@+id/item_autocomplete_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:layout_marginEnd="@dimen/activity_margin"
         android:lines="1"
         android:maxLines="1"
-        android:padding="@dimen/medium_margin"
+        android:paddingLeft="@dimen/medium_margin"
+        android:paddingRight="@dimen/medium_margin"
         android:singleLine="true"
         android:textSize="@dimen/bigger_text_size"
+        tools:text="Simple Mobile"/>
+
+    <TextView
+        android:id="@+id/item_autocomplete_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/item_autocomplete_name"
+        android:layout_marginEnd="@dimen/activity_margin"
+        android:alpha="0.8"
+        android:lines="1"
+        android:maxLines="1"
+        android:paddingLeft="@dimen/medium_margin"
+        android:paddingRight="@dimen/medium_margin"
+        android:singleLine="true"
+        android:textSize="@dimen/normal_text_size"
         tools:text="hello@simplemobiletools.com"/>
 
 </RelativeLayout>

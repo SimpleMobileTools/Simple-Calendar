@@ -9,19 +9,21 @@ import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.models.Attendee
 import com.simplemobiletools.commons.extensions.normalizeString
-import kotlinx.android.synthetic.main.item_autocomplete_email.view.*
+import kotlinx.android.synthetic.main.item_autocomplete_email_name.view.*
 
 class AutoCompleteTextViewAdapter(val activity: SimpleActivity, val contacts: ArrayList<Attendee>) : ArrayAdapter<Attendee>(activity, 0, contacts) {
     private var resultList = ArrayList<Attendee>()
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+        val contact = resultList[position]
         var listItem = convertView
         if (listItem == null) {
-            listItem = LayoutInflater.from(activity).inflate(R.layout.item_autocomplete_email, parent, false)
+            val layout = if (contact.name.isNotEmpty()) R.layout.item_autocomplete_email_name else R.layout.item_autocomplete_email
+            listItem = LayoutInflater.from(activity).inflate(layout, parent, false)
         }
 
-        val contact = resultList[position]
-        listItem!!.item_autocomplete.text = contact.email
+        listItem!!.item_autocomplete_name?.text = contact.name
+        listItem.item_autocomplete_email.text = contact.email
 
         return listItem
     }
@@ -59,7 +61,7 @@ class AutoCompleteTextViewAdapter(val activity: SimpleActivity, val contacts: Ar
             }
         }
 
-        override fun convertResultToString(resultValue: Any?) = (resultValue as? Attendee)?.email
+        override fun convertResultToString(resultValue: Any?) = (resultValue as? Attendee)?.getPublicName()
     }
 
     override fun getItem(index: Int) = resultList[index]
