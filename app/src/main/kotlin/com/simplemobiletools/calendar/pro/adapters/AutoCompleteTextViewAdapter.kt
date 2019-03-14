@@ -9,7 +9,7 @@ import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.models.Attendee
 import com.simplemobiletools.commons.extensions.normalizeString
-import kotlinx.android.synthetic.main.item_autocomplete.view.*
+import kotlinx.android.synthetic.main.item_autocomplete_email.view.*
 
 class AutoCompleteTextViewAdapter(val activity: SimpleActivity, val contacts: ArrayList<Attendee>) : ArrayAdapter<Attendee>(activity, 0, contacts) {
     private var resultList = ArrayList<Attendee>()
@@ -17,7 +17,7 @@ class AutoCompleteTextViewAdapter(val activity: SimpleActivity, val contacts: Ar
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var listItem = convertView
         if (listItem == null) {
-            listItem = LayoutInflater.from(activity).inflate(R.layout.item_autocomplete, parent, false)
+            listItem = LayoutInflater.from(activity).inflate(R.layout.item_autocomplete_email, parent, false)
         }
 
         val contact = resultList[position]
