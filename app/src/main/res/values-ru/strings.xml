@@ -10,7 +10,7 @@
     <string name="simple_event_list">Список событий</string>
     <string name="no_upcoming_events">Похоже, нет предстоящих событий.</string>
     <string name="go_to_today">Сегодня</string>
-    <string name="go_to_date">Go to date</string>
+    <string name="go_to_date">Перейти к дате</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Календарь на месяц</string>
@@ -64,21 +64,21 @@
     <string name="repeat_on_the_same_day_yearly">Повторять в этот же день каждый год</string>
     <string name="repeat_every_m">Повторять каждый</string>
     <string name="every_m">Каждый</string>
-    <string name="first_m">первый</string>
-    <string name="second_m">второй</string>
-    <string name="third_m">третий</string>
-    <string name="fourth_m">четвёртый</string>
-    <string name="last_m">последний</string>
+    <string name="first_m">1</string>
+    <string name="second_m">2</string>
+    <string name="third_m">3</string>
+    <string name="fourth_m">4</string>
+    <string name="last_m">последн.</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
     <string name="repeat_every_f">Повторять каждый</string>
     <string name="every_f">Каждый</string>
-    <string name="first_f">первый</string>
-    <string name="second_f">второй</string>
-    <string name="third_f">третий</string>
-    <string name="fourth_f">четвёртый</string>
-    <string name="last_f">последний</string>
+    <string name="first_f">1</string>
+    <string name="second_f">2</string>
+    <string name="third_f">3</string>
+    <string name="fourth_f">4</string>
+    <string name="last_f">последн.</string>
 
     <!-- Birthdays -->
     <string name="birthdays">Дни рождения</string>
@@ -99,7 +99,7 @@
     <string name="event_reminders">Напоминания о событиях</string>
 
     <!-- Event attendees -->
-    <string name="add_another_attendee">Add another attendee</string>
+    <string name="add_another_attendee">Добавить участника</string>
 
     <!-- Export / Import -->
     <string name="import_events">Импорт событий</string>
