@@ -1,16 +1,22 @@
 package com.simplemobiletools.calendar.pro.fragments
 
+import android.content.res.Resources
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.DatePicker
+import androidx.appcompat.app.AlertDialog
 import androidx.viewpager.widget.ViewPager
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.MainActivity
 import com.simplemobiletools.calendar.pro.adapters.MyYearPagerAdapter
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.helpers.Formatter
+import com.simplemobiletools.commons.extensions.beGone
+import com.simplemobiletools.commons.extensions.getDialogTheme
+import com.simplemobiletools.commons.extensions.setupDialogStuff
 import com.simplemobiletools.commons.extensions.updateActionBarTitle
 import com.simplemobiletools.commons.views.MyViewPager
 import kotlinx.android.synthetic.main.fragment_years_holder.view.*
@@ -81,6 +87,32 @@ class YearFragmentsHolder : MyFragmentHolder() {
     override fun goToToday() {
         currentYear = todayYear
         setupFragment()
+    }
+
+    override fun showGoToDateDialog() {
+        activity!!.setTheme(context!!.getDialogTheme())
+        val view = layoutInflater.inflate(R.layout.date_picker, null)
+        val datePicker = view.findViewById<DatePicker>(R.id.date_picker)
+        datePicker.findViewById<View>(Resources.getSystem().getIdentifier("day", "id", "android")).beGone()
+        datePicker.findViewById<View>(Resources.getSystem().getIdentifier("month", "id", "android")).beGone()
+
+        val dateTime = DateTime(Formatter.getDateTimeFromCode("${currentYear}0523").toString())
+        datePicker.init(dateTime.year, dateTime.monthOfYear - 1, 1, null)
+
+        AlertDialog.Builder(context!!)
+                .setNegativeButton(R.string.cancel, null)
+                .setPositiveButton(R.string.ok) { dialog, which -> datePicked(datePicker) }
+                .create().apply {
+                    activity?.setupDialogStuff(view, this)
+                }
+    }
+
+    private fun datePicked(datePicker: DatePicker) {
+        val pickedYear = datePicker.year
+        if (currentYear != pickedYear) {
+            currentYear = datePicker.year
+            setupFragment()
+        }
     }
 
     override fun refreshEvents() {

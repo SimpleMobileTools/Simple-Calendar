@@ -10,6 +10,7 @@
     <string name="simple_event_list">Prosta lista wydarzeń</string>
     <string name="no_upcoming_events">Wygląda na to, że nie masz żadnych nadchodzących wydarzeń.</string>
     <string name="go_to_today">Przejdź do dnia dzisiejszego</string>
+    <string name="go_to_date">Go to date</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Prosty kalendarz - widok miesięczny</string>
@@ -96,6 +97,9 @@
     <string name="before">przed</string>
     <string name="add_another_reminder">Dodaj inne przypomnienie</string>
     <string name="event_reminders">Przypomnienia</string>
+
+    <!-- Event attendees -->
+    <string name="add_another_attendee">Add another attendee</string>
 
     <!-- Export / Import -->
     <string name="import_events">Importuj wydarzenia</string>

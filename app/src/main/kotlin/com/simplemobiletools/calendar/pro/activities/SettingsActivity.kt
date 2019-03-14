@@ -315,7 +315,6 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
-
     private fun setupWeekNumbers() {
         settings_week_numbers.isChecked = config.showWeekNumbers
         settings_week_numbers_holder.setOnClickListener {
@@ -692,14 +691,18 @@ class SettingsActivity : SimpleActivity() {
 
     private fun setupImportSettings() {
         settings_import_holder.setOnClickListener {
-            FilePickerDialog(this) {
-                Thread {
-                    try {
-                        parseFile(it)
-                    } catch (e: Exception) {
-                        showErrorToast(e)
+            handlePermission(PERMISSION_READ_STORAGE) {
+                if (it) {
+                    FilePickerDialog(this) {
+                        Thread {
+                            try {
+                                parseFile(it)
+                            } catch (e: Exception) {
+                                showErrorToast(e)
+                            }
+                        }.start()
                     }
-                }.start()
+                }
             }
         }
     }

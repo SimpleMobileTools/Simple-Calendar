@@ -28,6 +28,10 @@
         android:title="@string/refresh_caldav_calendars"
         app:showAsAction="ifRoom"/>
     <item
+        android:id="@+id/go_to_date"
+        android:title="@string/go_to_date"
+        app:showAsAction="never"/>
+    <item
         android:id="@+id/add_holidays"
         android:title="@string/add_holidays"
         app:showAsAction="never"/>

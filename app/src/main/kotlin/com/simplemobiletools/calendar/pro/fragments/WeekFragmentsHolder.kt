@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.DatePicker
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.viewpager.widget.ViewPager
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.MainActivity
@@ -16,6 +18,8 @@ import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.helpers.WEEK_START_DATE_TIME
 import com.simplemobiletools.calendar.pro.interfaces.WeekFragmentListener
 import com.simplemobiletools.calendar.pro.views.MyScrollView
+import com.simplemobiletools.commons.extensions.getDialogTheme
+import com.simplemobiletools.commons.extensions.setupDialogStuff
 import com.simplemobiletools.commons.extensions.updateActionBarSubtitle
 import com.simplemobiletools.commons.extensions.updateActionBarTitle
 import com.simplemobiletools.commons.helpers.WEEK_SECONDS
@@ -100,10 +104,11 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
 
     private fun getWeekTimestamps(targetSeconds: Long): List<Long> {
         val weekTSs = ArrayList<Long>(PREFILLED_WEEKS)
-        var currWeekTS = targetSeconds - (PREFILLED_WEEKS / 2 * WEEK_SECONDS)
+        val dateTime = Formatter.getDateTimeFromTS(targetSeconds)
+        var currentWeek = dateTime.minusWeeks(PREFILLED_WEEKS / 2)
         for (i in 0 until PREFILLED_WEEKS) {
-            weekTSs.add(currWeekTS)
-            currWeekTS += WEEK_SECONDS
+            weekTSs.add(currentWeek.seconds())
+            currentWeek = currentWeek.plusWeeks(1)
         }
         return weekTSs
     }
@@ -127,6 +132,42 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
 
     override fun goToToday() {
         currentWeekTS = thisWeekTS
+        setupFragment()
+    }
+
+    override fun showGoToDateDialog() {
+        activity!!.setTheme(context!!.getDialogTheme())
+        val view = layoutInflater.inflate(R.layout.date_picker, null)
+        val datePicker = view.findViewById<DatePicker>(R.id.date_picker)
+
+        val dateTime = Formatter.getDateTimeFromTS(currentWeekTS)
+        datePicker.init(dateTime.year, dateTime.monthOfYear - 1, dateTime.dayOfMonth, null)
+
+        AlertDialog.Builder(context!!)
+                .setNegativeButton(R.string.cancel, null)
+                .setPositiveButton(R.string.ok) { dialog, which -> dateSelected(dateTime, datePicker) }
+                .create().apply {
+                    activity?.setupDialogStuff(view, this)
+                }
+    }
+
+    private fun dateSelected(dateTime: DateTime, datePicker: DatePicker) {
+        val isSundayFirst = context!!.config.isSundayFirst
+        val month = datePicker.month + 1
+        val year = datePicker.year
+        val day = datePicker.dayOfMonth
+        var newDateTime = dateTime.withDate(year, month, day)
+
+        if (isSundayFirst) {
+            newDateTime = newDateTime.plusDays(1)
+        }
+
+        var selectedWeek = newDateTime.withDayOfWeek(1).withTimeAtStartOfDay().minusDays(if (isSundayFirst) 1 else 0)
+        if (newDateTime.minusDays(7).seconds() > selectedWeek.seconds()) {
+            selectedWeek = selectedWeek.plusDays(7)
+        }
+
+        currentWeekTS = selectedWeek.seconds()
         setupFragment()
     }
 

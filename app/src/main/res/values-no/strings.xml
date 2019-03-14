@@ -10,6 +10,7 @@
     <string name="simple_event_list">Enkel hendelsesliste</string>
     <string name="no_upcoming_events">Ser ut som du ikke har noen kommende hendelser.</string>
     <string name="go_to_today">Gå til idag</string>
+    <string name="go_to_date">Go to date</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Månedskalender</string>
@@ -96,6 +97,9 @@
     <string name="before">før</string>
     <string name="add_another_reminder">Legg til en annen påminnelse</string>
     <string name="event_reminders">Event reminders</string>
+
+    <!-- Event attendees -->
+    <string name="add_another_attendee">Add another attendee</string>
 
     <!-- Export / Import -->
     <string name="import_events">Importer hendelser</string>

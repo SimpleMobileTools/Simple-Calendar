@@ -10,6 +10,7 @@
     <string name="simple_event_list">Jednoduchý zoznam</string>
     <string name="no_upcoming_events">Nemáte žiadne naplánované udalosti.</string>
     <string name="go_to_today">Prejsť na dnešok</string>
+    <string name="go_to_date">Prejsť na dátum</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Kalendár mesačný</string>
@@ -96,6 +97,9 @@
     <string name="before">pred</string>
     <string name="add_another_reminder">Pridať ďalšiu pripomienku</string>
     <string name="event_reminders">Pripomienky udalostí</string>
+
+    <!-- Event attendees -->
+    <string name="add_another_attendee">Pridať ďalšieho účastníka</string>
 
     <!-- Export / Import -->
     <string name="import_events">Importovať udalosti</string>
@@ -224,7 +228,7 @@
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Jednoduchý kalendár s udalosťami, upraviteľným widgetom a bez reklám.</string>
+    <string name="app_short_description">Offline kalendár pre vaše udalosti bez reklám, rešpektujúca vaše súkromie.</string>
     <string name="app_long_description">
         Jednoduchý kalendár s možnosťou CalDAV synchronizácie. Viete si jednoducho vytvoriť opakujúce sa udalosti s pripomienkami, alebo zobraziť čísla týždňov.
 

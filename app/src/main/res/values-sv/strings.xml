@@ -10,6 +10,7 @@
     <string name="simple_event_list">Händelselista</string>
     <string name="no_upcoming_events">Det verkar som att du inte har några kommande händelser.</string>
     <string name="go_to_today">Gå till idag</string>
+    <string name="go_to_date">Gå till datum</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Kalender månadsvis</string>
@@ -97,6 +98,9 @@
     <string name="add_another_reminder">Lägg till en annan påminnelse</string>
     <string name="event_reminders">Händelsepåminnelser</string>
 
+    <!-- Event attendees -->
+    <string name="add_another_attendee">Add another attendee</string>
+
     <!-- Export / Import -->
     <string name="import_events">Importera händelser</string>
     <string name="export_events">Exportera händelser</string>
@@ -136,13 +140,13 @@
     <string name="national_holidays">Nationella helgdagar</string>
     <string name="religious_holidays">Religiösa helgdagar</string>
     <string name="holidays_imported_successfully">Helgdagarna har importerats till händelsetypen \"Helgdagar\"</string>
-    <string name="importing_some_holidays_failed">Vissa händelser kunde inte importeras</string>
-    <string name="importing_holidays_failed">Helgdagar kunde inte importeras</string>
+    <string name="importing_some_holidays_failed">Importen av vissa händelser misslyckades</string>
+    <string name="importing_holidays_failed">Importen av helgdagarna misslyckades</string>
 
     <!-- Settings -->
     <string name="manage_event_types">Hantera händelsetyper</string>
-    <string name="start_day_at">Starta veckovydagen vid</string>
-    <string name="end_day_at">Sluta veckovydagen vid</string>
+    <string name="start_day_at">Dagen börjar</string>
+    <string name="end_day_at">Dagen slutar</string>
     <string name="week_numbers">Visa veckonummer</string>
     <string name="vibrate">Vibrera vid påminnelseaviseringar</string>
     <string name="reminder_sound">Påminnelseljud</string>
@@ -170,12 +174,12 @@
     <string name="default_reminder_3">Standardpåminnelse 3</string>
     <string name="view_to_open_from_widget">Vy som öppnas från händelselistwidgeten</string>
     <string name="last_view">Senaste vy</string>
-    <string name="new_events">New events</string>
-    <string name="default_start_time">Default start time</string>
-    <string name="next_full_hour">Next full hour</string>
-    <string name="default_duration">Default duration</string>
-    <string name="last_used_one">Last used one</string>
-    <string name="other_time">Other time</string>
+    <string name="new_events">Nya händelser</string>
+    <string name="default_start_time">Standardstarttid</string>
+    <string name="next_full_hour">Nästa heltimme</string>
+    <string name="default_duration">Standardvaraktighet</string>
+    <string name="last_used_one">Senast använda</string>
+    <string name="other_time">Annan tid</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

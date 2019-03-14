@@ -22,10 +22,14 @@ data class Event(
         @ColumnInfo(name = "reminder_1_minutes") var reminder1Minutes: Int = -1,
         @ColumnInfo(name = "reminder_2_minutes") var reminder2Minutes: Int = -1,
         @ColumnInfo(name = "reminder_3_minutes") var reminder3Minutes: Int = -1,
+        @ColumnInfo(name = "reminder_1_type") var reminder1Type: Int = REMINDER_NOTIFICATION,
+        @ColumnInfo(name = "reminder_2_type") var reminder2Type: Int = REMINDER_NOTIFICATION,
+        @ColumnInfo(name = "reminder_3_type") var reminder3Type: Int = REMINDER_NOTIFICATION,
         @ColumnInfo(name = "repeat_interval") var repeatInterval: Int = 0,
         @ColumnInfo(name = "repeat_rule") var repeatRule: Int = 0,
         @ColumnInfo(name = "repeat_limit") var repeatLimit: Long = 0L,
         @ColumnInfo(name = "repetition_exceptions") var repetitionExceptions: ArrayList<String> = ArrayList(),
+        @ColumnInfo(name = "attendees") var attendees: String = "",
         @ColumnInfo(name = "import_id") var importId: String = "",
         @ColumnInfo(name = "flags") var flags: Int = 0,
         @ColumnInfo(name = "event_type") var eventType: Long = REGULAR_EVENT_TYPE_ID,
@@ -80,7 +84,7 @@ data class Event(
 
         while (newDateTime.dayOfMonth().maximumValue < Formatter.getDateTimeFromTS(original.startTS).dayOfMonth().maximumValue) {
             newDateTime = newDateTime.plusMonths(repeatInterval / MONTH)
-            newDateTime = newDateTime.withDayOfMonth(newDateTime.dayOfMonth().maximumValue)
+            newDateTime = newDateTime.withDayOfMonth(currStart.dayOfMonth)
         }
         return newDateTime
     }
@@ -116,7 +120,11 @@ data class Event(
 
     fun getIsAllDay() = flags and FLAG_ALL_DAY != 0
 
-    fun getReminders() = setOf(reminder1Minutes, reminder2Minutes, reminder3Minutes).filter { it != REMINDER_OFF }
+    fun getReminders() = setOf(
+            Reminder(reminder1Minutes, reminder1Type),
+            Reminder(reminder2Minutes, reminder2Type),
+            Reminder(reminder3Minutes, reminder3Type)
+    ).filter { it.minutes != REMINDER_OFF }
 
     // properly return the start time of all-day events as midnight
     fun getEventStartTS(): Long {

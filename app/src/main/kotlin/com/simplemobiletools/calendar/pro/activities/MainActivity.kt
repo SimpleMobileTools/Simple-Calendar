@@ -1,11 +1,16 @@
 package com.simplemobiletools.calendar.pro.activities
 
+import android.annotation.SuppressLint
 import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
+import android.content.pm.ShortcutInfo
+import android.content.pm.ShortcutManager
 import android.database.Cursor
 import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Icon
+import android.graphics.drawable.LayerDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.ContactsContract
@@ -21,6 +26,7 @@ import com.simplemobiletools.calendar.pro.databases.EventsDatabase
 import com.simplemobiletools.calendar.pro.dialogs.ExportEventsDialog
 import com.simplemobiletools.calendar.pro.dialogs.FilterEventTypesDialog
 import com.simplemobiletools.calendar.pro.dialogs.ImportEventsDialog
+import com.simplemobiletools.calendar.pro.dialogs.SetRemindersDialog
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.fragments.*
 import com.simplemobiletools.calendar.pro.helpers.*
@@ -129,6 +135,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         calendar_fab.setColors(config.textColor, getAdjustedPrimaryColor(), config.backgroundColor)
         search_holder.background = ColorDrawable(config.backgroundColor)
         checkSwipeRefreshAvailability()
+        checkShortcuts()
     }
 
     override fun onPause() {
@@ -154,6 +161,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             goToTodayButton = findItem(R.id.go_to_today)
             findItem(R.id.filter).isVisible = mShouldFilterBeVisible
             findItem(R.id.go_to_today).isVisible = shouldGoToTodayBeVisible && config.storedView != EVENTS_LIST_VIEW
+            findItem(R.id.go_to_date).isVisible = config.storedView != EVENTS_LIST_VIEW
         }
 
         setupSearch(menu)
@@ -172,6 +180,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         when (item.itemId) {
             R.id.change_view -> showViewDialog()
             R.id.go_to_today -> goToToday()
+            R.id.go_to_date -> showGoToDateDialog()
             R.id.filter -> showFilterDialog()
             R.id.refresh_caldav_calendars -> refreshCalDAVCalendars(true)
             R.id.add_holidays -> addHolidays()
@@ -254,6 +263,33 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     private fun closeSearch() {
         mSearchMenuItem?.collapseActionView()
+    }
+
+    @SuppressLint("NewApi")
+    private fun checkShortcuts() {
+        val appIconColor = config.appIconColor
+        if (isNougatMR1Plus() && config.lastHandledShortcutColor != appIconColor) {
+            val newEvent = getString(R.string.new_event)
+            val manager = getSystemService(ShortcutManager::class.java)
+            val drawable = resources.getDrawable(R.drawable.shortcut_plus)
+            (drawable as LayerDrawable).findDrawableByLayerId(R.id.shortcut_plus_background).applyColorFilter(appIconColor)
+            val bmp = drawable.convertToBitmap()
+
+            val intent = Intent(this, SplashActivity::class.java)
+            intent.action = SHORTCUT_NEW_EVENT
+            val shortcut = ShortcutInfo.Builder(this, "new_event")
+                    .setShortLabel(newEvent)
+                    .setLongLabel(newEvent)
+                    .setIcon(Icon.createWithBitmap(bmp))
+                    .setIntent(intent)
+                    .build()
+
+            try {
+                manager.dynamicShortcuts = Arrays.asList(shortcut)
+                config.lastHandledShortcutColor = appIconColor
+            } catch (ignored: Exception) {
+            }
+        }
     }
 
     private fun checkIsOpenIntent(): Boolean {
@@ -339,6 +375,10 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         currentFragments.last().goToToday()
     }
 
+    fun showGoToDateDialog() {
+        currentFragments.last().showGoToDateDialog()
+    }
+
     private fun resetActionBarTitle() {
         updateActionBarTitle(getString(R.string.app_launcher_name))
         updateActionBarSubtitle("")
@@ -407,16 +447,19 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private fun tryAddBirthdays() {
         handlePermission(PERMISSION_READ_CONTACTS) {
             if (it) {
-                Thread {
-                    addContactEvents(true) {
-                        if (it > 0) {
-                            toast(R.string.birthdays_added)
-                            updateViewPager()
-                        } else {
-                            toast(R.string.no_birthdays)
+                SetRemindersDialog(this) {
+                    val reminders = it
+                    Thread {
+                        addContactEvents(true, reminders) {
+                            if (it > 0) {
+                                toast(R.string.birthdays_added)
+                                updateViewPager()
+                            } else {
+                                toast(R.string.no_birthdays)
+                            }
                         }
-                    }
-                }.start()
+                    }.start()
+                }
             } else {
                 toast(R.string.no_contacts_permission)
             }
@@ -426,16 +469,19 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private fun tryAddAnniversaries() {
         handlePermission(PERMISSION_READ_CONTACTS) {
             if (it) {
-                Thread {
-                    addContactEvents(false) {
-                        if (it > 0) {
-                            toast(R.string.anniversaries_added)
-                            updateViewPager()
-                        } else {
-                            toast(R.string.no_anniversaries)
+                SetRemindersDialog(this) {
+                    val reminders = it
+                    Thread {
+                        addContactEvents(false, reminders) {
+                            if (it > 0) {
+                                toast(R.string.anniversaries_added)
+                                updateViewPager()
+                            } else {
+                                toast(R.string.no_anniversaries)
+                            }
                         }
-                    }
-                }.start()
+                    }.start()
+                }
             } else {
                 toast(R.string.no_contacts_permission)
             }
@@ -450,7 +496,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }, Toast.LENGTH_LONG)
     }
 
-    private fun addContactEvents(birthdays: Boolean, callback: (Int) -> Unit) {
+    private fun addContactEvents(birthdays: Boolean, reminders: ArrayList<Int>, callback: (Int) -> Unit) {
         var eventsAdded = 0
         val uri = ContactsContract.Data.CONTENT_URI
         val projection = arrayOf(ContactsContract.Contacts.DISPLAY_NAME,
@@ -486,7 +532,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                             val timestamp = date.time / 1000L
                             val source = if (birthdays) SOURCE_CONTACT_BIRTHDAY else SOURCE_CONTACT_ANNIVERSARY
                             val lastUpdated = cursor.getLongValue(ContactsContract.CommonDataKinds.Event.CONTACT_LAST_UPDATED_TIMESTAMP)
-                            val event = Event(null, timestamp, timestamp, name, importId = contactId, flags = FLAG_ALL_DAY, repeatInterval = YEAR,
+                            val event = Event(null, timestamp, timestamp, name, reminder1Minutes = reminders[0], reminder2Minutes = reminders[1],
+                                    reminder3Minutes = reminders[2], importId = contactId, flags = FLAG_ALL_DAY, repeatInterval = YEAR, repeatRule = REPEAT_SAME_DAY,
                                     eventType = eventTypeId, source = source, lastUpdated = lastUpdated)
 
                             if (!importIDs.contains(contactId)) {
@@ -861,6 +908,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             add(Release(117, R.string.release_117))
             add(Release(119, R.string.release_119))
             add(Release(129, R.string.release_129))
+            add(Release(143, R.string.release_143))
             checkWhatsNew(this, BuildConfig.VERSION_CODE)
         }
     }

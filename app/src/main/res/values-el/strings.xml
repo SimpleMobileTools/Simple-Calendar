@@ -9,7 +9,8 @@
     <string name="yearly_view">Ετήσια προβολή</string>
     <string name="simple_event_list">Απλή λίστα εκδηλώσεων</string>
     <string name="no_upcoming_events">Φαίνεται πως δεν έχετε επερχόμενες εκδηλώσεις.</string>
-    <string name="go_to_today">Πηγαίνετε στο σήμερα</string>
+    <string name="go_to_today">Μετάβαση στο σήμερα</string>
+    <string name="go_to_date">Μετάβαση σε ημερ/νία</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Μηνιαίο ημερολόγιο</string>
@@ -49,7 +50,7 @@
     <string name="update_one_only">Ενημέρωση μόνο του επιλεγμένου περιστατικού</string>
     <string name="update_all_occurrences">Ενημέρωση όλων των περιστατικών</string>
     <string name="repeat_till_date">Επαναλάβετε μέχρι μια ημερομηνία</string>
-    <string name="stop_repeating_after_x">Stop repeating after x occurrences</string>
+    <string name="stop_repeating_after_x">Παύση επαναλήψεων μετά από x εμφανίσεις</string>
     <string name="repeat_forever">Επαναλάβετε για πάντα</string>
     <string name="times">times</string>
     <string name="repeat">Επανάληψη</string>
@@ -58,9 +59,9 @@
     <string name="selected_days">Σε επιλεγμένες μέρες</string>
     <string name="the_same_day">Την ίδια μέρα</string>
     <string name="the_last_day">Την τελευταία μέρα</string>
-    <string name="repeat_on_the_same_day_monthly">Επαναλάβετε την ίδια ημέρα κάθε μήνα</string>
-    <string name="repeat_on_the_last_day_monthly">Επαναλάβετε την τελευταία ημέρα του μήνα</string>
-    <string name="repeat_on_the_same_day_yearly">Επαναλάβετε την τελευταία ημέρα του μήνα</string>
+    <string name="repeat_on_the_same_day_monthly">Επανάληψη την ίδια ημέρα κάθε μήνα</string>
+    <string name="repeat_on_the_last_day_monthly">Επανάληψη την τελευταία ημέρα του μήνα</string>
+    <string name="repeat_on_the_same_day_yearly">Επανάληψη την τελευταία ημέρα του έτους</string>
     <string name="repeat_every_m">Επανάληψη κάθε</string>
     <string name="every_m">Κάθε</string>
     <string name="first_m">πρώτη</string>
@@ -96,6 +97,9 @@
     <string name="before">πρίν</string>
     <string name="add_another_reminder">Προσθέστε μια άλλη υπενθύμιση</string>
     <string name="event_reminders">Υπενθυμίσεις εκδηλώσεων</string>
+
+    <!-- Event attendees -->
+    <string name="add_another_attendee">Προσθήκη άλλης συμμετοχής</string>
 
     <!-- Export / Import -->
     <string name="import_events">Εισαγωγή εκδηλώσεων</string>
@@ -168,14 +172,14 @@
     <string name="default_reminder_1">Προεπιλογή υπενθύμισης 1</string>
     <string name="default_reminder_2">Προεπιλογή υπενθύμισης 2</string>
     <string name="default_reminder_3">Προεπιλογή υπενθύμισης 3</string>
-    <string name="view_to_open_from_widget">Προβολή για να ανοίξετε από το widget λίστας συμβάντων</string>
+    <string name="view_to_open_from_widget">Προβολή για άνοιγμα από το widget λίστας συμβάντων</string>
     <string name="last_view">Τελευταία προβολή</string>
     <string name="new_events">Νέα γεγονότα</string>
     <string name="default_start_time">Προεπιλεγμένη ώρα έναρξης</string>
     <string name="next_full_hour">Την επόμενη πλήρη ώρα</string>
     <string name="default_duration">Προεπιλεγμένη διάρκεια</string>
     <string name="last_used_one">Τελευταία χρήση</string>
-    <string name="other_time">Other time</string>
+    <string name="other_time">Άλλη ώρα</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

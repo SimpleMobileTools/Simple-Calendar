@@ -10,6 +10,7 @@
     <string name="simple_event_list">Sadə hadisələr siyahısı</string>
     <string name="no_upcoming_events">Deyəsən yaxınlarda heçbir hadisə yoxdur.</string>
     <string name="go_to_today">Bugünə get</string>
+    <string name="go_to_date">Go to date</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Aylıq Təqvim</string>
@@ -96,6 +97,9 @@
     <string name="before">əvvəl</string>
     <string name="add_another_reminder">Başqa bir xatırladıcı əlavə et</string>
     <string name="event_reminders">Hadisə xatırladıcıları</string>
+
+    <!-- Event attendees -->
+    <string name="add_another_attendee">Add another attendee</string>
 
     <!-- Export / Import -->
     <string name="import_events">Hadisələri daxil et</string>

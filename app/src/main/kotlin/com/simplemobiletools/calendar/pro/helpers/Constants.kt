@@ -15,6 +15,7 @@ const val NEW_EVENT_SET_HOUR_DURATION = "new_event_set_hour_duration"
 const val WEEK_START_DATE_TIME = "week_start_date_time"
 const val CALDAV = "Caldav"
 const val VIEW_TO_OPEN = "view_to_open"
+const val SHORTCUT_NEW_EVENT = "shortcut_new_event"
 const val REGULAR_EVENT_TYPE_ID = 1L
 const val CHOPPED_LIST_DEFAULT_SIZE = 100
 
@@ -99,6 +100,8 @@ const val SUMMARY = "SUMMARY"
 const val DESCRIPTION = "DESCRIPTION:"
 const val UID = "UID:"
 const val ACTION = "ACTION:"
+const val ATTENDEE = "ATTENDEE:"
+const val MAILTO = "mailto:"
 const val TRIGGER = "TRIGGER:"
 const val RRULE = "RRULE:"
 const val CATEGORIES = "CATEGORIES:"
@@ -115,6 +118,7 @@ const val SEQUENCE = "SEQUENCE"
 const val CATEGORY_COLOR = "CATEGORY_COLOR:"
 
 const val DISPLAY = "DISPLAY"
+const val EMAIL = "EMAIL"
 const val FREQ = "FREQ"
 const val UNTIL = "UNTIL"
 const val COUNT = "COUNT"
@@ -149,5 +153,8 @@ const val SOURCE_CONTACT_ANNIVERSARY = "contact-anniversary"
 const val DELETE_SELECTED_OCCURRENCE = 0
 const val DELETE_FUTURE_OCCURRENCES = 1
 const val DELETE_ALL_OCCURRENCES = 2
+
+const val REMINDER_NOTIFICATION = 0
+const val REMINDER_EMAIL = 1
 
 fun getNowSeconds() = System.currentTimeMillis() / 1000L

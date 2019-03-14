@@ -1,8 +1,10 @@
 package com.simplemobiletools.calendar.pro.helpers
 
 import com.simplemobiletools.calendar.pro.R
+import com.simplemobiletools.calendar.pro.extensions.calDAVHelper
 import com.simplemobiletools.calendar.pro.extensions.eventTypesDB
 import com.simplemobiletools.calendar.pro.helpers.IcsExporter.ExportResult.*
+import com.simplemobiletools.calendar.pro.models.CalDAVCalendar
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.commons.activities.BaseSimpleActivity
 import com.simplemobiletools.commons.extensions.getFileOutputStream
@@ -19,6 +21,7 @@ class IcsExporter {
 
     private var eventsExported = 0
     private var eventsFailed = 0
+    private var calendars = ArrayList<CalDAVCalendar>()
 
     fun exportEvents(activity: BaseSimpleActivity, file: File, events: ArrayList<Event>, showExportingToast: Boolean, callback: (result: ExportResult) -> Unit) {
         val fileDirItem = FileDirItem(file.absolutePath, file.name)
@@ -29,6 +32,7 @@ class IcsExporter {
             }
 
             Thread {
+                calendars = activity.calDAVHelper.getCalDAVCalendars("", false)
                 if (showExportingToast) {
                     activity.toast(R.string.exporting)
                 }
@@ -77,17 +81,20 @@ class IcsExporter {
     }
 
     private fun fillReminders(event: Event, out: BufferedWriter) {
-        checkReminder(event.reminder1Minutes, out)
-        checkReminder(event.reminder2Minutes, out)
-        checkReminder(event.reminder3Minutes, out)
-    }
-
-    private fun checkReminder(minutes: Int, out: BufferedWriter) {
-        if (minutes != -1) {
+        event.getReminders().forEach {
+            val reminder = it
             out.apply {
                 writeLn(BEGIN_ALARM)
-                writeLn("$ACTION$DISPLAY")
-                writeLn("$TRIGGER-${Parser().getDurationCode(minutes.toLong())}")
+                if (reminder.type == REMINDER_NOTIFICATION) {
+                    writeLn("$ACTION$DISPLAY")
+                } else {
+                    writeLn("$ACTION$EMAIL")
+                    val attendee = calendars.firstOrNull { it.id == event.getCalDAVCalendarId()}?.accountName
+                    if (attendee != null) {
+                        writeLn("$ATTENDEE$MAILTO$attendee")
+                    }
+                }
+                writeLn("$TRIGGER-${Parser().getDurationCode(reminder.minutes.toLong())}")
                 writeLn(END_ALARM)
             }
         }

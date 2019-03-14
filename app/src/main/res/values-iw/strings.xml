@@ -10,6 +10,7 @@
     <string name="simple_event_list">רשימת אירועים פשוטה</string>
     <string name="no_upcoming_events">נראה שאין לך אירועים בזמן הקרוב.</string>
     <string name="go_to_today">Go to today</string>
+    <string name="go_to_date">Go to date</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">לוח השנה חודשית</string>
@@ -97,6 +98,9 @@
     <string name="before">לפני</string>
     <string name="add_another_reminder">Add another reminder</string>
     <string name="event_reminders">Event reminders</string>
+
+    <!-- Event attendees -->
+    <string name="add_another_attendee">Add another attendee</string>
 
     <!-- Export / Import -->
     <string name="import_events">ייבוא אירועים</string>

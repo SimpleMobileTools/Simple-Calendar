@@ -10,6 +10,7 @@
     <string name="simple_event_list">Jednoduchý seznam událostí</string>
     <string name="no_upcoming_events">Nemáte žádné nadcházející události.</string>
     <string name="go_to_today">Přejít na dnešek</string>
+    <string name="go_to_date">Go to date</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Měsíční kalendář</string>
@@ -96,6 +97,9 @@
     <string name="before">před</string>
     <string name="add_another_reminder">Přidat další připomínku</string>
     <string name="event_reminders">Připomínky událostí</string>
+
+    <!-- Event attendees -->
+    <string name="add_another_attendee">Add another attendee</string>
 
     <!-- Export / Import -->
     <string name="import_events">Import událostí</string>

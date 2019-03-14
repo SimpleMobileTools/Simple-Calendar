@@ -10,6 +10,7 @@
     <string name="simple_event_list">Paprastas įvykių sąrašas</string>
     <string name="no_upcoming_events">Atrodo jog Jūs neturite jokių įvyksiančių įvykių.</string>
     <string name="go_to_today">Eiti į šiandieną</string>
+    <string name="go_to_date">Go to date</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Mėnesio kalendorius</string>
@@ -96,6 +97,9 @@
     <string name="before">Prieš</string>
     <string name="add_another_reminder">Pridėti kitą priminimą</string>
     <string name="event_reminders">Įvykių priminimai</string>
+
+    <!-- Event attendees -->
+    <string name="add_another_attendee">Add another attendee</string>
 
     <!-- Export / Import -->
     <string name="import_events">Importuoti įvykius</string>

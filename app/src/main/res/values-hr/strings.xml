@@ -10,6 +10,7 @@
     <string name="simple_event_list">Jednostavan popis događaja</string>
     <string name="no_upcoming_events">Izgleda da nemate nadolazećih događaja.</string>
     <string name="go_to_today">Idi na danas</string>
+    <string name="go_to_date">Go to date</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Mjesečni raspored</string>
@@ -96,6 +97,9 @@
     <string name="before">prije</string>
     <string name="add_another_reminder">Dodaj još jedan podsjetnik</string>
     <string name="event_reminders">Podsjetnici na događaj</string>
+
+    <!-- Event attendees -->
+    <string name="add_another_attendee">Add another attendee</string>
 
     <!-- Export / Import -->
     <string name="import_events">Uvezi događaje</string>

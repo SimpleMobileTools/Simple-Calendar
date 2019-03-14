@@ -10,6 +10,7 @@
     <string name="simple_event_list">Lista semplice deli eventi</string>
     <string name="no_upcoming_events">Non c\'è nessun evento imminente.</string>
     <string name="go_to_today">Vai a oggi</string>
+    <string name="go_to_date">Vai alla data</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Calendario mensile</string>
@@ -97,6 +98,9 @@
     <string name="add_another_reminder">Aggiungi un altro promemoria</string>
     <string name="event_reminders">Promemoria eventi</string>
 
+    <!-- Event attendees -->
+    <string name="add_another_attendee">Aggiungi un partecipante</string>
+
     <!-- Export / Import -->
     <string name="import_events">Importa eventi</string>
     <string name="export_events">Esporta eventi</string>
@@ -170,12 +174,12 @@
     <string name="default_reminder_3">Promemoria predefinito 3</string>
     <string name="view_to_open_from_widget">Vista da aprire dalla lista degli eventi del widget</string>
     <string name="last_view">Ultima vista</string>
-    <string name="new_events">New events</string>
-    <string name="default_start_time">Default start time</string>
-    <string name="next_full_hour">Next full hour</string>
-    <string name="default_duration">Default duration</string>
-    <string name="last_used_one">Last used one</string>
-    <string name="other_time">Other time</string>
+    <string name="new_events">Nuovi eventi</string>
+    <string name="default_start_time">Tempo di inizio predefinito</string>
+    <string name="next_full_hour">Prossima ora completa</string>
+    <string name="default_duration">Durata predefinita</string>
+    <string name="last_used_one">L\'ultimo utilizzato</string>
+    <string name="other_time">Altro periodo</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

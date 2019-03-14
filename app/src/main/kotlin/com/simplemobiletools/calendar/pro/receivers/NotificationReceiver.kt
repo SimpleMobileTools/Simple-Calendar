@@ -10,6 +10,7 @@ import com.simplemobiletools.calendar.pro.extensions.scheduleNextEventReminder
 import com.simplemobiletools.calendar.pro.extensions.updateListWidget
 import com.simplemobiletools.calendar.pro.helpers.EVENT_ID
 import com.simplemobiletools.calendar.pro.helpers.Formatter
+import com.simplemobiletools.calendar.pro.helpers.REMINDER_NOTIFICATION
 
 class NotificationReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
@@ -30,7 +31,7 @@ class NotificationReceiver : BroadcastReceiver() {
 
         context.updateListWidget()
         val event = context.eventsDB.getEventWithId(id)
-        if (event == null || event.getReminders().isEmpty()) {
+        if (event == null || event.getReminders().none { it.type == REMINDER_NOTIFICATION }) {
             return
         }
 

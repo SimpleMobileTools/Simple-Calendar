@@ -2,6 +2,10 @@
 <resources>
 
     <!-- Release notes -->
+    <string name="release_143">
+        Allow setting default start time/duration/event type for new events\n
+        Allow exporting/importing settings
+    </string>
     <string name="release_129">Allow setting default event reminders, not always reuse the last events\' ones</string>
     <string name="release_119">
         Allow changing the app launcher icon color\n

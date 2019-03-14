@@ -10,6 +10,7 @@
     <string name="simple_event_list">シンプル 予定 リスト</string>
     <string name="no_upcoming_events">今後の予定はありません。</string>
     <string name="go_to_today">今日へ移動</string>
+    <string name="go_to_date">Go to date</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">カレンダー月</string>
@@ -96,6 +97,9 @@
     <string name="before">前</string>
     <string name="add_another_reminder">Add another reminder</string>
     <string name="event_reminders">予定のリマインダー</string>
+
+    <!-- Event attendees -->
+    <string name="add_another_attendee">Add another attendee</string>
 
     <!-- Export / Import -->
     <string name="import_events">予定をインポート</string>

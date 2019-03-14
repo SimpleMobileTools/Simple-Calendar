@@ -16,14 +16,18 @@
         android:name="android.permission.USE_FINGERPRINT"
         tools:node="remove"/>
 
+    <uses-feature
+        android:name="android.hardware.faketouch"
+        android:required="false"/>
+
     <application
         android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_launcher_name"
         android:roundIcon="@mipmap/ic_launcher"
-        android:theme="@style/AppTheme"
-        android:supportsRtl="true">
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
 
         <activity
             android:name=".activities.SplashActivity"

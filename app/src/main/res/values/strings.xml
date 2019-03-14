@@ -10,6 +10,7 @@
     <string name="simple_event_list">Simple event list</string>
     <string name="no_upcoming_events">Seems like you don\'t have any upcoming events.</string>
     <string name="go_to_today">Go to today</string>
+    <string name="go_to_date">Go to date</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Calendar monthly</string>
@@ -96,6 +97,9 @@
     <string name="before">before</string>
     <string name="add_another_reminder">Add another reminder</string>
     <string name="event_reminders">Event reminders</string>
+
+    <!-- Event attendees -->
+    <string name="add_another_attendee">Add another attendee</string>
 
     <!-- Export / Import -->
     <string name="import_events">Import events</string>
@@ -224,7 +228,7 @@
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Offline kalendár pre vaše udalosti bez reklám, rešpektujúca vaše súkromie.</string>
+    <string name="app_short_description">An offline calendar for your events without ads, respecting your privacy.</string>
     <string name="app_long_description">
         A simple calendar with optional CalDAV synchronization. You can easily create recurring events and setup reminders, it can also display week numbers.
 

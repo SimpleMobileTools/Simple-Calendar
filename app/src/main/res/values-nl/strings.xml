@@ -10,6 +10,7 @@
     <string name="simple_event_list">Lijst</string>
     <string name="no_upcoming_events">Niets gepland.</string>
     <string name="go_to_today">Naar vandaag</string>
+    <string name="go_to_date">Naar datum</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Maandweergave</string>
@@ -96,6 +97,9 @@
     <string name="before">van tevoren</string>
     <string name="add_another_reminder">Herinnering toevoegen</string>
     <string name="event_reminders">Herinneringen</string>
+
+    <!-- Event attendees -->
+    <string name="add_another_attendee">Persoon uitnodigen</string>
 
     <!-- Export / Import -->
     <string name="import_events">Afspraken importeren</string>

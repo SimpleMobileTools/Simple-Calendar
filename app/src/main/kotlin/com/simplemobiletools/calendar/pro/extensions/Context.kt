@@ -80,7 +80,8 @@ fun Context.scheduleAllEvents() {
 }
 
 fun Context.scheduleNextEventReminder(event: Event, showToasts: Boolean) {
-    if (event.getReminders().isEmpty()) {
+    val validReminders = event.getReminders().filter { it.type == REMINDER_NOTIFICATION }
+    if (validReminders.isEmpty()) {
         if (showToasts) {
             toast(R.string.saving)
         }
@@ -88,7 +89,7 @@ fun Context.scheduleNextEventReminder(event: Event, showToasts: Boolean) {
     }
 
     val now = getNowSeconds()
-    val reminderSeconds = event.getReminders().reversed().map { it * 60 }
+    val reminderSeconds = validReminders.reversed().map { it.minutes * 60 }
     eventsHelper.getEvents(now, now + YEAR, event.id!!, false) {
         if (it.isNotEmpty()) {
             for (curEvent in it) {
@@ -159,7 +160,7 @@ fun Context.getRepetitionText(seconds: Int) = when (seconds) {
 }
 
 fun Context.notifyRunningEvents() {
-    eventsHelper.getRunningEvents().filter { it.getReminders().isNotEmpty() }.forEach {
+    eventsHelper.getRunningEvents().filter { it.getReminders().any { it.type == REMINDER_NOTIFICATION } }.forEach {
         notifyEvent(it)
     }
 }
@@ -408,6 +409,7 @@ fun Context.addDayEvents(day: DayMonthly, linearLayout: LinearLayout, res: Resou
             text = it.title.replace(" ", "\u00A0")  // allow word break by char
             background = backgroundDrawable
             layoutParams = eventLayoutParams
+            contentDescription = it.title
             linearLayout.addView(this)
         }
     }

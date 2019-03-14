@@ -3,30 +3,41 @@ package com.simplemobiletools.calendar.pro.activities
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
+import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
+import android.provider.CalendarContract
+import android.provider.ContactsContract
+import android.text.TextUtils
 import android.text.method.LinkMovementMethod
 import android.view.Menu
 import android.view.MenuItem
 import android.view.WindowManager
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.RelativeLayout
 import androidx.core.app.NotificationManagerCompat
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.simplemobiletools.calendar.pro.R
+import com.simplemobiletools.calendar.pro.adapters.AutoCompleteTextViewAdapter
 import com.simplemobiletools.calendar.pro.dialogs.*
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
-import com.simplemobiletools.calendar.pro.models.CalDAVCalendar
-import com.simplemobiletools.calendar.pro.models.Event
-import com.simplemobiletools.calendar.pro.models.EventType
+import com.simplemobiletools.calendar.pro.models.*
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.models.RadioItem
 import kotlinx.android.synthetic.main.activity_event.*
+import kotlinx.android.synthetic.main.activity_event.view.*
+import kotlinx.android.synthetic.main.item_attendee.view.*
 import org.joda.time.DateTime
 import java.util.*
 import java.util.regex.Pattern
+import kotlin.collections.ArrayList
 
 class EventActivity : SimpleActivity() {
     private val LAT_LON_PATTERN = "^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?)([,;])\\s*[-+]?(180(\\.0+)?|((1[0-7]\\d)|([1-9]?\\d))(\\.\\d+)?)\$"
@@ -36,15 +47,22 @@ class EventActivity : SimpleActivity() {
     private val REMINDER_1_MINUTES = "REMINDER_1_MINUTES"
     private val REMINDER_2_MINUTES = "REMINDER_2_MINUTES"
     private val REMINDER_3_MINUTES = "REMINDER_3_MINUTES"
+    private val REMINDER_1_TYPE = "REMINDER_1_TYPE"
+    private val REMINDER_2_TYPE = "REMINDER_2_TYPE"
+    private val REMINDER_3_TYPE = "REMINDER_3_TYPE"
     private val REPEAT_INTERVAL = "REPEAT_INTERVAL"
     private val REPEAT_LIMIT = "REPEAT_LIMIT"
     private val REPEAT_RULE = "REPEAT_RULE"
+    private val ATTENDEES = "ATTENDEES"
     private val EVENT_TYPE_ID = "EVENT_TYPE_ID"
     private val EVENT_CALENDAR_ID = "EVENT_CALENDAR_ID"
 
-    private var mReminder1Minutes = 0
-    private var mReminder2Minutes = 0
-    private var mReminder3Minutes = 0
+    private var mReminder1Minutes = REMINDER_OFF
+    private var mReminder2Minutes = REMINDER_OFF
+    private var mReminder3Minutes = REMINDER_OFF
+    private var mReminder1Type = REMINDER_NOTIFICATION
+    private var mReminder2Type = REMINDER_NOTIFICATION
+    private var mReminder3Type = REMINDER_NOTIFICATION
     private var mRepeatInterval = 0
     private var mRepeatLimit = 0L
     private var mRepeatRule = 0
@@ -52,7 +70,11 @@ class EventActivity : SimpleActivity() {
     private var mDialogTheme = 0
     private var mEventOccurrenceTS = 0L
     private var mEventCalendarId = STORED_LOCALLY_ONLY
-    private var wasActivityInitialized = false
+    private var mWasActivityInitialized = false
+    private var mWasContactsPermissionChecked = false
+    private var mAttendees = ArrayList<Attendee>()
+    private var mAttendeeViews = ArrayList<EditText>()
+    private var mAvailableContacts = ArrayList<Attendee>()
 
     private lateinit var mEventStartDateTime: DateTime
     private lateinit var mEventEndDateTime: DateTime
@@ -65,6 +87,7 @@ class EventActivity : SimpleActivity() {
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_cross)
         val intent = intent ?: return
         mDialogTheme = getDialogTheme()
+        mWasContactsPermissionChecked = hasPermission(PERMISSION_READ_CONTACTS)
 
         val eventId = intent.getLongExtra(EVENT_ID, 0L)
         Thread {
@@ -78,6 +101,7 @@ class EventActivity : SimpleActivity() {
             runOnUiThread {
                 gotEvent(savedInstanceState, localEventType, event)
             }
+            fillAvailableContacts()
         }.start()
     }
 
@@ -117,6 +141,7 @@ class EventActivity : SimpleActivity() {
             updateTexts()
             updateEventType()
             updateCalDAVCalendar()
+            updateAttendees()
         }
 
         event_show_on_map.setOnClickListener { showOnMap() }
@@ -146,19 +171,41 @@ class EventActivity : SimpleActivity() {
         event_reminder_2.setOnClickListener { showReminder2Dialog() }
         event_reminder_3.setOnClickListener { showReminder3Dialog() }
 
-        event_type_holder.setOnClickListener { showEventTypeDialog() }
+        event_reminder_1_type.setOnClickListener {
+            showReminderTypePicker(mReminder1Type) {
+                mReminder1Type = it
+                updateReminderTypeImage(event_reminder_1_type, Reminder(mReminder1Minutes, mReminder1Type))
+            }
+        }
 
-        if (mEvent.flags and FLAG_ALL_DAY != 0)
-            event_all_day.toggle()
+        event_reminder_2_type.setOnClickListener {
+            showReminderTypePicker(mReminder2Type) {
+                mReminder2Type = it
+                updateReminderTypeImage(event_reminder_2_type, Reminder(mReminder2Minutes, mReminder2Type))
+            }
+        }
+
+        event_reminder_3_type.setOnClickListener {
+            showReminderTypePicker(mReminder3Type) {
+                mReminder3Type = it
+                updateReminderTypeImage(event_reminder_3_type, Reminder(mReminder3Minutes, mReminder3Type))
+            }
+        }
+
+        event_type_holder.setOnClickListener { showEventTypeDialog() }
+        event_all_day.apply {
+            isChecked = mEvent.flags and FLAG_ALL_DAY != 0
+            jumpDrawablesToCurrentState()
+        }
 
         updateTextColors(event_scrollview)
         updateIconColors()
-        wasActivityInitialized = true
+        mWasActivityInitialized = true
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_event, menu)
-        if (wasActivityInitialized) {
+        if (mWasActivityInitialized) {
             menu.findItem(R.id.delete).isVisible = mEvent.id != null
             menu.findItem(R.id.share).isVisible = mEvent.id != null
             menu.findItem(R.id.duplicate).isVisible = mEvent.id != null
@@ -179,7 +226,7 @@ class EventActivity : SimpleActivity() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        if (!wasActivityInitialized) {
+        if (!mWasActivityInitialized) {
             return
         }
 
@@ -192,9 +239,15 @@ class EventActivity : SimpleActivity() {
             putInt(REMINDER_2_MINUTES, mReminder2Minutes)
             putInt(REMINDER_3_MINUTES, mReminder3Minutes)
 
+            putInt(REMINDER_1_TYPE, mReminder1Type)
+            putInt(REMINDER_2_TYPE, mReminder2Type)
+            putInt(REMINDER_3_TYPE, mReminder3Type)
+
             putInt(REPEAT_INTERVAL, mRepeatInterval)
             putInt(REPEAT_RULE, mRepeatRule)
             putLong(REPEAT_LIMIT, mRepeatLimit)
+
+            putString(ATTENDEES, getAllAttendees())
 
             putLong(EVENT_TYPE_ID, mEventTypeId)
             putInt(EVENT_CALENDAR_ID, mEventCalendarId)
@@ -217,9 +270,16 @@ class EventActivity : SimpleActivity() {
             mReminder2Minutes = getInt(REMINDER_2_MINUTES)
             mReminder3Minutes = getInt(REMINDER_3_MINUTES)
 
+            mReminder1Type = getInt(REMINDER_1_TYPE)
+            mReminder2Type = getInt(REMINDER_2_TYPE)
+            mReminder3Type = getInt(REMINDER_3_TYPE)
+
             mRepeatInterval = getInt(REPEAT_INTERVAL)
             mRepeatRule = getInt(REPEAT_RULE)
             mRepeatLimit = getLong(REPEAT_LIMIT)
+
+            mAttendees = Gson().fromJson<ArrayList<Attendee>>(getString(ATTENDEES), object : TypeToken<List<Attendee>>() {}.type)
+                    ?: ArrayList()
 
             mEventTypeId = getLong(EVENT_TYPE_ID)
             mEventCalendarId = getInt(EVENT_CALENDAR_ID)
@@ -230,6 +290,7 @@ class EventActivity : SimpleActivity() {
         updateTexts()
         updateEventType()
         updateCalDAVCalendar()
+        updateAttendees()
     }
 
     private fun updateTexts() {
@@ -237,6 +298,7 @@ class EventActivity : SimpleActivity() {
         checkReminderTexts()
         updateStartTexts()
         updateEndTexts()
+        updateAttendeesVisibility()
     }
 
     private fun setupEditEvent() {
@@ -253,11 +315,15 @@ class EventActivity : SimpleActivity() {
         mReminder1Minutes = mEvent.reminder1Minutes
         mReminder2Minutes = mEvent.reminder2Minutes
         mReminder3Minutes = mEvent.reminder3Minutes
+        mReminder1Type = mEvent.reminder1Type
+        mReminder2Type = mEvent.reminder2Type
+        mReminder3Type = mEvent.reminder3Type
         mRepeatInterval = mEvent.repeatInterval
         mRepeatLimit = mEvent.repeatLimit
         mRepeatRule = mEvent.repeatRule
         mEventTypeId = mEvent.eventType
         mEventCalendarId = mEvent.getCalDAVCalendarId()
+        mAttendees = Gson().fromJson<ArrayList<Attendee>>(mEvent.attendees, object : TypeToken<List<Attendee>>() {}.type) ?: ArrayList()
         checkRepeatTexts(mRepeatInterval)
     }
 
@@ -558,6 +624,7 @@ class EventActivity : SimpleActivity() {
         updateReminder1Text()
         updateReminder2Text()
         updateReminder3Text()
+        updateReminderTypeImages()
     }
 
     private fun updateReminder1Text() {
@@ -588,6 +655,36 @@ class EventActivity : SimpleActivity() {
                 alpha = 1f
             }
         }
+    }
+
+    private fun showReminderTypePicker(currentValue: Int, callback: (Int) -> Unit) {
+        val items = arrayListOf(
+                RadioItem(REMINDER_NOTIFICATION, getString(R.string.notification)),
+                RadioItem(REMINDER_EMAIL, getString(R.string.email))
+        )
+        RadioGroupDialog(this, items, currentValue) {
+            callback(it as Int)
+        }
+    }
+
+    private fun updateReminderTypeImages() {
+        updateReminderTypeImage(event_reminder_1_type, Reminder(mReminder1Minutes, mReminder1Type))
+        updateReminderTypeImage(event_reminder_2_type, Reminder(mReminder2Minutes, mReminder2Type))
+        updateReminderTypeImage(event_reminder_3_type, Reminder(mReminder3Minutes, mReminder3Type))
+    }
+
+    private fun updateAttendeesVisibility() {
+        val isSyncedEvent = mEventCalendarId != STORED_LOCALLY_ONLY
+        event_attendees_image.beVisibleIf(isSyncedEvent)
+        event_attendees_holder.beVisibleIf(isSyncedEvent)
+        event_attendees_divider.beVisibleIf(isSyncedEvent)
+    }
+
+    private fun updateReminderTypeImage(view: ImageView, reminder: Reminder) {
+        view.beVisibleIf(reminder.minutes != REMINDER_OFF && mEventCalendarId != STORED_LOCALLY_ONLY)
+        val drawable = if (reminder.type == REMINDER_NOTIFICATION) R.drawable.ic_bell else R.drawable.ic_email
+        val icon = resources.getColoredDrawableWithColor(drawable, config.textColor)
+        view.setImageDrawable(icon)
     }
 
     private fun updateRepetitionText() {
@@ -627,6 +724,8 @@ class EventActivity : SimpleActivity() {
                     mEventCalendarId = it
                     config.lastUsedCaldavCalendarId = it
                     updateCurrentCalendarInfo(getCalendarWithId(calendars, it))
+                    updateReminderTypeImages()
+                    updateAttendeesVisibility()
                 }
             }
         } else {
@@ -765,16 +864,26 @@ class EventActivity : SimpleActivity() {
             "$CALDAV-$mEventCalendarId"
         }
 
-        val reminders = sortedSetOf(mReminder1Minutes, mReminder2Minutes, mReminder3Minutes).filter { it != REMINDER_OFF }
-        val reminder1 = reminders.getOrElse(0) { REMINDER_OFF }
-        val reminder2 = reminders.getOrElse(1) { REMINDER_OFF }
-        val reminder3 = reminders.getOrElse(2) { REMINDER_OFF }
+        var reminders = arrayListOf(
+                Reminder(mReminder1Minutes, mReminder1Type),
+                Reminder(mReminder2Minutes, mReminder2Type),
+                Reminder(mReminder3Minutes, mReminder3Type)
+        )
+        reminders = reminders.filter { it.minutes != REMINDER_OFF }.sortedBy { it.minutes }.toMutableList() as ArrayList<Reminder>
+
+        val reminder1 = reminders.getOrNull(0) ?: Reminder(REMINDER_OFF, REMINDER_NOTIFICATION)
+        val reminder2 = reminders.getOrNull(1) ?: Reminder(REMINDER_OFF, REMINDER_NOTIFICATION)
+        val reminder3 = reminders.getOrNull(2) ?: Reminder(REMINDER_OFF, REMINDER_NOTIFICATION)
+
+        mReminder1Type = if (mEventCalendarId == STORED_LOCALLY_ONLY) REMINDER_NOTIFICATION else reminder1.type
+        mReminder2Type = if (mEventCalendarId == STORED_LOCALLY_ONLY) REMINDER_NOTIFICATION else reminder2.type
+        mReminder3Type = if (mEventCalendarId == STORED_LOCALLY_ONLY) REMINDER_NOTIFICATION else reminder3.type
 
         config.apply {
             if (usePreviousEventReminders) {
-                lastEventReminderMinutes1 = reminder1
-                lastEventReminderMinutes2 = reminder2
-                lastEventReminderMinutes3 = reminder3
+                lastEventReminderMinutes1 = reminder1.minutes
+                lastEventReminderMinutes2 = reminder2.minutes
+                lastEventReminderMinutes3 = reminder3.minutes
             }
         }
 
@@ -783,14 +892,18 @@ class EventActivity : SimpleActivity() {
             endTS = newEndTS
             title = newTitle
             description = event_description.value
-            reminder1Minutes = reminder1
-            reminder2Minutes = reminder2
-            reminder3Minutes = reminder3
+            reminder1Minutes = reminder1.minutes
+            reminder2Minutes = reminder2.minutes
+            reminder3Minutes = reminder3.minutes
+            reminder1Type = mReminder1Type
+            reminder2Type = mReminder2Type
+            reminder3Type = mReminder3Type
             repeatInterval = mRepeatInterval
             importId = newImportId
             flags = mEvent.flags.addBitIf(event_all_day.isChecked, FLAG_ALL_DAY)
             repeatLimit = if (repeatInterval == 0) 0 else mRepeatLimit
             repeatRule = mRepeatRule
+            attendees = if (mEventCalendarId == STORED_LOCALLY_ONLY) "" else getAllAttendees()
             eventType = newEventType
             lastUpdated = System.currentTimeMillis()
             source = newSource
@@ -810,7 +923,7 @@ class EventActivity : SimpleActivity() {
         if (mEvent.id == null || mEvent.id == null) {
             eventsHelper.insertEvent(mEvent, true, true) {
                 if (DateTime.now().isAfter(mEventStartDateTime.millis)) {
-                    if (mEvent.repeatInterval == 0 && mEvent.getReminders().isNotEmpty()) {
+                    if (mEvent.repeatInterval == 0 && mEvent.getReminders().any { it.type == REMINDER_NOTIFICATION }) {
                         notifyEvent(mEvent)
                     }
                 }
@@ -1006,6 +1119,154 @@ class EventActivity : SimpleActivity() {
         }
     }
 
+    private fun fillAvailableContacts() {
+        mAvailableContacts = getEmails()
+
+        val names = getNames()
+        mAvailableContacts.forEach {
+            val contactId = it.contactId
+            val contact = names.firstOrNull { it.contactId == contactId }
+            val name = contact?.name
+            if (name != null) {
+                it.name = name
+            }
+
+            val photoUri = contact?.photoUri
+            if (photoUri != null) {
+                it.photoUri = photoUri
+            }
+        }
+    }
+
+    private fun updateAttendees() {
+        mAttendees.forEach {
+            addAttendee(it.getPublicName())
+        }
+        addAttendee()
+
+        val imageHeight = event_repetition_image.height
+        if (imageHeight > 0) {
+            event_attendees_image.layoutParams.height = imageHeight
+        } else {
+            event_repetition_image.onGlobalLayout {
+                event_attendees_image.layoutParams.height = event_repetition_image.height
+            }
+        }
+    }
+
+    private fun addAttendee(value: String? = null) {
+        val attendeeHolder = layoutInflater.inflate(R.layout.item_attendee, event_attendees_holder, false) as RelativeLayout
+        mAttendeeViews.add(attendeeHolder.event_attendee)
+        attendeeHolder.event_attendee.onTextChangeListener {
+            if (mWasContactsPermissionChecked && value == null) {
+                checkNewAttendeeField(value)
+            } else {
+                handlePermission(PERMISSION_READ_CONTACTS) {
+                    checkNewAttendeeField(value)
+                    mWasContactsPermissionChecked = true
+                }
+            }
+        }
+
+        event_attendees_holder.addView(attendeeHolder)
+        attendeeHolder.event_attendee.setColors(config.textColor, getAdjustedPrimaryColor(), config.backgroundColor)
+
+        if (value != null) {
+            attendeeHolder.event_attendee.setText(value)
+        }
+
+        val adapter = AutoCompleteTextViewAdapter(this, mAvailableContacts)
+        attendeeHolder.event_attendee.setAdapter(adapter)
+        attendeeHolder.event_attendee.setOnItemClickListener { parent, view, position, id ->
+            val currAttendees = (attendeeHolder.event_attendee.adapter as AutoCompleteTextViewAdapter).resultList
+            val selectedAttendee = currAttendees[position]
+        }
+    }
+
+    private fun checkNewAttendeeField(value: String?) {
+        if (value == null && mAttendeeViews.none { it.value.isEmpty() }) {
+            addAttendee()
+        }
+    }
+
+    private fun getAllAttendees(): String {
+        val attendeeEmails = mAttendeeViews.map { it.value }.filter { it.isNotEmpty() }.toMutableList() as ArrayList<String>
+        val attendees = ArrayList<Attendee>()
+        attendeeEmails.mapTo(attendees) {
+            Attendee(0, "", it, CalendarContract.Attendees.ATTENDEE_STATUS_INVITED, "")
+        }
+        return Gson().toJson(attendees)
+    }
+
+    private fun getNames(): List<Attendee> {
+        val contacts = ArrayList<Attendee>()
+        val uri = ContactsContract.Data.CONTENT_URI
+        val projection = arrayOf(
+                ContactsContract.Data.CONTACT_ID,
+                ContactsContract.CommonDataKinds.StructuredName.PREFIX,
+                ContactsContract.CommonDataKinds.StructuredName.GIVEN_NAME,
+                ContactsContract.CommonDataKinds.StructuredName.MIDDLE_NAME,
+                ContactsContract.CommonDataKinds.StructuredName.FAMILY_NAME,
+                ContactsContract.CommonDataKinds.StructuredName.SUFFIX,
+                ContactsContract.CommonDataKinds.StructuredName.PHOTO_THUMBNAIL_URI)
+
+        val selection = "${ContactsContract.Data.MIMETYPE} = ?"
+        val selectionArgs = arrayOf(ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE)
+
+        var cursor: Cursor? = null
+        try {
+            cursor = contentResolver.query(uri, projection, selection, selectionArgs, null)
+            if (cursor?.moveToFirst() == true) {
+                do {
+                    val id = cursor.getIntValue(ContactsContract.Data.CONTACT_ID)
+                    val prefix = cursor.getStringValue(ContactsContract.CommonDataKinds.StructuredName.PREFIX) ?: ""
+                    val firstName = cursor.getStringValue(ContactsContract.CommonDataKinds.StructuredName.GIVEN_NAME) ?: ""
+                    val middleName = cursor.getStringValue(ContactsContract.CommonDataKinds.StructuredName.MIDDLE_NAME) ?: ""
+                    val surname = cursor.getStringValue(ContactsContract.CommonDataKinds.StructuredName.FAMILY_NAME) ?: ""
+                    val suffix = cursor.getStringValue(ContactsContract.CommonDataKinds.StructuredName.SUFFIX) ?: ""
+                    val photoUri = cursor.getStringValue(ContactsContract.CommonDataKinds.StructuredName.PHOTO_THUMBNAIL_URI) ?: ""
+
+                    val names = arrayListOf(prefix, firstName, middleName, surname, suffix).filter { it.trim().isNotEmpty() }
+                    val fullName = TextUtils.join("", names)
+                    if (fullName.isNotEmpty() || photoUri.isNotEmpty()) {
+                        val contact = Attendee(id, fullName, "", 0, photoUri)
+                        contacts.add(contact)
+                    }
+                } while (cursor.moveToNext())
+            }
+        } catch (ignored: Exception) {
+        } finally {
+            cursor?.close()
+        }
+        return contacts
+    }
+
+    private fun getEmails(): ArrayList<Attendee> {
+        val contacts = ArrayList<Attendee>()
+        val uri = ContactsContract.CommonDataKinds.Email.CONTENT_URI
+        val projection = arrayOf(
+                ContactsContract.Data.CONTACT_ID,
+                ContactsContract.CommonDataKinds.Email.DATA
+        )
+
+        var cursor: Cursor? = null
+        try {
+            cursor = contentResolver.query(uri, projection, null, null, null)
+            if (cursor?.moveToFirst() == true) {
+                do {
+                    val id = cursor.getIntValue(ContactsContract.Data.CONTACT_ID)
+                    val email = cursor.getStringValue(ContactsContract.CommonDataKinds.Email.DATA) ?: continue
+                    val contact = Attendee(id, "", email, 0, "")
+                    contacts.add(contact)
+                } while (cursor.moveToNext())
+            }
+        } catch (ignored: Exception) {
+        } finally {
+            cursor?.close()
+        }
+        return contacts
+    }
+
     private fun updateIconColors() {
         val textColor = config.textColor
         event_time_image.applyColorFilter(textColor)
@@ -1014,5 +1275,9 @@ class EventActivity : SimpleActivity() {
         event_type_image.applyColorFilter(textColor)
         event_caldav_calendar_image.applyColorFilter(textColor)
         event_show_on_map.applyColorFilter(getAdjustedPrimaryColor())
+        event_reminder_1_type.applyColorFilter(textColor)
+        event_reminder_2_type.applyColorFilter(textColor)
+        event_reminder_3_type.applyColorFilter(textColor)
+        event_attendees_image.applyColorFilter(textColor)
     }
 }
