@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/event_attendee_holder"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -21,4 +22,23 @@
         android:textCursorDrawable="@null"
         android:textSize="@dimen/bigger_text_size"/>
 
+    <RelativeLayout
+        android:id="@+id/event_contact_attendee"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/event_attendee"
+        android:layout_alignBottom="@+id/event_attendee"
+        android:visibility="gone">
+
+        <com.simplemobiletools.commons.views.MyTextView
+            android:id="@+id/event_contact_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/small_margin"
+            android:lines="1"
+            android:textSize="@dimen/bigger_text_size"
+            tools:text="Simple Mobile"/>
+
+    </RelativeLayout>
 </RelativeLayout>

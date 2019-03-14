@@ -1156,8 +1156,12 @@ class EventActivity : SimpleActivity() {
 
     private fun addAttendee(value: String? = null) {
         val attendeeHolder = layoutInflater.inflate(R.layout.item_attendee, event_attendees_holder, false) as RelativeLayout
-        mAttendeeViews.add(attendeeHolder.event_attendee)
-        attendeeHolder.event_attendee.onTextChangeListener {
+        val autoCompleteView = attendeeHolder.event_attendee
+        val selectedAttendeeHolder = attendeeHolder.event_contact_attendee
+        val selectedAttendeeName = selectedAttendeeHolder.event_contact_name
+
+        mAttendeeViews.add(autoCompleteView)
+        autoCompleteView.onTextChangeListener {
             if (mWasContactsPermissionChecked && value == null) {
                 checkNewAttendeeField(value)
             } else {
@@ -1169,17 +1173,27 @@ class EventActivity : SimpleActivity() {
         }
 
         event_attendees_holder.addView(attendeeHolder)
-        attendeeHolder.event_attendee.setColors(config.textColor, getAdjustedPrimaryColor(), config.backgroundColor)
+        event_attendees_holder.onGlobalLayout {
+            selectedAttendeeHolder.layoutParams.height = autoCompleteView.height
+        }
+
+        autoCompleteView.setColors(config.textColor, getAdjustedPrimaryColor(), config.backgroundColor)
+        selectedAttendeeName.setColors(config.textColor, getAdjustedPrimaryColor(), config.backgroundColor)
 
         if (value != null) {
-            attendeeHolder.event_attendee.setText(value)
+            autoCompleteView.setText(value)
         }
 
         val adapter = AutoCompleteTextViewAdapter(this, mAvailableContacts)
-        attendeeHolder.event_attendee.setAdapter(adapter)
-        attendeeHolder.event_attendee.setOnItemClickListener { parent, view, position, id ->
-            val currAttendees = (attendeeHolder.event_attendee.adapter as AutoCompleteTextViewAdapter).resultList
+        autoCompleteView.setAdapter(adapter)
+        autoCompleteView.setOnItemClickListener { parent, view, position, id ->
+            val currAttendees = (autoCompleteView.adapter as AutoCompleteTextViewAdapter).resultList
             val selectedAttendee = currAttendees[position]
+
+            hideKeyboard(autoCompleteView)
+            autoCompleteView.beGone()
+            selectedAttendeeName.text = selectedAttendee.getPublicName()
+            selectedAttendeeHolder.beVisible()
         }
     }
 
