@@ -19,7 +19,7 @@ import com.simplemobiletools.commons.extensions.normalizeString
 import kotlinx.android.synthetic.main.item_autocomplete_email_name.view.*
 
 class AutoCompleteTextViewAdapter(val activity: SimpleActivity, val contacts: ArrayList<Attendee>) : ArrayAdapter<Attendee>(activity, 0, contacts) {
-    private var resultList = ArrayList<Attendee>()
+    var resultList = ArrayList<Attendee>()
     private var placeholder = activity.resources.getDrawable(R.drawable.attendee_circular_background)
 
     init {

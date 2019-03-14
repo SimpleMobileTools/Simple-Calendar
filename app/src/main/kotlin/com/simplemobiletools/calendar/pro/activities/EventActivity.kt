@@ -1170,12 +1170,17 @@ class EventActivity : SimpleActivity() {
 
         event_attendees_holder.addView(attendeeHolder)
         attendeeHolder.event_attendee.setColors(config.textColor, getAdjustedPrimaryColor(), config.backgroundColor)
+
         if (value != null) {
             attendeeHolder.event_attendee.setText(value)
         }
 
         val adapter = AutoCompleteTextViewAdapter(this, mAvailableContacts)
         attendeeHolder.event_attendee.setAdapter(adapter)
+        attendeeHolder.event_attendee.setOnItemClickListener { parent, view, position, id ->
+            val currAttendees = (attendeeHolder.event_attendee.adapter as AutoCompleteTextViewAdapter).resultList
+            val selectedAttendee = currAttendees[position]
+        }
     }
 
     private fun checkNewAttendeeField(value: String?) {
