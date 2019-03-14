@@ -1167,6 +1167,7 @@ class EventActivity : SimpleActivity() {
         val selectedAttendeeHolder = attendeeHolder.event_contact_attendee
         val selectedAttendeeName = selectedAttendeeHolder.event_contact_name
         val selectedAttendeeImage = attendeeHolder.event_contact_image
+        val selectedAttendeeDismiss = attendeeHolder.event_contact_dismiss
 
         mAttendeeViews.add(autoCompleteView)
         autoCompleteView.onTextChangeListener {
@@ -1185,8 +1186,10 @@ class EventActivity : SimpleActivity() {
             selectedAttendeeHolder.layoutParams.height = autoCompleteView.height
         }
 
-        autoCompleteView.setColors(config.textColor, getAdjustedPrimaryColor(), config.backgroundColor)
-        selectedAttendeeName.setColors(config.textColor, getAdjustedPrimaryColor(), config.backgroundColor)
+        val textColor = config.textColor
+        autoCompleteView.setColors(textColor, getAdjustedPrimaryColor(), config.backgroundColor)
+        selectedAttendeeName.setColors(textColor, getAdjustedPrimaryColor(), config.backgroundColor)
+        selectedAttendeeDismiss.applyColorFilter(textColor)
 
         if (value != null) {
             autoCompleteView.setText(value)
@@ -1205,6 +1208,7 @@ class EventActivity : SimpleActivity() {
             selectedAttendeeHolder.beVisible()
             selectedAttendeeImage.beVisible()
             selectedAttendee.updateImage(applicationContext, selectedAttendeeImage, mAttendeePlaceholder)
+            selectedAttendeeDismiss.beVisible()
         }
     }
 

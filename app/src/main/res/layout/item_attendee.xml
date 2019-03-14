@@ -43,10 +43,24 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="@dimen/medium_margin"
+            android:layout_toStartOf="@+id/event_contact_dismiss"
             android:layout_toEndOf="@+id/event_contact_image"
+            android:ellipsize="end"
             android:lines="1"
             android:textSize="@dimen/bigger_text_size"
             tools:text="Simple Mobile"/>
+
+        <ImageView
+            android:id="@+id/event_contact_dismiss"
+            android:layout_width="@dimen/avatar_size"
+            android:layout_height="@dimen/avatar_size"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="@dimen/medium_margin"
+            android:layout_marginEnd="@dimen/normal_margin"
+            android:alpha="0.8"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="@dimen/small_margin"
+            android:src="@drawable/ic_cross_big"/>
 
     </RelativeLayout>
 </RelativeLayout>
