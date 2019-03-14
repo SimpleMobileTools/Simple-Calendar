@@ -6,10 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Filter
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.bumptech.glide.request.RequestOptions
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.extensions.config
@@ -39,21 +35,7 @@ class AutoCompleteTextViewAdapter(val activity: SimpleActivity, val contacts: Ar
             item_autocomplete_name?.text = contact.name
             item_autocomplete_email?.text = contact.email
 
-            if (contact.photoUri.isEmpty()) {
-                item_autocomplete_image.setImageDrawable(placeholder)
-            } else {
-                val options = RequestOptions()
-                        .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
-                        .error(placeholder)
-                        .centerCrop()
-
-                Glide.with(activity)
-                        .load(contact.photoUri)
-                        .transition(DrawableTransitionOptions.withCrossFade())
-                        .apply(options)
-                        .apply(RequestOptions.circleCropTransform())
-                        .into(item_autocomplete_image)
-            }
+            contact.updateImage(context, item_autocomplete_image, placeholder)
         }
 
         return listItem

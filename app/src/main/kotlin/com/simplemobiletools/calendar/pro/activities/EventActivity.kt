@@ -4,6 +4,8 @@ import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
 import android.database.Cursor
+import android.graphics.drawable.Drawable
+import android.graphics.drawable.LayerDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.CalendarContract
@@ -12,7 +14,9 @@ import android.text.TextUtils
 import android.text.method.LinkMovementMethod
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.view.WindowManager
+import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.RelativeLayout
@@ -76,6 +80,7 @@ class EventActivity : SimpleActivity() {
     private var mAttendeeViews = ArrayList<EditText>()
     private var mAvailableContacts = ArrayList<Attendee>()
 
+    private lateinit var mAttendeePlaceholder: Drawable
     private lateinit var mEventStartDateTime: DateTime
     private lateinit var mEventEndDateTime: DateTime
     private lateinit var mEvent: Event
@@ -88,6 +93,8 @@ class EventActivity : SimpleActivity() {
         val intent = intent ?: return
         mDialogTheme = getDialogTheme()
         mWasContactsPermissionChecked = hasPermission(PERMISSION_READ_CONTACTS)
+        mAttendeePlaceholder = resources.getDrawable(R.drawable.attendee_circular_background)
+        (mAttendeePlaceholder as LayerDrawable).findDrawableByLayerId(R.id.attendee_circular_background).applyColorFilter(config.primaryColor)
 
         val eventId = intent.getLongExtra(EVENT_ID, 0L)
         Thread {
@@ -1159,6 +1166,7 @@ class EventActivity : SimpleActivity() {
         val autoCompleteView = attendeeHolder.event_attendee
         val selectedAttendeeHolder = attendeeHolder.event_contact_attendee
         val selectedAttendeeName = selectedAttendeeHolder.event_contact_name
+        val selectedAttendeeImage = attendeeHolder.event_contact_image
 
         mAttendeeViews.add(autoCompleteView)
         autoCompleteView.onTextChangeListener {
@@ -1195,6 +1203,8 @@ class EventActivity : SimpleActivity() {
             autoCompleteView.focusSearch(View.FOCUS_DOWN)?.requestFocus()
             selectedAttendeeName.text = selectedAttendee.getPublicName()
             selectedAttendeeHolder.beVisible()
+            selectedAttendeeImage.beVisible()
+            selectedAttendee.updateImage(applicationContext, selectedAttendeeImage, mAttendeePlaceholder)
         }
     }
 

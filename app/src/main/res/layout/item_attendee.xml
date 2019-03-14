@@ -30,12 +30,20 @@
         android:layout_alignBottom="@+id/event_attendee"
         android:visibility="gone">
 
+        <ImageView
+            android:id="@+id/event_contact_image"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/tiny_margin"
+            android:adjustViewBounds="true"/>
+
         <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/event_contact_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginStart="@dimen/medium_margin"
+            android:layout_toEndOf="@+id/event_contact_image"
             android:lines="1"
             android:textSize="@dimen/bigger_text_size"
             tools:text="Simple Mobile"/>
