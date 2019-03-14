@@ -1186,12 +1186,13 @@ class EventActivity : SimpleActivity() {
 
         val adapter = AutoCompleteTextViewAdapter(this, mAvailableContacts)
         autoCompleteView.setAdapter(adapter)
+        autoCompleteView.imeOptions = EditorInfo.IME_ACTION_NEXT
         autoCompleteView.setOnItemClickListener { parent, view, position, id ->
             val currAttendees = (autoCompleteView.adapter as AutoCompleteTextViewAdapter).resultList
             val selectedAttendee = currAttendees[position]
 
-            hideKeyboard(autoCompleteView)
             autoCompleteView.beGone()
+            autoCompleteView.focusSearch(View.FOCUS_DOWN)?.requestFocus()
             selectedAttendeeName.text = selectedAttendee.getPublicName()
             selectedAttendeeHolder.beVisible()
         }
