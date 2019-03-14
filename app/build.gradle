@@ -60,6 +60,7 @@ dependencies {
     implementation 'com.simplemobiletools:commons:5.10.10'
     implementation 'joda-time:joda-time:2.10.1'
     implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha3'
 
     kapt 'androidx.room:room-compiler:2.0.0'
     implementation 'androidx.room:room-runtime:2.0.0'

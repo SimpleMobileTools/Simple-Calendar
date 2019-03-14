@@ -1182,7 +1182,7 @@ class EventActivity : SimpleActivity() {
         val attendeeEmails = mAttendeeViews.map { it.value }.filter { it.isNotEmpty() }.toMutableList() as ArrayList<String>
         val attendees = ArrayList<Attendee>()
         attendeeEmails.mapTo(attendees) {
-            Attendee(0, "", it, CalendarContract.Attendees.ATTENDEE_STATUS_INVITED)
+            Attendee(0, "", it, CalendarContract.Attendees.ATTENDEE_STATUS_INVITED, "")
         }
         return Gson().toJson(attendees)
     }
@@ -1196,7 +1196,8 @@ class EventActivity : SimpleActivity() {
                 ContactsContract.CommonDataKinds.StructuredName.GIVEN_NAME,
                 ContactsContract.CommonDataKinds.StructuredName.MIDDLE_NAME,
                 ContactsContract.CommonDataKinds.StructuredName.FAMILY_NAME,
-                ContactsContract.CommonDataKinds.StructuredName.SUFFIX)
+                ContactsContract.CommonDataKinds.StructuredName.SUFFIX,
+                ContactsContract.CommonDataKinds.StructuredName.PHOTO_URI)
 
         val selection = "${ContactsContract.Data.MIMETYPE} = ?"
         val selectionArgs = arrayOf(ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE)
@@ -1212,11 +1213,12 @@ class EventActivity : SimpleActivity() {
                     val middleName = cursor.getStringValue(ContactsContract.CommonDataKinds.StructuredName.MIDDLE_NAME) ?: ""
                     val surname = cursor.getStringValue(ContactsContract.CommonDataKinds.StructuredName.FAMILY_NAME) ?: ""
                     val suffix = cursor.getStringValue(ContactsContract.CommonDataKinds.StructuredName.SUFFIX) ?: ""
+                    val photoUri = cursor.getStringValue(ContactsContract.CommonDataKinds.StructuredName.PHOTO_URI) ?: ""
 
                     val names = arrayListOf(prefix, firstName, middleName, surname, suffix).filter { it.trim().isNotEmpty() }
                     val fullName = TextUtils.join("", names)
                     if (fullName.isNotEmpty()) {
-                        val contact = Attendee(id, fullName, "", 0)
+                        val contact = Attendee(id, fullName, "", 0, photoUri)
                         contacts.add(contact)
                     }
                 } while (cursor.moveToNext())
@@ -1243,7 +1245,7 @@ class EventActivity : SimpleActivity() {
                 do {
                     val id = cursor.getIntValue(ContactsContract.Data.CONTACT_ID)
                     val email = cursor.getStringValue(ContactsContract.CommonDataKinds.Email.DATA) ?: continue
-                    val contact = Attendee(id, "", email, 0)
+                    val contact = Attendee(id, "", email, 0, "")
                     contacts.add(contact)
                 } while (cursor.moveToNext())
             }

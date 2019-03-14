@@ -17,13 +17,16 @@ class AutoCompleteTextViewAdapter(val activity: SimpleActivity, val contacts: Ar
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val contact = resultList[position]
         var listItem = convertView
-        if (listItem == null) {
+        if (listItem == null || listItem.tag != contact.name.isNotEmpty()) {
             val layout = if (contact.name.isNotEmpty()) R.layout.item_autocomplete_email_name else R.layout.item_autocomplete_email
             listItem = LayoutInflater.from(activity).inflate(layout, parent, false)
         }
 
-        listItem!!.item_autocomplete_name?.text = contact.name
-        listItem.item_autocomplete_email.text = contact.email
+        listItem!!.apply {
+            tag = contact.name.isNotEmpty()
+            item_autocomplete_name?.text = contact.name
+            item_autocomplete_email.text = contact.email
+        }
 
         return listItem
     }
