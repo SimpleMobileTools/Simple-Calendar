@@ -37,6 +37,14 @@ class AutoCompleteTextViewAdapter(val activity: SimpleActivity, val contacts: Ar
                         resultList.add(it)
                     }
                 }
+
+                resultList.sortWith(compareBy<Attendee>
+                { it.name.startsWith(searchString, true) }.thenBy
+                { it.email.startsWith(searchString, true) }.thenBy
+                { it.name.contains(searchString, true) }.thenBy
+                { it.email.contains(searchString, true) })
+                resultList.reverse()
+
                 filterResults.values = resultList
                 filterResults.count = resultList.size
             }
