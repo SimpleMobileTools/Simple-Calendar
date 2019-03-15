@@ -17,7 +17,6 @@ import android.view.MenuItem
 import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import androidx.core.app.NotificationManagerCompat
@@ -35,6 +34,7 @@ import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.models.RadioItem
+import com.simplemobiletools.commons.views.MyAutoCompleteTextView
 import kotlinx.android.synthetic.main.activity_event.*
 import kotlinx.android.synthetic.main.activity_event.view.*
 import kotlinx.android.synthetic.main.item_attendee.view.*
@@ -77,8 +77,9 @@ class EventActivity : SimpleActivity() {
     private var mWasActivityInitialized = false
     private var mWasContactsPermissionChecked = false
     private var mAttendees = ArrayList<Attendee>()
-    private var mAttendeeViews = ArrayList<EditText>()
+    private var mAttendeeAutoCompleteViews = ArrayList<MyAutoCompleteTextView>()
     private var mAvailableContacts = ArrayList<Attendee>()
+    private var mSelectedContacts = ArrayList<Attendee>()
 
     private lateinit var mAttendeePlaceholder: Drawable
     private lateinit var mEventStartDateTime: DateTime
@@ -1169,7 +1170,7 @@ class EventActivity : SimpleActivity() {
         val selectedAttendeeImage = attendeeHolder.event_contact_image
         val selectedAttendeeDismiss = attendeeHolder.event_contact_dismiss
 
-        mAttendeeViews.add(autoCompleteView)
+        mAttendeeAutoCompleteViews.add(autoCompleteView)
         autoCompleteView.onTextChangeListener {
             if (mWasContactsPermissionChecked && value == null) {
                 checkNewAttendeeField(value)
@@ -1197,6 +1198,7 @@ class EventActivity : SimpleActivity() {
 
         selectedAttendeeDismiss.setOnClickListener {
             attendeeHolder.beGone()
+            mSelectedContacts = mSelectedContacts.filter { it.contactId == selectedAttendeeDismiss.tag }.toMutableList() as ArrayList<Attendee>
         }
 
         val adapter = AutoCompleteTextViewAdapter(this, mAvailableContacts)
@@ -1205,6 +1207,7 @@ class EventActivity : SimpleActivity() {
         autoCompleteView.setOnItemClickListener { parent, view, position, id ->
             val currAttendees = (autoCompleteView.adapter as AutoCompleteTextViewAdapter).resultList
             val selectedAttendee = currAttendees[position]
+            mSelectedContacts.add(selectedAttendee)
 
             autoCompleteView.beGone()
             autoCompleteView.focusSearch(View.FOCUS_DOWN)?.requestFocus()
@@ -1213,21 +1216,28 @@ class EventActivity : SimpleActivity() {
             selectedAttendeeImage.beVisible()
             selectedAttendee.updateImage(applicationContext, selectedAttendeeImage, mAttendeePlaceholder)
             selectedAttendeeDismiss.beVisible()
+            selectedAttendeeDismiss.tag = selectedAttendee.contactId
         }
     }
 
     private fun checkNewAttendeeField(value: String?) {
-        if (value == null && mAttendeeViews.none { it.value.isEmpty() }) {
+        if (value == null && mAttendeeAutoCompleteViews.none { it.value.isEmpty() }) {
             addAttendee()
         }
     }
 
     private fun getAllAttendees(): String {
-        val attendeeEmails = mAttendeeViews.map { it.value }.filter { it.isNotEmpty() }.toMutableList() as ArrayList<String>
-        val attendees = ArrayList<Attendee>()
-        attendeeEmails.mapTo(attendees) {
+        var attendees = ArrayList<Attendee>()
+        mSelectedContacts.forEach {
+            it.status = CalendarContract.Attendees.ATTENDEE_STATUS_INVITED
+            attendees.add(it)
+        }
+
+        val customEmails = mAttendeeAutoCompleteViews.filter { it.isVisible() }.map { it.value }.filter { it.isNotEmpty() }.toMutableList() as ArrayList<String>
+        customEmails.mapTo(attendees) {
             Attendee(0, "", it, CalendarContract.Attendees.ATTENDEE_STATUS_INVITED, "")
         }
+        attendees = attendees.distinctBy { it.email }.toMutableList() as ArrayList<Attendee>
         return Gson().toJson(attendees)
     }
 
