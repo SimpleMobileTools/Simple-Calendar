@@ -1195,6 +1195,10 @@ class EventActivity : SimpleActivity() {
             autoCompleteView.setText(value)
         }
 
+        selectedAttendeeDismiss.setOnClickListener {
+            attendeeHolder.beGone()
+        }
+
         val adapter = AutoCompleteTextViewAdapter(this, mAvailableContacts)
         autoCompleteView.setAdapter(adapter)
         autoCompleteView.imeOptions = EditorInfo.IME_ACTION_NEXT
