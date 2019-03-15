@@ -25,7 +25,7 @@
     <RelativeLayout
         android:id="@+id/event_contact_attendee"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/avatar_size"
         android:layout_alignTop="@+id/event_attendee"
         android:layout_alignBottom="@+id/event_attendee"
         android:visibility="gone">

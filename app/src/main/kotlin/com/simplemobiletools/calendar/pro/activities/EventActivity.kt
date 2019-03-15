@@ -35,6 +35,7 @@ import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.models.RadioItem
 import com.simplemobiletools.commons.views.MyAutoCompleteTextView
+import com.simplemobiletools.commons.views.MyTextView
 import kotlinx.android.synthetic.main.activity_event.*
 import kotlinx.android.synthetic.main.activity_event.view.*
 import kotlinx.android.synthetic.main.item_attendee.view.*
@@ -1148,7 +1149,7 @@ class EventActivity : SimpleActivity() {
 
     private fun updateAttendees() {
         mAttendees.forEach {
-            addAttendee(it.getPublicName())
+            addAttendee(it)
         }
         addAttendee()
 
@@ -1162,7 +1163,7 @@ class EventActivity : SimpleActivity() {
         }
     }
 
-    private fun addAttendee(value: String? = null) {
+    private fun addAttendee(attendee: Attendee? = null) {
         val attendeeHolder = layoutInflater.inflate(R.layout.item_attendee, event_attendees_holder, false) as RelativeLayout
         val autoCompleteView = attendeeHolder.event_attendee
         val selectedAttendeeHolder = attendeeHolder.event_contact_attendee
@@ -1172,29 +1173,22 @@ class EventActivity : SimpleActivity() {
 
         mAttendeeAutoCompleteViews.add(autoCompleteView)
         autoCompleteView.onTextChangeListener {
-            if (mWasContactsPermissionChecked && value == null) {
-                checkNewAttendeeField(value)
+            if (mWasContactsPermissionChecked) {
+                checkNewAttendeeField()
             } else {
                 handlePermission(PERMISSION_READ_CONTACTS) {
-                    checkNewAttendeeField(value)
+                    checkNewAttendeeField()
                     mWasContactsPermissionChecked = true
                 }
             }
         }
 
         event_attendees_holder.addView(attendeeHolder)
-        event_attendees_holder.onGlobalLayout {
-            selectedAttendeeHolder.layoutParams.height = autoCompleteView.height
-        }
 
         val textColor = config.textColor
         autoCompleteView.setColors(textColor, getAdjustedPrimaryColor(), config.backgroundColor)
         selectedAttendeeName.setColors(textColor, getAdjustedPrimaryColor(), config.backgroundColor)
         selectedAttendeeDismiss.applyColorFilter(textColor)
-
-        if (value != null) {
-            autoCompleteView.setText(value)
-        }
 
         selectedAttendeeDismiss.setOnClickListener {
             attendeeHolder.beGone()
@@ -1207,21 +1201,30 @@ class EventActivity : SimpleActivity() {
         autoCompleteView.setOnItemClickListener { parent, view, position, id ->
             val currAttendees = (autoCompleteView.adapter as AutoCompleteTextViewAdapter).resultList
             val selectedAttendee = currAttendees[position]
-            mSelectedContacts.add(selectedAttendee)
+            addSelectedAttendee(selectedAttendee, autoCompleteView, selectedAttendeeHolder, selectedAttendeeImage, selectedAttendeeName, selectedAttendeeDismiss)
+        }
 
-            autoCompleteView.beGone()
-            autoCompleteView.focusSearch(View.FOCUS_DOWN)?.requestFocus()
-            selectedAttendeeName.text = selectedAttendee.getPublicName()
-            selectedAttendeeHolder.beVisible()
-            selectedAttendeeImage.beVisible()
-            selectedAttendee.updateImage(applicationContext, selectedAttendeeImage, mAttendeePlaceholder)
-            selectedAttendeeDismiss.beVisible()
-            selectedAttendeeDismiss.tag = selectedAttendee.contactId
+        if (attendee != null) {
+            addSelectedAttendee(attendee, autoCompleteView, selectedAttendeeHolder, selectedAttendeeImage, selectedAttendeeName, selectedAttendeeDismiss)
         }
     }
 
-    private fun checkNewAttendeeField(value: String?) {
-        if (value == null && mAttendeeAutoCompleteViews.none { it.value.isEmpty() }) {
+    private fun addSelectedAttendee(attendee: Attendee, autoCompleteView: MyAutoCompleteTextView, selectedAttendeeHolder: RelativeLayout, selectedAttendeeImage: ImageView,
+                                    selectedAttendeeName: MyTextView, selectedAttendeeDismiss: ImageView) {
+        mSelectedContacts.add(attendee)
+
+        autoCompleteView.beGone()
+        autoCompleteView.focusSearch(View.FOCUS_DOWN)?.requestFocus()
+        selectedAttendeeName.text = attendee.getPublicName()
+        selectedAttendeeHolder.beVisible()
+        selectedAttendeeImage.beVisible()
+        attendee.updateImage(applicationContext, selectedAttendeeImage, mAttendeePlaceholder)
+        selectedAttendeeDismiss.beVisible()
+        selectedAttendeeDismiss.tag = attendee.contactId
+    }
+
+    private fun checkNewAttendeeField() {
+        if (mAttendeeAutoCompleteViews.none { it.isVisible() && it.value.isEmpty() }) {
             addAttendee()
         }
     }
