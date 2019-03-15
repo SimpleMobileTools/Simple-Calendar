@@ -1149,7 +1149,12 @@ class EventActivity : SimpleActivity() {
 
     private fun updateAttendees() {
         mAttendees.forEach {
-            addAttendee(it)
+            val attendee = it
+            val deviceContact = mAvailableContacts.firstOrNull { it.email.isNotEmpty() && it.email == attendee.email && it.photoUri.isNotEmpty() }
+            if (deviceContact != null) {
+                attendee.photoUri = deviceContact.photoUri
+            }
+            addAttendee(attendee)
         }
         addAttendee()
 
