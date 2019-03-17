@@ -10,7 +10,7 @@
     <string name="simple_event_list">Enkel hendelsesliste</string>
     <string name="no_upcoming_events">Ser ut som du ikke har noen kommende hendelser.</string>
     <string name="go_to_today">Gå til idag</string>
-    <string name="go_to_date">Go to date</string>
+    <string name="go_to_date">Gå til dato</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Månedskalender</string>
@@ -174,12 +174,12 @@
     <string name="default_reminder_3">Standardpåminnelse 3</string>
     <string name="view_to_open_from_widget">View to open from the event list widget</string>
     <string name="last_view">Last view</string>
-    <string name="new_events">New events</string>
-    <string name="default_start_time">Default start time</string>
-    <string name="next_full_hour">Next full hour</string>
-    <string name="default_duration">Default duration</string>
-    <string name="last_used_one">Last used one</string>
-    <string name="other_time">Other time</string>
+    <string name="new_events">Nye hendelser</string>
+    <string name="default_start_time">Standard starttid</string>
+    <string name="next_full_hour">Neste fulle time</string>
+    <string name="default_duration">Standard varighet</string>
+    <string name="last_used_one">Den sist brukte</string>
+    <string name="other_time">Annen tid</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
