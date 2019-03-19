@@ -1160,9 +1160,15 @@ class EventActivity : SimpleActivity() {
         { it.status })
         mAttendees.reverse()
 
+        val currentCalendar = calDAVHelper.getCalDAVCalendars("", true).firstOrNull { it.id == mEventCalendarId }
+
         mAttendees.forEach {
             val attendee = it
             val deviceContact = mAvailableContacts.firstOrNull { it.email.isNotEmpty() && it.email == attendee.email && it.photoUri.isNotEmpty() }
+            if (attendee.email == currentCalendar?.accountName) {
+                attendee.name = ATTENDEE_ME
+            }
+
             if (deviceContact != null) {
                 attendee.photoUri = deviceContact.photoUri
             }
@@ -1244,17 +1250,26 @@ class EventActivity : SimpleActivity() {
         val attendeeStatusBackground = resources.getDrawable(R.drawable.attendee_status_circular_background)
         (attendeeStatusBackground as LayerDrawable).findDrawableByLayerId(R.id.attendee_status_circular_background).applyColorFilter(config.backgroundColor)
         selectedAttendeeStatusImage.background = attendeeStatusBackground
+        val isMe = attendee.name == ATTENDEE_ME
 
         autoCompleteView.beGone()
         autoCompleteView.focusSearch(View.FOCUS_DOWN)?.requestFocus()
-        selectedAttendeeName.text = attendee.getPublicName()
+        selectedAttendeeName.text = if (isMe) getString(R.string.my_status) else attendee.getPublicName()
         selectedAttendeeHolder.beVisible()
         selectedAttendeeImage.beVisible()
         selectedAttendeeStatusImage.beVisibleIf(showAttendeeStatus)
         selectedAttendeeStatusImage.setImageDrawable(attendeeStatusImage)
         attendee.updateImage(applicationContext, selectedAttendeeImage, mAttendeePlaceholder)
-        selectedAttendeeDismiss.beVisible()
+        selectedAttendeeDismiss.beGoneIf(isMe)
         selectedAttendeeDismiss.tag = attendee.contactId
+
+        selectedAttendeeHolder.event_contact_me_status.beVisibleIf(isMe)
+        selectedAttendeeHolder.event_contact_me_status.text = getString(when (attendee.status) {
+            CalendarContract.Attendees.ATTENDEE_STATUS_ACCEPTED -> R.string.going
+            CalendarContract.Attendees.ATTENDEE_STATUS_DECLINED -> R.string.not_going
+            CalendarContract.Attendees.ATTENDEE_STATUS_TENTATIVE -> R.string.maybe_going
+            else -> R.string.invited
+        })
     }
 
     private fun checkNewAttendeeField() {
