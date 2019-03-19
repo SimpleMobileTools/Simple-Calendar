@@ -1148,6 +1148,13 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun updateAttendees() {
+        mAttendees.sortWith(compareBy<Attendee>
+        { it.status == CalendarContract.Attendees.ATTENDEE_STATUS_ACCEPTED }.thenBy
+        { it.status == CalendarContract.Attendees.ATTENDEE_STATUS_DECLINED }.thenBy
+        { it.status == CalendarContract.Attendees.ATTENDEE_STATUS_TENTATIVE }.thenBy
+        { it.status })
+        mAttendees.reverse()
+
         mAttendees.forEach {
             val attendee = it
             val deviceContact = mAvailableContacts.firstOrNull { it.email.isNotEmpty() && it.email == attendee.email && it.photoUri.isNotEmpty() }
