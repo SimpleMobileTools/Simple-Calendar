@@ -1100,17 +1100,22 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun timeSet(hours: Int, minutes: Int, isStart: Boolean) {
-        if (isStart) {
-            val diff = mEventEndDateTime.seconds() - mEventStartDateTime.seconds()
+        try {
+            if (isStart) {
+                val diff = mEventEndDateTime.seconds() - mEventStartDateTime.seconds()
 
-            mEventStartDateTime = mEventStartDateTime.withHourOfDay(hours).withMinuteOfHour(minutes)
-            updateStartTimeText()
+                mEventStartDateTime = mEventStartDateTime.withHourOfDay(hours).withMinuteOfHour(minutes)
+                updateStartTimeText()
 
-            mEventEndDateTime = mEventStartDateTime.plusSeconds(diff.toInt())
-            updateEndTexts()
-        } else {
-            mEventEndDateTime = mEventEndDateTime.withHourOfDay(hours).withMinuteOfHour(minutes)
-            updateEndTimeText()
+                mEventEndDateTime = mEventStartDateTime.plusSeconds(diff.toInt())
+                updateEndTexts()
+            } else {
+                mEventEndDateTime = mEventEndDateTime.withHourOfDay(hours).withMinuteOfHour(minutes)
+                updateEndTimeText()
+            }
+        } catch (e: Exception) {
+            timeSet(hours + 1, minutes, isStart)
+            return
         }
     }
 
