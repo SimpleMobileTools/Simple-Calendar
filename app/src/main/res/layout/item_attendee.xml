@@ -80,6 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/normal_margin"
             android:layout_marginEnd="@dimen/activity_margin"
             android:ellipsize="end"
             android:gravity="end"

@@ -1266,6 +1266,10 @@ class EventActivity : SimpleActivity() {
         selectedAttendeeDismiss.beGoneIf(isMe)
         selectedAttendeeDismiss.tag = attendee.contactId
 
+        if (isMe) {
+            (selectedAttendeeName.layoutParams as RelativeLayout.LayoutParams).addRule(RelativeLayout.START_OF, selectedAttendeeHolder.event_contact_me_status.id)
+        }
+
         selectedAttendeeHolder.event_contact_me_status.beVisibleIf(isMe)
         selectedAttendeeHolder.event_contact_me_status.text = getString(when (attendee.status) {
             CalendarContract.Attendees.ATTENDEE_STATUS_ACCEPTED -> R.string.going
