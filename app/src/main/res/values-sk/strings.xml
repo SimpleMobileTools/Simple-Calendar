@@ -100,6 +100,11 @@
 
     <!-- Event attendees -->
     <string name="add_another_attendee">Pridať ďalšieho účastníka</string>
+    <string name="my_status">Môj stav:</string>
+    <string name="going">Zúčastním sa</string>
+    <string name="not_going">Nezúčastním sa</string>
+    <string name="maybe_going">Možno sa zúčastním</string>
+    <string name="invited">Pozvaný</string>
 
     <!-- Export / Import -->
     <string name="import_events">Importovať udalosti</string>
