@@ -1153,22 +1153,25 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun updateAttendees() {
+        val currentCalendar = calDAVHelper.getCalDAVCalendars("", true).firstOrNull { it.id == mEventCalendarId }
+
+        mAttendees.forEach {
+            if (it.email == currentCalendar?.accountName) {
+                it.name = ATTENDEE_ME
+            }
+        }
+
         mAttendees.sortWith(compareBy<Attendee>
+        { it.name == ATTENDEE_ME }.thenBy
         { it.status == CalendarContract.Attendees.ATTENDEE_STATUS_ACCEPTED }.thenBy
         { it.status == CalendarContract.Attendees.ATTENDEE_STATUS_DECLINED }.thenBy
         { it.status == CalendarContract.Attendees.ATTENDEE_STATUS_TENTATIVE }.thenBy
         { it.status })
         mAttendees.reverse()
 
-        val currentCalendar = calDAVHelper.getCalDAVCalendars("", true).firstOrNull { it.id == mEventCalendarId }
-
         mAttendees.forEach {
             val attendee = it
             val deviceContact = mAvailableContacts.firstOrNull { it.email.isNotEmpty() && it.email == attendee.email && it.photoUri.isNotEmpty() }
-            if (attendee.email == currentCalendar?.accountName) {
-                attendee.name = ATTENDEE_ME
-            }
-
             if (deviceContact != null) {
                 attendee.photoUri = deviceContact.photoUri
             }
