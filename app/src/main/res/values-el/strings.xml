@@ -100,11 +100,11 @@
 
     <!-- Event attendees -->
     <string name="add_another_attendee">Προσθήκη άλλης συμμετοχής</string>
-    <string name="my_status">My status:</string>
-    <string name="going">Going</string>
-    <string name="not_going">Not going</string>
-    <string name="maybe_going">Maybe going</string>
-    <string name="invited">Invited</string>
+    <string name="my_status">Η κατάσταση μου:</string>
+    <string name="going">Πηγαίνω</string>
+    <string name="not_going">Δεν πηγαίνω</string>
+    <string name="maybe_going">Ίσως πάω</string>
+    <string name="invited">Καλεσμένος</string>
 
     <!-- Export / Import -->
     <string name="import_events">Εισαγωγή εκδηλώσεων</string>
