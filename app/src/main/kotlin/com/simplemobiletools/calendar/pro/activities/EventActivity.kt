@@ -1173,7 +1173,6 @@ class EventActivity : SimpleActivity() {
         val autoCompleteView = attendeeHolder.event_attendee
         val selectedAttendeeHolder = attendeeHolder.event_contact_attendee
         val selectedAttendeeName = selectedAttendeeHolder.event_contact_name
-        val selectedAttendeeImage = attendeeHolder.event_contact_image
         val selectedAttendeeDismiss = attendeeHolder.event_contact_dismiss
 
         mAttendeeAutoCompleteViews.add(autoCompleteView)
@@ -1206,23 +1205,41 @@ class EventActivity : SimpleActivity() {
         autoCompleteView.setOnItemClickListener { parent, view, position, id ->
             val currAttendees = (autoCompleteView.adapter as AutoCompleteTextViewAdapter).resultList
             val selectedAttendee = currAttendees[position]
-            addSelectedAttendee(selectedAttendee, autoCompleteView, selectedAttendeeHolder, selectedAttendeeImage, selectedAttendeeName, selectedAttendeeDismiss)
+            addSelectedAttendee(selectedAttendee, autoCompleteView, selectedAttendeeHolder, selectedAttendeeName, selectedAttendeeDismiss)
         }
 
         if (attendee != null) {
-            addSelectedAttendee(attendee, autoCompleteView, selectedAttendeeHolder, selectedAttendeeImage, selectedAttendeeName, selectedAttendeeDismiss)
+            addSelectedAttendee(attendee, autoCompleteView, selectedAttendeeHolder, selectedAttendeeName, selectedAttendeeDismiss)
         }
     }
 
-    private fun addSelectedAttendee(attendee: Attendee, autoCompleteView: MyAutoCompleteTextView, selectedAttendeeHolder: RelativeLayout, selectedAttendeeImage: ImageView,
+    private fun addSelectedAttendee(attendee: Attendee, autoCompleteView: MyAutoCompleteTextView, selectedAttendeeHolder: RelativeLayout,
                                     selectedAttendeeName: MyTextView, selectedAttendeeDismiss: ImageView) {
         mSelectedContacts.add(attendee)
+
+        val selectedAttendeeImage = selectedAttendeeHolder.event_contact_image
+        val selectedAttendeeStatusImage = selectedAttendeeHolder.event_contact_status_image
+        val showAttendeeStatus = attendee.status == CalendarContract.Attendees.ATTENDEE_STATUS_ACCEPTED ||
+                attendee.status == CalendarContract.Attendees.ATTENDEE_STATUS_DECLINED ||
+                attendee.status == CalendarContract.Attendees.ATTENDEE_STATUS_TENTATIVE
+
+        val attendeeStatusImage = resources.getDrawable(when (attendee.status) {
+            CalendarContract.Attendees.ATTENDEE_STATUS_ACCEPTED -> R.drawable.ic_check_green
+            CalendarContract.Attendees.ATTENDEE_STATUS_DECLINED -> R.drawable.ic_cross_red
+            else -> R.drawable.ic_question_yellow
+        })
+
+        val attendeeStatusBackground = resources.getDrawable(R.drawable.attendee_status_circular_background)
+        (attendeeStatusBackground as LayerDrawable).findDrawableByLayerId(R.id.attendee_status_circular_background).applyColorFilter(config.backgroundColor)
+        selectedAttendeeStatusImage.background = attendeeStatusBackground
 
         autoCompleteView.beGone()
         autoCompleteView.focusSearch(View.FOCUS_DOWN)?.requestFocus()
         selectedAttendeeName.text = attendee.getPublicName()
         selectedAttendeeHolder.beVisible()
         selectedAttendeeImage.beVisible()
+        selectedAttendeeStatusImage.beVisibleIf(showAttendeeStatus)
+        selectedAttendeeStatusImage.setImageDrawable(attendeeStatusImage)
         attendee.updateImage(applicationContext, selectedAttendeeImage, mAttendeePlaceholder)
         selectedAttendeeDismiss.beVisible()
         selectedAttendeeDismiss.tag = attendee.contactId

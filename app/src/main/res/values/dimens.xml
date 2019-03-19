@@ -30,4 +30,5 @@
     <dimen name="event_color_bar_height">100dp</dimen>
 
     <dimen name="avatar_size">40dp</dimen>
+    <dimen name="avatar_status_size">16dp</dimen>
 </resources>
