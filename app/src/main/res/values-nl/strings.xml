@@ -100,11 +100,11 @@
 
     <!-- Event attendees -->
     <string name="add_another_attendee">Persoon uitnodigen</string>
-    <string name="my_status">My status:</string>
-    <string name="going">Going</string>
-    <string name="not_going">Not going</string>
-    <string name="maybe_going">Maybe going</string>
-    <string name="invited">Invited</string>
+    <string name="my_status">Mijn status:</string>
+    <string name="going">Aanwezig</string>
+    <string name="not_going">Niet aanwezig</string>
+    <string name="maybe_going">Misschien</string>
+    <string name="invited">Uitgenodigd</string>
 
     <!-- Export / Import -->
     <string name="import_events">Afspraken importeren</string>
