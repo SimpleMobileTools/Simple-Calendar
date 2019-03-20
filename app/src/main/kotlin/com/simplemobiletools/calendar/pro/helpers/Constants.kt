@@ -16,7 +16,6 @@ const val WEEK_START_DATE_TIME = "week_start_date_time"
 const val CALDAV = "Caldav"
 const val VIEW_TO_OPEN = "view_to_open"
 const val SHORTCUT_NEW_EVENT = "shortcut_new_event"
-const val ATTENDEE_ME = "attendee_me"
 const val REGULAR_EVENT_TYPE_ID = 1L
 const val CHOPPED_LIST_DEFAULT_SIZE = 100
 

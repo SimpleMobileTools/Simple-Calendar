@@ -253,7 +253,7 @@ class EventActivity : SimpleActivity() {
             putInt(REPEAT_RULE, mRepeatRule)
             putLong(REPEAT_LIMIT, mRepeatLimit)
 
-            putString(ATTENDEES, getAllAttendees())
+            putString(ATTENDEES, getAllAttendees(false))
 
             putLong(EVENT_TYPE_ID, mEventTypeId)
             putInt(EVENT_CALENDAR_ID, mEventCalendarId)
@@ -921,7 +921,7 @@ class EventActivity : SimpleActivity() {
             flags = mEvent.flags.addBitIf(event_all_day.isChecked, FLAG_ALL_DAY)
             repeatLimit = if (repeatInterval == 0) 0 else mRepeatLimit
             repeatRule = mRepeatRule
-            attendees = if (mEventCalendarId == STORED_LOCALLY_ONLY) "" else getAllAttendees()
+            attendees = if (mEventCalendarId == STORED_LOCALLY_ONLY) "" else getAllAttendees(true)
             eventType = newEventType
             lastUpdated = System.currentTimeMillis()
             source = newSource
@@ -1329,7 +1329,7 @@ class EventActivity : SimpleActivity() {
         }
     }
 
-    private fun getAllAttendees(): String {
+    private fun getAllAttendees(isSavingEvent: Boolean): String {
         var attendees = ArrayList<Attendee>()
         mSelectedContacts.forEach {
             attendees.add(it)
@@ -1340,6 +1340,15 @@ class EventActivity : SimpleActivity() {
             Attendee(0, "", it, CalendarContract.Attendees.ATTENDEE_STATUS_INVITED, "", false)
         }
         attendees = attendees.distinctBy { it.email }.toMutableList() as ArrayList<Attendee>
+
+        if (mEvent.id == null && isSavingEvent && attendees.isNotEmpty()) {
+            val currentCalendar = calDAVHelper.getCalDAVCalendars("", true).firstOrNull { it.id == mEventCalendarId }
+            mAvailableContacts.firstOrNull { it.email == currentCalendar?.accountName }?.apply {
+                status = CalendarContract.Attendees.ATTENDEE_STATUS_ACCEPTED
+                attendees.add(this)
+            }
+        }
+
         return Gson().toJson(attendees)
     }
 
