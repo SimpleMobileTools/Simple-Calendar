@@ -1235,16 +1235,6 @@ class EventActivity : SimpleActivity() {
     private fun addSelectedAttendee(attendee: Attendee, autoCompleteView: MyAutoCompleteTextView, selectedAttendeeHolder: RelativeLayout) {
         mSelectedContacts.add(attendee)
 
-        val showAttendeeStatus = attendee.status == CalendarContract.Attendees.ATTENDEE_STATUS_ACCEPTED ||
-                attendee.status == CalendarContract.Attendees.ATTENDEE_STATUS_DECLINED ||
-                attendee.status == CalendarContract.Attendees.ATTENDEE_STATUS_TENTATIVE
-
-        val attendeeStatusImage = resources.getDrawable(when (attendee.status) {
-            CalendarContract.Attendees.ATTENDEE_STATUS_ACCEPTED -> R.drawable.ic_check_green
-            CalendarContract.Attendees.ATTENDEE_STATUS_DECLINED -> R.drawable.ic_cross_red
-            else -> R.drawable.ic_question_yellow
-        })
-
         val isMe = attendee.name == ATTENDEE_ME
 
         autoCompleteView.beGone()
@@ -1257,8 +1247,8 @@ class EventActivity : SimpleActivity() {
             (attendeeStatusBackground as LayerDrawable).findDrawableByLayerId(R.id.attendee_status_circular_background).applyColorFilter(config.backgroundColor)
             event_contact_status_image.apply {
                 background = attendeeStatusBackground
-                setImageDrawable(attendeeStatusImage)
-                beVisibleIf(showAttendeeStatus)
+                setImageDrawable(getAttendeeStatusImage(attendee))
+                beVisibleIf(attendee.showStatusImage())
             }
 
             event_contact_image.apply {
@@ -1276,14 +1266,51 @@ class EventActivity : SimpleActivity() {
                 (event_contact_name.layoutParams as RelativeLayout.LayoutParams).addRule(RelativeLayout.START_OF, event_contact_me_status.id)
             }
 
+            if (isMe) {
+                updateAttendeeMe(this, attendee)
+            }
+
             event_contact_me_status.apply {
                 beVisibleIf(isMe)
-                text = getString(when (attendee.status) {
-                    CalendarContract.Attendees.ATTENDEE_STATUS_ACCEPTED -> R.string.going
-                    CalendarContract.Attendees.ATTENDEE_STATUS_DECLINED -> R.string.not_going
-                    CalendarContract.Attendees.ATTENDEE_STATUS_TENTATIVE -> R.string.maybe_going
-                    else -> R.string.invited
-                })
+            }
+
+            if (isMe) {
+                event_contact_attendee.setOnClickListener {
+                    val items = arrayListOf(
+                            RadioItem(CalendarContract.Attendees.ATTENDEE_STATUS_ACCEPTED, getString(R.string.going)),
+                            RadioItem(CalendarContract.Attendees.ATTENDEE_STATUS_DECLINED, getString(R.string.not_going)),
+                            RadioItem(CalendarContract.Attendees.ATTENDEE_STATUS_TENTATIVE, getString(R.string.maybe_going))
+                    )
+
+                    RadioGroupDialog(this@EventActivity, items, attendee.status) {
+                        attendee.status = it as Int
+                        updateAttendeeMe(this, attendee)
+                    }
+                }
+            }
+        }
+    }
+
+    private fun getAttendeeStatusImage(attendee: Attendee): Drawable {
+        return resources.getDrawable(when (attendee.status) {
+            CalendarContract.Attendees.ATTENDEE_STATUS_ACCEPTED -> R.drawable.ic_check_green
+            CalendarContract.Attendees.ATTENDEE_STATUS_DECLINED -> R.drawable.ic_cross_red
+            else -> R.drawable.ic_question_yellow
+        })
+    }
+
+    private fun updateAttendeeMe(holder: RelativeLayout, attendee: Attendee) {
+        holder.apply {
+            event_contact_me_status.text = getString(when (attendee.status) {
+                CalendarContract.Attendees.ATTENDEE_STATUS_ACCEPTED -> R.string.going
+                CalendarContract.Attendees.ATTENDEE_STATUS_DECLINED -> R.string.not_going
+                CalendarContract.Attendees.ATTENDEE_STATUS_TENTATIVE -> R.string.maybe_going
+                else -> R.string.invited
+            })
+
+            event_contact_status_image.apply {
+                beVisibleIf(attendee.showStatusImage())
+                setImageDrawable(getAttendeeStatusImage(attendee))
             }
         }
     }

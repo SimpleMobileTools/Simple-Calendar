@@ -28,6 +28,7 @@
         android:layout_height="@dimen/avatar_size"
         android:layout_alignTop="@+id/event_attendee"
         android:layout_alignBottom="@+id/event_attendee"
+        android:background="?attr/selectableItemBackground"
         android:visibility="gone">
 
         <ImageView
