@@ -1344,6 +1344,7 @@ class EventActivity : SimpleActivity() {
         if (mEvent.id == null && isSavingEvent && attendees.isNotEmpty()) {
             val currentCalendar = calDAVHelper.getCalDAVCalendars("", true).firstOrNull { it.id == mEventCalendarId }
             mAvailableContacts.firstOrNull { it.email == currentCalendar?.accountName }?.apply {
+                attendees = attendees.filter { it.email != currentCalendar?.accountName }.toMutableList() as ArrayList<Attendee>
                 status = CalendarContract.Attendees.ATTENDEE_STATUS_ACCEPTED
                 relationship = CalendarContract.Attendees.RELATIONSHIP_ORGANIZER
                 attendees.add(this)
