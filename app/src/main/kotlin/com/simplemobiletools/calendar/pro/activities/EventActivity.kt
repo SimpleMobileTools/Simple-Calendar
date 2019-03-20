@@ -35,7 +35,6 @@ import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.models.RadioItem
 import com.simplemobiletools.commons.views.MyAutoCompleteTextView
-import com.simplemobiletools.commons.views.MyTextView
 import kotlinx.android.synthetic.main.activity_event.*
 import kotlinx.android.synthetic.main.activity_event.view.*
 import kotlinx.android.synthetic.main.item_attendee.view.*
@@ -1193,7 +1192,6 @@ class EventActivity : SimpleActivity() {
         val attendeeHolder = layoutInflater.inflate(R.layout.item_attendee, event_attendees_holder, false) as RelativeLayout
         val autoCompleteView = attendeeHolder.event_attendee
         val selectedAttendeeHolder = attendeeHolder.event_contact_attendee
-        val selectedAttendeeName = selectedAttendeeHolder.event_contact_name
         val selectedAttendeeDismiss = attendeeHolder.event_contact_dismiss
 
         mAttendeeAutoCompleteViews.add(autoCompleteView)
@@ -1212,7 +1210,7 @@ class EventActivity : SimpleActivity() {
 
         val textColor = config.textColor
         autoCompleteView.setColors(textColor, getAdjustedPrimaryColor(), config.backgroundColor)
-        selectedAttendeeName.setColors(textColor, getAdjustedPrimaryColor(), config.backgroundColor)
+        selectedAttendeeHolder.event_contact_name.setColors(textColor, getAdjustedPrimaryColor(), config.backgroundColor)
         selectedAttendeeDismiss.applyColorFilter(textColor)
 
         selectedAttendeeDismiss.setOnClickListener {
@@ -1226,20 +1224,17 @@ class EventActivity : SimpleActivity() {
         autoCompleteView.setOnItemClickListener { parent, view, position, id ->
             val currAttendees = (autoCompleteView.adapter as AutoCompleteTextViewAdapter).resultList
             val selectedAttendee = currAttendees[position]
-            addSelectedAttendee(selectedAttendee, autoCompleteView, selectedAttendeeHolder, selectedAttendeeName, selectedAttendeeDismiss)
+            addSelectedAttendee(selectedAttendee, autoCompleteView, selectedAttendeeHolder)
         }
 
         if (attendee != null) {
-            addSelectedAttendee(attendee, autoCompleteView, selectedAttendeeHolder, selectedAttendeeName, selectedAttendeeDismiss)
+            addSelectedAttendee(attendee, autoCompleteView, selectedAttendeeHolder)
         }
     }
 
-    private fun addSelectedAttendee(attendee: Attendee, autoCompleteView: MyAutoCompleteTextView, selectedAttendeeHolder: RelativeLayout,
-                                    selectedAttendeeName: MyTextView, selectedAttendeeDismiss: ImageView) {
+    private fun addSelectedAttendee(attendee: Attendee, autoCompleteView: MyAutoCompleteTextView, selectedAttendeeHolder: RelativeLayout) {
         mSelectedContacts.add(attendee)
 
-        val selectedAttendeeImage = selectedAttendeeHolder.event_contact_image
-        val selectedAttendeeStatusImage = selectedAttendeeHolder.event_contact_status_image
         val showAttendeeStatus = attendee.status == CalendarContract.Attendees.ATTENDEE_STATUS_ACCEPTED ||
                 attendee.status == CalendarContract.Attendees.ATTENDEE_STATUS_DECLINED ||
                 attendee.status == CalendarContract.Attendees.ATTENDEE_STATUS_TENTATIVE
@@ -1250,33 +1245,47 @@ class EventActivity : SimpleActivity() {
             else -> R.drawable.ic_question_yellow
         })
 
-        val attendeeStatusBackground = resources.getDrawable(R.drawable.attendee_status_circular_background)
-        (attendeeStatusBackground as LayerDrawable).findDrawableByLayerId(R.id.attendee_status_circular_background).applyColorFilter(config.backgroundColor)
-        selectedAttendeeStatusImage.background = attendeeStatusBackground
         val isMe = attendee.name == ATTENDEE_ME
 
         autoCompleteView.beGone()
         autoCompleteView.focusSearch(View.FOCUS_DOWN)?.requestFocus()
-        selectedAttendeeName.text = if (isMe) getString(R.string.my_status) else attendee.getPublicName()
-        selectedAttendeeHolder.beVisible()
-        selectedAttendeeImage.beVisible()
-        selectedAttendeeStatusImage.beVisibleIf(showAttendeeStatus)
-        selectedAttendeeStatusImage.setImageDrawable(attendeeStatusImage)
-        attendee.updateImage(applicationContext, selectedAttendeeImage, mAttendeePlaceholder)
-        selectedAttendeeDismiss.beGoneIf(isMe)
-        selectedAttendeeDismiss.tag = attendee.contactId
 
-        if (isMe) {
-            (selectedAttendeeName.layoutParams as RelativeLayout.LayoutParams).addRule(RelativeLayout.START_OF, selectedAttendeeHolder.event_contact_me_status.id)
+        selectedAttendeeHolder.apply {
+            beVisible()
+
+            val attendeeStatusBackground = resources.getDrawable(R.drawable.attendee_status_circular_background)
+            (attendeeStatusBackground as LayerDrawable).findDrawableByLayerId(R.id.attendee_status_circular_background).applyColorFilter(config.backgroundColor)
+            event_contact_status_image.apply {
+                background = attendeeStatusBackground
+                setImageDrawable(attendeeStatusImage)
+                beVisibleIf(showAttendeeStatus)
+            }
+
+            event_contact_image.apply {
+                attendee.updateImage(applicationContext, this, mAttendeePlaceholder)
+                beVisible()
+            }
+
+            event_contact_dismiss.apply {
+                tag = attendee.contactId
+                beGoneIf(isMe)
+            }
+
+            event_contact_name.text = if (isMe) getString(R.string.my_status) else attendee.getPublicName()
+            if (isMe) {
+                (event_contact_name.layoutParams as RelativeLayout.LayoutParams).addRule(RelativeLayout.START_OF, event_contact_me_status.id)
+            }
+
+            event_contact_me_status.apply {
+                beVisibleIf(isMe)
+                text = getString(when (attendee.status) {
+                    CalendarContract.Attendees.ATTENDEE_STATUS_ACCEPTED -> R.string.going
+                    CalendarContract.Attendees.ATTENDEE_STATUS_DECLINED -> R.string.not_going
+                    CalendarContract.Attendees.ATTENDEE_STATUS_TENTATIVE -> R.string.maybe_going
+                    else -> R.string.invited
+                })
+            }
         }
-
-        selectedAttendeeHolder.event_contact_me_status.beVisibleIf(isMe)
-        selectedAttendeeHolder.event_contact_me_status.text = getString(when (attendee.status) {
-            CalendarContract.Attendees.ATTENDEE_STATUS_ACCEPTED -> R.string.going
-            CalendarContract.Attendees.ATTENDEE_STATUS_DECLINED -> R.string.not_going
-            CalendarContract.Attendees.ATTENDEE_STATUS_TENTATIVE -> R.string.maybe_going
-            else -> R.string.invited
-        })
     }
 
     private fun checkNewAttendeeField() {
