@@ -1,6 +1,14 @@
 Changelog
 ==========
 
+Version 6.4.0 *(2019-03-20)*
+----------------------------
+
+ * Added email reminders and attendees in CalDAV synced events
+ * Improved CalDAV event syncing in the background
+ * Fixed some sorting related glitches
+ * Some other stability and UX improvements
+
 Version 6.3.2 *(2019-03-07)*
 ----------------------------
 
