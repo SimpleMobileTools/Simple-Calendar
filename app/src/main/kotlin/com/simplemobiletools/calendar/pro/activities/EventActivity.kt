@@ -1223,7 +1223,7 @@ class EventActivity : SimpleActivity() {
 
         selectedAttendeeDismiss.setOnClickListener {
             attendeeHolder.beGone()
-            mSelectedContacts = mSelectedContacts.filter { it.contactId == selectedAttendeeDismiss.tag }.toMutableList() as ArrayList<Attendee>
+            mSelectedContacts = mSelectedContacts.filter { it.toString() != selectedAttendeeDismiss.tag }.toMutableList() as ArrayList<Attendee>
         }
 
         val adapter = AutoCompleteTextViewAdapter(this, mAvailableContacts)
@@ -1263,7 +1263,7 @@ class EventActivity : SimpleActivity() {
             }
 
             event_contact_dismiss.apply {
-                tag = attendee.contactId
+                tag = attendee.toString()
                 beGoneIf(attendee.isMe)
             }
 
