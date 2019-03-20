@@ -1337,7 +1337,7 @@ class EventActivity : SimpleActivity() {
 
         val customEmails = mAttendeeAutoCompleteViews.filter { it.isVisible() }.map { it.value }.filter { it.isNotEmpty() }.toMutableList() as ArrayList<String>
         customEmails.mapTo(attendees) {
-            Attendee(0, "", it, CalendarContract.Attendees.ATTENDEE_STATUS_INVITED, "", false)
+            Attendee(0, "", it, CalendarContract.Attendees.ATTENDEE_STATUS_INVITED, "", false, CalendarContract.Attendees.RELATIONSHIP_NONE)
         }
         attendees = attendees.distinctBy { it.email }.toMutableList() as ArrayList<Attendee>
 
@@ -1345,6 +1345,7 @@ class EventActivity : SimpleActivity() {
             val currentCalendar = calDAVHelper.getCalDAVCalendars("", true).firstOrNull { it.id == mEventCalendarId }
             mAvailableContacts.firstOrNull { it.email == currentCalendar?.accountName }?.apply {
                 status = CalendarContract.Attendees.ATTENDEE_STATUS_ACCEPTED
+                relationship = CalendarContract.Attendees.RELATIONSHIP_ORGANIZER
                 attendees.add(this)
             }
         }
@@ -1383,7 +1384,7 @@ class EventActivity : SimpleActivity() {
                     val names = arrayListOf(prefix, firstName, middleName, surname, suffix).filter { it.trim().isNotEmpty() }
                     val fullName = TextUtils.join("", names)
                     if (fullName.isNotEmpty() || photoUri.isNotEmpty()) {
-                        val contact = Attendee(id, fullName, "", 0, photoUri, false)
+                        val contact = Attendee(id, fullName, "", CalendarContract.Attendees.ATTENDEE_STATUS_NONE, photoUri, false, CalendarContract.Attendees.RELATIONSHIP_NONE)
                         contacts.add(contact)
                     }
                 } while (cursor.moveToNext())
@@ -1410,7 +1411,7 @@ class EventActivity : SimpleActivity() {
                 do {
                     val id = cursor.getIntValue(ContactsContract.Data.CONTACT_ID)
                     val email = cursor.getStringValue(ContactsContract.CommonDataKinds.Email.DATA) ?: continue
-                    val contact = Attendee(id, "", email, 0, "", false)
+                    val contact = Attendee(id, "", email, CalendarContract.Attendees.ATTENDEE_STATUS_NONE, "", false, CalendarContract.Attendees.RELATIONSHIP_NONE)
                     contacts.add(contact)
                 } while (cursor.moveToNext())
             }

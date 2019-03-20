@@ -369,6 +369,7 @@ class CalDAVHelper(val context: Context) {
                 put(CalendarContract.Attendees.ATTENDEE_NAME, it.name)
                 put(CalendarContract.Attendees.ATTENDEE_EMAIL, it.email)
                 put(CalendarContract.Attendees.ATTENDEE_STATUS, it.status)
+                put(CalendarContract.Attendees.ATTENDEE_RELATIONSHIP, it.relationship)
                 put(CalendarContract.Attendees.EVENT_ID, event.getCalDAVEventId())
             }
 
@@ -504,7 +505,8 @@ class CalDAVHelper(val context: Context) {
         val projection = arrayOf(
                 CalendarContract.Attendees.ATTENDEE_NAME,
                 CalendarContract.Attendees.ATTENDEE_EMAIL,
-                CalendarContract.Attendees.ATTENDEE_STATUS)
+                CalendarContract.Attendees.ATTENDEE_STATUS,
+                CalendarContract.Attendees.ATTENDEE_RELATIONSHIP)
         val selection = "${CalendarContract.Attendees.EVENT_ID} = $eventId"
         var cursor: Cursor? = null
         try {
@@ -514,7 +516,8 @@ class CalDAVHelper(val context: Context) {
                     val name = cursor.getStringValue(CalendarContract.Attendees.ATTENDEE_NAME)
                     val email = cursor.getStringValue(CalendarContract.Attendees.ATTENDEE_EMAIL)
                     val status = cursor.getIntValue(CalendarContract.Attendees.ATTENDEE_STATUS)
-                    val attendee = Attendee(0, name, email, status, "", false)
+                    val relationship = cursor.getIntValue(CalendarContract.Attendees.ATTENDEE_RELATIONSHIP)
+                    val attendee = Attendee(0, name, email, status, "", false, relationship)
                     attendees.add(attendee)
                 } while (cursor.moveToNext())
             }
