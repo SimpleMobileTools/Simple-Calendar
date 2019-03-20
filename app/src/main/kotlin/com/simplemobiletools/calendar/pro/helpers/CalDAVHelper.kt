@@ -368,7 +368,7 @@ class CalDAVHelper(val context: Context) {
             val contentValues = ContentValues().apply {
                 put(CalendarContract.Attendees.ATTENDEE_NAME, it.name)
                 put(CalendarContract.Attendees.ATTENDEE_EMAIL, it.email)
-                put(CalendarContract.Attendees.ATTENDEE_STATUS, CalendarContract.Attendees.ATTENDEE_STATUS_ACCEPTED)
+                put(CalendarContract.Attendees.ATTENDEE_STATUS, it.status)
                 put(CalendarContract.Attendees.EVENT_ID, event.getCalDAVEventId())
             }
 

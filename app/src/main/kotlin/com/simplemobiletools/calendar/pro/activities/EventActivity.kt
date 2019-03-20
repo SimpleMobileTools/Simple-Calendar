@@ -1312,6 +1312,8 @@ class EventActivity : SimpleActivity() {
                 beVisibleIf(attendee.showStatusImage())
                 setImageDrawable(getAttendeeStatusImage(attendee))
             }
+
+            mAttendees.firstOrNull { it.name == ATTENDEE_ME }?.status = attendee.status
         }
     }
 
@@ -1324,7 +1326,6 @@ class EventActivity : SimpleActivity() {
     private fun getAllAttendees(): String {
         var attendees = ArrayList<Attendee>()
         mSelectedContacts.forEach {
-            it.status = CalendarContract.Attendees.ATTENDEE_STATUS_INVITED
             attendees.add(it)
         }
 
