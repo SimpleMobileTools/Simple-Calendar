@@ -109,7 +109,6 @@ class EventActivity : SimpleActivity() {
             runOnUiThread {
                 gotEvent(savedInstanceState, localEventType, event)
             }
-            fillAvailableContacts()
         }.start()
     }
 
@@ -149,7 +148,6 @@ class EventActivity : SimpleActivity() {
             updateTexts()
             updateEventType()
             updateCalDAVCalendar()
-            updateAttendees()
         }
 
         event_show_on_map.setOnClickListener { showOnMap() }
@@ -298,7 +296,7 @@ class EventActivity : SimpleActivity() {
         updateTexts()
         updateEventType()
         updateCalDAVCalendar()
-        updateAttendees()
+        checkAttendees()
     }
 
     private fun updateTexts() {
@@ -333,6 +331,7 @@ class EventActivity : SimpleActivity() {
         mEventCalendarId = mEvent.getCalDAVCalendarId()
         mAttendees = Gson().fromJson<ArrayList<Attendee>>(mEvent.attendees, object : TypeToken<List<Attendee>>() {}.type) ?: ArrayList()
         checkRepeatTexts(mRepeatInterval)
+        checkAttendees()
     }
 
     private fun setupNewEvent() {
@@ -367,6 +366,17 @@ class EventActivity : SimpleActivity() {
             }
             mEventEndDateTime = mEventStartDateTime.plusMinutes(addMinutes)
         }
+
+        checkAttendees()
+    }
+
+    private fun checkAttendees() {
+        Thread {
+            fillAvailableContacts()
+            runOnUiThread {
+                updateAttendees()
+            }
+        }.start()
     }
 
     private fun handleNotificationAvailability(callback: () -> Unit) {
@@ -1153,15 +1163,12 @@ class EventActivity : SimpleActivity() {
 
     private fun updateAttendees() {
         val currentCalendar = calDAVHelper.getCalDAVCalendars("", true).firstOrNull { it.id == mEventCalendarId }
-
         mAttendees.forEach {
-            if (it.email == currentCalendar?.accountName) {
-                it.name = ATTENDEE_ME
-            }
+            it.isMe = it.email == currentCalendar?.accountName
         }
 
         mAttendees.sortWith(compareBy<Attendee>
-        { it.name == ATTENDEE_ME }.thenBy
+        { it.isMe }.thenBy
         { it.status == CalendarContract.Attendees.ATTENDEE_STATUS_ACCEPTED }.thenBy
         { it.status == CalendarContract.Attendees.ATTENDEE_STATUS_DECLINED }.thenBy
         { it.status == CalendarContract.Attendees.ATTENDEE_STATUS_TENTATIVE }.thenBy
@@ -1211,6 +1218,7 @@ class EventActivity : SimpleActivity() {
         val textColor = config.textColor
         autoCompleteView.setColors(textColor, getAdjustedPrimaryColor(), config.backgroundColor)
         selectedAttendeeHolder.event_contact_name.setColors(textColor, getAdjustedPrimaryColor(), config.backgroundColor)
+        selectedAttendeeHolder.event_contact_me_status.setColors(textColor, getAdjustedPrimaryColor(), config.backgroundColor)
         selectedAttendeeDismiss.applyColorFilter(textColor)
 
         selectedAttendeeDismiss.setOnClickListener {
@@ -1235,8 +1243,6 @@ class EventActivity : SimpleActivity() {
     private fun addSelectedAttendee(attendee: Attendee, autoCompleteView: MyAutoCompleteTextView, selectedAttendeeHolder: RelativeLayout) {
         mSelectedContacts.add(attendee)
 
-        val isMe = attendee.name == ATTENDEE_ME
-
         autoCompleteView.beGone()
         autoCompleteView.focusSearch(View.FOCUS_DOWN)?.requestFocus()
 
@@ -1258,23 +1264,23 @@ class EventActivity : SimpleActivity() {
 
             event_contact_dismiss.apply {
                 tag = attendee.contactId
-                beGoneIf(isMe)
+                beGoneIf(attendee.isMe)
             }
 
-            event_contact_name.text = if (isMe) getString(R.string.my_status) else attendee.getPublicName()
-            if (isMe) {
+            event_contact_name.text = if (attendee.isMe) getString(R.string.my_status) else attendee.getPublicName()
+            if (attendee.isMe) {
                 (event_contact_name.layoutParams as RelativeLayout.LayoutParams).addRule(RelativeLayout.START_OF, event_contact_me_status.id)
             }
 
-            if (isMe) {
+            if (attendee.isMe) {
                 updateAttendeeMe(this, attendee)
             }
 
             event_contact_me_status.apply {
-                beVisibleIf(isMe)
+                beVisibleIf(attendee.isMe)
             }
 
-            if (isMe) {
+            if (attendee.isMe) {
                 event_contact_attendee.setOnClickListener {
                     val items = arrayListOf(
                             RadioItem(CalendarContract.Attendees.ATTENDEE_STATUS_ACCEPTED, getString(R.string.going)),
@@ -1313,7 +1319,7 @@ class EventActivity : SimpleActivity() {
                 setImageDrawable(getAttendeeStatusImage(attendee))
             }
 
-            mAttendees.firstOrNull { it.name == ATTENDEE_ME }?.status = attendee.status
+            mAttendees.firstOrNull { it.isMe }?.status = attendee.status
         }
     }
 
@@ -1331,7 +1337,7 @@ class EventActivity : SimpleActivity() {
 
         val customEmails = mAttendeeAutoCompleteViews.filter { it.isVisible() }.map { it.value }.filter { it.isNotEmpty() }.toMutableList() as ArrayList<String>
         customEmails.mapTo(attendees) {
-            Attendee(0, "", it, CalendarContract.Attendees.ATTENDEE_STATUS_INVITED, "")
+            Attendee(0, "", it, CalendarContract.Attendees.ATTENDEE_STATUS_INVITED, "", false)
         }
         attendees = attendees.distinctBy { it.email }.toMutableList() as ArrayList<Attendee>
         return Gson().toJson(attendees)
@@ -1368,7 +1374,7 @@ class EventActivity : SimpleActivity() {
                     val names = arrayListOf(prefix, firstName, middleName, surname, suffix).filter { it.trim().isNotEmpty() }
                     val fullName = TextUtils.join("", names)
                     if (fullName.isNotEmpty() || photoUri.isNotEmpty()) {
-                        val contact = Attendee(id, fullName, "", 0, photoUri)
+                        val contact = Attendee(id, fullName, "", 0, photoUri, false)
                         contacts.add(contact)
                     }
                 } while (cursor.moveToNext())
@@ -1395,7 +1401,7 @@ class EventActivity : SimpleActivity() {
                 do {
                     val id = cursor.getIntValue(ContactsContract.Data.CONTACT_ID)
                     val email = cursor.getStringValue(ContactsContract.CommonDataKinds.Email.DATA) ?: continue
-                    val contact = Attendee(id, "", email, 0, "")
+                    val contact = Attendee(id, "", email, 0, "", false)
                     contacts.add(contact)
                 } while (cursor.moveToNext())
             }

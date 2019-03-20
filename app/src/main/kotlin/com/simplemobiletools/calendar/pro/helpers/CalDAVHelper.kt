@@ -514,7 +514,7 @@ class CalDAVHelper(val context: Context) {
                     val name = cursor.getStringValue(CalendarContract.Attendees.ATTENDEE_NAME)
                     val email = cursor.getStringValue(CalendarContract.Attendees.ATTENDEE_EMAIL)
                     val status = cursor.getIntValue(CalendarContract.Attendees.ATTENDEE_STATUS)
-                    val attendee = Attendee(0, name, email, status, "")
+                    val attendee = Attendee(0, name, email, status, "", false)
                     attendees.add(attendee)
                 } while (cursor.moveToNext())
             }

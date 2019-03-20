@@ -9,7 +9,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 
-data class Attendee(val contactId: Int, var name: String, val email: String, var status: Int, var photoUri: String) {
+data class Attendee(val contactId: Int, var name: String, val email: String, var status: Int, var photoUri: String, var isMe: Boolean) {
     fun getPublicName() = if (name.isNotEmpty()) name else email
 
     fun updateImage(context: Context, imageView: ImageView, placeholder: Drawable) {
@@ -24,6 +24,7 @@ data class Attendee(val contactId: Int, var name: String, val email: String, var
             Glide.with(context)
                     .load(photoUri)
                     .transition(DrawableTransitionOptions.withCrossFade())
+                    .placeholder(placeholder)
                     .apply(options)
                     .apply(RequestOptions.circleCropTransform())
                     .into(imageView)
