@@ -2,6 +2,9 @@
 <resources>
 
     <!-- Release notes -->
+    <string name="release_146">
+        Added email reminders and attendees in CalDAV synced events
+    </string>
     <string name="release_143">
         Allow setting default start time/duration/event type for new events\n
         Allow exporting/importing settings
