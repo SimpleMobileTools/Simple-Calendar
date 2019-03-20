@@ -31,6 +31,7 @@ import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.fragments.*
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
+import com.simplemobiletools.calendar.pro.jobs.CalDAVUpdateListener
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.calendar.pro.models.ListEvent
@@ -102,6 +103,10 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
 
         checkAppOnSDCard()
+
+        if (savedInstanceState == null) {
+            checkCalDAVUpdateListener()
+        }
     }
 
     override fun onResume() {
@@ -263,6 +268,19 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     private fun closeSearch() {
         mSearchMenuItem?.collapseActionView()
+    }
+
+    private fun checkCalDAVUpdateListener() {
+        if (isNougatPlus()) {
+            val updateListener = CalDAVUpdateListener()
+            if (config.caldavSync) {
+                if (!updateListener.isScheduled(applicationContext)) {
+                    updateListener.scheduleJob(applicationContext)
+                }
+            } else {
+                updateListener.cancelJob(applicationContext)
+            }
+        }
     }
 
     @SuppressLint("NewApi")
