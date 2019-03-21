@@ -233,19 +233,47 @@
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">一個沒有廣告的離線行事曆，用來管理你的活動，並且尊重您的隱私。</string>
+    <string name="app_short_description">Offline calendar with no ads. Organizer &amp; reminders for appointments, events etc</string>
     <string name="app_long_description">
-        一個有CalDAV同步選項的簡易行事曆。你可以輕鬆建立週期活動和設置提醒，也能顯示週數。
+        Simple Calendar Pro is a fully customizable, offline calendar designed to do exactly what a calendar should do. <b>No complicated features, unnecessary permissions and no ads!</b>
 
-        含有月曆和活動列表的小工具，你可以自訂文字顏色，以及背景顏色和透明度。
+        Whether you’re organizing single or recurring events, birthdays, anniversaries, business meetings, appointments or anything else, Simple Calendar Pro makes it <b>easy to stay organized</b>. With an incredible variety of <b>customization options</b> you can customize event reminders, notification sounds, calendar widgets and how the app looks.
 
-        不包含廣告及非必要的權限，而且完全開放原始碼，並提供自訂顏色。
+        Daily, weekly and monthly views make checking your upcoming events &amp; appointments a breeze. You can even view everything as a simple list of events rather than in calendar view, so you <b>know exactly what’s coming up in your life and when. </b>
 
-        儲存空間權限只需要用來從.ics檔案匯出或匯入活動。
+        ----------------------------------------------------------
+        <b>Simple Calendar Pro – Features &amp; Benefits</b>
+        ----------------------------------------------------------
 
-        聯絡人權限只是用來匯入聯絡人生日和紀念日。
+        ✔️ No ads or annoying popups
+        ✔️ No internet access needed, giving you more privacy &amp; security
+        ✔️ Only the bare minimum permissions required
+        ✔️ Emphasis on simplicity – does what a calendar needs to do!
+        ✔️ Open source
+        ✔️ Fully customizable themes &amp; calendar / event widgets
+        ✔️ Translated into 29 languages
+        ✔️ Export settings to .txt files to import to another device
+        ✔️ CalDAV calendar sync supported to sync events across devices
+        ✔️ Daily, weekly, monthly, yearly &amp; event views on the calendar
+        ✔️ Supports exporting &amp; importing events via .ics files
+        ✔️ Set multiple event reminders, customize event reminder sound and vibration
+        ✔️ Snooze option for reminders
+        ✔️ Easily add holidays, birthdays, anniversaries &amp; appointments
+        ✔️ Customize events – start time, duration, reminders etc
+        ✔️ Add event attendees to each event
+        ✔️ Use as a personal calendar or a business calendar
+        ✔️ Choose between reminders &amp; email notifications to alert you about an event
 
-        這程式只是一系列眾多應用程式的其中一項，你可以在這發現更多 https://www.simplemobiletools.com
+        DOWNLOAD SIMPLE CALENDAR PRO – THE SIMPLE OFFLINE CALENDAR WITH NO ADS!
+
+        Check out the full suite of Simple Tools here:
+        https://www.simplemobiletools.com
+
+        Facebook:
+        https://www.facebook.com/simplemobiletools
+
+        Reddit:
+        https://www.reddit.com/r/SimpleMobileTools
     </string>
 
     <!--
