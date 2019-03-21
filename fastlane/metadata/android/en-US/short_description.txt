@@ -1,1 +1,1 @@
-A simple calendar with events, customizable widget and no ads.
+Offline calendar with no ads. Organizer & reminders for appointments, events etc
