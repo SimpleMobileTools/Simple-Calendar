@@ -10,7 +10,7 @@
     <string name="simple_event_list">簡易活動列表</string>
     <string name="no_upcoming_events">你近期似乎沒有任何活動。</string>
     <string name="go_to_today">前往今天</string>
-    <string name="go_to_date">Go to date</string>
+    <string name="go_to_date">前往日期</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">月曆</string>
@@ -99,12 +99,12 @@
     <string name="event_reminders">活動提醒</string>
 
     <!-- Event attendees -->
-    <string name="add_another_attendee">Add another attendee</string>
-    <string name="my_status">My status:</string>
-    <string name="going">Going</string>
-    <string name="not_going">Not going</string>
-    <string name="maybe_going">Maybe going</string>
-    <string name="invited">Invited</string>
+    <string name="add_another_attendee">新增另一場出席</string>
+    <string name="my_status">我的狀態:</string>
+    <string name="going">前去</string>
+    <string name="not_going">不前去</string>
+    <string name="maybe_going">或許前去</string>
+    <string name="invited">被邀請</string>
 
     <!-- Export / Import -->
     <string name="import_events">匯入活動</string>
