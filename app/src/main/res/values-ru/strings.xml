@@ -100,11 +100,11 @@
 
     <!-- Event attendees -->
     <string name="add_another_attendee">Добавить участника</string>
-    <string name="my_status">My status:</string>
-    <string name="going">Going</string>
-    <string name="not_going">Not going</string>
-    <string name="maybe_going">Maybe going</string>
-    <string name="invited">Invited</string>
+    <string name="my_status">Мой статус:</string>
+    <string name="going">Приду</string>
+    <string name="not_going">Не приду</string>
+    <string name="maybe_going">Возможно приду</string>
+    <string name="invited">Приглашённый</string>
 
     <!-- Export / Import -->
     <string name="import_events">Импорт событий</string>
@@ -233,7 +233,7 @@
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Offline calendar with no ads. Organizer &amp; reminders for appointments, events etc</string>
+    <string name="app_short_description">Автономный календарь без рекламы. Упорядочивание и напоминания о встречах, событиях и т.д.</string>
     <string name="app_long_description">
         Simple Calendar Pro is a fully customizable, offline calendar designed to do exactly what a calendar should do. <b>No complicated features, unnecessary permissions and no ads!</b>
 
