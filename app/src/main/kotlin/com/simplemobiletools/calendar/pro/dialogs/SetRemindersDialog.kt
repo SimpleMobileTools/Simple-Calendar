@@ -4,6 +4,7 @@ import android.app.Activity
 import androidx.appcompat.app.AlertDialog
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.config
+import com.simplemobiletools.calendar.pro.helpers.REMINDER_OFF
 import com.simplemobiletools.commons.extensions.*
 import kotlinx.android.synthetic.main.dialog_set_reminders.view.*
 
@@ -56,8 +57,13 @@ class SetRemindersDialog(val activity: Activity, val callback: (reminders: Array
     }
 
     private fun dialogConfirmed() {
-        val reminders = arrayListOf(mReminder1Minutes, mReminder2Minutes, mReminder3Minutes)
-        reminders.sort()
+        val tempReminders = arrayListOf(mReminder1Minutes, mReminder2Minutes, mReminder3Minutes).filter { it != REMINDER_OFF }.sorted()
+        val reminders = arrayListOf(
+                tempReminders.getOrNull(0) ?: REMINDER_OFF,
+                tempReminders.getOrNull(1) ?: REMINDER_OFF,
+                tempReminders.getOrNull(2) ?: REMINDER_OFF
+        )
+
         callback(reminders)
     }
 }

@@ -92,7 +92,6 @@
             android:layout_alignBottom="@+id/event_all_day"
             android:layout_marginStart="@dimen/normal_margin"
             android:layout_marginLeft="@dimen/normal_margin"
-            android:alpha="0.8"
             android:padding="@dimen/medium_margin"
             android:src="@drawable/ic_clock"/>
 
@@ -177,7 +176,6 @@
             android:layout_alignTop="@+id/event_reminder_1"
             android:layout_alignBottom="@+id/event_reminder_1"
             android:layout_marginStart="@dimen/normal_margin"
-            android:alpha="0.8"
             android:padding="@dimen/medium_margin"
             android:src="@drawable/ic_bell"/>
 
@@ -205,7 +203,6 @@
             android:layout_alignBottom="@+id/event_reminder_1"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="@dimen/small_margin"
-            android:alpha="0.8"
             android:background="?attr/selectableItemBackground"
             android:padding="@dimen/activity_margin"
             android:src="@drawable/ic_bell"/>
@@ -236,7 +233,6 @@
             android:layout_alignBottom="@+id/event_reminder_2"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="@dimen/small_margin"
-            android:alpha="0.8"
             android:background="?attr/selectableItemBackground"
             android:padding="@dimen/activity_margin"
             android:src="@drawable/ic_bell"/>
@@ -267,7 +263,6 @@
             android:layout_alignBottom="@+id/event_reminder_3"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="@dimen/small_margin"
-            android:alpha="0.8"
             android:background="?attr/selectableItemBackground"
             android:padding="@dimen/activity_margin"
             android:src="@drawable/ic_bell"/>
@@ -290,7 +285,6 @@
             android:layout_alignTop="@+id/event_repetition"
             android:layout_alignBottom="@+id/event_repetition"
             android:layout_marginStart="@dimen/normal_margin"
-            android:alpha="0.8"
             android:padding="@dimen/medium_margin"
             android:src="@drawable/ic_repeat"/>
 
@@ -387,7 +381,6 @@
             android:layout_alignTop="@+id/event_attendees_holder"
             android:layout_marginStart="@dimen/normal_margin"
             android:layout_marginTop="@dimen/small_margin"
-            android:alpha="0.8"
             android:padding="@dimen/medium_margin"
             android:src="@drawable/ic_people"/>
 
@@ -417,7 +410,6 @@
             android:layout_alignTop="@+id/event_caldav_calendar_holder"
             android:layout_alignBottom="@+id/event_caldav_calendar_holder"
             android:layout_marginStart="@dimen/normal_margin"
-            android:alpha="0.8"
             android:padding="@dimen/medium_margin"
             android:src="@drawable/ic_calendar"
             android:visibility="gone"/>
@@ -487,7 +479,6 @@
             android:layout_alignTop="@+id/event_type_holder"
             android:layout_alignBottom="@+id/event_type_holder"
             android:layout_marginStart="@dimen/normal_margin"
-            android:alpha="0.8"
             android:padding="@dimen/medium_margin"
             android:src="@drawable/ic_color"/>
 

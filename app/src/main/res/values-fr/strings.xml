@@ -100,6 +100,11 @@
 
     <!-- Event attendees -->
     <string name="add_another_attendee">Add another attendee</string>
+    <string name="my_status">My status:</string>
+    <string name="going">Going</string>
+    <string name="not_going">Not going</string>
+    <string name="maybe_going">Maybe going</string>
+    <string name="invited">Invited</string>
 
     <!-- Export / Import -->
     <string name="import_events">Importer des événements</string>
@@ -228,19 +233,47 @@
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">An offline calendar for your events without ads, respecting your privacy.</string>
+    <string name="app_short_description">Offline calendar with no ads. Organizer &amp; reminders for appointments, events etc</string>
     <string name="app_long_description">
-        Un calendrier hors ligne sans aucune autre intégration de calendrier. Vous pouvez aisément créer des événements récurrents et configurer des rappels, il est aussi possible d\'afficher les numéros de semaine.
+        Simple Calendar Pro is a fully customizable, offline calendar designed to do exactly what a calendar should do. <b>No complicated features, unnecessary permissions and no ads!</b>
 
-        Contient un widget 4x4 redimensionnable où vous pouvez personnaliser la couleur du texte, ainsi que l\'alpha et la couleur de l\'arrière plan.
+        Whether you’re organizing single or recurring events, birthdays, anniversaries, business meetings, appointments or anything else, Simple Calendar Pro makes it <b>easy to stay organized</b>. With an incredible variety of <b>customization options</b> you can customize event reminders, notification sounds, calendar widgets and how the app looks.
 
-        Ne contient pas de publicités ou de permissions inutiles. Complètement opensource, fournit une personnalisation des couleurs.
+        Daily, weekly and monthly views make checking your upcoming events &amp; appointments a breeze. You can even view everything as a simple list of events rather than in calendar view, so you <b>know exactly what’s coming up in your life and when. </b>
 
-        La permission d\'accès au stockage est necéssaire uniquement pour importer des événements depuis des fichiers .ics.
+        ----------------------------------------------------------
+        <b>Simple Calendar Pro – Features &amp; Benefits</b>
+        ----------------------------------------------------------
 
-        La permission Contacts ne sert qu\'à importer l\'anniversaire de vos contacts.
+        ✔️ No ads or annoying popups
+        ✔️ No internet access needed, giving you more privacy &amp; security
+        ✔️ Only the bare minimum permissions required
+        ✔️ Emphasis on simplicity – does what a calendar needs to do!
+        ✔️ Open source
+        ✔️ Fully customizable themes &amp; calendar / event widgets
+        ✔️ Translated into 29 languages
+        ✔️ Export settings to .txt files to import to another device
+        ✔️ CalDAV calendar sync supported to sync events across devices
+        ✔️ Daily, weekly, monthly, yearly &amp; event views on the calendar
+        ✔️ Supports exporting &amp; importing events via .ics files
+        ✔️ Set multiple event reminders, customize event reminder sound and vibration
+        ✔️ Snooze option for reminders
+        ✔️ Easily add holidays, birthdays, anniversaries &amp; appointments
+        ✔️ Customize events – start time, duration, reminders etc
+        ✔️ Add event attendees to each event
+        ✔️ Use as a personal calendar or a business calendar
+        ✔️ Choose between reminders &amp; email notifications to alert you about an event
 
-        Cette application est juste une pièce d\'une plus grosse série d\'applications. Vous pouvez trouver le reste de celles-ci à https://www.simplemobiletools.com
+        DOWNLOAD SIMPLE CALENDAR PRO – THE SIMPLE OFFLINE CALENDAR WITH NO ADS!
+
+        Check out the full suite of Simple Tools here:
+        https://www.simplemobiletools.com
+
+        Facebook:
+        https://www.facebook.com/simplemobiletools
+
+        Reddit:
+        https://www.reddit.com/r/SimpleMobileTools
     </string>
 
     <!--

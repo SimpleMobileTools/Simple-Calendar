@@ -393,7 +393,19 @@ private fun addTodaysBackground(textView: TextView, res: Resources, dayLabelHeig
 fun Context.addDayEvents(day: DayMonthly, linearLayout: LinearLayout, res: Resources, dividerMargin: Int) {
     val eventLayoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
 
-    day.dayEvents.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title })).forEach {
+    day.dayEvents.sortedWith(compareBy<Event> {
+        if (it.getIsAllDay()) {
+            Formatter.getDayStartTS(Formatter.getDayCodeFromTS(it.startTS)) - 1
+        } else {
+            it.startTS
+        }
+    }.thenBy {
+        if (it.getIsAllDay()) {
+            Formatter.getDayEndTS(Formatter.getDayCodeFromTS(it.endTS))
+        } else {
+            it.endTS
+        }
+    }.thenBy { it.title }).forEach {
         val backgroundDrawable = res.getDrawable(R.drawable.day_monthly_event_background)
         backgroundDrawable.applyColorFilter(it.color)
         eventLayoutParams.setMargins(dividerMargin, 0, dividerMargin, dividerMargin)
@@ -420,13 +432,19 @@ fun Context.getEventListItems(events: List<Event>): ArrayList<ListItem> {
     val replaceDescription = config.replaceDescription
 
     // move all-day events in front of others
-    val sorted = events.sortedWith(compareBy({
+    val sorted = events.sortedWith(compareBy<Event> {
         if (it.getIsAllDay()) {
-            Formatter.getDayStartTS(Formatter.getDayCodeFromTS(it.startTS))
+            Formatter.getDayStartTS(Formatter.getDayCodeFromTS(it.startTS)) - 1
         } else {
             it.startTS
         }
-    }, { it.endTS }, { it.title }, { if (replaceDescription) it.location else it.description }))
+    }.thenBy {
+        if (it.getIsAllDay()) {
+            Formatter.getDayEndTS(Formatter.getDayCodeFromTS(it.endTS))
+        } else {
+            it.endTS
+        }
+    }.thenBy { it.title }.thenBy { if (replaceDescription) it.location else it.description })
 
     var prevCode = ""
     val now = getNowSeconds()

@@ -259,7 +259,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
         var hadAllDayEvent = false
         val replaceDescription = mConfig.replaceDescription
-        val sorted = events.sortedWith(compareBy({ it.startTS }, { it.endTS }, { it.title }, { if (replaceDescription) it.location else it.description }))
+        val sorted = events.sortedWith(compareBy<Event> { it.startTS }.thenBy { it.endTS }.thenBy { it.title }.thenBy { if (replaceDescription) it.location else it.description })
         for (event in sorted) {
             val startDateTime = Formatter.getDateTimeFromTS(event.startTS)
             val endDateTime = Formatter.getDateTimeFromTS(event.endTS)

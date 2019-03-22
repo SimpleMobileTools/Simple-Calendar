@@ -177,6 +177,11 @@
 
         <service android:name=".services.SnoozeService"/>
 
+        <service
+            android:name=".jobs.CalDAVUpdateListener"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE"/>
+
         <receiver android:name=".receivers.NotificationReceiver"/>
 
         <receiver android:name=".receivers.CalDAVSyncReceiver"/>

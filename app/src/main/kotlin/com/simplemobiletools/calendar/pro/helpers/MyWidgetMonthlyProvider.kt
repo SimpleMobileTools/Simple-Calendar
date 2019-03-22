@@ -112,7 +112,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
             }
         }
 
-        val weakTextColor = textColor.adjustAlpha(LOW_ALPHA)
+        val weakTextColor = textColor.adjustAlpha(MEDIUM_ALPHA)
         for (i in 0 until len) {
             val day = days[i]
             val currTextColor = if (day.isThisMonth) textColor else weakTextColor
@@ -126,8 +126,8 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
                 var eventTextColor = backgroundColor.getContrastColor()
 
                 if (!day.isThisMonth || (dimPastEvents && it.isPastEvent)) {
-                    eventTextColor = eventTextColor.adjustAlpha(0.25f)
-                    backgroundColor = backgroundColor.adjustAlpha(0.25f)
+                    eventTextColor = eventTextColor.adjustAlpha(MEDIUM_ALPHA)
+                    backgroundColor = backgroundColor.adjustAlpha(MEDIUM_ALPHA)
                 }
 
                 val newRemoteView = RemoteViews(packageName, R.layout.day_monthly_event_view).apply {

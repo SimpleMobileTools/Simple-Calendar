@@ -13,6 +13,7 @@ import com.simplemobiletools.calendar.pro.extensions.eventsHelper
 import com.simplemobiletools.calendar.pro.extensions.seconds
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
+import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.ListEvent
 import com.simplemobiletools.calendar.pro.models.ListItem
 import com.simplemobiletools.calendar.pro.models.ListSection
@@ -159,13 +160,19 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
         context.eventsHelper.getEventsSync(fromTS, toTS, applyTypeFilter = true) {
             val listItems = ArrayList<ListItem>(it.size)
             val replaceDescription = context.config.replaceDescription
-            val sorted = it.sortedWith(compareBy({
+            val sorted = it.sortedWith(compareBy<Event> {
                 if (it.getIsAllDay()) {
-                    Formatter.getDayStartTS(Formatter.getDayCodeFromTS(it.startTS))
+                    Formatter.getDayStartTS(Formatter.getDayCodeFromTS(it.startTS)) - 1
                 } else {
                     it.startTS
                 }
-            }, { it.endTS }, { it.title }, { if (replaceDescription) it.location else it.description }))
+            }.thenBy {
+                if (it.getIsAllDay()) {
+                    Formatter.getDayEndTS(Formatter.getDayCodeFromTS(it.endTS))
+                } else {
+                    it.endTS
+                }
+            }.thenBy { it.title }.thenBy { if (replaceDescription) it.location else it.description })
 
             var prevCode = ""
             val now = getNowSeconds()
