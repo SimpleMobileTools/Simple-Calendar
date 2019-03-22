@@ -99,7 +99,7 @@
     <string name="event_reminders">活動提醒</string>
 
     <!-- Event attendees -->
-    <string name="add_another_attendee">新增另一場出席</string>
+    <string name="add_another_attendee">新增另一位出席者</string>
     <string name="my_status">我的狀態:</string>
     <string name="going">前去</string>
     <string name="not_going">不前去</string>
@@ -233,40 +233,40 @@
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Offline calendar with no ads. Organizer &amp; reminders for appointments, events etc</string>
+    <string name="app_short_description">沒有廣告的離線行事曆。對約會和活動之類的進行安排&amp;提醒</string>
     <string name="app_long_description">
-        Simple Calendar Pro is a fully customizable, offline calendar designed to do exactly what a calendar should do. <b>No complicated features, unnecessary permissions and no ads!</b>
+        簡易行事曆Pro是一個高度自訂化，完全旨在於行事曆應該做什麼的離線行事曆。 <b>沒有複雜的功能、非必要的權限和廣告!</b>
 
-        Whether you’re organizing single or recurring events, birthdays, anniversaries, business meetings, appointments or anything else, Simple Calendar Pro makes it <b>easy to stay organized</b>. With an incredible variety of <b>customization options</b> you can customize event reminders, notification sounds, calendar widgets and how the app looks.
+        無論您是要安排單一還是反復的活動、生日、紀念日、業務會議、約會或任何其他活動，簡易行事曆Pro都能讓您<b>輕鬆維持安排</b>。透過多樣化的<b>自訂選項</b>，您可以自訂活動提醒、通知音效、行事曆小工具和應用程式外觀。
 
-        Daily, weekly and monthly views make checking your upcoming events &amp; appointments a breeze. You can even view everything as a simple list of events rather than in calendar view, so you <b>know exactly what’s coming up in your life and when. </b>
+        每日、每週、每月的檢視模式使您輕易就確認即將到來的活動&amp;約會。您甚至能夠以簡單的活動列表來瀏覽全部，而不是行事曆畫面，所以您<b>完全知道生活中何時會發生什麼事。</b>
 
         ----------------------------------------------------------
-        <b>Simple Calendar Pro – Features &amp; Benefits</b>
+        <b>簡易行事曆Pro – 特色 &amp; 優點</b>
         ----------------------------------------------------------
 
-        ✔️ No ads or annoying popups
-        ✔️ No internet access needed, giving you more privacy &amp; security
-        ✔️ Only the bare minimum permissions required
-        ✔️ Emphasis on simplicity – does what a calendar needs to do!
-        ✔️ Open source
-        ✔️ Fully customizable themes &amp; calendar / event widgets
-        ✔️ Translated into 29 languages
-        ✔️ Export settings to .txt files to import to another device
-        ✔️ CalDAV calendar sync supported to sync events across devices
-        ✔️ Daily, weekly, monthly, yearly &amp; event views on the calendar
-        ✔️ Supports exporting &amp; importing events via .ics files
-        ✔️ Set multiple event reminders, customize event reminder sound and vibration
-        ✔️ Snooze option for reminders
-        ✔️ Easily add holidays, birthdays, anniversaries &amp; appointments
-        ✔️ Customize events – start time, duration, reminders etc
-        ✔️ Add event attendees to each event
-        ✔️ Use as a personal calendar or a business calendar
-        ✔️ Choose between reminders &amp; email notifications to alert you about an event
+        ✔️ 沒有廣告和討厭的彈出畫面
+        ✔️ 不需要網路連線，給您更多隱私及安全
+        ✔️ 只需要最低限度的權限
+        ✔️ 著重於簡單 – 做行事曆該做的!
+        ✔️ 開放原始碼
+        ✔️ 完整自訂化主題&amp;行事曆/活動小工具
+        ✔️ 翻譯成29種語言
+        ✔️ 將設定匯出成.txt檔案，以匯入到別的裝置
+        ✔️ 支援CalDAV行事曆同步，來跨裝置同步活動
+        ✔️ 在行事曆上有每日、每週、每月、每年及活動瀏覽的檢視方式
+        ✔️ 支援透過.ics檔案來匯出&amp;匯入活動
+        ✔️ 設置多個活動提醒，自訂活動提醒音效和震動
+        ✔️ 提醒有延遲選項
+        ✔️ 輕鬆添加假日、生日、紀念日和約會
+        ✔️ 自訂活動 – 開始時間、持續時間、提醒…之類的
+        ✔️ 為每個活動添加活動出席者
+        ✔️ 用做於個人行事曆或業務行事曆
+        ✔️ 在提醒和電子信箱通知之間選擇，以提醒您關於活動的訊息
 
-        DOWNLOAD SIMPLE CALENDAR PRO – THE SIMPLE OFFLINE CALENDAR WITH NO ADS!
+        <u>下載簡易行事曆PRO – 沒有廣告的簡易離線行事曆!</u>
 
-        Check out the full suite of Simple Tools here:
+        於此查看簡易工具系列全套:
         https://www.simplemobiletools.com
 
         Facebook:
