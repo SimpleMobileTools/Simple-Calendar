@@ -513,8 +513,8 @@ class CalDAVHelper(val context: Context) {
             cursor = context.contentResolver.query(uri, projection, selection, null, null)
             if (cursor?.moveToFirst() == true) {
                 do {
-                    val name = cursor.getStringValue(CalendarContract.Attendees.ATTENDEE_NAME)
-                    val email = cursor.getStringValue(CalendarContract.Attendees.ATTENDEE_EMAIL)
+                    val name = cursor.getStringValue(CalendarContract.Attendees.ATTENDEE_NAME) ?: ""
+                    val email = cursor.getStringValue(CalendarContract.Attendees.ATTENDEE_EMAIL) ?: ""
                     val status = cursor.getIntValue(CalendarContract.Attendees.ATTENDEE_STATUS)
                     val relationship = cursor.getIntValue(CalendarContract.Attendees.ATTENDEE_RELATIONSHIP)
                     val attendee = Attendee(0, name, email, status, "", false, relationship)
