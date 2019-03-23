@@ -233,46 +233,46 @@
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Offline calendar with no ads. Organizer &amp; reminders for appointments, events etc</string>
+    <string name="app_short_description">Offline kalendár bez reklám. Spravujte pripomienky pre stretnutia a iné udalosti</string>
     <string name="app_long_description">
-        Simple Calendar Pro is a fully customizable, offline calendar designed to do exactly what a calendar should do. <b>No complicated features, unnecessary permissions and no ads!</b>
+        Jednoduchý kalendár Pro je prispôsobiteľný offline kalendár vytvorený presne na to, čo by kalendáre mali zvládať.<b>Nenachádzajú sa tu žiadne nepotrebné funkcie, nepotrebné oprávnenia, ani reklamy!</b>
 
-        Whether you’re organizing single or recurring events, birthdays, anniversaries, business meetings, appointments or anything else, Simple Calendar Pro makes it <b>easy to stay organized</b>. With an incredible variety of <b>customization options</b> you can customize event reminders, notification sounds, calendar widgets and how the app looks.
+        Či organizujete jednoduchú, alebo opakujúcu sa udalosť, narodeniny, výročia, pracovné stretnutia, alebo hocičo iné, Jednoduchý kalendár Pro vám <b>uľahčí prácu</b>. S veľkou mierou <b>prispôsobiteľnosti</b> viete meniť pripomienky udalostí, zvuky pripomienok, widgety kalendára a celkový vzhľad apky.
 
-        Daily, weekly and monthly views make checking your upcoming events &amp; appointments a breeze. You can even view everything as a simple list of events rather than in calendar view, so you <b>know exactly what’s coming up in your life and when. </b>
+        Vďaka dennému, týždennému a mesačnému pohľadu si viete veľmi jednoducho prezrieť nasledujúce udalosti a stretnutia. Všetky udalosti si viete pozrieť aj v jednoduchom chronologickom zozname udalostí. Vďaka tomu viete <b>presne čo a kedy sa blíži.</b>
 
         ----------------------------------------------------------
-        <b>Simple Calendar Pro – Features &amp; Benefits</b>
+        <b>Jednoduchý kalendár Pro - funkcie a benefity</b>
         ----------------------------------------------------------
 
-        ✔️ No ads or annoying popups
-        ✔️ No internet access needed, giving you more privacy &amp; security
-        ✔️ Only the bare minimum permissions required
-        ✔️ Emphasis on simplicity – does what a calendar needs to do!
-        ✔️ Open source
-        ✔️ Fully customizable themes &amp; calendar / event widgets
-        ✔️ Translated into 29 languages
-        ✔️ Export settings to .txt files to import to another device
-        ✔️ CalDAV calendar sync supported to sync events across devices
-        ✔️ Daily, weekly, monthly, yearly &amp; event views on the calendar
-        ✔️ Supports exporting &amp; importing events via .ics files
-        ✔️ Set multiple event reminders, customize event reminder sound and vibration
-        ✔️ Snooze option for reminders
-        ✔️ Easily add holidays, birthdays, anniversaries &amp; appointments
-        ✔️ Customize events – start time, duration, reminders etc
-        ✔️ Add event attendees to each event
-        ✔️ Use as a personal calendar or a business calendar
-        ✔️ Choose between reminders &amp; email notifications to alert you about an event
+        ✔️ Žiadne reklamy a otravné vyskakovacie okná
+        ✔️ Nie je potrebný prístup na internet, vďaka čomu budete mať maximálne súkromie a bezpečie
+        ✔️ Obsahuje iba nevyhnutne potrebné oprávnenia
+        ✔️ Prízvuk na jednoduchosť - robí presne to, čo sa od kalendára očakáva!
+        ✔️ Otvorený zdrojový kód
+        ✔️ Plne prispôsobiteľné témy, pohľady a widgety
+        ✔️ Preložený do 29 jazykov
+        ✔️ Jednoducho exportujte nastavenia do .txt súboru a importujte ich do iného zariadenia
+        ✔️ Obsahuje CalDAV sychronizáciu na zdieľanie kalendárov medzi zariadeniami
+        ✔️ Obsahuje denný, týždenný, mesačný, ročný pohľad na kalendár, ako aj jednoduchý zoznam udalostí
+        ✔️ Podporuje exportovanie a importovanie udalostí pomocou .ics súborov
+        ✔️ Možnosť nastaviť viacero pripomienok na udalosti, alebo zmeniť ich zvučku a vibrovanie
+        ✔️ Možnosť odloženia pripomienok na neskôr
+        ✔️ Jednoduché pridávanie prázdnin, narodenín, výročí a stretnutí
+        ✔️ Nastaviteľné udalosti - začiatok, trvanie, pripomienky atď
+        ✔️ Možnosť pridávania zúčastnených na udalosti
+        ✔️ Možné použitie ako súkromný, aj business kalendár
+        ✔️ Zvoľte si buď pripomienku, alebo email na synchronizované udalosti
 
-        DOWNLOAD SIMPLE CALENDAR PRO – THE SIMPLE OFFLINE CALENDAR WITH NO ADS!
+        STIAHNITE SI JEDNODUCHÝ KALENDÁR PRO - JEDNODUCHÝ OFFLINE KALENDÁR BEZ REKLÁM!
 
-        Check out the full suite of Simple Tools here:
+        <b>Pozrite si celú sadu aplikácií na:</b>
         https://www.simplemobiletools.com
 
-        Facebook:
+        <b>Facebook:</b>
         https://www.facebook.com/simplemobiletools
 
-        Reddit:
+        <b>Reddit:</b>
         https://www.reddit.com/r/SimpleMobileTools
     </string>
 

@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 6.4.1 *(2019-03-23)*
+----------------------------
+
+ * Fixed a CalDAV sync related glitch with missing events
+ * Fixed adding reminders to birthdays and anniversaries
+
 Version 6.4.0 *(2019-03-20)*
 ----------------------------
 
