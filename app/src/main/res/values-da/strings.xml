@@ -231,7 +231,7 @@
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Offline kalender uden reklamer. Planlægning og &amp; påmindelse om aftaler, begivenheder osv.</string>
+    <string name="app_short_description">Offline kalender uden reklamer. Til planlægning og påmindelse om aftaler mv.</string>
     <string name="app_long_description">
         Simple Calendar Pro kan tilpasses helt efter din smag, offline kalender er designet til at gøre præcis hvad en kalender skal kunne. <b>Ingen indviklede funktioner, ingen overflødige tilladelser og ingen reklamer!</b>
 
