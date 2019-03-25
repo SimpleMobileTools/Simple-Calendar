@@ -10,7 +10,7 @@
     <string name="simple_event_list">Lista de eventos</string>
     <string name="no_upcoming_events">Parece que você não tem eventos para breve</string>
     <string name="go_to_today">Ir para hoje</string>
-    <string name="go_to_date">Go to date</string>
+    <string name="go_to_date">Ir para data</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Calendário mensal</string>
@@ -99,12 +99,12 @@
     <string name="event_reminders">Lembretes para eventos</string>
 
     <!-- Event attendees -->
-    <string name="add_another_attendee">Add another attendee</string>
-    <string name="my_status">My status:</string>
-    <string name="going">Going</string>
-    <string name="not_going">Not going</string>
-    <string name="maybe_going">Maybe going</string>
-    <string name="invited">Invited</string>
+    <string name="add_another_attendee">Adicionar participante</string>
+    <string name="my_status">meu estado:</string>
+    <string name="going">Vou</string>
+    <string name="not_going">Não vou</string>
+    <string name="maybe_going">Talvez vá</string>
+    <string name="invited">Convidado</string>
 
     <!-- Export / Import -->
     <string name="import_events">Importar eventos</string>
@@ -179,12 +179,12 @@
     <string name="default_reminder_3">Lembrete 3</string>
     <string name="view_to_open_from_widget">Vista a abrir no widget</string>
     <string name="last_view">Última utilizada</string>
-    <string name="new_events">New events</string>
-    <string name="default_start_time">Default start time</string>
-    <string name="next_full_hour">Next full hour</string>
-    <string name="default_duration">Default duration</string>
-    <string name="last_used_one">Last used one</string>
-    <string name="other_time">Other time</string>
+    <string name="new_events">Novo evento</string>
+    <string name="default_start_time">Hora inicial padrão</string>
+    <string name="next_full_hour">Próxima hora</string>
+    <string name="default_duration">Duração padrão</string>
+    <string name="last_used_one">Última utilizada</string>
+    <string name="other_time">Outra</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
