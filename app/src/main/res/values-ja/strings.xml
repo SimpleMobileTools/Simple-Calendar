@@ -10,7 +10,7 @@
     <string name="simple_event_list">シンプル 予定 リスト</string>
     <string name="no_upcoming_events">今後の予定はありません。</string>
     <string name="go_to_today">今日へ移動</string>
-    <string name="go_to_date">Go to date</string>
+    <string name="go_to_date">日付に移動</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">カレンダー月</string>
@@ -32,7 +32,7 @@
 
     <!-- Event Repetition -->
     <string name="repetition">繰り返し</string>
-    <string name="no_repetition">No repetition</string>
+    <string name="no_repetition">繰り返さない</string>
     <string name="daily">毎日</string>
     <string name="weekly">毎週</string>
     <string name="monthly">毎月</string>
@@ -95,11 +95,11 @@
     <!-- Event Reminders -->
     <string name="reminder">リマインダー</string>
     <string name="before">前</string>
-    <string name="add_another_reminder">Add another reminder</string>
+    <string name="add_another_reminder">別のリマインダーを追加</string>
     <string name="event_reminders">予定のリマインダー</string>
 
     <!-- Event attendees -->
-    <string name="add_another_attendee">Add another attendee</string>
+    <string name="add_another_attendee">別の出席者を追加する</string>
     <string name="my_status">My status:</string>
     <string name="going">Going</string>
     <string name="not_going">Not going</string>
@@ -159,20 +159,20 @@
     <string name="no_ringtone_selected">None</string>
     <string name="day_end_before_start">The day cannot end earlier than it starts</string>
     <string name="caldav_sync">CalDAV sync</string>
-    <string name="event_lists">Event lists</string>
-    <string name="display_past_events">Display events from the past</string>
+    <string name="event_lists">予定リスト</string>
+    <string name="display_past_events">過去の予定を表示</string>
     <string name="replace_description_with_location">Replace event description with location</string>
-    <string name="delete_all_events">Delete all events</string>
+    <string name="delete_all_events">すべての予定を削除</string>
     <string name="delete_all_events_confirmation">Are you sure you want to delete all events? This will leave your event types and other settings intact.</string>
-    <string name="show_a_grid">Show a grid</string>
+    <string name="show_a_grid">グリッドを表示</string>
     <string name="loop_reminders">Loop reminders until dismissed</string>
     <string name="dim_past_events">過去の予定を薄い色で表示</string>
     <string name="events">予定</string>
-    <string name="reminder_stream">Audio stream used by reminders</string>
-    <string name="system_stream">System</string>
-    <string name="alarm_stream">Alarm</string>
-    <string name="notification_stream">Notification</string>
-    <string name="ring_stream">Ring</string>
+    <string name="reminder_stream">リマインダーで使用する音の種類</string>
+    <string name="system_stream">システム</string>
+    <string name="alarm_stream">アラーム</string>
+    <string name="notification_stream">通知</string>
+    <string name="ring_stream">着信音</string>
     <string name="use_last_event_reminders">Use the last events\' reminders as the default for new events</string>
     <string name="default_reminder_1">Default reminder 1</string>
     <string name="default_reminder_2">Default reminder 2</string>
@@ -202,13 +202,13 @@
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
-    <string name="monday_alt">Monday</string>
-    <string name="tuesday_alt">Tuesday</string>
-    <string name="wednesday_alt">Wednesday</string>
-    <string name="thursday_alt">Thursday</string>
-    <string name="friday_alt">Friday</string>
-    <string name="saturday_alt">Saturday</string>
-    <string name="sunday_alt">Sunday</string>
+    <string name="monday_alt">月曜日</string>
+    <string name="tuesday_alt">火曜日</string>
+    <string name="wednesday_alt">水曜日</string>
+    <string name="thursday_alt">木曜日</string>
+    <string name="friday_alt">金曜日</string>
+    <string name="saturday_alt">土曜日</string>
+    <string name="sunday_alt">日曜日</string>
 
     <!-- List widget config example events -->
     <string name="sample_title_1">Workout</string>
