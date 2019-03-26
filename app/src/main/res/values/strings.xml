@@ -11,6 +11,7 @@
     <string name="no_upcoming_events">Seems like you don\'t have any upcoming events.</string>
     <string name="go_to_today">Go to today</string>
     <string name="go_to_date">Go to date</string>
+    <string name="upgraded_from_free">Hey,\n\nseems like you upgraded from the old free app. You have to migrate locally stored events manually via exporting in an .ics file, then importing. You can find both export/import buttons at the main screen menu.\n\nYou can then uninstall the old version, which has an \'Upgrade to Pro\' button at the top of the app settings. You will then only have to reset your app settings.\n\nThanks!</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Calendar monthly</string>
