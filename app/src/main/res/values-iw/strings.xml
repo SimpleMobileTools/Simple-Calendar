@@ -11,6 +11,7 @@
     <string name="no_upcoming_events">נראה שאין לך אירועים בזמן הקרוב.</string>
     <string name="go_to_today">Go to today</string>
     <string name="go_to_date">Go to date</string>
+    <string name="upgraded_from_free">Hey,\n\nseems like you upgraded from the old free app. You have to migrate locally stored events manually via exporting in an .ics file, then importing. You can find both export/import buttons at the main screen menu.\n\nYou can then uninstall the old version, which has an \'Upgrade to Pro\' button at the top of the app settings. You will then only have to reset your app settings.\n\nThanks!</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">לוח השנה חודשית</string>
@@ -26,7 +27,6 @@
     <string name="end_before_start">האירוע לא יכול להיגמר מוקדם משהוא מתחיל</string>
     <string name="event_added">האירוע הוסף בהצלחה</string>
     <string name="event_updated">האירוע עודכן בהצלחה</string>
-    <string name="filter">Filter</string>
     <string name="filter_events_by_type">Filter events by type</string>
     <string name="please_fill_location">Please fill in a location to be shown on a map</string>
     <string name="public_event_notification_text">An event is upcoming</string>
