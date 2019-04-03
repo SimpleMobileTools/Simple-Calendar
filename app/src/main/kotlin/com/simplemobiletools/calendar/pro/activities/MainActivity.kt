@@ -35,6 +35,7 @@ import com.simplemobiletools.calendar.pro.jobs.CalDAVUpdateListener
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.calendar.pro.models.ListEvent
+import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.FilePickerDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
@@ -106,6 +107,11 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
         if (savedInstanceState == null) {
             checkCalDAVUpdateListener()
+        }
+
+        if (!config.wasUpgradedFromFreeShown && isPackageInstalled("com.simplemobiletools.calendar")) {
+            ConfirmationDialog(this, "", R.string.upgraded_from_free, R.string.ok, 0) {}
+            config.wasUpgradedFromFreeShown = true
         }
     }
 
