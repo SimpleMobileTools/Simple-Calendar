@@ -15,7 +15,12 @@ class EventsHelper(val context: Context) {
 
     fun getEventTypes(activity: Activity, showWritableOnly: Boolean, callback: (notes: ArrayList<EventType>) -> Unit) {
         Thread {
-            var eventTypes = eventTypesDB.getEventTypes().toMutableList() as ArrayList<EventType>
+            var eventTypes = ArrayList<EventType>()
+            try {
+                eventTypes = eventTypesDB.getEventTypes().toMutableList() as ArrayList<EventType>
+            } catch (ignored: Exception) {
+            }
+
             if (showWritableOnly) {
                 val caldavCalendars = activity.calDAVHelper.getCalDAVCalendars("", true)
                 eventTypes = eventTypes.filter {
