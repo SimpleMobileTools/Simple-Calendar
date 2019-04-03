@@ -11,7 +11,7 @@
     <string name="no_upcoming_events">Parece que você não tem eventos para breve</string>
     <string name="go_to_today">Ir para hoje</string>
     <string name="go_to_date">Ir para data</string>
-    <string name="upgraded_from_free">Hey,\n\nseems like you upgraded from the old free app. You have to migrate locally stored events manually via exporting in an .ics file, then importing. You can find both export/import buttons at the main screen menu.\n\nYou can then uninstall the old version, which has an \'Upgrade to Pro\' button at the top of the app settings. You will then only have to reset your app settings.\n\nThanks!</string>
+    <string name="upgraded_from_free">Olá,\n\nparece que você utilizou a opção de atualização existente na versão antiga. Tem que migrar os eventos locais através de exportação para um ficheiro .ics e posterior importação. Pode encontrar os botões de exportação/importação no ecrã do menu principal.\n\nDepois já poderá desinstalar a aplicação antiga. Também terá que repor as predefinições da aplicação.\n\nObrigado!</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Calendário mensal</string>
