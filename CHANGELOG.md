@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 6.4.2 *(2019-04-03)*
+----------------------------
+
+ * Added holidays in Taiwan
+ * Added an explanation dialog at upgrading from Free version
+ * Some stability and translation improvements
+
 Version 6.4.1 *(2019-03-23)*
 ----------------------------
 
