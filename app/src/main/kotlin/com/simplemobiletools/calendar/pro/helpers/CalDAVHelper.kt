@@ -452,12 +452,15 @@ class CalDAVHelper(val context: Context) {
         refreshCalDAVCalendar(event)
     }
 
-    fun insertEventRepeatException(event: Event, occurrenceTS: Long): Long {
+    fun insertEventRepeatException(event: Event, occurrenceTS: Long) {
         val uri = CalendarContract.Events.CONTENT_URI
         val values = fillEventRepeatExceptionValues(event, occurrenceTS)
-        val newUri = context.contentResolver.insert(uri, values)
-        refreshCalDAVCalendar(event)
-        return java.lang.Long.parseLong(newUri.lastPathSegment)
+        try {
+            context.contentResolver.insert(uri, values)
+            refreshCalDAVCalendar(event)
+        } catch (e: Exception) {
+            context.showErrorToast(e)
+        }
     }
 
     private fun fillEventRepeatExceptionValues(event: Event, occurrenceTS: Long): ContentValues {
