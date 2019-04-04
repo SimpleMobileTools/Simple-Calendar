@@ -234,7 +234,7 @@
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
-    <string name="app_title">Simple Calendar Pro - Events &amp; Reminders</string>
+    <string name="app_title">簡易行事曆 Pro - 活動&amp;約會</string>
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">沒有廣告的離線行事曆。對約會和活動之類的進行安排&amp;提醒</string>
     <string name="app_long_description">
