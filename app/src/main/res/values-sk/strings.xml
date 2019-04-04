@@ -233,6 +233,8 @@
         zmeniť zvolenú hodnotu. Ak to ešte stále nebude fungovať, skúste sa pozrieť do zvukových nastavení vášho systému, či daný kanál nie je stlmený.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
+    <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
+    <string name="app_title">Jednoduchý kalendár Pro - Udalosti a pripomienky</string>
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Offline kalendár bez reklám. Spravujte pripomienky pre stretnutia a iné udalosti</string>
     <string name="app_long_description">
