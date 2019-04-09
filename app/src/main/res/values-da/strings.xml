@@ -232,7 +232,7 @@
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
-    <string name="app_title">Simple Calendar Pro - Events &amp; Reminders</string>
+    <string name="app_title">Simple Calendar Pro - Begivenheder &amp; påmindelser</string>
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Offline kalender uden reklamer. Til planlægning og påmindelse om aftaler mv.</string>
     <string name="app_long_description">
