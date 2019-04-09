@@ -232,18 +232,18 @@
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
-    <string name="app_title">Simple Calendar Pro - Events &amp; Reminders</string>
+    <string name="app_title">Simpel kalender Pro - Begivenheder &amp; påmindelser</string>
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Offline kalender uden reklamer. Til planlægning og påmindelse om aftaler mv.</string>
     <string name="app_long_description">
-        Simple Calendar Pro kan tilpasses helt efter din smag, offline kalender er designet til at gøre præcis hvad en kalender skal kunne. <b>Ingen indviklede funktioner, ingen overflødige tilladelser og ingen reklamer!</b>
+        Simpel kalender Pro kan tilpasses helt efter din smag, offline kalender er designet til at gøre præcis hvad en kalender skal kunne. <b>Ingen indviklede funktioner, ingen overflødige tilladelser og ingen reklamer!</b>
 
-        Uanset om du planlægger enkelte eller gentagne begivenheder, fødselsdage, jubilæer, forretningsmøder, aftaler eller noget andet, gør Simple Calendar det <b>let at være organiseret</b>. Med masser af <b>tilpasningsmuligheder</b> kan du tilpasse påmindelser, påmindelseslyde, kalender-widtets og appens udseende.
+        Uanset om du planlægger enkelte eller gentagne begivenheder, fødselsdage, jubilæer, forretningsmøder, aftaler eller noget andet, gør Simpel kalender det <b>let at være organiseret</b>. Med masser af <b>tilpasningsmuligheder</b> kan du tilpasse påmindelser, påmindelseslyde, kalender-widtets og appens udseende.
 
         Daglig, ugentlig og månedlig visning gør det til rent barnemad at tjekke begivenheder &amp; aftaler. Du kan endda få vist alt på en enkel liste over begivenheder i stedet for i kalendervisning, så du <b>præcis ved hvad der forestår i dit liv og hvornår. </b>
 
         ----------------------------------------------------------
-        <b>Simple Calendar Pro – Funktioer &amp; fordele</b>
+        <b>Simpel kalender Pro – Funktioer &amp; fordele</b>
         ----------------------------------------------------------
 
         ✔️ Ingen reklamer eller irriterende pop op-bokse
@@ -265,7 +265,7 @@
         ✔️ Brug den som en personlig eller en forretningsmæssig kalender
         ✔️ Vælg mellem påindelser &amp; notifikationer via e-mail til at minde dig om aftaler
 
-        DOWNLOAD SIMPLE KALENDER PRO – DEN SIMPLE OFFLINE KALENDER UDEN REKLAMER!
+        DOWNLOAD SIMPEL KALENDER PRO – DEN SIMPLE OFFLINE KALENDER UDEN REKLAMER!
 
         <b>Se hele suiten af Simple værktøjer her:</b>
         https://www.simplemobiletools.com
