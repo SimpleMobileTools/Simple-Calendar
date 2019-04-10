@@ -348,6 +348,12 @@ class EventActivity : SimpleActivity() {
             val endTS = intent.getLongExtra("endTime", System.currentTimeMillis()) / 1000L
             mEventEndDateTime = Formatter.getDateTimeFromTS(endTS)
 
+            if (intent.getBooleanExtra("allDay", false)) {
+                mEvent.flags = mEvent.flags or FLAG_ALL_DAY
+                event_all_day.isChecked = true
+                toggleAllDay(true)
+            }
+
             event_title.setText(intent.getStringExtra("title"))
             event_location.setText(intent.getStringExtra("eventLocation"))
             event_description.setText(intent.getStringExtra("description"))
