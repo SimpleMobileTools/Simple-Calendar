@@ -91,7 +91,6 @@
             android:layout_alignTop="@+id/event_all_day"
             android:layout_alignBottom="@+id/event_all_day"
             android:layout_marginStart="@dimen/normal_margin"
-            android:layout_marginLeft="@dimen/normal_margin"
             android:padding="@dimen/medium_margin"
             android:src="@drawable/ic_clock"/>
 
