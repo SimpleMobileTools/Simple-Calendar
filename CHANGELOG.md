@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 6.4.3 *(2019-04-10)*
+----------------------------
+
+ * Fixed some third party intent handling
+ * Some stability and translation improvements
+
 Version 6.4.2 *(2019-04-03)*
 ----------------------------
 
