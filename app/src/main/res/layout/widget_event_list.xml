@@ -9,8 +9,8 @@
         android:id="@+id/widget_event_list_today"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/widget_event_new_event"
         android:layout_alignTop="@+id/widget_event_new_event"
+        android:layout_alignBottom="@+id/widget_event_new_event"
         android:layout_toStartOf="@+id/widget_event_new_event"
         android:ellipsize="end"
         android:gravity="center_vertical"
@@ -24,12 +24,12 @@
         style="@style/ArrowStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:paddingBottom="@dimen/small_margin"
+        android:layout_alignParentEnd="true"
         android:paddingStart="@dimen/medium_margin"
-        android:paddingEnd="@dimen/medium_margin"
         android:paddingTop="@dimen/medium_margin"
+        android:paddingEnd="@dimen/medium_margin"
+        android:paddingBottom="@dimen/small_margin"
         android:scaleType="fitCenter"
         android:src="@drawable/ic_plus"/>
 
@@ -40,8 +40,8 @@
         android:layout_below="@+id/widget_event_new_event"
         android:clipToPadding="false"
         android:divider="@null"
-        android:paddingBottom="@dimen/small_margin"
-        android:paddingStart="@dimen/medium_margin"/>
+        android:paddingStart="@dimen/medium_margin"
+        android:paddingBottom="@dimen/small_margin"/>
 
     <TextView
         android:id="@+id/widget_event_list_empty"
