@@ -802,10 +802,19 @@ class EventActivity : SimpleActivity() {
         }
     }
 
+    private fun resetTime() {
+        mEventStartDateTime = mEventStartDateTime.hourOfDay().setCopy(0).minuteOfDay().setCopy(0)
+        mEventEndDateTime = mEventEndDateTime.hourOfDay().setCopy(0).minuteOfDay().setCopy(0)
+        updateStartTimeText()
+        updateEndTimeText()
+        checkStartEndValidity()
+    }
+
     private fun toggleAllDay(isChecked: Boolean) {
         hideKeyboard()
         event_start_time.beGoneIf(isChecked)
         event_end_time.beGoneIf(isChecked)
+        resetTime()
     }
 
     private fun shareEvent() {
