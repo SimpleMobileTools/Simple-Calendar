@@ -803,11 +803,14 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun resetTime() {
-        mEventStartDateTime = mEventStartDateTime.hourOfDay().setCopy(0).minuteOfDay().setCopy(0)
-        mEventEndDateTime = mEventEndDateTime.hourOfDay().setCopy(0).minuteOfDay().setCopy(0)
-        updateStartTimeText()
-        updateEndTimeText()
-        checkStartEndValidity()
+        if (mEventEndDateTime.isBefore(mEventStartDateTime) &&
+                mEventStartDateTime.dayOfMonth() == mEventEndDateTime.dayOfMonth() &&
+                mEventStartDateTime.monthOfYear() == mEventEndDateTime.monthOfYear()) {
+
+            mEventEndDateTime = mEventEndDateTime.withTime(mEventStartDateTime.hourOfDay, mEventStartDateTime.minuteOfHour, mEventStartDateTime.secondOfMinute, 0)
+            updateEndTimeText()
+            checkStartEndValidity()
+        }
     }
 
     private fun toggleAllDay(isChecked: Boolean) {
