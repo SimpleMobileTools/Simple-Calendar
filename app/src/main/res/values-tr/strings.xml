@@ -188,6 +188,7 @@
     <string name="default_duration">Varsayılan süre</string>
     <string name="last_used_one">Son kullanılan</string>
     <string name="other_time">Başka zaman</string>
+    <string name="highlight_weekends">Highlight weekends on some views</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

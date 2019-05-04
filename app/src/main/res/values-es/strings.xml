@@ -188,6 +188,7 @@
     <string name="default_duration">Default duration</string>
     <string name="last_used_one">Last used one</string>
     <string name="other_time">Other time</string>
+    <string name="highlight_weekends">Highlight weekends on some views</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

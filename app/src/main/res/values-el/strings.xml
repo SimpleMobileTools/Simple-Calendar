@@ -188,6 +188,7 @@
     <string name="default_duration">Προεπιλεγμένη διάρκεια</string>
     <string name="last_used_one">Τελευταία χρήση</string>
     <string name="other_time">Άλλη ώρα</string>
+    <string name="highlight_weekends">Highlight weekends on some views</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

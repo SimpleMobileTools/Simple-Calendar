@@ -188,6 +188,7 @@
     <string name="default_duration">Standard varighed</string>
     <string name="last_used_one">Senest brugte</string>
     <string name="other_time">Anden tid</string>
+    <string name="highlight_weekends">Highlight weekends on some views</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

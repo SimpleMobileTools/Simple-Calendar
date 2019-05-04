@@ -188,6 +188,7 @@
     <string name="default_duration">Predvolená dĺžka</string>
     <string name="last_used_one">Naposledy použitý</string>
     <string name="other_time">Iný čas</string>
+    <string name="highlight_weekends">Zvýrazniť víkendy na niektorých pohľadoch</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
