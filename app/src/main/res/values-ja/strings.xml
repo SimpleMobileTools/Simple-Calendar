@@ -85,12 +85,14 @@
     <string name="birthdays">誕生日</string>
     <string name="add_birthdays">連絡先の誕生日を追加</string>
     <string name="no_birthdays">誕生日は見つかりませんでした</string>
+    <string name="no_new_birthdays">No new birthdays have been found</string>
     <string name="birthdays_added">誕生日が正常に追加されました</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">記念日</string>
     <string name="add_anniversaries">連絡先の記念日を追加</string>
     <string name="no_anniversaries">記念日は見つかりませんでした</string>
+    <string name="no_new_anniversaries">No new anniversaries have been found</string>
     <string name="anniversaries_added">記念日が正常に追加されました</string>
 
     <!-- Event Reminders -->

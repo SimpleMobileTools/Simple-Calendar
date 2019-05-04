@@ -85,12 +85,14 @@
     <string name="birthdays">Fødselsdag</string>
     <string name="add_birthdays">Tilføj dine kontakters fødselsdage</string>
     <string name="no_birthdays">Der blev ikke fundet nogen fødselsdage</string>
+    <string name="no_new_birthdays">No new birthdays have been found</string>
     <string name="birthdays_added">Fødselsdage tilføjet</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Mærkedage</string>
     <string name="add_anniversaries">Tilføj dine kontakters mærkedage</string>
     <string name="no_anniversaries">Der blev ikke fundet nogen mærkedage</string>
+    <string name="no_new_anniversaries">No new anniversaries have been found</string>
     <string name="anniversaries_added">Mærkedage tilføjet</string>
 
     <!-- Event Reminders -->

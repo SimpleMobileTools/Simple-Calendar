@@ -85,12 +85,14 @@
     <string name="birthdays">Narozeniny</string>
     <string name="add_birthdays">Přidat narozeniny z kontaktů</string>
     <string name="no_birthdays">Žádné narozeniny nebyly nalezeny</string>
+    <string name="no_new_birthdays">No new birthdays have been found</string>
     <string name="birthdays_added">Narozeniny byly úspěšně přidány</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Výročí</string>
     <string name="add_anniversaries">Přidat výročí</string>
     <string name="no_anniversaries">Žádné výročí nebylo nalezeno</string>
+    <string name="no_new_anniversaries">No new anniversaries have been found</string>
     <string name="anniversaries_added">Výročí bylo úspěšně přidáno</string>
 
     <!-- Event Reminders -->

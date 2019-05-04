@@ -85,12 +85,14 @@
     <string name="birthdays">Gimtadieniai</string>
     <string name="add_birthdays">Pridėti kontaktų gimtadienius</string>
     <string name="no_birthdays">Nerasta gimtadienių</string>
+    <string name="no_new_birthdays">No new birthdays have been found</string>
     <string name="birthdays_added">Gimtadieniai įtraukti sėkmingai</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Sukaktys</string>
     <string name="add_anniversaries">pridėti kontakto sukaktis</string>
     <string name="no_anniversaries">Sukakčių nerasta</string>
+    <string name="no_new_anniversaries">No new anniversaries have been found</string>
     <string name="anniversaries_added">Sukaktys įtrauktos sėkmingai</string>
 
     <!-- Event Reminders -->

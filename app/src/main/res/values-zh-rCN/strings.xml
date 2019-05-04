@@ -85,12 +85,14 @@
     <string name="birthdays">生日</string>
     <string name="add_birthdays">添加联系人生日</string>
     <string name="no_birthdays">未发现生日</string>
+    <string name="no_new_birthdays">No new birthdays have been found</string>
     <string name="birthdays_added">生日添加成功</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">纪念日</string>
     <string name="add_anniversaries">添加联系人纪念日</string>
     <string name="no_anniversaries">未发现纪念日</string>
+    <string name="no_new_anniversaries">No new anniversaries have been found</string>
     <string name="anniversaries_added">纪念日添加成功</string>
 
     <!-- Event Reminders -->

@@ -85,12 +85,14 @@
     <string name="birthdays">생일</string>
     <string name="add_birthdays">연락처의 생일 추가</string>
     <string name="no_birthdays">조회된 생일이 없음</string>
+    <string name="no_new_birthdays">No new birthdays have been found</string>
     <string name="birthdays_added">생일 추가 완료</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">기념일</string>
     <string name="add_anniversaries">연락처의 기념일 추가</string>
     <string name="no_anniversaries">조회된 기념일 없음</string>
+    <string name="no_new_anniversaries">No new anniversaries have been found</string>
     <string name="anniversaries_added">기념일 추가 완료</string>
 
     <!-- Event Reminders -->

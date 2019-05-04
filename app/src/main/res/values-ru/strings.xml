@@ -85,12 +85,14 @@
     <string name="birthdays">Дни рождения</string>
     <string name="add_birthdays">Добавить дни рождения контактов</string>
     <string name="no_birthdays">Дни рождения не найдены</string>
+    <string name="no_new_birthdays">No new birthdays have been found</string>
     <string name="birthdays_added">Дни рождения успешно добавлены</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Годовщины</string>
     <string name="add_anniversaries">Добавить годовщины контактов</string>
     <string name="no_anniversaries">Годовщины не найдены</string>
+    <string name="no_new_anniversaries">No new anniversaries have been found</string>
     <string name="anniversaries_added">Годовщины успешно добавлены</string>
 
     <!-- Event Reminders -->

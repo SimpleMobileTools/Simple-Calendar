@@ -85,12 +85,14 @@
     <string name="birthdays">Γενέθλια</string>
     <string name="add_birthdays">Προσθήκη γενεθλίων επαφής</string>
     <string name="no_birthdays">Δεν βρέθηκαν γενέθλια</string>
+    <string name="no_new_birthdays">No new birthdays have been found</string>
     <string name="birthdays_added">Τα γενέθλια προστέθηκαν με επιτυχία</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Επέτειοι</string>
     <string name="add_anniversaries">Προσθέστε επετείους επαφής</string>
     <string name="no_anniversaries">Δεν έχουν βρεθεί επέτειοι</string>
+    <string name="no_new_anniversaries">No new anniversaries have been found</string>
     <string name="anniversaries_added">Οι επέτειοι προστέθηκαν με επιτυχία</string>
 
     <!-- Event Reminders -->

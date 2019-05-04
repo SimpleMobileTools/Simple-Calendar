@@ -85,12 +85,14 @@
     <string name="birthdays">Bursdager</string>
     <string name="add_birthdays">Legg til kontaktbursdager</string>
     <string name="no_birthdays">Ingen bursdager er funnet</string>
+    <string name="no_new_birthdays">No new birthdays have been found</string>
     <string name="birthdays_added">Bursdager vellykket lagt til</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Jubileer</string>
     <string name="add_anniversaries">Legg til kontaktjubileer</string>
     <string name="no_anniversaries">Ingen jubileer er funnet</string>
+    <string name="no_new_anniversaries">No new anniversaries have been found</string>
     <string name="anniversaries_added">Jubileer vellykket lagt til</string>
 
     <!-- Event Reminders -->

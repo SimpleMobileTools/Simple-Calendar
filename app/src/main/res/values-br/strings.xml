@@ -85,12 +85,14 @@
     <string name="birthdays">Deizioù-ha-bloaz</string>
     <string name="add_birthdays">Ouzhpennañ deizioù-ha-bloaz an darempredoù</string>
     <string name="no_birthdays">N\'eus ket kavet deiz-ha-bloaz bet</string>
+    <string name="no_new_birthdays">No new birthdays have been found</string>
     <string name="birthdays_added">Ouzhpennet an deizioù-ha-bloaz gant berzh</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Anniversaries</string>
     <string name="add_anniversaries">Add contact anniversaries</string>
     <string name="no_anniversaries">No anniversaries have been found</string>
+    <string name="no_new_anniversaries">No new anniversaries have been found</string>
     <string name="anniversaries_added">Anniversaries added successfully</string>
 
     <!-- Event Reminders -->

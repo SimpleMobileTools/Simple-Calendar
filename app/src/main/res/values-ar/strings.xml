@@ -85,12 +85,14 @@
     <string name="birthdays">تواريخ الميلاد</string>
     <string name="add_birthdays">إضافة تاريخ ميلاد جهة إتصال</string>
     <string name="no_birthdays">لم يتم إيجاد تواريخ ميلاد</string>
+    <string name="no_new_birthdays">No new birthdays have been found</string>
     <string name="birthdays_added">تمت إضافة تواريخ الميلاد</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">المناسبات</string>
     <string name="add_anniversaries">إضافة مناسبات جهة إتصال</string>
     <string name="no_anniversaries">لم يتم العثور على مناسبات</string>
+    <string name="no_new_anniversaries">No new anniversaries have been found</string>
     <string name="anniversaries_added">تمت إضافة المناسبات</string>
 
     <!-- Event Reminders -->

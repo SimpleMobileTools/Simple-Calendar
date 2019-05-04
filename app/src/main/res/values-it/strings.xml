@@ -85,12 +85,14 @@
     <string name="birthdays">Compleanni</string>
     <string name="add_birthdays">Aggiungi compleanni dai contatti</string>
     <string name="no_birthdays">Nessun compleanno trovato</string>
+    <string name="no_new_birthdays">No new birthdays have been found</string>
     <string name="birthdays_added">Compleanni aggiunti con successo</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Anniversari</string>
     <string name="add_anniversaries">Aggiungi anniversari dai contatti</string>
     <string name="no_anniversaries">Nessun anniversario trovato</string>
+    <string name="no_new_anniversaries">No new anniversaries have been found</string>
     <string name="anniversaries_added">Anniversari aggiunti con successo</string>
 
     <!-- Event Reminders -->

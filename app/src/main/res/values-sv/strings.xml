@@ -85,12 +85,14 @@
     <string name="birthdays">Födelsedagar</string>
     <string name="add_birthdays">Lägg till kontakters födelsedagar</string>
     <string name="no_birthdays">Inga födelsedagar hittades</string>
+    <string name="no_new_birthdays">No new birthdays have been found</string>
     <string name="birthdays_added">Födelsedagarna har lagts till</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Årsdagar</string>
     <string name="add_anniversaries">Lägg till kontakters årsdagar</string>
     <string name="no_anniversaries">Inga årsdagar hittades</string>
+    <string name="no_new_anniversaries">No new anniversaries have been found</string>
     <string name="anniversaries_added">Årsdagarna har lagts till</string>
 
     <!-- Event Reminders -->
