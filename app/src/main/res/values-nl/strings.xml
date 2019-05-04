@@ -85,14 +85,14 @@
     <string name="birthdays">Verjaardagen</string>
     <string name="add_birthdays">Verjaardagen van contacten toevoegen</string>
     <string name="no_birthdays">Geen verjaardagen gevonden</string>
-    <string name="no_new_birthdays">No new birthdays have been found</string>
+    <string name="no_new_birthdays">Geen nieuwe verjaardagen gevonden</string>
     <string name="birthdays_added">Verjaardagen toegevoegd</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Feestdagen</string>
     <string name="add_anniversaries">Feestdagen van contacten toevoegen</string>
     <string name="no_anniversaries">Geen feestdagen gevonden</string>
-    <string name="no_new_anniversaries">No new anniversaries have been found</string>
+    <string name="no_new_anniversaries">Geen nieuwe feestdagen gevonden</string>
     <string name="anniversaries_added">Feestdagen toegevoegd</string>
 
     <!-- Event Reminders -->
@@ -188,7 +188,7 @@
     <string name="default_duration">Standaard duur</string>
     <string name="last_used_one">Laatst gebruikt</string>
     <string name="other_time">Andere tijd</string>
-    <string name="highlight_weekends">Highlight weekends on some views</string>
+    <string name="highlight_weekends">Weekends markeren</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
