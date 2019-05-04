@@ -514,6 +514,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     private fun handleParseResult(result: IcsImporter.ImportResult) {
         toast(when (result) {
+            IcsImporter.ImportResult.IMPORT_NOTHING_NEW -> R.string.no_new_items
             IcsImporter.ImportResult.IMPORT_OK -> R.string.holidays_imported_successfully
             IcsImporter.ImportResult.IMPORT_PARTIAL -> R.string.importing_some_holidays_failed
             else -> R.string.importing_holidays_failed
