@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 6.5.0 *(2019-05-04)*
+----------------------------
+
+ * Show a more specific message if no new event has been found at importing
+ * Fixed an Event list widget glitch with overlapping event type indicator colors
+ * Misc smaller improvements
+
 Version 6.4.3 *(2019-04-10)*
 ----------------------------
 
