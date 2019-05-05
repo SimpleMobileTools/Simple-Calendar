@@ -85,14 +85,14 @@
     <string name="birthdays">生日</string>
     <string name="add_birthdays">添加聯絡人生日</string>
     <string name="no_birthdays">未發現生日</string>
-    <string name="no_new_birthdays">No new birthdays have been found</string>
+    <string name="no_new_birthdays">未發現新的生日</string>
     <string name="birthdays_added">生日添加成功</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">紀念日</string>
     <string name="add_anniversaries">添加聯絡人紀念日</string>
     <string name="no_anniversaries">未發現紀念日</string>
-    <string name="no_new_anniversaries">No new anniversaries have been found</string>
+    <string name="no_new_anniversaries">未發現新的紀念日</string>
     <string name="anniversaries_added">紀念日添加成功</string>
 
     <!-- Event Reminders -->
@@ -188,7 +188,7 @@
     <string name="default_duration">預設持續時間</string>
     <string name="last_used_one">最後使用</string>
     <string name="other_time">其他時間</string>
-    <string name="highlight_weekends">Highlight weekends on some views</string>
+    <string name="highlight_weekends">在檢視畫面突顯假日</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
