@@ -85,14 +85,14 @@
     <string name="birthdays">Дни рождения</string>
     <string name="add_birthdays">Добавить дни рождения контактов</string>
     <string name="no_birthdays">Дни рождения не найдены</string>
-    <string name="no_new_birthdays">No new birthdays have been found</string>
+    <string name="no_new_birthdays">Новых дней рождения не найдено</string>
     <string name="birthdays_added">Дни рождения успешно добавлены</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Годовщины</string>
     <string name="add_anniversaries">Добавить годовщины контактов</string>
     <string name="no_anniversaries">Годовщины не найдены</string>
-    <string name="no_new_anniversaries">No new anniversaries have been found</string>
+    <string name="no_new_anniversaries">Новых годовщин не найдено</string>
     <string name="anniversaries_added">Годовщины успешно добавлены</string>
 
     <!-- Event Reminders -->
@@ -188,7 +188,7 @@
     <string name="default_duration">Продолжительность по умолчанию</string>
     <string name="last_used_one">Последнее использованное</string>
     <string name="other_time">Другое</string>
-    <string name="highlight_weekends">Highlight weekends on some views</string>
+    <string name="highlight_weekends">Выделять выходные дни в соответствующих режимах</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -237,7 +237,7 @@
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
-    <string name="app_title">Simple Calendar Pro - Events &amp; Reminders</string>
+    <string name="app_title">Simple Calendar Pro - события и напоминания</string>
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Автономный календарь без рекламы. Упорядочивание и напоминания о встречах, событиях и т.д.</string>
     <string name="app_long_description">
