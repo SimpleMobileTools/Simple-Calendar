@@ -68,4 +68,6 @@ open class SimpleActivity : BaseSimpleActivity() {
     private fun unregisterObserver() {
         contentResolver.unregisterContentObserver(calDAVSyncObserver)
     }
+
+    
 }
