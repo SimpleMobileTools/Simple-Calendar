@@ -85,12 +85,14 @@
     <string name="birthdays">Fødselsdag</string>
     <string name="add_birthdays">Tilføj dine kontakters fødselsdage</string>
     <string name="no_birthdays">Der blev ikke fundet nogen fødselsdage</string>
+    <string name="no_new_birthdays">No new birthdays have been found</string>
     <string name="birthdays_added">Fødselsdage tilføjet</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Mærkedage</string>
     <string name="add_anniversaries">Tilføj dine kontakters mærkedage</string>
     <string name="no_anniversaries">Der blev ikke fundet nogen mærkedage</string>
+    <string name="no_new_anniversaries">No new anniversaries have been found</string>
     <string name="anniversaries_added">Mærkedage tilføjet</string>
 
     <!-- Event Reminders -->
@@ -186,6 +188,7 @@
     <string name="default_duration">Standard varighed</string>
     <string name="last_used_one">Senest brugte</string>
     <string name="other_time">Anden tid</string>
+    <string name="highlight_weekends">Highlight weekends on some views</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -231,17 +234,19 @@
     <string name="faq_3_text">Såvel visning af påmindelser som afspilning af lyd til dem, er afhængig af systemet. Hvis ikke du kan høre nogen lyd, kan du prøve at gå ind i appens indstillinger. Her kan du trykke på \"Audio-stream anvendt af påmindelser\"  og vælge en anden indstilling. Virker det stadig ikke skal du tjekke i dine lydindstillinger om lyden i det aktuelle valg er slået fra.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
+    <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
+    <string name="app_title">Simpel kalender Pro - Begivenheder &amp; påmindelser</string>
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Offline kalender uden reklamer. Til planlægning og påmindelse om aftaler mv.</string>
     <string name="app_long_description">
-        Simple Calendar Pro kan tilpasses helt efter din smag, offline kalender er designet til at gøre præcis hvad en kalender skal kunne. <b>Ingen indviklede funktioner, ingen overflødige tilladelser og ingen reklamer!</b>
+        Simpel kalender Pro kan tilpasses helt efter din smag, offline kalender er designet til at gøre præcis hvad en kalender skal kunne. <b>Ingen indviklede funktioner, ingen overflødige tilladelser og ingen reklamer!</b>
 
-        Uanset om du planlægger enkelte eller gentagne begivenheder, fødselsdage, jubilæer, forretningsmøder, aftaler eller noget andet, gør Simple Calendar det <b>let at være organiseret</b>. Med masser af <b>tilpasningsmuligheder</b> kan du tilpasse påmindelser, påmindelseslyde, kalender-widtets og appens udseende.
+        Uanset om du planlægger enkelte eller gentagne begivenheder, fødselsdage, jubilæer, forretningsmøder, aftaler eller noget andet, gør Simpel kalender det <b>let at være organiseret</b>. Med masser af <b>tilpasningsmuligheder</b> kan du tilpasse påmindelser, påmindelseslyde, kalender-widtets og appens udseende.
 
         Daglig, ugentlig og månedlig visning gør det til rent barnemad at tjekke begivenheder &amp; aftaler. Du kan endda få vist alt på en enkel liste over begivenheder i stedet for i kalendervisning, så du <b>præcis ved hvad der forestår i dit liv og hvornår. </b>
 
         ----------------------------------------------------------
-        <b>Simple Calendar Pro – Funktioer &amp; fordele</b>
+        <b>Simpel kalender Pro – Funktioer &amp; fordele</b>
         ----------------------------------------------------------
 
         ✔️ Ingen reklamer eller irriterende pop op-bokse
@@ -263,7 +268,7 @@
         ✔️ Brug den som en personlig eller en forretningsmæssig kalender
         ✔️ Vælg mellem påindelser &amp; notifikationer via e-mail til at minde dig om aftaler
 
-        DOWNLOAD SIMPLE KALENDER PRO – DEN SIMPLE OFFLINE KALENDER UDEN REKLAMER!
+        DOWNLOAD SIMPEL KALENDER PRO – DEN SIMPLE OFFLINE KALENDER UDEN REKLAMER!
 
         <b>Se hele suiten af Simple værktøjer her:</b>
         https://www.simplemobiletools.com

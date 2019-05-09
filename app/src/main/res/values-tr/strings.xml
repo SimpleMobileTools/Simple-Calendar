@@ -85,12 +85,14 @@
     <string name="birthdays">Doğum günleri</string>
     <string name="add_birthdays">Kişi doğum günlerini ekle</string>
     <string name="no_birthdays">Hiçbir doğum günü bulunamadı</string>
+    <string name="no_new_birthdays">No new birthdays have been found</string>
     <string name="birthdays_added">Doğum günleri başarıyla eklendi</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Yıldönümleri</string>
     <string name="add_anniversaries">Kişi yıldönümlerini ekle</string>
     <string name="no_anniversaries">Yıldönümleri bulunamadı</string>
+    <string name="no_new_anniversaries">No new anniversaries have been found</string>
     <string name="anniversaries_added">Yıldönümleri başarıyla eklendi</string>
 
     <!-- Event Reminders -->
@@ -186,6 +188,7 @@
     <string name="default_duration">Varsayılan süre</string>
     <string name="last_used_one">Son kullanılan</string>
     <string name="other_time">Başka zaman</string>
+    <string name="highlight_weekends">Highlight weekends on some views</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -232,6 +235,8 @@
         \"Hatırlatıcılar tarafından kullanılan ses akışına\" basmayı ve bunu farklı bir değere değiştirmeyi deneyin. Hala işe yaramazsa, belirli bir akış sessiz değilse, Ses ayarlarınızı kontrol edin.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
+    <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
+    <string name="app_title">Simple Calendar Pro - Events &amp; Reminders</string>
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Offline calendar with no ads. Organizer &amp; reminders for appointments, events etc</string>
     <string name="app_long_description">

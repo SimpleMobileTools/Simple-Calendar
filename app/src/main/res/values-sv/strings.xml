@@ -85,12 +85,14 @@
     <string name="birthdays">Födelsedagar</string>
     <string name="add_birthdays">Lägg till kontakters födelsedagar</string>
     <string name="no_birthdays">Inga födelsedagar hittades</string>
+    <string name="no_new_birthdays">No new birthdays have been found</string>
     <string name="birthdays_added">Födelsedagarna har lagts till</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Årsdagar</string>
     <string name="add_anniversaries">Lägg till kontakters årsdagar</string>
     <string name="no_anniversaries">Inga årsdagar hittades</string>
+    <string name="no_new_anniversaries">No new anniversaries have been found</string>
     <string name="anniversaries_added">Årsdagarna har lagts till</string>
 
     <!-- Event Reminders -->
@@ -186,6 +188,7 @@
     <string name="default_duration">Standardvaraktighet</string>
     <string name="last_used_one">Senast använda</string>
     <string name="other_time">Annan tid</string>
+    <string name="highlight_weekends">Highlight weekends on some views</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -233,6 +236,8 @@
         pressing the \"Audio stream used by reminders\" option and changing it to a different value. If it still won\'t work, check your sound settings, if the particular stream isn\'t muted.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
+    <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
+    <string name="app_title">Simple Calendar Pro - Events &amp; Reminders</string>
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Offline calendar with no ads. Organizer &amp; reminders for appointments, events etc</string>
     <string name="app_long_description">

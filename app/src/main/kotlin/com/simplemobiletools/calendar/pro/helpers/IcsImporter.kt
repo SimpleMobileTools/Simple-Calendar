@@ -15,7 +15,7 @@ import java.io.File
 
 class IcsImporter(val activity: SimpleActivity) {
     enum class ImportResult {
-        IMPORT_FAIL, IMPORT_OK, IMPORT_PARTIAL
+        IMPORT_FAIL, IMPORT_OK, IMPORT_PARTIAL, IMPORT_NOTHING_NEW
     }
 
     private var curStart = -1L
@@ -45,6 +45,7 @@ class IcsImporter(val activity: SimpleActivity) {
 
     private var eventsImported = 0
     private var eventsFailed = 0
+    private var eventsAlreadyExist = 0
 
     fun importEvents(path: String, defaultEventTypeId: Long, calDAVCalendarId: Int, overrideFileEventTypes: Boolean): ImportResult {
         try {
@@ -152,6 +153,7 @@ class IcsImporter(val activity: SimpleActivity) {
                         // repeating event exceptions can have the same import id as their parents, so pick the latest event to update
                         val eventToUpdate = existingEvents.filter { curImportId.isNotEmpty() && curImportId == it.importId }.sortedByDescending { it.lastUpdated }.firstOrNull()
                         if (eventToUpdate != null && eventToUpdate.lastUpdated >= curLastModified) {
+                            eventsAlreadyExist++
                             continue
                         }
 
@@ -175,6 +177,7 @@ class IcsImporter(val activity: SimpleActivity) {
                         if (event.importId.isEmpty()) {
                             event.importId = event.hashCode().toString()
                             if (existingEvents.map { it.importId }.contains(event.importId)) {
+                                eventsAlreadyExist++
                                 continue
                             }
                         }
@@ -216,7 +219,13 @@ class IcsImporter(val activity: SimpleActivity) {
         }
 
         return when {
-            eventsImported == 0 -> IMPORT_FAIL
+            eventsImported == 0 -> {
+                if (eventsAlreadyExist > 0) {
+                    IMPORT_NOTHING_NEW
+                } else {
+                    IMPORT_FAIL
+                }
+            }
             eventsFailed > 0 -> IMPORT_PARTIAL
             else -> IMPORT_OK
         }

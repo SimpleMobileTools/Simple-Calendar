@@ -35,6 +35,7 @@ import com.simplemobiletools.calendar.pro.jobs.CalDAVUpdateListener
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.calendar.pro.models.ListEvent
+import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.FilePickerDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
@@ -106,6 +107,11 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
         if (savedInstanceState == null) {
             checkCalDAVUpdateListener()
+        }
+
+        if (!config.wasUpgradedFromFreeShown && isPackageInstalled("com.simplemobiletools.calendar")) {
+            ConfirmationDialog(this, "", R.string.upgraded_from_free, R.string.ok, 0) {}
+            config.wasUpgradedFromFreeShown = true
         }
     }
 
@@ -508,6 +514,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     private fun handleParseResult(result: IcsImporter.ImportResult) {
         toast(when (result) {
+            IcsImporter.ImportResult.IMPORT_NOTHING_NEW -> R.string.no_new_items
             IcsImporter.ImportResult.IMPORT_OK -> R.string.holidays_imported_successfully
             IcsImporter.ImportResult.IMPORT_PARTIAL -> R.string.importing_some_holidays_failed
             else -> R.string.importing_holidays_failed
@@ -775,11 +782,11 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
         val faqItems = arrayListOf(
                 FAQItem(R.string.faq_1_title_commons, R.string.faq_1_text_commons),
-                FAQItem(R.string.faq_2_title_commons, R.string.faq_2_text_commons),
                 FAQItem(R.string.faq_4_title_commons, R.string.faq_4_text_commons),
-                FAQItem(getString(R.string.faq_1_title), getString(R.string.faq_1_text)),
-                FAQItem(getString(R.string.faq_2_title), getString(R.string.faq_2_text)),
-                FAQItem(getString(R.string.faq_3_title), getString(R.string.faq_3_text)),
+                FAQItem(R.string.faq_1_title, R.string.faq_1_text),
+                FAQItem(R.string.faq_2_title, R.string.faq_2_text),
+                FAQItem(R.string.faq_3_title, R.string.faq_3_text),
+                FAQItem(R.string.faq_2_title_commons, R.string.faq_2_text_commons),
                 FAQItem(R.string.faq_6_title_commons, R.string.faq_6_text_commons))
 
         startAboutActivity(R.string.app_name, licenses, BuildConfig.VERSION_NAME, faqItems, true)
@@ -883,6 +890,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             put("South Africa", "southafrica.ics")
             put("Suomi", "finland.ics")
             put("Sverige", "sweden.ics")
+            put("Taiwan", "taiwan.ics")
             put("Ukraine", "ukraine.ics")
             put("United Kingdom", "unitedkingdom.ics")
             put("United States", "unitedstates.ics")

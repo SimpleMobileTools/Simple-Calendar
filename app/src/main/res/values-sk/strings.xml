@@ -85,12 +85,14 @@
     <string name="birthdays">Narodeniny</string>
     <string name="add_birthdays">Pridať narodeniny kontaktov</string>
     <string name="no_birthdays">Nenašli sa žiadne narodeniny</string>
+    <string name="no_new_birthdays">Nenašli sa žiadne nové narodeniny</string>
     <string name="birthdays_added">Narodeniny boli úspešne pridané</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Výročia</string>
     <string name="add_anniversaries">Pridať výročia kontaktov</string>
     <string name="no_anniversaries">Nenašli sa žiadne výročia</string>
+    <string name="no_new_anniversaries">Nenašli sa žiadne nové výročia</string>
     <string name="anniversaries_added">Výročia boli úspešne pridané</string>
 
     <!-- Event Reminders -->
@@ -186,6 +188,7 @@
     <string name="default_duration">Predvolená dĺžka</string>
     <string name="last_used_one">Naposledy použitý</string>
     <string name="other_time">Iný čas</string>
+    <string name="highlight_weekends">Zvýrazniť víkendy na niektorých pohľadoch</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -233,6 +236,8 @@
         zmeniť zvolenú hodnotu. Ak to ešte stále nebude fungovať, skúste sa pozrieť do zvukových nastavení vášho systému, či daný kanál nie je stlmený.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
+    <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
+    <string name="app_title">Jednoduchý kalendár Pro - Udalosti a pripomienky</string>
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Offline kalendár bez reklám. Spravujte pripomienky pre stretnutia a iné udalosti</string>
     <string name="app_long_description">

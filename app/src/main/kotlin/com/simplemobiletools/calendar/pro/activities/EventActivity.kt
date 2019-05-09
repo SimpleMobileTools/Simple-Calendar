@@ -348,6 +348,12 @@ class EventActivity : SimpleActivity() {
             val endTS = intent.getLongExtra("endTime", System.currentTimeMillis()) / 1000L
             mEventEndDateTime = Formatter.getDateTimeFromTS(endTS)
 
+            if (intent.getBooleanExtra("allDay", false)) {
+                mEvent.flags = mEvent.flags or FLAG_ALL_DAY
+                event_all_day.isChecked = true
+                toggleAllDay(true)
+            }
+
             event_title.setText(intent.getStringExtra("title"))
             event_location.setText(intent.getStringExtra("eventLocation"))
             event_description.setText(intent.getStringExtra("description"))
@@ -796,10 +802,22 @@ class EventActivity : SimpleActivity() {
         }
     }
 
+    private fun resetTime() {
+        if (mEventEndDateTime.isBefore(mEventStartDateTime) &&
+                mEventStartDateTime.dayOfMonth() == mEventEndDateTime.dayOfMonth() &&
+                mEventStartDateTime.monthOfYear() == mEventEndDateTime.monthOfYear()) {
+
+            mEventEndDateTime = mEventEndDateTime.withTime(mEventStartDateTime.hourOfDay, mEventStartDateTime.minuteOfHour, mEventStartDateTime.secondOfMinute, 0)
+            updateEndTimeText()
+            checkStartEndValidity()
+        }
+    }
+
     private fun toggleAllDay(isChecked: Boolean) {
         hideKeyboard()
         event_start_time.beGoneIf(isChecked)
         event_end_time.beGoneIf(isChecked)
+        resetTime()
     }
 
     private fun shareEvent() {

@@ -5,18 +5,18 @@
     android:id="@+id/event_item_holder"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/medium_margin">
+    android:paddingBottom="@dimen/medium_margin">
 
     <ImageView
         android:id="@+id/event_item_color_bar"
         android:layout_width="@dimen/event_color_bar_width"
         android:layout_height="match_parent"
-        android:layout_alignBottom="@+id/event_item_end"
         android:layout_alignTop="@+id/event_item_start"
+        android:layout_alignBottom="@+id/event_item_end"
         android:layout_marginEnd="@dimen/small_margin"
         android:background="@drawable/event_list_color_bar"
-        android:paddingBottom="@dimen/tiny_margin"
-        android:paddingTop="@dimen/tiny_margin"/>
+        android:paddingTop="@dimen/tiny_margin"
+        android:paddingBottom="@dimen/tiny_margin"/>
 
     <TextView
         android:id="@+id/event_item_start"

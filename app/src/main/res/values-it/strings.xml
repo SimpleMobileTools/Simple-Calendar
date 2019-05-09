@@ -11,7 +11,7 @@
     <string name="no_upcoming_events">Non c\'è nessun evento imminente.</string>
     <string name="go_to_today">Vai a oggi</string>
     <string name="go_to_date">Vai alla data</string>
-    <string name="upgraded_from_free">Hey,\n\nseems like you upgraded from the old free app. You have to migrate locally stored events manually via exporting in an .ics file, then importing. You can find both export/import buttons at the main screen menu.\n\nYou can then uninstall the old version, which has an \'Upgrade to Pro\' button at the top of the app settings. You will then only have to reset your app settings.\n\nThanks!</string>
+    <string name="upgraded_from_free">Hey,\n\nhai aggiornato dalla vecchia versione gratuita. Devi migrare manualmente gli eventi salvati esportandoli prima in un file .ics, per poi importare tale file. Puoi trovare i pulsanti per tali funzioni nel menu della schermata principale.\n\nPuoi disinstallare le vecchia versione, che ha un pulsante \'Aggiorna a Pro\' in alto nelle impostazioni. Dovrai reimpostare solamente le impostazioni dell\'app.\n\nGrazie!</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Calendario mensile</string>
@@ -85,12 +85,14 @@
     <string name="birthdays">Compleanni</string>
     <string name="add_birthdays">Aggiungi compleanni dai contatti</string>
     <string name="no_birthdays">Nessun compleanno trovato</string>
+    <string name="no_new_birthdays">No new birthdays have been found</string>
     <string name="birthdays_added">Compleanni aggiunti con successo</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Anniversari</string>
     <string name="add_anniversaries">Aggiungi anniversari dai contatti</string>
     <string name="no_anniversaries">Nessun anniversario trovato</string>
+    <string name="no_new_anniversaries">No new anniversaries have been found</string>
     <string name="anniversaries_added">Anniversari aggiunti con successo</string>
 
     <!-- Event Reminders -->
@@ -186,6 +188,7 @@
     <string name="default_duration">Durata predefinita</string>
     <string name="last_used_one">L\'ultimo utilizzato</string>
     <string name="other_time">Altro periodo</string>
+    <string name="highlight_weekends">Highlight weekends on some views</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -233,6 +236,8 @@
         premere l\'opzione \"Canale audio utilizzato per il promemoria\" e cambia il canale. Se ancora non funziona, controllare le impostazioni dell\'audio, in particolare se il canale è stato mutato.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
+    <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
+    <string name="app_title">Semplice Calendario Pro - Eventi &amp; Promemoria</string>
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Calendario offline senza pubblicità. Organizza e ricorda appuntamenti ed eventi</string>
     <string name="app_long_description">

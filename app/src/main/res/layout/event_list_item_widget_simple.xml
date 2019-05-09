@@ -5,7 +5,7 @@
     android:id="@+id/event_item_holder"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/medium_margin">
+    android:paddingBottom="@dimen/medium_margin">
 
     <ImageView
         android:id="@+id/event_item_color_bar"

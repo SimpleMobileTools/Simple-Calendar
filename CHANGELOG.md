@@ -1,6 +1,26 @@
 Changelog
 ==========
 
+Version 6.5.0 *(2019-05-04)*
+----------------------------
+
+ * Show a more specific message if no new event has been found at importing
+ * Fixed an Event list widget glitch with overlapping event type indicator colors
+ * Misc smaller improvements
+
+Version 6.4.3 *(2019-04-10)*
+----------------------------
+
+ * Fixed some third party intent handling
+ * Some stability and translation improvements
+
+Version 6.4.2 *(2019-04-03)*
+----------------------------
+
+ * Added holidays in Taiwan
+ * Added an explanation dialog at upgrading from Free version
+ * Some stability and translation improvements
+
 Version 6.4.1 *(2019-03-23)*
 ----------------------------
 

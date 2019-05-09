@@ -85,12 +85,14 @@
     <string name="birthdays">Γενέθλια</string>
     <string name="add_birthdays">Προσθήκη γενεθλίων επαφής</string>
     <string name="no_birthdays">Δεν βρέθηκαν γενέθλια</string>
+    <string name="no_new_birthdays">Δεν έχουν βρεθεί νέα γενέθλια</string>
     <string name="birthdays_added">Τα γενέθλια προστέθηκαν με επιτυχία</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Επέτειοι</string>
     <string name="add_anniversaries">Προσθέστε επετείους επαφής</string>
     <string name="no_anniversaries">Δεν έχουν βρεθεί επέτειοι</string>
+    <string name="no_new_anniversaries">Δεν έχουν βρεθεί νέοι επέτειοι</string>
     <string name="anniversaries_added">Οι επέτειοι προστέθηκαν με επιτυχία</string>
 
     <!-- Event Reminders -->
@@ -186,6 +188,7 @@
     <string name="default_duration">Προεπιλεγμένη διάρκεια</string>
     <string name="last_used_one">Τελευταία χρήση</string>
     <string name="other_time">Άλλη ώρα</string>
+    <string name="highlight_weekends">Επισήμανση Σαββατοκύριακων σε ορισμένες προβολές</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -233,6 +236,8 @@
         πατώντας την επιλογή "Ροή ήχου που χρησιμοποιείται από τις υπενθυμίσεις" και αλλάζοντας την σε διαφορετική τιμή. Εάν εξακολουθεί να μην λειτουργεί, ελέγξτε τις ρυθμίσεις ήχου σας, εάν η συγκεκριμένη ροή δεν είναι απενεργοποιημένη.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
+    <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
+    <string name="app_title">Απλό Ημερολόγιο Pro - Εκδηλώσεων &amp; Ειδοποιήσεων</string>
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Ένα Ημερολόγιο offline χωρίς διαφημίσεις. Οργανώστε ραντεβού, εκδηλώσεις κ.λ.π.</string>
     <string name="app_long_description">

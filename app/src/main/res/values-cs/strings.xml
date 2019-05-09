@@ -85,12 +85,14 @@
     <string name="birthdays">Narozeniny</string>
     <string name="add_birthdays">Přidat narozeniny z kontaktů</string>
     <string name="no_birthdays">Žádné narozeniny nebyly nalezeny</string>
+    <string name="no_new_birthdays">No new birthdays have been found</string>
     <string name="birthdays_added">Narozeniny byly úspěšně přidány</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Výročí</string>
     <string name="add_anniversaries">Přidat výročí</string>
     <string name="no_anniversaries">Žádné výročí nebylo nalezeno</string>
+    <string name="no_new_anniversaries">No new anniversaries have been found</string>
     <string name="anniversaries_added">Výročí bylo úspěšně přidáno</string>
 
     <!-- Event Reminders -->
@@ -186,6 +188,7 @@
     <string name="default_duration">Default duration</string>
     <string name="last_used_one">Last used one</string>
     <string name="other_time">Other time</string>
+    <string name="highlight_weekends">Highlight weekends on some views</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -233,6 +236,8 @@
         vyberte: \"Zvuk upomínky\" a změňte na něco jiného. Pokud zvuk stále nefunguje, zkontrolujte zda není zvuk vypnut v nastavení vašeho systému.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
+    <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
+    <string name="app_title">Simple Calendar Pro - Events &amp; Reminders</string>
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Offline calendar with no ads. Organizer &amp; reminders for appointments, events etc</string>
     <string name="app_long_description">

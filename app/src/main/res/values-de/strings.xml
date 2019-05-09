@@ -85,12 +85,14 @@
     <string name="birthdays">Geburtstage</string>
     <string name="add_birthdays">Geburtstage der Kontakte hinzufügen</string>
     <string name="no_birthdays">Keine Geburtstage gefunden</string>
+    <string name="no_new_birthdays">No new birthdays have been found</string>
     <string name="birthdays_added">Geburtstage erfolgreich hinzugefügt</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Jahrestage</string>
     <string name="add_anniversaries">Jahrestage der Kontakte hinzufügen</string>
     <string name="no_anniversaries">Es wurden keine Jahrestage gefunden</string>
+    <string name="no_new_anniversaries">No new anniversaries have been found</string>
     <string name="anniversaries_added">Jahrestage erfolgreich hinzugefügt</string>
 
     <!-- Event Reminders -->
@@ -186,6 +188,7 @@
     <string name="default_duration">Default duration</string>
     <string name="last_used_one">Last used one</string>
     <string name="other_time">Other time</string>
+    <string name="highlight_weekends">Highlight weekends on some views</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -234,6 +237,8 @@
         die Option \"Audio-Ausgabekanal für Erinnerungen\" anzuklicken und eine andere Option auszuwählen. Wenn das immer noch nichts ändert, prüfe Deine Lautstärkeeinstellungen. of der gewählte Kanal nicht auf lautlos steht.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
+    <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
+    <string name="app_title">Simple Calendar Pro - Events &amp; Reminders</string>
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Offline calendar with no ads. Organizer &amp; reminders for appointments, events etc</string>
     <string name="app_long_description">
