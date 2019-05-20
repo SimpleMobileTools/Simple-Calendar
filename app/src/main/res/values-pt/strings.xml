@@ -85,14 +85,14 @@
     <string name="birthdays">Data de nascimento</string>
     <string name="add_birthdays">Adicionar data de nascimento dos contactos</string>
     <string name="no_birthdays">Não foram encontradas datas de nascimento</string>
-    <string name="no_new_birthdays">No new birthdays have been found</string>
+    <string name="no_new_birthdays">Não foram encontradas novas datas de nascimento</string>
     <string name="birthdays_added">Datas de nascimento adicionadas com sucesso</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Aniversários</string>
     <string name="add_anniversaries">Adicionar aniversários dos contactos</string>
     <string name="no_anniversaries">Não foram encontrados aniversários</string>
-    <string name="no_new_anniversaries">No new anniversaries have been found</string>
+    <string name="no_new_anniversaries">Não foram encontrados novos aniversários</string>
     <string name="anniversaries_added">Aniversários adicionados com sucesso</string>
 
     <!-- Event Reminders -->
@@ -176,7 +176,7 @@
     <string name="alarm_stream">Alarme</string>
     <string name="notification_stream">Notificação</string>
     <string name="ring_stream">Toque</string>
-    <string name="use_last_event_reminders">Utilizar os lembretes dos últimos eventos como definição para os novos eventos</string>
+    <string name="use_last_event_reminders">Utilizar lembretes dos últimos eventos como definição para os novos eventos</string>
     <string name="default_reminder_1">Lembrete 1</string>
     <string name="default_reminder_2">Lembrete 2</string>
     <string name="default_reminder_3">Lembrete 3</string>
@@ -188,7 +188,7 @@
     <string name="default_duration">Duração padrão</string>
     <string name="last_used_one">Última utilizada</string>
     <string name="other_time">Outra</string>
-    <string name="highlight_weekends">Highlight weekends on some views</string>
+    <string name="highlight_weekends">Destacar fim de semana em algumas vistas</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
