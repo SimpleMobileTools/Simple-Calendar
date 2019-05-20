@@ -27,7 +27,7 @@ import org.joda.time.Days
 
 // used in the Monthly view fragment, 1 view per screen
 class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(context, attrs, defStyle) {
-    private val BG_CORNER_RADIUS = 4f
+    private val BG_CORNER_RADIUS = 8f
     private val ROW_COUNT = 6
 
     private var paint: Paint
