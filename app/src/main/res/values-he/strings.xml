@@ -51,7 +51,7 @@
     <string name="update_one_only">עדכון האירוע הנוכחי בלבד</string>
     <string name="update_all_occurrences">עדכון כל האירועים בסדרה</string>
     <string name="repeat_till_date">חזרה עד לתאריך</string>
-    <string name="stop_repeating_after_x">הפסק חזררה אחרי x פעמים</string>
+    <string name="stop_repeating_after_x">‏להפסיק חזרה אחרי x פעמים</string>
     <string name="repeat_forever">חזרה לנצח</string>
     <string name="times">פעמים</string>
     <string name="repeat">חזרה</string>
