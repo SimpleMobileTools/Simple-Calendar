@@ -187,20 +187,20 @@
     <string name="next_full_hour">שעה מלאה הבאה</string>
     <string name="default_duration">ברירת מחדל של משך הזמן</string>
     <string name="last_used_one">שימוש אחרון</string>
-    <string name="other_time">זמן אחר</string>
+    <string name="other_time">‏להפסיק חזרה אחרי x פעמים.‏</string>
     <string name="highlight_weekends">הדגש סופי שבוע בחלק מהתצוגות</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
-    <string name="select_caldav_calendars">Select calendars to sync</string>
-    <string name="manage_synced_calendars">Manage synced calendars</string>
-    <string name="store_locally_only">Store locally only</string>
-    <string name="refresh_caldav_calendars">Refresh CalDAV calendars</string>
-    <string name="refreshing">Refreshing…</string>
-    <string name="refreshing_complete">Refreshing complete</string>
-    <string name="editing_calendar_failed">Editing calendar failed</string>
-    <string name="syncing">Syncing…</string>
-    <string name="synchronization_completed">Sync completed</string>
+    <string name="select_caldav_calendars">בחר יומנים לסנכרון</string>
+    <string name="manage_synced_calendars">ניהול יומנים מסונכרנים</string>
+    <string name="store_locally_only">שמירה מקומית בלבד</string>
+    <string name="refresh_caldav_calendars">רענן יומני CalDAV</string>
+    <string name="refreshing">מרענן…</string>
+    <string name="refreshing_complete">הרענון הסתיים</string>
+    <string name="editing_calendar_failed">עריכת היומן נכשלה</string>
+    <string name="syncing">מסתנכרן…</string>
+    <string name="synchronization_completed">הסנכרון הסתיים</string>
     <string name="select_a_different_caldav_color">Select a different color (might be applied locally only)</string>
     <string name="insufficient_permissions">You are not allowed to write in the selected calendar</string>
 
