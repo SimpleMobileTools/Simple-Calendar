@@ -1,218 +1,218 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">לוח שנה פשוט</string>
-    <string name="app_launcher_name">לוח שנה</string>
-    <string name="change_view">שינוי תצפית</string>
-    <string name="daily_view">Daily view</string>
-    <string name="weekly_view">תצפית שבועית</string>
-    <string name="monthly_view">תצפית חודשית</string>
-    <string name="yearly_view">תצפית שנתית</string>
+    <string name="app_name">יומן פשוט</string>
+    <string name="app_launcher_name">יומן</string>
+    <string name="change_view">שינוי תצוגה</string>
+    <string name="daily_view">תצוגה יומית</string>
+    <string name="weekly_view">תצוגה שבועית</string>
+    <string name="monthly_view">תצוגה חודשית</string>
+    <string name="yearly_view">תצוגה שנתית</string>
     <string name="simple_event_list">רשימת אירועים פשוטה</string>
-    <string name="no_upcoming_events">נראה שאין לך אירועים בזמן הקרוב.</string>
-    <string name="go_to_today">Go to today</string>
-    <string name="go_to_date">Go to date</string>
+    <string name="no_upcoming_events">נראה שאין לך אירועים עתידיים.</string>
+    <string name="go_to_today">עבור להיום</string>
+    <string name="go_to_date">עבור לתאריך</string>
     <string name="upgraded_from_free">Hey,\n\nseems like you upgraded from the old free app. You have to migrate locally stored events manually via exporting in an .ics file, then importing. You can find both export/import buttons at the main screen menu.\n\nYou can then uninstall the old version, which has an \'Upgrade to Pro\' button at the top of the app settings. You will then only have to reset your app settings.\n\nThanks!</string>
 
     <!-- Widget titles -->
-    <string name="widget_monthly">לוח השנה חודשית</string>
-    <string name="widget_list">רשימת אירועים בלוח השנה</string>
+    <string name="widget_monthly">יומן חודשי</string>
+    <string name="widget_list">רשימת אירועי יומן</string>
 
     <!-- Event -->
     <string name="event">אירוע</string>
     <string name="edit_event">ערוך</string>
     <string name="new_event">אירוע חדש</string>
-    <string name="create_new_event">Create a new event</string>
-    <string name="duplicate_event">Duplicate event</string>
-    <string name="title_empty">הכותרת לא יכולה להיות ריקה</string>
-    <string name="end_before_start">האירוע לא יכול להיגמר מוקדם משהוא מתחיל</string>
-    <string name="event_added">האירוע הוסף בהצלחה</string>
-    <string name="event_updated">האירוע עודכן בהצלחה</string>
-    <string name="filter_events_by_type">Filter events by type</string>
-    <string name="please_fill_location">Please fill in a location to be shown on a map</string>
-    <string name="public_event_notification_text">An event is upcoming</string>
+    <string name="create_new_event">צור אירוע חדש</string>
+    <string name="duplicate_event">שכפל אירוע</string>
+    <string name="title_empty">כותרת לא יכולה להישאר ריקה</string>
+    <string name="end_before_start">אירוע לא יכול להסתייים לפני שהתחיל</string>
+    <string name="event_added">אירוע נוסף בהצלחה</string>
+    <string name="event_updated">אירוע עודכן בהצלחה</string>
+    <string name="filter_events_by_type">סנן אירועים לפי סוג</string>
+    <string name="please_fill_location">אנא הזן מיקום להצגה במפה</string>
+    <string name="public_event_notification_text">יש אירוע בקרוב</string>
 
     <!-- Event Repetition -->
-    <string name="repetition">Repetition</string>
-    <string name="no_repetition">No repetition</string>
-    <string name="daily">יום-יומית</string>
-    <string name="weekly">שבועית</string>
-    <string name="monthly">חודשית</string>
-    <string name="yearly">שנתית</string>
-    <string name="weeks_raw">weeks</string>
-    <string name="months_raw">months</string>
-    <string name="years_raw">years</string>
-    <string name="repeat_till">Repeat till</string>
-    <string name="forever">Forever</string>
-    <string name="event_is_repeatable">The event is repeatable</string>
-    <string name="selection_contains_repetition">The selection contains repeating events</string>
-    <string name="delete_one_only">Delete the selected occurrence only</string>
-    <string name="delete_future_occurrences">Delete this and all future occurrences</string>
-    <string name="delete_all_occurrences">Delete all occurrences</string>
-    <string name="update_one_only">Update the selected occurrence only</string>
-    <string name="update_all_occurrences">Update all occurrences</string>
-    <string name="repeat_till_date">Repeat till a date</string>
-    <string name="stop_repeating_after_x">Stop repeating after x occurrences</string>
-    <string name="repeat_forever">Repeat forever</string>
-    <string name="times">times</string>
-    <string name="repeat">Repeat</string>
-    <string name="repeat_on">Repeat on</string>
-    <string name="every_day">Every day</string>
-    <string name="selected_days">On selected days</string>
-    <string name="the_same_day">The same day</string>
-    <string name="the_last_day">The last day</string>
-    <string name="repeat_on_the_same_day_monthly">Repeat on the same day each month</string>
-    <string name="repeat_on_the_last_day_monthly">Repeat on the last day of the month</string>
-    <string name="repeat_on_the_same_day_yearly">Repeat on the same day every year</string>
-    <string name="repeat_every_m">Repeat every</string>
-    <string name="every_m">Every</string>
-    <string name="first_m">first</string>
-    <string name="second_m">second</string>
-    <string name="third_m">third</string>
-    <string name="fourth_m">fourth</string>
-    <string name="last_m">last</string>
+    <string name="repetition">אירוע חוזר</string>
+    <string name="no_repetition">אין חזרה</string>
+    <string name="daily">יומי</string>
+    <string name="weekly">שבועי</string>
+    <string name="monthly">חודשי</string>
+    <string name="yearly">שנתי</string>
+    <string name="weeks_raw">שבועות</string>
+    <string name="months_raw">חודשים</string>
+    <string name="years_raw">שנים</string>
+    <string name="repeat_till">חזרה עד </string>
+    <string name="forever">לנצח</string>
+    <string name="event_is_repeatable">האירוע ניתן לחזרה</string>
+    <string name="selection_contains_repetition">הבחירה כוללת אירועים חוזרים</string>
+    <string name="delete_one_only">מחיקת אירוע בודד</string>
+    <string name="delete_future_occurrences">מחיקת כל האירועים העתידיים בסדרה</string>
+    <string name="delete_all_occurrences">מחיקת כל האירועים בסדרה</string>
+    <string name="update_one_only">עדכון האירוע הנוכחי בלבד</string>
+    <string name="update_all_occurrences">עדכון כל האירועים בסדרה</string>
+    <string name="repeat_till_date">חזרה עד לתאריך</string>
+    <string name="stop_repeating_after_x">‏להפסיק חזרה אחרי x פעמים</string>
+    <string name="repeat_forever">חזרה לנצח</string>
+    <string name="times">פעמים</string>
+    <string name="repeat">חזרה</string>
+    <string name="repeat_on">חזרה ב</string>
+    <string name="every_day">כל יום</string>
+    <string name="selected_days">ימים נבחרים</string>
+    <string name="the_same_day">אותו יום</string>
+    <string name="the_last_day">היום האחרון</string>
+    <string name="repeat_on_the_same_day_monthly">חזור באותו יום בכל חודש</string>
+    <string name="repeat_on_the_last_day_monthly">חזור ביום האחרון בחודש</string>
+    <string name="repeat_on_the_same_day_yearly">חזור באותו יום כל שנה</string>
+    <string name="repeat_every_m">חזור כל</string>
+    <string name="every_m">כל</string>
+    <string name="first_m">ראשון</string>
+    <string name="second_m">שני</string>
+    <string name="third_m">שלישי</string>
+    <string name="fourth_m">רביעי</string>
+    <string name="last_m">אחרון</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
-    <string name="repeat_every_f">Repeat every</string>
-    <string name="every_f">Every</string>
-    <string name="first_f">first</string>
-    <string name="second_f">second</string>
-    <string name="third_f">third</string>
-    <string name="fourth_f">fourth</string>
-    <string name="last_f">last</string>
+    <string name="repeat_every_f">חזרה כל</string>
+    <string name="every_f">כל</string>
+    <string name="first_f">ראשונה</string>
+    <string name="second_f">שניה</string>
+    <string name="third_f">שלישית</string>
+    <string name="fourth_f">רביעית</string>
+    <string name="last_f">אחרונה</string>
 
     <!-- Birthdays -->
-    <string name="birthdays">Birthdays</string>
-    <string name="add_birthdays">Add contact birthdays</string>
-    <string name="no_birthdays">No birthdays have been found</string>
-    <string name="no_new_birthdays">No new birthdays have been found</string>
-    <string name="birthdays_added">Birthdays added successfully</string>
+    <string name="birthdays">ימי הולדת</string>
+    <string name="add_birthdays">הוסף ימי הולדת מאנשי קשר</string>
+    <string name="no_birthdays">לא נמצאו ימי הולדת</string>
+    <string name="no_new_birthdays">לא נמצאו ימי הולדת חדשים</string>
+    <string name="birthdays_added">ימי הולדת הוספו בהצלחה</string>
 
     <!-- Anniversaries -->
-    <string name="anniversaries">Anniversaries</string>
-    <string name="add_anniversaries">Add contact anniversaries</string>
-    <string name="no_anniversaries">No anniversaries have been found</string>
-    <string name="no_new_anniversaries">No new anniversaries have been found</string>
-    <string name="anniversaries_added">Anniversaries added successfully</string>
+    <string name="anniversaries">ימי שנה</string>
+    <string name="add_anniversaries">הוסף ימי שנה מאנשי קשר</string>
+    <string name="no_anniversaries">לא נמצאו ימי שנה</string>
+    <string name="no_new_anniversaries">לא נמצאו ימי שנה חדשים</string>
+    <string name="anniversaries_added">ימי שנה הוספו בהצלחה</string>
 
     <!-- Event Reminders -->
     <string name="reminder">תזכורת</string>
     <string name="before">לפני</string>
-    <string name="add_another_reminder">Add another reminder</string>
-    <string name="event_reminders">Event reminders</string>
+    <string name="add_another_reminder">הוסף תזכורת נוספת</string>
+    <string name="event_reminders">תזכורות לאירוע</string>
 
     <!-- Event attendees -->
-    <string name="add_another_attendee">Add another attendee</string>
-    <string name="my_status">My status:</string>
-    <string name="going">Going</string>
-    <string name="not_going">Not going</string>
-    <string name="maybe_going">Maybe going</string>
-    <string name="invited">Invited</string>
+    <string name="add_another_attendee">הוסף משתתף נוסף</string>
+    <string name="my_status">הסטטוס שלי:</string>
+    <string name="going">מגיע</string>
+    <string name="not_going">לא מגיע</string>
+    <string name="maybe_going">אולי מגיע</string>
+    <string name="invited">מוזמן</string>
 
     <!-- Export / Import -->
     <string name="import_events">ייבוא אירועים</string>
-    <string name="export_events">Export events</string>
-    <string name="import_events_from_ics">Import events from an .ics file</string>
-    <string name="export_events_to_ics">Export events to an .ics file</string>
-    <string name="default_event_type">Default event type</string>
-    <string name="export_past_events_too">Export past events too</string>
-    <string name="include_event_types">Include event types</string>
-    <string name="filename_without_ics">Filename (without .ics)</string>
-    <string name="override_event_types">Override event types in the file</string>
+    <string name="export_events">ייצוא אירועים</string>
+    <string name="import_events_from_ics">ייבוא אירועים מקובץ .ics</string>
+    <string name="export_events_to_ics">ייצוא אירועים אל קובץ .ics</string>
+    <string name="default_event_type">סוג אירוע ברירת מחדל</string>
+    <string name="export_past_events_too">ייצוא אירועי עבר בנוסף</string>
+    <string name="include_event_types">כלול סוגי אירוע</string>
+    <string name="filename_without_ics">שם הקובץ (ללא סיומת .ics)</string>
+    <string name="override_event_types">שנה סוגי אירועים בקובץ</string>
 
     <!-- Event details -->
     <string name="title">כותרת</string>
-    <string name="location">Location</string>
+    <string name="location">מיקום</string>
     <string name="description">תיאור</string>
-    <string name="all_day">All-day</string>
+    <string name="all_day">כל היום</string>
 
     <!-- Weekly view -->
     <string name="week">שבוע</string>
 
     <!-- Event types -->
-    <string name="event_types">Event types</string>
-    <string name="add_new_type">Add a new type</string>
-    <string name="edit_type">Edit type</string>
-    <string name="type_already_exists">Type with this title already exists</string>
-    <string name="color">Color</string>
-    <string name="regular_event">Regular event</string>
-    <string name="cannot_delete_default_type">Default event type cannot be deleted</string>
-    <string name="select_event_type">Select an event type</string>
-    <string name="move_events_into_default">Move affected events into the default event type</string>
-    <string name="remove_affected_events">Permanently remove affected events</string>
-    <string name="unsync_caldav_calendar">To remove a CalDAV calendar you have to unsynchronize it</string>
+    <string name="event_types">סוגי אירוע</string>
+    <string name="add_new_type">הוסף סוג חדש</string>
+    <string name="edit_type">ערוך סוג</string>
+    <string name="type_already_exists">סוג בשם זה כבר קיים</string>
+    <string name="color">צבע</string>
+    <string name="regular_event">אירוע רגיל</string>
+    <string name="cannot_delete_default_type">לא ניתן למחוק סוג אירוע שהוא ברירת המחדל</string>
+    <string name="select_event_type">בחר סוג אירוע</string>
+    <string name="move_events_into_default">העבר אירועים אלו לסוג אירוע ברירת המחדל</string>
+    <string name="remove_affected_events">מחק אירועים אלו לצמיתות</string>
+    <string name="unsync_caldav_calendar">כדי להסיר יומן CalDAV צריך להוציא אותו מסנכרון</string>
 
     <!-- Holidays -->
-    <string name="holidays">Holidays</string>
-    <string name="add_holidays">Add holidays</string>
-    <string name="national_holidays">National holidays</string>
-    <string name="religious_holidays">Religious holidays</string>
-    <string name="holidays_imported_successfully">Holidays have been successfully imported into the \"Holidays\" event type</string>
-    <string name="importing_some_holidays_failed">Importing some events failed</string>
-    <string name="importing_holidays_failed">Importing holidays failed</string>
+    <string name="holidays">חגים</string>
+    <string name="add_holidays">הוסף חגים</string>
+    <string name="national_holidays">חגים לאומיים</string>
+    <string name="religious_holidays">חגים דתיים</string>
+    <string name="holidays_imported_successfully">חגים הוספו בהצלחה לתוך סוג אירוע \"חגים\"</string>
+    <string name="importing_some_holidays_failed">חלק מהאירועים נכשלו בייבוא</string>
+    <string name="importing_holidays_failed">ייבוא החגים נכשל</string>
 
     <!-- Settings -->
-    <string name="manage_event_types">Manage event types</string>
-    <string name="start_day_at">התחלת תצפית שבועית בשעה</string>
-    <string name="end_day_at">התחלת תצפית שבועית בשעה</string>
-    <string name="week_numbers">הצגת מספרי השבועות בתצפית חודשית</string>
-    <string name="vibrate">רטט בהתראת תזכורת</string>
+    <string name="manage_event_types">נהל סוגי אירועים</string>
+    <string name="start_day_at">שעת התחלה היום</string>
+    <string name="end_day_at">שעת סיום היום</string>
+    <string name="week_numbers">הצגת מספרי שבועות</string>
+    <string name="vibrate">רטט בהתרעת תזכורת</string>
     <string name="reminder_sound">צליל תזכורת</string>
-    <string name="no_ringtone_picker">לא נמצאה אפליקציה להגדרת רינגטון</string>
-    <string name="no_ringtone_selected">ללא</string>
-    <string name="day_end_before_start">היום לא יכול להסתיים מוקדם משהוא מתחיל</string>
-    <string name="caldav_sync">CalDAV sync</string>
-    <string name="event_lists">Event lists</string>
-    <string name="display_past_events">Display events from the past</string>
-    <string name="replace_description_with_location">Replace event description with location</string>
-    <string name="delete_all_events">Delete all events</string>
-    <string name="delete_all_events_confirmation">Are you sure you want to delete all events? This will leave your event types and other settings intact.</string>
-    <string name="show_a_grid">Show a grid</string>
+    <string name="no_ringtone_picker">לא נמצא יישומון להגדרת צלצול</string>
+    <string name="no_ringtone_selected">אין</string>
+    <string name="day_end_before_start">היום לא יכול להיגמר לפני שהתחיל</string>
+    <string name="caldav_sync">CalDAV סנכרון</string>
+    <string name="event_lists">רשימות אירועים</string>
+    <string name="display_past_events">הצגת אירועים מהעבר</string>
+    <string name="replace_description_with_location">החלפת תיאור האירוע עם מיקום</string>
+    <string name="delete_all_events">מחיקת כל האירועים</string>
+    <string name="delete_all_events_confirmation">למחוק את כל האירועים? סוגי האירועים והגדרות נוספות יישמרו.</string>
+    <string name="show_a_grid">תצוגת רשת</string>
     <string name="loop_reminders">Loop reminders until dismissed</string>
-    <string name="dim_past_events">Dim past events</string>
-    <string name="events">Events</string>
+    <string name="dim_past_events">עמעם אירועי עבר</string>
+    <string name="events">אירועים</string>
     <string name="reminder_stream">Audio stream used by reminders</string>
-    <string name="system_stream">System</string>
+    <string name="system_stream">מערכת</string>
     <string name="alarm_stream">Alarm</string>
-    <string name="notification_stream">Notification</string>
-    <string name="ring_stream">Ring</string>
+    <string name="notification_stream">התרעה</string>
+    <string name="ring_stream">צלצול</string>
     <string name="use_last_event_reminders">Use the last events\' reminders as the default for new events</string>
-    <string name="default_reminder_1">Default reminder 1</string>
-    <string name="default_reminder_2">Default reminder 2</string>
-    <string name="default_reminder_3">Default reminder 3</string>
+    <string name="default_reminder_1">תזכורת ברירת מחדל 1</string>
+    <string name="default_reminder_2">תזכורת ברירת מחדל 2</string>
+    <string name="default_reminder_3">תזכורת ברירת מחדל 3</string>
     <string name="view_to_open_from_widget">View to open from the event list widget</string>
-    <string name="last_view">Last view</string>
-    <string name="new_events">New events</string>
-    <string name="default_start_time">Default start time</string>
-    <string name="next_full_hour">Next full hour</string>
-    <string name="default_duration">Default duration</string>
-    <string name="last_used_one">Last used one</string>
-    <string name="other_time">Other time</string>
-    <string name="highlight_weekends">Highlight weekends on some views</string>
+    <string name="last_view">תצוגה אחרונה</string>
+    <string name="new_events">אירועים חדשים</string>
+    <string name="default_start_time">ברירת מחדל של זמן התחלה</string>
+    <string name="next_full_hour">שעה מלאה הבאה</string>
+    <string name="default_duration">ברירת מחדל של משך הזמן</string>
+    <string name="last_used_one">שימוש אחרון</string>
+    <string name="other_time">‏להפסיק חזרה אחרי x פעמים.‏</string>
+    <string name="highlight_weekends">הדגש סופי שבוע בחלק מהתצוגות</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
-    <string name="select_caldav_calendars">Select calendars to sync</string>
-    <string name="manage_synced_calendars">Manage synced calendars</string>
-    <string name="store_locally_only">Store locally only</string>
-    <string name="refresh_caldav_calendars">Refresh CalDAV calendars</string>
-    <string name="refreshing">Refreshing…</string>
-    <string name="refreshing_complete">Refreshing complete</string>
-    <string name="editing_calendar_failed">Editing calendar failed</string>
-    <string name="syncing">Syncing…</string>
-    <string name="synchronization_completed">Sync completed</string>
-    <string name="select_a_different_caldav_color">Select a different color (might be applied locally only)</string>
-    <string name="insufficient_permissions">You are not allowed to write in the selected calendar</string>
+    <string name="select_caldav_calendars">בחר יומנים לסנכרון</string>
+    <string name="manage_synced_calendars">ניהול יומנים מסונכרנים</string>
+    <string name="store_locally_only">שמירה מקומית בלבד</string>
+    <string name="refresh_caldav_calendars">רענן יומני CalDAV</string>
+    <string name="refreshing">מרענן…</string>
+    <string name="refreshing_complete">הרענון הסתיים</string>
+    <string name="editing_calendar_failed">עריכת היומן נכשלה</string>
+    <string name="syncing">מסתנכרן…</string>
+    <string name="synchronization_completed">הסנכרון הסתיים</string>
+    <string name="select_a_different_caldav_color">בחירת צבע שונה (ייתכן שיישמר מקומית בלבד)</string>
+    <string name="insufficient_permissions">לא קיימת הרשאת כתיבה ליומנים הנבחרים</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
-    <string name="monday_alt">Monday</string>
-    <string name="tuesday_alt">Tuesday</string>
-    <string name="wednesday_alt">Wednesday</string>
-    <string name="thursday_alt">Thursday</string>
-    <string name="friday_alt">Friday</string>
-    <string name="saturday_alt">Saturday</string>
-    <string name="sunday_alt">Sunday</string>
+    <string name="monday_alt">שני</string>
+    <string name="tuesday_alt">שלישי</string>
+    <string name="wednesday_alt">רביעי</string>
+    <string name="thursday_alt">חמישי</string>
+    <string name="friday_alt">שישי</string>
+    <string name="saturday_alt">שבת</string>
+    <string name="sunday_alt">ראשון</string>
 
     <!-- List widget config example events -->
     <string name="sample_title_1">אימון</string>
@@ -237,9 +237,9 @@
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
-    <string name="app_title">Simple Calendar Pro - Events &amp; Reminders</string>
+    <string name="app_title">Simple Calendar Pro - יומן פשוט</string>
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Offline calendar with no ads. Organizer &amp; reminders for appointments, events etc</string>
+    <string name="app_short_description">יומן ללא פרסומות. ניהול פגישות, תזכורות אירועים ועוד</string>
     <string name="app_long_description">
         Simple Calendar Pro is a fully customizable, offline calendar designed to do exactly what a calendar should do. <b>No complicated features, unnecessary permissions and no ads!</b>
 
