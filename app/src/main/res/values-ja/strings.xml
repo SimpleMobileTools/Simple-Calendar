@@ -29,7 +29,7 @@
     <string name="event_updated">予定を正常に更新しました</string>
     <string name="filter_events_by_type">種類によって予定をフィルタリング</string>
     <string name="please_fill_location">地図上に表示する場所を入力してください</string>
-    <string name="public_event_notification_text">An event is upcoming</string>
+    <string name="public_event_notification_text">近日中の予定</string>
 
     <!-- Event Repetition -->
     <string name="repetition">繰り返し</string>
@@ -85,14 +85,14 @@
     <string name="birthdays">誕生日</string>
     <string name="add_birthdays">連絡先の誕生日を追加</string>
     <string name="no_birthdays">誕生日は見つかりませんでした</string>
-    <string name="no_new_birthdays">No new birthdays have been found</string>
+    <string name="no_new_birthdays">新しい誕生日は見つかりませんでした</string>
     <string name="birthdays_added">誕生日が正常に追加されました</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">記念日</string>
     <string name="add_anniversaries">連絡先の記念日を追加</string>
     <string name="no_anniversaries">記念日は見つかりませんでした</string>
-    <string name="no_new_anniversaries">No new anniversaries have been found</string>
+    <string name="no_new_anniversaries">新しい記念日は見つかりませんでした</string>
     <string name="anniversaries_added">記念日が正常に追加されました</string>
 
     <!-- Event Reminders -->
@@ -143,13 +143,13 @@
     <string name="unsync_caldav_calendar">To remove a CalDAV calendar you have to unsynchronize it</string>
 
     <!-- Holidays -->
-    <string name="holidays">Holidays</string>
-    <string name="add_holidays">Add holidays</string>
-    <string name="national_holidays">National holidays</string>
-    <string name="religious_holidays">Religious holidays</string>
-    <string name="holidays_imported_successfully">Holidays have been successfully imported into the \"Holidays\" event type</string>
-    <string name="importing_some_holidays_failed">Importing some events failed</string>
-    <string name="importing_holidays_failed">Importing holidays failed</string>
+    <string name="holidays">祝日</string>
+    <string name="add_holidays">祝日を追加</string>
+    <string name="national_holidays">国民の祝日</string>
+    <string name="religious_holidays">宗教的休日</string>
+    <string name="holidays_imported_successfully">祝日は \"祝日\" の予定タイプにインポートされました</string>
+    <string name="importing_some_holidays_failed">一部の予定のインポートに失敗しました</string>
+    <string name="importing_holidays_failed">祝日のインポートに失敗しました</string>
 
     <!-- Settings -->
     <string name="manage_event_types">予定の種類を管理</string>
