@@ -103,10 +103,10 @@
 
     <!-- Event attendees -->
     <string name="add_another_attendee">Teilnehmer hinzufügen</string>
-    <string name="my_status">Mein Status:</string>
-    <string name="going">Going</string>
-    <string name="not_going">Not going</string>
-    <string name="maybe_going">Maybe going</string>
+    <string name="my_status">Mein Teilnahmestatus:</string>
+    <string name="going">Ja</string>
+    <string name="not_going">Nein</string>
+    <string name="maybe_going">Vielleicht</string>
     <string name="invited">Eingeladen</string>
 
     <!-- Export / Import -->
