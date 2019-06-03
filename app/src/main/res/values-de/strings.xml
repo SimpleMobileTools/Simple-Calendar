@@ -10,8 +10,8 @@
     <string name="simple_event_list">Einfache Terminliste</string>
     <string name="no_upcoming_events">Scheint so, als hättest du keine anstehenden Termine.</string>
     <string name="go_to_today">Springe zu Heute</string>
-    <string name="go_to_date">Go to date</string>
-    <string name="upgraded_from_free">Hey,\n\nseems like you upgraded from the old free app. You have to migrate locally stored events manually via exporting in an .ics file, then importing. You can find both export/import buttons at the main screen menu.\n\nYou can then uninstall the old version, which has an \'Upgrade to Pro\' button at the top of the app settings. You will then only have to reset your app settings.\n\nThanks!</string>
+    <string name="go_to_date">Springe zu einem Datum</string>
+    <string name="upgraded_from_free">Hey,\n\nes scheint, als hättest du ein Upgrade von der alten, kostenlosen Version vorgenommne. In diesem Fall musst du deine lokal gespeicherten Termine manuell importieren, indem sie zuvor als .ics-Datei exportierst. Die Import-/Export-Funktionen findest du im Menü der Hauptansicht.\n\nAnschließend kannst du die alte Version deinstallieren, die du am Zur-Pro-Version-upgraden-Button oben den Einstellungen erkennst. Nun musst du nur noch deine Einstellungen zurücksetzen.\n\nThanks!</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Monatskalender</string>
@@ -85,14 +85,14 @@
     <string name="birthdays">Geburtstage</string>
     <string name="add_birthdays">Geburtstage der Kontakte hinzufügen</string>
     <string name="no_birthdays">Keine Geburtstage gefunden</string>
-    <string name="no_new_birthdays">No new birthdays have been found</string>
+    <string name="no_new_birthdays">Keine neuen Geburtstage gefunden</string>
     <string name="birthdays_added">Geburtstage erfolgreich hinzugefügt</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Jahrestage</string>
     <string name="add_anniversaries">Jahrestage der Kontakte hinzufügen</string>
     <string name="no_anniversaries">Es wurden keine Jahrestage gefunden</string>
-    <string name="no_new_anniversaries">No new anniversaries have been found</string>
+    <string name="no_new_anniversaries">Keine neuen Jahrestage gefunden</string>
     <string name="anniversaries_added">Jahrestage erfolgreich hinzugefügt</string>
 
     <!-- Event Reminders -->
@@ -102,12 +102,12 @@
     <string name="event_reminders">Termin-Erinnerungen</string>
 
     <!-- Event attendees -->
-    <string name="add_another_attendee">Add another attendee</string>
-    <string name="my_status">My status:</string>
-    <string name="going">Going</string>
-    <string name="not_going">Not going</string>
-    <string name="maybe_going">Maybe going</string>
-    <string name="invited">Invited</string>
+    <string name="add_another_attendee">Teilnehmer hinzufügen</string>
+    <string name="my_status">Mein Teilnahmestatus:</string>
+    <string name="going">Ja</string>
+    <string name="not_going">Nein</string>
+    <string name="maybe_going">Vielleicht</string>
+    <string name="invited">Eingeladen</string>
 
     <!-- Export / Import -->
     <string name="import_events">Termine importieren</string>
@@ -182,13 +182,13 @@
     <string name="default_reminder_3">Standarderinnerung 3</string>
     <string name="view_to_open_from_widget">Ansicht beim Öffnen durch das Terminlisten-Widget</string>
     <string name="last_view">Letzte Ansicht</string>
-    <string name="new_events">New events</string>
-    <string name="default_start_time">Default start time</string>
-    <string name="next_full_hour">Next full hour</string>
-    <string name="default_duration">Default duration</string>
-    <string name="last_used_one">Last used one</string>
-    <string name="other_time">Other time</string>
-    <string name="highlight_weekends">Highlight weekends on some views</string>
+    <string name="new_events">Neue Termine</string>
+    <string name="default_start_time">Standard-Anfangszeit</string>
+    <string name="next_full_hour">Nächste volle Stunde</string>
+    <string name="default_duration">Standard-Dauer</string>
+    <string name="last_used_one">Zuletzt verwendete</string>
+    <string name="other_time">Andere Zeit</string>
+    <string name="highlight_weekends">Wochenenden in einigen Ansichten hervorheben</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -202,7 +202,7 @@
     <string name="syncing">Wird synchronisiert…</string>
     <string name="synchronization_completed">Synchronisation erfolgreich</string>
     <string name="select_a_different_caldav_color">Wähle eine andere Farbe (wird möglicherweise nur lokal angewendet)</string>
-    <string name="insufficient_permissions">Du hast keine Erlaubnis den gewählten Kalender zu bearbeiten</string>
+    <string name="insufficient_permissions">Dir fehlt die Berechtigung zum Ändern des gewählten Kalenders</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
@@ -238,42 +238,42 @@
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
-    <string name="app_title">Simple Calendar Pro - Events &amp; Reminders</string>
+    <string name="app_title">Simple Calendar Pro - Termine &amp; Erinnerungen</string>
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Offline calendar with no ads. Organizer &amp; reminders for appointments, events etc</string>
+    <string name="app_short_description">Offline-Kalender - werbefrei. Organizer &amp; Erinnerungen an Termine, Feiern usw.</string>
     <string name="app_long_description">
-        Simple Calendar Pro is a fully customizable, offline calendar designed to do exactly what a calendar should do. <b>No complicated features, unnecessary permissions and no ads!</b>
+        Simple Calendar Pro ist ein vollständig anpassbarer Offline-Kalender, der genau das bietet, was man von einem Kalender erwartet. <b>Keine umständlichen Funktionen, keine unnötigen Berechtigungen und keine Werbung!</b>
 
-        Whether you’re organizing single or recurring events, birthdays, anniversaries, business meetings, appointments or anything else, Simple Calendar Pro makes it <b>easy to stay organized</b>. With an incredible variety of <b>customization options</b> you can customize event reminders, notification sounds, calendar widgets and how the app looks.
+        Ob einzelne oder sich wiederholende Termine, ob Geburtstage, Jahrestage, Meetings oder andere Termine organisiert werden sollen, mit Simple Calendar Pro ist das <b>Organisieren von Terminen ein Kinderspiel</b>. Eine Vielzahl von  <b>Anpassungsmöglichkeiten</b> erlaubt es dir, Terminerinnerungen (Benachrichtigungen und Töne), Widgets und sogar das Aussehen der App farblich so zu gestalten, wie es dir gefällt.
 
-        Daily, weekly and monthly views make checking your upcoming events &amp; appointments a breeze. You can even view everything as a simple list of events rather than in calendar view, so you <b>know exactly what’s coming up in your life and when. </b>
+        Tages- Wochen- und Monatsansichten machen es leicht, anstehende Termine und Verabredungen im Auge zu behalten. Wer möchte, kann sich alle Termine auch einfach als Liste anzeigen lassen, anstatt in einer der Kalenderansichten. Auf diese Weise hast du alle Termine immer im Blick und <b>du weißt genau, was wann in deinem Leben passiert.</b>
 
         ----------------------------------------------------------
-        <b>Simple Calendar Pro – Features &amp; Benefits</b>
+        <b>Simple Calendar Pro – Funktionen &amp; Optionen</b>
         ----------------------------------------------------------
 
-        ✔️ No ads or annoying popups
-        ✔️ No internet access needed, giving you more privacy &amp; security
-        ✔️ Only the bare minimum permissions required
-        ✔️ Emphasis on simplicity – does what a calendar needs to do!
-        ✔️ Open source
-        ✔️ Fully customizable themes &amp; calendar / event widgets
-        ✔️ Translated into 29 languages
-        ✔️ Export settings to .txt files to import to another device
-        ✔️ CalDAV calendar sync supported to sync events across devices
-        ✔️ Daily, weekly, monthly, yearly &amp; event views on the calendar
-        ✔️ Supports exporting &amp; importing events via .ics files
-        ✔️ Set multiple event reminders, customize event reminder sound and vibration
-        ✔️ Snooze option for reminders
-        ✔️ Easily add holidays, birthdays, anniversaries &amp; appointments
-        ✔️ Customize events – start time, duration, reminders etc
-        ✔️ Add event attendees to each event
-        ✔️ Use as a personal calendar or a business calendar
-        ✔️ Choose between reminders &amp; email notifications to alert you about an event
+        ✔️ Keine Werbung, keine nervigen Popups
+        ✔️ Keine Internetverbindung nötig, dadurch mehr Privatsphäre &amp; erhöhte Sicherheit
+        ✔️ Nur absolut notwendige Berechtigungen erforderlich
+        ✔️ Schlichtheit wird groß geschrieben – der Kalender bietet, was man von einem Kalender erwartet!
+        ✔️ Open Source
+        ✔️ Vollständig anpassbar: Themes, Kalender und Widgets
+        ✔️ In 29 Sprachen
+        ✔️ Backup von geänderten Einstellungen in .txt-Dateien möglich, um sie auf anderen Geräten importieren zu können
+        ✔️ Unterstützung von CalDAV Calendar Sync, zur Synchronisation von Terminen zwischen verschiedenen Geräten
+        ✔️ Tages-, Wochen-, Monats-, Jahres- &amp; Detailansicht von Terminen im Kalender
+        ✔️ Import/Export-Unterstützung im .ics-Format
+        ✔️ Festlegen mehrerer Terminerinnerungen, Anpassung von Erinnerungston und -vibration
+        ✔️ Schlummeroption für Terminerinnerungen
+        ✔️ Unkompliziertes Hinzufügen von Feiertagen, Geburtstagen, Jahrestagen &amp; Terminen
+        ✔️ Anpassung von Terminen – Anfangszeit, Dauer, Erinnerungen usw.
+        ✔️ Einladung von Teilnehmern je Termin
+        ✔️ Kann als privater oder geschäftlicher Kalender genutzt werdeb
+        ✔️ Unterschiedliche Erinnerungsarten einschließlich E-Mail-Benachrichtigungen
 
-        DOWNLOAD SIMPLE CALENDAR PRO – THE SIMPLE OFFLINE CALENDAR WITH NO ADS!
+        INSTALLIERE SIMPLE CALENDAR PRO – DEN SCHLICHTEN OFFLINE KALENDER OHNE WERBUNG!
 
-        <b>Check out the full suite of Simple Tools here:</b>
+        <b>Einen Überblick über die komplette Suite von Simple Tools gibt es hier:</b>
         https://www.simplemobiletools.com
 
         <b>Facebook:</b>
