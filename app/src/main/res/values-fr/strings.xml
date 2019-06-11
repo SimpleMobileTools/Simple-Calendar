@@ -22,7 +22,7 @@
     <string name="edit_event">Éditer l\'événement</string>
     <string name="new_event">Nouvel événement</string>
     <string name="create_new_event">Créer un nouvel événement</string>
-    <string name="duplicate_event">Evénement en double</string>
+    <string name="duplicate_event">Dupliquer l\'événement</string>
     <string name="title_empty">Le titre ne peut pas être vide</string>
     <string name="end_before_start">L\'événement ne peut pas se terminer plus tôt qu\'il ne commence</string>
     <string name="event_added">Événement ajouté avec succès</string>
