@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 6.5.1 *(2019-06-13)*
+----------------------------
+
+ * Fixed a glitch related to CalDAV synced events reappearing after deletion
+ * Many translation improvements
+
 Version 6.5.0 *(2019-05-04)*
 ----------------------------
 
