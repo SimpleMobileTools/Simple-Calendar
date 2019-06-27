@@ -53,6 +53,7 @@
                 <data android:scheme="file"/>
                 <data android:mimeType="text/x-vcalendar"/>
                 <data android:mimeType="text/calendar"/>
+                <data android:mimeType="application/ics"/>
             </intent-filter>
 
             <intent-filter>
