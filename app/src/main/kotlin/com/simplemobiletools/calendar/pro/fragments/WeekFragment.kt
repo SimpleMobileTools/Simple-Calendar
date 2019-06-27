@@ -420,7 +420,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 return
             }
 
-            //Check if End time for event is start time for another day
             val isStartTimeDay = Formatter.getDateTimeFromTS(maxTS) == Formatter.getDateTimeFromTS(maxTS).withTimeAtStartOfDay()
             val numDays = Days.daysBetween(Formatter.getDateTimeFromTS(minTS).toLocalDate(), Formatter.getDateTimeFromTS(maxTS).toLocalDate()).days
             val daysCnt = if (numDays == 1 && isStartTimeDay) 0 else numDays

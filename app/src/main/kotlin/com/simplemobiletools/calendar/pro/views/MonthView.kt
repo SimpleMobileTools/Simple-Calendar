@@ -337,6 +337,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         if (diff < 0) {
             eventStartDateTime = screenStartDateTime
         }
+
         val isMidnight = Formatter.getDateTimeFromTS(endDateTime.seconds()) == Formatter.getDateTimeFromTS(endDateTime.seconds()).withTimeAtStartOfDay()
         val numDays = Days.daysBetween(eventStartDateTime, eventEndDateTime).days
         val daysCnt = if (numDays == 1 && isMidnight) 0 else numDays
