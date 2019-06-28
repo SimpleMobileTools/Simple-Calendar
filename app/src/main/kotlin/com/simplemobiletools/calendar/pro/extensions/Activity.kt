@@ -11,17 +11,18 @@ import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.hideKeyboard
 import com.simplemobiletools.commons.extensions.sharePathIntent
 import com.simplemobiletools.commons.extensions.toast
+import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import com.simplemobiletools.commons.models.RadioItem
 import java.io.File
-import java.util.TreeSet
+import java.util.*
 import kotlin.collections.ArrayList
 
 fun BaseSimpleActivity.shareEvents(ids: List<Long>) {
-    Thread {
+    ensureBackgroundThread {
         val file = getTempFile()
         if (file == null) {
             toast(R.string.unknown_error_occurred)
-            return@Thread
+            return@ensureBackgroundThread
         }
 
         val events = eventsDB.getEventsWithIds(ids) as ArrayList<Event>
@@ -30,7 +31,7 @@ fun BaseSimpleActivity.shareEvents(ids: List<Long>) {
                 sharePathIntent(file.absolutePath, BuildConfig.APPLICATION_ID)
             }
         }
-    }.start()
+    }
 }
 
 fun BaseSimpleActivity.getTempFile(): File? {

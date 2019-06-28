@@ -7,6 +7,7 @@ import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.EventType
+import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 
 class EventsHelper(val context: Context) {
     private val config = context.config
@@ -14,7 +15,7 @@ class EventsHelper(val context: Context) {
     private val eventTypesDB = context.eventTypesDB
 
     fun getEventTypes(activity: Activity, showWritableOnly: Boolean, callback: (notes: ArrayList<EventType>) -> Unit) {
-        Thread {
+        ensureBackgroundThread {
             var eventTypes = ArrayList<EventType>()
             try {
                 eventTypes = eventTypesDB.getEventTypes().toMutableList() as ArrayList<EventType>
@@ -32,18 +33,18 @@ class EventsHelper(val context: Context) {
             activity.runOnUiThread {
                 callback(eventTypes)
             }
-        }.start()
+        }
     }
 
     fun getEventTypesSync() = eventTypesDB.getEventTypes().toMutableList() as ArrayList<EventType>
 
     fun insertOrUpdateEventType(activity: Activity, eventType: EventType, callback: ((newEventTypeId: Long) -> Unit)? = null) {
-        Thread {
+        ensureBackgroundThread {
             val eventTypeId = insertOrUpdateEventTypeSync(eventType)
             activity.runOnUiThread {
                 callback?.invoke(eventTypeId)
             }
-        }.start()
+        }
     }
 
     fun insertOrUpdateEventTypeSync(eventType: EventType): Long {
@@ -132,10 +133,10 @@ class EventsHelper(val context: Context) {
     }
 
     fun deleteAllEvents() {
-        Thread {
+        ensureBackgroundThread {
             val eventIds = eventsDB.getEventIds().toMutableList()
             deleteEvents(eventIds, true)
-        }.start()
+        }
     }
 
     fun deleteEvent(id: Long, deleteFromCalDAV: Boolean) = deleteEvents(arrayListOf(id), deleteFromCalDAV)
@@ -189,14 +190,14 @@ class EventsHelper(val context: Context) {
     }
 
     fun doEventTypesContainEvents(eventTypeIds: ArrayList<Long>, callback: (contain: Boolean) -> Unit) {
-        Thread {
+        ensureBackgroundThread {
             val eventIds = eventsDB.getEventIdsByEventType(eventTypeIds)
             callback(eventIds.isNotEmpty())
-        }.start()
+        }
     }
 
     fun getEventsWithSearchQuery(text: String, activity: Activity, callback: (searchedText: String, events: List<Event>) -> Unit) {
-        Thread {
+        ensureBackgroundThread {
             val searchQuery = "%$text%"
             val events = eventsDB.getEventsForSearch(searchQuery)
             val displayEventTypes = config.displayEventTypes
@@ -204,12 +205,12 @@ class EventsHelper(val context: Context) {
             activity.runOnUiThread {
                 callback(text, filteredEvents)
             }
-        }.start()
+        }
     }
 
     fun addEventRepetitionException(parentEventId: Long, occurrenceTS: Long, addToCalDAV: Boolean) {
-        Thread {
-            val parentEvent = eventsDB.getEventWithId(parentEventId) ?: return@Thread
+        ensureBackgroundThread {
+            val parentEvent = eventsDB.getEventWithId(parentEventId) ?: return@ensureBackgroundThread
             var repetitionExceptions = parentEvent.repetitionExceptions
             repetitionExceptions.add(Formatter.getDayCodeFromTS(occurrenceTS))
             repetitionExceptions = repetitionExceptions.distinct().toMutableList() as ArrayList<String>
@@ -219,13 +220,13 @@ class EventsHelper(val context: Context) {
             if (addToCalDAV && config.caldavSync) {
                 context.calDAVHelper.insertEventRepeatException(parentEvent, occurrenceTS)
             }
-        }.start()
+        }
     }
 
     fun getEvents(fromTS: Long, toTS: Long, eventId: Long = -1L, applyTypeFilter: Boolean = true, callback: (events: ArrayList<Event>) -> Unit) {
-        Thread {
+        ensureBackgroundThread {
             getEventsSync(fromTS, toTS, eventId, applyTypeFilter, callback)
-        }.start()
+        }
     }
 
     fun getEventsSync(fromTS: Long, toTS: Long, eventId: Long = -1L, applyTypeFilter: Boolean, callback: (events: ArrayList<Event>) -> Unit) {

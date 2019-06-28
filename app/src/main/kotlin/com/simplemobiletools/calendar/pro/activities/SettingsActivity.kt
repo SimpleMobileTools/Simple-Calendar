@@ -102,14 +102,14 @@ class SettingsActivity : SimpleActivity() {
 
     private fun checkPrimaryColor() {
         if (config.primaryColor != mStoredPrimaryColor) {
-            Thread {
+            ensureBackgroundThread {
                 val eventTypes = eventsHelper.getEventTypesSync()
                 if (eventTypes.filter { it.caldavCalendarId == 0 }.size == 1) {
                     val eventType = eventTypes.first { it.caldavCalendarId == 0 }
                     eventType.color = config.primaryColor
                     eventsHelper.insertOrUpdateEventTypeSync(eventType)
                 }
-            }.start()
+            }
         }
     }
 
@@ -195,13 +195,13 @@ class SettingsActivity : SimpleActivity() {
             settings_manage_synced_calendars_holder.beGone()
             settings_caldav_pull_to_refresh_holder.beGone()
 
-            Thread {
+            ensureBackgroundThread {
                 config.getSyncedCalendarIdsAsList().forEach {
                     calDAVHelper.deleteCalDAVCalendarEvents(it.toLong())
                 }
                 eventTypesDB.deleteEventTypesWithCalendarId(config.getSyncedCalendarIdsAsList())
                 updateDefaultEventTypeText()
-            }.start()
+            }
         }
     }
 
@@ -222,7 +222,7 @@ class SettingsActivity : SimpleActivity() {
                 toast(R.string.syncing)
             }
 
-            Thread {
+            ensureBackgroundThread {
                 if (newCalendarIds.isNotEmpty()) {
                     val existingEventTypeNames = eventsHelper.getEventTypesSync().map { it.getDisplayTitle().toLowerCase() } as ArrayList<String>
                     getSyncedCalDAVCalendars().forEach {
@@ -253,7 +253,7 @@ class SettingsActivity : SimpleActivity() {
 
                 eventTypesDB.deleteEventTypesWithCalendarId(removedCalendarIds)
                 updateDefaultEventTypeText()
-            }.start()
+            }
         }
     }
 
@@ -630,7 +630,7 @@ class SettingsActivity : SimpleActivity() {
                 settings_default_event_type.text = getString(R.string.last_used_one)
             }
         } else {
-            Thread {
+            ensureBackgroundThread {
                 val eventType = eventTypesDB.getEventTypeWithId(config.defaultEventTypeId)
                 if (eventType != null) {
                     config.lastUsedCaldavCalendarId = eventType.caldavCalendarId
@@ -641,7 +641,7 @@ class SettingsActivity : SimpleActivity() {
                     config.defaultEventTypeId = -1
                     updateDefaultEventTypeText()
                 }
-            }.start()
+            }
         }
     }
 
@@ -694,13 +694,13 @@ class SettingsActivity : SimpleActivity() {
             handlePermission(PERMISSION_READ_STORAGE) {
                 if (it) {
                     FilePickerDialog(this) {
-                        Thread {
+                        ensureBackgroundThread {
                             try {
                                 parseFile(it)
                             } catch (e: Exception) {
                                 showErrorToast(e)
                             }
-                        }.start()
+                        }
                     }
                 }
             }

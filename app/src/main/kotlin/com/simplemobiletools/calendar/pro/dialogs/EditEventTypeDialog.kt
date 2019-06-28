@@ -9,6 +9,7 @@ import com.simplemobiletools.calendar.pro.extensions.eventsHelper
 import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.commons.dialogs.ColorPickerDialog
 import com.simplemobiletools.commons.extensions.*
+import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import kotlinx.android.synthetic.main.dialog_event_type.view.*
 
 class EditEventTypeDialog(val activity: Activity, var eventType: EventType? = null, val callback: (eventType: EventType) -> Unit) {
@@ -45,9 +46,9 @@ class EditEventTypeDialog(val activity: Activity, var eventType: EventType? = nu
                     activity.setupDialogStuff(view, this, if (isNewEvent) R.string.add_new_type else R.string.edit_type) {
                         showKeyboard(view.type_title)
                         getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
-                            Thread {
+                            ensureBackgroundThread {
                                 eventTypeConfirmed(view.type_title.value, this)
-                            }.start()
+                            }
                         }
                     }
                 }

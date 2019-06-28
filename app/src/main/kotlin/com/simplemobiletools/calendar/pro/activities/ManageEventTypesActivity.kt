@@ -11,6 +11,7 @@ import com.simplemobiletools.calendar.pro.interfaces.DeleteEventTypesListener
 import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.commons.extensions.toast
 import com.simplemobiletools.commons.extensions.updateTextColors
+import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import kotlinx.android.synthetic.main.activity_manage_event_types.*
 import java.util.*
 
@@ -59,9 +60,9 @@ class ManageEventTypesActivity : SimpleActivity(), DeleteEventTypesListener {
             }
         }
 
-        Thread {
+        ensureBackgroundThread {
             eventsHelper.deleteEventTypes(eventTypes, deleteEvents)
-        }.start()
+        }
         return true
     }
 }
