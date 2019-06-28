@@ -239,7 +239,7 @@
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Jednoduchý kalendár Pro - Udalosti a pripomienky</string>
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Offline kalendár bez reklám. Spravujte pripomienky pre stretnutia a iné udalosti</string>
+    <string name="app_short_description">Krásny kalendár bez reklám a čudných oprávnení.</string>
     <string name="app_long_description">
         Jednoduchý kalendár Pro je prispôsobiteľný offline kalendár vytvorený presne na to, čo by kalendáre mali zvládať.<b>Nenachádzajú sa tu žiadne nepotrebné funkcie, nepotrebné oprávnenia, ani reklamy!</b>
 

@@ -350,7 +350,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             val uri = intent.data
             if (uri.authority == "com.android.calendar") {
                 if (uri.path.startsWith("/events")) {
-                    Thread {
+                    ensureBackgroundThread {
                         // intents like content://com.android.calendar/events/1756
                         val eventId = uri.lastPathSegment
                         val id = eventsDB.getEventIdWithLastImportId("%-$eventId")
@@ -362,7 +362,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                         } else {
                             toast(R.string.unknown_error_occurred)
                         }
-                    }.start()
+                    }
                 } else if (intent?.extras?.getBoolean("DETAIL_VIEW", false) == true) {
                     // clicking date on a third party widget: content://com.android.calendar/time/1507309245683
                     val timestamp = uri.pathSegments.last()
@@ -449,7 +449,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         val items = getHolidayRadioItems()
         RadioGroupDialog(this, items) {
             toast(R.string.importing)
-            Thread {
+            ensureBackgroundThread {
                 val holidays = getString(R.string.holidays)
                 var eventTypeId = eventsHelper.getEventTypeIdWithTitle(holidays)
                 if (eventTypeId == -1L) {
@@ -464,7 +464,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                         updateViewPager()
                     }
                 }
-            }.start()
+            }
         }
     }
 
@@ -473,7 +473,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             if (it) {
                 SetRemindersDialog(this) {
                     val reminders = it
-                    Thread {
+                    ensureBackgroundThread {
                         addContactEvents(true, reminders) {
                             if (it > 0) {
                                 toast(R.string.birthdays_added)
@@ -482,7 +482,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                                 toast(R.string.no_birthdays)
                             }
                         }
-                    }.start()
+                    }
                 }
             } else {
                 toast(R.string.no_contacts_permission)
@@ -495,7 +495,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             if (it) {
                 SetRemindersDialog(this) {
                     val reminders = it
-                    Thread {
+                    ensureBackgroundThread {
                         addContactEvents(false, reminders) {
                             if (it > 0) {
                                 toast(R.string.anniversaries_added)
@@ -504,7 +504,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                                 toast(R.string.no_anniversaries)
                             }
                         }
-                    }.start()
+                    }
                 }
             } else {
                 toast(R.string.no_contacts_permission)
@@ -755,7 +755,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private fun exportEvents() {
         FilePickerDialog(this, pickFile = false, showFAB = true) {
             ExportEventsDialog(this, it) { exportPastEvents, file, eventTypes ->
-                Thread {
+                ensureBackgroundThread {
                     val events = eventsHelper.getEventsToExport(exportPastEvents, eventTypes)
                     if (events.isEmpty()) {
                         toast(R.string.no_entries_for_exporting)
@@ -768,7 +768,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                             })
                         }
                     }
-                }.start()
+                }
             }
         }
     }

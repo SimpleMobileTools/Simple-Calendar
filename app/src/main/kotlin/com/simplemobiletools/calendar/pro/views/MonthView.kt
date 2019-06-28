@@ -27,7 +27,7 @@ import org.joda.time.Days
 
 // used in the Monthly view fragment, 1 view per screen
 class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(context, attrs, defStyle) {
-    private val BG_CORNER_RADIUS = 4f
+    private val BG_CORNER_RADIUS = 8f
     private val ROW_COUNT = 6
 
     private var paint: Paint
@@ -105,7 +105,8 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
                 // make sure we properly handle events lasting multiple days and repeating ones
                 val lastEvent = allEvents.lastOrNull { it.id == event.id }
                 val daysCnt = getEventLastingDaysCount(event)
-                if (lastEvent == null || lastEvent.startDayIndex + daysCnt <= day.indexOnMonthView) {
+                val validDayEvent = isDayValid(event, day.code)
+                if ((lastEvent == null || lastEvent.startDayIndex + daysCnt <= day.indexOnMonthView) && !validDayEvent) {
                     val monthViewEvent = MonthViewEvent(event.id!!, event.title, event.startTS, event.color, day.indexOnMonthView,
                             daysCnt, day.indexOnMonthView, event.getIsAllDay(), event.isPastEvent)
                     allEvents.add(monthViewEvent)
@@ -336,6 +337,15 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         if (diff < 0) {
             eventStartDateTime = screenStartDateTime
         }
-        return Days.daysBetween(eventStartDateTime, eventEndDateTime).days + 1
+
+        val isMidnight = Formatter.getDateTimeFromTS(endDateTime.seconds()) == Formatter.getDateTimeFromTS(endDateTime.seconds()).withTimeAtStartOfDay()
+        val numDays = Days.daysBetween(eventStartDateTime, eventEndDateTime).days
+        val daysCnt = if (numDays == 1 && isMidnight) 0 else numDays
+        return daysCnt + 1
+    }
+
+    private fun isDayValid(event: Event, code: String): Boolean {
+        val date = Formatter.getDateTimeFromCode(code)
+        return Formatter.getDateTimeFromTS(event.endTS) == Formatter.getDateTimeFromTS(date.seconds()).withTimeAtStartOfDay()
     }
 }

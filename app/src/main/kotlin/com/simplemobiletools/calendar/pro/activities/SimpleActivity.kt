@@ -8,6 +8,7 @@ import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.refreshCalDAVCalendars
 import com.simplemobiletools.commons.activities.BaseSimpleActivity
+import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 
 open class SimpleActivity : BaseSimpleActivity() {
     val CALDAV_REFRESH_DELAY = 3000L
@@ -40,12 +41,12 @@ open class SimpleActivity : BaseSimpleActivity() {
 
     fun Context.syncCalDAVCalendars(callback: () -> Unit) {
         calDAVRefreshCallback = callback
-        Thread {
+        ensureBackgroundThread {
             val uri = CalendarContract.Calendars.CONTENT_URI
             contentResolver.unregisterContentObserver(calDAVSyncObserver)
             contentResolver.registerContentObserver(uri, false, calDAVSyncObserver)
             refreshCalDAVCalendars(config.caldavSyncedCalendarIds, true)
-        }.start()
+        }
     }
 
     // caldav refresh content observer triggers multiple times in a row at updating, so call the callback only a few seconds after the (hopefully) last one
@@ -55,11 +56,11 @@ open class SimpleActivity : BaseSimpleActivity() {
             if (!selfChange) {
                 calDAVRefreshHandler.removeCallbacksAndMessages(null)
                 calDAVRefreshHandler.postDelayed({
-                    Thread {
+                    ensureBackgroundThread {
                         unregisterObserver()
                         calDAVRefreshCallback?.invoke()
                         calDAVRefreshCallback = null
-                    }.start()
+                    }
                 }, CALDAV_REFRESH_DELAY)
             }
         }

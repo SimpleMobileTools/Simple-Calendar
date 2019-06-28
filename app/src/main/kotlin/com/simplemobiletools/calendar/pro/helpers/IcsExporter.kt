@@ -10,6 +10,7 @@ import com.simplemobiletools.commons.activities.BaseSimpleActivity
 import com.simplemobiletools.commons.extensions.getFileOutputStream
 import com.simplemobiletools.commons.extensions.toast
 import com.simplemobiletools.commons.extensions.writeLn
+import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import com.simplemobiletools.commons.models.FileDirItem
 import java.io.BufferedWriter
 import java.io.File
@@ -31,7 +32,7 @@ class IcsExporter {
                 return@getFileOutputStream
             }
 
-            Thread {
+            ensureBackgroundThread {
                 calendars = activity.calDAVHelper.getCalDAVCalendars("", false)
                 if (showExportingToast) {
                     activity.toast(R.string.exporting)
@@ -76,7 +77,7 @@ class IcsExporter {
                     eventsFailed > 0 -> EXPORT_PARTIAL
                     else -> EXPORT_OK
                 })
-            }.start()
+            }
         }
     }
 
@@ -89,7 +90,7 @@ class IcsExporter {
                     writeLn("$ACTION$DISPLAY")
                 } else {
                     writeLn("$ACTION$EMAIL")
-                    val attendee = calendars.firstOrNull { it.id == event.getCalDAVCalendarId()}?.accountName
+                    val attendee = calendars.firstOrNull { it.id == event.getCalDAVCalendarId() }?.accountName
                     if (attendee != null) {
                         writeLn("$ATTENDEE$MAILTO$attendee")
                     }

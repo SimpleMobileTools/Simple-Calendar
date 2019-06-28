@@ -186,7 +186,8 @@ class CalDAVHelper(val context: Context) {
                 CalendarContract.Events.RRULE,
                 CalendarContract.Events.ORIGINAL_ID,
                 CalendarContract.Events.ORIGINAL_INSTANCE_TIME,
-                CalendarContract.Events.EVENT_LOCATION)
+                CalendarContract.Events.EVENT_LOCATION,
+                CalendarContract.Events.DELETED)
 
         val selection = "${CalendarContract.Events.CALENDAR_ID} = $calendarId"
         var cursor: Cursor? = null
@@ -194,6 +195,11 @@ class CalDAVHelper(val context: Context) {
             cursor = context.contentResolver.query(uri, projection, selection, null, null)
             if (cursor?.moveToFirst() == true) {
                 do {
+                    val deleted = cursor.getIntValue(CalendarContract.Events.DELETED)
+                    if (deleted == 1) {
+                        continue
+                    }
+
                     val id = cursor.getLongValue(CalendarContract.Events._ID)
                     val title = cursor.getStringValue(CalendarContract.Events.TITLE) ?: ""
                     val description = cursor.getStringValue(CalendarContract.Events.DESCRIPTION) ?: ""

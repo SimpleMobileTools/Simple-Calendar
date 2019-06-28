@@ -13,6 +13,7 @@ import com.simplemobiletools.calendar.pro.helpers.REGULAR_EVENT_TYPE_ID
 import com.simplemobiletools.commons.extensions.setFillWithStroke
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import com.simplemobiletools.commons.extensions.toast
+import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import kotlinx.android.synthetic.main.dialog_import_events.view.*
 
 class ImportEventsDialog(val activity: SimpleActivity, val path: String, val callback: (refreshView: Boolean) -> Unit) {
@@ -21,7 +22,7 @@ class ImportEventsDialog(val activity: SimpleActivity, val path: String, val cal
     val config = activity.config
 
     init {
-        Thread {
+        ensureBackgroundThread {
             if (activity.eventTypesDB.getEventTypeWithId(config.lastUsedLocalEventTypeId) == null) {
                 config.lastUsedLocalEventTypeId = REGULAR_EVENT_TYPE_ID
             }
@@ -42,7 +43,7 @@ class ImportEventsDialog(val activity: SimpleActivity, val path: String, val cal
             activity.runOnUiThread {
                 initDialog()
             }
-        }.start()
+        }
     }
 
     private fun initDialog() {
@@ -69,25 +70,25 @@ class ImportEventsDialog(val activity: SimpleActivity, val path: String, val cal
                         getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
                             getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(null)
                             activity.toast(R.string.importing)
-                            Thread {
+                            ensureBackgroundThread {
                                 val overrideFileEventTypes = view.import_events_checkbox.isChecked
                                 val result = IcsImporter(activity).importEvents(path, currEventTypeId, currEventTypeCalDAVCalendarId, overrideFileEventTypes)
                                 handleParseResult(result)
                                 dismiss()
-                            }.start()
+                            }
                         }
                     }
                 }
     }
 
     private fun updateEventType(view: ViewGroup) {
-        Thread {
+        ensureBackgroundThread {
             val eventType = activity.eventTypesDB.getEventTypeWithId(currEventTypeId)
             activity.runOnUiThread {
                 view.import_event_type_title.text = eventType!!.getDisplayTitle()
                 view.import_event_type_color.setFillWithStroke(eventType.color, activity.config.backgroundColor)
             }
-        }.start()
+        }
     }
 
     private fun handleParseResult(result: IcsImporter.ImportResult) {

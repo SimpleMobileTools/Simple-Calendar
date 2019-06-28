@@ -420,7 +420,9 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 return
             }
 
-            val daysCnt = Days.daysBetween(Formatter.getDateTimeFromTS(minTS).toLocalDate(), Formatter.getDateTimeFromTS(maxTS).toLocalDate()).days
+            val isStartTimeDay = Formatter.getDateTimeFromTS(maxTS) == Formatter.getDateTimeFromTS(maxTS).withTimeAtStartOfDay()
+            val numDays = Days.daysBetween(Formatter.getDateTimeFromTS(minTS).toLocalDate(), Formatter.getDateTimeFromTS(maxTS).toLocalDate()).days
+            val daysCnt = if (numDays == 1 && isStartTimeDay) 0 else numDays
             val startDateTimeInWeek = Formatter.getDateTimeFromTS(minTS)
             val firstDayIndex = (startDateTimeInWeek.dayOfWeek - if (mConfig.isSundayFirst) 0 else 1) % 7
 

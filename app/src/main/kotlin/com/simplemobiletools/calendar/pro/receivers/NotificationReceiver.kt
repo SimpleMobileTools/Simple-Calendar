@@ -11,6 +11,7 @@ import com.simplemobiletools.calendar.pro.extensions.updateListWidget
 import com.simplemobiletools.calendar.pro.helpers.EVENT_ID
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.helpers.REMINDER_NOTIFICATION
+import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 
 class NotificationReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
@@ -18,9 +19,9 @@ class NotificationReceiver : BroadcastReceiver() {
         val wakelock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "simplecalendar:notificationreceiver")
         wakelock.acquire(3000)
 
-        Thread {
+        ensureBackgroundThread {
             handleIntent(context, intent)
-        }.start()
+        }
     }
 
     private fun handleIntent(context: Context, intent: Intent) {

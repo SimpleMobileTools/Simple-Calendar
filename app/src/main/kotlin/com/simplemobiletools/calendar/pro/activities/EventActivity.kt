@@ -98,18 +98,18 @@ class EventActivity : SimpleActivity() {
         (mAttendeePlaceholder as LayerDrawable).findDrawableByLayerId(R.id.attendee_circular_background).applyColorFilter(config.primaryColor)
 
         val eventId = intent.getLongExtra(EVENT_ID, 0L)
-        Thread {
+        ensureBackgroundThread {
             val event = eventsDB.getEventWithId(eventId)
             if (eventId != 0L && event == null) {
                 finish()
-                return@Thread
+                return@ensureBackgroundThread
             }
 
             val localEventType = eventTypesDB.getEventTypeWithId(config.lastUsedLocalEventTypeId)
             runOnUiThread {
                 gotEvent(savedInstanceState, localEventType, event)
             }
-        }.start()
+        }
     }
 
     private fun gotEvent(savedInstanceState: Bundle?, localEventType: EventType?, event: Event?) {
@@ -377,12 +377,12 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun checkAttendees() {
-        Thread {
+        ensureBackgroundThread {
             fillAvailableContacts()
             runOnUiThread {
                 updateAttendees()
             }
-        }.start()
+        }
     }
 
     private fun handleNotificationAvailability(callback: () -> Unit) {
@@ -716,7 +716,7 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun updateEventType() {
-        Thread {
+        ensureBackgroundThread {
             val eventType = eventTypesDB.getEventTypeWithId(mEventTypeId)
             if (eventType != null) {
                 runOnUiThread {
@@ -724,7 +724,7 @@ class EventActivity : SimpleActivity() {
                     event_type_color.setFillWithStroke(eventType.color, config.backgroundColor)
                 }
             }
-        }.start()
+        }
     }
 
     private fun updateCalDAVCalendar() {
@@ -783,7 +783,7 @@ class EventActivity : SimpleActivity() {
         } else {
             event_caldav_calendar_email.text = currentCalendar.accountName
 
-            Thread {
+            ensureBackgroundThread {
                 val calendarColor = eventsHelper.getEventTypeWithCalDAVCalendarId(currentCalendar.id)?.color
                         ?: currentCalendar.color
 
@@ -798,7 +798,7 @@ class EventActivity : SimpleActivity() {
                         setPadding(paddingLeft, 0, paddingRight, 0)
                     }
                 }
-            }.start()
+            }
         }
     }
 
@@ -826,7 +826,7 @@ class EventActivity : SimpleActivity() {
 
     private fun deleteEvent() {
         DeleteEventDialog(this, arrayListOf(mEvent.id!!), mEvent.repeatInterval > 0) {
-            Thread {
+            ensureBackgroundThread {
                 when (it) {
                     DELETE_SELECTED_OCCURRENCE -> eventsHelper.addEventRepetitionException(mEvent.id!!, mEventOccurrenceTS, true)
                     DELETE_FUTURE_OCCURRENCES -> eventsHelper.addEventRepeatLimit(mEvent.id!!, mEventOccurrenceTS)
@@ -835,7 +835,7 @@ class EventActivity : SimpleActivity() {
                 runOnUiThread {
                     finish()
                 }
-            }.start()
+            }
         }
     }
 
@@ -851,9 +851,9 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun saveCurrentEvent() {
-        Thread {
+        ensureBackgroundThread {
             saveEvent()
-        }.start()
+        }
     }
 
     private fun saveEvent() {
@@ -982,13 +982,13 @@ class EventActivity : SimpleActivity() {
     private fun showEditRepeatingEventDialog() {
         EditRepeatingEventDialog(this) {
             if (it) {
-                Thread {
+                ensureBackgroundThread {
                     eventsHelper.updateEvent(mEvent, true, true) {
                         finish()
                     }
-                }.start()
+                }
             } else {
-                Thread {
+                ensureBackgroundThread {
                     eventsHelper.addEventRepetitionException(mEvent.id!!, mEventOccurrenceTS, true)
                     mEvent.apply {
                         parentId = id!!.toLong()
@@ -1001,7 +1001,7 @@ class EventActivity : SimpleActivity() {
                     eventsHelper.insertEvent(mEvent, true, true) {
                         finish()
                     }
-                }.start()
+                }
             }
         }
     }

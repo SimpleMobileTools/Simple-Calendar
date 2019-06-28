@@ -215,14 +215,14 @@
     <string name="sunday_alt">ראשון</string>
 
     <!-- List widget config example events -->
-    <string name="sample_title_1">אימון</string>
-    <string name="sample_description_1">ראש השנה</string>
-    <string name="sample_title_2">פגישה עם יוני</string>
-    <string name="sample_description_2">בכיכר רבין</string>
+    <string name="sample_title_1">אירוע חשוב</string>
+    <string name="sample_description_1">תיאור של אירוע</string>
+    <string name="sample_title_2">פגישה לדוגמה</string>
+    <string name="sample_description_2">במגדלי עזריאלי</string>
     <string name="sample_title_3">ספרייה</string>
-    <string name="sample_title_4">ארוחת צהריים עם מרים</string>
+    <string name="sample_title_4">ארוחת צהריים עם דנה</string>
     <string name="sample_description_4">במלון</string>
-    <string name="sample_title_5">הפסקת קפה</string>
+    <string name="sample_title_5">זמן קפה</string>
 
     <!-- FAQ -->
     <string name="faq_1_title">How can I remove the holidays imported via the \"Add holidays\" button?</string>

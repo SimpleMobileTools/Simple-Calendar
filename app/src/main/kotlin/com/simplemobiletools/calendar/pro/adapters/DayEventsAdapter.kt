@@ -20,6 +20,7 @@ import com.simplemobiletools.commons.extensions.adjustAlpha
 import com.simplemobiletools.commons.extensions.applyColorFilter
 import com.simplemobiletools.commons.extensions.beInvisible
 import com.simplemobiletools.commons.extensions.beInvisibleIf
+import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import com.simplemobiletools.commons.views.MyRecyclerView
 import kotlinx.android.synthetic.main.event_item_day_view.view.*
 
@@ -142,7 +143,7 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
         DeleteEventDialog(activity, eventIds, hasRepeatableEvent) { it ->
             events.removeAll(eventsToDelete)
 
-            Thread {
+            ensureBackgroundThread {
                 val nonRepeatingEventIDs = eventsToDelete.asSequence().filter { it.repeatInterval == 0 }.mapNotNull { it.id }.toMutableList()
                 activity.eventsHelper.deleteEvents(nonRepeatingEventIDs, true)
 
@@ -151,7 +152,7 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
                 activity.runOnUiThread {
                     removeSelectedItems(positions)
                 }
-            }.start()
+            }
         }
     }
 }

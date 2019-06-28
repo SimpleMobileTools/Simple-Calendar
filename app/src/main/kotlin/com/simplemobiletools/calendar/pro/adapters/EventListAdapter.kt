@@ -20,6 +20,7 @@ import com.simplemobiletools.commons.extensions.adjustAlpha
 import com.simplemobiletools.commons.extensions.applyColorFilter
 import com.simplemobiletools.commons.extensions.beInvisible
 import com.simplemobiletools.commons.extensions.beInvisibleIf
+import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import com.simplemobiletools.commons.interfaces.RefreshRecyclerViewListener
 import com.simplemobiletools.commons.views.MyRecyclerView
 import kotlinx.android.synthetic.main.event_list_item.view.*
@@ -208,7 +209,7 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
         DeleteEventDialog(activity, eventIds, hasRepeatableEvent) {
             listItems.removeAll(eventsToDelete)
 
-            Thread {
+            ensureBackgroundThread {
                 val nonRepeatingEventIDs = eventsToDelete.filter { !it.isRepeatable }.mapNotNull { it.id }.toMutableList()
                 activity.eventsHelper.deleteEvents(nonRepeatingEventIDs, true)
 
@@ -218,7 +219,7 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
                     listener?.refreshItems()
                     finishActMode()
                 }
-            }.start()
+            }
         }
     }
 }
