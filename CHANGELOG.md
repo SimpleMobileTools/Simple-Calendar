@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 6.5.2 *(2019-06-28)*
+----------------------------
+
+ * Don't show events that end at 00:00 as multi day event (by archibishop)
+ * Properly handle opening files with type application/ics
+ * Some other stability, translation and performance improvements
+
 Version 6.5.1 *(2019-06-13)*
 ----------------------------
 
