@@ -1,6 +1,11 @@
 Changelog
 ==========
 
+Version 6.5.4 *(2019-07-01)*
+----------------------------
+
+ * Adding some stability improvements
+
 Version 6.5.3 *(2019-06-30)*
 ----------------------------
 
