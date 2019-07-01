@@ -16,8 +16,8 @@ android {
         applicationId "com.simplemobiletools.calendar.pro"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 153
-        versionName "6.5.3"
+        versionCode 154
+        versionName "6.5.4"
         multiDexEnabled true
         setProperty("archivesBaseName", "calendar")
     }
