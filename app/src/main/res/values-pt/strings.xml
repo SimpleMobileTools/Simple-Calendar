@@ -237,9 +237,9 @@
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
-    <string name="app_title">Simple Calendar Pro - Events &amp; Reminders</string>
+    <string name="app_title">Simple Calendar Pro - Eventos e lembretes</string>
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">A beautiful calendar without ads or weird permissions.</string>
+    <string name="app_short_description">Um calendário sem anúncios nem permissões desnecessárias.</string>
     <string name="app_long_description">
         Simple Calendar Pro is a fully customizable, offline calendar designed to do exactly what a calendar should do. <b>No complicated features, unnecessary permissions and no ads!</b>
 
@@ -248,7 +248,7 @@
         Daily, weekly and monthly views make checking your upcoming events &amp; appointments a breeze. You can even view everything as a simple list of events rather than in calendar view, so you <b>know exactly what’s coming up in your life and when. </b>
 
         ----------------------------------------------------------
-        <b>Simple Calendar Pro – Features &amp; Benefits</b>
+        <b>Simple Calendar Pro – Funcionalidades</b>
         ----------------------------------------------------------
 
         ✔️ No ads or annoying popups
@@ -270,9 +270,9 @@
         ✔️ Use as a personal calendar or a business calendar
         ✔️ Choose between reminders &amp; email notifications to alert you about an event
 
-        DOWNLOAD SIMPLE CALENDAR PRO – THE SIMPLE OFFLINE CALENDAR WITH NO ADS!
+        DESCARREGUAR SIMPLE CALENDAR PRO – O CALENDÁRIO SIMPLES QUE NÃO TEM ANÚNCIOS!
 
-        <b>Check out the full suite of Simple Tools here:</b>
+        <b>Consulte todas as aplicações Simple Tools aqui:</b>
         https://www.simplemobiletools.com
 
         <b>Facebook:</b>
