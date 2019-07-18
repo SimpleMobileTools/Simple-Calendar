@@ -3,19 +3,19 @@
     <string name="app_name">Simple Calendar</string>
     <string name="app_launcher_name">Kalender</string>
     <string name="change_view">Ubah tampilan</string>
-    <string name="daily_view">Tampilan harian</string>
-    <string name="weekly_view">Tampilan mingguan</string>
-    <string name="monthly_view">Tampilan bulanan</string>
-    <string name="yearly_view">Tampilan tahunan</string>
-    <string name="simple_event_list">Daftar acara sederhana</string>
+    <string name="daily_view">Tampilan hari</string>
+    <string name="weekly_view">Tampilan minggu</string>
+    <string name="monthly_view">Tampilan bulan</string>
+    <string name="yearly_view">Tampilan tahun</string>
+    <string name="simple_event_list">Daftar acara</string>
     <string name="no_upcoming_events">Sepertinya anda tidak memiliki acara yang akan datang.</string>
     <string name="go_to_today">Buka hari ini</string>
     <string name="go_to_date">Buka tanggal</string>
     <string name="upgraded_from_free">Hai,\n\nsepertinya anda memperbarui dari versi aplikasi gratis yang lama. Anda perlu memindahkan acara yang disimpan lokal secara manual dengan cara mengekspornya ke berkas .ics, lalu mengimpornya kembali. Anda bisa menemukan tombol ekspor/impor di layar menu utama.\n\nSetelah itu anda bisa mencopot versi yang lama, yang memiliki tombol \'Tingkatkan ke Pro\' di bagian atas pengaturan aplikasi. Lalu anda hanya perlu menyetel ulang pengaturan aplikasi anda.\n\nTerima kasih!</string>
 
     <!-- Widget titles -->
-    <string name="widget_monthly">Kalender bulanan</string>
-    <string name="widget_list">Daftar acara kalender</string>
+    <string name="widget_monthly">Bulan</string>
+    <string name="widget_list">Daftar acara</string>
 
     <!-- Event -->
     <string name="event">Acara</string>
@@ -46,7 +46,7 @@
     <string name="event_is_repeatable">Acara berulang</string>
     <string name="selection_contains_repetition">Acara yang dipilih berisi acara yang berulang</string>
     <string name="delete_one_only">Hapus acara ini saja</string>
-    <string name="delete_future_occurrences">Hapus acara ini dan semua perulangannya di masa depan</string>
+    <string name="delete_future_occurrences">Hapus acara ini dan semua perulangannya</string>
     <string name="delete_all_occurrences">Hapus semua perulangan acara</string>
     <string name="update_one_only">Perbarui acara ini saja</string>
     <string name="update_all_occurrences">Perbarui semua perulangan acara</string>
@@ -144,7 +144,7 @@
 
     <!-- Holidays -->
     <string name="holidays">Hari Libur</string>
-    <string name="add_holidays">Tambah hari libur</string>
+    <string name="add_holidays">Tambahkan hari libur</string>
     <string name="national_holidays">Libur nasional</string>
     <string name="religious_holidays">Libur keagamaan</string>
     <string name="holidays_imported_successfully">Hari libur berhasil diimpor ke dalam kategori acara \"Hari Libur\"</string>
@@ -153,8 +153,8 @@
 
     <!-- Settings -->
     <string name="manage_event_types">Kelola kategori acara</string>
-    <string name="start_day_at">Mulai hari pada</string>
-    <string name="end_day_at">Akhir hari pada</string>
+    <string name="start_day_at">Hari dimulai pada jam</string>
+    <string name="end_day_at">Hari berakhir pada jam</string>
     <string name="week_numbers">Tampilkan nomor minggu</string>
     <string name="vibrate">Getar pada notifikasi pengingat</string>
     <string name="reminder_sound">Suara pengingat</string>
@@ -168,10 +168,10 @@
     <string name="delete_all_events">Hapus semua acara</string>
     <string name="delete_all_events_confirmation">Apakah anda yakin ingin menghapus semua acara? Tindakan ini tidak akan menghapus kategori dan pengaturan lainnya.</string>
     <string name="show_a_grid">Tampilkan grid</string>
-    <string name="loop_reminders">Ulangi pengingat sampai diberhentikan</string>
+    <string name="loop_reminders">Ulangi pengingat sampai dihentikan</string>
     <string name="dim_past_events">Redupkan acara yang sudah lewat</string>
     <string name="events">Acara</string>
-    <string name="reminder_stream">Audio yang digunakan oleh pengingat</string>
+    <string name="reminder_stream">Audio yang digunakan pengingat</string>
     <string name="system_stream">Sistem</string>
     <string name="alarm_stream">Alarm</string>
     <string name="notification_stream">Notifikasi</string>
@@ -184,9 +184,9 @@
     <string name="last_view">Tampilan terakhir</string>
     <string name="new_events">Acara baru</string>
     <string name="default_start_time">Waktu mulai default</string>
-    <string name="next_full_hour">Seluruh jam berikutnya</string>
+    <string name="next_full_hour">Satu jam kedepan</string>
     <string name="default_duration">Durasi default</string>
-    <string name="last_used_one">Yang terakhir digunakan</string>
+    <string name="last_used_one">Terakhir digunakan</string>
     <string name="other_time">Waktu lainnya</string>
     <string name="highlight_weekends">Sorot akhir pekan pada beberapa tampilan</string>
 
@@ -239,7 +239,7 @@
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Simple Calendar Pro - Acara &amp; Pengingat</string>
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">A beautiful calendar without ads or weird permissions.</string>
+    <string name="app_short_description">Aplikasi kalender yang indah tanpa iklan dan perizinan yang tidak diperlukan.</string>
     <string name="app_long_description">
         Simple Calendar Pro adalah kalender luring sederhana yang mudah digunakan dan dibuat sesuai dengan fungsi-fungsi dasar sebuah kalender. <b>Tanpa fitur yang terlalu rumit, perizinan yang tidak diperlukan dan sama sekali tanpa iklan!</b>
 
