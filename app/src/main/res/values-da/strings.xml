@@ -11,7 +11,7 @@
     <string name="no_upcoming_events">Du ser ikke ud til at have nogen forestående begivenheder.</string>
     <string name="go_to_today">Gå til i dag</string>
     <string name="go_to_date">Gå til dato</string>
-    <string name="upgraded_from_free">Hey,\n\nseems like you upgraded from the old free app. You have to migrate locally stored events manually via exporting in an .ics file, then importing. You can find both export/import buttons at the main screen menu.\n\nYou can then uninstall the old version, which has an \'Upgrade to Pro\' button at the top of the app settings. You will then only have to reset your app settings.\n\nThanks!</string>
+    <string name="upgraded_from_free">Hej!\n\nDet ser ud til at du har opgraderet fra den gamle, gratis app. Du skal flytte lokalt gemte begivenheder manuelt til en ics-fil via eksportfunktionen og bagefter importere. Både import og eksport finder du i hovedmenuen.\n\nDu kan nu afinstallere den gamle version, som har en \'Upgrade to Pro\'-knap øverst i app-indstillingerne. Du skal til sidst bare nulstille dine app-indstillinger.\n\nTak!</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Månedlig kalender</string>
@@ -51,7 +51,7 @@
     <string name="update_one_only">Opdater kun denne forekomst</string>
     <string name="update_all_occurrences">Opdater alle forekomster</string>
     <string name="repeat_till_date">Gentag indtil</string>
-    <string name="stop_repeating_after_x">Stop repeating after x occurrences</string>
+    <string name="stop_repeating_after_x">Stop gentagelse efter x gange</string>
     <string name="repeat_forever">For altid</string>
     <string name="times">gange</string>
     <string name="repeat">Gentag</string>
@@ -82,7 +82,7 @@
     <string name="last_f">sidste</string>
 
     <!-- Birthdays -->
-    <string name="birthdays">Fødselsdag</string>
+    <string name="birthdays">Fødselsdage</string>
     <string name="add_birthdays">Tilføj dine kontakters fødselsdage</string>
     <string name="no_birthdays">Der blev ikke fundet nogen fødselsdage</string>
     <string name="no_new_birthdays">Der blev ikke fundet nogen nye fødselsdage</string>
@@ -102,7 +102,7 @@
     <string name="event_reminders">Påmindelser</string>
 
     <!-- Event attendees -->
-    <string name="add_another_attendee">Tilføj en anden deltager</string>
+    <string name="add_another_attendee">Tilføj deltager</string>
     <string name="my_status">Min status:</string>
     <string name="going">Kommer</string>
     <string name="not_going">Kommer ikke</string>
@@ -188,7 +188,7 @@
     <string name="default_duration">Standard varighed</string>
     <string name="last_used_one">Senest brugte</string>
     <string name="other_time">Anden tid</string>
-    <string name="highlight_weekends">Highlight weekends on some views</string>
+    <string name="highlight_weekends">Fremhæv weekender i visse visninger</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -229,7 +229,7 @@
     <string name="faq_1_text">Helligdage oprettet på den måde er indsat under begivenhedstypen \"Helligdage\". Gå til Indstillinger -> Håndter begivenhedstyper. Efter et par sekunders pres på en type kan du slette den ved at klikke på papirkurven.</string>
     <string name="faq_2_title">Kan jeg synkronisere mine begivenheder med Googles kalender eller en anden kalender der understøtter CalDAV?</string>
     <string name="faq_2_text">Ja, klik på \"CalDAV sync\" i appens indstillinger og vælg de kalendere du vil synkronisere. Det kræver dog at du har en app til at synkronisere mellem din enhed og kalenderservere.
-        Hvis du vil synkronisere en Googlekalender, kan deres officielle app klare det. For andre kalenderes vedkommende kan du bruge en 3. partsapp som for eksempel DAVdroid.</string>
+        Hvis du vil synkronisere en Googlekalender, kan Googles officielle app klare det. For andre kalenderes vedkommende kan du bruge en 3. partsapp som for eksempel DAVdroid.</string>
     <string name="faq_3_title">Jeg kan se mine påmindelser, men der er ingen lyd på. Hvad kan jeg gøre ved det?</string>
     <string name="faq_3_text">Såvel visning af påmindelser som afspilning af lyd til dem, er afhængig af systemet. Hvis ikke du kan høre nogen lyd, kan du prøve at gå ind i appens indstillinger. Her kan du trykke på \"Audio-stream anvendt af påmindelser\"  og vælge en anden indstilling. Virker det stadig ikke skal du tjekke i dine lydindstillinger om lyden i det aktuelle valg er slået fra.</string>
 
