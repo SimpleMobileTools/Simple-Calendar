@@ -13,12 +13,14 @@ import com.simplemobiletools.calendar.pro.activities.SplashActivity
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.launchNewEventIntent
 import com.simplemobiletools.calendar.pro.services.WidgetService
+import com.simplemobiletools.calendar.pro.services.WidgetServiceEmpty
 import com.simplemobiletools.commons.extensions.*
 import org.joda.time.DateTime
 
 class MyWidgetListProvider : AppWidgetProvider() {
     private val NEW_EVENT = "new_event"
     private val LAUNCH_CAL = "launch_cal"
+    private val GO_TO_TODAY = "go_to_today"
 
     override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
         performUpdate(context)
@@ -45,6 +47,9 @@ class MyWidgetListProvider : AppWidgetProvider() {
             views.setImageViewBitmap(R.id.widget_event_new_event, context.resources.getColoredBitmap(R.drawable.ic_plus, textColor))
             setupIntent(context, views, NEW_EVENT, R.id.widget_event_new_event)
             setupIntent(context, views, LAUNCH_CAL, R.id.widget_event_list_today)
+
+            views.setImageViewBitmap(R.id.widget_event_go_to_today, context.resources.getColoredBitmap(R.drawable.ic_today, textColor))
+            setupIntent(context, views, GO_TO_TODAY, R.id.widget_event_go_to_today)
 
             Intent(context, WidgetService::class.java).apply {
                 data = Uri.parse(this.toUri(Intent.URI_INTENT_SCHEME))
@@ -75,6 +80,7 @@ class MyWidgetListProvider : AppWidgetProvider() {
         when (intent.action) {
             NEW_EVENT -> context.launchNewEventIntent()
             LAUNCH_CAL -> launchCalenderInDefaultView(context)
+            GO_TO_TODAY -> goToToday(context)
             else -> super.onReceive(context, intent)
         }
     }
@@ -86,5 +92,21 @@ class MyWidgetListProvider : AppWidgetProvider() {
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             context.startActivity(this)
         }
+    }
+
+    // hacky solution for reseting the events list
+    private fun goToToday(context: Context) {
+        val appWidgetManager = AppWidgetManager.getInstance(context)
+        appWidgetManager.getAppWidgetIds(getComponentName(context)).forEach {
+            val views = RemoteViews(context.packageName, R.layout.widget_event_list)
+            Intent(context, WidgetServiceEmpty::class.java).apply {
+                data = Uri.parse(this.toUri(Intent.URI_INTENT_SCHEME))
+                views.setRemoteAdapter(R.id.widget_event_list, this)
+            }
+
+            appWidgetManager.updateAppWidget(it, views)
+        }
+
+        performUpdate(context)
     }
 }
