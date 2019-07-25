@@ -935,6 +935,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             add(Release(119, R.string.release_119))
             add(Release(129, R.string.release_129))
             add(Release(143, R.string.release_143))
+            add(Release(155, R.string.release_155))
             checkWhatsNew(this, BuildConfig.VERSION_CODE)
         }
     }
