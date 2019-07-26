@@ -145,7 +145,7 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
 
     override fun getLoadingView() = null
 
-    override fun getViewTypeCount() = 2
+    override fun getViewTypeCount() = 3
 
     override fun onCreate() {}
 
