@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 6.5.7 *(2019-08-07)*
+----------------------------
+
+ * Properly use the selected default event calendar, even at CalDAV synced ones
+ * Fixing invisible buttons at the date/time pickers with light theme
+ * Fixed a couple other smaller glitches and added some translation improvements
+
 Version 6.5.6 *(2019-07-26)*
 ----------------------------
 
