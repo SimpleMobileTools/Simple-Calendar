@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="package_name">com.simplemobiletools.calendar.pro</string>
 
     <!-- Release notes -->
     <string name="release_155">Allow customizing the bottom navigation bar color</string>

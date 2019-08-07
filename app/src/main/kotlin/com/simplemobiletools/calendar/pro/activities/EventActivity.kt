@@ -90,6 +90,10 @@ class EventActivity : SimpleActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_event)
 
+        if (checkAppSideloading()) {
+            return
+        }
+
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_cross)
         val intent = intent ?: return
         mDialogTheme = getDialogTheme()
