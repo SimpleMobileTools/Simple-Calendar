@@ -257,7 +257,7 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
             .setAutoCancel(true)
             .setSound(Uri.parse(soundUri), config.reminderAudioStream)
             .setChannelId(channelId)
-            .addAction(R.drawable.ic_snooze, getString(R.string.snooze), getSnoozePendingIntent(this, event))
+            .addAction(R.drawable.ic_snooze_vector, getString(R.string.snooze), getSnoozePendingIntent(this, event))
 
     if (config.vibrateOnReminder) {
         val vibrateArray = LongArray(2) { 500 }

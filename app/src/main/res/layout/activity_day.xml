@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/activity_margin"
-        android:src="@drawable/ic_plus"
+        android:src="@drawable/ic_plus_vector"
         app:backgroundTint="@color/color_primary"
         app:rippleColor="@color/pressed_item_foreground"/>
 

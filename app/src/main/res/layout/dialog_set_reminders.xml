@@ -17,7 +17,7 @@
         android:layout_marginStart="@dimen/normal_margin"
         android:alpha="0.8"
         android:padding="@dimen/medium_margin"
-        android:src="@drawable/ic_bell"/>
+        android:src="@drawable/ic_bell_vector"/>
 
     <com.simplemobiletools.commons.views.MyTextView
         android:id="@+id/set_reminders_1"

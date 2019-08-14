@@ -95,7 +95,7 @@ class EventActivity : SimpleActivity() {
             return
         }
 
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_cross)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_cross_vector)
         val intent = intent ?: return
         mDialogTheme = getDialogTheme()
         mWasContactsPermissionChecked = hasPermission(PERMISSION_READ_CONTACTS)
@@ -716,7 +716,7 @@ class EventActivity : SimpleActivity() {
 
     private fun updateReminderTypeImage(view: ImageView, reminder: Reminder) {
         view.beVisibleIf(reminder.minutes != REMINDER_OFF && mEventCalendarId != STORED_LOCALLY_ONLY)
-        val drawable = if (reminder.type == REMINDER_NOTIFICATION) R.drawable.ic_bell else R.drawable.ic_email
+        val drawable = if (reminder.type == REMINDER_NOTIFICATION) R.drawable.ic_bell_vector else R.drawable.ic_email_vector
         val icon = resources.getColoredDrawableWithColor(drawable, config.textColor)
         view.setImageDrawable(icon)
     }

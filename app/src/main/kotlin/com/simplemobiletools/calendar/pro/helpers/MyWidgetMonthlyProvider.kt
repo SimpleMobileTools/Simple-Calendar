@@ -181,7 +181,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
                 bmp = resources.getColoredBitmap(R.drawable.ic_today, textColor)
                 views.setImageViewBitmap(R.id.top_go_to_today, bmp)
 
-                bmp = resources.getColoredBitmap(R.drawable.ic_plus, textColor)
+                bmp = resources.getColoredBitmap(R.drawable.ic_plus_vector, textColor)
                 views.setImageViewBitmap(R.id.top_new_event, bmp)
 
                 val shouldGoToTodayBeVisible = currTargetDate.withTime(0, 0, 0, 0) != DateTime.now().withDayOfMonth(1).withTime(0, 0, 0, 0)
