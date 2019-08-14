@@ -9,12 +9,12 @@
         app:showAsAction="collapseActionView|ifRoom"/>
     <item
         android:id="@+id/go_to_today"
-        android:icon="@drawable/ic_today"
+        android:icon="@drawable/ic_today_vector"
         android:title="@string/go_to_today"
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/change_view"
-        android:icon="@drawable/ic_change_view"
+        android:icon="@drawable/ic_change_view_vector"
         android:title="@string/change_view"
         app:showAsAction="ifRoom"/>
     <item

@@ -33,7 +33,7 @@
         android:paddingEnd="@dimen/medium_margin"
         android:paddingBottom="@dimen/small_margin"
         android:scaleType="fitCenter"
-        android:src="@drawable/ic_today"/>
+        android:src="@drawable/ic_today_vector"/>
 
     <ImageView
         android:id="@+id/widget_event_new_event"
