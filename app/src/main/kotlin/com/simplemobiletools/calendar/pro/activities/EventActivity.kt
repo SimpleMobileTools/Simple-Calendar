@@ -222,6 +222,7 @@ class EventActivity : SimpleActivity() {
             menu.findItem(R.id.share).isVisible = mEvent.id != null
             menu.findItem(R.id.duplicate).isVisible = mEvent.id != null
         }
+        updateMenuItemColors(menu)
         return true
     }
 
