@@ -57,7 +57,7 @@ class DayFragment : Fragment() {
                 mListener?.goLeft()
             }
 
-            val pointerLeft = context!!.getDrawable(R.drawable.ic_pointer_left)
+            val pointerLeft = context!!.getDrawable(R.drawable.ic_chevron_left_vector)
             pointerLeft?.isAutoMirrored = true
             setImageDrawable(pointerLeft)
         }
@@ -69,7 +69,7 @@ class DayFragment : Fragment() {
                 mListener?.goRight()
             }
 
-            val pointerRight = context!!.getDrawable(R.drawable.ic_pointer_right)
+            val pointerRight = context!!.getDrawable(R.drawable.ic_chevron_right_vector)
             pointerRight?.isAutoMirrored = true
             setImageDrawable(pointerRight)
         }

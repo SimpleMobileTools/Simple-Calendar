@@ -181,7 +181,14 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
         setupWeeklyActionbarTitle(currentWeekTS)
     }
 
-    override fun getNewEventDayCode() = Formatter.getDayCodeFromTS(currentWeekTS)
+    override fun getNewEventDayCode(): String {
+        val currentTS = System.currentTimeMillis() / 1000
+        return if (currentTS > currentWeekTS && currentTS < currentWeekTS + WEEK_SECONDS) {
+            Formatter.getTodayCode()
+        } else {
+            Formatter.getDayCodeFromTS(currentWeekTS)
+        }
+    }
 
     override fun scrollTo(y: Int) {
         weekHolder!!.week_view_hours_scrollview.scrollY = y

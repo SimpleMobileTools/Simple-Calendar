@@ -54,7 +54,7 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:paddingStart="@dimen/small_margin"
             android:paddingEnd="@dimen/small_margin"
-            android:src="@drawable/ic_place"/>
+            android:src="@drawable/ic_place_vector"/>
 
         <com.simplemobiletools.commons.views.MyEditText
             android:id="@+id/event_description"
@@ -92,7 +92,7 @@
             android:layout_alignBottom="@+id/event_all_day"
             android:layout_marginStart="@dimen/normal_margin"
             android:padding="@dimen/medium_margin"
-            android:src="@drawable/ic_clock"/>
+            android:src="@drawable/ic_clock_vector"/>
 
         <com.simplemobiletools.commons.views.MySwitchCompat
             android:id="@+id/event_all_day"
@@ -176,7 +176,7 @@
             android:layout_alignBottom="@+id/event_reminder_1"
             android:layout_marginStart="@dimen/normal_margin"
             android:padding="@dimen/medium_margin"
-            android:src="@drawable/ic_bell"/>
+            android:src="@drawable/ic_bell_vector"/>
 
         <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/event_reminder_1"
@@ -204,7 +204,7 @@
             android:layout_marginStart="@dimen/small_margin"
             android:background="?attr/selectableItemBackground"
             android:padding="@dimen/activity_margin"
-            android:src="@drawable/ic_bell"/>
+            android:src="@drawable/ic_bell_vector"/>
 
         <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/event_reminder_2"
@@ -234,7 +234,7 @@
             android:layout_marginStart="@dimen/small_margin"
             android:background="?attr/selectableItemBackground"
             android:padding="@dimen/activity_margin"
-            android:src="@drawable/ic_bell"/>
+            android:src="@drawable/ic_bell_vector"/>
 
         <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/event_reminder_3"
@@ -264,7 +264,7 @@
             android:layout_marginStart="@dimen/small_margin"
             android:background="?attr/selectableItemBackground"
             android:padding="@dimen/activity_margin"
-            android:src="@drawable/ic_bell"/>
+            android:src="@drawable/ic_bell_vector"/>
 
         <ImageView
             android:id="@+id/event_reminder_divider"
@@ -285,7 +285,7 @@
             android:layout_alignBottom="@+id/event_repetition"
             android:layout_marginStart="@dimen/normal_margin"
             android:padding="@dimen/medium_margin"
-            android:src="@drawable/ic_repeat"/>
+            android:src="@drawable/ic_repeat_vector"/>
 
         <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/event_repetition"
@@ -381,7 +381,7 @@
             android:layout_marginStart="@dimen/normal_margin"
             android:layout_marginTop="@dimen/small_margin"
             android:padding="@dimen/medium_margin"
-            android:src="@drawable/ic_people"/>
+            android:src="@drawable/ic_group_vector"/>
 
         <LinearLayout
             android:id="@+id/event_attendees_holder"
@@ -479,7 +479,7 @@
             android:layout_alignBottom="@+id/event_type_holder"
             android:layout_marginStart="@dimen/normal_margin"
             android:padding="@dimen/medium_margin"
-            android:src="@drawable/ic_color"/>
+            android:src="@drawable/ic_color_vector"/>
 
         <RelativeLayout
             android:id="@+id/event_type_holder"

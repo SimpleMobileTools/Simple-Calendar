@@ -3,12 +3,12 @@
       xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/save"
-        android:icon="@drawable/ic_check"
+        android:icon="@drawable/ic_check_vector"
         android:title="@string/save"
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/delete"
-        android:icon="@drawable/ic_delete"
+        android:icon="@drawable/ic_delete_vector"
         android:title="@string/delete"
         app:showAsAction="ifRoom"/>
     <item
@@ -18,7 +18,7 @@
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/share"
-        android:icon="@drawable/ic_share"
+        android:icon="@drawable/ic_share_vector"
         android:title="@string/share"
         app:showAsAction="ifRoom"/>
 </menu>

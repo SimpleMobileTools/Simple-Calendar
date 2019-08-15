@@ -8,7 +8,7 @@
 
     <item
         android:bottom="@dimen/medium_margin"
-        android:drawable="@drawable/ic_person"
+        android:drawable="@drawable/ic_person_vector"
         android:left="@dimen/medium_margin"
         android:right="@dimen/medium_margin"
         android:top="@dimen/medium_margin"/>

@@ -45,10 +45,10 @@
     <string name="forever">Alltid</string>
     <string name="event_is_repeatable">Händelsen är återkommande</string>
     <string name="selection_contains_repetition">Markeringen innehåller återkommande händelser</string>
-    <string name="delete_one_only">Ta bara bort den markerade förekomsten</string>
+    <string name="delete_one_only">Ta bara bort den valda förekomsten</string>
     <string name="delete_future_occurrences">Ta bort denna och alla framtida förekomster</string>
     <string name="delete_all_occurrences">Ta bort alla förekomster</string>
-    <string name="update_one_only">Uppdatera bara den markerade förekomsten</string>
+    <string name="update_one_only">Uppdatera bara den valda förekomsten</string>
     <string name="update_all_occurrences">Uppdatera alla förekomster</string>
     <string name="repeat_till_date">Upprepa till ett datum</string>
     <string name="stop_repeating_after_x">Sluta upprepa efter x förekomster</string>
@@ -57,7 +57,7 @@
     <string name="repeat">Upprepa</string>
     <string name="repeat_on">Upprepa på</string>
     <string name="every_day">Varje dag</string>
-    <string name="selected_days">På markerade dagar</string>
+    <string name="selected_days">På valda dagar</string>
     <string name="the_same_day">Samma dag</string>
     <string name="the_last_day">Den sista dagen</string>
     <string name="repeat_on_the_same_day_monthly">Upprepa på samma dag varje månad</string>
@@ -85,29 +85,29 @@
     <string name="birthdays">Födelsedagar</string>
     <string name="add_birthdays">Lägg till kontakters födelsedagar</string>
     <string name="no_birthdays">Inga födelsedagar hittades</string>
-    <string name="no_new_birthdays">No new birthdays have been found</string>
+    <string name="no_new_birthdays">Inga nya födelsedagar hittades</string>
     <string name="birthdays_added">Födelsedagarna har lagts till</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Årsdagar</string>
     <string name="add_anniversaries">Lägg till kontakters årsdagar</string>
     <string name="no_anniversaries">Inga årsdagar hittades</string>
-    <string name="no_new_anniversaries">No new anniversaries have been found</string>
+    <string name="no_new_anniversaries">Inga nya årsdagar hittades</string>
     <string name="anniversaries_added">Årsdagarna har lagts till</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Påminnelse</string>
-    <string name="before">före</string>
+    <string name="before">innan</string>
     <string name="add_another_reminder">Lägg till en annan påminnelse</string>
     <string name="event_reminders">Händelsepåminnelser</string>
 
     <!-- Event attendees -->
-    <string name="add_another_attendee">Add another attendee</string>
-    <string name="my_status">My status:</string>
-    <string name="going">Going</string>
-    <string name="not_going">Not going</string>
-    <string name="maybe_going">Maybe going</string>
-    <string name="invited">Invited</string>
+    <string name="add_another_attendee">Lägg till en annan deltagare</string>
+    <string name="my_status">Min status:</string>
+    <string name="going">Kommer</string>
+    <string name="not_going">Kommer inte</string>
+    <string name="maybe_going">Kommer kanske</string>
+    <string name="invited">Inbjuden</string>
 
     <!-- Export / Import -->
     <string name="import_events">Importera händelser</string>
@@ -188,7 +188,7 @@
     <string name="default_duration">Standardvaraktighet</string>
     <string name="last_used_one">Senast använda</string>
     <string name="other_time">Annan tid</string>
-    <string name="highlight_weekends">Highlight weekends on some views</string>
+    <string name="highlight_weekends">Markera veckoslut i vissa vyer</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -220,7 +220,7 @@
     <string name="sample_title_2">Möte med Johan</string>
     <string name="sample_description_2">I trädgården</string>
     <string name="sample_title_3">Biblioteket</string>
-    <string name="sample_title_4">Lunch med Marie</string>
+    <string name="sample_title_4">Lunch med Maria</string>
     <string name="sample_description_4">På stranden</string>
     <string name="sample_title_5">Kaffedags</string>
 
@@ -239,7 +239,7 @@
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Simple Calendar Pro - Events &amp; Reminders</string>
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">A beautiful calendar without ads or weird permissions.</string>
+    <string name="app_short_description">A beautiful calendar without ads, 100% money back guarantee.</string>
     <string name="app_long_description">
         Simple Calendar Pro is a fully customizable, offline calendar designed to do exactly what a calendar should do. <b>No complicated features, unnecessary permissions and no ads!</b>
 

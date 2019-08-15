@@ -7,8 +7,6 @@ import com.simplemobiletools.commons.activities.BaseSplashActivity
 import org.joda.time.DateTime
 
 class SplashActivity : BaseSplashActivity() {
-    override fun getAppPackageName() = packageName
-
     override fun initActivity() {
         when {
             intent.extras?.containsKey(DAY_CODE) == true -> Intent(this, MainActivity::class.java).apply {

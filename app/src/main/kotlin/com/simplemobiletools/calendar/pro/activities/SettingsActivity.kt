@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.res.Resources
 import android.media.AudioManager
 import android.os.Bundle
+import android.view.Menu
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.dialogs.SelectCalendarsDialog
 import com.simplemobiletools.calendar.pro.dialogs.SelectEventTypeDialog
@@ -77,6 +78,7 @@ class SettingsActivity : SimpleActivity() {
         setupSectionColors()
         setupExportSettings()
         setupImportSettings()
+        invalidateOptionsMenu()
     }
 
     override fun onPause() {
@@ -90,6 +92,11 @@ class SettingsActivity : SimpleActivity() {
         config.defaultReminder1 = reminders.getOrElse(0) { REMINDER_OFF }
         config.defaultReminder2 = reminders.getOrElse(1) { REMINDER_OFF }
         config.defaultReminder3 = reminders.getOrElse(2) { REMINDER_OFF }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        updateMenuItemColors(menu)
+        return super.onCreateOptionsMenu(menu)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {

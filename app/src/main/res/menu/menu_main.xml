@@ -3,28 +3,28 @@
       xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/search"
-        android:icon="@drawable/ic_search"
+        android:icon="@drawable/ic_search_vector"
         android:title="@string/search"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="collapseActionView|ifRoom"/>
     <item
         android:id="@+id/go_to_today"
-        android:icon="@drawable/ic_today"
+        android:icon="@drawable/ic_today_vector"
         android:title="@string/go_to_today"
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/change_view"
-        android:icon="@drawable/ic_change_view"
+        android:icon="@drawable/ic_change_view_vector"
         android:title="@string/change_view"
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/filter"
-        android:icon="@drawable/ic_filter"
+        android:icon="@drawable/ic_filter_vector"
         android:title="@string/filter_events_by_type"
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/refresh_caldav_calendars"
-        android:icon="@drawable/ic_repeat"
+        android:icon="@drawable/ic_repeat_vector"
         android:title="@string/refresh_caldav_calendars"
         app:showAsAction="ifRoom"/>
     <item

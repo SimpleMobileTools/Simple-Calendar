@@ -41,6 +41,7 @@ class ManageEventTypesActivity : SimpleActivity(), DeleteEventTypesListener {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_event_types, menu)
+        updateMenuItemColors(menu)
         return true
     }
 

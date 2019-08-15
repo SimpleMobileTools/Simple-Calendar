@@ -16,7 +16,7 @@
         android:layout_alignBottom="@+id/top_value"
         android:paddingStart="@dimen/medium_margin"
         android:paddingEnd="@dimen/medium_margin"
-        android:src="@drawable/ic_pointer_left"/>
+        android:src="@drawable/ic_chevron_left_vector"/>
 
     <TextView
         android:id="@+id/top_value"
@@ -42,7 +42,7 @@
         android:layout_toStartOf="@+id/top_right_arrow"
         android:paddingStart="@dimen/medium_margin"
         android:paddingEnd="@dimen/medium_margin"
-        android:src="@drawable/ic_today"/>
+        android:src="@drawable/ic_today_vector"/>
 
     <ImageView
         android:id="@+id/top_right_arrow"
@@ -54,7 +54,7 @@
         android:layout_toStartOf="@+id/top_new_event"
         android:paddingStart="@dimen/medium_margin"
         android:paddingEnd="@dimen/medium_margin"
-        android:src="@drawable/ic_pointer_right"/>
+        android:src="@drawable/ic_chevron_right_vector"/>
 
     <ImageView
         android:id="@+id/top_new_event"
@@ -66,7 +66,7 @@
         android:layout_alignParentEnd="true"
         android:paddingStart="@dimen/medium_margin"
         android:paddingEnd="@dimen/medium_margin"
-        android:src="@drawable/ic_plus"/>
+        android:src="@drawable/ic_plus_vector"/>
 
     <include
         android:id="@+id/first_row_widget"

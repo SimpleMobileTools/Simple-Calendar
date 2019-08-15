@@ -56,6 +56,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private var wasExtraHeightAdded = false
     private var dimPastEvents = true
     private var selectedGrid: View? = null
+    private var currentTimeView: ImageView? = null
     private var events = ArrayList<Event>()
     private var allDayHolders = ArrayList<RelativeLayout>()
     private var allDayRows = ArrayList<HashSet<Int>>()
@@ -372,7 +373,12 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         if (todayColumnIndex != -1) {
             val minutes = DateTime().minuteOfDay
             val todayColumn = getColumnWithId(todayColumnIndex)
-            (inflater.inflate(R.layout.week_now_marker, null, false) as ImageView).apply {
+            if (currentTimeView != null) {
+                mView.week_events_holder.removeView(currentTimeView)
+            }
+
+            currentTimeView = (inflater.inflate(R.layout.week_now_marker, null, false) as ImageView)
+            currentTimeView!!.apply {
                 applyColorFilter(primaryColor)
                 mView.week_events_holder.addView(this, 0)
                 val extraWidth = (todayColumn.width * 0.3).toInt()

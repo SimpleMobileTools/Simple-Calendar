@@ -80,6 +80,7 @@ class EventActivity : SimpleActivity() {
     private var mAttendeeAutoCompleteViews = ArrayList<MyAutoCompleteTextView>()
     private var mAvailableContacts = ArrayList<Attendee>()
     private var mSelectedContacts = ArrayList<Attendee>()
+    private var mStoredEventTypes = ArrayList<EventType>()
 
     private lateinit var mAttendeePlaceholder: Drawable
     private lateinit var mEventStartDateTime: DateTime
@@ -90,7 +91,11 @@ class EventActivity : SimpleActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_event)
 
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_cross)
+        if (checkAppSideloading()) {
+            return
+        }
+
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_cross_vector)
         val intent = intent ?: return
         mDialogTheme = getDialogTheme()
         mWasContactsPermissionChecked = hasPermission(PERMISSION_READ_CONTACTS)
@@ -99,13 +104,14 @@ class EventActivity : SimpleActivity() {
 
         val eventId = intent.getLongExtra(EVENT_ID, 0L)
         ensureBackgroundThread {
+            mStoredEventTypes = eventTypesDB.getEventTypes().toMutableList() as ArrayList<EventType>
             val event = eventsDB.getEventWithId(eventId)
             if (eventId != 0L && event == null) {
                 finish()
                 return@ensureBackgroundThread
             }
 
-            val localEventType = eventTypesDB.getEventTypeWithId(config.lastUsedLocalEventTypeId)
+            val localEventType = mStoredEventTypes.firstOrNull { it.id == config.lastUsedLocalEventTypeId }
             runOnUiThread {
                 gotEvent(savedInstanceState, localEventType, event)
             }
@@ -216,6 +222,7 @@ class EventActivity : SimpleActivity() {
             menu.findItem(R.id.share).isVisible = mEvent.id != null
             menu.findItem(R.id.duplicate).isVisible = mEvent.id != null
         }
+        updateMenuItemColors(menu)
         return true
     }
 
@@ -338,6 +345,10 @@ class EventActivity : SimpleActivity() {
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
         event_title.requestFocus()
         updateActionBarTitle(getString(R.string.new_event))
+        if (config.defaultEventTypeId != -1L) {
+            config.lastUsedCaldavCalendarId = mStoredEventTypes.firstOrNull { it.id == config.defaultEventTypeId }?.caldavCalendarId ?: 0
+        }
+
         val isLastCaldavCalendarOK = config.caldavSync && config.getSyncedCalendarIdsAsList().contains(config.lastUsedCaldavCalendarId)
         mEventCalendarId = if (isLastCaldavCalendarOK) config.lastUsedCaldavCalendarId else STORED_LOCALLY_ONLY
 
@@ -706,7 +717,7 @@ class EventActivity : SimpleActivity() {
 
     private fun updateReminderTypeImage(view: ImageView, reminder: Reminder) {
         view.beVisibleIf(reminder.minutes != REMINDER_OFF && mEventCalendarId != STORED_LOCALLY_ONLY)
-        val drawable = if (reminder.type == REMINDER_NOTIFICATION) R.drawable.ic_bell else R.drawable.ic_email
+        val drawable = if (reminder.type == REMINDER_NOTIFICATION) R.drawable.ic_bell_vector else R.drawable.ic_email_vector
         val icon = resources.getColoredDrawableWithColor(drawable, config.textColor)
         view.setImageDrawable(icon)
     }

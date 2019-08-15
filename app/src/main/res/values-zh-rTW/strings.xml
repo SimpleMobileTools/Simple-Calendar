@@ -11,7 +11,7 @@
     <string name="no_upcoming_events">你近期似乎沒有任何活動。</string>
     <string name="go_to_today">前往今天</string>
     <string name="go_to_date">前往日期</string>
-    <string name="upgraded_from_free">嘿\n\n你似乎從舊版免費應用程式升級了。你必須手動搬移儲存在本機端的活動，透過匯出.ics檔案再接著匯入。你可以在主畫面選單中，找到 匯出/匯入 兩個按鈕。\n\n然後你能解除安裝舊版了，在應用程式設定的頂端有個\'升級至專業版\'按鈕。你只需要重置你的應用程式設定。\n\n感謝!</string>
+    <string name="upgraded_from_free">嘿\n\n你似乎從舊版免費應用程式升級了。你必須手動搬移儲存在本機端的活動，透過匯出 .ics 檔案再接著匯入。你可以在主畫面選單中，找到 匯出/匯入 兩個按鈕。\n\n然後你能解除安裝舊版了，在應用程式設定的頂端有個\'升級至專業版\'按鈕。你只需要重置你的應用程式設定。\n\n感謝!</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">月曆</string>
@@ -51,13 +51,13 @@
     <string name="update_one_only">只更新選擇的事件</string>
     <string name="update_all_occurrences">更新全部事件</string>
     <string name="repeat_till_date">重複直到某日</string>
-    <string name="stop_repeating_after_x">經過x次後停止重複</string>
+    <string name="stop_repeating_after_x">經過 x 次後停止重複</string>
     <string name="repeat_forever">永遠重複</string>
     <string name="times">次</string>
     <string name="repeat">重複</string>
     <string name="repeat_on">重複於</string>
     <string name="every_day">每天</string>
-    <string name="selected_days">On selected days</string>
+    <string name="selected_days">在選定的日期</string>
     <string name="the_same_day">同一天</string>
     <string name="the_last_day">最後一天</string>
     <string name="repeat_on_the_same_day_monthly">重複每月同一天</string>
@@ -112,12 +112,12 @@
     <!-- Export / Import -->
     <string name="import_events">匯入活動</string>
     <string name="export_events">匯出活動</string>
-    <string name="import_events_from_ics">從.ics檔案匯入活動</string>
-    <string name="export_events_to_ics">匯出活動成.ics檔案</string>
+    <string name="import_events_from_ics">從 .ics 檔案匯入活動</string>
+    <string name="export_events_to_ics">匯出活動成 .ics 檔案</string>
     <string name="default_event_type">預設活動類型</string>
     <string name="export_past_events_too">也匯出過去的活動</string>
     <string name="include_event_types">包含活動類型</string>
-    <string name="filename_without_ics">檔案名稱 (不含.ics)</string>
+    <string name="filename_without_ics">檔案名稱 (不含 .ics )</string>
     <string name="override_event_types">覆寫檔案內的活動類型</string>
 
     <!-- Event details -->
@@ -140,14 +140,14 @@
     <string name="select_event_type">選擇活動類型</string>
     <string name="move_events_into_default">受影響的活動移到預設活動類型</string>
     <string name="remove_affected_events">受影響的活動永久移除</string>
-    <string name="unsync_caldav_calendar">想移除CalDAV行事曆，你必須取消同步</string>
+    <string name="unsync_caldav_calendar">想移除 CalDAV 行事曆，你必須取消同步</string>
 
     <!-- Holidays -->
     <string name="holidays">節日</string>
     <string name="add_holidays">添加節日</string>
     <string name="national_holidays">國定節日</string>
     <string name="religious_holidays">宗教節日</string>
-    <string name="holidays_imported_successfully">節日已成功匯入"節日"活動類型</string>
+    <string name="holidays_imported_successfully">節日已成功匯入「節日」活動類型</string>
     <string name="importing_some_holidays_failed">匯入一些活動失敗</string>
     <string name="importing_holidays_failed">匯入節日失敗</string>
 
@@ -225,30 +225,30 @@
     <string name="sample_title_5">休息時間</string>
 
     <!-- FAQ -->
-    <string name="faq_1_title">我如何移除用[添加節日]按鈕所匯入的節日?</string>
+    <string name="faq_1_title">我如何移除用「添加節日」按鈕所匯入的節日?</string>
     <string name="faq_1_text">以這方式建立的節日，會被加進一個叫做「節日」的新活動類型。
         你可以到[設定] -> [管理活動類型]，長按特定的活動類型，然後選擇垃圾桶來刪除。</string>
-    <string name="faq_2_title">我可以透過Google日曆或其它支援CalDAV的服務來同步我的活動嗎?</string>
-    <string name="faq_2_text">行的，只要打開程式設定內的[CalDAV同步]，然後選擇你要同步的行事曆。然而你需要一些第三方應用程式來處理裝置和伺服器之間的同步。
-        如果你要同步Google日曆，他們官方的行事曆程式就能做到了。而其它行事曆，你需要有第三方同步工具才行，像是DAVdroid。</string>
+    <string name="faq_2_title">我可以透過 Google 日曆或其它支援 CalDAV 的服務來同步我的活動嗎?</string>
+    <string name="faq_2_text">行的，只要打開程式設定內的「CalDAV 同步」，然後選擇你要同步的行事曆。然而你需要一些第三方應用程式來處理裝置和伺服器之間的同步。
+        如果你要同步 Google 日曆，他們官方的行事曆程式就能做到了。而其它行事曆，你需要有第三方同步工具才行，像是 DAVdroid。</string>
     <string name="faq_3_title">我看到了視覺的提醒，但沒聽到音效。我能怎麼辦?</string>
     <string name="faq_3_text">不只是顯示實際的提醒，播放音效也受到系統極大的影響。如果你聽不到任何聲音，試著到應用程式設定，
         按\"用於提醒的音源串流\"選項，然後更改成不同數值。如果還是沒有用，檢查你的音量設定，指定串流是不是靜音的。</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
-    <string name="app_title">簡易行事曆 Pro - 活動&amp;約會</string>
+    <string name="app_title">簡易行事曆 Pro - 活動和約會</string>
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">A beautiful calendar without ads or weird permissions.</string>
+    <string name="app_short_description">一個沒有廣告而且美麗的日曆，100%保證退款。</string>
     <string name="app_long_description">
-        簡易行事曆Pro是一個高度自訂化，完全旨在於行事曆應該做什麼的離線行事曆。 <b>沒有複雜的功能、非必要的權限和廣告!</b>
+        簡易行事曆Pro是一個高度自訂化，完全旨在於行事曆應該做什麼的離線行事曆。 <b>沒有複雜的功能、非必要的權限和廣告！</b>
 
-        無論您是要安排單一還是反復的活動、生日、紀念日、業務會議、約會或任何其他活動，簡易行事曆Pro都能讓您<b>輕鬆維持安排</b>。透過多樣化的<b>自訂選項</b>，您可以自訂活動提醒、通知音效、行事曆小工具和應用程式外觀。
+        無論您是要安排單一還是反復的活動、生日、紀念日、業務會議、約會或任何其他活動，簡易行事曆 Pro 都能讓您<b>輕鬆維持安排</b>。透過多樣化的<b>自訂選項</b>，您可以自訂活動提醒、通知音效、行事曆小工具和應用程式外觀。
 
-        每日、每週、每月的檢視模式使您輕易就確認即將到來的活動&amp;約會。您甚至能夠以簡單的活動列表來瀏覽全部，而不是行事曆畫面，所以您<b>完全知道生活中何時會發生什麼事。</b>
+        每日、每週、每月的檢視模式使您輕易就確認即將到來的活動和約會。您甚至能夠以簡單的活動列表來瀏覽全部，而不是行事曆畫面，所以您<b>完全知道生活中何時會發生什麼事。</b>
 
         ----------------------------------------------------------
-        <b>簡易行事曆Pro – 特色 &amp; 優點</b>
+        <b>簡易行事曆 Pro – 特色和優點</b>
         ----------------------------------------------------------
 
         ✔️ 沒有廣告和討厭的彈出畫面
@@ -256,12 +256,12 @@
         ✔️ 只需要最低限度的權限
         ✔️ 著重於簡單 – 做行事曆該做的!
         ✔️ 開放原始碼
-        ✔️ 完整自訂化主題&amp;行事曆/活動小工具
-        ✔️ 翻譯成29種語言
-        ✔️ 將設定匯出成.txt檔案，以匯入到別的裝置
-        ✔️ 支援CalDAV行事曆同步，來跨裝置同步活動
+        ✔️ 完整自訂化主題和行事曆/活動小工具
+        ✔️ 翻譯成 29 種語言
+        ✔️ 將設定匯出成 .txt 檔案，以匯入到別的裝置
+        ✔️ 支援 CalDAV 行事曆同步，來跨裝置同步活動
         ✔️ 在行事曆上有每日、每週、每月、每年及活動瀏覽的檢視方式
-        ✔️ 支援透過.ics檔案來匯出&amp;匯入活動
+        ✔️ 支援透過 .ics 檔案來匯出和匯入活動
         ✔️ 設置多個活動提醒，自訂活動提醒音效和震動
         ✔️ 提醒有延遲選項
         ✔️ 輕鬆添加假日、生日、紀念日和約會
@@ -270,9 +270,9 @@
         ✔️ 用做於個人行事曆或業務行事曆
         ✔️ 在提醒和電子信箱通知之間選擇，以提醒您關於活動的訊息
 
-        <u>下載簡易行事曆PRO – 沒有廣告的簡易離線行事曆!</u>
+        <u>下載簡易行事曆 PRO – 沒有廣告的簡易離線行事曆！</u>
 
-        <b>於此查看簡易工具系列全套:</b>
+        <b>於此查看簡易工具系列全套：</b>
         https://www.simplemobiletools.com
 
         <b>Facebook:</b>

@@ -73,7 +73,7 @@
             android:alpha="0.8"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:padding="@dimen/small_margin"
-            android:src="@drawable/ic_cross_big"/>
+            android:src="@drawable/ic_cross_vector"/>
 
         <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/event_contact_me_status"

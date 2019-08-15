@@ -172,16 +172,16 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
                 views.setTextColor(R.id.top_value, textColor)
                 views.setTextSize(R.id.top_value, largerFontSize)
 
-                var bmp = resources.getColoredBitmap(R.drawable.ic_pointer_left, textColor)
+                var bmp = resources.getColoredBitmap(R.drawable.ic_chevron_left_vector, textColor)
                 views.setImageViewBitmap(R.id.top_left_arrow, bmp)
 
-                bmp = resources.getColoredBitmap(R.drawable.ic_pointer_right, textColor)
+                bmp = resources.getColoredBitmap(R.drawable.ic_chevron_right_vector, textColor)
                 views.setImageViewBitmap(R.id.top_right_arrow, bmp)
 
-                bmp = resources.getColoredBitmap(R.drawable.ic_today, textColor)
+                bmp = resources.getColoredBitmap(R.drawable.ic_today_vector, textColor)
                 views.setImageViewBitmap(R.id.top_go_to_today, bmp)
 
-                bmp = resources.getColoredBitmap(R.drawable.ic_plus, textColor)
+                bmp = resources.getColoredBitmap(R.drawable.ic_plus_vector, textColor)
                 views.setImageViewBitmap(R.id.top_new_event, bmp)
 
                 val shouldGoToTodayBeVisible = currTargetDate.withTime(0, 0, 0, 0) != DateTime.now().withDayOfMonth(1).withTime(0, 0, 0, 0)

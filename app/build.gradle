@@ -16,8 +16,8 @@ android {
         applicationId "com.simplemobiletools.calendar.pro"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 152
-        versionName "6.5.2"
+        versionCode 157
+        versionName "6.5.7"
         multiDexEnabled true
         setProperty("archivesBaseName", "calendar")
     }
@@ -57,7 +57,7 @@ android {
 }
 
 dependencies {
-    implementation 'com.simplemobiletools:commons:5.14.2'
+    implementation 'com.simplemobiletools:commons:5.16.7'
     implementation 'joda-time:joda-time:2.10.1'
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta2'

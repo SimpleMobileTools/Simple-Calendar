@@ -129,9 +129,9 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
         }
 
         remoteView.apply {
-            setTextColor(R.id.event_section_title, curTextColor)
-            setTextSize(R.id.event_section_title, mediumFontSize)
-            setText(R.id.event_section_title, item.title)
+            setTextColor(event_section_title, curTextColor)
+            setTextSize(event_section_title, mediumFontSize)
+            setText(event_section_title, item.title)
 
             Intent().apply {
                 putExtra(DAY_CODE, item.code)
