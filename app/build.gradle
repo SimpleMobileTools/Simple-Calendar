@@ -20,6 +20,7 @@ android {
         versionName "6.5.7"
         multiDexEnabled true
         setProperty("archivesBaseName", "calendar")
+        vectorDrawables.useSupportLibrary = true
     }
 
     signingConfigs {
