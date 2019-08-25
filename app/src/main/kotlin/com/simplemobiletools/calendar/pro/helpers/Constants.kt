@@ -17,7 +17,6 @@ const val CALDAV = "Caldav"
 const val VIEW_TO_OPEN = "view_to_open"
 const val SHORTCUT_NEW_EVENT = "shortcut_new_event"
 const val REGULAR_EVENT_TYPE_ID = 1L
-const val CHOPPED_LIST_DEFAULT_SIZE = 100
 
 const val MONTHLY_VIEW = 1
 const val YEARLY_VIEW = 2
