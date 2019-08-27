@@ -72,7 +72,7 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
 
     private fun checkEvents() {
         if (!wereInitialEventsAdded) {
-            minFetchedTS = DateTime().minusMonths(3).seconds()
+            minFetchedTS = DateTime().minusMinutes(context!!.config.displayPastEvents).seconds()
             maxFetchedTS = DateTime().plusMonths(6).seconds()
         }
 
@@ -81,7 +81,6 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
                 receivedEvents(it, false)
             } else {
                 if (!wereInitialEventsAdded) {
-                    minFetchedTS -= FETCH_INTERVAL
                     maxFetchedTS += FETCH_INTERVAL
                 }
                 context!!.eventsHelper.getEvents(minFetchedTS, maxFetchedTS) {
