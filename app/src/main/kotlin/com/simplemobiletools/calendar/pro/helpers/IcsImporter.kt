@@ -168,7 +168,8 @@ class IcsImporter(val activity: SimpleActivity) {
                                 Reminder(curReminderMinutes.getOrElse(2) { REMINDER_OFF }, curReminderActions.getOrElse(2) { REMINDER_NOTIFICATION })
                         )
 
-                        reminders = reminders.sortedBy { it.minutes }.toMutableList() as ArrayList<Reminder>
+                        reminders = reminders.sortedBy { it.minutes }.sortedBy { it.minutes == REMINDER_OFF }.toMutableList() as ArrayList<Reminder>
+
                         val eventType = eventTypes.firstOrNull { it.id == curEventTypeId }
                         val source = if (calDAVCalendarId == 0 || eventType?.isSyncedEventType() == false) SOURCE_IMPORTED_ICS else "$CALDAV-$calDAVCalendarId"
                         val event = Event(null, curStart, curEnd, curTitle, curLocation, curDescription, reminders[0].minutes,
