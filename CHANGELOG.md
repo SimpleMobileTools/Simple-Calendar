@@ -1,6 +1,15 @@
 Changelog
 ==========
 
+Version 6.6.0 *(2019-08-28)*
+----------------------------
+
+ * Use separate channels per event type reminders for more control
+ * Added some extra German and UK holidays
+ * Apply the Event List past limitation in the in-app view too, not just widget
+ * Fixing some glitches at importing events from .ics files
+ * Added some theming improvements
+
 Version 6.5.7 *(2019-08-07)*
 ----------------------------
 
