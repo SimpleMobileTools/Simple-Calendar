@@ -26,7 +26,7 @@ import org.joda.time.DateTime
 import java.util.*
 
 class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
-    private var FETCH_INTERVAL = 6 * MONTH_SECONDS
+    private var FETCH_INTERVAL = 3 * MONTH_SECONDS
     private var MIN_EVENTS_TRESHOLD = 30
 
     private var mEvents = ArrayList<Event>()
