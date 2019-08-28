@@ -39,6 +39,7 @@ class IcsImporter(val activity: SimpleActivity) {
     private var isProperReminderAction = false
     private var isDescription = false
     private var isSequence = false
+    private var isParsingEvent = false
     private var curReminderTriggerMinutes = REMINDER_OFF
     private var curReminderTriggerAction = REMINDER_NOTIFICATION
     private val eventsHelper = activity.eventsHelper
@@ -83,8 +84,11 @@ class IcsImporter(val activity: SimpleActivity) {
                     if (line == BEGIN_EVENT) {
                         resetValues()
                         curEventTypeId = defaultEventTypeId
+                        isParsingEvent = true
                     } else if (line.startsWith(DTSTART)) {
-                        curStart = getTimestamp(line.substring(DTSTART.length))
+                        if (isParsingEvent) {
+                            curStart = getTimestamp(line.substring(DTSTART.length))
+                        }
                     } else if (line.startsWith(DTEND)) {
                         curEnd = getTimestamp(line.substring(DTEND.length))
                     } else if (line.startsWith(DURATION)) {
@@ -142,6 +146,7 @@ class IcsImporter(val activity: SimpleActivity) {
                             curReminderActions.add(curReminderTriggerAction)
                         }
                     } else if (line == END_EVENT) {
+                        isParsingEvent = false
                         if (curStart != -1L && curEnd == -1L) {
                             curEnd = curStart
                         }
@@ -304,6 +309,7 @@ class IcsImporter(val activity: SimpleActivity) {
         isNotificationDescription = false
         isProperReminderAction = false
         isSequence = false
+        isParsingEvent = false
         curReminderTriggerMinutes = REMINDER_OFF
         curReminderTriggerAction = REMINDER_NOTIFICATION
     }
