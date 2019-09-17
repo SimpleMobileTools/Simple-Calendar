@@ -476,11 +476,13 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                     val reminders = it
                     ensureBackgroundThread {
                         addContactEvents(true, reminders) {
-                            if (it > 0) {
-                                toast(R.string.birthdays_added)
-                                updateViewPager()
-                            } else {
-                                toast(R.string.no_birthdays)
+                            when {
+                                it > 0 -> {
+                                    toast(R.string.birthdays_added)
+                                    updateViewPager()
+                                }
+                                it == -1 -> toast(R.string.no_new_birthdays)
+                                else -> toast(R.string.no_birthdays)
                             }
                         }
                     }
@@ -498,11 +500,13 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                     val reminders = it
                     ensureBackgroundThread {
                         addContactEvents(false, reminders) {
-                            if (it > 0) {
-                                toast(R.string.anniversaries_added)
-                                updateViewPager()
-                            } else {
-                                toast(R.string.no_anniversaries)
+                            when {
+                                it > 0 -> {
+                                    toast(R.string.anniversaries_added)
+                                    updateViewPager()
+                                }
+                                it == -1 -> toast(R.string.no_new_anniversaries)
+                                else -> toast(R.string.no_anniversaries)
                             }
                         }
                     }
@@ -524,6 +528,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     private fun addContactEvents(birthdays: Boolean, reminders: ArrayList<Int>, callback: (Int) -> Unit) {
         var eventsAdded = 0
+        var eventsFound = 0
         val uri = ContactsContract.Data.CONTENT_URI
         val projection = arrayOf(ContactsContract.Contacts.DISPLAY_NAME,
                 ContactsContract.CommonDataKinds.Event.CONTACT_ID,
@@ -580,6 +585,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                                 importIDs.remove(it)
                             }
 
+                            eventsFound++
                             if (!importIDs.containsKey(contactId)) {
                                 eventsHelper.insertEvent(event, false, false) {
                                     eventsAdded++
@@ -598,7 +604,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
 
         runOnUiThread {
-            callback(eventsAdded)
+            callback(if (eventsAdded == 0 && eventsFound > 0) -1 else eventsAdded)
         }
     }
 
