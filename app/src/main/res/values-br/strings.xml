@@ -203,6 +203,7 @@
     <string name="synchronization_completed">Echuet gant ar goubredañ</string>
     <string name="select_a_different_caldav_color">Select a different color (might be applied locally only)</string>
     <string name="insufficient_permissions">You are not allowed to write in the selected calendar</string>
+    <string name="caldav_event_not_found">Event not found. Please enable CalDAV sync for the appropriate calendar in the app settings.</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->

@@ -203,6 +203,7 @@
     <string name="synchronization_completed">Синхронізацію завершено</string>
     <string name="select_a_different_caldav_color">Обрати інший колір (можна застосувати лише локально)</string>
     <string name="insufficient_permissions">Ви не можете редагувати обраний календар</string>
+    <string name="caldav_event_not_found">Event not found. Please enable CalDAV sync for the appropriate calendar in the app settings.</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->

@@ -203,6 +203,7 @@
     <string name="synchronization_completed">הסנכרון הסתיים</string>
     <string name="select_a_different_caldav_color">בחירת צבע שונה (ייתכן שיישמר מקומית בלבד)</string>
     <string name="insufficient_permissions">לא קיימת הרשאת כתיבה ליומנים הנבחרים</string>
+    <string name="caldav_event_not_found">Event not found. Please enable CalDAV sync for the appropriate calendar in the app settings.</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->

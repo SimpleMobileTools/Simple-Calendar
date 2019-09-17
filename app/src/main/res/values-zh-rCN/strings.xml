@@ -203,6 +203,7 @@
     <string name="synchronization_completed">同步完成</string>
     <string name="select_a_different_caldav_color">选择不同的颜色 (只能被添加于本机端)</string>
     <string name="insufficient_permissions">你不被允许对选择的行事历写入</string>
+    <string name="caldav_event_not_found">Event not found. Please enable CalDAV sync for the appropriate calendar in the app settings.</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->

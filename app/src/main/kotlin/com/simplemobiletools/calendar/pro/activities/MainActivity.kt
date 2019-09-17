@@ -361,7 +361,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                                 startActivity(this)
                             }
                         } else {
-                            toast(R.string.unknown_error_occurred)
+                            toast(R.string.caldav_event_not_found, Toast.LENGTH_LONG)
                         }
                     }
                 } else if (intent?.extras?.getBoolean("DETAIL_VIEW", false) == true) {
