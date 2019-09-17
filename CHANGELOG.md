@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 6.6.1 *(2019-09-17)*
+----------------------------
+
+ * Fixed a glitch with syncing all-day events via Radicale (by ddast)
+ * Use better messages at birthday/anniversary importing
+ * Fixed some UK holidays
+
 Version 6.6.0 *(2019-08-28)*
 ----------------------------
 
