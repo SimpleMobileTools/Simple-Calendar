@@ -197,7 +197,11 @@ fun Context.notifyEvent(originalEvent: Event) {
     ensureBackgroundThread {
         val notification = getNotification(pendingIntent, event, content)
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        notificationManager.notify(event.id!!.toInt(), notification)
+        try {
+            notificationManager.notify(event.id!!.toInt(), notification)
+        } catch (e: Exception) {
+            showErrorToast(e)
+        }
     }
 }
 
