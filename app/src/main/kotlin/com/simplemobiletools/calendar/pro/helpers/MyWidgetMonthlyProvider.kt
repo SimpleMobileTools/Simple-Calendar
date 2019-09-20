@@ -12,7 +12,6 @@ import android.widget.RemoteViews
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SplashActivity
 import com.simplemobiletools.calendar.pro.extensions.config
-import com.simplemobiletools.calendar.pro.extensions.launchNewEventIntent
 import com.simplemobiletools.calendar.pro.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.pro.models.DayMonthly
 import com.simplemobiletools.commons.extensions.*
@@ -22,7 +21,6 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
     private val PREV = "prev"
     private val NEXT = "next"
     private val GO_TO_TODAY = "go_to_today"
-    private val NEW_EVENT = "new_event"
 
     companion object {
         private var targetDate = DateTime.now().withDayOfMonth(1)
@@ -68,7 +66,6 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
             PREV -> getPrevMonth(context)
             NEXT -> getNextMonth(context)
             GO_TO_TODAY -> goToToday(context)
-            NEW_EVENT -> context.launchNewEventIntent()
             else -> super.onReceive(context, intent)
         }
     }
@@ -181,9 +178,6 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
                 bmp = resources.getColoredBitmap(R.drawable.ic_today_vector, textColor)
                 views.setImageViewBitmap(R.id.top_go_to_today, bmp)
 
-                bmp = resources.getColoredBitmap(R.drawable.ic_plus_vector, textColor)
-                views.setImageViewBitmap(R.id.top_new_event, bmp)
-
                 val shouldGoToTodayBeVisible = currTargetDate.withTime(0, 0, 0, 0) != DateTime.now().withDayOfMonth(1).withTime(0, 0, 0, 0)
                 views.setVisibleIf(R.id.top_go_to_today, shouldGoToTodayBeVisible)
 
@@ -193,7 +187,6 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
                 setupIntent(context, views, PREV, R.id.top_left_arrow)
                 setupIntent(context, views, NEXT, R.id.top_right_arrow)
                 setupIntent(context, views, GO_TO_TODAY, R.id.top_go_to_today)
-                setupIntent(context, views, NEW_EVENT, R.id.top_new_event)
 
                 val monthCode = days.firstOrNull { it.code.substring(6) == "01" }?.code ?: Formatter.getTodayCode()
                 setupAppOpenIntent(context, views, R.id.top_value, monthCode)
