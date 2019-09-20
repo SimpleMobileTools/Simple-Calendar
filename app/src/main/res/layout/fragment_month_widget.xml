@@ -51,22 +51,10 @@
         android:layout_height="match_parent"
         android:layout_alignTop="@+id/top_value"
         android:layout_alignBottom="@+id/top_value"
-        android:layout_toStartOf="@+id/top_new_event"
-        android:paddingStart="@dimen/medium_margin"
-        android:paddingEnd="@dimen/medium_margin"
-        android:src="@drawable/ic_chevron_right_vector"/>
-
-    <ImageView
-        android:id="@+id/top_new_event"
-        style="@style/ArrowStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_alignTop="@+id/top_value"
-        android:layout_alignBottom="@+id/top_value"
         android:layout_alignParentEnd="true"
         android:paddingStart="@dimen/medium_margin"
         android:paddingEnd="@dimen/medium_margin"
-        android:src="@drawable/ic_plus_vector"/>
+        android:src="@drawable/ic_chevron_right_vector"/>
 
     <include
         android:id="@+id/first_row_widget"
