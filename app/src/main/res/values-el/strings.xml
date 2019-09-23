@@ -52,7 +52,7 @@
     <string name="update_all_occurrences">Ενημέρωση όλων των περιστατικών</string>
     <string name="repeat_till_date">Επαναλάβετε μέχρι μια ημερομηνία</string>
     <string name="stop_repeating_after_x">Παύση επαναλήψεων μετά από x εμφανίσεις</string>
-    <string name="repeat_forever">Επαναλάβετε για πάντα</string>
+    <string name="repeat_forever">Επανάληψη πάντα</string>
     <string name="times">Φορές</string>
     <string name="repeat">Επανάληψη</string>
     <string name="repeat_on">Επανάληψη ενεργή</string>
@@ -203,7 +203,7 @@
     <string name="synchronization_completed">Ο συγχρονισμός ολοκληρώθηκε</string>
     <string name="select_a_different_caldav_color">Επιλέξτε διαφορετικό χρώμα (μπορεί να εφαρμοστεί μόνο τοπικά)</string>
     <string name="insufficient_permissions">Δεν επιτρέπεται η εγγραφή στο επιλεγμένο ημερολόγιο</string>
-    <string name="caldav_event_not_found">Event not found. Please enable CalDAV sync for the appropriate calendar in the app settings.</string>
+    <string name="caldav_event_not_found">Δεν βρέθηκε Εκδήλωση. Παρακαλώ ενεργοποιήστε το συγχρονισμό CalDAV του Ημερολογίου από τις ρυθμίσεις της εφαρμογής.</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
