@@ -194,9 +194,15 @@ fun Context.notifyEvent(originalEvent: Event) {
     val timeRange = if (event.getIsAllDay()) getString(R.string.all_day) else getFormattedEventTime(startTime, endTime)
     val descriptionOrLocation = if (config.replaceDescription) event.location else event.description
     val content = "$displayedStartDate $timeRange $descriptionOrLocation".trim()
-    val notification = getNotification(pendingIntent, event, content)
-    val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-    notificationManager.notify(event.id!!.toInt(), notification)
+    ensureBackgroundThread {
+        val notification = getNotification(pendingIntent, event, content)
+        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        try {
+            notificationManager.notify(event.id!!.toInt(), notification)
+        } catch (e: Exception) {
+            showErrorToast(e)
+        }
+    }
 }
 
 @SuppressLint("NewApi")
@@ -213,7 +219,7 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
     if (soundUri != config.lastSoundUri || config.lastVibrateOnReminder != config.vibrateOnReminder) {
         if (!publicVersion) {
             if (isOreoPlus()) {
-                val oldChannelId = "simple_calendar_${config.lastReminderChannel}_${config.reminderAudioStream}"
+                val oldChannelId = "simple_calendar_${config.lastReminderChannel}_${config.reminderAudioStream}_${event.eventType}"
                 notificationManager.deleteNotificationChannel(oldChannelId)
             }
         }
@@ -223,7 +229,7 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
         config.lastSoundUri = soundUri
     }
 
-    val channelId = "simple_calendar_${config.lastReminderChannel}_${config.reminderAudioStream}"
+    val channelId = "simple_calendar_${config.lastReminderChannel}_${config.reminderAudioStream}_${event.eventType}"
     if (isOreoPlus()) {
         val audioAttributes = AudioAttributes.Builder()
                 .setUsage(AudioAttributes.USAGE_ALARM)
@@ -231,7 +237,7 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
                 .setLegacyStreamType(config.reminderAudioStream)
                 .build()
 
-        val name = resources.getString(R.string.event_reminders)
+        val name = eventTypesDB.getEventTypeWithId(event.eventType)?.getDisplayTitle()
         val importance = NotificationManager.IMPORTANCE_HIGH
         NotificationChannel(channelId, name, importance).apply {
             setBypassDnd(true)

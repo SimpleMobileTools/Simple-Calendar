@@ -39,6 +39,7 @@ class IcsImporter(val activity: SimpleActivity) {
     private var isProperReminderAction = false
     private var isDescription = false
     private var isSequence = false
+    private var isParsingEvent = false
     private var curReminderTriggerMinutes = REMINDER_OFF
     private var curReminderTriggerAction = REMINDER_NOTIFICATION
     private val eventsHelper = activity.eventsHelper
@@ -83,8 +84,11 @@ class IcsImporter(val activity: SimpleActivity) {
                     if (line == BEGIN_EVENT) {
                         resetValues()
                         curEventTypeId = defaultEventTypeId
+                        isParsingEvent = true
                     } else if (line.startsWith(DTSTART)) {
-                        curStart = getTimestamp(line.substring(DTSTART.length))
+                        if (isParsingEvent) {
+                            curStart = getTimestamp(line.substring(DTSTART.length))
+                        }
                     } else if (line.startsWith(DTEND)) {
                         curEnd = getTimestamp(line.substring(DTEND.length))
                     } else if (line.startsWith(DURATION)) {
@@ -142,6 +146,7 @@ class IcsImporter(val activity: SimpleActivity) {
                             curReminderActions.add(curReminderTriggerAction)
                         }
                     } else if (line == END_EVENT) {
+                        isParsingEvent = false
                         if (curStart != -1L && curEnd == -1L) {
                             curEnd = curStart
                         }
@@ -163,7 +168,8 @@ class IcsImporter(val activity: SimpleActivity) {
                                 Reminder(curReminderMinutes.getOrElse(2) { REMINDER_OFF }, curReminderActions.getOrElse(2) { REMINDER_NOTIFICATION })
                         )
 
-                        reminders = reminders.sortedBy { it.minutes }.toMutableList() as ArrayList<Reminder>
+                        reminders = reminders.sortedBy { it.minutes }.sortedBy { it.minutes == REMINDER_OFF }.toMutableList() as ArrayList<Reminder>
+
                         val eventType = eventTypes.firstOrNull { it.id == curEventTypeId }
                         val source = if (calDAVCalendarId == 0 || eventType?.isSyncedEventType() == false) SOURCE_IMPORTED_ICS else "$CALDAV-$calDAVCalendarId"
                         val event = Event(null, curStart, curEnd, curTitle, curLocation, curDescription, reminders[0].minutes,
@@ -304,6 +310,7 @@ class IcsImporter(val activity: SimpleActivity) {
         isNotificationDescription = false
         isProperReminderAction = false
         isSequence = false
+        isParsingEvent = false
         curReminderTriggerMinutes = REMINDER_OFF
         curReminderTriggerAction = REMINDER_NOTIFICATION
     }
