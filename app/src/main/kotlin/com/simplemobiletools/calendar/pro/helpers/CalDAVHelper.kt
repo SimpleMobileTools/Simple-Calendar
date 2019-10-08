@@ -260,17 +260,26 @@ class CalDAVHelper(val context: Context) {
                     // some calendars add repeatable event exceptions with using the "exdate" field, not by creating a child event that is an exception
                     val exdate = cursor.getStringValue(CalendarContract.Events.EXDATE) ?: ""
                     if (exdate.length > 8) {
-                        val dates = exdate.split(",")
-                        dates.forEach {
-                            if (it.endsWith("Z")) {
-                                // convert for example "20190216T230000Z" to "20190217000000" in Slovakia in a weird way
-                                val formatter = DateTimeFormat.forPattern("yyyyMMdd'T'HHmmss'Z'")
-                                val offset = DateTimeZone.getDefault().getOffset(System.currentTimeMillis())
-                                val dt = formatter.parseDateTime(it).plusMillis(offset)
-                                val daycode = Formatter.getDayCodeFromDateTime(dt)
-                                event.repetitionExceptions.add(daycode)
-                            } else {
-                                event.repetitionExceptions.add(it.substring(0, 8))
+                        val lines = exdate.split("\n")
+                        for (line in lines) {
+                            val dates = line.split(",")
+                            dates.forEach {
+                                if (it.endsWith("Z")) {
+                                    // convert for example "20190216T230000Z" to "20190217000000" in Slovakia in a weird way
+                                    val formatter = DateTimeFormat.forPattern("yyyyMMdd'T'HHmmss'Z'")
+                                    val offset = DateTimeZone.getDefault().getOffset(System.currentTimeMillis())
+                                    val dt = formatter.parseDateTime(it).plusMillis(offset)
+                                    val daycode = Formatter.getDayCodeFromDateTime(dt)
+                                    event.repetitionExceptions.add(daycode)
+                                } else {
+                                    var potentialTS = it.substring(0, 8)
+                                    if (potentialTS.areDigitsOnly()) {
+                                        event.repetitionExceptions.add(potentialTS)
+                                    } else if (it.contains(";")) {
+                                        potentialTS = it.substringAfter(";").substring(0, 8)
+                                        event.repetitionExceptions.add(potentialTS)
+                                    }
+                                }
                             }
                         }
                     }
