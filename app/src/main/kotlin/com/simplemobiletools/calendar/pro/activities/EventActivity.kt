@@ -836,6 +836,10 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun deleteEvent() {
+        if (mEvent.id == null) {
+            return
+        }
+
         DeleteEventDialog(this, arrayListOf(mEvent.id!!), mEvent.repeatInterval > 0) {
             ensureBackgroundThread {
                 when (it) {

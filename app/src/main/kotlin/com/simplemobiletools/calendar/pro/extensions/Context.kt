@@ -353,7 +353,7 @@ fun Context.scheduleCalDAVSync(activate: Boolean) {
         val syncCheckInterval = 2 * AlarmManager.INTERVAL_HOUR
         try {
             alarm.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + syncCheckInterval, syncCheckInterval, pendingIntent)
-        } catch (ignored: SecurityException) {
+        } catch (ignored: Exception) {
         }
     } else {
         alarm.cancel(pendingIntent)
