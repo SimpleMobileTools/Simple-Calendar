@@ -1,6 +1,11 @@
 Changelog
 ==========
 
+Version 6.6.3 *(2019-10-13)*
+----------------------------
+
+ * Fixed a glitch with small letters and not being able to force English in some cases
+
 Version 6.6.2 *(2019-10-09)*
 ----------------------------
 
