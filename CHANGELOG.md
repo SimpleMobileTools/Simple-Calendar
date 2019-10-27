@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 6.6.4 *(2019-10-27)*
+----------------------------
+
+ * Never show the Add New Event button over the yearly view
+ * Some stability and translation improvements
+
 Version 6.6.3 *(2019-10-13)*
 ----------------------------
 
