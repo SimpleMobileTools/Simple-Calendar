@@ -267,7 +267,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             override fun onMenuItemActionCollapse(item: MenuItem?): Boolean {
                 mIsSearchOpen = false
                 search_holder.beGone()
-                calendar_fab.beVisible()
+                calendar_fab.beVisibleIf(currentFragments.last() !is YearFragmentsHolder)
                 return true
             }
         })
