@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 6.6.5 *(2019-11-06)*
+----------------------------
+
+ * Fixed a glitch with small letters in some cases
+ * Some translation improvements
+
 Version 6.6.4 *(2019-10-27)*
 ----------------------------
 
