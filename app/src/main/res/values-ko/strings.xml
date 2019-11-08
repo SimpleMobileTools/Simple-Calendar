@@ -3,33 +3,33 @@
     <string name="app_name">심플 캘린더</string>
     <string name="app_launcher_name">캘린더</string>
     <string name="change_view">보기 변경</string>
-    <string name="daily_view">Daily view</string>
+    <string name="daily_view">일간 보기</string>
     <string name="weekly_view">주간 보기</string>
     <string name="monthly_view">월간 보기</string>
     <string name="yearly_view">연간 보기</string>
-    <string name="simple_event_list">간단한 이벤트 목록</string>
-    <string name="no_upcoming_events">다가올 이벤트가 없는 것 같습니다.</string>
+    <string name="simple_event_list">일정 목록</string>
+    <string name="no_upcoming_events">등록된 일정이 없습니다.</string>
     <string name="go_to_today">오늘로 이동</string>
-    <string name="go_to_date">Go to date</string>
-    <string name="upgraded_from_free">Hey,\n\nseems like you upgraded from the old free app. You have to migrate locally stored events manually via exporting in an .ics file, then importing. You can find both export/import buttons at the main screen menu.\n\nYou can then uninstall the old version, which has an \'Upgrade to Pro\' button at the top of the app settings. You will then only have to reset your app settings.\n\nThanks!</string>
+    <string name="go_to_date">해당일로 이동</string>
+    <string name="upgraded_from_free">안녕하세요\n\n해당 앱이 오래전 무료 앱에서 업그레이드된 것 같습니다. 이전에 등록된 일정들을 가져오기 위해 수동으로 .ics 파일로 내보내기 후 다시 가져오기를 통해 적용해야합니다. 메인화면 오른쪽 상단 메뉴버튼을 눌러 내보내기 / 가져오기를 할 수 있습니다.\n\n앱 설정화면 최상단에 Pro 버전으로 업그레이드(Upgrade to Pro) 버튼을 눌러 이전 버전을 제거할 수 있습니다. 그 다음 앱 설정으로 들어가 리셋하면 됩니다.\n\n감사합니다!</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">월별 달력</string>
     <string name="widget_list">일정 목록 달력</string>
 
     <!-- Event -->
-    <string name="event">이벤트</string>
-    <string name="edit_event">이벤트 수정</string>
-    <string name="new_event">새 이벤트</string>
-    <string name="create_new_event">Create a new event</string>
-    <string name="duplicate_event">Duplicate event</string>
+    <string name="event">일정</string>
+    <string name="edit_event">일정 수정</string>
+    <string name="new_event">새 일정</string>
+    <string name="create_new_event">새 일정 생성</string>
+    <string name="duplicate_event">중복 일정 생성</string>
     <string name="title_empty">제목을 입력해주세요</string>
-    <string name="end_before_start">이벤트가 시작되기 전에 끝날 수 없습니다</string>
-    <string name="event_added">이벤트가 성공적으로 추가되었습니다</string>
-    <string name="event_updated">이벤트를 수정했습니다</string>
-    <string name="filter_events_by_type">유형별 이벤트</string>
-    <string name="please_fill_location">Please fill in a location to be shown on a map</string>
-    <string name="public_event_notification_text">An event is upcoming</string>
+    <string name="end_before_start">종료 날짜 및 시간을 시작 날짜 및 시간 이후로 설정해주세요</string>
+    <string name="event_added">일정이 성공적으로 추가되었습니다</string>
+    <string name="event_updated">일정을 수정했습니다</string>
+    <string name="filter_events_by_type">유형별 일정</string>
+    <string name="please_fill_location">지도에 표시할 검색명을 입력해주세요</string>
+    <string name="public_event_notification_text">다가오는 일정이 있습니다.</string>
 
     <!-- Event Repetition -->
     <string name="repetition">반복</string>
@@ -43,26 +43,26 @@
     <string name="years_raw">년</string>
     <string name="repeat_till">까지 반복</string>
     <string name="forever">영원히</string>
-    <string name="event_is_repeatable">반복 이벤트입니다</string>
-    <string name="selection_contains_repetition">선택한 항목에 반복되는 이벤트들이 있습니다</string>
+    <string name="event_is_repeatable">반복 일정입니다</string>
+    <string name="selection_contains_repetition">선택한 항목에 반복되는 일정들이 있습니다</string>
     <string name="delete_one_only">선택한 항목만 삭제</string>
-    <string name="delete_future_occurrences">Delete this and all future occurrences</string>
-    <string name="delete_all_occurrences">모든 항목 삭제</string>
+    <string name="delete_future_occurrences">반복되는 일정까지 삭제</string>
+    <string name="delete_all_occurrences">이후 모든 항목 삭제</string>
     <string name="update_one_only">선택한 항목만 변경</string>
-    <string name="update_all_occurrences">모든 항목 변경</string>
-    <string name="repeat_till_date">날짜까지 반복</string>
-    <string name="stop_repeating_after_x">Stop repeating after x occurrences</string>
+    <string name="update_all_occurrences">이후 모든 항목 변경</string>
+    <string name="repeat_till_date">선택 날짜까지 반복</string>
+    <string name="stop_repeating_after_x">설정 횟수만큼 반복</string>
     <string name="repeat_forever">영원히 반복</string>
     <string name="times">번</string>
     <string name="repeat">반복</string>
-    <string name="repeat_on">반복하다</string>
+    <string name="repeat_on">특정요일 반복</string>
     <string name="every_day">매일</string>
     <string name="selected_days">선택한 요일에</string>
     <string name="the_same_day">같은 날</string>
     <string name="the_last_day">마지막 날</string>
     <string name="repeat_on_the_same_day_monthly">매월 같은 날 반복</string>
-    <string name="repeat_on_the_last_day_monthly">매월 매지막 날 반복</string>
-    <string name="repeat_on_the_same_day_yearly">Repeat on the same day every year</string>
+    <string name="repeat_on_the_last_day_monthly">매월 마지막 날 반복</string>
+    <string name="repeat_on_the_same_day_yearly">매년 같은 날 반복</string>
     <string name="repeat_every_m">매일 반복</string>
     <string name="every_m">매일</string>
     <string name="first_m">첫 번째</string>
@@ -73,86 +73,86 @@
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
-    <string name="repeat_every_f">Repeat every</string>
-    <string name="every_f">Every</string>
-    <string name="first_f">first</string>
-    <string name="second_f">second</string>
-    <string name="third_f">third</string>
-    <string name="fourth_f">fourth</string>
-    <string name="last_f">last</string>
+    <string name="repeat_every_f">매일 반복</string>
+    <string name="every_f">매일 </string>
+    <string name="first_f">첫 번째</string>
+    <string name="second_f">두 번째</string>
+    <string name="third_f">세 번째</string>
+    <string name="fourth_f">네 번째</string>
+    <string name="last_f">마지막</string>
 
     <!-- Birthdays -->
     <string name="birthdays">생일</string>
     <string name="add_birthdays">연락처의 생일 추가</string>
     <string name="no_birthdays">조회된 생일이 없음</string>
-    <string name="no_new_birthdays">No new birthdays have been found</string>
+    <string name="no_new_birthdays">조회된 새로운 생일이 없음</string>
     <string name="birthdays_added">생일 추가 완료</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">기념일</string>
     <string name="add_anniversaries">연락처의 기념일 추가</string>
     <string name="no_anniversaries">조회된 기념일 없음</string>
-    <string name="no_new_anniversaries">No new anniversaries have been found</string>
+    <string name="no_new_anniversaries">조회된 새로운 기념일 없음</string>
     <string name="anniversaries_added">기념일 추가 완료</string>
 
     <!-- Event Reminders -->
     <string name="reminder">알림</string>
     <string name="before">전</string>
     <string name="add_another_reminder">다른 알림 추가</string>
-    <string name="event_reminders">Event reminders</string>
+    <string name="event_reminders">일정 알림들</string>
 
     <!-- Event attendees -->
-    <string name="add_another_attendee">Add another attendee</string>
-    <string name="my_status">My status:</string>
-    <string name="going">Going</string>
-    <string name="not_going">Not going</string>
-    <string name="maybe_going">Maybe going</string>
-    <string name="invited">Invited</string>
+    <string name="add_another_attendee">다른 참석자 추가</string>
+    <string name="my_status">내 상태:</string>
+    <string name="going">참석</string>
+    <string name="not_going">불참석</string>
+    <string name="maybe_going">참석 예정</string>
+    <string name="invited">초대됨</string>
 
     <!-- Export / Import -->
-    <string name="import_events">이벤트들 가져 오기</string>
-    <string name="export_events">이벤트들 내보내기</string>
-    <string name="import_events_from_ics">.ics 파일에서 이벤트들 가져오기</string>
-    <string name="export_events_to_ics">.ics 파일로 이벤트들 내보내기</string>
-    <string name="default_event_type">기본 이벤트 유형</string>
-    <string name="export_past_events_too">과거 이벤트들 내보내기</string>
-    <string name="include_event_types">이벤트 유형 포함</string>
+    <string name="import_events">일정들 가져오기</string>
+    <string name="export_events">일정들 내보내기</string>
+    <string name="import_events_from_ics">.ics 파일에서 일정들 가져오기</string>
+    <string name="export_events_to_ics">.ics 파일로 일정들 내보내기</string>
+    <string name="default_event_type">기본 일정 유형</string>
+    <string name="export_past_events_too">과거 일정들 내보내기</string>
+    <string name="include_event_types">일정 유형 포함</string>
     <string name="filename_without_ics">파일이름 (.ics 없이)</string>
-    <string name="override_event_types">Override event types in the file</string>
+    <string name="override_event_types">파일에서 일정 유형 재정의</string>
 
     <!-- Event details -->
     <string name="title">제목</string>
-    <string name="location">Location</string>
-    <string name="description">설명</string>
-    <string name="all_day">하루 종일</string>
+    <string name="location">위치</string>
+    <string name="description">내용</string>
+    <string name="all_day">종일</string>
 
     <!-- Weekly view -->
     <string name="week">주</string>
 
     <!-- Event types -->
-    <string name="event_types">이벤트 유형</string>
-    <string name="add_new_type">새로운 유형 추가</string>
+    <string name="event_types">일정 유형</string>
+    <string name="add_new_type">새로운 일정 추가</string>
     <string name="edit_type">유형 수정</string>
     <string name="type_already_exists">이미 같은 이름의 유형이 존재합니다</string>
     <string name="color">색상</string>
-    <string name="regular_event">표준 이벤트</string>
+    <string name="regular_event">기본 일정</string>
     <string name="cannot_delete_default_type">기본 유형은 삭제할 수 없습니다</string>
-    <string name="select_event_type">이벤트 유형 선택</string>
-    <string name="move_events_into_default">영향을 받는 이벤트들을 기본 유형으로 이동</string>
-    <string name="remove_affected_events">영향을 받는 이벤트들을 영구적으로 제거</string>
-    <string name="unsync_caldav_calendar">To remove a CalDAV calendar you have to unsynchronize it</string>
+    <string name="select_event_type">일정 유형 선택</string>
+    <string name="move_events_into_default">해당 유형 일정들 기본 유형으로 변경</string>
+    <string name="remove_affected_events">해당 유형 일정들 모두 제거</string>
+    <string name="unsync_caldav_calendar">CalDAV 캘린더를 제거하려면 동기화를 해제해야합니다.</string>
 
     <!-- Holidays -->
     <string name="holidays">공휴일</string>
     <string name="add_holidays">공휴일 추가</string>
     <string name="national_holidays">국경일</string>
     <string name="religious_holidays">종교 휴일</string>
-    <string name="holidays_imported_successfully">Holidays have been successfully imported into the \"Holidays\" event type</string>
-    <string name="importing_some_holidays_failed">일부 이벤트를 가져오지 못했습니다</string>
+    <string name="holidays_imported_successfully">공휴일을 새 일정 유형으로 가져왔습니다.</string>
+    <string name="importing_some_holidays_failed">일부 일정을 가져오지 못했습니다</string>
     <string name="importing_holidays_failed">공휴일을 가져오는데 실패했습니다</string>
 
     <!-- Settings -->
-    <string name="manage_event_types">이벤트 유형 관리</string>
+    <string name="manage_event_types">일정 유형 관리</string>
     <string name="start_day_at">시작 시간</string>
     <string name="end_day_at">종료 시간</string>
     <string name="week_numbers">주 번호 표시</string>
@@ -160,35 +160,35 @@
     <string name="reminder_sound">알림 소리</string>
     <string name="no_ringtone_picker">벨소리를 설정할 수 있는 앱이 없습니다</string>
     <string name="no_ringtone_selected">없음</string>
-    <string name="day_end_before_start">요일은 시작하기 전에 끝날 수 없습니다</string>
+    <string name="day_end_before_start">종료시간이 시작시간보다 빠를 수 없습니다.</string>
     <string name="caldav_sync">CalDAV 동기화</string>
-    <string name="event_lists">Event lists</string>
-    <string name="display_past_events">과거의 이벤트 표시</string>
-    <string name="replace_description_with_location">Replace event description with location</string>
-    <string name="delete_all_events">Delete all events</string>
-    <string name="delete_all_events_confirmation">Are you sure you want to delete all events? This will leave your event types and other settings intact.</string>
-    <string name="show_a_grid">Show a grid</string>
-    <string name="loop_reminders">Loop reminders until dismissed</string>
-    <string name="dim_past_events">Dim past events</string>
-    <string name="events">Events</string>
-    <string name="reminder_stream">Audio stream used by reminders</string>
-    <string name="system_stream">System</string>
-    <string name="alarm_stream">Alarm</string>
-    <string name="notification_stream">Notification</string>
-    <string name="ring_stream">Ring</string>
-    <string name="use_last_event_reminders">Use the last events\' reminders as the default for new events</string>
-    <string name="default_reminder_1">Default reminder 1</string>
-    <string name="default_reminder_2">Default reminder 2</string>
-    <string name="default_reminder_3">Default reminder 3</string>
-    <string name="view_to_open_from_widget">View to open from the event list widget</string>
-    <string name="last_view">Last view</string>
-    <string name="new_events">New events</string>
-    <string name="default_start_time">Default start time</string>
-    <string name="next_full_hour">Next full hour</string>
-    <string name="default_duration">Default duration</string>
-    <string name="last_used_one">Last used one</string>
-    <string name="other_time">Other time</string>
-    <string name="highlight_weekends">Highlight weekends on some views</string>
+    <string name="event_lists">일정 목록</string>
+    <string name="display_past_events">과거의 일정 표시</string>
+    <string name="replace_description_with_location">일정 내용대신 위치로 표시</string>
+    <string name="delete_all_events">모든 일정 삭제</string>
+    <string name="delete_all_events_confirmation">모든 일정들을 삭제하시겠습니까? 일정 유형 및 기타 설정은 그대로 유지됩니다.</string>
+    <string name="show_a_grid">격자 표시</string>
+    <string name="loop_reminders">끌때까지 알림 반복</string>
+    <string name="dim_past_events">지난 일정 희미하게 표시</string>
+    <string name="events">일정</string>
+    <string name="reminder_stream">알림음 출력 방식</string>
+    <string name="system_stream">시스템</string>
+    <string name="alarm_stream">알람</string>
+    <string name="notification_stream">알림</string>
+    <string name="ring_stream">벨소리</string>
+    <string name="use_last_event_reminders">마지막 일정 알림을 새 알림의 기본값으로 사용</string>
+    <string name="default_reminder_1">기본 알림 1</string>
+    <string name="default_reminder_2">기본 알림 2</string>
+    <string name="default_reminder_3">기본 알림 3</string>
+    <string name="view_to_open_from_widget">일정 목록 위젯 클릭시 보여지는 화면</string>
+    <string name="last_view">마지막 화면</string>
+    <string name="new_events">새로운 일정들</string>
+    <string name="default_start_time">기본 시작 시간</string>
+    <string name="next_full_hour">다음 전체 시간</string>
+    <string name="default_duration">기본 기간</string>
+    <string name="last_used_one">마지막으로 사용한 것</string>
+    <string name="other_time">다른 시간</string>
+    <string name="highlight_weekends">화면에서 주말 표시</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -201,79 +201,78 @@
     <string name="editing_calendar_failed">변경 실패</string>
     <string name="syncing">동기화중…</string>
     <string name="synchronization_completed">동기화 완료</string>
-    <string name="select_a_different_caldav_color">Select a different color (might be applied locally only)</string>
-    <string name="insufficient_permissions">You are not allowed to write in the selected calendar</string>
-    <string name="caldav_event_not_found">Event not found. Please enable CalDAV sync for the appropriate calendar in the app settings.</string>
+    <string name="select_a_different_caldav_color">다른 색상을 선택해주세요(로컬에만 적용 가능)</string>
+    <string name="insufficient_permissions">선택한 캘린더에 작성할 수 없습니다.</string>
+    <string name="caldav_event_not_found">일정을 찾을 수 없습니다. 앱 설정에서 해당 캘린더에 대해 CalDAV 동기화를 활성화해주세요.</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
-    <string name="monday_alt">Monday</string>
-    <string name="tuesday_alt">Tuesday</string>
-    <string name="wednesday_alt">Wednesday</string>
-    <string name="thursday_alt">Thursday</string>
-    <string name="friday_alt">Friday</string>
-    <string name="saturday_alt">Saturday</string>
-    <string name="sunday_alt">Sunday</string>
+    <string name="monday_alt">월요일</string>
+    <string name="tuesday_alt">화요일</string>
+    <string name="wednesday_alt">수요일</string>
+    <string name="thursday_alt">목요일</string>
+    <string name="friday_alt">금요일</string>
+    <string name="saturday_alt">토요일</string>
+    <string name="sunday_alt">일요일</string>
 
     <!-- List widget config example events -->
-    <string name="sample_title_1">Workout</string>
-    <string name="sample_description_1">Leg day</string>
-    <string name="sample_title_2">Meeting with John</string>
-    <string name="sample_description_2">In Rockstone garden</string>
-    <string name="sample_title_3">Library</string>
-    <string name="sample_title_4">Lunch with Mary</string>
-    <string name="sample_description_4">In the Plaza</string>
-    <string name="sample_title_5">Coffee time</string>
+    <string name="sample_title_1">운동</string>
+    <string name="sample_description_1">다리 운동</string>
+    <string name="sample_title_2">철수와 약속</string>
+    <string name="sample_description_2">뱅뱅사거리 앞</string>
+    <string name="sample_title_3">도서관</string>
+    <string name="sample_title_4">영희랑 점심</string>
+    <string name="sample_description_4">논현동 먹자골목</string>
+    <string name="sample_title_5">휴식시간</string>
 
     <!-- FAQ -->
-    <string name="faq_1_title">How can I remove the holidays imported via the \"Add holidays\" button?</string>
-    <string name="faq_1_text">Holidays created that way are inserted in a new event type called \"Holidays\". You can go in Settings -> Manage Event Types,
-        long press the given event type and delete it by selecting the trashbin.</string>
-    <string name="faq_2_title">Can I sync my events via Google Calendar, or other service supporting CalDAV?</string>
-    <string name="faq_2_text">Yes, just toggle \"CalDAV sync\" in the app settings and select the calendars you want to sync. However, you will need some third party app handling the synchronization between the device and servers.
-        In case you want to synchronize a Google calendar, their official Calendar app will do the job. For other calendars you will need a third party sync adapter, for example DAVdroid.</string>
-    <string name="faq_3_title">I see the visual reminders, but hear no audio. What can I do?</string>
-    <string name="faq_3_text">Not just displaying the actual reminder, but playing the audio is hugely affected by the system too. If you can\'t hear any sound, try going in the app settings,
-        pressing the \"Audio stream used by reminders\" option and changing it to a different value. If it still won\'t work, check your sound settings, if the particular stream isn\'t muted.</string>
+    <string name="faq_1_title">공휴일 추가 버튼을 통해 불러온 공휴일을 제거하기 위해선 어떻게 해야하나요?</string>
+    <string name="faq_1_text">공휴일 추가 버튼을 통해 만든 공휴일은 \"공휴일\"이라는 새 일정 유형에 삽입됩니다. 설정 -> 일정 유형 관리로 이동하여 해당 일정 유형을 길게누르고 휴지통을 선택하여 삭제할 수 있습니다.</string>
+    <string name="faq_2_title">Google 캘린더 또는 calDAV를 지원하는 다른 서비스와 제 일정을 동기화할 수 있나요?</string>
+    <string name="faq_2_text">네 가능합니다. 앱 설정에서 \"CalDAV 동기화\"를 켜고 동기화하려는 캘린더를 선택할 수 있습니다. 그러나 핸드폰과 서버간의 동기화를 처리하는 타사 앱이 필요합니다.
+        Google 캘린더를 동기화하려는 경우 공식 캘린더 앱이 작업을 수행합니다. 만약 다른 캘린더를 동기화하려면 동기화를 도와주는 타사 앱(ex : DAVdroid)이 필요합니다.</string>
+    <string name="faq_3_title">일정에 대한 알림이 화면에 뜨지만 알림음이 들리지 않습니다. 어떻게 해야하나요?</string>
+    <string name="faq_3_text">알림을 화면에 표시하는 것 뿐만 아니라 알림음도 시스템의 영향을 크게 받습니다. 소리가 들리지 않는다면 앱 설정으로 이동하여 \"알림음 출력 방식\" 옵션을 누르고 다른 방식으로 변경해보세요.
+        그래도 알림음이 들리지 않는다면 특정 출력 방식이 음소거되어 있을 가능성이 있습니다. 핸드폰의 사운드 설정을 확인해주세요.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
-    <string name="app_title">Simple Calendar Pro - Events &amp; Reminders</string>
+    <string name="app_title">Simple Calendar Pro - 일정 &amp; 알림</string>
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Be notified of the important moments in your life.</string>
+    <string name="app_short_description">당신의 인생에 있어 중요한 순간을 알립니다.</string>
     <string name="app_long_description">
-        Simple Calendar Pro is a fully customizable, offline calendar designed to do exactly what a calendar should do. <b>No complicated features, unnecessary permissions and no ads!</b>
+        Simple Calendar Pro는 캘린더의 기능을 정확하게 수행하도록 설계된 사용자 정의 오프라인 캘린더입니다. <b>복잡한 기능, 불필요한 권한 및 광고가 없습니다!</b>
 
-        Whether you’re organizing single or recurring events, birthdays, anniversaries, business meetings, appointments or anything else, Simple Calendar Pro makes it <b>easy to stay organized</b>. With an incredible variety of <b>customization options</b> you can customize event reminders, notification sounds, calendar widgets and how the app looks.
+        Simple Calendar Pro를 사용하면 일정 또는 반복 일정, 생일, 기념일, 비즈니스 미팅, 약속 등을 계획할 때 <b>손쉽게 등록 및 관리할 수 있습니다.</b> 정말로 다양한 <b>사용자 정의 옵션</b>을 사용하여 일정 알림, 알림 소리, 일정 및 위젯 및 앱 모양을 사용자정의 할 수 있습니다.
 
-        Daily, weekly and monthly views make checking your upcoming events &amp; appointments a breeze. You can even view everything as a simple list of events rather than in calendar view, so you <b>know exactly what’s coming up in your life and when. </b>
+        일일 일정, 주간 일정 및 월간 일정을 조회하면 예정된 일정 및 약속을 쉽게 확인할 수 있습니다. 캘린더뷰 대신 간단한 일정 목록으로 모든것을 확인할 수 있으므로 <b>다가오는 일정이 언제, 어디서인지 정확하게 알 수 있습니다.</b>
 
         ----------------------------------------------------------
-        <b>Simple Calendar Pro – Features &amp; Benefits</b>
+        <b>Simple Calendar Pro – 기능 &amp; 혜택</b>
         ----------------------------------------------------------
 
-        ✔️ No ads or annoying popups
-        ✔️ No internet access needed, giving you more privacy &amp; security
-        ✔️ Only the bare minimum permissions required
-        ✔️ Emphasis on simplicity – does what a calendar needs to do!
-        ✔️ Open source
-        ✔️ Fully customizable themes &amp; calendar / event widgets
-        ✔️ Translated into 29 languages
-        ✔️ Export settings to .txt files to import to another device
-        ✔️ CalDAV calendar sync supported to sync events across devices
-        ✔️ Daily, weekly, monthly, yearly &amp; event views on the calendar
-        ✔️ Supports exporting &amp; importing events via .ics files
-        ✔️ Set multiple event reminders, customize event reminder sound and vibration
-        ✔️ Snooze option for reminders
-        ✔️ Easily add holidays, birthdays, anniversaries &amp; appointments
-        ✔️ Customize events – start time, duration, reminders etc
-        ✔️ Add event attendees to each event
-        ✔️ Use as a personal calendar or a business calendar
-        ✔️ Choose between reminders &amp; email notifications to alert you about an event
+        ✔️ 광고나 귀찮은 팝업이 없습니다.
+        ✔️ 인터넷을 연결하지 않아 더 높은 개인정보 보안을 제공합니다.
+        ✔️ 최소한의 권한만을 요구합니다.
+        ✔️ 단순성에 중점을 둡니다 – 달력이 해야 할 일을 합니다!
+        ✔️ 오픈소스입니다.
+        ✔️ 완벽한 사용자정의 테마, 캘린더 및 일정 위젯을 제공합니다.
+        ✔️ 29개 언어로 번역되어 있습니다.
+        ✔️ 앱 설정을 .txt 파일로 내보내고 다른 장치에 가져올 수 있습니다.
+        ✔️ CalDAV 동기화를 지원해 서로 다른 장치간 일정을 동기화 할 수 있습니다.
+        ✔️ 일간, 주간, 월간, 연간 캘린더 화면을 제공합니다.
+        ✔️ .ics 파일을 통해 일정 내보내기 / 가져오기를 제공합니다.
+        ✔️ 다양한 일정 알림 설정, 일정 알림 사운드 및 진동의 사용자 정의를 제공합니다.
+        ✔️ 반복 알림을 제공합니다.
+        ✔️ 공휴일, 생일, 기념일 등 휴일을 쉽게 추가할 수 있습니다.
+        ✔️ 일정에 대한 정보(시작 시간, 기간, 알림 등)를 사용자가 정의할 수 있습니다.
+        ✔️ 각 일정에 대해 참석자를 추가할 수 있습니다.
+        ✔️ 개인 캘린더 또는 비지니스 캘린더로 사용할 수 있습니다.
+        ✔️ 일정에 대해 미리알림 또는 E-mail 알림을 선택할 수 있습니다.
 
-        DOWNLOAD SIMPLE CALENDAR PRO – THE SIMPLE OFFLINE CALENDAR WITH NO ADS!
+        SIMPLE CALENDAR PRO를 다운로드 하세요 – 광고없는 심플한 오프라인 캘린더!
 
-        <b>Check out the full suite of Simple Tools here:</b>
+        <b>더 다양한 심플앱을 확인하려면 아래 사이트에서 확인할 수 있습니다:</b>
         https://www.simplemobiletools.com
 
         <b>Facebook:</b>
