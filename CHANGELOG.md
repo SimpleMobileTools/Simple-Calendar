@@ -1,6 +1,28 @@
 Changelog
 ==========
 
+Version 6.6.5 *(2019-11-06)*
+----------------------------
+
+ * Fixed a glitch with small letters in some cases
+ * Some translation improvements
+
+Version 6.6.4 *(2019-10-27)*
+----------------------------
+
+ * Never show the Add New Event button over the yearly view
+ * Some stability and translation improvements
+
+Version 6.6.3 *(2019-10-13)*
+----------------------------
+
+ * Fixed a glitch with small letters and not being able to force English in some cases
+
+Version 6.6.2 *(2019-10-09)*
+----------------------------
+
+ * Added some stability and translation improvements
+
 Version 6.6.1 *(2019-09-17)*
 ----------------------------
 

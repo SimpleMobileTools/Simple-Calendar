@@ -1,0 +1,39 @@
+Simple Calendar Pro ist ein vollständig anpassbarer Offline-Kalender, der genau das bietet, was man von einem Kalender erwartet. <b>Keine umständlichen Funktionen, keine unnötigen Berechtigungen und keine Werbung!</b>
+
+Ob einzelne oder sich wiederholende Termine, ob Geburtstage, Jahrestage, Meetings oder andere Termine organisiert werden sollen, mit Simple Calendar Pro ist das <b>Organisieren von Terminen ein Kinderspiel</b>. Eine Vielzahl von  <b>Anpassungsmöglichkeiten</b> erlaubt es dir, Terminerinnerungen (Benachrichtigungen und Töne), Widgets und sogar das Aussehen der App farblich so zu gestalten, wie es dir gefällt.
+
+Tages- Wochen- und Monatsansichten machen es leicht, anstehende Termine und Verabredungen im Auge zu behalten. Wer möchte, kann sich alle Termine auch einfach als Liste anzeigen lassen, anstatt in einer der Kalenderansichten. Auf diese Weise hast du alle Termine immer im Blick und <b>du weißt genau, was wann in deinem Leben passiert.</b>
+
+----------------------------------------------------------
+<b>Simple Calendar Pro – Funktionen & Optionen</b>
+----------------------------------------------------------
+
+✔️ Keine Werbung, keine nervigen Popups
+✔️ Keine Internetverbindung nötig, dadurch mehr Privatsphäre & erhöhte Sicherheit
+✔️ Nur absolut notwendige Berechtigungen erforderlich
+✔️ Schlichtheit wird groß geschrieben – der Kalender bietet, was man von einem Kalender erwartet!
+✔️ Open Source
+✔️ Vollständig anpassbar: Themes, Kalender und Widgets
+✔️ In 29 Sprachen
+✔️ Backup von geänderten Einstellungen in .txt-Dateien möglich, um sie auf anderen Geräten importieren zu können
+✔️ Unterstützung von CalDAV Calendar Sync, zur Synchronisation von Terminen zwischen verschiedenen Geräten
+✔️ Tages-, Wochen-, Monats-, Jahres- & Detailansicht von Terminen im Kalender
+✔️ Import/Export-Unterstützung im .ics-Format
+✔️ Festlegen mehrerer Terminerinnerungen, Anpassung von Erinnerungston und -vibration
+✔️ Schlummeroption für Terminerinnerungen
+✔️ Unkompliziertes Hinzufügen von Feiertagen, Geburtstagen, Jahrestagen & Terminen
+✔️ Anpassung von Terminen – Anfangszeit, Dauer, Erinnerungen usw.
+✔️ Einladung von Teilnehmern je Termin
+✔️ Kann als privater oder geschäftlicher Kalender genutzt werdeb
+✔️ Unterschiedliche Erinnerungsarten einschließlich E-Mail-Benachrichtigungen
+
+INSTALLIERE SIMPLE CALENDAR PRO – DEN SCHLICHTEN OFFLINE KALENDER OHNE WERBUNG!
+
+<b>Einen Überblick über die komplette Suite von Simple Tools gibt es hier:</b>
+https://www.simplemobiletools.com
+
+<b>Facebook:</b>
+https://www.facebook.com/simplemobiletools
+
+<b>Reddit:</b>
+https://www.reddit.com/r/SimpleMobileTools
