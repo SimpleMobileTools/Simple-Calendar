@@ -10,7 +10,9 @@ import android.content.Context
 import android.os.Build
 import android.os.Handler
 import android.provider.CalendarContract
+import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.recheckCalDAVCalendars
+import com.simplemobiletools.calendar.pro.extensions.refreshCalDAVCalendars
 
 // based on https://developer.android.com/reference/android/app/job/JobInfo.Builder.html#addTriggerContentUri(android.app.job.JobInfo.TriggerContentUri)
 @TargetApi(Build.VERSION_CODES.N)
@@ -51,6 +53,7 @@ class CalDAVUpdateListener : JobService() {
         mRunningParams = params
 
         if (params.triggeredContentAuthorities != null && params.triggeredContentUris != null) {
+            refreshCalDAVCalendars(config.caldavSyncedCalendarIds, false)
             recheckCalDAVCalendars {}
         }
 
