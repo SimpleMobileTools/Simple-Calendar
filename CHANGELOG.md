@@ -1,6 +1,14 @@
 Changelog
 ==========
 
+Version 6.7.0 *(2019-11-17)*
+----------------------------
+
+ * Fixed some repeating CalDAV synced events not showing up properly
+ * Improved the event sorting at the monthly widget
+ * Properly refresh CalDAV synced events in the background
+ * Some translation and stability improvements
+
 Version 6.6.5 *(2019-11-06)*
 ----------------------------
 
