@@ -163,6 +163,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         super.onDestroy()
         if (!isChangingConfigurations) {
             EventsDatabase.destroyInstance()
+            stopCalDAVUpdateListener()
         }
     }
 
@@ -285,6 +286,15 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                     updateListener.scheduleJob(applicationContext)
                 }
             } else {
+                updateListener.cancelJob(applicationContext)
+            }
+        }
+    }
+
+    private fun stopCalDAVUpdateListener() {
+        if (isNougatPlus()) {
+            if (!config.caldavSync) {
+                val updateListener = CalDAVUpdateListener()
                 updateListener.cancelJob(applicationContext)
             }
         }
