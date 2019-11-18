@@ -10,7 +10,10 @@ import com.simplemobiletools.calendar.pro.extensions.updateWidgets
 
 class CalDAVSyncReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
-        context.refreshCalDAVCalendars(context.config.caldavSyncedCalendarIds, false)
+        if (context.config.caldavSync) {
+            context.refreshCalDAVCalendars(context.config.caldavSyncedCalendarIds, false)
+        }
+
         context.recheckCalDAVCalendars {
             context.updateWidgets()
         }
