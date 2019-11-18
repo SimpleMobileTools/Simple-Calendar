@@ -53,7 +53,6 @@ class CalDAVUpdateListener : JobService() {
         mRunningParams = params
 
         if (params.triggeredContentAuthorities != null && params.triggeredContentUris != null) {
-            refreshCalDAVCalendars(config.caldavSyncedCalendarIds, false)
             recheckCalDAVCalendars {}
         }
 
