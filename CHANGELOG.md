@@ -1,6 +1,11 @@
 Changelog
 ==========
 
+Version 6.7.1 *(2019-11-18)*
+----------------------------
+
+ * Fixed a glitch at rechecking CalDAV synced calendars too often
+
 Version 6.7.0 *(2019-11-17)*
 ----------------------------
 
