@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">التقويم الخاص</string>
+    <string name="app_name">التقويم البسيط</string>
     <string name="app_launcher_name">التقويم</string>
     <string name="change_view">تعديل العرض</string>
     <string name="daily_view">عرض يومي</string>
@@ -86,7 +86,7 @@
     <string name="add_birthdays">إضافة تاريخ ميلاد جهة إتصال</string>
     <string name="no_birthdays">لم يتم إيجاد تواريخ ميلاد</string>
     <string name="no_new_birthdays">No new birthdays have been found</string>
-    <string name="birthdays_added">تمت إضافة تواريخ الميلاد</string>
+    <string name="birthdays_added">تمت إضافة تواريخ الميلاد بنجاح</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">المناسبات</string>
@@ -102,7 +102,7 @@
     <string name="event_reminders">تذكيرات الحدث</string>
 
     <!-- Event attendees -->
-    <string name="add_another_attendee">Add another attendee</string>
+    <string name="add_another_attendee">اضف مشترك اخر</string>
     <string name="my_status">My status:</string>
     <string name="going">Going</string>
     <string name="not_going">Not going</string>
@@ -160,32 +160,32 @@
     <string name="reminder_sound">صوت التذكير</string>
     <string name="no_ringtone_picker">No app capable of setting ringtone found</string>
     <string name="no_ringtone_selected">None</string>
-    <string name="day_end_before_start">The day cannot end earlier than it starts</string>
-    <string name="caldav_sync">CalDAV sync</string>
+    <string name="day_end_before_start">لا يمكن إنهاء اليوم قبل وقت بدايته</string>
+    <string name="caldav_sync">CalDAV مُزامنة</string>
     <string name="event_lists">Event lists</string>
     <string name="display_past_events">Display events from the past</string>
     <string name="replace_description_with_location">Replace event description with location</string>
-    <string name="delete_all_events">Delete all events</string>
-    <string name="delete_all_events_confirmation">Are you sure you want to delete all events? This will leave your event types and other settings intact.</string>
+    <string name="delete_all_events">حذف جميع الأحداث</string>
+    <string name="delete_all_events_confirmation">هل حقا تريد حذف جميع الأحداث؟ ستبقى جميع \'أنواع الأحداث\' والإعدادات الأخرى سليمة.</string>
     <string name="show_a_grid">إظهار شبكة</string>
     <string name="loop_reminders">Loop reminders until dismissed</string>
     <string name="dim_past_events">إخفات الأحداث السابقة</string>
     <string name="events">أحداث</string>
     <string name="reminder_stream">Audio stream used by reminders</string>
     <string name="system_stream">System</string>
-    <string name="alarm_stream">Alarm</string>
+    <string name="alarm_stream">منبه</string>
     <string name="notification_stream">Notification</string>
     <string name="ring_stream">Ring</string>
     <string name="use_last_event_reminders">Use the last events\' reminders as the default for new events</string>
-    <string name="default_reminder_1">Default reminder 1</string>
-    <string name="default_reminder_2">Default reminder 2</string>
-    <string name="default_reminder_3">Default reminder 3</string>
+    <string name="default_reminder_1">مذكرة افتراضية ١</string>
+    <string name="default_reminder_2">مذكرة افتراضية ٢</string>
+    <string name="default_reminder_3">مذكرة افتراضية ٣</string>
     <string name="view_to_open_from_widget">View to open from the event list widget</string>
     <string name="last_view">Last view</string>
     <string name="new_events">New events</string>
-    <string name="default_start_time">Default start time</string>
+    <string name="default_start_time">وقت البدأ الافتراضي</string>
     <string name="next_full_hour">Next full hour</string>
-    <string name="default_duration">Default duration</string>
+    <string name="default_duration">الفترة الافتراضية</string>
     <string name="last_used_one">Last used one</string>
     <string name="other_time">Other time</string>
     <string name="highlight_weekends">Highlight weekends on some views</string>
@@ -203,7 +203,6 @@
     <string name="synchronization_completed">Sync completed</string>
     <string name="select_a_different_caldav_color">Select a different color (might be applied locally only)</string>
     <string name="insufficient_permissions">You are not allowed to write in the selected calendar</string>
-    <string name="caldav_event_not_found">Event not found. Please enable CalDAV sync for the appropriate calendar in the app settings.</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
@@ -238,9 +237,9 @@
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
-    <string name="app_title">Simple Calendar Pro - Events &amp; Reminders</string>
+    <string name="app_title">التقويم البسيط الاحترافي - مناسبات وتنبيهات</string>
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Be notified of the important moments in your life.</string>
+    <string name="app_short_description">سيتم تنبيهك بكل اللحظات المهمة في حياتك</string>
     <string name="app_long_description">
         Simple Calendar Pro is a fully customizable, offline calendar designed to do exactly what a calendar should do. <b>No complicated features, unnecessary permissions and no ads!</b>
 
@@ -282,6 +281,7 @@
         <b>Reddit:</b>
         https://www.reddit.com/r/SimpleMobileTools
     </string>
+    <string name="caldav_event_not_found">مناسبة غير موجودة. من فضلك فَعّل مُزامنة CalDAV للحصول على التقويم المناسب من الإعدادات.</string>
 
     <!--
         Haven't found some strings? There's more at
