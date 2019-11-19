@@ -240,38 +240,38 @@
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Simple Calendar Pro - Eventos e lembretes</string>
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Be notified of the important moments in your life.</string>
+    <string name="app_short_description">Notificações sobre os momentos importantes da sua vida.</string>
     <string name="app_long_description">
-        Simple Calendar Pro is a fully customizable, offline calendar designed to do exactly what a calendar should do. <b>No complicated features, unnecessary permissions and no ads!</b>
+        Simple Calendar Pro é um calendário local, criado para fazer o que um calendário deve fazer. <b>Funcionalidades simples, apenas as permissões estritamente necessárias e sem anúncios!</b>
 
-        Whether you’re organizing single or recurring events, birthdays, anniversaries, business meetings, appointments or anything else, Simple Calendar Pro makes it <b>easy to stay organized</b>. With an incredible variety of <b>customization options</b> you can customize event reminders, notification sounds, calendar widgets and how the app looks.
+        Esteja você a criar um evento único ou recorrente, aniversários, reuniões, eventos ou qualquer outra coisa, esta aplicação <b>permite-lhe andar organizado</b>. Com <b>diversas opções de personalização</b>, pode ajustar os lembretes, os sons para as notificações, o widget e o aspeto da aplicação.
 
-        Daily, weekly and monthly views make checking your upcoming events &amp; appointments a breeze. You can even view everything as a simple list of events rather than in calendar view, so you <b>know exactly what’s coming up in your life and when. </b>
+        As vistas diária, semanal e mensal ajudam o utilizador a verificar os próximos eventos facilmente. Alternativamente, de modo a que <b>saiba exatamente o que está planeado e quando.</b>
 
         ----------------------------------------------------------
         <b>Simple Calendar Pro – Funcionalidades</b>
         ----------------------------------------------------------
 
-        ✔️ No ads or annoying popups
-        ✔️ No internet access needed, giving you more privacy &amp; security
-        ✔️ Only the bare minimum permissions required
-        ✔️ Emphasis on simplicity – does what a calendar needs to do!
+        ✔️ Sem anúncios
+        ✔️ Não requer acesso à Internet
+        ✔️ Apenas utiliza as permissões estritamente necessárias
+        ✔️ Simples – funciona apenas como calendário!
         ✔️ Open source
-        ✔️ Fully customizable themes &amp; calendar / event widgets
-        ✔️ Translated into 29 languages
-        ✔️ Export settings to .txt files to import to another device
-        ✔️ CalDAV calendar sync supported to sync events across devices
-        ✔️ Daily, weekly, monthly, yearly &amp; event views on the calendar
-        ✔️ Supports exporting &amp; importing events via .ics files
-        ✔️ Set multiple event reminders, customize event reminder sound and vibration
-        ✔️ Snooze option for reminders
-        ✔️ Easily add holidays, birthdays, anniversaries &amp; appointments
-        ✔️ Customize events – start time, duration, reminders etc
-        ✔️ Add event attendees to each event
-        ✔️ Use as a personal calendar or a business calendar
-        ✔️ Choose between reminders &amp; email notifications to alert you about an event
+        ✔️ Temas e widgets persoanlizados
+        ✔️ Traduzido em mais de 29 idiomas
+        ✔️ Exportação de definições para ficheiros .txt
+        ✔️ Sincronização CalDAV para poder usar os eventos em todos os seus dispositivos (opcional)
+        ✔️ Vista diária, semanal, mensal e lista de eventos
+        ✔️ Importação e exportação de eventos através de ficheiros .ics
+        ✔️ Possibilidade de definir diversos lembretes e personalização de sons e vibração para os mesmos
+        ✔️ Opção Snooze
+        ✔️ Possibilidade de importar, feriados, aniversários e datas de nascimento
+        ✔️ Personalização de eventos – data/hora inicial, duração dos eventos, lemvretes...
+        ✔️ Possibilidade de adicionar convidados para os eventos
+        ✔️ Passível de ser utilizado como calendário pessoal mas também empresarial
+        ✔️ Escolha entre lembretes e notificações por e-mail
 
-        DESCARREGUAR SIMPLE CALENDAR PRO – O CALENDÁRIO SIMPLES QUE NÃO TEM ANÚNCIOS!
+        DESCARREGAR SIMPLE CALENDAR PRO – O CALENDÁRIO SIMPLES QUE NÃO TEM ANÚNCIOS!
 
         <b>Consulte todas as aplicações Simple Tools aqui:</b>
         https://www.simplemobiletools.com
