@@ -231,7 +231,7 @@
         ilgiau paspauskite ant duotojo įykio tipo ir ištrinkite jį pasirinkdami šiukšlinę.</string>
     <string name="faq_2_title">Ar galiu sinchronizuoti savo įvykius per Google Kalendorių, ar kitą paslaugą palaikančią CalDAV?</string>
     <string name="faq_2_text">Taip, tiesiog pasirinkite \"CalDAV sinchronizavimas\" programėlės nustatymuose ir pasirinkite kalendorius kuriuos norite sinchronizuoti. Tačiau Jums reikės trečiosios šalies programėlės palaikančios sinchronizavimą tarp įrenginio ir serverių.
-        Jeigu norite sinchronizuoti Google kalendorių, jų oficiali kalendoriaus programėlė atliks šį darbą. Kitiems kalenoriams Jums reikės trečiosios šalies sinchronizavimo adapterio, pavyzdžiui DAVdroid.</string>
+        Jeigu norite sinchronizuoti Google kalendorių, jų oficiali kalendoriaus programėlė atliks šį darbą. Kitiems kalenoriams Jums reikės trečiosios šalies sinchronizavimo adapterio, pavyzdžiui DAVx5.</string>
     <string name="faq_3_title">I see the visual reminders, but hear no audio. What can I do?</string>
     <string name="faq_3_text">Not just displaying the actual reminder, but playing the audio is hugely affected by the system too. If you can\'t hear any sound, try going in the app settings,
         pressing the \"Audio stream used by reminders\" option and changing it to a different value. If it still won\'t work, check your sound settings, if the particular stream isn\'t muted.</string>

@@ -231,7 +231,7 @@
         tekan lama kategori acara tersebut dan hapus dengan cara menekan tombol keranjang sampah.</string>
     <string name="faq_2_title">Bisakah saya menyinkronkan acara saya dengan Google Calendar, atau layanan lain yang mendukung CalDAV?</string>
     <string name="faq_2_text">Ya, cukup aktifkan \"Sinkronisasi CalDAV\" di dalam pengaturan aplikasi dan pilih kalender yang ingin anda sinkronkan. Namun, anda membutuhkan aplikasi pihak ketiga untuk menangani proses sinkronisasi antara perangkat dan server.
-        Jika Anda ingin menyinkronkan kalender Google, aplikasi Kalender resmi mereka bisa melakukan proses tersebut. Untuk kalender lainnya anda membutuhkan adapter sinkronisasi pihak ketiga, contohnya DAVdroid.</string>
+        Jika Anda ingin menyinkronkan kalender Google, aplikasi Kalender resmi mereka bisa melakukan proses tersebut. Untuk kalender lainnya anda membutuhkan adapter sinkronisasi pihak ketiga, contohnya DAVx5.</string>
     <string name="faq_3_title">Saya melihat pengingat secara visual, tetapi tidak mendengar suara. Apa yang bisa saya lakukan?</string>
     <string name="faq_3_text">Tidak hanya menampilkan notifikasi pengingat, memutar audio juga sangat dipengaruhi oleh sistem. Jika anda tidak bisa mendengar suara apapun, coba buka pengaturan aplikasi,
         tekan opsi \"Audio yang digunakan oleh pengingat\"dan ubah ke nilai yang berbeda. Jika masih belum bisa, periksa pengaturan suara perangkat anda, mungkin ada opsi suara yang disenyapkan.</string>

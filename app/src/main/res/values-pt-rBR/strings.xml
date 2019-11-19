@@ -231,7 +231,7 @@
          pressione e segure o tipo de evento fornecido e exclua-o selecionando a lixeira.</string>
     <string name="faq_2_title">Posso sincronizar meus eventos por meio do Google Agenda ou de outro serviço de suporte CalDAV?</string>
     <string name="faq_2_text">Sim, basta ativar \ "CalDAV sync \" nas configurações do aplicativo e selecionar os calendários que você deseja sincronizar. No entanto, você precisará de algum aplicativo de terceiros que manipule a sincronização entre o dispositivo e os servidores.
-         Caso você queira sincronizar um calendário do Google, o aplicativo oficial do Google Agenda fará o trabalho. Para outros calendários, você precisará de um adaptador de sincronização de terceiros, por exemplo, o DAVdroid.</string>
+         Caso você queira sincronizar um calendário do Google, o aplicativo oficial do Google Agenda fará o trabalho. Para outros calendários, você precisará de um adaptador de sincronização de terceiros, por exemplo, o DAVx5.</string>
     <string name="faq_3_title">Vejo os lembrete, mas não ouço áudio. O que posso fazer?</string>
     <string name="faq_3_text">A exibição do lembrete e o áudio são fortemente influenciados pelas configurações do sistema. Se você não consegue ouvir o som, verifique as configurações do aplicativo,
 selecionando a opção \"Fonte de áudio usada pelos lembretes\" e modificando o seu valor. Se isso não funcionar, verifique as configurações, especialmente se o som não está mudo.</string>

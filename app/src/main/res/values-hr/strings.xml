@@ -231,7 +231,7 @@
          dugo pritisnite datu vrstu događaja i izbrišite ga odabirom koša za smeće.</string>
     <string name="faq_2_title">Mogu li sinkronizirati događaje putem Google Kalendara ili druge usluge koje podržavaju CalDAV?</string>
     <string name="faq_2_text">Da, samo uključite \"CalDAV sinkronizacija\" u postavkama aplikacije i odaberite kalendare koje želite sinkronizirati. Međutim, potrebna je aplikacija  između Vašeg uređaja i poslužitelja.
-        U slučaju da želite sinkronizirati Google kalendar, njihova službena aplikacija Kalendar obavlja navedeni posao. Za ostale kalendare potreban Vam je aplikacija treće strane za upravljanje sinkronizacijom, na primjer DAVdroid.</string>
+        U slučaju da želite sinkronizirati Google kalendar, njihova službena aplikacija Kalendar obavlja navedeni posao. Za ostale kalendare potreban Vam je aplikacija treće strane za upravljanje sinkronizacijom, na primjer DAVx5.</string>
     <string name="faq_3_title">Vidim vizualne podsjetnike, ali ne čujem zvuk. Što mogu učiniti</string>
     <string name="faq_3_text">Prikaz podsjetnika, ali i reprodukcija zvuka, jako ovise o Android sustavu. Ako ne čujete zvuk, pokušajte otići u postavke aplikacije,
         odaberite \"Audio izlazni kanal za podsjetnike\" te je promjenite na drugačiju vrijednost. Ako i dalje neće raditi, provjerite postavke zvuka, da odabrani kanal nije utišan.</string>
