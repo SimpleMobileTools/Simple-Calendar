@@ -231,7 +231,7 @@
         dlouze podržte daný typ události a stisknete tlačítko s ikonou koše pro odstranění.</string>
     <string name="faq_2_title">Mohu synchronizovat své události přes Google Kalendář nebo přes jinou službu podporující CalDav?</string>
     <string name="faq_2_text">Ano, zapnutím \"CalDAV sync\" v nastavení aplikace a vybráním kalendáře se kterým se chcete synchronizovat. Budete ovšem potřebovat nějakou aplikaci třetí strany pro samotné synchronizovaní mezi zařízením a servery.
-        Pokud chcete synchronizovat Google kalendář, tak oficiální aplikace Google toto zvládne. Pro jiné kalendáře potřebujete synchronizační adaptér třetí strany, například DAVdroid.</string>
+        Pokud chcete synchronizovat Google kalendář, tak oficiální aplikace Google toto zvládne. Pro jiné kalendáře potřebujete synchronizační adaptér třetí strany, například DAVx5.</string>
     <string name="faq_3_title">Vizuálně vidím připomínku, ale neslyším žádný zvuk. Co mám dělat?</string>
     <string name="faq_3_text">Nejenom zobrazování aktuální připomínky, ale i přehrávání zvuku je dost ovlivněno operačním systémem. Pokud neslyšíte žádný zvuk, zkuste jít do nastavení aplikace,
         vyberte: \"Zvuk upomínky\" a změňte na něco jiného. Pokud zvuk stále nefunguje, zkontrolujte zda není zvuk vypnut v nastavení vašeho systému.</string>
