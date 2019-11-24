@@ -11,6 +11,7 @@
     <string name="no_upcoming_events">يبدو انه ليس لديك أى أحداث قادمة.</string>
     <string name="go_to_today">اذهب الى اليوم</string>
     <string name="go_to_date">اذهب الى تاريخ</string>
+    <string name="upgraded_from_free">"مرحبا، يبدو أنك قمت بتحديثمن النسخة القديمة للتطبيق. يجب عليك نقل الأحداث المحفوظة يدويا عن طريق تصدير ملف ics ثم تحميله. "</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">تقويم شهري</string>
@@ -106,6 +107,7 @@
     <string name="going">ذاهب</string>
     <string name="not_going">لن أذهب</string>
     <string name="maybe_going">ربما أذهب</string>
+    <string name="invited">مدعو</string>
 
     <!-- Export / Import -->
     <string name="import_events">إستيراد الأحداث</string>
@@ -174,9 +176,11 @@
     <string name="alarm_stream">منبه</string>
     <string name="notification_stream">تنبيه</string>
     <string name="ring_stream">حلقة</string>
+    <string name="use_last_event_reminders">استخدم أخر تنبيهات الأحداث افتراضيا للأحداث الجديدة</string>
     <string name="default_reminder_1">مذكرة افتراضية ١</string>
     <string name="default_reminder_2">مذكرة افتراضية ٢</string>
     <string name="default_reminder_3">مذكرة افتراضية ٣</string>
+    <string name="view_to_open_from_widget">العرض المفتوح من مربع قائمة الأحداث</string>
     <string name="last_view">العرض الأخير</string>
     <string name="new_events">أحداث جديدة</string>
     <string name="default_start_time">وقت البدأ الافتراضي</string>
@@ -193,10 +197,13 @@
     <string name="store_locally_only">حفظ محليا فقط</string>
     <string name="refresh_caldav_calendars">تحديث تقويمات CalDAV</string>
     <string name="refreshing">جاري التحديث...</string>
+    <string name="refreshing_complete">اكتمال التحديث</string>
     <string name="editing_calendar_failed">فشل في تعديل التقويم</string>
     <string name="syncing">جارى المزامنة...</string>
+    <string name="synchronization_completed">اكتمال المزامنة</string>
     <string name="select_a_different_caldav_color">اختر لون مختلف (يمكن تطبيقه محليا فقط)</string>
     <string name="insufficient_permissions">لا يمكنك التعديل في هذا التقويم</string>
+    <string name="caldav_event_not_found">مناسبة غير موجودة. من فضلك فَعّل مُزامنة CalDAV للحصول على التقويم المناسب من الإعدادات.</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
@@ -281,13 +288,6 @@
         <b>Reddit:</b>
         https://www.reddit.com/r/SimpleMobileTools
     </string>
-    <string name="caldav_event_not_found">مناسبة غير موجودة. من فضلك فَعّل مُزامنة CalDAV للحصول على التقويم المناسب من الإعدادات.</string>
-    <string name="use_last_event_reminders">استخدم أخر تنبيهات الأحداث افتراضيا للأحداث الجديدة</string>
-    <string name="upgraded_from_free">"مرحبا، يبدو أنك قمت بتحديثمن النسخة القديمة للتطبيق. يجب عليك نقل الأحداث المحفوظة يدويا عن طريق تصدير ملف ics ثم تحميله. "</string>
-    <string name="synchronization_completed">اكتمال المزامنة</string>
-    <string name="refreshing_complete">اكتمال التحديث</string>
-    <string name="invited">مدعو</string>
-    <string name="view_to_open_from_widget">العرض المفتوح من مربع قائمة الأحداث</string>
 
     <!--
         Haven't found some strings? There's more at
