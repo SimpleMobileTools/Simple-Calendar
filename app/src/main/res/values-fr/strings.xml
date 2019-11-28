@@ -10,7 +10,7 @@
     <string name="simple_event_list">Liste simple d\’événements</string>
     <string name="no_upcoming_events">Il semblerait que vous n\’ayez aucun événement à venir.</string>
     <string name="go_to_today">Aller vers aujourd\’hui</string>
-    <string name="go_to_date">Aller vers un date</string>
+    <string name="go_to_date">Aller vers une date</string>
     <string name="upgraded_from_free">Bonjour,\n\nIl semblerait que vous soyez passé de l\’ancienne appli gratuite à la Pro. Vous devez migrer manuellement les évènements enregistrés localement manuellement en exportant un fichier .ics, puis en l\’important. Vous trouverez les boutons Exporter/Importer dans le menu de l\’écran principal.\n\nVous pourrez ensuite désinstaller l\’ancienne version, qui présente un bouton \'Passer à la version 
 	    Pro\' en haut des paramètres de l\’appli. Vous n\’aurez ensuite qu\’à réinitialiser les paramètres de l\’appli.\n\nMerci !</string>
 
