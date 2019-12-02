@@ -1,6 +1,14 @@
 Changelog
 ==========
 
+Version 6.7.2 *(2019-12-02)*
+----------------------------
+
+ * Fixed some glitches at importing events from .ics files
+ * Improved the user experience of Simple Event List view
+ * Added some initial things under the hood for proper timezone support
+ * Couple stability and translation improvements
+
 Version 6.7.1 *(2019-11-18)*
 ----------------------------
 
