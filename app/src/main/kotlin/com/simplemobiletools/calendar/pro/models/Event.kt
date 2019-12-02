@@ -31,6 +31,7 @@ data class Event(
         @ColumnInfo(name = "repetition_exceptions") var repetitionExceptions: ArrayList<String> = ArrayList(),
         @ColumnInfo(name = "attendees") var attendees: String = "",
         @ColumnInfo(name = "import_id") var importId: String = "",
+        @ColumnInfo(name = "time_zone") var timeZone: String = "",
         @ColumnInfo(name = "flags") var flags: Int = 0,
         @ColumnInfo(name = "event_type") var eventType: Long = REGULAR_EVENT_TYPE_ID,
         @ColumnInfo(name = "parent_id") var parentId: Long = 0,

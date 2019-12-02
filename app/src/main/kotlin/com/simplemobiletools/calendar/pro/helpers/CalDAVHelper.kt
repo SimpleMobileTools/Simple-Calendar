@@ -187,6 +187,8 @@ class CalDAVHelper(val context: Context) {
                 CalendarContract.Events.ORIGINAL_ID,
                 CalendarContract.Events.ORIGINAL_INSTANCE_TIME,
                 CalendarContract.Events.EVENT_LOCATION,
+                CalendarContract.Events.EVENT_TIMEZONE,
+                CalendarContract.Events.CALENDAR_TIME_ZONE,
                 CalendarContract.Events.DELETED)
 
         val selection = "${CalendarContract.Events.CALENDAR_ID} = $calendarId"
@@ -222,13 +224,16 @@ class CalDAVHelper(val context: Context) {
                     val reminder2 = reminders.getOrNull(1)
                     val reminder3 = reminders.getOrNull(2)
                     val importId = getCalDAVEventImportId(calendarId, id)
+                    val eventTimeZone = cursor.getStringValue(CalendarContract.Events.EVENT_TIMEZONE)
+                            ?: cursor.getStringValue(CalendarContract.Events.CALENDAR_TIME_ZONE) ?: DateTimeZone.getDefault().id
+
                     val source = "$CALDAV-$calendarId"
                     val repeatRule = Parser().parseRepeatInterval(rrule, startTS)
                     val event = Event(null, startTS, endTS, title, location, description, reminder1?.minutes ?: REMINDER_OFF,
                             reminder2?.minutes ?: REMINDER_OFF, reminder3?.minutes ?: REMINDER_OFF, reminder1?.type
                             ?: REMINDER_NOTIFICATION, reminder2?.type ?: REMINDER_NOTIFICATION, reminder3?.type
                             ?: REMINDER_NOTIFICATION, repeatRule.repeatInterval, repeatRule.repeatRule,
-                            repeatRule.repeatLimit, ArrayList(), attendees, importId, allDay, eventTypeId, source = source)
+                            repeatRule.repeatLimit, ArrayList(), attendees, importId, eventTimeZone, allDay, eventTypeId, source = source)
 
                     if (event.getIsAllDay()) {
                         event.startTS = Formatter.getShiftedImportTimestamp(event.startTS)

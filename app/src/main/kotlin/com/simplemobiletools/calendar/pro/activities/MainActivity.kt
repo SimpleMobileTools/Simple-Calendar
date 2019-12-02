@@ -46,6 +46,7 @@ import com.simplemobiletools.commons.models.RadioItem
 import com.simplemobiletools.commons.models.Release
 import kotlinx.android.synthetic.main.activity_main.*
 import org.joda.time.DateTime
+import org.joda.time.DateTimeZone
 import java.io.FileOutputStream
 import java.text.SimpleDateFormat
 import java.util.*
@@ -578,8 +579,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                             val source = if (birthdays) SOURCE_CONTACT_BIRTHDAY else SOURCE_CONTACT_ANNIVERSARY
                             val lastUpdated = cursor.getLongValue(ContactsContract.CommonDataKinds.Event.CONTACT_LAST_UPDATED_TIMESTAMP)
                             val event = Event(null, timestamp, timestamp, name, reminder1Minutes = reminders[0], reminder2Minutes = reminders[1],
-                                    reminder3Minutes = reminders[2], importId = contactId, flags = FLAG_ALL_DAY, repeatInterval = YEAR, repeatRule = REPEAT_SAME_DAY,
-                                    eventType = eventTypeId, source = source, lastUpdated = lastUpdated)
+                                    reminder3Minutes = reminders[2], importId = contactId, timeZone = DateTimeZone.getDefault().id, flags = FLAG_ALL_DAY,
+                                    repeatInterval = YEAR, repeatRule = REPEAT_SAME_DAY, eventType = eventTypeId, source = source, lastUpdated = lastUpdated)
 
                             val importIDsToDelete = ArrayList<String>()
                             for ((key, value) in importIDs) {

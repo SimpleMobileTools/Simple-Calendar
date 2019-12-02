@@ -39,6 +39,7 @@ import kotlinx.android.synthetic.main.activity_event.*
 import kotlinx.android.synthetic.main.activity_event.view.*
 import kotlinx.android.synthetic.main.item_attendee.view.*
 import org.joda.time.DateTime
+import org.joda.time.DateTimeZone
 import java.util.*
 import java.util.regex.Pattern
 import kotlin.collections.ArrayList
@@ -951,6 +952,7 @@ class EventActivity : SimpleActivity() {
             reminder3Type = mReminder3Type
             repeatInterval = mRepeatInterval
             importId = newImportId
+            timeZone = DateTimeZone.getDefault().id
             flags = mEvent.flags.addBitIf(event_all_day.isChecked, FLAG_ALL_DAY)
             repeatLimit = if (repeatInterval == 0) 0 else mRepeatLimit
             repeatRule = mRepeatRule
