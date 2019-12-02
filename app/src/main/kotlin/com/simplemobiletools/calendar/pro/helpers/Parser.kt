@@ -21,6 +21,10 @@ class Parser {
 
         for (part in parts) {
             val keyValue = part.split("=")
+            if (keyValue.size <= 1) {
+                continue
+            }
+
             val key = keyValue[0]
             val value = keyValue[1]
             if (key == FREQ) {
