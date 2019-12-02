@@ -25,6 +25,7 @@ class IcsImporter(val activity: SimpleActivity) {
     private var curDescription = ""
     private var curImportId = ""
     private var curRecurrenceDayCode = ""
+    private var curRrule = ""
     private var curFlags = 0
     private var curReminderMinutes = ArrayList<Int>()
     private var curReminderActions = ArrayList<Int>()
@@ -88,6 +89,10 @@ class IcsImporter(val activity: SimpleActivity) {
                     } else if (line.startsWith(DTSTART)) {
                         if (isParsingEvent) {
                             curStart = getTimestamp(line.substring(DTSTART.length))
+
+                            if (curRrule != "") {
+                                parseRepeatRule()
+                            }
                         }
                     } else if (line.startsWith(DTEND)) {
                         curEnd = getTimestamp(line.substring(DTEND.length))
@@ -103,10 +108,11 @@ class IcsImporter(val activity: SimpleActivity) {
                     } else if (line.startsWith(UID)) {
                         curImportId = line.substring(UID.length).trim()
                     } else if (line.startsWith(RRULE)) {
-                        val repeatRule = Parser().parseRepeatInterval(line.substring(RRULE.length), curStart)
-                        curRepeatRule = repeatRule.repeatRule
-                        curRepeatInterval = repeatRule.repeatInterval
-                        curRepeatLimit = repeatRule.repeatLimit
+                        curRrule = line.substring(RRULE.length)
+                        // some RRULRs need to know the events start datetime. If it's yet unknown, postpone RRULE parsing
+                        if (curStart != -1L) {
+                            parseRepeatRule()
+                        }
                     } else if (line.startsWith(ACTION)) {
                         isNotificationDescription = true
                         val action = line.substring(ACTION.length)
@@ -289,6 +295,13 @@ class IcsImporter(val activity: SimpleActivity) {
         }
     }
 
+    private fun parseRepeatRule() {
+        val repeatRule = Parser().parseRepeatInterval(curRrule, curStart)
+        curRepeatRule = repeatRule.repeatRule
+        curRepeatInterval = repeatRule.repeatInterval
+        curRepeatLimit = repeatRule.repeatLimit
+    }
+
     private fun resetValues() {
         curStart = -1L
         curEnd = -1L
@@ -297,6 +310,7 @@ class IcsImporter(val activity: SimpleActivity) {
         curDescription = ""
         curImportId = ""
         curRecurrenceDayCode = ""
+        curRrule = ""
         curFlags = 0
         curReminderMinutes = ArrayList()
         curReminderActions = ArrayList()
