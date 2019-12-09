@@ -214,7 +214,8 @@ class EventActivity : SimpleActivity() {
 
         updateTextColors(event_scrollview)
         updateIconColors()
-
+        event_time_zone_image.beVisibleIf(config.allowChangingTimeZones)
+        event_time_zone.beVisibleIf(config.allowChangingTimeZones)
         mWasActivityInitialized = true
     }
 
