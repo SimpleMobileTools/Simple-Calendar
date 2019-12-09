@@ -15,9 +15,9 @@
         android:id="@+id/event_item_holder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/medium_margin"
+        android:paddingBottom="@dimen/normal_margin"
         android:paddingEnd="@dimen/activity_margin"
-        android:paddingTop="@dimen/medium_margin">
+        android:paddingTop="@dimen/normal_margin">
 
         <ImageView
             android:id="@+id/event_item_color_bar"
