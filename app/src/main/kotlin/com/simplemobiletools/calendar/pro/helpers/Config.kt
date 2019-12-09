@@ -185,4 +185,8 @@ class Config(context: Context) : BaseConfig(context) {
     var defaultEventTypeId: Long
         get() = prefs.getLong(DEFAULT_EVENT_TYPE_ID, -1L)
         set(defaultEventTypeId) = prefs.edit().putLong(DEFAULT_EVENT_TYPE_ID, defaultEventTypeId).apply()
+
+    var allowChangingTimeZones: Boolean
+        get() = prefs.getBoolean(ALLOW_CHANGING_TIME_ZONES, false)
+        set(allowChangingTimeZones) = prefs.edit().putBoolean(ALLOW_CHANGING_TIME_ZONES, allowChangingTimeZones).apply()
 }

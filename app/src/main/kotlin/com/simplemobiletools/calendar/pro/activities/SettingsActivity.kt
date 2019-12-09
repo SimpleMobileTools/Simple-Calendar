@@ -73,6 +73,7 @@ class SettingsActivity : SimpleActivity() {
         setupCustomizeWidgetColors()
         setupViewToOpenFromListWidget()
         setupDimEvents()
+        setupAllowChangingTimeZones()
         updateTextColors(settings_holder)
         checkPrimaryColor()
         setupSectionColors()
@@ -565,6 +566,14 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
+    private fun setupAllowChangingTimeZones() {
+        settings_allow_changing_time_zones.isChecked = config.allowChangingTimeZones
+        settings_allow_changing_time_zones_holder.setOnClickListener {
+            settings_allow_changing_time_zones.toggle()
+            config.allowChangingTimeZones = settings_allow_changing_time_zones.isChecked
+        }
+    }
+
     private fun setupDefaultStartTime() {
         updateDefaultStartTimeText()
         settings_default_start_time_holder.setOnClickListener {
@@ -679,6 +688,7 @@ class SettingsActivity : SimpleActivity() {
                 put(SHOW_GRID, config.showGrid)
                 put(LOOP_REMINDERS, config.loopReminders)
                 put(DIM_PAST_EVENTS, config.dimPastEvents)
+                put(ALLOW_CHANGING_TIME_ZONES, config.allowChangingTimeZones)
                 put(USE_PREVIOUS_EVENT_REMINDERS, config.usePreviousEventReminders)
                 put(DEFAULT_REMINDER_1, config.defaultReminder1)
                 put(DEFAULT_REMINDER_2, config.defaultReminder2)
@@ -764,6 +774,7 @@ class SettingsActivity : SimpleActivity() {
                 SHOW_GRID -> config.showGrid = value.toBoolean()
                 LOOP_REMINDERS -> config.loopReminders = value.toBoolean()
                 DIM_PAST_EVENTS -> config.dimPastEvents = value.toBoolean()
+                ALLOW_CHANGING_TIME_ZONES -> config.allowChangingTimeZones = value.toBoolean()
                 USE_PREVIOUS_EVENT_REMINDERS -> config.usePreviousEventReminders = value.toBoolean()
                 DEFAULT_REMINDER_1 -> config.defaultReminder1 = value.toInt()
                 DEFAULT_REMINDER_2 -> config.defaultReminder2 = value.toInt()
