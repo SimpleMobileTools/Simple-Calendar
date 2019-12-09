@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:paddingBottom="@dimen/normal_margin"
         android:paddingEnd="@dimen/activity_margin"
-        android:paddingTop="@dimen/small_margin">
+        android:paddingTop="@dimen/normal_margin">
 
         <ImageView
             android:id="@+id/event_item_color_bar"
