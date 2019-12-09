@@ -313,6 +313,7 @@ class EventActivity : SimpleActivity() {
         checkReminderTexts()
         updateStartTexts()
         updateEndTexts()
+        updateTimeZoneText()
         updateAttendeesVisibility()
     }
 
@@ -1052,6 +1053,10 @@ class EventActivity : SimpleActivity() {
     private fun updateEndTimeText() {
         event_end_time.text = Formatter.getTime(this, mEventEndDateTime)
         checkStartEndValidity()
+    }
+
+    private fun updateTimeZoneText() {
+        event_timezone.text = mEvent.getTimeZoneString()
     }
 
     private fun checkStartEndValidity() {

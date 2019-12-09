@@ -9,6 +9,7 @@ import com.simplemobiletools.calendar.pro.extensions.seconds
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.commons.extensions.addBitIf
 import org.joda.time.DateTime
+import org.joda.time.DateTimeZone
 import java.io.Serializable
 
 @Entity(tableName = "events", indices = [(Index(value = ["id"], unique = true))])
@@ -177,4 +178,12 @@ data class Event(
         }
 
     var color: Int = 0
+
+    fun getTimeZoneString(): String {
+        return if (timeZone.isNotEmpty() && getAllTimeZones().map { it.zoneName }.contains(timeZone)) {
+            timeZone
+        } else {
+            DateTimeZone.getDefault().id
+        }
+    }
 }
