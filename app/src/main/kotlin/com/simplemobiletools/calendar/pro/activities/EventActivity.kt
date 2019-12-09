@@ -162,6 +162,7 @@ class EventActivity : SimpleActivity() {
         event_start_time.setOnClickListener { setupStartTime() }
         event_end_date.setOnClickListener { setupEndDate() }
         event_end_time.setOnClickListener { setupEndTime() }
+        event_timezone.setOnClickListener { setupTimezone() }
 
         event_all_day.setOnCheckedChangeListener { compoundButton, isChecked -> toggleAllDay(isChecked) }
         event_repetition.setOnClickListener { showRepeatIntervalDialog() }
@@ -1163,6 +1164,10 @@ class EventActivity : SimpleActivity() {
         }
     }
 
+    private fun setupTimezone() {
+
+    }
+
     private fun checkRepeatRule() {
         if (mRepeatInterval.isXWeeklyRepetition()) {
             val day = mRepeatRule
@@ -1461,6 +1466,7 @@ class EventActivity : SimpleActivity() {
     private fun updateIconColors() {
         val textColor = config.textColor
         event_time_image.applyColorFilter(textColor)
+        event_timezone_image.applyColorFilter(textColor)
         event_repetition_image.applyColorFilter(textColor)
         event_reminder_image.applyColorFilter(textColor)
         event_type_image.applyColorFilter(textColor)
