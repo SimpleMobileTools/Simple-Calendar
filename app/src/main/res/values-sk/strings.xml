@@ -109,6 +109,9 @@
     <string name="maybe_going">Možno sa zúčastním</string>
     <string name="invited">Pozvaný</string>
 
+    <!-- Time zones -->
+    <string name="enter_a_country">Zadajte krajinu alebo časové pásmo</string>
+
     <!-- Export / Import -->
     <string name="import_events">Importovať udalosti</string>
     <string name="export_events">Exportovať udalosti</string>
@@ -189,6 +192,7 @@
     <string name="last_used_one">Naposledy použitý</string>
     <string name="other_time">Iný čas</string>
     <string name="highlight_weekends">Zvýrazniť víkendy na niektorých pohľadoch</string>
+    <string name="allow_changing_time_zones">Povoliť zmenu časových pásem udalostí</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -235,6 +239,9 @@
     <string name="faq_3_title">Vidím vizuálnu pripomienku, ale nepočujem žiadny zvuk. Čo s tým viem spraviť?</string>
     <string name="faq_3_text">Nie len zobrazovanie pripomienok, ale aj prehrávanie zvuku je ovplyvnené systémom. Ak nepočujete zvuk, skúste ísť do nastavení apky, použiť možnosť \"Zvukový kanál používaný pripomienkami\" a
         zmeniť zvolenú hodnotu. Ak to ešte stále nebude fungovať, skúste sa pozrieť do zvukových nastavení vášho systému, či daný kanál nie je stlmený.</string>
+    <string name="faq_4_title">Podporuje apka časové pásma?</string>
+    <string name="faq_4_text">Áno, podporuje. Štandardne sú všetky udalosti vytvárané vo vašom súčasnom časovom pásme. Ak chcete zmeniť časové pásmo niektorej udalosti,
+        najprv musíte povoliť menenie časových pásem v nastaveniach apky, následne ho zmeniť na obrazovke s detailmi udalosti. Menenie je štandardne vypnuté, keďže ho väčšina ľudí potrebovať nebude.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->

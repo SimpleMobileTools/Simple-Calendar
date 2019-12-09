@@ -109,6 +109,9 @@
     <string name="maybe_going">Misschien</string>
     <string name="invited">Uitgenodigd</string>
 
+    <!-- Time zones -->
+    <string name="enter_a_country">Enter a country or time zone</string>
+
     <!-- Export / Import -->
     <string name="import_events">Afspraken importeren</string>
     <string name="export_events">Afspraken exporteren</string>
@@ -189,6 +192,7 @@
     <string name="last_used_one">Laatst gebruikt</string>
     <string name="other_time">Andere tijd</string>
     <string name="highlight_weekends">Weekends markeren</string>
+    <string name="allow_changing_time_zones">Allow changing event time zones</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -235,6 +239,9 @@
     <string name="faq_3_title">Ik krijg wel herinneringen, maar ik hoor geen notificatiegeluid. Wat kan ik doen?</string>
     <string name="faq_3_text">Geluiden afspelen bij een herinnering is sterk afhankelijk van het systeem. Als er geen geluid te horen is, ga dan naar instellingen en pas de optie
         \"Type geluiden voor herinneringen gebruiken\" aan. Als dat niet werkt, controleer dan bij de geluidsinstellingen van Android of het volume van dit geluidstype niet te laag is ingesteld.</string>
+    <string name="faq_4_title">Does the app support time zones?</string>
+    <string name="faq_4_text">Yes, it does. By default all events are created in your current time zone. If you want to change an events\' time zone,
+        you will first have to enable the time zone picker at the app settings, then change it at the Event Details screen. It is disabled by default as most people won\'t need it.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->

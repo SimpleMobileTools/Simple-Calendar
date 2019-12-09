@@ -109,6 +109,9 @@
     <string name="maybe_going">참석 예정</string>
     <string name="invited">초대됨</string>
 
+    <!-- Time zones -->
+    <string name="enter_a_country">Enter a country or time zone</string>
+
     <!-- Export / Import -->
     <string name="import_events">일정들 가져오기</string>
     <string name="export_events">일정들 내보내기</string>
@@ -189,6 +192,7 @@
     <string name="last_used_one">마지막으로 사용한 것</string>
     <string name="other_time">다른 시간</string>
     <string name="highlight_weekends">화면에서 주말 표시</string>
+    <string name="allow_changing_time_zones">Allow changing event time zones</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -234,6 +238,9 @@
     <string name="faq_3_title">일정에 대한 알림이 화면에 뜨지만 알림음이 들리지 않습니다. 어떻게 해야하나요?</string>
     <string name="faq_3_text">알림을 화면에 표시하는 것 뿐만 아니라 알림음도 시스템의 영향을 크게 받습니다. 소리가 들리지 않는다면 앱 설정으로 이동하여 \"알림음 출력 방식\" 옵션을 누르고 다른 방식으로 변경해보세요.
         그래도 알림음이 들리지 않는다면 특정 출력 방식이 음소거되어 있을 가능성이 있습니다. 핸드폰의 사운드 설정을 확인해주세요.</string>
+    <string name="faq_4_title">Does the app support time zones?</string>
+    <string name="faq_4_text">Yes, it does. By default all events are created in your current time zone. If you want to change an events\' time zone,
+        you will first have to enable the time zone picker at the app settings, then change it at the Event Details screen. It is disabled by default as most people won\'t need it.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->

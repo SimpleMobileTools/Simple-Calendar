@@ -109,6 +109,9 @@
     <string name="maybe_going">Talvez vá</string>
     <string name="invited">Convidado</string>
 
+    <!-- Time zones -->
+    <string name="enter_a_country">Enter a country or time zone</string>
+
     <!-- Export / Import -->
     <string name="import_events">Importar eventos</string>
     <string name="export_events">Exportar eventos</string>
@@ -189,6 +192,7 @@
     <string name="last_used_one">Última utilizada</string>
     <string name="other_time">Outra</string>
     <string name="highlight_weekends">Destacar fim de semana em algumas vistas</string>
+    <string name="allow_changing_time_zones">Allow changing event time zones</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -235,6 +239,9 @@
     <string name="faq_3_title">I see the visual reminders, but hear no audio. What can I do?</string>
     <string name="faq_3_text">Not just displaying the actual reminder, but playing the audio is hugely affected by the system too. If you can\'t hear any sound, try going in the app settings,
         pressing the \"Audio stream used by reminders\" option and changing it to a different value. If it still won\'t work, check your sound settings, if the particular stream isn\'t muted.</string>
+    <string name="faq_4_title">Does the app support time zones?</string>
+    <string name="faq_4_text">Yes, it does. By default all events are created in your current time zone. If you want to change an events\' time zone,
+        you will first have to enable the time zone picker at the app settings, then change it at the Event Details screen. It is disabled by default as most people won\'t need it.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->

@@ -109,6 +109,9 @@
     <string name="maybe_going">Mungkin hadir</string>
     <string name="invited">Diundang</string>
 
+    <!-- Time zones -->
+    <string name="enter_a_country">Enter a country or time zone</string>
+
     <!-- Export / Import -->
     <string name="import_events">Impor acara</string>
     <string name="export_events">Ekspor acara</string>
@@ -189,6 +192,7 @@
     <string name="last_used_one">Terakhir digunakan</string>
     <string name="other_time">Waktu lainnya</string>
     <string name="highlight_weekends">Sorot akhir pekan pada beberapa tampilan</string>
+    <string name="allow_changing_time_zones">Allow changing event time zones</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -235,6 +239,9 @@
     <string name="faq_3_title">Saya melihat pengingat secara visual, tetapi tidak mendengar suara. Apa yang bisa saya lakukan?</string>
     <string name="faq_3_text">Tidak hanya menampilkan notifikasi pengingat, memutar audio juga sangat dipengaruhi oleh sistem. Jika anda tidak bisa mendengar suara apapun, coba buka pengaturan aplikasi,
         tekan opsi \"Audio yang digunakan oleh pengingat\"dan ubah ke nilai yang berbeda. Jika masih belum bisa, periksa pengaturan suara perangkat anda, mungkin ada opsi suara yang disenyapkan.</string>
+    <string name="faq_4_title">Does the app support time zones?</string>
+    <string name="faq_4_text">Yes, it does. By default all events are created in your current time zone. If you want to change an events\' time zone,
+        you will first have to enable the time zone picker at the app settings, then change it at the Event Details screen. It is disabled by default as most people won\'t need it.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->

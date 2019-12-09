@@ -109,6 +109,9 @@
     <string name="maybe_going">ربما أذهب</string>
     <string name="invited">مدعو</string>
 
+    <!-- Time zones -->
+    <string name="enter_a_country">Enter a country or time zone</string>
+
     <!-- Export / Import -->
     <string name="import_events">إستيراد الأحداث</string>
     <string name="export_events">تصدير الأحداث</string>
@@ -189,6 +192,7 @@
     <string name="last_used_one">آخر واحد مستخدَم</string>
     <string name="other_time">وقت آخر</string>
     <string name="highlight_weekends">ظلل نهايات الأسبوع في بعض العروض</string>
+    <string name="allow_changing_time_zones">Allow changing event time zones</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -241,6 +245,9 @@
         إن كنت لا تستطيع سماع أى صوت، جرب الذهاب لإعدادات الهاتف، واضغط على خيار \"الصوت المستخدم في التنبيهات\" وبدّلة لأى اختيار آخر.
         إن ظل الصوت لا يعمل، تأكد في إعدادات الصوت الخاصة بك، إن لم يكن هذا الصوت تحديدا قد تم كتمه.
     </string>
+    <string name="faq_4_title">Does the app support time zones?</string>
+    <string name="faq_4_text">Yes, it does. By default all events are created in your current time zone. If you want to change an events\' time zone,
+        you will first have to enable the time zone picker at the app settings, then change it at the Event Details screen. It is disabled by default as most people won\'t need it.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->

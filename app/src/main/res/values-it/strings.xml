@@ -109,6 +109,9 @@
     <string name="maybe_going">Forse</string>
     <string name="invited">Invitato</string>
 
+    <!-- Time zones -->
+    <string name="enter_a_country">Enter a country or time zone</string>
+
     <!-- Export / Import -->
     <string name="import_events">Importa eventi</string>
     <string name="export_events">Esporta eventi</string>
@@ -189,6 +192,7 @@
     <string name="last_used_one">L\'ultimo utilizzato</string>
     <string name="other_time">Altro periodo</string>
     <string name="highlight_weekends">Highlight weekends on some views</string>
+    <string name="allow_changing_time_zones">Allow changing event time zones</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -235,6 +239,9 @@
     <string name="faq_3_title">Visualizzo i promemoria, ma non sento l\'audio. Cosa posso fare?</string>
     <string name="faq_3_text">Non solo visualizzare l\'attuale promemoria, ma anche riprodurre l\'audio è un lavoro prettamente del sistema. Se non si sente alcun suono, provare ad andare nelle impostazioni dell\'applicazione,
         premere l\'opzione \"Canale audio utilizzato per il promemoria\" e cambia il canale. Se ancora non funziona, controllare le impostazioni dell\'audio, in particolare se il canale è stato mutato.</string>
+    <string name="faq_4_title">Does the app support time zones?</string>
+    <string name="faq_4_text">Yes, it does. By default all events are created in your current time zone. If you want to change an events\' time zone,
+        you will first have to enable the time zone picker at the app settings, then change it at the Event Details screen. It is disabled by default as most people won\'t need it.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->

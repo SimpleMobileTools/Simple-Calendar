@@ -110,6 +110,9 @@
     <string name="maybe_going">Participe peut-être</string>
     <string name="invited">Invité</string>
 
+    <!-- Time zones -->
+    <string name="enter_a_country">Enter a country or time zone</string>
+
     <!-- Export / Import -->
     <string name="import_events">Importer des événements</string>
     <string name="export_events">Exporter des événements</string>
@@ -190,6 +193,7 @@
     <string name="last_used_one">Identique au dernier</string>
     <string name="other_time">Autre moment</string>
     <string name="highlight_weekends">Highlight weekends on some views</string>
+    <string name="allow_changing_time_zones">Allow changing event time zones</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -236,6 +240,9 @@
     <string name="faq_3_title">Je vois les rappels visuels, mais n\’entends aucun son. Que puis-je faire ?</string>
     <string name="faq_3_text">Pas seulement l\’affichage du rappel, mais la lecture de l\’audio est également énormément affectée par le système. Si vous n’entendez aucun son, essayez d’entrer dans les paramètres de l’appli,
         en appuyant sur l\’option « Flux audio utilisé par les rappels » et en la modifiant. Si cela ne fonctionne toujours pas, vérifiez vos paramètres audio, si le flux particulier n’est pas mis en sourdine.</string>
+    <string name="faq_4_title">Does the app support time zones?</string>
+    <string name="faq_4_text">Yes, it does. By default all events are created in your current time zone. If you want to change an events\' time zone,
+        you will first have to enable the time zone picker at the app settings, then change it at the Event Details screen. It is disabled by default as most people won\'t need it.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->

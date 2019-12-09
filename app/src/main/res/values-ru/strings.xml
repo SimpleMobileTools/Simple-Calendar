@@ -109,6 +109,9 @@
     <string name="maybe_going">Возможно приду</string>
     <string name="invited">Приглашённый</string>
 
+    <!-- Time zones -->
+    <string name="enter_a_country">Enter a country or time zone</string>
+
     <!-- Export / Import -->
     <string name="import_events">Импорт событий</string>
     <string name="export_events">Экспорт событий</string>
@@ -189,6 +192,7 @@
     <string name="last_used_one">Последнее использованное</string>
     <string name="other_time">Другое</string>
     <string name="highlight_weekends">Выделять выходные дни в соответствующих режимах</string>
+    <string name="allow_changing_time_zones">Allow changing event time zones</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -235,6 +239,9 @@
     <string name="faq_3_title">Я вижу напоминания, но не слышу звука. Что можно сделать?</string>
     <string name="faq_3_text">Не только отображение напоминания, но и воспроизведение звука сильно зависит от системы. Если звук не слышен, откройте настройки приложения,
         выберите параметр \"Аудиопоток, используемый напоминаниями\" и измените его на другое значение. Если звук по-прежнему не будет слышен, проверьте в настройка устройства, что данный поток не отключён.</string>
+    <string name="faq_4_title">Does the app support time zones?</string>
+    <string name="faq_4_text">Yes, it does. By default all events are created in your current time zone. If you want to change an events\' time zone,
+        you will first have to enable the time zone picker at the app settings, then change it at the Event Details screen. It is disabled by default as most people won\'t need it.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
