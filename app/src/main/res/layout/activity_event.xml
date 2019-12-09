@@ -158,23 +158,23 @@
             tools:text="00:00"/>
 
         <ImageView
-            android:id="@+id/event_timezone_image"
+            android:id="@+id/event_time_zone_image"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_below="@+id/event_end_date"
             android:layout_marginStart="@dimen/normal_margin"
-            android:layout_alignTop="@+id/event_timezone"
-            android:layout_alignBottom="@+id/event_timezone"
+            android:layout_alignTop="@+id/event_time_zone"
+            android:layout_alignBottom="@+id/event_time_zone"
             android:padding="@dimen/medium_margin"
             android:src="@drawable/ic_globe_vector"/>
 
         <com.simplemobiletools.commons.views.MyTextView
-            android:id="@+id/event_timezone"
+            android:id="@+id/event_time_zone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_end_date"
             android:layout_marginStart="@dimen/small_margin"
-            android:layout_toEndOf="@+id/event_timezone_image"
+            android:layout_toEndOf="@+id/event_time_zone_image"
             android:background="?attr/selectableItemBackground"
             android:layout_centerVertical="true"
             android:ellipsize="end"
@@ -188,7 +188,7 @@
             android:id="@+id/event_date_time_divider"
             android:layout_width="match_parent"
             android:layout_height="1px"
-            android:layout_below="@+id/event_timezone"
+            android:layout_below="@+id/event_time_zone"
             android:layout_marginTop="@dimen/medium_margin"
             android:layout_marginBottom="@dimen/medium_margin"
             android:background="@color/divider_grey"
