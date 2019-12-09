@@ -692,7 +692,7 @@ class SettingsActivity : SimpleActivity() {
                 put(SUNDAY_FIRST, config.isSundayFirst)
             }
 
-            exportSettings(configItems, "calendar-settings.txt")
+            exportSettings(configItems)
         }
     }
 

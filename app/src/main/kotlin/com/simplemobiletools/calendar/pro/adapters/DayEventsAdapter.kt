@@ -54,6 +54,10 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
 
     override fun getItemKeyPosition(key: Int) = events.indexOfFirst { it.id?.toInt() == key }
 
+    override fun onActionModeCreated() {}
+
+    override fun onActionModeDestroyed() {}
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyRecyclerViewAdapter.ViewHolder {
         val layoutId = when (viewType) {
             ITEM_EVENT -> R.layout.event_item_day_view
