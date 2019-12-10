@@ -1186,6 +1186,7 @@ class EventActivity : SimpleActivity() {
 
     private fun setupTimeZone() {
         Intent(this, SelectTimeZoneActivity::class.java).apply {
+            putExtra(CURRENT_TIME_ZONE, mEvent.getTimeZoneString())
             startActivityForResult(this, SELECT_TIME_ZONE_INTENT)
         }
     }
