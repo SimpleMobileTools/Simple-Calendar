@@ -110,7 +110,7 @@
     <string name="invited">Καλεσμένος</string>
 
     <!-- Time zones -->
-    <string name="enter_a_country">Enter a country or time zone</string>
+    <string name="enter_a_country">Εισαγωγή χώρας ή ζώνης ώρας</string>
 
     <!-- Export / Import -->
     <string name="import_events">Εισαγωγή εκδηλώσεων</string>
@@ -239,9 +239,9 @@
     <string name="faq_3_title">Βλέπω τις οπτικές υπενθυμίσεις, αλλά δεν ακούω ήχο. Τι μπορώ να κάνω?</string>
     <string name="faq_3_text">Όχι μόνο η εμφάνιση της πραγματικής υπενθύμισης, αλλά η αναπαραγωγή του ήχου επηρεάζεται έντονα και από το σύστημα. Εάν δεν μπορείτε να ακούσετε ήχο, δοκιμάστε να μεταβείτε στις ρυθμίσεις της εφαρμογής,
         πατώντας την επιλογή "Ροή ήχου που χρησιμοποιείται από τις υπενθυμίσεις" και αλλάζοντας την σε διαφορετική τιμή. Εάν εξακολουθεί να μην λειτουργεί, ελέγξτε τις ρυθμίσεις ήχου σας, εάν η συγκεκριμένη ροή δεν είναι απενεργοποιημένη.</string>
-    <string name="faq_4_title">Does the app support time zones?</string>
-    <string name="faq_4_text">Yes, it does. By default all events are created in your current time zone. If you want to change an events\' time zone,
-        you will first have to enable the time zone picker at the app settings, then change it at the Event Details screen. It is disabled by default as most people won\'t need it.</string>
+    <string name="faq_4_title">Η εφαρμογή υποστηρίζει ζώνες ώρας;</string>
+    <string name="faq_4_text">Ναι, μπορεί. Από προεπιλογή, όλα τα συμβάντα δημιουργούνται στην τρέχουσα ζώνη ώρας. Εάν θέλετε να αλλάξετε μια ζώνη ώρας των συμβάντων,
+        θα πρέπει πρώτα να ενεργοποιήσετε τον επιλογέα ζώνης ώρας στις Ρυθμίσεις της εφαρμογής και, στη συνέχεια, να τον αλλάξετε στην οθόνη Λεπτομέρειες συμβάντος. Είναι απενεργοποιημένο από προεπιλογή, καθώς οι περισσότεροι δεν το χρειάζονται.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
