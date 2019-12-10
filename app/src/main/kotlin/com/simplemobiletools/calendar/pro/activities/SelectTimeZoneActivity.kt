@@ -8,6 +8,9 @@ import android.view.MenuItem
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuItemCompat
 import com.simplemobiletools.calendar.pro.R
+import com.simplemobiletools.calendar.pro.adapters.SelectTimeZoneAdapter
+import com.simplemobiletools.calendar.pro.helpers.getAllTimeZones
+import kotlinx.android.synthetic.main.activity_select_time_zone.*
 
 class SelectTimeZoneActivity : SimpleActivity() {
     private var mIsSearchOpen = false
@@ -17,6 +20,12 @@ class SelectTimeZoneActivity : SimpleActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_select_time_zone)
         title = ""
+
+        SelectTimeZoneAdapter(this, getAllTimeZones(), select_time_zone_list) {
+
+        }.apply {
+            select_time_zone_list.adapter = this
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
