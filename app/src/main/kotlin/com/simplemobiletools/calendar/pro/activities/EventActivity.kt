@@ -253,6 +253,7 @@ class EventActivity : SimpleActivity() {
             putSerializable(EVENT, mEvent)
             putLong(START_TS, mEventStartDateTime.seconds())
             putLong(END_TS, mEventEndDateTime.seconds())
+            putString(TIME_ZONE, mEvent.timeZone)
 
             putInt(REMINDER_1_MINUTES, mReminder1Minutes)
             putInt(REMINDER_2_MINUTES, mReminder2Minutes)
@@ -284,6 +285,7 @@ class EventActivity : SimpleActivity() {
             mEvent = getSerializable(EVENT) as Event
             mEventStartDateTime = Formatter.getDateTimeFromTS(getLong(START_TS))
             mEventEndDateTime = Formatter.getDateTimeFromTS(getLong(END_TS))
+            mEvent.timeZone = getString(TIME_ZONE) ?: TimeZone.getDefault().id
 
             mReminder1Minutes = getInt(REMINDER_1_MINUTES)
             mReminder2Minutes = getInt(REMINDER_2_MINUTES)
@@ -967,7 +969,7 @@ class EventActivity : SimpleActivity() {
             reminder3Type = mReminder3Type
             repeatInterval = mRepeatInterval
             importId = newImportId
-            timeZone = DateTimeZone.getDefault().id
+            timeZone = if (mEvent.timeZone.isEmpty()) TimeZone.getDefault().id else timeZone
             flags = mEvent.flags.addBitIf(event_all_day.isChecked, FLAG_ALL_DAY)
             repeatLimit = if (repeatInterval == 0) 0 else mRepeatLimit
             repeatRule = mRepeatRule

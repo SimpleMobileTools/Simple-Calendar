@@ -412,7 +412,7 @@ class CalDAVHelper(val context: Context) {
             put(CalendarContract.Events.DESCRIPTION, event.description)
             put(CalendarContract.Events.DTSTART, event.startTS * 1000L)
             put(CalendarContract.Events.ALL_DAY, if (event.getIsAllDay()) 1 else 0)
-            put(CalendarContract.Events.EVENT_TIMEZONE, TimeZone.getDefault().id.toString())
+            put(CalendarContract.Events.EVENT_TIMEZONE, event.getTimeZoneString())
             put(CalendarContract.Events.EVENT_LOCATION, event.location)
             put(CalendarContract.Events.STATUS, CalendarContract.Events.STATUS_CONFIRMED)
 
