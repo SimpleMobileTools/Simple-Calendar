@@ -192,7 +192,7 @@
     <string name="last_used_one">Τελευταία χρήση</string>
     <string name="other_time">Άλλη ώρα</string>
     <string name="highlight_weekends">Επισήμανση Σαββατοκύριακων σε ορισμένες προβολές</string>
-    <string name="allow_changing_time_zones">Allow changing event time zones</string>
+    <string name="allow_changing_time_zones">Να επιτρέπεται η αλλαγή ζωνών ώρας συμβάντος</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
