@@ -10,7 +10,7 @@ import com.simplemobiletools.calendar.pro.models.MyTimeZone
 import kotlinx.android.synthetic.main.item_select_time_zone.view.*
 import java.util.*
 
-class SelectTimeZoneAdapter(val activity: SimpleActivity, val timeZones: ArrayList<MyTimeZone>, val itemClick: (Any) -> Unit) :
+class SelectTimeZoneAdapter(val activity: SimpleActivity, var timeZones: ArrayList<MyTimeZone>, val itemClick: (Any) -> Unit) :
         RecyclerView.Adapter<SelectTimeZoneAdapter.ViewHolder>() {
     val textColor = activity.config.textColor
 
@@ -25,6 +25,11 @@ class SelectTimeZoneAdapter(val activity: SimpleActivity, val timeZones: ArrayLi
     }
 
     override fun getItemCount() = timeZones.size
+
+    fun updateTimeZones(newTimeZones: ArrayList<MyTimeZone>) {
+        timeZones = newTimeZones.clone() as ArrayList<MyTimeZone>
+        notifyDataSetChanged()
+    }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun bindView(timeZone: MyTimeZone): View {

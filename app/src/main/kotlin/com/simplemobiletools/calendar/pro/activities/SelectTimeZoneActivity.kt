@@ -14,9 +14,9 @@ import com.simplemobiletools.calendar.pro.helpers.TIME_ZONE
 import com.simplemobiletools.calendar.pro.helpers.getAllTimeZones
 import com.simplemobiletools.calendar.pro.models.MyTimeZone
 import kotlinx.android.synthetic.main.activity_select_time_zone.*
+import java.util.*
 
 class SelectTimeZoneActivity : SimpleActivity() {
-    private var mIsSearchOpen = false
     private var mSearchMenuItem: MenuItem? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,9 +53,7 @@ class SelectTimeZoneActivity : SimpleActivity() {
                 override fun onQueryTextSubmit(query: String) = false
 
                 override fun onQueryTextChange(newText: String): Boolean {
-                    if (mIsSearchOpen) {
-                        searchQueryChanged(newText)
-                    }
+                    searchQueryChanged(newText)
                     return true
                 }
             })
@@ -64,13 +62,11 @@ class SelectTimeZoneActivity : SimpleActivity() {
         mSearchMenuItem!!.expandActionView()
         MenuItemCompat.setOnActionExpandListener(mSearchMenuItem, object : MenuItemCompat.OnActionExpandListener {
             override fun onMenuItemActionExpand(item: MenuItem?): Boolean {
-                mIsSearchOpen = true
                 searchQueryChanged("")
                 return true
             }
 
             override fun onMenuItemActionCollapse(item: MenuItem?): Boolean {
-                mIsSearchOpen = false
                 finish()
                 return true
             }
@@ -78,6 +74,9 @@ class SelectTimeZoneActivity : SimpleActivity() {
     }
 
     private fun searchQueryChanged(text: String) {
-
+        val timeZones = getAllTimeZones().filter {
+            it.zoneName.toLowerCase(Locale.getDefault()).contains(text.toLowerCase(Locale.getDefault()))
+        }.toMutableList() as ArrayList<MyTimeZone>
+        (select_time_zone_list.adapter as? SelectTimeZoneAdapter)?.updateTimeZones(timeZones)
     }
 }
