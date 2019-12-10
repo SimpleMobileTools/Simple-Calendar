@@ -1,5 +1,6 @@
 package com.simplemobiletools.calendar.pro.activities
 
+import android.app.Activity
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
@@ -61,6 +62,7 @@ class EventActivity : SimpleActivity() {
     private val ATTENDEES = "ATTENDEES"
     private val EVENT_TYPE_ID = "EVENT_TYPE_ID"
     private val EVENT_CALENDAR_ID = "EVENT_CALENDAR_ID"
+    private val SELECT_TIME_ZONE_INTENT = 1
 
     private var mReminder1Minutes = REMINDER_OFF
     private var mReminder2Minutes = REMINDER_OFF
@@ -308,6 +310,15 @@ class EventActivity : SimpleActivity() {
         updateEventType()
         updateCalDAVCalendar()
         checkAttendees()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
+        if (requestCode == SELECT_TIME_ZONE_INTENT && resultCode == Activity.RESULT_OK && resultData?.hasExtra(TIME_ZONE) == true) {
+            val timeZone = resultData.getSerializableExtra(TIME_ZONE) as MyTimeZone
+            mEvent.timeZone = timeZone.zoneName
+            updateTimeZoneText()
+        }
+        super.onActivityResult(requestCode, resultCode, resultData)
     }
 
     private fun updateTexts() {
@@ -1172,7 +1183,9 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun setupTimeZone() {
-
+        Intent(this, SelectTimeZoneActivity::class.java).apply {
+            startActivityForResult(this, SELECT_TIME_ZONE_INTENT)
+        }
     }
 
     private fun checkRepeatRule() {

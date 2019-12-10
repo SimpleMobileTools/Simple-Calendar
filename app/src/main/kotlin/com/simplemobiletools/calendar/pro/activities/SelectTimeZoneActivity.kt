@@ -2,6 +2,7 @@ package com.simplemobiletools.calendar.pro.activities
 
 import android.app.SearchManager
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -9,7 +10,9 @@ import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuItemCompat
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.adapters.SelectTimeZoneAdapter
+import com.simplemobiletools.calendar.pro.helpers.TIME_ZONE
 import com.simplemobiletools.calendar.pro.helpers.getAllTimeZones
+import com.simplemobiletools.calendar.pro.models.MyTimeZone
 import kotlinx.android.synthetic.main.activity_select_time_zone.*
 
 class SelectTimeZoneActivity : SimpleActivity() {
@@ -22,7 +25,10 @@ class SelectTimeZoneActivity : SimpleActivity() {
         title = ""
 
         SelectTimeZoneAdapter(this, getAllTimeZones()) {
-
+            val data = Intent()
+            data.putExtra(TIME_ZONE, it as MyTimeZone)
+            setResult(RESULT_OK, data)
+            finish()
         }.apply {
             select_time_zone_list.adapter = this
         }
