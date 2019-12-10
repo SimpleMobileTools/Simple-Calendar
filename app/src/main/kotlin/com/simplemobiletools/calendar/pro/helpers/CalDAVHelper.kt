@@ -497,20 +497,20 @@ class CalDAVHelper(val context: Context) {
 
     private fun getCalDAVEventReminders(eventId: Long): List<Reminder> {
         val reminders = ArrayList<Reminder>()
-        val uri = CalendarContract.Reminders.CONTENT_URI
+        val uri = Reminders.CONTENT_URI
         val projection = arrayOf(
-                CalendarContract.Reminders.MINUTES,
-                CalendarContract.Reminders.METHOD)
-        val selection = "${CalendarContract.Reminders.EVENT_ID} = $eventId"
+                Reminders.MINUTES,
+                Reminders.METHOD)
+        val selection = "${Reminders.EVENT_ID} = $eventId"
         var cursor: Cursor? = null
         try {
             cursor = context.contentResolver.query(uri, projection, selection, null, null)
             if (cursor?.moveToFirst() == true) {
                 do {
-                    val minutes = cursor.getIntValue(CalendarContract.Reminders.MINUTES)
-                    val method = cursor.getIntValue(CalendarContract.Reminders.METHOD)
-                    if (method == CalendarContract.Reminders.METHOD_ALERT || method == CalendarContract.Reminders.METHOD_EMAIL) {
-                        val type = if (method == CalendarContract.Reminders.METHOD_EMAIL) REMINDER_EMAIL else REMINDER_NOTIFICATION
+                    val minutes = cursor.getIntValue(Reminders.MINUTES)
+                    val method = cursor.getIntValue(Reminders.METHOD)
+                    if (method == Reminders.METHOD_ALERT || method == Reminders.METHOD_EMAIL) {
+                        val type = if (method == Reminders.METHOD_EMAIL) REMINDER_EMAIL else REMINDER_NOTIFICATION
                         val reminder = Reminder(minutes, type)
                         reminders.add(reminder)
                     }
