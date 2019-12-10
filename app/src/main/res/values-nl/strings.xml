@@ -110,7 +110,7 @@
     <string name="invited">Uitgenodigd</string>
 
     <!-- Time zones -->
-    <string name="enter_a_country">Voor een land of tijdzone in</string>
+    <string name="enter_a_country">Voer een land of tijdzone in</string>
 
     <!-- Export / Import -->
     <string name="import_events">Afspraken importeren</string>
@@ -241,7 +241,7 @@
         \"Type geluiden voor herinneringen gebruiken\" aan. Als dat niet werkt, controleer dan bij de geluidsinstellingen van Android of het volume van dit geluidstype niet te laag is ingesteld.</string>
     <string name="faq_4_title">Ondersteunt de app tijdzones?</string>
     <string name="faq_4_text">Ja. Normaliter zullen nieuwe afspraken de huidige tijdzone krijgen toegewezen. De tijdzone van een afspraak kan worden gewijzigd door
-        optie voor tijdzones in de instellingen te activeren. Hierna kan de tijdzone in de afspraakdetails worden opgegeven. Deze instelling is standaard niet ingeschakeld, omdat de mensen het niet nodig zullen hebben.</string>
+        de optie voor tijdzones in de instellingen te activeren. Hierna kan de tijdzone worden opgegeven in de afspraakdetails. De instelling is standaard niet ingeschakeld, omdat de meeste mensen het niet nodig zullen hebben.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
