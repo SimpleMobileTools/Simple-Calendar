@@ -163,7 +163,7 @@ fun getNowSeconds() = System.currentTimeMillis() / 1000L
 
 // timezones fetched from https://www.joda.org/joda-time/timezones.html
 fun getAllTimeZones() = arrayListOf(
-        MyTimeZone(1, "GMT-11:00", "Pacific/Midway"),
-        MyTimeZone(2, "GMT-11:00", "Pacific/Niue"),
-        MyTimeZone(3, "GMT-11:00", "Pacific/Pago_Pago")
+        MyTimeZone(1, "GMT-11", "Pacific/Midway"),
+        MyTimeZone(2, "GMT-11", "Pacific/Niue"),
+        MyTimeZone(3, "GMT-11", "Pacific/Pago_Pago")
 )

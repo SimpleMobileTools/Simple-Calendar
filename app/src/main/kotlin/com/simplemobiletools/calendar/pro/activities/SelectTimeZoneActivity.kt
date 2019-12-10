@@ -21,7 +21,7 @@ class SelectTimeZoneActivity : SimpleActivity() {
         setContentView(R.layout.activity_select_time_zone)
         title = ""
 
-        SelectTimeZoneAdapter(this, getAllTimeZones(), select_time_zone_list) {
+        SelectTimeZoneAdapter(this, getAllTimeZones()) {
 
         }.apply {
             select_time_zone_list.adapter = this

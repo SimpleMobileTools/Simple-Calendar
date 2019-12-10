@@ -5,13 +5,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
+import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.models.MyTimeZone
-import com.simplemobiletools.commons.views.MyRecyclerView
 import kotlinx.android.synthetic.main.item_select_time_zone.view.*
 import java.util.*
 
-class SelectTimeZoneAdapter(val activity: SimpleActivity, val timeZones: ArrayList<MyTimeZone>, recyclerView: MyRecyclerView, val itemClick: (Any) -> Unit) :
+class SelectTimeZoneAdapter(val activity: SimpleActivity, val timeZones: ArrayList<MyTimeZone>, val itemClick: (Any) -> Unit) :
         RecyclerView.Adapter<SelectTimeZoneAdapter.ViewHolder>() {
+    val textColor = activity.config.textColor
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = activity.layoutInflater.inflate(R.layout.item_select_time_zone, parent, false)
@@ -29,6 +30,11 @@ class SelectTimeZoneAdapter(val activity: SimpleActivity, val timeZones: ArrayLi
         fun bindView(timeZone: MyTimeZone): View {
             itemView.apply {
                 item_time_zone_title.text = timeZone.zoneName
+                item_time_zone_shift.text = timeZone.title
+
+                item_time_zone_title.setTextColor(textColor)
+                item_time_zone_shift.setTextColor(textColor)
+
                 item_select_time_zone_holder.setOnClickListener {
                     itemClick(timeZone)
                 }
