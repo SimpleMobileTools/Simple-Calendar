@@ -1,6 +1,11 @@
 Changelog
 ==========
 
+Version 6.8.1 *(2019-12-11)*
+----------------------------
+
+ * Adding some time zone related crashfixes
+
 Version 6.8.0 *(2019-12-11)*
 ----------------------------
 
