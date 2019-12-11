@@ -84,6 +84,7 @@ class EventActivity : SimpleActivity() {
     private var mAvailableContacts = ArrayList<Attendee>()
     private var mSelectedContacts = ArrayList<Attendee>()
     private var mStoredEventTypes = ArrayList<EventType>()
+    private var mOriginalTimeZone = DateTimeZone.getDefault().id
 
     private lateinit var mAttendeePlaceholder: Drawable
     private lateinit var mEventStartDateTime: DateTime
@@ -337,8 +338,9 @@ class EventActivity : SimpleActivity() {
         val duration = mEvent.endTS - mEvent.startTS
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
         updateActionBarTitle(getString(R.string.edit_event))
-        mEventStartDateTime = Formatter.getDateTimeFromTS(realStart)
-        mEventEndDateTime = Formatter.getDateTimeFromTS(realStart + duration)
+        mOriginalTimeZone = mEvent.timeZone
+        mEventStartDateTime = Formatter.getDateTimeFromTS(realStart).withZone(DateTimeZone.forID(mOriginalTimeZone))
+        mEventEndDateTime = Formatter.getDateTimeFromTS(realStart + duration).withZone(DateTimeZone.forID(mOriginalTimeZone))
         event_title.setText(mEvent.title)
         event_location.setText(mEvent.location)
         event_description.setText(mEvent.description)
@@ -899,8 +901,14 @@ class EventActivity : SimpleActivity() {
             return
         }
 
-        val newStartTS = mEventStartDateTime.withSecondOfMinute(0).withMillisOfSecond(0).seconds()
-        val newEndTS = mEventEndDateTime.withSecondOfMinute(0).withMillisOfSecond(0).seconds()
+        val offset = if (mEvent.getTimeZoneString().equals(mOriginalTimeZone, true)) {
+            0
+        } else {
+            (DateTimeZone.forID(mEvent.timeZone).getOffset(System.currentTimeMillis()) - DateTimeZone.forID(mOriginalTimeZone).getOffset(System.currentTimeMillis())) / 1000L
+        }
+
+        val newStartTS = mEventStartDateTime.withSecondOfMinute(0).withMillisOfSecond(0).seconds() - offset
+        val newEndTS = mEventEndDateTime.withSecondOfMinute(0).withMillisOfSecond(0).seconds() - offset
 
         if (newStartTS > newEndTS) {
             toast(R.string.end_before_start)
