@@ -1,0 +1,1 @@
+ * Fixed a glitch at rechecking CalDAV synced calendars too often

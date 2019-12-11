@@ -187,6 +187,8 @@ class CalDAVHelper(val context: Context) {
                 CalendarContract.Events.ORIGINAL_ID,
                 CalendarContract.Events.ORIGINAL_INSTANCE_TIME,
                 CalendarContract.Events.EVENT_LOCATION,
+                CalendarContract.Events.EVENT_TIMEZONE,
+                CalendarContract.Events.CALENDAR_TIME_ZONE,
                 CalendarContract.Events.DELETED)
 
         val selection = "${CalendarContract.Events.CALENDAR_ID} = $calendarId"
@@ -222,13 +224,16 @@ class CalDAVHelper(val context: Context) {
                     val reminder2 = reminders.getOrNull(1)
                     val reminder3 = reminders.getOrNull(2)
                     val importId = getCalDAVEventImportId(calendarId, id)
+                    val eventTimeZone = cursor.getStringValue(CalendarContract.Events.EVENT_TIMEZONE)
+                            ?: cursor.getStringValue(CalendarContract.Events.CALENDAR_TIME_ZONE) ?: DateTimeZone.getDefault().id
+
                     val source = "$CALDAV-$calendarId"
                     val repeatRule = Parser().parseRepeatInterval(rrule, startTS)
                     val event = Event(null, startTS, endTS, title, location, description, reminder1?.minutes ?: REMINDER_OFF,
                             reminder2?.minutes ?: REMINDER_OFF, reminder3?.minutes ?: REMINDER_OFF, reminder1?.type
                             ?: REMINDER_NOTIFICATION, reminder2?.type ?: REMINDER_NOTIFICATION, reminder3?.type
                             ?: REMINDER_NOTIFICATION, repeatRule.repeatInterval, repeatRule.repeatRule,
-                            repeatRule.repeatLimit, ArrayList(), attendees, importId, allDay, eventTypeId, source = source)
+                            repeatRule.repeatLimit, ArrayList(), attendees, importId, eventTimeZone, allDay, eventTypeId, source = source)
 
                     if (event.getIsAllDay()) {
                         event.startTS = Formatter.getShiftedImportTimestamp(event.startTS)
@@ -407,7 +412,7 @@ class CalDAVHelper(val context: Context) {
             put(CalendarContract.Events.DESCRIPTION, event.description)
             put(CalendarContract.Events.DTSTART, event.startTS * 1000L)
             put(CalendarContract.Events.ALL_DAY, if (event.getIsAllDay()) 1 else 0)
-            put(CalendarContract.Events.EVENT_TIMEZONE, TimeZone.getDefault().id.toString())
+            put(CalendarContract.Events.EVENT_TIMEZONE, event.getTimeZoneString())
             put(CalendarContract.Events.EVENT_LOCATION, event.location)
             put(CalendarContract.Events.STATUS, CalendarContract.Events.STATUS_CONFIRMED)
 
@@ -492,20 +497,20 @@ class CalDAVHelper(val context: Context) {
 
     private fun getCalDAVEventReminders(eventId: Long): List<Reminder> {
         val reminders = ArrayList<Reminder>()
-        val uri = CalendarContract.Reminders.CONTENT_URI
+        val uri = Reminders.CONTENT_URI
         val projection = arrayOf(
-                CalendarContract.Reminders.MINUTES,
-                CalendarContract.Reminders.METHOD)
-        val selection = "${CalendarContract.Reminders.EVENT_ID} = $eventId"
+                Reminders.MINUTES,
+                Reminders.METHOD)
+        val selection = "${Reminders.EVENT_ID} = $eventId"
         var cursor: Cursor? = null
         try {
             cursor = context.contentResolver.query(uri, projection, selection, null, null)
             if (cursor?.moveToFirst() == true) {
                 do {
-                    val minutes = cursor.getIntValue(CalendarContract.Reminders.MINUTES)
-                    val method = cursor.getIntValue(CalendarContract.Reminders.METHOD)
-                    if (method == CalendarContract.Reminders.METHOD_ALERT || method == CalendarContract.Reminders.METHOD_EMAIL) {
-                        val type = if (method == CalendarContract.Reminders.METHOD_EMAIL) REMINDER_EMAIL else REMINDER_NOTIFICATION
+                    val minutes = cursor.getIntValue(Reminders.MINUTES)
+                    val method = cursor.getIntValue(Reminders.METHOD)
+                    if (method == Reminders.METHOD_ALERT || method == Reminders.METHOD_EMAIL) {
+                        val type = if (method == Reminders.METHOD_EMAIL) REMINDER_EMAIL else REMINDER_NOTIFICATION
                         val reminder = Reminder(minutes, type)
                         reminders.add(reminder)
                     }

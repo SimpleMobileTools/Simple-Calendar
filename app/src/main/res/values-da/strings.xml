@@ -109,6 +109,9 @@
     <string name="maybe_going">Kommer måske</string>
     <string name="invited">Inviteret</string>
 
+    <!-- Time zones -->
+    <string name="enter_a_country">Enter a country or time zone</string>
+
     <!-- Export / Import -->
     <string name="import_events">Importer begivenheder</string>
     <string name="export_events">Eksporter begivenheder</string>
@@ -189,6 +192,7 @@
     <string name="last_used_one">Senest brugte</string>
     <string name="other_time">Anden tid</string>
     <string name="highlight_weekends">Fremhæv weekender i visse visninger</string>
+    <string name="allow_changing_time_zones">Allow changing event time zones</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -230,15 +234,18 @@
     <string name="faq_1_text">Helligdage oprettet på den måde er indsat under begivenhedstypen \"Helligdage\". Gå til Indstillinger -> Håndter begivenhedstyper. Efter et par sekunders pres på en type kan du slette den ved at klikke på papirkurven.</string>
     <string name="faq_2_title">Kan jeg synkronisere mine begivenheder med Googles kalender eller en anden kalender der understøtter CalDAV?</string>
     <string name="faq_2_text">Ja, klik på \"CalDAV sync\" i appens indstillinger og vælg de kalendere du vil synkronisere. Det kræver dog at du har en app til at synkronisere mellem din enhed og kalenderservere.
-        Hvis du vil synkronisere en Googlekalender, kan Googles officielle app klare det. For andre kalenderes vedkommende kan du bruge en 3. partsapp som for eksempel DAVdroid.</string>
+        Hvis du vil synkronisere en Googlekalender, kan Googles officielle app klare det. For andre kalenderes vedkommende kan du bruge en 3. partsapp som for eksempel DAVx5.</string>
     <string name="faq_3_title">Jeg kan se mine påmindelser, men der er ingen lyd på. Hvad kan jeg gøre ved det?</string>
     <string name="faq_3_text">Såvel visning af påmindelser som afspilning af lyd til dem, er afhængig af systemet. Hvis ikke du kan høre nogen lyd, kan du prøve at gå ind i appens indstillinger. Her kan du trykke på \"Audio-stream anvendt af påmindelser\"  og vælge en anden indstilling. Virker det stadig ikke skal du tjekke i dine lydindstillinger om lyden i det aktuelle valg er slået fra.</string>
+    <string name="faq_4_title">Does the app support time zones?</string>
+    <string name="faq_4_text">Yes, it does. By default all events are created in your current time zone. If you want to change an events\' time zone,
+        you will first have to enable the time zone picker at the app settings, then change it at the Event Details screen. It is disabled by default as most people won\'t need it.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Simpel kalender Pro - Begivenheder &amp; påmindelser</string>
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Be notified of the important moments in your life.</string>
+    <string name="app_short_description">Bliv mindet om vigtige tidspunkter i dit liv.</string>
     <string name="app_long_description">
         Simpel kalender Pro kan tilpasses helt efter din smag, offline kalender er designet til at gøre præcis hvad en kalender skal kunne. <b>Ingen indviklede funktioner, ingen overflødige tilladelser og ingen reklamer!</b>
 

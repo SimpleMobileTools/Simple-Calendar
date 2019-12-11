@@ -109,6 +109,9 @@
     <string name="maybe_going">Maybe going</string>
     <string name="invited">Invited</string>
 
+    <!-- Time zones -->
+    <string name="enter_a_country">Enter a country or time zone</string>
+
     <!-- Export / Import -->
     <string name="import_events">Uvezi događaje</string>
     <string name="export_events">Izvezi događaje</string>
@@ -189,6 +192,7 @@
     <string name="last_used_one">Last used one</string>
     <string name="other_time">Other time</string>
     <string name="highlight_weekends">Highlight weekends on some views</string>
+    <string name="allow_changing_time_zones">Allow changing event time zones</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -231,10 +235,13 @@
          dugo pritisnite datu vrstu događaja i izbrišite ga odabirom koša za smeće.</string>
     <string name="faq_2_title">Mogu li sinkronizirati događaje putem Google Kalendara ili druge usluge koje podržavaju CalDAV?</string>
     <string name="faq_2_text">Da, samo uključite \"CalDAV sinkronizacija\" u postavkama aplikacije i odaberite kalendare koje želite sinkronizirati. Međutim, potrebna je aplikacija  između Vašeg uređaja i poslužitelja.
-        U slučaju da želite sinkronizirati Google kalendar, njihova službena aplikacija Kalendar obavlja navedeni posao. Za ostale kalendare potreban Vam je aplikacija treće strane za upravljanje sinkronizacijom, na primjer DAVdroid.</string>
+        U slučaju da želite sinkronizirati Google kalendar, njihova službena aplikacija Kalendar obavlja navedeni posao. Za ostale kalendare potreban Vam je aplikacija treće strane za upravljanje sinkronizacijom, na primjer DAVx5.</string>
     <string name="faq_3_title">Vidim vizualne podsjetnike, ali ne čujem zvuk. Što mogu učiniti</string>
     <string name="faq_3_text">Prikaz podsjetnika, ali i reprodukcija zvuka, jako ovise o Android sustavu. Ako ne čujete zvuk, pokušajte otići u postavke aplikacije,
         odaberite \"Audio izlazni kanal za podsjetnike\" te je promjenite na drugačiju vrijednost. Ako i dalje neće raditi, provjerite postavke zvuka, da odabrani kanal nije utišan.</string>
+    <string name="faq_4_title">Does the app support time zones?</string>
+    <string name="faq_4_text">Yes, it does. By default all events are created in your current time zone. If you want to change an events\' time zone,
+        you will first have to enable the time zone picker at the app settings, then change it at the Event Details screen. It is disabled by default as most people won\'t need it.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->

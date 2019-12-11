@@ -133,6 +133,18 @@
         </activity>
 
         <activity
+            android:name=".activities.SelectTimeZoneActivity"
+            android:parentActivityName=".activities.EventActivity">
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:resource="@xml/searchable" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+        </activity>
+
+        <activity
             android:name=".activities.SettingsActivity"
             android:label="@string/settings"
             android:parentActivityName=".activities.MainActivity"/>

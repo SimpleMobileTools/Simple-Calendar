@@ -6,6 +6,7 @@ import com.simplemobiletools.calendar.pro.extensions.isXYearlyRepetition
 import com.simplemobiletools.calendar.pro.extensions.seconds
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.EventRepetition
+import com.simplemobiletools.commons.extensions.areDigitsOnly
 import com.simplemobiletools.commons.helpers.*
 import org.joda.time.DateTimeZone
 import org.joda.time.format.DateTimeFormat
@@ -20,6 +21,10 @@ class Parser {
 
         for (part in parts) {
             val keyValue = part.split("=")
+            if (keyValue.size <= 1) {
+                continue
+            }
+
             val key = keyValue[0]
             val value = keyValue[1]
             if (key == FREQ) {
@@ -29,6 +34,13 @@ class Parser {
                     repeatRule = Math.pow(2.0, (start.dayOfWeek - 1).toDouble()).toInt()
                 } else if (value == MONTHLY || value == YEARLY) {
                     repeatRule = REPEAT_SAME_DAY
+                } else if (value == DAILY && fullString.contains(INTERVAL)) {
+                    val interval = fullString.substringAfter("$INTERVAL=").substringBefore(";")
+                    // properly handle events repeating by 14 days or so, just add a repeat rule to specify a day of the week
+                    if (interval.areDigitsOnly() && interval.toInt() % 7 == 0) {
+                        val dateTime = Formatter.getDateTimeFromTS(startTS)
+                        repeatRule = Math.pow(2.0, (dateTime.dayOfWeek - 1).toDouble()).toInt()
+                    }
                 }
             } else if (key == COUNT) {
                 repeatLimit = -value.toLong()

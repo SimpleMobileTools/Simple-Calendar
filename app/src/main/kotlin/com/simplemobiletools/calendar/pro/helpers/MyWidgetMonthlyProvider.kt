@@ -15,6 +15,7 @@ import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.launchNewEventIntent
 import com.simplemobiletools.calendar.pro.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.pro.models.DayMonthly
+import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.commons.extensions.*
 import org.joda.time.DateTime
 
@@ -120,6 +121,9 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
             views.removeAllViews(id)
             addDayNumber(context, views, day, currTextColor, id)
             setupDayOpenIntent(context, views, id, day.code)
+
+            day.dayEvents = day.dayEvents.asSequence().sortedWith(compareBy({ it.flags and FLAG_ALL_DAY == 0 }, { it.startTS }, { it.title }))
+                    .toMutableList() as ArrayList<Event>
 
             day.dayEvents.forEach {
                 var backgroundColor = it.color

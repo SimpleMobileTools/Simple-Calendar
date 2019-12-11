@@ -45,6 +45,10 @@ class ManageEventTypesAdapter(activity: SimpleActivity, val eventTypes: ArrayLis
 
     override fun getItemKeyPosition(key: Int) = eventTypes.indexOfFirst { it.id?.toInt() == key }
 
+    override fun onActionModeCreated() {}
+
+    override fun onActionModeDestroyed() {}
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = createViewHolder(R.layout.item_event_type, parent)
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

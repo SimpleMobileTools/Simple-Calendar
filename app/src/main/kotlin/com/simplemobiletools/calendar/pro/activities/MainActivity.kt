@@ -46,6 +46,7 @@ import com.simplemobiletools.commons.models.RadioItem
 import com.simplemobiletools.commons.models.Release
 import kotlinx.android.synthetic.main.activity_main.*
 import org.joda.time.DateTime
+import org.joda.time.DateTimeZone
 import java.io.FileOutputStream
 import java.text.SimpleDateFormat
 import java.util.*
@@ -163,6 +164,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         super.onDestroy()
         if (!isChangingConfigurations) {
             EventsDatabase.destroyInstance()
+            stopCalDAVUpdateListener()
         }
     }
 
@@ -285,6 +287,15 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                     updateListener.scheduleJob(applicationContext)
                 }
             } else {
+                updateListener.cancelJob(applicationContext)
+            }
+        }
+    }
+
+    private fun stopCalDAVUpdateListener() {
+        if (isNougatPlus()) {
+            if (!config.caldavSync) {
+                val updateListener = CalDAVUpdateListener()
                 updateListener.cancelJob(applicationContext)
             }
         }
@@ -568,8 +579,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                             val source = if (birthdays) SOURCE_CONTACT_BIRTHDAY else SOURCE_CONTACT_ANNIVERSARY
                             val lastUpdated = cursor.getLongValue(ContactsContract.CommonDataKinds.Event.CONTACT_LAST_UPDATED_TIMESTAMP)
                             val event = Event(null, timestamp, timestamp, name, reminder1Minutes = reminders[0], reminder2Minutes = reminders[1],
-                                    reminder3Minutes = reminders[2], importId = contactId, flags = FLAG_ALL_DAY, repeatInterval = YEAR, repeatRule = REPEAT_SAME_DAY,
-                                    eventType = eventTypeId, source = source, lastUpdated = lastUpdated)
+                                    reminder3Minutes = reminders[2], importId = contactId, timeZone = DateTimeZone.getDefault().id, flags = FLAG_ALL_DAY,
+                                    repeatInterval = YEAR, repeatRule = REPEAT_SAME_DAY, eventType = eventTypeId, source = source, lastUpdated = lastUpdated)
 
                             val importIDsToDelete = ArrayList<String>()
                             for ((key, value) in importIDs) {
@@ -811,6 +822,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                 FAQItem(R.string.faq_1_title, R.string.faq_1_text),
                 FAQItem(R.string.faq_2_title, R.string.faq_2_text),
                 FAQItem(R.string.faq_3_title, R.string.faq_3_text),
+                FAQItem(R.string.faq_4_title, R.string.faq_4_text),
                 FAQItem(R.string.faq_2_title_commons, R.string.faq_2_text_commons),
                 FAQItem(R.string.faq_6_title_commons, R.string.faq_6_text_commons),
                 FAQItem(R.string.faq_7_title_commons, R.string.faq_7_text_commons))
@@ -885,7 +897,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             put("España", "spain.ics")
             put("Éire", "ireland.ics")
             put("France", "france.ics")
-            put("Hanguk", "southkorea.ics")
+            put("한국", "southkorea.ics")
             put("Hellas", "greece.ics")
             put("Hrvatska", "croatia.ics")
             put("India", "india.ics")
@@ -962,6 +974,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             add(Release(129, R.string.release_129))
             add(Release(143, R.string.release_143))
             add(Release(155, R.string.release_155))
+            add(Release(167, R.string.release_167))
             checkWhatsNew(this, BuildConfig.VERSION_CODE)
         }
     }

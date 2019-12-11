@@ -109,6 +109,9 @@
     <string name="maybe_going">Maybe going</string>
     <string name="invited">Invited</string>
 
+    <!-- Time zones -->
+    <string name="enter_a_country">Enter a country or time zone</string>
+
     <!-- Export / Import -->
     <string name="import_events">Import událostí</string>
     <string name="export_events">Export událostí</string>
@@ -189,6 +192,7 @@
     <string name="last_used_one">Last used one</string>
     <string name="other_time">Other time</string>
     <string name="highlight_weekends">Highlight weekends on some views</string>
+    <string name="allow_changing_time_zones">Allow changing event time zones</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -231,10 +235,13 @@
         dlouze podržte daný typ události a stisknete tlačítko s ikonou koše pro odstranění.</string>
     <string name="faq_2_title">Mohu synchronizovat své události přes Google Kalendář nebo přes jinou službu podporující CalDav?</string>
     <string name="faq_2_text">Ano, zapnutím \"CalDAV sync\" v nastavení aplikace a vybráním kalendáře se kterým se chcete synchronizovat. Budete ovšem potřebovat nějakou aplikaci třetí strany pro samotné synchronizovaní mezi zařízením a servery.
-        Pokud chcete synchronizovat Google kalendář, tak oficiální aplikace Google toto zvládne. Pro jiné kalendáře potřebujete synchronizační adaptér třetí strany, například DAVdroid.</string>
+        Pokud chcete synchronizovat Google kalendář, tak oficiální aplikace Google toto zvládne. Pro jiné kalendáře potřebujete synchronizační adaptér třetí strany, například DAVx5.</string>
     <string name="faq_3_title">Vizuálně vidím připomínku, ale neslyším žádný zvuk. Co mám dělat?</string>
     <string name="faq_3_text">Nejenom zobrazování aktuální připomínky, ale i přehrávání zvuku je dost ovlivněno operačním systémem. Pokud neslyšíte žádný zvuk, zkuste jít do nastavení aplikace,
         vyberte: \"Zvuk upomínky\" a změňte na něco jiného. Pokud zvuk stále nefunguje, zkontrolujte zda není zvuk vypnut v nastavení vašeho systému.</string>
+    <string name="faq_4_title">Does the app support time zones?</string>
+    <string name="faq_4_text">Yes, it does. By default all events are created in your current time zone. If you want to change an events\' time zone,
+        you will first have to enable the time zone picker at the app settings, then change it at the Event Details screen. It is disabled by default as most people won\'t need it.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->

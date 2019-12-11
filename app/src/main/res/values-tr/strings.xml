@@ -109,6 +109,9 @@
     <string name="maybe_going">Maybe going</string>
     <string name="invited">Invited</string>
 
+    <!-- Time zones -->
+    <string name="enter_a_country">Enter a country or time zone</string>
+
     <!-- Export / Import -->
     <string name="import_events">Etkinlikleri içe aktar</string>
     <string name="export_events">Etkinlikleri dışa aktar</string>
@@ -189,6 +192,7 @@
     <string name="last_used_one">Son kullanılan</string>
     <string name="other_time">Başka zaman</string>
     <string name="highlight_weekends">Highlight weekends on some views</string>
+    <string name="allow_changing_time_zones">Allow changing event time zones</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -230,10 +234,13 @@
     <string name="faq_1_text">Tatiller, \"Tatiller\" olarak adlandırılan yeni bir etkinlik türüne eklenir. Ayarlar -> Etkinlik Türlerini Yönet\'e gidip, belirlenen etkinlik türüne uzun basıp çöp kutusunu seçerek silebilirsiniz.</string>
     <string name="faq_2_title">Etkinliklerimi Google Takvim\'le veya CalDAV\'ı destekleyen başka bir hizmetle senkronize edebilir miyim?</string>
     <string name="faq_2_text">Evet, uygulama ayarlarından \"CalDAV senkronizasyonu\" seçeneğini işaretleyin ve senkronize etmek istediğiniz takvimleri seçin. Bununla birlikte, cihaz ve sunucular arasındaki senkronizasyonu ele alan bazı üçüncü taraf uygulamalarına ihtiyacınız olacaktır.
-        Bu durumda bir Google takvimini senkronize etmek istiyorsanız, resmi Takvim uygulaması işi yapar. Diğer takvimler için, DAVdroid gibi üçüncü taraf senkronizasyon adaptörüne ihtiyacınız olacaktır.</string>
+        Bu durumda bir Google takvimini senkronize etmek istiyorsanız, resmi Takvim uygulaması işi yapar. Diğer takvimler için, DAVx5 gibi üçüncü taraf senkronizasyon adaptörüne ihtiyacınız olacaktır.</string>
     <string name="faq_3_title">Görsel hatırlatıcıları görüyorum ama ses duymuyorum. Ne yapabilirim?</string>
     <string name="faq_3_text">Sadece gerçek hatırlatıcıyı görüntülemekle kalmaz, aynı zamanda ses çalmak da sistemden büyük ölçüde etkilenir. Herhangi bir ses duyamıyorsanız, uygulama ayarlarına girmeyi,
         \"Hatırlatıcılar tarafından kullanılan ses akışına\" basmayı ve bunu farklı bir değere değiştirmeyi deneyin. Hala işe yaramazsa, belirli bir akış sessiz değilse, Ses ayarlarınızı kontrol edin.</string>
+    <string name="faq_4_title">Does the app support time zones?</string>
+    <string name="faq_4_text">Yes, it does. By default all events are created in your current time zone. If you want to change an events\' time zone,
+        you will first have to enable the time zone picker at the app settings, then change it at the Event Details screen. It is disabled by default as most people won\'t need it.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->

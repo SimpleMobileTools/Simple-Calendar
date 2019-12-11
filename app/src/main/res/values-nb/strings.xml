@@ -85,14 +85,14 @@
     <string name="birthdays">Bursdager</string>
     <string name="add_birthdays">Legg til kontaktbursdager</string>
     <string name="no_birthdays">Ingen bursdager er funnet</string>
-    <string name="no_new_birthdays">No new birthdays have been found</string>
+    <string name="no_new_birthdays">Ingen nye bursdager er funnet</string>
     <string name="birthdays_added">Bursdager vellykket lagt til</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Jubileer</string>
     <string name="add_anniversaries">Legg til kontaktjubileer</string>
     <string name="no_anniversaries">Ingen jubileer er funnet</string>
-    <string name="no_new_anniversaries">No new anniversaries have been found</string>
+    <string name="no_new_anniversaries">Ingen nye jubileer er funnet</string>
     <string name="anniversaries_added">Jubileer vellykket lagt til</string>
 
     <!-- Event Reminders -->
@@ -108,6 +108,9 @@
     <string name="not_going">Not going</string>
     <string name="maybe_going">Maybe going</string>
     <string name="invited">Invited</string>
+
+    <!-- Time zones -->
+    <string name="enter_a_country">Enter a country or time zone</string>
 
     <!-- Export / Import -->
     <string name="import_events">Importer hendelser</string>
@@ -180,15 +183,16 @@
     <string name="default_reminder_1">Standardpåminnelse 1</string>
     <string name="default_reminder_2">Standardpåminnelse 2</string>
     <string name="default_reminder_3">Standardpåminnelse 3</string>
-    <string name="view_to_open_from_widget">View to open from the event list widget</string>
-    <string name="last_view">Last view</string>
+    <string name="view_to_open_from_widget">Visning å åpne fra hendelseslistemodulen</string>
+    <string name="last_view">Siste visning</string>
     <string name="new_events">Nye hendelser</string>
     <string name="default_start_time">Standard starttid</string>
     <string name="next_full_hour">Neste fulle time</string>
     <string name="default_duration">Standard varighet</string>
     <string name="last_used_one">Den sist brukte</string>
     <string name="other_time">Annen tid</string>
-    <string name="highlight_weekends">Highlight weekends on some views</string>
+    <string name="highlight_weekends">Fremhev helger på noen visninger</string>
+    <string name="allow_changing_time_zones">Allow changing event time zones</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -231,10 +235,13 @@
         lang-trykk hendelsestypen og slett den ved å velge søppelbøtten.</string>
     <string name="faq_2_title">Kan jeg synkronisere hendelsene mine via Google Kalender eller annen tjeneste som støtter CalDAV?</string>
     <string name="faq_2_text">Ja, bare aktiver \"CalDAV-synkronisering\" i innstillingene og velg kalenderne du vil synkronisere. Du trenger imidlertid program som håndterer synkroniseringen mellom enheten og serverne.
-        Hvis du vil synkronisere en Google-kalender, vil deres offisielle kalenderapp gjøre jobben. For andre kalendere trenger du en annen synkroniseringsapp, for eksempel DAVdroid.</string>
+        Hvis du vil synkronisere en Google-kalender, vil deres offisielle kalenderapp gjøre jobben. For andre kalendere trenger du en annen synkroniseringsapp, for eksempel DAVx5.</string>
     <string name="faq_3_title">I see the visual reminders, but hear no audio. What can I do?</string>
     <string name="faq_3_text">Not just displaying the actual reminder, but playing the audio is hugely affected by the system too. If you can\'t hear any sound, try going in the app settings,
         pressing the \"Audio stream used by reminders\" option and changing it to a different value. If it still won\'t work, check your sound settings, if the particular stream isn\'t muted.</string>
+    <string name="faq_4_title">Does the app support time zones?</string>
+    <string name="faq_4_text">Yes, it does. By default all events are created in your current time zone. If you want to change an events\' time zone,
+        you will first have to enable the time zone picker at the app settings, then change it at the Event Details screen. It is disabled by default as most people won\'t need it.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->

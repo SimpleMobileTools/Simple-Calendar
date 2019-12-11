@@ -1,6 +1,39 @@
 Changelog
 ==========
 
+Version 6.8.1 *(2019-12-11)*
+----------------------------
+
+ * Adding some time zone related crashfixes
+
+Version 6.8.0 *(2019-12-11)*
+----------------------------
+
+ * Added time zone support (customization has to be enabled in the app settings)
+ * Some UI improvements here and there
+ * Some stability and translation improvements
+
+Version 6.7.2 *(2019-12-02)*
+----------------------------
+
+ * Fixed some glitches at importing events from .ics files
+ * Improved the user experience of Simple Event List view
+ * Added some initial things under the hood for proper timezone support
+ * Couple stability and translation improvements
+
+Version 6.7.1 *(2019-11-18)*
+----------------------------
+
+ * Fixed a glitch at rechecking CalDAV synced calendars too often
+
+Version 6.7.0 *(2019-11-17)*
+----------------------------
+
+ * Fixed some repeating CalDAV synced events not showing up properly
+ * Improved the event sorting at the monthly widget
+ * Properly refresh CalDAV synced events in the background
+ * Some translation and stability improvements
+
 Version 6.6.5 *(2019-11-06)*
 ----------------------------
 

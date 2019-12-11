@@ -10,7 +10,7 @@
     <string name="simple_event_list">Liste simple d\’événements</string>
     <string name="no_upcoming_events">Il semblerait que vous n\’ayez aucun événement à venir.</string>
     <string name="go_to_today">Aller vers aujourd\’hui</string>
-    <string name="go_to_date">Aller vers un date</string>
+    <string name="go_to_date">Aller vers une date</string>
     <string name="upgraded_from_free">Bonjour,\n\nIl semblerait que vous soyez passé de l\’ancienne appli gratuite à la Pro. Vous devez migrer manuellement les évènements enregistrés localement manuellement en exportant un fichier .ics, puis en l\’important. Vous trouverez les boutons Exporter/Importer dans le menu de l\’écran principal.\n\nVous pourrez ensuite désinstaller l\’ancienne version, qui présente un bouton \'Passer à la version 
 	    Pro\' en haut des paramètres de l\’appli. Vous n\’aurez ensuite qu\’à réinitialiser les paramètres de l\’appli.\n\nMerci !</string>
 
@@ -110,6 +110,9 @@
     <string name="maybe_going">Participe peut-être</string>
     <string name="invited">Invité</string>
 
+    <!-- Time zones -->
+    <string name="enter_a_country">Enter a country or time zone</string>
+
     <!-- Export / Import -->
     <string name="import_events">Importer des événements</string>
     <string name="export_events">Exporter des événements</string>
@@ -190,6 +193,7 @@
     <string name="last_used_one">Identique au dernier</string>
     <string name="other_time">Autre moment</string>
     <string name="highlight_weekends">Highlight weekends on some views</string>
+    <string name="allow_changing_time_zones">Allow changing event time zones</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -232,10 +236,13 @@
 		faire un appui long sur « Jours fériés » et les supprimer en appuyant sur la corbeille.</string>
     <string name="faq_2_title">Puis-je synchroniser mes événements par Google Agenda, ou tout autre service proposant la synchronisation CalDAV ?</string>
 	<string name="faq_2_text">Oui, il faut juste activer l\’option « Synchronisation CalDAV » dans les paramètres de l\’appli, puis choisir les agendas à synchroniser. Une appli tierce pour gérer la synchronisation entre votre appareil et les serveurs sera par contre nécessaire. 
-		Dans le cas d\’un agenda Google, l\’appli officielle fera l\’affaire. Pour les autres agendas, il vous faudra une appli comme DAVdroid par exemple.</string>
+		Dans le cas d\’un agenda Google, l\’appli officielle fera l\’affaire. Pour les autres agendas, il vous faudra une appli comme DAVx5 par exemple.</string>
     <string name="faq_3_title">Je vois les rappels visuels, mais n\’entends aucun son. Que puis-je faire ?</string>
     <string name="faq_3_text">Pas seulement l\’affichage du rappel, mais la lecture de l\’audio est également énormément affectée par le système. Si vous n’entendez aucun son, essayez d’entrer dans les paramètres de l’appli,
         en appuyant sur l\’option « Flux audio utilisé par les rappels » et en la modifiant. Si cela ne fonctionne toujours pas, vérifiez vos paramètres audio, si le flux particulier n’est pas mis en sourdine.</string>
+    <string name="faq_4_title">Does the app support time zones?</string>
+    <string name="faq_4_text">Yes, it does. By default all events are created in your current time zone. If you want to change an events\' time zone,
+        you will first have to enable the time zone picker at the app settings, then change it at the Event Details screen. It is disabled by default as most people won\'t need it.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->

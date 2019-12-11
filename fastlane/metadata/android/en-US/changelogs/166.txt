@@ -1,0 +1,4 @@
+ * Fixed some glitches at importing events from .ics files
+ * Improved the user experience of Simple Event List view
+ * Added some initial things under the hood for proper timezone support
+ * Couple stability and translation improvements
