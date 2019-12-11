@@ -3,6 +3,7 @@
     <string name="package_name">com.simplemobiletools.calendar.pro</string>
 
     <!-- Release notes -->
+    <string name="release_167">Added time zone support (customization has to be enabled in the app settings)</string>
     <string name="release_155">Allow customizing the bottom navigation bar color</string>
     <string name="release_146">Added email reminders and attendees in CalDAV synced events</string>
     <string name="release_143">
