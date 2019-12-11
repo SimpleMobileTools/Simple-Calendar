@@ -339,8 +339,20 @@ class EventActivity : SimpleActivity() {
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
         updateActionBarTitle(getString(R.string.edit_event))
         mOriginalTimeZone = mEvent.timeZone
-        mEventStartDateTime = Formatter.getDateTimeFromTS(realStart).withZone(DateTimeZone.forID(mOriginalTimeZone))
-        mEventEndDateTime = Formatter.getDateTimeFromTS(realStart + duration).withZone(DateTimeZone.forID(mOriginalTimeZone))
+        if (config.allowChangingTimeZones) {
+            try {
+                mEventStartDateTime = Formatter.getDateTimeFromTS(realStart).withZone(DateTimeZone.forID(mOriginalTimeZone))
+                mEventEndDateTime = Formatter.getDateTimeFromTS(realStart + duration).withZone(DateTimeZone.forID(mOriginalTimeZone))
+            } catch (e: Exception) {
+                showErrorToast(e)
+                mEventStartDateTime = Formatter.getDateTimeFromTS(realStart)
+                mEventEndDateTime = Formatter.getDateTimeFromTS(realStart + duration)
+            }
+        } else {
+            mEventStartDateTime = Formatter.getDateTimeFromTS(realStart)
+            mEventEndDateTime = Formatter.getDateTimeFromTS(realStart + duration)
+        }
+
         event_title.setText(mEvent.title)
         event_location.setText(mEvent.location)
         event_description.setText(mEvent.description)
@@ -901,7 +913,7 @@ class EventActivity : SimpleActivity() {
             return
         }
 
-        val offset = if (mEvent.getTimeZoneString().equals(mOriginalTimeZone, true)) {
+        val offset = if (!config.allowChangingTimeZones || mEvent.getTimeZoneString().equals(mOriginalTimeZone, true)) {
             0
         } else {
             (DateTimeZone.forID(mEvent.timeZone).getOffset(System.currentTimeMillis()) - DateTimeZone.forID(mOriginalTimeZone).getOffset(System.currentTimeMillis())) / 1000L
