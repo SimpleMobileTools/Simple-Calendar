@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 6.8.0 *(2019-12-11)*
+----------------------------
+
+ * Added time zone support (customization has to be enabled in the app settings)
+ * Some UI improvements here and there
+ * Some stability and translation improvements
+
 Version 6.7.2 *(2019-12-02)*
 ----------------------------
 

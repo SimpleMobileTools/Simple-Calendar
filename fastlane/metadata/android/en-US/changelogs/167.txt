@@ -1,0 +1,3 @@
+ * Added time zone support (customization has to be enabled in the app settings)
+ * Some UI improvements here and there
+ * Some stability and translation improvements
