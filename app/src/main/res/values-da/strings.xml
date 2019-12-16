@@ -110,7 +110,7 @@
     <string name="invited">Inviteret</string>
 
     <!-- Time zones -->
-    <string name="enter_a_country">Enter a country or time zone</string>
+    <string name="enter_a_country">Indtast et land eller en tidzone</string>
 
     <!-- Export / Import -->
     <string name="import_events">Importer begivenheder</string>
