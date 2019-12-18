@@ -150,9 +150,9 @@ data class Event(
     // check if its the proper week, for events repeating every x weeks
     // get the week number since 1970, not just in the current year
     fun isOnProperWeek(startTimes: LongSparseArray<Long>): Boolean {
-        val initialWeekNumber = Formatter.getDateTimeFromTS(startTimes[id!!]!!).millis / (7 * 24 * 60 * 60 * 1000)
-        val currentWeekNumber = Formatter.getDateTimeFromTS(startTS).millis / (7 * 24 * 60 * 60 * 1000)
-        return (initialWeekNumber - currentWeekNumber) % (repeatInterval / WEEK) == 0L
+        val initialWeekNumber = Formatter.getDateTimeFromTS(startTimes[id!!]!!).millis / (7 * 24 * 60 * 60 * 1000f)
+        val currentWeekNumber = Formatter.getDateTimeFromTS(startTS).millis / (7 * 24 * 60 * 60 * 1000f)
+        return (Math.round(initialWeekNumber) - Math.round(currentWeekNumber)) % (repeatInterval / WEEK) == 0
     }
 
     fun updateIsPastEvent() {
