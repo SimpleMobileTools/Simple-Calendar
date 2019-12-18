@@ -827,8 +827,7 @@ class EventActivity : SimpleActivity() {
             event_caldav_calendar_email.text = currentCalendar.accountName
 
             ensureBackgroundThread {
-                val calendarColor = eventsHelper.getEventTypeWithCalDAVCalendarId(currentCalendar.id)?.color
-                        ?: currentCalendar.color
+                val calendarColor = eventsHelper.getEventTypeWithCalDAVCalendarId(currentCalendar.id)?.color ?: currentCalendar.color
 
                 runOnUiThread {
                     event_caldav_calendar_color.setFillWithStroke(calendarColor, config.backgroundColor)
