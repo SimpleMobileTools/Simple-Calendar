@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 6.8.2 *(2019-12-18)*
+----------------------------
+
+ * Improved some holidays
+ * Added a few stability and translation improvements
+
 Version 6.8.1 *(2019-12-11)*
 ----------------------------
 
