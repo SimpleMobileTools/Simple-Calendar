@@ -916,7 +916,7 @@ class EventActivity : SimpleActivity() {
         val offset = if (!config.allowChangingTimeZones || mEvent.getTimeZoneString().equals(mOriginalTimeZone, true)) {
             0
         } else {
-            (DateTimeZone.forID(mEvent.timeZone).getOffset(System.currentTimeMillis()) - DateTimeZone.forID(mOriginalTimeZone).getOffset(System.currentTimeMillis())) / 1000L
+            (DateTimeZone.forID(mEvent.getTimeZoneString()).getOffset(System.currentTimeMillis()) - DateTimeZone.forID(mOriginalTimeZone).getOffset(System.currentTimeMillis())) / 1000L
         }
 
         val newStartTS = mEventStartDateTime.withSecondOfMinute(0).withMillisOfSecond(0).seconds() - offset
