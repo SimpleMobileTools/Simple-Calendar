@@ -192,7 +192,7 @@
     <string name="last_used_one">Última utilizada</string>
     <string name="other_time">Outra</string>
     <string name="highlight_weekends">Destacar fim de semana em algumas vistas</string>
-    <string name="allow_changing_time_zones">Allow changing event time zones</string>
+    <string name="allow_changing_time_zones">Permitir alteração do fuso horário dos eventos</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -273,7 +273,7 @@
         ✔️ Possibilidade de definir diversos lembretes e personalização de sons e vibração para os mesmos
         ✔️ Opção Snooze
         ✔️ Possibilidade de importar, feriados, aniversários e datas de nascimento
-        ✔️ Personalização de eventos – data/hora inicial, duração dos eventos, lemvretes...
+        ✔️ Personalização de eventos – data/hora inicial, duração dos eventos, lembretes...
         ✔️ Possibilidade de adicionar convidados para os eventos
         ✔️ Passível de ser utilizado como calendário pessoal mas também empresarial
         ✔️ Escolha entre lembretes e notificações por e-mail
