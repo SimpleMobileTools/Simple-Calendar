@@ -945,9 +945,9 @@
             android:layout_marginTop="@dimen/medium_margin"
             android:background="?attr/selectableItemBackground"
             android:paddingStart="@dimen/normal_margin"
-            android:paddingTop="@dimen/bigger_margin"
+            android:paddingTop="@dimen/activity_margin"
             android:paddingEnd="@dimen/normal_margin"
-            android:paddingBottom="@dimen/bigger_margin">
+            android:paddingBottom="@dimen/activity_margin">
 
             <com.simplemobiletools.commons.views.MySwitchCompat
                 android:id="@+id/settings_dim_past_events"
@@ -964,12 +964,11 @@
             android:id="@+id/settings_allow_changing_time_zones_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/medium_margin"
             android:background="?attr/selectableItemBackground"
             android:paddingStart="@dimen/normal_margin"
-            android:paddingTop="@dimen/bigger_margin"
+            android:paddingTop="@dimen/activity_margin"
             android:paddingEnd="@dimen/normal_margin"
-            android:paddingBottom="@dimen/bigger_margin">
+            android:paddingBottom="@dimen/activity_margin">
 
             <com.simplemobiletools.commons.views.MySwitchCompat
                 android:id="@+id/settings_allow_changing_time_zones"
