@@ -915,7 +915,7 @@ class EventActivity : SimpleActivity() {
         val offset = if (!config.allowChangingTimeZones || mEvent.getTimeZoneString().equals(mOriginalTimeZone, true)) {
             0
         } else {
-            var original = if (mOriginalTimeZone.isEmpty()) DateTimeZone.getDefault().id else mOriginalTimeZone
+            val original = if (mOriginalTimeZone.isEmpty()) DateTimeZone.getDefault().id else mOriginalTimeZone
             (DateTimeZone.forID(mEvent.getTimeZoneString()).getOffset(System.currentTimeMillis()) - DateTimeZone.forID(original).getOffset(System.currentTimeMillis())) / 1000L
         }
 
