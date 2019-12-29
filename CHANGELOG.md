@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 6.8.3 *(2019-12-29)*
+----------------------------
+
+ * Fixed a glitch at events repeating every X weeks
+ * Added an extra check to avoid showing reminders of deleted event repetition instances
+ * Some stability and translation improvements
+
 Version 6.8.2 *(2019-12-18)*
 ----------------------------
 
