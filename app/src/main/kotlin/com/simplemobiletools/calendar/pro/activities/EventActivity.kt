@@ -827,8 +827,7 @@ class EventActivity : SimpleActivity() {
             event_caldav_calendar_email.text = currentCalendar.accountName
 
             ensureBackgroundThread {
-                val calendarColor = eventsHelper.getEventTypeWithCalDAVCalendarId(currentCalendar.id)?.color
-                        ?: currentCalendar.color
+                val calendarColor = eventsHelper.getEventTypeWithCalDAVCalendarId(currentCalendar.id)?.color ?: currentCalendar.color
 
                 runOnUiThread {
                     event_caldav_calendar_color.setFillWithStroke(calendarColor, config.backgroundColor)
@@ -916,7 +915,8 @@ class EventActivity : SimpleActivity() {
         val offset = if (!config.allowChangingTimeZones || mEvent.getTimeZoneString().equals(mOriginalTimeZone, true)) {
             0
         } else {
-            (DateTimeZone.forID(mEvent.timeZone).getOffset(System.currentTimeMillis()) - DateTimeZone.forID(mOriginalTimeZone).getOffset(System.currentTimeMillis())) / 1000L
+            val original = if (mOriginalTimeZone.isEmpty()) DateTimeZone.getDefault().id else mOriginalTimeZone
+            (DateTimeZone.forID(mEvent.getTimeZoneString()).getOffset(System.currentTimeMillis()) - DateTimeZone.forID(original).getOffset(System.currentTimeMillis())) / 1000L
         }
 
         val newStartTS = mEventStartDateTime.withSecondOfMinute(0).withMillisOfSecond(0).seconds() - offset

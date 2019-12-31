@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Calendario Simple</string>
-    <string name="app_launcher_name">Calendar</string>
+    <string name="app_name">Simple Calendar</string>
+    <string name="app_launcher_name">Calendario</string>
     <string name="change_view">Cambiar vista</string>
     <string name="daily_view">Vista diaria</string>
     <string name="weekly_view">Vista semanal</string>
@@ -104,13 +104,13 @@
     <!-- Event attendees -->
     <string name="add_another_attendee">Añadir otros asistentes</string>
     <string name="my_status">Mi estado:</string>
-    <string name="going">Voy</string>
-    <string name="not_going">No voy</string>
-    <string name="maybe_going">Quizás voy</string>
+    <string name="going">Iré</string>
+    <string name="not_going">No iré</string>
+    <string name="maybe_going">Quizás iré</string>
     <string name="invited">Invitado</string>
 
     <!-- Time zones -->
-    <string name="enter_a_country">Enter a country or time zone</string>
+    <string name="enter_a_country">Ingresa un país o zona horaria</string>
 
     <!-- Export / Import -->
     <string name="import_events">Importar eventos</string>
@@ -192,7 +192,7 @@
     <string name="last_used_one">El último usado</string>
     <string name="other_time">Otro momento</string>
     <string name="highlight_weekends">Destacar los fines de semana en algunas vistas</string>
-    <string name="allow_changing_time_zones">Allow changing event time zones</string>
+    <string name="allow_changing_time_zones">Permitir cambiar zona horaria del evento</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -234,20 +234,20 @@
     <string name="faq_1_text">Los eventos creados de esa manera tienen un tipo de evento llamado \"Días Festivos\". Puede seleccionarlos todos desde Ajustes->Gestionar tipos de eventos,
         y usar una pulsación larga para eliminar el tipo de evento y todos sus eventos pulsando en la papelera.</string>
     <string name="faq_2_title">¿Puedo sincronizar mis eventos a través de Google Calendar, o otros servicios que soporten CalDAV?</string>
-    <string name="faq_2_text">Yes, just toggle \"CalDAV sync\" in the app settings and select the calendars you want to sync. However, you will need some third party app handling the synchronization between the device and servers.
-        In case you want to synchronize a Google calendar, their official Calendar app will do the job. For other calendars you will need a third party sync adapter, for example DAVx5.</string>
-    <string name="faq_3_title">I see the visual reminders, but hear no audio. What can I do?</string>
-    <string name="faq_3_text">Not just displaying the actual reminder, but playing the audio is hugely affected by the system too. If you can\'t hear any sound, try going in the app settings,
-        pressing the \"Audio stream used by reminders\" option and changing it to a different value. If it still won\'t work, check your sound settings, if the particular stream isn\'t muted.</string>
-    <string name="faq_4_title">Does the app support time zones?</string>
-    <string name="faq_4_text">Yes, it does. By default all events are created in your current time zone. If you want to change an events\' time zone,
-        you will first have to enable the time zone picker at the app settings, then change it at the Event Details screen. It is disabled by default as most people won\'t need it.</string>
+    <string name="faq_2_text">Sí, Solamente activa \"Sincronizar CalDAV\" en los ajustes de la aplicación y selecciona los calendarios que quieras sincronizar. Sin embargo, vas a necesitar algúna aplicación externa para manejar la sincronización entre el dispositivo y los servidores.
+        En caso de que quieras sincronizar un calendario de Google, su aplicación oficial de Calendario hará el trabajo. Para otros calendarios, necesitarás un sincronizador externo, por ejemplo: DAVx5.</string>
+    <string name="faq_3_title">Veo los recordatorios visuales, pero no oigo audio. ¿Qué puedo hacer?</string>
+    <string name="faq_3_text">No solo mostrar el recordatorio, si no también reproducir el sonido, es altamente afectado por el sistema. Si no puedes escuchar ningún sonido, prueba ir a los ajustes de la aplicación,
+        presionar la opción de \"Sonido usado en recordatorios\" y cambiarlo a un valor diferente. Si continúa fallando, verifica tus opciones de sonido, si el sonido en particular no está silenciado.</string>
+    <string name="faq_4_title">¿La aplicación soporta zonas horarias?</string>
+    <string name="faq_4_text">Sí, lo hace. Por defecto, todos los eventos son creados en tu zona horaria actual. Si quieres cambiar la zona horaria de un evento,
+        primero vas a tener que activar el seleccionador de zona horaria en los ajustes de la app, después, cambiarlo en la pantalla de Detalles del Evento. Está desactivado por defecto porque la mayoría de las personas no lo necesita.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
-    <string name="app_title">Calendario Simple Pro - Eventos &amp; Recordatorios</string>
+    <string name="app_title">Calendario Simple Pro - Eventos y Recordatorios</string>
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Be notified of the important moments in your life.</string>
+    <string name="app_short_description">Se notificado de los momentos importantes en tu vida.</string>
     <string name="app_long_description">
         Calendario Simple Pro es un calendario fuera de línea, totalmente personalizable y diseñado para hacer exactamente lo que debe hacer un calendario. <b> ¡Sin funcionalidades complicadas, permisos innecesarios y sin anuncios! </b>
 
@@ -256,11 +256,11 @@
         Las vistas diarias, semanales y mensuales permiten verificar tus próximos eventos y citas con facilidad. Incluso puedes ver todos los eventos como si se tratara de una lista en lugar de usar un calendario, para que <b> sepas exactamente lo que está sucediendo en tu vida y cuándo. </b>
 
         ----------------------------------------------------------
-        <b>Calendario Simple Pro – Características &amp; beneficios</b>
+        <b>Calendario Simple Pro – Características y beneficios</b>
         ----------------------------------------------------------
 
         ✔️ Sin anuncios ni ventanas emergentes
-        ✔️ No requiere acceso a internet, dándote más privacidad &amp; seguridad
+        ✔️ No requiere acceso a internet, dándote más privacidad y seguridad
         ✔️ Solo se requieren los permisos mínimos para que funcione la aplicación
         ✔️ Énfasis en la simplicidad – hace lo que un calendario debería hacer
         ✔️ Código abierto (Open source)
@@ -269,14 +269,14 @@
         ✔️ Exporta tu configuración a un fichero .txt para importarlo a otro dispositivo
         ✔️ Soporte de CalDAV para sincronizar tus eventos entre múltiples dispositivos
         ✔️ Vista diaria, semanal, mensual, anual y de eventos en el calendario
-        ✔️ Soporte a la exportación &amp; importación de eventos a través de ficheros .ics
+        ✔️ Soporte a la exportación y importación de eventos a través de ficheros .ics
         ✔️ Establece múltiples recordatorios de eventos, personalice el sonido y la vibración
         ✔️ Opción para posponer recordatorios
         ✔️ Añade fácilmente días festivos, cumpleaños, aniversarios y citas
         ✔️ Personalización de eventos: hora de inicio, duración, recordatorios, etc.
         ✔️ Añade asistentes para cada evento
         ✔️ Utilizalo como un calendario personal o de trabajo
-        ✔️ Escoge entre recordatorios &amp; notificaciones de correo para recordarte los eventos
+        ✔️ Escoge entre recordatorios y notificaciones de correo para recordarte los eventos
 
         DESCARGA CALENDARIO SIMPLE PRO - EL CALENDARIO SIMPLE, OFFLINE Y SIN ANUNCIOS!
 

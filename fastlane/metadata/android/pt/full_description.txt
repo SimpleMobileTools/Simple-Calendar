@@ -22,7 +22,7 @@ As vistas diária, semanal e mensal ajudam o utilizador a verificar os próximos
 ✔️ Possibilidade de definir diversos lembretes e personalização de sons e vibração para os mesmos
 ✔️ Opção Snooze
 ✔️ Possibilidade de importar, feriados, aniversários e datas de nascimento
-✔️ Personalização de eventos – data/hora inicial, duração dos eventos, lemvretes...
+✔️ Personalização de eventos – data/hora inicial, duração dos eventos, lembretes...
 ✔️ Possibilidade de adicionar convidados para os eventos
 ✔️ Passível de ser utilizado como calendário pessoal mas também empresarial
 ✔️ Escolha entre lembretes e notificações por e-mail
