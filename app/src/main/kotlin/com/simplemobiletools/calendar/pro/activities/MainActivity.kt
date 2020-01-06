@@ -913,6 +913,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             put("México", "mexico.ics")
             put("Nederland", "netherlands.ics")
             put("日本", "japan.ics")
+            put("Nigeria", "nigeria.ics")
             put("Norge", "norway.ics")
             put("Österreich", "austria.ics")
             put("Pākistān", "pakistan.ics")
