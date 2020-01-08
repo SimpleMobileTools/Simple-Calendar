@@ -192,7 +192,7 @@
     <string name="last_used_one">Senest brugte</string>
     <string name="other_time">Anden tid</string>
     <string name="highlight_weekends">Fremhæv weekender i visse visninger</string>
-    <string name="allow_changing_time_zones">Allow changing event time zones</string>
+    <string name="allow_changing_time_zones">Tillad ændring af en begivenheds tidszone</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -237,9 +237,8 @@
         Hvis du vil synkronisere en Googlekalender, kan Googles officielle app klare det. For andre kalenderes vedkommende kan du bruge en 3. partsapp som for eksempel DAVx5.</string>
     <string name="faq_3_title">Jeg kan se mine påmindelser, men der er ingen lyd på. Hvad kan jeg gøre ved det?</string>
     <string name="faq_3_text">Såvel visning af påmindelser som afspilning af lyd til dem, er afhængig af systemet. Hvis ikke du kan høre nogen lyd, kan du prøve at gå ind i appens indstillinger. Her kan du trykke på \"Audio-stream anvendt af påmindelser\"  og vælge en anden indstilling. Virker det stadig ikke skal du tjekke i dine lydindstillinger om lyden i det aktuelle valg er slået fra.</string>
-    <string name="faq_4_title">Does the app support time zones?</string>
-    <string name="faq_4_text">Yes, it does. By default all events are created in your current time zone. If you want to change an events\' time zone,
-        you will first have to enable the time zone picker at the app settings, then change it at the Event Details screen. It is disabled by default as most people won\'t need it.</string>
+    <string name="faq_4_title">Understøtter appen tidszoner?</string>
+    <string name="faq_4_text">Ja, det gør den. Som standard oprettes alle begivenheder i din aktuelle tidszone. Vil du ændre det for en given begivenhed, skal du først aktivere tidszonevælgeren i appens indstillinger og derefter ændre tidszone under selve begivenheden. Funktionen er fra starten deaktiveret da de færreste brugere behøver den.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
