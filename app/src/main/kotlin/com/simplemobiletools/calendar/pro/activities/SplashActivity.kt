@@ -1,6 +1,8 @@
 package com.simplemobiletools.calendar.pro.activities
 
+import android.content.Context
 import android.content.Intent
+import com.crowdin.platform.Crowdin
 import com.simplemobiletools.calendar.pro.extensions.getNewEventTimestampFromCode
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.commons.activities.BaseSplashActivity
@@ -29,5 +31,9 @@ class SplashActivity : BaseSplashActivity() {
             else -> startActivity(Intent(this, MainActivity::class.java))
         }
         finish()
+    }
+
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(Crowdin.wrapContext(newBase))
     }
 }

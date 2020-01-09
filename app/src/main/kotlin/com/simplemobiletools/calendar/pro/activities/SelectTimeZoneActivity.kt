@@ -8,6 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuItemCompat
+import com.crowdin.platform.util.inflateWithCrowdin
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.adapters.SelectTimeZoneAdapter
 import com.simplemobiletools.calendar.pro.helpers.CURRENT_TIME_ZONE
@@ -43,7 +44,7 @@ class SelectTimeZoneActivity : SimpleActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_select_time_zone, menu)
+        menuInflater.inflateWithCrowdin(R.menu.menu_select_time_zone, menu, resources)
         setupSearch(menu)
         updateMenuItemColors(menu)
         return true

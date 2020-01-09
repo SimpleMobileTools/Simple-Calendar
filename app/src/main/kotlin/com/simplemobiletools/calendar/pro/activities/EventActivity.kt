@@ -21,6 +21,7 @@ import android.view.inputmethod.EditorInfo
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import androidx.core.app.NotificationManagerCompat
+import com.crowdin.platform.util.inflateWithCrowdin
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.simplemobiletools.calendar.pro.R
@@ -223,7 +224,7 @@ class EventActivity : SimpleActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_event, menu)
+        menuInflater.inflateWithCrowdin(R.menu.menu_event, menu, resources)
         if (mWasActivityInitialized) {
             menu.findItem(R.id.delete).isVisible = mEvent.id != null
             menu.findItem(R.id.share).isVisible = mEvent.id != null

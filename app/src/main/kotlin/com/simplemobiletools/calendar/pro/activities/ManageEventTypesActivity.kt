@@ -3,6 +3,7 @@ package com.simplemobiletools.calendar.pro.activities
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import com.crowdin.platform.util.inflateWithCrowdin
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.adapters.ManageEventTypesAdapter
 import com.simplemobiletools.calendar.pro.dialogs.EditEventTypeDialog
@@ -39,8 +40,8 @@ class ManageEventTypesActivity : SimpleActivity(), DeleteEventTypesListener {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_event_types, menu)
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflateWithCrowdin(R.menu.menu_event_types, menu, resources)
         updateMenuItemColors(menu)
         return true
     }

@@ -68,6 +68,7 @@ dependencies {
     implementation 'joda-time:joda-time:2.10.1'
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta2'
+    implementation 'com.crowdin.platform:mobile-sdk:1.1.0'
 
     kapt 'androidx.room:room-compiler:2.2.2'
     implementation 'androidx.room:room-runtime:2.2.2'

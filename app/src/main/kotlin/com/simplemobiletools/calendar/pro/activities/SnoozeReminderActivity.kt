@@ -1,7 +1,9 @@
 package com.simplemobiletools.calendar.pro.activities
 
+import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.crowdin.platform.Crowdin
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.eventsDB
 import com.simplemobiletools.calendar.pro.extensions.rescheduleReminder
@@ -24,6 +26,10 @@ class SnoozeReminderActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(Crowdin.wrapContext(newBase))
     }
 
     private fun dialogCancelled() {

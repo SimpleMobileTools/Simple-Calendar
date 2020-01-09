@@ -4,6 +4,7 @@ import android.content.Context
 import android.database.ContentObserver
 import android.os.Handler
 import android.provider.CalendarContract
+import com.crowdin.platform.Crowdin
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.refreshCalDAVCalendars
@@ -38,6 +39,10 @@ open class SimpleActivity : BaseSimpleActivity() {
     )
 
     override fun getAppLauncherName() = getString(R.string.app_launcher_name)
+
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(Crowdin.wrapContext(newBase))
+    }
 
     fun Context.syncCalDAVCalendars(callback: () -> Unit) {
         calDAVRefreshCallback = callback
