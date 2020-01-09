@@ -157,14 +157,17 @@
                 android:textSize="@dimen/normal_text_size"/>
 
         </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/week_all_day_holder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <ScrollView
             android:layout_below="@+id/week_letters_holder"
-            android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/allDay_event_list_heigth">
+            <LinearLayout
+                android:id="@+id/week_all_day_holder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            </LinearLayout>
+        </ScrollView>
 
-        </LinearLayout>
     </RelativeLayout>
 </RelativeLayout>

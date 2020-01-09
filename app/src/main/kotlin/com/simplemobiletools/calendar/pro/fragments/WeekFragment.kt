@@ -470,6 +470,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 leftMargin = getColumnWithId(firstDayIndex).x.toInt()
                 bottomMargin = 1
                 width = getColumnWithId(Math.min(firstDayIndex + daysCnt, 6)).right - leftMargin - 1
+                height= context.resources.getDimension(R.dimen.allDay_event_elem_heigth).toInt()
             }
 
             calculateExtraHeight()

@@ -31,4 +31,7 @@
 
     <dimen name="avatar_size">40dp</dimen>
     <dimen name="avatar_status_size">16dp</dimen>
+
+    <dimen name="allDay_event_list_heigth">45dp</dimen>
+    <dimen name="allDay_event_elem_heigth">20dp</dimen>
 </resources>
