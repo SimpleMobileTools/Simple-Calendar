@@ -344,6 +344,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                         }
 
                         minHeight = if (event.startTS == event.endTS) minimalHeight else (duration * minuteHeight).toInt() - 1
+                        maxHeight = if (event.startTS == event.endTS) minimalHeight else (duration * minuteHeight).toInt() - 1
                     }
                     setOnClickListener {
                         Intent(context, EventActivity::class.java).apply {
