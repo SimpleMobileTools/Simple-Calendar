@@ -390,6 +390,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 x = todayColumn.x - extraWidth / 2
                 y = minutes * minuteHeight - markerHeight / 2
             }
+            currentTimeView!!.bringToFront()
         }
     }
 
