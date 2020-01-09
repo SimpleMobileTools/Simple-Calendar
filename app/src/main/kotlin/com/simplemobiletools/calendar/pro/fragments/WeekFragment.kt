@@ -158,11 +158,11 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         val todayCode = Formatter.getDayCodeFromDateTime(DateTime())
         for (i in 0..6) {
             val dayCode = Formatter.getDayCodeFromDateTime(curDay)
-            val dayLetters = mRes.getStringArray(R.array.week_day_letters).toMutableList() as ArrayList<String>
+            val dayLetters = mRes.getStringArray(R.array.week_days_short).toMutableList() as ArrayList<String>
             val dayLetter = dayLetters[curDay.dayOfWeek - 1]
 
             mView.findViewById<TextView>(mRes.getIdentifier("week_day_label_$i", "id", context!!.packageName)).apply {
-                text = "$dayLetter\n${curDay.dayOfMonth}"
+                text = "$dayLetter  ${curDay.dayOfMonth}"
                 setTextColor(if (todayCode == dayCode) primaryColor else textColor)
                 if (todayCode == dayCode) {
                     todayColumnIndex = i
