@@ -104,9 +104,9 @@
     <!-- Event attendees -->
     <string name="add_another_attendee">Přidat dalšího účastníka</string>
     <string name="my_status">Můj stav:</string>
-    <string name="going">Zůčastním se</string>
-    <string name="not_going">Nezůčastním se</string>
-    <string name="maybe_going">Možná se zůčastním</string>
+    <string name="going">Zúčastním se</string>
+    <string name="not_going">Nezúčastním se</string>
+    <string name="maybe_going">Možná se zúčastním</string>
     <string name="invited">Pozvaný</string>
 
     <!-- Time zones -->
@@ -211,13 +211,13 @@
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
-    <string name="monday_alt">Pondělí</string>
-    <string name="tuesday_alt">Úterý</string>
-    <string name="wednesday_alt">Středu</string>
-    <string name="thursday_alt">Čtvrtek</string>
-    <string name="friday_alt">Pátek</string>
-    <string name="saturday_alt">Sobotu</string>
-    <string name="sunday_alt">Neděli</string>
+    <string name="monday_alt">pondělí</string>
+    <string name="tuesday_alt">úterý</string>
+    <string name="wednesday_alt">středu</string>
+    <string name="thursday_alt">čtvrtek</string>
+    <string name="friday_alt">pátek</string>
+    <string name="saturday_alt">sobotu</string>
+    <string name="sunday_alt">neděli</string>
 
     <!-- List widget config example events -->
     <string name="sample_title_1">Cvičení</string>
@@ -232,9 +232,9 @@
     <!-- FAQ -->
     <string name="faq_1_title">Jak mohu odstranit svátky importované přes tlačítko \"Přidat svátky\"?</string>
     <string name="faq_1_text">Svátky vytvořené touto cestou jsou vloženy pod novým typem události \"Svátky\". Odstranit je můžete přes: Nastavení -> Správa typů událostí ->
-        dlouze podržte daný typ události a stisknete tlačítko s ikonou koše pro odstranění.</string>
+        dlouze podržte daný typ události a stiskněte tlačítko s ikonou koše pro odstranění.</string>
     <string name="faq_2_title">Mohu synchronizovat své události pomocí Google Kalendáře nebo přes jinou službu podporující CalDav?</string>
-    <string name="faq_2_text">Ano, zapnutím \"CalDAV synchronizace\" v nastavení aplikace a vybráním kalendářů se kterými se chcete synchronizovat. Budete ovšem potřebovat nějakou aplikaci třetí strany pro samotné synchronizovaní mezi zařízením a servery.
+    <string name="faq_2_text">Ano, zapnutím \"CalDAV synchronizace\" v nastavení aplikace a vybráním kalendářů, se kterými se chcete synchronizovat. Budete ovšem potřebovat nějakou aplikaci třetí strany pro samotné synchronizovaní mezi zařízením a servery.
         Pokud chcete synchronizovat Google kalendář, bude vám stačit jejich oficiální aplikace kalendáře. Pro jiné kalendáře budete potřebovat synchronizační adaptér třetí strany, například DAVx5.</string>
     <string name="faq_3_title">Připomínku vidím, ale neslyším žádný zvuk. Co s tím?</string>
     <string name="faq_3_text">Nejen zobrazování aktuální připomínky, ale i přehrávání zvuku je velmi ovlivněno operačním systémem. Pokud neslyšíte žádný zvuk, zkuste jít do nastavení aplikace,
@@ -272,7 +272,7 @@
         ✔️ Podpora exportu a importu událostí skrze .ics soubory
         ✔️ Možnost nastavení více připomínek k události, nebo změna jejich zvuku a vibrací
         ✔️ Možnost odložení připomínky
-        ✔️ Jednoduché přidávání svátů, narozenin, výročí a schůzek
+        ✔️ Jednoduché přidávání svátků, narozenin, výročí a schůzek
         ✔️ Nastavení událostí – začátek, trvání, připomínky, atd
         ✔️ Možnost přidání účastníků pro každou událost
         ✔️ Použití jako soukromý i business kalendář
