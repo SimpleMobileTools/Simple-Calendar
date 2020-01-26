@@ -21,7 +21,7 @@ Díky dennímu, týdennímu a měsíčnímu pohledu si velmi snadno prohlédnete
 ✔️ Podpora exportu a importu událostí skrze .ics soubory
 ✔️ Možnost nastavení více připomínek k události, nebo změna jejich zvuku a vibrací
 ✔️ Možnost odložení připomínky
-✔️ Jednoduché přidávání svátů, narozenin, výročí a schůzek
+✔️ Jednoduché přidávání svátků, narozenin, výročí a schůzek
 ✔️ Nastavení událostí – začátek, trvání, připomínky, atd
 ✔️ Možnost přidání účastníků pro každou událost
 ✔️ Použití jako soukromý i business kalendář
