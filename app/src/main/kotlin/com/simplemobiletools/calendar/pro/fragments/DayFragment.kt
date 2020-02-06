@@ -37,7 +37,7 @@ class DayFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_day, container, false)
         mHolder = view.day_holder
 
-        mDayCode = arguments!!.getString(DAY_CODE)
+        mDayCode = arguments!!.getString(DAY_CODE)!!
         setupButtons()
         return view
     }

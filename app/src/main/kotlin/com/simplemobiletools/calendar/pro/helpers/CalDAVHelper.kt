@@ -340,7 +340,7 @@ class CalDAVHelper(val context: Context) {
         val newUri = context.contentResolver.insert(uri, values)
 
         val calendarId = event.getCalDAVCalendarId()
-        val eventRemoteID = java.lang.Long.parseLong(newUri.lastPathSegment)
+        val eventRemoteID = java.lang.Long.parseLong(newUri!!.lastPathSegment!!)
         event.importId = getCalDAVEventImportId(calendarId, eventRemoteID)
 
         setupCalDAVEventReminders(event)

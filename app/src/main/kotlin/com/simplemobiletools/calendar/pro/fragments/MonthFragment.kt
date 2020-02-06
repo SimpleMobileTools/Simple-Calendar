@@ -43,7 +43,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         mRes = resources
         mPackageName = activity!!.packageName
         mHolder = view.month_calendar_holder
-        mDayCode = arguments!!.getString(DAY_CODE)
+        mDayCode = arguments!!.getString(DAY_CODE)!!
         mConfig = context!!.config
         storeStateVariables()
 

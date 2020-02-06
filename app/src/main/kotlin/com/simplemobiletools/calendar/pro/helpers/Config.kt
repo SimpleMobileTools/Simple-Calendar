@@ -33,15 +33,15 @@ class Config(context: Context) : BaseConfig(context) {
         set(vibrate) = prefs.edit().putBoolean(VIBRATE, vibrate).apply()
 
     var reminderSoundUri: String
-        get() = prefs.getString(REMINDER_SOUND_URI, context.getDefaultAlarmUri(ALARM_SOUND_TYPE_NOTIFICATION).toString())
+        get() = prefs.getString(REMINDER_SOUND_URI, context.getDefaultAlarmUri(ALARM_SOUND_TYPE_NOTIFICATION).toString())!!
         set(reminderSoundUri) = prefs.edit().putString(REMINDER_SOUND_URI, reminderSoundUri).apply()
 
     var reminderSoundTitle: String
-        get() = prefs.getString(REMINDER_SOUND_TITLE, context.getDefaultAlarmTitle(ALARM_SOUND_TYPE_NOTIFICATION))
+        get() = prefs.getString(REMINDER_SOUND_TITLE, context.getDefaultAlarmTitle(ALARM_SOUND_TYPE_NOTIFICATION))!!
         set(reminderSoundTitle) = prefs.edit().putString(REMINDER_SOUND_TITLE, reminderSoundTitle).apply()
 
     var lastSoundUri: String
-        get() = prefs.getString(LAST_SOUND_URI, "")
+        get() = prefs.getString(LAST_SOUND_URI, "")!!
         set(lastSoundUri) = prefs.edit().putString(LAST_SOUND_URI, lastSoundUri).apply()
 
     var lastReminderChannel: Long
@@ -69,7 +69,7 @@ class Config(context: Context) : BaseConfig(context) {
         set(displayPastEvents) = prefs.edit().putInt(DISPLAY_PAST_EVENTS, displayPastEvents).apply()
 
     var displayEventTypes: Set<String>
-        get() = prefs.getStringSet(DISPLAY_EVENT_TYPES, HashSet<String>())
+        get() = prefs.getStringSet(DISPLAY_EVENT_TYPES, HashSet<String>())!!
         set(displayEventTypes) = prefs.edit().remove(DISPLAY_EVENT_TYPES).putStringSet(DISPLAY_EVENT_TYPES, displayEventTypes).apply()
 
     var listWidgetViewToOpen: Int
@@ -84,7 +84,7 @@ class Config(context: Context) : BaseConfig(context) {
         }
 
     var caldavSyncedCalendarIds: String
-        get() = prefs.getString(CALDAV_SYNCED_CALENDAR_IDS, "")
+        get() = prefs.getString(CALDAV_SYNCED_CALENDAR_IDS, "")!!
         set(calendarIDs) = prefs.edit().putString(CALDAV_SYNCED_CALENDAR_IDS, calendarIDs).apply()
 
     var lastUsedCaldavCalendarId: Int
