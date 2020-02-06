@@ -2,7 +2,6 @@ package com.simplemobiletools.calendar.pro.helpers
 
 import android.content.Context
 import android.media.AudioManager
-import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.scheduleCalDAVSync
 import com.simplemobiletools.commons.extensions.getDefaultAlarmTitle
@@ -73,10 +72,6 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getStringSet(DISPLAY_EVENT_TYPES, HashSet<String>())
         set(displayEventTypes) = prefs.edit().remove(DISPLAY_EVENT_TYPES).putStringSet(DISPLAY_EVENT_TYPES, displayEventTypes).apply()
 
-    var fontSize: Int
-        get() = prefs.getInt(FONT_SIZE, FONT_SIZE_MEDIUM)
-        set(size) = prefs.edit().putInt(FONT_SIZE, size).apply()
-
     var listWidgetViewToOpen: Int
         get() = prefs.getInt(LIST_WIDGET_VIEW_TO_OPEN, DAILY_VIEW)
         set(viewToOpenFromListWidget) = prefs.edit().putInt(LIST_WIDGET_VIEW_TO_OPEN, viewToOpenFromListWidget).apply()
@@ -139,16 +134,6 @@ class Config(context: Context) : BaseConfig(context) {
         currDisplayEventTypes.removeAll(types)
         displayEventTypes = currDisplayEventTypes
     }
-
-    fun getFontSize() = when (fontSize) {
-        FONT_SIZE_SMALL -> getSmallFontSize()
-        FONT_SIZE_MEDIUM -> getMediumFontSize()
-        else -> getLargeFontSize()
-    }
-
-    private fun getSmallFontSize() = getMediumFontSize() - 3f
-    private fun getMediumFontSize() = context.resources.getDimension(R.dimen.day_text_size) / context.resources.displayMetrics.density
-    private fun getLargeFontSize() = getMediumFontSize() + 3f
 
     var usePreviousEventReminders: Boolean
         get() = prefs.getBoolean(USE_PREVIOUS_EVENT_REMINDERS, true)

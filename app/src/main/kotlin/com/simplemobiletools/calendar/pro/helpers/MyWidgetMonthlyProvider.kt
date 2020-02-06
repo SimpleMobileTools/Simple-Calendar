@@ -12,6 +12,7 @@ import android.widget.RemoteViews
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SplashActivity
 import com.simplemobiletools.calendar.pro.extensions.config
+import com.simplemobiletools.calendar.pro.extensions.getWidgetFontSize
 import com.simplemobiletools.calendar.pro.extensions.launchNewEventIntent
 import com.simplemobiletools.calendar.pro.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.pro.models.DayMonthly
@@ -93,7 +94,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
         val displayWeekNumbers = context.config.showWeekNumbers
         val textColor = context.config.widgetTextColor
         val dimPastEvents = context.config.dimPastEvents
-        val smallerFontSize = context.config.getFontSize() - 3f
+        val smallerFontSize = context.getWidgetFontSize() - 3f
         val res = context.resources
         val len = days.size
         val packageName = context.packageName
@@ -148,7 +149,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
     private fun addDayNumber(context: Context, views: RemoteViews, day: DayMonthly, textColor: Int, id: Int) {
         val newRemoteView = RemoteViews(context.packageName, R.layout.day_monthly_number_view).apply {
             setText(R.id.day_monthly_number_id, day.value.toString())
-            setTextSize(R.id.day_monthly_number_id, context.config.getFontSize() - 3f)
+            setTextSize(R.id.day_monthly_number_id, context.getWidgetFontSize() - 3f)
 
             if (day.isToday) {
                 setBackgroundColor(R.id.day_monthly_number_id, textColor)
@@ -162,7 +163,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
 
     private val monthlyCalendar = object : MonthlyCalendar {
         override fun updateMonthlyCalendar(context: Context, month: String, days: ArrayList<DayMonthly>, checkedEvents: Boolean, currTargetDate: DateTime) {
-            val largerFontSize = context.config.getFontSize() + 3f
+            val largerFontSize = context.getWidgetFontSize() + 3f
             val textColor = context.config.widgetTextColor
             val resources = context.resources
 
@@ -212,7 +213,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
 
     private fun updateDayLabels(context: Context, views: RemoteViews, resources: Resources, textColor: Int) {
         val sundayFirst = context.config.isSundayFirst
-        val smallerFontSize = context.config.getFontSize()
+        val smallerFontSize = context.getWidgetFontSize()
         val packageName = context.packageName
         val letters = context.resources.getStringArray(R.array.week_day_letters)
         for (i in 0..6) {

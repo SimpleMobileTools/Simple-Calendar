@@ -515,12 +515,6 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
-    private fun getFontSizeText() = getString(when (config.fontSize) {
-        FONT_SIZE_SMALL -> R.string.small
-        FONT_SIZE_MEDIUM -> R.string.medium
-        else -> R.string.large
-    })
-
     private fun setupCustomizeWidgetColors() {
         settings_customize_widget_colors_holder.setOnClickListener {
             Intent(this, WidgetListConfigureActivity::class.java).apply {

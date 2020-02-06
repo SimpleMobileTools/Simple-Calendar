@@ -50,7 +50,6 @@ const val LAST_EVENT_REMINDER_MINUTES = "reminder_minutes"
 const val LAST_EVENT_REMINDER_MINUTES_2 = "reminder_minutes_2"
 const val LAST_EVENT_REMINDER_MINUTES_3 = "reminder_minutes_3"
 const val DISPLAY_EVENT_TYPES = "display_event_types"
-const val FONT_SIZE = "font_size"
 const val LIST_WIDGET_VIEW_TO_OPEN = "list_widget_view_to_open"
 const val CALDAV_SYNC = "caldav_sync"
 const val CALDAV_SYNCED_CALENDAR_IDS = "caldav_synced_calendar_ids"
@@ -141,11 +140,6 @@ const val TH = "TH"
 const val FR = "FR"
 const val SA = "SA"
 const val SU = "SU"
-
-// font sizes
-const val FONT_SIZE_SMALL = 0
-const val FONT_SIZE_MEDIUM = 1
-const val FONT_SIZE_LARGE = 2
 
 const val SOURCE_SIMPLE_CALENDAR = "simple-calendar"
 const val SOURCE_IMPORTED_ICS = "imported-ics"
