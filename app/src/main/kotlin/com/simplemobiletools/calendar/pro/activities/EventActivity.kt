@@ -117,7 +117,9 @@ class EventActivity : SimpleActivity() {
 
             val localEventType = mStoredEventTypes.firstOrNull { it.id == config.lastUsedLocalEventTypeId }
             runOnUiThread {
-                gotEvent(savedInstanceState, localEventType, event)
+                if (!isDestroyed && !isFinishing) {
+                    gotEvent(savedInstanceState, localEventType, event)
+                }
             }
         }
     }
