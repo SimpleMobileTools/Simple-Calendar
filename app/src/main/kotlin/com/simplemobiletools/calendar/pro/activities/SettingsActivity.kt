@@ -505,7 +505,8 @@ class SettingsActivity : SimpleActivity() {
             val items = arrayListOf(
                     RadioItem(FONT_SIZE_SMALL, res.getString(R.string.small)),
                     RadioItem(FONT_SIZE_MEDIUM, res.getString(R.string.medium)),
-                    RadioItem(FONT_SIZE_LARGE, res.getString(R.string.large)))
+                    RadioItem(FONT_SIZE_LARGE, res.getString(R.string.large)),
+                    RadioItem(FONT_SIZE_EXTRA_LARGE, res.getString(R.string.extra_large)))
 
             RadioGroupDialog(this@SettingsActivity, items, config.fontSize) {
                 config.fontSize = it as Int
