@@ -1,6 +1,11 @@
 Changelog
 ==========
 
+Version 6.8.4 *(2020-02-07)*
+----------------------------
+
+ * Added many translation and stability improvements
+
 Version 6.8.3 *(2019-12-29)*
 ----------------------------
 
