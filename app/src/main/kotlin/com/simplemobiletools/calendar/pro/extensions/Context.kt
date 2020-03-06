@@ -198,7 +198,9 @@ fun Context.notifyEvent(originalEvent: Event) {
         val notification = getNotification(pendingIntent, event, content)
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         try {
-            notificationManager.notify(event.id!!.toInt(), notification)
+            if (notification != null) {
+                notificationManager.notify(event.id!!.toInt(), notification)
+            }
         } catch (e: Exception) {
             showErrorToast(e)
         }
@@ -206,7 +208,7 @@ fun Context.notifyEvent(originalEvent: Event) {
 }
 
 @SuppressLint("NewApi")
-fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content: String, publicVersion: Boolean = false): Notification {
+fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content: String, publicVersion: Boolean = false): Notification? {
     var soundUri = config.reminderSoundUri
     if (soundUri == SILENT) {
         soundUri = ""
@@ -245,7 +247,12 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
             lightColor = event.color
             enableVibration(config.vibrateOnReminder)
             setSound(Uri.parse(soundUri), audioAttributes)
-            notificationManager.createNotificationChannel(this)
+            try {
+                notificationManager.createNotificationChannel(this)
+            } catch (e: Exception) {
+                showErrorToast(e)
+                return null
+            }
         }
     }
 
@@ -271,7 +278,10 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
     }
 
     if (!publicVersion) {
-        builder.setPublicVersion(getNotification(pendingIntent, event, content, true))
+        val notification = getNotification(pendingIntent, event, content, true)
+        if (notification != null) {
+            builder.setPublicVersion(notification)
+        }
     }
 
     val notification = builder.build()
@@ -502,3 +512,16 @@ fun Context.refreshCalDAVCalendars(ids: String, showToasts: Boolean) {
         }
     }
 }
+
+
+fun Context.getWidgetFontSize() = when (config.fontSize) {
+    FONT_SIZE_SMALL -> getWidgetSmallFontSize()
+    FONT_SIZE_MEDIUM -> getWidgetMediumFontSize()
+    FONT_SIZE_LARGE -> getWidgetLargeFontSize()
+    else -> getWidgetExtraLargeFontSize()
+}
+
+fun Context.getWidgetSmallFontSize() = getWidgetMediumFontSize() - 3f
+fun Context.getWidgetMediumFontSize() = resources.getDimension(R.dimen.day_text_size) / resources.displayMetrics.density
+fun Context.getWidgetLargeFontSize() = getWidgetMediumFontSize() + 3f
+fun Context.getWidgetExtraLargeFontSize() = getWidgetMediumFontSize() + 6f

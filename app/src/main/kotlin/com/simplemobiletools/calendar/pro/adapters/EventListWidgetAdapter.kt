@@ -10,6 +10,7 @@ import com.simplemobiletools.calendar.pro.R.id.event_item_holder
 import com.simplemobiletools.calendar.pro.R.id.event_section_title
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.eventsHelper
+import com.simplemobiletools.calendar.pro.extensions.getWidgetFontSize
 import com.simplemobiletools.calendar.pro.extensions.seconds
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
@@ -34,7 +35,7 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
     private var weakTextColor = textColor.adjustAlpha(LOW_ALPHA)
     private val replaceDescription = context.config.replaceDescription
     private val dimPastEvents = context.config.dimPastEvents
-    private var mediumFontSize = context.config.getFontSize()
+    private var mediumFontSize = context.getWidgetFontSize()
 
     override fun getViewAt(position: Int): RemoteViews? {
         val type = getItemViewType(position)
@@ -154,7 +155,7 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
     override fun onDataSetChanged() {
         textColor = context.config.widgetTextColor
         weakTextColor = textColor.adjustAlpha(LOW_ALPHA)
-        mediumFontSize = context.config.getFontSize()
+        mediumFontSize = context.getWidgetFontSize()
         val fromTS = DateTime().seconds() - context.config.displayPastEvents * 60
         val toTS = DateTime().plusYears(1).seconds()
         context.eventsHelper.getEventsSync(fromTS, toTS, applyTypeFilter = true) {

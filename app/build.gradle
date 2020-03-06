@@ -6,29 +6,33 @@ apply plugin: 'de.timfreiheit.resourceplaceholders'
 
 def keystorePropertiesFile = rootProject.file("keystore.properties")
 def keystoreProperties = new Properties()
-keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion "28.0.3"
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
 
     defaultConfig {
         applicationId "com.simplemobiletools.calendar.pro"
         minSdkVersion 21
-        targetSdkVersion 28
-        versionCode 168
-        versionName "6.8.1"
+        targetSdkVersion 29
+        versionCode 171
+        versionName "6.8.4"
         multiDexEnabled true
         setProperty("archivesBaseName", "calendar")
         vectorDrawables.useSupportLibrary = true
     }
 
     signingConfigs {
-        release {
-            keyAlias keystoreProperties['keyAlias']
-            keyPassword keystoreProperties['keyPassword']
-            storeFile file(keystoreProperties['storeFile'])
-            storePassword keystoreProperties['storePassword']
+        if (keystorePropertiesFile.exists()) {
+            release {
+                keyAlias keystoreProperties['keyAlias']
+                keyPassword keystoreProperties['keyPassword']
+                storeFile file(keystoreProperties['storeFile'])
+                storePassword keystoreProperties['storePassword']
+            }
         }
     }
 
@@ -39,7 +43,9 @@ android {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
+            if (keystorePropertiesFile.exists()) {
+                signingConfig signingConfigs.release
+            }
         }
     }
 
@@ -58,7 +64,7 @@ android {
 }
 
 dependencies {
-    implementation 'com.simplemobiletools:commons:5.20.10'
+    implementation 'com.simplemobiletools:commons:5.22.7'
     implementation 'joda-time:joda-time:2.10.1'
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta2'

@@ -360,8 +360,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private fun checkIsViewIntent() {
         if (intent?.action == Intent.ACTION_VIEW && intent.data != null) {
             val uri = intent.data
-            if (uri.authority == "com.android.calendar") {
-                if (uri.path.startsWith("/events")) {
+            if (uri?.authority?.equals("com.android.calendar") == true) {
+                if (uri.path!!.startsWith("/events")) {
                     ensureBackgroundThread {
                         // intents like content://com.android.calendar/events/1756
                         val eventId = uri.lastPathSegment
@@ -384,7 +384,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                     }
                 }
             } else {
-                tryImportEventsFromFile(uri)
+                tryImportEventsFromFile(uri!!)
             }
         }
     }
@@ -753,7 +753,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     private fun tryImportEventsFromFile(uri: Uri) {
         when {
-            uri.scheme == "file" -> showImportEventsDialog(uri.path)
+            uri.scheme == "file" -> showImportEventsDialog(uri.path!!)
             uri.scheme == "content" -> {
                 val tempFile = getTempFile()
                 if (tempFile == null) {
@@ -763,7 +763,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
                 val inputStream = contentResolver.openInputStream(uri)
                 val out = FileOutputStream(tempFile)
-                inputStream.copyTo(out)
+                inputStream!!.copyTo(out)
                 showImportEventsDialog(tempFile.absolutePath)
             }
             else -> toast(R.string.invalid_file_format)
@@ -913,6 +913,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             put("México", "mexico.ics")
             put("Nederland", "netherlands.ics")
             put("日本", "japan.ics")
+            put("Nigeria", "nigeria.ics")
             put("Norge", "norway.ics")
             put("Österreich", "austria.ics")
             put("Pākistān", "pakistan.ics")

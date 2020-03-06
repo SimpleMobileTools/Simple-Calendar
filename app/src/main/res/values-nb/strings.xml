@@ -110,7 +110,7 @@
     <string name="invited">Invited</string>
 
     <!-- Time zones -->
-    <string name="enter_a_country">Enter a country or time zone</string>
+    <string name="enter_a_country">Angi et land eller tidssone</string>
 
     <!-- Export / Import -->
     <string name="import_events">Importer hendelser</string>
@@ -192,7 +192,7 @@
     <string name="last_used_one">Den sist brukte</string>
     <string name="other_time">Annen tid</string>
     <string name="highlight_weekends">Fremhev helger på noen visninger</string>
-    <string name="allow_changing_time_zones">Allow changing event time zones</string>
+    <string name="allow_changing_time_zones">Tillat å endre hendelsestidssoner</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -282,6 +282,9 @@
 
         <b>Check out the full suite of Simple Tools here:</b>
         https://www.simplemobiletools.com
+
+        <b>Standalone website of Simple Calendar Pro:</b>
+        https://www.simplemobiletools.com/calendar
 
         <b>Facebook:</b>
         https://www.facebook.com/simplemobiletools

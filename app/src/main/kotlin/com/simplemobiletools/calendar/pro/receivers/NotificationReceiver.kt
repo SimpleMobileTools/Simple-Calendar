@@ -32,7 +32,7 @@ class NotificationReceiver : BroadcastReceiver() {
 
         context.updateListWidget()
         val event = context.eventsDB.getEventWithId(id)
-        if (event == null || event.getReminders().none { it.type == REMINDER_NOTIFICATION }) {
+        if (event == null || event.getReminders().none { it.type == REMINDER_NOTIFICATION } || event.repetitionExceptions.contains(Formatter.getTodayCode())) {
             return
         }
 

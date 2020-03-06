@@ -8,9 +8,11 @@ import com.simplemobiletools.calendar.pro.extensions.rescheduleReminder
 import com.simplemobiletools.calendar.pro.helpers.EVENT_ID
 
 class SnoozeService : IntentService("Snooze") {
-    override fun onHandleIntent(intent: Intent) {
-        val eventId = intent.getLongExtra(EVENT_ID, 0L)
-        val event = eventsDB.getEventWithId(eventId)
-        rescheduleReminder(event, config.snoozeTime)
+    override fun onHandleIntent(intent: Intent?) {
+        if (intent != null) {
+            val eventId = intent.getLongExtra(EVENT_ID, 0L)
+            val event = eventsDB.getEventWithId(eventId)
+            rescheduleReminder(event, config.snoozeTime)
+        }
     }
 }

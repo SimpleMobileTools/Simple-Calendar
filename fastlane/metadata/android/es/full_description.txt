@@ -5,11 +5,11 @@ Ya sea que estes organizando eventos individuales o recurrentes, cumpleaños, an
 Las vistas diarias, semanales y mensuales permiten verificar tus próximos eventos y citas con facilidad. Incluso puedes ver todos los eventos como si se tratara de una lista en lugar de usar un calendario, para que <b> sepas exactamente lo que está sucediendo en tu vida y cuándo. </b>
 
 ----------------------------------------------------------
-<b>Calendario Simple Pro – Características & beneficios</b>
+<b>Calendario Simple Pro – Características y beneficios</b>
 ----------------------------------------------------------
 
 ✔️ Sin anuncios ni ventanas emergentes
-✔️ No requiere acceso a internet, dándote más privacidad & seguridad
+✔️ No requiere acceso a internet, dándote más privacidad y seguridad
 ✔️ Solo se requieren los permisos mínimos para que funcione la aplicación
 ✔️ Énfasis en la simplicidad – hace lo que un calendario debería hacer
 ✔️ Código abierto (Open source)
@@ -18,14 +18,14 @@ Las vistas diarias, semanales y mensuales permiten verificar tus próximos event
 ✔️ Exporta tu configuración a un fichero .txt para importarlo a otro dispositivo
 ✔️ Soporte de CalDAV para sincronizar tus eventos entre múltiples dispositivos
 ✔️ Vista diaria, semanal, mensual, anual y de eventos en el calendario
-✔️ Soporte a la exportación & importación de eventos a través de ficheros .ics
+✔️ Soporte a la exportación y importación de eventos a través de ficheros .ics
 ✔️ Establece múltiples recordatorios de eventos, personalice el sonido y la vibración
 ✔️ Opción para posponer recordatorios
 ✔️ Añade fácilmente días festivos, cumpleaños, aniversarios y citas
 ✔️ Personalización de eventos: hora de inicio, duración, recordatorios, etc.
 ✔️ Añade asistentes para cada evento
 ✔️ Utilizalo como un calendario personal o de trabajo
-✔️ Escoge entre recordatorios & notificaciones de correo para recordarte los eventos
+✔️ Escoge entre recordatorios y notificaciones de correo para recordarte los eventos
 
 DESCARGA CALENDARIO SIMPLE PRO - EL CALENDARIO SIMPLE, OFFLINE Y SIN ANUNCIOS!
 
