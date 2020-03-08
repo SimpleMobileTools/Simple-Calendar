@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 6.8.5 *(2020-03-08)*
+----------------------------
+
+ * Added a Go To Today menu button at the event list view too
+ * Some translation and stability improvements
+
 Version 6.8.4 *(2020-02-07)*
 ----------------------------
 
