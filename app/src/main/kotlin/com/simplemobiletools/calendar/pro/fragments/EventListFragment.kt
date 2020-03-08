@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.EventActivity
 import com.simplemobiletools.calendar.pro.activities.MainActivity
@@ -18,6 +19,7 @@ import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.ListEvent
 import com.simplemobiletools.calendar.pro.models.ListItem
+import com.simplemobiletools.calendar.pro.models.ListSection
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.MONTH_SECONDS
 import com.simplemobiletools.commons.interfaces.RefreshRecyclerViewListener
@@ -187,7 +189,13 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
         checkEvents()
     }
 
-    override fun goToToday() {}
+    override fun goToToday() {
+        val listItems = context!!.getEventListItems(mEvents)
+        val firstNonPastSectionIndex = listItems.indexOfFirst { it is ListSection && !it.isPastSection }
+        if (firstNonPastSectionIndex != -1) {
+            (mView.calendar_events_list.layoutManager as LinearLayoutManager).scrollToPositionWithOffset(firstNonPastSectionIndex, 0)
+        }
+    }
 
     override fun showGoToDateDialog() {}
 
