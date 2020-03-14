@@ -293,6 +293,10 @@
         <b>Reddit:</b>
         https://www.reddit.com/r/SimpleMobileTools
     </string>
+    <string name="class_private">Privat</string>
+    <string name="class_public">Öffentlich</string>
+    <string name="class_confidential">Vertraulich</string>
+    <string name="class_name">Klassifizierung</string>
 
     <!--
         Haven't found some strings? There's more at

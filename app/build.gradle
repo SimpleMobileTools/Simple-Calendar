@@ -72,4 +72,5 @@ dependencies {
     kapt 'androidx.room:room-compiler:2.2.2'
     implementation 'androidx.room:room-runtime:2.2.2'
     annotationProcessor 'androidx.room:room-compiler:2.2.2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta4'
 }

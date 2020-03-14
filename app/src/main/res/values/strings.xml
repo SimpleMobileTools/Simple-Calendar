@@ -109,6 +109,14 @@
     <string name="maybe_going">Maybe going</string>
     <string name="invited">Invited</string>
 
+    <!-- Event Classification RFC5545 -->
+    <string name="class_public">Public Event (visible)</string>
+    <string name="class_private">Show Date and Time Only (visible)</string>
+    <string name="class_confidential">Private Event (hidden)</string>
+    <string name="class_unknown">Visibility Unknown / Not Set</string>
+    <string name="class_name">Visibility of the event:</string>
+
+
     <!-- Time zones -->
     <string name="enter_a_country">Enter a country or time zone</string>
 
@@ -292,6 +300,7 @@
         <b>Reddit:</b>
         https://www.reddit.com/r/SimpleMobileTools
     </string>
+    <string name="default_classification">Default Classification</string>
 
     <!--
         Haven't found some strings? There's more at

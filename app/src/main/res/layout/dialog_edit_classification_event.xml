@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/edit_classification_event_holder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/big_margin"
+        android:paddingTop="@dimen/big_margin"
+        android:paddingEnd="@dimen/big_margin">
+
+        <com.simplemobiletools.commons.views.MyTextView
+            android:id="@+id/edit_classification_event_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/class_name"
+            android:textSize="@dimen/bigger_text_size" />
+
+        <RadioGroup
+            android:id="@+id/classification_event_radio_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.simplemobiletools.commons.views.MyCompatRadioButton
+                android:id="@+id/edit_classification_event_public"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:paddingTop="@dimen/normal_margin"
+                android:paddingBottom="@dimen/normal_margin"
+                android:text="@string/class_public" />
+
+            <com.simplemobiletools.commons.views.MyCompatRadioButton
+                android:id="@+id/edit_classification_event_private"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/normal_margin"
+                android:paddingBottom="@dimen/normal_margin"
+                android:text="@string/class_private" />
+
+            <com.simplemobiletools.commons.views.MyCompatRadioButton
+                android:id="@+id/edit_classification_event_confidential"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/normal_margin"
+                android:paddingBottom="@dimen/normal_margin"
+                android:text="@string/class_confidential" />
+        </RadioGroup>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

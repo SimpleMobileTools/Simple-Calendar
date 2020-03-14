@@ -64,6 +64,7 @@ class EventActivity : SimpleActivity() {
     private val EVENT_CALENDAR_ID = "EVENT_CALENDAR_ID"
     private val SELECT_TIME_ZONE_INTENT = 1
 
+    private var mClassification = PRIVATE
     private var mReminder1Minutes = REMINDER_OFF
     private var mReminder2Minutes = REMINDER_OFF
     private var mReminder3Minutes = REMINDER_OFF
@@ -217,6 +218,8 @@ class EventActivity : SimpleActivity() {
             jumpDrawablesToCurrentState()
         }
 
+        event_classification_holder.setOnClickListener{ showEditClassificationEventDialog() }
+
         updateTextColors(event_scrollview)
         updateIconColors()
         event_time_zone_image.beVisibleIf(config.allowChangingTimeZones)
@@ -270,6 +273,7 @@ class EventActivity : SimpleActivity() {
             putInt(REPEAT_RULE, mRepeatRule)
             putLong(REPEAT_LIMIT, mRepeatLimit)
 
+            putString(CLASSIFICATION ,mClassification)
             putString(ATTENDEES, getAllAttendees(false))
 
             putLong(EVENT_TYPE_ID, mEventTypeId)
@@ -333,6 +337,7 @@ class EventActivity : SimpleActivity() {
         updateEndTexts()
         updateTimeZoneText()
         updateAttendeesVisibility()
+        updateClassificationText()
     }
 
     private fun setupEditEvent() {
@@ -373,6 +378,7 @@ class EventActivity : SimpleActivity() {
         mAttendees = Gson().fromJson<ArrayList<Attendee>>(mEvent.attendees, object : TypeToken<List<Attendee>>() {}.type) ?: ArrayList()
         checkRepeatTexts(mRepeatInterval)
         checkAttendees()
+        mClassification = mEvent.classification
     }
 
     private fun setupNewEvent() {
@@ -417,6 +423,8 @@ class EventActivity : SimpleActivity() {
             }
             mEventEndDateTime = mEventStartDateTime.plusMinutes(addMinutes)
         }
+
+        mClassification = config.defaultClassification
 
         checkAttendees()
     }
@@ -772,6 +780,12 @@ class EventActivity : SimpleActivity() {
         }
     }
 
+    private fun updateEventClassification(){
+        ensureBackgroundThread {
+
+        }
+    }
+
     private fun updateCalDAVCalendar() {
         if (config.caldavSync) {
             event_caldav_calendar_image.beVisible()
@@ -1000,6 +1014,7 @@ class EventActivity : SimpleActivity() {
             lastUpdated = System.currentTimeMillis()
             source = newSource
             location = event_location.value
+            classification = mClassification
         }
 
         // recreate the event if it was moved in a different CalDAV calendar
@@ -1060,6 +1075,25 @@ class EventActivity : SimpleActivity() {
                 }
             }
         }
+    }
+
+    private fun showEditClassificationEventDialog() {
+        EditClassificationEventDialog(this, mClassification) {
+                ensureBackgroundThread {
+                    mClassification = it
+                    mEvent.classification = mClassification
+                    updateClassificationText()
+                }
+        }
+    }
+
+    private fun updateClassificationText(){
+        event_classification_type.text = getString(when (mClassification) {
+            CONFIDENTIAL -> R.string.class_confidential
+            PUBLIC -> R.string.class_public
+            PRIVATE -> R.string.class_private
+            else -> R.string.class_name
+        })
     }
 
     private fun updateStartTexts() {

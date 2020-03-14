@@ -174,4 +174,8 @@ class Config(context: Context) : BaseConfig(context) {
     var allowChangingTimeZones: Boolean
         get() = prefs.getBoolean(ALLOW_CHANGING_TIME_ZONES, false)
         set(allowChangingTimeZones) = prefs.edit().putBoolean(ALLOW_CHANGING_TIME_ZONES, allowChangingTimeZones).apply()
+
+    var defaultClassification: String
+        get() = prefs.getString(DEFAULT_CLASSIFICATION, PRIVATE)!!
+        set(defaultClassification) = prefs.edit().putString(DEFAULT_CLASSIFICATION, defaultClassification).apply()
 }

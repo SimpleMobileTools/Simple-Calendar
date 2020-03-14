@@ -28,6 +28,7 @@ class IcsImporter(val activity: SimpleActivity) {
     private var curRecurrenceDayCode = ""
     private var curRrule = ""
     private var curFlags = 0
+    private var curClassification = ""
     private var curReminderMinutes = ArrayList<Int>()
     private var curReminderActions = ArrayList<Int>()
     private var curRepeatExceptions = ArrayList<String>()
@@ -151,6 +152,11 @@ class IcsImporter(val activity: SimpleActivity) {
                         if (isProperReminderAction && curReminderTriggerMinutes != REMINDER_OFF) {
                             curReminderMinutes.add(curReminderTriggerMinutes)
                             curReminderActions.add(curReminderTriggerAction)
+                        }
+                    } else if (line.startsWith(CLASSIFICATION)) {
+                        val classValue = line.substring(CLASSIFICATION.length).toUpperCase()
+                        if (classValue.compareTo(PRIVATE) == 0 || classValue.compareTo(PUBLIC) == 0 || classValue.compareTo(CONFIDENTIAL) == 0) {
+                            curClassification = classValue
                         }
                     } else if (line == END_EVENT) {
                         isParsingEvent = false

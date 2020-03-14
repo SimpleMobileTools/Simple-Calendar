@@ -51,6 +51,7 @@ class IcsExporter {
                         event.eventType.let { out.writeLn("$CATEGORIES${activity.eventTypesDB.getEventTypeWithId(it)?.title}") }
                         event.lastUpdated.let { out.writeLn("$LAST_MODIFIED:${Formatter.getExportedTime(it)}") }
                         event.location.let { if (it.isNotEmpty()) out.writeLn("$LOCATION:$it") }
+                        event.classification.let { out.writeLn("$CLASSIFICATION:$it") }
 
                         if (event.getIsAllDay()) {
                             out.writeLn("$DTSTART;$VALUE=$DATE:${Formatter.getDayCodeFromTS(event.startTS)}")

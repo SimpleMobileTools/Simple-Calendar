@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.Menu
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.dialogs.SelectCalendarsDialog
+import com.simplemobiletools.calendar.pro.dialogs.SelectClassificationDialog
 import com.simplemobiletools.calendar.pro.dialogs.SelectEventTypeDialog
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.*
@@ -63,6 +64,7 @@ class SettingsActivity : SimpleActivity() {
         setupDefaultStartTime()
         setupDefaultDuration()
         setupDefaultEventType()
+        setupDefaultClassification()
         setupPullToRefresh()
         setupDefaultReminder()
         setupDefaultReminder1()
@@ -655,6 +657,25 @@ class SettingsActivity : SimpleActivity() {
             }
         }
     }
+
+    private fun setupDefaultClassification() {
+        updateDefaultClassificationText()
+        settings_default_classification_holder.setOnClickListener {
+            SelectClassificationDialog(this, config.defaultClassification) {
+                config.defaultClassification = it
+                updateDefaultClassificationText()
+            }
+        }
+    }
+
+    private fun updateDefaultClassificationText() {
+        settings_default_classification.text = getString( when (config.defaultClassification.toUpperCase()) {
+            CONFIDENTIAL -> R.string.class_confidential
+            PUBLIC -> R.string.class_public
+            else -> R.string.class_private
+        })
+    }
+
 
     private fun setupExportSettings() {
         settings_export_holder.setOnClickListener {
