@@ -640,7 +640,7 @@
                 android:layout_marginEnd="@dimen/small_margin"
                 android:background="@null"
                 android:clickable="false"
-                tools:text="@string/last_used_one"/>
+                tools:text="@string/class_private"/>
 
         </RelativeLayout>
 

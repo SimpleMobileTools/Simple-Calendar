@@ -110,11 +110,12 @@
     <string name="invited">Invited</string>
 
     <!-- Event Classification RFC5545 -->
-    <string name="class_public">Public Event (visible)</string>
-    <string name="class_private">Show Date and Time Only (visible)</string>
-    <string name="class_confidential">Private Event (hidden)</string>
-    <string name="class_unknown">Visibility Unknown / Not Set</string>
-    <string name="class_name">Visibility of the event:</string>
+    <string name="class_public">Public: event visible to others</string>
+    <string name="class_confidential">Confidential: only date and time visible to others</string>
+    <string name="class_private">Private: event hidden from others</string>
+    <string name="class_custom">Custom: unknown visibility properties</string>
+    <string name="class_server_default">Server defaults: unknown visibility properties</string>
+    <string name="class_name">Visibility of the event in shared calendars.</string>
 
 
     <!-- Time zones -->
@@ -201,6 +202,8 @@
     <string name="other_time">Other time</string>
     <string name="highlight_weekends">Highlight weekends on some views</string>
     <string name="allow_changing_time_zones">Allow changing event time zones</string>
+    <string name="default_classification">Default visibility in shared calendars</string>
+
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -300,8 +303,6 @@
         <b>Reddit:</b>
         https://www.reddit.com/r/SimpleMobileTools
     </string>
-    <string name="default_classification">Default Classification</string>
-
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res

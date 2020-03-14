@@ -17,6 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/class_name"
+            android:textAlignment="center"
             android:textSize="@dimen/bigger_text_size" />
 
         <RadioGroup
@@ -48,6 +49,23 @@
                 android:paddingTop="@dimen/normal_margin"
                 android:paddingBottom="@dimen/normal_margin"
                 android:text="@string/class_confidential" />
+
+            <com.simplemobiletools.commons.views.MyCompatRadioButton
+                android:id="@+id/edit_classification_event_server_default"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/normal_margin"
+                android:paddingBottom="@dimen/normal_margin"
+                android:text="@string/class_server_default" />
+
+            <com.simplemobiletools.commons.views.MyCompatRadioButton
+                android:id="@+id/edit_classification_event_custom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/normal_margin"
+                android:paddingBottom="@dimen/normal_margin"
+                android:text="@string/class_custom" />
+
         </RadioGroup>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

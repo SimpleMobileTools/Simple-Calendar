@@ -1092,7 +1092,8 @@ class EventActivity : SimpleActivity() {
             CONFIDENTIAL -> R.string.class_confidential
             PUBLIC -> R.string.class_public
             PRIVATE -> R.string.class_private
-            else -> R.string.class_name
+            "" -> R.string.class_server_default
+            else -> R.string.class_custom
         })
     }
 
