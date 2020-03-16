@@ -796,12 +796,14 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                     if (events.isEmpty()) {
                         toast(R.string.no_entries_for_exporting)
                     } else {
-                        IcsExporter().exportEvents(this, file, events, true) {
-                            toast(when (it) {
-                                IcsExporter.ExportResult.EXPORT_OK -> R.string.exporting_successful
-                                IcsExporter.ExportResult.EXPORT_PARTIAL -> R.string.exporting_some_entries_failed
-                                else -> R.string.exporting_failed
-                            })
+                        getFileOutputStream(file.toFileDirItem(this), true) {
+                            IcsExporter().exportEvents(this, it, events, true) {
+                                toast(when (it) {
+                                    IcsExporter.ExportResult.EXPORT_OK -> R.string.exporting_successful
+                                    IcsExporter.ExportResult.EXPORT_PARTIAL -> R.string.exporting_some_entries_failed
+                                    else -> R.string.exporting_failed
+                                })
+                            }
                         }
                     }
                 }
