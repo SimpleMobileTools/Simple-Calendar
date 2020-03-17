@@ -12,12 +12,18 @@ import kotlinx.android.synthetic.main.dialog_export_events.view.*
 import java.io.File
 import java.util.*
 
-class ExportEventsDialog(val activity: SimpleActivity, val path: String, val callback: (exportPastEvents: Boolean, file: File, eventTypes: ArrayList<Long>) -> Unit) {
+class ExportEventsDialog(val activity: SimpleActivity, val path: String, val hidePath: Boolean,
+                         val callback: (exportPastEvents: Boolean, file: File, eventTypes: ArrayList<Long>) -> Unit) {
 
     init {
         val view = (activity.layoutInflater.inflate(R.layout.dialog_export_events, null) as ViewGroup).apply {
             export_events_folder.text = activity.humanizePath(path)
             export_events_filename.setText("${activity.getString(R.string.events)}_${activity.getCurrentFormattedDateTime()}")
+
+            if (hidePath) {
+                export_events_folder_label.beGone()
+                export_events_folder.beGone()
+            }
 
             activity.eventsHelper.getEventTypes(activity, false) {
                 val eventTypes = HashSet<String>()

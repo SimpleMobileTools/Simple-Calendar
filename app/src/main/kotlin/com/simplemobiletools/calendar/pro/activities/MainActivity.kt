@@ -790,7 +790,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     private fun exportEvents() {
         FilePickerDialog(this, pickFile = false, showFAB = true) {
-            ExportEventsDialog(this, it) { exportPastEvents, file, eventTypes ->
+            ExportEventsDialog(this, it, false) { exportPastEvents, file, eventTypes ->
                 ensureBackgroundThread {
                     val events = eventsHelper.getEventsToExport(exportPastEvents, eventTypes)
                     if (events.isEmpty()) {
