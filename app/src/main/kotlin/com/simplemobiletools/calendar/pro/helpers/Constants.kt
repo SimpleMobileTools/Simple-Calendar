@@ -73,6 +73,8 @@ const val DEFAULT_START_TIME = "default_start_time"
 const val DEFAULT_DURATION = "default_duration"
 const val DEFAULT_EVENT_TYPE_ID = "default_event_type_id"
 const val ALLOW_CHANGING_TIME_ZONES = "allow_changing_time_zones"
+const val LAST_EXPORT_PATH = "last_export_path"
+const val EXPORT_PAST_EVENTS = "export_past_events"
 
 // repeat_rule for monthly and yearly repetition
 const val REPEAT_SAME_DAY = 1                           // i.e. 25th every month, or 3rd june (if yearly repetition)

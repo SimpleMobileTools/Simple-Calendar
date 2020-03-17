@@ -174,4 +174,12 @@ class Config(context: Context) : BaseConfig(context) {
     var allowChangingTimeZones: Boolean
         get() = prefs.getBoolean(ALLOW_CHANGING_TIME_ZONES, false)
         set(allowChangingTimeZones) = prefs.edit().putBoolean(ALLOW_CHANGING_TIME_ZONES, allowChangingTimeZones).apply()
+
+    var lastExportPath: String
+        get() = prefs.getString(LAST_EXPORT_PATH, "")!!
+        set(lastExportPath) = prefs.edit().putString(LAST_EXPORT_PATH, lastExportPath).apply()
+
+    var exportPastEvents: Boolean
+        get() = prefs.getBoolean(EXPORT_PAST_EVENTS, false)
+        set(exportPastEvents) = prefs.edit().putBoolean(EXPORT_PAST_EVENTS, exportPastEvents).apply()
 }
