@@ -15,7 +15,7 @@ import java.io.File
 import java.util.*
 
 class ExportEventsDialog(val activity: SimpleActivity, val path: String, val hidePath: Boolean,
-                         val callback: (exportPastEvents: Boolean, file: File, eventTypes: ArrayList<Long>) -> Unit) {
+                         val callback: (file: File, eventTypes: ArrayList<Long>) -> Unit) {
     private var realPath = if (path.isEmpty()) activity.internalStoragePath else path
     val config = activity.config
 
@@ -72,7 +72,7 @@ class ExportEventsDialog(val activity: SimpleActivity, val path: String, val hid
                                     config.exportPastEvents = view.export_events_checkbox.isChecked
 
                                     val eventTypes = (view.export_events_types_list.adapter as FilterEventTypeAdapter).getSelectedItemsList()
-                                    callback(view.export_events_checkbox.isChecked, file, eventTypes)
+                                    callback(file, eventTypes)
                                     dismiss()
                                 }
                                 else -> activity.toast(R.string.invalid_name)
