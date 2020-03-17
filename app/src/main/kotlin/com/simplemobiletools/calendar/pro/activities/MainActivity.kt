@@ -48,6 +48,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 import java.io.FileOutputStream
+import java.io.OutputStream
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -784,23 +785,25 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         handlePermission(PERMISSION_WRITE_STORAGE) {
             if (it) {
                 ExportEventsDialog(this, config.lastExportPath, false) { file, eventTypes ->
-                    ensureBackgroundThread {
-                        val events = eventsHelper.getEventsToExport(config.exportPastEvents, eventTypes)
-                        if (events.isEmpty()) {
-                            toast(R.string.no_entries_for_exporting)
-                        } else {
-                            getFileOutputStream(file.toFileDirItem(this), true) {
-                                IcsExporter().exportEvents(this, it, events, true) {
-                                    toast(when (it) {
-                                        IcsExporter.ExportResult.EXPORT_OK -> R.string.exporting_successful
-                                        IcsExporter.ExportResult.EXPORT_PARTIAL -> R.string.exporting_some_entries_failed
-                                        else -> R.string.exporting_failed
-                                    })
-                                }
-                            }
-                        }
+                    getFileOutputStream(file.toFileDirItem(this), true) {
+                        exportEventsTo(eventTypes, it)
                     }
                 }
+            }
+        }
+    }
+
+    private fun exportEventsTo(eventTypes: ArrayList<Long>, outputStream: OutputStream?) {
+        val events = eventsHelper.getEventsToExport(eventTypes)
+        if (events.isEmpty()) {
+            toast(R.string.no_entries_for_exporting)
+        } else {
+            IcsExporter().exportEvents(this, outputStream, events, true) {
+                toast(when (it) {
+                    IcsExporter.ExportResult.EXPORT_OK -> R.string.exporting_successful
+                    IcsExporter.ExportResult.EXPORT_PARTIAL -> R.string.exporting_some_entries_failed
+                    else -> R.string.exporting_failed
+                })
             }
         }
     }

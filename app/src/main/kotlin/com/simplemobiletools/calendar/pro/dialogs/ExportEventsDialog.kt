@@ -10,6 +10,7 @@ import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.eventsHelper
 import com.simplemobiletools.commons.dialogs.FilePickerDialog
 import com.simplemobiletools.commons.extensions.*
+import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import kotlinx.android.synthetic.main.dialog_export_events.view.*
 import java.io.File
 import java.util.*
@@ -68,12 +69,14 @@ class ExportEventsDialog(val activity: SimpleActivity, val path: String, val hid
                                         return@setOnClickListener
                                     }
 
-                                    config.lastExportPath = file.absolutePath.getParentPath()
-                                    config.exportPastEvents = view.export_events_checkbox.isChecked
+                                    ensureBackgroundThread {
+                                        config.lastExportPath = file.absolutePath.getParentPath()
+                                        config.exportPastEvents = view.export_events_checkbox.isChecked
 
-                                    val eventTypes = (view.export_events_types_list.adapter as FilterEventTypeAdapter).getSelectedItemsList()
-                                    callback(file, eventTypes)
-                                    dismiss()
+                                        val eventTypes = (view.export_events_types_list.adapter as FilterEventTypeAdapter).getSelectedItemsList()
+                                        callback(file, eventTypes)
+                                        dismiss()
+                                    }
                                 }
                                 else -> activity.toast(R.string.invalid_name)
                             }
