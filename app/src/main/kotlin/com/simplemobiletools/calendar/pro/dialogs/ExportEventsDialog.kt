@@ -64,7 +64,7 @@ class ExportEventsDialog(val activity: SimpleActivity, val path: String, val hid
                                 filename.isEmpty() -> activity.toast(R.string.empty_name)
                                 filename.isAValidFilename() -> {
                                     val file = File(realPath, "$filename.ics")
-                                    if (file.exists()) {
+                                    if (!hidePath && file.exists()) {
                                         activity.toast(R.string.name_taken)
                                         return@setOnClickListener
                                     }

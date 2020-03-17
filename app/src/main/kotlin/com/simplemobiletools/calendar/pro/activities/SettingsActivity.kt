@@ -784,8 +784,10 @@ class SettingsActivity : SimpleActivity() {
             }
         }
 
-        toast(if (configValues.size > 0) R.string.settings_imported_successfully else R.string.no_entries_for_importing)
         runOnUiThread {
+            val msg = if (configValues.size > 0) R.string.settings_imported_successfully else R.string.no_entries_for_importing
+            toast(msg)
+
             setupSettingItems()
             updateWidgets()
         }
