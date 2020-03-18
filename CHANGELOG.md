@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 6.9.0 *(2020-03-18)*
+----------------------------
+
+ * Remember the last used folder at ics exporting
+ * Do not request the Storage permission on Android 10+, use Scoped Storage
+
 Version 6.8.5 *(2020-03-08)*
 ----------------------------
 
