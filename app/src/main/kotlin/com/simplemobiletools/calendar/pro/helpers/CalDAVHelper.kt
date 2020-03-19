@@ -218,9 +218,6 @@ class CalDAVHelper(val context: Context) {
                             CalendarContract.Events.ACCESS_CONFIDENTIAL -> CONFIDENTIAL
                             else -> ""
                         }
-
-
-
                     val originalInstanceTime = cursor.getLongValue(CalendarContract.Events.ORIGINAL_INSTANCE_TIME)
                     val reminders = getCalDAVEventReminders(id)
                     val attendees = Gson().toJson(getCalDAVEventAttendees(id))

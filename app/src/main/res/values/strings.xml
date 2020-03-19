@@ -117,7 +117,6 @@
     <string name="class_server_default">Server defaults: unknown visibility properties</string>
     <string name="class_name">Visibility of the event in shared calendars.</string>
 
-
     <!-- Time zones -->
     <string name="enter_a_country">Enter a country or time zone</string>
 
@@ -203,7 +202,6 @@
     <string name="highlight_weekends">Highlight weekends on some views</string>
     <string name="allow_changing_time_zones">Allow changing event time zones</string>
     <string name="default_classification">Default visibility in shared calendars</string>
-
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

@@ -676,7 +676,6 @@ class SettingsActivity : SimpleActivity() {
         })
     }
 
-
     private fun setupExportSettings() {
         settings_export_holder.setOnClickListener {
             val configItems = LinkedHashMap<String, Any>().apply {

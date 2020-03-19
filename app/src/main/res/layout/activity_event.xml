@@ -599,6 +599,4 @@
             android:background="@color/divider_grey"
             android:importantForAccessibility="no"/>
     </RelativeLayout>
-
-
 </ScrollView>
