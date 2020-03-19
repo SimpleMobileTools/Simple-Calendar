@@ -189,7 +189,8 @@ class CalDAVHelper(val context: Context) {
                 CalendarContract.Events.EVENT_LOCATION,
                 CalendarContract.Events.EVENT_TIMEZONE,
                 CalendarContract.Events.CALENDAR_TIME_ZONE,
-                CalendarContract.Events.DELETED)
+                CalendarContract.Events.DELETED,
+                CalendarContract.Events.ACCESS_LEVEL)
 
         val selection = "${CalendarContract.Events.CALENDAR_ID} = $calendarId"
         var cursor: Cursor? = null
@@ -211,6 +212,15 @@ class CalDAVHelper(val context: Context) {
                     val rrule = cursor.getStringValue(CalendarContract.Events.RRULE) ?: ""
                     val location = cursor.getStringValue(CalendarContract.Events.EVENT_LOCATION) ?: ""
                     val originalId = cursor.getStringValue(CalendarContract.Events.ORIGINAL_ID)
+                    val accessLevel = when(cursor.getIntValue(CalendarContract.Events.ACCESS_LEVEL)){
+                            CalendarContract.Events.ACCESS_PUBLIC -> PUBLIC
+                            CalendarContract.Events.ACCESS_PRIVATE -> PRIVATE
+                            CalendarContract.Events.ACCESS_CONFIDENTIAL -> CONFIDENTIAL
+                            else -> ""
+                        }
+
+
+
                     val originalInstanceTime = cursor.getLongValue(CalendarContract.Events.ORIGINAL_INSTANCE_TIME)
                     val reminders = getCalDAVEventReminders(id)
                     val attendees = Gson().toJson(getCalDAVEventAttendees(id))
@@ -233,7 +243,7 @@ class CalDAVHelper(val context: Context) {
                             reminder2?.minutes ?: REMINDER_OFF, reminder3?.minutes ?: REMINDER_OFF, reminder1?.type
                             ?: REMINDER_NOTIFICATION, reminder2?.type ?: REMINDER_NOTIFICATION, reminder3?.type
                             ?: REMINDER_NOTIFICATION, repeatRule.repeatInterval, repeatRule.repeatRule,
-                            repeatRule.repeatLimit, ArrayList(), attendees, importId, eventTimeZone, allDay, eventTypeId, source = source)
+                            repeatRule.repeatLimit, ArrayList(), attendees, importId, eventTimeZone, allDay, eventTypeId, source = source, classification = accessLevel)
 
                     if (event.getIsAllDay()) {
                         event.startTS = Formatter.getShiftedImportTimestamp(event.startTS)
@@ -415,6 +425,13 @@ class CalDAVHelper(val context: Context) {
             put(CalendarContract.Events.EVENT_TIMEZONE, event.getTimeZoneString())
             put(CalendarContract.Events.EVENT_LOCATION, event.location)
             put(CalendarContract.Events.STATUS, CalendarContract.Events.STATUS_CONFIRMED)
+            put(CalendarContract.Events.ACCESS_LEVEL, {
+                when(event.classification){
+                    CONFIDENTIAL -> CalendarContract.Events.ACCESS_CONFIDENTIAL
+                    PUBLIC -> CalendarContract.Events.ACCESS_PUBLIC
+                    PRIVATE -> CalendarContract.Events.ACCESS_PRIVATE
+                    else -> CalendarContract.Events.ACCESS_DEFAULT
+                }}() )
 
             val repeatRule = Parser().getRepeatCode(event)
             if (repeatRule.isEmpty()) {
