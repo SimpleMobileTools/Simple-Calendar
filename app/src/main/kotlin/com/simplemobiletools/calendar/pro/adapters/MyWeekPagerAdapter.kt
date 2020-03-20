@@ -21,7 +21,7 @@ class MyWeekPagerAdapter(fm: FragmentManager, private val mWeekTimestamps: List<
 
         val fragment = WeekFragment()
         fragment.arguments = bundle
-        fragment.mListener = mListener
+        fragment.listener = mListener
 
         mFragments.put(position, fragment)
         return fragment
