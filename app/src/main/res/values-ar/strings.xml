@@ -124,7 +124,6 @@
     <string name="override_event_types">تجاوز أنواع الأحداث في الملف</string>
 
     <!-- Event details -->
-    <string name="title">العنوان</string>
     <string name="location">الموقع</string>
     <string name="description">الوصف</string>
     <string name="all_day">كامل اليوم</string>

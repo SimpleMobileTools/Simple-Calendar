@@ -124,7 +124,6 @@
     <string name="override_event_types">Κατάργηση τύπων εκδηλώσεων στο αρχείο</string>
 
     <!-- Event details -->
-    <string name="title">Τίτλος</string>
     <string name="location">Τοποθεσία</string>
     <string name="description">Περιγραφή</string>
     <string name="all_day">Ημερήσια</string>

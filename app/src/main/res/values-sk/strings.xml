@@ -124,7 +124,6 @@
     <string name="override_event_types">Nahradiť typy udalostí v súbore</string>
 
     <!-- Event details -->
-    <string name="title">Názov</string>
     <string name="location">Miesto</string>
     <string name="description">Popis</string>
     <string name="all_day">Celodenná</string>

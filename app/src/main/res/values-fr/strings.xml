@@ -125,7 +125,6 @@
     <string name="override_event_types">Remplacer les types d\’événement dans le fichier</string>
 
     <!-- Event details -->
-    <string name="title">Titre</string>
     <string name="location">Lieu</string>
     <string name="description">Description</string>
     <string name="all_day">Journée</string>

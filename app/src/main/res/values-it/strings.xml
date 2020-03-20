@@ -124,7 +124,6 @@
     <string name="override_event_types">Sovrascrivi i tipi di eventi nel file</string>
 
     <!-- Event details -->
-    <string name="title">Titolo</string>
     <string name="location">Posizione</string>
     <string name="description">Descrizione</string>
     <string name="all_day">Tutto il giorno</string>

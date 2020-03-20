@@ -124,7 +124,6 @@
     <string name="override_event_types">파일에서 일정 유형 재정의</string>
 
     <!-- Event details -->
-    <string name="title">제목</string>
     <string name="location">위치</string>
     <string name="description">내용</string>
     <string name="all_day">종일</string>

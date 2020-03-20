@@ -124,7 +124,6 @@
     <string name="override_event_types">Timpa kategori acara di dalam berkas</string>
 
     <!-- Event details -->
-    <string name="title">Judul</string>
     <string name="location">Lokasi</string>
     <string name="description">Deskripsi</string>
     <string name="all_day">Sepanjang hari</string>

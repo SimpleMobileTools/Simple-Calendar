@@ -124,7 +124,6 @@
     <string name="override_event_types">Přepsat typy událostí v souboru</string>
 
     <!-- Event details -->
-    <string name="title">Název</string>
     <string name="location">Lokace</string>
     <string name="description">Popis</string>
     <string name="all_day">Celý den</string>

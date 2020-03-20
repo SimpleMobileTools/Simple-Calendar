@@ -124,7 +124,6 @@
     <string name="override_event_types">Override event types in the file</string>
 
     <!-- Event details -->
-    <string name="title">Titl</string>
     <string name="location">Lec\'hiadur</string>
     <string name="description">Deskrivadur</string>
     <string name="all_day">Devezh-pad</string>

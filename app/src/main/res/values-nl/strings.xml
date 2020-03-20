@@ -124,7 +124,6 @@
     <string name="override_event_types">Afspraaktypes uit het bestand negeren</string>
 
     <!-- Event details -->
-    <string name="title">Titel</string>
     <string name="location">Locatie</string>
     <string name="description">Beschrijving</string>
     <string name="all_day">Hele dag</string>

@@ -124,7 +124,6 @@
     <string name="override_event_types">Override event types in the file</string>
 
     <!-- Event details -->
-    <string name="title">शीर्षक</string>
     <string name="location">Location</string>
     <string name="description">विवरण</string>
     <string name="all_day">All-day</string>

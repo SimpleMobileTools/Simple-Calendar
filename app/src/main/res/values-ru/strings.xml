@@ -124,7 +124,6 @@
     <string name="override_event_types">Переопределять типы событий в файле</string>
 
     <!-- Event details -->
-    <string name="title">Заголовок</string>
     <string name="location">Место</string>
     <string name="description">Описание</string>
     <string name="all_day">Весь день</string>

@@ -124,7 +124,6 @@
     <string name="override_event_types">覆盖档案内的活动类型</string>
 
     <!-- Event details -->
-    <string name="title">标题</string>
     <string name="location">地点</string>
     <string name="description">描述</string>
     <string name="all_day">全天</string>

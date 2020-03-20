@@ -124,7 +124,6 @@
     <string name="override_event_types">Dosyadaki etkinlik türlerini geçersiz kıl</string>
 
     <!-- Event details -->
-    <string name="title">Başlık</string>
     <string name="location">Konum</string>
     <string name="description">Açıklama</string>
     <string name="all_day">Tüm-gün</string>

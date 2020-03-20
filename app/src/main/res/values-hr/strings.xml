@@ -124,7 +124,6 @@
     <string name="override_event_types">Override event types in the file</string>
 
     <!-- Event details -->
-    <string name="title">Naslov</string>
     <string name="location">Lokacija</string>
     <string name="description">Opis</string>
     <string name="all_day">Cjelodnevni</string>

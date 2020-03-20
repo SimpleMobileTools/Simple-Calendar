@@ -124,7 +124,6 @@
     <string name="override_event_types">Ignorēt/nesaglabāt notikumu tipus failā</string>
 
     <!-- Event details -->
-    <string name="title">Nosaukums</string>
     <string name="location">Vieta</string>
     <string name="description">Apraksts</string>
     <string name="all_day">Visu dienu</string>

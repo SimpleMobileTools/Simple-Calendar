@@ -124,7 +124,6 @@
     <string name="override_event_types">ファイル内の予定の種類を上書きする</string>
 
     <!-- Event details -->
-    <string name="title">タイトル</string>
     <string name="location">場所</string>
     <string name="description">説明</string>
     <string name="all_day">終日</string>

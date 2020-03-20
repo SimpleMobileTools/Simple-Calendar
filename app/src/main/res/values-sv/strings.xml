@@ -124,7 +124,6 @@
     <string name="override_event_types">Ignorera händelsetyper i filen</string>
 
     <!-- Event details -->
-    <string name="title">Titel</string>
     <string name="location">Plats</string>
     <string name="description">Beskrivning</string>
     <string name="all_day">Heldag</string>

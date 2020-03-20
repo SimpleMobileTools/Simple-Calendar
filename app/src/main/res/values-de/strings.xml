@@ -124,7 +124,6 @@
     <string name="override_event_types">Termintypen in der Datei überschreiben</string>
 
     <!-- Event details -->
-    <string name="title">Titel</string>
     <string name="location">Ort</string>
     <string name="description">Beschreibung</string>
     <string name="all_day">Ganztags</string>

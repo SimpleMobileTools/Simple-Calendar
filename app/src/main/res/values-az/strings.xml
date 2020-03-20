@@ -124,7 +124,6 @@
     <string name="override_event_types">Faylın içərisində hadisə tiplərini üstünə yaz</string>
 
     <!-- Event details -->
-    <string name="title">Başlıq</string>
     <string name="location">Məkan</string>
     <string name="description">Əlavələr</string>
     <string name="all_day">Bütün-gün</string>

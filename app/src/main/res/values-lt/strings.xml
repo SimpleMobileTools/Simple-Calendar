@@ -124,7 +124,6 @@
     <string name="override_event_types">Override event types in the file</string>
 
     <!-- Event details -->
-    <string name="title">Pavadinimas</string>
     <string name="location">Vieta</string>
     <string name="description">Apibūdinimas</string>
     <string name="all_day">Visos dienos</string>

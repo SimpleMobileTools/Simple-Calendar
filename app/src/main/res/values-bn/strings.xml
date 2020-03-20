@@ -128,7 +128,6 @@
     <string name="override_event_types">ফাইলটিতে ইভেন্ট টাইপগুলি ওভাররাইড করুন</string>
 
     <!-- Event details -->
-    <string name="title">টাইটেল</string>
     <string name="location">লোকেশন</string>
     <string name="description">বর্ণনা</string>
     <string name="all_day">সারাদিন</string>

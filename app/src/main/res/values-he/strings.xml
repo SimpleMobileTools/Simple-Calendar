@@ -124,7 +124,6 @@
     <string name="override_event_types">שנה סוגי אירועים בקובץ</string>
 
     <!-- Event details -->
-    <string name="title">כותרת</string>
     <string name="location">מיקום</string>
     <string name="description">תיאור</string>
     <string name="all_day">כל היום</string>
