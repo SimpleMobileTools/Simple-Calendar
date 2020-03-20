@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.DatePicker
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.MainActivity
@@ -122,12 +123,12 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
             if (startDateTime.year != DateTime().year) {
                 newTitle += " - ${startDateTime.year}"
             }
-            (activity as MainActivity).updateActionBarTitle(newTitle)
+            (activity as AppCompatActivity).updateActionBarTitle(newTitle)
         } else {
             val endMonthName = Formatter.getMonthName(context!!, endDateTime.monthOfYear)
-            (activity as MainActivity).updateActionBarTitle("$startMonthName - $endMonthName")
+            (activity as AppCompatActivity).updateActionBarTitle("$startMonthName - $endMonthName")
         }
-        (activity as MainActivity).updateActionBarSubtitle("${getString(R.string.week)} ${startDateTime.plusDays(3).weekOfWeekyear}")
+        (activity as AppCompatActivity).updateActionBarSubtitle("${getString(R.string.week)} ${startDateTime.plusDays(3).weekOfWeekyear}")
     }
 
     override fun goToToday() {

@@ -105,7 +105,9 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     override fun onResume() {
         super.onResume()
         context!!.eventsHelper.getEventTypes(activity!!, false) {
-            it.map { eventTypeColors.put(it.id!!, it.color) }
+            it.map {
+                eventTypeColors.put(it.id!!, it.color)
+            }
         }
 
         setupDayLabels()
@@ -122,8 +124,9 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             val bounds = Rect()
             week_events_holder.getGlobalVisibleRect(bounds)
             maxScrollY -= bounds.bottom - bounds.top
-            if (minScrollY > maxScrollY)
+            if (minScrollY > maxScrollY) {
                 maxScrollY = -1
+            }
 
             checkScrollLimits(scrollView.scrollY)
         }
@@ -261,7 +264,10 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
         var hadAllDayEvent = false
         val replaceDescription = config.replaceDescription
-        val sorted = events.sortedWith(compareBy<Event> { it.startTS }.thenBy { it.endTS }.thenBy { it.title }.thenBy { if (replaceDescription) it.location else it.description })
+        val sorted = events.sortedWith(
+                compareBy<Event> { it.startTS }.thenBy { it.endTS }.thenBy { it.title }.thenBy { if (replaceDescription) it.location else it.description }
+        )
+
         for (event in sorted) {
             val startDateTime = Formatter.getDateTimeFromTS(event.startTS)
             val endDateTime = Formatter.getDateTimeFromTS(event.endTS)
@@ -344,7 +350,11 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                             }
                         }
 
-                        minHeight = if (event.startTS == event.endTS) minimalHeight else (duration * minuteHeight).toInt() - 1
+                        minHeight = if (event.startTS == event.endTS) {
+                            minimalHeight
+                        } else {
+                            (duration * minuteHeight).toInt() - 1
+                        }
                     }
                     setOnClickListener {
                         Intent(context, EventActivity::class.java).apply {
@@ -378,8 +388,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 mView.week_events_holder.removeView(currentTimeView)
             }
 
-            currentTimeView = (inflater.inflate(R.layout.week_now_marker, null, false) as ImageView)
-            currentTimeView!!.apply {
+            currentTimeView = (inflater.inflate(R.layout.week_now_marker, null, false) as ImageView).apply {
                 applyColorFilter(primaryColor)
                 mView.week_events_holder.addView(this, 0)
                 val extraWidth = (todayColumn.width * 0.3).toInt()
