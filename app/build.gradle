@@ -64,12 +64,12 @@ android {
 }
 
 dependencies {
-    implementation 'com.simplemobiletools:commons:5.23.7'
+    implementation 'com.simplemobiletools:commons:5.23.8'
     implementation 'joda-time:joda-time:2.10.1'
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta4'
 
-    kapt 'androidx.room:room-compiler:2.2.2'
-    implementation 'androidx.room:room-runtime:2.2.2'
-    annotationProcessor 'androidx.room:room-compiler:2.2.2'
+    kapt 'androidx.room:room-compiler:2.2.4'
+    implementation 'androidx.room:room-runtime:2.2.4'
+    annotationProcessor 'androidx.room:room-compiler:2.2.4'
 }
