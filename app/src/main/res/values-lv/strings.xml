@@ -1,6 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Tulkojis Oskars Galanders 2020.gada februārī -->
+
+    <!-- Tulkojis (translated by) Oskars Galanders 2020.gada februārī -->
     <string name="app_name">Vienkāršais kalendārs</string>
     <string name="app_launcher_name">Kalendārs</string>
     <string name="change_view">Mainīt skatu</string>
@@ -14,11 +15,11 @@
     <string name="go_to_date">Iet uz datumu</string>
     <string name="upgraded_from_free">Sveiki!\n\n Šķiet, ka esiet paaugstinājuši versiju no vecās bezmaksas lietotnes. Lokāli saglabātie notikumi ir manuāli jāpārceļ, tos eksportējot uz .ics failu un pēc tam importējot. Abas eksporta/importa pogas var atrast galvenā skata izvēlnē.\N\nPēc tam varat noņemt veco versiju, kurai lietotnes iestatījumu augšpusē ir poga \'Upgrade to Pro\'. Pēc tam Jums būs tikai jāveic lietotnes iestatījumu atstatīšana.\N\nTencinam!</string>
 
-    
+    <!-- Widget titles -->
     <string name="widget_monthly">Mēneša kalendārs</string>
     <string name="widget_list">Kalendāra notikumu saraksts</string>
 
-    
+    <!-- Event -->
     <string name="event">Notikums</string>
     <string name="edit_event">Rediģēt notikumu</string>
     <string name="new_event">Jauns notikums</string>
@@ -32,7 +33,7 @@
     <string name="please_fill_location">Lūdzu, ievadiet/norādiet atrašanās vietu, kuru parādīt kartē</string>
     <string name="public_event_notification_text">Gaidāms/Priekšāstāvošs notikums</string>
 
-    
+    <!-- Event Repetition -->
     <string name="repetition">Atkārtojošs</string>
     <string name="no_repetition">Bez atkārtošanās</string>
     <string name="daily">Ik dienu</string>
@@ -72,8 +73,10 @@
     <string name="fourth_m">4.</string>
     <string name="last_m">pēdēj.</string>
 
-    
-    
+    <!--
+ alternative versions for some languages, use the same translations if you are not sure what this means 
+-->
+    <!-- used in repetition, like "Every first Sunday" -->
     <string name="repeat_every_f">Atkārtot katru</string>
     <string name="every_f">Katru</string>
     <string name="first_f">1.</string>
@@ -82,27 +85,27 @@
     <string name="fourth_f">4.</string>
     <string name="last_f">pēdēj.</string>
 
-    
+    <!-- Birthdays -->
     <string name="birthdays">Dzimšanas dienas</string>
     <string name="add_birthdays">Pievienot dzimšanas dienas</string>
     <string name="no_birthdays">Dzimšanas dienas nav atrastas</string>
     <string name="no_new_birthdays">Jaunas dzimšanas dienas nav atrastas</string>
     <string name="birthdays_added">Dzimšanas dienas veiksmīgi pievienotas</string>
 
-    
+    <!-- Anniversaries -->
     <string name="anniversaries">Jubilejas/gadadienas</string>
     <string name="add_anniversaries">Pievienot jubileju</string>
     <string name="no_anniversaries">Jubilejas nav atrastas</string>
     <string name="no_new_anniversaries">Jaunas jubilejas nav atrastas</string>
     <string name="anniversaries_added">Jubilejas veiksmīgi pievienotas</string>
 
-    
+    <!-- Event Reminders -->
     <string name="reminder">Atgādinājums</string>
     <string name="before">pirms notikuma</string>
     <string name="add_another_reminder">Pievienot vēl vienu atgādinājumu</string>
     <string name="event_reminders">Notikumu atgādinājumi</string>
 
-    
+    <!-- Event attendees -->
     <string name="add_another_attendee">Pievienot dalībnieku</string>
     <string name="my_status">Mans statuss:</string>
     <string name="going">Iešu/eju</string>
@@ -110,10 +113,10 @@
     <string name="maybe_going">Varbūt iešu</string>
     <string name="invited">Aicināts</string>
 
-    
+    <!-- Time zones -->
     <string name="enter_a_country">Ievadiet valsti vai laika joslu</string>
 
-    
+    <!-- Export / Import -->
     <string name="import_events">Notikumu imports</string>
     <string name="export_events">Notikumu eksports</string>
     <string name="import_events_from_ics">Importēt notikumus no .ics faila</string>
@@ -124,16 +127,16 @@
     <string name="filename_without_ics">Faila nosaukums (bez .ics)</string>
     <string name="override_event_types">Ignorēt/nesaglabāt notikumu tipus failā</string>
 
-    
+    <!-- Event details -->
     <string name="title">Nosaukums</string>
     <string name="location">Vieta</string>
     <string name="description">Apraksts</string>
     <string name="all_day">Visu dienu</string>
 
-    
+    <!-- Weekly view -->
     <string name="week">Nedēļa</string>
 
-    
+    <!-- Event types -->
     <string name="event_types">Notikumu tipi</string>
     <string name="add_new_type">Pievienot jaunu tipu</string>
     <string name="edit_type">Rediģēt tipu</string>
@@ -146,7 +149,7 @@
     <string name="remove_affected_events">Izdzēst atzīmētos/ietekmētos notikumus pavisam</string>
     <string name="unsync_caldav_calendar">Lai izdzēstu CalDAV kalendāru, jāatspējo sinhronizācija ar to</string>
 
-    
+    <!-- Holidays -->
     <string name="holidays">Svētku dienas</string>
     <string name="add_holidays">Pievienot svētku dienas</string>
     <string name="national_holidays">Valsts svētki</string>
@@ -155,7 +158,7 @@
     <string name="importing_some_holidays_failed">Dažas svētku dienas neizdevās importēt</string>
     <string name="importing_holidays_failed">Svētku dienu imports neizdevās</string>
 
-    
+    <!-- Settings -->
     <string name="manage_event_types">Notikumu tipu pārvaldība</string>
     <string name="start_day_at">Sākt dienu plkst.</string>
     <string name="end_day_at">Beigt dienu plkst.</string>
@@ -195,7 +198,7 @@
     <string name="highlight_weekends">Iezīmēt/izcelt nedēļas nogales dažos skatos/režīmos</string>
     <string name="allow_changing_time_zones">Atļaut mainīt notikuma laika joslu</string>
 
-    
+    <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Atzīmējiet sinhronizējamos kalendārus</string>
     <string name="manage_synced_calendars">Pārvaldiet sinhronizējamos kalendārus</string>
@@ -210,8 +213,10 @@
     <string name="insufficient_permissions">Jums izvēlētajā kalendārā rakstīt nav ļauts</string>
     <string name="caldav_event_not_found">Notikums nav atrasts. Lūdzu, lietotnes iestatījumos iespējojiet CalDAV sinhronizāciju attiecīgajam kalendāram.</string>
 
-    
-    
+    <!--
+ alternative versions for some languages, use the same translations if you are not sure what this means 
+-->
+    <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">pirmdiena</string>
     <string name="tuesday_alt">otrdiena</string>
     <string name="wednesday_alt">trešdiena</string>
@@ -220,7 +225,7 @@
     <string name="saturday_alt">sestdiena</string>
     <string name="sunday_alt">svētdiena</string>
 
-    
+    <!-- List widget config example events -->
     <string name="sample_title_1">Apmācība</string>
     <string name="sample_description_1">Kāju diena</string>
     <string name="sample_title_2">Tikšanās ar Krišu Jāni Kariņu</string>
@@ -230,7 +235,7 @@
     <string name="sample_description_4">Dieva ausī</string>
     <string name="sample_title_5">Laiks tējot</string>
 
-    
+    <!-- FAQ -->
     <string name="faq_1_title">Kā izdzēst svētku dienas, kas importētas, izmantojot pogu \“Pievienot svētkus\”?</string>
     <string name="faq_1_text">Šādi izveidotas svētku dienas tiek piešķirts jauns notikumu tips - \“Svētku dienas\”. Dodieties uz sadaļu \"Iestatījumi \" -> \"Notikumu tipu pārvaldīšana/", tad ilgs nospiediens uz āttiecīgā notikuma tipa un tā izdzēšana ar nospiedienu uz /"misenes/".</string>
     <string name="faq_2_title">Vai iespējams sinhronizēt notikumus, izmantojot Google kalendāru vai citu pakalpojumu, kas atbalsta CalDAV?</string>
@@ -241,11 +246,15 @@
     <string name="faq_4_title">Vai lietotne atbalsta laika joslas?</string>
     <string name="faq_4_text">Jā, atbalsta. Pēc noklusējuma visi notikumi tiek izveidoti tābrīža iesatītajā laika joslā. Ja vēlaties mainīt notikuma laika joslu, vispirms jāiespējo laika joslu izvēlnis lietotnes iestatījumos, pēc tam to var mainīt Notikuma informācijas skatā. Pēc noklusējuma funkcija ir atspējota, jo vairumam tā nav noderīga.</string>
 
-    
-    
+    <!--
+ Strings displayed only on Google Playstore. Optional, but good to have 
+-->
+    <!--
+ App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it 
+-->
     <string name="app_title">Simple Calendar Pro - Notikumi &amp; atgādinājumi</string>
-    
-    <string name="app_short_description">Nepalaidiet garām svarīgus savas dzīves mirkļus.</string>
+    <!-- Short description has to have less than 80 chars -->
+    <string name="app_short_description">Vienkāršs mobilais 2020.g. kalendārs. Plānotājs &amp; tikšanos atgādinātājs ikdienai.</string>
     <string name="app_long_description">Simple Calendar Pro ir elasīgi pielāgojams autonoms bezsaistes kalendārs, kas paredzēts tām funkcijām, kuras kalendāram jāīsteno.<b>Bez sarežģītām iespējām, funkcijas izpildei nevajadzīgu atļauju pieprasījumiem un uzbāzīgām reklāmām!</b>
 
         Neatkarīgi no tā, vai jūs organizējat vienreizējus vai atkārtojošos regulārus pasākumus, dzimšanas dienas, jubilejas, lietišķas tikšanās, randiņus vai ko citu, Simple Calendar Pro padara to par <b>viegli padarāmu</b>. Izmantojot neticami plašu un elastīgu <b>pielāgošanas iespēju paleti</b>, Jūs varat veidot pielāgotus notikumu atgādinājumus, paziņojumu skaņas, kalendāra logrīkus un lietotnes izskatus.
@@ -280,6 +289,9 @@
 
         <b> Pilnu Vienkāršo Rīku (Simple Tools) komplektu skatiet šeit: </b>
         https://www.simplemobiletools.com
+
+        <b>Lietotnes Simple Calendar Pro vietne:</b>
+        https://www.simplemobiletools.com/calendar
 
         <b>Facebook:</b>
         https://www.facebook.com/simplemobiletools
