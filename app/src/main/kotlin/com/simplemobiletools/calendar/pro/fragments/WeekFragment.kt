@@ -218,7 +218,8 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                                 startActivity(this)
                             }
                         }
-                        animate().alpha(0f).setStartDelay(PLUS_FADEOUT_DELAY).withEndAction {
+
+                        animate().setStartDelay(PLUS_FADEOUT_DELAY).alpha(0f).withEndAction {
                             beGone()
                         }
                     }
