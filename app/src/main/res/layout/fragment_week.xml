@@ -22,12 +22,12 @@
             <com.simplemobiletools.calendar.pro.views.WeeklyViewGrid
                 android:id="@+id/week_horizontal_grid_holder"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/weekly_view_events_height"/>
+                android:layout_height="wrap_content"/>
 
             <LinearLayout
                 android:id="@+id/week_events_columns_holder"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/weekly_view_events_height"
+                android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:orientation="horizontal">
 

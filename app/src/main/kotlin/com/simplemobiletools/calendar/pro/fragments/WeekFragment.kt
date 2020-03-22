@@ -79,7 +79,12 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         this.inflater = inflater
 
-        mView = inflater.inflate(R.layout.fragment_week, container, false)
+        mView = inflater.inflate(R.layout.fragment_week, container, false).apply {
+            val fullHeight = context.config.weeklyViewItemHeight.toInt() * 24
+            week_horizontal_grid_holder.layoutParams.height = fullHeight
+            week_events_columns_holder.layoutParams.height = fullHeight
+        }
+
         scrollView = mView.week_events_scrollview
         scrollView.setOnScrollviewListener(object : MyScrollView.ScrollViewListener {
             override fun onScrollChanged(scrollView: MyScrollView, x: Int, y: Int, oldx: Int, oldy: Int) {
