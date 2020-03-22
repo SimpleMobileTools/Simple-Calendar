@@ -78,6 +78,12 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             val fullHeight = context.config.weeklyViewItemHeight.toInt() * 24
             week_horizontal_grid_holder.layoutParams.height = fullHeight
             week_events_columns_holder.layoutParams.height = fullHeight
+
+            val scaleDetector = getViewScaleDetector()
+            week_events_scrollview.setOnTouchListener { view, motionEvent ->
+                scaleDetector.onTouchEvent(motionEvent)
+                false
+            }
         }
 
         scrollView = mView.week_events_scrollview
@@ -171,7 +177,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     }
 
     private fun getViewGestureDetector(view: ViewGroup, index: Int): GestureDetector {
-        val gestureDetector = GestureDetector(context, object : GestureDetector.SimpleOnGestureListener() {
+        return GestureDetector(context, object : GestureDetector.SimpleOnGestureListener() {
             override fun onSingleTapUp(event: MotionEvent): Boolean {
                 selectedGrid?.animation?.cancel()
                 selectedGrid?.beGone()
@@ -201,7 +207,24 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 return super.onSingleTapUp(event)
             }
         })
-        return gestureDetector
+    }
+
+    private fun getViewScaleDetector(): ScaleGestureDetector {
+        return ScaleGestureDetector(context, object : ScaleGestureDetector.SimpleOnScaleGestureListener() {
+            override fun onScale(detector: ScaleGestureDetector): Boolean {
+                return super.onScale(detector)
+            }
+
+            override fun onScaleBegin(detector: ScaleGestureDetector?): Boolean {
+                mView.week_events_scrollview.isScrollable = false
+                return super.onScaleBegin(detector)
+            }
+
+            override fun onScaleEnd(detector: ScaleGestureDetector?) {
+                mView.week_events_scrollview.isScrollable = true
+                super.onScaleEnd(detector)
+            }
+        })
     }
 
     override fun updateWeeklyCalendar(events: ArrayList<Event>) {
