@@ -69,7 +69,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         super.onCreate(savedInstanceState)
         res = context!!.resources
         config = context!!.config
-        rowHeight = res.getDimension(R.dimen.weekly_view_row_height)
+        rowHeight = config.weeklyViewItemHeight
         weekTimestamp = arguments!!.getLong(WEEK_START_TIMESTAMP)
         dimPastEvents = config.dimPastEvents
         primaryColor = context!!.getAdjustedPrimaryColor()
@@ -228,7 +228,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
         addNewLine()
 
-        val fullHeight = res.getDimension(R.dimen.weekly_view_events_height)
+        val fullHeight = rowHeight * 24
         val minuteHeight = fullHeight / (24 * 60)
         val minimalHeight = res.getDimension(R.dimen.weekly_view_minimal_event_height).toInt()
         val density = Math.round(res.displayMetrics.density)
