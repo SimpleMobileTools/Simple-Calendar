@@ -49,6 +49,10 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         weekHolder = inflater.inflate(R.layout.fragment_week_holder, container, false) as ViewGroup
         weekHolder!!.background = ColorDrawable(context!!.config.backgroundColor)
+
+        val itemHeight = context!!.config.weeklyViewItemHeight.toInt()
+        weekHolder!!.week_view_hours_holder.setPadding(0, 0, 0, itemHeight)
+
         viewPager = weekHolder!!.week_view_view_pager
         viewPager!!.id = (System.currentTimeMillis() % 100000).toInt()
         setupFragment()
