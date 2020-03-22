@@ -45,7 +45,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private var weekTimestamp = 0L
     private var rowHeight = 0f
     private var minScrollY = -1
-    private var maxScrollY = -1
     private var todayColumnIndex = -1
     private var clickStartTime = 0L
     private var primaryColor = 0
@@ -119,15 +118,9 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             }
 
             minScrollY = (rowHeight * config.startWeeklyAt).toInt()
-            maxScrollY = (rowHeight * config.endWeeklyAt).toInt()
 
             val bounds = Rect()
             week_events_holder.getGlobalVisibleRect(bounds)
-            maxScrollY -= bounds.bottom - bounds.top
-            if (minScrollY > maxScrollY) {
-                maxScrollY = -1
-            }
-
             checkScrollLimits(scrollView.scrollY)
         }
     }
@@ -178,8 +171,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private fun checkScrollLimits(y: Int) {
         if (minScrollY != -1 && y < minScrollY) {
             scrollView.scrollY = minScrollY
-        } else if (maxScrollY != -1 && y > maxScrollY) {
-            scrollView.scrollY = maxScrollY
         } else if (isFragmentVisible) {
             listener?.scrollTo(y)
         }
@@ -502,7 +493,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 }
 
                 if (!wasExtraHeightAdded) {
-                    maxScrollY += mView.week_all_day_holder.height
                     wasExtraHeightAdded = true
                 }
             }

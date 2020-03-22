@@ -54,7 +54,6 @@ class SettingsActivity : SimpleActivity() {
         setupWeekNumbers()
         setupShowGrid()
         setupWeeklyStart()
-        setupWeeklyEnd()
         setupVibrate()
         setupReminderSound()
         setupReminderAudioStream()
@@ -302,29 +301,8 @@ class SettingsActivity : SimpleActivity() {
             (0..24).mapTo(items) { RadioItem(it, getHoursString(it)) }
 
             RadioGroupDialog(this@SettingsActivity, items, config.startWeeklyAt) {
-                if (it as Int >= config.endWeeklyAt) {
-                    toast(R.string.day_end_before_start)
-                } else {
-                    config.startWeeklyAt = it
-                    settings_start_weekly_at.text = getHoursString(it)
-                }
-            }
-        }
-    }
-
-    private fun setupWeeklyEnd() {
-        settings_end_weekly_at.text = getHoursString(config.endWeeklyAt)
-        settings_end_weekly_at_holder.setOnClickListener {
-            val items = ArrayList<RadioItem>()
-            (0..24).mapTo(items) { RadioItem(it, getHoursString(it)) }
-
-            RadioGroupDialog(this@SettingsActivity, items, config.endWeeklyAt) {
-                if (it as Int <= config.startWeeklyAt) {
-                    toast(R.string.day_end_before_start)
-                } else {
-                    config.endWeeklyAt = it
-                    settings_end_weekly_at.text = getHoursString(it)
-                }
+                config.startWeeklyAt = it as Int
+                settings_start_weekly_at.text = getHoursString(it)
             }
         }
     }
@@ -676,7 +654,6 @@ class SettingsActivity : SimpleActivity() {
                 put(WIDGET_TEXT_COLOR, config.widgetTextColor)
                 put(WEEK_NUMBERS, config.showWeekNumbers)
                 put(START_WEEKLY_AT, config.startWeeklyAt)
-                put(END_WEEKLY_AT, config.endWeeklyAt)
                 put(VIBRATE, config.vibrateOnReminder)
                 put(LAST_EVENT_REMINDER_MINUTES, config.lastEventReminderMinutes1)
                 put(LAST_EVENT_REMINDER_MINUTES_2, config.lastEventReminderMinutes2)
@@ -770,7 +747,6 @@ class SettingsActivity : SimpleActivity() {
                 WIDGET_TEXT_COLOR -> config.widgetTextColor = value.toInt()
                 WEEK_NUMBERS -> config.showWeekNumbers = value.toBoolean()
                 START_WEEKLY_AT -> config.startWeeklyAt = value.toInt()
-                END_WEEKLY_AT -> config.endWeeklyAt = value.toInt()
                 VIBRATE -> config.vibrateOnReminder = value.toBoolean()
                 LAST_EVENT_REMINDER_MINUTES -> config.lastEventReminderMinutes1 = value.toInt()
                 LAST_EVENT_REMINDER_MINUTES_2 -> config.lastEventReminderMinutes2 = value.toInt()
