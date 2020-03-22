@@ -110,17 +110,6 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
         updateActionBarTitle()
     }
 
-    private fun updateRowHeight() {
-        val childCnt = weekHolder!!.week_view_hours_holder.childCount
-        val itemHeight = context!!.getWeeklyViewItemHeight().toInt()
-        for (i in 0..childCnt) {
-            val textView = weekHolder!!.week_view_hours_holder.getChildAt(i) as? TextView ?: continue
-            textView.layoutParams.height = itemHeight
-        }
-
-        weekHolder!!.week_view_hours_holder.setPadding(0, 0, 0, itemHeight)
-    }
-
     private fun getWeekTimestamps(targetSeconds: Long): List<Long> {
         val weekTSs = ArrayList<Long>(PREFILLED_WEEKS)
         val dateTime = Formatter.getDateTimeFromTS(targetSeconds)
@@ -220,4 +209,15 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
     }
 
     override fun getCurrScrollY() = weekScrollY
+
+    override fun updateRowHeight() {
+        val childCnt = weekHolder!!.week_view_hours_holder.childCount
+        val itemHeight = context!!.getWeeklyViewItemHeight().toInt()
+        for (i in 0..childCnt) {
+            val textView = weekHolder!!.week_view_hours_holder.getChildAt(i) as? TextView ?: continue
+            textView.layoutParams.height = itemHeight
+        }
+
+        weekHolder!!.week_view_hours_holder.setPadding(0, 0, 0, itemHeight)
+    }
 }

@@ -212,12 +212,14 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 return super.onScale(detector)
             }
 
-            override fun onScaleBegin(detector: ScaleGestureDetector?): Boolean {
+            override fun onScaleBegin(detector: ScaleGestureDetector): Boolean {
                 mView.week_events_scrollview.isScrollable = false
                 return super.onScaleBegin(detector)
             }
 
-            override fun onScaleEnd(detector: ScaleGestureDetector?) {
+            override fun onScaleEnd(detector: ScaleGestureDetector) {
+                config.weeklyViewItemHeightMultiplier = detector.scaleFactor
+                listener?.updateRowHeight()
                 mView.week_events_scrollview.isScrollable = true
                 super.onScaleEnd(detector)
             }
