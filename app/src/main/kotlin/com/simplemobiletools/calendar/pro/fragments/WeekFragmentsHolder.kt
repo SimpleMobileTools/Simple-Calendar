@@ -111,10 +111,13 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
 
     private fun updateRowHeight() {
         val childCnt = weekHolder!!.week_view_hours_holder.childCount
+        val itemHeight = context!!.config.weeklyViewItemHeight.toInt()
         for (i in 0..childCnt) {
             val textView = weekHolder!!.week_view_hours_holder.getChildAt(i) as? TextView ?: continue
-            textView.layoutParams.height = context!!.config.weeklyViewItemHeight.toInt()
+            textView.layoutParams.height = itemHeight
         }
+
+        weekHolder!!.week_view_hours_holder.setPadding(0, 0, 0, itemHeight)
     }
 
     private fun getWeekTimestamps(targetSeconds: Long): List<Long> {
