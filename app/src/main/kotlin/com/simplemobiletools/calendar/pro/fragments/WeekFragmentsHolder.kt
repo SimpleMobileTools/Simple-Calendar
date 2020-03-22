@@ -62,6 +62,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
     private fun setupFragment() {
         val weekTSs = getWeekTimestamps(currentWeekTS)
         val weeklyAdapter = MyWeekPagerAdapter(activity!!.supportFragmentManager, weekTSs, this)
+        val itemHeight = context!!.config.weeklyViewItemHeight.toInt()
 
         val textColor = context!!.config.textColor
         weekHolder!!.week_view_hours_holder.removeAllViews()
@@ -71,6 +72,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
             (layoutInflater.inflate(R.layout.weekly_view_hour_textview, null, false) as TextView).apply {
                 text = formattedHours
                 setTextColor(textColor)
+                height = itemHeight
                 weekHolder!!.week_view_hours_holder.addView(this)
             }
         }
@@ -105,6 +107,14 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
         })
         weekHolder!!.week_view_hours_scrollview.setOnTouchListener { view, motionEvent -> true }
         updateActionBarTitle()
+    }
+
+    private fun updateRowHeight() {
+        val childCnt = weekHolder!!.week_view_hours_holder.childCount
+        for (i in 0..childCnt) {
+            val textView = weekHolder!!.week_view_hours_holder.getChildAt(i) as? TextView ?: continue
+            textView.layoutParams.height = context!!.config.weeklyViewItemHeight.toInt()
+        }
     }
 
     private fun getWeekTimestamps(targetSeconds: Long): List<Long> {
