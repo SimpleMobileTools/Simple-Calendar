@@ -2,7 +2,6 @@ package com.simplemobiletools.calendar.pro.fragments
 
 import android.content.Intent
 import android.content.res.Resources
-import android.graphics.Rect
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Range
@@ -44,7 +43,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     var listener: WeekFragmentListener? = null
     private var weekTimestamp = 0L
     private var rowHeight = 0f
-    private var minScrollY = -1
     private var todayColumnIndex = -1
     private var clickStartTime = 0L
     private var primaryColor = 0
@@ -74,7 +72,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         res = context!!.resources
         config = context!!.config
         rowHeight = res.getDimension(R.dimen.weekly_view_row_height)
-        minScrollY = (rowHeight * config.startWeeklyAt).toInt()
         weekTimestamp = arguments!!.getLong(WEEK_START_TIMESTAMP)
         dimPastEvents = config.dimPastEvents
         primaryColor = context!!.getAdjustedPrimaryColor()
@@ -94,7 +91,8 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         })
 
         scrollView.onGlobalLayout {
-            updateScrollY(Math.max(listener?.getCurrScrollY() ?: 0, minScrollY))
+            val initialScrollY = (rowHeight * config.startWeeklyAt).toInt()
+            updateScrollY(Math.max(listener?.getCurrScrollY() ?: 0, initialScrollY))
         }
 
         wasFragmentInit = true
@@ -111,18 +109,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
         setupDayLabels()
         updateCalendar()
-
-        scrollView.onGlobalLayout {
-            if (context == null) {
-                return@onGlobalLayout
-            }
-
-            minScrollY = (rowHeight * config.startWeeklyAt).toInt()
-
-            val bounds = Rect()
-            week_events_holder.getGlobalVisibleRect(bounds)
-            checkScrollLimits(scrollView.scrollY)
-        }
     }
 
     override fun onPause() {
@@ -169,9 +155,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     }
 
     private fun checkScrollLimits(y: Int) {
-        if (minScrollY != -1 && y < minScrollY) {
-            scrollView.scrollY = minScrollY
-        } else if (isFragmentVisible) {
+        if (isFragmentVisible) {
             listener?.scrollTo(y)
         }
     }
