@@ -5,10 +5,7 @@ import android.content.res.Resources
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Range
-import android.view.LayoutInflater
-import android.view.MotionEvent
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
@@ -37,14 +34,12 @@ import org.joda.time.Days
 import java.util.*
 
 class WeekFragment : Fragment(), WeeklyCalendar {
-    private val CLICK_DURATION_THRESHOLD = 150
     private val PLUS_FADEOUT_DELAY = 5000L
 
     var listener: WeekFragmentListener? = null
     private var weekTimestamp = 0L
     private var rowHeight = 0f
     private var todayColumnIndex = -1
-    private var clickStartTime = 0L
     private var primaryColor = 0
     private var lastHash = 0
     private var mWasDestroyed = false
@@ -166,46 +161,47 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         (0..6).map { getColumnWithId(it) }
                 .forEachIndexed { index, layout ->
                     layout.removeAllViews()
+                    val gestureDetector = getViewGestureDetector(layout, index)
+
                     layout.setOnTouchListener { view, motionEvent ->
-                        checkGridClick(motionEvent, index, layout)
+                        gestureDetector.onTouchEvent(motionEvent)
                         true
                     }
                 }
     }
 
-    private fun checkGridClick(event: MotionEvent, index: Int, view: ViewGroup) {
-        when (event.action) {
-            MotionEvent.ACTION_DOWN -> clickStartTime = System.currentTimeMillis()
-            MotionEvent.ACTION_UP -> {
-                if (System.currentTimeMillis() - clickStartTime < CLICK_DURATION_THRESHOLD) {
-                    selectedGrid?.animation?.cancel()
-                    selectedGrid?.beGone()
+    private fun getViewGestureDetector(view: ViewGroup, index: Int): GestureDetector {
+        val gestureDetector = GestureDetector(context, object : GestureDetector.SimpleOnGestureListener() {
+            override fun onSingleTapUp(event: MotionEvent): Boolean {
+                selectedGrid?.animation?.cancel()
+                selectedGrid?.beGone()
 
-                    val hour = (event.y / rowHeight).toInt()
-                    selectedGrid = (inflater.inflate(R.layout.week_grid_item, null, false) as ImageView).apply {
-                        view.addView(this)
-                        background = ColorDrawable(primaryColor)
-                        layoutParams.width = view.width
-                        layoutParams.height = rowHeight.toInt()
-                        y = hour * rowHeight
-                        applyColorFilter(primaryColor.getContrastColor())
+                val hour = (event.y / rowHeight).toInt()
+                selectedGrid = (inflater.inflate(R.layout.week_grid_item, null, false) as ImageView).apply {
+                    view.addView(this)
+                    background = ColorDrawable(primaryColor)
+                    layoutParams.width = view.width
+                    layoutParams.height = rowHeight.toInt()
+                    y = hour * rowHeight
+                    applyColorFilter(primaryColor.getContrastColor())
 
-                        setOnClickListener {
-                            val timestamp = weekTimestamp + index * DAY_SECONDS + hour * 60 * 60
-                            Intent(context, EventActivity::class.java).apply {
-                                putExtra(NEW_EVENT_START_TS, timestamp)
-                                putExtra(NEW_EVENT_SET_HOUR_DURATION, true)
-                                startActivity(this)
-                            }
-                        }
-
-                        animate().setStartDelay(PLUS_FADEOUT_DELAY).alpha(0f).withEndAction {
-                            beGone()
+                    setOnClickListener {
+                        val timestamp = weekTimestamp + index * DAY_SECONDS + hour * 60 * 60
+                        Intent(context, EventActivity::class.java).apply {
+                            putExtra(NEW_EVENT_START_TS, timestamp)
+                            putExtra(NEW_EVENT_SET_HOUR_DURATION, true)
+                            startActivity(this)
                         }
                     }
+
+                    animate().setStartDelay(PLUS_FADEOUT_DELAY).alpha(0f).withEndAction {
+                        beGone()
+                    }
                 }
+                return super.onSingleTapUp(event)
             }
-        }
+        })
+        return gestureDetector
     }
 
     override fun updateWeeklyCalendar(events: ArrayList<Event>) {
