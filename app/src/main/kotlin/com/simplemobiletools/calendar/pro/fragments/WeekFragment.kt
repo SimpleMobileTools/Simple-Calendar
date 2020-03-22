@@ -13,10 +13,7 @@ import androidx.collection.LongSparseArray
 import androidx.fragment.app.Fragment
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.EventActivity
-import com.simplemobiletools.calendar.pro.extensions.config
-import com.simplemobiletools.calendar.pro.extensions.eventsHelper
-import com.simplemobiletools.calendar.pro.extensions.seconds
-import com.simplemobiletools.calendar.pro.extensions.touch
+import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.interfaces.WeekFragmentListener
@@ -64,7 +61,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         super.onCreate(savedInstanceState)
         res = context!!.resources
         config = context!!.config
-        rowHeight = config.weeklyViewItemHeight
+        rowHeight = context!!.getWeeklyViewItemHeight()
         weekTimestamp = arguments!!.getLong(WEEK_START_TIMESTAMP)
         dimPastEvents = config.dimPastEvents
         primaryColor = context!!.getAdjustedPrimaryColor()
@@ -75,7 +72,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         this.inflater = inflater
 
         mView = inflater.inflate(R.layout.fragment_week, container, false).apply {
-            val fullHeight = context.config.weeklyViewItemHeight.toInt() * 24
+            val fullHeight = context.getWeeklyViewItemHeight().toInt() * 24
             week_horizontal_grid_holder.layoutParams.height = fullHeight
             week_events_columns_holder.layoutParams.height = fullHeight
 

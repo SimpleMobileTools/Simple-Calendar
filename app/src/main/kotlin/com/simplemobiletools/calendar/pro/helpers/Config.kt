@@ -180,7 +180,7 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getBoolean(EXPORT_PAST_EVENTS, false)
         set(exportPastEvents) = prefs.edit().putBoolean(EXPORT_PAST_EVENTS, exportPastEvents).apply()
 
-    var weeklyViewItemHeight: Float
-        get() = prefs.getFloat(WEEKLY_VIEW_ITEM_HEIGHT, context.resources.getDimension(R.dimen.weekly_view_row_height))
-        set(weeklyViewItemHeight) = prefs.edit().putFloat(WEEKLY_VIEW_ITEM_HEIGHT, weeklyViewItemHeight).apply()
+    var weeklyViewItemHeightMultiplier: Float
+        get() = prefs.getFloat(WEEKLY_VIEW_ITEM_HEIGHT_MULTIPLIER, 1f)
+        set(weeklyViewItemHeightMultiplier) = prefs.edit().putFloat(WEEKLY_VIEW_ITEM_HEIGHT_MULTIPLIER, weeklyViewItemHeightMultiplier).apply()
 }

@@ -14,6 +14,7 @@ import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.MainActivity
 import com.simplemobiletools.calendar.pro.adapters.MyWeekPagerAdapter
 import com.simplemobiletools.calendar.pro.extensions.config
+import com.simplemobiletools.calendar.pro.extensions.getWeeklyViewItemHeight
 import com.simplemobiletools.calendar.pro.extensions.seconds
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.helpers.WEEK_START_DATE_TIME
@@ -50,7 +51,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
         weekHolder = inflater.inflate(R.layout.fragment_week_holder, container, false) as ViewGroup
         weekHolder!!.background = ColorDrawable(context!!.config.backgroundColor)
 
-        val itemHeight = context!!.config.weeklyViewItemHeight.toInt()
+        val itemHeight = context!!.getWeeklyViewItemHeight().toInt()
         weekHolder!!.week_view_hours_holder.setPadding(0, 0, 0, itemHeight)
 
         viewPager = weekHolder!!.week_view_view_pager
@@ -62,7 +63,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
     private fun setupFragment() {
         val weekTSs = getWeekTimestamps(currentWeekTS)
         val weeklyAdapter = MyWeekPagerAdapter(activity!!.supportFragmentManager, weekTSs, this)
-        val itemHeight = context!!.config.weeklyViewItemHeight.toInt()
+        val itemHeight = context!!.getWeeklyViewItemHeight().toInt()
 
         val textColor = context!!.config.textColor
         weekHolder!!.week_view_hours_holder.removeAllViews()
@@ -111,7 +112,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
 
     private fun updateRowHeight() {
         val childCnt = weekHolder!!.week_view_hours_holder.childCount
-        val itemHeight = context!!.config.weeklyViewItemHeight.toInt()
+        val itemHeight = context!!.getWeeklyViewItemHeight().toInt()
         for (i in 0..childCnt) {
             val textView = weekHolder!!.week_view_hours_holder.getChildAt(i) as? TextView ?: continue
             textView.layoutParams.height = itemHeight
