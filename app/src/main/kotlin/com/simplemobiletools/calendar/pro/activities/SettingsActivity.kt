@@ -298,7 +298,7 @@ class SettingsActivity : SimpleActivity() {
         settings_start_weekly_at.text = getHoursString(config.startWeeklyAt)
         settings_start_weekly_at_holder.setOnClickListener {
             val items = ArrayList<RadioItem>()
-            (0..24).mapTo(items) { RadioItem(it, getHoursString(it)) }
+            (0..16).mapTo(items) { RadioItem(it, getHoursString(it)) }
 
             RadioGroupDialog(this@SettingsActivity, items, config.startWeeklyAt) {
                 config.startWeeklyAt = it as Int
