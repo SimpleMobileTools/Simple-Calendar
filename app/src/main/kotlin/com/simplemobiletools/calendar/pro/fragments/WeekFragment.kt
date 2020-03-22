@@ -236,7 +236,12 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
         activity!!.runOnUiThread {
             if (context != null && activity != null && isAdded) {
-                addEvents(events)
+                val replaceDescription = config.replaceDescription
+                val sorted = events.sortedWith(
+                        compareBy<Event> { it.startTS }.thenBy { it.endTS }.thenBy { it.title }.thenBy { if (replaceDescription) it.location else it.description }
+                ).toMutableList() as ArrayList<Event>
+
+                addEvents(sorted)
             }
         }
     }
@@ -257,12 +262,8 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         val density = Math.round(res.displayMetrics.density)
 
         var hadAllDayEvent = false
-        val replaceDescription = config.replaceDescription
-        val sorted = events.sortedWith(
-                compareBy<Event> { it.startTS }.thenBy { it.endTS }.thenBy { it.title }.thenBy { if (replaceDescription) it.location else it.description }
-        )
 
-        for (event in sorted) {
+        for (event in events) {
             val startDateTime = Formatter.getDateTimeFromTS(event.startTS)
             val endDateTime = Formatter.getDateTimeFromTS(event.endTS)
             if (!event.getIsAllDay() && Formatter.getDayCodeFromDateTime(startDateTime) == Formatter.getDayCodeFromDateTime(endDateTime)) {
@@ -280,7 +281,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             }
         }
 
-        for (event in sorted) {
+        for (event in events) {
             val startDateTime = Formatter.getDateTimeFromTS(event.startTS)
             val endDateTime = Formatter.getDateTimeFromTS(event.endTS)
             if (event.getIsAllDay() || Formatter.getDayCodeFromDateTime(startDateTime) != Formatter.getDayCodeFromDateTime(endDateTime)) {
