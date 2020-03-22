@@ -54,7 +54,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private var dimPastEvents = true
     private var selectedGrid: View? = null
     private var currentTimeView: ImageView? = null
-    private var events = ArrayList<Event>()
     private var allDayHolders = ArrayList<RelativeLayout>()
     private var allDayRows = ArrayList<HashSet<Int>>()
     private var eventTypeColors = LongSparseArray<Int>()
@@ -63,7 +62,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private lateinit var inflater: LayoutInflater
     private lateinit var mView: View
     private lateinit var scrollView: MyScrollView
-    private lateinit var calendar: WeeklyCalendarImpl
     private lateinit var res: Resources
     private lateinit var config: Config
 
@@ -76,7 +74,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         dimPastEvents = config.dimPastEvents
         primaryColor = context!!.getAdjustedPrimaryColor()
         allDayRows.add(HashSet())
-        calendar = WeeklyCalendarImpl(this, context!!)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -131,7 +128,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     }
 
     fun updateCalendar() {
-        calendar.updateWeeklyCalendar(weekTimestamp)
+        WeeklyCalendarImpl(this, context!!).updateWeeklyCalendar(weekTimestamp)
     }
 
     private fun setupDayLabels() {
@@ -213,16 +210,15 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         }
 
         lastHash = newHash
-        this.events = events
 
         activity!!.runOnUiThread {
             if (context != null && activity != null && isAdded) {
-                addEvents()
+                addEvents(events)
             }
         }
     }
 
-    private fun addEvents() {
+    private fun addEvents(events: ArrayList<Event>) {
         initGrid()
         allDayHolders.clear()
         allDayRows.clear()
@@ -235,7 +231,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         val fullHeight = res.getDimension(R.dimen.weekly_view_events_height)
         val minuteHeight = fullHeight / (24 * 60)
         val minimalHeight = res.getDimension(R.dimen.weekly_view_minimal_event_height).toInt()
-        val density = Math.round(context!!.resources.displayMetrics.density)
+        val density = Math.round(res.displayMetrics.density)
 
         var hadAllDayEvent = false
         val replaceDescription = config.replaceDescription
