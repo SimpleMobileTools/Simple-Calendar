@@ -20,10 +20,7 @@ import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.helpers.WEEK_START_DATE_TIME
 import com.simplemobiletools.calendar.pro.interfaces.WeekFragmentListener
 import com.simplemobiletools.calendar.pro.views.MyScrollView
-import com.simplemobiletools.commons.extensions.getDialogTheme
-import com.simplemobiletools.commons.extensions.setupDialogStuff
-import com.simplemobiletools.commons.extensions.updateActionBarSubtitle
-import com.simplemobiletools.commons.extensions.updateActionBarTitle
+import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.WEEK_SECONDS
 import com.simplemobiletools.commons.views.MyViewPager
 import kotlinx.android.synthetic.main.fragment_week_holder.view.*
@@ -204,8 +201,13 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
     }
 
     override fun updateHoursTopMargin(margin: Int) {
-        weekHolder?.week_view_hours_divider?.layoutParams?.height = margin
-        weekHolder?.week_view_hours_scrollview?.requestLayout()
+        weekHolder?.apply {
+            week_view_hours_divider?.layoutParams?.height = margin
+            week_view_hours_scrollview?.requestLayout()
+            week_view_hours_scrollview?.onGlobalLayout {
+                week_view_hours_scrollview.scrollY = weekScrollY
+            }
+        }
     }
 
     override fun getCurrScrollY() = weekScrollY
