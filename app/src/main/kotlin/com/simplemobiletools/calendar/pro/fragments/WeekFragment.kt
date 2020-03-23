@@ -260,7 +260,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private fun updateViewScale() {
         rowHeight = context!!.getWeeklyViewItemHeight()
         listener?.updateRowHeight(rowHeight.toInt())
-        val fullHeight = Math.max(rowHeight.toInt() * 24, scrollView.height + 5)
+        val fullHeight = Math.max(rowHeight.toInt() * 24, scrollView.height + context!!.resources.getDimension(R.dimen.one_dp).toInt())
         mView.week_horizontal_grid_holder.layoutParams.height = fullHeight
         mView.week_events_columns_holder.layoutParams.height = fullHeight
         addEvents(currEvents)
