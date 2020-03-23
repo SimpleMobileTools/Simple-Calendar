@@ -37,4 +37,9 @@ class MyWeekPagerAdapter(fm: FragmentManager, private val mWeekTimestamps: List<
             mFragments[pos + i]?.updateCalendar()
         }
     }
+
+    fun updateNotVisibleZoomLevel(pos: Int) {
+        mFragments[pos - 1]?.updateNotVisibleViewZoomLevel()
+        mFragments[pos + 1]?.updateNotVisibleViewZoomLevel()
+    }
 }
