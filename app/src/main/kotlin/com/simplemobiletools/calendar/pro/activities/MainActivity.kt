@@ -376,7 +376,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private fun checkIsViewIntent() {
         if (intent?.action == Intent.ACTION_VIEW && intent.data != null) {
             val uri = intent.data
-            if (uri?.authority?.equals("com.android.calendar") == true) {
+            if (uri?.authority?.equals("com.android.calendar") == true || uri?.authority?.substringAfter("@") == "com.android.calendar") {
                 if (uri.path!!.startsWith("/events")) {
                     ensureBackgroundThread {
                         // intents like content://com.android.calendar/events/1756
@@ -391,8 +391,9 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                             toast(R.string.caldav_event_not_found, Toast.LENGTH_LONG)
                         }
                     }
-                } else if (intent?.extras?.getBoolean("DETAIL_VIEW", false) == true) {
+                } else if (uri.path!!.startsWith("/time") || intent?.extras?.getBoolean("DETAIL_VIEW", false) == true) {
                     // clicking date on a third party widget: content://com.android.calendar/time/1507309245683
+                    // or content://0@com.android.calendar/time/1584958526435
                     val timestamp = uri.pathSegments.last()
                     if (timestamp.areDigitsOnly()) {
                         openDayAt(timestamp.toLong())
