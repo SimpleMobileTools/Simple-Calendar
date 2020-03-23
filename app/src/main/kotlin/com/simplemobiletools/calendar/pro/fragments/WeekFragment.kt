@@ -50,6 +50,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private var currentTimeView: ImageView? = null
     private var allDayHolders = ArrayList<RelativeLayout>()
     private var allDayRows = ArrayList<HashSet<Int>>()
+    private var currEvents = ArrayList<Event>()
     private var eventTypeColors = LongSparseArray<Int>()
     private var eventTimeRanges = LinkedHashMap<String, ArrayList<EventWeeklyView>>()
 
@@ -222,7 +223,8 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             override fun onScaleEnd(detector: ScaleGestureDetector) {
                 val newFactor = Math.max(Math.min(config.weeklyViewItemHeightMultiplier * detector.scaleFactor, MAX_ZOOM_FACTOR), MIN_ZOOM_FACTOR)
                 config.weeklyViewItemHeightMultiplier = newFactor
-                listener?.updateRowHeight()
+                updateViewScale()
+
                 mView.week_events_scrollview.isScrollable = true
                 super.onScaleEnd(detector)
             }
@@ -244,9 +246,19 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                         compareBy<Event> { it.startTS }.thenBy { it.endTS }.thenBy { it.title }.thenBy { if (replaceDescription) it.location else it.description }
                 ).toMutableList() as ArrayList<Event>
 
+                currEvents = sorted
                 addEvents(sorted)
             }
         }
+    }
+
+    private fun updateViewScale() {
+        rowHeight = context!!.getWeeklyViewItemHeight()
+        listener?.updateRowHeight(rowHeight.toInt())
+        val fullHeight = Math.max(rowHeight.toInt() * 24, mView.week_events_scrollview.height + 5)
+        mView.week_horizontal_grid_holder.layoutParams.height = fullHeight
+        mView.week_events_columns_holder.layoutParams.height = fullHeight
+        addEvents(currEvents)
     }
 
     private fun addEvents(events: ArrayList<Event>) {

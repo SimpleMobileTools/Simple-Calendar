@@ -210,14 +210,13 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
 
     override fun getCurrScrollY() = weekScrollY
 
-    override fun updateRowHeight() {
+    override fun updateRowHeight(rowHeight: Int) {
         val childCnt = weekHolder!!.week_view_hours_holder.childCount
-        val itemHeight = context!!.getWeeklyViewItemHeight().toInt()
         for (i in 0..childCnt) {
             val textView = weekHolder!!.week_view_hours_holder.getChildAt(i) as? TextView ?: continue
-            textView.layoutParams.height = itemHeight
+            textView.layoutParams.height = rowHeight
         }
 
-        weekHolder!!.week_view_hours_holder.setPadding(0, 0, 0, itemHeight)
+        weekHolder!!.week_view_hours_holder.setPadding(0, 0, 0, rowHeight)
     }
 }
