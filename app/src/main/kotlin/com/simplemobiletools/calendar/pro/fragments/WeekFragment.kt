@@ -32,7 +32,7 @@ import java.util.*
 
 class WeekFragment : Fragment(), WeeklyCalendar {
     private val PLUS_FADEOUT_DELAY = 5000L
-    private val MIN_ZOOM_FACTOR = 0.4f
+    private val MIN_ZOOM_FACTOR = 0.3f
     private val MAX_ZOOM_FACTOR = 4f
 
     var listener: WeekFragmentListener? = null
@@ -221,7 +221,12 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             }
 
             override fun onScaleEnd(detector: ScaleGestureDetector) {
-                val newFactor = Math.max(Math.min(config.weeklyViewItemHeightMultiplier * detector.scaleFactor, MAX_ZOOM_FACTOR), MIN_ZOOM_FACTOR)
+                var newFactor = Math.max(Math.min(config.weeklyViewItemHeightMultiplier * detector.scaleFactor, MAX_ZOOM_FACTOR), MIN_ZOOM_FACTOR)
+                val defaultHeight = resources.getDimension(R.dimen.weekly_view_row_height)
+                if (mView.week_events_scrollview.height > defaultHeight * newFactor * 24) {
+                    newFactor = mView.week_events_scrollview.height / 24f / defaultHeight
+                }
+
                 config.weeklyViewItemHeightMultiplier = newFactor
                 updateViewScale()
 
