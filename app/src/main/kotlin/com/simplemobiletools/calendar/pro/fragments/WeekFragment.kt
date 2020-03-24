@@ -49,6 +49,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private var wasFragmentInit = false
     private var wasExtraHeightAdded = false
     private var dimPastEvents = true
+    private var wasScaled = false
     private var selectedGrid: View? = null
     private var currentTimeView: ImageView? = null
     private var allDayHolders = ArrayList<RelativeLayout>()
@@ -88,8 +89,9 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             val scaleDetector = getViewScaleDetector()
             scrollView.setOnTouchListener { view, motionEvent ->
                 scaleDetector.onTouchEvent(motionEvent)
-                if (motionEvent.action == MotionEvent.ACTION_UP) {
+                if (motionEvent.action == MotionEvent.ACTION_UP && wasScaled) {
                     scrollView.isScrollable = true
+                    wasScaled = false
                     true
                 } else {
                     false
@@ -250,6 +252,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             override fun onScaleBegin(detector: ScaleGestureDetector): Boolean {
                 scrollView.isScrollable = false
                 scaleAtStart = detector.scaleFactor
+                wasScaled = true
                 return super.onScaleBegin(detector)
             }
         })
