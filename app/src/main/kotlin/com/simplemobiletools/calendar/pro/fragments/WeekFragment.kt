@@ -43,6 +43,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private var primaryColor = 0
     private var lastHash = 0
     private var scaleAtStart = 1f
+    private var defaultRowHeight = 0f
     private var mWasDestroyed = false
     private var isFragmentVisible = false
     private var wasFragmentInit = false
@@ -67,6 +68,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         res = context!!.resources
         config = context!!.config
         rowHeight = context!!.getWeeklyViewItemHeight()
+        defaultRowHeight = res.getDimension(R.dimen.weekly_view_row_height)
         weekTimestamp = arguments!!.getLong(WEEK_START_TIMESTAMP)
         dimPastEvents = config.dimPastEvents
         primaryColor = context!!.getAdjustedPrimaryColor()
@@ -146,7 +148,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             // fix some glitches like at swiping from a fully zoomed out fragment will all-day events to an empty one
             val fullFragmentHeight = (listener?.getFullFragmentHeight() ?: 0) - mView.week_top_holder.height
             if (scrollView.height < fullFragmentHeight) {
-                config.weeklyViewItemHeightMultiplier = fullFragmentHeight / 24 / context!!.resources.getDimension(R.dimen.weekly_view_row_height)
+                config.weeklyViewItemHeightMultiplier = fullFragmentHeight / 24 / defaultRowHeight
                 updateViewScale()
                 listener?.updateRowHeight(rowHeight.toInt())
             }
@@ -235,9 +237,8 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 val scaleDifference = detector.scaleFactor - scaleAtStart
                 scaleAtStart = detector.scaleFactor
                 var newFactor = Math.max(Math.min(config.weeklyViewItemHeightMultiplier + scaleDifference, MAX_ZOOM_FACTOR), MIN_ZOOM_FACTOR)
-                val defaultHeight = resources.getDimension(R.dimen.weekly_view_row_height)
-                if (scrollView.height > defaultHeight * newFactor * 24) {
-                    newFactor = scrollView.height / 24f / defaultHeight
+                if (scrollView.height > defaultRowHeight * newFactor * 24) {
+                    newFactor = scrollView.height / 24f / defaultRowHeight
                 }
 
                 config.weeklyViewItemHeightMultiplier = newFactor
