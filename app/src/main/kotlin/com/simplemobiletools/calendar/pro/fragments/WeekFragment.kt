@@ -34,7 +34,7 @@ import java.util.*
 class WeekFragment : Fragment(), WeeklyCalendar {
     private val PLUS_FADEOUT_DELAY = 5000L
     private val MIN_ZOOM_FACTOR = 0.3f
-    private val MAX_ZOOM_FACTOR = 4f
+    private val MAX_ZOOM_FACTOR = 5f
 
     var listener: WeekFragmentListener? = null
     private var weekTimestamp = 0L
