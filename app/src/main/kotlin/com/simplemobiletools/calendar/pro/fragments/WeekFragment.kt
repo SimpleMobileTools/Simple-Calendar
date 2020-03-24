@@ -41,6 +41,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private var todayColumnIndex = -1
     private var primaryColor = 0
     private var lastHash = 0
+    private var scaleAtStart = 1f
     private var mWasDestroyed = false
     private var isFragmentVisible = false
     private var wasFragmentInit = false
@@ -224,16 +225,9 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private fun getViewScaleDetector(): ScaleGestureDetector {
         return ScaleGestureDetector(context, object : ScaleGestureDetector.SimpleOnScaleGestureListener() {
             override fun onScale(detector: ScaleGestureDetector): Boolean {
-                return super.onScale(detector)
-            }
-
-            override fun onScaleBegin(detector: ScaleGestureDetector): Boolean {
-                scrollView.isScrollable = false
-                return super.onScaleBegin(detector)
-            }
-
-            override fun onScaleEnd(detector: ScaleGestureDetector) {
-                var newFactor = Math.max(Math.min(config.weeklyViewItemHeightMultiplier * detector.scaleFactor, MAX_ZOOM_FACTOR), MIN_ZOOM_FACTOR)
+                val scaleDifference = detector.scaleFactor - scaleAtStart
+                scaleAtStart = detector.scaleFactor
+                var newFactor = Math.max(Math.min(config.weeklyViewItemHeightMultiplier + scaleDifference, MAX_ZOOM_FACTOR), MIN_ZOOM_FACTOR)
                 val defaultHeight = resources.getDimension(R.dimen.weekly_view_row_height)
                 if (scrollView.height > defaultHeight * newFactor * 24) {
                     newFactor = scrollView.height / 24f / defaultHeight
@@ -242,7 +236,16 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 config.weeklyViewItemHeightMultiplier = newFactor
                 updateViewScale()
                 listener?.updateRowHeight(rowHeight.toInt())
+                return super.onScale(detector)
+            }
 
+            override fun onScaleBegin(detector: ScaleGestureDetector): Boolean {
+                scrollView.isScrollable = false
+                scaleAtStart = detector.scaleFactor
+                return super.onScaleBegin(detector)
+            }
+
+            override fun onScaleEnd(detector: ScaleGestureDetector) {
                 scrollView.isScrollable = true
                 super.onScaleEnd(detector)
             }
