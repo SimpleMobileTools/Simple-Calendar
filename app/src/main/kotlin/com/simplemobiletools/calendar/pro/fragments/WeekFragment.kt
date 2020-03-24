@@ -1,5 +1,6 @@
 package com.simplemobiletools.calendar.pro.fragments
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.res.Resources
 import android.graphics.drawable.ColorDrawable
@@ -72,6 +73,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         allDayRows.add(HashSet())
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         this.inflater = inflater
 
@@ -84,7 +86,12 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             val scaleDetector = getViewScaleDetector()
             scrollView.setOnTouchListener { view, motionEvent ->
                 scaleDetector.onTouchEvent(motionEvent)
-                false
+                if (motionEvent.action == MotionEvent.ACTION_UP) {
+                    scrollView.isScrollable = true
+                    true
+                } else {
+                    false
+                }
             }
         }
 
@@ -243,11 +250,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 scrollView.isScrollable = false
                 scaleAtStart = detector.scaleFactor
                 return super.onScaleBegin(detector)
-            }
-
-            override fun onScaleEnd(detector: ScaleGestureDetector) {
-                scrollView.isScrollable = true
-                super.onScaleEnd(detector)
             }
         })
     }
