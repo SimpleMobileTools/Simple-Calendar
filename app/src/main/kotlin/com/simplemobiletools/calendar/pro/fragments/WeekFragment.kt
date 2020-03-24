@@ -134,6 +134,14 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         if (isFragmentVisible && wasFragmentInit) {
             listener?.updateHoursTopMargin(mView.week_top_holder.height)
             checkScrollLimits(scrollView.scrollY)
+
+            // fix some glitches like at swiping from a fully zoomed out fragment will all-day events to an empty one
+            val fullFragmentHeight = (listener?.getFullFragmentHeight() ?: 0) - mView.week_top_holder.height
+            if (scrollView.height < fullFragmentHeight) {
+                config.weeklyViewItemHeightMultiplier = fullFragmentHeight / 24 / context!!.resources.getDimension(R.dimen.weekly_view_row_height)
+                updateViewScale()
+                listener?.updateRowHeight(rowHeight.toInt())
+            }
         }
     }
 
@@ -263,10 +271,11 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     }
 
     private fun updateViewScale() {
-        rowHeight = context!!.getWeeklyViewItemHeight()
+        rowHeight = context?.getWeeklyViewItemHeight() ?: return
 
         val oneDp = context!!.resources.getDimension(R.dimen.one_dp).toInt()
         val fullHeight = Math.max(rowHeight.toInt() * 24, scrollView.height + oneDp)
+        scrollView.layoutParams.height = fullHeight - oneDp
         mView.week_horizontal_grid_holder.layoutParams.height = fullHeight
         mView.week_events_columns_holder.layoutParams.height = fullHeight
         addEvents(currEvents)

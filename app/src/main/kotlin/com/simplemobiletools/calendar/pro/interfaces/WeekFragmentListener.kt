@@ -8,4 +8,6 @@ interface WeekFragmentListener {
     fun getCurrScrollY(): Int
 
     fun updateRowHeight(rowHeight: Int)
+
+    fun getFullFragmentHeight(): Int
 }
