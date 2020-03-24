@@ -33,8 +33,9 @@ import java.util.*
 
 class WeekFragment : Fragment(), WeeklyCalendar {
     private val PLUS_FADEOUT_DELAY = 5000L
-    private val MIN_ZOOM_FACTOR = 0.3f
-    private val MAX_ZOOM_FACTOR = 5f
+    private val MIN_SCALE_FACTOR = 0.3f
+    private val MAX_SCALE_FACTOR = 5f
+    private val SCALE_RANGE = MAX_SCALE_FACTOR - MIN_SCALE_FACTOR
 
     var listener: WeekFragmentListener? = null
     private var weekTimestamp = 0L
@@ -42,8 +43,9 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private var todayColumnIndex = -1
     private var primaryColor = 0
     private var lastHash = 0
-    private var scaleAtStart = 1f
+    private var prevScaleSpanY = 0f
     private var defaultRowHeight = 0f
+    private var screenHeight = 0
     private var mWasDestroyed = false
     private var isFragmentVisible = false
     private var wasFragmentInit = false
@@ -147,7 +149,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             listener?.updateHoursTopMargin(mView.week_top_holder.height)
             checkScrollLimits(scrollView.scrollY)
 
-            // fix some glitches like at swiping from a fully zoomed out fragment will all-day events to an empty one
+            // fix some glitches like at swiping from a fully scaled out fragment will all-day events to an empty one
             val fullFragmentHeight = (listener?.getFullFragmentHeight() ?: 0) - mView.week_top_holder.height
             if (scrollView.height < fullFragmentHeight) {
                 config.weeklyViewItemHeightMultiplier = fullFragmentHeight / 24 / defaultRowHeight
@@ -236,9 +238,11 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private fun getViewScaleDetector(): ScaleGestureDetector {
         return ScaleGestureDetector(context, object : ScaleGestureDetector.SimpleOnScaleGestureListener() {
             override fun onScale(detector: ScaleGestureDetector): Boolean {
-                val scaleDifference = detector.scaleFactor - scaleAtStart
-                scaleAtStart = detector.scaleFactor
-                var newFactor = Math.max(Math.min(config.weeklyViewItemHeightMultiplier + scaleDifference, MAX_ZOOM_FACTOR), MIN_ZOOM_FACTOR)
+                val percent = (prevScaleSpanY - detector.currentSpanY) / screenHeight
+                prevScaleSpanY = detector.currentSpanY
+
+                val wantedFactor = config.weeklyViewItemHeightMultiplier - (SCALE_RANGE * percent)
+                var newFactor = Math.max(Math.min(wantedFactor, MAX_SCALE_FACTOR), MIN_SCALE_FACTOR)
                 if (scrollView.height > defaultRowHeight * newFactor * 24) {
                     newFactor = scrollView.height / 24f / defaultRowHeight
                 }
@@ -251,8 +255,9 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
             override fun onScaleBegin(detector: ScaleGestureDetector): Boolean {
                 scrollView.isScrollable = false
-                scaleAtStart = detector.scaleFactor
+                prevScaleSpanY = detector.currentSpanY
                 wasScaled = true
+                screenHeight = context!!.realScreenSize.y
                 return super.onScaleBegin(detector)
             }
         })
@@ -554,7 +559,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         }
     }
 
-    fun updateNotVisibleViewZoomLevel() {
+    fun updateNotVisibleViewScaleLevel() {
         if (!isFragmentVisible) {
             updateViewScale()
         }

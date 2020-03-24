@@ -220,7 +220,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
         }
 
         weekHolder!!.week_view_hours_holder.setPadding(0, 0, 0, rowHeight)
-        (viewPager!!.adapter as? MyWeekPagerAdapter)?.updateNotVisibleZoomLevel(viewPager!!.currentItem)
+        (viewPager!!.adapter as? MyWeekPagerAdapter)?.updateNotVisibleScaleLevel(viewPager!!.currentItem)
     }
 
     override fun getFullFragmentHeight() = weekHolder!!.week_view_holder.height
