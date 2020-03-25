@@ -44,8 +44,10 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private var primaryColor = 0
     private var lastHash = 0
     private var prevScaleSpanY = 0f
+    private var scaleCenterPercent = 0f
     private var defaultRowHeight = 0f
     private var screenHeight = 0
+    private var rowHeightsAtScale = 0f
     private var mWasDestroyed = false
     private var isFragmentVisible = false
     private var wasFragmentInit = false
@@ -250,10 +252,22 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 config.weeklyViewItemHeightMultiplier = newFactor
                 updateViewScale()
                 listener?.updateRowHeight(rowHeight.toInt())
+
+                val fullContentHeight = rowHeight * 24
+                val visibleRatio = scrollView.height / fullContentHeight
+                val visibleHeight = fullContentHeight * visibleRatio
+                val targetY = rowHeightsAtScale * rowHeight - scaleCenterPercent * visibleHeight
+                scrollView.scrollTo(0, targetY.toInt())
                 return super.onScale(detector)
             }
 
             override fun onScaleBegin(detector: ScaleGestureDetector): Boolean {
+                val fullContentHeight = rowHeight * 24
+                val visibleRatio = scrollView.height / fullContentHeight
+                val visibleHeight = fullContentHeight * visibleRatio
+
+                scaleCenterPercent = detector.focusY / scrollView.height
+                rowHeightsAtScale = (scrollView.scrollY + scaleCenterPercent * visibleHeight) / rowHeight
                 scrollView.isScrollable = false
                 prevScaleSpanY = detector.currentSpanY
                 wasScaled = true
