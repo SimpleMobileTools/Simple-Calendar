@@ -35,6 +35,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private val PLUS_FADEOUT_DELAY = 5000L
     private val MIN_SCALE_FACTOR = 0.3f
     private val MAX_SCALE_FACTOR = 5f
+    private val MIN_SCALE_DIFFERENCE = 0.02f
     private val SCALE_RANGE = MAX_SCALE_FACTOR - MIN_SCALE_FACTOR
 
     var listener: WeekFragmentListener? = null
@@ -48,6 +49,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private var defaultRowHeight = 0f
     private var screenHeight = 0
     private var rowHeightsAtScale = 0f
+    private var prevScaleFactor = 0f
     private var mWasDestroyed = false
     private var isFragmentVisible = false
     private var wasFragmentInit = false
@@ -249,12 +251,15 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                     newFactor = scrollView.height / 24f / defaultRowHeight
                 }
 
-                config.weeklyViewItemHeightMultiplier = newFactor
-                updateViewScale()
-                listener?.updateRowHeight(rowHeight.toInt())
+                if (Math.abs(newFactor - prevScaleFactor) > MIN_SCALE_DIFFERENCE) {
+                    prevScaleFactor = newFactor
+                    config.weeklyViewItemHeightMultiplier = newFactor
+                    updateViewScale()
+                    listener?.updateRowHeight(rowHeight.toInt())
 
-                val targetY = rowHeightsAtScale * rowHeight - scaleCenterPercent * getVisibleHeight()
-                scrollView.scrollTo(0, targetY.toInt())
+                    val targetY = rowHeightsAtScale * rowHeight - scaleCenterPercent * getVisibleHeight()
+                    scrollView.scrollTo(0, targetY.toInt())
+                }
                 return super.onScale(detector)
             }
 
@@ -263,6 +268,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 rowHeightsAtScale = (scrollView.scrollY + scaleCenterPercent * getVisibleHeight()) / rowHeight
                 scrollView.isScrollable = false
                 prevScaleSpanY = detector.currentSpanY
+                prevScaleFactor = config.weeklyViewItemHeightMultiplier
                 wasScaled = true
                 screenHeight = context!!.realScreenSize.y
                 return super.onScaleBegin(detector)
