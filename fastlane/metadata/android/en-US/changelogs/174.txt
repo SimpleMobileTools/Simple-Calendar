@@ -1,0 +1,4 @@
+ * Allow zooming the weekly view with vertical gestures
+ * Allow scrolling through the whole weeky view, use Start time only as the default time
+ * Updating the app icon
+ * Other stability, translation and UX improvements

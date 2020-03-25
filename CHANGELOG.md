@@ -1,6 +1,14 @@
 Changelog
 ==========
 
+Version 6.9.1 *(2020-03-25)*
+----------------------------
+
+ * Allow zooming the weekly view with vertical gestures
+ * Allow scrolling through the whole weeky view, use Start time only as the default time
+ * Updating the app icon
+ * Other stability, translation and UX improvements
+
 Version 6.9.0 *(2020-03-18)*
 ----------------------------
 
