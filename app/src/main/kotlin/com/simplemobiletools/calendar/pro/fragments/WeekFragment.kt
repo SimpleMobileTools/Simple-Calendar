@@ -253,21 +253,14 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 updateViewScale()
                 listener?.updateRowHeight(rowHeight.toInt())
 
-                val fullContentHeight = rowHeight * 24
-                val visibleRatio = scrollView.height / fullContentHeight
-                val visibleHeight = fullContentHeight * visibleRatio
-                val targetY = rowHeightsAtScale * rowHeight - scaleCenterPercent * visibleHeight
+                val targetY = rowHeightsAtScale * rowHeight - scaleCenterPercent * getVisibleHeight()
                 scrollView.scrollTo(0, targetY.toInt())
                 return super.onScale(detector)
             }
 
             override fun onScaleBegin(detector: ScaleGestureDetector): Boolean {
-                val fullContentHeight = rowHeight * 24
-                val visibleRatio = scrollView.height / fullContentHeight
-                val visibleHeight = fullContentHeight * visibleRatio
-
                 scaleCenterPercent = detector.focusY / scrollView.height
-                rowHeightsAtScale = (scrollView.scrollY + scaleCenterPercent * visibleHeight) / rowHeight
+                rowHeightsAtScale = (scrollView.scrollY + scaleCenterPercent * getVisibleHeight()) / rowHeight
                 scrollView.isScrollable = false
                 prevScaleSpanY = detector.currentSpanY
                 wasScaled = true
@@ -275,6 +268,12 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 return super.onScaleBegin(detector)
             }
         })
+    }
+
+    private fun getVisibleHeight(): Float {
+        val fullContentHeight = rowHeight * 24
+        val visibleRatio = scrollView.height / fullContentHeight
+        return fullContentHeight * visibleRatio
     }
 
     override fun updateWeeklyCalendar(events: ArrayList<Event>) {
