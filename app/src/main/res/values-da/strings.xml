@@ -243,8 +243,8 @@
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Simpel kalender Pro - Begivenheder &amp; påmindelser</string>
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Simple mobile 2020 calendar. Schedule planner &amp; appointment reminder for any day</string>
-    <string name="">
+    <string name="app_short_description">Simpel mobil 2020-kalender. Planlægningsværktøj &amp; aftalepåmindelser for hver dag.</string>
+    <string name="app_long_description">
         Simpel kalender Pro kan tilpasses helt efter din smag, offline kalender er designet til at gøre præcis hvad en kalender skal kunne. <b>Ingen indviklede funktioner, ingen overflødige tilladelser og ingen reklamer!</b>
 
         Uanset om du planlægger enkelte eller gentagne begivenheder, fødselsdage, jubilæer, forretningsmøder, aftaler eller noget andet, gør Simpel kalender det <b>let at være organiseret</b>. Med masser af <b>tilpasningsmuligheder</b> kan du tilpasse påmindelser, påmindelseslyde, kalender-widtets og appens udseende.
