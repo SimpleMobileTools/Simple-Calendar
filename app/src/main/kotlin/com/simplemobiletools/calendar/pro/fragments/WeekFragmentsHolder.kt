@@ -8,20 +8,19 @@ import android.view.ViewGroup
 import android.widget.DatePicker
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.MainActivity
 import com.simplemobiletools.calendar.pro.adapters.MyWeekPagerAdapter
 import com.simplemobiletools.calendar.pro.extensions.config
+import com.simplemobiletools.calendar.pro.extensions.getWeeklyViewItemHeight
 import com.simplemobiletools.calendar.pro.extensions.seconds
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.helpers.WEEK_START_DATE_TIME
 import com.simplemobiletools.calendar.pro.interfaces.WeekFragmentListener
 import com.simplemobiletools.calendar.pro.views.MyScrollView
-import com.simplemobiletools.commons.extensions.getDialogTheme
-import com.simplemobiletools.commons.extensions.setupDialogStuff
-import com.simplemobiletools.commons.extensions.updateActionBarSubtitle
-import com.simplemobiletools.commons.extensions.updateActionBarTitle
+import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.WEEK_SECONDS
 import com.simplemobiletools.commons.views.MyViewPager
 import kotlinx.android.synthetic.main.fragment_week_holder.view.*
@@ -48,6 +47,10 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         weekHolder = inflater.inflate(R.layout.fragment_week_holder, container, false) as ViewGroup
         weekHolder!!.background = ColorDrawable(context!!.config.backgroundColor)
+
+        val itemHeight = context!!.getWeeklyViewItemHeight().toInt()
+        weekHolder!!.week_view_hours_holder.setPadding(0, 0, 0, itemHeight)
+
         viewPager = weekHolder!!.week_view_view_pager
         viewPager!!.id = (System.currentTimeMillis() % 100000).toInt()
         setupFragment()
@@ -57,6 +60,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
     private fun setupFragment() {
         val weekTSs = getWeekTimestamps(currentWeekTS)
         val weeklyAdapter = MyWeekPagerAdapter(activity!!.supportFragmentManager, weekTSs, this)
+        val itemHeight = context!!.getWeeklyViewItemHeight().toInt()
 
         val textColor = context!!.config.textColor
         weekHolder!!.week_view_hours_holder.removeAllViews()
@@ -66,6 +70,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
             (layoutInflater.inflate(R.layout.weekly_view_hour_textview, null, false) as TextView).apply {
                 text = formattedHours
                 setTextColor(textColor)
+                height = itemHeight
                 weekHolder!!.week_view_hours_holder.addView(this)
             }
         }
@@ -122,12 +127,12 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
             if (startDateTime.year != DateTime().year) {
                 newTitle += " - ${startDateTime.year}"
             }
-            (activity as MainActivity).updateActionBarTitle(newTitle)
+            (activity as AppCompatActivity).updateActionBarTitle(newTitle)
         } else {
             val endMonthName = Formatter.getMonthName(context!!, endDateTime.monthOfYear)
-            (activity as MainActivity).updateActionBarTitle("$startMonthName - $endMonthName")
+            (activity as AppCompatActivity).updateActionBarTitle("$startMonthName - $endMonthName")
         }
-        (activity as MainActivity).updateActionBarSubtitle("${getString(R.string.week)} ${startDateTime.plusDays(3).weekOfWeekyear}")
+        (activity as AppCompatActivity).updateActionBarSubtitle("${getString(R.string.week)} ${startDateTime.plusDays(3).weekOfWeekyear}")
     }
 
     override fun goToToday() {
@@ -196,9 +201,27 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
     }
 
     override fun updateHoursTopMargin(margin: Int) {
-        weekHolder?.week_view_hours_divider?.layoutParams?.height = margin
-        weekHolder?.week_view_hours_scrollview?.requestLayout()
+        weekHolder?.apply {
+            week_view_hours_divider?.layoutParams?.height = margin
+            week_view_hours_scrollview?.requestLayout()
+            week_view_hours_scrollview?.onGlobalLayout {
+                week_view_hours_scrollview.scrollY = weekScrollY
+            }
+        }
     }
 
     override fun getCurrScrollY() = weekScrollY
+
+    override fun updateRowHeight(rowHeight: Int) {
+        val childCnt = weekHolder!!.week_view_hours_holder.childCount
+        for (i in 0..childCnt) {
+            val textView = weekHolder!!.week_view_hours_holder.getChildAt(i) as? TextView ?: continue
+            textView.layoutParams.height = rowHeight
+        }
+
+        weekHolder!!.week_view_hours_holder.setPadding(0, 0, 0, rowHeight)
+        (viewPager!!.adapter as? MyWeekPagerAdapter)?.updateNotVisibleScaleLevel(viewPager!!.currentItem)
+    }
+
+    override fun getFullFragmentHeight() = weekHolder!!.week_view_holder.height
 }

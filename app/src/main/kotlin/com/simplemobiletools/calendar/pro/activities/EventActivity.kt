@@ -411,7 +411,12 @@ class EventActivity : SimpleActivity() {
             mEventStartDateTime = dateTime
 
             val addMinutes = if (intent.getBooleanExtra(NEW_EVENT_SET_HOUR_DURATION, false)) {
-                60
+                // if an event is created at 23:00 on the weekly view, make it end on 23:59 by default to avoid spanning across multiple days
+                if (mEventStartDateTime.hourOfDay == 23) {
+                    59
+                } else {
+                    60
+                }
             } else {
                 config.defaultDuration
             }

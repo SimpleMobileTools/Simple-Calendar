@@ -401,10 +401,10 @@ class EventsHelper(val context: Context) {
         return events
     }
 
-    fun getEventsToExport(includePast: Boolean, eventTypes: ArrayList<Long>): ArrayList<Event> {
+    fun getEventsToExport(eventTypes: ArrayList<Long>): ArrayList<Event> {
         val currTS = getNowSeconds()
         var events = ArrayList<Event>()
-        if (includePast) {
+        if (config.exportPastEvents) {
             events.addAll(eventsDB.getAllEventsWithTypes(eventTypes))
         } else {
             events.addAll(eventsDB.getOneTimeFutureEventsWithTypes(currTS, eventTypes))

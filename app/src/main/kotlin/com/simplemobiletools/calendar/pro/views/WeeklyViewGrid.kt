@@ -6,6 +6,7 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
 import com.simplemobiletools.calendar.pro.R
+import com.simplemobiletools.calendar.pro.extensions.getWeeklyViewItemHeight
 
 class WeeklyViewGrid(context: Context, attrs: AttributeSet, defStyle: Int) : View(context, attrs, defStyle) {
     private val ROWS_CNT = 24
@@ -20,7 +21,7 @@ class WeeklyViewGrid(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        val rowHeight = height / ROWS_CNT.toFloat()
+        val rowHeight = context.getWeeklyViewItemHeight()
         for (i in 0 until ROWS_CNT) {
             val y = rowHeight * i.toFloat()
             canvas.drawLine(0f, y, width.toFloat(), y, paint)

@@ -1,5 +1,6 @@
 package com.simplemobiletools.calendar.pro.activities
 
+import android.app.Activity
 import android.app.TimePickerDialog
 import android.content.Intent
 import android.content.res.Resources
@@ -20,10 +21,12 @@ import com.simplemobiletools.commons.models.RadioItem
 import kotlinx.android.synthetic.main.activity_settings.*
 import org.joda.time.DateTime
 import java.io.File
+import java.io.InputStream
 import java.util.*
 
 class SettingsActivity : SimpleActivity() {
     private val GET_RINGTONE_URI = 1
+    private val PICK_IMPORT_SOURCE_INTENT = 2
 
     lateinit var res: Resources
     private var mStoredPrimaryColor = 0
@@ -51,7 +54,6 @@ class SettingsActivity : SimpleActivity() {
         setupWeekNumbers()
         setupShowGrid()
         setupWeeklyStart()
-        setupWeeklyEnd()
         setupVibrate()
         setupReminderSound()
         setupReminderAudioStream()
@@ -105,6 +107,9 @@ class SettingsActivity : SimpleActivity() {
         if (requestCode == GET_RINGTONE_URI && resultCode == RESULT_OK && resultData != null) {
             val newAlarmSound = storeNewYourAlarmSound(resultData)
             updateReminderSound(newAlarmSound)
+        } else if (requestCode == PICK_IMPORT_SOURCE_INTENT && resultCode == Activity.RESULT_OK && resultData != null && resultData.data != null) {
+            val inputStream = contentResolver.openInputStream(resultData.data!!)
+            parseFile(inputStream)
         }
     }
 
@@ -293,32 +298,11 @@ class SettingsActivity : SimpleActivity() {
         settings_start_weekly_at.text = getHoursString(config.startWeeklyAt)
         settings_start_weekly_at_holder.setOnClickListener {
             val items = ArrayList<RadioItem>()
-            (0..24).mapTo(items) { RadioItem(it, getHoursString(it)) }
+            (0..16).mapTo(items) { RadioItem(it, getHoursString(it)) }
 
             RadioGroupDialog(this@SettingsActivity, items, config.startWeeklyAt) {
-                if (it as Int >= config.endWeeklyAt) {
-                    toast(R.string.day_end_before_start)
-                } else {
-                    config.startWeeklyAt = it
-                    settings_start_weekly_at.text = getHoursString(it)
-                }
-            }
-        }
-    }
-
-    private fun setupWeeklyEnd() {
-        settings_end_weekly_at.text = getHoursString(config.endWeeklyAt)
-        settings_end_weekly_at_holder.setOnClickListener {
-            val items = ArrayList<RadioItem>()
-            (0..24).mapTo(items) { RadioItem(it, getHoursString(it)) }
-
-            RadioGroupDialog(this@SettingsActivity, items, config.endWeeklyAt) {
-                if (it as Int <= config.startWeeklyAt) {
-                    toast(R.string.day_end_before_start)
-                } else {
-                    config.endWeeklyAt = it
-                    settings_end_weekly_at.text = getHoursString(it)
-                }
+                config.startWeeklyAt = it as Int
+                settings_start_weekly_at.text = getHoursString(it)
             }
         }
     }
@@ -670,7 +654,6 @@ class SettingsActivity : SimpleActivity() {
                 put(WIDGET_TEXT_COLOR, config.widgetTextColor)
                 put(WEEK_NUMBERS, config.showWeekNumbers)
                 put(START_WEEKLY_AT, config.startWeeklyAt)
-                put(END_WEEKLY_AT, config.endWeeklyAt)
                 put(VIBRATE, config.vibrateOnReminder)
                 put(LAST_EVENT_REMINDER_MINUTES, config.lastEventReminderMinutes1)
                 put(LAST_EVENT_REMINDER_MINUTES_2, config.lastEventReminderMinutes2)
@@ -703,14 +686,18 @@ class SettingsActivity : SimpleActivity() {
 
     private fun setupImportSettings() {
         settings_import_holder.setOnClickListener {
-            handlePermission(PERMISSION_READ_STORAGE) {
-                if (it) {
-                    FilePickerDialog(this) {
-                        ensureBackgroundThread {
-                            try {
-                                parseFile(it)
-                            } catch (e: Exception) {
-                                showErrorToast(e)
+            if (isQPlus()) {
+                Intent(Intent.ACTION_GET_CONTENT).apply {
+                    addCategory(Intent.CATEGORY_OPENABLE)
+                    type = "text/plain"
+                    startActivityForResult(this, PICK_IMPORT_SOURCE_INTENT)
+                }
+            } else {
+                handlePermission(PERMISSION_READ_STORAGE) {
+                    if (it) {
+                        FilePickerDialog(this) {
+                            ensureBackgroundThread {
+                                parseFile(File(it).inputStream())
                             }
                         }
                     }
@@ -719,8 +706,12 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
-    private fun parseFile(path: String) {
-        val inputStream = File(path).inputStream()
+    private fun parseFile(inputStream: InputStream?) {
+        if (inputStream == null) {
+            toast(R.string.unknown_error_occurred)
+            return
+        }
+
         var importedItems = 0
         val configValues = LinkedHashMap<String, Any>()
         inputStream.bufferedReader().use {
@@ -756,7 +747,6 @@ class SettingsActivity : SimpleActivity() {
                 WIDGET_TEXT_COLOR -> config.widgetTextColor = value.toInt()
                 WEEK_NUMBERS -> config.showWeekNumbers = value.toBoolean()
                 START_WEEKLY_AT -> config.startWeeklyAt = value.toInt()
-                END_WEEKLY_AT -> config.endWeeklyAt = value.toInt()
                 VIBRATE -> config.vibrateOnReminder = value.toBoolean()
                 LAST_EVENT_REMINDER_MINUTES -> config.lastEventReminderMinutes1 = value.toInt()
                 LAST_EVENT_REMINDER_MINUTES_2 -> config.lastEventReminderMinutes2 = value.toInt()
@@ -784,8 +774,10 @@ class SettingsActivity : SimpleActivity() {
             }
         }
 
-        toast(if (configValues.size > 0) R.string.settings_imported_successfully else R.string.no_entries_for_importing)
         runOnUiThread {
+            val msg = if (configValues.size > 0) R.string.settings_imported_successfully else R.string.no_entries_for_importing
+            toast(msg)
+
             setupSettingItems()
             updateWidgets()
         }

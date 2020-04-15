@@ -124,7 +124,6 @@
     <string name="override_event_types">Substituir os tipos de eventos no arquivo</string>
 
     <!-- Event details -->
-    <string name="title">Título</string>
     <string name="location">Localização</string>
     <string name="description">Descrição</string>
     <string name="all_day">O dia todo</string>
@@ -247,7 +246,7 @@ selecionando a opção \"Fonte de áudio usada pelos lembretes\" e modificando o
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Simple Calendar Pro - Events &amp; Reminders</string>
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Be notified of the important moments in your life.</string>
+    <string name="app_short_description">Simple mobile 2020 calendar. Schedule planner &amp; appointment reminder for any day</string>
     <string name="app_long_description">
         Simple Calendar Pro is a fully customizable, offline calendar designed to do exactly what a calendar should do. <b>No complicated features, unnecessary permissions and no ads!</b>
 

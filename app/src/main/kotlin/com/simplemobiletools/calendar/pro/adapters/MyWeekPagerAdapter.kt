@@ -21,7 +21,7 @@ class MyWeekPagerAdapter(fm: FragmentManager, private val mWeekTimestamps: List<
 
         val fragment = WeekFragment()
         fragment.arguments = bundle
-        fragment.mListener = mListener
+        fragment.listener = mListener
 
         mFragments.put(position, fragment)
         return fragment
@@ -36,5 +36,10 @@ class MyWeekPagerAdapter(fm: FragmentManager, private val mWeekTimestamps: List<
         for (i in -1..1) {
             mFragments[pos + i]?.updateCalendar()
         }
+    }
+
+    fun updateNotVisibleScaleLevel(pos: Int) {
+        mFragments[pos - 1]?.updateNotVisibleViewScaleLevel()
+        mFragments[pos + 1]?.updateNotVisibleViewScaleLevel()
     }
 }

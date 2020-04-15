@@ -11,7 +11,7 @@
     <string name="no_upcoming_events">Yaklaşan etkinlikleriniz yok gibi görünüyor.</string>
     <string name="go_to_today">Bugüne git</string>
     <string name="go_to_date">Tarihe git</string>
-    <string name="upgraded_from_free">Selam,\n\neski ücretsiz uygulamadan yeni sürüme geçmiş gibi görünüyorsunuz. Yerel olarak saklanan etkinlikleri bir .ics dosyasına aktarıp ardından içe aktararak elle taşımanız gerekiyor. Her iki dışa/içe aktar düğmesini ana ekran menüsünde bulabilirsiniz.\n\nArdından, uygulama ayarlarının üstünde \'Pro'ya Yükselt\' düğmesine sahip eski sürümü kaldırabilirsiniz. Daha sonra yalnızca uygulama ayarlarınızı sıfırlamanız gerekir.\n\nTeşekkürler!</string>
+    <string name="upgraded_from_free">Selam,\n\neski ücretsiz uygulamadan yeni sürüme geçmiş gibi görünüyorsunuz. Yerel olarak saklanan etkinlikleri bir .ics dosyasına aktarıp ardından içe aktararak elle taşımanız gerekiyor. Her iki dışa/içe aktar düğmesini ana ekran menüsünde bulabilirsiniz.\n\nArdından, uygulama ayarlarının üstünde \'Pro\'ya Yükselt\' düğmesine sahip eski sürümü kaldırabilirsiniz. Daha sonra yalnızca uygulama ayarlarınızı sıfırlamanız gerekir.\n\nTeşekkürler!</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Aylık takvim</string>
@@ -124,7 +124,6 @@
     <string name="override_event_types">Dosyadaki etkinlik türlerini geçersiz kıl</string>
 
     <!-- Event details -->
-    <string name="title">Başlık</string>
     <string name="location">Konum</string>
     <string name="description">Açıklama</string>
     <string name="all_day">Tüm-gün</string>
@@ -243,13 +242,13 @@
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
-    <string name="app_title">Basit Takvim Pro - Etkinlikler &amp; Hatırlatıcılar</string>
+    <string name="app_title">Basit Takvim Pro - Etkinlikler ve Hatırlatıcılar</string>
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Hayatınızdaki önemli anlardan haberdar olun.</string>
+    <string name="app_short_description">Simple mobile 2020 calendar. Schedule planner &amp; appointment reminder for any day</string>
     <string name="app_long_description">
         Basit Takvim Pro, bir takvimin tam olarak yapması gerekeni yapmak için tasarlanmış, tamamen özelleştirilebilir, çevrimdışı bir takvimdir. <b>Karmaşık özellikler, gereksiz izinler ve reklam içermez!</b>
 
-        İster tekli ister tekrarlayan etkinlikler, doğum günleri, yıldönümleri, iş toplantıları, randevular veya başka bir şey organize ediyor olun, Basit Takvim Pro <b>düzenli kalmanızı kolaylaştırır</b>. İnanılmaz çeşitli <b>özelleştirme seçenekleri</b> ile etkinlik hatırlatıcılarını, bildirim seslerini, takvim widget'larını ve uygulamanın görünümünü özelleştirebilirsiniz.
+        İster tekli ister tekrarlayan etkinlikler, doğum günleri, yıldönümleri, iş toplantıları, randevular veya başka bir şey organize ediyor olun, Basit Takvim Pro <b>düzenli kalmanızı kolaylaştırır</b>. İnanılmaz çeşitli <b>özelleştirme seçenekleri</b> ile etkinlik hatırlatıcılarını, bildirim seslerini, takvim widget\'larını ve uygulamanın görünümünü özelleştirebilirsiniz.
 
         Günlük, haftalık ve aylık görünümler, yaklaşan etkinliklerinizi &amp; randevularınızı kontrol etmeyi kolaylaştırır. Her şeyi takvim görünümü yerine basit bir etkinlik listesi olarak bile görüntüleyebilirsiniz, böylece <b> hayatınızda neyin ne zaman geldiğini tam olarak bilirsiniz.</b>
 
@@ -257,12 +256,12 @@
         <b>Basit Takvim Pro – Özellikleri &amp; Avantajları</b>
         ----------------------------------------------------------
 
-        ✔️ Reklam veya rahatsız edici pop-up'lar yoktur
+        ✔️ Reklam veya rahatsız edici pop-up\'lar yoktur
         ✔️ İnternet erişimi gerekmez, size daha fazla gizlilik &amp; güvenlik sağlar
         ✔️ Minimum izin gerekir
         ✔️ Sadeliğe vurgu - bir takvimin yapması gerekeni yapar!
         ✔️ Açık kaynak
-        ✔️ Tamamen özelleştirilebilir temalar &amp; takvim / etkinlik widget'ları
+        ✔️ Tamamen özelleştirilebilir temalar &amp; takvim / etkinlik widget\'ları
         ✔️ 29 dile çevrilmiş
         ✔️ Başka bir cihazda içe aktarmak için ayarları .txt dosyalarına aktarma
         ✔️ Cihazlar arasında etkinlikleri senkronize etmek için CalDAV takvim senkronizasyonu desteği
@@ -276,12 +275,12 @@
         ✔️ Kişisel takvim veya iş takvimi olarak kullanma
         ✔️ Bir etkinlik hakkında sizi uyarmak için hatırlatıcılar &amp; e-posta bildirimleri arasından seçim yapma
 
-        BASİT TAKVİM PRO'YU İNDİR - REKLAMSIZ BASİT ÇEVRİMDIŞI TAKVİM!
+        BASİT TAKVİM PRO\'YU İNDİRİN - REKLAMSIZ BASİT ÇEVRİMDIŞI TAKVİM!
 
         <b>Basit Araçlar paketinin tamamını buradan inceleyin:</b>
         https://www.simplemobiletools.com
 
-        <b>Basit Takvim Pro'nun bağımsız web sitesi:</b>
+        <b>Basit Takvim Pro\'nun bağımsız web sitesi:</b>
         https://www.simplemobiletools.com/calendar
 
         <b>Facebook:</b>

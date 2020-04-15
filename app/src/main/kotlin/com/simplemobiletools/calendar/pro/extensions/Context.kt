@@ -525,3 +525,9 @@ fun Context.getWidgetSmallFontSize() = getWidgetMediumFontSize() - 3f
 fun Context.getWidgetMediumFontSize() = resources.getDimension(R.dimen.day_text_size) / resources.displayMetrics.density
 fun Context.getWidgetLargeFontSize() = getWidgetMediumFontSize() + 3f
 fun Context.getWidgetExtraLargeFontSize() = getWidgetMediumFontSize() + 6f
+
+fun Context.getWeeklyViewItemHeight(): Float {
+    val defaultHeight = resources.getDimension(R.dimen.weekly_view_row_height)
+    val multiplier = config.weeklyViewItemHeightMultiplier
+    return defaultHeight * multiplier
+}

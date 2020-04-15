@@ -124,7 +124,6 @@
     <string name="override_event_types">Sovrascrivi i tipi di eventi nel file</string>
 
     <!-- Event details -->
-    <string name="title">Titolo</string>
     <string name="location">Posizione</string>
     <string name="description">Descrizione</string>
     <string name="all_day">Tutto il giorno</string>
@@ -247,7 +246,7 @@
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Semplice Calendario Pro - Eventi &amp; Promemoria</string>
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Be notified of the important moments in your life.</string>
+    <string name="app_short_description">Simple mobile 2020 calendar. Schedule planner &amp; appointment reminder for any day</string>
     <string name="app_long_description">
         Semplice Calendario Pro è un calendario offline completamente personalizzabile progettato per fare esattamente quello che un calendario dovrebbe fare. <b>Non ci sono funzionalità complicate, permessi non necessari e senza pubblicità!</b>
 

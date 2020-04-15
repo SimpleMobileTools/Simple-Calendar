@@ -661,37 +661,6 @@
 
         </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/settings_end_weekly_at_holder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackground"
-            android:paddingStart="@dimen/normal_margin"
-            android:paddingTop="@dimen/bigger_margin"
-            android:paddingEnd="@dimen/normal_margin"
-            android:paddingBottom="@dimen/bigger_margin">
-
-            <com.simplemobiletools.commons.views.MyTextView
-                android:id="@+id/settings_end_weekly_at_label"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toStartOf="@+id/settings_end_weekly_at"
-                android:paddingStart="@dimen/medium_margin"
-                android:paddingEnd="@dimen/medium_margin"
-                android:text="@string/end_day_at"/>
-
-            <com.simplemobiletools.commons.views.MyTextView
-                android:id="@+id/settings_end_weekly_at"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="@dimen/small_margin"
-                android:background="@null"
-                android:clickable="false"/>
-
-        </RelativeLayout>
-
         <View
             android:id="@+id/monthly_view_divider"
             android:layout_width="match_parent"
@@ -1014,7 +983,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/bigger_margin"
-            android:layout_marginLeft="@dimen/bigger_margin"
             android:layout_marginTop="@dimen/activity_margin"
             android:text="@string/migrating"
             android:textAllCaps="true"
@@ -1037,7 +1005,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:paddingStart="@dimen/medium_margin"
-                android:paddingLeft="@dimen/medium_margin"
                 android:text="@string/export_settings"/>
 
         </RelativeLayout>
@@ -1059,7 +1026,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:paddingStart="@dimen/medium_margin"
-                android:paddingLeft="@dimen/medium_margin"
                 android:text="@string/import_settings"/>
 
         </RelativeLayout>

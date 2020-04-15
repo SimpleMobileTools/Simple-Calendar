@@ -2,6 +2,7 @@ package com.simplemobiletools.calendar.pro.helpers
 
 import android.content.Context
 import android.media.AudioManager
+import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.scheduleCalDAVSync
 import com.simplemobiletools.commons.extensions.getDefaultAlarmTitle
@@ -23,10 +24,6 @@ class Config(context: Context) : BaseConfig(context) {
     var startWeeklyAt: Int
         get() = prefs.getInt(START_WEEKLY_AT, 7)
         set(startWeeklyAt) = prefs.edit().putInt(START_WEEKLY_AT, startWeeklyAt).apply()
-
-    var endWeeklyAt: Int
-        get() = prefs.getInt(END_WEEKLY_AT, 23)
-        set(endWeeklyAt) = prefs.edit().putInt(END_WEEKLY_AT, endWeeklyAt).apply()
 
     var vibrateOnReminder: Boolean
         get() = prefs.getBoolean(VIBRATE, false)
@@ -174,4 +171,16 @@ class Config(context: Context) : BaseConfig(context) {
     var allowChangingTimeZones: Boolean
         get() = prefs.getBoolean(ALLOW_CHANGING_TIME_ZONES, false)
         set(allowChangingTimeZones) = prefs.edit().putBoolean(ALLOW_CHANGING_TIME_ZONES, allowChangingTimeZones).apply()
+
+    var lastExportPath: String
+        get() = prefs.getString(LAST_EXPORT_PATH, "")!!
+        set(lastExportPath) = prefs.edit().putString(LAST_EXPORT_PATH, lastExportPath).apply()
+
+    var exportPastEvents: Boolean
+        get() = prefs.getBoolean(EXPORT_PAST_EVENTS, false)
+        set(exportPastEvents) = prefs.edit().putBoolean(EXPORT_PAST_EVENTS, exportPastEvents).apply()
+
+    var weeklyViewItemHeightMultiplier: Float
+        get() = prefs.getFloat(WEEKLY_VIEW_ITEM_HEIGHT_MULTIPLIER, 1f)
+        set(weeklyViewItemHeightMultiplier) = prefs.edit().putFloat(WEEKLY_VIEW_ITEM_HEIGHT_MULTIPLIER, weeklyViewItemHeightMultiplier).apply()
 }
