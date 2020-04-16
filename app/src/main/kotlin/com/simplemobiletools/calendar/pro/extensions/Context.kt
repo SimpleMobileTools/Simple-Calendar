@@ -262,7 +262,7 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
     val builder = NotificationCompat.Builder(this, channelId)
             .setContentTitle(contentTitle)
             .setContentText(contentText)
-            .setSmallIcon(R.drawable.ic_calendar)
+            .setSmallIcon(R.drawable.ic_calendar_vector)
             .setContentIntent(pendingIntent)
             .setPriority(NotificationCompat.PRIORITY_MAX)
             .setDefaults(Notification.DEFAULT_LIGHTS)
