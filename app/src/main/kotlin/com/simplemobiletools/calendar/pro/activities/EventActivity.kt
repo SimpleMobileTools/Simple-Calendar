@@ -5,6 +5,7 @@ import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
 import android.database.Cursor
+import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.LayerDrawable
 import android.net.Uri
@@ -86,7 +87,6 @@ class EventActivity : SimpleActivity() {
     private var mStoredEventTypes = ArrayList<EventType>()
     private var mOriginalTimeZone = DateTimeZone.getDefault().id
 
-    private lateinit var mAttendeePlaceholder: Drawable
     private lateinit var mEventStartDateTime: DateTime
     private lateinit var mEventEndDateTime: DateTime
     private lateinit var mEvent: Event
@@ -103,8 +103,6 @@ class EventActivity : SimpleActivity() {
         val intent = intent ?: return
         mDialogTheme = getDialogTheme()
         mWasContactsPermissionChecked = hasPermission(PERMISSION_READ_CONTACTS)
-        mAttendeePlaceholder = resources.getDrawable(R.drawable.attendee_circular_background)
-        (mAttendeePlaceholder as LayerDrawable).findDrawableByLayerId(R.id.attendee_circular_background).applyColorFilter(config.primaryColor)
 
         val eventId = intent.getLongExtra(EVENT_ID, 0L)
         ensureBackgroundThread {
@@ -1347,19 +1345,20 @@ class EventActivity : SimpleActivity() {
                 beVisibleIf(attendee.showStatusImage())
             }
 
+            event_contact_name.text = if (attendee.isMe) getString(R.string.my_status) else attendee.getPublicName()
+            if (attendee.isMe) {
+                (event_contact_name.layoutParams as RelativeLayout.LayoutParams).addRule(RelativeLayout.START_OF, event_contact_me_status.id)
+            }
+
+            val placeholder = BitmapDrawable(resources, context.getContactLetterIcon(event_contact_name.value))
             event_contact_image.apply {
-                attendee.updateImage(applicationContext, this, mAttendeePlaceholder)
+                attendee.updateImage(applicationContext, this, placeholder)
                 beVisible()
             }
 
             event_contact_dismiss.apply {
                 tag = attendee.toString()
                 beGoneIf(attendee.isMe)
-            }
-
-            event_contact_name.text = if (attendee.isMe) getString(R.string.my_status) else attendee.getPublicName()
-            if (attendee.isMe) {
-                (event_contact_name.layoutParams as RelativeLayout.LayoutParams).addRule(RelativeLayout.START_OF, event_contact_me_status.id)
             }
 
             if (attendee.isMe) {
@@ -1473,7 +1472,7 @@ class EventActivity : SimpleActivity() {
                     val photoUri = cursor.getStringValue(ContactsContract.CommonDataKinds.StructuredName.PHOTO_THUMBNAIL_URI) ?: ""
 
                     val names = arrayListOf(prefix, firstName, middleName, surname, suffix).filter { it.trim().isNotEmpty() }
-                    val fullName = TextUtils.join("", names)
+                    val fullName = TextUtils.join(" ", names).trim()
                     if (fullName.isNotEmpty() || photoUri.isNotEmpty()) {
                         val contact = Attendee(id, fullName, "", CalendarContract.Attendees.ATTENDEE_STATUS_NONE, photoUri, false, CalendarContract.Attendees.RELATIONSHIP_NONE)
                         contacts.add(contact)

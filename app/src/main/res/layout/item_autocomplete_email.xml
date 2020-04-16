@@ -27,6 +27,7 @@
         android:lines="1"
         android:maxLines="1"
         android:paddingStart="@dimen/medium_margin"
+        android:paddingEnd="@dimen/medium_margin"
         android:singleLine="true"
         android:textSize="@dimen/bigger_text_size"
         app:layout_constraintBottom_toBottomOf="parent"

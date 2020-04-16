@@ -1,6 +1,6 @@
 package com.simplemobiletools.calendar.pro.adapters
 
-import android.graphics.drawable.LayerDrawable
+import android.graphics.drawable.BitmapDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,19 +8,13 @@ import android.widget.ArrayAdapter
 import android.widget.Filter
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
-import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.models.Attendee
-import com.simplemobiletools.commons.extensions.applyColorFilter
+import com.simplemobiletools.commons.extensions.getContactLetterIcon
 import com.simplemobiletools.commons.extensions.normalizeString
 import kotlinx.android.synthetic.main.item_autocomplete_email_name.view.*
 
 class AutoCompleteTextViewAdapter(val activity: SimpleActivity, val contacts: ArrayList<Attendee>) : ArrayAdapter<Attendee>(activity, 0, contacts) {
     var resultList = ArrayList<Attendee>()
-    private var placeholder = activity.resources.getDrawable(R.drawable.attendee_circular_background)
-
-    init {
-        (placeholder as LayerDrawable).findDrawableByLayerId(R.id.attendee_circular_background).applyColorFilter(activity.config.primaryColor)
-    }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val contact = resultList[position]
@@ -30,6 +24,13 @@ class AutoCompleteTextViewAdapter(val activity: SimpleActivity, val contacts: Ar
             listItem = LayoutInflater.from(activity).inflate(layout, parent, false)
         }
 
+        val nameToUse = when {
+            contact.name.isNotEmpty() -> contact.name
+            contact.email.isNotEmpty() -> contact.email
+            else -> "S"
+        }
+
+        val placeholder = BitmapDrawable(activity.resources, context.getContactLetterIcon(nameToUse))
         listItem!!.apply {
             tag = contact.name.isNotEmpty()
             item_autocomplete_name?.text = contact.name
