@@ -207,6 +207,7 @@
     <string name="select_a_different_caldav_color">Επιλέξτε διαφορετικό χρώμα (μπορεί να εφαρμοστεί μόνο τοπικά)</string>
     <string name="insufficient_permissions">Δεν επιτρέπεται η εγγραφή στο επιλεγμένο ημερολόγιο</string>
     <string name="caldav_event_not_found">Δεν βρέθηκε Εκδήλωση. Παρακαλώ ενεργοποιήστε το συγχρονισμό CalDAV του Ημερολογίου από τις ρυθμίσεις της εφαρμογής.</string>
+    <string name="no_synchronized_calendars">No synchronizable calendars have been found</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->

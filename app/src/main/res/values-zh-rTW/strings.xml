@@ -207,6 +207,7 @@
     <string name="select_a_different_caldav_color">選擇不同的顏色 (只能被添加於本機端)</string>
     <string name="insufficient_permissions">你不被允許對選擇的行事曆寫入</string>
     <string name="caldav_event_not_found">未發現活動。請在程式設定中為合適的行事曆啟用CalDAV同步。</string>
+    <string name="no_synchronized_calendars">No synchronizable calendars have been found</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->

@@ -207,6 +207,7 @@
     <string name="select_a_different_caldav_color">Escolle un color diferente (pode que só se aplique localmente)</string>
     <string name="insufficient_permissions">Non tes permiso para escribir no calendario seleccionado</string>
     <string name="caldav_event_not_found">Evento non atopado. Activa a sincronización de CalDAV para o calendario apropiado nos axustes da aplicación.</string>
+    <string name="no_synchronized_calendars">No synchronizable calendars have been found</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->

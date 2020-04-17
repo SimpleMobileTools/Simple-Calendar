@@ -207,6 +207,7 @@
     <string name="select_a_different_caldav_color">다른 색상을 선택해주세요(로컬에만 적용 가능)</string>
     <string name="insufficient_permissions">선택한 캘린더에 작성할 수 없습니다.</string>
     <string name="caldav_event_not_found">일정을 찾을 수 없습니다. 앱 설정에서 해당 캘린더에 대해 CalDAV 동기화를 활성화해주세요.</string>
+    <string name="no_synchronized_calendars">No synchronizable calendars have been found</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
