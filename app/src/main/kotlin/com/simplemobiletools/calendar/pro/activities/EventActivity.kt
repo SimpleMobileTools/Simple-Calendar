@@ -9,8 +9,10 @@ import android.graphics.drawable.Drawable
 import android.graphics.drawable.LayerDrawable
 import android.net.Uri
 import android.os.Bundle
-import android.provider.CalendarContract
-import android.provider.ContactsContract
+import android.provider.CalendarContract.Attendees
+import android.provider.ContactsContract.CommonDataKinds
+import android.provider.ContactsContract.CommonDataKinds.StructuredName
+import android.provider.ContactsContract.Data
 import android.text.TextUtils
 import android.text.method.LinkMovementMethod
 import android.view.Menu
@@ -1256,9 +1258,9 @@ class EventActivity : SimpleActivity() {
 
         mAttendees.sortWith(compareBy<Attendee>
         { it.isMe }.thenBy
-        { it.status == CalendarContract.Attendees.ATTENDEE_STATUS_ACCEPTED }.thenBy
-        { it.status == CalendarContract.Attendees.ATTENDEE_STATUS_DECLINED }.thenBy
-        { it.status == CalendarContract.Attendees.ATTENDEE_STATUS_TENTATIVE }.thenBy
+        { it.status == Attendees.ATTENDEE_STATUS_ACCEPTED }.thenBy
+        { it.status == Attendees.ATTENDEE_STATUS_DECLINED }.thenBy
+        { it.status == Attendees.ATTENDEE_STATUS_TENTATIVE }.thenBy
         { it.status })
         mAttendees.reverse()
 
@@ -1371,9 +1373,9 @@ class EventActivity : SimpleActivity() {
             if (attendee.isMe) {
                 event_contact_attendee.setOnClickListener {
                     val items = arrayListOf(
-                            RadioItem(CalendarContract.Attendees.ATTENDEE_STATUS_ACCEPTED, getString(R.string.going)),
-                            RadioItem(CalendarContract.Attendees.ATTENDEE_STATUS_DECLINED, getString(R.string.not_going)),
-                            RadioItem(CalendarContract.Attendees.ATTENDEE_STATUS_TENTATIVE, getString(R.string.maybe_going))
+                            RadioItem(Attendees.ATTENDEE_STATUS_ACCEPTED, getString(R.string.going)),
+                            RadioItem(Attendees.ATTENDEE_STATUS_DECLINED, getString(R.string.not_going)),
+                            RadioItem(Attendees.ATTENDEE_STATUS_TENTATIVE, getString(R.string.maybe_going))
                     )
 
                     RadioGroupDialog(this@EventActivity, items, attendee.status) {
@@ -1387,8 +1389,8 @@ class EventActivity : SimpleActivity() {
 
     private fun getAttendeeStatusImage(attendee: Attendee): Drawable {
         return resources.getDrawable(when (attendee.status) {
-            CalendarContract.Attendees.ATTENDEE_STATUS_ACCEPTED -> R.drawable.ic_check_green
-            CalendarContract.Attendees.ATTENDEE_STATUS_DECLINED -> R.drawable.ic_cross_red
+            Attendees.ATTENDEE_STATUS_ACCEPTED -> R.drawable.ic_check_green
+            Attendees.ATTENDEE_STATUS_DECLINED -> R.drawable.ic_cross_red
             else -> R.drawable.ic_question_yellow
         })
     }
@@ -1396,9 +1398,9 @@ class EventActivity : SimpleActivity() {
     private fun updateAttendeeMe(holder: RelativeLayout, attendee: Attendee) {
         holder.apply {
             event_contact_me_status.text = getString(when (attendee.status) {
-                CalendarContract.Attendees.ATTENDEE_STATUS_ACCEPTED -> R.string.going
-                CalendarContract.Attendees.ATTENDEE_STATUS_DECLINED -> R.string.not_going
-                CalendarContract.Attendees.ATTENDEE_STATUS_TENTATIVE -> R.string.maybe_going
+                Attendees.ATTENDEE_STATUS_ACCEPTED -> R.string.going
+                Attendees.ATTENDEE_STATUS_DECLINED -> R.string.not_going
+                Attendees.ATTENDEE_STATUS_TENTATIVE -> R.string.maybe_going
                 else -> R.string.invited
             })
 
@@ -1425,7 +1427,7 @@ class EventActivity : SimpleActivity() {
 
         val customEmails = mAttendeeAutoCompleteViews.filter { it.isVisible() }.map { it.value }.filter { it.isNotEmpty() }.toMutableList() as ArrayList<String>
         customEmails.mapTo(attendees) {
-            Attendee(0, "", it, CalendarContract.Attendees.ATTENDEE_STATUS_INVITED, "", false, CalendarContract.Attendees.RELATIONSHIP_NONE)
+            Attendee(0, "", it, Attendees.ATTENDEE_STATUS_INVITED, "", false, Attendees.RELATIONSHIP_NONE)
         }
         attendees = attendees.distinctBy { it.email }.toMutableList() as ArrayList<Attendee>
 
@@ -1433,8 +1435,8 @@ class EventActivity : SimpleActivity() {
             val currentCalendar = calDAVHelper.getCalDAVCalendars("", true).firstOrNull { it.id == mEventCalendarId }
             mAvailableContacts.firstOrNull { it.email == currentCalendar?.accountName }?.apply {
                 attendees = attendees.filter { it.email != currentCalendar?.accountName }.toMutableList() as ArrayList<Attendee>
-                status = CalendarContract.Attendees.ATTENDEE_STATUS_ACCEPTED
-                relationship = CalendarContract.Attendees.RELATIONSHIP_ORGANIZER
+                status = Attendees.ATTENDEE_STATUS_ACCEPTED
+                relationship = Attendees.RELATIONSHIP_ORGANIZER
                 attendees.add(this)
             }
         }
@@ -1444,32 +1446,32 @@ class EventActivity : SimpleActivity() {
 
     private fun getNames(): List<Attendee> {
         val contacts = ArrayList<Attendee>()
-        val uri = ContactsContract.Data.CONTENT_URI
+        val uri = Data.CONTENT_URI
         val projection = arrayOf(
-                ContactsContract.Data.CONTACT_ID,
-                ContactsContract.CommonDataKinds.StructuredName.PREFIX,
-                ContactsContract.CommonDataKinds.StructuredName.GIVEN_NAME,
-                ContactsContract.CommonDataKinds.StructuredName.MIDDLE_NAME,
-                ContactsContract.CommonDataKinds.StructuredName.FAMILY_NAME,
-                ContactsContract.CommonDataKinds.StructuredName.SUFFIX,
-                ContactsContract.CommonDataKinds.StructuredName.PHOTO_THUMBNAIL_URI)
+                Data.CONTACT_ID,
+                StructuredName.PREFIX,
+                StructuredName.GIVEN_NAME,
+                StructuredName.MIDDLE_NAME,
+                StructuredName.FAMILY_NAME,
+                StructuredName.SUFFIX,
+                StructuredName.PHOTO_THUMBNAIL_URI)
 
-        val selection = "${ContactsContract.Data.MIMETYPE} = ?"
-        val selectionArgs = arrayOf(ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE)
+        val selection = "${Data.MIMETYPE} = ?"
+        val selectionArgs = arrayOf(StructuredName.CONTENT_ITEM_TYPE)
 
         queryCursor(uri, projection, selection, selectionArgs) { cursor ->
-            val id = cursor.getIntValue(ContactsContract.Data.CONTACT_ID)
-            val prefix = cursor.getStringValue(ContactsContract.CommonDataKinds.StructuredName.PREFIX) ?: ""
-            val firstName = cursor.getStringValue(ContactsContract.CommonDataKinds.StructuredName.GIVEN_NAME) ?: ""
-            val middleName = cursor.getStringValue(ContactsContract.CommonDataKinds.StructuredName.MIDDLE_NAME) ?: ""
-            val surname = cursor.getStringValue(ContactsContract.CommonDataKinds.StructuredName.FAMILY_NAME) ?: ""
-            val suffix = cursor.getStringValue(ContactsContract.CommonDataKinds.StructuredName.SUFFIX) ?: ""
-            val photoUri = cursor.getStringValue(ContactsContract.CommonDataKinds.StructuredName.PHOTO_THUMBNAIL_URI) ?: ""
+            val id = cursor.getIntValue(Data.CONTACT_ID)
+            val prefix = cursor.getStringValue(StructuredName.PREFIX) ?: ""
+            val firstName = cursor.getStringValue(StructuredName.GIVEN_NAME) ?: ""
+            val middleName = cursor.getStringValue(StructuredName.MIDDLE_NAME) ?: ""
+            val surname = cursor.getStringValue(StructuredName.FAMILY_NAME) ?: ""
+            val suffix = cursor.getStringValue(StructuredName.SUFFIX) ?: ""
+            val photoUri = cursor.getStringValue(StructuredName.PHOTO_THUMBNAIL_URI) ?: ""
 
             val names = arrayListOf(prefix, firstName, middleName, surname, suffix).filter { it.trim().isNotEmpty() }
             val fullName = TextUtils.join(" ", names).trim()
             if (fullName.isNotEmpty() || photoUri.isNotEmpty()) {
-                val contact = Attendee(id, fullName, "", CalendarContract.Attendees.ATTENDEE_STATUS_NONE, photoUri, false, CalendarContract.Attendees.RELATIONSHIP_NONE)
+                val contact = Attendee(id, fullName, "", Attendees.ATTENDEE_STATUS_NONE, photoUri, false, Attendees.RELATIONSHIP_NONE)
                 contacts.add(contact)
             }
         }
@@ -1478,16 +1480,16 @@ class EventActivity : SimpleActivity() {
 
     private fun getEmails(): ArrayList<Attendee> {
         val contacts = ArrayList<Attendee>()
-        val uri = ContactsContract.CommonDataKinds.Email.CONTENT_URI
+        val uri = CommonDataKinds.Email.CONTENT_URI
         val projection = arrayOf(
-                ContactsContract.Data.CONTACT_ID,
-                ContactsContract.CommonDataKinds.Email.DATA
+                Data.CONTACT_ID,
+                CommonDataKinds.Email.DATA
         )
 
         queryCursor(uri, projection) { cursor ->
-            val id = cursor.getIntValue(ContactsContract.Data.CONTACT_ID)
-            val email = cursor.getStringValue(ContactsContract.CommonDataKinds.Email.DATA) ?: return@queryCursor
-            val contact = Attendee(id, "", email, CalendarContract.Attendees.ATTENDEE_STATUS_NONE, "", false, CalendarContract.Attendees.RELATIONSHIP_NONE)
+            val id = cursor.getIntValue(Data.CONTACT_ID)
+            val email = cursor.getStringValue(CommonDataKinds.Email.DATA) ?: return@queryCursor
+            val contact = Attendee(id, "", email, Attendees.ATTENDEE_STATUS_NONE, "", false, Attendees.RELATIONSHIP_NONE)
             contacts.add(contact)
         }
 
@@ -1495,17 +1497,11 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun updateIconColors() {
-        val textColor = config.textColor
-        event_time_image.applyColorFilter(textColor)
-        event_time_zone_image.applyColorFilter(textColor)
-        event_repetition_image.applyColorFilter(textColor)
-        event_reminder_image.applyColorFilter(textColor)
-        event_type_image.applyColorFilter(textColor)
-        event_caldav_calendar_image.applyColorFilter(textColor)
         event_show_on_map.applyColorFilter(getAdjustedPrimaryColor())
-        event_reminder_1_type.applyColorFilter(textColor)
-        event_reminder_2_type.applyColorFilter(textColor)
-        event_reminder_3_type.applyColorFilter(textColor)
-        event_attendees_image.applyColorFilter(textColor)
+        val textColor = config.textColor
+        arrayOf(event_time_image, event_time_zone_image, event_repetition_image, event_reminder_image, event_type_image, event_caldav_calendar_image,
+                event_reminder_1_type, event_reminder_2_type, event_reminder_3_type, event_attendees_image).forEach {
+            it.applyColorFilter(textColor)
+        }
     }
 }
