@@ -145,12 +145,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
         storeStateVariables()
         updateWidgets()
-        if (config.storedView != EVENTS_LIST_VIEW) {
-            updateTextColors(calendar_coordinator)
-        }
-        search_placeholder.setTextColor(config.textColor)
-        search_placeholder_2.setTextColor(config.textColor)
-        calendar_fab.setColors(config.textColor, getAdjustedPrimaryColor(), config.backgroundColor)
+        updateTextColors(calendar_coordinator)
+
         search_holder.background = ColorDrawable(config.backgroundColor)
         checkSwipeRefreshAvailability()
         checkShortcuts()
