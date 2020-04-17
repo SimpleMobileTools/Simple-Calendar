@@ -9,19 +9,25 @@ import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.extensions.calDAVHelper
 import com.simplemobiletools.calendar.pro.extensions.config
+import com.simplemobiletools.commons.extensions.beVisibleIf
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import kotlinx.android.synthetic.main.calendar_item_account.view.*
 import kotlinx.android.synthetic.main.calendar_item_calendar.view.*
 import kotlinx.android.synthetic.main.dialog_select_calendars.view.*
 
 class SelectCalendarsDialog(val activity: SimpleActivity, val callback: () -> Unit) {
-    var prevAccount = ""
-    var dialog: AlertDialog
-    var view = (activity.layoutInflater.inflate(R.layout.dialog_select_calendars, null) as ViewGroup)
+    private var prevAccount = ""
+    private var dialog: AlertDialog
+    private var view = (activity.layoutInflater.inflate(R.layout.dialog_select_calendars, null) as ViewGroup)
 
     init {
         val ids = activity.config.getSyncedCalendarIdsAsList()
         val calendars = activity.calDAVHelper.getCalDAVCalendars("", true)
+        view.apply {
+            dialog_select_calendars_placeholder.beVisibleIf(calendars.isEmpty())
+            dialog_select_calendars_holder.beVisibleIf(calendars.isNotEmpty())
+        }
+
         val sorted = calendars.sortedWith(compareBy({ it.accountName }, { it.displayName }))
         sorted.forEach {
             if (prevAccount != it.accountName) {
@@ -41,8 +47,8 @@ class SelectCalendarsDialog(val activity: SimpleActivity, val callback: () -> Un
     }
 
     private fun addCalendarItem(isEvent: Boolean, text: String, tag: Int = 0, shouldCheck: Boolean = false) {
-        val calendarItem = activity.layoutInflater.inflate(if (isEvent) R.layout.calendar_item_calendar else R.layout.calendar_item_account,
-                view.dialog_select_calendars_holder, false)
+        val layout = if (isEvent) R.layout.calendar_item_calendar else R.layout.calendar_item_account
+        val calendarItem = activity.layoutInflater.inflate(layout, view.dialog_select_calendars_holder, false)
 
         if (isEvent) {
             calendarItem.calendar_item_calendar_switch.apply {

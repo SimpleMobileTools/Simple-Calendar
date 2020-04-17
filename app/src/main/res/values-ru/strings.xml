@@ -207,6 +207,7 @@
     <string name="select_a_different_caldav_color">Выберите другой цвет (применяется локально)</string>
     <string name="insufficient_permissions">Запись в выбранный календарь запрещена</string>
     <string name="caldav_event_not_found">Событие не найдено. Пожалуйста, включите CalDAV-синхронизацию для соответствующего календаря в настройках приложения.</string>
+    <string name="no_synchronized_calendars">No synchronizable calendars have been found</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->

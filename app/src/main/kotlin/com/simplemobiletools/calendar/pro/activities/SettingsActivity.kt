@@ -3,7 +3,6 @@ package com.simplemobiletools.calendar.pro.activities
 import android.app.Activity
 import android.app.TimePickerDialog
 import android.content.Intent
-import android.content.res.Resources
 import android.media.AudioManager
 import android.os.Bundle
 import android.view.Menu
@@ -28,13 +27,11 @@ class SettingsActivity : SimpleActivity() {
     private val GET_RINGTONE_URI = 1
     private val PICK_IMPORT_SOURCE_INTENT = 2
 
-    lateinit var res: Resources
     private var mStoredPrimaryColor = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
-        res = resources
         mStoredPrimaryColor = config.primaryColor
     }
 
@@ -351,10 +348,10 @@ class SettingsActivity : SimpleActivity() {
         settings_reminder_audio_stream.text = getAudioStreamText()
         settings_reminder_audio_stream_holder.setOnClickListener {
             val items = arrayListOf(
-                    RadioItem(AudioManager.STREAM_ALARM, res.getString(R.string.alarm_stream)),
-                    RadioItem(AudioManager.STREAM_SYSTEM, res.getString(R.string.system_stream)),
-                    RadioItem(AudioManager.STREAM_NOTIFICATION, res.getString(R.string.notification_stream)),
-                    RadioItem(AudioManager.STREAM_RING, res.getString(R.string.ring_stream)))
+                    RadioItem(AudioManager.STREAM_ALARM, getString(R.string.alarm_stream)),
+                    RadioItem(AudioManager.STREAM_SYSTEM, getString(R.string.system_stream)),
+                    RadioItem(AudioManager.STREAM_NOTIFICATION, getString(R.string.notification_stream)),
+                    RadioItem(AudioManager.STREAM_RING, getString(R.string.ring_stream)))
 
             RadioGroupDialog(this@SettingsActivity, items, config.reminderAudioStream) {
                 config.reminderAudioStream = it as Int
@@ -487,10 +484,10 @@ class SettingsActivity : SimpleActivity() {
         settings_font_size.text = getFontSizeText()
         settings_font_size_holder.setOnClickListener {
             val items = arrayListOf(
-                    RadioItem(FONT_SIZE_SMALL, res.getString(R.string.small)),
-                    RadioItem(FONT_SIZE_MEDIUM, res.getString(R.string.medium)),
-                    RadioItem(FONT_SIZE_LARGE, res.getString(R.string.large)),
-                    RadioItem(FONT_SIZE_EXTRA_LARGE, res.getString(R.string.extra_large)))
+                    RadioItem(FONT_SIZE_SMALL, getString(R.string.small)),
+                    RadioItem(FONT_SIZE_MEDIUM, getString(R.string.medium)),
+                    RadioItem(FONT_SIZE_LARGE, getString(R.string.large)),
+                    RadioItem(FONT_SIZE_EXTRA_LARGE, getString(R.string.extra_large)))
 
             RadioGroupDialog(this@SettingsActivity, items, config.fontSize) {
                 config.fontSize = it as Int
@@ -513,12 +510,12 @@ class SettingsActivity : SimpleActivity() {
         settings_list_widget_view_to_open.text = getDefaultViewText()
         settings_list_widget_view_to_open_holder.setOnClickListener {
             val items = arrayListOf(
-                    RadioItem(DAILY_VIEW, res.getString(R.string.daily_view)),
-                    RadioItem(WEEKLY_VIEW, res.getString(R.string.weekly_view)),
-                    RadioItem(MONTHLY_VIEW, res.getString(R.string.monthly_view)),
-                    RadioItem(YEARLY_VIEW, res.getString(R.string.yearly_view)),
-                    RadioItem(EVENTS_LIST_VIEW, res.getString(R.string.simple_event_list)),
-                    RadioItem(LAST_VIEW, res.getString(R.string.last_view)))
+                    RadioItem(DAILY_VIEW, getString(R.string.daily_view)),
+                    RadioItem(WEEKLY_VIEW, getString(R.string.weekly_view)),
+                    RadioItem(MONTHLY_VIEW, getString(R.string.monthly_view)),
+                    RadioItem(YEARLY_VIEW, getString(R.string.yearly_view)),
+                    RadioItem(EVENTS_LIST_VIEW, getString(R.string.simple_event_list)),
+                    RadioItem(LAST_VIEW, getString(R.string.last_view)))
 
             RadioGroupDialog(this@SettingsActivity, items, config.listWidgetViewToOpen) {
                 config.listWidgetViewToOpen = it as Int

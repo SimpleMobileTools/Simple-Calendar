@@ -207,6 +207,7 @@
     <string name="select_a_different_caldav_color">Izvēlieties citu krāsu (var tikt izmantota tikai lokāli)</string>
     <string name="insufficient_permissions">Jums izvēlētajā kalendārā rakstīt nav ļauts</string>
     <string name="caldav_event_not_found">Notikums nav atrasts. Lūdzu, lietotnes iestatījumos iespējojiet CalDAV sinhronizāciju attiecīgajam kalendāram.</string>
+    <string name="no_synchronized_calendars">No synchronizable calendars have been found</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->

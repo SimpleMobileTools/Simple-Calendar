@@ -408,7 +408,7 @@
             android:layout_marginStart="@dimen/normal_margin"
             android:layout_marginTop="@dimen/small_margin"
             android:padding="@dimen/medium_margin"
-            android:src="@drawable/ic_group_vector"/>
+            android:src="@drawable/ic_people_vector"/>
 
         <LinearLayout
             android:id="@+id/event_attendees_holder"
@@ -435,9 +435,10 @@
             android:layout_below="@+id/event_attendees_divider"
             android:layout_alignTop="@+id/event_caldav_calendar_holder"
             android:layout_alignBottom="@+id/event_caldav_calendar_holder"
+            android:layout_alignEnd="@+id/event_time_image"
             android:layout_marginStart="@dimen/normal_margin"
             android:padding="@dimen/medium_margin"
-            android:src="@drawable/ic_calendar"
+            android:src="@drawable/ic_calendar_vector"
             android:visibility="gone"/>
 
         <RelativeLayout

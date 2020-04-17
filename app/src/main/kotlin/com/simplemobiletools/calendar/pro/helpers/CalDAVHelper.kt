@@ -4,9 +4,7 @@ import android.annotation.SuppressLint
 import android.content.ContentUris
 import android.content.ContentValues
 import android.content.Context
-import android.database.Cursor
-import android.provider.CalendarContract
-import android.provider.CalendarContract.Reminders
+import android.provider.CalendarContract.*
 import android.util.SparseIntArray
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -22,6 +20,7 @@ import org.joda.time.format.DateTimeFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
+@SuppressLint("MissingPermission")
 class CalDAVHelper(val context: Context) {
     private val eventsHelper = context.eventsHelper
 
@@ -58,45 +57,34 @@ class CalDAVHelper(val context: Context) {
             return calendars
         }
 
-        val uri = CalendarContract.Calendars.CONTENT_URI
+        val uri = Calendars.CONTENT_URI
         val projection = arrayOf(
-                CalendarContract.Calendars._ID,
-                CalendarContract.Calendars.CALENDAR_DISPLAY_NAME,
-                CalendarContract.Calendars.ACCOUNT_NAME,
-                CalendarContract.Calendars.ACCOUNT_TYPE,
-                CalendarContract.Calendars.OWNER_ACCOUNT,
-                CalendarContract.Calendars.CALENDAR_COLOR,
-                CalendarContract.Calendars.CALENDAR_ACCESS_LEVEL)
+                Calendars._ID,
+                Calendars.CALENDAR_DISPLAY_NAME,
+                Calendars.ACCOUNT_NAME,
+                Calendars.ACCOUNT_TYPE,
+                Calendars.OWNER_ACCOUNT,
+                Calendars.CALENDAR_COLOR,
+                Calendars.CALENDAR_ACCESS_LEVEL)
 
-        val selection = if (ids.trim().isNotEmpty()) "${CalendarContract.Calendars._ID} IN ($ids)" else null
-        var cursor: Cursor? = null
-        try {
-            cursor = context.contentResolver.query(uri, projection, selection, null, null)
-            if (cursor?.moveToFirst() == true) {
-                do {
-                    val id = cursor.getIntValue(CalendarContract.Calendars._ID)
-                    val displayName = cursor.getStringValue(CalendarContract.Calendars.CALENDAR_DISPLAY_NAME)
-                    val accountName = cursor.getStringValue(CalendarContract.Calendars.ACCOUNT_NAME)
-                    val accountType = cursor.getStringValue(CalendarContract.Calendars.ACCOUNT_TYPE)
-                    val ownerName = cursor.getStringValue(CalendarContract.Calendars.OWNER_ACCOUNT) ?: ""
-                    val color = cursor.getIntValue(CalendarContract.Calendars.CALENDAR_COLOR)
-                    val accessLevel = cursor.getIntValue(CalendarContract.Calendars.CALENDAR_ACCESS_LEVEL)
-                    val calendar = CalDAVCalendar(id, displayName, accountName, accountType, ownerName, color, accessLevel)
-                    calendars.add(calendar)
-                } while (cursor.moveToNext())
-            }
-        } catch (e: Exception) {
-            if (showToasts) {
-                context.showErrorToast(e)
-            }
-        } finally {
-            cursor?.close()
+        val selection = if (ids.trim().isNotEmpty()) "${Calendars._ID} IN ($ids)" else null
+        context.queryCursor(uri, projection, selection, showErrors = showToasts) { cursor ->
+            val id = cursor.getIntValue(Calendars._ID)
+            val displayName = cursor.getStringValue(Calendars.CALENDAR_DISPLAY_NAME)
+            val accountName = cursor.getStringValue(Calendars.ACCOUNT_NAME)
+            val accountType = cursor.getStringValue(Calendars.ACCOUNT_TYPE)
+            val ownerName = cursor.getStringValue(Calendars.OWNER_ACCOUNT) ?: ""
+            val color = cursor.getIntValue(Calendars.CALENDAR_COLOR)
+            val accessLevel = cursor.getIntValue(Calendars.CALENDAR_ACCESS_LEVEL)
+            val calendar = CalDAVCalendar(id, displayName, accountName, accountType, ownerName, color, accessLevel)
+            calendars.add(calendar)
         }
+
         return calendars
     }
 
     fun updateCalDAVCalendar(eventType: EventType) {
-        val uri = CalendarContract.Calendars.CONTENT_URI
+        val uri = Calendars.CONTENT_URI
         val values = fillCalendarContentValues(eventType)
         val newUri = ContentUris.withAppendedId(uri, eventType.caldavCalendarId.toLong())
         try {
@@ -108,26 +96,23 @@ class CalDAVHelper(val context: Context) {
     private fun fillCalendarContentValues(eventType: EventType): ContentValues {
         val colorKey = getEventTypeColorKey(eventType)
         return ContentValues().apply {
-            put(CalendarContract.Calendars.CALENDAR_COLOR_KEY, colorKey)
-            put(CalendarContract.Calendars.CALENDAR_DISPLAY_NAME, eventType.title)
+            put(Calendars.CALENDAR_COLOR_KEY, colorKey)
+            put(Calendars.CALENDAR_DISPLAY_NAME, eventType.title)
         }
     }
 
     @SuppressLint("MissingPermission")
     private fun getEventTypeColorKey(eventType: EventType): Int {
-        val uri = CalendarContract.Colors.CONTENT_URI
-        val projection = arrayOf(CalendarContract.Colors.COLOR_KEY)
-        val selection = "${CalendarContract.Colors.COLOR_TYPE} = ? AND ${CalendarContract.Colors.COLOR} = ? AND ${CalendarContract.Colors.ACCOUNT_NAME} = ?"
-        val selectionArgs = arrayOf(CalendarContract.Colors.TYPE_CALENDAR.toString(), eventType.color.toString(), eventType.caldavEmail)
+        val uri = Colors.CONTENT_URI
+        val projection = arrayOf(Colors.COLOR_KEY)
+        val selection = "${Colors.COLOR_TYPE} = ? AND ${Colors.COLOR} = ? AND ${Colors.ACCOUNT_NAME} = ?"
+        val selectionArgs = arrayOf(Colors.TYPE_CALENDAR.toString(), eventType.color.toString(), eventType.caldavEmail)
 
-        var cursor: Cursor? = null
-        try {
-            cursor = context.contentResolver.query(uri, projection, selection, selectionArgs, null)
-            if (cursor?.moveToFirst() == true) {
-                return cursor.getStringValue(CalendarContract.Colors.COLOR_KEY).toInt()
+        val cursor = context.contentResolver.query(uri, projection, selection, selectionArgs, null)
+        cursor?.use {
+            if (cursor.moveToFirst()) {
+                return cursor.getStringValue(Colors.COLOR_KEY).toInt()
             }
-        } finally {
-            cursor?.close()
         }
 
         return -1
@@ -136,23 +121,15 @@ class CalDAVHelper(val context: Context) {
     @SuppressLint("MissingPermission")
     fun getAvailableCalDAVCalendarColors(eventType: EventType): ArrayList<Int> {
         val colors = SparseIntArray()
-        val uri = CalendarContract.Colors.CONTENT_URI
-        val projection = arrayOf(CalendarContract.Colors.COLOR, CalendarContract.Colors.COLOR_KEY)
-        val selection = "${CalendarContract.Colors.COLOR_TYPE} = ? AND ${CalendarContract.Colors.ACCOUNT_NAME} = ?"
-        val selectionArgs = arrayOf(CalendarContract.Colors.TYPE_CALENDAR.toString(), eventType.caldavEmail)
+        val uri = Colors.CONTENT_URI
+        val projection = arrayOf(Colors.COLOR, Colors.COLOR_KEY)
+        val selection = "${Colors.COLOR_TYPE} = ? AND ${Colors.ACCOUNT_NAME} = ?"
+        val selectionArgs = arrayOf(Colors.TYPE_CALENDAR.toString(), eventType.caldavEmail)
 
-        var cursor: Cursor? = null
-        try {
-            cursor = context.contentResolver.query(uri, projection, selection, selectionArgs, null)
-            if (cursor?.moveToFirst() == true) {
-                do {
-                    val colorKey = cursor.getIntValue(CalendarContract.Colors.COLOR_KEY)
-                    val color = cursor.getIntValue(CalendarContract.Colors.COLOR)
-                    colors.put(colorKey, color)
-                } while (cursor.moveToNext())
-            }
-        } finally {
-            cursor?.close()
+        context.queryCursor(uri, projection, selection, selectionArgs) { cursor ->
+            val colorKey = cursor.getIntValue(Colors.COLOR_KEY)
+            val color = cursor.getIntValue(Colors.COLOR)
+            colors.put(colorKey, color)
         }
 
         var sortedColors = ArrayList<Int>(colors.size())
@@ -173,151 +150,139 @@ class CalDAVHelper(val context: Context) {
             importIdsMap[it.importId] = it
         }
 
-        val uri = CalendarContract.Events.CONTENT_URI
+        val uri = Events.CONTENT_URI
         val projection = arrayOf(
-                CalendarContract.Events._ID,
-                CalendarContract.Events.TITLE,
-                CalendarContract.Events.DESCRIPTION,
-                CalendarContract.Events.DTSTART,
-                CalendarContract.Events.DTEND,
-                CalendarContract.Events.DURATION,
-                CalendarContract.Events.EXDATE,
-                CalendarContract.Events.ALL_DAY,
-                CalendarContract.Events.RRULE,
-                CalendarContract.Events.ORIGINAL_ID,
-                CalendarContract.Events.ORIGINAL_INSTANCE_TIME,
-                CalendarContract.Events.EVENT_LOCATION,
-                CalendarContract.Events.EVENT_TIMEZONE,
-                CalendarContract.Events.CALENDAR_TIME_ZONE,
-                CalendarContract.Events.DELETED)
+                Events._ID,
+                Events.TITLE,
+                Events.DESCRIPTION,
+                Events.DTSTART,
+                Events.DTEND,
+                Events.DURATION,
+                Events.EXDATE,
+                Events.ALL_DAY,
+                Events.RRULE,
+                Events.ORIGINAL_ID,
+                Events.ORIGINAL_INSTANCE_TIME,
+                Events.EVENT_LOCATION,
+                Events.EVENT_TIMEZONE,
+                Events.CALENDAR_TIME_ZONE,
+                Events.DELETED)
 
-        val selection = "${CalendarContract.Events.CALENDAR_ID} = $calendarId"
-        var cursor: Cursor? = null
-        try {
-            cursor = context.contentResolver.query(uri, projection, selection, null, null)
-            if (cursor?.moveToFirst() == true) {
-                do {
-                    val deleted = cursor.getIntValue(CalendarContract.Events.DELETED)
-                    if (deleted == 1) {
-                        continue
-                    }
+        val selection = "${Events.CALENDAR_ID} = $calendarId"
+        context.queryCursor(uri, projection, selection, showErrors = showToasts) { cursor ->
+            val deleted = cursor.getIntValue(Events.DELETED)
+            if (deleted == 1) {
+                return@queryCursor
+            }
 
-                    val id = cursor.getLongValue(CalendarContract.Events._ID)
-                    val title = cursor.getStringValue(CalendarContract.Events.TITLE) ?: ""
-                    val description = cursor.getStringValue(CalendarContract.Events.DESCRIPTION) ?: ""
-                    val startTS = cursor.getLongValue(CalendarContract.Events.DTSTART) / 1000L
-                    var endTS = cursor.getLongValue(CalendarContract.Events.DTEND) / 1000L
-                    val allDay = cursor.getIntValue(CalendarContract.Events.ALL_DAY)
-                    val rrule = cursor.getStringValue(CalendarContract.Events.RRULE) ?: ""
-                    val location = cursor.getStringValue(CalendarContract.Events.EVENT_LOCATION) ?: ""
-                    val originalId = cursor.getStringValue(CalendarContract.Events.ORIGINAL_ID)
-                    val originalInstanceTime = cursor.getLongValue(CalendarContract.Events.ORIGINAL_INSTANCE_TIME)
-                    val reminders = getCalDAVEventReminders(id)
-                    val attendees = Gson().toJson(getCalDAVEventAttendees(id))
+            val id = cursor.getLongValue(Events._ID)
+            val title = cursor.getStringValue(Events.TITLE) ?: ""
+            val description = cursor.getStringValue(Events.DESCRIPTION) ?: ""
+            val startTS = cursor.getLongValue(Events.DTSTART) / 1000L
+            var endTS = cursor.getLongValue(Events.DTEND) / 1000L
+            val allDay = cursor.getIntValue(Events.ALL_DAY)
+            val rrule = cursor.getStringValue(Events.RRULE) ?: ""
+            val location = cursor.getStringValue(Events.EVENT_LOCATION) ?: ""
+            val originalId = cursor.getStringValue(Events.ORIGINAL_ID)
+            val originalInstanceTime = cursor.getLongValue(Events.ORIGINAL_INSTANCE_TIME)
+            val reminders = getCalDAVEventReminders(id)
+            val attendees = Gson().toJson(getCalDAVEventAttendees(id))
 
-                    if (endTS == 0L) {
-                        val duration = cursor.getStringValue(CalendarContract.Events.DURATION) ?: ""
-                        endTS = startTS + Parser().parseDurationSeconds(duration)
-                    }
+            if (endTS == 0L) {
+                val duration = cursor.getStringValue(Events.DURATION) ?: ""
+                endTS = startTS + Parser().parseDurationSeconds(duration)
+            }
 
-                    val reminder1 = reminders.getOrNull(0)
-                    val reminder2 = reminders.getOrNull(1)
-                    val reminder3 = reminders.getOrNull(2)
-                    val importId = getCalDAVEventImportId(calendarId, id)
-                    val eventTimeZone = cursor.getStringValue(CalendarContract.Events.EVENT_TIMEZONE)
-                            ?: cursor.getStringValue(CalendarContract.Events.CALENDAR_TIME_ZONE) ?: DateTimeZone.getDefault().id
+            val reminder1 = reminders.getOrNull(0)
+            val reminder2 = reminders.getOrNull(1)
+            val reminder3 = reminders.getOrNull(2)
+            val importId = getCalDAVEventImportId(calendarId, id)
+            val eventTimeZone = cursor.getStringValue(Events.EVENT_TIMEZONE)
+                    ?: cursor.getStringValue(Events.CALENDAR_TIME_ZONE) ?: DateTimeZone.getDefault().id
 
-                    val source = "$CALDAV-$calendarId"
-                    val repeatRule = Parser().parseRepeatInterval(rrule, startTS)
-                    val event = Event(null, startTS, endTS, title, location, description, reminder1?.minutes ?: REMINDER_OFF,
-                            reminder2?.minutes ?: REMINDER_OFF, reminder3?.minutes ?: REMINDER_OFF, reminder1?.type
-                            ?: REMINDER_NOTIFICATION, reminder2?.type ?: REMINDER_NOTIFICATION, reminder3?.type
-                            ?: REMINDER_NOTIFICATION, repeatRule.repeatInterval, repeatRule.repeatRule,
-                            repeatRule.repeatLimit, ArrayList(), attendees, importId, eventTimeZone, allDay, eventTypeId, source = source)
+            val source = "$CALDAV-$calendarId"
+            val repeatRule = Parser().parseRepeatInterval(rrule, startTS)
+            val event = Event(null, startTS, endTS, title, location, description, reminder1?.minutes ?: REMINDER_OFF,
+                    reminder2?.minutes ?: REMINDER_OFF, reminder3?.minutes ?: REMINDER_OFF, reminder1?.type
+                    ?: REMINDER_NOTIFICATION, reminder2?.type ?: REMINDER_NOTIFICATION, reminder3?.type
+                    ?: REMINDER_NOTIFICATION, repeatRule.repeatInterval, repeatRule.repeatRule,
+                    repeatRule.repeatLimit, ArrayList(), attendees, importId, eventTimeZone, allDay, eventTypeId, source = source)
 
-                    if (event.getIsAllDay()) {
-                        event.startTS = Formatter.getShiftedImportTimestamp(event.startTS)
-                        event.endTS = Formatter.getShiftedImportTimestamp(event.endTS)
-                        if (event.endTS > event.startTS) {
-                            event.endTS -= DAY
-                        }
-                    }
+            if (event.getIsAllDay()) {
+                event.startTS = Formatter.getShiftedImportTimestamp(event.startTS)
+                event.endTS = Formatter.getShiftedImportTimestamp(event.endTS)
+                if (event.endTS > event.startTS) {
+                    event.endTS -= DAY
+                }
+            }
 
-                    fetchedEventIds.add(importId)
+            fetchedEventIds.add(importId)
 
-                    // if the event is an exception from another events repeat rule, find the original parent event
-                    if (originalInstanceTime != 0L) {
-                        val parentImportId = "$source-$originalId"
-                        val parentEvent = context.eventsDB.getEventWithImportId(parentImportId)
-                        val originalDayCode = Formatter.getDayCodeFromTS(originalInstanceTime / 1000L)
-                        if (parentEvent != null && !parentEvent.repetitionExceptions.contains(originalDayCode)) {
-                            event.parentId = parentEvent.id!!
-                            parentEvent.addRepetitionException(originalDayCode)
-                            eventsHelper.insertEvent(parentEvent, false, false)
+            // if the event is an exception from another events repeat rule, find the original parent event
+            if (originalInstanceTime != 0L) {
+                val parentImportId = "$source-$originalId"
+                val parentEvent = context.eventsDB.getEventWithImportId(parentImportId)
+                val originalDayCode = Formatter.getDayCodeFromTS(originalInstanceTime / 1000L)
+                if (parentEvent != null && !parentEvent.repetitionExceptions.contains(originalDayCode)) {
+                    event.parentId = parentEvent.id!!
+                    parentEvent.addRepetitionException(originalDayCode)
+                    eventsHelper.insertEvent(parentEvent, false, false)
 
-                            event.parentId = parentEvent.id!!
-                            event.addRepetitionException(originalDayCode)
-                            eventsHelper.insertEvent(event, false, false)
-                            continue
-                        }
-                    }
+                    event.parentId = parentEvent.id!!
+                    event.addRepetitionException(originalDayCode)
+                    eventsHelper.insertEvent(event, false, false)
+                    return@queryCursor
+                }
+            }
 
-                    // some calendars add repeatable event exceptions with using the "exdate" field, not by creating a child event that is an exception
-                    val exdate = cursor.getStringValue(CalendarContract.Events.EXDATE) ?: ""
-                    if (exdate.length > 8) {
-                        val lines = exdate.split("\n")
-                        for (line in lines) {
-                            val dates = line.split(",")
-                            dates.forEach {
-                                if (it.endsWith("Z")) {
-                                    // convert for example "20190216T230000Z" to "20190217000000" in Slovakia in a weird way
-                                    val formatter = DateTimeFormat.forPattern("yyyyMMdd'T'HHmmss'Z'")
-                                    val offset = DateTimeZone.getDefault().getOffset(System.currentTimeMillis())
-                                    val dt = formatter.parseDateTime(it).plusMillis(offset)
-                                    val daycode = Formatter.getDayCodeFromDateTime(dt)
-                                    event.repetitionExceptions.add(daycode)
-                                } else {
-                                    var potentialTS = it.substring(0, 8)
-                                    if (potentialTS.areDigitsOnly()) {
-                                        event.repetitionExceptions.add(potentialTS)
-                                    } else if (it.contains(";")) {
-                                        potentialTS = it.substringAfter(";").substring(0, 8)
-                                        event.repetitionExceptions.add(potentialTS)
-                                    }
-                                }
+            // some calendars add repeatable event exceptions with using the "exdate" field, not by creating a child event that is an exception
+            val exdate = cursor.getStringValue(Events.EXDATE) ?: ""
+            if (exdate.length > 8) {
+                val lines = exdate.split("\n")
+                for (line in lines) {
+                    val dates = line.split(",")
+                    dates.forEach {
+                        if (it.endsWith("Z")) {
+                            // convert for example "20190216T230000Z" to "20190217000000" in Slovakia in a weird way
+                            val formatter = DateTimeFormat.forPattern("yyyyMMdd'T'HHmmss'Z'")
+                            val offset = DateTimeZone.getDefault().getOffset(System.currentTimeMillis())
+                            val dt = formatter.parseDateTime(it).plusMillis(offset)
+                            val daycode = Formatter.getDayCodeFromDateTime(dt)
+                            event.repetitionExceptions.add(daycode)
+                        } else {
+                            var potentialTS = it.substring(0, 8)
+                            if (potentialTS.areDigitsOnly()) {
+                                event.repetitionExceptions.add(potentialTS)
+                            } else if (it.contains(";")) {
+                                potentialTS = it.substringAfter(";").substring(0, 8)
+                                event.repetitionExceptions.add(potentialTS)
                             }
                         }
                     }
-
-                    if (importIdsMap.containsKey(event.importId)) {
-                        val existingEvent = importIdsMap[importId]
-                        val originalEventId = existingEvent!!.id
-
-                        existingEvent.apply {
-                            this.id = null
-                            color = 0
-                            lastUpdated = 0L
-                            repetitionExceptions = ArrayList()
-                        }
-
-                        if (existingEvent.hashCode() != event.hashCode() && title.isNotEmpty()) {
-                            event.id = originalEventId
-                            eventsHelper.updateEvent(event, false, false)
-                        }
-                    } else {
-                        if (title.isNotEmpty()) {
-                            importIdsMap[event.importId] = event
-                            eventsHelper.insertEvent(event, false, false)
-                        }
-                    }
-                } while (cursor.moveToNext())
+                }
             }
-        } catch (e: Exception) {
-            if (showToasts) {
-                context.showErrorToast(e)
+
+            if (importIdsMap.containsKey(event.importId)) {
+                val existingEvent = importIdsMap[importId]
+                val originalEventId = existingEvent!!.id
+
+                existingEvent.apply {
+                    this.id = null
+                    color = 0
+                    lastUpdated = 0L
+                    repetitionExceptions = ArrayList()
+                }
+
+                if (existingEvent.hashCode() != event.hashCode() && title.isNotEmpty()) {
+                    event.id = originalEventId
+                    eventsHelper.updateEvent(event, false, false)
+                }
+            } else {
+                if (title.isNotEmpty()) {
+                    importIdsMap[event.importId] = event
+                    eventsHelper.insertEvent(event, false, false)
+                }
             }
-        } finally {
-            cursor?.close()
         }
 
         val eventIdsToDelete = ArrayList<Long>()
@@ -335,7 +300,7 @@ class CalDAVHelper(val context: Context) {
 
     @SuppressLint("MissingPermission")
     fun insertCalDAVEvent(event: Event) {
-        val uri = CalendarContract.Events.CONTENT_URI
+        val uri = Events.CONTENT_URI
         val values = fillEventContentValues(event)
         val newUri = context.contentResolver.insert(uri, values)
 
@@ -350,7 +315,7 @@ class CalDAVHelper(val context: Context) {
     }
 
     fun updateCalDAVEvent(event: Event) {
-        val uri = CalendarContract.Events.CONTENT_URI
+        val uri = Events.CONTENT_URI
         val values = fillEventContentValues(event)
         val eventRemoteID = event.getCalDAVEventId()
         event.importId = getCalDAVEventImportId(event.getCalDAVCalendarId(), eventRemoteID)
@@ -386,15 +351,15 @@ class CalDAVHelper(val context: Context) {
         val attendees = Gson().fromJson<ArrayList<Attendee>>(event.attendees, object : TypeToken<List<Attendee>>() {}.type) ?: ArrayList()
         attendees.forEach {
             val contentValues = ContentValues().apply {
-                put(CalendarContract.Attendees.ATTENDEE_NAME, it.name)
-                put(CalendarContract.Attendees.ATTENDEE_EMAIL, it.email)
-                put(CalendarContract.Attendees.ATTENDEE_STATUS, it.status)
-                put(CalendarContract.Attendees.ATTENDEE_RELATIONSHIP, it.relationship)
-                put(CalendarContract.Attendees.EVENT_ID, event.getCalDAVEventId())
+                put(Attendees.ATTENDEE_NAME, it.name)
+                put(Attendees.ATTENDEE_EMAIL, it.email)
+                put(Attendees.ATTENDEE_STATUS, it.status)
+                put(Attendees.ATTENDEE_RELATIONSHIP, it.relationship)
+                put(Attendees.EVENT_ID, event.getCalDAVEventId())
             }
 
             try {
-                context.contentResolver.insert(CalendarContract.Attendees.CONTENT_URI, contentValues)
+                context.contentResolver.insert(Attendees.CONTENT_URI, contentValues)
             } catch (e: Exception) {
                 context.toast(R.string.unknown_error_occurred)
             }
@@ -407,31 +372,31 @@ class CalDAVHelper(val context: Context) {
 
     private fun fillEventContentValues(event: Event): ContentValues {
         return ContentValues().apply {
-            put(CalendarContract.Events.CALENDAR_ID, event.getCalDAVCalendarId())
-            put(CalendarContract.Events.TITLE, event.title)
-            put(CalendarContract.Events.DESCRIPTION, event.description)
-            put(CalendarContract.Events.DTSTART, event.startTS * 1000L)
-            put(CalendarContract.Events.ALL_DAY, if (event.getIsAllDay()) 1 else 0)
-            put(CalendarContract.Events.EVENT_TIMEZONE, event.getTimeZoneString())
-            put(CalendarContract.Events.EVENT_LOCATION, event.location)
-            put(CalendarContract.Events.STATUS, CalendarContract.Events.STATUS_CONFIRMED)
+            put(Events.CALENDAR_ID, event.getCalDAVCalendarId())
+            put(Events.TITLE, event.title)
+            put(Events.DESCRIPTION, event.description)
+            put(Events.DTSTART, event.startTS * 1000L)
+            put(Events.ALL_DAY, if (event.getIsAllDay()) 1 else 0)
+            put(Events.EVENT_TIMEZONE, event.getTimeZoneString())
+            put(Events.EVENT_LOCATION, event.location)
+            put(Events.STATUS, Events.STATUS_CONFIRMED)
 
             val repeatRule = Parser().getRepeatCode(event)
             if (repeatRule.isEmpty()) {
-                putNull(CalendarContract.Events.RRULE)
+                putNull(Events.RRULE)
             } else {
-                put(CalendarContract.Events.RRULE, repeatRule)
+                put(Events.RRULE, repeatRule)
             }
 
             if (event.getIsAllDay() && event.endTS >= event.startTS)
                 event.endTS += DAY
 
             if (event.repeatInterval > 0) {
-                put(CalendarContract.Events.DURATION, getDurationCode(event))
-                putNull(CalendarContract.Events.DTEND)
+                put(Events.DURATION, getDurationCode(event))
+                putNull(Events.DTEND)
             } else {
-                put(CalendarContract.Events.DTEND, event.endTS * 1000L)
-                putNull(CalendarContract.Events.DURATION)
+                put(Events.DTEND, event.endTS * 1000L)
+                putNull(Events.DURATION)
             }
         }
     }
@@ -443,9 +408,9 @@ class CalDAVHelper(val context: Context) {
     }
 
     private fun clearEventAttendees(event: Event) {
-        val selection = "${CalendarContract.Attendees.EVENT_ID} = ?"
+        val selection = "${Attendees.EVENT_ID} = ?"
         val selectionArgs = arrayOf(event.getCalDAVEventId().toString())
-        context.contentResolver.delete(CalendarContract.Attendees.CONTENT_URI, selection, selectionArgs)
+        context.contentResolver.delete(Attendees.CONTENT_URI, selection, selectionArgs)
     }
 
     private fun getDurationCode(event: Event): String {
@@ -463,7 +428,7 @@ class CalDAVHelper(val context: Context) {
     }
 
     fun deleteCalDAVEvent(event: Event) {
-        val uri = CalendarContract.Events.CONTENT_URI
+        val uri = Events.CONTENT_URI
         val contentUri = ContentUris.withAppendedId(uri, event.getCalDAVEventId())
         try {
             context.contentResolver.delete(contentUri, null, null)
@@ -473,7 +438,7 @@ class CalDAVHelper(val context: Context) {
     }
 
     fun insertEventRepeatException(event: Event, occurrenceTS: Long) {
-        val uri = CalendarContract.Events.CONTENT_URI
+        val uri = Events.CONTENT_URI
         val values = fillEventRepeatExceptionValues(event, occurrenceTS)
         try {
             context.contentResolver.insert(uri, values)
@@ -485,13 +450,13 @@ class CalDAVHelper(val context: Context) {
 
     private fun fillEventRepeatExceptionValues(event: Event, occurrenceTS: Long): ContentValues {
         return ContentValues().apply {
-            put(CalendarContract.Events.CALENDAR_ID, event.getCalDAVCalendarId())
-            put(CalendarContract.Events.DTSTART, occurrenceTS)
-            put(CalendarContract.Events.DTEND, occurrenceTS + (event.endTS - event.startTS))
-            put(CalendarContract.Events.ORIGINAL_ID, event.getCalDAVEventId())
-            put(CalendarContract.Events.EVENT_TIMEZONE, TimeZone.getDefault().id.toString())
-            put(CalendarContract.Events.ORIGINAL_INSTANCE_TIME, occurrenceTS * 1000L)
-            put(CalendarContract.Events.EXDATE, Formatter.getDayCodeFromTS(occurrenceTS))
+            put(Events.CALENDAR_ID, event.getCalDAVCalendarId())
+            put(Events.DTSTART, occurrenceTS)
+            put(Events.DTEND, occurrenceTS + (event.endTS - event.startTS))
+            put(Events.ORIGINAL_ID, event.getCalDAVEventId())
+            put(Events.EVENT_TIMEZONE, TimeZone.getDefault().id.toString())
+            put(Events.ORIGINAL_INSTANCE_TIME, occurrenceTS * 1000L)
+            put(Events.EXDATE, Formatter.getDayCodeFromTS(occurrenceTS))
         }
     }
 
@@ -502,51 +467,38 @@ class CalDAVHelper(val context: Context) {
                 Reminders.MINUTES,
                 Reminders.METHOD)
         val selection = "${Reminders.EVENT_ID} = $eventId"
-        var cursor: Cursor? = null
-        try {
-            cursor = context.contentResolver.query(uri, projection, selection, null, null)
-            if (cursor?.moveToFirst() == true) {
-                do {
-                    val minutes = cursor.getIntValue(Reminders.MINUTES)
-                    val method = cursor.getIntValue(Reminders.METHOD)
-                    if (method == Reminders.METHOD_ALERT || method == Reminders.METHOD_EMAIL) {
-                        val type = if (method == Reminders.METHOD_EMAIL) REMINDER_EMAIL else REMINDER_NOTIFICATION
-                        val reminder = Reminder(minutes, type)
-                        reminders.add(reminder)
-                    }
-                } while (cursor.moveToNext())
+
+        context.queryCursor(uri, projection, selection) { cursor ->
+            val minutes = cursor.getIntValue(Reminders.MINUTES)
+            val method = cursor.getIntValue(Reminders.METHOD)
+            if (method == Reminders.METHOD_ALERT || method == Reminders.METHOD_EMAIL) {
+                val type = if (method == Reminders.METHOD_EMAIL) REMINDER_EMAIL else REMINDER_NOTIFICATION
+                val reminder = Reminder(minutes, type)
+                reminders.add(reminder)
             }
-        } finally {
-            cursor?.close()
         }
+
         return reminders.sortedBy { it.minutes }
     }
 
     private fun getCalDAVEventAttendees(eventId: Long): List<Attendee> {
         val attendees = ArrayList<Attendee>()
-        val uri = CalendarContract.Attendees.CONTENT_URI
+        val uri = Attendees.CONTENT_URI
         val projection = arrayOf(
-                CalendarContract.Attendees.ATTENDEE_NAME,
-                CalendarContract.Attendees.ATTENDEE_EMAIL,
-                CalendarContract.Attendees.ATTENDEE_STATUS,
-                CalendarContract.Attendees.ATTENDEE_RELATIONSHIP)
-        val selection = "${CalendarContract.Attendees.EVENT_ID} = $eventId"
-        var cursor: Cursor? = null
-        try {
-            cursor = context.contentResolver.query(uri, projection, selection, null, null)
-            if (cursor?.moveToFirst() == true) {
-                do {
-                    val name = cursor.getStringValue(CalendarContract.Attendees.ATTENDEE_NAME) ?: ""
-                    val email = cursor.getStringValue(CalendarContract.Attendees.ATTENDEE_EMAIL) ?: ""
-                    val status = cursor.getIntValue(CalendarContract.Attendees.ATTENDEE_STATUS)
-                    val relationship = cursor.getIntValue(CalendarContract.Attendees.ATTENDEE_RELATIONSHIP)
-                    val attendee = Attendee(0, name, email, status, "", false, relationship)
-                    attendees.add(attendee)
-                } while (cursor.moveToNext())
-            }
-        } finally {
-            cursor?.close()
+                Attendees.ATTENDEE_NAME,
+                Attendees.ATTENDEE_EMAIL,
+                Attendees.ATTENDEE_STATUS,
+                Attendees.ATTENDEE_RELATIONSHIP)
+        val selection = "${Attendees.EVENT_ID} = $eventId"
+        context.queryCursor(uri, projection, selection) { cursor ->
+            val name = cursor.getStringValue(Attendees.ATTENDEE_NAME) ?: ""
+            val email = cursor.getStringValue(Attendees.ATTENDEE_EMAIL) ?: ""
+            val status = cursor.getIntValue(Attendees.ATTENDEE_STATUS)
+            val relationship = cursor.getIntValue(Attendees.ATTENDEE_RELATIONSHIP)
+            val attendee = Attendee(0, name, email, status, "", false, relationship)
+            attendees.add(attendee)
         }
+
         return attendees
     }
 
