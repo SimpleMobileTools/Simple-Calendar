@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.ContentUris
 import android.content.ContentValues
 import android.content.Context
-import android.database.Cursor
 import android.provider.CalendarContract.*
 import android.util.SparseIntArray
 import com.google.gson.Gson
@@ -109,14 +108,11 @@ class CalDAVHelper(val context: Context) {
         val selection = "${Colors.COLOR_TYPE} = ? AND ${Colors.COLOR} = ? AND ${Colors.ACCOUNT_NAME} = ?"
         val selectionArgs = arrayOf(Colors.TYPE_CALENDAR.toString(), eventType.color.toString(), eventType.caldavEmail)
 
-        var cursor: Cursor? = null
-        try {
-            cursor = context.contentResolver.query(uri, projection, selection, selectionArgs, null)
-            if (cursor?.moveToFirst() == true) {
+        val cursor = context.contentResolver.query(uri, projection, selection, selectionArgs, null)
+        cursor?.use {
+            if (cursor.moveToFirst()) {
                 return cursor.getStringValue(Colors.COLOR_KEY).toInt()
             }
-        } finally {
-            cursor?.close()
         }
 
         return -1

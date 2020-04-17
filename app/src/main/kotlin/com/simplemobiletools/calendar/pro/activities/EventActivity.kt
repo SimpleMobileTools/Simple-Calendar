@@ -4,7 +4,6 @@ import android.app.Activity
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
-import android.database.Cursor
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.LayerDrawable
@@ -1458,30 +1457,21 @@ class EventActivity : SimpleActivity() {
         val selection = "${ContactsContract.Data.MIMETYPE} = ?"
         val selectionArgs = arrayOf(ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE)
 
-        var cursor: Cursor? = null
-        try {
-            cursor = contentResolver.query(uri, projection, selection, selectionArgs, null)
-            if (cursor?.moveToFirst() == true) {
-                do {
-                    val id = cursor.getIntValue(ContactsContract.Data.CONTACT_ID)
-                    val prefix = cursor.getStringValue(ContactsContract.CommonDataKinds.StructuredName.PREFIX) ?: ""
-                    val firstName = cursor.getStringValue(ContactsContract.CommonDataKinds.StructuredName.GIVEN_NAME) ?: ""
-                    val middleName = cursor.getStringValue(ContactsContract.CommonDataKinds.StructuredName.MIDDLE_NAME) ?: ""
-                    val surname = cursor.getStringValue(ContactsContract.CommonDataKinds.StructuredName.FAMILY_NAME) ?: ""
-                    val suffix = cursor.getStringValue(ContactsContract.CommonDataKinds.StructuredName.SUFFIX) ?: ""
-                    val photoUri = cursor.getStringValue(ContactsContract.CommonDataKinds.StructuredName.PHOTO_THUMBNAIL_URI) ?: ""
+        queryCursor(uri, projection, selection, selectionArgs) { cursor ->
+            val id = cursor.getIntValue(ContactsContract.Data.CONTACT_ID)
+            val prefix = cursor.getStringValue(ContactsContract.CommonDataKinds.StructuredName.PREFIX) ?: ""
+            val firstName = cursor.getStringValue(ContactsContract.CommonDataKinds.StructuredName.GIVEN_NAME) ?: ""
+            val middleName = cursor.getStringValue(ContactsContract.CommonDataKinds.StructuredName.MIDDLE_NAME) ?: ""
+            val surname = cursor.getStringValue(ContactsContract.CommonDataKinds.StructuredName.FAMILY_NAME) ?: ""
+            val suffix = cursor.getStringValue(ContactsContract.CommonDataKinds.StructuredName.SUFFIX) ?: ""
+            val photoUri = cursor.getStringValue(ContactsContract.CommonDataKinds.StructuredName.PHOTO_THUMBNAIL_URI) ?: ""
 
-                    val names = arrayListOf(prefix, firstName, middleName, surname, suffix).filter { it.trim().isNotEmpty() }
-                    val fullName = TextUtils.join(" ", names).trim()
-                    if (fullName.isNotEmpty() || photoUri.isNotEmpty()) {
-                        val contact = Attendee(id, fullName, "", CalendarContract.Attendees.ATTENDEE_STATUS_NONE, photoUri, false, CalendarContract.Attendees.RELATIONSHIP_NONE)
-                        contacts.add(contact)
-                    }
-                } while (cursor.moveToNext())
+            val names = arrayListOf(prefix, firstName, middleName, surname, suffix).filter { it.trim().isNotEmpty() }
+            val fullName = TextUtils.join(" ", names).trim()
+            if (fullName.isNotEmpty() || photoUri.isNotEmpty()) {
+                val contact = Attendee(id, fullName, "", CalendarContract.Attendees.ATTENDEE_STATUS_NONE, photoUri, false, CalendarContract.Attendees.RELATIONSHIP_NONE)
+                contacts.add(contact)
             }
-        } catch (ignored: Exception) {
-        } finally {
-            cursor?.close()
         }
         return contacts
     }
@@ -1494,21 +1484,13 @@ class EventActivity : SimpleActivity() {
                 ContactsContract.CommonDataKinds.Email.DATA
         )
 
-        var cursor: Cursor? = null
-        try {
-            cursor = contentResolver.query(uri, projection, null, null, null)
-            if (cursor?.moveToFirst() == true) {
-                do {
-                    val id = cursor.getIntValue(ContactsContract.Data.CONTACT_ID)
-                    val email = cursor.getStringValue(ContactsContract.CommonDataKinds.Email.DATA) ?: continue
-                    val contact = Attendee(id, "", email, CalendarContract.Attendees.ATTENDEE_STATUS_NONE, "", false, CalendarContract.Attendees.RELATIONSHIP_NONE)
-                    contacts.add(contact)
-                } while (cursor.moveToNext())
-            }
-        } catch (ignored: Exception) {
-        } finally {
-            cursor?.close()
+        queryCursor(uri, projection) { cursor ->
+            val id = cursor.getIntValue(ContactsContract.Data.CONTACT_ID)
+            val email = cursor.getStringValue(ContactsContract.CommonDataKinds.Email.DATA) ?: return@queryCursor
+            val contact = Attendee(id, "", email, CalendarContract.Attendees.ATTENDEE_STATUS_NONE, "", false, CalendarContract.Attendees.RELATIONSHIP_NONE)
+            contacts.add(contact)
         }
+
         return contacts
     }
 
