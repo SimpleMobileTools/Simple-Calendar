@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/calendar_coordinator"
     android:layout_width="match_parent"
@@ -14,7 +13,7 @@
         <FrameLayout
             android:id="@+id/fragments_holder"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
@@ -27,7 +26,7 @@
         android:contentDescription="@string/new_event"
         android:src="@drawable/ic_plus_vector"
         app:backgroundTint="@color/color_primary"
-        app:rippleColor="@color/pressed_item_foreground"/>
+        app:rippleColor="@color/pressed_item_foreground" />
 
     <RelativeLayout
         android:id="@+id/search_holder"
@@ -43,11 +42,13 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/activity_margin"
+            android:alpha="0.8"
             android:gravity="center"
             android:paddingStart="@dimen/activity_margin"
             android:paddingEnd="@dimen/activity_margin"
             android:text="@string/no_items_found"
-            android:textSize="@dimen/bigger_text_size"/>
+            android:textSize="@dimen/bigger_text_size"
+            android:textStyle="italic" />
 
         <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/search_placeholder_2"
@@ -55,13 +56,15 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/search_placeholder"
             android:layout_centerHorizontal="true"
+            android:alpha="0.8"
             android:gravity="center"
-            android:paddingBottom="@dimen/medium_margin"
             android:paddingStart="@dimen/activity_margin"
-            android:paddingEnd="@dimen/activity_margin"
             android:paddingTop="@dimen/medium_margin"
+            android:paddingEnd="@dimen/activity_margin"
+            android:paddingBottom="@dimen/medium_margin"
             android:text="@string/type_2_characters"
-            android:textSize="@dimen/bigger_text_size"/>
+            android:textSize="@dimen/bigger_text_size"
+            android:textStyle="italic" />
 
         <com.simplemobiletools.commons.views.MyRecyclerView
             android:id="@+id/search_results_list"
@@ -69,7 +72,7 @@
             android:layout_height="match_parent"
             android:clipToPadding="false"
             android:scrollbars="vertical"
-            app:layoutManager="com.simplemobiletools.commons.views.MyLinearLayoutManager"/>
+            app:layoutManager="com.simplemobiletools.commons.views.MyLinearLayoutManager" />
 
     </RelativeLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
