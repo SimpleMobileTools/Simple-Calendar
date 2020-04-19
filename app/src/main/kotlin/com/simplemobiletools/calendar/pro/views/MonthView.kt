@@ -195,10 +195,16 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
             weekNumberPaint.color = if (weekDays.any { it.isToday }) primaryColor else textColor
 
             // fourth day of the week determines the week of the year number
-            val weekOfYear = days.getOrNull(i * 7 + 3)?.weekOfYear ?: 1
-            val id = "$weekOfYear:"
+            val weekGivingDay = i * 7 + 3
+            val weekOfYear = days.getOrNull(weekGivingDay)?.weekOfYear ?: 1
+            if (!(days.getOrNull(weekGivingDay)?.isThisMonth ?:false)) {
+                weekNumberPaint.setAlpha(Math.round(weekNumberPaint.getAlpha() * LOW_ALPHA))
+            }
+
+            var weekNumberString = "$weekOfYear"
+            if (!config.showGrid) weekNumberString += ":"
             val yPos = i * dayHeight + weekDaysLetterHeight
-            canvas.drawText(id, horizontalOffset.toFloat() * 0.9f, yPos + paint.textSize, weekNumberPaint)
+            canvas.drawText(weekNumberString, horizontalOffset.toFloat() * 0.9f, yPos + paint.textSize, weekNumberPaint)
         }
     }
 
