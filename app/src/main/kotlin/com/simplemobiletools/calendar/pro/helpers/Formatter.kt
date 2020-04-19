@@ -8,6 +8,7 @@ import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 import org.joda.time.LocalDate
 import org.joda.time.format.DateTimeFormat
+import java.util.Locale
 
 object Formatter {
     const val DAYCODE_PATTERN = "YYYYMMdd"
@@ -24,24 +25,18 @@ object Formatter {
 
     fun getDateFromCode(context: Context, dayCode: String, shortMonth: Boolean = false): String {
         val dateTime = getDateTimeFromCode(dayCode)
-        val day = dateTime.toString(DAY_PATTERN)
-        val year = dateTime.toString(YEAR_PATTERN)
-        val monthIndex = Integer.valueOf(dayCode.substring(4, 6))
-        var month = getMonthName(context, monthIndex)
-        if (shortMonth)
-            month = month.substring(0, Math.min(month.length, 3))
-        var date = "$month $day"
-        if (year != DateTime().toString(YEAR_PATTERN))
-            date += " $year"
-        return date
+
+        return DateTimeFormat.longDate().withLocale(Locale.getDefault()).print(dateTime)
     }
 
     fun getDayTitle(context: Context, dayCode: String, addDayOfWeek: Boolean = true): String {
         val date = getDateFromCode(context, dayCode)
         val dateTime = getDateTimeFromCode(dayCode)
-        val day = dateTime.toString(DAY_OF_WEEK_PATTERN)
-        return if (addDayOfWeek)
+
+        return if (addDayOfWeek) {
+            val day = dateTime.dayOfWeek().getAsText(Locale.getDefault())
             "$date ($day)"
+        }
         else
             date
     }
