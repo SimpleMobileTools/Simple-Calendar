@@ -207,7 +207,7 @@
     <string name="select_a_different_caldav_color">Vælg en anden farve (den kan være tilføjet lokalt)</string>
     <string name="insufficient_permissions">Du har ikke tilladelse til at skrive i den valgte kalender</string>
     <string name="caldav_event_not_found">Begivenheden blev ikke fundet. Aktiver CalDAV-synkronisering med den relevante kalender i app-indstillingerne.</string>
-    <string name="no_synchronized_calendars">No synchronizable calendars have been found</string>
+    <string name="no_synchronized_calendars">Der er ikke fundet nogen kalendere der kan synkroniseres</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
