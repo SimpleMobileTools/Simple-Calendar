@@ -16,7 +16,7 @@
     <!-- Widget titles -->
     <string name="widget_monthly">Aylık takvim</string>
     <string name="widget_list">Takvim etkinlik listesi</string>
-    <string name="widget_todays_date">Calendar today\'s date</string>
+    <string name="widget_todays_date">Takvim bugünün tarihi</string>
 
     <!-- Event -->
     <string name="event">Durum</string>
