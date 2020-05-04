@@ -6,6 +6,6 @@
     android:minHeight="40dp"
     android:minResizeWidth="40dp"
     android:minResizeHeight="40dp"
-    android:previewImage="@drawable/img_widget_list_preview"
+    android:previewImage="@drawable/img_widget_date_preview"
     android:resizeMode="horizontal|vertical"
     android:updatePeriodMillis="600000" />

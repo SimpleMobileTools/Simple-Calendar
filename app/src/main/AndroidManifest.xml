@@ -199,7 +199,8 @@
 
         <receiver
             android:name=".helpers.MyWidgetDateProvider"
-            android:label="@string/todays_date">
+            android:icon="@drawable/img_widget_date_preview"
+            android:label="@string/widget_todays_date">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
             </intent-filter>

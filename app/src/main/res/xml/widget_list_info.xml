@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<appwidget-provider
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
     android:configure="com.simplemobiletools.calendar.pro.activities.WidgetListConfigureActivity"
     android:initialLayout="@layout/widget_event_list"
-    android:minHeight="@dimen/min_widget_height"
-    android:minResizeHeight="110dp"
-    android:minResizeWidth="110dp"
     android:minWidth="@dimen/min_widget_width"
+    android:minHeight="@dimen/min_widget_height"
+    android:minResizeWidth="110dp"
+    android:minResizeHeight="110dp"
     android:previewImage="@drawable/img_widget_list_preview"
     android:resizeMode="horizontal|vertical"
-    android:updatePeriodMillis="600000"/>
+    android:updatePeriodMillis="600000" />
