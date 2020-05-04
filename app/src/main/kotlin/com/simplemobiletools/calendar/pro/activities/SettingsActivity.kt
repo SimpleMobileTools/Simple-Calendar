@@ -126,7 +126,7 @@ class SettingsActivity : SimpleActivity() {
     private fun setupSectionColors() {
         val adjustedPrimaryColor = getAdjustedPrimaryColor()
         arrayListOf(reminders_label, caldav_label, weekly_view_label, monthly_view_label, simple_event_list_label, widgets_label, events_label,
-                new_events_label, migrating_label).forEach {
+            new_events_label, migrating_label).forEach {
             it.setTextColor(adjustedPrimaryColor)
         }
     }
@@ -325,16 +325,16 @@ class SettingsActivity : SimpleActivity() {
 
         settings_reminder_sound_holder.setOnClickListener {
             SelectAlarmSoundDialog(this, config.reminderSoundUri, config.reminderAudioStream, GET_RINGTONE_URI, ALARM_SOUND_TYPE_NOTIFICATION, false,
-                    onAlarmPicked = {
-                        if (it != null) {
-                            updateReminderSound(it)
-                        }
-                    }, onAlarmSoundDeleted = {
-                if (it.uri == config.reminderSoundUri) {
-                    val defaultAlarm = getDefaultAlarmSound(ALARM_SOUND_TYPE_NOTIFICATION)
-                    updateReminderSound(defaultAlarm)
-                }
-            })
+                onAlarmPicked = {
+                    if (it != null) {
+                        updateReminderSound(it)
+                    }
+                }, onAlarmSoundDeleted = {
+                    if (it.uri == config.reminderSoundUri) {
+                        val defaultAlarm = getDefaultAlarmSound(ALARM_SOUND_TYPE_NOTIFICATION)
+                        updateReminderSound(defaultAlarm)
+                    }
+                })
         }
     }
 
@@ -348,10 +348,10 @@ class SettingsActivity : SimpleActivity() {
         settings_reminder_audio_stream.text = getAudioStreamText()
         settings_reminder_audio_stream_holder.setOnClickListener {
             val items = arrayListOf(
-                    RadioItem(AudioManager.STREAM_ALARM, getString(R.string.alarm_stream)),
-                    RadioItem(AudioManager.STREAM_SYSTEM, getString(R.string.system_stream)),
-                    RadioItem(AudioManager.STREAM_NOTIFICATION, getString(R.string.notification_stream)),
-                    RadioItem(AudioManager.STREAM_RING, getString(R.string.ring_stream)))
+                RadioItem(AudioManager.STREAM_ALARM, getString(R.string.alarm_stream)),
+                RadioItem(AudioManager.STREAM_SYSTEM, getString(R.string.system_stream)),
+                RadioItem(AudioManager.STREAM_NOTIFICATION, getString(R.string.notification_stream)),
+                RadioItem(AudioManager.STREAM_RING, getString(R.string.ring_stream)))
 
             RadioGroupDialog(this@SettingsActivity, items, config.reminderAudioStream) {
                 config.reminderAudioStream = it as Int
@@ -484,10 +484,10 @@ class SettingsActivity : SimpleActivity() {
         settings_font_size.text = getFontSizeText()
         settings_font_size_holder.setOnClickListener {
             val items = arrayListOf(
-                    RadioItem(FONT_SIZE_SMALL, getString(R.string.small)),
-                    RadioItem(FONT_SIZE_MEDIUM, getString(R.string.medium)),
-                    RadioItem(FONT_SIZE_LARGE, getString(R.string.large)),
-                    RadioItem(FONT_SIZE_EXTRA_LARGE, getString(R.string.extra_large)))
+                RadioItem(FONT_SIZE_SMALL, getString(R.string.small)),
+                RadioItem(FONT_SIZE_MEDIUM, getString(R.string.medium)),
+                RadioItem(FONT_SIZE_LARGE, getString(R.string.large)),
+                RadioItem(FONT_SIZE_EXTRA_LARGE, getString(R.string.extra_large)))
 
             RadioGroupDialog(this@SettingsActivity, items, config.fontSize) {
                 config.fontSize = it as Int
@@ -510,12 +510,12 @@ class SettingsActivity : SimpleActivity() {
         settings_list_widget_view_to_open.text = getDefaultViewText()
         settings_list_widget_view_to_open_holder.setOnClickListener {
             val items = arrayListOf(
-                    RadioItem(DAILY_VIEW, getString(R.string.daily_view)),
-                    RadioItem(WEEKLY_VIEW, getString(R.string.weekly_view)),
-                    RadioItem(MONTHLY_VIEW, getString(R.string.monthly_view)),
-                    RadioItem(YEARLY_VIEW, getString(R.string.yearly_view)),
-                    RadioItem(EVENTS_LIST_VIEW, getString(R.string.simple_event_list)),
-                    RadioItem(LAST_VIEW, getString(R.string.last_view)))
+                RadioItem(DAILY_VIEW, getString(R.string.daily_view)),
+                RadioItem(WEEKLY_VIEW, getString(R.string.weekly_view)),
+                RadioItem(MONTHLY_VIEW, getString(R.string.monthly_view)),
+                RadioItem(YEARLY_VIEW, getString(R.string.yearly_view)),
+                RadioItem(EVENTS_LIST_VIEW, getString(R.string.simple_event_list)),
+                RadioItem(LAST_VIEW, getString(R.string.last_view)))
 
             RadioGroupDialog(this@SettingsActivity, items, config.listWidgetViewToOpen) {
                 config.listWidgetViewToOpen = it as Int
