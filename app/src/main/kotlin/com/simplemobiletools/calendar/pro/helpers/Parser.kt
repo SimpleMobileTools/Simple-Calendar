@@ -63,7 +63,7 @@ class Parser {
             } else if (key == BYMONTHDAY) {
                 val byMonthDayValueArray = value.split(",")
                 val intFlag = byMonthDayValueArray.find { it.toInt() == -1 }
-                if (intFlag == null)
+                if (intFlag != null)
                     repeatRule = REPEAT_LAST_DAY
             }
         }
