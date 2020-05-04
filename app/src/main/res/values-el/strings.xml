@@ -16,6 +16,7 @@
     <!-- Widget titles -->
     <string name="widget_monthly">Μηνιαίο ημερολόγιο</string>
     <string name="widget_list">Λίστα εκδηλώσεων ημερολογίου</string>
+    <string name="todays_date">Calendar today\'s date</string>
 
     <!-- Event -->
     <string name="event">Εκδηλώσεις</string>
