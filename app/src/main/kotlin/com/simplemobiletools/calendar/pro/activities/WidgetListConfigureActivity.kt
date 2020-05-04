@@ -17,6 +17,7 @@ import com.simplemobiletools.calendar.pro.models.ListItem
 import com.simplemobiletools.calendar.pro.models.ListSection
 import com.simplemobiletools.commons.dialogs.ColorPickerDialog
 import com.simplemobiletools.commons.extensions.adjustAlpha
+import com.simplemobiletools.commons.extensions.applyColorFilter
 import com.simplemobiletools.commons.extensions.setFillWithStroke
 import com.simplemobiletools.commons.helpers.IS_CUSTOMIZING_COLORS
 import kotlinx.android.synthetic.main.widget_config_list.*
@@ -128,7 +129,7 @@ class WidgetListConfigureActivity : SimpleActivity() {
 
     private fun updateBgColor() {
         mBgColor = mBgColorWithoutTransparency.adjustAlpha(mBgAlpha)
-        config_events_list.setBackgroundColor(mBgColor)
+        config_events_list.background.applyColorFilter(mBgColor)
         config_bg_color.setFillWithStroke(mBgColor, Color.BLACK)
         config_save.setBackgroundColor(mBgColor)
     }

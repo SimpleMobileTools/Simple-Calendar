@@ -124,7 +124,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
             setupDayOpenIntent(context, views, id, day.code)
 
             day.dayEvents = day.dayEvents.asSequence().sortedWith(compareBy({ it.flags and FLAG_ALL_DAY == 0 }, { it.startTS }, { it.title }))
-                    .toMutableList() as ArrayList<Event>
+                .toMutableList() as ArrayList<Event>
 
             day.dayEvents.forEach {
                 var backgroundColor = it.color
@@ -172,7 +172,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
                 val views = RemoteViews(context.packageName, R.layout.fragment_month_widget)
                 views.setText(R.id.top_value, month)
 
-                views.setBackgroundColor(R.id.calendar_holder, context.config.widgetBgColor)
+                views.applyColorFilter(R.id.widget_month_background, context.config.widgetBgColor)
 
                 views.setTextColor(R.id.top_value, textColor)
                 views.setTextSize(R.id.top_value, largerFontSize)

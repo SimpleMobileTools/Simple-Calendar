@@ -146,7 +146,7 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
 
     private fun updateBgColor() {
         mBgColor = mBgColorWithoutTransparency.adjustAlpha(mBgAlpha)
-        config_calendar.setBackgroundColor(mBgColor)
+        config_calendar.background.applyColorFilter(mBgColor)
         config_bg_color.setFillWithStroke(mBgColor, Color.BLACK)
         config_save.setBackgroundColor(mBgColor)
     }
