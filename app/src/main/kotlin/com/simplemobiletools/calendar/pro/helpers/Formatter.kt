@@ -13,6 +13,7 @@ object Formatter {
     const val DAYCODE_PATTERN = "YYYYMMdd"
     const val YEAR_PATTERN = "YYYY"
     const val TIME_PATTERN = "HHmmss"
+    private const val MONTH_PATTERN = "MMM"
     private const val DAY_PATTERN = "d"
     private const val DAY_OF_WEEK_PATTERN = "EEE"
     private const val LONGEST_PATTERN = "MMMM d YYYY (EEEE)"
@@ -59,6 +60,10 @@ object Formatter {
     }
 
     fun getTodayCode() = getDayCodeFromTS(getNowSeconds())
+
+    fun getTodayDayNumber() = getDateTimeFromTS(getNowSeconds()).toString(DAY_PATTERN)
+
+    fun getCurrentMonthShort() = getDateTimeFromTS(getNowSeconds()).toString(MONTH_PATTERN)
 
     fun getHours(context: Context, dateTime: DateTime) = dateTime.toString(getHourPattern(context))
 
