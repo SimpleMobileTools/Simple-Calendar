@@ -513,7 +513,6 @@ fun Context.refreshCalDAVCalendars(ids: String, showToasts: Boolean) {
     }
 }
 
-
 fun Context.getWidgetFontSize() = when (config.fontSize) {
     FONT_SIZE_SMALL -> getWidgetSmallFontSize()
     FONT_SIZE_MEDIUM -> getWidgetMediumFontSize()
