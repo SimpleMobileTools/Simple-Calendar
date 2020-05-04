@@ -21,7 +21,7 @@
             android:gravity="center"
             android:paddingTop="@dimen/normal_margin"
             android:textColor="@color/md_grey_white"
-            android:textSize="26sp"
+            android:textSize="28sp"
             tools:text="13" />
 
         <TextView
