@@ -16,6 +16,7 @@
     <!-- Widget titles -->
     <string name="widget_monthly">Månedskalender</string>
     <string name="widget_list">Hendelsesliste</string>
+    <string name="widget_todays_date">Calendar today\'s date</string>
 
     <!-- Event -->
     <string name="event">Hendelse</string>

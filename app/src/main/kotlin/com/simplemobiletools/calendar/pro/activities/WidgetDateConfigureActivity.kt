@@ -2,36 +2,22 @@ package com.simplemobiletools.calendar.pro.activities
 
 import android.app.Activity
 import android.appwidget.AppWidgetManager
-import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.widget.LinearLayout
 import android.widget.SeekBar
-import android.widget.TextView
 import com.simplemobiletools.calendar.pro.R
-import com.simplemobiletools.calendar.pro.extensions.addDayEvents
-import com.simplemobiletools.calendar.pro.extensions.addDayNumber
 import com.simplemobiletools.calendar.pro.extensions.config
+import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.helpers.LOW_ALPHA
-import com.simplemobiletools.calendar.pro.helpers.MonthlyCalendarImpl
-import com.simplemobiletools.calendar.pro.helpers.MyWidgetMonthlyProvider
-import com.simplemobiletools.calendar.pro.interfaces.MonthlyCalendar
-import com.simplemobiletools.calendar.pro.models.DayMonthly
+import com.simplemobiletools.calendar.pro.helpers.MyWidgetDateProvider
 import com.simplemobiletools.commons.dialogs.ColorPickerDialog
 import com.simplemobiletools.commons.extensions.adjustAlpha
 import com.simplemobiletools.commons.extensions.applyColorFilter
-import com.simplemobiletools.commons.extensions.beVisible
 import com.simplemobiletools.commons.extensions.setFillWithStroke
-import kotlinx.android.synthetic.main.first_row.*
-import kotlinx.android.synthetic.main.top_navigation.*
-import kotlinx.android.synthetic.main.widget_config_monthly.*
-import org.joda.time.DateTime
+import kotlinx.android.synthetic.main.widget_config_date.*
 
-class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
-    private var mDays: List<DayMonthly>? = null
-    private var dayLabelHeight = 0
-
+class WidgetDateConfigureActivity : SimpleActivity() {
     private var mBgAlpha = 0f
     private var mWidgetId = 0
     private var mBgColorWithoutTransparency = 0
@@ -45,7 +31,7 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
         useDynamicTheme = false
         super.onCreate(savedInstanceState)
         setResult(Activity.RESULT_CANCELED)
-        setContentView(R.layout.widget_config_monthly)
+        setContentView(R.layout.widget_config_date)
         initVariables()
 
         val extras = intent.extras
@@ -59,6 +45,8 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
         config_bg_color.setOnClickListener { pickBackgroundColor() }
         config_text_color.setOnClickListener { pickTextColor() }
         config_bg_seekbar.setColors(mTextColor, mPrimaryColor, mPrimaryColor)
+        widget_date_label.text = Formatter.getTodayDayNumber()
+        widget_month_label.text = Formatter.getCurrentMonthShort()
     }
 
     override fun onResume() {
@@ -77,8 +65,6 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
         config_bg_seekbar.setOnSeekBarChangeListener(bgSeekbarChangeListener)
         config_bg_seekbar.progress = (mBgAlpha * 100).toInt()
         updateBgColor()
-
-        MonthlyCalendarImpl(this, applicationContext).updateMonthlyCalendar(DateTime().withDayOfMonth(1))
     }
 
     private fun saveConfig() {
@@ -113,13 +99,12 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
             if (wasPositivePressed) {
                 mTextColorWithoutTransparency = color
                 updateColors()
-                updateDays()
             }
         }
     }
 
     private fun requestWidgetUpdate() {
-        Intent(AppWidgetManager.ACTION_APPWIDGET_UPDATE, null, this, MyWidgetMonthlyProvider::class.java).apply {
+        Intent(AppWidgetManager.ACTION_APPWIDGET_UPDATE, null, this, MyWidgetDateProvider::class.java).apply {
             putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, intArrayOf(mWidgetId))
             sendBroadcast(this)
         }
@@ -130,47 +115,17 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
         mWeakTextColor = mTextColorWithoutTransparency.adjustAlpha(LOW_ALPHA)
         mPrimaryColor = config.primaryColor
 
-        top_left_arrow.applyColorFilter(mTextColor)
-        top_right_arrow.applyColorFilter(mTextColor)
-        top_value.setTextColor(mTextColor)
         config_text_color.setFillWithStroke(mTextColor, Color.BLACK)
         config_save.setTextColor(mTextColor)
-        updateLabels()
+        widget_date_label.setTextColor(mTextColor)
+        widget_month_label.setTextColor(mTextColor)
     }
 
     private fun updateBgColor() {
         mBgColor = mBgColorWithoutTransparency.adjustAlpha(mBgAlpha)
-        config_calendar.background.applyColorFilter(mBgColor)
+        config_date_time_wrapper.background.applyColorFilter(mBgColor)
         config_bg_color.setFillWithStroke(mBgColor, Color.BLACK)
         config_save.setBackgroundColor(mBgColor)
-    }
-
-    private fun updateDays() {
-        val len = mDays!!.size
-
-        if (applicationContext.config.showWeekNumbers) {
-            week_num.setTextColor(mTextColor)
-            week_num.beVisible()
-
-            for (i in 0..5) {
-                findViewById<TextView>(resources.getIdentifier("week_num_$i", "id", packageName)).apply {
-                    text = "${mDays!![i * 7 + 3].weekOfYear}:"
-                    setTextColor(mTextColor)
-                    beVisible()
-                }
-            }
-        }
-
-        val dividerMargin = resources.displayMetrics.density.toInt()
-        for (i in 0 until len) {
-            findViewById<LinearLayout>(resources.getIdentifier("day_$i", "id", packageName)).apply {
-                val day = mDays!![i]
-                removeAllViews()
-
-                context.addDayNumber(mTextColor, day, this, dayLabelHeight) { dayLabelHeight = it }
-                context.addDayEvents(day, this, resources, dividerMargin)
-            }
-        }
     }
 
     private val bgSeekbarChangeListener = object : SeekBar.OnSeekBarChangeListener {
@@ -182,21 +137,5 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
         override fun onStartTrackingTouch(seekBar: SeekBar) {}
 
         override fun onStopTrackingTouch(seekBar: SeekBar) {}
-    }
-
-    override fun updateMonthlyCalendar(context: Context, month: String, days: ArrayList<DayMonthly>, checkedEvents: Boolean, currTargetDate: DateTime) {
-        runOnUiThread {
-            mDays = days
-            top_value.text = month
-            updateDays()
-        }
-    }
-
-    private fun updateLabels() {
-        for (i in 0..6) {
-            findViewById<TextView>(resources.getIdentifier("label_$i", "id", packageName)).apply {
-                setTextColor(mTextColor)
-            }
-        }
     }
 }

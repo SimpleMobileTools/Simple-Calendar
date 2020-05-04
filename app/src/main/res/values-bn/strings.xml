@@ -20,6 +20,7 @@
     <!-- Widget titles -->
     <string name="widget_monthly">মাসিক ক্যালেন্ডার</string>
     <string name="widget_list">ক্যালেন্ডারের ইভেন্ট তালিকা</string>
+    <string name="widget_todays_date">Calendar today\'s date</string>
 
     <!-- Event -->
     <string name="event">ইভেন্ট</string>

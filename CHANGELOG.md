@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 6.9.2 *(2020-04-17)*
+----------------------------
+
+ * Fixed some .ics file importing related glitches
+ * Corrected and added some UK holidays
+ * Added many UI and translation improvements
+
 Version 6.9.1 *(2020-03-25)*
 ----------------------------
 

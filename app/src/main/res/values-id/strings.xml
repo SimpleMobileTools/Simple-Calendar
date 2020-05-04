@@ -16,6 +16,7 @@
     <!-- Widget titles -->
     <string name="widget_monthly">Bulan</string>
     <string name="widget_list">Daftar acara</string>
+    <string name="widget_todays_date">Calendar today\'s date</string>
 
     <!-- Event -->
     <string name="event">Acara</string>

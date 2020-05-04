@@ -16,6 +16,7 @@
     <!-- Widget titles -->
     <string name="widget_monthly">יומן חודשי</string>
     <string name="widget_list">רשימת אירועי יומן</string>
+    <string name="widget_todays_date">Calendar today\'s date</string>
 
     <!-- Event -->
     <string name="event">אירוע</string>

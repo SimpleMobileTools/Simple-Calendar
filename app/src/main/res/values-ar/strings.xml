@@ -16,6 +16,7 @@
     <!-- Widget titles -->
     <string name="widget_monthly">تقويم شهري</string>
     <string name="widget_list">لائحة أحداث التقويم</string>
+    <string name="widget_todays_date">Calendar today\'s date</string>
 
     <!-- Event -->
     <string name="event">حدث</string>

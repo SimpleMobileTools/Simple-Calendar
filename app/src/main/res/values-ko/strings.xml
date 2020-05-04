@@ -16,6 +16,7 @@
     <!-- Widget titles -->
     <string name="widget_monthly">월별 달력</string>
     <string name="widget_list">일정 목록 달력</string>
+    <string name="widget_todays_date">Calendar today\'s date</string>
 
     <!-- Event -->
     <string name="event">일정</string>

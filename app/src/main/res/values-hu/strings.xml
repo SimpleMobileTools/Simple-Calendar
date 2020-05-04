@@ -16,6 +16,7 @@
     <!-- Widget titles -->
     <string name="widget_monthly">Havi naptár</string>
     <string name="widget_list">Bejegyzésnaptár</string>
+    <string name="widget_todays_date">Calendar today\'s date</string>
 
     <!-- Event -->
     <string name="event">Bejegyzés</string>

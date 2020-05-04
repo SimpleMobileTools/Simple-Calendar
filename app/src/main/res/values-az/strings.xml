@@ -16,6 +16,7 @@
     <!-- Widget titles -->
     <string name="widget_monthly">Aylıq Təqvim</string>
     <string name="widget_list">Təqvim hadisə siyahısı</string>
+    <string name="widget_todays_date">Calendar today\'s date</string>
 
     <!-- Event -->
     <string name="event">Hadisə</string>

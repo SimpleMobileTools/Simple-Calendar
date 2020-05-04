@@ -16,6 +16,7 @@
     <!-- Widget titles -->
     <string name="widget_monthly">Календар на місяць</string>
     <string name="widget_list">Календар списку подій</string>
+    <string name="widget_todays_date">Calendar today\'s date</string>
 
     <!-- Event -->
     <string name="event">Подія</string>

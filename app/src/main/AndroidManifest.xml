@@ -95,6 +95,15 @@
         </activity>
 
         <activity
+            android:name=".activities.WidgetDateConfigureActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyWidgetConfigTheme">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
+            </intent-filter>
+        </activity>
+
+        <activity
             android:name="com.simplemobiletools.commons.activities.AboutActivity"
             android:label="@string/about"
             android:parentActivityName=".activities.MainActivity"/>
@@ -186,6 +195,19 @@
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget_list_info"/>
+        </receiver>
+
+        <receiver
+            android:name=".helpers.MyWidgetDateProvider"
+            android:icon="@drawable/img_widget_date_preview"
+            android:label="@string/widget_todays_date">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_date_info"/>
         </receiver>
 
         <service

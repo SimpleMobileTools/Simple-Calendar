@@ -16,6 +16,7 @@
     <!-- Widget titles -->
     <string name="widget_monthly">Kalendár mesačný</string>
     <string name="widget_list">Kalendár so zoznamom</string>
+    <string name="widget_todays_date">Kalendár s dnešným dátumom</string>
 
     <!-- Event -->
     <string name="event">Udalosť</string>

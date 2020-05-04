@@ -56,12 +56,24 @@ fun Context.updateWidgets() {
     }
 
     updateListWidget()
+    updateDateWidget()
 }
 
 fun Context.updateListWidget() {
     val widgetIDs = AppWidgetManager.getInstance(applicationContext).getAppWidgetIds(ComponentName(applicationContext, MyWidgetListProvider::class.java))
     if (widgetIDs.isNotEmpty()) {
         Intent(applicationContext, MyWidgetListProvider::class.java).apply {
+            action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
+            putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, widgetIDs)
+            sendBroadcast(this)
+        }
+    }
+}
+
+fun Context.updateDateWidget() {
+    val widgetIDs = AppWidgetManager.getInstance(applicationContext).getAppWidgetIds(ComponentName(applicationContext, MyWidgetDateProvider::class.java))
+    if (widgetIDs.isNotEmpty()) {
+        Intent(applicationContext, MyWidgetDateProvider::class.java).apply {
             action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
             putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, widgetIDs)
             sendBroadcast(this)
@@ -234,10 +246,10 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
     val channelId = "simple_calendar_${config.lastReminderChannel}_${config.reminderAudioStream}_${event.eventType}"
     if (isOreoPlus()) {
         val audioAttributes = AudioAttributes.Builder()
-                .setUsage(AudioAttributes.USAGE_ALARM)
-                .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-                .setLegacyStreamType(config.reminderAudioStream)
-                .build()
+            .setUsage(AudioAttributes.USAGE_ALARM)
+            .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+            .setLegacyStreamType(config.reminderAudioStream)
+            .build()
 
         val name = eventTypesDB.getEventTypeWithId(event.eventType)?.getDisplayTitle()
         val importance = NotificationManager.IMPORTANCE_HIGH
@@ -260,17 +272,17 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
     val contentText = if (publicVersion) resources.getString(R.string.public_event_notification_text) else content
 
     val builder = NotificationCompat.Builder(this, channelId)
-            .setContentTitle(contentTitle)
-            .setContentText(contentText)
-            .setSmallIcon(R.drawable.ic_calendar_vector)
-            .setContentIntent(pendingIntent)
-            .setPriority(NotificationCompat.PRIORITY_MAX)
-            .setDefaults(Notification.DEFAULT_LIGHTS)
-            .setCategory(Notification.CATEGORY_EVENT)
-            .setAutoCancel(true)
-            .setSound(Uri.parse(soundUri), config.reminderAudioStream)
-            .setChannelId(channelId)
-            .addAction(R.drawable.ic_snooze_vector, getString(R.string.snooze), getSnoozePendingIntent(this, event))
+        .setContentTitle(contentTitle)
+        .setContentText(contentText)
+        .setSmallIcon(R.drawable.ic_calendar_vector)
+        .setContentIntent(pendingIntent)
+        .setPriority(NotificationCompat.PRIORITY_MAX)
+        .setDefaults(Notification.DEFAULT_LIGHTS)
+        .setCategory(Notification.CATEGORY_EVENT)
+        .setAutoCancel(true)
+        .setSound(Uri.parse(soundUri), config.reminderAudioStream)
+        .setChannelId(channelId)
+        .addAction(R.drawable.ic_snooze_vector, getString(R.string.snooze), getSnoozePendingIntent(this, event))
 
     if (config.vibrateOnReminder) {
         val vibrateArray = LongArray(2) { 500 }
@@ -401,7 +413,7 @@ fun Context.addDayNumber(rawTextColor: Int, day: DayMonthly, linearLayout: Linea
 }
 
 private fun addTodaysBackground(textView: TextView, res: Resources, dayLabelHeight: Int, primaryColor: Int) =
-        textView.addResizedBackgroundDrawable(res, dayLabelHeight, primaryColor, R.drawable.ic_circle_filled)
+    textView.addResizedBackgroundDrawable(res, dayLabelHeight, primaryColor, R.drawable.ic_circle_filled)
 
 fun Context.addDayEvents(day: DayMonthly, linearLayout: LinearLayout, res: Resources, dividerMargin: Int) {
     val eventLayoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
@@ -512,7 +524,6 @@ fun Context.refreshCalDAVCalendars(ids: String, showToasts: Boolean) {
         }
     }
 }
-
 
 fun Context.getWidgetFontSize() = when (config.fontSize) {
     FONT_SIZE_SMALL -> getWidgetSmallFontSize()

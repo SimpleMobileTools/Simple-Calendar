@@ -16,6 +16,7 @@
     <!-- Widget titles -->
     <string name="widget_monthly">Mjesečni raspored</string>
     <string name="widget_list">Popis događaja kalendara</string>
+    <string name="widget_todays_date">Calendar today\'s date</string>
 
     <!-- Event -->
     <string name="event">Događaj</string>

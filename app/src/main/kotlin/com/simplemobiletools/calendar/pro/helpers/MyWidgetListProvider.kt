@@ -34,7 +34,7 @@ class MyWidgetListProvider : AppWidgetProvider() {
         val appWidgetManager = AppWidgetManager.getInstance(context)
         appWidgetManager.getAppWidgetIds(getComponentName(context)).forEach {
             val views = RemoteViews(context.packageName, R.layout.widget_event_list).apply {
-                setBackgroundColor(R.id.widget_event_list_holder, context.config.widgetBgColor)
+                applyColorFilter(R.id.widget_event_list_background, context.config.widgetBgColor)
                 setTextColor(R.id.widget_event_list_empty, textColor)
                 setTextSize(R.id.widget_event_list_empty, fontSize)
 

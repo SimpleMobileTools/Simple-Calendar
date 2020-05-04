@@ -16,6 +16,7 @@
     <!-- Widget titles -->
     <string name="widget_monthly">月曆</string>
     <string name="widget_list">行事曆活動列表</string>
+    <string name="widget_todays_date">Calendar today\'s date</string>
 
     <!-- Event -->
     <string name="event">活動</string>
