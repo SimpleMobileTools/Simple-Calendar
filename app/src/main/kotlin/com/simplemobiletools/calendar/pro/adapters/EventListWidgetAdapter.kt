@@ -142,7 +142,7 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
         }
     }
 
-    private fun getItemViewType(position: Int) = if (events[position] is ListEvent) ITEM_EVENT else ITEM_HEADER
+    private fun getItemViewType(position: Int) = if (events.getOrNull(position) is ListEvent) ITEM_EVENT else ITEM_HEADER
 
     override fun getLoadingView() = null
 
