@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 6.9.3 *(2020-05-05)*
+----------------------------
+
+ * Added a 1x1 widget showing the current date
+ * Made all widget corners round to make them nicer
+ * Added some translation and other smaller improvements here and there
+
 Version 6.9.2 *(2020-04-17)*
 ----------------------------
 
