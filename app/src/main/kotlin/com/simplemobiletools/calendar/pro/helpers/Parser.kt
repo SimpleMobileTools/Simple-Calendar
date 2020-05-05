@@ -61,10 +61,9 @@ class Parser {
                     repeatRule = if (value.startsWith("-1")) REPEAT_ORDER_WEEKDAY_USE_LAST else REPEAT_ORDER_WEEKDAY
                 }
             } else if (key == BYMONTHDAY) {
-                val byMonthDayValueArray = value.split(",")
-                val intFlag = byMonthDayValueArray.find { it.toInt() == -1 }
-                if (intFlag != null)
+                if (value.split(",").any { it.toInt() == -1 }) {
                     repeatRule = REPEAT_LAST_DAY
+                }
             }
         }
         return EventRepetition(repeatInterval, repeatRule, repeatLimit)
