@@ -16,7 +16,7 @@
     <!-- Widget titles -->
     <string name="widget_monthly">Calendário mensal</string>
     <string name="widget_list">Lista de eventos</string>
-    <string name="widget_todays_date">Calendar today\'s date</string>
+    <string name="widget_todays_date">Data do dia atual</string>
 
     <!-- Event -->
     <string name="event">Evento</string>
@@ -116,8 +116,8 @@
     <!-- Export / Import -->
     <string name="import_events">Importar eventos</string>
     <string name="export_events">Exportar eventos</string>
-    <string name="import_events_from_ics">Importar eventos de um ficheiro .ics</string>
-    <string name="export_events_to_ics">Exportar eventos para um ficheiro .ics</string>
+    <string name="import_events_from_ics">Importar de um ficheiro .ics</string>
+    <string name="export_events_to_ics">Exportar para um ficheiro .ics</string>
     <string name="default_event_type">Tipo de evento padrão</string>
     <string name="export_past_events_too">Exportar eventos antigos</string>
     <string name="include_event_types">Incluir tipos de eventos</string>
@@ -208,7 +208,7 @@
     <string name="select_a_different_caldav_color">Selecione uma cor diferente (pode ser aplicada apenas localmente)</string>
     <string name="insufficient_permissions">Não tem permissão para escrever no calendário selecionado</string>
     <string name="caldav_event_not_found">Evento não encontrado. Ative a sincronização CalDAV para os calendários apropriados nas definições.</string>
-    <string name="no_synchronized_calendars">No synchronizable calendars have been found</string>
+    <string name="no_synchronized_calendars">Não existem calendários passíveis de sincronização</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
@@ -248,7 +248,7 @@
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Simple Calendar Pro - Eventos e lembretes</string>
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Simple mobile 2020 calendar. Schedule planner &amp; appointment reminder for any day</string>
+    <string name="app_short_description">Calendário Simple Mobile 2020. Agendamentos e lembretes para os seus eventos</string>
     <string name="app_long_description">
         Simple Calendar Pro é um calendário local, criado para fazer o que um calendário deve fazer. <b>Funcionalidades simples, apenas as permissões estritamente necessárias e sem anúncios!</b>
 
@@ -284,7 +284,7 @@
         <b>Consulte todas as aplicações Simple Tools aqui:</b>
         https://www.simplemobiletools.com
 
-        <b>Standalone website of Simple Calendar Pro:</b>
+        <b>Site da aplicação Simple Calendar Pro:</b>
         https://www.simplemobiletools.com/calendar
 
         <b>Facebook:</b>
