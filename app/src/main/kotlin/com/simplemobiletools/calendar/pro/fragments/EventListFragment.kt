@@ -3,10 +3,14 @@ package com.simplemobiletools.calendar.pro.fragments
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
+import android.util.SparseArray
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityCompat.invalidateOptionsMenu
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.viewpager.widget.ViewPager
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.EventActivity
 import com.simplemobiletools.calendar.pro.activities.MainActivity
@@ -26,10 +30,12 @@ import com.simplemobiletools.commons.interfaces.RefreshRecyclerViewListener
 import com.simplemobiletools.commons.views.MyLinearLayoutManager
 import com.simplemobiletools.commons.views.MyRecyclerView
 import kotlinx.android.synthetic.main.fragment_event_list.view.*
+import kotlinx.android.synthetic.main.widget_event_list.view.*
 import org.joda.time.DateTime
 import java.util.*
 
-class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
+class EventListFragment : MyFragmentHolder(),
+        RefreshRecyclerViewListener {
     private val NOT_UPDATING = 0
     private val UPDATE_TOP = 1
     private val UPDATE_BOTTOM = 2
@@ -44,8 +50,9 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
     private var bottomItemAtRefresh: ListItem? = null
 
     private var use24HourFormat = false
-
     lateinit var mView: View
+    private var isGoToTodayVisible = false
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mView = inflater.inflate(R.layout.fragment_event_list, container, false)
@@ -58,7 +65,7 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
                 context.launchNewEventIntent(getNewEventDayCode())
             }
         }
-
+        (activity as? MainActivity)?.toggleGoToTodayVisibility(true)
         use24HourFormat = context!!.config.use24HourFormat
         updateActionBarTitle()
         return mView
@@ -80,6 +87,7 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
     }
 
     private fun checkEvents() {
+
         if (!wereInitialEventsAdded) {
             minFetchedTS = DateTime().minusMinutes(context!!.config.displayPastEvents).seconds()
             maxFetchedTS = DateTime().plusMonths(6).seconds()
@@ -99,6 +107,7 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
             }
             wereInitialEventsAdded = true
         }
+
     }
 
     private fun receivedEvents(events: ArrayList<Event>, updateStatus: Int, forceRecreation: Boolean = false) {
@@ -126,13 +135,20 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
 
                 mView.calendar_events_list.endlessScrollListener = object : MyRecyclerView.EndlessScrollListener {
                     override fun updateTop() {
+                        (activity as? MainActivity)?.toggleGoToTodayVisibility(true)
+                        activity?.invalidateOptionsMenu();
                         fetchPreviousPeriod()
+
                     }
 
                     override fun updateBottom() {
+
+                        (activity as? MainActivity)?.toggleGoToTodayVisibility(true)
+                        activity?.invalidateOptionsMenu();
                         fetchNextPeriod()
                     }
                 }
+
             } else {
                 (currAdapter as EventListAdapter).updateListItems(listItems)
                 if (updateStatus == UPDATE_TOP) {
@@ -149,6 +165,7 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
     }
 
     private fun checkPlaceholderVisibility() {
+
         mView.calendar_empty_list_placeholder.beVisibleIf(mEvents.isEmpty())
         mView.calendar_empty_list_placeholder_2.beVisibleIf(mEvents.isEmpty())
         mView.calendar_events_list.beGoneIf(mEvents.isEmpty())
@@ -186,6 +203,7 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
     }
 
     override fun refreshItems() {
+
         checkEvents()
     }
 
@@ -194,8 +212,12 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
         val firstNonPastSectionIndex = listItems.indexOfFirst { it is ListSection && !it.isPastSection }
         if (firstNonPastSectionIndex != -1) {
             (mView.calendar_events_list.layoutManager as LinearLayoutManager).scrollToPositionWithOffset(firstNonPastSectionIndex, 0)
+            (activity as? MainActivity)?.toggleGoToTodayVisibility(false)
+            activity?.invalidateOptionsMenu();
+
         }
     }
+
 
     override fun showGoToDateDialog() {}
 
@@ -203,7 +225,7 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
         checkEvents()
     }
 
-    override fun shouldGoToTodayBeVisible() = false
+    override fun shouldGoToTodayBeVisible()= false
 
     override fun updateActionBarTitle() {
         (activity as? MainActivity)?.updateActionBarTitle(getString(R.string.app_launcher_name))
