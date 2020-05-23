@@ -203,7 +203,9 @@
                 android:layout_toEndOf="@+id/settings_reminder_sound_label"
                 android:background="@null"
                 android:clickable="false"
-                android:maxLines="3" />
+                android:gravity="end"
+                android:maxLines="3"
+                tools:text="None" />
 
         </RelativeLayout>
 
