@@ -473,14 +473,15 @@ fun Context.getEventListItems(events: List<Event>): ArrayList<ListItem> {
 
     var prevCode = ""
     val now = getNowSeconds()
-    val today = Formatter.getDayTitle(this, Formatter.getDayCodeFromTS(now))
+    val today = Formatter.getDayCodeFromTS(now)
 
     sorted.forEach {
         val code = Formatter.getDayCodeFromTS(it.startTS)
         if (code != prevCode) {
-            val day = Formatter.getDayTitle(this, code)
-            val isToday = day == today
-            val listSection = ListSection(day, code, isToday, !isToday && it.startTS < now)
+            val isToday = code == today
+            val dateTime = Formatter.getDateTimeFromCode(code)
+            val sectionTitle = dateTime.toString(config.dateformatEventlist)
+            val listSection = ListSection(sectionTitle, code, isToday, !isToday && it.startTS < now)
             listItems.add(listSection)
             prevCode = code
         }

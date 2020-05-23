@@ -2,15 +2,18 @@ package com.simplemobiletools.calendar.pro.activities
 
 import android.app.Activity
 import android.app.TimePickerDialog
+import android.content.Context
 import android.content.Intent
 import android.media.AudioManager
 import android.os.Bundle
 import android.view.Menu
 import com.simplemobiletools.calendar.pro.R
+import com.simplemobiletools.calendar.pro.dialogs.DateformatComposerDialog
 import com.simplemobiletools.calendar.pro.dialogs.SelectCalendarsDialog
 import com.simplemobiletools.calendar.pro.dialogs.SelectEventTypeDialog
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.*
+import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.commons.dialogs.*
 import com.simplemobiletools.commons.extensions.*
@@ -68,6 +71,8 @@ class SettingsActivity : SimpleActivity() {
         setupDefaultReminder2()
         setupDefaultReminder3()
         setupDisplayPastEvents()
+        setupEventlistDateformat()
+        setupEventlistHeaderSize()
         setupFontSize()
         setupCustomizeWidgetColors()
         setupViewToOpenFromListWidget()
@@ -480,14 +485,42 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
+    private fun setupEventlistDateformat() {
+        val today = Formatter.getLocalDateTimeFromCode(Formatter.getTodayCode())
+
+        settings_eventlist_dateformat.text = today.toString(config.dateformatEventlist)
+        settings_eventlist_dateformat_holder.setOnClickListener {
+            DateformatComposerDialog(this, config.dateformatEventlist, DATEFORMAT_EVENTLIST_DEFAULT) {
+                config.dateformatEventlist = it as String
+                settings_eventlist_dateformat.text = today.toString(config.dateformatEventlist)
+            }
+        }
+    }
+
+    private fun setupEventlistHeaderSize() {
+        settings_eventlist_header_size.text = this.getFontSizeText(config.eventlistHeaderSize)
+        settings_eventlist_header_size_holder.setOnClickListener {
+            val items = arrayListOf(
+                    RadioItem(FONT_SIZE_SMALL, getString(R.string.small)),
+                    RadioItem(FONT_SIZE_MEDIUM, getString(R.string.medium)),
+                    RadioItem(FONT_SIZE_LARGE, getString(R.string.large)),
+                    RadioItem(FONT_SIZE_EXTRA_LARGE, getString(R.string.extra_large)))
+
+            RadioGroupDialog(this@SettingsActivity, items, config.eventlistHeaderSize) {
+                config.eventlistHeaderSize = it as Int
+                settings_eventlist_header_size.text = this.getFontSizeText(config.eventlistHeaderSize)
+            }
+        }
+    }
+
     private fun setupFontSize() {
         settings_font_size.text = getFontSizeText()
         settings_font_size_holder.setOnClickListener {
             val items = arrayListOf(
-                RadioItem(FONT_SIZE_SMALL, getString(R.string.small)),
-                RadioItem(FONT_SIZE_MEDIUM, getString(R.string.medium)),
-                RadioItem(FONT_SIZE_LARGE, getString(R.string.large)),
-                RadioItem(FONT_SIZE_EXTRA_LARGE, getString(R.string.extra_large)))
+                    RadioItem(FONT_SIZE_SMALL, getString(R.string.small)),
+                    RadioItem(FONT_SIZE_MEDIUM, getString(R.string.medium)),
+                    RadioItem(FONT_SIZE_LARGE, getString(R.string.large)),
+                    RadioItem(FONT_SIZE_EXTRA_LARGE, getString(R.string.extra_large)))
 
             RadioGroupDialog(this@SettingsActivity, items, config.fontSize) {
                 config.fontSize = it as Int
@@ -779,4 +812,11 @@ class SettingsActivity : SimpleActivity() {
             updateWidgets()
         }
     }
+
+    private fun getFontSizeText(fontSize: Int) = getString(when (fontSize) {
+        FONT_SIZE_SMALL -> R.string.small
+        FONT_SIZE_MEDIUM -> R.string.medium
+        FONT_SIZE_LARGE -> R.string.large
+        else -> R.string.extra_large
+    })
 }

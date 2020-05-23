@@ -168,6 +168,17 @@
     <string name="event_lists">Event lists</string>
     <string name="display_past_events">Display events from the past</string>
     <string name="replace_description_with_location">Replace event description with location</string>
+    <string name="compose_dateformat">Compose date format</string>
+    <string name="example">Example</string>
+    <string name="format_string">Format string</string>
+    <string name="format_string_error">Error in Format string</string>
+    <string name="day">Day</string>
+    <string name="month">Month</string>
+    <string name="year">Year</string>
+    <string name="linebreak">Line break</string>
+    <string name="space">Space</string>
+    <string name="dateformat_default">Default</string>
+    <string name="clear_input">Clear</string>
     <string name="delete_all_events">Delete all events</string>
     <string name="delete_all_events_confirmation">Are you sure you want to delete all events? This will leave your event types and other settings intact.</string>
     <string name="show_a_grid">Show a grid</string>

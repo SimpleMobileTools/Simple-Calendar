@@ -748,6 +748,70 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="@dimen/small_margin"
                 android:background="@null"
+                android:clickable="false"
+                android:text="@string/" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/settings_eventlist_dateformat_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:paddingStart="@dimen/normal_margin"
+            android:paddingTop="@dimen/bigger_margin"
+            android:paddingEnd="@dimen/normal_margin"
+            android:paddingBottom="@dimen/bigger_margin">
+
+            <com.simplemobiletools.commons.views.MyTextView
+                android:id="@+id/settings_eventlist_dateformat_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@+id/settings_eventlist_dateformat"
+                android:paddingStart="@dimen/medium_margin"
+                android:paddingEnd="@dimen/medium_margin"
+                android:text="@string/compose_dateformat" />
+
+            <com.simplemobiletools.commons.views.MyTextView
+                android:id="@+id/settings_eventlist_dateformat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/small_margin"
+                android:background="@null"
+                android:clickable="false"
+                android:text="@string/" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/settings_eventlist_header_size_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:paddingStart="@dimen/normal_margin"
+            android:paddingTop="@dimen/bigger_margin"
+            android:paddingEnd="@dimen/normal_margin"
+            android:paddingBottom="@dimen/bigger_margin">
+
+            <com.simplemobiletools.commons.views.MyTextView
+                android:id="@+id/settings_eventlist_header_size_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@+id/settings_eventlist_header_size"
+                android:paddingStart="@dimen/medium_margin"
+                android:paddingEnd="@dimen/medium_margin"
+                android:text="@string/font_size" />
+
+            <com.simplemobiletools.commons.views.MyTextView
+                android:id="@+id/settings_eventlist_header_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/small_margin"
+                android:background="@null"
                 android:clickable="false" />
 
         </RelativeLayout>

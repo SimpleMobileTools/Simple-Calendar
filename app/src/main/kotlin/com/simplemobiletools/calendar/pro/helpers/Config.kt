@@ -7,9 +7,7 @@ import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.scheduleCalDAVSync
 import com.simplemobiletools.commons.extensions.getDefaultAlarmTitle
 import com.simplemobiletools.commons.extensions.getDefaultAlarmUri
-import com.simplemobiletools.commons.helpers.ALARM_SOUND_TYPE_NOTIFICATION
-import com.simplemobiletools.commons.helpers.BaseConfig
-import com.simplemobiletools.commons.helpers.DAY_MINUTES
+import com.simplemobiletools.commons.helpers.*
 import java.util.*
 
 class Config(context: Context) : BaseConfig(context) {
@@ -112,6 +110,14 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getBoolean(DIM_PAST_EVENTS, true)
         set(dimPastEvents) = prefs.edit().putBoolean(DIM_PAST_EVENTS, dimPastEvents).apply()
 
+    var dateformatEventlist: String
+        get() = prefs.getString(DATEFORMAT_EVENTLIST, DATEFORMAT_EVENTLIST_DEFAULT)!!
+        set(dateformatEventlist) = prefs.edit().putString(DATEFORMAT_EVENTLIST, dateformatEventlist).apply()
+
+    var eventlistHeaderSize: Int
+        get() = prefs.getInt(EVENTLIST_HEADER_SIZE, context.resources.getInteger(R.integer.default_font_size))
+        set(size) = prefs.edit().putInt(EVENTLIST_HEADER_SIZE, size).apply()
+
     fun getSyncedCalendarIdsAsList() = caldavSyncedCalendarIds.split(",").filter { it.trim().isNotEmpty() }.map { Integer.parseInt(it) }.toMutableList() as ArrayList<Int>
 
     fun getDisplayEventTypessAsList() = displayEventTypes.map { it.toLong() }.toMutableList() as ArrayList<Long>
@@ -183,4 +189,11 @@ class Config(context: Context) : BaseConfig(context) {
     var weeklyViewItemHeightMultiplier: Float
         get() = prefs.getFloat(WEEKLY_VIEW_ITEM_HEIGHT_MULTIPLIER, 1f)
         set(weeklyViewItemHeightMultiplier) = prefs.edit().putFloat(WEEKLY_VIEW_ITEM_HEIGHT_MULTIPLIER, weeklyViewItemHeightMultiplier).apply()
+
+    fun getFontSize(fontSize: Int) = when (fontSize) {
+        FONT_SIZE_SMALL -> context.resources.getDimension(R.dimen.small_text_size) / context.resources.displayMetrics.density
+        FONT_SIZE_MEDIUM -> context.resources.getDimension(R.dimen.normal_text_size) / context.resources.displayMetrics.density
+        FONT_SIZE_LARGE -> context.resources.getDimension(R.dimen.big_text_size) / context.resources.displayMetrics.density
+        else -> context.resources.getDimension(R.dimen.extra_big_text_size) / context.resources.displayMetrics.density
+    }
 }

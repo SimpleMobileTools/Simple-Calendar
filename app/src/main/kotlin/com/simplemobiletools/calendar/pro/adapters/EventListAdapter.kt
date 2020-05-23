@@ -23,6 +23,7 @@ import com.simplemobiletools.commons.extensions.beInvisibleIf
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import com.simplemobiletools.commons.interfaces.RefreshRecyclerViewListener
 import com.simplemobiletools.commons.views.MyRecyclerView
+import com.simplemobiletools.commons.views.MyTextView
 import kotlinx.android.synthetic.main.event_list_item.view.*
 import kotlinx.android.synthetic.main.event_list_section.view.*
 import java.util.*
@@ -77,7 +78,11 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
             ITEM_EVENT_SIMPLE -> R.layout.event_list_item_simple
             else -> R.layout.event_list_section
         }
-        return createViewHolder(layoutId, parent)
+
+        var viewHolder = createViewHolder(layoutId, parent)
+        val sectionHeaderSize = activity.config.getFontSize(activity.config.eventlistHeaderSize)
+        viewHolder?.itemView.findViewById<MyTextView>(R.id.event_section_title)?.textSize = sectionHeaderSize
+        return viewHolder
     }
 
     override fun onBindViewHolder(holder: MyRecyclerViewAdapter.ViewHolder, position: Int) {

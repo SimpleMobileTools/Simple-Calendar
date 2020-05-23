@@ -168,6 +168,17 @@
     <string name="event_lists">Terminlisten</string>
     <string name="display_past_events">Vergangene Termine anzeigen</string>
     <string name="replace_description_with_location">Terminbeschreibung mit Ort ersetzen</string>
+    <string name="compose_dateformat">Datumsformat</string>
+    <string name="example">Beispiel</string>
+    <string name="format_string">Format</string>
+    <string name="format_string_error">Fehler im Format</string>
+    <string name="day">Tag</string>
+    <string name="month">Monat</string>
+    <string name="year">Jahr</string>
+    <string name="linebreak">Zeilenumbruch</string>
+    <string name="space">Leerzeichen</string>
+    <string name="dateformat_default">Vorgabe</string>
+    <string name="clear_input">Löschen</string>
     <string name="delete_all_events">Alle Termine löschen</string>
     <string name="delete_all_events_confirmation">Bist du sicher, dass du alle Termine löschen willst? Deine Termintypen und Einstellungen bleiben erhalten.</string>
     <string name="show_a_grid">Raster anzeigen</string>
