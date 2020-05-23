@@ -2,6 +2,7 @@ package com.simplemobiletools.calendar.pro.activities
 
 import android.app.Activity
 import android.app.TimePickerDialog
+import android.content.Context
 import android.content.Intent
 import android.media.AudioManager
 import android.os.Bundle
@@ -78,12 +79,14 @@ class SettingsActivity : SimpleActivity() {
         setupSectionColors()
         setupExportSettings()
         setupImportSettings()
+        setupDateFormat()
         invalidateOptionsMenu()
     }
 
     override fun onPause() {
         super.onPause()
         mStoredPrimaryColor = config.primaryColor
+        updateWidgets()
     }
 
     override fun onStop() {
@@ -158,6 +161,21 @@ class SettingsActivity : SimpleActivity() {
         settings_hour_format_holder.setOnClickListener {
             settings_hour_format.toggle()
             config.use24HourFormat = settings_hour_format.isChecked
+        }
+    }
+
+    private fun setupDateFormat(){
+        val sharedPrefs = getSharedPreferences(PREF_DATE_FORMAT, Context.MODE_PRIVATE)
+        val dateKeyValue = sharedPrefs.getBoolean(KEY,false)
+        settings_date_format.isChecked = dateKeyValue
+        settings_date_format_holder.setOnClickListener{
+            if(dateKeyValue){
+                sharedPrefs.edit().putBoolean(KEY,false).apply()
+            }
+            else{
+                sharedPrefs.edit().putBoolean(KEY,true).apply()
+            }
+            settings_date_format.toggle()
         }
     }
 

@@ -1,6 +1,7 @@
 package com.simplemobiletools.calendar.pro.helpers
 
 import android.content.Context
+import android.content.Context.MODE_PRIVATE
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.seconds
@@ -16,7 +17,8 @@ object Formatter {
     private const val MONTH_PATTERN = "MMM"
     private const val DAY_PATTERN = "d"
     private const val DAY_OF_WEEK_PATTERN = "EEE"
-    private const val LONGEST_PATTERN = "MMMM d YYYY (EEEE)"
+    private const val LONGEST_PATTERN_MMMM_D_YYYY = "MMMM d YYYY (EEEE)"
+    private const val LONGEST_PATTERN_D_MMMM_YYYY =  "d MMMM YYYY (EEEE)"
     private const val PATTERN_TIME_12 = "hh:mm a"
     private const val PATTERN_TIME_24 = "HH:mm"
 
@@ -31,7 +33,12 @@ object Formatter {
         var month = getMonthName(context, monthIndex)
         if (shortMonth)
             month = month.substring(0, Math.min(month.length, 3))
+        val sharedPrefs = context.getSharedPreferences(PREF_DATE_FORMAT,MODE_PRIVATE)
+        val keyValue = sharedPrefs.getBoolean(KEY,false)
         var date = "$month $day"
+        if(keyValue){
+            date = "$day $month"
+        }
         if (year != DateTime().toString(YEAR_PATTERN))
             date += " $year"
         return date
@@ -47,7 +54,14 @@ object Formatter {
             date
     }
 
-    fun getLongestDate(ts: Long) = getDateTimeFromTS(ts).toString(LONGEST_PATTERN)
+    fun getLongestDate(ts: Long, context: Context): String {
+        val sharedPrefs = context.getSharedPreferences(PREF_DATE_FORMAT,MODE_PRIVATE)
+        val keyValue = sharedPrefs.getBoolean(KEY,false)
+        return when(keyValue) {
+            true -> getDateTimeFromTS(ts).toString(LONGEST_PATTERN_D_MMMM_YYYY)
+            false -> getDateTimeFromTS(ts).toString(LONGEST_PATTERN_MMMM_D_YYYY)
+        }
+    }
 
     fun getDate(context: Context, dateTime: DateTime, addDayOfWeek: Boolean = true) = getDayTitle(context, getDayCodeFromDateTime(dateTime), addDayOfWeek)
 

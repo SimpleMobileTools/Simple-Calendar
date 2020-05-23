@@ -42,7 +42,7 @@ class MyWidgetListProvider : AppWidgetProvider() {
                 setTextSize(R.id.widget_event_list_today, fontSize)
             }
 
-            val todayText = Formatter.getLongestDate(getNowSeconds())
+            val todayText = Formatter.getLongestDate(getNowSeconds(),context)
             views.setText(R.id.widget_event_list_today, todayText)
 
             views.setImageViewBitmap(R.id.widget_event_new_event, context.resources.getColoredBitmap(R.drawable.ic_plus_vector, textColor))

@@ -45,6 +45,7 @@ class DayFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         updateCalendar()
+        setupButtons()
     }
 
     private fun setupButtons() {
