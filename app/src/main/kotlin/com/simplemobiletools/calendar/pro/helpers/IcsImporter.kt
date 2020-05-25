@@ -169,9 +169,9 @@ class IcsImporter(val activity: SimpleActivity) {
                         }
 
                         var reminders = arrayListOf(
-                                Reminder(curReminderMinutes.getOrElse(0) { REMINDER_OFF }, curReminderActions.getOrElse(0) { REMINDER_NOTIFICATION }),
-                                Reminder(curReminderMinutes.getOrElse(1) { REMINDER_OFF }, curReminderActions.getOrElse(1) { REMINDER_NOTIFICATION }),
-                                Reminder(curReminderMinutes.getOrElse(2) { REMINDER_OFF }, curReminderActions.getOrElse(2) { REMINDER_NOTIFICATION })
+                            Reminder(curReminderMinutes.getOrElse(0) { REMINDER_OFF }, curReminderActions.getOrElse(0) { REMINDER_NOTIFICATION }),
+                            Reminder(curReminderMinutes.getOrElse(1) { REMINDER_OFF }, curReminderActions.getOrElse(1) { REMINDER_NOTIFICATION }),
+                            Reminder(curReminderMinutes.getOrElse(2) { REMINDER_OFF }, curReminderActions.getOrElse(2) { REMINDER_NOTIFICATION })
                         )
 
                         reminders = reminders.sortedBy { it.minutes }.sortedBy { it.minutes == REMINDER_OFF }.toMutableList() as ArrayList<Reminder>
@@ -179,8 +179,8 @@ class IcsImporter(val activity: SimpleActivity) {
                         val eventType = eventTypes.firstOrNull { it.id == curEventTypeId }
                         val source = if (calDAVCalendarId == 0 || eventType?.isSyncedEventType() == false) SOURCE_IMPORTED_ICS else "$CALDAV-$calDAVCalendarId"
                         val event = Event(null, curStart, curEnd, curTitle, curLocation, curDescription, reminders[0].minutes,
-                                reminders[1].minutes, reminders[2].minutes, reminders[0].type, reminders[1].type, reminders[2].type, curRepeatInterval, curRepeatRule,
-                                curRepeatLimit, curRepeatExceptions, "", curImportId, DateTimeZone.getDefault().id, curFlags, curEventTypeId, 0, curLastModified, source)
+                            reminders[1].minutes, reminders[2].minutes, reminders[0].type, reminders[1].type, reminders[2].type, curRepeatInterval, curRepeatRule,
+                            curRepeatLimit, curRepeatExceptions, "", curImportId, DateTimeZone.getDefault().id, curFlags, curEventTypeId, 0, curLastModified, source)
 
                         if (event.getIsAllDay() && curEnd > curStart) {
                             event.endTS -= DAY

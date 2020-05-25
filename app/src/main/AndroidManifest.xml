@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.simplemobiletools.calendar.pro"
     android:installLocation="auto">
 
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
-    <uses-permission android:name="android.permission.READ_CONTACTS"/>
-    <uses-permission android:name="android.permission.VIBRATE"/>
-    <uses-permission android:name="android.permission.READ_CALENDAR"/>
-    <uses-permission android:name="android.permission.WRITE_CALENDAR"/>
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
@@ -18,11 +17,11 @@
 
     <uses-permission
         android:name="android.permission.USE_FINGERPRINT"
-        tools:node="remove"/>
+        tools:node="remove" />
 
     <uses-feature
         android:name="android.hardware.faketouch"
-        android:required="false"/>
+        android:required="false" />
 
     <application
         android:name=".App"
@@ -36,43 +35,43 @@
         <activity
             android:name=".activities.SplashActivity"
             android:launchMode="singleTask"
-            android:theme="@style/SplashTheme"/>
+            android:theme="@style/SplashTheme" />
 
         <activity
             android:name=".activities.MainActivity"
             android:launchMode="singleTask">
             <meta-data
                 android:name="android.app.default_searchable"
-                android:resource="@xml/searchable"/>
+                android:resource="@xml/searchable" />
 
             <intent-filter>
-                <action android:name="android.intent.action.SEARCH"/>
+                <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
 
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
 
-                <data android:scheme="content"/>
-                <data android:scheme="file"/>
-                <data android:mimeType="text/x-vcalendar"/>
-                <data android:mimeType="text/calendar"/>
-                <data android:mimeType="application/ics"/>
+                <data android:scheme="content" />
+                <data android:scheme="file" />
+                <data android:mimeType="text/x-vcalendar" />
+                <data android:mimeType="text/calendar" />
+                <data android:mimeType="application/ics" />
             </intent-filter>
 
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
 
-                <data android:mimeType="time/epoch"/>
-                <data android:host="com.android.calendar"/>
-                <data android:scheme="content"/>
+                <data android:mimeType="time/epoch" />
+                <data android:host="com.android.calendar" />
+                <data android:scheme="content" />
             </intent-filter>
 
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <data android:mimeType="vnd.android.cursor.item/event"/>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="vnd.android.cursor.item/event" />
             </intent-filter>
         </activity>
 
@@ -81,7 +80,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/MyWidgetConfigTheme">
             <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
         </activity>
 
@@ -90,7 +89,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/MyWidgetConfigTheme">
             <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
         </activity>
 
@@ -99,29 +98,29 @@
             android:screenOrientation="portrait"
             android:theme="@style/MyWidgetConfigTheme">
             <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
         </activity>
 
         <activity
             android:name="com.simplemobiletools.commons.activities.AboutActivity"
             android:label="@string/about"
-            android:parentActivityName=".activities.MainActivity"/>
+            android:parentActivityName=".activities.MainActivity" />
 
         <activity
             android:name="com.simplemobiletools.commons.activities.CustomizationActivity"
             android:label="@string/customize_colors"
-            android:parentActivityName=".activities.SettingsActivity"/>
+            android:parentActivityName=".activities.SettingsActivity" />
 
         <activity
             android:name="com.simplemobiletools.commons.activities.LicenseActivity"
             android:label="@string/third_party_licences"
-            android:parentActivityName="com.simplemobiletools.commons.activities.AboutActivity"/>
+            android:parentActivityName="com.simplemobiletools.commons.activities.AboutActivity" />
 
         <activity
             android:name="com.simplemobiletools.commons.activities.FAQActivity"
             android:label="@string/frequently_asked_questions"
-            android:parentActivityName="com.simplemobiletools.commons.activities.AboutActivity"/>
+            android:parentActivityName="com.simplemobiletools.commons.activities.AboutActivity" />
 
         <activity
             android:name=".activities.EventActivity"
@@ -129,19 +128,19 @@
             android:parentActivityName=".activities.MainActivity">
 
             <intent-filter>
-                <action android:name="android.intent.action.EDIT"/>
-                <action android:name="android.intent.action.INSERT"/>
+                <action android:name="android.intent.action.EDIT" />
+                <action android:name="android.intent.action.INSERT" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <data android:mimeType="vnd.android.cursor.item/event"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="vnd.android.cursor.item/event" />
             </intent-filter>
 
             <intent-filter>
-                <action android:name="android.intent.action.EDIT"/>
-                <action android:name="android.intent.action.INSERT"/>
+                <action android:name="android.intent.action.EDIT" />
+                <action android:name="android.intent.action.INSERT" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <data android:mimeType="vnd.android.cursor.dir/event"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="vnd.android.cursor.dir/event" />
             </intent-filter>
         </activity>
 
@@ -160,28 +159,28 @@
         <activity
             android:name=".activities.SettingsActivity"
             android:label="@string/settings"
-            android:parentActivityName=".activities.MainActivity"/>
+            android:parentActivityName=".activities.MainActivity" />
 
         <activity
             android:name=".activities.ManageEventTypesActivity"
             android:label="@string/event_types"
-            android:parentActivityName=".activities.SettingsActivity"/>
+            android:parentActivityName=".activities.SettingsActivity" />
 
         <activity
             android:name=".activities.SnoozeReminderActivity"
-            android:theme="@style/Theme.Transparent"/>
+            android:theme="@style/Theme.Transparent" />
 
         <receiver
             android:name=".helpers.MyWidgetMonthlyProvider"
             android:icon="@drawable/img_widget_monthly_preview"
             android:label="@string/widget_monthly">
             <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
 
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/widget_monthly_info"/>
+                android:resource="@xml/widget_monthly_info" />
         </receiver>
 
         <receiver
@@ -189,12 +188,12 @@
             android:icon="@drawable/img_widget_list_preview"
             android:label="@string/widget_list">
             <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
 
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/widget_list_info"/>
+                android:resource="@xml/widget_list_info" />
         </receiver>
 
         <receiver
@@ -202,38 +201,38 @@
             android:icon="@drawable/img_widget_date_preview"
             android:label="@string/widget_todays_date">
             <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
 
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/widget_date_info"/>
+                android:resource="@xml/widget_date_info" />
         </receiver>
 
         <service
             android:name=".services.WidgetService"
-            android:permission="android.permission.BIND_REMOTEVIEWS"/>
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
 
         <service
             android:name=".services.WidgetServiceEmpty"
-            android:permission="android.permission.BIND_REMOTEVIEWS"/>
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
 
-        <service android:name=".services.SnoozeService"/>
+        <service android:name=".services.SnoozeService" />
 
         <service
             android:name=".jobs.CalDAVUpdateListener"
             android:exported="true"
-            android:permission="android.permission.BIND_JOB_SERVICE"/>
+            android:permission="android.permission.BIND_JOB_SERVICE" />
 
-        <receiver android:name=".receivers.NotificationReceiver"/>
+        <receiver android:name=".receivers.NotificationReceiver" />
 
-        <receiver android:name=".receivers.CalDAVSyncReceiver"/>
+        <receiver android:name=".receivers.CalDAVSyncReceiver" />
 
         <receiver android:name=".receivers.BootCompletedReceiver">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
-                <action android:name="android.intent.action.QUICKBOOT_POWERON"/>
-                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
             </intent-filter>
         </receiver>
 
@@ -244,7 +243,7 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/provider_paths"/>
+                android:resource="@xml/provider_paths" />
         </provider>
 
         <activity-alias
@@ -255,8 +254,8 @@
             android:targetActivity=".activities.SplashActivity">
 
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
 
@@ -268,8 +267,8 @@
             android:targetActivity=".activities.SplashActivity">
 
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
 
@@ -281,8 +280,8 @@
             android:targetActivity=".activities.SplashActivity">
 
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
 
@@ -294,8 +293,8 @@
             android:targetActivity=".activities.SplashActivity">
 
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
 
@@ -307,8 +306,8 @@
             android:targetActivity=".activities.SplashActivity">
 
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
 
@@ -320,8 +319,8 @@
             android:targetActivity=".activities.SplashActivity">
 
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
 
@@ -333,8 +332,8 @@
             android:targetActivity=".activities.SplashActivity">
 
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
 
@@ -346,8 +345,8 @@
             android:targetActivity=".activities.SplashActivity">
 
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
 
@@ -359,8 +358,8 @@
             android:targetActivity=".activities.SplashActivity">
 
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
 
@@ -372,8 +371,8 @@
             android:targetActivity=".activities.SplashActivity">
 
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
 
@@ -385,8 +384,8 @@
             android:targetActivity=".activities.SplashActivity">
 
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
 
@@ -398,8 +397,8 @@
             android:targetActivity=".activities.SplashActivity">
 
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
 
@@ -411,8 +410,8 @@
             android:targetActivity=".activities.SplashActivity">
 
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
 
@@ -424,8 +423,8 @@
             android:targetActivity=".activities.SplashActivity">
 
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
 
@@ -436,8 +435,8 @@
             android:roundIcon="@mipmap/ic_launcher"
             android:targetActivity=".activities.SplashActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
 
@@ -449,8 +448,8 @@
             android:targetActivity=".activities.SplashActivity">
 
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
 
@@ -462,8 +461,8 @@
             android:targetActivity=".activities.SplashActivity">
 
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
 
@@ -475,8 +474,8 @@
             android:targetActivity=".activities.SplashActivity">
 
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
 
@@ -488,8 +487,8 @@
             android:targetActivity=".activities.SplashActivity">
 
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
     </application>
