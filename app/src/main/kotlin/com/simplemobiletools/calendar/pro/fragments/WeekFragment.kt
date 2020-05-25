@@ -164,7 +164,9 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     }
 
     fun updateCalendar() {
-        WeeklyCalendarImpl(this, context!!).updateWeeklyCalendar(weekTimestamp)
+        if (context != null) {
+            WeeklyCalendarImpl(this, context!!).updateWeeklyCalendar(weekTimestamp)
+        }
     }
 
     private fun setupDayLabels() {
@@ -195,15 +197,15 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
     private fun initGrid() {
         (0..6).map { getColumnWithId(it) }
-                .forEachIndexed { index, layout ->
-                    layout.removeAllViews()
-                    val gestureDetector = getViewGestureDetector(layout, index)
+            .forEachIndexed { index, layout ->
+                layout.removeAllViews()
+                val gestureDetector = getViewGestureDetector(layout, index)
 
-                    layout.setOnTouchListener { view, motionEvent ->
-                        gestureDetector.onTouchEvent(motionEvent)
-                        true
-                    }
+                layout.setOnTouchListener { view, motionEvent ->
+                    gestureDetector.onTouchEvent(motionEvent)
+                    true
                 }
+            }
     }
 
     private fun getViewGestureDetector(view: ViewGroup, index: Int): GestureDetector {
@@ -294,7 +296,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             if (context != null && activity != null && isAdded) {
                 val replaceDescription = config.replaceDescription
                 val sorted = events.sortedWith(
-                        compareBy<Event> { it.startTS }.thenBy { it.endTS }.thenBy { it.title }.thenBy { if (replaceDescription) it.location else it.description }
+                    compareBy<Event> { it.startTS }.thenBy { it.endTS }.thenBy { it.title }.thenBy { if (replaceDescription) it.location else it.description }
                 ).toMutableList() as ArrayList<Event>
 
                 currEvents = sorted
