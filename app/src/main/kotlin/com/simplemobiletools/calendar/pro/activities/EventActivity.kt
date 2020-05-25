@@ -1351,7 +1351,7 @@ class EventActivity : SimpleActivity() {
                 (event_contact_name.layoutParams as RelativeLayout.LayoutParams).addRule(RelativeLayout.START_OF, event_contact_me_status.id)
             }
 
-            val placeholder = BitmapDrawable(resources, context.getContactLetterIcon(event_contact_name.value))
+            val placeholder = BitmapDrawable(resources, SimpleContactsHelper(context).getContactLetterIcon(event_contact_name.value))
             event_contact_image.apply {
                 attendee.updateImage(applicationContext, this, placeholder)
                 beVisible()
