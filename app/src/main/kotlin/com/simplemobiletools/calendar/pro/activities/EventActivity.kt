@@ -240,9 +240,25 @@ class EventActivity : SimpleActivity() {
             R.id.delete -> deleteEvent()
             R.id.duplicate -> duplicateEvent()
             R.id.share -> shareEvent()
+            android.R.id.home -> onBackPressed()
             else -> return super.onOptionsItemSelected(item)
         }
         return true
+    }
+
+    override fun onBackPressed() {
+        CloseEditingDialog(this) {
+            ensureBackgroundThread {
+                when (it) {
+                    CLOSE_WITHOUT_SAVING -> {
+                        runOnUiThread {
+                            finish()
+                        }
+                    }
+                    SAVE_AND_CLOSE -> saveEvent()
+                }
+            }
+        }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -333,6 +349,7 @@ class EventActivity : SimpleActivity() {
         updateTimeZoneText()
         updateAttendeesVisibility()
     }
+
 
     private fun setupEditEvent() {
         val realStart = if (mEventOccurrenceTS == 0L) mEvent.startTS else mEventOccurrenceTS
@@ -1011,7 +1028,6 @@ class EventActivity : SimpleActivity() {
             eventsHelper.deleteEvent(mEvent.id!!, true)
             mEvent.id = null
         }
-
         storeEvent(wasRepeatable)
     }
 

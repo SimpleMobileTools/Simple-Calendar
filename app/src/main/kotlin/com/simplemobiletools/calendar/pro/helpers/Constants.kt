@@ -155,4 +155,7 @@ const val DELETE_ALL_OCCURRENCES = 2
 const val REMINDER_NOTIFICATION = 0
 const val REMINDER_EMAIL = 1
 
+const val CLOSE_WITHOUT_SAVING = 0
+const val SAVE_AND_CLOSE = 1
+
 fun getNowSeconds() = System.currentTimeMillis() / 1000L

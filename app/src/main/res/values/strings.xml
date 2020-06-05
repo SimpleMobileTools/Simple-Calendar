@@ -293,6 +293,9 @@
         <b>Reddit:</b>
         https://www.reddit.com/r/SimpleMobileTools
     </string>
+    <string name="close_editing_event" translatable="false">Are you sure you want to close?</string>
+    <string name="close_without_saving" translatable="false">Close without saving</string>
+    <string name="save_and_close" translatable="false">Save and close</string>
 
     <!--
         Haven't found some strings? There's more at
