@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Simple Calendar</string>
+    <string name="app_launcher_name">Kalender</string>
+    <string name="change_view">Ubah tampilan</string>
+    <string name="daily_view">Tampilan hari</string>
+    <string name="weekly_view">Tampilan minggu</string>
+    <string name="monthly_view">Tampilan bulan</string>
+    <string name="yearly_view">Tampilan tahun</string>
+    <string name="simple_event_list">Daftar acara</string>
+    <string name="no_upcoming_events">Sepertinya anda tidak memiliki acara yang akan datang.</string>
+    <string name="go_to_today">Buka hari ini</string>
+    <string name="go_to_date">Buka tanggal</string>
+    <string name="upgraded_from_free">Hai,\n\nsepertinya anda memperbarui dari versi aplikasi gratis yang lama. Anda perlu memindahkan acara yang disimpan lokal secara manual dengan cara mengekspornya ke berkas .ics, lalu mengimpornya kembali. Anda bisa menemukan tombol ekspor/impor di layar menu utama.\n\nSetelah itu anda bisa mencopot versi yang lama, yang memiliki tombol \'Tingkatkan ke Pro\' di bagian atas pengaturan aplikasi. Lalu anda hanya perlu menyetel ulang pengaturan aplikasi anda.\n\nTerima kasih!</string>
+
+    <!-- Widget titles -->
+    <string name="widget_monthly">Bulan</string>
+    <string name="widget_list">Daftar acara</string>
+    <string name="widget_todays_date">Calendar today\'s date</string>
+
+    <!-- Event -->
+    <string name="event">Acara</string>
+    <string name="edit_event">Sunting Acara</string>
+    <string name="new_event">Acara Baru</string>
+    <string name="create_new_event">Buat acara baru</string>
+    <string name="duplicate_event">Duplikat acara</string>
+    <string name="title_empty">Judul tidak boleh kosong</string>
+    <string name="end_before_start">Acara tidak boleh berakhir lebih awal dari waktu mulai</string>
+    <string name="event_added">Acara berhasil ditambahkan</string>
+    <string name="event_updated">Acara berhasil diperbarui</string>
+    <string name="filter_events_by_type">Filter acara menurut kategori</string>
+    <string name="please_fill_location">Silakan isi lokasi untuk ditampilkan pada peta</string>
+    <string name="public_event_notification_text">Aacara yang akan datang</string>
+
+    <!-- Event Repetition -->
+    <string name="repetition">Perulangan</string>
+    <string name="no_repetition">Tidak ada perulangan</string>
+    <string name="daily">Harian</string>
+    <string name="weekly">Mingguan</string>
+    <string name="monthly">Bulanan</string>
+    <string name="yearly">Tahunan</string>
+    <string name="weeks_raw">minggu</string>
+    <string name="months_raw">bulan</string>
+    <string name="years_raw">tahun</string>
+    <string name="repeat_till">Ulangi sampai</string>
+    <string name="forever">Selamanya</string>
+    <string name="event_is_repeatable">Acara berulang</string>
+    <string name="selection_contains_repetition">Acara yang dipilih berisi acara yang berulang</string>
+    <string name="delete_one_only">Hapus acara ini saja</string>
+    <string name="delete_future_occurrences">Hapus acara ini dan semua perulangannya</string>
+    <string name="delete_all_occurrences">Hapus semua perulangan acara</string>
+    <string name="update_one_only">Perbarui acara ini saja</string>
+    <string name="update_all_occurrences">Perbarui semua perulangan acara</string>
+    <string name="repeat_till_date">Ulangi sampai tanggal</string>
+    <string name="stop_repeating_after_x">Berhenti berulang setelah x kali</string>
+    <string name="repeat_forever">Ulangi selamanya</string>
+    <string name="times">kali</string>
+    <string name="repeat">Ulangi</string>
+    <string name="repeat_on">Ulangi pada</string>
+    <string name="every_day">Setiap hari</string>
+    <string name="selected_days">Hanya hari yang dipilih</string>
+    <string name="the_same_day">Hari yang sama</string>
+    <string name="the_last_day">Hari terakhir</string>
+    <string name="repeat_on_the_same_day_monthly">Ulangi pada hari yang sama setiap bulan</string>
+    <string name="repeat_on_the_last_day_monthly">Ulangi pada hari terakhir setiap bulan</string>
+    <string name="repeat_on_the_same_day_yearly">Ulangi pada hari yang sama setiap tahun</string>
+    <string name="repeat_every_m">Ulangi setiap</string>
+    <string name="every_m">Setiap</string>
+    <string name="first_m">pertama</string>
+    <string name="second_m">kedua</string>
+    <string name="third_m">ketiga</string>
+    <string name="fourth_m">keempat</string>
+    <string name="last_m">terakhir</string>
+
+    <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
+    <!-- used in repetition, like "Every first Sunday" -->
+    <string name="repeat_every_f">Ulangi setiap</string>
+    <string name="every_f">Setiap</string>
+    <string name="first_f">pertama</string>
+    <string name="second_f">kedua</string>
+    <string name="third_f">ketiga</string>
+    <string name="fourth_f">keempat</string>
+    <string name="last_f">terakhir</string>
+
+    <!-- Birthdays -->
+    <string name="birthdays">Ulang Tahun</string>
+    <string name="add_birthdays">Tambahkan ulang tahun kontak</string>
+    <string name="no_birthdays">Tidak ada ulang tahun yang ditemukan</string>
+    <string name="no_new_birthdays">Tidak ada ulang tahun baru yang ditemukan</string>
+    <string name="birthdays_added">Ulang tahun berhasil ditambahkan</string>
+
+    <!-- Anniversaries -->
+    <string name="anniversaries">Hari Jadi</string>
+    <string name="add_anniversaries">Tambahkan hari jadi kontak</string>
+    <string name="no_anniversaries">Tidak ada hari jadi yang ditemukan</string>
+    <string name="no_new_anniversaries">Tidak ada hari jadi baru yang ditemukan</string>
+    <string name="anniversaries_added">Hari jadi berhasil ditambahkan</string>
+
+    <!-- Event Reminders -->
+    <string name="reminder">Pengingat</string>
+    <string name="before">sebelum</string>
+    <string name="add_another_reminder">Tambah pengingat lainnya</string>
+    <string name="event_reminders">Pengingat acara</string>
+
+    <!-- Event attendees -->
+    <string name="add_another_attendee">Tambah tamu lainnya</string>
+    <string name="my_status">Status saya:</string>
+    <string name="going">Hadir</string>
+    <string name="not_going">Tidak hadir</string>
+    <string name="maybe_going">Mungkin hadir</string>
+    <string name="invited">Diundang</string>
+
+    <!-- Time zones -->
+    <string name="enter_a_country">Masukkan nama negara atau zona waktu</string>
+
+    <!-- Export / Import -->
+    <string name="import_events">Impor acara</string>
+    <string name="export_events">Ekspor acara</string>
+    <string name="import_events_from_ics">Impor acara dari berkas .ics</string>
+    <string name="export_events_to_ics">Ekspor acara ke berkas .ics</string>
+    <string name="default_event_type">Kategori acara default</string>
+    <string name="export_past_events_too">Ekspor juga acara yang sudah lewat</string>
+    <string name="include_event_types">Sertakan kategori acara</string>
+    <string name="filename_without_ics">Nama berkas (tanpa .ics)</string>
+    <string name="override_event_types">Timpa kategori acara di dalam berkas</string>
+
+    <!-- Event details -->
+    <string name="location">Lokasi</string>
+    <string name="description">Deskripsi</string>
+    <string name="all_day">Sepanjang hari</string>
+
+    <!-- Weekly view -->
+    <string name="week">Minggu</string>
+
+    <!-- Event types -->
+    <string name="event_types">Kategori acara</string>
+    <string name="add_new_type">Tambah kategori acara baru</string>
+    <string name="edit_type">Sunting kategori</string>
+    <string name="type_already_exists">Kategori dengan nama ini sudah ada</string>
+    <string name="color">Warna</string>
+    <string name="regular_event">Acara umum</string>
+    <string name="cannot_delete_default_type">Kategori acara default tidak bisa dihapus</string>
+    <string name="select_event_type">Pilih kategori acara</string>
+    <string name="move_events_into_default">Pindah acara yang terdampak ke dalam kategori acara default</string>
+    <string name="remove_affected_events">Secara permanen hapus acara yang terdampak</string>
+    <string name="unsync_caldav_calendar">Untuk menghapus kalender CalDAV anda perlu menonaktifkan sinkronisasinya</string>
+
+    <!-- Holidays -->
+    <string name="holidays">Hari Libur</string>
+    <string name="add_holidays">Tambahkan hari libur</string>
+    <string name="national_holidays">Libur nasional</string>
+    <string name="religious_holidays">Libur keagamaan</string>
+    <string name="holidays_imported_successfully">Hari libur berhasil diimpor ke dalam kategori acara \"Hari Libur\"</string>
+    <string name="importing_some_holidays_failed">Gagal mengimpor beberapa hari libur</string>
+    <string name="importing_holidays_failed">Gagal mengimpor hari libur</string>
+
+    <!-- Settings -->
+    <string name="manage_event_types">Kelola kategori acara</string>
+    <string name="start_day_at">Hari dimulai pada jam</string>
+    <string name="end_day_at">Hari berakhir pada jam</string>
+    <string name="week_numbers">Tampilkan nomor minggu</string>
+    <string name="vibrate">Getar pada notifikasi pengingat</string>
+    <string name="reminder_sound">Suara pengingat</string>
+    <string name="no_ringtone_picker">Tidak ditemukan aplikasi yang bisa mengatur nada dering</string>
+    <string name="no_ringtone_selected">Tidak ada</string>
+    <string name="day_end_before_start">Hari tidak boleh berakhir lebih awal dari saat waktu mulai</string>
+    <string name="caldav_sync">Sinkronisasi CalDAV</string>
+    <string name="event_lists">Daftar acara</string>
+    <string name="display_past_events">Tampilkan acara yang sudah lewat</string>
+    <string name="replace_description_with_location">Ganti deskripsi acara dengan lokasi</string>
+    <string name="delete_all_events">Hapus semua acara</string>
+    <string name="delete_all_events_confirmation">Apakah anda yakin ingin menghapus semua acara? Tindakan ini tidak akan menghapus kategori dan pengaturan lainnya.</string>
+    <string name="show_a_grid">Tampilkan grid</string>
+    <string name="loop_reminders">Ulangi pengingat sampai dihentikan</string>
+    <string name="dim_past_events">Redupkan acara yang sudah lewat</string>
+    <string name="events">Acara</string>
+    <string name="reminder_stream">Audio yang digunakan pengingat</string>
+    <string name="system_stream">Sistem</string>
+    <string name="alarm_stream">Alarm</string>
+    <string name="notification_stream">Notifikasi</string>
+    <string name="ring_stream">Dering</string>
+    <string name="use_last_event_reminders">Gunakan pengingat acara sebelumnya sebagai pengingat acara baru</string>
+    <string name="default_reminder_1">Pengingat default 1</string>
+    <string name="default_reminder_2">Pengingat default 2</string>
+    <string name="default_reminder_3">Pengingat default 3</string>
+    <string name="view_to_open_from_widget">Yang akan ditampilan saat membuka dari widget daftar acara</string>
+    <string name="last_view">Tampilan terakhir</string>
+    <string name="new_events">Acara baru</string>
+    <string name="default_start_time">Waktu mulai default</string>
+    <string name="next_full_hour">Satu jam kedepan</string>
+    <string name="default_duration">Durasi default</string>
+    <string name="last_used_one">Terakhir digunakan</string>
+    <string name="other_time">Waktu lainnya</string>
+    <string name="highlight_weekends">Sorot akhir pekan pada beberapa tampilan</string>
+    <string name="allow_changing_time_zones">Izinkan mengubah zona waktu acara</string>
+
+    <!-- CalDAV sync -->
+    <string name="caldav">CalDAV</string>
+    <string name="select_caldav_calendars">Pilih kalender untuk sinkronisasi</string>
+    <string name="manage_synced_calendars">Kelola kalender yang disinkronkan</string>
+    <string name="store_locally_only">Hanya simpan secara lokal</string>
+    <string name="refresh_caldav_calendars">Segarkan kalender CalDAV</string>
+    <string name="refreshing">Menyegarkan…</string>
+    <string name="refreshing_complete">Selesai Menyegarkan</string>
+    <string name="editing_calendar_failed">Gagal menyunting kalender</string>
+    <string name="syncing">Menyinkronkan…</string>
+    <string name="synchronization_completed">Sinkronisasi selesai</string>
+    <string name="select_a_different_caldav_color">Pilih warna yang berbeda (mungkin hanya diterapkan secara lokal)</string>
+    <string name="insufficient_permissions">Anda tidak diizinkan untuk membuat/mengubah acara pada kalender yang dipilih</string>
+    <string name="caldav_event_not_found">Acara tidak ditemukan. Silakan aktifkan sinkronisasi CalDAV untuk kalender terkait di dalam pengaturan aplikasi.</string>
+    <string name="no_synchronized_calendars">No synchronizable calendars have been found</string>
+
+    <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
+    <!-- used in repetition, like "Every last Sunday" -->
+    <string name="monday_alt">Senin</string>
+    <string name="tuesday_alt">Selasa</string>
+    <string name="wednesday_alt">Rabu</string>
+    <string name="thursday_alt">Kamis</string>
+    <string name="friday_alt">Jumat</string>
+    <string name="saturday_alt">Sabtu</string>
+    <string name="sunday_alt">Minggu</string>
+
+    <!-- List widget config example events -->
+    <string name="sample_title_1">Olah Raga</string>
+    <string name="sample_description_1">Jalan santai</string>
+    <string name="sample_title_2">Rapat dengan Budi</string>
+    <string name="sample_description_2">Di Taman Mini Indonesia Indah</string>
+    <string name="sample_title_3">Perpustakaan</string>
+    <string name="sample_title_4">Makan siang dengan Wati</string>
+    <string name="sample_description_4">Di Mall</string>
+    <string name="sample_title_5">Waktunya Ngopi</string>
+
+    <!-- FAQ -->
+    <string name="faq_1_title">Bagaimana cara menghapus hari libur yang diimpor via tombol \"Tambah hari libur\"?</string>
+    <string name="faq_1_text">Hari libur yang dibuat dengan cara tersebut disimpan di dalam kategori acara baru dengan nama \"Hari Libur\". Anda bisa mengunjungi Pengaturan -> Kelola Kategori Acara,
+        tekan lama kategori acara tersebut dan hapus dengan cara menekan tombol keranjang sampah.</string>
+    <string name="faq_2_title">Bisakah saya menyinkronkan acara saya dengan Google Calendar, atau layanan lain yang mendukung CalDAV?</string>
+    <string name="faq_2_text">Ya, cukup aktifkan \"Sinkronisasi CalDAV\" di dalam pengaturan aplikasi dan pilih kalender yang ingin anda sinkronkan. Namun, anda membutuhkan aplikasi pihak ketiga untuk menangani proses sinkronisasi antara perangkat dan server.
+        Jika Anda ingin menyinkronkan kalender Google, aplikasi Kalender resmi mereka bisa melakukan proses tersebut. Untuk kalender lainnya anda membutuhkan adapter sinkronisasi pihak ketiga, contohnya DAVx5.</string>
+    <string name="faq_3_title">Saya melihat pengingat secara visual, tetapi tidak mendengar suara. Apa yang bisa saya lakukan?</string>
+    <string name="faq_3_text">Tidak hanya menampilkan notifikasi pengingat, memutar audio juga sangat dipengaruhi oleh sistem. Jika anda tidak bisa mendengar suara apapun, coba buka pengaturan aplikasi,
+        tekan opsi \"Audio yang digunakan oleh pengingat\"dan ubah ke nilai yang berbeda. Jika masih belum bisa, periksa pengaturan suara perangkat anda, mungkin ada opsi suara yang disenyapkan.</string>
+    <string name="faq_4_title">Apakah apl mendukung zona waktu?</string>
+    <string name="faq_4_text">Ya. Secara bawaan semua acara dibuat dalam zona waktu anda saat ini. Jika anda ingin mengubah zona waktu acara,
+        anda harus terlebih dahulu mengaktifkan opsi pemilih zona waktu di dalam pengaturan apl, dan anda bisa mengubahnya di layar Detail Acara. Fitur ini dinonaktifkan secara bawaan karena tidak banyak orang yang membutuhkannya.</string>
+
+    <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
+    <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
+    <string name="app_title">Simple Calendar Pro - Acara &amp; Pengingat</string>
+    <!-- Short description has to have less than 80 chars -->
+    <string name="app_short_description">Simple mobile 2020 calendar. Schedule planner &amp; appointment reminder for any day</string>
+    <string name="app_long_description">
+        Simple Calendar Pro adalah kalender luring sederhana yang mudah digunakan dan dibuat sesuai dengan fungsi-fungsi dasar sebuah kalender. <b>Tanpa fitur yang terlalu rumit, perizinan yang tidak diperlukan dan sama sekali tanpa iklan!</b>
+
+        Anda bisa mengelola acara tunggal atau berulang, ulang tahun, hari jadi, bisnis, janjian atau yang lainnya, Simple Calendar Pro membuatnya <b>mudah untuk tetap terorganisir</b>. Dengan banyaknya <b>opsi personalisasi</b> anda bisa menyesuaikan pengingat acara, suara notifikasi, widget kalender dan gaya tampilan aplikasi.
+
+        Tampilan harian, mingguan dan bulanan sangat mempermudah anda memeriksa acara &amp; janji pertemuan yang akan datang. Anda bahkan bisa menampilkan semuanya menggunakan daftar tampilan sederhana daripada tampilan tahun atau bulan, jadi anda tahu persis <b>apa yang akan terjadi dalam hidup anda dan kapan.</b>
+
+        ----------------------------------------------------------
+        <b>Simple Calendar Pro – Fitur &amp; Keunggulan</b>
+        ----------------------------------------------------------
+
+        ✔️ Sama sekali tanpa iklan dan popup yang mengganggu
+        ✔️ Tidak membutuhkan akses internet, memberi anda privasi &amp; keamanan lebih
+        ✔️ Membutuhkan perizinan yang sangat minim
+        ✔️ Fokus pada kesederhanaan – mengerjakan apa yang seharusnya kelender kerjakan!
+        ✔️ Sumber terbuka
+        ✔️ Tema &amp; widget kalender / acara yang sepenuhnya bisa disesuaikan
+        ✔️ Diterjemahkan ke dalam 29 bahasa
+        ✔️ Ekspor pengaturan ke berkas .txt dan impor di perangkat lainnya
+        ✔️ Sinkronisasi kalender CalDAV mendukung sinkronisasi di banyak perangkat
+        ✔️ Tampilan harian, mingguan, bulanan, tahunan &amp; daftar
+        ✔️ Mendukung ekspor &amp; impor acara via berkas .ics
+        ✔️ Atur beberapa pengingat acara, sesuaikan suara dan getar pengingat acara
+        ✔️ Opsi tunda untuk pengingat
+        ✔️ Dengan mudah menambahkan hari libur, ulang tahun, hari jadi &amp; janji pertemuan
+        ✔️ Sesuaikan acara – waktu mulai, durasi, pengingat, dll
+        ✔️ Tambah tamu untuk setiap acara
+        ✔️ Gunakan sebagai kelender pribadi atau kalender bisnis
+        ✔️ Pilih antara notifikasi pengingat &amp; email untuk memberitahu anda tentang sebuah acara
+
+        UNDUH SIMPLE CALENDAR PRO – KALENDER LURING SEDERHANA DAN TANPA IKLAN!
+
+        <b>Periksa semua aplikasi Simple Tools di sini:</b>
+        https://www.simplemobiletools.com
+
+        <b>Standalone website of Simple Calendar Pro:</b>
+        https://www.simplemobiletools.com/calendar
+
+        <b>Facebook:</b>
+        https://www.facebook.com/simplemobiletools
+
+        <b>Reddit:</b>
+        https://www.reddit.com/r/SimpleMobileTools
+    </string>
+
+    <!--
+        Haven't found some strings? There's more at
+        https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
+    -->
+</resources>

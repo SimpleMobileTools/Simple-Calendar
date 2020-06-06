@@ -9,68 +9,67 @@
     android:clickable="true"
     android:focusable="true"
     android:foreground="@drawable/selector"
-    android:paddingLeft="@dimen/activity_margin">
+    android:paddingStart="@dimen/activity_margin">
 
     <RelativeLayout
         android:id="@+id/event_item_holder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/medium_margin"
-        android:paddingTop="@dimen/medium_margin">
+        android:paddingBottom="@dimen/normal_margin"
+        android:paddingTop="@dimen/normal_margin">
 
-        <com.simplemobiletools.commons.views.MyTextView
+        <ImageView
+            android:id="@+id/event_item_color_bar"
+            android:layout_width="@dimen/event_color_bar_width"
+            android:layout_height="match_parent"
+            android:layout_alignBottom="@+id/event_item_description"
+            android:layout_alignTop="@+id/event_item_title"
+            android:layout_marginEnd="@dimen/small_margin"
+            android:background="@drawable/event_list_color_bar"
+            android:paddingBottom="@dimen/tiny_margin"
+            android:paddingTop="@dimen/tiny_margin"/>
+
+        <TextView
             android:id="@+id/event_item_start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/event_item_color_bar"
             android:textSize="@dimen/day_text_size"
             tools:text="13:00"/>
 
-        <com.simplemobiletools.commons.views.MyTextView
+        <TextView
             android:id="@+id/event_item_end"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_item_start"
+            android:layout_toEndOf="@+id/event_item_color_bar"
             android:text="15:00"
             android:textSize="@dimen/day_text_size"/>
 
-        <com.simplemobiletools.commons.views.MyTextView
-            android:id="@+id/event_section_title"
+        <TextView
+            android:id="@+id/event_item_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/activity_margin"
-            android:layout_toLeftOf="@+id/event_item_color"
-            android:layout_toRightOf="@+id/event_item_start"
+            android:layout_marginStart="@dimen/activity_margin"
+            android:layout_toEndOf="@+id/event_item_start"
             android:ellipsize="end"
             android:maxLines="1"
-            android:paddingRight="@dimen/activity_margin"
+            android:paddingEnd="@dimen/activity_margin"
             android:textSize="@dimen/day_text_size"
             tools:text="Event title"/>
 
-        <com.simplemobiletools.commons.views.MyTextView
+        <TextView
             android:id="@+id/event_item_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/event_section_title"
-            android:layout_marginLeft="@dimen/activity_margin"
-            android:layout_toLeftOf="@+id/event_item_color"
-            android:layout_toRightOf="@+id/event_item_end"
-            android:alpha=".4"
+            android:layout_below="@+id/event_item_title"
+            android:layout_marginStart="@dimen/activity_margin"
+            android:layout_toEndOf="@+id/event_item_end"
             android:ellipsize="end"
             android:maxLines="1"
-            android:paddingRight="@dimen/activity_margin"
+            android:paddingEnd="@dimen/activity_margin"
             android:textSize="@dimen/day_text_size"
             tools:text="Event description"/>
-
-        <ImageView
-            android:id="@+id/event_item_color"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignBottom="@+id/event_section_title"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignTop="@+id/event_section_title"
-            android:paddingRight="@dimen/activity_margin"
-            android:src="@drawable/monthly_event_dot"/>
 
     </RelativeLayout>
 </FrameLayout>

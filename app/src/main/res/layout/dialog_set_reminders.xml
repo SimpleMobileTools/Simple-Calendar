@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/set_reminders_holder_dialog_holder"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/activity_margin"
+    android:paddingEnd="@dimen/activity_margin">
+
+    <ImageView
+        android:id="@+id/set_reminders_image"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignTop="@+id/set_reminders_1"
+        android:layout_alignBottom="@+id/set_reminders_1"
+        android:layout_marginStart="@dimen/normal_margin"
+        android:alpha="0.8"
+        android:padding="@dimen/medium_margin"
+        android:src="@drawable/ic_bell_vector"/>
+
+    <com.simplemobiletools.commons.views.MyTextView
+        android:id="@+id/set_reminders_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/small_margin"
+        android:layout_toEndOf="@+id/set_reminders_image"
+        android:background="?attr/selectableItemBackground"
+        android:paddingTop="@dimen/activity_margin"
+        android:paddingBottom="@dimen/activity_margin"
+        android:textSize="@dimen/day_text_size"/>
+
+    <com.simplemobiletools.commons.views.MyTextView
+        android:id="@+id/set_reminders_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/set_reminders_1"
+        android:layout_alignStart="@+id/set_reminders_1"
+        android:background="?attr/selectableItemBackground"
+        android:paddingTop="@dimen/activity_margin"
+        android:paddingBottom="@dimen/activity_margin"
+        android:text="@string/add_another_reminder"
+        android:textSize="@dimen/day_text_size"
+        android:visibility="gone"/>
+
+    <com.simplemobiletools.commons.views.MyTextView
+        android:id="@+id/set_reminders_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/set_reminders_2"
+        android:layout_alignStart="@+id/set_reminders_1"
+        android:background="?attr/selectableItemBackground"
+        android:paddingTop="@dimen/activity_margin"
+        android:paddingBottom="@dimen/activity_margin"
+        android:text="@string/add_another_reminder"
+        android:textSize="@dimen/day_text_size"
+        android:visibility="gone"/>
+
+</RelativeLayout>

@@ -9,13 +9,13 @@
 
     <include
         android:id="@+id/config_calendar"
-        layout="@layout/fragment_month"
+        layout="@layout/fragment_month_widget_config"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/config_bg_color"
         android:layout_marginBottom="@dimen/activity_margin"/>
 
-    <Button
+    <ImageView
         android:id="@+id/config_bg_color"
         android:layout_width="@dimen/widget_colorpicker_size"
         android:layout_height="@dimen/widget_colorpicker_size"
@@ -27,7 +27,7 @@
         android:layout_height="match_parent"
         android:layout_alignBottom="@+id/config_bg_color"
         android:layout_alignTop="@+id/config_bg_color"
-        android:layout_toRightOf="@+id/config_bg_color"
+        android:layout_toEndOf="@+id/config_bg_color"
         android:background="@android:color/white">
 
         <com.simplemobiletools.commons.views.MySeekBar
@@ -35,11 +35,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:paddingLeft="@dimen/activity_margin"
-            android:paddingRight="@dimen/activity_margin"/>
+            android:paddingStart="@dimen/activity_margin"
+            android:paddingEnd="@dimen/activity_margin"/>
     </RelativeLayout>
 
-    <Button
+    <ImageView
         android:id="@+id/config_text_color"
         android:layout_width="@dimen/widget_colorpicker_size"
         android:layout_height="@dimen/widget_colorpicker_size"
@@ -50,10 +50,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:fontFamily="sans-serif-light"
-        android:paddingLeft="@dimen/activity_margin"
-        android:paddingRight="@dimen/activity_margin"
+        android:paddingStart="@dimen/activity_margin"
+        android:paddingEnd="@dimen/activity_margin"
         android:text="@string/ok"
         android:textColor="@android:color/white"
         android:textSize="@dimen/big_text_size"/>

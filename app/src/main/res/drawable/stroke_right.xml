@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:bottom="-2px"
-        android:left="-2px"
+        android:bottom="-1px"
+        android:left="-1px"
         android:right="0px"
-        android:top="-2px">
+        android:top="-1px">
 
         <shape android:shape="rectangle">
             <solid android:color="@android:color/transparent"/>
             <stroke
                 android:width="1px"
-                android:color="@color/divider_strong"/>
+                android:color="@color/divider_grey"/>
         </shape>
     </item>
 </layer-list>

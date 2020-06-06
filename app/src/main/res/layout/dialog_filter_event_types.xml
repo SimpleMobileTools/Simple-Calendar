@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.RecyclerView
+<com.simplemobiletools.commons.views.MyRecyclerView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/filter_event_types_list"
@@ -8,4 +8,4 @@
     android:clipToPadding="false"
     android:overScrollMode="never"
     android:paddingTop="@dimen/medium_margin"
-    app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
+    app:layoutManager="com.simplemobiletools.commons.views.MyLinearLayoutManager"/>

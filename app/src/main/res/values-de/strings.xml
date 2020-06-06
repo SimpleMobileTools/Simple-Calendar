@@ -3,29 +3,34 @@
     <string name="app_name">Schlichter Kalender</string>
     <string name="app_launcher_name">Kalender</string>
     <string name="change_view">Ansicht ändern</string>
+    <string name="daily_view">Tagesansicht</string>
     <string name="weekly_view">Wochenansicht</string>
     <string name="monthly_view">Monatsansicht</string>
     <string name="yearly_view">Jahresansicht</string>
-    <string name="simple_event_list">Schlichte Terminliste</string>
-    <string name="no_upcoming_events">Keine anstehenden Termine</string>
-    <string name="add_some_events">Du kannst neue Termine mit dem Hinzufügen Button unten rechts erstellen.</string>
-    <string name="details">Details</string>
-    <string name="go_to_today">Gehe zu Heute</string>
-    <string name="snooze">Snooze</string>
+    <string name="simple_event_list">Einfache Terminliste</string>
+    <string name="no_upcoming_events">Scheint so, als hättest du keine anstehenden Termine.</string>
+    <string name="go_to_today">Springe zu Heute</string>
+    <string name="go_to_date">Springe zu einem Datum</string>
+    <string name="upgraded_from_free">Hey,\n\nes scheint, als hättest du ein Upgrade von der alten, kostenlosen Version vorgenommne. In diesem Fall musst du deine lokal gespeicherten Termine manuell importieren, indem sie zuvor als .ics-Datei exportierst. Die Import-/Export-Funktionen findest du im Menü der Hauptansicht.\n\nAnschließend kannst du die alte Version deinstallieren, die du am Zur-Pro-Version-upgraden-Button oben den Einstellungen erkennst. Nun musst du nur noch deine Einstellungen zurücksetzen.\n\nThanks!</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Monatskalender</string>
     <string name="widget_list">Termin-Liste</string>
+    <string name="widget_todays_date">Calendar today\'s date</string>
 
     <!-- Event -->
     <string name="event">Termin</string>
     <string name="edit_event">Termin bearbeiten</string>
     <string name="new_event">Neuer Termin</string>
+    <string name="create_new_event">Neuen Termin erstellen</string>
+    <string name="duplicate_event">Termin duplizieren</string>
     <string name="title_empty">Titel darf nicht leer sein</string>
     <string name="end_before_start">Der Termin darf nicht früher enden als er beginnt</string>
     <string name="event_added">Termin erfolgreich hinzugefügt</string>
     <string name="event_updated">Termin erfolgreich aktualisiert</string>
-    <string name="filter_events_by_type">Sortiere Termine nach Typ</string>
+    <string name="filter_events_by_type">Termine nach Typ filtern</string>
+    <string name="please_fill_location">Bitte trage einen Ort ein, der auf einer Karte angezeigt werden soll</string>
+    <string name="public_event_notification_text">Ein Termin steht an</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Wiederholung</string>
@@ -40,23 +45,25 @@
     <string name="repeat_till">Wiederholen bis</string>
     <string name="forever">unendlich</string>
     <string name="event_is_repeatable">Termin ist wiederholbar</string>
-    <string name="selection_contains_repetition">Die Auswahl enthält Ereignisse mit Wiederholungen</string>
-    <string name="delete_one_only">Lösche nur die ausgewählte Wiederholung</string>
-    <string name="delete_all_occurrences">Lösche alle Wiederholungen</string>
-    <string name="update_one_only">Ändere nur die ausgewählte Wiederholung</string>
-    <string name="update_all_occurrences">Ändere alle Wiederholungen</string>
-    <string name="repeat_till_date">Wiederhole bis zu bestimmtem Datum</string>
-    <string name="repeat_x_times">Wiederhole x Mal</string>
+    <string name="selection_contains_repetition">Die Auswahl enthält Termine mit Wiederholungen</string>
+    <string name="delete_one_only">Nur die ausgewählte Wiederholung löschen</string>
+    <string name="delete_future_occurrences">Diese und zukünftige Wiederholungen löschen</string>
+    <string name="delete_all_occurrences">Alle Wiederholungen löschen</string>
+    <string name="update_one_only">Nur die ausgewählte Wiederholung ändern</string>
+    <string name="update_all_occurrences">Alle Wiederholungen ändern</string>
+    <string name="repeat_till_date">Bis zu bestimmtem Datum wiederholen</string>
+    <string name="stop_repeating_after_x">Stopp nach x Wiederholungen</string>
     <string name="repeat_forever">Immer wiederholen</string>
     <string name="times">Mal</string>
     <string name="repeat">Wiederholung</string>
     <string name="repeat_on">Wiederholen</string>
     <string name="every_day">Täglich</string>
-    <string name="selected_days">an ausgewählten Tagen</string>
+    <string name="selected_days">An ausgewählten Tagen</string>
     <string name="the_same_day">Der gleiche Tag</string>
     <string name="the_last_day">Der letzte Tag</string>
-    <string name="repeat_on_the_same_day">Am gleichen Tag jeden Monats wiederholen</string>
-    <string name="repeat_on_the_last_day">Am letzten Tag des Monats wiederholen</string>
+    <string name="repeat_on_the_same_day_monthly">Am gleichen Tag jeden Monats wiederholen</string>
+    <string name="repeat_on_the_last_day_monthly">Am letzten Tag des Monats wiederholen</string>
+    <string name="repeat_on_the_same_day_yearly">Am selben Tag jeden Jahres wiederholen</string>
     <string name="repeat_every_m">Wiederhole jeden</string>
     <string name="every_m">Jeden</string>
     <string name="first_m">ersten</string>
@@ -75,87 +82,49 @@
     <string name="fourth_f">vierten</string>
     <string name="last_f">letzten</string>
 
-    <plurals name="days">
-        <item quantity="one">%d Tag</item>
-        <item quantity="other">%d Tage</item>
-    </plurals>
-
-    <plurals name="weeks">
-        <item quantity="one">%d Woche</item>
-        <item quantity="other">%d Wochen</item>
-    </plurals>
-
-    <plurals name="months">
-        <item quantity="one">%d Monat</item>
-        <item quantity="other">%d Monate</item>
-    </plurals>
-
-    <plurals name="years">
-        <item quantity="one">%d Jahr</item>
-        <item quantity="other">%d Jahre</item>
-    </plurals>
-
     <!-- Birthdays -->
     <string name="birthdays">Geburtstage</string>
-    <string name="add_birthdays">Kontaktgeburtstage hinzufügen</string>
+    <string name="add_birthdays">Geburtstage der Kontakte hinzufügen</string>
     <string name="no_birthdays">Keine Geburtstage gefunden</string>
+    <string name="no_new_birthdays">Keine neuen Geburtstage gefunden</string>
     <string name="birthdays_added">Geburtstage erfolgreich hinzugefügt</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Jahrestage</string>
-    <string name="add_anniversaries">Kontakt zu Jahrestagen hinzufügen</string>
+    <string name="add_anniversaries">Jahrestage der Kontakte hinzufügen</string>
     <string name="no_anniversaries">Es wurden keine Jahrestage gefunden</string>
+    <string name="no_new_anniversaries">Keine neuen Jahrestage gefunden</string>
     <string name="anniversaries_added">Jahrestage erfolgreich hinzugefügt</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Erinnerung</string>
-    <string name="no_reminder">Keine Erinnerung</string>
-    <string name="at_start">Zu Beginn</string>
-    <string name="custom">Benutzerdefiniert</string>
     <string name="before">vorher</string>
-    <string name="minutes_raw">Minuten</string>
-    <string name="hours_raw">Stunden</string>
-    <string name="days_raw">Tage</string>
-    <string name="add_another_reminder">Füge eine weitere Erinnerung hinzu</string>
-    <string name="event_reminders">Ereignis Erinnerungen</string>
+    <string name="add_another_reminder">Weitere Erinnerung hinzufügen</string>
+    <string name="event_reminders">Terminerinnerungen</string>
 
-    <plurals name="minutes_before">
-        <item quantity="one">%d Minute vorher</item>
-        <item quantity="other">%d Minuten vorher</item>
-    </plurals>
+    <!-- Event attendees -->
+    <string name="add_another_attendee">Teilnehmer hinzufügen</string>
+    <string name="my_status">Mein Teilnahmestatus:</string>
+    <string name="going">Ja</string>
+    <string name="not_going">Nein</string>
+    <string name="maybe_going">Vielleicht</string>
+    <string name="invited">Eingeladen</string>
 
-    <plurals name="hours_before">
-        <item quantity="one">%d Stunde vorher</item>
-        <item quantity="other">%d Stunden vorher</item>
-    </plurals>
-
-    <plurals name="days_before">
-        <item quantity="one">%d Tag vorher</item>
-        <item quantity="other">%d Tage vorher</item>
-    </plurals>
+    <!-- Time zones -->
+    <string name="enter_a_country">Region, Stadt oder Zeitversatz eingeben</string>
 
     <!-- Export / Import -->
-    <string name="importing">Importiere…</string>
-    <string name="exporting">Exportiere…</string>
-    <string name="import_events">Importiere Termine</string>
-    <string name="export_events">Exportiere Termine</string>
-    <string name="import_events_from_ics">Importiere Termine aus .ics Datei</string>
-    <string name="export_events_to_ics">Exportiere Termine als .ics Datei</string>
-    <string name="events_imported_successfully">Termine erfolgreich importiert</string>
-    <string name="events_exported_successfully">Termine erfolgreich exportiert</string>
-    <string name="importing_events_failed">Termine importieren fehlgeschlagen</string>
-    <string name="exporting_events_failed">Termine exportieren fehlgeschlagen</string>
-    <string name="importing_some_events_failed">Einige Termine wurden nicht erfolgreich importiert</string>
-    <string name="exporting_some_events_failed">Einige Termine wurden nicht erfolgreich exportiert</string>
-    <string name="default_event_type">Standard-Termin-Typ</string>
-    <string name="no_events_for_exporting">Keine Termine zum exportieren gefunden</string>
+    <string name="import_events">Termine importieren</string>
+    <string name="export_events">Termine exportieren</string>
+    <string name="import_events_from_ics">Termine aus ics-Datei importieren</string>
+    <string name="export_events_to_ics">Termine als ics-Datei exportieren</string>
+    <string name="default_event_type">Standardtermintyp</string>
     <string name="export_past_events_too">Vergangene Termine auch exportieren</string>
-    <string name="include_event_types">Beziehe Termintypen mit ein</string>
+    <string name="include_event_types">Termintypen miteinbeziehen</string>
     <string name="filename_without_ics">Dateiname (ohne .ics)</string>
-    <string name="no_title">Kein Titel</string>
+    <string name="override_event_types">Termintypen in der Datei überschreiben</string>
 
     <!-- Event details -->
-    <string name="title">Titel</string>
     <string name="location">Ort</string>
     <string name="description">Beschreibung</string>
     <string name="all_day">Ganztags</string>
@@ -165,98 +134,81 @@
 
     <!-- Event types -->
     <string name="event_types">Termintypen</string>
-    <string name="add_new_type">Füge einen neuen Typ hinzu</string>
+    <string name="add_new_type">Neuen Typ hinzufügen</string>
     <string name="edit_type">Typ bearbeiten</string>
     <string name="type_already_exists">Typ mit diesem Namen existiert bereits</string>
     <string name="color">Farbe</string>
-    <string name="regular_event">Regelmässiger Termin</string>
-    <string name="cannot_delete_default_type">Standard Termintyp kann nicht gelöscht werden</string>
-    <string name="select_event_type">Wähle einen Termintyp</string>
-    <string name="move_events_into_default">Verschiebe betroffene Termine in den Standard Termintyp</string>
-    <string name="remove_affected_events">Lösche betroffene Termine permanent</string>
-    <string name="unsync_caldav_calendar">Um CalDAV Kalender zu entfernen, musst du diese desynchronisieren</string>
+    <string name="regular_event">Regulärer Termin</string>
+    <string name="cannot_delete_default_type">Standardtermintyp kann nicht gelöscht werden</string>
+    <string name="select_event_type">Wähle einen Termintyp aus</string>
+    <string name="move_events_into_default">Betroffene Termine in den Standardtermintyp verschieben</string>
+    <string name="remove_affected_events">Betroffene Termine dauerhaft löschen</string>
+    <string name="unsync_caldav_calendar">Um einen CalDAV-Kalender zu entfernen, musst du ihn desynchronisieren</string>
 
     <!-- Holidays -->
     <string name="holidays">Feiertage</string>
     <string name="add_holidays">Feiertage hinzufügen</string>
     <string name="national_holidays">Nationale Feiertage</string>
     <string name="religious_holidays">Religiöse Feiertage</string>
-    <string name="holidays_imported_successfully">Feiertage wurden erfolgreich in einen neuen Termintypen importiert</string>
+    <string name="holidays_imported_successfully">Feiertage sind erfolgreich in den \"Feiertage\"-Termintyp importiert worden</string>
     <string name="importing_some_holidays_failed">Importieren einiger Termine fehlgeschlagen</string>
     <string name="importing_holidays_failed">Importieren von Feiertagen fehlgeschlagen</string>
 
     <!-- Settings -->
-    <string name="manage_event_types">Verwalte Termin-Typen</string>
-    <string name="use_24_hour_format">Verwende 24 Stunden Format</string>
-    <string name="sunday_first">Sonntag als erster Wochentag</string>
-    <string name="start_day_at">Wochenansicht beginnt am</string>
-    <string name="end_day_at">Wochenansicht endet am</string>
-    <string name="week_numbers">Zeige Kalenderwoche an</string>
+    <string name="manage_event_types">Termintypen verwalten</string>
+    <string name="start_day_at">Wochenansicht beginnt um</string>
+    <string name="end_day_at">Wochenansicht endet um</string>
+    <string name="week_numbers">Kalenderwoche anzeigen</string>
     <string name="vibrate">Vibration bei Erinnerung</string>
     <string name="reminder_sound">Erinnerungston</string>
-    <string name="default_event_reminder">Standard Termin Erinnerung</string>
-    <string name="no_ringtone_picker">Keine App zum Setzen des Klingeltons gefunden</string>
-    <string name="no_ringtone_selected">Kein Klingelton gewählt</string>
+    <string name="no_ringtone_picker">Keine App zum Einstellen des Klingeltons gefunden</string>
+    <string name="no_ringtone_selected">Kein Klingelton ausgewählt</string>
     <string name="day_end_before_start">Terminbeginn kann nicht vor Terminende liegen</string>
-    <string name="caldav_sync">CalDAV Sync</string>
+    <string name="caldav_sync">CalDAV-Synchronisierung</string>
     <string name="event_lists">Terminlisten</string>
     <string name="display_past_events">Vergangene Termine anzeigen</string>
-    <string name="snooze_delay">Erinnerung mit Snooze verschieben um</string>
-    <string name="widgets">Widgets</string>
-    <string name="replace_description_with_location">Ersetze Beschreibung mit Ort bei Listeneinträgen</string>
+    <string name="replace_description_with_location">Terminbeschreibung mit Ort ersetzen</string>
+    <string name="delete_all_events">Alle Termine löschen</string>
+    <string name="delete_all_events_confirmation">Bist du sicher, dass du alle Termine löschen willst? Deine Termintypen und Einstellungen bleiben erhalten.</string>
+    <string name="show_a_grid">Raster anzeigen</string>
+    <string name="loop_reminders">Erinnerungen wiederholen bis sie verworfen werden</string>
+    <string name="dim_past_events">Vergangene Termine ausgrauen</string>
+    <string name="events">Termine</string>
+    <string name="reminder_stream">Audioausgabekanal für Erinnerungen</string>
+    <string name="system_stream">Medien</string>
+    <string name="alarm_stream">Wecker</string>
+    <string name="notification_stream">Benachrichtigung</string>
+    <string name="ring_stream">Klingelton</string>
+    <string name="use_last_event_reminders">Erinnerungen des letzten Termins als Vorgabe für neuen Termin verwenden</string>
+    <string name="default_reminder_1">Standarderinnerung 1</string>
+    <string name="default_reminder_2">Standarderinnerung 2</string>
+    <string name="default_reminder_3">Standarderinnerung 3</string>
+    <string name="view_to_open_from_widget">Ansicht beim Öffnen durch das Terminlisten-Widget</string>
+    <string name="last_view">Letzte Ansicht</string>
+    <string name="new_events">Neue Termine</string>
+    <string name="default_start_time">Standardanfangszeit</string>
+    <string name="next_full_hour">Nächste volle Stunde</string>
+    <string name="default_duration">Standarddauer</string>
+    <string name="last_used_one">Zuletzt verwendete</string>
+    <string name="other_time">Andere Zeit</string>
+    <string name="highlight_weekends">Wochenenden in einigen Ansichten hervorheben</string>
+    <string name="allow_changing_time_zones">Zeitzone kann geändert werden</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
-    <string name="select_caldav_calendars">Wähle Kalender zur Synchronisierung</string>
-    <string name="manage_synced_calendars">Verwalte synchronisierte Kalender</string>
+    <string name="select_caldav_calendars">Kalender zur Synchronisierung auswählen</string>
+    <string name="manage_synced_calendars">Synchronisierte Kalender verwalten</string>
     <string name="store_locally_only">Nur lokal speichern</string>
-    <string name="refresh_caldav_calendars">Aktualisiere CalDAV Kalender</string>
-    <string name="refreshing">Aktualisiere…</string>
+    <string name="refresh_caldav_calendars">CalDAV-Kalender aktualisieren</string>
+    <string name="refreshing">Wird aktualisiert…</string>
     <string name="refreshing_complete">Aktualisierung abgeschlossen</string>
     <string name="editing_calendar_failed">Ändern des Kalenders fehlgeschlagen</string>
-    <string name="syncing">Synchronisiere…</string>
+    <string name="syncing">Wird synchronisiert…</string>
     <string name="synchronization_completed">Synchronisation erfolgreich</string>
-
-    <plurals name="by_minutes">
-        <item quantity="one">%d Minute</item>
-        <item quantity="other">%d Minuten</item>
-    </plurals>
-
-    <plurals name="by_hours">
-        <item quantity="one">%d Stunde</item>
-        <item quantity="other">%d Stunden</item>
-    </plurals>
-
-    <string name="never">Nie</string>
-
-    <string name="january">Januar</string>
-    <string name="february">Februar</string>
-    <string name="march">März</string>
-    <string name="april">April</string>
-    <string name="may">Mai</string>
-    <string name="june">Juni</string>
-    <string name="july">Juli</string>
-    <string name="august">August</string>
-    <string name="september">September</string>
-    <string name="october">Oktober</string>
-    <string name="november">November</string>
-    <string name="december">Dezember</string>
-
-    <string name="monday_letter">M</string>
-    <string name="tuesday_letter">D</string>
-    <string name="wednesday_letter">M</string>
-    <string name="thursday_letter">D</string>
-    <string name="friday_letter">F</string>
-    <string name="saturday_letter">S</string>
-    <string name="sunday_letter">S</string>
-
-    <string name="monday">Montag</string>
-    <string name="tuesday">Dienstag</string>
-    <string name="wednesday">Mittwoch</string>
-    <string name="thursday">Donnerstag</string>
-    <string name="friday">Freitag</string>
-    <string name="saturday">Samstag</string>
-    <string name="sunday">Sonntag</string>
+    <string name="select_a_different_caldav_color">Wähle eine andere Farbe (wird möglicherweise nur lokal angewendet)</string>
+    <string name="insufficient_permissions">Dir fehlt die Berechtigung zum Ändern des gewählten Kalenders</string>
+    <string name="caldav_event_not_found">Der Termin wurde nicht gefunden. Bitte aktiviere die Synchronisierung für den Kalender in den Einstellungen.</string>
+    <string name="no_synchronized_calendars">No synchronizable calendars have been found</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
@@ -278,21 +230,69 @@
     <string name="sample_description_4">Im Einkaufszentrum</string>
     <string name="sample_title_5">Kaffeepause</string>
 
+    <!-- FAQ -->
+    <string name="faq_1_title">Wie kann ich Feiertage löschen, die über \"Feiertage hinzufügen\" importiert wurden?</string>
+    <string name="faq_1_text">Die über diesen Weg erstellten Feiertage sind als Termintyp \"Feiertage\" deklariert. 
+        Du kannst in den Einstellungen -> Termintypen verwalten auf den Termintyp gedrückt halten und über das Papierkorbsymbol löschen.</string>
+    <string name="faq_2_title">Kann ich meine Termine über Google Kalender oder andere CalDAV unterstützende Dienste synchronisieren?</string>
+    <string name="faq_2_text">Ja, aktiviere \"CalDAV-Synchronisierung\" in den Einstellungen und wähle die Kalender aus, die du synchronisieren willst. 
+        Jedoch benötigst du eine separate App, die Synchronisierung zwischen Gerät und Servern handhabt. Falls du einen Google Kalender synchronisieren willst, kann die offizielle Kalender-App dies übernehmen.
+        Für andere Kalender benötigst du einen Synchronisierungsadapter, wie z. B. DAVx5.</string>
+    <string name="faq_3_title">Ich sehe die Erinnerungen, aber ich höre keinen Ton. Was kann ich tun?</string>
+    <string name="faq_3_text">Erinnerungen nicht nur anzeigen, sondern Töne dazu abspielen ist ebenfalls stark vom jeweiligen (Android) System abhängig. Wenn Du keine Töne hörst, versuche in den App Einstellungen,
+        die Option \"Audioausgabekanal für Erinnerungen\" anzuklicken und eine andere Option auszuwählen. Wenn das immer noch nichts ändert, prüfe Deine Lautstärkeeinstellungen. of der gewählte Kanal nicht auf lautlos steht.</string>
+    <string name="faq_4_title">Unterstützt diese Kalender-App Zeitzonen?</string>
+    <string name="faq_4_text">Ja. Standardmäßig werden alle neuen Termine in der aktuellen Zeitzone des Gerätes erstellt. Um die Zeitzone eines Termins ändern zu können muss die Option \"Zeitzone kann geändert werden\"
+        in den Einstellungen aktiviert sein. Die Zeitzone eines Termins kann dann beim Anlegen oder Bearbeiten geändert werden. In den Standardeinstellungen ist dies nicht aktiv, da die meisten Anwender die Möglichkeit nicht benötigen werden.</string>
+
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
+    <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
+    <string name="app_title">Simple Calendar Pro - Termine &amp; Erinnerungen</string>
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Ein einfacher Kalender mit personalisierbaren Widgets, ganz ohne Werbung.</string>
+    <string name="app_short_description">Simple mobile 2020 calendar. Schedule planner &amp; appointment reminder for any day</string>
     <string name="app_long_description">
-        Ein schlichter Kalender mit optionaler Google Synchronisation. Du kannst ganz einfach wiederholende Termine sowie Erinnerungen hinzufügen inklusive optionaler Anzeige der Kalenderwochen.
+        Simple Calendar Pro ist ein vollständig anpassbarer Offline-Kalender, der genau das bietet, was man von einem Kalender erwartet. <b>Keine umständlichen Funktionen, keine unnötigen Berechtigungen und keine Werbung!</b>
 
-        Enthält ein skalierbares 4x4 Widget, bei welchem die Schriftfarbe sowie die Hintergrundfarbe und Transparenz anpassbar sind.
-        
-        Beinhaltet keine Werbung und benötigt keine unnötigen Berechtigungen. Die App ist komplett Open Source und bietet nach Wunsch anpassbare Farben.
+        Ob einzelne oder sich wiederholende Termine, ob Geburtstage, Jahrestage, Meetings oder andere Termine organisiert werden sollen, mit Simple Calendar Pro ist das <b>Organisieren von Terminen ein Kinderspiel</b>. Eine Vielzahl von  <b>Anpassungsmöglichkeiten</b> erlaubt es dir, Terminerinnerungen (Benachrichtigungen und Töne), Widgets und sogar das Aussehen der App farblich so zu gestalten, wie es dir gefällt.
 
-        Die Speicher-Berechtigung ist nur für das Importieren von .ics Termin-Dateien notwendig.
+        Tages- Wochen- und Monatsansichten machen es leicht, anstehende Termine und Verabredungen im Auge zu behalten. Wer möchte, kann sich alle Termine auch einfach als Liste anzeigen lassen, anstatt in einer der Kalenderansichten. Auf diese Weise hast du alle Termine immer im Blick und <b>du weißt genau, was wann in deinem Leben passiert.</b>
 
-        Die Kontakte-Berechtigung wird nur für das Importieren von Geburtstagen benötigt.
+        ----------------------------------------------------------
+        <b>Simple Calendar Pro – Funktionen &amp; Optionen</b>
+        ----------------------------------------------------------
 
-        Diese App ist nur eine von vielen unserer Apps. Du kannst alle anderen hier finden: http://www.simplemobiletools.com
+        ✔️ Keine Werbung, keine nervigen Popups
+        ✔️ Keine Internetverbindung nötig, dadurch mehr Privatsphäre &amp; erhöhte Sicherheit
+        ✔️ Nur absolut notwendige Berechtigungen erforderlich
+        ✔️ Schlichtheit wird groß geschrieben – der Kalender bietet, was man von einem Kalender erwartet!
+        ✔️ Open Source
+        ✔️ Vollständig anpassbar: Themes, Kalender und Widgets
+        ✔️ In 29 Sprachen
+        ✔️ Backup von geänderten Einstellungen in .txt-Dateien möglich, um sie auf anderen Geräten importieren zu können
+        ✔️ Unterstützung von CalDAV Calendar Sync, zur Synchronisation von Terminen zwischen verschiedenen Geräten
+        ✔️ Tages-, Wochen-, Monats-, Jahres- &amp; Detailansicht von Terminen im Kalender
+        ✔️ Import/Export-Unterstützung im .ics-Format
+        ✔️ Festlegen mehrerer Terminerinnerungen, Anpassung von Erinnerungston und -vibration
+        ✔️ Schlummeroption für Terminerinnerungen
+        ✔️ Unkompliziertes Hinzufügen von Feiertagen, Geburtstagen, Jahrestagen &amp; Terminen
+        ✔️ Anpassung von Terminen – Anfangszeit, Dauer, Erinnerungen usw.
+        ✔️ Einladung von Teilnehmern je Termin
+        ✔️ Kann als privater oder geschäftlicher Kalender genutzt werdeb
+        ✔️ Unterschiedliche Erinnerungsarten einschließlich E-Mail-Benachrichtigungen
+
+        INSTALLIERE SIMPLE CALENDAR PRO – DEN SCHLICHTEN OFFLINE KALENDER OHNE WERBUNG!
+
+        <b>Einen Überblick über die komplette Suite von Simple Tools gibt es hier:</b>
+        https://www.simplemobiletools.com
+
+        <b>Eigene Website von Simple Calendar Pro:</b>
+        https://www.simplemobiletools.com/calendar
+
+        <b>Facebook:</b>
+        https://www.facebook.com/simplemobiletools
+
+        <b>Reddit:</b>
+        https://www.reddit.com/r/SimpleMobileTools
     </string>
 
     <!--

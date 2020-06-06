@@ -7,7 +7,6 @@
     <dimen name="monthly_day_height">40dp</dimen>
 
     <dimen name="weekly_view_row_height">60dp</dimen>
-    <dimen name="weekly_view_events_height">1440dp</dimen>      <!-- weekly_view_row_height * 24 hours -->
     <dimen name="weekly_view_minimal_event_height">10dp</dimen>
     <dimen name="weekly_view_now_height">10dp</dimen>
 
@@ -17,6 +16,7 @@
     <dimen name="repeat_type_margin_start">40dp</dimen>
 
     <dimen name="yearly_month_padding">0dp</dimen>
+    <dimen name="endless_scroll_move_height">24dp</dimen>
 
     <dimen name="day_monthly_text_size">11sp</dimen>
     <dimen name="meta_text_size">14sp</dimen>
@@ -24,4 +24,10 @@
     <dimen name="month_text_size">22sp</dimen>
 
     <dimen name="year_view_day_text_size">8sp</dimen>
+
+    <dimen name="event_color_bar_width">4dp</dimen>
+    <dimen name="event_color_bar_height">100dp</dimen>
+
+    <dimen name="avatar_size">40dp</dimen>
+    <dimen name="avatar_status_size">16dp</dimen>
 </resources>

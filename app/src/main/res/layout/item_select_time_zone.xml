@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_select_time_zone_holder"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:paddingStart="@dimen/activity_margin"
+    android:paddingTop="@dimen/normal_margin"
+    android:paddingEnd="@dimen/activity_margin"
+    android:paddingBottom="@dimen/normal_margin">
+
+    <TextView
+        android:id="@+id/item_time_zone_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/bigger_text_size"
+        tools:text="Europe/Bratislava" />
+
+    <TextView
+        android:id="@+id/item_time_zone_shift"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/item_time_zone_title"
+        android:alpha="0.8"
+        android:textSize="@dimen/normal_text_size"
+        tools:text="GMT+1" />
+
+</RelativeLayout>

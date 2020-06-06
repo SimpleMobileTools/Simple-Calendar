@@ -1,0 +1,3 @@
+ * Allow landscape orientation on any device
+ * Use the nicer new app icon on lower Android versions
+ * Some UI, stability and translation improvements

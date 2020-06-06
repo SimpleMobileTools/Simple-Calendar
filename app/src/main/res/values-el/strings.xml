@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Απλό Ημερολόγιο</string>
+    <string name="app_launcher_name">Ημερολόγιο</string>
+    <string name="change_view">Αλλαγή προβολής</string>
+    <string name="daily_view">Ημερήσια προβολή</string>
+    <string name="weekly_view">Εβδομαδιαία προβολή</string>
+    <string name="monthly_view">Μηνιαία προβολή</string>
+    <string name="yearly_view">Ετήσια προβολή</string>
+    <string name="simple_event_list">Απλή λίστα εκδηλώσεων</string>
+    <string name="no_upcoming_events">Φαίνεται πως δεν έχετε επερχόμενες εκδηλώσεις.</string>
+    <string name="go_to_today">Μετάβαση στο σήμερα</string>
+    <string name="go_to_date">Μετάβαση σε ημερ/νία</string>
+    <string name="upgraded_from_free">Γειά σας,\n\nΦαίνεται πως αναβαθμίσατε από την παλιά δωρεάν εφαρμογή. Πρέπει να μεταφέρετε τα αποθηκευμένα τοπικά συμβάντα χειροκίνητα, μέσω Εξαγωγής σε αρχείο .ics και στη συνέχεια Εισαγωγή. Μπορείτε να βρείτε τις επιλογές Εξαγωγής/Εισαγωγής, στο μενού της κύριας οθόνης.\n\nΑπεγκαταστήστε ύστερα την παλιά έκδοση, επιλέγοντας \'Αναβάθμιση στην Pro\' στο μενού Ρυθμίσεις. Θα χρειαστεί μόνο να επαναφέρετε τις ρυθμίσεις της εφαρμογής.\n\nΕυχαριστώ!</string>
+
+    <!-- Widget titles -->
+    <string name="widget_monthly">Μηνιαίο ημερολόγιο</string>
+    <string name="widget_list">Λίστα εκδηλώσεων ημερολογίου</string>
+    <string name="widget_todays_date">Σημερινό ημερολόγιο</string>
+
+    <!-- Event -->
+    <string name="event">Εκδηλώσεις</string>
+    <string name="edit_event">Επεξεργασία εκδηλώσεων</string>
+    <string name="new_event">Νέα εκδήλωση</string>
+    <string name="create_new_event">Δημιουργία νέας εκδήλωσης</string>
+    <string name="duplicate_event">Διπλότυπες εκδηλώσεις</string>
+    <string name="title_empty">Ο τίτλος δεν μπορεί να είναι κενός</string>
+    <string name="end_before_start">Η εκδήλωση δεν μπορεί να τερματιστεί νωρίτερα από την έναρξή της</string>
+    <string name="event_added">Η εκδήλωση προστέθηκε με επιτυχία</string>
+    <string name="event_updated">Η εκδήλωση ενημερώθηκε με επιτυχία</string>
+    <string name="filter_events_by_type">Φιλτράρισμα ανά τύπο</string>
+    <string name="please_fill_location">Συμπληρώστε μια τοποθεσία που θα εμφανίζεται στο χάρτη</string>
+    <string name="public_event_notification_text">Μια εκδήλωση είναι επερχόμενη</string>
+
+    <!-- Event Repetition -->
+    <string name="repetition">Επανάληψη</string>
+    <string name="no_repetition">Χωρίς Επανάληψη</string>
+    <string name="daily">Καθημερινά</string>
+    <string name="weekly">Εβδομαδιαία</string>
+    <string name="monthly">Μηνιαία</string>
+    <string name="yearly">Ετήσια</string>
+    <string name="weeks_raw">Εβδομάδες</string>
+    <string name="months_raw">Μήνες</string>
+    <string name="years_raw">Έτη</string>
+    <string name="repeat_till">Επανάληψη μέχρι</string>
+    <string name="forever">Για πάντα</string>
+    <string name="event_is_repeatable">Η εκδήλωση είναι επαναλαμβανόμενη</string>
+    <string name="selection_contains_repetition">Η επιλογή περιέχει επαναλαμβανόμενες εκδηλώσεις</string>
+    <string name="delete_one_only">Διαγράψτε μόνο το επιλεγμένο περιστατικό</string>
+    <string name="delete_future_occurrences">Διαγράψτε αυτό και όλα τα μελλοντικά συμβάντα</string>
+    <string name="delete_all_occurrences">Διαγράψτε όλα τα περιστατικά</string>
+    <string name="update_one_only">Ενημέρωση μόνο του επιλεγμένου περιστατικού</string>
+    <string name="update_all_occurrences">Ενημέρωση όλων των περιστατικών</string>
+    <string name="repeat_till_date">Επαναλάβετε μέχρι μια ημερομηνία</string>
+    <string name="stop_repeating_after_x">Παύση επαναλήψεων μετά από x εμφανίσεις</string>
+    <string name="repeat_forever">Επανάληψη πάντα</string>
+    <string name="times">Φορές</string>
+    <string name="repeat">Επανάληψη</string>
+    <string name="repeat_on">Επανάληψη ενεργή</string>
+    <string name="every_day">Κάθε μέρα</string>
+    <string name="selected_days">Σε επιλεγμένες μέρες</string>
+    <string name="the_same_day">Την ίδια μέρα</string>
+    <string name="the_last_day">Την τελευταία μέρα</string>
+    <string name="repeat_on_the_same_day_monthly">Επανάληψη την ίδια ημέρα κάθε μήνα</string>
+    <string name="repeat_on_the_last_day_monthly">Επανάληψη την τελευταία ημέρα του μήνα</string>
+    <string name="repeat_on_the_same_day_yearly">Επανάληψη την τελευταία ημέρα του έτους</string>
+    <string name="repeat_every_m">Επανάληψη κάθε</string>
+    <string name="every_m">Κάθε</string>
+    <string name="first_m">πρώτη</string>
+    <string name="second_m">δεύτερη</string>
+    <string name="third_m">τρίτη</string>
+    <string name="fourth_m">τέταρτη</string>
+    <string name="last_m">τελευταία</string>
+
+    <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
+    <!-- used in repetition, like "Every first Sunday" -->
+    <string name="repeat_every_f">Επανάληψη κάθε</string>
+    <string name="every_f">Κάθε</string>
+    <string name="first_f">πρώτη</string>
+    <string name="second_f">δεύτερη</string>
+    <string name="third_f">τρίτη</string>
+    <string name="fourth_f">τέταρτη</string>
+    <string name="last_f">τελευταία</string>
+
+    <!-- Birthdays -->
+    <string name="birthdays">Γενέθλια</string>
+    <string name="add_birthdays">Προσθήκη γενεθλίων επαφής</string>
+    <string name="no_birthdays">Δεν βρέθηκαν γενέθλια</string>
+    <string name="no_new_birthdays">Δεν έχουν βρεθεί νέα γενέθλια</string>
+    <string name="birthdays_added">Τα γενέθλια προστέθηκαν με επιτυχία</string>
+
+    <!-- Anniversaries -->
+    <string name="anniversaries">Επέτειοι</string>
+    <string name="add_anniversaries">Προσθέστε επετείους επαφής</string>
+    <string name="no_anniversaries">Δεν έχουν βρεθεί επέτειοι</string>
+    <string name="no_new_anniversaries">Δεν έχουν βρεθεί νέοι επέτειοι</string>
+    <string name="anniversaries_added">Οι επέτειοι προστέθηκαν με επιτυχία</string>
+
+    <!-- Event Reminders -->
+    <string name="reminder">Υπενθύμιση</string>
+    <string name="before">πρίν</string>
+    <string name="add_another_reminder">Προσθέστε μια άλλη υπενθύμιση</string>
+    <string name="event_reminders">Υπενθυμίσεις εκδηλώσεων</string>
+
+    <!-- Event attendees -->
+    <string name="add_another_attendee">Προσθήκη άλλης συμμετοχής</string>
+    <string name="my_status">Η κατάσταση μου:</string>
+    <string name="going">Πηγαίνω</string>
+    <string name="not_going">Δεν πηγαίνω</string>
+    <string name="maybe_going">Ίσως πάω</string>
+    <string name="invited">Καλεσμένος</string>
+
+    <!-- Time zones -->
+    <string name="enter_a_country">Εισαγωγή χώρας ή ζώνης ώρας</string>
+
+    <!-- Export / Import -->
+    <string name="import_events">Εισαγωγή εκδηλώσεων</string>
+    <string name="export_events">Εξαγωγή εκδηλώσεων</string>
+    <string name="import_events_from_ics">Εισαγωγή απο ένα .ics αρχείο</string>
+    <string name="export_events_to_ics">Εξαγωγή σε ένα .ics αρχείο</string>
+    <string name="default_event_type">Προεπιλεγμένος τύπος εκδήλωσης</string>
+    <string name="export_past_events_too">Εξαγωγή προηγούμενων εκδηλώσεων επίσης</string>
+    <string name="include_event_types">Συμπερίληψη τύπων εκδηλώσεων</string>
+    <string name="filename_without_ics">Όνομα αρχείου (χωρίς .ics)</string>
+    <string name="override_event_types">Κατάργηση τύπων εκδηλώσεων στο αρχείο</string>
+
+    <!-- Event details -->
+    <string name="location">Τοποθεσία</string>
+    <string name="description">Περιγραφή</string>
+    <string name="all_day">Ημερήσια</string>
+
+    <!-- Weekly view -->
+    <string name="week">Εβδομάδα</string>
+
+    <!-- Event types -->
+    <string name="event_types">Τύποι εκδηλώσεων</string>
+    <string name="add_new_type">Προσθέστε νέο τύπο</string>
+    <string name="edit_type">Επεξεργασία τύπου</string>
+    <string name="type_already_exists">Ο τύπος με αυτόν τον τίτλο υπάρχει ήδη</string>
+    <string name="color">Χρώμα</string>
+    <string name="regular_event">Κανονική εκδήλωση</string>
+    <string name="cannot_delete_default_type">Ο προεπιλεγμένος τύπος εκδήλωσης δεν μπορεί να διαγραφεί</string>
+    <string name="select_event_type">Επιλέξτε έναν τύπο εκδήλωσης</string>
+    <string name="move_events_into_default">Μετακινήστε τις επηρεαζόμενες εκδηλώσεις στον προεπιλεγμένο τύπο</string>
+    <string name="remove_affected_events">Αφαιρέστε μόνιμα τις επηρεαζόμενες εκδηλώσεις </string>
+    <string name="unsync_caldav_calendar">Για να καταργήσετε ένα ημερολόγιο CalDAV, πρέπει να το αποσυγχρονίσετε</string>
+
+    <!-- Holidays -->
+    <string name="holidays">Αργίες</string>
+    <string name="add_holidays">Προσθήκη αργιών</string>
+    <string name="national_holidays">Εθνικές αργίες</string>
+    <string name="religious_holidays">Θρησκευτικές αργίες</string>
+    <string name="holidays_imported_successfully">Οι αργίες έχουν εισαχθεί επιτυχώς στον τύπο συμβάντος  \"Αργίες\" </string>
+    <string name="importing_some_holidays_failed">Η εισαγωγή κάποιων εκδηλώσεων απέτυχε</string>
+    <string name="importing_holidays_failed">Η εισαγωγή αργιών απέτυχε</string>
+
+    <!-- Settings -->
+    <string name="manage_event_types">Διαχείριση τύπων εκδηλώσεων</string>
+    <string name="start_day_at">Ημέρα έναρξης την</string>
+    <string name="end_day_at">Ημέρα λήξης την</string>
+    <string name="week_numbers">Εμφάνιση αριθμών εβδομάδων</string>
+    <string name="vibrate">Δόνηση στην ειδοποίηση υπενθύμισης</string>
+    <string name="reminder_sound">Ήχος υπενθύμισης</string>
+    <string name="no_ringtone_picker">Δεν υπάρχει εφαρμογή που να μπορεί να βρει ήχους</string>
+    <string name="no_ringtone_selected">Χωρίς</string>
+    <string name="day_end_before_start">Η ημέρα δεν μπορεί να τελειώσει νωρίτερα από ότι ξεκινά</string>
+    <string name="caldav_sync">CalDAV sync</string>
+    <string name="event_lists">Λίστες εκδηλώσεων</string>
+    <string name="display_past_events">Εμφάνιση προηγούμενων συμβάντων</string>
+    <string name="replace_description_with_location">Αντικατάσταση περιγραφής εκδήλωσης με τοποθεσία</string>
+    <string name="delete_all_events">Διαγραφή όλων των εκδηλώσεων</string>
+    <string name="delete_all_events_confirmation">Είστε βέβαιοι ότι θέλετε να διαγράψετε όλες τις εκδηλώσεις; Αυτό θα αφήσει τους τύπους και άλλες ρυθμίσεις ανέπαφες.</string>
+    <string name="show_a_grid">Εμφάνιση πλέγματος</string>
+    <string name="loop_reminders">Συνεχής επανάληψη μέχρι να απορριφθεί</string>
+    <string name="dim_past_events">Μείωση των προηγούμενων</string>
+    <string name="events">Εκδηλώσεις</string>
+    <string name="reminder_stream">Ροή ήχου που χρησιμοποιείται από τις υπενθυμίσεις</string>
+    <string name="system_stream">Σύστημα</string>
+    <string name="alarm_stream">Αφύπνιση</string>
+    <string name="notification_stream">Ειδοποίηση</string>
+    <string name="ring_stream">Κουδούνισμα</string>
+    <string name="use_last_event_reminders">Χρήση τελευταίων συμβάντων\' υπενθυμίσεις ως προεπιλογή για νέο συμβάν</string>
+    <string name="default_reminder_1">Προεπιλογή υπενθύμισης 1</string>
+    <string name="default_reminder_2">Προεπιλογή υπενθύμισης 2</string>
+    <string name="default_reminder_3">Προεπιλογή υπενθύμισης 3</string>
+    <string name="view_to_open_from_widget">Προβολή για άνοιγμα από το widget λίστας συμβάντων</string>
+    <string name="last_view">Τελευταία προβολή</string>
+    <string name="new_events">Νέα γεγονότα</string>
+    <string name="default_start_time">Προεπιλεγμένη ώρα έναρξης</string>
+    <string name="next_full_hour">Την επόμενη πλήρη ώρα</string>
+    <string name="default_duration">Προεπιλεγμένη διάρκεια</string>
+    <string name="last_used_one">Τελευταία χρήση</string>
+    <string name="other_time">Άλλη ώρα</string>
+    <string name="highlight_weekends">Επισήμανση Σαββατοκύριακων σε ορισμένες προβολές</string>
+    <string name="allow_changing_time_zones">Να επιτρέπεται η αλλαγή ζωνών ώρας συμβάντος</string>
+
+    <!-- CalDAV sync -->
+    <string name="caldav">CalDAV</string>
+    <string name="select_caldav_calendars">Επιλέξτε ημερολόγια για συγχρονισμό</string>
+    <string name="manage_synced_calendars">Διαχείριση συγχρονισμένων ημερολογίων</string>
+    <string name="store_locally_only">Αποθήκευση μόνο τοπικά</string>
+    <string name="refresh_caldav_calendars">Ανανεώστε τα ημερολόγια CalDAV</string>
+    <string name="refreshing">Ανανεώνεται…</string>
+    <string name="refreshing_complete">Ολοκλήρωση ανανέωσης</string>
+    <string name="editing_calendar_failed">Η επεξεργασία του ημερολογίου απέτυχε</string>
+    <string name="syncing">Συγχρονισμός…</string>
+    <string name="synchronization_completed">Ο συγχρονισμός ολοκληρώθηκε</string>
+    <string name="select_a_different_caldav_color">Επιλέξτε διαφορετικό χρώμα (μπορεί να εφαρμοστεί μόνο τοπικά)</string>
+    <string name="insufficient_permissions">Δεν επιτρέπεται η εγγραφή στο επιλεγμένο ημερολόγιο</string>
+    <string name="caldav_event_not_found">Δεν βρέθηκε Εκδήλωση. Παρακαλώ ενεργοποιήστε το συγχρονισμό CalDAV του Ημερολογίου από τις ρυθμίσεις της εφαρμογής.</string>
+    <string name="no_synchronized_calendars">Δεν μπόρεσαν να βρεθούν συγχρονισμένα Ημερολόγια</string>
+
+    <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
+    <!-- used in repetition, like "Every last Sunday" -->
+    <string name="monday_alt">Δευτέρα</string>
+    <string name="tuesday_alt">Τρίτη</string>
+    <string name="wednesday_alt">Τετάρτη</string>
+    <string name="thursday_alt">Πέμπτη</string>
+    <string name="friday_alt">Παρασκευή</string>
+    <string name="saturday_alt">Σαββάτο</string>
+    <string name="sunday_alt">Κυριακή</string>
+
+    <!-- List widget config example events -->
+    <string name="sample_title_1">Άσκηση</string>
+    <string name="sample_description_1">Ημέρα ποδιών</string>
+    <string name="sample_title_2">Συνάντηση με τον Γιάννη</string>
+    <string name="sample_description_2">Στον κήπο Rockstone</string>
+    <string name="sample_title_3">Βιβλιοθήκη</string>
+    <string name="sample_title_4">Μεσημεριανό με την Μαίρη</string>
+    <string name="sample_description_4">Στην πλατεία</string>
+    <string name="sample_title_5">Ωρα για καφέ</string>
+
+    <!-- FAQ -->
+    <string name="faq_1_title">Πώς μπορώ να αφαιρέσω τις αργίες που εισήχθησαν μέσω του κουμπιού \"Προσθήκη αργιών\" ;</string>
+    <string name="faq_1_text">Οι αργίες που δημιουργήθηκαν με τον τρόπο αυτό εισάγονται σε ένα νέο τύπο εκδήλωσης που ονομάζεται \"Αργίες \". Μπορείτε να μεταβείτε στις Ρυθμίσεις -> Διαχείριση τύπων εκδηλώσεων,
+        πατώντας παρατεταμένα τον συγκεκριμένο τύπο εκδήλωσης και διαγράψτε το επιλέγοντας τον Κάδο.</string>
+    <string name="faq_2_title">Μπορώ να συγχρονίσω τα συμβάντα μου μέσω του Ημερολογίου Google ή άλλης υπηρεσίας που υποστηρίζει το CalDAV;</string>
+    <string name="faq_2_text">Ναι, απλά εναλλαγή \"CalDAV sync\" στις ρυθμίσεις της εφαρμογής και επιλέξτε τα ημερολόγια που θέλετε να συγχρονίσετε. Ωστόσο, θα χρειαστείτε κάποια εφαρμογή τρίτου μέρους που να χειρίζεται το συγχρονισμό μεταξύ της συσκευής και των διακομιστών.
+        Σε περίπτωση που θέλετε να συγχρονίσετε ένα ημερολόγιο Google, η επίσημη εφαρμογή Ημερολογίου θα κάνει την εργασία. Για άλλα ημερολόγια θα χρειαστείτε έναν προσαρμογέα συγχρονισμού τρίτου μέρους, για παράδειγμα DAVx5.</string>
+    <string name="faq_3_title">Βλέπω τις οπτικές υπενθυμίσεις, αλλά δεν ακούω ήχο. Τι μπορώ να κάνω?</string>
+    <string name="faq_3_text">Όχι μόνο η εμφάνιση της πραγματικής υπενθύμισης, αλλά η αναπαραγωγή του ήχου επηρεάζεται έντονα και από το σύστημα. Εάν δεν μπορείτε να ακούσετε ήχο, δοκιμάστε να μεταβείτε στις ρυθμίσεις της εφαρμογής,
+        πατώντας την επιλογή "Ροή ήχου που χρησιμοποιείται από τις υπενθυμίσεις" και αλλάζοντας την σε διαφορετική τιμή. Εάν εξακολουθεί να μην λειτουργεί, ελέγξτε τις ρυθμίσεις ήχου σας, εάν η συγκεκριμένη ροή δεν είναι απενεργοποιημένη.</string>
+    <string name="faq_4_title">Η εφαρμογή υποστηρίζει ζώνες ώρας;</string>
+    <string name="faq_4_text">Ναι, μπορεί. Από προεπιλογή, όλα τα συμβάντα δημιουργούνται στην τρέχουσα ζώνη ώρας. Εάν θέλετε να αλλάξετε μια ζώνη ώρας των συμβάντων,
+        θα πρέπει πρώτα να ενεργοποιήσετε τον επιλογέα ζώνης ώρας στις Ρυθμίσεις της εφαρμογής και, στη συνέχεια, να τον αλλάξετε στην οθόνη Λεπτομέρειες συμβάντος. Είναι απενεργοποιημένο από προεπιλογή, καθώς οι περισσότεροι δεν το χρειάζονται.</string>
+
+    <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
+    <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
+    <string name="app_title">Απλό Ημερολόγιο Pro - Εκδηλώσεων &amp; Ειδοποιήσεων</string>
+    <!-- Short description has to have less than 80 chars -->
+    <string name="app_short_description">Απλό Ημερολόγιο 2020. Προγραμματισμός &amp; υπενθύμιση συνάντησης για κάθε ημέρα</string>
+    <string name="app_long_description">
+        Το Απλό Ημερολόγιο Pro είναι ένα ημερολόγιο πλήρως προσαρμόσιμο εκτός σύνδεσης που έχει σχεδιαστεί για να κάνει ακριβώς αυτό που υπόσχεται. <b>Δεν υπάρχουν περίπλοκες λειτουργίες, περιττά δικαιώματα και διαφημίσεις!</b>
+
+        Είτε οργανώνετε ένα ή επαναλαμβανόμενα γεγονότα, γενέθλια, επετείους, επαγγελματικές συναντήσεις, ραντεβού ή οτιδήποτε άλλο, το Απλό Ημερολόγιο Pro καθιστάται <b>να παραμένει εύκολα οργανωμένο</b>. Με μια απίστευτη ποικιλία <b>επιλογών προσαρμογής</b> μπορείτε να προσαρμόσετε τις υπενθυμίσεις συμβάντων, τους ήχους ειδοποιήσεων, τα γραφικά στοιχεία ημερολογίου και τον τρόπο εμφάνισης της εφαρμογής.
+
+        Καθημερινές, εβδομαδιαίες και μηνιαίες προβολές κάνουν τον έλεγχο των επερχόμενων εκδηλώσεων &amp; ραντεβού παιχνιδάκι. Μπορείτε ακόμη και να δείτε τα πάντα ως μια απλή λίστα γεγονότων και όχι σε προβολή ημερολογίου, ώστε να <b>γνωρίζετε ακριβώς τι έρχεται στη ζωή σας και πότε.</b>
+
+        ----------------------------------------------------------
+        <b>Απλό Ημερολόγιο Pro – Χαρακτηριστικά &amp; Πλεονεκτήματα</b>
+        ----------------------------------------------------------
+
+        ✔️ Δεν υπάρχουν διαφημίσεις ή ενοχλητικά αναδυόμενα παράθυρα
+        ✔️ Δεν απαιτείται πρόσβαση στο διαδίκτυο, προστατεύοντας την ιδιωτική σας ζωής &amp; ασφάλεια
+        ✔️ Μόνο τα ελάχιστα δικαιώματα απαιτούνται
+        ✔️ Έμφαση στην απλότητα - κάνει αυτό που χρειάζεται ένα ημερολόγιο!
+        ✔️ Ανοιχτού κώδικα
+        ✔️ Πλήρως προσαρμόσιμα θέματα &amp; widget ημερολογίου/συμβάντος
+        ✔️ Μεταφρασμένο σε 29 γλώσσες
+        ✔️ Εξαγωγή ρυθμίσεων σε αρχεία .txt για εισαγωγή σε άλλη συσκευή
+        ✔️ CalDAV συγχρονισμός υποστηρίζεται για συγχρονισμό συμβάντων σε όλες τις συσκευές
+        ✔️ Καθημερινά, εβδομαδιαία, μηνιαία, ετήσια συμβάντα προβάλονται στο ημερολόγιο
+        ✔️ Υποστηρίζει εξαγωγή &amp; εισαγωγή γεγονότων μέσω αρχείων .ics
+        ✔️ Ορίστε υπενθυμίσεις πολλαπλών συμβάντων, προσαρμογή ήχου υπενθύμισης και δόνησης
+        ✔️ Επιλογές αναβολής των υπενθυμίσεων
+        ✔️ Προσθέστε εύκολα διακοπές, γενέθλια, επετείους &amp; ραντεβού
+        ✔️ Προσαρμογή συμβάντων - χρόνο έναρξης, διάρκεια, υπενθυμίσεις κλπ
+        ✔️ Προσθέστε συμμετέχοντες σε κάθε εκδήλωση
+        ✔️ Χρησιμοποιήστε το ως προσωπικό ή επιχειρηματικό ημερολόγιο
+        ✔️ Επιλέξτε μεταξύ υπενθυμίσεων &amp; email για να σας ειδοποιήσει για ένα συμβάν
+
+        ΛΗΨΗ ΑΠΛΟ ΗΜΕΡΟΛΟΓΙΟ Pro – ΕΚΤΟΣ ΣΥΝΔΕΣΗΣ ΚΑΙ ΧΩΡΊΣ ΔΙΑΦΗΜΗΣΕΙΣ!
+
+        <b>Δείτε την πλήρη σειρά των Simple Tools εδώ:</b>
+        https://www.simplemobiletools.com
+
+        <b>Αποκλειστική ιστοσελίδα Απλού Ημερολογίου Pro:</b>
+        https://www.simplemobiletools.com/calendar
+
+        <b>Facebook:</b>
+        https://www.facebook.com/simplemobiletools
+
+        <b>Reddit:</b>
+        https://www.reddit.com/r/SimpleMobileTools
+    </string>
+
+    <!--
+        Haven't found some strings? There's more at
+        https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
+    -->
+</resources>

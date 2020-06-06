@@ -1,0 +1,4 @@
+ * Fixed some repeating CalDAV synced events not showing up properly
+ * Improved the event sorting at the monthly widget
+ * Properly refresh CalDAV synced events in the background
+ * Some translation and stability improvements

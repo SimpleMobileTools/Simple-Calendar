@@ -1,31 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Simple Calendar</string>
+    <string name="app_name">Semplice calendario</string>
     <string name="app_launcher_name">Calendario</string>
     <string name="change_view">Cambia vista</string>
+    <string name="daily_view">Vista giornaliera</string>
     <string name="weekly_view">Vista settimanale</string>
-    <string name="monthly_view">Vista Mensile</string>
+    <string name="monthly_view">Vista mensile</string>
     <string name="yearly_view">Vista annuale</string>
-    <string name="simple_event_list">Simple event list</string>
-    <string name="no_upcoming_events">Seems like you don\'t have any upcoming events.</string>
-    <string name="add_some_events">You can add some with the Plus button at the bottom.</string>
-    <string name="details">Dettagli</string>
-    <string name="go_to_today">Go to today</string>
-    <string name="snooze">Snooze</string>
+    <string name="simple_event_list">Lista semplice deli eventi</string>
+    <string name="no_upcoming_events">Non c\'è nessun evento imminente.</string>
+    <string name="go_to_today">Vai a oggi</string>
+    <string name="go_to_date">Vai alla data</string>
+    <string name="upgraded_from_free">Hey,\n\nhai aggiornato dalla vecchia versione gratuita. Devi migrare manualmente gli eventi salvati esportandoli prima in un file .ics, per poi importare tale file. Puoi trovare i pulsanti per tali funzioni nel menu della schermata principale.\n\nPuoi disinstallare le vecchia versione, che ha un pulsante \'Aggiorna a Pro\' in alto nelle impostazioni. Dovrai reimpostare solamente le impostazioni dell\'app.\n\nGrazie!</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Calendario mensile</string>
-    <string name="widget_list">Calendar event list</string>
+    <string name="widget_list">Lista degli eventi del calendario</string>
+    <string name="widget_todays_date">Calendar today\'s date</string>
 
     <!-- Event -->
     <string name="event">Evento</string>
     <string name="edit_event">Modifica evento</string>
     <string name="new_event">Nuovo evento</string>
+    <string name="create_new_event">Crea un nuovo evento</string>
+    <string name="duplicate_event">Duplica evento</string>
     <string name="title_empty">Il titolo non può essere vuoto</string>
     <string name="end_before_start">L\'evento non può terminare prima del suo inizio</string>
     <string name="event_added">Evento aggiunto correttamente</string>
     <string name="event_updated">Evento aggiornato correttamente</string>
     <string name="filter_events_by_type">Filtra eventi per tipologia</string>
+    <string name="please_fill_location">Riempire la posizione per essere mostrata su una mappa</string>
+    <string name="public_event_notification_text">Un evento è imminente</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Ripeti</string>
@@ -33,7 +38,7 @@
     <string name="daily">Giornalmente</string>
     <string name="weekly">Settimanalmente</string>
     <string name="monthly">Mensilmente</string>
-    <string name="yearly">Annulamente</string>
+    <string name="yearly">Annualmente</string>
     <string name="weeks_raw">Settimane</string>
     <string name="months_raw">Mesi</string>
     <string name="years_raw">Anni</string>
@@ -42,22 +47,24 @@
     <string name="event_is_repeatable">L\'evento è ripetibile</string>
     <string name="selection_contains_repetition">La selezione contiene eventi ripetuti</string>
     <string name="delete_one_only">Elimina solamente l\'occorenza selezionata</string>
+    <string name="delete_future_occurrences">Rimuovi questo e tutte le future occorrenze</string>
     <string name="delete_all_occurrences">Elimina tutte le occorrenze</string>
     <string name="update_one_only">Aggiorna solamente l\'occorenza selezionata</string>
     <string name="update_all_occurrences">Aggiorna tutte le occorenze</string>
-    <string name="repeat_till_date">Repeat till a date</string>
-    <string name="repeat_x_times">Ripeti x volte</string>
+    <string name="repeat_till_date">Ripeti fino a una data</string>
+    <string name="stop_repeating_after_x">Smetti di ripetere dopo x occorrenze</string>
     <string name="repeat_forever">Ripeti per sempre</string>
-    <string name="times">times</string>
+    <string name="times">volte</string>
     <string name="repeat">Ripeti</string>
-    <string name="repeat_on">Repeat on</string>
+    <string name="repeat_on">Ripeti su</string>
     <string name="every_day">Ogni giorno</string>
-    <string name="selected_days">On selected days</string>
+    <string name="selected_days">Nei giorni selezionati</string>
     <string name="the_same_day">Lo stesso giorno</string>
     <string name="the_last_day">L\'ultimo giorno</string>
-    <string name="repeat_on_the_same_day">Ripeti lo stesso giorno ogni mese </string>
-    <string name="repeat_on_the_last_day">Repeat on the last day of the month</string>
-    <string name="repeat_every_m">Repeat every</string>
+    <string name="repeat_on_the_same_day_monthly">Ripeti lo stesso giorno ogni mese </string>
+    <string name="repeat_on_the_last_day_monthly">Ripeti l\'ultimo giorno del mese</string>
+    <string name="repeat_on_the_same_day_yearly">Ripeti lo stesso giorno ogni anno</string>
+    <string name="repeat_every_m">Ripeti ogni</string>
     <string name="every_m">Tutti</string>
     <string name="first_m">primo</string>
     <string name="second_m">secondo</string>
@@ -67,232 +74,224 @@
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
-    <string name="repeat_every_f">Repeat every</string>
-    <string name="every_f">Every</string>
-    <string name="first_f">first</string>
-    <string name="second_f">second</string>
-    <string name="third_f">third</string>
-    <string name="fourth_f">fourth</string>
-    <string name="last_f">last</string>
-
-    <plurals name="days">
-        <item quantity="one">%d day</item>
-        <item quantity="other">%d days</item>
-    </plurals>
-
-    <plurals name="weeks">
-        <item quantity="one">%d week</item>
-        <item quantity="other">%d weeks</item>
-    </plurals>
-
-    <plurals name="months">
-        <item quantity="one">%d month</item>
-        <item quantity="other">%d months</item>
-    </plurals>
-
-    <plurals name="years">
-        <item quantity="one">%d year</item>
-        <item quantity="other">%d years</item>
-    </plurals>
+    <string name="repeat_every_f">Ripeti ogni</string>
+    <string name="every_f">Ogni</string>
+    <string name="first_f">primo</string>
+    <string name="second_f">secondo</string>
+    <string name="third_f">terzo</string>
+    <string name="fourth_f">quarto</string>
+    <string name="last_f">ultimo</string>
 
     <!-- Birthdays -->
-    <string name="birthdays">Birthdays</string>
-    <string name="add_birthdays">Add contact birthdays</string>
-    <string name="no_birthdays">No birthdays have been found</string>
-    <string name="birthdays_added">Birthdays added successfully</string>
+    <string name="birthdays">Compleanni</string>
+    <string name="add_birthdays">Aggiungi compleanni dai contatti</string>
+    <string name="no_birthdays">Nessun compleanno trovato</string>
+    <string name="no_new_birthdays">No new birthdays have been found</string>
+    <string name="birthdays_added">Compleanni aggiunti con successo</string>
 
     <!-- Anniversaries -->
-    <string name="anniversaries">Anniversaries</string>
-    <string name="add_anniversaries">Add contact anniversaries</string>
-    <string name="no_anniversaries">No anniversaries have been found</string>
-    <string name="anniversaries_added">Anniversaries added successfully</string>
+    <string name="anniversaries">Anniversari</string>
+    <string name="add_anniversaries">Aggiungi anniversari dai contatti</string>
+    <string name="no_anniversaries">Nessun anniversario trovato</string>
+    <string name="no_new_anniversaries">No new anniversaries have been found</string>
+    <string name="anniversaries_added">Anniversari aggiunti con successo</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Promemoria</string>
-    <string name="no_reminder">No reminder</string>
-    <string name="at_start">All\'inizio</string>
-    <string name="custom">Custom</string>
-    <string name="before">before</string>
-    <string name="minutes_raw">minutes</string>
-    <string name="hours_raw">hours</string>
-    <string name="days_raw">days</string>
-    <string name="add_another_reminder">Add another reminder</string>
-    <string name="event_reminders">Event reminders</string>
+    <string name="before">prima</string>
+    <string name="add_another_reminder">Aggiungi un altro promemoria</string>
+    <string name="event_reminders">Promemoria eventi</string>
 
-    <plurals name="minutes_before">
-        <item quantity="one">%d minute before</item>
-        <item quantity="other">%d minutes before</item>
-    </plurals>
+    <!-- Event attendees -->
+    <string name="add_another_attendee">Aggiungi un partecipante</string>
+    <string name="my_status">Il mio stato:</string>
+    <string name="going">Andando</string>
+    <string name="not_going">Non andando</string>
+    <string name="maybe_going">Forse</string>
+    <string name="invited">Invitato</string>
 
-    <plurals name="hours_before">
-        <item quantity="one">%d hour before</item>
-        <item quantity="other">%d hours before</item>
-    </plurals>
-
-    <plurals name="days_before">
-        <item quantity="one">%d day before</item>
-        <item quantity="other">%d days before</item>
-    </plurals>
+    <!-- Time zones -->
+    <string name="enter_a_country">Enter a country or time zone</string>
 
     <!-- Export / Import -->
-    <string name="importing">Importing…</string>
-    <string name="exporting">Exporting…</string>
-    <string name="import_events">Import events</string>
-    <string name="export_events">Export events</string>
-    <string name="import_events_from_ics">Import events from an .ics file</string>
-    <string name="export_events_to_ics">Export events to an .ics file</string>
-    <string name="events_imported_successfully">Events imported successfully</string>
-    <string name="events_exported_successfully">Events have been exported successfully</string>
-    <string name="importing_events_failed">Importing events failed</string>
-    <string name="exporting_events_failed">Exporting events failed</string>
-    <string name="importing_some_events_failed">Importing some events failed</string>
-    <string name="exporting_some_events_failed">Exporting some events failed</string>
-    <string name="default_event_type">Default event type</string>
-    <string name="no_events_for_exporting">No events for exporting have been found</string>
-    <string name="export_past_events_too">Export past events too</string>
-    <string name="include_event_types">Include event types</string>
-    <string name="filename_without_ics">Filename (without .ics)</string>
-    <string name="no_title">No title</string>
+    <string name="import_events">Importa eventi</string>
+    <string name="export_events">Esporta eventi</string>
+    <string name="import_events_from_ics">Importa eventi da un file .ics</string>
+    <string name="export_events_to_ics">Esporta eventi in un file .ics</string>
+    <string name="default_event_type">Tipo predefinito per un evento</string>
+    <string name="export_past_events_too">Esporta anche gli eventi passati</string>
+    <string name="include_event_types">Includi i tipi di evento</string>
+    <string name="filename_without_ics">Nome file (senza .ics)</string>
+    <string name="override_event_types">Sovrascrivi i tipi di eventi nel file</string>
 
     <!-- Event details -->
-    <string name="title">Titolo</string>
-    <string name="location">Location</string>
+    <string name="location">Posizione</string>
     <string name="description">Descrizione</string>
-    <string name="all_day">All-day</string>
+    <string name="all_day">Tutto il giorno</string>
 
     <!-- Weekly view -->
-    <string name="week">Week</string>
+    <string name="week">Settimana</string>
 
     <!-- Event types -->
-    <string name="event_types">Event types</string>
-    <string name="add_new_type">Add a new type</string>
-    <string name="edit_type">Edit type</string>
-    <string name="type_already_exists">Type with this title already exists</string>
-    <string name="color">Color</string>
-    <string name="regular_event">Regular event</string>
-    <string name="cannot_delete_default_type">Default event type cannot be deleted</string>
-    <string name="select_event_type">Select an event type</string>
-    <string name="move_events_into_default">Move affected events into the default event type</string>
-    <string name="remove_affected_events">Permanently remove affected events</string>
-    <string name="unsync_caldav_calendar">To remove a CalDAV calendar you have to unsynchronize it</string>
+    <string name="event_types">Tipi di evento</string>
+    <string name="add_new_type">Aggiungi nuovo tipo</string>
+    <string name="edit_type">Modifica tipo</string>
+    <string name="type_already_exists">Un tipo con questo titolo esiste già</string>
+    <string name="color">Colore</string>
+    <string name="regular_event">Evento regolare</string>
+    <string name="cannot_delete_default_type">Il tipo di evento predefinito non può essere cancellato</string>
+    <string name="select_event_type">Seleziona un tipo di evento</string>
+    <string name="move_events_into_default">Muovi gli eventi segnati con il tipo di eventi predefinito</string>
+    <string name="remove_affected_events">Rimuovi in maniera permanente gli eventi segnati</string>
+    <string name="unsync_caldav_calendar">Per rimuovere un calendario CalDAV devi desincronizzarlo</string>
 
     <!-- Holidays -->
-    <string name="holidays">Holidays</string>
-    <string name="add_holidays">Add holidays</string>
-    <string name="national_holidays">National holidays</string>
-    <string name="religious_holidays">Religious holidays</string>
-    <string name="holidays_imported_successfully">Holidays have been successfully imported into a new event type</string>
-    <string name="importing_some_holidays_failed">Importing some events failed</string>
-    <string name="importing_holidays_failed">Importing holidays failed</string>
+    <string name="holidays">Feste</string>
+    <string name="add_holidays">Aggiungi feste</string>
+    <string name="national_holidays">Feste nazionali</string>
+    <string name="religious_holidays">Feste religiose</string>
+    <string name="holidays_imported_successfully">Le feste sono state importate nel tipo evento \"Feste\" con successo</string>
+    <string name="importing_some_holidays_failed">Importo di alcuni eventi fallito</string>
+    <string name="importing_holidays_failed">Importo delle feste fallito</string>
 
     <!-- Settings -->
-    <string name="manage_event_types">Manage event types</string>
-    <string name="use_24_hour_format">Use 24-hour format</string>
-    <string name="sunday_first">Sunday as first day</string>
-    <string name="start_day_at">Start day at</string>
-    <string name="end_day_at">End day at</string>
-    <string name="week_numbers">Show week numbers</string>
-    <string name="vibrate">Vibrate on reminder notification</string>
-    <string name="reminder_sound">Reminder sound</string>
-    <string name="default_event_reminder">Default event reminder</string>
-    <string name="no_ringtone_picker">No app capable of setting ringtone found</string>
-    <string name="no_ringtone_selected">None</string>
-    <string name="day_end_before_start">The day cannot end earlier than it starts</string>
-    <string name="caldav_sync">CalDAV sync</string>
-    <string name="event_lists">Event lists</string>
-    <string name="display_past_events">Display events from the past</string>
-    <string name="snooze_delay">Postpone reminder with Snooze by</string>
-    <string name="widgets">Widgets</string>
-    <string name="replace_description_with_location">Replace Description with Location at list view entries</string>
+    <string name="manage_event_types">Gestisci i tipi di evento</string>
+    <string name="start_day_at">Il giorno inizia alle</string>
+    <string name="end_day_at">Il giorno finisce alle</string>
+    <string name="week_numbers">Mostra numero settimane</string>
+    <string name="vibrate">Vibra per le notifiche di promemoria</string>
+    <string name="reminder_sound">Suoneria promemoria</string>
+    <string name="no_ringtone_picker">Non è stata trovata nessuna applicazione per impostare la suoneria</string>
+    <string name="no_ringtone_selected">Nessuna</string>
+    <string name="day_end_before_start">Il giorno non può finire prima che cominci</string>
+    <string name="caldav_sync">Sincronizzazione CalDAV</string>
+    <string name="event_lists">Liste degli eventi</string>
+    <string name="display_past_events">Mostra eventi passati</string>
+    <string name="replace_description_with_location">Sostituisci la descrizione con la posizione</string>
+    <string name="delete_all_events">Cancella tutti gli eventi</string>
+    <string name="delete_all_events_confirmation">Vuoi cancellare tutti gli eventi? Questo lascerà i tuoi tipi di evento e le altre impostazioni invariate.</string>
+    <string name="show_a_grid">Mostra una griglia</string>
+    <string name="loop_reminders">Manda in loop i promemoria finchè non vengono rimossi</string>
+    <string name="dim_past_events">Rimuovi gli eventi passati</string>
+    <string name="events">Eventi</string>
+    <string name="reminder_stream">Canale audio utilizzato per i promomemoria</string>
+    <string name="system_stream">Sistema</string>
+    <string name="alarm_stream">Allarme</string>
+    <string name="notification_stream">Notitica</string>
+    <string name="ring_stream">Squillo</string>
+    <string name="use_last_event_reminders">Utilizza l\'ultimo promemoria come predefinito per nuovi eventi</string>
+    <string name="default_reminder_1">Promemoria predefinito 1</string>
+    <string name="default_reminder_2">Promemoria predefinito 2</string>
+    <string name="default_reminder_3">Promemoria predefinito 3</string>
+    <string name="view_to_open_from_widget">Vista da aprire dalla lista degli eventi del widget</string>
+    <string name="last_view">Ultima vista</string>
+    <string name="new_events">Nuovi eventi</string>
+    <string name="default_start_time">Tempo di inizio predefinito</string>
+    <string name="next_full_hour">Prossima ora completa</string>
+    <string name="default_duration">Durata predefinita</string>
+    <string name="last_used_one">L\'ultimo utilizzato</string>
+    <string name="other_time">Altro periodo</string>
+    <string name="highlight_weekends">Highlight weekends on some views</string>
+    <string name="allow_changing_time_zones">Allow changing event time zones</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
-    <string name="select_caldav_calendars">Select calendars to sync</string>
-    <string name="manage_synced_calendars">Manage synced calendars</string>
-    <string name="store_locally_only">Store locally only</string>
-    <string name="refresh_caldav_calendars">Refresh CalDAV calendars</string>
-    <string name="refreshing">Refreshing…</string>
-    <string name="refreshing_complete">Refreshing complete</string>
-    <string name="editing_calendar_failed">Editing calendar failed</string>
-    <string name="syncing">Syncing…</string>
-    <string name="synchronization_completed">Sync completed</string>
-
-    <plurals name="by_minutes">
-        <item quantity="one">%d minute</item>
-        <item quantity="other">%d minutes</item>
-    </plurals>
-
-    <plurals name="by_hours">
-        <item quantity="one">%d hour</item>
-        <item quantity="other">%d hours</item>
-    </plurals>
-
-    <string name="never">Never</string>
-
-    <string name="january">Gennaio</string>
-    <string name="february">Febbraio</string>
-    <string name="march">Marzo</string>
-    <string name="april">Aprile</string>
-    <string name="may">Maggio</string>
-    <string name="june">Giugno</string>
-    <string name="july">Luglio</string>
-    <string name="august">Agosto</string>
-    <string name="september">Settembre</string>
-    <string name="october">Ottobre</string>
-    <string name="november">Novembre</string>
-    <string name="december">Dicembre</string>
-
-    <string name="monday_letter">L</string>
-    <string name="tuesday_letter">M</string>
-    <string name="wednesday_letter">M</string>
-    <string name="thursday_letter">G</string>
-    <string name="friday_letter">V</string>
-    <string name="saturday_letter">S</string>
-    <string name="sunday_letter">D</string>
-
-    <string name="monday">Monday</string>
-    <string name="tuesday">Tuesday</string>
-    <string name="wednesday">Wednesday</string>
-    <string name="thursday">Thursday</string>
-    <string name="friday">Friday</string>
-    <string name="saturday">Saturday</string>
-    <string name="sunday">Sunday</string>
+    <string name="select_caldav_calendars">Seleziona un calendario da sincronizzare</string>
+    <string name="manage_synced_calendars">Gestisci i calendari sincronizzati</string>
+    <string name="store_locally_only">Salva solamente in locale</string>
+    <string name="refresh_caldav_calendars">Aggiorna i calendari CalDAV</string>
+    <string name="refreshing">Aggiornamento in corso…</string>
+    <string name="refreshing_complete">Aggiornamento completato</string>
+    <string name="editing_calendar_failed">Impossibile modificare il calendario</string>
+    <string name="syncing">Sincronizzazione in corso…</string>
+    <string name="synchronization_completed">Sincronizzazione completata</string>
+    <string name="select_a_different_caldav_color">Seleziona un colore differente (potrebbe essere applicato solamente in locale)</string>
+    <string name="insufficient_permissions">Non si hanno i permessi per scrivere nel calendario selezionato</string>
+    <string name="caldav_event_not_found">Event not found. Please enable CalDAV sync for the appropriate calendar in the app settings.</string>
+    <string name="no_synchronized_calendars">No synchronizable calendars have been found</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
-    <string name="monday_alt">Monday</string>
-    <string name="tuesday_alt">Tuesday</string>
-    <string name="wednesday_alt">Wednesday</string>
-    <string name="thursday_alt">Thursday</string>
-    <string name="friday_alt">Friday</string>
-    <string name="saturday_alt">Saturday</string>
-    <string name="sunday_alt">Sunday</string>
+    <string name="monday_alt">Lunedì</string>
+    <string name="tuesday_alt">Martedì</string>
+    <string name="wednesday_alt">Mercoledì</string>
+    <string name="thursday_alt">Giovedì</string>
+    <string name="friday_alt">Venerdì</string>
+    <string name="saturday_alt">Sabato</string>
+    <string name="sunday_alt">Domenica</string>
 
     <!-- List widget config example events -->
-    <string name="sample_title_1">Workout</string>
-    <string name="sample_description_1">Leg day</string>
-    <string name="sample_title_2">Meeting with John</string>
-    <string name="sample_description_2">In Rockstone garden</string>
-    <string name="sample_title_3">Library</string>
-    <string name="sample_title_4">Lunch with Mary</string>
-    <string name="sample_description_4">In the Plaza</string>
-    <string name="sample_title_5">Coffee time</string>
+    <string name="sample_title_1">Allenamento</string>
+    <string name="sample_description_1">Gambe</string>
+    <string name="sample_title_2">Incontro con Giovanni</string>
+    <string name="sample_description_2">Al giardino di Milano</string>
+    <string name="sample_title_3">Liberia</string>
+    <string name="sample_title_4">Pranzo con Maria</string>
+    <string name="sample_description_4">Al ristorante Magione</string>
+    <string name="sample_title_5">Pausa caffè</string>
+
+    <!-- FAQ -->
+    <string name="faq_1_title">Come posso rimuovere le festività importate tramite il pulsante \"Aggiungi festività\"?</string>
+    <string name="faq_1_text">Le festività create in questo modo sono inseriti in eventi di tipo \"Festività\". Andare in Impostazioni → Gestisci tipi di eventi,
+        tenere premuto sul tipo desiderato ed eliminarlo selezionando il cestino.</string>
+    <string name="faq_2_title">Posso sincronizzare i miei eventi tramite Google Calendar, o altri servizi che supportano CalDAV?</string>
+    <string name="faq_2_text">Sì, basta attivare l\'opzione \"Sincronizzazione CalDAV\" nelle impostazioni dell\'applicazione e selezionare i calendari da sincronizzare. Comunque è necessaria un\'applicazione di terze parti per gestire la sincronizzazione tra dispositivo e server.
+        In caso si voglia sincronizzare con Google Calendar, la loro applicazione ufficiale effettua questo lavoro. Per altri calendari sono necessarie applicazioni di terze parti, per esempio DAVx5.</string>
+    <string name="faq_3_title">Visualizzo i promemoria, ma non sento l\'audio. Cosa posso fare?</string>
+    <string name="faq_3_text">Non solo visualizzare l\'attuale promemoria, ma anche riprodurre l\'audio è un lavoro prettamente del sistema. Se non si sente alcun suono, provare ad andare nelle impostazioni dell\'applicazione,
+        premere l\'opzione \"Canale audio utilizzato per il promemoria\" e cambia il canale. Se ancora non funziona, controllare le impostazioni dell\'audio, in particolare se il canale è stato mutato.</string>
+    <string name="faq_4_title">Does the app support time zones?</string>
+    <string name="faq_4_text">Yes, it does. By default all events are created in your current time zone. If you want to change an events\' time zone,
+        you will first have to enable the time zone picker at the app settings, then change it at the Event Details screen. It is disabled by default as most people won\'t need it.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
+    <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
+    <string name="app_title">Semplice Calendario Pro - Eventi &amp; Promemoria</string>
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">A simple calendar with events, customizable widget and no ads.</string>
+    <string name="app_short_description">Simple mobile 2020 calendar. Schedule planner &amp; appointment reminder for any day</string>
     <string name="app_long_description">
-        A simple calendar with optional Google synchronization. You can easily create recurring events and setup reminders, it can also display week numbers.
+        Semplice Calendario Pro è un calendario offline completamente personalizzabile progettato per fare esattamente quello che un calendario dovrebbe fare. <b>Non ci sono funzionalità complicate, permessi non necessari e senza pubblicità!</b>
 
-        Contains a resizable 4x4 widget where you can customize the color of the text, as well as the alpha and the color of the background.
+        Se stai organizzando eventi singoli o ricorrenti, compleanni, anniversari, riunioni di lavoro, appuntamento o qualsiasi altra cosa, Semplice Calendario Pro ti permette di <b>rimanere organizzato</b>. Con un\'incredbile varietà di <b>opzioni di personalizzazione</b>, puoi personalizzare i promemoria degli eventi, i suoni delle notifiche, il widget del calendario e lo stile dell\'app.
 
-        Contains no ads or unnecessary permissions. It is fully opensource, provides customizable colors.
+        Le vista giornaliera, settimanale o mensile permette di controllare gli eventi e appuntamenti imminenti. Puoi visualizzare tutto come una semplice lista di eventi invece che in una vista a calendario, così puoi <b>sapere esattamente cosa sta per succedere nella tua vita e quando.</b>
 
-        The Storage permission is needed only for exporting or importing events from .ics files.
+        ----------------------------------------------------------
+        <b>Semplice Calendario Pro - Funzionalità e benefici</b>
+        ----------------------------------------------------------
 
-        Contacts permission is used only at importing contact birthdays.
+        ✔️ Nessuna pubblicità o popup fastidiosi
+        ✔️ Nessun accesso internet richiesto, così da darti più privacy e sicurezza
+        ✔️ Sono richieste solamente i permessi minimi indispensabili
+        ✔️ Enfatizza la semplicità - quello che un calendario deve fare!
+        ✔️ Open source
+        ✔️ Temi, calendario e widget degli eventi completamente personalizzable
+        ✔️ Localizzato in più di 29 lingue
+        ✔️ Esporta le impostazioni in un file .txt da importare in un altro disposibito
+        ✔️ Sincronizzazione CalDav supportata per sincronizzare gli eventi su più dispositivi
+        ✔️ Con viste giornaliere, settimanali, mensili, annuali e lista di eventi
+        ✔️ Supporta l\'importazione e l\'esportazione di eventi tramite file .ics
+        ✔️ Imposta più promemoria per gli eventi, personalizzali con la vibrazione e la suoneria
+        ✔️ Opzione per posporre i promemoria
+        ✔️ Aggiungi facilmente festività, compleanni, anniversari e appuntamenti
+        ✔️ Personalizza gli eventi - inizio, durata, promemoria e molto altro
+        ✔️ Aggiunti i partecipanti per ogni evento
+        ✔️ Usalo come calendario personale o per lavoro
+        ✔️ Scegli fra promemoria e email di notifica per avvisarti riguardo un evento
+        
+        SCARICA SEMPLICE CALENDARIO PRO – IL CALENDARIO SEMPLICE, OFFLINE E SENZA PUBBLICITÀ!
 
-        This app is just one piece of a bigger series of apps. You can find the rest of them at http://www.simplemobiletools.com
+        <b>Dai uno sguardo alla suite completa di Simple Tools:</b>
+        https://www.simplemobiletools.com
+
+        <b>Standalone website of Simple Calendar Pro:</b>
+        https://www.simplemobiletools.com/calendar
+
+        <b>Facebook:</b>
+        https://www.facebook.com/simplemobiletools
+
+        <b>Reddit:</b>
+        https://www.reddit.com/r/SimpleMobileTools
     </string>
 
     <!--

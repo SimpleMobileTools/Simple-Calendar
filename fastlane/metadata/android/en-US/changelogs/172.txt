@@ -1,0 +1,2 @@
+ * Added a Go To Today menu button at the event list view too
+ * Some translation and stability improvements

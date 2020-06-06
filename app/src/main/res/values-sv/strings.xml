@@ -3,29 +3,34 @@
     <string name="app_name">Simple Calendar</string>
     <string name="app_launcher_name">Kalender</string>
     <string name="change_view">Ändra vy</string>
+    <string name="daily_view">Dagsvy</string>
     <string name="weekly_view">Veckovy</string>
     <string name="monthly_view">Månadsvy</string>
     <string name="yearly_view">Årsvy</string>
     <string name="simple_event_list">Händelselista</string>
-    <string name="no_upcoming_events">Det ser ut som att du inte har några kommande händelser.</string>
-    <string name="add_some_events">Du kan lägga till händelser via plus-knappen som du ser längst ner.</string>
-    <string name="details">Detaljer</string>
+    <string name="no_upcoming_events">Det verkar som att du inte har några kommande händelser.</string>
     <string name="go_to_today">Gå till idag</string>
-    <string name="snooze">Snooza</string>
+    <string name="go_to_date">Gå till datum</string>
+    <string name="upgraded_from_free">Hey,\n\nseems like you upgraded from the old free app. You have to migrate locally stored events manually via exporting in an .ics file, then importing. You can find both export/import buttons at the main screen menu.\n\nYou can then uninstall the old version, which has an \'Upgrade to Pro\' button at the top of the app settings. You will then only have to reset your app settings.\n\nThanks!</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Kalender månadsvis</string>
     <string name="widget_list">Kalender händelselista</string>
+    <string name="widget_todays_date">Calendar today\'s date</string>
 
     <!-- Event -->
     <string name="event">Händelse</string>
     <string name="edit_event">Redigera händelse</string>
     <string name="new_event">Ny händelse</string>
+    <string name="create_new_event">Skapa en ny händelse</string>
+    <string name="duplicate_event">Duplicera händelse</string>
     <string name="title_empty">Titeln får inte vara tom</string>
-    <string name="end_before_start">Händelsen kan inte sluta innan den har startat</string>
-    <string name="event_added">Händelsen tillagd</string>
-    <string name="event_updated">Händelsen uppdaterad</string>
+    <string name="end_before_start">Händelsen kan inte sluta innan den börjar</string>
+    <string name="event_added">Händelsen har lagts till</string>
+    <string name="event_updated">Händelsen har uppdaterats</string>
     <string name="filter_events_by_type">Filtrera händelser efter typ</string>
+    <string name="please_fill_location">Du måste ange en plats som kan visas på en karta</string>
+    <string name="public_event_notification_text">Du har en kommande händelse</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Upprepning</string>
@@ -41,22 +46,24 @@
     <string name="forever">Alltid</string>
     <string name="event_is_repeatable">Händelsen är återkommande</string>
     <string name="selection_contains_repetition">Markeringen innehåller återkommande händelser</string>
-    <string name="delete_one_only">Ta bara bort den markerade förekomsten</string>
+    <string name="delete_one_only">Ta bara bort den valda förekomsten</string>
+    <string name="delete_future_occurrences">Ta bort denna och alla framtida förekomster</string>
     <string name="delete_all_occurrences">Ta bort alla förekomster</string>
-    <string name="update_one_only">Uppdatera bara den markerade förekomsten</string>
+    <string name="update_one_only">Uppdatera bara den valda förekomsten</string>
     <string name="update_all_occurrences">Uppdatera alla förekomster</string>
     <string name="repeat_till_date">Upprepa till ett datum</string>
-    <string name="repeat_x_times">Upprepa x gånger</string>
+    <string name="stop_repeating_after_x">Sluta upprepa efter x förekomster</string>
     <string name="repeat_forever">Upprepa alltid</string>
     <string name="times">gånger</string>
     <string name="repeat">Upprepa</string>
     <string name="repeat_on">Upprepa på</string>
     <string name="every_day">Varje dag</string>
-    <string name="selected_days">På markerade dagar</string>
+    <string name="selected_days">På valda dagar</string>
     <string name="the_same_day">Samma dag</string>
     <string name="the_last_day">Den sista dagen</string>
-    <string name="repeat_on_the_same_day">Upprepa på samma dag varje månad</string>
-    <string name="repeat_on_the_last_day">Upprepa på månadens sista dag</string>
+    <string name="repeat_on_the_same_day_monthly">Upprepa på samma dag varje månad</string>
+    <string name="repeat_on_the_last_day_monthly">Upprepa på månadens sista dag</string>
+    <string name="repeat_on_the_same_day_yearly">Upprepa på samma dag varje år</string>
     <string name="repeat_every_m">Upprepa varje</string>
     <string name="every_m">Varje</string>
     <string name="first_m">första</string>
@@ -75,88 +82,50 @@
     <string name="fourth_f">fjärde</string>
     <string name="last_f">sista</string>
 
-    <plurals name="days">
-        <item quantity="one">%d dag</item>
-        <item quantity="other">%d dagar</item>
-    </plurals>
-
-    <plurals name="weeks">
-        <item quantity="one">%d vecka</item>
-        <item quantity="other">%d veckor</item>
-    </plurals>
-
-    <plurals name="months">
-        <item quantity="one">%d månad</item>
-        <item quantity="other">%d månader</item>
-    </plurals>
-
-    <plurals name="years">
-        <item quantity="one">%d år</item>
-        <item quantity="other">%d år</item>
-    </plurals>
-
     <!-- Birthdays -->
-    <string name="birthdays">Birthdays</string>
-    <string name="add_birthdays">Add contact birthdays</string>
-    <string name="no_birthdays">No birthdays have been found</string>
-    <string name="birthdays_added">Birthdays added successfully</string>
+    <string name="birthdays">Födelsedagar</string>
+    <string name="add_birthdays">Lägg till kontakters födelsedagar</string>
+    <string name="no_birthdays">Inga födelsedagar hittades</string>
+    <string name="no_new_birthdays">Inga nya födelsedagar hittades</string>
+    <string name="birthdays_added">Födelsedagarna har lagts till</string>
 
     <!-- Anniversaries -->
-    <string name="anniversaries">Anniversaries</string>
-    <string name="add_anniversaries">Add contact anniversaries</string>
-    <string name="no_anniversaries">No anniversaries have been found</string>
-    <string name="anniversaries_added">Anniversaries added successfully</string>
+    <string name="anniversaries">Årsdagar</string>
+    <string name="add_anniversaries">Lägg till kontakters årsdagar</string>
+    <string name="no_anniversaries">Inga årsdagar hittades</string>
+    <string name="no_new_anniversaries">Inga nya årsdagar hittades</string>
+    <string name="anniversaries_added">Årsdagarna har lagts till</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Påminnelse</string>
-    <string name="no_reminder">Ingen påminnelse</string>
-    <string name="at_start">Vid start</string>
-    <string name="custom">Egen</string>
-    <string name="before">före</string>
-    <string name="minutes_raw">minuter</string>
-    <string name="hours_raw">timmar</string>
-    <string name="days_raw">dagar</string>
+    <string name="before">innan</string>
     <string name="add_another_reminder">Lägg till en annan påminnelse</string>
-    <string name="event_reminders">Event reminders</string>
+    <string name="event_reminders">Händelsepåminnelser</string>
 
-    <plurals name="minutes_before">
-        <item quantity="one">%d minut före</item>
-        <item quantity="other">%d minuter före</item>
-    </plurals>
+    <!-- Event attendees -->
+    <string name="add_another_attendee">Lägg till en annan deltagare</string>
+    <string name="my_status">Min status:</string>
+    <string name="going">Kommer</string>
+    <string name="not_going">Kommer inte</string>
+    <string name="maybe_going">Kommer kanske</string>
+    <string name="invited">Inbjuden</string>
 
-    <plurals name="hours_before">
-        <item quantity="one">%d timme före</item>
-        <item quantity="other">%d timmar före</item>
-    </plurals>
-
-    <plurals name="days_before">
-        <item quantity="one">%d dag före</item>
-        <item quantity="other">%d dagar före</item>
-    </plurals>
+    <!-- Time zones -->
+    <string name="enter_a_country">Enter a country or time zone</string>
 
     <!-- Export / Import -->
-    <string name="importing">Importerar…</string>
-    <string name="exporting">Exporterar…</string>
     <string name="import_events">Importera händelser</string>
     <string name="export_events">Exportera händelser</string>
     <string name="import_events_from_ics">Importera händelser från en .ics-fil</string>
     <string name="export_events_to_ics">Exportera händelser till en .ics-fil</string>
-    <string name="events_imported_successfully">Händelser har importerats</string>
-    <string name="events_exported_successfully">Händelser har exporterats</string>
-    <string name="importing_events_failed">Händelser kunde inte importeras</string>
-    <string name="exporting_events_failed">Händelser kunde inte exporteras</string>
-    <string name="importing_some_events_failed">Vissa händelser kunde inte importeras</string>
-    <string name="exporting_some_events_failed">Vissa händelser kunde inte exporteras</string>
     <string name="default_event_type">Standardhändelsetyp</string>
-    <string name="no_events_for_exporting">Inga händelser har hittats för exportering</string>
     <string name="export_past_events_too">Exportera även tidigare händelser</string>
     <string name="include_event_types">Inkludera händelsetyper</string>
     <string name="filename_without_ics">Filnamn (utan .ics)</string>
-    <string name="no_title">Ingen titel</string>
+    <string name="override_event_types">Ignorera händelsetyper i filen</string>
 
     <!-- Event details -->
-    <string name="title">Titel</string>
-    <string name="location">Location</string>
+    <string name="location">Plats</string>
     <string name="description">Beskrivning</string>
     <string name="all_day">Heldag</string>
 
@@ -167,7 +136,7 @@
     <string name="event_types">Händelsetyper</string>
     <string name="add_new_type">Lägg till en ny typ</string>
     <string name="edit_type">Redigera typ</string>
-    <string name="type_already_exists">En typ med denna titel finns redan</string>
+    <string name="type_already_exists">Det finns redan en typ med samma titel</string>
     <string name="color">Färg</string>
     <string name="regular_event">Regelbunden händelse</string>
     <string name="cannot_delete_default_type">Standardhändelsetypen kan inte tas bort</string>
@@ -181,29 +150,49 @@
     <string name="add_holidays">Lägg till helgdagar</string>
     <string name="national_holidays">Nationella helgdagar</string>
     <string name="religious_holidays">Religiösa helgdagar</string>
-    <string name="holidays_imported_successfully">Helgdagar har importerats till en ny händelsetyp</string>
-    <string name="importing_some_holidays_failed">Vissa händelser kunde inte importeras</string>
-    <string name="importing_holidays_failed">Helgdagar kunde inte importeras</string>
+    <string name="holidays_imported_successfully">Helgdagarna har importerats till händelsetypen \"Helgdagar\"</string>
+    <string name="importing_some_holidays_failed">Importen av vissa händelser misslyckades</string>
+    <string name="importing_holidays_failed">Importen av helgdagarna misslyckades</string>
 
     <!-- Settings -->
     <string name="manage_event_types">Hantera händelsetyper</string>
-    <string name="use_24_hour_format">Använd 24-timmarsformat</string>
-    <string name="sunday_first">Söndag är första dagen</string>
-    <string name="start_day_at">Starta veckovydagen vid</string>
-    <string name="end_day_at">Sluta veckovydagen vid</string>
-    <string name="week_numbers">Visa veckonumret i månadsvyn</string>
-    <string name="vibrate">Vibrera vid påminnelseaviseringen</string>
+    <string name="start_day_at">Dagen börjar</string>
+    <string name="end_day_at">Dagen slutar</string>
+    <string name="week_numbers">Visa veckonummer</string>
+    <string name="vibrate">Vibrera vid påminnelseaviseringar</string>
     <string name="reminder_sound">Påminnelseljud</string>
-    <string name="default_event_reminder">Standard händelsepåminnare</string>
-    <string name="no_ringtone_picker">Hittade ingen app som kan ställa in ljudet</string>
+    <string name="no_ringtone_picker">Ingen app som kan ställa in en ringsignal hittades</string>
     <string name="no_ringtone_selected">Ingen</string>
-    <string name="day_end_before_start">Dagen kan inte börja innan den tar slut</string>
+    <string name="day_end_before_start">Dagen kan inte sluta innan den börjar</string>
     <string name="caldav_sync">CalDAV-synkronisering</string>
-    <string name="event_lists">Event lists</string>
+    <string name="event_lists">Händelselistor</string>
     <string name="display_past_events">Visa tidigare händelser</string>
-    <string name="snooze_delay">Skjut upp påminnelse med Snooza</string>
-    <string name="widgets">Widgetar</string>
-    <string name="replace_description_with_location">Replace Description with Location at list view entries</string>
+    <string name="replace_description_with_location">Ersätt händelsebeskrivning med plats</string>
+    <string name="delete_all_events">Ta bort alla händelser</string>
+    <string name="delete_all_events_confirmation">Är du säker på att du vill ta bort alla händelser? Dina händelsetyper och andra inställningar påverkas inte av borttagningen.</string>
+    <string name="show_a_grid">Visa ett rutnät</string>
+    <string name="loop_reminders">Upprepa påminnelser tills de tas bort</string>
+    <string name="dim_past_events">Tona ned tidigare händelser</string>
+    <string name="events">Händelser</string>
+    <string name="reminder_stream">Ljudström för påminnelser</string>
+    <string name="system_stream">System</string>
+    <string name="alarm_stream">Alarm</string>
+    <string name="notification_stream">Avisering</string>
+    <string name="ring_stream">Ring</string>
+    <string name="use_last_event_reminders">Använd den senaste händelsens påminnelser som standard för nya händelser</string>
+    <string name="default_reminder_1">Standardpåminnelse 1</string>
+    <string name="default_reminder_2">Standardpåminnelse 2</string>
+    <string name="default_reminder_3">Standardpåminnelse 3</string>
+    <string name="view_to_open_from_widget">Vy som öppnas från händelselistwidgeten</string>
+    <string name="last_view">Senaste vy</string>
+    <string name="new_events">Nya händelser</string>
+    <string name="default_start_time">Standardstarttid</string>
+    <string name="next_full_hour">Nästa heltimme</string>
+    <string name="default_duration">Standardvaraktighet</string>
+    <string name="last_used_one">Senast använda</string>
+    <string name="other_time">Annan tid</string>
+    <string name="highlight_weekends">Markera veckoslut i vissa vyer</string>
+    <string name="allow_changing_time_zones">Allow changing event time zones</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -214,85 +203,95 @@
     <string name="refreshing">Uppdaterar…</string>
     <string name="refreshing_complete">Uppdateringen är klar</string>
     <string name="editing_calendar_failed">Det gick inte att redigera kalendern</string>
-    <string name="syncing">Syncing…</string>
-    <string name="synchronization_completed">Sync completed</string>
-
-    <plurals name="by_minutes">
-        <item quantity="one">%d minut</item>
-        <item quantity="other">%d minuter</item>
-    </plurals>
-
-    <plurals name="by_hours">
-        <item quantity="one">%d timme</item>
-        <item quantity="other">%d timmar</item>
-    </plurals>
-
-    <string name="never">Aldrig</string>
-
-    <string name="january">Januari</string>
-    <string name="february">Februari</string>
-    <string name="march">Mars</string>
-    <string name="april">April</string>
-    <string name="may">Maj</string>
-    <string name="june">Juni</string>
-    <string name="july">Juli</string>
-    <string name="august">Augusti</string>
-    <string name="september">September</string>
-    <string name="october">Oktober</string>
-    <string name="november">November</string>
-    <string name="december">December</string>
-
-    <string name="monday_letter">M</string>
-    <string name="tuesday_letter">T</string>
-    <string name="wednesday_letter">O</string>
-    <string name="thursday_letter">T</string>
-    <string name="friday_letter">F</string>
-    <string name="saturday_letter">L</string>
-    <string name="sunday_letter">S</string>
-
-    <string name="monday">Måndag</string>
-    <string name="tuesday">Tisdag</string>
-    <string name="wednesday">Onsdag</string>
-    <string name="thursday">Torsdag</string>
-    <string name="friday">Fredag</string>
-    <string name="saturday">Lördag</string>
-    <string name="sunday">Söndag</string>
+    <string name="syncing">Synkroniserar…</string>
+    <string name="synchronization_completed">Synkroniseringen är klar</string>
+    <string name="select_a_different_caldav_color">Välj en annan färg (tillämpas kanske bara lokalt)</string>
+    <string name="insufficient_permissions">Du har inte behörighet att redigera den valda kalendern</string>
+    <string name="caldav_event_not_found">Event not found. Please enable CalDAV sync for the appropriate calendar in the app settings.</string>
+    <string name="no_synchronized_calendars">No synchronizable calendars have been found</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
-    <string name="monday_alt">Måndag</string>
-    <string name="tuesday_alt">Tisdag</string>
-    <string name="wednesday_alt">Onsdag</string>
-    <string name="thursday_alt">Torsdag</string>
-    <string name="friday_alt">Fredag</string>
-    <string name="saturday_alt">Lördag</string>
-    <string name="sunday_alt">Söndag</string>
+    <string name="monday_alt">måndag</string>
+    <string name="tuesday_alt">tisdag</string>
+    <string name="wednesday_alt">onsdag</string>
+    <string name="thursday_alt">torsdag</string>
+    <string name="friday_alt">fredag</string>
+    <string name="saturday_alt">lördag</string>
+    <string name="sunday_alt">söndag</string>
 
     <!-- List widget config example events -->
-    <string name="sample_title_1">Träna</string>
+    <string name="sample_title_1">Träning</string>
     <string name="sample_description_1">Bendag</string>
     <string name="sample_title_2">Möte med Johan</string>
     <string name="sample_description_2">I trädgården</string>
     <string name="sample_title_3">Biblioteket</string>
-    <string name="sample_title_4">Lunch med Marie</string>
+    <string name="sample_title_4">Lunch med Maria</string>
     <string name="sample_description_4">På stranden</string>
     <string name="sample_title_5">Kaffedags</string>
 
+    <!-- FAQ -->
+    <string name="faq_1_title">How can I remove the holidays imported via the \"Add holidays\" button?</string>
+    <string name="faq_1_text">Holidays created that way are inserted in a new event type called \"Holidays\". You can go in Settings -> Manage Event Types,
+        long press the given event type and delete it by selecting the trashbin.</string>
+    <string name="faq_2_title">Can I sync my events via Google Calendar, or other service supporting CalDAV?</string>
+    <string name="faq_2_text">Yes, just toggle \"CalDAV sync\" in the app settings and select the calendars you want to sync. However, you will need some third party app handling the synchronization between the device and servers.
+        In case you want to synchronize a Google calendar, their official Calendar app will do the job. For other calendars you will need a third party sync adapter, for example DAVx5.</string>
+    <string name="faq_3_title">I see the visual reminders, but hear no audio. What can I do?</string>
+    <string name="faq_3_text">Not just displaying the actual reminder, but playing the audio is hugely affected by the system too. If you can\'t hear any sound, try going in the app settings,
+        pressing the \"Audio stream used by reminders\" option and changing it to a different value. If it still won\'t work, check your sound settings, if the particular stream isn\'t muted.</string>
+    <string name="faq_4_title">Does the app support time zones?</string>
+    <string name="faq_4_text">Yes, it does. By default all events are created in your current time zone. If you want to change an events\' time zone,
+        you will first have to enable the time zone picker at the app settings, then change it at the Event Details screen. It is disabled by default as most people won\'t need it.</string>
+
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
+    <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
+    <string name="app_title">Simple Calendar Pro - Events &amp; Reminders</string>
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">En enkel kalender med händelser, anpassningsbar widget och utan reklam.</string>
+    <string name="app_short_description">Simple mobile 2020 calendar. Schedule planner &amp; appointment reminder for any day</string>
     <string name="app_long_description">
-        En fristående kalender utan någon annan kalenderintegration. Du kan enkelt skapa återkommande händelser och ställa in påminnelser, den kan också visa veckonumret.
+        Simple Calendar Pro is a fully customizable, offline calendar designed to do exactly what a calendar should do. <b>No complicated features, unnecessary permissions and no ads!</b>
 
-        Innehåller en skalbar 4x4 widget där du kan ändra textfärgen och färgen på bakgrunden.
+        Whether you’re organizing single or recurring events, birthdays, anniversaries, business meetings, appointments or anything else, Simple Calendar Pro makes it <b>easy to stay organized</b>. With an incredible variety of <b>customization options</b> you can customize event reminders, notification sounds, calendar widgets and how the app looks.
 
-        Innehåller ingen reklam eller onödiga behörigheter. Det är helt och hållet opensource, innehåller anpassningsbara färger.
+        Daily, weekly and monthly views make checking your upcoming events &amp; appointments a breeze. You can even view everything as a simple list of events rather than in calendar view, so you <b>know exactly what’s coming up in your life and when. </b>
 
-        Lagringsbehörigheten behövs bara för att importera händelser från .ics-filer.
+        ----------------------------------------------------------
+        <b>Simple Calendar Pro – Features &amp; Benefits</b>
+        ----------------------------------------------------------
 
-        Contacts permission is used only at importing contact birthdays.
+        ✔️ No ads or annoying popups
+        ✔️ No internet access needed, giving you more privacy &amp; security
+        ✔️ Only the bare minimum permissions required
+        ✔️ Emphasis on simplicity – does what a calendar needs to do!
+        ✔️ Open source
+        ✔️ Fully customizable themes &amp; calendar / event widgets
+        ✔️ Translated into 29 languages
+        ✔️ Export settings to .txt files to import to another device
+        ✔️ CalDAV calendar sync supported to sync events across devices
+        ✔️ Daily, weekly, monthly, yearly &amp; event views on the calendar
+        ✔️ Supports exporting &amp; importing events via .ics files
+        ✔️ Set multiple event reminders, customize event reminder sound and vibration
+        ✔️ Snooze option for reminders
+        ✔️ Easily add holidays, birthdays, anniversaries &amp; appointments
+        ✔️ Customize events – start time, duration, reminders etc
+        ✔️ Add event attendees to each event
+        ✔️ Use as a personal calendar or a business calendar
+        ✔️ Choose between reminders &amp; email notifications to alert you about an event
 
-        Detta är bara en app i en serie av appar. Du hittar resten av dem här http://www.simplemobiletools.com
+        DOWNLOAD SIMPLE CALENDAR PRO – THE SIMPLE OFFLINE CALENDAR WITH NO ADS!
+
+        <b>Check out the full suite of Simple Tools here:</b>
+        https://www.simplemobiletools.com
+
+        <b>Standalone website of Simple Calendar Pro:</b>
+        https://www.simplemobiletools.com/calendar
+
+        <b>Facebook:</b>
+        https://www.facebook.com/simplemobiletools
+
+        <b>Reddit:</b>
+        https://www.reddit.com/r/SimpleMobileTools
     </string>
 
     <!--

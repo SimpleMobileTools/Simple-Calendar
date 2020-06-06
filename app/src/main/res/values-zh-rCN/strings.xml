@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">简易日历</string>
+    <string name="app_launcher_name">简易日历</string>
+    <string name="change_view">改变视图</string>
+    <string name="daily_view">日历视图</string>
+    <string name="weekly_view">周历视图</string>
+    <string name="monthly_view">月历视图</string>
+    <string name="yearly_view">年历视图</string>
+    <string name="simple_event_list">简易活动列表</string>
+    <string name="no_upcoming_events">您近期似乎没有任何活动。 </string>
+    <string name="go_to_today">前往今天</string>
+    <string name="go_to_date">前往日期</string>
+    <string name="upgraded_from_free">嘿\n\n您似乎从旧版免费应用升级了。您必须手动迁移本地存储的活动，通过输出.ics后再尝试导入。您可以在主画面选单中，找到 导出/导入 两个按钮。 \n\n然后您能卸载旧版了，在应用程序设定的顶端有个\'升级至专业版\'按钮。您只需要重置您的应用程序设定。 \n\n感谢!</string>
+
+    <!-- Widget titles -->
+    <string name="widget_monthly">日历 月历视图</string>
+    <string name="widget_list">日历 活动列表</string>
+    <string name="widget_todays_date">日历 今天的日期</string>
+
+    <!-- Event -->
+    <string name="event">活动</string>
+    <string name="edit_event">编辑活动</string>
+    <string name="new_event">新活动</string>
+    <string name="create_new_event">建立一个新活动</string>
+    <string name="duplicate_event">重复的活动</string>
+    <string name="title_empty">标题不能是空白的</string>
+    <string name="end_before_start">活动结束时间不能比开始早</string>
+    <string name="event_added">活动添加成功</string>
+    <string name="event_updated">活动更新成功</string>
+    <string name="filter_events_by_type">依类型筛选活动</string>
+    <string name="please_fill_location">请填入要显示在地图上的地点</string>
+    <string name="public_event_notification_text">一个活动即将到来</string>
+
+    <!-- Event Repetition -->
+    <string name="repetition">重复</string>
+    <string name="no_repetition">不重复</string>
+    <string name="daily">每日</string>
+    <string name="weekly">每周</string>
+    <string name="monthly">每月</string>
+    <string name="yearly">每年</string>
+    <string name="weeks_raw">周</string>
+    <string name="months_raw">月</string>
+    <string name="years_raw">年</string>
+    <string name="repeat_till">重复直到</string>
+    <string name="forever">永远</string>
+    <string name="event_is_repeatable">这是个重复活动</string>
+    <string name="selection_contains_repetition">选择的项目含有重复活动</string>
+    <string name="delete_one_only">只删除选择的事件</string>
+    <string name="delete_future_occurrences">删除这个及全部未来的事件</string>
+    <string name="delete_all_occurrences">删除全部事件</string>
+    <string name="update_one_only">只更新选择的事件</string>
+    <string name="update_all_occurrences">更新全部事件</string>
+    <string name="repeat_till_date">重复直到某日</string>
+    <string name="stop_repeating_after_x">经过 x 次后停止重复</string>
+    <string name="repeat_forever">永远重复</string>
+    <string name="times">次</string>
+    <string name="repeat">重复</string>
+    <string name="repeat_on">重复于</string>
+    <string name="every_day">每天</string>
+    <string name="selected_days">在选定的天</string>
+    <string name="the_same_day">同一天</string>
+    <string name="the_last_day">最后一天</string>
+    <string name="repeat_on_the_same_day_monthly">重复每月同一天</string>
+    <string name="repeat_on_the_last_day_monthly">重复每月最后一天</string>
+    <string name="repeat_on_the_same_day_yearly">重复每年同一天</string>
+    <string name="repeat_every_m">重复每月</string>
+    <string name="every_m">每月</string>
+    <string name="first_m">第一个</string>
+    <string name="second_m">第二个</string>
+    <string name="third_m">第三个</string>
+    <string name="fourth_m">第四个</string>
+    <string name="last_m">最后的</string>
+
+    <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
+    <!-- used in repetition, like "Every first Sunday" -->
+    <string name="repeat_every_f">重复每个</string>
+    <string name="every_f">每月</string>
+    <string name="first_f">第一个</string>
+    <string name="second_f">第二个</string>
+    <string name="third_f">第三个</string>
+    <string name="fourth_f">第四个</string>
+    <string name="last_f">最后的</string>
+
+    <!-- Birthdays -->
+    <string name="birthdays">生日</string>
+    <string name="add_birthdays">添加联系人生日</string>
+    <string name="no_birthdays">未发现生日</string>
+    <string name="no_new_birthdays">未发现新的生日</string>
+    <string name="birthdays_added">生日添加成功</string>
+
+    <!-- Anniversaries -->
+    <string name="anniversaries">纪念日</string>
+    <string name="add_anniversaries">添加联系人纪念日</string>
+    <string name="no_anniversaries">未发现纪念日</string>
+    <string name="no_new_anniversaries">未发现新的纪念日</string>
+    <string name="anniversaries_added">纪念日添加成功</string>
+
+    <!-- Event Reminders -->
+    <string name="reminder">提醒</string>
+    <string name="before">前</string>
+    <string name="add_another_reminder">新增另一个提醒</string>
+    <string name="event_reminders">活动提醒</string>
+
+    <!-- Event attendees -->
+    <string name="add_another_attendee">新增另一位出席者</string>
+    <string name="my_status">我的状态:</string>
+    <string name="going">前去</string>
+    <string name="not_going">不前去</string>
+    <string name="maybe_going">或许前去</string>
+    <string name="invited">被邀请</string>
+
+    <!-- Time zones -->
+    <string name="enter_a_country">输入一个国家或者时区</string>
+
+    <!-- Export / Import -->
+    <string name="import_events">导入活动</string>
+    <string name="export_events">导出活动</string>
+    <string name="import_events_from_ics">从.ics文件导入活动</string>
+    <string name="export_events_to_ics">导出活动成.ics文件</string>
+    <string name="default_event_type">预设活动类型</string>
+    <string name="export_past_events_too">也导出过去的活动</string>
+    <string name="include_event_types">包含活动类型</string>
+    <string name="filename_without_ics">文件名称 (不含.ics)</string>
+    <string name="override_event_types">覆盖文件内的活动类型</string>
+
+    <!-- Event details -->
+    <string name="location">地点</string>
+    <string name="description">描述</string>
+    <string name="all_day">全天</string>
+
+    <!-- Weekly view -->
+    <string name="week">周数</string>
+
+    <!-- Event types -->
+    <string name="event_types">活动类型</string>
+    <string name="add_new_type">添加新类型</string>
+    <string name="edit_type">编辑类型</string>
+    <string name="type_already_exists">已经存在这标题的类型</string>
+    <string name="color">颜色</string>
+    <string name="regular_event">一般活动</string>
+    <string name="cannot_delete_default_type">不能删除预设活动类型</string>
+    <string name="select_event_type">选择活动类型</string>
+    <string name="move_events_into_default">受影响的活动移到预设活动类型</string>
+    <string name="remove_affected_events">受影响的活动永久移除</string>
+    <string name="unsync_caldav_calendar">想移除 CalDAV 日历，您必须取消同步</string>
+
+    <!-- Holidays -->
+    <string name="holidays">节日</string>
+    <string name="add_holidays">添加节日</string>
+    <string name="national_holidays">法定节日</string>
+    <string name="religious_holidays">宗教节日</string>
+    <string name="holidays_imported_successfully">节日已成功导入"节日"活动类型</string>
+    <string name="importing_some_holidays_failed">导入一些活动失败</string>
+    <string name="importing_holidays_failed">导入节日失败</string>
+
+    <!-- Settings -->
+    <string name="manage_event_types">管理活动类型</string>
+    <string name="start_day_at">每日开始于</string>
+    <string name="end_day_at">每日结束于</string>
+    <string name="week_numbers">显示第几周</string>
+    <string name="vibrate">提醒通知时震动</string>
+    <string name="reminder_sound">​​提醒音效</string>
+    <string name="no_ringtone_picker">未发现能够设置铃声的程序</string>
+    <string name="no_ringtone_selected">无</string>
+    <string name="day_end_before_start">结束时间不能比开始早</string>
+    <string name="caldav_sync">CalDAV 同步</string>
+    <string name="event_lists">活动列表</string>
+    <string name="display_past_events">显示过去的活动</string>
+    <string name="replace_description_with_location">活动描述改成地点</string>
+    <string name="delete_all_events">删除全部活动</string>
+    <string name="delete_all_events_confirmation">您确定要删除全部活动吗?会完整留下您的活动类型和其他设定。 </string>
+    <string name="show_a_grid">显示网络</string>
+    <string name="loop_reminders">不断重复提醒直到解除</string>
+    <string name="dim_past_events">淡化过去的活动</string>
+    <string name="events">活动</string>
+    <string name="reminder_stream">用于提醒的音频流</string>
+    <string name="system_stream">系统</string>
+    <string name="alarm_stream">闹钟</string>
+    <string name="notification_stream">通知</string>
+    <string name="ring_stream">铃声</string>
+    <string name="use_last_event_reminders">使用最后活动的提醒作为新活动的预设</string>
+    <string name="default_reminder_1">预设提醒1</string>
+    <string name="default_reminder_2">预设提醒2</string>
+    <string name="default_reminder_3">预设提醒3</string>
+    <string name="view_to_open_from_widget">从活动列表小工具开启的视图</string>
+    <string name="last_view">最后的视图</string>
+    <string name="new_events">新活动</string>
+    <string name="default_start_time">预设开始时间</string>
+    <string name="next_full_hour">整整下个小时</string>
+    <string name="default_duration">预设持续时间</string>
+    <string name="last_used_one">最后使用</string>
+    <string name="other_time">其他时间</string>
+    <string name="highlight_weekends">在部分视图高亮周末</string>
+    <string name="allow_changing_time_zones">允许更改活动时区</string>
+
+    <!-- CalDAV sync -->
+    <string name="caldav">CalDAV</string>
+    <string name="select_caldav_calendars">选择日历来同步</string>
+    <string name="manage_synced_calendars">管理同步的日历</string>
+    <string name="store_locally_only">只存于本机端</string>
+    <string name="refresh_caldav_calendars">重新整理 CalDAV 日历</string>
+    <string name="refreshing">重新整理中…</string>
+    <string name="refreshing_complete">重新整理完成</string>
+    <string name="editing_calendar_failed">编辑日历失败</string>
+    <string name="syncing">同步中…</string>
+    <string name="synchronization_completed">同步完成</string>
+    <string name="select_a_different_caldav_color">选择不同的颜色 (只能被添加于本机端)</string>
+    <string name="insufficient_permissions">您不被允许对选择的日历写入</string>
+    <string name="caldav_event_not_found">未找到活动。请在应用程序设定中为对应的日历启用 CalDAV 同步。</string>
+    <string name="no_synchronized_calendars">未发现可同步的日历</string>
+
+    <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
+    <!-- used in repetition, like "Every last Sunday" -->
+    <string name="monday_alt">星期一</string>
+    <string name="tuesday_alt">星期二</string>
+    <string name="wednesday_alt">星期三</string>
+    <string name="thursday_alt">星期四</string>
+    <string name="friday_alt">星期五</string>
+    <string name="saturday_alt">星期六</string>
+    <string name="sunday_alt">星期日</string>
+
+    <!-- List widget config example events -->
+    <string name="sample_title_1">训练</string>
+    <string name="sample_description_1">腿部训练日</string>
+    <string name="sample_title_2">跟约翰碰面</string>
+    <string name="sample_description_2">在滚石花园</string>
+    <string name="sample_title_3">图书馆</string>
+    <string name="sample_title_4">跟玛丽共进午餐</string>
+    <string name="sample_description_4">在购物商场</string>
+    <string name="sample_title_5">休息时间</string>
+
+    <!-- FAQ -->
+    <string name="faq_1_title">我如何移除用[添加节日]按钮所导入的节日?</string>
+    <string name="faq_1_text">以这方式建立的节日，会被加进一个叫做「节日」的新活动类型。
+        您可以到[设定] -> [管理活动类型]，长按特定的活动类型，然后选择垃圾桶来删除。 </string>
+    <string name="faq_2_title">我可以透过 Google 日历或其它支援 CalDAV 的服务来同步我的活动吗?</string>
+    <string name="faq_2_text">行的，只要打开程序设定内的[CalDAV同步]，然后选择您要同步的日历。然而您需要一些第三方应用程序来处理装置和伺服器之间的同步。
+        如果您要同步 Google 日历，他们官方的日历程序就能做到了。而其它日历，您需要有第三方同步工具才行，像是 DAVx5。 </string>
+    <string name="faq_3_title">我看到了视觉的提醒，但没听到音效。我能怎么办?</string>
+    <string name="faq_3_text">不只是显示实际的提醒，播放音效也受到系统极大的影响。如果您听不到任何声音，试着到应用程序设定，
+        按\"用于提醒的音频流\"选项，然后更改成不同数值。如果还是没有用，检查您的音量设定，指定串流是不是静音的。 </string>
+    <string name="faq_4_title">该应用程序支持时区吗？</string>
+    <string name="faq_4_text">是的，它支持。默认所有的活动会在您当前的时区下创建。如果您想要改变活动的时区，
+        您首先需要在应用程序设定中启用时区选择器，然后在活动详情界面中更改它。这个默认是禁用的因为大多数不会用到它。</string>
+
+    <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
+    <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
+    <string name="app_title">简易日历 Pro - 活动&amp;约会</string>
+    <!-- Short description has to have less than 80 chars -->
+    <string name="app_short_description">简易移动日历 2020 。每一天的行程计划 &amp; 约会提醒</string>
+    <string name="app_long_description">
+        简易日历Pro 是一个高度自定义，完全旨在于日历应该做什么的离线日历。 <b>没有复杂的功能、非必要的权限和广告!</b>
+
+        无论您是要安排单一还是反复的活动、生日、纪念日、业务会议、约会或任何其他活动，简易日历Pro都能让您<b>轻松维持安排</b>。透过多样化的<b>自订选项</b>，您可以自订活动提醒、通知音效、日历小工具和应用程序外观。
+
+        每日、每周、每月的视图使您轻易就确认即将到来的活动&amp;约会。您甚至能够以简单的活动列表来浏览全部，而不是日历画面，所以您<b>完全知道生活中何时会发生什么事。 </b>
+
+        -------------------------------------------------- --------
+        <b>简易日历Pro – 特色 &amp; 优点</b>
+        -------------------------------------------------- --------
+
+        ✔️ 没有广告和讨厌的弹出画面
+        ✔️ 不需要网路连线，给您更多隐私及安全
+        ✔️ 只需要最低限度的权限
+        ✔️ 着重于简单 – 做日历该做的!
+        ✔️ 开放原始码
+        ✔️ 完整自订化主题&amp;日历/活动小工具
+        ✔️ 翻译成29种语言
+        ✔️ 将设定导出成.txt文件，以导入到别的装置
+        ✔️ 支援 CalDAV 日历同步，来跨装置同步活动
+        ✔️ 在日历上有每日、每周、每月、每年及活动浏览的检视方式
+        ✔️ 支援透过.ics文件来导出&amp;导入活动
+        ✔️ 设置多个活动提醒，自订活动提醒音效和震动
+        ✔️ 提醒有延迟选项
+        ✔️ 轻松添加假日、生日、纪念日和约会
+        ✔️ 自订活动 – 开始时间、持续时间、提醒…之类的
+        ✔️ 为每个活动添加活动出席者
+        ✔️ 用做于个人日历或业务日历
+        ✔️ 在提醒和电子信箱通知之间选择，以提醒您关于活动的讯息
+
+        <u>下载简易日历PRO – 没有广告的简易离线日历!</u>
+
+        <b>于此查看简易工具系列全套:</b>
+        https://www.simplemobiletools.com
+
+        <b>简易日历Pro 的独立网站:</b>
+        https://www.simplemobiletools.com/calendar
+
+        <b>Facebook:</b>
+        https://www.facebook.com/simplemobiletools
+
+        <b>Reddit:</b>
+        https://www.reddit.com/r/SimpleMobileTools
+    </string>
+
+    <!--
+        Haven't found some strings? There's more at
+        https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
+    -->
+</resources>

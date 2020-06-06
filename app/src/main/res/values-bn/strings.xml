@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">সাধারণ ক্যালেন্ডার</string>
+    <string name="app_launcher_name">ক্যালেন্ডার</string>
+    <string name="change_view">দৃশ্য পরিবর্তন করুন</string>
+    <string name="daily_view">প্রাত্যহিক ভিউ</string>
+    <string name="weekly_view">সাপ্তাহিক ভিউ</string>
+    <string name="monthly_view">মাসিক ভিউ</string>
+    <string name="yearly_view">বাৎসরিক ভিউ</string>
+    <string name="simple_event_list">ইভেন্টগুলির সহজ তালিকা</string>
+    <string name="no_upcoming_events">মনে হচ্ছে সামনে তোমার কোন ইভেন্ট নেই</string>
+    <string name="go_to_today">আজকের দিনে যাও</string>
+    <string name="go_to_date">তারিখে যাও</string>
+    <string name="upgraded_from_free">হাই,\n\মনে হচ্ছে তুমি আগের পুরনো ফ্রি অ্যাপ ভার্সন থেকে আপগ্রেড
+        করেছ। তোমাকে একটি .ics ফাইল এক্সপোর্ট করার মাধ্যমে লোকালি জমে থাকা ইভেন্টগুলো মাইগ্রেট করতে হবে, তারপর ইমপোর্ট
+        করতে হবে। ইমপোর্ট-এক্সপোর্টের বাটনগুলো তুমি মেইন স্ক্রিনের মেনুতেই পাবে।\n\nএরপর তুমি পুরনো ভার্সনটি আনইনস্টল করতে পার,
+        যেটার অ্যাপ সেটিংসের উপরের দিকে \'প্রোতে আপগ্রেড করো\' বাটনটি আছে। এরপর তোমাকে শুধু অ্যাপ সেটিংসটি রিসেট করতে হবে।
+        \n\nধন্যবাদ!</string>
+
+    <!-- Widget titles -->
+    <string name="widget_monthly">মাসিক ক্যালেন্ডার</string>
+    <string name="widget_list">ক্যালেন্ডারের ইভেন্ট তালিকা</string>
+    <string name="widget_todays_date">Calendar today\'s date</string>
+
+    <!-- Event -->
+    <string name="event">ইভেন্ট</string>
+    <string name="edit_event">ইভেন্ট পরিবর্তন</string>
+    <string name="new_event">নতুন ইভেন্ট</string>
+    <string name="create_new_event">নতুন ইভেন্ট তৈরি করুন</string>
+    <string name="duplicate_event">ডুপ্লিকেট ইভেন্ট</string>
+    <string name="title_empty">শিরোনাম খালি হতে পারবে না</string>
+    <string name="end_before_start">ইভেন্টটি শুরুর আগে শেষ হতে পারবে না</string>
+    <string name="event_added">ইভেন্ট সফলভাবে যোগ হয়েছে</string>
+    <string name="event_updated">ইভেন্ট সফলভাবে আপডেট হয়েছে</string>
+    <string name="filter_events_by_type">টাইপের মত করে ইভেন্টগুলো ফিল্টার করুন</string>
+    <string name="please_fill_location">ম্যাপে দেখানোর জন্য লোকেশন পূরণ করুন</string>
+    <string name="public_event_notification_text">একটি ইভেন্ট আসছে</string>
+
+    <!-- Event Repetition -->
+    <string name="repetition">পুনরাবৃত্তি</string>
+    <string name="no_repetition">পুনরাবৃত্তি নেই</string>
+    <string name="daily">দৈনন্দিন</string>
+    <string name="weekly">সাপ্তাহিক</string>
+    <string name="monthly">মাসিক</string>
+    <string name="yearly">বার্ষিক</string>
+    <string name="weeks_raw">সপ্তাহ</string>
+    <string name="months_raw">মাস</string>
+    <string name="years_raw">বছর</string>
+    <string name="repeat_till">পুনরাবৃত্তি ততক্ষণ পর্যন্ত</string>
+    <string name="forever">চিরতরে</string>
+    <string name="event_is_repeatable">ঘটনাটি পুনরাবৃত্তিযোগ্য</string>
+    <string name="selection_contains_repetition">সিলেকশনটিতে পুনরাবৃত্তি ইভেন্টগুলি রয়েছে</string>
+    <string name="delete_one_only">কেবলমাত্র সিলেক্টেড ঘটনা মুছুন</string>
+    <string name="delete_future_occurrences">এটি এবং ভবিষ্যতের সমস্ত ঘটনা মুছুন</string>
+    <string name="delete_all_occurrences">সমস্ত ঘটনা মুছুন</string>
+    <string name="update_one_only">সিলেক্টেড ঘটনা আপডেট করুন</string>
+    <string name="update_all_occurrences">সমস্ত ঘটনা আপডেট করুন</string>
+    <string name="repeat_till_date">একটি তারিখ পর্যন্ত পুনরাবৃত্তি করুন</string>
+    <string name="stop_repeating_after_x">x ঘটনার পর পুনরাবৃত্তি থামান</string>
+    <string name="repeat_forever">চিরকাল পুনরাবৃত্তি করুন</string>
+    <string name="times">বার</string>
+    <string name="repeat">পুনরাবৃত্তি</string>
+    <string name="repeat_on">পুনরাবৃত্তি</string>
+    <string name="every_day">প্রতিদিন</string>
+    <string name="selected_days">সিলেক্টেড দিনগুলিতে</string>
+    <string name="the_same_day">একই দিনে</string>
+    <string name="the_last_day">শেষ দিনে</string>
+    <string name="repeat_on_the_same_day_monthly">প্রতি মাসে একই দিনে পুনরাবৃত্তি করুন</string>
+    <string name="repeat_on_the_last_day_monthly">প্রতি মাসে শেষ দিনে পুনরাবৃত্তি করুন</string>
+    <string name="repeat_on_the_same_day_yearly">প্রতি বছরের একই দিনে পুনরাবৃত্তি করুন</string>
+    <string name="repeat_every_m">প্রতিটি পুনরাবৃত্তি</string>
+    <string name="every_m">প্রতিটি</string>
+    <string name="first_m">প্রথম</string>
+    <string name="second_m">দ্বিতীয়</string>
+    <string name="third_m">তৃতীয়</string>
+    <string name="fourth_m">চতুর্থ</string>
+    <string name="last_m">শেষ</string>
+
+    <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
+    <!-- used in repetition, like "Every first Sunday" -->
+    <string name="repeat_every_f">প্রতিটি পুনরাবৃত্তি</string>
+    <string name="every_f">প্রতিটি</string>
+    <string name="first_f">প্রথম</string>
+    <string name="second_f">দ্বিতীয়</string>
+    <string name="third_f">তৃতীয়</string>
+    <string name="fourth_f">চতুর্থ</string>
+    <string name="last_f">শেষ</string>
+
+    <!-- Birthdays -->
+    <string name="birthdays">জন্মদিন</string>
+    <string name="add_birthdays">কন্টাক্টের জন্মদিন যোগ করুন</string>
+    <string name="no_birthdays">কোন জন্মদিন পাওয়া যায় নি</string>
+    <string name="no_new_birthdays">কোন নতুন জন্মদিন পাওয়া যায় নি</string>
+    <string name="birthdays_added">জন্মদিন সফলভাবে যোগ হয়েছে</string>
+
+    <!-- Anniversaries -->
+    <string name="anniversaries">বার্ষিকী</string>
+    <string name="add_anniversaries">কন্টাক্টের বার্ষিকী যোগ করুন</string>
+    <string name="no_anniversaries">কোন বার্ষিকী পাওয়া যায় নি</string>
+    <string name="no_new_anniversaries">কোন নতুন বার্ষিকী পাওয়া যায় নি</string>
+    <string name="anniversaries_added">বার্ষিকী সফলভাবে যোগ হয়েছে</string>
+
+    <!-- Event Reminders -->
+    <string name="reminder">রিমাইন্ডার</string>
+    <string name="before">আগে</string>
+    <string name="add_another_reminder">আরেকটি রিমাইন্ডার যোগ করুন</string>
+    <string name="event_reminders">ইভেন্ট রিমাইন্ডার</string>
+
+    <!-- Event attendees -->
+    <string name="add_another_attendee">অন্য একজন অংশগ্রহণকারী যুক্ত করুন</string>
+    <string name="my_status">আমার অবস্থাঃ</string>
+    <string name="going">যাবে</string>
+    <string name="not_going">যাবে না</string>
+    <string name="maybe_going">মনে হয় যাবে</string>
+    <string name="invited">আমন্ত্রিত</string>
+
+    <!-- Time zones -->
+    <string name="enter_a_country">একটি দেশ বা টাইম জোন প্রবেশ করান</string>
+
+    <!-- Export / Import -->
+    <string name="import_events">ইভেন্ট ইমপোর্ট করুন</string>
+    <string name="export_events">ইভেন্ট এক্সপোর্ট করুন</string>
+    <string name="import_events_from_ics">একটি .ics ফাইল হতে ইভেন্ট ইমপোর্ট করুন</string>
+    <string name="export_events_to_ics">একটি .ics ফাইলে ইভেন্ট এক্সপোর্ট করুন</string>
+    <string name="default_event_type">ডিফল্ট ইভেন্ট টাইপ</string>
+    <string name="export_past_events_too">আগের ইভেন্টগুলোও এক্সপোর্ট করুন</string>
+    <string name="include_event_types">ইভেন্ট টাইপ অন্তর্ভুক্ত করুন</string>
+    <string name="filename_without_ics">ফাইলের নাম (.ics ছাড়া)</string>
+    <string name="override_event_types">ফাইলটিতে ইভেন্ট টাইপগুলি ওভাররাইড করুন</string>
+
+    <!-- Event details -->
+    <string name="location">লোকেশন</string>
+    <string name="description">বর্ণনা</string>
+    <string name="all_day">সারাদিন</string>
+
+    <!-- Weekly view -->
+    <string name="week">সপ্তাহ</string>
+
+    <!-- Event types -->
+    <string name="event_types">ইভেন্ট টাইপগুলি</string>
+    <string name="add_new_type">নতুন টাইপ যোগ করুন</string>
+    <string name="edit_type">টাইপ এডিট করুন</string>
+    <string name="type_already_exists">এই টাইটেলের টাইপটি ইতিমধ্যে আছে</string>
+    <string name="color">রঙ</string>
+    <string name="regular_event">নিয়মিত ইভেন্ট</string>
+    <string name="cannot_delete_default_type">ডিফল্ট ইভেন্ট টাইপ মুছা যাবে না</string>
+    <string name="select_event_type">একটি ইভেন্ট টাইপ সিলেক্ট করুন</string>
+    <string name="move_events_into_default">প্রভাবিত ইভেন্টগুলিকে ডিফল্ট ইভেন্ট টাইপে সরান</string>
+    <string name="remove_affected_events">স্থায়ীভাবে প্রভাবিত ইভেন্টগুলি মুছে দিন</string>
+    <string name="unsync_caldav_calendar">কোনও CalDAV ক্যালেন্ডার অপসারণ করতে আপনাকে এটি আনসিংক্রোনাইজ করতে হবে</string>
+
+    <!-- Holidays -->
+    <string name="holidays">ছুটির দিনগুলি</string>
+    <string name="add_holidays">ছুটির দিন যোগ করুন</string>
+    <string name="national_holidays">জাতীয় ছুটি</string>
+    <string name="religious_holidays">ধর্মীয় ছুটি</string>
+    <string name="holidays_imported_successfully">\"ছুটির দিন\" ইভেন্ট টাইপে ছুটির দিন সফলভাবে ইমপোর্ট হয়েছে</string>
+    <string name="importing_some_holidays_failed">কিছু ইভেন্ট ইমপোর্ট করতে ব্যর্থ হয়েছে</string>
+    <string name="importing_holidays_failed">ছুটির দিন ইমপোর্ট করতে ব্যর্থ হয়েছে</string>
+
+    <!-- Settings -->
+    <string name="manage_event_types">ইভেন্ট টাইপ ম্যানেজ করুন</string>
+    <string name="start_day_at">দিনের শুরু</string>
+    <string name="end_day_at">দিনের শেষ</string>
+    <string name="week_numbers">সপ্তাহের সংখ্যাগুলি দেখান</string>
+    <string name="vibrate">রিমাইন্ডার নোটিফিকেশনে ভাইব্রেট করো</string>
+    <string name="reminder_sound">রিমাইন্ডারের শব্দ</string>
+    <string name="no_ringtone_picker">রিংটোন সেট করতে সক্ষম কোনও অ্যাপ্লিকেশন পাওয়া যায় নি</string>
+    <string name="no_ringtone_selected">কিছুই না</string>
+    <string name="day_end_before_start">দিনটি শুরু হওয়ার আগে শেষ হতে পারে না</string>
+    <string name="caldav_sync">CalDAV সিঙ্ক</string>
+    <string name="event_lists">ইভেন্ট লিস্ট</string>
+    <string name="display_past_events">পূর্ববর্তী ইভেন্টগুলি দেখান</string>
+    <string name="replace_description_with_location">লোকেশনের সাথে ইভেন্ট বর্ণনা রিপ্লেস করুন</string>
+    <string name="delete_all_events">সব ইভেন্ট মুছে দিন</string>
+    <string name="delete_all_events_confirmation">আপনি কি নিশ্চিত যে আপনি সমস্ত ইভেন্ট মুছতে চান? এটি আপনার ইভেন্টের টাইপ এবং অন্যান্য সেটিংস অক্ষত রেখে দেবে।</string>
+    <string name="show_a_grid">একটি গ্রিড দেখান</string>
+    <string name="loop_reminders">ডিসমিস না হওয়া পর্যন্ত রিমাইন্ডারগুলো লুপে চালান</string>
+    <string name="dim_past_events">পূর্ববর্তী ইভেন্টগুলি অস্পষ্ট করুন</string>
+    <string name="events">ইভেন্টস</string>
+    <string name="reminder_stream">রিমাইন্ডার ব্যবহৃত অডিও স্ট্রিম</string>
+    <string name="system_stream">সিস্টেম</string>
+    <string name="alarm_stream">এলার্ম</string>
+    <string name="notification_stream">নোটিফিকেশন</string>
+    <string name="ring_stream">রিং</string>
+    <string name="use_last_event_reminders">পূর্ববর্তী ইভেন্টগুলোর রিমাইন্ডারকে নতুন ইভেন্টের ডিফল্ট হিসেবে ব্যাবহার করুন</string>
+    <string name="default_reminder_1">ডিফল্ট রিমাইন্ডার ১</string>
+    <string name="default_reminder_2">ডিফল্ট রিমাইন্ডার ২</string>
+    <string name="default_reminder_3">ডিফল্ট রিমাইন্ডার ৩</string>
+    <string name="view_to_open_from_widget">ইভেন্ট তালিকা উইজেট থেকে খোলার জন্য দেখুন</string>
+    <string name="last_view">শেষ ভিউ</string>
+    <string name="new_events">নতুন ইভেন্ট</string>
+    <string name="default_start_time">ডিফল্ট শুরু টাইম</string>
+    <string name="next_full_hour">পরবর্তী পুরো ঘন্টা</string>
+    <string name="default_duration">ডিফল্ট সময়</string>
+    <string name="last_used_one">সর্বশেষ ব্যবহৃত</string>
+    <string name="other_time">অন্য সময়</string>
+    <string name="highlight_weekends">কিছু ভিউতে সাপ্তাহিক ছুটি হাইলাইট করুন</string>
+    <string name="allow_changing_time_zones">ইভেন্টের টাইম জোন পরিবর্তন করার অনুমতি দিন</string>
+
+    <!-- CalDAV sync -->
+    <string name="caldav">CalDAV</string>
+    <string name="select_caldav_calendars">সিঙ্ক করতে ক্যালেন্ডার নির্বাচন করুন</string>
+    <string name="manage_synced_calendars">সিঙ্ক হওয়া ক্যালেন্ডারগুলি ম্যানেজ করুন</string>
+    <string name="store_locally_only">কেবল স্থানীয়ভাবে স্টোর করুন</string>
+    <string name="refresh_caldav_calendars">রিফ্রেশ CalDAV ক্যালেন্ডার</string>
+    <string name="refreshing">রিফ্রেশিং…</string>
+    <string name="refreshing_complete">রিফ্রেশ সম্পূর্ণ</string>
+    <string name="editing_calendar_failed">ক্যালেন্ডার এডিট ব্যর্থ হয়েছে</string>
+    <string name="syncing">সিঙ্কিং…</string>
+    <string name="synchronization_completed">সিঙ্ক সম্পূর্ণ</string>
+    <string name="select_a_different_caldav_color">একটি আলাদা রঙ সিলেক্ট করুন(কেবল স্থানীয়ভাবে প্রয়োগ করা যেতে পারে)</string>
+    <string name="insufficient_permissions">আপনার সিলেক্টেড ক্যালেন্ডারে লেখার অনুমতি নেই</string>
+    <string name="caldav_event_not_found">ইভেন্ট পাওয়া যায় নি। অ্যাপ্লিকেশন সেটিংসে উপযুক্ত ক্যালেন্ডারের জন্য দয়া করে CalDAV সিঙ্ক সক্ষম করুন।</string>
+    <string name="no_synchronized_calendars">No synchronizable calendars have been found</string>
+
+    <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
+    <!-- used in repetition, like "Every last Sunday" -->
+    <string name="monday_alt">সোমবার</string>
+    <string name="tuesday_alt">মঙ্গলবার</string>
+    <string name="wednesday_alt">বুধবার</string>
+    <string name="thursday_alt">বৃহস্পতিবার</string>
+    <string name="friday_alt">শুক্রবার</string>
+    <string name="saturday_alt">শনিবার</string>
+    <string name="sunday_alt">রবিবার</string>
+
+    <!-- List widget config example events -->
+    <string name="sample_title_1">ওয়ার্কআউট</string>
+    <string name="sample_description_1">লেগ ডে</string>
+    <string name="sample_title_2">জন এর সাথে মিটিং</string>
+    <string name="sample_description_2">রকস্টোন বাগানে</string>
+    <string name="sample_title_3">লাইব্রেরী</string>
+    <string name="sample_title_4">মেরির সাথে লাঞ্চ</string>
+    <string name="sample_description_4">প্লাজাতে</string>
+    <string name="sample_title_5">কফি টাইম</string>
+
+    <!-- FAQ -->
+    <string name="faq_1_title">আমি কীভাবে \"ছুটি যুক্ত করুন?\" বাটনের মাধ্যমে ইমপোর্ট করা ছুটিগুলি সরিয়ে ফেলতে পারি?</string>
+    <string name="faq_1_text">\"ছুটির দিন\" নামে নতুন ইভেন্ট টাইপ ইনসার্ট করার মাধ্যমে ছুটির দিন তৈরি হয়।</string>
+    <string name="faq_2_title">আমি কী গুগল ক্যালেন্ডার বা CalDAV সমর্থনকারী অন্যান্য সার্ভিস দিয়ে আমার ইভেন্টগুলি সিঙ্ক করতে পারি?</string>
+    <string name="faq_2_text">হ্যাঁ, অ্যাপ্লিকেশন সেটিংসে কেবল Cal \"CalDAV সিঙ্ক\" টগল করুন এবং আপনি যে ক্যালেন্ডার সিঙ্ক করতে চান তা সিলেক্ট করুন। তবে আপনার ডিভাইস এবং সার্ভারগুলির মধ্যে সিঙ্ক্রোনাইজেশন করার জন্য কিছু তৃতীয় পক্ষের অ্যাপ্লিকেশন প্রয়োজন।
+         আপনি যদি কোনও গুগল ক্যালেন্ডার সিঙ্ক্রোনাইজ করতে চান তবে তাদের অফিসিয়াল ক্যালেন্ডার অ্যাপটি কাজটি করবে। অন্যান্য ক্যালেন্ডারগুলির জন্য আপনার একটি তৃতীয় পক্ষের সিঙ্ক অ্যাডাপ্টার প্রয়োজন, উদাহরণস্বরূপ DAVx5।</string>
+    <string name="faq_3_title">আমি ভিজ্যুয়াল রিমাইন্ডার দেখছি, তবে কোনও অডিও শুনতে পাচ্ছি না। আমি কি করতে পারি?</string>
+    <string name="faq_3_text">কেবল আসল রিমাইন্ডারটি প্রদর্শন করে নয়, অডিও বাজানোও সিস্টেম দ্বারা অত্যন্ত প্রভাবিত। যদি আপনি কোনও শব্দ শুনতে না পান তবে অ্যাপ্লিকেশন সেটিংসে যাওয়ার চেষ্টা করুন,
+         \"রিমাইন্ডার দ্বারা ব্যবহৃত অডিও স্ট্রিম\" অপশন চাপুন এবং এটিতে ভিন্ন কোন মান দিন। এটি যদি এখনও কাজ না করে তবে আপনার স্ট্রিম সেটিংস পরীক্ষা করে দেখুন, যদি নির্দিষ্ট স্ট্রিমটি নিঃশব্দ করা না হয়।</string>
+    <string name="faq_4_title">এ্যাপটি কি টাইম জোন সাপোর্ট করে?</string>
+    <string name="faq_4_text">হ্যাঁ এটা করে। ডিফল্টরূপে সমস্ত ইভেন্ট আপনার বর্তমান টাইম জোনে তৈরি করা হয়। আপনি যদি কোনও ইভেন্টের টাইম জোন পরিবর্তন করতে চান,
+         আপনাকে প্রথমে অ্যাপ্লিকেশন সেটিংসে টাইম জোন পিকার ইনাবল করতে হবে, তারপরে ইভেন্ট ডিটেইলস স্ক্রিনে এটি পরিবর্তন করতে হবে। এটি ডিফল্টরূপে ডিজেবল করা, কারণ বেশিরভাগ লোকের এটির প্রয়োজন হয় না.</string>
+
+    <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
+    <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
+    <string name="app_title">সাধারণ ক্যালেন্ডার প্রো - ইভেন্ট এবং রিমাইন্ডার</string>
+    <!-- Short description has to have less than 80 chars -->
+    <string name="app_short_description">Simple mobile 2020 calendar. Schedule planner &amp; appointment reminder for any day</string>
+    <string name="app_long_description">
+        সাধারণ ক্যালেন্ডার প্রো একটি সম্পূর্ণ কাস্টমাইজযোগ্য, অফলাইন ক্যালেন্ডার যা একটি ক্যালেন্ডারের ঠিক কী করা উচিত সেটার জন্য ডিজাইন করা হয়েছে। <b>কোনও জটিল ফিচার, অপ্রয়োজনীয় অনুমতি এবং কোনও বিজ্ঞাপন নেই!</b>
+
+        আপনি একক বা পুনরাবৃত্ত ইভেন্টগুলি, জন্মদিন, বার্ষিকী, ব্যবসায়িক সভা, অ্যাপয়েন্টমেন্ট বা অন্য যে কোনও কিছু সংগঠিত করছেন না কেন, সাধারণ ক্যালেন্ডার প্রো এটি <b> সংগঠিত থাকা সহজ করে তোলে </b>। অবিশ্বাস্য বিভিন্ন <b> কাস্টমাইজেশন বিকল্পগুলি </b>র মাধ্যমে আপনি ইভেন্টের রিমাইন্ডার, নোটিফিকেশনের শব্দ, ক্যালেন্ডার উইজেট এবং অ্যাপটি কেমন দেখায় তা কাস্টমাইজ করতে পারবেন।
+
+        দৈনিক, সাপ্তাহিক এবং মাসিক ভিউগুলি আপনার আসন্ন ইভেন্টগুলি এবং অ্যাপয়েন্টমেন্টগুলির চেকিংকে হালকা করে দেয়। এমনকি আপনি ক্যালেন্ডার ভিউয়ের পরিবর্তে সমস্ত কিছু ইভেন্টের সাধারণ তালিকা হিসাবে দেখতে পারেন, তাই <b> আপনার জীবনে কী আসবে এবং কখন আসবে তা আপনি ঠিক জানেন। </b>
+
+        ----------------------------------------------------------
+        <b>সাধারণ ক্যালেন্ডার প্রো - ইভেন্ট এবং রিমাইন্ডার</b>
+        ----------------------------------------------------------
+
+        ✔️ কোনও বিজ্ঞাপন বা বিরক্তিকর পপআপ নেই
+        ✔️ কোনও ইন্টারনেট অ্যাক্সেসের প্রয়োজন নেই, আপনাকে আরও গোপনীয়তা এবং সুরক্ষা প্রদান করে
+        ✔️ কেবল খালি ন্যূনতম অনুমতি প্রয়োজন
+        ✔️ সরলতার উপর জোর দেয়া হয় - একটি ক্যালেন্ডারের যা করতে হবে তাই করে!
+        ✔️ ওপেন সোর্স
+        ✔️ সম্পূর্ণ কাস্টমাইজযোগ্য থিম এবং ক্যালেন্ডার / ইভেন্ট উইজেট
+        ✔️ ২৯ টি ভাষায় অনূদিত
+        ✔️ অন্য ডিভাইসে এক্সপোর্ট করতে .txt ফাইলগুলিতে সেটিংস ইমপোর্ট করুন
+        ✔️ CalDAV ক্যালেন্ডার সিঙ্কটি ডিভাইসগুলির মধ্যে ইভেন্টগুলি সিঙ্ক করতে সাপোর্ট করে
+        ✔️ ক্যালেন্ডারে দৈনিক, সাপ্তাহিক, মাসিক, বার্ষিক এবং ইভেন্টের ভিউ
+        ✔️ .ics ফাইলের মাধ্যমে ইভেন্টগুলি এক্সপোর্ট ও ইমপোর্ট করা যায়
+        ✔️ একাধিক ইভেন্ট রিমাইন্ডার সেট করুন, ইভেন্ট রিমাইন্ডার শব্দ এবং ভাইব্রেশন কাস্টমাইজ করুন
+        ✔️ রিমাইন্ডারের জন্য স্নুজ অপশন
+        ✔️ সহজেই ছুটি, জন্মদিন, বার্ষিকী এবং অ্যাপয়েন্টমেন্ট যুক্ত করুন
+        ✔️ ইভেন্টগুলি কাস্টমাইজ করুন - শুরুর সময়, সময়কাল, রিমাইন্ডার ইত্যাদি
+        ✔️ প্রতিটি ইভেন্টে ইভেন্টের অংশগ্রহণকারীদের যুক্ত করুন
+        ✔️ ব্যক্তিগত ক্যালেন্ডার বা ব্যবসায় ক্যালেন্ডার হিসাবে ব্যবহার করুন
+        ✔️ একটি ইভেন্ট সম্পর্কে আপনাকে সতর্ক করতে রিমাইন্ডার এবং ইমেইল নোটিফিকেশনের মধ্যে বাছাই করুন
+
+        সহজ ক্যালেন্ডার প্রো ডাউনলোড করুন - কোন বিজ্ঞাপন ছাড়া সহজ অফলাইন ক্যালেন্ডার!
+
+        <b>সিম্পল টুলসের সম্পূর্ণ স্যুটটি এখানে দেখুন:</b>
+        https://www.simplemobiletools.com
+
+        <b>Standalone website of Simple Calendar Pro:</b>
+        https://www.simplemobiletools.com/calendar
+
+        <b>Facebook:</b>
+        https://www.facebook.com/simplemobiletools
+
+        <b>Reddit:</b>
+        https://www.reddit.com/r/SimpleMobileTools
+    </string>
+
+    <!--
+        Haven't found some strings? There's more at
+        https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
+    -->
+</resources>

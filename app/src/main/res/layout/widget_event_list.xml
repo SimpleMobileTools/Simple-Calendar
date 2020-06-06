@@ -1,41 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/widget_event_list_holder"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/widget_event_list_today"
+    <ImageView
+        android:id="@+id/widget_event_list_background"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="@dimen/activity_margin"
-        android:textSize="@dimen/actionbar_text_size"/>
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/widget_round_background" />
+
+    <TextView
+        android:id="@+id/widget_event_list_today"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/widget_event_go_to_today"
+        android:layout_alignBottom="@+id/widget_event_go_to_today"
+        android:layout_toStartOf="@+id/widget_event_go_to_today"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        android:paddingStart="@dimen/medium_margin"
+        android:paddingEnd="@dimen/medium_margin"
+        android:textSize="@dimen/normal_text_size"
+        tools:text="July 18" />
+
+    <ImageView
+        android:id="@+id/widget_event_go_to_today"
+        style="@style/ArrowStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/widget_event_new_event"
+        android:paddingStart="@dimen/medium_margin"
+        android:paddingTop="@dimen/medium_margin"
+        android:paddingEnd="@dimen/medium_margin"
+        android:paddingBottom="@dimen/small_margin"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_today_vector" />
 
     <ImageView
         android:id="@+id/widget_event_new_event"
         style="@style/ArrowStyle"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/widget_event_list"
-        android:layout_alignBottom="@+id/widget_event_list_today"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/widget_event_list_today"
-        android:paddingLeft="@dimen/activity_margin"
-        android:paddingRight="@dimen/activity_margin"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:paddingStart="@dimen/medium_margin"
+        android:paddingTop="@dimen/medium_margin"
+        android:paddingEnd="@dimen/medium_margin"
+        android:paddingBottom="@dimen/small_margin"
         android:scaleType="fitCenter"
-        android:src="@drawable/ic_plus"/>
+        android:src="@drawable/ic_plus_vector" />
 
     <ListView
         android:id="@+id/widget_event_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/widget_event_list_today"
+        android:layout_below="@+id/widget_event_new_event"
         android:clipToPadding="false"
         android:divider="@null"
-        android:dividerHeight="@dimen/medium_margin"
-        android:paddingBottom="@dimen/activity_margin"
-        android:paddingLeft="@dimen/activity_margin"/>
+        android:paddingStart="@dimen/medium_margin"
+        android:paddingBottom="@dimen/small_margin" />
 
     <TextView
         android:id="@+id/widget_event_list_empty"
@@ -43,9 +74,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/widget_event_list_today"
         android:gravity="center_horizontal"
-        android:paddingLeft="@dimen/big_margin"
-        android:paddingRight="@dimen/big_margin"
+        android:paddingStart="@dimen/big_margin"
+        android:paddingEnd="@dimen/big_margin"
         android:text="@string/no_upcoming_events"
-        android:textSize="@dimen/bigger_text_size"/>
+        android:textSize="@dimen/bigger_text_size" />
 
 </RelativeLayout>

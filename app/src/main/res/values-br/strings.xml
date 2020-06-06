@@ -3,29 +3,34 @@
     <string name="app_name">Deiziataer Eeun</string>
     <string name="app_launcher_name">Deiziataer</string>
     <string name="change_view">Kemmañ ar gwel</string>
+    <string name="daily_view">Daily view</string>
     <string name="weekly_view">Gwel sizhuniek</string>
     <string name="monthly_view">Gwel miziek</string>
     <string name="yearly_view">Gwel bloaziek</string>
     <string name="simple_event_list">Roll darvoudoù een</string>
     <string name="no_upcoming_events">War a-seblant n\'ho peus darvoud ebet da zont.</string>
-    <string name="add_some_events">Gallout a rit ouzhpennañ reoù gant an afell \"Mui\" en traoñ.</string>
-    <string name="details">Munudoù</string>
     <string name="go_to_today">Mont da hiziv</string>
-    <string name="snooze">Daleañ</string>
+    <string name="go_to_date">Go to date</string>
+    <string name="upgraded_from_free">Hey,\n\nseems like you upgraded from the old free app. You have to migrate locally stored events manually via exporting in an .ics file, then importing. You can find both export/import buttons at the main screen menu.\n\nYou can then uninstall the old version, which has an \'Upgrade to Pro\' button at the top of the app settings. You will then only have to reset your app settings.\n\nThanks!</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Deiziataer miziek</string>
     <string name="widget_list">Roll darvoudoù</string>
+    <string name="widget_todays_date">Calendar today\'s date</string>
 
     <!-- Event -->
     <string name="event">Darvoud</string>
     <string name="edit_event">Embann an darvoud</string>
     <string name="new_event">Darvoud nevez</string>
+    <string name="create_new_event">Create a new event</string>
+    <string name="duplicate_event">Duplicate event</string>
     <string name="title_empty">N\'hall ket an titl bezañ goullo</string>
     <string name="end_before_start">N\'hall ket an darvoud echuiñ abretoc\'h eget ma krog</string>
     <string name="event_added">Darvoud ouzhpennet gant berzh</string>
     <string name="event_updated">Darvoud hizivaet gant berzh</string>
     <string name="filter_events_by_type">Silañ an darvoudoù dre rizh</string>
+    <string name="please_fill_location">Please fill in a location to be shown on a map</string>
+    <string name="public_event_notification_text">An event is upcoming</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Addegouezh</string>
@@ -42,11 +47,12 @@
     <string name="event_is_repeatable">An darvoud a c\'hall addegouezhout</string>
     <string name="selection_contains_repetition">Darvoudoù a c\'hall addegouezhout a zo en diuzad</string>
     <string name="delete_one_only">Dilemel an degouezh bremanel nemetken</string>
+    <string name="delete_future_occurrences">Delete this and all future occurrences</string>
     <string name="delete_all_occurrences">Dilemel an holl zegouezhioù</string>
     <string name="update_one_only">Hizivaat an degouezh diuzet hepken</string>
     <string name="update_all_occurrences">Hizivaat an holl zegouezhioù</string>
     <string name="repeat_till_date">Addegouezhout betek un deiziad</string>
-    <string name="repeat_x_times">Addegouezhout X gwech</string>
+    <string name="stop_repeating_after_x">Stop repeating after x occurrences</string>
     <string name="repeat_forever">Addegouezhout da viken</string>
     <string name="times">a wechoù</string>
     <string name="repeat">Addegouezh</string>
@@ -55,8 +61,9 @@
     <string name="selected_days">En devezhioù diuzet</string>
     <string name="the_same_day">An hevelep devezh</string>
     <string name="the_last_day">An devezh diwezhañ</string>
-    <string name="repeat_on_the_same_day">Addegouezh en hevelep devezh bep miz</string>
-    <string name="repeat_on_the_last_day">Addegouezh e devezh diwezhañ bep miz</string>
+    <string name="repeat_on_the_same_day_monthly">Addegouezh en hevelep devezh bep miz</string>
+    <string name="repeat_on_the_last_day_monthly">Addegouezh e devezh diwezhañ bep miz</string>
+    <string name="repeat_on_the_same_day_yearly">Repeat on the same day every year</string>
     <string name="repeat_every_m">Addegouezh bep</string>
     <string name="every_m">Bep</string>
     <string name="first_m">kentañ</string>
@@ -75,87 +82,49 @@
     <string name="fourth_f">pevare</string>
     <string name="last_f">diwezhañ</string>
 
-    <plurals name="days">
-        <item quantity="one">%ddevezh</item>
-        <item quantity="other">%da zevezhioù</item>
-    </plurals>
-
-    <plurals name="weeks">
-        <item quantity="one">%dsizhun</item>
-        <item quantity="other">%dsizhun</item>
-    </plurals>
-
-    <plurals name="months">
-        <item quantity="one">%dmiz</item>
-        <item quantity="other">%da vizioù</item>
-    </plurals>
-
-    <plurals name="years">
-        <item quantity="one">%da vloavezhioù</item>
-        <item quantity="other">%da vloavezhioù</item>
-    </plurals>
-
     <!-- Birthdays -->
     <string name="birthdays">Deizioù-ha-bloaz</string>
     <string name="add_birthdays">Ouzhpennañ deizioù-ha-bloaz an darempredoù</string>
     <string name="no_birthdays">N\'eus ket kavet deiz-ha-bloaz bet</string>
+    <string name="no_new_birthdays">No new birthdays have been found</string>
     <string name="birthdays_added">Ouzhpennet an deizioù-ha-bloaz gant berzh</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Anniversaries</string>
     <string name="add_anniversaries">Add contact anniversaries</string>
     <string name="no_anniversaries">No anniversaries have been found</string>
+    <string name="no_new_anniversaries">No new anniversaries have been found</string>
     <string name="anniversaries_added">Anniversaries added successfully</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Adc\'halv</string>
-    <string name="no_reminder">Adc\'halv ebet</string>
-    <string name="at_start">D\'an deroù</string>
-    <string name="custom">Personelaet</string>
     <string name="before">a-raok</string>
-    <string name="minutes_raw">a vunutennoù</string>
-    <string name="hours_raw">eur</string>
-    <string name="days_raw">a zevezhioù</string>
     <string name="add_another_reminder">Ouzhpennañ un adc\'halv all</string>
     <string name="event_reminders">Event reminders</string>
 
-    <plurals name="minutes_before">
-        <item quantity="one">%dvunutenn a-raok</item>
-        <item quantity="other">%da vunutennoù a-raok</item>
-    </plurals>
+    <!-- Event attendees -->
+    <string name="add_another_attendee">Add another attendee</string>
+    <string name="my_status">My status:</string>
+    <string name="going">Going</string>
+    <string name="not_going">Not going</string>
+    <string name="maybe_going">Maybe going</string>
+    <string name="invited">Invited</string>
 
-    <plurals name="hours_before">
-        <item quantity="one">%deur a-raok</item>
-        <item quantity="other">%deur a-raok</item>
-    </plurals>
-
-    <plurals name="days_before">
-        <item quantity="one">%da zevezhioù a-raok</item>
-        <item quantity="other">%da zevezhioù a-raok</item>
-    </plurals>
+    <!-- Time zones -->
+    <string name="enter_a_country">Enter a country or time zone</string>
 
     <!-- Export / Import -->
-    <string name="importing">Oc\'h enporzhiañ...</string>
-    <string name="exporting">Oc\'h ezporzhiañ...</string>
     <string name="import_events">Enporzhiañ darvoudoù</string>
     <string name="export_events">Ezporzhiañ darvoudoù</string>
     <string name="import_events_from_ics">Enporzhiañ darvoudoù adalek ur restr .ics</string>
     <string name="export_events_to_ics">Ezporzhiañ darvoudoù betek ur restr .ics</string>
-    <string name="events_imported_successfully">Enporzhiet eo bet an darvoudoù gant berzh</string>
-    <string name="events_exported_successfully">Ezporzhiet eo bet an darvoudoù gant berzh</string>
-    <string name="importing_events_failed">C\'hwitadenn en ur enporzhiañ an darvoudoù</string>
-    <string name="exporting_events_failed">C\'hwitadenn en ur ezporzhiañ an darvoudoù</string>
-    <string name="importing_some_events_failed">C\'hwitadenn en ur enporzhiañ ul lodenn eus an darvoudoù</string>
-    <string name="exporting_some_events_failed">C\'hwitadenn en ur ezporzhiañ ul lodenn eus an darvoudoù</string>
     <string name="default_event_type">Doare darvoud dre ziouer</string>
-    <string name="no_events_for_exporting">N\'eus bet kavet darvoud ebet da enporzhiañ</string>
     <string name="export_past_events_too">Ezporzhiañ an darvoudoù tremenet ivez</string>
     <string name="include_event_types">Enkorfañ doareoù an darvoudoù ivez</string>
     <string name="filename_without_ics">Anv ar restr (hep .ics)</string>
-    <string name="no_title">Hep titl</string>
+    <string name="override_event_types">Override event types in the file</string>
 
     <!-- Event details -->
-    <string name="title">Titl</string>
     <string name="location">Lec\'hiadur</string>
     <string name="description">Deskrivadur</string>
     <string name="all_day">Devezh-pad</string>
@@ -181,29 +150,49 @@
     <string name="add_holidays">Ouzhpennañ devezhioù gouel</string>
     <string name="national_holidays">Devezhioù gouel broadel</string>
     <string name="religious_holidays">Devezhioù gouel relijiel</string>
-    <string name="holidays_imported_successfully">An devezhioù gouel a zo bet enporzhiet en un doare darvoud nevez gant berzh</string>
+    <string name="holidays_imported_successfully">Holidays have been successfully imported into the \"Holidays\" event type</string>
     <string name="importing_some_holidays_failed">C\'hwitadenn en ur enporzhiañ ul lodenn eus an darvoudoù</string>
     <string name="importing_holidays_failed">C\'hwitadenn en ur enporzhiañ ul lodenn eus an devezhioù gouel</string>
 
     <!-- Settings -->
     <string name="manage_event_types">Merañ an doareoù darvoudoù</string>
-    <string name="use_24_hour_format">Arverañ ar mentrezh 24eur</string>
-    <string name="sunday_first">Disul eo an devezh kentañ</string>
     <string name="start_day_at">Kregiñ an devezh da</string>
     <string name="end_day_at">Echuiñ an devezh da</string>
     <string name="week_numbers">Diskouez niverennoù ar sizhun</string>
     <string name="vibrate">Froumal evit ar rebuzadurioù adc\'halv</string>
     <string name="reminder_sound">Soniri adc\'halv</string>
-    <string name="default_event_reminder">Adc\'halv darvoud dre ziouer</string>
     <string name="no_ringtone_picker">N\'eus bet kavet arload ebet gouest da arventennañ ur soniri</string>
     <string name="no_ringtone_selected">Hini ebet</string>
     <string name="day_end_before_start">An devezh n\'hall ket echuiñ abretoc\'h eget ma krog</string>
     <string name="caldav_sync">Goubredañ CalDAV</string>
     <string name="event_lists">Roll an darvoudoù</string>
     <string name="display_past_events">Skrammañ darvoudoù an amzer tremenet</string>
-    <string name="snooze_delay">Daleañ an adc\'halv eus</string>
-    <string name="widgets">Widjetoù</string>
-    <string name="replace_description_with_location">Amsaviñ an deskrivadur gant al lec\'hiadur er gwell roll enankadoù </string>
+    <string name="replace_description_with_location">Replace event description with location</string>
+    <string name="delete_all_events">Delete all events</string>
+    <string name="delete_all_events_confirmation">Are you sure you want to delete all events? This will leave your event types and other settings intact.</string>
+    <string name="show_a_grid">Show a grid</string>
+    <string name="loop_reminders">Loop reminders until dismissed</string>
+    <string name="dim_past_events">Dim past events</string>
+    <string name="events">Events</string>
+    <string name="reminder_stream">Audio stream used by reminders</string>
+    <string name="system_stream">System</string>
+    <string name="alarm_stream">Alarm</string>
+    <string name="notification_stream">Notification</string>
+    <string name="ring_stream">Ring</string>
+    <string name="use_last_event_reminders">Use the last events\' reminders as the default for new events</string>
+    <string name="default_reminder_1">Default reminder 1</string>
+    <string name="default_reminder_2">Default reminder 2</string>
+    <string name="default_reminder_3">Default reminder 3</string>
+    <string name="view_to_open_from_widget">View to open from the event list widget</string>
+    <string name="last_view">Last view</string>
+    <string name="new_events">New events</string>
+    <string name="default_start_time">Default start time</string>
+    <string name="next_full_hour">Next full hour</string>
+    <string name="default_duration">Default duration</string>
+    <string name="last_used_one">Last used one</string>
+    <string name="other_time">Other time</string>
+    <string name="highlight_weekends">Highlight weekends on some views</string>
+    <string name="allow_changing_time_zones">Allow changing event time zones</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -211,52 +200,15 @@
     <string name="manage_synced_calendars">Merañ an deiziataerioù goubredet</string>
     <string name="store_locally_only">Kadavi~nen un doare lec\'hel</string>
     <string name="refresh_caldav_calendars">Azgrenaat an deiziataerioù CalDAV</string>
-    <string name="refreshing">Oc\'h azgrenaat...</string>
+    <string name="refreshing">Oc\'h azgrenaat…</string>
     <string name="refreshing_complete">Echuet an azgrenaat</string>
     <string name="editing_calendar_failed">C\'hwitadenn en ur embann an deiziataer</string>
-    <string name="syncing">O c\'houbredañ...</string>
+    <string name="syncing">O c\'houbredañ…</string>
     <string name="synchronization_completed">Echuet gant ar goubredañ</string>
-
-    <plurals name="by_minutes">
-        <item quantity="one">%dvunutenn</item>
-        <item quantity="other">%da vunutennoù</item>
-    </plurals>
-
-    <plurals name="by_hours">
-        <item quantity="one">%deur</item>
-        <item quantity="other">%da eurioù</item>
-    </plurals>
-
-    <string name="never">Morse</string>
-
-    <string name="january">Genver</string>
-    <string name="february">C\'hwevrer</string>
-    <string name="march">Meurzh</string>
-    <string name="april">Ebrel</string>
-    <string name="may">Mae</string>
-    <string name="june">Mezheven</string>
-    <string name="july">Gouere</string>
-    <string name="august">Eost</string>
-    <string name="september">Gwengolo</string>
-    <string name="october">Here</string>
-    <string name="november">Du</string>
-    <string name="december">Kerzu</string>
-
-    <string name="monday_letter">L</string>
-    <string name="tuesday_letter">Meu</string>
-    <string name="wednesday_letter">Mer</string>
-    <string name="thursday_letter">Y</string>
-    <string name="friday_letter">G</string>
-    <string name="saturday_letter">Sa</string>
-    <string name="sunday_letter">Su</string>
-
-    <string name="monday">Lun</string>
-    <string name="tuesday">Meurzh</string>
-    <string name="wednesday">Merc\'her</string>
-    <string name="thursday">Yaou</string>
-    <string name="friday">Gwener</string>
-    <string name="saturday">Sadorn</string>
-    <string name="sunday">Sul</string>
+    <string name="select_a_different_caldav_color">Select a different color (might be applied locally only)</string>
+    <string name="insufficient_permissions">You are not allowed to write in the selected calendar</string>
+    <string name="caldav_event_not_found">Event not found. Please enable CalDAV sync for the appropriate calendar in the app settings.</string>
+    <string name="no_synchronized_calendars">No synchronizable calendars have been found</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
@@ -278,21 +230,68 @@
     <string name="sample_description_4">Er c\'hrampouezhti</string>
     <string name="sample_title_5">Banne kafe</string>
 
+    <!-- FAQ -->
+    <string name="faq_1_title">How can I remove the holidays imported via the \"Add holidays\" button?</string>
+    <string name="faq_1_text">Holidays created that way are inserted in a new event type called \"Holidays\". You can go in Settings -> Manage Event Types,
+        long press the given event type and delete it by selecting the trashbin.</string>
+    <string name="faq_2_title">Can I sync my events via Google Calendar, or other service supporting CalDAV?</string>
+    <string name="faq_2_text">Yes, just toggle \"CalDAV sync\" in the app settings and select the calendars you want to sync. However, you will need some third party app handling the synchronization between the device and servers.
+        In case you want to synchronize a Google calendar, their official Calendar app will do the job. For other calendars you will need a third party sync adapter, for example DAVx5.</string>
+    <string name="faq_3_title">I see the visual reminders, but hear no audio. What can I do?</string>
+    <string name="faq_3_text">Not just displaying the actual reminder, but playing the audio is hugely affected by the system too. If you can\'t hear any sound, try going in the app settings,
+        pressing the \"Audio stream used by reminders\" option and changing it to a different value. If it still won\'t work, check your sound settings, if the particular stream isn\'t muted.</string>
+    <string name="faq_4_title">Does the app support time zones?</string>
+    <string name="faq_4_text">Yes, it does. By default all events are created in your current time zone. If you want to change an events\' time zone,
+        you will first have to enable the time zone picker at the app settings, then change it at the Event Details screen. It is disabled by default as most people won\'t need it.</string>
+
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
+    <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
+    <string name="app_title">Simple Calendar Pro - Events &amp; Reminders</string>
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Un deiziataer eeun gant darvoudoù, widjetoù personelaus ha tamm bruderezh ebet.</string>
+    <string name="app_short_description">Simple mobile 2020 calendar. Schedule planner &amp; appointment reminder for any day</string>
     <string name="app_long_description">
-        Un deiziataer eeun gant ur goubredañ diret da zeiziataer Google. Aes eo krouiñ darvoudoù a addegouezh ha lakaat adc\'halvoù. Gallout a ra ivez diskouez niverenn ar sizhunvezhioù.
+        Simple Calendar Pro is a fully customizable, offline calendar designed to do exactly what a calendar should do. <b>No complicated features, unnecessary permissions and no ads!</b>
 
-        Dont a ra gant ur widjet 4x4 a c\'haller adventañ ha personelaat liv an destenn, an alfa ha liv an drekleur.
+        Whether you’re organizing single or recurring events, birthdays, anniversaries, business meetings, appointments or anything else, Simple Calendar Pro makes it <b>easy to stay organized</b>. With an incredible variety of <b>customization options</b> you can customize event reminders, notification sounds, calendar widgets and how the app looks.
 
-        N\'eus tamm bruderezh ebet ha n\'eo goulennet aotre arbennik ebet. Digor eo e darzh ha gallout a rit personelaat al livioù.
+        Daily, weekly and monthly views make checking your upcoming events &amp; appointments a breeze. You can even view everything as a simple list of events rather than in calendar view, so you <b>know exactly what’s coming up in your life and when. </b>
 
-        Ret eo reiñ an aotre kadaviñ evit ezporzhiañ hag enporzhiañ darvoudoù gant restroù .ics.
+        ----------------------------------------------------------
+        <b>Simple Calendar Pro – Features &amp; Benefits</b>
+        ----------------------------------------------------------
 
-        Ret eo reiñ an aotre Darempredoù evit enporzhiañ deizioù-ha-bloaz an darempredoù.
+        ✔️ No ads or annoying popups
+        ✔️ No internet access needed, giving you more privacy &amp; security
+        ✔️ Only the bare minimum permissions required
+        ✔️ Emphasis on simplicity – does what a calendar needs to do!
+        ✔️ Open source
+        ✔️ Fully customizable themes &amp; calendar / event widgets
+        ✔️ Translated into 29 languages
+        ✔️ Export settings to .txt files to import to another device
+        ✔️ CalDAV calendar sync supported to sync events across devices
+        ✔️ Daily, weekly, monthly, yearly &amp; event views on the calendar
+        ✔️ Supports exporting &amp; importing events via .ics files
+        ✔️ Set multiple event reminders, customize event reminder sound and vibration
+        ✔️ Snooze option for reminders
+        ✔️ Easily add holidays, birthdays, anniversaries &amp; appointments
+        ✔️ Customize events – start time, duration, reminders etc
+        ✔️ Add event attendees to each event
+        ✔️ Use as a personal calendar or a business calendar
+        ✔️ Choose between reminders &amp; email notifications to alert you about an event
 
-        An arload-mañ a zo ul lodenn eus un heuliad arloadoù brasoc\'h. Gallout a rit o kavout anezho war http://www.simplemobiletools.com
+        DOWNLOAD SIMPLE CALENDAR PRO – THE SIMPLE OFFLINE CALENDAR WITH NO ADS!
+
+        <b>Check out the full suite of Simple Tools here:</b>
+        https://www.simplemobiletools.com
+
+        <b>Standalone website of Simple Calendar Pro:</b>
+        https://www.simplemobiletools.com/calendar
+
+        <b>Facebook:</b>
+        https://www.facebook.com/simplemobiletools
+
+        <b>Reddit:</b>
+        https://www.reddit.com/r/SimpleMobileTools
     </string>
 
     <!--

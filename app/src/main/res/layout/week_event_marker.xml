@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:ellipsize="end"
     android:maxLines="3"
-    android:paddingLeft="@dimen/tiny_margin"
-    android:paddingRight="@dimen/tiny_margin"
+    android:paddingStart="@dimen/tiny_margin"
+    android:paddingEnd="@dimen/tiny_margin"
     android:textColor="@android:color/white"
     android:textSize="@dimen/small_text_size"/>

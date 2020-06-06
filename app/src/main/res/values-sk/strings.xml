@@ -3,29 +3,34 @@
     <string name="app_name">Jednoduchý kalendár</string>
     <string name="app_launcher_name">Kalendár</string>
     <string name="change_view">Zmeniť pohľad</string>
+    <string name="daily_view">Denný</string>
     <string name="weekly_view">Týždenný</string>
     <string name="monthly_view">Mesačný</string>
     <string name="yearly_view">Ročný</string>
     <string name="simple_event_list">Jednoduchý zoznam</string>
     <string name="no_upcoming_events">Nemáte žiadne naplánované udalosti.</string>
-    <string name="add_some_events">Viete ich pridať pomocou tlačidla Plus v pravom dolnom rohu.</string>
-    <string name="details">Detaily</string>
     <string name="go_to_today">Prejsť na dnešok</string>
-    <string name="snooze">Odložiť</string>
+    <string name="go_to_date">Prejsť na dátum</string>
+    <string name="upgraded_from_free">Zdravím,\n\nvyzerá to tak, že ste zo starej bezplatnej apky prešlie na novú, platenú. Lokálne uložené udalosti musíte premigrovať manuálne pomocou exportovania do .ics súboru a následného importovania. Tlačidlá pre export a import nájdete v menu hlavnej obrazovky.\n\nStarú apku, ktorá má na vrchu nastavení tlačidlo \'Stiahnuť Pro verziu\', môžete potom odinštalovať. Následne si budete musieť opäť nastaviť položky v nastaveniach aplikácie.\n\nVďaka!</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Kalendár mesačný</string>
     <string name="widget_list">Kalendár so zoznamom</string>
+    <string name="widget_todays_date">Kalendár s dnešným dátumom</string>
 
     <!-- Event -->
     <string name="event">Udalosť</string>
     <string name="edit_event">Upraviť udalosť</string>
     <string name="new_event">Nová udalosť</string>
+    <string name="create_new_event">Vytvoriť novú udalosť</string>
+    <string name="duplicate_event">Duplikovať udalosť</string>
     <string name="title_empty">Prosím zadajte názov</string>
     <string name="end_before_start">Udalosť nemôže skončiť skôr ako by začala</string>
     <string name="event_added">Udalosť bola úspešne pridaná</string>
     <string name="event_updated">Udalosť bola úspešne upravená</string>
     <string name="filter_events_by_type">Filtrovať udalosti podľa typu</string>
+    <string name="please_fill_location">Prosím zadajte polohu, ktorá má byť zobrazená na mape</string>
+    <string name="public_event_notification_text">Blíži sa udalosť</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Opakovanie</string>
@@ -42,11 +47,12 @@
     <string name="event_is_repeatable">Udalosť je opakujúca sa</string>
     <string name="selection_contains_repetition">Výber obsahuje opakujúce sa udalosti</string>
     <string name="delete_one_only">Vymazať iba označené opakovania</string>
+    <string name="delete_future_occurrences">Vymazať toto a všetky budúce opakovania</string>
     <string name="delete_all_occurrences">Vymazať všetky opakovania</string>
     <string name="update_one_only">Upraviť iba označené opakovania</string>
     <string name="update_all_occurrences">Upraviť všetky opakovania</string>
     <string name="repeat_till_date">Opakovať po dátum</string>
-    <string name="repeat_x_times">Opakovať x krát</string>
+    <string name="stop_repeating_after_x">Ukončiť opakovanie po x opakovaniach</string>
     <string name="repeat_forever">Opakovať navždy</string>
     <string name="times">krát</string>
     <string name="repeat">Opakovať</string>
@@ -55,8 +61,9 @@
     <string name="selected_days">Vo vybraných dňoch</string>
     <string name="the_same_day">Rovnaký deň</string>
     <string name="the_last_day">Posledný deň</string>
-    <string name="repeat_on_the_same_day">Opakovať každý mesiac v rovnaký deň</string>
-    <string name="repeat_on_the_last_day">Opakovať posledný deň v mesiaci</string>
+    <string name="repeat_on_the_same_day_monthly">Opakovať každý mesiac v rovnaký deň</string>
+    <string name="repeat_on_the_last_day_monthly">Opakovať posledný deň v mesiaci</string>
+    <string name="repeat_on_the_same_day_yearly">Opakovať každý rok v rovnaký deň</string>
     <string name="repeat_every_m">Opakovať každý</string>
     <string name="every_m">Každý</string>
     <string name="first_m">prvý</string>
@@ -75,94 +82,49 @@
     <string name="fourth_f">štvrtú</string>
     <string name="last_f">poslednú</string>
 
-    <plurals name="days">
-        <item quantity="one">%d deň</item>
-        <item quantity="few">%d dni</item>
-        <item quantity="other">%d dní</item>
-    </plurals>
-
-    <plurals name="weeks">
-        <item quantity="one">%d týždeň</item>
-        <item quantity="few">%d týždne</item>
-        <item quantity="other">%d týždňov</item>
-    </plurals>
-
-    <plurals name="months">
-        <item quantity="one">%d mesiac</item>
-        <item quantity="few">%d mesiace</item>
-        <item quantity="other">%d mesiacov</item>
-    </plurals>
-
-    <plurals name="years">
-        <item quantity="one">%d rok</item>
-        <item quantity="few">%d roky</item>
-        <item quantity="other">%d rokov</item>
-    </plurals>
-
     <!-- Birthdays -->
     <string name="birthdays">Narodeniny</string>
     <string name="add_birthdays">Pridať narodeniny kontaktov</string>
     <string name="no_birthdays">Nenašli sa žiadne narodeniny</string>
+    <string name="no_new_birthdays">Nenašli sa žiadne nové narodeniny</string>
     <string name="birthdays_added">Narodeniny boli úspešne pridané</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Výročia</string>
     <string name="add_anniversaries">Pridať výročia kontaktov</string>
     <string name="no_anniversaries">Nenašli sa žiadne výročia</string>
+    <string name="no_new_anniversaries">Nenašli sa žiadne nové výročia</string>
     <string name="anniversaries_added">Výročia boli úspešne pridané</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Pripomenka</string>
-    <string name="no_reminder">Žiadna pripomienka</string>
-    <string name="at_start">Na začiatku</string>
-    <string name="custom">Vlastná</string>
     <string name="before">pred</string>
-    <string name="minutes_raw">minúty</string>
-    <string name="hours_raw">hodiny</string>
-    <string name="days_raw">dni</string>
     <string name="add_another_reminder">Pridať ďalšiu pripomienku</string>
     <string name="event_reminders">Pripomienky udalostí</string>
 
-    <plurals name="minutes_before">
-        <item quantity="one">%d minútu vopred</item>
-        <item quantity="few">%d minúty vopred</item>
-        <item quantity="other">%d minút vopred</item>
-    </plurals>
+    <!-- Event attendees -->
+    <string name="add_another_attendee">Pridať ďalšieho účastníka</string>
+    <string name="my_status">Môj stav:</string>
+    <string name="going">Zúčastním sa</string>
+    <string name="not_going">Nezúčastním sa</string>
+    <string name="maybe_going">Možno sa zúčastním</string>
+    <string name="invited">Pozvaný</string>
 
-    <plurals name="hours_before">
-        <item quantity="one">%d hodinu vopred</item>
-        <item quantity="few">%d hodiny vopred</item>
-        <item quantity="other">%d hodín vopred</item>
-    </plurals>
-
-    <plurals name="days_before">
-        <item quantity="one">%d deň vopred</item>
-        <item quantity="few">%d dni vopred</item>
-        <item quantity="other">%d dní vopred</item>
-    </plurals>
+    <!-- Time zones -->
+    <string name="enter_a_country">Zadajte krajinu alebo časové pásmo</string>
 
     <!-- Export / Import -->
-    <string name="importing">Importujem…</string>
-    <string name="exporting">Exportujem…</string>
     <string name="import_events">Importovať udalosti</string>
     <string name="export_events">Exportovať udalosti</string>
     <string name="import_events_from_ics">Importovať udalosti z .ics súboru</string>
     <string name="export_events_to_ics">Exportovať udalosti do .ics súboru</string>
-    <string name="events_imported_successfully">Udalosti boli úspešne importované</string>
-    <string name="events_exported_successfully">Udalosti boli úspešne exportované</string>
-    <string name="importing_events_failed">Importovanie udalostí zlyhalo</string>
-    <string name="exporting_events_failed">Exportovanie udalostí zlyhalo</string>
-    <string name="importing_some_events_failed">Importovanie niektorých udalostí zlyhalo</string>
-    <string name="exporting_some_events_failed">Exportovanie niektorých udalostí zlyhalo</string>
     <string name="default_event_type">Predvolený typ udalosti</string>
-    <string name="no_events_for_exporting">Nenašli sa žiadne udalosti na exportovanie</string>
     <string name="export_past_events_too">Exportovať aj minulé udalosti</string>
     <string name="include_event_types">Zahrnúť typy udalostí</string>
     <string name="filename_without_ics">Názov súboru (bez .ics)</string>
-    <string name="no_title">Bez názvu</string>
+    <string name="override_event_types">Nahradiť typy udalostí v súbore</string>
 
     <!-- Event details -->
-    <string name="title">Názov</string>
     <string name="location">Miesto</string>
     <string name="description">Popis</string>
     <string name="all_day">Celodenná</string>
@@ -179,9 +141,6 @@
     <string name="regular_event">Bežná udalosť</string>
     <string name="cannot_delete_default_type">Predvolený typ nie je možné vymazať</string>
     <string name="select_event_type">Zvoľte typ udalosti</string>
-    <string name="holidays_imported_successfully">Sviatky boli úspešne importované do nového typu udalostí</string>
-    <string name="importing_some_holidays_failed">Importovanie niektorých sviatkov zlyhalo</string>
-    <string name="importing_holidays_failed">Importovanie udalostí zlyhalo</string>
     <string name="move_events_into_default">Presunúť dotknuté udalosti do predvoleného typu udalostí</string>
     <string name="remove_affected_events">Natrvalo odstrániť dotknuté udalosti</string>
     <string name="unsync_caldav_calendar">Na odstránenie CalDAV kalendára musíte vypnúť jeho synchronizáciu</string>
@@ -191,26 +150,49 @@
     <string name="add_holidays">Pridať sviatky</string>
     <string name="national_holidays">Štátne sviatky</string>
     <string name="religious_holidays">Náboženské sviatky</string>
+    <string name="holidays_imported_successfully">Sviatky boli úspešne importované do nového typu udalostí \"Sviatky\"</string>
+    <string name="importing_some_holidays_failed">Importovanie niektorých sviatkov zlyhalo</string>
+    <string name="importing_holidays_failed">Importovanie udalostí zlyhalo</string>
 
     <!-- Settings -->
     <string name="manage_event_types">Spravovať typy udalostí</string>
-    <string name="use_24_hour_format">Použiť 24 hodinový formát</string>
-    <string name="sunday_first">Začať týždeň nedeľou</string>
     <string name="start_day_at">Začať deň o</string>
     <string name="end_day_at">Ukončiť deň o</string>
     <string name="week_numbers">Zobraziť čísla týždňov</string>
     <string name="vibrate">Vibrovať pri pripomienke</string>
     <string name="reminder_sound">Zvučka pripomienky</string>
-    <string name="default_event_reminder">Predvolená hodnota pripomienky</string>
     <string name="no_ringtone_picker">Nenašla sa žiadna aplikácia na zmenu zvučky</string>
     <string name="no_ringtone_selected">Žiadna</string>
     <string name="day_end_before_start">Deň nemôže skončiť skôr než začne</string>
     <string name="caldav_sync">CalDAV synchronizácia</string>
     <string name="event_lists">Zoznamy udalostí</string>
     <string name="display_past_events">Zobraziť minulé udalosti spred</string>
-    <string name="snooze_delay">Posunúť pripomienku s Odložiť o</string>
-    <string name="widgets">Widgety</string>
-    <string name="replace_description_with_location">Nahradiť Popis udalosti Miestom v listových zobrazeniach</string>
+    <string name="replace_description_with_location">Nahradiť popis udalosti miestom</string>
+    <string name="delete_all_events">Odstrániť všetky udalosti</string>
+    <string name="delete_all_events_confirmation">Ste si istý, že chcete odstrániť všetky udalosti? Všetky typy udalostí a nastavenia ostanú nedotknuté.</string>
+    <string name="show_a_grid">Zobraziť mriežku</string>
+    <string name="loop_reminders">Opakovať pripomienky až po odstránenie</string>
+    <string name="dim_past_events">Stlmiť minulé udalosti</string>
+    <string name="events">Udalosti</string>
+    <string name="reminder_stream">Zvukový kanál používaný pripomienkami</string>
+    <string name="system_stream">Systémový</string>
+    <string name="alarm_stream">Výstražný</string>
+    <string name="notification_stream">Pripomienkový</string>
+    <string name="ring_stream">Zvoniaci</string>
+    <string name="use_last_event_reminders">Použiť pripomienky poslednej udalosti ako predvolené pre novú udalosť</string>
+    <string name="default_reminder_1">Predvolená pripomienka 1</string>
+    <string name="default_reminder_2">Predvolená pripomienka 2</string>
+    <string name="default_reminder_3">Predvolená pripomienka 3</string>
+    <string name="view_to_open_from_widget">Otvoriť pohľad po kliknutí na widget so zoznamom udalostí</string>
+    <string name="last_view">Posledný pohľad</string>
+    <string name="new_events">Nové udalosti</string>
+    <string name="default_start_time">Predvolený čas začiatku</string>
+    <string name="next_full_hour">Najbližšia celá hodina</string>
+    <string name="default_duration">Predvolená dĺžka</string>
+    <string name="last_used_one">Naposledy použitý</string>
+    <string name="other_time">Iný čas</string>
+    <string name="highlight_weekends">Zvýrazniť víkendy na niektorých pohľadoch</string>
+    <string name="allow_changing_time_zones">Povoliť zmenu časových pásem udalostí</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -223,49 +205,10 @@
     <string name="editing_calendar_failed">Úprava kalendára zlyhala</string>
     <string name="syncing">Synchronizujem…</string>
     <string name="synchronization_completed">Synchronizácia ukončená</string>
-
-    <plurals name="by_minutes">
-        <item quantity="one">%d minútu</item>
-        <item quantity="few">%d minúty</item>
-        <item quantity="other">%d minút</item>
-    </plurals>
-
-    <plurals name="by_hours">
-        <item quantity="one">%d hodinu</item>
-        <item quantity="few">%d hodiny</item>
-        <item quantity="other">%d hodín</item>
-    </plurals>
-
-    <string name="never">Nikdy</string>
-
-    <string name="january">Január</string>
-    <string name="february">Február</string>
-    <string name="march">Marec</string>
-    <string name="april">Apríl</string>
-    <string name="may">Máj</string>
-    <string name="june">Jún</string>
-    <string name="july">Júl</string>
-    <string name="august">August</string>
-    <string name="september">September</string>
-    <string name="october">Október</string>
-    <string name="november">November</string>
-    <string name="december">December</string>
-
-    <string name="monday_letter">P</string>
-    <string name="tuesday_letter">U</string>
-    <string name="wednesday_letter">S</string>
-    <string name="thursday_letter">Š</string>
-    <string name="friday_letter">P</string>
-    <string name="saturday_letter">S</string>
-    <string name="sunday_letter">N</string>
-
-    <string name="monday">Pondelok</string>
-    <string name="tuesday">Utorok</string>
-    <string name="wednesday">Streda</string>
-    <string name="thursday">Štvrtok</string>
-    <string name="friday">Piatok</string>
-    <string name="saturday">Sobota</string>
-    <string name="sunday">Nedeľa</string>
+    <string name="select_a_different_caldav_color">Zvoliť inú farbu (možno bude aplikovaná iba lokálne)</string>
+    <string name="insufficient_permissions">Nemáte dostatočné oprávnenie na písanie do zvoleného kalendára</string>
+    <string name="caldav_event_not_found">Udalosť nebola nájdená. Prosím povoľte CalDAV synchronizáciu príslušného kalendára v nastaveniach aplikácie.</string>
+    <string name="no_synchronized_calendars">Nenašli sa žiadne synchronizovateľné kalendáre</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
@@ -287,21 +230,68 @@
     <string name="sample_description_4">V supermarkete</string>
     <string name="sample_title_5">Káva</string>
 
+    <!-- FAQ -->
+    <string name="faq_1_title">Ako môžem odstrániť sviatky pridané pomocou tlačidla \"Pridať sviatky\"?</string>
+    <string name="faq_1_text">Sviatky vytvorené daným spôsobom sú pridané do typu udalosti \"Sviatky\". Môžete teda ísť do Nastavenia -> Spravovať typy udalostí,
+        podržať daný typ a vymazať ho pomocou smetného koša.</string>
+    <string name="faq_2_title">Viem si zosynchronizovať udalosti pomocou Google Kalendára, alebo inej služby podporujúcej CalDAV?</string>
+    <string name="faq_2_text">Áno, stačí aktivovať funkciu \"CalDAV synchronizácia\" v nastaveniach a zvoliť si správne kalendáre. Pre synchronizáciu medzi zariadením a serverom ale budete potrebovať synchronizačný adaptér od tretej strany.
+        Ak chcete synchronizovať Google kalendár, ich oficiálna aplikácia Kalendár to spraví. Pre iné kalendáre budete potrebovať inú synchronizačnú aplikáciu, napr. DAVx5.</string>
+    <string name="faq_3_title">Vidím vizuálnu pripomienku, ale nepočujem žiadny zvuk. Čo s tým viem spraviť?</string>
+    <string name="faq_3_text">Nie len zobrazovanie pripomienok, ale aj prehrávanie zvuku je ovplyvnené systémom. Ak nepočujete zvuk, skúste ísť do nastavení apky, použiť možnosť \"Zvukový kanál používaný pripomienkami\" a
+        zmeniť zvolenú hodnotu. Ak to ešte stále nebude fungovať, skúste sa pozrieť do zvukových nastavení vášho systému, či daný kanál nie je stlmený.</string>
+    <string name="faq_4_title">Podporuje apka časové pásma?</string>
+    <string name="faq_4_text">Áno, podporuje. Štandardne sú všetky udalosti vytvárané vo vašom súčasnom časovom pásme. Ak chcete zmeniť časové pásmo niektorej udalosti,
+        najprv musíte povoliť menenie časových pásem v nastaveniach apky, následne ho zmeniť na obrazovke s detailmi udalosti. Menenie je štandardne vypnuté, keďže ho väčšina ľudí potrebovať nebude.</string>
+
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
+    <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
+    <string name="app_title">Jednoduchý kalendár Pro - Udalosti a pripomienky</string>
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Jednoduchý kalendár s udalosťami, upraviteľným widgetom a bez reklám.</string>
+    <string name="app_short_description">Mobilný kalendár 2020. Efektívny plánovač a manažér stretnutí počas celého dňa.</string>
     <string name="app_long_description">
-        Jednoduchý kalendár s možnosťou Google synchronizácie. Viete si jednoducho vytvoriť opakujúce sa udalosti s pripomienkami, alebo zobraziť čísla týždňov.
+        Jednoduchý kalendár Pro je prispôsobiteľný offline kalendár vytvorený presne na to, čo by kalendáre mali zvládať.<b>Nenachádzajú sa tu žiadne nepotrebné funkcie, nepotrebné oprávnenia, ani reklamy!</b>
 
-        Obsahuje škálovateľný 4x4 widget, kde viete upraviť farbu textu, ako aj priehľadnosť a farbu pozadia.
+        Či organizujete jednoduchú, alebo opakujúcu sa udalosť, narodeniny, výročia, pracovné stretnutia, alebo hocičo iné, Jednoduchý kalendár Pro vám <b>uľahčí prácu</b>. S veľkou mierou <b>prispôsobiteľnosti</b> viete meniť pripomienky udalostí, zvuky pripomienok, widgety kalendára a celkový vzhľad apky.
 
-        Neobsahuje žiadne reklamy a nepotrebné oprávnenia. Je opensource, poskytuje možnosť zmeny farieb.
+        Vďaka dennému, týždennému a mesačnému pohľadu si viete veľmi jednoducho prezrieť nasledujúce udalosti a stretnutia. Všetky udalosti si viete pozrieť aj v jednoduchom chronologickom zozname udalostí. Vďaka tomu viete <b>presne čo a kedy sa blíži.</b>
 
-        Oprávnenie na prístup k súborom je potrebné iba v prípade exportovania a importovania udalostí z .ics súborov.
+        ----------------------------------------------------------
+        <b>Jednoduchý kalendár Pro - funkcie a benefity</b>
+        ----------------------------------------------------------
 
-        Oprávnenie ku kontaktom je používané iba pri pridávaní narodenín kontaktov.
+        ✔️ Žiadne reklamy a otravné vyskakovacie okná
+        ✔️ Nie je potrebný prístup na internet, vďaka čomu budete mať maximálne súkromie a bezpečie
+        ✔️ Obsahuje iba nevyhnutne potrebné oprávnenia
+        ✔️ Prízvuk na jednoduchosť - robí presne to, čo sa od kalendára očakáva!
+        ✔️ Otvorený zdrojový kód
+        ✔️ Plne prispôsobiteľné témy, pohľady a widgety
+        ✔️ Preložený do 29 jazykov
+        ✔️ Jednoducho exportujte nastavenia do .txt súboru a importujte ich do iného zariadenia
+        ✔️ Obsahuje CalDAV sychronizáciu na zdieľanie kalendárov medzi zariadeniami
+        ✔️ Obsahuje denný, týždenný, mesačný, ročný pohľad na kalendár, ako aj jednoduchý zoznam udalostí
+        ✔️ Podporuje exportovanie a importovanie udalostí pomocou .ics súborov
+        ✔️ Možnosť nastaviť viacero pripomienok na udalosti, alebo zmeniť ich zvučku a vibrovanie
+        ✔️ Možnosť odloženia pripomienok na neskôr
+        ✔️ Jednoduché pridávanie prázdnin, narodenín, výročí a stretnutí
+        ✔️ Nastaviteľné udalosti - začiatok, trvanie, pripomienky atď
+        ✔️ Možnosť pridávania zúčastnených na udalosti
+        ✔️ Možné použitie ako súkromný, aj business kalendár
+        ✔️ Zvoľte si buď pripomienku, alebo email na synchronizované udalosti
 
-        Táto aplikácia je iba jednou zo skupiny aplikácií. Ostatné viete nájsť na http://www.simplemobiletools.com
+        STIAHNITE SI JEDNODUCHÝ KALENDÁR PRO - JEDNODUCHÝ OFFLINE KALENDÁR BEZ REKLÁM!
+
+        <b>Pozrite si celú sadu aplikácií na:</b>
+        https://www.simplemobiletools.com
+
+        <b>Vlastná stránka Jednoduchého Kalendára Pro:</b>
+        https://www.simplemobiletools.com/calendar
+
+        <b>Facebook:</b>
+        https://www.facebook.com/simplemobiletools
+
+        <b>Reddit:</b>
+        https://www.reddit.com/r/SimpleMobileTools
     </string>
 
     <!--

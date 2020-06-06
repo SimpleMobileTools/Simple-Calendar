@@ -1,0 +1,39 @@
+Simple Calendar Pro é um calendário local, criado para fazer o que um calendário deve fazer. <b>Funcionalidades simples, apenas as permissões estritamente necessárias e sem anúncios!</b>
+
+Esteja você a criar um evento único ou recorrente, aniversários, reuniões, eventos ou qualquer outra coisa, esta aplicação <b>permite-lhe andar organizado</b>. Com <b>diversas opções de personalização</b>, pode ajustar os lembretes, os sons para as notificações, o widget e o aspeto da aplicação.
+
+As vistas diária, semanal e mensal ajudam o utilizador a verificar os próximos eventos facilmente. Alternativamente, de modo a que <b>saiba exatamente o que está planeado e quando.</b>
+
+----------------------------------------------------------
+<b>Simple Calendar Pro – Funcionalidades</b>
+----------------------------------------------------------
+
+✔️ Sem anúncios
+✔️ Não requer acesso à Internet
+✔️ Apenas utiliza as permissões estritamente necessárias
+✔️ Simples – funciona apenas como calendário!
+✔️ Open source
+✔️ Temas e widgets persoanlizados
+✔️ Traduzido em mais de 29 idiomas
+✔️ Exportação de definições para ficheiros .txt
+✔️ Sincronização CalDAV para poder usar os eventos em todos os seus dispositivos (opcional)
+✔️ Vista diária, semanal, mensal e lista de eventos
+✔️ Importação e exportação de eventos através de ficheiros .ics
+✔️ Possibilidade de definir diversos lembretes e personalização de sons e vibração para os mesmos
+✔️ Opção Snooze
+✔️ Possibilidade de importar, feriados, aniversários e datas de nascimento
+✔️ Personalização de eventos – data/hora inicial, duração dos eventos, lembretes...
+✔️ Possibilidade de adicionar convidados para os eventos
+✔️ Passível de ser utilizado como calendário pessoal mas também empresarial
+✔️ Escolha entre lembretes e notificações por e-mail
+
+DESCARREGAR SIMPLE CALENDAR PRO – O CALENDÁRIO SIMPLES QUE NÃO TEM ANÚNCIOS!
+
+<b>Consulte todas as aplicações Simple Tools aqui:</b>
+https://www.simplemobiletools.com
+
+<b>Facebook:</b>
+https://www.facebook.com/simplemobiletools
+
+<b>Reddit:</b>
+https://www.reddit.com/r/SimpleMobileTools

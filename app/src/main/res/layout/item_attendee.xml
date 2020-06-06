@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/event_attendee_holder"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/medium_margin"
+    android:paddingBottom="@dimen/medium_margin">
+
+    <com.simplemobiletools.commons.views.MyAutoCompleteTextView
+        android:id="@+id/event_attendee"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="@dimen/activity_margin"
+        android:completionThreshold="2"
+        android:hint="@string/add_another_attendee"
+        android:lines="1"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:textCursorDrawable="@null"
+        android:textSize="@dimen/bigger_text_size"/>
+
+    <RelativeLayout
+        android:id="@+id/event_contact_attendee"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/avatar_size"
+        android:layout_alignTop="@+id/event_attendee"
+        android:layout_alignBottom="@+id/event_attendee"
+        android:background="?attr/selectableItemBackground"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/event_contact_image"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/tiny_margin"
+            android:adjustViewBounds="true"/>
+
+        <ImageView
+            android:id="@+id/event_contact_status_image"
+            android:layout_width="@dimen/avatar_status_size"
+            android:layout_height="@dimen/avatar_status_size"
+            android:layout_alignEnd="@+id/event_contact_image"
+            android:layout_alignBottom="@+id/event_contact_image"
+            android:adjustViewBounds="true"
+            android:background="@drawable/attendee_status_circular_background"
+            android:padding="@dimen/tiny_margin"
+            android:src="@drawable/ic_question_yellow"
+            android:visibility="gone"/>
+
+        <com.simplemobiletools.commons.views.MyTextView
+            android:id="@+id/event_contact_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/medium_margin"
+            android:layout_toStartOf="@+id/event_contact_dismiss"
+            android:layout_toEndOf="@+id/event_contact_image"
+            android:ellipsize="end"
+            android:lines="1"
+            android:textSize="@dimen/bigger_text_size"
+            tools:text="Simple Mobile Tools"/>
+
+        <ImageView
+            android:id="@+id/event_contact_dismiss"
+            android:layout_width="@dimen/avatar_size"
+            android:layout_height="@dimen/avatar_size"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="@dimen/medium_margin"
+            android:layout_marginEnd="@dimen/normal_margin"
+            android:alpha="0.8"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="@dimen/small_margin"
+            android:src="@drawable/ic_cross_vector"/>
+
+        <com.simplemobiletools.commons.views.MyTextView
+            android:id="@+id/event_contact_me_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/normal_margin"
+            android:layout_marginEnd="@dimen/activity_margin"
+            android:ellipsize="end"
+            android:gravity="end"
+            android:lines="1"
+            android:textSize="@dimen/bigger_text_size"
+            tools:text="@string/invited"/>
+
+    </RelativeLayout>
+</RelativeLayout>

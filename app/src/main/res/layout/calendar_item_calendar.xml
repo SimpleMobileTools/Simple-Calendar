@@ -14,8 +14,8 @@
         android:background="@null"
         android:clickable="false"
         android:paddingBottom="@dimen/activity_margin"
-        android:paddingLeft="@dimen/big_margin"
-        android:paddingRight="@dimen/activity_margin"
+        android:paddingStart="@dimen/big_margin"
+        android:paddingEnd="@dimen/activity_margin"
         android:paddingTop="@dimen/activity_margin"
         tools:text="Calendar name"/>
 

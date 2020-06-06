@@ -3,29 +3,34 @@
     <string name="app_name">Eenvoudige Agenda</string>
     <string name="app_launcher_name">Agenda</string>
     <string name="change_view">Weergave</string>
+    <string name="daily_view">Dag</string>
     <string name="weekly_view">Week</string>
     <string name="monthly_view">Maand</string>
     <string name="yearly_view">Jaar</string>
     <string name="simple_event_list">Lijst</string>
     <string name="no_upcoming_events">Niets gepland.</string>
-    <string name="add_some_events">Gebruik de plus-knop om iets te plannen.</string>
-    <string name="details">Details</string>
     <string name="go_to_today">Naar vandaag</string>
-    <string name="snooze">Uitstellen</string>
+    <string name="go_to_date">Naar datum</string>
+    <string name="upgraded_from_free">Het lijkt erop dat dit een upgrade is van de oude gratis versie. Dit betekent dat lokaal opgeslagen afspraken handmatig moeten worden overgezet via \'Afspraken naar .ics-bestand exporteren\' in de oude versie en daarna \'Afspraken uit .ics-bestand importeren\' in deze nieuwe versie. Beide opties zijn te vinden in het menu van het hoofdscherm.\n\nDaarna kan de oude versie, met de knop \'Upgrade naar Pro\' worden gedeïnstalleerd. De instellingen zullen ook opnieuw moeten worden geconfigureerd.</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Maandweergave</string>
     <string name="widget_list">Afsprakenlijst</string>
+    <string name="widget_todays_date">Agenda vandaag</string>
 
     <!-- Event -->
     <string name="event">Afspraak</string>
     <string name="edit_event">Afspraak bewerken</string>
     <string name="new_event">Nieuwe afspraak</string>
+    <string name="create_new_event">Een nieuwe afspraak maken</string>
+    <string name="duplicate_event">Afspraak namaken</string>
     <string name="title_empty">Titel kan niet leeg zijn</string>
     <string name="end_before_start">De begintijd valt na de eindtijd</string>
     <string name="event_added">Afspraak gemaakt</string>
     <string name="event_updated">Afspraak bijgewerkt</string>
     <string name="filter_events_by_type">Afspraken op type filteren</string>
+    <string name="please_fill_location">Vul de locatie in om deze op de kaart te tonen</string>
+    <string name="public_event_notification_text">Afspraak aanstaande</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Herhaling</string>
@@ -42,11 +47,12 @@
     <string name="event_is_repeatable">De afspraak wordt herhaald</string>
     <string name="selection_contains_repetition">De selectie bevat herhaalde afspraken</string>
     <string name="delete_one_only">Alleen huidige afspraak verwijderen</string>
+    <string name="delete_future_occurrences">Deze afspraak en hierop volgende herhalingen verwijderen</string>
     <string name="delete_all_occurrences">Al deze afspraken verwijderen</string>
     <string name="update_one_only">Alleen huidige afspraak bijwerken</string>
     <string name="update_all_occurrences">Alle afspraken bijwerken</string>
-    <string name="repeat_till_date">Herhalen tot een datum</string>
-    <string name="repeat_x_times">Aantal keren herhalen</string>
+    <string name="repeat_till_date">Herhalen tot datum</string>
+    <string name="stop_repeating_after_x">Herhaling stoppen na x keer</string>
     <string name="repeat_forever">Voor altijd herhalen</string>
     <string name="times">keer</string>
     <string name="repeat">Herhalen</string>
@@ -55,8 +61,9 @@
     <string name="selected_days">Op de volgende dagen</string>
     <string name="the_same_day">Dezelfde dag</string>
     <string name="the_last_day">De laatste dag</string>
-    <string name="repeat_on_the_same_day">Op dezelfde dag van de maand herhalen</string>
-    <string name="repeat_on_the_last_day">Op de laatste dag van de maand herhalen</string>
+    <string name="repeat_on_the_same_day_monthly">Op dezelfde dag van de maand herhalen</string>
+    <string name="repeat_on_the_last_day_monthly">Op de laatste dag van de maand herhalen</string>
+    <string name="repeat_on_the_same_day_yearly">Op dezelfde dag van ieder jaar herhalen</string>
     <string name="repeat_every_m">Herhalen op elke</string>
     <string name="every_m">Elke</string>
     <string name="first_m">eerste</string>
@@ -75,87 +82,49 @@
     <string name="fourth_f">vierde</string>
     <string name="last_f">laatste</string>
 
-    <plurals name="days">
-        <item quantity="one">%d dag</item>
-        <item quantity="other">%d dagen</item>
-    </plurals>
-
-    <plurals name="weeks">
-        <item quantity="one">%d week</item>
-        <item quantity="other">%d weken</item>
-    </plurals>
-
-    <plurals name="months">
-        <item quantity="one">%d maand</item>
-        <item quantity="other">%d maanden</item>
-    </plurals>
-
-    <plurals name="years">
-        <item quantity="one">%d jaar</item>
-        <item quantity="other">%d jaren</item>
-    </plurals>
-
     <!-- Birthdays -->
     <string name="birthdays">Verjaardagen</string>
     <string name="add_birthdays">Verjaardagen van contacten toevoegen</string>
-    <string name="no_birthdays">Geen verjaardagen van contacten gevonden</string>
-    <string name="birthdays_added">Verjaardagen van contacten toegevoegd</string>
+    <string name="no_birthdays">Geen verjaardagen gevonden</string>
+    <string name="no_new_birthdays">Geen nieuwe verjaardagen gevonden</string>
+    <string name="birthdays_added">Verjaardagen toegevoegd</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Feestdagen</string>
     <string name="add_anniversaries">Feestdagen van contacten toevoegen</string>
     <string name="no_anniversaries">Geen feestdagen gevonden</string>
+    <string name="no_new_anniversaries">Geen nieuwe feestdagen gevonden</string>
     <string name="anniversaries_added">Feestdagen toegevoegd</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Herinnering</string>
-    <string name="no_reminder">Geen herinnering</string>
-    <string name="at_start">Als afspraak begint</string>
-    <string name="custom">Aangepast</string>
     <string name="before">van tevoren</string>
-    <string name="minutes_raw">minuten</string>
-    <string name="hours_raw">uren</string>
-    <string name="days_raw">dagen</string>
     <string name="add_another_reminder">Herinnering toevoegen</string>
     <string name="event_reminders">Herinneringen</string>
 
-    <plurals name="minutes_before">
-        <item quantity="one">%d minuut van tevoren</item>
-        <item quantity="other">%d minuten van tevoren</item>
-    </plurals>
+    <!-- Event attendees -->
+    <string name="add_another_attendee">Persoon uitnodigen</string>
+    <string name="my_status">Mijn status:</string>
+    <string name="going">Aanwezig</string>
+    <string name="not_going">Niet aanwezig</string>
+    <string name="maybe_going">Misschien</string>
+    <string name="invited">Uitgenodigd</string>
 
-    <plurals name="hours_before">
-        <item quantity="one">%d uur van tevoren</item>
-        <item quantity="other">%d uren van tevoren</item>
-    </plurals>
-
-    <plurals name="days_before">
-        <item quantity="one">%d dag van tevoren</item>
-        <item quantity="other">%d dagen van tevoren</item>
-    </plurals>
+    <!-- Time zones -->
+    <string name="enter_a_country">Voer een land of tijdzone in</string>
 
     <!-- Export / Import -->
-    <string name="importing">Importeren…</string>
-    <string name="exporting">Exporteren…</string>
     <string name="import_events">Afspraken importeren</string>
     <string name="export_events">Afspraken exporteren</string>
-    <string name="import_events_from_ics">Afspraken uit een .ics-bestand importeren</string>
-    <string name="export_events_to_ics">Afspraken naar een .ics-bestand exporteren</string>
-    <string name="events_imported_successfully">Afspraken zijn geïmporteerd</string>
-    <string name="events_exported_successfully">Afspraken zijn geëxporteerd</string>
-    <string name="importing_events_failed">Fout bij importeren van afspraken</string>
-    <string name="exporting_events_failed">Fout bij exporteren van afspraken</string>
-    <string name="importing_some_events_failed">Sommige afspraken konden niet worden geïmporteerd</string>
-    <string name="exporting_some_events_failed">Sommige afspraken konden niet worden geëxporteerd</string>
-    <string name="default_event_type">Standaard afspraaktype</string>
-    <string name="no_events_for_exporting">Geen te exporteren afspraken gevonden</string>
+    <string name="import_events_from_ics">Afspraken uit .ics-bestand importeren</string>
+    <string name="export_events_to_ics">Afspraken naar .ics-bestand exporteren</string>
+    <string name="default_event_type">Standaardtype afspraken</string>
     <string name="export_past_events_too">Afspraken uit verleden ook exporteren</string>
     <string name="include_event_types">Afspraaktypes weergeven</string>
     <string name="filename_without_ics">Bestandsnaam (zonder .ics)</string>
-    <string name="no_title">Geen titel</string>
+    <string name="override_event_types">Afspraaktypes uit het bestand negeren</string>
 
     <!-- Event details -->
-    <string name="title">Titel</string>
     <string name="location">Locatie</string>
     <string name="description">Beschrijving</string>
     <string name="all_day">Hele dag</string>
@@ -181,29 +150,49 @@
     <string name="add_holidays">Feestdagen toevoegen</string>
     <string name="national_holidays">Nationale feestdagen</string>
     <string name="religious_holidays">Religieuze feestdagen</string>
-    <string name="holidays_imported_successfully">Feestdagen geïmporteerd als nieuw afspraaktype</string>
+    <string name="holidays_imported_successfully">De feestdagen zijn geïmporteerd onder afspraaktype \"Feestdagen\"</string>
     <string name="importing_some_holidays_failed">Sommige feestdagen konden niet worden geïmporteerd</string>
     <string name="importing_holidays_failed">Fout bij importeren van feestdagen</string>
 
     <!-- Settings -->
     <string name="manage_event_types">Afspraaktypes beheren</string>
-    <string name="use_24_hour_format">24-uursformaat gebruiken</string>
-    <string name="sunday_first">Zondag als eerste dag van de week</string>
     <string name="start_day_at">Dag starten om</string>
     <string name="end_day_at">Dag beëindigen om</string>
     <string name="week_numbers">Weeknummers tonen</string>
     <string name="vibrate">Trillen bij notificaties</string>
     <string name="reminder_sound">Geluid voor herinnering</string>
-    <string name="default_event_reminder">Standaardherinnering</string>
     <string name="no_ringtone_picker">Geen app gevonden om geluid te kiezen</string>
     <string name="no_ringtone_selected">Geen</string>
     <string name="day_end_before_start">De begintijd valt na de eindtijd</string>
     <string name="caldav_sync">CalDAV-synchronisatie</string>
     <string name="event_lists">Afsprakenlijst</string>
     <string name="display_past_events">Afgelopen afspraken tonen</string>
-    <string name="snooze_delay">Herinnering uitstellen met</string>
-    <string name="widgets">Widgets</string>
-    <string name="replace_description_with_location">Beschrijving vervangen door Locatie in lijstweergave</string>
+    <string name="replace_description_with_location">Beschrijving vervangen door locatie van afspraken</string>
+    <string name="delete_all_events">Alle afspraken verwijderen</string>
+    <string name="delete_all_events_confirmation">Alle afspraken verwijderen? Afspraaktypes en andere instellingen blijven behouden.</string>
+    <string name="show_a_grid">Rasterlijnen tonen</string>
+    <string name="loop_reminders">Herinneringen blijven herhalen totdat ze zijn uitgezet</string>
+    <string name="dim_past_events">Afgelopen afspraken dimmen</string>
+    <string name="events">Afspraken</string>
+    <string name="reminder_stream">Type geluiden voor herinneringen gebruiken</string>
+    <string name="system_stream">Systeem</string>
+    <string name="alarm_stream">Alarm</string>
+    <string name="notification_stream">Notificatie</string>
+    <string name="ring_stream">Beltoon</string>
+    <string name="use_last_event_reminders">Ingestelde herinneringen bij laatste afspraak als standaard voor nieuwe afspraken gebruiken</string>
+    <string name="default_reminder_1">Standaardherinnering 1</string>
+    <string name="default_reminder_2">Standaardherinnering 2</string>
+    <string name="default_reminder_3">Standaardherinnering 3</string>
+    <string name="view_to_open_from_widget">Weergave bij openen vanuit widget met afsprakenlijst</string>
+    <string name="last_view">Last view</string>
+    <string name="new_events">Nieuwe afspraken</string>
+    <string name="default_start_time">Standaard begintijd</string>
+    <string name="next_full_hour">Eerstvolgende hele uur</string>
+    <string name="default_duration">Standaard duur</string>
+    <string name="last_used_one">Laatst gebruikt</string>
+    <string name="other_time">Andere tijd</string>
+    <string name="highlight_weekends">Weekends markeren</string>
+    <string name="allow_changing_time_zones">Bewerken van tijdzone voor afspraken toestaan</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -216,47 +205,10 @@
     <string name="editing_calendar_failed">Agenda bijwerken mislukt</string>
     <string name="syncing">Synchroniseren…</string>
     <string name="synchronization_completed">Synchroniseren voltooid</string>
-
-    <plurals name="by_minutes">
-        <item quantity="one">%d minuut</item>
-        <item quantity="other">%d minuten</item>
-    </plurals>
-
-    <plurals name="by_hours">
-        <item quantity="one">%d uur</item>
-        <item quantity="other">%d uren</item>
-    </plurals>
-
-    <string name="never">Nooit</string>
-
-    <string name="january">Januari</string>
-    <string name="february">Februari</string>
-    <string name="march">Maart</string>
-    <string name="april">April</string>
-    <string name="may">Mei</string>
-    <string name="june">Juni</string>
-    <string name="july">Juli</string>
-    <string name="august">Augustus</string>
-    <string name="september">September</string>
-    <string name="october">Oktober</string>
-    <string name="november">November</string>
-    <string name="december">December</string>
-
-    <string name="monday_letter">M</string>
-    <string name="tuesday_letter">D</string>
-    <string name="wednesday_letter">W</string>
-    <string name="thursday_letter">D</string>
-    <string name="friday_letter">V</string>
-    <string name="saturday_letter">Z</string>
-    <string name="sunday_letter">Z</string>
-
-    <string name="monday">Maandag</string>
-    <string name="tuesday">Dinsdag</string>
-    <string name="wednesday">Woensdag</string>
-    <string name="thursday">Donderdag</string>
-    <string name="friday">Vrijdag</string>
-    <string name="saturday">Zaterdag</string>
-    <string name="sunday">Zondag</string>
+    <string name="select_a_different_caldav_color">Kies een andere kleur (mogelijk alleen voor dit apparaat)</string>
+    <string name="insufficient_permissions">Kan geen wijzigingen aanbrengen in deze agenda</string>
+    <string name="caldav_event_not_found">Afspraak niet gevonden. Schakel via Instellingen de CalDAV-synchronisatie in voor deze agenda.</string>
+    <string name="no_synchronized_calendars">Er zijn geen gesynchroniseerde agenda\'s gevonden.</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
@@ -278,21 +230,68 @@
     <string name="sample_description_4">Aan de kade</string>
     <string name="sample_title_5">Koffietijd</string>
 
+    <!-- FAQ -->
+    <string name="faq_1_title">Hoe kan ik de feestdagen die zijn geïmporteerd via \"Feestdagen toevoegen\" weer verwijderen?</string>
+    <string name="faq_1_text">Deze feestdagen hebben het afspraaktype \"Feestdagen\". Om de feestdagen te verwijderen, ga naar Instellingen -> Afspraaktypes beheren,
+        druk lang op \"Feestdagen\" en druk vervolgens op de prullenbak.</string>
+    <string name="faq_2_title">Kan ik mijn afspraken synchroniseren met Google Calendar of een andere service die CalDAV ondersteunt?</string>
+    <string name="faq_2_text">Schakel \"CalDAV-synchronisatie\" in bij Instellingen en selecteer vervolgens de agenda\'s die gesynchroniseerd moeten worden. Er is wel een app nodig die de synchronisatie tussen het apparaat en de service zelf afhandelt.
+        Betreft het een agenda van Google Calendar, dan voldoet hun officiële app. Voor andere services zal een adapter zoals DAVx5 benodigd zijn.</string>
+    <string name="faq_3_title">Ik krijg wel herinneringen, maar ik hoor geen notificatiegeluid. Wat kan ik doen?</string>
+    <string name="faq_3_text">Geluiden afspelen bij een herinnering is sterk afhankelijk van het systeem. Als er geen geluid te horen is, ga dan naar instellingen en pas de optie
+        \"Type geluiden voor herinneringen gebruiken\" aan. Als dat niet werkt, controleer dan bij de geluidsinstellingen van Android of het volume van dit geluidstype niet te laag is ingesteld.</string>
+    <string name="faq_4_title">Ondersteunt de app tijdzones?</string>
+    <string name="faq_4_text">Ja. Normaliter zullen nieuwe afspraken de huidige tijdzone krijgen toegewezen. De tijdzone van een afspraak kan worden gewijzigd door
+        de optie voor tijdzones in de instellingen te activeren. Hierna kan de tijdzone worden opgegeven in de afspraakdetails. De instelling is standaard niet ingeschakeld, omdat de meeste mensen het niet nodig zullen hebben.</string>
+
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
+    <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
+    <string name="app_title">Eenvoudige Agenda Pro - Afspraken &amp; Herinneringen</string>
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Een simpele agenda met aan te passen widget en zonder advertenties.</string>
+    <string name="app_short_description">Eenvoudige mobiele agenda. Plannen &amp; afspraken maken voor iedere dag</string>
     <string name="app_long_description">
-        Een simpele agenda met optionele CalDAV-synchronisatie. Creëer met gemak herhaalde afspraken met herinneringen. Kan weeknummers tonen.
+        Eenvoudige Agenda Pro is een volledig aan te passen offline agenda, ontwikkeld om precies te doen waar een agenda voor bedoeld is. <b>Geen ingewikkelde poespas of onnodige machtigingen, en zonder advertenties!</b>
 
-        Heeft een 4x4 widget, waarbij grootte, achtergrond- en tekstkleuren zijn aan te passen.
+        Of het nu gaat om enkele of herhaalde afspraken, verjaardagen, jubilea, vergaderingen of wat dan ook, Eenvoudige Agenda Pro maakt het <b>eenvoudig om georganiseerd te blijven</b>. Met een grote <b>verscheidenheid aan instellingen</b> kunnen herinneringen, geluiden, widgets en het uiterlijk van de app worden aangepast naar wens.
 
-        Bevat geen advertenties of onnodige permissies. Volledig open-source. Kleuren van de app kunnen worden aangepast.
+        Dag-, week-, maand- en jaaroverzichten maken het zeer eenvoudig om inzicht te krijgen in aankomende afspraken. Zelfs het inzien van de afspraken in lijstvorm is mogelijk, zodat <b>niets aan de aandacht ontsnapt</b>.
 
-        De permissie voor externe opslag is alleen nodig voor het importeren/exporteren van afspraken in .ics-bestanden.
+        ----------------------------------------------------------
+        <b>Eenvoudige Agenda Pro – Functies &amp; Voordelen</b>
+        ----------------------------------------------------------
 
-        De permissie voor contacten wordt alleen gebruikt voor het importeren van verjaardagen van contacten.
+        ✔️ Geen advertenties of vervelende pop-ups
+        ✔️ Geen internettoegang benodigd, voor meer privacy &amp; veiligheid
+        ✔️ Geen onnodige machtigingen vereist
+        ✔️ Met de nadruk op eenvoud: doet precies wat een agenda moet doen!
+        ✔️ Open-source
+        ✔️ Pas het uiterlijk van agenda en widgets aan met eigen thema’s
+        ✔️ Beschikbaar in 29 talen
+        ✔️ Exporteer de instellingen naar een .txt-bestand om te migreren naar andere apparaten
+        ✔️ Ondersteuning voor het synchroniseren van agenda’s via CalDAV
+        ✔️ Dag-, week-, maand- en jaaroverzichten
+        ✔️ Ondersteuning voor het importeren &amp; exporteren van afspraken via .ics-bestanden
+        ✔️ Stel meerdere herinneringen per afspraak in, inclusief geluid en/of trillen
+        ✔️ Snooze-optie voor herinneringen
+        ✔️ Voeg snel en gemakkelijk feestdagen, verjaardagen, jubilea &amp; afspraken toe
+        ✔️ Bewerk afspraakdetails: starttijd, duur, herinneringen etc.
+        ✔️ Nodig personen uit voor een afspraak
+        ✔️ Gebruik een persoonlijke of een zakelijke agenda
+        ✔️ Kies voor e-mailnotificaties als herinnering voor afspraken
 
-        Deze app is onderdeel van een grotere verzameling. Vind de andere apps op http://www.simplemobiletools.com
+        DOWNLOAD EENVOUDIGE AGENDA PRO – DE AGENDA ZONDER ADVERTENTIES!
+
+        <b>Probeer ook eens de andere apps van Simple Tools:</b>
+        https://www.simplemobiletools.com
+
+        <b>Website voor Eenvoudige Agenda Pro:</b>
+        https://www.simplemobiletools.com/calendar
+
+        <b>Facebook:</b>
+        https://www.facebook.com/simplemobiletools
+
+        <b>Reddit:</b>
+        https://www.reddit.com/r/SimpleMobileTools
     </string>
 
     <!--

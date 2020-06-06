@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">التقويم البسيط</string>
+    <string name="app_launcher_name">التقويم</string>
+    <string name="change_view">تعديل العرض</string>
+    <string name="daily_view">عرض يومي</string>
+    <string name="weekly_view">عرض أسبوعي</string>
+    <string name="monthly_view">عرض شهري</string>
+    <string name="yearly_view">عرض سنوي</string>
+    <string name="simple_event_list">لائحة أحداث بسيطة</string>
+    <string name="no_upcoming_events">يبدو انه ليس لديك أى أحداث قادمة.</string>
+    <string name="go_to_today">اذهب الى اليوم</string>
+    <string name="go_to_date">اذهب الى تاريخ</string>
+    <string name="upgraded_from_free">"مرحبا، يبدو أنك قمت بتحديثمن النسخة القديمة للتطبيق. يجب عليك نقل الأحداث المحفوظة يدويا عن طريق تصدير ملف ics ثم تحميله. "</string>
+
+    <!-- Widget titles -->
+    <string name="widget_monthly">تقويم شهري</string>
+    <string name="widget_list">لائحة أحداث التقويم</string>
+    <string name="widget_todays_date">Calendar today\'s date</string>
+
+    <!-- Event -->
+    <string name="event">حدث</string>
+    <string name="edit_event">تعديل حدث</string>
+    <string name="new_event">حدث جديد</string>
+    <string name="create_new_event">إضافة حدث جديد</string>
+    <string name="duplicate_event">تكرار حدث</string>
+    <string name="title_empty">العنوان لا يمكن تركه فارغاً</string>
+    <string name="end_before_start">لا يمكن أن ينتهي الحدث قبل بدايته</string>
+    <string name="event_added">تمت إضافة الحدث</string>
+    <string name="event_updated">تم تعديل الحدث</string>
+    <string name="filter_events_by_type">تصفية الأحداث حسب النوع</string>
+    <string name="please_fill_location">أدخل الإحداثية كي يتم عرضها على الخريطة</string>
+    <string name="public_event_notification_text">اقتراب موعد حدث</string>
+
+    <!-- Event Repetition -->
+    <string name="repetition">تكرار</string>
+    <string name="no_repetition">بدون تكرار</string>
+    <string name="daily">يومي</string>
+    <string name="weekly">أسبوعي</string>
+    <string name="monthly">شهري</string>
+    <string name="yearly">سنوي</string>
+    <string name="weeks_raw">أسابيع</string>
+    <string name="months_raw">أشهر</string>
+    <string name="years_raw">سنوات</string>
+    <string name="repeat_till">تكرار حتى</string>
+    <string name="forever">للأبد</string>
+    <string name="event_is_repeatable">الحدث متكرر</string>
+    <string name="selection_contains_repetition">الإختيار يحتوى على احداث مكررة</string>
+    <string name="delete_one_only">حذف النسخ المحددة فقط</string>
+    <string name="delete_future_occurrences">حذف هذه النسخة وكل النسخ المستقبلية</string>
+    <string name="delete_all_occurrences">حذف جميع النسخ</string>
+    <string name="update_one_only">تم تحديث النسخ المحددة فقط</string>
+    <string name="update_all_occurrences">تحديث جميع النسخ</string>
+    <string name="repeat_till_date">كرر حتي تاريخ</string>
+    <string name="stop_repeating_after_x">توقف عن التكرار بعد x نسخة</string>
+    <string name="repeat_forever">تكرار للأبد</string>
+    <string name="times">أوقات</string>
+    <string name="repeat">تكرار</string>
+    <string name="repeat_on">تكرار عند</string>
+    <string name="every_day">كل يوم</string>
+    <string name="selected_days">في الأيام المحددة</string>
+    <string name="the_same_day">نفس اليوم</string>
+    <string name="the_last_day">اليوم الأخير</string>
+    <string name="repeat_on_the_same_day_monthly">تكرار في نفس اليوم شهرياً</string>
+    <string name="repeat_on_the_last_day_monthly">تكرار في اليوم الأخير من الشهر</string>
+    <string name="repeat_on_the_same_day_yearly">تكرار في نفس اليوم سنوياً</string>
+    <string name="repeat_every_m">تكرار كل</string>
+    <string name="every_m">كل</string>
+    <string name="first_m">أول</string>
+    <string name="second_m">ثاني</string>
+    <string name="third_m">ثالث</string>
+    <string name="fourth_m">رابع</string>
+    <string name="last_m">أخير</string>
+
+    <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
+    <!-- used in repetition, like "Every first Sunday" -->
+    <string name="repeat_every_f">تكرار كل</string>
+    <string name="every_f">كل</string>
+    <string name="first_f">أول</string>
+    <string name="second_f">ثاني</string>
+    <string name="third_f">ثالث</string>
+    <string name="fourth_f">رابع</string>
+    <string name="last_f">أخير</string>
+
+    <!-- Birthdays -->
+    <string name="birthdays">تواريخ الميلاد</string>
+    <string name="add_birthdays">إضافة تاريخ ميلاد جهة إتصال</string>
+    <string name="no_birthdays">لم يتم إيجاد تواريخ ميلاد</string>
+    <string name="no_new_birthdays">لم يتم العثور على تواريخ ميلاد جديدة</string>
+    <string name="birthdays_added">تمت إضافة تواريخ الميلاد بنجاح</string>
+
+    <!-- Anniversaries -->
+    <string name="anniversaries">المناسبات</string>
+    <string name="add_anniversaries">إضافة مناسبات جهة إتصال</string>
+    <string name="no_anniversaries">لم يتم العثور على مناسبات سنوية</string>
+    <string name="no_new_anniversaries">لم يتم العثور على مناسبات سنوية</string>
+    <string name="anniversaries_added">تمت إضافة المناسبات</string>
+
+    <!-- Event Reminders -->
+    <string name="reminder">تذكير</string>
+    <string name="before">قبل</string>
+    <string name="add_another_reminder">إضافة تذكير آخر</string>
+    <string name="event_reminders">تذكيرات الحدث</string>
+
+    <!-- Event attendees -->
+    <string name="add_another_attendee">اضف مشترك اخر</string>
+    <string name="my_status">حالتي:</string>
+    <string name="going">ذاهب</string>
+    <string name="not_going">لن أذهب</string>
+    <string name="maybe_going">ربما أذهب</string>
+    <string name="invited">مدعو</string>
+
+    <!-- Time zones -->
+    <string name="enter_a_country">Enter a country or time zone</string>
+
+    <!-- Export / Import -->
+    <string name="import_events">إستيراد الأحداث</string>
+    <string name="export_events">تصدير الأحداث</string>
+    <string name="import_events_from_ics">إستيراد أحداث من ملف ics</string>
+    <string name="export_events_to_ics">تصدير أحداث إلى ملف ics</string>
+    <string name="default_event_type">نوع حدث إفتراضي</string>
+    <string name="export_past_events_too">تصدير الأحداث السابقة أيضاً</string>
+    <string name="include_event_types">أضف أنواع الأحداث</string>
+    <string name="filename_without_ics">اسم ملف (بدون ics)</string>
+    <string name="override_event_types">تجاوز أنواع الأحداث في الملف</string>
+
+    <!-- Event details -->
+    <string name="location">الموقع</string>
+    <string name="description">الوصف</string>
+    <string name="all_day">كامل اليوم</string>
+
+    <!-- Weekly view -->
+    <string name="week">أسبوع</string>
+
+    <!-- Event types -->
+    <string name="event_types">أنواع الأحداث</string>
+    <string name="add_new_type">إضافة نوع جديد</string>
+    <string name="edit_type">تعديل نوع</string>
+    <string name="type_already_exists">يوجد نوع بهذا العنوان</string>
+    <string name="color">اللون</string>
+    <string name="regular_event">حدث إعتيادي</string>
+    <string name="cannot_delete_default_type">لا يمكن حذف الحدث الإفتراضي</string>
+    <string name="select_event_type">اختر نوع حدث</string>
+    <string name="move_events_into_default">انقل الأحداث المتأثرة الى نوع الحدث الافتراضي</string>
+    <string name="remove_affected_events">احذف الأحداث المتأثرة نهائيا</string>
+    <string name="unsync_caldav_calendar">لحذف تقويم CalDAV يجب أن توقف مزامنته</string>
+
+    <!-- Holidays -->
+    <string name="holidays">العطلات</string>
+    <string name="add_holidays">إضافة عطلة</string>
+    <string name="national_holidays">العطلات الوطنية</string>
+    <string name="religious_holidays">العطل الدينية</string>
+    <string name="holidays_imported_successfully">تم استيراد العطلات في الأحداث بنوع \"عطلات\"</string>
+    <string name="importing_some_holidays_failed">فشل في استيراد بعض الأحداث</string>
+    <string name="importing_holidays_failed">فشل في استيراد العطلات</string>
+
+    <!-- Settings -->
+    <string name="manage_event_types">إدارة أنواع الأحداث</string>
+    <string name="start_day_at">ابدأ اليوم عند</string>
+    <string name="end_day_at">نهاية الحدث</string>
+    <string name="week_numbers">عرض أرقام الأسبوع</string>
+    <string name="vibrate">إهتزاز عند الإشعار</string>
+    <string name="reminder_sound">صوت التذكير</string>
+    <string name="no_ringtone_picker">لم يتم العثور على تطبيق مناسب لإعداد نغمة الرنين</string>
+    <string name="no_ringtone_selected">لا شئ</string>
+    <string name="day_end_before_start">لا يمكن إنهاء اليوم قبل وقت بدايته</string>
+    <string name="caldav_sync">CalDAV مُزامنة</string>
+    <string name="event_lists">قوائم الأحداث</string>
+    <string name="display_past_events">عرض أحداث ماضية</string>
+    <string name="replace_description_with_location">استبدل وصف الحدث بالموقع</string>
+    <string name="delete_all_events">حذف جميع الأحداث</string>
+    <string name="delete_all_events_confirmation">هل حقا تريد حذف جميع الأحداث؟ ستبقى جميع \'أنواع الأحداث\' والإعدادات الأخرى سليمة.</string>
+    <string name="show_a_grid">إظهار شبكة</string>
+    <string name="loop_reminders">"كرر التنبيهات حتى إلغاءها "</string>
+    <string name="dim_past_events">إخفات الأحداث السابقة</string>
+    <string name="events">أحداث</string>
+    <string name="reminder_stream">صوت يستخدم مع التنبيه</string>
+    <string name="system_stream">النظام</string>
+    <string name="alarm_stream">منبه</string>
+    <string name="notification_stream">تنبيه</string>
+    <string name="ring_stream">حلقة</string>
+    <string name="use_last_event_reminders">استخدم أخر تنبيهات الأحداث افتراضيا للأحداث الجديدة</string>
+    <string name="default_reminder_1">مذكرة افتراضية ١</string>
+    <string name="default_reminder_2">مذكرة افتراضية ٢</string>
+    <string name="default_reminder_3">مذكرة افتراضية ٣</string>
+    <string name="view_to_open_from_widget">العرض المفتوح من مربع قائمة الأحداث</string>
+    <string name="last_view">العرض الأخير</string>
+    <string name="new_events">أحداث جديدة</string>
+    <string name="default_start_time">وقت البدأ الافتراضي</string>
+    <string name="next_full_hour">الساعة القادمة بالكامل</string>
+    <string name="default_duration">الفترة الافتراضية</string>
+    <string name="last_used_one">آخر واحد مستخدَم</string>
+    <string name="other_time">وقت آخر</string>
+    <string name="highlight_weekends">ظلل نهايات الأسبوع في بعض العروض</string>
+    <string name="allow_changing_time_zones">Allow changing event time zones</string>
+
+    <!-- CalDAV sync -->
+    <string name="caldav">CalDAV</string>
+    <string name="select_caldav_calendars">اختر التقويمات للمزامنة</string>
+    <string name="manage_synced_calendars">ادارة التقويمات المتزامنة</string>
+    <string name="store_locally_only">حفظ محليا فقط</string>
+    <string name="refresh_caldav_calendars">تحديث تقويمات CalDAV</string>
+    <string name="refreshing">جاري التحديث...</string>
+    <string name="refreshing_complete">اكتمال التحديث</string>
+    <string name="editing_calendar_failed">فشل في تعديل التقويم</string>
+    <string name="syncing">جارى المزامنة...</string>
+    <string name="synchronization_completed">اكتمال المزامنة</string>
+    <string name="select_a_different_caldav_color">اختر لون مختلف (يمكن تطبيقه محليا فقط)</string>
+    <string name="insufficient_permissions">لا يمكنك التعديل في هذا التقويم</string>
+    <string name="caldav_event_not_found">مناسبة غير موجودة. من فضلك فَعّل مُزامنة CalDAV للحصول على التقويم المناسب من الإعدادات.</string>
+    <string name="no_synchronized_calendars">No synchronizable calendars have been found</string>
+
+    <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
+    <!-- used in repetition, like "Every last Sunday" -->
+    <string name="monday_alt">الإثنين</string>
+    <string name="tuesday_alt">الثلاثاء</string>
+    <string name="wednesday_alt">الأربعاء</string>
+    <string name="thursday_alt">الخميس</string>
+    <string name="friday_alt">الجمعة</string>
+    <string name="saturday_alt">السبت</string>
+    <string name="sunday_alt">الأحد</string>
+
+    <!-- List widget config example events -->
+    <string name="sample_title_1">تمرين</string>
+    <string name="sample_description_1">يوم الرِجل</string>
+    <string name="sample_title_2">مقابلة مع جون</string>
+    <string name="sample_description_2">في حديقة روكستون</string>
+    <string name="sample_title_3">مكتبة</string>
+    <string name="sample_title_4">غداء مع ماري</string>
+    <string name="sample_description_4">في الساحة العامة</string>
+    <string name="sample_title_5">وقت القهوة</string>
+
+    <!-- FAQ -->
+    <string name="faq_1_title">كيف يمكنني حذف العطلات المنقولة عن طريق زر \"أضف عطلات\"؟</string>
+    <string name="faq_1_text">العطلات المضافة بهذه الطريقة تدخل تحت نوع جديد يسمى \"العطلات\". يمكنك الذهاب الى الإعدادات -> إدارة أنواع الأحداث، ثم اضغط مطولا على نوع الحدث واحذفه عن طريق اختيار سلة المهملات.</string>
+    <string name="faq_2_title">هل يمكنني مزامنة أحداثي عن طريق تقويم جوجل، أو أى خدمة أخرى تدعم CalDAV؟</string>
+    <string name="faq_2_text">
+        نعم، فقط اعكس حالة \"CalDAV مزامنة\" في إعدادات التطبيق واختر التقويمات التي تريد مزامنتها
+        ولكن، ستحتاج الى برنامج آخر لتنظيم المزامنة بين الجهاز والخادم.
+        إذا كنت تريد مزامنة تقويم جوجل، فبرنامج التقويم الرسمي لديهم سيقوم بالمهمة.
+        للتقويمات الأخرى ستحتاج الى بنامج منظم خارجي مثل DAVdroid.
+    </string>
+    <string name="faq_3_title">أرى التنبيه البصرى، ولكن لا أسمع صوتا. ماذا يمكنني أن أفعل؟</string>
+    <string name="faq_3_text">
+        ليس فقط عرض التنبيه الفعلي ما يتأثر بشدة بالنظام، ولكن تشغيل الصوت يتأثر بشدة أيضا.
+        إن كنت لا تستطيع سماع أى صوت، جرب الذهاب لإعدادات الهاتف، واضغط على خيار \"الصوت المستخدم في التنبيهات\" وبدّلة لأى اختيار آخر.
+        إن ظل الصوت لا يعمل، تأكد في إعدادات الصوت الخاصة بك، إن لم يكن هذا الصوت تحديدا قد تم كتمه.
+    </string>
+    <string name="faq_4_title">Does the app support time zones?</string>
+    <string name="faq_4_text">Yes, it does. By default all events are created in your current time zone. If you want to change an events\' time zone,
+        you will first have to enable the time zone picker at the app settings, then change it at the Event Details screen. It is disabled by default as most people won\'t need it.</string>
+
+    <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
+    <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
+    <string name="app_title">التقويم البسيط الاحترافي - مناسبات وتنبيهات</string>
+    <!-- Short description has to have less than 80 chars -->
+    <string name="app_short_description">Simple mobile 2020 calendar. Schedule planner &amp; appointment reminder for any day</string>
+    <string name="app_long_description">
+        Simple Calendar Pro is a fully customizable, offline calendar designed to do exactly what a calendar should do. <b>No complicated features, unnecessary permissions and no ads!</b>
+
+        Whether you’re organizing single or recurring events, birthdays, anniversaries, business meetings, appointments or anything else, Simple Calendar Pro makes it <b>easy to stay organized</b>. With an incredible variety of <b>customization options</b> you can customize event reminders, notification sounds, calendar widgets and how the app looks.
+
+        Daily, weekly and monthly views make checking your upcoming events &amp; appointments a breeze. You can even view everything as a simple list of events rather than in calendar view, so you <b>know exactly what’s coming up in your life and when. </b>
+
+        ----------------------------------------------------------
+        <b>Simple Calendar Pro – Features &amp; Benefits</b>
+        ----------------------------------------------------------
+
+        ✔️ No ads or annoying popups
+        ✔️ No internet access needed, giving you more privacy &amp; security
+        ✔️ Only the bare minimum permissions required
+        ✔️ Emphasis on simplicity – does what a calendar needs to do!
+        ✔️ Open source
+        ✔️ Fully customizable themes &amp; calendar / event widgets
+        ✔️ Translated into 29 languages
+        ✔️ Export settings to .txt files to import to another device
+        ✔️ CalDAV calendar sync supported to sync events across devices
+        ✔️ Daily, weekly, monthly, yearly &amp; event views on the calendar
+        ✔️ Supports exporting &amp; importing events via .ics files
+        ✔️ Set multiple event reminders, customize event reminder sound and vibration
+        ✔️ Snooze option for reminders
+        ✔️ Easily add holidays, birthdays, anniversaries &amp; appointments
+        ✔️ Customize events – start time, duration, reminders etc
+        ✔️ Add event attendees to each event
+        ✔️ Use as a personal calendar or a business calendar
+        ✔️ Choose between reminders &amp; email notifications to alert you about an event
+
+        DOWNLOAD SIMPLE CALENDAR PRO – THE SIMPLE OFFLINE CALENDAR WITH NO ADS!
+
+        <b>Check out the full suite of Simple Tools here:</b>
+        https://www.simplemobiletools.com
+
+        <b>Standalone website of Simple Calendar Pro:</b>
+        https://www.simplemobiletools.com/calendar
+
+        <b>Facebook:</b>
+        https://www.facebook.com/simplemobiletools
+
+        <b>Reddit:</b>
+        https://www.reddit.com/r/SimpleMobileTools
+    </string>
+
+    <!--
+        Haven't found some strings? There's more at
+        https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
+    -->
+</resources>

@@ -1,29 +1,51 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'de.timfreiheit.resourceplaceholders'
+
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+def keystoreProperties = new Properties()
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "com.simplemobiletools.calendar"
-        minSdkVersion 16
-        targetSdkVersion 27
-        versionCode 106
-        versionName "3.0.1"
+        applicationId "com.simplemobiletools.calendar.pro"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 177
+        versionName "6.9.4"
         multiDexEnabled true
         setProperty("archivesBaseName", "calendar")
+        vectorDrawables.useSupportLibrary = true
     }
 
     signingConfigs {
-        release
+        if (keystorePropertiesFile.exists()) {
+            release {
+                keyAlias keystoreProperties['keyAlias']
+                keyPassword keystoreProperties['keyPassword']
+                storeFile file(keystoreProperties['storeFile'])
+                storePassword keystoreProperties['storePassword']
+            }
+        }
     }
 
     buildTypes {
+        debug {
+            applicationIdSuffix ".debug"
+        }
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
+            if (keystorePropertiesFile.exists()) {
+                signingConfig signingConfigs.release
+            }
         }
     }
 
@@ -35,38 +57,19 @@ android {
         checkReleaseBuilds false
         abortOnError false
     }
-}
 
-ext {
-    leakCanaryVersion = '1.5.4'
+    resourcePlaceholders {
+        files = ['xml/shortcuts.xml']
+    }
 }
 
 dependencies {
-    implementation 'com.simplemobiletools:commons:3.4.12'
-    implementation 'joda-time:joda-time:2.9.9'
-    implementation 'com.facebook.stetho:stetho:1.5.0'
-    implementation 'com.android.support:multidex:1.0.2'
-    implementation 'com.google.code.gson:gson:2.8.2'
+    implementation 'com.simplemobiletools:commons:5.28.23'
+    implementation 'joda-time:joda-time:2.10.1'
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta4'
 
-    debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakCanaryVersion"
-    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leakCanaryVersion"
-}
-
-Properties props = new Properties()
-def propFile = new File('signing.properties')
-if (propFile.canRead()) {
-    props.load(new FileInputStream(propFile))
-
-    if (props != null && props.containsKey('STORE_FILE') && props.containsKey('KEY_ALIAS') && props.containsKey('PASSWORD')) {
-        android.signingConfigs.release.storeFile = file(props['STORE_FILE'])
-        android.signingConfigs.release.storePassword = props['PASSWORD']
-        android.signingConfigs.release.keyAlias = props['KEY_ALIAS']
-        android.signingConfigs.release.keyPassword = props['PASSWORD']
-    } else {
-        println 'signing.properties found but some entries are missing'
-        android.buildTypes.release.signingConfig = null
-    }
-} else {
-    println 'signing.properties not found'
-    android.buildTypes.release.signingConfig = null
+    kapt 'androidx.room:room-compiler:2.2.5'
+    implementation 'androidx.room:room-runtime:2.2.5'
+    annotationProcessor 'androidx.room:room-compiler:2.2.5'
 }
