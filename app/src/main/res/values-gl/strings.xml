@@ -8,15 +8,15 @@
     <string name="monthly_view">Vista mensual</string>
     <string name="yearly_view">Vista anual</string>
     <string name="simple_event_list">Lista de eventos simple</string>
-    <string name="no_upcoming_events">Semella que non ten ningún evento próximo.</string>
+    <string name="no_upcoming_events">Semella que non tes ningún evento próximo.</string>
     <string name="go_to_today">Ir ao día de hoxe</string>
     <string name="go_to_date">Ir a unha data</string>
-    <string name="upgraded_from_free">Hey,\n\nseems like you upgraded from the old free app. You have to migrate locally stored events manually via exporting in an .ics file, then importing. You can find both export/import buttons at the main screen menu.\n\nYou can then uninstall the old version, which has an \'Upgrade to Pro\' button at the top of the app settings. You will then only have to reset your app settings.\n\nThanks!</string>
+    <string name="upgraded_from_free">Hey,\n\nsemella que actualizaches desde a antiga versión gratuíta. Tes que migrar os eventos gardados localmente exportándoos manualmente a un ficheiro .ics e despois importandoos. Podes atopar o botón exportar/importar no menú da pantalla principal.\n\nApós podes desinstalar a versión antiga, que ten o botón \'Mellorar a Pro\' arriba nos axustes da app. Finalmente só terás que restablecer os axustes da app.\n\nGrazas!</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Calendario mensual</string>
     <string name="widget_list">Lista de eventos do calendario</string>
-    <string name="widget_todays_date">Calendar today\'s date</string>
+    <string name="widget_todays_date">Calendario no día actual</string>
 
     <!-- Event -->
     <string name="event">Evento</string>
@@ -24,17 +24,17 @@
     <string name="new_event">Novo evento</string>
     <string name="create_new_event">Crear evento novo</string>
     <string name="duplicate_event">Duplicar evento</string>
-    <string name="title_empty">O título non pode estar baldeiro</string>
+    <string name="title_empty">O título non pode estar baleiro</string>
     <string name="end_before_start">O evento non pode rematar antes de iniciarse</string>
     <string name="event_added">Evento engadido con éxito</string>
     <string name="event_updated">O evento foi actualizado correctamente</string>
     <string name="filter_events_by_type">Filtrar eventos por tipo</string>
-    <string name="please_fill_location">Introduza unha localización para que se mostre nun mapa</string>
+    <string name="please_fill_location">Escribe a localización para que se mostre nun mapa</string>
     <string name="public_event_notification_text">Hai un evento próximo</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Repetición</string>
-    <string name="no_repetition">Sin repetición</string>
+    <string name="no_repetition">Sen repetición</string>
     <string name="daily">Diariamente</string>
     <string name="weekly">Semanalmente</string>
     <string name="monthly">Mensualmente</string>
@@ -45,11 +45,11 @@
     <string name="repeat_till">Repetir ata</string>
     <string name="forever">Sempre</string>
     <string name="event_is_repeatable">O evento é repetible</string>
-    <string name="selection_contains_repetition">A seleción contén eventos recurrentes</string>
-    <string name="delete_one_only">Eliminar só o evento selecionado</string>
+    <string name="selection_contains_repetition">A selección contén eventos recurrentes</string>
+    <string name="delete_one_only">Eliminar só o evento seleccionado</string>
     <string name="delete_future_occurrences">Eliminar este e todos os eventos futuros</string>
     <string name="delete_all_occurrences">Eliminar todos os eventos</string>
-    <string name="update_one_only">Actualizar só o evento selecionado</string>
+    <string name="update_one_only">Actualizar só o evento seleccionado</string>
     <string name="update_all_occurrences">Actualizar todos os eventos</string>
     <string name="repeat_till_date">Repetir ata a data</string>
     <string name="stop_repeating_after_x">Deixar de repetir despois de x eventos</string>
@@ -58,10 +58,10 @@
     <string name="repeat">Repetir</string>
     <string name="repeat_on">Repertir os</string>
     <string name="every_day">Cada día</string>
-    <string name="selected_days">Nos días selecionados</string>
-    <string name="the_same_day">O mismo día</string>
+    <string name="selected_days">Nos días seleccionados</string>
+    <string name="the_same_day">O mesmo día</string>
     <string name="the_last_day">O último día</string>
-    <string name="repeat_on_the_same_day_monthly">Repetir no mismo día cada mes</string>
+    <string name="repeat_on_the_same_day_monthly">Repetir no mesmo día cada mes</string>
     <string name="repeat_on_the_last_day_monthly">Repetir no último día do mes</string>
     <string name="repeat_on_the_same_day_yearly">Repetir no mesmo día cada ano</string>
     <string name="repeat_every_m">Repetir cada</string>
@@ -78,23 +78,23 @@
     <string name="every_f">Cada</string>
     <string name="first_f">primero</string>
     <string name="second_f">segundo</string>
-    <string name="third_f">tercero</string>
+    <string name="third_f">terceiro</string>
     <string name="fourth_f">cuarto</string>
     <string name="last_f">último</string>
 
     <!-- Birthdays -->
-    <string name="birthdays">Cumpleanos</string>
-    <string name="add_birthdays">Engadir cumpleanos de contactos</string>
-    <string name="no_birthdays">Non se atoparon cumpleanos</string>
-    <string name="no_new_birthdays">Non se atoparon novos cumpleanos</string>
-    <string name="birthdays_added">Engadíronse correctamente os cumpleanos</string>
+    <string name="birthdays">Aniversario</string>
+    <string name="add_birthdays">Engadir aniversario de contactos</string>
+    <string name="no_birthdays">Non se atoparon aniversarios</string>
+    <string name="no_new_birthdays">Non se atoparon novos aniversarios</string>
+    <string name="birthdays_added">Engadíronse correctamente os aniversarios</string>
 
     <!-- Anniversaries -->
-    <string name="anniversaries">Aniversarios</string>
-    <string name="add_anniversaries">Engadir aniversarios de contactos</string>
-    <string name="no_anniversaries">Non se atoparon aniversarios</string>
-    <string name="no_new_anniversaries">Non se atoparon novos aniversarios</string>
-    <string name="anniversaries_added">Engadíronse correctamente os aniversarios</string>
+    <string name="anniversaries">Celebracións</string>
+    <string name="add_anniversaries">Engadir celebracións de contactos</string>
+    <string name="no_anniversaries">Non se atoparon celebracións</string>
+    <string name="no_new_anniversaries">Non se atoparon novas celebracións</string>
+    <string name="anniversaries_added">Engadíronse correctamente as celebracións</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Recordatorio</string>
@@ -103,15 +103,15 @@
     <string name="event_reminders">Recordatorios de eventos</string>
 
     <!-- Event attendees -->
-    <string name="add_another_attendee">Add another attendee</string>
-    <string name="my_status">My status:</string>
-    <string name="going">Going</string>
-    <string name="not_going">Not going</string>
-    <string name="maybe_going">Maybe going</string>
-    <string name="invited">Invited</string>
+    <string name="add_another_attendee">Engadir participante</string>
+    <string name="my_status">O meu estado:</string>
+    <string name="going">Vou</string>
+    <string name="not_going">Non vou</string>
+    <string name="maybe_going">Pode que vaia</string>
+    <string name="invited">Convidado</string>
 
     <!-- Time zones -->
-    <string name="enter_a_country">Enter a country or time zone</string>
+    <string name="enter_a_country">Escribir zona horaria do país</string>
 
     <!-- Export / Import -->
     <string name="import_events">Importar eventos</string>
@@ -121,8 +121,8 @@
     <string name="default_event_type">Tipo de evento predeterminado</string>
     <string name="export_past_events_too">Exportar tamén eventos pasados</string>
     <string name="include_event_types">Incluír tipos de eventos</string>
-    <string name="filename_without_ics">Nome de ficheiro (sin .ics)</string>
-    <string name="override_event_types">Sobreescribir tipos de evento no ficheiro</string>
+    <string name="filename_without_ics">Nome do ficheiro (sen .ics)</string>
+    <string name="override_event_types">Sobrescribir tipos de evento no ficheiro</string>
 
     <!-- Event details -->
     <string name="location">Localización</string>
@@ -140,10 +140,10 @@
     <string name="color">Cor</string>
     <string name="regular_event">Evento regular</string>
     <string name="cannot_delete_default_type">Non se pode eliminar o tipo de evento predeterminado</string>
-    <string name="select_event_type">Seleccione un tipo de evento</string>
+    <string name="select_event_type">Selecciona un tipo de evento</string>
     <string name="move_events_into_default">Mover os eventos afectados ao tipo de evento por omisión</string>
     <string name="remove_affected_events">Eliminar permanentemente os eventos afectados</string>
-    <string name="unsync_caldav_calendar">Para eliminar un calendario CalDAV antes debe deixar de sincronizalo</string>
+    <string name="unsync_caldav_calendar">Para eliminar un calendario CalDAV antes debes deixar de sincronizalo</string>
 
     <!-- Holidays -->
     <string name="holidays">Festivo</string>
@@ -163,13 +163,13 @@
     <string name="reminder_sound">Son de recordatorio</string>
     <string name="no_ringtone_picker">Non se atopou ningunha aplicación capaz de establecer o ton de aviso</string>
     <string name="no_ringtone_selected">Ningún</string>
-    <string name="day_end_before_start">O día non puede rematar antes de que comece</string>
+    <string name="day_end_before_start">O día non pode rematar antes de que comece</string>
     <string name="caldav_sync">CalDAV sincr.</string>
-    <string name="event_lists">Listas de eventos</string>
+    <string name="event_lists">Listaxes de eventos</string>
     <string name="display_past_events">Mostrar eventos do pasado</string>
-    <string name="replace_description_with_location">Substituir a descrición coa localización</string>
+    <string name="replace_description_with_location">Substituír a descrición coa localización</string>
     <string name="delete_all_events">Borrar tódolos eventos</string>
-    <string name="delete_all_events_confirmation">Está seguro de querer borrar tódolos eventos? Esto deixará intactos os tipos de evento e outros axustes.</string>
+    <string name="delete_all_events_confirmation">Tes a certeza de querer borrar tódolos eventos? Esto deixará intactos os tipos de evento e outros axustes.</string>
     <string name="show_a_grid">Mostrar unha cuadrícula</string>
     <string name="loop_reminders">Repetir recordatorios ata que se descarten</string>
     <string name="dim_past_events">Atenuar eventos pasados</string>
@@ -178,12 +178,12 @@
     <string name="system_stream">Sistema</string>
     <string name="alarm_stream">Alarma</string>
     <string name="notification_stream">Notificación</string>
-    <string name="ring_stream">Timbre</string>
+    <string name="ring_stream">Ton</string>
     <string name="use_last_event_reminders">Usar os recordatorios dos últimos eventos como recordatorio por defecto para os eventos novos</string>
     <string name="default_reminder_1">Recordatorio por defecto 1</string>
     <string name="default_reminder_2">Recordatorio por defecto 2</string>
     <string name="default_reminder_3">Recordatorio por defecto 3</string>
-    <string name="view_to_open_from_widget">Vista que abrir desde o widget da lista de eventos</string>
+    <string name="view_to_open_from_widget">Vista a abrir desde o widget da lista de eventos</string>
     <string name="last_view">Última vista</string>
     <string name="new_events">Eventos novos</string>
     <string name="default_start_time">Hora de comezo por defecto</string>
@@ -192,11 +192,11 @@
     <string name="last_used_one">A última usada</string>
     <string name="other_time">Outra hora</string>
     <string name="highlight_weekends">Resaltar fins de semana nalgunhas vistas</string>
-    <string name="allow_changing_time_zones">Allow changing event time zones</string>
+    <string name="allow_changing_time_zones">Permitir cambiar as zonas horarias do evento</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
-    <string name="select_caldav_calendars">Escolla calendarios a sincronizar</string>
+    <string name="select_caldav_calendars">Escolle calendarios a sincronizar</string>
     <string name="manage_synced_calendars">Xestionar calendarios sincronizados</string>
     <string name="store_locally_only">Gardar só localmente</string>
     <string name="refresh_caldav_calendars">Actualizar calendarios CalDAV</string>
@@ -205,10 +205,10 @@
     <string name="editing_calendar_failed">Fallou a edición do calendario</string>
     <string name="syncing">Sincronizando…</string>
     <string name="synchronization_completed">Sincronización completa</string>
-    <string name="select_a_different_caldav_color">Escolle un color diferente (pode que só se aplique localmente)</string>
+    <string name="select_a_different_caldav_color">Escolle unha cor diferente (pode que só se aplique localmente)</string>
     <string name="insufficient_permissions">Non tes permiso para escribir no calendario seleccionado</string>
     <string name="caldav_event_not_found">Evento non atopado. Activa a sincronización de CalDAV para o calendario apropiado nos axustes da aplicación.</string>
-    <string name="no_synchronized_calendars">No synchronizable calendars have been found</string>
+    <string name="no_synchronized_calendars">Non se atoparon calendarios sincronizables</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
@@ -227,7 +227,7 @@
     <string name="sample_description_2">No paseo do León</string>
     <string name="sample_title_3">Biblioteca</string>
     <string name="sample_title_4">Xantar con Aira</string>
-    <string name="sample_description_4">Na plaza</string>
+    <string name="sample_description_4">Na praza</string>
     <string name="sample_title_5">Hora do café</string>
 
     <!-- FAQ -->
@@ -279,12 +279,12 @@
         ✔️ Use as a personal calendar or a business calendar
         ✔️ Choose between reminders &amp; email notifications to alert you about an event
 
-        DOWNLOAD SIMPLE CALENDAR PRO – THE SIMPLE OFFLINE CALENDAR WITH NO ADS!
+        DESCARGA SIMPLE CALENDAR PRO – CALENDARIO SIMPLE SEN PUBLICIDADE!
 
-        <b>Check out the full suite of Simple Tools here:</b>
+        <b>Aquí tes a listaxe completa de Simple Tools:</b>
         https://www.simplemobiletools.com
 
-        <b>Standalone website of Simple Calendar Pro:</b>
+        <b>Web propia para Simple Calendar Pro:</b>
         https://www.simplemobiletools.com/calendar
 
         <b>Facebook:</b>
