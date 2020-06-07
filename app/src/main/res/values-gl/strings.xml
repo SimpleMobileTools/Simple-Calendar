@@ -247,7 +247,7 @@
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Simple Calendar Pro - Eventos &amp; Recordatorios</string>
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Un calendario simple con eventos, widget personalizable e sin anuncios.</string>
+    <string name="app_short_description">Calendadario simple, con eventos, widget personalizable e sen publicidade.</string>
     <string name="app_long_description">
         Simple Calendar Pro é totalmente personalizable, calendario offline deseñado para facer o que debe facer un calendario. <b>Sen funcións complicadas, permisos innecesarios e se publicidade!</b>
 
