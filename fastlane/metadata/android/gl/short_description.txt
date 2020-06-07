@@ -1,1 +1,1 @@
-Un calendario simple con eventos, widget personalizable e sin anuncios.
+Calendadario simple, con eventos, widget personalizable e sen publicidade.
