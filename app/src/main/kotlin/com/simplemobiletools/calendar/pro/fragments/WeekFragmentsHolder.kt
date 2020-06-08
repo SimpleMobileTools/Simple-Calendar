@@ -23,6 +23,7 @@ import com.simplemobiletools.calendar.pro.interfaces.WeekFragmentListener
 import com.simplemobiletools.calendar.pro.views.MyScrollView
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.WEEK_SECONDS
+import com.simplemobiletools.commons.helpers.mydebug
 import com.simplemobiletools.commons.views.MyViewPager
 import kotlinx.android.synthetic.main.fragment_week_holder.view.*
 import org.joda.time.DateTime
@@ -133,10 +134,11 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
     private fun getWeekTimestamps(targetSeconds: Long): List<Long> {
         val weekTSs = ArrayList<Long>(PREFILLED_WEEKS)
         val dateTime = Formatter.getDateTimeFromTS(targetSeconds)
-        var currentWeek = dateTime.minusWeeks(PREFILLED_WEEKS / 2)
+        val shownWeekDays = context!!.config.weeklyViewDays
+        var currentWeek = dateTime.minusDays(PREFILLED_WEEKS / 2 * shownWeekDays)
         for (i in 0 until PREFILLED_WEEKS) {
             weekTSs.add(currentWeek.seconds())
-            currentWeek = currentWeek.plusWeeks(1)
+            currentWeek = currentWeek.plusDays(shownWeekDays)
         }
         return weekTSs
     }
@@ -206,7 +208,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
 
     private fun updateDaysCount(cnt: Int) {
         weekHolder!!.week_view_days_count.text = context!!.resources.getQuantityString(R.plurals.days, cnt, cnt)
-        (viewPager?.adapter as? MyWeekPagerAdapter)?.updateVisibleDaysCount(viewPager!!.currentItem, cnt)
+        (viewPager?.adapter as? MyWeekPagerAdapter)?.updateVisibleDaysCount(viewPager!!.currentItem, cnt, currentWeekTS)
     }
 
     override fun refreshEvents() {

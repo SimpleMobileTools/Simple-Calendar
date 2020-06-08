@@ -185,6 +185,11 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         setupDayLabels()
     }
 
+    fun updateWeekStartTimestamp(newTimestamp: Long) {
+        weekTimestamp = newTimestamp
+        updateCalendar()
+    }
+
     private fun addDayColumns() {
         mView.week_events_columns_holder.removeAllViews()
         (0 until config.weeklyViewDays).forEach {
