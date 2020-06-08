@@ -284,7 +284,7 @@ class EventActivity : SimpleActivity() {
         val reminders = getReminders()
         if (event_title.value != mEvent.title ||
                 event_location.value != mEvent.location ||
-                event_description.value != mEvent.location ||
+                event_description.value != mEvent.description ||
                 newStartTS != mEvent.startTS ||
                 newEndTS != mEvent.endTS ||
                 event_time_zone.text != mEvent.getTimeZoneString() ||
