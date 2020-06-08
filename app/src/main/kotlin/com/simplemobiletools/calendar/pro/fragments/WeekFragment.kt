@@ -475,7 +475,11 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private fun addCurrentTimeIndicator(minuteHeight: Float) {
         if (todayColumnIndex != -1) {
             val minutes = DateTime().minuteOfDay
-            val todayColumn = dayColumns.getOrNull(todayColumnIndex) ?: return
+            if (todayColumnIndex >= dayColumns.size) {
+                currentTimeView?.alpha = 0f
+                return
+            }
+
             if (currentTimeView != null) {
                 mView.week_events_holder.removeView(currentTimeView)
             }
@@ -494,7 +498,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 x = if (weeklyViewDays == 1) {
                     0f
                 } else {
-                    todayColumn.x - extraWidth / 2
+                    (mView.width / weeklyViewDays * todayColumnIndex).toFloat() - extraWidth / 2f
                 }
 
                 y = minutes * minuteHeight - markerHeight / 2
