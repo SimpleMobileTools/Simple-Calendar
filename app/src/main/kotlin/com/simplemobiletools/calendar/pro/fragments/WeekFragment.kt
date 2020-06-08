@@ -25,6 +25,7 @@ import com.simplemobiletools.calendar.pro.views.MyScrollView
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.DAY_SECONDS
 import com.simplemobiletools.commons.helpers.WEEK_SECONDS
+import com.simplemobiletools.commons.views.MyTextView
 import kotlinx.android.synthetic.main.fragment_week.*
 import kotlinx.android.synthetic.main.fragment_week.view.*
 import org.joda.time.DateTime
@@ -181,11 +182,12 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         }
 
         addEvents(currEvents)
+        setupDayLabels()
     }
 
     private fun addDayColumns() {
         mView.week_events_columns_holder.removeAllViews()
-        (0 until context!!.config.weeklyViewDays).forEach {
+        (0 until config.weeklyViewDays).forEach {
             val column = inflater.inflate(R.layout.weekly_view_day_column, mView.week_events_columns_holder, false) as RelativeLayout
             column.tag = Formatter.getDayCodeFromTS(weekTimestamp + it * DAY_SECONDS)
             mView.week_events_columns_holder.addView(column)
@@ -197,18 +199,20 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         var curDay = Formatter.getDateTimeFromTS(weekTimestamp)
         val textColor = config.textColor
         val todayCode = Formatter.getDayCodeFromDateTime(DateTime())
-        for (i in 0..6) {
+        mView.week_letters_holder.removeAllViews()
+        for (i in 0 until config.weeklyViewDays) {
             val dayCode = Formatter.getDayCodeFromDateTime(curDay)
             val dayLetters = res.getStringArray(R.array.week_day_letters).toMutableList() as ArrayList<String>
             val dayLetter = dayLetters[curDay.dayOfWeek - 1]
 
-            mView.findViewById<TextView>(res.getIdentifier("week_day_label_$i", "id", context!!.packageName)).apply {
-                text = "$dayLetter\n${curDay.dayOfMonth}"
-                setTextColor(if (todayCode == dayCode) primaryColor else textColor)
-                if (todayCode == dayCode) {
-                    todayColumnIndex = i
-                }
+            val label = inflater.inflate(R.layout.weekly_view_day_letter, mView.week_letters_holder, false) as MyTextView
+            label.text = "$dayLetter\n${curDay.dayOfMonth}"
+            label.setTextColor(if (todayCode == dayCode) primaryColor else textColor)
+            if (todayCode == dayCode) {
+                todayColumnIndex = i
             }
+
+            mView.week_letters_holder.addView(label)
             curDay = curDay.plusDays(1)
         }
     }
@@ -220,7 +224,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     }
 
     private fun initGrid() {
-        (0 until context!!.config.weeklyViewDays).map { dayColumns[it] }
+        (0 until config.weeklyViewDays).map { dayColumns[it] }
             .forEachIndexed { index, layout ->
                 layout.removeAllViews()
                 val gestureDetector = getViewGestureDetector(layout, index)
@@ -382,7 +386,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             } else {
                 val dayCode = Formatter.getDayCodeFromDateTime(startDateTime)
                 val dayOfWeek = dayColumns.indexOfFirst { it.tag == dayCode }
-                if (dayOfWeek == -1 || dayOfWeek >= context!!.config.weeklyViewDays) {
+                if (dayOfWeek == -1 || dayOfWeek >= config.weeklyViewDays) {
                     continue
                 }
 
@@ -482,7 +486,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 mView.week_events_holder.removeView(currentTimeView)
             }
 
-            val weeklyViewDays = context!!.config.weeklyViewDays
+            val weeklyViewDays = config.weeklyViewDays
             currentTimeView = (inflater.inflate(R.layout.week_now_marker, null, false) as ImageView).apply {
                 applyColorFilter(primaryColor)
                 mView.week_events_holder.addView(this, 0)
@@ -583,7 +587,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             }
 
             allDayHolders[drawAtLine].addView(this)
-            val dayWidth = mView.width / context!!.config.weeklyViewDays
+            val dayWidth = mView.width / config.weeklyViewDays
             (layoutParams as RelativeLayout.LayoutParams).apply {
                 leftMargin = dayOfWeek * dayWidth
                 bottomMargin = 1
