@@ -61,6 +61,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private var allDayHolders = ArrayList<RelativeLayout>()
     private var allDayRows = ArrayList<HashSet<Int>>()
     private var currEvents = ArrayList<Event>()
+    private var dayColumns = ArrayList<RelativeLayout>()
     private var eventTypeColors = LongSparseArray<Int>()
     private var eventTimeRanges = LinkedHashMap<String, ArrayList<EventWeeklyView>>()
 
@@ -103,6 +104,13 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                     false
                 }
             }
+        }
+
+        mView.week_events_columns_holder.removeAllViews()
+        (0..context!!.config.weeklyViewDays).forEach {
+            val column = inflater.inflate(R.layout.weekly_view_day_column, mView.week_events_columns_holder, false) as RelativeLayout
+            mView.week_events_columns_holder.addView(column)
+            dayColumns.add(column)
         }
 
         scrollView.setOnScrollviewListener(object : MyScrollView.ScrollViewListener {
@@ -203,7 +211,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     }
 
     private fun initGrid() {
-        (0..6).map { getColumnWithId(it) }
+        (0..context!!.config.weeklyViewDays).map { dayColumns[it] }
             .forEachIndexed { index, layout ->
                 layout.removeAllViews()
                 val gestureDetector = getViewGestureDetector(layout, index)
@@ -365,7 +373,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 addAllDayEvent(event)
             } else {
                 val dayOfWeek = startDateTime.plusDays(if (config.isSundayFirst) 1 else 0).dayOfWeek - 1
-                val layout = getColumnWithId(dayOfWeek)
+                val layout = dayColumns[dayOfWeek]
 
                 val startMinutes = startDateTime.minuteOfDay
                 val duration = endDateTime.minuteOfDay - startMinutes
@@ -454,7 +462,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private fun addCurrentTimeIndicator(minuteHeight: Float) {
         if (todayColumnIndex != -1) {
             val minutes = DateTime().minuteOfDay
-            val todayColumn = getColumnWithId(todayColumnIndex)
+            val todayColumn = dayColumns[todayColumnIndex]
             if (currentTimeView != null) {
                 mView.week_events_holder.removeView(currentTimeView)
             }
@@ -548,9 +556,9 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
             allDayHolders[drawAtLine].addView(this)
             (layoutParams as RelativeLayout.LayoutParams).apply {
-                leftMargin = getColumnWithId(firstDayIndex).x.toInt()
+                leftMargin = dayColumns[firstDayIndex].x.toInt()
                 bottomMargin = 1
-                width = getColumnWithId(Math.min(firstDayIndex + daysCnt, 6)).right - leftMargin - 1
+                width = dayColumns[Math.min(firstDayIndex + daysCnt, 6)].right - leftMargin - 1
             }
 
             calculateExtraHeight()
@@ -578,8 +586,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             }
         }
     }
-
-    private fun getColumnWithId(id: Int) = mView.findViewById<ViewGroup>(res.getIdentifier("week_column_$id", "id", context!!.packageName))
 
     fun updateScrollY(y: Int) {
         if (wasFragmentInit) {
