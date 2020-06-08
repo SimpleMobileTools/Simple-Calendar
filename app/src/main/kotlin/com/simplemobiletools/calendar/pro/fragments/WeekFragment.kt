@@ -576,11 +576,18 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 }
             }
 
+            val dayCode = Formatter.getDayCodeFromDateTime(startDateTime)
+            val dayOfWeek = dayColumns.indexOfFirst { it.tag == dayCode }
+            if (dayOfWeek == -1) {
+                return
+            }
+
             allDayHolders[drawAtLine].addView(this)
+            val dayWidth = mView.width / context!!.config.weeklyViewDays
             (layoutParams as RelativeLayout.LayoutParams).apply {
-                leftMargin = dayColumns[firstDayIndex].x.toInt()
+                leftMargin = dayOfWeek * dayWidth
                 bottomMargin = 1
-                width = dayColumns[Math.min(firstDayIndex + daysCnt, 6)].right - leftMargin - 1
+                width = (dayWidth) * (daysCnt + 1)
             }
 
             calculateExtraHeight()
