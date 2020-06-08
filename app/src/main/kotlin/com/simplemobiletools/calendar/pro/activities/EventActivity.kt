@@ -32,6 +32,7 @@ import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.models.*
+import com.simplemobiletools.commons.dialogs.ConfirmationAdvancedDialog
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
@@ -122,6 +123,9 @@ class EventActivity : SimpleActivity() {
             }
         }
     }
+
+
+
 
     private fun gotEvent(savedInstanceState: Bundle?, localEventType: EventType?, event: Event?) {
         if (localEventType == null || localEventType.caldavCalendarId != 0) {
@@ -270,8 +274,8 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun isEventChanged(): Boolean {
-        var newStartTS = 0L
-        var newEndTS = 0L
+        var newStartTS: Long
+        var newEndTS: Long
         getStartEndTimes().apply {
             newStartTS = first
             newEndTS = second
@@ -295,12 +299,11 @@ class EventActivity : SimpleActivity() {
 
     override fun onBackPressed() {
         if (isEventChanged()) {
-            CloseEditingDialog(this) {
-                when (it) {
-                    CLOSE_WITHOUT_SAVING -> {
-                        finish()
-                    }
-                    SAVE_AND_CLOSE -> saveCurrentEvent()
+            ConfirmationAdvancedDialog(this, "", R.string.save_before_closing, R.string.save, R.string.discard) {
+                if (it) {
+                    saveCurrentEvent()
+                } else {
+                    super.onBackPressed()
                 }
             }
         } else {
@@ -439,6 +442,27 @@ class EventActivity : SimpleActivity() {
         checkAttendees()
     }
 
+    private fun addDefValuesToNewEvent() {
+        var newStartTS: Long
+        var newEndTS: Long
+        getStartEndTimes().apply {
+            newStartTS = first
+            newEndTS = second
+        }
+
+        mEvent.apply {
+            startTS = newStartTS
+            endTS = newEndTS
+            reminder1Minutes = mReminder1Minutes
+            reminder1Type = mReminder1Type
+            reminder2Minutes = mReminder2Minutes
+            reminder2Type = mReminder2Type
+            reminder3Minutes = mReminder3Minutes
+            reminder3Type = mReminder3Type
+            eventType = mEventTypeId
+        }
+    }
+
     private fun setupNewEvent() {
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
         event_title.requestFocus()
@@ -487,7 +511,7 @@ class EventActivity : SimpleActivity() {
             }
             mEventEndDateTime = mEventStartDateTime.plusMinutes(addMinutes)
         }
-
+        addDefValuesToNewEvent()
         checkAttendees()
     }
 
