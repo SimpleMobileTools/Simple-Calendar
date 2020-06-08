@@ -107,7 +107,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         }
 
         mView.week_events_columns_holder.removeAllViews()
-        (0..context!!.config.weeklyViewDays).forEach {
+        (0 until context!!.config.weeklyViewDays).forEach {
             val column = inflater.inflate(R.layout.weekly_view_day_column, mView.week_events_columns_holder, false) as RelativeLayout
             mView.week_events_columns_holder.addView(column)
             dayColumns.add(column)
@@ -178,10 +178,20 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     }
 
     fun updateVisibleDaysCount(count: Int) {
+        mView.week_events_columns_holder.removeAllViews()
+        dayColumns.clear()
+        (0 until context!!.config.weeklyViewDays).forEach {
+            val column = inflater.inflate(R.layout.weekly_view_day_column, mView.week_events_columns_holder, false) as RelativeLayout
+            mView.week_events_columns_holder.addView(column)
+            dayColumns.add(column)
+        }
+
         mView.week_horizontal_grid_holder.apply {
             daysCount = count
             invalidate()
         }
+
+        addEvents(currEvents)
     }
 
     private fun setupDayLabels() {
@@ -211,7 +221,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     }
 
     private fun initGrid() {
-        (0..context!!.config.weeklyViewDays).map { dayColumns[it] }
+        (0 until context!!.config.weeklyViewDays).map { dayColumns[it] }
             .forEachIndexed { index, layout ->
                 layout.removeAllViews()
                 val gestureDetector = getViewGestureDetector(layout, index)
@@ -338,7 +348,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         eventTimeRanges.clear()
         allDayRows.add(HashSet())
         week_all_day_holder?.removeAllViews()
-
         addNewLine()
 
         val minuteHeight = rowHeight / 60
@@ -373,6 +382,10 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 addAllDayEvent(event)
             } else {
                 val dayOfWeek = startDateTime.plusDays(if (config.isSundayFirst) 1 else 0).dayOfWeek - 1
+                if (dayOfWeek >= context!!.config.weeklyViewDays) {
+                    continue
+                }
+
                 val layout = dayColumns[dayOfWeek]
 
                 val startMinutes = startDateTime.minuteOfDay
@@ -462,21 +475,28 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private fun addCurrentTimeIndicator(minuteHeight: Float) {
         if (todayColumnIndex != -1) {
             val minutes = DateTime().minuteOfDay
-            val todayColumn = dayColumns[todayColumnIndex]
+            val todayColumn = dayColumns.getOrNull(todayColumnIndex) ?: return
             if (currentTimeView != null) {
                 mView.week_events_holder.removeView(currentTimeView)
             }
 
+            val weeklyViewDays = context!!.config.weeklyViewDays
             currentTimeView = (inflater.inflate(R.layout.week_now_marker, null, false) as ImageView).apply {
                 applyColorFilter(primaryColor)
                 mView.week_events_holder.addView(this, 0)
-                val extraWidth = (todayColumn.width * 0.3).toInt()
+                val extraWidth = res.getDimension(R.dimen.activity_margin).toInt()
                 val markerHeight = res.getDimension(R.dimen.weekly_view_now_height).toInt()
                 (layoutParams as RelativeLayout.LayoutParams).apply {
-                    width = todayColumn.width + extraWidth
+                    width = (mView.width / weeklyViewDays) + extraWidth
                     height = markerHeight
                 }
-                x = todayColumn.x - extraWidth / 2
+
+                x = if (weeklyViewDays == 1) {
+                    0f
+                } else {
+                    todayColumn.x - extraWidth / 2
+                }
+
                 y = minutes * minuteHeight - markerHeight / 2
             }
         }

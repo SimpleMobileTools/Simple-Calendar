@@ -29,7 +29,6 @@ import org.joda.time.DateTime
 
 class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
     private val PREFILLED_WEEKS = 151
-    private val MIN_SEEKBAR_VALUE = 1
     private val MAX_SEEKBAR_VALUE = 14
 
     private var viewPager: MyViewPager? = null
