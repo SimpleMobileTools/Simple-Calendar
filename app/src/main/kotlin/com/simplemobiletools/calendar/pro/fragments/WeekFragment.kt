@@ -388,8 +388,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                     continue
                 }
 
-                val layout = dayColumns[dayOfWeek]
-
                 val startMinutes = startDateTime.minuteOfDay
                 val duration = endDateTime.minuteOfDay - startMinutes
                 val range = Range(startMinutes, startMinutes + duration)
@@ -412,6 +410,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                     }
                 }
 
+                val dayColumn = dayColumns[dayOfWeek]
                 (inflater.inflate(R.layout.week_event_marker, null, false) as TextView).apply {
                     var backgroundColor = eventTypeColors.get(event.eventType, primaryColor)
                     var textColor = backgroundColor.getContrastColor()
@@ -424,10 +423,10 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                     setTextColor(textColor)
                     text = event.title
                     contentDescription = text
-                    layout.addView(this)
+                    dayColumn.addView(this)
                     y = startMinutes * minuteHeight
                     (layoutParams as RelativeLayout.LayoutParams).apply {
-                        width = layout.width - 1
+                        width = dayColumn.width - 1
                         width /= Math.max(overlappingEvents, 1)
                         if (overlappingEvents > 1) {
                             x = width * currentEventOverlapIndex.toFloat()
