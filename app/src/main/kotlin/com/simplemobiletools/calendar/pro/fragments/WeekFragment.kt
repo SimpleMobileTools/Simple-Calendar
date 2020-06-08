@@ -109,6 +109,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         mView.week_events_columns_holder.removeAllViews()
         (0 until context!!.config.weeklyViewDays).forEach {
             val column = inflater.inflate(R.layout.weekly_view_day_column, mView.week_events_columns_holder, false) as RelativeLayout
+            column.tag = Formatter.getDayCodeFromTS(weekTimestamp + it * DAY_SECONDS)
             mView.week_events_columns_holder.addView(column)
             dayColumns.add(column)
         }
@@ -381,8 +382,9 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 hadAllDayEvent = true
                 addAllDayEvent(event)
             } else {
-                val dayOfWeek = startDateTime.plusDays(if (config.isSundayFirst) 1 else 0).dayOfWeek - 1
-                if (dayOfWeek >= context!!.config.weeklyViewDays) {
+                val dayCode = Formatter.getDayCodeFromDateTime(startDateTime)
+                val dayOfWeek = dayColumns.indexOfFirst { it.tag == dayCode }
+                if (dayOfWeek == -1 || dayOfWeek >= context!!.config.weeklyViewDays) {
                     continue
                 }
 
@@ -392,7 +394,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 val duration = endDateTime.minuteOfDay - startMinutes
                 val range = Range(startMinutes, startMinutes + duration)
 
-                val dayCode = Formatter.getDayCodeFromDateTime(startDateTime)
                 var overlappingEvents = 0
                 var currentEventOverlapIndex = 0
                 var foundCurrentEvent = false
@@ -532,7 +533,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             val endDateTime = Formatter.getDateTimeFromTS(event.endTS)
 
             val minTS = Math.max(startDateTime.seconds(), weekTimestamp)
-            val maxTS = Math.min(endDateTime.seconds(), weekTimestamp + WEEK_SECONDS)
+            val maxTS = Math.min(endDateTime.seconds(), weekTimestamp + 2 * WEEK_SECONDS)
 
             // fix a visual glitch with all-day events or events lasting multiple days starting at midnight on monday, being shown the previous week too
             if (minTS == maxTS && (minTS - weekTimestamp == WEEK_SECONDS.toLong())) {
