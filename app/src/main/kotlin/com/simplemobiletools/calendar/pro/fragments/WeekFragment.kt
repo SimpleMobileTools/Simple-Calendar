@@ -106,14 +106,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             }
         }
 
-        mView.week_events_columns_holder.removeAllViews()
-        (0 until context!!.config.weeklyViewDays).forEach {
-            val column = inflater.inflate(R.layout.weekly_view_day_column, mView.week_events_columns_holder, false) as RelativeLayout
-            column.tag = Formatter.getDayCodeFromTS(weekTimestamp + it * DAY_SECONDS)
-            mView.week_events_columns_holder.addView(column)
-            dayColumns.add(column)
-        }
-
+        addDayColumns()
         scrollView.setOnScrollviewListener(object : MyScrollView.ScrollViewListener {
             override fun onScrollChanged(scrollView: MyScrollView, x: Int, y: Int, oldx: Int, oldy: Int) {
                 checkScrollLimits(y)
@@ -179,13 +172,8 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     }
 
     fun updateVisibleDaysCount(count: Int) {
-        mView.week_events_columns_holder.removeAllViews()
         dayColumns.clear()
-        (0 until context!!.config.weeklyViewDays).forEach {
-            val column = inflater.inflate(R.layout.weekly_view_day_column, mView.week_events_columns_holder, false) as RelativeLayout
-            mView.week_events_columns_holder.addView(column)
-            dayColumns.add(column)
-        }
+        addDayColumns()
 
         mView.week_horizontal_grid_holder.apply {
             daysCount = count
@@ -193,6 +181,16 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         }
 
         addEvents(currEvents)
+    }
+
+    private fun addDayColumns() {
+        mView.week_events_columns_holder.removeAllViews()
+        (0 until context!!.config.weeklyViewDays).forEach {
+            val column = inflater.inflate(R.layout.weekly_view_day_column, mView.week_events_columns_holder, false) as RelativeLayout
+            column.tag = Formatter.getDayCodeFromTS(weekTimestamp + it * DAY_SECONDS)
+            mView.week_events_columns_holder.addView(column)
+            dayColumns.add(column)
+        }
     }
 
     private fun setupDayLabels() {
