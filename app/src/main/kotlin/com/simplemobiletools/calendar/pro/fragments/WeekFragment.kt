@@ -199,10 +199,19 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         var curDay = Formatter.getDateTimeFromTS(weekTimestamp)
         val textColor = config.textColor
         val todayCode = Formatter.getDayCodeFromDateTime(DateTime())
+        val dayWidth = context!!.usableScreenSize.x / config.weeklyViewDays
+        val useLongerDayLabels = dayWidth > res.getDimension(R.dimen.weekly_view_min_day_label)
+
         mView.week_letters_holder.removeAllViews()
         for (i in 0 until config.weeklyViewDays) {
             val dayCode = Formatter.getDayCodeFromDateTime(curDay)
-            val dayLetters = res.getStringArray(R.array.week_day_letters).toMutableList() as ArrayList<String>
+            val labelIDs = if (useLongerDayLabels) {
+                R.array.week_days_short
+            } else {
+                R.array.week_day_letters
+            }
+
+            val dayLetters = res.getStringArray(labelIDs).toMutableList() as ArrayList<String>
             val dayLetter = dayLetters[curDay.dayOfWeek - 1]
 
             val label = inflater.inflate(R.layout.weekly_view_day_letter, mView.week_letters_holder, false) as MyTextView
