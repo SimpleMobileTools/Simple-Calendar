@@ -82,7 +82,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         appLaunched(BuildConfig.APPLICATION_ID)
 
         checkWhatsNewDialog()
-        calendar_fab.beVisibleIf(config.storedView != YEARLY_VIEW)
+        calendar_fab.beVisibleIf(config.storedView != YEARLY_VIEW && config.storedView != WEEKLY_VIEW)
         calendar_fab.setOnClickListener {
             launchNewEventIntent(currentFragments.last().getNewEventDayCode())
         }
@@ -279,7 +279,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             override fun onMenuItemActionCollapse(item: MenuItem?): Boolean {
                 mIsSearchOpen = false
                 search_holder.beGone()
-                calendar_fab.beVisibleIf(currentFragments.last() !is YearFragmentsHolder)
+                calendar_fab.beVisibleIf(currentFragments.last() !is YearFragmentsHolder && currentFragments.last() !is WeekFragmentsHolder)
                 invalidateOptionsMenu()
                 return true
             }
@@ -410,10 +410,9 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             RadioItem(EVENTS_LIST_VIEW, getString(R.string.simple_event_list)))
 
         RadioGroupDialog(this, items, config.storedView) {
-            calendar_fab.beVisibleIf(it as Int != YEARLY_VIEW)
             resetActionBarTitle()
             closeSearch()
-            updateView(it)
+            updateView(it as Int)
             shouldGoToTodayBeVisible = false
             invalidateOptionsMenu()
         }
@@ -643,7 +642,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     private fun updateView(view: Int) {
-        calendar_fab.beVisibleIf(view != YEARLY_VIEW)
+        calendar_fab.beVisibleIf(view != YEARLY_VIEW && view != WEEKLY_VIEW)
         config.storedView = view
         checkSwipeRefreshAvailability()
         updateViewPager()

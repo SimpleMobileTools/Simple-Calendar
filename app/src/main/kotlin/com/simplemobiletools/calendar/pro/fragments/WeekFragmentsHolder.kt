@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
+import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -28,6 +29,8 @@ import org.joda.time.DateTime
 
 class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
     private val PREFILLED_WEEKS = 151
+    private val MIN_SEEKBAR_VALUE = 1
+    private val MAX_SEEKBAR_VALUE = 14
 
     private var viewPager: MyViewPager? = null
     private var weekHolder: ViewGroup? = null
@@ -104,6 +107,27 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
             }
         })
         weekHolder!!.week_view_hours_scrollview.setOnTouchListener { view, motionEvent -> true }
+
+        weekHolder!!.week_view_seekbar.apply {
+            progress = context?.config?.weeklyViewDays ?: 7
+            max = MAX_SEEKBAR_VALUE
+
+            onSeekBarChangeListener {
+                if (it == 0) {
+                    progress = 1
+                }
+
+                updateWeeklyViewDays(progress)
+            }
+        }
+
+        // avoid seekbar width changing if the days count changes to 1, 10 etc
+        weekHolder!!.week_view_days_count.onGlobalLayout {
+            weekHolder!!.week_view_seekbar.layoutParams.width = weekHolder!!.week_view_seekbar.width
+            (weekHolder!!.week_view_seekbar.layoutParams as RelativeLayout.LayoutParams).removeRule(RelativeLayout.START_OF)
+        }
+
+        updateDaysCount(context?.config?.weeklyViewDays ?: 7)
         updateActionBarTitle()
     }
 
@@ -149,11 +173,11 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
         datePicker.init(dateTime.year, dateTime.monthOfYear - 1, dateTime.dayOfMonth, null)
 
         AlertDialog.Builder(context!!)
-                .setNegativeButton(R.string.cancel, null)
-                .setPositiveButton(R.string.ok) { dialog, which -> dateSelected(dateTime, datePicker) }
-                .create().apply {
-                    activity?.setupDialogStuff(view, this)
-                }
+            .setNegativeButton(R.string.cancel, null)
+            .setPositiveButton(R.string.ok) { dialog, which -> dateSelected(dateTime, datePicker) }
+            .create().apply {
+                activity?.setupDialogStuff(view, this)
+            }
     }
 
     private fun dateSelected(dateTime: DateTime, datePicker: DatePicker) {
@@ -174,6 +198,15 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
 
         currentWeekTS = selectedWeek.seconds()
         setupFragment()
+    }
+
+    private fun updateWeeklyViewDays(days: Int) {
+        context!!.config.weeklyViewDays = days
+        updateDaysCount(days)
+    }
+
+    private fun updateDaysCount(cnt: Int) {
+        weekHolder!!.week_view_days_count.text = context!!.resources.getQuantityString(R.plurals.days, cnt, cnt)
     }
 
     override fun refreshEvents() {
