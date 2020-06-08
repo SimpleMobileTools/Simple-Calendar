@@ -169,6 +169,13 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         }
     }
 
+    fun updateVisibleDaysCount(count: Int) {
+        mView.week_horizontal_grid_holder.apply {
+            daysCount = count
+            invalidate()
+        }
+    }
+
     private fun setupDayLabels() {
         var curDay = Formatter.getDateTimeFromTS(weekTimestamp)
         val textColor = config.textColor

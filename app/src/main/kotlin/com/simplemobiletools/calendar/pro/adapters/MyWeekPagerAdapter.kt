@@ -42,4 +42,10 @@ class MyWeekPagerAdapter(fm: FragmentManager, private val mWeekTimestamps: List<
         mFragments[pos - 1]?.updateNotVisibleViewScaleLevel()
         mFragments[pos + 1]?.updateNotVisibleViewScaleLevel()
     }
+
+    fun updateVisibleDaysCount(pos: Int, count: Int) {
+        for (i in -1..1) {
+            mFragments[pos + i]?.updateVisibleDaysCount(count)
+        }
+    }
 }
