@@ -116,7 +116,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
         scrollView.onGlobalLayout {
             if (fullHeight < scrollView.height) {
-                scrollView.layoutParams.height = fullHeight - context!!.resources.getDimension(R.dimen.one_dp).toInt()
+                scrollView.layoutParams.height = fullHeight - res.getDimension(R.dimen.one_dp).toInt()
             }
 
             val initialScrollY = (rowHeight * config.startWeeklyAt).toInt()
@@ -350,7 +350,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private fun updateViewScale() {
         rowHeight = context?.getWeeklyViewItemHeight() ?: return
 
-        val oneDp = context!!.resources.getDimension(R.dimen.one_dp).toInt()
+        val oneDp = res.getDimension(R.dimen.one_dp).toInt()
         val fullHeight = Math.max(rowHeight.toInt() * 24, scrollView.height + oneDp)
         scrollView.layoutParams.height = fullHeight - oneDp
         mView.week_horizontal_grid_holder.layoutParams.height = fullHeight
