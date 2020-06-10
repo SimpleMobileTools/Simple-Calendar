@@ -124,9 +124,6 @@ class EventActivity : SimpleActivity() {
         }
     }
 
-
-
-
     private fun gotEvent(savedInstanceState: Bundle?, localEventType: EventType?, event: Event?) {
         if (localEventType == null || localEventType.caldavCalendarId != 0) {
             config.lastUsedLocalEventTypeId = REGULAR_EVENT_TYPE_ID
@@ -244,7 +241,6 @@ class EventActivity : SimpleActivity() {
             R.id.delete -> deleteEvent()
             R.id.duplicate -> duplicateEvent()
             R.id.share -> shareEvent()
-            android.R.id.home -> onBackPressed()
             else -> return super.onOptionsItemSelected(item)
         }
         return true
