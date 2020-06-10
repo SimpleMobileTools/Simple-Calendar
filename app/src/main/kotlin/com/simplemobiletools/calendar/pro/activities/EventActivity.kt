@@ -231,6 +231,7 @@ class EventActivity : SimpleActivity() {
             menu.findItem(R.id.share).isVisible = mEvent.id != null
             menu.findItem(R.id.duplicate).isVisible = mEvent.id != null
         }
+
         updateMenuItemColors(menu)
         return true
     }
@@ -261,9 +262,9 @@ class EventActivity : SimpleActivity() {
 
     private fun getReminders(): ArrayList<Reminder> {
         var reminders = arrayListOf(
-                Reminder(mReminder1Minutes, mReminder1Type),
-                Reminder(mReminder2Minutes, mReminder2Type),
-                Reminder(mReminder3Minutes, mReminder3Type)
+            Reminder(mReminder1Minutes, mReminder1Type),
+            Reminder(mReminder2Minutes, mReminder2Type),
+            Reminder(mReminder3Minutes, mReminder3Type)
         )
         reminders = reminders.filter { it.minutes != REMINDER_OFF }.sortedBy { it.minutes }.toMutableList() as ArrayList<Reminder>
         return reminders
@@ -279,17 +280,18 @@ class EventActivity : SimpleActivity() {
 
         val reminders = getReminders()
         if (event_title.value != mEvent.title ||
-                event_location.value != mEvent.location ||
-                event_description.value != mEvent.description ||
-                newStartTS != mEvent.startTS ||
-                newEndTS != mEvent.endTS ||
-                event_time_zone.text != mEvent.getTimeZoneString() ||
-                reminders != mEvent.getReminders() ||
-                mRepeatInterval != mEvent.repeatInterval ||
-                mRepeatRule != mEvent.repeatRule ||
-                mEventTypeId != mEvent.eventType) {
+            event_location.value != mEvent.location ||
+            event_description.value != mEvent.description ||
+            newStartTS != mEvent.startTS ||
+            newEndTS != mEvent.endTS ||
+            event_time_zone.text != mEvent.getTimeZoneString() ||
+            reminders != mEvent.getReminders() ||
+            mRepeatInterval != mEvent.repeatInterval ||
+            mRepeatRule != mEvent.repeatRule ||
+            mEventTypeId != mEvent.eventType) {
             return true
         }
+
         return false
     }
 
@@ -363,8 +365,8 @@ class EventActivity : SimpleActivity() {
             mRepeatRule = getInt(REPEAT_RULE)
             mRepeatLimit = getLong(REPEAT_LIMIT)
 
-            mAttendees = Gson().fromJson<ArrayList<Attendee>>(getString(ATTENDEES), object : TypeToken<List<Attendee>>() {}.type)
-                    ?: ArrayList()
+            val token = object : TypeToken<List<Attendee>>() {}.type
+            mAttendees = Gson().fromJson<ArrayList<Attendee>>(getString(ATTENDEES), token) ?: ArrayList()
 
             mEventTypeId = getLong(EVENT_TYPE_ID)
             mEventCalendarId = getInt(EVENT_CALENDAR_ID)
@@ -395,7 +397,6 @@ class EventActivity : SimpleActivity() {
         updateTimeZoneText()
         updateAttendeesVisibility()
     }
-
 
     private fun setupEditEvent() {
         val realStart = if (mEventOccurrenceTS == 0L) mEvent.startTS else mEventOccurrenceTS
@@ -432,8 +433,10 @@ class EventActivity : SimpleActivity() {
         mRepeatRule = mEvent.repeatRule
         mEventTypeId = mEvent.eventType
         mEventCalendarId = mEvent.getCalDAVCalendarId()
-        mAttendees = Gson().fromJson<ArrayList<Attendee>>(mEvent.attendees, object : TypeToken<List<Attendee>>() {}.type)
-                ?: ArrayList()
+
+        val token = object : TypeToken<List<Attendee>>() {}.type
+        mAttendees = Gson().fromJson<ArrayList<Attendee>>(mEvent.attendees, token) ?: ArrayList()
+
         checkRepeatTexts(mRepeatInterval)
         checkAttendees()
     }
@@ -464,8 +467,7 @@ class EventActivity : SimpleActivity() {
         event_title.requestFocus()
         updateActionBarTitle(getString(R.string.new_event))
         if (config.defaultEventTypeId != -1L) {
-            config.lastUsedCaldavCalendarId = mStoredEventTypes.firstOrNull { it.id == config.defaultEventTypeId }?.caldavCalendarId
-                    ?: 0
+            config.lastUsedCaldavCalendarId = mStoredEventTypes.firstOrNull { it.id == config.defaultEventTypeId }?.caldavCalendarId ?: 0
         }
 
         val isLastCaldavCalendarOK = config.caldavSync && config.getSyncedCalendarIdsAsList().contains(config.lastUsedCaldavCalendarId)
@@ -818,8 +820,8 @@ class EventActivity : SimpleActivity() {
 
     private fun showReminderTypePicker(currentValue: Int, callback: (Int) -> Unit) {
         val items = arrayListOf(
-                RadioItem(REMINDER_NOTIFICATION, getString(R.string.notification)),
-                RadioItem(REMINDER_EMAIL, getString(R.string.email))
+            RadioItem(REMINDER_NOTIFICATION, getString(R.string.notification)),
+            RadioItem(REMINDER_EMAIL, getString(R.string.email))
         )
         RadioGroupDialog(this, items, currentValue) {
             callback(it as Int)
@@ -894,8 +896,7 @@ class EventActivity : SimpleActivity() {
 
     private fun getCalendarId() = if (mEvent.source == SOURCE_SIMPLE_CALENDAR) config.lastUsedCaldavCalendarId else mEvent.getCalDAVCalendarId()
 
-    private fun getCalendarWithId(calendars: List<CalDAVCalendar>, calendarId: Int): CalDAVCalendar? =
-            calendars.firstOrNull { it.id == calendarId }
+    private fun getCalendarWithId(calendars: List<CalDAVCalendar>, calendarId: Int) = calendars.firstOrNull { it.id == calendarId }
 
     private fun updateCurrentCalendarInfo(currentCalendar: CalDAVCalendar?) {
         event_type_image.beVisibleIf(currentCalendar == null)
@@ -919,8 +920,7 @@ class EventActivity : SimpleActivity() {
             event_caldav_calendar_email.text = currentCalendar.accountName
 
             ensureBackgroundThread {
-                val calendarColor = eventsHelper.getEventTypeWithCalDAVCalendarId(currentCalendar.id)?.color
-                        ?: currentCalendar.color
+                val calendarColor = eventsHelper.getEventTypeWithCalDAVCalendarId(currentCalendar.id)?.color ?: currentCalendar.color
 
                 runOnUiThread {
                     event_caldav_calendar_color.setFillWithStroke(calendarColor, config.backgroundColor)
@@ -939,8 +939,8 @@ class EventActivity : SimpleActivity() {
 
     private fun resetTime() {
         if (mEventEndDateTime.isBefore(mEventStartDateTime) &&
-                mEventStartDateTime.dayOfMonth() == mEventEndDateTime.dayOfMonth() &&
-                mEventStartDateTime.monthOfYear() == mEventEndDateTime.monthOfYear()) {
+            mEventStartDateTime.dayOfMonth() == mEventEndDateTime.dayOfMonth() &&
+            mEventStartDateTime.monthOfYear() == mEventEndDateTime.monthOfYear()) {
 
             mEventEndDateTime = mEventEndDateTime.withTime(mEventStartDateTime.hourOfDay, mEventStartDateTime.minuteOfHour, mEventStartDateTime.secondOfMinute, 0)
             updateEndTimeText()
@@ -1005,8 +1005,8 @@ class EventActivity : SimpleActivity() {
             return
         }
 
-        var newStartTS = 0L
-        var newEndTS = 0L
+        var newStartTS: Long
+        var newEndTS: Long
         getStartEndTimes().apply {
             newStartTS = first
             newEndTS = second
@@ -1019,7 +1019,11 @@ class EventActivity : SimpleActivity() {
 
         val wasRepeatable = mEvent.repeatInterval > 0
         val oldSource = mEvent.source
-        val newImportId = if (mEvent.id != null) mEvent.importId else UUID.randomUUID().toString().replace("-", "") + System.currentTimeMillis().toString()
+        val newImportId = if (mEvent.id != null) {
+            mEvent.importId
+        } else {
+            UUID.randomUUID().toString().replace("-", "") + System.currentTimeMillis().toString()
+        }
 
         val newEventType = if (!config.caldavSync || config.lastUsedCaldavCalendarId == 0 || mEventCalendarId == STORED_LOCALLY_ONLY) {
             mEventTypeId
@@ -1033,8 +1037,7 @@ class EventActivity : SimpleActivity() {
                 }
             }
 
-            eventsHelper.getEventTypeWithCalDAVCalendarId(mEventCalendarId)?.id
-                    ?: config.lastUsedLocalEventTypeId
+            eventsHelper.getEventTypeWithCalDAVCalendarId(mEventCalendarId)?.id ?: config.lastUsedLocalEventTypeId
         }
 
         val newSource = if (!config.caldavSync || mEventCalendarId == STORED_LOCALLY_ONLY) {
@@ -1215,7 +1218,7 @@ class EventActivity : SimpleActivity() {
         hideKeyboard()
         config.backgroundColor.getContrastColor()
         val datepicker = DatePickerDialog(this, mDialogTheme, startDateSetListener, mEventStartDateTime.year, mEventStartDateTime.monthOfYear - 1,
-                mEventStartDateTime.dayOfMonth)
+            mEventStartDateTime.dayOfMonth)
 
         datepicker.datePicker.firstDayOfWeek = if (config.isSundayFirst) Calendar.SUNDAY else Calendar.MONDAY
         datepicker.show()
@@ -1229,7 +1232,7 @@ class EventActivity : SimpleActivity() {
     private fun setupEndDate() {
         hideKeyboard()
         val datepicker = DatePickerDialog(this, mDialogTheme, endDateSetListener, mEventEndDateTime.year, mEventEndDateTime.monthOfYear - 1,
-                mEventEndDateTime.dayOfMonth)
+            mEventEndDateTime.dayOfMonth)
 
         datepicker.datePicker.firstDayOfWeek = if (config.isSundayFirst) Calendar.SUNDAY else Calendar.MONDAY
         datepicker.show()
@@ -1451,9 +1454,9 @@ class EventActivity : SimpleActivity() {
             if (attendee.isMe) {
                 event_contact_attendee.setOnClickListener {
                     val items = arrayListOf(
-                            RadioItem(Attendees.ATTENDEE_STATUS_ACCEPTED, getString(R.string.going)),
-                            RadioItem(Attendees.ATTENDEE_STATUS_DECLINED, getString(R.string.not_going)),
-                            RadioItem(Attendees.ATTENDEE_STATUS_TENTATIVE, getString(R.string.maybe_going))
+                        RadioItem(Attendees.ATTENDEE_STATUS_ACCEPTED, getString(R.string.going)),
+                        RadioItem(Attendees.ATTENDEE_STATUS_DECLINED, getString(R.string.not_going)),
+                        RadioItem(Attendees.ATTENDEE_STATUS_TENTATIVE, getString(R.string.maybe_going))
                     )
 
                     RadioGroupDialog(this@EventActivity, items, attendee.status) {
@@ -1526,13 +1529,13 @@ class EventActivity : SimpleActivity() {
         val contacts = ArrayList<Attendee>()
         val uri = Data.CONTENT_URI
         val projection = arrayOf(
-                Data.CONTACT_ID,
-                StructuredName.PREFIX,
-                StructuredName.GIVEN_NAME,
-                StructuredName.MIDDLE_NAME,
-                StructuredName.FAMILY_NAME,
-                StructuredName.SUFFIX,
-                StructuredName.PHOTO_THUMBNAIL_URI)
+            Data.CONTACT_ID,
+            StructuredName.PREFIX,
+            StructuredName.GIVEN_NAME,
+            StructuredName.MIDDLE_NAME,
+            StructuredName.FAMILY_NAME,
+            StructuredName.SUFFIX,
+            StructuredName.PHOTO_THUMBNAIL_URI)
 
         val selection = "${Data.MIMETYPE} = ?"
         val selectionArgs = arrayOf(StructuredName.CONTENT_ITEM_TYPE)
@@ -1560,8 +1563,8 @@ class EventActivity : SimpleActivity() {
         val contacts = ArrayList<Attendee>()
         val uri = CommonDataKinds.Email.CONTENT_URI
         val projection = arrayOf(
-                Data.CONTACT_ID,
-                CommonDataKinds.Email.DATA
+            Data.CONTACT_ID,
+            CommonDataKinds.Email.DATA
         )
 
         queryCursor(uri, projection) { cursor ->
@@ -1578,7 +1581,7 @@ class EventActivity : SimpleActivity() {
         event_show_on_map.applyColorFilter(getAdjustedPrimaryColor())
         val textColor = config.textColor
         arrayOf(event_time_image, event_time_zone_image, event_repetition_image, event_reminder_image, event_type_image, event_caldav_calendar_image,
-                event_reminder_1_type, event_reminder_2_type, event_reminder_3_type, event_attendees_image).forEach {
+            event_reminder_1_type, event_reminder_2_type, event_reminder_3_type, event_attendees_image).forEach {
             it.applyColorFilter(textColor)
         }
     }
