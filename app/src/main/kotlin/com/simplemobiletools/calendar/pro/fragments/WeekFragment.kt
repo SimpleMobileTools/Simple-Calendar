@@ -204,7 +204,8 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         var curDay = Formatter.getDateTimeFromTS(weekTimestamp)
         val textColor = config.textColor
         val todayCode = Formatter.getDayCodeFromDateTime(DateTime())
-        val dayWidth = context!!.usableScreenSize.x / config.weeklyViewDays
+        val screenWidth = context?.usableScreenSize?.x ?: return
+        val dayWidth = screenWidth / config.weeklyViewDays
         val useLongerDayLabels = dayWidth > res.getDimension(R.dimen.weekly_view_min_day_label)
 
         mView.week_letters_holder.removeAllViews()
@@ -484,7 +485,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
     private fun addNewLine() {
         val allDaysLine = inflater.inflate(R.layout.all_day_events_holder_line, null, false) as RelativeLayout
-        week_all_day_holder.addView(allDaysLine)
+        week_all_day_holder?.addView(allDaysLine)
         allDayHolders.add(allDaysLine)
     }
 
