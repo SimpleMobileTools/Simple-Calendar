@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 6.9.5 *(2020-06-10)*
+----------------------------
+
+ * Allow changing the amount of days shown at the weekly view
+ * Show a Save / Discard prompt at leaving an edited event (by fnrngg)
+ * Some translation and stability improvements
+
 Version 6.9.4 *(2020-05-25)*
 ----------------------------
 
