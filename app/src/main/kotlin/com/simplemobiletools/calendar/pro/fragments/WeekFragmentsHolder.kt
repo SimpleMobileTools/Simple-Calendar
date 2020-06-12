@@ -257,5 +257,5 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
         (viewPager!!.adapter as? MyWeekPagerAdapter)?.updateNotVisibleScaleLevel(viewPager!!.currentItem)
     }
 
-    override fun getFullFragmentHeight() = weekHolder!!.week_view_holder.height
+    override fun getFullFragmentHeight() = weekHolder!!.week_view_holder.height - weekHolder!!.week_view_seekbar.height - weekHolder!!.week_view_days_count_divider.height
 }

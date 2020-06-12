@@ -37,7 +37,7 @@
         android:id="@+id/week_view_view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/week_view_seekbar"
+        android:layout_above="@+id/week_view_days_count_divider"
         android:layout_toEndOf="@+id/week_view_hours_scrollview" />
 
     <include

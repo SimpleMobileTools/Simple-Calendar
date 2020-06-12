@@ -156,7 +156,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             listener?.updateHoursTopMargin(mView.week_top_holder.height)
             checkScrollLimits(scrollView.scrollY)
 
-            // fix some glitches like at swiping from a fully scaled out fragment will all-day events to an empty one
+            // fix some glitches like at swiping from a fully scaled out fragment with all-day events to an empty one
             val fullFragmentHeight = (listener?.getFullFragmentHeight() ?: 0) - mView.week_top_holder.height
             if (scrollView.height < fullFragmentHeight) {
                 config.weeklyViewItemHeightMultiplier = fullFragmentHeight / 24 / defaultRowHeight
