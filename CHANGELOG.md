@@ -1,6 +1,11 @@
 Changelog
 ==========
 
+Version 6.9.6 *(2020-06-12)*
+----------------------------
+
+ * Fixing a glitch with zoomed out weekly view
+
 Version 6.9.5 *(2020-06-10)*
 ----------------------------
 
