@@ -39,6 +39,7 @@ const val MONTH = 2592001    // exact value not taken into account, Joda is used
 const val YEAR = 31536000
 
 // Shared Preferences
+const val ROUNDED_EVENT_BOX = "rounded_event_box"
 const val WEEK_NUMBERS = "week_numbers"
 const val START_WEEKLY_AT = "start_weekly_at"
 const val VIBRATE = "vibrate"

@@ -16,6 +16,10 @@ class Config(context: Context) : BaseConfig(context) {
         fun newInstance(context: Context) = Config(context)
     }
 
+    var roundedEventBox: Boolean
+        get() = prefs.getBoolean(ROUNDED_EVENT_BOX, true)
+        set(roundedEventBox) = prefs.edit().putBoolean(ROUNDED_EVENT_BOX, roundedEventBox).apply()
+
     var showWeekNumbers: Boolean
         get() = prefs.getBoolean(WEEK_NUMBERS, false)
         set(showWeekNumbers) = prefs.edit().putBoolean(WEEK_NUMBERS, showWeekNumbers).apply()

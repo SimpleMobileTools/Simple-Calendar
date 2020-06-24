@@ -193,6 +193,7 @@
     <string name="other_time">Other time</string>
     <string name="highlight_weekends">Highlight weekends on some views</string>
     <string name="allow_changing_time_zones">Allow changing event time zones</string>
+    <string name="rounded_event_box">Rounded event box</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
