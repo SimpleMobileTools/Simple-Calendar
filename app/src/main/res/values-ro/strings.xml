@@ -22,7 +22,7 @@
     <string name="event">Eveniment</string>
     <string name="edit_event">Modifică evenimentul</string>
     <string name="new_event">Eveniment nou</string>
-    <string name="create_new_event">Crează un nou eveniment</string>
+    <string name="create_new_event">Creează un nou eveniment</string>
     <string name="duplicate_event">Duplică evenimentul</string>
     <string name="title_empty">Titlul nu poate fi gol</string>
     <string name="end_before_start">Evenimentul nu se poate încheia mai devreme decât începe</string>
@@ -34,7 +34,7 @@
 
     <!-- Event Repetition -->
     <string name="repetition">Repetiție</string>
-    <string name="no_repetition">Fară repetiție</string>
+    <string name="no_repetition">Fără repetiție</string>
     <string name="daily">Zilnic</string>
     <string name="weekly">Săptămânal</string>
     <string name="monthly">Lunar</string>
@@ -191,7 +191,7 @@
     <string name="default_duration">Durata implicită</string>
     <string name="last_used_one">Ultima folosită</string>
     <string name="other_time">Alt timp</string>
-    <string name="highlight_weekends">Evidențiază weekend-urile in anumite vizualizări</string>
+    <string name="highlight_weekends">Evidențiază weekend-urile în anumite vizualizări</string>
     <string name="allow_changing_time_zones">Permite modificarea zonele orare ale evenimentului</string>
 
     <!-- CalDAV sync -->
@@ -232,7 +232,7 @@
 
     <!-- FAQ -->
     <string name="faq_1_title">Cum pot elimina sărbătorile importate prin intermediul butonului \"Adaugă sărbători\"?</string>
-    <string name="faq_1_text">Sărbători create așa sunt introduse intr-un tip de event nou numit \"Sărbători\". Puteți să vă duceți in Setări -> Gestionează tipurile de evenimente,
+    <string name="faq_1_text">Sărbători create așa sunt introduse într-un tip de event nou numit \"Sărbători\". Puteți să vă duceți în Setări -> Gestionează tipurile de evenimente,
         apăsați lung tipul de eveniment dat și ștergeți-l selectând coșul de gunoi.</string>
     <string name="faq_2_title">Pot sincroniza evenimentele mele prin Google Calendar sau alt serviciu care acceptă CalDAV?</string>
     <string name="faq_2_text">Da, trebuie doar să comutați \"sincronizarea CalDAV\" în setările aplicației și să selectați calendarele pe care doriți să le sincronizați. Cu toate acestea, veți avea nevoie de o aplicație terță care se ocupă de sincronizarea dintre dispozitiv și servere.
@@ -241,7 +241,7 @@
     <string name="faq_3_text">Nu doar afișarea reamintirilor propriu-zise, dar și redarea audio este extrem de afectată de sistem. Dacă nu auziți niciun sunet, încercați să accesați setările aplicației,
          apăsând opțiunea \"Flux audio folosit de reamintiri\" și schimbați-o la o altă valoare. Dacă tot nu funcționează, verificați setările de sunet, dacă fluxul special nu este dezactivat.</string>
     <string name="faq_4_title">Aplicația acceptă fusuri orare?</string>
-    <string name="faq_4_text">Da, aceptă. În mod implicit, toate evenimentele sunt create în fusul dvs. curent. Dacă doriți să schimbați fusul orar al evenimentelor,
+    <string name="faq_4_text">Da, acceptă. În mod implicit, toate evenimentele sunt create în fusul dvs. curent. Dacă doriți să schimbați fusul orar al evenimentelor,
          mai întâi va trebui să activați selectorul de fus orar la setările aplicației, apoi să-l schimbați în ecranul Detalii despre eveniment. Acesta opțiune este dezactivată implicit, deoarece majoritatea oamenilor nu au nevoie de ea.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
@@ -250,7 +250,7 @@
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Calendar simplu 2020. Planificare și reamintire întâlnire pentru orice zi</string>
     <string name="app_long_description">
-        Simple Calendar Pro este complet personalizabil, calendar offline conceput pentru a face exact ceea ce ar trebui să facă un calendar. <b>Fără caracteristici complicate, permisiuni inutile și fără reclame!</b>
+        Simple Calendar Pro poate fi complet personalizat, calendar offline conceput pentru a face exact ceea ce ar trebui să facă un calendar. <b>Fără caracteristici complicate, permisiuni inutile și fără reclame!</b>
 
         Fie că organizați evenimente individuale sau repetitive, zile de naștere, aniversări, întâlniri de afaceri, programări sau orice altceva, Simple Calendar Pro face <b>ușor să rămâneți organizat</b>. Cu o varietate incredibilă de <b>opțiuni de personalizare</b>, puteți personaliza reamintiri pentru evenimente, sunete de notificare, widgeturi de calendar și aspectul aplicației.
 
@@ -275,7 +275,7 @@
         ✔️ Opțiune de amânare pentru reamintiri
         ✔️ Puteți adăuga ușor sărbători, zile de naștere, aniversări și programări
         ✔️ Personalizați evenimentele - ora de pornire, durata, reamintiri etc.
-        ✔️ Puteți seta optine de participare la eveniment pentru fiecare eveniment
+        ✔️ Puteți seta opțiune de participare pentru fiecare eveniment
         ✔️ Utilizați ca calendar personal sau calendar de afaceri
         ✔️ Alegeți dintre reamintiri și notificări prin e-mail pentru a vă avertiza despre un eveniment
 
