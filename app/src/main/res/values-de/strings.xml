@@ -249,7 +249,7 @@
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Simple Calendar Pro - Termine &amp; Erinnerungen</string>
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Simple mobile 2020 calendar. Schedule planner &amp; appointment reminder for any day</string>
+    <string name="app_short_description">Der beste Kalender zum Organisieren der Ereignisse während des ganzen Tages</string>
     <string name="app_long_description">
         Simple Calendar Pro ist ein vollständig anpassbarer Offline-Kalender, der genau das bietet, was man von einem Kalender erwartet. <b>Keine umständlichen Funktionen, keine unnötigen Berechtigungen und keine Werbung!</b>
 
