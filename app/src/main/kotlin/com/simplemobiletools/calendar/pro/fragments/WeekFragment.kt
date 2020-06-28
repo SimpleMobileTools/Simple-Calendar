@@ -595,8 +595,9 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 }
             }
 
-            val dayCode = Formatter.getDayCodeFromDateTime(startDateTime)
-            val dayOfWeek = dayColumns.indexOfFirst { it.tag == dayCode }
+            val dayCodeStart = Formatter.getDayCodeFromDateTime(startDateTime).toInt()
+            val dayCodeEnd = Formatter.getDayCodeFromDateTime(endDateTime).toInt()
+            val dayOfWeek = dayColumns.indexOfFirst { it.tag.toInt() == dayCodeStart || (it.tag.toInt() > dayCodeStart && it.tag.toInt() <= dayCodeEnd) }
             if (dayOfWeek == -1) {
                 return
             }
