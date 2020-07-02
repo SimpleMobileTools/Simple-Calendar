@@ -117,7 +117,7 @@
     <string name="import_events">Importar eventos</string>
     <string name="export_events">Exportar eventos</string>
     <string name="import_events_from_ics">Importar eventos desde un ficheiro .ics</string>
-    <string name="export_events_to_ics">Exportar eventos desde un ficheiro .ics</string>
+    <string name="export_events_to_ics">Exportar eventos a un ficheiro .ics</string>
     <string name="default_event_type">Tipo de evento predeterminado</string>
     <string name="export_past_events_too">Exportar tamén eventos pasados</string>
     <string name="include_event_types">Incluír tipos de eventos</string>
@@ -212,13 +212,13 @@
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
-    <string name="monday_alt">Segunda</string>
-    <string name="tuesday_alt">Terceira</string>
-    <string name="wednesday_alt">Cuarta</string>
-    <string name="thursday_alt">Quinta</string>
-    <string name="friday_alt">Sexta</string>
-    <string name="saturday_alt">Sábado</string>
-    <string name="sunday_alt">Domingo</string>
+    <string name="monday_alt">luns</string>
+    <string name="tuesday_alt">martes</string>
+    <string name="wednesday_alt">mércores</string>
+    <string name="thursday_alt">xoves</string>
+    <string name="friday_alt">venres</string>
+    <string name="saturday_alt">sábado</string>
+    <string name="sunday_alt">domingo</string>
 
     <!-- List widget config example events -->
     <string name="sample_title_1">Exercicio</string>
@@ -231,17 +231,17 @@
     <string name="sample_title_5">Hora do café</string>
 
     <!-- FAQ -->
-    <string name="faq_1_title">Como podo eliminar as vacacións engadidas vía o botón \"Engadir vacacións\"?</string>
-    <string name="faq_1_text">As vacacións creadas dese xeito insértanse nun tipo de evento chamado \"Vacacións\". Podes ir a Axustes -> Xestionar tipo de eventos,
+    <string name="faq_1_title">Como podo eliminar os días festivos engadidos vía o botón \"Engadir días festivos\"?</string>
+    <string name="faq_1_text">Os días festivos creados dese xeito insértanse nun tipo de evento chamado \"Festivo\". Podes ir a Axustes -> Xestionar tipo de eventos,
         manter preso o tipo de evento desexado e eliminalo escollendo o caldeiro do lixo.</string>
     <string name="faq_2_title">Podo sincronizar os meus eventos vía Google Calendar, ou outro servizo que use CalDAV?</string>
     <string name="faq_2_text">Si, activa \"CalDAV sincr.\" nos axustes da app e escolle os calendarios que queres sincronizar. Porén, precisas unha app de terceiros para xestionar a sincronización entre dispositivos e servidores.
         Se desexas sincronizar un calendario de Google, a súa app oficial Calendar fará o traballo. Para outros calendario precisas unha app de sincronización, como DAVx5.</string>
     <string name="faq_3_title">Vexo os recordatorios visualmente, pero non escoito audio. Que podo facer?</string>
-    <string name="faq_3_text">Non só mostrar o recordatorio propiamente dito, se non que a reprodución do son depende en gran medida do sistema tamén. Se non podes escoitar ningún son, intenta ir aos axustes da app e premer en \"Son utilizado polos recordatorios\" e cambia a un valor diferente. Se aínda así non funciona, comproba os axustes de son, que o fluxo en particular non esté acalado.</string>
+    <string name="faq_3_text">Non só mostrar o recordatorio propiamente dito, se non que a reprodución do son depende en gran medida do sistema tamén. Se non podes escoitar ningún son, intenta ir aos axustes da app e premer en \"Canle de audio usado polos recordatorios\" e cambialo a un valor diferente. Se aínda así non funciona, comproba os axustes de son, que o fluxo en particular non esté acalado.</string>
     <string name="faq_4_title">A app soporta zonas horarias?</string>
     <string name="faq_4_text">Si. Por omisión todos os eventos créanse na túa zona horaria actual. Se desexas cambiar a zona horaria dos eventos,
-        primeiro tes que activar o selector de zona horaria nos axustes da app, e despois cambialo na pantalla de Detalles do Evento. Se está desactivado de inicio porque non o utiliza moita xente.</string>
+        primeiro tes que activar o selector de zona horaria nos axustes da app, e despois cambialo na pantalla de Detalles do Evento. Está desactivado de inicio porque a maioría da xente non o necesita.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
