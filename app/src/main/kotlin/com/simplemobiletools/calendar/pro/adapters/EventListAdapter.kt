@@ -31,12 +31,14 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
                        recyclerView: MyRecyclerView, itemClick: (Any) -> Unit) : MyRecyclerViewAdapter(activity, recyclerView, null, itemClick) {
 
     private val topDivider = resources.getDrawable(R.drawable.divider_width)
+    private val topDividerMonth = resources.getDrawable(R.drawable.divider_width_month)
     private val allDayString = resources.getString(R.string.all_day)
     private val replaceDescription = activity.config.replaceDescription
     private val dimPastEvents = activity.config.dimPastEvents
     private val now = getNowSeconds()
     private var use24HourFormat = activity.config.use24HourFormat
     private var currentItemsHash = listItems.hashCode()
+    private var lastMonthIndex: Int = 0
 
     init {
         setupDragListener(true)
@@ -182,8 +184,10 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
 
     private fun setupListSection(view: View, listSection: ListSection, position: Int) {
         view.event_section_title.apply {
+            val currentMonthIndex = Formatter.getDateTimeFromCode(listSection.code).monthOfYear().get()
             text = listSection.title
-            setCompoundDrawablesWithIntrinsicBounds(null, if (position == 0) null else topDivider, null, null)
+            setCompoundDrawablesWithIntrinsicBounds(null, if (position == 0) null else if (currentMonthIndex!=lastMonthIndex) topDividerMonth else topDivider, null, null)
+            lastMonthIndex = currentMonthIndex
             var color = if (listSection.isToday) primaryColor else textColor
             if (dimPastEvents && listSection.isPastSection) {
                 color = color.adjustAlpha(LOW_ALPHA)
