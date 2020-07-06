@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 6.9.7 *(2020-07-06)*
+----------------------------
+
+ * Fixed some weekly view related glitches
+ * Added some stability and translation improvements
+
 Version 6.9.6 *(2020-06-12)*
 ----------------------------
 
