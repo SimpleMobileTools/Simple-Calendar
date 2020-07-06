@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.res.Resources
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.os.Handler
 import android.util.Range
 import android.view.*
 import android.widget.ImageView
@@ -59,6 +60,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private var wasScaled = false
     private var selectedGrid: View? = null
     private var currentTimeView: ImageView? = null
+    private var fadeOutHandler = Handler()
     private var allDayHolders = ArrayList<RelativeLayout>()
     private var allDayRows = ArrayList<HashSet<Int>>()
     private var currEvents = ArrayList<Event>()
@@ -275,9 +277,13 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                         }
                     }
 
-                    animate().setStartDelay(PLUS_FADEOUT_DELAY).alpha(0f).withEndAction {
-                        beGone()
-                    }
+                    // do not use setStartDelay, it will trigger instantly if the device has disabled animations
+                    fadeOutHandler.removeCallbacksAndMessages(null)
+                    fadeOutHandler.postDelayed({
+                        animate().alpha(0f).withEndAction {
+                            beGone()
+                        }
+                    }, PLUS_FADEOUT_DELAY)
                 }
                 return super.onSingleTapUp(event)
             }
