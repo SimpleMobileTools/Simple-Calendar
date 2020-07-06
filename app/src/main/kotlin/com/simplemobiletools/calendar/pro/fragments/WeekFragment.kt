@@ -241,7 +241,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     }
 
     private fun initGrid() {
-        (0 until config.weeklyViewDays).map { dayColumns[it] }
+        (0 until config.weeklyViewDays).mapNotNull { dayColumns.getOrNull(it) }
             .forEachIndexed { index, layout ->
                 layout.removeAllViews()
                 val gestureDetector = getViewGestureDetector(layout, index)
@@ -596,6 +596,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                         allDayRows.last().add(dayIndex)
                     }
                 }
+
                 if (wasEventHandled) {
                     break
                 }
