@@ -16,7 +16,7 @@
     <!-- Widget titles -->
     <string name="widget_monthly">Calendario mensual</string>
     <string name="widget_list">Lista de eventos del calendario</string>
-    <string name="widget_todays_date">Calendar today\'s date</string>
+    <string name="widget_todays_date">Calendario de la fecha de hoy</string>
 
     <!-- Event -->
     <string name="event">Evento</string>
@@ -208,7 +208,7 @@
     <string name="select_a_different_caldav_color">Seleccionar un color diferente (localmente)</string>
     <string name="insufficient_permissions">No tiene permiso para modificar el calendario</string>
     <string name="caldav_event_not_found">Evento no encontrado. Habilite la sincronización de CalDAV para los calendarios en la configuración.</string>
-    <string name="no_synchronized_calendars">No synchronizable calendars have been found</string>
+    <string name="no_synchronized_calendars">No se han encontrado calendarios para sincronizar</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
@@ -248,9 +248,9 @@
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Calendario Simple Pro - Eventos y Recordatorios</string>
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Simple mobile 2020 calendar. Schedule planner &amp; appointment reminder for any day</string>
+    <string name="app_short_description">Calendario móvil Simple 2020. Horarios y recordatorios para cualquier día</string>
     <string name="app_long_description">
-        Calendario Simple Pro es un calendario fuera de línea, totalmente personalizable y diseñado para hacer exactamente lo que debe hacer un calendario. <b> ¡Sin funcionalidades complicadas, permisos innecesarios y sin anuncios! </b>
+        Calendario Simple Pro es un calendario sin conexión, totalmente personalizable y diseñado para hacer exactamente lo que debe hacer un calendario. <b> ¡Sin funcionalidades complicadas, permisos innecesarios y sin anuncios! </b>
 
         Ya sea que estes organizando eventos individuales o recurrentes, cumpleaños, aniversarios, reuniones de negocios, citas o cualquier otra cosa, Simple Calendar Pro hace que <b> sea fácil mantenerse organizado </b>. Con una increíble variedad de <b> opciones de personalización </b>, puedes personalizar recordatorios de eventos, sonidos de notificación, widgets de calendario y el aspecto de la aplicación.
 
