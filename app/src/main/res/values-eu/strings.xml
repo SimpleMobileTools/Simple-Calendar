@@ -9,14 +9,14 @@
     <string name="yearly_view">Urteko ikuspegia</string>
     <string name="simple_event_list">Gertaera-zerrenda sinplea</string>
     <string name="no_upcoming_events">Hurrengo gertaerarik ez.</string>
-    <string name="go_to_today">Joan gauro egunera</string>
-    <string name="go_to_date">Joan datara</string>
+    <string name="go_to_today">Joan gaurko egunera</string>
+    <string name="go_to_date">Joan data zehatz batera</string>
     <string name="upgraded_from_free">Kaixo,\n\nbadirudi doako aplikazio zaharra eguneratu duzula. Eskuz biltegiratutako gertaerak migratu behar dituzu .ics fitxategi batean esportatuz, eta gero inportatuz. Esportazio- eta inportazio-botoiak pantaila nagusiaren menuan aurki ditzakezu.\n\nOndoren, bertsio zaharra desinstalatu dezakezu aplikazioaren ezarpenen goiko aldean dagoen \'Eskuratu Pro bertsioa\' botoiarekin. Azkenik, aplikazioaren ezarpenak berrezarri besterik ez dituzu egin behar.\n\nEskerrik asko!</string>
 
     <!-- Widget titles -->
-    <string name="widget_monthly">Egutegia hilabetea</string>
-    <string name="widget_list">Egutegia gertaera-zerrenda</string>
-    <string name="widget_todays_date">Egutegia gaurko eguna</string>
+    <string name="widget_monthly">Egutegia (hilabetea)</string>
+    <string name="widget_list">Egutegia (gertaera-zerrenda)</string>
+    <string name="widget_todays_date">Egutegia (gaurko eguna)</string>
 
     <!-- Event -->
     <string name="event">Gertaera</string>
@@ -30,7 +30,7 @@
     <string name="event_updated">Gertaera ondo eguneratu da</string>
     <string name="filter_events_by_type">Iragazi gertaerak motaren arabera</string>
     <string name="please_fill_location">Bete kokalekua mapan erakusteko</string>
-    <string name="public_event_notification_text">An event is upcoming</string>
+    <string name="public_event_notification_text">Gertaera bat dator</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Errepikapena</string>
@@ -42,7 +42,7 @@
     <string name="weeks_raw">asteak</string>
     <string name="months_raw">hilabeteak</string>
     <string name="years_raw">urteak</string>
-    <string name="repeat_till">Errepikapenen amaiera</string>
+    <string name="repeat_till">Noiz arte errepikatu</string>
     <string name="forever">Betiko</string>
     <string name="event_is_repeatable">Gertaera errepikagarria da</string>
     <string name="selection_contains_repetition">Hautaketak errepikatzen diren gertaerak ditu</string>
@@ -65,7 +65,7 @@
     <string name="repeat_on_the_last_day_monthly">Errepikatu hilabeteko azken egunean</string>
     <string name="repeat_on_the_same_day_yearly">Errepikatu urtero egun berean</string>
     <string name="repeat_every_m">Errepikatze-maiztasuna</string>
-    <string name="every_m">Maiztasuna</string>
+    <string name="every_m">Maiztasuna:</string>
     <string name="first_m">lehenengo</string>
     <string name="second_m">bigarren</string>
     <string name="third_m">hirugarren</string>
@@ -74,8 +74,8 @@
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
-    <string name="repeat_every_f">Erepikatze-maiztasuna</string>
-    <string name="every_f">Maiztasuna</string>
+    <string name="repeat_every_f">Erepikatze-maiztasuna:</string>
+    <string name="every_f">Maiztasuna:</string>
     <string name="first_f">lehenengo</string>
     <string name="second_f">bigarren</string>
     <string name="third_f">hirugarren</string>
@@ -141,8 +141,8 @@
     <string name="regular_event">Gertaera arrunta</string>
     <string name="cannot_delete_default_type">Lehenetsitako gertaera mota ezin da ezabatu</string>
     <string name="select_event_type">Hautatu gertaera mota</string>
-    <string name="move_events_into_default">Move affected events into the default event type</string>
-    <string name="remove_affected_events">Permanently remove affected events</string>
+    <string name="move_events_into_default">Mugitu eragindako gertaerak lehenetsitako gertaera motara</string>
+    <string name="remove_affected_events">Eragindako gertaerak betiko kendu</string>
     <string name="unsync_caldav_calendar">CalDAV egutegia ezabatzeko desinkronizatu behar duzu</string>
 
     <!-- Holidays -->
@@ -155,7 +155,7 @@
     <string name="importing_holidays_failed">Jaiegunak inportatzeak huts egin du</string>
 
     <!-- Settings -->
-    <string name="manage_event_types">Manage event types</string>
+    <string name="manage_event_types">Kudeatu gertaera motak</string>
     <string name="start_day_at">Eguna noiz hasi</string>
     <string name="end_day_at">Eguna noiz bukatu</string>
     <string name="week_numbers">Erakutsi asteen zenbakiak</string>
@@ -183,70 +183,70 @@
     <string name="default_reminder_1">Lehenetsitako abisua 1</string>
     <string name="default_reminder_2">Lehenetsitako abisua 2</string>
     <string name="default_reminder_3">Lehenetsitako abisua 3</string>
-    <string name="view_to_open_from_widget">View to open from the event list widget</string>
+    <string name="view_to_open_from_widget">Gertaera-zerrendaren widgetatik irekitzeko ikuspegia</string>
     <string name="last_view">Erabilitako azken ikuspegia</string>
     <string name="new_events">Gertaera berriak</string>
     <string name="default_start_time">Lehenetsitako hasiera-ordua</string>
     <string name="next_full_hour">Hurrengo ordu osoa</string>
     <string name="default_duration">Lehenetsitako iraupena</string>
     <string name="last_used_one">Erabilitako azkena</string>
-    <string name="other_time">Other time</string>
-    <string name="highlight_weekends">Highlight weekends on some views</string>
-    <string name="allow_changing_time_zones">Allow changing event time zones</string>
+    <string name="other_time">Bestelako denbora</string>
+    <string name="highlight_weekends">Nabarmendu asteburuak ikuspegi batzuetan</string>
+    <string name="allow_changing_time_zones">Baimendu gertaeren ordu-zonak aldatzea</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
-    <string name="select_caldav_calendars">Select calendars to sync</string>
-    <string name="manage_synced_calendars">Manage synced calendars</string>
-    <string name="store_locally_only">Store locally only</string>
-    <string name="refresh_caldav_calendars">Refresh CalDAV calendars</string>
-    <string name="refreshing">Refreshing…</string>
-    <string name="refreshing_complete">Refreshing complete</string>
-    <string name="editing_calendar_failed">Editing calendar failed</string>
-    <string name="syncing">Syncing…</string>
-    <string name="synchronization_completed">Sync completed</string>
-    <string name="select_a_different_caldav_color">Select a different color (might be applied locally only)</string>
-    <string name="insufficient_permissions">You are not allowed to write in the selected calendar</string>
-    <string name="caldav_event_not_found">Event not found. Please enable CalDAV sync for the appropriate calendar in the app settings.</string>
-    <string name="no_synchronized_calendars">No synchronizable calendars have been found</string>
+    <string name="select_caldav_calendars">Hautatu sinkronizatu nahi dituzun egutegiak</string>
+    <string name="manage_synced_calendars">Kudeatu sinkronizatutako egutegiak</string>
+    <string name="store_locally_only">Gorde lokalki soilik</string>
+    <string name="refresh_caldav_calendars">Freskatu CalDAV egutegiak</string>
+    <string name="refreshing">Freskatzen…</string>
+    <string name="refreshing_complete">Freskatu da</string>
+    <string name="editing_calendar_failed">Egutegia editatzeak huts egin du</string>
+    <string name="syncing">Sinkronizatzen…</string>
+    <string name="synchronization_completed">sinkronizatu da</string>
+    <string name="select_a_different_caldav_color">Hautatu kolore ezberdina (lokalki soilik aplikatu daiteke)</string>
+    <string name="insufficient_permissions">Ez duzu hautatutako egutegian idazteko baimenik</string>
+    <string name="caldav_event_not_found">Gertaera ez da aurkitu. Gaitu egutegi aproposerako CalDAV sinkronizazioa aplikazioaren ezarpenetan.</string>
+    <string name="no_synchronized_calendars">Sinkronizatu daitekeen egutegirik ez da aurkitu</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
-    <string name="monday_alt">Monday</string>
-    <string name="tuesday_alt">Tuesday</string>
-    <string name="wednesday_alt">Wednesday</string>
-    <string name="thursday_alt">Thursday</string>
-    <string name="friday_alt">Friday</string>
-    <string name="saturday_alt">Saturday</string>
-    <string name="sunday_alt">Sunday</string>
+    <string name="monday_alt">astelehenean</string>
+    <string name="tuesday_alt">asteartean</string>
+    <string name="wednesday_alt">asteazkenean</string>
+    <string name="thursday_alt">ostegunean</string>
+    <string name="friday_alt">ostiralean</string>
+    <string name="saturday_alt">larunbatean</string>
+    <string name="sunday_alt">igandean</string>
 
     <!-- List widget config example events -->
-    <string name="sample_title_1">Workout</string>
-    <string name="sample_description_1">Leg day</string>
-    <string name="sample_title_2">Meeting with John</string>
-    <string name="sample_description_2">In Rockstone garden</string>
-    <string name="sample_title_3">Library</string>
-    <string name="sample_title_4">Lunch with Mary</string>
-    <string name="sample_description_4">In the Plaza</string>
-    <string name="sample_title_5">Coffee time</string>
+    <string name="sample_title_1">Entrenamendua</string>
+    <string name="sample_description_1">Hankak</string>
+    <string name="sample_title_2">Bilera Itziarrekin</string>
+    <string name="sample_description_2">Katakraken</string>
+    <string name="sample_title_3">Liburutegia</string>
+    <string name="sample_title_4">Bazkaria Arkaitzekin</string>
+    <string name="sample_description_4">Garraxin</string>
+    <string name="sample_title_5">Kafea hartu</string>
 
     <!-- FAQ -->
-    <string name="faq_1_title">How can I remove the holidays imported via the \"Add holidays\" button?</string>
-    <string name="faq_1_text">Holidays created that way are inserted in a new event type called \"Holidays\". You can go in Settings -> Manage Event Types,
-        long press the given event type and delete it by selecting the trashbin.</string>
-    <string name="faq_2_title">Can I sync my events via Google Calendar, or other service supporting CalDAV?</string>
-    <string name="faq_2_text">Yes, just toggle \"CalDAV sync\" in the app settings and select the calendars you want to sync. However, you will need some third party app handling the synchronization between the device and servers.
-        In case you want to synchronize a Google calendar, their official Calendar app will do the job. For other calendars you will need a third party sync adapter, for example DAVx5.</string>
-    <string name="faq_3_title">I see the visual reminders, but hear no audio. What can I do?</string>
-    <string name="faq_3_text">Not just displaying the actual reminder, but playing the audio is hugely affected by the system too. If you can\'t hear any sound, try going in the app settings,
-        pressing the \"Audio stream used by reminders\" option and changing it to a different value. If it still won\'t work, check your sound settings, if the particular stream isn\'t muted.</string>
-    <string name="faq_4_title">Does the app support time zones?</string>
-    <string name="faq_4_text">Yes, it does. By default all events are created in your current time zone. If you want to change an events\' time zone,
-        you will first have to enable the time zone picker at the app settings, then change it at the Event Details screen. It is disabled by default as most people won\'t need it.</string>
+    <string name="faq_1_title">Nola kendu ditzaket \"Gehitu jaiegunak\" botoiarekin inportatutako jaiegunak?</string>
+    <string name="faq_1_text">Modu horretan sortutako jaiegunak \"Jaiegunak\" deituriko gertaera mota berrian sartzen dira. Joan Ezarpenak -> Kudeatu gertaera motak atalera, 
+        sakatu luze gertaera mota hori eta ezabatu zakarrontzia hautatuz.</string>
+    <string name="faq_2_title">Gertaerak Google Calendar bidez sinkronizatu ditzaket, edo CalDAV onartzen duen bestelako zerbitzurik?</string>
+    <string name="faq_2_text">Bai, aldatu \"CalDAVekin sinkronizatu\" aplikazioaren ezarpenetan eta hautatu sinkronizatu nahi dituzun egutegiak. Hala ere, gailuaren eta zerbitzarien arteko sinkronizazioa maneiatzen duen hirugarrenen aplikazioren bat beharko duzu.
+        Googlen egutegiren bat sinkronizatu nahi izanez gero, beren egutegiaren aplikazio ofizialak egingo du lana. Bestelako egutegientzat sinkronizazio-moldagailua duen hirugarrenen aplikazio bat beharko duzu, DAVx5, esate baterako.</string>
+    <string name="faq_3_title">Abisu bisualak ikusten ditut, baina audiorik ez dut entzuten. Zer egin dezaket?</string>
+    <string name="faq_3_text">Abisua bistaratzeari eta audioa erreproduzitzeari sistemak eragiten dio. Soinurik ez baduzu entzuten, saiatu aplikazioaren ezarpenetara joaten,
+        \"Abisuek erabilitako audio-transmisioa\" aukera sakatu eta balio ezberdina jarri. Oraindik ez badabil, egiaztatu soinu-ezarpenak, transmisio jakina mututua ez badago.</string>
+    <string name="faq_4_title">Aplikazioak ordu-zonak onartzen ditu?</string>
+    <string name="faq_4_text">Bai, onartzen ditu. Gertaera guztiak zure ordu-zonaren arabera sortzen dira modu lehenetsian. Gertaera baten ordu-zona aldatu nahi baduzu,
+        lehenengo ordu-zonaren hautatzailea gaitu behar duzu aplikazioaren ezarpenetan eta, ondoren, Gartaeraren xehetasunen pantailan aldatu. Modu lehenetsian desgaituta dago, jende gehienak ez duelako behar.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
-    <string name="app_title">Simple Calendar Pro - Events &amp; Reminders</string>
+    <string name="app_title">Simple Calendar Pro - Gertaerak &amp; Abisuak</string>
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Simple mobile 2020 calendar. Schedule planner &amp; appointment reminder for any day</string>
     <string name="app_long_description">
