@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="package_name">com.simplemobiletools.calendar.pro</string>
+
+    <!-- Release notes -->
+    <string name="release_167">Added time zone support (customization has to be enabled in the app settings)</string>
+    <string name="release_155">Allow customizing the bottom navigation bar color</string>
+    <string name="release_146">Added email reminders and attendees in CalDAV synced events</string>
+    <string name="release_143">
+        Allow setting default start time/duration/event type for new events\n
+        Allow exporting/importing settings
+    </string>
+    <string name="release_129">Allow setting default event reminders, not always reuse the last events\' ones</string>
+    <string name="release_119">
+        Allow changing the app launcher icon color\n
+        Added support for more advanced yearly repetition rules\n
+        Allow setting reminder looping till dismissed\n
+        Added a button in Settings for changing widget colors without recreating them\n
+        Added optional dimming of past events
+    </string>
+    <string name="release_117">Reworked custom notification sound picking, should be more reliable</string>
+    <string name="release_98">
+        Added a Location field\n
+        Allow adding Contact birthdays
+    </string>
+    <string name="release_88">Replaced Google Sync with CalDAV sync, please check Settings for enabling it</string>
+    <string name="release_86">Added an initial implementation of Google sync, use with caution (will always be optional)</string>
+    <string name="release_84">Added a setting for changing the widget font size</string>
+    <string name="release_80">Allow editing specific instances of repeating events</string>
+    <string name="release_77">Allow displaying some events from the past in the Simple Event List view</string>
+    <string name="release_76">
+        Added an easy way to import Holidays in some countries\n
+        Allow filtering events to export by event type\n
+        Added Snooze
+    </string>
+    <string name="release_73">Add more advanced monthly repetition options, like \"Last day of the month\" or \"Every second Tuesday\"</string>
+    <string name="release_71">Add a new event repetition type \"Repeat x times\"</string>
+    <string name="release_69">
+        Added more advanced weekly repetition by week days\n
+        Added sharing individual events by creating temporary .ics files
+    </string>
+    <string name="release_67">
+        Replaced raw database exporting with proper .ics file exporting\n
+        Added color themes
+    </string>
+    <string name="release_62">Allow deleting individual occurrences of repeatable events</string>
+    <string name="release_60">Allow toggling 24-hour format in settings</string>
+    <string name="release_59">
+        Added customizable event repeat intervals\n
+        Multiple improvements to importing events from .ics files
+    </string>
+    <string name="release_57">Added event types with customizable colors</string>
+    <string name="release_54">Allow setting up to 3 reminders per event</string>
+    <string name="release_52">Added all-day long event support</string>
+    <string name="release_51">Allow importing events from .ics files</string>
+    <string name="release_49">Allow picking colors by hex codes</string>
+    <string name="release_48">Added a weekly view</string>
+    <string name="release_46">Event reminder types have been tweaked, please update them</string>
+    <string name="release_44">
+        Added more color customization options\n
+        Your settings have been cleared, please reset them</string>
+    <string name="release_42">Allow changing the reminder notification sound</string>
+    <string name="release_40">Added a new view, a list of upcoming events</string>
+    <string name="release_39">Added the option to vibrate at notifications</string>
+</resources>
