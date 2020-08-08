@@ -146,17 +146,15 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         search_holder.background = ColorDrawable(config.backgroundColor)
         checkSwipeRefreshAvailability()
         checkShortcuts()
-        invalidateOptionsMenu()
+
+        if (!mIsSearchOpen) {
+            invalidateOptionsMenu()
+        }
     }
 
     override fun onPause() {
         super.onPause()
         storeStateVariables()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        closeSearch()
     }
 
     override fun onDestroy() {
