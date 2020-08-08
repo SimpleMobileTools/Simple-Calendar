@@ -482,10 +482,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             }
         }
 
-        if (!hadAllDayEvent) {
-            checkTopHolderHeight()
-        }
-
+        checkTopHolderHeight()
         addCurrentTimeIndicator(minuteHeight)
     }
 
