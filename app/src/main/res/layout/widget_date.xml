@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/widget_date_holder"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/widget_date_background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/widget_date_label"
+        android:layout_alignTop="@+id/widget_date_label"
+        android:layout_alignEnd="@+id/widget_date_label"
+        android:layout_alignBottom="@+id/widget_month_label"
+        android:src="@drawable/widget_round_background" />
+
+    <TextView
+        android:id="@+id/widget_date_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="@dimen/medium_margin"
+        android:textColor="@color/md_grey_white"
+        android:textSize="26sp"
+        tools:text="1" />
+
+    <TextView
+        android:id="@+id/widget_month_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/widget_date_label"
+        android:layout_alignStart="@+id/widget_date_label"
+        android:layout_alignEnd="@+id/widget_date_label"
+        android:gravity="center"
+        android:paddingBottom="@dimen/medium_margin"
+        android:textColor="@color/md_grey_white"
+        android:textSize="@dimen/bigger_text_size"
+        tools:text="Jan" />
+
+</RelativeLayout>

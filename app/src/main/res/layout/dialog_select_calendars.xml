@@ -1,16 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/dialog_select_calendars_scrollview"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingTop="@dimen/activity_margin">
 
-    <LinearLayout
-        android:id="@+id/dialog_select_calendars_holder"
+    <RelativeLayout
+        android:id="@+id/dialog_select_calendars_wrapper"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-    </LinearLayout>
+        <com.simplemobiletools.commons.views.MyTextView
+            android:id="@+id/dialog_select_calendars_placeholder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:alpha="0.8"
+            android:text="@string/no_synchronized_calendars"
+            android:textStyle="italic" />
+
+        <LinearLayout
+            android:id="@+id/dialog_select_calendars_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+    </RelativeLayout>
 </ScrollView>

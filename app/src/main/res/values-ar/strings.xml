@@ -16,6 +16,7 @@
     <!-- Widget titles -->
     <string name="widget_monthly">تقويم شهري</string>
     <string name="widget_list">لائحة أحداث التقويم</string>
+    <string name="widget_todays_date">Calendar today\'s date</string>
 
     <!-- Event -->
     <string name="event">حدث</string>
@@ -124,7 +125,6 @@
     <string name="override_event_types">تجاوز أنواع الأحداث في الملف</string>
 
     <!-- Event details -->
-    <string name="title">العنوان</string>
     <string name="location">الموقع</string>
     <string name="description">الوصف</string>
     <string name="all_day">كامل اليوم</string>
@@ -208,6 +208,7 @@
     <string name="select_a_different_caldav_color">اختر لون مختلف (يمكن تطبيقه محليا فقط)</string>
     <string name="insufficient_permissions">لا يمكنك التعديل في هذا التقويم</string>
     <string name="caldav_event_not_found">مناسبة غير موجودة. من فضلك فَعّل مُزامنة CalDAV للحصول على التقويم المناسب من الإعدادات.</string>
+    <string name="no_synchronized_calendars">No synchronizable calendars have been found</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
@@ -253,7 +254,7 @@
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">التقويم البسيط الاحترافي - مناسبات وتنبيهات</string>
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">سيتم تنبيهك بكل اللحظات المهمة في حياتك</string>
+    <string name="app_short_description">Simple mobile 2020 calendar. Schedule planner &amp; appointment reminder for any day</string>
     <string name="app_long_description">
         Simple Calendar Pro is a fully customizable, offline calendar designed to do exactly what a calendar should do. <b>No complicated features, unnecessary permissions and no ads!</b>
 
@@ -288,6 +289,9 @@
 
         <b>Check out the full suite of Simple Tools here:</b>
         https://www.simplemobiletools.com
+
+        <b>Standalone website of Simple Calendar Pro:</b>
+        https://www.simplemobiletools.com/calendar
 
         <b>Facebook:</b>
         https://www.facebook.com/simplemobiletools

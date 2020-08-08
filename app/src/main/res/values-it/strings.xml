@@ -16,6 +16,7 @@
     <!-- Widget titles -->
     <string name="widget_monthly">Calendario mensile</string>
     <string name="widget_list">Lista degli eventi del calendario</string>
+    <string name="widget_todays_date">Calendar today\'s date</string>
 
     <!-- Event -->
     <string name="event">Evento</string>
@@ -124,7 +125,6 @@
     <string name="override_event_types">Sovrascrivi i tipi di eventi nel file</string>
 
     <!-- Event details -->
-    <string name="title">Titolo</string>
     <string name="location">Posizione</string>
     <string name="description">Descrizione</string>
     <string name="all_day">Tutto il giorno</string>
@@ -208,6 +208,7 @@
     <string name="select_a_different_caldav_color">Seleziona un colore differente (potrebbe essere applicato solamente in locale)</string>
     <string name="insufficient_permissions">Non si hanno i permessi per scrivere nel calendario selezionato</string>
     <string name="caldav_event_not_found">Event not found. Please enable CalDAV sync for the appropriate calendar in the app settings.</string>
+    <string name="no_synchronized_calendars">No synchronizable calendars have been found</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
@@ -247,7 +248,7 @@
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Semplice Calendario Pro - Eventi &amp; Promemoria</string>
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Be notified of the important moments in your life.</string>
+    <string name="app_short_description">Simple mobile 2020 calendar. Schedule planner &amp; appointment reminder for any day</string>
     <string name="app_long_description">
         Semplice Calendario Pro è un calendario offline completamente personalizzabile progettato per fare esattamente quello che un calendario dovrebbe fare. <b>Non ci sono funzionalità complicate, permessi non necessari e senza pubblicità!</b>
 
@@ -282,6 +283,9 @@
 
         <b>Dai uno sguardo alla suite completa di Simple Tools:</b>
         https://www.simplemobiletools.com
+
+        <b>Standalone website of Simple Calendar Pro:</b>
+        https://www.simplemobiletools.com/calendar
 
         <b>Facebook:</b>
         https://www.facebook.com/simplemobiletools

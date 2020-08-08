@@ -16,6 +16,7 @@
     <!-- Widget titles -->
     <string name="widget_monthly">Månedlig kalender</string>
     <string name="widget_list">Begivenhedsliste</string>
+    <string name="widget_todays_date">Dags dato-kalender</string>
 
     <!-- Event -->
     <string name="event">Begivenhed</string>
@@ -124,7 +125,6 @@
     <string name="override_event_types">Overskriv begivenhedstyper i filen</string>
 
     <!-- Event details -->
-    <string name="title">Titel</string>
     <string name="location">Sted</string>
     <string name="description">Beskrivelse</string>
     <string name="all_day">Hele dagen</string>
@@ -208,6 +208,7 @@
     <string name="select_a_different_caldav_color">Vælg en anden farve (den kan være tilføjet lokalt)</string>
     <string name="insufficient_permissions">Du har ikke tilladelse til at skrive i den valgte kalender</string>
     <string name="caldav_event_not_found">Begivenheden blev ikke fundet. Aktiver CalDAV-synkronisering med den relevante kalender i app-indstillingerne.</string>
+    <string name="no_synchronized_calendars">Der er ikke fundet nogen kalendere der kan synkroniseres</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
@@ -244,7 +245,7 @@
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Simpel kalender Pro - Begivenheder &amp; påmindelser</string>
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Bliv mindet om vigtige tidspunkter i dit liv.</string>
+    <string name="app_short_description">Simpel mobil 2020-kalender. Planlægningsværktøj &amp; aftalepåmindelser for hver dag.</string>
     <string name="app_long_description">
         Simpel kalender Pro kan tilpasses helt efter din smag, offline kalender er designet til at gøre præcis hvad en kalender skal kunne. <b>Ingen indviklede funktioner, ingen overflødige tilladelser og ingen reklamer!</b>
 
@@ -279,6 +280,9 @@
 
         <b>Se hele suiten af Simple værktøjer her:</b>
         https://www.simplemobiletools.com
+
+        <b>Simple Calendar Pros hjemmeside:</b>
+        https://www.simplemobiletools.com/calendar
 
         <b>Facebook:</b>
         https://www.facebook.com/simplemobiletools

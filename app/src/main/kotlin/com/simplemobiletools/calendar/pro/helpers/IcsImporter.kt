@@ -1,6 +1,5 @@
 package com.simplemobiletools.calendar.pro.helpers
 
-import android.widget.Toast
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.extensions.eventsDB
@@ -110,7 +109,7 @@ class IcsImporter(val activity: SimpleActivity) {
                         curImportId = line.substring(UID.length).trim()
                     } else if (line.startsWith(RRULE)) {
                         curRrule = line.substring(RRULE.length)
-                        // some RRULRs need to know the events start datetime. If it's yet unknown, postpone RRULE parsing
+                        // some RRULEs need to know the events start datetime. If it's yet unknown, postpone RRULE parsing
                         if (curStart != -1L) {
                             parseRepeatRule()
                         }
@@ -170,9 +169,9 @@ class IcsImporter(val activity: SimpleActivity) {
                         }
 
                         var reminders = arrayListOf(
-                                Reminder(curReminderMinutes.getOrElse(0) { REMINDER_OFF }, curReminderActions.getOrElse(0) { REMINDER_NOTIFICATION }),
-                                Reminder(curReminderMinutes.getOrElse(1) { REMINDER_OFF }, curReminderActions.getOrElse(1) { REMINDER_NOTIFICATION }),
-                                Reminder(curReminderMinutes.getOrElse(2) { REMINDER_OFF }, curReminderActions.getOrElse(2) { REMINDER_NOTIFICATION })
+                            Reminder(curReminderMinutes.getOrElse(0) { REMINDER_OFF }, curReminderActions.getOrElse(0) { REMINDER_NOTIFICATION }),
+                            Reminder(curReminderMinutes.getOrElse(1) { REMINDER_OFF }, curReminderActions.getOrElse(1) { REMINDER_NOTIFICATION }),
+                            Reminder(curReminderMinutes.getOrElse(2) { REMINDER_OFF }, curReminderActions.getOrElse(2) { REMINDER_NOTIFICATION })
                         )
 
                         reminders = reminders.sortedBy { it.minutes }.sortedBy { it.minutes == REMINDER_OFF }.toMutableList() as ArrayList<Reminder>
@@ -180,8 +179,8 @@ class IcsImporter(val activity: SimpleActivity) {
                         val eventType = eventTypes.firstOrNull { it.id == curEventTypeId }
                         val source = if (calDAVCalendarId == 0 || eventType?.isSyncedEventType() == false) SOURCE_IMPORTED_ICS else "$CALDAV-$calDAVCalendarId"
                         val event = Event(null, curStart, curEnd, curTitle, curLocation, curDescription, reminders[0].minutes,
-                                reminders[1].minutes, reminders[2].minutes, reminders[0].type, reminders[1].type, reminders[2].type, curRepeatInterval, curRepeatRule,
-                                curRepeatLimit, curRepeatExceptions, "", curImportId, DateTimeZone.getDefault().id, curFlags, curEventTypeId, 0, curLastModified, source)
+                            reminders[1].minutes, reminders[2].minutes, reminders[0].type, reminders[1].type, reminders[2].type, curRepeatInterval, curRepeatRule,
+                            curRepeatLimit, curRepeatExceptions, "", curImportId, DateTimeZone.getDefault().id, curFlags, curEventTypeId, 0, curLastModified, source)
 
                         if (event.getIsAllDay() && curEnd > curStart) {
                             event.endTS -= DAY
@@ -227,7 +226,7 @@ class IcsImporter(val activity: SimpleActivity) {
 
             eventsHelper.insertEvents(eventsToInsert, true)
         } catch (e: Exception) {
-            activity.showErrorToast(e, Toast.LENGTH_LONG)
+            activity.showErrorToast(e)
             eventsFailed++
         }
 
@@ -248,7 +247,9 @@ class IcsImporter(val activity: SimpleActivity) {
         return try {
             if (fullString.startsWith(';')) {
                 val value = fullString.substring(fullString.lastIndexOf(':') + 1).replace(" ", "")
-                if (!value.contains("T")) {
+                if (value.isEmpty()) {
+                    return 0
+                } else if (!value.contains("T")) {
                     curFlags = curFlags or FLAG_ALL_DAY
                 }
 
@@ -257,7 +258,7 @@ class IcsImporter(val activity: SimpleActivity) {
                 Parser().parseDateTimeValue(fullString.substring(1))
             }
         } catch (e: Exception) {
-            activity.showErrorToast(e, Toast.LENGTH_LONG)
+            activity.showErrorToast(e)
             eventsFailed++
             -1
         }

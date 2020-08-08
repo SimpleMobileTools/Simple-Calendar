@@ -1,6 +1,65 @@
 Changelog
 ==========
 
+Version 6.9.7 *(2020-07-06)*
+----------------------------
+
+ * Fixed some weekly view related glitches
+ * Added some stability and translation improvements
+
+Version 6.9.6 *(2020-06-12)*
+----------------------------
+
+ * Fixing a glitch with zoomed out weekly view
+
+Version 6.9.5 *(2020-06-10)*
+----------------------------
+
+ * Allow changing the amount of days shown at the weekly view
+ * Show a Save / Discard prompt at leaving an edited event (by fnrngg)
+ * Some translation and stability improvements
+
+Version 6.9.4 *(2020-05-25)*
+----------------------------
+
+ * Allow landscape orientation on any device
+ * Use the nicer new app icon on lower Android versions
+ * Some UI, stability and translation improvements
+
+Version 6.9.3 *(2020-05-05)*
+----------------------------
+
+ * Added a 1x1 widget showing the current date
+ * Made all widget corners round to make them nicer
+ * Added some translation and other smaller improvements here and there
+
+Version 6.9.2 *(2020-04-17)*
+----------------------------
+
+ * Fixed some .ics file importing related glitches
+ * Corrected and added some UK holidays
+ * Added many UI and translation improvements
+
+Version 6.9.1 *(2020-03-25)*
+----------------------------
+
+ * Allow zooming the weekly view with vertical gestures
+ * Allow scrolling through the whole weeky view, use Start time only as the default time
+ * Updating the app icon
+ * Other stability, translation and UX improvements
+
+Version 6.9.0 *(2020-03-18)*
+----------------------------
+
+ * Remember the last used folder at ics exporting
+ * Do not request the Storage permission on Android 10+, use Scoped Storage
+
+Version 6.8.5 *(2020-03-08)*
+----------------------------
+
+ * Added a Go To Today menu button at the event list view too
+ * Some translation and stability improvements
+
 Version 6.8.4 *(2020-02-07)*
 ----------------------------
 

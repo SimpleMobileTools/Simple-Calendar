@@ -40,15 +40,7 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
 
     init {
         setupDragListener(true)
-        var firstNonPastSectionIndex = -1
-        listItems.forEachIndexed { index, listItem ->
-            if (firstNonPastSectionIndex == -1 && listItem is ListSection) {
-                if (!listItem.isPastSection) {
-                    firstNonPastSectionIndex = index
-                }
-            }
-        }
-
+        val firstNonPastSectionIndex = listItems.indexOfFirst { it is ListSection && !it.isPastSection }
         if (firstNonPastSectionIndex != -1) {
             activity.runOnUiThread {
                 recyclerView.scrollToPosition(firstNonPastSectionIndex)

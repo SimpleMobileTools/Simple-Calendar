@@ -1,8 +1,8 @@
 package com.simplemobiletools.calendar.pro.activities
 
+import android.app.Activity
 import android.app.TimePickerDialog
 import android.content.Intent
-import android.content.res.Resources
 import android.media.AudioManager
 import android.os.Bundle
 import android.view.Menu
@@ -20,18 +20,18 @@ import com.simplemobiletools.commons.models.RadioItem
 import kotlinx.android.synthetic.main.activity_settings.*
 import org.joda.time.DateTime
 import java.io.File
+import java.io.InputStream
 import java.util.*
 
 class SettingsActivity : SimpleActivity() {
     private val GET_RINGTONE_URI = 1
+    private val PICK_IMPORT_SOURCE_INTENT = 2
 
-    lateinit var res: Resources
     private var mStoredPrimaryColor = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
-        res = resources
         mStoredPrimaryColor = config.primaryColor
     }
 
@@ -51,7 +51,6 @@ class SettingsActivity : SimpleActivity() {
         setupWeekNumbers()
         setupShowGrid()
         setupWeeklyStart()
-        setupWeeklyEnd()
         setupVibrate()
         setupReminderSound()
         setupReminderAudioStream()
@@ -105,6 +104,9 @@ class SettingsActivity : SimpleActivity() {
         if (requestCode == GET_RINGTONE_URI && resultCode == RESULT_OK && resultData != null) {
             val newAlarmSound = storeNewYourAlarmSound(resultData)
             updateReminderSound(newAlarmSound)
+        } else if (requestCode == PICK_IMPORT_SOURCE_INTENT && resultCode == Activity.RESULT_OK && resultData != null && resultData.data != null) {
+            val inputStream = contentResolver.openInputStream(resultData.data!!)
+            parseFile(inputStream)
         }
     }
 
@@ -124,7 +126,7 @@ class SettingsActivity : SimpleActivity() {
     private fun setupSectionColors() {
         val adjustedPrimaryColor = getAdjustedPrimaryColor()
         arrayListOf(reminders_label, caldav_label, weekly_view_label, monthly_view_label, simple_event_list_label, widgets_label, events_label,
-                new_events_label, migrating_label).forEach {
+            new_events_label, migrating_label).forEach {
             it.setTextColor(adjustedPrimaryColor)
         }
     }
@@ -293,32 +295,11 @@ class SettingsActivity : SimpleActivity() {
         settings_start_weekly_at.text = getHoursString(config.startWeeklyAt)
         settings_start_weekly_at_holder.setOnClickListener {
             val items = ArrayList<RadioItem>()
-            (0..24).mapTo(items) { RadioItem(it, getHoursString(it)) }
+            (0..16).mapTo(items) { RadioItem(it, getHoursString(it)) }
 
             RadioGroupDialog(this@SettingsActivity, items, config.startWeeklyAt) {
-                if (it as Int >= config.endWeeklyAt) {
-                    toast(R.string.day_end_before_start)
-                } else {
-                    config.startWeeklyAt = it
-                    settings_start_weekly_at.text = getHoursString(it)
-                }
-            }
-        }
-    }
-
-    private fun setupWeeklyEnd() {
-        settings_end_weekly_at.text = getHoursString(config.endWeeklyAt)
-        settings_end_weekly_at_holder.setOnClickListener {
-            val items = ArrayList<RadioItem>()
-            (0..24).mapTo(items) { RadioItem(it, getHoursString(it)) }
-
-            RadioGroupDialog(this@SettingsActivity, items, config.endWeeklyAt) {
-                if (it as Int <= config.startWeeklyAt) {
-                    toast(R.string.day_end_before_start)
-                } else {
-                    config.endWeeklyAt = it
-                    settings_end_weekly_at.text = getHoursString(it)
-                }
+                config.startWeeklyAt = it as Int
+                settings_start_weekly_at.text = getHoursString(it)
             }
         }
     }
@@ -344,16 +325,16 @@ class SettingsActivity : SimpleActivity() {
 
         settings_reminder_sound_holder.setOnClickListener {
             SelectAlarmSoundDialog(this, config.reminderSoundUri, config.reminderAudioStream, GET_RINGTONE_URI, ALARM_SOUND_TYPE_NOTIFICATION, false,
-                    onAlarmPicked = {
-                        if (it != null) {
-                            updateReminderSound(it)
-                        }
-                    }, onAlarmSoundDeleted = {
-                if (it.uri == config.reminderSoundUri) {
-                    val defaultAlarm = getDefaultAlarmSound(ALARM_SOUND_TYPE_NOTIFICATION)
-                    updateReminderSound(defaultAlarm)
-                }
-            })
+                onAlarmPicked = {
+                    if (it != null) {
+                        updateReminderSound(it)
+                    }
+                }, onAlarmSoundDeleted = {
+                    if (it.uri == config.reminderSoundUri) {
+                        val defaultAlarm = getDefaultAlarmSound(ALARM_SOUND_TYPE_NOTIFICATION)
+                        updateReminderSound(defaultAlarm)
+                    }
+                })
         }
     }
 
@@ -367,10 +348,10 @@ class SettingsActivity : SimpleActivity() {
         settings_reminder_audio_stream.text = getAudioStreamText()
         settings_reminder_audio_stream_holder.setOnClickListener {
             val items = arrayListOf(
-                    RadioItem(AudioManager.STREAM_ALARM, res.getString(R.string.alarm_stream)),
-                    RadioItem(AudioManager.STREAM_SYSTEM, res.getString(R.string.system_stream)),
-                    RadioItem(AudioManager.STREAM_NOTIFICATION, res.getString(R.string.notification_stream)),
-                    RadioItem(AudioManager.STREAM_RING, res.getString(R.string.ring_stream)))
+                RadioItem(AudioManager.STREAM_ALARM, getString(R.string.alarm_stream)),
+                RadioItem(AudioManager.STREAM_SYSTEM, getString(R.string.system_stream)),
+                RadioItem(AudioManager.STREAM_NOTIFICATION, getString(R.string.notification_stream)),
+                RadioItem(AudioManager.STREAM_RING, getString(R.string.ring_stream)))
 
             RadioGroupDialog(this@SettingsActivity, items, config.reminderAudioStream) {
                 config.reminderAudioStream = it as Int
@@ -503,10 +484,10 @@ class SettingsActivity : SimpleActivity() {
         settings_font_size.text = getFontSizeText()
         settings_font_size_holder.setOnClickListener {
             val items = arrayListOf(
-                    RadioItem(FONT_SIZE_SMALL, res.getString(R.string.small)),
-                    RadioItem(FONT_SIZE_MEDIUM, res.getString(R.string.medium)),
-                    RadioItem(FONT_SIZE_LARGE, res.getString(R.string.large)),
-                    RadioItem(FONT_SIZE_EXTRA_LARGE, res.getString(R.string.extra_large)))
+                RadioItem(FONT_SIZE_SMALL, getString(R.string.small)),
+                RadioItem(FONT_SIZE_MEDIUM, getString(R.string.medium)),
+                RadioItem(FONT_SIZE_LARGE, getString(R.string.large)),
+                RadioItem(FONT_SIZE_EXTRA_LARGE, getString(R.string.extra_large)))
 
             RadioGroupDialog(this@SettingsActivity, items, config.fontSize) {
                 config.fontSize = it as Int
@@ -529,12 +510,12 @@ class SettingsActivity : SimpleActivity() {
         settings_list_widget_view_to_open.text = getDefaultViewText()
         settings_list_widget_view_to_open_holder.setOnClickListener {
             val items = arrayListOf(
-                    RadioItem(DAILY_VIEW, res.getString(R.string.daily_view)),
-                    RadioItem(WEEKLY_VIEW, res.getString(R.string.weekly_view)),
-                    RadioItem(MONTHLY_VIEW, res.getString(R.string.monthly_view)),
-                    RadioItem(YEARLY_VIEW, res.getString(R.string.yearly_view)),
-                    RadioItem(EVENTS_LIST_VIEW, res.getString(R.string.simple_event_list)),
-                    RadioItem(LAST_VIEW, res.getString(R.string.last_view)))
+                RadioItem(DAILY_VIEW, getString(R.string.daily_view)),
+                RadioItem(WEEKLY_VIEW, getString(R.string.weekly_view)),
+                RadioItem(MONTHLY_VIEW, getString(R.string.monthly_view)),
+                RadioItem(YEARLY_VIEW, getString(R.string.yearly_view)),
+                RadioItem(EVENTS_LIST_VIEW, getString(R.string.simple_event_list)),
+                RadioItem(LAST_VIEW, getString(R.string.last_view)))
 
             RadioGroupDialog(this@SettingsActivity, items, config.listWidgetViewToOpen) {
                 config.listWidgetViewToOpen = it as Int
@@ -670,7 +651,6 @@ class SettingsActivity : SimpleActivity() {
                 put(WIDGET_TEXT_COLOR, config.widgetTextColor)
                 put(WEEK_NUMBERS, config.showWeekNumbers)
                 put(START_WEEKLY_AT, config.startWeeklyAt)
-                put(END_WEEKLY_AT, config.endWeeklyAt)
                 put(VIBRATE, config.vibrateOnReminder)
                 put(LAST_EVENT_REMINDER_MINUTES, config.lastEventReminderMinutes1)
                 put(LAST_EVENT_REMINDER_MINUTES_2, config.lastEventReminderMinutes2)
@@ -703,14 +683,18 @@ class SettingsActivity : SimpleActivity() {
 
     private fun setupImportSettings() {
         settings_import_holder.setOnClickListener {
-            handlePermission(PERMISSION_READ_STORAGE) {
-                if (it) {
-                    FilePickerDialog(this) {
-                        ensureBackgroundThread {
-                            try {
-                                parseFile(it)
-                            } catch (e: Exception) {
-                                showErrorToast(e)
+            if (isQPlus()) {
+                Intent(Intent.ACTION_GET_CONTENT).apply {
+                    addCategory(Intent.CATEGORY_OPENABLE)
+                    type = "text/plain"
+                    startActivityForResult(this, PICK_IMPORT_SOURCE_INTENT)
+                }
+            } else {
+                handlePermission(PERMISSION_READ_STORAGE) {
+                    if (it) {
+                        FilePickerDialog(this) {
+                            ensureBackgroundThread {
+                                parseFile(File(it).inputStream())
                             }
                         }
                     }
@@ -719,8 +703,12 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
-    private fun parseFile(path: String) {
-        val inputStream = File(path).inputStream()
+    private fun parseFile(inputStream: InputStream?) {
+        if (inputStream == null) {
+            toast(R.string.unknown_error_occurred)
+            return
+        }
+
         var importedItems = 0
         val configValues = LinkedHashMap<String, Any>()
         inputStream.bufferedReader().use {
@@ -756,7 +744,6 @@ class SettingsActivity : SimpleActivity() {
                 WIDGET_TEXT_COLOR -> config.widgetTextColor = value.toInt()
                 WEEK_NUMBERS -> config.showWeekNumbers = value.toBoolean()
                 START_WEEKLY_AT -> config.startWeeklyAt = value.toInt()
-                END_WEEKLY_AT -> config.endWeeklyAt = value.toInt()
                 VIBRATE -> config.vibrateOnReminder = value.toBoolean()
                 LAST_EVENT_REMINDER_MINUTES -> config.lastEventReminderMinutes1 = value.toInt()
                 LAST_EVENT_REMINDER_MINUTES_2 -> config.lastEventReminderMinutes2 = value.toInt()
@@ -784,8 +771,10 @@ class SettingsActivity : SimpleActivity() {
             }
         }
 
-        toast(if (configValues.size > 0) R.string.settings_imported_successfully else R.string.no_entries_for_importing)
         runOnUiThread {
+            val msg = if (configValues.size > 0) R.string.settings_imported_successfully else R.string.no_entries_for_importing
+            toast(msg)
+
             setupSettingItems()
             updateWidgets()
         }

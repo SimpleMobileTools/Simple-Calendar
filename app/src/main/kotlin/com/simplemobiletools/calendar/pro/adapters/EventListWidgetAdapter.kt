@@ -48,7 +48,10 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
             setupListEvent(remoteView, event)
         } else {
             remoteView = RemoteViews(context.packageName, R.layout.event_list_section_widget)
-            setupListSection(remoteView, events[position] as ListSection)
+            val section = events.getOrNull(position) as? ListSection
+            if (section != null) {
+                setupListSection(remoteView, section)
+            }
         }
 
         return remoteView
@@ -142,7 +145,7 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
         }
     }
 
-    private fun getItemViewType(position: Int) = if (events[position] is ListEvent) ITEM_EVENT else ITEM_HEADER
+    private fun getItemViewType(position: Int) = if (events.getOrNull(position) is ListEvent) ITEM_EVENT else ITEM_HEADER
 
     override fun getLoadingView() = null
 

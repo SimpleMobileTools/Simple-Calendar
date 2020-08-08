@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Simple Calendar</string>
+    <string name="app_launcher_name">Calendar</string>
+    <string name="change_view">Schimbă vizualizarea</string>
+    <string name="daily_view">Vedeți ziua</string>
+    <string name="weekly_view">Vedeți săptămâna</string>
+    <string name="monthly_view">Vedeți luna</string>
+    <string name="yearly_view">Vedeți anul</string>
+    <string name="simple_event_list">Listă de evenimente simple</string>
+    <string name="no_upcoming_events">Se pare că nu aveți evenimente viitoare.</string>
+    <string name="go_to_today">Sari la ziua de azi</string>
+    <string name="go_to_date">Sari la dată</string>
+    <string name="upgraded_from_free">Hei,\n\nse pare că a-ți actualizat din vechea aplicație gratuită. Trebuie să migrați manual evenimentele stocate local prin exportarea într-un fișier .ics, apoi importarea. Puteți găsi ambele butoane de export / import în meniul ecranului principal.\n\nPuteți apoi să dezinstalați versiunea veche, care are un buton \'Upgrade to Pro\' în partea de sus a setărilor aplicației. Atunci va trebui doar să resetați setările aplicației.\n\nMulțumesc!</string>
+
+    <!-- Widget titles -->
+    <string name="widget_monthly">Calendar lunar</string>
+    <string name="widget_list">Calendar listă evenimente</string>
+    <string name="widget_todays_date">Calendar data de azi</string>
+
+    <!-- Event -->
+    <string name="event">Eveniment</string>
+    <string name="edit_event">Modifică evenimentul</string>
+    <string name="new_event">Eveniment nou</string>
+    <string name="create_new_event">Creează un nou eveniment</string>
+    <string name="duplicate_event">Duplică evenimentul</string>
+    <string name="title_empty">Titlul nu poate fi gol</string>
+    <string name="end_before_start">Evenimentul nu se poate încheia mai devreme decât începe</string>
+    <string name="event_added">Evenimentul a fost adăugat cu succes</string>
+    <string name="event_updated">Eveniment actualizat cu succes</string>
+    <string name="filter_events_by_type">Filtrează evenimentele după tip</string>
+    <string name="please_fill_location">Completează o locație care să fie afișată pe o hartă</string>
+    <string name="public_event_notification_text">Un eveniment se apropie</string>
+
+    <!-- Event Repetition -->
+    <string name="repetition">Repetiție</string>
+    <string name="no_repetition">Fără repetiție</string>
+    <string name="daily">Zilnic</string>
+    <string name="weekly">Săptămânal</string>
+    <string name="monthly">Lunar</string>
+    <string name="yearly">Anual</string>
+    <string name="weeks_raw">săptămâni</string>
+    <string name="months_raw">luni</string>
+    <string name="years_raw">ani</string>
+    <string name="repeat_till">Repetă până</string>
+    <string name="forever">Pentru totdeauna</string>
+    <string name="event_is_repeatable">Evenimentul este repetabil</string>
+    <string name="selection_contains_repetition">Selecția conține evenimente repetitive</string>
+    <string name="delete_one_only">Ștergeți numai evenimentul repetitiv selectat</string>
+    <string name="delete_future_occurrences">Ștergeți acest și toate evenimentele repetitive viitoare</string>
+    <string name="delete_all_occurrences">Ștergeți toate evenimentele repetitive viitoare</string>
+    <string name="update_one_only">Actualizați numai evenimentul repetitiv selectat</string>
+    <string name="update_all_occurrences">Actualizați toate evenimentele repetitive</string>
+    <string name="repeat_till_date">Repetă până la o dată</string>
+    <string name="stop_repeating_after_x">Oprește repetiția după x întâmplări</string>
+    <string name="repeat_forever">Repetă pentru totdeauna</string>
+    <string name="times">ori</string>
+    <string name="repeat">Repetă</string>
+    <string name="repeat_on">Repetă în</string>
+    <string name="every_day">În fiecare zi</string>
+    <string name="selected_days">În zilele selectate</string>
+    <string name="the_same_day">Aceeași zi</string>
+    <string name="the_last_day">Ultima zi</string>
+    <string name="repeat_on_the_same_day_monthly">Repetă în aceeași zi lunar</string>
+    <string name="repeat_on_the_last_day_monthly">Repetă în ultima zi lunar</string>
+    <string name="repeat_on_the_same_day_yearly">Repetă în aceeași zi anual</string>
+    <string name="repeat_every_m">Repetă zilnic</string>
+    <string name="every_m">În fiecare</string>
+    <string name="first_m">prima</string>
+    <string name="second_m">a doua</string>
+    <string name="third_m">a treia</string>
+    <string name="fourth_m">a patra</string>
+    <string name="last_m">ultima</string>
+
+    <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
+    <!-- used in repetition, like "Every first Sunday" -->
+    <string name="repeat_every_f">În fiecare</string>
+    <string name="every_f">În fiecare</string>
+    <string name="first_f">prima</string>
+    <string name="second_f">a doua</string>
+    <string name="third_f">a treia</string>
+    <string name="fourth_f">a patra</string>
+    <string name="last_f">ultima</string>
+
+    <!-- Birthdays -->
+    <string name="birthdays">Zile de naștere</string>
+    <string name="add_birthdays">Adaugă Zile de naștere din contacte</string>
+    <string name="no_birthdays">Nu s-au găsit zile de naștere</string>
+    <string name="no_new_birthdays">Nu s-au găsit zile de naștere nou</string>
+    <string name="birthdays_added">Zile de naștere adăugate cu succes</string>
+
+    <!-- Anniversaries -->
+    <string name="anniversaries">Aniversări</string>
+    <string name="add_anniversaries">Adăugați aniversări din contacte</string>
+    <string name="no_anniversaries">Nu s-au găsit aniversări</string>
+    <string name="no_new_anniversaries">Nu s-au găsit aniversări noi</string>
+    <string name="anniversaries_added">Aniversări adăugate cu succes</string>
+
+    <!-- Event Reminders -->
+    <string name="reminder">Reamintire</string>
+    <string name="before">înainte de</string>
+    <string name="add_another_reminder">Adaugă altă reamintire</string>
+    <string name="event_reminders">Reamintiri eveniment</string>
+
+    <!-- Event attendees -->
+    <string name="add_another_attendee">Adaugă o altă participare</string>
+    <string name="my_status">Statusul meu:</string>
+    <string name="going">Particip</string>
+    <string name="not_going">Nu particip</string>
+    <string name="maybe_going">Poate particip</string>
+    <string name="invited">Invitat</string>
+
+    <!-- Time zones -->
+    <string name="enter_a_country">Introduce o țară sau un fus orar</string>
+
+    <!-- Export / Import -->
+    <string name="import_events">Importă evenimente</string>
+    <string name="export_events">Exportă evenimente</string>
+    <string name="import_events_from_ics">Importă evenimente dintr-un fișier .ics</string>
+    <string name="export_events_to_ics">Exportă evenimente dintr-un fișier .ics</string>
+    <string name="default_event_type">Tipul evenimentului implicit</string>
+    <string name="export_past_events_too">Exportă și evenimentele din trecut</string>
+    <string name="include_event_types">Include tipurile de eveniment</string>
+    <string name="filename_without_ics">Numefisier (fără .ics)</string>
+    <string name="override_event_types">Înlocuiți tipurile de eveniment din fișier</string>
+
+    <!-- Event details -->
+    <string name="location">Locație</string>
+    <string name="description">Descripție</string>
+    <string name="all_day">Toată ziua</string>
+
+    <!-- Weekly view -->
+    <string name="week">Săptămână</string>
+
+    <!-- Event types -->
+    <string name="event_types">Tipuri de eveniment</string>
+    <string name="add_new_type">Adaugă un tip nou</string>
+    <string name="edit_type">Modifică tipul</string>
+    <string name="type_already_exists">Există deja un tip cu acest nume</string>
+    <string name="color">Culoare</string>
+    <string name="regular_event">Eveniment normal</string>
+    <string name="cannot_delete_default_type">Tipul de eveniment implicit nu poate fi șters</string>
+    <string name="select_event_type">Selectează un tip de eveniment</string>
+    <string name="move_events_into_default">Mută evenimentele afectate în tipul de eveniment implicit</string>
+    <string name="remove_affected_events">Înlătură definitiv evenimentele afectate</string>
+    <string name="unsync_caldav_calendar">Pentru a elimina un calendar CalDAV, trebuie să îl desincronizați</string>
+
+    <!-- Holidays -->
+    <string name="holidays">Sărbătoare</string>
+    <string name="add_holidays">Adaugă sărbători</string>
+    <string name="national_holidays">Sărbători naționale</string>
+    <string name="religious_holidays">Sărbători religioase</string>
+    <string name="holidays_imported_successfully">Sărbătorile au fost importate cu succes în tipul de eveniment \"Sărbători\"</string>
+    <string name="importing_some_holidays_failed">Importarea unor evenimente a eșuat</string>
+    <string name="importing_holidays_failed">Importarea sărbătorilor a eșuat</string>
+
+    <!-- Settings -->
+    <string name="manage_event_types">Gestionează tipurile de evenimente</string>
+    <string name="start_day_at">Începe ziua la</string>
+    <string name="end_day_at">Ziua se termină la</string>
+    <string name="week_numbers">Afișează numerele săptămânii</string>
+    <string name="vibrate">Vibrați la notificarea de reamintire</string>
+    <string name="reminder_sound">Sunetul reamintiri</string>
+    <string name="no_ringtone_picker">Nu a fost găsită nicio aplicație capabilă să stabilească tonul de apel</string>
+    <string name="no_ringtone_selected">Nici unul</string>
+    <string name="day_end_before_start">Ziua nu se poate termina mai devreme decât începe</string>
+    <string name="caldav_sync">CalDAV sincronizare</string>
+    <string name="event_lists">Liste de evenimente</string>
+    <string name="display_past_events">Afișează evenimente din trecut</string>
+    <string name="replace_description_with_location">Înlocuiește descrierea evenimentului cu locația</string>
+    <string name="delete_all_events">Șterge toate evenimentele</string>
+    <string name="delete_all_events_confirmation">Sigur doriți să ștergeți toate evenimentele? Acest lucru va lăsa tipurile de evenimente și alte setări intacte.</string>
+    <string name="show_a_grid">Afișați o grilă</string>
+    <string name="loop_reminders">Repetă reamintirile până când sunt închise</string>
+    <string name="dim_past_events">Ascunde evenimentele din trecut</string>
+    <string name="events">Evenimente</string>
+    <string name="reminder_stream">Flux audio folosit de reamintiri</string>
+    <string name="system_stream">Sistem</string>
+    <string name="alarm_stream">Alarmă</string>
+    <string name="notification_stream">Notificare</string>
+    <string name="ring_stream">Clopoțel</string>
+    <string name="use_last_event_reminders">Utilizați reamintirile din ultimele evenimente ca setare implicită pentru evenimente noi</string>
+    <string name="default_reminder_1">Reamintire implicită 1</string>
+    <string name="default_reminder_2">Reamintire implicită 2</string>
+    <string name="default_reminder_3">Reamintire implicită 3</string>
+    <string name="view_to_open_from_widget">Vizualizare pentru a deschide din widget-ul listei de evenimente</string>
+    <string name="last_view">Ultima vizualizare</string>
+    <string name="new_events">Evenimente noi</string>
+    <string name="default_start_time">Ora de pornire implicită</string>
+    <string name="next_full_hour">Următoarea oră totală</string>
+    <string name="default_duration">Durata implicită</string>
+    <string name="last_used_one">Ultima folosită</string>
+    <string name="other_time">Alt timp</string>
+    <string name="highlight_weekends">Evidențiază weekend-urile în anumite vizualizări</string>
+    <string name="allow_changing_time_zones">Permite modificarea zonele orare ale evenimentului</string>
+
+    <!-- CalDAV sync -->
+    <string name="caldav">CalDAV</string>
+    <string name="select_caldav_calendars">Selectează calendarele pentru sincronizare</string>
+    <string name="manage_synced_calendars">Gestionează calendarele sincronizate</string>
+    <string name="store_locally_only">Depozitați numai local</string>
+    <string name="refresh_caldav_calendars">Actualizează calendarele CalDAV</string>
+    <string name="refreshing">Se reîmprospătează…</string>
+    <string name="refreshing_complete">Reîmprospătare completă</string>
+    <string name="editing_calendar_failed">Editarea calendarului a eșuat</string>
+    <string name="syncing">Se sincronizează…</string>
+    <string name="synchronization_completed">Sincronizare completă</string>
+    <string name="select_a_different_caldav_color">Selectați o culoare diferită (poate fi aplicată doar local)</string>
+    <string name="insufficient_permissions">Nu aveți voie să scrieți în calendarul selectat</string>
+    <string name="caldav_event_not_found">Eveniment nu a fost găsit. Activați sincronizarea CalDAV pentru calendarul corespunzător în setările aplicației.</string>
+    <string name="no_synchronized_calendars">Nu au fost găsite calendare care se pot sincroniza</string>
+
+    <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
+    <!-- used in repetition, like "Every last Sunday" -->
+    <string name="monday_alt">Luni</string>
+    <string name="tuesday_alt">Marți</string>
+    <string name="wednesday_alt">Miercuri</string>
+    <string name="thursday_alt">Joi</string>
+    <string name="friday_alt">Vineri</string>
+    <string name="saturday_alt">Sâmbătă</string>
+    <string name="sunday_alt">Duminică</string>
+
+    <!-- List widget config example events -->
+    <string name="sample_title_1">Antrenament</string>
+    <string name="sample_description_1">Zi antrenament pentru picioare</string>
+    <string name="sample_title_2">Întâlnire cu Ion</string>
+    <string name="sample_description_2">În grădina Rockstone</string>
+    <string name="sample_title_3">Bibliotecă</string>
+    <string name="sample_title_4">Prânz cu Maria</string>
+    <string name="sample_description_4">În Plaza</string>
+    <string name="sample_title_5">Timp pentru cafea</string>
+
+    <!-- FAQ -->
+    <string name="faq_1_title">Cum pot elimina sărbătorile importate prin intermediul butonului \"Adaugă sărbători\"?</string>
+    <string name="faq_1_text">Sărbători create așa sunt introduse într-un tip de event nou numit \"Sărbători\". Puteți să vă duceți în Setări -> Gestionează tipurile de evenimente,
+        apăsați lung tipul de eveniment dat și ștergeți-l selectând coșul de gunoi.</string>
+    <string name="faq_2_title">Pot sincroniza evenimentele mele prin Google Calendar sau alt serviciu care acceptă CalDAV?</string>
+    <string name="faq_2_text">Da, trebuie doar să comutați \"sincronizarea CalDAV\" în setările aplicației și să selectați calendarele pe care doriți să le sincronizați. Cu toate acestea, veți avea nevoie de o aplicație terță care se ocupă de sincronizarea dintre dispozitiv și servere.
+         În cazul în care doriți să sincronizați un calendar Google, aplicația lor oficială Calendar va face sincronizarea. Pentru alte calendare, veți avea nevoie de un adaptor de sincronizare de la terți, de exemplu DAVx5.</string>
+    <string name="faq_3_title">Văd reamintiri vizuale, dar nu aud niciun audio. Ce pot sa fac?</string>
+    <string name="faq_3_text">Nu doar afișarea reamintirilor propriu-zise, dar și redarea audio este extrem de afectată de sistem. Dacă nu auziți niciun sunet, încercați să accesați setările aplicației,
+         apăsând opțiunea \"Flux audio folosit de reamintiri\" și schimbați-o la o altă valoare. Dacă tot nu funcționează, verificați setările de sunet, dacă fluxul special nu este dezactivat.</string>
+    <string name="faq_4_title">Aplicația acceptă fusuri orare?</string>
+    <string name="faq_4_text">Da, acceptă. În mod implicit, toate evenimentele sunt create în fusul dvs. curent. Dacă doriți să schimbați fusul orar al evenimentelor,
+         mai întâi va trebui să activați selectorul de fus orar la setările aplicației, apoi să-l schimbați în ecranul Detalii despre eveniment. Acesta opțiune este dezactivată implicit, deoarece majoritatea oamenilor nu au nevoie de ea.</string>
+
+    <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
+    <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
+    <string name="app_title">Simple Calendar Pro - Evenimente și Reamintiri</string>
+    <!-- Short description has to have less than 80 chars -->
+    <string name="app_short_description">Calendar simplu 2020. Planificare și reamintire întâlnire pentru orice zi</string>
+    <string name="app_long_description">
+        Simple Calendar Pro poate fi complet personalizat, calendar offline conceput pentru a face exact ceea ce ar trebui să facă un calendar. <b>Fără caracteristici complicate, permisiuni inutile și fără reclame!</b>
+
+        Fie că organizați evenimente individuale sau repetitive, zile de naștere, aniversări, întâlniri de afaceri, programări sau orice altceva, Simple Calendar Pro face <b>ușor să rămâneți organizat</b>. Cu o varietate incredibilă de <b>opțiuni de personalizare</b>, puteți personaliza reamintiri pentru evenimente, sunete de notificare, widgeturi de calendar și aspectul aplicației.
+
+        Vizualizările zilnice, săptămânale și lunare fac ca verificarea evenimentelor viitoare și a programărilor să fie o briză. Puteți vedea chiar totul ca pe o simplă listă de evenimente, mai degrabă decât în vizualizarea calendarului, astfel încât <b>să știți exact ce se întâmplă în viața dvs. și când. </b>
+
+        ----------------------------------------------------------
+        <b>Simple Calendar Pro – Caracteristici și Benefici</b>
+        ----------------------------------------------------------
+
+        ✔️ Fără reclame sau pop-up-uri enervante
+        ✔️ Nu este nevoie de acces la internet, oferindu-vă mai multă confidențialitate și securitate
+        ✔️ Doar permisiunile minime necesare
+        ✔️ Accent pe simplitate - face ceea ce un calendar trebuie să facă!
+        ✔️ Open source
+        ✔️ Teme complet personalizabile și widgeturi de calendar / eveniment
+        ✔️ Tradus în 29 de limbi
+        ✔️ Exportați setările în fișiere .txt pentru a le importa pe un alt dispozitiv
+        ✔️ Sincronizare calendar CalDAV este suportată, pentru a sincroniza evenimente pe dispozitive multiple
+        ✔️ Vizualizări zilnice, săptămânale, lunare, anuale și evenimente din calendar
+        ✔️ Acceptă exportarea și importarea evenimentelor prin fișiere .ics
+        ✔️ Setați multiple reamintiri pentru evenimente, personalizați sunetul și vibrațiile pentru acestea
+        ✔️ Opțiune de amânare pentru reamintiri
+        ✔️ Puteți adăuga ușor sărbători, zile de naștere, aniversări și programări
+        ✔️ Personalizați evenimentele - ora de pornire, durata, reamintiri etc.
+        ✔️ Puteți seta opțiune de participare pentru fiecare eveniment
+        ✔️ Utilizați ca calendar personal sau calendar de afaceri
+        ✔️ Alegeți dintre reamintiri și notificări prin e-mail pentru a vă avertiza despre un eveniment
+
+        DESCARCĂ SIMPLE CALENDAR PRO – CALENDARUL SIMPLU OFFLINE FĂRĂ RECLAME!
+
+        <b>Verificați aici pachetul complet al Simple Tools aici:</b>
+        https://www.simplemobiletools.com
+
+        <b>Site propriu pentru Simple Calendar Pro:</b>
+        https://www.simplemobiletools.com/calendar
+
+        <b>Facebook:</b>
+        https://www.facebook.com/simplemobiletools
+
+        <b>Reddit:</b>
+        https://www.reddit.com/r/SimpleMobileTools
+    </string>
+
+    <!--
+        Haven't found some strings? There's more at
+        https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
+    -->
+</resources>

@@ -16,6 +16,7 @@
     <!-- Widget titles -->
     <string name="widget_monthly">월별 달력</string>
     <string name="widget_list">일정 목록 달력</string>
+    <string name="widget_todays_date">Calendar today\'s date</string>
 
     <!-- Event -->
     <string name="event">일정</string>
@@ -124,7 +125,6 @@
     <string name="override_event_types">파일에서 일정 유형 재정의</string>
 
     <!-- Event details -->
-    <string name="title">제목</string>
     <string name="location">위치</string>
     <string name="description">내용</string>
     <string name="all_day">종일</string>
@@ -208,6 +208,7 @@
     <string name="select_a_different_caldav_color">다른 색상을 선택해주세요(로컬에만 적용 가능)</string>
     <string name="insufficient_permissions">선택한 캘린더에 작성할 수 없습니다.</string>
     <string name="caldav_event_not_found">일정을 찾을 수 없습니다. 앱 설정에서 해당 캘린더에 대해 CalDAV 동기화를 활성화해주세요.</string>
+    <string name="no_synchronized_calendars">No synchronizable calendars have been found</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
@@ -246,7 +247,7 @@
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Simple Calendar Pro - 일정 &amp; 알림</string>
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">당신의 인생에 있어 중요한 순간을 알립니다.</string>
+    <string name="app_short_description">Simple mobile 2020 calendar. Schedule planner &amp; appointment reminder for any day</string>
     <string name="app_long_description">
         Simple Calendar Pro는 캘린더의 기능을 정확하게 수행하도록 설계된 사용자 정의 오프라인 캘린더입니다. <b>복잡한 기능, 불필요한 권한 및 광고가 없습니다!</b>
 
@@ -281,6 +282,9 @@
 
         <b>더 다양한 심플앱을 확인하려면 아래 사이트에서 확인할 수 있습니다:</b>
         https://www.simplemobiletools.com
+
+        <b>Standalone website of Simple Calendar Pro:</b>
+        https://www.simplemobiletools.com/calendar
 
         <b>Facebook:</b>
         https://www.facebook.com/simplemobiletools

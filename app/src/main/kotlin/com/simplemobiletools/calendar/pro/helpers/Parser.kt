@@ -40,6 +40,12 @@ class Parser {
                     if (interval.areDigitsOnly() && interval.toInt() % 7 == 0) {
                         val dateTime = Formatter.getDateTimeFromTS(startTS)
                         repeatRule = Math.pow(2.0, (dateTime.dayOfWeek - 1).toDouble()).toInt()
+                    } else if (fullString.contains("BYDAY")) {
+                        // some services use weekly repetition for repeating on specific week days, some use daily
+                        // make these produce the same result
+                        // RRULE:FREQ=DAILY;BYDAY=MO,TU,WE,TH,FR
+                        // RRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR
+                        repeatInterval = WEEK_SECONDS
                     }
                 }
             } else if (key == COUNT) {
@@ -54,8 +60,10 @@ class Parser {
                 } else if (repeatInterval.isXMonthlyRepetition() || repeatInterval.isXYearlyRepetition()) {
                     repeatRule = if (value.startsWith("-1")) REPEAT_ORDER_WEEKDAY_USE_LAST else REPEAT_ORDER_WEEKDAY
                 }
-            } else if (key == BYMONTHDAY && value.toInt() == -1) {
-                repeatRule = REPEAT_LAST_DAY
+            } else if (key == BYMONTHDAY) {
+                if (value.split(",").any { it.toInt() == -1 }) {
+                    repeatRule = REPEAT_LAST_DAY
+                }
             }
         }
         return EventRepetition(repeatInterval, repeatRule, repeatLimit)

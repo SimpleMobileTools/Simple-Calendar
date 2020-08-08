@@ -16,6 +16,7 @@
     <!-- Widget titles -->
     <string name="widget_monthly">Kalendár mesačný</string>
     <string name="widget_list">Kalendár so zoznamom</string>
+    <string name="widget_todays_date">Kalendár s dnešným dátumom</string>
 
     <!-- Event -->
     <string name="event">Udalosť</string>
@@ -124,7 +125,6 @@
     <string name="override_event_types">Nahradiť typy udalostí v súbore</string>
 
     <!-- Event details -->
-    <string name="title">Názov</string>
     <string name="location">Miesto</string>
     <string name="description">Popis</string>
     <string name="all_day">Celodenná</string>
@@ -208,6 +208,7 @@
     <string name="select_a_different_caldav_color">Zvoliť inú farbu (možno bude aplikovaná iba lokálne)</string>
     <string name="insufficient_permissions">Nemáte dostatočné oprávnenie na písanie do zvoleného kalendára</string>
     <string name="caldav_event_not_found">Udalosť nebola nájdená. Prosím povoľte CalDAV synchronizáciu príslušného kalendára v nastaveniach aplikácie.</string>
+    <string name="no_synchronized_calendars">Nenašli sa žiadne synchronizovateľné kalendáre</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
@@ -247,7 +248,7 @@
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Jednoduchý kalendár Pro - Udalosti a pripomienky</string>
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Nezmeškajte dôležité chvíle vášho života.</string>
+    <string name="app_short_description">Mobilný kalendár 2020. Efektívny plánovač a manažér stretnutí počas celého dňa.</string>
     <string name="app_long_description">
         Jednoduchý kalendár Pro je prispôsobiteľný offline kalendár vytvorený presne na to, čo by kalendáre mali zvládať.<b>Nenachádzajú sa tu žiadne nepotrebné funkcie, nepotrebné oprávnenia, ani reklamy!</b>
 
@@ -282,6 +283,9 @@
 
         <b>Pozrite si celú sadu aplikácií na:</b>
         https://www.simplemobiletools.com
+
+        <b>Vlastná stránka Jednoduchého Kalendára Pro:</b>
+        https://www.simplemobiletools.com/calendar
 
         <b>Facebook:</b>
         https://www.facebook.com/simplemobiletools

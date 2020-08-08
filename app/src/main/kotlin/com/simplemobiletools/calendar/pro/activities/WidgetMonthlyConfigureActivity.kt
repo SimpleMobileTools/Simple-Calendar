@@ -4,7 +4,6 @@ import android.app.Activity
 import android.appwidget.AppWidgetManager
 import android.content.Context
 import android.content.Intent
-import android.content.res.Resources
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.LinearLayout
@@ -30,9 +29,7 @@ import kotlinx.android.synthetic.main.widget_config_monthly.*
 import org.joda.time.DateTime
 
 class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
-    lateinit var mRes: Resources
     private var mDays: List<DayMonthly>? = null
-    private var mPackageName = ""
     private var dayLabelHeight = 0
 
     private var mBgAlpha = 0f
@@ -70,9 +67,6 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
     }
 
     private fun initVariables() {
-        mPackageName = packageName
-        mRes = resources
-
         mTextColorWithoutTransparency = config.widgetTextColor
         updateColors()
 
@@ -146,7 +140,7 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
 
     private fun updateBgColor() {
         mBgColor = mBgColorWithoutTransparency.adjustAlpha(mBgAlpha)
-        config_calendar.setBackgroundColor(mBgColor)
+        config_calendar.background.applyColorFilter(mBgColor)
         config_bg_color.setFillWithStroke(mBgColor, Color.BLACK)
         config_save.setBackgroundColor(mBgColor)
     }
@@ -159,7 +153,7 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
             week_num.beVisible()
 
             for (i in 0..5) {
-                findViewById<TextView>(mRes.getIdentifier("week_num_$i", "id", mPackageName)).apply {
+                findViewById<TextView>(resources.getIdentifier("week_num_$i", "id", packageName)).apply {
                     text = "${mDays!![i * 7 + 3].weekOfYear}:"
                     setTextColor(mTextColor)
                     beVisible()
@@ -167,14 +161,14 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
             }
         }
 
-        val dividerMargin = mRes.displayMetrics.density.toInt()
+        val dividerMargin = resources.displayMetrics.density.toInt()
         for (i in 0 until len) {
-            findViewById<LinearLayout>(mRes.getIdentifier("day_$i", "id", mPackageName)).apply {
+            findViewById<LinearLayout>(resources.getIdentifier("day_$i", "id", packageName)).apply {
                 val day = mDays!![i]
                 removeAllViews()
 
                 context.addDayNumber(mTextColor, day, this, dayLabelHeight) { dayLabelHeight = it }
-                context.addDayEvents(day, this, mRes, dividerMargin)
+                context.addDayEvents(day, this, resources, dividerMargin)
             }
         }
     }
@@ -185,13 +179,9 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
             updateBgColor()
         }
 
-        override fun onStartTrackingTouch(seekBar: SeekBar) {
+        override fun onStartTrackingTouch(seekBar: SeekBar) {}
 
-        }
-
-        override fun onStopTrackingTouch(seekBar: SeekBar) {
-
-        }
+        override fun onStopTrackingTouch(seekBar: SeekBar) {}
     }
 
     override fun updateMonthlyCalendar(context: Context, month: String, days: ArrayList<DayMonthly>, checkedEvents: Boolean, currTargetDate: DateTime) {
@@ -204,7 +194,7 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
 
     private fun updateLabels() {
         for (i in 0..6) {
-            findViewById<TextView>(mRes.getIdentifier("label_$i", "id", mPackageName)).apply {
+            findViewById<TextView>(resources.getIdentifier("label_$i", "id", packageName)).apply {
                 setTextColor(mTextColor)
             }
         }
