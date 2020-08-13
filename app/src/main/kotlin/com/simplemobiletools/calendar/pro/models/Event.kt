@@ -177,6 +177,12 @@ data class Event(
             flags = flags.addBitIf(isPastEvent, FLAG_IS_PAST_EVENT)
         }
 
+    var isPrivate: Boolean
+        get() = flags and FLAG_IS_PRIVATE != 0
+        set(isPrivate) {
+            flags = flags.addBitIf(isPrivate, FLAG_IS_PRIVATE)
+        }
+
     var color: Int = 0
 
     fun getTimeZoneString(): String {

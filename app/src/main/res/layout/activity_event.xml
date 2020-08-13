@@ -396,6 +396,42 @@
             android:layout_height="1px"
             android:layout_below="@+id/event_repetition_limit_holder"
             android:layout_marginTop="@dimen/medium_margin"
+            android:layout_marginBottom="8dp"
+            android:background="@color/divider_grey"
+            android:importantForAccessibility="no"/>
+
+        <ImageView
+            android:id="@+id/event_private_image"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/event_repetition_divider"
+            android:layout_alignTop="@+id/event_private"
+            android:layout_alignBottom="@+id/event_private"
+            android:layout_marginStart="@dimen/normal_margin"
+            android:padding="@dimen/medium_margin"
+            android:src="@drawable/ic_lock_vector"/>
+
+        <com.simplemobiletools.commons.views.MySwitchCompat
+            android:id="@+id/event_private"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/event_repetition_divider"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginEnd="@dimen/normal_margin"
+            android:layout_toEndOf="@+id/event_private_image"
+            android:paddingTop="@dimen/normal_margin"
+            android:paddingBottom="@dimen/normal_margin"
+            android:text="@string/event_private"
+            android:textSize="@dimen/day_text_size"
+            app:switchPadding="@dimen/small_margin"/>
+
+        <ImageView
+            android:id="@+id/event_private_divider"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_below="@+id/event_private"
+            android:layout_marginTop="@dimen/medium_margin"
             android:background="@color/divider_grey"
             android:importantForAccessibility="no"/>
 
@@ -403,7 +439,7 @@
             android:id="@+id/event_attendees_image"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_below="@+id/event_repetition_divider"
+            android:layout_below="@+id/event_private_divider"
             android:layout_alignTop="@+id/event_attendees_holder"
             android:layout_marginStart="@dimen/normal_margin"
             android:layout_marginTop="@dimen/small_margin"
@@ -414,7 +450,7 @@
             android:id="@+id/event_attendees_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/event_repetition_divider"
+            android:layout_below="@+id/event_private_divider"
             android:layout_marginTop="@dimen/medium_margin"
             android:layout_toEndOf="@+id/event_attendees_image"
             android:orientation="vertical"/>

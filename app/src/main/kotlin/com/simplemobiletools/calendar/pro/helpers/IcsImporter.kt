@@ -113,6 +113,9 @@ class IcsImporter(val activity: SimpleActivity) {
                         if (curStart != -1L) {
                             parseRepeatRule()
                         }
+                    } else if (line.startsWith(CLASS)) {
+                        if (line.substring(CLASS.length).trim() == PRIVATE)
+                            curFlags = curFlags or FLAG_IS_PRIVATE
                     } else if (line.startsWith(ACTION)) {
                         isNotificationDescription = true
                         val action = line.substring(ACTION.length)

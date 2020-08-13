@@ -215,7 +215,7 @@ class EventActivity : SimpleActivity() {
 
         event_type_holder.setOnClickListener { showEventTypeDialog() }
         event_all_day.apply {
-            isChecked = mEvent.flags and FLAG_ALL_DAY != 0
+            isChecked = mEvent.getIsAllDay()
             jumpDrawablesToCurrentState()
         }
 
@@ -294,6 +294,7 @@ class EventActivity : SimpleActivity() {
             reminders != mEvent.getReminders() ||
             mRepeatInterval != mEvent.repeatInterval ||
             mRepeatRule != mEvent.repeatRule ||
+            event_private.isChecked != mEvent.isPrivate ||
             mEventTypeId != mEvent.eventType ||
             hasTimeChanged) {
             return true
@@ -441,6 +442,7 @@ class EventActivity : SimpleActivity() {
         mRepeatInterval = mEvent.repeatInterval
         mRepeatLimit = mEvent.repeatLimit
         mRepeatRule = mEvent.repeatRule
+        event_private.isChecked = mEvent.isPrivate
         mEventTypeId = mEvent.eventType
         mEventCalendarId = mEvent.getCalDAVCalendarId()
 
@@ -1088,7 +1090,7 @@ class EventActivity : SimpleActivity() {
             repeatInterval = mRepeatInterval
             importId = newImportId
             timeZone = if (mEvent.timeZone.isEmpty()) TimeZone.getDefault().id else timeZone
-            flags = mEvent.flags.addBitIf(event_all_day.isChecked, FLAG_ALL_DAY)
+            flags = mEvent.flags.addBitIf(event_all_day.isChecked, FLAG_ALL_DAY).addBitIf(event_private.isChecked, FLAG_IS_PRIVATE)
             repeatLimit = if (repeatInterval == 0) 0 else mRepeatLimit
             repeatRule = mRepeatRule
             attendees = if (mEventCalendarId == STORED_LOCALLY_ONLY) "" else getAllAttendees(true)

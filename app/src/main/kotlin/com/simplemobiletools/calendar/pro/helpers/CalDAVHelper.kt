@@ -166,7 +166,8 @@ class CalDAVHelper(val context: Context) {
                 Events.EVENT_LOCATION,
                 Events.EVENT_TIMEZONE,
                 Events.CALENDAR_TIME_ZONE,
-                Events.DELETED)
+                Events.DELETED,
+                Events.ACCESS_LEVEL)
 
         val selection = "${Events.CALENDAR_ID} = $calendarId"
         context.queryCursor(uri, projection, selection, showErrors = showToasts) { cursor ->
@@ -186,6 +187,7 @@ class CalDAVHelper(val context: Context) {
             val originalId = cursor.getStringValue(Events.ORIGINAL_ID)
             val originalInstanceTime = cursor.getLongValue(Events.ORIGINAL_INSTANCE_TIME)
             val reminders = getCalDAVEventReminders(id)
+            var isPrivate = cursor.getIntValue(Events.ACCESS_LEVEL) == Events.ACCESS_PRIVATE
             val attendees = Gson().toJson(getCalDAVEventAttendees(id))
 
             if (endTS == 0L) {
@@ -202,11 +204,13 @@ class CalDAVHelper(val context: Context) {
 
             val source = "$CALDAV-$calendarId"
             val repeatRule = Parser().parseRepeatInterval(rrule, startTS)
+            val flags = (if (allDay != 0) FLAG_ALL_DAY else 0) or (if (isPrivate) FLAG_IS_PRIVATE else 0)
+
             val event = Event(null, startTS, endTS, title, location, description, reminder1?.minutes ?: REMINDER_OFF,
                     reminder2?.minutes ?: REMINDER_OFF, reminder3?.minutes ?: REMINDER_OFF, reminder1?.type
                     ?: REMINDER_NOTIFICATION, reminder2?.type ?: REMINDER_NOTIFICATION, reminder3?.type
                     ?: REMINDER_NOTIFICATION, repeatRule.repeatInterval, repeatRule.repeatRule,
-                    repeatRule.repeatLimit, ArrayList(), attendees, importId, eventTimeZone, allDay, eventTypeId, source = source)
+                    repeatRule.repeatLimit, ArrayList(), attendees, importId, eventTimeZone, flags, eventTypeId, source = source)
 
             if (event.getIsAllDay()) {
                 event.startTS = Formatter.getShiftedImportTimestamp(event.startTS)
@@ -377,6 +381,7 @@ class CalDAVHelper(val context: Context) {
             put(Events.DESCRIPTION, event.description)
             put(Events.DTSTART, event.startTS * 1000L)
             put(Events.ALL_DAY, if (event.getIsAllDay()) 1 else 0)
+            put(Events.ACCESS_LEVEL, if (event.isPrivate) Events.ACCESS_PRIVATE else Events.ACCESS_PUBLIC)
             put(Events.EVENT_TIMEZONE, event.getTimeZoneString())
             put(Events.EVENT_LOCATION, event.location)
             put(Events.STATUS, Events.STATUS_CONFIRMED)

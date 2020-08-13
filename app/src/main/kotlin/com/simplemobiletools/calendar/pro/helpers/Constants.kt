@@ -86,6 +86,7 @@ const val REPEAT_ORDER_WEEKDAY = 4                      // i.e. every 4th sunday
 // special event flags
 const val FLAG_ALL_DAY = 1
 const val FLAG_IS_PAST_EVENT = 2
+const val FLAG_IS_PRIVATE = 4
 
 // constants related to ICS file exporting / importing
 const val BEGIN_CALENDAR = "BEGIN:VCALENDAR"
@@ -108,6 +109,7 @@ const val ATTENDEE = "ATTENDEE:"
 const val MAILTO = "mailto:"
 const val TRIGGER = "TRIGGER:"
 const val RRULE = "RRULE:"
+const val CLASS = "CLASS:"
 const val CATEGORIES = "CATEGORIES:"
 const val STATUS = "STATUS:"
 const val EXDATE = "EXDATE"
@@ -130,6 +132,7 @@ const val INTERVAL = "INTERVAL"
 const val CONFIRMED = "CONFIRMED"
 const val VALUE = "VALUE"
 const val DATE = "DATE"
+const val PRIVATE = "PRIVATE"
 
 const val DAILY = "DAILY"
 const val WEEKLY = "WEEKLY"

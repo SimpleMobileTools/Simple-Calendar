@@ -56,6 +56,10 @@ class IcsExporter {
                         event.endTS.let { out.writeLn("$DTEND:${Formatter.getExportedTime(it * 1000L)}") }
                     }
 
+                    if (event.isPrivate) {
+                        out.writeLn("$CLASS$PRIVATE")
+                    }
+
                     out.writeLn("$STATUS$CONFIRMED")
                     Parser().getRepeatCode(event).let { if (it.isNotEmpty()) out.writeLn("$RRULE$it") }
 
