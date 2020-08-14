@@ -204,7 +204,7 @@ fun Context.notifyEvent(originalEvent: Event) {
     }
 
     val timeRange = if (event.getIsAllDay()) getString(R.string.all_day) else getFormattedEventTime(startTime, endTime)
-    val descriptionOrLocation = if (config.replaceDescription) event.location else event.description
+    val descriptionOrLocation = if (config.replaceDescription || event.description.isBlank()) event.location else event.description
     val content = "$displayedStartDate $timeRange $descriptionOrLocation".trim()
     ensureBackgroundThread {
         val notification = getNotification(pendingIntent, event, content)
