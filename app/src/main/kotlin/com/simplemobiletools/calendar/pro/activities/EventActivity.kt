@@ -88,6 +88,8 @@ class EventActivity : SimpleActivity() {
     private var mSelectedContacts = ArrayList<Attendee>()
     private var mStoredEventTypes = ArrayList<EventType>()
     private var mOriginalTimeZone = DateTimeZone.getDefault().id
+    private var mOriginalStartTS = 0L
+    private var mOriginalEndTS = 0L
 
     private lateinit var mEventStartDateTime: DateTime
     private lateinit var mEventEndDateTime: DateTime
@@ -278,17 +280,22 @@ class EventActivity : SimpleActivity() {
             newEndTS = second
         }
 
+        val hasTimeChanged = if (mOriginalStartTS == 0L) {
+            mEvent.startTS != newStartTS || mEvent.endTS != newEndTS
+        } else {
+            mOriginalStartTS != newStartTS || mOriginalEndTS != newEndTS
+        }
+
         val reminders = getReminders()
         if (event_title.value != mEvent.title ||
             event_location.value != mEvent.location ||
             event_description.value != mEvent.description ||
-            newStartTS != mEvent.startTS ||
-            newEndTS != mEvent.endTS ||
             event_time_zone.text != mEvent.getTimeZoneString() ||
             reminders != mEvent.getReminders() ||
             mRepeatInterval != mEvent.repeatInterval ||
             mRepeatRule != mEvent.repeatRule ||
-            mEventTypeId != mEvent.eventType) {
+            mEventTypeId != mEvent.eventType ||
+            hasTimeChanged) {
             return true
         }
 
@@ -401,6 +408,9 @@ class EventActivity : SimpleActivity() {
     private fun setupEditEvent() {
         val realStart = if (mEventOccurrenceTS == 0L) mEvent.startTS else mEventOccurrenceTS
         val duration = mEvent.endTS - mEvent.startTS
+        mOriginalStartTS = realStart
+        mOriginalEndTS = realStart + duration
+
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
         updateActionBarTitle(getString(R.string.edit_event))
         mOriginalTimeZone = mEvent.timeZone

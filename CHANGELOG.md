@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 6.10.0 *(2020-08-08)*
+----------------------------
+
+ * Open the daily view at clicking on a day at the monthly widget
+ * Go back to the search results at opening an event and using Back
+ * Added some translation, stability and UX improvements
+
 Version 6.9.7 *(2020-07-06)*
 ----------------------------
 
