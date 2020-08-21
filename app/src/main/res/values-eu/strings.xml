@@ -248,7 +248,7 @@
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Simple Calendar Pro - Gertaerak eta abisuak</string>
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Egutegi sinplea. Agenda antolatzailea eta hitzorduetarako abisuak edozein egunetarako</string>
+    <string name="app_short_description">Egutegi sinplea. Edozein egunetarako agenda antolatzailea eta hitzordu-abisuak</string>
     <string name="app_long_description">
         Simple Calendar Pro guztiz pertsonalizatu daitekeen lineaz kanpoko egutegia da, egutegi batek egin beharko lukeena egiteko diseinatua. <b>Eginbide korapilatsurik, beharrezkoa ez den baimenik eta iragarkirik ez!</b>
 
