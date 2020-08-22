@@ -160,7 +160,7 @@
     <string name="end_day_at">Eguna noiz bukatu</string>
     <string name="allow_customizing_day_count">Allow customizing day count</string>
     <string name="week_numbers">Erakutsi asteen zenbakiak</string>
-    <string name="vibrate">Bibratu abisuen jakinarazpenetan</string>
+    <string name="vibrate">Egin dar-dar abisuen jakinarazpenetan</string>
     <string name="reminder_sound">Abisuen soinua</string>
     <string name="no_ringtone_picker">Dei-tonua ezartzeko gai den aplikaziorik ez da aurkitu</string>
     <string name="no_ringtone_selected">Bat ere ez</string>
