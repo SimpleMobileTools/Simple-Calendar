@@ -48,7 +48,7 @@ class DayFragment : Fragment() {
     }
 
     private fun setupButtons() {
-        mTextColor = context!!.config.textColor
+        mTextColor = requireContext().config.textColor
 
         mHolder.top_left_arrow.apply {
             applyColorFilter(mTextColor)
@@ -57,7 +57,7 @@ class DayFragment : Fragment() {
                 mListener?.goLeft()
             }
 
-            val pointerLeft = context!!.getDrawable(R.drawable.ic_chevron_left_vector)
+            val pointerLeft = requireContext().getDrawable(R.drawable.ic_chevron_left_vector)
             pointerLeft?.isAutoMirrored = true
             setImageDrawable(pointerLeft)
         }
@@ -69,12 +69,12 @@ class DayFragment : Fragment() {
                 mListener?.goRight()
             }
 
-            val pointerRight = context!!.getDrawable(R.drawable.ic_chevron_right_vector)
+            val pointerRight = requireContext().getDrawable(R.drawable.ic_chevron_right_vector)
             pointerRight?.isAutoMirrored = true
             setImageDrawable(pointerRight)
         }
 
-        val day = Formatter.getDayTitle(context!!, mDayCode)
+        val day = Formatter.getDayTitle(requireContext(), mDayCode)
         mHolder.top_value.apply {
             text = day
             contentDescription = text
@@ -100,7 +100,7 @@ class DayFragment : Fragment() {
         }
         lastHash = newHash
 
-        val replaceDescription = context!!.config.replaceDescription
+        val replaceDescription = requireContext().config.replaceDescription
         val sorted = ArrayList<Event>(events.sortedWith(compareBy({ !it.getIsAllDay() }, { it.startTS }, { it.endTS }, { it.title }, {
             if (replaceDescription) it.location else it.description
         })))

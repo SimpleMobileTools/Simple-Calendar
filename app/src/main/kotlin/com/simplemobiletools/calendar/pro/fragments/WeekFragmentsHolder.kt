@@ -48,9 +48,9 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         weekHolder = inflater.inflate(R.layout.fragment_week_holder, container, false) as ViewGroup
-        weekHolder!!.background = ColorDrawable(context!!.config.backgroundColor)
+        weekHolder!!.background = ColorDrawable(requireContext().config.backgroundColor)
 
-        val itemHeight = context!!.getWeeklyViewItemHeight().toInt()
+        val itemHeight = requireContext().getWeeklyViewItemHeight().toInt()
         weekHolder!!.week_view_hours_holder.setPadding(0, 0, 0, itemHeight)
 
         viewPager = weekHolder!!.week_view_view_pager
@@ -61,14 +61,14 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
 
     private fun setupFragment() {
         val weekTSs = getWeekTimestamps(currentWeekTS)
-        val weeklyAdapter = MyWeekPagerAdapter(activity!!.supportFragmentManager, weekTSs, this)
-        val itemHeight = context!!.getWeeklyViewItemHeight().toInt()
+        val weeklyAdapter = MyWeekPagerAdapter(requireActivity().supportFragmentManager, weekTSs, this)
+        val itemHeight = requireContext().getWeeklyViewItemHeight().toInt()
 
-        val textColor = context!!.config.textColor
+        val textColor = requireContext().config.textColor
         weekHolder!!.week_view_hours_holder.removeAllViews()
         val hourDateTime = DateTime().withDate(2000, 1, 1).withTime(0, 0, 0, 0)
         for (i in 1..23) {
-            val formattedHours = Formatter.getHours(context!!, hourDateTime.withHourOfDay(i))
+            val formattedHours = Formatter.getHours(requireContext(), hourDateTime.withHourOfDay(i))
             (layoutInflater.inflate(R.layout.weekly_view_hour_textview, null, false) as TextView).apply {
                 text = formattedHours
                 setTextColor(textColor)
@@ -133,7 +133,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
     private fun getWeekTimestamps(targetSeconds: Long): List<Long> {
         val weekTSs = ArrayList<Long>(PREFILLED_WEEKS)
         val dateTime = Formatter.getDateTimeFromTS(targetSeconds)
-        val shownWeekDays = context!!.config.weeklyViewDays
+        val shownWeekDays = requireContext().config.weeklyViewDays
         var currentWeek = dateTime.minusDays(PREFILLED_WEEKS / 2 * shownWeekDays)
         for (i in 0 until PREFILLED_WEEKS) {
             weekTSs.add(currentWeek.seconds())
@@ -145,7 +145,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
     private fun setupWeeklyActionbarTitle(timestamp: Long) {
         val startDateTime = Formatter.getDateTimeFromTS(timestamp)
         val endDateTime = Formatter.getDateTimeFromTS(timestamp + WEEK_SECONDS)
-        val startMonthName = Formatter.getMonthName(context!!, startDateTime.monthOfYear)
+        val startMonthName = Formatter.getMonthName(requireContext(), startDateTime.monthOfYear)
         if (startDateTime.monthOfYear == endDateTime.monthOfYear) {
             var newTitle = startMonthName
             if (startDateTime.year != DateTime().year) {
@@ -153,7 +153,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
             }
             (activity as AppCompatActivity).updateActionBarTitle(newTitle)
         } else {
-            val endMonthName = Formatter.getMonthName(context!!, endDateTime.monthOfYear)
+            val endMonthName = Formatter.getMonthName(requireContext(), endDateTime.monthOfYear)
             (activity as AppCompatActivity).updateActionBarTitle("$startMonthName - $endMonthName")
         }
         (activity as AppCompatActivity).updateActionBarSubtitle("${getString(R.string.week)} ${startDateTime.plusDays(3).weekOfWeekyear}")
@@ -165,14 +165,14 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
     }
 
     override fun showGoToDateDialog() {
-        activity!!.setTheme(context!!.getDialogTheme())
+        requireActivity().setTheme(requireContext().getDialogTheme())
         val view = layoutInflater.inflate(R.layout.date_picker, null)
         val datePicker = view.findViewById<DatePicker>(R.id.date_picker)
 
         val dateTime = Formatter.getDateTimeFromTS(currentWeekTS)
         datePicker.init(dateTime.year, dateTime.monthOfYear - 1, dateTime.dayOfMonth, null)
 
-        AlertDialog.Builder(context!!)
+        AlertDialog.Builder(requireContext())
             .setNegativeButton(R.string.cancel, null)
             .setPositiveButton(R.string.ok) { dialog, which -> dateSelected(dateTime, datePicker) }
             .create().apply {
@@ -181,7 +181,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
     }
 
     private fun dateSelected(dateTime: DateTime, datePicker: DatePicker) {
-        val isSundayFirst = context!!.config.isSundayFirst
+        val isSundayFirst = requireContext().config.isSundayFirst
         val month = datePicker.month + 1
         val year = datePicker.year
         val day = datePicker.dayOfMonth
@@ -201,12 +201,12 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
     }
 
     private fun updateWeeklyViewDays(days: Int) {
-        context!!.config.weeklyViewDays = days
+        requireContext().config.weeklyViewDays = days
         updateDaysCount(days)
     }
 
     private fun updateDaysCount(cnt: Int) {
-        weekHolder!!.week_view_days_count.text = context!!.resources.getQuantityString(R.plurals.days, cnt, cnt)
+        weekHolder!!.week_view_days_count.text = requireContext().resources.getQuantityString(R.plurals.days, cnt, cnt)
         (viewPager?.adapter as? MyWeekPagerAdapter)?.updateVisibleDaysCount(viewPager!!.currentItem, cnt, currentWeekTS)
     }
 

@@ -76,13 +76,13 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        res = context!!.resources
-        config = context!!.config
-        rowHeight = context!!.getWeeklyViewItemHeight()
+        res = requireContext().resources
+        config = requireContext().config
+        rowHeight = requireContext().getWeeklyViewItemHeight()
         defaultRowHeight = res.getDimension(R.dimen.weekly_view_row_height)
         weekTimestamp = arguments!!.getLong(WEEK_START_TIMESTAMP)
         dimPastEvents = config.dimPastEvents
-        primaryColor = context!!.getAdjustedPrimaryColor()
+        primaryColor = requireContext().getAdjustedPrimaryColor()
         allDayRows.add(HashSet())
     }
 
@@ -90,7 +90,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         this.inflater = inflater
 
-        val fullHeight = context!!.getWeeklyViewItemHeight().toInt() * 24
+        val fullHeight = requireContext().getWeeklyViewItemHeight().toInt() * 24
         mView = inflater.inflate(R.layout.fragment_week, container, false).apply {
             scrollView = week_events_scrollview
             week_horizontal_grid_holder.layoutParams.height = fullHeight
@@ -131,7 +131,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
     override fun onResume() {
         super.onResume()
-        context!!.eventsHelper.getEventTypes(activity!!, false) {
+        requireContext().eventsHelper.getEventTypes(requireActivity(), false) {
             it.map {
                 eventTypeColors.put(it.id!!, it.color)
             }
@@ -170,7 +170,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
     fun updateCalendar() {
         if (context != null) {
-            WeeklyCalendarImpl(this, context!!).updateWeeklyCalendar(weekTimestamp)
+            WeeklyCalendarImpl(this, requireContext()).updateWeeklyCalendar(weekTimestamp)
         }
     }
 
@@ -321,7 +321,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 prevScaleSpanY = detector.currentSpanY
                 prevScaleFactor = config.weeklyViewItemHeightMultiplier
                 wasScaled = true
-                screenHeight = context!!.realScreenSize.y
+                screenHeight = requireContext().realScreenSize.y
                 return super.onScaleBegin(detector)
             }
         })
@@ -341,7 +341,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
         lastHash = newHash
 
-        activity!!.runOnUiThread {
+        requireActivity().runOnUiThread {
             if (context != null && activity != null && isAdded) {
                 val replaceDescription = config.replaceDescription
                 val sorted = events.sortedWith(
