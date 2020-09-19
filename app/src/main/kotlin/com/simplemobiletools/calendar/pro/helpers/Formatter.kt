@@ -85,8 +85,6 @@ object Formatter {
 
     fun getDateTimeFromTS(ts: Long) = DateTime(ts * 1000L, DateTimeZone.getDefault())
 
-    fun getDateTimeFromTSForATimeZone(ts: Long, timeZoneId: String) = DateTime(ts * 1000L, DateTimeZone.forID(timeZoneId))
-
     fun getUTCDateTimeFromTS(ts: Long) = DateTime(ts * 1000L, DateTimeZone.UTC)
 
     // use manually translated month names, as DateFormat and Joda have issues with a lot of languages
