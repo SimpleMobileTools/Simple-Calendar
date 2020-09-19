@@ -84,8 +84,8 @@ class MonthlyCalendarImpl(val callback: MonthlyCalendar, val context: Context) {
     private fun markDaysWithEvents(days: ArrayList<DayMonthly>) {
         val dayEvents = HashMap<String, ArrayList<Event>>()
         mEvents.forEach {
-            val startDateTime = Formatter.getDateTimeFromTS(it.startTS)
-            val endDateTime = Formatter.getDateTimeFromTS(it.endTS)
+            val startDateTime = Formatter.getDateTimeFromTSForATimeZone(it.startTS, it.timeZone)
+            val endDateTime = Formatter.getDateTimeFromTSForATimeZone(it.endTS, it.timeZone)
             val endCode = Formatter.getDayCodeFromDateTime(endDateTime)
 
             var currDay = startDateTime
