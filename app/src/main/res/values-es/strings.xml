@@ -56,7 +56,7 @@
     <string name="repeat_forever">Repetir por siempre</string>
     <string name="times">veces</string>
     <string name="repeat">Repetir</string>
-    <string name="repeat_on">Repertir los</string>
+    <string name="repeat_on">Repertir en</string>
     <string name="every_day">Cada día</string>
     <string name="selected_days">En los días seleccionados</string>
     <string name="the_same_day">El mismo día</string>
@@ -76,9 +76,9 @@
     <!-- used in repetition, like "Every first Sunday" -->
     <string name="repeat_every_f">Repetir cada</string>
     <string name="every_f">Cada</string>
-    <string name="first_f">primero</string>
+    <string name="first_f">primer</string>
     <string name="second_f">segundo</string>
-    <string name="third_f">tercero</string>
+    <string name="third_f">tercer</string>
     <string name="fourth_f">cuarto</string>
     <string name="last_f">último</string>
 
@@ -174,7 +174,7 @@
     <string name="loop_reminders">Repetir recordatorios hasta ser descartados</string>
     <string name="dim_past_events">Sombrear eventos pasados</string>
     <string name="events">Eventos</string>
-    <string name="reminder_stream">Sonido usado en recordatorios</string>
+    <string name="reminder_stream">Tipo de sonido usado en recordatorios</string>
     <string name="system_stream">Sistema</string>
     <string name="alarm_stream">Alarma</string>
     <string name="notification_stream">Notificación</string>
@@ -212,13 +212,13 @@
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
-    <string name="monday_alt">Lunes</string>
-    <string name="tuesday_alt">Martes</string>
-    <string name="wednesday_alt">Miércoles</string>
-    <string name="thursday_alt">Jueves</string>
-    <string name="friday_alt">Viernes</string>
-    <string name="saturday_alt">Sábado</string>
-    <string name="sunday_alt">Domingo</string>
+    <string name="monday_alt">lunes</string>
+    <string name="tuesday_alt">martes</string>
+    <string name="wednesday_alt">miércoles</string>
+    <string name="thursday_alt">jueves</string>
+    <string name="friday_alt">viernes</string>
+    <string name="saturday_alt">sábado</string>
+    <string name="sunday_alt">domingo</string>
 
     <!-- List widget config example events -->
     <string name="sample_title_1">Ejercicio</string>
