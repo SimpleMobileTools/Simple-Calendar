@@ -10,7 +10,7 @@
     <string name="simple_event_list">Lista de eventos sencilla</string>
     <string name="no_upcoming_events">Parece que no tienes ningún evento próximo.</string>
     <string name="go_to_today">Ir al día de hoy</string>
-    <string name="go_to_date">Ir a la fecha…</string>
+    <string name="go_to_date">Ir a la fecha</string>
     <string name="upgraded_from_free">Hola,\n\nparece que te actualizaste a partir de la antigua aplicación gratuita. Debes migrar los eventos almacenados localmente de manera manual, exportando un fichero .ics y a continuación importándolo. Puedes encontrar las opciones de importar/exportar en el menú de la pantalla principal.\n\nDespués ya podrás desinstalar la versión antigua de la app. Finalmente solo tendrás que reestablecer la configuración de la aplicación.\n\n¡Gracias!</string>
 
     <!-- Widget titles -->
