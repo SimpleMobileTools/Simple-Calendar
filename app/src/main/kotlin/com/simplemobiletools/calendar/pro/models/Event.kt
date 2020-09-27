@@ -46,7 +46,7 @@ data class Event(
 
     fun addIntervalTime(original: Event) {
         val oldStart = Formatter.getDateTimeFromTS(startTS)
-        val newStart: DateTime
+        var newStart: DateTime
         newStart = when (repeatInterval) {
             DAY -> oldStart.plusDays(1)
             else -> {
@@ -69,6 +69,13 @@ data class Event(
                     else -> oldStart.plusSeconds(repeatInterval)
                 }
             }
+        }
+
+        if (isLeapDate(original.startTS) && (newStart.dayOfYear == 59)) {
+            newStart = newStart.plusDays(1)
+        }
+        if (isLeapDate(original.startTS) && (newStart.dayOfYear == 61)) {
+            newStart = newStart.minusDays(1)
         }
 
         val newStartTS = newStart.seconds()
@@ -185,5 +192,29 @@ data class Event(
         } else {
             DateTimeZone.getDefault().id
         }
+    }
+
+    private fun isLeapYear(year: Int): Boolean {
+        return when {
+            year % 4 != 0 -> {
+                false
+            }
+            year % 100 != 0 -> {
+                true
+            }
+            year % 400 != 0 -> {
+                false
+            }
+            else -> {
+                true
+            }
+        }
+    }
+
+    private fun isLeapDate(ts: Long): Boolean {
+        val dayCode = Formatter.getDayCodeFromTS(ts)
+        val year = Formatter.getDateTimeFromTS(ts).year
+
+        return isLeapYear(year) && (dayCode.substring(4) == "0229")
     }
 }
