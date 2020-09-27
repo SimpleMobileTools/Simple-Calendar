@@ -214,7 +214,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         for (i in 0 until Math.min(event.daysCnt, 7 - event.startDayIndex % 7)) {
             verticalOffset = Math.max(verticalOffset, dayVerticalOffsets[event.startDayIndex + i])
         }
-        val xPos = event.startDayIndex % 7 * dayWidth + horizontalOffset
+        var xPos = event.startDayIndex % 7 * dayWidth + horizontalOffset
         val yPos = (event.startDayIndex / 7) * dayHeight
         val xPosCenter = xPos + dayWidth / 2
 
@@ -237,13 +237,18 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
                 drawEvent(newEvent, canvas)
             }
         }
-
+        var textAvailWidth = bgRight - bgLeft - smallPadding
         val startDayIndex = days[event.originalStartDayIndex]
         val endDayIndex = days[Math.min(event.startDayIndex + event.daysCnt - 1, 41)]
+        if (!event.isAllDay) {
+            val barWidth = paint.measureText("x") / 2
+            bgRight = bgLeft + barWidth
+            xPos += barWidth
+            textAvailWidth -= barWidth
+        }
         bgRectF.set(bgLeft, bgTop, bgRight, bgBottom)
         canvas.drawRoundRect(bgRectF, BG_CORNER_RADIUS, BG_CORNER_RADIUS, getEventBackgroundColor(event, startDayIndex, endDayIndex))
-
-        drawEventTitle(event, canvas, xPos, yPos + verticalOffset, bgRight - bgLeft - smallPadding, startDayIndex, endDayIndex)
+        drawEventTitle(event, canvas, xPos, yPos + verticalOffset, textAvailWidth, startDayIndex, endDayIndex)
 
         for (i in 0 until Math.min(event.daysCnt, 7 - event.startDayIndex % 7)) {
             dayVerticalOffsets.put(event.startDayIndex + i, verticalOffset + eventTitleHeight + smallPadding * 2)
@@ -284,7 +289,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     }
 
     private fun getEventTitlePaint(event: MonthViewEvent, startDay: DayMonthly, endDay: DayMonthly): Paint {
-        var paintColor = event.color.getContrastColor()
+        var paintColor = if (event.isAllDay) event.color.getContrastColor() else textColor
         if ((!startDay.isThisMonth && !endDay.isThisMonth) || (dimPastEvents && event.isPastEvent)) {
             paintColor = paintColor.adjustAlpha(MEDIUM_ALPHA)
         }
