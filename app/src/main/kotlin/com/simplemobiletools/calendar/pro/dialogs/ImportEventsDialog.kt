@@ -96,7 +96,7 @@ class ImportEventsDialog(val activity: SimpleActivity, val path: String, val cal
             IMPORT_NOTHING_NEW -> R.string.no_new_items
             IMPORT_OK -> R.string.importing_successful
             IMPORT_PARTIAL -> R.string.importing_some_entries_failed
-            else -> R.string.importing_failed
+            else -> R.string.no_items_found
         })
         callback(result != IMPORT_FAIL)
     }
