@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 6.10.3 *(2020-09-28)*
+----------------------------
+
+ * Fixed some glitches at importing events from .ics files
+ * Added a few UX improvements here and there
+
 Version 6.10.2 *(2020-09-19)*
 ----------------------------
 
