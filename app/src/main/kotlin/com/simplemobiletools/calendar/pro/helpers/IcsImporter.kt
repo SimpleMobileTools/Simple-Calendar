@@ -104,6 +104,9 @@ class IcsImporter(val activity: SimpleActivity) {
                         curTitle = getTitle(curTitle).replace("\\n", "\n").replace("\\,", ",")
                     } else if (line.startsWith(DESCRIPTION) && !isNotificationDescription) {
                         curDescription = line.substring(DESCRIPTION.length).replace("\\n", "\n").replace("\\,", ",")
+                        if (curDescription.trim().isEmpty()) {
+                            curDescription = ""
+                        }
                         isDescription = true
                     } else if (line.startsWith(UID)) {
                         curImportId = line.substring(UID.length).trim()
@@ -141,6 +144,9 @@ class IcsImporter(val activity: SimpleActivity) {
                         curRepeatExceptions.add(Formatter.getDayCodeFromTS(getTimestamp(value)))
                     } else if (line.startsWith(LOCATION)) {
                         curLocation = getLocation(line.substring(LOCATION.length).replace("\\,", ","))
+                        if (curLocation.trim().isEmpty()) {
+                            curLocation = ""
+                        }
                     } else if (line.startsWith(RECURRENCE_ID)) {
                         val timestamp = getTimestamp(line.substring(RECURRENCE_ID.length))
                         curRecurrenceDayCode = Formatter.getDayCodeFromTS(timestamp)
