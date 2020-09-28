@@ -344,15 +344,17 @@ fun Context.getNewEventTimestampFromCode(dayCode: String): Long {
     var dateTime = Formatter.getLocalDateTimeFromCode(dayCode).withHourOfDay(currHour)
     var newDateTime = dateTime.plusHours(1).withMinuteOfHour(0).withSecondOfMinute(0).withMillisOfSecond(0)
 
-    if (defaultStartTime != -1) {
+    return if (defaultStartTime == -1) {
+        newDateTime.seconds()
+    } else {
         val hours = defaultStartTime / 60
         val minutes = defaultStartTime % 60
         dateTime = Formatter.getLocalDateTimeFromCode(dayCode).withHourOfDay(hours).withMinuteOfHour(minutes)
         newDateTime = dateTime
-    }
 
-    // make sure the date doesn't change
-    return newDateTime.withDate(dateTime.year, dateTime.monthOfYear, dateTime.dayOfMonth).seconds()
+        // make sure the date doesn't change
+        newDateTime.withDate(dateTime.year, dateTime.monthOfYear, dateTime.dayOfMonth).seconds()
+    }
 }
 
 fun Context.getSyncedCalDAVCalendars() = calDAVHelper.getCalDAVCalendars(config.caldavSyncedCalendarIds, false)
