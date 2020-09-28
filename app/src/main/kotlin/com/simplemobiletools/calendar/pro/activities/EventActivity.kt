@@ -79,6 +79,7 @@ class EventActivity : SimpleActivity() {
     private var mEventTypeId = REGULAR_EVENT_TYPE_ID
     private var mDialogTheme = 0
     private var mEventOccurrenceTS = 0L
+    private var mLastSavePromptTS = 0L
     private var mEventCalendarId = STORED_LOCALLY_ONLY
     private var mWasActivityInitialized = false
     private var mWasContactsPermissionChecked = false
@@ -303,7 +304,8 @@ class EventActivity : SimpleActivity() {
     }
 
     override fun onBackPressed() {
-        if (isEventChanged()) {
+        if (isEventChanged() && System.currentTimeMillis() - mLastSavePromptTS > SAVE_DISCARD_PROMPT_INTERVAL) {
+            mLastSavePromptTS = System.currentTimeMillis()
             ConfirmationAdvancedDialog(this, "", R.string.save_before_closing, R.string.save, R.string.discard) {
                 if (it) {
                     saveCurrentEvent()
