@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 6.11.0 *(2020-10-25)*
+----------------------------
+
+ * Added Print support
+ * Added some stability and translation improvements
+
 Version 6.10.3 *(2020-09-28)*
 ----------------------------
 
