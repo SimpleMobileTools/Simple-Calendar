@@ -22,6 +22,7 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
     private var textColor = 0
     private var days = 31
     private var isLandscape = false
+    private var isPrintVersion = false
     private var mEvents: ArrayList<DayYearly>? = null
 
     var firstDay = 0
@@ -81,7 +82,7 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
                 if (curId in 1..days) {
                     canvas.drawText(curId.toString(), x * dayWidth - (dayWidth / 4), y * dayWidth, getPaint(curId))
 
-                    if (curId == todaysId) {
+                    if (curId == todaysId && !isPrintVersion) {
                         val dividerConstant = if (isLandscape) 6 else 4
                         canvas.drawCircle(x * dayWidth - dayWidth / 2, y * dayWidth - dayWidth / dividerConstant, dayWidth * 0.41f, todayCirclePaint)
                     }
@@ -100,5 +101,17 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
         }
 
         return paint
+    }
+
+    fun togglePrintMode() {
+        isPrintVersion = !isPrintVersion
+        textColor = if (isPrintVersion) {
+            resources.getColor(R.color.theme_light_text_color)
+        } else {
+            context.config.textColor.adjustAlpha(MEDIUM_ALPHA)
+        }
+
+        paint.color = textColor
+        invalidate()
     }
 }
