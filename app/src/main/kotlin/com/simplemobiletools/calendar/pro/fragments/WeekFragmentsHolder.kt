@@ -1,7 +1,9 @@
 package com.simplemobiletools.calendar.pro.fragments
 
+import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,9 +16,7 @@ import androidx.viewpager.widget.ViewPager
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.MainActivity
 import com.simplemobiletools.calendar.pro.adapters.MyWeekPagerAdapter
-import com.simplemobiletools.calendar.pro.extensions.config
-import com.simplemobiletools.calendar.pro.extensions.getWeeklyViewItemHeight
-import com.simplemobiletools.calendar.pro.extensions.seconds
+import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.helpers.WEEK_START_DATE_TIME
 import com.simplemobiletools.calendar.pro.interfaces.WeekFragmentListener
@@ -62,20 +62,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
     private fun setupFragment() {
         val weekTSs = getWeekTimestamps(currentWeekTS)
         val weeklyAdapter = MyWeekPagerAdapter(activity!!.supportFragmentManager, weekTSs, this)
-        val itemHeight = context!!.getWeeklyViewItemHeight().toInt()
-
-        val textColor = context!!.config.textColor
-        weekHolder!!.week_view_hours_holder.removeAllViews()
-        val hourDateTime = DateTime().withDate(2000, 1, 1).withTime(0, 0, 0, 0)
-        for (i in 1..23) {
-            val formattedHours = Formatter.getHours(context!!, hourDateTime.withHourOfDay(i))
-            (layoutInflater.inflate(R.layout.weekly_view_hour_textview, null, false) as TextView).apply {
-                text = formattedHours
-                setTextColor(textColor)
-                height = itemHeight
-                weekHolder!!.week_view_hours_holder.addView(this)
-            }
-        }
+        addHours()
 
         defaultWeeklyPage = weekTSs.size / 2
         viewPager!!.apply {
@@ -128,6 +115,21 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
 
         updateDaysCount(context?.config?.weeklyViewDays ?: 7)
         updateActionBarTitle()
+    }
+
+    private fun addHours(textColor: Int = context!!.config.textColor) {
+        val itemHeight = context!!.getWeeklyViewItemHeight().toInt()
+        weekHolder!!.week_view_hours_holder.removeAllViews()
+        val hourDateTime = DateTime().withDate(2000, 1, 1).withTime(0, 0, 0, 0)
+        for (i in 1..23) {
+            val formattedHours = Formatter.getHours(context!!, hourDateTime.withHourOfDay(i))
+            (layoutInflater.inflate(R.layout.weekly_view_hour_textview, null, false) as TextView).apply {
+                text = formattedHours
+                setTextColor(textColor)
+                height = itemHeight
+                weekHolder!!.week_view_hours_holder.addView(this)
+            }
+        }
     }
 
     private fun getWeekTimestamps(targetSeconds: Long): List<Long> {
@@ -259,5 +261,27 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
 
     override fun getFullFragmentHeight() = weekHolder!!.week_view_holder.height - weekHolder!!.week_view_seekbar.height - weekHolder!!.week_view_days_count_divider.height
 
-    override fun printView() {}
+    override fun printView() {
+        weekHolder!!.apply {
+            week_view_days_count_divider.beGone()
+            week_view_seekbar.beGone()
+            week_view_days_count.beGone()
+            addHours(resources.getColor(R.color.theme_light_text_color))
+            background = ColorDrawable(Color.WHITE)
+            (viewPager?.adapter as? MyWeekPagerAdapter)?.togglePrintMode(viewPager?.currentItem ?: 0)
+
+            Handler().postDelayed({
+                context!!.printBitmap(weekHolder!!.week_view_holder.getViewBitmap())
+
+                Handler().postDelayed({
+                    week_view_days_count_divider.beVisible()
+                    week_view_seekbar.beVisible()
+                    week_view_days_count.beVisible()
+                    addHours()
+                    background = ColorDrawable(context!!.config.backgroundColor)
+                    (viewPager?.adapter as? MyWeekPagerAdapter)?.togglePrintMode(viewPager?.currentItem ?: 0)
+                }, 1000)
+            }, 1000)
+        }
+    }
 }

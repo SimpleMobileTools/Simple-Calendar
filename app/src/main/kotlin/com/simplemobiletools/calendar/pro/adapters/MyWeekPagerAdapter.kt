@@ -52,4 +52,8 @@ class MyWeekPagerAdapter(fm: FragmentManager, private val mWeekTimestamps: List<
             mFragments[pos + i]?.updateVisibleDaysCount(count)
         }
     }
+
+    fun togglePrintMode(pos: Int) {
+        mFragments[pos].togglePrintMode()
+    }
 }

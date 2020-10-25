@@ -58,6 +58,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private var wasExtraHeightAdded = false
     private var dimPastEvents = true
     private var wasScaled = false
+    private var isPrintVersion = false
     private var selectedGrid: View? = null
     private var currentTimeView: ImageView? = null
     private var fadeOutHandler = Handler()
@@ -204,7 +205,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
     private fun setupDayLabels() {
         var curDay = Formatter.getDateTimeFromTS(weekTimestamp)
-        val textColor = config.textColor
+        val textColor = if (isPrintVersion) resources.getColor(R.color.theme_light_text_color) else config.textColor
         val todayCode = Formatter.getDayCodeFromDateTime(DateTime())
         val screenWidth = context?.usableScreenSize?.x ?: return
         val dayWidth = screenWidth / config.weeklyViewDays
@@ -224,7 +225,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
             val label = inflater.inflate(R.layout.weekly_view_day_letter, mView.week_letters_holder, false) as MyTextView
             label.text = "$dayLetter\n${curDay.dayOfMonth}"
-            label.setTextColor(if (todayCode == dayCode) primaryColor else textColor)
+            label.setTextColor(if (todayCode == dayCode && !isPrintVersion) primaryColor else textColor)
             if (todayCode == dayCode) {
                 todayColumnIndex = i
             }
@@ -437,7 +438,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 (inflater.inflate(R.layout.week_event_marker, null, false) as TextView).apply {
                     var backgroundColor = eventTypeColors.get(event.eventType, primaryColor)
                     var textColor = backgroundColor.getContrastColor()
-                    if (dimPastEvents && event.isPastEvent) {
+                    if (dimPastEvents && event.isPastEvent && !isPrintVersion) {
                         backgroundColor = backgroundColor.adjustAlpha(LOW_ALPHA)
                         textColor = textColor.adjustAlpha(LOW_ALPHA)
                     }
@@ -504,6 +505,10 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 mView.week_events_holder.removeView(currentTimeView)
             }
 
+            if (isPrintVersion) {
+                return
+            }
+
             val weeklyViewDays = config.weeklyViewDays
             currentTimeView = (inflater.inflate(R.layout.week_now_marker, null, false) as ImageView).apply {
                 applyColorFilter(primaryColor)
@@ -538,7 +543,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         (inflater.inflate(R.layout.week_all_day_event_marker, null, false) as TextView).apply {
             var backgroundColor = eventTypeColors.get(event.eventType, primaryColor)
             var textColor = backgroundColor.getContrastColor()
-            if (dimPastEvents && event.isPastEvent) {
+            if (dimPastEvents && event.isPastEvent && !isPrintVersion) {
                 backgroundColor = backgroundColor.adjustAlpha(LOW_ALPHA)
                 textColor = textColor.adjustAlpha(LOW_ALPHA)
             }
@@ -650,5 +655,12 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         if (!isFragmentVisible) {
             updateViewScale()
         }
+    }
+
+    fun togglePrintMode() {
+        isPrintVersion = !isPrintVersion
+        updateCalendar()
+        setupDayLabels()
+        addEvents(currEvents)
     }
 }
