@@ -139,5 +139,7 @@ class DayFragmentsHolder : MyFragmentHolder(), NavigationListener {
 
     override fun getNewEventDayCode() = currentDayCode
 
-    override fun printView() {}
+    override fun printView() {
+        (viewPager?.adapter as? MyDayPagerAdapter)?.printCurrentView(viewPager?.currentItem ?: 0)
+    }
 }

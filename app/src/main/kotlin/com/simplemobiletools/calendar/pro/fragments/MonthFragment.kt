@@ -148,12 +148,10 @@ class MonthFragment : Fragment(), MonthlyCalendar {
     }
 
     fun printCurrentView() {
-        val darkColor = resources.getColor(R.color.theme_light_text_color)
-
         mHolder.apply {
             top_left_arrow.beGone()
             top_right_arrow.beGone()
-            top_value.setTextColor(darkColor)
+            top_value.setTextColor(resources.getColor(R.color.theme_light_text_color))
             month_view_wrapper.togglePrintMode()
 
             context!!.printBitmap(month_calendar_holder.getViewBitmap())
