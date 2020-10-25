@@ -141,5 +141,7 @@ class MonthFragmentsHolder : MyFragmentHolder(), NavigationListener {
 
     override fun getNewEventDayCode() = if (shouldGoToTodayBeVisible()) currentDayCode else todayDayCode
 
-    override fun printView() {}
+    override fun printView() {
+        (viewPager?.adapter as? MyMonthPagerAdapter)?.printCurrentView(viewPager?.currentItem ?: 0)
+    }
 }
