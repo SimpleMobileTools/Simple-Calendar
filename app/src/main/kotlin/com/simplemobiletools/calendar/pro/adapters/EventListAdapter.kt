@@ -37,6 +37,7 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
     private val now = getNowSeconds()
     private var use24HourFormat = activity.config.use24HourFormat
     private var currentItemsHash = listItems.hashCode()
+    private var isPrintVersion = false
 
     init {
         setupDragListener(true)
@@ -131,6 +132,16 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
         }
     }
 
+    fun togglePrintMode() {
+        isPrintVersion = !isPrintVersion
+        textColor = if (isPrintVersion) {
+            resources.getColor(R.color.theme_light_text_color)
+        } else {
+            baseConfig.textColor
+        }
+        notifyDataSetChanged()
+    }
+
     private fun setupListEvent(view: View, listEvent: ListEvent) {
         view.apply {
             event_item_frame.isSelected = selectedKeys.contains(listEvent.hashCode())
@@ -161,15 +172,15 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
             var startTextColor = textColor
             var endTextColor = textColor
             if (listEvent.isAllDay || listEvent.startTS <= now && listEvent.endTS <= now) {
-                if (listEvent.isAllDay && Formatter.getDayCodeFromTS(listEvent.startTS) == Formatter.getDayCodeFromTS(now)) {
+                if (listEvent.isAllDay && Formatter.getDayCodeFromTS(listEvent.startTS) == Formatter.getDayCodeFromTS(now) && !isPrintVersion) {
                     startTextColor = primaryColor
                 }
 
-                if (dimPastEvents && listEvent.isPastEvent) {
+                if (dimPastEvents && listEvent.isPastEvent && !isPrintVersion) {
                     startTextColor = startTextColor.adjustAlpha(LOW_ALPHA)
                     endTextColor = endTextColor.adjustAlpha(LOW_ALPHA)
                 }
-            } else if (listEvent.startTS <= now && listEvent.endTS >= now) {
+            } else if (listEvent.startTS <= now && listEvent.endTS >= now && !isPrintVersion) {
                 startTextColor = primaryColor
             }
 
@@ -184,8 +195,8 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
         view.event_section_title.apply {
             text = listSection.title
             setCompoundDrawablesWithIntrinsicBounds(null, if (position == 0) null else topDivider, null, null)
-            var color = if (listSection.isToday) primaryColor else textColor
-            if (dimPastEvents && listSection.isPastSection) {
+            var color = if (listSection.isToday && !isPrintVersion) primaryColor else textColor
+            if (dimPastEvents && listSection.isPastSection && !isPrintVersion) {
                 color = color.adjustAlpha(LOW_ALPHA)
             }
             setTextColor(color)
