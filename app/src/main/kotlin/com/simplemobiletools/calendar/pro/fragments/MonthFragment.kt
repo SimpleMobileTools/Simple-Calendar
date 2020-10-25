@@ -1,13 +1,17 @@
 package com.simplemobiletools.calendar.pro.fragments
 
 import android.content.Context
+import android.content.pm.ActivityInfo
 import android.content.res.Resources
+import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RelativeLayout
 import androidx.fragment.app.Fragment
+import androidx.print.PrintHelper
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.MainActivity
 import com.simplemobiletools.calendar.pro.extensions.config
@@ -19,6 +23,7 @@ import com.simplemobiletools.calendar.pro.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.pro.interfaces.NavigationListener
 import com.simplemobiletools.calendar.pro.models.DayMonthly
 import com.simplemobiletools.commons.extensions.applyColorFilter
+import com.simplemobiletools.commons.helpers.mydebug
 import kotlinx.android.synthetic.main.fragment_month.view.*
 import kotlinx.android.synthetic.main.top_navigation.view.*
 import org.joda.time.DateTime
@@ -102,6 +107,14 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         }
     }
 
+    fun loadBitmapFromView(v: View): Bitmap? {
+        val b = Bitmap.createBitmap(v.width, v.height, Bitmap.Config.ARGB_8888)
+        val c = Canvas(b)
+        v.layout(v.left, v.top, v.right, v.bottom)
+        v.draw(c)
+        return b
+    }
+
     private fun setupButtons() {
         mTextColor = mConfig.textColor
 
@@ -109,6 +122,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
             applyColorFilter(mTextColor)
             background = null
             setOnClickListener {
+                val bitmap = loadBitmapFromView(mHolder.month_calendar_holder)
                 listener?.goLeft()
             }
 

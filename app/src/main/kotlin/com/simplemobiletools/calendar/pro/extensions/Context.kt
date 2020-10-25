@@ -8,7 +8,9 @@ import android.content.ComponentName
 import android.content.ContentResolver
 import android.content.Context
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.content.res.Resources
+import android.graphics.Bitmap
 import android.media.AudioAttributes
 import android.net.Uri
 import android.os.Bundle
@@ -20,6 +22,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.app.AlarmManagerCompat
 import androidx.core.app.NotificationCompat
+import androidx.print.PrintHelper
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.EventActivity
 import com.simplemobiletools.calendar.pro.activities.SnoozeReminderActivity
@@ -543,4 +546,11 @@ fun Context.getWeeklyViewItemHeight(): Float {
     val defaultHeight = resources.getDimension(R.dimen.weekly_view_row_height)
     val multiplier = config.weeklyViewItemHeightMultiplier
     return defaultHeight * multiplier
+}
+
+fun Context.printBitmap(bitmap: Bitmap) {
+    val printHelper = PrintHelper(this)
+    printHelper.scaleMode = PrintHelper.SCALE_MODE_FIT
+    printHelper.orientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+    printHelper.printBitmap(getString(R.string.app_name), bitmap)
 }

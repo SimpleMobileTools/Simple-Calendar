@@ -32,6 +32,10 @@
         android:title="@string/go_to_date"
         app:showAsAction="never"/>
     <item
+        android:id="@+id/print"
+        android:title="@string/print"
+        app:showAsAction="never"/>
+    <item
         android:id="@+id/add_holidays"
         android:title="@string/add_holidays"
         app:showAsAction="never"/>

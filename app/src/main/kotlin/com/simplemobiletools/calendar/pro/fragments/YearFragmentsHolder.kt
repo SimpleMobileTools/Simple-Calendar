@@ -126,4 +126,6 @@ class YearFragmentsHolder : MyFragmentHolder() {
     }
 
     override fun getNewEventDayCode() = Formatter.getTodayCode()
+
+    override fun printView() {}
 }

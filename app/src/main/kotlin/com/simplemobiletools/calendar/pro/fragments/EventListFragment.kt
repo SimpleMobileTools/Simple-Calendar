@@ -210,4 +210,6 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
     }
 
     override fun getNewEventDayCode() = Formatter.getTodayCode()
+
+    override fun printView() {}
 }

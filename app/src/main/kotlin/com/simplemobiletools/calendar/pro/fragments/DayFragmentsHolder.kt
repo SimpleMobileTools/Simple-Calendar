@@ -138,4 +138,6 @@ class DayFragmentsHolder : MyFragmentHolder(), NavigationListener {
     }
 
     override fun getNewEventDayCode() = currentDayCode
+
+    override fun printView() {}
 }

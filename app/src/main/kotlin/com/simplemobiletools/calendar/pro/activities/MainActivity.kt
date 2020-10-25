@@ -192,6 +192,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             R.id.change_view -> showViewDialog()
             R.id.go_to_today -> goToToday()
             R.id.go_to_date -> showGoToDateDialog()
+            R.id.print -> printView()
             R.id.filter -> showFilterDialog()
             R.id.refresh_caldav_calendars -> refreshCalDAVCalendars(true)
             R.id.add_holidays -> addHolidays()
@@ -422,6 +423,10 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     fun showGoToDateDialog() {
         currentFragments.last().showGoToDateDialog()
+    }
+
+    fun printView() {
+        currentFragments.last().printView()
     }
 
     private fun resetActionBarTitle() {
