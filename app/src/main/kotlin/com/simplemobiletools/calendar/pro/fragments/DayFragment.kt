@@ -2,6 +2,7 @@ package com.simplemobiletools.calendar.pro.fragments
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,7 +26,6 @@ import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.commons.extensions.applyColorFilter
 import com.simplemobiletools.commons.extensions.beGone
 import com.simplemobiletools.commons.extensions.beVisible
-import com.simplemobiletools.commons.extensions.onGlobalLayout
 import kotlinx.android.synthetic.main.fragment_day.view.*
 import kotlinx.android.synthetic.main.top_navigation.view.*
 import java.util.*
@@ -141,16 +141,16 @@ class DayFragment : Fragment() {
             top_value.setTextColor(resources.getColor(R.color.theme_light_text_color))
             (day_events.adapter as? DayEventsAdapter)?.togglePrintMode()
 
-            day_events.onGlobalLayout {
+            Handler().postDelayed({
                 context!!.printBitmap(day_holder.getViewBitmap())
 
-                day_events.onGlobalLayout {
+                Handler().postDelayed({
                     top_left_arrow.beVisible()
                     top_right_arrow.beVisible()
                     top_value.setTextColor(context!!.config.textColor)
                     (day_events.adapter as? DayEventsAdapter)?.togglePrintMode()
-                }
-            }
+                }, 1000)
+            }, 1000)
         }
     }
 }
