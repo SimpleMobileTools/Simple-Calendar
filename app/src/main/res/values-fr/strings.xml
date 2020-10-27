@@ -176,7 +176,7 @@
     <string name="dim_past_events">Diminuer l\’affichage des événements passés</string>
     <string name="events">Evénements</string>
     <string name="reminder_stream">Flux audio utilisé par les rappels</string>
-    <string name="system_stream">System</string>
+    <string name="system_stream">Système</string>
     <string name="alarm_stream">Alarme</string>
     <string name="notification_stream">Notification</string>
     <string name="ring_stream">Sonnerie</string>
@@ -197,7 +197,7 @@
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
-    <string name="select_caldav_calendars">Seléctionner les agendas à synchroniser</string>
+    <string name="select_caldav_calendars">Selectionner les agendas à synchroniser</string>
     <string name="manage_synced_calendars">Gérer les agendas synchronisés</string>
     <string name="store_locally_only">Stocker uniquement localement</string>
     <string name="refresh_caldav_calendars">Rafraîchir les agendas CalDAV</string>
@@ -209,7 +209,7 @@
     <string name="select_a_different_caldav_color">Sélectionnez une couleur différente (peut être appliqué localement uniquement)</string>
     <string name="insufficient_permissions">Vous n\’êtes pas autorisé à écrire dans l\’agenda sélectionné</string>
     <string name="caldav_event_not_found">Événement introuvable. Veuillez activer la synchronisation CalDAV pour le calendrier approprié dans les paramètres de l’application.</string>
-    <string name="no_synchronized_calendars">No synchronizable calendars have been found</string>
+    <string name="no_synchronized_calendars">Aucun calendrier synchronisable n\'a été trouvé</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
@@ -250,47 +250,47 @@
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Calendrier mobile 2020. Planificat. d\'horaire; rappel de RDV n\'importe quel jour</string>
     <string name="app_long_description">
-        Simple Calendar Pro is a fully customizable, offline calendar designed to do exactly what a calendar should do. <b>No complicated features, unnecessary permissions and no ads!</b>
+        Simple Calendar Pro est un calendrier entièrement personnalisable et hors-ligne désigné pour faire exactement ce qu\'un calendrier devrait faire. <b>Aucune fonctionnalité compliquée, permissions inutiles et sans pubs !</b>
 
-        Whether you’re organizing single or recurring events, birthdays, anniversaries, business meetings, appointments or anything else, Simple Calendar Pro makes it <b>easy to stay organized</b>. With an incredible variety of <b>customization options</b> you can customize event reminders, notification sounds, calendar widgets and how the app looks.
+        Que vous souhaitiez organiser un évènement ponctuel ou récurrent, un anniversaire, un rendez-vous d'affaires ou quoi que ce soit d\'autre, Simple Calendar Pro rend simple <b>votre organisation</b>. Avec une grande variété <b>d\'options de personnalisation</b>, vous pouvez personnaliser les rappels d\'évènements, les sons de notifications, les widgets du calendrier et à quoi l\'application ressemble.
 
-        Daily, weekly and monthly views make checking your upcoming events &amp; appointments a breeze. You can even view everything as a simple list of events rather than in calendar view, so you <b>know exactly what’s coming up in your life and when. </b>
+        La vue journalière, semainière et mensuelle rend la vérification des évènements et rendez-vous à venir aisée. Vous pouvez même voir tous les évènements dans une simple liste plutôt que dans une vue calendrier, afin de <b>savoir exactement ce qui va arriver dans votre vie et quand. </b>
 
         ----------------------------------------------------------
-        <b>Simple Calendar Pro – Features &amp; Benefits</b>
+        <b>Simple Calendar Pro – Fonctionnalités &amp; avantages </b>
         ----------------------------------------------------------
 
-        ✔️ No ads or annoying popups
-        ✔️ No internet access needed, giving you more privacy &amp; security
-        ✔️ Only the bare minimum permissions required
-        ✔️ Emphasis on simplicity – does what a calendar needs to do!
+        ✔️ Aucune publicité ou popup ennuyante
+        ✔️ Aucun accès à internet n\'est nécessaire, vous donnant un meilleur respect de la vie privée et de la sécurité
+        ✔️ Seul le strict minimum en permissions est requis
+        ✔️ Emphase sur la simplicité - fait ce qu'un calendrier doit faire !
         ✔️ Open source
-        ✔️ Fully customizable themes &amp; calendar / event widgets
-        ✔️ Translated into 29 languages
-        ✔️ Export settings to .txt files to import to another device
-        ✔️ CalDAV calendar sync supported to sync events across devices
-        ✔️ Daily, weekly, monthly, yearly &amp; event views on the calendar
-        ✔️ Supports exporting &amp; importing events via .ics files
-        ✔️ Set multiple event reminders, customize event reminder sound and vibration
-        ✔️ Snooze option for reminders
-        ✔️ Easily add holidays, birthdays, anniversaries &amp; appointments
-        ✔️ Customize events – start time, duration, reminders etc
-        ✔️ Add event attendees to each event
-        ✔️ Use as a personal calendar or a business calendar
-        ✔️ Choose between reminders &amp; email notifications to alert you about an event
+        ✔️ Thèmes et widgets entièrement personnalisables
+        ✔️ Traduit en 29 langues
+        ✔️ Export des paramètres en fichier .txt pour les importer sur un autre appareil
+        ✔️ Synchronisation du calendrier CalDAV supportée pour synchroniser entre les appareils
+        ✔️ Vue journalière, semainière, mensuelle et annuelle des évènements sur le calendrier
+        ✔️ Supporte l\'export et l\'import des évènements via des fichiers .ics
+        ✔️ Paramètre de multiples rappels d\'évènements, personnalise les effets sonores et la vibration des évènements
+        ✔️ Option snooze pour les rappels
+        ✔️ Ajoute facilement des évènements d\'anniversaire et de vacances
+        ✔️ Personnalise les évènements - début, durée, rappels, etc.
+        ✔️ Note les présences sur chaque évènement
+        ✔️ Utilisable en tant que calendrier personnel ou professionnel
+        ✔️ Choisissez entre rappels et notifications par email pour vous alerter à propos d'un évènement
 
-        DOWNLOAD SIMPLE CALENDAR PRO – THE SIMPLE OFFLINE CALENDAR WITH NO ADS!
+        TÉLÉCHARGEZ SIMPLE CALENDAR PRO – LE CALENDRIER HORS-LIGNE SIMPLE ET SANS PUBS !
 
-        <b>Check out the full suite of Simple Tools here:</b>
+        <b>Découvrez la suite complète des applications Simple Mobile Tools ici :</b>
         https://www.simplemobiletools.com
 
-        <b>Standalone website of Simple Calendar Pro:</b>
+        <b>Site internet de Simple Calendar Pro :</b>
         https://www.simplemobiletools.com/calendar
 
-        <b>Facebook:</b>
+        <b>Facebook :</b>
         https://www.facebook.com/simplemobiletools
 
-        <b>Reddit:</b>
+        <b>Reddit :</b>
         https://www.reddit.com/r/SimpleMobileTools
     </string>
 
