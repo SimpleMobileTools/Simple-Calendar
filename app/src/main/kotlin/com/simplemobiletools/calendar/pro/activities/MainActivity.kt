@@ -45,6 +45,7 @@ import com.simplemobiletools.commons.interfaces.RefreshRecyclerViewListener
 import com.simplemobiletools.commons.models.FAQItem
 import com.simplemobiletools.commons.models.RadioItem
 import com.simplemobiletools.commons.models.Release
+import com.simplemobiletools.commons.models.SimpleContact
 import kotlinx.android.synthetic.main.activity_main.*
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
@@ -499,15 +500,20 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             if (it) {
                 SetRemindersDialog(this) {
                     val reminders = it
+                    val privateCursor = getMyContactsCursor().loadInBackground()
+
                     ensureBackgroundThread {
-                        addContactEvents(true, reminders) {
-                            when {
-                                it > 0 -> {
-                                    toast(R.string.birthdays_added)
-                                    updateViewPager()
+                        val privateContacts = MyContactsContentProvider.getSimpleContacts(this, privateCursor)
+                        addPrivateEvents(true, privateContacts, reminders) { eventsFound, eventsAdded ->
+                            addContactEvents(true, reminders, eventsFound, eventsAdded) {
+                                when {
+                                    it > 0 -> {
+                                        toast(R.string.birthdays_added)
+                                        updateViewPager()
+                                    }
+                                    it == -1 -> toast(R.string.no_new_birthdays)
+                                    else -> toast(R.string.no_birthdays)
                                 }
-                                it == -1 -> toast(R.string.no_new_birthdays)
-                                else -> toast(R.string.no_birthdays)
                             }
                         }
                     }
@@ -523,15 +529,20 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             if (it) {
                 SetRemindersDialog(this) {
                     val reminders = it
+                    val privateCursor = getMyContactsCursor().loadInBackground()
+
                     ensureBackgroundThread {
-                        addContactEvents(false, reminders) {
-                            when {
-                                it > 0 -> {
-                                    toast(R.string.anniversaries_added)
-                                    updateViewPager()
+                        val privateContacts = MyContactsContentProvider.getSimpleContacts(this, privateCursor)
+                        addPrivateEvents(false, privateContacts, reminders) { eventsFound, eventsAdded ->
+                            addContactEvents(false, reminders, eventsFound, eventsAdded) {
+                                when {
+                                    it > 0 -> {
+                                        toast(R.string.anniversaries_added)
+                                        updateViewPager()
+                                    }
+                                    it == -1 -> toast(R.string.no_new_anniversaries)
+                                    else -> toast(R.string.no_anniversaries)
                                 }
-                                it == -1 -> toast(R.string.no_new_anniversaries)
-                                else -> toast(R.string.no_anniversaries)
                             }
                         }
                     }
@@ -551,9 +562,9 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }, Toast.LENGTH_LONG)
     }
 
-    private fun addContactEvents(birthdays: Boolean, reminders: ArrayList<Int>, callback: (Int) -> Unit) {
-        var eventsAdded = 0
-        var eventsFound = 0
+    private fun addContactEvents(birthdays: Boolean, reminders: ArrayList<Int>, initEventsFound: Int, initEventsAdded: Int, callback: (Int) -> Unit) {
+        var eventsFound = initEventsFound
+        var eventsAdded = initEventsAdded
         val uri = Data.CONTENT_URI
         val projection = arrayOf(Contacts.DISPLAY_NAME,
             CommonDataKinds.Event.CONTACT_ID,
@@ -572,6 +583,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
 
         val eventTypeId = if (birthdays) getBirthdaysEventTypeId() else getAnniversariesEventTypeId()
+        val source = if (birthdays) SOURCE_CONTACT_BIRTHDAY else SOURCE_CONTACT_ANNIVERSARY
 
         queryCursor(uri, projection, selection, selectionArgs, showErrors = true) { cursor ->
             val contactId = cursor.getIntValue(CommonDataKinds.Event.CONTACT_ID).toString()
@@ -587,7 +599,6 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                     }
 
                     val timestamp = date.time / 1000L
-                    val source = if (birthdays) SOURCE_CONTACT_BIRTHDAY else SOURCE_CONTACT_ANNIVERSARY
                     val lastUpdated = cursor.getLongValue(CommonDataKinds.Event.CONTACT_LAST_UPDATED_TIMESTAMP)
                     val event = Event(null, timestamp, timestamp, name, reminder1Minutes = reminders[0], reminder2Minutes = reminders[1],
                         reminder3Minutes = reminders[2], importId = contactId, timeZone = DateTimeZone.getDefault().id, flags = FLAG_ALL_DAY,
@@ -622,6 +633,75 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         runOnUiThread {
             callback(if (eventsAdded == 0 && eventsFound > 0) -1 else eventsAdded)
         }
+    }
+
+    private fun addPrivateEvents(birthdays: Boolean, contacts: ArrayList<SimpleContact>, reminders: ArrayList<Int>, callback: (eventsFound: Int, eventsAdded: Int) -> Unit) {
+        var eventsAdded = 0
+        var eventsFound = 0
+        if (contacts.isEmpty()) {
+            callback(0, 0)
+            return
+        }
+
+        try {
+            val eventTypeId = if (birthdays) getBirthdaysEventTypeId() else getAnniversariesEventTypeId()
+            val source = if (birthdays) SOURCE_CONTACT_BIRTHDAY else SOURCE_CONTACT_ANNIVERSARY
+
+            val existingEvents = if (birthdays) eventsDB.getBirthdays() else eventsDB.getAnniversaries()
+            val importIDs = HashMap<String, Long>()
+            existingEvents.forEach {
+                importIDs[it.importId] = it.startTS
+            }
+
+            contacts.forEach { contact ->
+                val events = if (birthdays) contact.birthdays else contact.anniversaries
+                events.forEach { birthdayAnniversary ->
+                    // private contacts are created in Simple Contacts Pro, so we can guarantee that they exist only in these 2 formats
+                    val format = if (birthdayAnniversary.startsWith("--")) {
+                        "--MM-dd"
+                    } else {
+                        "yyyy-MM-dd"
+                    }
+
+                    val formatter = SimpleDateFormat(format, Locale.getDefault())
+                    val date = formatter.parse(birthdayAnniversary)
+                    if (date.year < 70) {
+                        date.year = 70
+                    }
+
+                    val timestamp = date.time / 1000L
+                    val lastUpdated = System.currentTimeMillis()
+                    val event = Event(null, timestamp, timestamp, contact.name, reminder1Minutes = reminders[0], reminder2Minutes = reminders[1],
+                        reminder3Minutes = reminders[2], importId = contact.contactId.toString(), timeZone = DateTimeZone.getDefault().id, flags = FLAG_ALL_DAY,
+                        repeatInterval = YEAR, repeatRule = REPEAT_SAME_DAY, eventType = eventTypeId, source = source, lastUpdated = lastUpdated)
+
+                    val importIDsToDelete = ArrayList<String>()
+                    for ((key, value) in importIDs) {
+                        if (key == contact.contactId.toString() && value != timestamp) {
+                            val deleted = eventsDB.deleteBirthdayAnniversary(source, key)
+                            if (deleted == 1) {
+                                importIDsToDelete.add(key)
+                            }
+                        }
+                    }
+
+                    importIDsToDelete.forEach {
+                        importIDs.remove(it)
+                    }
+
+                    eventsFound++
+                    if (!importIDs.containsKey(contact.contactId.toString())) {
+                        eventsHelper.insertEvent(event, false, false) {
+                            eventsAdded++
+                        }
+                    }
+                }
+            }
+        } catch (e: Exception) {
+            showErrorToast(e)
+        }
+
+        callback(eventsFound, eventsAdded)
     }
 
     private fun getBirthdaysEventTypeId(): Long {
