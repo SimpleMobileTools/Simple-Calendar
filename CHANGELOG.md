@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 6.11.1 *(2020-10-28)*
+----------------------------
+
+ * Fixed a glitch with some misplaced events on the weekly view
+ * Allow importing birthdays and anniversaries of contacts privately stored in Simple Contacts Pro
+
 Version 6.11.0 *(2020-10-25)*
 ----------------------------
 
