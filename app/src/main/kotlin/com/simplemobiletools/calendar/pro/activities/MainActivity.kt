@@ -707,7 +707,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     private fun getThisWeekDateTime(): String {
-        var thisweek = DateTime().withDayOfWeek(1).withTimeAtStartOfDay().minusDays(if (config.isSundayFirst) 1 else 0)
+        var thisweek = DateTime().withZone(DateTimeZone.UTC).withDayOfWeek(1).withTimeAtStartOfDay().minusDays(if (config.isSundayFirst) 1 else 0)
         if (DateTime().minusDays(7).seconds() > thisweek.seconds()) {
             thisweek = thisweek.plusDays(7)
         }
