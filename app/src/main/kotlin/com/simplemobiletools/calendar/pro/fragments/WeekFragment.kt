@@ -30,6 +30,7 @@ import com.simplemobiletools.commons.views.MyTextView
 import kotlinx.android.synthetic.main.fragment_week.*
 import kotlinx.android.synthetic.main.fragment_week.view.*
 import org.joda.time.DateTime
+import org.joda.time.DateTimeZone
 import org.joda.time.Days
 import java.util.*
 
@@ -270,7 +271,8 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                     applyColorFilter(primaryColor.getContrastColor())
 
                     setOnClickListener {
-                        val timestamp = weekTimestamp + index * DAY_SECONDS + hour * 60 * 60
+                        val offset = DateTimeZone.getDefault().getOffsetFromLocal(System.currentTimeMillis()) / 1000
+                        val timestamp = weekTimestamp - offset + index * DAY_SECONDS + hour * 60 * 60
                         Intent(context, EventActivity::class.java).apply {
                             putExtra(NEW_EVENT_START_TS, timestamp)
                             putExtra(NEW_EVENT_SET_HOUR_DURATION, true)
