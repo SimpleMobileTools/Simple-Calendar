@@ -30,7 +30,6 @@ import com.simplemobiletools.commons.views.MyTextView
 import kotlinx.android.synthetic.main.fragment_week.*
 import kotlinx.android.synthetic.main.fragment_week.view.*
 import org.joda.time.DateTime
-import org.joda.time.DateTimeZone
 import org.joda.time.Days
 import java.util.*
 
@@ -271,8 +270,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                     applyColorFilter(primaryColor.getContrastColor())
 
                     setOnClickListener {
-                        val offset = DateTimeZone.getDefault().getOffsetFromLocal(System.currentTimeMillis()) / 1000
-                        val timestamp = weekTimestamp - offset + index * DAY_SECONDS + hour * 60 * 60
+                        val timestamp = Formatter.getDateTimeFromTS(weekTimestamp + index * DAY_SECONDS).withTime(hour, 0, 0, 0).seconds()
                         Intent(context, EventActivity::class.java).apply {
                             putExtra(NEW_EVENT_START_TS, timestamp)
                             putExtra(NEW_EVENT_SET_HOUR_DURATION, true)
@@ -497,7 +495,8 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
     private fun addCurrentTimeIndicator(minuteHeight: Float) {
         if (todayColumnIndex != -1) {
-            val minutes = DateTime().minuteOfDay
+            val calendar = Calendar.getInstance()
+            val minutes = calendar.get(Calendar.HOUR_OF_DAY) * 60 + calendar.get(Calendar.MINUTE)
             if (todayColumnIndex >= dayColumns.size) {
                 currentTimeView?.alpha = 0f
                 return
