@@ -168,10 +168,11 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
+        shouldGoToTodayBeVisible = currentFragments.last().shouldGoToTodayBeVisible()
         menu.apply {
             goToTodayButton = findItem(R.id.go_to_today)
             findItem(R.id.filter).isVisible = mShouldFilterBeVisible
-            findItem(R.id.go_to_today).isVisible = (shouldGoToTodayBeVisible || config.storedView == EVENTS_LIST_VIEW) && !mIsSearchOpen
+            findItem(R.id.go_to_today).isVisible = shouldGoToTodayBeVisible && !mIsSearchOpen
             findItem(R.id.go_to_date).isVisible = config.storedView != EVENTS_LIST_VIEW
         }
 

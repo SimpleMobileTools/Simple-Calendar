@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.EventActivity
 import com.simplemobiletools.calendar.pro.activities.MainActivity
@@ -42,6 +43,7 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
     private var minFetchedTS = 0L
     private var maxFetchedTS = 0L
     private var wereInitialEventsAdded = false
+    private var hasBeenScrolled = false
     private var bottomItemAtRefresh: ListItem? = null
 
     private var use24HourFormat = false
@@ -134,6 +136,16 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
                         fetchNextPeriod()
                     }
                 }
+
+                mView.calendar_events_list.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                    override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                        super.onScrollStateChanged(recyclerView, newState)
+                        if (!hasBeenScrolled) {
+                            hasBeenScrolled = true
+                            activity?.invalidateOptionsMenu()
+                        }
+                    }
+                })
             } else {
                 (currAdapter as EventListAdapter).updateListItems(listItems)
                 if (updateStatus == UPDATE_TOP) {
@@ -195,6 +207,10 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
         val firstNonPastSectionIndex = listItems.indexOfFirst { it is ListSection && !it.isPastSection }
         if (firstNonPastSectionIndex != -1) {
             (mView.calendar_events_list.layoutManager as LinearLayoutManager).scrollToPositionWithOffset(firstNonPastSectionIndex, 0)
+            mView.calendar_events_list.onGlobalLayout {
+                hasBeenScrolled = false
+                activity?.invalidateOptionsMenu()
+            }
         }
     }
 
@@ -204,7 +220,7 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
         checkEvents()
     }
 
-    override fun shouldGoToTodayBeVisible() = false
+    override fun shouldGoToTodayBeVisible() = hasBeenScrolled
 
     override fun updateActionBarTitle() {
         (activity as? MainActivity)?.updateActionBarTitle(getString(R.string.app_launcher_name))
