@@ -44,15 +44,14 @@
 
         <ImageView
             android:id="@+id/event_show_on_map"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/normal_icon_size"
             android:layout_height="match_parent"
             android:layout_alignTop="@+id/event_location"
             android:layout_alignBottom="@+id/event_location"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="@dimen/activity_margin"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:paddingStart="@dimen/small_margin"
-            android:paddingEnd="@dimen/small_margin"
+            android:padding="@dimen/small_margin"
             android:src="@drawable/ic_place_vector" />
 
         <com.simplemobiletools.commons.views.MyEditText
