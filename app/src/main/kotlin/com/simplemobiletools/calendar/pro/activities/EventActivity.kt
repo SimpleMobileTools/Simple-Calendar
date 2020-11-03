@@ -528,9 +528,7 @@ class EventActivity : SimpleActivity() {
     private fun checkAttendees() {
         ensureBackgroundThread {
             fillAvailableContacts()
-            runOnUiThread {
-                updateAttendees()
-            }
+            updateAttendees()
         }
     }
 
@@ -1357,22 +1355,24 @@ class EventActivity : SimpleActivity() {
         { it.status })
         mAttendees.reverse()
 
-        mAttendees.forEach {
-            val attendee = it
-            val deviceContact = mAvailableContacts.firstOrNull { it.email.isNotEmpty() && it.email == attendee.email && it.photoUri.isNotEmpty() }
-            if (deviceContact != null) {
-                attendee.photoUri = deviceContact.photoUri
+        runOnUiThread {
+            mAttendees.forEach {
+                val attendee = it
+                val deviceContact = mAvailableContacts.firstOrNull { it.email.isNotEmpty() && it.email == attendee.email && it.photoUri.isNotEmpty() }
+                if (deviceContact != null) {
+                    attendee.photoUri = deviceContact.photoUri
+                }
+                addAttendee(attendee)
             }
-            addAttendee(attendee)
-        }
-        addAttendee()
+            addAttendee()
 
-        val imageHeight = event_repetition_image.height
-        if (imageHeight > 0) {
-            event_attendees_image.layoutParams.height = imageHeight
-        } else {
-            event_repetition_image.onGlobalLayout {
-                event_attendees_image.layoutParams.height = event_repetition_image.height
+            val imageHeight = event_repetition_image.height
+            if (imageHeight > 0) {
+                event_attendees_image.layoutParams.height = imageHeight
+            } else {
+                event_repetition_image.onGlobalLayout {
+                    event_attendees_image.layoutParams.height = event_repetition_image.height
+                }
             }
         }
     }
