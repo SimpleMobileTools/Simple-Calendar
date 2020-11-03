@@ -158,6 +158,7 @@
     <string name="manage_event_types">Gestisci i tipi di evento</string>
     <string name="start_day_at">Il giorno inizia alle</string>
     <string name="end_day_at">Il giorno finisce alle</string>
+    <string name="allow_customizing_day_count">Allow customizing day count</string>
     <string name="week_numbers">Mostra numero settimane</string>
     <string name="vibrate">Vibra per le notifiche di promemoria</string>
     <string name="reminder_sound">Suoneria promemoria</string>

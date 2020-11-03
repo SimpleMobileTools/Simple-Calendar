@@ -158,6 +158,7 @@
     <string name="manage_event_types">Etkinlik türlerini yönet</string>
     <string name="start_day_at">Gün başlangıcı</string>
     <string name="end_day_at">Gün bitişi</string>
+    <string name="allow_customizing_day_count">Allow customizing day count</string>
     <string name="week_numbers">Hafta sayılarını göster</string>
     <string name="vibrate">Hatırlatma bildiriminde titre</string>
     <string name="reminder_sound">Hatırlatma sesi</string>

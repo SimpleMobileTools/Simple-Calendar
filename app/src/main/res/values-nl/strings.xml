@@ -158,6 +158,7 @@
     <string name="manage_event_types">Afspraaktypes beheren</string>
     <string name="start_day_at">Dag starten om</string>
     <string name="end_day_at">Dag beëindigen om</string>
+    <string name="allow_customizing_day_count">Allow customizing day count</string>
     <string name="week_numbers">Weeknummers tonen</string>
     <string name="vibrate">Trillen bij notificaties</string>
     <string name="reminder_sound">Geluid voor herinnering</string>

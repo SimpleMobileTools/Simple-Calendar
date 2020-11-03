@@ -158,6 +158,7 @@
     <string name="manage_event_types">Tvarkyti įvykių tipus</string>
     <string name="start_day_at">Pradėti dieną nuo</string>
     <string name="end_day_at">Užbaigti dieną nuo</string>
+    <string name="allow_customizing_day_count">Allow customizing day count</string>
     <string name="week_numbers">Rodyti savaičių numerius</string>
     <string name="vibrate">Vibruoti per priminimo pranešimą</string>
     <string name="reminder_sound">Priminimo garsas</string>

@@ -158,6 +158,7 @@
     <string name="manage_event_types">Gestionează tipurile de evenimente</string>
     <string name="start_day_at">Începe ziua la</string>
     <string name="end_day_at">Ziua se termină la</string>
+    <string name="allow_customizing_day_count">Allow customizing day count</string>
     <string name="week_numbers">Afișează numerele săptămânii</string>
     <string name="vibrate">Vibrați la notificarea de reamintire</string>
     <string name="reminder_sound">Sunetul reamintiri</string>

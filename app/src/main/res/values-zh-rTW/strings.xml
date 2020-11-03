@@ -158,6 +158,7 @@
     <string name="manage_event_types">管理活動類型</string>
     <string name="start_day_at">每日開始於</string>
     <string name="end_day_at">每日結束於</string>
+    <string name="allow_customizing_day_count">Allow customizing day count</string>
     <string name="week_numbers">顯示第幾週</string>
     <string name="vibrate">提醒通知時震動</string>
     <string name="reminder_sound">提醒音效</string>

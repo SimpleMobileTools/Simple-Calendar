@@ -158,6 +158,7 @@
     <string name="manage_event_types">일정 유형 관리</string>
     <string name="start_day_at">시작 시간</string>
     <string name="end_day_at">종료 시간</string>
+    <string name="allow_customizing_day_count">Allow customizing day count</string>
     <string name="week_numbers">주 번호 표시</string>
     <string name="vibrate">알림 시 진동</string>
     <string name="reminder_sound">알림 소리</string>

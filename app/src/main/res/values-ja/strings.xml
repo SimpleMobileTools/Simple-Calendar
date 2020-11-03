@@ -158,6 +158,7 @@
     <string name="manage_event_types">予定の種類を管理</string>
     <string name="start_day_at">Start day at</string>
     <string name="end_day_at">End day at</string>
+    <string name="allow_customizing_day_count">Allow customizing day count</string>
     <string name="week_numbers">週番号を表示</string>
     <string name="vibrate">リマインダー通知で振動</string>
     <string name="reminder_sound">Reminder sound</string>

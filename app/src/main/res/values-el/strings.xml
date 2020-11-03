@@ -158,6 +158,7 @@
     <string name="manage_event_types">Διαχείριση τύπων εκδηλώσεων</string>
     <string name="start_day_at">Ημέρα έναρξης την</string>
     <string name="end_day_at">Ημέρα λήξης την</string>
+    <string name="allow_customizing_day_count">Allow customizing day count</string>
     <string name="week_numbers">Εμφάνιση αριθμών εβδομάδων</string>
     <string name="vibrate">Δόνηση στην ειδοποίηση υπενθύμισης</string>
     <string name="reminder_sound">Ήχος υπενθύμισης</string>

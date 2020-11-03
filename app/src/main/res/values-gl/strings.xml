@@ -158,6 +158,7 @@
     <string name="manage_event_types">Xestionar tipos de eventos</string>
     <string name="start_day_at">Na vista xeral o día comeza as</string>
     <string name="end_day_at">O día na vista semanal remata as</string>
+    <string name="allow_customizing_day_count">Allow customizing day count</string>
     <string name="week_numbers">Mostrar os números da semana</string>
     <string name="vibrate">Vibrar coa notificación de recordatorio</string>
     <string name="reminder_sound">Son de recordatorio</string>

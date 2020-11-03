@@ -158,6 +158,7 @@
     <string name="manage_event_types">Kudeatu gertaera motak</string>
     <string name="start_day_at">Eguna noiz hasi</string>
     <string name="end_day_at">Eguna noiz bukatu</string>
+    <string name="allow_customizing_day_count">Allow customizing day count</string>
     <string name="week_numbers">Erakutsi asteen zenbakiak</string>
     <string name="vibrate">Bibratu abisuen jakinarazpenetan</string>
     <string name="reminder_sound">Abisuen soinua</string>

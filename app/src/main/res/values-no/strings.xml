@@ -158,6 +158,7 @@
     <string name="manage_event_types">Behandle hendelsestyper</string>
     <string name="start_day_at">Start dag kl.</string>
     <string name="end_day_at">Avslutt dag kl.</string>
+    <string name="allow_customizing_day_count">Allow customizing day count</string>
     <string name="week_numbers">Vis ukenummer</string>
     <string name="vibrate">Vibrer ved påminnelsesvarsel</string>
     <string name="reminder_sound">Påminnelseslyd</string>

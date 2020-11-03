@@ -159,6 +159,7 @@
     <string name="manage_event_types">Gestion des types d\’événements</string>
     <string name="start_day_at">Jour de début de la vue hebdomadaire</string>
     <string name="end_day_at">Jour de fin de la vue hebdomadaire</string>
+    <string name="allow_customizing_day_count">Allow customizing day count</string>
     <string name="week_numbers">Afficher les numéros de semaine</string>
     <string name="vibrate">Vibrer à la notification de rappel</string>
     <string name="reminder_sound">Son de rappel</string>
