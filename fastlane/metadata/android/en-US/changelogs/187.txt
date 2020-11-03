@@ -1,0 +1,3 @@
+ * Fixed some weekly view related glitches
+ * Do not always show "Go to today" at the Event list view
+ * Added some other UX, translation and stability improvements

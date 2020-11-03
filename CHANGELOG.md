@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 6.11.2 *(2020-11-03)*
+----------------------------
+
+ * Fixed some weekly view related glitches
+ * Do not always show "Go to today" at the Event list view
+ * Added some other UX, translation and stability improvements
+
 Version 6.11.1 *(2020-10-28)*
 ----------------------------
 
