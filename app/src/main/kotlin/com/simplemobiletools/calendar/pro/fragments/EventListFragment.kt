@@ -230,6 +230,11 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
 
     override fun printView() {
         mView.apply {
+            if (calendar_events_list.isGone()) {
+                context.toast(R.string.no_items_found)
+                return@apply
+            }
+
             (calendar_events_list.adapter as? EventListAdapter)?.togglePrintMode()
             Handler().postDelayed({
                 context!!.printBitmap(calendar_events_list.getViewBitmap())
