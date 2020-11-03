@@ -37,8 +37,6 @@ import com.simplemobiletools.calendar.pro.receivers.NotificationReceiver
 import com.simplemobiletools.calendar.pro.services.SnoozeService
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
-import org.joda.time.DateTime
-import org.joda.time.DateTimeZone
 import org.joda.time.LocalDate
 import java.util.*
 
@@ -342,8 +340,9 @@ fun Context.launchNewEventIntent(dayCode: String = Formatter.getTodayCode()) {
 }
 
 fun Context.getNewEventTimestampFromCode(dayCode: String): Long {
+    val calendar = Calendar.getInstance()
     val defaultStartTime = config.defaultStartTime
-    val currHour = DateTime(System.currentTimeMillis(), DateTimeZone.getDefault()).hourOfDay
+    val currHour = calendar.get(Calendar.HOUR_OF_DAY)
     var dateTime = Formatter.getLocalDateTimeFromCode(dayCode).withHourOfDay(currHour)
     var newDateTime = dateTime.plusHours(1).withMinuteOfHour(0).withSecondOfMinute(0).withMillisOfSecond(0)
 
