@@ -19,11 +19,11 @@ class FilterEventTypesDialog(val activity: SimpleActivity, val callback: () -> U
             view.filter_event_types_list.adapter = FilterEventTypeAdapter(activity, it, displayEventTypes)
 
             dialog = AlertDialog.Builder(activity)
-                    .setPositiveButton(R.string.ok) { dialogInterface, i -> confirmEventTypes() }
-                    .setNegativeButton(R.string.cancel, null)
-                    .create().apply {
-                        activity.setupDialogStuff(view, this, R.string.filter_events_by_type)
-                    }
+                .setPositiveButton(R.string.ok) { dialogInterface, i -> confirmEventTypes() }
+                .setNegativeButton(R.string.cancel, null)
+                .create().apply {
+                    activity.setupDialogStuff(view, this)
+                }
         }
     }
 

@@ -86,14 +86,14 @@
     <string name="birthdays">Compleanni</string>
     <string name="add_birthdays">Aggiungi compleanni dai contatti</string>
     <string name="no_birthdays">Nessun compleanno trovato</string>
-    <string name="no_new_birthdays">No new birthdays have been found</string>
+    <string name="no_new_birthdays">Nessun nuovo compleanno trovato</string>
     <string name="birthdays_added">Compleanni aggiunti con successo</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Anniversari</string>
     <string name="add_anniversaries">Aggiungi anniversari dai contatti</string>
     <string name="no_anniversaries">Nessun anniversario trovato</string>
-    <string name="no_new_anniversaries">No new anniversaries have been found</string>
+    <string name="no_new_anniversaries">Nessun nuovo anniversario trovato</string>
     <string name="anniversaries_added">Anniversari aggiunti con successo</string>
 
     <!-- Event Reminders -->
@@ -111,7 +111,7 @@
     <string name="invited">Invitato</string>
 
     <!-- Time zones -->
-    <string name="enter_a_country">Enter a country or time zone</string>
+    <string name="enter_a_country">Inserisci un paese o un fuso orario</string>
 
     <!-- Export / Import -->
     <string name="import_events">Importa eventi</string>
@@ -158,6 +158,7 @@
     <string name="manage_event_types">Gestisci i tipi di evento</string>
     <string name="start_day_at">Il giorno inizia alle</string>
     <string name="end_day_at">Il giorno finisce alle</string>
+    <string name="allow_customizing_day_count">Allow customizing day count</string>
     <string name="week_numbers">Mostra numero settimane</string>
     <string name="vibrate">Vibra per le notifiche di promemoria</string>
     <string name="reminder_sound">Suoneria promemoria</string>
@@ -191,8 +192,8 @@
     <string name="default_duration">Durata predefinita</string>
     <string name="last_used_one">L\'ultimo utilizzato</string>
     <string name="other_time">Altro periodo</string>
-    <string name="highlight_weekends">Highlight weekends on some views</string>
-    <string name="allow_changing_time_zones">Allow changing event time zones</string>
+    <string name="highlight_weekends">Evidenzia il fine-settimana in alcune viste</string>
+    <string name="allow_changing_time_zones">Abilita il cambio del fuso orario negli eventi</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -207,9 +208,9 @@
     <string name="synchronization_completed">Sincronizzazione completata</string>
     <string name="select_a_different_caldav_color">Seleziona un colore differente (potrebbe essere applicato solamente in locale)</string>
     <string name="insufficient_permissions">Non si hanno i permessi per scrivere nel calendario selezionato</string>
-    <string name="caldav_event_not_found">Event not found. Please enable CalDAV sync for the appropriate calendar in the app settings.</string>
-    <string name="no_synchronized_calendars">No synchronizable calendars have been found</string>
-
+    <string name="caldav_event_not_found">Evento non trovato. Abilita la sincronizzazione CalDAV per il relativo calendario nelle impostazioni dell\'app.</string>
+    <string name="no_synchronized_calendars">Non é stato trovato nessun calendario sincronizzabile</string>
+ 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">Lunedì</string>
@@ -240,9 +241,8 @@
     <string name="faq_3_title">Visualizzo i promemoria, ma non sento l\'audio. Cosa posso fare?</string>
     <string name="faq_3_text">Non solo visualizzare l\'attuale promemoria, ma anche riprodurre l\'audio è un lavoro prettamente del sistema. Se non si sente alcun suono, provare ad andare nelle impostazioni dell\'applicazione,
         premere l\'opzione \"Canale audio utilizzato per il promemoria\" e cambia il canale. Se ancora non funziona, controllare le impostazioni dell\'audio, in particolare se il canale è stato mutato.</string>
-    <string name="faq_4_title">Does the app support time zones?</string>
-    <string name="faq_4_text">Yes, it does. By default all events are created in your current time zone. If you want to change an events\' time zone,
-        you will first have to enable the time zone picker at the app settings, then change it at the Event Details screen. It is disabled by default as most people won\'t need it.</string>
+    <string name="faq_4_title">L\'app supporta diversi fusi orari?</string>
+    <string name="faq_4_text">Si. Solitamente tutti gli eventi vengono create nel tuo fuso orario. Se vuoi cambiare il fuso orario di un specifico evento, devi abilitare la funzionalitá nelle impostazioni dell\'app, successivamente potrai cambiare il fuso nella schermata di dettaglio dell\'evento. La funzionalitá é disabilitata inizialmente siccome la maggior parte degli utenti non ne hanno bisogno.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->

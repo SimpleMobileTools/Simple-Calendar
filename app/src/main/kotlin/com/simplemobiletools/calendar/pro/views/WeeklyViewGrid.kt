@@ -6,12 +6,13 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
 import com.simplemobiletools.calendar.pro.R
+import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.getWeeklyViewItemHeight
 
 class WeeklyViewGrid(context: Context, attrs: AttributeSet, defStyle: Int) : View(context, attrs, defStyle) {
     private val ROWS_CNT = 24
-    private val COLS_CNT = 7
     private var paint = Paint(Paint.ANTI_ALIAS_FLAG)
+    var daysCount = context.config.weeklyViewDays
 
     constructor(context: Context, attrs: AttributeSet) : this(context, attrs, 0)
 
@@ -27,8 +28,8 @@ class WeeklyViewGrid(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
             canvas.drawLine(0f, y, width.toFloat(), y, paint)
         }
 
-        val rowWidth = width / COLS_CNT.toFloat()
-        for (i in 0 until COLS_CNT) {
+        val rowWidth = width / daysCount.toFloat()
+        for (i in 0 until daysCount) {
             val x = rowWidth * i.toFloat()
             canvas.drawLine(x, 0f, x, height.toFloat(), paint)
         }

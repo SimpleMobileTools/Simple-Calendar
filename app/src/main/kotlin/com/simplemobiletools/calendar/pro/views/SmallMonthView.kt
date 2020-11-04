@@ -22,6 +22,7 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
     private var textColor = 0
     private var days = 31
     private var isLandscape = false
+    private var isPrintVersion = false
     private var mEvents: ArrayList<DayYearly>? = null
 
     var firstDay = 0
@@ -41,9 +42,9 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
 
     init {
         val attributes = context.theme.obtainStyledAttributes(
-                attrs,
-                R.styleable.SmallMonthView,
-                0, 0)
+            attrs,
+            R.styleable.SmallMonthView,
+            0, 0)
 
         try {
             days = attributes.getInt(R.styleable.SmallMonthView_days, 31)
@@ -79,11 +80,11 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
         for (y in 1..6) {
             for (x in 1..7) {
                 if (curId in 1..days) {
-                    canvas.drawText(curId.toString(), x * dayWidth, y * dayWidth, getPaint(curId))
+                    canvas.drawText(curId.toString(), x * dayWidth - (dayWidth / 4), y * dayWidth, getPaint(curId))
 
-                    if (curId == todaysId) {
+                    if (curId == todaysId && !isPrintVersion) {
                         val dividerConstant = if (isLandscape) 6 else 4
-                        canvas.drawCircle(x * dayWidth - dayWidth / dividerConstant, y * dayWidth - dayWidth / dividerConstant, dayWidth * 0.41f, todayCirclePaint)
+                        canvas.drawCircle(x * dayWidth - dayWidth / 2, y * dayWidth - dayWidth / dividerConstant, dayWidth * 0.41f, todayCirclePaint)
                     }
                 }
                 curId++
@@ -100,5 +101,17 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
         }
 
         return paint
+    }
+
+    fun togglePrintMode() {
+        isPrintVersion = !isPrintVersion
+        textColor = if (isPrintVersion) {
+            resources.getColor(R.color.theme_light_text_color)
+        } else {
+            context.config.textColor.adjustAlpha(MEDIUM_ALPHA)
+        }
+
+        paint.color = textColor
+        invalidate()
     }
 }

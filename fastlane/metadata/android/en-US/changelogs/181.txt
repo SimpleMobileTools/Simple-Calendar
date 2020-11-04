@@ -1,0 +1,3 @@
+ * Open the daily view at clicking on a day at the monthly widget
+ * Go back to the search results at opening an event and using Back
+ * Added some translation, stability and UX improvements

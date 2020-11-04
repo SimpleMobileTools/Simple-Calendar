@@ -158,6 +158,7 @@
     <string name="manage_event_types">Upravljanje vrstama događaja</string>
     <string name="start_day_at">Započni dan u</string>
     <string name="end_day_at">Završi dan u</string>
+    <string name="allow_customizing_day_count">Allow customizing day count</string>
     <string name="week_numbers">Pokaži tjedne brojeve</string>
     <string name="vibrate">Vibrirajte na obavijesti podsjetnika</string>
     <string name="reminder_sound">Zvuk podsjetnika</string>

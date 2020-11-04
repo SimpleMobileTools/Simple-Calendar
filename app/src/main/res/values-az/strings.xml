@@ -158,6 +158,7 @@
     <string name="manage_event_types">Hadisə tiplərini idarə et</string>
     <string name="start_day_at">Günə başla</string>
     <string name="end_day_at">Günü bitir</string>
+    <string name="allow_customizing_day_count">Allow customizing day count</string>
     <string name="week_numbers">Həftə günlərini göstər</string>
     <string name="vibrate">Xatırladıcı bildirişində vibrasiya et</string>
     <string name="reminder_sound">Xatırladıcı səsi</string>

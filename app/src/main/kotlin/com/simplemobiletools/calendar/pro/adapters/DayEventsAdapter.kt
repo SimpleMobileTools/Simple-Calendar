@@ -30,6 +30,7 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
     private val allDayString = resources.getString(R.string.all_day)
     private val replaceDescriptionWithLocation = activity.config.replaceDescription
     private val dimPastEvents = activity.config.dimPastEvents
+    private var isPrintVersion = false
 
     init {
         setupDragListener(true)
@@ -96,6 +97,16 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
         }
     }
 
+    fun togglePrintMode() {
+        isPrintVersion = !isPrintVersion
+        textColor = if (isPrintVersion) {
+            resources.getColor(R.color.theme_light_text_color)
+        } else {
+            baseConfig.textColor
+        }
+        notifyDataSetChanged()
+    }
+
     private fun setupView(view: View, event: Event) {
         view.apply {
             event_item_frame.isSelected = selectedKeys.contains(event.id?.toInt())
@@ -124,7 +135,7 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
             }
 
             var newTextColor = textColor
-            if (dimPastEvents && event.isPastEvent) {
+            if (dimPastEvents && event.isPastEvent && !isPrintVersion) {
                 newTextColor = newTextColor.adjustAlpha(LOW_ALPHA)
             }
 

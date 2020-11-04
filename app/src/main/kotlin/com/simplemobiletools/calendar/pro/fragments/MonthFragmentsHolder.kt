@@ -115,11 +115,11 @@ class MonthFragmentsHolder : MyFragmentHolder(), NavigationListener {
         datePicker.init(dateTime.year, dateTime.monthOfYear - 1, 1, null)
 
         AlertDialog.Builder(context!!)
-                .setNegativeButton(R.string.cancel, null)
-                .setPositiveButton(R.string.ok) { dialog, which -> datePicked(dateTime, datePicker) }
-                .create().apply {
-                    activity?.setupDialogStuff(view, this)
-                }
+            .setNegativeButton(R.string.cancel, null)
+            .setPositiveButton(R.string.ok) { dialog, which -> datePicked(dateTime, datePicker) }
+            .create().apply {
+                activity?.setupDialogStuff(view, this)
+            }
     }
 
     private fun datePicked(dateTime: DateTime, datePicker: DatePicker) {
@@ -140,4 +140,8 @@ class MonthFragmentsHolder : MyFragmentHolder(), NavigationListener {
     }
 
     override fun getNewEventDayCode() = if (shouldGoToTodayBeVisible()) currentDayCode else todayDayCode
+
+    override fun printView() {
+        (viewPager?.adapter as? MyMonthPagerAdapter)?.printCurrentView(viewPager?.currentItem ?: 0)
+    }
 }

@@ -1,48 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/week_view_main_holder"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/week_view_holder"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:fillViewport="true">
+    android:orientation="horizontal">
 
-    <RelativeLayout
-        android:id="@+id/week_view_holder"
+    <ImageView
+        android:id="@+id/week_view_hours_divider"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_alignEnd="@+id/week_view_hours_scrollview"
+        android:background="@drawable/stroke_bottom_right"
+        android:importantForAccessibility="no" />
 
-        <ImageView
-            android:id="@+id/week_view_hours_divider"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/week_view_hours_scrollview"
-            android:background="@drawable/stroke_bottom_right"
-            android:importantForAccessibility="no"/>
+    <com.simplemobiletools.calendar.pro.views.MyScrollView
+        android:id="@+id/week_view_hours_scrollview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/week_view_seekbar"
+        android:layout_below="@+id/week_view_hours_divider"
+        android:background="@drawable/stroke_right"
+        android:overScrollMode="never"
+        android:paddingTop="@dimen/medium_margin"
+        android:scrollbars="none">
 
-        <com.simplemobiletools.calendar.pro.views.MyScrollView
-            android:id="@+id/week_view_hours_scrollview"
+        <LinearLayout
+            android:id="@+id/week_view_hours_holder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/week_view_hours_divider"
-            android:background="@drawable/stroke_right"
-            android:overScrollMode="never"
-            android:paddingTop="@dimen/medium_margin"
-            android:scrollbars="none">
+            android:orientation="vertical" />
 
-            <LinearLayout
-                android:id="@+id/week_view_hours_holder"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"/>
+    </com.simplemobiletools.calendar.pro.views.MyScrollView>
 
-        </com.simplemobiletools.calendar.pro.views.MyScrollView>
+    <com.simplemobiletools.commons.views.MyViewPager
+        android:id="@+id/week_view_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/week_view_days_count_divider"
+        android:layout_toEndOf="@+id/week_view_hours_scrollview" />
 
-        <com.simplemobiletools.commons.views.MyViewPager
-            android:id="@+id/week_view_view_pager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_toEndOf="@+id/week_view_hours_scrollview"/>
+    <include
+        android:id="@+id/week_view_days_count_divider"
+        layout="@layout/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_above="@+id/week_view_seekbar" />
 
-    </RelativeLayout>
-</LinearLayout>
+    <com.simplemobiletools.commons.views.MySeekBar
+        android:id="@+id/week_view_seekbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="@dimen/activity_margin"
+        android:layout_toStartOf="@+id/week_view_days_count"
+        android:paddingTop="@dimen/normal_margin"
+        android:paddingBottom="@dimen/normal_margin" />
+
+    <com.simplemobiletools.commons.views.MyTextView
+        android:id="@+id/week_view_days_count"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignTop="@+id/week_view_seekbar"
+        android:layout_alignBottom="@+id/week_view_seekbar"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="@dimen/activity_margin"
+        android:layout_marginEnd="@dimen/activity_margin"
+        android:gravity="center_vertical"
+        tools:text="7 days" />
+
+</RelativeLayout>

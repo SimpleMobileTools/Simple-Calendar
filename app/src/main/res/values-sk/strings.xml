@@ -158,6 +158,7 @@
     <string name="manage_event_types">Spravovať typy udalostí</string>
     <string name="start_day_at">Začať deň o</string>
     <string name="end_day_at">Ukončiť deň o</string>
+    <string name="allow_customizing_day_count">Povoliť zmenu počtu dní</string>
     <string name="week_numbers">Zobraziť čísla týždňov</string>
     <string name="vibrate">Vibrovať pri pripomienke</string>
     <string name="reminder_sound">Zvučka pripomienky</string>

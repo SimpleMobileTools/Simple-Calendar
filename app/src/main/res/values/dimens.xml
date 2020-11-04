@@ -9,6 +9,7 @@
     <dimen name="weekly_view_row_height">60dp</dimen>
     <dimen name="weekly_view_minimal_event_height">10dp</dimen>
     <dimen name="weekly_view_now_height">10dp</dimen>
+    <dimen name="weekly_view_min_day_label">60dp</dimen>
 
     <dimen name="min_widget_width">250dp</dimen>
     <dimen name="min_widget_height">250dp</dimen>

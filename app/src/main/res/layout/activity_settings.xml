@@ -186,22 +186,26 @@
 
             <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/settings_reminder_sound_label"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_toStartOf="@+id/settings_reminder_sound"
                 android:paddingStart="@dimen/medium_margin"
                 android:paddingEnd="@dimen/medium_margin"
                 android:text="@string/reminder_sound" />
 
             <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/settings_reminder_sound"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
+                android:layout_marginStart="@dimen/activity_margin"
                 android:layout_marginEnd="@dimen/small_margin"
+                android:layout_toEndOf="@+id/settings_reminder_sound_label"
                 android:background="@null"
-                android:clickable="false" />
+                android:clickable="false"
+                android:gravity="end"
+                android:maxLines="3"
+                tools:text="None" />
 
         </RelativeLayout>
 

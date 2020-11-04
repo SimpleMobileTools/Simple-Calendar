@@ -2,6 +2,7 @@ package com.simplemobiletools.calendar.pro.fragments
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,8 @@ import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.adapters.DayEventsAdapter
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.eventsHelper
+import com.simplemobiletools.calendar.pro.extensions.getViewBitmap
+import com.simplemobiletools.calendar.pro.extensions.printBitmap
 import com.simplemobiletools.calendar.pro.helpers.DAY_CODE
 import com.simplemobiletools.calendar.pro.helpers.EVENT_ID
 import com.simplemobiletools.calendar.pro.helpers.EVENT_OCCURRENCE_TS
@@ -21,6 +24,8 @@ import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.interfaces.NavigationListener
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.commons.extensions.applyColorFilter
+import com.simplemobiletools.commons.extensions.beGone
+import com.simplemobiletools.commons.extensions.beVisible
 import kotlinx.android.synthetic.main.fragment_day.view.*
 import kotlinx.android.synthetic.main.top_navigation.view.*
 import java.util.*
@@ -101,7 +106,7 @@ class DayFragment : Fragment() {
         lastHash = newHash
 
         val replaceDescription = context!!.config.replaceDescription
-        val sorted = ArrayList<Event>(events.sortedWith(compareBy({ !it.getIsAllDay() }, { it.startTS }, { it.endTS }, { it.title }, {
+        val sorted = ArrayList(events.sortedWith(compareBy({ !it.getIsAllDay() }, { it.startTS }, { it.endTS }, { it.title }, {
             if (replaceDescription) it.location else it.description
         })))
 
@@ -126,6 +131,26 @@ class DayFragment : Fragment() {
             putExtra(EVENT_ID, event.id)
             putExtra(EVENT_OCCURRENCE_TS, event.startTS)
             startActivity(this)
+        }
+    }
+
+    fun printCurrentView() {
+        mHolder.apply {
+            top_left_arrow.beGone()
+            top_right_arrow.beGone()
+            top_value.setTextColor(resources.getColor(R.color.theme_light_text_color))
+            (day_events.adapter as? DayEventsAdapter)?.togglePrintMode()
+
+            Handler().postDelayed({
+                context!!.printBitmap(day_holder.getViewBitmap())
+
+                Handler().postDelayed({
+                    top_left_arrow.beVisible()
+                    top_right_arrow.beVisible()
+                    top_value.setTextColor(context!!.config.textColor)
+                    (day_events.adapter as? DayEventsAdapter)?.togglePrintMode()
+                }, 1000)
+            }, 1000)
         }
     }
 }

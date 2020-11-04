@@ -158,6 +158,7 @@
     <string name="manage_event_types">Керувати типами подій</string>
     <string name="start_day_at">Огляд тижня починати</string>
     <string name="end_day_at">Огляд тижня завершувати</string>
+    <string name="allow_customizing_day_count">Allow customizing day count</string>
     <string name="week_numbers">Нумерувати тижні</string>
     <string name="vibrate">Вібрувати при настанні події</string>
     <string name="reminder_sound">Мелодія нагадування</string>

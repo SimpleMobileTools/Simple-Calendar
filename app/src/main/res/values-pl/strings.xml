@@ -158,6 +158,7 @@
     <string name="manage_event_types">Zarządzaj typami wydarzeń</string>
     <string name="start_day_at">Początek dnia</string>
     <string name="end_day_at">Koniec dnia</string>
+    <string name="allow_customizing_day_count">Allow customizing day count</string>
     <string name="week_numbers">Pokazuj numery tygodnia</string>
     <string name="vibrate">Powiadamiaj wibracjami o wydarzeniu</string>
     <string name="reminder_sound">Dźwięk powiadomień</string>

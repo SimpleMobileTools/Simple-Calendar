@@ -9,8 +9,8 @@ import android.widget.Filter
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.models.Attendee
-import com.simplemobiletools.commons.extensions.getContactLetterIcon
 import com.simplemobiletools.commons.extensions.normalizeString
+import com.simplemobiletools.commons.helpers.SimpleContactsHelper
 import kotlinx.android.synthetic.main.item_autocomplete_email_name.view.*
 
 class AutoCompleteTextViewAdapter(val activity: SimpleActivity, val contacts: ArrayList<Attendee>) : ArrayAdapter<Attendee>(activity, 0, contacts) {
@@ -27,10 +27,10 @@ class AutoCompleteTextViewAdapter(val activity: SimpleActivity, val contacts: Ar
         val nameToUse = when {
             contact.name.isNotEmpty() -> contact.name
             contact.email.isNotEmpty() -> contact.email
-            else -> "S"
+            else -> "A"
         }
 
-        val placeholder = BitmapDrawable(activity.resources, context.getContactLetterIcon(nameToUse))
+        val placeholder = BitmapDrawable(activity.resources, SimpleContactsHelper(context).getContactLetterIcon(nameToUse))
         listItem!!.apply {
             tag = contact.name.isNotEmpty()
             item_autocomplete_name?.text = contact.name

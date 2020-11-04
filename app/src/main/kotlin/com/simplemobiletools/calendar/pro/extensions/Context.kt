@@ -8,7 +8,9 @@ import android.content.ComponentName
 import android.content.ContentResolver
 import android.content.Context
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.content.res.Resources
+import android.graphics.Bitmap
 import android.media.AudioAttributes
 import android.net.Uri
 import android.os.Bundle
@@ -20,6 +22,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.app.AlarmManagerCompat
 import androidx.core.app.NotificationCompat
+import androidx.print.PrintHelper
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.EventActivity
 import com.simplemobiletools.calendar.pro.activities.SnoozeReminderActivity
@@ -34,8 +37,6 @@ import com.simplemobiletools.calendar.pro.receivers.NotificationReceiver
 import com.simplemobiletools.calendar.pro.services.SnoozeService
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
-import org.joda.time.DateTime
-import org.joda.time.DateTimeZone
 import org.joda.time.LocalDate
 import java.util.*
 
@@ -339,20 +340,23 @@ fun Context.launchNewEventIntent(dayCode: String = Formatter.getTodayCode()) {
 }
 
 fun Context.getNewEventTimestampFromCode(dayCode: String): Long {
+    val calendar = Calendar.getInstance()
     val defaultStartTime = config.defaultStartTime
-    val currHour = DateTime(System.currentTimeMillis(), DateTimeZone.getDefault()).hourOfDay
+    val currHour = calendar.get(Calendar.HOUR_OF_DAY)
     var dateTime = Formatter.getLocalDateTimeFromCode(dayCode).withHourOfDay(currHour)
     var newDateTime = dateTime.plusHours(1).withMinuteOfHour(0).withSecondOfMinute(0).withMillisOfSecond(0)
 
-    if (defaultStartTime != -1) {
+    return if (defaultStartTime == -1) {
+        newDateTime.seconds()
+    } else {
         val hours = defaultStartTime / 60
         val minutes = defaultStartTime % 60
         dateTime = Formatter.getLocalDateTimeFromCode(dayCode).withHourOfDay(hours).withMinuteOfHour(minutes)
         newDateTime = dateTime
-    }
 
-    // make sure the date doesn't change
-    return newDateTime.withDate(dateTime.year, dateTime.monthOfYear, dateTime.dayOfMonth).seconds()
+        // make sure the date doesn't change
+        newDateTime.withDate(dateTime.year, dateTime.monthOfYear, dateTime.dayOfMonth).seconds()
+    }
 }
 
 fun Context.getSyncedCalDAVCalendars() = calDAVHelper.getCalDAVCalendars(config.caldavSyncedCalendarIds, false)
@@ -541,4 +545,11 @@ fun Context.getWeeklyViewItemHeight(): Float {
     val defaultHeight = resources.getDimension(R.dimen.weekly_view_row_height)
     val multiplier = config.weeklyViewItemHeightMultiplier
     return defaultHeight * multiplier
+}
+
+fun Context.printBitmap(bitmap: Bitmap) {
+    val printHelper = PrintHelper(this)
+    printHelper.scaleMode = PrintHelper.SCALE_MODE_FIT
+    printHelper.orientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+    printHelper.printBitmap(getString(R.string.app_name), bitmap)
 }

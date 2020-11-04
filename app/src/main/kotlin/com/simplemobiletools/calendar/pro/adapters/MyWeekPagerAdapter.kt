@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 import com.simplemobiletools.calendar.pro.fragments.WeekFragment
 import com.simplemobiletools.calendar.pro.helpers.WEEK_START_TIMESTAMP
 import com.simplemobiletools.calendar.pro.interfaces.WeekFragmentListener
+import com.simplemobiletools.commons.helpers.DAY_SECONDS
 
 class MyWeekPagerAdapter(fm: FragmentManager, private val mWeekTimestamps: List<Long>, private val mListener: WeekFragmentListener) : FragmentStatePagerAdapter(fm) {
     private val mFragments = SparseArray<WeekFragment>()
@@ -41,5 +42,18 @@ class MyWeekPagerAdapter(fm: FragmentManager, private val mWeekTimestamps: List<
     fun updateNotVisibleScaleLevel(pos: Int) {
         mFragments[pos - 1]?.updateNotVisibleViewScaleLevel()
         mFragments[pos + 1]?.updateNotVisibleViewScaleLevel()
+    }
+
+    fun updateVisibleDaysCount(pos: Int, count: Int, currentWeekTimestamp: Long) {
+        mFragments[pos - 1]?.updateWeekStartTimestamp(currentWeekTimestamp - count * DAY_SECONDS)
+        mFragments[pos + 1]?.updateWeekStartTimestamp(currentWeekTimestamp + count * DAY_SECONDS)
+
+        for (i in -1..1) {
+            mFragments[pos + i]?.updateVisibleDaysCount(count)
+        }
+    }
+
+    fun togglePrintMode(pos: Int) {
+        mFragments[pos].togglePrintMode()
     }
 }

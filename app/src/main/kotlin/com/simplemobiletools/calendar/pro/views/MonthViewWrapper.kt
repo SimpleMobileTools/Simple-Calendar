@@ -96,4 +96,8 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
             addView(this)
         }
     }
+
+    fun togglePrintMode() {
+        monthView.togglePrintMode()
+    }
 }

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.simplemobiletools.commons.views.MyRecyclerView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.simplemobiletools.commons.views.MyRecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/filter_event_types_list"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clipToPadding="false"
     android:overScrollMode="never"
-    android:paddingTop="@dimen/medium_margin"
-    app:layoutManager="com.simplemobiletools.commons.views.MyLinearLayoutManager"/>
+    android:paddingTop="@dimen/activity_margin"
+    app:layoutManager="com.simplemobiletools.commons.views.MyLinearLayoutManager" />

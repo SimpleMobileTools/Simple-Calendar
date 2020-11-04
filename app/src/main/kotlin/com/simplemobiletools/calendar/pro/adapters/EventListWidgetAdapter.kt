@@ -48,7 +48,10 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
             setupListEvent(remoteView, event)
         } else {
             remoteView = RemoteViews(context.packageName, R.layout.event_list_section_widget)
-            setupListSection(remoteView, events[position] as ListSection)
+            val section = events.getOrNull(position) as? ListSection
+            if (section != null) {
+                setupListSection(remoteView, section)
+            }
         }
 
         return remoteView

@@ -16,7 +16,7 @@
     <!-- Widget titles -->
     <string name="widget_monthly">Månedlig kalender</string>
     <string name="widget_list">Begivenhedsliste</string>
-    <string name="widget_todays_date">Calendar today\'s date</string>
+    <string name="widget_todays_date">Dags dato-kalender</string>
 
     <!-- Event -->
     <string name="event">Begivenhed</string>
@@ -158,6 +158,7 @@
     <string name="manage_event_types">Håndter begivenhedstyper</string>
     <string name="start_day_at">Start dagen kl.</string>
     <string name="end_day_at">Slut dagen kl.</string>
+    <string name="allow_customizing_day_count">Allow customizing day count</string>
     <string name="week_numbers">Vis ugenumre</string>
     <string name="vibrate">Vibrer under påmindelser</string>
     <string name="reminder_sound">Lyd til påmindelser</string>

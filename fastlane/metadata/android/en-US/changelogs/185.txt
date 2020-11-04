@@ -1,0 +1,2 @@
+ * Added Print support
+ * Added some stability and translation improvements

@@ -3,10 +3,12 @@ package com.simplemobiletools.calendar.pro.fragments
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.EventActivity
 import com.simplemobiletools.calendar.pro.activities.MainActivity
@@ -41,6 +43,7 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
     private var minFetchedTS = 0L
     private var maxFetchedTS = 0L
     private var wereInitialEventsAdded = false
+    private var hasBeenScrolled = false
     private var bottomItemAtRefresh: ListItem? = null
 
     private var use24HourFormat = false
@@ -133,6 +136,16 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
                         fetchNextPeriod()
                     }
                 }
+
+                mView.calendar_events_list.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                    override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                        super.onScrollStateChanged(recyclerView, newState)
+                        if (!hasBeenScrolled) {
+                            hasBeenScrolled = true
+                            activity?.invalidateOptionsMenu()
+                        }
+                    }
+                })
             } else {
                 (currAdapter as EventListAdapter).updateListItems(listItems)
                 if (updateStatus == UPDATE_TOP) {
@@ -194,6 +207,10 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
         val firstNonPastSectionIndex = listItems.indexOfFirst { it is ListSection && !it.isPastSection }
         if (firstNonPastSectionIndex != -1) {
             (mView.calendar_events_list.layoutManager as LinearLayoutManager).scrollToPositionWithOffset(firstNonPastSectionIndex, 0)
+            mView.calendar_events_list.onGlobalLayout {
+                hasBeenScrolled = false
+                activity?.invalidateOptionsMenu()
+            }
         }
     }
 
@@ -203,11 +220,29 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
         checkEvents()
     }
 
-    override fun shouldGoToTodayBeVisible() = false
+    override fun shouldGoToTodayBeVisible() = hasBeenScrolled
 
     override fun updateActionBarTitle() {
         (activity as? MainActivity)?.updateActionBarTitle(getString(R.string.app_launcher_name))
     }
 
     override fun getNewEventDayCode() = Formatter.getTodayCode()
+
+    override fun printView() {
+        mView.apply {
+            if (calendar_events_list.isGone()) {
+                context.toast(R.string.no_items_found)
+                return@apply
+            }
+
+            (calendar_events_list.adapter as? EventListAdapter)?.togglePrintMode()
+            Handler().postDelayed({
+                context!!.printBitmap(calendar_events_list.getViewBitmap())
+
+                Handler().postDelayed({
+                    (calendar_events_list.adapter as? EventListAdapter)?.togglePrintMode()
+                }, 1000)
+            }, 1000)
+        }
+    }
 }

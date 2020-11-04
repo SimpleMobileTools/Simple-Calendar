@@ -30,4 +30,8 @@ class MyYearPagerAdapter(fm: FragmentManager, val mYears: List<Int>) : FragmentS
             mFragments[pos + i]?.updateCalendar()
         }
     }
+
+    fun printCurrentView(pos: Int) {
+        mFragments[pos].printCurrentView()
+    }
 }

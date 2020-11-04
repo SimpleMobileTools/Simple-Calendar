@@ -1,6 +1,80 @@
 Changelog
 ==========
 
+Version 6.11.2 *(2020-11-03)*
+----------------------------
+
+ * Fixed some weekly view related glitches
+ * Do not always show "Go to today" at the Event list view
+ * Added some other UX, translation and stability improvements
+
+Version 6.11.1 *(2020-10-28)*
+----------------------------
+
+ * Fixed a glitch with some misplaced events on the weekly view
+ * Allow importing birthdays and anniversaries of contacts privately stored in Simple Contacts Pro
+
+Version 6.11.0 *(2020-10-25)*
+----------------------------
+
+ * Added Print support
+ * Added some stability and translation improvements
+
+Version 6.10.3 *(2020-09-28)*
+----------------------------
+
+ * Fixed some glitches at importing events from .ics files
+ * Added a few UX improvements here and there
+
+Version 6.10.2 *(2020-09-19)*
+----------------------------
+
+ * Adding a crashfix
+
+Version 6.10.1 *(2020-09-19)*
+----------------------------
+
+ * Adding some translation and UX improvements
+
+Version 6.10.0 *(2020-08-08)*
+----------------------------
+
+ * Open the daily view at clicking on a day at the monthly widget
+ * Go back to the search results at opening an event and using Back
+ * Added some translation, stability and UX improvements
+
+Version 6.9.7 *(2020-07-06)*
+----------------------------
+
+ * Fixed some weekly view related glitches
+ * Added some stability and translation improvements
+
+Version 6.9.6 *(2020-06-12)*
+----------------------------
+
+ * Fixing a glitch with zoomed out weekly view
+
+Version 6.9.5 *(2020-06-10)*
+----------------------------
+
+ * Allow changing the amount of days shown at the weekly view
+ * Show a Save / Discard prompt at leaving an edited event (by fnrngg)
+ * Some translation and stability improvements
+
+Version 6.9.4 *(2020-05-25)*
+----------------------------
+
+ * Allow landscape orientation on any device
+ * Use the nicer new app icon on lower Android versions
+ * Some UI, stability and translation improvements
+
+Version 6.9.3 *(2020-05-05)*
+----------------------------
+
+ * Added a 1x1 widget showing the current date
+ * Made all widget corners round to make them nicer
+ * Added some translation and other smaller improvements here and there
+
 Version 6.9.2 *(2020-04-17)*
 ----------------------------
 

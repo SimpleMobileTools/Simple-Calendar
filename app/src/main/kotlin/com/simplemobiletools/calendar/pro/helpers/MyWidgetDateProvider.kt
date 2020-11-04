@@ -19,7 +19,7 @@ class MyWidgetDateProvider : AppWidgetProvider() {
 
     override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
         appWidgetManager.getAppWidgetIds(getComponentName(context)).forEach {
-            val views = RemoteViews(context.packageName, R.layout.widget_date).apply {
+            RemoteViews(context.packageName, R.layout.widget_date).apply {
                 applyColorFilter(R.id.widget_date_background, context.config.widgetBgColor)
                 setText(R.id.widget_date_label, Formatter.getTodayDayNumber())
                 setText(R.id.widget_month_label, Formatter.getCurrentMonthShort())

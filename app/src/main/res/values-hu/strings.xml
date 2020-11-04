@@ -158,6 +158,7 @@
     <string name="manage_event_types">Manage event types</string>
     <string name="start_day_at">Start day at</string>
     <string name="end_day_at">End day at</string>
+    <string name="allow_customizing_day_count">Allow customizing day count</string>
     <string name="week_numbers">Hetek sorszámának mutatása</string>
     <string name="vibrate">Emlékeztetőnél rezgés</string>
     <string name="reminder_sound">Reminder sound</string>

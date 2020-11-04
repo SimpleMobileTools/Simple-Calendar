@@ -11,6 +11,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.viewpager.widget.ViewPager
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.MainActivity
+import com.simplemobiletools.calendar.pro.adapters.MyMonthPagerAdapter
 import com.simplemobiletools.calendar.pro.adapters.MyYearPagerAdapter
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.helpers.Formatter
@@ -126,4 +127,8 @@ class YearFragmentsHolder : MyFragmentHolder() {
     }
 
     override fun getNewEventDayCode() = Formatter.getTodayCode()
+
+    override fun printView() {
+        (viewPager?.adapter as? MyYearPagerAdapter)?.printCurrentView(viewPager?.currentItem ?: 0)
+    }
 }

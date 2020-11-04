@@ -162,6 +162,7 @@
     <string name="manage_event_types">ইভেন্ট টাইপ ম্যানেজ করুন</string>
     <string name="start_day_at">দিনের শুরু</string>
     <string name="end_day_at">দিনের শেষ</string>
+    <string name="allow_customizing_day_count">Allow customizing day count</string>
     <string name="week_numbers">সপ্তাহের সংখ্যাগুলি দেখান</string>
     <string name="vibrate">রিমাইন্ডার নোটিফিকেশনে ভাইব্রেট করো</string>
     <string name="reminder_sound">রিমাইন্ডারের শব্দ</string>

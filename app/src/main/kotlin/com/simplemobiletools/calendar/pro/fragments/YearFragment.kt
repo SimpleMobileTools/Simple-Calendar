@@ -1,6 +1,5 @@
 package com.simplemobiletools.calendar.pro.fragments
 
-import android.content.res.Resources
 import android.os.Bundle
 import android.util.SparseArray
 import android.view.LayoutInflater
@@ -11,6 +10,8 @@ import androidx.fragment.app.Fragment
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.MainActivity
 import com.simplemobiletools.calendar.pro.extensions.config
+import com.simplemobiletools.calendar.pro.extensions.getViewBitmap
+import com.simplemobiletools.calendar.pro.extensions.printBitmap
 import com.simplemobiletools.calendar.pro.helpers.YEAR_LABEL
 import com.simplemobiletools.calendar.pro.helpers.YearlyCalendarImpl
 import com.simplemobiletools.calendar.pro.interfaces.YearlyCalendar
@@ -25,6 +26,7 @@ import java.util.*
 class YearFragment : Fragment(), YearlyCalendar {
     private var mYear = 0
     private var mSundayFirst = false
+    private var isPrintVersion = false
     private var lastHash = 0
     private var mCalendar: YearlyCalendarImpl? = null
 
@@ -37,7 +39,6 @@ class YearFragment : Fragment(), YearlyCalendar {
         setupMonths()
 
         mCalendar = YearlyCalendarImpl(this, context!!, mYear)
-
         return mView
     }
 
@@ -65,30 +66,40 @@ class YearFragment : Fragment(), YearlyCalendar {
         val days = dateTime.dayOfMonth().maximumValue
         mView.month_2.setDays(days)
 
-        val res = resources
-        markCurrentMonth(res)
+        val now = DateTime()
 
         for (i in 1..12) {
-            val monthView = mView.findViewById<SmallMonthView>(res.getIdentifier("month_" + i, "id", context!!.packageName))
+            val monthView = mView.findViewById<SmallMonthView>(resources.getIdentifier("month_$i", "id", context!!.packageName))
             var dayOfWeek = dateTime.withMonthOfYear(i).dayOfWeek().get()
             if (!mSundayFirst) {
                 dayOfWeek--
             }
+
+            val monthLabel = mView.findViewById<TextView>(resources.getIdentifier("month_${i}_label", "id", context!!.packageName))
+            val curTextColor = when {
+                isPrintVersion -> resources.getColor(R.color.theme_light_text_color)
+                else -> context!!.config.textColor
+            }
+
+            monthLabel.setTextColor(curTextColor)
 
             monthView.firstDay = dayOfWeek
             monthView.setOnClickListener {
                 (activity as MainActivity).openMonthFromYearly(DateTime().withDate(mYear, i, 1))
             }
         }
+
+        if (!isPrintVersion) {
+            markCurrentMonth(now)
+        }
     }
 
-    private fun markCurrentMonth(res: Resources) {
-        val now = DateTime()
+    private fun markCurrentMonth(now: DateTime) {
         if (now.year == mYear) {
-            val monthLabel = mView.findViewById<TextView>(res.getIdentifier("month_${now.monthOfYear}_label", "id", context!!.packageName))
+            val monthLabel = mView.findViewById<TextView>(resources.getIdentifier("month_${now.monthOfYear}_label", "id", context!!.packageName))
             monthLabel.setTextColor(context!!.getAdjustedPrimaryColor())
 
-            val monthView = mView.findViewById<SmallMonthView>(res.getIdentifier("month_${now.monthOfYear}", "id", context!!.packageName))
+            val monthView = mView.findViewById<SmallMonthView>(resources.getIdentifier("month_${now.monthOfYear}", "id", context!!.packageName))
             monthView.todaysId = now.dayOfMonth
         }
     }
@@ -102,10 +113,28 @@ class YearFragment : Fragment(), YearlyCalendar {
         }
 
         lastHash = hashCode
-        val res = resources
         for (i in 1..12) {
-            val monthView = mView.findViewById<SmallMonthView>(res.getIdentifier("month_$i", "id", context!!.packageName))
+            val monthView = mView.findViewById<SmallMonthView>(resources.getIdentifier("month_$i", "id", context!!.packageName))
             monthView.setEvents(events.get(i))
+        }
+    }
+
+    fun printCurrentView() {
+        isPrintVersion = true
+        setupMonths()
+        toggleSmallMonthPrintModes()
+
+        context!!.printBitmap(mView.calendar_holder.getViewBitmap())
+
+        isPrintVersion = false
+        setupMonths()
+        toggleSmallMonthPrintModes()
+    }
+
+    private fun toggleSmallMonthPrintModes() {
+        for (i in 1..12) {
+            val monthView = mView.findViewById<SmallMonthView>(resources.getIdentifier("month_$i", "id", context!!.packageName))
+            monthView.togglePrintMode()
         }
     }
 }

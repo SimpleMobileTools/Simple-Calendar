@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/week_holder"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -22,7 +21,7 @@
             <com.simplemobiletools.calendar.pro.views.WeeklyViewGrid
                 android:id="@+id/week_horizontal_grid_holder"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
             <LinearLayout
                 android:id="@+id/week_events_columns_holder"
@@ -30,48 +29,6 @@
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:orientation="horizontal">
-
-                <RelativeLayout
-                    android:id="@+id/week_column_0"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"/>
-
-                <RelativeLayout
-                    android:id="@+id/week_column_1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"/>
-
-                <RelativeLayout
-                    android:id="@+id/week_column_2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"/>
-
-                <RelativeLayout
-                    android:id="@+id/week_column_3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"/>
-
-                <RelativeLayout
-                    android:id="@+id/week_column_4"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"/>
-
-                <RelativeLayout
-                    android:id="@+id/week_column_5"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"/>
-
-                <RelativeLayout
-                    android:id="@+id/week_column_6"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"/>
 
             </LinearLayout>
         </RelativeLayout>
@@ -91,72 +48,7 @@
             android:background="@drawable/stroke_bottom"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingBottom="@dimen/small_margin">
-
-            <com.simplemobiletools.commons.views.MyTextView
-                android:id="@+id/week_day_label_0"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:text="@string/monday_letter"
-                android:textSize="@dimen/normal_text_size"/>
-
-            <com.simplemobiletools.commons.views.MyTextView
-                android:id="@+id/week_day_label_1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:text="@string/tuesday_letter"
-                android:textSize="@dimen/normal_text_size"/>
-
-            <com.simplemobiletools.commons.views.MyTextView
-                android:id="@+id/week_day_label_2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:text="@string/wednesday_letter"
-                android:textSize="@dimen/normal_text_size"/>
-
-            <com.simplemobiletools.commons.views.MyTextView
-                android:id="@+id/week_day_label_3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:text="@string/thursday_letter"
-                android:textSize="@dimen/normal_text_size"/>
-
-            <com.simplemobiletools.commons.views.MyTextView
-                android:id="@+id/week_day_label_4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:text="@string/friday_letter"
-                android:textSize="@dimen/normal_text_size"/>
-
-            <com.simplemobiletools.commons.views.MyTextView
-                android:id="@+id/week_day_label_5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:text="@string/saturday_letter"
-                android:textSize="@dimen/normal_text_size"/>
-
-            <com.simplemobiletools.commons.views.MyTextView
-                android:id="@+id/week_day_label_6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:text="@string/sunday_letter"
-                android:textSize="@dimen/normal_text_size"/>
-
-        </LinearLayout>
+            android:paddingBottom="@dimen/small_margin" />
 
         <LinearLayout
             android:id="@+id/week_all_day_holder"

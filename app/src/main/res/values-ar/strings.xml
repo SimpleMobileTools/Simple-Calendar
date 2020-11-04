@@ -158,6 +158,7 @@
     <string name="manage_event_types">إدارة أنواع الأحداث</string>
     <string name="start_day_at">ابدأ اليوم عند</string>
     <string name="end_day_at">نهاية الحدث</string>
+    <string name="allow_customizing_day_count">Allow customizing day count</string>
     <string name="week_numbers">عرض أرقام الأسبوع</string>
     <string name="vibrate">إهتزاز عند الإشعار</string>
     <string name="reminder_sound">صوت التذكير</string>
