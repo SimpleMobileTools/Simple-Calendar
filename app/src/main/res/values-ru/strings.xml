@@ -158,7 +158,7 @@
     <string name="manage_event_types">Управление типами событий</string>
     <string name="start_day_at">Начало дня (неделя)</string>
     <string name="end_day_at">Окончание дня (неделя)</string>
-    <string name="allow_customizing_day_count">Allow customizing day count</string>
+    <string name="allow_customizing_day_count">Разрешить менять количество дней</string>
     <string name="week_numbers">Показывать номера недель</string>
     <string name="vibrate">Вибрация при напоминании</string>
     <string name="reminder_sound">Звук напоминания</string>
