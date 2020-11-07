@@ -16,7 +16,7 @@
     <!-- Widget titles -->
     <string name="widget_monthly">Månedskalender</string>
     <string name="widget_list">Hendelsesliste</string>
-    <string name="widget_todays_date">Calendar today\'s date</string>
+    <string name="widget_todays_date">Kalender dagens dato</string>
 
     <!-- Event -->
     <string name="event">Hendelse</string>
@@ -158,7 +158,7 @@
     <string name="manage_event_types">Behandle hendelsestyper</string>
     <string name="start_day_at">Start dag kl.</string>
     <string name="end_day_at">Avslutt dag kl.</string>
-    <string name="allow_customizing_day_count">Allow customizing day count</string>
+    <string name="allow_customizing_day_count">Tillat å tilpasse antall dager</string>
     <string name="week_numbers">Vis ukenummer</string>
     <string name="vibrate">Vibrer ved påminnelsesvarsel</string>
     <string name="reminder_sound">Påminnelseslyd</string>
@@ -193,7 +193,7 @@
     <string name="last_used_one">Den sist brukte</string>
     <string name="other_time">Annen tid</string>
     <string name="highlight_weekends">Fremhev helger på noen visninger</string>
-    <string name="allow_changing_time_zones">Tillat å endre hendelsestidssoner</string>
+    <string name="allow_changing_time_zones">Tillat å endre tidssoner for hendelser</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
