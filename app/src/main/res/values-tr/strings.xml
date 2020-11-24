@@ -158,7 +158,7 @@
     <string name="manage_event_types">Etkinlik türlerini yönet</string>
     <string name="start_day_at">Gün başlangıcı</string>
     <string name="end_day_at">Gün bitişi</string>
-    <string name="allow_customizing_day_count">Allow customizing day count</string>
+    <string name="allow_customizing_day_count">Gün sayısının özelleştirilmesine izin ver</string>
     <string name="week_numbers">Hafta sayılarını göster</string>
     <string name="vibrate">Hatırlatma bildiriminde titre</string>
     <string name="reminder_sound">Hatırlatma sesi</string>
@@ -247,7 +247,7 @@
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Basit Takvim Pro - Etkinlikler ve Hatırlatıcılar</string>
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Simple mobile 2020 calendar. Schedule planner &amp; appointment reminder for any day</string>
+    <string name="app_short_description">2020 takvimi. Herhangi bir gün için planlayıcı/randevu hatırlatıcı programlayın</string>
     <string name="app_long_description">
         Basit Takvim Pro, bir takvimin tam olarak yapması gerekeni yapmak için tasarlanmış, tamamen özelleştirilebilir, çevrimdışı bir takvimdir. <b>Karmaşık özellikler, gereksiz izinler ve reklam içermez!</b>
 
