@@ -248,7 +248,11 @@ class EventsHelper(val context: Context) {
                 callback(ArrayList())
                 return
             } else {
-                eventsDB.getOneTimeEventsFromToWithTypes(toTS, fromTS, context.config.getDisplayEventTypessAsList()).toMutableList() as ArrayList<Event>
+                try {
+                    eventsDB.getOneTimeEventsFromToWithTypes(toTS, fromTS, context.config.getDisplayEventTypessAsList()).toMutableList() as ArrayList<Event>
+                } catch (e: Exception) {
+                    ArrayList()
+                }
             }
         } else {
             if (eventId == -1L) {

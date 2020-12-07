@@ -145,7 +145,12 @@ class CalDAVHelper(val context: Context) {
     private fun fetchCalDAVCalendarEvents(calendarId: Int, eventTypeId: Long, showToasts: Boolean) {
         val importIdsMap = HashMap<String, Event>()
         val fetchedEventIds = ArrayList<String>()
-        val existingEvents = context.eventsDB.getEventsFromCalDAVCalendar("$CALDAV-$calendarId")
+        val existingEvents = try {
+            context.eventsDB.getEventsFromCalDAVCalendar("$CALDAV-$calendarId")
+        } catch (e: Exception) {
+            ArrayList()
+        }
+
         existingEvents.forEach {
             importIdsMap[it.importId] = it
         }

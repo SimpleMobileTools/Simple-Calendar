@@ -86,7 +86,11 @@ data class Event(
 
         while (newDateTime.dayOfMonth().maximumValue < Formatter.getDateTimeFromTS(original.startTS).dayOfMonth().maximumValue) {
             newDateTime = newDateTime.plusMonths(repeatInterval / MONTH)
-            newDateTime = newDateTime.withDayOfMonth(currStart.dayOfMonth)
+            newDateTime = try {
+                newDateTime.withDayOfMonth(currStart.dayOfMonth)
+            } catch (e: Exception) {
+                newDateTime
+            }
         }
         return newDateTime
     }
