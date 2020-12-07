@@ -1,6 +1,11 @@
 Changelog
 ==========
 
+Version 6.11.3 *(2020-12-07)*
+----------------------------
+
+ * Adding some stability, translation and UI improvements
+
 Version 6.11.2 *(2020-11-03)*
 ----------------------------
 
