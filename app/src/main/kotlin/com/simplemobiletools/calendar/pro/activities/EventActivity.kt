@@ -868,7 +868,7 @@ class EventActivity : SimpleActivity() {
             if (eventType != null) {
                 runOnUiThread {
                     event_type.text = eventType.title
-                    event_type_color.setFillWithStroke(eventType.color, config.backgroundColor)
+                    event_type_color.setFillWithStroke(eventType.color, config.backgroundColor, getCornerRadius())
                 }
             }
         }
@@ -933,7 +933,7 @@ class EventActivity : SimpleActivity() {
                 val calendarColor = eventsHelper.getEventTypeWithCalDAVCalendarId(currentCalendar.id)?.color ?: currentCalendar.color
 
                 runOnUiThread {
-                    event_caldav_calendar_color.setFillWithStroke(calendarColor, config.backgroundColor)
+                    event_caldav_calendar_color.setFillWithStroke(calendarColor, config.backgroundColor, getCornerRadius())
                     event_caldav_calendar_name.apply {
                         text = currentCalendar.displayName
                         setPadding(paddingLeft, paddingTop, paddingRight, resources.getDimension(R.dimen.tiny_margin).toInt())
