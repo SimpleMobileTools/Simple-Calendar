@@ -11,7 +11,6 @@ UID:enrico-mkd-20180108@kayaposoft.com
 DTSTART;VALUE=DATE:20180108
 DTEND;VALUE=DATE:20180109
 SUMMARY:Прв ден Божик\, Prv den Božik
-DESCRIPTION:Holiday in lieu of 7 Jan 2018
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
@@ -131,7 +130,6 @@ UID:enrico-mkd-20190909@kayaposoft.com
 DTSTART;VALUE=DATE:20190909
 DTEND;VALUE=DATE:20190910
 SUMMARY:Ден на независноста\, Den na nezavisnosta
-DESCRIPTION:Holiday in lieu of 8 Sep 2019
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
@@ -153,7 +151,6 @@ UID:enrico-mkd-20191209@kayaposoft.com
 DTSTART;VALUE=DATE:20191209
 DTEND;VALUE=DATE:20191210
 SUMMARY:Св. Климент Охридски\, Sv. Kliment Ohridski
-DESCRIPTION:Holiday in lieu of 8 Dec 2019
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
@@ -196,7 +193,6 @@ UID:enrico-mkd-20200525@kayaposoft.com
 DTSTART;VALUE=DATE:20200525
 DTEND;VALUE=DATE:20200526
 SUMMARY:Св. Кирил и Методиј\, Ден на сèсловенските просветители; Sv. Kiril i Metodij\, Den na sèslovenskite prosvetiteli
-DESCRIPTION:Holiday in lieu of 24 May 2020
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
@@ -204,7 +200,6 @@ UID:enrico-mkd-20200803@kayaposoft.com
 DTSTART;VALUE=DATE:20200803
 DTEND;VALUE=DATE:20200804
 SUMMARY:Ден на Републиката\, Den na Republikata
-DESCRIPTION:Holiday in lieu of 2 Aug 2020
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
@@ -219,7 +214,6 @@ UID:enrico-mkd-20201012@kayaposoft.com
 DTSTART;VALUE=DATE:20201012
 DTEND;VALUE=DATE:20201013
 SUMMARY:Ден на востанието\, Den na vostanieto
-DESCRIPTION:Holiday in lieu of 11 Oct 2020
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

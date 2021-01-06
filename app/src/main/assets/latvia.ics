@@ -81,7 +81,6 @@ UID:enrico-lva-20181119@kayaposoft.com
 DTSTART;VALUE=DATE:20181119
 DTEND;VALUE=DATE:20181120
 SUMMARY:Latvijas Republikas proklamēšanas diena
-DESCRIPTION:Holiday in lieu of 18 Nov 2018
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
@@ -152,7 +151,6 @@ UID:enrico-lva-20190506@kayaposoft.com
 DTSTART;VALUE=DATE:20190506
 DTEND;VALUE=DATE:20190507
 SUMMARY:Latvijas Republikas Neatkarības atjaunošanas dienu
-DESCRIPTION:Holiday in lieu of 4 May 2019
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
