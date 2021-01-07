@@ -985,6 +985,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         updateViewPager(dayCode)
     }
 
+    // events fetched from Thunderbird, https://www.thunderbird.net/en-US/calendar/holidays/
     private fun getHolidayRadioItems(): ArrayList<RadioItem> {
         val items = ArrayList<RadioItem>()
 
@@ -995,6 +996,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             put("België", "belgium.ics")
             put("Bolivia", "bolivia.ics")
             put("Brasil", "brazil.ics")
+            put("България", "bulgaria.ics")
             put("Canada", "canada.ics")
             put("China", "china.ics")
             put("Colombia", "colombia.ics")
