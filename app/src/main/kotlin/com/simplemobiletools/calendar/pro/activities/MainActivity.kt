@@ -1024,6 +1024,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             put("Magyarország", "hungary.ics")
             put("México", "mexico.ics")
             put("Nederland", "netherlands.ics")
+            put("República de Nicaragua", "nicaragua.ics")
             put("日本", "japan.ics")
             put("Nigeria", "nigeria.ics")
             put("Norge", "norway.ics")
