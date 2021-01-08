@@ -985,7 +985,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         updateViewPager(dayCode)
     }
 
-    // events fetched from Thunderbird, https://www.thunderbird.net/en-US/calendar/holidays/
+    // events fetched from Thunderbird, https://www.thunderbird.net/en-US/calendar/holidays and
+    // https://holidays.kayaposoft.com/public_holidays.php?year=2021
     private fun getHolidayRadioItems(): ArrayList<RadioItem> {
         val items = ArrayList<RadioItem>()
 
