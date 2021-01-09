@@ -20,12 +20,13 @@ data class Event(
     @ColumnInfo(name = "title") var title: String = "",
     @ColumnInfo(name = "location") var location: String = "",
     @ColumnInfo(name = "description") var description: String = "",
-    @ColumnInfo(name = "reminder_1_minutes") var reminder1Minutes: Int = -1,
-    @ColumnInfo(name = "reminder_2_minutes") var reminder2Minutes: Int = -1,
-    @ColumnInfo(name = "reminder_3_minutes") var reminder3Minutes: Int = -1,
+    @ColumnInfo(name = "reminder_1_minutes") var reminder1Minutes: Int = REMINDER_OFF,
+    @ColumnInfo(name = "reminder_2_minutes") var reminder2Minutes: Int = REMINDER_OFF,
+    @ColumnInfo(name = "reminder_3_minutes") var reminder3Minutes: Int = REMINDER_OFF,
     @ColumnInfo(name = "reminder_1_type") var reminder1Type: Int = REMINDER_NOTIFICATION,
     @ColumnInfo(name = "reminder_2_type") var reminder2Type: Int = REMINDER_NOTIFICATION,
     @ColumnInfo(name = "reminder_3_type") var reminder3Type: Int = REMINDER_NOTIFICATION,
+    @ColumnInfo(name = "all_day_reminder_minutes") var allDayReminderMinutes: Int = ALL_DAY_REMINDER_OFF,
     @ColumnInfo(name = "repeat_interval") var repeatInterval: Int = 0,
     @ColumnInfo(name = "repeat_rule") var repeatRule: Int = 0,
     @ColumnInfo(name = "repeat_limit") var repeatLimit: Long = 0L,
@@ -129,8 +130,9 @@ data class Event(
     fun getReminders() = setOf(
         Reminder(reminder1Minutes, reminder1Type),
         Reminder(reminder2Minutes, reminder2Type),
-        Reminder(reminder3Minutes, reminder3Type)
-    ).filter { it.minutes != REMINDER_OFF }
+        Reminder(reminder3Minutes, reminder3Type),
+        Reminder(allDayReminderMinutes, ALL_DAY_REMINDER_NOTIFICATION)
+    ).filter { (it.minutes != REMINDER_OFF && it.type == REMINDER_NOTIFICATION) || (it.minutes != ALL_DAY_REMINDER_OFF && it.type == ALL_DAY_REMINDER_NOTIFICATION) }
 
     // properly return the start time of all-day events as midnight
     fun getEventStartTS(): Long {

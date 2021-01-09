@@ -44,6 +44,7 @@ import kotlinx.android.synthetic.main.activity_event.view.*
 import kotlinx.android.synthetic.main.item_attendee.view.*
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
+import org.joda.time.LocalTime
 import java.util.*
 import java.util.regex.Pattern
 import kotlin.collections.ArrayList
@@ -59,6 +60,7 @@ class EventActivity : SimpleActivity() {
     private val REMINDER_1_TYPE = "REMINDER_1_TYPE"
     private val REMINDER_2_TYPE = "REMINDER_2_TYPE"
     private val REMINDER_3_TYPE = "REMINDER_3_TYPE"
+    private val ALL_DAY_REMINDER_MINUTES = "ALL_DAY_REMINDER_MINUTES"
     private val REPEAT_INTERVAL = "REPEAT_INTERVAL"
     private val REPEAT_LIMIT = "REPEAT_LIMIT"
     private val REPEAT_RULE = "REPEAT_RULE"
@@ -73,6 +75,7 @@ class EventActivity : SimpleActivity() {
     private var mReminder1Type = REMINDER_NOTIFICATION
     private var mReminder2Type = REMINDER_NOTIFICATION
     private var mReminder3Type = REMINDER_NOTIFICATION
+    private var mAllDayReminderTime: LocalTime? = null
     private var mRepeatInterval = 0
     private var mRepeatLimit = 0L
     private var mRepeatRule = 0
@@ -162,6 +165,7 @@ class EventActivity : SimpleActivity() {
         if (savedInstanceState == null) {
             updateTexts()
             updateEventType()
+            updateAllDayReminderDeleteButton()
             updateCalDAVCalendar()
         }
 
@@ -171,6 +175,8 @@ class EventActivity : SimpleActivity() {
         event_end_date.setOnClickListener { setupEndDate() }
         event_end_time.setOnClickListener { setupEndTime() }
         event_time_zone.setOnClickListener { setupTimeZone() }
+        event_all_day_reminder.setOnClickListener { setupAllDayReminderTime() }
+        event_all_day_reminder_delete.setOnClickListener { deleteAllDayReminder() }
 
         event_all_day.setOnCheckedChangeListener { compoundButton, isChecked -> toggleAllDay(isChecked) }
         event_repetition.setOnClickListener { showRepeatIntervalDialog() }
@@ -265,11 +271,12 @@ class EventActivity : SimpleActivity() {
 
     private fun getReminders(): ArrayList<Reminder> {
         var reminders = arrayListOf(
-            Reminder(mReminder1Minutes, mReminder1Type),
-            Reminder(mReminder2Minutes, mReminder2Type),
-            Reminder(mReminder3Minutes, mReminder3Type)
+                Reminder(mReminder1Minutes, mReminder1Type),
+                Reminder(mReminder2Minutes, mReminder2Type),
+                Reminder(mReminder3Minutes, mReminder3Type),
+                Reminder(getMinutes(mAllDayReminderTime), ALL_DAY_REMINDER_NOTIFICATION)
         )
-        reminders = reminders.filter { it.minutes != REMINDER_OFF }.sortedBy { it.minutes }.toMutableList() as ArrayList<Reminder>
+        reminders = reminders.filter { (it.minutes != REMINDER_OFF && it.type == REMINDER_NOTIFICATION) || (it.minutes != ALL_DAY_REMINDER_OFF && it.type == ALL_DAY_REMINDER_NOTIFICATION) }.sortedBy { it.minutes }.toMutableList() as ArrayList<Reminder>
         return reminders
     }
 
@@ -318,6 +325,22 @@ class EventActivity : SimpleActivity() {
         }
     }
 
+    private fun getMinutes(localTime: LocalTime?): Int {
+        if (localTime != null) {
+            return - (localTime.hourOfDay * 60 + localTime.minuteOfHour)
+        } else {
+            return ALL_DAY_REMINDER_OFF
+        }
+    }
+
+    private fun getLocalTime(minutes: Int): LocalTime? {
+        if (minutes != ALL_DAY_REMINDER_OFF) {
+            return LocalTime().withMinuteOfHour(-minutes % 60).withHourOfDay(-minutes / 60)
+        }else{
+            return null
+        }
+    }
+
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         if (!mWasActivityInitialized) {
@@ -337,6 +360,8 @@ class EventActivity : SimpleActivity() {
             putInt(REMINDER_1_TYPE, mReminder1Type)
             putInt(REMINDER_2_TYPE, mReminder2Type)
             putInt(REMINDER_3_TYPE, mReminder3Type)
+
+            putInt(ALL_DAY_REMINDER_MINUTES, getMinutes(mAllDayReminderTime))
 
             putInt(REPEAT_INTERVAL, mRepeatInterval)
             putInt(REPEAT_RULE, mRepeatRule)
@@ -370,6 +395,8 @@ class EventActivity : SimpleActivity() {
             mReminder2Type = getInt(REMINDER_2_TYPE)
             mReminder3Type = getInt(REMINDER_3_TYPE)
 
+            mAllDayReminderTime = getLocalTime(getInt(ALL_DAY_REMINDER_MINUTES))
+
             mRepeatInterval = getInt(REPEAT_INTERVAL)
             mRepeatRule = getInt(REPEAT_RULE)
             mRepeatLimit = getLong(REPEAT_LIMIT)
@@ -384,6 +411,7 @@ class EventActivity : SimpleActivity() {
         checkRepeatTexts(mRepeatInterval)
         checkRepeatRule()
         updateTexts()
+        updateAllDayReminderDeleteButton()
         updateEventType()
         updateCalDAVCalendar()
         checkAttendees()
@@ -440,6 +468,7 @@ class EventActivity : SimpleActivity() {
         mReminder1Type = mEvent.reminder1Type
         mReminder2Type = mEvent.reminder2Type
         mReminder3Type = mEvent.reminder3Type
+        mAllDayReminderTime = getLocalTime(mEvent.allDayReminderMinutes)
         mRepeatInterval = mEvent.repeatInterval
         mRepeatLimit = mEvent.repeatLimit
         mRepeatRule = mEvent.repeatRule
@@ -795,6 +824,7 @@ class EventActivity : SimpleActivity() {
         updateReminder1Text()
         updateReminder2Text()
         updateReminder3Text()
+        updateAllDayReminderText()
         updateReminderTypeImages()
     }
 
@@ -828,6 +858,18 @@ class EventActivity : SimpleActivity() {
         }
     }
 
+    private fun updateAllDayReminderText() {
+        event_all_day_reminder.apply {
+            if (mAllDayReminderTime != null) {
+                text = Formatter.getTime(applicationContext, mAllDayReminderTime!!)
+                alpha = 1f
+            } else {
+                text = resources.getString(R.string.add_during_day_reminder)
+                alpha = 0.4f
+            }
+        }
+    }
+
     private fun showReminderTypePicker(currentValue: Int, callback: (Int) -> Unit) {
         val items = arrayListOf(
             RadioItem(REMINDER_NOTIFICATION, getString(R.string.notification)),
@@ -856,6 +898,10 @@ class EventActivity : SimpleActivity() {
         val drawable = if (reminder.type == REMINDER_NOTIFICATION) R.drawable.ic_bell_vector else R.drawable.ic_email_vector
         val icon = resources.getColoredDrawableWithColor(drawable, config.textColor)
         view.setImageDrawable(icon)
+    }
+
+    private fun updateAllDayReminderDeleteButton() {
+        event_all_day_reminder_delete.beGoneIf(mAllDayReminderTime == null)
     }
 
     private fun updateRepetitionText() {
@@ -958,10 +1004,23 @@ class EventActivity : SimpleActivity() {
         }
     }
 
+    private fun removeAllDayReminder() {
+        mAllDayReminderTime = null
+        updateAllDayReminderText()
+        updateAllDayReminderDeleteButton()
+    }
+
     private fun toggleAllDay(isChecked: Boolean) {
         hideKeyboard()
         event_start_time.beGoneIf(isChecked)
         event_end_time.beGoneIf(isChecked)
+
+        event_all_day_reminder_layout.beGoneIf(!isChecked)
+
+        if (!isChecked) {
+            removeAllDayReminder()
+        }
+
         resetTime()
     }
 
@@ -1057,7 +1116,7 @@ class EventActivity : SimpleActivity() {
             "$CALDAV-$mEventCalendarId"
         }
 
-        val reminders = getReminders()
+        val reminders = getReminders().filter { it.type == REMINDER_NOTIFICATION }
         val reminder1 = reminders.getOrNull(0) ?: Reminder(REMINDER_OFF, REMINDER_NOTIFICATION)
         val reminder2 = reminders.getOrNull(1) ?: Reminder(REMINDER_OFF, REMINDER_NOTIFICATION)
         val reminder3 = reminders.getOrNull(2) ?: Reminder(REMINDER_OFF, REMINDER_NOTIFICATION)
@@ -1085,6 +1144,7 @@ class EventActivity : SimpleActivity() {
             reminder1Type = mReminder1Type
             reminder2Type = mReminder2Type
             reminder3Type = mReminder3Type
+            allDayReminderMinutes = getMinutes(mAllDayReminderTime)
             repeatInterval = mRepeatInterval
             importId = newImportId
             timeZone = if (mEvent.timeZone.isEmpty()) TimeZone.getDefault().id else timeZone
@@ -1110,7 +1170,7 @@ class EventActivity : SimpleActivity() {
         if (mEvent.id == null || mEvent.id == null) {
             eventsHelper.insertEvent(mEvent, true, true) {
                 if (DateTime.now().isAfter(mEventStartDateTime.millis)) {
-                    if (mEvent.repeatInterval == 0 && mEvent.getReminders().any { it.type == REMINDER_NOTIFICATION }) {
+                    if (mEvent.repeatInterval == 0 && mEvent.getReminders().any { it.type == REMINDER_NOTIFICATION || it.type == ALL_DAY_REMINDER_NOTIFICATION }) {
                         notifyEvent(mEvent)
                     }
                 }
@@ -1253,6 +1313,25 @@ class EventActivity : SimpleActivity() {
         TimePickerDialog(this, mDialogTheme, endTimeSetListener, mEventEndDateTime.hourOfDay, mEventEndDateTime.minuteOfHour, config.use24HourFormat).show()
     }
 
+    private fun setupAllDayReminderTime() {
+        var hours = 9
+        var minutes = 0
+
+        if (mAllDayReminderTime != null) {
+            hours = mAllDayReminderTime!!.hourOfDay
+            minutes = mAllDayReminderTime!!.minuteOfHour
+        }
+
+        hideKeyboard()
+        TimePickerDialog(this, mDialogTheme, allDayReminderTimeSetListener, hours, minutes, config.use24HourFormat).show()
+    }
+
+    private fun deleteAllDayReminder() {
+        mAllDayReminderTime = null
+        updateAllDayReminderText()
+        updateAllDayReminderDeleteButton()
+    }
+
     private val startDateSetListener = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
         dateSet(year, monthOfYear, dayOfMonth, true)
     }
@@ -1264,6 +1343,10 @@ class EventActivity : SimpleActivity() {
     private val endDateSetListener = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth -> dateSet(year, monthOfYear, dayOfMonth, false) }
 
     private val endTimeSetListener = TimePickerDialog.OnTimeSetListener { view, hourOfDay, minute -> timeSet(hourOfDay, minute, false) }
+
+    private val allDayReminderTimeSetListener = TimePickerDialog.OnTimeSetListener { view, hourOfDay, minute ->
+        allDayReminderTimeSet(hourOfDay, minute)
+    }
 
     private fun dateSet(year: Int, month: Int, day: Int, isStart: Boolean) {
         if (isStart) {
@@ -1299,6 +1382,13 @@ class EventActivity : SimpleActivity() {
             timeSet(hours + 1, minutes, isStart)
             return
         }
+    }
+
+    private fun allDayReminderTimeSet(hours: Int, minutes: Int) {
+        mAllDayReminderTime = LocalTime()
+        mAllDayReminderTime = mAllDayReminderTime!!.withHourOfDay(hours).withMinuteOfHour(minutes)
+        updateAllDayReminderText()
+        updateAllDayReminderDeleteButton()
     }
 
     private fun setupTimeZone() {

@@ -28,6 +28,7 @@ const val DAILY_VIEW = 5
 const val LAST_VIEW = 6
 
 const val REMINDER_OFF = -1
+const val ALL_DAY_REMINDER_OFF = 1
 
 const val ITEM_EVENT = 0
 const val ITEM_EVENT_SIMPLE = 1
@@ -155,5 +156,6 @@ const val DELETE_ALL_OCCURRENCES = 2
 
 const val REMINDER_NOTIFICATION = 0
 const val REMINDER_EMAIL = 1
+const val ALL_DAY_REMINDER_NOTIFICATION = 2
 
 fun getNowSeconds() = System.currentTimeMillis() / 1000L

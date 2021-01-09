@@ -8,6 +8,7 @@ import com.simplemobiletools.calendar.pro.extensions.eventsDB
 import com.simplemobiletools.calendar.pro.extensions.notifyEvent
 import com.simplemobiletools.calendar.pro.extensions.scheduleNextEventReminder
 import com.simplemobiletools.calendar.pro.extensions.updateListWidget
+import com.simplemobiletools.calendar.pro.helpers.ALL_DAY_REMINDER_NOTIFICATION
 import com.simplemobiletools.calendar.pro.helpers.EVENT_ID
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.helpers.REMINDER_NOTIFICATION
@@ -32,7 +33,7 @@ class NotificationReceiver : BroadcastReceiver() {
 
         context.updateListWidget()
         val event = context.eventsDB.getEventWithId(id)
-        if (event == null || event.getReminders().none { it.type == REMINDER_NOTIFICATION } || event.repetitionExceptions.contains(Formatter.getTodayCode())) {
+        if (event == null || event.getReminders().none { it.type == REMINDER_NOTIFICATION || it.type == ALL_DAY_REMINDER_NOTIFICATION } || event.repetitionExceptions.contains(Formatter.getTodayCode())) {
             return
         }
 

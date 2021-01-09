@@ -7,6 +7,7 @@ import com.simplemobiletools.calendar.pro.extensions.seconds
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 import org.joda.time.LocalDate
+import org.joda.time.LocalTime
 import org.joda.time.format.DateTimeFormat
 
 object Formatter {
@@ -68,6 +69,8 @@ object Formatter {
     fun getHours(context: Context, dateTime: DateTime) = dateTime.toString(getHourPattern(context))
 
     fun getTime(context: Context, dateTime: DateTime) = dateTime.toString(getTimePattern(context))
+
+    fun getTime(context: Context, time: LocalTime) = time.toString(getTimePattern(context))
 
     fun getDateTimeFromCode(dayCode: String) = DateTimeFormat.forPattern(DAYCODE_PATTERN).withZone(DateTimeZone.UTC).parseDateTime(dayCode)
 
