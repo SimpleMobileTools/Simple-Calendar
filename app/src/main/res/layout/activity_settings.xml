@@ -119,6 +119,28 @@
 
         </RelativeLayout>
 
+        <RelativeLayout
+            android:id="@+id/settings_highlight_weekends_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:background="?attr/selectableItemBackground"
+            android:paddingStart="@dimen/normal_margin"
+            android:paddingTop="@dimen/activity_margin"
+            android:paddingEnd="@dimen/normal_margin"
+            android:paddingBottom="@dimen/activity_margin">
+
+            <com.simplemobiletools.commons.views.MySwitchCompat
+                android:id="@+id/settings_highlight_weekends"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:clickable="false"
+                android:paddingStart="@dimen/medium_margin"
+                android:text="@string/highlight_weekends" />
+
+        </RelativeLayout>
+
         <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/reminders_label"
             android:layout_width="wrap_content"

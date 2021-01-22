@@ -76,6 +76,7 @@ const val LAST_EXPORT_PATH = "last_export_path"
 const val EXPORT_PAST_EVENTS = "export_past_events"
 const val WEEKLY_VIEW_ITEM_HEIGHT_MULTIPLIER = "weekly_view_item_height_multiplier"
 const val WEEKLY_VIEW_DAYS = "weekly_view_days"
+const val HIGHLIGHT_WEEKENDS = "highlight_weekends"
 
 // repeat_rule for monthly and yearly repetition
 const val REPEAT_SAME_DAY = 1                           // i.e. 25th every month, or 3rd june (if yearly repetition)
@@ -157,3 +158,11 @@ const val REMINDER_NOTIFICATION = 0
 const val REMINDER_EMAIL = 1
 
 fun getNowSeconds() = System.currentTimeMillis() / 1000L
+
+fun isWeekend(i: Int, isSundayFirst: Boolean): Boolean {
+    return if (isSundayFirst) {
+        i == 0 || i == 6
+    } else {
+        i == 5 || i == 6
+    }
+}

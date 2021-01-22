@@ -57,6 +57,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private var wasFragmentInit = false
     private var wasExtraHeightAdded = false
     private var dimPastEvents = true
+    private var highlightWeekends = false
     private var wasScaled = false
     private var isPrintVersion = false
     private var selectedGrid: View? = null
@@ -83,6 +84,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         defaultRowHeight = res.getDimension(R.dimen.weekly_view_row_height)
         weekTimestamp = arguments!!.getLong(WEEK_START_TIMESTAMP)
         dimPastEvents = config.dimPastEvents
+        highlightWeekends = config.highlightWeekends
         primaryColor = context!!.getAdjustedPrimaryColor()
         allDayRows.add(HashSet())
     }
@@ -209,7 +211,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
     private fun setupDayLabels() {
         var curDay = Formatter.getUTCDateTimeFromTS(weekTimestamp)
-        val textColor = if (isPrintVersion) resources.getColor(R.color.theme_light_text_color) else config.textColor
         val todayCode = Formatter.getDayCodeFromDateTime(DateTime())
         val screenWidth = context?.usableScreenSize?.x ?: return
         val dayWidth = screenWidth / config.weeklyViewDays
@@ -227,9 +228,19 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             val dayLetters = res.getStringArray(labelIDs).toMutableList() as ArrayList<String>
             val dayLetter = dayLetters[curDay.dayOfWeek - 1]
 
+            val textColor = if (isPrintVersion) {
+                resources.getColor(R.color.theme_light_text_color)
+            } else if (todayCode == dayCode) {
+                primaryColor
+            } else if (highlightWeekends && isWeekend(i, config.isSundayFirst)) {
+                resources.getColor(R.color.red_text)
+            } else {
+                config.textColor
+            }
+
             val label = inflater.inflate(R.layout.weekly_view_day_letter, mView.week_letters_holder, false) as MyTextView
             label.text = "$dayLetter\n${curDay.dayOfMonth}"
-            label.setTextColor(if (todayCode == dayCode && !isPrintVersion) primaryColor else textColor)
+            label.setTextColor(textColor)
             if (todayCode == dayCode) {
                 todayColumnIndex = i
             }
