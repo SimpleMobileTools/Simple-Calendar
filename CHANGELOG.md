@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 6.11.5 *(2021-01-22)*
+----------------------------
+
+ * Allow highlighting weekends on some views
+ * Added Turkish holidays
+ * Some translation improvements
+
 Version 6.11.4 *(2021-01-08)*
 ----------------------------
 

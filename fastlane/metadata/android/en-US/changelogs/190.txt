@@ -1,0 +1,3 @@
+ * Allow highlighting weekends on some views
+ * Added Turkish holidays
+ * Some translation improvements
