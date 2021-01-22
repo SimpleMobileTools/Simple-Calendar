@@ -76,6 +76,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private var mStoredIsSundayFirst = false
     private var mStoredUse24HourFormat = false
     private var mStoredDimPastEvents = true
+    private var mStoredHighlightWeekends = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -123,7 +124,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     override fun onResume() {
         super.onResume()
         if (mStoredTextColor != config.textColor || mStoredBackgroundColor != config.backgroundColor || mStoredPrimaryColor != config.primaryColor
-            || mStoredDayCode != Formatter.getTodayCode() || mStoredDimPastEvents != config.dimPastEvents) {
+            || mStoredDayCode != Formatter.getTodayCode() || mStoredDimPastEvents != config.dimPastEvents || mStoredHighlightWeekends != config.highlightWeekends) {
             updateViewPager()
         }
 
@@ -245,6 +246,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             mStoredBackgroundColor = backgroundColor
             mStoredUse24HourFormat = use24HourFormat
             mStoredDimPastEvents = dimPastEvents
+            mStoredHighlightWeekends = highlightWeekends
         }
         mStoredDayCode = Formatter.getTodayCode()
     }

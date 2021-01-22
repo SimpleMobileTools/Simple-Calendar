@@ -268,7 +268,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         if (!isPrintVersion) {
             if (startDay.isToday) {
                 paintColor = primaryColor.getContrastColor()
-            } else if (startDay.isWeekend) {
+            } else if (highlightWeekends && startDay.isWeekend) {
                 paintColor = redTextColor
             }
         }
