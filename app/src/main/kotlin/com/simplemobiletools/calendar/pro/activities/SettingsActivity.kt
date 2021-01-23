@@ -684,6 +684,7 @@ class SettingsActivity : SimpleActivity() {
                 put(SNOOZE_TIME, config.snoozeTime)
                 put(USE_24_HOUR_FORMAT, config.use24HourFormat)
                 put(SUNDAY_FIRST, config.isSundayFirst)
+                put(HIGHLIGHT_WEEKENDS, config.highlightWeekends)
             }
 
             exportSettings(configItems)
@@ -777,6 +778,7 @@ class SettingsActivity : SimpleActivity() {
                 SNOOZE_TIME -> config.snoozeTime = value.toInt()
                 USE_24_HOUR_FORMAT -> config.use24HourFormat = value.toBoolean()
                 SUNDAY_FIRST -> config.isSundayFirst = value.toBoolean()
+                HIGHLIGHT_WEEKENDS -> config.highlightWeekends = value.toBoolean()
             }
         }
 
