@@ -6,7 +6,7 @@ import androidx.collection.LongSparseArray
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.EventType
-import com.simplemobiletools.commons.extensions.getChoppedList
+import com.simplemobiletools.commons.helpers.CHOPPED_LIST_DEFAULT_SIZE
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 
 class EventsHelper(val context: Context) {
@@ -146,7 +146,7 @@ class EventsHelper(val context: Context) {
             return
         }
 
-        ids.getChoppedList().forEach {
+        ids.chunked(CHOPPED_LIST_DEFAULT_SIZE).forEach {
             val eventsWithImportId = eventsDB.getEventsByIdsWithImportIds(it)
             eventsDB.deleteEvents(it)
 
@@ -160,7 +160,7 @@ class EventsHelper(val context: Context) {
                 }
             }
 
-            deleteChildEvents(it, deleteFromCalDAV)
+            deleteChildEvents(it as MutableList<Long>, deleteFromCalDAV)
             context.updateWidgets()
         }
     }
