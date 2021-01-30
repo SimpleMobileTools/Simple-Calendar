@@ -46,6 +46,7 @@ class SettingsActivity : SimpleActivity() {
         setupManageEventTypes()
         setupHourFormat()
         setupSundayFirst()
+        setupHighlightWeekends()
         setupDeleteAllEvents()
         setupReplaceDescription()
         setupWeekNumbers()
@@ -272,6 +273,14 @@ class SettingsActivity : SimpleActivity() {
         settings_sunday_first_holder.setOnClickListener {
             settings_sunday_first.toggle()
             config.isSundayFirst = settings_sunday_first.isChecked
+        }
+    }
+
+    private fun setupHighlightWeekends() {
+        settings_highlight_weekends.isChecked = config.highlightWeekends
+        settings_highlight_weekends_holder.setOnClickListener {
+            settings_highlight_weekends.toggle()
+            config.highlightWeekends = settings_highlight_weekends.isChecked
         }
     }
 
@@ -675,6 +684,7 @@ class SettingsActivity : SimpleActivity() {
                 put(SNOOZE_TIME, config.snoozeTime)
                 put(USE_24_HOUR_FORMAT, config.use24HourFormat)
                 put(SUNDAY_FIRST, config.isSundayFirst)
+                put(HIGHLIGHT_WEEKENDS, config.highlightWeekends)
             }
 
             exportSettings(configItems)
@@ -768,6 +778,7 @@ class SettingsActivity : SimpleActivity() {
                 SNOOZE_TIME -> config.snoozeTime = value.toInt()
                 USE_24_HOUR_FORMAT -> config.use24HourFormat = value.toBoolean()
                 SUNDAY_FIRST -> config.isSundayFirst = value.toBoolean()
+                HIGHLIGHT_WEEKENDS -> config.highlightWeekends = value.toBoolean()
             }
         }
 

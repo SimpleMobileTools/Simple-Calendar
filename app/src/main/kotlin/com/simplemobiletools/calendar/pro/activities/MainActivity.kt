@@ -76,6 +76,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private var mStoredIsSundayFirst = false
     private var mStoredUse24HourFormat = false
     private var mStoredDimPastEvents = true
+    private var mStoredHighlightWeekends = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -123,7 +124,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     override fun onResume() {
         super.onResume()
         if (mStoredTextColor != config.textColor || mStoredBackgroundColor != config.backgroundColor || mStoredPrimaryColor != config.primaryColor
-            || mStoredDayCode != Formatter.getTodayCode() || mStoredDimPastEvents != config.dimPastEvents) {
+            || mStoredDayCode != Formatter.getTodayCode() || mStoredDimPastEvents != config.dimPastEvents || mStoredHighlightWeekends != config.highlightWeekends) {
             updateViewPager()
         }
 
@@ -245,6 +246,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             mStoredBackgroundColor = backgroundColor
             mStoredUse24HourFormat = use24HourFormat
             mStoredDimPastEvents = dimPastEvents
+            mStoredHighlightWeekends = highlightWeekends
         }
         mStoredDayCode = Formatter.getTodayCode()
     }
@@ -985,6 +987,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         updateViewPager(dayCode)
     }
 
+    // events fetched from Thunderbird, https://www.thunderbird.net/en-US/calendar/holidays and
+    // https://holidays.kayaposoft.com/public_holidays.php?year=2021
     private fun getHolidayRadioItems(): ArrayList<RadioItem> {
         val items = ArrayList<RadioItem>()
 
@@ -995,6 +999,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             put("België", "belgium.ics")
             put("Bolivia", "bolivia.ics")
             put("Brasil", "brazil.ics")
+            put("България", "bulgaria.ics")
             put("Canada", "canada.ics")
             put("China", "china.ics")
             put("Colombia", "colombia.ics")
@@ -1005,13 +1010,15 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             put("España", "spain.ics")
             put("Éire", "ireland.ics")
             put("France", "france.ics")
-            put("한국", "southkorea.ics")
+            put("Fürstentum Liechtenstein", "liechtenstein.ics")
             put("Hellas", "greece.ics")
             put("Hrvatska", "croatia.ics")
             put("India", "india.ics")
             put("Indonesia", "indonesia.ics")
             put("Ísland", "iceland.ics")
             put("Italia", "italy.ics")
+            put("Қазақстан Республикасы", "kazakhstan.ics")
+            put("المملكة المغربية", "morocco.ics")
             put("Latvija", "latvia.ics")
             put("Lietuva", "lithuania.ics")
             put("Luxemburg", "luxembourg.ics")
@@ -1020,6 +1027,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             put("Magyarország", "hungary.ics")
             put("México", "mexico.ics")
             put("Nederland", "netherlands.ics")
+            put("República de Nicaragua", "nicaragua.ics")
             put("日本", "japan.ics")
             put("Nigeria", "nigeria.ics")
             put("Norge", "norway.ics")
@@ -1028,9 +1036,13 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             put("Polska", "poland.ics")
             put("Portugal", "portugal.ics")
             put("Россия", "russia.ics")
+            put("República de Costa Rica", "costarica.ics")
+            put("República Oriental del Uruguay", "uruguay.ics")
+            put("République d'Haïti", "haiti.ics")
             put("România", "romania.ics")
             put("Schweiz", "switzerland.ics")
             put("Singapore", "singapore.ics")
+            put("한국", "southkorea.ics")
             put("Srbija", "serbia.ics")
             put("Slovenija", "slovenia.ics")
             put("Slovensko", "slovakia.ics")
@@ -1038,6 +1050,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             put("Suomi", "finland.ics")
             put("Sverige", "sweden.ics")
             put("Taiwan", "taiwan.ics")
+            put("ราชอาณาจักรไทย", "thailand.ics")
+            put("Türkiye Cumhuriyeti", "turkey.ics")
             put("Ukraine", "ukraine.ics")
             put("United Kingdom", "unitedkingdom.ics")
             put("United States", "unitedstates.ics")

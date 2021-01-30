@@ -186,4 +186,8 @@ class Config(context: Context) : BaseConfig(context) {
     var weeklyViewDays: Int
         get() = prefs.getInt(WEEKLY_VIEW_DAYS, 7)
         set(weeklyViewDays) = prefs.edit().putInt(WEEKLY_VIEW_DAYS, weeklyViewDays).apply()
+
+    var highlightWeekends: Boolean
+        get() = prefs.getBoolean(HIGHLIGHT_WEEKENDS, false)
+        set(highlightWeekends) = prefs.edit().putBoolean(HIGHLIGHT_WEEKENDS, highlightWeekends).apply()
 }

@@ -165,7 +165,7 @@ class EventsHelper(val context: Context) {
         }
     }
 
-    private fun deleteChildEvents(ids: MutableList<Long>, deleteFromCalDAV: Boolean) {
+    private fun deleteChildEvents(ids: List<Long>, deleteFromCalDAV: Boolean) {
         val childIds = eventsDB.getEventIdsWithParentIds(ids).toMutableList()
         if (childIds.isNotEmpty()) {
             deleteEvents(childIds, deleteFromCalDAV)
