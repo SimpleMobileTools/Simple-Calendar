@@ -49,7 +49,6 @@ import com.simplemobiletools.commons.models.SimpleContact
 import kotlinx.android.synthetic.main.activity_main.*
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
-import org.joda.time.LocalTime
 import java.io.FileOutputStream
 import java.io.OutputStream
 import java.text.SimpleDateFormat
@@ -500,13 +499,14 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private fun tryAddBirthdays() {
         handlePermission(PERMISSION_READ_CONTACTS) {
             if (it) {
-                SetRemindersDialog(this) { reminders: ArrayList<Int>, all_day_reminder: LocalTime? ->
+                SetRemindersDialog(this) {
+                    val reminders = it
                     val privateCursor = getMyContactsCursor()?.loadInBackground()
 
                     ensureBackgroundThread {
                         val privateContacts = MyContactsContentProvider.getSimpleContacts(this, privateCursor)
-                        addPrivateEvents(true, privateContacts, reminders, all_day_reminder) { eventsFound, eventsAdded ->
-                            addContactEvents(true, reminders, all_day_reminder, eventsFound, eventsAdded) {
+                        addPrivateEvents(true, privateContacts, reminders) { eventsFound, eventsAdded ->
+                            addContactEvents(true, reminders, eventsFound, eventsAdded) {
                                 when {
                                     it > 0 -> {
                                         toast(R.string.birthdays_added)
@@ -528,13 +528,14 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private fun tryAddAnniversaries() {
         handlePermission(PERMISSION_READ_CONTACTS) {
             if (it) {
-                SetRemindersDialog(this) { reminders: ArrayList<Int>, all_day_reminder: LocalTime? ->
+                SetRemindersDialog(this) {
+                    val reminders = it
                     val privateCursor = getMyContactsCursor()?.loadInBackground()
 
                     ensureBackgroundThread {
                         val privateContacts = MyContactsContentProvider.getSimpleContacts(this, privateCursor)
-                        addPrivateEvents(false, privateContacts, reminders, all_day_reminder) { eventsFound, eventsAdded ->
-                            addContactEvents(false, reminders, all_day_reminder, eventsFound, eventsAdded) {
+                        addPrivateEvents(false, privateContacts, reminders) { eventsFound, eventsAdded ->
+                            addContactEvents(false, reminders, eventsFound, eventsAdded) {
                                 when {
                                     it > 0 -> {
                                         toast(R.string.anniversaries_added)
@@ -562,7 +563,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }, Toast.LENGTH_LONG)
     }
 
-    private fun addContactEvents(birthdays: Boolean, reminders: ArrayList<Int>, allDayReminder: LocalTime?, initEventsFound: Int, initEventsAdded: Int, callback: (Int) -> Unit) {
+    private fun addContactEvents(birthdays: Boolean, reminders: ArrayList<Int>, initEventsFound: Int, initEventsAdded: Int, callback: (Int) -> Unit) {
         var eventsFound = initEventsFound
         var eventsAdded = initEventsAdded
         val uri = Data.CONTENT_URI
@@ -601,8 +602,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                     val timestamp = date.time / 1000L
                     val lastUpdated = cursor.getLongValue(CommonDataKinds.Event.CONTACT_LAST_UPDATED_TIMESTAMP)
                     val event = Event(null, timestamp, timestamp, name, reminder1Minutes = reminders[0], reminder2Minutes = reminders[1],
-                            reminder3Minutes = reminders[2], allDayReminderMinutes = getMinutes(allDayReminder), importId = contactId, timeZone = DateTimeZone.getDefault().id, flags = FLAG_ALL_DAY,
-                            repeatInterval = YEAR, repeatRule = REPEAT_SAME_DAY, eventType = eventTypeId, source = source, lastUpdated = lastUpdated)
+                        reminder3Minutes = reminders[2], importId = contactId, timeZone = DateTimeZone.getDefault().id, flags = FLAG_ALL_DAY,
+                        repeatInterval = YEAR, repeatRule = REPEAT_SAME_DAY, eventType = eventTypeId, source = source, lastUpdated = lastUpdated)
 
                     val importIDsToDelete = ArrayList<String>()
                     for ((key, value) in importIDs) {
@@ -635,15 +636,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
     }
 
-    private fun getMinutes(localTime: LocalTime?): Int {
-        if (localTime != null) {
-            return - (localTime.hourOfDay * 60 + localTime.minuteOfHour)
-        } else {
-            return ALL_DAY_REMINDER_OFF
-        }
-    }
-
-    private fun addPrivateEvents(birthdays: Boolean, contacts: ArrayList<SimpleContact>, reminders: ArrayList<Int>, allDayReminder: LocalTime?, callback: (eventsFound: Int, eventsAdded: Int) -> Unit) {
+    private fun addPrivateEvents(birthdays: Boolean, contacts: ArrayList<SimpleContact>, reminders: ArrayList<Int>, callback: (eventsFound: Int, eventsAdded: Int) -> Unit) {
         var eventsAdded = 0
         var eventsFound = 0
         if (contacts.isEmpty()) {
@@ -680,9 +673,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                     val timestamp = date.time / 1000L
                     val lastUpdated = System.currentTimeMillis()
                     val event = Event(null, timestamp, timestamp, contact.name, reminder1Minutes = reminders[0], reminder2Minutes = reminders[1],
-                            reminder3Minutes = reminders[2], allDayReminderMinutes = getMinutes(allDayReminder), importId = contact.contactId.toString(),
-                            timeZone = DateTimeZone.getDefault().id, flags = FLAG_ALL_DAY, repeatInterval = YEAR, repeatRule = REPEAT_SAME_DAY,
-                            eventType = eventTypeId, source = source, lastUpdated = lastUpdated)
+                        reminder3Minutes = reminders[2], importId = contact.contactId.toString(), timeZone = DateTimeZone.getDefault().id, flags = FLAG_ALL_DAY,
+                        repeatInterval = YEAR, repeatRule = REPEAT_SAME_DAY, eventType = eventTypeId, source = source, lastUpdated = lastUpdated)
 
                     val importIDsToDelete = ArrayList<String>()
                     for ((key, value) in importIDs) {

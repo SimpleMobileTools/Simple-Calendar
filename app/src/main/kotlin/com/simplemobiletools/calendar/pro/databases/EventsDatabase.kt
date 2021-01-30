@@ -17,7 +17,7 @@ import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.EventType
 import java.util.concurrent.Executors
 
-@Database(entities = [Event::class, EventType::class], version = 4)
+@Database(entities = [Event::class, EventType::class], version = 3)
 @TypeConverters(Converters::class)
 abstract class EventsDatabase : RoomDatabase() {
 
@@ -41,7 +41,6 @@ abstract class EventsDatabase : RoomDatabase() {
                                 })
                                 .addMigrations(MIGRATION_1_2)
                                 .addMigrations(MIGRATION_2_3)
-                                .addMigrations(MIGRATION_3_4)
                                 .build()
                         db!!.openHelper.setWriteAheadLoggingEnabled(true)
                     }
@@ -78,14 +77,6 @@ abstract class EventsDatabase : RoomDatabase() {
             override fun migrate(database: SupportSQLiteDatabase) {
                 database.apply {
                     execSQL("ALTER TABLE events ADD COLUMN time_zone TEXT NOT NULL DEFAULT ''")
-                }
-            }
-        }
-
-        private val MIGRATION_3_4 = object : Migration(3, 4) {
-            override fun migrate(database: SupportSQLiteDatabase) {
-                database.apply {
-                    execSQL("ALTER TABLE events ADD COLUMN all_day_reminder_minutes INTEGER NOT NULL DEFAULT ''")
                 }
             }
         }

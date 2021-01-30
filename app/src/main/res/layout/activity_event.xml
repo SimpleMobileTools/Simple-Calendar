@@ -304,62 +304,6 @@
             android:background="@color/divider_grey"
             android:importantForAccessibility="no" />
 
-        <RelativeLayout
-            android:id="@+id/event_all_day_reminder_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/event_reminder_divider"
-            android:visibility="gone">
-
-            <ImageView
-                android:id="@+id/event_all_day_reminder_image"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignTop="@+id/event_all_day_reminder"
-                android:layout_alignBottom="@+id/event_all_day_reminder"
-                android:layout_marginStart="@dimen/normal_margin"
-                android:padding="@dimen/medium_margin"
-                android:src="@drawable/ic_bell_vector" />
-
-            <com.simplemobiletools.commons.views.MyTextView
-                android:id="@+id/event_all_day_reminder"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/small_margin"
-                android:layout_toEndOf="@+id/event_all_day_reminder_image"
-                android:alpha="0.4"
-                android:background="?attr/selectableItemBackground"
-                android:ellipsize="end"
-                android:lines="1"
-                android:paddingTop="@dimen/activity_margin"
-                android:paddingEnd="@dimen/activity_margin"
-                android:paddingBottom="@dimen/activity_margin"
-                android:textSize="@dimen/day_text_size"
-                tools:text="@string/add_another_reminder" />
-
-            <ImageView
-                android:id="@+id/event_all_day_reminder_delete"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/event_all_day_reminder"
-                android:layout_alignBottom="@+id/event_all_day_reminder"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="@dimen/small_margin"
-                android:padding="16dp"
-                android:src="@drawable/ic_delete_vector"
-                android:visibility="gone" />
-
-            <ImageView
-                android:id="@+id/event_all_day_reminder_divider"
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:layout_below="@+id/event_all_day_reminder"
-                android:layout_marginTop="@dimen/medium_margin"
-                android:layout_marginBottom="@dimen/medium_margin"
-                android:background="@color/divider_grey"
-                android:importantForAccessibility="no" />
-        </RelativeLayout>
-
         <ImageView
             android:id="@+id/event_repetition_image"
             android:layout_width="wrap_content"
@@ -375,7 +319,7 @@
             android:id="@+id/event_repetition"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/event_all_day_reminder_layout"
+            android:layout_below="@+id/event_reminder_divider"
             android:layout_marginStart="@dimen/small_margin"
             android:layout_toEndOf="@+id/event_repetition_image"
             android:background="?attr/selectableItemBackground"

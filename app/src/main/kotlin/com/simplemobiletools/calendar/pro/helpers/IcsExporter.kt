@@ -81,7 +81,7 @@ class IcsExporter {
             val reminder = it
             out.apply {
                 writeLn(BEGIN_ALARM)
-                if (reminder.type == REMINDER_NOTIFICATION || reminder.type == ALL_DAY_REMINDER_NOTIFICATION) {
+                if (reminder.type == REMINDER_NOTIFICATION) {
                     writeLn("$ACTION$DISPLAY")
                 } else {
                     writeLn("$ACTION$EMAIL")

@@ -90,7 +90,7 @@ fun Context.scheduleAllEvents() {
 }
 
 fun Context.scheduleNextEventReminder(event: Event, showToasts: Boolean) {
-    val validReminders = event.getReminders().filter { it.type == REMINDER_NOTIFICATION || it.type == ALL_DAY_REMINDER_NOTIFICATION }
+    val validReminders = event.getReminders().filter { it.type == REMINDER_NOTIFICATION }
     if (validReminders.isEmpty()) {
         if (showToasts) {
             toast(R.string.saving)
@@ -170,7 +170,7 @@ fun Context.getRepetitionText(seconds: Int) = when (seconds) {
 }
 
 fun Context.notifyRunningEvents() {
-    eventsHelper.getRunningEvents().filter { it.getReminders().any { it.type == REMINDER_NOTIFICATION || it.type == ALL_DAY_REMINDER_NOTIFICATION } }.forEach {
+    eventsHelper.getRunningEvents().filter { it.getReminders().any { it.type == REMINDER_NOTIFICATION } }.forEach {
         notifyEvent(it)
     }
 }
