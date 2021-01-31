@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Simple Calendar</string>
+    <string name="app_launcher_name">Kalenteri</string>
+    <string name="change_view">Vaihda näkymää</string>
+    <string name="daily_view">Päivänäkymä</string>
+    <string name="weekly_view">Viikkonäkymä</string>
+    <string name="monthly_view">Kuukausinäkymä</string>
+    <string name="yearly_view">Vuosinäkymä</string>
+    <string name="simple_event_list">Yksinkertainen tapahtumaluettelo</string>
+    <string name="no_upcoming_events">Näyttää siltä ettei sinulla ole tulevia tapahtumia.</string>
+    <string name="go_to_today">Mene tähän päivään</string>
+    <string name="go_to_date">Mene päivään</string>
+    <string name="upgraded_from_free">Hei,\n\näyttää siltä, että olet päivittänyt vanhasta ilmaisesta sovelluksesta. Sinun on siirrettävä paikallisesti tallennetut tapahtumat manuaalisesti viemällä .ics-tiedostoon ja tuomalla sitten. Löydät molemmat vienti/tuonti-painikkeet päänäytön valikosta.\n\nTämän jälkeen voit poistaa vanhan version, jonka sovelluksen asetusten yläosassa on Päivitä Pro-painike. Tämän jälkeen sinun on vain nollattava sovellusasetuksesi.</string>
+
+    <!-- Widget titles -->
+    <string name="widget_monthly">Kalenteri kuukausittain</string>
+    <string name="widget_list">Kalenteri tapahtumaluettelo</string>
+    <string name="widget_todays_date">Kalenteri tänään</string>
+
+    <!-- Event -->
+    <string name="event">Tapahtuma</string>
+    <string name="edit_event">Muokkaa Tapahtumaa</string>
+    <string name="new_event">Uusi Tapahtuma</string>
+    <string name="create_new_event">Luo uusi tapahtuma</string>
+    <string name="duplicate_event">Kopio tapahtuma</string>
+    <string name="title_empty">Aihe ei voi olla tyhjä</string>
+    <string name="end_before_start">Tapahtuma ei voi päättyä ennen kuin se alkaa.</string>
+    <string name="event_added">Tapahtuma lisättiin onnistuneesti</string>
+    <string name="event_updated">Tapahtuma päivitettiin onnistuneesti</string>
+    <string name="filter_events_by_type">Suodata tapahtumat tyypeittäin</string>
+    <string name="please_fill_location">Täytä sijainti, joka näytetään kartalla</string>
+    <string name="public_event_notification_text">Tapahtuma tulossa</string>
+
+    <!-- Event Repetition -->
+    <string name="repetition">Toisto</string>
+    <string name="no_repetition">Ei toistoa</string>
+    <string name="daily">Päivittäin</string>
+    <string name="weekly">Viikottain</string>
+    <string name="monthly">Kuukausittain</string>
+    <string name="yearly">Vuosittain</string>
+    <string name="weeks_raw">viikot</string>
+    <string name="months_raw">kuukaudet</string>
+    <string name="years_raw">vuodet</string>
+    <string name="repeat_till">Toista kunnes</string>
+    <string name="forever">Aina</string>
+    <string name="event_is_repeatable">Tapahtuma on toistettavissa</string>
+    <string name="selection_contains_repetition">Valinta sisältää toistettavia tapahtumia</string>
+    <string name="delete_one_only">Poista vain valittu esiintymä</string>
+    <string name="delete_future_occurrences">Poista tämä ja seuraavat esiintymät</string>
+    <string name="delete_all_occurrences">Poista kaikki esiintymät</string>
+    <string name="update_one_only">Päivitä vain valittu esiintymä</string>
+    <string name="update_all_occurrences">Päivitä kaikki esiintymät</string>
+    <string name="repeat_till_date">Toista päivään</string>
+    <string name="stop_repeating_after_x">Lopeta toistaminen x esiintymän jälkeen</string>
+    <string name="repeat_forever">Toista aina</string>
+    <string name="times">kertaa</string>
+    <string name="repeat">Toistaa</string>
+    <string name="repeat_on">Toista</string>
+    <string name="every_day">Joka päivä</string>
+    <string name="selected_days">Valittuina päivinä</string>
+    <string name="the_same_day">Samana päivänä</string>
+    <string name="the_last_day">Viimeisenä päivänä</string>
+    <string name="repeat_on_the_same_day_monthly">Toista samana päivänä joka kuukausi</string>
+    <string name="repeat_on_the_last_day_monthly">Toista joka kuun viimeisenä päivänä</string>
+    <string name="repeat_on_the_same_day_yearly">Toista joka vuosi samana päivänä</string>
+    <string name="repeat_every_m">Toista joka</string>
+    <string name="every_m">Joka</string>
+    <string name="first_m">ensimmäinen</string>
+    <string name="second_m">toinen</string>
+    <string name="third_m">kolmas</string>
+    <string name="fourth_m">neljäs</string>
+    <string name="last_m">viimeinen</string>
+
+    <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
+    <!-- used in repetition, like "Every first Sunday" -->
+    <string name="repeat_every_f">Toista jokaisena</string>
+    <string name="every_f">Jokaisena</string>
+    <string name="first_f">ensimmäisenä</string>
+    <string name="second_f">toisena</string>
+    <string name="third_f">kolmantena</string>
+    <string name="fourth_f">neljäntenä</string>
+    <string name="last_f">viimeisenä</string>
+
+    <!-- Birthdays -->
+    <string name="birthdays">Syntymäpäivät</string>
+    <string name="add_birthdays">Lisää yhteystietojen syntymäpäivät</string>
+    <string name="no_birthdays">Syntymäpäiviä ei löytynyt</string>
+    <string name="no_new_birthdays">Uusia syntymäpäiviä ei löytynyt</string>
+    <string name="birthdays_added">Syntymäpäivät lisättiin onnistunesti</string>
+
+    <!-- Anniversaries -->
+    <string name="anniversaries">Vuosipäivät</string>
+    <string name="add_anniversaries">Lisää yhteystietojen vuosipäivät</string>
+    <string name="no_anniversaries">Vuosipäiviä ei löytynyt</string>
+    <string name="no_new_anniversaries">Uusia vuosipäiviä ei löytynyt</string>
+    <string name="anniversaries_added">Vuosipäivät lisättiin onnistuneesti</string>
+
+    <!-- Event Reminders -->
+    <string name="reminder">Muistutus</string>
+    <string name="before">ennen</string>
+    <string name="add_another_reminder">Lisää toinen muistutus</string>
+    <string name="event_reminders">Tapahtumamuistutukset</string>
+
+    <!-- Event attendees -->
+    <string name="add_another_attendee">Lisää toinen osallistuja</string>
+    <string name="my_status">Tilani:</string>
+    <string name="going">Osallistun</string>
+    <string name="not_going">En osallistu</string>
+    <string name="maybe_going">Ehkä osallistun</string>
+    <string name="invited">Kutsuttu</string>
+
+    <!-- Time zones -->
+    <string name="enter_a_country">Anna maa tai aikavyöhyke</string>
+
+    <!-- Export / Import -->
+    <string name="import_events">Tuo tapahtumat</string>
+    <string name="export_events">Vie tapahtumat</string>
+    <string name="import_events_from_ics">Tuo tapahtumat .ics-tiedostosta</string>
+    <string name="export_events_to_ics">Vie tapahtumat .ics-tiedostoon</string>
+    <string name="default_event_type">Oletus tapahtuma tyyppi</string>
+    <string name="export_past_events_too">Vie myös menneet tapahtumat</string>
+    <string name="include_event_types">Sisällytä tapahtumatyypit</string>
+    <string name="filename_without_ics">Tiedostonimi (ilman .ics)</string>
+    <string name="override_event_types">Ohita tiedoston tapahtumatyypit</string>
+
+    <!-- Event details -->
+    <string name="location">Sijainti</string>
+    <string name="description">Kuvaus</string>
+    <string name="all_day">Joka päivä</string>
+
+    <!-- Weekly view -->
+    <string name="week">Viikko</string>
+
+    <!-- Event types -->
+    <string name="event_types">Tapahtuma tyypit</string>
+    <string name="add_new_type">Lisää uusi tyyppi</string>
+    <string name="edit_type">Muokkaa tyyppiä</string>
+    <string name="type_already_exists">Tyyppi tällä otsikolla on jo olemassa</string>
+    <string name="color">Väri</string>
+    <string name="regular_event">Säännöllinen tapahtuma</string>
+    <string name="cannot_delete_default_type">Oletustapahtumatyyppiä ei voi poistaa</string>
+    <string name="select_event_type">Valitse tapahtumatyyppi</string>
+    <string name="move_events_into_default">Siirrä tapahtumat, joihin tapahtuma liittyy, oletustapahtumatyyppiin</string>
+    <string name="remove_affected_events">Poista pysyvästi vaikutusalaan kuuluvat tapahtumat</string>
+    <string name="unsync_caldav_calendar">Jotta voit poistaa CalDAV kalenterin, sen synkronointi täytyy poistaa käytöstä</string>
+
+    <!-- Holidays -->
+    <string name="holidays">Holidays</string>
+    <string name="add_holidays">Lisää juhlapäivät</string>
+    <string name="national_holidays">Kansalliset juhlapäivät</string>
+    <string name="religious_holidays">Uskonnoliset juhlapäivät</string>
+    <string name="holidays_imported_successfully">Juhlapäivät on onnistuneesti tuotu \"Juhlapäivät\" tapahtumatyyppeihin</string>
+    <string name="importing_some_holidays_failed">Joidenkin tapahtumien tuominen epäonnistui</string>
+    <string name="importing_holidays_failed">Juhlapäivien tuominen epäonnistui</string>
+
+    <!-- Settings -->
+    <string name="manage_event_types">Hallitse tapahtumatyyppejä</string>
+    <string name="start_day_at">Päivä alkaa klo</string>
+    <string name="end_day_at">Päivä loppuu klo</string>
+    <string name="allow_customizing_day_count">Salli päivämäärän mukauttaminen</string>
+    <string name="week_numbers">Näytä viikkonumero</string>
+    <string name="vibrate">Värinä muistutusilmoituksen yhteydessä</string>
+    <string name="reminder_sound">Muistutusääni</string>
+    <string name="no_ringtone_picker">Soittoäänen asettamiseen soveltuvaa sovellusta ei löytynyt</string>
+    <string name="no_ringtone_selected">Ei mitään</string>
+    <string name="day_end_before_start">Päivä ei voi päättyä aikaisemmin kuin se alkaa</string>
+    <string name="caldav_sync">CalDAV synkronointi</string>
+    <string name="event_lists">Tapahtumaluettelo</string>
+    <string name="display_past_events">Näytä menneet tapahtumat</string>
+    <string name="replace_description_with_location">Korvaa tapahtuman kuvaus sijainnilla</string>
+    <string name="delete_all_events">Poista kaikki tapahtumat</string>
+    <string name="delete_all_events_confirmation">Haluatko varmasti poistaa kaikki tapahtumat? Tämä jättää tapahtumatyypisi ja muut asetukset ennalleen.</string>
+    <string name="show_a_grid">Näytä ruudukko</string>
+    <string name="loop_reminders">Toista muistutuksia, kunnes ne hylätään</string>
+    <string name="dim_past_events">Himmennä menneet tapahtumat</string>
+    <string name="events">Tapahtumat</string>
+    <string name="reminder_stream">Muistutuksien käyttämä äänen toisto</string>
+    <string name="system_stream">Järjestelmä</string>
+    <string name="alarm_stream">Herätys</string>
+    <string name="notification_stream">Ilmoitus</string>
+    <string name="ring_stream">Soittoääni</string>
+    <string name="use_last_event_reminders">Käytä viimeisten tapahtumien muistutuksia oletusarvoisina uusille tapahtumille</string>
+    <string name="default_reminder_1">Oletus muistutus 1</string>
+    <string name="default_reminder_2">Oletus muistutus 2</string>
+    <string name="default_reminder_3">Oletus muistutus 3</string>
+    <string name="view_to_open_from_widget">Avattava näkymä tapahtumaluettelon pienoisohjelmasta</string>
+    <string name="last_view">Viimenäkymä</string>
+    <string name="new_events">Uusia tapahtumia</string>
+    <string name="default_start_time">Oletus alkamisaika</string>
+    <string name="next_full_hour">Seuraava täysi tunti</string>
+    <string name="default_duration">Oletus kesto</string>
+    <string name="last_used_one">Viimeksi käytetty</string>
+    <string name="other_time">Muu aika</string>
+    <string name="highlight_weekends">Korosta viikonloppuja joistakin näkymistä</string>
+    <string name="allow_changing_time_zones">Salli tapahtumien aikavyöhykkeiden muuttaminen</string>
+
+    <!-- CalDAV sync -->
+    <string name="caldav">CalDAV</string>
+    <string name="select_caldav_calendars">Valitse synkronoitavat kalenterit</string>
+    <string name="manage_synced_calendars">Hallitse synkronoituja kalentereita</string>
+    <string name="store_locally_only">Säilytä vain paikallisesti</string>
+    <string name="refresh_caldav_calendars">Päivitä CalDAV kalenterit</string>
+    <string name="refreshing">Päivitetään…</string>
+    <string name="refreshing_complete">Päivitys valmis</string>
+    <string name="editing_calendar_failed">Kalenterin muokkaaminen epäonnistui</string>
+    <string name="syncing">Synkronoidaan…</string>
+    <string name="synchronization_completed">Synkronointi valmis</string>
+    <string name="select_a_different_caldav_color">Valitse toinen väri (mahdollisesti voidaan käyttää vain paikallisesti)</string>
+    <string name="insufficient_permissions">Ei ole lupaa kirjoittaa valittuun kalenteriin</string>
+    <string name="caldav_event_not_found">Tapahtumaa ei löytynyt. Ota CalDAV-synkronointi käyttöön sopivassa kalenterissa sovelluksen asetuksissa.</string>
+    <string name="no_synchronized_calendars">Synkronoitavia kalentereita ei löytynyt</string>
+
+    <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
+    <!-- used in repetition, like "Every last Sunday" -->
+    <string name="monday_alt">Maanantaisin</string>
+    <string name="tuesday_alt">Tiistaisin</string>
+    <string name="wednesday_alt">Keskiviikkoisin</string>
+    <string name="thursday_alt">Torstaisin</string>
+    <string name="friday_alt">Perjantaisin</string>
+    <string name="saturday_alt">Lauantaisin</string>
+    <string name="sunday_alt">Sunnuntaisin</string>
+
+    <!-- List widget config example events -->
+    <string name="sample_title_1">Treeni</string>
+    <string name="sample_description_1">Jalkapäivä</string>
+    <string name="sample_title_2">Tapaaminen Jonin kanssa</string>
+    <string name="sample_description_2">Torilla</string>
+    <string name="sample_title_3">Kirjasto</string>
+    <string name="sample_title_4">Lounas Marian kanssa</string>
+    <string name="sample_description_4">Kurvin grillillä</string>
+    <string name="sample_title_5">Kahvitauko</string>
+
+    <!-- FAQ -->
+    <string name="faq_1_title">Kuinka voin poistaa \"Lisää juhlapäivät\"-painikkeella tuotuja juhlapäiviä?</string>
+    <string name="faq_1_text">Näin luodut juhlapäivät lisätään uuteen tapahtumatyyppiin nimeltä \"Juhlapäivät\". Siirry kohtaan Asetukset -> Hallitse tapahtumatyyppejä,
+         paina pitkään annettua tapahtuman tyyppiä ja poista se valitsemalla roskakorin kuvaa.</string>
+    <string name="faq_2_title">Voinko synkronoida tapahtumani Google-kalenterin tai muun CalDAVia tukevan palvelun kautta?</string>
+    <string name="faq_2_text">Kyllä, vaihda vain "CalDAV synkronointi" sovelluksen asetuksissa ja valitse synkronoitavat kalenterit. Tarvitset kuitenkin jonkin kolmannen osapuolen sovelluksen, joka hoitaa laitteen ja palvelinten välisen synkronoinnin.
+         Jos haluat synkronoida Google-kalenterin, heidän virallinen Kalenteri-sovelluksensa tekee työn. Muita kalentereita varten tarvitset kolmannen osapuolen synkronointisovittimen, esimerkiksi DAVx5.</string>
+    <string name="faq_3_title">Näen visuaaliset muistutukset, mutta en kuule ääntä. Mitä voin tehdä?</string>
+    <string name="faq_3_text">Ei vain todellisen muistutuksen näyttäminen, vaan järjestelmä vaikuttaa valtavasti äänen toistamiseen. Jos et kuule ääntä, yritä siirtyä sovelluksen asetuksiin,
+         painamalla \"Muistutuksien käyttämä äänen toisto\"-vaihtoehtoa ja vaihtamalla se toiseen arvoon. Jos se ei vieläkään toimi, tarkista ääniasetuksesi, jos tiettyä äänen toistoa ei ole mykistetty.</string>
+    <string name="faq_4_title">Tukeeko sovellus aikavyöhykkeitä?</string>
+    <string name="faq_4_text">Kyllä. Oletuksena kaikki tapahtumat luodaan nykyiselle aikavyöhykkeellesi. Jos haluat muuttaa tapahtuman aikavyöhykettä,
+         sinun on ensin otettava käyttöön aikavyöhykkeen valitsin sovelluksen asetuksissa ja muutettava se sitten Tapahtuman tiedot-näytössä. Se on oletusarvoisesti pois käytöstä, koska useimmat ihmiset eivät tarvitse sitä.</string>
+
+    <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
+    <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
+    <string name="app_title">Simple Calendar Pro - Events &amp; Reminders</string>
+    <!-- Short description has to have less than 80 chars -->
+    <string name="app_short_description">Simple mobile 2020 calendar. Schedule planner &amp; appointment reminder for any day</string>
+    <string name="app_long_description">
+        Simple Calendar Pro is a fully customizable, offline calendar designed to do exactly what a calendar should do. <b>No complicated features, unnecessary permissions and no ads!</b>
+
+        Whether you’re organizing single or recurring events, birthdays, anniversaries, business meetings, appointments or anything else, Simple Calendar Pro makes it <b>easy to stay organized</b>. With an incredible variety of <b>customization options</b> you can customize event reminders, notification sounds, calendar widgets and how the app looks.
+
+        Daily, weekly and monthly views make checking your upcoming events &amp; appointments a breeze. You can even view everything as a simple list of events rather than in calendar view, so you <b>know exactly what’s coming up in your life and when. </b>
+
+        ----------------------------------------------------------
+        <b>Simple Calendar Pro – Features &amp; Benefits</b>
+        ----------------------------------------------------------
+
+        ✔️ No ads or annoying popups
+        ✔️ No internet access needed, giving you more privacy &amp; security
+        ✔️ Only the bare minimum permissions required
+        ✔️ Emphasis on simplicity – does what a calendar needs to do!
+        ✔️ Open source
+        ✔️ Fully customizable themes &amp; calendar / event widgets
+        ✔️ Translated into 29 languages
+        ✔️ Export settings to .txt files to import to another device
+        ✔️ CalDAV calendar sync supported to sync events across devices
+        ✔️ Daily, weekly, monthly, yearly &amp; event views on the calendar
+        ✔️ Supports exporting &amp; importing events via .ics files
+        ✔️ Set multiple event reminders, customize event reminder sound and vibration
+        ✔️ Snooze option for reminders
+        ✔️ Easily add holidays, birthdays, anniversaries &amp; appointments
+        ✔️ Customize events – start time, duration, reminders etc
+        ✔️ Add event attendees to each event
+        ✔️ Use as a personal calendar or a business calendar
+        ✔️ Choose between reminders &amp; email notifications to alert you about an event
+
+        DOWNLOAD SIMPLE CALENDAR PRO – THE SIMPLE OFFLINE CALENDAR WITH NO ADS!
+
+        <b>Check out the full suite of Simple Tools here:</b>
+        https://www.simplemobiletools.com
+
+        <b>Standalone website of Simple Calendar Pro:</b>
+        https://www.simplemobiletools.com/calendar
+
+        <b>Facebook:</b>
+        https://www.facebook.com/simplemobiletools
+
+        <b>Reddit:</b>
+        https://www.reddit.com/r/SimpleMobileTools
+    </string>
+
+    <!--
+        Haven't found some strings? There's more at
+        https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
+    -->
+</resources>
