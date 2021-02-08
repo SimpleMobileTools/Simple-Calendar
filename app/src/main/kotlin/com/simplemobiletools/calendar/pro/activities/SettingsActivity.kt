@@ -430,7 +430,7 @@ class SettingsActivity : SimpleActivity() {
         settings_default_reminder_1.text = getFormattedMinutes(config.defaultReminder1)
         settings_default_reminder_1_holder.setOnClickListener {
             showPickSecondsDialogHelper(config.defaultReminder1) {
-                config.defaultReminder1 = if (it <= 0) it else it / 60
+                config.defaultReminder1 = if (it == -1 || it == 0) it else it / 60
                 settings_default_reminder_1.text = getFormattedMinutes(config.defaultReminder1)
             }
         }
@@ -440,7 +440,7 @@ class SettingsActivity : SimpleActivity() {
         settings_default_reminder_2.text = getFormattedMinutes(config.defaultReminder2)
         settings_default_reminder_2_holder.setOnClickListener {
             showPickSecondsDialogHelper(config.defaultReminder2) {
-                config.defaultReminder2 = if (it <= 0) it else it / 60
+                config.defaultReminder2 = if (it == -1 || it == 0) it else it / 60
                 settings_default_reminder_2.text = getFormattedMinutes(config.defaultReminder2)
             }
         }
@@ -450,7 +450,7 @@ class SettingsActivity : SimpleActivity() {
         settings_default_reminder_3.text = getFormattedMinutes(config.defaultReminder3)
         settings_default_reminder_3_holder.setOnClickListener {
             showPickSecondsDialogHelper(config.defaultReminder3) {
-                config.defaultReminder3 = if (it <= 0) it else it / 60
+                config.defaultReminder3 = if (it == -1 || it == 0) it else it / 60
                 settings_default_reminder_3.text = getFormattedMinutes(config.defaultReminder3)
             }
         }

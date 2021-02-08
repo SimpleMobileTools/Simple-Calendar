@@ -67,6 +67,7 @@ class EventActivity : SimpleActivity() {
     private val EVENT_CALENDAR_ID = "EVENT_CALENDAR_ID"
     private val SELECT_TIME_ZONE_INTENT = 1
 
+    private var mIsAllDayEvent = false
     private var mReminder1Minutes = REMINDER_OFF
     private var mReminder2Minutes = REMINDER_OFF
     private var mReminder3Minutes = REMINDER_OFF
@@ -543,22 +544,22 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun showReminder1Dialog() {
-        showPickSecondsDialogHelper(mReminder1Minutes) {
-            mReminder1Minutes = if (it <= 0) it else it / 60
+        showPickSecondsDialogHelper(mReminder1Minutes, showDuringDayOption = mIsAllDayEvent){
+            mReminder1Minutes = if (it == -1 || it == 0) it else it / 60
             checkReminderTexts()
         }
     }
 
     private fun showReminder2Dialog() {
-        showPickSecondsDialogHelper(mReminder2Minutes) {
-            mReminder2Minutes = if (it <= 0) it else it / 60
+        showPickSecondsDialogHelper(mReminder2Minutes, showDuringDayOption = mIsAllDayEvent){
+            mReminder2Minutes = if (it == -1 || it == 0) it else it / 60
             checkReminderTexts()
         }
     }
 
     private fun showReminder3Dialog() {
-        showPickSecondsDialogHelper(mReminder3Minutes) {
-            mReminder3Minutes = if (it <= 0) it else it / 60
+        showPickSecondsDialogHelper(mReminder3Minutes, showDuringDayOption = mIsAllDayEvent){
+            mReminder3Minutes = if (it == -1 || it == 0) it else it / 60
             checkReminderTexts()
         }
     }
@@ -959,6 +960,7 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun toggleAllDay(isChecked: Boolean) {
+        mIsAllDayEvent = isChecked
         hideKeyboard()
         event_start_time.beGoneIf(isChecked)
         event_end_time.beGoneIf(isChecked)
