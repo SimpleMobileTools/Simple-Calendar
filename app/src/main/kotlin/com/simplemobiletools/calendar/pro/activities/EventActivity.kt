@@ -544,21 +544,21 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun showReminder1Dialog() {
-        showPickSecondsDialogHelper(mReminder1Minutes, showDuringDayOption = mIsAllDayEvent){
+        showPickSecondsDialogHelper(mReminder1Minutes, showDuringDayOption = mIsAllDayEvent) {
             mReminder1Minutes = if (it == -1 || it == 0) it else it / 60
             checkReminderTexts()
         }
     }
 
     private fun showReminder2Dialog() {
-        showPickSecondsDialogHelper(mReminder2Minutes, showDuringDayOption = mIsAllDayEvent){
+        showPickSecondsDialogHelper(mReminder2Minutes, showDuringDayOption = mIsAllDayEvent) {
             mReminder2Minutes = if (it == -1 || it == 0) it else it / 60
             checkReminderTexts()
         }
     }
 
     private fun showReminder3Dialog() {
-        showPickSecondsDialogHelper(mReminder3Minutes, showDuringDayOption = mIsAllDayEvent){
+        showPickSecondsDialogHelper(mReminder3Minutes, showDuringDayOption = mIsAllDayEvent) {
             mReminder3Minutes = if (it == -1 || it == 0) it else it / 60
             checkReminderTexts()
         }
@@ -1060,6 +1060,20 @@ class EventActivity : SimpleActivity() {
         }
 
         val reminders = getReminders()
+        if (!event_all_day.isChecked) {
+            if (reminders.getOrNull(2)?.minutes ?: 0 < -1) {
+                reminders.removeAt(2)
+            }
+
+            if (reminders.getOrNull(1)?.minutes ?: 0 < -1) {
+                reminders.removeAt(1)
+            }
+
+            if (reminders.getOrNull(0)?.minutes ?: 0 < -1) {
+                reminders.removeAt(0)
+            }
+        }
+
         val reminder1 = reminders.getOrNull(0) ?: Reminder(REMINDER_OFF, REMINDER_NOTIFICATION)
         val reminder2 = reminders.getOrNull(1) ?: Reminder(REMINDER_OFF, REMINDER_NOTIFICATION)
         val reminder3 = reminders.getOrNull(2) ?: Reminder(REMINDER_OFF, REMINDER_NOTIFICATION)
