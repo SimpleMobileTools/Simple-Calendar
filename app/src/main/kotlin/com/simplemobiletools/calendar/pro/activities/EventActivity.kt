@@ -150,9 +150,9 @@ class EventActivity : SimpleActivity() {
         } else {
             mEvent = Event(null)
             config.apply {
-                mReminder1Minutes = if (usePreviousEventReminders) lastEventReminderMinutes1 else defaultReminder1
-                mReminder2Minutes = if (usePreviousEventReminders) lastEventReminderMinutes2 else defaultReminder2
-                mReminder3Minutes = if (usePreviousEventReminders) lastEventReminderMinutes3 else defaultReminder3
+                mReminder1Minutes = if (usePreviousEventReminders && lastEventReminderMinutes1 >= -1) lastEventReminderMinutes1 else defaultReminder1
+                mReminder2Minutes = if (usePreviousEventReminders && lastEventReminderMinutes2 >= -1) lastEventReminderMinutes2 else defaultReminder2
+                mReminder3Minutes = if (usePreviousEventReminders && lastEventReminderMinutes3 >= -1) lastEventReminderMinutes3 else defaultReminder3
             }
 
             if (savedInstanceState == null) {
@@ -454,27 +454,6 @@ class EventActivity : SimpleActivity() {
         checkAttendees()
     }
 
-    private fun addDefValuesToNewEvent() {
-        var newStartTS: Long
-        var newEndTS: Long
-        getStartEndTimes().apply {
-            newStartTS = first
-            newEndTS = second
-        }
-
-        mEvent.apply {
-            startTS = newStartTS
-            endTS = newEndTS
-            reminder1Minutes = mReminder1Minutes
-            reminder1Type = mReminder1Type
-            reminder2Minutes = mReminder2Minutes
-            reminder2Type = mReminder2Type
-            reminder3Minutes = mReminder3Minutes
-            reminder3Type = mReminder3Type
-            eventType = mEventTypeId
-        }
-    }
-
     private fun setupNewEvent() {
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
         event_title.requestFocus()
@@ -524,6 +503,27 @@ class EventActivity : SimpleActivity() {
         }
         addDefValuesToNewEvent()
         checkAttendees()
+    }
+
+    private fun addDefValuesToNewEvent() {
+        var newStartTS: Long
+        var newEndTS: Long
+        getStartEndTimes().apply {
+            newStartTS = first
+            newEndTS = second
+        }
+
+        mEvent.apply {
+            startTS = newStartTS
+            endTS = newEndTS
+            reminder1Minutes = mReminder1Minutes
+            reminder1Type = mReminder1Type
+            reminder2Minutes = mReminder2Minutes
+            reminder2Type = mReminder2Type
+            reminder3Minutes = mReminder3Minutes
+            reminder3Type = mReminder3Type
+            eventType = mEventTypeId
+        }
     }
 
     private fun checkAttendees() {
