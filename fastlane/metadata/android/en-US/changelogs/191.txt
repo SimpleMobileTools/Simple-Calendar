@@ -1,0 +1,4 @@
+ * Allow adding during-day reminders to all-day events
+ * Fixed some importing/exporting related glitches
+ * Added a White theme with special handling
+ * Some stability and translation improvements
