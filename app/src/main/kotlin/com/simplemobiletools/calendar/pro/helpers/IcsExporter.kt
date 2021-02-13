@@ -95,7 +95,9 @@ class IcsExporter {
                         writeLn("$ATTENDEE$MAILTO$attendee")
                     }
                 }
-                writeLn("$TRIGGER-${Parser().getDurationCode(reminder.minutes.toLong())}")
+
+                val sign = if (reminder.minutes < -1) "" else "-"
+                writeLn("$TRIGGER$sign${Parser().getDurationCode(Math.abs(reminder.minutes.toLong()))}")
                 writeLn(END_ALARM)
             }
         }

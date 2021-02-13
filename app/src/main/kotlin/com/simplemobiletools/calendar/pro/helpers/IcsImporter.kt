@@ -113,7 +113,11 @@ class IcsImporter(val activity: SimpleActivity) {
                             curReminderTriggerAction = if (action == DISPLAY) REMINDER_NOTIFICATION else REMINDER_EMAIL
                         }
                     } else if (line.startsWith(TRIGGER)) {
-                        curReminderTriggerMinutes = Parser().parseDurationSeconds(line.substring(TRIGGER.length)) / 60
+                        val value = line.substring(TRIGGER.length)
+                        curReminderTriggerMinutes = Parser().parseDurationSeconds(value) / 60
+                        if (!value.startsWith("-")) {
+                            curReminderTriggerMinutes *= -1
+                        }
                     } else if (line.startsWith(CATEGORY_COLOR)) {
                         val color = line.substring(CATEGORY_COLOR.length)
                         if (color.trimStart('-').areDigitsOnly()) {
