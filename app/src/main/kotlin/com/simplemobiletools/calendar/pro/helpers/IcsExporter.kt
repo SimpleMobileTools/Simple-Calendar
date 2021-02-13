@@ -29,6 +29,9 @@ class IcsExporter {
         }
 
         ensureBackgroundThread {
+            val reminderLabel = activity.getString(R.string.reminder)
+            val exportTime = Formatter.getExportedTime(System.currentTimeMillis())
+
             calendars = activity.calDAVHelper.getCalDAVCalendars("", false)
             if (showExportingToast) {
                 activity.toast(R.string.exporting)
@@ -41,12 +44,12 @@ class IcsExporter {
                 for (event in events) {
                     out.writeLn(BEGIN_EVENT)
                     event.title.replace("\n", "\\n").let { if (it.isNotEmpty()) out.writeLn("$SUMMARY:$it") }
-                    event.description.replace("\n", "\\n").let { if (it.isNotEmpty()) out.writeLn("$DESCRIPTION$it") }
+                    event.description.replace("\n", "\\n").let { out.writeLn("$DESCRIPTION$it") }
                     event.importId.let { if (it.isNotEmpty()) out.writeLn("$UID$it") }
                     event.eventType.let { out.writeLn("$CATEGORY_COLOR${activity.eventTypesDB.getEventTypeWithId(it)?.color}") }
                     event.eventType.let { out.writeLn("$CATEGORIES${activity.eventTypesDB.getEventTypeWithId(it)?.title}") }
                     event.lastUpdated.let { out.writeLn("$LAST_MODIFIED:${Formatter.getExportedTime(it)}") }
-                    event.location.let { if (it.isNotEmpty()) out.writeLn("$LOCATION:$it") }
+                    event.location.let { out.writeLn("$LOCATION:$it") }
 
                     if (event.getIsAllDay()) {
                         out.writeLn("$DTSTART;$VALUE=$DATE:${Formatter.getDayCodeFromTS(event.startTS)}")
@@ -56,10 +59,11 @@ class IcsExporter {
                         event.endTS.let { out.writeLn("$DTEND:${Formatter.getExportedTime(it * 1000L)}") }
                     }
 
+                    out.writeLn("$DTSTAMP$exportTime")
                     out.writeLn("$STATUS$CONFIRMED")
                     Parser().getRepeatCode(event).let { if (it.isNotEmpty()) out.writeLn("$RRULE$it") }
 
-                    fillReminders(event, out)
+                    fillReminders(event, out, reminderLabel)
                     fillIgnoredOccurrences(event, out)
 
                     eventsExported++
@@ -76,11 +80,12 @@ class IcsExporter {
         }
     }
 
-    private fun fillReminders(event: Event, out: BufferedWriter) {
+    private fun fillReminders(event: Event, out: BufferedWriter, reminderLabel: String) {
         event.getReminders().forEach {
             val reminder = it
             out.apply {
                 writeLn(BEGIN_ALARM)
+                writeLn("$DESCRIPTION$reminderLabel")
                 if (reminder.type == REMINDER_NOTIFICATION) {
                     writeLn("$ACTION$DISPLAY")
                 } else {

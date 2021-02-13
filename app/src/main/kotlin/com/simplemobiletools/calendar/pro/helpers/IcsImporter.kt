@@ -107,7 +107,6 @@ class IcsImporter(val activity: SimpleActivity) {
                             parseRepeatRule()
                         }
                     } else if (line.startsWith(ACTION)) {
-                        isNotificationDescription = true
                         val action = line.substring(ACTION.length)
                         isProperReminderAction = action == DISPLAY || action == EMAIL
                         if (isProperReminderAction) {
@@ -142,6 +141,8 @@ class IcsImporter(val activity: SimpleActivity) {
                         curRecurrenceDayCode = Formatter.getDayCodeFromTS(timestamp)
                     } else if (line.startsWith(SEQUENCE)) {
                         isSequence = true
+                    } else if (line == BEGIN_ALARM) {
+                        isNotificationDescription = true
                     } else if (line == END_ALARM) {
                         if (isProperReminderAction && curReminderTriggerMinutes != REMINDER_OFF) {
                             curReminderMinutes.add(curReminderTriggerMinutes)
