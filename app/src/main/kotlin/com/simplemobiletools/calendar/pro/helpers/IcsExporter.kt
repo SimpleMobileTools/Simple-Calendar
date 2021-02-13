@@ -18,6 +18,7 @@ class IcsExporter {
         EXPORT_FAIL, EXPORT_OK, EXPORT_PARTIAL
     }
 
+    private val MAX_LINE_LENGTH = 75
     private var eventsExported = 0
     private var eventsFailed = 0
     private var calendars = ArrayList<CalDAVCalendar>()
@@ -44,7 +45,6 @@ class IcsExporter {
                 for (event in events) {
                     out.writeLn(BEGIN_EVENT)
                     event.title.replace("\n", "\\n").let { if (it.isNotEmpty()) out.writeLn("$SUMMARY:$it") }
-                    event.description.replace("\n", "\\n").let { out.writeLn("$DESCRIPTION$it") }
                     event.importId.let { if (it.isNotEmpty()) out.writeLn("$UID$it") }
                     event.eventType.let { out.writeLn("$CATEGORY_COLOR${activity.eventTypesDB.getEventTypeWithId(it)?.color}") }
                     event.eventType.let { out.writeLn("$CATEGORIES${activity.eventTypesDB.getEventTypeWithId(it)?.title}") }
@@ -63,6 +63,7 @@ class IcsExporter {
                     out.writeLn("$STATUS$CONFIRMED")
                     Parser().getRepeatCode(event).let { if (it.isNotEmpty()) out.writeLn("$RRULE$it") }
 
+                    fillDescription(event.description.replace("\n", "\\n"), out)
                     fillReminders(event, out, reminderLabel)
                     fillIgnoredOccurrences(event, out)
 
@@ -106,6 +107,27 @@ class IcsExporter {
     private fun fillIgnoredOccurrences(event: Event, out: BufferedWriter) {
         event.repetitionExceptions.forEach {
             out.writeLn("$EXDATE:$it")
+        }
+    }
+
+    private fun fillDescription(description: String, out: BufferedWriter) {
+        var index = 0
+        var isFirstLine = true
+
+        while (index < description.length) {
+            val substring = description.substring(index, Math.min(index + MAX_LINE_LENGTH, description.length))
+            if (isFirstLine) {
+                out.writeLn("$DESCRIPTION$substring")
+            } else {
+                out.writeLn("\t$substring")
+            }
+
+            isFirstLine = false
+            index += MAX_LINE_LENGTH
+        }
+
+        if (isFirstLine) {
+            out.writeLn("$DESCRIPTION$description")
         }
     }
 }
