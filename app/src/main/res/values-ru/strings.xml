@@ -6,7 +6,7 @@
     <string name="daily_view">День</string>
     <string name="weekly_view">Неделя</string>
     <string name="monthly_view">Месяц</string>
-    <string name="monthly_daily_view">Monthly + daily view</string>
+    <string name="monthly_daily_view">Месяц и день</string>
     <string name="yearly_view">Год</string>
     <string name="simple_event_list">Список событий</string>
     <string name="no_upcoming_events">Похоже, нет предстоящих событий.</string>
@@ -30,7 +30,7 @@
     <string name="event_added">Событие успешно добавлено</string>
     <string name="event_updated">Событие успешно обновлено</string>
     <string name="filter_events_by_type">Фильтровать события по типу</string>
-    <string name="please_fill_location">Пожалуйста, укажите место, которое будет показано на карте</string>
+    <string name="please_fill_location">Укажите место, которое будет показано на карте</string>
     <string name="public_event_notification_text">Предстоящее событие</string>
 
     <!-- Event Repetition -->
@@ -171,7 +171,7 @@
     <string name="display_past_events">Показывать прошедшие события</string>
     <string name="replace_description_with_location">Заменять описание события местоположением</string>
     <string name="delete_all_events">Удалить все события</string>
-    <string name="delete_all_events_confirmation">Вы действительно хотите удалить все события? Это не затронет типы событий и другие настройки.</string>
+    <string name="delete_all_events_confirmation">Удалить все события? Это не затронет типы событий и другие настройки.</string>
     <string name="show_a_grid">Показывать сетку</string>
     <string name="loop_reminders">Циклические напоминания до отключения</string>
     <string name="dim_past_events">Показывать прошедшие события тусклыми</string>
@@ -209,7 +209,7 @@
     <string name="synchronization_completed">Синхронизация завершена</string>
     <string name="select_a_different_caldav_color">Выберите другой цвет (применяется локально)</string>
     <string name="insufficient_permissions">Запись в выбранный календарь запрещена</string>
-    <string name="caldav_event_not_found">Событие не найдено. Пожалуйста, включите CalDAV-синхронизацию для соответствующего календаря в настройках приложения.</string>
+    <string name="caldav_event_not_found">Событие не найдено. Включите CalDAV-синхронизацию для соответствующего календаря в настройках приложения.</string>
     <string name="no_synchronized_calendars">Синхронизируемые календари не найдены</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
@@ -250,7 +250,7 @@
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Simple Calendar Pro - события и напоминания</string>
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Simple mobile 2020 calendar. Планировщик и напоминание о встрече на любой день</string>
+    <string name="app_short_description">Простой мобильный календарь. Планировщик и напоминание о встрече на любой день.</string>
     <string name="app_long_description">
         Simple Calendar Pro — это полностью настраиваемый автономный календарь, предназначенный для выполнения именно того, что должен делать календарь. <b>Никаких непонятных функций, ненужных разрешений и рекламы!</b>
 
