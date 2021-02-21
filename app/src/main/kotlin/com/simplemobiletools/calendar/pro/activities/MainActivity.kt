@@ -790,7 +790,11 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     private fun getThisWeekDateTime(): String {
-        var thisweek = DateTime().withZone(DateTimeZone.UTC).withDayOfWeek(1).withHourOfDay(12).minusDays(if (config.isSundayFirst) 1 else 0)
+        val currentOffsetHours = TimeZone.getDefault().rawOffset / 1000 / 60 / 60
+
+        // not great, not terrible
+        val useHours = if (currentOffsetHours >= 10) 8 else 12
+        var thisweek = DateTime().withZone(DateTimeZone.UTC).withDayOfWeek(1).withHourOfDay(useHours).minusDays(if (config.isSundayFirst) 1 else 0)
         if (DateTime().minusDays(7).seconds() > thisweek.seconds()) {
             thisweek = thisweek.plusDays(7)
         }
