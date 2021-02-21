@@ -6,6 +6,7 @@
     <string name="daily_view">Daily view</string>
     <string name="weekly_view">Weekly view</string>
     <string name="monthly_view">Monthly view</string>
+    <string name="monthly_daily_view">Monthly + daily view</string>
     <string name="yearly_view">Yearly view</string>
     <string name="simple_event_list">Simple event list</string>
     <string name="no_upcoming_events">Seems like you don\'t have any upcoming events.</string>

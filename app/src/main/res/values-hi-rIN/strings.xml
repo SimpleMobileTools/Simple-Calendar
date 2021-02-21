@@ -6,6 +6,7 @@
     <string name="daily_view">Daily view</string>
     <string name="weekly_view">Weekly view</string>
     <string name="monthly_view">मासिक दृश्य</string>
+    <string name="monthly_daily_view">Monthly + daily view</string>
     <string name="yearly_view">वार्षिक दृश्य</string>
     <string name="simple_event_list">सरल इवेंट सूची</string>
     <string name="no_upcoming_events">Seems like you don\'t have any upcoming events.</string>

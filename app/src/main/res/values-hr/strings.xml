@@ -6,6 +6,7 @@
     <string name="daily_view">Dnevni pregled</string>
     <string name="weekly_view">Tjedni pregled</string>
     <string name="monthly_view">Mjesečni pregled</string>
+    <string name="monthly_daily_view">Monthly + daily view</string>
     <string name="yearly_view">Godišnji pregled</string>
     <string name="simple_event_list">Jednostavan popis događaja</string>
     <string name="no_upcoming_events">Izgleda da nemate nadolazećih događaja.</string>

@@ -6,6 +6,7 @@
     <string name="daily_view">প্রাত্যহিক ভিউ</string>
     <string name="weekly_view">সাপ্তাহিক ভিউ</string>
     <string name="monthly_view">মাসিক ভিউ</string>
+    <string name="monthly_daily_view">Monthly + daily view</string>
     <string name="yearly_view">বাৎসরিক ভিউ</string>
     <string name="simple_event_list">ইভেন্টগুলির সহজ তালিকা</string>
     <string name="no_upcoming_events">মনে হচ্ছে সামনে তোমার কোন ইভেন্ট নেই</string>

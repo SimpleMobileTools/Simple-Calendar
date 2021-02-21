@@ -6,6 +6,7 @@
     <string name="daily_view">Tagesansicht</string>
     <string name="weekly_view">Wochenansicht</string>
     <string name="monthly_view">Monatsansicht</string>
+    <string name="monthly_daily_view">Monthly + daily view</string>
     <string name="yearly_view">Jahresansicht</string>
     <string name="simple_event_list">Einfache Terminliste</string>
     <string name="no_upcoming_events">Scheint so, als hättest du keine anstehenden Termine.</string>

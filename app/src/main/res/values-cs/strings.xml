@@ -6,6 +6,7 @@
     <string name="daily_view">Denní</string>
     <string name="weekly_view">Týdenní</string>
     <string name="monthly_view">Měsíční</string>
+    <string name="monthly_daily_view">Monthly + daily view</string>
     <string name="yearly_view">Roční</string>
     <string name="simple_event_list">Jednoduchý seznam</string>
     <string name="no_upcoming_events">Nemáte žádné nadcházející události.</string>

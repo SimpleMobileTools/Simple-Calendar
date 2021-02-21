@@ -6,6 +6,7 @@
     <string name="daily_view">День</string>
     <string name="weekly_view">Неделя</string>
     <string name="monthly_view">Месяц</string>
+    <string name="monthly_daily_view">Monthly + daily view</string>
     <string name="yearly_view">Год</string>
     <string name="simple_event_list">Список событий</string>
     <string name="no_upcoming_events">Похоже, нет предстоящих событий.</string>

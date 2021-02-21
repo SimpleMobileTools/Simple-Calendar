@@ -6,6 +6,7 @@
     <string name="daily_view">日</string>
     <string name="weekly_view">週</string>
     <string name="monthly_view">月</string>
+    <string name="monthly_daily_view">Monthly + daily view</string>
     <string name="yearly_view">年</string>
     <string name="simple_event_list">シンプル 予定 リスト</string>
     <string name="no_upcoming_events">今後の予定はありません。</string>

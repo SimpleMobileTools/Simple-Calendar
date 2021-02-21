@@ -6,6 +6,7 @@
     <string name="daily_view">Vue quotidienne</string>
     <string name="weekly_view">Vue hebdomadaire</string>
     <string name="monthly_view">Vue mensuelle</string>
+    <string name="monthly_daily_view">Monthly + daily view</string>
     <string name="yearly_view">Vue annuelle</string>
     <string name="simple_event_list">Liste simple d\’événements</string>
     <string name="no_upcoming_events">Il semblerait que vous n\’ayez aucun événement à venir.</string>

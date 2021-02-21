@@ -6,6 +6,7 @@
     <string name="daily_view">Dag</string>
     <string name="weekly_view">Week</string>
     <string name="monthly_view">Maand</string>
+    <string name="monthly_daily_view">Monthly + daily view</string>
     <string name="yearly_view">Jaar</string>
     <string name="simple_event_list">Lijst</string>
     <string name="no_upcoming_events">Niets gepland.</string>
