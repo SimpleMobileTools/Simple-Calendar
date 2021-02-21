@@ -50,6 +50,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     private var dimPastEvents = true
     private var highlightWeekends = false
     private var isPrintVersion = false
+    private var isMonthDayView = false
     private var allEvents = ArrayList<MonthViewEvent>()
     private var bgRectF = RectF()
     private var dayLetters = ArrayList<String>()
@@ -92,7 +93,8 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         setupCurrentDayOfWeekIndex()
     }
 
-    fun updateDays(newDays: ArrayList<DayMonthly>) {
+    fun updateDays(newDays: ArrayList<DayMonthly>, isMonthDayView: Boolean) {
+        this.isMonthDayView = isMonthDayView
         days = newDays
         showWeekNumbers = config.showWeekNumbers
         horizontalOffset = if (showWeekNumbers) eventTitleHeight * 2 else 0
@@ -129,7 +131,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         dayVerticalOffsets.clear()
         measureDaySize(canvas)
 
-        if (config.showGrid) {
+        if (config.showGrid && !isMonthDayView) {
             drawGrid(canvas)
         }
 
@@ -159,8 +161,10 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
             }
         }
 
-        for (event in allEvents) {
-            drawEvent(event, canvas)
+        if (!isMonthDayView) {
+            for (event in allEvents) {
+                drawEvent(event, canvas)
+            }
         }
     }
 

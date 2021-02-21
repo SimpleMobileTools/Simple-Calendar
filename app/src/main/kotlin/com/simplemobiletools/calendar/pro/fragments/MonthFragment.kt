@@ -142,7 +142,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
     }
 
     private fun updateDays(days: ArrayList<DayMonthly>) {
-        mHolder.month_view_wrapper.updateDays(days) {
+        mHolder.month_view_wrapper.updateDays(days, true) {
             (activity as MainActivity).openDayFromMonthly(Formatter.getDateTimeFromCode(it.code))
         }
     }
