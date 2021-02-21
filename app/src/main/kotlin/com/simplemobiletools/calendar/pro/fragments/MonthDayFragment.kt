@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RelativeLayout
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.config
@@ -32,7 +32,7 @@ class MonthDayFragment : Fragment(), MonthlyCalendar {
     var listener: NavigationListener? = null
 
     lateinit var mRes: Resources
-    lateinit var mHolder: RelativeLayout
+    lateinit var mHolder: ConstraintLayout
     lateinit var mConfig: Config
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

@@ -216,12 +216,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
 
     private fun measureDaySize(canvas: Canvas) {
         dayWidth = (canvas.width - horizontalOffset) / 7f
-        dayHeight = if (isMonthDayView) {
-            weekDaysLetterHeight * 1.2f
-        } else {
-            (canvas.height - weekDaysLetterHeight) / ROW_COUNT.toFloat()
-        }
-
+        dayHeight = (canvas.height - weekDaysLetterHeight) / ROW_COUNT.toFloat()
         val availableHeightForEvents = dayHeight.toInt() - weekDaysLetterHeight
         maxEventsPerDay = availableHeightForEvents / eventTitleHeight
     }

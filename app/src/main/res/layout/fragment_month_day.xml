@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/month_day_calendar_holder"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,6 +9,30 @@
     <com.simplemobiletools.calendar.pro.views.MonthViewWrapper
         android:id="@+id/month_day_view_wrapper"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/month_day_events_list"
+        app:layout_constraintHeight_percent="0.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</RelativeLayout>
+    <include
+        android:id="@+id/month_day_view_divider"
+        layout="@layout/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@+id/month_day_view_wrapper"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/month_day_view_wrapper" />
+
+    <com.simplemobiletools.commons.views.MyRecyclerView
+        android:id="@+id/month_day_events_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        android:scrollbars="vertical"
+        app:layoutManager="com.simplemobiletools.commons.views.MyLinearLayoutManager"
+        app:layout_constraintHeight_percent="0.7"
+        app:layout_constraintTop_toBottomOf="@+id/month_day_view_wrapper" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
