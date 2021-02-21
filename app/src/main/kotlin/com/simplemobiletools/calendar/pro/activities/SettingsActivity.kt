@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.TimePickerDialog
 import android.content.Intent
 import android.media.AudioManager
+import android.media.RingtoneManager
 import android.os.Bundle
 import android.view.Menu
 import com.simplemobiletools.calendar.pro.R
@@ -333,14 +334,14 @@ class SettingsActivity : SimpleActivity() {
         settings_reminder_sound.text = config.reminderSoundTitle
 
         settings_reminder_sound_holder.setOnClickListener {
-            SelectAlarmSoundDialog(this, config.reminderSoundUri, config.reminderAudioStream, GET_RINGTONE_URI, ALARM_SOUND_TYPE_NOTIFICATION, false,
+            SelectAlarmSoundDialog(this, config.reminderSoundUri, config.reminderAudioStream, GET_RINGTONE_URI, RingtoneManager.TYPE_NOTIFICATION, false,
                 onAlarmPicked = {
                     if (it != null) {
                         updateReminderSound(it)
                     }
                 }, onAlarmSoundDeleted = {
                     if (it.uri == config.reminderSoundUri) {
-                        val defaultAlarm = getDefaultAlarmSound(ALARM_SOUND_TYPE_NOTIFICATION)
+                        val defaultAlarm = getDefaultAlarmSound(RingtoneManager.TYPE_NOTIFICATION)
                         updateReminderSound(defaultAlarm)
                     }
                 })

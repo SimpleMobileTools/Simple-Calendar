@@ -2,11 +2,10 @@ package com.simplemobiletools.calendar.pro.helpers
 
 import android.content.Context
 import android.media.AudioManager
+import android.media.RingtoneManager
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.scheduleCalDAVSync
 import com.simplemobiletools.commons.extensions.getDefaultAlarmTitle
-import com.simplemobiletools.commons.extensions.getDefaultAlarmUri
-import com.simplemobiletools.commons.helpers.ALARM_SOUND_TYPE_NOTIFICATION
 import com.simplemobiletools.commons.helpers.BaseConfig
 import com.simplemobiletools.commons.helpers.DAY_MINUTES
 import java.util.*
@@ -29,11 +28,11 @@ class Config(context: Context) : BaseConfig(context) {
         set(vibrate) = prefs.edit().putBoolean(VIBRATE, vibrate).apply()
 
     var reminderSoundUri: String
-        get() = prefs.getString(REMINDER_SOUND_URI, context.getDefaultAlarmUri(ALARM_SOUND_TYPE_NOTIFICATION).toString())!!
+        get() = prefs.getString(REMINDER_SOUND_URI, RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION).toString())!!
         set(reminderSoundUri) = prefs.edit().putString(REMINDER_SOUND_URI, reminderSoundUri).apply()
 
     var reminderSoundTitle: String
-        get() = prefs.getString(REMINDER_SOUND_TITLE, context.getDefaultAlarmTitle(ALARM_SOUND_TYPE_NOTIFICATION))!!
+        get() = prefs.getString(REMINDER_SOUND_TITLE, context.getDefaultAlarmTitle(RingtoneManager.TYPE_NOTIFICATION))!!
         set(reminderSoundTitle) = prefs.edit().putString(REMINDER_SOUND_TITLE, reminderSoundTitle).apply()
 
     var lastSoundUri: String
