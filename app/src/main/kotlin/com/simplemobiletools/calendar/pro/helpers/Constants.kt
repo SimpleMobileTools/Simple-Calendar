@@ -26,6 +26,7 @@ const val EVENTS_LIST_VIEW = 3
 const val WEEKLY_VIEW = 4
 const val DAILY_VIEW = 5
 const val LAST_VIEW = 6
+const val MONTHLY_DAILY_VIEW = 7
 
 const val REMINDER_OFF = -1
 
@@ -76,6 +77,7 @@ const val LAST_EXPORT_PATH = "last_export_path"
 const val EXPORT_PAST_EVENTS = "export_past_events"
 const val WEEKLY_VIEW_ITEM_HEIGHT_MULTIPLIER = "weekly_view_item_height_multiplier"
 const val WEEKLY_VIEW_DAYS = "weekly_view_days"
+const val HIGHLIGHT_WEEKENDS = "highlight_weekends"
 
 // repeat_rule for monthly and yearly repetition
 const val REPEAT_SAME_DAY = 1                           // i.e. 25th every month, or 3rd june (if yearly repetition)
@@ -99,6 +101,7 @@ const val END_ALARM = "END:VALARM"
 const val DTSTART = "DTSTART"
 const val DTEND = "DTEND"
 const val LAST_MODIFIED = "LAST-MODIFIED"
+const val DTSTAMP = "DTSTAMP:"
 const val DURATION = "DURATION:"
 const val SUMMARY = "SUMMARY"
 const val DESCRIPTION = "DESCRIPTION:"
@@ -157,3 +160,11 @@ const val REMINDER_NOTIFICATION = 0
 const val REMINDER_EMAIL = 1
 
 fun getNowSeconds() = System.currentTimeMillis() / 1000L
+
+fun isWeekend(i: Int, isSundayFirst: Boolean): Boolean {
+    return if (isSundayFirst) {
+        i == 0 || i == 6
+    } else {
+        i == 5 || i == 6
+    }
+}

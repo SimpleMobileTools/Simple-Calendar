@@ -230,10 +230,12 @@ class Parser {
             days = Math.floor((remainder / DAY_MINUTES).toDouble()).toInt()
             remainder -= days * DAY_MINUTES
         }
+
         if (remainder >= 60) {
             hours = Math.floor((remainder / 60).toDouble()).toInt()
             remainder -= hours * 60
         }
+
         return "P${days}DT${hours}H${remainder}M0S"
     }
 }

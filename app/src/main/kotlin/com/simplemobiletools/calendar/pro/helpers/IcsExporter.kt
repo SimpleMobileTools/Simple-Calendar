@@ -18,6 +18,7 @@ class IcsExporter {
         EXPORT_FAIL, EXPORT_OK, EXPORT_PARTIAL
     }
 
+    private val MAX_LINE_LENGTH = 75
     private var eventsExported = 0
     private var eventsFailed = 0
     private var calendars = ArrayList<CalDAVCalendar>()
@@ -29,6 +30,9 @@ class IcsExporter {
         }
 
         ensureBackgroundThread {
+            val reminderLabel = activity.getString(R.string.reminder)
+            val exportTime = Formatter.getExportedTime(System.currentTimeMillis())
+
             calendars = activity.calDAVHelper.getCalDAVCalendars("", false)
             if (showExportingToast) {
                 activity.toast(R.string.exporting)
@@ -41,12 +45,11 @@ class IcsExporter {
                 for (event in events) {
                     out.writeLn(BEGIN_EVENT)
                     event.title.replace("\n", "\\n").let { if (it.isNotEmpty()) out.writeLn("$SUMMARY:$it") }
-                    event.description.replace("\n", "\\n").let { if (it.isNotEmpty()) out.writeLn("$DESCRIPTION$it") }
                     event.importId.let { if (it.isNotEmpty()) out.writeLn("$UID$it") }
                     event.eventType.let { out.writeLn("$CATEGORY_COLOR${activity.eventTypesDB.getEventTypeWithId(it)?.color}") }
                     event.eventType.let { out.writeLn("$CATEGORIES${activity.eventTypesDB.getEventTypeWithId(it)?.title}") }
                     event.lastUpdated.let { out.writeLn("$LAST_MODIFIED:${Formatter.getExportedTime(it)}") }
-                    event.location.let { if (it.isNotEmpty()) out.writeLn("$LOCATION:$it") }
+                    event.location.let { out.writeLn("$LOCATION:$it") }
 
                     if (event.getIsAllDay()) {
                         out.writeLn("$DTSTART;$VALUE=$DATE:${Formatter.getDayCodeFromTS(event.startTS)}")
@@ -56,10 +59,12 @@ class IcsExporter {
                         event.endTS.let { out.writeLn("$DTEND:${Formatter.getExportedTime(it * 1000L)}") }
                     }
 
+                    out.writeLn("$DTSTAMP$exportTime")
                     out.writeLn("$STATUS$CONFIRMED")
                     Parser().getRepeatCode(event).let { if (it.isNotEmpty()) out.writeLn("$RRULE$it") }
 
-                    fillReminders(event, out)
+                    fillDescription(event.description.replace("\n", "\\n"), out)
+                    fillReminders(event, out, reminderLabel)
                     fillIgnoredOccurrences(event, out)
 
                     eventsExported++
@@ -76,11 +81,12 @@ class IcsExporter {
         }
     }
 
-    private fun fillReminders(event: Event, out: BufferedWriter) {
+    private fun fillReminders(event: Event, out: BufferedWriter, reminderLabel: String) {
         event.getReminders().forEach {
             val reminder = it
             out.apply {
                 writeLn(BEGIN_ALARM)
+                writeLn("$DESCRIPTION$reminderLabel")
                 if (reminder.type == REMINDER_NOTIFICATION) {
                     writeLn("$ACTION$DISPLAY")
                 } else {
@@ -90,7 +96,9 @@ class IcsExporter {
                         writeLn("$ATTENDEE$MAILTO$attendee")
                     }
                 }
-                writeLn("$TRIGGER-${Parser().getDurationCode(reminder.minutes.toLong())}")
+
+                val sign = if (reminder.minutes < -1) "" else "-"
+                writeLn("$TRIGGER$sign${Parser().getDurationCode(Math.abs(reminder.minutes.toLong()))}")
                 writeLn(END_ALARM)
             }
         }
@@ -99,6 +107,27 @@ class IcsExporter {
     private fun fillIgnoredOccurrences(event: Event, out: BufferedWriter) {
         event.repetitionExceptions.forEach {
             out.writeLn("$EXDATE:$it")
+        }
+    }
+
+    private fun fillDescription(description: String, out: BufferedWriter) {
+        var index = 0
+        var isFirstLine = true
+
+        while (index < description.length) {
+            val substring = description.substring(index, Math.min(index + MAX_LINE_LENGTH, description.length))
+            if (isFirstLine) {
+                out.writeLn("$DESCRIPTION$substring")
+            } else {
+                out.writeLn("\t$substring")
+            }
+
+            isFirstLine = false
+            index += MAX_LINE_LENGTH
+        }
+
+        if (isFirstLine) {
+            out.writeLn("$DESCRIPTION$description")
         }
     }
 }

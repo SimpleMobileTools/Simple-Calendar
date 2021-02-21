@@ -6,6 +6,7 @@
     <string name="daily_view">Dienos peržiūra</string>
     <string name="weekly_view">Savaitės peržiūra</string>
     <string name="monthly_view">Mėnesio peržiūra</string>
+    <string name="monthly_daily_view">Monthly + daily view</string>
     <string name="yearly_view">Metų peržiūra</string>
     <string name="simple_event_list">Paprastas įvykių sąrašas</string>
     <string name="no_upcoming_events">Atrodo jog Jūs neturite jokių įvyksiančių įvykių.</string>

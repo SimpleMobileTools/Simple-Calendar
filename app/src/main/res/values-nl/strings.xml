@@ -6,6 +6,7 @@
     <string name="daily_view">Dag</string>
     <string name="weekly_view">Week</string>
     <string name="monthly_view">Maand</string>
+    <string name="monthly_daily_view">Maand + dag</string>
     <string name="yearly_view">Jaar</string>
     <string name="simple_event_list">Lijst</string>
     <string name="no_upcoming_events">Niets gepland.</string>
@@ -158,7 +159,7 @@
     <string name="manage_event_types">Afspraaktypes beheren</string>
     <string name="start_day_at">Dag starten om</string>
     <string name="end_day_at">Dag beëindigen om</string>
-    <string name="allow_customizing_day_count">Allow customizing day count</string>
+    <string name="allow_customizing_day_count">Wijziging van het aantal zichtbare dagen toestaan</string>
     <string name="week_numbers">Weeknummers tonen</string>
     <string name="vibrate">Trillen bij notificaties</string>
     <string name="reminder_sound">Geluid voor herinnering</string>

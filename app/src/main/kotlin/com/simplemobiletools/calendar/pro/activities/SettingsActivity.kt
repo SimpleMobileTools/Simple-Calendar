@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.TimePickerDialog
 import android.content.Intent
 import android.media.AudioManager
+import android.media.RingtoneManager
 import android.os.Bundle
 import android.view.Menu
 import com.simplemobiletools.calendar.pro.R
@@ -27,12 +28,12 @@ class SettingsActivity : SimpleActivity() {
     private val GET_RINGTONE_URI = 1
     private val PICK_IMPORT_SOURCE_INTENT = 2
 
-    private var mStoredPrimaryColor = 0
+    private var mStoredAdjustedPrimaryColor = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
-        mStoredPrimaryColor = config.primaryColor
+        mStoredAdjustedPrimaryColor = getAdjustedPrimaryColor()
     }
 
     override fun onResume() {
@@ -46,6 +47,7 @@ class SettingsActivity : SimpleActivity() {
         setupManageEventTypes()
         setupHourFormat()
         setupSundayFirst()
+        setupHighlightWeekends()
         setupDeleteAllEvents()
         setupReplaceDescription()
         setupWeekNumbers()
@@ -83,7 +85,7 @@ class SettingsActivity : SimpleActivity() {
 
     override fun onPause() {
         super.onPause()
-        mStoredPrimaryColor = config.primaryColor
+        mStoredAdjustedPrimaryColor = getAdjustedPrimaryColor()
     }
 
     override fun onStop() {
@@ -111,12 +113,12 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun checkPrimaryColor() {
-        if (config.primaryColor != mStoredPrimaryColor) {
+        if (getAdjustedPrimaryColor() != mStoredAdjustedPrimaryColor) {
             ensureBackgroundThread {
                 val eventTypes = eventsHelper.getEventTypesSync()
                 if (eventTypes.filter { it.caldavCalendarId == 0 }.size == 1) {
                     val eventType = eventTypes.first { it.caldavCalendarId == 0 }
-                    eventType.color = config.primaryColor
+                    eventType.color = getAdjustedPrimaryColor()
                     eventsHelper.insertOrUpdateEventTypeSync(eventType)
                 }
             }
@@ -275,6 +277,14 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
+    private fun setupHighlightWeekends() {
+        settings_highlight_weekends.isChecked = config.highlightWeekends
+        settings_highlight_weekends_holder.setOnClickListener {
+            settings_highlight_weekends.toggle()
+            config.highlightWeekends = settings_highlight_weekends.isChecked
+        }
+    }
+
     private fun setupDeleteAllEvents() {
         settings_delete_all_events_holder.setOnClickListener {
             ConfirmationDialog(this, messageId = R.string.delete_all_events_confirmation) {
@@ -324,14 +334,14 @@ class SettingsActivity : SimpleActivity() {
         settings_reminder_sound.text = config.reminderSoundTitle
 
         settings_reminder_sound_holder.setOnClickListener {
-            SelectAlarmSoundDialog(this, config.reminderSoundUri, config.reminderAudioStream, GET_RINGTONE_URI, ALARM_SOUND_TYPE_NOTIFICATION, false,
+            SelectAlarmSoundDialog(this, config.reminderSoundUri, config.reminderAudioStream, GET_RINGTONE_URI, RingtoneManager.TYPE_NOTIFICATION, false,
                 onAlarmPicked = {
                     if (it != null) {
                         updateReminderSound(it)
                     }
                 }, onAlarmSoundDeleted = {
                     if (it.uri == config.reminderSoundUri) {
-                        val defaultAlarm = getDefaultAlarmSound(ALARM_SOUND_TYPE_NOTIFICATION)
+                        val defaultAlarm = getDefaultAlarmSound(RingtoneManager.TYPE_NOTIFICATION)
                         updateReminderSound(defaultAlarm)
                     }
                 })
@@ -421,7 +431,7 @@ class SettingsActivity : SimpleActivity() {
         settings_default_reminder_1.text = getFormattedMinutes(config.defaultReminder1)
         settings_default_reminder_1_holder.setOnClickListener {
             showPickSecondsDialogHelper(config.defaultReminder1) {
-                config.defaultReminder1 = if (it <= 0) it else it / 60
+                config.defaultReminder1 = if (it == -1 || it == 0) it else it / 60
                 settings_default_reminder_1.text = getFormattedMinutes(config.defaultReminder1)
             }
         }
@@ -431,7 +441,7 @@ class SettingsActivity : SimpleActivity() {
         settings_default_reminder_2.text = getFormattedMinutes(config.defaultReminder2)
         settings_default_reminder_2_holder.setOnClickListener {
             showPickSecondsDialogHelper(config.defaultReminder2) {
-                config.defaultReminder2 = if (it <= 0) it else it / 60
+                config.defaultReminder2 = if (it == -1 || it == 0) it else it / 60
                 settings_default_reminder_2.text = getFormattedMinutes(config.defaultReminder2)
             }
         }
@@ -441,7 +451,7 @@ class SettingsActivity : SimpleActivity() {
         settings_default_reminder_3.text = getFormattedMinutes(config.defaultReminder3)
         settings_default_reminder_3_holder.setOnClickListener {
             showPickSecondsDialogHelper(config.defaultReminder3) {
-                config.defaultReminder3 = if (it <= 0) it else it / 60
+                config.defaultReminder3 = if (it == -1 || it == 0) it else it / 60
                 settings_default_reminder_3.text = getFormattedMinutes(config.defaultReminder3)
             }
         }
@@ -644,6 +654,7 @@ class SettingsActivity : SimpleActivity() {
                 put(TEXT_COLOR, config.textColor)
                 put(BACKGROUND_COLOR, config.backgroundColor)
                 put(PRIMARY_COLOR, config.primaryColor)
+                put(ACCENT_COLOR, config.accentColor)
                 put(APP_ICON_COLOR, config.appIconColor)
                 put(USE_ENGLISH, config.useEnglish)
                 put(WAS_USE_ENGLISH_TOGGLED, config.wasUseEnglishToggled)
@@ -675,6 +686,7 @@ class SettingsActivity : SimpleActivity() {
                 put(SNOOZE_TIME, config.snoozeTime)
                 put(USE_24_HOUR_FORMAT, config.use24HourFormat)
                 put(SUNDAY_FIRST, config.isSundayFirst)
+                put(HIGHLIGHT_WEEKENDS, config.highlightWeekends)
             }
 
             exportSettings(configItems)
@@ -732,6 +744,7 @@ class SettingsActivity : SimpleActivity() {
                 TEXT_COLOR -> config.textColor = value.toInt()
                 BACKGROUND_COLOR -> config.backgroundColor = value.toInt()
                 PRIMARY_COLOR -> config.primaryColor = value.toInt()
+                ACCENT_COLOR -> config.accentColor = value.toInt()
                 APP_ICON_COLOR -> {
                     if (getAppIconColors().contains(value.toInt())) {
                         config.appIconColor = value.toInt()
@@ -768,6 +781,7 @@ class SettingsActivity : SimpleActivity() {
                 SNOOZE_TIME -> config.snoozeTime = value.toInt()
                 USE_24_HOUR_FORMAT -> config.use24HourFormat = value.toBoolean()
                 SUNDAY_FIRST -> config.isSundayFirst = value.toBoolean()
+                HIGHLIGHT_WEEKENDS -> config.highlightWeekends = value.toBoolean()
             }
         }
 

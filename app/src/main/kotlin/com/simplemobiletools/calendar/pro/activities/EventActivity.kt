@@ -67,6 +67,7 @@ class EventActivity : SimpleActivity() {
     private val EVENT_CALENDAR_ID = "EVENT_CALENDAR_ID"
     private val SELECT_TIME_ZONE_INTENT = 1
 
+    private var mIsAllDayEvent = false
     private var mReminder1Minutes = REMINDER_OFF
     private var mReminder2Minutes = REMINDER_OFF
     private var mReminder3Minutes = REMINDER_OFF
@@ -149,9 +150,9 @@ class EventActivity : SimpleActivity() {
         } else {
             mEvent = Event(null)
             config.apply {
-                mReminder1Minutes = if (usePreviousEventReminders) lastEventReminderMinutes1 else defaultReminder1
-                mReminder2Minutes = if (usePreviousEventReminders) lastEventReminderMinutes2 else defaultReminder2
-                mReminder3Minutes = if (usePreviousEventReminders) lastEventReminderMinutes3 else defaultReminder3
+                mReminder1Minutes = if (usePreviousEventReminders && lastEventReminderMinutes1 >= -1) lastEventReminderMinutes1 else defaultReminder1
+                mReminder2Minutes = if (usePreviousEventReminders && lastEventReminderMinutes2 >= -1) lastEventReminderMinutes2 else defaultReminder2
+                mReminder3Minutes = if (usePreviousEventReminders && lastEventReminderMinutes3 >= -1) lastEventReminderMinutes3 else defaultReminder3
             }
 
             if (savedInstanceState == null) {
@@ -453,27 +454,6 @@ class EventActivity : SimpleActivity() {
         checkAttendees()
     }
 
-    private fun addDefValuesToNewEvent() {
-        var newStartTS: Long
-        var newEndTS: Long
-        getStartEndTimes().apply {
-            newStartTS = first
-            newEndTS = second
-        }
-
-        mEvent.apply {
-            startTS = newStartTS
-            endTS = newEndTS
-            reminder1Minutes = mReminder1Minutes
-            reminder1Type = mReminder1Type
-            reminder2Minutes = mReminder2Minutes
-            reminder2Type = mReminder2Type
-            reminder3Minutes = mReminder3Minutes
-            reminder3Type = mReminder3Type
-            eventType = mEventTypeId
-        }
-    }
-
     private fun setupNewEvent() {
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
         event_title.requestFocus()
@@ -525,6 +505,27 @@ class EventActivity : SimpleActivity() {
         checkAttendees()
     }
 
+    private fun addDefValuesToNewEvent() {
+        var newStartTS: Long
+        var newEndTS: Long
+        getStartEndTimes().apply {
+            newStartTS = first
+            newEndTS = second
+        }
+
+        mEvent.apply {
+            startTS = newStartTS
+            endTS = newEndTS
+            reminder1Minutes = mReminder1Minutes
+            reminder1Type = mReminder1Type
+            reminder2Minutes = mReminder2Minutes
+            reminder2Type = mReminder2Type
+            reminder3Minutes = mReminder3Minutes
+            reminder3Type = mReminder3Type
+            eventType = mEventTypeId
+        }
+    }
+
     private fun checkAttendees() {
         ensureBackgroundThread {
             fillAvailableContacts()
@@ -543,22 +544,22 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun showReminder1Dialog() {
-        showPickSecondsDialogHelper(mReminder1Minutes) {
-            mReminder1Minutes = if (it <= 0) it else it / 60
+        showPickSecondsDialogHelper(mReminder1Minutes, showDuringDayOption = mIsAllDayEvent) {
+            mReminder1Minutes = if (it == -1 || it == 0) it else it / 60
             checkReminderTexts()
         }
     }
 
     private fun showReminder2Dialog() {
-        showPickSecondsDialogHelper(mReminder2Minutes) {
-            mReminder2Minutes = if (it <= 0) it else it / 60
+        showPickSecondsDialogHelper(mReminder2Minutes, showDuringDayOption = mIsAllDayEvent) {
+            mReminder2Minutes = if (it == -1 || it == 0) it else it / 60
             checkReminderTexts()
         }
     }
 
     private fun showReminder3Dialog() {
-        showPickSecondsDialogHelper(mReminder3Minutes) {
-            mReminder3Minutes = if (it <= 0) it else it / 60
+        showPickSecondsDialogHelper(mReminder3Minutes, showDuringDayOption = mIsAllDayEvent) {
+            mReminder3Minutes = if (it == -1 || it == 0) it else it / 60
             checkReminderTexts()
         }
     }
@@ -868,7 +869,7 @@ class EventActivity : SimpleActivity() {
             if (eventType != null) {
                 runOnUiThread {
                     event_type.text = eventType.title
-                    event_type_color.setFillWithStroke(eventType.color, config.backgroundColor)
+                    event_type_color.setFillWithStroke(eventType.color, config.backgroundColor, getCornerRadius())
                 }
             }
         }
@@ -933,7 +934,7 @@ class EventActivity : SimpleActivity() {
                 val calendarColor = eventsHelper.getEventTypeWithCalDAVCalendarId(currentCalendar.id)?.color ?: currentCalendar.color
 
                 runOnUiThread {
-                    event_caldav_calendar_color.setFillWithStroke(calendarColor, config.backgroundColor)
+                    event_caldav_calendar_color.setFillWithStroke(calendarColor, config.backgroundColor, getCornerRadius())
                     event_caldav_calendar_name.apply {
                         text = currentCalendar.displayName
                         setPadding(paddingLeft, paddingTop, paddingRight, resources.getDimension(R.dimen.tiny_margin).toInt())
@@ -959,6 +960,7 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun toggleAllDay(isChecked: Boolean) {
+        mIsAllDayEvent = isChecked
         hideKeyboard()
         event_start_time.beGoneIf(isChecked)
         event_end_time.beGoneIf(isChecked)
@@ -1058,6 +1060,20 @@ class EventActivity : SimpleActivity() {
         }
 
         val reminders = getReminders()
+        if (!event_all_day.isChecked) {
+            if (reminders.getOrNull(2)?.minutes ?: 0 < -1) {
+                reminders.removeAt(2)
+            }
+
+            if (reminders.getOrNull(1)?.minutes ?: 0 < -1) {
+                reminders.removeAt(1)
+            }
+
+            if (reminders.getOrNull(0)?.minutes ?: 0 < -1) {
+                reminders.removeAt(0)
+            }
+        }
+
         val reminder1 = reminders.getOrNull(0) ?: Reminder(REMINDER_OFF, REMINDER_NOTIFICATION)
         val reminder2 = reminders.getOrNull(1) ?: Reminder(REMINDER_OFF, REMINDER_NOTIFICATION)
         val reminder3 = reminders.getOrNull(2) ?: Reminder(REMINDER_OFF, REMINDER_NOTIFICATION)

@@ -1,6 +1,33 @@
 Changelog
 ==========
 
+Version 6.12.0 *(2021-02-13)*
+----------------------------
+
+ * Allow adding during-day reminders to all-day events
+ * Fixed some importing/exporting related glitches
+ * Added a White theme with special handling
+ * Some stability and translation improvements
+ * Please rate the app if you like it :)
+
+Version 6.11.5 *(2021-01-22)*
+----------------------------
+
+ * Allow highlighting weekends on some views
+ * Added Turkish holidays
+ * Some translation improvements
+
+Version 6.11.4 *(2021-01-08)*
+----------------------------
+
+ * Updated country holidays for 2021+
+ * Adding some stability, translation and UI improvements
+
+Version 6.11.3 *(2020-12-07)*
+----------------------------
+
+ * Adding some stability, translation and UI improvements
+
 Version 6.11.2 *(2020-11-03)*
 ----------------------------
 

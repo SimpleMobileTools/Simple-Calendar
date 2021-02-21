@@ -6,6 +6,7 @@
     <string name="daily_view">Tampilan hari</string>
     <string name="weekly_view">Tampilan minggu</string>
     <string name="monthly_view">Tampilan bulan</string>
+    <string name="monthly_daily_view">Monthly + daily view</string>
     <string name="yearly_view">Tampilan tahun</string>
     <string name="simple_event_list">Daftar acara</string>
     <string name="no_upcoming_events">Sepertinya anda tidak memiliki acara yang akan datang.</string>

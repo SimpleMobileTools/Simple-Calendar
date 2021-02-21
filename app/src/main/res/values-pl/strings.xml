@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Prosty kalendarz</string>
-    <string name="app_launcher_name">Prosty kalendarz</string>
+    <string name="app_name">Prosty Kalendarz</string>
+    <string name="app_launcher_name">Kalendarz</string>
     <string name="change_view">Zmień widok</string>
     <string name="daily_view">Dzień</string>
     <string name="weekly_view">Tydzień</string>
     <string name="monthly_view">Miesiąc</string>
+    <string name="monthly_daily_view">Monthly + daily view</string>
     <string name="yearly_view">Rok</string>
     <string name="simple_event_list">Prosta lista wydarzeń</string>
     <string name="no_upcoming_events">Wygląda na to, że nie masz żadnych nadchodzących wydarzeń.</string>
     <string name="go_to_today">Przejdź do dnia dzisiejszego</string>
-    <string name="go_to_date">Go to date</string>
+    <string name="go_to_date">Przejdź do daty</string>
     <string name="upgraded_from_free">Hey,\n\nseems like you upgraded from the old free app. You have to migrate locally stored events manually via exporting in an .ics file, then importing. You can find both export/import buttons at the main screen menu.\n\nYou can then uninstall the old version, which has an \'Upgrade to Pro\' button at the top of the app settings. You will then only have to reset your app settings.\n\nThanks!</string>
 
     <!-- Widget titles -->
@@ -20,16 +21,16 @@
 
     <!-- Event -->
     <string name="event">Wydarzenie</string>
-    <string name="edit_event">Edytuj wydarzenie</string>
-    <string name="new_event">Nowe wydarzenie</string>
+    <string name="edit_event">Edytuj Wydarzenie</string>
+    <string name="new_event">Nowe Wydarzenie</string>
     <string name="create_new_event">Utwórz nowe wydarzenie</string>
-    <string name="duplicate_event">Skopiuj wydarzenie</string>
+    <string name="duplicate_event">Duplikuj wydarzenie</string>
     <string name="title_empty">Tytuł nie może być pusty</string>
     <string name="end_before_start">Wydarzenie nie może zakończyć się wcześniej, niż się zaczyna</string>
-    <string name="event_added">Wydarzenie zostało dodane</string>
-    <string name="event_updated">Wydarzenie zostało zaktualizowane</string>
+    <string name="event_added">Wydarzenie dodane pomyślnie</string>
+    <string name="event_updated">Wydarzenie zaktualizowane pomyślnie</string>
     <string name="filter_events_by_type">Filtruj wydarzenia według typu</string>
-    <string name="please_fill_location">Wpisz lokalizację, która ma być pokazana na mapie</string>
+    <string name="please_fill_location">Wpisz lokalizację, która ma zostać pokazana na mapie</string>
     <string name="public_event_notification_text">Nadchodzi wydarzenie</string>
 
     <!-- Event Repetition -->
@@ -52,7 +53,7 @@
     <string name="update_one_only">Zaktualizuj tylko wybrane wystąpienia</string>
     <string name="update_all_occurrences">Zaktualizuj wszystkie wystąpienia</string>
     <string name="repeat_till_date">Powtarzaj do daty</string>
-    <string name="stop_repeating_after_x">Stop repeating after x occurrences</string>
+    <string name="stop_repeating_after_x">Przestań powtarzać po x wystąpieniach</string>
     <string name="repeat_forever">Powtarzaj do końca świata</string>
     <string name="times">razy</string>
     <string name="repeat">Powtórz</string>
@@ -86,14 +87,14 @@
     <string name="birthdays">Urodziny</string>
     <string name="add_birthdays">Dodaj urodziny kontaktów</string>
     <string name="no_birthdays">Nie znaleziono żadnych urodzin</string>
-    <string name="no_new_birthdays">No new birthdays have been found</string>
+    <string name="no_new_birthdays">Nie znaleziono nowych urodzin</string>
     <string name="birthdays_added">Urodziny zostały dodane</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Rocznice</string>
     <string name="add_anniversaries">Dodaj rocznice kontaktów</string>
     <string name="no_anniversaries">Nie znaleziono żadnych rocznic</string>
-    <string name="no_new_anniversaries">No new anniversaries have been found</string>
+    <string name="no_new_anniversaries">Nie znaleziono nowych rocznic</string>
     <string name="anniversaries_added">Rocznice zostały dodane</string>
 
     <!-- Event Reminders -->
@@ -103,15 +104,15 @@
     <string name="event_reminders">Przypomnienia</string>
 
     <!-- Event attendees -->
-    <string name="add_another_attendee">Add another attendee</string>
-    <string name="my_status">My status:</string>
-    <string name="going">Going</string>
-    <string name="not_going">Not going</string>
-    <string name="maybe_going">Maybe going</string>
-    <string name="invited">Invited</string>
+    <string name="add_another_attendee">Dodaj kolejnego uczestnika</string>
+    <string name="my_status">Mój status:</string>
+    <string name="going">Przyjdzie</string>
+    <string name="not_going">Nie przyjdzie</string>
+    <string name="maybe_going">Może przyjdzie</string>
+    <string name="invited">Zaproszony(a)</string>
 
     <!-- Time zones -->
-    <string name="enter_a_country">Enter a country or time zone</string>
+    <string name="enter_a_country">Wpisz kraj lub strefe czasową</string>
 
     <!-- Export / Import -->
     <string name="import_events">Importuj wydarzenia</string>
@@ -136,7 +137,7 @@
     <string name="event_types">Typy wydarzeń</string>
     <string name="add_new_type">Dodaj nowy typ</string>
     <string name="edit_type">Edytuj typ</string>
-    <string name="type_already_exists">Typ ten już istnieje</string>
+    <string name="type_already_exists">Typ z tym tytułem już istnieje</string>
     <string name="color">Kolor</string>
     <string name="regular_event">Zwykłe wydarzenie</string>
     <string name="cannot_delete_default_type">Domyślne wydarzenie nie może zostać usunięte</string>
@@ -158,7 +159,7 @@
     <string name="manage_event_types">Zarządzaj typami wydarzeń</string>
     <string name="start_day_at">Początek dnia</string>
     <string name="end_day_at">Koniec dnia</string>
-    <string name="allow_customizing_day_count">Allow customizing day count</string>
+    <string name="allow_customizing_day_count">Zezwól na dostosowywanie liczby dni</string>
     <string name="week_numbers">Pokazuj numery tygodnia</string>
     <string name="vibrate">Powiadamiaj wibracjami o wydarzeniu</string>
     <string name="reminder_sound">Dźwięk powiadomień</string>
@@ -180,20 +181,20 @@
     <string name="alarm_stream">Alarm</string>
     <string name="notification_stream">Powiadomienie</string>
     <string name="ring_stream">Dzwonek</string>
-    <string name="use_last_event_reminders">Use the last events\' reminders as the default for new events</string>
-    <string name="default_reminder_1">Default reminder 1</string>
-    <string name="default_reminder_2">Default reminder 2</string>
-    <string name="default_reminder_3">Default reminder 3</string>
+    <string name="use_last_event_reminders">Używaj powiadomień ostatniego wydarzenia jako domyślne dla nowych wydarzeń</string>
+    <string name="default_reminder_1">Domyślne przypomnienie 1</string>
+    <string name="default_reminder_2">Domyślne przypomnienie 2</string>
+    <string name="default_reminder_3">Domyślne przypomnienie 3</string>
     <string name="view_to_open_from_widget">View to open from the event list widget</string>
-    <string name="last_view">Last view</string>
-    <string name="new_events">New events</string>
-    <string name="default_start_time">Default start time</string>
-    <string name="next_full_hour">Next full hour</string>
-    <string name="default_duration">Default duration</string>
+    <string name="last_view">Ostatni widok</string>
+    <string name="new_events">Nowe wydarzenia</string>
+    <string name="default_start_time">Domyślny czas rozpoczęcia</string>
+    <string name="next_full_hour">Następna pełna godzina</string>
+    <string name="default_duration">Domyślny czas trwania</string>
     <string name="last_used_one">Last used one</string>
     <string name="other_time">Other time</string>
     <string name="highlight_weekends">Highlight weekends on some views</string>
-    <string name="allow_changing_time_zones">Allow changing event time zones</string>
+    <string name="allow_changing_time_zones">Pozwalaj zmieniać strefy czasowe wydarzenia</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -206,8 +207,8 @@
     <string name="editing_calendar_failed">Edytowanie kalendarza nie powiodło się</string>
     <string name="syncing">Synchronizowanie…</string>
     <string name="synchronization_completed">Synchronizacja zakończona</string>
-    <string name="select_a_different_caldav_color">Select a different color (might be applied locally only)</string>
-    <string name="insufficient_permissions">You are not allowed to write in the selected calendar</string>
+    <string name="select_a_different_caldav_color">Wybierz inny kolor (może być stosowany tylko lokalnie)</string>
+    <string name="insufficient_permissions">Nie możesz pisać w wybranym kalendarzu</string>
     <string name="caldav_event_not_found">Event not found. Please enable CalDAV sync for the appropriate calendar in the app settings.</string>
     <string name="no_synchronized_calendars">No synchronizable calendars have been found</string>
 
@@ -245,7 +246,7 @@
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
-    <string name="app_title">Simple Calendar Pro - Events &amp; Reminders</string>
+    <string name="app_title">Prosty Kalendarz Pro - Wydarzenia &amp; Przypomnienia</string>
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Simple mobile 2020 calendar. Schedule planner &amp; appointment reminder for any day</string>
     <string name="app_long_description">

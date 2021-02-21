@@ -6,6 +6,7 @@
     <string name="daily_view">Vista diária</string>
     <string name="weekly_view">Vista semanal</string>
     <string name="monthly_view">Vista mensal</string>
+    <string name="monthly_daily_view">Monthly + daily view</string>
     <string name="yearly_view">Vista anual</string>
     <string name="simple_event_list">Lista de eventos</string>
     <string name="no_upcoming_events">Parece que você não tem eventos para breve</string>
@@ -16,7 +17,7 @@
     <!-- Widget titles -->
     <string name="widget_monthly">Calendário mensal</string>
     <string name="widget_list">Lista de eventos</string>
-    <string name="widget_todays_date">Data do dia atual</string>
+    <string name="widget_todays_date">Dia atual</string>
 
     <!-- Event -->
     <string name="event">Evento</string>
@@ -111,7 +112,7 @@
     <string name="invited">Convidado</string>
 
     <!-- Time zones -->
-    <string name="enter_a_country">Enter a country or time zone</string>
+    <string name="enter_a_country">Introduza um país ou fuso horário</string>
 
     <!-- Export / Import -->
     <string name="import_events">Importar eventos</string>

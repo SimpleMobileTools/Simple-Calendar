@@ -15,6 +15,7 @@ import com.simplemobiletools.calendar.pro.extensions.seconds
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.helpers.LOW_ALPHA
 import com.simplemobiletools.calendar.pro.helpers.MEDIUM_ALPHA
+import com.simplemobiletools.calendar.pro.helpers.isWeekend
 import com.simplemobiletools.calendar.pro.models.DayMonthly
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.MonthViewEvent
@@ -30,7 +31,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     private val BG_CORNER_RADIUS = 8f
     private val ROW_COUNT = 6
 
-    private var paint: Paint
+    private var textPaint: Paint
     private var eventTitlePaint: TextPaint
     private var gridPaint: Paint
     private var config = context.config
@@ -38,6 +39,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     private var dayHeight = 0f
     private var primaryColor = 0
     private var textColor = 0
+    private var redTextColor = 0
     private var weekDaysLetterHeight = 0
     private var eventTitleHeight = 0
     private var currDayOfWeek = 0
@@ -46,7 +48,9 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     private var horizontalOffset = 0
     private var showWeekNumbers = false
     private var dimPastEvents = true
+    private var highlightWeekends = false
     private var isPrintVersion = false
+    private var isMonthDayView = false
     private var allEvents = ArrayList<MonthViewEvent>()
     private var bgRectF = RectF()
     private var dayLetters = ArrayList<String>()
@@ -58,14 +62,16 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     init {
         primaryColor = context.getAdjustedPrimaryColor()
         textColor = config.textColor
+        redTextColor = context.resources.getColor(R.color.red_text)
         showWeekNumbers = config.showWeekNumbers
         dimPastEvents = config.dimPastEvents
+        highlightWeekends = config.highlightWeekends
 
         smallPadding = resources.displayMetrics.density.toInt()
         val normalTextSize = resources.getDimensionPixelSize(R.dimen.normal_text_size)
         weekDaysLetterHeight = normalTextSize * 2
 
-        paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        textPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
             color = textColor
             textSize = normalTextSize.toFloat()
             textAlign = Paint.Align.CENTER
@@ -87,7 +93,8 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         setupCurrentDayOfWeekIndex()
     }
 
-    fun updateDays(newDays: ArrayList<DayMonthly>) {
+    fun updateDays(newDays: ArrayList<DayMonthly>, isMonthDayView: Boolean) {
+        this.isMonthDayView = isMonthDayView
         days = newDays
         showWeekNumbers = config.showWeekNumbers
         horizontalOffset = if (showWeekNumbers) eventTitleHeight * 2 else 0
@@ -124,7 +131,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         dayVerticalOffsets.clear()
         measureDaySize(canvas)
 
-        if (config.showGrid) {
+        if (config.showGrid && !isMonthDayView) {
             drawGrid(canvas)
         }
 
@@ -144,18 +151,20 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
                     val yPos = y * dayHeight + verticalOffset
                     val xPosCenter = xPos + dayWidth / 2
                     if (day.isToday && !isPrintVersion) {
-                        canvas.drawCircle(xPosCenter, yPos + paint.textSize * 0.7f, paint.textSize * 0.75f, getCirclePaint(day))
+                        canvas.drawCircle(xPosCenter, yPos + textPaint.textSize * 0.7f, textPaint.textSize * 0.75f, getCirclePaint(day))
                     }
 
-                    canvas.drawText(day.value.toString(), xPosCenter, yPos + paint.textSize, getTextPaint(day))
-                    dayVerticalOffsets.put(day.indexOnMonthView, (verticalOffset + paint.textSize * 2).toInt())
+                    canvas.drawText(day.value.toString(), xPosCenter, yPos + textPaint.textSize, getTextPaint(day))
+                    dayVerticalOffsets.put(day.indexOnMonthView, (verticalOffset + textPaint.textSize * 2).toInt())
                 }
                 curId++
             }
         }
 
-        for (event in allEvents) {
-            drawEvent(event, canvas)
+        if (!isMonthDayView) {
+            for (event in allEvents) {
+                drawEvent(event, canvas)
+            }
         }
     }
 
@@ -179,16 +188,18 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     private fun addWeekDayLetters(canvas: Canvas) {
         for (i in 0..6) {
             val xPos = horizontalOffset + (i + 1) * dayWidth - dayWidth / 2
-            var weekDayLetterPaint = paint
+            var weekDayLetterPaint = textPaint
             if (i == currDayOfWeek && !isPrintVersion) {
                 weekDayLetterPaint = getColoredPaint(primaryColor)
+            } else if (highlightWeekends && isWeekend(i, config.isSundayFirst)) {
+                weekDayLetterPaint = getColoredPaint(redTextColor)
             }
             canvas.drawText(dayLetters[i], xPos, weekDaysLetterHeight * 0.7f, weekDayLetterPaint)
         }
     }
 
     private fun addWeekNumbers(canvas: Canvas) {
-        val weekNumberPaint = Paint(paint)
+        val weekNumberPaint = Paint(textPaint)
         weekNumberPaint.textAlign = Paint.Align.RIGHT
 
         for (i in 0 until ROW_COUNT) {
@@ -199,7 +210,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
             val weekOfYear = days.getOrNull(i * 7 + 3)?.weekOfYear ?: 1
             val id = "$weekOfYear:"
             val yPos = i * dayHeight + weekDaysLetterHeight
-            canvas.drawText(id, horizontalOffset.toFloat() * 0.9f, yPos + paint.textSize, weekNumberPaint)
+            canvas.drawText(id, horizontalOffset.toFloat() * 0.9f, yPos + textPaint.textSize, weekNumberPaint)
         }
     }
 
@@ -244,22 +255,26 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         bgRectF.set(bgLeft, bgTop, bgRight, bgBottom)
         canvas.drawRoundRect(bgRectF, BG_CORNER_RADIUS, BG_CORNER_RADIUS, getEventBackgroundColor(event, startDayIndex, endDayIndex))
 
-        drawEventTitle(event, canvas, xPos, yPos + verticalOffset, bgRight - bgLeft - smallPadding, startDayIndex, endDayIndex)
+        drawEventTitle(event, canvas, xPos, yPos + verticalOffset, bgRight - bgLeft - smallPadding)
 
         for (i in 0 until Math.min(event.daysCnt, 7 - event.startDayIndex % 7)) {
             dayVerticalOffsets.put(event.startDayIndex + i, verticalOffset + eventTitleHeight + smallPadding * 2)
         }
     }
 
-    private fun drawEventTitle(event: MonthViewEvent, canvas: Canvas, x: Float, y: Float, availableWidth: Float, startDay: DayMonthly, endDay: DayMonthly) {
+    private fun drawEventTitle(event: MonthViewEvent, canvas: Canvas, x: Float, y: Float, availableWidth: Float) {
         val ellipsized = TextUtils.ellipsize(event.title, eventTitlePaint, availableWidth - smallPadding, TextUtils.TruncateAt.END)
-        canvas.drawText(event.title, 0, ellipsized.length, x + smallPadding * 2, y, getEventTitlePaint(event, startDay, endDay))
+        canvas.drawText(event.title, 0, ellipsized.length, x + smallPadding * 2, y, getEventTitlePaint(event))
     }
 
     private fun getTextPaint(startDay: DayMonthly): Paint {
         var paintColor = textColor
-        if (startDay.isToday && !isPrintVersion) {
-            paintColor = primaryColor.getContrastColor()
+        if (!isPrintVersion) {
+            if (startDay.isToday) {
+                paintColor = primaryColor.getContrastColor()
+            } else if (highlightWeekends && startDay.isWeekend) {
+                paintColor = redTextColor
+            }
         }
 
         if (!startDay.isThisMonth) {
@@ -270,7 +285,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     }
 
     private fun getColoredPaint(color: Int): Paint {
-        val curPaint = Paint(paint)
+        val curPaint = Paint(textPaint)
         curPaint.color = color
         return curPaint
     }
@@ -284,19 +299,14 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         return getColoredPaint(paintColor)
     }
 
-    private fun getEventTitlePaint(event: MonthViewEvent, startDay: DayMonthly, endDay: DayMonthly): Paint {
-        var paintColor = event.color.getContrastColor()
-        if ((!startDay.isThisMonth && !endDay.isThisMonth) || (dimPastEvents && event.isPastEvent && !isPrintVersion)) {
-            paintColor = paintColor.adjustAlpha(MEDIUM_ALPHA)
-        }
-
+    private fun getEventTitlePaint(event: MonthViewEvent): Paint {
         val curPaint = Paint(eventTitlePaint)
-        curPaint.color = paintColor
+        curPaint.color = event.color.getContrastColor()
         return curPaint
     }
 
     private fun getCirclePaint(day: DayMonthly): Paint {
-        val curPaint = Paint(paint)
+        val curPaint = Paint(textPaint)
         var paintColor = primaryColor
         if (!day.isThisMonth) {
             paintColor = paintColor.adjustAlpha(MEDIUM_ALPHA)
@@ -358,7 +368,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
             config.textColor
         }
 
-        paint.color = textColor
+        textPaint.color = textColor
         gridPaint.color = textColor.adjustAlpha(LOW_ALPHA)
         invalidate()
         initWeekDayLetters()

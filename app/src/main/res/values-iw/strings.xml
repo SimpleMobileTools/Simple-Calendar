@@ -6,6 +6,7 @@
     <string name="daily_view">תצוגה יומית</string>
     <string name="weekly_view">תצוגה שבועית</string>
     <string name="monthly_view">תצוגה חודשית</string>
+    <string name="monthly_daily_view">Monthly + daily view</string>
     <string name="yearly_view">תצוגה שנתית</string>
     <string name="simple_event_list">רשימת אירועים פשוטה</string>
     <string name="no_upcoming_events">נראה שאין לך אירועים עתידיים.</string>

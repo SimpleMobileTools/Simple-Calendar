@@ -173,7 +173,7 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
             var endTextColor = textColor
             if (listEvent.isAllDay || listEvent.startTS <= now && listEvent.endTS <= now) {
                 if (listEvent.isAllDay && Formatter.getDayCodeFromTS(listEvent.startTS) == Formatter.getDayCodeFromTS(now) && !isPrintVersion) {
-                    startTextColor = primaryColor
+                    startTextColor = adjustedPrimaryColor
                 }
 
                 if (dimPastEvents && listEvent.isPastEvent && !isPrintVersion) {
@@ -181,7 +181,7 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
                     endTextColor = endTextColor.adjustAlpha(LOW_ALPHA)
                 }
             } else if (listEvent.startTS <= now && listEvent.endTS >= now && !isPrintVersion) {
-                startTextColor = primaryColor
+                startTextColor = adjustedPrimaryColor
             }
 
             event_item_start.setTextColor(startTextColor)
@@ -195,7 +195,7 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
         view.event_section_title.apply {
             text = listSection.title
             setCompoundDrawablesWithIntrinsicBounds(null, if (position == 0) null else topDivider, null, null)
-            var color = if (listSection.isToday && !isPrintVersion) primaryColor else textColor
+            var color = if (listSection.isToday && !isPrintVersion) adjustedPrimaryColor else textColor
             if (dimPastEvents && listSection.isPastSection && !isPrintVersion) {
                 color = color.adjustAlpha(LOW_ALPHA)
             }

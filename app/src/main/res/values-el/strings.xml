@@ -6,6 +6,7 @@
     <string name="daily_view">Ημερήσια προβολή</string>
     <string name="weekly_view">Εβδομαδιαία προβολή</string>
     <string name="monthly_view">Μηνιαία προβολή</string>
+    <string name="monthly_daily_view">Μηνιαία + ημερήσια προβολή</string>
     <string name="yearly_view">Ετήσια προβολή</string>
     <string name="simple_event_list">Απλή λίστα εκδηλώσεων</string>
     <string name="no_upcoming_events">Φαίνεται πως δεν έχετε επερχόμενες εκδηλώσεις.</string>
@@ -158,14 +159,14 @@
     <string name="manage_event_types">Διαχείριση τύπων εκδηλώσεων</string>
     <string name="start_day_at">Ημέρα έναρξης την</string>
     <string name="end_day_at">Ημέρα λήξης την</string>
-    <string name="allow_customizing_day_count">Allow customizing day count</string>
+    <string name="allow_customizing_day_count">Αποδοχή προσαρμογής του αριθμού ημερών</string>
     <string name="week_numbers">Εμφάνιση αριθμών εβδομάδων</string>
     <string name="vibrate">Δόνηση στην ειδοποίηση υπενθύμισης</string>
     <string name="reminder_sound">Ήχος υπενθύμισης</string>
     <string name="no_ringtone_picker">Δεν υπάρχει εφαρμογή που να μπορεί να βρει ήχους</string>
     <string name="no_ringtone_selected">Χωρίς</string>
     <string name="day_end_before_start">Η ημέρα δεν μπορεί να τελειώσει νωρίτερα από ότι ξεκινά</string>
-    <string name="caldav_sync">CalDAV sync</string>
+    <string name="caldav_sync">CalDAV συγχ/μός</string>
     <string name="event_lists">Λίστες εκδηλώσεων</string>
     <string name="display_past_events">Εμφάνιση προηγούμενων συμβάντων</string>
     <string name="replace_description_with_location">Αντικατάσταση περιγραφής εκδήλωσης με τοποθεσία</string>

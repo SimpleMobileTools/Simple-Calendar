@@ -6,7 +6,7 @@ import androidx.collection.LongSparseArray
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.EventType
-import com.simplemobiletools.commons.extensions.getChoppedList
+import com.simplemobiletools.commons.helpers.CHOPPED_LIST_DEFAULT_SIZE
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 
 class EventsHelper(val context: Context) {
@@ -146,7 +146,7 @@ class EventsHelper(val context: Context) {
             return
         }
 
-        ids.getChoppedList().forEach {
+        ids.chunked(CHOPPED_LIST_DEFAULT_SIZE).forEach {
             val eventsWithImportId = eventsDB.getEventsByIdsWithImportIds(it)
             eventsDB.deleteEvents(it)
 
@@ -160,12 +160,12 @@ class EventsHelper(val context: Context) {
                 }
             }
 
-            deleteChildEvents(it, deleteFromCalDAV)
+            deleteChildEvents(it as MutableList<Long>, deleteFromCalDAV)
             context.updateWidgets()
         }
     }
 
-    private fun deleteChildEvents(ids: MutableList<Long>, deleteFromCalDAV: Boolean) {
+    private fun deleteChildEvents(ids: List<Long>, deleteFromCalDAV: Boolean) {
         val childIds = eventsDB.getEventIdsWithParentIds(ids).toMutableList()
         if (childIds.isNotEmpty()) {
             deleteEvents(childIds, deleteFromCalDAV)
@@ -248,7 +248,11 @@ class EventsHelper(val context: Context) {
                 callback(ArrayList())
                 return
             } else {
-                eventsDB.getOneTimeEventsFromToWithTypes(toTS, fromTS, context.config.getDisplayEventTypessAsList()).toMutableList() as ArrayList<Event>
+                try {
+                    eventsDB.getOneTimeEventsFromToWithTypes(toTS, fromTS, context.config.getDisplayEventTypessAsList()).toMutableList() as ArrayList<Event>
+                } catch (e: Exception) {
+                    ArrayList()
+                }
             }
         } else {
             if (eventId == -1L) {

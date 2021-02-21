@@ -6,6 +6,7 @@
     <string name="daily_view">Tagesansicht</string>
     <string name="weekly_view">Wochenansicht</string>
     <string name="monthly_view">Monatsansicht</string>
+    <string name="monthly_daily_view">Monthly + daily view</string>
     <string name="yearly_view">Jahresansicht</string>
     <string name="simple_event_list">Einfache Terminliste</string>
     <string name="no_upcoming_events">Scheint so, als hättest du keine anstehenden Termine.</string>
@@ -16,7 +17,7 @@
     <!-- Widget titles -->
     <string name="widget_monthly">Monatskalender</string>
     <string name="widget_list">Termin-Liste</string>
-    <string name="widget_todays_date">Calendar today\'s date</string>
+    <string name="widget_todays_date">Kalender heutiges Datum</string>
 
     <!-- Event -->
     <string name="event">Termin</string>
@@ -158,7 +159,7 @@
     <string name="manage_event_types">Termintypen verwalten</string>
     <string name="start_day_at">Wochenansicht beginnt um</string>
     <string name="end_day_at">Wochenansicht endet um</string>
-    <string name="allow_customizing_day_count">Allow customizing day count</string>
+    <string name="allow_customizing_day_count">Erlaube den Tageszähler anzupassen</string>
     <string name="week_numbers">Kalenderwoche anzeigen</string>
     <string name="vibrate">Vibration bei Erinnerung</string>
     <string name="reminder_sound">Erinnerungston</string>
@@ -209,7 +210,7 @@
     <string name="select_a_different_caldav_color">Wähle eine andere Farbe (wird möglicherweise nur lokal angewendet)</string>
     <string name="insufficient_permissions">Dir fehlt die Berechtigung zum Ändern des gewählten Kalenders</string>
     <string name="caldav_event_not_found">Der Termin wurde nicht gefunden. Bitte aktiviere die Synchronisierung für den Kalender in den Einstellungen.</string>
-    <string name="no_synchronized_calendars">No synchronizable calendars have been found</string>
+    <string name="no_synchronized_calendars">Es wurden keine synchronisierbaren Kalender gefunden</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
@@ -241,7 +242,7 @@
         Für andere Kalender benötigst du einen Synchronisierungsadapter, wie z. B. DAVx5.</string>
     <string name="faq_3_title">Ich sehe die Erinnerungen, aber ich höre keinen Ton. Was kann ich tun?</string>
     <string name="faq_3_text">Erinnerungen nicht nur anzeigen, sondern Töne dazu abspielen ist ebenfalls stark vom jeweiligen (Android) System abhängig. Wenn Du keine Töne hörst, versuche in den App Einstellungen,
-        die Option \"Audioausgabekanal für Erinnerungen\" anzuklicken und eine andere Option auszuwählen. Wenn das immer noch nichts ändert, prüfe Deine Lautstärkeeinstellungen. of der gewählte Kanal nicht auf lautlos steht.</string>
+        die Option \"Audioausgabekanal für Erinnerungen\" anzuklicken und eine andere Option auszuwählen. Wenn das immer noch nichts ändert, prüfe Deine Lautstärkeeinstellungen und ob der gewählte Kanal nicht auf lautlos steht.</string>
     <string name="faq_4_title">Unterstützt diese Kalender-App Zeitzonen?</string>
     <string name="faq_4_text">Ja. Standardmäßig werden alle neuen Termine in der aktuellen Zeitzone des Gerätes erstellt. Um die Zeitzone eines Termins ändern zu können muss die Option \"Zeitzone kann geändert werden\"
         in den Einstellungen aktiviert sein. Die Zeitzone eines Termins kann dann beim Anlegen oder Bearbeiten geändert werden. In den Standardeinstellungen ist dies nicht aktiv, da die meisten Anwender die Möglichkeit nicht benötigen werden.</string>

@@ -37,8 +37,11 @@ class MonthlyCalendarImpl(val callback: MonthlyCalendar, val context: Context) {
         val days = ArrayList<DayMonthly>(DAYS_CNT)
         val currMonthDays = mTargetDate.dayOfMonth().maximumValue
         var firstDayIndex = mTargetDate.withDayOfMonth(1).dayOfWeek
-        if (!context.config.isSundayFirst)
+        val isSundayFirst = context.config.isSundayFirst
+        if (!isSundayFirst) {
             firstDayIndex -= 1
+        }
+
         val prevMonthDays = mTargetDate.minusMonths(1).dayOfMonth().maximumValue
 
         var isThisMonth = false
@@ -68,7 +71,7 @@ class MonthlyCalendarImpl(val callback: MonthlyCalendar, val context: Context) {
 
             val newDay = curDay.withDayOfMonth(value)
             val dayCode = Formatter.getDayCodeFromDateTime(newDay)
-            val day = DayMonthly(value, isThisMonth, isToday, dayCode, newDay.weekOfWeekyear, ArrayList(), i)
+            val day = DayMonthly(value, isThisMonth, isToday, dayCode, newDay.weekOfWeekyear, ArrayList(), i, isWeekend(i % 7, isSundayFirst))
             days.add(day)
             value++
         }

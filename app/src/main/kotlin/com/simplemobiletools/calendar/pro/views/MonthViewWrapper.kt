@@ -17,6 +17,7 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
     private var weekDaysLetterHeight = 0
     private var horizontalOffset = 0
     private var wereViewsAdded = false
+    private var isMonthDayView = true
     private var days = ArrayList<DayMonthly>()
     private var inflater: LayoutInflater
     private var monthView: MonthView
@@ -36,12 +37,12 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
             if (!wereViewsAdded && days.isNotEmpty()) {
                 measureSizes()
                 addViews()
-                monthView.updateDays(days)
+                monthView.updateDays(days, isMonthDayView)
             }
         }
     }
 
-    fun updateDays(newDays: ArrayList<DayMonthly>, callback: ((DayMonthly) -> Unit)? = null) {
+    fun updateDays(newDays: ArrayList<DayMonthly>, addEvents: Boolean, callback: ((DayMonthly) -> Unit)? = null) {
         setupHorizontalOffset()
         measureSizes()
         dayClickCallback = callback
@@ -49,7 +50,9 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
         if (dayWidth != 0f && dayHeight != 0f) {
             addViews()
         }
-        monthView.updateDays(days)
+
+        isMonthDayView = !addEvents
+        monthView.updateDays(days, isMonthDayView)
     }
 
     private fun setupHorizontalOffset() {

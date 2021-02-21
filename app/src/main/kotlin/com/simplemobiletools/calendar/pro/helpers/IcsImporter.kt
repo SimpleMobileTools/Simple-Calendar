@@ -38,7 +38,6 @@ class IcsImporter(val activity: SimpleActivity) {
     private var curCategoryColor = -2
     private var isNotificationDescription = false
     private var isProperReminderAction = false
-    private var isDescription = false
     private var isSequence = false
     private var isParsingEvent = false
     private var curReminderTriggerMinutes = REMINDER_OFF
@@ -54,7 +53,7 @@ class IcsImporter(val activity: SimpleActivity) {
             val eventTypes = eventsHelper.getEventTypesSync()
             val existingEvents = activity.eventsDB.getEventsWithImportIds().toMutableList() as ArrayList<Event>
             val eventsToInsert = ArrayList<Event>()
-            var prevLine = ""
+            var line = ""
 
             val inputStream = if (path.contains("/")) {
                 File(path).inputStream()
@@ -64,22 +63,14 @@ class IcsImporter(val activity: SimpleActivity) {
 
             inputStream.bufferedReader().use {
                 while (true) {
-                    var line = it.readLine() ?: break
-                    if (line.trim().isEmpty()) {
+                    val curLine = it.readLine() ?: break
+                    if (curLine.trim().isEmpty()) {
                         continue
                     }
 
-                    if (line.substring(0, 1) == " ") {
-                        line = prevLine + line.trim()
-                        eventsFailed--
-                    }
-
-                    if (isDescription) {
-                        if (line.startsWith('\t')) {
-                            curDescription += line.trimStart('\t').replace("\\n", "\n")
-                        } else {
-                            isDescription = false
-                        }
+                    if (curLine.startsWith("\t") || curLine.substring(0, 1) == " ") {
+                        line += curLine.removePrefix("\t").removePrefix(" ")
+                        continue
                     }
 
                     if (line == BEGIN_EVENT) {
@@ -107,7 +98,6 @@ class IcsImporter(val activity: SimpleActivity) {
                         if (curDescription.trim().isEmpty()) {
                             curDescription = ""
                         }
-                        isDescription = true
                     } else if (line.startsWith(UID)) {
                         curImportId = line.substring(UID.length).trim()
                     } else if (line.startsWith(RRULE)) {
@@ -117,14 +107,17 @@ class IcsImporter(val activity: SimpleActivity) {
                             parseRepeatRule()
                         }
                     } else if (line.startsWith(ACTION)) {
-                        isNotificationDescription = true
                         val action = line.substring(ACTION.length)
                         isProperReminderAction = action == DISPLAY || action == EMAIL
                         if (isProperReminderAction) {
                             curReminderTriggerAction = if (action == DISPLAY) REMINDER_NOTIFICATION else REMINDER_EMAIL
                         }
                     } else if (line.startsWith(TRIGGER)) {
-                        curReminderTriggerMinutes = Parser().parseDurationSeconds(line.substring(TRIGGER.length)) / 60
+                        val value = line.substring(TRIGGER.length)
+                        curReminderTriggerMinutes = Parser().parseDurationSeconds(value) / 60
+                        if (!value.startsWith("-")) {
+                            curReminderTriggerMinutes *= -1
+                        }
                     } else if (line.startsWith(CATEGORY_COLOR)) {
                         val color = line.substring(CATEGORY_COLOR.length)
                         if (color.trimStart('-').areDigitsOnly()) {
@@ -152,6 +145,8 @@ class IcsImporter(val activity: SimpleActivity) {
                         curRecurrenceDayCode = Formatter.getDayCodeFromTS(timestamp)
                     } else if (line.startsWith(SEQUENCE)) {
                         isSequence = true
+                    } else if (line == BEGIN_ALARM) {
+                        isNotificationDescription = true
                     } else if (line == END_ALARM) {
                         if (isProperReminderAction && curReminderTriggerMinutes != REMINDER_OFF) {
                             curReminderMinutes.add(curReminderTriggerMinutes)
@@ -226,7 +221,7 @@ class IcsImporter(val activity: SimpleActivity) {
                         eventsImported++
                         resetValues()
                     }
-                    prevLine = line
+                    line = curLine
                 }
             }
 

@@ -1,0 +1,2 @@
+ * Updated country holidays for 2021+
+ * Adding some stability, translation and UI improvements
