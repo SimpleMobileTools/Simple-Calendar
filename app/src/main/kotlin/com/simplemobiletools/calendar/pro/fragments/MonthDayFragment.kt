@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.RelativeLayout
 import androidx.fragment.app.Fragment
 import com.simplemobiletools.calendar.pro.R
-import com.simplemobiletools.calendar.pro.activities.MainActivity
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.helpers.Config
 import com.simplemobiletools.calendar.pro.helpers.DAY_CODE

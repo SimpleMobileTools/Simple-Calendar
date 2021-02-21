@@ -36,7 +36,7 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
         onGlobalLayout {
             if (!wereViewsAdded && days.isNotEmpty()) {
                 measureSizes()
-                addViews()
+                addClickableBackgrounds()
                 monthView.updateDays(days, isMonthDayView)
             }
         }
@@ -48,7 +48,7 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
         dayClickCallback = callback
         days = newDays
         if (dayWidth != 0f && dayHeight != 0f) {
-            addViews()
+            addClickableBackgrounds()
         }
 
         isMonthDayView = !addEvents
@@ -69,7 +69,11 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
         }
     }
 
-    private fun addViews() {
+    private fun addClickableBackgrounds() {
+        if (isMonthDayView) {
+            return
+        }
+
         removeAllViews()
         monthView = inflater.inflate(R.layout.month_view, this).month_view
         wereViewsAdded = true
