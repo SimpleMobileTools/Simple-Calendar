@@ -9,7 +9,9 @@ import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import com.simplemobiletools.calendar.pro.R
-import com.simplemobiletools.calendar.pro.extensions.config
+import com.simplemobiletools.calendar.pro.activities.SimpleActivity
+import com.simplemobiletools.calendar.pro.adapters.EventListAdapter
+import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.Config
 import com.simplemobiletools.calendar.pro.helpers.DAY_CODE
 import com.simplemobiletools.calendar.pro.helpers.Formatter
@@ -17,6 +19,8 @@ import com.simplemobiletools.calendar.pro.helpers.MonthlyCalendarImpl
 import com.simplemobiletools.calendar.pro.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.pro.interfaces.NavigationListener
 import com.simplemobiletools.calendar.pro.models.DayMonthly
+import com.simplemobiletools.calendar.pro.models.ListEvent
+import kotlinx.android.synthetic.main.fragment_month_day.*
 import kotlinx.android.synthetic.main.fragment_month_day.view.*
 import org.joda.time.DateTime
 
@@ -43,10 +47,8 @@ class MonthDayFragment : Fragment(), MonthlyCalendar {
         mDayCode = arguments!!.getString(DAY_CODE)!!
         mConfig = context!!.config
         storeStateVariables()
-
         setupButtons()
         mCalendar = MonthlyCalendarImpl(this, context!!)
-
         return view
     }
 
@@ -90,18 +92,29 @@ class MonthDayFragment : Fragment(), MonthlyCalendar {
         mLastHash = newHash
 
         activity?.runOnUiThread {
-            updateDays(days)
+            mHolder.month_day_view_wrapper.updateDays(days, false) {
+
+            }
+        }
+
+        val startDateTime = Formatter.getLocalDateTimeFromCode(mDayCode).minusWeeks(1)
+        val endDateTime = startDateTime.plusWeeks(6)
+        context.eventsHelper.getEvents(startDateTime.seconds(), endDateTime.seconds()) { events ->
+            val listItems = context.getEventListItems(events, false)
+            activity?.runOnUiThread {
+                EventListAdapter(activity as SimpleActivity, listItems, true, null, month_day_events_list) {
+                    if (it is ListEvent) {
+                        context.editEvent(it)
+                    }
+                }.apply {
+                    month_day_events_list.adapter = this
+                }
+            }
         }
     }
 
     private fun setupButtons() {
         mTextColor = mConfig.textColor
-    }
-
-    private fun updateDays(days: ArrayList<DayMonthly>) {
-        mHolder.month_day_view_wrapper.updateDays(days, false) {
-//            (activity as MainActivity).openDayFromMonthly(Formatter.getDateTimeFromCode(it.code))
-        }
     }
 
     fun printCurrentView() {}
