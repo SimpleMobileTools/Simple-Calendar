@@ -24,11 +24,12 @@ import com.simplemobiletools.calendar.pro.models.DayMonthly
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.ListEvent
 import com.simplemobiletools.commons.extensions.beVisibleIf
+import com.simplemobiletools.commons.interfaces.RefreshRecyclerViewListener
 import kotlinx.android.synthetic.main.fragment_month_day.*
 import kotlinx.android.synthetic.main.fragment_month_day.view.*
 import org.joda.time.DateTime
 
-class MonthDayFragment : Fragment(), MonthlyCalendar {
+class MonthDayFragment : Fragment(), MonthlyCalendar, RefreshRecyclerViewListener {
     private var mSundayFirst = false
     private var mShowWeekNumbers = false
     private var mDayCode = ""
@@ -112,14 +113,7 @@ class MonthDayFragment : Fragment(), MonthlyCalendar {
             }
         }
 
-        val startDateTime = Formatter.getLocalDateTimeFromCode(mDayCode).minusWeeks(1)
-        val endDateTime = startDateTime.plusWeeks(6)
-        context.eventsHelper.getEvents(startDateTime.seconds(), endDateTime.seconds()) { events ->
-            mListEvents = events
-            activity?.runOnUiThread {
-                updateVisibleEvents()
-            }
-        }
+        refreshItems()
     }
 
     private fun updateVisibleEvents() {
@@ -145,12 +139,18 @@ class MonthDayFragment : Fragment(), MonthlyCalendar {
         activity?.runOnUiThread {
             if (activity != null) {
                 mHolder.month_day_no_events_placeholder.beVisibleIf(listItems.isEmpty())
-                EventListAdapter(activity as SimpleActivity, listItems, true, null, month_day_events_list, false) {
-                    if (it is ListEvent) {
-                        activity?.editEvent(it)
+
+                val currAdapter = mHolder.month_day_events_list.adapter
+                if (currAdapter == null) {
+                    EventListAdapter(activity as SimpleActivity, listItems, true, this, month_day_events_list, false) {
+                        if (it is ListEvent) {
+                            activity?.editEvent(it)
+                        }
+                    }.apply {
+                        month_day_events_list.adapter = this
                     }
-                }.apply {
-                    month_day_events_list.adapter = this
+                } else {
+                    (currAdapter as EventListAdapter).updateListItems(listItems)
                 }
             }
         }
@@ -175,5 +175,16 @@ class MonthDayFragment : Fragment(), MonthlyCalendar {
             month += " $targetYear"
         }
         return month
+    }
+
+    override fun refreshItems() {
+        val startDateTime = Formatter.getLocalDateTimeFromCode(mDayCode).minusWeeks(1)
+        val endDateTime = startDateTime.plusWeeks(6)
+        activity?.eventsHelper?.getEvents(startDateTime.seconds(), endDateTime.seconds()) { events ->
+            mListEvents = events
+            activity?.runOnUiThread {
+                updateVisibleEvents()
+            }
+        }
     }
 }
