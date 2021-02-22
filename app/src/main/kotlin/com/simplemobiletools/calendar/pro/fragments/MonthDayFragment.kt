@@ -29,7 +29,6 @@ import kotlinx.android.synthetic.main.fragment_month_day.view.*
 import org.joda.time.DateTime
 
 class MonthDayFragment : Fragment(), MonthlyCalendar {
-    private var mTextColor = 0
     private var mSundayFirst = false
     private var mShowWeekNumbers = false
     private var mDayCode = ""
@@ -158,7 +157,11 @@ class MonthDayFragment : Fragment(), MonthlyCalendar {
     }
 
     private fun setupButtons() {
-        mTextColor = mConfig.textColor
+        val textColor = mConfig.textColor
+        mHolder.apply {
+            month_day_selected_day_label.setTextColor(textColor)
+            month_day_no_events_placeholder.setTextColor(textColor)
+        }
     }
 
     fun printCurrentView() {}
