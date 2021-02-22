@@ -23,6 +23,7 @@ import com.simplemobiletools.calendar.pro.interfaces.NavigationListener
 import com.simplemobiletools.calendar.pro.models.DayMonthly
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.ListEvent
+import com.simplemobiletools.commons.extensions.beVisibleIf
 import kotlinx.android.synthetic.main.fragment_month_day.*
 import kotlinx.android.synthetic.main.fragment_month_day.view.*
 import org.joda.time.DateTime
@@ -144,6 +145,7 @@ class MonthDayFragment : Fragment(), MonthlyCalendar {
 
         activity?.runOnUiThread {
             if (activity != null) {
+                mHolder.month_day_no_events_placeholder.beVisibleIf(listItems.isEmpty())
                 EventListAdapter(activity as SimpleActivity, listItems, true, null, month_day_events_list, false) {
                     if (it is ListEvent) {
                         activity?.editEvent(it)
