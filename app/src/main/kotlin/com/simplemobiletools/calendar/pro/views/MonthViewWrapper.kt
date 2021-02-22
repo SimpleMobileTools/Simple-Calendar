@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.widget.FrameLayout
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.config
+import com.simplemobiletools.calendar.pro.helpers.COLUMN_COUNT
+import com.simplemobiletools.calendar.pro.helpers.ROW_COUNT
 import com.simplemobiletools.calendar.pro.models.DayMonthly
 import com.simplemobiletools.commons.extensions.onGlobalLayout
 import kotlinx.android.synthetic.main.month_view.view.*
@@ -74,20 +76,21 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
         monthView = inflater.inflate(R.layout.month_view, this).month_view
         wereViewsAdded = true
         var curId = 0
-        for (y in 0..5) {
-            for (x in 0..6) {
+        for (y in 0 until ROW_COUNT) {
+            for (x in 0 until COLUMN_COUNT) {
                 val day = days.getOrNull(curId)
                 if (day != null) {
-                    val xPos = x * dayWidth + horizontalOffset
-                    val yPos = y * dayHeight + weekDaysLetterHeight
-                    addViewBackground(xPos, yPos, day)
+                    addViewBackground(x, y, day)
                 }
                 curId++
             }
         }
     }
 
-    private fun addViewBackground(xPos: Float, yPos: Float, day: DayMonthly) {
+    private fun addViewBackground(viewX: Int, viewY: Int, day: DayMonthly) {
+        val xPos = viewX * dayWidth + horizontalOffset
+        val yPos = viewY * dayHeight + weekDaysLetterHeight
+
         inflater.inflate(R.layout.month_view_background, this, false).apply {
             if (isMonthDayView) {
                 background = null
@@ -99,6 +102,7 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
             y = yPos
             setOnClickListener {
                 dayClickCallback?.invoke(day)
+                monthView.updateCurrentlySelectedDay(viewX, viewY)
             }
             addView(this)
         }
