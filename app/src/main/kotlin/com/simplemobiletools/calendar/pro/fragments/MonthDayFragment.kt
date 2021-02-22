@@ -151,4 +151,6 @@ class MonthDayFragment : Fragment(), MonthlyCalendar {
     }
 
     fun printCurrentView() {}
+
+    fun getNewEventDayCode() = mSelectedDayCode
 }
