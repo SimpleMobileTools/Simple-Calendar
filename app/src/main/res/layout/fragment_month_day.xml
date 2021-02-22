@@ -37,7 +37,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:paddingTop="@dimen/normal_margin"
+            android:background="?attr/selectableItemBackground"
+            android:padding="@dimen/normal_margin"
             android:textSize="@dimen/actionbar_text_size"
             tools:text="8/5/2021" />
 

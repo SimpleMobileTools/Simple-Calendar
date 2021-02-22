@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import com.simplemobiletools.calendar.pro.R
+import com.simplemobiletools.calendar.pro.activities.MainActivity
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.adapters.EventListAdapter
 import com.simplemobiletools.calendar.pro.extensions.*
@@ -51,7 +52,12 @@ class MonthDayFragment : Fragment(), MonthlyCalendar {
         mDayCode = arguments!!.getString(DAY_CODE)!!
 
         val shownMonthDateTime = Formatter.getDateTimeFromCode(mDayCode)
-        mHolder.month_day_selected_day_label.text = getMonthLabel(shownMonthDateTime)
+        mHolder.month_day_selected_day_label.apply {
+            text = getMonthLabel(shownMonthDateTime)
+            setOnClickListener {
+                (activity as MainActivity).showGoToDateDialog()
+            }
+        }
 
         mConfig = context!!.config
         storeStateVariables()
