@@ -1,10 +1,7 @@
 package com.simplemobiletools.calendar.pro.views
 
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Paint
-import android.graphics.Point
-import android.graphics.RectF
+import android.graphics.*
 import android.text.TextPaint
 import android.text.TextUtils
 import android.util.AttributeSet
@@ -51,6 +48,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     private var isMonthDayView = false
     private var allEvents = ArrayList<MonthViewEvent>()
     private var bgRectF = RectF()
+    private var dayTextRect = Rect()
     private var dayLetters = ArrayList<String>()
     private var days = ArrayList<DayMonthly>()
     private var dayVerticalOffsets = SparseIntArray()
@@ -155,14 +153,22 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
                     val xPos = x * dayWidth + horizontalOffset
                     val yPos = y * dayHeight + verticalOffset
                     val xPosCenter = xPos + dayWidth / 2
+                    val dayNumber = day.value.toString()
 
                     if (selectedDayCoords.x != -1 && x == selectedDayCoords.x && y == selectedDayCoords.y) {
                         canvas.drawCircle(xPosCenter, yPos + textPaint.textSize * 0.7f, textPaint.textSize * 0.8f, circleStrokePaint)
                     } else if (day.isToday && !isPrintVersion) {
-                        canvas.drawCircle(xPosCenter, yPos + textPaint.textSize * 0.7f, textPaint.textSize * 0.75f, getCirclePaint(day))
+                        canvas.drawCircle(xPosCenter, yPos + textPaint.textSize * 0.7f, textPaint.textSize * 0.8f, getCirclePaint(day))
                     }
 
-                    canvas.drawText(day.value.toString(), xPosCenter, yPos + textPaint.textSize, getTextPaint(day))
+                    // mark days with events with a dot
+                    if (isMonthDayView && day.dayEvents.isNotEmpty()) {
+                        getCirclePaint(day).getTextBounds(dayNumber, 0, dayNumber.length, dayTextRect)
+                        val height = dayTextRect.height() * 1.15f
+                        canvas.drawCircle(xPosCenter, yPos + height + textPaint.textSize / 2, textPaint.textSize * 0.15f, getCirclePaint(day))
+                    }
+
+                    canvas.drawText(dayNumber, xPosCenter, yPos + textPaint.textSize, getTextPaint(day))
                     dayVerticalOffsets.put(day.indexOnMonthView, (verticalOffset + textPaint.textSize * 2).toInt())
                 }
                 curId++
