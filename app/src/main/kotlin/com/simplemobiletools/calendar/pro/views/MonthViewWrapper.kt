@@ -70,10 +70,6 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
     }
 
     private fun addClickableBackgrounds() {
-        if (isMonthDayView) {
-            return
-        }
-
         removeAllViews()
         monthView = inflater.inflate(R.layout.month_view, this).month_view
         wereViewsAdded = true
@@ -93,6 +89,10 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
 
     private fun addViewBackground(xPos: Float, yPos: Float, day: DayMonthly) {
         inflater.inflate(R.layout.month_view_background, this, false).apply {
+            if (isMonthDayView) {
+                background = null
+            }
+
             layoutParams.width = dayWidth.toInt()
             layoutParams.height = dayHeight.toInt()
             x = xPos
