@@ -28,7 +28,7 @@ import kotlinx.android.synthetic.main.event_list_section.view.*
 import java.util.*
 
 class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListItem>, val allowLongClick: Boolean, val listener: RefreshRecyclerViewListener?,
-                       recyclerView: MyRecyclerView, itemClick: (Any) -> Unit) : MyRecyclerViewAdapter(activity, recyclerView, null, itemClick) {
+                       recyclerView: MyRecyclerView, val tryDimPastEvents: Boolean, itemClick: (Any) -> Unit) : MyRecyclerViewAdapter(activity, recyclerView, null, itemClick) {
 
     private val topDivider = resources.getDrawable(R.drawable.divider_width)
     private val allDayString = resources.getString(R.string.all_day)
@@ -176,7 +176,7 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
                     startTextColor = adjustedPrimaryColor
                 }
 
-                if (dimPastEvents && listEvent.isPastEvent && !isPrintVersion) {
+                if (tryDimPastEvents && dimPastEvents && listEvent.isPastEvent && !isPrintVersion) {
                     startTextColor = startTextColor.adjustAlpha(LOW_ALPHA)
                     endTextColor = endTextColor.adjustAlpha(LOW_ALPHA)
                 }

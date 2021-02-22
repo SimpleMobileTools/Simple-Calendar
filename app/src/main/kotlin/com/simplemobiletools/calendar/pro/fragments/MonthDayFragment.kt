@@ -19,6 +19,7 @@ import com.simplemobiletools.calendar.pro.helpers.MonthlyCalendarImpl
 import com.simplemobiletools.calendar.pro.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.pro.interfaces.NavigationListener
 import com.simplemobiletools.calendar.pro.models.DayMonthly
+import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.ListEvent
 import kotlinx.android.synthetic.main.fragment_month_day.*
 import kotlinx.android.synthetic.main.fragment_month_day.view.*
@@ -29,9 +30,11 @@ class MonthDayFragment : Fragment(), MonthlyCalendar {
     private var mSundayFirst = false
     private var mShowWeekNumbers = false
     private var mDayCode = ""
+    private var mCurrentDayCode = ""
     private var mPackageName = ""
     private var mLastHash = 0L
     private var mCalendar: MonthlyCalendarImpl? = null
+    private var mListEvents = ArrayList<Event>()
 
     var listener: NavigationListener? = null
 
@@ -45,6 +48,14 @@ class MonthDayFragment : Fragment(), MonthlyCalendar {
         mPackageName = activity!!.packageName
         mHolder = view.month_day_calendar_holder
         mDayCode = arguments!!.getString(DAY_CODE)!!
+
+        val shownMonthDateTime = Formatter.getDateTimeFromCode(mDayCode)
+        val todayCode = Formatter.getTodayCode()
+        val todayDateTime = Formatter.getDateTimeFromCode(todayCode)
+        if (todayDateTime.year == shownMonthDateTime.year && todayDateTime.monthOfYear == shownMonthDateTime.monthOfYear) {
+            mCurrentDayCode = todayCode
+        }
+
         mConfig = context!!.config
         storeStateVariables()
         setupButtons()
@@ -93,22 +104,32 @@ class MonthDayFragment : Fragment(), MonthlyCalendar {
 
         activity?.runOnUiThread {
             mHolder.month_day_view_wrapper.updateDays(days, false) {
-
+                mCurrentDayCode = it.code
+                updateVisibleEvents()
             }
         }
 
         val startDateTime = Formatter.getLocalDateTimeFromCode(mDayCode).minusWeeks(1)
         val endDateTime = startDateTime.plusWeeks(6)
         context.eventsHelper.getEvents(startDateTime.seconds(), endDateTime.seconds()) { events ->
-            val listItems = context.getEventListItems(events, false)
-            activity?.runOnUiThread {
-                EventListAdapter(activity as SimpleActivity, listItems, true, null, month_day_events_list) {
-                    if (it is ListEvent) {
-                        context.editEvent(it)
-                    }
-                }.apply {
-                    month_day_events_list.adapter = this
+            mListEvents = events
+            updateVisibleEvents()
+        }
+    }
+
+    private fun updateVisibleEvents() {
+        val filtered = mListEvents.filter {
+            Formatter.getDayCodeFromTS(it.startTS) == mCurrentDayCode
+        }
+
+        val listItems = context!!.getEventListItems(filtered, false)
+        activity?.runOnUiThread {
+            EventListAdapter(activity as SimpleActivity, listItems, true, null, month_day_events_list, false) {
+                if (it is ListEvent) {
+                    activity?.editEvent(it)
                 }
+            }.apply {
+                month_day_events_list.adapter = this
             }
         }
     }
