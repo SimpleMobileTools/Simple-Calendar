@@ -30,7 +30,7 @@ class MonthDayFragment : Fragment(), MonthlyCalendar {
     private var mSundayFirst = false
     private var mShowWeekNumbers = false
     private var mDayCode = ""
-    private var mCurrentDayCode = ""
+    private var mSelectedDayCode = ""
     private var mPackageName = ""
     private var mLastHash = 0L
     private var mCalendar: MonthlyCalendarImpl? = null
@@ -52,8 +52,10 @@ class MonthDayFragment : Fragment(), MonthlyCalendar {
         val shownMonthDateTime = Formatter.getDateTimeFromCode(mDayCode)
         val todayCode = Formatter.getTodayCode()
         val todayDateTime = Formatter.getDateTimeFromCode(todayCode)
-        if (todayDateTime.year == shownMonthDateTime.year && todayDateTime.monthOfYear == shownMonthDateTime.monthOfYear) {
-            mCurrentDayCode = todayCode
+        mSelectedDayCode = if (todayDateTime.year == shownMonthDateTime.year && todayDateTime.monthOfYear == shownMonthDateTime.monthOfYear) {
+            todayCode
+        } else {
+            mDayCode
         }
 
         mConfig = context!!.config
@@ -104,7 +106,7 @@ class MonthDayFragment : Fragment(), MonthlyCalendar {
 
         activity?.runOnUiThread {
             mHolder.month_day_view_wrapper.updateDays(days, false) {
-                mCurrentDayCode = it.code
+                mSelectedDayCode = it.code
                 updateVisibleEvents()
             }
         }
@@ -113,23 +115,33 @@ class MonthDayFragment : Fragment(), MonthlyCalendar {
         val endDateTime = startDateTime.plusWeeks(6)
         context.eventsHelper.getEvents(startDateTime.seconds(), endDateTime.seconds()) { events ->
             mListEvents = events
-            updateVisibleEvents()
+            activity?.runOnUiThread {
+                updateVisibleEvents()
+            }
         }
     }
 
     private fun updateVisibleEvents() {
-        val filtered = mListEvents.filter {
-            Formatter.getDayCodeFromTS(it.startTS) == mCurrentDayCode
+        if (activity == null) {
+            return
         }
 
-        val listItems = context!!.getEventListItems(filtered, false)
+        val filtered = mListEvents.filter {
+            Formatter.getDayCodeFromTS(it.startTS) == mSelectedDayCode
+        }
+
+        val listItems = activity!!.getEventListItems(filtered, false)
+        month_day_selected_day_label.text = Formatter.getDateFromCode(activity!!, mSelectedDayCode, false)
+
         activity?.runOnUiThread {
-            EventListAdapter(activity as SimpleActivity, listItems, true, null, month_day_events_list, false) {
-                if (it is ListEvent) {
-                    activity?.editEvent(it)
+            if (activity != null) {
+                EventListAdapter(activity as SimpleActivity, listItems, true, null, month_day_events_list, false) {
+                    if (it is ListEvent) {
+                        activity?.editEvent(it)
+                    }
+                }.apply {
+                    month_day_events_list.adapter = this
                 }
-            }.apply {
-                month_day_events_list.adapter = this
             }
         }
     }
