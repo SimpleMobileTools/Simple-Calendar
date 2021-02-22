@@ -15,6 +15,7 @@ import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.Config
 import com.simplemobiletools.calendar.pro.helpers.DAY_CODE
 import com.simplemobiletools.calendar.pro.helpers.Formatter
+import com.simplemobiletools.calendar.pro.helpers.Formatter.YEAR_PATTERN
 import com.simplemobiletools.calendar.pro.helpers.MonthlyCalendarImpl
 import com.simplemobiletools.calendar.pro.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.pro.interfaces.NavigationListener
@@ -55,7 +56,8 @@ class MonthDayFragment : Fragment(), MonthlyCalendar {
         mSelectedDayCode = if (todayDateTime.year == shownMonthDateTime.year && todayDateTime.monthOfYear == shownMonthDateTime.monthOfYear) {
             todayCode
         } else {
-            mDayCode
+            mHolder.month_day_selected_day_label.text = getMonthLabel(shownMonthDateTime)
+            ""
         }
 
         mConfig = context!!.config
@@ -127,11 +129,19 @@ class MonthDayFragment : Fragment(), MonthlyCalendar {
         }
 
         val filtered = mListEvents.filter {
-            Formatter.getDayCodeFromTS(it.startTS) == mSelectedDayCode
+            if (mSelectedDayCode.isEmpty()) {
+                val shownMonthDateTime = Formatter.getDateTimeFromCode(mDayCode)
+                val startDateTime = Formatter.getDateTimeFromTS(it.startTS)
+                shownMonthDateTime.year == startDateTime.year && shownMonthDateTime.monthOfYear == startDateTime.monthOfYear
+            } else {
+                Formatter.getDayCodeFromTS(it.startTS) == mSelectedDayCode
+            }
         }
 
         val listItems = activity!!.getEventListItems(filtered, false)
-        month_day_selected_day_label.text = Formatter.getDateFromCode(activity!!, mSelectedDayCode, false)
+        if (mSelectedDayCode.isNotEmpty()) {
+            mHolder.month_day_selected_day_label.text = Formatter.getDateFromCode(activity!!, mSelectedDayCode, false)
+        }
 
         activity?.runOnUiThread {
             if (activity != null) {
@@ -152,5 +162,14 @@ class MonthDayFragment : Fragment(), MonthlyCalendar {
 
     fun printCurrentView() {}
 
-    fun getNewEventDayCode() = mSelectedDayCode
+    fun getNewEventDayCode() = if (mSelectedDayCode.isEmpty()) mDayCode else mSelectedDayCode
+
+    private fun getMonthLabel(shownMonthDateTime: DateTime): String {
+        var month = Formatter.getMonthName(activity!!, shownMonthDateTime.monthOfYear)
+        val targetYear = shownMonthDateTime.toString(YEAR_PATTERN)
+        if (targetYear != DateTime().toString(YEAR_PATTERN)) {
+            month += " $targetYear"
+        }
+        return month
+    }
 }

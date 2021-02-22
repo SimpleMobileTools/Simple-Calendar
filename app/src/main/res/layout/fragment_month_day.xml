@@ -11,7 +11,7 @@
         android:id="@+id/month_day_view_wrapper"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/month_day_events_list"
+        app:layout_constraintBottom_toTopOf="@+id/month_day_list_holder"
         app:layout_constraintHeight_percent="0.3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -37,8 +37,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:paddingTop="@dimen/medium_margin"
-            android:textSize="@dimen/bigger_text_size"
+            android:paddingTop="@dimen/normal_margin"
+            android:textSize="@dimen/actionbar_text_size"
             tools:text="8/5/2021" />
 
         <com.simplemobiletools.commons.views.MyRecyclerView
