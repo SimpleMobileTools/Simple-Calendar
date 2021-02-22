@@ -51,14 +51,7 @@ class MonthDayFragment : Fragment(), MonthlyCalendar {
         mDayCode = arguments!!.getString(DAY_CODE)!!
 
         val shownMonthDateTime = Formatter.getDateTimeFromCode(mDayCode)
-        val todayCode = Formatter.getTodayCode()
-        val todayDateTime = Formatter.getDateTimeFromCode(todayCode)
-        mSelectedDayCode = if (todayDateTime.year == shownMonthDateTime.year && todayDateTime.monthOfYear == shownMonthDateTime.monthOfYear) {
-            todayCode
-        } else {
-            mHolder.month_day_selected_day_label.text = getMonthLabel(shownMonthDateTime)
-            ""
-        }
+        mHolder.month_day_selected_day_label.text = getMonthLabel(shownMonthDateTime)
 
         mConfig = context!!.config
         storeStateVariables()
