@@ -168,8 +168,8 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
                     // mark days with events with a dot
                     if (isMonthDayView && day.dayEvents.isNotEmpty()) {
                         getCirclePaint(day).getTextBounds(dayNumber, 0, dayNumber.length, dayTextRect)
-                        val height = dayTextRect.height() * 1.15f
-                        canvas.drawCircle(xPosCenter, yPos + height + textPaint.textSize / 2, textPaint.textSize * 0.15f, getDayEventColor(day.dayEvents.first()))
+                        val height = dayTextRect.height() * 1.25f
+                        canvas.drawCircle(xPosCenter, yPos + height + textPaint.textSize / 2, textPaint.textSize * 0.2f, getDayEventColor(day.dayEvents.first()))
                     }
 
                     canvas.drawText(dayNumber, xPosCenter, yPos + textPaint.textSize, textPaint)
