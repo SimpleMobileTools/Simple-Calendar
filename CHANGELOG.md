@@ -1,6 +1,16 @@
 Changelog
 ==========
 
+Version 6.13.0 *(2021-02-23)*
+----------------------------
+
+ * Added a new combination of monthly + daily view
+ * Fixed too big background activity with CalDAV sync enabled
+ * Fixed some glitches at importing .ics files
+ * Fixed a glitch at new events having wrong date set by default in some cases
+ * Added a setting item for quick notification customizing on Android 8+
+ * Added some translation and stability improvements
+
 Version 6.12.0 *(2021-02-13)*
 ----------------------------
 
