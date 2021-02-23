@@ -138,6 +138,7 @@ class MonthDayFragment : Fragment(), MonthlyCalendar, RefreshRecyclerViewListene
 
         activity?.runOnUiThread {
             if (activity != null) {
+                mHolder.month_day_events_list.beVisibleIf(listItems.isNotEmpty())
                 mHolder.month_day_no_events_placeholder.beVisibleIf(listItems.isEmpty())
 
                 val currAdapter = mHolder.month_day_events_list.adapter
