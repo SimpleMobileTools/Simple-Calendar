@@ -172,6 +172,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         shouldGoToTodayBeVisible = currentFragments.last().shouldGoToTodayBeVisible()
         menu.apply {
             goToTodayButton = findItem(R.id.go_to_today)
+            findItem(R.id.print).isVisible = config.storedView != MONTHLY_DAILY_VIEW
             findItem(R.id.filter).isVisible = mShouldFilterBeVisible
             findItem(R.id.go_to_today).isVisible = shouldGoToTodayBeVisible && !mIsSearchOpen
             findItem(R.id.go_to_date).isVisible = config.storedView != EVENTS_LIST_VIEW
