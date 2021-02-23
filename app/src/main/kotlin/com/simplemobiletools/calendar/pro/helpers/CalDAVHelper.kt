@@ -13,8 +13,7 @@ import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.models.*
 import com.simplemobiletools.calendar.pro.objects.States.isUpdatingCalDAV
 import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.PERMISSION_READ_CALENDAR
-import com.simplemobiletools.commons.helpers.PERMISSION_WRITE_CALENDAR
+import com.simplemobiletools.commons.helpers.*
 import org.joda.time.DateTimeZone
 import org.joda.time.format.DateTimeFormat
 import java.util.*
@@ -43,6 +42,7 @@ class CalDAVHelper(val context: Context) {
 
                 fetchCalDAVCalendarEvents(calendar.id, localEventType.id!!, showToasts)
             }
+
             context.scheduleCalDAVSync(true)
             callback()
         } finally {
@@ -59,13 +59,13 @@ class CalDAVHelper(val context: Context) {
 
         val uri = Calendars.CONTENT_URI
         val projection = arrayOf(
-                Calendars._ID,
-                Calendars.CALENDAR_DISPLAY_NAME,
-                Calendars.ACCOUNT_NAME,
-                Calendars.ACCOUNT_TYPE,
-                Calendars.OWNER_ACCOUNT,
-                Calendars.CALENDAR_COLOR,
-                Calendars.CALENDAR_ACCESS_LEVEL)
+            Calendars._ID,
+            Calendars.CALENDAR_DISPLAY_NAME,
+            Calendars.ACCOUNT_NAME,
+            Calendars.ACCOUNT_TYPE,
+            Calendars.OWNER_ACCOUNT,
+            Calendars.CALENDAR_COLOR,
+            Calendars.CALENDAR_ACCESS_LEVEL)
 
         val selection = if (ids.trim().isNotEmpty()) "${Calendars._ID} IN ($ids)" else null
         context.queryCursor(uri, projection, selection, showErrors = showToasts) { cursor ->
@@ -83,39 +83,38 @@ class CalDAVHelper(val context: Context) {
         return calendars
     }
 
+    // check if the calendars color or title has changed
     fun updateCalDAVCalendar(eventType: EventType) {
         val uri = Calendars.CONTENT_URI
-        val values = fillCalendarContentValues(eventType)
         val newUri = ContentUris.withAppendedId(uri, eventType.caldavCalendarId.toLong())
-        try {
-            context.contentResolver.update(newUri, values, null, null)
-        } catch (e: IllegalArgumentException) {
-        }
-    }
+        val projection = arrayOf(
+            Calendars.CALENDAR_COLOR_KEY,
+            Calendars.CALENDAR_COLOR,
+            Calendars.CALENDAR_DISPLAY_NAME
+        )
 
-    private fun fillCalendarContentValues(eventType: EventType): ContentValues {
-        val colorKey = getEventTypeColorKey(eventType)
-        return ContentValues().apply {
-            put(Calendars.CALENDAR_COLOR_KEY, colorKey)
-            put(Calendars.CALENDAR_DISPLAY_NAME, eventType.title)
-        }
-    }
-
-    @SuppressLint("MissingPermission")
-    private fun getEventTypeColorKey(eventType: EventType): Int {
-        val uri = Colors.CONTENT_URI
-        val projection = arrayOf(Colors.COLOR_KEY)
-        val selection = "${Colors.COLOR_TYPE} = ? AND ${Colors.COLOR} = ? AND ${Colors.ACCOUNT_NAME} = ?"
-        val selectionArgs = arrayOf(Colors.TYPE_CALENDAR.toString(), eventType.color.toString(), eventType.caldavEmail)
-
-        val cursor = context.contentResolver.query(uri, projection, selection, selectionArgs, null)
-        cursor?.use {
-            if (cursor.moveToFirst()) {
-                return cursor.getStringValue(Colors.COLOR_KEY).toInt()
+        context.queryCursor(newUri, projection) { cursor ->
+            val properColorKey = cursor.getIntValue(Calendars.CALENDAR_COLOR_KEY)
+            val properColor = cursor.getIntValue(Calendars.CALENDAR_COLOR)
+            val displayName = cursor.getStringValue(Calendars.CALENDAR_DISPLAY_NAME)
+            if (eventType.color != properColor || displayName != eventType.title) {
+                val values = fillCalendarContentValues(properColorKey, displayName)
+                try {
+                    context.contentResolver.update(newUri, values, null, null)
+                    eventType.color = properColor
+                    eventType.title = displayName
+                    context.eventTypesDB.insertOrUpdate(eventType)
+                } catch (e: IllegalArgumentException) {
+                }
             }
         }
+    }
 
-        return -1
+    private fun fillCalendarContentValues(colorKey: Int, title: String): ContentValues {
+        return ContentValues().apply {
+            put(Calendars.CALENDAR_COLOR_KEY, colorKey)
+            put(Calendars.CALENDAR_DISPLAY_NAME, title)
+        }
     }
 
     @SuppressLint("MissingPermission")
@@ -157,21 +156,21 @@ class CalDAVHelper(val context: Context) {
 
         val uri = Events.CONTENT_URI
         val projection = arrayOf(
-                Events._ID,
-                Events.TITLE,
-                Events.DESCRIPTION,
-                Events.DTSTART,
-                Events.DTEND,
-                Events.DURATION,
-                Events.EXDATE,
-                Events.ALL_DAY,
-                Events.RRULE,
-                Events.ORIGINAL_ID,
-                Events.ORIGINAL_INSTANCE_TIME,
-                Events.EVENT_LOCATION,
-                Events.EVENT_TIMEZONE,
-                Events.CALENDAR_TIME_ZONE,
-                Events.DELETED)
+            Events._ID,
+            Events.TITLE,
+            Events.DESCRIPTION,
+            Events.DTSTART,
+            Events.DTEND,
+            Events.DURATION,
+            Events.EXDATE,
+            Events.ALL_DAY,
+            Events.RRULE,
+            Events.ORIGINAL_ID,
+            Events.ORIGINAL_INSTANCE_TIME,
+            Events.EVENT_LOCATION,
+            Events.EVENT_TIMEZONE,
+            Events.CALENDAR_TIME_ZONE,
+            Events.DELETED)
 
         val selection = "${Events.CALENDAR_ID} = $calendarId"
         context.queryCursor(uri, projection, selection, showErrors = showToasts) { cursor ->
@@ -203,15 +202,15 @@ class CalDAVHelper(val context: Context) {
             val reminder3 = reminders.getOrNull(2)
             val importId = getCalDAVEventImportId(calendarId, id)
             val eventTimeZone = cursor.getStringValue(Events.EVENT_TIMEZONE)
-                    ?: cursor.getStringValue(Events.CALENDAR_TIME_ZONE) ?: DateTimeZone.getDefault().id
+                ?: cursor.getStringValue(Events.CALENDAR_TIME_ZONE) ?: DateTimeZone.getDefault().id
 
             val source = "$CALDAV-$calendarId"
             val repeatRule = Parser().parseRepeatInterval(rrule, startTS)
             val event = Event(null, startTS, endTS, title, location, description, reminder1?.minutes ?: REMINDER_OFF,
-                    reminder2?.minutes ?: REMINDER_OFF, reminder3?.minutes ?: REMINDER_OFF, reminder1?.type
-                    ?: REMINDER_NOTIFICATION, reminder2?.type ?: REMINDER_NOTIFICATION, reminder3?.type
-                    ?: REMINDER_NOTIFICATION, repeatRule.repeatInterval, repeatRule.repeatRule,
-                    repeatRule.repeatLimit, ArrayList(), attendees, importId, eventTimeZone, allDay, eventTypeId, source = source)
+                reminder2?.minutes ?: REMINDER_OFF, reminder3?.minutes ?: REMINDER_OFF, reminder1?.type
+                ?: REMINDER_NOTIFICATION, reminder2?.type ?: REMINDER_NOTIFICATION, reminder3?.type
+                ?: REMINDER_NOTIFICATION, repeatRule.repeatInterval, repeatRule.repeatRule,
+                repeatRule.repeatLimit, ArrayList(), attendees, importId, eventTimeZone, allDay, eventTypeId, source = source)
 
             if (event.getIsAllDay()) {
                 event.startTS = Formatter.getShiftedImportTimestamp(event.startTS)
@@ -469,8 +468,8 @@ class CalDAVHelper(val context: Context) {
         val reminders = ArrayList<Reminder>()
         val uri = Reminders.CONTENT_URI
         val projection = arrayOf(
-                Reminders.MINUTES,
-                Reminders.METHOD)
+            Reminders.MINUTES,
+            Reminders.METHOD)
         val selection = "${Reminders.EVENT_ID} = $eventId"
 
         context.queryCursor(uri, projection, selection) { cursor ->
@@ -490,10 +489,10 @@ class CalDAVHelper(val context: Context) {
         val attendees = ArrayList<Attendee>()
         val uri = Attendees.CONTENT_URI
         val projection = arrayOf(
-                Attendees.ATTENDEE_NAME,
-                Attendees.ATTENDEE_EMAIL,
-                Attendees.ATTENDEE_STATUS,
-                Attendees.ATTENDEE_RELATIONSHIP)
+            Attendees.ATTENDEE_NAME,
+            Attendees.ATTENDEE_EMAIL,
+            Attendees.ATTENDEE_STATUS,
+            Attendees.ATTENDEE_RELATIONSHIP)
         val selection = "${Attendees.EVENT_ID} = $eventId"
         context.queryCursor(uri, projection, selection) { cursor ->
             val name = cursor.getStringValue(Attendees.ATTENDEE_NAME) ?: ""

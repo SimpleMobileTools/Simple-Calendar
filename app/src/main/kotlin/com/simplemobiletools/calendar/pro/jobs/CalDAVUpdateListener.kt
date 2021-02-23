@@ -10,9 +10,7 @@ import android.content.Context
 import android.os.Build
 import android.os.Handler
 import android.provider.CalendarContract
-import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.recheckCalDAVCalendars
-import com.simplemobiletools.calendar.pro.extensions.refreshCalDAVCalendars
 
 // based on https://developer.android.com/reference/android/app/job/JobInfo.Builder.html#addTriggerContentUri(android.app.job.JobInfo.TriggerContentUri)
 @TargetApi(Build.VERSION_CODES.N)
@@ -34,13 +32,13 @@ class CalDAVUpdateListener : JobService() {
         val uri = CalendarContract.Calendars.CONTENT_URI
         JobInfo.Builder(CALDAV_EVENT_CONTENT_JOB, componentName).apply {
             addTriggerContentUri(JobInfo.TriggerContentUri(uri, JobInfo.TriggerContentUri.FLAG_NOTIFY_FOR_DESCENDANTS))
-            context.getSystemService(JobScheduler::class.java).schedule(build())
+            (context.getSystemService(Context.JOB_SCHEDULER_SERVICE) as JobScheduler).schedule(build())
         }
     }
 
     fun isScheduled(context: Context): Boolean {
         val jobScheduler = context.getSystemService(JobScheduler::class.java)
-        val jobs = jobScheduler.allPendingJobs ?: return false
+        val jobs = jobScheduler.allPendingJobs
         return jobs.any { it.id == CALDAV_EVENT_CONTENT_JOB }
     }
 
