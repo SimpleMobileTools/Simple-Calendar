@@ -1,6 +1,5 @@
 package com.simplemobiletools.calendar.pro.fragments
 
-import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.os.Handler
@@ -10,13 +9,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.simplemobiletools.calendar.pro.R
-import com.simplemobiletools.calendar.pro.activities.EventActivity
 import com.simplemobiletools.calendar.pro.activities.MainActivity
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.adapters.EventListAdapter
 import com.simplemobiletools.calendar.pro.extensions.*
-import com.simplemobiletools.calendar.pro.helpers.EVENT_ID
-import com.simplemobiletools.calendar.pro.helpers.EVENT_OCCURRENCE_TS
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.ListEvent

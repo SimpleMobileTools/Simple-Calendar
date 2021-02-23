@@ -165,7 +165,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
                     if (isMonthDayView && day.dayEvents.isNotEmpty()) {
                         getCirclePaint(day).getTextBounds(dayNumber, 0, dayNumber.length, dayTextRect)
                         val height = dayTextRect.height() * 1.15f
-                        canvas.drawCircle(xPosCenter, yPos + height + textPaint.textSize / 2, textPaint.textSize * 0.15f, getCirclePaint(day))
+                        canvas.drawCircle(xPosCenter, yPos + height + textPaint.textSize / 2, textPaint.textSize * 0.15f, getDayEventColor(day.dayEvents.first()))
                     }
 
                     canvas.drawText(dayNumber, xPosCenter, yPos + textPaint.textSize, getTextPaint(day))
@@ -326,6 +326,12 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
             paintColor = paintColor.adjustAlpha(MEDIUM_ALPHA)
         }
         curPaint.color = paintColor
+        return curPaint
+    }
+
+    private fun getDayEventColor(event: Event): Paint {
+        val curPaint = Paint(Paint.ANTI_ALIAS_FLAG)
+        curPaint.color = event.color
         return curPaint
     }
 
