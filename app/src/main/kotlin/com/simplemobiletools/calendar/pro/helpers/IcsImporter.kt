@@ -152,6 +152,7 @@ class IcsImporter(val activity: SimpleActivity) {
                             curReminderMinutes.add(curReminderTriggerMinutes)
                             curReminderActions.add(curReminderTriggerAction)
                         }
+                        isNotificationDescription = false
                     } else if (line == END_EVENT) {
                         isParsingEvent = false
                         if (curStart != -1L && curEnd == -1L) {
