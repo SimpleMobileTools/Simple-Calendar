@@ -51,6 +51,7 @@ class SettingsActivity : SimpleActivity() {
         setupHighlightWeekends()
         setupDeleteAllEvents()
         setupReplaceDescription()
+        setupCompactWidget()
         setupWeekNumbers()
         setupShowGrid()
         setupWeeklyStart()
@@ -306,6 +307,14 @@ class SettingsActivity : SimpleActivity() {
         settings_replace_description_holder.setOnClickListener {
             settings_replace_description.toggle()
             config.replaceDescription = settings_replace_description.isChecked
+        }
+    }
+
+    private fun setupCompactWidget() {
+        settings_compact_widget.isChecked = config.compactWidget
+        settings_compact_widget_holder.setOnClickListener {
+            settings_compact_widget.toggle()
+            config.compactWidget = settings_compact_widget.isChecked
         }
     }
 
@@ -679,6 +688,7 @@ class SettingsActivity : SimpleActivity() {
                 put(LIST_WIDGET_VIEW_TO_OPEN, config.listWidgetViewToOpen)
                 put(REMINDER_AUDIO_STREAM, config.reminderAudioStream)
                 put(REPLACE_DESCRIPTION, config.replaceDescription)
+                put(COMPACT_WIDGET, config.compactWidget)
                 put(SHOW_GRID, config.showGrid)
                 put(LOOP_REMINDERS, config.loopReminders)
                 put(DIM_PAST_EVENTS, config.dimPastEvents)
@@ -774,6 +784,7 @@ class SettingsActivity : SimpleActivity() {
                 LIST_WIDGET_VIEW_TO_OPEN -> config.listWidgetViewToOpen = value.toInt()
                 REMINDER_AUDIO_STREAM -> config.reminderAudioStream = value.toInt()
                 REPLACE_DESCRIPTION -> config.replaceDescription = value.toBoolean()
+                COMPACT_WIDGET -> config.compactWidget = value.toBoolean()
                 SHOW_GRID -> config.showGrid = value.toBoolean()
                 LOOP_REMINDERS -> config.loopReminders = value.toBoolean()
                 DIM_PAST_EVENTS -> config.dimPastEvents = value.toBoolean()

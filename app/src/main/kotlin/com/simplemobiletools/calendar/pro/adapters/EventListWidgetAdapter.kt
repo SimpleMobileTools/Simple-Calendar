@@ -36,6 +36,7 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
     private val replaceDescription = context.config.replaceDescription
     private val dimPastEvents = context.config.dimPastEvents
     private var mediumFontSize = context.getWidgetFontSize()
+    private var compactWidget = context.config.compactWidget
 
     override fun getViewAt(position: Int): RemoteViews? {
         val type = getItemViewType(position)
@@ -47,7 +48,7 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
             remoteView = RemoteViews(context.packageName, layout)
             setupListEvent(remoteView, event)
         } else {
-            remoteView = RemoteViews(context.packageName, R.layout.event_list_section_widget)
+            remoteView = RemoteViews(context.packageName, if (compactWidget) R.layout.event_list_section_compact_widget else R.layout.event_list_section_widget)
             val section = events.getOrNull(position) as? ListSection
             if (section != null) {
                 setupListSection(remoteView, section)
@@ -118,6 +119,10 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
             setTextSize(R.id.event_item_start, mediumFontSize)
             setTextSize(R.id.event_item_end, mediumFontSize)
 
+            if (compactWidget) {
+              setViewPadding(R.id.event_item_holder, 0, 0, 0, 0)
+            }
+
             Intent().apply {
                 putExtra(EVENT_ID, item.id)
                 putExtra(EVENT_OCCURRENCE_TS, item.startTS)
@@ -159,6 +164,7 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
         textColor = context.config.widgetTextColor
         weakTextColor = textColor.adjustAlpha(LOW_ALPHA)
         mediumFontSize = context.getWidgetFontSize()
+        compactWidget = context.config.compactWidget
         val fromTS = DateTime().seconds() - context.config.displayPastEvents * 60
         val toTS = DateTime().plusYears(1).seconds()
         context.eventsHelper.getEventsSync(fromTS, toTS, applyTypeFilter = true) {

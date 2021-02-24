@@ -887,6 +887,27 @@
 
         </RelativeLayout>
 
+        <RelativeLayout
+            android:id="@+id/settings_compact_widget_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:paddingStart="@dimen/normal_margin"
+            android:paddingTop="@dimen/bigger_margin"
+            android:paddingEnd="@dimen/normal_margin"
+            android:paddingBottom="@dimen/bigger_margin">
+
+            <com.simplemobiletools.commons.views.MySwitchCompat
+                android:id="@+id/settings_compact_widget"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:clickable="false"
+                android:paddingStart="@dimen/medium_margin"
+                android:text="@string/compact_widget" />
+
+        </RelativeLayout>
+
         <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/events_label"
             android:layout_width="wrap_content"

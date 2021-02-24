@@ -98,6 +98,10 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getBoolean(REPLACE_DESCRIPTION, false)
         set(replaceDescription) = prefs.edit().putBoolean(REPLACE_DESCRIPTION, replaceDescription).apply()
 
+    var compactWidget : Boolean
+        get() = prefs.getBoolean(COMPACT_WIDGET, false)
+        set(compactWidget) = prefs.edit().putBoolean(COMPACT_WIDGET, compactWidget).apply()
+
     var showGrid: Boolean
         get() = prefs.getBoolean(SHOW_GRID, false)
         set(showGrid) = prefs.edit().putBoolean(SHOW_GRID, showGrid).apply()

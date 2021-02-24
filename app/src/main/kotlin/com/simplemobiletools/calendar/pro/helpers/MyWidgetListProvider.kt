@@ -30,10 +30,11 @@ class MyWidgetListProvider : AppWidgetProvider() {
     private fun performUpdate(context: Context) {
         val fontSize = context.getWidgetFontSize()
         val textColor = context.config.widgetTextColor
+        val hideHeader = context.config.compactWidget
 
         val appWidgetManager = AppWidgetManager.getInstance(context)
         appWidgetManager.getAppWidgetIds(getComponentName(context)).forEach {
-            val views = RemoteViews(context.packageName, R.layout.widget_event_list).apply {
+            val views = RemoteViews(context.packageName, if (hideHeader) R.layout.widget_event_list_compact else R.layout.widget_event_list).apply {
                 applyColorFilter(R.id.widget_event_list_background, context.config.widgetBgColor)
                 setTextColor(R.id.widget_event_list_empty, textColor)
                 setTextSize(R.id.widget_event_list_empty, fontSize)
@@ -42,15 +43,17 @@ class MyWidgetListProvider : AppWidgetProvider() {
                 setTextSize(R.id.widget_event_list_today, fontSize)
             }
 
-            val todayText = Formatter.getLongestDate(getNowSeconds())
-            views.setText(R.id.widget_event_list_today, todayText)
+            if (!hideHeader) {
+                val todayText = Formatter.getLongestDate(getNowSeconds())
+                views.setText(R.id.widget_event_list_today, todayText)
 
-            views.setImageViewBitmap(R.id.widget_event_new_event, context.resources.getColoredBitmap(R.drawable.ic_plus_vector, textColor))
-            setupIntent(context, views, NEW_EVENT, R.id.widget_event_new_event)
-            setupIntent(context, views, LAUNCH_CAL, R.id.widget_event_list_today)
+                views.setImageViewBitmap(R.id.widget_event_new_event, context.resources.getColoredBitmap(R.drawable.ic_plus_vector, textColor))
+                setupIntent(context, views, NEW_EVENT, R.id.widget_event_new_event)
+                setupIntent(context, views, LAUNCH_CAL, R.id.widget_event_list_today)
 
-            views.setImageViewBitmap(R.id.widget_event_go_to_today, context.resources.getColoredBitmap(R.drawable.ic_today_vector, textColor))
-            setupIntent(context, views, GO_TO_TODAY, R.id.widget_event_go_to_today)
+                views.setImageViewBitmap(R.id.widget_event_go_to_today, context.resources.getColoredBitmap(R.drawable.ic_today_vector, textColor))
+                setupIntent(context, views, GO_TO_TODAY, R.id.widget_event_go_to_today)
+            }
 
             Intent(context, WidgetService::class.java).apply {
                 data = Uri.parse(this.toUri(Intent.URI_INTENT_SCHEME))
