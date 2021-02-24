@@ -186,6 +186,7 @@
     <string name="default_reminder_2">Default reminder 2</string>
     <string name="default_reminder_3">Default reminder 3</string>
     <string name="view_to_open_from_widget">View to open from the event list widget</string>
+    <string name="widget_only_start_date">Only display start time</string>
     <string name="last_view">Last view</string>
     <string name="new_events">New events</string>
     <string name="default_start_time">Default start time</string>

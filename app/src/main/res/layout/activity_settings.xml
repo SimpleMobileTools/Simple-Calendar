@@ -887,6 +887,27 @@
 
         </RelativeLayout>
 
+        <RelativeLayout
+            android:id="@+id/settings_widget_only_start_date_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:paddingStart="@dimen/normal_margin"
+            android:paddingTop="@dimen/bigger_margin"
+            android:paddingEnd="@dimen/normal_margin"
+            android:paddingBottom="@dimen/bigger_margin">
+
+            <com.simplemobiletools.commons.views.MySwitchCompat
+                android:id="@+id/settings_widget_only_start_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:clickable="false"
+                android:paddingStart="@dimen/medium_margin"
+                android:text="@string/widget_only_start_date" />
+
+        </RelativeLayout>
+
         <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/events_label"
             android:layout_width="wrap_content"

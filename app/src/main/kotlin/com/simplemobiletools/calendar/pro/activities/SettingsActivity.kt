@@ -51,6 +51,7 @@ class SettingsActivity : SimpleActivity() {
         setupHighlightWeekends()
         setupDeleteAllEvents()
         setupReplaceDescription()
+        setupWidgetOnlyStartDate()
         setupWeekNumbers()
         setupShowGrid()
         setupWeeklyStart()
@@ -306,6 +307,14 @@ class SettingsActivity : SimpleActivity() {
         settings_replace_description_holder.setOnClickListener {
             settings_replace_description.toggle()
             config.replaceDescription = settings_replace_description.isChecked
+        }
+    }
+
+    private fun setupWidgetOnlyStartDate() {
+        settings_widget_only_start_date.isChecked = config.widgetOnlyStartDate
+        settings_widget_only_start_date_holder.setOnClickListener {
+            settings_widget_only_start_date.toggle()
+            config.widgetOnlyStartDate = settings_widget_only_start_date.isChecked
         }
     }
 
@@ -679,6 +688,7 @@ class SettingsActivity : SimpleActivity() {
                 put(LIST_WIDGET_VIEW_TO_OPEN, config.listWidgetViewToOpen)
                 put(REMINDER_AUDIO_STREAM, config.reminderAudioStream)
                 put(REPLACE_DESCRIPTION, config.replaceDescription)
+                put(WIDGET_ONLY_START_DATE, config.widgetOnlyStartDate)
                 put(SHOW_GRID, config.showGrid)
                 put(LOOP_REMINDERS, config.loopReminders)
                 put(DIM_PAST_EVENTS, config.dimPastEvents)
@@ -774,6 +784,7 @@ class SettingsActivity : SimpleActivity() {
                 LIST_WIDGET_VIEW_TO_OPEN -> config.listWidgetViewToOpen = value.toInt()
                 REMINDER_AUDIO_STREAM -> config.reminderAudioStream = value.toInt()
                 REPLACE_DESCRIPTION -> config.replaceDescription = value.toBoolean()
+                WIDGET_ONLY_START_DATE -> config.widgetOnlyStartDate = value.toBoolean()
                 SHOW_GRID -> config.showGrid = value.toBoolean()
                 LOOP_REMINDERS -> config.loopReminders = value.toBoolean()
                 DIM_PAST_EVENTS -> config.dimPastEvents = value.toBoolean()

@@ -36,6 +36,7 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
     private val replaceDescription = context.config.replaceDescription
     private val dimPastEvents = context.config.dimPastEvents
     private var mediumFontSize = context.getWidgetFontSize()
+    private var onlyStartDate = context.config.widgetOnlyStartDate
 
     override fun getViewAt(position: Int): RemoteViews? {
         val type = getItemViewType(position)
@@ -61,7 +62,7 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
         val detailField = if (replaceDescription) event.location else event.description
         return if (detailField.isNotEmpty()) {
             R.layout.event_list_item_widget
-        } else if (event.startTS == event.endTS) {
+        } else if (event.startTS == event.endTS || onlyStartDate) {
             R.layout.event_list_item_widget_simple
         } else if (event.isAllDay) {
             val startCode = Formatter.getDayCodeFromTS(event.startTS)
@@ -84,7 +85,7 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
             setText(R.id.event_item_start, if (item.isAllDay) allDayString else Formatter.getTimeFromTS(context, item.startTS))
             setBackgroundColor(R.id.event_item_color_bar, item.color)
 
-            if (item.startTS == item.endTS) {
+            if (item.startTS == item.endTS || onlyStartDate) {
                 setViewVisibility(R.id.event_item_end, View.INVISIBLE)
             } else {
                 setViewVisibility(R.id.event_item_end, View.VISIBLE)
@@ -159,6 +160,7 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
         textColor = context.config.widgetTextColor
         weakTextColor = textColor.adjustAlpha(LOW_ALPHA)
         mediumFontSize = context.getWidgetFontSize()
+        onlyStartDate = context.config.widgetOnlyStartDate
         val fromTS = DateTime().seconds() - context.config.displayPastEvents * 60
         val toTS = DateTime().plusYears(1).seconds()
         context.eventsHelper.getEventsSync(fromTS, toTS, applyTypeFilter = true) {

@@ -98,6 +98,10 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getBoolean(REPLACE_DESCRIPTION, false)
         set(replaceDescription) = prefs.edit().putBoolean(REPLACE_DESCRIPTION, replaceDescription).apply()
 
+    var widgetOnlyStartDate : Boolean
+        get() = prefs.getBoolean(WIDGET_ONLY_START_DATE, false)
+        set(widgetOnlyStartDate) = prefs.edit().putBoolean(WIDGET_ONLY_START_DATE, widgetOnlyStartDate).apply()
+
     var showGrid: Boolean
         get() = prefs.getBoolean(SHOW_GRID, false)
         set(showGrid) = prefs.edit().putBoolean(SHOW_GRID, showGrid).apply()
