@@ -73,7 +73,7 @@ class IcsImporter(val activity: SimpleActivity) {
                         continue
                     }
 
-                    if (line == BEGIN_EVENT) {
+                    if (line.trim() == BEGIN_EVENT) {
                         resetValues()
                         curEventTypeId = defaultEventTypeId
                         isParsingEvent = true
@@ -151,15 +151,15 @@ class IcsImporter(val activity: SimpleActivity) {
                         curRecurrenceDayCode = Formatter.getDayCodeFromTS(timestamp)
                     } else if (line.startsWith(SEQUENCE)) {
                         isSequence = true
-                    } else if (line == BEGIN_ALARM) {
+                    } else if (line.trim() == BEGIN_ALARM) {
                         isNotificationDescription = true
-                    } else if (line == END_ALARM) {
+                    } else if (line.trim() == END_ALARM) {
                         if (isProperReminderAction && curReminderTriggerMinutes != REMINDER_OFF) {
                             curReminderMinutes.add(curReminderTriggerMinutes)
                             curReminderActions.add(curReminderTriggerAction)
                         }
                         isNotificationDescription = false
-                    } else if (line == END_EVENT) {
+                    } else if (line.trim() == END_EVENT) {
                         isParsingEvent = false
                         if (curStart != -1L && curEnd == -1L) {
                             curEnd = curStart
