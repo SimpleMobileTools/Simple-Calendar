@@ -6,10 +6,10 @@
     <string name="daily_view">Vista diária</string>
     <string name="weekly_view">Vista semanal</string>
     <string name="monthly_view">Vista mensal</string>
-    <string name="monthly_daily_view">Monthly + daily view</string>
+    <string name="monthly_daily_view">Mensal + vista diária</string>
     <string name="yearly_view">Vista anual</string>
     <string name="simple_event_list">Lista de eventos</string>
-    <string name="no_upcoming_events">Parece que você não tem eventos para breve</string>
+    <string name="no_upcoming_events">Parece que não existem eventos para breve</string>
     <string name="go_to_today">Ir para hoje</string>
     <string name="go_to_date">Ir para data</string>
     <string name="upgraded_from_free">Olá,\n\nparece que você utilizou a opção de atualização existente na versão antiga. Tem que migrar os eventos locais através de exportação para um ficheiro .ics e posterior importação. Pode encontrar os botões de exportação/importação no ecrã do menu principal.\n\nDepois já poderá desinstalar a aplicação antiga. Também terá que repor as predefinições da aplicação.\n\nObrigado!</string>
@@ -144,7 +144,7 @@
     <string name="select_event_type">Selecione um tipo de evento</string>
     <string name="move_events_into_default">Mover eventos afetados para o tipo de evento padrão</string>
     <string name="remove_affected_events">Remover permanentemente os eventos afetados</string>
-    <string name="unsync_caldav_calendar">Para remover um calendário CalDAV, tem que cancelar a sua sincronização</string>
+    <string name="unsync_caldav_calendar">Para remover um calendário CalDAV, tem que cancelar a sincronização</string>
 
     <!-- Holidays -->
     <string name="holidays">Feriados</string>
@@ -189,7 +189,7 @@
     <string name="last_view">Última utilizada</string>
     <string name="new_events">Novo evento</string>
     <string name="default_start_time">Hora inicial padrão</string>
-    <string name="next_full_hour">Próxima hora</string>
+    <string name="next_full_hour">1 hora</string>
     <string name="default_duration">Duração padrão</string>
     <string name="last_used_one">Última utilizada</string>
     <string name="other_time">Outra</string>
