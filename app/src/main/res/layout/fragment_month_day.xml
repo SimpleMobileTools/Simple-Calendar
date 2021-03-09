@@ -63,6 +63,7 @@
             android:layout_height="match_parent"
             android:layout_below="@+id/month_day_selected_day_label"
             android:clipToPadding="false"
+            android:layoutAnimation="@anim/layout_animation"
             android:scrollbars="vertical"
             app:layoutManager="com.simplemobiletools.commons.views.MyLinearLayoutManager" />
 

@@ -123,6 +123,7 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
                     mView.calendar_events_list.adapter = this
                 }
 
+                mView.calendar_events_list.scheduleLayoutAnimation()
                 mView.calendar_events_list.endlessScrollListener = object : MyRecyclerView.EndlessScrollListener {
                     override fun updateTop() {
                         fetchPreviousPeriod()
