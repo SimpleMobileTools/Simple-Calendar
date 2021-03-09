@@ -644,17 +644,9 @@ class EventActivity : SimpleActivity() {
     private fun getAvailableMonthlyRepetitionRules(): ArrayList<RadioItem> {
         val items = arrayListOf(RadioItem(REPEAT_SAME_DAY, getString(R.string.repeat_on_the_same_day_monthly)))
 
-        // split Every Last Sunday and Every Fourth Sunday of the month, if the month has 4 sundays
+        items.add(RadioItem(REPEAT_ORDER_WEEKDAY, getRepeatXthDayString(true, REPEAT_ORDER_WEEKDAY)))
         if (isLastWeekDayOfMonth()) {
-            val order = (mEventStartDateTime.dayOfMonth - 1) / 7 + 1
-            if (order == 4) {
-                items.add(RadioItem(REPEAT_ORDER_WEEKDAY, getRepeatXthDayString(true, REPEAT_ORDER_WEEKDAY)))
-                items.add(RadioItem(REPEAT_ORDER_WEEKDAY_USE_LAST, getRepeatXthDayString(true, REPEAT_ORDER_WEEKDAY_USE_LAST)))
-            } else if (order == 5) {
-                items.add(RadioItem(REPEAT_ORDER_WEEKDAY_USE_LAST, getRepeatXthDayString(true, REPEAT_ORDER_WEEKDAY_USE_LAST)))
-            }
-        } else {
-            items.add(RadioItem(REPEAT_ORDER_WEEKDAY, getRepeatXthDayString(true, REPEAT_ORDER_WEEKDAY)))
+            items.add(RadioItem(REPEAT_ORDER_WEEKDAY_USE_LAST, getRepeatXthDayString(true, REPEAT_ORDER_WEEKDAY_USE_LAST)))
         }
 
         if (isLastDayOfTheMonth()) {
@@ -666,16 +658,9 @@ class EventActivity : SimpleActivity() {
     private fun getAvailableYearlyRepetitionRules(): ArrayList<RadioItem> {
         val items = arrayListOf(RadioItem(REPEAT_SAME_DAY, getString(R.string.repeat_on_the_same_day_yearly)))
 
+        items.add(RadioItem(REPEAT_ORDER_WEEKDAY, getRepeatXthDayInMonthString(true, REPEAT_ORDER_WEEKDAY)))
         if (isLastWeekDayOfMonth()) {
-            val order = (mEventStartDateTime.dayOfMonth - 1) / 7 + 1
-            if (order == 4) {
-                items.add(RadioItem(REPEAT_ORDER_WEEKDAY, getRepeatXthDayInMonthString(true, REPEAT_ORDER_WEEKDAY)))
-                items.add(RadioItem(REPEAT_ORDER_WEEKDAY_USE_LAST, getRepeatXthDayInMonthString(true, REPEAT_ORDER_WEEKDAY_USE_LAST)))
-            } else if (order == 5) {
-                items.add(RadioItem(REPEAT_ORDER_WEEKDAY_USE_LAST, getRepeatXthDayInMonthString(true, REPEAT_ORDER_WEEKDAY_USE_LAST)))
-            }
-        } else {
-            items.add(RadioItem(REPEAT_ORDER_WEEKDAY, getRepeatXthDayInMonthString(true, REPEAT_ORDER_WEEKDAY)))
+            items.add(RadioItem(REPEAT_ORDER_WEEKDAY_USE_LAST, getRepeatXthDayInMonthString(true, REPEAT_ORDER_WEEKDAY_USE_LAST)))
         }
 
         return items
@@ -711,7 +696,7 @@ class EventActivity : SimpleActivity() {
     private fun getOrderString(repeatRule: Int): String {
         val dayOfMonth = mEventStartDateTime.dayOfMonth
         var order = (dayOfMonth - 1) / 7 + 1
-        if (order == 4 && isLastWeekDayOfMonth() && repeatRule == REPEAT_ORDER_WEEKDAY_USE_LAST) {
+        if (isLastWeekDayOfMonth() && repeatRule == REPEAT_ORDER_WEEKDAY_USE_LAST) {
             order = -1
         }
 
@@ -721,6 +706,7 @@ class EventActivity : SimpleActivity() {
             2 -> if (isMale) R.string.second_m else R.string.second_f
             3 -> if (isMale) R.string.third_m else R.string.third_f
             4 -> if (isMale) R.string.fourth_m else R.string.fourth_f
+            5 -> if (isMale) R.string.fifth_m else R.string.fifth_f
             else -> if (isMale) R.string.last_m else R.string.last_f
         })
     }
