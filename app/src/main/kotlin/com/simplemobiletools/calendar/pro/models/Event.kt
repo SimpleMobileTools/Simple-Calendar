@@ -99,10 +99,8 @@ data class Event(
     private fun addXthDayInterval(currStart: DateTime, original: Event, forceLastWeekday: Boolean): DateTime {
         val day = currStart.dayOfWeek
         var order = (currStart.dayOfMonth - 1) / 7
-        val properMonth = currStart.withDayOfMonth(7).plusMonths(repeatInterval / MONTH).withDayOfWeek(day)
-        var firstProperDay = properMonth.dayOfMonth % 7
-        if (firstProperDay == 0)
-            firstProperDay = properMonth.dayOfMonth
+        var properMonth = currStart.withDayOfMonth(7).plusMonths(repeatInterval / MONTH).withDayOfWeek(day)
+        var wantedDay: Int
 
         // check if it should be for example Fourth Monday, or Last Monday
         if (forceLastWeekday && (order == 3 || order == 4)) {
@@ -112,13 +110,14 @@ data class Event(
                 order = -1
         }
 
-        val daysCnt = properMonth.dayOfMonth().maximumValue
-        var wantedDay = firstProperDay + order * 7
-        if (wantedDay > daysCnt)
-            wantedDay -= 7
-
         if (order == -1) {
-            wantedDay = firstProperDay + ((daysCnt - firstProperDay) / 7) * 7
+            wantedDay = properMonth.dayOfMonth + ((properMonth.dayOfMonth().maximumValue - properMonth.dayOfMonth) / 7) * 7
+        } else {
+            wantedDay = properMonth.dayOfMonth + (order - (properMonth.dayOfMonth - 1) / 7) * 7
+            while (properMonth.dayOfMonth().maximumValue < wantedDay) {
+                properMonth = properMonth.withDayOfMonth(7).plusMonths(repeatInterval / MONTH).withDayOfWeek(day)
+                wantedDay = properMonth.dayOfMonth + (order - (properMonth.dayOfMonth - 1) / 7) * 7
+            }
         }
 
         return properMonth.withDayOfMonth(wantedDay)
