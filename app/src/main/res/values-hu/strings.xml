@@ -71,6 +71,7 @@
     <string name="second_m">second</string>
     <string name="third_m">third</string>
     <string name="fourth_m">fourth</string>
+    <string name="fifth_m">fifth</string>
     <string name="last_m">last</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
@@ -81,6 +82,7 @@
     <string name="second_f">second</string>
     <string name="third_f">third</string>
     <string name="fourth_f">fourth</string>
+    <string name="fifth_f">fifth</string>
     <string name="last_f">last</string>
 
     <!-- Birthdays -->

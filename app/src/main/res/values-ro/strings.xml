@@ -71,6 +71,7 @@
     <string name="second_m">a doua</string>
     <string name="third_m">a treia</string>
     <string name="fourth_m">a patra</string>
+    <string name="fifth_m">fifth</string>
     <string name="last_m">ultima</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
@@ -81,6 +82,7 @@
     <string name="second_f">a doua</string>
     <string name="third_f">a treia</string>
     <string name="fourth_f">a patra</string>
+    <string name="fifth_f">fifth</string>
     <string name="last_f">ultima</string>
 
     <!-- Birthdays -->
