@@ -934,11 +934,11 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         val licenses = LICENSE_JODA
 
         val faqItems = arrayListOf(
-            FAQItem(R.string.faq_1_title_commons, R.string.faq_1_text_commons),
-            FAQItem(R.string.faq_4_title_commons, R.string.faq_4_text_commons),
-            FAQItem(R.string.faq_1_title, R.string.faq_1_text),
             FAQItem(R.string.faq_2_title, R.string.faq_2_text),
             FAQItem(R.string.faq_3_title, R.string.faq_3_text),
+            FAQItem(R.string.faq_1_title, R.string.faq_1_text),
+            FAQItem(R.string.faq_1_title_commons, R.string.faq_1_text_commons),
+            FAQItem(R.string.faq_4_title_commons, R.string.faq_4_text_commons),
             FAQItem(R.string.faq_4_title, R.string.faq_4_text),
             FAQItem(R.string.faq_2_title_commons, R.string.faq_2_text_commons),
             FAQItem(R.string.faq_6_title_commons, R.string.faq_6_text_commons),
