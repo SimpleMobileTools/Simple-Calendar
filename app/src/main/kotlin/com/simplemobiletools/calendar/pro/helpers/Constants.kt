@@ -1,7 +1,5 @@
 package com.simplemobiletools.calendar.pro.helpers
 
-const val LOW_ALPHA = .3f
-const val MEDIUM_ALPHA = .6f
 const val STORED_LOCALLY_ONLY = 0
 const val ROW_COUNT = 6
 const val COLUMN_COUNT = 7

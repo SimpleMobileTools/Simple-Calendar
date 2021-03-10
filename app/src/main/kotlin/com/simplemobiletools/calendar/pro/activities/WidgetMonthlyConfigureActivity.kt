@@ -13,7 +13,6 @@ import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.addDayEvents
 import com.simplemobiletools.calendar.pro.extensions.addDayNumber
 import com.simplemobiletools.calendar.pro.extensions.config
-import com.simplemobiletools.calendar.pro.helpers.LOW_ALPHA
 import com.simplemobiletools.calendar.pro.helpers.MonthlyCalendarImpl
 import com.simplemobiletools.calendar.pro.helpers.MyWidgetMonthlyProvider
 import com.simplemobiletools.calendar.pro.interfaces.MonthlyCalendar
@@ -23,6 +22,7 @@ import com.simplemobiletools.commons.extensions.adjustAlpha
 import com.simplemobiletools.commons.extensions.applyColorFilter
 import com.simplemobiletools.commons.extensions.beVisible
 import com.simplemobiletools.commons.extensions.setFillWithStroke
+import com.simplemobiletools.commons.helpers.LOWER_ALPHA
 import kotlinx.android.synthetic.main.first_row.*
 import kotlinx.android.synthetic.main.top_navigation.*
 import kotlinx.android.synthetic.main.widget_config_monthly.*
@@ -127,7 +127,7 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
 
     private fun updateColors() {
         mTextColor = mTextColorWithoutTransparency
-        mWeakTextColor = mTextColorWithoutTransparency.adjustAlpha(LOW_ALPHA)
+        mWeakTextColor = mTextColorWithoutTransparency.adjustAlpha(LOWER_ALPHA)
         mPrimaryColor = config.primaryColor
 
         top_left_arrow.applyColorFilter(mTextColor)

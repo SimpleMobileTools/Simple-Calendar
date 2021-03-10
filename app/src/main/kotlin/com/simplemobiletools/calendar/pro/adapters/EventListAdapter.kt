@@ -20,6 +20,7 @@ import com.simplemobiletools.commons.extensions.adjustAlpha
 import com.simplemobiletools.commons.extensions.applyColorFilter
 import com.simplemobiletools.commons.extensions.beInvisible
 import com.simplemobiletools.commons.extensions.beInvisibleIf
+import com.simplemobiletools.commons.helpers.LOWER_ALPHA
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import com.simplemobiletools.commons.interfaces.RefreshRecyclerViewListener
 import com.simplemobiletools.commons.views.MyRecyclerView
@@ -177,8 +178,8 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
                 }
 
                 if (tryDimPastEvents && dimPastEvents && listEvent.isPastEvent && !isPrintVersion) {
-                    startTextColor = startTextColor.adjustAlpha(LOW_ALPHA)
-                    endTextColor = endTextColor.adjustAlpha(LOW_ALPHA)
+                    startTextColor = startTextColor.adjustAlpha(LOWER_ALPHA)
+                    endTextColor = endTextColor.adjustAlpha(LOWER_ALPHA)
                 }
             } else if (listEvent.startTS <= now && listEvent.endTS >= now && !isPrintVersion) {
                 startTextColor = adjustedPrimaryColor
@@ -197,7 +198,7 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
             setCompoundDrawablesWithIntrinsicBounds(null, if (position == 0) null else topDivider, null, null)
             var color = if (listSection.isToday && !isPrintVersion) adjustedPrimaryColor else textColor
             if (dimPastEvents && listSection.isPastSection && !isPrintVersion) {
-                color = color.adjustAlpha(LOW_ALPHA)
+                color = color.adjustAlpha(LOWER_ALPHA)
             }
             setTextColor(color)
         }

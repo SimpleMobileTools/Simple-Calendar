@@ -8,11 +8,11 @@ import android.util.AttributeSet
 import android.view.View
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.config
-import com.simplemobiletools.calendar.pro.helpers.MEDIUM_ALPHA
 import com.simplemobiletools.calendar.pro.helpers.isWeekend
 import com.simplemobiletools.calendar.pro.models.DayYearly
 import com.simplemobiletools.commons.extensions.adjustAlpha
 import com.simplemobiletools.commons.extensions.getAdjustedPrimaryColor
+import com.simplemobiletools.commons.helpers.MEDIUM_ALPHA
 import java.util.*
 
 // used for displaying months at Yearly view

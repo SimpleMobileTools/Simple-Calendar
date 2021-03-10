@@ -13,13 +13,13 @@ import com.simplemobiletools.calendar.pro.extensions.shareEvents
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.helpers.ITEM_EVENT
 import com.simplemobiletools.calendar.pro.helpers.ITEM_EVENT_SIMPLE
-import com.simplemobiletools.calendar.pro.helpers.LOW_ALPHA
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.commons.adapters.MyRecyclerViewAdapter
 import com.simplemobiletools.commons.extensions.adjustAlpha
 import com.simplemobiletools.commons.extensions.applyColorFilter
 import com.simplemobiletools.commons.extensions.beInvisible
 import com.simplemobiletools.commons.extensions.beInvisibleIf
+import com.simplemobiletools.commons.helpers.LOWER_ALPHA
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import com.simplemobiletools.commons.views.MyRecyclerView
 import kotlinx.android.synthetic.main.event_item_day_view.view.*
@@ -136,7 +136,7 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
 
             var newTextColor = textColor
             if (dimPastEvents && event.isPastEvent && !isPrintVersion) {
-                newTextColor = newTextColor.adjustAlpha(LOW_ALPHA)
+                newTextColor = newTextColor.adjustAlpha(LOWER_ALPHA)
             }
 
             event_item_start.setTextColor(newTextColor)

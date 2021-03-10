@@ -18,6 +18,9 @@ import com.simplemobiletools.commons.extensions.adjustAlpha
 import com.simplemobiletools.commons.extensions.getAdjustedPrimaryColor
 import com.simplemobiletools.commons.extensions.getContrastColor
 import com.simplemobiletools.commons.extensions.moveLastItemToFront
+import com.simplemobiletools.commons.helpers.HIGHER_ALPHA
+import com.simplemobiletools.commons.helpers.LOWER_ALPHA
+import com.simplemobiletools.commons.helpers.MEDIUM_ALPHA
 import org.joda.time.DateTime
 import org.joda.time.Days
 
@@ -75,7 +78,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         }
 
         gridPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-            color = textColor.adjustAlpha(LOW_ALPHA)
+            color = textColor.adjustAlpha(LOWER_ALPHA)
         }
 
         circleStrokePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
@@ -322,7 +325,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     private fun getEventTitlePaint(event: MonthViewEvent, startDay: DayMonthly, endDay: DayMonthly): Paint {
         var paintColor = event.color.getContrastColor()
         if ((!startDay.isThisMonth && !endDay.isThisMonth) || (dimPastEvents && event.isPastEvent && !isPrintVersion)) {
-            paintColor = paintColor.adjustAlpha(MEDIUM_ALPHA)
+            paintColor = paintColor.adjustAlpha(HIGHER_ALPHA)
         }
 
         val curPaint = Paint(eventTitlePaint)
@@ -400,7 +403,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         }
 
         textPaint.color = textColor
-        gridPaint.color = textColor.adjustAlpha(LOW_ALPHA)
+        gridPaint.color = textColor.adjustAlpha(LOWER_ALPHA)
         invalidate()
         initWeekDayLetters()
     }

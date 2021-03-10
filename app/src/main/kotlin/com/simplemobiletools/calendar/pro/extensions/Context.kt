@@ -389,7 +389,7 @@ fun Context.scheduleCalDAVSync(activate: Boolean) {
 fun Context.addDayNumber(rawTextColor: Int, day: DayMonthly, linearLayout: LinearLayout, dayLabelHeight: Int, callback: (Int) -> Unit) {
     var textColor = rawTextColor
     if (!day.isThisMonth)
-        textColor = textColor.adjustAlpha(LOW_ALPHA)
+        textColor = textColor.adjustAlpha(LOWER_ALPHA)
 
     (View.inflate(applicationContext, R.layout.day_monthly_number_view, null) as TextView).apply {
         setTextColor(textColor)
