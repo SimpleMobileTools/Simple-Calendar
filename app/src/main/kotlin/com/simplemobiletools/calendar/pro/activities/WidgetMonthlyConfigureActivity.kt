@@ -15,6 +15,7 @@ import com.simplemobiletools.calendar.pro.extensions.addDayNumber
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.helpers.MonthlyCalendarImpl
 import com.simplemobiletools.calendar.pro.helpers.MyWidgetMonthlyProvider
+import com.simplemobiletools.calendar.pro.helpers.isWeekend
 import com.simplemobiletools.calendar.pro.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.pro.models.DayMonthly
 import com.simplemobiletools.commons.dialogs.ColorPickerDialog
@@ -40,6 +41,7 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
     private var mTextColor = 0
     private var mWeakTextColor = 0
     private var mPrimaryColor = 0
+    private var mRedTextColor = 0
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         useDynamicTheme = false
@@ -129,6 +131,7 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
         mTextColor = mTextColorWithoutTransparency
         mWeakTextColor = mTextColorWithoutTransparency.adjustAlpha(LOWER_ALPHA)
         mPrimaryColor = config.primaryColor
+        mRedTextColor = resources.getColor(R.color.red_text)
 
         top_left_arrow.applyColorFilter(mTextColor)
         top_right_arrow.applyColorFilter(mTextColor)
@@ -167,7 +170,13 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
                 val day = mDays!![i]
                 removeAllViews()
 
-                context.addDayNumber(mTextColor, day, this, dayLabelHeight) { dayLabelHeight = it }
+                val dayTextColor = if (config.highlightWeekends && day.isWeekend) {
+                    mRedTextColor
+                } else {
+                    mTextColor
+                }
+
+                context.addDayNumber(dayTextColor, day, this, dayLabelHeight) { dayLabelHeight = it }
                 context.addDayEvents(day, this, resources, dividerMargin)
             }
         }
@@ -195,7 +204,13 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
     private fun updateLabels() {
         for (i in 0..6) {
             findViewById<TextView>(resources.getIdentifier("label_$i", "id", packageName)).apply {
-                setTextColor(mTextColor)
+                val textColor = if (config.highlightWeekends && isWeekend(i, config.isSundayFirst)) {
+                    mRedTextColor
+                } else {
+                    mTextColor
+                }
+
+                setTextColor(textColor)
             }
         }
     }
