@@ -72,6 +72,7 @@
     <string name="second_m">deuxième</string>
     <string name="third_m">troisième</string>
     <string name="fourth_m">quatrième</string>
+    <string name="fifth_m">fifth</string>
     <string name="last_m">dernier</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
@@ -82,6 +83,7 @@
     <string name="second_f">deuxième</string>
     <string name="third_f">troisième</string>
     <string name="fourth_f">quatrième</string>
+    <string name="fifth_f">fifth</string>
     <string name="last_f">dernier</string>
 
     <!-- Birthdays -->

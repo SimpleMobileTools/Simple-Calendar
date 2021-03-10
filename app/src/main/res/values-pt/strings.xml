@@ -6,10 +6,10 @@
     <string name="daily_view">Vista diária</string>
     <string name="weekly_view">Vista semanal</string>
     <string name="monthly_view">Vista mensal</string>
-    <string name="monthly_daily_view">Monthly + daily view</string>
+    <string name="monthly_daily_view">Mensal + vista diária</string>
     <string name="yearly_view">Vista anual</string>
     <string name="simple_event_list">Lista de eventos</string>
-    <string name="no_upcoming_events">Parece que você não tem eventos para breve</string>
+    <string name="no_upcoming_events">Parece que não existem eventos para breve</string>
     <string name="go_to_today">Ir para hoje</string>
     <string name="go_to_date">Ir para data</string>
     <string name="upgraded_from_free">Olá,\n\nparece que você utilizou a opção de atualização existente na versão antiga. Tem que migrar os eventos locais através de exportação para um ficheiro .ics e posterior importação. Pode encontrar os botões de exportação/importação no ecrã do menu principal.\n\nDepois já poderá desinstalar a aplicação antiga. Também terá que repor as predefinições da aplicação.\n\nObrigado!</string>
@@ -71,6 +71,7 @@
     <string name="second_m">segunda</string>
     <string name="third_m">terceira</string>
     <string name="fourth_m">quarta</string>
+    <string name="fifth_m">fifth</string>
     <string name="last_m">última</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
@@ -81,6 +82,7 @@
     <string name="second_f">segundo</string>
     <string name="third_f">terceiro</string>
     <string name="fourth_f">quarto</string>
+    <string name="fifth_f">fifth</string>
     <string name="last_f">último</string>
 
     <!-- Birthdays -->
@@ -144,7 +146,7 @@
     <string name="select_event_type">Selecione um tipo de evento</string>
     <string name="move_events_into_default">Mover eventos afetados para o tipo de evento padrão</string>
     <string name="remove_affected_events">Remover permanentemente os eventos afetados</string>
-    <string name="unsync_caldav_calendar">Para remover um calendário CalDAV, tem que cancelar a sua sincronização</string>
+    <string name="unsync_caldav_calendar">Para remover um calendário CalDAV, tem que cancelar a sincronização</string>
 
     <!-- Holidays -->
     <string name="holidays">Feriados</string>

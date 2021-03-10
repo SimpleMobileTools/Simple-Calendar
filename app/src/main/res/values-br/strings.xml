@@ -71,6 +71,7 @@
     <string name="second_m">eil</string>
     <string name="third_m">trede</string>
     <string name="fourth_m">pevare</string>
+    <string name="fifth_m">fifth</string>
     <string name="last_m">diwezhañ</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
@@ -81,6 +82,7 @@
     <string name="second_f">eil</string>
     <string name="third_f">trede</string>
     <string name="fourth_f">pevare</string>
+    <string name="fifth_f">fifth</string>
     <string name="last_f">diwezhañ</string>
 
     <!-- Birthdays -->

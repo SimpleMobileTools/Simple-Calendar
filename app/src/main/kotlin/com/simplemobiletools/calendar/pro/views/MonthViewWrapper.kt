@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.widget.FrameLayout
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.config
+import com.simplemobiletools.calendar.pro.helpers.COLUMN_COUNT
+import com.simplemobiletools.calendar.pro.helpers.ROW_COUNT
 import com.simplemobiletools.calendar.pro.models.DayMonthly
 import com.simplemobiletools.commons.extensions.onGlobalLayout
 import kotlinx.android.synthetic.main.month_view.view.*
@@ -36,7 +38,7 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
         onGlobalLayout {
             if (!wereViewsAdded && days.isNotEmpty()) {
                 measureSizes()
-                addViews()
+                addClickableBackgrounds()
                 monthView.updateDays(days, isMonthDayView)
             }
         }
@@ -48,7 +50,7 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
         dayClickCallback = callback
         days = newDays
         if (dayWidth != 0f && dayHeight != 0f) {
-            addViews()
+            addClickableBackgrounds()
         }
 
         isMonthDayView = !addEvents
@@ -69,32 +71,41 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
         }
     }
 
-    private fun addViews() {
+    private fun addClickableBackgrounds() {
         removeAllViews()
         monthView = inflater.inflate(R.layout.month_view, this).month_view
         wereViewsAdded = true
         var curId = 0
-        for (y in 0..5) {
-            for (x in 0..6) {
+        for (y in 0 until ROW_COUNT) {
+            for (x in 0 until COLUMN_COUNT) {
                 val day = days.getOrNull(curId)
                 if (day != null) {
-                    val xPos = x * dayWidth + horizontalOffset
-                    val yPos = y * dayHeight + weekDaysLetterHeight
-                    addViewBackground(xPos, yPos, day)
+                    addViewBackground(x, y, day)
                 }
                 curId++
             }
         }
     }
 
-    private fun addViewBackground(xPos: Float, yPos: Float, day: DayMonthly) {
+    private fun addViewBackground(viewX: Int, viewY: Int, day: DayMonthly) {
+        val xPos = viewX * dayWidth + horizontalOffset
+        val yPos = viewY * dayHeight + weekDaysLetterHeight
+
         inflater.inflate(R.layout.month_view_background, this, false).apply {
+            if (isMonthDayView) {
+                background = null
+            }
+
             layoutParams.width = dayWidth.toInt()
             layoutParams.height = dayHeight.toInt()
             x = xPos
             y = yPos
             setOnClickListener {
                 dayClickCallback?.invoke(day)
+
+                if (isMonthDayView) {
+                    monthView.updateCurrentlySelectedDay(viewX, viewY)
+                }
             }
             addView(this)
         }

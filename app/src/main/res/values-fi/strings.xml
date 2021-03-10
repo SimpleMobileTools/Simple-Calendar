@@ -71,6 +71,7 @@
     <string name="second_m">toinen</string>
     <string name="third_m">kolmas</string>
     <string name="fourth_m">neljäs</string>
+    <string name="fifth_m">fifth</string>
     <string name="last_m">viimeinen</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
@@ -81,6 +82,7 @@
     <string name="second_f">toisena</string>
     <string name="third_f">kolmantena</string>
     <string name="fourth_f">neljäntenä</string>
+    <string name="fifth_f">fifth</string>
     <string name="last_f">viimeisenä</string>
 
     <!-- Birthdays -->

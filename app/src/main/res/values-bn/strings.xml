@@ -75,6 +75,7 @@
     <string name="second_m">দ্বিতীয়</string>
     <string name="third_m">তৃতীয়</string>
     <string name="fourth_m">চতুর্থ</string>
+    <string name="fifth_m">fifth</string>
     <string name="last_m">শেষ</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
@@ -85,6 +86,7 @@
     <string name="second_f">দ্বিতীয়</string>
     <string name="third_f">তৃতীয়</string>
     <string name="fourth_f">চতুর্থ</string>
+    <string name="fifth_f">fifth</string>
     <string name="last_f">শেষ</string>
 
     <!-- Birthdays -->

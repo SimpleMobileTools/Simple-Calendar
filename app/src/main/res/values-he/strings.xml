@@ -71,6 +71,7 @@
     <string name="second_m">שני</string>
     <string name="third_m">שלישי</string>
     <string name="fourth_m">רביעי</string>
+    <string name="fifth_m">fifth</string>
     <string name="last_m">אחרון</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
@@ -81,6 +82,7 @@
     <string name="second_f">שניה</string>
     <string name="third_f">שלישית</string>
     <string name="fourth_f">רביעית</string>
+    <string name="fifth_f">fifth</string>
     <string name="last_f">אחרונה</string>
 
     <!-- Birthdays -->

@@ -1,6 +1,5 @@
 package com.simplemobiletools.calendar.pro.fragments
 
-import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.os.Handler
@@ -10,13 +9,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.simplemobiletools.calendar.pro.R
-import com.simplemobiletools.calendar.pro.activities.EventActivity
 import com.simplemobiletools.calendar.pro.activities.MainActivity
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.adapters.EventListAdapter
 import com.simplemobiletools.calendar.pro.extensions.*
-import com.simplemobiletools.calendar.pro.helpers.EVENT_ID
-import com.simplemobiletools.calendar.pro.helpers.EVENT_OCCURRENCE_TS
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.ListEvent
@@ -119,9 +115,9 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
 
             val currAdapter = mView.calendar_events_list.adapter
             if (currAdapter == null || forceRecreation) {
-                EventListAdapter(activity as SimpleActivity, listItems, true, this, mView.calendar_events_list) {
+                EventListAdapter(activity as SimpleActivity, listItems, true, this, mView.calendar_events_list, true) {
                     if (it is ListEvent) {
-                        editEvent(it)
+                        context?.editEvent(it)
                     }
                 }.apply {
                     mView.calendar_events_list.adapter = this
@@ -167,14 +163,6 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
         mView.calendar_events_list.beGoneIf(mEvents.isEmpty())
         if (activity != null)
             mView.calendar_empty_list_placeholder.setTextColor(activity!!.config.textColor)
-    }
-
-    private fun editEvent(event: ListEvent) {
-        Intent(context, EventActivity::class.java).apply {
-            putExtra(EVENT_ID, event.id)
-            putExtra(EVENT_OCCURRENCE_TS, event.startTS)
-            startActivity(this)
-        }
     }
 
     private fun fetchPreviousPeriod() {

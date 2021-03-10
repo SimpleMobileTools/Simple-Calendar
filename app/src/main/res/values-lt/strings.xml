@@ -71,6 +71,7 @@
     <string name="second_m">Antrą</string>
     <string name="third_m">Trečią</string>
     <string name="fourth_m">Ketvirtą</string>
+    <string name="fifth_m">fifth</string>
     <string name="last_m">Paskutinę</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
@@ -81,6 +82,7 @@
     <string name="second_f">Antrą</string>
     <string name="third_f">Trečią</string>
     <string name="fourth_f">Ketvirtą</string>
+    <string name="fifth_f">fifth</string>
     <string name="last_f">Paskutinę</string>
 
     <!-- Birthdays -->

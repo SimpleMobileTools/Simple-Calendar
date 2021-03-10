@@ -25,6 +25,8 @@ import com.simplemobiletools.calendar.pro.models.EventWeeklyView
 import com.simplemobiletools.calendar.pro.views.MyScrollView
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.DAY_SECONDS
+import com.simplemobiletools.commons.helpers.HIGHER_ALPHA
+import com.simplemobiletools.commons.helpers.LOWER_ALPHA
 import com.simplemobiletools.commons.helpers.WEEK_SECONDS
 import com.simplemobiletools.commons.views.MyTextView
 import kotlinx.android.synthetic.main.fragment_week.*
@@ -449,9 +451,10 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 val dayColumn = dayColumns[dayOfWeek]
                 (inflater.inflate(R.layout.week_event_marker, null, false) as TextView).apply {
                     var backgroundColor = eventTypeColors.get(event.eventType, primaryColor)
-                    val textColor = backgroundColor.getContrastColor()
+                    var textColor = backgroundColor.getContrastColor()
                     if (dimPastEvents && event.isPastEvent && !isPrintVersion) {
-                        backgroundColor = backgroundColor.adjustAlpha(LOW_ALPHA)
+                        backgroundColor = backgroundColor.adjustAlpha(LOWER_ALPHA)
+                        textColor = textColor.adjustAlpha(HIGHER_ALPHA)
                     }
 
                     background = ColorDrawable(backgroundColor)
@@ -555,9 +558,10 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private fun addAllDayEvent(event: Event) {
         (inflater.inflate(R.layout.week_all_day_event_marker, null, false) as TextView).apply {
             var backgroundColor = eventTypeColors.get(event.eventType, primaryColor)
-            val textColor = backgroundColor.getContrastColor()
+            var textColor = backgroundColor.getContrastColor()
             if (dimPastEvents && event.isPastEvent && !isPrintVersion) {
-                backgroundColor = backgroundColor.adjustAlpha(LOW_ALPHA)
+                backgroundColor = backgroundColor.adjustAlpha(LOWER_ALPHA)
+                textColor = textColor.adjustAlpha(HIGHER_ALPHA)
             }
             background = ColorDrawable(backgroundColor)
 

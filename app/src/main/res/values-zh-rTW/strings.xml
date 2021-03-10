@@ -71,6 +71,7 @@
     <string name="second_m">第二個</string>
     <string name="third_m">第三個</string>
     <string name="fourth_m">第四個</string>
+    <string name="fifth_m">fifth</string>
     <string name="last_m">最後的</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
@@ -81,6 +82,7 @@
     <string name="second_f">第二個</string>
     <string name="third_f">第三個</string>
     <string name="fourth_f">第四個</string>
+    <string name="fifth_f">fifth</string>
     <string name="last_f">最後的</string>
 
     <!-- Birthdays -->

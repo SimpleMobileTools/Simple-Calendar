@@ -22,6 +22,7 @@ import com.simplemobiletools.commons.extensions.adjustAlpha
 import com.simplemobiletools.commons.extensions.setBackgroundColor
 import com.simplemobiletools.commons.extensions.setText
 import com.simplemobiletools.commons.extensions.setTextSize
+import com.simplemobiletools.commons.helpers.LOWER_ALPHA
 import org.joda.time.DateTime
 import java.util.*
 
@@ -32,7 +33,7 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
     private val allDayString = context.resources.getString(R.string.all_day)
     private var events = ArrayList<ListItem>()
     private var textColor = context.config.widgetTextColor
-    private var weakTextColor = textColor.adjustAlpha(LOW_ALPHA)
+    private var weakTextColor = textColor.adjustAlpha(LOWER_ALPHA)
     private val replaceDescription = context.config.replaceDescription
     private val dimPastEvents = context.config.dimPastEvents
     private var mediumFontSize = context.getWidgetFontSize()
@@ -157,7 +158,7 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
 
     override fun onDataSetChanged() {
         textColor = context.config.widgetTextColor
-        weakTextColor = textColor.adjustAlpha(LOW_ALPHA)
+        weakTextColor = textColor.adjustAlpha(LOWER_ALPHA)
         mediumFontSize = context.getWidgetFontSize()
         val fromTS = DateTime().seconds() - context.config.displayPastEvents * 60
         val toTS = DateTime().plusYears(1).seconds()

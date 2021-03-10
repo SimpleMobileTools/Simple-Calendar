@@ -172,6 +172,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         shouldGoToTodayBeVisible = currentFragments.last().shouldGoToTodayBeVisible()
         menu.apply {
             goToTodayButton = findItem(R.id.go_to_today)
+            findItem(R.id.print).isVisible = config.storedView != MONTHLY_DAILY_VIEW
             findItem(R.id.filter).isVisible = mShouldFilterBeVisible
             findItem(R.id.go_to_today).isVisible = shouldGoToTodayBeVisible && !mIsSearchOpen
             findItem(R.id.go_to_date).isVisible = config.storedView != EVENTS_LIST_VIEW
@@ -933,11 +934,11 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         val licenses = LICENSE_JODA
 
         val faqItems = arrayListOf(
-            FAQItem(R.string.faq_1_title_commons, R.string.faq_1_text_commons),
-            FAQItem(R.string.faq_4_title_commons, R.string.faq_4_text_commons),
-            FAQItem(R.string.faq_1_title, R.string.faq_1_text),
             FAQItem(R.string.faq_2_title, R.string.faq_2_text),
             FAQItem(R.string.faq_3_title, R.string.faq_3_text),
+            FAQItem(R.string.faq_1_title, R.string.faq_1_text),
+            FAQItem(R.string.faq_1_title_commons, R.string.faq_1_text_commons),
+            FAQItem(R.string.faq_4_title_commons, R.string.faq_4_text_commons),
             FAQItem(R.string.faq_4_title, R.string.faq_4_text),
             FAQItem(R.string.faq_2_title_commons, R.string.faq_2_text_commons),
             FAQItem(R.string.faq_6_title_commons, R.string.faq_6_text_commons),
@@ -955,7 +956,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                     search_results_list.beVisibleIf(events.isNotEmpty())
                     search_placeholder.beVisibleIf(events.isEmpty())
                     val listItems = getEventListItems(events)
-                    val eventsAdapter = EventListAdapter(this, listItems, true, this, search_results_list) {
+                    val eventsAdapter = EventListAdapter(this, listItems, true, this, search_results_list, true) {
                         if (it is ListEvent) {
                             Intent(applicationContext, EventActivity::class.java).apply {
                                 putExtra(EVENT_ID, it.id)

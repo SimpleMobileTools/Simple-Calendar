@@ -71,6 +71,7 @@
     <string name="second_m">drugi(ą)</string>
     <string name="third_m">trzeci(ą)</string>
     <string name="fourth_m">czwarty(ą)</string>
+    <string name="fifth_m">fifth</string>
     <string name="last_m">ostatni(ą)</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
@@ -81,6 +82,7 @@
     <string name="second_f">drugi(ą)</string>
     <string name="third_f">trzeci(ą)</string>
     <string name="fourth_f">czwarty(ą)</string>
+    <string name="fifth_f">fifth</string>
     <string name="last_f">ostatni(ą)</string>
 
     <!-- Birthdays -->

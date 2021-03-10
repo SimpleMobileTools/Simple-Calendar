@@ -73,7 +73,7 @@ class IcsImporter(val activity: SimpleActivity) {
                         continue
                     }
 
-                    if (line == BEGIN_EVENT) {
+                    if (line.trim() == BEGIN_EVENT) {
                         resetValues()
                         curEventTypeId = defaultEventTypeId
                         isParsingEvent = true
@@ -134,7 +134,13 @@ class IcsImporter(val activity: SimpleActivity) {
                             value = value.substring(0, value.length - 1)
                         }
 
-                        curRepeatExceptions.add(Formatter.getDayCodeFromTS(getTimestamp(value)))
+                        if (value.contains(",")) {
+                            value.split(",").forEach { exdate ->
+                                curRepeatExceptions.add(Formatter.getDayCodeFromTS(getTimestamp(exdate)))
+                            }
+                        } else {
+                            curRepeatExceptions.add(Formatter.getDayCodeFromTS(getTimestamp(value)))
+                        }
                     } else if (line.startsWith(LOCATION)) {
                         curLocation = getLocation(line.substring(LOCATION.length).replace("\\,", ","))
                         if (curLocation.trim().isEmpty()) {
@@ -145,14 +151,15 @@ class IcsImporter(val activity: SimpleActivity) {
                         curRecurrenceDayCode = Formatter.getDayCodeFromTS(timestamp)
                     } else if (line.startsWith(SEQUENCE)) {
                         isSequence = true
-                    } else if (line == BEGIN_ALARM) {
+                    } else if (line.trim() == BEGIN_ALARM) {
                         isNotificationDescription = true
-                    } else if (line == END_ALARM) {
+                    } else if (line.trim() == END_ALARM) {
                         if (isProperReminderAction && curReminderTriggerMinutes != REMINDER_OFF) {
                             curReminderMinutes.add(curReminderTriggerMinutes)
                             curReminderActions.add(curReminderTriggerAction)
                         }
-                    } else if (line == END_EVENT) {
+                        isNotificationDescription = false
+                    } else if (line.trim() == END_EVENT) {
                         isParsingEvent = false
                         if (curStart != -1L && curEnd == -1L) {
                             curEnd = curStart
@@ -246,17 +253,19 @@ class IcsImporter(val activity: SimpleActivity) {
 
     private fun getTimestamp(fullString: String): Long {
         return try {
-            if (fullString.startsWith(';')) {
-                val value = fullString.substring(fullString.lastIndexOf(':') + 1).replace(" ", "")
-                if (value.isEmpty()) {
-                    return 0
-                } else if (!value.contains("T")) {
-                    curFlags = curFlags or FLAG_ALL_DAY
-                }
+            when {
+                fullString.startsWith(';') -> {
+                    val value = fullString.substring(fullString.lastIndexOf(':') + 1).replace(" ", "")
+                    if (value.isEmpty()) {
+                        return 0
+                    } else if (!value.contains("T")) {
+                        curFlags = curFlags or FLAG_ALL_DAY
+                    }
 
-                Parser().parseDateTimeValue(value)
-            } else {
-                Parser().parseDateTimeValue(fullString.substring(1))
+                    Parser().parseDateTimeValue(value)
+                }
+                fullString.startsWith(":") -> Parser().parseDateTimeValue(fullString.substring(1))
+                else -> Parser().parseDateTimeValue(fullString)
             }
         } catch (e: Exception) {
             activity.showErrorToast(e)

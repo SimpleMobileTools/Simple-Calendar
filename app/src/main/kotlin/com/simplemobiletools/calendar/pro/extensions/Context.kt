@@ -389,7 +389,7 @@ fun Context.scheduleCalDAVSync(activate: Boolean) {
 fun Context.addDayNumber(rawTextColor: Int, day: DayMonthly, linearLayout: LinearLayout, dayLabelHeight: Int, callback: (Int) -> Unit) {
     var textColor = rawTextColor
     if (!day.isThisMonth)
-        textColor = textColor.adjustAlpha(LOW_ALPHA)
+        textColor = textColor.adjustAlpha(LOWER_ALPHA)
 
     (View.inflate(applicationContext, R.layout.day_monthly_number_view, null) as TextView).apply {
         setTextColor(textColor)
@@ -456,7 +456,7 @@ fun Context.addDayEvents(day: DayMonthly, linearLayout: LinearLayout, res: Resou
     }
 }
 
-fun Context.getEventListItems(events: List<Event>): ArrayList<ListItem> {
+fun Context.getEventListItems(events: List<Event>, addSections: Boolean = true): ArrayList<ListItem> {
     val listItems = ArrayList<ListItem>(events.size)
     val replaceDescription = config.replaceDescription
 
@@ -481,7 +481,7 @@ fun Context.getEventListItems(events: List<Event>): ArrayList<ListItem> {
 
     sorted.forEach {
         val code = Formatter.getDayCodeFromTS(it.startTS)
-        if (code != prevCode) {
+        if (code != prevCode && addSections) {
             val day = Formatter.getDayTitle(this, code)
             val isToday = day == today
             val listSection = ListSection(day, code, isToday, !isToday && it.startTS < now)
@@ -521,7 +521,6 @@ fun Context.refreshCalDAVCalendars(ids: String, showToasts: Boolean) {
     }
 
     Bundle().apply {
-        putBoolean(ContentResolver.SYNC_EXTRAS_MANUAL, true)
         putBoolean(ContentResolver.SYNC_EXTRAS_EXPEDITED, true)
         accounts.forEach {
             ContentResolver.requestSync(it, uri.authority, this)
@@ -552,4 +551,12 @@ fun Context.printBitmap(bitmap: Bitmap) {
     printHelper.scaleMode = PrintHelper.SCALE_MODE_FIT
     printHelper.orientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
     printHelper.printBitmap(getString(R.string.app_name), bitmap)
+}
+
+fun Context.editEvent(event: ListEvent) {
+    Intent(this, EventActivity::class.java).apply {
+        putExtra(EVENT_ID, event.id)
+        putExtra(EVENT_OCCURRENCE_TS, event.startTS)
+        startActivity(this)
+    }
 }

@@ -71,6 +71,7 @@
     <string name="second_m">druhý</string>
     <string name="third_m">tretí</string>
     <string name="fourth_m">štvrtý</string>
+    <string name="fifth_m">piaty</string>
     <string name="last_m">posledný</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
@@ -81,6 +82,7 @@
     <string name="second_f">druhú</string>
     <string name="third_f">tretiu</string>
     <string name="fourth_f">štvrtú</string>
+    <string name="fifth_f">piatu</string>
     <string name="last_f">poslednú</string>
 
     <!-- Birthdays -->

@@ -71,6 +71,7 @@
     <string name="second_m">другий</string>
     <string name="third_m">третій</string>
     <string name="fourth_m">четвертий</string>
+    <string name="fifth_m">fifth</string>
     <string name="last_m">останній</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
@@ -81,6 +82,7 @@
     <string name="second_f">другий</string>
     <string name="third_f">третій</string>
     <string name="fourth_f">четвертий</string>
+    <string name="fifth_f">fifth</string>
     <string name="last_f">останній</string>
 
     <!-- Birthdays -->
