@@ -71,7 +71,7 @@
     <string name="second_m">второй</string>
     <string name="third_m">третий</string>
     <string name="fourth_m">четвёртый</string>
-    <string name="fifth_m">fifth</string>
+    <string name="fifth_m">пятый</string>
     <string name="last_m">последний</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
@@ -82,7 +82,7 @@
     <string name="second_f">вторую</string>
     <string name="third_f">третью</string>
     <string name="fourth_f">четвёртую</string>
-    <string name="fifth_f">fifth</string>
+    <string name="fifth_f">пятую</string>
     <string name="last_f">последнюю</string>
 
     <!-- Birthdays -->
@@ -211,7 +211,7 @@
     <string name="synchronization_completed">Синхронизация завершена</string>
     <string name="select_a_different_caldav_color">Выберите другой цвет (применяется локально)</string>
     <string name="insufficient_permissions">Запись в выбранный календарь запрещена</string>
-    <string name="caldav_event_not_found">Событие не найдено. Включите CalDAV-синхронизацию для соответствующего календаря в настройках приложения.</string>
+    <string name="caldav_event_not_found">Событие не найдено. Включите синхронизацию по CalDAV для соответствующего календаря в настройках приложения.</string>
     <string name="no_synchronized_calendars">Синхронизируемые календари не найдены</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
@@ -239,7 +239,7 @@
     <string name="faq_1_text">Праздники, созданные таким образом, вставляются в новый тип события, называемый \"Праздники\". Можно перейти в \"Настройки\" -> \"Управление типами событий\",
         затем длительное нажатие на данном типе события и его удаление нажатием на \"корзину\".</string>
     <string name="faq_2_title">Можно ли синхронизировать события с помощью Календаря Google или других служб, поддерживающих CalDAV?</string>
-    <string name="faq_2_text">Да, просто включите \"Синхронизацию CalDAV\" в настройках приложения и выберите календари, которые хотите синхронизировать. Тем не менее, вам потребуется стороннее приложение, обрабатывающее синхронизацию между устройством и сервером.
+    <string name="faq_2_text">Да, просто включите \"Синхронизацию по CalDAV\" в настройках приложения и выберите календари, которые хотите синхронизировать. Тем не менее, вам потребуется стороннее приложение, обрабатывающее синхронизацию между устройством и сервером.
         Если вы хотите синхронизировать Календарь Google, то их официальное приложение выполнит данную работу. Для других календарей вам понадобится сторонний инструмент синхронизации, например DAVx5.</string>
     <string name="faq_3_title">Я вижу напоминания, но не слышу звука. Что можно сделать?</string>
     <string name="faq_3_text">Не только отображение напоминания, но и воспроизведение звука сильно зависит от системы. Если звук не слышен, откройте настройки приложения,
