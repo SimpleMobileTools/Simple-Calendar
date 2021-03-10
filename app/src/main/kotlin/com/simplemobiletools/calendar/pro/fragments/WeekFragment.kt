@@ -449,9 +449,10 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 val dayColumn = dayColumns[dayOfWeek]
                 (inflater.inflate(R.layout.week_event_marker, null, false) as TextView).apply {
                     var backgroundColor = eventTypeColors.get(event.eventType, primaryColor)
-                    val textColor = backgroundColor.getContrastColor()
+                    var textColor = backgroundColor.getContrastColor()
                     if (dimPastEvents && event.isPastEvent && !isPrintVersion) {
                         backgroundColor = backgroundColor.adjustAlpha(LOW_ALPHA)
+                        textColor = textColor.adjustAlpha(LOW_ALPHA)
                     }
 
                     background = ColorDrawable(backgroundColor)
@@ -555,9 +556,10 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private fun addAllDayEvent(event: Event) {
         (inflater.inflate(R.layout.week_all_day_event_marker, null, false) as TextView).apply {
             var backgroundColor = eventTypeColors.get(event.eventType, primaryColor)
-            val textColor = backgroundColor.getContrastColor()
+            var textColor = backgroundColor.getContrastColor()
             if (dimPastEvents && event.isPastEvent && !isPrintVersion) {
                 backgroundColor = backgroundColor.adjustAlpha(LOW_ALPHA)
+                textColor = textColor.adjustAlpha(LOW_ALPHA)
             }
             background = ColorDrawable(backgroundColor)
 

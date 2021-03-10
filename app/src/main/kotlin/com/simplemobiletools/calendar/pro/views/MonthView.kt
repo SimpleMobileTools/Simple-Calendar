@@ -275,16 +275,16 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         bgRectF.set(bgLeft, bgTop, bgRight, bgBottom)
         canvas.drawRoundRect(bgRectF, BG_CORNER_RADIUS, BG_CORNER_RADIUS, getEventBackgroundColor(event, startDayIndex, endDayIndex))
 
-        drawEventTitle(event, canvas, xPos, yPos + verticalOffset, bgRight - bgLeft - smallPadding)
+        drawEventTitle(event, canvas, xPos, yPos + verticalOffset, bgRight - bgLeft - smallPadding, startDayIndex, endDayIndex)
 
         for (i in 0 until Math.min(event.daysCnt, 7 - event.startDayIndex % 7)) {
             dayVerticalOffsets.put(event.startDayIndex + i, verticalOffset + eventTitleHeight + smallPadding * 2)
         }
     }
 
-    private fun drawEventTitle(event: MonthViewEvent, canvas: Canvas, x: Float, y: Float, availableWidth: Float) {
+    private fun drawEventTitle(event: MonthViewEvent, canvas: Canvas, x: Float, y: Float, availableWidth: Float, startDay: DayMonthly, endDay: DayMonthly) {
         val ellipsized = TextUtils.ellipsize(event.title, eventTitlePaint, availableWidth - smallPadding, TextUtils.TruncateAt.END)
-        canvas.drawText(event.title, 0, ellipsized.length, x + smallPadding * 2, y, getEventTitlePaint(event))
+        canvas.drawText(event.title, 0, ellipsized.length, x + smallPadding * 2, y, getEventTitlePaint(event, startDay, endDay))
     }
 
     private fun getTextPaint(startDay: DayMonthly): Paint {
@@ -319,9 +319,14 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         return getColoredPaint(paintColor)
     }
 
-    private fun getEventTitlePaint(event: MonthViewEvent): Paint {
+    private fun getEventTitlePaint(event: MonthViewEvent, startDay: DayMonthly, endDay: DayMonthly): Paint {
+        var paintColor = event.color.getContrastColor()
+        if ((!startDay.isThisMonth && !endDay.isThisMonth) || (dimPastEvents && event.isPastEvent && !isPrintVersion)) {
+            paintColor = paintColor.adjustAlpha(MEDIUM_ALPHA)
+        }
+
         val curPaint = Paint(eventTitlePaint)
-        curPaint.color = event.color.getContrastColor()
+        curPaint.color = paintColor
         return curPaint
     }
 
