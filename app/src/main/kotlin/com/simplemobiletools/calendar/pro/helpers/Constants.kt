@@ -164,9 +164,5 @@ const val REMINDER_EMAIL = 1
 fun getNowSeconds() = System.currentTimeMillis() / 1000L
 
 fun isWeekend(i: Int, isSundayFirst: Boolean): Boolean {
-    return if (isSundayFirst) {
-        i == 0 || i == 6
-    } else {
-        i == 5 || i == 6
-    }
+    return (i + if (isSundayFirst) 6 else 0) % 7 > 4
 }
