@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 6.13.1 *(2021-03-10)*
+----------------------------
+
+ * Allow repeating events every fifth weekday
+ * Properly highlight weekends on widgets, if selected so
+ * Fixed some CalDAV syncing and .ics file importing issues
+
 Version 6.13.0 *(2021-02-23)*
 ----------------------------
 
