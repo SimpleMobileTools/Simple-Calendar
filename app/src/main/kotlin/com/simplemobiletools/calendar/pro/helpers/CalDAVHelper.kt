@@ -240,12 +240,13 @@ class CalDAVHelper(val context: Context) {
             }
 
             // some calendars add repeatable event exceptions with using the "exdate" field, not by creating a child event that is an exception
+            // exdate can be stored as "20190216T230000Z", but also as "Europe/Madrid;20201208T000000Z"
             val exdate = cursor.getStringValue(Events.EXDATE) ?: ""
             if (exdate.length > 8) {
                 val lines = exdate.split("\n")
                 for (line in lines) {
                     val dates = line.split(",")
-                    dates.forEach {
+                    dates.filter { it.isNotEmpty() && it[0].isDigit() }.forEach {
                         if (it.endsWith("Z")) {
                             // convert for example "20190216T230000Z" to "20190217000000" in Slovakia in a weird way
                             val formatter = DateTimeFormat.forPattern("yyyyMMdd'T'HHmmss'Z'")
