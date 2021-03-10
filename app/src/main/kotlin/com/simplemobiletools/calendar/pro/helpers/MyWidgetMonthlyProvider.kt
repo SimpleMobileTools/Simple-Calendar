@@ -116,10 +116,18 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
             }
         }
 
-        val weakTextColor = textColor.adjustAlpha(MEDIUM_ALPHA)
         for (i in 0 until len) {
             val day = days[i]
-            val currTextColor = if (day.isThisMonth) textColor else weakTextColor
+
+            val redTextColor = context.resources.getColor(R.color.red_text)
+            val dayTextColor = if (context.config.highlightWeekends && day.isWeekend) {
+                redTextColor
+            } else {
+                textColor
+            }
+
+            val weakTextColor = dayTextColor.adjustAlpha(MEDIUM_ALPHA)
+            val currTextColor = if (day.isThisMonth) dayTextColor else weakTextColor
             val id = res.getIdentifier("day_$i", "id", packageName)
             views.removeAllViews(id)
             addDayNumber(context, views, day, currTextColor, id)
@@ -214,13 +222,22 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
     }
 
     private fun updateDayLabels(context: Context, views: RemoteViews, resources: Resources, textColor: Int) {
-        val sundayFirst = context.config.isSundayFirst
+        val config = context.config
+        val sundayFirst = config.isSundayFirst
         val smallerFontSize = context.getWidgetFontSize()
         val packageName = context.packageName
         val letters = context.resources.getStringArray(R.array.week_day_letters)
+        val redTextColor = resources.getColor(R.color.red_text)
+
         for (i in 0..6) {
             val id = resources.getIdentifier("label_$i", "id", packageName)
-            views.setTextColor(id, textColor)
+            val dayTextColor = if (config.highlightWeekends && isWeekend(i, sundayFirst)) {
+                redTextColor
+            } else {
+                textColor
+            }
+
+            views.setTextColor(id, dayTextColor)
             views.setTextSize(id, smallerFontSize)
 
             var index = i
