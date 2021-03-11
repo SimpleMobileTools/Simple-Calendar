@@ -113,7 +113,7 @@ class IcsImporter(val activity: SimpleActivity) {
                             curReminderTriggerAction = if (action == DISPLAY) REMINDER_NOTIFICATION else REMINDER_EMAIL
                         }
                     } else if (line.startsWith(TRIGGER)) {
-                        val value = line.substring(TRIGGER.length)
+                        val value = line.substringAfterLast(":")
                         curReminderTriggerMinutes = Parser().parseDurationSeconds(value) / 60
                         if (!value.startsWith("-")) {
                             curReminderTriggerMinutes *= -1
