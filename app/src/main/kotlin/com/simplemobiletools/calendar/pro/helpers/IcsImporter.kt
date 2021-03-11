@@ -107,7 +107,7 @@ class IcsImporter(val activity: SimpleActivity) {
                             parseRepeatRule()
                         }
                     } else if (line.startsWith(ACTION)) {
-                        val action = line.substring(ACTION.length)
+                        val action = line.substring(ACTION.length).trim()
                         isProperReminderAction = action == DISPLAY || action == EMAIL
                         if (isProperReminderAction) {
                             curReminderTriggerAction = if (action == DISPLAY) REMINDER_NOTIFICATION else REMINDER_EMAIL
