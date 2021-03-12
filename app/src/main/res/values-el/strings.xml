@@ -71,7 +71,7 @@
     <string name="second_m">δεύτερη</string>
     <string name="third_m">τρίτη</string>
     <string name="fourth_m">τέταρτη</string>
-    <string name="fifth_m">fifth</string>
+    <string name="fifth_m">πέμπτη</string>
     <string name="last_m">τελευταία</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
@@ -82,7 +82,7 @@
     <string name="second_f">δεύτερη</string>
     <string name="third_f">τρίτη</string>
     <string name="fourth_f">τέταρτη</string>
-    <string name="fifth_f">fifth</string>
+    <string name="fifth_f">πέμπτη</string>
     <string name="last_f">τελευταία</string>
 
     <!-- Birthdays -->
