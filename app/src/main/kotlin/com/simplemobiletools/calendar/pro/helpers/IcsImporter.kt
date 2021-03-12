@@ -166,6 +166,7 @@ class IcsImporter(val activity: SimpleActivity) {
                         }
 
                         if (curTitle.isEmpty() || curStart == -1L) {
+                            line = curLine
                             continue
                         }
 
@@ -173,6 +174,7 @@ class IcsImporter(val activity: SimpleActivity) {
                         val eventToUpdate = existingEvents.filter { curImportId.isNotEmpty() && curImportId == it.importId }.sortedByDescending { it.lastUpdated }.firstOrNull()
                         if (eventToUpdate != null && eventToUpdate.lastUpdated >= curLastModified) {
                             eventsAlreadyExist++
+                            line = curLine
                             continue
                         }
 
@@ -198,6 +200,7 @@ class IcsImporter(val activity: SimpleActivity) {
                             event.importId = event.hashCode().toString()
                             if (existingEvents.map { it.importId }.contains(event.importId)) {
                                 eventsAlreadyExist++
+                                line = curLine
                                 continue
                             }
                         }
