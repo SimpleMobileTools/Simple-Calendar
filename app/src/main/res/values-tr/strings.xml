@@ -71,7 +71,7 @@
     <string name="second_m">ikinci</string>
     <string name="third_m">üçüncü</string>
     <string name="fourth_m">dördüncü</string>
-    <string name="fifth_m">fifth</string>
+    <string name="fifth_m">beşinci</string>
     <string name="last_m">son</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
@@ -82,7 +82,7 @@
     <string name="second_f">ikinci</string>
     <string name="third_f">üçüncü</string>
     <string name="fourth_f">dördüncü</string>
-    <string name="fifth_f">fifth</string>
+    <string name="fifth_f">beşinci</string>
     <string name="last_f">son</string>
 
     <!-- Birthdays -->
