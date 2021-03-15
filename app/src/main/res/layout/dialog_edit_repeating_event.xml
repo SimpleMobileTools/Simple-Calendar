@@ -31,6 +31,14 @@
             android:text="@string/update_one_only"/>
 
         <com.simplemobiletools.commons.views.MyCompatRadioButton
+            android:id="@+id/edit_repeating_event_this_and_future_occurences"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/activity_margin"
+            android:paddingBottom="@dimen/activity_margin"
+            android:text="@string/update_this_and_future_occurrences" />
+
+        <com.simplemobiletools.commons.views.MyCompatRadioButton
             android:id="@+id/edit_repeating_event_all_occurrences"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
