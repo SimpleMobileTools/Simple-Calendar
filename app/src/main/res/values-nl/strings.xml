@@ -51,7 +51,7 @@
     <string name="delete_future_occurrences">Deze afspraak en hierop volgende herhalingen verwijderen</string>
     <string name="delete_all_occurrences">Al deze afspraken verwijderen</string>
     <string name="update_one_only">Alleen huidige afspraak bijwerken</string>
-    <string name="update_this_and_future_occurrences">Update this and all future occurrences</string>
+    <string name="update_this_and_future_occurrences">Deze afspraak en hierop volgende herhalingen bijwerken</string>
     <string name="update_all_occurrences">Alle afspraken bijwerken</string>
     <string name="repeat_till_date">Herhalen tot datum</string>
     <string name="stop_repeating_after_x">Herhaling stoppen na x keer</string>
