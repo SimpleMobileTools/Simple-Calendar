@@ -86,7 +86,9 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         checkWhatsNewDialog()
         calendar_fab.beVisibleIf(config.storedView != YEARLY_VIEW && config.storedView != WEEKLY_VIEW)
         calendar_fab.setOnClickListener {
-            launchNewEventIntent(currentFragments.last().getNewEventDayCode())
+            val lastFragment = currentFragments.last()
+            val allowChangingDay = lastFragment !is DayFragmentsHolder && lastFragment !is MonthDayFragmentsHolder
+            launchNewEventIntent(lastFragment.getNewEventDayCode(), allowChangingDay)
         }
 
         storeStateVariables()

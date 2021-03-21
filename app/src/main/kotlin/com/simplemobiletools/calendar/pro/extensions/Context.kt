@@ -331,20 +331,24 @@ fun Context.rescheduleReminder(event: Event?, minutes: Int) {
     }
 }
 
-fun Context.launchNewEventIntent(dayCode: String = Formatter.getTodayCode()) {
+// if the default event start time is set to "Next full hour" and the event is created before midnight, it could change the day
+fun Context.launchNewEventIntent(dayCode: String = Formatter.getTodayCode(), allowChangingDay: Boolean = false) {
     Intent(applicationContext, EventActivity::class.java).apply {
-        putExtra(NEW_EVENT_START_TS, getNewEventTimestampFromCode(dayCode))
+        putExtra(NEW_EVENT_START_TS, getNewEventTimestampFromCode(dayCode, allowChangingDay))
         addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(this)
     }
 }
 
-fun Context.getNewEventTimestampFromCode(dayCode: String): Long {
+fun Context.getNewEventTimestampFromCode(dayCode: String, allowChangingDay: Boolean = false): Long {
     val calendar = Calendar.getInstance()
     val defaultStartTime = config.defaultStartTime
     val currHour = calendar.get(Calendar.HOUR_OF_DAY)
     var dateTime = Formatter.getLocalDateTimeFromCode(dayCode).withHourOfDay(currHour)
     var newDateTime = dateTime.plusHours(1).withMinuteOfHour(0).withSecondOfMinute(0).withMillisOfSecond(0)
+    if (!allowChangingDay && dateTime.dayOfMonth() != newDateTime.dayOfMonth()) {
+        newDateTime = newDateTime.minusDays(1)
+    }
 
     return if (defaultStartTime == -1) {
         newDateTime.seconds()
