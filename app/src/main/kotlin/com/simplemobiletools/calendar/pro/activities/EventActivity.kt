@@ -298,6 +298,7 @@ class EventActivity : SimpleActivity() {
             mRepeatInterval != mEvent.repeatInterval ||
             mRepeatRule != mEvent.repeatRule ||
             mEventTypeId != mEvent.eventType ||
+            mEventCalendarId != mEvent.getCalDAVCalendarId() ||
             hasTimeChanged) {
             return true
         }
@@ -970,6 +971,7 @@ class EventActivity : SimpleActivity() {
                     DELETE_FUTURE_OCCURRENCES -> eventsHelper.addEventRepeatLimit(mEvent.id!!, mEventOccurrenceTS)
                     DELETE_ALL_OCCURRENCES -> eventsHelper.deleteEvent(mEvent.id!!, true)
                 }
+
                 runOnUiThread {
                     finish()
                 }
