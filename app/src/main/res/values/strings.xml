@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="app_name">Simple Calendar</string>
     <string name="app_launcher_name">Calendar</string>
     <string name="change_view">Change view</string>
