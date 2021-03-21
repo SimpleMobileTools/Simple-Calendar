@@ -68,7 +68,7 @@ class SelectEventTypeColorDialog(val activity: Activity, val eventType: EventTyp
     }
 
     private fun showCustomColorPicker() {
-        ColorPickerDialog(activity, activity.config.primaryColor) { wasPositivePressed, color ->
+        ColorPickerDialog(activity, eventType.color) { wasPositivePressed, color ->
             if (wasPositivePressed) {
                 callback(color)
             }
