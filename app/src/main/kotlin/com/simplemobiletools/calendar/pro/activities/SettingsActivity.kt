@@ -339,6 +339,7 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun setupReminderSound() {
+        settings_reminder_sound_holder.beGoneIf(isOreoPlus())
         settings_reminder_sound.text = config.reminderSoundTitle
 
         settings_reminder_sound_holder.setOnClickListener {
