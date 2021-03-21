@@ -51,6 +51,7 @@
     <string name="delete_future_occurrences">Видалити це і всі наступні повторення</string>
     <string name="delete_all_occurrences">Видалити всі повторення</string>
     <string name="update_one_only">Оновити лише обране повторення</string>
+    <string name="update_this_and_future_occurrences">Update this and all future occurrences</string>
     <string name="update_all_occurrences">Оновити всі повторення</string>
     <string name="repeat_till_date">Повторити до дати</string>
     <string name="stop_repeating_after_x">Повторити лише Х разів</string>

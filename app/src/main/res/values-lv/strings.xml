@@ -51,6 +51,7 @@
     <string name="delete_future_occurrences">Dzēst šo un visus turpmākos notikumus</string>
     <string name="delete_all_occurrences">Dzēst visus šos notikumus</string>
     <string name="update_one_only">Aktualizēt tikai šo atlasīto notikumu</string>
+    <string name="update_this_and_future_occurrences">Update this and all future occurrences</string>
     <string name="update_all_occurrences">Aktualizēt šos visus notikumus</string>
     <string name="repeat_till_date">Atkārtot līdz datumam</string>
     <string name="stop_repeating_after_x">Atkārtot X reizes</string>

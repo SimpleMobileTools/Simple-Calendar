@@ -51,6 +51,7 @@
     <string name="delete_future_occurrences">حذف هذه النسخة وكل النسخ المستقبلية</string>
     <string name="delete_all_occurrences">حذف جميع النسخ</string>
     <string name="update_one_only">تم تحديث النسخ المحددة فقط</string>
+    <string name="update_this_and_future_occurrences">Update this and all future occurrences</string>
     <string name="update_all_occurrences">تحديث جميع النسخ</string>
     <string name="repeat_till_date">كرر حتي تاريخ</string>
     <string name="stop_repeating_after_x">توقف عن التكرار بعد x نسخة</string>

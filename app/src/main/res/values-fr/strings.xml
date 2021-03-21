@@ -52,6 +52,7 @@
     <string name="delete_future_occurrences">Supprimer ceci et toutes les occurrences futures</string>
     <string name="delete_all_occurrences">Supprimer toutes les occurrences</string>
     <string name="update_one_only">Mettre à jour seulement l\’occurrence sélectionnée</string>
+    <string name="update_this_and_future_occurrences">Update this and all future occurrences</string>
     <string name="update_all_occurrences">Mettre à jour toutes les occurrences</string>
     <string name="repeat_till_date">Répéter jusqu\’à une date</string>
     <string name="stop_repeating_after_x">Arrêter de répéter après x occurrences</string>

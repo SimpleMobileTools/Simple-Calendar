@@ -51,6 +51,7 @@
     <string name="delete_future_occurrences">Rimuovi questo e tutte le future occorrenze</string>
     <string name="delete_all_occurrences">Elimina tutte le occorrenze</string>
     <string name="update_one_only">Aggiorna solamente l\'occorenza selezionata</string>
+    <string name="update_this_and_future_occurrences">Update this and all future occurrences</string>
     <string name="update_all_occurrences">Aggiorna tutte le occorenze</string>
     <string name="repeat_till_date">Ripeti fino a una data</string>
     <string name="stop_repeating_after_x">Smetti di ripetere dopo x occorrenze</string>

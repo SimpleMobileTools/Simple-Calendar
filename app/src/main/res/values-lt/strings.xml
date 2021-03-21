@@ -51,6 +51,7 @@
     <string name="delete_future_occurrences">Delete this and all future occurrences</string>
     <string name="delete_all_occurrences">Ištrinti visus įvykius</string>
     <string name="update_one_only">Atnaujinti tik pasirinktą įvykį</string>
+    <string name="update_this_and_future_occurrences">Update this and all future occurrences</string>
     <string name="update_all_occurrences">Atnaujinti visus įvykius</string>
     <string name="repeat_till_date">Pakartoti iki datos</string>
     <string name="stop_repeating_after_x">Stop repeating after x occurrences</string>

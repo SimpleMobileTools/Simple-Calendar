@@ -51,6 +51,7 @@
     <string name="delete_future_occurrences">Diese und zukünftige Wiederholungen löschen</string>
     <string name="delete_all_occurrences">Alle Wiederholungen löschen</string>
     <string name="update_one_only">Nur die ausgewählte Wiederholung ändern</string>
+    <string name="update_this_and_future_occurrences">Update this and all future occurrences</string>
     <string name="update_all_occurrences">Alle Wiederholungen ändern</string>
     <string name="repeat_till_date">Bis zu bestimmtem Datum wiederholen</string>
     <string name="stop_repeating_after_x">Stopp nach x Wiederholungen</string>

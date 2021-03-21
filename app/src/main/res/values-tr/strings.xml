@@ -51,6 +51,7 @@
     <string name="delete_future_occurrences">Bu ve gelecekteki tüm etkinlikleri sil</string>
     <string name="delete_all_occurrences">Tüm tekrarlanan etkinlikleri sil</string>
     <string name="update_one_only">Yalnızca seçilen etkinlikleri güncelle</string>
+    <string name="update_this_and_future_occurrences">Update this and all future occurrences</string>
     <string name="update_all_occurrences">Tüm etkinlikleri güncelle</string>
     <string name="repeat_till_date">Şu tarihe kadar tekrarla</string>
     <string name="stop_repeating_after_x">X etkinlikten sonra tekrarlamayı durdur</string>

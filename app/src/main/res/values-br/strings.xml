@@ -51,6 +51,7 @@
     <string name="delete_future_occurrences">Delete this and all future occurrences</string>
     <string name="delete_all_occurrences">Dilemel an holl zegouezhioù</string>
     <string name="update_one_only">Hizivaat an degouezh diuzet hepken</string>
+    <string name="update_this_and_future_occurrences">Update this and all future occurrences</string>
     <string name="update_all_occurrences">Hizivaat an holl zegouezhioù</string>
     <string name="repeat_till_date">Addegouezhout betek un deiziad</string>
     <string name="stop_repeating_after_x">Stop repeating after x occurrences</string>

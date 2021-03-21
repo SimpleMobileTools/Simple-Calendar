@@ -51,6 +51,7 @@
     <string name="delete_future_occurrences">Eliminar evento y repeticiones futuras</string>
     <string name="delete_all_occurrences">Eliminar todos los eventos</string>
     <string name="update_one_only">Actualizar sólo el evento seleccionado</string>
+    <string name="update_this_and_future_occurrences">Update this and all future occurrences</string>
     <string name="update_all_occurrences">Actualizar todos los eventos</string>
     <string name="repeat_till_date">Repetir hasta la fecha</string>
     <string name="stop_repeating_after_x">Repetir un número de ocasiones</string>

@@ -51,6 +51,7 @@
     <string name="delete_future_occurrences">Ezabatu gertaera hau eta datozen guztiak</string>
     <string name="delete_all_occurrences">Ezabatu gertaera guztiak</string>
     <string name="update_one_only">Eguneratu hautatutako gertaera soilik</string>
+    <string name="update_this_and_future_occurrences">Update this and all future occurrences</string>
     <string name="update_all_occurrences">Eguneratu gertaera guztiak</string>
     <string name="repeat_till_date">Errepikatu data zehatz batera arte</string>
     <string name="stop_repeating_after_x">Errepikatzeari utzi x gertaera ondoren</string>
