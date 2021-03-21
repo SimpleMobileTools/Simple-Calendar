@@ -46,7 +46,7 @@ class WidgetListConfigureActivity : SimpleActivity() {
             finish()
         }
 
-        EventListAdapter(this, getListItems(), false, null, config_events_list, true) {}.apply {
+        EventListAdapter(this, getListItems(), false, null, config_events_list) {}.apply {
             updateTextColor(mTextColor)
             config_events_list.adapter = this
         }

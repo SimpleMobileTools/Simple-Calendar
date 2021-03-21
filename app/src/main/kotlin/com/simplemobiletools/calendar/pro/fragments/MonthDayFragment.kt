@@ -143,7 +143,7 @@ class MonthDayFragment : Fragment(), MonthlyCalendar, RefreshRecyclerViewListene
 
                 val currAdapter = mHolder.month_day_events_list.adapter
                 if (currAdapter == null) {
-                    EventListAdapter(activity as SimpleActivity, listItems, true, this, month_day_events_list, false) {
+                    EventListAdapter(activity as SimpleActivity, listItems, true, this, month_day_events_list) {
                         if (it is ListEvent) {
                             activity?.editEvent(it)
                         }

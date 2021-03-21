@@ -958,7 +958,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                     search_results_list.beVisibleIf(events.isNotEmpty())
                     search_placeholder.beVisibleIf(events.isEmpty())
                     val listItems = getEventListItems(events)
-                    val eventsAdapter = EventListAdapter(this, listItems, true, this, search_results_list, true) {
+                    val eventsAdapter = EventListAdapter(this, listItems, true, this, search_results_list) {
                         if (it is ListEvent) {
                             Intent(applicationContext, EventActivity::class.java).apply {
                                 putExtra(EVENT_ID, it.id)
