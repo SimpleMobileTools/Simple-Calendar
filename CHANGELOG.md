@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 6.13.3 *(2021-03-22)*
+----------------------------
+
+ * Allow updating the current and future occurrence of repeating events
+ * Fixed a glitch at parsing ics file at importing events
+ * Multiple smaller bugfixes, translation and stability improvements
+
 Version 6.13.2 *(2021-03-11)*
 ----------------------------
 
