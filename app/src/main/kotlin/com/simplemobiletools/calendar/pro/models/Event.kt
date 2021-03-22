@@ -54,7 +54,7 @@ data class Event(
                     repeatInterval % YEAR == 0 -> when (repeatRule) {
                         REPEAT_ORDER_WEEKDAY -> addXthDayInterval(oldStart, original, false)
                         REPEAT_ORDER_WEEKDAY_USE_LAST -> addXthDayInterval(oldStart, original, true)
-                        else -> oldStart.plusYears(repeatInterval / YEAR)
+                        else -> addYearsWithSameDay(oldStart)
                     }
                     repeatInterval % MONTH == 0 -> when (repeatRule) {
                         REPEAT_SAME_DAY -> addMonthsWithSameDay(oldStart, original)
@@ -75,6 +75,20 @@ data class Event(
         val newEndTS = newStartTS + (endTS - startTS)
         startTS = newStartTS
         endTS = newEndTS
+    }
+
+    // if an event should happen on 29th Feb. with Same Day yearly repetition, show it only on leap years
+    private fun addYearsWithSameDay(currStart: DateTime): DateTime {
+        var newDateTime = currStart.plusYears(repeatInterval / YEAR)
+
+        // Date may slide within the same month
+        if (newDateTime.dayOfMonth != currStart.dayOfMonth) {
+            while (newDateTime.dayOfMonth().maximumValue < currStart.dayOfMonth) {
+                newDateTime = newDateTime.plusYears(repeatInterval / YEAR)
+            }
+            newDateTime = newDateTime.withDayOfMonth(currStart.dayOfMonth)
+        }
+        return newDateTime
     }
 
     // if an event should happen on 31st with Same Day monthly repetition, dont show it at all at months with 30 or less days

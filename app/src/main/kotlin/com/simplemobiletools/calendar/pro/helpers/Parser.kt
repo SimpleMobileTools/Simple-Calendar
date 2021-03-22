@@ -1,4 +1,4 @@
-package com.simplemobiletools.calendar.pro.helpers
+    package com.simplemobiletools.calendar.pro.helpers
 
 import com.simplemobiletools.calendar.pro.extensions.isXMonthlyRepetition
 import com.simplemobiletools.calendar.pro.extensions.isXWeeklyRepetition
