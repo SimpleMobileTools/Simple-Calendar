@@ -51,6 +51,7 @@
     <string name="delete_future_occurrences">Bu ve gelecekteki tüm etkinlikleri sil</string>
     <string name="delete_all_occurrences">Tüm tekrarlanan etkinlikleri sil</string>
     <string name="update_one_only">Yalnızca seçilen etkinlikleri güncelle</string>
+    <string name="update_this_and_future_occurrences">Update this and all future occurrences</string>
     <string name="update_all_occurrences">Tüm etkinlikleri güncelle</string>
     <string name="repeat_till_date">Şu tarihe kadar tekrarla</string>
     <string name="stop_repeating_after_x">X etkinlikten sonra tekrarlamayı durdur</string>
@@ -71,7 +72,7 @@
     <string name="second_m">ikinci</string>
     <string name="third_m">üçüncü</string>
     <string name="fourth_m">dördüncü</string>
-    <string name="fifth_m">fifth</string>
+    <string name="fifth_m">beşinci</string>
     <string name="last_m">son</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
@@ -82,7 +83,7 @@
     <string name="second_f">ikinci</string>
     <string name="third_f">üçüncü</string>
     <string name="fourth_f">dördüncü</string>
-    <string name="fifth_f">fifth</string>
+    <string name="fifth_f">beşinci</string>
     <string name="last_f">son</string>
 
     <!-- Birthdays -->

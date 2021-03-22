@@ -6,7 +6,7 @@
     <string name="daily_view">Daglig</string>
     <string name="weekly_view">Ugentlig</string>
     <string name="monthly_view">Månedlig</string>
-    <string name="monthly_daily_view">Monthly + daily view</string>
+    <string name="monthly_daily_view">Månedslig + daglig visning</string>
     <string name="yearly_view">Årlig</string>
     <string name="simple_event_list">Begivenhedsliste</string>
     <string name="no_upcoming_events">Du ser ikke ud til at have nogen forestående begivenheder.</string>
@@ -51,6 +51,7 @@
     <string name="delete_future_occurrences">Slet denne og alle fremtidige forekomster</string>
     <string name="delete_all_occurrences">Slet alle forekomster</string>
     <string name="update_one_only">Opdater kun denne forekomst</string>
+    <string name="update_this_and_future_occurrences">Update this and all future occurrences</string>
     <string name="update_all_occurrences">Opdater alle forekomster</string>
     <string name="repeat_till_date">Gentag indtil</string>
     <string name="stop_repeating_after_x">Stop gentagelse efter x gange</string>
@@ -71,7 +72,7 @@
     <string name="second_m">anden</string>
     <string name="third_m">tredje</string>
     <string name="fourth_m">fjerde</string>
-    <string name="fifth_m">fifth</string>
+    <string name="fifth_m">femte</string>
     <string name="last_m">sidste</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->

@@ -298,6 +298,7 @@ class EventActivity : SimpleActivity() {
             mRepeatInterval != mEvent.repeatInterval ||
             mRepeatRule != mEvent.repeatRule ||
             mEventTypeId != mEvent.eventType ||
+            mEventCalendarId != mEvent.getCalDAVCalendarId() ||
             hasTimeChanged) {
             return true
         }
@@ -970,6 +971,7 @@ class EventActivity : SimpleActivity() {
                     DELETE_FUTURE_OCCURRENCES -> eventsHelper.addEventRepeatLimit(mEvent.id!!, mEventOccurrenceTS)
                     DELETE_ALL_OCCURRENCES -> eventsHelper.deleteEvent(mEvent.id!!, true)
                 }
+
                 runOnUiThread {
                     finish()
                 }
@@ -1135,25 +1137,41 @@ class EventActivity : SimpleActivity() {
 
     private fun showEditRepeatingEventDialog() {
         EditRepeatingEventDialog(this) {
-            if (it) {
-                ensureBackgroundThread {
-                    eventsHelper.updateEvent(mEvent, true, true) {
-                        finish()
+            when (it) {
+                0 -> {
+                    ensureBackgroundThread {
+                        eventsHelper.addEventRepetitionException(mEvent.id!!, mEventOccurrenceTS, true)
+                        mEvent.apply {
+                            parentId = id!!.toLong()
+                            id = null
+                            repeatRule = 0
+                            repeatInterval = 0
+                            repeatLimit = 0
+                        }
+
+                        eventsHelper.insertEvent(mEvent, true, true) {
+                            finish()
+                        }
                     }
                 }
-            } else {
-                ensureBackgroundThread {
-                    eventsHelper.addEventRepetitionException(mEvent.id!!, mEventOccurrenceTS, true)
-                    mEvent.apply {
-                        parentId = id!!.toLong()
-                        id = null
-                        repeatRule = 0
-                        repeatInterval = 0
-                        repeatLimit = 0
+                1 -> {
+                    ensureBackgroundThread {
+                        eventsHelper.addEventRepeatLimit(mEvent.id!!, mEventOccurrenceTS)
+                        mEvent.apply {
+                            id = null
+                        }
+                        eventsHelper.insertEvent(mEvent, true, true) {
+                            finish()
+                        }
                     }
+                }
 
-                    eventsHelper.insertEvent(mEvent, true, true) {
-                        finish()
+                2 -> {
+                    ensureBackgroundThread {
+                        eventsHelper.addEventRepeatLimit(mEvent.id!!, mEventOccurrenceTS)
+                        eventsHelper.updateEvent(mEvent, true, true) {
+                            finish()
+                        }
                     }
                 }
             }

@@ -51,6 +51,7 @@
     <string name="delete_future_occurrences">반복되는 일정까지 삭제</string>
     <string name="delete_all_occurrences">이후 모든 항목 삭제</string>
     <string name="update_one_only">선택한 항목만 변경</string>
+    <string name="update_this_and_future_occurrences">Update this and all future occurrences</string>
     <string name="update_all_occurrences">이후 모든 항목 변경</string>
     <string name="repeat_till_date">선택 날짜까지 반복</string>
     <string name="stop_repeating_after_x">설정 횟수만큼 반복</string>

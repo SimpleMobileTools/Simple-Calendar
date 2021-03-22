@@ -51,6 +51,7 @@
     <string name="delete_future_occurrences">Apagar esta e todas as ocorrências futuras</string>
     <string name="delete_all_occurrences">Apagar todas as ocorrências</string>
     <string name="update_one_only">Atualizar a ocorrência selecionada</string>
+    <string name="update_this_and_future_occurrences">Update this and all future occurrences</string>
     <string name="update_all_occurrences">Atualizar todas as ocorrências</string>
     <string name="repeat_till_date">Repetir até à data</string>
     <string name="stop_repeating_after_x">Parar de repetir após x ocorrências</string>

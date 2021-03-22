@@ -107,13 +107,13 @@ class IcsImporter(val activity: SimpleActivity) {
                             parseRepeatRule()
                         }
                     } else if (line.startsWith(ACTION)) {
-                        val action = line.substring(ACTION.length)
+                        val action = line.substring(ACTION.length).trim()
                         isProperReminderAction = action == DISPLAY || action == EMAIL
                         if (isProperReminderAction) {
                             curReminderTriggerAction = if (action == DISPLAY) REMINDER_NOTIFICATION else REMINDER_EMAIL
                         }
                     } else if (line.startsWith(TRIGGER)) {
-                        val value = line.substring(TRIGGER.length)
+                        val value = line.substringAfterLast(":")
                         curReminderTriggerMinutes = Parser().parseDurationSeconds(value) / 60
                         if (!value.startsWith("-")) {
                             curReminderTriggerMinutes *= -1
@@ -166,6 +166,7 @@ class IcsImporter(val activity: SimpleActivity) {
                         }
 
                         if (curTitle.isEmpty() || curStart == -1L) {
+                            line = curLine
                             continue
                         }
 
@@ -173,6 +174,7 @@ class IcsImporter(val activity: SimpleActivity) {
                         val eventToUpdate = existingEvents.filter { curImportId.isNotEmpty() && curImportId == it.importId }.sortedByDescending { it.lastUpdated }.firstOrNull()
                         if (eventToUpdate != null && eventToUpdate.lastUpdated >= curLastModified) {
                             eventsAlreadyExist++
+                            line = curLine
                             continue
                         }
 
@@ -198,6 +200,7 @@ class IcsImporter(val activity: SimpleActivity) {
                             event.importId = event.hashCode().toString()
                             if (existingEvents.map { it.importId }.contains(event.importId)) {
                                 eventsAlreadyExist++
+                                line = curLine
                                 continue
                             }
                         }

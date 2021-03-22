@@ -51,6 +51,7 @@
     <string name="delete_future_occurrences">Usuń to i wyszystkie przyszłe wystąpienia</string>
     <string name="delete_all_occurrences">Usuń wszystkie wystąpienia</string>
     <string name="update_one_only">Zaktualizuj tylko wybrane wystąpienia</string>
+    <string name="update_this_and_future_occurrences">Update this and all future occurrences</string>
     <string name="update_all_occurrences">Zaktualizuj wszystkie wystąpienia</string>
     <string name="repeat_till_date">Powtarzaj do daty</string>
     <string name="stop_repeating_after_x">Przestań powtarzać po x wystąpieniach</string>

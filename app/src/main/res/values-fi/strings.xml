@@ -51,6 +51,7 @@
     <string name="delete_future_occurrences">Poista tämä ja seuraavat esiintymät</string>
     <string name="delete_all_occurrences">Poista kaikki esiintymät</string>
     <string name="update_one_only">Päivitä vain valittu esiintymä</string>
+    <string name="update_this_and_future_occurrences">Update this and all future occurrences</string>
     <string name="update_all_occurrences">Päivitä kaikki esiintymät</string>
     <string name="repeat_till_date">Toista päivään</string>
     <string name="stop_repeating_after_x">Lopeta toistaminen x esiintymän jälkeen</string>

@@ -51,6 +51,7 @@
     <string name="delete_future_occurrences">刪除這個及全部未來的事件</string>
     <string name="delete_all_occurrences">刪除全部事件</string>
     <string name="update_one_only">只更新選擇的事件</string>
+    <string name="update_this_and_future_occurrences">Update this and all future occurrences</string>
     <string name="update_all_occurrences">更新全部事件</string>
     <string name="repeat_till_date">重複直到某日</string>
     <string name="stop_repeating_after_x">經過x次後停止重複</string>

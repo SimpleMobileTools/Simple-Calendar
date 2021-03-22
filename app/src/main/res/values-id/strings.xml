@@ -51,6 +51,7 @@
     <string name="delete_future_occurrences">Hapus acara ini dan semua perulangannya</string>
     <string name="delete_all_occurrences">Hapus semua perulangan acara</string>
     <string name="update_one_only">Perbarui acara ini saja</string>
+    <string name="update_this_and_future_occurrences">Update this and all future occurrences</string>
     <string name="update_all_occurrences">Perbarui semua perulangan acara</string>
     <string name="repeat_till_date">Ulangi sampai tanggal</string>
     <string name="stop_repeating_after_x">Berhenti berulang setelah x kali</string>

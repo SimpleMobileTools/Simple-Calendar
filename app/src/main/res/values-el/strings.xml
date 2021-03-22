@@ -51,6 +51,7 @@
     <string name="delete_future_occurrences">Διαγράψτε αυτό και όλα τα μελλοντικά συμβάντα</string>
     <string name="delete_all_occurrences">Διαγράψτε όλα τα περιστατικά</string>
     <string name="update_one_only">Ενημέρωση μόνο του επιλεγμένου περιστατικού</string>
+    <string name="update_this_and_future_occurrences">Update this and all future occurrences</string>
     <string name="update_all_occurrences">Ενημέρωση όλων των περιστατικών</string>
     <string name="repeat_till_date">Επαναλάβετε μέχρι μια ημερομηνία</string>
     <string name="stop_repeating_after_x">Παύση επαναλήψεων μετά από x εμφανίσεις</string>
@@ -71,7 +72,7 @@
     <string name="second_m">δεύτερη</string>
     <string name="third_m">τρίτη</string>
     <string name="fourth_m">τέταρτη</string>
-    <string name="fifth_m">fifth</string>
+    <string name="fifth_m">πέμπτη</string>
     <string name="last_m">τελευταία</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
@@ -82,7 +83,7 @@
     <string name="second_f">δεύτερη</string>
     <string name="third_f">τρίτη</string>
     <string name="fourth_f">τέταρτη</string>
-    <string name="fifth_f">fifth</string>
+    <string name="fifth_f">πέμπτη</string>
     <string name="last_f">τελευταία</string>
 
     <!-- Birthdays -->

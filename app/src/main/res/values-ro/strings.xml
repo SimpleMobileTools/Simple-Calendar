@@ -51,6 +51,7 @@
     <string name="delete_future_occurrences">Ștergeți acest și toate evenimentele repetitive viitoare</string>
     <string name="delete_all_occurrences">Ștergeți toate evenimentele repetitive viitoare</string>
     <string name="update_one_only">Actualizați numai evenimentul repetitiv selectat</string>
+    <string name="update_this_and_future_occurrences">Update this and all future occurrences</string>
     <string name="update_all_occurrences">Actualizați toate evenimentele repetitive</string>
     <string name="repeat_till_date">Repetă până la o dată</string>
     <string name="stop_repeating_after_x">Oprește repetiția după x întâmplări</string>

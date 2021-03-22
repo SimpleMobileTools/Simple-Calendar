@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/day_holder"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingTop="@dimen/medium_margin">
 
-    <include layout="@layout/top_navigation"/>
+    <include layout="@layout/top_navigation" />
 
     <com.simplemobiletools.commons.views.MyRecyclerView
         android:id="@+id/day_events"
@@ -15,6 +14,7 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/top_value"
         android:clipToPadding="false"
-        app:layoutManager="com.simplemobiletools.commons.views.MyLinearLayoutManager"/>
+        android:layoutAnimation="@anim/layout_animation"
+        app:layoutManager="com.simplemobiletools.commons.views.MyLinearLayoutManager" />
 
 </RelativeLayout>

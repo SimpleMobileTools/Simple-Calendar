@@ -51,6 +51,7 @@
     <string name="delete_future_occurrences">Delete this and all future occurrences</string>
     <string name="delete_all_occurrences">Delete all occurrences</string>
     <string name="update_one_only">Update the selected occurrence only</string>
+    <string name="update_this_and_future_occurrences">Update this and all future occurrences</string>
     <string name="update_all_occurrences">Update all occurrences</string>
     <string name="repeat_till_date">Repeat till a date</string>
     <string name="stop_repeating_after_x">Stop repeating after x occurrences</string>

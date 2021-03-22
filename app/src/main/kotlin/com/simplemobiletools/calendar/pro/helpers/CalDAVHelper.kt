@@ -245,7 +245,7 @@ class CalDAVHelper(val context: Context) {
             if (exdate.length > 8) {
                 val lines = exdate.split("\n")
                 for (line in lines) {
-                    val dates = line.split(",")
+                    val dates = line.split(",", ";")
                     dates.filter { it.isNotEmpty() && it[0].isDigit() }.forEach {
                         if (it.endsWith("Z")) {
                             // convert for example "20190216T230000Z" to "20190217000000" in Slovakia in a weird way
@@ -257,9 +257,6 @@ class CalDAVHelper(val context: Context) {
                         } else {
                             var potentialTS = it.substring(0, 8)
                             if (potentialTS.areDigitsOnly()) {
-                                event.repetitionExceptions.add(potentialTS)
-                            } else if (it.contains(";")) {
-                                potentialTS = it.substringAfter(";").substring(0, 8)
                                 event.repetitionExceptions.add(potentialTS)
                             }
                         }

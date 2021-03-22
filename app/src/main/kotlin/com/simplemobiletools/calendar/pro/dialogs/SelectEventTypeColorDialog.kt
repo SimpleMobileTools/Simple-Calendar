@@ -35,13 +35,13 @@ class SelectEventTypeColorDialog(val activity: Activity, val eventType: EventTyp
 
         wasInit = true
         dialog = AlertDialog.Builder(activity)
-                .create().apply {
-                    activity.setupDialogStuff(view, this)
+            .create().apply {
+                activity.setupDialogStuff(view, this)
 
-                    if (colors.isEmpty()) {
-                        showCustomColorPicker()
-                    }
+                if (colors.isEmpty()) {
+                    showCustomColorPicker()
                 }
+            }
     }
 
     private fun addRadioButton(colorKey: Int, color: Int) {
@@ -68,7 +68,7 @@ class SelectEventTypeColorDialog(val activity: Activity, val eventType: EventTyp
     }
 
     private fun showCustomColorPicker() {
-        ColorPickerDialog(activity, activity.config.primaryColor) { wasPositivePressed, color ->
+        ColorPickerDialog(activity, eventType.color) { wasPositivePressed, color ->
             if (wasPositivePressed) {
                 callback(color)
             }

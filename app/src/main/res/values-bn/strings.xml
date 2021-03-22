@@ -55,6 +55,7 @@
     <string name="delete_future_occurrences">এটি এবং ভবিষ্যতের সমস্ত ঘটনা মুছুন</string>
     <string name="delete_all_occurrences">সমস্ত ঘটনা মুছুন</string>
     <string name="update_one_only">সিলেক্টেড ঘটনা আপডেট করুন</string>
+    <string name="update_this_and_future_occurrences">Update this and all future occurrences</string>
     <string name="update_all_occurrences">সমস্ত ঘটনা আপডেট করুন</string>
     <string name="repeat_till_date">একটি তারিখ পর্যন্ত পুনরাবৃত্তি করুন</string>
     <string name="stop_repeating_after_x">x ঘটনার পর পুনরাবৃত্তি থামান</string>

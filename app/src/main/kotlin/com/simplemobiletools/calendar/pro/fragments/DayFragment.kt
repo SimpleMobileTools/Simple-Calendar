@@ -124,6 +124,7 @@ class DayFragment : Fragment() {
         }.apply {
             mHolder.day_events.adapter = this
         }
+        mHolder.day_events.scheduleLayoutAnimation()
     }
 
     private fun editEvent(event: Event) {

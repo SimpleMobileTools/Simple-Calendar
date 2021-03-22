@@ -51,6 +51,7 @@
     <string name="delete_future_occurrences">Izbrišite ovo i sva buduća ponavljanja</string>
     <string name="delete_all_occurrences">Izbriši sva ponavljanja</string>
     <string name="update_one_only">Ažuriraj samo odabrano ponavljanje</string>
+    <string name="update_this_and_future_occurrences">Update this and all future occurrences</string>
     <string name="update_all_occurrences">Ažuriraj sva ponavljanja</string>
     <string name="repeat_till_date">Ponovi do datuma</string>
     <string name="stop_repeating_after_x">Prestani ponavljati nakon x pojavljivanja</string>
