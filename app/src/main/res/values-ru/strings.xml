@@ -51,7 +51,7 @@
     <string name="delete_future_occurrences">Удалить это и все будущие события</string>
     <string name="delete_all_occurrences">Удалить все связанные события</string>
     <string name="update_one_only">Обновить только выбранное</string>
-    <string name="update_this_and_future_occurrences">Update this and all future occurrences</string>
+    <string name="update_this_and_future_occurrences">Обновить это и все будущие события</string>
     <string name="update_all_occurrences">Обновить все связанные</string>
     <string name="repeat_till_date">Повторять до даты</string>
     <string name="stop_repeating_after_x">Повторять x раз</string>
