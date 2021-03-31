@@ -193,6 +193,7 @@
     <string name="new_events">Νέα γεγονότα</string>
     <string name="default_start_time">Προεπιλεγμένη ώρα έναρξης</string>
     <string name="next_full_hour">Την επόμενη πλήρη ώρα</string>
+    <string name="current_time">Current time</string>
     <string name="default_duration">Προεπιλεγμένη διάρκεια</string>
     <string name="last_used_one">Τελευταία χρήση</string>
     <string name="other_time">Άλλη ώρα</string>

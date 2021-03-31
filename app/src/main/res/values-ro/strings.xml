@@ -193,6 +193,7 @@
     <string name="new_events">Evenimente noi</string>
     <string name="default_start_time">Ora de pornire implicită</string>
     <string name="next_full_hour">Următoarea oră totală</string>
+    <string name="current_time">Current time</string>
     <string name="default_duration">Durata implicită</string>
     <string name="last_used_one">Ultima folosită</string>
     <string name="other_time">Alt timp</string>

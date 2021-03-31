@@ -193,6 +193,7 @@
     <string name="new_events">Nye begivenheder</string>
     <string name="default_start_time">Standard starttidspunkt</string>
     <string name="next_full_hour">Næste hele time</string>
+    <string name="current_time">Current time</string>
     <string name="default_duration">Standard varighed</string>
     <string name="last_used_one">Senest brugte</string>
     <string name="other_time">Anden tid</string>

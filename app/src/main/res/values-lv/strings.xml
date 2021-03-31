@@ -193,6 +193,7 @@
     <string name="new_events">Jauni notikumi</string>
     <string name="default_start_time">Sākuma laiks pēc noklusējuma</string>
     <string name="next_full_hour">Nākamā pilnā stunda</string>
+    <string name="current_time">Current time</string>
     <string name="default_duration">Ilgums pēc noklusējuma</string>
     <string name="last_used_one">Pēdējais izmantotais</string>
     <string name="other_time">Cits</string>

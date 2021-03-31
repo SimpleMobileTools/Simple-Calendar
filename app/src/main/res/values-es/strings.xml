@@ -193,6 +193,7 @@
     <string name="new_events">Nuevos eventos</string>
     <string name="default_start_time">Hora de inicio predeterminada</string>
     <string name="next_full_hour">Próxima hora</string>
+    <string name="current_time">Current time</string>
     <string name="default_duration">Duración predeterminada</string>
     <string name="last_used_one">El último usado</string>
     <string name="other_time">Otro momento</string>

@@ -193,6 +193,7 @@
     <string name="new_events">Nowe wydarzenia</string>
     <string name="default_start_time">Domyślny czas rozpoczęcia</string>
     <string name="next_full_hour">Następna pełna godzina</string>
+    <string name="current_time">Current time</string>
     <string name="default_duration">Domyślny czas trwania</string>
     <string name="last_used_one">Last used one</string>
     <string name="other_time">Other time</string>

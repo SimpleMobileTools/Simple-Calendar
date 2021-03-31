@@ -193,6 +193,7 @@
     <string name="new_events">Nové události</string>
     <string name="default_start_time">Výchozí čas začátku</string>
     <string name="next_full_hour">Nejbližší celá hodina</string>
+    <string name="current_time">Current time</string>
     <string name="default_duration">Výchozí délka</string>
     <string name="last_used_one">Poslední použitá</string>
     <string name="other_time">Jiný čas</string>

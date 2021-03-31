@@ -193,6 +193,7 @@
     <string name="new_events">Uusia tapahtumia</string>
     <string name="default_start_time">Oletus alkamisaika</string>
     <string name="next_full_hour">Seuraava täysi tunti</string>
+    <string name="current_time">Current time</string>
     <string name="default_duration">Oletus kesto</string>
     <string name="last_used_one">Viimeksi käytetty</string>
     <string name="other_time">Muu aika</string>

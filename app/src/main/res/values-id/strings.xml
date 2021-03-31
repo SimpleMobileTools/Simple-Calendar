@@ -193,6 +193,7 @@
     <string name="new_events">Acara baru</string>
     <string name="default_start_time">Waktu mulai default</string>
     <string name="next_full_hour">Satu jam kedepan</string>
+    <string name="current_time">Current time</string>
     <string name="default_duration">Durasi default</string>
     <string name="last_used_one">Terakhir digunakan</string>
     <string name="other_time">Waktu lainnya</string>

@@ -193,6 +193,7 @@
     <string name="new_events">Нові події</string>
     <string name="default_start_time">Стандартний час початку</string>
     <string name="next_full_hour">Наступна ціла година</string>
+    <string name="current_time">Current time</string>
     <string name="default_duration">Стандартна тривалість</string>
     <string name="last_used_one">Останнє використане</string>
     <string name="other_time">Інший час</string>

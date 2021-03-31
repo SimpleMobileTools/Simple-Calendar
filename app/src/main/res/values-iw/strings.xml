@@ -193,6 +193,7 @@
     <string name="new_events">אירועים חדשים</string>
     <string name="default_start_time">ברירת מחדל של זמן התחלה</string>
     <string name="next_full_hour">שעה מלאה הבאה</string>
+    <string name="current_time">Current time</string>
     <string name="default_duration">ברירת מחדל של משך הזמן</string>
     <string name="last_used_one">שימוש אחרון</string>
     <string name="other_time">‏להפסיק חזרה אחרי x פעמים.‏</string>

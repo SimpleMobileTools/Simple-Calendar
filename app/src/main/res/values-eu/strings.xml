@@ -193,6 +193,7 @@
     <string name="new_events">Gertaera berriak</string>
     <string name="default_start_time">Lehenetsitako hasiera-ordua</string>
     <string name="next_full_hour">Hurrengo ordu osoa</string>
+    <string name="current_time">Current time</string>
     <string name="default_duration">Lehenetsitako iraupena</string>
     <string name="last_used_one">Erabilitako azkena</string>
     <string name="other_time">Bestelako denbora</string>

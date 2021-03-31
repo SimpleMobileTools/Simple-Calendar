@@ -193,6 +193,7 @@
     <string name="new_events">Nieuwe afspraken</string>
     <string name="default_start_time">Standaard begintijd</string>
     <string name="next_full_hour">Eerstvolgende hele uur</string>
+    <string name="current_time">Current time</string>
     <string name="default_duration">Standaard duur</string>
     <string name="last_used_one">Laatst gebruikt</string>
     <string name="other_time">Andere tijd</string>

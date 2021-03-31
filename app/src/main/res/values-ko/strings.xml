@@ -193,6 +193,7 @@
     <string name="new_events">새로운 일정들</string>
     <string name="default_start_time">기본 시작 시간</string>
     <string name="next_full_hour">다음 전체 시간</string>
+    <string name="current_time">Current time</string>
     <string name="default_duration">기본 기간</string>
     <string name="last_used_one">마지막으로 사용한 것</string>
     <string name="other_time">다른 시간</string>

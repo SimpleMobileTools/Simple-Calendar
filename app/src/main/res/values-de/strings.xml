@@ -193,6 +193,7 @@
     <string name="new_events">Neue Termine</string>
     <string name="default_start_time">Standardanfangszeit</string>
     <string name="next_full_hour">Nächste volle Stunde</string>
+    <string name="current_time">Current time</string>
     <string name="default_duration">Standarddauer</string>
     <string name="last_used_one">Zuletzt verwendete</string>
     <string name="other_time">Andere Zeit</string>
