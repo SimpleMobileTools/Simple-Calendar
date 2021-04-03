@@ -197,6 +197,7 @@
     <string name="new_events">নতুন ইভেন্ট</string>
     <string name="default_start_time">ডিফল্ট শুরু টাইম</string>
     <string name="next_full_hour">পরবর্তী পুরো ঘন্টা</string>
+    <string name="current_time">Current time</string>
     <string name="default_duration">ডিফল্ট সময়</string>
     <string name="last_used_one">সর্বশেষ ব্যবহৃত</string>
     <string name="other_time">অন্য সময়</string>

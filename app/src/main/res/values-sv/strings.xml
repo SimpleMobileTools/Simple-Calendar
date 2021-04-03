@@ -193,6 +193,7 @@
     <string name="new_events">Nya händelser</string>
     <string name="default_start_time">Standardstarttid</string>
     <string name="next_full_hour">Nästa heltimme</string>
+    <string name="current_time">Current time</string>
     <string name="default_duration">Standardvaraktighet</string>
     <string name="last_used_one">Senast använda</string>
     <string name="other_time">Annan tid</string>

@@ -193,6 +193,7 @@
     <string name="new_events">新活動</string>
     <string name="default_start_time">預設開始時間</string>
     <string name="next_full_hour">整整下個小時</string>
+    <string name="current_time">Current time</string>
     <string name="default_duration">預設持續時間</string>
     <string name="last_used_one">最後使用</string>
     <string name="other_time">其他時間</string>

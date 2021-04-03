@@ -51,7 +51,7 @@
     <string name="delete_future_occurrences">Διαγράψτε αυτό και όλα τα μελλοντικά συμβάντα</string>
     <string name="delete_all_occurrences">Διαγράψτε όλα τα περιστατικά</string>
     <string name="update_one_only">Ενημέρωση μόνο του επιλεγμένου περιστατικού</string>
-    <string name="update_this_and_future_occurrences">Update this and all future occurrences</string>
+    <string name="update_this_and_future_occurrences">Ενημερώστε αυτό και όλα τα μελλοντικά περιστατικά</string>
     <string name="update_all_occurrences">Ενημέρωση όλων των περιστατικών</string>
     <string name="repeat_till_date">Επαναλάβετε μέχρι μια ημερομηνία</string>
     <string name="stop_repeating_after_x">Παύση επαναλήψεων μετά από x εμφανίσεις</string>
@@ -193,6 +193,7 @@
     <string name="new_events">Νέα γεγονότα</string>
     <string name="default_start_time">Προεπιλεγμένη ώρα έναρξης</string>
     <string name="next_full_hour">Την επόμενη πλήρη ώρα</string>
+    <string name="current_time">Τρέχουσα ώρα</string>
     <string name="default_duration">Προεπιλεγμένη διάρκεια</string>
     <string name="last_used_one">Τελευταία χρήση</string>
     <string name="other_time">Άλλη ώρα</string>

@@ -51,7 +51,7 @@
     <string name="delete_future_occurrences">Bu ve gelecekteki tüm etkinlikleri sil</string>
     <string name="delete_all_occurrences">Tüm tekrarlanan etkinlikleri sil</string>
     <string name="update_one_only">Yalnızca seçilen etkinlikleri güncelle</string>
-    <string name="update_this_and_future_occurrences">Update this and all future occurrences</string>
+    <string name="update_this_and_future_occurrences">Bunu ve gelecekteki tüm etkinlikleri güncelle</string>
     <string name="update_all_occurrences">Tüm etkinlikleri güncelle</string>
     <string name="repeat_till_date">Şu tarihe kadar tekrarla</string>
     <string name="stop_repeating_after_x">X etkinlikten sonra tekrarlamayı durdur</string>
@@ -193,6 +193,7 @@
     <string name="new_events">Yeni etkinlikler</string>
     <string name="default_start_time">Varsayılan başlangıç zamanı</string>
     <string name="next_full_hour">Gelecek tam saat</string>
+    <string name="current_time">Geçerli saat</string>
     <string name="default_duration">Varsayılan süre</string>
     <string name="last_used_one">Son kullanılan</string>
     <string name="other_time">Başka zaman</string>
