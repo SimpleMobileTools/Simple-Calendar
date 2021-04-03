@@ -193,7 +193,7 @@
     <string name="new_events">Новые события</string>
     <string name="default_start_time">Время начала по умолчанию</string>
     <string name="next_full_hour">Следующий полный час</string>
-    <string name="current_time">Current time</string>
+    <string name="current_time">Текущее время</string>
     <string name="default_duration">Продолжительность по умолчанию</string>
     <string name="last_used_one">Последнее использованное</string>
     <string name="other_time">Другое</string>
