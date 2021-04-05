@@ -54,6 +54,7 @@ class SettingsActivity : SimpleActivity() {
         setupWeekNumbers()
         setupShowGrid()
         setupWeeklyStart()
+        setupMidnightSpanEvents()
         setupVibrate()
         setupReminderSound()
         setupReminderAudioStream()
@@ -319,6 +320,14 @@ class SettingsActivity : SimpleActivity() {
                 config.startWeeklyAt = it as Int
                 settings_start_weekly_at.text = getHoursString(it)
             }
+        }
+    }
+
+    private fun setupMidnightSpanEvents() {
+        settings_midnight_span_event.isChecked = config.showMidnightSpanningEventsAtTop
+        settings_midnight_span_events_holder.setOnClickListener {
+            settings_midnight_span_event.toggle()
+            config.showMidnightSpanningEventsAtTop = settings_midnight_span_event.isChecked
         }
     }
 
