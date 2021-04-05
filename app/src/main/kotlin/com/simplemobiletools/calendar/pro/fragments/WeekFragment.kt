@@ -397,6 +397,10 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         val density = Math.round(res.displayMetrics.density)
 
         for (event in events) {
+            if (event.getIsAllDay()) {
+                continue
+            }
+
             val startDateTime = Formatter.getDateTimeFromTS(event.startTS)
             val startDayCode = Formatter.getDayCodeFromDateTime(startDateTime)
             val endDateTime = Formatter.getDateTimeFromTS(event.endTS)
