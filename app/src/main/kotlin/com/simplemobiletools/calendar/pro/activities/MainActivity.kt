@@ -866,10 +866,14 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                     return
                 }
 
-                val inputStream = contentResolver.openInputStream(uri)
-                val out = FileOutputStream(tempFile)
-                inputStream!!.copyTo(out)
-                showImportEventsDialog(tempFile.absolutePath)
+                try {
+                    val inputStream = contentResolver.openInputStream(uri)
+                    val out = FileOutputStream(tempFile)
+                    inputStream!!.copyTo(out)
+                    showImportEventsDialog(tempFile.absolutePath)
+                } catch (e: Exception) {
+                    showErrorToast(e)
+                }
             }
             else -> toast(R.string.invalid_file_format)
         }
