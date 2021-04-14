@@ -84,6 +84,7 @@ class EventActivity : SimpleActivity() {
     private var mEventCalendarId = STORED_LOCALLY_ONLY
     private var mWasActivityInitialized = false
     private var mWasContactsPermissionChecked = false
+    private var mWasCalendarChanged = false
     private var mAttendees = ArrayList<Attendee>()
     private var mAttendeeAutoCompleteViews = ArrayList<MyAutoCompleteTextView>()
     private var mAvailableContacts = ArrayList<Attendee>()
@@ -298,7 +299,7 @@ class EventActivity : SimpleActivity() {
             mRepeatInterval != mEvent.repeatInterval ||
             mRepeatRule != mEvent.repeatRule ||
             mEventTypeId != mEvent.eventType ||
-            mEventCalendarId != mEvent.getCalDAVCalendarId() ||
+            mWasCalendarChanged ||
             hasTimeChanged) {
             return true
         }
@@ -881,6 +882,7 @@ class EventActivity : SimpleActivity() {
                         mEventTypeId = config.lastUsedLocalEventTypeId
                         updateEventType()
                     }
+                    mWasCalendarChanged = true
                     mEventCalendarId = it
                     config.lastUsedCaldavCalendarId = it
                     updateCurrentCalendarInfo(getCalendarWithId(calendars, it))
