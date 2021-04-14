@@ -162,6 +162,7 @@
     <string name="manage_event_types">Správa typů událostí</string>
     <string name="start_day_at">Počátek dne</string>
     <string name="end_day_at">Konec dne</string>
+    <string name="midnight_spanning">Show events spanning across midnight at the top bar</string>
     <string name="allow_customizing_day_count">Allow customizing day count</string>
     <string name="week_numbers">Zobrazovat čísla týdnů</string>
     <string name="vibrate">Vibrovat při připomínce</string>

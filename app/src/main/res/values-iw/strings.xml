@@ -162,6 +162,7 @@
     <string name="manage_event_types">נהל סוגי אירועים</string>
     <string name="start_day_at">שעת התחלה היום</string>
     <string name="end_day_at">שעת סיום היום</string>
+    <string name="midnight_spanning">Show events spanning across midnight at the top bar</string>
     <string name="allow_customizing_day_count">Allow customizing day count</string>
     <string name="week_numbers">הצגת מספרי שבועות</string>
     <string name="vibrate">רטט בהתרעת תזכורת</string>
