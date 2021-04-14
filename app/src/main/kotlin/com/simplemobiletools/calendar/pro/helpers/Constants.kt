@@ -35,6 +35,7 @@ const val ITEM_EVENT_SIMPLE = 1
 const val ITEM_HEADER = 2
 
 const val DEFAULT_START_TIME_NEXT_FULL_HOUR = -1
+const val DEFAULT_START_TIME_CURRENT_TIME = -2
 
 const val DAY = 86400
 const val WEEK = 604800
