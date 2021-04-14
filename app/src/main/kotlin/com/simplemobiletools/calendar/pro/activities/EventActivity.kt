@@ -307,7 +307,7 @@ class EventActivity : SimpleActivity() {
     }
 
     override fun onBackPressed() {
-        if (isEventChanged() && System.currentTimeMillis() - mLastSavePromptTS > SAVE_DISCARD_PROMPT_INTERVAL) {
+        if (System.currentTimeMillis() - mLastSavePromptTS > SAVE_DISCARD_PROMPT_INTERVAL && isEventChanged()) {
             mLastSavePromptTS = System.currentTimeMillis()
             ConfirmationAdvancedDialog(this, "", R.string.save_before_closing, R.string.save, R.string.discard) {
                 if (it) {
