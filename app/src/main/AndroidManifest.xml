@@ -19,6 +19,11 @@
         android:name="android.permission.USE_FINGERPRINT"
         tools:node="remove" />
 
+    <queries>
+        <package android:name="com.simplemobiletools.contacts.pro.debug" />
+        <package android:name="com.simplemobiletools.contacts.pro" />
+    </queries>
+
     <uses-feature
         android:name="android.hardware.faketouch"
         android:required="false" />
