@@ -6,9 +6,9 @@
     <string name="daily_view">Vista giornaliera</string>
     <string name="weekly_view">Vista settimanale</string>
     <string name="monthly_view">Vista mensile</string>
-    <string name="monthly_daily_view">Monthly + daily view</string>
+    <string name="monthly_daily_view">Vista mensile + giornaliera</string>
     <string name="yearly_view">Vista annuale</string>
-    <string name="simple_event_list">Lista semplice deli eventi</string>
+    <string name="simple_event_list">Lista semplice degli eventi</string>
     <string name="no_upcoming_events">Non c\'è nessun evento imminente.</string>
     <string name="go_to_today">Vai a oggi</string>
     <string name="go_to_date">Vai alla data</string>
@@ -17,7 +17,7 @@
     <!-- Widget titles -->
     <string name="widget_monthly">Calendario mensile</string>
     <string name="widget_list">Lista degli eventi del calendario</string>
-    <string name="widget_todays_date">Calendar today\'s date</string>
+    <string name="widget_todays_date">Calendario odierno</string>
 
     <!-- Event -->
     <string name="event">Evento</string>
@@ -51,7 +51,7 @@
     <string name="delete_future_occurrences">Rimuovi questo e tutte le future occorrenze</string>
     <string name="delete_all_occurrences">Elimina tutte le occorrenze</string>
     <string name="update_one_only">Aggiorna solamente l\'occorenza selezionata</string>
-    <string name="update_this_and_future_occurrences">Update this and all future occurrences</string>
+    <string name="update_this_and_future_occurrences">Aggiorna questa e tutte le future occorrenze</string>
     <string name="update_all_occurrences">Aggiorna tutte le occorenze</string>
     <string name="repeat_till_date">Ripeti fino a una data</string>
     <string name="stop_repeating_after_x">Smetti di ripetere dopo x occorrenze</string>
@@ -72,7 +72,7 @@
     <string name="second_m">secondo</string>
     <string name="third_m">terzo</string>
     <string name="fourth_m">quarto</string>
-    <string name="fifth_m">fifth</string>
+    <string name="fifth_m">quinto</string>
     <string name="last_m">ultimo</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
@@ -83,7 +83,7 @@
     <string name="second_f">secondo</string>
     <string name="third_f">terzo</string>
     <string name="fourth_f">quarto</string>
-    <string name="fifth_f">fifth</string>
+    <string name="fifth_f">quinto</string>
     <string name="last_f">ultimo</string>
 
     <!-- Birthdays -->
@@ -162,7 +162,7 @@
     <string name="manage_event_types">Gestisci i tipi di evento</string>
     <string name="start_day_at">Il giorno inizia alle</string>
     <string name="end_day_at">Il giorno finisce alle</string>
-    <string name="midnight_spanning">Show events spanning across midnight at the top bar</string>
+    <string name="midnight_spanning">Mostra gli eventi a cavallo della mezzanotte nella barra in alto</string>
     <string name="allow_customizing_day_count">Allow customizing day count</string>
     <string name="week_numbers">Mostra numero settimane</string>
     <string name="vibrate">Vibra per le notifiche di promemoria</string>
@@ -183,7 +183,7 @@
     <string name="reminder_stream">Canale audio utilizzato per i promomemoria</string>
     <string name="system_stream">Sistema</string>
     <string name="alarm_stream">Allarme</string>
-    <string name="notification_stream">Notitica</string>
+    <string name="notification_stream">Notifica</string>
     <string name="ring_stream">Squillo</string>
     <string name="use_last_event_reminders">Utilizza l\'ultimo promemoria come predefinito per nuovi eventi</string>
     <string name="default_reminder_1">Promemoria predefinito 1</string>
@@ -194,7 +194,7 @@
     <string name="new_events">Nuovi eventi</string>
     <string name="default_start_time">Tempo di inizio predefinito</string>
     <string name="next_full_hour">Prossima ora completa</string>
-    <string name="current_time">Current time</string>
+    <string name="current_time">Ora attuale</string>
     <string name="default_duration">Durata predefinita</string>
     <string name="last_used_one">L\'ultimo utilizzato</string>
     <string name="other_time">Altro periodo</string>
