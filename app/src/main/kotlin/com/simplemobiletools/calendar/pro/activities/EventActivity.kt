@@ -1240,11 +1240,7 @@ class EventActivity : SimpleActivity() {
         }
 
         val intent = Intent(Intent.ACTION_VIEW, uri)
-        if (intent.resolveActivity(packageManager) != null) {
-            startActivity(intent)
-        } else {
-            toast(R.string.no_app_found)
-        }
+        launchActivityIntent(intent)
     }
 
     private fun setupStartDate() {
