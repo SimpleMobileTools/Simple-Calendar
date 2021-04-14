@@ -572,13 +572,13 @@ class SettingsActivity : SimpleActivity() {
     private fun setupDefaultStartTime() {
         updateDefaultStartTimeText()
         settings_default_start_time_holder.setOnClickListener {
-            val currentDefaultTime = if (config.defaultStartTime == -1) -1 else 0
+            val currentDefaultTime = if (config.defaultStartTime == DEFAULT_START_TIME_NEXT_FULL_HOUR) DEFAULT_START_TIME_NEXT_FULL_HOUR else 0
             val items = ArrayList<RadioItem>()
-            items.add(RadioItem(-1, getString(R.string.next_full_hour)))
+            items.add(RadioItem(DEFAULT_START_TIME_NEXT_FULL_HOUR, getString(R.string.next_full_hour)))
             items.add(RadioItem(0, getString(R.string.other_time)))
 
             RadioGroupDialog(this@SettingsActivity, items, currentDefaultTime) {
-                if (it as Int == -1) {
+                if (it as Int == DEFAULT_START_TIME_NEXT_FULL_HOUR) {
                     config.defaultStartTime = it
                     updateDefaultStartTimeText()
                 } else {
@@ -595,7 +595,7 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun updateDefaultStartTimeText() {
-        if (config.defaultStartTime == -1) {
+        if (config.defaultStartTime == DEFAULT_START_TIME_NEXT_FULL_HOUR) {
             settings_default_start_time.text = getString(R.string.next_full_hour)
         } else {
             val hours = config.defaultStartTime / 60
