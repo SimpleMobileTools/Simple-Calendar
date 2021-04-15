@@ -84,6 +84,7 @@ class EventActivity : SimpleActivity() {
     private var mEventCalendarId = STORED_LOCALLY_ONLY
     private var mWasActivityInitialized = false
     private var mWasContactsPermissionChecked = false
+    private var mWasCalendarChanged = false
     private var mAttendees = ArrayList<Attendee>()
     private var mAttendeeAutoCompleteViews = ArrayList<MyAutoCompleteTextView>()
     private var mAvailableContacts = ArrayList<Attendee>()
@@ -298,7 +299,7 @@ class EventActivity : SimpleActivity() {
             mRepeatInterval != mEvent.repeatInterval ||
             mRepeatRule != mEvent.repeatRule ||
             mEventTypeId != mEvent.eventType ||
-            mEventCalendarId != mEvent.getCalDAVCalendarId() ||
+            mWasCalendarChanged ||
             hasTimeChanged) {
             return true
         }
@@ -307,7 +308,7 @@ class EventActivity : SimpleActivity() {
     }
 
     override fun onBackPressed() {
-        if (isEventChanged() && System.currentTimeMillis() - mLastSavePromptTS > SAVE_DISCARD_PROMPT_INTERVAL) {
+        if (System.currentTimeMillis() - mLastSavePromptTS > SAVE_DISCARD_PROMPT_INTERVAL && isEventChanged()) {
             mLastSavePromptTS = System.currentTimeMillis()
             ConfirmationAdvancedDialog(this, "", R.string.save_before_closing, R.string.save, R.string.discard) {
                 if (it) {
@@ -881,6 +882,7 @@ class EventActivity : SimpleActivity() {
                         mEventTypeId = config.lastUsedLocalEventTypeId
                         updateEventType()
                     }
+                    mWasCalendarChanged = true
                     mEventCalendarId = it
                     config.lastUsedCaldavCalendarId = it
                     updateCurrentCalendarInfo(getCalendarWithId(calendars, it))
@@ -1238,11 +1240,7 @@ class EventActivity : SimpleActivity() {
         }
 
         val intent = Intent(Intent.ACTION_VIEW, uri)
-        if (intent.resolveActivity(packageManager) != null) {
-            startActivity(intent)
-        } else {
-            toast(R.string.no_app_found)
-        }
+        launchActivityIntent(intent)
     }
 
     private fun setupStartDate() {

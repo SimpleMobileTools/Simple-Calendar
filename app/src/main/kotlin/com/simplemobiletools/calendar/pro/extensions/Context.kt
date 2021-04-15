@@ -350,16 +350,21 @@ fun Context.getNewEventTimestampFromCode(dayCode: String, allowChangingDay: Bool
         newDateTime = newDateTime.minusDays(1)
     }
 
-    return if (defaultStartTime == -1) {
-        newDateTime.seconds()
-    } else {
-        val hours = defaultStartTime / 60
-        val minutes = defaultStartTime % 60
-        dateTime = Formatter.getLocalDateTimeFromCode(dayCode).withHourOfDay(hours).withMinuteOfHour(minutes)
-        newDateTime = dateTime
+    return when (defaultStartTime) {
+        DEFAULT_START_TIME_CURRENT_TIME -> {
+            val currMinutes = calendar.get(Calendar.MINUTE)
+            dateTime.withMinuteOfHour(currMinutes).seconds()
+        }
+        DEFAULT_START_TIME_NEXT_FULL_HOUR -> newDateTime.seconds()
+        else -> {
+            val hours = defaultStartTime / 60
+            val minutes = defaultStartTime % 60
+            dateTime = Formatter.getLocalDateTimeFromCode(dayCode).withHourOfDay(hours).withMinuteOfHour(minutes)
+            newDateTime = dateTime
 
-        // make sure the date doesn't change
-        newDateTime.withDate(dateTime.year, dateTime.monthOfYear, dateTime.dayOfMonth).seconds()
+            // make sure the date doesn't change
+            newDateTime.withDate(dateTime.year, dateTime.monthOfYear, dateTime.dayOfMonth).seconds()
+        }
     }
 }
 

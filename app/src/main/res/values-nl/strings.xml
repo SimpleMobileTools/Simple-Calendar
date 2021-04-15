@@ -162,6 +162,7 @@
     <string name="manage_event_types">Afspraaktypes beheren</string>
     <string name="start_day_at">Dag starten om</string>
     <string name="end_day_at">Dag beëindigen om</string>
+    <string name="midnight_spanning">Afspraken die tot na middernacht duren bovenaan tonen</string>
     <string name="allow_customizing_day_count">Wijziging van het aantal zichtbare dagen toestaan</string>
     <string name="week_numbers">Weeknummers tonen</string>
     <string name="vibrate">Trillen bij notificaties</string>

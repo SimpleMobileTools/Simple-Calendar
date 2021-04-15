@@ -162,6 +162,7 @@
     <string name="manage_event_types">Gerir tipos de eventos</string>
     <string name="start_day_at">Iniciar vista semanal em</string>
     <string name="end_day_at">Terminar vista semanal em</string>
+    <string name="midnight_spanning">Show events spanning across midnight at the top bar</string>
     <string name="allow_customizing_day_count">Allow customizing day count</string>
     <string name="week_numbers">Mostrar número das semanas</string>
     <string name="vibrate">Vibrar ao notificar sobre o lembrete</string>

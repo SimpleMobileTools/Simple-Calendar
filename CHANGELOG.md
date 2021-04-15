@@ -1,6 +1,15 @@
 Changelog
 ==========
 
+Version 6.13.4 *(2021-04-14)*
+----------------------------
+
+ * Allow setting the current time as the default at new events
+ * Avoid showing the save/discard dialog when nothing changed at an event
+ * Make sure all private contacts birthdays and anniversaries are fetched at importing
+ * Fixed some weekly view related glitches
+ * Some stability and translation improvements
+
 Version 6.13.3 *(2021-03-22)*
 ----------------------------
 

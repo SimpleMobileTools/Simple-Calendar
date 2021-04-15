@@ -162,6 +162,7 @@
     <string name="manage_event_types">Merañ an doareoù darvoudoù</string>
     <string name="start_day_at">Kregiñ an devezh da</string>
     <string name="end_day_at">Echuiñ an devezh da</string>
+    <string name="midnight_spanning">Show events spanning across midnight at the top bar</string>
     <string name="allow_customizing_day_count">Allow customizing day count</string>
     <string name="week_numbers">Diskouez niverennoù ar sizhun</string>
     <string name="vibrate">Froumal evit ar rebuzadurioù adc\'halv</string>

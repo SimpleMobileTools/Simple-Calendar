@@ -572,13 +572,19 @@ class SettingsActivity : SimpleActivity() {
     private fun setupDefaultStartTime() {
         updateDefaultStartTimeText()
         settings_default_start_time_holder.setOnClickListener {
-            val currentDefaultTime = if (config.defaultStartTime == -1) -1 else 0
+            val currentDefaultTime = when (config.defaultStartTime) {
+                DEFAULT_START_TIME_NEXT_FULL_HOUR -> DEFAULT_START_TIME_NEXT_FULL_HOUR
+                DEFAULT_START_TIME_CURRENT_TIME -> DEFAULT_START_TIME_CURRENT_TIME
+                else -> 0
+            }
+
             val items = ArrayList<RadioItem>()
-            items.add(RadioItem(-1, getString(R.string.next_full_hour)))
+            items.add(RadioItem(DEFAULT_START_TIME_CURRENT_TIME, getString(R.string.current_time)))
+            items.add(RadioItem(DEFAULT_START_TIME_NEXT_FULL_HOUR, getString(R.string.next_full_hour)))
             items.add(RadioItem(0, getString(R.string.other_time)))
 
             RadioGroupDialog(this@SettingsActivity, items, currentDefaultTime) {
-                if (it as Int == -1) {
+                if (it as Int == DEFAULT_START_TIME_NEXT_FULL_HOUR || it == DEFAULT_START_TIME_CURRENT_TIME) {
                     config.defaultStartTime = it
                     updateDefaultStartTimeText()
                 } else {
@@ -595,12 +601,14 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun updateDefaultStartTimeText() {
-        if (config.defaultStartTime == -1) {
-            settings_default_start_time.text = getString(R.string.next_full_hour)
-        } else {
-            val hours = config.defaultStartTime / 60
-            val minutes = config.defaultStartTime % 60
-            settings_default_start_time.text = String.format("%02d:%02d", hours, minutes)
+        when (config.defaultStartTime) {
+            DEFAULT_START_TIME_CURRENT_TIME -> settings_default_start_time.text = getString(R.string.current_time)
+            DEFAULT_START_TIME_NEXT_FULL_HOUR -> settings_default_start_time.text = getString(R.string.next_full_hour)
+            else -> {
+                val hours = config.defaultStartTime / 60
+                val minutes = config.defaultStartTime % 60
+                settings_default_start_time.text = String.format("%02d:%02d", hours, minutes)
+            }
         }
     }
 
