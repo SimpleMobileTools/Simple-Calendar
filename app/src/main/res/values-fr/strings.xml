@@ -6,37 +6,37 @@
     <string name="daily_view">Vue quotidienne</string>
     <string name="weekly_view">Vue hebdomadaire</string>
     <string name="monthly_view">Vue mensuelle</string>
-    <string name="monthly_daily_view">Monthly + daily view</string>
+    <string name="monthly_daily_view">Vue mensuelle + quotidienne</string>
     <string name="yearly_view">Vue annuelle</string>
     <string name="simple_event_list">Liste simple d\’événements</string>
     <string name="no_upcoming_events">Il semblerait que vous n\’ayez aucun événement à venir.</string>
-    <string name="go_to_today">Aller vers aujourd\’hui</string>
-    <string name="go_to_date">Aller vers une date</string>
-    <string name="upgraded_from_free">Bonjour,\n\nIl semblerait que vous soyez passé de l\’ancienne appli gratuite à la Pro. Vous devez migrer manuellement les évènements enregistrés localement manuellement en exportant un fichier .ics, puis en l\’important. Vous trouverez les boutons Exporter/Importer dans le menu de l\’écran principal.\n\nVous pourrez ensuite désinstaller l\’ancienne version, qui présente un bouton \'Passer à la version 
-	    Pro\' en haut des paramètres de l\’appli. Vous n\’aurez ensuite qu\’à réinitialiser les paramètres de l\’appli.\n\nMerci !</string>
+    <string name="go_to_today">Aller à aujourd\’hui</string>
+    <string name="go_to_date">Aller à une date</string>
+    <string name="upgraded_from_free">Bonjour,\n\nIl semblerait que vous soyez passés de l\’ancienne appli gratuite à la Pro. Vous devez migrer manuellement les évènements enregistrés localement manuellement en exportant un fichier .ics, puis en l\’important. Vous trouverez les boutons Exporter/Importer dans le menu de l\’écran principal.\n\nVous pourrez ensuite désinstaller l\’ancienne version, qui présente un bouton \'Passer à la version 
+	    Pro\' en haut des paramètres de l\’appli. Vous n\’aurez ensuite qu\’à ré-importer les paramètres de l\’appli.\n\nMerci !</string>
 
     <!-- Widget titles -->
-    <string name="widget_monthly">agenda mensuel</string>
+    <string name="widget_monthly">Agenda mensuel</string>
     <string name="widget_list">Liste d\’événements de l\’agenda</string>
-    <string name="widget_todays_date">Calendar today\'s date</string>
+    <string name="widget_todays_date">Agenda du jour</string>
 
     <!-- Event -->
     <string name="event">Événement</string>
-    <string name="edit_event">Éditer l\’événement</string>
+    <string name="edit_event">Modifier l\’événement</string>
     <string name="new_event">Nouvel événement</string>
     <string name="create_new_event">Créer un nouvel événement</string>
     <string name="duplicate_event">Dupliquer l\’événement</string>
     <string name="title_empty">Le titre ne peut pas être vide</string>
     <string name="end_before_start">L\’événement ne peut pas se terminer plus tôt qu\’il ne commence</string>
     <string name="event_added">Événement ajouté avec succès</string>
-    <string name="event_updated">Événement ajouté avec succès</string>
+    <string name="event_updated">Événement mis à jour avec succès</string>
     <string name="filter_events_by_type">Filtrer les événements par type</string>
-    <string name="please_fill_location">Veuillez remplir un emplacement pour être affiché sur une carte</string>
+    <string name="please_fill_location">Veuillez renseigner un lieu pour affichage sur une carte</string>
     <string name="public_event_notification_text">Un événement est à venir</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Répétition</string>
-    <string name="no_repetition">Pas de répétition</string>
+    <string name="no_repetition">Aucune répétition</string>
     <string name="daily">Quotidienne</string>
     <string name="weekly">Hebdomadaire</string>
     <string name="monthly">Mensuelle</string>
@@ -45,17 +45,17 @@
     <string name="months_raw">mois</string>
     <string name="years_raw">années</string>
     <string name="repeat_till">Répéter jusqu\’à</string>
-    <string name="forever">Pour toujours</string>
-    <string name="event_is_repeatable">L\’événement est répétable</string>
-    <string name="selection_contains_repetition">La sélection contient des événements avec répétition</string>
+    <string name="forever">Éternellement</string>
+    <string name="event_is_repeatable">L\’événement est périodique</string>
+    <string name="selection_contains_repetition">La sélection contient des événements périodiques</string>
     <string name="delete_one_only">Supprimer seulement l\’occurrence sélectionnée</string>
-    <string name="delete_future_occurrences">Supprimer ceci et toutes les occurrences futures</string>
+    <string name="delete_future_occurrences">Supprimer cette occurence et toutes les occurrences futures</string>
     <string name="delete_all_occurrences">Supprimer toutes les occurrences</string>
     <string name="update_one_only">Mettre à jour seulement l\’occurrence sélectionnée</string>
-    <string name="update_this_and_future_occurrences">Update this and all future occurrences</string>
+    <string name="update_this_and_future_occurrences">Mettre à jour cette occurence et toutes les occurrences futures</string>
     <string name="update_all_occurrences">Mettre à jour toutes les occurrences</string>
     <string name="repeat_till_date">Répéter jusqu\’à une date</string>
-    <string name="stop_repeating_after_x">Arrêter de répéter après x occurrences</string>
+    <string name="stop_repeating_after_x">Répéter pendant x occurrences</string>
     <string name="repeat_forever">Répéter éternellement</string>
     <string name="times">fois</string>
     <string name="repeat">Répéter</string>
@@ -73,7 +73,7 @@
     <string name="second_m">deuxième</string>
     <string name="third_m">troisième</string>
     <string name="fourth_m">quatrième</string>
-    <string name="fifth_m">fifth</string>
+    <string name="fifth_m">cinquième</string>
     <string name="last_m">dernier</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
@@ -84,7 +84,7 @@
     <string name="second_f">deuxième</string>
     <string name="third_f">troisième</string>
     <string name="fourth_f">quatrième</string>
-    <string name="fifth_f">fifth</string>
+    <string name="fifth_f">cinquième</string>
     <string name="last_f">dernier</string>
 
     <!-- Birthdays -->
@@ -95,11 +95,11 @@
     <string name="birthdays_added">Anniversaires ajoutés avec succès</string>
 
     <!-- Anniversaries -->
-    <string name="anniversaries">Anniversaires d\’évènements</string>
-    <string name="add_anniversaries">Ajouter des anniversaires d\’évènements de contact</string>
-    <string name="no_anniversaries">Aucun anniversaire d\’évènements n\’a été trouvé</string>
+    <string name="anniversaries">Anniversaires</string>
+    <string name="add_anniversaries">Ajouter les anniversaires de vos contacts</string>
+    <string name="no_anniversaries">Aucun anniversaire n\’a été trouvé</string>
     <string name="no_new_anniversaries">Aucun nouvel anniversaire n’a été trouvé</string>
-    <string name="anniversaries_added">Anniversaires d\’évènements ajoutés avec succès</string>
+    <string name="anniversaries_added">Anniversaires ajoutés avec succès</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Rappel</string>
@@ -116,13 +116,13 @@
     <string name="invited">Invité</string>
 
     <!-- Time zones -->
-    <string name="enter_a_country">Entrez un pays ou un fuseau horaire</string>
+    <string name="enter_a_country">Saisissez un pays ou un fuseau horaire</string>
 
     <!-- Export / Import -->
     <string name="import_events">Importer des événements</string>
     <string name="export_events">Exporter des événements</string>
-    <string name="import_events_from_ics">Importer des événements d\’un fichier .ics</string>
-    <string name="export_events_to_ics">Exporter des événements vers un fichier .ics</string>
+    <string name="import_events_from_ics">Importer les événements d\’un fichier .ics</string>
+    <string name="export_events_to_ics">Exporter les événements vers un fichier .ics</string>
     <string name="default_event_type">Type d\’événement par défaut</string>
     <string name="export_past_events_too">Exporter aussi les événements passés</string>
     <string name="include_event_types">Inclure les types d\’événement</string>
@@ -132,7 +132,7 @@
     <!-- Event details -->
     <string name="location">Lieu</string>
     <string name="description">Description</string>
-    <string name="all_day">Journée</string>
+    <string name="all_day">Journée entière</string>
 
     <!-- Weekly view -->
     <string name="week">Semaine</string>
@@ -140,7 +140,7 @@
     <!-- Event types -->
     <string name="event_types">Type d\’événement</string>
     <string name="add_new_type">Ajouter un nouveau type</string>
-    <string name="edit_type">Éditer le type</string>
+    <string name="edit_type">Modifier le type</string>
     <string name="type_already_exists">Un type avec ce titre existe déjà</string>
     <string name="color">Couleur</string>
     <string name="regular_event">Événement ordinaire</string>
@@ -155,7 +155,7 @@
     <string name="add_holidays">Ajouter des jours fériés</string>
     <string name="national_holidays">Jours fériés nationaux</string>
     <string name="religious_holidays">Jours fériés religieux</string>
-    <string name="holidays_imported_successfully">Les vacances ont été importées avec succès dans le type d\’événement « Vacances »</string>
+    <string name="holidays_imported_successfully">Les jours ont été importés avec succès comme le type d\’événement « Vacances »</string>
     <string name="importing_some_holidays_failed">Échec d\’importation de certains événements</string>
     <string name="importing_holidays_failed">Échec d\’importation des jours fériés</string>
 
@@ -166,7 +166,7 @@
     <string name="midnight_spanning">Show events spanning across midnight at the top bar</string>
     <string name="allow_customizing_day_count">Allow customizing day count</string>
     <string name="week_numbers">Afficher les numéros de semaine</string>
-    <string name="vibrate">Vibrer à la notification de rappel</string>
+    <string name="vibrate">Vibrer lors de la notification de rappel</string>
     <string name="reminder_sound">Son de rappel</string>
     <string name="no_ringtone_picker">Aucune appli n\’a été trouvée pour définir la sonnerie</string>
     <string name="no_ringtone_selected">Aucune</string>
@@ -176,30 +176,30 @@
     <string name="display_past_events">Afficher les événements du passé</string>
     <string name="replace_description_with_location">Remplacer la description de l\’événement par l\’emplacement</string>
     <string name="delete_all_events">Supprimer tous les événements</string>
-    <string name="delete_all_events_confirmation">Êtes-vous sûr de vouloir supprimer tous les événements ? Cela laissera vos types d\’événements et autres paramètres intacts.</string>
+    <string name="delete_all_events_confirmation">Êtes-vous certain de vouloir supprimer tous les événements ? Les types d\’événements et vos autres paramètres ne seront pas modifiés.</string>
     <string name="show_a_grid">Afficher une grille</string>
-    <string name="loop_reminders">Boucles de rappel jusqu\’à ce qu\’il soit rejeté</string>
+    <string name="loop_reminders">Répéter les rappels jusqu\’à ce qu\’ils soient rejetés</string>
     <string name="dim_past_events">Diminuer l\’affichage des événements passés</string>
-    <string name="events">Evénements</string>
+    <string name="events">Événements</string>
     <string name="reminder_stream">Flux audio utilisé par les rappels</string>
     <string name="system_stream">Système</string>
     <string name="alarm_stream">Alarme</string>
     <string name="notification_stream">Notification</string>
     <string name="ring_stream">Sonnerie</string>
-    <string name="use_last_event_reminders">Utiliser les rappels des derniers événements comme valeur par défaut pour un nouvel événement</string>
+    <string name="use_last_event_reminders">Utiliser les rappels du dernier événement comme valeur par défaut d'un nouvel événement</string>
     <string name="default_reminder_1">Rappel par défaut 1</string>
     <string name="default_reminder_2">Rappel par défaut 2</string>
     <string name="default_reminder_3">Rappel par défaut 3</string>
-    <string name="view_to_open_from_widget">Affichage à ouvrir à partir du widget de liste d\’événements</string>
+    <string name="view_to_open_from_widget">Vue à afficher à partir du widget "Liste d\’événements"</string>
     <string name="last_view">Dernière vue</string>
     <string name="new_events">Nouveaux évènements</string>
     <string name="default_start_time">Début par défaut</string>
     <string name="next_full_hour">Heure pleine suivante</string>
-    <string name="current_time">Current time</string>
+    <string name="current_time">Heure courante</string>
     <string name="default_duration">Durée par défaut</string>
     <string name="last_used_one">Identique au dernier</string>
     <string name="other_time">Autre moment</string>
-    <string name="highlight_weekends">Mettez en surbrillance les week-ends sur certaines vues</string>
+    <string name="highlight_weekends">Mettre en surbrillance les week-ends sur certaines vues</string>
     <string name="allow_changing_time_zones">Autoriser la modification des fuseaux horaires des événements</string>
 
     <!-- CalDAV sync -->
@@ -207,10 +207,10 @@
     <string name="select_caldav_calendars">Selectionner les agendas à synchroniser</string>
     <string name="manage_synced_calendars">Gérer les agendas synchronisés</string>
     <string name="store_locally_only">Stocker uniquement localement</string>
-    <string name="refresh_caldav_calendars">Rafraîchir les agendas CalDAV</string>
+    <string name="refresh_caldav_calendars">Actualiser les agendas CalDAV</string>
     <string name="refreshing">Actualisation…</string>
     <string name="refreshing_complete">L’actualisation est terminée</string>
-    <string name="editing_calendar_failed">Échec d\’édition de l\’agenda</string>
+    <string name="editing_calendar_failed">Échec de mise à jour de l\’agenda</string>
     <string name="syncing">Synchronisation…</string>
     <string name="synchronization_completed">La synchronisation est terminée</string>
     <string name="select_a_different_caldav_color">Sélectionnez une couleur différente (peut être appliqué localement uniquement)</string>
@@ -230,38 +230,38 @@
 
     <!-- List widget config example events -->
     <string name="sample_title_1">Entraînement</string>
-    <string name="sample_description_1">Jour des jambes</string>
-    <string name="sample_title_2">Rendez-vous avec John</string>
-    <string name="sample_description_2">Au jardin Rockstone</string>
-    <string name="sample_title_3">Librairie</string>
-    <string name="sample_title_4">Déjeuner avec Mary</string>
-    <string name="sample_description_4">Dans la Place</string>
-    <string name="sample_title_5">Heure du café</string>
+    <string name="sample_description_1">Course à pied</string>
+    <string name="sample_title_2">Rendez-vous avec Paul</string>
+    <string name="sample_description_2">Au parc du château</string>
+    <string name="sample_title_3">Bibliothèque</string>
+    <string name="sample_title_4">Déjeuner avec Marie</string>
+    <string name="sample_description_4">Restaurant de la gare</string>
+    <string name="sample_title_5">RDV au café</string>
 
     <!-- FAQ -->
-    <string name="faq_1_title">Comment supprimer les congés importés par le bouton « Ajouter des jours fériés » ?</string>
+    <string name="faq_1_title">Comment supprimer les événement importés avec le bouton « Ajouter des jours fériés » ?</string>
 	<string name="faq_1_text">Les jours fériés ajoutés de cette manière sont du type « Jours fériés ». Vous pouvez aller dans « Paramètres » puis « Gestion des types d\’événements », 
 		faire un appui long sur « Jours fériés » et les supprimer en appuyant sur la corbeille.</string>
-    <string name="faq_2_title">Puis-je synchroniser mes événements par Google Agenda, ou tout autre service proposant la synchronisation CalDAV ?</string>
+    <string name="faq_2_title">Puis-je synchroniser mes événements Google Agenda ou tout autre service proposant la synchronisation CalDAV ?</string>
 	<string name="faq_2_text">Oui, il faut juste activer l\’option « Synchronisation CalDAV » dans les paramètres de l\’appli, puis choisir les agendas à synchroniser. Une appli tierce pour gérer la synchronisation entre votre appareil et les serveurs sera par contre nécessaire. 
 		Dans le cas d\’un agenda Google, l\’appli officielle fera l\’affaire. Pour les autres agendas, il vous faudra une appli comme DAVx5 par exemple.</string>
     <string name="faq_3_title">Je vois les rappels visuels, mais n\’entends aucun son. Que puis-je faire ?</string>
     <string name="faq_3_text">Pas seulement l\’affichage du rappel, mais la lecture de l\’audio est également énormément affectée par le système. Si vous n’entendez aucun son, essayez d’entrer dans les paramètres de l’appli,
         en appuyant sur l\’option « Flux audio utilisé par les rappels » et en la modifiant. Si cela ne fonctionne toujours pas, vérifiez vos paramètres audio, si le flux particulier n’est pas mis en sourdine.</string>
-    <string name="faq_4_title">L’application prend-elle en charge les fuseaux horaires?</string>
-    <string name="faq_4_text">Oui. Par défaut, tous les événements sont créés dans votre fuseau horaire actuel. Si vous souhaitez modifier le fuseau horaire d’un événement, vous devez d’abord activer le sélecteur de fuseau horaire dans les paramètres de l’application, puis le modifier sur l’écran Détails de l’événement. Il est désactivé par défaut car la plupart des gens n’en auront pas besoin.</string>
+    <string name="faq_4_title">L’application prend-elle en charge les fuseaux horaires ?</string>
+    <string name="faq_4_text">Oui. Par défaut, tous les événements sont créés dans votre fuseau horaire courant. Si vous souhaitez modifier le fuseau horaire d’un événement, vous devez d’abord activer le sélecteur de fuseau horaire dans les paramètres de l’application, puis le modifier sur l’écran Détails de l’événement. Il est désactivé par défaut car la plupart des utilisateurs n’en ont pas besoin.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Simple Calendar Pro - Evénements &amp; Rappels</string>
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Calendrier mobile 2020. Planificat. d\'horaire; rappel de RDV n\'importe quel jour</string>
+    <string name="app_short_description">Calendrier mobile 2021. Planification et rappel de RDV.</string>
     <string name="app_long_description">
-        Simple Calendar Pro est un calendrier entièrement personnalisable et hors-ligne désigné pour faire exactement ce qu\'un calendrier devrait faire. <b>Aucune fonctionnalité compliquée, permissions inutiles et sans pubs !</b>
+        Simple Calendar Pro est un calendrier entièrement personnalisable et hors-ligne concçu pour faire exactement ce qu\'un calendrier devrait faire. <b>Aucune fonctionnalité compliquée, sans demande de permissions inutiles et sans publicité !</b>
 
-        Que vous souhaitiez organiser un évènement ponctuel ou récurrent, un anniversaire, un rendez-vous d\'affaires ou quoi que ce soit d\'autre, Simple Calendar Pro rend simple <b>votre organisation</b>. Avec une grande variété <b>d\'options de personnalisation</b>, vous pouvez personnaliser les rappels d\'évènements, les sons de notifications, les widgets du calendrier et à quoi l\'application ressemble.
+        Que vous souhaitiez organiser un évènement ponctuel ou récurrent, un anniversaire, un rendez-vous d\'affaires ou quoi que ce soit d\'autre, Simple Calendar Pro rend simple <b>votre organisation</b>. Avec une grande variété <b>d\'options de personnalisation</b>, vous pouvez personnaliser les rappels d\'évènements, les sons de notifications, les widgets du calendrier et l'\apparence de l\'application.
 
-        La vue journalière, semainière et mensuelle rend la vérification des évènements et rendez-vous à venir aisée. Vous pouvez même voir tous les évènements dans une simple liste plutôt que dans une vue calendrier, afin de <b>savoir exactement ce qui va arriver dans votre vie et quand. </b>
+        Les vues quotidienne, hebdomadaire et mensuelle rendent la consultation des évènements et rendez-vous à venir aisée. Vous pouvez même voir tous les évènements dans une simple liste plutôt que dans un affichage calendrier, afin de <b>savoir exactement ce qui va arriver dans votre vie et quand ;-). </b>
 
         ----------------------------------------------------------
         <b>Simple Calendar Pro – Fonctionnalités &amp; avantages </b>
@@ -269,19 +269,19 @@
 
         ✔️ Aucune publicité ou popup ennuyante
         ✔️ Aucun accès à internet n\'est nécessaire, vous donnant un meilleur respect de la vie privée et de la sécurité
-        ✔️ Seul le strict minimum en permissions est requis
-        ✔️ Emphase sur la simplicité - fait ce qu\'un calendrier doit faire !
+        ✔️ Seules les permissions minimum sont requises
+        ✔️ Une valeur : la simplicité - faire ce qu\'un calendrier doit faire !
         ✔️ Open source
         ✔️ Thèmes et widgets entièrement personnalisables
         ✔️ Traduit en 29 langues
         ✔️ Export des paramètres en fichier .txt pour les importer sur un autre appareil
-        ✔️ Synchronisation du calendrier CalDAV supportée pour synchroniser entre les appareils
-        ✔️ Vue journalière, semainière, mensuelle et annuelle des évènements sur le calendrier
+        ✔️ Synchronisation du calendrier CalDAV supportée pour synchroniser entre appareils et services
+        ✔️ Vue quotidienne, hebdomadaire, mensuelle et annuelle des évènements sur le calendrier
         ✔️ Supporte l\'export et l\'import des évènements via des fichiers .ics
         ✔️ Paramètre de multiples rappels d\'évènements, personnalise les effets sonores et la vibration des évènements
         ✔️ Option snooze pour les rappels
-        ✔️ Ajoute facilement des évènements d\'anniversaire et de vacances
-        ✔️ Personnalise les évènements - début, durée, rappels, etc.
+        ✔️ Ajoutez facilement les anniversaires et les jours fériés
+        ✔️ Personnalise les évènements - début, durée, rappels, participants, etc.
         ✔️ Note les présences sur chaque évènement
         ✔️ Utilisable en tant que calendrier personnel ou professionnel
         ✔️ Choisissez entre rappels et notifications par email pour vous alerter à propos d\'un évènement
@@ -291,7 +291,7 @@
         <b>Découvrez la suite complète des applications Simple Mobile Tools ici :</b>
         https://www.simplemobiletools.com
 
-        <b>Site internet de Simple Calendar Pro :</b>
+        <b>Site Internet de Simple Calendar Pro :</b>
         https://www.simplemobiletools.com/calendar
 
         <b>Facebook :</b>
