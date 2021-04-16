@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Simple agenda</string>
     <string name="app_launcher_name">Agenda</string>
-    <string name="change_view">Changer de vue</string>
+    <string name="change_view">Autres affichages</string>
     <string name="daily_view">Vue quotidienne</string>
     <string name="weekly_view">Vue hebdomadaire</string>
     <string name="monthly_view">Vue mensuelle</string>
@@ -89,7 +89,7 @@
 
     <!-- Birthdays -->
     <string name="birthdays">Anniversaires</string>
-    <string name="add_birthdays">Ajouter les anniversaires des contacts</string>
+    <string name="add_birthdays">Ajouter les anniversaires de vos contacts</string>
     <string name="no_birthdays">Aucun anniversaire n\’a été trouvé</string>
     <string name="no_new_birthdays">Aucun nouvel anniversaire n’a été trouvé</string>
     <string name="birthdays_added">Anniversaires ajoutés avec succès</string>
@@ -121,13 +121,13 @@
     <!-- Export / Import -->
     <string name="import_events">Importer des événements</string>
     <string name="export_events">Exporter des événements</string>
-    <string name="import_events_from_ics">Importer les événements d\’un fichier .ics</string>
-    <string name="export_events_to_ics">Exporter les événements vers un fichier .ics</string>
+    <string name="import_events_from_ics">Import depuis fichier .ics</string>
+    <string name="export_events_to_ics">Export vers fichier .ics</string>
     <string name="default_event_type">Type d\’événement par défaut</string>
-    <string name="export_past_events_too">Exporter aussi les événements passés</string>
+    <string name="export_past_events_too">Exporter les événements passés</string>
     <string name="include_event_types">Inclure les types d\’événement</string>
-    <string name="filename_without_ics">Nom de fichier (sans .ics)</string>
-    <string name="override_event_types">Remplacer les types d\’événement dans le fichier</string>
+    <string name="filename_without_ics">Nom du fichier (sans .ics)</string>
+    <string name="override_event_types">Ecraser les types d\’événement dans le fichier</string>
 
     <!-- Event details -->
     <string name="location">Lieu</string>
@@ -161,7 +161,7 @@
 
     <!-- Settings -->
     <string name="manage_event_types">Gestion des types d\’événements</string>
-    <string name="start_day_at">Jour de début de la vue hebdomadaire</string>
+    <string name="start_day_at">Heure de début pour la vue hebdomadaire</string>
     <string name="end_day_at">Jour de fin de la vue hebdomadaire</string>
     <string name="midnight_spanning">Show events spanning across midnight at the top bar</string>
     <string name="allow_customizing_day_count">Allow customizing day count</string>
@@ -173,13 +173,13 @@
     <string name="day_end_before_start">Le jour ne peut pas se terminer plus tôt qu\’il ne débute</string>
     <string name="caldav_sync">Synchronisation CalDAV</string>
     <string name="event_lists">Listes d\’événements</string>
-    <string name="display_past_events">Afficher les événements du passé</string>
+    <string name="display_past_events">Afficher les événements passés</string>
     <string name="replace_description_with_location">Remplacer la description de l\’événement par l\’emplacement</string>
     <string name="delete_all_events">Supprimer tous les événements</string>
     <string name="delete_all_events_confirmation">Êtes-vous certain de vouloir supprimer tous les événements ? Les types d\’événements et vos autres paramètres ne seront pas modifiés.</string>
     <string name="show_a_grid">Afficher une grille</string>
     <string name="loop_reminders">Répéter les rappels jusqu\’à ce qu\’ils soient rejetés</string>
-    <string name="dim_past_events">Diminuer l\’affichage des événements passés</string>
+    <string name="dim_past_events">Estomper les événements passés</string>
     <string name="events">Événements</string>
     <string name="reminder_stream">Flux audio utilisé par les rappels</string>
     <string name="system_stream">Système</string>
@@ -190,7 +190,7 @@
     <string name="default_reminder_1">Rappel par défaut 1</string>
     <string name="default_reminder_2">Rappel par défaut 2</string>
     <string name="default_reminder_3">Rappel par défaut 3</string>
-    <string name="view_to_open_from_widget">Vue à afficher à partir du widget "Liste d\’événements"</string>
+    <string name="view_to_open_from_widget">Vue à afficher depuis le widget "Liste d\’événements"</string>
     <string name="last_view">Dernière vue</string>
     <string name="new_events">Nouveaux évènements</string>
     <string name="default_start_time">Début par défaut</string>
@@ -204,7 +204,7 @@
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
-    <string name="select_caldav_calendars">Selectionner les agendas à synchroniser</string>
+    <string name="select_caldav_calendars">Sélectionner les agendas à synchroniser</string>
     <string name="manage_synced_calendars">Gérer les agendas synchronisés</string>
     <string name="store_locally_only">Stocker uniquement localement</string>
     <string name="refresh_caldav_calendars">Actualiser les agendas CalDAV</string>
