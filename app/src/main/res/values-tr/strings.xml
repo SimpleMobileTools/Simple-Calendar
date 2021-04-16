@@ -162,7 +162,7 @@
     <string name="manage_event_types">Etkinlik türlerini yönet</string>
     <string name="start_day_at">Gün başlangıcı</string>
     <string name="end_day_at">Gün bitişi</string>
-    <string name="midnight_spanning">Show events spanning across midnight at the top bar</string>
+    <string name="midnight_spanning">Üst çubukta gece yarısına yayılan etkinlikleri göster</string>
     <string name="allow_customizing_day_count">Gün sayısının özelleştirilmesine izin ver</string>
     <string name="week_numbers">Hafta sayılarını göster</string>
     <string name="vibrate">Hatırlatma bildiriminde titre</string>
