@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 6.13.5 *(2021-04-17)*
+----------------------------
+
+ * Fixed a weekly view related glitch
+ * Smaller translation improvements
+
 Version 6.13.4 *(2021-04-14)*
 ----------------------------
 
