@@ -186,7 +186,7 @@
     <string name="alarm_stream">Alarme</string>
     <string name="notification_stream">Notification</string>
     <string name="ring_stream">Sonnerie</string>
-    <string name="use_last_event_reminders">Utiliser les rappels du dernier événement comme valeur par défaut d'un nouvel événement</string>
+    <string name="use_last_event_reminders">Utiliser les rappels du dernier événement comme valeur par défaut d\'un nouvel événement</string>
     <string name="default_reminder_1">Rappel par défaut 1</string>
     <string name="default_reminder_2">Rappel par défaut 2</string>
     <string name="default_reminder_3">Rappel par défaut 3</string>
@@ -259,7 +259,7 @@
     <string name="app_long_description">
         Simple Calendar Pro est un calendrier entièrement personnalisable et hors-ligne concçu pour faire exactement ce qu\'un calendrier devrait faire. <b>Aucune fonctionnalité compliquée, sans demande de permissions inutiles et sans publicité !</b>
 
-        Que vous souhaitiez organiser un évènement ponctuel ou récurrent, un anniversaire, un rendez-vous d\'affaires ou quoi que ce soit d\'autre, Simple Calendar Pro rend simple <b>votre organisation</b>. Avec une grande variété <b>d\'options de personnalisation</b>, vous pouvez personnaliser les rappels d\'évènements, les sons de notifications, les widgets du calendrier et l'\apparence de l\'application.
+        Que vous souhaitiez organiser un évènement ponctuel ou récurrent, un anniversaire, un rendez-vous d\'affaires ou quoi que ce soit d\'autre, Simple Calendar Pro rend simple <b>votre organisation</b>. Avec une grande variété <b>d\'options de personnalisation</b>, vous pouvez personnaliser les rappels d\'évènements, les sons de notifications, les widgets du calendrier et l\'apparence de l\'application.
 
         Les vues quotidienne, hebdomadaire et mensuelle rendent la consultation des évènements et rendez-vous à venir aisée. Vous pouvez même voir tous les évènements dans une simple liste plutôt que dans un affichage calendrier, afin de <b>savoir exactement ce qui va arriver dans votre vie et quand ;-). </b>
 
