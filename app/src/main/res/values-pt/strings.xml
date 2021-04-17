@@ -51,7 +51,7 @@
     <string name="delete_future_occurrences">Apagar esta e todas as ocorrências futuras</string>
     <string name="delete_all_occurrences">Apagar todas as ocorrências</string>
     <string name="update_one_only">Atualizar a ocorrência selecionada</string>
-    <string name="update_this_and_future_occurrences">Update this and all future occurrences</string>
+    <string name="update_this_and_future_occurrences">Atualizar esta e todas as ocorrências futuras</string>
     <string name="update_all_occurrences">Atualizar todas as ocorrências</string>
     <string name="repeat_till_date">Repetir até à data</string>
     <string name="stop_repeating_after_x">Parar de repetir após x ocorrências</string>
@@ -72,7 +72,7 @@
     <string name="second_m">segunda</string>
     <string name="third_m">terceira</string>
     <string name="fourth_m">quarta</string>
-    <string name="fifth_m">fifth</string>
+    <string name="fifth_m">quinta</string>
     <string name="last_m">última</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
@@ -83,7 +83,7 @@
     <string name="second_f">segundo</string>
     <string name="third_f">terceiro</string>
     <string name="fourth_f">quarto</string>
-    <string name="fifth_f">fifth</string>
+    <string name="fifth_f">quinto</string>
     <string name="last_f">último</string>
 
     <!-- Birthdays -->
@@ -162,8 +162,8 @@
     <string name="manage_event_types">Gerir tipos de eventos</string>
     <string name="start_day_at">Iniciar vista semanal em</string>
     <string name="end_day_at">Terminar vista semanal em</string>
-    <string name="midnight_spanning">Show events spanning across midnight at the top bar</string>
-    <string name="allow_customizing_day_count">Allow customizing day count</string>
+    <string name="midnight_spanning">Mostrar eventos que apanhem a meia-noite na barra superior</string>
+    <string name="allow_customizing_day_count">Personalizar contagem dos dias</string>
     <string name="week_numbers">Mostrar número das semanas</string>
     <string name="vibrate">Vibrar ao notificar sobre o lembrete</string>
     <string name="reminder_sound">Som do lembrete</string>
@@ -194,7 +194,7 @@
     <string name="new_events">Novo evento</string>
     <string name="default_start_time">Hora inicial padrão</string>
     <string name="next_full_hour">Próxima hora</string>
-    <string name="current_time">Current time</string>
+    <string name="current_time">Hora atual</string>
     <string name="default_duration">Duração padrão</string>
     <string name="last_used_one">Última utilizada</string>
     <string name="other_time">Outra</string>
