@@ -3,16 +3,16 @@
     <string name="app_name">Simple agenda</string>
     <string name="app_launcher_name">Agenda</string>
     <string name="change_view">Autres affichages</string>
-    <string name="daily_view">Vue quotidienne</string>
-    <string name="weekly_view">Vue hebdomadaire</string>
-    <string name="monthly_view">Vue mensuelle</string>
+    <string name="daily_view">Vue Journée</string>
+    <string name="weekly_view">Vue Semaine</string>
+    <string name="monthly_view">Vue Mois</string>
     <string name="monthly_daily_view">Vue mensuelle + quotidienne</string>
-    <string name="yearly_view">Vue annuelle</string>
+    <string name="yearly_view">Vue Année</string>
     <string name="simple_event_list">Liste simple d\’événements</string>
     <string name="no_upcoming_events">Il semblerait que vous n\’ayez aucun événement à venir.</string>
     <string name="go_to_today">Aller à aujourd\’hui</string>
     <string name="go_to_date">Aller à une date</string>
-    <string name="upgraded_from_free">Bonjour,\n\nIl semblerait que vous soyez passés de l\’ancienne appli gratuite à la Pro. Vous devez migrer manuellement les évènements enregistrés localement manuellement en exportant un fichier .ics, puis en l\’important. Vous trouverez les boutons Exporter/Importer dans le menu de l\’écran principal.\n\nVous pourrez ensuite désinstaller l\’ancienne version, qui présente un bouton \'Passer à la version 
+    <string name="upgraded_from_free">Bonjour,\n\nIl semblerait que vous soyez passés de l\’ancienne appli gratuite à la version "Pro". Vous devez migrer manuellement les évènements enregistrés localement manuellement en exportant un fichier .ics, puis en l\’important. Vous trouverez les boutons Exporter/Importer dans le menu de l\’écran principal.\n\nVous pourrez ensuite désinstaller l\’ancienne version, qui présente un bouton \'Passer à la version 
 	    Pro\' en haut des paramètres de l\’appli. Vous n\’aurez ensuite qu\’à ré-importer les paramètres de l\’appli.\n\nMerci !</string>
 
     <!-- Widget titles -->
@@ -30,7 +30,7 @@
     <string name="end_before_start">L\’événement ne peut pas se terminer plus tôt qu\’il ne commence</string>
     <string name="event_added">Événement ajouté avec succès</string>
     <string name="event_updated">Événement mis à jour avec succès</string>
-    <string name="filter_events_by_type">Filtrer les événements par type</string>
+    <string name="filter_events_by_type">Filtrer les événements</string>
     <string name="please_fill_location">Veuillez renseigner un lieu pour affichage sur une carte</string>
     <string name="public_event_notification_text">Un événement est à venir</string>
 
@@ -121,8 +121,8 @@
     <!-- Export / Import -->
     <string name="import_events">Importer des événements</string>
     <string name="export_events">Exporter des événements</string>
-    <string name="import_events_from_ics">Import depuis fichier .ics</string>
-    <string name="export_events_to_ics">Export vers fichier .ics</string>
+    <string name="import_events_from_ics">Importer depuis un fichier .ics</string>
+    <string name="export_events_to_ics">Exporter vers un fichier .ics</string>
     <string name="default_event_type">Type d\’événement par défaut</string>
     <string name="export_past_events_too">Exporter les événements passés</string>
     <string name="include_event_types">Inclure les types d\’événement</string>
@@ -207,9 +207,9 @@
     <string name="select_caldav_calendars">Sélectionner les agendas à synchroniser</string>
     <string name="manage_synced_calendars">Gérer les agendas synchronisés</string>
     <string name="store_locally_only">Stocker uniquement localement</string>
-    <string name="refresh_caldav_calendars">Actualiser les agendas CalDAV</string>
-    <string name="refreshing">Actualisation…</string>
-    <string name="refreshing_complete">L’actualisation est terminée</string>
+    <string name="refresh_caldav_calendars">Synchroniser les agendas CalDAV</string>
+    <string name="refreshing">Synchro en cours…</string>
+    <string name="refreshing_complete">La synchro est terminée</string>
     <string name="editing_calendar_failed">Échec de mise à jour de l\’agenda</string>
     <string name="syncing">Synchronisation…</string>
     <string name="synchronization_completed">La synchronisation est terminée</string>
