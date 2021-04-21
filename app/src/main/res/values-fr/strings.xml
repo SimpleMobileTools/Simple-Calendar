@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Simple agenda</string>
-    <string name="app_launcher_name">Agenda</string>
+    <string name="app_launcher_name">Simple Agenda</string>
     <string name="change_view">Autres affichages</string>
     <string name="daily_view">Vue Journée</string>
     <string name="weekly_view">Vue Semaine</string>
     <string name="monthly_view">Vue Mois</string>
-    <string name="monthly_daily_view">Vue mensuelle + quotidienne</string>
+    <string name="monthly_daily_view">Vue Mois + Journée</string>
     <string name="yearly_view">Vue Année</string>
-    <string name="simple_event_list">Liste simple d\’événements</string>
-    <string name="no_upcoming_events">Il semblerait que vous n\’ayez aucun événement à venir.</string>
+    <string name="simple_event_list">Simple liste d\’événements</string>
+    <string name="no_upcoming_events">Aucun événement à venir</string>
     <string name="go_to_today">Aller à aujourd\’hui</string>
     <string name="go_to_date">Aller à une date</string>
-    <string name="upgraded_from_free">Bonjour,\n\nIl semblerait que vous soyez passés de l\’ancienne appli gratuite à la version "Pro". Vous devez migrer manuellement les évènements enregistrés localement manuellement en exportant un fichier .ics, puis en l\’important. Vous trouverez les boutons Exporter/Importer dans le menu de l\’écran principal.\n\nVous pourrez ensuite désinstaller l\’ancienne version, qui présente un bouton \'Passer à la version 
-	    Pro\' en haut des paramètres de l\’appli. Vous n\’aurez ensuite qu\’à ré-importer les paramètres de l\’appli.\n\nMerci !</string>
+    <string name="upgraded_from_free">Bonjour,\n\nIl semblerait que vous soyez passés de l\’ancienne appli gratuite à la version "Pro". Vous devez migrer manuellement les évènements enregistrés localement en exportant un fichier .ics, puis en l\’important. Vous trouverez les boutons Exporter/Importer dans le menu de l\’écran principal.\n\nVous pourrez ensuite désinstaller l\’ancienne version, qui présente un bouton \'Passer à la version 
+	    Pro\' en haut des paramètres de l\’appli. Vous n\’aurez ensuite qu\’à ré-importer vos événement dans l\’appli Pro.\n\nMerci !</string>
 
     <!-- Widget titles -->
-    <string name="widget_monthly">Agenda mensuel</string>
+    <string name="widget_monthly">Vue Mois</string>
     <string name="widget_list">Liste d\’événements de l\’agenda</string>
-    <string name="widget_todays_date">Agenda du jour</string>
+    <string name="widget_todays_date">Vue Journée</string>
 
     <!-- Event -->
     <string name="event">Événement</string>
@@ -31,16 +31,16 @@
     <string name="event_added">Événement ajouté avec succès</string>
     <string name="event_updated">Événement mis à jour avec succès</string>
     <string name="filter_events_by_type">Filtrer les événements</string>
-    <string name="please_fill_location">Veuillez renseigner un lieu pour affichage sur une carte</string>
+    <string name="please_fill_location">Veuillez renseigner un lieu pour visualisation sur une carte</string>
     <string name="public_event_notification_text">Un événement est à venir</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Répétition</string>
     <string name="no_repetition">Aucune répétition</string>
-    <string name="daily">Quotidienne</string>
-    <string name="weekly">Hebdomadaire</string>
-    <string name="monthly">Mensuelle</string>
-    <string name="yearly">Annuelle</string>
+    <string name="daily">Tous les Jours</string>
+    <string name="weekly">Toutes les Semaines</string>
+    <string name="monthly">Tous les Mois</string>
+    <string name="yearly">Tous les Ans</string>
     <string name="weeks_raw">semaines</string>
     <string name="months_raw">mois</string>
     <string name="years_raw">années</string>
@@ -55,7 +55,7 @@
     <string name="update_this_and_future_occurrences">Mettre à jour cette occurence et toutes les occurrences futures</string>
     <string name="update_all_occurrences">Mettre à jour toutes les occurrences</string>
     <string name="repeat_till_date">Répéter jusqu\’à une date</string>
-    <string name="stop_repeating_after_x">Répéter pendant x occurrences</string>
+    <string name="stop_repeating_after_x">Répéter x fois</string>
     <string name="repeat_forever">Répéter éternellement</string>
     <string name="times">fois</string>
     <string name="repeat">Répéter</string>
@@ -66,7 +66,7 @@
     <string name="the_last_day">Le dernier jour</string>
     <string name="repeat_on_the_same_day_monthly">Répéter le même jour de chaque mois</string>
     <string name="repeat_on_the_last_day_monthly">Répéter le dernier jour de chaque mois</string>
-    <string name="repeat_on_the_same_day_yearly">Répéter le même jour chaque année</string>
+    <string name="repeat_on_the_same_day_yearly">Répéter le même jour de chaque année</string>
     <string name="repeat_every_m">Répéter chaque</string>
     <string name="every_m">Chaque</string>
     <string name="first_m">premier</string>
@@ -89,17 +89,17 @@
 
     <!-- Birthdays -->
     <string name="birthdays">Anniversaires</string>
-    <string name="add_birthdays">Ajouter les anniversaires de vos contacts</string>
+    <string name="add_birthdays">Ajouter les anniv. de vos contacts</string>
     <string name="no_birthdays">Aucun anniversaire n\’a été trouvé</string>
     <string name="no_new_birthdays">Aucun nouvel anniversaire n’a été trouvé</string>
     <string name="birthdays_added">Anniversaires ajoutés avec succès</string>
 
     <!-- Anniversaries -->
-    <string name="anniversaries">Anniversaires</string>
-    <string name="add_anniversaries">Ajouter les anniversaires de vos contacts</string>
-    <string name="no_anniversaries">Aucun anniversaire n\’a été trouvé</string>
-    <string name="no_new_anniversaries">Aucun nouvel anniversaire n’a été trouvé</string>
-    <string name="anniversaries_added">Anniversaires ajoutés avec succès</string>
+    <string name="anniversaries">Dates mémo</string>
+    <string name="add_anniversaries">Ajouter les dates mémo de vos contacts</string>
+    <string name="no_anniversaries">Aucune date mémo n\’a été trouvée</string>
+    <string name="no_new_anniversaries">Aucun nouvelle date mémo n’a été trouvée</string>
+    <string name="anniversaries_added">Dates mémo ajoutées avec succès</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Rappel</string>
@@ -112,7 +112,7 @@
     <string name="my_status">Mon statut :</string>
     <string name="going">Participe</string>
     <string name="not_going">Ne participe pas</string>
-    <string name="maybe_going">Participe peut-être</string>
+    <string name="maybe_going">Provisoire</string>
     <string name="invited">Invité</string>
 
     <!-- Time zones -->
@@ -143,7 +143,7 @@
     <string name="edit_type">Modifier le type</string>
     <string name="type_already_exists">Un type avec ce titre existe déjà</string>
     <string name="color">Couleur</string>
-    <string name="regular_event">Événement ordinaire</string>
+    <string name="regular_event">Événement normal</string>
     <string name="cannot_delete_default_type">Le type d\’événement par défaut ne peut pas être supprimé</string>
     <string name="select_event_type">Sélectionner un type d\’événement</string>
     <string name="move_events_into_default">Déplacer les événements affectés dans le type d\’événement par défaut</string>
@@ -155,21 +155,21 @@
     <string name="add_holidays">Ajouter des jours fériés</string>
     <string name="national_holidays">Jours fériés nationaux</string>
     <string name="religious_holidays">Jours fériés religieux</string>
-    <string name="holidays_imported_successfully">Les jours ont été importés avec succès comme le type d\’événement « Vacances »</string>
-    <string name="importing_some_holidays_failed">Échec d\’importation de certains événements</string>
-    <string name="importing_holidays_failed">Échec d\’importation des jours fériés</string>
+    <string name="holidays_imported_successfully">Les jours ont été importés avec succès comme type d\’événement « Vacances »</string>
+    <string name="importing_some_holidays_failed">Échec d\’import pour ertains événements</string>
+    <string name="importing_holidays_failed">Échec d\’import des jours fériés</string>
 
     <!-- Settings -->
     <string name="manage_event_types">Gestion des types d\’événements</string>
-    <string name="start_day_at">Heure de début pour la vue hebdomadaire</string>
-    <string name="end_day_at">Jour de fin de la vue hebdomadaire</string>
-    <string name="midnight_spanning">Show events spanning across midnight at the top bar</string>
-    <string name="allow_customizing_day_count">Allow customizing day count</string>
+    <string name="start_day_at">Heure de début pour la vue Semaine</string>
+    <string name="end_day_at">Jour de fin de la vue Semaine</string>
+    <string name="midnight_spanning">Afficher les événement se déroulant sur plusieurs jours dans la barre supérieure</string>
+    <string name="allow_customizing_day_count">Permettre la personnalisation du calcul du compteur de jours</string>
     <string name="week_numbers">Afficher les numéros de semaine</string>
-    <string name="vibrate">Vibrer lors de la notification de rappel</string>
+    <string name="vibrate">Vibrer lors de la notification d'un rappel</string>
     <string name="reminder_sound">Son de rappel</string>
     <string name="no_ringtone_picker">Aucune appli n\’a été trouvée pour définir la sonnerie</string>
-    <string name="no_ringtone_selected">Aucune</string>
+    <string name="no_ringtone_selected">Aucun</string>
     <string name="day_end_before_start">Le jour ne peut pas se terminer plus tôt qu\’il ne débute</string>
     <string name="caldav_sync">Synchronisation CalDAV</string>
     <string name="event_lists">Listes d\’événements</string>
@@ -181,12 +181,12 @@
     <string name="loop_reminders">Répéter les rappels jusqu\’à ce qu\’ils soient rejetés</string>
     <string name="dim_past_events">Estomper les événements passés</string>
     <string name="events">Événements</string>
-    <string name="reminder_stream">Flux audio utilisé par les rappels</string>
+    <string name="reminder_stream">Flux audio utilisé pour les rappels</string>
     <string name="system_stream">Système</string>
     <string name="alarm_stream">Alarme</string>
     <string name="notification_stream">Notification</string>
     <string name="ring_stream">Sonnerie</string>
-    <string name="use_last_event_reminders">Utiliser les rappels du dernier événement comme valeur par défaut d\'un nouvel événement</string>
+    <string name="use_last_event_reminders">Utiliser le rappel du dernier événement comme valeur par défaut d\'un nouvel événement</string>
     <string name="default_reminder_1">Rappel par défaut 1</string>
     <string name="default_reminder_2">Rappel par défaut 2</string>
     <string name="default_reminder_3">Rappel par défaut 3</string>
@@ -199,7 +199,7 @@
     <string name="default_duration">Durée par défaut</string>
     <string name="last_used_one">Identique au dernier</string>
     <string name="other_time">Autre moment</string>
-    <string name="highlight_weekends">Mettre en surbrillance les week-ends sur certaines vues</string>
+    <string name="highlight_weekends">Mettre les week-ends en surbrillance</string>
     <string name="allow_changing_time_zones">Autoriser la modification des fuseaux horaires des événements</string>
 
     <!-- CalDAV sync -->
@@ -215,7 +215,7 @@
     <string name="synchronization_completed">La synchronisation est terminée</string>
     <string name="select_a_different_caldav_color">Sélectionnez une couleur différente (peut être appliqué localement uniquement)</string>
     <string name="insufficient_permissions">Vous n\’êtes pas autorisé à écrire dans l\’agenda sélectionné</string>
-    <string name="caldav_event_not_found">Événement introuvable. Veuillez activer la synchronisation CalDAV pour le calendrier approprié dans les paramètres de l’application.</string>
+    <string name="caldav_event_not_found">Événement introuvable. Veuillez activer la synchronisation CalDAV pour ce calendrier dans les paramètres de l’application.</string>
     <string name="no_synchronized_calendars">Aucun calendrier synchronisable n\'a été trouvé</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
