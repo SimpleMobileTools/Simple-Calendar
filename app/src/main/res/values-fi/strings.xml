@@ -131,7 +131,7 @@
     <!-- Event details -->
     <string name="location">Sijainti</string>
     <string name="description">Kuvaus</string>
-    <string name="all_day">Joka päivä</string>
+    <string name="all_day">Koko päivä</string>
 
     <!-- Weekly view -->
     <string name="week">Viikko</string>
