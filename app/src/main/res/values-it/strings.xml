@@ -109,8 +109,8 @@
     <!-- Event attendees -->
     <string name="add_another_attendee">Aggiungi un partecipante</string>
     <string name="my_status">Il mio stato:</string>
-    <string name="going">Andando</string>
-    <string name="not_going">Non andando</string>
+    <string name="going">Partecipo</string>
+    <string name="not_going">Non partecipo</string>
     <string name="maybe_going">Forse</string>
     <string name="invited">Invitato</string>
 
