@@ -1,0 +1,2 @@
+ * Fixed a glitch related to exporting events in .ics file
+ * Some stability and translation improvements
