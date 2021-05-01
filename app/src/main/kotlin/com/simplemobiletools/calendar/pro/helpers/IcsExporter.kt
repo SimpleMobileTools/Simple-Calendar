@@ -98,7 +98,7 @@ class IcsExporter {
                 }
 
                 val sign = if (reminder.minutes < -1) "" else "-"
-                writeLn("$TRIGGER$sign${Parser().getDurationCode(Math.abs(reminder.minutes.toLong()))}")
+                writeLn("$TRIGGER:$sign${Parser().getDurationCode(Math.abs(reminder.minutes.toLong()))}")
                 writeLn(END_ALARM)
             }
         }
