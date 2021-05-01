@@ -63,7 +63,7 @@ android {
 }
 
 dependencies {
-    implementation 'com.github.SimpleMobileTools:Simple-Commons:b3a9e4114f'
+    implementation 'com.github.SimpleMobileTools:Simple-Commons:df6a5a10ab'
     implementation 'joda-time:joda-time:2.10.3'
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'

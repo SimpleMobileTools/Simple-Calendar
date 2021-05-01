@@ -166,7 +166,7 @@
     <string name="midnight_spanning">Afficher les événement se déroulant sur plusieurs jours dans la barre supérieure</string>
     <string name="allow_customizing_day_count">Permettre la personnalisation du calcul du compteur de jours</string>
     <string name="week_numbers">Afficher les numéros de semaine</string>
-    <string name="vibrate">Vibrer lors de la notification d'un rappel</string>
+    <string name="vibrate">Vibrer lors de la notification d\'un rappel</string>
     <string name="reminder_sound">Son de rappel</string>
     <string name="no_ringtone_picker">Aucune appli n\’a été trouvée pour définir la sonnerie</string>
     <string name="no_ringtone_selected">Aucun</string>
