@@ -238,18 +238,16 @@
     <string name="sample_title_5">Beber um café</string>
 
     <!-- FAQ -->
-    <string name="faq_1_title">How can I remove the holidays imported via the \"Add holidays\" button?</string>
-    <string name="faq_1_text">Holidays created that way are inserted in a new event type called \"Holidays\". You can go in Settings -> Manage Event Types,
-        long press the given event type and delete it by selecting the trashbin.</string>
-    <string name="faq_2_title">Can I sync my events via Google Calendar, or other service supporting CalDAV?</string>
-    <string name="faq_2_text">Yes, just toggle \"CalDAV sync\" in the app settings and select the calendars you want to sync. However, you will need some third party app handling the synchronization between the device and servers.
-        In case you want to synchronize a Google calendar, their official Calendar app will do the job. For other calendars you will need a third party sync adapter, for example DAVx5.</string>
-    <string name="faq_3_title">I see the visual reminders, but hear no audio. What can I do?</string>
-    <string name="faq_3_text">Not just displaying the actual reminder, but playing the audio is hugely affected by the system too. If you can\'t hear any sound, try going in the app settings,
-        pressing the \"Audio stream used by reminders\" option and changing it to a different value. If it still won\'t work, check your sound settings, if the particular stream isn\'t muted.</string>
-    <string name="faq_4_title">Does the app support time zones?</string>
-    <string name="faq_4_text">Yes, it does. By default all events are created in your current time zone. If you want to change an events\' time zone,
-        you will first have to enable the time zone picker at the app settings, then change it at the Event Details screen. It is disabled by default as most people won\'t need it.</string>
+    <string name="faq_1_title">Como posso remover os feriados importados por meio do botão \ "Adicionar feriados \"?</string>
+    <string name="faq_1_text">Os feriados criados dessa maneira são inseridos em um novo tipo de evento chamado \ "Feriados \". Você pode ir em Configurações -> Gerenciar tipos de eventos, pressione e segure o tipo de evento fornecido e exclua-o selecionando a lixeira.</string>
+    <string name="faq_2_title">Posso sincronizar meus eventos por meio do Google Agenda ou de outro serviço de suporte CalDAV?</string>
+    <string name="faq_2_text">Sim, basta ativar \ "CalDAV sync \" nas configurações do aplicativo e selecionar os calendários que você deseja sincronizar. No entanto, você precisará de algum aplicativo de terceiros que manipule a sincronização entre o dispositivo e os servidores.
+         Caso você queira sincronizar um calendário do Google, o aplicativo oficial do Google Agenda fará o trabalho. Para outros calendários, você precisará de um adaptador de sincronização de terceiros, por exemplo, o DAVx5.</string>
+    <string name="faq_3_title">Vejo os lembrete, mas não ouço áudio. O que posso fazer?</string>
+    <string name="faq_3_text">A exibição do lembrete e o áudio são fortemente influenciados pelas configurações do sistema. Se você não consegue ouvir o som, verifique as configurações do aplicativo,
+        selecionando a opção \"Fonte de áudio usada pelos lembretes\" e modificando o seu valor. Se isso não funcionar, verifique as configurações, especialmente se o som não está mudo.</string>
+    <string name="faq_4_title">O aplicativo oferece suporte para fuso horário?</string>
+    <string name="faq_4_text">Sim. Por padrão, todos os eventos são criados em seu fuso horário atual. Se você deseja alterar o fuso horário de um evento, será necessário habilitar a escolha de fuso horário nas configurações do aplicativo e alterá-lo na tela de detalhes do evento. Este recurso fica desabilitado por padrão, pois a maioria das pessoas não precisa usá-lo.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
