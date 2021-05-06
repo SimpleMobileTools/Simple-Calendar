@@ -31,7 +31,7 @@ class MyWidgetListProvider : AppWidgetProvider() {
         val fontSize = context.getWidgetFontSize()
         val textColor = context.config.widgetTextColor
 
-        val appWidgetManager = AppWidgetManager.getInstance(context)
+        val appWidgetManager = AppWidgetManager.getInstance(context) ?: return
         appWidgetManager.getAppWidgetIds(getComponentName(context)).forEach {
             val views = RemoteViews(context.packageName, R.layout.widget_event_list).apply {
                 applyColorFilter(R.id.widget_event_list_background, context.config.widgetBgColor)
@@ -97,7 +97,7 @@ class MyWidgetListProvider : AppWidgetProvider() {
 
     // hacky solution for reseting the events list
     private fun goToToday(context: Context) {
-        val appWidgetManager = AppWidgetManager.getInstance(context)
+        val appWidgetManager = AppWidgetManager.getInstance(context) ?: return
         appWidgetManager.getAppWidgetIds(getComponentName(context)).forEach {
             val views = RemoteViews(context.packageName, R.layout.widget_event_list)
             Intent(context, WidgetServiceEmpty::class.java).apply {

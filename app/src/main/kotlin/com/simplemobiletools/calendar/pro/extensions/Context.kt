@@ -47,7 +47,7 @@ val Context.eventsHelper: EventsHelper get() = EventsHelper(this)
 val Context.calDAVHelper: CalDAVHelper get() = CalDAVHelper(this)
 
 fun Context.updateWidgets() {
-    val widgetIDs = AppWidgetManager.getInstance(applicationContext).getAppWidgetIds(ComponentName(applicationContext, MyWidgetMonthlyProvider::class.java))
+    val widgetIDs = AppWidgetManager.getInstance(applicationContext)?.getAppWidgetIds(ComponentName(applicationContext, MyWidgetMonthlyProvider::class.java)) ?: return
     if (widgetIDs.isNotEmpty()) {
         Intent(applicationContext, MyWidgetMonthlyProvider::class.java).apply {
             action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
@@ -61,7 +61,7 @@ fun Context.updateWidgets() {
 }
 
 fun Context.updateListWidget() {
-    val widgetIDs = AppWidgetManager.getInstance(applicationContext).getAppWidgetIds(ComponentName(applicationContext, MyWidgetListProvider::class.java))
+    val widgetIDs = AppWidgetManager.getInstance(applicationContext)?.getAppWidgetIds(ComponentName(applicationContext, MyWidgetListProvider::class.java)) ?: return
     if (widgetIDs.isNotEmpty()) {
         Intent(applicationContext, MyWidgetListProvider::class.java).apply {
             action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
@@ -72,7 +72,7 @@ fun Context.updateListWidget() {
 }
 
 fun Context.updateDateWidget() {
-    val widgetIDs = AppWidgetManager.getInstance(applicationContext).getAppWidgetIds(ComponentName(applicationContext, MyWidgetDateProvider::class.java))
+    val widgetIDs = AppWidgetManager.getInstance(applicationContext)?.getAppWidgetIds(ComponentName(applicationContext, MyWidgetDateProvider::class.java)) ?: return
     if (widgetIDs.isNotEmpty()) {
         Intent(applicationContext, MyWidgetDateProvider::class.java).apply {
             action = AppWidgetManager.ACTION_APPWIDGET_UPDATE

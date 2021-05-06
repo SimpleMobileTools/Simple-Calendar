@@ -177,7 +177,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
             val textColor = context.config.widgetTextColor
             val resources = context.resources
 
-            val appWidgetManager = AppWidgetManager.getInstance(context)
+            val appWidgetManager = AppWidgetManager.getInstance(context) ?: return
             appWidgetManager.getAppWidgetIds(getComponentName(context)).forEach {
                 val views = RemoteViews(context.packageName, R.layout.fragment_month_widget)
                 views.setText(R.id.top_value, month)
