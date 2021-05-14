@@ -1,6 +1,14 @@
 Changelog
 ==========
 
+Version 6.14.0 *(2021-05-14)*
+----------------------------
+
+ * Added holidays of Israel
+ * Fixed an error message popping up about too many alarms
+ * Make sure the proper weekend days are highlighted on the weekly view, if enabled
+ * Some stability and translation improvements
+
 Version 6.13.7 *(2021-05-02)*
 ----------------------------
 

@@ -1,0 +1,4 @@
+ * Added holidays of Israel
+ * Fixed an error message popping up about too many alarms
+ * Make sure the proper weekend days are highlighted on the weekly view, if enabled
+ * Some stability and translation improvements
