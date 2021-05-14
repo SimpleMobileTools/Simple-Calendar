@@ -234,7 +234,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 resources.getColor(R.color.theme_light_text_color)
             } else if (todayCode == dayCode) {
                 primaryColor
-            } else if (highlightWeekends && isWeekend(i, config.isSundayFirst)) {
+            } else if (highlightWeekends && isWeekend(curDay.dayOfWeek - 1, config.isSundayFirst)) {
                 resources.getColor(R.color.red_text)
             } else {
                 config.textColor
