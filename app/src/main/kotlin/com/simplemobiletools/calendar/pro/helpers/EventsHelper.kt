@@ -152,6 +152,7 @@ class EventsHelper(val context: Context) {
 
             it.forEach {
                 context.cancelNotification(it)
+                context.cancelPendingIntent(it)
             }
 
             if (deleteFromCalDAV && config.caldavSync) {

@@ -136,7 +136,7 @@ fun Context.scheduleEventIn(notifTS: Long, event: Event, showToasts: Boolean) {
         toast(msg)
     }
 
-    val pendingIntent = getNotificationIntent(applicationContext, event)
+    val pendingIntent = getNotificationIntent(event)
     val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
     try {
         AlarmManagerCompat.setExactAndAllowWhileIdle(alarmManager, AlarmManager.RTC_WAKEUP, newNotifTS, pendingIntent)
@@ -145,15 +145,21 @@ fun Context.scheduleEventIn(notifTS: Long, event: Event, showToasts: Boolean) {
     }
 }
 
+// hide the actual notification from the top bar
 fun Context.cancelNotification(id: Long) {
     (getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager).cancel(id.toInt())
 }
 
-private fun getNotificationIntent(context: Context, event: Event): PendingIntent {
-    val intent = Intent(context, NotificationReceiver::class.java)
+fun Context.getNotificationIntent(event: Event): PendingIntent {
+    val intent = Intent(this, NotificationReceiver::class.java)
     intent.putExtra(EVENT_ID, event.id)
     intent.putExtra(EVENT_OCCURRENCE_TS, event.startTS)
-    return PendingIntent.getBroadcast(context, event.id!!.toInt(), intent, PendingIntent.FLAG_UPDATE_CURRENT)
+    return PendingIntent.getBroadcast(this, event.id!!.toInt(), intent, PendingIntent.FLAG_UPDATE_CURRENT)
+}
+
+fun Context.cancelPendingIntent(id: Long) {
+    val intent = Intent(this, NotificationReceiver::class.java)
+    PendingIntent.getBroadcast(this, id.toInt(), intent, PendingIntent.FLAG_UPDATE_CURRENT).cancel()
 }
 
 fun Context.getRepetitionText(seconds: Int) = when (seconds) {
@@ -329,6 +335,7 @@ private fun getSnoozePendingIntent(context: Context, event: Event): PendingInten
 
 fun Context.rescheduleReminder(event: Event?, minutes: Int) {
     if (event != null) {
+        cancelPendingIntent(event.id!!)
         applicationContext.scheduleEventIn(System.currentTimeMillis() + minutes * 60000, event, false)
         cancelNotification(event.id!!)
     }
