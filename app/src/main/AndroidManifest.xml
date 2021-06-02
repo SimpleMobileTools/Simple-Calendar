@@ -44,6 +44,7 @@
 
         <activity
             android:name=".activities.MainActivity"
+            android:configChanges="screenSize|orientation"
             android:launchMode="singleTask">
             <meta-data
                 android:name="android.app.default_searchable"
