@@ -110,6 +110,10 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getBoolean(DIM_PAST_EVENTS, true)
         set(dimPastEvents) = prefs.edit().putBoolean(DIM_PAST_EVENTS, dimPastEvents).apply()
 
+    var notificationWarning: Boolean
+        get() = prefs.getBoolean(NOTIFICATION_WARNING, true)
+        set(notificationWarning) = prefs.edit().putBoolean(NOTIFICATION_WARNING, notificationWarning).apply()
+
     fun getSyncedCalendarIdsAsList() = caldavSyncedCalendarIds.split(",").filter { it.trim().isNotEmpty() }.map { Integer.parseInt(it) }.toMutableList() as ArrayList<Int>
 
     fun getDisplayEventTypessAsList() = displayEventTypes.map { it.toLong() }.toMutableList() as ArrayList<Long>

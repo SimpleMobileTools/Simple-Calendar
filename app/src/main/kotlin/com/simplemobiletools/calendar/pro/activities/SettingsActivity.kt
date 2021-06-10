@@ -7,6 +7,7 @@ import android.media.AudioManager
 import android.media.RingtoneManager
 import android.os.Bundle
 import android.view.Menu
+import androidx.core.app.NotificationManagerCompat
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.dialogs.SelectCalendarsDialog
 import com.simplemobiletools.calendar.pro.dialogs.SelectEventTypeDialog
@@ -58,6 +59,7 @@ class SettingsActivity : SimpleActivity() {
         setupReminderSound()
         setupReminderAudioStream()
         setupUseSameSnooze()
+        setupNotificationWarning()
         setupLoopReminders()
         setupSnoozeTime()
         setupCaldavSync()
@@ -409,6 +411,15 @@ class SettingsActivity : SimpleActivity() {
             settings_use_same_snooze.toggle()
             config.useSameSnooze = settings_use_same_snooze.isChecked
             settings_snooze_time_holder.beVisibleIf(config.useSameSnooze)
+        }
+    }
+
+    private fun setupNotificationWarning() {
+        settings_notification_warning.beVisibleIf(!NotificationManagerCompat.from(applicationContext).areNotificationsEnabled())
+        settings_warning.isChecked = config.notificationWarning
+        settings_notification_warning.setOnClickListener {
+            settings_warning.toggle()
+            config.notificationWarning = settings_warning.isChecked
         }
     }
 

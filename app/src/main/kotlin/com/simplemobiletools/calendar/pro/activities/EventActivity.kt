@@ -540,9 +540,12 @@ class EventActivity : SimpleActivity() {
         if (NotificationManagerCompat.from(applicationContext).areNotificationsEnabled()) {
             callback()
         } else {
-            ConfirmationDialog(this, messageId = R.string.notifications_disabled, positive = R.string.ok, negative = 0) {
+            if(config.notificationWarning)
+                ConfirmationDialog(this, messageId = R.string.notifications_disabled, positive = R.string.ok, negative = 0) {
+                    callback()
+                }
+            else
                 callback()
-            }
         }
     }
 
