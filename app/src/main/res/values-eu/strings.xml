@@ -6,7 +6,7 @@
     <string name="daily_view">Eguneko ikuspegia</string>
     <string name="weekly_view">Asteko ikuspegia</string>
     <string name="monthly_view">Hilabeteko ikuspegia</string>
-    <string name="monthly_daily_view">Monthly + daily view</string>
+    <string name="monthly_daily_view">Hilabeteko + eguneko ikuspegia</string>
     <string name="yearly_view">Urteko ikuspegia</string>
     <string name="simple_event_list">Gertaera-zerrenda sinplea</string>
     <string name="no_upcoming_events">Hurrengo gertaerarik ez.</string>
@@ -51,7 +51,7 @@
     <string name="delete_future_occurrences">Ezabatu gertaera hau eta datozen guztiak</string>
     <string name="delete_all_occurrences">Ezabatu gertaera guztiak</string>
     <string name="update_one_only">Eguneratu hautatutako gertaera soilik</string>
-    <string name="update_this_and_future_occurrences">Update this and all future occurrences</string>
+    <string name="update_this_and_future_occurrences">Eguneratu gertaera hau eta etorkizunekoak</string>
     <string name="update_all_occurrences">Eguneratu gertaera guztiak</string>
     <string name="repeat_till_date">Errepikatu data zehatz batera arte</string>
     <string name="stop_repeating_after_x">Errepikatzeari utzi x gertaera ondoren</string>
@@ -72,7 +72,7 @@
     <string name="second_m">bigarren</string>
     <string name="third_m">hirugarren</string>
     <string name="fourth_m">laugarren</string>
-    <string name="fifth_m">fifth</string>
+    <string name="fifth_m">bosgarren</string>
     <string name="last_m">azken</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
@@ -83,7 +83,7 @@
     <string name="second_f">bigarren</string>
     <string name="third_f">hirugarren</string>
     <string name="fourth_f">laugarren</string>
-    <string name="fifth_f">fifth</string>
+    <string name="fifth_f">bosgarren</string>
     <string name="last_f">azken</string>
 
     <!-- Birthdays -->
@@ -162,7 +162,7 @@
     <string name="manage_event_types">Kudeatu gertaera motak</string>
     <string name="start_day_at">Eguna noiz hasi</string>
     <string name="end_day_at">Eguna noiz bukatu</string>
-    <string name="midnight_spanning">Show events spanning across midnight at the top bar</string>
+    <string name="midnight_spanning">Erakutsi gauerdi osoan zehar dirauten gertaerak goiko barran</string>
     <string name="allow_customizing_day_count">Baimendu egunen zenbaketaren pertsonalizazioa</string>
     <string name="week_numbers">Erakutsi asteen zenbakiak</string>
     <string name="vibrate">Egin dar-dar abisuen jakinarazpenetan</string>
@@ -194,7 +194,7 @@
     <string name="new_events">Gertaera berriak</string>
     <string name="default_start_time">Lehenetsitako hasiera-ordua</string>
     <string name="next_full_hour">Hurrengo ordu osoa</string>
-    <string name="current_time">Current time</string>
+    <string name="current_time">Uneko ordua</string>
     <string name="default_duration">Lehenetsitako iraupena</string>
     <string name="last_used_one">Erabilitako azkena</string>
     <string name="other_time">Bestelako denbora</string>
