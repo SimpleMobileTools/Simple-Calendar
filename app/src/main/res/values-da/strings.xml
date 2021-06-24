@@ -50,7 +50,7 @@
     <string name="delete_future_occurrences">Slet denne og alle fremtidige forekomster</string>
     <string name="delete_all_occurrences">Slet alle forekomster</string>
     <string name="update_one_only">Opdater kun denne forekomst</string>
-    <string name="update_this_and_future_occurrences">Update this and all future occurrences</string>
+    <string name="update_this_and_future_occurrences">Opdater denne og alle fremtidige forekomster</string>
     <string name="update_all_occurrences">Opdater alle forekomster</string>
     <string name="repeat_till_date">Gentag indtil</string>
     <string name="stop_repeating_after_x">Stop gentagelse efter x gange</string>
@@ -161,7 +161,7 @@
     <string name="manage_event_types">Håndter begivenhedstyper</string>
     <string name="start_day_at">Start dagen kl.</string>
     <string name="end_day_at">Slut dagen kl.</string>
-    <string name="midnight_spanning">Show events spanning across midnight at the top bar</string>
+    <string name="midnight_spanning">Vis begivenheder, der strækker sig hen over midnat, i toplinjen </string>
     <string name="allow_customizing_day_count">Tillad tilpasning af antal dage</string>
     <string name="week_numbers">Vis ugenumre</string>
     <string name="vibrate">Vibrer under påmindelser</string>
@@ -193,7 +193,7 @@
     <string name="new_events">Nye begivenheder</string>
     <string name="default_start_time">Standard starttidspunkt</string>
     <string name="next_full_hour">Næste hele time</string>
-    <string name="current_time">Current time</string>
+    <string name="current_time">Aktuelle tid</string>
     <string name="default_duration">Standard varighed</string>
     <string name="last_used_one">Senest brugte</string>
     <string name="other_time">Anden tid</string>

@@ -16,7 +16,7 @@
     <!-- Widget titles -->
     <string name="widget_monthly">Календар на місяць</string>
     <string name="widget_list">Календар списку подій</string>
-    <string name="widget_todays_date">Calendar today\'s date</string>
+    <string name="widget_todays_date">Календар подій на сьогодні</string>
 
     <!-- Event -->
     <string name="event">Подія</string>
@@ -50,7 +50,7 @@
     <string name="delete_future_occurrences">Видалити це і всі наступні повторення</string>
     <string name="delete_all_occurrences">Видалити всі повторення</string>
     <string name="update_one_only">Оновити лише обране повторення</string>
-    <string name="update_this_and_future_occurrences">Update this and all future occurrences</string>
+    <string name="update_this_and_future_occurrences">Оновити це і всі наступні повторення</string>
     <string name="update_all_occurrences">Оновити всі повторення</string>
     <string name="repeat_till_date">Повторити до дати</string>
     <string name="stop_repeating_after_x">Повторити лише Х разів</string>
@@ -71,7 +71,7 @@
     <string name="second_m">другий</string>
     <string name="third_m">третій</string>
     <string name="fourth_m">четвертий</string>
-    <string name="fifth_m">fifth</string>
+    <string name="fifth_m">п\'ятий</string>
     <string name="last_m">останній</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
@@ -82,7 +82,7 @@
     <string name="second_f">другий</string>
     <string name="third_f">третій</string>
     <string name="fourth_f">четвертий</string>
-    <string name="fifth_f">fifth</string>
+    <string name="fifth_f">п\'ятий</string>
     <string name="last_f">останній</string>
 
     <!-- Birthdays -->
@@ -114,7 +114,7 @@
     <string name="invited">Запрошений</string>
 
     <!-- Time zones -->
-    <string name="enter_a_country">Enter a country or time zone</string>
+    <string name="enter_a_country">Введіть країну або часовий пояс</string>
 
     <!-- Export / Import -->
     <string name="import_events">Імпорт подій</string>
@@ -161,8 +161,8 @@
     <string name="manage_event_types">Керувати типами подій</string>
     <string name="start_day_at">Огляд тижня починати</string>
     <string name="end_day_at">Огляд тижня завершувати</string>
-    <string name="midnight_spanning">Show events spanning across midnight at the top bar</string>
-    <string name="allow_customizing_day_count">Allow customizing day count</string>
+    <string name="midnight_spanning">Показувати водії за північ на верхній панелі</string>
+    <string name="allow_customizing_day_count">Дозволити змінювати кількість днів</string>
     <string name="week_numbers">Нумерувати тижні</string>
     <string name="vibrate">Вібрувати при настанні події</string>
     <string name="reminder_sound">Мелодія нагадування</string>
@@ -193,12 +193,12 @@
     <string name="new_events">Нові події</string>
     <string name="default_start_time">Стандартний час початку</string>
     <string name="next_full_hour">Наступна ціла година</string>
-    <string name="current_time">Current time</string>
+    <string name="current_time">Поточний час</string>
     <string name="default_duration">Стандартна тривалість</string>
     <string name="last_used_one">Останнє використане</string>
     <string name="other_time">Інший час</string>
     <string name="highlight_weekends">Виділяти вихідні дні на деяких переглядах</string>
-    <string name="allow_changing_time_zones">Allow changing event time zones</string>
+    <string name="allow_changing_time_zones">Дозволити змінювати часові пояси подій</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -213,8 +213,8 @@
     <string name="synchronization_completed">Синхронізацію завершено</string>
     <string name="select_a_different_caldav_color">Обрати інший колір (можна застосувати лише локально)</string>
     <string name="insufficient_permissions">Ви не можете редагувати обраний календар</string>
-    <string name="caldav_event_not_found">Event not found. Please enable CalDAV sync for the appropriate calendar in the app settings.</string>
-    <string name="no_synchronized_calendars">No synchronizable calendars have been found</string>
+    <string name="caldav_event_not_found">Подію не знайдено. Будь ласка, увімкніть синхронізацію згідно CalDAV для відповідного календаря у налаштуваннях додатка.</string>
+    <string name="no_synchronized_calendars">Не знайдено календарів для синхронізації</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
@@ -246,15 +246,15 @@
     <string name="faq_3_title">Я бачу нагадування, але не чую звуку. Що можна зробити?</string>
     <string name="faq_3_text">Не лише відображення нагадування фактично, але і програвання звукової індикації в значній мірі залежить від системи. Якщо звукова індикація відсутня, відкрийте налаштування додатка,
         оберіть опцію \"Аудіопотік, що використовують нагадування\" і змініть її на інше значення. Якщо звук досі відсутній, переконайтеся, що даний потік увімкнено в налаштуваннях.</string>
-    <string name="faq_4_title">Does the app support time zones?</string>
-    <string name="faq_4_text">Yes, it does. By default all events are created in your current time zone. If you want to change an events\' time zone,
-        you will first have to enable the time zone picker at the app settings, then change it at the Event Details screen. It is disabled by default as most people won\'t need it.</string>
+    <string name="faq_4_title">Чи підтримує додаток часові пояси?</string>
+    <string name="faq_4_text">Так, підтримує. Типово всі події створюються у вашому часовому поясі. Якщо ви бажаєте змінити часовий пояс події,
+        вам спершу доведеться увімкнути перемикач часових поясів у налаштуваннях додатка, потім змінити налаштування у вікні Деталі Події. Типово ця опція не активована, оскільки більшість користувачів нею не користуються.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Простий Календар Pro - Події і Нагадування</string>
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Simple mobile 2020 calendar. Schedule planner &amp; appointment reminder for any day</string>
+    <string name="app_short_description">Простий мобільний календар 2020. Планування розпорядку &amp; нагадування про зустрічі щодня</string>
     <string name="app_long_description">
         Простий Календар Pro - це офлайн-календар з дуже гнучкими налаштуваннями, призначений робити саме те, що календар повинен робити. <b>Не містить складних особливостей, лише необхідні дозволи та без реклами!</b>
 
@@ -288,7 +288,7 @@
         <b>Більше інструментів від Simple Mobile Tools тут:</b>
         https://www.simplemobiletools.com
 
-        <b>Standalone website of Simple Calendar Pro:</b>
+        <b>Веб-сторінка додатка Simple Calendar Pro:</b>
         https://www.simplemobiletools.com/calendar
 
         <b>Facebook:</b>
