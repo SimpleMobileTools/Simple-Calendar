@@ -2,7 +2,6 @@
 <resources>
     <string name="app_name">Simple Calendar</string>
     <string name="app_launcher_name">Kalender</string>
-    <string name="change_view">Ändra vy</string>
     <string name="daily_view">Dagsvy</string>
     <string name="weekly_view">Veckovy</string>
     <string name="monthly_view">Månadsvy</string>

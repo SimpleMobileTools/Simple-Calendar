@@ -2,7 +2,6 @@
 <resources>
     <string name="app_name">심플 캘린더</string>
     <string name="app_launcher_name">캘린더</string>
-    <string name="change_view">보기 변경</string>
     <string name="daily_view">일간 보기</string>
     <string name="weekly_view">주간 보기</string>
     <string name="monthly_view">월간 보기</string>

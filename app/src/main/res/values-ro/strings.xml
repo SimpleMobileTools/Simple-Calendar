@@ -2,7 +2,6 @@
 <resources>
     <string name="app_name">Simple Calendar</string>
     <string name="app_launcher_name">Calendar</string>
-    <string name="change_view">Schimbă vizualizarea</string>
     <string name="daily_view">Vedeți ziua</string>
     <string name="weekly_view">Vedeți săptămâna</string>
     <string name="monthly_view">Vedeți luna</string>

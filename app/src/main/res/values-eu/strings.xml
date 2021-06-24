@@ -2,7 +2,6 @@
 <resources>
     <string name="app_name">Simple Calendar</string>
     <string name="app_launcher_name">Egutegia</string>
-    <string name="change_view">Aldatu ikuspegia</string>
     <string name="daily_view">Eguneko ikuspegia</string>
     <string name="weekly_view">Asteko ikuspegia</string>
     <string name="monthly_view">Hilabeteko ikuspegia</string>

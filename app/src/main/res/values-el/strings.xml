@@ -2,7 +2,6 @@
 <resources>
     <string name="app_name">Απλό Ημερολόγιο</string>
     <string name="app_launcher_name">Ημερολόγιο</string>
-    <string name="change_view">Αλλαγή προβολής</string>
     <string name="daily_view">Ημερήσια προβολή</string>
     <string name="weekly_view">Εβδομαδιαία προβολή</string>
     <string name="monthly_view">Μηνιαία προβολή</string>

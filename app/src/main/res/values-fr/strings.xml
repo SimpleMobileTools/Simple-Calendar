@@ -2,7 +2,6 @@
 <resources>
     <string name="app_name">Simple agenda</string>
     <string name="app_launcher_name">Simple Agenda</string>
-    <string name="change_view">Autres affichages</string>
     <string name="daily_view">Vue Journée</string>
     <string name="weekly_view">Vue Semaine</string>
     <string name="monthly_view">Vue Mois</string>

@@ -2,7 +2,6 @@
 <resources>
     <string name="app_name">सरल कैलेंडर</string>
     <string name="app_launcher_name">कैलेंडर</string>
-    <string name="change_view">दृश्य बदले</string>
     <string name="daily_view">Daily view</string>
     <string name="weekly_view">Weekly view</string>
     <string name="monthly_view">मासिक दृश्य</string>
