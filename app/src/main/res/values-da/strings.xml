@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Simpel kalender</string>
     <string name="app_launcher_name">Kalender</string>
+    <string name="change_view">Skift visning</string>
     <string name="daily_view">Daglig</string>
     <string name="weekly_view">Ugentlig</string>
     <string name="monthly_view">Månedlig</string>

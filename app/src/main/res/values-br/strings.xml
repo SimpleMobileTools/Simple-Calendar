@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Deiziataer Eeun</string>
     <string name="app_launcher_name">Deiziataer</string>
+    <string name="change_view">Kemmañ ar gwel</string>
     <string name="daily_view">Daily view</string>
     <string name="weekly_view">Gwel sizhuniek</string>
     <string name="monthly_view">Gwel miziek</string>

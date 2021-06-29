@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Jednostavan kalendar</string>
     <string name="app_launcher_name">Kalendar</string>
+    <string name="change_view">Promijeni prikaz</string>
     <string name="daily_view">Dnevni pregled</string>
     <string name="weekly_view">Tjedni pregled</string>
     <string name="monthly_view">Mjesečni pregled</string>

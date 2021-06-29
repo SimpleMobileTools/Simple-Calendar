@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Sadə Təqvim</string>
     <string name="app_launcher_name">Təqvim</string>
+    <string name="change_view">Görünüşü dəyiş</string>
     <string name="daily_view">Günlük görünüş</string>
     <string name="weekly_view">Həftəlik görünüş</string>
     <string name="monthly_view">Aylıq görünüş</string>

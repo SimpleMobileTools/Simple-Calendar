@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">简易日历</string>
-    <string name="app_launcher_name">日历</string><![CDATA[
-    
-    ]]>
-    <string name="daily_view">日历视图</string>
+    <string name="app_launcher_name">日历</string>
+    <string name="change_view">改变视图</string>
+    <string name="daily_view">日历视图</string>
     <string name="weekly_view">周历视图</string>
     <string name="monthly_view">月历视图</string>
     <string name="monthly_daily_view">Monthly + daily view</string>

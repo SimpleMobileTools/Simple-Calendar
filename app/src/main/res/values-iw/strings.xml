@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">יומן פשוט</string>
     <string name="app_launcher_name">יומן</string>
+    <string name="change_view">שינוי תצוגה</string>
     <string name="daily_view">תצוגה יומית</string>
     <string name="weekly_view">תצוגה שבועית</string>
     <string name="monthly_view">תצוגה חודשית</string>

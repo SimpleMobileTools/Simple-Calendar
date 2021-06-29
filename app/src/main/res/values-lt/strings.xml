@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Paprastas kalendorius</string>
     <string name="app_launcher_name">Kalendorius</string>
+    <string name="change_view">Pakeisti peržiūrą</string>
     <string name="daily_view">Dienos peržiūra</string>
     <string name="weekly_view">Savaitės peržiūra</string>
     <string name="monthly_view">Mėnesio peržiūra</string>

@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Простий Календар</string>
     <string name="app_launcher_name">Календар</string>
+    <string name="change_view">Змінити режим перегляду</string>
     <string name="daily_view">День</string>
     <string name="weekly_view">Тиждень</string>
     <string name="monthly_view">Місяць</string>

@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">সাধারণ ক্যালেন্ডার</string>
     <string name="app_launcher_name">ক্যালেন্ডার</string>
+    <string name="change_view">দৃশ্য পরিবর্তন করুন</string>
     <string name="daily_view">প্রাত্যহিক ভিউ</string>
     <string name="weekly_view">সাপ্তাহিক ভিউ</string>
     <string name="monthly_view">মাসিক ভিউ</string>

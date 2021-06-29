@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Jednoduchý kalendár</string>
     <string name="app_launcher_name">Kalendár</string>
+    <string name="change_view">Zmeniť pohľad</string>
     <string name="daily_view">Denný</string>
     <string name="weekly_view">Týždenný</string>
     <string name="monthly_view">Mesačný</string>

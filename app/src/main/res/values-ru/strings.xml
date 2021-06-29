@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Simple Calendar</string>
     <string name="app_launcher_name">Календарь</string>
+    <string name="change_view">Режим</string>
     <string name="daily_view">День</string>
     <string name="weekly_view">Неделя</string>
     <string name="monthly_view">Месяц</string>

@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Jednoduchý kalendář</string>
     <string name="app_launcher_name">Kalendář</string>
+    <string name="change_view">Změnit zobrazení</string>
     <string name="daily_view">Denní</string>
     <string name="weekly_view">Týdenní</string>
     <string name="monthly_view">Měsíční</string>

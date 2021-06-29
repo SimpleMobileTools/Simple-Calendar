@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">簡易行事曆</string>
     <string name="app_launcher_name">簡易行事曆</string>
+    <string name="change_view">改變檢視模式</string>
     <string name="daily_view">日曆</string>
     <string name="weekly_view">週曆</string>
     <string name="monthly_view">月曆</string>

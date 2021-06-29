@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">シンプル カレンダー</string>
     <string name="app_launcher_name">カレンダー</string>
+    <string name="change_view">ビューの変更</string>
     <string name="daily_view">日</string>
     <string name="weekly_view">週</string>
     <string name="monthly_view">月</string>
