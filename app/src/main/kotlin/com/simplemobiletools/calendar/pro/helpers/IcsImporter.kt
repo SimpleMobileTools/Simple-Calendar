@@ -118,6 +118,11 @@ class IcsImporter(val activity: SimpleActivity) {
                         if (!value.startsWith("-")) {
                             curReminderTriggerMinutes *= -1
                         }
+                    } else if (line.startsWith(CATEGORY_COLOR_LEGACY)) {
+                        val color = line.substring(CATEGORY_COLOR_LEGACY.length)
+                        if (color.trimStart('-').areDigitsOnly()) {
+                            curCategoryColor = Integer.parseInt(color)
+                        }
                     } else if (line.startsWith(CATEGORY_COLOR)) {
                         val color = line.substring(CATEGORY_COLOR.length)
                         if (color.trimStart('-').areDigitsOnly()) {
