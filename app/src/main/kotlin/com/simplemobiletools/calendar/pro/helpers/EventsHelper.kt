@@ -181,7 +181,8 @@ class EventsHelper(val context: Context) {
     fun addEventRepeatLimit(eventId: Long, limitTS: Long) {
         val time = Formatter.getDateTimeFromTS(limitTS)
         eventsDB.updateEventRepetitionLimit(limitTS - time.hourOfDay, eventId)
-
+        context.cancelNotification(eventId)
+        context.cancelPendingIntent(eventId)
         if (config.caldavSync) {
             val event = eventsDB.getEventWithId(eventId)
             if (event?.getCalDAVCalendarId() != 0) {
