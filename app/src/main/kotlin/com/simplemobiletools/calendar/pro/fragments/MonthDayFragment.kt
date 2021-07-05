@@ -181,7 +181,7 @@ class MonthDayFragment : Fragment(), MonthlyCalendar, RefreshRecyclerViewListene
 
     override fun refreshItems() {
         val startDateTime = Formatter.getLocalDateTimeFromCode(mDayCode).minusWeeks(1)
-        val endDateTime = startDateTime.plusWeeks(6)
+        val endDateTime = startDateTime.plusWeeks(7)
         activity?.eventsHelper?.getEvents(startDateTime.seconds(), endDateTime.seconds()) { events ->
             mListEvents = events
             activity?.runOnUiThread {
