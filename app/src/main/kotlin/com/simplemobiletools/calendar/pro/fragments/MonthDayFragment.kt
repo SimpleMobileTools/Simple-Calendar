@@ -127,7 +127,10 @@ class MonthDayFragment : Fragment(), MonthlyCalendar, RefreshRecyclerViewListene
                 val startDateTime = Formatter.getDateTimeFromTS(it.startTS)
                 shownMonthDateTime.year == startDateTime.year && shownMonthDateTime.monthOfYear == startDateTime.monthOfYear
             } else {
-                Formatter.getDayCodeFromTS(it.startTS) == mSelectedDayCode
+                val selectionDate = Formatter.getDateTimeFromCode(mSelectedDayCode).toLocalDate()
+                val startDate = Formatter.getDateFromTS(it.startTS)
+                val endDate = Formatter.getDateFromTS(it.endTS)
+                selectionDate in startDate..endDate
             }
         }
 
@@ -181,7 +184,7 @@ class MonthDayFragment : Fragment(), MonthlyCalendar, RefreshRecyclerViewListene
 
     override fun refreshItems() {
         val startDateTime = Formatter.getLocalDateTimeFromCode(mDayCode).minusWeeks(1)
-        val endDateTime = startDateTime.plusWeeks(6)
+        val endDateTime = startDateTime.plusWeeks(7)
         activity?.eventsHelper?.getEvents(startDateTime.seconds(), endDateTime.seconds()) { events ->
             mListEvents = events
             activity?.runOnUiThread {

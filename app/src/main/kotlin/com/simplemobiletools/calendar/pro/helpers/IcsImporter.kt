@@ -118,6 +118,11 @@ class IcsImporter(val activity: SimpleActivity) {
                         if (!value.startsWith("-")) {
                             curReminderTriggerMinutes *= -1
                         }
+                    } else if (line.startsWith(CATEGORY_COLOR_LEGACY)) {
+                        val color = line.substring(CATEGORY_COLOR_LEGACY.length)
+                        if (color.trimStart('-').areDigitsOnly()) {
+                            curCategoryColor = Integer.parseInt(color)
+                        }
                     } else if (line.startsWith(CATEGORY_COLOR)) {
                         val color = line.substring(CATEGORY_COLOR.length)
                         if (color.trimStart('-').areDigitsOnly()) {
@@ -171,7 +176,8 @@ class IcsImporter(val activity: SimpleActivity) {
                         }
 
                         // repeating event exceptions can have the same import id as their parents, so pick the latest event to update
-                        val eventToUpdate = existingEvents.filter { curImportId.isNotEmpty() && curImportId == it.importId }.sortedByDescending { it.lastUpdated }.firstOrNull()
+                        val eventToUpdate =
+                            existingEvents.filter { curImportId.isNotEmpty() && curImportId == it.importId }.sortedByDescending { it.lastUpdated }.firstOrNull()
                         if (eventToUpdate != null && eventToUpdate.lastUpdated >= curLastModified) {
                             eventsAlreadyExist++
                             line = curLine
@@ -188,9 +194,32 @@ class IcsImporter(val activity: SimpleActivity) {
 
                         val eventType = eventTypes.firstOrNull { it.id == curEventTypeId }
                         val source = if (calDAVCalendarId == 0 || eventType?.isSyncedEventType() == false) SOURCE_IMPORTED_ICS else "$CALDAV-$calDAVCalendarId"
-                        val event = Event(null, curStart, curEnd, curTitle, curLocation, curDescription, reminders[0].minutes,
-                            reminders[1].minutes, reminders[2].minutes, reminders[0].type, reminders[1].type, reminders[2].type, curRepeatInterval, curRepeatRule,
-                            curRepeatLimit, curRepeatExceptions, "", curImportId, DateTimeZone.getDefault().id, curFlags, curEventTypeId, 0, curLastModified, source)
+                        val event = Event(
+                            null,
+                            curStart,
+                            curEnd,
+                            curTitle,
+                            curLocation,
+                            curDescription,
+                            reminders[0].minutes,
+                            reminders[1].minutes,
+                            reminders[2].minutes,
+                            reminders[0].type,
+                            reminders[1].type,
+                            reminders[2].type,
+                            curRepeatInterval,
+                            curRepeatRule,
+                            curRepeatLimit,
+                            curRepeatExceptions,
+                            "",
+                            curImportId,
+                            DateTimeZone.getDefault().id,
+                            curFlags,
+                            curEventTypeId,
+                            0,
+                            curLastModified,
+                            source
+                        )
 
                         if (event.getIsAllDay() && curEnd > curStart) {
                             event.endTS -= DAY

@@ -430,7 +430,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             } while(currentDayCode.toInt() <= endDayCode.toInt())
         }
 
-        dayevents@ for (event in events) {
+        for (event in events) {
             val startDateTime = Formatter.getDateTimeFromTS(event.startTS)
             val startDayCode = Formatter.getDayCodeFromDateTime(startDateTime)
             val endDateTime = Formatter.getDateTimeFromTS(event.endTS)
@@ -444,7 +444,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 do {
                     val dayOfWeek = dayColumns.indexOfFirst { it.tag == currentDayCode }
                     if (dayOfWeek == -1 || dayOfWeek >= config.weeklyViewDays) {
-                        continue@dayevents
+                        continue
                     }
 
                     val startMinutes = when (currentDayCode == startDayCode) {
@@ -456,7 +456,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                         else -> 1440
                     }
                     val range = Range(startMinutes, startMinutes + duration)
-
                     var overlappingEvents = 0
                     var currentEventOverlapIndex = 0
                     var foundCurrentEvent = false

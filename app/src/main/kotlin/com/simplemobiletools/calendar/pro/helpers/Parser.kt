@@ -97,7 +97,7 @@ class Parser {
     }
 
     fun parseDateTimeValue(value: String): Long {
-        val edited = value.replace("T", "").replace("Z", "")
+        val edited = value.replace("T", "").replace("Z", "").replace("-", "")
         return if (edited.length == 14) {
             parseLongFormat(edited, value.endsWith("Z"))
         } else {

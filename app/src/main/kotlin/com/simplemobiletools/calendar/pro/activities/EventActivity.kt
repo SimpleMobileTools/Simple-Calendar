@@ -145,6 +145,7 @@ class EventActivity : SimpleActivity() {
 
             if (intent.getBooleanExtra(IS_DUPLICATE_INTENT, false)) {
                 mEvent.id = null
+                updateActionBarTitle(getString(R.string.new_event))
             } else {
                 cancelNotification(mEvent.id!!)
             }
