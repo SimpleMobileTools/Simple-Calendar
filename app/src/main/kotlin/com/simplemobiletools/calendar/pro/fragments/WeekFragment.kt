@@ -427,7 +427,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
                 currentDateTime = currentDateTime.plusDays(1)
                 currentDayCode = Formatter.getDayCodeFromDateTime(currentDateTime)
-            } while(currentDayCode.toInt() <= endDayCode.toInt())
+            } while (currentDayCode.toInt() <= endDayCode.toInt())
         }
 
         dayevents@ for (event in events) {
@@ -437,8 +437,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             val endDayCode = Formatter.getDayCodeFromDateTime(endDateTime)
             if (event.getIsAllDay() || ((startDayCode != endDayCode) && config.showMidnightSpanningEventsAtTop)) {
                 addAllDayEvent(event)
-            }
-            else {
+            } else {
                 var currentDateTime = startDateTime
                 var currentDayCode = Formatter.getDayCodeFromDateTime(currentDateTime)
                 do {
@@ -512,6 +511,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                                 (duration * minuteHeight).toInt() - 1
                             }
                         }
+
                         setOnClickListener {
                             Intent(context, EventActivity::class.java).apply {
                                 putExtra(EVENT_ID, event.id!!)
@@ -523,7 +523,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
                     currentDateTime = currentDateTime.plusDays(1)
                     currentDayCode = Formatter.getDayCodeFromDateTime(currentDateTime)
-                } while(currentDayCode.toInt() <= endDayCode.toInt())
+                } while (currentDayCode.toInt() <= endDayCode.toInt())
             }
         }
 
