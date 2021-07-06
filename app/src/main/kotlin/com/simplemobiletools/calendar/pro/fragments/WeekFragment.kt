@@ -430,7 +430,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             } while(currentDayCode.toInt() <= endDayCode.toInt())
         }
 
-        for (event in events) {
+        dayevents@ for (event in events) {
             val startDateTime = Formatter.getDateTimeFromTS(event.startTS)
             val startDayCode = Formatter.getDayCodeFromDateTime(startDateTime)
             val endDateTime = Formatter.getDateTimeFromTS(event.endTS)
@@ -444,7 +444,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 do {
                     val dayOfWeek = dayColumns.indexOfFirst { it.tag == currentDayCode }
                     if (dayOfWeek == -1 || dayOfWeek >= config.weeklyViewDays) {
-                        continue
+                        continue@dayevents
                     }
 
                     val startMinutes = when (currentDayCode == startDayCode) {
