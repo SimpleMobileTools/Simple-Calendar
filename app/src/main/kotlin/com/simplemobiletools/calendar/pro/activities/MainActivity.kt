@@ -74,6 +74,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private var mStoredAdjustedPrimaryColor = 0
     private var mStoredDayCode = ""
     private var mStoredIsSundayFirst = false
+    private var mStoredMidnightSpan = true
     private var mStoredUse24HourFormat = false
     private var mStoredDimPastEvents = true
     private var mStoredHighlightWeekends = false
@@ -138,7 +139,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
 
         if (config.storedView == WEEKLY_VIEW) {
-            if (mStoredIsSundayFirst != config.isSundayFirst || mStoredUse24HourFormat != config.use24HourFormat) {
+            if (mStoredIsSundayFirst != config.isSundayFirst || mStoredUse24HourFormat != config.use24HourFormat || mStoredMidnightSpan != config.showMidnightSpanningEventsAtTop) {
                 updateViewPager()
             }
         }
@@ -249,6 +250,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             mStoredUse24HourFormat = use24HourFormat
             mStoredDimPastEvents = dimPastEvents
             mStoredHighlightWeekends = highlightWeekends
+            mStoredMidnightSpan = showMidnightSpanningEventsAtTop
         }
         mStoredAdjustedPrimaryColor = getAdjustedPrimaryColor()
         mStoredDayCode = Formatter.getTodayCode()
