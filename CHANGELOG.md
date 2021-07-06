@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 6.14.1 *(2021-07-06)*
+----------------------------
+
+ * Allow changing the way events spanning across midnight are shown at the weekly view
+ * Added a couple Monthly + Daily view related improvements
+ * Couple other UX and translation improvements
+
 Version 6.14.0 *(2021-05-14)*
 ----------------------------
 

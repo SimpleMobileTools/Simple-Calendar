@@ -1,0 +1,3 @@
+ * Allow changing the way events spanning across midnight are shown at the weekly view
+ * Added a couple Monthly + Daily view related improvements
+ * Couple other UX and translation improvements
