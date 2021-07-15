@@ -1,5 +1,6 @@
 package com.simplemobiletools.calendar.pro.helpers
 
+import android.provider.CalendarContract.Events
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.extensions.eventsDB
@@ -36,6 +37,7 @@ class IcsImporter(val activity: SimpleActivity) {
     private var curEventTypeId = REGULAR_EVENT_TYPE_ID
     private var curLastModified = 0L
     private var curCategoryColor = -2
+    private var curAvailability = Events.AVAILABILITY_BUSY
     private var isNotificationDescription = false
     private var isProperReminderAction = false
     private var isSequence = false
@@ -160,6 +162,8 @@ class IcsImporter(val activity: SimpleActivity) {
                         curRecurrenceDayCode = Formatter.getDayCodeFromTS(timestamp)
                     } else if (line.startsWith(SEQUENCE)) {
                         isSequence = true
+                    } else if (line.startsWith(TRANSP)) {
+                        line.substring(TRANSP.length).let { curAvailability = if (it == TRANSPARENT) Events.AVAILABILITY_FREE else Events.AVAILABILITY_BUSY }
                     } else if (line.trim() == BEGIN_ALARM) {
                         isNotificationDescription = true
                     } else if (line.trim() == END_ALARM) {
@@ -222,7 +226,8 @@ class IcsImporter(val activity: SimpleActivity) {
                             curEventTypeId,
                             0,
                             curLastModified,
-                            source
+                            source,
+                            curAvailability
                         )
 
                         if (event.getIsAllDay() && curEnd > curStart) {

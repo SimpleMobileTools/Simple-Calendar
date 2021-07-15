@@ -170,7 +170,9 @@ class CalDAVHelper(val context: Context) {
             Events.EVENT_LOCATION,
             Events.EVENT_TIMEZONE,
             Events.CALENDAR_TIME_ZONE,
-            Events.DELETED)
+            Events.DELETED,
+            Events.AVAILABILITY
+            )
 
         val selection = "${Events.CALENDAR_ID} = $calendarId"
         context.queryCursor(uri, projection, selection, showErrors = showToasts) { cursor ->
@@ -191,6 +193,7 @@ class CalDAVHelper(val context: Context) {
             val originalInstanceTime = cursor.getLongValue(Events.ORIGINAL_INSTANCE_TIME)
             val reminders = getCalDAVEventReminders(id)
             val attendees = Gson().toJson(getCalDAVEventAttendees(id))
+            val availability = cursor.getIntValue(Events.AVAILABILITY)
 
             if (endTS == 0L) {
                 val duration = cursor.getStringValue(Events.DURATION) ?: ""
@@ -210,7 +213,7 @@ class CalDAVHelper(val context: Context) {
                 reminder2?.minutes ?: REMINDER_OFF, reminder3?.minutes ?: REMINDER_OFF, reminder1?.type
                 ?: REMINDER_NOTIFICATION, reminder2?.type ?: REMINDER_NOTIFICATION, reminder3?.type
                 ?: REMINDER_NOTIFICATION, repeatRule.repeatInterval, repeatRule.repeatRule,
-                repeatRule.repeatLimit, ArrayList(), attendees, importId, eventTimeZone, allDay, eventTypeId, source = source)
+                repeatRule.repeatLimit, ArrayList(), attendees, importId, eventTimeZone, allDay, eventTypeId, source = source, availability = availability)
 
             if (event.getIsAllDay()) {
                 event.startTS = Formatter.getShiftedImportTimestamp(event.startTS)
@@ -382,6 +385,7 @@ class CalDAVHelper(val context: Context) {
             put(Events.EVENT_TIMEZONE, event.getTimeZoneString())
             put(Events.EVENT_LOCATION, event.location)
             put(Events.STATUS, Events.STATUS_CONFIRMED)
+            put(Events.AVAILABILITY, event.availability)
 
             val repeatRule = Parser().getRepeatCode(event)
             if (repeatRule.isEmpty()) {

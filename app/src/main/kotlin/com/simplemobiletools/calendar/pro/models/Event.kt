@@ -37,7 +37,8 @@ data class Event(
     @ColumnInfo(name = "event_type") var eventType: Long = REGULAR_EVENT_TYPE_ID,
     @ColumnInfo(name = "parent_id") var parentId: Long = 0,
     @ColumnInfo(name = "last_updated") var lastUpdated: Long = 0L,
-    @ColumnInfo(name = "source") var source: String = SOURCE_SIMPLE_CALENDAR)
+    @ColumnInfo(name = "source") var source: String = SOURCE_SIMPLE_CALENDAR,
+    @ColumnInfo(name = "availability") var availability: Int = 0)
     : Serializable {
 
     companion object {
