@@ -35,6 +35,6 @@
 
     <dimen name="quick_filter_height">48dp</dimen>
     <dimen name="quick_filter_min_width">88dp</dimen>
-    <dimen name="quick_filter_active_line_size">4dp</dimen>
+    <dimen name="quick_filter_active_line_size">6dp</dimen>
     <dimen name="quick_filter_inactive_line_size">1dp</dimen>
 </resources>

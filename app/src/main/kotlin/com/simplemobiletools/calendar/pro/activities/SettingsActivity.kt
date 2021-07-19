@@ -287,7 +287,7 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun showQuickFilterPicker() {
-        SelectQuickFilterEventTypesDialog(this) {}
+        SelectQuickFilterEventTypesDialog(this)
     }
 
     private fun setupSundayFirst() {

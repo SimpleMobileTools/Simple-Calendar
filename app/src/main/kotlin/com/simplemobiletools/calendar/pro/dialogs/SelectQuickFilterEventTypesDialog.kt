@@ -9,7 +9,7 @@ import com.simplemobiletools.calendar.pro.extensions.eventsHelper
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import kotlinx.android.synthetic.main.dialog_filter_event_types.view.*
 
-class SelectQuickFilterEventTypesDialog(val activity: SimpleActivity, val callback: () -> Unit) {
+class SelectQuickFilterEventTypesDialog(val activity: SimpleActivity) {
     private lateinit var dialog: AlertDialog
     private val view = activity.layoutInflater.inflate(R.layout.dialog_filter_event_types, null)
 
@@ -31,7 +31,6 @@ class SelectQuickFilterEventTypesDialog(val activity: SimpleActivity, val callba
         val selectedItems = (view.filter_event_types_list.adapter as FilterEventTypeAdapter).getSelectedItemsList().map { it.toString() }.toHashSet()
         if (activity.config.quickFilterEventTypes != selectedItems) {
             activity.config.quickFilterEventTypes = selectedItems
-            callback()
         }
         dialog.dismiss()
     }

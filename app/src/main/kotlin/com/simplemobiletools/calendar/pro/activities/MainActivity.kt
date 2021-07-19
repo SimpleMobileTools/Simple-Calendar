@@ -305,7 +305,6 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                 refreshViewPager()
                 updateWidgets()
             }
-
         }
     }
 

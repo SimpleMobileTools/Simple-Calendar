@@ -12,7 +12,12 @@ import com.simplemobiletools.commons.helpers.MEDIUM_ALPHA
 import kotlinx.android.synthetic.main.quick_filter_event_type_view.view.*
 import java.util.*
 
-class QuickFilterEventTypeAdapter(val activity: SimpleActivity, val allEventTypes: List<EventType>, private val quickFilterEventTypeIds: Set<String>, val filterChanged: () -> Unit) :
+class QuickFilterEventTypeAdapter(
+    val activity: SimpleActivity,
+    val allEventTypes: List<EventType>,
+    private val quickFilterEventTypeIds: Set<String>,
+    val filterChanged: () -> Unit
+) :
     RecyclerView.Adapter<QuickFilterEventTypeAdapter.ViewHolder>() {
     private val activeKeys = HashSet<Long>()
     private val quickFilterEventTypes = ArrayList<EventType>()
@@ -25,12 +30,9 @@ class QuickFilterEventTypeAdapter(val activity: SimpleActivity, val allEventType
 
     init {
         quickFilterEventTypeIds.forEach { quickFilterEventType ->
-            // Find the associated eventType, return if none found
-            val eventType = allEventTypes.find { eventType -> eventType.id.toString() == quickFilterEventType }
-                ?: return@forEach
+            val eventType = allEventTypes.find { eventType -> eventType.id.toString() == quickFilterEventType } ?: return@forEach
             quickFilterEventTypes.add(eventType)
 
-            // Check if it is currently active
             if (displayEventTypes.contains(eventType.id.toString())) {
                 activeKeys.add(eventType.id!!)
             }
@@ -72,10 +74,9 @@ class QuickFilterEventTypeAdapter(val activity: SimpleActivity, val allEventType
                 quick_filter_event_type.text = eventType.title
                 val textColor = if (isSelected) textColorActive else textColorInactive
                 quick_filter_event_type.setTextColor(textColor)
-                val indicatorHeight =
-                    if (isSelected) resources.getDimensionPixelSize(R.dimen.quick_filter_active_line_size)
-                    else resources.getDimensionPixelSize(R.dimen.quick_filter_inactive_line_size)
-                quick_filter_event_type_color.layoutParams.height = indicatorHeight
+
+                val indicatorHeightRes = if (isSelected) R.dimen.quick_filter_active_line_size else R.dimen.quick_filter_inactive_line_size
+                quick_filter_event_type_color.layoutParams.height = resources.getDimensionPixelSize(indicatorHeightRes)
                 quick_filter_event_type_color.setBackgroundColor(eventType.color)
                 quick_filter_event_type.setOnClickListener {
                     viewClicked(!isSelected, eventType)
@@ -87,10 +88,12 @@ class QuickFilterEventTypeAdapter(val activity: SimpleActivity, val allEventType
         }
 
         private fun viewClicked(select: Boolean, eventType: EventType) {
-            if (select)
-                activity.config.displayEventTypes = activity.config.displayEventTypes.plus(eventType.id.toString())
-            else
-                activity.config.displayEventTypes = activity.config.displayEventTypes.minus(eventType.id.toString())
+            activity.config.displayEventTypes = if (select) {
+                activity.config.displayEventTypes.plus(eventType.id.toString())
+            } else {
+                activity.config.displayEventTypes.minus(eventType.id.toString())
+            }
+
             toggleItemSelection(select, eventType, adapterPosition)
         }
     }
