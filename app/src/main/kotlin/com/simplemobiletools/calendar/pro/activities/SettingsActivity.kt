@@ -10,6 +10,7 @@ import android.view.Menu
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.dialogs.SelectCalendarsDialog
 import com.simplemobiletools.calendar.pro.dialogs.SelectEventTypeDialog
+import com.simplemobiletools.calendar.pro.dialogs.SelectQuickFilterEventTypesDialog
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.models.EventType
@@ -46,6 +47,7 @@ class SettingsActivity : SimpleActivity() {
         setupCustomizeNotifications()
         setupUseEnglish()
         setupManageEventTypes()
+        setupManageQuickFilterEventTypes()
         setupHourFormat()
         setupSundayFirst()
         setupHighlightWeekends()
@@ -164,6 +166,12 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
+    private fun setupManageQuickFilterEventTypes() {
+        settings_manage_quick_filter_event_types_holder.setOnClickListener {
+            showQuickFilterPicker()
+        }
+    }
+
     private fun setupHourFormat() {
         settings_hour_format.isChecked = config.use24HourFormat
         settings_hour_format_holder.setOnClickListener {
@@ -276,6 +284,10 @@ class SettingsActivity : SimpleActivity() {
                 updateDefaultEventTypeText()
             }
         }
+    }
+
+    private fun showQuickFilterPicker() {
+        SelectQuickFilterEventTypesDialog(this) {}
     }
 
     private fun setupSundayFirst() {

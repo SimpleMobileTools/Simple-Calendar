@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/quick_filter_event_type_holder"
+    android:layout_width="match_parent"
+    android:minWidth="@dimen/quick_filter_min_width"
+    android:layout_height="@dimen/quick_filter_height">
+
+    <Button
+        android:id="@+id/quick_filter_event_type"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/quick_filter_height"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:background="?attr/selectableItemBackground"
+        android:checked="false"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:paddingStart="@dimen/small_margin"
+        android:paddingEnd="@dimen/small_margin"
+        android:text=""
+        android:textAllCaps="false" />
+
+    <ImageView
+        android:id="@+id/quick_filter_event_type_color"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/quick_filter_inactive_line_size"
+        android:layout_above="@id/quick_filter_event_type"
+        android:layout_alignParentBottom="true"
+        android:clickable="false"
+        android:background="@color/color_primary" />
+
+</RelativeLayout>
