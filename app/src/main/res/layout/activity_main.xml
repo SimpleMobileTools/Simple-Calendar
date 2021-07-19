@@ -5,28 +5,54 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipe_refresh_layout"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <FrameLayout
-            android:id="@+id/fragments_holder"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/quick_event_type_filter"
+            app:layout_constraintTop_toTopOf="parent">
 
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+            <FrameLayout
+                android:id="@+id/fragments_holder"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-    <com.simplemobiletools.commons.views.MyFloatingActionButton
-        android:id="@+id/calendar_fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/activity_margin"
-        android:contentDescription="@string/new_event"
-        android:src="@drawable/ic_plus_vector"
-        app:backgroundTint="@color/color_primary"
-        app:rippleColor="@color/pressed_item_foreground" />
+            </FrameLayout>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <com.simplemobiletools.commons.views.MyFloatingActionButton
+            android:id="@+id/calendar_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="@dimen/activity_margin"
+            android:layout_marginBottom="@dimen/activity_margin"
+            android:contentDescription="@string/new_event"
+            android:src="@drawable/ic_plus_vector"
+            app:backgroundTint="@color/color_primary"
+            app:layout_constraintBottom_toTopOf="@+id/quick_event_type_filter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:rippleColor="@color/pressed_item_foreground" />
+
+        <com.simplemobiletools.commons.views.MyRecyclerView
+            android:id="@+id/quick_event_type_filter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:orientation="horizontal"
+            android:overScrollMode="never"
+            app:layoutManager="com.simplemobiletools.commons.views.MyLinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:rippleColor="@color/pressed_item_foreground" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <RelativeLayout
         android:id="@+id/search_holder"

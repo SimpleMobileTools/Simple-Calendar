@@ -21,6 +21,7 @@ import androidx.core.view.MenuItemCompat
 import com.simplemobiletools.calendar.pro.BuildConfig
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.adapters.EventListAdapter
+import com.simplemobiletools.calendar.pro.adapters.QuickFilterEventTypeAdapter
 import com.simplemobiletools.calendar.pro.databases.EventsDatabase
 import com.simplemobiletools.calendar.pro.dialogs.ExportEventsDialog
 import com.simplemobiletools.calendar.pro.dialogs.FilterEventTypesDialog
@@ -155,6 +156,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         if (!mIsSearchOpen) {
             invalidateOptionsMenu()
         }
+
+        setupQuickFilter()
     }
 
     override fun onPause() {
@@ -292,6 +295,17 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                 return true
             }
         })
+    }
+
+    private fun setupQuickFilter() {
+        eventsHelper.getEventTypes(this, false) {
+            val quickFilterEventTypes = config.quickFilterEventTypes
+            quick_event_type_filter.adapter = QuickFilterEventTypeAdapter(this, it, quickFilterEventTypes) {
+                refreshViewPager()
+                updateWidgets()
+            }
+
+        }
     }
 
     private fun closeSearch() {
@@ -447,6 +461,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private fun showFilterDialog() {
         FilterEventTypesDialog(this) {
             refreshViewPager()
+            setupQuickFilter()
             updateWidgets()
         }
     }
