@@ -200,6 +200,7 @@
     <string name="other_time">其他时间</string>
     <string name="highlight_weekends">在部分视图高亮周末</string>
     <string name="allow_changing_time_zones">允许更改活动时区</string>
+    <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

@@ -200,6 +200,7 @@
     <string name="other_time">Другое</string>
     <string name="highlight_weekends">Выделять выходные дни в соответствующих режимах</string>
     <string name="allow_changing_time_zones">Разрешить изменение часового пояса событий</string>
+    <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

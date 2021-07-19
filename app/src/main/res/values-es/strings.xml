@@ -200,6 +200,7 @@
     <string name="other_time">Otro momento</string>
     <string name="highlight_weekends">Destacar los fines de semana en algunas vistas</string>
     <string name="allow_changing_time_zones">Permitir cambiar zona horaria del evento</string>
+    <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

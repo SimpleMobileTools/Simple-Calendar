@@ -200,6 +200,7 @@
     <string name="other_time">‏להפסיק חזרה אחרי x פעמים.‏</string>
     <string name="highlight_weekends">הדגש סופי שבוע בחלק מהתצוגות</string>
     <string name="allow_changing_time_zones">Allow changing event time zones</string>
+    <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
