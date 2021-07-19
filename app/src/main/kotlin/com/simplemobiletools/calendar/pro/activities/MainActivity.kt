@@ -189,6 +189,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     override fun onPrepareOptionsMenu(menu: Menu): Boolean {
         menu.apply {
             findItem(R.id.refresh_caldav_calendars).isVisible = config.caldavSync
+            findItem(R.id.filter).isVisible = mShouldFilterBeVisible
         }
 
         return true
