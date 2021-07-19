@@ -170,6 +170,12 @@ class SettingsActivity : SimpleActivity() {
         settings_manage_quick_filter_event_types_holder.setOnClickListener {
             showQuickFilterPicker()
         }
+
+        eventsHelper.getEventTypes(this, false) {
+            if (it.size < 2) {
+                settings_manage_quick_filter_event_types_holder.beGone()
+            }
+        }
     }
 
     private fun setupHourFormat() {
