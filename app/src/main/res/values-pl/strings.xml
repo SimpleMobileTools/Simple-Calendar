@@ -12,7 +12,7 @@
     <string name="no_upcoming_events">Wygląda na to, że nie masz żadnych nadchodzących wydarzeń.</string>
     <string name="go_to_today">Przejdź do dzisiaj</string>
     <string name="go_to_date">Przejdź do daty</string>
-    <string name="upgraded_from_free">Witaj,\n\nwygląda na to, że uaktualniłeś/aś starą darmową aplikację na nową płatną. Musisz ręcznie przenieść wydarzenia przechowywane lokalnie przez wyeksportowanie ich do pliku .ics, a następnie zaimportowanie. Oba przyciski eksportuj i importuj możesz znaleźć w menu.\n\nNastępnie możesz odinstalować starą wersję, która ma przycisk \"Uaktualnij do Pro\" na górze w ustawieniach aplikacji. Wystarczy wtedy zresetować ustawienia aplikacji.\n\nDzięki!</string>
+    <string name="upgraded_from_free">Witaj,\n\nwygląda na to, że uaktualniłeś/aś starą darmową aplikację na nową płatną. Musisz ręcznie przenieść wydarzenia przechowywane lokalnie przez wyeksportowanie ich do pliku .ics, a następnie zaimportowanie. Oba przyciski eksportuj i importuj możesz znaleźć w menu.\n\nNastępnie możesz odinstalować starą wersję, która ma przycisk \„Uaktualnij do Pro\” na górze w ustawieniach aplikacji. Wystarczy wtedy zresetować ustawienia aplikacji.\n\nDzięki!</string>
 
     <!-- Widget titles -->
     <string name="widget_monthly">Kalendarz miesięczny</string>
@@ -44,7 +44,7 @@
     <string name="months_raw">miesiące</string>
     <string name="years_raw">lata</string>
     <string name="repeat_till">Powtarzaj do</string>
-    <string name="forever">zawsze</string>
+    <string name="forever">Zawsze</string>
     <string name="event_is_repeatable">Wydarzenie jest cykliczne</string>
     <string name="selection_contains_repetition">Wybór zawiera powtarzające się wydarzenia</string>
     <string name="delete_one_only">Usuń tylko wybrane wystąpienie</string>
@@ -59,10 +59,10 @@
     <string name="times">razy</string>
     <string name="repeat">Powtarzaj</string>
     <string name="repeat_on">Powtarzaj w</string>
-    <string name="every_day">Codziennie</string>
+    <string name="every_day">Każdy dzień</string>
     <string name="selected_days">Przez wybrane dni</string>
-    <string name="the_same_day">W tym samym dniu</string>
-    <string name="the_last_day">W ostatnim dniu</string>
+    <string name="the_same_day">Ten sam dzień</string>
+    <string name="the_last_day">Ostatni dzień</string>
     <string name="repeat_on_the_same_day_monthly">Powtarzaj w tym samym dniu każdego miesiąca</string>
     <string name="repeat_on_the_last_day_monthly">Powtarzaj w ostatnim dniu każdego miesiąca</string>
     <string name="repeat_on_the_same_day_yearly">Powtarzaj w tym samym dniu każdego roku</string>
@@ -125,8 +125,8 @@
     <string name="default_event_type">Domyślny typ wydarzenia</string>
     <string name="export_past_events_too">Eksportuj także wydarzenia z przeszłości</string>
     <string name="include_event_types">Dołącz typy wydarzeń</string>
-    <string name="filename_without_ics">Nazwa pliku (bez końcówki \".ics\")</string>
     <string name="override_event_types">Nadpisz typy wydarzeń w pliku</string>
+    <string name="filename_without_ics">Nazwa pliku (bez końcówki \„.ics\”)</string>
 
     <!-- Event details -->
     <string name="location">Lokalizacja</string>
@@ -154,7 +154,7 @@
     <string name="add_holidays">Dodaj święta</string>
     <string name="national_holidays">Święta państwowe</string>
     <string name="religious_holidays">Święta religijne</string>
-    <string name="holidays_imported_successfully">Święta zostały zaimportowane do typu wydarzenia \"Święta\"</string>
+    <string name="holidays_imported_successfully">Święta zostały zaimportowane do typu wydarzenia \„Święta\”</string>
     <string name="importing_some_holidays_failed">Importowanie niektórych świąt nie powiodło się</string>
     <string name="importing_holidays_failed">Importowanie świąt nie powiodło się</string>
 
@@ -200,7 +200,7 @@
     <string name="other_time">Inny czas</string>
     <string name="highlight_weekends">Wyróżniaj weekendy w niektórych widokach</string>
     <string name="allow_changing_time_zones">Pozwalaj zmieniać strefę czasową wydarzenia</string>
-    <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
+    <string name="manage_quick_filter_event_types">Zarządzaj szybkim filtrowaniem typów wydarzeń</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -239,12 +239,12 @@
     <string name="sample_title_5">Czas na kawę</string>
 
     <!-- FAQ -->
-    <string name="faq_1_title">Jak mogę usunąć święta zaimportowane przez przycisk \"Dodaj święta\"?</string>
-    <string name="faq_1_text">Święta dodane w ten sposób są wprowadzane do nowego typu wydarzeń - \"Święta\". Możesz je usunąć, przechodząc do ustawień aplikacji, a następnie w sekcji \"Zarządzaj typami wydarzeń\" usunąć ową kategorię, przyciskając długo dany typ wydarzenia i klikając ikonę kosza.</string>
+    <string name="faq_1_title">Jak mogę usunąć święta zaimportowane przez przycisk \„Dodaj święta\”?</string>
+    <string name="faq_1_text">Święta dodane w ten sposób są wprowadzane do nowego typu wydarzeń - \„Święta\”. Możesz je usunąć, przechodząc do ustawień aplikacji, a następnie w sekcji \„Zarządzaj typami wydarzeń\” usunąć ową kategorię, przyciskając długo dany typ wydarzenia i nacisnąć ikonę kosza.</string>
     <string name="faq_2_title">Czy mogę zsynchronizować swoje wydarzenia z Kalendarzem Google lub inną usługą wspierającą CalDAV?</string>
-    <string name="faq_2_text">Tak. Wystarczy włączyć opcję \"Synchronizacja CalDAV\" w ustawieniach aplikacji i wybrać kalendarze do synchronizacji. Jednak będziesz potrzebować zewnętrznej aplikacji obsługującej synchronizację urządzenia z serwerami. Jeśli chcesz zsynchronizować wydarzenia z Kalendarzem Google, oficjalna aplikacja kalendarza powinna wystarczyć. W innych przypadkach może być potrzebna zewnętrzna aplikacja, np. DAVx5.</string>
+    <string name="faq_2_text">Tak. Wystarczy włączyć opcję \„Synchronizacja CalDAV\” w ustawieniach aplikacji i wybrać kalendarze do synchronizacji. Jednak będziesz potrzebować zewnętrznej aplikacji obsługującej synchronizację urządzenia z serwerami. Jeśli chcesz zsynchronizować wydarzenia z Kalendarzem Google, oficjalna aplikacja kalendarza powinna wystarczyć. W innych przypadkach może być potrzebna zewnętrzna aplikacja, np. DAVx5.</string>
     <string name="faq_3_title">Widzę przypomnienia, ale nie słyszę dźwięku. Co mogę zrobić?</string>
-    <string name="faq_3_text">System ma ogromny wpływ nie tylko na wyświetlanie aktualnego przypomnienia, ale także na odtwarzanie dźwięku. Jeśli nie słyszysz żadnego dźwięku, spróbuj przejść do ustawień aplikacji, kliknąć opcję \"Strumień audio używany przez przypomnienia\" i zmienić jej ustawienie. Jeśli nadal nie będzie działać, sprawdź w ustawieniach dźwięku w telefonie, czy dany strumień nie jest wyciszony.</string>
+    <string name="faq_3_text">System ma ogromny wpływ nie tylko na wyświetlanie aktualnego przypomnienia, ale także na odtwarzanie dźwięku. Jeśli nie słyszysz żadnego dźwięku, spróbuj przejść do ustawień aplikacji, nacisnąć opcję \„Strumień audio używany przez przypomnienia\” i zmienić jej ustawienie. Jeśli nadal nie będzie działać, sprawdź w ustawieniach dźwięku w telefonie, czy dany strumień nie jest wyciszony.</string>
     <string name="faq_4_title">Czy aplikacja wspiera strefy czasowe?</string>
     <string name="faq_4_text">Tak. Domyślnie wszystkie wydarzenia są tworzone w Twojej aktualnej strefie czasowej. Jeśli chcesz zmienić strefę czasową wydarzeń, najpierw musisz włączyć selektor stref czasowych w ustawieniach aplikacji, a następnie zmienić go na ekranie edycji wydarzenia. Opcja ta jest domyślnie wyłączona, ponieważ większość użytkowników jej nie potrzebuje.</string>
 
