@@ -217,6 +217,8 @@
     <string name="insufficient_permissions">Seçili takvime yazmanıza izin verilmiyor</string>
     <string name="caldav_event_not_found">Etkinlik bulunamadı. Lütfen uygulama ayarlarından uygun takvim için CalDAV senkronizasyonunu etkinleştirin.</string>
     <string name="no_synchronized_calendars">Senkronize edilebilir takvim bulunamadı</string>
+    <string name="status_free">Free</string>
+    <string name="status_busy">Busy</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->

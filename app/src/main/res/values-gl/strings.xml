@@ -217,6 +217,8 @@
     <string name="insufficient_permissions">Non tes permiso para escribir no calendario seleccionado</string>
     <string name="caldav_event_not_found">Evento non atopado. Activa a sincronización de CalDAV para o calendario apropiado nos axustes do aplicativo.</string>
     <string name="no_synchronized_calendars">Non se atoparon calendarios sincronizados</string>
+    <string name="status_free">Free</string>
+    <string name="status_busy">Busy</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->

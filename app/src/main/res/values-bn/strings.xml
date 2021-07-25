@@ -221,6 +221,8 @@
     <string name="insufficient_permissions">আপনার সিলেক্টেড ক্যালেন্ডারে লেখার অনুমতি নেই</string>
     <string name="caldav_event_not_found">ইভেন্ট পাওয়া যায় নি। অ্যাপ্লিকেশন সেটিংসে উপযুক্ত ক্যালেন্ডারের জন্য দয়া করে CalDAV সিঙ্ক সক্ষম করুন।</string>
     <string name="no_synchronized_calendars">No synchronizable calendars have been found</string>
+    <string name="status_free">Free</string>
+    <string name="status_busy">Busy</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->

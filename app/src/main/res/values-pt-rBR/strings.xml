@@ -217,6 +217,8 @@
     <string name="insufficient_permissions">Você não tem permissão para escrever no calendário selecionado</string>
     <string name="caldav_event_not_found">Evento não encontrado. Habilite a sincronização CalDAV do calendário adequado nas configurações do aplicativo.</string>
     <string name="no_synchronized_calendars">Nenhum calendário encontrado para a sincronização</string>
+    <string name="status_free">Free</string>
+    <string name="status_busy">Busy</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->

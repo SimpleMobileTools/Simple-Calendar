@@ -218,6 +218,8 @@
     <string name="insufficient_permissions">Vous n\’êtes pas autorisé à écrire dans l\’agenda sélectionné</string>
     <string name="caldav_event_not_found">Événement introuvable. Veuillez activer la synchronisation CalDAV pour ce calendrier dans les paramètres de l’application.</string>
     <string name="no_synchronized_calendars">Aucun calendrier synchronisable n\'a été trouvé</string>
+    <string name="status_free">Free</string>
+    <string name="status_busy">Busy</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
