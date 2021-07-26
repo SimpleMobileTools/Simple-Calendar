@@ -131,8 +131,10 @@ class SettingsActivity : SimpleActivity() {
 
     private fun setupSectionColors() {
         val adjustedPrimaryColor = getAdjustedPrimaryColor()
-        arrayListOf(reminders_label, caldav_label, weekly_view_label, monthly_view_label, simple_event_list_label, widgets_label, events_label,
-            new_events_label, migrating_label).forEach {
+        arrayListOf(
+            reminders_label, caldav_label, weekly_view_label, monthly_view_label, simple_event_list_label, widgets_label, events_label,
+            new_events_label, migrating_label
+        ).forEach {
             it.setTextColor(adjustedPrimaryColor)
         }
     }
@@ -172,9 +174,7 @@ class SettingsActivity : SimpleActivity() {
         }
 
         eventsHelper.getEventTypes(this, false) {
-            if (it.size < 2) {
-                settings_manage_quick_filter_event_types_holder.beGone()
-            }
+            settings_manage_quick_filter_event_types_holder.beGoneIf(it.size < 2)
         }
     }
 
@@ -376,11 +376,11 @@ class SettingsActivity : SimpleActivity() {
                         updateReminderSound(it)
                     }
                 }, onAlarmSoundDeleted = {
-                if (it.uri == config.reminderSoundUri) {
-                    val defaultAlarm = getDefaultAlarmSound(RingtoneManager.TYPE_NOTIFICATION)
-                    updateReminderSound(defaultAlarm)
-                }
-            })
+                    if (it.uri == config.reminderSoundUri) {
+                        val defaultAlarm = getDefaultAlarmSound(RingtoneManager.TYPE_NOTIFICATION)
+                        updateReminderSound(defaultAlarm)
+                    }
+                })
         }
     }
 
@@ -397,7 +397,8 @@ class SettingsActivity : SimpleActivity() {
                 RadioItem(AudioManager.STREAM_ALARM, getString(R.string.alarm_stream)),
                 RadioItem(AudioManager.STREAM_SYSTEM, getString(R.string.system_stream)),
                 RadioItem(AudioManager.STREAM_NOTIFICATION, getString(R.string.notification_stream)),
-                RadioItem(AudioManager.STREAM_RING, getString(R.string.ring_stream)))
+                RadioItem(AudioManager.STREAM_RING, getString(R.string.ring_stream))
+            )
 
             RadioGroupDialog(this@SettingsActivity, items, config.reminderAudioStream) {
                 config.reminderAudioStream = it as Int
@@ -406,12 +407,14 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
-    private fun getAudioStreamText() = getString(when (config.reminderAudioStream) {
-        AudioManager.STREAM_ALARM -> R.string.alarm_stream
-        AudioManager.STREAM_SYSTEM -> R.string.system_stream
-        AudioManager.STREAM_NOTIFICATION -> R.string.notification_stream
-        else -> R.string.ring_stream
-    })
+    private fun getAudioStreamText() = getString(
+        when (config.reminderAudioStream) {
+            AudioManager.STREAM_ALARM -> R.string.alarm_stream
+            AudioManager.STREAM_SYSTEM -> R.string.system_stream
+            AudioManager.STREAM_NOTIFICATION -> R.string.notification_stream
+            else -> R.string.ring_stream
+        }
+    )
 
     private fun setupVibrate() {
         settings_vibrate.isChecked = config.vibrateOnReminder
@@ -533,7 +536,8 @@ class SettingsActivity : SimpleActivity() {
                 RadioItem(FONT_SIZE_SMALL, getString(R.string.small)),
                 RadioItem(FONT_SIZE_MEDIUM, getString(R.string.medium)),
                 RadioItem(FONT_SIZE_LARGE, getString(R.string.large)),
-                RadioItem(FONT_SIZE_EXTRA_LARGE, getString(R.string.extra_large)))
+                RadioItem(FONT_SIZE_EXTRA_LARGE, getString(R.string.extra_large))
+            )
 
             RadioGroupDialog(this@SettingsActivity, items, config.fontSize) {
                 config.fontSize = it as Int
@@ -561,7 +565,8 @@ class SettingsActivity : SimpleActivity() {
                 RadioItem(MONTHLY_VIEW, getString(R.string.monthly_view)),
                 RadioItem(YEARLY_VIEW, getString(R.string.yearly_view)),
                 RadioItem(EVENTS_LIST_VIEW, getString(R.string.simple_event_list)),
-                RadioItem(LAST_VIEW, getString(R.string.last_view)))
+                RadioItem(LAST_VIEW, getString(R.string.last_view))
+            )
 
             RadioGroupDialog(this@SettingsActivity, items, config.listWidgetViewToOpen) {
                 config.listWidgetViewToOpen = it as Int
@@ -571,14 +576,16 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
-    private fun getDefaultViewText() = getString(when (config.listWidgetViewToOpen) {
-        DAILY_VIEW -> R.string.daily_view
-        WEEKLY_VIEW -> R.string.weekly_view
-        MONTHLY_VIEW -> R.string.monthly_view
-        YEARLY_VIEW -> R.string.yearly_view
-        EVENTS_LIST_VIEW -> R.string.simple_event_list
-        else -> R.string.last_view
-    })
+    private fun getDefaultViewText() = getString(
+        when (config.listWidgetViewToOpen) {
+            DAILY_VIEW -> R.string.daily_view
+            WEEKLY_VIEW -> R.string.weekly_view
+            MONTHLY_VIEW -> R.string.monthly_view
+            YEARLY_VIEW -> R.string.yearly_view
+            EVENTS_LIST_VIEW -> R.string.simple_event_list
+            else -> R.string.last_view
+        }
+    )
 
     private fun setupDimEvents() {
         settings_dim_past_events.isChecked = config.dimPastEvents
@@ -621,7 +628,14 @@ class SettingsActivity : SimpleActivity() {
                     }
 
                     val currentDateTime = DateTime.now()
-                    TimePickerDialog(this, getDialogTheme(), timeListener, currentDateTime.hourOfDay, currentDateTime.minuteOfHour, config.use24HourFormat).show()
+                    TimePickerDialog(
+                        this,
+                        getDialogTheme(),
+                        timeListener,
+                        currentDateTime.hourOfDay,
+                        currentDateTime.minuteOfHour,
+                        config.use24HourFormat
+                    ).show()
                 }
             }
         }
