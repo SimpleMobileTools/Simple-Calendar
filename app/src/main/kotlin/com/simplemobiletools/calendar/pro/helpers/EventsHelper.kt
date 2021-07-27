@@ -55,6 +55,10 @@ class EventsHelper(val context: Context) {
         val newId = eventTypesDB.insertOrUpdate(eventType)
         if (eventType.id == null) {
             config.addDisplayEventType(newId.toString())
+
+            if (config.quickFilterEventTypes.isNotEmpty()) {
+                config.addQuickFilterEventType(newId.toString())
+            }
         }
         return newId
     }

@@ -16,8 +16,9 @@ class EditEventTypeDialog(val activity: Activity, var eventType: EventType? = nu
     var isNewEvent = eventType == null
 
     init {
-        if (eventType == null)
+        if (eventType == null) {
             eventType = EventType(null, "", activity.config.primaryColor)
+        }
 
         val view = activity.layoutInflater.inflate(R.layout.dialog_event_type, null).apply {
             setupColor(type_color)

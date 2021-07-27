@@ -75,6 +75,12 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getStringSet(QUICK_FILTER_EVENT_TYPES, HashSet<String>())!!
         set(quickFilterEventTypes) = prefs.edit().remove(QUICK_FILTER_EVENT_TYPES).putStringSet(QUICK_FILTER_EVENT_TYPES, quickFilterEventTypes).apply()
 
+    fun addQuickFilterEventType(type: String) {
+        val currQuickFilterEventTypes = HashSet<String>(quickFilterEventTypes)
+        currQuickFilterEventTypes.add(type)
+        quickFilterEventTypes = currQuickFilterEventTypes
+    }
+
     var listWidgetViewToOpen: Int
         get() = prefs.getInt(LIST_WIDGET_VIEW_TO_OPEN, DAILY_VIEW)
         set(viewToOpenFromListWidget) = prefs.edit().putInt(LIST_WIDGET_VIEW_TO_OPEN, viewToOpenFromListWidget).apply()
@@ -118,7 +124,8 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getBoolean(DIM_PAST_EVENTS, true)
         set(dimPastEvents) = prefs.edit().putBoolean(DIM_PAST_EVENTS, dimPastEvents).apply()
 
-    fun getSyncedCalendarIdsAsList() = caldavSyncedCalendarIds.split(",").filter { it.trim().isNotEmpty() }.map { Integer.parseInt(it) }.toMutableList() as ArrayList<Int>
+    fun getSyncedCalendarIdsAsList() =
+        caldavSyncedCalendarIds.split(",").filter { it.trim().isNotEmpty() }.map { Integer.parseInt(it) }.toMutableList() as ArrayList<Int>
 
     fun getDisplayEventTypessAsList() = displayEventTypes.map { it.toLong() }.toMutableList() as ArrayList<Long>
 
