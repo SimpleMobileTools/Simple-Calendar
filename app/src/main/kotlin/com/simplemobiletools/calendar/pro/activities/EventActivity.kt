@@ -301,7 +301,8 @@ class EventActivity : SimpleActivity() {
             mRepeatRule != mEvent.repeatRule ||
             mEventTypeId != mEvent.eventType ||
             mWasCalendarChanged ||
-            hasTimeChanged) {
+            hasTimeChanged
+        ) {
             return true
         }
 
@@ -688,11 +689,13 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun getBaseString(day: Int): String {
-        return getString(if (isMaleGender(day)) {
-            R.string.repeat_every_m
-        } else {
-            R.string.repeat_every_f
-        })
+        return getString(
+            if (isMaleGender(day)) {
+                R.string.repeat_every_m
+            } else {
+                R.string.repeat_every_f
+            }
+        )
     }
 
     private fun isMaleGender(day: Int) = day == 1 || day == 2 || day == 4 || day == 5
@@ -705,26 +708,30 @@ class EventActivity : SimpleActivity() {
         }
 
         val isMale = isMaleGender(mEventStartDateTime.dayOfWeek)
-        return getString(when (order) {
-            1 -> if (isMale) R.string.first_m else R.string.first_f
-            2 -> if (isMale) R.string.second_m else R.string.second_f
-            3 -> if (isMale) R.string.third_m else R.string.third_f
-            4 -> if (isMale) R.string.fourth_m else R.string.fourth_f
-            5 -> if (isMale) R.string.fifth_m else R.string.fifth_f
-            else -> if (isMale) R.string.last_m else R.string.last_f
-        })
+        return getString(
+            when (order) {
+                1 -> if (isMale) R.string.first_m else R.string.first_f
+                2 -> if (isMale) R.string.second_m else R.string.second_f
+                3 -> if (isMale) R.string.third_m else R.string.third_f
+                4 -> if (isMale) R.string.fourth_m else R.string.fourth_f
+                5 -> if (isMale) R.string.fifth_m else R.string.fifth_f
+                else -> if (isMale) R.string.last_m else R.string.last_f
+            }
+        )
     }
 
     private fun getDayString(day: Int): String {
-        return getString(when (day) {
-            1 -> R.string.monday_alt
-            2 -> R.string.tuesday_alt
-            3 -> R.string.wednesday_alt
-            4 -> R.string.thursday_alt
-            5 -> R.string.friday_alt
-            6 -> R.string.saturday_alt
-            else -> R.string.sunday_alt
-        })
+        return getString(
+            when (day) {
+                1 -> R.string.monday_alt
+                2 -> R.string.tuesday_alt
+                3 -> R.string.wednesday_alt
+                4 -> R.string.thursday_alt
+                5 -> R.string.friday_alt
+                6 -> R.string.saturday_alt
+                else -> R.string.sunday_alt
+            }
+        )
     }
 
     private fun getRepeatXthDayInMonthString(includeBase: Boolean, repeatRule: Int): String {
@@ -942,9 +949,11 @@ class EventActivity : SimpleActivity() {
     private fun resetTime() {
         if (mEventEndDateTime.isBefore(mEventStartDateTime) &&
             mEventStartDateTime.dayOfMonth() == mEventEndDateTime.dayOfMonth() &&
-            mEventStartDateTime.monthOfYear() == mEventEndDateTime.monthOfYear()) {
+            mEventStartDateTime.monthOfYear() == mEventEndDateTime.monthOfYear()
+        ) {
 
-            mEventEndDateTime = mEventEndDateTime.withTime(mEventStartDateTime.hourOfDay, mEventStartDateTime.minuteOfHour, mEventStartDateTime.secondOfMinute, 0)
+            mEventEndDateTime =
+                mEventEndDateTime.withTime(mEventStartDateTime.hourOfDay, mEventStartDateTime.minuteOfHour, mEventStartDateTime.secondOfMinute, 0)
             updateEndTimeText()
             checkStartEndValidity()
         }
@@ -1256,8 +1265,10 @@ class EventActivity : SimpleActivity() {
     private fun setupStartDate() {
         hideKeyboard()
         config.backgroundColor.getContrastColor()
-        val datepicker = DatePickerDialog(this, mDialogTheme, startDateSetListener, mEventStartDateTime.year, mEventStartDateTime.monthOfYear - 1,
-            mEventStartDateTime.dayOfMonth)
+        val datepicker = DatePickerDialog(
+            this, mDialogTheme, startDateSetListener, mEventStartDateTime.year, mEventStartDateTime.monthOfYear - 1,
+            mEventStartDateTime.dayOfMonth
+        )
 
         datepicker.datePicker.firstDayOfWeek = if (config.isSundayFirst) Calendar.SUNDAY else Calendar.MONDAY
         datepicker.show()
@@ -1265,13 +1276,22 @@ class EventActivity : SimpleActivity() {
 
     private fun setupStartTime() {
         hideKeyboard()
-        TimePickerDialog(this, mDialogTheme, startTimeSetListener, mEventStartDateTime.hourOfDay, mEventStartDateTime.minuteOfHour, config.use24HourFormat).show()
+        TimePickerDialog(
+            this,
+            mDialogTheme,
+            startTimeSetListener,
+            mEventStartDateTime.hourOfDay,
+            mEventStartDateTime.minuteOfHour,
+            config.use24HourFormat
+        ).show()
     }
 
     private fun setupEndDate() {
         hideKeyboard()
-        val datepicker = DatePickerDialog(this, mDialogTheme, endDateSetListener, mEventEndDateTime.year, mEventEndDateTime.monthOfYear - 1,
-            mEventEndDateTime.dayOfMonth)
+        val datepicker = DatePickerDialog(
+            this, mDialogTheme, endDateSetListener, mEventEndDateTime.year, mEventEndDateTime.monthOfYear - 1,
+            mEventEndDateTime.dayOfMonth
+        )
 
         datepicker.datePicker.firstDayOfWeek = if (config.isSundayFirst) Calendar.SUNDAY else Calendar.MONDAY
         datepicker.show()
@@ -1510,21 +1530,25 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun getAttendeeStatusImage(attendee: Attendee): Drawable {
-        return resources.getDrawable(when (attendee.status) {
-            Attendees.ATTENDEE_STATUS_ACCEPTED -> R.drawable.ic_check_green
-            Attendees.ATTENDEE_STATUS_DECLINED -> R.drawable.ic_cross_red
-            else -> R.drawable.ic_question_yellow
-        })
+        return resources.getDrawable(
+            when (attendee.status) {
+                Attendees.ATTENDEE_STATUS_ACCEPTED -> R.drawable.ic_check_green
+                Attendees.ATTENDEE_STATUS_DECLINED -> R.drawable.ic_cross_red
+                else -> R.drawable.ic_question_yellow
+            }
+        )
     }
 
     private fun updateAttendeeMe(holder: RelativeLayout, attendee: Attendee) {
         holder.apply {
-            event_contact_me_status.text = getString(when (attendee.status) {
-                Attendees.ATTENDEE_STATUS_ACCEPTED -> R.string.going
-                Attendees.ATTENDEE_STATUS_DECLINED -> R.string.not_going
-                Attendees.ATTENDEE_STATUS_TENTATIVE -> R.string.maybe_going
-                else -> R.string.invited
-            })
+            event_contact_me_status.text = getString(
+                when (attendee.status) {
+                    Attendees.ATTENDEE_STATUS_ACCEPTED -> R.string.going
+                    Attendees.ATTENDEE_STATUS_DECLINED -> R.string.not_going
+                    Attendees.ATTENDEE_STATUS_TENTATIVE -> R.string.maybe_going
+                    else -> R.string.invited
+                }
+            )
 
             event_contact_status_image.apply {
                 beVisibleIf(attendee.showStatusImage())
@@ -1576,7 +1600,8 @@ class EventActivity : SimpleActivity() {
             StructuredName.MIDDLE_NAME,
             StructuredName.FAMILY_NAME,
             StructuredName.SUFFIX,
-            StructuredName.PHOTO_THUMBNAIL_URI)
+            StructuredName.PHOTO_THUMBNAIL_URI
+        )
 
         val selection = "${Data.MIMETYPE} = ?"
         val selectionArgs = arrayOf(StructuredName.CONTENT_ITEM_TYPE)
@@ -1621,8 +1646,10 @@ class EventActivity : SimpleActivity() {
     private fun updateIconColors() {
         event_show_on_map.applyColorFilter(getAdjustedPrimaryColor())
         val textColor = config.textColor
-        arrayOf(event_time_image, event_time_zone_image, event_repetition_image, event_reminder_image, event_type_image, event_caldav_calendar_image,
-            event_reminder_1_type, event_reminder_2_type, event_reminder_3_type, event_attendees_image).forEach {
+        arrayOf(
+            event_time_image, event_time_zone_image, event_repetition_image, event_reminder_image, event_type_image, event_caldav_calendar_image,
+            event_reminder_1_type, event_reminder_2_type, event_reminder_3_type, event_attendees_image
+        ).forEach {
             it.applyColorFilter(textColor)
         }
     }

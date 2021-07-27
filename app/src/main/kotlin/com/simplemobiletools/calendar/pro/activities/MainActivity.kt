@@ -128,7 +128,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     override fun onResume() {
         super.onResume()
         if (mStoredTextColor != config.textColor || mStoredBackgroundColor != config.backgroundColor || mStoredAdjustedPrimaryColor != getAdjustedPrimaryColor()
-            || mStoredDayCode != Formatter.getTodayCode() || mStoredDimPastEvents != config.dimPastEvents || mStoredHighlightWeekends != config.highlightWeekends) {
+            || mStoredDayCode != Formatter.getTodayCode() || mStoredDimPastEvents != config.dimPastEvents || mStoredHighlightWeekends != config.highlightWeekends
+        ) {
             updateViewPager()
         }
 
@@ -430,7 +431,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             RadioItem(MONTHLY_VIEW, getString(R.string.monthly_view)),
             RadioItem(MONTHLY_DAILY_VIEW, getString(R.string.monthly_daily_view)),
             RadioItem(YEARLY_VIEW, getString(R.string.yearly_view)),
-            RadioItem(EVENTS_LIST_VIEW, getString(R.string.simple_event_list)))
+            RadioItem(EVENTS_LIST_VIEW, getString(R.string.simple_event_list))
+        )
 
         RadioGroupDialog(this, items, config.storedView) {
             resetActionBarTitle()
@@ -578,22 +580,26 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     private fun handleParseResult(result: ImportResult) {
-        toast(when (result) {
-            ImportResult.IMPORT_NOTHING_NEW -> R.string.no_new_items
-            ImportResult.IMPORT_OK -> R.string.holidays_imported_successfully
-            ImportResult.IMPORT_PARTIAL -> R.string.importing_some_holidays_failed
-            else -> R.string.importing_holidays_failed
-        }, Toast.LENGTH_LONG)
+        toast(
+            when (result) {
+                ImportResult.IMPORT_NOTHING_NEW -> R.string.no_new_items
+                ImportResult.IMPORT_OK -> R.string.holidays_imported_successfully
+                ImportResult.IMPORT_PARTIAL -> R.string.importing_some_holidays_failed
+                else -> R.string.importing_holidays_failed
+            }, Toast.LENGTH_LONG
+        )
     }
 
     private fun addContactEvents(birthdays: Boolean, reminders: ArrayList<Int>, initEventsFound: Int, initEventsAdded: Int, callback: (Int) -> Unit) {
         var eventsFound = initEventsFound
         var eventsAdded = initEventsAdded
         val uri = Data.CONTENT_URI
-        val projection = arrayOf(Contacts.DISPLAY_NAME,
+        val projection = arrayOf(
+            Contacts.DISPLAY_NAME,
             CommonDataKinds.Event.CONTACT_ID,
             CommonDataKinds.Event.CONTACT_LAST_UPDATED_TIMESTAMP,
-            CommonDataKinds.Event.START_DATE)
+            CommonDataKinds.Event.START_DATE
+        )
 
         val selection = "${Data.MIMETYPE} = ? AND ${CommonDataKinds.Event.TYPE} = ?"
         val type = if (birthdays) CommonDataKinds.Event.TYPE_BIRTHDAY else CommonDataKinds.Event.TYPE_ANNIVERSARY
@@ -624,9 +630,11 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
                     val timestamp = date.time / 1000L
                     val lastUpdated = cursor.getLongValue(CommonDataKinds.Event.CONTACT_LAST_UPDATED_TIMESTAMP)
-                    val event = Event(null, timestamp, timestamp, name, reminder1Minutes = reminders[0], reminder2Minutes = reminders[1],
+                    val event = Event(
+                        null, timestamp, timestamp, name, reminder1Minutes = reminders[0], reminder2Minutes = reminders[1],
                         reminder3Minutes = reminders[2], importId = contactId, timeZone = DateTimeZone.getDefault().id, flags = FLAG_ALL_DAY,
-                        repeatInterval = YEAR, repeatRule = REPEAT_SAME_DAY, eventType = eventTypeId, source = source, lastUpdated = lastUpdated)
+                        repeatInterval = YEAR, repeatRule = REPEAT_SAME_DAY, eventType = eventTypeId, source = source, lastUpdated = lastUpdated
+                    )
 
                     val importIDsToDelete = ArrayList<String>()
                     for ((key, value) in importIDs) {
@@ -659,7 +667,12 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
     }
 
-    private fun addPrivateEvents(birthdays: Boolean, contacts: ArrayList<SimpleContact>, reminders: ArrayList<Int>, callback: (eventsFound: Int, eventsAdded: Int) -> Unit) {
+    private fun addPrivateEvents(
+        birthdays: Boolean,
+        contacts: ArrayList<SimpleContact>,
+        reminders: ArrayList<Int>,
+        callback: (eventsFound: Int, eventsAdded: Int) -> Unit
+    ) {
         var eventsAdded = 0
         var eventsFound = 0
         if (contacts.isEmpty()) {
@@ -695,9 +708,11 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
                     val timestamp = date.time / 1000L
                     val lastUpdated = System.currentTimeMillis()
-                    val event = Event(null, timestamp, timestamp, contact.name, reminder1Minutes = reminders[0], reminder2Minutes = reminders[1],
+                    val event = Event(
+                        null, timestamp, timestamp, contact.name, reminder1Minutes = reminders[0], reminder2Minutes = reminders[1],
                         reminder3Minutes = reminders[2], importId = contact.contactId.toString(), timeZone = DateTimeZone.getDefault().id, flags = FLAG_ALL_DAY,
-                        repeatInterval = YEAR, repeatRule = REPEAT_SAME_DAY, eventType = eventTypeId, source = source, lastUpdated = lastUpdated)
+                        repeatInterval = YEAR, repeatRule = REPEAT_SAME_DAY, eventType = eventTypeId, source = source, lastUpdated = lastUpdated
+                    )
 
                     val importIDsToDelete = ArrayList<String>()
                     for ((key, value) in importIDs) {
@@ -939,11 +954,13 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                 toast(R.string.no_entries_for_exporting)
             } else {
                 IcsExporter().exportEvents(this, outputStream, events, true) {
-                    toast(when (it) {
-                        ExportResult.EXPORT_OK -> R.string.exporting_successful
-                        ExportResult.EXPORT_PARTIAL -> R.string.exporting_some_entries_failed
-                        else -> R.string.exporting_failed
-                    })
+                    toast(
+                        when (it) {
+                            ExportResult.EXPORT_OK -> R.string.exporting_successful
+                            ExportResult.EXPORT_PARTIAL -> R.string.exporting_some_entries_failed
+                            else -> R.string.exporting_failed
+                        }
+                    )
                 }
             }
         }
@@ -965,7 +982,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             FAQItem(R.string.faq_4_title, R.string.faq_4_text),
             FAQItem(R.string.faq_2_title_commons, R.string.faq_2_text_commons),
             FAQItem(R.string.faq_6_title_commons, R.string.faq_6_text_commons),
-            FAQItem(R.string.faq_7_title_commons, R.string.faq_7_text_commons))
+            FAQItem(R.string.faq_7_title_commons, R.string.faq_7_text_commons)
+        )
 
         startAboutActivity(R.string.app_name, licenses, BuildConfig.VERSION_NAME, faqItems, true)
     }
