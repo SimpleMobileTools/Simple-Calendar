@@ -31,7 +31,7 @@ class QuickFilterEventTypeAdapter(
 
     init {
         quickFilterEventTypeIds.forEach { quickFilterEventType ->
-            val eventType = allEventTypes.find { eventType -> eventType.id.toString() == quickFilterEventType } ?: return@forEach
+            val eventType = allEventTypes.firstOrNull { eventType -> eventType.id.toString() == quickFilterEventType } ?: return@forEach
             quickFilterEventTypes.add(eventType)
 
             if (displayEventTypes.contains(eventType.id.toString())) {
