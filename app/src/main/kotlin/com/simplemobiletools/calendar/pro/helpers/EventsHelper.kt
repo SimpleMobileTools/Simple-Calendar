@@ -58,6 +58,13 @@ class EventsHelper(val context: Context) {
 
             if (config.quickFilterEventTypes.isNotEmpty()) {
                 config.addQuickFilterEventType(newId.toString())
+            } else {
+                val eventTypes = getEventTypesSync()
+                if (eventTypes.size == 2) {
+                    eventTypes.forEach {
+                        config.addQuickFilterEventType(it.id.toString())
+                    }
+                }
             }
         }
         return newId
