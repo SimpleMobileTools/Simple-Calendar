@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 6.15.0 *(2021-07-27)*
+----------------------------
+
+ * Allow toggling event type visibility quicker with a bar at the bottom of the screen
+ * Moved the reminder customization button at the Events settings section
+ * Some other stability and UX improvements
+
 Version 6.14.1 *(2021-07-06)*
 ----------------------------
 

@@ -1,0 +1,3 @@
+ * Allow toggling event type visibility quicker with a bar at the bottom of the screen
+ * Moved the reminder customization button at the Events settings section
+ * Some other stability and UX improvements
