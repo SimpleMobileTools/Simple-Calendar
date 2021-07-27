@@ -15,8 +15,8 @@ import java.util.*
 class QuickFilterEventTypeAdapter(
     val activity: SimpleActivity,
     val allEventTypes: List<EventType>,
-    private val quickFilterEventTypeIds: Set<String>,
-    val filterChanged: () -> Unit
+    val quickFilterEventTypeIds: Set<String>,
+    val callback: () -> Unit
 ) :
     RecyclerView.Adapter<QuickFilterEventTypeAdapter.ViewHolder>() {
     private val activeKeys = HashSet<Long>()
@@ -27,6 +27,7 @@ class QuickFilterEventTypeAdapter(
     private val textColorInactive = textColorActive.adjustAlpha(MEDIUM_ALPHA)
 
     private val minItemWidth = activity.resources.getDimensionPixelSize(R.dimen.quick_filter_min_width)
+    private var lastClickTS = 0L
 
     init {
         quickFilterEventTypeIds.forEach { quickFilterEventType ->
@@ -78,9 +79,14 @@ class QuickFilterEventTypeAdapter(
                 val indicatorHeightRes = if (isSelected) R.dimen.quick_filter_active_line_size else R.dimen.quick_filter_inactive_line_size
                 quick_filter_event_type_color.layoutParams.height = resources.getDimensionPixelSize(indicatorHeightRes)
                 quick_filter_event_type_color.setBackgroundColor(eventType.color)
+
+                // avoid too quick clicks, could cause glitches
                 quick_filter_event_type.setOnClickListener {
-                    viewClicked(!isSelected, eventType)
-                    filterChanged()
+                    if (System.currentTimeMillis() - lastClickTS > 200) {
+                        lastClickTS = System.currentTimeMillis()
+                        viewClicked(!isSelected, eventType)
+                        callback()
+                    }
                 }
             }
 
