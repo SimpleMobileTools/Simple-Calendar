@@ -17,9 +17,7 @@ import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.eventsHelper
 import com.simplemobiletools.calendar.pro.extensions.getViewBitmap
 import com.simplemobiletools.calendar.pro.extensions.printBitmap
-import com.simplemobiletools.calendar.pro.helpers.DAY_CODE
-import com.simplemobiletools.calendar.pro.helpers.EVENT_ID
-import com.simplemobiletools.calendar.pro.helpers.EVENT_OCCURRENCE_TS
+import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.interfaces.NavigationListener
 import com.simplemobiletools.calendar.pro.models.Event
@@ -29,12 +27,15 @@ import com.simplemobiletools.commons.extensions.beVisible
 import kotlinx.android.synthetic.main.fragment_day.view.*
 import kotlinx.android.synthetic.main.top_navigation.view.*
 import java.util.*
+import kotlin.collections.HashMap
 
 class DayFragment : Fragment() {
     var mListener: NavigationListener? = null
     private var mTextColor = 0
     private var mDayCode = ""
     private var lastHash = 0
+    var ageCounter = HashMap<Long?,Long>()
+    var anniversariesCounter = HashMap<Long?,Long>()
 
     private lateinit var mHolder: RelativeLayout
 
@@ -43,6 +44,8 @@ class DayFragment : Fragment() {
         mHolder = view.day_holder
 
         mDayCode = arguments!!.getString(DAY_CODE)!!
+        ageCounter = arguments!!.getSerializable(BIRTHDAY_COUNTER) as HashMap<Long?, Long>
+        anniversariesCounter = arguments!!.getSerializable(ANNIVERSARIES_COUNTER) as HashMap<Long?, Long>
         setupButtons()
         return view
     }
@@ -119,11 +122,13 @@ class DayFragment : Fragment() {
         if (activity == null)
             return
 
-        DayEventsAdapter(activity as SimpleActivity, events, mHolder.day_events) {
+        val dayEventAdapter = DayEventsAdapter(activity as SimpleActivity, events, mHolder.day_events){
             editEvent(it as Event)
         }.apply {
             mHolder.day_events.adapter = this
         }
+        dayEventAdapter.anniversariesCounter  = this.anniversariesCounter
+        dayEventAdapter.ageCounter = this.ageCounter
         mHolder.day_events.scheduleLayoutAnimation()
     }
 

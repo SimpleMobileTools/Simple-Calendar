@@ -1,5 +1,6 @@
 package com.simplemobiletools.calendar.pro.adapters
 
+import android.os.Build
 import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import com.simplemobiletools.calendar.pro.extensions.handleEventDeleting
 import com.simplemobiletools.calendar.pro.extensions.shareEvents
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
+import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.ListEvent
 import com.simplemobiletools.calendar.pro.models.ListItem
 import com.simplemobiletools.calendar.pro.models.ListSection
@@ -24,7 +26,12 @@ import com.simplemobiletools.commons.helpers.LOWER_ALPHA
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import com.simplemobiletools.commons.interfaces.RefreshRecyclerViewListener
 import com.simplemobiletools.commons.views.MyRecyclerView
+import kotlinx.android.synthetic.main.event_item_day_view_simple.view.*
 import kotlinx.android.synthetic.main.event_list_item.view.*
+import kotlinx.android.synthetic.main.event_list_item.view.event_item_color_bar
+import kotlinx.android.synthetic.main.event_list_item.view.event_item_frame
+import kotlinx.android.synthetic.main.event_list_item.view.event_item_start
+import kotlinx.android.synthetic.main.event_list_item.view.event_item_title
 import kotlinx.android.synthetic.main.event_list_section.view.*
 import java.util.*
 
@@ -39,6 +46,9 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
     private var use24HourFormat = activity.config.use24HourFormat
     private var currentItemsHash = listItems.hashCode()
     private var isPrintVersion = false
+
+    var ageCounter = HashMap<Long?,Long>()
+    var anniversariesCounter = HashMap<Long?,Long>()
 
     init {
         setupDragListener(true)
@@ -143,11 +153,27 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
         notifyDataSetChanged()
     }
 
+    fun printAge(listEvent: ListEvent):String{
+        val anniversariesDate = (anniversariesCounter[listEvent.id]?.let { Formatter.getDateTimeFromTS(it).year.toString()})
+        val ageDate = (ageCounter[listEvent.id]?.let { Formatter.getDateTimeFromTS(it).year.toString()})
+        if (anniversariesDate != null) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                return "("+ (Formatter.getDateTimeFromTS(listEvent.startTS).year - anniversariesDate.toInt()).toString()+")"
+            }
+        }else if(ageDate != null) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                return "("+ (Formatter.getDateTimeFromTS(listEvent.startTS).year - ageDate.toInt()).toString()+")"
+            }
+        }
+        return ""
+    }
+
     private fun setupListEvent(view: View, listEvent: ListEvent) {
         view.apply {
             event_item_frame.isSelected = selectedKeys.contains(listEvent.hashCode())
             event_item_title.text = listEvent.title
             event_item_description?.text = if (replaceDescription) listEvent.location else listEvent.description
+            event_item_date?.text = printAge(listEvent)
             event_item_start.text = if (listEvent.isAllDay) allDayString else Formatter.getTimeFromTS(context, listEvent.startTS)
             event_item_end?.beInvisibleIf(listEvent.startTS == listEvent.endTS)
             event_item_color_bar.background.applyColorFilter(listEvent.color)
@@ -188,6 +214,7 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
             event_item_start.setTextColor(startTextColor)
             event_item_end?.setTextColor(endTextColor)
             event_item_title.setTextColor(startTextColor)
+            event_item_date?.setTextColor(startTextColor)
             event_item_description?.setTextColor(startTextColor)
         }
     }

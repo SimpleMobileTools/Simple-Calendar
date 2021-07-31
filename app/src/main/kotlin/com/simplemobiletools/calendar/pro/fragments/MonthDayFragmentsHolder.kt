@@ -14,6 +14,8 @@ import com.simplemobiletools.calendar.pro.activities.MainActivity
 import com.simplemobiletools.calendar.pro.adapters.MyMonthDayPagerAdapter
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.getMonthCode
+import com.simplemobiletools.calendar.pro.helpers.ANNIVERSARIES_COUNTER
+import com.simplemobiletools.calendar.pro.helpers.BIRTHDAY_COUNTER
 import com.simplemobiletools.calendar.pro.helpers.DAY_CODE
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.interfaces.NavigationListener
@@ -33,11 +35,15 @@ class MonthDayFragmentsHolder : MyFragmentHolder(), NavigationListener {
     private var todayDayCode = ""
     private var currentDayCode = ""
     private var isGoToTodayVisible = false
+    private var ageCounter = HashMap<Long?,Long>()
+    private var anniversariesCounter = HashMap<Long?,Long>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         currentDayCode = arguments?.getString(DAY_CODE) ?: ""
         todayDayCode = Formatter.getTodayCode()
+        ageCounter = arguments?.getSerializable(BIRTHDAY_COUNTER) as HashMap<Long?, Long>
+        anniversariesCounter = arguments?.getSerializable(ANNIVERSARIES_COUNTER) as HashMap<Long?, Long>
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -53,7 +59,8 @@ class MonthDayFragmentsHolder : MyFragmentHolder(), NavigationListener {
         val codes = getMonths(currentDayCode)
         val monthlyDailyAdapter = MyMonthDayPagerAdapter(activity!!.supportFragmentManager, codes, this)
         defaultMonthlyPage = codes.size / 2
-
+        monthlyDailyAdapter.ageCounter = this.ageCounter
+        monthlyDailyAdapter.anniversariesCounter = this.anniversariesCounter
         viewPager!!.apply {
             adapter = monthlyDailyAdapter
             addOnPageChangeListener(object : ViewPager.OnPageChangeListener {

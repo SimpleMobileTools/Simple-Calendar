@@ -50,5 +50,15 @@
             android:textSize="@dimen/day_text_size"
             tools:text="Event title"/>
 
+        <TextView
+            android:id="@+id/event_item_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/event_item_title"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="@dimen/day_text_size"
+            tools:text="Age"/>
+
     </RelativeLayout>
 </FrameLayout>

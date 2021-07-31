@@ -1,15 +1,16 @@
 package com.simplemobiletools.calendar.pro.adapters
 
+import android.os.Build
 import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
+
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.dialogs.DeleteEventDialog
-import com.simplemobiletools.calendar.pro.extensions.config
-import com.simplemobiletools.calendar.pro.extensions.eventsHelper
-import com.simplemobiletools.calendar.pro.extensions.handleEventDeleting
-import com.simplemobiletools.calendar.pro.extensions.shareEvents
+import com.simplemobiletools.calendar.pro.extensions.*
+
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.helpers.ITEM_EVENT
 import com.simplemobiletools.calendar.pro.helpers.ITEM_EVENT_SIMPLE
@@ -23,6 +24,13 @@ import com.simplemobiletools.commons.helpers.LOWER_ALPHA
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import com.simplemobiletools.commons.views.MyRecyclerView
 import kotlinx.android.synthetic.main.event_item_day_view.view.*
+import kotlinx.android.synthetic.main.event_item_day_view.view.event_item_color_bar
+import kotlinx.android.synthetic.main.event_item_day_view.view.event_item_frame
+import kotlinx.android.synthetic.main.event_item_day_view.view.event_item_start
+import kotlinx.android.synthetic.main.event_item_day_view.view.event_item_title
+import kotlinx.android.synthetic.main.event_item_day_view_simple.view.*
+import java.time.LocalDate
+import java.time.LocalDateTime
 
 class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, recyclerView: MyRecyclerView, itemClick: (Any) -> Unit)
     : MyRecyclerViewAdapter(activity, recyclerView, null, itemClick) {
@@ -31,6 +39,8 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
     private val replaceDescriptionWithLocation = activity.config.replaceDescription
     private val dimPastEvents = activity.config.dimPastEvents
     private var isPrintVersion = false
+    var ageCounter = HashMap<Long?,Long>()
+    var anniversariesCounter = HashMap<Long?,Long>()
 
     init {
         setupDragListener(true)
@@ -107,11 +117,27 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
         notifyDataSetChanged()
     }
 
+    fun printAge(event: Event):String{
+        val anniversariesDate = (anniversariesCounter[event.id]?.let { Formatter.getDateTimeFromTS(it).year.toString()})
+        val ageDate = (ageCounter[event.id]?.let { Formatter.getDateTimeFromTS(it).year.toString()})
+        if (anniversariesDate != null) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+               return "("+ (Formatter.getDateTimeFromTS(event.startTS).year - anniversariesDate.toInt()).toString()+")"
+            }
+        }else if(ageDate != null) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                return "("+ (Formatter.getDateTimeFromTS(event.startTS).year - ageDate.toInt()).toString()+")"
+            }
+        }
+        return ""
+    }
+
     private fun setupView(view: View, event: Event) {
         view.apply {
             event_item_frame.isSelected = selectedKeys.contains(event.id?.toInt())
             event_item_title.text = event.title
             event_item_description?.text = if (replaceDescriptionWithLocation) event.location else event.description
+            event_item_date?.text = printAge(event)
             event_item_start.text = if (event.getIsAllDay()) allDayString else Formatter.getTimeFromTS(context, event.startTS)
             event_item_end?.beInvisibleIf(event.startTS == event.endTS)
             event_item_color_bar.background.applyColorFilter(event.color)
@@ -142,6 +168,7 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
             event_item_start.setTextColor(newTextColor)
             event_item_end?.setTextColor(newTextColor)
             event_item_title.setTextColor(newTextColor)
+            event_item_date?.setTextColor(newTextColor)
             event_item_description?.setTextColor(newTextColor)
         }
     }

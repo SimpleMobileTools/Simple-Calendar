@@ -55,6 +55,7 @@ import java.io.OutputStream
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private val PICK_IMPORT_SOURCE_INTENT = 1
@@ -727,7 +728,6 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                     importIDsToDelete.forEach {
                         importIDs.remove(it)
                     }
-
                     eventsFound++
                     if (!importIDs.containsKey(contact.contactId.toString())) {
                         eventsHelper.insertEvent(event, false, false) {
@@ -741,6 +741,22 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
 
         callback(eventsFound, eventsAdded)
+    }
+
+    private fun readEventsDate(birthdays: Boolean) : HashMap<Long?,Long>{
+        val idAndStartTs = HashMap<Long?,Long>();
+        ensureBackgroundThread{
+            try {
+                val existingEventsDate = if (birthdays) eventsDB.getBirthdays() else eventsDB.getAnniversaries()
+                existingEventsDate.forEach {
+                    idAndStartTs[it.id] = it.startTS
+                }
+
+            } catch (e: Exception) {
+                showErrorToast(e)
+            }
+        }
+        return  idAndStartTs;
     }
 
     private fun getBirthdaysEventTypeId(): Long {
@@ -782,7 +798,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         currentFragments.clear()
         currentFragments.add(fragment)
         val bundle = Bundle()
-
+        bundle.putSerializable(BIRTHDAY_COUNTER, readEventsDate(true))
+        bundle.putSerializable(ANNIVERSARIES_COUNTER, readEventsDate(false))
         when (config.storedView) {
             DAILY_VIEW, MONTHLY_VIEW, MONTHLY_DAILY_VIEW -> bundle.putString(DAY_CODE, dayCode)
             WEEKLY_VIEW -> bundle.putString(WEEK_START_DATE_TIME, getThisWeekDateTime())
@@ -817,6 +834,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         currentFragments.add(fragment)
         val bundle = Bundle()
         bundle.putString(DAY_CODE, Formatter.getDayCodeFromDateTime(dateTime))
+        bundle.putSerializable(BIRTHDAY_COUNTER, readEventsDate(true))
+        bundle.putSerializable(ANNIVERSARIES_COUNTER,readEventsDate(false))
         fragment.arguments = bundle
         try {
             supportFragmentManager.beginTransaction().add(R.id.fragments_holder, fragment).commitNow()
@@ -842,7 +861,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         MONTHLY_VIEW -> MonthFragmentsHolder()
         MONTHLY_DAILY_VIEW -> MonthDayFragmentsHolder()
         YEARLY_VIEW -> YearFragmentsHolder()
-        EVENTS_LIST_VIEW -> EventListFragment()
+        EVENTS_LIST_VIEW -> EventListFragment().apply { ageCounter = readEventsDate(true); anniversariesCounter = readEventsDate(false) }
         else -> WeekFragmentsHolder()
     }
 

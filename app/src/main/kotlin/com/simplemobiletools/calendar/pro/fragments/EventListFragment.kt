@@ -46,6 +46,9 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
 
     lateinit var mView: View
 
+    var ageCounter = HashMap<Long?,Long>()
+    var anniversariesCounter = HashMap<Long?,Long>()
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mView = inflater.inflate(R.layout.fragment_event_list, container, false)
         mView.background = ColorDrawable(context!!.config.backgroundColor)
@@ -115,7 +118,7 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
 
             val currAdapter = mView.calendar_events_list.adapter
             if (currAdapter == null || forceRecreation) {
-                EventListAdapter(activity as SimpleActivity, listItems, true, this, mView.calendar_events_list) {
+                val eventListAdapter = EventListAdapter(activity as SimpleActivity, listItems, true, this, mView.calendar_events_list) {
                     if (it is ListEvent) {
                         context?.editEvent(it)
                     }
@@ -123,6 +126,8 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
                     mView.calendar_events_list.adapter = this
                 }
 
+                eventListAdapter.ageCounter = this.ageCounter
+                eventListAdapter.anniversariesCounter = this.anniversariesCounter
                 mView.calendar_events_list.scheduleLayoutAnimation()
                 mView.calendar_events_list.endlessScrollListener = object : MyRecyclerView.EndlessScrollListener {
                     override fun updateTop() {

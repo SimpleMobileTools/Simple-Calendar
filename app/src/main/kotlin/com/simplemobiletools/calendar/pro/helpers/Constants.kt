@@ -5,6 +5,8 @@ const val ROW_COUNT = 6
 const val COLUMN_COUNT = 7
 
 const val DAY_CODE = "day_code"
+const val BIRTHDAY_COUNTER = "birthday_counter";
+const val ANNIVERSARIES_COUNTER = "anniversaries_counter";
 const val YEAR_LABEL = "year"
 const val EVENT_ID = "event_id"
 const val IS_DUPLICATE_INTENT = "is_duplicate_intent"

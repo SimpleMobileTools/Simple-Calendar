@@ -13,11 +13,8 @@ import com.simplemobiletools.calendar.pro.activities.MainActivity
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.adapters.EventListAdapter
 import com.simplemobiletools.calendar.pro.extensions.*
-import com.simplemobiletools.calendar.pro.helpers.Config
-import com.simplemobiletools.calendar.pro.helpers.DAY_CODE
-import com.simplemobiletools.calendar.pro.helpers.Formatter
+import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter.YEAR_PATTERN
-import com.simplemobiletools.calendar.pro.helpers.MonthlyCalendarImpl
 import com.simplemobiletools.calendar.pro.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.pro.interfaces.NavigationListener
 import com.simplemobiletools.calendar.pro.models.DayMonthly
@@ -45,12 +42,17 @@ class MonthDayFragment : Fragment(), MonthlyCalendar, RefreshRecyclerViewListene
     lateinit var mHolder: ConstraintLayout
     lateinit var mConfig: Config
 
+    var ageCounter = HashMap<Long?,Long>()
+    var anniversariesCounter = HashMap<Long?,Long>()
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_month_day, container, false)
         mRes = resources
         mPackageName = activity!!.packageName
         mHolder = view.month_day_calendar_holder
         mDayCode = arguments!!.getString(DAY_CODE)!!
+        ageCounter = arguments!!.getSerializable(BIRTHDAY_COUNTER) as HashMap<Long?, Long>
+        anniversariesCounter = arguments!!.getSerializable(ANNIVERSARIES_COUNTER) as HashMap<Long?, Long>
 
         val shownMonthDateTime = Formatter.getDateTimeFromCode(mDayCode)
         mHolder.month_day_selected_day_label.apply {
@@ -146,13 +148,15 @@ class MonthDayFragment : Fragment(), MonthlyCalendar, RefreshRecyclerViewListene
 
                 val currAdapter = mHolder.month_day_events_list.adapter
                 if (currAdapter == null) {
-                    EventListAdapter(activity as SimpleActivity, listItems, true, this, month_day_events_list) {
+                    val eventListAdapter = EventListAdapter(activity as SimpleActivity, listItems, true, this, month_day_events_list) {
                         if (it is ListEvent) {
                             activity?.editEvent(it)
                         }
                     }.apply {
                         month_day_events_list.adapter = this
                     }
+                    eventListAdapter.ageCounter = this.ageCounter
+                    eventListAdapter.anniversariesCounter = this.anniversariesCounter
                     month_day_events_list.scheduleLayoutAnimation()
                 } else {
                     (currAdapter as EventListAdapter).updateListItems(listItems)

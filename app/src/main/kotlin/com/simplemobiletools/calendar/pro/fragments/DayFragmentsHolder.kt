@@ -12,6 +12,8 @@ import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.MainActivity
 import com.simplemobiletools.calendar.pro.adapters.MyDayPagerAdapter
 import com.simplemobiletools.calendar.pro.extensions.config
+import com.simplemobiletools.calendar.pro.helpers.ANNIVERSARIES_COUNTER
+import com.simplemobiletools.calendar.pro.helpers.BIRTHDAY_COUNTER
 import com.simplemobiletools.calendar.pro.helpers.DAY_CODE
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.interfaces.NavigationListener
@@ -22,6 +24,7 @@ import com.simplemobiletools.commons.views.MyViewPager
 import kotlinx.android.synthetic.main.fragment_days_holder.view.*
 import org.joda.time.DateTime
 import java.util.*
+import kotlin.collections.HashMap
 
 class DayFragmentsHolder : MyFragmentHolder(), NavigationListener {
     private val PREFILLED_DAYS = 251
@@ -31,11 +34,15 @@ class DayFragmentsHolder : MyFragmentHolder(), NavigationListener {
     private var todayDayCode = ""
     private var currentDayCode = ""
     private var isGoToTodayVisible = false
+    private var ageCounter = HashMap<Long?,Long>()
+    private var anniversariesCounter = HashMap<Long?,Long>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         currentDayCode = arguments?.getString(DAY_CODE) ?: ""
         todayDayCode = Formatter.getTodayCode()
+        ageCounter = arguments?.getSerializable(BIRTHDAY_COUNTER) as HashMap<Long?, Long>
+        anniversariesCounter = arguments?.getSerializable(ANNIVERSARIES_COUNTER) as HashMap<Long?, Long>
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -51,7 +58,8 @@ class DayFragmentsHolder : MyFragmentHolder(), NavigationListener {
         val codes = getDays(currentDayCode)
         val dailyAdapter = MyDayPagerAdapter(activity!!.supportFragmentManager, codes, this)
         defaultDailyPage = codes.size / 2
-
+        dailyAdapter.ageCounter = this.ageCounter
+        dailyAdapter.anniversariesCounter = this.anniversariesCounter;
 
         viewPager!!.apply {
             adapter = dailyAdapter

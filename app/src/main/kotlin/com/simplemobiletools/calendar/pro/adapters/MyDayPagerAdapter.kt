@@ -6,12 +6,16 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.simplemobiletools.calendar.pro.fragments.DayFragment
+import com.simplemobiletools.calendar.pro.helpers.ANNIVERSARIES_COUNTER
+import com.simplemobiletools.calendar.pro.helpers.BIRTHDAY_COUNTER
 import com.simplemobiletools.calendar.pro.helpers.DAY_CODE
 import com.simplemobiletools.calendar.pro.interfaces.NavigationListener
 
 class MyDayPagerAdapter(fm: FragmentManager, private val mCodes: List<String>, private val mListener: NavigationListener) :
         FragmentStatePagerAdapter(fm) {
     private val mFragments = SparseArray<DayFragment>()
+    var ageCounter  = HashMap<Long?,Long>()
+    var anniversariesCounter = HashMap<Long?,Long>()
 
     override fun getCount() = mCodes.size
 
@@ -19,6 +23,8 @@ class MyDayPagerAdapter(fm: FragmentManager, private val mCodes: List<String>, p
         val bundle = Bundle()
         val code = mCodes[position]
         bundle.putString(DAY_CODE, code)
+        bundle.putSerializable(BIRTHDAY_COUNTER,ageCounter)
+        bundle.putSerializable(ANNIVERSARIES_COUNTER,anniversariesCounter)
 
         val fragment = DayFragment()
         fragment.arguments = bundle
