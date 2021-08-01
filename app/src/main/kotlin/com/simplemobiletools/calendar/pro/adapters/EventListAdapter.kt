@@ -157,13 +157,9 @@ class EventListAdapter(activity: SimpleActivity, var listItems: ArrayList<ListIt
         val anniversariesDate = (anniversariesCounter[listEvent.id]?.let { Formatter.getDateTimeFromTS(it).year.toString()})
         val ageDate = (ageCounter[listEvent.id]?.let { Formatter.getDateTimeFromTS(it).year.toString()})
         if (anniversariesDate != null) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                return "("+ (Formatter.getDateTimeFromTS(listEvent.startTS).year - anniversariesDate.toInt()).toString()+")"
-            }
+            return "("+ (Formatter.getDateTimeFromTS(listEvent.startTS).year - anniversariesDate.toInt()).toString()+")"
         }else if(ageDate != null) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                return "("+ (Formatter.getDateTimeFromTS(listEvent.startTS).year - ageDate.toInt()).toString()+")"
-            }
+            return "("+ (Formatter.getDateTimeFromTS(listEvent.startTS).year - ageDate.toInt()).toString()+")"
         }
         return ""
     }

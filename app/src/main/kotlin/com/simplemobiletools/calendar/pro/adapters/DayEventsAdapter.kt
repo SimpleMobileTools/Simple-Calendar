@@ -121,13 +121,9 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
         val anniversariesDate = (anniversariesCounter[event.id]?.let { Formatter.getDateTimeFromTS(it).year.toString()})
         val ageDate = (ageCounter[event.id]?.let { Formatter.getDateTimeFromTS(it).year.toString()})
         if (anniversariesDate != null) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-               return "("+ (Formatter.getDateTimeFromTS(event.startTS).year - anniversariesDate.toInt()).toString()+")"
-            }
+            return "("+ (Formatter.getDateTimeFromTS(event.startTS).year - anniversariesDate.toInt()).toString()+")"
         }else if(ageDate != null) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                return "("+ (Formatter.getDateTimeFromTS(event.startTS).year - ageDate.toInt()).toString()+")"
-            }
+            return "("+ (Formatter.getDateTimeFromTS(event.startTS).year - ageDate.toInt()).toString()+")"
         }
         return ""
     }
