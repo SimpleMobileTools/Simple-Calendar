@@ -1,0 +1,42 @@
+Prosty kalendarz Pro to w pełni konfigurowalny kalendarz offline zaprojektowany tak, aby robił dokładnie to, co powinien robić kalendarz. <b>Bez skomplikowanych funkcji, zbędnych uprawnień i bez reklam!</b>
+
+Niezależnie od tego, czy organizujesz pojedyncze czy cykliczne wydarzenia, urodziny, rocznice, spotkania biznesowe, terminy lub cokolwiek innego, Prosty kalendarz Pro ułatwia <b>pozostać zorganizowanym(-ną)</b>. Dzięki niesamowitej różnorodności <b>opcji personalizacji</b> możesz dostosować przypomnienia o wydarzeniach, dźwięki powiadomień, widżety kalendarza i wygląd aplikacji. 
+
+Widoki dzienny, tygodniowy i miesięczny ułatwiają sprawdzanie nadchodzących wydarzeń; umawianie spotkań to pestka. Możesz nawet wyświetlić wszystko jako prosta lista wydarzeń zamiast w widoku kalendarza, dzięki czemu <b>dokładnie wiesz, co i kiedy nadejdzie w Twoim życiu.</b>
+
+----------------------------------------------------------
+<b>Prosty kalendarz Pro – Funkcje i korzyści</b>
+----------------------------------------------------------
+
+✔️ Brak reklam i denerwujących wyskakujących okienek 
+✔️ Nie jest potrzebny dostęp do Internetu, co zapewnia większą prywatność i bezpieczeństwo
+✔️ Wymagane jedynie minimum uprawnień
+✔️ Nacisk na prostotę - robi to, co kalendarz powinien robić!
+✔️ Otwartoźródłowy
+✔️ W pełni konfigurowalne motywy i widżety kalendarza/wydarzeń
+✔️ Przetłumaczony na 29 języków
+✔️ Eksportuj ustawienia do plików .txt, aby zaimportować je na inne urządzenie
+✔️ Wsparcie synchronizacji kalendarza CalDAV dla synchronizowania wydarzeń między urządzeniami
+✔️ Widoki kalendarza: dzienny, tygodniowy, miesięczny, roczny i wydarzeń
+✔️ Obsługuje eksport i import wydarzeń za pomocą plików .ics
+✔️ Ustawiaj wiele przypomnień o wydarzeniach, dostosuj dźwięk i wibracje powiadomienia 
+✔️ Opcja drzemki dla przypomnień
+✔️ Łatwo dodawaj święta, urodziny, rocznice i spotkania
+✔️ Personalizuj wydarzenia – czas rozpoczęcia, czas trwania, przypomnienia itp.
+✔️ Dodawaj uczestników do każdego wydarzenia
+✔️ Używaj jako kalendarza osobistego lub kalendarza biznesowego 
+✔️ Wybieraj między przypomnieniami z aplikacji a powiadomieniami e-mail, aby informowały Cię o wydarzeniu
+
+POBIERZ PROSTY KALENDARZ PRO – PROSTY KALENDARZ OFFLINE BEZ REKLAM! 
+
+<b>Sprawdź pełen zestaw od Simple Tools tutaj:</b>
+https://www.simplemobiletools.com
+
+<b>Strona internetowa Prostego kalendarza Pro:</b>
+https://www.simplemobiletools.com/calendar
+
+<b>Facebook:</b>
+https://www.facebook.com/simplemobiletools
+
+<b>Reddit:</b>
+https://www.reddit.com/r/SimpleMobileTools
