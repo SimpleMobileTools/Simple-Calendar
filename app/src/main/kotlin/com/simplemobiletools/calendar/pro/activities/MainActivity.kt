@@ -744,23 +744,11 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     private fun getBirthdaysEventTypeId(): Long {
-        val birthdays = getString(R.string.birthdays)
-        var eventTypeId = eventsHelper.getEventTypeIdWithTitle(birthdays)
-        if (eventTypeId == -1L) {
-            val eventType = EventType(null, birthdays, resources.getColor(R.color.default_birthdays_color))
-            eventTypeId = eventsHelper.insertOrUpdateEventTypeSync(eventType)
-        }
-        return eventTypeId
+        return eventsHelper.getBirthdaysEventTypeId()
     }
 
     private fun getAnniversariesEventTypeId(): Long {
-        val anniversaries = getString(R.string.anniversaries)
-        var eventTypeId = eventsHelper.getEventTypeIdWithTitle(anniversaries)
-        if (eventTypeId == -1L) {
-            val eventType = EventType(null, anniversaries, resources.getColor(R.color.default_anniversaries_color))
-            eventTypeId = eventsHelper.insertOrUpdateEventTypeSync(eventType)
-        }
-        return eventTypeId
+       return eventsHelper.getAnniversariesEventTypeId()
     }
 
     private fun updateView(view: Int) {

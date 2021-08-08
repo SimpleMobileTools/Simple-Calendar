@@ -3,11 +3,13 @@ package com.simplemobiletools.calendar.pro.helpers
 import android.app.Activity
 import android.content.Context
 import androidx.collection.LongSparseArray
+import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.commons.helpers.CHOPPED_LIST_DEFAULT_SIZE
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
+import java.util.Date
 
 class EventsHelper(val context: Context) {
     private val config = context.config
@@ -259,6 +261,9 @@ class EventsHelper(val context: Context) {
     }
 
     fun getEventsSync(fromTS: Long, toTS: Long, eventId: Long = -1L, applyTypeFilter: Boolean, callback: (events: ArrayList<Event>) -> Unit) {
+        val birthDayEventId = getBirthdaysEventTypeId(createIfNotExists = false)
+        val anniversaryEventId = getAnniversariesEventTypeId(createIfNotExists = false)
+
         var events = if (applyTypeFilter) {
             val displayEventTypes = context.config.displayEventTypes
             if (displayEventTypes.isEmpty()) {
@@ -294,10 +299,35 @@ class EventsHelper(val context: Context) {
 
         events.forEach {
             it.updateIsPastEvent()
+            if((birthDayEventId != -1L && it.eventType == birthDayEventId) or
+                (anniversaryEventId != -1L && it.eventType == anniversaryEventId)){
+                val years = Date().year - Date(it.startTS).year
+                it.title = "${it.title} ($years)"
+            }
             it.color = eventTypeColors.get(it.eventType) ?: config.primaryColor
         }
 
         callback(events)
+    }
+
+    fun getBirthdaysEventTypeId(createIfNotExists: Boolean = true): Long {
+        val birthdays = context.getString(R.string.birthdays)
+        var eventTypeId = getEventTypeIdWithTitle(birthdays)
+        if (eventTypeId == -1L && createIfNotExists) {
+            val eventType = EventType(null, birthdays, context.resources.getColor(R.color.default_birthdays_color))
+            eventTypeId = insertOrUpdateEventTypeSync(eventType)
+        }
+        return eventTypeId
+    }
+
+    fun getAnniversariesEventTypeId(createIfNotExists: Boolean = true): Long {
+        val anniversaries = context.getString(R.string.anniversaries)
+        var eventTypeId = getEventTypeIdWithTitle(anniversaries)
+        if (eventTypeId == -1L && createIfNotExists) {
+            val eventType = EventType(null, anniversaries, context.resources.getColor(R.color.default_anniversaries_color))
+            eventTypeId = insertOrUpdateEventTypeSync(eventType)
+        }
+        return eventTypeId
     }
 
     fun getRepeatableEventsFor(fromTS: Long, toTS: Long, eventId: Long = -1L, applyTypeFilter: Boolean = false): List<Event> {
