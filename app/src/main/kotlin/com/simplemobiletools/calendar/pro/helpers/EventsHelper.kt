@@ -10,6 +10,8 @@ import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.commons.helpers.CHOPPED_LIST_DEFAULT_SIZE
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import java.util.Date
+import org.joda.time.DateTime
+import org.joda.time.LocalDateTime
 
 class EventsHelper(val context: Context) {
     private val config = context.config
@@ -299,10 +301,17 @@ class EventsHelper(val context: Context) {
 
         events.forEach {
             it.updateIsPastEvent()
-            if((birthDayEventId != -1L && it.eventType == birthDayEventId) or
+            val originalEvent = eventsDB.getEventWithId(it.id!!)
+            if(originalEvent != null &&
+                (birthDayEventId != -1L && it.eventType == birthDayEventId) or
                 (anniversaryEventId != -1L && it.eventType == anniversaryEventId)){
-                val years = Date().year - Date(it.startTS).year
-                it.title = "${it.title} ($years)"
+                val eventStartDate = Formatter.getDateFromTS(it.startTS)
+                val originalEventStartDate = Formatter.getDateFromTS(originalEvent.startTS)
+                val years = (eventStartDate.year - originalEventStartDate.year).coerceAtLeast(0)
+                if(years > 0){
+                    it.title = "${it.title} ($years)"
+                }
+
             }
             it.color = eventTypeColors.get(it.eventType) ?: config.primaryColor
         }
