@@ -93,6 +93,7 @@ const val REPEAT_ORDER_WEEKDAY = 4                      // i.e. every 4th sunday
 // special event flags
 const val FLAG_ALL_DAY = 1
 const val FLAG_IS_PAST_EVENT = 2
+const val FLAG_MISSING_YEAR_EVENT = 4
 
 // constants related to ICS file exporting / importing
 const val BEGIN_CALENDAR = "BEGIN:VCALENDAR"
@@ -174,3 +175,13 @@ fun isWeekend(i: Int, isSundayFirst: Boolean): Boolean {
         i == 5 || i == 6 || i == 12 || i == 13
     }
 }
+
+fun getDateFormatsWithYear() = arrayListOf(
+    "yyyy-MM-dd",
+    "yyyyMMdd",
+    "yyyy.MM.dd",
+    "yy-MM-dd",
+    "yyMMdd",
+    "yy.MM.dd",
+    "yy/MM/dd",
+)

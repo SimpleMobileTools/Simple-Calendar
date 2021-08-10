@@ -307,11 +307,12 @@ class EventsHelper(val context: Context) {
                 (anniversaryEventId != -1L && it.eventType == anniversaryEventId)){
                 val eventStartDate = Formatter.getDateFromTS(it.startTS)
                 val originalEventStartDate = Formatter.getDateFromTS(originalEvent.startTS)
-                val years = (eventStartDate.year - originalEventStartDate.year).coerceAtLeast(0)
-                if(years > 0){
-                    it.title = "${it.title} ($years)"
+                if(it.flags and FLAG_MISSING_YEAR_EVENT == 0){
+                    val years = (eventStartDate.year - originalEventStartDate.year).coerceAtLeast(0)
+                    if(years > 0){
+                        it.title = "${it.title} ($years)"
+                    }
                 }
-
             }
             it.color = eventTypeColors.get(it.eventType) ?: config.primaryColor
         }

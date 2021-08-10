@@ -606,6 +606,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         val selectionArgs = arrayOf(CommonDataKinds.Event.CONTENT_ITEM_TYPE, type.toString())
 
         val dateFormats = getDateFormats()
+        val yearDateFormats = getDateFormatsWithYear()
         val existingEvents = if (birthdays) eventsDB.getBirthdays() else eventsDB.getAnniversaries()
         val importIDs = HashMap<String, Long>()
         existingEvents.forEach {
@@ -624,15 +625,17 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                 try {
                     val formatter = SimpleDateFormat(format, Locale.getDefault())
                     val date = formatter.parse(startDate)
-                    if (date.year < 70) {
-                        date.year = 70
+                    val flags = if(format in yearDateFormats){
+                        FLAG_ALL_DAY
+                    }else {
+                        FLAG_ALL_DAY or FLAG_MISSING_YEAR_EVENT
                     }
 
                     val timestamp = date.time / 1000L
                     val lastUpdated = cursor.getLongValue(CommonDataKinds.Event.CONTACT_LAST_UPDATED_TIMESTAMP)
                     val event = Event(
                         null, timestamp, timestamp, name, reminder1Minutes = reminders[0], reminder2Minutes = reminders[1],
-                        reminder3Minutes = reminders[2], importId = contactId, timeZone = DateTimeZone.getDefault().id, flags = FLAG_ALL_DAY,
+                        reminder3Minutes = reminders[2], importId = contactId, timeZone = DateTimeZone.getDefault().id, flags = flags,
                         repeatInterval = YEAR, repeatRule = REPEAT_SAME_DAY, eventType = eventTypeId, source = source, lastUpdated = lastUpdated
                     )
 
