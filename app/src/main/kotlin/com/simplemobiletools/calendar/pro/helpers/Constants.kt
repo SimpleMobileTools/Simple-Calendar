@@ -175,13 +175,3 @@ fun isWeekend(i: Int, isSundayFirst: Boolean): Boolean {
         i == 5 || i == 6 || i == 12 || i == 13
     }
 }
-
-fun getDateFormatsWithYear() = arrayListOf(
-    "yyyy-MM-dd",
-    "yyyyMMdd",
-    "yyyy.MM.dd",
-    "yy-MM-dd",
-    "yyMMdd",
-    "yy.MM.dd",
-    "yy/MM/dd",
-)
