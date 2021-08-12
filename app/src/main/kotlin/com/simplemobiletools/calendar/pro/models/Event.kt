@@ -138,6 +138,7 @@ data class Event(
     }
 
     fun getIsAllDay() = flags and FLAG_ALL_DAY != 0
+    fun hasMissingYear() = flags and FLAG_MISSING_YEAR != 0
 
     fun getReminders() = setOf(
         Reminder(reminder1Minutes, reminder1Type),

@@ -606,13 +606,14 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         val selectionArgs = arrayOf(CommonDataKinds.Event.CONTENT_ITEM_TYPE, type.toString())
 
         val dateFormats = getDateFormats()
+        val yearDateFormats = getDateFormatsWithYear()
         val existingEvents = if (birthdays) eventsDB.getBirthdays() else eventsDB.getAnniversaries()
         val importIDs = HashMap<String, Long>()
         existingEvents.forEach {
             importIDs[it.importId] = it.startTS
         }
 
-        val eventTypeId = if (birthdays) getBirthdaysEventTypeId() else getAnniversariesEventTypeId()
+        val eventTypeId = if (birthdays) eventsHelper.getBirthdaysEventTypeId() else eventsHelper.getAnniversariesEventTypeId()
         val source = if (birthdays) SOURCE_CONTACT_BIRTHDAY else SOURCE_CONTACT_ANNIVERSARY
 
         queryCursor(uri, projection, selection, selectionArgs, showErrors = true) { cursor ->
@@ -624,15 +625,17 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                 try {
                     val formatter = SimpleDateFormat(format, Locale.getDefault())
                     val date = formatter.parse(startDate)
-                    if (date.year < 70) {
-                        date.year = 70
+                    val flags = if (format in yearDateFormats) {
+                        FLAG_ALL_DAY
+                    } else {
+                        FLAG_ALL_DAY or FLAG_MISSING_YEAR
                     }
 
                     val timestamp = date.time / 1000L
                     val lastUpdated = cursor.getLongValue(CommonDataKinds.Event.CONTACT_LAST_UPDATED_TIMESTAMP)
                     val event = Event(
                         null, timestamp, timestamp, name, reminder1Minutes = reminders[0], reminder2Minutes = reminders[1],
-                        reminder3Minutes = reminders[2], importId = contactId, timeZone = DateTimeZone.getDefault().id, flags = FLAG_ALL_DAY,
+                        reminder3Minutes = reminders[2], importId = contactId, timeZone = DateTimeZone.getDefault().id, flags = flags,
                         repeatInterval = YEAR, repeatRule = REPEAT_SAME_DAY, eventType = eventTypeId, source = source, lastUpdated = lastUpdated
                     )
 
@@ -681,7 +684,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
 
         try {
-            val eventTypeId = if (birthdays) getBirthdaysEventTypeId() else getAnniversariesEventTypeId()
+            val eventTypeId = if (birthdays) eventsHelper.getBirthdaysEventTypeId() else eventsHelper.getAnniversariesEventTypeId()
             val source = if (birthdays) SOURCE_CONTACT_BIRTHDAY else SOURCE_CONTACT_ANNIVERSARY
 
             val existingEvents = if (birthdays) eventsDB.getBirthdays() else eventsDB.getAnniversaries()
@@ -741,26 +744,6 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
 
         callback(eventsFound, eventsAdded)
-    }
-
-    private fun getBirthdaysEventTypeId(): Long {
-        val birthdays = getString(R.string.birthdays)
-        var eventTypeId = eventsHelper.getEventTypeIdWithTitle(birthdays)
-        if (eventTypeId == -1L) {
-            val eventType = EventType(null, birthdays, resources.getColor(R.color.default_birthdays_color))
-            eventTypeId = eventsHelper.insertOrUpdateEventTypeSync(eventType)
-        }
-        return eventTypeId
-    }
-
-    private fun getAnniversariesEventTypeId(): Long {
-        val anniversaries = getString(R.string.anniversaries)
-        var eventTypeId = eventsHelper.getEventTypeIdWithTitle(anniversaries)
-        if (eventTypeId == -1L) {
-            val eventType = EventType(null, anniversaries, resources.getColor(R.color.default_anniversaries_color))
-            eventTypeId = eventsHelper.insertOrUpdateEventTypeSync(eventType)
-        }
-        return eventTypeId
     }
 
     private fun updateView(view: Int) {
