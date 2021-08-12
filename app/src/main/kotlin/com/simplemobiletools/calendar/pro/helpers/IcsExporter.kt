@@ -23,7 +23,13 @@ class IcsExporter {
     private var eventsFailed = 0
     private var calendars = ArrayList<CalDAVCalendar>()
 
-    fun exportEvents(activity: BaseSimpleActivity, outputStream: OutputStream?, events: ArrayList<Event>, showExportingToast: Boolean, callback: (result: ExportResult) -> Unit) {
+    fun exportEvents(
+        activity: BaseSimpleActivity,
+        outputStream: OutputStream?,
+        events: ArrayList<Event>,
+        showExportingToast: Boolean,
+        callback: (result: ExportResult) -> Unit
+    ) {
         if (outputStream == null) {
             callback(EXPORT_FAIL)
             return
@@ -58,7 +64,7 @@ class IcsExporter {
                         event.startTS.let { out.writeLn("$DTSTART:${Formatter.getExportedTime(it * 1000L)}") }
                         event.endTS.let { out.writeLn("$DTEND:${Formatter.getExportedTime(it * 1000L)}") }
                     }
-                    event.hasMissingYear().let { out.writeLn("$MISSING_YEAR${if(it) 1 else 0}") }
+                    event.hasMissingYear().let { out.writeLn("$MISSING_YEAR${if (it) 1 else 0}") }
 
                     out.writeLn("$DTSTAMP$exportTime")
                     out.writeLn("$STATUS$CONFIRMED")
@@ -74,11 +80,13 @@ class IcsExporter {
                 out.writeLn(END_CALENDAR)
             }
 
-            callback(when {
-                eventsExported == 0 -> EXPORT_FAIL
-                eventsFailed > 0 -> EXPORT_PARTIAL
-                else -> EXPORT_OK
-            })
+            callback(
+                when {
+                    eventsExported == 0 -> EXPORT_FAIL
+                    eventsFailed > 0 -> EXPORT_PARTIAL
+                    else -> EXPORT_OK
+                }
+            )
         }
     }
 
