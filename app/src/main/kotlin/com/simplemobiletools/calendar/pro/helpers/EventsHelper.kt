@@ -9,9 +9,6 @@ import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.commons.helpers.CHOPPED_LIST_DEFAULT_SIZE
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
-import java.util.Date
-import org.joda.time.DateTime
-import org.joda.time.LocalDateTime
 
 class EventsHelper(val context: Context) {
     private val config = context.config
@@ -302,14 +299,15 @@ class EventsHelper(val context: Context) {
         events.forEach {
             it.updateIsPastEvent()
             val originalEvent = eventsDB.getEventWithId(it.id!!)
-            if(originalEvent != null &&
+            if (originalEvent != null &&
                 (birthDayEventId != -1L && it.eventType == birthDayEventId) or
-                (anniversaryEventId != -1L && it.eventType == anniversaryEventId)){
+                (anniversaryEventId != -1L && it.eventType == anniversaryEventId)
+            ) {
                 val eventStartDate = Formatter.getDateFromTS(it.startTS)
                 val originalEventStartDate = Formatter.getDateFromTS(originalEvent.startTS)
-                if(it.hasMissingYear().not()){
+                if (it.hasMissingYear().not()) {
                     val years = (eventStartDate.year - originalEventStartDate.year).coerceAtLeast(0)
-                    if(years > 0){
+                    if (years > 0) {
                         it.title = "${it.title} ($years)"
                     }
                 }
