@@ -613,7 +613,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             importIDs[it.importId] = it.startTS
         }
 
-        val eventTypeId = if (birthdays) getBirthdaysEventTypeId() else getAnniversariesEventTypeId()
+        val eventTypeId = if (birthdays) eventsHelper.getBirthdaysEventTypeId() else eventsHelper.getAnniversariesEventTypeId()
         val source = if (birthdays) SOURCE_CONTACT_BIRTHDAY else SOURCE_CONTACT_ANNIVERSARY
 
         queryCursor(uri, projection, selection, selectionArgs, showErrors = true) { cursor ->
@@ -625,9 +625,9 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                 try {
                     val formatter = SimpleDateFormat(format, Locale.getDefault())
                     val date = formatter.parse(startDate)
-                    val flags = if(format in yearDateFormats){
+                    val flags = if (format in yearDateFormats) {
                         FLAG_ALL_DAY
-                    }else {
+                    } else {
                         FLAG_ALL_DAY or FLAG_MISSING_YEAR
                     }
 
@@ -684,7 +684,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
 
         try {
-            val eventTypeId = if (birthdays) getBirthdaysEventTypeId() else getAnniversariesEventTypeId()
+            val eventTypeId = if (birthdays) eventsHelper.getBirthdaysEventTypeId() else eventsHelper.getAnniversariesEventTypeId()
             val source = if (birthdays) SOURCE_CONTACT_BIRTHDAY else SOURCE_CONTACT_ANNIVERSARY
 
             val existingEvents = if (birthdays) eventsDB.getBirthdays() else eventsDB.getAnniversaries()
@@ -744,14 +744,6 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
 
         callback(eventsFound, eventsAdded)
-    }
-
-    private fun getBirthdaysEventTypeId(): Long {
-        return eventsHelper.getBirthdaysEventTypeId()
-    }
-
-    private fun getAnniversariesEventTypeId(): Long {
-       return eventsHelper.getAnniversariesEventTypeId()
     }
 
     private fun updateView(view: Int) {
