@@ -128,6 +128,10 @@ class IcsImporter(val activity: SimpleActivity) {
                         if (color.trimStart('-').areDigitsOnly()) {
                             curCategoryColor = Integer.parseInt(color)
                         }
+                    } else if (line.startsWith(MISSING_YEAR)) {
+                        if (line.substring(MISSING_YEAR.length) == "1") {
+                            curFlags = curFlags or FLAG_MISSING_YEAR
+                        }
                     } else if (line.startsWith(CATEGORIES) && !overrideFileEventTypes) {
                         val categories = line.substring(CATEGORIES.length)
                         tryAddCategories(categories)

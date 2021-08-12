@@ -58,6 +58,7 @@ class IcsExporter {
                         event.startTS.let { out.writeLn("$DTSTART:${Formatter.getExportedTime(it * 1000L)}") }
                         event.endTS.let { out.writeLn("$DTEND:${Formatter.getExportedTime(it * 1000L)}") }
                     }
+                    event.hasMissingYear().let { out.writeLn("$MISSING_YEAR${if(it) 1 else 0}") }
 
                     out.writeLn("$DTSTAMP$exportTime")
                     out.writeLn("$STATUS$CONFIRMED")

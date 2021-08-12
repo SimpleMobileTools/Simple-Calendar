@@ -628,7 +628,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                     val flags = if(format in yearDateFormats){
                         FLAG_ALL_DAY
                     }else {
-                        FLAG_ALL_DAY or FLAG_MISSING_YEAR_EVENT
+                        FLAG_ALL_DAY or FLAG_MISSING_YEAR
                     }
 
                     val timestamp = date.time / 1000L

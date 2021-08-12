@@ -307,7 +307,7 @@ class EventsHelper(val context: Context) {
                 (anniversaryEventId != -1L && it.eventType == anniversaryEventId)){
                 val eventStartDate = Formatter.getDateFromTS(it.startTS)
                 val originalEventStartDate = Formatter.getDateFromTS(originalEvent.startTS)
-                if(it.flags and FLAG_MISSING_YEAR_EVENT == 0){
+                if(it.hasMissingYear().not()){
                     val years = (eventStartDate.year - originalEventStartDate.year).coerceAtLeast(0)
                     if(years > 0){
                         it.title = "${it.title} ($years)"
