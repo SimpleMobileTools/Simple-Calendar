@@ -121,14 +121,14 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
                 val daysCnt = getEventLastingDaysCount(event)
                 val validDayEvent = isDayValid(event, day.code)
                 if ((lastEvent == null || lastEvent.startDayIndex + daysCnt <= day.indexOnMonthView) && !validDayEvent) {
-                    val monthViewEvent = MonthViewEvent(event.id!!, event.title, event.startTS, event.color, day.indexOnMonthView,
+                    val monthViewEvent = MonthViewEvent(event.id!!, event.title, event.startTS, event.endTS, event.color, day.indexOnMonthView,
                         daysCnt, day.indexOnMonthView, event.getIsAllDay(), event.isPastEvent)
                     allEvents.add(monthViewEvent)
                 }
             }
         }
 
-        allEvents = allEvents.asSequence().sortedWith(compareBy({ -it.daysCnt }, { !it.isAllDay }, { it.startTS }, { it.startDayIndex }, { it.title }))
+        allEvents = allEvents.asSequence().sortedWith(compareBy({ -it.daysCnt }, { !it.isAllDay }, { it.startTS }, { it.endTS }, { it.startDayIndex }, { it.title }))
             .toMutableList() as ArrayList<MonthViewEvent>
     }
 
