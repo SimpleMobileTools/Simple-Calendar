@@ -217,6 +217,7 @@
     <string name="insufficient_permissions">你不被允許對選擇的行事曆寫入</string>
     <string name="caldav_event_not_found">Event not found. Please enable CalDAV sync for the appropriate calendar in the app settings.</string>
     <string name="no_synchronized_calendars">No synchronizable calendars have been found</string>
+    <string name="status_free">空閒</string>
     <string name="status_busy">繁忙</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
@@ -302,7 +303,6 @@
         <b>Reddit:</b>
         https://www.reddit.com/r/SimpleMobileTools
     </string>
-    <string name="status_free">空閒</string>
 
     <!--
         Haven't found some strings? There's more at
