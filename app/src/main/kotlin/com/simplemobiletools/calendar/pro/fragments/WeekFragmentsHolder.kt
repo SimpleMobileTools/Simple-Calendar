@@ -42,7 +42,6 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
     private var currentWeekTS = 0L
     private var isGoToTodayVisible = false
     private var weekScrollY = 0
-    lateinit var mConfig: Config
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,7 +53,6 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         weekHolder = inflater.inflate(R.layout.fragment_week_holder, container, false) as ViewGroup
         weekHolder!!.background = ColorDrawable(context!!.config.backgroundColor)
-        mConfig = requireContext().config
         val itemHeight = context!!.getWeeklyViewItemHeight().toInt()
         weekHolder!!.week_view_hours_holder.setPadding(0, 0, 0, itemHeight)
 
@@ -66,9 +64,10 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
 
     override fun onResume() {
         super.onResume()
-        week_view_days_count_divider.beVisibleIf(mConfig.allowCustomiseDayCount)
-        week_view_seekbar.beVisibleIf(mConfig.allowCustomiseDayCount)
-        week_view_days_count.beVisibleIf(mConfig.allowCustomiseDayCount)
+        context?.config?.allowCustomizeDayCount?.let { allow->
+            week_view_days_count.beVisibleIf(allow)
+            week_view_seekbar.beVisibleIf(allow)
+        }
     }
 
     private fun setupFragment() {

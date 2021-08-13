@@ -723,7 +723,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/settings_allow_customise_day_count_holder"
+            android:id="@+id/settings_allow_customize_day_count_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/medium_margin"
@@ -734,7 +734,7 @@
             android:paddingBottom="@dimen/activity_margin">
 
             <com.simplemobiletools.commons.views.MySwitchCompat
-                android:id="@+id/settings_allow_customise_day_count"
+                android:id="@+id/settings_allow_customize_day_count"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
