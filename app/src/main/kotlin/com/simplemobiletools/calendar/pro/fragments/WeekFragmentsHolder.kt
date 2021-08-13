@@ -17,6 +17,7 @@ import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.MainActivity
 import com.simplemobiletools.calendar.pro.adapters.MyWeekPagerAdapter
 import com.simplemobiletools.calendar.pro.extensions.*
+import com.simplemobiletools.calendar.pro.helpers.Config
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.helpers.WEEK_START_DATE_TIME
 import com.simplemobiletools.calendar.pro.interfaces.WeekFragmentListener
@@ -25,6 +26,9 @@ import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.WEEK_SECONDS
 import com.simplemobiletools.commons.views.MyViewPager
 import kotlinx.android.synthetic.main.fragment_week_holder.view.*
+import kotlinx.android.synthetic.main.fragment_week_holder.week_view_days_count
+import kotlinx.android.synthetic.main.fragment_week_holder.week_view_days_count_divider
+import kotlinx.android.synthetic.main.fragment_week_holder.week_view_seekbar
 import org.joda.time.DateTime
 
 class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
@@ -38,6 +42,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
     private var currentWeekTS = 0L
     private var isGoToTodayVisible = false
     private var weekScrollY = 0
+    lateinit var mConfig: Config
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +54,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         weekHolder = inflater.inflate(R.layout.fragment_week_holder, container, false) as ViewGroup
         weekHolder!!.background = ColorDrawable(context!!.config.backgroundColor)
-
+        mConfig = requireContext().config
         val itemHeight = context!!.getWeeklyViewItemHeight().toInt()
         weekHolder!!.week_view_hours_holder.setPadding(0, 0, 0, itemHeight)
 
@@ -57,6 +62,13 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
         viewPager!!.id = (System.currentTimeMillis() % 100000).toInt()
         setupFragment()
         return weekHolder
+    }
+
+    override fun onResume() {
+        super.onResume()
+        week_view_days_count_divider.beVisibleIf(mConfig.allowCustomiseDayCount)
+        week_view_seekbar.beVisibleIf(mConfig.allowCustomiseDayCount)
+        week_view_days_count.beVisibleIf(mConfig.allowCustomiseDayCount)
     }
 
     private fun setupFragment() {
