@@ -1,5 +1,6 @@
 package com.simplemobiletools.calendar.pro.helpers
 
+import android.provider.CalendarContract.Events
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.calDAVHelper
 import com.simplemobiletools.calendar.pro.extensions.eventTypesDB
@@ -56,6 +57,7 @@ class IcsExporter {
                     event.eventType.let { out.writeLn("$CATEGORIES${activity.eventTypesDB.getEventTypeWithId(it)?.title}") }
                     event.lastUpdated.let { out.writeLn("$LAST_MODIFIED:${Formatter.getExportedTime(it)}") }
                     event.location.let { out.writeLn("$LOCATION:$it") }
+                    event.availability.let { out.writeLn("$TRANSP${if (it == Events.AVAILABILITY_FREE) TRANSPARENT else OPAQUE}") }
 
                     if (event.getIsAllDay()) {
                         out.writeLn("$DTSTART;$VALUE=$DATE:${Formatter.getDayCodeFromTS(event.startTS)}")
