@@ -17,7 +17,6 @@ import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.MainActivity
 import com.simplemobiletools.calendar.pro.adapters.MyWeekPagerAdapter
 import com.simplemobiletools.calendar.pro.extensions.*
-import com.simplemobiletools.calendar.pro.helpers.Config
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.helpers.WEEK_START_DATE_TIME
 import com.simplemobiletools.calendar.pro.interfaces.WeekFragmentListener
@@ -26,9 +25,6 @@ import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.WEEK_SECONDS
 import com.simplemobiletools.commons.views.MyViewPager
 import kotlinx.android.synthetic.main.fragment_week_holder.view.*
-import kotlinx.android.synthetic.main.fragment_week_holder.week_view_days_count
-import kotlinx.android.synthetic.main.fragment_week_holder.week_view_days_count_divider
-import kotlinx.android.synthetic.main.fragment_week_holder.week_view_seekbar
 import org.joda.time.DateTime
 
 class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
@@ -53,6 +49,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         weekHolder = inflater.inflate(R.layout.fragment_week_holder, container, false) as ViewGroup
         weekHolder!!.background = ColorDrawable(context!!.config.backgroundColor)
+
         val itemHeight = context!!.getWeeklyViewItemHeight().toInt()
         weekHolder!!.week_view_hours_holder.setPadding(0, 0, 0, itemHeight)
 
@@ -64,9 +61,9 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
 
     override fun onResume() {
         super.onResume()
-        context?.config?.allowCustomizeDayCount?.let { allow->
-            week_view_days_count.beVisibleIf(allow)
-            week_view_seekbar.beVisibleIf(allow)
+        context?.config?.allowCustomizeDayCount?.let { allow ->
+            weekHolder!!.week_view_days_count.beVisibleIf(allow)
+            weekHolder!!.week_view_seekbar.beVisibleIf(allow)
         }
     }
 
@@ -120,8 +117,10 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
 
         // avoid seekbar width changing if the days count changes to 1, 10 etc
         weekHolder!!.week_view_days_count.onGlobalLayout {
-            weekHolder!!.week_view_seekbar.layoutParams.width = weekHolder!!.week_view_seekbar.width
-            (weekHolder!!.week_view_seekbar.layoutParams as RelativeLayout.LayoutParams).removeRule(RelativeLayout.START_OF)
+            if (weekHolder!!.week_view_seekbar.isVisible()) {
+                weekHolder!!.week_view_seekbar.layoutParams.width = weekHolder!!.week_view_seekbar.width
+                (weekHolder!!.week_view_seekbar.layoutParams as RelativeLayout.LayoutParams).removeRule(RelativeLayout.START_OF)
+            }
         }
 
         updateDaysCount(context?.config?.weeklyViewDays ?: 7)
