@@ -217,8 +217,8 @@
     <string name="insufficient_permissions">您不被允许对选择的日历写入</string>
     <string name="caldav_event_not_found">未找到活动。请在应用程序设定中为对应的日历启用 CalDAV 同步。</string>
     <string name="no_synchronized_calendars">未发现可同步的日历</string>
-    <string name="status_free">Free</string>
-    <string name="status_busy">Busy</string>
+    <string name="status_free">空闲</string>
+    <string name="status_busy">繁忙</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
@@ -302,9 +302,9 @@
 
         <b>Reddit:</b>
         https://www.reddit.com/r/SimpleMobileTools
-    </string>
+    </string>
 
-    <!--
+    <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
     -->

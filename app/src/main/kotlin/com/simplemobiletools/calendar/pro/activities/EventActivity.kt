@@ -63,6 +63,7 @@ class EventActivity : SimpleActivity() {
     private val REPEAT_LIMIT = "REPEAT_LIMIT"
     private val REPEAT_RULE = "REPEAT_RULE"
     private val ATTENDEES = "ATTENDEES"
+    private val AVAILABILITY = "AVAILABILITY"
     private val EVENT_TYPE_ID = "EVENT_TYPE_ID"
     private val EVENT_CALENDAR_ID = "EVENT_CALENDAR_ID"
     private val SELECT_TIME_ZONE_INTENT = 1
@@ -89,6 +90,7 @@ class EventActivity : SimpleActivity() {
     private var mAttendeeAutoCompleteViews = ArrayList<MyAutoCompleteTextView>()
     private var mAvailableContacts = ArrayList<Attendee>()
     private var mSelectedContacts = ArrayList<Attendee>()
+    private var mAvailability = Attendees.AVAILABILITY_BUSY
     private var mStoredEventTypes = ArrayList<EventType>()
     private var mOriginalTimeZone = DateTimeZone.getDefault().id
     private var mOriginalStartTS = 0L
@@ -214,6 +216,14 @@ class EventActivity : SimpleActivity() {
             showReminderTypePicker(mReminder3Type) {
                 mReminder3Type = it
                 updateReminderTypeImage(event_reminder_3_type, Reminder(mReminder3Minutes, mReminder3Type))
+            }
+        }
+
+        event_availability.setOnClickListener {
+            showAvailabilityPicker(mAvailability) {
+                mAvailability = it
+                updateAvailabilityText()
+                updateAvailabilityImage()
             }
         }
 
@@ -350,6 +360,8 @@ class EventActivity : SimpleActivity() {
 
             putString(ATTENDEES, getAllAttendees(false))
 
+            putInt(AVAILABILITY, mAvailability)
+
             putLong(EVENT_TYPE_ID, mEventTypeId)
             putInt(EVENT_CALENDAR_ID, mEventCalendarId)
         }
@@ -375,6 +387,8 @@ class EventActivity : SimpleActivity() {
             mReminder1Type = getInt(REMINDER_1_TYPE)
             mReminder2Type = getInt(REMINDER_2_TYPE)
             mReminder3Type = getInt(REMINDER_3_TYPE)
+
+            mAvailability = getInt(AVAILABILITY)
 
             mRepeatInterval = getInt(REPEAT_INTERVAL)
             mRepeatRule = getInt(REPEAT_RULE)
@@ -410,7 +424,9 @@ class EventActivity : SimpleActivity() {
         updateStartTexts()
         updateEndTexts()
         updateTimeZoneText()
-        updateAttendeesVisibility()
+        updateCalDAVVisibility()
+        updateAvailabilityText()
+        updateAvailabilityImage()
     }
 
     private fun setupEditEvent() {
@@ -451,6 +467,7 @@ class EventActivity : SimpleActivity() {
         mRepeatRule = mEvent.repeatRule
         mEventTypeId = mEvent.eventType
         mEventCalendarId = mEvent.getCalDAVCalendarId()
+        mAvailability = mEvent.availability
 
         val token = object : TypeToken<List<Attendee>>() {}.type
         mAttendees = Gson().fromJson<ArrayList<Attendee>>(mEvent.attendees, token) ?: ArrayList()
@@ -836,17 +853,30 @@ class EventActivity : SimpleActivity() {
         }
     }
 
+    private fun showAvailabilityPicker(currentValue: Int, callback: (Int) -> Unit) {
+        val items = arrayListOf(
+            RadioItem(Attendees.AVAILABILITY_BUSY, getString(R.string.status_busy)),
+            RadioItem(Attendees.AVAILABILITY_FREE, getString(R.string.status_free))
+        )
+        RadioGroupDialog(this, items, currentValue) {
+            callback(it as Int)
+        }
+    }
+
     private fun updateReminderTypeImages() {
         updateReminderTypeImage(event_reminder_1_type, Reminder(mReminder1Minutes, mReminder1Type))
         updateReminderTypeImage(event_reminder_2_type, Reminder(mReminder2Minutes, mReminder2Type))
         updateReminderTypeImage(event_reminder_3_type, Reminder(mReminder3Minutes, mReminder3Type))
     }
 
-    private fun updateAttendeesVisibility() {
+    private fun updateCalDAVVisibility() {
         val isSyncedEvent = mEventCalendarId != STORED_LOCALLY_ONLY
         event_attendees_image.beVisibleIf(isSyncedEvent)
         event_attendees_holder.beVisibleIf(isSyncedEvent)
         event_attendees_divider.beVisibleIf(isSyncedEvent)
+        event_availability_divider.beVisibleIf(isSyncedEvent)
+        event_availability_image.beVisibleIf(isSyncedEvent)
+        event_availability.beVisibleIf(isSyncedEvent)
     }
 
     private fun updateReminderTypeImage(view: ImageView, reminder: Reminder) {
@@ -854,6 +884,16 @@ class EventActivity : SimpleActivity() {
         val drawable = if (reminder.type == REMINDER_NOTIFICATION) R.drawable.ic_bell_vector else R.drawable.ic_email_vector
         val icon = resources.getColoredDrawableWithColor(drawable, config.textColor)
         view.setImageDrawable(icon)
+    }
+
+    private fun updateAvailabilityImage() {
+        val drawable = if (mAvailability == Attendees.AVAILABILITY_FREE) R.drawable.ic_event_available else R.drawable.ic_event_occupied
+        val icon = resources.getColoredDrawableWithColor(drawable, config.textColor)
+        event_availability_image.setImageDrawable(icon)
+    }
+
+    private fun updateAvailabilityText() {
+        event_availability.text = if (mAvailability == Attendees.AVAILABILITY_FREE) getString(R.string.status_free) else getString(R.string.status_busy)
     }
 
     private fun updateRepetitionText() {
@@ -895,7 +935,9 @@ class EventActivity : SimpleActivity() {
                     config.lastUsedCaldavCalendarId = it
                     updateCurrentCalendarInfo(getCalendarWithId(calendars, it))
                     updateReminderTypeImages()
-                    updateAttendeesVisibility()
+                    updateCalDAVVisibility()
+                    updateAvailabilityText()
+                    updateAvailabilityImage()
                 }
             }
         } else {
@@ -1122,6 +1164,7 @@ class EventActivity : SimpleActivity() {
             lastUpdated = System.currentTimeMillis()
             source = newSource
             location = event_location.value
+            availability = mAvailability
         }
 
         // recreate the event if it was moved in a different CalDAV calendar
@@ -1648,7 +1691,7 @@ class EventActivity : SimpleActivity() {
         val textColor = config.textColor
         arrayOf(
             event_time_image, event_time_zone_image, event_repetition_image, event_reminder_image, event_type_image, event_caldav_calendar_image,
-            event_reminder_1_type, event_reminder_2_type, event_reminder_3_type, event_attendees_image
+            event_reminder_1_type, event_reminder_2_type, event_reminder_3_type, event_attendees_image, event_availability_image
         ).forEach {
             it.applyColorFilter(textColor)
         }

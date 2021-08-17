@@ -94,6 +94,7 @@ const val REPEAT_ORDER_WEEKDAY = 4                      // i.e. every 4th sunday
 // special event flags
 const val FLAG_ALL_DAY = 1
 const val FLAG_IS_PAST_EVENT = 2
+const val FLAG_MISSING_YEAR = 4
 
 // constants related to ICS file exporting / importing
 const val BEGIN_CALENDAR = "BEGIN:VCALENDAR"
@@ -113,6 +114,7 @@ const val SUMMARY = "SUMMARY"
 const val DESCRIPTION = "DESCRIPTION:"
 const val UID = "UID:"
 const val ACTION = "ACTION:"
+const val TRANSP = "TRANSP:"
 const val ATTENDEE = "ATTENDEE:"
 const val MAILTO = "mailto:"
 const val TRIGGER = "TRIGGER"
@@ -130,6 +132,7 @@ const val SEQUENCE = "SEQUENCE"
 // this tag isn't a standard ICS tag, but there's no official way of adding a category color in an ics file
 const val CATEGORY_COLOR = "X-SMT-CATEGORY-COLOR:"
 const val CATEGORY_COLOR_LEGACY = "CATEGORY_COLOR:"
+const val MISSING_YEAR = "X-SMT-MISSING-YEAR:"
 
 const val DISPLAY = "DISPLAY"
 const val EMAIL = "EMAIL"
@@ -153,6 +156,9 @@ const val TH = "TH"
 const val FR = "FR"
 const val SA = "SA"
 const val SU = "SU"
+
+const val OPAQUE = "OPAQUE"
+const val TRANSPARENT = "TRANSPARENT"
 
 const val SOURCE_SIMPLE_CALENDAR = "simple-calendar"
 const val SOURCE_IMPORTED_ICS = "imported-ics"

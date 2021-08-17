@@ -431,10 +431,44 @@
             android:importantForAccessibility="no" />
 
         <ImageView
+            android:id="@+id/event_availability_image"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignTop="@+id/event_availability"
+            android:layout_alignBottom="@+id/event_availability"
+            android:layout_marginStart="@dimen/normal_margin"
+            android:padding="@dimen/medium_margin"
+            android:src="@drawable/ic_event_occupied" />
+
+        <com.simplemobiletools.commons.views.MyTextView
+            android:id="@+id/event_availability"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/event_attendees_divider"
+            android:layout_toEndOf="@+id/event_availability_image"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:paddingTop="@dimen/normal_margin"
+            android:paddingBottom="@dimen/normal_margin"
+            android:paddingEnd="@dimen/activity_margin"
+            android:background="?attr/selectableItemBackground"
+            android:textSize="@dimen/day_text_size"
+            android:text="@string/status_busy" />
+
+        <ImageView
+            android:id="@+id/event_availability_divider"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_below="@+id/event_availability"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:background="@color/divider_grey"
+            android:importantForAccessibility="no" />
+
+        <ImageView
             android:id="@+id/event_caldav_calendar_image"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_below="@+id/event_attendees_divider"
+            android:layout_below="@+id/event_availability_divider"
             android:layout_alignTop="@+id/event_caldav_calendar_holder"
             android:layout_alignEnd="@+id/event_time_image"
             android:layout_alignBottom="@+id/event_caldav_calendar_holder"
@@ -447,7 +481,7 @@
             android:id="@+id/event_caldav_calendar_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/event_attendees_divider"
+            android:layout_below="@+id/event_availability_divider"
             android:layout_toEndOf="@+id/event_caldav_calendar_image"
             android:background="?attr/selectableItemBackground"
             android:visibility="gone">
