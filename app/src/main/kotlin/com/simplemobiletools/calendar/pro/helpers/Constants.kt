@@ -46,6 +46,7 @@ const val YEAR = 31536000
 const val WEEK_NUMBERS = "week_numbers"
 const val START_WEEKLY_AT = "start_weekly_at"
 const val SHOW_MIDNIGHT_SPANNING_EVENTS_AT_TOP = "show_midnight_spanning_events_at_top"
+const val ALLOW_CUSTOMIZE_DAY_COUNT = "allow_customise_day_count"
 const val VIBRATE = "vibrate"
 const val REMINDER_SOUND_URI = "reminder_sound_uri"
 const val REMINDER_SOUND_TITLE = "reminder_sound_title"

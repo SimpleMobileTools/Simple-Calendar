@@ -59,6 +59,14 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
         return weekHolder
     }
 
+    override fun onResume() {
+        super.onResume()
+        context?.config?.allowCustomizeDayCount?.let { allow ->
+            weekHolder!!.week_view_days_count.beVisibleIf(allow)
+            weekHolder!!.week_view_seekbar.beVisibleIf(allow)
+        }
+    }
+
     private fun setupFragment() {
         addHours()
         setupWeeklyViewPager()

@@ -45,6 +45,7 @@
         layout="@layout/divider"
         android:layout_width="match_parent"
         android:layout_height="1px"
+        android:layout_alignWithParentIfMissing="true"
         android:layout_above="@+id/week_view_seekbar" />
 
     <com.simplemobiletools.commons.views.MySeekBar
