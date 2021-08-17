@@ -59,6 +59,14 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
         return weekHolder
     }
 
+    override fun onResume() {
+        super.onResume()
+        context?.config?.allowCustomizeDayCount?.let { allow ->
+            weekHolder!!.week_view_days_count.beVisibleIf(allow)
+            weekHolder!!.week_view_seekbar.beVisibleIf(allow)
+        }
+    }
+
     private fun setupFragment() {
         val weekTSs = getWeekTimestamps(currentWeekTS)
         val weeklyAdapter = MyWeekPagerAdapter(activity!!.supportFragmentManager, weekTSs, this)
@@ -109,8 +117,10 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
 
         // avoid seekbar width changing if the days count changes to 1, 10 etc
         weekHolder!!.week_view_days_count.onGlobalLayout {
-            weekHolder!!.week_view_seekbar.layoutParams.width = weekHolder!!.week_view_seekbar.width
-            (weekHolder!!.week_view_seekbar.layoutParams as RelativeLayout.LayoutParams).removeRule(RelativeLayout.START_OF)
+            if (weekHolder!!.week_view_seekbar.isVisible()) {
+                weekHolder!!.week_view_seekbar.layoutParams.width = weekHolder!!.week_view_seekbar.width
+                (weekHolder!!.week_view_seekbar.layoutParams as RelativeLayout.LayoutParams).removeRule(RelativeLayout.START_OF)
+            }
         }
 
         updateDaysCount(context?.config?.weeklyViewDays ?: 7)

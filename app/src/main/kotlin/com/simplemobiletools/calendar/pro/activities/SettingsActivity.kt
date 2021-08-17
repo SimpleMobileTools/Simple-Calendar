@@ -57,6 +57,7 @@ class SettingsActivity : SimpleActivity() {
         setupShowGrid()
         setupWeeklyStart()
         setupMidnightSpanEvents()
+        setupAllowCustomiseDayCount()
         setupVibrate()
         setupReminderSound()
         setupReminderAudioStream()
@@ -346,6 +347,14 @@ class SettingsActivity : SimpleActivity() {
         settings_midnight_span_events_holder.setOnClickListener {
             settings_midnight_span_event.toggle()
             config.showMidnightSpanningEventsAtTop = settings_midnight_span_event.isChecked
+        }
+    }
+
+    private fun setupAllowCustomiseDayCount() {
+        settings_allow_customize_day_count.isChecked = config.allowCustomizeDayCount
+        settings_allow_customize_day_count_holder.setOnClickListener {
+            settings_allow_customize_day_count.toggle()
+            config.allowCustomizeDayCount = settings_allow_customize_day_count.isChecked
         }
     }
 

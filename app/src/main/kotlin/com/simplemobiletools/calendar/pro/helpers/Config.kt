@@ -27,6 +27,10 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getBoolean(SHOW_MIDNIGHT_SPANNING_EVENTS_AT_TOP, true)
         set(midnightSpanning) = prefs.edit().putBoolean(SHOW_MIDNIGHT_SPANNING_EVENTS_AT_TOP, midnightSpanning).apply()
 
+    var allowCustomizeDayCount: Boolean
+        get() = prefs.getBoolean(ALLOW_CUSTOMIZE_DAY_COUNT, true)
+        set(allow) = prefs.edit().putBoolean(ALLOW_CUSTOMIZE_DAY_COUNT, allow).apply()
+
     var vibrateOnReminder: Boolean
         get() = prefs.getBoolean(VIBRATE, false)
         set(vibrate) = prefs.edit().putBoolean(VIBRATE, vibrate).apply()
