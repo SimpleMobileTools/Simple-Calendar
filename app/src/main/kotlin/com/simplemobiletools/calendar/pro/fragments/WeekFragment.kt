@@ -1,11 +1,15 @@
 package com.simplemobiletools.calendar.pro.fragments
 
 import android.annotation.SuppressLint
+import android.content.ClipData
+import android.content.ClipDescription
 import android.content.Intent
 import android.content.res.Resources
 import android.graphics.drawable.ColorDrawable
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.util.Range
 import android.view.*
 import android.widget.ImageView
@@ -24,16 +28,13 @@ import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.EventWeeklyView
 import com.simplemobiletools.calendar.pro.views.MyScrollView
 import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.DAY_SECONDS
-import com.simplemobiletools.commons.helpers.HIGHER_ALPHA
-import com.simplemobiletools.commons.helpers.LOWER_ALPHA
-import com.simplemobiletools.commons.helpers.WEEK_SECONDS
+import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.views.MyTextView
+import java.util.*
 import kotlinx.android.synthetic.main.fragment_week.*
 import kotlinx.android.synthetic.main.fragment_week.view.*
 import org.joda.time.DateTime
 import org.joda.time.Days
-import java.util.*
 
 class WeekFragment : Fragment(), WeeklyCalendar {
     private val PLUS_FADEOUT_DELAY = 5000L
@@ -268,6 +269,63 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                     gestureDetector.onTouchEvent(motionEvent)
                     true
                 }
+
+                layout.setOnDragListener { view, dragEvent ->
+                    when (dragEvent.action) {
+                        DragEvent.ACTION_DRAG_STARTED -> {
+                            dragEvent.clipDescription.hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)
+                        }
+
+                        DragEvent.ACTION_DRAG_ENTERED -> {
+                            true
+                        }
+
+
+                        DragEvent.ACTION_DRAG_EXITED -> {
+                            true
+                        }
+
+
+                        DragEvent.ACTION_DRAG_LOCATION -> {
+
+                            true
+                        }
+
+                        DragEvent.ACTION_DROP -> {
+                            val eventId = dragEvent.clipData.getItemAt(0).text.toString().toLong()
+                            val startHour = (dragEvent.y / rowHeight).toInt()
+                            val endHour = startHour + 1
+
+                            Log.d(TAG, "Dropped event: startHour=$startHour, endHour=$endHour")
+                            ensureBackgroundThread {
+                                val event = context?.eventsDB?.getEventWithId(eventId)
+                                event?.let {
+                                    val startTime = Formatter.getDateTimeFromTS(it.startTS)
+                                    val endTime = Formatter.getDateTimeFromTS(it.endTS)
+                                    Log.w(TAG, "initGrid: found event: $it")
+                                    context?.eventsHelper?.updateEvent(
+                                        it.copy(
+                                            startTS = Formatter.getDateTimeFromTS(weekTimestamp + index * DAY_SECONDS).withTime(startHour, startTime.minuteOfHour, startTime.secondOfMinute, startTime.millisOfSecond).seconds(),
+                                            endTS = Formatter.getDateTimeFromTS(weekTimestamp + index * DAY_SECONDS).withTime(endHour, endTime.minuteOfHour, endTime.secondOfMinute, endTime.millisOfSecond).seconds(),
+                                        ), true, false) {
+
+                                        updateCalendar()
+                                        Log.w(TAG, "Updated event ${it.id}")
+                                    }
+                                }
+                            }
+                            true
+                        }
+                        DragEvent.ACTION_DRAG_ENDED -> {
+
+                            true
+                        }
+
+                        else -> {
+                            false
+                        }
+                    }
+                }
             }
     }
 
@@ -278,6 +336,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 selectedGrid?.beGone()
 
                 val hour = (event.y / rowHeight).toInt()
+
                 selectedGrid = (inflater.inflate(R.layout.week_grid_item, null, false) as ImageView).apply {
                     view.addView(this)
                     background = ColorDrawable(primaryColor)
@@ -519,6 +578,19 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                                 startActivity(this)
                             }
                         }
+
+                        setOnLongClickListener { view ->
+                            val shadowBuilder = View.DragShadowBuilder(view)
+                            val clipData = ClipData.newPlainText(WEEK_VIEW_DRAG_EVENT_ID_LABEL, event.id.toString())
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                                view.startDragAndDrop(clipData, shadowBuilder, null, 0)
+                            } else {
+                                view.startDrag(clipData, shadowBuilder, null, 0)
+                            }
+                            true
+                        }
+
+                        setOnDragListener(DragListener())
                     }
 
                     currentDateTime = currentDateTime.plusDays(1)
@@ -535,6 +607,62 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         val allDaysLine = inflater.inflate(R.layout.all_day_events_holder_line, null, false) as RelativeLayout
         week_all_day_holder?.addView(allDaysLine)
         allDayHolders.add(allDaysLine)
+        allDaysLine.setOnDragListener { view, dragEvent->
+            when (dragEvent.action) {
+                DragEvent.ACTION_DRAG_STARTED -> {
+                    dragEvent.clipDescription.hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)
+                }
+
+                DragEvent.ACTION_DRAG_ENTERED -> {
+                    true
+                }
+
+
+                DragEvent.ACTION_DRAG_EXITED -> {
+                    true
+                }
+
+
+                DragEvent.ACTION_DRAG_LOCATION -> {
+
+                    true
+                }
+
+                DragEvent.ACTION_DROP -> {
+                    val eventId = dragEvent.clipData.getItemAt(0).text.toString().toLong()
+                    val startHour = (dragEvent.y / rowHeight).toInt()
+                    val endHour = startHour + 1
+
+                    Log.d(TAG, "Dropped event: startHour=$startHour, endHour=$endHour")
+                    ensureBackgroundThread {
+                        val event = context?.eventsDB?.getEventWithId(eventId)
+                        event?.let {
+                            val startTime = Formatter.getDateTimeFromTS(it.startTS)
+                            val endTime = Formatter.getDateTimeFromTS(it.endTS)
+                            Log.w(TAG, "initGrid: found event: $it")
+                            context?.eventsHelper?.updateEvent(
+                                it.copy(
+                                    startTS = Formatter.getDateTimeFromTS(weekTimestamp + index * DAY_SECONDS).withTime(startHour, startTime.minuteOfHour, startTime.secondOfMinute, startTime.millisOfSecond).seconds(),
+                                    endTS = Formatter.getDateTimeFromTS(weekTimestamp + index * DAY_SECONDS).withTime(endHour, endTime.minuteOfHour, endTime.secondOfMinute, endTime.millisOfSecond).seconds(),
+                                ), true, false) {
+
+                                updateCalendar()
+                                Log.w(TAG, "Updated event ${it.id}")
+                            }
+                        }
+                    }
+                    true
+                }
+                DragEvent.ACTION_DRAG_ENDED -> {
+
+                    true
+                }
+
+                else -> {
+                    false
+                }
+            }
+        }
     }
 
     private fun addCurrentTimeIndicator() {
@@ -674,6 +802,19 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                     startActivity(this)
                 }
             }
+
+            setOnLongClickListener { view ->
+                val shadowBuilder = View.DragShadowBuilder(view)
+                val clipData = ClipData.newPlainText(WEEK_VIEW_DRAG_EVENT_ID_LABEL, event.id.toString())
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    view.startDragAndDrop(clipData, shadowBuilder, null, 0)
+                } else {
+                    view.startDrag(clipData, shadowBuilder, null, 0)
+                }
+                true
+            }
+
+            setOnDragListener(DragListener())
         }
     }
 
@@ -708,5 +849,23 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         updateCalendar()
         setupDayLabels()
         addEvents(currEvents)
+    }
+
+
+    class DragListener : View.OnDragListener {
+        override fun onDrag(view: View, dragEvent: DragEvent): Boolean {
+            when (dragEvent.action) {
+                // hide view when drag has been started
+                DragEvent.ACTION_DRAG_ENTERED -> view.visibility = View.INVISIBLE
+                // show view when drag has been ended
+                DragEvent.ACTION_DRAG_ENDED -> view.visibility = View.VISIBLE
+            }
+
+            return true
+        }
+    }
+
+    companion object {
+        private const val TAG = "WeekFragment"
     }
 }

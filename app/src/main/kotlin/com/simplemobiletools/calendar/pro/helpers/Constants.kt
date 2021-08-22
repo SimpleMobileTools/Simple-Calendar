@@ -19,6 +19,7 @@ const val SHORTCUT_NEW_EVENT = "shortcut_new_event"
 const val REGULAR_EVENT_TYPE_ID = 1L
 const val TIME_ZONE = "time_zone"
 const val CURRENT_TIME_ZONE = "current_time_zone"
+const val WEEK_VIEW_DRAG_EVENT_ID_LABEL = "event_id_label"
 
 const val MONTHLY_VIEW = 1
 const val YEARLY_VIEW = 2
