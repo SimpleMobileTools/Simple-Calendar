@@ -204,6 +204,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         for (i in 0 until ROW_COUNT) {
             canvas.drawLine(0f, i * dayHeight + weekDaysLetterHeight, canvas.width.toFloat(), i * dayHeight + weekDaysLetterHeight, gridPaint)
         }
+        canvas.drawLine(0f, canvas.height.toFloat(), canvas.width.toFloat(), canvas.height.toFloat(), gridPaint)
     }
 
     private fun addWeekDayLetters(canvas: Canvas) {
