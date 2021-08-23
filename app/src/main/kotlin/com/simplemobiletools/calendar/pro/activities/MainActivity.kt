@@ -515,6 +515,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                 if (result != ImportResult.IMPORT_FAIL) {
                     runOnUiThread {
                         updateViewPager()
+                        setupQuickFilter()
                     }
                 }
             }
@@ -536,6 +537,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                                     it > 0 -> {
                                         toast(R.string.birthdays_added)
                                         updateViewPager()
+                                        setupQuickFilter()
                                     }
                                     it == -1 -> toast(R.string.no_new_birthdays)
                                     else -> toast(R.string.no_birthdays)
@@ -565,6 +567,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                                     it > 0 -> {
                                         toast(R.string.anniversaries_added)
                                         updateViewPager()
+                                        setupQuickFilter()
                                     }
                                     it == -1 -> toast(R.string.no_new_anniversaries)
                                     else -> toast(R.string.no_anniversaries)
@@ -899,6 +902,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             if (it) {
                 runOnUiThread {
                     updateViewPager()
+                    setupQuickFilter()
                 }
             }
         }
