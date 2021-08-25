@@ -66,7 +66,7 @@ dependencies {
     def room_version = "2.3.0"
 
     implementation 'com.github.SimpleMobileTools:Simple-Commons:3aca4d7102'
-    implementation 'joda-time:joda-time:2.10.3'
+    implementation 'joda-time:joda-time:2.10.10'
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
