@@ -63,6 +63,8 @@ android {
 }
 
 dependencies {
+    def room_version = "2.3.0"
+
     implementation 'com.github.SimpleMobileTools:Simple-Commons:3aca4d7102'
     implementation 'joda-time:joda-time:2.10.3'
     implementation 'androidx.multidex:multidex:2.0.1'
@@ -70,7 +72,6 @@ dependencies {
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
     implementation "androidx.print:print:1.0.0"
 
-    kapt 'androidx.room:room-compiler:2.3.0'
-    implementation 'androidx.room:room-runtime:2.3.0'
-    annotationProcessor 'androidx.room:room-compiler:2.3.0'
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-runtime:$room_version"
 }
