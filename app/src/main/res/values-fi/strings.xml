@@ -6,7 +6,7 @@
     <string name="daily_view">Päivänäkymä</string>
     <string name="weekly_view">Viikkonäkymä</string>
     <string name="monthly_view">Kuukausinäkymä</string>
-    <string name="monthly_daily_view">Monthly + daily view</string>
+    <string name="monthly_daily_view">Kuukausi- ja päivänäkymä</string>
     <string name="yearly_view">Vuosinäkymä</string>
     <string name="simple_event_list">Yksinkertainen tapahtumaluettelo</string>
     <string name="no_upcoming_events">Näyttää siltä ettei sinulla ole tulevia tapahtumia.</string>
@@ -51,7 +51,7 @@
     <string name="delete_future_occurrences">Poista tämä ja seuraavat esiintymät</string>
     <string name="delete_all_occurrences">Poista kaikki esiintymät</string>
     <string name="update_one_only">Päivitä vain valittu esiintymä</string>
-    <string name="update_this_and_future_occurrences">Update this and all future occurrences</string>
+    <string name="update_this_and_future_occurrences">Päivitä tämä ja tulevat esiintymät</string>
     <string name="update_all_occurrences">Päivitä kaikki esiintymät</string>
     <string name="repeat_till_date">Toista päivään</string>
     <string name="stop_repeating_after_x">Lopeta toistaminen x esiintymän jälkeen</string>
@@ -72,7 +72,7 @@
     <string name="second_m">toinen</string>
     <string name="third_m">kolmas</string>
     <string name="fourth_m">neljäs</string>
-    <string name="fifth_m">fifth</string>
+    <string name="fifth_m">viides</string>
     <string name="last_m">viimeinen</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
@@ -83,7 +83,7 @@
     <string name="second_f">toisena</string>
     <string name="third_f">kolmantena</string>
     <string name="fourth_f">neljäntenä</string>
-    <string name="fifth_f">fifth</string>
+    <string name="fifth_f">viidentenä</string>
     <string name="last_f">viimeisenä</string>
 
     <!-- Birthdays -->
@@ -162,7 +162,7 @@
     <string name="manage_event_types">Hallitse tapahtumatyyppejä</string>
     <string name="start_day_at">Päivä alkaa klo</string>
     <string name="end_day_at">Päivä loppuu klo</string>
-    <string name="midnight_spanning">Show events spanning across midnight at the top bar</string>
+    <string name="midnight_spanning">Näytä keskiyön yli jatkuvat tapahtumat ylärivillä</string>
     <string name="allow_customizing_day_count">Salli päivämäärän mukauttaminen</string>
     <string name="week_numbers">Näytä viikkonumero</string>
     <string name="vibrate">Värinä muistutusilmoituksen yhteydessä</string>
@@ -194,13 +194,13 @@
     <string name="new_events">Uusia tapahtumia</string>
     <string name="default_start_time">Oletus alkamisaika</string>
     <string name="next_full_hour">Seuraava täysi tunti</string>
-    <string name="current_time">Current time</string>
-    <string name="default_duration">Oletus kesto</string>
+    <string name="current_time">Tämänhetkinen aika</string>
+    <string name="default_duration">Oletuskesto</string>
     <string name="last_used_one">Viimeksi käytetty</string>
     <string name="other_time">Muu aika</string>
     <string name="highlight_weekends">Korosta viikonloppuja joistakin näkymistä</string>
     <string name="allow_changing_time_zones">Salli tapahtumien aikavyöhykkeiden muuttaminen</string>
-    <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
+    <string name="manage_quick_filter_event_types">Hallitse pikasuodatuksen tapahtumatyyppejä</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -217,8 +217,8 @@
     <string name="insufficient_permissions">Ei ole lupaa kirjoittaa valittuun kalenteriin</string>
     <string name="caldav_event_not_found">Tapahtumaa ei löytynyt. Ota CalDAV-synkronointi käyttöön sopivassa kalenterissa sovelluksen asetuksissa.</string>
     <string name="no_synchronized_calendars">Synkronoitavia kalentereita ei löytynyt</string>
-    <string name="status_free">Free</string>
-    <string name="status_busy">Busy</string>
+    <string name="status_free">Vapaa</string>
+    <string name="status_busy">Varattu</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
@@ -256,7 +256,7 @@
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
-    <string name="app_title">Simple Calendar Pro - Events &amp; Reminders</string>
+    <string name="app_title">Simple Calendar Pro - Tapahtumat, muistutukset</string>
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Simple mobile 2020 calendar. Schedule planner &amp; appointment reminder for any day</string>
     <string name="app_long_description">
