@@ -6,7 +6,7 @@
     <string name="daily_view">Dzienny</string>
     <string name="weekly_view">Tygodniowy</string>
     <string name="monthly_view">Miesięczny</string>
-    <string name="monthly_daily_view">Miesięczny + dzienny</string>
+    <string name="monthly_daily_view">Miesięczny i dzienny</string>
     <string name="yearly_view">Roczny</string>
     <string name="simple_event_list">Prosta lista wydarzeń</string>
     <string name="no_upcoming_events">Wygląda na to, że nie masz żadnych nadchodzących wydarzeń.</string>
