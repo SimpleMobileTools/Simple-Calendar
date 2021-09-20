@@ -1,6 +1,14 @@
 Changelog
 ==========
 
+Version 6.15.1 *(2021-08-23)*
+----------------------------
+
+ * Calculate ages at birthdays and anniversaries, if a year is available
+ * Add a new Busy/Free field at CalDAV synced calendars
+ * Allow hiding the weekly view day customizing slider
+ * Some bottom quick event type filter improvements
+
 Version 6.15.0 *(2021-07-27)*
 ----------------------------
 

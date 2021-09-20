@@ -10,7 +10,7 @@ import com.simplemobiletools.calendar.pro.helpers.COLUMN_COUNT
 import com.simplemobiletools.calendar.pro.helpers.ROW_COUNT
 import com.simplemobiletools.calendar.pro.models.DayMonthly
 import com.simplemobiletools.commons.extensions.onGlobalLayout
-import kotlinx.android.synthetic.main.month_view.view.*
+import kotlinx.android.synthetic.main.month_view.view.month_view
 
 // used in the Monthly view fragment, 1 view per screen
 class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : FrameLayout(context, attrs, defStyle) {
@@ -44,6 +44,43 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
         }
     }
 
+    override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
+        super.onLayout(changed, left, top, right, bottom)
+        measureSizes()
+        var y = 0
+        var x = 0
+        var curLeft = dayWidth.toInt()
+        val end = right + paddingRight
+
+        for (i in 0 until childCount) {
+            val child = getChildAt(i)
+            if (child is MonthView) {
+                //ignore the MonthView layout
+                continue
+            }
+
+            child.measure(MeasureSpec.makeMeasureSpec(dayWidth.toInt(), MeasureSpec.EXACTLY), MeasureSpec.makeMeasureSpec(dayHeight.toInt(), MeasureSpec.EXACTLY))
+
+            val childLeft = x * dayWidth + horizontalOffset - child.translationX
+            val childTop = y * dayHeight + weekDaysLetterHeight - child.translationY
+            val childWidth = child.measuredWidth
+            val childHeight = child.measuredHeight
+            val childRight = childLeft + childWidth
+            val childBottom = childTop + childHeight
+
+            child.layout(childLeft.toInt(), childTop.toInt(), childRight.toInt(), childBottom.toInt())
+
+            if (curLeft + childWidth < end) {
+                curLeft += childWidth
+                x++
+            } else {
+                y++
+                x = 0
+                curLeft = childWidth
+            }
+        }
+    }
+
     fun updateDays(newDays: ArrayList<DayMonthly>, addEvents: Boolean, callback: ((DayMonthly) -> Unit)? = null) {
         setupHorizontalOffset()
         measureSizes()
@@ -63,12 +100,7 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
 
     private fun measureSizes() {
         dayWidth = (width - horizontalOffset) / 7f
-
-        // avoid updating the height when coming back from a new event screen, when the keyboard was visible
-        val newHeight = (height - weekDaysLetterHeight) / 6f
-        if (newHeight > dayHeight) {
-            dayHeight = (height - weekDaysLetterHeight) / 6f
-        }
+        dayHeight = (height - weekDaysLetterHeight) / 6f
     }
 
     private fun addClickableBackgrounds() {

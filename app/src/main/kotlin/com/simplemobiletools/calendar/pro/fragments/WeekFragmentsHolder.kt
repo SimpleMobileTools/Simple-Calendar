@@ -65,6 +65,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
             weekHolder!!.week_view_days_count.beVisibleIf(allow)
             weekHolder!!.week_view_seekbar.beVisibleIf(allow)
         }
+        setupSeekbar()
     }
 
     private fun setupFragment() {
@@ -86,17 +87,10 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
             }
         }
 
-        // avoid seekbar width changing if the days count changes to 1, 10 etc
-        weekHolder!!.week_view_days_count.onGlobalLayout {
-            weekHolder!!.week_view_seekbar.layoutParams.width = weekHolder!!.week_view_seekbar.width
-            (weekHolder!!.week_view_seekbar.layoutParams as RelativeLayout.LayoutParams).removeRule(RelativeLayout.START_OF)
-        }
-
-        updateDaysCount(context?.config?.weeklyViewDays ?: 7)
         updateActionBarTitle()
     }
 
-    private fun setupWeeklyViewPager(){
+    private fun setupWeeklyViewPager() {
         val weekTSs = getWeekTimestamps(currentWeekTS)
         val weeklyAdapter = MyWeekPagerAdapter(activity!!.supportFragmentManager, weekTSs, this)
 
@@ -216,6 +210,22 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
         setupFragment()
     }
 
+    private fun setupSeekbar() {
+        if (context?.config?.allowCustomizeDayCount != true) {
+            return
+        }
+
+        // avoid seekbar width changing if the days count changes to 1, 10 etc
+        weekHolder!!.week_view_days_count.onGlobalLayout {
+            if (weekHolder!!.week_view_seekbar.width != 0) {
+                weekHolder!!.week_view_seekbar.layoutParams.width = weekHolder!!.week_view_seekbar.width
+            }
+            (weekHolder!!.week_view_seekbar.layoutParams as RelativeLayout.LayoutParams).removeRule(RelativeLayout.START_OF)
+        }
+
+        updateDaysCount(context?.config?.weeklyViewDays ?: 7)
+    }
+
     private fun updateWeeklyViewDays(days: Int) {
         context!!.config.weeklyViewDays = days
         updateDaysCount(days)
@@ -274,7 +284,8 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
         (viewPager!!.adapter as? MyWeekPagerAdapter)?.updateNotVisibleScaleLevel(viewPager!!.currentItem)
     }
 
-    override fun getFullFragmentHeight() = weekHolder!!.week_view_holder.height - weekHolder!!.week_view_seekbar.height - weekHolder!!.week_view_days_count_divider.height
+    override fun getFullFragmentHeight() =
+        weekHolder!!.week_view_holder.height - weekHolder!!.week_view_seekbar.height - weekHolder!!.week_view_days_count_divider.height
 
     override fun printView() {
         weekHolder!!.apply {
