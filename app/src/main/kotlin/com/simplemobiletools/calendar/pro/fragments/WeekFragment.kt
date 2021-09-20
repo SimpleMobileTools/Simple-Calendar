@@ -31,6 +31,7 @@ import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.views.MyTextView
 import java.util.*
+import kotlinx.android.synthetic.main.activity_event.event_all_day
 import kotlinx.android.synthetic.main.fragment_week.*
 import kotlinx.android.synthetic.main.fragment_week.view.*
 import org.joda.time.DateTime
@@ -280,41 +281,47 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                             true
                         }
 
-
                         DragEvent.ACTION_DRAG_EXITED -> {
                             true
                         }
 
-
                         DragEvent.ACTION_DRAG_LOCATION -> {
-
                             true
                         }
 
                         DragEvent.ACTION_DROP -> {
-                            val eventId = dragEvent.clipData.getItemAt(0).text.toString().toLong()
-                            val startHour = (dragEvent.y / rowHeight).toInt()
-                            val endHour = startHour + 1
+                            try {
+                                val eventId = dragEvent.clipData.getItemAt(0).text.toString().toLong()
+                                val startHour = (dragEvent.y / rowHeight).toInt()
+                                val endHour = startHour + 1
 
-                            Log.d(TAG, "Dropped event: startHour=$startHour, endHour=$endHour")
-                            ensureBackgroundThread {
-                                val event = context?.eventsDB?.getEventWithId(eventId)
-                                event?.let {
-                                    val startTime = Formatter.getDateTimeFromTS(it.startTS)
-                                    val endTime = Formatter.getDateTimeFromTS(it.endTS)
-                                    Log.w(TAG, "initGrid: found event: $it")
-                                    context?.eventsHelper?.updateEvent(
-                                        it.copy(
-                                            startTS = Formatter.getDateTimeFromTS(weekTimestamp + index * DAY_SECONDS).withTime(startHour, startTime.minuteOfHour, startTime.secondOfMinute, startTime.millisOfSecond).seconds(),
-                                            endTS = Formatter.getDateTimeFromTS(weekTimestamp + index * DAY_SECONDS).withTime(endHour, endTime.minuteOfHour, endTime.secondOfMinute, endTime.millisOfSecond).seconds(),
-                                        ), true, false) {
+                                Log.d(TAG, "Dropped event: startHour=$startHour, endHour=$endHour")
+                                ensureBackgroundThread {
+                                    val event = context?.eventsDB?.getEventWithId(eventId)
+                                    event?.let {
+                                        val startTime = Formatter.getDateTimeFromTS(it.startTS)
+                                        val endTime = Formatter.getDateTimeFromTS(it.endTS)
+                                        Log.w(TAG, "initGrid: found event: $it")
+                                        context?.eventsHelper?.updateEvent(
+                                            it.copy(
+                                                startTS = Formatter.getDateTimeFromTS(weekTimestamp + index * DAY_SECONDS)
+                                                    .withTime(startHour, startTime.minuteOfHour, startTime.secondOfMinute, startTime.millisOfSecond).seconds(),
+                                                endTS = Formatter.getDateTimeFromTS(weekTimestamp + index * DAY_SECONDS)
+                                                    .withTime(endHour, endTime.minuteOfHour, endTime.secondOfMinute, endTime.millisOfSecond).seconds(),
+                                                flags = it.flags.removeBit(FLAG_ALL_DAY)
+                                            ), true, false
+                                        ) {
 
-                                        updateCalendar()
-                                        Log.w(TAG, "Updated event ${it.id}")
+                                            updateCalendar()
+                                            Log.w(TAG, "Updated event ${it.id}")
+                                        }
                                     }
                                 }
+                                true
+                            } catch (ignored: Exception) {
+                                false
                             }
-                            true
+
                         }
                         DragEvent.ACTION_DRAG_ENDED -> {
 
@@ -607,7 +614,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         val allDaysLine = inflater.inflate(R.layout.all_day_events_holder_line, null, false) as RelativeLayout
         week_all_day_holder?.addView(allDaysLine)
         allDayHolders.add(allDaysLine)
-        allDaysLine.setOnDragListener { view, dragEvent->
+        allDaysLine.setOnDragListener { view, dragEvent ->
             when (dragEvent.action) {
                 DragEvent.ACTION_DRAG_STARTED -> {
                     dragEvent.clipDescription.hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)
@@ -624,37 +631,44 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
 
                 DragEvent.ACTION_DRAG_LOCATION -> {
-
                     true
                 }
 
                 DragEvent.ACTION_DROP -> {
-                    val eventId = dragEvent.clipData.getItemAt(0).text.toString().toLong()
-                    val startHour = (dragEvent.y / rowHeight).toInt()
-                    val endHour = startHour + 1
+                    try {
+                        val eventId = dragEvent.clipData.getItemAt(0).text.toString().toLong()
+                        val xPos = dragEvent.x
+                        val width = view.width
+                        val dayCode = getDayCodeForAllDay(width, xPos.toInt())
+                        Log.d(TAG, "addNewLine: dayCode=$dayCode")
+                        val startStamp = Formatter.getDayStartTS(dayCode)
+                        Log.d(TAG, "addNewLine: startStamp=$startStamp")
+                        val endStamp = Formatter.getDayEndTS(dayCode)
+                        Log.d(TAG, "addNewLine: endStamp=$endStamp")
 
-                    Log.d(TAG, "Dropped event: startHour=$startHour, endHour=$endHour")
-                    ensureBackgroundThread {
-                        val event = context?.eventsDB?.getEventWithId(eventId)
-                        event?.let {
-                            val startTime = Formatter.getDateTimeFromTS(it.startTS)
-                            val endTime = Formatter.getDateTimeFromTS(it.endTS)
-                            Log.w(TAG, "initGrid: found event: $it")
-                            context?.eventsHelper?.updateEvent(
-                                it.copy(
-                                    startTS = Formatter.getDateTimeFromTS(weekTimestamp + index * DAY_SECONDS).withTime(startHour, startTime.minuteOfHour, startTime.secondOfMinute, startTime.millisOfSecond).seconds(),
-                                    endTS = Formatter.getDateTimeFromTS(weekTimestamp + index * DAY_SECONDS).withTime(endHour, endTime.minuteOfHour, endTime.secondOfMinute, endTime.millisOfSecond).seconds(),
-                                ), true, false) {
 
-                                updateCalendar()
-                                Log.w(TAG, "Updated event ${it.id}")
+                        ensureBackgroundThread {
+                            val event = context?.eventsDB?.getEventWithId(eventId)
+                            event?.let {
+                                Log.w(TAG, "addNewLine: found event: $it")
+                                context?.eventsHelper?.updateEvent(
+                                    it.copy(
+                                        startTS = startStamp,
+                                        endTS = startStamp,
+                                        flags = it.flags.addBit(FLAG_ALL_DAY)
+                                    ), true, false
+                                ) {
+                                    updateCalendar()
+                                    Log.w(TAG, "Updated event ${it.id}")
+                                }
                             }
                         }
+                        true
+                    } catch (ignored: Exception) {
+                        false
                     }
-                    true
                 }
                 DragEvent.ACTION_DRAG_ENDED -> {
-
                     true
                 }
 
@@ -663,6 +677,21 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 }
             }
         }
+    }
+
+    private fun getDayCodeForAllDay(width: Int, xPos: Int): String {
+        Log.d(TAG, "getDayCodeForAllDay: width=$width, xPos=$xPos")
+        var index = 0
+        val widthPerDay = (width.toDouble() / config.weeklyViewDays.toDouble()).toInt()
+        Log.d(TAG, "getDayCodeForAllDay: widthPerDay=$widthPerDay")
+        for((valueIndex, value) in (widthPerDay until width step widthPerDay).withIndex()){
+            if(xPos < value){
+                index = valueIndex
+                break
+            }
+        }
+        Log.d(TAG, "getDayCodeForAllDay: $index")
+        return dayColumns[index].tag.toString()
     }
 
     private fun addCurrentTimeIndicator() {
@@ -730,8 +759,19 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             val startDateTime = Formatter.getDateTimeFromTS(event.startTS)
             val endDateTime = Formatter.getDateTimeFromTS(event.endTS)
 
-            val minTS = Math.max(startDateTime.seconds(), weekTimestamp)
-            val maxTS = Math.min(endDateTime.seconds(), weekTimestamp + 2 * WEEK_SECONDS)
+            val startDateTimeSeconds = startDateTime.seconds()
+            val endDateTimeSeconds = endDateTime.seconds()
+            val weekTimestampStart = weekTimestamp
+            val weekTimestampEnd = weekTimestamp + 2 * WEEK_SECONDS
+            val minTS = Math.max(startDateTimeSeconds, weekTimestampStart)
+            val maxTS = Math.min(endDateTimeSeconds, weekTimestampEnd)
+
+            Log.d(TAG, "startDateTimeSeconds: $startDateTimeSeconds")
+            Log.d(TAG, "weekTimestampStart: $weekTimestampStart")
+            Log.d(TAG, "minTS: $minTS")
+            Log.d(TAG, "endDateTimeSeconds: $endDateTimeSeconds")
+            Log.d(TAG, "weekTimestampEnd: $weekTimestampEnd")
+            Log.d(TAG, "maxTS: $maxTS")
 
             // fix a visual glitch with all-day events or events lasting multiple days starting at midnight on monday, being shown the previous week too
             if (minTS == maxTS && (minTS - weekTimestamp == WEEK_SECONDS.toLong())) {
@@ -740,9 +780,12 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
             val isStartTimeDay = Formatter.getDateTimeFromTS(maxTS) == Formatter.getDateTimeFromTS(maxTS).withTimeAtStartOfDay()
             val numDays = Days.daysBetween(Formatter.getDateTimeFromTS(minTS).toLocalDate(), Formatter.getDateTimeFromTS(maxTS).toLocalDate()).days
+            Log.d(TAG, "numDays: $numDays")
             val daysCnt = if (numDays == 1 && isStartTimeDay) 0 else numDays
+            Log.d(TAG, "daysCnt: $daysCnt")
             val startDateTimeInWeek = Formatter.getDateTimeFromTS(minTS)
             val firstDayIndex = (startDateTimeInWeek.dayOfWeek - if (config.isSundayFirst) 0 else 1) % 7
+            Log.d(TAG, "firstDayIndex: $firstDayIndex")
 
             var doesEventFit: Boolean
             val cnt = allDayRows.size - 1
@@ -781,6 +824,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             val dayCodeStart = Formatter.getDayCodeFromDateTime(startDateTime).toInt()
             val dayCodeEnd = Formatter.getDayCodeFromDateTime(endDateTime).toInt()
             val dayOfWeek = dayColumns.indexOfFirst { it.tag.toInt() == dayCodeStart || (it.tag.toInt() > dayCodeStart && it.tag.toInt() <= dayCodeEnd) }
+            Log.i(TAG, "dayOfWeek: $dayOfWeek")
             if (dayOfWeek == -1) {
                 return
             }
