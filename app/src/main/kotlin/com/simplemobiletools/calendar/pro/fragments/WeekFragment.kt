@@ -903,9 +903,14 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             return when (dragEvent.action) {
                 DragEvent.ACTION_DRAG_STARTED -> currentlyDraggedView == view
                 DragEvent.ACTION_DRAG_ENTERED -> {
-                    view.beGone()
+                    view.beInvisible()
                     false
                 }
+                // handle ACTION_DRAG_LOCATION due to https://stackoverflow.com/a/19460338
+                DragEvent.ACTION_DRAG_LOCATION -> {
+                    return true
+                }
+
                 DragEvent.ACTION_DRAG_ENDED -> {
                     currentlyDraggedView = null
                     view.beVisible()
