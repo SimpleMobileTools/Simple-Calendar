@@ -31,7 +31,6 @@ import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.views.MyTextView
 import java.util.*
-import kotlinx.android.synthetic.main.activity_event.event_all_day
 import kotlinx.android.synthetic.main.fragment_week.*
 import kotlinx.android.synthetic.main.fragment_week.view.*
 import org.joda.time.DateTime
@@ -73,6 +72,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private var dayColumns = ArrayList<RelativeLayout>()
     private var eventTypeColors = LongSparseArray<Int>()
     private var eventTimeRanges = LinkedHashMap<String, ArrayList<EventWeeklyView>>()
+    private var currentlyDraggedView: View? = null
 
     private lateinit var inflater: LayoutInflater
     private lateinit var mView: View
@@ -278,6 +278,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                         }
 
                         DragEvent.ACTION_DRAG_ENTERED -> {
+                            Log.w(TAG, "initGrid:  ACTION_DRAG_ENTERED")
                             true
                         }
 
@@ -587,6 +588,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                         }
 
                         setOnLongClickListener { view ->
+                            currentlyDraggedView = view
                             val shadowBuilder = View.DragShadowBuilder(view)
                             val clipData = ClipData.newPlainText(WEEK_VIEW_DRAG_EVENT_ID_LABEL, event.id.toString())
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -684,8 +686,8 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         var index = 0
         val widthPerDay = (width.toDouble() / config.weeklyViewDays.toDouble()).toInt()
         Log.d(TAG, "getDayCodeForAllDay: widthPerDay=$widthPerDay")
-        for((valueIndex, value) in (widthPerDay until width step widthPerDay).withIndex()){
-            if(xPos < value){
+        for ((valueIndex, value) in (widthPerDay until width step widthPerDay).withIndex()) {
+            if (xPos < value) {
                 index = valueIndex
                 break
             }
@@ -848,6 +850,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             }
 
             setOnLongClickListener { view ->
+                currentlyDraggedView = view
                 val shadowBuilder = View.DragShadowBuilder(view)
                 val clipData = ClipData.newPlainText(WEEK_VIEW_DRAG_EVENT_ID_LABEL, event.id.toString())
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -895,17 +898,21 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         addEvents(currEvents)
     }
 
-
-    class DragListener : View.OnDragListener {
+    inner class DragListener : View.OnDragListener {
         override fun onDrag(view: View, dragEvent: DragEvent): Boolean {
-            when (dragEvent.action) {
-                // hide view when drag has been started
-                DragEvent.ACTION_DRAG_ENTERED -> view.visibility = View.INVISIBLE
-                // show view when drag has been ended
-                DragEvent.ACTION_DRAG_ENDED -> view.visibility = View.VISIBLE
+            return when (dragEvent.action) {
+                DragEvent.ACTION_DRAG_STARTED -> currentlyDraggedView == view
+                DragEvent.ACTION_DRAG_ENTERED -> {
+                    view.beGone()
+                    false
+                }
+                DragEvent.ACTION_DRAG_ENDED -> {
+                    currentlyDraggedView = null
+                    view.beVisible()
+                    true
+                }
+                else -> false
             }
-
-            return true
         }
     }
 
