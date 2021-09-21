@@ -28,7 +28,7 @@ import kotlinx.android.synthetic.main.fragment_week_holder.view.*
 import org.joda.time.DateTime
 
 class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
-    private val PREFILLED_WEEKS = 1
+    private val PREFILLED_WEEKS = 151
     private val MAX_SEEKBAR_VALUE = 14
 
     private var viewPager: MyViewPager? = null

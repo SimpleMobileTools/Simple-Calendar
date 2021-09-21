@@ -9,7 +9,6 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import android.util.Range
 import android.view.*
 import android.widget.ImageView
@@ -273,36 +272,22 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
                 layout.setOnDragListener { view, dragEvent ->
                     when (dragEvent.action) {
-                        DragEvent.ACTION_DRAG_STARTED -> {
-                            dragEvent.clipDescription.hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)
-                        }
-
-                        DragEvent.ACTION_DRAG_ENTERED -> {
-                            Log.w(TAG, "initGrid:  ACTION_DRAG_ENTERED")
-                            true
-                        }
-
-                        DragEvent.ACTION_DRAG_EXITED -> {
-                            true
-                        }
-
-                        DragEvent.ACTION_DRAG_LOCATION -> {
-                            true
-                        }
-
+                        DragEvent.ACTION_DRAG_STARTED -> dragEvent.clipDescription.hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)
+                        DragEvent.ACTION_DRAG_ENTERED,
+                        DragEvent.ACTION_DRAG_EXITED,
+                        DragEvent.ACTION_DRAG_LOCATION,
+                        DragEvent.ACTION_DRAG_EXITED,
+                        DragEvent.ACTION_DRAG_ENDED -> true
                         DragEvent.ACTION_DROP -> {
                             try {
                                 val eventId = dragEvent.clipData.getItemAt(0).text.toString().toLong()
                                 val startHour = (dragEvent.y / rowHeight).toInt()
                                 val endHour = startHour + 1
-
-                                Log.d(TAG, "Dropped event: startHour=$startHour, endHour=$endHour")
                                 ensureBackgroundThread {
                                     val event = context?.eventsDB?.getEventWithId(eventId)
                                     event?.let {
                                         val startTime = Formatter.getDateTimeFromTS(it.startTS)
                                         val endTime = Formatter.getDateTimeFromTS(it.endTS)
-                                        Log.w(TAG, "initGrid: found event: $it")
                                         context?.eventsHelper?.updateEvent(
                                             it.copy(
                                                 startTS = Formatter.getDateTimeFromTS(weekTimestamp + index * DAY_SECONDS)
@@ -310,11 +295,9 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                                                 endTS = Formatter.getDateTimeFromTS(weekTimestamp + index * DAY_SECONDS)
                                                     .withTime(endHour, endTime.minuteOfHour, endTime.secondOfMinute, endTime.millisOfSecond).seconds(),
                                                 flags = it.flags.removeBit(FLAG_ALL_DAY)
-                                            ), true, false
+                                            ), updateAtCalDAV = true, showToasts = false
                                         ) {
-
                                             updateCalendar()
-                                            Log.w(TAG, "Updated event ${it.id}")
                                         }
                                     }
                                 }
@@ -324,14 +307,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                             }
 
                         }
-                        DragEvent.ACTION_DRAG_ENDED -> {
-
-                            true
-                        }
-
-                        else -> {
-                            false
-                        }
+                        else -> false
                     }
                 }
             }
@@ -344,7 +320,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 selectedGrid?.beGone()
 
                 val hour = (event.y / rowHeight).toInt()
-
                 selectedGrid = (inflater.inflate(R.layout.week_grid_item, null, false) as ImageView).apply {
                     view.addView(this)
                     background = ColorDrawable(primaryColor)
@@ -618,50 +593,27 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         allDayHolders.add(allDaysLine)
         allDaysLine.setOnDragListener { view, dragEvent ->
             when (dragEvent.action) {
-                DragEvent.ACTION_DRAG_STARTED -> {
-                    dragEvent.clipDescription.hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)
-                }
-
-                DragEvent.ACTION_DRAG_ENTERED -> {
-                    true
-                }
-
-
-                DragEvent.ACTION_DRAG_EXITED -> {
-                    true
-                }
-
-
-                DragEvent.ACTION_DRAG_LOCATION -> {
-                    true
-                }
-
+                DragEvent.ACTION_DRAG_STARTED -> dragEvent.clipDescription.hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)
+                DragEvent.ACTION_DRAG_ENTERED,
+                DragEvent.ACTION_DRAG_EXITED,
+                DragEvent.ACTION_DRAG_LOCATION,
+                DragEvent.ACTION_DRAG_ENDED -> true
                 DragEvent.ACTION_DROP -> {
                     try {
                         val eventId = dragEvent.clipData.getItemAt(0).text.toString().toLong()
                         val xPos = dragEvent.x
                         val width = view.width
                         val dayCode = getDayCodeForAllDay(width, xPos.toInt())
-                        Log.d(TAG, "addNewLine: dayCode=$dayCode")
                         val startStamp = Formatter.getDayStartTS(dayCode)
-                        Log.d(TAG, "addNewLine: startStamp=$startStamp")
-                        val endStamp = Formatter.getDayEndTS(dayCode)
-                        Log.d(TAG, "addNewLine: endStamp=$endStamp")
-
-
                         ensureBackgroundThread {
                             val event = context?.eventsDB?.getEventWithId(eventId)
                             event?.let {
-                                Log.w(TAG, "addNewLine: found event: $it")
                                 context?.eventsHelper?.updateEvent(
-                                    it.copy(
-                                        startTS = startStamp,
-                                        endTS = startStamp,
-                                        flags = it.flags.addBit(FLAG_ALL_DAY)
-                                    ), true, false
+                                    it.copy(startTS = startStamp, endTS = startStamp, flags = it.flags.addBit(FLAG_ALL_DAY)),
+                                    updateAtCalDAV = true,
+                                    showToasts = false
                                 ) {
                                     updateCalendar()
-                                    Log.w(TAG, "Updated event ${it.id}")
                                 }
                             }
                         }
@@ -670,29 +622,20 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                         false
                     }
                 }
-                DragEvent.ACTION_DRAG_ENDED -> {
-                    true
-                }
-
-                else -> {
-                    false
-                }
+                else -> false
             }
         }
     }
 
     private fun getDayCodeForAllDay(width: Int, xPos: Int): String {
-        Log.d(TAG, "getDayCodeForAllDay: width=$width, xPos=$xPos")
         var index = 0
         val widthPerDay = (width.toDouble() / config.weeklyViewDays.toDouble()).toInt()
-        Log.d(TAG, "getDayCodeForAllDay: widthPerDay=$widthPerDay")
         for ((valueIndex, value) in (widthPerDay until width step widthPerDay).withIndex()) {
             if (xPos < value) {
                 index = valueIndex
                 break
             }
         }
-        Log.d(TAG, "getDayCodeForAllDay: $index")
         return dayColumns[index].tag.toString()
     }
 
@@ -761,19 +704,8 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             val startDateTime = Formatter.getDateTimeFromTS(event.startTS)
             val endDateTime = Formatter.getDateTimeFromTS(event.endTS)
 
-            val startDateTimeSeconds = startDateTime.seconds()
-            val endDateTimeSeconds = endDateTime.seconds()
-            val weekTimestampStart = weekTimestamp
-            val weekTimestampEnd = weekTimestamp + 2 * WEEK_SECONDS
-            val minTS = Math.max(startDateTimeSeconds, weekTimestampStart)
-            val maxTS = Math.min(endDateTimeSeconds, weekTimestampEnd)
-
-            Log.d(TAG, "startDateTimeSeconds: $startDateTimeSeconds")
-            Log.d(TAG, "weekTimestampStart: $weekTimestampStart")
-            Log.d(TAG, "minTS: $minTS")
-            Log.d(TAG, "endDateTimeSeconds: $endDateTimeSeconds")
-            Log.d(TAG, "weekTimestampEnd: $weekTimestampEnd")
-            Log.d(TAG, "maxTS: $maxTS")
+            val minTS = Math.max(startDateTime.seconds(), weekTimestamp)
+            val maxTS = Math.min(endDateTime.seconds(), weekTimestamp + 2 * WEEK_SECONDS)
 
             // fix a visual glitch with all-day events or events lasting multiple days starting at midnight on monday, being shown the previous week too
             if (minTS == maxTS && (minTS - weekTimestamp == WEEK_SECONDS.toLong())) {
@@ -782,12 +714,9 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
             val isStartTimeDay = Formatter.getDateTimeFromTS(maxTS) == Formatter.getDateTimeFromTS(maxTS).withTimeAtStartOfDay()
             val numDays = Days.daysBetween(Formatter.getDateTimeFromTS(minTS).toLocalDate(), Formatter.getDateTimeFromTS(maxTS).toLocalDate()).days
-            Log.d(TAG, "numDays: $numDays")
             val daysCnt = if (numDays == 1 && isStartTimeDay) 0 else numDays
-            Log.d(TAG, "daysCnt: $daysCnt")
             val startDateTimeInWeek = Formatter.getDateTimeFromTS(minTS)
             val firstDayIndex = (startDateTimeInWeek.dayOfWeek - if (config.isSundayFirst) 0 else 1) % 7
-            Log.d(TAG, "firstDayIndex: $firstDayIndex")
 
             var doesEventFit: Boolean
             val cnt = allDayRows.size - 1
@@ -826,7 +755,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             val dayCodeStart = Formatter.getDayCodeFromDateTime(startDateTime).toInt()
             val dayCodeEnd = Formatter.getDayCodeFromDateTime(endDateTime).toInt()
             val dayOfWeek = dayColumns.indexOfFirst { it.tag.toInt() == dayCodeStart || (it.tag.toInt() > dayCodeStart && it.tag.toInt() <= dayCodeEnd) }
-            Log.i(TAG, "dayOfWeek: $dayOfWeek")
             if (dayOfWeek == -1) {
                 return
             }
@@ -860,7 +788,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 }
                 true
             }
-
             setOnDragListener(DragListener())
         }
     }
@@ -907,10 +834,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                     false
                 }
                 // handle ACTION_DRAG_LOCATION due to https://stackoverflow.com/a/19460338
-                DragEvent.ACTION_DRAG_LOCATION -> {
-                    return true
-                }
-
+                DragEvent.ACTION_DRAG_LOCATION -> true
                 DragEvent.ACTION_DRAG_ENDED -> {
                     currentlyDraggedView = null
                     view.beVisible()
@@ -919,9 +843,5 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 else -> false
             }
         }
-    }
-
-    companion object {
-        private const val TAG = "WeekFragment"
     }
 }
