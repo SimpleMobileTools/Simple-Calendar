@@ -6,7 +6,6 @@ import android.content.ClipDescription
 import android.content.Intent
 import android.content.res.Resources
 import android.graphics.drawable.ColorDrawable
-import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.util.Range
@@ -36,6 +35,7 @@ import org.joda.time.DateTime
 import org.joda.time.Days
 
 class WeekFragment : Fragment(), WeeklyCalendar {
+    private val WEEKLY_EVENT_ID_LABEL = "event_id_label"
     private val PLUS_FADEOUT_DELAY = 5000L
     private val MIN_SCALE_FACTOR = 0.3f
     private val MAX_SCALE_FACTOR = 5f
@@ -425,6 +425,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         addEvents(currEvents)
     }
 
+    @SuppressLint("NewApi")
     private fun addEvents(events: ArrayList<Event>) {
         initGrid()
         allDayHolders.clear()
@@ -565,8 +566,8 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                         setOnLongClickListener { view ->
                             currentlyDraggedView = view
                             val shadowBuilder = View.DragShadowBuilder(view)
-                            val clipData = ClipData.newPlainText("event_id_label", event.id.toString())
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                            val clipData = ClipData.newPlainText(WEEKLY_EVENT_ID_LABEL, event.id.toString())
+                            if (isNougatPlus()) {
                                 view.startDragAndDrop(clipData, shadowBuilder, null, 0)
                             } else {
                                 view.startDrag(clipData, shadowBuilder, null, 0)
@@ -687,6 +688,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         }
     }
 
+    @SuppressLint("NewApi")
     private fun addAllDayEvent(event: Event) {
         (inflater.inflate(R.layout.week_all_day_event_marker, null, false) as TextView).apply {
             var backgroundColor = eventTypeColors.get(event.eventType, primaryColor)
@@ -780,8 +782,8 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             setOnLongClickListener { view ->
                 currentlyDraggedView = view
                 val shadowBuilder = View.DragShadowBuilder(view)
-                val clipData = ClipData.newPlainText("event_id_label", event.id.toString())
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                val clipData = ClipData.newPlainText(WEEKLY_EVENT_ID_LABEL, event.id.toString())
+                if (isNougatPlus()) {
                     view.startDragAndDrop(clipData, shadowBuilder, null, 0)
                 } else {
                     view.startDrag(clipData, shadowBuilder, null, 0)
