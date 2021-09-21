@@ -565,7 +565,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                         setOnLongClickListener { view ->
                             currentlyDraggedView = view
                             val shadowBuilder = View.DragShadowBuilder(view)
-                            val clipData = ClipData.newPlainText(WEEK_VIEW_DRAG_EVENT_ID_LABEL, event.id.toString())
+                            val clipData = ClipData.newPlainText("event_id_label", event.id.toString())
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                                 view.startDragAndDrop(clipData, shadowBuilder, null, 0)
                             } else {
@@ -780,7 +780,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             setOnLongClickListener { view ->
                 currentlyDraggedView = view
                 val shadowBuilder = View.DragShadowBuilder(view)
-                val clipData = ClipData.newPlainText(WEEK_VIEW_DRAG_EVENT_ID_LABEL, event.id.toString())
+                val clipData = ClipData.newPlainText("event_id_label", event.id.toString())
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                     view.startDragAndDrop(clipData, shadowBuilder, null, 0)
                 } else {
