@@ -276,24 +276,23 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                         DragEvent.ACTION_DRAG_ENTERED,
                         DragEvent.ACTION_DRAG_EXITED,
                         DragEvent.ACTION_DRAG_LOCATION,
-                        DragEvent.ACTION_DRAG_EXITED,
                         DragEvent.ACTION_DRAG_ENDED -> true
                         DragEvent.ACTION_DROP -> {
                             try {
                                 val eventId = dragEvent.clipData.getItemAt(0).text.toString().toLong()
                                 val startHour = (dragEvent.y / rowHeight).toInt()
-                                val endHour = startHour + 1
                                 ensureBackgroundThread {
                                     val event = context?.eventsDB?.getEventWithId(eventId)
                                     event?.let {
-                                        val startTime = Formatter.getDateTimeFromTS(it.startTS)
-                                        val endTime = Formatter.getDateTimeFromTS(it.endTS)
+                                        val currentStartTime = Formatter.getDateTimeFromTS(it.startTS)
+                                        val startTime = Formatter.getDateTimeFromTS(weekTimestamp + index * DAY_SECONDS)
+                                            .withTime(startHour, currentStartTime.minuteOfHour, currentStartTime.secondOfMinute, currentStartTime.millisOfSecond).seconds()
+                                        val currentEventDuration = event.endTS - event.startTS
+                                        val endTime = startTime + currentEventDuration
                                         context?.eventsHelper?.updateEvent(
                                             it.copy(
-                                                startTS = Formatter.getDateTimeFromTS(weekTimestamp + index * DAY_SECONDS)
-                                                    .withTime(startHour, startTime.minuteOfHour, startTime.secondOfMinute, startTime.millisOfSecond).seconds(),
-                                                endTS = Formatter.getDateTimeFromTS(weekTimestamp + index * DAY_SECONDS)
-                                                    .withTime(endHour, endTime.minuteOfHour, endTime.secondOfMinute, endTime.millisOfSecond).seconds(),
+                                                startTS = startTime,
+                                                endTS = endTime,
                                                 flags = it.flags.removeBit(FLAG_ALL_DAY)
                                             ), updateAtCalDAV = true, showToasts = false
                                         ) {
@@ -305,7 +304,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                             } catch (ignored: Exception) {
                                 false
                             }
-
                         }
                         else -> false
                     }
