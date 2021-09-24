@@ -286,7 +286,12 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                                     event?.let {
                                         val currentStartTime = Formatter.getDateTimeFromTS(it.startTS)
                                         val startTime = Formatter.getDateTimeFromTS(weekTimestamp + index * DAY_SECONDS)
-                                            .withTime(startHour, currentStartTime.minuteOfHour, currentStartTime.secondOfMinute, currentStartTime.millisOfSecond).seconds()
+                                            .withTime(
+                                                startHour,
+                                                currentStartTime.minuteOfHour,
+                                                currentStartTime.secondOfMinute,
+                                                currentStartTime.millisOfSecond
+                                            ).seconds()
                                         val currentEventDuration = event.endTS - event.startTS
                                         val endTime = startTime + currentEventDuration
                                         context?.eventsHelper?.updateEvent(
@@ -771,14 +776,13 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             return when (dragEvent.action) {
                 DragEvent.ACTION_DRAG_STARTED -> currentlyDraggedView == view
                 DragEvent.ACTION_DRAG_ENTERED -> {
-                    view.beInvisible()
+                    view.beGone()
                     false
                 }
                 // handle ACTION_DRAG_LOCATION due to https://stackoverflow.com/a/19460338
                 DragEvent.ACTION_DRAG_LOCATION -> true
                 DragEvent.ACTION_DRAG_ENDED -> {
                     currentlyDraggedView = null
-                    view.beVisible()
                     true
                 }
                 else -> false
