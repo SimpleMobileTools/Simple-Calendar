@@ -592,52 +592,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         val allDaysLine = inflater.inflate(R.layout.all_day_events_holder_line, null, false) as RelativeLayout
         week_all_day_holder?.addView(allDaysLine)
         allDayHolders.add(allDaysLine)
-        allDaysLine.setOnDragListener { view, dragEvent ->
-            when (dragEvent.action) {
-                DragEvent.ACTION_DRAG_STARTED -> dragEvent.clipDescription.hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)
-                DragEvent.ACTION_DRAG_ENTERED,
-                DragEvent.ACTION_DRAG_EXITED,
-                DragEvent.ACTION_DRAG_LOCATION,
-                DragEvent.ACTION_DRAG_ENDED -> true
-                DragEvent.ACTION_DROP -> {
-                    try {
-                        val eventId = dragEvent.clipData.getItemAt(0).text.toString().toLong()
-                        val xPos = dragEvent.x
-                        val width = view.width
-                        val dayCode = getDayCodeForAllDay(width, xPos.toInt())
-                        val startStamp = Formatter.getDayStartTS(dayCode)
-                        ensureBackgroundThread {
-                            val event = context?.eventsDB?.getEventWithId(eventId)
-                            event?.let {
-                                context?.eventsHelper?.updateEvent(
-                                    it.copy(startTS = startStamp, endTS = startStamp, flags = it.flags.addBit(FLAG_ALL_DAY)),
-                                    updateAtCalDAV = true,
-                                    showToasts = false
-                                ) {
-                                    updateCalendar()
-                                }
-                            }
-                        }
-                        true
-                    } catch (ignored: Exception) {
-                        false
-                    }
-                }
-                else -> false
-            }
-        }
-    }
-
-    private fun getDayCodeForAllDay(width: Int, xPos: Int): String {
-        var index = 0
-        val widthPerDay = (width.toDouble() / config.weeklyViewDays.toDouble()).toInt()
-        for ((valueIndex, value) in (widthPerDay until width step widthPerDay).withIndex()) {
-            if (xPos < value) {
-                index = valueIndex
-                break
-            }
-        }
-        return dayColumns[index].tag.toString()
     }
 
     private fun addCurrentTimeIndicator() {
@@ -778,19 +732,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                     startActivity(this)
                 }
             }
-
-            setOnLongClickListener { view ->
-                currentlyDraggedView = view
-                val shadowBuilder = View.DragShadowBuilder(view)
-                val clipData = ClipData.newPlainText(WEEKLY_EVENT_ID_LABEL, event.id.toString())
-                if (isNougatPlus()) {
-                    view.startDragAndDrop(clipData, shadowBuilder, null, 0)
-                } else {
-                    view.startDrag(clipData, shadowBuilder, null, 0)
-                }
-                true
-            }
-            setOnDragListener(DragListener())
         }
     }
 
