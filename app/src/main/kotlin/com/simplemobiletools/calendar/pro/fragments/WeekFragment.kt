@@ -781,7 +781,14 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 }
                 // handle ACTION_DRAG_LOCATION due to https://stackoverflow.com/a/19460338
                 DragEvent.ACTION_DRAG_LOCATION -> true
+                DragEvent.ACTION_DROP -> {
+                    view.beVisible()
+                    true
+                }
                 DragEvent.ACTION_DRAG_ENDED -> {
+                    if (!dragEvent.result) {
+                        view.beVisible()
+                    }
                     currentlyDraggedView = null
                     true
                 }
