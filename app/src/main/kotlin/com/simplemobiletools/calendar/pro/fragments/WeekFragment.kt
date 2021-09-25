@@ -1,6 +1,8 @@
 package com.simplemobiletools.calendar.pro.fragments
 
 import android.annotation.SuppressLint
+import android.content.ClipData
+import android.content.ClipDescription
 import android.content.Intent
 import android.content.res.Resources
 import android.graphics.drawable.ColorDrawable
@@ -24,18 +26,16 @@ import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.EventWeeklyView
 import com.simplemobiletools.calendar.pro.views.MyScrollView
 import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.DAY_SECONDS
-import com.simplemobiletools.commons.helpers.HIGHER_ALPHA
-import com.simplemobiletools.commons.helpers.LOWER_ALPHA
-import com.simplemobiletools.commons.helpers.WEEK_SECONDS
+import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.views.MyTextView
+import java.util.*
 import kotlinx.android.synthetic.main.fragment_week.*
 import kotlinx.android.synthetic.main.fragment_week.view.*
 import org.joda.time.DateTime
 import org.joda.time.Days
-import java.util.*
 
 class WeekFragment : Fragment(), WeeklyCalendar {
+    private val WEEKLY_EVENT_ID_LABEL = "event_id_label"
     private val PLUS_FADEOUT_DELAY = 5000L
     private val MIN_SCALE_FACTOR = 0.3f
     private val MAX_SCALE_FACTOR = 5f
@@ -71,6 +71,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private var dayColumns = ArrayList<RelativeLayout>()
     private var eventTypeColors = LongSparseArray<Int>()
     private var eventTimeRanges = LinkedHashMap<String, ArrayList<EventWeeklyView>>()
+    private var currentlyDraggedView: View? = null
 
     private lateinit var inflater: LayoutInflater
     private lateinit var mView: View
@@ -268,6 +269,50 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                     gestureDetector.onTouchEvent(motionEvent)
                     true
                 }
+
+                layout.setOnDragListener { view, dragEvent ->
+                    when (dragEvent.action) {
+                        DragEvent.ACTION_DRAG_STARTED -> dragEvent.clipDescription.hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)
+                        DragEvent.ACTION_DRAG_ENTERED,
+                        DragEvent.ACTION_DRAG_EXITED,
+                        DragEvent.ACTION_DRAG_LOCATION,
+                        DragEvent.ACTION_DRAG_ENDED -> true
+                        DragEvent.ACTION_DROP -> {
+                            try {
+                                val eventId = dragEvent.clipData.getItemAt(0).text.toString().toLong()
+                                val startHour = (dragEvent.y / rowHeight).toInt()
+                                ensureBackgroundThread {
+                                    val event = context?.eventsDB?.getEventWithId(eventId)
+                                    event?.let {
+                                        val currentStartTime = Formatter.getDateTimeFromTS(it.startTS)
+                                        val startTime = Formatter.getDateTimeFromTS(weekTimestamp + index * DAY_SECONDS)
+                                            .withTime(
+                                                startHour,
+                                                currentStartTime.minuteOfHour,
+                                                currentStartTime.secondOfMinute,
+                                                currentStartTime.millisOfSecond
+                                            ).seconds()
+                                        val currentEventDuration = event.endTS - event.startTS
+                                        val endTime = startTime + currentEventDuration
+                                        context?.eventsHelper?.updateEvent(
+                                            it.copy(
+                                                startTS = startTime,
+                                                endTS = endTime,
+                                                flags = it.flags.removeBit(FLAG_ALL_DAY)
+                                            ), updateAtCalDAV = true, showToasts = false
+                                        ) {
+                                            updateCalendar()
+                                        }
+                                    }
+                                }
+                                true
+                            } catch (ignored: Exception) {
+                                false
+                            }
+                        }
+                        else -> false
+                    }
+                }
             }
     }
 
@@ -383,6 +428,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         addEvents(currEvents)
     }
 
+    @SuppressLint("NewApi")
     private fun addEvents(events: ArrayList<Event>) {
         initGrid()
         allDayHolders.clear()
@@ -519,6 +565,20 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                                 startActivity(this)
                             }
                         }
+
+                        setOnLongClickListener { view ->
+                            currentlyDraggedView = view
+                            val shadowBuilder = View.DragShadowBuilder(view)
+                            val clipData = ClipData.newPlainText(WEEKLY_EVENT_ID_LABEL, event.id.toString())
+                            if (isNougatPlus()) {
+                                view.startDragAndDrop(clipData, shadowBuilder, null, 0)
+                            } else {
+                                view.startDrag(clipData, shadowBuilder, null, 0)
+                            }
+                            true
+                        }
+
+                        setOnDragListener(DragListener())
                     }
 
                     currentDateTime = currentDateTime.plusDays(1)
@@ -585,6 +645,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         }
     }
 
+    @SuppressLint("NewApi")
     private fun addAllDayEvent(event: Event) {
         (inflater.inflate(R.layout.week_all_day_event_marker, null, false) as TextView).apply {
             var backgroundColor = eventTypeColors.get(event.eventType, primaryColor)
@@ -708,5 +769,31 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         updateCalendar()
         setupDayLabels()
         addEvents(currEvents)
+    }
+
+    inner class DragListener : View.OnDragListener {
+        override fun onDrag(view: View, dragEvent: DragEvent): Boolean {
+            return when (dragEvent.action) {
+                DragEvent.ACTION_DRAG_STARTED -> currentlyDraggedView == view
+                DragEvent.ACTION_DRAG_ENTERED -> {
+                    view.beGone()
+                    false
+                }
+                // handle ACTION_DRAG_LOCATION due to https://stackoverflow.com/a/19460338
+                DragEvent.ACTION_DRAG_LOCATION -> true
+                DragEvent.ACTION_DROP -> {
+                    view.beVisible()
+                    true
+                }
+                DragEvent.ACTION_DRAG_ENDED -> {
+                    if (!dragEvent.result) {
+                        view.beVisible()
+                    }
+                    currentlyDraggedView = null
+                    true
+                }
+                else -> false
+            }
+        }
     }
 }
