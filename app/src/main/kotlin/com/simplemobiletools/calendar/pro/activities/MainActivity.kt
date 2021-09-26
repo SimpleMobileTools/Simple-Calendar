@@ -12,7 +12,9 @@ import android.graphics.drawable.Icon
 import android.graphics.drawable.LayerDrawable
 import android.net.Uri
 import android.os.Bundle
-import android.provider.ContactsContract.*
+import android.provider.ContactsContract.CommonDataKinds
+import android.provider.ContactsContract.Contacts
+import android.provider.ContactsContract.Data
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -120,7 +122,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
 
         if (!config.wasUpgradedFromFreeShown && isPackageInstalled("com.simplemobiletools.calendar")) {
-            ConfirmationDialog(this, "", R.string.upgraded_from_free, R.string.ok, 0) {}
+            ConfirmationDialog(this, "", R.string.upgraded_from_free, R.string.ok, 0, false) {}
             config.wasUpgradedFromFreeShown = true
         }
     }
