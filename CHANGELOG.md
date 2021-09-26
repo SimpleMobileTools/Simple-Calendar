@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 6.15.2 *(2021-09-26)*
+----------------------------
+
+ * Allow dragging events at the weekly view for quick editing
+ * Remember the last used colors at the color picker
+
 Version 6.15.1 *(2021-08-23)*
 ----------------------------
 
