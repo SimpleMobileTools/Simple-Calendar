@@ -28,11 +28,11 @@ import com.simplemobiletools.calendar.pro.views.MyScrollView
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.views.MyTextView
-import java.util.*
 import kotlinx.android.synthetic.main.fragment_week.*
 import kotlinx.android.synthetic.main.fragment_week.view.*
 import org.joda.time.DateTime
 import org.joda.time.Days
+import java.util.*
 
 class WeekFragment : Fragment(), WeeklyCalendar {
     private val WEEKLY_EVENT_ID_LABEL = "event_id_label"
@@ -182,24 +182,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         if (context != null) {
             WeeklyCalendarImpl(this, context!!).updateWeeklyCalendar(weekTimestamp)
         }
-    }
-
-    fun updateVisibleDaysCount(count: Int) {
-        dayColumns.clear()
-        addDayColumns()
-
-        mView.week_horizontal_grid_holder.apply {
-            daysCount = count
-            invalidate()
-        }
-
-        addEvents(currEvents)
-        setupDayLabels()
-    }
-
-    fun updateWeekStartTimestamp(newTimestamp: Long) {
-        weekTimestamp = newTimestamp
-        updateCalendar()
     }
 
     private fun addDayColumns() {

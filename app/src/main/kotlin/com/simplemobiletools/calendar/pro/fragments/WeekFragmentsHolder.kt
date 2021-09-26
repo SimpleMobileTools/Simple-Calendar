@@ -234,7 +234,6 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
 
     private fun updateDaysCount(cnt: Int) {
         weekHolder!!.week_view_days_count.text = context!!.resources.getQuantityString(R.plurals.days, cnt, cnt)
-        (viewPager?.adapter as? MyWeekPagerAdapter)?.updateVisibleDaysCount(viewPager!!.currentItem, cnt, currentWeekTS)
     }
 
     override fun refreshEvents() {
