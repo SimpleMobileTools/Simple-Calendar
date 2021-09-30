@@ -1,7 +1,10 @@
 package com.simplemobiletools.calendar.pro.models
 
 import androidx.collection.LongSparseArray
-import androidx.room.*
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.Index
+import androidx.room.PrimaryKey
 import com.simplemobiletools.calendar.pro.extensions.seconds
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.commons.extensions.addBitIf
@@ -36,7 +39,6 @@ data class Event(
     @ColumnInfo(name = "last_updated") var lastUpdated: Long = 0L,
     @ColumnInfo(name = "source") var source: String = SOURCE_SIMPLE_CALENDAR,
     @ColumnInfo(name = "availability") var availability: Int = 0,
-    @Ignore
     var color: Int = 0,
 ) : Serializable {
 
