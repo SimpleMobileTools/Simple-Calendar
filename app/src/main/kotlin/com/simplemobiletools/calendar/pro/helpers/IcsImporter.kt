@@ -5,14 +5,17 @@ import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.extensions.eventsDB
 import com.simplemobiletools.calendar.pro.extensions.eventsHelper
-import com.simplemobiletools.calendar.pro.helpers.IcsImporter.ImportResult.*
+import com.simplemobiletools.calendar.pro.helpers.IcsImporter.ImportResult.IMPORT_FAIL
+import com.simplemobiletools.calendar.pro.helpers.IcsImporter.ImportResult.IMPORT_NOTHING_NEW
+import com.simplemobiletools.calendar.pro.helpers.IcsImporter.ImportResult.IMPORT_OK
+import com.simplemobiletools.calendar.pro.helpers.IcsImporter.ImportResult.IMPORT_PARTIAL
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.calendar.pro.models.Reminder
 import com.simplemobiletools.commons.extensions.areDigitsOnly
 import com.simplemobiletools.commons.extensions.showErrorToast
-import org.joda.time.DateTimeZone
 import java.io.File
+import org.joda.time.DateTimeZone
 
 class IcsImporter(val activity: SimpleActivity) {
     enum class ImportResult {
@@ -50,7 +53,13 @@ class IcsImporter(val activity: SimpleActivity) {
     private var eventsFailed = 0
     private var eventsAlreadyExist = 0
 
-    fun importEvents(path: String, defaultEventTypeId: Long, calDAVCalendarId: Int, overrideFileEventTypes: Boolean): ImportResult {
+    fun importEvents(
+        path: String,
+        defaultEventTypeId: Long,
+        calDAVCalendarId: Int,
+        overrideFileEventTypes: Boolean,
+        eventReminders: ArrayList<Int>? = null,
+    ): ImportResult {
         try {
             val eventTypes = eventsHelper.getEventTypesSync()
             val existingEvents = activity.eventsDB.getEventsWithImportIds().toMutableList() as ArrayList<Event>
@@ -192,7 +201,7 @@ class IcsImporter(val activity: SimpleActivity) {
                             continue
                         }
 
-                        var reminders = arrayListOf(
+                        var reminders = eventReminders?.map { reminderMinutes -> Reminder(reminderMinutes, REMINDER_NOTIFICATION) } ?: arrayListOf(
                             Reminder(curReminderMinutes.getOrElse(0) { REMINDER_OFF }, curReminderActions.getOrElse(0) { REMINDER_NOTIFICATION }),
                             Reminder(curReminderMinutes.getOrElse(1) { REMINDER_OFF }, curReminderActions.getOrElse(1) { REMINDER_NOTIFICATION }),
                             Reminder(curReminderMinutes.getOrElse(2) { REMINDER_OFF }, curReminderActions.getOrElse(2) { REMINDER_NOTIFICATION })

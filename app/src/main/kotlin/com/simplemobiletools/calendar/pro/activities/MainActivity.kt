@@ -49,14 +49,14 @@ import com.simplemobiletools.commons.models.FAQItem
 import com.simplemobiletools.commons.models.RadioItem
 import com.simplemobiletools.commons.models.Release
 import com.simplemobiletools.commons.models.SimpleContact
-import kotlinx.android.synthetic.main.activity_main.*
-import org.joda.time.DateTime
-import org.joda.time.DateTimeZone
 import java.io.FileOutputStream
 import java.io.OutputStream
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlinx.android.synthetic.main.activity_main.*
+import org.joda.time.DateTime
+import org.joda.time.DateTimeZone
 
 class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private val PICK_IMPORT_SOURCE_INTENT = 1
@@ -502,22 +502,24 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     private fun addHolidays() {
         val items = getHolidayRadioItems()
-        RadioGroupDialog(this, items) {
-            toast(R.string.importing)
-            ensureBackgroundThread {
-                val holidays = getString(R.string.holidays)
-                var eventTypeId = eventsHelper.getEventTypeIdWithTitle(holidays)
-                if (eventTypeId == -1L) {
-                    val eventType = EventType(null, holidays, resources.getColor(R.color.default_holidays_color))
-                    eventTypeId = eventsHelper.insertOrUpdateEventTypeSync(eventType)
-                }
-
-                val result = IcsImporter(this).importEvents(it as String, eventTypeId, 0, false)
-                handleParseResult(result)
-                if (result != ImportResult.IMPORT_FAIL) {
-                    runOnUiThread {
-                        updateViewPager()
-                        setupQuickFilter()
+        RadioGroupDialog(this, items) { selectedHoliday ->
+            SetRemindersDialog(this) {
+                val reminders = it
+                toast(R.string.importing)
+                ensureBackgroundThread {
+                    val holidays = getString(R.string.holidays)
+                    var eventTypeId = eventsHelper.getEventTypeIdWithTitle(holidays)
+                    if (eventTypeId == -1L) {
+                        val eventType = EventType(null, holidays, resources.getColor(R.color.default_holidays_color))
+                        eventTypeId = eventsHelper.insertOrUpdateEventTypeSync(eventType)
+                    }
+                    val result = IcsImporter(this).importEvents(selectedHoliday as String, eventTypeId, 0, false, reminders)
+                    handleParseResult(result)
+                    if (result != ImportResult.IMPORT_FAIL) {
+                        runOnUiThread {
+                            updateViewPager()
+                            setupQuickFilter()
+                        }
                     }
                 }
             }
