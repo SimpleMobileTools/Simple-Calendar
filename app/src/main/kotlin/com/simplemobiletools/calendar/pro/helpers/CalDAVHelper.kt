@@ -85,19 +85,34 @@ class CalDAVHelper(val context: Context) {
         return calendars
     }
 
-    // check if the calendars color or title has changed
     fun updateCalDAVCalendar(eventType: EventType) {
-        val uri = Calendars.CONTENT_URI
-        val newUri = ContentUris.withAppendedId(uri, eventType.caldavCalendarId.toLong())
+        val uri = ContentUris.withAppendedId(Calendars.CONTENT_URI, eventType.caldavCalendarId.toLong())
         val values = ContentValues().apply {
-            put(Calendars.CALENDAR_COLOR, eventType.color)
+            val colorKey = getCalDAVColorKey(eventType)
+            if (colorKey != null) {
+                put(Calendars.CALENDAR_COLOR_KEY, getCalDAVColorKey(eventType))
+            } else {
+                put(Calendars.CALENDAR_COLOR, eventType.color)
+                put(Calendars.CALENDAR_COLOR_KEY, "")
+            }
             put(Calendars.CALENDAR_DISPLAY_NAME, eventType.title)
         }
+
         try {
-            context.contentResolver.update(newUri, values, null, null)
+            context.contentResolver.update(uri, values, null, null)
             context.eventTypesDB.insertOrUpdate(eventType)
         } catch (e: IllegalArgumentException) {
             e.printStackTrace()
+        }
+    }
+
+    private fun getCalDAVColorKey(eventType: EventType): String? {
+        val colors = getAvailableCalDAVCalendarColors(eventType)
+        val colorKey = colors.indexOf(eventType.color)
+        return if (colorKey > 0) {
+            colorKey.toString()
+        } else {
+            null
         }
     }
 
