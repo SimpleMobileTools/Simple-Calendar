@@ -762,7 +762,7 @@
                 android:background="@null"
                 android:clickable="false"
                 android:paddingStart="@dimen/medium_margin"
-                android:text="Start weekly view with current date" />
+                android:text="@string/start_week_with_current_day" />
 
         </RelativeLayout>
 

@@ -135,6 +135,7 @@
 
     <!-- Weekly view -->
     <string name="week">Uge</string>
+    <string name="start_week_with_current_day">Start week with the current day</string>
 
     <!-- Event types -->
     <string name="event_types">Begivenhedstyper</string>
