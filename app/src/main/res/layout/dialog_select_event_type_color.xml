@@ -18,6 +18,7 @@
             android:paddingStart="@dimen/big_margin"
             android:paddingTop="@dimen/activity_margin"
             android:paddingEnd="@dimen/activity_margin"
+            android:visibility="gone"
             android:paddingBottom="@dimen/activity_margin"
             android:text="@string/select_a_different_caldav_color"
             android:textSize="@dimen/normal_text_size"/>
@@ -28,6 +29,7 @@
             android:layout_height="1px"
             android:layout_below="@+id/dialog_select_event_type_other_value"
             android:background="@color/divider_grey"
+            android:visibility="gone"
             android:importantForAccessibility="no"/>
 
         <RadioGroup
