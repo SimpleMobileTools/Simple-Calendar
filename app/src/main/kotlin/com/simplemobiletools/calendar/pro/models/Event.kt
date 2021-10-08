@@ -8,9 +8,9 @@ import androidx.room.PrimaryKey
 import com.simplemobiletools.calendar.pro.extensions.seconds
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.commons.extensions.addBitIf
+import java.io.Serializable
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
-import java.io.Serializable
 
 @Entity(tableName = "events", indices = [(Index(value = ["id"], unique = true))])
 data class Event(
@@ -38,8 +38,9 @@ data class Event(
     @ColumnInfo(name = "parent_id") var parentId: Long = 0,
     @ColumnInfo(name = "last_updated") var lastUpdated: Long = 0L,
     @ColumnInfo(name = "source") var source: String = SOURCE_SIMPLE_CALENDAR,
-    @ColumnInfo(name = "availability") var availability: Int = 0)
-    : Serializable {
+    @ColumnInfo(name = "availability") var availability: Int = 0,
+    var color: Int = 0,
+) : Serializable {
 
     companion object {
         private const val serialVersionUID = -32456795132345616L
@@ -195,8 +196,6 @@ data class Event(
         set(isPastEvent) {
             flags = flags.addBitIf(isPastEvent, FLAG_IS_PAST_EVENT)
         }
-
-    var color: Int = 0
 
     fun getTimeZoneString(): String {
         return if (timeZone.isNotEmpty() && getAllTimeZones().map { it.zoneName }.contains(timeZone)) {
