@@ -125,8 +125,8 @@
     <string name="default_event_type">Domyślny typ wydarzenia</string>
     <string name="export_past_events_too">Eksportuj także wydarzenia z przeszłości</string>
     <string name="include_event_types">Dołącz typy wydarzeń</string>
-    <string name="override_event_types">Nadpisz typy wydarzeń w pliku</string>
     <string name="filename_without_ics">Nazwa pliku (bez końcówki „.ics”)</string>
+    <string name="override_event_types">Nadpisz typy wydarzeń w pliku</string>
 
     <!-- Event details -->
     <string name="location">Lokalizacja</string>
@@ -135,7 +135,7 @@
 
     <!-- Weekly view -->
     <string name="week">Tydzień</string>
-    <string name="start_week_with_current_day">Start week with the current day</string>
+    <string name="start_week_with_current_day">Rozpoczynaj tydzień od bieżącego dnia</string>
 
     <!-- Event types -->
     <string name="event_types">Typy wydarzeń</string>
@@ -164,7 +164,7 @@
     <string name="start_day_at">Początek dnia o</string>
     <string name="end_day_at">Koniec dnia o</string>
     <string name="midnight_spanning">Pokazuj wydarzenia wielodniowe na górnym pasku</string>
-    <string name="allow_customizing_day_count">Zezwól na dostosowywanie liczby dni</string>
+    <string name="allow_customizing_day_count">Zezwalaj na dostosowywanie liczby dni</string>
     <string name="week_numbers">Pokazuj numery tygodnia</string>
     <string name="vibrate">Wibruj przy powiadomieniu</string>
     <string name="reminder_sound">Dźwięk przypomnienia</string>
@@ -172,7 +172,7 @@
     <string name="no_ringtone_selected">Brak</string>
     <string name="day_end_before_start">Dzień nie może zakończyć się wcześniej, niż się zaczyna</string>
     <string name="caldav_sync">Synchronizacja CalDAV</string>
-    <string name="event_lists">Lista wydarzeń</string>
+    <string name="event_lists">Listy wydarzeń</string>
     <string name="display_past_events">Wyświetlaj wydarzenia z przeszłości</string>
     <string name="replace_description_with_location">Zamieniaj opis wydarzenia na lokalizację</string>
     <string name="delete_all_events">Usuń wszystkie wydarzenia</string>
@@ -200,7 +200,7 @@
     <string name="last_used_one">Ostatnio używany</string>
     <string name="other_time">Inny czas</string>
     <string name="highlight_weekends">Wyróżniaj weekendy w niektórych widokach</string>
-    <string name="allow_changing_time_zones">Pozwalaj zmieniać strefę czasową wydarzenia</string>
+    <string name="allow_changing_time_zones">Zezwalaj na zmienianie stref czasowych wydarzeń</string>
     <string name="manage_quick_filter_event_types">Zarządzaj szybkim filtrowaniem typów wydarzeń</string>
 
     <!-- CalDAV sync -->
