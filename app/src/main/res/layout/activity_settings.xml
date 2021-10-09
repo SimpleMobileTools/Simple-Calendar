@@ -745,7 +745,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/settings_start_weekly_view_with_current_date_holder"
+            android:id="@+id/settings_start_week_with_current_day_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/medium_margin"
@@ -756,7 +756,7 @@
             android:paddingBottom="@dimen/activity_margin">
 
             <com.simplemobiletools.commons.views.MySwitchCompat
-                android:id="@+id/settings_start_weekly_view_with_current_date"
+                android:id="@+id/settings_start_week_with_current_day"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"

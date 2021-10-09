@@ -45,7 +45,7 @@ const val YEAR = 31536000
 // Shared Preferences
 const val WEEK_NUMBERS = "week_numbers"
 const val START_WEEKLY_AT = "start_weekly_at"
-const val START_WEEKLY_VIEW_WITH_CURRENT_DATE = "start_weekly_with_current_date"
+const val START_WEEK_WITH_CURRENT_DAY = "start_week_with_current_day"
 const val SHOW_MIDNIGHT_SPANNING_EVENTS_AT_TOP = "show_midnight_spanning_events_at_top"
 const val ALLOW_CUSTOMIZE_DAY_COUNT = "allow_customise_day_count"
 const val VIBRATE = "vibrate"

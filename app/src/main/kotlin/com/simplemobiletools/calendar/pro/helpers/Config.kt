@@ -23,9 +23,9 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getInt(START_WEEKLY_AT, 7)
         set(startWeeklyAt) = prefs.edit().putInt(START_WEEKLY_AT, startWeeklyAt).apply()
 
-    var startWeeklyViewWithCurrentDate: Boolean
-        get() = prefs.getBoolean(START_WEEKLY_VIEW_WITH_CURRENT_DATE, false)
-        set(startWeeklyViewWithCurrentDate) = prefs.edit().putBoolean(START_WEEKLY_VIEW_WITH_CURRENT_DATE, startWeeklyViewWithCurrentDate).apply()
+    var startWeekWithCurrentDay: Boolean
+        get() = prefs.getBoolean(START_WEEK_WITH_CURRENT_DAY, false)
+        set(startWeekWithCurrentDay) = prefs.edit().putBoolean(START_WEEK_WITH_CURRENT_DAY, startWeekWithCurrentDay).apply()
 
     var showMidnightSpanningEventsAtTop: Boolean
         get() = prefs.getBoolean(SHOW_MIDNIGHT_SPANNING_EVENTS_AT_TOP, true)

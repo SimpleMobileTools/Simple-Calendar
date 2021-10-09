@@ -81,7 +81,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private var mStoredUse24HourFormat = false
     private var mStoredDimPastEvents = true
     private var mStoredHighlightWeekends = false
-    private var mStoredStartWeeklyViewWithCurrentDate = false
+    private var mStoredStartWeekWithCurrentDay = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -145,7 +145,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
         if (config.storedView == WEEKLY_VIEW) {
             if (mStoredIsSundayFirst != config.isSundayFirst || mStoredUse24HourFormat != config.use24HourFormat
-                || mStoredMidnightSpan != config.showMidnightSpanningEventsAtTop || mStoredStartWeeklyViewWithCurrentDate != config.startWeeklyViewWithCurrentDate) {
+                || mStoredMidnightSpan != config.showMidnightSpanningEventsAtTop || mStoredStartWeekWithCurrentDay != config.startWeekWithCurrentDay) {
                 updateViewPager()
             }
         }
@@ -260,7 +260,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             mStoredDimPastEvents = dimPastEvents
             mStoredHighlightWeekends = highlightWeekends
             mStoredMidnightSpan = showMidnightSpanningEventsAtTop
-            mStoredStartWeeklyViewWithCurrentDate = startWeeklyViewWithCurrentDate
+            mStoredStartWeekWithCurrentDay = startWeekWithCurrentDay
         }
         mStoredAdjustedPrimaryColor = getAdjustedPrimaryColor()
         mStoredDayCode = Formatter.getTodayCode()
@@ -819,7 +819,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     private fun getThisWeekDateTime(): String {
-        return if(! config.startWeeklyViewWithCurrentDate) {
+        return if(! config.startWeekWithCurrentDay) {
             val currentOffsetHours = TimeZone.getDefault().rawOffset / 1000 / 60 / 60
 
             // not great, not terrible
