@@ -58,6 +58,7 @@ class SettingsActivity : SimpleActivity() {
         setupWeeklyStart()
         setupMidnightSpanEvents()
         setupAllowCustomiseDayCount()
+        setupStartWeeklyViewWithCurrentDate()
         setupVibrate()
         setupReminderSound()
         setupReminderAudioStream()
@@ -355,6 +356,13 @@ class SettingsActivity : SimpleActivity() {
         settings_allow_customize_day_count_holder.setOnClickListener {
             settings_allow_customize_day_count.toggle()
             config.allowCustomizeDayCount = settings_allow_customize_day_count.isChecked
+        }
+    }
+
+    private fun setupStartWeeklyViewWithCurrentDate() {
+        settings_start_weekly_view_with_current_date.isChecked = config.startWeeklyViewWithCurrentDate
+        settings_start_weekly_view_with_current_date.setOnClickListener {
+            config.startWeeklyViewWithCurrentDate = settings_start_weekly_view_with_current_date.isChecked
         }
     }
 
