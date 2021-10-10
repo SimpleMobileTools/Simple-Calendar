@@ -126,7 +126,7 @@
     <string name="export_past_events_too">Exportovat i dřívější události</string>
     <string name="include_event_types">Zahrnout typy událostí</string>
     <string name="filename_without_ics">Název souboru (bez .ics)</string>
-    <string name="override_event_types">Přepsat typy událostí v souboru</string>
+    <string name="ignore_event_types">Ignore event types in the file, always use the default one</string>
 
     <!-- Event details -->
     <string name="location">Lokace</string>

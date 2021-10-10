@@ -126,7 +126,7 @@
     <string name="export_past_events_too">過去の予定もエクスポートする</string>
     <string name="include_event_types">予定の種類を含める</string>
     <string name="filename_without_ics">ファイル名 (.ics を除く)</string>
-    <string name="override_event_types">ファイル内の予定の種類を上書きする</string>
+    <string name="ignore_event_types">Ignore event types in the file, always use the default one</string>
 
     <!-- Event details -->
     <string name="location">場所</string>

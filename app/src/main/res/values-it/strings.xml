@@ -126,7 +126,7 @@
     <string name="export_past_events_too">Esporta anche gli eventi passati</string>
     <string name="include_event_types">Includi i tipi di evento</string>
     <string name="filename_without_ics">Nome file (senza .ics)</string>
-    <string name="override_event_types">Sovrascrivi i tipi di eventi nel file</string>
+    <string name="ignore_event_types">Ignore event types in the file, always use the default one</string>
 
     <!-- Event details -->
     <string name="location">Posizione</string>

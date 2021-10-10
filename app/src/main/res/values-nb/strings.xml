@@ -126,7 +126,7 @@
     <string name="export_past_events_too">Eksporter fortidige hendelser også</string>
     <string name="include_event_types">Inkluder hendelsestyper</string>
     <string name="filename_without_ics">Filnavn (uten .ics)</string>
-    <string name="override_event_types">Overstyr hendelsestyper i filen</string>
+    <string name="ignore_event_types">Ignore event types in the file, always use the default one</string>
 
     <!-- Event details -->
     <string name="location">Sted</string>

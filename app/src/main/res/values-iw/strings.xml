@@ -126,7 +126,7 @@
     <string name="export_past_events_too">ייצוא אירועי עבר בנוסף</string>
     <string name="include_event_types">כלול סוגי אירוע</string>
     <string name="filename_without_ics">שם הקובץ (ללא סיומת .ics)</string>
-    <string name="override_event_types">שנה סוגי אירועים בקובץ</string>
+    <string name="ignore_event_types">Ignore event types in the file, always use the default one</string>
 
     <!-- Event details -->
     <string name="location">מיקום</string>

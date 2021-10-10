@@ -125,8 +125,10 @@
     <string name="default_event_type">预设活动类型</string>
     <string name="export_past_events_too">也导出过去的活动</string>
     <string name="include_event_types">包含活动类型</string>
-    <string name="filename_without_ics">文件名称 (不含.ics)</string>
-    <string name="override_event_types">覆盖文件内的活动类型</string>
+    <string name="filename_without_ics">文件名称 (不含.ics)</string><![CDATA[
+    
+    ]]>
+    <string name="ignore_event_types">Ignore event types in the file, always use the default one</string>
 
     <!-- Event details -->
     <string name="location">地点</string>

@@ -126,7 +126,7 @@
     <string name="export_past_events_too">Keçmiş hadisələri də xaric et</string>
     <string name="include_event_types">Hadisə tiplərini ehtiva et</string>
     <string name="filename_without_ics">Fayl adı (.ics\'sız)</string>
-    <string name="override_event_types">Faylın içərisində hadisə tiplərini üstünə yaz</string>
+    <string name="ignore_event_types">Ignore event types in the file, always use the default one</string>
 
     <!-- Event details -->
     <string name="location">Məkan</string>

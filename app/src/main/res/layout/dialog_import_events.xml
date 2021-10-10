@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/import_events_holder"
     android:layout_width="match_parent"
@@ -15,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/activity_margin"
         android:text="@string/default_event_type"
-        android:textSize="@dimen/smaller_text_size"/>
+        android:textSize="@dimen/smaller_text_size" />
 
     <RelativeLayout
         android:id="@+id/import_event_type_holder"
@@ -31,19 +30,17 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toStartOf="@+id/import_event_type_color"
-            android:paddingStart="@dimen/medium_margin"
+            android:paddingStart="@dimen/small_margin"
             android:paddingEnd="@dimen/medium_margin"
-            tools:text="@string/regular_event"/>
+            tools:text="@string/regular_event" />
 
         <ImageView
             android:id="@+id/import_event_type_color"
             android:layout_width="@dimen/color_sample_size"
             android:layout_height="@dimen/color_sample_size"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:layout_marginEnd="@dimen/medium_margin"
-            android:layout_marginRight="@dimen/medium_margin"
-            android:clickable="false"/>
+            android:clickable="false" />
 
     </RelativeLayout>
 
@@ -54,6 +51,6 @@
         android:layout_marginStart="@dimen/normal_margin"
         android:paddingTop="@dimen/activity_margin"
         android:paddingBottom="@dimen/activity_margin"
-        android:text="@string/override_event_types"/>
+        android:text="@string/ignore_event_types" />
 
 </LinearLayout>

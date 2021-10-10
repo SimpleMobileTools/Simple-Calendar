@@ -126,7 +126,7 @@
     <string name="export_past_events_too">Vergangene Termine auch exportieren</string>
     <string name="include_event_types">Termintypen miteinbeziehen</string>
     <string name="filename_without_ics">Dateiname (ohne .ics)</string>
-    <string name="override_event_types">Termintypen in der Datei überschreiben</string>
+    <string name="ignore_event_types">Ignore event types in the file, always use the default one</string>
 
     <!-- Event details -->
     <string name="location">Ort</string>

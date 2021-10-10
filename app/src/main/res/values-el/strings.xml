@@ -126,7 +126,7 @@
     <string name="export_past_events_too">Εξαγωγή προηγούμενων εκδηλώσεων επίσης</string>
     <string name="include_event_types">Συμπερίληψη τύπων εκδηλώσεων</string>
     <string name="filename_without_ics">Όνομα αρχείου (χωρίς .ics)</string>
-    <string name="override_event_types">Κατάργηση τύπων εκδηλώσεων στο αρχείο</string>
+    <string name="ignore_event_types">Ignore event types in the file, always use the default one</string>
 
     <!-- Event details -->
     <string name="location">Τοποθεσία</string>

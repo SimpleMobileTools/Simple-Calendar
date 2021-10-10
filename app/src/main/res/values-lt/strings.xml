@@ -126,7 +126,7 @@
     <string name="export_past_events_too">Taip pat eksportuoti praėjusius įvykius</string>
     <string name="include_event_types">Įtraukti įvykių tipus</string>
     <string name="filename_without_ics">Bylos pavadinimas (be .ics)</string>
-    <string name="override_event_types">Override event types in the file</string>
+    <string name="ignore_event_types">Ignore event types in the file, always use the default one</string>
 
     <!-- Event details -->
     <string name="location">Vieta</string>
