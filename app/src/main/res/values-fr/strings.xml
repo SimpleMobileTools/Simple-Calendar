@@ -136,7 +136,7 @@
 
     <!-- Weekly view -->
     <string name="week">Semaine</string>
-    <string name="start_week_with_current_day">Commencer la semaine avec le jour actuel</string>
+    <string name="start_week_with_current_day">Démarrer la semaine à la date d'aujourd'hui</string>
 
     <!-- Event types -->
     <string name="event_types">Type d\’événement</string>
@@ -157,7 +157,7 @@
     <string name="national_holidays">Jours fériés nationaux</string>
     <string name="religious_holidays">Jours fériés religieux</string>
     <string name="holidays_imported_successfully">Les jours ont été importés avec succès comme type d\’événement « Vacances »</string>
-    <string name="importing_some_holidays_failed">Échec d\’import pour certains événements</string>
+    <string name="importing_some_holidays_failed">Échec d\’import de certains événements</string>
     <string name="importing_holidays_failed">Échec d\’import des jours fériés</string>
 
     <!-- Settings -->
@@ -202,7 +202,7 @@
     <string name="other_time">Autre moment</string>
     <string name="highlight_weekends">Mettre les week-ends en surbrillance</string>
     <string name="allow_changing_time_zones">Autoriser la modification des fuseaux horaires des événements</string>
-    <string name="manage_quick_filter_event_types">Gérer les filtres selon le type d\'évènement</string>
+    <string name="manage_quick_filter_event_types">Gérer les filtres selon le type d\'événement</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -219,7 +219,7 @@
     <string name="insufficient_permissions">Vous n\’êtes pas autorisé à écrire dans l\’agenda sélectionné</string>
     <string name="caldav_event_not_found">Événement introuvable. Veuillez activer la synchronisation CalDAV pour ce calendrier dans les paramètres de l’application.</string>
     <string name="no_synchronized_calendars">Aucun calendrier synchronisable n\'a été trouvé</string>
-    <string name="status_free">Libre</string>
+    <string name="status_free">Disponible</string>
     <string name="status_busy">Occupé</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
