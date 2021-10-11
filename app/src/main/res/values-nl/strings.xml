@@ -126,7 +126,7 @@
     <string name="export_past_events_too">Afspraken uit verleden ook exporteren</string>
     <string name="include_event_types">Afspraaktypes weergeven</string>
     <string name="filename_without_ics">Bestandsnaam (zonder .ics)</string>
-    <string name="ignore_event_types">Ignore event types in the file, always use the default one</string>
+    <string name="ignore_event_types">Afspraaktypes uit het bestand negeren (altijd standaardtype gebruiken)</string>
 
     <!-- Event details -->
     <string name="location">Locatie</string>
