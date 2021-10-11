@@ -1,6 +1,14 @@
 Changelog
 ==========
 
+Version 6.15.3 *(2021-10-11)*
+----------------------------
+
+ * Properly handle color customization of remote CalDAV calendars
+ * Added a toggle to start the weekly view with the current day
+ * Allow adding reminders at importing holidays
+ * Added a couple translation and stability improvements
+
 Version 6.15.2 *(2021-09-26)*
 ----------------------------
 
