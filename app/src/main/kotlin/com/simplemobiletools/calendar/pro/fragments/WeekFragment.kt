@@ -5,6 +5,7 @@ import android.content.ClipData
 import android.content.ClipDescription
 import android.content.Intent
 import android.content.res.Resources
+import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.os.Handler
@@ -187,7 +188,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private fun addDayColumns() {
         mView.week_events_columns_holder.removeAllViews()
         (0 until config.weeklyViewDays).forEach {
-            val column = inflater.inflate(R.layout.weekly_view_day_column, mView.week_events_columns_holder, false) as RelativeLayout
+            val column = inflater.inflate(R.layout.weekly_view_day_column, null, false) as RelativeLayout
             column.tag = Formatter.getUTCDayCodeFromTS(weekTimestamp + it * DAY_SECONDS)
             mView.week_events_columns_holder.addView(column)
             dayColumns.add(column)
@@ -244,7 +245,9 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private fun initGrid() {
         (0 until config.weeklyViewDays).mapNotNull { dayColumns.getOrNull(it) }
             .forEachIndexed { index, layout ->
-                layout.removeAllViews()
+                (layout.getChildAt(0) as ViewGroup).removeAllViews()
+                (layout.getChildAt(1) as ViewGroup).removeAllViews()
+                (layout.getChildAt(2) as ViewGroup).removeAllViews()
                 val gestureDetector = getViewGestureDetector(layout, index)
 
                 layout.setOnTouchListener { view, motionEvent ->
@@ -510,11 +513,13 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                             textColor = textColor.adjustAlpha(HIGHER_ALPHA)
                         }
 
-                        background = ColorDrawable(backgroundColor)
                         setTextColor(textColor)
                         text = event.title
                         contentDescription = text
-                        dayColumn.addView(this)
+                        var v = View(context)
+                        v.background = ColorDrawable(backgroundColor)
+                        (dayColumn.getChildAt(0) as ViewGroup).addView(v)
+                        (dayColumn.getChildAt(2) as ViewGroup).addView(this)
                         y = startMinutes * minuteHeight
                         (layoutParams as RelativeLayout.LayoutParams).apply {
                             width = dayColumn.width - 1
@@ -538,7 +543,15 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                             } else {
                                 (duration * minuteHeight).toInt() - 1
                             }
+
+                            val screenWidth = context?.usableScreenSize?.x ?: return
+                            val dayWidth = screenWidth / config.weeklyViewDays
+                            v.x = x
+                            v.y = y
+                            v.layoutParams.width = dayWidth - 42
+                            v.layoutParams.height = minHeight
                         }
+
 
                         setOnClickListener {
                             Intent(context, EventActivity::class.java).apply {
@@ -598,8 +611,12 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
             val weeklyViewDays = config.weeklyViewDays
             currentTimeView = (inflater.inflate(R.layout.week_now_marker, null, false) as ImageView).apply {
-                applyColorFilter(primaryColor)
-                mView.week_events_holder.addView(this, 0)
+                applyColorFilter(Color.BLACK)
+
+                var curDay = Formatter.getUTCDateTimeFromTS(weekTimestamp)
+                val todayCode = Formatter.getDayCodeFromDateTime(DateTime())
+                val dayOfWeek = dayColumns.indexOfFirst { it.tag == todayCode }
+                (dayColumns[0].getChildAt(1) as ViewGroup).addView(this)
                 val extraWidth = res.getDimension(R.dimen.activity_margin).toInt()
                 val markerHeight = res.getDimension(R.dimen.weekly_view_now_height).toInt()
                 val minuteHeight = rowHeight / 60
