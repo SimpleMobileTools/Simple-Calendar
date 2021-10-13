@@ -302,8 +302,9 @@
         <b>Reddit:</b>
         https://www.reddit.com/r/SimpleMobileTools
     </string>
-<!--
-        Nav izdevies uziet kādus tulkojumus? Tie atrodami
-        https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
-    -->
+    <string name="marker_with_round_corners">Marker with round corners</string>
+    <!--
+            Nav izdevies uziet kādus tulkojumus? Tie atrodami
+            https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
+        -->
 </resources>

@@ -124,6 +124,10 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getBoolean(SHOW_GRID, false)
         set(showGrid) = prefs.edit().putBoolean(SHOW_GRID, showGrid).apply()
 
+    var markerWithRoundCorners: Boolean
+        get() = prefs.getBoolean(MARKER_WITH_ROUND_CORNERS, true)
+        set(markerWithRoundCorners) = prefs.edit().putBoolean(MARKER_WITH_ROUND_CORNERS, markerWithRoundCorners).apply()
+
     var loopReminders: Boolean
         get() = prefs.getBoolean(LOOP_REMINDERS, false)
         set(loopReminders) = prefs.edit().putBoolean(LOOP_REMINDERS, loopReminders).apply()

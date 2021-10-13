@@ -55,6 +55,7 @@ class SettingsActivity : SimpleActivity() {
         setupReplaceDescription()
         setupWeekNumbers()
         setupShowGrid()
+        setupMarkerWithRoundCorners()
         setupWeeklyStart()
         setupMidnightSpanEvents()
         setupAllowCustomizeDayCount()
@@ -380,6 +381,14 @@ class SettingsActivity : SimpleActivity() {
         settings_show_grid_holder.setOnClickListener {
             settings_show_grid.toggle()
             config.showGrid = settings_show_grid.isChecked
+        }
+    }
+
+    private fun setupMarkerWithRoundCorners() {
+        settings_marker_with_round_corners.isChecked = config.markerWithRoundCorners
+        settings_marker_with_round_corners_holder.setOnClickListener {
+            settings_marker_with_round_corners.toggle()
+            config.markerWithRoundCorners = settings_marker_with_round_corners.isChecked
         }
     }
 
@@ -748,6 +757,7 @@ class SettingsActivity : SimpleActivity() {
                 put(REMINDER_AUDIO_STREAM, config.reminderAudioStream)
                 put(REPLACE_DESCRIPTION, config.replaceDescription)
                 put(SHOW_GRID, config.showGrid)
+                put(MARKER_WITH_ROUND_CORNERS, config.markerWithRoundCorners)
                 put(LOOP_REMINDERS, config.loopReminders)
                 put(DIM_PAST_EVENTS, config.dimPastEvents)
                 put(ALLOW_CHANGING_TIME_ZONES, config.allowChangingTimeZones)
@@ -843,6 +853,7 @@ class SettingsActivity : SimpleActivity() {
                 REMINDER_AUDIO_STREAM -> config.reminderAudioStream = value.toInt()
                 REPLACE_DESCRIPTION -> config.replaceDescription = value.toBoolean()
                 SHOW_GRID -> config.showGrid = value.toBoolean()
+                MARKER_WITH_ROUND_CORNERS -> config.markerWithRoundCorners = value.toBoolean()
                 LOOP_REMINDERS -> config.loopReminders = value.toBoolean()
                 DIM_PAST_EVENTS -> config.dimPastEvents = value.toBoolean()
                 ALLOW_CHANGING_TIME_ZONES -> config.allowChangingTimeZones = value.toBoolean()

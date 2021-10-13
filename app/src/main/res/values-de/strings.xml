@@ -178,6 +178,7 @@
     <string name="delete_all_events">Alle Termine löschen</string>
     <string name="delete_all_events_confirmation">Bist du sicher, dass du alle Termine löschen willst? Deine Termintypen und Einstellungen bleiben erhalten.</string>
     <string name="show_a_grid">Raster anzeigen</string>
+    <string name="marker_with_round_corners">Termin mit runden Ecken</string>
     <string name="loop_reminders">Erinnerungen wiederholen bis sie verworfen werden</string>
     <string name="dim_past_events">Vergangene Termine ausgrauen</string>
     <string name="events">Termine</string>

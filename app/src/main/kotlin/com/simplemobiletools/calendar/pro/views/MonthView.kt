@@ -277,7 +277,12 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         val startDayIndex = days[event.originalStartDayIndex]
         val endDayIndex = days[Math.min(event.startDayIndex + event.daysCnt - 1, 41)]
         bgRectF.set(bgLeft, bgTop, bgRight, bgBottom)
-        canvas.drawRoundRect(bgRectF, BG_CORNER_RADIUS, BG_CORNER_RADIUS, getEventBackgroundColor(event, startDayIndex, endDayIndex))
+        if (config.markerWithRoundCorners) {
+            canvas.drawRoundRect(bgRectF, BG_CORNER_RADIUS, BG_CORNER_RADIUS, getEventBackgroundColor(event, startDayIndex, endDayIndex))
+        }
+        else {
+            canvas.drawRect(bgRectF, getEventBackgroundColor(event, startDayIndex, endDayIndex))
+        }
 
         drawEventTitle(event, canvas, xPos, yPos + verticalOffset, bgRight - bgLeft - smallPadding, startDayIndex, endDayIndex)
 
