@@ -205,7 +205,7 @@
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
-    <string name="select_caldav_calendars">Wybierz kalendarze, które chcesz zsynchronizować</string>
+    <string name="select_caldav_calendars">Wybierz kalendarze do synchronizacji</string>
     <string name="manage_synced_calendars">Zarządzaj zsynchronizowanymi kalendarzami</string>
     <string name="store_locally_only">Przechowuj tylko lokalnie</string>
     <string name="refresh_caldav_calendars">Odśwież kalendarze CalDAV</string>
