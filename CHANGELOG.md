@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 6.15.4 *(2021-10-14)*
+----------------------------
+
+ * Reverting a notification setup related change
+ * Added some stability and translation improvements
+
 Version 6.15.3 *(2021-10-11)*
 ----------------------------
 

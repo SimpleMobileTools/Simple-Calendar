@@ -1,0 +1,2 @@
+ * Reverting a notification setup related change
+ * Added some stability and translation improvements
