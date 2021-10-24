@@ -179,7 +179,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
         val view = layoutInflater.inflate(R.layout.date_picker, null)
         val datePicker = view.findViewById<DatePicker>(R.id.date_picker)
 
-        val dateTime = Formatter.getDateTimeFromTS(currentWeekTS)
+        val dateTime = Formatter.getUTCDateTimeFromTS(currentWeekTS)
         datePicker.init(dateTime.year, dateTime.monthOfYear - 1, dateTime.dayOfMonth, null)
 
         AlertDialog.Builder(context!!)
