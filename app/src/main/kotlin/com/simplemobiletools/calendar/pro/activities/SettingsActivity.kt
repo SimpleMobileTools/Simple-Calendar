@@ -81,6 +81,7 @@ class SettingsActivity : SimpleActivity() {
         setupViewToOpenFromListWidget()
         setupDimEvents()
         setupAllowChangingTimeZones()
+        setupAddBdaysAnnivAutomatically()
         updateTextColors(settings_holder)
         checkPrimaryColor()
         setupSectionColors()
@@ -618,6 +619,20 @@ class SettingsActivity : SimpleActivity() {
         settings_allow_changing_time_zones_holder.setOnClickListener {
             settings_allow_changing_time_zones.toggle()
             config.allowChangingTimeZones = settings_allow_changing_time_zones.isChecked
+        }
+    }
+
+    private fun setupAddBdaysAnnivAutomatically() {
+        settings_add_bdays_anniv_automatically.isChecked = config.addBdaysAnnivAutomatically
+        settings_add_bdays_anniv_automatically_holder.setOnClickListener {
+            handlePermission(PERMISSION_READ_CONTACTS) {
+                if (it) {
+                    settings_add_bdays_anniv_automatically.toggle()
+                    config.addBdaysAnnivAutomatically = settings_add_bdays_anniv_automatically.isChecked
+                } else {
+                    toast(R.string.no_contacts_permission)
+                }
+            }
         }
     }
 

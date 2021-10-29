@@ -202,6 +202,7 @@
     <string name="highlight_weekends">Zvýrazniť víkendy na niektorých pohľadoch</string>
     <string name="allow_changing_time_zones">Povoliť zmenu časových pásem udalostí</string>
     <string name="manage_quick_filter_event_types">Spravovať typy udalostí v rýchlom filtrovaní</string>
+    <string name="add_bdays_anniv_automatically">Add birthdays and anniversaries automatically after launching the app</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

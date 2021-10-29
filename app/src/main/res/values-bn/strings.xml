@@ -206,6 +206,7 @@
     <string name="highlight_weekends">কিছু ভিউতে সাপ্তাহিক ছুটি হাইলাইট করুন</string>
     <string name="allow_changing_time_zones">ইভেন্টের টাইম জোন পরিবর্তন করার অনুমতি দিন</string>
     <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
+    <string name="add_bdays_anniv_automatically">Add birthdays and anniversaries automatically after launching the app</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

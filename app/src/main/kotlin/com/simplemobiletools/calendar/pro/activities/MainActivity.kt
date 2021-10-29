@@ -122,6 +122,10 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             checkCalDAVUpdateListener()
         }
 
+        if (config.addBdaysAnnivAutomatically) {
+            addBirthdaysAnniversaries()
+        }
+
         if (!config.wasUpgradedFromFreeShown && isPackageInstalled("com.simplemobiletools.calendar")) {
             ConfirmationDialog(this, "", R.string.upgraded_from_free, R.string.ok, 0) {}
             config.wasUpgradedFromFreeShown = true
@@ -585,6 +589,37 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                 }
             } else {
                 toast(R.string.no_contacts_permission)
+            }
+        }
+    }
+
+    private fun addBirthdaysAnniversaries() {
+        if (!hasPermission(PERMISSION_READ_CONTACTS)) {
+            return
+        }
+
+        val reminders = arrayListOf(REMINDER_OFF, REMINDER_OFF, REMINDER_OFF)
+        val privateCursor = getMyContactsCursor(false, false)?.loadInBackground()
+
+        ensureBackgroundThread {
+            val privateContacts = MyContactsContentProvider.getSimpleContacts(this, privateCursor)
+            addPrivateEvents(true, privateContacts, reminders) { eventsFound, eventsAdded ->
+                addContactEvents(true, reminders, eventsFound, eventsAdded) {
+                    if (it > 0) {
+                        toast(R.string.birthdays_added)
+                        updateViewPager()
+                        setupQuickFilter()
+                    }
+                }
+            }
+            addPrivateEvents(false, privateContacts, reminders) { eventsFound, eventsAdded ->
+                addContactEvents(false, reminders, eventsFound, eventsAdded) {
+                    if (it > 0) {
+                        toast(R.string.anniversaries_added)
+                        updateViewPager()
+                        setupQuickFilter()
+                    }
+                }
             }
         }
     }

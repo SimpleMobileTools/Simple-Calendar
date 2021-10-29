@@ -193,6 +193,10 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getBoolean(ALLOW_CHANGING_TIME_ZONES, false)
         set(allowChangingTimeZones) = prefs.edit().putBoolean(ALLOW_CHANGING_TIME_ZONES, allowChangingTimeZones).apply()
 
+    var addBdaysAnnivAutomatically: Boolean
+        get() = prefs.getBoolean(ADD_BDAYS_ANNIV_AUTOMATICALLY, false)
+        set(addBdaysAnnivAutomatically) = prefs.edit().putBoolean(ADD_BDAYS_ANNIV_AUTOMATICALLY, addBdaysAnnivAutomatically).apply()
+
     var lastExportPath: String
         get() = prefs.getString(LAST_EXPORT_PATH, "")!!
         set(lastExportPath) = prefs.edit().putString(LAST_EXPORT_PATH, lastExportPath).apply()
