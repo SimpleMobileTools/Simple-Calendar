@@ -1028,7 +1028,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/settings_add_bdays_anniv_automatically_holder"
+            android:id="@+id/settings_add_birthdays_automatically_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackground"
@@ -1038,13 +1038,34 @@
             android:paddingBottom="@dimen/activity_margin">
 
             <com.simplemobiletools.commons.views.MySwitchCompat
-                android:id="@+id/settings_add_bdays_anniv_automatically"
+                android:id="@+id/settings_add_birthdays_automatically"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:clickable="false"
                 android:paddingStart="@dimen/medium_margin"
-                android:text="@string/add_bdays_anniv_automatically" />
+                android:text="@string/add_birthdays_automatically" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/settings_add_anniversaries_automatically_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:paddingStart="@dimen/normal_margin"
+            android:paddingTop="@dimen/activity_margin"
+            android:paddingEnd="@dimen/normal_margin"
+            android:paddingBottom="@dimen/activity_margin">
+
+            <com.simplemobiletools.commons.views.MySwitchCompat
+                android:id="@+id/settings_add_anniversaries_automatically"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:clickable="false"
+                android:paddingStart="@dimen/medium_margin"
+                android:text="@string/add_anniversaries_automatically" />
 
         </RelativeLayout>
 

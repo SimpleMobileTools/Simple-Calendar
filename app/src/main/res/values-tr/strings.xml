@@ -202,7 +202,8 @@
     <string name="highlight_weekends">Bazı görünümlerde hafta sonlarını vurgula</string>
     <string name="allow_changing_time_zones">Etkinlik saat dilimlerini değiştirmeye izin ver</string>
     <string name="manage_quick_filter_event_types">Hızlı filtre etkinlik türlerini yönet</string>
-    <string name="add_bdays_anniv_automatically">Add birthdays and anniversaries automatically after launching the app</string>
+    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
+    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

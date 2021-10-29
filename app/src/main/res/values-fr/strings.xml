@@ -203,7 +203,8 @@
     <string name="highlight_weekends">Mettre les week-ends en surbrillance</string>
     <string name="allow_changing_time_zones">Autoriser la modification des fuseaux horaires des événements</string>
     <string name="manage_quick_filter_event_types">Gérer les filtres selon le type d\'événement</string>
-    <string name="add_bdays_anniv_automatically">Add birthdays and anniversaries automatically after launching the app</string>
+    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
+    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

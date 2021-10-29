@@ -81,7 +81,8 @@ class SettingsActivity : SimpleActivity() {
         setupViewToOpenFromListWidget()
         setupDimEvents()
         setupAllowChangingTimeZones()
-        setupAddBdaysAnnivAutomatically()
+        setupAddBirthdaysAutomatically()
+        setupAddAnniversariesAutomatically()
         updateTextColors(settings_holder)
         checkPrimaryColor()
         setupSectionColors()
@@ -622,13 +623,27 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
-    private fun setupAddBdaysAnnivAutomatically() {
-        settings_add_bdays_anniv_automatically.isChecked = config.addBdaysAnnivAutomatically
-        settings_add_bdays_anniv_automatically_holder.setOnClickListener {
+    private fun setupAddBirthdaysAutomatically() {
+        settings_add_birthdays_automatically.isChecked = config.addBirthdaysAutomatically
+        settings_add_birthdays_automatically_holder.setOnClickListener {
             handlePermission(PERMISSION_READ_CONTACTS) {
                 if (it) {
-                    settings_add_bdays_anniv_automatically.toggle()
-                    config.addBdaysAnnivAutomatically = settings_add_bdays_anniv_automatically.isChecked
+                    settings_add_birthdays_automatically.toggle()
+                    config.addBirthdaysAutomatically = settings_add_birthdays_automatically.isChecked
+                } else {
+                    toast(R.string.no_contacts_permission)
+                }
+            }
+        }
+    }
+
+    private fun setupAddAnniversariesAutomatically() {
+        settings_add_anniversaries_automatically.isChecked = config.addAnniversariesAutomatically
+        settings_add_anniversaries_automatically_holder.setOnClickListener {
+            handlePermission(PERMISSION_READ_CONTACTS) {
+                if (it) {
+                    settings_add_anniversaries_automatically.toggle()
+                    config.addAnniversariesAutomatically = settings_add_anniversaries_automatically.isChecked
                 } else {
                     toast(R.string.no_contacts_permission)
                 }

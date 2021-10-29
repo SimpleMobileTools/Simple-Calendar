@@ -122,9 +122,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             checkCalDAVUpdateListener()
         }
 
-        if (config.addBdaysAnnivAutomatically) {
-            addBirthdaysAnniversaries()
-        }
+        addBirthdaysAnniversariesAtStart()
 
         if (!config.wasUpgradedFromFreeShown && isPackageInstalled("com.simplemobiletools.calendar")) {
             ConfirmationDialog(this, "", R.string.upgraded_from_free, R.string.ok, 0) {}
@@ -593,7 +591,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
     }
 
-    private fun addBirthdaysAnniversaries() {
+    private fun addBirthdaysAnniversariesAtStart() {
         if (!hasPermission(PERMISSION_READ_CONTACTS)) {
             return
         }
@@ -603,21 +601,25 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
         ensureBackgroundThread {
             val privateContacts = MyContactsContentProvider.getSimpleContacts(this, privateCursor)
-            addPrivateEvents(true, privateContacts, reminders) { eventsFound, eventsAdded ->
-                addContactEvents(true, reminders, eventsFound, eventsAdded) {
-                    if (it > 0) {
-                        toast(R.string.birthdays_added)
-                        updateViewPager()
-                        setupQuickFilter()
+            if (config.addBirthdaysAutomatically) {
+                addPrivateEvents(true, privateContacts, reminders) { eventsFound, eventsAdded ->
+                    addContactEvents(true, reminders, eventsFound, eventsAdded) {
+                        if (it > 0) {
+                            toast(R.string.birthdays_added)
+                            updateViewPager()
+                            setupQuickFilter()
+                        }
                     }
                 }
             }
-            addPrivateEvents(false, privateContacts, reminders) { eventsFound, eventsAdded ->
-                addContactEvents(false, reminders, eventsFound, eventsAdded) {
-                    if (it > 0) {
-                        toast(R.string.anniversaries_added)
-                        updateViewPager()
-                        setupQuickFilter()
+            if (config.addAnniversariesAutomatically) {
+                addPrivateEvents(false, privateContacts, reminders) { eventsFound, eventsAdded ->
+                    addContactEvents(false, reminders, eventsFound, eventsAdded) {
+                        if (it > 0) {
+                            toast(R.string.anniversaries_added)
+                            updateViewPager()
+                            setupQuickFilter()
+                        }
                     }
                 }
             }

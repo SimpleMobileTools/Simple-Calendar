@@ -202,7 +202,8 @@
     <string name="highlight_weekends">Wyróżniaj weekendy w niektórych widokach</string>
     <string name="allow_changing_time_zones">Zezwalaj na zmienianie stref czasowych wydarzeń</string>
     <string name="manage_quick_filter_event_types">Zarządzaj szybkim filtrowaniem typów wydarzeń</string>
-    <string name="add_bdays_anniv_automatically">Dodawaj urodziny i rocznice automatycznie przy uruchomieniu aplikacji</string>
+    <string name="add_birthdays_automatically">Automatycznie dodawaj nowe urodziny</string>
+    <string name="add_anniversaries_automatically">Automatycznie dodawaj nowe rocznice</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
