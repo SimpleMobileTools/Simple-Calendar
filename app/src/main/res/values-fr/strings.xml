@@ -93,6 +93,7 @@
     <string name="no_birthdays">Aucun anniversaire n\’a été trouvé</string>
     <string name="no_new_birthdays">Aucun nouvel anniversaire n’a été trouvé</string>
     <string name="birthdays_added">Anniversaires ajoutés avec succès</string>
+    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Dates mémo</string>
@@ -100,6 +101,7 @@
     <string name="no_anniversaries">Aucune date mémo n\’a été trouvée</string>
     <string name="no_new_anniversaries">Aucun nouvelle date mémo n’a été trouvée</string>
     <string name="anniversaries_added">Dates mémo ajoutées avec succès</string>
+    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Rappel</string>
@@ -203,8 +205,6 @@
     <string name="highlight_weekends">Mettre les week-ends en surbrillance</string>
     <string name="allow_changing_time_zones">Autoriser la modification des fuseaux horaires des événements</string>
     <string name="manage_quick_filter_event_types">Gérer les filtres selon le type d\'événement</string>
-    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
-    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

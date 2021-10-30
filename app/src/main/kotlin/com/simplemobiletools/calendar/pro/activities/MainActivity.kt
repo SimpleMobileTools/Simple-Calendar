@@ -508,7 +508,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private fun addHolidays() {
         val items = getHolidayRadioItems()
         RadioGroupDialog(this, items) { selectedHoliday ->
-            SetRemindersDialog(this) {
+            SetRemindersDialog(this, OTHER_EVENT) {
                 val reminders = it
                 toast(R.string.importing)
                 ensureBackgroundThread {
@@ -534,7 +534,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private fun tryAddBirthdays() {
         handlePermission(PERMISSION_READ_CONTACTS) {
             if (it) {
-                SetRemindersDialog(this) {
+                SetRemindersDialog(this, BIRTHDAY_EVENT) {
                     val reminders = it
                     val privateCursor = getMyContactsCursor(false, false)?.loadInBackground()
 
@@ -564,7 +564,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private fun tryAddAnniversaries() {
         handlePermission(PERMISSION_READ_CONTACTS) {
             if (it) {
-                SetRemindersDialog(this) {
+                SetRemindersDialog(this, ANNIVERSARY_EVENT) {
                     val reminders = it
                     val privateCursor = getMyContactsCursor(false, false)?.loadInBackground()
 
@@ -592,18 +592,17 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     private fun addBirthdaysAnniversariesAtStart() {
-        if (!hasPermission(PERMISSION_READ_CONTACTS)) {
+        if ((!config.addBirthdaysAutomatically && !config.addAnniversariesAutomatically) || !hasPermission(PERMISSION_READ_CONTACTS)) {
             return
         }
 
-        val reminders = arrayListOf(REMINDER_OFF, REMINDER_OFF, REMINDER_OFF)
         val privateCursor = getMyContactsCursor(false, false)?.loadInBackground()
 
         ensureBackgroundThread {
             val privateContacts = MyContactsContentProvider.getSimpleContacts(this, privateCursor)
             if (config.addBirthdaysAutomatically) {
-                addPrivateEvents(true, privateContacts, reminders) { eventsFound, eventsAdded ->
-                    addContactEvents(true, reminders, eventsFound, eventsAdded) {
+                addPrivateEvents(true, privateContacts, config.birthdayReminders) { eventsFound, eventsAdded ->
+                    addContactEvents(true, config.birthdayReminders, eventsFound, eventsAdded) {
                         if (it > 0) {
                             toast(R.string.birthdays_added)
                             updateViewPager()
@@ -613,8 +612,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                 }
             }
             if (config.addAnniversariesAutomatically) {
-                addPrivateEvents(false, privateContacts, reminders) { eventsFound, eventsAdded ->
-                    addContactEvents(false, reminders, eventsFound, eventsAdded) {
+                addPrivateEvents(false, privateContacts, config.anniversaryReminders) { eventsFound, eventsAdded ->
+                    addContactEvents(false, config.anniversaryReminders, eventsFound, eventsAdded) {
                         if (it > 0) {
                             toast(R.string.anniversaries_added)
                             updateViewPager()

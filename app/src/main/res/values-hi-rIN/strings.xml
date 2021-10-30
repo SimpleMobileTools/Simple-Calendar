@@ -92,6 +92,7 @@
     <string name="no_birthdays">No birthdays have been found</string>
     <string name="no_new_birthdays">No new birthdays have been found</string>
     <string name="birthdays_added">Birthdays added successfully</string>
+    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Anniversaries</string>
@@ -99,6 +100,7 @@
     <string name="no_anniversaries">No anniversaries have been found</string>
     <string name="no_new_anniversaries">No new anniversaries have been found</string>
     <string name="anniversaries_added">Anniversaries added successfully</string>
+    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
 
     <!-- Event Reminders -->
     <string name="reminder">रिमाइंडर</string>
@@ -202,8 +204,6 @@
     <string name="highlight_weekends">Highlight weekends on some views</string>
     <string name="allow_changing_time_zones">Allow changing event time zones</string>
     <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
-    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
-    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

@@ -92,6 +92,7 @@
     <string name="no_birthdays">Nenašli sa žiadne narodeniny</string>
     <string name="no_new_birthdays">Nenašli sa žiadne nové narodeniny</string>
     <string name="birthdays_added">Narodeniny boli úspešne pridané</string>
+    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Výročia</string>
@@ -99,6 +100,7 @@
     <string name="no_anniversaries">Nenašli sa žiadne výročia</string>
     <string name="no_new_anniversaries">Nenašli sa žiadne nové výročia</string>
     <string name="anniversaries_added">Výročia boli úspešne pridané</string>
+    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Pripomenka</string>
@@ -202,8 +204,6 @@
     <string name="highlight_weekends">Zvýrazniť víkendy na niektorých pohľadoch</string>
     <string name="allow_changing_time_zones">Povoliť zmenu časových pásem udalostí</string>
     <string name="manage_quick_filter_event_types">Spravovať typy udalostí v rýchlom filtrovaní</string>
-    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
-    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

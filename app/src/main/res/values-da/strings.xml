@@ -92,6 +92,7 @@
     <string name="no_birthdays">Der blev ikke fundet nogen fødselsdage</string>
     <string name="no_new_birthdays">Der blev ikke fundet nogen nye fødselsdage</string>
     <string name="birthdays_added">Fødselsdage tilføjet</string>
+    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Mærkedage</string>
@@ -99,6 +100,7 @@
     <string name="no_anniversaries">Der blev ikke fundet nogen mærkedage</string>
     <string name="no_new_anniversaries">Der blev ikke fundet nogen nye mærkedage</string>
     <string name="anniversaries_added">Mærkedage tilføjet</string>
+    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Påmindelse</string>
@@ -202,8 +204,6 @@
     <string name="highlight_weekends">Fremhæv weekender i visse visninger</string>
     <string name="allow_changing_time_zones">Tillad ændring af en begivenheds tidszone</string>
     <string name="manage_quick_filter_event_types">Håndter begivenhedstyper med hurtigt filter</string>
-    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
-    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

@@ -92,6 +92,7 @@
     <string name="no_birthdays">Nessun compleanno trovato</string>
     <string name="no_new_birthdays">Nessun nuovo compleanno trovato</string>
     <string name="birthdays_added">Compleanni aggiunti con successo</string>
+    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Anniversari</string>
@@ -99,6 +100,7 @@
     <string name="no_anniversaries">Nessun anniversario trovato</string>
     <string name="no_new_anniversaries">Nessun nuovo anniversario trovato</string>
     <string name="anniversaries_added">Anniversari aggiunti con successo</string>
+    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Promemoria</string>
@@ -202,8 +204,6 @@
     <string name="highlight_weekends">Evidenzia il fine-settimana in alcune viste</string>
     <string name="allow_changing_time_zones">Abilita il cambio del fuso orario negli eventi</string>
     <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
-    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
-    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

@@ -92,6 +92,7 @@
     <string name="no_birthdays">Дні народжень не знайдено</string>
     <string name="no_new_birthdays">Не знайдено нових днів народжень</string>
     <string name="birthdays_added">Дні народжень успішно додано</string>
+    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Річниці</string>
@@ -99,6 +100,7 @@
     <string name="no_anniversaries">Річниці не знайдено</string>
     <string name="no_new_anniversaries">Нових річниць не знайдено</string>
     <string name="anniversaries_added">Річниці успішно додано</string>
+    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Нагадування</string>
@@ -202,8 +204,6 @@
     <string name="highlight_weekends">Виділяти вихідні дні на деяких переглядах</string>
     <string name="allow_changing_time_zones">Дозволити змінювати часові пояси подій</string>
     <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
-    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
-    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

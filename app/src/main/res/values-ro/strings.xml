@@ -92,6 +92,7 @@
     <string name="no_birthdays">Nu s-au găsit zile de naștere</string>
     <string name="no_new_birthdays">Nu s-au găsit zile de naștere nou</string>
     <string name="birthdays_added">Zile de naștere adăugate cu succes</string>
+    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Aniversări</string>
@@ -99,6 +100,7 @@
     <string name="no_anniversaries">Nu s-au găsit aniversări</string>
     <string name="no_new_anniversaries">Nu s-au găsit aniversări noi</string>
     <string name="anniversaries_added">Aniversări adăugate cu succes</string>
+    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Reamintire</string>
@@ -202,8 +204,6 @@
     <string name="highlight_weekends">Evidențiază weekend-urile în anumite vizualizări</string>
     <string name="allow_changing_time_zones">Permite modificarea zonele orare ale evenimentului</string>
     <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
-    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
-    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

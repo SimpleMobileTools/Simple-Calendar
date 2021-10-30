@@ -92,6 +92,7 @@
     <string name="no_birthdays">Syntymäpäiviä ei löytynyt</string>
     <string name="no_new_birthdays">Uusia syntymäpäiviä ei löytynyt</string>
     <string name="birthdays_added">Syntymäpäivät lisättiin onnistunesti</string>
+    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Vuosipäivät</string>
@@ -99,6 +100,7 @@
     <string name="no_anniversaries">Vuosipäiviä ei löytynyt</string>
     <string name="no_new_anniversaries">Uusia vuosipäiviä ei löytynyt</string>
     <string name="anniversaries_added">Vuosipäivät lisättiin onnistuneesti</string>
+    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Muistutus</string>
@@ -202,8 +204,6 @@
     <string name="highlight_weekends">Korosta viikonloppuja joistakin näkymistä</string>
     <string name="allow_changing_time_zones">Salli tapahtumien aikavyöhykkeiden muuttaminen</string>
     <string name="manage_quick_filter_event_types">Hallitse pikasuodatuksen tapahtumatyyppejä</string>
-    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
-    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

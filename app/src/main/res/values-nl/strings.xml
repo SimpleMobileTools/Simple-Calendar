@@ -92,6 +92,7 @@
     <string name="no_birthdays">Geen verjaardagen gevonden</string>
     <string name="no_new_birthdays">Geen nieuwe verjaardagen gevonden</string>
     <string name="birthdays_added">Verjaardagen toegevoegd</string>
+    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Feestdagen</string>
@@ -99,6 +100,7 @@
     <string name="no_anniversaries">Geen feestdagen gevonden</string>
     <string name="no_new_anniversaries">Geen nieuwe feestdagen gevonden</string>
     <string name="anniversaries_added">Feestdagen toegevoegd</string>
+    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Herinnering</string>
@@ -202,8 +204,6 @@
     <string name="highlight_weekends">Weekends markeren</string>
     <string name="allow_changing_time_zones">Bewerken van tijdzone voor afspraken toestaan</string>
     <string name="manage_quick_filter_event_types">Snelfilter gebeurtenistypes beheren</string>
-    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
-    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

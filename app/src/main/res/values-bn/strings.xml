@@ -96,6 +96,7 @@
     <string name="no_birthdays">কোন জন্মদিন পাওয়া যায় নি</string>
     <string name="no_new_birthdays">কোন নতুন জন্মদিন পাওয়া যায় নি</string>
     <string name="birthdays_added">জন্মদিন সফলভাবে যোগ হয়েছে</string>
+    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">বার্ষিকী</string>
@@ -103,6 +104,7 @@
     <string name="no_anniversaries">কোন বার্ষিকী পাওয়া যায় নি</string>
     <string name="no_new_anniversaries">কোন নতুন বার্ষিকী পাওয়া যায় নি</string>
     <string name="anniversaries_added">বার্ষিকী সফলভাবে যোগ হয়েছে</string>
+    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
 
     <!-- Event Reminders -->
     <string name="reminder">রিমাইন্ডার</string>
@@ -206,8 +208,6 @@
     <string name="highlight_weekends">কিছু ভিউতে সাপ্তাহিক ছুটি হাইলাইট করুন</string>
     <string name="allow_changing_time_zones">ইভেন্টের টাইম জোন পরিবর্তন করার অনুমতি দিন</string>
     <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
-    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
-    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

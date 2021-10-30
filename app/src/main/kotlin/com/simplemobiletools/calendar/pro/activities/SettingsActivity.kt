@@ -81,8 +81,6 @@ class SettingsActivity : SimpleActivity() {
         setupViewToOpenFromListWidget()
         setupDimEvents()
         setupAllowChangingTimeZones()
-        setupAddBirthdaysAutomatically()
-        setupAddAnniversariesAutomatically()
         updateTextColors(settings_holder)
         checkPrimaryColor()
         setupSectionColors()
@@ -620,34 +618,6 @@ class SettingsActivity : SimpleActivity() {
         settings_allow_changing_time_zones_holder.setOnClickListener {
             settings_allow_changing_time_zones.toggle()
             config.allowChangingTimeZones = settings_allow_changing_time_zones.isChecked
-        }
-    }
-
-    private fun setupAddBirthdaysAutomatically() {
-        settings_add_birthdays_automatically.isChecked = config.addBirthdaysAutomatically
-        settings_add_birthdays_automatically_holder.setOnClickListener {
-            handlePermission(PERMISSION_READ_CONTACTS) {
-                if (it) {
-                    settings_add_birthdays_automatically.toggle()
-                    config.addBirthdaysAutomatically = settings_add_birthdays_automatically.isChecked
-                } else {
-                    toast(R.string.no_contacts_permission)
-                }
-            }
-        }
-    }
-
-    private fun setupAddAnniversariesAutomatically() {
-        settings_add_anniversaries_automatically.isChecked = config.addAnniversariesAutomatically
-        settings_add_anniversaries_automatically_holder.setOnClickListener {
-            handlePermission(PERMISSION_READ_CONTACTS) {
-                if (it) {
-                    settings_add_anniversaries_automatically.toggle()
-                    config.addAnniversariesAutomatically = settings_add_anniversaries_automatically.isChecked
-                } else {
-                    toast(R.string.no_contacts_permission)
-                }
-            }
         }
     }
 

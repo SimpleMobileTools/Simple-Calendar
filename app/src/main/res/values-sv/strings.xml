@@ -92,6 +92,7 @@
     <string name="no_birthdays">Inga födelsedagar hittades</string>
     <string name="no_new_birthdays">Inga nya födelsedagar hittades</string>
     <string name="birthdays_added">Födelsedagarna har lagts till</string>
+    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Årsdagar</string>
@@ -99,6 +100,7 @@
     <string name="no_anniversaries">Inga årsdagar hittades</string>
     <string name="no_new_anniversaries">Inga nya årsdagar hittades</string>
     <string name="anniversaries_added">Årsdagarna har lagts till</string>
+    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Påminnelse</string>
@@ -202,8 +204,6 @@
     <string name="highlight_weekends">Markera veckoslut i vissa vyer</string>
     <string name="allow_changing_time_zones">Allow changing event time zones</string>
     <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
-    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
-    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

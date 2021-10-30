@@ -92,6 +92,7 @@
     <string name="no_birthdays">Urtebetetzerik ez da aurkitu</string>
     <string name="no_new_birthdays">Urtebetetze berririk ez da aurkitu</string>
     <string name="birthdays_added">Urtebetetzeak ondo gehitu dira</string>
+    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Urteurrenak</string>
@@ -99,6 +100,7 @@
     <string name="no_anniversaries">Urteurrenik ez da aurkitu</string>
     <string name="no_new_anniversaries">Urteurren berririk ez da aurkitu</string>
     <string name="anniversaries_added">Urteurrenak ondo gehitu dira</string>
+    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Abisua</string>
@@ -202,8 +204,6 @@
     <string name="highlight_weekends">Nabarmendu asteburuak ikuspegi batzuetan</string>
     <string name="allow_changing_time_zones">Baimendu gertaeren ordu-zonak aldatzea</string>
     <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
-    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
-    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

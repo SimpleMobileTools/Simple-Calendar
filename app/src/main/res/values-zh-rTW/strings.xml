@@ -92,6 +92,7 @@
     <string name="no_birthdays">未發現生日</string>
     <string name="no_new_birthdays">未發現新的生日</string>
     <string name="birthdays_added">生日添加成功</string>
+    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">紀念日</string>
@@ -99,6 +100,7 @@
     <string name="no_anniversaries">未發現紀念日</string>
     <string name="no_new_anniversaries">未發現新的紀念日</string>
     <string name="anniversaries_added">紀念日添加成功</string>
+    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
 
     <!-- Event Reminders -->
     <string name="reminder">提醒</string>
@@ -202,8 +204,6 @@
     <string name="highlight_weekends">在檢視畫面突顯假日</string>
     <string name="allow_changing_time_zones">允許改變活動的時區</string>
     <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
-    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
-    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
