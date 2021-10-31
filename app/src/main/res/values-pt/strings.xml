@@ -126,7 +126,7 @@
     <string name="export_past_events_too">Exportar eventos antigos</string>
     <string name="include_event_types">Incluir tipos de eventos</string>
     <string name="filename_without_ics">Nome do ficheiro (sem .ics)</string>
-    <string name="ignore_event_types">Ignore event types in the file, always use the default one</string>
+    <string name="ignore_event_types">Ignorar tipos de evento do ficheiro e utilizar sempre o evento padrão</string>
 
     <!-- Event details -->
     <string name="location">Localização</string>
@@ -135,7 +135,7 @@
 
     <!-- Weekly view -->
     <string name="week">Semana</string>
-    <string name="start_week_with_current_day">Start week with the current day</string>
+    <string name="start_week_with_current_day">Iniciar semana com o dia atual</string>
 
     <!-- Event types -->
     <string name="event_types">Tipos de eventos</string>
@@ -201,7 +201,7 @@
     <string name="other_time">Outra</string>
     <string name="highlight_weekends">Destacar fim de semana em algumas vistas</string>
     <string name="allow_changing_time_zones">Permitir alteração do fuso horário dos eventos</string>
-    <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
+    <string name="manage_quick_filter_event_types">Gerir tipos de evento no filtro rápido</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
@@ -218,8 +218,8 @@
     <string name="insufficient_permissions">Não tem permissão para escrever no calendário selecionado</string>
     <string name="caldav_event_not_found">Evento não encontrado. Ative a sincronização CalDAV para os calendários apropriados nas definições.</string>
     <string name="no_synchronized_calendars">Não existem calendários passíveis de sincronização</string>
-    <string name="status_free">Free</string>
-    <string name="status_busy">Busy</string>
+    <string name="status_free">Livre</string>
+    <string name="status_busy">ocupado</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
