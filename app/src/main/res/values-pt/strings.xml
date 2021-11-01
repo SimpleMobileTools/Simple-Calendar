@@ -219,7 +219,7 @@
     <string name="caldav_event_not_found">Evento não encontrado. Ative a sincronização CalDAV para os calendários apropriados nas definições.</string>
     <string name="no_synchronized_calendars">Não existem calendários passíveis de sincronização</string>
     <string name="status_free">Livre</string>
-    <string name="status_busy">ocupado</string>
+    <string name="status_busy">Ocupado</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
