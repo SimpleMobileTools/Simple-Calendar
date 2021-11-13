@@ -12,13 +12,17 @@
     <string name="no_upcoming_events">Yaklaşan etkinlikleriniz yok gibi görünüyor.</string>
     <string name="go_to_today">Bugüne git</string>
     <string name="go_to_date">Tarihe git</string>
-    <string name="upgraded_from_free">Selam,\n\neski ücretsiz uygulamadan yeni sürüme geçmiş gibi görünüyorsunuz. Yerel olarak saklanan etkinlikleri bir .ics dosyasına aktarıp ardından içe aktararak elle taşımanız gerekiyor. Her iki dışa/içe aktar düğmesini ana ekran menüsünde bulabilirsiniz.\n\nArdından, uygulama ayarlarının üstünde \'Pro\'ya Yükselt\' düğmesine sahip eski sürümü kaldırabilirsiniz. Daha sonra yalnızca uygulama ayarlarınızı sıfırlamanız gerekir.\n\nTeşekkürler!</string>
-
+    <string name="upgraded_from_free">Merhaba,
+\n
+\neski ücretsiz uygulamadan yükseltmiş gibi görünüyorsunuz. Yerel olarak saklanan etkinlikleri bir .ics dosyasına aktarıp ardından içe aktararak elle taşımanız gerekiyor. Her iki dışa/içe aktar düğmesini ana ekran menüsünde bulabilirsiniz.
+\n
+\nArdından, uygulama ayarlarının en üst kısmında \'Pro\'ya Yükselt\' düğmesi olan eski sürümü kaldırabilirsiniz. Daha sonra yalnızca uygulama ayarlarınızı sıfırlamanız gerekir.
+\n
+\nTeşekkürler!</string>
     <!-- Widget titles -->
     <string name="widget_monthly">Aylık takvim</string>
     <string name="widget_list">Takvim etkinlik listesi</string>
     <string name="widget_todays_date">Takvim bugünün tarihi</string>
-
     <!-- Event -->
     <string name="event">Durum</string>
     <string name="edit_event">Etkinliği Düzenle</string>
@@ -32,7 +36,6 @@
     <string name="filter_events_by_type">Etkinlikleri türe göre filtrele</string>
     <string name="please_fill_location">Lütfen haritada gösterilecek bir yeri doldurun</string>
     <string name="public_event_notification_text">Bir etkinlik yaklaşıyor</string>
-
     <!-- Event Repetition -->
     <string name="repetition">Tekrarla</string>
     <string name="no_repetition">Tekrarlama yok</string>
@@ -74,7 +77,6 @@
     <string name="fourth_m">dördüncü</string>
     <string name="fifth_m">beşinci</string>
     <string name="last_m">son</string>
-
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
     <string name="repeat_every_f">Her tekrar</string>
@@ -85,27 +87,23 @@
     <string name="fourth_f">dördüncü</string>
     <string name="fifth_f">beşinci</string>
     <string name="last_f">son</string>
-
     <!-- Birthdays -->
     <string name="birthdays">Doğum günleri</string>
     <string name="add_birthdays">Kişi doğum günlerini ekle</string>
     <string name="no_birthdays">Hiçbir doğum günü bulunamadı</string>
     <string name="no_new_birthdays">Yeni doğum günü bulunamadı</string>
     <string name="birthdays_added">Doğum günleri başarıyla eklendi</string>
-
     <!-- Anniversaries -->
     <string name="anniversaries">Yıldönümleri</string>
     <string name="add_anniversaries">Kişi yıldönümlerini ekle</string>
     <string name="no_anniversaries">Yıldönümleri bulunamadı</string>
     <string name="no_new_anniversaries">Yeni yıldönümleri bulunamadı</string>
     <string name="anniversaries_added">Yıldönümleri başarıyla eklendi</string>
-
     <!-- Event Reminders -->
     <string name="reminder">Hatırlatma</string>
     <string name="before">önce</string>
     <string name="add_another_reminder">Başka hatırlatma ekle</string>
     <string name="event_reminders">Etkinlik hatırlatıcılar</string>
-
     <!-- Event attendees -->
     <string name="add_another_attendee">Başka bir katılımcı ekle</string>
     <string name="my_status">Durumum:</string>
@@ -113,10 +111,8 @@
     <string name="not_going">Gitmiyor</string>
     <string name="maybe_going">Belki gidiyor</string>
     <string name="invited">Davetli</string>
-
     <!-- Time zones -->
     <string name="enter_a_country">Bir ülke veya saat dilimi girin</string>
-
     <!-- Export / Import -->
     <string name="import_events">Etkinlikleri içe aktar</string>
     <string name="export_events">Etkinlikleri dışa aktar</string>
@@ -127,16 +123,13 @@
     <string name="include_event_types">Etkinlik türlerini ekle</string>
     <string name="filename_without_ics">Dosya adı (.ics olmadan)</string>
     <string name="ignore_event_types">Dosyadaki etkinlik türlerini yoksay, her zaman varsayılanı kullan</string>
-
     <!-- Event details -->
     <string name="location">Konum</string>
     <string name="description">Açıklama</string>
     <string name="all_day">Tüm-gün</string>
-
     <!-- Weekly view -->
     <string name="week">Hafta</string>
     <string name="start_week_with_current_day">Haftayı geçerli günle başlat</string>
-
     <!-- Event types -->
     <string name="event_types">Etkinlik türleri</string>
     <string name="add_new_type">Yeni tür ekle</string>
@@ -149,7 +142,6 @@
     <string name="move_events_into_default">Etkilenen etkinlikleri varsayılan etkinlik türüne taşı</string>
     <string name="remove_affected_events">Etkilenen etkinlikleri kalıcı olarak kaldır</string>
     <string name="unsync_caldav_calendar">CalDAV takvimini kaldırmak için, senkronizasyonu kaldırmalısınız</string>
-
     <!-- Holidays -->
     <string name="holidays">Tatiller</string>
     <string name="add_holidays">Tatil ekle</string>
@@ -158,7 +150,6 @@
     <string name="holidays_imported_successfully">Tatiller \"Tatiller\" etkinlik türüne başarıyla aktarıldı</string>
     <string name="importing_some_holidays_failed">Bazı etkinlikler içe aktarılamadı</string>
     <string name="importing_holidays_failed">Tatiller içe aktarılamadı</string>
-
     <!-- Settings -->
     <string name="manage_event_types">Etkinlik türlerini yönet</string>
     <string name="start_day_at">Gün başlangıcı</string>
@@ -202,7 +193,6 @@
     <string name="highlight_weekends">Bazı görünümlerde hafta sonlarını vurgula</string>
     <string name="allow_changing_time_zones">Etkinlik saat dilimlerini değiştirmeye izin ver</string>
     <string name="manage_quick_filter_event_types">Hızlı filtre etkinlik türlerini yönet</string>
-
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Senkronize edilecek takvimleri seç</string>
@@ -220,7 +210,6 @@
     <string name="no_synchronized_calendars">Senkronize edilebilir takvim bulunamadı</string>
     <string name="status_free">Serbest</string>
     <string name="status_busy">Meşgul</string>
-
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">Pazartesi</string>
@@ -230,7 +219,6 @@
     <string name="friday_alt">Cuma</string>
     <string name="saturday_alt">Cumartesi</string>
     <string name="sunday_alt">Pazar</string>
-
     <!-- List widget config example events -->
     <string name="sample_title_1">Egzersiz</string>
     <string name="sample_description_1">Bacak günü</string>
@@ -240,10 +228,9 @@
     <string name="sample_title_4">Merve ile öğle yemeği</string>
     <string name="sample_description_4">Şehir meydanında</string>
     <string name="sample_title_5">Kahve zamanı</string>
-
     <!-- FAQ -->
     <string name="faq_1_title">\"Tatil ekle\" düğmesiyle içe aktarılan tatilleri nasıl kaldırabilirim?</string>
-    <string name="faq_1_text">Tatiller, \"Tatiller\" olarak adlandırılan yeni bir etkinlik türüne eklenir. Ayarlar -> Etkinlik Türlerini Yönet\'e gidip, belirlenen etkinlik türüne uzun basıp çöp kutusunu seçerek silebilirsiniz.</string>
+    <string name="faq_1_text">Tatiller, \"Tatiller\" olarak adlandırılan yeni bir etkinlik türüne eklenir. Ayarlar -&gt; Etkinlik Türlerini Yönet\'e gidip, belirlenen etkinlik türüne uzun basıp çöp kutusunu seçerek silebilirsiniz.</string>
     <string name="faq_2_title">Etkinliklerimi Google Takvim\'le veya CalDAV\'ı destekleyen başka bir hizmetle senkronize edebilir miyim?</string>
     <string name="faq_2_text">Evet, uygulama ayarlarından \"CalDAV senkronizasyonu\" seçeneğini işaretleyin ve senkronize etmek istediğiniz takvimleri seçin. Bununla birlikte, cihaz ve sunucular arasındaki senkronizasyonu ele alan bazı üçüncü taraf uygulamalarına ihtiyacınız olacaktır.
         Bu durumda bir Google takvimini senkronize etmek istiyorsanız, resmi Takvim uygulaması işi yapar. Diğer takvimler için, DAVx5 gibi üçüncü taraf senkronizasyon adaptörüne ihtiyacınız olacaktır.</string>
@@ -252,7 +239,6 @@
         \"Hatırlatıcılar tarafından kullanılan ses akışına\" basmayı ve bunu farklı bir değere değiştirmeyi deneyin. Hala işe yaramazsa, belirli bir akış sessiz değilse, Ses ayarlarınızı kontrol edin.</string>
     <string name="faq_4_title">Uygulama saat dilimlerini destekliyor mu?</string>
     <string name="faq_4_text">Evet, destekliyor. Varsayılan olarak tüm etkinlikler geçerli saat diliminizde oluşturulur. Etkinliklerin saat dilimini değiştirmek istiyorsanız, önce uygulama ayarlarından saat dilimi seçiciyi etkinleştirmeniz, ardından Etkinlik Ayrıntıları ekranından değiştirmeniz gerekir. Çoğu insanın ihtiyacı olmayacağı için varsayılan olarak devre dışıdır.</string>
-
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Basit Takvim Pro - Etkinlikler ve Hatırlatıcılar</string>
@@ -302,7 +288,6 @@
         <b>Reddit:</b>
         https://www.reddit.com/r/SimpleMobileTools
     </string>
-
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
