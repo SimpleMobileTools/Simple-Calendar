@@ -13,12 +13,10 @@
     <string name="go_to_today">Gå til idag</string>
     <string name="go_to_date">Gå til dato</string>
     <string name="upgraded_from_free">Hey,\n\nseems like you upgraded from the old free app. You have to migrate locally stored events manually via exporting in an .ics file, then importing. You can find both export/import buttons at the main screen menu.\n\nYou can then uninstall the old version, which has an \'Upgrade to Pro\' button at the top of the app settings. You will then only have to reset your app settings.\n\nThanks!</string>
-
     <!-- Widget titles -->
     <string name="widget_monthly">Månedskalender</string>
     <string name="widget_list">Hendelsesliste</string>
     <string name="widget_todays_date">Kalender dagens dato</string>
-
     <!-- Event -->
     <string name="event">Hendelse</string>
     <string name="edit_event">Rediger hendelse</string>
@@ -32,7 +30,6 @@
     <string name="filter_events_by_type">Filtrer hendelser etter type</string>
     <string name="please_fill_location">Oppfør et sted som skal vises på et kart</string>
     <string name="public_event_notification_text">En hendelse er forestående</string>
-
     <!-- Event Repetition -->
     <string name="repetition">Gjentagelse</string>
     <string name="no_repetition">Ingen gjentagelse</string>
@@ -74,7 +71,6 @@
     <string name="fourth_m">fjerde</string>
     <string name="fifth_m">fifth</string>
     <string name="last_m">siste</string>
-
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
     <string name="repeat_every_f">Gjenta hver</string>
@@ -85,38 +81,32 @@
     <string name="fourth_f">fjerde</string>
     <string name="fifth_f">fifth</string>
     <string name="last_f">siste</string>
-
     <!-- Birthdays -->
     <string name="birthdays">Bursdager</string>
     <string name="add_birthdays">Legg til kontaktbursdager</string>
     <string name="no_birthdays">Ingen bursdager er funnet</string>
     <string name="no_new_birthdays">Ingen nye bursdager er funnet</string>
     <string name="birthdays_added">Bursdager vellykket lagt til</string>
-
     <!-- Anniversaries -->
     <string name="anniversaries">Jubileer</string>
     <string name="add_anniversaries">Legg til kontaktjubileer</string>
     <string name="no_anniversaries">Ingen jubileer er funnet</string>
     <string name="no_new_anniversaries">Ingen nye jubileer er funnet</string>
     <string name="anniversaries_added">Jubileer vellykket lagt til</string>
-
     <!-- Event Reminders -->
     <string name="reminder">Påminnelse</string>
     <string name="before">før</string>
     <string name="add_another_reminder">Legg til en annen påminnelse</string>
     <string name="event_reminders">Hendelsespåminnelser</string>
-
     <!-- Event attendees -->
     <string name="add_another_attendee">Add another attendee</string>
     <string name="my_status">My status:</string>
     <string name="going">Going</string>
     <string name="not_going">Not going</string>
     <string name="maybe_going">Maybe going</string>
-    <string name="invited">Invited</string>
-
+    <string name="invited">Invitert</string>
     <!-- Time zones -->
     <string name="enter_a_country">Angi et land eller tidssone</string>
-
     <!-- Export / Import -->
     <string name="import_events">Importer hendelser</string>
     <string name="export_events">Eksporter hendelser</string>
@@ -127,16 +117,13 @@
     <string name="include_event_types">Inkluder hendelsestyper</string>
     <string name="filename_without_ics">Filnavn (uten .ics)</string>
     <string name="ignore_event_types">Ignore event types in the file, always use the default one</string>
-
     <!-- Event details -->
     <string name="location">Sted</string>
     <string name="description">Beskrivelse</string>
     <string name="all_day">Hele dagen</string>
-
     <!-- Weekly view -->
     <string name="week">Uke</string>
     <string name="start_week_with_current_day">Start week with the current day</string>
-
     <!-- Event types -->
     <string name="event_types">Hendelsestyper</string>
     <string name="add_new_type">Legg til en ny type</string>
@@ -149,7 +136,6 @@
     <string name="move_events_into_default">Flytt berørte hendelser til standardhendelsestypen</string>
     <string name="remove_affected_events">Fjern berørte hendelser permanent</string>
     <string name="unsync_caldav_calendar">For å fjerne en CalDAV-kalender må du desynkronisere den</string>
-
     <!-- Holidays -->
     <string name="holidays">Off. fridager</string>
     <string name="add_holidays">Legg til off. fridager</string>
@@ -158,7 +144,6 @@
     <string name="holidays_imported_successfully">Off. fridager er vellykket importert til hendelsestypen \"Off. fridager\"</string>
     <string name="importing_some_holidays_failed">Importering av noen hendelser feilet</string>
     <string name="importing_holidays_failed">Importering av off. fridager feilet</string>
-
     <!-- Settings -->
     <string name="manage_event_types">Behandle hendelsestyper</string>
     <string name="start_day_at">Start dag kl.</string>
@@ -202,7 +187,6 @@
     <string name="highlight_weekends">Fremhev helger på noen visninger</string>
     <string name="allow_changing_time_zones">Tillat å endre tidssoner for hendelser</string>
     <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
-
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Velg kalendere å synkronisere</string>
@@ -220,7 +204,6 @@
     <string name="no_synchronized_calendars">No synchronizable calendars have been found</string>
     <string name="status_free">Free</string>
     <string name="status_busy">Busy</string>
-
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">Mandag</string>
@@ -230,7 +213,6 @@
     <string name="friday_alt">Fredag</string>
     <string name="saturday_alt">Lørdag</string>
     <string name="sunday_alt">Søndag</string>
-
     <!-- List widget config example events -->
     <string name="sample_title_1">Treningsøkt</string>
     <string name="sample_description_1">Beintrening</string>
@@ -240,10 +222,9 @@
     <string name="sample_title_4">Lunsj med Mari</string>
     <string name="sample_description_4">På torget</string>
     <string name="sample_title_5">Kaffepause</string>
-
     <!-- FAQ -->
     <string name="faq_1_title">Hvordan kan jeg fjerne off. fridager importert via  meny - \"Legg til off. fridager\"?</string>
-    <string name="faq_1_text">Off. fridager opprettet på denne måten settes inn i en ny hendelsestype kalt \"Off. fridager\". Gå til Innstillinger -> Behandle hendelsestyper,
+    <string name="faq_1_text">Off. fridager opprettet på denne måten settes inn i en ny hendelsestype kalt \"Off. fridager\". Gå til Innstillinger -&gt; Behandle hendelsestyper,
         lang-trykk hendelsestypen og slett den ved å velge søppelbøtten.</string>
     <string name="faq_2_title">Kan jeg synkronisere hendelsene mine via Google Kalender eller annen tjeneste som støtter CalDAV?</string>
     <string name="faq_2_text">Ja, bare aktiver \"CalDAV-synkronisering\" i innstillingene og velg kalenderne du vil synkronisere. Du trenger imidlertid program som håndterer synkroniseringen mellom enheten og serverne.
@@ -254,7 +235,6 @@
     <string name="faq_4_title">Does the app support time zones?</string>
     <string name="faq_4_text">Yes, it does. By default all events are created in your current time zone. If you want to change an events\' time zone,
         you will first have to enable the time zone picker at the app settings, then change it at the Event Details screen. It is disabled by default as most people won\'t need it.</string>
-
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Simple Calendar Pro - Events &amp; Reminders</string>
@@ -304,7 +284,6 @@
         <b>Reddit:</b>
         https://www.reddit.com/r/SimpleMobileTools
     </string>
-
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
