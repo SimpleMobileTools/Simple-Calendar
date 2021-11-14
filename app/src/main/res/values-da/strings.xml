@@ -273,7 +273,7 @@
     <string name="faq_4_text">Ja, det gør den. Som standard oprettes alle begivenheder i din aktuelle tidszone. Vil du ændre det for en given begivenhed, skal du først aktivere tidszonevælgeren i appens indstillinger og derefter ændre tidszone under selve begivenheden. Funktionen er fra starten deaktiveret da de færreste brugere behøver den.</string>
     <string name="faq_5_title">Appen viser ingen meddelelser, hvordan kan det være\?</string>
     <string name="faq_5_text">Tjek batteriet på din enhed og indstillingerne for meddelelser, om der er noget, der blokerer påmindelserne, eller om appen er slået fra i baggrunden. Du kan også tage et kig på &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, den har nogle gode tips.</string>
-    <string name="faq_6_title">Hvordan kan jeg ændre eller slette en eksisterende begivenhedstype?</string>
+    <string name="faq_6_title">Hvordan kan jeg ændre eller slette en eksisterende begivenhedstype\?</string>
     <string name="faq_6_text">Du kan gøre begge dele i Indstillinger - Administrer begivenhedstyper. Du skal blot klikke på den ønskede begivenhed for at ændre etiketten og farven, eller du kan vælge den ønskede begivenhed ved at trykke længe på den og bruge papirkurven i topmenuen til at slette den.</string>
     <!--
         Haven't found some strings? There's more at
