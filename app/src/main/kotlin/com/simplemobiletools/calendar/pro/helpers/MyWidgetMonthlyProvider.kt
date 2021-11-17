@@ -119,9 +119,8 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
         for (i in 0 until len) {
             val day = days[i]
 
-            val redTextColor = context.resources.getColor(R.color.red_text)
             val dayTextColor = if (context.config.highlightWeekends && day.isWeekend) {
-                redTextColor
+                context.config.highlightWeekendsColor
             } else {
                 textColor
             }
@@ -227,12 +226,11 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
         val smallerFontSize = context.getWidgetFontSize()
         val packageName = context.packageName
         val letters = context.resources.getStringArray(R.array.week_day_letters)
-        val redTextColor = resources.getColor(R.color.red_text)
 
         for (i in 0..6) {
             val id = resources.getIdentifier("label_$i", "id", packageName)
-            val dayTextColor = if (config.highlightWeekends && isWeekend(i, sundayFirst)) {
-                redTextColor
+            val dayTextColor = if (context.config.highlightWeekends && isWeekend(i, sundayFirst)) {
+                context.config.highlightWeekendsColor
             } else {
                 textColor
             }

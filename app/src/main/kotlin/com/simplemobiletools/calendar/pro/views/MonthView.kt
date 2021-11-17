@@ -37,7 +37,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     private var dayHeight = 0f
     private var primaryColor = 0
     private var textColor = 0
-    private var redTextColor = 0
+    private var weekendsTextColor = 0
     private var weekDaysLetterHeight = 0
     private var eventTitleHeight = 0
     private var currDayOfWeek = 0
@@ -62,7 +62,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     init {
         primaryColor = context.getAdjustedPrimaryColor()
         textColor = config.textColor
-        redTextColor = context.resources.getColor(R.color.red_text)
+        weekendsTextColor = config.highlightWeekendsColor
         showWeekNumbers = config.showWeekNumbers
         dimPastEvents = config.dimPastEvents
         highlightWeekends = config.highlightWeekends
@@ -214,7 +214,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
             if (i == currDayOfWeek && !isPrintVersion) {
                 weekDayLetterPaint = getColoredPaint(primaryColor)
             } else if (highlightWeekends && isWeekend(i, config.isSundayFirst)) {
-                weekDayLetterPaint = getColoredPaint(redTextColor)
+                weekDayLetterPaint = getColoredPaint(weekendsTextColor)
             }
             canvas.drawText(dayLetters[i], xPos, weekDaysLetterHeight * 0.7f, weekDayLetterPaint)
         }
@@ -297,7 +297,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
             if (startDay.isToday) {
                 paintColor = primaryColor.getContrastColor()
             } else if (highlightWeekends && startDay.isWeekend) {
-                paintColor = redTextColor
+                paintColor = weekendsTextColor
             }
         }
 
