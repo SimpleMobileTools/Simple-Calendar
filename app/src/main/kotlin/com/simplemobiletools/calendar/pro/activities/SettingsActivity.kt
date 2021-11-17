@@ -20,6 +20,7 @@ import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.models.AlarmSound
 import com.simplemobiletools.commons.models.RadioItem
 import kotlinx.android.synthetic.main.activity_settings.*
+import kotlinx.android.synthetic.main.dialog_event_type.view.*
 import org.joda.time.DateTime
 import java.io.File
 import java.io.InputStream
@@ -51,6 +52,7 @@ class SettingsActivity : SimpleActivity() {
         setupHourFormat()
         setupSundayFirst()
         setupHighlightWeekends()
+        setupHighlightWeekendsColor()
         setupDeleteAllEvents()
         setupReplaceDescription()
         setupWeekNumbers()
@@ -342,9 +344,22 @@ class SettingsActivity : SimpleActivity() {
 
     private fun setupHighlightWeekends() {
         settings_highlight_weekends.isChecked = config.highlightWeekends
+        settings_highlight_weekends_color_holder.beVisibleIf(config.highlightWeekends)
         settings_highlight_weekends_holder.setOnClickListener {
             settings_highlight_weekends.toggle()
             config.highlightWeekends = settings_highlight_weekends.isChecked
+            settings_highlight_weekends_color_holder.beVisibleIf(config.highlightWeekends)
+        }
+    }
+    private fun setupHighlightWeekendsColor() {
+        settings_highlight_weekends_color.setFillWithStroke(config.highlightWeekendsColor, config.backgroundColor)
+        settings_highlight_weekends_color_holder.setOnClickListener {
+            ColorPickerDialog(this, config.highlightWeekendsColor) { wasPositivePressed, color ->
+                if (wasPositivePressed) {
+                    config.highlightWeekendsColor = color
+                    settings_highlight_weekends_color.setFillWithStroke(color, config.backgroundColor)
+                }
+            }
         }
     }
 
@@ -813,6 +828,7 @@ class SettingsActivity : SimpleActivity() {
                 put(USE_24_HOUR_FORMAT, config.use24HourFormat)
                 put(SUNDAY_FIRST, config.isSundayFirst)
                 put(HIGHLIGHT_WEEKENDS, config.highlightWeekends)
+                put(HIGHLIGHT_WEEKENDS_COLOR, config.highlightWeekendsColor)
             }
 
             exportSettings(configItems)
@@ -908,6 +924,7 @@ class SettingsActivity : SimpleActivity() {
                 USE_24_HOUR_FORMAT -> config.use24HourFormat = value.toBoolean()
                 SUNDAY_FIRST -> config.isSundayFirst = value.toBoolean()
                 HIGHLIGHT_WEEKENDS -> config.highlightWeekends = value.toBoolean()
+                HIGHLIGHT_WEEKENDS_COLOR -> config.highlightWeekendsColor = value.toInt()
             }
         }
 
