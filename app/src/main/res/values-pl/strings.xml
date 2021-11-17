@@ -3,18 +3,18 @@
     <string name="app_name">Prosty kalendarz</string>
     <string name="app_launcher_name">Kalendarz</string>
     <string name="change_view">Zmień widok</string>
-    <string name="daily_view">Dzienny</string>
-    <string name="weekly_view">Tygodniowy</string>
-    <string name="monthly_view">Miesięczny</string>
-    <string name="monthly_daily_view">Miesięczny i dzienny</string>
-    <string name="yearly_view">Roczny</string>
+    <string name="daily_view">Widok dzienny</string>
+    <string name="weekly_view">Widok tygodniowy</string>
+    <string name="monthly_view">Widok miesięczny</string>
+    <string name="monthly_daily_view">Widoki miesięczny i dzienny</string>
+    <string name="yearly_view">Widok roczny</string>
     <string name="simple_event_list">Prosta lista wydarzeń</string>
     <string name="no_upcoming_events">Wygląda na to, że nie masz żadnych nadchodzących wydarzeń.</string>
     <string name="go_to_today">Przejdź do dzisiaj</string>
     <string name="go_to_date">Przejdź do daty</string>
     <string name="upgraded_from_free">Witaj,
 \n
-\nwygląda na to, że uaktualniłeś(-aś) starą darmową aplikację na nową płatną. Musisz ręcznie przenieść wydarzenia przechowywane lokalnie przez wyeksportowanie ich do pliku .ics, a następnie zaimportowanie. Oba przyciski eksportu i importu możesz znaleźć w menu.
+\nwygląda na to, że uaktualniłeś(-aś) starą darmową aplikację na nową płatną. Musisz ręcznie przenieść wydarzenia przechowywane lokalnie przez wyeksportowanie ich do pliku .ics, a następnie zaimportowanie. Oba przyciski eksportu i importu możesz znaleźć w menu na ekranie głównym.
 \n
 \nNastępnie możesz odinstalować starą wersję, która ma przycisk „Uaktualnij do Pro” na górze w ustawieniach aplikacji. Wystarczy wtedy zresetować ustawienia aplikacji.
 \n
@@ -118,7 +118,7 @@
     <string name="export_events">Eksportuj wydarzenia</string>
     <string name="import_events_from_ics">Importuj wydarzenia z pliku .ics</string>
     <string name="export_events_to_ics">Eksportuj wydarzenia do pliku .ics</string>
-    <string name="default_event_type">Domyślny typ wydarzenia</string>
+    <string name="default_event_type">Domyślny typ wydarzeń</string>
     <string name="export_past_events_too">Eksportuj także wydarzenia z przeszłości</string>
     <string name="include_event_types">Dołącz typy wydarzeń</string>
     <string name="filename_without_ics">Nazwa pliku (bez końcówki „.ics”)</string>
@@ -134,12 +134,12 @@
     <string name="event_types">Typy wydarzeń</string>
     <string name="add_new_type">Dodaj nowy typ</string>
     <string name="edit_type">Edytuj typ</string>
-    <string name="type_already_exists">Typ z tym tytułem już istnieje</string>
+    <string name="type_already_exists">Typ o tym tytule już istnieje</string>
     <string name="color">Kolor</string>
     <string name="regular_event">Zwykłe wydarzenie</string>
-    <string name="cannot_delete_default_type">Domyślny typ wydarzenia nie może zostać usunięty</string>
+    <string name="cannot_delete_default_type">Domyślny typ wydarzeń nie może zostać usunięty</string>
     <string name="select_event_type">Wybierz typ wydarzenia</string>
-    <string name="move_events_into_default">Przenieś powiązane wydarzenia do domyślnego typu wydarzenia</string>
+    <string name="move_events_into_default">Przenieś powiązane wydarzenia do domyślnego typu wydarzeń</string>
     <string name="remove_affected_events">Usuń trwale powiązane wydarzenia</string>
     <string name="unsync_caldav_calendar">Aby usunąć kalendarz CalDAV, musisz wyłączyć jego synchronizację</string>
     <!-- Holidays -->
@@ -147,7 +147,7 @@
     <string name="add_holidays">Dodaj święta</string>
     <string name="national_holidays">Święta państwowe</string>
     <string name="religious_holidays">Święta religijne</string>
-    <string name="holidays_imported_successfully">Święta zostały zaimportowane do typu wydarzenia „Święta”</string>
+    <string name="holidays_imported_successfully">Święta zostały zaimportowane do typu wydarzeń „Święta”</string>
     <string name="importing_some_holidays_failed">Importowanie niektórych świąt nie powiodło się</string>
     <string name="importing_holidays_failed">Importowanie świąt nie powiodło się</string>
     <!-- Settings -->
@@ -156,8 +156,8 @@
     <string name="end_day_at">Koniec dnia o</string>
     <string name="midnight_spanning">Pokazuj wydarzenia wielodniowe na górnym pasku</string>
     <string name="allow_customizing_day_count">Zezwalaj na dostosowywanie liczby dni</string>
-    <string name="week_numbers">Pokazuj numery tygodnia</string>
-    <string name="vibrate">Wibruj przy powiadomieniu</string>
+    <string name="week_numbers">Pokazuj numery tygodni</string>
+    <string name="vibrate">Wibracja przy powiadomieniu</string>
     <string name="reminder_sound">Dźwięk przypomnienia</string>
     <string name="no_ringtone_picker">Nie znaleziono aplikacji umożliwiającej ustawienie dzwonka</string>
     <string name="no_ringtone_selected">Brak</string>
@@ -230,7 +230,7 @@
     <string name="sample_title_5">Czas na kawę</string>
     <!-- FAQ -->
     <string name="faq_1_title">Jak mogę usunąć święta zaimportowane przez przycisk „Dodaj święta”?</string>
-    <string name="faq_1_text">Święta dodane w ten sposób są wprowadzane do nowego typu wydarzeń - „Święta”. Możesz je usunąć, przechodząc do ustawień aplikacji, a następnie w sekcji „Zarządzaj typami wydarzeń” usunąć ową kategorię, przyciskając długo dany typ wydarzenia i naciskając ikonę kosza.</string>
+    <string name="faq_1_text">Święta dodane w ten sposób są wprowadzane do nowego typu wydarzeń — „Święta”. Możesz wejść w Ustawienia -&gt; Zarządzaj typami wydarzeń, a następnie przyciśnij długo dany typ wydarzeń i usuń go, wybierając ikonę kosza.</string>
     <string name="faq_2_title">Czy mogę zsynchronizować swoje wydarzenia z Kalendarzem Google lub inną usługą wspierającą CalDAV?</string>
     <string name="faq_2_text">Tak. Wystarczy włączyć opcję „Synchronizacja CalDAV” w ustawieniach aplikacji i wybrać kalendarze do synchronizacji. Jednak będziesz potrzebować zewnętrznej aplikacji obsługującej synchronizację urządzenia z serwerami. Jeśli chcesz zsynchronizować wydarzenia z Kalendarzem Google, oficjalna aplikacja kalendarza powinna wystarczyć. W innych przypadkach może być potrzebna zewnętrzna aplikacja, np. DAVx5.</string>
     <string name="faq_3_title">Widzę przypomnienia, ale nie słyszę dźwięku. Co mogę zrobić?</string>
