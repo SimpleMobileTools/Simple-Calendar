@@ -24,6 +24,7 @@ import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.interfaces.NavigationListener
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.commons.extensions.applyColorFilter
+import com.simplemobiletools.commons.extensions.areSystemAnimationsEnabled
 import com.simplemobiletools.commons.extensions.beGone
 import com.simplemobiletools.commons.extensions.beVisible
 import kotlinx.android.synthetic.main.fragment_day.view.*
@@ -124,7 +125,10 @@ class DayFragment : Fragment() {
         }.apply {
             mHolder.day_events.adapter = this
         }
-        mHolder.day_events.scheduleLayoutAnimation()
+
+        if (requireContext().areSystemAnimationsEnabled) {
+            mHolder.day_events.scheduleLayoutAnimation()
+        }
     }
 
     private fun editEvent(event: Event) {

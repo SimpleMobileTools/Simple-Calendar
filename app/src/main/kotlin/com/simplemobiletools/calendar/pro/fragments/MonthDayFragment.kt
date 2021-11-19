@@ -23,6 +23,7 @@ import com.simplemobiletools.calendar.pro.interfaces.NavigationListener
 import com.simplemobiletools.calendar.pro.models.DayMonthly
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.ListEvent
+import com.simplemobiletools.commons.extensions.areSystemAnimationsEnabled
 import com.simplemobiletools.commons.extensions.beVisibleIf
 import com.simplemobiletools.commons.interfaces.RefreshRecyclerViewListener
 import kotlinx.android.synthetic.main.fragment_month_day.*
@@ -153,7 +154,10 @@ class MonthDayFragment : Fragment(), MonthlyCalendar, RefreshRecyclerViewListene
                     }.apply {
                         month_day_events_list.adapter = this
                     }
-                    month_day_events_list.scheduleLayoutAnimation()
+
+                    if (requireContext().areSystemAnimationsEnabled) {
+                        month_day_events_list.scheduleLayoutAnimation()
+                    }
                 } else {
                     (currAdapter as EventListAdapter).updateListItems(listItems)
                 }
