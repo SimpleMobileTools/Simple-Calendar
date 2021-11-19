@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/month_calendar_holder"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="@dimen/medium_margin">
 
-    <include layout="@layout/top_navigation"/>
+    <include layout="@layout/top_navigation" />
 
     <com.simplemobiletools.calendar.pro.views.MonthViewWrapper
         android:id="@+id/month_view_wrapper"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/top_left_arrow"/>
+        android:layout_below="@+id/top_left_arrow" />
 
 </RelativeLayout>

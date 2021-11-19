@@ -28,9 +28,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
-                android:orientation="horizontal">
+                android:orientation="horizontal" />
 
-            </LinearLayout>
         </RelativeLayout>
     </com.simplemobiletools.calendar.pro.views.MyScrollView>
 
@@ -55,8 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/week_letters_holder"
-            android:orientation="vertical">
+            android:orientation="vertical" />
 
-        </LinearLayout>
     </RelativeLayout>
 </RelativeLayout>

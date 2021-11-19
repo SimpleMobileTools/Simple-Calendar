@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/event_attendee_holder"
     android:layout_width="match_parent"
@@ -20,7 +19,7 @@
         android:maxLines="1"
         android:singleLine="true"
         android:textCursorDrawable="@null"
-        android:textSize="@dimen/bigger_text_size"/>
+        android:textSize="@dimen/bigger_text_size" />
 
     <RelativeLayout
         android:id="@+id/event_contact_attendee"
@@ -36,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_margin="@dimen/tiny_margin"
-            android:adjustViewBounds="true"/>
+            android:adjustViewBounds="true" />
 
         <ImageView
             android:id="@+id/event_contact_status_image"
@@ -48,7 +47,7 @@
             android:background="@drawable/attendee_status_circular_background"
             android:padding="@dimen/tiny_margin"
             android:src="@drawable/ic_question_yellow"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
         <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/event_contact_name"
@@ -61,7 +60,7 @@
             android:ellipsize="end"
             android:lines="1"
             android:textSize="@dimen/bigger_text_size"
-            tools:text="Simple Mobile Tools"/>
+            tools:text="Simple Mobile Tools" />
 
         <ImageView
             android:id="@+id/event_contact_dismiss"
@@ -73,7 +72,7 @@
             android:alpha="0.8"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:padding="@dimen/small_margin"
-            android:src="@drawable/ic_cross_vector"/>
+            android:src="@drawable/ic_cross_vector" />
 
         <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/event_contact_me_status"
@@ -87,7 +86,7 @@
             android:gravity="end"
             android:lines="1"
             android:textSize="@dimen/bigger_text_size"
-            tools:text="@string/invited"/>
+            tools:text="@string/invited" />
 
     </RelativeLayout>
 </RelativeLayout>

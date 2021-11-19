@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/quick_filter_event_type_holder"
     android:layout_width="match_parent"
-    android:minWidth="@dimen/quick_filter_min_width"
-    android:layout_height="@dimen/quick_filter_height">
+    android:layout_height="@dimen/quick_filter_height"
+    android:minWidth="@dimen/quick_filter_min_width">
 
     <Button
         android:id="@+id/quick_filter_event_type"
@@ -28,7 +26,7 @@
         android:layout_height="@dimen/quick_filter_inactive_line_size"
         android:layout_above="@id/quick_filter_event_type"
         android:layout_alignParentBottom="true"
-        android:clickable="false"
-        android:background="@color/color_primary" />
+        android:background="@color/color_primary"
+        android:clickable="false" />
 
 </RelativeLayout>

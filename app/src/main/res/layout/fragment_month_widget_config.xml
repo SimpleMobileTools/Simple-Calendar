@@ -102,6 +102,7 @@
                 android:background="?attr/selectableItemBackground"
                 android:gravity="center_horizontal"
                 android:orientation="vertical" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -182,6 +183,7 @@
                 android:background="?attr/selectableItemBackground"
                 android:gravity="center_horizontal"
                 android:orientation="vertical" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -261,6 +263,7 @@
                 android:background="?attr/selectableItemBackground"
                 android:gravity="center_horizontal"
                 android:orientation="vertical" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -341,6 +344,7 @@
                 android:background="?attr/selectableItemBackground"
                 android:gravity="center_horizontal"
                 android:orientation="vertical" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -421,6 +425,7 @@
                 android:background="?attr/selectableItemBackground"
                 android:gravity="center_horizontal"
                 android:orientation="vertical" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -500,6 +505,7 @@
                 android:background="?attr/selectableItemBackground"
                 android:gravity="center_horizontal"
                 android:orientation="vertical" />
+
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

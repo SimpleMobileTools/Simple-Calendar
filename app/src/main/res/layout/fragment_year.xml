@@ -157,6 +157,7 @@
                 android:layout_height="match_parent"
                 android:layout_below="@+id/month_6_label"
                 app:days="30" />
+
         </RelativeLayout>
     </TableRow>
 
@@ -183,6 +184,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/month_7_label" />
+
         </RelativeLayout>
 
         <RelativeLayout
@@ -286,6 +288,7 @@
                 android:layout_below="@+id/month_11_label"
                 android:layout_marginStart="@dimen/yearly_month_padding"
                 app:days="30" />
+
         </RelativeLayout>
 
         <RelativeLayout
