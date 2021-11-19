@@ -233,6 +233,10 @@ class EventActivity : SimpleActivity() {
             jumpDrawablesToCurrentState()
         }
 
+        event_all_day_holder.setOnClickListener {
+            event_all_day.toggle()
+        }
+
         updateTextColors(event_scrollview)
         updateIconColors()
         event_time_zone_image.beVisibleIf(config.allowChangingTimeZones)
