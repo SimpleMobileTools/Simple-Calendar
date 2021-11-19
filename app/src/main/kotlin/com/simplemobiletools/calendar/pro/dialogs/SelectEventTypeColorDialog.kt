@@ -10,7 +10,6 @@ import com.simplemobiletools.calendar.pro.extensions.calDAVHelper
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.commons.dialogs.ColorPickerDialog
-import com.simplemobiletools.commons.extensions.getCornerRadius
 import com.simplemobiletools.commons.extensions.setFillWithStroke
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import kotlinx.android.synthetic.main.dialog_select_event_type_color.view.*
@@ -52,7 +51,7 @@ class SelectEventTypeColorDialog(val activity: Activity, val eventType: EventTyp
             id = colorKey
         }
 
-        view.dialog_radio_color.setFillWithStroke(color, activity.config.backgroundColor, activity.getCornerRadius())
+        view.dialog_radio_color.setFillWithStroke(color, activity.config.backgroundColor)
         view.setOnClickListener {
             viewClicked(colorKey)
         }

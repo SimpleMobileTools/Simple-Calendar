@@ -228,7 +228,7 @@
             android:layout_alignBottom="@+id/event_reminder_1"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="@dimen/small_margin"
-            android:background="?attr/selectableItemBackground"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:padding="@dimen/activity_margin"
             android:src="@drawable/ic_bell_vector" />
 
@@ -259,7 +259,7 @@
             android:layout_alignBottom="@+id/event_reminder_2"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="@dimen/small_margin"
-            android:background="?attr/selectableItemBackground"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:padding="@dimen/activity_margin"
             android:src="@drawable/ic_bell_vector" />
 
@@ -290,7 +290,7 @@
             android:layout_alignBottom="@+id/event_reminder_3"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="@dimen/small_margin"
-            android:background="?attr/selectableItemBackground"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:padding="@dimen/activity_margin"
             android:src="@drawable/ic_bell_vector" />
 
@@ -438,22 +438,22 @@
             android:layout_alignBottom="@+id/event_availability"
             android:layout_marginStart="@dimen/normal_margin"
             android:padding="@dimen/medium_margin"
-            android:src="@drawable/ic_event_occupied" />
+            android:src="@drawable/ic_event_busy_vector" />
 
         <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/event_availability"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_attendees_divider"
-            android:layout_toEndOf="@+id/event_availability_image"
             android:layout_marginStart="@dimen/small_margin"
             android:layout_marginTop="@dimen/medium_margin"
-            android:paddingTop="@dimen/normal_margin"
-            android:paddingBottom="@dimen/normal_margin"
-            android:paddingEnd="@dimen/activity_margin"
+            android:layout_toEndOf="@+id/event_availability_image"
             android:background="?attr/selectableItemBackground"
-            android:textSize="@dimen/day_text_size"
-            android:text="@string/status_busy" />
+            android:paddingTop="@dimen/normal_margin"
+            android:paddingEnd="@dimen/activity_margin"
+            android:paddingBottom="@dimen/normal_margin"
+            android:text="@string/status_busy"
+            android:textSize="@dimen/day_text_size" />
 
         <ImageView
             android:id="@+id/event_availability_divider"

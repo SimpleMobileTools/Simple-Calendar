@@ -56,7 +56,7 @@ class EditEventTypeDialog(val activity: Activity, var eventType: EventType? = nu
     }
 
     private fun setupColor(view: ImageView) {
-        view.setFillWithStroke(eventType!!.color, activity.config.backgroundColor, activity.getCornerRadius())
+        view.setFillWithStroke(eventType!!.color, activity.config.backgroundColor)
     }
 
     private fun eventTypeConfirmed(title: String, dialog: AlertDialog) {

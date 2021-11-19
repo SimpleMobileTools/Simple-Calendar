@@ -8,14 +8,12 @@ import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.commons.extensions.getAdjustedPrimaryColor
-import com.simplemobiletools.commons.extensions.getCornerRadius
 import com.simplemobiletools.commons.extensions.setFillWithStroke
 import kotlinx.android.synthetic.main.filter_event_type_view.view.*
 import java.util.*
 
 class FilterEventTypeAdapter(val activity: SimpleActivity, val eventTypes: List<EventType>, val displayEventTypes: Set<String>) :
-        RecyclerView.Adapter<FilterEventTypeAdapter.ViewHolder>() {
-    private val cornerRadius = activity.getCornerRadius()
+    RecyclerView.Adapter<FilterEventTypeAdapter.ViewHolder>() {
     private val selectedKeys = HashSet<Long>()
 
     init {
@@ -57,7 +55,7 @@ class FilterEventTypeAdapter(val activity: SimpleActivity, val eventTypes: List<
                 filter_event_type_checkbox.isChecked = isSelected
                 filter_event_type_checkbox.setColors(activity.config.textColor, activity.getAdjustedPrimaryColor(), activity.config.backgroundColor)
                 filter_event_type_checkbox.text = eventType.getDisplayTitle()
-                filter_event_type_color.setFillWithStroke(eventType.color, activity.config.backgroundColor, cornerRadius)
+                filter_event_type_color.setFillWithStroke(eventType.color, activity.config.backgroundColor)
                 filter_event_type_holder.setOnClickListener { viewClicked(!isSelected, eventType) }
             }
 

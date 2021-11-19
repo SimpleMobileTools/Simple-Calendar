@@ -11,7 +11,6 @@ import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.eventsHelper
 import com.simplemobiletools.calendar.pro.helpers.STORED_LOCALLY_ONLY
 import com.simplemobiletools.calendar.pro.models.CalDAVCalendar
-import com.simplemobiletools.commons.extensions.getCornerRadius
 import com.simplemobiletools.commons.extensions.setFillWithStroke
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import com.simplemobiletools.commons.extensions.updateTextColors
@@ -47,9 +46,9 @@ class SelectEventCalendarDialog(val activity: Activity, val calendars: List<CalD
         }
 
         dialog = AlertDialog.Builder(activity)
-                .create().apply {
-                    activity.setupDialogStuff(view, this)
-                }
+            .create().apply {
+                activity.setupDialogStuff(view, this)
+            }
     }
 
     private fun addRadioButton(title: String, typeId: Int, color: Int) {
@@ -61,7 +60,7 @@ class SelectEventCalendarDialog(val activity: Activity, val calendars: List<CalD
         }
 
         if (typeId != STORED_LOCALLY_ONLY) {
-            view.dialog_radio_color.setFillWithStroke(color, activity.config.backgroundColor, activity.getCornerRadius())
+            view.dialog_radio_color.setFillWithStroke(color, activity.config.backgroundColor)
         }
 
         view.setOnClickListener { viewClicked(typeId) }

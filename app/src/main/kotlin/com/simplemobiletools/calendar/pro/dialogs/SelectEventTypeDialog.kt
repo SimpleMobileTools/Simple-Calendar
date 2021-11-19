@@ -9,14 +9,19 @@ import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.eventsHelper
 import com.simplemobiletools.calendar.pro.models.EventType
-import com.simplemobiletools.commons.extensions.*
+import com.simplemobiletools.commons.extensions.hideKeyboard
+import com.simplemobiletools.commons.extensions.setFillWithStroke
+import com.simplemobiletools.commons.extensions.setupDialogStuff
+import com.simplemobiletools.commons.extensions.updateTextColors
 import com.simplemobiletools.commons.views.MyCompatRadioButton
 import kotlinx.android.synthetic.main.dialog_select_radio_group.view.*
 import kotlinx.android.synthetic.main.radio_button_with_color.view.*
 import java.util.*
 
-class SelectEventTypeDialog(val activity: Activity, val currEventType: Long, val showCalDAVCalendars: Boolean, val showNewEventTypeOption: Boolean,
-                            val addLastUsedOneAsFirstOption: Boolean, val showOnlyWritable: Boolean, val callback: (eventType: EventType) -> Unit) {
+class SelectEventTypeDialog(
+    val activity: Activity, val currEventType: Long, val showCalDAVCalendars: Boolean, val showNewEventTypeOption: Boolean,
+    val addLastUsedOneAsFirstOption: Boolean, val showOnlyWritable: Boolean, val callback: (eventType: EventType) -> Unit
+) {
     private val NEW_EVENT_TYPE_ID = -2L
     private val LAST_USED_EVENT_TYPE_ID = -1L
 
@@ -49,9 +54,9 @@ class SelectEventTypeDialog(val activity: Activity, val currEventType: Long, val
         }
 
         dialog = AlertDialog.Builder(activity)
-                .create().apply {
-                    activity.setupDialogStuff(view, this)
-                }
+            .create().apply {
+                activity.setupDialogStuff(view, this)
+            }
     }
 
     private fun addRadioButton(eventType: EventType) {
@@ -63,7 +68,7 @@ class SelectEventTypeDialog(val activity: Activity, val currEventType: Long, val
         }
 
         if (eventType.color != Color.TRANSPARENT) {
-            view.dialog_radio_color.setFillWithStroke(eventType.color, activity.config.backgroundColor, activity.getCornerRadius())
+            view.dialog_radio_color.setFillWithStroke(eventType.color, activity.config.backgroundColor)
         }
 
         view.setOnClickListener { viewClicked(eventType) }
