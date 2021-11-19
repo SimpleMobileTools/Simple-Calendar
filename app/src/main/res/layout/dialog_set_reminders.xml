@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/set_reminders_holder_dialog_holder"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -17,7 +16,7 @@
         android:layout_marginStart="@dimen/normal_margin"
         android:alpha="0.8"
         android:padding="@dimen/medium_margin"
-        android:src="@drawable/ic_bell_vector"/>
+        android:src="@drawable/ic_bell_vector" />
 
     <com.simplemobiletools.commons.views.MyTextView
         android:id="@+id/set_reminders_1"
@@ -28,7 +27,7 @@
         android:background="?attr/selectableItemBackground"
         android:paddingTop="@dimen/activity_margin"
         android:paddingBottom="@dimen/activity_margin"
-        android:textSize="@dimen/day_text_size"/>
+        android:textSize="@dimen/day_text_size" />
 
     <com.simplemobiletools.commons.views.MyTextView
         android:id="@+id/set_reminders_2"
@@ -41,7 +40,7 @@
         android:paddingBottom="@dimen/activity_margin"
         android:text="@string/add_another_reminder"
         android:textSize="@dimen/day_text_size"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
     <com.simplemobiletools.commons.views.MyTextView
         android:id="@+id/set_reminders_3"
@@ -54,6 +53,6 @@
         android:paddingBottom="@dimen/activity_margin"
         android:text="@string/add_another_reminder"
         android:textSize="@dimen/day_text_size"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
 </RelativeLayout>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/event_item_holder"
     android:layout_width="match_parent"
@@ -16,15 +15,15 @@
         android:layout_marginEnd="@dimen/small_margin"
         android:background="@drawable/event_list_color_bar"
         android:paddingTop="@dimen/tiny_margin"
-        android:paddingBottom="@dimen/tiny_margin"/>
+        android:paddingBottom="@dimen/tiny_margin" />
 
     <TextView
         android:id="@+id/event_item_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toEndOf="@+id/event_item_color_bar"
-        android:text="13:00"
-        android:textSize="@dimen/day_text_size"/>
+        android:textSize="@dimen/day_text_size"
+        tools:text="13:00" />
 
     <TextView
         android:id="@+id/event_item_end"
@@ -33,8 +32,8 @@
         android:layout_below="@+id/event_item_start"
         android:layout_toEndOf="@+id/event_item_color_bar"
         android:includeFontPadding="false"
-        android:text="15:00"
-        android:textSize="@dimen/day_text_size"/>
+        android:textSize="@dimen/day_text_size"
+        tools:text="15:00" />
 
     <TextView
         android:id="@+id/event_item_title"
@@ -46,7 +45,7 @@
         android:maxLines="1"
         android:paddingEnd="@dimen/small_margin"
         android:textSize="@dimen/day_text_size"
-        tools:text="Event title"/>
+        tools:text="Event title" />
 
     <TextView
         android:id="@+id/event_item_description"
@@ -60,6 +59,6 @@
         android:maxLines="1"
         android:paddingEnd="@dimen/small_margin"
         android:textSize="@dimen/day_text_size"
-        tools:text="Event description"/>
+        tools:text="Event description" />
 
 </RelativeLayout>

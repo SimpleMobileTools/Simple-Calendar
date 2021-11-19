@@ -63,6 +63,10 @@ class ImportEventsDialog(val activity: SimpleActivity, val path: String, val cal
                     updateEventType(this)
                 }
             }
+
+            import_events_checkbox_holder.setOnClickListener {
+                import_events_checkbox.toggle()
+            }
         }
 
         AlertDialog.Builder(activity)

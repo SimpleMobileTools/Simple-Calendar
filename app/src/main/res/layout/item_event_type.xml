@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/event_item_frame"
     android:layout_width="match_parent"
@@ -25,18 +24,16 @@
             android:layout_toStartOf="@+id/event_type_color"
             android:paddingStart="@dimen/medium_margin"
             android:paddingEnd="@dimen/medium_margin"
-            tools:text="Event type"/>
+            tools:text="Event type" />
 
         <ImageView
             android:id="@+id/event_type_color"
             android:layout_width="@dimen/color_sample_size"
             android:layout_height="@dimen/color_sample_size"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="@dimen/medium_margin"
-            android:layout_marginRight="@dimen/medium_margin"
-            android:clickable="false"/>
+            android:clickable="false" />
 
     </RelativeLayout>
 </FrameLayout>

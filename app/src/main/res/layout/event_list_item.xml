@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/event_item_frame"
     android:layout_width="match_parent"
@@ -15,20 +14,20 @@
         android:id="@+id/event_item_holder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/medium_margin"
+        android:paddingTop="@dimen/medium_margin"
         android:paddingEnd="@dimen/activity_margin"
-        android:paddingTop="@dimen/medium_margin">
+        android:paddingBottom="@dimen/medium_margin">
 
         <ImageView
             android:id="@+id/event_item_color_bar"
             android:layout_width="@dimen/event_color_bar_width"
             android:layout_height="match_parent"
-            android:layout_alignBottom="@+id/event_item_end"
             android:layout_alignTop="@+id/event_item_start"
+            android:layout_alignBottom="@+id/event_item_end"
             android:layout_marginEnd="@dimen/small_margin"
             android:background="@drawable/event_list_color_bar"
-            android:paddingBottom="@dimen/tiny_margin"
-            android:paddingTop="@dimen/tiny_margin"/>
+            android:paddingTop="@dimen/tiny_margin"
+            android:paddingBottom="@dimen/tiny_margin" />
 
         <TextView
             android:id="@+id/event_item_start"
@@ -36,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_toEndOf="@+id/event_item_color_bar"
             android:textSize="@dimen/day_text_size"
-            tools:text="13:00"/>
+            tools:text="13:00" />
 
         <TextView
             android:id="@+id/event_item_end"
@@ -45,8 +44,8 @@
             android:layout_below="@+id/event_item_start"
             android:layout_toEndOf="@+id/event_item_color_bar"
             android:includeFontPadding="false"
-            android:text="15:00"
-            android:textSize="@dimen/day_text_size"/>
+            android:textSize="@dimen/day_text_size"
+            tools:text="15:00" />
 
         <TextView
             android:id="@+id/event_item_title"
@@ -58,7 +57,7 @@
             android:maxLines="1"
             android:paddingEnd="@dimen/activity_margin"
             android:textSize="@dimen/day_text_size"
-            tools:text="Event title"/>
+            tools:text="Event title" />
 
         <TextView
             android:id="@+id/event_item_description"
@@ -72,7 +71,7 @@
             android:maxLines="1"
             android:paddingEnd="@dimen/activity_margin"
             android:textSize="@dimen/day_text_size"
-            tools:text="Event description"/>
+            tools:text="Event description" />
 
     </RelativeLayout>
 </FrameLayout>

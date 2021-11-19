@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/filter_event_type_holder"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -13,18 +12,17 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/medium_margin"
         android:layout_toStartOf="@+id/filter_event_type_color"
+        android:background="@null"
         android:clickable="false"
-        android:paddingStart="@dimen/small_margin"/>
+        android:paddingStart="@dimen/small_margin" />
 
     <ImageView
         android:id="@+id/filter_event_type_color"
         android:layout_width="@dimen/color_sample_size"
         android:layout_height="@dimen/color_sample_size"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_marginEnd="@dimen/medium_margin"
-        android:layout_marginRight="@dimen/medium_margin"
-        android:clickable="false"/>
+        android:clickable="false" />
 
 </RelativeLayout>
