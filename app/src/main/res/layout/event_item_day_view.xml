@@ -42,8 +42,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_item_start"
             android:layout_toEndOf="@+id/event_item_color_bar"
-            android:textSize="@dimen/day_text_size"
-            tools:text="15:00" />
+            android:text="15:00"
+            android:textSize="@dimen/day_text_size" />
 
         <TextView
             android:id="@+id/event_item_title"
