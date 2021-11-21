@@ -65,29 +65,31 @@ class SetRemindersDialog(val activity: Activity, val eventType: Int, val callbac
                     else -> false
                 }
                 isAutomatic = isChecked
-                setOnCheckedChangeListener { _, isChecked ->  isAutomatic = isChecked}
+                setOnCheckedChangeListener { _, isChecked -> isAutomatic = isChecked }
             }
         }
 
         AlertDialog.Builder(activity)
-                .setPositiveButton(R.string.ok) { dialog, which -> dialogConfirmed() }
-                .setNegativeButton(R.string.cancel, null)
-                .create().apply {
-                    activity.setupDialogStuff(view, this, R.string.event_reminders)
-                }
+            .setPositiveButton(R.string.ok) { dialog, which -> dialogConfirmed() }
+            .setNegativeButton(R.string.cancel, null)
+            .create().apply {
+                activity.setupDialogStuff(view, this, R.string.event_reminders)
+            }
     }
 
     private fun dialogConfirmed() {
         val tempReminders = arrayListOf(mReminder1Minutes, mReminder2Minutes, mReminder3Minutes).filter { it != REMINDER_OFF }.sorted()
         val reminders = arrayListOf(
-                tempReminders.getOrNull(0) ?: REMINDER_OFF,
-                tempReminders.getOrNull(1) ?: REMINDER_OFF,
-                tempReminders.getOrNull(2) ?: REMINDER_OFF
+            tempReminders.getOrNull(0) ?: REMINDER_OFF,
+            tempReminders.getOrNull(1) ?: REMINDER_OFF,
+            tempReminders.getOrNull(2) ?: REMINDER_OFF
         )
+
         if (eventType == BIRTHDAY_EVENT) {
             activity.config.addBirthdaysAutomatically = isAutomatic
             activity.config.birthdayReminders = reminders
         }
+
         if (eventType == ANNIVERSARY_EVENT) {
             activity.config.addAnniversariesAutomatically = isAutomatic
             activity.config.anniversaryReminders = reminders
