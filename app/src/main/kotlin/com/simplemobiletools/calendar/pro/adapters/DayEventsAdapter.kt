@@ -11,8 +11,6 @@ import com.simplemobiletools.calendar.pro.extensions.eventsHelper
 import com.simplemobiletools.calendar.pro.extensions.handleEventDeleting
 import com.simplemobiletools.calendar.pro.extensions.shareEvents
 import com.simplemobiletools.calendar.pro.helpers.Formatter
-import com.simplemobiletools.calendar.pro.helpers.ITEM_EVENT
-import com.simplemobiletools.calendar.pro.helpers.ITEM_EVENT_SIMPLE
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.commons.adapters.MyRecyclerViewAdapter
 import com.simplemobiletools.commons.extensions.adjustAlpha
@@ -70,26 +68,6 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
 
     override fun getItemCount() = events.size
 
-    override fun getItemViewType(position: Int): Int {
-        val event = events[position]
-        val detailField = if (replaceDescriptionWithLocation) event.location else event.description
-        return if (detailField.isNotEmpty()) {
-            ITEM_EVENT
-        } else if (event.startTS == event.endTS) {
-            ITEM_EVENT_SIMPLE
-        } else if (event.getIsAllDay()) {
-            val startCode = Formatter.getDayCodeFromTS(event.startTS)
-            val endCode = Formatter.getDayCodeFromTS(event.endTS)
-            if (startCode == endCode) {
-                ITEM_EVENT_SIMPLE
-            } else {
-                ITEM_EVENT
-            }
-        } else {
-            ITEM_EVENT
-        }
-    }
-
     fun togglePrintMode() {
         isPrintVersion = !isPrintVersion
         textColor = if (isPrintVersion) {
@@ -110,7 +88,7 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
                 event_item_time.text = "${event_item_time.text} - ${Formatter.getTimeFromTS(context, event.endTS)}"
             }
 
-            event_item_description?.text = if (replaceDescriptionWithLocation) event.location else event.description
+            event_item_description.text = if (replaceDescriptionWithLocation) event.location else event.description
             event_item_description.beVisibleIf(event_item_description.text.isNotEmpty())
             event_item_color_bar.background.applyColorFilter(event.color)
 

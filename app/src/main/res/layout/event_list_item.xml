@@ -82,4 +82,4 @@
             tools:text="Event description" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.constraintlayout.widget.ConstraintLayout><!--</FrameLayout>-->
+</androidx.constraintlayout.widget.ConstraintLayout>

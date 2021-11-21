@@ -88,7 +88,7 @@ class EventListAdapter(
         val listItem = listItems[position]
         holder.bindView(listItem, true, allowLongClick && listItem is ListEvent) { itemView, layoutPosition ->
             when (listItem) {
-                is ListSectionDay -> setupListSectionDay(itemView, listItem, position)
+                is ListSectionDay -> setupListSectionDay(itemView, listItem)
                 is ListEvent -> setupListEvent(itemView, listItem)
                 is ListSectionMonth -> setupListSectionMonth(itemView, listItem)
             }
@@ -98,28 +98,10 @@ class EventListAdapter(
 
     override fun getItemCount() = listItems.size
 
-    override fun getItemViewType(position: Int) = if (listItems[position] is ListEvent) {
-        val event = listItems[position] as ListEvent
-        val detailField = if (replaceDescription) event.location else event.description
-        if (detailField.isNotEmpty()) {
-            ITEM_EVENT
-        } else if (event.startTS == event.endTS) {
-            ITEM_EVENT_SIMPLE
-        } else if (event.isAllDay) {
-            val startCode = Formatter.getDayCodeFromTS(event.startTS)
-            val endCode = Formatter.getDayCodeFromTS(event.endTS)
-            if (startCode == endCode) {
-                ITEM_EVENT_SIMPLE
-            } else {
-                ITEM_EVENT
-            }
-        } else {
-            ITEM_EVENT
-        }
-    } else if (listItems[position] is ListSectionDay) {
-        ITEM_SECTION_DAY
-    } else {
-        ITEM_SECTION_MONTH
+    override fun getItemViewType(position: Int) = when {
+        listItems[position] is ListEvent -> ITEM_EVENT
+        listItems[position] is ListSectionDay -> ITEM_SECTION_DAY
+        else -> ITEM_SECTION_MONTH
     }
 
     fun toggle24HourFormat(use24HourFormat: Boolean) {
@@ -180,7 +162,7 @@ class EventListAdapter(
         }
     }
 
-    private fun setupListSectionDay(view: View, listSectionDay: ListSectionDay, position: Int) {
+    private fun setupListSectionDay(view: View, listSectionDay: ListSectionDay) {
         view.event_section_title.apply {
             text = listSectionDay.title
             var color = if (listSectionDay.isToday && !isPrintVersion) adjustedPrimaryColor else textColor
