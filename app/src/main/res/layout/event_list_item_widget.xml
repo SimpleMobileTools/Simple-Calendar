@@ -4,9 +4,9 @@
     android:id="@+id/event_item_holder"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/medium_margin"
+    android:layout_marginStart="@dimen/small_margin"
     android:layout_marginTop="@dimen/small_margin"
-    android:layout_marginEnd="@dimen/medium_margin"
+    android:layout_marginEnd="@dimen/small_margin"
     android:layout_marginBottom="@dimen/medium_margin"
     android:background="@drawable/section_holder_stroke"
     android:paddingTop="@dimen/medium_margin"
@@ -41,7 +41,10 @@
         android:layout_below="@+id/event_item_title"
         android:layout_alignStart="@+id/event_item_title"
         android:alpha="0.8"
+        android:ellipsize="end"
         android:lineSpacingExtra="2dp"
+        android:maxLines="2"
+        android:paddingEnd="@dimen/small_margin"
         android:textSize="@dimen/normal_text_size"
         tools:text="13:00" />
 

@@ -134,8 +134,16 @@ class EventListAdapter(
             event_item_holder.background.applyColorFilter(textColor)
             event_item_title.text = listEvent.title
             event_item_time.text = if (listEvent.isAllDay) allDayString else Formatter.getTimeFromTS(context, listEvent.startTS)
-            if (listEvent.startTS != listEvent.endTS && !listEvent.isAllDay) {
-                event_item_time.text = "${event_item_time.text} - ${Formatter.getTimeFromTS(context, listEvent.endTS)}"
+            if (listEvent.startTS != listEvent.endTS) {
+                if (!listEvent.isAllDay) {
+                    event_item_time.text = "${event_item_time.text} - ${Formatter.getTimeFromTS(context, listEvent.endTS)}"
+                }
+
+                val startCode = Formatter.getDayCodeFromTS(listEvent.startTS)
+                val endCode = Formatter.getDayCodeFromTS(listEvent.endTS)
+                if (startCode != endCode) {
+                    event_item_time.text = "${event_item_time.text} (${Formatter.getDateDayTitle(endCode)})"
+                }
             }
 
             event_item_description.text = if (replaceDescription) listEvent.location else listEvent.description

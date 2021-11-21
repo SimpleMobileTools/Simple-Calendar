@@ -62,7 +62,17 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
             setBackgroundColor(R.id.event_item_color_bar, item.color)
             setText(R.id.event_item_title, item.title)
 
-            val timeText = if (item.isAllDay) allDayString else Formatter.getTimeFromTS(context, item.startTS)
+            var timeText = if (item.isAllDay) allDayString else Formatter.getTimeFromTS(context, item.startTS)
+            if (!item.isAllDay) {
+                timeText += " - ${Formatter.getTimeFromTS(context, item.endTS)}"
+            }
+
+            val startCode = Formatter.getDayCodeFromTS(item.startTS)
+            val endCode = Formatter.getDayCodeFromTS(item.endTS)
+            if (startCode != endCode) {
+                timeText += " (${Formatter.getDateDayTitle(endCode)})"
+            }
+
             setText(R.id.event_item_time, timeText)
 
             // we cannot change the event_item_color_bar rules dynamically, so do it like this
