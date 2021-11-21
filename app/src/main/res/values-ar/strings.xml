@@ -92,6 +92,7 @@
     <string name="no_birthdays">لم يتم إيجاد تواريخ ميلاد</string>
     <string name="no_new_birthdays">لم يتم العثور على تواريخ ميلاد جديدة</string>
     <string name="birthdays_added">تمت إضافة تواريخ الميلاد بنجاح</string>
+    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">المناسبات</string>
@@ -99,6 +100,7 @@
     <string name="no_anniversaries">لم يتم العثور على مناسبات سنوية</string>
     <string name="no_new_anniversaries">لم يتم العثور على مناسبات سنوية</string>
     <string name="anniversaries_added">تمت إضافة المناسبات</string>
+    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
 
     <!-- Event Reminders -->
     <string name="reminder">تذكير</string>

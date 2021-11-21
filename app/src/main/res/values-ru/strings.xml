@@ -92,6 +92,7 @@
     <string name="no_birthdays">Дни рождения не найдены</string>
     <string name="no_new_birthdays">Новых дней рождения не найдено</string>
     <string name="birthdays_added">Дни рождения успешно добавлены</string>
+    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Годовщины</string>
@@ -99,6 +100,7 @@
     <string name="no_anniversaries">Годовщины не найдены</string>
     <string name="no_new_anniversaries">Новых годовщин не найдено</string>
     <string name="anniversaries_added">Годовщины успешно добавлены</string>
+    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Напоминание</string>

@@ -92,6 +92,7 @@
     <string name="no_birthdays">未發現生日</string>
     <string name="no_new_birthdays">未發現新的生日</string>
     <string name="birthdays_added">生日添加成功</string>
+    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">紀念日</string>
@@ -99,6 +100,7 @@
     <string name="no_anniversaries">未發現紀念日</string>
     <string name="no_new_anniversaries">未發現新的紀念日</string>
     <string name="anniversaries_added">紀念日添加成功</string>
+    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
 
     <!-- Event Reminders -->
     <string name="reminder">提醒</string>

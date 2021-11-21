@@ -93,12 +93,14 @@
     <string name="no_birthdays">Nie znaleziono żadnych urodzin</string>
     <string name="no_new_birthdays">Nie znaleziono nowych urodzin</string>
     <string name="birthdays_added">Urodziny zostały dodane</string>
+    <string name="add_birthdays_automatically">Automatycznie dodawaj nowe urodziny</string>
     <!-- Anniversaries -->
     <string name="anniversaries">Rocznice</string>
     <string name="add_anniversaries">Dodaj rocznice kontaktów</string>
     <string name="no_anniversaries">Nie znaleziono żadnych rocznic</string>
     <string name="no_new_anniversaries">Nie znaleziono nowych rocznic</string>
     <string name="anniversaries_added">Rocznice zostały dodane</string>
+    <string name="add_anniversaries_automatically">Automatycznie dodawaj nowe rocznice</string>
     <!-- Event Reminders -->
     <string name="reminder">Przypomnienie</string>
     <string name="before">przed</string>

@@ -93,12 +93,14 @@
     <string name="no_birthdays">Aucun anniversaire n\’a été trouvé</string>
     <string name="no_new_birthdays">Aucun nouvel anniversaire n’a été trouvé</string>
     <string name="birthdays_added">Anniversaires ajoutés avec succès</string>
+    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
     <!-- Anniversaries -->
     <string name="anniversaries">Dates mémo</string>
     <string name="add_anniversaries">Ajouter les dates mémo de vos contacts</string>
     <string name="no_anniversaries">Aucune date mémo n\’a été trouvée</string>
     <string name="no_new_anniversaries">Aucun nouvelle date mémo n’a été trouvée</string>
     <string name="anniversaries_added">Dates mémo ajoutées avec succès</string>
+    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
     <!-- Event Reminders -->
     <string name="reminder">Rappel</string>
     <string name="before">avant</string>

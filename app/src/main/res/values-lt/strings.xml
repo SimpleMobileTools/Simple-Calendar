@@ -92,6 +92,7 @@
     <string name="no_birthdays">Nerasta gimtadienių</string>
     <string name="no_new_birthdays">No new birthdays have been found</string>
     <string name="birthdays_added">Gimtadieniai įtraukti sėkmingai</string>
+    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Sukaktys</string>
@@ -99,6 +100,7 @@
     <string name="no_anniversaries">Sukakčių nerasta</string>
     <string name="no_new_anniversaries">No new anniversaries have been found</string>
     <string name="anniversaries_added">Sukaktys įtrauktos sėkmingai</string>
+    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Priminimas</string>

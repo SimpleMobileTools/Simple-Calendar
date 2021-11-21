@@ -92,6 +92,7 @@
     <string name="no_birthdays">Nenalezeny žádné narozeniny</string>
     <string name="no_new_birthdays">Nenalezeny žádné nové narozeniny</string>
     <string name="birthdays_added">Narozeniny byly úspěšně přidány</string>
+    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Výročí</string>
@@ -99,6 +100,7 @@
     <string name="no_anniversaries">Nenalezeno žádné výročí</string>
     <string name="no_new_anniversaries">Nenalezena žádná nová výročí</string>
     <string name="anniversaries_added">Výročí byla úspěšně přidána</string>
+    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Připomínka</string>

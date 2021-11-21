@@ -92,6 +92,7 @@
     <string name="no_birthdays">Tidak ada ulang tahun yang ditemukan</string>
     <string name="no_new_birthdays">Tidak ada ulang tahun baru yang ditemukan</string>
     <string name="birthdays_added">Ulang tahun berhasil ditambahkan</string>
+    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Hari Jadi</string>
@@ -99,6 +100,7 @@
     <string name="no_anniversaries">Tidak ada hari jadi yang ditemukan</string>
     <string name="no_new_anniversaries">Tidak ada hari jadi baru yang ditemukan</string>
     <string name="anniversaries_added">Hari jadi berhasil ditambahkan</string>
+    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Pengingat</string>

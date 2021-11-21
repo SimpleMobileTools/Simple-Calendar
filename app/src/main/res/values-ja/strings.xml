@@ -92,6 +92,7 @@
     <string name="no_birthdays">誕生日は見つかりませんでした</string>
     <string name="no_new_birthdays">新しい誕生日は見つかりませんでした</string>
     <string name="birthdays_added">誕生日が正常に追加されました</string>
+    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">記念日</string>
@@ -99,6 +100,7 @@
     <string name="no_anniversaries">記念日は見つかりませんでした</string>
     <string name="no_new_anniversaries">新しい記念日は見つかりませんでした</string>
     <string name="anniversaries_added">記念日が正常に追加されました</string>
+    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
 
     <!-- Event Reminders -->
     <string name="reminder">リマインダー</string>

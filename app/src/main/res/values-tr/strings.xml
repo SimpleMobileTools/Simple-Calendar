@@ -93,12 +93,14 @@
     <string name="no_birthdays">Hiçbir doğum günü bulunamadı</string>
     <string name="no_new_birthdays">Yeni doğum günü bulunamadı</string>
     <string name="birthdays_added">Doğum günleri başarıyla eklendi</string>
+    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
     <!-- Anniversaries -->
     <string name="anniversaries">Yıldönümleri</string>
     <string name="add_anniversaries">Kişi yıldönümlerini ekle</string>
     <string name="no_anniversaries">Yıldönümleri bulunamadı</string>
     <string name="no_new_anniversaries">Yeni yıldönümleri bulunamadı</string>
     <string name="anniversaries_added">Yıldönümleri başarıyla eklendi</string>
+    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
     <!-- Event Reminders -->
     <string name="reminder">Hatırlatma</string>
     <string name="before">önce</string>

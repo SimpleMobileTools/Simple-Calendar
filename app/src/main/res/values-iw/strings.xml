@@ -92,6 +92,7 @@
     <string name="no_birthdays">לא נמצאו ימי הולדת</string>
     <string name="no_new_birthdays">לא נמצאו ימי הולדת חדשים</string>
     <string name="birthdays_added">ימי הולדת הוספו בהצלחה</string>
+    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">ימי שנה</string>
@@ -99,6 +100,7 @@
     <string name="no_anniversaries">לא נמצאו ימי שנה</string>
     <string name="no_new_anniversaries">לא נמצאו ימי שנה חדשים</string>
     <string name="anniversaries_added">ימי שנה הוספו בהצלחה</string>
+    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
 
     <!-- Event Reminders -->
     <string name="reminder">תזכורת</string>

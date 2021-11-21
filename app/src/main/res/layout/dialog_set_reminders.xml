@@ -55,4 +55,12 @@
         android:textSize="@dimen/day_text_size"
         android:visibility="gone" />
 
+    <com.simplemobiletools.commons.views.MyAppCompatCheckbox
+        android:id="@+id/add_event_automatically_checkbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/normal_margin"
+        android:layout_below="@+id/set_reminders_3"
+        android:padding="@dimen/normal_margin"/>
+
 </RelativeLayout>

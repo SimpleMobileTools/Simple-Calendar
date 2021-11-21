@@ -122,6 +122,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             checkCalDAVUpdateListener()
         }
 
+        addBirthdaysAnniversariesAtStart()
+
         if (!config.wasUpgradedFromFreeShown && isPackageInstalled("com.simplemobiletools.calendar")) {
             ConfirmationDialog(this, "", R.string.upgraded_from_free, R.string.ok, 0) {}
             config.wasUpgradedFromFreeShown = true
@@ -145,7 +147,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
         if (config.storedView == WEEKLY_VIEW) {
             if (mStoredIsSundayFirst != config.isSundayFirst || mStoredUse24HourFormat != config.use24HourFormat
-                || mStoredMidnightSpan != config.showMidnightSpanningEventsAtTop || mStoredStartWeekWithCurrentDay != config.startWeekWithCurrentDay) {
+                || mStoredMidnightSpan != config.showMidnightSpanningEventsAtTop || mStoredStartWeekWithCurrentDay != config.startWeekWithCurrentDay
+            ) {
                 updateViewPager()
             }
         }
@@ -506,7 +509,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private fun addHolidays() {
         val items = getHolidayRadioItems()
         RadioGroupDialog(this, items) { selectedHoliday ->
-            SetRemindersDialog(this) {
+            SetRemindersDialog(this, OTHER_EVENT) {
                 val reminders = it
                 toast(R.string.importing)
                 ensureBackgroundThread {
@@ -532,7 +535,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private fun tryAddBirthdays() {
         handlePermission(PERMISSION_READ_CONTACTS) {
             if (it) {
-                SetRemindersDialog(this) {
+                SetRemindersDialog(this, BIRTHDAY_EVENT) {
                     val reminders = it
                     val privateCursor = getMyContactsCursor(false, false)?.loadInBackground()
 
@@ -562,7 +565,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private fun tryAddAnniversaries() {
         handlePermission(PERMISSION_READ_CONTACTS) {
             if (it) {
-                SetRemindersDialog(this) {
+                SetRemindersDialog(this, ANNIVERSARY_EVENT) {
                     val reminders = it
                     val privateCursor = getMyContactsCursor(false, false)?.loadInBackground()
 
@@ -585,6 +588,41 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                 }
             } else {
                 toast(R.string.no_contacts_permission)
+            }
+        }
+    }
+
+    private fun addBirthdaysAnniversariesAtStart() {
+        if ((!config.addBirthdaysAutomatically && !config.addAnniversariesAutomatically) || !hasPermission(PERMISSION_READ_CONTACTS)) {
+            return
+        }
+
+        val privateCursor = getMyContactsCursor(false, false)?.loadInBackground()
+
+        ensureBackgroundThread {
+            val privateContacts = MyContactsContentProvider.getSimpleContacts(this, privateCursor)
+            if (config.addBirthdaysAutomatically) {
+                addPrivateEvents(true, privateContacts, config.birthdayReminders) { eventsFound, eventsAdded ->
+                    addContactEvents(true, config.birthdayReminders, eventsFound, eventsAdded) {
+                        if (it > 0) {
+                            toast(R.string.birthdays_added)
+                            updateViewPager()
+                            setupQuickFilter()
+                        }
+                    }
+                }
+            }
+
+            if (config.addAnniversariesAutomatically) {
+                addPrivateEvents(false, privateContacts, config.anniversaryReminders) { eventsFound, eventsAdded ->
+                    addContactEvents(false, config.anniversaryReminders, eventsFound, eventsAdded) {
+                        if (it > 0) {
+                            toast(R.string.anniversaries_added)
+                            updateViewPager()
+                            setupQuickFilter()
+                        }
+                    }
+                }
             }
         }
     }
@@ -819,7 +857,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     private fun getThisWeekDateTime(): String {
-        return if(! config.startWeekWithCurrentDay) {
+        return if (!config.startWeekWithCurrentDay) {
             val currentOffsetHours = TimeZone.getDefault().rawOffset / 1000 / 60 / 60
 
             // not great, not terrible

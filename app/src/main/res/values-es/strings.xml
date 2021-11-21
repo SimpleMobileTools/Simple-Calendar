@@ -92,6 +92,7 @@
     <string name="no_birthdays">No se han encontrado cumpleaños</string>
     <string name="no_new_birthdays">No se han encontrado nuevos cumpleaños</string>
     <string name="birthdays_added">Los cumpleaños se han añadido correctamente</string>
+    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Aniversarios</string>
@@ -99,6 +100,7 @@
     <string name="no_anniversaries">No se han encontrado aniversarios</string>
     <string name="no_new_anniversaries">No se han encontrado nuevos aniversarios</string>
     <string name="anniversaries_added">Los aniversarios se han añadido correctamente</string>
+    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Recordatorio</string>
