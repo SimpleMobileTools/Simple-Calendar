@@ -20,7 +20,6 @@ import com.simplemobiletools.commons.adapters.MyRecyclerViewAdapter
 import com.simplemobiletools.commons.extensions.adjustAlpha
 import com.simplemobiletools.commons.extensions.applyColorFilter
 import com.simplemobiletools.commons.extensions.beVisibleIf
-import com.simplemobiletools.commons.helpers.LOWER_ALPHA
 import com.simplemobiletools.commons.helpers.MEDIUM_ALPHA
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import com.simplemobiletools.commons.interfaces.RefreshRecyclerViewListener
@@ -165,11 +164,6 @@ class EventListAdapter(
     private fun setupListSectionDay(view: View, listSectionDay: ListSectionDay) {
         view.event_section_title.apply {
             text = listSectionDay.title
-            var color = if (listSectionDay.isToday && !isPrintVersion) adjustedPrimaryColor else textColor
-            if (dimPastEvents && listSectionDay.isPastSection && !isPrintVersion) {
-                color = color.adjustAlpha(LOWER_ALPHA)
-            }
-
             val dayColor = if (listSectionDay.isToday) adjustedPrimaryColor else textColor
             setTextColor(dayColor)
         }
