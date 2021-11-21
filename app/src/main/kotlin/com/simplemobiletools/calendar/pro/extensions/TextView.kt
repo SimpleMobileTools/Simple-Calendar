@@ -1,15 +1,14 @@
 package com.simplemobiletools.calendar.pro.extensions
 
 import android.content.res.Resources
-import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.widget.TextView
+import androidx.core.graphics.drawable.toBitmap
 import com.simplemobiletools.commons.extensions.applyColorFilter
 
 fun TextView.addResizedBackgroundDrawable(res: Resources, drawableHeight: Int, primaryColor: Int, drawableId: Int) {
-    val baseDrawable = res.getDrawable(drawableId)
-    val bitmap = (baseDrawable as BitmapDrawable).bitmap
-    val scaledDrawable = BitmapDrawable(res, Bitmap.createScaledBitmap(bitmap, drawableHeight, drawableHeight, true))
+    val baseDrawable = res.getDrawable(drawableId).toBitmap(drawableHeight, drawableHeight)
+    val scaledDrawable = BitmapDrawable(res, baseDrawable)
     scaledDrawable.applyColorFilter(primaryColor)
     background = scaledDrawable
 }

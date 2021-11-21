@@ -2,26 +2,16 @@ package com.simplemobiletools.calendar.pro.adapters
 
 import android.content.Context
 import android.content.Intent
-import android.view.View
 import android.widget.RemoteViews
 import android.widget.RemoteViewsService
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.R.id.event_item_holder
 import com.simplemobiletools.calendar.pro.R.id.event_section_title
-import com.simplemobiletools.calendar.pro.extensions.config
-import com.simplemobiletools.calendar.pro.extensions.eventsHelper
-import com.simplemobiletools.calendar.pro.extensions.getWidgetFontSize
-import com.simplemobiletools.calendar.pro.extensions.seconds
+import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
-import com.simplemobiletools.calendar.pro.models.Event
-import com.simplemobiletools.calendar.pro.models.ListEvent
-import com.simplemobiletools.calendar.pro.models.ListItem
-import com.simplemobiletools.calendar.pro.models.ListSectionDay
-import com.simplemobiletools.commons.extensions.adjustAlpha
-import com.simplemobiletools.commons.extensions.setBackgroundColor
-import com.simplemobiletools.commons.extensions.setText
-import com.simplemobiletools.commons.extensions.setTextSize
+import com.simplemobiletools.calendar.pro.models.*
+import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.LOWER_ALPHA
 import com.simplemobiletools.commons.helpers.MEDIUM_ALPHA
 import org.joda.time.DateTime
@@ -29,7 +19,8 @@ import java.util.*
 
 class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteViewsFactory {
     private val ITEM_EVENT = 0
-    private val ITEM_HEADER = 1
+    private val ITEM_SECTION_DAY = 1
+    private val ITEM_SECTION_MONTH = 2
 
     private val allDayString = context.resources.getString(R.string.all_day)
     private var events = ArrayList<ListItem>()
@@ -45,65 +36,39 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
 
         if (type == ITEM_EVENT) {
             val event = events[position] as ListEvent
-            val layout = getItemViewLayout(event)
+            val layout = R.layout.event_list_item_widget
             remoteView = RemoteViews(context.packageName, layout)
             setupListEvent(remoteView, event)
-        } else {
-            remoteView = RemoteViews(context.packageName, R.layout.event_list_section_widget)
+        } else if (type == ITEM_SECTION_DAY) {
+            remoteView = RemoteViews(context.packageName, R.layout.event_list_section_day_widget)
             val section = events.getOrNull(position) as? ListSectionDay
             if (section != null) {
-                setupListSection(remoteView, section)
+                setupListSectionDay(remoteView, section)
+            }
+        } else {
+            remoteView = RemoteViews(context.packageName, R.layout.event_list_section_month_widget)
+            val section = events.getOrNull(position) as? ListSectionMonth
+            if (section != null) {
+                setupListSectionMonth(remoteView, section)
             }
         }
 
         return remoteView
     }
 
-    private fun getItemViewLayout(event: ListEvent): Int {
-        val detailField = if (replaceDescription) event.location else event.description
-        return if (detailField.isNotEmpty()) {
-            R.layout.event_list_item_widget
-        } else if (event.startTS == event.endTS) {
-            R.layout.event_list_item_widget
-        } else if (event.isAllDay) {
-            val startCode = Formatter.getDayCodeFromTS(event.startTS)
-            val endCode = Formatter.getDayCodeFromTS(event.endTS)
-            if (startCode == endCode) {
-                R.layout.event_list_item_widget
-            } else {
-                R.layout.event_list_item_widget
-            }
-        } else {
-            R.layout.event_list_item_widget
-        }
-    }
-
     private fun setupListEvent(remoteView: RemoteViews, item: ListEvent) {
         var curTextColor = textColor
         remoteView.apply {
-            setText(R.id.event_item_title, item.title)
-            setText(R.id.event_item_description, if (replaceDescription) item.location else item.description)
-            setText(R.id.event_item_time, if (item.isAllDay) allDayString else Formatter.getTimeFromTS(context, item.startTS))
             setBackgroundColor(R.id.event_item_color_bar, item.color)
+            setText(R.id.event_item_title, item.title)
 
-            if (item.startTS == item.endTS) {
-                setViewVisibility(R.id.event_item_end, View.INVISIBLE)
-            } else {
-                setViewVisibility(R.id.event_item_end, View.VISIBLE)
-                var endString = Formatter.getTimeFromTS(context, item.endTS)
-                val startCode = Formatter.getDayCodeFromTS(item.startTS)
-                val endCode = Formatter.getDayCodeFromTS(item.endTS)
+            val timeText = if (item.isAllDay) allDayString else Formatter.getTimeFromTS(context, item.startTS)
+            setText(R.id.event_item_time, timeText)
 
-                if (startCode != endCode) {
-                    if (item.isAllDay) {
-                        endString = Formatter.getDateFromCode(context, endCode, true)
-                    } else {
-                        endString += " (${Formatter.getDateFromCode(context, endCode, true)})"
-                    }
-                } else if (item.isAllDay) {
-                    setViewVisibility(R.id.event_item_end, View.INVISIBLE)
-                }
-                setText(R.id.event_item_end, endString)
+            // we cannot change the event_item_color_bar rules dynamically, so do it like this
+            val descriptionText = if (replaceDescription) item.location else item.description
+            if (descriptionText.isNotEmpty()) {
+                setText(R.id.event_item_time, "$timeText\n$descriptionText")
             }
 
             if (dimPastEvents && item.isPastEvent) {
@@ -111,14 +76,10 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
             }
 
             setTextColor(R.id.event_item_title, curTextColor)
-            setTextColor(R.id.event_item_description, curTextColor)
             setTextColor(R.id.event_item_time, curTextColor)
-            setTextColor(R.id.event_item_end, curTextColor)
 
             setTextSize(R.id.event_item_title, mediumFontSize)
-            setTextSize(R.id.event_item_description, mediumFontSize)
             setTextSize(R.id.event_item_time, mediumFontSize)
-            setTextSize(R.id.event_item_end, mediumFontSize)
 
             Intent().apply {
                 putExtra(EVENT_ID, item.id)
@@ -128,7 +89,7 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
         }
     }
 
-    private fun setupListSection(remoteView: RemoteViews, item: ListSectionDay) {
+    private fun setupListSectionDay(remoteView: RemoteViews, item: ListSectionDay) {
         var curTextColor = textColor
         if (dimPastEvents && item.isPastSection) {
             curTextColor = weakTextColor
@@ -147,7 +108,19 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
         }
     }
 
-    private fun getItemViewType(position: Int) = if (events.getOrNull(position) is ListEvent) ITEM_EVENT else ITEM_HEADER
+    private fun setupListSectionMonth(remoteView: RemoteViews, item: ListSectionMonth) {
+        val curTextColor = textColor
+        remoteView.apply {
+            setTextColor(event_section_title, curTextColor)
+            setText(event_section_title, item.title)
+        }
+    }
+
+    private fun getItemViewType(position: Int) = when {
+        events.getOrNull(position) is ListEvent -> ITEM_EVENT
+        events.getOrNull(position) is ListSectionDay -> ITEM_SECTION_DAY
+        else -> ITEM_SECTION_MONTH
+    }
 
     override fun getLoadingView() = null
 
@@ -181,13 +154,21 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
             }.thenBy { it.title }.thenBy { if (replaceDescription) it.location else it.description })
 
             var prevCode = ""
+            var prevMonthLabel = ""
             val now = getNowSeconds()
             val today = Formatter.getDayTitle(context, Formatter.getDayCodeFromTS(now))
 
             sorted.forEach {
                 val code = Formatter.getDayCodeFromTS(it.startTS)
+                val monthLabel = Formatter.getLongMonthYear(context, code)
+                if (monthLabel != prevMonthLabel) {
+                    val listSectionMonth = ListSectionMonth(monthLabel)
+                    listItems.add(listSectionMonth)
+                    prevMonthLabel = monthLabel
+                }
+
                 if (code != prevCode) {
-                    val day = Formatter.getDayTitle(context, code)
+                    val day = Formatter.getDateDayTitle(code)
                     val isToday = day == today
                     val listSection = ListSectionDay(day, code, isToday, !isToday && it.startTS < now)
                     listItems.add(listSection)
