@@ -92,7 +92,7 @@
     <string name="no_birthdays">Δεν βρέθηκαν γενέθλια</string>
     <string name="no_new_birthdays">Δεν έχουν βρεθεί νέα γενέθλια</string>
     <string name="birthdays_added">Τα γενέθλια προστέθηκαν με επιτυχία</string>
-    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
+    <string name="add_birthdays_automatically">Προσθήκη νέων γενεθλίων αυτόματα</string>
 
     <!-- Anniversaries -->
     <string name="anniversaries">Επέτειοι</string>
@@ -100,7 +100,7 @@
     <string name="no_anniversaries">Δεν έχουν βρεθεί επέτειοι</string>
     <string name="no_new_anniversaries">Δεν έχουν βρεθεί νέοι επέτειοι</string>
     <string name="anniversaries_added">Οι επέτειοι προστέθηκαν με επιτυχία</string>
-    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
+    <string name="add_anniversaries_automatically">Προσθήκη νέων επετείων αυτόματα</string>
 
     <!-- Event Reminders -->
     <string name="reminder">Υπενθύμιση</string>
@@ -202,7 +202,7 @@
     <string name="last_used_one">Τελευταία χρήση</string>
     <string name="other_time">Άλλη ώρα</string>
     <string name="highlight_weekends">Επισήμανση Σαββατοκύριακων σε ορισμένες προβολές</string>
-    <string name="highlight_weekends_color">Color of highlighted weekends</string>
+    <string name="highlight_weekends_color">Χρώμα επισημασμένων Σαββατοκύριακων</string>
     <string name="allow_changing_time_zones">Να επιτρέπεται η αλλαγή ζωνών ώρας συμβάντος</string>
     <string name="manage_quick_filter_event_types">Διαχείριση γρήγορου φίλτρου τύπων συμβάντων</string>
 
