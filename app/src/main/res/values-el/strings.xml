@@ -202,6 +202,7 @@
     <string name="last_used_one">Τελευταία χρήση</string>
     <string name="other_time">Άλλη ώρα</string>
     <string name="highlight_weekends">Επισήμανση Σαββατοκύριακων σε ορισμένες προβολές</string>
+    <string name="highlight_weekends_color">Color of highlighted weekends</string>
     <string name="allow_changing_time_zones">Να επιτρέπεται η αλλαγή ζωνών ώρας συμβάντος</string>
     <string name="manage_quick_filter_event_types">Διαχείριση γρήγορου φίλτρου τύπων συμβάντων</string>
 

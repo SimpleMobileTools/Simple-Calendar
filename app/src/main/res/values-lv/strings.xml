@@ -202,6 +202,7 @@
     <string name="last_used_one">Pēdējais izmantotais</string>
     <string name="other_time">Cits</string>
     <string name="highlight_weekends">Iezīmēt/izcelt nedēļas nogales dažos skatos/režīmos</string>
+    <string name="highlight_weekends_color">Color of highlighted weekends</string>
     <string name="allow_changing_time_zones">Atļaut mainīt notikuma laika joslu</string>
     <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
 

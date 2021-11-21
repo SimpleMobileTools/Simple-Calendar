@@ -202,6 +202,7 @@
     <string name="last_used_one">A última usada</string>
     <string name="other_time">Outra hora</string>
     <string name="highlight_weekends">Resaltar fins de semana nalgunhas vistas</string>
+    <string name="highlight_weekends_color">Color of highlighted weekends</string>
     <string name="allow_changing_time_zones">Permitir cambiar as zonas horarias do evento</string>
     <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
 

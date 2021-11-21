@@ -187,6 +187,7 @@
     <string name="last_used_one">L\'ultimo utilizzato</string>
     <string name="other_time">Altro periodo</string>
     <string name="highlight_weekends">Evidenzia il fine-settimana in alcune viste</string>
+    <string name="highlight_weekends_color">Color of highlighted weekends</string>
     <string name="allow_changing_time_zones">Abilita il cambio del fuso orario negli eventi</string>
     <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
     <!-- CalDAV sync -->

@@ -193,6 +193,7 @@
     <string name="last_used_one">Identique au dernier</string>
     <string name="other_time">Autre moment</string>
     <string name="highlight_weekends">Mettre les week-ends en surbrillance</string>
+    <string name="highlight_weekends_color">Color of highlighted weekends</string>
     <string name="allow_changing_time_zones">Autoriser la modification des fuseaux horaires des évènements</string>
     <string name="manage_quick_filter_event_types">Gérer les filtres selon le type d\'évènement</string>
     <!-- CalDAV sync -->

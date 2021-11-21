@@ -202,6 +202,7 @@
     <string name="last_used_one">Last used one</string>
     <string name="other_time">Other time</string>
     <string name="highlight_weekends">Highlight weekends on some views</string>
+    <string name="highlight_weekends_color">Color of highlighted weekends</string>
     <string name="allow_changing_time_zones">Allow changing event time zones</string>
     <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
 

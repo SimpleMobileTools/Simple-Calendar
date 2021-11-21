@@ -187,6 +187,7 @@
     <string name="last_used_one">Den sist brukte</string>
     <string name="other_time">Annen tid</string>
     <string name="highlight_weekends">Fremhev helger på noen visninger</string>
+    <string name="highlight_weekends_color">Color of highlighted weekends</string>
     <string name="allow_changing_time_zones">Tillat å endre tidssoner for hendelser</string>
     <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
     <!-- CalDAV sync -->
