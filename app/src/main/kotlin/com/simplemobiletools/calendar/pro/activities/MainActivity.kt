@@ -147,7 +147,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
         if (config.storedView == WEEKLY_VIEW) {
             if (mStoredIsSundayFirst != config.isSundayFirst || mStoredUse24HourFormat != config.use24HourFormat
-                || mStoredMidnightSpan != config.showMidnightSpanningEventsAtTop || mStoredStartWeekWithCurrentDay != config.startWeekWithCurrentDay) {
+                || mStoredMidnightSpan != config.showMidnightSpanningEventsAtTop || mStoredStartWeekWithCurrentDay != config.startWeekWithCurrentDay
+            ) {
                 updateViewPager()
             }
         }
@@ -611,6 +612,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                     }
                 }
             }
+
             if (config.addAnniversariesAutomatically) {
                 addPrivateEvents(false, privateContacts, config.anniversaryReminders) { eventsFound, eventsAdded ->
                     addContactEvents(false, config.anniversaryReminders, eventsFound, eventsAdded) {
@@ -855,7 +857,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     private fun getThisWeekDateTime(): String {
-        return if(! config.startWeekWithCurrentDay) {
+        return if (!config.startWeekWithCurrentDay) {
             val currentOffsetHours = TimeZone.getDefault().rawOffset / 1000 / 60 / 60
 
             // not great, not terrible
