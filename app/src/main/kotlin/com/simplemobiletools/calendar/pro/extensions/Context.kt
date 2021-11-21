@@ -475,7 +475,7 @@ fun Context.addDayEvents(day: DayMonthly, linearLayout: LinearLayout, res: Resou
     }
 }
 
-fun Context.getEventListItems(events: List<Event>, addSections: Boolean = true): ArrayList<ListItem> {
+fun Context.getEventListItems(events: List<Event>, addSectionDays: Boolean = true, addSectionMonths: Boolean = true): ArrayList<ListItem> {
     val listItems = ArrayList<ListItem>(events.size)
     val replaceDescription = config.replaceDescription
 
@@ -495,18 +495,29 @@ fun Context.getEventListItems(events: List<Event>, addSections: Boolean = true):
     }.thenBy { it.title }.thenBy { if (replaceDescription) it.location else it.description })
 
     var prevCode = ""
+    var prevMonthLabel = ""
     val now = getNowSeconds()
-    val today = Formatter.getDayTitle(this, Formatter.getDayCodeFromTS(now))
+    val todayCode = Formatter.getDayCodeFromTS(now)
 
     sorted.forEach {
         val code = Formatter.getDayCodeFromTS(it.startTS)
-        if (code != prevCode && addSections) {
-            val day = Formatter.getDayTitle(this, code)
-            val isToday = day == today
-            val listSection = ListSection(day, code, isToday, !isToday && it.startTS < now)
-            listItems.add(listSection)
+        if (addSectionMonths) {
+            val monthLabel = Formatter.getLongMonthYear(this, code)
+            if (monthLabel != prevMonthLabel) {
+                val listSectionMonth = ListSectionMonth(monthLabel)
+                listItems.add(listSectionMonth)
+                prevMonthLabel = monthLabel
+            }
+        }
+
+        if (code != prevCode && addSectionDays) {
+            val day = Formatter.getDateDayTitle(code)
+            val isToday = code == todayCode
+            val listSectionDay = ListSectionDay(day, code, isToday, !isToday && it.startTS < now)
+            listItems.add(listSectionDay)
             prevCode = code
         }
+
         val listEvent =
             ListEvent(it.id!!, it.startTS, it.endTS, it.title, it.description, it.getIsAllDay(), it.color, it.location, it.isPastEvent, it.repeatInterval > 0)
         listItems.add(listEvent)

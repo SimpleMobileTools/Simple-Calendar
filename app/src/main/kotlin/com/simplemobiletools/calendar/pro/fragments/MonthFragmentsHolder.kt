@@ -42,7 +42,7 @@ class MonthFragmentsHolder : MyFragmentHolder(), NavigationListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_months_holder, container, false)
-        view.background = ColorDrawable(context!!.config.backgroundColor)
+        view.background = ColorDrawable(requireContext().config.backgroundColor)
         viewPager = view.fragment_months_viewpager
         viewPager!!.id = (System.currentTimeMillis() % 100000).toInt()
         setupFragment()
@@ -51,7 +51,7 @@ class MonthFragmentsHolder : MyFragmentHolder(), NavigationListener {
 
     private fun setupFragment() {
         val codes = getMonths(currentDayCode)
-        val monthlyAdapter = MyMonthPagerAdapter(activity!!.supportFragmentManager, codes, this)
+        val monthlyAdapter = MyMonthPagerAdapter(requireActivity().supportFragmentManager, codes, this)
         defaultMonthlyPage = codes.size / 2
 
         viewPager!!.apply {
@@ -106,7 +106,7 @@ class MonthFragmentsHolder : MyFragmentHolder(), NavigationListener {
     }
 
     override fun showGoToDateDialog() {
-        activity!!.setTheme(context!!.getDialogTheme())
+        requireActivity().setTheme(requireContext().getDialogTheme())
         val view = layoutInflater.inflate(R.layout.date_picker, null)
         val datePicker = view.findViewById<DatePicker>(R.id.date_picker)
         datePicker.findViewById<View>(Resources.getSystem().getIdentifier("day", "id", "android")).beGone()
@@ -114,7 +114,7 @@ class MonthFragmentsHolder : MyFragmentHolder(), NavigationListener {
         val dateTime = DateTime(Formatter.getDateTimeFromCode(currentDayCode).toString())
         datePicker.init(dateTime.year, dateTime.monthOfYear - 1, 1, null)
 
-        AlertDialog.Builder(context!!)
+        AlertDialog.Builder(requireContext())
             .setNegativeButton(R.string.cancel, null)
             .setPositiveButton(R.string.ok) { dialog, which -> datePicked(dateTime, datePicker) }
             .create().apply {

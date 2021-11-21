@@ -34,22 +34,22 @@ class YearFragment : Fragment(), YearlyCalendar {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mView = inflater.inflate(R.layout.fragment_year, container, false)
-        mYear = arguments!!.getInt(YEAR_LABEL)
-        context!!.updateTextColors(mView.calendar_holder)
+        mYear = requireArguments().getInt(YEAR_LABEL)
+        requireContext().updateTextColors(mView.calendar_holder)
         setupMonths()
 
-        mCalendar = YearlyCalendarImpl(this, context!!, mYear)
+        mCalendar = YearlyCalendarImpl(this, requireContext(), mYear)
         return mView
     }
 
     override fun onPause() {
         super.onPause()
-        mSundayFirst = context!!.config.isSundayFirst
+        mSundayFirst = requireContext().config.isSundayFirst
     }
 
     override fun onResume() {
         super.onResume()
-        val sundayFirst = context!!.config.isSundayFirst
+        val sundayFirst = requireContext().config.isSundayFirst
         if (sundayFirst != mSundayFirst) {
             mSundayFirst = sundayFirst
             setupMonths()
@@ -69,16 +69,16 @@ class YearFragment : Fragment(), YearlyCalendar {
         val now = DateTime()
 
         for (i in 1..12) {
-            val monthView = mView.findViewById<SmallMonthView>(resources.getIdentifier("month_$i", "id", context!!.packageName))
+            val monthView = mView.findViewById<SmallMonthView>(resources.getIdentifier("month_$i", "id", requireContext().packageName))
             var dayOfWeek = dateTime.withMonthOfYear(i).dayOfWeek().get()
             if (!mSundayFirst) {
                 dayOfWeek--
             }
 
-            val monthLabel = mView.findViewById<TextView>(resources.getIdentifier("month_${i}_label", "id", context!!.packageName))
+            val monthLabel = mView.findViewById<TextView>(resources.getIdentifier("month_${i}_label", "id", requireContext().packageName))
             val curTextColor = when {
                 isPrintVersion -> resources.getColor(R.color.theme_light_text_color)
-                else -> context!!.config.textColor
+                else -> requireContext().config.textColor
             }
 
             monthLabel.setTextColor(curTextColor)
@@ -96,10 +96,10 @@ class YearFragment : Fragment(), YearlyCalendar {
 
     private fun markCurrentMonth(now: DateTime) {
         if (now.year == mYear) {
-            val monthLabel = mView.findViewById<TextView>(resources.getIdentifier("month_${now.monthOfYear}_label", "id", context!!.packageName))
-            monthLabel.setTextColor(context!!.getAdjustedPrimaryColor())
+            val monthLabel = mView.findViewById<TextView>(resources.getIdentifier("month_${now.monthOfYear}_label", "id", requireContext().packageName))
+            monthLabel.setTextColor(requireContext().getAdjustedPrimaryColor())
 
-            val monthView = mView.findViewById<SmallMonthView>(resources.getIdentifier("month_${now.monthOfYear}", "id", context!!.packageName))
+            val monthView = mView.findViewById<SmallMonthView>(resources.getIdentifier("month_${now.monthOfYear}", "id", requireContext().packageName))
             monthView.todaysId = now.dayOfMonth
         }
     }
@@ -114,7 +114,7 @@ class YearFragment : Fragment(), YearlyCalendar {
 
         lastHash = hashCode
         for (i in 1..12) {
-            val monthView = mView.findViewById<SmallMonthView>(resources.getIdentifier("month_$i", "id", context!!.packageName))
+            val monthView = mView.findViewById<SmallMonthView>(resources.getIdentifier("month_$i", "id", requireContext().packageName))
             monthView.setEvents(events.get(i))
         }
     }
@@ -124,7 +124,7 @@ class YearFragment : Fragment(), YearlyCalendar {
         setupMonths()
         toggleSmallMonthPrintModes()
 
-        context!!.printBitmap(mView.calendar_holder.getViewBitmap())
+        requireContext().printBitmap(mView.calendar_holder.getViewBitmap())
 
         isPrintVersion = false
         setupMonths()
@@ -133,7 +133,7 @@ class YearFragment : Fragment(), YearlyCalendar {
 
     private fun toggleSmallMonthPrintModes() {
         for (i in 1..12) {
-            val monthView = mView.findViewById<SmallMonthView>(resources.getIdentifier("month_$i", "id", context!!.packageName))
+            val monthView = mView.findViewById<SmallMonthView>(resources.getIdentifier("month_$i", "id", requireContext().packageName))
             monthView.togglePrintMode()
         }
     }

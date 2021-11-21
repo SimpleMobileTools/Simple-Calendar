@@ -43,7 +43,7 @@ class DayFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_day, container, false)
         mHolder = view.day_holder
 
-        mDayCode = arguments!!.getString(DAY_CODE)!!
+        mDayCode = requireArguments().getString(DAY_CODE)!!
         setupButtons()
         return view
     }
@@ -54,7 +54,7 @@ class DayFragment : Fragment() {
     }
 
     private fun setupButtons() {
-        mTextColor = context!!.config.textColor
+        mTextColor = requireContext().config.textColor
 
         mHolder.top_left_arrow.apply {
             applyColorFilter(mTextColor)
@@ -63,7 +63,7 @@ class DayFragment : Fragment() {
                 mListener?.goLeft()
             }
 
-            val pointerLeft = context!!.getDrawable(R.drawable.ic_chevron_left_vector)
+            val pointerLeft = requireContext().getDrawable(R.drawable.ic_chevron_left_vector)
             pointerLeft?.isAutoMirrored = true
             setImageDrawable(pointerLeft)
         }
@@ -75,12 +75,12 @@ class DayFragment : Fragment() {
                 mListener?.goRight()
             }
 
-            val pointerRight = context!!.getDrawable(R.drawable.ic_chevron_right_vector)
+            val pointerRight = requireContext().getDrawable(R.drawable.ic_chevron_right_vector)
             pointerRight?.isAutoMirrored = true
             setImageDrawable(pointerRight)
         }
 
-        val day = Formatter.getDayTitle(context!!, mDayCode)
+        val day = Formatter.getDayTitle(requireContext(), mDayCode)
         mHolder.top_value.apply {
             text = day
             contentDescription = text
@@ -106,7 +106,7 @@ class DayFragment : Fragment() {
         }
         lastHash = newHash
 
-        val replaceDescription = context!!.config.replaceDescription
+        val replaceDescription = requireContext().config.replaceDescription
         val sorted = ArrayList(events.sortedWith(compareBy({ !it.getIsAllDay() }, { it.startTS }, { it.endTS }, { it.title }, {
             if (replaceDescription) it.location else it.description
         })))
@@ -147,12 +147,12 @@ class DayFragment : Fragment() {
             (day_events.adapter as? DayEventsAdapter)?.togglePrintMode()
 
             Handler().postDelayed({
-                context!!.printBitmap(day_holder.getViewBitmap())
+                requireContext().printBitmap(day_holder.getViewBitmap())
 
                 Handler().postDelayed({
                     top_left_arrow.beVisible()
                     top_right_arrow.beVisible()
-                    top_value.setTextColor(context!!.config.textColor)
+                    top_value.setTextColor(requireContext().config.textColor)
                     (day_events.adapter as? DayEventsAdapter)?.togglePrintMode()
                 }, 1000)
             }, 1000)

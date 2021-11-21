@@ -40,7 +40,7 @@ class DayFragmentsHolder : MyFragmentHolder(), NavigationListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_days_holder, container, false)
-        view.background = ColorDrawable(context!!.config.backgroundColor)
+        view.background = ColorDrawable(requireContext().config.backgroundColor)
         viewPager = view.fragment_days_viewpager
         viewPager!!.id = (System.currentTimeMillis() % 100000).toInt()
         setupFragment()
@@ -49,7 +49,7 @@ class DayFragmentsHolder : MyFragmentHolder(), NavigationListener {
 
     private fun setupFragment() {
         val codes = getDays(currentDayCode)
-        val dailyAdapter = MyDayPagerAdapter(activity!!.supportFragmentManager, codes, this)
+        val dailyAdapter = MyDayPagerAdapter(requireActivity().supportFragmentManager, codes, this)
         defaultDailyPage = codes.size / 2
 
 
@@ -104,19 +104,19 @@ class DayFragmentsHolder : MyFragmentHolder(), NavigationListener {
     }
 
     override fun showGoToDateDialog() {
-        activity!!.setTheme(context!!.getDialogTheme())
+        requireActivity().setTheme(requireContext().getDialogTheme())
         val view = layoutInflater.inflate(R.layout.date_picker, null)
         val datePicker = view.findViewById<DatePicker>(R.id.date_picker)
 
         val dateTime = Formatter.getDateTimeFromCode(currentDayCode)
         datePicker.init(dateTime.year, dateTime.monthOfYear - 1, dateTime.dayOfMonth, null)
 
-        AlertDialog.Builder(context!!)
-                .setNegativeButton(R.string.cancel, null)
-                .setPositiveButton(R.string.ok) { dialog, which -> dateSelected(dateTime, datePicker) }
-                .create().apply {
-                    activity?.setupDialogStuff(view, this)
-                }
+        AlertDialog.Builder(requireContext())
+            .setNegativeButton(R.string.cancel, null)
+            .setPositiveButton(R.string.ok) { dialog, which -> dateSelected(dateTime, datePicker) }
+            .create().apply {
+                activity?.setupDialogStuff(view, this)
+            }
     }
 
     private fun dateSelected(dateTime: DateTime, datePicker: DatePicker) {

@@ -49,9 +49,9 @@ class MonthDayFragment : Fragment(), MonthlyCalendar, RefreshRecyclerViewListene
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_month_day, container, false)
         mRes = resources
-        mPackageName = activity!!.packageName
+        mPackageName = requireActivity().packageName
         mHolder = view.month_day_calendar_holder
-        mDayCode = arguments!!.getString(DAY_CODE)!!
+        mDayCode = requireArguments().getString(DAY_CODE)!!
 
         val shownMonthDateTime = Formatter.getDateTimeFromCode(mDayCode)
         mHolder.month_day_selected_day_label.apply {
@@ -61,10 +61,10 @@ class MonthDayFragment : Fragment(), MonthlyCalendar, RefreshRecyclerViewListene
             }
         }
 
-        mConfig = context!!.config
+        mConfig = requireContext().config
         storeStateVariables()
         setupButtons()
-        mCalendar = MonthlyCalendarImpl(this, context!!)
+        mCalendar = MonthlyCalendarImpl(this, requireContext())
         return view
     }
 
@@ -135,9 +135,9 @@ class MonthDayFragment : Fragment(), MonthlyCalendar, RefreshRecyclerViewListene
             }
         }
 
-        val listItems = activity!!.getEventListItems(filtered, false)
+        val listItems = requireActivity().getEventListItems(filtered, mSelectedDayCode.isEmpty(), false)
         if (mSelectedDayCode.isNotEmpty()) {
-            mHolder.month_day_selected_day_label.text = Formatter.getDateFromCode(activity!!, mSelectedDayCode, false)
+            mHolder.month_day_selected_day_label.text = Formatter.getDateFromCode(requireActivity(), mSelectedDayCode, false)
         }
 
         activity?.runOnUiThread {
@@ -178,7 +178,7 @@ class MonthDayFragment : Fragment(), MonthlyCalendar, RefreshRecyclerViewListene
     fun getNewEventDayCode() = if (mSelectedDayCode.isEmpty()) mDayCode else mSelectedDayCode
 
     private fun getMonthLabel(shownMonthDateTime: DateTime): String {
-        var month = Formatter.getMonthName(activity!!, shownMonthDateTime.monthOfYear)
+        var month = Formatter.getMonthName(requireActivity(), shownMonthDateTime.monthOfYear)
         val targetYear = shownMonthDateTime.toString(YEAR_PATTERN)
         if (targetYear != DateTime().toString(YEAR_PATTERN)) {
             month += " $targetYear"

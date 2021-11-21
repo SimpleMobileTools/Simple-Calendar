@@ -38,9 +38,10 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:background="?attr/selectableItemBackground"
-            android:padding="@dimen/normal_margin"
-            android:textSize="@dimen/actionbar_text_size"
-            tools:text="8/5/2021" />
+            android:paddingTop="@dimen/normal_margin"
+            android:paddingBottom="@dimen/small_margin"
+            android:textSize="22sp"
+            tools:text="November 19" />
 
         <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/month_day_no_events_placeholder"

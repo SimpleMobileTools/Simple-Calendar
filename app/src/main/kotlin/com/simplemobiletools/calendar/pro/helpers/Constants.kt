@@ -32,7 +32,8 @@ const val REMINDER_OFF = -1
 
 const val ITEM_EVENT = 0
 const val ITEM_EVENT_SIMPLE = 1
-const val ITEM_HEADER = 2
+const val ITEM_SECTION_DAY = 2
+const val ITEM_SECTION_MONTH = 3
 
 const val DEFAULT_START_TIME_NEXT_FULL_HOUR = -1
 const val DEFAULT_START_TIME_CURRENT_TIME = -2

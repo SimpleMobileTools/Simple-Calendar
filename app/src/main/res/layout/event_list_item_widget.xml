@@ -8,9 +8,9 @@
 
     <ImageView
         android:id="@+id/event_item_color_bar"
-        android:layout_width="@dimen/event_color_bar_width"
+        android:layout_width="4dp"
         android:layout_height="match_parent"
-        android:layout_alignTop="@+id/event_item_start"
+        android:layout_alignTop="@+id/event_item_time"
         android:layout_alignBottom="@+id/event_item_end"
         android:layout_marginEnd="@dimen/small_margin"
         android:background="@drawable/event_list_color_bar"
@@ -18,7 +18,7 @@
         android:paddingBottom="@dimen/tiny_margin" />
 
     <TextView
-        android:id="@+id/event_item_start"
+        android:id="@+id/event_item_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toEndOf="@+id/event_item_color_bar"
@@ -29,7 +29,7 @@
         android:id="@+id/event_item_end"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/event_item_start"
+        android:layout_below="@+id/event_item_time"
         android:layout_toEndOf="@+id/event_item_color_bar"
         android:includeFontPadding="false"
         android:text="15:00"
@@ -40,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/normal_margin"
-        android:layout_toEndOf="@+id/event_item_start"
+        android:layout_toEndOf="@+id/event_item_time"
         android:ellipsize="end"
         android:maxLines="1"
         android:paddingEnd="@dimen/small_margin"

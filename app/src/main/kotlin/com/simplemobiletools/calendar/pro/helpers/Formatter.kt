@@ -17,6 +17,7 @@ object Formatter {
     private const val DAY_PATTERN = "d"
     private const val DAY_OF_WEEK_PATTERN = "EEE"
     private const val LONGEST_PATTERN = "MMMM d YYYY (EEEE)"
+    private const val DATE_DAY_PATTERN = "d EEEE"
     private const val PATTERN_TIME_12 = "hh:mm a"
     private const val PATTERN_TIME_24 = "HH:mm"
 
@@ -29,11 +30,15 @@ object Formatter {
         val year = dateTime.toString(YEAR_PATTERN)
         val monthIndex = Integer.valueOf(dayCode.substring(4, 6))
         var month = getMonthName(context, monthIndex)
-        if (shortMonth)
+        if (shortMonth) {
             month = month.substring(0, Math.min(month.length, 3))
+        }
+
         var date = "$month $day"
-        if (year != DateTime().toString(YEAR_PATTERN))
+        if (year != DateTime().toString(YEAR_PATTERN)) {
             date += " $year"
+        }
+
         return date
     }
 
@@ -45,6 +50,25 @@ object Formatter {
             "$date ($day)"
         else
             date
+    }
+
+    fun getDateDayTitle(dayCode: String): String {
+        val dateTime = getDateTimeFromCode(dayCode)
+        return dateTime.toString(DATE_DAY_PATTERN)
+    }
+
+    fun getLongMonthYear(context: Context, dayCode: String): String {
+        val dateTime = getDateTimeFromCode(dayCode)
+        val monthIndex = Integer.valueOf(dayCode.substring(4, 6))
+        val month = getMonthName(context, monthIndex)
+        val year = dateTime.toString(YEAR_PATTERN)
+        var date = month
+
+        if (year != DateTime().toString(YEAR_PATTERN)) {
+            date += " $year"
+        }
+
+        return date
     }
 
     fun getLongestDate(ts: Long) = getDateTimeFromTS(ts).toString(LONGEST_PATTERN)
@@ -71,7 +95,8 @@ object Formatter {
 
     fun getDateTimeFromCode(dayCode: String) = DateTimeFormat.forPattern(DAYCODE_PATTERN).withZone(DateTimeZone.UTC).parseDateTime(dayCode)
 
-    fun getLocalDateTimeFromCode(dayCode: String) = DateTimeFormat.forPattern(DAYCODE_PATTERN).withZone(DateTimeZone.getDefault()).parseLocalDate(dayCode).toDateTimeAtStartOfDay()
+    fun getLocalDateTimeFromCode(dayCode: String) =
+        DateTimeFormat.forPattern(DAYCODE_PATTERN).withZone(DateTimeZone.getDefault()).parseLocalDate(dayCode).toDateTimeAtStartOfDay()
 
     fun getTimeFromTS(context: Context, ts: Long) = getTime(context, getDateTimeFromTS(ts))
 

@@ -27,7 +27,7 @@
 
     <dimen name="year_view_day_text_size">8sp</dimen>
 
-    <dimen name="event_color_bar_width">4dp</dimen>
+    <dimen name="event_color_bar_width">16dp</dimen>
     <dimen name="event_color_bar_height">100dp</dimen>
 
     <dimen name="avatar_size">40dp</dimen>

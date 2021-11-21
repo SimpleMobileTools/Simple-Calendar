@@ -2,12 +2,10 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
 
-    <size
-        android:width="@dimen/event_color_bar_width"
-        android:height="@dimen/event_color_bar_height" />
-
     <solid android:color="@color/md_grey_white" />
 
-    <corners android:radius="@dimen/small_margin" />
+    <corners
+        android:bottomLeftRadius="@dimen/activity_margin"
+        android:topLeftRadius="@dimen/activity_margin" />
 
 </shape>
