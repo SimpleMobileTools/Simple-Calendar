@@ -177,7 +177,12 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
         val oldMinFetchedTS = minFetchedTS - 1
         minFetchedTS -= FETCH_INTERVAL
         requireContext().eventsHelper.getEvents(minFetchedTS, oldMinFetchedTS) {
-            mEvents.addAll(0, it)
+            it.forEach { event ->
+                if (mEvents.firstOrNull { it.id == event.id && it.startTS == event.startTS } == null) {
+                    mEvents.add(0, event)
+                }
+            }
+
             receivedEvents(mEvents, UPDATE_TOP)
         }
     }
@@ -186,7 +191,12 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
         val oldMaxFetchedTS = maxFetchedTS + 1
         maxFetchedTS += FETCH_INTERVAL
         requireContext().eventsHelper.getEvents(oldMaxFetchedTS, maxFetchedTS) {
-            mEvents.addAll(it)
+            it.forEach { event ->
+                if (mEvents.firstOrNull { it.id == event.id && it.startTS == event.startTS } == null) {
+                    mEvents.add(0, event)
+                }
+            }
+
             receivedEvents(mEvents, UPDATE_BOTTOM)
         }
     }
