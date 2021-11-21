@@ -3,36 +3,39 @@
     <string name="app_name">Prosty kalendarz</string>
     <string name="app_launcher_name">Kalendarz</string>
     <string name="change_view">Zmień widok</string>
-    <string name="daily_view">Dzienny</string>
-    <string name="weekly_view">Tygodniowy</string>
-    <string name="monthly_view">Miesięczny</string>
-    <string name="monthly_daily_view">Miesięczny i dzienny</string>
-    <string name="yearly_view">Roczny</string>
+    <string name="daily_view">Widok dzienny</string>
+    <string name="weekly_view">Widok tygodniowy</string>
+    <string name="monthly_view">Widok miesięczny</string>
+    <string name="monthly_daily_view">Widoki miesięczny i dzienny</string>
+    <string name="yearly_view">Widok roczny</string>
     <string name="simple_event_list">Prosta lista wydarzeń</string>
     <string name="no_upcoming_events">Wygląda na to, że nie masz żadnych nadchodzących wydarzeń.</string>
     <string name="go_to_today">Przejdź do dzisiaj</string>
     <string name="go_to_date">Przejdź do daty</string>
-    <string name="upgraded_from_free">Witaj,\n\nwygląda na to, że uaktualniłeś(-aś) starą darmową aplikację na nową płatną. Musisz ręcznie przenieść wydarzenia przechowywane lokalnie przez wyeksportowanie ich do pliku .ics, a następnie zaimportowanie. Oba przyciski eksportuj i importuj możesz znaleźć w menu.\n\nNastępnie możesz odinstalować starą wersję, która ma przycisk „Uaktualnij do Pro” na górze w ustawieniach aplikacji. Wystarczy wtedy zresetować ustawienia aplikacji.\n\nDzięki!</string>
-
+    <string name="upgraded_from_free">Witaj,
+\n
+\nwygląda na to, że uaktualniłeś(-aś) starą darmową aplikację na nową płatną. Musisz ręcznie przenieść wydarzenia przechowywane lokalnie przez wyeksportowanie ich do pliku .ics, a następnie zaimportowanie. Oba przyciski eksportu i importu możesz znaleźć w menu na ekranie głównym.
+\n
+\nNastępnie możesz odinstalować starą wersję, która ma przycisk „Uaktualnij do Pro” na górze w ustawieniach aplikacji. Wystarczy wtedy zresetować ustawienia aplikacji.
+\n
+\nDzięki!</string>
     <!-- Widget titles -->
     <string name="widget_monthly">Kalendarz miesięczny</string>
     <string name="widget_list">Kalendarz z listą wydarzeń</string>
     <string name="widget_todays_date">Kalendarz z dzisiejszą datą</string>
-
     <!-- Event -->
     <string name="event">Wydarzenie</string>
     <string name="edit_event">Edytuj wydarzenie</string>
     <string name="new_event">Nowe wydarzenie</string>
     <string name="create_new_event">Utwórz nowe wydarzenie</string>
-    <string name="duplicate_event">Duplikuj wydarzenie</string>
+    <string name="duplicate_event">Powiel wydarzenie</string>
     <string name="title_empty">Tytuł nie może być pusty</string>
     <string name="end_before_start">Wydarzenie nie może zakończyć się wcześniej, niż się zaczyna</string>
     <string name="event_added">Wydarzenie zostało dodane</string>
     <string name="event_updated">Wydarzenie zostało zaktualizowane</string>
     <string name="filter_events_by_type">Filtruj wydarzenia według typu</string>
-    <string name="please_fill_location">Wpisz lokalizację, która ma zostać pokazana na mapie</string>
+    <string name="please_fill_location">Wpisz lokalizację, która ma zostać pokazana na mapie</string>
     <string name="public_event_notification_text">Nadchodzi wydarzenie</string>
-
     <!-- Event Repetition -->
     <string name="repetition">Powtarzanie</string>
     <string name="no_repetition">Brak powtarzania</string>
@@ -74,7 +77,6 @@
     <string name="fourth_m">czwarty</string>
     <string name="fifth_m">piąty</string>
     <string name="last_m">ostatni</string>
-
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
     <string name="repeat_every_f">Powtarzaj w każdą</string>
@@ -85,27 +87,23 @@
     <string name="fourth_f">czwartą</string>
     <string name="fifth_f">piątą</string>
     <string name="last_f">ostatnią</string>
-
     <!-- Birthdays -->
     <string name="birthdays">Urodziny</string>
     <string name="add_birthdays">Dodaj urodziny kontaktów</string>
     <string name="no_birthdays">Nie znaleziono żadnych urodzin</string>
     <string name="no_new_birthdays">Nie znaleziono nowych urodzin</string>
     <string name="birthdays_added">Urodziny zostały dodane</string>
-
     <!-- Anniversaries -->
     <string name="anniversaries">Rocznice</string>
     <string name="add_anniversaries">Dodaj rocznice kontaktów</string>
     <string name="no_anniversaries">Nie znaleziono żadnych rocznic</string>
     <string name="no_new_anniversaries">Nie znaleziono nowych rocznic</string>
     <string name="anniversaries_added">Rocznice zostały dodane</string>
-
     <!-- Event Reminders -->
     <string name="reminder">Przypomnienie</string>
     <string name="before">przed</string>
     <string name="add_another_reminder">Dodaj kolejne przypomnienie</string>
-    <string name="event_reminders">Przypomnienia o wydarzeniach</string>
-
+    <string name="event_reminders">Przypomnienia o wydarzeniach</string>
     <!-- Event attendees -->
     <string name="add_another_attendee">Dodaj kolejnego uczestnika</string>
     <string name="my_status">Mój status:</string>
@@ -113,60 +111,53 @@
     <string name="not_going">Nie będę</string>
     <string name="maybe_going">Może będę</string>
     <string name="invited">Zaproszony(-a)</string>
-
     <!-- Time zones -->
     <string name="enter_a_country">Wprowadź kraj lub strefę czasową</string>
-
     <!-- Export / Import -->
     <string name="import_events">Importuj wydarzenia</string>
     <string name="export_events">Eksportuj wydarzenia</string>
     <string name="import_events_from_ics">Importuj wydarzenia z pliku .ics</string>
     <string name="export_events_to_ics">Eksportuj wydarzenia do pliku .ics</string>
-    <string name="default_event_type">Domyślny typ wydarzenia</string>
+    <string name="default_event_type">Domyślny typ wydarzeń</string>
     <string name="export_past_events_too">Eksportuj także wydarzenia z przeszłości</string>
     <string name="include_event_types">Dołącz typy wydarzeń</string>
     <string name="filename_without_ics">Nazwa pliku (bez końcówki „.ics”)</string>
     <string name="ignore_event_types">Zignoruj typy wydarzeń w pliku, zawsze używaj domyślnego</string>
-
     <!-- Event details -->
     <string name="location">Lokalizacja</string>
     <string name="description">Opis</string>
     <string name="all_day">Całodniowe</string>
-
     <!-- Weekly view -->
     <string name="week">Tydzień</string>
     <string name="start_week_with_current_day">Rozpoczynaj tydzień od bieżącego dnia</string>
-
     <!-- Event types -->
     <string name="event_types">Typy wydarzeń</string>
     <string name="add_new_type">Dodaj nowy typ</string>
     <string name="edit_type">Edytuj typ</string>
-    <string name="type_already_exists">Typ z tym tytułem już istnieje</string>
+    <string name="type_already_exists">Typ o tym tytule już istnieje</string>
     <string name="color">Kolor</string>
     <string name="regular_event">Zwykłe wydarzenie</string>
-    <string name="cannot_delete_default_type">Domyślny typ wydarzenia nie może zostać usunięty</string>
+    <string name="cannot_delete_default_type">Domyślny typ wydarzeń nie może zostać usunięty</string>
     <string name="select_event_type">Wybierz typ wydarzenia</string>
-    <string name="move_events_into_default">Przenieś powiązane wydarzenia do domyślnego typu wydarzenia</string>
-    <string name="remove_affected_events">Usuń trwale powiązane wydarzenia</string>
+    <string name="move_events_into_default">Przenieś powiązane wydarzenia do domyślnego typu wydarzeń</string>
+    <string name="remove_affected_events">Usuń trwale powiązane wydarzenia</string>
     <string name="unsync_caldav_calendar">Aby usunąć kalendarz CalDAV, musisz wyłączyć jego synchronizację</string>
-
     <!-- Holidays -->
     <string name="holidays">Święta</string>
     <string name="add_holidays">Dodaj święta</string>
     <string name="national_holidays">Święta państwowe</string>
     <string name="religious_holidays">Święta religijne</string>
-    <string name="holidays_imported_successfully">Święta zostały zaimportowane do typu wydarzenia „Święta”</string>
+    <string name="holidays_imported_successfully">Święta zostały zaimportowane do typu wydarzeń „Święta”</string>
     <string name="importing_some_holidays_failed">Importowanie niektórych świąt nie powiodło się</string>
     <string name="importing_holidays_failed">Importowanie świąt nie powiodło się</string>
-
     <!-- Settings -->
     <string name="manage_event_types">Zarządzaj typami wydarzeń</string>
     <string name="start_day_at">Początek dnia o</string>
     <string name="end_day_at">Koniec dnia o</string>
     <string name="midnight_spanning">Pokazuj wydarzenia wielodniowe na górnym pasku</string>
     <string name="allow_customizing_day_count">Zezwalaj na dostosowywanie liczby dni</string>
-    <string name="week_numbers">Pokazuj numery tygodnia</string>
-    <string name="vibrate">Wibruj przy powiadomieniu</string>
+    <string name="week_numbers">Pokazuj numery tygodni</string>
+    <string name="vibrate">Wibracja przy powiadomieniu</string>
     <string name="reminder_sound">Dźwięk przypomnienia</string>
     <string name="no_ringtone_picker">Nie znaleziono aplikacji umożliwiającej ustawienie dzwonka</string>
     <string name="no_ringtone_selected">Brak</string>
@@ -174,9 +165,9 @@
     <string name="caldav_sync">Synchronizacja CalDAV</string>
     <string name="event_lists">Listy wydarzeń</string>
     <string name="display_past_events">Wyświetlaj wydarzenia z przeszłości</string>
-    <string name="replace_description_with_location">Zamieniaj opis wydarzenia na lokalizację</string>
-    <string name="delete_all_events">Usuń wszystkie wydarzenia</string>
-    <string name="delete_all_events_confirmation">Czy na pewno chcesz usunąć wszystkie wydarzenia? Nie naruszy to typów wydarzeń i innych ustawień.</string>
+    <string name="replace_description_with_location">Zamieniaj opis wydarzenia na lokalizację</string>
+    <string name="delete_all_events">Usuń wszystkie wydarzenia</string>
+    <string name="delete_all_events_confirmation">Czy usunąć wszystkie wydarzenia\? Nie naruszy to typów wydarzeń i innych ustawień.</string>
     <string name="show_a_grid">Pokazuj siatkę</string>
     <string name="loop_reminders">Powtarzaj przypomnienia aż do ich wyłączenia</string>
     <string name="dim_past_events">Przyciemniaj przeszłe wydarzenia</string>
@@ -202,7 +193,6 @@
     <string name="highlight_weekends">Wyróżniaj weekendy w niektórych widokach</string>
     <string name="allow_changing_time_zones">Zezwalaj na zmienianie stref czasowych wydarzeń</string>
     <string name="manage_quick_filter_event_types">Zarządzaj szybkim filtrowaniem typów wydarzeń</string>
-
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Wybierz kalendarze do synchronizacji</string>
@@ -220,7 +210,6 @@
     <string name="no_synchronized_calendars">Nie znaleziono kalendarzy, które można zsynchronizować</string>
     <string name="status_free">Wolny</string>
     <string name="status_busy">Zajęty</string>
-
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">poniedziałek</string>
@@ -230,7 +219,6 @@
     <string name="friday_alt">piątek</string>
     <string name="saturday_alt">sobotę</string>
     <string name="sunday_alt">niedzielę</string>
-
     <!-- List widget config example events -->
     <string name="sample_title_1">Trening</string>
     <string name="sample_description_1">Dziś robimy nogi</string>
@@ -240,17 +228,15 @@
     <string name="sample_title_4">Kolacja z ukochaną</string>
     <string name="sample_description_4">Przy blasku zachodzącego słońca</string>
     <string name="sample_title_5">Czas na kawę</string>
-
     <!-- FAQ -->
-    <string name="faq_1_title">Jak mogę usunąć święta zaimportowane przez przycisk „Dodaj święta”?</string>
-    <string name="faq_1_text">Święta dodane w ten sposób są wprowadzane do nowego typu wydarzeń - „Święta”. Możesz je usunąć, przechodząc do ustawień aplikacji, a następnie w sekcji „Zarządzaj typami wydarzeń” usunąć ową kategorię, przyciskając długo dany typ wydarzenia i naciskając ikonę kosza.</string>
-    <string name="faq_2_title">Czy mogę zsynchronizować swoje wydarzenia z Kalendarzem Google lub inną usługą wspierającą CalDAV?</string>
-    <string name="faq_2_text">Tak. Wystarczy włączyć opcję „Synchronizacja CalDAV” w ustawieniach aplikacji i wybrać kalendarze do synchronizacji. Jednak będziesz potrzebować zewnętrznej aplikacji obsługującej synchronizację urządzenia z serwerami. Jeśli chcesz zsynchronizować wydarzenia z Kalendarzem Google, oficjalna aplikacja kalendarza powinna wystarczyć. W innych przypadkach może być potrzebna zewnętrzna aplikacja, np. DAVx5.</string>
+    <string name="faq_1_title">Jak mogę usunąć święta zaimportowane przez przycisk „Dodaj święta”?</string>
+    <string name="faq_1_text">Święta dodane w ten sposób są wprowadzane do nowego typu wydarzeń — „Święta”. Możesz wejść w Ustawienia -&gt; Zarządzaj typami wydarzeń, a następnie przyciśnij długo dany typ wydarzeń i usuń go, wybierając ikonę kosza.</string>
+    <string name="faq_2_title">Czy mogę zsynchronizować swoje wydarzenia z Kalendarzem Google lub inną usługą wspierającą CalDAV?</string>
+    <string name="faq_2_text">Tak. Wystarczy włączyć opcję „Synchronizacja CalDAV” w ustawieniach aplikacji i wybrać kalendarze do synchronizacji. Jednak będziesz potrzebować zewnętrznej aplikacji obsługującej synchronizację urządzenia z serwerami. Jeśli chcesz zsynchronizować wydarzenia z Kalendarzem Google, oficjalna aplikacja kalendarza powinna wystarczyć. W innych przypadkach może być potrzebna zewnętrzna aplikacja, np. DAVx5.</string>
     <string name="faq_3_title">Widzę przypomnienia, ale nie słyszę dźwięku. Co mogę zrobić?</string>
     <string name="faq_3_text">System ma ogromny wpływ nie tylko na wyświetlanie aktualnego przypomnienia, ale także na odtwarzanie dźwięku. Jeśli nie słyszysz żadnego dźwięku, spróbuj przejść do ustawień aplikacji, naciśnij opcję „Strumień audio używany przez przypomnienia” i zmień jej ustawienie. Jeśli nadal nie będzie działać, sprawdź w ustawieniach dźwięku w telefonie, czy dany strumień nie jest wyciszony.</string>
     <string name="faq_4_title">Czy aplikacja wspiera strefy czasowe?</string>
     <string name="faq_4_text">Tak. Domyślnie wszystkie wydarzenia są tworzone w Twojej aktualnej strefie czasowej. Jeśli chcesz zmienić strefę czasową wydarzeń, najpierw musisz włączyć selektor stref czasowych w ustawieniach aplikacji, a następnie zmienić go na ekranie edycji wydarzenia. Opcja ta jest domyślnie wyłączona, ponieważ większość użytkowników jej nie potrzebuje.</string>
-
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Prosty kalendarz Pro - Wydarzenia i przypomnienia</string>
@@ -300,7 +286,6 @@
         <b>Reddit:</b>
         https://www.reddit.com/r/SimpleMobileTools
     </string>
-
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
