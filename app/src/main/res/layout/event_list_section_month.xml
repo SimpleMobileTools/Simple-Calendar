@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/event_section_title"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="false"
+    android:focusable="false"
+    android:paddingStart="@dimen/activity_margin"
+    android:paddingTop="@dimen/normal_margin"
+    android:paddingBottom="@dimen/small_margin"
+    android:textAllCaps="true"
+    android:textFontWeight="300"
+    android:textSize="22sp" />

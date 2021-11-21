@@ -13,12 +13,10 @@
     <string name="go_to_today">Gå til i dag</string>
     <string name="go_to_date">Gå til dato</string>
     <string name="upgraded_from_free">Hej!\n\nDet ser ud til at du har opgraderet fra den gamle, gratis app. Du skal flytte lokalt gemte begivenheder manuelt til en ics-fil via eksportfunktionen og bagefter importere. Både import og eksport finder du i hovedmenuen.\n\nDu kan nu afinstallere den gamle version, som har en \'Upgrade to Pro\'-knap øverst i app-indstillingerne. Du skal til sidst bare nulstille dine app-indstillinger.\n\nTak!</string>
-
     <!-- Widget titles -->
     <string name="widget_monthly">Månedlig kalender</string>
     <string name="widget_list">Begivenhedsliste</string>
     <string name="widget_todays_date">Dags dato-kalender</string>
-
     <!-- Event -->
     <string name="event">Begivenhed</string>
     <string name="edit_event">Rediger begivenhed</string>
@@ -32,7 +30,6 @@
     <string name="filter_events_by_type">Filtrer begivenheder efter type</string>
     <string name="please_fill_location">Indtast et sted der kan vises på et kort</string>
     <string name="public_event_notification_text">En begivenhed er forestående</string>
-
     <!-- Event Repetition -->
     <string name="repetition">Gentagelse</string>
     <string name="no_repetition">Gentages ikke</string>
@@ -74,7 +71,6 @@
     <string name="fourth_m">fjerde</string>
     <string name="fifth_m">femte</string>
     <string name="last_m">sidste</string>
-
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
     <string name="repeat_every_f">Gentag hver</string>
@@ -83,9 +79,8 @@
     <string name="second_f">anden</string>
     <string name="third_f">tredje</string>
     <string name="fourth_f">fjerde</string>
-    <string name="fifth_f">fifth</string>
+    <string name="fifth_f">femte</string>
     <string name="last_f">sidste</string>
-
     <!-- Birthdays -->
     <string name="birthdays">Fødselsdage</string>
     <string name="add_birthdays">Tilføj dine kontakters fødselsdage</string>
@@ -93,7 +88,6 @@
     <string name="no_new_birthdays">Der blev ikke fundet nogen nye fødselsdage</string>
     <string name="birthdays_added">Fødselsdage tilføjet</string>
     <string name="add_birthdays_automatically">Add new birthdays automatically</string>
-
     <!-- Anniversaries -->
     <string name="anniversaries">Mærkedage</string>
     <string name="add_anniversaries">Tilføj dine kontakters mærkedage</string>
@@ -101,13 +95,11 @@
     <string name="no_new_anniversaries">Der blev ikke fundet nogen nye mærkedage</string>
     <string name="anniversaries_added">Mærkedage tilføjet</string>
     <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
-
     <!-- Event Reminders -->
     <string name="reminder">Påmindelse</string>
     <string name="before">før</string>
     <string name="add_another_reminder">Tilføj en påmindelse mere</string>
     <string name="event_reminders">Påmindelser</string>
-
     <!-- Event attendees -->
     <string name="add_another_attendee">Tilføj deltager</string>
     <string name="my_status">Min status:</string>
@@ -115,10 +107,8 @@
     <string name="not_going">Kommer ikke</string>
     <string name="maybe_going">Kommer måske</string>
     <string name="invited">Inviteret</string>
-
     <!-- Time zones -->
     <string name="enter_a_country">Indtast et land eller en tidzone</string>
-
     <!-- Export / Import -->
     <string name="import_events">Importer begivenheder</string>
     <string name="export_events">Eksporter begivenheder</string>
@@ -129,16 +119,13 @@
     <string name="include_event_types">Inkluder begivenhedstyper</string>
     <string name="filename_without_ics">Filnavn (uden .ics)</string>
     <string name="ignore_event_types">Ignore event types in the file, always use the default one</string>
-
     <!-- Event details -->
     <string name="location">Sted</string>
     <string name="description">Beskrivelse</string>
     <string name="all_day">Hele dagen</string>
-
     <!-- Weekly view -->
     <string name="week">Uge</string>
-    <string name="start_week_with_current_day">Start week with the current day</string>
-
+    <string name="start_week_with_current_day">Start uge med den aktuelle dag</string>
     <!-- Event types -->
     <string name="event_types">Begivenhedstyper</string>
     <string name="add_new_type">Tilføj en ny type</string>
@@ -151,7 +138,6 @@
     <string name="move_events_into_default">Flyt de berørte begivenheder til typen \'Standard\'</string>
     <string name="remove_affected_events">Flyt de berørte begivenheder permanent</string>
     <string name="unsync_caldav_calendar">Vil du fjerne en CalDAV-kalender skal du \'afsynkronisere\' den</string>
-
     <!-- Holidays -->
     <string name="holidays">Helligdage</string>
     <string name="add_holidays">Tilføj helligdage</string>
@@ -160,7 +146,6 @@
     <string name="holidays_imported_successfully">Helligdage er importeret til typen \"Helligdage\"</string>
     <string name="importing_some_holidays_failed">Nogle helligdages blev ikke importeret</string>
     <string name="importing_holidays_failed">Import af helligdage mislykkedes</string>
-
     <!-- Settings -->
     <string name="manage_event_types">Håndter begivenhedstyper</string>
     <string name="start_day_at">Start dagen kl.</string>
@@ -204,7 +189,6 @@
     <string name="highlight_weekends">Fremhæv weekender i visse visninger</string>
     <string name="allow_changing_time_zones">Tillad ændring af en begivenheds tidszone</string>
     <string name="manage_quick_filter_event_types">Håndter begivenhedstyper med hurtigt filter</string>
-
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Vælg kalendere til sync</string>
@@ -222,7 +206,6 @@
     <string name="no_synchronized_calendars">Der er ikke fundet nogen kalendere der kan synkroniseres</string>
     <string name="status_free">Ledig</string>
     <string name="status_busy">Optaget</string>
-
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">Mandag</string>
@@ -232,7 +215,6 @@
     <string name="friday_alt">Fredag</string>
     <string name="saturday_alt">Lørdag</string>
     <string name="sunday_alt">Søndag</string>
-
     <!-- List widget config example events -->
     <string name="sample_title_1">Workout</string>
     <string name="sample_description_1">Ekskursion</string>
@@ -242,10 +224,9 @@
     <string name="sample_title_4">Frokost med Marie</string>
     <string name="sample_description_4">I byen</string>
     <string name="sample_title_5">Kaffetid!</string>
-
     <!-- FAQ -->
     <string name="faq_1_title">Hvordan kan jeg fjerne helligdage der er importeret med funktionen \"Tilføj helligdage\"?</string>
-    <string name="faq_1_text">Helligdage oprettet på den måde er indsat under begivenhedstypen \"Helligdage\". Gå til Indstillinger -> Håndter begivenhedstyper. Efter et par sekunders pres på en type kan du slette den ved at klikke på papirkurven.</string>
+    <string name="faq_1_text">Helligdage oprettet på den måde er indsat under begivenhedstypen \"Helligdage\". Gå til Indstillinger -&gt; Håndter begivenhedstyper. Efter et par sekunders pres på en type kan du slette den ved at klikke på papirkurven.</string>
     <string name="faq_2_title">Kan jeg synkronisere mine begivenheder med Googles kalender eller en anden kalender der understøtter CalDAV?</string>
     <string name="faq_2_text">Ja, klik på \"CalDAV sync\" i appens indstillinger og vælg de kalendere du vil synkronisere. Det kræver dog at du har en app til at synkronisere mellem din enhed og kalenderservere.
         Hvis du vil synkronisere en Googlekalender, kan Googles officielle app klare det. For andre kalenderes vedkommende kan du bruge en 3. partsapp som for eksempel DAVx5.</string>
@@ -253,7 +234,6 @@
     <string name="faq_3_text">Såvel visning af påmindelser som afspilning af lyd til dem, er afhængig af systemet. Hvis ikke du kan høre nogen lyd, kan du prøve at gå ind i appens indstillinger. Her kan du trykke på \"Audio-stream anvendt af påmindelser\"  og vælge en anden indstilling. Virker det stadig ikke skal du tjekke i dine lydindstillinger om lyden i det aktuelle valg er slået fra.</string>
     <string name="faq_4_title">Understøtter appen tidszoner?</string>
     <string name="faq_4_text">Ja, det gør den. Som standard oprettes alle begivenheder i din aktuelle tidszone. Vil du ændre det for en given begivenhed, skal du først aktivere tidszonevælgeren i appens indstillinger og derefter ændre tidszone under selve begivenheden. Funktionen er fra starten deaktiveret da de færreste brugere behøver den.</string>
-
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Simpel kalender Pro - Begivenheder &amp; påmindelser</string>
@@ -303,7 +283,6 @@
         <b>Reddit:</b>
         https://www.reddit.com/r/SimpleMobileTools
     </string>
-
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res

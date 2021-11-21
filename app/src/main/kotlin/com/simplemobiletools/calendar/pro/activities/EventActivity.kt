@@ -233,6 +233,10 @@ class EventActivity : SimpleActivity() {
             jumpDrawablesToCurrentState()
         }
 
+        event_all_day_holder.setOnClickListener {
+            event_all_day.toggle()
+        }
+
         updateTextColors(event_scrollview)
         updateIconColors()
         event_time_zone_image.beVisibleIf(config.allowChangingTimeZones)
@@ -288,6 +292,10 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun isEventChanged(): Boolean {
+        if (!this::mEvent.isInitialized) {
+            return false
+        }
+
         var newStartTS: Long
         var newEndTS: Long
         getStartEndTimes().apply {
@@ -881,13 +889,13 @@ class EventActivity : SimpleActivity() {
 
     private fun updateReminderTypeImage(view: ImageView, reminder: Reminder) {
         view.beVisibleIf(reminder.minutes != REMINDER_OFF && mEventCalendarId != STORED_LOCALLY_ONLY)
-        val drawable = if (reminder.type == REMINDER_NOTIFICATION) R.drawable.ic_bell_vector else R.drawable.ic_email_vector
+        val drawable = if (reminder.type == REMINDER_NOTIFICATION) R.drawable.ic_bell_vector else R.drawable.ic_mail_vector
         val icon = resources.getColoredDrawableWithColor(drawable, config.textColor)
         view.setImageDrawable(icon)
     }
 
     private fun updateAvailabilityImage() {
-        val drawable = if (mAvailability == Attendees.AVAILABILITY_FREE) R.drawable.ic_event_available else R.drawable.ic_event_occupied
+        val drawable = if (mAvailability == Attendees.AVAILABILITY_FREE) R.drawable.ic_event_available_vector else R.drawable.ic_event_busy_vector
         val icon = resources.getColoredDrawableWithColor(drawable, config.textColor)
         event_availability_image.setImageDrawable(icon)
     }
@@ -906,7 +914,7 @@ class EventActivity : SimpleActivity() {
             if (eventType != null) {
                 runOnUiThread {
                     event_type.text = eventType.title
-                    event_type_color.setFillWithStroke(eventType.color, config.backgroundColor, getCornerRadius())
+                    event_type_color.setFillWithStroke(eventType.color, config.backgroundColor)
                 }
             }
         }
@@ -974,7 +982,7 @@ class EventActivity : SimpleActivity() {
                 val calendarColor = eventsHelper.getEventTypeWithCalDAVCalendarId(currentCalendar.id)?.color ?: currentCalendar.color
 
                 runOnUiThread {
-                    event_caldav_calendar_color.setFillWithStroke(calendarColor, config.backgroundColor, getCornerRadius())
+                    event_caldav_calendar_color.setFillWithStroke(calendarColor, config.backgroundColor)
                     event_caldav_calendar_name.apply {
                         text = currentCalendar.displayName
                         setPadding(paddingLeft, paddingTop, paddingRight, resources.getDimension(R.dimen.tiny_margin).toInt())

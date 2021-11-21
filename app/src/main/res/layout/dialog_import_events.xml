@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingTop="@dimen/activity_margin"
-    android:paddingEnd="@dimen/activity_margin">
+    android:paddingTop="@dimen/activity_margin">
 
     <com.simplemobiletools.commons.views.MyTextView
         android:id="@+id/import_events_event_type_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/activity_margin"
+        android:layout_marginStart="@dimen/medium_margin"
+        android:paddingStart="@dimen/normal_margin"
         android:text="@string/default_event_type"
         android:textSize="@dimen/smaller_text_size" />
 
@@ -20,9 +20,11 @@
         android:id="@+id/import_event_type_holder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/activity_margin"
         android:background="?attr/selectableItemBackground"
-        android:padding="@dimen/small_margin">
+        android:paddingStart="@dimen/normal_margin"
+        android:paddingTop="@dimen/normal_margin"
+        android:paddingEnd="@dimen/activity_margin"
+        android:paddingBottom="@dimen/normal_margin">
 
         <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/import_event_type_title"
@@ -30,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toStartOf="@+id/import_event_type_color"
-            android:paddingStart="@dimen/small_margin"
+            android:paddingStart="@dimen/medium_margin"
             android:paddingEnd="@dimen/medium_margin"
             tools:text="@string/regular_event" />
 
@@ -39,18 +41,29 @@
             android:layout_width="@dimen/color_sample_size"
             android:layout_height="@dimen/color_sample_size"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="@dimen/medium_margin"
             android:clickable="false" />
 
     </RelativeLayout>
 
-    <com.simplemobiletools.commons.views.MyAppCompatCheckbox
-        android:id="@+id/import_events_checkbox"
+    <RelativeLayout
+        android:id="@+id/import_events_checkbox_holder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/normal_margin"
-        android:paddingTop="@dimen/activity_margin"
-        android:paddingBottom="@dimen/activity_margin"
-        android:text="@string/ignore_event_types" />
+        android:background="?attr/selectableItemBackground"
+        android:paddingStart="@dimen/normal_margin"
+        android:paddingTop="@dimen/normal_margin"
+        android:paddingEnd="@dimen/activity_margin"
+        android:paddingBottom="@dimen/normal_margin">
 
+        <com.simplemobiletools.commons.views.MyAppCompatCheckbox
+            android:id="@+id/import_events_checkbox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:clickable="false"
+            android:layoutDirection="rtl"
+            android:padding="@dimen/medium_margin"
+            android:text="@string/ignore_event_types" />
+
+    </RelativeLayout>
 </LinearLayout>

@@ -45,14 +45,14 @@ class MonthFragment : Fragment(), MonthlyCalendar {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_month, container, false)
         mRes = resources
-        mPackageName = activity!!.packageName
+        mPackageName = requireActivity().packageName
         mHolder = view.month_calendar_holder
-        mDayCode = arguments!!.getString(DAY_CODE)!!
-        mConfig = context!!.config
+        mDayCode = requireArguments().getString(DAY_CODE)!!
+        mConfig = requireContext().config
         storeStateVariables()
 
         setupButtons()
-        mCalendar = MonthlyCalendarImpl(this, context!!)
+        mCalendar = MonthlyCalendarImpl(this, requireContext())
 
         return view
     }
@@ -116,7 +116,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
                 listener?.goLeft()
             }
 
-            val pointerLeft = context!!.getDrawable(R.drawable.ic_chevron_left_vector)
+            val pointerLeft = requireContext().getDrawable(R.drawable.ic_chevron_left_vector)
             pointerLeft?.isAutoMirrored = true
             setImageDrawable(pointerLeft)
         }
@@ -128,7 +128,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
                 listener?.goRight()
             }
 
-            val pointerRight = context!!.getDrawable(R.drawable.ic_chevron_right_vector)
+            val pointerRight = requireContext().getDrawable(R.drawable.ic_chevron_right_vector)
             pointerRight?.isAutoMirrored = true
             setImageDrawable(pointerRight)
         }
@@ -154,7 +154,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
             top_value.setTextColor(resources.getColor(R.color.theme_light_text_color))
             month_view_wrapper.togglePrintMode()
 
-            context!!.printBitmap(month_calendar_holder.getViewBitmap())
+            requireContext().printBitmap(month_calendar_holder.getViewBitmap())
 
             top_left_arrow.beVisible()
             top_right_arrow.beVisible()

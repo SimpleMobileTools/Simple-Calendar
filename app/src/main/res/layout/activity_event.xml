@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/event_scrollview"
     android:layout_width="match_parent"
@@ -86,33 +85,43 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_below="@+id/event_description_divider"
-            android:layout_alignTop="@+id/event_all_day"
-            android:layout_alignBottom="@+id/event_all_day"
+            android:layout_alignTop="@+id/event_all_day_holder"
+            android:layout_alignBottom="@+id/event_all_day_holder"
             android:layout_marginStart="@dimen/normal_margin"
             android:padding="@dimen/medium_margin"
             android:src="@drawable/ic_clock_vector" />
 
-        <com.simplemobiletools.commons.views.MySwitchCompat
-            android:id="@+id/event_all_day"
+        <RelativeLayout
+            android:id="@+id/event_all_day_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_description_divider"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="@dimen/small_margin"
-            android:layout_marginEnd="@dimen/normal_margin"
             android:layout_toEndOf="@+id/event_time_image"
+            android:background="?attr/selectableItemBackground"
             android:paddingTop="@dimen/normal_margin"
-            android:paddingBottom="@dimen/normal_margin"
-            android:text="@string/all_day"
-            android:textSize="@dimen/day_text_size"
-            app:switchPadding="@dimen/small_margin" />
+            android:paddingEnd="@dimen/normal_margin"
+            android:paddingBottom="@dimen/normal_margin">
+
+            <com.simplemobiletools.commons.views.MyAppCompatCheckbox
+                android:id="@+id/event_all_day"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:clickable="false"
+                android:layoutDirection="rtl"
+                android:text="@string/all_day"
+                android:textSize="@dimen/day_text_size" />
+
+        </RelativeLayout>
 
         <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/event_start_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_time_image"
-            android:layout_alignStart="@+id/event_all_day"
+            android:layout_alignStart="@+id/event_all_day_holder"
             android:background="?attr/selectableItemBackground"
             android:paddingTop="@dimen/activity_margin"
             android:paddingEnd="@dimen/activity_margin"
@@ -136,7 +145,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_start_date"
-            android:layout_alignStart="@+id/event_all_day"
+            android:layout_alignStart="@+id/event_all_day_holder"
             android:background="?attr/selectableItemBackground"
             android:paddingTop="@dimen/activity_margin"
             android:paddingEnd="@dimen/activity_margin"
@@ -228,7 +237,7 @@
             android:layout_alignBottom="@+id/event_reminder_1"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="@dimen/small_margin"
-            android:background="?attr/selectableItemBackground"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:padding="@dimen/activity_margin"
             android:src="@drawable/ic_bell_vector" />
 
@@ -259,7 +268,7 @@
             android:layout_alignBottom="@+id/event_reminder_2"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="@dimen/small_margin"
-            android:background="?attr/selectableItemBackground"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:padding="@dimen/activity_margin"
             android:src="@drawable/ic_bell_vector" />
 
@@ -290,7 +299,7 @@
             android:layout_alignBottom="@+id/event_reminder_3"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="@dimen/small_margin"
-            android:background="?attr/selectableItemBackground"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:padding="@dimen/activity_margin"
             android:src="@drawable/ic_bell_vector" />
 
@@ -438,22 +447,22 @@
             android:layout_alignBottom="@+id/event_availability"
             android:layout_marginStart="@dimen/normal_margin"
             android:padding="@dimen/medium_margin"
-            android:src="@drawable/ic_event_occupied" />
+            android:src="@drawable/ic_event_busy_vector" />
 
         <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/event_availability"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_attendees_divider"
-            android:layout_toEndOf="@+id/event_availability_image"
             android:layout_marginStart="@dimen/small_margin"
             android:layout_marginTop="@dimen/medium_margin"
-            android:paddingTop="@dimen/normal_margin"
-            android:paddingBottom="@dimen/normal_margin"
-            android:paddingEnd="@dimen/activity_margin"
+            android:layout_toEndOf="@+id/event_availability_image"
             android:background="?attr/selectableItemBackground"
-            android:textSize="@dimen/day_text_size"
-            android:text="@string/status_busy" />
+            android:paddingTop="@dimen/normal_margin"
+            android:paddingEnd="@dimen/activity_margin"
+            android:paddingBottom="@dimen/normal_margin"
+            android:text="@string/status_busy"
+            android:textSize="@dimen/day_text_size" />
 
         <ImageView
             android:id="@+id/event_availability_divider"

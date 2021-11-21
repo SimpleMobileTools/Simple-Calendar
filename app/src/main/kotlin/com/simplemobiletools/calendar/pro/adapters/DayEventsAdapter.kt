@@ -11,21 +11,18 @@ import com.simplemobiletools.calendar.pro.extensions.eventsHelper
 import com.simplemobiletools.calendar.pro.extensions.handleEventDeleting
 import com.simplemobiletools.calendar.pro.extensions.shareEvents
 import com.simplemobiletools.calendar.pro.helpers.Formatter
-import com.simplemobiletools.calendar.pro.helpers.ITEM_EVENT
-import com.simplemobiletools.calendar.pro.helpers.ITEM_EVENT_SIMPLE
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.commons.adapters.MyRecyclerViewAdapter
 import com.simplemobiletools.commons.extensions.adjustAlpha
 import com.simplemobiletools.commons.extensions.applyColorFilter
-import com.simplemobiletools.commons.extensions.beInvisible
-import com.simplemobiletools.commons.extensions.beInvisibleIf
-import com.simplemobiletools.commons.helpers.LOWER_ALPHA
+import com.simplemobiletools.commons.extensions.beVisibleIf
+import com.simplemobiletools.commons.helpers.MEDIUM_ALPHA
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import com.simplemobiletools.commons.views.MyRecyclerView
-import kotlinx.android.synthetic.main.event_item_day_view.view.*
+import kotlinx.android.synthetic.main.event_list_item.view.*
 
-class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, recyclerView: MyRecyclerView, itemClick: (Any) -> Unit)
-    : MyRecyclerViewAdapter(activity, recyclerView, null, itemClick) {
+class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, recyclerView: MyRecyclerView, itemClick: (Any) -> Unit) :
+    MyRecyclerViewAdapter(activity, recyclerView, null, itemClick) {
 
     private val allDayString = resources.getString(R.string.all_day)
     private val replaceDescriptionWithLocation = activity.config.replaceDescription
@@ -59,13 +56,7 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
 
     override fun onActionModeDestroyed() {}
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val layoutId = when (viewType) {
-            ITEM_EVENT -> R.layout.event_item_day_view
-            else -> R.layout.event_item_day_view_simple
-        }
-        return createViewHolder(layoutId, parent)
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = createViewHolder(R.layout.event_list_item, parent)
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val event = events[position]
@@ -76,26 +67,6 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
     }
 
     override fun getItemCount() = events.size
-
-    override fun getItemViewType(position: Int): Int {
-        val event = events[position]
-        val detailField = if (replaceDescriptionWithLocation) event.location else event.description
-        return if (detailField.isNotEmpty()) {
-            ITEM_EVENT
-        } else if (event.startTS == event.endTS) {
-            ITEM_EVENT_SIMPLE
-        } else if (event.getIsAllDay()) {
-            val startCode = Formatter.getDayCodeFromTS(event.startTS)
-            val endCode = Formatter.getDayCodeFromTS(event.endTS)
-            if (startCode == endCode) {
-                ITEM_EVENT_SIMPLE
-            } else {
-                ITEM_EVENT
-            }
-        } else {
-            ITEM_EVENT
-        }
-    }
 
     fun togglePrintMode() {
         isPrintVersion = !isPrintVersion
@@ -109,38 +80,24 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
 
     private fun setupView(view: View, event: Event) {
         view.apply {
-            event_item_frame.isSelected = selectedKeys.contains(event.id?.toInt())
+            event_item_holder.isSelected = selectedKeys.contains(event.id?.toInt())
+            event_item_holder.background.applyColorFilter(textColor)
             event_item_title.text = event.title
-            event_item_description?.text = if (replaceDescriptionWithLocation) event.location else event.description
-            event_item_start.text = if (event.getIsAllDay()) allDayString else Formatter.getTimeFromTS(context, event.startTS)
-            event_item_end?.beInvisibleIf(event.startTS == event.endTS)
-            event_item_color_bar.background.applyColorFilter(event.color)
-
-            if (event.startTS != event.endTS) {
-                val startCode = Formatter.getDayCodeFromTS(event.startTS)
-                val endCode = Formatter.getDayCodeFromTS(event.endTS)
-
-                event_item_end?.apply {
-                    text = Formatter.getTimeFromTS(context, event.endTS)
-                    if (startCode != endCode) {
-                        if (event.getIsAllDay()) {
-                            text = Formatter.getDateFromCode(context, endCode, true)
-                        } else {
-                            append(" (${Formatter.getDateFromCode(context, endCode, true)})")
-                        }
-                    } else if (event.getIsAllDay()) {
-                        beInvisible()
-                    }
-                }
+            event_item_time.text = if (event.getIsAllDay()) allDayString else Formatter.getTimeFromTS(context, event.startTS)
+            if (event.startTS != event.endTS && !event.getIsAllDay()) {
+                event_item_time.text = "${event_item_time.text} - ${Formatter.getTimeFromTS(context, event.endTS)}"
             }
+
+            event_item_description.text = if (replaceDescriptionWithLocation) event.location else event.description
+            event_item_description.beVisibleIf(event_item_description.text.isNotEmpty())
+            event_item_color_bar.background.applyColorFilter(event.color)
 
             var newTextColor = textColor
             if (dimPastEvents && event.isPastEvent && !isPrintVersion) {
-                newTextColor = newTextColor.adjustAlpha(LOWER_ALPHA)
+                newTextColor = newTextColor.adjustAlpha(MEDIUM_ALPHA)
             }
 
-            event_item_start.setTextColor(newTextColor)
-            event_item_end?.setTextColor(newTextColor)
+            event_item_time.setTextColor(newTextColor)
             event_item_title.setTextColor(newTextColor)
             event_item_description?.setTextColor(newTextColor)
         }

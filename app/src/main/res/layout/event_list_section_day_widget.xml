@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/event_section_title"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:drawablePadding="1dp"
-    android:drawableTop="@drawable/divider_width"
+    android:paddingStart="@dimen/bigger_margin"
     android:paddingBottom="@dimen/small_margin"
-    android:paddingTop="@dimen/small_margin"
     android:textSize="@dimen/normal_text_size"
-    android:textStyle="bold"/>
+    android:textStyle="bold" />

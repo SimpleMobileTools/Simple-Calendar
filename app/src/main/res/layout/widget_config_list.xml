@@ -16,7 +16,6 @@
         android:background="@drawable/widget_round_background"
         android:clipToPadding="false"
         android:divider="@null"
-        android:paddingStart="@dimen/activity_margin"
         android:paddingTop="@dimen/medium_margin"
         app:layoutManager="com.simplemobiletools.commons.views.MyLinearLayoutManager" />
 
@@ -42,6 +41,7 @@
             android:layout_centerVertical="true"
             android:paddingStart="@dimen/activity_margin"
             android:paddingEnd="@dimen/activity_margin" />
+
     </RelativeLayout>
 
     <ImageView

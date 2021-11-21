@@ -1,65 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/event_item_holder"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/medium_margin"
+    android:layout_marginTop="@dimen/small_margin"
+    android:layout_marginEnd="@dimen/medium_margin"
+    android:layout_marginBottom="@dimen/medium_margin"
+    android:background="@drawable/section_holder_stroke"
+    android:paddingTop="@dimen/medium_margin"
     android:paddingBottom="@dimen/medium_margin">
 
     <ImageView
         android:id="@+id/event_item_color_bar"
-        android:layout_width="@dimen/event_color_bar_width"
+        android:layout_width="4dp"
         android:layout_height="match_parent"
-        android:layout_alignTop="@+id/event_item_start"
-        android:layout_alignBottom="@+id/event_item_end"
+        android:layout_alignTop="@+id/event_item_title"
+        android:layout_alignBottom="@+id/event_item_time"
         android:layout_marginEnd="@dimen/small_margin"
         android:background="@drawable/event_list_color_bar"
         android:paddingTop="@dimen/tiny_margin"
-        android:paddingBottom="@dimen/tiny_margin"/>
-
-    <TextView
-        android:id="@+id/event_item_start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/event_item_color_bar"
-        android:text="13:00"
-        android:textSize="@dimen/day_text_size"/>
-
-    <TextView
-        android:id="@+id/event_item_end"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/event_item_start"
-        android:layout_toEndOf="@+id/event_item_color_bar"
-        android:includeFontPadding="false"
-        android:text="15:00"
-        android:textSize="@dimen/day_text_size"/>
+        android:scaleType="fitXY" />
 
     <TextView
         android:id="@+id/event_item_title"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/normal_margin"
-        android:layout_toEndOf="@+id/event_item_start"
         android:ellipsize="end"
         android:maxLines="1"
         android:paddingEnd="@dimen/small_margin"
         android:textSize="@dimen/day_text_size"
-        tools:text="Event title"/>
+        tools:text="Event title" />
 
     <TextView
-        android:id="@+id/event_item_description"
-        android:layout_width="wrap_content"
+        android:id="@+id/event_item_time"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/event_item_title"
-        android:layout_marginStart="@dimen/normal_margin"
-        android:layout_toEndOf="@+id/event_item_end"
-        android:ellipsize="end"
-        android:includeFontPadding="false"
-        android:maxLines="1"
-        android:paddingEnd="@dimen/small_margin"
-        android:textSize="@dimen/day_text_size"
-        tools:text="Event description"/>
+        android:layout_alignStart="@+id/event_item_title"
+        android:alpha="0.8"
+        android:lineSpacingExtra="2dp"
+        android:textSize="@dimen/normal_text_size"
+        tools:text="13:00" />
 
 </RelativeLayout>

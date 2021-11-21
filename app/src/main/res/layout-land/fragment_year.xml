@@ -81,6 +81,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/month_3_label"
                 android:layout_marginStart="@dimen/yearly_month_padding" />
+
         </RelativeLayout>
 
         <RelativeLayout
@@ -106,6 +107,7 @@
                 android:layout_below="@+id/month_4_label"
                 android:layout_marginStart="@dimen/yearly_month_padding"
                 app:days="30" />
+
         </RelativeLayout>
     </TableRow>
 
@@ -160,6 +162,7 @@
                 android:layout_below="@+id/month_6_label"
                 android:layout_marginStart="@dimen/yearly_month_padding"
                 app:days="30" />
+
         </RelativeLayout>
 
         <RelativeLayout
@@ -184,6 +187,7 @@
                 android:layout_height="match_parent"
                 android:layout_below="@+id/month_7_label"
                 android:layout_marginStart="@dimen/yearly_month_padding" />
+
         </RelativeLayout>
 
         <RelativeLayout
@@ -209,11 +213,11 @@
                 android:layout_height="match_parent"
                 android:layout_below="@+id/month_8_label"
                 android:layout_marginStart="@dimen/yearly_month_padding" />
+
         </RelativeLayout>
     </TableRow>
 
     <TableRow android:layout_weight="1">
-
 
         <RelativeLayout
             android:id="@+id/month_9_holder"
@@ -238,6 +242,7 @@
                 android:layout_below="@+id/month_9_label"
                 android:layout_marginStart="@dimen/yearly_month_padding"
                 app:days="30" />
+
         </RelativeLayout>
 
         <RelativeLayout
@@ -262,6 +267,7 @@
                 android:layout_height="match_parent"
                 android:layout_below="@+id/month_10_label"
                 android:layout_marginStart="@dimen/yearly_month_padding" />
+
         </RelativeLayout>
 
         <RelativeLayout
@@ -288,6 +294,7 @@
                 android:layout_below="@+id/month_11_label"
                 android:layout_marginStart="@dimen/yearly_month_padding"
                 app:days="30" />
+
         </RelativeLayout>
 
         <RelativeLayout

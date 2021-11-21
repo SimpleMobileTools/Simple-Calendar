@@ -36,6 +36,7 @@
             android:textColor="@color/md_grey_white"
             android:textSize="@dimen/bigger_text_size"
             tools:text="Jan" />
+
     </RelativeLayout>
 
     <ImageView
@@ -50,7 +51,7 @@
         android:layout_height="match_parent"
         android:layout_alignTop="@+id/config_bg_color"
         android:layout_alignBottom="@+id/config_bg_color"
-        android:layout_toRightOf="@+id/config_bg_color"
+        android:layout_toEndOf="@+id/config_bg_color"
         android:background="@android:color/white">
 
         <com.simplemobiletools.commons.views.MySeekBar
@@ -60,6 +61,7 @@
             android:layout_centerVertical="true"
             android:paddingLeft="@dimen/activity_margin"
             android:paddingRight="@dimen/activity_margin" />
+
     </RelativeLayout>
 
     <ImageView
@@ -72,7 +74,7 @@
         android:id="@+id/config_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:fontFamily="sans-serif-light"
         android:paddingLeft="@dimen/activity_margin"
