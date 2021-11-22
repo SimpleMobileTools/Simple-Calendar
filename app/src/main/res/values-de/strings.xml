@@ -247,7 +247,7 @@
         in den Einstellungen aktiviert sein. Die Zeitzone eines Termins kann dann beim Anlegen oder Bearbeiten geändert werden. In den Standardeinstellungen ist dies nicht aktiv, da die meisten Anwender die Möglichkeit nicht benötigen werden.</string>
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
-    <string name="app_title">Simple Calendar Pro - Termine &amp; Erinnerungen</string>
+    <string name="app_title">Schlichter Kalendar Pro - Termine und Erinnerungen</string>
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Der beste Kalender zum Organisieren der Ereignisse während des ganzen Tages</string>
     <string name="app_long_description">
