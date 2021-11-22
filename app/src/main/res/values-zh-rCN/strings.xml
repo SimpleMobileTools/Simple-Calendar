@@ -93,14 +93,14 @@
     <string name="no_birthdays">未发现生日</string>
     <string name="no_new_birthdays">未发现新的生日</string>
     <string name="birthdays_added">生日添加成功</string>
-    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
+    <string name="add_birthdays_automatically">自动添加新生日</string>
     <!-- Anniversaries -->
     <string name="anniversaries">纪念日</string>
     <string name="add_anniversaries">添加联系人纪念日</string>
     <string name="no_anniversaries">未发现纪念日</string>
     <string name="no_new_anniversaries">未发现新的纪念日</string>
     <string name="anniversaries_added">纪念日添加成功</string>
-    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
+    <string name="add_anniversaries_automatically">自动添加新的周年纪念日</string>
     <!-- Event Reminders -->
     <string name="reminder">提醒</string>
     <string name="before">前</string>
@@ -193,7 +193,7 @@
     <string name="last_used_one">最后使用</string>
     <string name="other_time">其他时间</string>
     <string name="highlight_weekends">在部分视图高亮周末</string>
-    <string name="highlight_weekends_color">Color of highlighted weekends</string>
+    <string name="highlight_weekends_color">突出显示的周末的颜色</string>
     <string name="allow_changing_time_zones">允许更改活动时区</string>
     <string name="manage_quick_filter_event_types">管理快速过滤事件类型</string>
     <!-- CalDAV sync -->
