@@ -118,14 +118,14 @@
     <string name="export_past_events_too">Eksporter også tidligere begivenheder</string>
     <string name="include_event_types">Inkluder begivenhedstyper</string>
     <string name="filename_without_ics">Filnavn (uden .ics)</string>
-    <string name="ignore_event_types">Ignore event types in the file, always use the default one</string>
+    <string name="ignore_event_types">Ignorer begivenhedstyper i filen, brug altid standardtypen</string>
     <!-- Event details -->
     <string name="location">Sted</string>
     <string name="description">Beskrivelse</string>
     <string name="all_day">Hele dagen</string>
     <!-- Weekly view -->
     <string name="week">Uge</string>
-    <string name="start_week_with_current_day">Start uge med den aktuelle dag</string>
+    <string name="start_week_with_current_day">Start ugen med den aktuelle dag</string>
     <!-- Event types -->
     <string name="event_types">Begivenhedstyper</string>
     <string name="add_new_type">Tilføj en ny type</string>
@@ -187,7 +187,7 @@
     <string name="last_used_one">Senest brugte</string>
     <string name="other_time">Anden tid</string>
     <string name="highlight_weekends">Fremhæv weekender i visse visninger</string>
-    <string name="highlight_weekends_color">Color of highlighted weekends</string>
+    <string name="highlight_weekends_color">Farve på fremhævede weekender</string>
     <string name="allow_changing_time_zones">Tillad ændring af en begivenheds tidszone</string>
     <string name="manage_quick_filter_event_types">Håndter begivenhedstyper med hurtigt filter</string>
     <!-- CalDAV sync -->
