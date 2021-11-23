@@ -230,9 +230,7 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getBoolean(HIGHLIGHT_WEEKENDS, false)
         set(highlightWeekends) = prefs.edit().putBoolean(HIGHLIGHT_WEEKENDS, highlightWeekends).apply()
 
-    val defaultHighlightWeekendsColor = context.resources.getColor(R.color.red_text)
-
     var highlightWeekendsColor: Int
-        get() = prefs.getInt(HIGHLIGHT_WEEKENDS_COLOR, defaultHighlightWeekendsColor)
+        get() = prefs.getInt(HIGHLIGHT_WEEKENDS_COLOR, context.resources.getColor(R.color.red_text))
         set(highlightWeekendsColor) = prefs.edit().putInt(HIGHLIGHT_WEEKENDS_COLOR, highlightWeekendsColor).apply()
 }
