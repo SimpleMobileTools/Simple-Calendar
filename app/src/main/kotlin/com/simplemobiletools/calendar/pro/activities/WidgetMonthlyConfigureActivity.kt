@@ -41,7 +41,8 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
     private var mTextColor = 0
     private var mWeakTextColor = 0
     private var mPrimaryColor = 0
-    private var mRedTextColor = 0
+    private var mWeekendsTextColor = 0
+    private var mHighlightWeekends = false
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         useDynamicTheme = false
@@ -131,7 +132,8 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
         mTextColor = mTextColorWithoutTransparency
         mWeakTextColor = mTextColorWithoutTransparency.adjustAlpha(LOWER_ALPHA)
         mPrimaryColor = config.primaryColor
-        mRedTextColor = resources.getColor(R.color.red_text)
+        mWeekendsTextColor = config.highlightWeekendsColor
+        mHighlightWeekends = config.highlightWeekends
 
         top_left_arrow.applyColorFilter(mTextColor)
         top_right_arrow.applyColorFilter(mTextColor)
@@ -171,7 +173,7 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
                 removeAllViews()
 
                 val dayTextColor = if (config.highlightWeekends && day.isWeekend) {
-                    mRedTextColor
+                    config.highlightWeekendsColor
                 } else {
                     mTextColor
                 }
@@ -205,7 +207,7 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
         for (i in 0..6) {
             findViewById<TextView>(resources.getIdentifier("label_$i", "id", packageName)).apply {
                 val textColor = if (config.highlightWeekends && isWeekend(i, config.isSundayFirst)) {
-                    mRedTextColor
+                    mWeekendsTextColor
                 } else {
                     mTextColor
                 }

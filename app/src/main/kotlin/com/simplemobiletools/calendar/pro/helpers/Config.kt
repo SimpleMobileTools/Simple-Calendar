@@ -3,6 +3,7 @@ package com.simplemobiletools.calendar.pro.helpers
 import android.content.Context
 import android.media.AudioManager
 import android.media.RingtoneManager
+import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.scheduleCalDAVSync
 import com.simplemobiletools.commons.extensions.getDefaultAlarmTitle
@@ -228,4 +229,8 @@ class Config(context: Context) : BaseConfig(context) {
     var highlightWeekends: Boolean
         get() = prefs.getBoolean(HIGHLIGHT_WEEKENDS, false)
         set(highlightWeekends) = prefs.edit().putBoolean(HIGHLIGHT_WEEKENDS, highlightWeekends).apply()
+
+    var highlightWeekendsColor: Int
+        get() = prefs.getInt(HIGHLIGHT_WEEKENDS_COLOR, context.resources.getColor(R.color.red_text))
+        set(highlightWeekendsColor) = prefs.edit().putInt(HIGHLIGHT_WEEKENDS_COLOR, highlightWeekendsColor).apply()
 }

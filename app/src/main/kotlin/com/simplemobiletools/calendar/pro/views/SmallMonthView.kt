@@ -21,7 +21,7 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
     private var todayCirclePaint: Paint
     private var dayWidth = 0f
     private var textColor = 0
-    private var redTextColor = 0
+    private var weekendsTextColor = 0
     private var days = 31
     private var isLandscape = false
     private var highlightWeekends = false
@@ -58,7 +58,7 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
 
         val baseColor = context.config.textColor
         textColor = baseColor.adjustAlpha(MEDIUM_ALPHA)
-        redTextColor = context.resources.getColor(R.color.red_text).adjustAlpha(MEDIUM_ALPHA)
+        weekendsTextColor = context.config.highlightWeekendsColor.adjustAlpha(MEDIUM_ALPHA)
         highlightWeekends = context.config.highlightWeekends
         isSundayFirst = context.config.isSundayFirst
 
@@ -108,7 +108,7 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
             return curPaint
         } else if (highlightWeekends && isWeekend(weekDay - 1, isSundayFirst)) {
             val curPaint = Paint(paint)
-            curPaint.color = redTextColor
+            curPaint.color = weekendsTextColor
             return curPaint
         }
 
