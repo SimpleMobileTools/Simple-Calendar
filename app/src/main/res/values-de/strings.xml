@@ -12,13 +12,17 @@
     <string name="no_upcoming_events">Scheint so, als hättest du keine anstehenden Termine.</string>
     <string name="go_to_today">Springe zu Heute</string>
     <string name="go_to_date">Springe zu einem Datum</string>
-    <string name="upgraded_from_free">Hey,\n\nes scheint, als hättest du ein Upgrade von der alten, kostenlosen Version vorgenommne. In diesem Fall musst du deine lokal gespeicherten Termine manuell importieren, indem sie zuvor als .ics-Datei exportierst. Die Import-/Export-Funktionen findest du im Menü der Hauptansicht.\n\nAnschließend kannst du die alte Version deinstallieren, die du am Zur-Pro-Version-upgraden-Button oben den Einstellungen erkennst. Nun musst du nur noch deine Einstellungen zurücksetzen.\n\nThanks!</string>
-
+    <string name="upgraded_from_free">Hallo,
+\n
+\nes scheint, als hättest du ein Upgrade von der alten, kostenlosen Version vorgenommne. In diesem Fall musst du deine lokal gespeicherten Termine manuell importieren, indem sie zuvor als .ics-Datei exportierst. Die Import-/Export-Funktionen findest du im Menü der Hauptansicht.
+\n
+\nAnschließend kannst du die alte Version deinstallieren, die du an der Zur-Pro-Version-upgraden-Schaltfläche oben den Einstellungen erkennst. Nun musst du nur noch deine Einstellungen zurücksetzen.
+\n
+\nDanke!</string>
     <!-- Widget titles -->
     <string name="widget_monthly">Monatskalender</string>
     <string name="widget_list">Terminliste</string>
     <string name="widget_todays_date">Kalender heutiges Datum</string>
-
     <!-- Event -->
     <string name="event">Termin</string>
     <string name="edit_event">Termin bearbeiten</string>
@@ -32,7 +36,6 @@
     <string name="filter_events_by_type">Termine nach Typ filtern</string>
     <string name="please_fill_location">Bitte trage einen Ort ein, der auf einer Karte angezeigt werden soll</string>
     <string name="public_event_notification_text">Ein Termin steht an</string>
-
     <!-- Event Repetition -->
     <string name="repetition">Wiederholung</string>
     <string name="no_repetition">Keine Wiederholung</string>
@@ -74,7 +77,6 @@
     <string name="fourth_m">vierten</string>
     <string name="fifth_m">fünften</string>
     <string name="last_m">letzten</string>
-
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
     <string name="repeat_every_f">Wiederhole jeden</string>
@@ -85,29 +87,25 @@
     <string name="fourth_f">vierten</string>
     <string name="fifth_f">fünften</string>
     <string name="last_f">letzten</string>
-
     <!-- Birthdays -->
     <string name="birthdays">Geburtstage</string>
     <string name="add_birthdays">Geburtstage der Kontakte hinzufügen</string>
     <string name="no_birthdays">Keine Geburtstage gefunden</string>
     <string name="no_new_birthdays">Keine neuen Geburtstage gefunden</string>
     <string name="birthdays_added">Geburtstage erfolgreich hinzugefügt</string>
-    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
-
+    <string name="add_birthdays_automatically">Neue Geburtstage automatisch hinzufügen</string>
     <!-- Anniversaries -->
     <string name="anniversaries">Jahrestage</string>
     <string name="add_anniversaries">Jahrestage der Kontakte hinzufügen</string>
     <string name="no_anniversaries">Es wurden keine Jahrestage gefunden</string>
     <string name="no_new_anniversaries">Keine neuen Jahrestage gefunden</string>
     <string name="anniversaries_added">Jahrestage erfolgreich hinzugefügt</string>
-    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
-
+    <string name="add_anniversaries_automatically">Neue Jahrestage automatisch hinzufügen</string>
     <!-- Event Reminders -->
     <string name="reminder">Erinnerung</string>
     <string name="before">vorher</string>
     <string name="add_another_reminder">Weitere Erinnerung hinzufügen</string>
     <string name="event_reminders">Terminerinnerungen</string>
-
     <!-- Event attendees -->
     <string name="add_another_attendee">Teilnehmer hinzufügen</string>
     <string name="my_status">Mein Teilnahmestatus:</string>
@@ -115,10 +113,8 @@
     <string name="not_going">Nein</string>
     <string name="maybe_going">Vielleicht</string>
     <string name="invited">Eingeladen</string>
-
     <!-- Time zones -->
     <string name="enter_a_country">Region, Stadt oder Zeitversatz eingeben</string>
-
     <!-- Export / Import -->
     <string name="import_events">Termine importieren</string>
     <string name="export_events">Termine exportieren</string>
@@ -128,17 +124,14 @@
     <string name="export_past_events_too">Vergangene Termine auch exportieren</string>
     <string name="include_event_types">Termintypen miteinbeziehen</string>
     <string name="filename_without_ics">Dateiname (ohne .ics)</string>
-    <string name="ignore_event_types">Ignore event types in the file, always use the default one</string>
-
+    <string name="ignore_event_types">Ereignistypen in der Datei ignorieren, immer den Standardtyp verwenden</string>
     <!-- Event details -->
     <string name="location">Ort</string>
     <string name="description">Beschreibung</string>
     <string name="all_day">Ganztags</string>
-
     <!-- Weekly view -->
     <string name="week">Woche</string>
-    <string name="start_week_with_current_day">Start week with the current day</string>
-
+    <string name="start_week_with_current_day">Beginn der Woche mit dem aktuellen Tag</string>
     <!-- Event types -->
     <string name="event_types">Termintypen</string>
     <string name="add_new_type">Neuen Typ hinzufügen</string>
@@ -151,7 +144,6 @@
     <string name="move_events_into_default">Betroffene Termine in den Standardtermintyp verschieben</string>
     <string name="remove_affected_events">Betroffene Termine dauerhaft löschen</string>
     <string name="unsync_caldav_calendar">Um einen CalDAV-Kalender zu entfernen, musst du ihn desynchronisieren</string>
-
     <!-- Holidays -->
     <string name="holidays">Feiertage</string>
     <string name="add_holidays">Feiertage hinzufügen</string>
@@ -160,12 +152,11 @@
     <string name="holidays_imported_successfully">Feiertage sind erfolgreich in den \"Feiertage\"-Termintyp importiert worden</string>
     <string name="importing_some_holidays_failed">Importieren einiger Termine fehlgeschlagen</string>
     <string name="importing_holidays_failed">Importieren von Feiertagen fehlgeschlagen</string>
-
     <!-- Settings -->
     <string name="manage_event_types">Termintypen verwalten</string>
     <string name="start_day_at">Wochenansicht beginnt um</string>
     <string name="end_day_at">Wochenansicht endet um</string>
-    <string name="midnight_spanning">Show events spanning across midnight at the top bar</string>
+    <string name="midnight_spanning">Ereignissen, die sich über die gesamte Mitternachtszeit erstrecken, in der oberen Leiste anzeigen</string>
     <string name="allow_customizing_day_count">Erlaube den Tageszähler anzupassen</string>
     <string name="week_numbers">Kalenderwoche anzeigen</string>
     <string name="vibrate">Vibration bei Erinnerung</string>
@@ -202,10 +193,9 @@
     <string name="last_used_one">Zuletzt verwendete</string>
     <string name="other_time">Andere Zeit</string>
     <string name="highlight_weekends">Wochenenden in einigen Ansichten hervorheben</string>
-    <string name="highlight_weekends_color">Color of highlighted weekends</string>
+    <string name="highlight_weekends_color">Farbe der hervorgehobenen Wochenenden</string>
     <string name="allow_changing_time_zones">Zeitzone kann geändert werden</string>
     <string name="manage_quick_filter_event_types">Termintypen zur schnellen Filterung verwalten</string>
-
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Kalender zur Synchronisierung auswählen</string>
@@ -223,7 +213,6 @@
     <string name="no_synchronized_calendars">Es wurden keine synchronisierbaren Kalender gefunden</string>
     <string name="status_free">Verfügbar</string>
     <string name="status_busy">Beschäftigt</string>
-
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">Montag</string>
@@ -233,7 +222,6 @@
     <string name="friday_alt">Freitag</string>
     <string name="saturday_alt">Samstag</string>
     <string name="sunday_alt">Sonntag</string>
-
     <!-- List widget config example events -->
     <string name="sample_title_1">Training</string>
     <string name="sample_description_1">Beintraining</string>
@@ -243,11 +231,10 @@
     <string name="sample_title_4">Essen mit Marie</string>
     <string name="sample_description_4">Im Einkaufszentrum</string>
     <string name="sample_title_5">Kaffeepause</string>
-
     <!-- FAQ -->
     <string name="faq_1_title">Wie kann ich Feiertage löschen, die über \"Feiertage hinzufügen\" importiert wurden?</string>
     <string name="faq_1_text">Die über diesen Weg erstellten Feiertage sind als Termintyp \"Feiertage\" deklariert. 
-        Du kannst in den Einstellungen -> Termintypen verwalten auf den Termintyp gedrückt halten und über das Papierkorbsymbol löschen.</string>
+        Du kannst in den Einstellungen -&gt; Termintypen verwalten auf den Termintyp gedrückt halten und über das Papierkorbsymbol löschen.</string>
     <string name="faq_2_title">Kann ich meine Termine über Google Kalender oder andere CalDAV unterstützende Dienste synchronisieren?</string>
     <string name="faq_2_text">Ja, aktiviere \"CalDAV-Synchronisierung\" in den Einstellungen und wähle die Kalender aus, die du synchronisieren willst. 
         Jedoch benötigst du eine separate App, die Synchronisierung zwischen Gerät und Servern handhabt. Falls du einen Google Kalender synchronisieren willst, kann die offizielle Kalender-App dies übernehmen.
@@ -258,10 +245,9 @@
     <string name="faq_4_title">Unterstützt diese Kalender-App Zeitzonen?</string>
     <string name="faq_4_text">Ja. Standardmäßig werden alle neuen Termine in der aktuellen Zeitzone des Gerätes erstellt. Um die Zeitzone eines Termins ändern zu können muss die Option \"Zeitzone kann geändert werden\"
         in den Einstellungen aktiviert sein. Die Zeitzone eines Termins kann dann beim Anlegen oder Bearbeiten geändert werden. In den Standardeinstellungen ist dies nicht aktiv, da die meisten Anwender die Möglichkeit nicht benötigen werden.</string>
-
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
-    <string name="app_title">Simple Calendar Pro - Termine &amp; Erinnerungen</string>
+    <string name="app_title">Schlichter Kalendar Pro - Termine und Erinnerungen</string>
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Der beste Kalender zum Organisieren der Ereignisse während des ganzen Tages</string>
     <string name="app_long_description">
@@ -308,7 +294,6 @@
         <b>Reddit:</b>
         https://www.reddit.com/r/SimpleMobileTools
     </string>
-
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res

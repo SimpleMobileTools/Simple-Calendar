@@ -13,12 +13,10 @@
     <string name="go_to_today">Сегодня</string>
     <string name="go_to_date">Перейти к дате</string>
     <string name="upgraded_from_free">Привет,\n\nпохоже, что вы обновились со старого бесплатного приложения. Вам придётся перенести локально сохранённые события вручную, экспортировав их в файл .ics, а затем импортировав. Кнопки экспорта/импорта находятся в главном меню.\n\nЗатем вы можете удалить старую версию, которая содержит кнопку \"Обновить до Pro\" в верхней части настроек приложения. Тогда вам нужно будет только сбросить настройки приложения.\n\nСпасибо!</string>
-
     <!-- Widget titles -->
     <string name="widget_monthly">Календарь на месяц</string>
     <string name="widget_list">Календарь событий</string>
     <string name="widget_todays_date">Календарь на сегодня</string>
-
     <!-- Event -->
     <string name="event">Событие</string>
     <string name="edit_event">Редактировать событие</string>
@@ -32,7 +30,6 @@
     <string name="filter_events_by_type">Фильтровать события по типу</string>
     <string name="please_fill_location">Укажите место, которое будет показано на карте</string>
     <string name="public_event_notification_text">Предстоящее событие</string>
-
     <!-- Event Repetition -->
     <string name="repetition">Повторять</string>
     <string name="no_repetition">Без повторения</string>
@@ -74,7 +71,6 @@
     <string name="fourth_m">четвёртый</string>
     <string name="fifth_m">пятый</string>
     <string name="last_m">последний</string>
-
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
     <string name="repeat_every_f">Повторять каждую</string>
@@ -85,29 +81,25 @@
     <string name="fourth_f">четвёртую</string>
     <string name="fifth_f">пятую</string>
     <string name="last_f">последнюю</string>
-
     <!-- Birthdays -->
     <string name="birthdays">Дни рождения</string>
     <string name="add_birthdays">Добавить дни рождения контактов</string>
     <string name="no_birthdays">Дни рождения не найдены</string>
     <string name="no_new_birthdays">Новых дней рождения не найдено</string>
     <string name="birthdays_added">Дни рождения успешно добавлены</string>
-    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
-
+    <string name="add_birthdays_automatically">Добавлять новые дни рождения автоматически</string>
     <!-- Anniversaries -->
     <string name="anniversaries">Годовщины</string>
     <string name="add_anniversaries">Добавить годовщины контактов</string>
     <string name="no_anniversaries">Годовщины не найдены</string>
     <string name="no_new_anniversaries">Новых годовщин не найдено</string>
     <string name="anniversaries_added">Годовщины успешно добавлены</string>
-    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
-
+    <string name="add_anniversaries_automatically">Добавлять новые юбилеи автоматически</string>
     <!-- Event Reminders -->
     <string name="reminder">Напоминание</string>
     <string name="before">до события</string>
     <string name="add_another_reminder">Добавить ещё одно напоминание</string>
     <string name="event_reminders">Напоминания о событиях</string>
-
     <!-- Event attendees -->
     <string name="add_another_attendee">Добавить участника</string>
     <string name="my_status">Мой статус:</string>
@@ -115,10 +107,8 @@
     <string name="not_going">Не приду</string>
     <string name="maybe_going">Возможно приду</string>
     <string name="invited">Приглашённый</string>
-
     <!-- Time zones -->
     <string name="enter_a_country">Введите страну или часовой пояс</string>
-
     <!-- Export / Import -->
     <string name="import_events">Импорт событий</string>
     <string name="export_events">Экспорт событий</string>
@@ -129,16 +119,13 @@
     <string name="include_event_types">Включать типы событий</string>
     <string name="filename_without_ics">Имя файла (без .ics)</string>
     <string name="ignore_event_types">Игнорировать типы событий в файле, всегда использовать значение по умолчанию</string>
-
     <!-- Event details -->
     <string name="location">Место</string>
     <string name="description">Описание</string>
     <string name="all_day">Весь день</string>
-
     <!-- Weekly view -->
     <string name="week">Неделя</string>
     <string name="start_week_with_current_day">Начало недели с текущего дня</string>
-
     <!-- Event types -->
     <string name="event_types">Типы событий</string>
     <string name="add_new_type">Добавить новый тип</string>
@@ -151,7 +138,6 @@
     <string name="move_events_into_default">Установить затронутым событиям тип по умолчанию</string>
     <string name="remove_affected_events">Навсегда удалить затронутые события</string>
     <string name="unsync_caldav_calendar">Чтобы удалить календарь CalDAV, нужно отключить синхронизацию с ним</string>
-
     <!-- Holidays -->
     <string name="holidays">Праздники</string>
     <string name="add_holidays">Добавить праздники</string>
@@ -160,7 +146,6 @@
     <string name="holidays_imported_successfully">Праздники были успешно импортированы в тип события \"Праздники\"</string>
     <string name="importing_some_holidays_failed">Невозможно импортировать некоторые события</string>
     <string name="importing_holidays_failed">Невозможно импортировать праздники</string>
-
     <!-- Settings -->
     <string name="manage_event_types">Управление типами событий</string>
     <string name="start_day_at">Начало дня (неделя)</string>
@@ -202,10 +187,9 @@
     <string name="last_used_one">Последнее использованное</string>
     <string name="other_time">Другое</string>
     <string name="highlight_weekends">Выделять выходные дни в соответствующих режимах</string>
-    <string name="highlight_weekends_color">Color of highlighted weekends</string>
+    <string name="highlight_weekends_color">Цвет выделенных выходных дней</string>
     <string name="allow_changing_time_zones">Разрешить изменение часового пояса событий</string>
     <string name="manage_quick_filter_event_types">Управление типами событий быстрого фильтра</string>
-
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Выберите календари для синхронизации</string>
@@ -223,7 +207,6 @@
     <string name="no_synchronized_calendars">Синхронизируемые календари не найдены</string>
     <string name="status_free">Свободен</string>
     <string name="status_busy">Занят</string>
-
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">понедельник</string>
@@ -233,7 +216,6 @@
     <string name="friday_alt">пятницу</string>
     <string name="saturday_alt">субботу</string>
     <string name="sunday_alt">воскресенье</string>
-
     <!-- List widget config example events -->
     <string name="sample_title_1">Тренировка</string>
     <string name="sample_description_1">День ног</string>
@@ -243,10 +225,9 @@
     <string name="sample_title_4">Ужин с Машей</string>
     <string name="sample_description_4">В КЭТ на Караванной</string>
     <string name="sample_title_5">Время для кофе</string>
-
     <!-- FAQ -->
     <string name="faq_1_title">Как удалить праздники, импортированные с помощью кнопки \"Добавить праздники\"?</string>
-    <string name="faq_1_text">Праздники, созданные таким образом, вставляются в новый тип события, называемый \"Праздники\". Можно перейти в \"Настройки\" -> \"Управление типами событий\",
+    <string name="faq_1_text">Праздники, созданные таким образом, вставляются в новый тип события, называемый \"Праздники\". Можно перейти в \"Настройки\" -&gt; \"Управление типами событий\",
         затем длительное нажатие на данном типе события и его удаление нажатием на \"корзину\".</string>
     <string name="faq_2_title">Можно ли синхронизировать события с помощью Календаря Google или других служб, поддерживающих CalDAV?</string>
     <string name="faq_2_text">Да, просто включите \"Синхронизацию по CalDAV\" в настройках приложения и выберите календари, которые хотите синхронизировать. Тем не менее, вам потребуется стороннее приложение, обрабатывающее синхронизацию между устройством и сервером.
@@ -257,7 +238,6 @@
     <string name="faq_4_title">Приложение поддерживает работу с часовыми поясами?</string>
     <string name="faq_4_text">Да. По умолчанию все события создаются в текущем часовом поясе. Если вы хотите изменить часовой пояс события,
         сначала нужно включить возможность его выбора в настройках приложения, затем часовой пояс можно изменить на экране сведений о событии. Функция отключена по умолчанию, так как не нужна большинству людей.</string>
-
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Simple Calendar Pro - события и напоминания</string>
@@ -307,7 +287,6 @@
         <b>Reddit:</b>
         https://www.reddit.com/r/SimpleMobileTools
     </string>
-
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
