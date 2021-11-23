@@ -135,7 +135,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         super.onResume()
         if (mStoredTextColor != config.textColor || mStoredBackgroundColor != config.backgroundColor || mStoredAdjustedPrimaryColor != getAdjustedPrimaryColor()
             || mStoredDayCode != Formatter.getTodayCode() || mStoredDimPastEvents != config.dimPastEvents || mStoredHighlightWeekends != config.highlightWeekends
-            || mStoredHighlightWeekendsColor != config.highlightWeekendsColor) {
+            || mStoredHighlightWeekendsColor != config.highlightWeekendsColor
+        ) {
             updateViewPager()
         }
 

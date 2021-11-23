@@ -90,8 +90,17 @@ class SettingsActivity : SimpleActivity() {
         invalidateOptionsMenu()
 
         arrayOf(
-            settings_color_customization_label, settings_general_settings_label, settings_reminders_label, settings_caldav_label, settings_new_events_label,
-            settings_weekly_view_label, settings_monthly_view_label, settings_event_lists_label, settings_widgets_label, settings_events_label, settings_migrating_label
+            settings_color_customization_label,
+            settings_general_settings_label,
+            settings_reminders_label,
+            settings_caldav_label,
+            settings_new_events_label,
+            settings_weekly_view_label,
+            settings_monthly_view_label,
+            settings_event_lists_label,
+            settings_widgets_label,
+            settings_events_label,
+            settings_migrating_label
         ).forEach {
             it.setTextColor(getAdjustedPrimaryColor())
         }
