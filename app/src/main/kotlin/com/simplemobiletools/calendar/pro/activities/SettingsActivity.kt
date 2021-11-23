@@ -345,12 +345,15 @@ class SettingsActivity : SimpleActivity() {
     private fun setupHighlightWeekends() {
         settings_highlight_weekends.isChecked = config.highlightWeekends
         settings_highlight_weekends_color_holder.beVisibleIf(config.highlightWeekends)
+        setupHighlightWeekendColorBackground()
         settings_highlight_weekends_holder.setOnClickListener {
             settings_highlight_weekends.toggle()
             config.highlightWeekends = settings_highlight_weekends.isChecked
             settings_highlight_weekends_color_holder.beVisibleIf(config.highlightWeekends)
+            setupHighlightWeekendColorBackground()
         }
     }
+
     private fun setupHighlightWeekendsColor() {
         settings_highlight_weekends_color.setFillWithStroke(config.highlightWeekendsColor, config.backgroundColor)
         settings_highlight_weekends_color_holder.setOnClickListener {
@@ -360,6 +363,14 @@ class SettingsActivity : SimpleActivity() {
                     settings_highlight_weekends_color.setFillWithStroke(color, config.backgroundColor)
                 }
             }
+        }
+    }
+
+    private fun setupHighlightWeekendColorBackground() {
+        if (settings_highlight_weekends_color_holder.isVisible()) {
+            settings_highlight_weekends_holder.background = resources.getDrawable(R.drawable.ripple_background, theme)
+        } else {
+            settings_highlight_weekends_holder.background = resources.getDrawable(R.drawable.ripple_bottom_corners, theme)
         }
     }
 
