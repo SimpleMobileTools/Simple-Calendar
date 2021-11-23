@@ -4,13 +4,13 @@ import android.text.TextUtils
 import android.view.ViewGroup
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.widget.SwitchCompat
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.extensions.calDAVHelper
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.commons.extensions.beVisibleIf
 import com.simplemobiletools.commons.extensions.setupDialogStuff
+import com.simplemobiletools.commons.views.MyAppCompatCheckbox
 import kotlinx.android.synthetic.main.calendar_item_account.view.*
 import kotlinx.android.synthetic.main.calendar_item_calendar.view.*
 import kotlinx.android.synthetic.main.dialog_select_calendars.view.*
@@ -39,11 +39,11 @@ class SelectCalendarsDialog(val activity: SimpleActivity, val callback: () -> Un
         }
 
         dialog = AlertDialog.Builder(activity)
-                .setPositiveButton(R.string.ok) { dialogInterface, i -> confirmSelection() }
-                .setNegativeButton(R.string.cancel, null)
-                .create().apply {
-                    activity.setupDialogStuff(view, this, R.string.select_caldav_calendars)
-                }
+            .setPositiveButton(R.string.ok) { dialogInterface, i -> confirmSelection() }
+            .setNegativeButton(R.string.cancel, null)
+            .create().apply {
+                activity.setupDialogStuff(view, this, R.string.select_caldav_calendars)
+            }
     }
 
     private fun addCalendarItem(isEvent: Boolean, text: String, tag: Int = 0, shouldCheck: Boolean = false) {
@@ -73,7 +73,7 @@ class SelectCalendarsDialog(val activity: SimpleActivity, val callback: () -> Un
             val child = view.dialog_select_calendars_holder.getChildAt(i)
             if (child is RelativeLayout) {
                 val check = child.getChildAt(0)
-                if (check is SwitchCompat && check.isChecked) {
+                if (check is MyAppCompatCheckbox && check.isChecked) {
                     calendarIds.add(check.tag as Int)
                 }
             }

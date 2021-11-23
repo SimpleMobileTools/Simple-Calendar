@@ -4,15 +4,16 @@
     android:id="@+id/calendar_item_calendar_holder"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?attr/selectableItemBackground">
+    android:background="?attr/selectableItemBackground"
+    android:paddingStart="@dimen/activity_margin">
 
-    <com.simplemobiletools.commons.views.MySwitchCompat
+    <com.simplemobiletools.commons.views.MyAppCompatCheckbox
         android:id="@+id/calendar_item_calendar_switch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@null"
         android:clickable="false"
-        android:paddingStart="@dimen/big_margin"
+        android:paddingStart="@dimen/small_margin"
         android:paddingTop="@dimen/activity_margin"
         android:paddingEnd="@dimen/activity_margin"
         android:paddingBottom="@dimen/activity_margin"
