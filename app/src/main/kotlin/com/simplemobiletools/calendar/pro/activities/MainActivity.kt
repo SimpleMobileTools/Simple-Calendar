@@ -83,6 +83,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private var mStoredHighlightWeekends = false
     private var mStoredStartWeekWithCurrentDay = false
     private var mStoredHighlightWeekendsColor = 0
+    private var mStoredHighlightSaturday = false
+    private var mStoredHighlightSaturdayColor = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -135,7 +137,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         super.onResume()
         if (mStoredTextColor != config.textColor || mStoredBackgroundColor != config.backgroundColor || mStoredAdjustedPrimaryColor != getAdjustedPrimaryColor()
             || mStoredDayCode != Formatter.getTodayCode() || mStoredDimPastEvents != config.dimPastEvents || mStoredHighlightWeekends != config.highlightWeekends
-            || mStoredHighlightWeekendsColor != config.highlightWeekendsColor
+            || mStoredHighlightWeekendsColor != config.highlightWeekendsColor || mStoredHighlightSaturday != config.highlightSaturday
+            || mStoredHighlightSaturdayColor != config.highlightSaturdayColor
         ) {
             updateViewPager()
         }
@@ -265,6 +268,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             mStoredDimPastEvents = dimPastEvents
             mStoredHighlightWeekends = highlightWeekends
             mStoredHighlightWeekendsColor = highlightWeekendsColor
+            mStoredHighlightSaturday = highlightSaturday
+            mStoredHighlightSaturdayColor = highlightSaturdayColor
             mStoredMidnightSpan = showMidnightSpanningEventsAtTop
             mStoredStartWeekWithCurrentDay = startWeekWithCurrentDay
         }

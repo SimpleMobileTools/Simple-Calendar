@@ -53,6 +53,8 @@ class SettingsActivity : SimpleActivity() {
         setupSundayFirst()
         setupHighlightWeekends()
         setupHighlightWeekendsColor()
+        setupHighlightSaturday()
+        setupHighlightSaturdayColor()
         setupDeleteAllEvents()
         setupReplaceDescription()
         setupWeekNumbers()
@@ -354,11 +356,15 @@ class SettingsActivity : SimpleActivity() {
     private fun setupHighlightWeekends() {
         settings_highlight_weekends.isChecked = config.highlightWeekends
         settings_highlight_weekends_color_holder.beVisibleIf(config.highlightWeekends)
+        settings_highlight_saturday_holder.beVisibleIf(config.highlightWeekends)
+        settings_highlight_saturday_color_holder.beVisibleIf(config.highlightWeekends && config.highlightSaturday)
         setupHighlightWeekendColorBackground()
         settings_highlight_weekends_holder.setOnClickListener {
             settings_highlight_weekends.toggle()
             config.highlightWeekends = settings_highlight_weekends.isChecked
             settings_highlight_weekends_color_holder.beVisibleIf(config.highlightWeekends)
+            settings_highlight_saturday_holder.beVisibleIf(config.highlightWeekends)
+            settings_highlight_saturday_color_holder.beVisibleIf(config.highlightWeekends && config.highlightSaturday)
             setupHighlightWeekendColorBackground()
         }
     }
@@ -380,6 +386,38 @@ class SettingsActivity : SimpleActivity() {
             settings_highlight_weekends_holder.background = resources.getDrawable(R.drawable.ripple_background, theme)
         } else {
             settings_highlight_weekends_holder.background = resources.getDrawable(R.drawable.ripple_bottom_corners, theme)
+        }
+    }
+
+    private fun setupHighlightSaturday() {
+        settings_highlight_saturday.isChecked = config.highlightSaturday
+        settings_highlight_saturday_color_holder.beVisibleIf(config.highlightWeekends && config.highlightSaturday)
+        setupHighlightSaturdayColorBackground()
+        settings_highlight_saturday_holder.setOnClickListener {
+            settings_highlight_saturday.toggle()
+            config.highlightSaturday = settings_highlight_saturday.isChecked
+            settings_highlight_saturday_color_holder.beVisibleIf(config.highlightSaturday)
+            setupHighlightSaturdayColorBackground()
+        }
+    }
+
+    private fun setupHighlightSaturdayColor() {
+        settings_highlight_saturday_color.setFillWithStroke(config.highlightSaturdayColor, config.backgroundColor)
+        settings_highlight_saturday_color_holder.setOnClickListener {
+            ColorPickerDialog(this, config.highlightSaturdayColor) { wasPositivePressed, color ->
+                if (wasPositivePressed) {
+                    config.highlightSaturdayColor = color
+                    settings_highlight_saturday_color.setFillWithStroke(color, config.backgroundColor)
+                }
+            }
+        }
+    }
+
+    private fun setupHighlightSaturdayColorBackground() {
+        if (settings_highlight_saturday_color_holder.isVisible()) {
+            settings_highlight_saturday_holder.background = resources.getDrawable(R.drawable.ripple_background, theme)
+        } else {
+            settings_highlight_saturday_holder.background = resources.getDrawable(R.drawable.ripple_bottom_corners, theme)
         }
     }
 
@@ -848,7 +886,9 @@ class SettingsActivity : SimpleActivity() {
                 put(USE_24_HOUR_FORMAT, config.use24HourFormat)
                 put(SUNDAY_FIRST, config.isSundayFirst)
                 put(HIGHLIGHT_WEEKENDS, config.highlightWeekends)
+                put(HIGHLIGHT_SATURDAY, config.highlightSaturday)
                 put(HIGHLIGHT_WEEKENDS_COLOR, config.highlightWeekendsColor)
+                put(HIGHLIGHT_SATURDAY_COLOR, config.highlightSaturdayColor)
             }
 
             exportSettings(configItems)
@@ -944,7 +984,9 @@ class SettingsActivity : SimpleActivity() {
                 USE_24_HOUR_FORMAT -> config.use24HourFormat = value.toBoolean()
                 SUNDAY_FIRST -> config.isSundayFirst = value.toBoolean()
                 HIGHLIGHT_WEEKENDS -> config.highlightWeekends = value.toBoolean()
+                HIGHLIGHT_SATURDAY -> config.highlightSaturday = value.toBoolean()
                 HIGHLIGHT_WEEKENDS_COLOR -> config.highlightWeekendsColor = value.toInt()
+                HIGHLIGHT_SATURDAY_COLOR -> config.highlightSaturdayColor = value.toInt()
             }
         }
 

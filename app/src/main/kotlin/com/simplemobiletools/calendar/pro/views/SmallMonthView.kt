@@ -8,6 +8,7 @@ import android.util.AttributeSet
 import android.view.View
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.config
+import com.simplemobiletools.calendar.pro.helpers.isSaturday
 import com.simplemobiletools.calendar.pro.helpers.isWeekend
 import com.simplemobiletools.calendar.pro.models.DayYearly
 import com.simplemobiletools.commons.extensions.adjustAlpha
@@ -22,9 +23,11 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
     private var dayWidth = 0f
     private var textColor = 0
     private var weekendsTextColor = 0
+    private var saturdayTextColor = 0
     private var days = 31
     private var isLandscape = false
     private var highlightWeekends = false
+    private var highlightSaturday = false
     private var isSundayFirst = false
     private var isPrintVersion = false
     private var mEvents: ArrayList<DayYearly>? = null
@@ -60,6 +63,8 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
         textColor = baseColor.adjustAlpha(MEDIUM_ALPHA)
         weekendsTextColor = context.config.highlightWeekendsColor.adjustAlpha(MEDIUM_ALPHA)
         highlightWeekends = context.config.highlightWeekends
+        saturdayTextColor = context.config.highlightSaturdayColor.adjustAlpha(MEDIUM_ALPHA)
+        highlightSaturday = context.config.highlightWeekends && context.config.highlightSaturday
         isSundayFirst = context.config.isSundayFirst
 
         paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
@@ -87,7 +92,7 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
         for (y in 1..6) {
             for (x in 1..7) {
                 if (curId in 1..days) {
-                    val paint = getPaint(curId, x, highlightWeekends)
+                    val paint = getPaint(curId, x, highlightWeekends, highlightSaturday)
                     canvas.drawText(curId.toString(), x * dayWidth - (dayWidth / 4), y * dayWidth, paint)
 
                     if (curId == todaysId && !isPrintVersion) {
@@ -100,11 +105,15 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
         }
     }
 
-    private fun getPaint(curId: Int, weekDay: Int, highlightWeekends: Boolean): Paint {
+    private fun getPaint(curId: Int, weekDay: Int, highlightWeekends: Boolean, highlightSaturday: Boolean): Paint {
         val colors = mEvents?.get(curId)?.eventColors ?: HashSet()
         if (colors.isNotEmpty()) {
             val curPaint = Paint(paint)
             curPaint.color = colors.first()
+            return curPaint
+        } else if (highlightSaturday && isSaturday(weekDay - 1, isSundayFirst)) {
+            val curPaint = Paint(paint)
+            curPaint.color = saturdayTextColor
             return curPaint
         } else if (highlightWeekends && isWeekend(weekDay - 1, isSundayFirst)) {
             val curPaint = Paint(paint)

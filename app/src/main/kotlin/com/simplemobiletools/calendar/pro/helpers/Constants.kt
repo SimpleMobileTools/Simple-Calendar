@@ -95,6 +95,8 @@ const val WEEKLY_VIEW_ITEM_HEIGHT_MULTIPLIER = "weekly_view_item_height_multipli
 const val WEEKLY_VIEW_DAYS = "weekly_view_days"
 const val HIGHLIGHT_WEEKENDS = "highlight_weekends"
 const val HIGHLIGHT_WEEKENDS_COLOR = "highlight_weekends_color"
+const val HIGHLIGHT_SATURDAY = "highlight_saturday"
+const val HIGHLIGHT_SATURDAY_COLOR = "highlight_saturday_color"
 
 // repeat_rule for monthly and yearly repetition
 const val REPEAT_SAME_DAY = 1                           // i.e. 25th every month, or 3rd june (if yearly repetition)
@@ -190,5 +192,13 @@ fun isWeekend(i: Int, isSundayFirst: Boolean): Boolean {
         i == 0 || i == 6 || i == 7 || i == 13
     } else {
         i == 5 || i == 6 || i == 12 || i == 13
+    }
+}
+
+fun isSaturday(i: Int, isSundayFirst: Boolean): Boolean {
+    return if (isSundayFirst) {
+        i == 6 || i == 13
+    } else {
+        i == 5 || i == 12
     }
 }

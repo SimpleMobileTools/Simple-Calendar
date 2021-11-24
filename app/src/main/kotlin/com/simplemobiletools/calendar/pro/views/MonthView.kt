@@ -38,6 +38,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     private var primaryColor = 0
     private var textColor = 0
     private var weekendsTextColor = 0
+    private var saturdayTextColor = 0
     private var weekDaysLetterHeight = 0
     private var eventTitleHeight = 0
     private var currDayOfWeek = 0
@@ -47,6 +48,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     private var showWeekNumbers = false
     private var dimPastEvents = true
     private var highlightWeekends = false
+    private var highlightSaturday = false
     private var isPrintVersion = false
     private var isMonthDayView = false
     private var allEvents = ArrayList<MonthViewEvent>()
@@ -63,9 +65,11 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         primaryColor = context.getAdjustedPrimaryColor()
         textColor = config.textColor
         weekendsTextColor = config.highlightWeekendsColor
+        saturdayTextColor = config.highlightSaturdayColor
         showWeekNumbers = config.showWeekNumbers
         dimPastEvents = config.dimPastEvents
         highlightWeekends = config.highlightWeekends
+        highlightSaturday = config.highlightWeekends && config.highlightSaturday
 
         smallPadding = resources.displayMetrics.density.toInt()
         val normalTextSize = resources.getDimensionPixelSize(R.dimen.normal_text_size)
@@ -213,6 +217,8 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
             var weekDayLetterPaint = textPaint
             if (i == currDayOfWeek && !isPrintVersion) {
                 weekDayLetterPaint = getColoredPaint(primaryColor)
+            } else if (highlightSaturday && isSaturday(i, config.isSundayFirst)) {
+                weekDayLetterPaint = getColoredPaint(saturdayTextColor)
             } else if (highlightWeekends && isWeekend(i, config.isSundayFirst)) {
                 weekDayLetterPaint = getColoredPaint(weekendsTextColor)
             }
@@ -296,6 +302,8 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         if (!isPrintVersion) {
             if (startDay.isToday) {
                 paintColor = primaryColor.getContrastColor()
+            } else if (highlightSaturday && startDay.isSaturDay) {
+                paintColor = saturdayTextColor
             } else if (highlightWeekends && startDay.isWeekend) {
                 paintColor = weekendsTextColor
             }

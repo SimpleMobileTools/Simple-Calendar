@@ -60,6 +60,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private var wasExtraHeightAdded = false
     private var dimPastEvents = true
     private var highlightWeekends = false
+    private var highlightSaturday = false
     private var wasScaled = false
     private var isPrintVersion = false
     private var selectedGrid: View? = null
@@ -88,6 +89,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         weekTimestamp = requireArguments().getLong(WEEK_START_TIMESTAMP)
         dimPastEvents = config.dimPastEvents
         highlightWeekends = config.highlightWeekends
+        highlightSaturday = config.highlightWeekends && config.highlightSaturday
         primaryColor = requireContext().getAdjustedPrimaryColor()
         allDayRows.add(HashSet())
     }
@@ -217,6 +219,8 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 resources.getColor(R.color.theme_light_text_color)
             } else if (todayCode == dayCode) {
                 primaryColor
+            } else if (highlightSaturday && isSaturday(i, config.isSundayFirst)) {
+                config.highlightSaturdayColor
             } else if (highlightWeekends && isWeekend(i, config.isSundayFirst)) {
                 config.highlightWeekendsColor
             } else {

@@ -233,4 +233,12 @@ class Config(context: Context) : BaseConfig(context) {
     var highlightWeekendsColor: Int
         get() = prefs.getInt(HIGHLIGHT_WEEKENDS_COLOR, context.resources.getColor(R.color.red_text))
         set(highlightWeekendsColor) = prefs.edit().putInt(HIGHLIGHT_WEEKENDS_COLOR, highlightWeekendsColor).apply()
+
+    var highlightSaturday: Boolean
+        get() = prefs.getBoolean(HIGHLIGHT_SATURDAY, false)
+        set(highlightSaturday) = prefs.edit().putBoolean(HIGHLIGHT_SATURDAY, highlightSaturday).apply()
+
+    var highlightSaturdayColor: Int
+        get() = prefs.getInt(HIGHLIGHT_SATURDAY_COLOR, context.resources.getColor(R.color.md_blue))
+        set(highlightSaturdayColor) = prefs.edit().putInt(HIGHLIGHT_SATURDAY_COLOR, highlightSaturdayColor).apply()
 }
