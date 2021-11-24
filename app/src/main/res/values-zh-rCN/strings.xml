@@ -194,6 +194,8 @@
     <string name="other_time">其他时间</string>
     <string name="highlight_weekends">在部分视图高亮周末</string>
     <string name="highlight_weekends_color">突出显示的周末的颜色</string>
+    <string name="highlight_saturday">Highlight Saturday in different color</string>
+    <string name="highlight_saturday_color">Color of highlighted Saturday</string>
     <string name="allow_changing_time_zones">允许更改活动时区</string>
     <string name="manage_quick_filter_event_types">管理快速过滤事件类型</string>
     <!-- CalDAV sync -->

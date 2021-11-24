@@ -203,6 +203,8 @@
     <string name="other_time">Annan tid</string>
     <string name="highlight_weekends">Markera veckoslut i vissa vyer</string>
     <string name="highlight_weekends_color">Color of highlighted weekends</string>
+    <string name="highlight_saturday">Highlight Saturday in different color</string>
+    <string name="highlight_saturday_color">Color of highlighted Saturday</string>
     <string name="allow_changing_time_zones">Allow changing event time zones</string>
     <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
 

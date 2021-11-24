@@ -188,6 +188,8 @@
     <string name="other_time">Anden tid</string>
     <string name="highlight_weekends">Fremhæv weekender i visse visninger</string>
     <string name="highlight_weekends_color">Farve på fremhævede weekender</string>
+    <string name="highlight_saturday">Highlight Saturday in different color</string>
+    <string name="highlight_saturday_color">Color of highlighted Saturday</string>
     <string name="allow_changing_time_zones">Tillad ændring af en begivenheds tidszone</string>
     <string name="manage_quick_filter_event_types">Håndter begivenhedstyper med hurtigt filter</string>
     <!-- CalDAV sync -->

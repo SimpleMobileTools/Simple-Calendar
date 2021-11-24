@@ -203,6 +203,8 @@
     <string name="other_time">Outra</string>
     <string name="highlight_weekends">Destacar fim de semana em algumas vistas</string>
     <string name="highlight_weekends_color">Color of highlighted weekends</string>
+    <string name="highlight_saturday">Highlight Saturday in different color</string>
+    <string name="highlight_saturday_color">Color of highlighted Saturday</string>
     <string name="allow_changing_time_zones">Permitir alteração do fuso horário dos eventos</string>
     <string name="manage_quick_filter_event_types">Gerir tipos de evento no filtro rápido</string>
 

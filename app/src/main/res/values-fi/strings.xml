@@ -203,6 +203,8 @@
     <string name="other_time">Muu aika</string>
     <string name="highlight_weekends">Korosta viikonloppuja joistakin näkymistä</string>
     <string name="highlight_weekends_color">Color of highlighted weekends</string>
+    <string name="highlight_saturday">Highlight Saturday in different color</string>
+    <string name="highlight_saturday_color">Color of highlighted Saturday</string>
     <string name="allow_changing_time_zones">Salli tapahtumien aikavyöhykkeiden muuttaminen</string>
     <string name="manage_quick_filter_event_types">Hallitse pikasuodatuksen tapahtumatyyppejä</string>
 

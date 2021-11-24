@@ -194,6 +194,8 @@
     <string name="other_time">Inny czas</string>
     <string name="highlight_weekends">Wyróżniaj weekendy w niektórych widokach</string>
     <string name="highlight_weekends_color">Kolor wyróżnienia weekendów</string>
+    <string name="highlight_saturday">Highlight Saturday in different color</string>
+    <string name="highlight_saturday_color">Color of highlighted Saturday</string>
     <string name="allow_changing_time_zones">Zezwalaj na zmienianie stref czasowych wydarzeń</string>
     <string name="manage_quick_filter_event_types">Zarządzaj szybkim filtrowaniem typów wydarzeń</string>
     <!-- CalDAV sync -->
