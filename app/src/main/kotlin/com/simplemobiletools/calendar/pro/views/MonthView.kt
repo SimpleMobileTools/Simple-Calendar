@@ -329,13 +329,10 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     }
 
     private fun getTextPaint(startDay: DayMonthly): Paint {
-        var paintColor = textColor
-        if (!isPrintVersion) {
-            if (startDay.isToday) {
-                paintColor = primaryColor.getContrastColor()
-            } else if (highlightWeekends && startDay.isWeekend) {
-                paintColor = weekendsTextColor
-            }
+        var paintColor = when {
+            !isPrintVersion && startDay.isToday -> primaryColor.getContrastColor()
+            highlightWeekends && startDay.isWeekend -> weekendsTextColor
+            else -> textColor
         }
 
         if (!startDay.isThisMonth) {
