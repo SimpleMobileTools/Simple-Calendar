@@ -6,86 +6,81 @@
     <string name="daily_view">Napi nézet</string>
     <string name="weekly_view">Heti nézet</string>
     <string name="monthly_view">Havi nézet</string>
-    <string name="monthly_daily_view">Havi + napi nézet</string>
+    <string name="monthly_daily_view">Havi és napi nézet</string>
     <string name="yearly_view">Éves nézet</string>
-    <string name="simple_event_list">Egyszerű bejegyzéslista</string>
-    <string name="no_upcoming_events">Seems like you don\'t have any upcoming events.</string>
-    <string name="go_to_today">Go to today</string>
-    <string name="go_to_date">Go to date</string>
+    <string name="simple_event_list">Egyszerű eseménylista</string>
+    <string name="no_upcoming_events">Úgy néz ki, hogy nincsenek következő események.</string>
+    <string name="go_to_today">Ugrás a mához</string>
+    <string name="go_to_date">Ugrás a dátumhoz</string>
     <string name="upgraded_from_free">Hey,\n\nseems like you upgraded from the old free app. You have to migrate locally stored events manually via exporting in an .ics file, then importing. You can find both export/import buttons at the main screen menu.\n\nYou can then uninstall the old version, which has an \'Upgrade to Pro\' button at the top of the app settings. You will then only have to reset your app settings.\n\nThanks!</string>
-
     <!-- Widget titles -->
     <string name="widget_monthly">Havi naptár</string>
-    <string name="widget_list">Bejegyzésnaptár</string>
-    <string name="widget_todays_date">Calendar today\'s date</string>
-
+    <string name="widget_list">Eseménynaptár</string>
+    <string name="widget_todays_date">Naptár mai napja</string>
     <!-- Event -->
-    <string name="event">Bejegyzés</string>
-    <string name="edit_event">Bejegyzés szerkesztése</string>
-    <string name="new_event">Új bejegyzés</string>
-    <string name="create_new_event">Create a new event</string>
-    <string name="duplicate_event">Duplicate event</string>
+    <string name="event">Esemény</string>
+    <string name="edit_event">Esemény szerkesztése</string>
+    <string name="new_event">Új esemény</string>
+    <string name="create_new_event">Új esemény létrehozása</string>
+    <string name="duplicate_event">Esemény megkettőzése</string>
     <string name="title_empty">A cím nem lehet üres</string>
     <string name="end_before_start">Az eseménynek nem lehet vége a kezdete előtt</string>
-    <string name="event_added">Bejegyzés hozzáadva</string>
-    <string name="event_updated">Bejegyzés frissítve</string>
-    <string name="filter_events_by_type">Filter events by type</string>
-    <string name="please_fill_location">Please fill in a location to be shown on a map</string>
-    <string name="public_event_notification_text">An event is upcoming</string>
-
+    <string name="event_added">Esemény sikeresen hozzáadva</string>
+    <string name="event_updated">Esemény sikeresen frissítve</string>
+    <string name="filter_events_by_type">Események szűrése típus szerint</string>
+    <string name="please_fill_location">Töltse ki a helyet, hogy megjelenjen a térképen</string>
+    <string name="public_event_notification_text">Egy esemény következik</string>
     <!-- Event Repetition -->
     <string name="repetition">Ismétlés</string>
-    <string name="no_repetition">No repetition</string>
+    <string name="no_repetition">Nincs ismétlés</string>
     <string name="daily">Naponta</string>
     <string name="weekly">Hetente</string>
     <string name="monthly">Havonta</string>
     <string name="yearly">Évente</string>
-    <string name="weeks_raw">weeks</string>
-    <string name="months_raw">months</string>
-    <string name="years_raw">years</string>
-    <string name="repeat_till">Repeat till</string>
-    <string name="forever">Forever</string>
-    <string name="event_is_repeatable">The event is repeatable</string>
-    <string name="selection_contains_repetition">The selection contains repeating events</string>
-    <string name="delete_one_only">Delete the selected occurrence only</string>
-    <string name="delete_future_occurrences">Delete this and all future occurrences</string>
-    <string name="delete_all_occurrences">Delete all occurrences</string>
-    <string name="update_one_only">Update the selected occurrence only</string>
-    <string name="update_this_and_future_occurrences">Update this and all future occurrences</string>
-    <string name="update_all_occurrences">Update all occurrences</string>
-    <string name="repeat_till_date">Repeat till a date</string>
-    <string name="stop_repeating_after_x">Stop repeating after x occurrences</string>
-    <string name="repeat_forever">Repeat forever</string>
-    <string name="times">times</string>
-    <string name="repeat">Repeat</string>
-    <string name="repeat_on">Repeat on</string>
-    <string name="every_day">Every day</string>
-    <string name="selected_days">On selected days</string>
-    <string name="the_same_day">The same day</string>
-    <string name="the_last_day">The last day</string>
-    <string name="repeat_on_the_same_day_monthly">Repeat on the same day each month</string>
-    <string name="repeat_on_the_last_day_monthly">Repeat on the last day of the month</string>
-    <string name="repeat_on_the_same_day_yearly">Repeat on the same day every year</string>
-    <string name="repeat_every_m">Repeat every</string>
-    <string name="every_m">Every</string>
-    <string name="first_m">first</string>
-    <string name="second_m">second</string>
-    <string name="third_m">third</string>
-    <string name="fourth_m">fourth</string>
-    <string name="fifth_m">fifth</string>
-    <string name="last_m">last</string>
-
+    <string name="weeks_raw">hetek</string>
+    <string name="months_raw">hónapok</string>
+    <string name="years_raw">évek</string>
+    <string name="repeat_till">Ismétlés eddig:</string>
+    <string name="forever">Örökké</string>
+    <string name="event_is_repeatable">Az esemény ismétlődik</string>
+    <string name="selection_contains_repetition">A kiválasztás ismétlődő eseményeket tartalmaz</string>
+    <string name="delete_one_only">Csak a kiválasztott előfordulás törlése</string>
+    <string name="delete_future_occurrences">Ez és az összes jövőbeli előfordulás törlése</string>
+    <string name="delete_all_occurrences">Az összes előfordulás törlése</string>
+    <string name="update_one_only">Csak a kiválasztott előfordulás frissítése</string>
+    <string name="update_this_and_future_occurrences">Ez és az összes jövőbeli előfordulás frissítése</string>
+    <string name="update_all_occurrences">Az összes előfordulás frissítése</string>
+    <string name="repeat_till_date">Ismétlés egy dátumig</string>
+    <string name="stop_repeating_after_x">Ismétlés leállítása x előfordulás után</string>
+    <string name="repeat_forever">Ismétlés örökké</string>
+    <string name="times">alkalommal</string>
+    <string name="repeat">Ismétlés</string>
+    <string name="repeat_on">Ismétlés ekkor:</string>
+    <string name="every_day">Naponta</string>
+    <string name="selected_days">Kiválasztott napokon</string>
+    <string name="the_same_day">Ugyanazon a napon</string>
+    <string name="the_last_day">Az utolsó napon</string>
+    <string name="repeat_on_the_same_day_monthly">Ismétlés minden hónap ugyanazon napján</string>
+    <string name="repeat_on_the_last_day_monthly">Ismétlés a hónap utolsó napján</string>
+    <string name="repeat_on_the_same_day_yearly">Ismétlés minden év utolsó napján</string>
+    <string name="repeat_every_m">Ismétlés minden</string>
+    <string name="every_m">Minden</string>
+    <string name="first_m">első</string>
+    <string name="second_m">második</string>
+    <string name="third_m">harmadik</string>
+    <string name="fourth_m">negyedik</string>
+    <string name="fifth_m">ötödik</string>
+    <string name="last_m">utolsó</string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
-    <string name="repeat_every_f">Repeat every</string>
-    <string name="every_f">Every</string>
-    <string name="first_f">first</string>
-    <string name="second_f">second</string>
-    <string name="third_f">third</string>
-    <string name="fourth_f">fourth</string>
+    <string name="repeat_every_f">Ismétlés minden</string>
+    <string name="every_f">Minden</string>
+    <string name="first_f">első</string>
+    <string name="second_f">második</string>
+    <string name="third_f">harmadik</string>
+    <string name="fourth_f">negyedik</string>
     <string name="fifth_f">fifth</string>
     <string name="last_f">last</string>
-
     <!-- Birthdays -->
     <string name="birthdays">Birthdays</string>
     <string name="add_birthdays">Add contact birthdays</string>
@@ -93,7 +88,6 @@
     <string name="no_new_birthdays">No new birthdays have been found</string>
     <string name="birthdays_added">Birthdays added successfully</string>
     <string name="add_birthdays_automatically">Add new birthdays automatically</string>
-
     <!-- Anniversaries -->
     <string name="anniversaries">Anniversaries</string>
     <string name="add_anniversaries">Add contact anniversaries</string>
@@ -101,13 +95,11 @@
     <string name="no_new_anniversaries">No new anniversaries have been found</string>
     <string name="anniversaries_added">Anniversaries added successfully</string>
     <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
-
     <!-- Event Reminders -->
     <string name="reminder">Emlékeztető</string>
     <string name="before">korábban</string>
     <string name="add_another_reminder">Add another reminder</string>
     <string name="event_reminders">Event reminders</string>
-
     <!-- Event attendees -->
     <string name="add_another_attendee">Add another attendee</string>
     <string name="my_status">My status:</string>
@@ -115,10 +107,8 @@
     <string name="not_going">Not going</string>
     <string name="maybe_going">Maybe going</string>
     <string name="invited">Invited</string>
-
     <!-- Time zones -->
     <string name="enter_a_country">Enter a country or time zone</string>
-
     <!-- Export / Import -->
     <string name="import_events">Import events</string>
     <string name="export_events">Export events</string>
@@ -129,16 +119,13 @@
     <string name="include_event_types">Include event types</string>
     <string name="filename_without_ics">Filename (without .ics)</string>
     <string name="ignore_event_types">Ignore event types in the file, always use the default one</string>
-
     <!-- Event details -->
     <string name="location">Location</string>
     <string name="description">Leírás</string>
     <string name="all_day">All-day</string>
-
     <!-- Weekly view -->
     <string name="week">Week</string>
     <string name="start_week_with_current_day">Start week with the current day</string>
-
     <!-- Event types -->
     <string name="event_types">Event types</string>
     <string name="add_new_type">Add a new type</string>
@@ -151,7 +138,6 @@
     <string name="move_events_into_default">Move affected events into the default event type</string>
     <string name="remove_affected_events">Permanently remove affected events</string>
     <string name="unsync_caldav_calendar">To remove a CalDAV calendar you have to unsynchronize it</string>
-
     <!-- Holidays -->
     <string name="holidays">Holidays</string>
     <string name="add_holidays">Add holidays</string>
@@ -160,7 +146,6 @@
     <string name="holidays_imported_successfully">Holidays have been successfully imported into the \"Holidays\" event type</string>
     <string name="importing_some_holidays_failed">Importing some events failed</string>
     <string name="importing_holidays_failed">Importing holidays failed</string>
-
     <!-- Settings -->
     <string name="manage_event_types">Manage event types</string>
     <string name="start_day_at">Start day at</string>
@@ -206,7 +191,6 @@
     <string name="highlight_weekends_color">Color of highlighted weekends</string>
     <string name="allow_changing_time_zones">Allow changing event time zones</string>
     <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
-
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Select calendars to sync</string>
@@ -224,7 +208,6 @@
     <string name="no_synchronized_calendars">No synchronizable calendars have been found</string>
     <string name="status_free">Free</string>
     <string name="status_busy">Busy</string>
-
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">Monday</string>
@@ -234,7 +217,6 @@
     <string name="friday_alt">Friday</string>
     <string name="saturday_alt">Saturday</string>
     <string name="sunday_alt">Sunday</string>
-
     <!-- List widget config example events -->
     <string name="sample_title_1">Workout</string>
     <string name="sample_description_1">Leg day</string>
@@ -244,10 +226,9 @@
     <string name="sample_title_4">Lunch with Mary</string>
     <string name="sample_description_4">In the Plaza</string>
     <string name="sample_title_5">Coffee time</string>
-
     <!-- FAQ -->
     <string name="faq_1_title">How can I remove the holidays imported via the \"Add holidays\" button?</string>
-    <string name="faq_1_text">Holidays created that way are inserted in a new event type called \"Holidays\". You can go in Settings -> Manage Event Types,
+    <string name="faq_1_text">Holidays created that way are inserted in a new event type called \"Holidays\". You can go in Settings -&gt; Manage Event Types,
         long press the given event type and delete it by selecting the trashbin.</string>
     <string name="faq_2_title">Can I sync my events via Google Calendar, or other service supporting CalDAV?</string>
     <string name="faq_2_text">Yes, just toggle \"CalDAV sync\" in the app settings and select the calendars you want to sync. However, you will need some third party app handling the synchronization between the device and servers.
@@ -258,7 +239,6 @@
     <string name="faq_4_title">Does the app support time zones?</string>
     <string name="faq_4_text">Yes, it does. By default all events are created in your current time zone. If you want to change an events\' time zone,
         you will first have to enable the time zone picker at the app settings, then change it at the Event Details screen. It is disabled by default as most people won\'t need it.</string>
-
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Simple Calendar Pro - Events &amp; Reminders</string>
@@ -308,7 +288,6 @@
         <b>Reddit:</b>
         https://www.reddit.com/r/SimpleMobileTools
     </string>
-
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
