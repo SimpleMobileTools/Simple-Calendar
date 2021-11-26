@@ -126,7 +126,7 @@
     <string name="export_events_to_ics">Afspraken naar .ics-bestand exporteren</string>
     <string name="default_event_type">Standaardtype afspraken</string>
     <string name="export_past_events_too">Afspraken uit verleden ook exporteren</string>
-    <string name="include_event_types">Afspraaktypes weergeven</string>
+    <string name="include_event_types">Afspraaktypes tonen</string>
     <string name="filename_without_ics">Bestandsnaam (zonder .ics)</string>
     <string name="ignore_event_types">Afspraaktypes uit het bestand negeren (altijd standaardtype gebruiken)</string>
 
@@ -177,7 +177,7 @@
     <string name="event_lists">Afsprakenlijst</string>
     <string name="display_past_events">Afgelopen afspraken tonen</string>
     <string name="replace_description_with_location">Beschrijving vervangen door locatie van afspraken</string>
-    <string name="display_description_or_location">Display description or location</string>
+    <string name="display_description_or_location">Beschrijving of locatie tonen</string>
     <string name="delete_all_events">Alle afspraken verwijderen</string>
     <string name="delete_all_events_confirmation">Alle afspraken verwijderen? Afspraaktypes en andere instellingen blijven behouden.</string>
     <string name="show_a_grid">Rasterlijnen tonen</string>
