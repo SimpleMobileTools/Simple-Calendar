@@ -177,6 +177,7 @@
     <string name="event_lists">רשימות אירועים</string>
     <string name="display_past_events">הצגת אירועים מהעבר</string>
     <string name="replace_description_with_location">החלפת תיאור האירוע עם מיקום</string>
+    <string name="display_description_or_location">Display description or location</string>
     <string name="delete_all_events">מחיקת כל האירועים</string>
     <string name="delete_all_events_confirmation">למחוק את כל האירועים? סוגי האירועים והגדרות נוספות יישמרו.</string>
     <string name="show_a_grid">תצוגת רשת</string>

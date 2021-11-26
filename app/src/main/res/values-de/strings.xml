@@ -168,6 +168,7 @@
     <string name="event_lists">Terminlisten</string>
     <string name="display_past_events">Vergangene Termine anzeigen</string>
     <string name="replace_description_with_location">Terminbeschreibung mit Ort ersetzen</string>
+    <string name="display_description_or_location">Display description or location</string>
     <string name="delete_all_events">Alle Termine löschen</string>
     <string name="delete_all_events_confirmation">Bist du sicher, dass du alle Termine löschen willst? Deine Termintypen und Einstellungen bleiben erhalten.</string>
     <string name="show_a_grid">Raster anzeigen</string>

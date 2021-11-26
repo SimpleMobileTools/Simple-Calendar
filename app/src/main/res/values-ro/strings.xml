@@ -177,6 +177,7 @@
     <string name="event_lists">Liste de evenimente</string>
     <string name="display_past_events">Afișează evenimente din trecut</string>
     <string name="replace_description_with_location">Înlocuiește descrierea evenimentului cu locația</string>
+    <string name="display_description_or_location">Display description or location</string>
     <string name="delete_all_events">Șterge toate evenimentele</string>
     <string name="delete_all_events_confirmation">Sigur doriți să ștergeți toate evenimentele? Acest lucru va lăsa tipurile de evenimente și alte setări intacte.</string>
     <string name="show_a_grid">Afișați o grilă</string>

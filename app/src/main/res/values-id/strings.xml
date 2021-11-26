@@ -177,6 +177,7 @@
     <string name="event_lists">Daftar acara</string>
     <string name="display_past_events">Tampilkan acara yang sudah lewat</string>
     <string name="replace_description_with_location">Ganti deskripsi acara dengan lokasi</string>
+    <string name="display_description_or_location">Display description or location</string>
     <string name="delete_all_events">Hapus semua acara</string>
     <string name="delete_all_events_confirmation">Apakah anda yakin ingin menghapus semua acara? Tindakan ini tidak akan menghapus kategori dan pengaturan lainnya.</string>
     <string name="show_a_grid">Tampilkan grid</string>

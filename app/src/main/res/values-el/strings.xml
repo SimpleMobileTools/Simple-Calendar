@@ -177,6 +177,7 @@
     <string name="event_lists">Λίστες εκδηλώσεων</string>
     <string name="display_past_events">Εμφάνιση προηγούμενων συμβάντων</string>
     <string name="replace_description_with_location">Αντικατάσταση περιγραφής εκδήλωσης με τοποθεσία</string>
+    <string name="display_description_or_location">Display description or location</string>
     <string name="delete_all_events">Διαγραφή όλων των εκδηλώσεων</string>
     <string name="delete_all_events_confirmation">Είστε βέβαιοι ότι θέλετε να διαγράψετε όλες τις εκδηλώσεις; Αυτό θα αφήσει τους τύπους και άλλες ρυθμίσεις ανέπαφες.</string>
     <string name="show_a_grid">Εμφάνιση πλέγματος</string>

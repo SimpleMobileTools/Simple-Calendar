@@ -177,6 +177,7 @@
     <string name="event_lists">活動列表</string>
     <string name="display_past_events">顯示過去的活動</string>
     <string name="replace_description_with_location">活動描述改成地點</string>
+    <string name="display_description_or_location">Display description or location</string>
     <string name="delete_all_events">刪除全部活動</string>
     <string name="delete_all_events_confirmation">你確定要刪除全部活動嗎?會完整留下你的活動類型和其他設定。</string>
     <string name="show_a_grid">顯示網格</string>

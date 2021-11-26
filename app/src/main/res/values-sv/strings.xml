@@ -177,6 +177,7 @@
     <string name="event_lists">Händelselistor</string>
     <string name="display_past_events">Visa tidigare händelser</string>
     <string name="replace_description_with_location">Ersätt händelsebeskrivning med plats</string>
+    <string name="display_description_or_location">Display description or location</string>
     <string name="delete_all_events">Ta bort alla händelser</string>
     <string name="delete_all_events_confirmation">Är du säker på att du vill ta bort alla händelser? Dina händelsetyper och andra inställningar påverkas inte av borttagningen.</string>
     <string name="show_a_grid">Visa ett rutnät</string>

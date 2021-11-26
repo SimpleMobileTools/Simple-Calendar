@@ -168,6 +168,7 @@
     <string name="event_lists">Listes d’évènements</string>
     <string name="display_past_events">Afficher les évènements passés</string>
     <string name="replace_description_with_location">Remplacer la description de lévènement par lemplacement</string>
+    <string name="display_description_or_location">Display description or location</string>
     <string name="delete_all_events">Supprimer tous les évènements</string>
     <string name="delete_all_events_confirmation">Voulez-vous vraiment supprimer tous les évènements \? Les types d’évènements et vos autres paramètres ne seront pas modifiés.</string>
     <string name="show_a_grid">Affichage en grille</string>

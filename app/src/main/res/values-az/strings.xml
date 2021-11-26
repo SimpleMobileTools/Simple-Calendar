@@ -177,6 +177,7 @@
     <string name="event_lists">Hadisə siyahıları</string>
     <string name="display_past_events">Keçmiş hadisələri göstər</string>
     <string name="replace_description_with_location">Hadisə əlavəsini məkan ilə dəyiş</string>
+    <string name="display_description_or_location">Display description or location</string>
     <string name="delete_all_events">Bütün hadisələri sil</string>
     <string name="delete_all_events_confirmation">Bütün hadisələri silmək istədiyinizə əminsiniz? Bu hadisələri və parametrlərini bütövlüklə siləcək.</string>
     <string name="show_a_grid">Cədvəl göstər</string>

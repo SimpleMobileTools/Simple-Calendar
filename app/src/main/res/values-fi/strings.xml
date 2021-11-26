@@ -177,6 +177,7 @@
     <string name="event_lists">Tapahtumaluettelo</string>
     <string name="display_past_events">Näytä menneet tapahtumat</string>
     <string name="replace_description_with_location">Korvaa tapahtuman kuvaus sijainnilla</string>
+    <string name="display_description_or_location">Display description or location</string>
     <string name="delete_all_events">Poista kaikki tapahtumat</string>
     <string name="delete_all_events_confirmation">Haluatko varmasti poistaa kaikki tapahtumat? Tämä jättää tapahtumatyypisi ja muut asetukset ennalleen.</string>
     <string name="show_a_grid">Näytä ruudukko</string>

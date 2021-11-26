@@ -177,6 +177,7 @@
     <string name="event_lists">Listaxes de eventos</string>
     <string name="display_past_events">Mostrar eventos do pasado</string>
     <string name="replace_description_with_location">Substituír a descrición coa localización</string>
+    <string name="display_description_or_location">Display description or location</string>
     <string name="delete_all_events">Borrar todos os eventos</string>
     <string name="delete_all_events_confirmation">Tes a certeza de querer borrar tódolos eventos? Esto deixará intactos os tipos de evento e outros axustes.</string>
     <string name="show_a_grid">Mostrar unha cuadrícula</string>

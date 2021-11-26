@@ -168,6 +168,7 @@
     <string name="event_lists">Etkinlik listeleri</string>
     <string name="display_past_events">Geçmişten gelen etkinlikleri görüntüle</string>
     <string name="replace_description_with_location">Etkinlik açıklamasını konumla değiştir</string>
+    <string name="display_description_or_location">Display description or location</string>
     <string name="delete_all_events">Tüm etkinlikleri sil</string>
     <string name="delete_all_events_confirmation">Tüm etkinlikleri silmek istediğinizden emin misiniz? Bu, etkinlik türlerinizi ve diğer ayarlarınızı bozulmamış halde bırakır.</string>
     <string name="show_a_grid">Izgara göster</string>

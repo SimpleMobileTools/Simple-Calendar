@@ -177,6 +177,7 @@
     <string name="event_lists">Seznamy událostí</string>
     <string name="display_past_events">Zobrazit minulé události</string>
     <string name="replace_description_with_location">Nahradit popis udalosti lokací</string>
+    <string name="display_description_or_location">Display description or location</string>
     <string name="delete_all_events">Smazat všechny události</string>
     <string name="delete_all_events_confirmation">Opravdu chcete smazat všechny události? Typy událostí a ostatní nastavení zůstanou nedotčeny.</string>
     <string name="show_a_grid">Zobrazovat mřížku</string>

@@ -162,6 +162,7 @@
     <string name="event_lists">Hendelseslister</string>
     <string name="display_past_events">Vis hendelser fra fortiden</string>
     <string name="replace_description_with_location">Erstatt hendelsesbeskrivelse med sted</string>
+    <string name="display_description_or_location">Display description or location</string>
     <string name="delete_all_events">Slett alle hendelser</string>
     <string name="delete_all_events_confirmation">Er du sikker på at du vil slette alle hendelser? Dine hendelsestyper og andre innstillinger blir beholdt.</string>
     <string name="show_a_grid">Vis rutenett</string>

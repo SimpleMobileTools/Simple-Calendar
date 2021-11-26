@@ -177,6 +177,7 @@
     <string name="event_lists">Įvykių sąrašai</string>
     <string name="display_past_events">Rodyti praeities įvykius</string>
     <string name="replace_description_with_location">Pakeisti įvykio apibūdinimą į įvykio vietą</string>
+    <string name="display_description_or_location">Display description or location</string>
     <string name="delete_all_events">Ištrinti visus įvykius</string>
     <string name="delete_all_events_confirmation">Ar Jūs tikrai norite ištrinti visus įvykius? Tai neištrins įvykių tipų ir kitų nustatymų.</string>
     <string name="show_a_grid">Rodyti tinklelį</string>

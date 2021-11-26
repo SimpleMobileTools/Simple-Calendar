@@ -177,6 +177,7 @@
     <string name="event_lists">Popis događaja</string>
     <string name="display_past_events">Prikaži događaje iz prošlosti</string>
     <string name="replace_description_with_location">Zamijenite opis događaja s lokacijom</string>
+    <string name="display_description_or_location">Display description or location</string>
     <string name="delete_all_events">Izbriši sve događaje</string>
     <string name="delete_all_events_confirmation">Jeste li sigurni da želite izbrisati sve događaje? To će ostaviti Vaše vrste događaja i druge postavke netaknutima.</string>
     <string name="show_a_grid">Prikaži mrežu</string>

@@ -162,6 +162,7 @@
     <string name="event_lists">Списки событий</string>
     <string name="display_past_events">Показывать прошедшие события</string>
     <string name="replace_description_with_location">Заменять описание события местоположением</string>
+    <string name="display_description_or_location">Display description or location</string>
     <string name="delete_all_events">Удалить все события</string>
     <string name="delete_all_events_confirmation">Удалить все события? Это не затронет типы событий и другие настройки.</string>
     <string name="show_a_grid">Показывать сетку</string>

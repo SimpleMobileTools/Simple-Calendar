@@ -177,6 +177,7 @@
     <string name="event_lists">Списки подій</string>
     <string name="display_past_events">Показувати події, що відбулися</string>
     <string name="replace_description_with_location">Замінювати описання події місцем</string>
+    <string name="display_description_or_location">Display description or location</string>
     <string name="delete_all_events">Видалити всі події</string>
     <string name="delete_all_events_confirmation">Ви дійсно бажаєте видалити всі події? Це не торкнеться ваших типів подій та інших налаштувань.</string>
     <string name="show_a_grid">Показувати решітку</string>

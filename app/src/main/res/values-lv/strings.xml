@@ -177,6 +177,7 @@
     <string name="event_lists">Notikumu saraksti</string>
     <string name="display_past_events">Rādīt pagājušos notikumus</string>
     <string name="replace_description_with_location">Aizstāt notikuma aprakstu ar atrašanās vietu</string>
+    <string name="display_description_or_location">Display description or location</string>
     <string name="delete_all_events">Dzēst visus notikumus</string>
     <string name="delete_all_events_confirmation">Tiešām vēlaties dzēst visus notikumus? Tas gan neietekmēs notikumu tipus un citus iestatījumus.</string>
     <string name="show_a_grid">Rādīt režģi</string>
