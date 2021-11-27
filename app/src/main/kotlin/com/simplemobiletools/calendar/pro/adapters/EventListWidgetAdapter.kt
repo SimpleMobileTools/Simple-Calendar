@@ -77,14 +77,16 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
 
             var timeText = if (item.isAllDay) allDayString else Formatter.getTimeFromTS(context, item.startTS)
             val endText = Formatter.getTimeFromTS(context, item.endTS)
-            if (!item.isAllDay && timeText != endText) {
-                timeText += " - $endText"
-            }
+            if (item.startTS != item.endTS) {
+                if (!item.isAllDay) {
+                    timeText += " - $endText"
+                }
 
-            val startCode = Formatter.getDayCodeFromTS(item.startTS)
-            val endCode = Formatter.getDayCodeFromTS(item.endTS)
-            if (startCode != endCode) {
-                timeText += " (${Formatter.getDateDayTitle(endCode)})"
+                val startCode = Formatter.getDayCodeFromTS(item.startTS)
+                val endCode = Formatter.getDayCodeFromTS(item.endTS)
+                if (startCode != endCode) {
+                    timeText += " (${Formatter.getDateDayTitle(endCode)})"
+                }
             }
 
             setText(R.id.event_item_time, timeText)
