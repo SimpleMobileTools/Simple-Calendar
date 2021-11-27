@@ -12,9 +12,7 @@ import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.models.*
 import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.LOWER_ALPHA
 import com.simplemobiletools.commons.helpers.MEDIUM_ALPHA
-import com.simplemobiletools.commons.helpers.mydebug
 import org.joda.time.DateTime
 import java.util.*
 
@@ -78,8 +76,9 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
             setText(R.id.event_item_title, item.title)
 
             var timeText = if (item.isAllDay) allDayString else Formatter.getTimeFromTS(context, item.startTS)
-            if (!item.isAllDay) {
-                timeText += " - ${Formatter.getTimeFromTS(context, item.endTS)}"
+            val endText = Formatter.getTimeFromTS(context, item.endTS)
+            if (!item.isAllDay && timeText != endText) {
+                timeText += " - $endText"
             }
 
             val startCode = Formatter.getDayCodeFromTS(item.startTS)
