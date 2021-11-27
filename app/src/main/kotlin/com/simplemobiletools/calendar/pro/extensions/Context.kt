@@ -64,6 +64,7 @@ fun Context.updateWidgets() {
 fun Context.updateListWidget() {
     val widgetIDs = AppWidgetManager.getInstance(applicationContext)?.getAppWidgetIds(ComponentName(applicationContext, MyWidgetListProvider::class.java))
         ?: return
+
     if (widgetIDs.isNotEmpty()) {
         Intent(applicationContext, MyWidgetListProvider::class.java).apply {
             action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
@@ -71,6 +72,7 @@ fun Context.updateListWidget() {
             sendBroadcast(this)
         }
     }
+    AppWidgetManager.getInstance(applicationContext)?.notifyAppWidgetViewDataChanged(widgetIDs, R.id.widget_event_list)
 }
 
 fun Context.updateDateWidget() {
