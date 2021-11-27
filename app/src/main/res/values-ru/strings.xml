@@ -94,7 +94,7 @@
     <string name="no_anniversaries">Годовщины не найдены</string>
     <string name="no_new_anniversaries">Новых годовщин не найдено</string>
     <string name="anniversaries_added">Годовщины успешно добавлены</string>
-    <string name="add_anniversaries_automatically">Добавлять новые юбилеи автоматически</string>
+    <string name="add_anniversaries_automatically">Добавлять новые годовщины автоматически</string>
     <!-- Event Reminders -->
     <string name="reminder">Напоминание</string>
     <string name="before">до события</string>
@@ -112,8 +112,8 @@
     <!-- Export / Import -->
     <string name="import_events">Импорт событий</string>
     <string name="export_events">Экспорт событий</string>
-    <string name="import_events_from_ics">Импорт событий из ics-файла</string>
-    <string name="export_events_to_ics">Экспорт событий в ics-файл</string>
+    <string name="import_events_from_ics">Импорт событий из файла ICS</string>
+    <string name="export_events_to_ics">Экспорт событий в файл ICS</string>
     <string name="default_event_type">Тип события по умолчанию</string>
     <string name="export_past_events_too">Экспортировать прошедшие события</string>
     <string name="include_event_types">Включать типы событий</string>
@@ -161,8 +161,8 @@
     <string name="caldav_sync">Синхронизация по CalDAV</string>
     <string name="event_lists">Списки событий</string>
     <string name="display_past_events">Показывать прошедшие события</string>
-    <string name="replace_description_with_location">Заменять описание события местоположением</string>
-    <string name="display_description_or_location">Display description or location</string>
+    <string name="replace_description_with_location">Заменять описание местоположением</string>
+    <string name="display_description_or_location">Показывать описание или местоположение</string>
     <string name="delete_all_events">Удалить все события</string>
     <string name="delete_all_events_confirmation">Удалить все события? Это не затронет типы событий и другие настройки.</string>
     <string name="show_a_grid">Показывать сетку</string>
