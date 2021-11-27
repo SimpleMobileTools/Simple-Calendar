@@ -34,6 +34,7 @@ class EventListAdapter(
 ) : MyRecyclerViewAdapter(activity, recyclerView, itemClick) {
 
     private val allDayString = resources.getString(R.string.all_day)
+    private val displayDescription = activity.config.displayDescription
     private val replaceDescription = activity.config.replaceDescription
     private val dimPastEvents = activity.config.dimPastEvents
     private val now = getNowSeconds()
@@ -147,7 +148,7 @@ class EventListAdapter(
             }
 
             event_item_description.text = if (replaceDescription) listEvent.location else listEvent.description
-            event_item_description.beVisibleIf(event_item_description.text.isNotEmpty())
+            event_item_description.beVisibleIf(displayDescription && event_item_description.text.isNotEmpty())
             event_item_color_bar.background.applyColorFilter(listEvent.color)
 
             var newTextColor = textColor

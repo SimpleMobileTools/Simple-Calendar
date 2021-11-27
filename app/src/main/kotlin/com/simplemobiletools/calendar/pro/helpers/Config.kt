@@ -121,6 +121,10 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getBoolean(REPLACE_DESCRIPTION, false)
         set(replaceDescription) = prefs.edit().putBoolean(REPLACE_DESCRIPTION, replaceDescription).apply()
 
+    var displayDescription: Boolean
+        get() = prefs.getBoolean(DISPLAY_DESCRIPTION, true)
+        set(displayDescription) = prefs.edit().putBoolean(DISPLAY_DESCRIPTION, displayDescription).apply()
+
     var showGrid: Boolean
         get() = prefs.getBoolean(SHOW_GRID, false)
         set(showGrid) = prefs.edit().putBoolean(SHOW_GRID, showGrid).apply()

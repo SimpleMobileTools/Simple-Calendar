@@ -54,6 +54,7 @@ class SettingsActivity : SimpleActivity() {
         setupHighlightWeekends()
         setupHighlightWeekendsColor()
         setupDeleteAllEvents()
+        setupDisplayDescription()
         setupReplaceDescription()
         setupWeekNumbers()
         setupShowGrid()
@@ -388,6 +389,25 @@ class SettingsActivity : SimpleActivity() {
             ConfirmationDialog(this, messageId = R.string.delete_all_events_confirmation) {
                 eventsHelper.deleteAllEvents()
             }
+        }
+    }
+
+    private fun setupDisplayDescription() {
+        settings_display_description.isChecked = config.displayDescription
+        setupDescriptionVisibility()
+        settings_display_description_holder.setOnClickListener {
+            settings_display_description.toggle()
+            config.displayDescription = settings_display_description.isChecked
+            setupDescriptionVisibility()
+        }
+    }
+
+    private fun setupDescriptionVisibility() {
+        settings_replace_description_holder.beVisibleIf(config.displayDescription)
+        if (settings_replace_description_holder.isVisible()) {
+            settings_display_description_holder.background = resources.getDrawable(R.drawable.ripple_background, theme)
+        } else {
+            settings_display_description_holder.background = resources.getDrawable(R.drawable.ripple_bottom_corners, theme)
         }
     }
 
@@ -831,6 +851,7 @@ class SettingsActivity : SimpleActivity() {
                 put(FONT_SIZE, config.fontSize)
                 put(LIST_WIDGET_VIEW_TO_OPEN, config.listWidgetViewToOpen)
                 put(REMINDER_AUDIO_STREAM, config.reminderAudioStream)
+                put(DISPLAY_DESCRIPTION, config.displayDescription)
                 put(REPLACE_DESCRIPTION, config.replaceDescription)
                 put(SHOW_GRID, config.showGrid)
                 put(LOOP_REMINDERS, config.loopReminders)
@@ -927,6 +948,7 @@ class SettingsActivity : SimpleActivity() {
                 FONT_SIZE -> config.fontSize = value.toInt()
                 LIST_WIDGET_VIEW_TO_OPEN -> config.listWidgetViewToOpen = value.toInt()
                 REMINDER_AUDIO_STREAM -> config.reminderAudioStream = value.toInt()
+                DISPLAY_DESCRIPTION -> config.displayDescription = value.toBoolean()
                 REPLACE_DESCRIPTION -> config.replaceDescription = value.toBoolean()
                 SHOW_GRID -> config.showGrid = value.toBoolean()
                 LOOP_REMINDERS -> config.loopReminders = value.toBoolean()

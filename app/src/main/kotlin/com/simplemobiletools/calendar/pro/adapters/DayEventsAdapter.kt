@@ -25,6 +25,7 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
     MyRecyclerViewAdapter(activity, recyclerView, itemClick) {
 
     private val allDayString = resources.getString(R.string.all_day)
+    private val displayDescription = activity.config.displayDescription
     private val replaceDescriptionWithLocation = activity.config.replaceDescription
     private val dimPastEvents = activity.config.dimPastEvents
     private var isPrintVersion = false
@@ -89,7 +90,7 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
             }
 
             event_item_description.text = if (replaceDescriptionWithLocation) event.location else event.description
-            event_item_description.beVisibleIf(event_item_description.text.isNotEmpty())
+            event_item_description.beVisibleIf(displayDescription && event_item_description.text.isNotEmpty())
             event_item_color_bar.background.applyColorFilter(event.color)
 
             var newTextColor = textColor

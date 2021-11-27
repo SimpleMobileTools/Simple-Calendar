@@ -26,6 +26,7 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
     private var events = ArrayList<ListItem>()
     private var textColor = context.config.widgetTextColor
     private var weakTextColor = textColor.adjustAlpha(MEDIUM_ALPHA)
+    private val displayDescription = context.config.displayDescription
     private val replaceDescription = context.config.replaceDescription
     private val dimPastEvents = context.config.dimPastEvents
     private var mediumFontSize = context.getWidgetFontSize()
@@ -77,7 +78,7 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
 
             // we cannot change the event_item_color_bar rules dynamically, so do it like this
             val descriptionText = if (replaceDescription) item.location else item.description
-            if (descriptionText.isNotEmpty()) {
+            if (displayDescription && descriptionText.isNotEmpty()) {
                 setText(R.id.event_item_time, "$timeText\n$descriptionText")
             }
 
