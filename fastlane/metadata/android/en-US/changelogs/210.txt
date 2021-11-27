@@ -1,0 +1,4 @@
+ * Tweaked the Event List widget, make it more compact
+ * Allow disabling the display of description and location at event list views
+ * Make the list view widget refreshing more reliable
+ * Added some translation improvements

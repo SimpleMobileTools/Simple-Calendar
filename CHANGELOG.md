@@ -1,6 +1,14 @@
 Changelog
 ==========
 
+Version 6.16.1 *(2021-11-27)*
+----------------------------
+
+ * Tweaked the Event List widget, make it more compact
+ * Allow disabling the display of description and location at event list views
+ * Make the list view widget refreshing more reliable
+ * Added some translation improvements
+
 Version 6.16.0 *(2021-11-23)*
 ----------------------------
 
