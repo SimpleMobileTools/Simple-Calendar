@@ -3,8 +3,9 @@
     android:id="@+id/event_section_title"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:includeFontPadding="false"
     android:paddingStart="@dimen/medium_margin"
     android:paddingBottom="@dimen/small_margin"
     android:textAllCaps="true"
     android:textFontWeight="300"
-    android:textSize="20sp" />
+    android:textSize="16sp" />

@@ -5,12 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/small_margin"
-    android:layout_marginTop="@dimen/small_margin"
     android:layout_marginEnd="@dimen/small_margin"
-    android:layout_marginBottom="@dimen/medium_margin"
-    android:background="@drawable/section_holder_stroke"
-    android:paddingTop="@dimen/medium_margin"
-    android:paddingBottom="@dimen/medium_margin">
+    android:paddingTop="@dimen/small_margin"
+    android:paddingBottom="@dimen/small_margin">
 
     <ImageView
         android:id="@+id/event_item_color_bar"
@@ -29,6 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/normal_margin"
         android:ellipsize="end"
+        android:includeFontPadding="false"
         android:maxLines="1"
         android:paddingEnd="@dimen/small_margin"
         android:textSize="@dimen/day_text_size"
@@ -42,7 +40,7 @@
         android:layout_alignStart="@+id/event_item_title"
         android:alpha="0.8"
         android:ellipsize="end"
-        android:lineSpacingExtra="2dp"
+        android:includeFontPadding="false"
         android:maxLines="2"
         android:paddingEnd="@dimen/small_margin"
         android:textSize="@dimen/normal_text_size"

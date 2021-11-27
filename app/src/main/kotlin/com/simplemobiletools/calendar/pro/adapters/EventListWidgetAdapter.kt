@@ -14,6 +14,7 @@ import com.simplemobiletools.calendar.pro.models.*
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.LOWER_ALPHA
 import com.simplemobiletools.commons.helpers.MEDIUM_ALPHA
+import com.simplemobiletools.commons.helpers.mydebug
 import org.joda.time.DateTime
 import java.util.*
 
@@ -26,10 +27,23 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
     private var events = ArrayList<ListItem>()
     private var textColor = context.config.widgetTextColor
     private var weakTextColor = textColor.adjustAlpha(MEDIUM_ALPHA)
-    private val displayDescription = context.config.displayDescription
-    private val replaceDescription = context.config.replaceDescription
-    private val dimPastEvents = context.config.dimPastEvents
+    private var displayDescription = context.config.displayDescription
+    private var replaceDescription = context.config.replaceDescription
+    private var dimPastEvents = context.config.dimPastEvents
     private var mediumFontSize = context.getWidgetFontSize()
+
+    init {
+        initConfigValues()
+    }
+
+    private fun initConfigValues() {
+        textColor = context.config.widgetTextColor
+        weakTextColor = textColor.adjustAlpha(MEDIUM_ALPHA)
+        displayDescription = context.config.displayDescription
+        replaceDescription = context.config.replaceDescription
+        dimPastEvents = context.config.dimPastEvents
+        mediumFontSize = context.getWidgetFontSize()
+    }
 
     override fun getViewAt(position: Int): RemoteViews {
         val type = getItemViewType(position)
@@ -108,7 +122,7 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
 
         remoteView.apply {
             setTextColor(event_section_title, curTextColor)
-            setTextSize(event_section_title, mediumFontSize)
+            setTextSize(event_section_title, mediumFontSize - 3f)
             setText(event_section_title, item.title)
 
             Intent().apply {
@@ -123,6 +137,7 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
         val curTextColor = textColor
         remoteView.apply {
             setTextColor(event_section_title, curTextColor)
+            setTextSize(event_section_title, mediumFontSize)
             setText(event_section_title, item.title)
         }
     }
@@ -142,9 +157,7 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
     override fun getItemId(position: Int) = position.toLong()
 
     override fun onDataSetChanged() {
-        textColor = context.config.widgetTextColor
-        weakTextColor = textColor.adjustAlpha(LOWER_ALPHA)
-        mediumFontSize = context.getWidgetFontSize()
+        initConfigValues()
         val fromTS = DateTime().seconds() - context.config.displayPastEvents * 60
         val toTS = DateTime().plusYears(1).seconds()
         context.eventsHelper.getEventsSync(fromTS, toTS, applyTypeFilter = true) {
