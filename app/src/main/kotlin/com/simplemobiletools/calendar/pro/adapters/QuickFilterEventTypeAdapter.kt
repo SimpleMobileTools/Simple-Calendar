@@ -8,14 +8,14 @@ import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.commons.extensions.adjustAlpha
-import com.simplemobiletools.commons.helpers.MEDIUM_ALPHA
+import com.simplemobiletools.commons.helpers.LOWER_ALPHA
 import kotlinx.android.synthetic.main.quick_filter_event_type_view.view.*
 import java.util.*
 
 class QuickFilterEventTypeAdapter(
     val activity: SimpleActivity,
-    val allEventTypes: List<EventType>,
-    val quickFilterEventTypeIds: Set<String>,
+    private val allEventTypes: List<EventType>,
+    private val quickFilterEventTypeIds: Set<String>,
     val callback: () -> Unit
 ) :
     RecyclerView.Adapter<QuickFilterEventTypeAdapter.ViewHolder>() {
@@ -24,7 +24,7 @@ class QuickFilterEventTypeAdapter(
     private val displayEventTypes = activity.config.displayEventTypes
 
     private val textColorActive = activity.config.textColor
-    private val textColorInactive = textColorActive.adjustAlpha(MEDIUM_ALPHA)
+    private val textColorInactive = textColorActive.adjustAlpha(LOWER_ALPHA)
 
     private val minItemWidth = activity.resources.getDimensionPixelSize(R.dimen.quick_filter_min_width)
     private var lastClickTS = 0L
@@ -49,8 +49,6 @@ class QuickFilterEventTypeAdapter(
 
         notifyItemChanged(pos)
     }
-
-    fun getSelectedItemsList() = activeKeys.asSequence().map { it }.toMutableList() as ArrayList<Long>
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val parentWidth = parent.measuredWidth
