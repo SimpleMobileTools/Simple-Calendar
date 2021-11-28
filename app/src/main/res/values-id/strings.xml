@@ -32,6 +32,7 @@
     <string name="filter_events_by_type">Filter acara menurut kategori</string>
     <string name="please_fill_location">Silakan isi lokasi untuk ditampilkan pada peta</string>
     <string name="public_event_notification_text">Aacara yang akan datang</string>
+    <string name="saving_filtered_out">Saving… But the selected event type is filtered out in the top Menu - Filter</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Perulangan</string>

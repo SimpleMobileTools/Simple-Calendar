@@ -30,6 +30,7 @@
     <string name="filter_events_by_type">Filtra eventi per tipologia</string>
     <string name="please_fill_location">Riempire la posizione per essere mostrata su una mappa</string>
     <string name="public_event_notification_text">Un evento è imminente</string>
+    <string name="saving_filtered_out">Saving… But the selected event type is filtered out in the top Menu - Filter</string>
     <!-- Event Repetition -->
     <string name="repetition">Ripeti</string>
     <string name="no_repetition">Non ripetere</string>

@@ -30,6 +30,7 @@
     <string name="filter_events_by_type">Filtrer hendelser etter type</string>
     <string name="please_fill_location">Oppfør et sted som skal vises på et kart</string>
     <string name="public_event_notification_text">En hendelse er forestående</string>
+    <string name="saving_filtered_out">Saving… But the selected event type is filtered out in the top Menu - Filter</string>
     <!-- Event Repetition -->
     <string name="repetition">Gjentagelse</string>
     <string name="no_repetition">Ingen gjentagelse</string>

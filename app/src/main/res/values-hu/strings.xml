@@ -30,6 +30,7 @@
     <string name="filter_events_by_type">Események szűrése típus szerint</string>
     <string name="please_fill_location">Töltse ki a helyet, hogy megjelenjen a térképen</string>
     <string name="public_event_notification_text">Egy esemény következik</string>
+    <string name="saving_filtered_out">Saving… But the selected event type is filtered out in the top Menu - Filter</string>
     <!-- Event Repetition -->
     <string name="repetition">Ismétlés</string>
     <string name="no_repetition">Nincs ismétlés</string>

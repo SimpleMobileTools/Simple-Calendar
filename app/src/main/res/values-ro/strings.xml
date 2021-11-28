@@ -32,6 +32,7 @@
     <string name="filter_events_by_type">Filtrează evenimentele după tip</string>
     <string name="please_fill_location">Completează o locație care să fie afișată pe o hartă</string>
     <string name="public_event_notification_text">Un eveniment se apropie</string>
+    <string name="saving_filtered_out">Saving… But the selected event type is filtered out in the top Menu - Filter</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Repetiție</string>

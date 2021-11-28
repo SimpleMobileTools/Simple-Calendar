@@ -36,6 +36,7 @@
     <string name="filter_events_by_type">টাইপের মত করে ইভেন্টগুলো ফিল্টার করুন</string>
     <string name="please_fill_location">ম্যাপে দেখানোর জন্য লোকেশন পূরণ করুন</string>
     <string name="public_event_notification_text">একটি ইভেন্ট আসছে</string>
+    <string name="saving_filtered_out">Saving… But the selected event type is filtered out in the top Menu - Filter</string>
 
     <!-- Event Repetition -->
     <string name="repetition">পুনরাবৃত্তি</string>

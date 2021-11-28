@@ -32,6 +32,7 @@
     <string name="filter_events_by_type">Фільтрувати події за типом</string>
     <string name="please_fill_location">Будь ласка, вкажіть місце, що буде показано на карті</string>
     <string name="public_event_notification_text">Наближається подія</string>
+    <string name="saving_filtered_out">Saving… But the selected event type is filtered out in the top Menu - Filter</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Повторювати</string>

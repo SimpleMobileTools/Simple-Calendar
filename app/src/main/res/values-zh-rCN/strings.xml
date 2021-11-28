@@ -36,6 +36,7 @@
     <string name="filter_events_by_type">依类型筛选活动</string>
     <string name="please_fill_location">请填入要显示在地图上的地点</string>
     <string name="public_event_notification_text">一个活动即将到来</string>
+    <string name="saving_filtered_out">Saving… But the selected event type is filtered out in the top Menu - Filter</string>
     <!-- Event Repetition -->
     <string name="repetition">重复</string>
     <string name="no_repetition">不重复</string>
