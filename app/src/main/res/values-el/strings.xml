@@ -32,7 +32,7 @@
     <string name="filter_events_by_type">Φιλτράρισμα ανά τύπο</string>
     <string name="please_fill_location">Συμπληρώστε μια τοποθεσία που θα εμφανίζεται στο χάρτη</string>
     <string name="public_event_notification_text">Μια εκδήλωση είναι επερχόμενη</string>
-    <string name="saving_filtered_out">Saving… But the selected event type is filtered out in the top Menu - Filter</string>
+    <string name="saving_filtered_out">Αποθήκευση... Αλλά ο επιλεγμένος τύπος συμβάντος φιλτράρεται στο πάνω μενού - Φίλτρο</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Επανάληψη</string>
@@ -178,7 +178,7 @@
     <string name="event_lists">Λίστες εκδηλώσεων</string>
     <string name="display_past_events">Εμφάνιση προηγούμενων συμβάντων</string>
     <string name="replace_description_with_location">Αντικατάσταση περιγραφής εκδήλωσης με τοποθεσία</string>
-    <string name="display_description_or_location">Display description or location</string>
+    <string name="display_description_or_location">Εμφάνιση περιγραφής ή θέσης</string>
     <string name="delete_all_events">Διαγραφή όλων των εκδηλώσεων</string>
     <string name="delete_all_events_confirmation">Είστε βέβαιοι ότι θέλετε να διαγράψετε όλες τις εκδηλώσεις; Αυτό θα αφήσει τους τύπους και άλλες ρυθμίσεις ανέπαφες.</string>
     <string name="show_a_grid">Εμφάνιση πλέγματος</string>
