@@ -157,7 +157,7 @@
     <string name="manage_event_types">Termintypen verwalten</string>
     <string name="start_day_at">Wochenansicht beginnt um</string>
     <string name="end_day_at">Wochenansicht endet um</string>
-    <string name="midnight_spanning">Ereignissen, die sich über die gesamte Mitternachtszeit erstrecken, in der oberen Leiste anzeigen</string>
+    <string name="midnight_spanning">Ereignisse, die sich über Mitternacht erstrecken, in der oberen Leiste anzeigen</string>
     <string name="allow_customizing_day_count">Erlaube den Tageszähler anzupassen</string>
     <string name="week_numbers">Kalenderwoche anzeigen</string>
     <string name="vibrate">Vibration bei Erinnerung</string>
@@ -169,7 +169,7 @@
     <string name="event_lists">Terminlisten</string>
     <string name="display_past_events">Vergangene Termine anzeigen</string>
     <string name="replace_description_with_location">Terminbeschreibung mit Ort ersetzen</string>
-    <string name="display_description_or_location">Display description or location</string>
+    <string name="display_description_or_location">Terminbeschreibung oder Ort anzeigen</string>
     <string name="delete_all_events">Alle Termine löschen</string>
     <string name="delete_all_events_confirmation">Bist du sicher, dass du alle Termine löschen willst? Deine Termintypen und Einstellungen bleiben erhalten.</string>
     <string name="show_a_grid">Raster anzeigen</string>
