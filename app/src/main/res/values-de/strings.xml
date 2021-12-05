@@ -164,7 +164,7 @@
     <string name="reminder_sound">Erinnerungston</string>
     <string name="no_ringtone_picker">Keine App zum Einstellen des Klingeltons gefunden</string>
     <string name="no_ringtone_selected">Kein Klingelton ausgewählt</string>
-    <string name="day_end_before_start">Terminbeginn kann nicht vor Terminende liegen</string>
+    <string name="day_end_before_start">Terminende kann nicht vor Terminanfang liegen</string>
     <string name="caldav_sync">CalDAV-Synchronisierung</string>
     <string name="event_lists">Terminlisten</string>
     <string name="display_past_events">Vergangene Termine anzeigen</string>
