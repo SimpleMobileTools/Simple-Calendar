@@ -36,7 +36,7 @@
     <string name="filter_events_by_type">依类型筛选活动</string>
     <string name="please_fill_location">请填入要显示在地图上的地点</string>
     <string name="public_event_notification_text">一个活动即将到来</string>
-    <string name="saving_filtered_out">Saving… But the selected event type is filtered out in the top Menu - Filter</string>
+    <string name="saving_filtered_out">正在保存…但所选择的事件类型在顶部菜单的“筛选”中被过滤掉</string>
     <!-- Event Repetition -->
     <string name="repetition">重复</string>
     <string name="no_repetition">不重复</string>
@@ -169,7 +169,7 @@
     <string name="event_lists">活动列表</string>
     <string name="display_past_events">显示过去的活动</string>
     <string name="replace_description_with_location">活动描述改成地点</string>
-    <string name="display_description_or_location">Display description or location</string>
+    <string name="display_description_or_location">显示描述或位置</string>
     <string name="delete_all_events">删除全部活动</string>
     <string name="delete_all_events_confirmation">您确定要删除全部活动吗?会完整留下您的活动类型和其他设定。 </string>
     <string name="show_a_grid">显示网络</string>

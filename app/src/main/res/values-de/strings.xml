@@ -36,7 +36,7 @@
     <string name="filter_events_by_type">Termine nach Typ filtern</string>
     <string name="please_fill_location">Bitte trage einen Ort ein, der auf einer Karte angezeigt werden soll</string>
     <string name="public_event_notification_text">Ein Termin steht an</string>
-    <string name="saving_filtered_out">Saving… But the selected event type is filtered out in the top Menu - Filter</string>
+    <string name="saving_filtered_out">Speichern … Aber der ausgewählte Ereignistyp wird im oberen Menü - Filter herausgefiltert</string>
     <!-- Event Repetition -->
     <string name="repetition">Wiederholung</string>
     <string name="no_repetition">Keine Wiederholung</string>
@@ -164,12 +164,12 @@
     <string name="reminder_sound">Erinnerungston</string>
     <string name="no_ringtone_picker">Keine App zum Einstellen des Klingeltons gefunden</string>
     <string name="no_ringtone_selected">Kein Klingelton ausgewählt</string>
-    <string name="day_end_before_start">Terminbeginn kann nicht vor Terminende liegen</string>
+    <string name="day_end_before_start">Terminende kann nicht vor Terminanfang liegen</string>
     <string name="caldav_sync">CalDAV-Synchronisierung</string>
     <string name="event_lists">Terminlisten</string>
     <string name="display_past_events">Vergangene Termine anzeigen</string>
     <string name="replace_description_with_location">Terminbeschreibung mit Ort ersetzen</string>
-    <string name="display_description_or_location">Display description or location</string>
+    <string name="display_description_or_location">Beschreibung oder Standort anzeigen</string>
     <string name="delete_all_events">Alle Termine löschen</string>
     <string name="delete_all_events_confirmation">Bist du sicher, dass du alle Termine löschen willst? Deine Termintypen und Einstellungen bleiben erhalten.</string>
     <string name="show_a_grid">Raster anzeigen</string>
@@ -249,7 +249,7 @@
         in den Einstellungen aktiviert sein. Die Zeitzone eines Termins kann dann beim Anlegen oder Bearbeiten geändert werden. In den Standardeinstellungen ist dies nicht aktiv, da die meisten Anwender die Möglichkeit nicht benötigen werden.</string>
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
-    <string name="app_title">Schlichter Kalendar Pro - Termine und Erinnerungen</string>
+    <string name="app_title">Schlichter Kalendar Pro – Termine und Erinnerungen</string>
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Der beste Kalender zum Organisieren der Ereignisse während des ganzen Tages</string>
     <string name="app_long_description">

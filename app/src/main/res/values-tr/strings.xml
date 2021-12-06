@@ -36,7 +36,7 @@
     <string name="filter_events_by_type">Etkinlikleri türe göre filtrele</string>
     <string name="please_fill_location">Lütfen haritada gösterilecek bir yeri doldurun</string>
     <string name="public_event_notification_text">Bir etkinlik yaklaşıyor</string>
-    <string name="saving_filtered_out">Saving… But the selected event type is filtered out in the top Menu - Filter</string>
+    <string name="saving_filtered_out">Kaydediliyor… Ancak seçilen etkinlik türü üst Menü - Filtre kısmında filtreleniyor</string>
     <!-- Event Repetition -->
     <string name="repetition">Tekrarla</string>
     <string name="no_repetition">Tekrarlama yok</string>
@@ -169,7 +169,7 @@
     <string name="event_lists">Etkinlik listeleri</string>
     <string name="display_past_events">Geçmişten gelen etkinlikleri görüntüle</string>
     <string name="replace_description_with_location">Etkinlik açıklamasını konumla değiştir</string>
-    <string name="display_description_or_location">Display description or location</string>
+    <string name="display_description_or_location">Açıklamayı veya konumu göster</string>
     <string name="delete_all_events">Tüm etkinlikleri sil</string>
     <string name="delete_all_events_confirmation">Tüm etkinlikleri silmek istediğinizden emin misiniz? Bu, etkinlik türlerinizi ve diğer ayarlarınızı bozulmamış halde bırakır.</string>
     <string name="show_a_grid">Izgara göster</string>
@@ -195,7 +195,7 @@
     <string name="last_used_one">Son kullanılan</string>
     <string name="other_time">Başka zaman</string>
     <string name="highlight_weekends">Bazı görünümlerde hafta sonlarını vurgula</string>
-    <string name="highlight_weekends_color">Color of highlighted weekends</string>
+    <string name="highlight_weekends_color">Vurgulanan hafta sonlarının rengi</string>
     <string name="allow_changing_time_zones">Etkinlik saat dilimlerini değiştirmeye izin ver</string>
     <string name="manage_quick_filter_event_types">Hızlı filtre etkinlik türlerini yönet</string>
     <!-- CalDAV sync -->

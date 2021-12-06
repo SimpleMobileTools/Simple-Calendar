@@ -12,13 +12,15 @@
     <string name="no_upcoming_events">Näyttää siltä ettei sinulla ole tulevia tapahtumia.</string>
     <string name="go_to_today">Mene tähän päivään</string>
     <string name="go_to_date">Mene päivään</string>
-    <string name="upgraded_from_free">Hei,\n\näyttää siltä, että olet päivittänyt vanhasta ilmaisesta sovelluksesta. Sinun on siirrettävä paikallisesti tallennetut tapahtumat manuaalisesti viemällä .ics-tiedostoon ja tuomalla sitten. Löydät molemmat vienti/tuonti-painikkeet päänäytön valikosta.\n\nTämän jälkeen voit poistaa vanhan version, jonka sovelluksen asetusten yläosassa on Päivitä Pro-painike. Tämän jälkeen sinun on vain nollattava sovellusasetuksesi.</string>
-
+    <string name="upgraded_from_free">Hei,
+\n
+\nnäyttää siltä, että olet päivittänyt vanhasta ilmaisesta sovelluksesta. Sinun on siirrettävä paikallisesti tallennetut tapahtumat manuaalisesti viemällä ne ensin .ics-tiedostoon ja tuomalla ne sitten sovellukseen. Löydät molemmat vienti/tuonti-painikkeet päänäytön valikosta.
+\n
+\nTämän jälkeen voit poistaa vanhan version, jonka sovelluksen asetusten yläosassa on Päivitä Pro-painike. Tämän jälkeen sinun on vain nollattava sovellusasetuksesi.</string>
     <!-- Widget titles -->
     <string name="widget_monthly">Kalenteri kuukausittain</string>
     <string name="widget_list">Kalenteri tapahtumaluettelo</string>
     <string name="widget_todays_date">Kalenteri tänään</string>
-
     <!-- Event -->
     <string name="event">Tapahtuma</string>
     <string name="edit_event">Muokkaa Tapahtumaa</string>
@@ -26,14 +28,13 @@
     <string name="create_new_event">Luo uusi tapahtuma</string>
     <string name="duplicate_event">Kopio tapahtuma</string>
     <string name="title_empty">Aihe ei voi olla tyhjä</string>
-    <string name="end_before_start">Tapahtuma ei voi päättyä ennen kuin se alkaa.</string>
+    <string name="end_before_start">Tapahtuma ei voi päättyä ennen kuin se alkaa</string>
     <string name="event_added">Tapahtuma lisättiin onnistuneesti</string>
     <string name="event_updated">Tapahtuma päivitettiin onnistuneesti</string>
     <string name="filter_events_by_type">Suodata tapahtumat tyypeittäin</string>
     <string name="please_fill_location">Täytä sijainti, joka näytetään kartalla</string>
     <string name="public_event_notification_text">Tapahtuma tulossa</string>
-    <string name="saving_filtered_out">Saving… But the selected event type is filtered out in the top Menu - Filter</string>
-
+    <string name="saving_filtered_out">Tallennetaan… mutta valittu tapahtumatyyppi on suodatettu pois näkyvistä Menu - Suodata-valikosta</string>
     <!-- Event Repetition -->
     <string name="repetition">Toisto</string>
     <string name="no_repetition">Ei toistoa</string>
@@ -75,7 +76,6 @@
     <string name="fourth_m">neljäs</string>
     <string name="fifth_m">viides</string>
     <string name="last_m">viimeinen</string>
-
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
     <string name="repeat_every_f">Toista jokaisena</string>
@@ -86,29 +86,25 @@
     <string name="fourth_f">neljäntenä</string>
     <string name="fifth_f">viidentenä</string>
     <string name="last_f">viimeisenä</string>
-
     <!-- Birthdays -->
     <string name="birthdays">Syntymäpäivät</string>
     <string name="add_birthdays">Lisää yhteystietojen syntymäpäivät</string>
     <string name="no_birthdays">Syntymäpäiviä ei löytynyt</string>
     <string name="no_new_birthdays">Uusia syntymäpäiviä ei löytynyt</string>
     <string name="birthdays_added">Syntymäpäivät lisättiin onnistunesti</string>
-    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
-
+    <string name="add_birthdays_automatically">Lisää syntymäpäivät automaattisesti</string>
     <!-- Anniversaries -->
     <string name="anniversaries">Vuosipäivät</string>
     <string name="add_anniversaries">Lisää yhteystietojen vuosipäivät</string>
     <string name="no_anniversaries">Vuosipäiviä ei löytynyt</string>
     <string name="no_new_anniversaries">Uusia vuosipäiviä ei löytynyt</string>
     <string name="anniversaries_added">Vuosipäivät lisättiin onnistuneesti</string>
-    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
-
+    <string name="add_anniversaries_automatically">Lisää vuosipäivät automaattisesti</string>
     <!-- Event Reminders -->
     <string name="reminder">Muistutus</string>
     <string name="before">ennen</string>
     <string name="add_another_reminder">Lisää toinen muistutus</string>
     <string name="event_reminders">Tapahtumamuistutukset</string>
-
     <!-- Event attendees -->
     <string name="add_another_attendee">Lisää toinen osallistuja</string>
     <string name="my_status">Tilani:</string>
@@ -116,10 +112,8 @@
     <string name="not_going">En osallistu</string>
     <string name="maybe_going">Ehkä osallistun</string>
     <string name="invited">Kutsuttu</string>
-
     <!-- Time zones -->
     <string name="enter_a_country">Anna maa tai aikavyöhyke</string>
-
     <!-- Export / Import -->
     <string name="import_events">Tuo tapahtumat</string>
     <string name="export_events">Vie tapahtumat</string>
@@ -130,16 +124,13 @@
     <string name="include_event_types">Sisällytä tapahtumatyypit</string>
     <string name="filename_without_ics">Tiedostonimi (ilman .ics)</string>
     <string name="ignore_event_types">Ohita tiedostoon tallennetut tapahtumatyypit, käytä aina oletusta</string>
-
     <!-- Event details -->
     <string name="location">Sijainti</string>
     <string name="description">Kuvaus</string>
     <string name="all_day">Koko päivä</string>
-
     <!-- Weekly view -->
     <string name="week">Viikko</string>
-    <string name="start_week_with_current_day">Start week with the current day</string>
-
+    <string name="start_week_with_current_day">Aloita viikko kuluvasta päivästä</string>
     <!-- Event types -->
     <string name="event_types">Tapahtuma tyypit</string>
     <string name="add_new_type">Lisää uusi tyyppi</string>
@@ -152,16 +143,14 @@
     <string name="move_events_into_default">Siirrä tapahtumat, joihin tapahtuma liittyy, oletustapahtumatyyppiin</string>
     <string name="remove_affected_events">Poista pysyvästi vaikutusalaan kuuluvat tapahtumat</string>
     <string name="unsync_caldav_calendar">Jotta voit poistaa CalDAV kalenterin, sen synkronointi täytyy poistaa käytöstä</string>
-
     <!-- Holidays -->
-    <string name="holidays">Holidays</string>
+    <string name="holidays">Lomat</string>
     <string name="add_holidays">Lisää juhlapäivät</string>
     <string name="national_holidays">Kansalliset juhlapäivät</string>
     <string name="religious_holidays">Uskonnoliset juhlapäivät</string>
     <string name="holidays_imported_successfully">Juhlapäivät on onnistuneesti tuotu \"Juhlapäivät\" tapahtumatyyppeihin</string>
     <string name="importing_some_holidays_failed">Joidenkin tapahtumien tuominen epäonnistui</string>
     <string name="importing_holidays_failed">Juhlapäivien tuominen epäonnistui</string>
-
     <!-- Settings -->
     <string name="manage_event_types">Hallitse tapahtumatyyppejä</string>
     <string name="start_day_at">Päivä alkaa klo</string>
@@ -178,7 +167,7 @@
     <string name="event_lists">Tapahtumaluettelo</string>
     <string name="display_past_events">Näytä menneet tapahtumat</string>
     <string name="replace_description_with_location">Korvaa tapahtuman kuvaus sijainnilla</string>
-    <string name="display_description_or_location">Display description or location</string>
+    <string name="display_description_or_location">Näytä kuvaus tai sijainti</string>
     <string name="delete_all_events">Poista kaikki tapahtumat</string>
     <string name="delete_all_events_confirmation">Haluatko varmasti poistaa kaikki tapahtumat? Tämä jättää tapahtumatyypisi ja muut asetukset ennalleen.</string>
     <string name="show_a_grid">Näytä ruudukko</string>
@@ -204,10 +193,9 @@
     <string name="last_used_one">Viimeksi käytetty</string>
     <string name="other_time">Muu aika</string>
     <string name="highlight_weekends">Korosta viikonloppuja joistakin näkymistä</string>
-    <string name="highlight_weekends_color">Color of highlighted weekends</string>
+    <string name="highlight_weekends_color">Korostettujen viikonloppujen väri</string>
     <string name="allow_changing_time_zones">Salli tapahtumien aikavyöhykkeiden muuttaminen</string>
     <string name="manage_quick_filter_event_types">Hallitse pikasuodatuksen tapahtumatyyppejä</string>
-
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Valitse synkronoitavat kalenterit</string>
@@ -225,7 +213,6 @@
     <string name="no_synchronized_calendars">Synkronoitavia kalentereita ei löytynyt</string>
     <string name="status_free">Vapaa</string>
     <string name="status_busy">Varattu</string>
-
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">Maanantaisin</string>
@@ -235,7 +222,6 @@
     <string name="friday_alt">Perjantaisin</string>
     <string name="saturday_alt">Lauantaisin</string>
     <string name="sunday_alt">Sunnuntaisin</string>
-
     <!-- List widget config example events -->
     <string name="sample_title_1">Treeni</string>
     <string name="sample_description_1">Jalkapäivä</string>
@@ -245,10 +231,9 @@
     <string name="sample_title_4">Lounas Marian kanssa</string>
     <string name="sample_description_4">Kurvin grillillä</string>
     <string name="sample_title_5">Kahvitauko</string>
-
     <!-- FAQ -->
     <string name="faq_1_title">Kuinka voin poistaa \"Lisää juhlapäivät\"-painikkeella tuotuja juhlapäiviä?</string>
-    <string name="faq_1_text">Näin luodut juhlapäivät lisätään uuteen tapahtumatyyppiin nimeltä \"Juhlapäivät\". Siirry kohtaan Asetukset -> Hallitse tapahtumatyyppejä,
+    <string name="faq_1_text">Näin luodut juhlapäivät lisätään uuteen tapahtumatyyppiin nimeltä \"Juhlapäivät\". Siirry kohtaan Asetukset -&gt; Hallitse tapahtumatyyppejä,
          paina pitkään annettua tapahtuman tyyppiä ja poista se valitsemalla roskakorin kuvaa.</string>
     <string name="faq_2_title">Voinko synkronoida tapahtumani Google-kalenterin tai muun CalDAVia tukevan palvelun kautta?</string>
     <string name="faq_2_text">Kyllä, vaihda vain "CalDAV synkronointi" sovelluksen asetuksissa ja valitse synkronoitavat kalenterit. Tarvitset kuitenkin jonkin kolmannen osapuolen sovelluksen, joka hoitaa laitteen ja palvelinten välisen synkronoinnin.
@@ -259,7 +244,6 @@
     <string name="faq_4_title">Tukeeko sovellus aikavyöhykkeitä?</string>
     <string name="faq_4_text">Kyllä. Oletuksena kaikki tapahtumat luodaan nykyiselle aikavyöhykkeellesi. Jos haluat muuttaa tapahtuman aikavyöhykettä,
          sinun on ensin otettava käyttöön aikavyöhykkeen valitsin sovelluksen asetuksissa ja muutettava se sitten Tapahtuman tiedot-näytössä. Se on oletusarvoisesti pois käytöstä, koska useimmat ihmiset eivät tarvitse sitä.</string>
-
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Simple Calendar Pro - Tapahtumat, muistutukset</string>
@@ -309,7 +293,6 @@
         <b>Reddit:</b>
         https://www.reddit.com/r/SimpleMobileTools
     </string>
-
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res

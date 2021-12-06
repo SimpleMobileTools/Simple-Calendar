@@ -12,7 +12,13 @@
     <string name="no_upcoming_events">Non c\'è nessun evento imminente.</string>
     <string name="go_to_today">Vai a oggi</string>
     <string name="go_to_date">Vai alla data</string>
-    <string name="upgraded_from_free">Hey,\n\nhai aggiornato dalla vecchia versione gratuita. Devi migrare manualmente gli eventi salvati esportandoli prima in un file .ics, per poi importare tale file. Puoi trovare i pulsanti per tali funzioni nel menu della schermata principale.\n\nPuoi disinstallare le vecchia versione, che ha un pulsante \'Aggiorna a Pro\' in alto nelle impostazioni. Dovrai reimpostare solamente le impostazioni dell\'app.\n\nGrazie!</string>
+    <string name="upgraded_from_free">Hey,
+\n
+\nhai aggiornato dalla vecchia versione gratuita. Devi migrare manualmente gli eventi salvati esportandoli prima in un file .ics, per poi importare tale file. Puoi trovare i pulsanti per tali funzioni nel menu della schermata principale.
+\n
+\nPuoi disinstallare le vecchia versione, che ha un pulsante «Aggiorna a Pro» in alto nelle impostazioni. Dovrai reimpostare solamente le impostazioni dell\'app.
+\n
+\nGrazie!</string>
     <!-- Widget titles -->
     <string name="widget_monthly">Calendario mensile</string>
     <string name="widget_list">Lista degli eventi del calendario</string>
@@ -30,7 +36,7 @@
     <string name="filter_events_by_type">Filtra eventi per tipologia</string>
     <string name="please_fill_location">Riempire la posizione per essere mostrata su una mappa</string>
     <string name="public_event_notification_text">Un evento è imminente</string>
-    <string name="saving_filtered_out">Saving… But the selected event type is filtered out in the top Menu - Filter</string>
+    <string name="saving_filtered_out">Salvataggio… Ma il tipo di evento selezionato viene filtrato in alto Menu - Filtro</string>
     <!-- Event Repetition -->
     <string name="repetition">Ripeti</string>
     <string name="no_repetition">Non ripetere</string>
@@ -88,14 +94,14 @@
     <string name="no_birthdays">Nessun compleanno trovato</string>
     <string name="no_new_birthdays">Nessun nuovo compleanno trovato</string>
     <string name="birthdays_added">Compleanni aggiunti con successo</string>
-    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
+    <string name="add_birthdays_automatically">Aggiungi automaticamente nuovi compleanni</string>
     <!-- Anniversaries -->
     <string name="anniversaries">Anniversari</string>
     <string name="add_anniversaries">Aggiungi anniversari dai contatti</string>
     <string name="no_anniversaries">Nessun anniversario trovato</string>
     <string name="no_new_anniversaries">Nessun nuovo anniversario trovato</string>
     <string name="anniversaries_added">Anniversari aggiunti con successo</string>
-    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
+    <string name="add_anniversaries_automatically">Aggiungi automaticamente nuovi anniversari</string>
     <!-- Event Reminders -->
     <string name="reminder">Promemoria</string>
     <string name="before">prima</string>
@@ -119,14 +125,14 @@
     <string name="export_past_events_too">Esporta anche gli eventi passati</string>
     <string name="include_event_types">Includi i tipi di evento</string>
     <string name="filename_without_ics">Nome file (senza .ics)</string>
-    <string name="ignore_event_types">Ignore event types in the file, always use the default one</string>
+    <string name="ignore_event_types">Ignora i tipi di evento nel file, usa sempre quello predefinito</string>
     <!-- Event details -->
     <string name="location">Posizione</string>
     <string name="description">Descrizione</string>
     <string name="all_day">Tutto il giorno</string>
     <!-- Weekly view -->
     <string name="week">Settimana</string>
-    <string name="start_week_with_current_day">Start week with the current day</string>
+    <string name="start_week_with_current_day">Inizia la settimana con il giorno corrente</string>
     <!-- Event types -->
     <string name="event_types">Tipi di evento</string>
     <string name="add_new_type">Aggiungi nuovo tipo</string>
@@ -152,7 +158,7 @@
     <string name="start_day_at">Il giorno inizia alle</string>
     <string name="end_day_at">Il giorno finisce alle</string>
     <string name="midnight_spanning">Mostra gli eventi a cavallo della mezzanotte nella barra in alto</string>
-    <string name="allow_customizing_day_count">Allow customizing day count</string>
+    <string name="allow_customizing_day_count">Permetti la personalizzazione del conteggio dei giorni</string>
     <string name="week_numbers">Mostra numero settimane</string>
     <string name="vibrate">Vibra per le notifiche di promemoria</string>
     <string name="reminder_sound">Suoneria promemoria</string>
@@ -163,7 +169,7 @@
     <string name="event_lists">Liste degli eventi</string>
     <string name="display_past_events">Mostra eventi passati</string>
     <string name="replace_description_with_location">Sostituisci la descrizione con la posizione</string>
-    <string name="display_description_or_location">Display description or location</string>
+    <string name="display_description_or_location">Visualizza la descrizione o la posizione</string>
     <string name="delete_all_events">Cancella tutti gli eventi</string>
     <string name="delete_all_events_confirmation">Vuoi cancellare tutti gli eventi? Questo lascerà i tuoi tipi di evento e le altre impostazioni invariate.</string>
     <string name="show_a_grid">Mostra una griglia</string>
@@ -189,9 +195,9 @@
     <string name="last_used_one">L\'ultimo utilizzato</string>
     <string name="other_time">Altro periodo</string>
     <string name="highlight_weekends">Evidenzia il fine-settimana in alcune viste</string>
-    <string name="highlight_weekends_color">Color of highlighted weekends</string>
+    <string name="highlight_weekends_color">Colore dei fine settimana evidenziati</string>
     <string name="allow_changing_time_zones">Abilita il cambio del fuso orario negli eventi</string>
-    <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
+    <string name="manage_quick_filter_event_types">Gestisci i tipi di eventi con filtro rapido</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Seleziona un calendario da sincronizzare</string>
@@ -242,7 +248,7 @@
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Semplice Calendario Pro - Eventi &amp; Promemoria</string>
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Simple mobile 2020 calendar. Schedule planner &amp; appointment reminder for any day</string>
+    <string name="app_short_description">Semplice calendario mobile 2020. Pianificatore e promemoria degli appuntamenti per qualsiasi giorno</string>
     <string name="app_long_description">
         Semplice Calendario Pro è un calendario offline completamente personalizzabile progettato per fare esattamente quello che un calendario dovrebbe fare. <b>Non ci sono funzionalità complicate, permessi non necessari e senza pubblicità!</b>
 

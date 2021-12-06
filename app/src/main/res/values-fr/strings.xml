@@ -36,7 +36,7 @@
     <string name="filter_events_by_type">Filtrer les évènements</string>
     <string name="please_fill_location">Veuillez renseigner un lieu pour visualisation sur une carte</string>
     <string name="public_event_notification_text">Un évènement est à venir</string>
-    <string name="saving_filtered_out">Saving… But the selected event type is filtered out in the top Menu - Filter</string>
+    <string name="saving_filtered_out">Sauvegarde… Mais le type d\'événement sélectionné est filtré dans le Menu supérieur - Filtre</string>
     <!-- Event Repetition -->
     <string name="repetition">Répétition</string>
     <string name="no_repetition">Aucune répétition</string>
@@ -169,7 +169,7 @@
     <string name="event_lists">Listes d’évènements</string>
     <string name="display_past_events">Afficher les évènements passés</string>
     <string name="replace_description_with_location">Remplacer la description de lévènement par lemplacement</string>
-    <string name="display_description_or_location">Display description or location</string>
+    <string name="display_description_or_location">Afficher la description ou l\'emplacement</string>
     <string name="delete_all_events">Supprimer tous les évènements</string>
     <string name="delete_all_events_confirmation">Voulez-vous vraiment supprimer tous les évènements \? Les types d’évènements et vos autres paramètres ne seront pas modifiés.</string>
     <string name="show_a_grid">Affichage en grille</string>
