@@ -12,7 +12,7 @@
     <string name="no_upcoming_events">Non c\'è nessun evento imminente.</string>
     <string name="go_to_today">Vai a oggi</string>
     <string name="go_to_date">Vai alla data</string>
-    <string name="upgraded_from_free">Hey,
+    <string name="upgraded_from_free">Ehi,
 \n
 \nhai aggiornato dalla vecchia versione gratuita. Devi migrare manualmente gli eventi salvati esportandoli prima in un file .ics, per poi importare tale file. Puoi trovare i pulsanti per tali funzioni nel menu della schermata principale.
 \n
@@ -237,13 +237,11 @@
     <string name="faq_1_title">Come posso rimuovere le festività importate tramite il pulsante «Aggiungi festività»\?</string>
     <string name="faq_1_text">Le festività create in questo modo sono inseriti in eventi di tipo «Festività». Andare in Impostazioni → Gestisci tipi di eventi, tenere premuto sul tipo desiderato ed eliminarlo selezionando il cestino.</string>
     <string name="faq_2_title">Posso sincronizzare i miei eventi tramite Google Calendar, o altri servizi che supportano CalDAV?</string>
-    <string name="faq_2_text">Sì, basta attivare l\'opzione \"Sincronizzazione CalDAV\" nelle impostazioni dell\'applicazione e selezionare i calendari da sincronizzare. Comunque è necessaria un\'applicazione di terze parti per gestire la sincronizzazione tra dispositivo e server.
-        In caso si voglia sincronizzare con Google Calendar, la loro applicazione ufficiale effettua questo lavoro. Per altri calendari sono necessarie applicazioni di terze parti, per esempio DAVx5.</string>
+    <string name="faq_2_text">Sì, basta attivare l\'opzione «Sincronizzazione CalDAV» nelle impostazioni dell\'applicazione e selezionare i calendari da sincronizzare. Comunque è necessaria un\'applicazione di terze parti per gestire la sincronizzazione tra dispositivo e server. In caso si voglia sincronizzare con Google Calendar, la loro applicazione ufficiale effettua questo lavoro. Per altri calendari sono necessarie applicazioni di terze parti, per esempio DAVx5.</string>
     <string name="faq_3_title">Visualizzo i promemoria, ma non sento l\'audio. Cosa posso fare?</string>
-    <string name="faq_3_text">Non solo visualizzare l\'attuale promemoria, ma anche riprodurre l\'audio è un lavoro prettamente del sistema. Se non si sente alcun suono, provare ad andare nelle impostazioni dell\'applicazione,
-        premere l\'opzione \"Canale audio utilizzato per il promemoria\" e cambia il canale. Se ancora non funziona, controllare le impostazioni dell\'audio, in particolare se il canale è stato mutato.</string>
+    <string name="faq_3_text">Non solo visualizzare l\'attuale promemoria, ma anche riprodurre l\'audio è un lavoro prettamente del sistema. Se non si sente alcun suono, provare ad andare nelle impostazioni dell\'applicazione, premere l\'opzione «Canale audio utilizzato per il promemoria» e cambia il canale. Se ancora non funziona, controllare le impostazioni dell\'audio, in particolare se il canale è stato mutato.</string>
     <string name="faq_4_title">L\'app supporta diversi fusi orari?</string>
-    <string name="faq_4_text">Si. Solitamente tutti gli eventi vengono create nel tuo fuso orario. Se vuoi cambiare il fuso orario di un specifico evento, devi abilitare la funzionalitá nelle impostazioni dell\'app, successivamente potrai cambiare il fuso nella schermata di dettaglio dell\'evento. La funzionalitá é disabilitata inizialmente siccome la maggior parte degli utenti non ne hanno bisogno.</string>
+    <string name="faq_4_text">Sì. Solitamente tutti gli eventi vengono create nel tuo fuso orario. Se vuoi cambiare il fuso orario di un specifico evento, devi abilitare la funzionalitá nelle impostazioni dell\'app, successivamente potrai cambiare il fuso nella schermata di dettaglio dell\'evento. La funzionalitá é disabilitata inizialmente siccome la maggior parte degli utenti non ne hanno bisogno.</string>
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Semplice Calendario Pro - Eventi &amp; Promemoria</string>
