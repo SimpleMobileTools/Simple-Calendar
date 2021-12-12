@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 6.16.2 *(2021-12-12)*
+----------------------------
+
+ * Warn the user if an event has been created in a filtered out event type
+ * Some stability and translation improvements
+
 Version 6.16.1 *(2021-11-27)*
 ----------------------------
 

@@ -1,0 +1,2 @@
+ * Warn the user if an event has been created in a filtered out event type
+ * Some stability and translation improvements
