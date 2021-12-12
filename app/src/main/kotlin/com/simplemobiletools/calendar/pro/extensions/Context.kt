@@ -20,6 +20,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.app.AlarmManagerCompat
 import androidx.core.app.NotificationCompat
 import androidx.print.PrintHelper
@@ -98,7 +99,11 @@ fun Context.scheduleNextEventReminder(event: Event, showToasts: Boolean) {
     val validReminders = event.getReminders().filter { it.type == REMINDER_NOTIFICATION }
     if (validReminders.isEmpty()) {
         if (showToasts) {
-            toast(R.string.saving)
+            if (config.displayEventTypes.contains(event.eventType.toString())) {
+                toast(R.string.saving)
+            } else {
+                toast(R.string.saving_filtered_out, Toast.LENGTH_LONG)
+            }
         }
         return
     }
