@@ -1,2 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_name">Lihtne kalender</string>
+    <string name="app_launcher_name">Kalender</string>
+    <string name="daily_view">Päevavaade</string>
+    <string name="weekly_view">Nädalavaade</string>
+    <string name="monthly_view">Kuuvaade</string>
+    <string name="monthly_daily_view">Kuu- ja päevavaade</string>
+    <string name="yearly_view">Aastavaade</string>
+    <string name="simple_event_list">Lihtne sündmuste loend</string>
+    <string name="change_view">Muuda vaadet</string>
+    <string name="no_upcoming_events">Tundub, et sul pole eelseisvaid sündmusi.</string>
+</resources>
