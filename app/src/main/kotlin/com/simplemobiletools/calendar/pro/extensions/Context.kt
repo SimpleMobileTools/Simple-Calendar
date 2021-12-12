@@ -138,9 +138,13 @@ fun Context.scheduleEventIn(notifTS: Long, event: Event, showToasts: Boolean) {
 
     val newNotifTS = notifTS + 1000
     if (showToasts) {
-        val secondsTillNotification = (newNotifTS - System.currentTimeMillis()) / 1000
-        val msg = String.format(getString(R.string.reminder_triggers_in), formatSecondsToTimeString(secondsTillNotification.toInt()))
-        toast(msg)
+        if (config.displayEventTypes.contains(event.eventType.toString())) {
+            val secondsTillNotification = (newNotifTS - System.currentTimeMillis()) / 1000
+            val msg = String.format(getString(R.string.reminder_triggers_in), formatSecondsToTimeString(secondsTillNotification.toInt()))
+            toast(msg)
+        } else {
+            toast(R.string.saving_filtered_out, Toast.LENGTH_LONG)
+        }
     }
 
     val pendingIntent = getNotificationIntent(event)
