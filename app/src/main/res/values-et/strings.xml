@@ -10,4 +10,15 @@
     <string name="simple_event_list">Lihtne sündmuste loend</string>
     <string name="change_view">Muuda vaadet</string>
     <string name="no_upcoming_events">Tundub, et sul pole eelseisvaid sündmusi.</string>
+    <string name="go_to_today">Vaata tänast päeva</string>
+    <string name="go_to_date">Vaata kuupäeva</string>
+    <string name="event">Sündmus</string>
+    <string name="edit_event">Muuda sündmust</string>
+    <string name="new_event">Uus sündmus</string>
+    <string name="create_new_event">Loo uus sündmus</string>
+    <string name="duplicate_event">Kopeeri sündmus</string>
+    <string name="title_empty">Pealkiri ei saa jääda tühjaks</string>
+    <string name="end_before_start">Sündmus ei saa lõppeda enne algust</string>
+    <string name="event_added">Sündmuse lisamine õnnestus</string>
+    <string name="event_updated">Sündmuse muutmine õnnestus</string>
 </resources>
