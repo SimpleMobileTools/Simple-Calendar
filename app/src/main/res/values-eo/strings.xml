@@ -1,2 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_launcher_name">Kalendaro</string>
+    <string name="monthly_daily_view">Monata kaj taga vido</string>
+    <string name="event">Evento</string>
+    <string name="edit_event">Modifi eventon</string>
+    <string name="new_event">Nova evento</string>
+    <string name="create_new_event">Krei novan eventon</string>
+    <string name="daily">Ĉiutage</string>
+    <string name="weekly">Ĉiusemajne</string>
+    <string name="repeat_every_m">Ripeti je ĉiu</string>
+    <string name="every_m">Ĉiu</string>
+    <string name="repeat_every_f">Ripeti je ĉiu</string>
+    <string name="every_f">Ĉiu</string>
+    <string name="fifth_f">kvina</string>
+    <string name="my_status">Mia stato:</string>
+    <string name="thursday_alt">ĵaŭdo</string>
+    <string name="friday_alt">vendredo</string>
+    <string name="app_name">Simpla Kalendaro</string>
+    <string name="daily_view">Taga vido</string>
+    <string name="monthly">Ĉiumonate</string>
+    <string name="change_view">Ŝanĝi vidon</string>
+    <string name="weekly_view">Semajna vido</string>
+    <string name="monthly_view">Monata vido</string>
+    <string name="yearly_view">Jara vido</string>
+    <string name="yearly">Ĉiujare</string>
+    <string name="weeks_raw">semajnoj</string>
+    <string name="months_raw">monatoj</string>
+    <string name="years_raw">jaroj</string>
+    <string name="fourth_f">kvara</string>
+    <string name="first_m">unua</string>
+    <string name="second_m">dua</string>
+    <string name="last_m">lasta</string>
+    <string name="first_f">unua</string>
+    <string name="sunday_alt">dimanĉo</string>
+    <string name="third_m">tria</string>
+    <string name="second_f">dua</string>
+    <string name="last_f">lasta</string>
+    <string name="fourth_m">kvara</string>
+    <string name="fifth_m">kvina</string>
+    <string name="third_f">tria</string>
+    <string name="before">antaŭ</string>
+    <string name="monday_alt">lundo</string>
+    <string name="tuesday_alt">mardo</string>
+    <string name="wednesday_alt">merkredo</string>
+    <string name="saturday_alt">sabato</string>
+</resources>
