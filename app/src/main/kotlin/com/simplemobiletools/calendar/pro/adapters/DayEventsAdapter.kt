@@ -89,7 +89,7 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
                 event_item_time.text = "${event_item_time.text} - ${Formatter.getTimeFromTS(context, event.endTS)}"
             }
 
-            event_item_description.text = if (replaceDescriptionWithLocation) event.location else event.description
+            event_item_description.text = if (replaceDescriptionWithLocation) event.location else event.description.replace("\n", " ")
             event_item_description.beVisibleIf(displayDescription && event_item_description.text.isNotEmpty())
             event_item_color_bar.background.applyColorFilter(event.color)
 

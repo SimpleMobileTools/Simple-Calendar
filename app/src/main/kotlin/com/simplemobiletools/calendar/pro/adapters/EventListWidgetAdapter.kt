@@ -92,7 +92,7 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
             setText(R.id.event_item_time, timeText)
 
             // we cannot change the event_item_color_bar rules dynamically, so do it like this
-            val descriptionText = if (replaceDescription) item.location else item.description
+            val descriptionText = if (replaceDescription) item.location else item.description.replace("\n", " ")
             if (displayDescription && descriptionText.isNotEmpty()) {
                 setText(R.id.event_item_time, "$timeText\n$descriptionText")
             }
