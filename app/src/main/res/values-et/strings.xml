@@ -21,4 +21,11 @@
     <string name="end_before_start">Sündmus ei saa lõppeda enne algust</string>
     <string name="event_added">Sündmuse lisamine õnnestus</string>
     <string name="event_updated">Sündmuse muutmine õnnestus</string>
+    <string name="public_event_notification_text">Sündmus on algamas</string>
+    <string name="repetition">Kordus</string>
+    <string name="no_repetition">Ära korda</string>
+    <string name="holidays">Pühad</string>
+    <string name="add_holidays">Lisa püha</string>
+    <string name="remove_affected_events">Eemalda vastavad sündmused püsivalt</string>
+    <string name="unsync_caldav_calendar">CalDAV-põhise kalendri eemaldamiseks pead tema sünkroniseerimise lõpetama</string>
 </resources>
