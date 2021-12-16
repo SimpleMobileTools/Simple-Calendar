@@ -12,7 +12,7 @@
     <string name="no_upcoming_events">Atrodo, kad neturite jokių artėjančių įvykių.</string>
     <string name="go_to_today">Pereiti į šiandieną</string>
     <string name="go_to_date">Pereiti į datą</string>
-    <string name="upgraded_from_free"></string>
+    <string name="upgraded_from_free"/>
     <!-- Widget titles -->
     <string name="widget_monthly">Mėnesio kalendorius</string>
     <string name="widget_list">Kalendoriaus įvykių sąrašas</string>
@@ -29,8 +29,8 @@
     <string name="event_updated">Įvykis sėkmingai atnaujintas</string>
     <string name="filter_events_by_type">Filtruoti įvykius pagal tipą</string>
     <string name="please_fill_location">Įveskite vietą, kuri bus rodoma žemėlapyje</string>
-    <string name="public_event_notification_text"></string>
-    <string name="saving_filtered_out"></string>
+    <string name="public_event_notification_text"/>
+    <string name="saving_filtered_out"/>
     <!-- Event Repetition -->
     <string name="repetition">Pasikartojimas</string>
     <string name="no_repetition">Be pasikartojimo</string>
@@ -44,13 +44,13 @@
     <string name="repeat_till">Kartoti iki</string>
     <string name="forever">Amžinai</string>
     <string name="event_is_repeatable">Įvykis yra pasikartojantis</string>
-    <string name="selection_contains_repetition"></string>
-    <string name="delete_one_only"></string>
-    <string name="delete_future_occurrences"></string>
-    <string name="delete_all_occurrences"></string>
-    <string name="update_one_only"></string>
-    <string name="update_this_and_future_occurrences"></string>
-    <string name="update_all_occurrences"></string>
+    <string name="selection_contains_repetition"/>
+    <string name="delete_one_only"/>
+    <string name="delete_future_occurrences"/>
+    <string name="delete_all_occurrences"/>
+    <string name="update_one_only"/>
+    <string name="update_this_and_future_occurrences"/>
+    <string name="update_all_occurrences"/>
     <string name="repeat_till_date">Kartoti iki datos</string>
     <string name="stop_repeating_after_x">Nutraukti kartojimą po x kartų</string>
     <string name="repeat_forever">Kartoti amžinai</string>
@@ -58,7 +58,7 @@
     <string name="repeat">Kartoti</string>
     <string name="repeat_on">Kartoti per</string>
     <string name="every_day">Kiekvieną dieną</string>
-    <string name="selected_days"></string>
+    <string name="selected_days"/>
     <string name="the_same_day">Tą pačią dieną</string>
     <string name="the_last_day">Paskutinę dieną</string>
     <string name="repeat_on_the_same_day_monthly">Kartoti tą pačią kiekvieno mėnesio dieną</string>
@@ -141,7 +141,7 @@
     <string name="unsync_caldav_calendar">Norėdami ištrinti CalDAV kalendorių, turite nustoti jį sinchronizuoti</string>
     <!-- Holidays -->
     <string name="holidays">Šventinės dienos</string>
-    <string name="add_holidays">Pridėti šventinę dieną</string>
+    <string name="add_holidays">Pridėti šventines dienas</string>
     <string name="national_holidays">Valstybinės šventinės dienos</string>
     <string name="religious_holidays">Religinės šventinės dienos</string>
     <string name="holidays_imported_successfully">Šventinės dienos buvo sėkmingai importuotos į „Šventinių dienų“ įvykio tipą</string>
@@ -151,64 +151,64 @@
     <string name="manage_event_types">Tvarkyti įvykių tipus</string>
     <string name="start_day_at">Pradėti dieną nuo</string>
     <string name="end_day_at">Užbaigti dieną ties</string>
-    <string name="midnight_spanning">Show events spanning across midnight at the top bar</string>
-    <string name="allow_customizing_day_count">Allow customizing day count</string>
+    <string name="midnight_spanning"></string>
+    <string name="allow_customizing_day_count">Leisti tinkinti dienų skaičių</string>
     <string name="week_numbers">Rodyti savaičių numerius</string>
-    <string name="vibrate">Vibruoti per priminimo pranešimą</string>
+    <string name="vibrate">Vibruoti, kai pranešama apie priminimą</string>
     <string name="reminder_sound">Priminimo garsas</string>
-    <string name="no_ringtone_picker">Nerasta programėlės nustatančios skambėjimo toną</string>
+    <string name="no_ringtone_picker">Nerasta programėlės, kuri galėtų nustatyti skambėjimo melodiją</string>
     <string name="no_ringtone_selected">Nėra</string>
-    <string name="day_end_before_start">Diena negali baigtis anksčiau nei prasideda</string>
+    <string name="day_end_before_start">Diena negali baigtis anksčiau, nei ji prasideda</string>
     <string name="caldav_sync">CalDAV sinchronizavimas</string>
     <string name="event_lists">Įvykių sąrašai</string>
     <string name="display_past_events">Rodyti praeities įvykius</string>
-    <string name="replace_description_with_location">Pakeisti įvykio apibūdinimą į įvykio vietą</string>
-    <string name="display_description_or_location">Display description or location</string>
+    <string name="replace_description_with_location">Pakeisti įvykio aprašą įvykio vieta</string>
+    <string name="display_description_or_location">Rodyti aprašą arba vietą</string>
     <string name="delete_all_events">Ištrinti visus įvykius</string>
-    <string name="delete_all_events_confirmation">Ar Jūs tikrai norite ištrinti visus įvykius? Tai neištrins įvykių tipų ir kitų nustatymų.</string>
+    <string name="delete_all_events_confirmation">Ar tikrai norite ištrinti visus įvykius\? Tai neištrins įvykių tipų ir kitų nustatymų.</string>
     <string name="show_a_grid">Rodyti tinklelį</string>
-    <string name="loop_reminders">Loop reminders until dismissed</string>
-    <string name="dim_past_events">Dim past events</string>
-    <string name="events">Events</string>
-    <string name="reminder_stream">Audio stream used by reminders</string>
-    <string name="system_stream">System</string>
-    <string name="alarm_stream">Alarm</string>
-    <string name="notification_stream">Notification</string>
-    <string name="ring_stream">Ring</string>
-    <string name="use_last_event_reminders">Use the last events\' reminders as the default for new events</string>
-    <string name="default_reminder_1">Default reminder 1</string>
-    <string name="default_reminder_2">Default reminder 2</string>
-    <string name="default_reminder_3">Default reminder 3</string>
-    <string name="view_to_open_from_widget">View to open from the event list widget</string>
-    <string name="last_view">Last view</string>
-    <string name="new_events">New events</string>
-    <string name="default_start_time">Default start time</string>
-    <string name="next_full_hour">Next full hour</string>
-    <string name="current_time">Current time</string>
-    <string name="default_duration">Default duration</string>
-    <string name="last_used_one">Last used one</string>
-    <string name="other_time">Other time</string>
-    <string name="highlight_weekends">Highlight weekends on some views</string>
-    <string name="highlight_weekends_color">Color of highlighted weekends</string>
-    <string name="allow_changing_time_zones">Allow changing event time zones</string>
-    <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
+    <string name="loop_reminders">Kartoti priminimus tol, kol jie nebus atmesti</string>
+    <string name="dim_past_events">Pritemdyti praeities įvykius</string>
+    <string name="events">Įvykiai</string>
+    <string name="reminder_stream">Garso srautas, kurį naudos priminimai</string>
+    <string name="system_stream">Sistema</string>
+    <string name="alarm_stream">Žadintuvas</string>
+    <string name="notification_stream">Pranešimas</string>
+    <string name="ring_stream">Skambutis</string>
+    <string name="use_last_event_reminders">Naudoti paskutinių įvykių priminimus kaip numatytuosius priminimus naujiems įvykiams</string>
+    <string name="default_reminder_1">Numatytasis priminimas 1</string>
+    <string name="default_reminder_2">Numatytasis priminimas 2</string>
+    <string name="default_reminder_3">Numatytasis priminimas 3</string>
+    <string name="view_to_open_from_widget">Kokį rodinį naudoti, kai atveriama iš įvykių sąrašo valdiklio</string>
+    <string name="last_view">Paskutinį naudotą rodinį</string>
+    <string name="new_events">Nauji įvykiai</string>
+    <string name="default_start_time">Numatytasis pradžios laikas</string>
+    <string name="next_full_hour">Visa kita valanda</string>
+    <string name="current_time">Dabartinis laikas</string>
+    <string name="default_duration">Numatytoji trukmė</string>
+    <string name="last_used_one">Paskiausiai naudotas</string>
+    <string name="other_time">Kitas laikas</string>
+    <string name="highlight_weekends">Paryškinti savaitgalius tam tikruose rodiniuose</string>
+    <string name="highlight_weekends_color">Paryškintų savaitgalių spalva</string>
+    <string name="allow_changing_time_zones">Leisti keisti įvykių laiko juostą</string>
+    <string name="manage_quick_filter_event_types"></string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
-    <string name="select_caldav_calendars">Pasirinkti kalendorius sinchronizavimui</string>
-    <string name="manage_synced_calendars">Tvarkyti sinchronizuotus kalendorius</string>
-    <string name="store_locally_only">Saugoti tik vietinėje atmintyje</string>
-    <string name="refresh_caldav_calendars">Atnaujinti CalDAV kalendorius</string>
-    <string name="refreshing">Atnaujinama…</string>
-    <string name="refreshing_complete">Atnaujinimas pavyko</string>
-    <string name="editing_calendar_failed">Kalendoriaus redagavimas nepavyko</string>
+    <string name="select_caldav_calendars">Pasirinkite norimus sinchronizuoti kalendorius</string>
+    <string name="manage_synced_calendars">Tvarkyti sinchronizuojamus kalendorius</string>
+    <string name="store_locally_only">Saugoti tik vietiniu mastu</string>
+    <string name="refresh_caldav_calendars">Iš naujo įkelti CalDAV kalendorius</string>
+    <string name="refreshing">Įkeliama iš naujo…</string>
+    <string name="refreshing_complete">Įkėlimas iš naujo užbaigtas</string>
+    <string name="editing_calendar_failed">Nepavyko taisyti kalendoriaus</string>
     <string name="syncing">Sinchronizuojama…</string>
-    <string name="synchronization_completed">Sinchronizacija baigta</string>
-    <string name="select_a_different_caldav_color">Select a different color (might be applied locally only)</string>
-    <string name="insufficient_permissions">You are not allowed to write in the selected calendar</string>
-    <string name="caldav_event_not_found">Event not found. Please enable CalDAV sync for the appropriate calendar in the app settings.</string>
-    <string name="no_synchronized_calendars">No synchronizable calendars have been found</string>
-    <string name="status_free">Free</string>
-    <string name="status_busy">Busy</string>
+    <string name="synchronization_completed">Sinchronizavimas užbaigtas</string>
+    <string name="select_a_different_caldav_color">Pasirinkite kitą spalvą (gali būti taikoma tik vietiniu lygmeniu)</string>
+    <string name="insufficient_permissions">Jums neleidžiama rašyti į pasirinktą kalendorių</string>
+    <string name="caldav_event_not_found">Įvykis nerastas. Programėlės nustatymuose atitinkamam kalendoriui įjunkite CalDAV sinchronizavimą.</string>
+    <string name="no_synchronized_calendars">Nerasta jokių sinchronizuojamų kalendorių</string>
+    <string name="status_free"></string>
+    <string name="status_busy"></string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">Pirmadienį</string>
@@ -225,70 +225,23 @@
     <string name="sample_description_2">Akmenų sode</string>
     <string name="sample_title_3">Bibliotekoje</string>
     <string name="sample_title_4">Pietūs su Marija</string>
-    <string name="sample_description_4">Dangoraižyje</string>
+    <string name="sample_description_4">Prekybos ir verslo centre</string>
     <string name="sample_title_5">Kavos laikas</string>
     <!-- FAQ -->
-    <string name="faq_1_title">Kaip galiu ištrinti atostogas importuotas per \"Įtraukti atostogas\" mygtuką?</string>
-    <string name="faq_1_text">Atostogos sukuriamos per naują įvykio tipą \"Atostogos\". Eikite į nustatymus -&gt; Tvarkyti įvykių tipus,
-        ilgiau paspauskite ant duotojo įykio tipo ir ištrinkite jį pasirinkdami šiukšlinę.</string>
-    <string name="faq_2_title">Ar galiu sinchronizuoti savo įvykius per Google Kalendorių, ar kitą paslaugą palaikančią CalDAV?</string>
-    <string name="faq_2_text">Taip, tiesiog pasirinkite \"CalDAV sinchronizavimas\" programėlės nustatymuose ir pasirinkite kalendorius kuriuos norite sinchronizuoti. Tačiau Jums reikės trečiosios šalies programėlės palaikančios sinchronizavimą tarp įrenginio ir serverių.
-        Jeigu norite sinchronizuoti Google kalendorių, jų oficiali kalendoriaus programėlė atliks šį darbą. Kitiems kalenoriams Jums reikės trečiosios šalies sinchronizavimo adapterio, pavyzdžiui DAVx5.</string>
-    <string name="faq_3_title">I see the visual reminders, but hear no audio. What can I do?</string>
-    <string name="faq_3_text">Not just displaying the actual reminder, but playing the audio is hugely affected by the system too. If you can\'t hear any sound, try going in the app settings,
-        pressing the \"Audio stream used by reminders\" option and changing it to a different value. If it still won\'t work, check your sound settings, if the particular stream isn\'t muted.</string>
-    <string name="faq_4_title">Does the app support time zones?</string>
-    <string name="faq_4_text">Yes, it does. By default all events are created in your current time zone. If you want to change an events\' time zone,
-        you will first have to enable the time zone picker at the app settings, then change it at the Event Details screen. It is disabled by default as most people won\'t need it.</string>
+    <string name="faq_1_title">Kaip galiu pašalinti šventines dienas, importuotas naudojant mygtuką „Pridėti šventines dienas“\?</string>
+    <string name="faq_1_text">Tuo būdu sukurtos šventinės dienos yra įterpiamos į naują įvykių tipą, pavadinimu „Šventinės dienos“. Pereikite į „Nustatymai“ -&gt; „Tvarkyti įvykių tipus“, paspauskite ir ilgiau palaikykite ant nurodyto įvykio tipo ir ištrinkite jį baksteldami ant šiukšlinės.</string>
+    <string name="faq_2_title">Ar galiu sinchronizuoti savo įvykius per „Google“ kalendorių ar kitą CalDAV palaikančią paslaugą\?</string>
+    <string name="faq_2_text">Taip, tiesiog, programėlės nustatymuose perjunkite „CalDAV sinchronizavimas“ ir pasirinkite norimus sinchronizuoti kalendorius. Vis dėlto, jums reikės kažkokios trečiųjų šalių programėlės, apdorojančios sinchronizavimą tarp įrenginio ir serverių. Jeigu norite sinchronizuoti „Google“ kalendorių, jų oficiali kalendoriaus programėlė atliks šį darbą. Naudojant kitus kalendorius jums prireiks trečiųjų šalių sinchronizavimo adapterio, pavyzdžiui, DAVx5.</string>
+    <string name="faq_3_title">Aš matau vaizdinius priminimus, bet negirdžiu jokio garso. Ką daryti\?</string>
+    <string name="faq_3_text"></string>
+    <string name="faq_4_title">Ar ši programėlė palaiko laiko juostas\?</string>
+    <string name="faq_4_text">Taip, palaiko. Pagal numatymą, visi įvykiai yra sukuriami jūsų dabartinėje laiko juostoje. Jei norite pakeisti įvykio laiko juostą, iš pradžių, programėlės nustatymuose turite įjungti laiko juostų parinktį, o tuomet pakeisti laiko juostą išsamesnėje įvykio informacijoje. Pagal numatymą, laiko juostos yra išjungtos, nes daugelis žmonių jomis nesinaudoja.</string>
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
-    <string name="app_title">Simple Calendar Pro - Events &amp; Reminders</string>
+    <string name="app_title">Paprastas kalendorius Pro - įvykiai ir priminimai</string>
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Simple mobile 2020 calendar. Schedule planner &amp; appointment reminder for any day</string>
-    <string name="app_long_description">
-        Simple Calendar Pro is a fully customizable, offline calendar designed to do exactly what a calendar should do. <b>No complicated features, unnecessary permissions and no ads!</b>
-
-        Whether you’re organizing single or recurring events, birthdays, anniversaries, business meetings, appointments or anything else, Simple Calendar Pro makes it <b>easy to stay organized</b>. With an incredible variety of <b>customization options</b> you can customize event reminders, notification sounds, calendar widgets and how the app looks.
-
-        Daily, weekly and monthly views make checking your upcoming events &amp; appointments a breeze. You can even view everything as a simple list of events rather than in calendar view, so you <b>know exactly what’s coming up in your life and when. </b>
-
-        ----------------------------------------------------------
-        <b>Simple Calendar Pro – Features &amp; Benefits</b>
-        ----------------------------------------------------------
-
-        ✔️ No ads or annoying popups
-        ✔️ No internet access needed, giving you more privacy &amp; security
-        ✔️ Only the bare minimum permissions required
-        ✔️ Emphasis on simplicity – does what a calendar needs to do!
-        ✔️ Open source
-        ✔️ Fully customizable themes &amp; calendar / event widgets
-        ✔️ Translated into 29 languages
-        ✔️ Export settings to .txt files to import to another device
-        ✔️ CalDAV calendar sync supported to sync events across devices
-        ✔️ Daily, weekly, monthly, yearly &amp; event views on the calendar
-        ✔️ Supports exporting &amp; importing events via .ics files
-        ✔️ Set multiple event reminders, customize event reminder sound and vibration
-        ✔️ Snooze option for reminders
-        ✔️ Easily add holidays, birthdays, anniversaries &amp; appointments
-        ✔️ Customize events – start time, duration, reminders etc
-        ✔️ Add event attendees to each event
-        ✔️ Use as a personal calendar or a business calendar
-        ✔️ Choose between reminders &amp; email notifications to alert you about an event
-
-        DOWNLOAD SIMPLE CALENDAR PRO – THE SIMPLE OFFLINE CALENDAR WITH NO ADS!
-
-        <b>Check out the full suite of Simple Tools here:</b>
-        https://www.simplemobiletools.com
-
-        <b>Standalone website of Simple Calendar Pro:</b>
-        https://www.simplemobiletools.com/calendar
-
-        <b>Facebook:</b>
-        https://www.facebook.com/simplemobiletools
-
-        <b>Reddit:</b>
-        https://www.reddit.com/r/SimpleMobileTools
-    </string>
+    <string name="app_short_description">Paprastas mobilusis kalendorius. Planuokite kasdienius darbus ir susitikimus</string>
+    <string name="app_long_description"></string>
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
