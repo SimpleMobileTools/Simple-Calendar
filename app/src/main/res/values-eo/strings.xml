@@ -44,4 +44,27 @@
     <string name="tuesday_alt">mardo</string>
     <string name="wednesday_alt">merkredo</string>
     <string name="saturday_alt">sabato</string>
+    <string name="go_to_today">Iri hodiaŭen</string>
+    <string name="go_to_date">Iri al dato</string>
+    <string name="repeat_till">Ripeti ĝis</string>
+    <string name="repeat">Ripeti</string>
+    <string name="repeat_on">Ripeti je</string>
+    <string name="birthdays">Naskotagoj</string>
+    <string name="location">Loko</string>
+    <string name="description">Priskribo</string>
+    <string name="holidays">Festotagoj</string>
+    <string name="no_ringtone_selected">Nenio</string>
+    <string name="system_stream">Sistemo</string>
+    <string name="sample_title_2">Renkontiĝo kun Johano</string>
+    <string name="sample_description_2">En la Rokĝardeno</string>
+    <string name="sample_title_4">Tagmanĝo kun Mario</string>
+    <string name="sample_description_4">En la Placo</string>
+    <string name="religious_holidays">Religiaj festoj</string>
+    <string name="national_holidays">Naciaj festoj</string>
+    <string name="enter_a_country">Tajpu landon aŭ horzonon</string>
+    <string name="caldav">CalDAV</string>
+    <string name="sample_title_3">Biblioteko</string>
+    <string name="color">Koloro</string>
+    <string name="events">Eventoj</string>
+    <string name="new_events">Novaj eventoj</string>
 </resources>
