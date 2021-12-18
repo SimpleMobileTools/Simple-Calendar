@@ -13,7 +13,7 @@ import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.MainActivity
 import com.simplemobiletools.calendar.pro.adapters.MyYearPagerAdapter
 import com.simplemobiletools.calendar.pro.extensions.config
-import com.simplemobiletools.calendar.pro.helpers.Formatter
+import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.commons.extensions.beGone
 import com.simplemobiletools.commons.extensions.getDialogTheme
 import com.simplemobiletools.commons.extensions.setupDialogStuff
@@ -31,10 +31,13 @@ class YearFragmentsHolder : MyFragmentHolder() {
     private var currentYear = 0
     private var isGoToTodayVisible = false
 
+    override val viewType = YEARLY_VIEW
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        currentYear = DateTime().toString(Formatter.YEAR_PATTERN).toInt()
-        todayYear = currentYear
+        val dateTimeString = arguments?.getString(YEAR_TO_OPEN)
+        currentYear = (if (dateTimeString != null) DateTime.parse(dateTimeString) else DateTime()).toString(Formatter.YEAR_PATTERN).toInt()
+        todayYear = DateTime().toString(Formatter.YEAR_PATTERN).toInt()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -129,5 +132,9 @@ class YearFragmentsHolder : MyFragmentHolder() {
 
     override fun printView() {
         (viewPager?.adapter as? MyYearPagerAdapter)?.printCurrentView(viewPager?.currentItem ?: 0)
+    }
+
+    override fun getCurrentDate(): DateTime? {
+        return null
     }
 }
