@@ -314,6 +314,10 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
     }
 
     override fun getCurrentDate(): DateTime? {
-        return if (currentWeekTS != 0L) Formatter.getUTCDateTimeFromTS(currentWeekTS) else null
+        return if (currentWeekTS != 0L) {
+            Formatter.getUTCDateTimeFromTS(currentWeekTS)
+        } else {
+            null
+        }
     }
 }
