@@ -13,7 +13,9 @@ import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.MainActivity
 import com.simplemobiletools.calendar.pro.adapters.MyYearPagerAdapter
 import com.simplemobiletools.calendar.pro.extensions.config
-import com.simplemobiletools.calendar.pro.helpers.*
+import com.simplemobiletools.calendar.pro.helpers.Formatter
+import com.simplemobiletools.calendar.pro.helpers.YEARLY_VIEW
+import com.simplemobiletools.calendar.pro.helpers.YEAR_TO_OPEN
 import com.simplemobiletools.commons.extensions.beGone
 import com.simplemobiletools.commons.extensions.getDialogTheme
 import com.simplemobiletools.commons.extensions.setupDialogStuff
@@ -134,7 +136,5 @@ class YearFragmentsHolder : MyFragmentHolder() {
         (viewPager?.adapter as? MyYearPagerAdapter)?.printCurrentView(viewPager?.currentItem ?: 0)
     }
 
-    override fun getCurrentDate(): DateTime? {
-        return null
-    }
+    override fun getCurrentDate() = null
 }
