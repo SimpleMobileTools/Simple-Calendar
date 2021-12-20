@@ -8,9 +8,9 @@
     <string name="monthly_view">Vue Mois</string>
     <string name="monthly_daily_view">Vue Mois + Journée</string>
     <string name="yearly_view">Vue Année</string>
-    <string name="simple_event_list">Simple liste d’évènements</string>
+    <string name="simple_event_list">Simple liste d\'évènements</string>
     <string name="no_upcoming_events">Aucun évènement à venir.</string>
-    <string name="go_to_today">Aller à aujourd\’hui</string>
+    <string name="go_to_today">Aller à aujourd\'hui</string>
     <string name="go_to_date">Aller à une date</string>
     <string name="upgraded_from_free">Bonjour,
 \n
@@ -21,16 +21,16 @@
 \nMerci !</string>
     <!-- Widget titles -->
     <string name="widget_monthly">Vue Mois</string>
-    <string name="widget_list">Liste d’évènements de l’agenda</string>
+    <string name="widget_list">Liste d\'évènements de l\'agenda</string>
     <string name="widget_todays_date">Vue Journée</string>
     <!-- Event -->
     <string name="event">Évènement</string>
-    <string name="edit_event">Modifier l’évènement</string>
+    <string name="edit_event">Modifier l\'évènement</string>
     <string name="new_event">Nouvel évènement</string>
     <string name="create_new_event">Créer un nouvel évènement</string>
-    <string name="duplicate_event">Dupliquer l’évènement</string>
+    <string name="duplicate_event">Dupliquer l\'évènement</string>
     <string name="title_empty">Le titre ne peut pas être vide</string>
-    <string name="end_before_start">L’évènement ne peut pas se terminer avant qu’il commence</string>
+    <string name="end_before_start">L\'évènement ne peut pas se terminer avant qu\'il commence</string>
     <string name="event_added">Évènement ajouté avec succès</string>
     <string name="event_updated">Évènement mis à jour avec succès</string>
     <string name="filter_events_by_type">Filtrer les évènements</string>
@@ -47,17 +47,17 @@
     <string name="weeks_raw">semaines</string>
     <string name="months_raw">mois</string>
     <string name="years_raw">années</string>
-    <string name="repeat_till">Répéter jusqu’à</string>
+    <string name="repeat_till">Répéter jusqu\'à</string>
     <string name="forever">Éternellement</string>
-    <string name="event_is_repeatable">L’évènement est périodique</string>
+    <string name="event_is_repeatable">L\'évènement est périodique</string>
     <string name="selection_contains_repetition">La sélection contient des évènements périodiques</string>
-    <string name="delete_one_only">Supprimer seulement l\’occurrence sélectionnée</string>
-    <string name="delete_future_occurrences">Supprimer cette occurence et toutes les occurrences futures</string>
+    <string name="delete_one_only">Supprimer seulement l\'occurrence sélectionnée</string>
+    <string name="delete_future_occurrences">Supprimer cette occurrence et toutes les occurrences futures</string>
     <string name="delete_all_occurrences">Supprimer toutes les occurrences</string>
-    <string name="update_one_only">Mettre à jour seulement l\’occurrence sélectionnée</string>
-    <string name="update_this_and_future_occurrences">Mettre à jour cette occurence et toutes les occurrences futures</string>
+    <string name="update_one_only">Mettre à jour seulement l\'occurrence sélectionnée</string>
+    <string name="update_this_and_future_occurrences">Mettre à jour cette occurrence et toutes les occurrences futures</string>
     <string name="update_all_occurrences">Mettre à jour toutes les occurrences</string>
-    <string name="repeat_till_date">Répéter jusqu\’à une date</string>
+    <string name="repeat_till_date">Répéter jusqu\'à une date</string>
     <string name="stop_repeating_after_x">Répéter x fois</string>
     <string name="repeat_forever">Répéter éternellement</string>
     <string name="times">fois</string>
@@ -90,23 +90,23 @@
     <string name="last_f">dernier</string>
     <!-- Birthdays -->
     <string name="birthdays">Anniversaires</string>
-    <string name="add_birthdays">Ajouter les anniv. de vos contacts</string>
-    <string name="no_birthdays">Aucun anniversaire n\’a été trouvé</string>
-    <string name="no_new_birthdays">Aucun nouvel anniversaire n’a été trouvé</string>
+    <string name="add_birthdays">Ajouter les anniversaires de vos contacts</string>
+    <string name="no_birthdays">Aucun anniversaire n\'a été trouvé</string>
+    <string name="no_new_birthdays">Aucun nouvel anniversaire n\'a été trouvé</string>
     <string name="birthdays_added">Anniversaires ajoutés avec succès</string>
     <string name="add_birthdays_automatically">Ajouter automatiquement les nouvelles dates de naissance</string>
     <!-- Anniversaries -->
     <string name="anniversaries">Dates mémo</string>
     <string name="add_anniversaries">Ajouter les dates mémo de vos contacts</string>
-    <string name="no_anniversaries">Aucune date mémo n\’a été trouvée</string>
-    <string name="no_new_anniversaries">Aucun nouvelle date mémo n’a été trouvée</string>
+    <string name="no_anniversaries">Aucune date mémo n\'a été trouvée</string>
+    <string name="no_new_anniversaries">Aucun nouvelle date mémo n\'a été trouvée</string>
     <string name="anniversaries_added">Dates mémo ajoutées avec succès</string>
     <string name="add_anniversaries_automatically">Ajouter automatiquement les nouvelles dates anniversaires</string>
     <!-- Event Reminders -->
     <string name="reminder">Rappel</string>
     <string name="before">avant</string>
     <string name="add_another_reminder">Ajouter un autre rappel</string>
-    <string name="event_reminders">Rappels d’évènements</string>
+    <string name="event_reminders">Rappels d\'évènements</string>
     <!-- Event attendees -->
     <string name="add_another_attendee">Ajouter un autre participant</string>
     <string name="my_status">Mon statut :</string>
@@ -121,9 +121,9 @@
     <string name="export_events">Exporter des évènements</string>
     <string name="import_events_from_ics">Importer depuis un fichier .ics</string>
     <string name="export_events_to_ics">Exporter vers un fichier .ics</string>
-    <string name="default_event_type">Type d’évènement par défaut</string>
+    <string name="default_event_type">Type d\'évènement par défaut</string>
     <string name="export_past_events_too">Exporter les évènements passés</string>
-    <string name="include_event_types">Inclure les types d’évènement</string>
+    <string name="include_event_types">Inclure les types d\'évènement</string>
     <string name="filename_without_ics">Nom du fichier (sans .ics)</string>
     <string name="ignore_event_types">Ignorer les types d\'évènements dans le fichier et toujours utiliser celui par défaut</string>
     <!-- Event details -->
@@ -134,15 +134,15 @@
     <string name="week">Semaine</string>
     <string name="start_week_with_current_day">Démarrer la semaine à la date d\'aujourd\'hui</string>
     <!-- Event types -->
-    <string name="event_types">Type d’évènement</string>
+    <string name="event_types">Type d\'évènement</string>
     <string name="add_new_type">Ajouter un nouveau type</string>
     <string name="edit_type">Modifier le type</string>
     <string name="type_already_exists">Un type avec ce titre existe déjà</string>
     <string name="color">Couleur</string>
     <string name="regular_event">Événement normal</string>
-    <string name="cannot_delete_default_type">Le type d’évènement par défaut ne peut pas être supprimé</string>
-    <string name="select_event_type">Sélectionner un type d’évènement</string>
-    <string name="move_events_into_default">Déplacer les évènements affectés dans le type d’évènement par défaut</string>
+    <string name="cannot_delete_default_type">Le type d\'évènement par défaut ne peut pas être supprimé</string>
+    <string name="select_event_type">Sélectionner un type d\'évènement</string>
+    <string name="move_events_into_default">Déplacer les évènements affectés dans le type d\'évènement par défaut</string>
     <string name="remove_affected_events">Supprimer de façon permanente les évènements affectés</string>
     <string name="unsync_caldav_calendar">Pour supprimer un agenda CalDAV vous devez le désynchroniser</string>
     <!-- Holidays -->
@@ -150,11 +150,11 @@
     <string name="add_holidays">Ajouter des jours fériés</string>
     <string name="national_holidays">Jours fériés nationaux</string>
     <string name="religious_holidays">Jours fériés religieux</string>
-    <string name="holidays_imported_successfully">Les jours ont été importés avec succès comme type d’évènement « Vacances »</string>
-    <string name="importing_some_holidays_failed">Échec de l’import de certains évènements</string>
-    <string name="importing_holidays_failed">Échec de l’import des jours fériés</string>
+    <string name="holidays_imported_successfully">Les jours ont été importés avec succès comme type d\'évènement \"Vacances\"</string>
+    <string name="importing_some_holidays_failed">Échec de l\'import de certains évènements</string>
+    <string name="importing_holidays_failed">Échec de l\'import des jours fériés</string>
     <!-- Settings -->
-    <string name="manage_event_types">Gestion des types d’évènements</string>
+    <string name="manage_event_types">Gestion des types d\'évènements</string>
     <string name="start_day_at">Heure de début pour la vue Semaine</string>
     <string name="end_day_at">Jour de fin de la vue Semaine</string>
     <string name="midnight_spanning">Afficher les évènement se déroulant sur plusieurs jours dans la barre supérieure</string>
@@ -162,18 +162,18 @@
     <string name="week_numbers">Afficher les numéros de semaine</string>
     <string name="vibrate">Vibrer lors de la notification d\'un rappel</string>
     <string name="reminder_sound">Son de rappel</string>
-    <string name="no_ringtone_picker">Aucune appli n\’a été trouvée pour définir la sonnerie</string>
+    <string name="no_ringtone_picker">Aucune appli n\'a été trouvée pour définir la sonnerie</string>
     <string name="no_ringtone_selected">Aucun</string>
-    <string name="day_end_before_start">Le jour ne peut pas se terminer plus tôt qu\’il ne débute</string>
+    <string name="day_end_before_start">Le jour ne peut pas se terminer plus tôt qu\'il ne débute</string>
     <string name="caldav_sync">Synchronisation CalDAV</string>
-    <string name="event_lists">Listes d’évènements</string>
+    <string name="event_lists">Listes d\'évènements</string>
     <string name="display_past_events">Afficher les évènements passés</string>
-    <string name="replace_description_with_location">Remplacer la description de lévènement par lemplacement</string>
+    <string name="replace_description_with_location">Remplacer la description de l\'évènement par l\'emplacement</string>
     <string name="display_description_or_location">Afficher la description ou l\'emplacement</string>
     <string name="delete_all_events">Supprimer tous les évènements</string>
-    <string name="delete_all_events_confirmation">Voulez-vous vraiment supprimer tous les évènements \? Les types d’évènements et vos autres paramètres ne seront pas modifiés.</string>
+    <string name="delete_all_events_confirmation">Voulez-vous vraiment supprimer tous les évènements \? Les types d\'évènements et vos autres paramètres ne seront pas modifiés.</string>
     <string name="show_a_grid">Affichage en grille</string>
-    <string name="loop_reminders">Répéter les rappels jusqu\’à ce qu\’ils soient rejetés</string>
+    <string name="loop_reminders">Répéter les rappels jusqu\'à ce qu\'ils soient rejetés</string>
     <string name="dim_past_events">Estomper les évènements passés</string>
     <string name="events">Évènements</string>
     <string name="reminder_stream">Flux audio utilisé pour les rappels</string>
@@ -181,11 +181,11 @@
     <string name="alarm_stream">Alarme</string>
     <string name="notification_stream">Notification</string>
     <string name="ring_stream">Sonnerie</string>
-    <string name="use_last_event_reminders">Utiliser le rappel du dernier évènement comme valeur par défaut d’un nouvel évènement</string>
+    <string name="use_last_event_reminders">Utiliser le rappel du dernier évènement comme valeur par défaut d\'un nouvel évènement</string>
     <string name="default_reminder_1">Rappel par défaut 1</string>
     <string name="default_reminder_2">Rappel par défaut 2</string>
     <string name="default_reminder_3">Rappel par défaut 3</string>
-    <string name="view_to_open_from_widget">Vue à afficher depuis le widget Liste d’évènements</string>
+    <string name="view_to_open_from_widget">Vue à afficher depuis le widget Liste d\'évènements</string>
     <string name="last_view">Dernière vue</string>
     <string name="new_events">Nouveaux évènements</string>
     <string name="default_start_time">Début par défaut</string>
@@ -206,12 +206,12 @@
     <string name="refresh_caldav_calendars">Synchroniser les agendas CalDAV</string>
     <string name="refreshing">Synchro en cours…</string>
     <string name="refreshing_complete">La synchro est terminée</string>
-    <string name="editing_calendar_failed">Échec de mise à jour de l\’agenda</string>
+    <string name="editing_calendar_failed">Échec de mise à jour de l\'agenda</string>
     <string name="syncing">Synchronisation…</string>
     <string name="synchronization_completed">La synchronisation est terminée</string>
     <string name="select_a_different_caldav_color">Sélectionnez une couleur différente (peut être appliqué localement uniquement)</string>
-    <string name="insufficient_permissions">Vous n\’êtes pas autorisé à écrire dans l\’agenda sélectionné</string>
-    <string name="caldav_event_not_found">Événement introuvable. Veuillez activer la synchronisation CalDAV pour ce calendrier dans les paramètres de l’application.</string>
+    <string name="insufficient_permissions">Vous n\'êtes pas autorisé à écrire dans l\'agenda sélectionné</string>
+    <string name="caldav_event_not_found">Événement introuvable. Veuillez activer la synchronisation CalDAV pour ce calendrier dans les paramètres de l\'application.</string>
     <string name="no_synchronized_calendars">Aucun calendrier synchronisable n\'a été trouvé</string>
     <string name="status_free">Disponible</string>
     <string name="status_busy">Occupé</string>
@@ -234,22 +234,22 @@
     <string name="sample_description_4">Restaurant de la gare</string>
     <string name="sample_title_5">RDV au café</string>
     <!-- FAQ -->
-    <string name="faq_1_title">Comment supprimer les évènement importés avec le bouton « Ajouter des jours fériés » \?</string>
-    <string name="faq_1_text">Les jours fériés ajoutés de cette manière sont du type « Jours fériés ». Vous pouvez aller dans « Paramètres » puis « Gestion des types d’évènements », faire un appui long sur « Jours fériés » et les supprimer en appuyant sur la corbeille.</string>
-    <string name="faq_2_title">Puis-je synchroniser mes évènements Google Agenda ou tout autre service proposant la synchronisation CalDAV \?</string>
-    <string name="faq_2_text">Oui, il faut juste activer l\’option « Synchronisation CalDAV » dans les paramètres de l\’appli, puis choisir les agendas à synchroniser. Une appli tierce pour gérer la synchronisation entre votre appareil et les serveurs sera par contre nécessaire. 
-		Dans le cas d\’un agenda Google, l\’appli officielle fera l\’affaire. Pour les autres agendas, il vous faudra une appli comme DAVx5 par exemple.</string>
-    <string name="faq_3_title">Je vois les rappels visuels, mais n\’entends aucun son. Que puis-je faire ?</string>
-    <string name="faq_3_text">Pas seulement l’affichage du rappel, mais la lecture de laudio est également énormément affectée par le système. Si vous n’entendez aucun son, essayez d’entrer dans les paramètres de l’appli, en appuyant sur loption « Flux audio utilisé par les rappels » et en la modifiant. Si cela ne fonctionne toujours pas, vérifiez vos paramètres audio, si le flux particulier n’est pas mis en sourdine.</string>
-    <string name="faq_4_title">L’application prend-elle en charge les fuseaux horaires \?</string>
-    <string name="faq_4_text">Oui. Par défaut, tous les évènements sont créés dans votre fuseau horaire courant. Si vous souhaitez modifier le fuseau horaire d’un évènement, vous devez d’abord activer le sélecteur de fuseau horaire dans les paramètres de l’application, puis le modifier sur l’écran Détails de l’évènement. Il est désactivé par défaut car la plupart des utilisateurs n’en ont pas besoin.</string>
+    <string name="faq_1_title">Comment supprimer les évènement importés avec le bouton "Ajouter des jours fériés" \?</string>
+    <string name="faq_1_text">Les jours fériés ajoutés de cette manière sont du type "Jours fériés". Vous pouvez aller dans "Paramètres" puis "Gestion des types d\'évènements", faire un appui long sur "Jours fériés" et les supprimer en appuyant sur la corbeille.</string>
+    <string name="faq_2_title">Puis-je synchroniser mes évènements Google Agenda ou tout autre service proposant la synchronisation CalDAV \?</string>
+    <string name="faq_2_text">Oui, il faut juste activer l\'option "Synchronisation CalDAV" dans les paramètres de l\'appli, puis choisir les agendas à synchroniser. Une appli tierce pour gérer la synchronisation entre votre appareil et les serveurs sera par contre nécessaire. 
+		Dans le cas d\'un agenda Google, l\'appli officielle fera l\'affaire. Pour les autres agendas, il vous faudra une appli comme DAVx5 par exemple.</string>
+    <string name="faq_3_title">Je vois les rappels visuels, mais n\'entends aucun son. Que puis-je faire ?</string>
+    <string name="faq_3_text">Pas seulement l\'affichage du rappel, mais la lecture de l\'audio est également énormément affectée par le système. Si vous n\'entendez aucun son, essayez d\'entrer dans les paramètres de l\'appli, en appuyant sur l\'option "Flux audio utilisé par les rappels" et en la modifiant. Si cela ne fonctionne toujours pas, vérifiez vos paramètres audio, si le flux particulier n\'est pas mis en sourdine.</string>
+    <string name="faq_4_title">L\'application prend-elle en charge les fuseaux horaires \?</string>
+    <string name="faq_4_text">Oui. Par défaut, tous les évènements sont créés dans votre fuseau horaire courant. Si vous souhaitez modifier le fuseau horaire d\'un évènement, vous devez d\'abord activer le sélecteur de fuseau horaire dans les paramètres de l\'application, puis le modifier sur l\'écran Détails de l\'évènement. Il est désactivé par défaut car la plupart des utilisateurs n\'en ont pas besoin.</string>
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Simple Calendar Pro – Évènements et rappels</string>
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Calendrier mobile. Planification et rappel de RDV.</string>
     <string name="app_long_description">
-        Simple Calendar Pro est un calendrier entièrement personnalisable et hors-ligne concçu pour faire exactement ce qu\'un calendrier devrait faire. <b>Aucune fonctionnalité compliquée, sans demande de permissions inutiles et sans publicité !</b>
+        Simple Calendar Pro est un calendrier entièrement personnalisable et hors-ligne conçu pour faire exactement ce qu\'un calendrier devrait faire. <b>Aucune fonctionnalité compliquée, sans demande de permissions inutiles et sans publicité !</b>
 
         Que vous souhaitiez organiser un évènement ponctuel ou récurrent, un anniversaire, un rendez-vous d\'affaires ou quoi que ce soit d\'autre, Simple Calendar Pro rend simple <b>votre organisation</b>. Avec une grande variété <b>d\'options de personnalisation</b>, vous pouvez personnaliser les rappels d\'évènements, les sons de notifications, les widgets du calendrier et l\'apparence de l\'application.
 
