@@ -49,14 +49,14 @@ import com.simplemobiletools.commons.models.FAQItem
 import com.simplemobiletools.commons.models.RadioItem
 import com.simplemobiletools.commons.models.Release
 import com.simplemobiletools.commons.models.SimpleContact
+import kotlinx.android.synthetic.main.activity_main.*
+import org.joda.time.DateTime
+import org.joda.time.DateTimeZone
 import java.io.FileOutputStream
 import java.io.OutputStream
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
-import kotlinx.android.synthetic.main.activity_main.*
-import org.joda.time.DateTime
-import org.joda.time.DateTimeZone
 
 class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private val PICK_IMPORT_SOURCE_INTENT = 1
@@ -352,7 +352,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         if (isNougatMR1Plus() && config.lastHandledShortcutColor != appIconColor) {
             val newEvent = getString(R.string.new_event)
             val manager = getSystemService(ShortcutManager::class.java)
-            val drawable = resources.getDrawable(R.drawable.shortcut_plus)
+            val drawable = resources.getDrawable(R.drawable.shortcut_plus, theme)
             (drawable as LayerDrawable).findDrawableByLayerId(R.id.shortcut_plus_background).applyColorFilter(appIconColor)
             val bmp = drawable.convertToBitmap()
 
@@ -816,13 +816,13 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             return null
         }
 
-        val fragmentDate: DateTime? = fragment.getCurrentDate()
+        val fragmentDate = fragment.getCurrentDate()
         val viewOrder = arrayListOf(DAILY_VIEW, WEEKLY_VIEW, MONTHLY_VIEW, YEARLY_VIEW)
         val currentViewIndex = viewOrder.indexOf(if (currentView == MONTHLY_DAILY_VIEW) MONTHLY_VIEW else currentView)
         val newViewIndex = viewOrder.indexOf(if (newView == MONTHLY_DAILY_VIEW) MONTHLY_VIEW else newView)
 
         return if (fragmentDate != null && currentViewIndex <= newViewIndex) {
-            getDateCodeFormatForView(newView, fragmentDate!!)
+            getDateCodeFormatForView(newView, fragmentDate)
         } else {
             getDateCodeFormatForView(newView, DateTime())
         }
