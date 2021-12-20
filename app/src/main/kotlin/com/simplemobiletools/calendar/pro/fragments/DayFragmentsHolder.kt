@@ -147,6 +147,10 @@ class DayFragmentsHolder : MyFragmentHolder(), NavigationListener {
     }
 
     override fun getCurrentDate(): DateTime? {
-        return if (currentDayCode != "") Formatter.getDateTimeFromCode(currentDayCode) else null
+        return if (currentDayCode != "") {
+            Formatter.getDateTimeFromCode(currentDayCode)
+        } else {
+            null
+        }
     }
 }
