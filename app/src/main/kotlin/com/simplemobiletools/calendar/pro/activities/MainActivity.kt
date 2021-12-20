@@ -829,6 +829,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
         fragment.arguments = bundle
         supportFragmentManager.beginTransaction().add(R.id.fragments_holder, fragment).commitNow()
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
     }
 
     fun openMonthFromYearly(dateTime: DateTime) {
