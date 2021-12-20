@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Simple Calendar</string>
+    <string name="app_launcher_name">Calendari</string>
+    <string name="change_view">Canvia la vista</string>
+    <string name="daily_view">Vista diària</string>
+    <string name="weekly_view">Vista setmanal</string>
+    <string name="monthly_view">Vista mensual</string>
+    <string name="monthly_daily_view">Vista mensual i diària</string>
+    <string name="yearly_view">Vista anual</string>
+    <string name="simple_event_list">Llista d\'esdeveniments senzilla</string>
+    <string name="no_upcoming_events">Sembla que no hi ha cap esdeveniment pròxim.</string>
+    <string name="go_to_today">Ves a avui</string>
+    <string name="go_to_date">Ves a la data</string>
+    <string name="upgraded_from_free">Hola,\n\nsembla que heu actualitzat des de l\'antiga aplicació lliure. Cal migrar manualment els esdeveniments emmagatzemats localment a través d\'exportar a un fitxer .ics, i després importar. Podeu trobar els botons d\'exportació/importació en el menú de la pantalla principal.\n\nA continuació podreu desinstal·lar la versió antiga, que té un botó «Actualitza a Pro» a la part superior de la configuració de l\'aplicació. Finalment, només caldrà reiniciar la configuració de l\'aplicació.\n\nGràcies!</string>
+    <!-- Widget titles -->
+    <string name="widget_monthly">Calendari mensual</string>
+    <string name="widget_list">Llista d\'esdeveniments del calendari</string>
+    <string name="widget_todays_date">Calendari de la data d\'avui</string>
+    <!-- Event -->
+    <string name="event">Esdeveniment</string>
+    <string name="edit_event">Edita l\'esdeveniment</string>
+    <string name="new_event">Esdeveniment nou</string>
+    <string name="create_new_event">Crea un esdeveniment nou</string>
+    <string name="duplicate_event">Duplica l\'esdeveniment</string>
+    <string name="title_empty">El títol no pot estar buit</string>
+    <string name="end_before_start">L\'esdeveniment no pot acabar abans del seu inici</string>
+    <string name="event_added">L\'esdeveniment s\'ha afegit correctament</string>
+    <string name="event_updated">L\'esdeveniment s\'ha actualitzat correctament</string>
+    <string name="filter_events_by_type">Filtra els esdeveniments per tipus</string>
+    <string name="please_fill_location">Ompliu una ubicació que es mostrarà en un mapa</string>
+    <string name="public_event_notification_text">S\'acosta un esdeveniment</string>
+    <string name="saving_filtered_out">S\'està desant… Però el tipus d\'esdeveniment seleccionat es filtra al Menú superior - Filtre</string>
+    <!-- Event Repetition -->
+    <string name="repetition">Repetició</string>
+    <string name="no_repetition">Sense repetició</string>
+    <string name="daily">Diàriament</string>
+    <string name="weekly">Setmanalment</string>
+    <string name="monthly">Mensualment</string>
+    <string name="yearly">Anualment</string>
+    <string name="weeks_raw">setmanes</string>
+    <string name="months_raw">mesos</string>
+    <string name="years_raw">anys</string>
+    <string name="repeat_till">Repeteix fins</string>
+    <string name="forever">Per sempre</string>
+    <string name="event_is_repeatable">L\'esdeveniment és repetible</string>
+    <string name="selection_contains_repetition">La selecció conté esdeveniments que es repeteixen</string>
+    <string name="delete_one_only">Suprimeix només l\'ocurrència seleccionada</string>
+    <string name="delete_future_occurrences">Suprimeix aquesta i totes les ocurrències futures</string>
+    <string name="delete_all_occurrences">Suprimeix totes les ocurrències</string>
+    <string name="update_one_only">Actualitza només l\'ocurrència seleccionada</string>
+    <string name="update_this_and_future_occurrences">Actualitza aquesta i totes les ocurrències futures</string>
+    <string name="update_all_occurrences">Actualitza totes les ocurrències</string>
+    <string name="repeat_till_date">Repeteix fins a una data</string>
+    <string name="stop_repeating_after_x">Deixa de repetir després de x ocurrències</string>
+    <string name="repeat_forever">Repeteix per sempre</string>
+    <string name="times">vegades</string>
+    <string name="repeat">Repeteix</string>
+    <string name="repeat_on">Repeteix el</string>
+    <string name="every_day">Cada dia</string>
+    <string name="selected_days">Els dies seleccionats</string>
+    <string name="the_same_day">El mateix dia</string>
+    <string name="the_last_day">L\'últim dia</string>
+    <string name="repeat_on_the_same_day_monthly">Repeteix el mateix dia cada mes</string>
+    <string name="repeat_on_the_last_day_monthly">Repeteix l\'últim dia del mes</string>
+    <string name="repeat_on_the_same_day_yearly">Repeteix el mateix dia de cada any</string>
+    <string name="repeat_every_m">Repeteix cada</string>
+    <string name="every_m">Cada</string>
+    <string name="first_m">primer</string>
+    <string name="second_m">segon</string>
+    <string name="third_m">tercer</string>
+    <string name="fourth_m">quart</string>
+    <string name="fifth_m">cinquè</string>
+    <string name="last_m">darrer</string>
+    <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
+    <!-- used in repetition, like "Every first Sunday" -->
+    <string name="repeat_every_f">Repeteix cada</string>
+    <string name="every_f">Cada</string>
+    <string name="first_f">primer</string>
+    <string name="second_f">segon</string>
+    <string name="third_f">tercer</string>
+    <string name="fourth_f">quart</string>
+    <string name="fifth_f">cinquè</string>
+    <string name="last_f">darrer</string>
+    <!-- Birthdays -->
+    <string name="birthdays">Dates de naixement</string>
+    <string name="add_birthdays">Afegeix les dates de naixement dels contactes</string>
+    <string name="no_birthdays">No s\'ha trobat cap data de naixement</string>
+    <string name="no_new_birthdays">No s\'ha trobat cap data de naixement nova</string>
+    <string name="birthdays_added">Les dates de naixement s\'han afegit correctament</string>
+    <string name="add_birthdays_automatically">Afegeix automàticament les dates de naixement noves</string>
+    <!-- Anniversaries -->
+    <string name="anniversaries">Aniversaris</string>
+    <string name="add_anniversaries">Afegeix els aniversaris dels contactes</string>
+    <string name="no_anniversaries">No s\'ha trobat cap aniversari</string>
+    <string name="no_new_anniversaries">No s\'ha trobat cap aniversari nou</string>
+    <string name="anniversaries_added">Els aniversaris s\'han afegit correctament</string>
+    <string name="add_anniversaries_automatically">Afegeix automàticament els aniversaris nous</string>
+    <!-- Event Reminders -->
+    <string name="reminder">Recordatori</string>
+    <string name="before">abans</string>
+    <string name="add_another_reminder">Afegeix un altre recordatori</string>
+    <string name="event_reminders">Recordatoris d\'esdeveniments</string>
+    <!-- Event attendees -->
+    <string name="add_another_attendee">Afegeix un altre assistent</string>
+    <string name="my_status">El meu estat:</string>
+    <string name="going">Assistiré</string>
+    <string name="not_going">No assistiré</string>
+    <string name="maybe_going">Potser assistiré</string>
+    <string name="invited">Convidat</string>
+    <!-- Time zones -->
+    <string name="enter_a_country">Introduïu un país o una zona horària</string>
+    <!-- Export / Import -->
+    <string name="import_events">Importa esdeveniments</string>
+    <string name="export_events">Exporta esdeveniments</string>
+    <string name="import_events_from_ics">Importa esdeveniments des d\'un fitxer .ics</string>
+    <string name="export_events_to_ics">Exporta esdeveniments a un fitxer .ics</string>
+    <string name="default_event_type">Tipus d\'esdeveniment predeterminat</string>
+    <string name="export_past_events_too">Exporta també els esdeveniments passats</string>
+    <string name="include_event_types">Inclou els tipus d\'esdeveniments</string>
+    <string name="filename_without_ics">Nom del fitxer (sense .ics)</string>
+    <string name="ignore_event_types">Ignora els tipus d\'esdeveniment del fitxer, utilitza sempre el predeterminat</string>
+    <!-- Event details -->
+    <string name="location">Ubicació</string>
+    <string name="description">Descripció</string>
+    <string name="all_day">Tot el dia</string>
+    <!-- Weekly view -->
+    <string name="week">Setmana</string>
+    <string name="start_week_with_current_day">Comença la setmana amb el dia actual</string>
+    <!-- Event types -->
+    <string name="event_types">Tipus d\'esdeveniments</string>
+    <string name="add_new_type">Afegeix un tipus nou</string>
+    <string name="edit_type">Edita el tipus</string>
+    <string name="type_already_exists">Ja existeix un tipus amb aquest títol</string>
+    <string name="color">Color</string>
+    <string name="regular_event">Esdeveniment normal</string>
+    <string name="cannot_delete_default_type">El tipus d\'esdeveniment predeterminat no es pot suprimir</string>
+    <string name="select_event_type">Seleccioneu un tipus d\'esdeveniment</string>
+    <string name="move_events_into_default">Mou els esdeveniments afectats al tipus d\'esdeveniment predeterminat</string>
+    <string name="remove_affected_events">Elimina permanentment els esdeveniments afectats</string>
+    <string name="unsync_caldav_calendar">Per eliminar un calendari CalDAV, cal dessincronitzar-lo</string>
+    <!-- Holidays -->
+    <string name="holidays">Festius</string>
+    <string name="add_holidays">Afegeix festius</string>
+    <string name="national_holidays">Festius nacionals</string>
+    <string name="religious_holidays">Festius religiosos</string>
+    <string name="holidays_imported_successfully">Els festius s\'han importat correctament al tipus d\'esdeveniment «Festius»</string>
+    <string name="importing_some_holidays_failed">Ha fallat la importació d\'alguns esdeveniments</string>
+    <string name="importing_holidays_failed">Ha fallat la importació dels festius</string>
+    <!-- Settings -->
+    <string name="manage_event_types">Gestiona els tipus d\'esdeveniments</string>
+    <string name="start_day_at">Comença el dia a les</string>
+    <string name="end_day_at">Finalitza el dia a les</string>
+    <string name="midnight_spanning">Mostra els esdeveniments que s\'estenen durant la mitjanit a la barra superior</string>
+    <string name="allow_customizing_day_count">Permet personalitzar el recompte de dies</string>
+    <string name="week_numbers">Mostra els números de la setmana</string>
+    <string name="vibrate">Vibra a la notificació del recordatori</string>
+    <string name="reminder_sound">So de recordatori</string>
+    <string name="no_ringtone_picker">No s\'ha trobat cap aplicació capaç d\'establir el to de trucada</string>
+    <string name="no_ringtone_selected">Cap</string>
+    <string name="day_end_before_start">El dia no pot acabar abans del seu inici</string>
+    <string name="caldav_sync">Sincronització CalDAV</string>
+    <string name="event_lists">Llistes d\'esdeveniments</string>
+    <string name="display_past_events">Mostra els esdeveniments del passat</string>
+    <string name="replace_description_with_location">Substitueix la descripció de l\'esdeveniment per la ubicació</string>
+    <string name="display_description_or_location">Mostra la descripció o la ubicació</string>
+    <string name="delete_all_events">Suprimeix tots els esdeveniments</string>
+    <string name="delete_all_events_confirmation">Esteu segur que voleu suprimir tots els esdeveniments\? Això deixarà intactes els tipus d\'esdeveniments i altres opcions de configuració.</string>
+    <string name="show_a_grid">Mostra una quadrícula</string>
+    <string name="loop_reminders">Recordatoris en bucle fins que es descartin</string>
+    <string name="dim_past_events">Atenua els esdeveniments passats</string>
+    <string name="events">Esdeveniments</string>
+    <string name="reminder_stream">Flux d\'àudio utilitzat pels recordatoris</string>
+    <string name="system_stream">Sistema</string>
+    <string name="alarm_stream">Alarma</string>
+    <string name="notification_stream">Notificació</string>
+    <string name="ring_stream">Trucada</string>
+    <string name="use_last_event_reminders">Utilitza els recordatoris dels últims esdeveniments com a valor predeterminat per als esdeveniments nous</string>
+    <string name="default_reminder_1">Recordatori predeterminat 1</string>
+    <string name="default_reminder_2">Recordatori predeterminat 2</string>
+    <string name="default_reminder_3">Recordatori predeterminat 3</string>
+    <string name="view_to_open_from_widget">Vista a obrir des del giny de la llista d\'esdeveniments</string>
+    <string name="last_view">Última vista</string>
+    <string name="new_events">Esdeveniments nous</string>
+    <string name="default_start_time">Hora d\'inici predeterminada</string>
+    <string name="next_full_hour">Pròxima hora completa</string>
+    <string name="current_time">Hora actual</string>
+    <string name="default_duration">Durada predeterminada</string>
+    <string name="last_used_one">Última utilizada</string>
+    <string name="other_time">Una altra hora</string>
+    <string name="highlight_weekends">Ressalta els caps de setmana en algunes vistes</string>
+    <string name="highlight_weekends_color">Color dels caps de setmana ressaltats</string>
+    <string name="allow_changing_time_zones">Permet canviar les zones horàries dels esdeveniments</string>
+    <string name="manage_quick_filter_event_types">Gestiona els tipus d\'esdeveniment de filtre ràpid</string>
+    <!-- CalDAV sync -->
+    <string name="caldav">CalDAV</string>
+    <string name="select_caldav_calendars">Seleccioneu els calendaris que voleu sincronitzar</string>
+    <string name="manage_synced_calendars">Gestiona els calendaris sincronitzats</string>
+    <string name="store_locally_only">Emmagatzema només localment</string>
+    <string name="refresh_caldav_calendars">Actualitza els calendaris CalDAV</string>
+    <string name="refreshing">Actualitzant…</string>    
+    <string name="refreshing_complete">S\'ha completat l\'actualització</string>
+    <string name="editing_calendar_failed">Ha fallat l\'edició del calendari</string>
+    <string name="syncing">S\'està sincronitzant…</string>
+    <string name="synchronization_completed">S\'ha completat la sincronització</string>
+    <string name="select_a_different_caldav_color">Seleccioneu un color diferent (només es pot aplicar localment)</string>
+    <string name="insufficient_permissions">No teniu permís per escriure al calendari seleccionat</string>
+    <string name="caldav_event_not_found">No s\'ha trobat l\'esdeveniment. Activeu la sincronització de CalDAV per al calendari adequat a la configuració de l\'aplicació.</string>
+    <string name="no_synchronized_calendars">No s\'ha trobat cap calendari sincronitzable</string>
+    <string name="status_free">LLiure</string>
+    <string name="status_busy">Ocupat</string>
+    <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
+    <!-- used in repetition, like "Every last Sunday" -->
+    <string name="monday_alt">dilluns</string>
+    <string name="tuesday_alt">dimarts</string>
+    <string name="wednesday_alt">dimecres</string>
+    <string name="thursday_alt">dijous</string>
+    <string name="friday_alt">divendres</string>
+    <string name="saturday_alt">dissabte</string>
+    <string name="sunday_alt">diumenge</string>
+    <!-- List widget config example events -->
+    <string name="sample_title_1">Entrenament</string>
+    <string name="sample_description_1">Exercici de cames</string>
+    <string name="sample_title_2">Reunió amb Joan</string>
+    <string name="sample_description_2">Al jardí botànic</string>
+    <string name="sample_title_3">Biblioteca</string>
+    <string name="sample_title_4">Dinar amb Maria</string>
+    <string name="sample_description_4">A la plaça</string>
+    <string name="sample_title_5">Hora del cafè</string>
+    <!-- FAQ -->
+    <string name="faq_1_title">Com puc eliminar els dies festius importats mitjançant el botó «Afegeix festius»\?</string>
+    <string name="faq_1_text">Els dies festius creats d\'aquesta manera s\'insereixen en un tipus d\'esdeveniment nou anomenat «Festius». Podeu anar a Configuració -&gt; Gestiona els tipus d\'esdeveniments, prémer durant molt de temps el tipus d\'esdeveniment indicat i suprimir-lo seleccionant la paperera.</string>
+    <string name="faq_2_title">Puc sincronitzar els meus esdeveniments a través de Google Calendar o d\'un altre servei que admeti CalDAV\?</string>
+    <string name="faq_2_text">Sí, només cal que activeu la \"Sincronització CalDAV» a la configuració de l\'aplicació i seleccioneu els calendaris que voleu sincronitzar. Tanmateix, necessitareu una aplicació de tercers que gestioni la sincronització entre el dispositiu i els servidors. En cas que vulgueu sincronitzar un calendari de Google, la seva aplicació oficial Calendar farà la feina. Per a altres calendaris, necessitareu un adaptador de sincronització de tercers, per exemple DAVx5.</string>
+    <string name="faq_3_title">Veig els recordatoris visuals, però no escolto cap àudio. Què puc fer\?</string>
+    <string name="faq_3_text">No només es mostra el recordatori real, sinó que la reproducció de l\'àudio també es veu molt afectada pel sistema. Si no sentiu cap so, proveu d\'anar a la configuració de l\'aplicació, premeu l\'opció «Flux d\'àudio utilitzat pels recordatoris» i canvieu-lo a un valor diferent. Si encara no funciona, comproveu la configuració del so, en concret, si la reproducció no està silenciada.</string>
+    <string name="faq_4_title">L\'aplicació admet zones horàries\?</string>
+    <string name="faq_4_text">Sí, les admet. De manera predeterminada, tots els esdeveniments es creen a la vostra zona horària actual. Si voleu canviar la zona horària d\'un esdeveniment, primer haureu d\'activar el selector de fus horari a la configuració de l\'aplicació i, a continuació, canviar-lo a la pantalla Detalls de l\'esdeveniment. Està desactivat per defecte, ja que la majoria de la gent no el necessitarà.</string>
+    <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
+    <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
+    <string name="app_title">Simple Calendar Pro - Esdeveniments i recordatoris</string>
+    <!-- Short description has to have less than 80 chars -->
+    <string name="app_short_description">Calendari mòbil senzill 2020. Planificador de l\'agenda i recordatori de cites per a qualsevol dia</string>
+    <string name="app_long_description"> El Simple Calendar Pro és un calendari fora de línia totalment personalitzable dissenyat per fer exactament el que un calendari ha de fer. <b>Sense funcions complicades, permisos innecessaris i sense anuncis!</b> Tant si organitzeu esdeveniments únics o recurrents, dates de naixement, aniversaris, reunions de negocis, cites o qualsevol altra cosa, el Simple Calendar Pro fa que <b> sigui fàcil de mantenir-se organitzat </b>. Amb una varietat increïble d\'opcions de personalització <b/>, podeu personalitzar recordatoris d\'esdeveniments, sons de notificació, ginys de calendari i l\'aspecte de l\'aplicació. Les vistes diàries, setmanals i mensuals fan que comprovar els vostres esdeveniments pròxims i cites sigui molt fàcil. Fins i tot podeu veure-ho tot com una llista simple d\'esdeveniments en lloc de veure\'l al calendari, de manera que <b> sapigueu exactament què passa a la vostra vida i quan. </b> ----------------------------------------------- ----------- <b>Simple Calendar Pro - Característiques i avantatges</b> ------------------------- ---------------------------------- ✔️ Sense anuncis ni finestres emergents molestes ✔️ Sense necessitat d\'accés a Internet, donant-te més privadesa i seguretat ✔️ Només es requereixen els permisos mínims necessaris ✔️ Èmfasi en la simplicitat: fa el que ha de fer un calendari! ✔️ Codi obert ✔️ Temes totalment personalitzables i ginys de calendari/esdeveniments ✔️ Traduït a 29 idiomes ✔️ Exporta la configuració a fitxers .txt per importar-los a un altre dispositiu ✔️ Admet la sincronització del calendari CalDAV per sincronitzar esdeveniments entre dispositius ✔️ Vistes diàries, setmanals, mensuals, anuals d\'esdeveniments al calendari ✔️ Admet l\'exportació i la importació d\'esdeveniments mitjançant fitxers .ics ✔️ Es poden establir diversos recordatoris d\'esdeveniments, personalitzar el so i la vibració dels recordatoris d\'esdeveniments ✔️ Opció de posposar els recordatoris ✔️ Afegiu fàcilment festius, dates de naixement, aniversaris i cites ✔ Personalitzeu els esdeveniments: hora d\'inici, durada, recordatoris, etc. ✔️ Afegiu assistents a cada esdeveniment ✔️ Utilitzeu-lo com a calendari personal o calendari de feina ✔️ Trieu entre notificacions per correu electrònic o recordatoris per avisar-vos d\'un esdeveniment DESCARREGUEU SIMPLE CALENDAR PRO: EL SIMPLE CALENDARI FORA DE LÍNIA SENSE ANUNCIS! <b>Consulteu el conjunt complet d\'eines Simples aquí:</b> https://www.simplemobiletools.com <b>Lloc web de Simple Calendar Pro:</b> https://www.simplemobiletools.com/calendar <b>Facebook:</b> https://www.facebook.com/simplemobiletools <b>Reddit:</b> https://www.reddit.com/r/SimpleMobileTools </string>
+    <!--
+        Haven't found some strings? There's more at
+        https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
+    -->
+</resources>
