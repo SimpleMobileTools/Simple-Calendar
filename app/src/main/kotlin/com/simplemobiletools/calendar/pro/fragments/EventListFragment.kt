@@ -13,6 +13,7 @@ import com.simplemobiletools.calendar.pro.activities.MainActivity
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.adapters.EventListAdapter
 import com.simplemobiletools.calendar.pro.extensions.*
+import com.simplemobiletools.calendar.pro.helpers.EVENTS_LIST_VIEW
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.ListEvent
@@ -45,6 +46,8 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
     private var use24HourFormat = false
 
     lateinit var mView: View
+
+    override val viewType = EVENTS_LIST_VIEW
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mView = inflater.inflate(R.layout.fragment_event_list, container, false)
@@ -248,4 +251,6 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
             }, 1000)
         }
     }
+
+    override fun getCurrentDate() = null
 }

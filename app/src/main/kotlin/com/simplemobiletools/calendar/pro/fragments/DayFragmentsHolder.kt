@@ -12,6 +12,7 @@ import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.MainActivity
 import com.simplemobiletools.calendar.pro.adapters.MyDayPagerAdapter
 import com.simplemobiletools.calendar.pro.extensions.config
+import com.simplemobiletools.calendar.pro.helpers.DAILY_VIEW
 import com.simplemobiletools.calendar.pro.helpers.DAY_CODE
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.interfaces.NavigationListener
@@ -31,6 +32,8 @@ class DayFragmentsHolder : MyFragmentHolder(), NavigationListener {
     private var todayDayCode = ""
     private var currentDayCode = ""
     private var isGoToTodayVisible = false
+
+    override val viewType = DAILY_VIEW
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -108,7 +111,7 @@ class DayFragmentsHolder : MyFragmentHolder(), NavigationListener {
         val view = layoutInflater.inflate(R.layout.date_picker, null)
         val datePicker = view.findViewById<DatePicker>(R.id.date_picker)
 
-        val dateTime = Formatter.getDateTimeFromCode(currentDayCode)
+        val dateTime = getCurrentDate()!!
         datePicker.init(dateTime.year, dateTime.monthOfYear - 1, dateTime.dayOfMonth, null)
 
         AlertDialog.Builder(requireContext())
@@ -141,5 +144,13 @@ class DayFragmentsHolder : MyFragmentHolder(), NavigationListener {
 
     override fun printView() {
         (viewPager?.adapter as? MyDayPagerAdapter)?.printCurrentView(viewPager?.currentItem ?: 0)
+    }
+
+    override fun getCurrentDate(): DateTime? {
+        return if (currentDayCode != "") {
+            Formatter.getDateTimeFromCode(currentDayCode)
+        } else {
+            null
+        }
     }
 }

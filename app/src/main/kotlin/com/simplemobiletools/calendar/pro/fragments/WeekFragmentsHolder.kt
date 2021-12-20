@@ -18,6 +18,7 @@ import com.simplemobiletools.calendar.pro.activities.MainActivity
 import com.simplemobiletools.calendar.pro.adapters.MyWeekPagerAdapter
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
+import com.simplemobiletools.calendar.pro.helpers.WEEKLY_VIEW
 import com.simplemobiletools.calendar.pro.helpers.WEEK_START_DATE_TIME
 import com.simplemobiletools.calendar.pro.interfaces.WeekFragmentListener
 import com.simplemobiletools.calendar.pro.views.MyScrollView
@@ -39,11 +40,13 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
     private var isGoToTodayVisible = false
     private var weekScrollY = 0
 
+    override val viewType = WEEKLY_VIEW
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val dateTimeString = arguments?.getString(WEEK_START_DATE_TIME) ?: return
         currentWeekTS = (DateTime.parse(dateTimeString) ?: DateTime()).seconds()
-        thisWeekTS = currentWeekTS
+        thisWeekTS = DateTime.parse(requireContext().getDatesWeekDateTime(DateTime())).seconds()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -179,7 +182,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
         val view = layoutInflater.inflate(R.layout.date_picker, null)
         val datePicker = view.findViewById<DatePicker>(R.id.date_picker)
 
-        val dateTime = Formatter.getUTCDateTimeFromTS(currentWeekTS)
+        val dateTime = getCurrentDate()!!
         datePicker.init(dateTime.year, dateTime.monthOfYear - 1, dateTime.dayOfMonth, null)
 
         AlertDialog.Builder(requireContext())
@@ -307,6 +310,14 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
                     (viewPager?.adapter as? MyWeekPagerAdapter)?.togglePrintMode(viewPager?.currentItem ?: 0)
                 }, 1000)
             }, 1000)
+        }
+    }
+
+    override fun getCurrentDate(): DateTime? {
+        return if (currentWeekTS != 0L) {
+            Formatter.getUTCDateTimeFromTS(currentWeekTS)
+        } else {
+            null
         }
     }
 }
