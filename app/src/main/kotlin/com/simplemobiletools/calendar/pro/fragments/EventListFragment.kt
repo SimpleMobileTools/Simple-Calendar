@@ -252,7 +252,5 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
         }
     }
 
-    override fun getCurrentDate(): DateTime? {
-        return null
-    }
+    override fun getCurrentDate() = null
 }
