@@ -70,7 +70,7 @@
     <string name="second_m">andre</string>
     <string name="third_m">tredje</string>
     <string name="fourth_m">fjerde</string>
-    <string name="fifth_m">fifth</string>
+    <string name="fifth_m">femte</string>
     <string name="last_m">siste</string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
@@ -80,7 +80,7 @@
     <string name="second_f">andre</string>
     <string name="third_f">tredje</string>
     <string name="fourth_f">fjerde</string>
-    <string name="fifth_f">fifth</string>
+    <string name="fifth_f">femte</string>
     <string name="last_f">siste</string>
     <!-- Birthdays -->
     <string name="birthdays">Bursdager</string>
@@ -88,14 +88,14 @@
     <string name="no_birthdays">Ingen bursdager er funnet</string>
     <string name="no_new_birthdays">Ingen nye bursdager er funnet</string>
     <string name="birthdays_added">Bursdager vellykket lagt til</string>
-    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
+    <string name="add_birthdays_automatically">Legg til nye bursdager automatisk</string>
     <!-- Anniversaries -->
     <string name="anniversaries">Jubileer</string>
     <string name="add_anniversaries">Legg til kontaktjubileer</string>
     <string name="no_anniversaries">Ingen jubileer er funnet</string>
     <string name="no_new_anniversaries">Ingen nye jubileer er funnet</string>
     <string name="anniversaries_added">Jubileer vellykket lagt til</string>
-    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
+    <string name="add_anniversaries_automatically">Legg til nye jubileer automatisk</string>
     <!-- Event Reminders -->
     <string name="reminder">Påminnelse</string>
     <string name="before">før</string>
@@ -126,7 +126,7 @@
     <string name="all_day">Hele dagen</string>
     <!-- Weekly view -->
     <string name="week">Uke</string>
-    <string name="start_week_with_current_day">Start week with the current day</string>
+    <string name="start_week_with_current_day">Start uke med gjeldende dag</string>
     <!-- Event types -->
     <string name="event_types">Hendelsestyper</string>
     <string name="add_new_type">Legg til en ny type</string>
@@ -184,7 +184,7 @@
     <string name="new_events">Nye hendelser</string>
     <string name="default_start_time">Standard starttid</string>
     <string name="next_full_hour">Neste fulle time</string>
-    <string name="current_time">Current time</string>
+    <string name="current_time">Gjeldende tid</string>
     <string name="default_duration">Standard varighet</string>
     <string name="last_used_one">Den sist brukte</string>
     <string name="other_time">Annen tid</string>
