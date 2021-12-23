@@ -136,7 +136,7 @@
     <string name="regular_event">Esdeveniment normal</string>
     <string name="cannot_delete_default_type">El tipus d\'esdeveniment predeterminat no es pot suprimir</string>
     <string name="select_event_type">Seleccioneu un tipus d\'esdeveniment</string>
-    <string name="move_events_into_default">Mou els esdeveniments afectats al tipus d\'esdeveniment predeterminat</string>
+    <string name="move_events_into_default">Mou els esdeveniments afectats dins el tipus d\'esdeveniment predeterminat</string>
     <string name="remove_affected_events">Elimina permanentment els esdeveniments afectats</string>
     <string name="unsync_caldav_calendar">Per eliminar un calendari CalDAV, cal dessincronitzar-lo</string>
     <!-- Holidays -->
