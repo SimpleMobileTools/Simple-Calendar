@@ -159,11 +159,11 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
 
     override fun onDataSetChanged() {
         initConfigValues()
-        val period = intent.getIntExtra(EVENT_LIST_PERIOD, EVENT_PERIOD_ONE_YEAR)
+        val period = intent.getIntExtra(EVENT_LIST_PERIOD, 0)
         val currentDate = DateTime()
         val fromTS = currentDate.seconds() - context.config.displayPastEvents * 60
         val toTS = when (period) {
-            EVENT_PERIOD_ONE_YEAR -> currentDate.plusYears(1).seconds()
+            0 -> currentDate.plusYears(1).seconds()
             EVENT_PERIOD_TODAY -> currentDate.withTime(23, 59, 59, 999).seconds()
             else -> currentDate.plusSeconds(period).seconds()
         }

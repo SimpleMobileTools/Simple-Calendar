@@ -22,8 +22,7 @@ import com.simplemobiletools.calendar.pro.models.Widget
 import com.simplemobiletools.commons.dialogs.ColorPickerDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.IS_CUSTOMIZING_COLORS
-import com.simplemobiletools.commons.helpers.ensureBackgroundThread
+import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.models.RadioItem
 import kotlinx.android.synthetic.main.widget_config_list.*
 import org.joda.time.DateTime
@@ -36,9 +35,7 @@ class WidgetListConfigureActivity : SimpleActivity() {
     private var mBgColor = 0
     private var mTextColorWithoutTransparency = 0
     private var mTextColor = 0
-    private var selectedPeriodOption = 0
-    private var selectedPeriodValue: Int? = null
-    private var selectedPeriodValueType: Int? = null
+    private var selectedPeriodOption = YEAR_SECONDS
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         useDynamicTheme = false
@@ -104,37 +101,36 @@ class WidgetListConfigureActivity : SimpleActivity() {
         finish()
     }
 
-    private fun calculatePeriod(selectedPeriodValue: Int, selectedPeriodValueType: Int): Int {
-        return when (selectedPeriodValueType) {
-            R.id.dialog_radio_days -> selectedPeriodValue * DAY
-            R.id.dialog_radio_weeks -> selectedPeriodValue * WEEK
-            else -> selectedPeriodValue * MONTH
-        }
-    }
-
-    private fun getCustomRadioItems(): List<RadioItem> {
-        val items = ArrayList<RadioItem>()
-        items.add(RadioItem(calculatePeriod(1, R.id.dialog_radio_weeks), resources.getQuantityString(R.plurals.within_the_next_weeks, 1, 1)))
-        items.add(RadioItem(calculatePeriod(1, R.id.dialog_radio_months), resources.getQuantityString(R.plurals.within_the_next_months, 1, 1)))
-        return items
-    }
-
     private fun showPeriodSelector() {
         hideKeyboard()
+        val seconds = TreeSet<Int>()
+        seconds.apply {
+            add(EVENT_PERIOD_TODAY)
+            add(WEEK_SECONDS)
+            add(MONTH_SECONDS)
+            add(YEAR_SECONDS)
+            add(selectedPeriodOption)
+        }
 
-        val items = ArrayList<RadioItem>()
-        items.add(RadioItem(EVENT_PERIOD_TODAY, getString(R.string.today_only)))
-        items.addAll(getCustomRadioItems())
-        items.add(RadioItem(EVENT_PERIOD_ONE_YEAR, getString(R.string.within_the_next_one_year)))
+        val items = ArrayList<RadioItem>(seconds.size)
+        seconds.mapIndexedTo(items) { index, value ->
+            RadioItem(index, getFormattedSeconds(value), value)
+        }
+
+        var selectedIndex = 0
+        seconds.forEachIndexed { index, value ->
+            if (value == selectedPeriodOption) {
+                selectedIndex = index
+            }
+        }
+
         items.add(RadioItem(EVENT_PERIOD_CUSTOM, getString(R.string.within_the_next)))
 
-        val selectedOption = if (items.any { it.id === selectedPeriodOption }) selectedPeriodOption else EVENT_PERIOD_CUSTOM
-
-        RadioGroupDialog(this, items, selectedOption, showOKButton = true, cancelCallback = null) {
+        RadioGroupDialog(this, items, selectedIndex, showOKButton = true, cancelCallback = null) {
             val option = it as Int
             if (option == EVENT_PERIOD_CUSTOM) {
-                CustomPeriodPickerDialog(this, selectedPeriodValue, selectedPeriodValueType) { value: Int, type: Int ->
-                    updateSelectedPeriod(option, value, type)
+                CustomPeriodPickerDialog(this) {
+                    updateSelectedPeriod(it)
                 }
             } else {
                 updateSelectedPeriod(option)
@@ -142,30 +138,28 @@ class WidgetListConfigureActivity : SimpleActivity() {
         }
     }
 
-    private fun updateSelectedPeriod(selectedPeriod: Int, periodValue: Int? = null, periodType: Int? = null) {
+    private fun updateSelectedPeriod(selectedPeriod: Int) {
         selectedPeriodOption = selectedPeriod
-        when (selectedPeriodOption) {
-            EVENT_PERIOD_ONE_YEAR -> period_picker_value.setText(R.string.within_the_next_one_year)
+        when (selectedPeriod) {
+            0 -> {
+                selectedPeriodOption = YEAR_SECONDS
+                period_picker_value.setText(R.string.within_the_next_one_year)
+            }
             EVENT_PERIOD_TODAY -> period_picker_value.setText(R.string.today_only)
-            EVENT_PERIOD_CUSTOM -> {
-                if (periodValue != null && periodValue != 0 && periodType != null) {
-                    selectedPeriodValue = periodValue
-                    selectedPeriodValueType = periodType
-                    selectedPeriodOption = calculatePeriod(selectedPeriodValue!!, selectedPeriodValueType!!)
-                    when (periodType) {
-                        R.id.dialog_radio_days -> period_picker_value.setText(resources.getQuantityString(R.plurals.within_the_next_days, periodValue, periodValue))
-                        R.id.dialog_radio_weeks -> period_picker_value.setText(resources.getQuantityString(R.plurals.within_the_next_weeks, periodValue, periodValue))
-                        R.id.dialog_radio_months -> period_picker_value.setText(resources.getQuantityString(R.plurals.within_the_next_months, periodValue, periodValue))
-                    }
-                } else {
-                    selectedPeriodOption = EVENT_PERIOD_ONE_YEAR
-                    period_picker_value.setText(R.string.within_the_next_one_year)
-                }
-            }
             else -> {
-                val item = getCustomRadioItems().find { it.id == selectedPeriodOption }
-                period_picker_value.setText(item?.title)
+                period_picker_value.setText(getFormattedSeconds(selectedPeriodOption))
             }
+        }
+    }
+
+    private fun getFormattedSeconds(seconds: Int): String = if (seconds === EVENT_PERIOD_TODAY) {
+        getString(R.string.today_only)
+    } else {
+        when {
+            seconds == YEAR_SECONDS -> getString(R.string.within_the_next_one_year)
+            seconds % MONTH_SECONDS == 0 -> resources.getQuantityString(R.plurals.within_the_next_months, seconds / MONTH_SECONDS, seconds / MONTH_SECONDS)
+            seconds % WEEK_SECONDS == 0 -> resources.getQuantityString(R.plurals.within_the_next_weeks, seconds / WEEK_SECONDS, seconds / WEEK_SECONDS)
+            else -> resources.getQuantityString(R.plurals.within_the_next_days, seconds / DAY_SECONDS, seconds / DAY_SECONDS)
         }
     }
 

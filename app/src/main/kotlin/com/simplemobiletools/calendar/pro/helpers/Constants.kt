@@ -48,7 +48,6 @@ const val WEEK = 604800
 const val MONTH = 2592001    // exact value not taken into account, Joda is used for adding months and years
 const val YEAR = 31536000
 
-const val EVENT_PERIOD_ONE_YEAR = 0
 const val EVENT_PERIOD_TODAY = -1
 const val EVENT_PERIOD_CUSTOM = -2
 
