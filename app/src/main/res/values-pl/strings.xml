@@ -239,17 +239,17 @@
     <string name="today_only">Tylko dzisiaj</string>
     <string name="within_the_next">W ciągu najbliższych…</string>
     <plurals name="within_the_next_days">
-        <item quantity="one">W ciągu najbliższego %d dnia</item>
+        <item quantity="one">W ciągu najbliższego dnia</item>
         <item quantity="few">W ciągu najbliższych %d dni</item>
         <item quantity="other">W ciągu najbliższych %d dni</item>
     </plurals>
     <plurals name="within_the_next_weeks">
-        <item quantity="one">W ciągu najbliższego %d tygodnia</item>
+        <item quantity="one">W ciągu najbliższego tygodnia</item>
         <item quantity="few">W ciągu najbliższych %d tygodni</item>
         <item quantity="other">W ciągu najbliższych %d tygodni</item>
     </plurals>
     <plurals name="within_the_next_months">
-        <item quantity="one">W ciągu najbliższego %d miesiąca</item>
+        <item quantity="one">W ciągu najbliższego miesiąca</item>
         <item quantity="few">W ciągu najbliższych %d miesięcy</item>
         <item quantity="other">W ciągu najbliższych %d miesięcy</item>
     </plurals>
