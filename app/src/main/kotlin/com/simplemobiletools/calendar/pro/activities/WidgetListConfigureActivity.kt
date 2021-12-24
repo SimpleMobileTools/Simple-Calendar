@@ -128,7 +128,9 @@ class WidgetListConfigureActivity : SimpleActivity() {
         items.add(RadioItem(EVENT_PERIOD_ONE_YEAR, getString(R.string.within_the_next_one_year)))
         items.add(RadioItem(EVENT_PERIOD_CUSTOM, getString(R.string.within_the_next)))
 
-        RadioGroupDialog(this, items, selectedPeriodOption, showOKButton = true, cancelCallback = null) {
+        val selectedOption = if (items.any { it.id === selectedPeriodOption }) selectedPeriodOption else EVENT_PERIOD_CUSTOM
+
+        RadioGroupDialog(this, items, selectedOption, showOKButton = true, cancelCallback = null) {
             val option = it as Int
             if (option == EVENT_PERIOD_CUSTOM) {
                 CustomPeriodPickerDialog(this, selectedPeriodValue, selectedPeriodValueType) { value: Int, type: Int ->
