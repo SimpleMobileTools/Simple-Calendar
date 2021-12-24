@@ -7,11 +7,38 @@
     android:layout_centerHorizontal="true"
     android:layout_margin="@dimen/activity_margin">
 
+    <RelativeLayout
+        android:id="@+id/period_picker_holder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/activity_margin"
+        android:paddingBottom="@dimen/activity_margin">
+
+        <com.simplemobiletools.commons.views.MyTextView
+            android:id="@+id/period_picker_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/normal_margin"
+            android:layout_marginBottom="@dimen/normal_margin"
+            android:text="@string/show_events_happening" />
+
+        <com.simplemobiletools.commons.views.MyTextView
+            android:id="@+id/period_picker_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/period_picker_label"
+            android:background="@drawable/button_background"
+            android:padding="@dimen/normal_margin"
+            android:text="@string/within_the_next_one_year" />
+
+    </RelativeLayout>
+
     <com.simplemobiletools.commons.views.MyRecyclerView
         android:id="@+id/config_events_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/config_bg_color"
+        android:layout_below="@id/period_picker_holder"
         android:layout_marginBottom="@dimen/activity_margin"
         android:background="@drawable/widget_round_background"
         android:clipToPadding="false"

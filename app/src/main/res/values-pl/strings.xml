@@ -233,6 +233,26 @@
     <string name="sample_title_4">Kolacja z ukochaną</string>
     <string name="sample_description_4">Przy blasku zachodzącego słońca</string>
     <string name="sample_title_5">Czas na kawę</string>
+    <!-- List widget config -->
+    <string name="show_events_happening">Pokazuj wydarzenia odbywające się:</string>
+    <string name="within_the_next_one_year">W ciągu najbliższego roku</string>
+    <string name="today_only">Tylko dzisiaj</string>
+    <string name="within_the_next">W ciągu najbliższych…</string>
+    <plurals name="within_the_next_days">
+        <item quantity="one">W ciągu najbliższego %d dnia</item>
+        <item quantity="few">W ciągu najbliższych %d dni</item>
+        <item quantity="other">W ciągu najbliższych %d dni</item>
+    </plurals>
+    <plurals name="within_the_next_weeks">
+        <item quantity="one">W ciągu najbliższego %d tygodnia</item>
+        <item quantity="few">W ciągu najbliższych %d tygodni</item>
+        <item quantity="other">W ciągu najbliższych %d tygodni</item>
+    </plurals>
+    <plurals name="within_the_next_months">
+        <item quantity="one">W ciągu najbliższego %d miesiąca</item>
+        <item quantity="few">W ciągu najbliższych %d miesięcy</item>
+        <item quantity="other">W ciągu najbliższych %d miesięcy</item>
+    </plurals>
     <!-- FAQ -->
     <string name="faq_1_title">Jak mogę usunąć święta zaimportowane przez przycisk „Dodaj święta”?</string>
     <string name="faq_1_text">Święta dodane w ten sposób są wprowadzane do nowego typu wydarzeń — „Święta”. Możesz wejść w Ustawienia -&gt; Zarządzaj typami wydarzeń, a następnie przyciśnij długo dany typ wydarzeń i usuń go, wybierając ikonę kosza.</string>

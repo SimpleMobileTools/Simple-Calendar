@@ -246,6 +246,24 @@
     <string name="sample_description_4">논현동 먹자골목</string>
     <string name="sample_title_5">휴식시간</string>
 
+    <!-- List widget config -->
+    <string name="show_events_happening">Show events happening:</string>
+    <string name="within_the_next_one_year">Within the next 1 year</string>
+    <string name="today_only">Today only</string>
+    <string name="within_the_next">Within the next…</string>
+    <plurals name="within_the_next_days">
+        <item quantity="one">Within the next %d day</item>
+        <item quantity="other">Within the next %d days</item>
+    </plurals>
+    <plurals name="within_the_next_weeks">
+        <item quantity="one">Within the next %d week</item>
+        <item quantity="other">Within the next %d weeks</item>
+    </plurals>
+    <plurals name="within_the_next_months">
+        <item quantity="one">Within the next %d month</item>
+        <item quantity="other">Within the next %d months</item>
+    </plurals>
+
     <!-- FAQ -->
     <string name="faq_1_title">공휴일 추가 버튼을 통해 불러온 공휴일을 제거하기 위해선 어떻게 해야하나요?</string>
     <string name="faq_1_text">공휴일 추가 버튼을 통해 만든 공휴일은 \"공휴일\"이라는 새 일정 유형에 삽입됩니다. 설정 -> 일정 유형 관리로 이동하여 해당 일정 유형을 길게누르고 휴지통을 선택하여 삭제할 수 있습니다.</string>

@@ -246,6 +246,24 @@
     <string name="sample_description_4">Di Mall</string>
     <string name="sample_title_5">Waktunya Ngopi</string>
 
+    <!-- List widget config -->
+    <string name="show_events_happening">Show events happening:</string>
+    <string name="within_the_next_one_year">Within the next 1 year</string>
+    <string name="today_only">Today only</string>
+    <string name="within_the_next">Within the next…</string>
+    <plurals name="within_the_next_days">
+        <item quantity="one">Within the next %d day</item>
+        <item quantity="other">Within the next %d days</item>
+    </plurals>
+    <plurals name="within_the_next_weeks">
+        <item quantity="one">Within the next %d week</item>
+        <item quantity="other">Within the next %d weeks</item>
+    </plurals>
+    <plurals name="within_the_next_months">
+        <item quantity="one">Within the next %d month</item>
+        <item quantity="other">Within the next %d months</item>
+    </plurals>
+
     <!-- FAQ -->
     <string name="faq_1_title">Bagaimana cara menghapus hari libur yang diimpor via tombol \"Tambah hari libur\"?</string>
     <string name="faq_1_text">Hari libur yang dibuat dengan cara tersebut disimpan di dalam kategori acara baru dengan nama \"Hari Libur\". Anda bisa mengunjungi Pengaturan -> Kelola Kategori Acara,
