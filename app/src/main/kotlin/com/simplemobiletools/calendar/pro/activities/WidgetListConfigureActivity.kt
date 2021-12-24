@@ -89,7 +89,7 @@ class WidgetListConfigureActivity : SimpleActivity() {
     }
 
     private fun saveConfig() {
-        val widget = Widget(null, mWidgetId, calculatePeriod())
+        val widget = Widget(null, mWidgetId, selectedPeriodOption)
         ensureBackgroundThread {
             widgetsDB.insertOrUpdate(widget)
         }
@@ -104,24 +104,28 @@ class WidgetListConfigureActivity : SimpleActivity() {
         finish()
     }
 
-    private fun calculatePeriod(): Int {
-        return if (selectedPeriodOption == EVENT_PERIOD_CUSTOM && selectedPeriodValue != null) {
-            when (selectedPeriodValueType) {
-                R.id.dialog_radio_days -> selectedPeriodValue!! * DAY
-                R.id.dialog_radio_weeks -> selectedPeriodValue!! * WEEK
-                else -> selectedPeriodValue!! * MONTH
-            }
-        } else {
-            selectedPeriodOption
+    private fun calculatePeriod(selectedPeriodValue: Int, selectedPeriodValueType: Int): Int {
+        return when (selectedPeriodValueType) {
+            R.id.dialog_radio_days -> selectedPeriodValue * DAY
+            R.id.dialog_radio_weeks -> selectedPeriodValue * WEEK
+            else -> selectedPeriodValue * MONTH
         }
+    }
+
+    private fun getCustomRadioItems(): List<RadioItem> {
+        val items = ArrayList<RadioItem>()
+        items.add(RadioItem(calculatePeriod(1, R.id.dialog_radio_weeks), resources.getQuantityString(R.plurals.within_the_next_weeks, 1, 1)))
+        items.add(RadioItem(calculatePeriod(1, R.id.dialog_radio_months), resources.getQuantityString(R.plurals.within_the_next_months, 1, 1)))
+        return items
     }
 
     private fun showPeriodSelector() {
         hideKeyboard()
 
         val items = ArrayList<RadioItem>()
-        items.add(RadioItem(EVENT_PERIOD_ONE_YEAR, getString(R.string.within_the_next_one_year)))
         items.add(RadioItem(EVENT_PERIOD_TODAY, getString(R.string.today_only)))
+        items.addAll(getCustomRadioItems())
+        items.add(RadioItem(EVENT_PERIOD_ONE_YEAR, getString(R.string.within_the_next_one_year)))
         items.add(RadioItem(EVENT_PERIOD_CUSTOM, getString(R.string.within_the_next)))
 
         RadioGroupDialog(this, items, selectedPeriodOption, showOKButton = true, cancelCallback = null) {
@@ -141,10 +145,11 @@ class WidgetListConfigureActivity : SimpleActivity() {
         when (selectedPeriodOption) {
             EVENT_PERIOD_ONE_YEAR -> period_picker_value.setText(R.string.within_the_next_one_year)
             EVENT_PERIOD_TODAY -> period_picker_value.setText(R.string.today_only)
-            else -> {
+            EVENT_PERIOD_CUSTOM -> {
                 if (periodValue != null && periodValue != 0 && periodType != null) {
                     selectedPeriodValue = periodValue
                     selectedPeriodValueType = periodType
+                    selectedPeriodOption = calculatePeriod(selectedPeriodValue!!, selectedPeriodValueType!!)
                     when (periodType) {
                         R.id.dialog_radio_days -> period_picker_value.setText(resources.getQuantityString(R.plurals.within_the_next_days, periodValue, periodValue))
                         R.id.dialog_radio_weeks -> period_picker_value.setText(resources.getQuantityString(R.plurals.within_the_next_weeks, periodValue, periodValue))
@@ -154,6 +159,10 @@ class WidgetListConfigureActivity : SimpleActivity() {
                     selectedPeriodOption = EVENT_PERIOD_ONE_YEAR
                     period_picker_value.setText(R.string.within_the_next_one_year)
                 }
+            }
+            else -> {
+                val item = getCustomRadioItems().find { it.id == selectedPeriodOption }
+                period_picker_value.setText(item?.title)
             }
         }
     }
