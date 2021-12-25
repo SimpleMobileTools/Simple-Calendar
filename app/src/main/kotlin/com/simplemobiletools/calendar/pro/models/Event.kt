@@ -8,9 +8,9 @@ import androidx.room.PrimaryKey
 import com.simplemobiletools.calendar.pro.extensions.seconds
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.commons.extensions.addBitIf
-import java.io.Serializable
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
+import java.io.Serializable
 
 @Entity(tableName = "events", indices = [(Index(value = ["id"], unique = true))])
 data class Event(
@@ -142,7 +142,7 @@ data class Event(
     fun getIsAllDay() = flags and FLAG_ALL_DAY != 0
     fun hasMissingYear() = flags and FLAG_MISSING_YEAR != 0
 
-    fun getReminders() = setOf(
+    fun getReminders() = listOf(
         Reminder(reminder1Minutes, reminder1Type),
         Reminder(reminder2Minutes, reminder2Type),
         Reminder(reminder3Minutes, reminder3Type)
