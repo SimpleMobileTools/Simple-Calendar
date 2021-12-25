@@ -37,17 +37,17 @@ abstract class EventsDatabase : RoomDatabase() {
                 synchronized(EventsDatabase::class) {
                     if (db == null) {
                         db = Room.databaseBuilder(context.applicationContext, EventsDatabase::class.java, "events.db")
-                                .addCallback(object : Callback() {
-                                    override fun onCreate(db: SupportSQLiteDatabase) {
-                                        super.onCreate(db)
-                                        insertRegularEventType(context)
-                                    }
-                                })
-                                .addMigrations(MIGRATION_1_2)
-                                .addMigrations(MIGRATION_2_3)
-                                .addMigrations(MIGRATION_3_4)
-                                .addMigrations(MIGRATION_4_5)
-                                .build()
+                            .addCallback(object : Callback() {
+                                override fun onCreate(db: SupportSQLiteDatabase) {
+                                    super.onCreate(db)
+                                    insertRegularEventType(context)
+                                }
+                            })
+                            .addMigrations(MIGRATION_1_2)
+                            .addMigrations(MIGRATION_2_3)
+                            .addMigrations(MIGRATION_3_4)
+                            .addMigrations(MIGRATION_4_5)
+                            .build()
                         db!!.openHelper.setWriteAheadLoggingEnabled(true)
                     }
                 }
