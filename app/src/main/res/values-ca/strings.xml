@@ -12,7 +12,13 @@
     <string name="no_upcoming_events">Sembla que no hi ha cap esdeveniment pròxim.</string>
     <string name="go_to_today">Ves a avui</string>
     <string name="go_to_date">Ves a la data</string>
-    <string name="upgraded_from_free">Hola,\n\nsembla que heu actualitzat des de l\'antiga aplicació lliure. Cal migrar manualment els esdeveniments emmagatzemats localment a través d\'exportar a un fitxer .ics, i després importar. Podeu trobar els botons d\'exportació/importació en el menú de la pantalla principal.\n\nA continuació podreu desinstal·lar la versió antiga, que té un botó «Actualitza a Pro» a la part superior de la configuració de l\'aplicació. Finalment, només caldrà reiniciar la configuració de l\'aplicació.\n\nGràcies!</string>
+    <string name="upgraded_from_free">Hola,
+\n
+\nsembla que heu actualitzat des de l\'antiga aplicació gratuïta. Cal migrar manualment els esdeveniments emmagatzemats localment a través d\'exportar a un fitxer .ics, i després importar. Podeu trobar els botons d\'exportació/importació en el menú de la pantalla principal.
+\n
+\nA continuació podreu desinstal·lar la versió antiga, que té un botó «Actualitza a Pro» a la part superior de la configuració de l\'aplicació. Finalment, només caldrà reiniciar la configuració de l\'aplicació.
+\n
+\nGràcies!</string>
     <!-- Widget titles -->
     <string name="widget_monthly">Calendari mensual</string>
     <string name="widget_list">Llista d\'esdeveniments del calendari</string>
@@ -30,7 +36,7 @@
     <string name="filter_events_by_type">Filtra els esdeveniments per tipus</string>
     <string name="please_fill_location">Ompliu una ubicació que es mostrarà en un mapa</string>
     <string name="public_event_notification_text">S\'acosta un esdeveniment</string>
-    <string name="saving_filtered_out">S\'està desant… Però el tipus d\'esdeveniment seleccionat es filtra al Menú superior - Filtre</string>
+    <string name="saving_filtered_out">S\'està desant… Però el tipus d\'esdeveniment seleccionat està filtrat al Menú superior - Filtre</string>
     <!-- Event Repetition -->
     <string name="repetition">Repetició</string>
     <string name="no_repetition">Sense repetició</string>
@@ -136,7 +142,7 @@
     <string name="regular_event">Esdeveniment normal</string>
     <string name="cannot_delete_default_type">El tipus d\'esdeveniment predeterminat no es pot suprimir</string>
     <string name="select_event_type">Seleccioneu un tipus d\'esdeveniment</string>
-    <string name="move_events_into_default">Mou els esdeveniments afectats al tipus d\'esdeveniment predeterminat</string>
+    <string name="move_events_into_default">Mou els esdeveniments afectats dins el tipus d\'esdeveniment predeterminat</string>
     <string name="remove_affected_events">Elimina permanentment els esdeveniments afectats</string>
     <string name="unsync_caldav_calendar">Per eliminar un calendari CalDAV, cal dessincronitzar-lo</string>
     <!-- Holidays -->
@@ -154,7 +160,7 @@
     <string name="midnight_spanning">Mostra els esdeveniments que s\'estenen durant la mitjanit a la barra superior</string>
     <string name="allow_customizing_day_count">Permet personalitzar el recompte de dies</string>
     <string name="week_numbers">Mostra els números de la setmana</string>
-    <string name="vibrate">Vibra a la notificació del recordatori</string>
+    <string name="vibrate">Vibra a la notificació de recordatori</string>
     <string name="reminder_sound">So de recordatori</string>
     <string name="no_ringtone_picker">No s\'ha trobat cap aplicació capaç d\'establir el to de trucada</string>
     <string name="no_ringtone_selected">Cap</string>
@@ -186,7 +192,7 @@
     <string name="next_full_hour">Pròxima hora completa</string>
     <string name="current_time">Hora actual</string>
     <string name="default_duration">Durada predeterminada</string>
-    <string name="last_used_one">Última utilizada</string>
+    <string name="last_used_one">Última utilitzada</string>
     <string name="other_time">Una altra hora</string>
     <string name="highlight_weekends">Ressalta els caps de setmana en algunes vistes</string>
     <string name="highlight_weekends_color">Color dels caps de setmana ressaltats</string>
@@ -198,7 +204,7 @@
     <string name="manage_synced_calendars">Gestiona els calendaris sincronitzats</string>
     <string name="store_locally_only">Emmagatzema només localment</string>
     <string name="refresh_caldav_calendars">Actualitza els calendaris CalDAV</string>
-    <string name="refreshing">Actualitzant…</string>    
+    <string name="refreshing">Actualitzant…</string>
     <string name="refreshing_complete">S\'ha completat l\'actualització</string>
     <string name="editing_calendar_failed">Ha fallat l\'edició del calendari</string>
     <string name="syncing">S\'està sincronitzant…</string>
@@ -206,8 +212,8 @@
     <string name="select_a_different_caldav_color">Seleccioneu un color diferent (només es pot aplicar localment)</string>
     <string name="insufficient_permissions">No teniu permís per escriure al calendari seleccionat</string>
     <string name="caldav_event_not_found">No s\'ha trobat l\'esdeveniment. Activeu la sincronització de CalDAV per al calendari adequat a la configuració de l\'aplicació.</string>
-    <string name="no_synchronized_calendars">No s\'ha trobat cap calendari sincronitzable</string>
-    <string name="status_free">LLiure</string>
+    <string name="no_synchronized_calendars">No s\'ha trobat cap calendari que es pugui sincronitzar</string>
+    <string name="status_free">Lliure</string>
     <string name="status_busy">Ocupat</string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
@@ -229,7 +235,7 @@
     <string name="sample_title_5">Hora del cafè</string>
     <!-- FAQ -->
     <string name="faq_1_title">Com puc eliminar els dies festius importats mitjançant el botó «Afegeix festius»\?</string>
-    <string name="faq_1_text">Els dies festius creats d\'aquesta manera s\'insereixen en un tipus d\'esdeveniment nou anomenat «Festius». Podeu anar a Configuració -&gt; Gestiona els tipus d\'esdeveniments, prémer durant molt de temps el tipus d\'esdeveniment indicat i suprimir-lo seleccionant la paperera.</string>
+    <string name="faq_1_text">Els dies festius creats d\'aquesta manera s\'insereixen en un tipus d\'esdeveniment nou anomenat «Festius». Podeu anar a Configuració -&gt; Gestiona els tipus d\'esdeveniments, prémer durant força temps el tipus d\'esdeveniment indicat i suprimir-lo seleccionant la paperera.</string>
     <string name="faq_2_title">Puc sincronitzar els meus esdeveniments a través de Google Calendar o d\'un altre servei que admeti CalDAV\?</string>
     <string name="faq_2_text">Sí, només cal que activeu la \"Sincronització CalDAV» a la configuració de l\'aplicació i seleccioneu els calendaris que voleu sincronitzar. Tanmateix, necessitareu una aplicació de tercers que gestioni la sincronització entre el dispositiu i els servidors. En cas que vulgueu sincronitzar un calendari de Google, la seva aplicació oficial Calendar farà la feina. Per a altres calendaris, necessitareu un adaptador de sincronització de tercers, per exemple DAVx5.</string>
     <string name="faq_3_title">Veig els recordatoris visuals, però no escolto cap àudio. Què puc fer\?</string>
@@ -241,7 +247,7 @@
     <string name="app_title">Simple Calendar Pro - Esdeveniments i recordatoris</string>
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Calendari mòbil senzill 2020. Planificador de l\'agenda i recordatori de cites per a qualsevol dia</string>
-    <string name="app_long_description"> El Simple Calendar Pro és un calendari fora de línia totalment personalitzable dissenyat per fer exactament el que un calendari ha de fer. <b>Sense funcions complicades, permisos innecessaris i sense anuncis!</b> Tant si organitzeu esdeveniments únics o recurrents, dates de naixement, aniversaris, reunions de negocis, cites o qualsevol altra cosa, el Simple Calendar Pro fa que <b> sigui fàcil de mantenir-se organitzat </b>. Amb una varietat increïble d\'opcions de personalització <b/>, podeu personalitzar recordatoris d\'esdeveniments, sons de notificació, ginys de calendari i l\'aspecte de l\'aplicació. Les vistes diàries, setmanals i mensuals fan que comprovar els vostres esdeveniments pròxims i cites sigui molt fàcil. Fins i tot podeu veure-ho tot com una llista simple d\'esdeveniments en lloc de veure\'l al calendari, de manera que <b> sapigueu exactament què passa a la vostra vida i quan. </b> ----------------------------------------------- ----------- <b>Simple Calendar Pro - Característiques i avantatges</b> ------------------------- ---------------------------------- ✔️ Sense anuncis ni finestres emergents molestes ✔️ Sense necessitat d\'accés a Internet, donant-te més privadesa i seguretat ✔️ Només es requereixen els permisos mínims necessaris ✔️ Èmfasi en la simplicitat: fa el que ha de fer un calendari! ✔️ Codi obert ✔️ Temes totalment personalitzables i ginys de calendari/esdeveniments ✔️ Traduït a 29 idiomes ✔️ Exporta la configuració a fitxers .txt per importar-los a un altre dispositiu ✔️ Admet la sincronització del calendari CalDAV per sincronitzar esdeveniments entre dispositius ✔️ Vistes diàries, setmanals, mensuals, anuals d\'esdeveniments al calendari ✔️ Admet l\'exportació i la importació d\'esdeveniments mitjançant fitxers .ics ✔️ Es poden establir diversos recordatoris d\'esdeveniments, personalitzar el so i la vibració dels recordatoris d\'esdeveniments ✔️ Opció de posposar els recordatoris ✔️ Afegiu fàcilment festius, dates de naixement, aniversaris i cites ✔ Personalitzeu els esdeveniments: hora d\'inici, durada, recordatoris, etc. ✔️ Afegiu assistents a cada esdeveniment ✔️ Utilitzeu-lo com a calendari personal o calendari de feina ✔️ Trieu entre notificacions per correu electrònic o recordatoris per avisar-vos d\'un esdeveniment DESCARREGUEU SIMPLE CALENDAR PRO: EL SIMPLE CALENDARI FORA DE LÍNIA SENSE ANUNCIS! <b>Consulteu el conjunt complet d\'eines Simples aquí:</b> https://www.simplemobiletools.com <b>Lloc web de Simple Calendar Pro:</b> https://www.simplemobiletools.com/calendar <b>Facebook:</b> https://www.facebook.com/simplemobiletools <b>Reddit:</b> https://www.reddit.com/r/SimpleMobileTools </string>
+    <string name="app_long_description"> El Simple Calendar Pro és un calendari fora de línia totalment personalitzable dissenyat per fer exactament el que un calendari ha de fer. <b>Sense funcions complicades, permisos innecessaris i sense anuncis!</b> Tant si organitzeu esdeveniments únics o recurrents, dates de naixement, aniversaris, reunions de negocis, cites o qualsevol altra cosa, el Simple Calendar Pro fa que <b> sigui fàcil de mantenir-se organitzat </b>. Amb una varietat increïble d\'opcions de personalització <b/>, podeu personalitzar recordatoris d\'esdeveniments, sons de notificació, ginys de calendari i l\'aspecte de l\'aplicació. Les vistes diàries, setmanals i mensuals fan que comprovar els vostres esdeveniments pròxims i cites sigui molt fàcil. Fins i tot podeu veure-ho tot com una llista simple d\'esdeveniments en lloc de veure\'l al calendari, de manera que <b> sapigueu exactament què passa a la vostra vida i quan. </b> ----------------------------------------------- ----------- <b>Simple Calendar Pro - Característiques i avantatges</b> ------------------------- ---------------------------------- ✔️ Sense anuncis ni finestres emergents molestes ✔️ Sense necessitat d\'accés a Internet, donant-te més privadesa i seguretat ✔️ Només es requereixen els permisos mínims necessaris ✔️ Èmfasi en la simplicitat: fa el que ha de fer un calendari! ✔️ Codi obert ✔️ Temes totalment personalitzables i ginys de calendari/esdeveniments ✔️ Traduït a 29 idiomes ✔️ Exporta la configuració a fitxers .txt per importar-los a un altre dispositiu ✔️ Admet la sincronització del calendari CalDAV per sincronitzar esdeveniments entre dispositius ✔️ Vistes diàries, setmanals, mensuals, anuals d\'esdeveniments al calendari ✔️ Admet l\'exportació i la importació d\'esdeveniments mitjançant fitxers .ics ✔️ Es poden establir diversos recordatoris d\'esdeveniments, personalitzar el so i la vibració dels recordatoris d\'esdeveniments ✔️ Opció de posposar els recordatoris ✔️ Afegiu fàcilment festius, dates de naixement, aniversaris i cites ✔ Personalitzeu els esdeveniments: hora d\'inici, durada, recordatoris, etc. ✔️ Afegiu assistents a cada esdeveniment ✔️ Utilitzeu-lo com a calendari personal o calendari de feina ✔️ Trieu entre notificacions per correu electrònic o recordatoris per avisar-vos d\'un esdeveniment DESCARREGUEU SIMPLE CALENDAR PRO: EL CALENDARI SIMPLE FORA DE LÍNIA SENSE ANUNCIS! <b>Consulteu el conjunt complet d\'eines Simples aquí:</b> https://www.simplemobiletools.com <b>Lloc web de Simple Calendar Pro:</b> https://www.simplemobiletools.com/calendar <b>Facebook:</b> https://www.facebook.com/simplemobiletools <b>Reddit:</b> https://www.reddit.com/r/SimpleMobileTools </string>
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
