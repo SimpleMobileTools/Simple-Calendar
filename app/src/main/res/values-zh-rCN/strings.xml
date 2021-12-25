@@ -233,6 +233,23 @@
     <string name="sample_title_4">跟玛丽共进午餐</string>
     <string name="sample_description_4">在购物商场</string>
     <string name="sample_title_5">休息时间</string>
+    <!-- List widget config -->
+    <string name="show_events_happening">Show events happening:</string>
+    <string name="within_the_next_one_year">Within the next 1 year</string>
+    <string name="today_only">Today only</string>
+    <string name="within_the_next">Within the next…</string>
+    <plurals name="within_the_next_days">
+        <item quantity="one">Within the next %d day</item>
+        <item quantity="other">Within the next %d days</item>
+    </plurals>
+    <plurals name="within_the_next_weeks">
+        <item quantity="one">Within the next %d week</item>
+        <item quantity="other">Within the next %d weeks</item>
+    </plurals>
+    <plurals name="within_the_next_months">
+        <item quantity="one">Within the next %d month</item>
+        <item quantity="other">Within the next %d months</item>
+    </plurals>
     <!-- FAQ -->
     <string name="faq_1_title">我如何移除用[添加节日]按钮所导入的节日?</string>
     <string name="faq_1_text">以这方式建立的节日，会被加进一个叫做「节日」的新活动类型。

@@ -227,6 +227,23 @@
     <string name="sample_title_4">Frokost med Marie</string>
     <string name="sample_description_4">I byen</string>
     <string name="sample_title_5">Kaffetid!</string>
+    <!-- List widget config -->
+    <string name="show_events_happening">Show events happening:</string>
+    <string name="within_the_next_one_year">Within the next 1 year</string>
+    <string name="today_only">Today only</string>
+    <string name="within_the_next">Within the next…</string>
+    <plurals name="within_the_next_days">
+        <item quantity="one">Within the next %d day</item>
+        <item quantity="other">Within the next %d days</item>
+    </plurals>
+    <plurals name="within_the_next_weeks">
+        <item quantity="one">Within the next %d week</item>
+        <item quantity="other">Within the next %d weeks</item>
+    </plurals>
+    <plurals name="within_the_next_months">
+        <item quantity="one">Within the next %d month</item>
+        <item quantity="other">Within the next %d months</item>
+    </plurals>
     <!-- FAQ -->
     <string name="faq_1_title">Hvordan kan jeg fjerne helligdage der er importeret med funktionen \"Tilføj helligdage\"?</string>
     <string name="faq_1_text">Helligdage oprettet på den måde er indsat under begivenhedstypen \"Helligdage\". Gå til Indstillinger -&gt; Håndter begivenhedstyper. Efter et par sekunders pres på en type kan du slette den ved at klikke på papirkurven.</string>

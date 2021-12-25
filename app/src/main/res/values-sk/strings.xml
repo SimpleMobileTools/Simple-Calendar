@@ -246,6 +246,27 @@
     <string name="sample_description_4">V supermarkete</string>
     <string name="sample_title_5">Káva</string>
 
+    <!-- List widget config -->
+    <string name="show_events_happening">Zobraziť udalosti z:</string>
+    <string name="within_the_next_one_year">Najbližšieho 1 roka</string>
+    <string name="today_only">Iba dnešné</string>
+    <string name="within_the_next">Najbližšich…</string>
+    <plurals name="within_the_next_days">
+        <item quantity="one">Najbližšieho %d dňa</item>
+        <item quantity="few">Najbližších %d dní</item>
+        <item quantity="other">Najbližších %d dní</item>
+    </plurals>
+    <plurals name="within_the_next_weeks">
+        <item quantity="one">Najbližšieho %d týždňa</item>
+        <item quantity="few">Najbližších %d týždňov</item>
+        <item quantity="other">Najbližších %d týždňov</item>
+    </plurals>
+    <plurals name="within_the_next_months">
+        <item quantity="one">Najbližšieho %d mesiaca</item>
+        <item quantity="few">Najbližších %d mesiacov</item>
+        <item quantity="other">Najbližších %d mesiacov</item>
+    </plurals>
+
     <!-- FAQ -->
     <string name="faq_1_title">Ako môžem odstrániť sviatky pridané pomocou tlačidla \"Pridať sviatky\"?</string>
     <string name="faq_1_text">Sviatky vytvorené daným spôsobom sú pridané do typu udalosti \"Sviatky\". Môžete teda ísť do Nastavenia -> Spravovať typy udalostí,

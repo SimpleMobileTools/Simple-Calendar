@@ -227,6 +227,23 @@
     <string name="sample_title_4">Pietūs su Marija</string>
     <string name="sample_description_4">Prekybos ir verslo centre</string>
     <string name="sample_title_5">Kavos laikas</string>
+    <!-- List widget config -->
+    <string name="show_events_happening">Show events happening:</string>
+    <string name="within_the_next_one_year">Within the next 1 year</string>
+    <string name="today_only">Today only</string>
+    <string name="within_the_next">Within the next…</string>
+    <plurals name="within_the_next_days">
+        <item quantity="one">Within the next %d day</item>
+        <item quantity="other">Within the next %d days</item>
+    </plurals>
+    <plurals name="within_the_next_weeks">
+        <item quantity="one">Within the next %d week</item>
+        <item quantity="other">Within the next %d weeks</item>
+    </plurals>
+    <plurals name="within_the_next_months">
+        <item quantity="one">Within the next %d month</item>
+        <item quantity="other">Within the next %d months</item>
+    </plurals>
     <!-- FAQ -->
     <string name="faq_1_title">Kaip galiu pašalinti šventines dienas, importuotas naudojant mygtuką „Pridėti šventines dienas“\?</string>
     <string name="faq_1_text">Tuo būdu sukurtos šventinės dienos yra įterpiamos į naują įvykių tipą, pavadinimu „Šventinės dienos“. Pereikite į „Nustatymai“ -&gt; „Tvarkyti įvykių tipus“, paspauskite ir ilgiau palaikykite ant nurodyto įvykio tipo ir ištrinkite jį baksteldami ant šiukšlinės.</string>

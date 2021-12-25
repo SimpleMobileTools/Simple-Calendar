@@ -13,9 +13,11 @@ import com.simplemobiletools.calendar.pro.activities.SplashActivity
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.getWidgetFontSize
 import com.simplemobiletools.calendar.pro.extensions.launchNewEventIntent
+import com.simplemobiletools.calendar.pro.extensions.widgetsDB
 import com.simplemobiletools.calendar.pro.services.WidgetService
 import com.simplemobiletools.calendar.pro.services.WidgetServiceEmpty
 import com.simplemobiletools.commons.extensions.*
+import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import org.joda.time.DateTime
 
 class MyWidgetListProvider : AppWidgetProvider() {
@@ -32,38 +34,42 @@ class MyWidgetListProvider : AppWidgetProvider() {
         val textColor = context.config.widgetTextColor
 
         val appWidgetManager = AppWidgetManager.getInstance(context) ?: return
-        appWidgetManager.getAppWidgetIds(getComponentName(context)).forEach {
-            val views = RemoteViews(context.packageName, R.layout.widget_event_list).apply {
-                applyColorFilter(R.id.widget_event_list_background, context.config.widgetBgColor)
-                setTextColor(R.id.widget_event_list_empty, textColor)
-                setTextSize(R.id.widget_event_list_empty, fontSize)
+        ensureBackgroundThread {
+            appWidgetManager.getAppWidgetIds(getComponentName(context)).forEach {
+                val widget = context.widgetsDB.getWidgetWithWidgetId(it)
+                val views = RemoteViews(context.packageName, R.layout.widget_event_list).apply {
+                    applyColorFilter(R.id.widget_event_list_background, context.config.widgetBgColor)
+                    setTextColor(R.id.widget_event_list_empty, textColor)
+                    setTextSize(R.id.widget_event_list_empty, fontSize)
 
-                setTextColor(R.id.widget_event_list_today, textColor)
-                setTextSize(R.id.widget_event_list_today, fontSize)
+                    setTextColor(R.id.widget_event_list_today, textColor)
+                    setTextSize(R.id.widget_event_list_today, fontSize)
+                }
+
+                val todayText = Formatter.getLongestDate(getNowSeconds())
+                views.setText(R.id.widget_event_list_today, todayText)
+
+                views.setImageViewBitmap(R.id.widget_event_new_event, context.resources.getColoredBitmap(R.drawable.ic_plus_vector, textColor))
+                setupIntent(context, views, NEW_EVENT, R.id.widget_event_new_event)
+                setupIntent(context, views, LAUNCH_CAL, R.id.widget_event_list_today)
+
+                views.setImageViewBitmap(R.id.widget_event_go_to_today, context.resources.getColoredBitmap(R.drawable.ic_today_vector, textColor))
+                setupIntent(context, views, GO_TO_TODAY, R.id.widget_event_go_to_today)
+
+                Intent(context, WidgetService::class.java).apply {
+                    putExtra(EVENT_LIST_PERIOD, widget?.period)
+                    data = Uri.parse(this.toUri(Intent.URI_INTENT_SCHEME))
+                    views.setRemoteAdapter(R.id.widget_event_list, this)
+                }
+
+                val startActivityIntent = context.getLaunchIntent() ?: Intent(context, SplashActivity::class.java)
+                val startActivityPendingIntent = PendingIntent.getActivity(context, 0, startActivityIntent, PendingIntent.FLAG_UPDATE_CURRENT)
+                views.setPendingIntentTemplate(R.id.widget_event_list, startActivityPendingIntent)
+                views.setEmptyView(R.id.widget_event_list, R.id.widget_event_list_empty)
+
+                appWidgetManager.updateAppWidget(it, views)
+                appWidgetManager.notifyAppWidgetViewDataChanged(it, R.id.widget_event_list)
             }
-
-            val todayText = Formatter.getLongestDate(getNowSeconds())
-            views.setText(R.id.widget_event_list_today, todayText)
-
-            views.setImageViewBitmap(R.id.widget_event_new_event, context.resources.getColoredBitmap(R.drawable.ic_plus_vector, textColor))
-            setupIntent(context, views, NEW_EVENT, R.id.widget_event_new_event)
-            setupIntent(context, views, LAUNCH_CAL, R.id.widget_event_list_today)
-
-            views.setImageViewBitmap(R.id.widget_event_go_to_today, context.resources.getColoredBitmap(R.drawable.ic_today_vector, textColor))
-            setupIntent(context, views, GO_TO_TODAY, R.id.widget_event_go_to_today)
-
-            Intent(context, WidgetService::class.java).apply {
-                data = Uri.parse(this.toUri(Intent.URI_INTENT_SCHEME))
-                views.setRemoteAdapter(R.id.widget_event_list, this)
-            }
-
-            val startActivityIntent = context.getLaunchIntent() ?: Intent(context, SplashActivity::class.java)
-            val startActivityPendingIntent = PendingIntent.getActivity(context, 0, startActivityIntent, PendingIntent.FLAG_UPDATE_CURRENT)
-            views.setPendingIntentTemplate(R.id.widget_event_list, startActivityPendingIntent)
-            views.setEmptyView(R.id.widget_event_list, R.id.widget_event_list_empty)
-
-            appWidgetManager.updateAppWidget(it, views)
-            appWidgetManager.notifyAppWidgetViewDataChanged(it, R.id.widget_event_list)
         }
     }
 
@@ -83,6 +89,15 @@ class MyWidgetListProvider : AppWidgetProvider() {
             LAUNCH_CAL -> launchCalenderInDefaultView(context)
             GO_TO_TODAY -> goToToday(context)
             else -> super.onReceive(context, intent)
+        }
+    }
+
+    override fun onDeleted(context: Context?, appWidgetIds: IntArray?) {
+        super.onDeleted(context, appWidgetIds)
+        ensureBackgroundThread {
+            appWidgetIds?.forEach {
+                context?.widgetsDB?.deleteWidgetId(it)
+            }
         }
     }
 

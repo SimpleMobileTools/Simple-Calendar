@@ -250,6 +250,24 @@
     <string name="sample_description_4">প্লাজাতে</string>
     <string name="sample_title_5">কফি টাইম</string>
 
+    <!-- List widget config -->
+    <string name="show_events_happening">Show events happening:</string>
+    <string name="within_the_next_one_year">Within the next 1 year</string>
+    <string name="today_only">Today only</string>
+    <string name="within_the_next">Within the next…</string>
+    <plurals name="within_the_next_days">
+        <item quantity="one">Within the next %d day</item>
+        <item quantity="other">Within the next %d days</item>
+    </plurals>
+    <plurals name="within_the_next_weeks">
+        <item quantity="one">Within the next %d week</item>
+        <item quantity="other">Within the next %d weeks</item>
+    </plurals>
+    <plurals name="within_the_next_months">
+        <item quantity="one">Within the next %d month</item>
+        <item quantity="other">Within the next %d months</item>
+    </plurals>
+
     <!-- FAQ -->
     <string name="faq_1_title">আমি কীভাবে \"ছুটি যুক্ত করুন?\" বাটনের মাধ্যমে ইমপোর্ট করা ছুটিগুলি সরিয়ে ফেলতে পারি?</string>
     <string name="faq_1_text">\"ছুটির দিন\" নামে নতুন ইভেন্ট টাইপ ইনসার্ট করার মাধ্যমে ছুটির দিন তৈরি হয়।</string>

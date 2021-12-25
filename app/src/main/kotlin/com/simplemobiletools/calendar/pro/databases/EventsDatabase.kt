@@ -13,17 +13,21 @@ import com.simplemobiletools.calendar.pro.helpers.Converters
 import com.simplemobiletools.calendar.pro.helpers.REGULAR_EVENT_TYPE_ID
 import com.simplemobiletools.calendar.pro.interfaces.EventTypesDao
 import com.simplemobiletools.calendar.pro.interfaces.EventsDao
+import com.simplemobiletools.calendar.pro.interfaces.WidgetsDao
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.EventType
+import com.simplemobiletools.calendar.pro.models.Widget
 import java.util.concurrent.Executors
 
-@Database(entities = [Event::class, EventType::class], version = 4)
+@Database(entities = [Event::class, EventType::class, Widget::class], version = 5)
 @TypeConverters(Converters::class)
 abstract class EventsDatabase : RoomDatabase() {
 
     abstract fun EventsDao(): EventsDao
 
     abstract fun EventTypesDao(): EventTypesDao
+
+    abstract fun WidgetsDao(): WidgetsDao
 
     companion object {
         private var db: EventsDatabase? = null
@@ -33,16 +37,17 @@ abstract class EventsDatabase : RoomDatabase() {
                 synchronized(EventsDatabase::class) {
                     if (db == null) {
                         db = Room.databaseBuilder(context.applicationContext, EventsDatabase::class.java, "events.db")
-                                .addCallback(object : Callback() {
-                                    override fun onCreate(db: SupportSQLiteDatabase) {
-                                        super.onCreate(db)
-                                        insertRegularEventType(context)
-                                    }
-                                })
-                                .addMigrations(MIGRATION_1_2)
-                                .addMigrations(MIGRATION_2_3)
-                                .addMigrations(MIGRATION_3_4)
-                                .build()
+                            .addCallback(object : Callback() {
+                                override fun onCreate(db: SupportSQLiteDatabase) {
+                                    super.onCreate(db)
+                                    insertRegularEventType(context)
+                                }
+                            })
+                            .addMigrations(MIGRATION_1_2)
+                            .addMigrations(MIGRATION_2_3)
+                            .addMigrations(MIGRATION_3_4)
+                            .addMigrations(MIGRATION_4_5)
+                            .build()
                         db!!.openHelper.setWriteAheadLoggingEnabled(true)
                     }
                 }
@@ -86,6 +91,15 @@ abstract class EventsDatabase : RoomDatabase() {
             override fun migrate(database: SupportSQLiteDatabase) {
                 database.apply {
                     execSQL("ALTER TABLE events ADD COLUMN availability INTEGER NOT NULL DEFAULT 0")
+                }
+            }
+        }
+
+        private val MIGRATION_4_5 = object : Migration(4, 5) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.apply {
+                    execSQL("CREATE TABLE IF NOT EXISTS `widgets` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `widget_id` INTEGER NOT NULL, `period` INTEGER NOT NULL)")
+                    execSQL("CREATE UNIQUE INDEX IF NOT EXISTS `index_widgets_widget_id` ON `widgets` (`widget_id`)")
                 }
             }
         }

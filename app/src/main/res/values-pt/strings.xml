@@ -246,6 +246,24 @@
     <string name="sample_description_4">Ir ao mercado</string>
     <string name="sample_title_5">Beber um café</string>
 
+    <!-- List widget config -->
+    <string name="show_events_happening">Show events happening:</string>
+    <string name="within_the_next_one_year">Within the next 1 year</string>
+    <string name="today_only">Today only</string>
+    <string name="within_the_next">Within the next…</string>
+    <plurals name="within_the_next_days">
+        <item quantity="one">Within the next %d day</item>
+        <item quantity="other">Within the next %d days</item>
+    </plurals>
+    <plurals name="within_the_next_weeks">
+        <item quantity="one">Within the next %d week</item>
+        <item quantity="other">Within the next %d weeks</item>
+    </plurals>
+    <plurals name="within_the_next_months">
+        <item quantity="one">Within the next %d month</item>
+        <item quantity="other">Within the next %d months</item>
+    </plurals>
+
     <!-- FAQ -->
     <string name="faq_1_title">Como posso remover os feriados importados por meio do botão \ "Adicionar feriados \"?</string>
     <string name="faq_1_text">Os feriados criados dessa maneira são inseridos em um novo tipo de evento chamado \ "Feriados \". Você pode ir em Configurações -> Gerenciar tipos de eventos, pressione e segure o tipo de evento fornecido e exclua-o selecionando a lixeira.</string>

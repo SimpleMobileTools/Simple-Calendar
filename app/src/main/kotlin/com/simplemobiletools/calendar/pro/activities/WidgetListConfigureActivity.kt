@@ -4,22 +4,31 @@ import android.app.Activity
 import android.appwidget.AppWidgetManager
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.widget.SeekBar
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.adapters.EventListAdapter
+import com.simplemobiletools.calendar.pro.dialogs.CustomPeriodPickerDialog
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.seconds
+import com.simplemobiletools.calendar.pro.extensions.widgetsDB
+import com.simplemobiletools.calendar.pro.helpers.EVENT_PERIOD_CUSTOM
+import com.simplemobiletools.calendar.pro.helpers.EVENT_PERIOD_TODAY
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.helpers.MyWidgetListProvider
 import com.simplemobiletools.calendar.pro.models.ListEvent
 import com.simplemobiletools.calendar.pro.models.ListItem
 import com.simplemobiletools.calendar.pro.models.ListSectionDay
+import com.simplemobiletools.calendar.pro.models.Widget
 import com.simplemobiletools.commons.dialogs.ColorPickerDialog
+import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.adjustAlpha
 import com.simplemobiletools.commons.extensions.applyColorFilter
+import com.simplemobiletools.commons.extensions.hideKeyboard
 import com.simplemobiletools.commons.extensions.setFillWithStroke
-import com.simplemobiletools.commons.helpers.IS_CUSTOMIZING_COLORS
+import com.simplemobiletools.commons.helpers.*
+import com.simplemobiletools.commons.models.RadioItem
 import kotlinx.android.synthetic.main.widget_config_list.*
 import org.joda.time.DateTime
 import java.util.*
@@ -31,6 +40,7 @@ class WidgetListConfigureActivity : SimpleActivity() {
     private var mBgColor = 0
     private var mTextColorWithoutTransparency = 0
     private var mTextColor = 0
+    private var selectedPeriodOption = YEAR_SECONDS
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         useDynamicTheme = false
@@ -50,6 +60,9 @@ class WidgetListConfigureActivity : SimpleActivity() {
             updateTextColor(mTextColor)
             config_events_list.adapter = this
         }
+
+        period_picker_holder.background = ColorDrawable(config.backgroundColor)
+        period_picker_value.setOnClickListener { showPeriodSelector() }
 
         config_save.setOnClickListener { saveConfig() }
         config_bg_color.setOnClickListener { pickBackgroundColor() }
@@ -78,6 +91,11 @@ class WidgetListConfigureActivity : SimpleActivity() {
     }
 
     private fun saveConfig() {
+        val widget = Widget(null, mWidgetId, selectedPeriodOption)
+        ensureBackgroundThread {
+            widgetsDB.insertOrUpdate(widget)
+        }
+
         storeWidgetColors()
         requestWidgetUpdate()
 
@@ -86,6 +104,66 @@ class WidgetListConfigureActivity : SimpleActivity() {
             setResult(Activity.RESULT_OK, this)
         }
         finish()
+    }
+
+    private fun showPeriodSelector() {
+        hideKeyboard()
+        val seconds = TreeSet<Int>()
+        seconds.apply {
+            add(EVENT_PERIOD_TODAY)
+            add(WEEK_SECONDS)
+            add(MONTH_SECONDS)
+            add(YEAR_SECONDS)
+            add(selectedPeriodOption)
+        }
+
+        val items = ArrayList<RadioItem>(seconds.size)
+        seconds.mapIndexedTo(items) { index, value ->
+            RadioItem(index, getFormattedSeconds(value), value)
+        }
+
+        var selectedIndex = 0
+        seconds.forEachIndexed { index, value ->
+            if (value == selectedPeriodOption) {
+                selectedIndex = index
+            }
+        }
+
+        items.add(RadioItem(EVENT_PERIOD_CUSTOM, getString(R.string.within_the_next)))
+
+        RadioGroupDialog(this, items, selectedIndex, showOKButton = true, cancelCallback = null) {
+            val option = it as Int
+            if (option == EVENT_PERIOD_CUSTOM) {
+                CustomPeriodPickerDialog(this) {
+                    updateSelectedPeriod(it)
+                }
+            } else {
+                updateSelectedPeriod(option)
+            }
+        }
+    }
+
+    private fun updateSelectedPeriod(selectedPeriod: Int) {
+        selectedPeriodOption = selectedPeriod
+        when (selectedPeriod) {
+            0 -> {
+                selectedPeriodOption = YEAR_SECONDS
+                period_picker_value.setText(R.string.within_the_next_one_year)
+            }
+            EVENT_PERIOD_TODAY -> period_picker_value.setText(R.string.today_only)
+            else -> period_picker_value.text = getFormattedSeconds(selectedPeriodOption)
+        }
+    }
+
+    private fun getFormattedSeconds(seconds: Int): String = if (seconds == EVENT_PERIOD_TODAY) {
+        getString(R.string.today_only)
+    } else {
+        when {
+            seconds == YEAR_SECONDS -> getString(R.string.within_the_next_one_year)
+            seconds % MONTH_SECONDS == 0 -> resources.getQuantityString(R.plurals.within_the_next_months, seconds / MONTH_SECONDS, seconds / MONTH_SECONDS)
+            seconds % WEEK_SECONDS == 0 -> resources.getQuantityString(R.plurals.within_the_next_weeks, seconds / WEEK_SECONDS, seconds / WEEK_SECONDS)
+            else -> resources.getQuantityString(R.plurals.within_the_next_days, seconds / DAY_SECONDS, seconds / DAY_SECONDS)
+        }
     }
 
     private fun storeWidgetColors() {

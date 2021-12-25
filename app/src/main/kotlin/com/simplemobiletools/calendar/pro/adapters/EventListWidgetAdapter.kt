@@ -16,7 +16,7 @@ import com.simplemobiletools.commons.helpers.MEDIUM_ALPHA
 import org.joda.time.DateTime
 import java.util.*
 
-class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteViewsFactory {
+class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteViewsService.RemoteViewsFactory {
     private val ITEM_EVENT = 0
     private val ITEM_SECTION_DAY = 1
     private val ITEM_SECTION_MONTH = 2
@@ -159,8 +159,14 @@ class EventListWidgetAdapter(val context: Context) : RemoteViewsService.RemoteVi
 
     override fun onDataSetChanged() {
         initConfigValues()
-        val fromTS = DateTime().seconds() - context.config.displayPastEvents * 60
-        val toTS = DateTime().plusYears(1).seconds()
+        val period = intent.getIntExtra(EVENT_LIST_PERIOD, 0)
+        val currentDate = DateTime()
+        val fromTS = currentDate.seconds() - context.config.displayPastEvents * 60
+        val toTS = when (period) {
+            0 -> currentDate.plusYears(1).seconds()
+            EVENT_PERIOD_TODAY -> currentDate.withTime(23, 59, 59, 999).seconds()
+            else -> currentDate.plusSeconds(period).seconds()
+        }
         context.eventsHelper.getEventsSync(fromTS, toTS, applyTypeFilter = true) {
             val listItems = ArrayList<ListItem>(it.size)
             val replaceDescription = context.config.replaceDescription
