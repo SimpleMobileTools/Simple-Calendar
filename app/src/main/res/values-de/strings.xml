@@ -14,7 +14,7 @@
     <string name="go_to_date">Springe zu einem Datum</string>
     <string name="upgraded_from_free">Hallo,
 \n
-\nes scheint, als hättest du ein Upgrade von der alten, kostenlosen Version vorgenommne. In diesem Fall musst du deine lokal gespeicherten Termine manuell importieren, indem sie zuvor als .ics-Datei exportierst. Die Import-/Export-Funktionen findest du im Menü der Hauptansicht.
+\nes scheint, als hättest du ein Upgrade von der alten, kostenlosen Version vorgenommen. In diesem Fall musst du deine lokal gespeicherten Termine als .ics-Datei exportieren und danach wieder manuell importieren. Die Import-/Export-Funktionen findest du im Menü der Hauptansicht.
 \n
 \nAnschließend kannst du die alte Version deinstallieren, die du an der Zur-Pro-Version-upgraden-Schaltfläche oben den Einstellungen erkennst. Nun musst du nur noch deine Einstellungen zurücksetzen.
 \n
@@ -234,21 +234,21 @@
     <string name="sample_description_4">Im Einkaufszentrum</string>
     <string name="sample_title_5">Kaffeepause</string>
     <!-- List widget config -->
-    <string name="show_events_happening">Show events happening:</string>
-    <string name="within_the_next_one_year">Within the next 1 year</string>
-    <string name="today_only">Today only</string>
-    <string name="within_the_next">Within the next…</string>
+    <string name="show_events_happening">Ereignisse anzeigen, die stattfinden:</string>
+    <string name="within_the_next_one_year">Innerhalb des nächsten 1 Jahres</string>
+    <string name="today_only">Nur heute</string>
+    <string name="within_the_next">Innerhalb der nächsten …</string>
     <plurals name="within_the_next_days">
-        <item quantity="one">Within the next %d day</item>
-        <item quantity="other">Within the next %d days</item>
+        <item quantity="one">Innerhalb des nächsten Tages</item>
+        <item quantity="other">Innerhalb der nächsten %d Tage</item>
     </plurals>
     <plurals name="within_the_next_weeks">
-        <item quantity="one">Within the next %d week</item>
-        <item quantity="other">Within the next %d weeks</item>
+        <item quantity="one">Innerhalb der nächsten Woche</item>
+        <item quantity="other">Innerhalb der nächsten %d Woche</item>
     </plurals>
     <plurals name="within_the_next_months">
-        <item quantity="one">Within the next %d month</item>
-        <item quantity="other">Within the next %d months</item>
+        <item quantity="one">Innerhalb des nächsten Monats</item>
+        <item quantity="other">Innerhalb der nächsten %d Monate</item>
     </plurals>
     <!-- FAQ -->
     <string name="faq_1_title">Wie kann ich Feiertage löschen, die über „Feiertage hinzufügen“ importiert wurden\?</string>
@@ -261,7 +261,7 @@
     <string name="faq_4_text">Ja. Standardmäßig werden alle neuen Termine in der aktuellen Zeitzone des Gerätes erstellt. Um die Zeitzone eines Termins ändern zu können muss die Option „Zeitzone kann geändert werden“ in den Einstellungen aktiviert sein. Die Zeitzone eines Termins kann dann beim Anlegen oder Bearbeiten geändert werden. In den Standardeinstellungen ist dies nicht aktiv, da die meisten Anwender die Möglichkeit nicht benötigen werden.</string>
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
-    <string name="app_title">Schlichter Kalendar Pro – Termine und Erinnerungen</string>
+    <string name="app_title">Schlichter Kalender Pro – Termine und Erinnerungen</string>
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Der beste Kalender zum Organisieren der Ereignisse während des ganzen Tages</string>
     <string name="app_long_description">
