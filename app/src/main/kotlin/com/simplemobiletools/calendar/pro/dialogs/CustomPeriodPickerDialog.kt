@@ -4,7 +4,10 @@ import android.app.Activity
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import com.simplemobiletools.calendar.pro.R
-import com.simplemobiletools.commons.extensions.*
+import com.simplemobiletools.commons.extensions.hideKeyboard
+import com.simplemobiletools.commons.extensions.setupDialogStuff
+import com.simplemobiletools.commons.extensions.showKeyboard
+import com.simplemobiletools.commons.extensions.value
 import com.simplemobiletools.commons.helpers.DAY_SECONDS
 import com.simplemobiletools.commons.helpers.MONTH_SECONDS
 import com.simplemobiletools.commons.helpers.WEEK_SECONDS
@@ -36,7 +39,13 @@ class CustomPeriodPickerDialog(val activity: Activity, val callback: (value: Int
     private fun confirmReminder() {
         val value = view.dialog_custom_period_value.value
         val type = view.dialog_radio_view.checkedRadioButtonId
-        val period = calculatePeriod(Integer.valueOf(if (value.isEmpty()) "0" else value), type)
+        val periodValue = if (value.isEmpty()) {
+            "0"
+        } else {
+            value
+        }
+
+        val period = calculatePeriod(Integer.valueOf(periodValue), type)
         callback(period)
         activity.hideKeyboard()
         dialog.dismiss()
