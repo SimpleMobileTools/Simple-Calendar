@@ -38,6 +38,8 @@ class QuickFilterEventTypeAdapter(
                 activeKeys.add(eventType.id!!)
             }
         }
+
+        quickFilterEventTypes.sortBy { it.title.lowercase() }
     }
 
     private fun toggleItemSelection(select: Boolean, eventType: EventType, pos: Int) {
