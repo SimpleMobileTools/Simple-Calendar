@@ -234,21 +234,21 @@
     <string name="sample_description_4">Şehir meydanında</string>
     <string name="sample_title_5">Kahve zamanı</string>
     <!-- List widget config -->
-    <string name="show_events_happening">Show events happening:</string>
-    <string name="within_the_next_one_year">Within the next 1 year</string>
-    <string name="today_only">Today only</string>
-    <string name="within_the_next">Within the next…</string>
+    <string name="show_events_happening">Gerçekleşen etkinlikleri göster:</string>
+    <string name="within_the_next_one_year">Sonraki 1 yıl içinde</string>
+    <string name="today_only">Yalnızca bugün</string>
+    <string name="within_the_next">Sonraki…</string>
     <plurals name="within_the_next_days">
-        <item quantity="one">Within the next %d day</item>
-        <item quantity="other">Within the next %d days</item>
+        <item quantity="one">Sonraki %d gün içinde</item>
+        <item quantity="other">Sonraki %d gün içinde</item>
     </plurals>
     <plurals name="within_the_next_weeks">
-        <item quantity="one">Within the next %d week</item>
-        <item quantity="other">Within the next %d weeks</item>
+        <item quantity="one">Sonraki %d hafta içinde</item>
+        <item quantity="other">Sonraki %d hafta içinde</item>
     </plurals>
     <plurals name="within_the_next_months">
-        <item quantity="one">Within the next %d month</item>
-        <item quantity="other">Within the next %d months</item>
+        <item quantity="one">Sonraki %d ay içinde</item>
+        <item quantity="other">Sonraki %d ay içinde</item>
     </plurals>
     <!-- FAQ -->
     <string name="faq_1_title">\"Tatil ekle\" düğmesiyle içe aktarılan tatilleri nasıl kaldırabilirim?</string>

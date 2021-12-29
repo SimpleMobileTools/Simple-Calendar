@@ -234,21 +234,21 @@
     <string name="sample_description_4">A la plaça</string>
     <string name="sample_title_5">Hora del cafè</string>
     <!-- List widget config -->
-    <string name="show_events_happening">Show events happening:</string>
-    <string name="within_the_next_one_year">Within the next 1 year</string>
-    <string name="today_only">Today only</string>
-    <string name="within_the_next">Within the next…</string>
+    <string name="show_events_happening">Mostra els esdeveniments que ocorrin:</string>
+    <string name="within_the_next_one_year">En el següent any</string>
+    <string name="today_only">Nomé avui</string>
+    <string name="within_the_next">En el següent…</string>
     <plurals name="within_the_next_days">
-        <item quantity="one">Within the next %d day</item>
-        <item quantity="other">Within the next %d days</item>
+        <item quantity="one">En el %d dia següent</item>
+        <item quantity="other">En els %d dies següents</item>
     </plurals>
     <plurals name="within_the_next_weeks">
-        <item quantity="one">Within the next %d week</item>
-        <item quantity="other">Within the next %d weeks</item>
+        <item quantity="one">En la %d setmana següent</item>
+        <item quantity="other">En les %d setmanes següents</item>
     </plurals>
     <plurals name="within_the_next_months">
-        <item quantity="one">Within the next %d month</item>
-        <item quantity="other">Within the next %d months</item>
+        <item quantity="one">En el %d mes següent</item>
+        <item quantity="other">En els %d mesos següents</item>
     </plurals>
     <!-- FAQ -->
     <string name="faq_1_title">Com puc eliminar els dies festius importats mitjançant el botó «Afegeix festius»\?</string>
