@@ -14,7 +14,7 @@ class CalDAVSyncReceiver : BroadcastReceiver() {
             context.refreshCalDAVCalendars(context.config.caldavSyncedCalendarIds, false)
         }
 
-        context.recheckCalDAVCalendars {
+        context.recheckCalDAVCalendars(true) {
             context.updateWidgets()
         }
     }

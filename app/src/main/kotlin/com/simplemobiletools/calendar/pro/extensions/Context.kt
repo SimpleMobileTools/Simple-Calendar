@@ -395,10 +395,10 @@ fun Context.getNewEventTimestampFromCode(dayCode: String, allowChangingDay: Bool
 
 fun Context.getSyncedCalDAVCalendars() = calDAVHelper.getCalDAVCalendars(config.caldavSyncedCalendarIds, false)
 
-fun Context.recheckCalDAVCalendars(callback: () -> Unit) {
+fun Context.recheckCalDAVCalendars(scheduleNextCalDAVSync: Boolean, callback: () -> Unit) {
     if (config.caldavSync) {
         ensureBackgroundThread {
-            calDAVHelper.refreshCalendars(false, callback)
+            calDAVHelper.refreshCalendars(false, scheduleNextCalDAVSync, callback)
             updateWidgets()
         }
     }
@@ -406,8 +406,9 @@ fun Context.recheckCalDAVCalendars(callback: () -> Unit) {
 
 fun Context.scheduleCalDAVSync(activate: Boolean) {
     val syncIntent = Intent(applicationContext, CalDAVSyncReceiver::class.java)
-    val pendingIntent = PendingIntent.getBroadcast(applicationContext, 0, syncIntent, PendingIntent.FLAG_UPDATE_CURRENT)
+    val pendingIntent = PendingIntent.getBroadcast(applicationContext, SCHEDULE_CALDAV_REQUEST_CODE, syncIntent, PendingIntent.FLAG_UPDATE_CURRENT)
     val alarm = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+    alarm.cancel(pendingIntent)
 
     if (activate) {
         val syncCheckInterval = 2 * AlarmManager.INTERVAL_HOUR
@@ -415,8 +416,6 @@ fun Context.scheduleCalDAVSync(activate: Boolean) {
             alarm.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + syncCheckInterval, syncCheckInterval, pendingIntent)
         } catch (ignored: Exception) {
         }
-    } else {
-        alarm.cancel(pendingIntent)
     }
 }
 

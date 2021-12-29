@@ -493,7 +493,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
 
         syncCalDAVCalendars {
-            calDAVHelper.refreshCalendars(true) {
+            calDAVHelper.refreshCalendars(true, true) {
                 calDAVChanged()
             }
         }

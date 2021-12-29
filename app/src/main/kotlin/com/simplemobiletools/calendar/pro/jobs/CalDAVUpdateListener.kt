@@ -51,7 +51,7 @@ class CalDAVUpdateListener : JobService() {
         mRunningParams = params
 
         if (params.triggeredContentAuthorities != null && params.triggeredContentUris != null) {
-            recheckCalDAVCalendars {}
+            recheckCalDAVCalendars(false) {}
         }
 
         mHandler.post(mWorker)

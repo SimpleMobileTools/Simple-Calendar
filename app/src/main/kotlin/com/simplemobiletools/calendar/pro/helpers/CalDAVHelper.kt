@@ -23,7 +23,7 @@ import org.joda.time.format.DateTimeFormat
 class CalDAVHelper(val context: Context) {
     private val eventsHelper = context.eventsHelper
 
-    fun refreshCalendars(showToasts: Boolean, callback: () -> Unit) {
+    fun refreshCalendars(showToasts: Boolean, scheduleNextSync: Boolean, callback: () -> Unit) {
         if (isUpdatingCalDAV) {
             return
         }
@@ -44,7 +44,10 @@ class CalDAVHelper(val context: Context) {
                 fetchCalDAVCalendarEvents(calendar.id, localEventType.id!!, showToasts)
             }
 
-            context.scheduleCalDAVSync(true)
+            if (scheduleNextSync) {
+                context.scheduleCalDAVSync(true)
+            }
+
             callback()
         } finally {
             isUpdatingCalDAV = false
