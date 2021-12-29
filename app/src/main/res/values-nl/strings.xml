@@ -247,21 +247,21 @@
     <string name="sample_title_5">Koffietijd</string>
 
     <!-- List widget config -->
-    <string name="show_events_happening">Show events happening:</string>
-    <string name="within_the_next_one_year">Within the next 1 year</string>
-    <string name="today_only">Today only</string>
-    <string name="within_the_next">Within the next…</string>
+    <string name="show_events_happening">Bereik getoonde afspraken:</string>
+    <string name="within_the_next_one_year">Binnen het komende jaar</string>
+    <string name="today_only">Alleen vandaag</string>
+    <string name="within_the_next">Binnen de komende…</string>
     <plurals name="within_the_next_days">
-        <item quantity="one">Within the next %d day</item>
-        <item quantity="other">Within the next %d days</item>
+        <item quantity="one">Binnen de komende %d dag</item>
+        <item quantity="other">Binnen de komende %d dagen</item>
     </plurals>
     <plurals name="within_the_next_weeks">
-        <item quantity="one">Within the next %d week</item>
-        <item quantity="other">Within the next %d weeks</item>
+        <item quantity="one">Binnen de komende %d week</item>
+        <item quantity="other">Binnen de komende %d weken</item>
     </plurals>
     <plurals name="within_the_next_months">
-        <item quantity="one">Within the next %d month</item>
-        <item quantity="other">Within the next %d months</item>
+        <item quantity="one">Binnen de komende %d maand</item>
+        <item quantity="other">Binnen de komende %d maanden</item>
     </plurals>
 
     <!-- FAQ -->
