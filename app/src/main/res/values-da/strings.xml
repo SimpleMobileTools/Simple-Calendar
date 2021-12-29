@@ -88,14 +88,14 @@
     <string name="no_birthdays">Der blev ikke fundet nogen fødselsdage</string>
     <string name="no_new_birthdays">Der blev ikke fundet nogen nye fødselsdage</string>
     <string name="birthdays_added">Fødselsdage tilføjet</string>
-    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
+    <string name="add_birthdays_automatically">Tilføj automatisk nye fødselsdage</string>
     <!-- Anniversaries -->
     <string name="anniversaries">Mærkedage</string>
     <string name="add_anniversaries">Tilføj dine kontakters mærkedage</string>
     <string name="no_anniversaries">Der blev ikke fundet nogen mærkedage</string>
     <string name="no_new_anniversaries">Der blev ikke fundet nogen nye mærkedage</string>
     <string name="anniversaries_added">Mærkedage tilføjet</string>
-    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
+    <string name="add_anniversaries_automatically">Tilføj automatisk nye jubilæer</string>
     <!-- Event Reminders -->
     <string name="reminder">Påmindelse</string>
     <string name="before">før</string>
@@ -228,21 +228,21 @@
     <string name="sample_description_4">I byen</string>
     <string name="sample_title_5">Kaffetid!</string>
     <!-- List widget config -->
-    <string name="show_events_happening">Show events happening:</string>
-    <string name="within_the_next_one_year">Within the next 1 year</string>
-    <string name="today_only">Today only</string>
-    <string name="within_the_next">Within the next…</string>
+    <string name="show_events_happening">Vis begivenheder, der finder sted:</string>
+    <string name="within_the_next_one_year">I løbet af det næste år</string>
+    <string name="today_only">Kun i dag</string>
+    <string name="within_the_next">Indenfor…</string>
     <plurals name="within_the_next_days">
-        <item quantity="one">Within the next %d day</item>
-        <item quantity="other">Within the next %d days</item>
+        <item quantity="one">%d dag</item>
+        <item quantity="other">I løbet af de næste %d dage</item>
     </plurals>
     <plurals name="within_the_next_weeks">
-        <item quantity="one">Within the next %d week</item>
-        <item quantity="other">Within the next %d weeks</item>
+        <item quantity="one">I løbet af %d uge</item>
+        <item quantity="other">I løbet af de næste %d uger</item>
     </plurals>
     <plurals name="within_the_next_months">
-        <item quantity="one">Within the next %d month</item>
-        <item quantity="other">Within the next %d months</item>
+        <item quantity="one">I løbet af %d måned</item>
+        <item quantity="other">I løbet af de næste %d måneder</item>
     </plurals>
     <!-- FAQ -->
     <string name="faq_1_title">Hvordan kan jeg fjerne helligdage der er importeret med funktionen \"Tilføj helligdage\"?</string>
