@@ -14,10 +14,10 @@ import com.simplemobiletools.calendar.pro.models.*
 import com.simplemobiletools.calendar.pro.objects.States.isUpdatingCalDAV
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
-import java.util.*
-import kotlin.collections.ArrayList
 import org.joda.time.DateTimeZone
 import org.joda.time.format.DateTimeFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 @SuppressLint("MissingPermission")
 class CalDAVHelper(val context: Context) {
@@ -33,12 +33,14 @@ class CalDAVHelper(val context: Context) {
             val calDAVCalendars = getCalDAVCalendars(context.config.caldavSyncedCalendarIds, showToasts)
             for (calendar in calDAVCalendars) {
                 val localEventType = eventsHelper.getEventTypeWithCalDAVCalendarId(calendar.id) ?: continue
-                localEventType.apply {
-                    title = calendar.displayName
-                    caldavDisplayName = calendar.displayName
-                    caldavEmail = calendar.accountName
-                    color = calendar.color
-                    eventsHelper.insertOrUpdateEventTypeSync(this)
+                if (calendar.displayName != localEventType.title || calendar.color != localEventType.color) {
+                    localEventType.apply {
+                        title = calendar.displayName
+                        caldavDisplayName = calendar.displayName
+                        caldavEmail = calendar.accountName
+                        color = calendar.color
+                        eventsHelper.insertOrUpdateEventTypeSync(this)
+                    }
                 }
 
                 fetchCalDAVCalendarEvents(calendar.id, localEventType.id!!, showToasts)
@@ -105,7 +107,6 @@ class CalDAVHelper(val context: Context) {
             context.contentResolver.update(uri, values, null, null)
             context.eventTypesDB.insertOrUpdate(eventType)
         } catch (e: IllegalArgumentException) {
-            e.printStackTrace()
         }
     }
 
