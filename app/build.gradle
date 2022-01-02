@@ -48,6 +48,12 @@ android {
         }
     }
 
+    flavorDimensions "variants"
+    productFlavors {
+        basic {}
+        fdroid {}
+    }
+
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
