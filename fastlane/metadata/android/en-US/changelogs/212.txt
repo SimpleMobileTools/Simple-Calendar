@@ -1,0 +1,6 @@
+ * Fixed an issue with too much app activity in the background
+ * Allow specifying the visible date range at the event list widget (by Aga-C)
+ * Keep the currently shown date at changing view to a bigger one (by Aga-C)
+ * Sort event types at the quick filter bar alphabetically
+ * Fixed a glitch with weekends marked wrong under some circumstances
+ * Added some stability, translation and UX improvements
