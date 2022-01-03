@@ -229,7 +229,7 @@
     <string name="sample_title_5">Время для кофе</string>
     <!-- List widget config -->
     <string name="show_events_happening">Показывать события, происходящие:</string>
-    <string name="within_the_next_one_year">В течение ближайшего года</string>
+    <string name="within_the_next_one_year">В течение следующего года</string>
     <string name="today_only">Только сегодня</string>
     <string name="within_the_next">В течение…</string>
     <plurals name="within_the_next_days">
