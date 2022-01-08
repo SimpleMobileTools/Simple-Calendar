@@ -9,6 +9,7 @@ import com.simplemobiletools.calendar.pro.extensions.scheduleCalDAVSync
 import com.simplemobiletools.commons.extensions.getDefaultAlarmTitle
 import com.simplemobiletools.commons.helpers.BaseConfig
 import com.simplemobiletools.commons.helpers.DAY_MINUTES
+import com.simplemobiletools.commons.helpers.YEAR_SECONDS
 import java.util.*
 
 class Config(context: Context) : BaseConfig(context) {
@@ -237,4 +238,8 @@ class Config(context: Context) : BaseConfig(context) {
     var highlightWeekendsColor: Int
         get() = prefs.getInt(HIGHLIGHT_WEEKENDS_COLOR, context.resources.getColor(R.color.red_text))
         set(highlightWeekendsColor) = prefs.edit().putInt(HIGHLIGHT_WEEKENDS_COLOR, highlightWeekendsColor).apply()
+
+    var lastUsedEventSpan: Int
+        get() = prefs.getInt(LAST_USED_EVENT_SPAN, YEAR_SECONDS)
+        set(lastUsedEventSpan) = prefs.edit().putInt(LAST_USED_EVENT_SPAN, lastUsedEventSpan).apply()
 }

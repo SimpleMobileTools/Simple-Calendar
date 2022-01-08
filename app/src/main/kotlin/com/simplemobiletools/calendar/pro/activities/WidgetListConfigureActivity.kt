@@ -13,10 +13,8 @@ import com.simplemobiletools.calendar.pro.dialogs.CustomPeriodPickerDialog
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.seconds
 import com.simplemobiletools.calendar.pro.extensions.widgetsDB
-import com.simplemobiletools.calendar.pro.helpers.EVENT_PERIOD_CUSTOM
-import com.simplemobiletools.calendar.pro.helpers.EVENT_PERIOD_TODAY
+import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
-import com.simplemobiletools.calendar.pro.helpers.MyWidgetListProvider
 import com.simplemobiletools.calendar.pro.models.ListEvent
 import com.simplemobiletools.calendar.pro.models.ListItem
 import com.simplemobiletools.calendar.pro.models.ListSectionDay
@@ -40,7 +38,7 @@ class WidgetListConfigureActivity : SimpleActivity() {
     private var mBgColor = 0
     private var mTextColorWithoutTransparency = 0
     private var mTextColor = 0
-    private var selectedPeriodOption = YEAR_SECONDS
+    private var selectedPeriodOption = 0
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         useDynamicTheme = false
@@ -70,6 +68,8 @@ class WidgetListConfigureActivity : SimpleActivity() {
 
         val primaryColor = config.primaryColor
         config_bg_seekbar.setColors(mTextColor, primaryColor, primaryColor)
+
+        updateSelectedPeriod(config.lastUsedEventSpan)
     }
 
     override fun onResume() {
@@ -98,6 +98,8 @@ class WidgetListConfigureActivity : SimpleActivity() {
 
         storeWidgetColors()
         requestWidgetUpdate()
+
+        config.lastUsedEventSpan = selectedPeriodOption
 
         Intent().apply {
             putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, mWidgetId)
