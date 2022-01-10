@@ -14,8 +14,9 @@ import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.calendar.pro.models.Reminder
 import com.simplemobiletools.commons.extensions.areDigitsOnly
 import com.simplemobiletools.commons.extensions.showErrorToast
-import java.io.File
+import com.simplemobiletools.commons.helpers.HOUR_SECONDS
 import org.joda.time.DateTimeZone
+import java.io.File
 
 class IcsImporter(val activity: SimpleActivity) {
     enum class ImportResult {
@@ -241,6 +242,13 @@ class IcsImporter(val activity: SimpleActivity) {
 
                         if (event.getIsAllDay() && curEnd > curStart) {
                             event.endTS -= DAY
+
+                            // fix some glitches related to daylight saving shifts
+                            if (event.startTS - event.endTS == HOUR_SECONDS.toLong()) {
+                                event.endTS += HOUR_SECONDS
+                            } else if (event.startTS - event.endTS == -HOUR_SECONDS.toLong()) {
+                                event.endTS -= HOUR_SECONDS
+                            }
                         }
 
                         if (event.importId.isEmpty()) {
