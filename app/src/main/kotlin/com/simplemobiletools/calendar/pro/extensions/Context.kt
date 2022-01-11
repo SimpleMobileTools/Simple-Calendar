@@ -300,6 +300,7 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
         .setContentTitle(contentTitle)
         .setContentText(contentText)
         .setSmallIcon(R.drawable.ic_calendar_vector)
+        .setStyle(NotificationCompat.BigTextStyle().bigText(contentText))
         .setContentIntent(pendingIntent)
         .setPriority(NotificationCompat.PRIORITY_MAX)
         .setDefaults(Notification.DEFAULT_LIGHTS)
