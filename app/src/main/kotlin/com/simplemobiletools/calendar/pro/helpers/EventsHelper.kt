@@ -2,11 +2,13 @@ package com.simplemobiletools.calendar.pro.helpers
 
 import android.app.Activity
 import android.content.Context
+import android.widget.Toast
 import androidx.collection.LongSparseArray
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.EventType
+import com.simplemobiletools.commons.extensions.toast
 import com.simplemobiletools.commons.helpers.CHOPPED_LIST_DEFAULT_SIZE
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 
@@ -122,6 +124,7 @@ class EventsHelper(val context: Context) {
         try {
             for (event in events) {
                 if (event.startTS > event.endTS) {
+                    context.toast(R.string.end_before_start, Toast.LENGTH_LONG)
                     continue
                 }
 
