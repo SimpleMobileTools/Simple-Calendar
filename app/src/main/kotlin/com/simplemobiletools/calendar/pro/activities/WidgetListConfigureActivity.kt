@@ -21,10 +21,7 @@ import com.simplemobiletools.calendar.pro.models.ListSectionDay
 import com.simplemobiletools.calendar.pro.models.Widget
 import com.simplemobiletools.commons.dialogs.ColorPickerDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
-import com.simplemobiletools.commons.extensions.adjustAlpha
-import com.simplemobiletools.commons.extensions.applyColorFilter
-import com.simplemobiletools.commons.extensions.hideKeyboard
-import com.simplemobiletools.commons.extensions.setFillWithStroke
+import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.models.RadioItem
 import kotlinx.android.synthetic.main.widget_config_list.*
@@ -65,6 +62,8 @@ class WidgetListConfigureActivity : SimpleActivity() {
         config_save.setOnClickListener { saveConfig() }
         config_bg_color.setOnClickListener { pickBackgroundColor() }
         config_text_color.setOnClickListener { pickTextColor() }
+
+        period_picker_holder.beGoneIf(isCustomizingColors)
 
         val primaryColor = config.primaryColor
         config_bg_seekbar.setColors(mTextColor, primaryColor, primaryColor)
