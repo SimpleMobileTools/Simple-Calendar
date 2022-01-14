@@ -1176,7 +1176,7 @@ class EventActivity : SimpleActivity() {
         }
 
         // recreate the event if it was moved in a different CalDAV calendar
-        if (mEvent.id != null && oldSource != newSource) {
+        if (mEvent.id != null && oldSource != newSource && oldSource != SOURCE_IMPORTED_ICS) {
             eventsHelper.deleteEvent(mEvent.id!!, true)
             mEvent.id = null
         }
