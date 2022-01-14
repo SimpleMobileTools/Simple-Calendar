@@ -849,17 +849,24 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         currentFragments.clear()
         currentFragments.add(fragment)
         val bundle = Bundle()
+        val fixedDayCode = fixDayCode(dayCode)
 
         when (config.storedView) {
-            DAILY_VIEW -> bundle.putString(DAY_CODE, dayCode ?: Formatter.getTodayCode())
-            WEEKLY_VIEW -> bundle.putString(WEEK_START_DATE_TIME, dayCode ?: getDatesWeekDateTime(DateTime()))
-            MONTHLY_VIEW, MONTHLY_DAILY_VIEW -> bundle.putString(DAY_CODE, dayCode ?: Formatter.getTodayCode())
-            YEARLY_VIEW -> bundle.putString(YEAR_TO_OPEN, dayCode)
+            DAILY_VIEW -> bundle.putString(DAY_CODE, fixedDayCode ?: Formatter.getTodayCode())
+            WEEKLY_VIEW -> bundle.putString(WEEK_START_DATE_TIME, fixedDayCode ?: getDatesWeekDateTime(DateTime()))
+            MONTHLY_VIEW, MONTHLY_DAILY_VIEW -> bundle.putString(DAY_CODE, fixedDayCode ?: Formatter.getTodayCode())
+            YEARLY_VIEW -> bundle.putString(YEAR_TO_OPEN, fixedDayCode)
         }
 
         fragment.arguments = bundle
         supportFragmentManager.beginTransaction().add(R.id.fragments_holder, fragment).commitNow()
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
+    }
+
+    private fun fixDayCode(dayCode: String? = null): String? = when {
+        config.storedView == WEEKLY_VIEW && (dayCode?.length == Formatter.DAYCODE_PATTERN.length) -> getDatesWeekDateTime(Formatter.getDateTimeFromCode(dayCode))
+        config.storedView == YEARLY_VIEW && (dayCode?.length == Formatter.DAYCODE_PATTERN.length) -> Formatter.getYearFromDayCode(dayCode)
+        else -> dayCode
     }
 
     fun openMonthFromYearly(dateTime: DateTime) {
