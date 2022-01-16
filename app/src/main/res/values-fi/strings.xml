@@ -16,7 +16,9 @@
 \n
 \nnäyttää siltä, että olet päivittänyt vanhasta ilmaisesta sovelluksesta. Sinun on siirrettävä paikallisesti tallennetut tapahtumat manuaalisesti viemällä ne ensin .ics-tiedostoon ja tuomalla ne sitten sovellukseen. Löydät molemmat vienti/tuonti-painikkeet päänäytön valikosta.
 \n
-\nTämän jälkeen voit poistaa vanhan version, jonka sovelluksen asetusten yläosassa on Päivitä Pro-painike. Tämän jälkeen sinun on vain nollattava sovellusasetuksesi.</string>
+\nTämän jälkeen voit poistaa vanhan version, jonka sovelluksen asetusten yläosassa on Päivitä Pro-painike. Tämän jälkeen sinun on vain nollattava sovellusasetuksesi.
+\n
+\nKiitos!</string>
     <!-- Widget titles -->
     <string name="widget_monthly">Kalenteri kuukausittain</string>
     <string name="widget_list">Kalenteri tapahtumaluettelo</string>
@@ -232,21 +234,21 @@
     <string name="sample_description_4">Kurvin grillillä</string>
     <string name="sample_title_5">Kahvitauko</string>
     <!-- List widget config -->
-    <string name="show_events_happening">Show events happening:</string>
-    <string name="within_the_next_one_year">Within the next 1 year</string>
-    <string name="today_only">Today only</string>
-    <string name="within_the_next">Within the next…</string>
+    <string name="show_events_happening">Näytä tapahtumat ajalta:</string>
+    <string name="within_the_next_one_year">Vuoden sisällä</string>
+    <string name="today_only">Vain kuluvan päivän tapahtumat</string>
+    <string name="within_the_next">Tapahtumat, jotka tapahtuvat ennen kuin on kulunut…</string>
     <plurals name="within_the_next_days">
-        <item quantity="one">Within the next %d day</item>
-        <item quantity="other">Within the next %d days</item>
+        <item quantity="one">Tulevan päivän aikana</item>
+        <item quantity="other">Tulevien %d päivän aikana</item>
     </plurals>
     <plurals name="within_the_next_weeks">
-        <item quantity="one">Within the next %d week</item>
-        <item quantity="other">Within the next %d weeks</item>
+        <item quantity="one">Tulevan viikon aikana</item>
+        <item quantity="other">Tulevien %d viikon aikana</item>
     </plurals>
     <plurals name="within_the_next_months">
-        <item quantity="one">Within the next %d month</item>
-        <item quantity="other">Within the next %d months</item>
+        <item quantity="one">Tulevan kuukauden aikana</item>
+        <item quantity="other">Tulevien %d kuukauden aikana</item>
     </plurals>
     <!-- FAQ -->
     <string name="faq_1_title">Kuinka voin poistaa \"Lisää juhlapäivät\"-painikkeella tuotuja juhlapäiviä?</string>
