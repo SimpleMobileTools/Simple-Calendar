@@ -12,7 +12,13 @@
     <string name="no_upcoming_events">Atrodo, kad neturite jokių artėjančių įvykių.</string>
     <string name="go_to_today">Pereiti į šiandieną</string>
     <string name="go_to_date">Pereiti į datą</string>
-    <string name="upgraded_from_free"/>
+    <string name="upgraded_from_free">Sveiki,
+\n
+\natrodo, kad atsinaujinote iš senosios nemokamos programėlės. Jūs turite rankiniu būdu perkelti vietiniu mastu saugomus įvykius, eksportuodami juos į .ics failą, o tuomet importuodami. Eksportavimo/importavimo mygtukus rasite pagrindinio ekrano meniu.
+\n
+\nPo to, galite pašalinti senąją programėlę, kurios nustatymų viršuje yra mygtukas „Naujinti į„Pro““. Tuomet jums beliks atstatyti programėlės nustatymus.
+\n
+\nAčiū!</string>
     <!-- Widget titles -->
     <string name="widget_monthly">Mėnesio kalendorius</string>
     <string name="widget_list">Kalendoriaus įvykių sąrašas</string>
@@ -207,8 +213,8 @@
     <string name="insufficient_permissions">Jums neleidžiama rašyti į pasirinktą kalendorių</string>
     <string name="caldav_event_not_found">Įvykis nerastas. Programėlės nustatymuose atitinkamam kalendoriui įjunkite CalDAV sinchronizavimą.</string>
     <string name="no_synchronized_calendars">Nerasta jokių sinchronizuojamų kalendorių</string>
-    <string name="status_free"/>
-    <string name="status_busy"/>
+    <string name="status_free">Laisvas</string>
+    <string name="status_busy">Užimtas</string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">Pirmadienį</string>
