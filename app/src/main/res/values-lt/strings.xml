@@ -36,7 +36,7 @@
     <string name="filter_events_by_type">Filtruoti įvykius pagal tipą</string>
     <string name="please_fill_location">Įveskite vietą, kuri bus rodoma žemėlapyje</string>
     <string name="public_event_notification_text">Artėjantis įvykis</string>
-    <string name="saving_filtered_out"/>
+    <string name="saving_filtered_out">Įrašoma… Bet pasirinktas įvykių tipas yra išfiltruojamas viršutiniame Meniu – Filtras</string>
     <!-- Event Repetition -->
     <string name="repetition">Pasikartojimas</string>
     <string name="no_repetition">Be pasikartojimo</string>
@@ -50,13 +50,13 @@
     <string name="repeat_till">Kartoti iki</string>
     <string name="forever">Amžinai</string>
     <string name="event_is_repeatable">Įvykis yra pasikartojantis</string>
-    <string name="selection_contains_repetition"/>
-    <string name="delete_one_only"/>
-    <string name="delete_future_occurrences"/>
-    <string name="delete_all_occurrences"/>
-    <string name="update_one_only"/>
-    <string name="update_this_and_future_occurrences"/>
-    <string name="update_all_occurrences"/>
+    <string name="selection_contains_repetition">Žymėjime yra pasikartojančių įvykių</string>
+    <string name="delete_one_only">Ištrinti tik pasirinktą pasikartojimą</string>
+    <string name="delete_future_occurrences">Ištrinti šį ir visus būsimus pasikartojimus</string>
+    <string name="delete_all_occurrences">Ištrinti visus pasikartojimus</string>
+    <string name="update_one_only">Atnaujinti tik pasirinktą pasikartojimą</string>
+    <string name="update_this_and_future_occurrences">Atnaujinti šį ir visus būsimus pasikartojimus</string>
+    <string name="update_all_occurrences">Atnaujinti visus pasikartojimus</string>
     <string name="repeat_till_date">Kartoti iki datos</string>
     <string name="stop_repeating_after_x">Nutraukti kartojimą po x kartų</string>
     <string name="repeat_forever">Kartoti amžinai</string>
@@ -64,7 +64,7 @@
     <string name="repeat">Kartoti</string>
     <string name="repeat_on">Kartoti per</string>
     <string name="every_day">Kiekvieną dieną</string>
-    <string name="selected_days"/>
+    <string name="selected_days">Pasirinktomis dienomis</string>
     <string name="the_same_day">Tą pačią dieną</string>
     <string name="the_last_day">Paskutinę dieną</string>
     <string name="repeat_on_the_same_day_monthly">Kartoti tą pačią kiekvieno mėnesio dieną</string>
@@ -157,7 +157,7 @@
     <string name="manage_event_types">Tvarkyti įvykių tipus</string>
     <string name="start_day_at">Pradėti dieną nuo</string>
     <string name="end_day_at">Užbaigti dieną ties</string>
-    <string name="midnight_spanning"/>
+    <string name="midnight_spanning">Per vidurnaktį besitęsiančius įvykius rodyti viršutinėje juostoje</string>
     <string name="allow_customizing_day_count">Leisti tinkinti dienų skaičių</string>
     <string name="week_numbers">Rodyti savaičių numerius</string>
     <string name="vibrate">Vibruoti, kai pranešama apie priminimą</string>
@@ -197,7 +197,7 @@
     <string name="highlight_weekends">Paryškinti savaitgalius tam tikruose rodiniuose</string>
     <string name="highlight_weekends_color">Paryškintų savaitgalių spalva</string>
     <string name="allow_changing_time_zones">Leisti keisti įvykių laiko juostą</string>
-    <string name="manage_quick_filter_event_types"/>
+    <string name="manage_quick_filter_event_types">Tvarkyti greitojo filtro įvykių tipus</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Pasirinkite norimus sinchronizuoti kalendorius</string>
@@ -234,21 +234,24 @@
     <string name="sample_description_4">Prekybos ir verslo centre</string>
     <string name="sample_title_5">Kavos laikas</string>
     <!-- List widget config -->
-    <string name="show_events_happening">Show events happening:</string>
-    <string name="within_the_next_one_year">Within the next 1 year</string>
-    <string name="today_only">Today only</string>
-    <string name="within_the_next">Within the next…</string>
+    <string name="show_events_happening">Rodyti įvykius, kurie vyks:</string>
+    <string name="within_the_next_one_year">1 metų bėgyje</string>
+    <string name="today_only">Tik šiandien</string>
+    <string name="within_the_next">…bėgyje</string>
     <plurals name="within_the_next_days">
-        <item quantity="one">Within the next %d day</item>
-        <item quantity="other">Within the next %d days</item>
+        <item quantity="one">%d dienos bėgyje</item>
+        <item quantity="few">%d dienų bėgyje</item>
+        <item quantity="other">%d dienų bėgyje</item>
     </plurals>
     <plurals name="within_the_next_weeks">
-        <item quantity="one">Within the next %d week</item>
-        <item quantity="other">Within the next %d weeks</item>
+        <item quantity="one">%d savaitės bėgyje</item>
+        <item quantity="few">%d savaičių bėgyje</item>
+        <item quantity="other">%d savaičių bėgyje</item>
     </plurals>
     <plurals name="within_the_next_months">
-        <item quantity="one">Within the next %d month</item>
-        <item quantity="other">Within the next %d months</item>
+        <item quantity="one">%d mėnesio bėgyje</item>
+        <item quantity="few">%d mėnesių bėgyje</item>
+        <item quantity="other">%d mėnesių bėgyje</item>
     </plurals>
     <!-- FAQ -->
     <string name="faq_1_title">Kaip galiu pašalinti šventines dienas, importuotas naudojant mygtuką „Pridėti šventines dienas“\?</string>
@@ -256,15 +259,15 @@
     <string name="faq_2_title">Ar galiu sinchronizuoti savo įvykius per „Google“ kalendorių ar kitą CalDAV palaikančią paslaugą\?</string>
     <string name="faq_2_text">Taip, tiesiog, programėlės nustatymuose perjunkite „CalDAV sinchronizavimas“ ir pasirinkite norimus sinchronizuoti kalendorius. Vis dėlto, jums reikės kažkokios trečiųjų šalių programėlės, apdorojančios sinchronizavimą tarp įrenginio ir serverių. Jeigu norite sinchronizuoti „Google“ kalendorių, jų oficiali kalendoriaus programėlė atliks šį darbą. Naudojant kitus kalendorius jums prireiks trečiųjų šalių sinchronizavimo adapterio, pavyzdžiui, DAVx5.</string>
     <string name="faq_3_title">Aš matau vaizdinius priminimus, bet negirdžiu jokio garso. Ką daryti\?</string>
-    <string name="faq_3_text"/>
+    <string name="faq_3_text">Ne vien tik priminimų atvaizdavimas, bet ir garso atkūrimas yra labai paveikiamas sistemos. Jei negirdite jokio garso, pabandykite pereiti į programėlės nustatymus, paspauskite ant parinkties „Garso srautas, kurį naudos priminimai“ ir pakeiskite ją į kitą reikšmę. Jei garsas ir toliau nebus girdimas, patikrinkite garso nustatymus, ar kartais nėra nutildytas tam tikras garso srautas.</string>
     <string name="faq_4_title">Ar ši programėlė palaiko laiko juostas\?</string>
     <string name="faq_4_text">Taip, palaiko. Pagal numatymą, visi įvykiai yra sukuriami jūsų dabartinėje laiko juostoje. Jei norite pakeisti įvykio laiko juostą, iš pradžių, programėlės nustatymuose turite įjungti laiko juostų parinktį, o tuomet pakeisti laiko juostą išsamesnėje įvykio informacijoje. Pagal numatymą, laiko juostos yra išjungtos, nes daugelis žmonių jomis nesinaudoja.</string>
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
-    <string name="app_title">Paprastas kalendorius Pro - įvykiai ir priminimai</string>
+    <string name="app_title">Paprastas kalendorius „Pro“ - įvykiai, priminimai</string>
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Paprastas mobilusis kalendorius. Planuokite kasdienius darbus ir susitikimus</string>
-    <string name="app_long_description"/>
+    <string name="app_long_description"> Paprastas kalendorius „Pro“ yra pilnai tinkinamas, autonominis kalendorius, sukurtas atlikti būtent tai, ką turi atlikti kalendorius. <b>Jokių sudėtingų ypatybių, nereikalingų leidimų ir jokių reklamų!</b> Nesvarbu, ar organizuojate pavienius, ar pasikartojančius įvykius, gimtadienius, metines, verslo susitikimus, paskyrimus ar ką nors kito, Paprastas kalendorius „Pro“ leidžia lengvai <b>išlikti gerai paruoštu ir susikaupusiu</b>. Didelės <b>tinkinimo parinkčių</b> įvairovės dėka, galite tinkinti priminimus apie įvykius, pranešimų garsus, kalendoriaus valdiklius bei tai, kaip atrodo programėlė. Dienos, savaitės ir mėnesio rodiniai leidžia be pastangų matyti artėjančius įvykius ir susitikimus. Galite netgi matyti viską ne kalendoriaus rodinyje, o kaip paprastą įvykių sąrašą, tokiu būdu <b>žinosite kokie įvykiai ir kada artėja jūsų gyvenime. </b> ---------------------------------------------------------- <b>Paprastas kalendorius „Pro“ – Ypatybės ir pranašumai</b> ---------------------------------------------------------- ✔️ Jokių įkyrių reklamų ar iškylančiųjų langų ✔️ Nereikalauja prieigos prie interneto, tokiu būdu suteikia jums daugiau privatumo ir saugumo ✔️ Reikalauja tik minimalių leidimų ✔️ Akcentuojamas paprastumas – atlieka tai, ką turi atlikti kalendorius! ✔️ Atvirojo kodo ✔️ Pilnai tinkinamas apipavidalinimas ir kalendoriaus / įvykių valdikliai ✔️ Išverstas į 29 kalbas ✔️ Galimybė eksportuoti nustatymus į .txt failus, kad vėliau jie būtų importuoti kitame įrenginyje ✔️ Palaikomas CalDAV kalendorių sinchronizavimas, skirtas sinchronizuoti įvykius tarp įrenginių ✔️ Dienos, savaitės, mėnesio, metų ir įvykių rodiniai kalendoriuje ✔️ Palaiko įvykių eksportavimą ir importavimą per .ics failus ✔️ Nustatykite daug priminimų apie įvykį, tinkinkite priminimo apie įvykį garsą ir vibraciją ✔️ Įvykių snaudimo parinktis ✔️ Lengvai pridėkite šventines dienas, gimtadienius, metines ir susitikimus ✔️ Tinkinkite įvykius – pradžios laiką, trukmę, priminimus ir t.t. ✔️ Kiekvienam įvykiui pridėkite kviestinius ✔️ Naudokite kaip asmeninį ar verslo kalendorių ✔️ Rinkitės priminimus arba pranešimus el. paštu, kad būtumėte įspėti apie įvykį ATSISIŲSKITE PAPRASTĄ KALENDORIŲ „PRO“ – PAPRASTĄ AUTONOMINĮ KALENDORIŲ BE JOKIŲ REKLAMŲ! <b>Susipažinkite su mūsų pilnu paprastųjų įrankių rinkiniu:</b> https://www.simplemobiletools.com <b>Atskira Paprasto kalendoriaus „Pro“ internetinė svetainė:</b> https://www.simplemobiletools.com/calendar <b>„Facebook“:</b> https://www.facebook.com/simplemobiletools <b>„Reddit“:</b> https://www.reddit.com/r/SimpleMobileTools </string>
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
