@@ -187,7 +187,7 @@ class EventActivity : SimpleActivity() {
                 if (config.wasAlarmWarningShown) {
                     showReminder1Dialog()
                 } else {
-                    ConfirmationDialog(this, messageId = R.string.reminder_warning, positive = R.string.ok, negative = 0) {
+                    ReminderWarningDialog(this) {
                         config.wasAlarmWarningShown = true
                         showReminder1Dialog()
                     }
@@ -1058,7 +1058,7 @@ class EventActivity : SimpleActivity() {
                 saveEvent()
             }
         } else {
-            ConfirmationDialog(this, messageId = R.string.reminder_warning, positive = R.string.ok, negative = 0) {
+            ReminderWarningDialog(this) {
                 config.wasAlarmWarningShown = true
                 ensureBackgroundThread {
                     saveEvent()
