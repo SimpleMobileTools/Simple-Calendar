@@ -175,7 +175,7 @@ class MonthDayFragment : Fragment(), MonthlyCalendar, RefreshRecyclerViewListene
 
     fun printCurrentView() {}
 
-    fun getNewEventDayCode() = if (mSelectedDayCode.isEmpty()) mDayCode else mSelectedDayCode
+    fun getNewEventDayCode() = if (mSelectedDayCode.isEmpty()) null else mSelectedDayCode
 
     private fun getMonthLabel(shownMonthDateTime: DateTime): String {
         var month = Formatter.getMonthName(requireActivity(), shownMonthDateTime.monthOfYear)
