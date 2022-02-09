@@ -107,6 +107,8 @@ class CalDAVHelper(val context: Context) {
             context.contentResolver.update(uri, values, null, null)
             context.eventTypesDB.insertOrUpdate(eventType)
         } catch (e: IllegalArgumentException) {
+        } catch (e: SecurityException) {
+            context.showErrorToast(e)
         }
     }
 
