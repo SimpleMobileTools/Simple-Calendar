@@ -57,6 +57,7 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
             setTextColor(context.getAdjustedPrimaryColor())
             underlineText()
             setOnClickListener {
+                activity?.hideKeyboard()
                 context.launchNewEventIntent(getNewEventDayCode())
             }
         }

@@ -1043,6 +1043,7 @@ class EventActivity : SimpleActivity() {
 
     private fun duplicateEvent() {
         // the activity has the singleTask launchMode to avoid some glitches, so finish it before relaunching
+        hideKeyboard()
         finish()
         Intent(this, EventActivity::class.java).apply {
             putExtra(EVENT_ID, mEvent.id)
@@ -1402,6 +1403,7 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun setupTimeZone() {
+        hideKeyboard()
         Intent(this, SelectTimeZoneActivity::class.java).apply {
             putExtra(CURRENT_TIME_ZONE, mEvent.getTimeZoneString())
             startActivityForResult(this, SELECT_TIME_ZONE_INTENT)

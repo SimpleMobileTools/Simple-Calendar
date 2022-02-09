@@ -92,6 +92,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         checkWhatsNewDialog()
         calendar_fab.beVisibleIf(config.storedView != YEARLY_VIEW && config.storedView != WEEKLY_VIEW)
         calendar_fab.setOnClickListener {
+            hideKeyboard()
             val lastFragment = currentFragments.last()
             val allowChangingDay = lastFragment !is DayFragmentsHolder && lastFragment !is MonthDayFragmentsHolder
             launchNewEventIntent(lastFragment.getNewEventDayCode(), allowChangingDay)
@@ -392,6 +393,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         intent.removeExtra(EVENT_ID)
         intent.removeExtra(EVENT_OCCURRENCE_TS)
         if (eventIdToOpen != 0L && eventOccurrenceToOpen != 0L) {
+            hideKeyboard()
             Intent(this, EventActivity::class.java).apply {
                 putExtra(EVENT_ID, eventIdToOpen)
                 putExtra(EVENT_OCCURRENCE_TS, eventOccurrenceToOpen)
@@ -412,6 +414,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                         val eventId = uri.lastPathSegment
                         val id = eventsDB.getEventIdWithLastImportId("%-$eventId")
                         if (id != null) {
+                            hideKeyboard()
                             Intent(this, EventActivity::class.java).apply {
                                 putExtra(EVENT_ID, id)
                                 startActivity(this)
@@ -933,6 +936,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     private fun tryImportEvents() {
         if (isQPlus()) {
+            hideKeyboard()
             Intent(Intent.ACTION_GET_CONTENT).apply {
                 addCategory(Intent.CATEGORY_OPENABLE)
                 type = "text/calendar"
@@ -991,6 +995,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         if (isQPlus()) {
             ExportEventsDialog(this, config.lastExportPath, true) { file, eventTypes ->
                 eventTypesToExport = eventTypes
+                hideKeyboard()
 
                 Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
                     type = "text/calendar"
@@ -1033,6 +1038,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     private fun launchSettings() {
+        hideKeyboard()
         startActivity(Intent(applicationContext, SettingsActivity::class.java))
     }
 
