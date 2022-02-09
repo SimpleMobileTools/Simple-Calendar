@@ -540,7 +540,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             if (it) {
                 SetRemindersDialog(this, BIRTHDAY_EVENT) {
                     val reminders = it
-                    val privateCursor = getMyContactsCursor(false, false)?.loadInBackground()
+                    val privateCursor = getMyContactsCursor(false, false)
 
                     ensureBackgroundThread {
                         val privateContacts = MyContactsContentProvider.getSimpleContacts(this, privateCursor)
@@ -570,7 +570,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             if (it) {
                 SetRemindersDialog(this, ANNIVERSARY_EVENT) {
                     val reminders = it
-                    val privateCursor = getMyContactsCursor(false, false)?.loadInBackground()
+                    val privateCursor = getMyContactsCursor(false, false)
 
                     ensureBackgroundThread {
                         val privateContacts = MyContactsContentProvider.getSimpleContacts(this, privateCursor)
@@ -600,7 +600,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             return
         }
 
-        val privateCursor = getMyContactsCursor(false, false)?.loadInBackground()
+        val privateCursor = getMyContactsCursor(false, false)
 
         ensureBackgroundThread {
             val privateContacts = MyContactsContentProvider.getSimpleContacts(this, privateCursor)

@@ -50,7 +50,7 @@ android {
 
     flavorDimensions "variants"
     productFlavors {
-        basic {}
+        core {}
         fdroid {}
     }
 
@@ -69,9 +69,9 @@ android {
 }
 
 dependencies {
-    implementation 'com.github.SimpleMobileTools:Simple-Commons:14033f9b50'
+    implementation 'com.github.SimpleMobileTools:Simple-Commons:fb636d1297'
     implementation 'androidx.multidex:multidex:2.0.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
     implementation "androidx.print:print:1.0.0"
 
