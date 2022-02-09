@@ -260,8 +260,8 @@
     <string name="faq_3_text">Pas seulement l\'affichage du rappel, mais la lecture de l\'audio est également énormément affectée par le système. Si vous n\'entendez aucun son, essayez d\'entrer dans les paramètres de l\'appli, en appuyant sur l\'option "Flux audio utilisé par les rappels" et en la modifiant. Si cela ne fonctionne toujours pas, vérifiez vos paramètres audio, si le flux particulier n\'est pas mis en sourdine.</string>
     <string name="faq_4_title">L\'application prend-elle en charge les fuseaux horaires \?</string>
     <string name="faq_4_text">Oui. Par défaut, tous les évènements sont créés dans votre fuseau horaire courant. Si vous souhaitez modifier le fuseau horaire d\'un évènement, vous devez d\'abord activer le sélecteur de fuseau horaire dans les paramètres de l\'application, puis le modifier sur l\'écran Détails de l\'évènement. Il est désactivé par défaut car la plupart des utilisateurs n\'en ont pas besoin.</string>
-    <string name="faq_5_title">L\'application ne montre aucune notification, pourquoi \?</string>
-    <string name="faq_5_text">Vérifiez les paramètres de batterie et de notifications, pour voir s\'il n\'y a rien qui bloquerait les rappels ou arrêterait l\'application en arrière-plan. Vous pouvez aussi trouver des astuces sur &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;.</string>
+    <string name="faq_5_title">L\'application n\'affiche aucune notification, pourquoi \?</string>
+    <string name="faq_5_text">Vérifiez dans les paramètres de la batterie et des notifications que rien ne bloque les rappels ou arrête l\'exécution de l\'application en arrière-plan. Vous pouvez aussi trouver des informations utiles sur <a>href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com</a>.</string>
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Simple Calendar Pro – Évènements et rappels</string>
