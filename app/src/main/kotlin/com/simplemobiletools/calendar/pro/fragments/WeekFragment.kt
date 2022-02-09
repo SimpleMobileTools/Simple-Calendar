@@ -33,6 +33,8 @@ import kotlinx.android.synthetic.main.fragment_week.view.*
 import org.joda.time.DateTime
 import org.joda.time.Days
 import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.LinkedHashMap
 
 class WeekFragment : Fragment(), WeeklyCalendar {
     private val WEEKLY_EVENT_ID_LABEL = "event_id_label"
@@ -70,7 +72,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private var currEvents = ArrayList<Event>()
     private var dayColumns = ArrayList<RelativeLayout>()
     private var eventTypeColors = LongSparseArray<Int>()
-    private var eventTimeRanges = LinkedHashMap<String, ArrayList<EventWeeklyView>>()
+    private var eventTimeRanges = LinkedHashMap<String, LinkedHashMap<Long, EventWeeklyView>>()
     private var currentlyDraggedView: View? = null
 
     private lateinit var inflater: LayoutInflater
@@ -446,16 +448,57 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                     else -> 1440
                 }
                 val range = Range(startMinutes, startMinutes + duration)
-                val eventWeekly = EventWeeklyView(event.id!!, range)
+                val eventWeekly = EventWeeklyView(range)
 
                 if (!eventTimeRanges.containsKey(currentDayCode)) {
-                    eventTimeRanges[currentDayCode] = ArrayList()
+                    eventTimeRanges[currentDayCode] = LinkedHashMap<Long, EventWeeklyView>()
                 }
-                eventTimeRanges[currentDayCode]?.add(eventWeekly)
+                eventTimeRanges[currentDayCode]?.put(event.id!!, eventWeekly)
 
                 currentDateTime = currentDateTime.plusDays(1)
                 currentDayCode = Formatter.getDayCodeFromDateTime(currentDateTime)
             } while (currentDayCode.toInt() <= endDayCode.toInt())
+        }
+
+        eventTimeRanges.forEach { daycode, eventDayList ->
+            val eventsCollisionChecked = ArrayList<Long>()
+            eventDayList.forEach { eventId, eventWeeklyView ->
+                if (eventWeeklyView.slot == 0) {
+                    eventWeeklyView.slot = 1
+                    eventWeeklyView.slot_max = 1
+                }
+
+                eventsCollisionChecked.add(eventId)
+                val eventWeeklyViewsToCheck = eventDayList.filter { !eventsCollisionChecked.contains(it.key) }
+                eventWeeklyViewsToCheck.forEach { toCheckId, eventWeeklyViewToCheck ->
+                    if (eventWeeklyView.range.touch(eventWeeklyViewToCheck.range)) {
+                        if (eventWeeklyViewToCheck.slot == 0) {
+                            val nextSlot = eventWeeklyView.slot_max + 1
+                            val slotRange = Array(eventWeeklyView.slot_max) { it + 1 }
+                            val collisionEventWeeklyViews = eventDayList.filter { eventWeeklyView.collisions.contains(it.key) }
+                            collisionEventWeeklyViews.forEach { collision_id, collisionEventWeeklyView ->
+                                if (collisionEventWeeklyView.range.touch(eventWeeklyViewToCheck.range)) {
+                                    slotRange[collisionEventWeeklyView.slot - 1] = nextSlot
+                                }
+                            }
+                            slotRange[eventWeeklyView.slot - 1] = nextSlot
+                            val slot = slotRange.minOrNull()
+                            eventWeeklyViewToCheck.slot = slot!!
+                            if (slot == nextSlot) {
+                                eventWeeklyViewToCheck.slot_max = nextSlot
+                                eventWeeklyView.slot_max = nextSlot
+                                collisionEventWeeklyViews.forEach { collision_id, collisionEventWeeklyView ->
+                                    collisionEventWeeklyView.slot_max++
+                                }
+                            } else {
+                                eventWeeklyViewToCheck.slot_max = eventWeeklyView.slot_max
+                            }
+                        }
+                        eventWeeklyView.collisions.add(toCheckId)
+                        eventWeeklyViewToCheck.collisions.add(eventId)
+                    }
+                }
+            }
         }
 
         dayevents@ for (event in events) {
@@ -474,37 +517,11 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                         continue@dayevents
                     }
 
-                    val startMinutes = when (currentDayCode == startDayCode) {
-                        true -> (startDateTime.minuteOfDay)
-                        else -> 0
-                    }
-                    val duration = when (currentDayCode == endDayCode) {
-                        true -> (endDateTime.minuteOfDay - startMinutes)
-                        else -> 1440
-                    }
-                    val range = Range(startMinutes, startMinutes + duration)
-                    var overlappingEvents = 0
-                    var currentEventOverlapIndex = 0
-                    var foundCurrentEvent = false
-
-                    eventTimeRanges[currentDayCode]!!.forEachIndexed { index, eventWeeklyView ->
-                        if (eventWeeklyView.range.touch(range)) {
-                            overlappingEvents++
-
-                            if (eventWeeklyView.id == event.id) {
-                                foundCurrentEvent = true
-                            }
-
-                            if (!foundCurrentEvent) {
-                                currentEventOverlapIndex++
-                            }
-                        }
-                    }
-
                     val dayColumn = dayColumns[dayOfWeek]
                     (inflater.inflate(R.layout.week_event_marker, null, false) as TextView).apply {
                         var backgroundColor = eventTypeColors.get(event.eventType, primaryColor)
                         var textColor = backgroundColor.getContrastColor()
+                        val currentEventWeeklyView = eventTimeRanges[currentDayCode]!!.get(event.id)
                         if (dimPastEvents && event.isPastEvent && !isPrintVersion) {
                             backgroundColor = backgroundColor.adjustAlpha(MEDIUM_ALPHA)
                             textColor = textColor.adjustAlpha(HIGHER_ALPHA)
@@ -515,28 +532,19 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                         text = event.title
                         contentDescription = text
                         dayColumn.addView(this)
-                        y = startMinutes * minuteHeight
+                        y = currentEventWeeklyView!!.range.lower * minuteHeight
                         (layoutParams as RelativeLayout.LayoutParams).apply {
-                            width = dayColumn.width - 1
-                            width /= Math.max(overlappingEvents, 1)
-                            if (overlappingEvents > 1) {
-                                x = width * currentEventOverlapIndex.toFloat()
-                                if (currentEventOverlapIndex != 0) {
-                                    x += density
-                                }
-
+                            width = (dayColumn.width - 1) / currentEventWeeklyView.slot_max
+                            x = (width * (currentEventWeeklyView.slot - 1)).toFloat()
+                            if (currentEventWeeklyView.slot > 1) {
+                                x += density
                                 width -= density
-                                if (currentEventOverlapIndex + 1 != overlappingEvents) {
-                                    if (currentEventOverlapIndex != 0) {
-                                        width -= density
-                                    }
-                                }
                             }
 
                             minHeight = if (event.startTS == event.endTS) {
                                 minimalHeight
                             } else {
-                                (duration * minuteHeight).toInt() - 1
+                                ((currentEventWeeklyView.range.upper - currentEventWeeklyView.range.lower) * minuteHeight).toInt() - 1
                             }
                         }
 
