@@ -253,6 +253,12 @@
     <string name="faq_3_text">Gan atgādinājuma parādīšana, gan skaņu atskaņošana ir visai atkarīga no sistēmas. Ja nav dzirdama skaņa, atveriet lietotnes iestatījumus, nospiediet \"Atgādinājumiem izmantotā audio straume\" un nomainiet tās vērtību. Ja skaņas nav joprojām, pārbaudiet skaņas iestatījumos, vai šī straume nav izslēgta.</string>
     <string name="faq_4_title">Vai lietotne atbalsta laika joslas?</string>
     <string name="faq_4_text">Jā, atbalsta. Pēc noklusējuma visi notikumi tiek izveidoti tābrīža iesatītajā laika joslā. Ja vēlaties mainīt notikuma laika joslu, vispirms jāiespējo laika joslu izvēlnis lietotnes iestatījumos, pēc tam to var mainīt Notikuma informācijas skatā. Pēc noklusējuma funkcija ir atspējota, jo vairumam tā nav noderīga.</string>
+    <string name="faq_5_title">The app shows no notifications, why is that?</string>
+    <string name="faq_5_text">
+        <![CDATA[
+            Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. You might also want to take a look at <a href="https://dontkillmyapp.com">https://dontkillmyapp.com</a>, it has some useful tips.
+        ]]>
+    </string>
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Simple Calendar Pro - Notikumi &amp; atgādinājumi</string>

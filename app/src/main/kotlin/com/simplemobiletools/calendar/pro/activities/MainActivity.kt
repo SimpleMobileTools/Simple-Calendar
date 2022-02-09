@@ -1047,6 +1047,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
         val faqItems = arrayListOf(
             FAQItem(R.string.faq_2_title, R.string.faq_2_text),
+            FAQItem(R.string.faq_5_title, R.string.faq_5_text),
             FAQItem(R.string.faq_3_title, R.string.faq_3_text),
             FAQItem(R.string.faq_1_title, R.string.faq_1_text),
             FAQItem(R.string.faq_1_title_commons, R.string.faq_1_text_commons),

@@ -277,6 +277,12 @@
     <string name="faq_4_title">Ondersteunt de app tijdzones?</string>
     <string name="faq_4_text">Ja. Normaliter zullen nieuwe afspraken de huidige tijdzone krijgen toegewezen. De tijdzone van een afspraak kan worden gewijzigd door
         de optie voor tijdzones in de instellingen te activeren. Hierna kan de tijdzone worden opgegeven in de afspraakdetails. De instelling is standaard niet ingeschakeld, omdat de meeste mensen het niet nodig zullen hebben.</string>
+    <string name="faq_5_title">The app shows no notifications, why is that?</string>
+    <string name="faq_5_text">
+        <![CDATA[
+            Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. You might also want to take a look at <a href="https://dontkillmyapp.com">https://dontkillmyapp.com</a>, it has some useful tips.
+        ]]>
+    </string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->

@@ -259,6 +259,12 @@
     <string name="faq_3_text">Non solo visualizzare l\'attuale promemoria, ma anche riprodurre l\'audio è un lavoro prettamente del sistema. Se non si sente alcun suono, provare ad andare nelle impostazioni dell\'applicazione, premere l\'opzione «Canale audio utilizzato per il promemoria» e cambia il canale. Se ancora non funziona, controllare le impostazioni dell\'audio, in particolare se il canale è stato mutato.</string>
     <string name="faq_4_title">L\'app supporta diversi fusi orari?</string>
     <string name="faq_4_text">Sì. Solitamente tutti gli eventi vengono create nel tuo fuso orario. Se vuoi cambiare il fuso orario di un specifico evento, devi abilitare la funzionalitá nelle impostazioni dell\'app, successivamente potrai cambiare il fuso nella schermata di dettaglio dell\'evento. La funzionalitá é disabilitata inizialmente siccome la maggior parte degli utenti non ne hanno bisogno.</string>
+    <string name="faq_5_title">The app shows no notifications, why is that?</string>
+    <string name="faq_5_text">
+        <![CDATA[
+            Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. You might also want to take a look at <a href="https://dontkillmyapp.com">https://dontkillmyapp.com</a>, it has some useful tips.
+        ]]>
+    </string>
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Semplice Calendario Pro - Eventi &amp; Promemoria</string>

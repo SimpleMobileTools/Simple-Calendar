@@ -277,6 +277,12 @@
     <string name="faq_4_title">Aplicația acceptă fusuri orare?</string>
     <string name="faq_4_text">Da, acceptă. În mod implicit, toate evenimentele sunt create în fusul dvs. curent. Dacă doriți să schimbați fusul orar al evenimentelor,
          mai întâi va trebui să activați selectorul de fus orar in setările aplicației, apoi să-l schimbați în ecranul Detalii despre eveniment. Acesta opțiune este dezactivată implicit, deoarece majoritatea oamenilor nu au nevoie de ea.</string>
+    <string name="faq_5_title">The app shows no notifications, why is that?</string>
+    <string name="faq_5_text">
+        <![CDATA[
+            Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. You might also want to take a look at <a href="https://dontkillmyapp.com">https://dontkillmyapp.com</a>, it has some useful tips.
+        ]]>
+    </string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->

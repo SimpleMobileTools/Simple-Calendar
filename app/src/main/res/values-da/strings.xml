@@ -254,6 +254,12 @@
     <string name="faq_3_text">Såvel visning af påmindelser som afspilning af lyd til dem, er afhængig af systemet. Hvis ikke du kan høre nogen lyd, kan du prøve at gå ind i appens indstillinger. Her kan du trykke på \"Audio-stream anvendt af påmindelser\"  og vælge en anden indstilling. Virker det stadig ikke skal du tjekke i dine lydindstillinger om lyden i det aktuelle valg er slået fra.</string>
     <string name="faq_4_title">Understøtter appen tidszoner?</string>
     <string name="faq_4_text">Ja, det gør den. Som standard oprettes alle begivenheder i din aktuelle tidszone. Vil du ændre det for en given begivenhed, skal du først aktivere tidszonevælgeren i appens indstillinger og derefter ændre tidszone under selve begivenheden. Funktionen er fra starten deaktiveret da de færreste brugere behøver den.</string>
+    <string name="faq_5_title">The app shows no notifications, why is that?</string>
+    <string name="faq_5_text">
+        <![CDATA[
+            Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. You might also want to take a look at <a href="https://dontkillmyapp.com">https://dontkillmyapp.com</a>, it has some useful tips.
+        ]]>
+    </string>
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Simpel kalender Pro - Begivenheder &amp; påmindelser</string>

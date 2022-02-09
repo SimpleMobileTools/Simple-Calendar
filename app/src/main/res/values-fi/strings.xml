@@ -263,6 +263,12 @@
     <string name="faq_4_title">Tukeeko sovellus aikavyöhykkeitä?</string>
     <string name="faq_4_text">Kyllä. Oletuksena kaikki tapahtumat luodaan nykyiselle aikavyöhykkeellesi. Jos haluat muuttaa tapahtuman aikavyöhykettä,
          sinun on ensin otettava käyttöön aikavyöhykkeen valitsin sovelluksen asetuksissa ja muutettava se sitten Tapahtuman tiedot-näytössä. Se on oletusarvoisesti pois käytöstä, koska useimmat ihmiset eivät tarvitse sitä.</string>
+    <string name="faq_5_title">The app shows no notifications, why is that?</string>
+    <string name="faq_5_text">
+        <![CDATA[
+            Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. You might also want to take a look at <a href="https://dontkillmyapp.com">https://dontkillmyapp.com</a>, it has some useful tips.
+        ]]>
+    </string>
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Simple Calendar Pro - Tapahtumat, muistutukset</string>
