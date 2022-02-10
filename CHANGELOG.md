@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 6.17.1 *(2022-02-10)*
+----------------------------
+
+ * Adding a new FAQ item about reminders not showing up
+ * Improve weekly view collision checking (by Honk2)
+ * Added some stability, translation and UX improvements
+
 Version 6.17.0 *(2022-01-02)*
 ----------------------------
 

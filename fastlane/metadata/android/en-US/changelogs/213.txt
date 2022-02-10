@@ -1,0 +1,3 @@
+ * Adding a new FAQ item about reminders not showing up
+ * Improve weekly view collision checking (by Honk2)
+ * Added some stability, translation and UX improvements
