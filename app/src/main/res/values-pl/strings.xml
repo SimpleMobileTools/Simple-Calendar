@@ -264,8 +264,8 @@
     <string name="faq_4_text">Tak. Domyślnie wszystkie wydarzenia są tworzone w Twojej aktualnej strefie czasowej. Jeśli chcesz zmienić strefę czasową wydarzeń, najpierw musisz włączyć selektor stref czasowych w ustawieniach aplikacji, a następnie zmienić go na ekranie edycji wydarzenia. Opcja ta jest domyślnie wyłączona, ponieważ większość użytkowników jej nie potrzebuje.</string>
     <string name="faq_5_title">Aplikacja nie wyświetla żadnych powiadomień. Dlaczego tak jest\?</string>
     <string name="faq_5_text">Sprawdź ustawienia baterii i powiadomień w swoim urządzeniu, czy nic nie blokuje przypomnień lub nie wyłącza aplikacji w tle. Możesz również rzucić okiem na &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, gdzie znajdują się przydatne wskazówki.</string>
-    <string name="faq_6_title">How can I modify or delete an existing event type?</string>
-    <string name="faq_6_text">You can do both of those in the app Settings - Manage event types. Just click on the wanted one for changing the label and color, or select the wanted one by long pressing it and use the trashbin at the top menu for deleting.</string>
+    <string name="faq_6_title">Jak mogę zmodyfikować lub usunąć istniejący typ wydarzeń\?</string>
+    <string name="faq_6_text">Obie te czynności możesz wykonać w Ustawienia -&gt; Zarządzaj typami wydarzeń. Po prostu naciśnij wybrany typ wydarzeń, aby zmienić jego nazwę lub kolor, albo wybierz go przez długie naciśnięcie i użyj ikony kosza, aby usunąć.</string>
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Prosty kalendarz Pro - Wydarzenia i przypomnienia</string>
