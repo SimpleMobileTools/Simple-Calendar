@@ -279,6 +279,8 @@
          mai întâi va trebui să activați selectorul de fus orar in setările aplicației, apoi să-l schimbați în ecranul Detalii despre eveniment. Acesta opțiune este dezactivată implicit, deoarece majoritatea oamenilor nu au nevoie de ea.</string>
     <string name="faq_5_title">The app shows no notifications, why is that?</string>
     <string name="faq_5_text">Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. You might also want to take a look at &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, it has some useful tips.</string>
+    <string name="faq_6_title">How can I modify or delete an existing event type?</string>
+    <string name="faq_6_text">You can do both of those in the app Settings - Manage event types. Just click on the wanted one for changing the label and color, or select the wanted one by long pressing it and use the trashbin at the top menu for deleting.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->

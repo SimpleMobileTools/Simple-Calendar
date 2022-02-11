@@ -277,6 +277,8 @@
     <string name="faq_4_text">Sim. Por padrão, todos os eventos são criados em seu fuso horário atual. Se você deseja alterar o fuso horário de um evento, será necessário habilitar a escolha de fuso horário nas configurações do aplicativo e alterá-lo na tela de detalhes do evento. Este recurso fica desabilitado por padrão, pois a maioria das pessoas não precisa usá-lo.</string>
     <string name="faq_5_title">The app shows no notifications, why is that?</string>
     <string name="faq_5_text">Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. You might also want to take a look at &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, it has some useful tips.</string>
+    <string name="faq_6_title">How can I modify or delete an existing event type?</string>
+    <string name="faq_6_text">You can do both of those in the app Settings - Manage event types. Just click on the wanted one for changing the label and color, or select the wanted one by long pressing it and use the trashbin at the top menu for deleting.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->

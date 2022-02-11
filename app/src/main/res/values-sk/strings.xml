@@ -282,6 +282,8 @@
         najprv musíte povoliť menenie časových pásem v nastaveniach apky, následne ho zmeniť na obrazovke s detailmi udalosti. Menenie je štandardne vypnuté, keďže ho väčšina ľudí potrebovať nebude.</string>
     <string name="faq_5_title">Apka nezobrazuje upozornenia, čím to je?</string>
     <string name="faq_5_text">Pozrite sa do nastavení batérie a upozornení vášho zariadenia, či nič neblokuje upozornenia, alebo nevypína na pozadí apku. Mohli by ste sa pozrieť aj na  &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, je tam veľa užitočných tipov.</string>
+    <string name="faq_6_title">Ako môžem upraviť alebo odstrániť existujúci typ udalosti?</string>
+    <string name="faq_6_text">Oboje viete spraviť v nastaveniach apky - Spravovať typy udalostí. Kliknutím viete upraviť názov a farbu, odstrániť ich viete dlhým podržaním a použitím odpadkového koša na hornom menu.</string>
 
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
