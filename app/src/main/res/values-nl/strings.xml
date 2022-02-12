@@ -13,12 +13,10 @@
     <string name="go_to_today">Naar vandaag</string>
     <string name="go_to_date">Naar datum</string>
     <string name="upgraded_from_free">Het lijkt erop dat dit een upgrade is van de oude gratis versie. Dit betekent dat lokaal opgeslagen afspraken handmatig moeten worden overgezet via \'Afspraken naar .ics-bestand exporteren\' in de oude versie en daarna \'Afspraken uit .ics-bestand importeren\' in deze nieuwe versie. Beide opties zijn te vinden in het menu van het hoofdscherm.\n\nDaarna kan de oude versie, met de knop \'Upgrade naar Pro\' worden gedeïnstalleerd. De instellingen zullen ook opnieuw moeten worden geconfigureerd.</string>
-
     <!-- Widget titles -->
     <string name="widget_monthly">Maandweergave</string>
     <string name="widget_list">Afsprakenlijst</string>
     <string name="widget_todays_date">Agenda vandaag</string>
-
     <!-- Event -->
     <string name="event">Afspraak</string>
     <string name="edit_event">Afspraak bewerken</string>
@@ -33,7 +31,6 @@
     <string name="please_fill_location">Vul de locatie in om deze op de kaart te tonen</string>
     <string name="public_event_notification_text">Afspraak aanstaande</string>
     <string name="saving_filtered_out">Opslaan… Pas op: het gekozen afspraaktype is weggefilterd via Menu - Filteren</string>
-
     <!-- Event Repetition -->
     <string name="repetition">Herhaling</string>
     <string name="no_repetition">Niet herhalen</string>
@@ -75,7 +72,6 @@
     <string name="fourth_m">vierde</string>
     <string name="fifth_m">vijfde</string>
     <string name="last_m">laatste</string>
-
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
     <string name="repeat_every_f">Herhalen op elke</string>
@@ -86,7 +82,6 @@
     <string name="fourth_f">vierde</string>
     <string name="fifth_f">vijfde</string>
     <string name="last_f">laatste</string>
-
     <!-- Birthdays -->
     <string name="birthdays">Verjaardagen</string>
     <string name="add_birthdays">Verjaardagen van contacten toevoegen</string>
@@ -94,7 +89,6 @@
     <string name="no_new_birthdays">Geen nieuwe verjaardagen gevonden</string>
     <string name="birthdays_added">Verjaardagen toegevoegd</string>
     <string name="add_birthdays_automatically">Nieuwe verjaardagen automatisch toevoegen</string>
-
     <!-- Anniversaries -->
     <string name="anniversaries">Feestdagen</string>
     <string name="add_anniversaries">Feestdagen van contacten toevoegen</string>
@@ -102,13 +96,11 @@
     <string name="no_new_anniversaries">Geen nieuwe feestdagen gevonden</string>
     <string name="anniversaries_added">Feestdagen toegevoegd</string>
     <string name="add_anniversaries_automatically">Nieuwe feestdagen automatisch toevoegen</string>
-
     <!-- Event Reminders -->
     <string name="reminder">Herinnering</string>
     <string name="before">van tevoren</string>
     <string name="add_another_reminder">Herinnering toevoegen</string>
     <string name="event_reminders">Herinneringen</string>
-
     <!-- Event attendees -->
     <string name="add_another_attendee">Persoon uitnodigen</string>
     <string name="my_status">Mijn status:</string>
@@ -116,10 +108,8 @@
     <string name="not_going">Niet aanwezig</string>
     <string name="maybe_going">Misschien</string>
     <string name="invited">Uitgenodigd</string>
-
     <!-- Time zones -->
     <string name="enter_a_country">Voer een land of tijdzone in</string>
-
     <!-- Export / Import -->
     <string name="import_events">Afspraken importeren</string>
     <string name="export_events">Afspraken exporteren</string>
@@ -130,16 +120,13 @@
     <string name="include_event_types">Afspraaktypes tonen</string>
     <string name="filename_without_ics">Bestandsnaam (zonder .ics)</string>
     <string name="ignore_event_types">Afspraaktypes uit het bestand negeren (altijd standaardtype gebruiken)</string>
-
     <!-- Event details -->
     <string name="location">Locatie</string>
     <string name="description">Beschrijving</string>
     <string name="all_day">Hele dag</string>
-
     <!-- Weekly view -->
     <string name="week">Week</string>
     <string name="start_week_with_current_day">Weekweergave beginnen vanaf huidige dag</string>
-
     <!-- Event types -->
     <string name="event_types">Afspraaktypes</string>
     <string name="add_new_type">Type toevoegen</string>
@@ -152,7 +139,6 @@
     <string name="move_events_into_default">Afspraken van dit type verplaatsen naar het standaardtype</string>
     <string name="remove_affected_events">Afspraken van dit type permanent verwijderen</string>
     <string name="unsync_caldav_calendar">Zet synchroniseren uit (Android-instellingen &gt; Accounts) om een CalDAV-agenda te verwijderen</string>
-
     <!-- Holidays -->
     <string name="holidays">Feestdagen</string>
     <string name="add_holidays">Feestdagen toevoegen</string>
@@ -161,7 +147,6 @@
     <string name="holidays_imported_successfully">De feestdagen zijn geïmporteerd onder afspraaktype \"Feestdagen\"</string>
     <string name="importing_some_holidays_failed">Sommige feestdagen konden niet worden geïmporteerd</string>
     <string name="importing_holidays_failed">Fout bij importeren van feestdagen</string>
-
     <!-- Settings -->
     <string name="manage_event_types">Afspraaktypes beheren</string>
     <string name="start_day_at">Dag starten om</string>
@@ -195,7 +180,7 @@
     <string name="default_reminder_2">Standaardherinnering 2</string>
     <string name="default_reminder_3">Standaardherinnering 3</string>
     <string name="view_to_open_from_widget">Weergave bij openen vanuit widget met afsprakenlijst</string>
-    <string name="last_view">Last view</string>
+    <string name="last_view">Laatst gebruikte weergave</string>
     <string name="new_events">Nieuwe afspraken</string>
     <string name="default_start_time">Standaard begintijd</string>
     <string name="next_full_hour">Eerstvolgende hele uur</string>
@@ -207,7 +192,6 @@
     <string name="highlight_weekends_color">Kleur voor weekends</string>
     <string name="allow_changing_time_zones">Bewerken van tijdzone voor afspraken toestaan</string>
     <string name="manage_quick_filter_event_types">Snelfilter gebeurtenistypes beheren</string>
-
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Selecteer te synchroniseren agenda\'s</string>
@@ -225,7 +209,6 @@
     <string name="no_synchronized_calendars">Er zijn geen gesynchroniseerde agenda\'s gevonden.</string>
     <string name="status_free">Vrij</string>
     <string name="status_busy">Bezet</string>
-
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">maandag</string>
@@ -235,7 +218,6 @@
     <string name="friday_alt">vrijdag</string>
     <string name="saturday_alt">zaterdag</string>
     <string name="sunday_alt">zondag</string>
-
     <!-- List widget config example events -->
     <string name="sample_title_1">Training</string>
     <string name="sample_description_1">Hardlopen</string>
@@ -245,7 +227,6 @@
     <string name="sample_title_4">Lunch met Jacquelien</string>
     <string name="sample_description_4">Aan de kade</string>
     <string name="sample_title_5">Koffietijd</string>
-
     <!-- List widget config -->
     <string name="show_events_happening">Bereik getoonde afspraken:</string>
     <string name="within_the_next_one_year">Binnen het komende jaar</string>
@@ -263,10 +244,9 @@
         <item quantity="one">Binnen de komende %d maand</item>
         <item quantity="other">Binnen de komende %d maanden</item>
     </plurals>
-
     <!-- FAQ -->
     <string name="faq_1_title">Hoe kan ik de feestdagen die zijn geïmporteerd via \"Feestdagen toevoegen\" weer verwijderen?</string>
-    <string name="faq_1_text">Deze feestdagen hebben het afspraaktype \"Feestdagen\". Om de feestdagen te verwijderen, ga naar Instellingen -> Afspraaktypes beheren,
+    <string name="faq_1_text">Deze feestdagen hebben het afspraaktype \"Feestdagen\". Om de feestdagen te verwijderen, ga naar Instellingen -&gt; Afspraaktypes beheren,
         druk lang op \"Feestdagen\" en druk vervolgens op de prullenbak.</string>
     <string name="faq_2_title">Kan ik mijn afspraken synchroniseren met Google Calendar of een andere service die CalDAV ondersteunt?</string>
     <string name="faq_2_text">Schakel \"CalDAV-synchronisatie\" in bij Instellingen en selecteer vervolgens de agenda\'s die gesynchroniseerd moeten worden. Er is wel een app nodig die de synchronisatie tussen het apparaat en de service zelf afhandelt.
@@ -279,9 +259,8 @@
         de optie voor tijdzones in de instellingen te activeren. Hierna kan de tijdzone worden opgegeven in de afspraakdetails. De instelling is standaard niet ingeschakeld, omdat de meeste mensen het niet nodig zullen hebben.</string>
     <string name="faq_5_title">Waarom laat de app geen meldingen zien?</string>
     <string name="faq_5_text">Controleer bij Meldingen via App-info of er geen notificaties geblokkeerd worden. Probeer anders bij de geavanceerde instellingen in App-info de batterijoptimalisatie voor deze app uit te schakelen. Kijk op &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt; voor verdere tips.</string>
-    <string name="faq_6_title">How can I modify or delete an existing event type?</string>
-    <string name="faq_6_text">You can do both of those in the app Settings - Manage event types. Just click on the wanted one for changing the label and color, or select the wanted one by long pressing it and use the trashbin at the top menu for deleting.</string>
-
+    <string name="faq_6_title">Hoe kan ik een bestaand afspraaktype aanpassen of verwijderen\?</string>
+    <string name="faq_6_text">Dit kan via Instellingen -&gt; Afspraaktypes beheren. Klik op het item om de naam en kleur te veranderen, of druk lang op een item om het te verwijderen met de knop bovenin.</string>
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Eenvoudige Agenda Pro - Afspraken &amp; Herinneringen</string>
@@ -331,7 +310,6 @@
         <b>Reddit:</b>
         https://www.reddit.com/r/SimpleMobileTools
     </string>
-
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
