@@ -263,15 +263,15 @@
     <string name="faq_4_title">Tukeeko sovellus aikavyöhykkeitä?</string>
     <string name="faq_4_text">Kyllä. Oletuksena kaikki tapahtumat luodaan nykyiselle aikavyöhykkeellesi. Jos haluat muuttaa tapahtuman aikavyöhykettä,
          sinun on ensin otettava käyttöön aikavyöhykkeen valitsin sovelluksen asetuksissa ja muutettava se sitten Tapahtuman tiedot-näytössä. Se on oletusarvoisesti pois käytöstä, koska useimmat ihmiset eivät tarvitse sitä.</string>
-    <string name="faq_5_title">The app shows no notifications, why is that?</string>
-    <string name="faq_5_text">Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. You might also want to take a look at &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, it has some useful tips.</string>
-    <string name="faq_6_title">How can I modify or delete an existing event type?</string>
-    <string name="faq_6_text">You can do both of those in the app Settings - Manage event types. Just click on the wanted one for changing the label and color, or select the wanted one by long pressing it and use the trashbin at the top menu for deleting.</string>
+    <string name="faq_5_title">Miksi sovellus ei näytä enää ilmoituksia\?</string>
+    <string name="faq_5_text">Tarkista laitteesi akku- ja ilmoitusasetukset siltä varalta että jokin asetus estää ilmoitukset tai sulkee sovelluksen taustalla. Katso myös vinkit sivustolta &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;.</string>
+    <string name="faq_6_title">Kuinka voin muokata tai poistaa tapahtumatyypin\?</string>
+    <string name="faq_6_text">Voit muokata tai poistaa tapahtumatyyppejä sovelluksen asetuksissa kohdasta Hallitse taphtumatyyppejä. Klikkaa haluamaasi tyyppiä vaihtaaksesi otsikkoa tai väriä. Tapahtumatyypin voit poistaa painamalla sitä listssa pitkään ja klikkamaalla yläpalkkiin ilmestyvää roskakorikuvaketta.</string>
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Simple Calendar Pro - Tapahtumat, muistutukset</string>
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Simple mobile 2020 calendar. Schedule planner &amp; appointment reminder for any day</string>
+    <string name="app_short_description">Simple mobile 2020 calendar. Aikataulujen suunnittelu ja muistutukset.</string>
     <string name="app_long_description">
         Simple Calendar Pro is a fully customizable, offline calendar designed to do exactly what a calendar should do. <b>No complicated features, unnecessary permissions and no ads!</b>
 
