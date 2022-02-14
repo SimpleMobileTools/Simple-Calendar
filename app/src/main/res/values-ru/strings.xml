@@ -263,10 +263,10 @@
     <string name="faq_4_title">Приложение поддерживает работу с часовыми поясами?</string>
     <string name="faq_4_text">Да. По умолчанию все события создаются в текущем часовом поясе. Если вы хотите изменить часовой пояс события,
         сначала нужно включить возможность его выбора в настройках приложения, затем часовой пояс можно изменить на экране сведений о событии. Функция отключена по умолчанию, так как не нужна большинству людей.</string>
-    <string name="faq_5_title">The app shows no notifications, why is that?</string>
-    <string name="faq_5_text">Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. You might also want to take a look at &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, it has some useful tips.</string>
-    <string name="faq_6_title">How can I modify or delete an existing event type?</string>
-    <string name="faq_6_text">You can do both of those in the app Settings - Manage event types. Just click on the wanted one for changing the label and color, or select the wanted one by long pressing it and use the trashbin at the top menu for deleting.</string>
+    <string name="faq_5_title">Приложение не показывает уведомления, почему\?</string>
+    <string name="faq_5_text">Проверьте настройки электропитания и уведомлений своего устройства и убедитесь, что ничто не блокирует отображение напоминаний или не останавливает работу приложения в фоновом режиме. Также можно посмотреть &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, там есть несколько полезных советов.</string>
+    <string name="faq_6_title">Как можно изменить или удалить существующий тип события\?</string>
+    <string name="faq_6_text">Вы можете сделать и то, и другое в настройках приложения разделе \"Управление типами событий\". Просто нажмите на нужный тип, чтобы изменить его название и цвет, или выберите долгим нажатием и используйте значок корзины в верхнем меню для удаления.</string>
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Simple Calendar Pro - события и напоминания</string>
