@@ -154,7 +154,7 @@
     <string name="midnight_spanning">Afspraken die tot na middernacht duren bovenaan tonen</string>
     <string name="allow_customizing_day_count">Wijziging van het aantal zichtbare dagen toestaan</string>
     <string name="week_numbers">Weeknummers tonen</string>
-    <string name="vibrate">Trillen bij notificaties</string>
+    <string name="vibrate">Trillen bij meldingen</string>
     <string name="reminder_sound">Geluid voor herinnering</string>
     <string name="no_ringtone_picker">Geen app gevonden om geluid te kiezen</string>
     <string name="no_ringtone_selected">Geen</string>
@@ -173,7 +173,7 @@
     <string name="reminder_stream">Type geluiden voor herinneringen gebruiken</string>
     <string name="system_stream">Systeem</string>
     <string name="alarm_stream">Alarm</string>
-    <string name="notification_stream">Notificatie</string>
+    <string name="notification_stream">Melding</string>
     <string name="ring_stream">Beltoon</string>
     <string name="use_last_event_reminders">Ingestelde herinneringen bij laatste afspraak als standaard voor nieuwe afspraken gebruiken</string>
     <string name="default_reminder_1">Standaardherinnering 1</string>
