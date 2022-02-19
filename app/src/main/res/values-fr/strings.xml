@@ -268,51 +268,8 @@
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Simple Calendar Pro – Évènements et rappels</string>
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Calendrier mobile. Planification et rappel de RDV.</string>
-    <string name="app_long_description">
-        Simple Calendar Pro est un calendrier entièrement personnalisable et hors-ligne conçu pour faire exactement ce qu\'un calendrier devrait faire. <b>Aucune fonctionnalité compliquée, sans demande de permissions inutiles et sans publicité !</b>
-
-        Que vous souhaitiez organiser un évènement ponctuel ou récurrent, un anniversaire, un rendez-vous d\'affaires ou quoi que ce soit d\'autre, Simple Calendar Pro rend simple <b>votre organisation</b>. Avec une grande variété <b>d\'options de personnalisation</b>, vous pouvez personnaliser les rappels d\'évènements, les sons de notifications, les widgets du calendrier et l\'apparence de l\'application.
-
-        Les vues quotidienne, hebdomadaire et mensuelle rendent la consultation des évènements et rendez-vous à venir aisée. Vous pouvez même voir tous les évènements dans une simple liste plutôt que dans un affichage calendrier, afin de <b>savoir exactement ce qui va arriver dans votre vie et quand ;-). </b>
-
-        ----------------------------------------------------------
-        <b>Simple Calendar Pro – Fonctionnalités &amp; avantages </b>
-        ----------------------------------------------------------
-
-        ✔️ Aucune publicité ou popup ennuyante
-        ✔️ Aucun accès à internet n\'est nécessaire, vous donnant un meilleur respect de la vie privée et de la sécurité
-        ✔️ Seules les permissions minimum sont requises
-        ✔️ Une valeur : la simplicité - faire ce qu\'un calendrier doit faire !
-        ✔️ Open source
-        ✔️ Thèmes et widgets entièrement personnalisables
-        ✔️ Traduit en 29 langues
-        ✔️ Export des paramètres en fichier .txt pour les importer sur un autre appareil
-        ✔️ Synchronisation du calendrier CalDAV supportée pour synchroniser entre appareils et services
-        ✔️ Vue quotidienne, hebdomadaire, mensuelle et annuelle des évènements sur le calendrier
-        ✔️ Supporte l\'export et l\'import des évènements via des fichiers .ics
-        ✔️ Paramètre de multiples rappels d\'évènements, personnalise les effets sonores et la vibration des évènements
-        ✔️ Option snooze pour les rappels
-        ✔️ Ajoutez facilement les anniversaires et les jours fériés
-        ✔️ Personnalise les évènements - début, durée, rappels, participants, etc.
-        ✔️ Note les présences sur chaque évènement
-        ✔️ Utilisable en tant que calendrier personnel ou professionnel
-        ✔️ Choisissez entre rappels et notifications par email pour vous alerter à propos d\'un évènement
-
-        TÉLÉCHARGEZ SIMPLE CALENDAR PRO – LE CALENDRIER HORS-LIGNE SIMPLE ET SANS PUBS !
-
-        <b>Découvrez la suite complète des applications Simple Mobile Tools ici :</b>
-        https://www.simplemobiletools.com
-
-        <b>Site Internet de Simple Calendar Pro :</b>
-        https://www.simplemobiletools.com/calendar
-
-        <b>Facebook :</b>
-        https://www.facebook.com/simplemobiletools
-
-        <b>Reddit :</b>
-        https://www.reddit.com/r/SimpleMobileTools
-    </string>
+    <string name="app_short_description">Agenda mobile. Planification et rappel de RDV.</string>
+    <string name="app_long_description"> Simple Calendar Pro est un agenda entièrement personnalisable et hors-ligne conçu pour faire exactement ce qu\'un agenda devrait faire. <b>Aucune fonctionnalité compliquée, demande de permissions inutiles ou publicité !</b> Que vous souhaitiez organiser un évènement ponctuel ou récurrent, un anniversaire, un rendez-vous d\'affaires ou quoi que ce soit d\'autre, Simple Calendar Pro rend simple <b>votre organisation</b>. Avec une grande variété <b>d\'options de personnalisation</b>, vous pouvez personnaliser les rappels d\'évènements, les sons de notifications, les widgets de l\'agenda et l\'apparence de l\'application. Les vues quotidienne, hebdomadaire et mensuelle rendent la consultation des évènements et rendez-vous à venir aisée. Vous pouvez même voir tous les évènements dans une simple liste plutôt qu\'agencés dans une grille, afin de <b>savoir exactement ce qui va arriver dans votre vie et quand ;-). </b> ---------------------------------------------------------- <b>Simple Calendar Pro – Fonctionnalités &amp; avantages </b> ---------------------------------------------------------- ✔️ Aucune publicité ou fenêtre de dialogue ennuyante ✔️ Aucun accès à internet n\'est nécessaire, vous donnant un meilleur respect de la vie privée et de la sécurité ✔️ Seules les permissions minimum sont requises ✔️ Une valeur : la simplicité - faire ce qu\'un agenda doit faire ! ✔️ Open source ✔️ Thèmes et widgets entièrement personnalisables ✔️ Traduit en 29 langues ✔️ Exportation des paramètres en fichier .txt pour les importer sur un autre appareil ✔️ Synchronisation de l\'agenda CalDAV supportée pour synchroniser entre appareils et services ✔️ Vue quotidienne, hebdomadaire, mensuelle et annuelle des évènements sur l\'agenda ✔️ Supporte l\'exportation et l\'importation des évènements via des fichiers .ics ✔️ Paramètre de multiples rappels d\'évènements, personnalise les effets sonores et la vibration des évènements ✔️ Option de répétition pour les rappels ✔️ Ajoutez facilement les anniversaires et les jours fériés ✔️ Personnalise les évènements - début, durée, rappels, participants, etc. ✔️ Note les présences sur chaque évènement ✔️ Utilisable en tant que calendrier personnel ou professionnel ✔️ Choisissez entre rappels et notifications par courriel pour vous alerter à propos d\'un évènement TÉLÉCHARGEZ SIMPLE CALENDAR PRO – L\'AGENDA HORS-LIGNE SIMPLE ET SANS PUBS ! <b>Découvrez la suite complète des applications Simple Mobile Tools ici :</b> https://www.simplemobiletools.com <b>Site Internet de Simple Calendar Pro :</b> https://www.simplemobiletools.com/calendar <b>Facebook :</b> https://www.facebook.com/simplemobiletools <b>Reddit :</b> https://www.reddit.com/r/SimpleMobileTools </string>
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
