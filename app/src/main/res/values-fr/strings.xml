@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Simple agenda</string>
+    <string name="app_name">Agenda simple</string>
     <string name="app_launcher_name">Agenda</string>
     <string name="change_view">Autres affichages</string>
     <string name="daily_view">Vue Journée</string>
@@ -30,11 +30,11 @@
     <string name="create_new_event">Créer un nouvel évènement</string>
     <string name="duplicate_event">Dupliquer l\'évènement</string>
     <string name="title_empty">Le titre ne peut pas être vide</string>
-    <string name="end_before_start">L\'évènement ne peut pas se terminer avant qu\'il commence</string>
+    <string name="end_before_start">L\'évènement ne peut pas se terminer avant qu\'il ne commence</string>
     <string name="event_added">Évènement ajouté avec succès</string>
     <string name="event_updated">Évènement mis à jour avec succès</string>
     <string name="filter_events_by_type">Filtrer les évènements</string>
-    <string name="please_fill_location">Veuillez renseigner un lieu pour visualisation sur une carte</string>
+    <string name="please_fill_location">Veuillez renseigner un lieu pour le visualiser sur une carte</string>
     <string name="public_event_notification_text">Un évènement est à venir</string>
     <string name="saving_filtered_out">Sauvegarde… Mais le type d\'événement sélectionné est filtré dans le Menu supérieur - Filtre</string>
     <!-- Event Repetition -->
@@ -67,9 +67,9 @@
     <string name="selected_days">Les jours sélectionnés</string>
     <string name="the_same_day">Le même jour</string>
     <string name="the_last_day">Le dernier jour</string>
-    <string name="repeat_on_the_same_day_monthly">Répéter le même jour de chaque mois</string>
+    <string name="repeat_on_the_same_day_monthly">Répéter chaque mois le même jour</string>
     <string name="repeat_on_the_last_day_monthly">Répéter le dernier jour de chaque mois</string>
-    <string name="repeat_on_the_same_day_yearly">Répéter le même jour de chaque année</string>
+    <string name="repeat_on_the_same_day_yearly">Répéter chaque année le même jour</string>
     <string name="repeat_every_m">Répéter chaque</string>
     <string name="every_m">Chaque</string>
     <string name="first_m">premier</string>
