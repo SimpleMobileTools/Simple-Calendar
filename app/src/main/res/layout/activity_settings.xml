@@ -139,6 +139,22 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/settings_allow_creating_tasks_holder"
+                style="@style/SettingsHolderCheckboxStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ripple_background">
+
+                <com.simplemobiletools.commons.views.MyAppCompatCheckbox
+                    android:id="@+id/settings_allow_creating_tasks"
+                    style="@style/SettingsCheckboxStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/allow_creating_tasks" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:id="@+id/settings_sunday_first_holder"
                 style="@style/SettingsHolderCheckboxStyle"
                 android:layout_width="match_parent"

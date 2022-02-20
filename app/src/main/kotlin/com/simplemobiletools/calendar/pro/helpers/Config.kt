@@ -242,4 +242,8 @@ class Config(context: Context) : BaseConfig(context) {
     var lastUsedEventSpan: Int
         get() = prefs.getInt(LAST_USED_EVENT_SPAN, YEAR_SECONDS)
         set(lastUsedEventSpan) = prefs.edit().putInt(LAST_USED_EVENT_SPAN, lastUsedEventSpan).apply()
+
+    var allowCreatingTasks: Boolean
+        get() = prefs.getBoolean(ALLOW_CREATING_TASKS, true)
+        set(allowCreatingTasks) = prefs.edit().putBoolean(ALLOW_CREATING_TASKS, allowCreatingTasks).apply()
 }
