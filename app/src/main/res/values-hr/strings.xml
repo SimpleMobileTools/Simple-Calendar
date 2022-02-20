@@ -11,14 +11,12 @@
     <string name="simple_event_list">Jednostavan popis događaja</string>
     <string name="no_upcoming_events">Izgleda da nemate nadolazećih događaja.</string>
     <string name="go_to_today">Idi na danas</string>
-    <string name="go_to_date">Go to date</string>
+    <string name="go_to_date">Idi na datum</string>
     <string name="upgraded_from_free">Hey,\n\nseems like you upgraded from the old free app. You have to migrate locally stored events manually via exporting in an .ics file, then importing. You can find both export/import buttons at the main screen menu.\n\nYou can then uninstall the old version, which has an \'Upgrade to Pro\' button at the top of the app settings. You will then only have to reset your app settings.\n\nThanks!</string>
-
     <!-- Widget titles -->
-    <string name="widget_monthly">Mjesečni raspored</string>
+    <string name="widget_monthly">Mjesečni kalendar</string>
     <string name="widget_list">Popis događaja kalendara</string>
-    <string name="widget_todays_date">Calendar today\'s date</string>
-
+    <string name="widget_todays_date">Današnji datum kalendara</string>
     <!-- Event -->
     <string name="event">Događaj</string>
     <string name="edit_event">Uredi događaj</string>
@@ -33,7 +31,6 @@
     <string name="please_fill_location">Ispunite lokaciju za prikazivanje na karti</string>
     <string name="public_event_notification_text">Nadolazi Vam događaj</string>
     <string name="saving_filtered_out">Saving… But the selected event type is filtered out in the top Menu - Filter</string>
-
     <!-- Tasks -->
     <string name="task">Task</string>
     <string name="tasks">Tasks</string>
@@ -43,7 +40,6 @@
     <string name="duplicate_task">Duplicate task</string>
     <string name="mark_completed">Mark completed</string>
     <string name="mark_incomplete">Mark incomplete</string>
-
     <!-- Event Repetition -->
     <string name="repetition">Ponavljanje</string>
     <string name="no_repetition">Nema ponavljanja</string>
@@ -85,7 +81,6 @@
     <string name="fourth_m">četvrti</string>
     <string name="fifth_m">fifth</string>
     <string name="last_m">peti</string>
-
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
     <string name="repeat_every_f">Ponovi svaki</string>
@@ -96,7 +91,6 @@
     <string name="fourth_f">četvrti</string>
     <string name="fifth_f">fifth</string>
     <string name="last_f">peti</string>
-
     <!-- Birthdays -->
     <string name="birthdays">Rođendani</string>
     <string name="add_birthdays">Dodaj rođendane za kontakt</string>
@@ -104,7 +98,6 @@
     <string name="no_new_birthdays">No new birthdays have been found</string>
     <string name="birthdays_added">Rođendani su uspješno dodani</string>
     <string name="add_birthdays_automatically">Add new birthdays automatically</string>
-
     <!-- Anniversaries -->
     <string name="anniversaries">Obljetnice</string>
     <string name="add_anniversaries">Dodaj obljetnice za kontakt</string>
@@ -112,13 +105,11 @@
     <string name="no_new_anniversaries">No new anniversaries have been found</string>
     <string name="anniversaries_added">Obljetnice uspješno dodane</string>
     <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
-
     <!-- Event Reminders -->
     <string name="reminder">Podsjetnik</string>
     <string name="before">prije</string>
     <string name="add_another_reminder">Dodaj još jedan podsjetnik</string>
     <string name="event_reminders">Podsjetnici na događaj</string>
-
     <!-- Event attendees -->
     <string name="add_another_attendee">Add another attendee</string>
     <string name="my_status">My status:</string>
@@ -126,10 +117,8 @@
     <string name="not_going">Not going</string>
     <string name="maybe_going">Maybe going</string>
     <string name="invited">Invited</string>
-
     <!-- Time zones -->
     <string name="enter_a_country">Enter a country or time zone</string>
-
     <!-- Export / Import -->
     <string name="import_events">Uvezi događaje</string>
     <string name="export_events">Izvezi događaje</string>
@@ -140,16 +129,13 @@
     <string name="include_event_types">Uključi vrste događaja</string>
     <string name="filename_without_ics">Naziv datoteke (bez .ics)</string>
     <string name="ignore_event_types">Ignore event types in the file, always use the default one</string>
-
     <!-- Event details -->
     <string name="location">Lokacija</string>
     <string name="description">Opis</string>
     <string name="all_day">Cjelodnevni</string>
-
     <!-- Weekly view -->
     <string name="week">Tjedan</string>
     <string name="start_week_with_current_day">Start week with the current day</string>
-
     <!-- Event types -->
     <string name="event_types">Vrste događaja</string>
     <string name="add_new_type">Dodaj novu vrstu</string>
@@ -162,7 +148,6 @@
     <string name="move_events_into_default">Premjesti zahvaćene događaje u zadanu vrstu događaja</string>
     <string name="remove_affected_events">Trajno ukloni zahvaćene događaje</string>
     <string name="unsync_caldav_calendar">Da biste uklonili CalDAV kalendar, morate ga desinkronizirati</string>
-
     <!-- Holidays -->
     <string name="holidays">Praznici</string>
     <string name="add_holidays">Dodaj praznik</string>
@@ -171,7 +156,6 @@
     <string name="holidays_imported_successfully">Praznici su uspješno uvezeni u tip događaja \"Praznici\"</string>
     <string name="importing_some_holidays_failed">Uvoz nekih događaja nije uspio</string>
     <string name="importing_holidays_failed">Uvoz praznika nije uspio</string>
-
     <!-- Settings -->
     <string name="manage_event_types">Upravljanje vrstama događaja</string>
     <string name="start_day_at">Započni dan u</string>
@@ -217,7 +201,6 @@
     <string name="highlight_weekends_color">Color of highlighted weekends</string>
     <string name="allow_changing_time_zones">Allow changing event time zones</string>
     <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
-
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Odaberi kalendare za sinkronizaciju</string>
@@ -235,7 +218,6 @@
     <string name="no_synchronized_calendars">No synchronizable calendars have been found</string>
     <string name="status_free">Free</string>
     <string name="status_busy">Busy</string>
-
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">Ponedjeljak</string>
@@ -245,7 +227,6 @@
     <string name="friday_alt">Petak</string>
     <string name="saturday_alt">Subota</string>
     <string name="sunday_alt">Nedjelja</string>
-
     <!-- List widget config example events -->
     <string name="sample_title_1">Trening</string>
     <string name="sample_description_1">Vježbanje nogu</string>
@@ -255,7 +236,6 @@
     <string name="sample_title_4">Ručak s Marijom</string>
     <string name="sample_description_4">U Plaza</string>
     <string name="sample_title_5">Vrijeme za kavu</string>
-
     <!-- List widget config -->
     <string name="show_events_happening">Show events happening:</string>
     <string name="within_the_next_one_year">Within the next 1 year</string>
@@ -273,25 +253,23 @@
         <item quantity="one">Within the next %d month</item>
         <item quantity="other">Within the next %d months</item>
     </plurals>
-
     <!-- FAQ -->
     <string name="faq_1_title">Kako mogu ukloniti praznike uvezene putem gumba \"Dodaj praznik\"?</string>
-    <string name="faq_1_text">Praznik koji je stvoren na taj način umetnut je u novu vrstu događaja pod nazivom \"Praznici\". Možete otići u Postavke -> Upravljanje vrstama događaja,
+    <string name="faq_1_text">Praznik koji je stvoren na taj način umetnut je u novu vrstu događaja pod nazivom \"Praznici\". Možete otići u Postavke -&gt; Upravljanje vrstama događaja,
          dugo pritisnite datu vrstu događaja i izbrišite ga odabirom koša za smeće.</string>
     <string name="faq_2_title">Mogu li sinkronizirati događaje putem Google Kalendara ili druge usluge koje podržavaju CalDAV?</string>
     <string name="faq_2_text">Da, samo uključite \"CalDAV sinkronizacija\" u postavkama aplikacije i odaberite kalendare koje želite sinkronizirati. Međutim, potrebna je aplikacija  između Vašeg uređaja i poslužitelja.
         U slučaju da želite sinkronizirati Google kalendar, njihova službena aplikacija Kalendar obavlja navedeni posao. Za ostale kalendare potreban Vam je aplikacija treće strane za upravljanje sinkronizacijom, na primjer DAVx5.</string>
-    <string name="faq_3_title">Vidim vizualne podsjetnike, ali ne čujem zvuk. Što mogu učiniti</string>
+    <string name="faq_3_title">Vidim vizualne podsjetnike, ali ne čujem zvuk. Što mogu učiniti\?</string>
     <string name="faq_3_text">Prikaz podsjetnika, ali i reprodukcija zvuka, jako ovise o Android sustavu. Ako ne čujete zvuk, pokušajte otići u postavke aplikacije,
         odaberite \"Audio izlazni kanal za podsjetnike\" te je promjenite na drugačiju vrijednost. Ako i dalje neće raditi, provjerite postavke zvuka, da odabrani kanal nije utišan.</string>
     <string name="faq_4_title">Does the app support time zones?</string>
     <string name="faq_4_text">Yes, it does. By default all events are created in your current time zone. If you want to change an events\' time zone,
         you will first have to enable the time zone picker at the app settings, then change it at the Event Details screen. It is disabled by default as most people won\'t need it.</string>
-    <string name="faq_5_title">The app shows no notifications, why is that?</string>
+    <string name="faq_5_title">Program ne prikazuje obavijesti. Zašto\?</string>
     <string name="faq_5_text">Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. You might also want to take a look at &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, it has some useful tips.</string>
     <string name="faq_6_title">How can I modify or delete an existing event type?</string>
     <string name="faq_6_text">You can do both of those in the app Settings - Manage event types. Just click on the wanted one for changing the label and color, or select the wanted one by long pressing it and use the trashbin at the top menu for deleting.</string>
-
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Simple Calendar Pro - Events &amp; Reminders</string>
@@ -341,7 +319,6 @@
         <b>Reddit:</b>
         https://www.reddit.com/r/SimpleMobileTools
     </string>
-
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
