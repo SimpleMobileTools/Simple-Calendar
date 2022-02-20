@@ -207,6 +207,7 @@
     <string name="highlight_weekends_color">Korostettujen viikonloppujen väri</string>
     <string name="allow_changing_time_zones">Salli tapahtumien aikavyöhykkeiden muuttaminen</string>
     <string name="manage_quick_filter_event_types">Hallitse pikasuodatuksen tapahtumatyyppejä</string>
+    <string name="allow_creating_tasks">Allow creating tasks</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Valitse synkronoitavat kalenterit</string>

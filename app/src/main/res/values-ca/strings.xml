@@ -207,6 +207,7 @@
     <string name="highlight_weekends_color">Color dels caps de setmana ressaltats</string>
     <string name="allow_changing_time_zones">Permet canviar les zones horàries dels esdeveniments</string>
     <string name="manage_quick_filter_event_types">Gestiona els tipus d\'esdeveniment de filtre ràpid</string>
+    <string name="allow_creating_tasks">Allow creating tasks</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Seleccioneu els calendaris que voleu sincronitzar</string>

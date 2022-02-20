@@ -217,6 +217,7 @@
     <string name="highlight_weekends_color">Χρώμα επισημασμένων Σαββατοκύριακων</string>
     <string name="allow_changing_time_zones">Να επιτρέπεται η αλλαγή ζωνών ώρας συμβάντος</string>
     <string name="manage_quick_filter_event_types">Διαχείριση γρήγορου φίλτρου τύπων συμβάντων</string>
+    <string name="allow_creating_tasks">Allow creating tasks</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

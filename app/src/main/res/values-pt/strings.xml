@@ -207,6 +207,7 @@
     <string name="highlight_weekends_color">Cor de destaque dos fins de semana</string>
     <string name="allow_changing_time_zones">Permitir alteração do fuso horário dos eventos</string>
     <string name="manage_quick_filter_event_types">Gerir tipos de evento no filtro rápido</string>
+    <string name="allow_creating_tasks">Allow creating tasks</string>
     <!-- CalDAV sync -->
     <string name="caldav">\'CalDAV\'</string>
     <string name="select_caldav_calendars">Selecione os calendários a sincronizar</string>

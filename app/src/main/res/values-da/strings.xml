@@ -201,6 +201,7 @@
     <string name="highlight_weekends_color">Farve på fremhævede weekender</string>
     <string name="allow_changing_time_zones">Tillad ændring af en begivenheds tidszone</string>
     <string name="manage_quick_filter_event_types">Håndter begivenhedstyper med hurtigt filter</string>
+    <string name="allow_creating_tasks">Allow creating tasks</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Vælg kalendere til sync</string>

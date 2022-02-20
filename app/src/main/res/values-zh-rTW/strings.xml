@@ -217,6 +217,7 @@
     <string name="highlight_weekends_color">Color of highlighted weekends</string>
     <string name="allow_changing_time_zones">允許改變活動的時區</string>
     <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
+    <string name="allow_creating_tasks">Allow creating tasks</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>

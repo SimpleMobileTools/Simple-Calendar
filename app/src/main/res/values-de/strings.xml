@@ -207,6 +207,7 @@
     <string name="highlight_weekends_color">Farbe der hervorgehobenen Wochenenden</string>
     <string name="allow_changing_time_zones">Zeitzone kann geändert werden</string>
     <string name="manage_quick_filter_event_types">Termintypen zur schnellen Filterung verwalten</string>
+    <string name="allow_creating_tasks">Allow creating tasks</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Kalender zur Synchronisierung auswählen</string>

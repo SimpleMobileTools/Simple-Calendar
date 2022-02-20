@@ -201,6 +201,7 @@
     <string name="highlight_weekends_color">Цвет выделенных выходных дней</string>
     <string name="allow_changing_time_zones">Разрешить изменение часового пояса событий</string>
     <string name="manage_quick_filter_event_types">Управление типами событий быстрого фильтра</string>
+    <string name="allow_creating_tasks">Allow creating tasks</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Выберите календари для синхронизации</string>

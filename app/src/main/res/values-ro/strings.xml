@@ -217,6 +217,7 @@
     <string name="highlight_weekends_color">Culoarea săptămâniilor evidențiate</string>
     <string name="allow_changing_time_zones">Permite modificarea zonele orare ale evenimentului</string>
     <string name="manage_quick_filter_event_types">Gestionează filtrul rapid al tipurilor de eveniment</string>
+    <string name="allow_creating_tasks">Allow creating tasks</string>
 
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
