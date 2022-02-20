@@ -140,6 +140,11 @@
         </activity>
 
         <activity
+            android:name=".activities.TaskActivity"
+            android:launchMode="singleTask"
+            android:parentActivityName=".activities.MainActivity" />
+
+        <activity
             android:name=".activities.SelectTimeZoneActivity"
             android:parentActivityName=".activities.EventActivity">
             <meta-data
