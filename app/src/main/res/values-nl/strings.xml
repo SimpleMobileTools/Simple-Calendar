@@ -34,6 +34,16 @@
     <string name="public_event_notification_text">Afspraak aanstaande</string>
     <string name="saving_filtered_out">Opslaan… Pas op: het gekozen afspraaktype is weggefilterd via Menu - Filteren</string>
 
+    <!-- Tasks -->
+    <string name="task">Task</string>
+    <string name="tasks">Tasks</string>
+    <string name="edit_task">Edit Task</string>
+    <string name="new_task">New Task</string>
+    <string name="create_new_task">Create a new task</string>
+    <string name="duplicate_task">Duplicate task</string>
+    <string name="mark_completed">Mark completed</string>
+    <string name="mark_incomplete">Mark incomplete</string>
+
     <!-- Event Repetition -->
     <string name="repetition">Herhaling</string>
     <string name="no_repetition">Niet herhalen</string>

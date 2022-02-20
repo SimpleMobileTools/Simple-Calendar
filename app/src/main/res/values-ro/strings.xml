@@ -32,7 +32,17 @@
     <string name="filter_events_by_type">Filtrează evenimentele după tip</string>
     <string name="please_fill_location">Completează o locație ca să apară pe o hartă</string>
     <string name="public_event_notification_text">Se apropie un eveniment</string>
-    <string name="saving_filtered_out">Se salveaza... Dar tipul de eveniment selectat este omis in Meniu - Filtru de sus</string>
+    <string name="saving_filtered_out">Se salveaza… Dar tipul de eveniment selectat este omis in Meniu - Filtru de sus</string>
+
+    <!-- Tasks -->
+    <string name="task">Task</string>
+    <string name="tasks">Tasks</string>
+    <string name="edit_task">Edit Task</string>
+    <string name="new_task">New Task</string>
+    <string name="create_new_task">Create a new task</string>
+    <string name="duplicate_task">Duplicate task</string>
+    <string name="mark_completed">Mark completed</string>
+    <string name="mark_incomplete">Mark incomplete</string>
 
     <!-- Event Repetition -->
     <string name="repetition">Repetiție</string>

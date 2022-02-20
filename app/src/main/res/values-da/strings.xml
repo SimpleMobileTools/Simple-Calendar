@@ -31,6 +31,15 @@
     <string name="please_fill_location">Indtast et sted der kan vises på et kort</string>
     <string name="public_event_notification_text">En begivenhed er forestående</string>
     <string name="saving_filtered_out">Gemmer - men den valgte begivenhedstype er filtreret fra under Menu - Filter</string>
+    <!-- Tasks -->
+    <string name="task">Task</string>
+    <string name="tasks">Tasks</string>
+    <string name="edit_task">Edit Task</string>
+    <string name="new_task">New Task</string>
+    <string name="create_new_task">Create a new task</string>
+    <string name="duplicate_task">Duplicate task</string>
+    <string name="mark_completed">Mark completed</string>
+    <string name="mark_incomplete">Mark incomplete</string>
     <!-- Event Repetition -->
     <string name="repetition">Gentagelse</string>
     <string name="no_repetition">Gentages ikke</string>

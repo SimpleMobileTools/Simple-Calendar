@@ -37,6 +37,15 @@
     <string name="please_fill_location">Introduza a localização a mostrar no mapa</string>
     <string name="public_event_notification_text">Está para breve um evento</string>
     <string name="saving_filtered_out">A guardar… Mas o tipo de evento seleccionado ficou retido no filtro em Menu - Filtrar</string>
+    <!-- Tasks -->
+    <string name="task">Task</string>
+    <string name="tasks">Tasks</string>
+    <string name="edit_task">Edit Task</string>
+    <string name="new_task">New Task</string>
+    <string name="create_new_task">Create a new task</string>
+    <string name="duplicate_task">Duplicate task</string>
+    <string name="mark_completed">Mark completed</string>
+    <string name="mark_incomplete">Mark incomplete</string>
     <!-- Event Repetition -->
     <string name="repetition">Repetição</string>
     <string name="no_repetition">Sem repetição</string>
