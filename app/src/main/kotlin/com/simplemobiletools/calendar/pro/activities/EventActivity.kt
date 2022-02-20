@@ -118,6 +118,7 @@ class EventActivity : SimpleActivity() {
             mStoredEventTypes = eventTypesDB.getEventTypes().toMutableList() as ArrayList<EventType>
             val event = eventsDB.getEventWithId(eventId)
             if (eventId != 0L && event == null) {
+                hideKeyboard()
                 finish()
                 return@ensureBackgroundThread
             }
@@ -378,6 +379,7 @@ class EventActivity : SimpleActivity() {
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
         if (!savedInstanceState.containsKey(START_TS)) {
+            hideKeyboard()
             finish()
             return
         }
@@ -1035,6 +1037,7 @@ class EventActivity : SimpleActivity() {
                 }
 
                 runOnUiThread {
+                    hideKeyboard()
                     finish()
                 }
             }
@@ -1193,6 +1196,7 @@ class EventActivity : SimpleActivity() {
                     }
                 }
 
+                hideKeyboard()
                 finish()
             }
         } else {
@@ -1201,6 +1205,7 @@ class EventActivity : SimpleActivity() {
                     showEditRepeatingEventDialog()
                 }
             } else {
+                hideKeyboard()
                 eventsHelper.updateEvent(mEvent, true, true) {
                     finish()
                 }
@@ -1210,6 +1215,7 @@ class EventActivity : SimpleActivity() {
 
     private fun showEditRepeatingEventDialog() {
         EditRepeatingEventDialog(this) {
+            hideKeyboard()
             when (it) {
                 0 -> {
                     ensureBackgroundThread {
@@ -1233,6 +1239,7 @@ class EventActivity : SimpleActivity() {
                         mEvent.apply {
                             id = null
                         }
+
                         eventsHelper.insertEvent(mEvent, true, true) {
                             finish()
                         }
