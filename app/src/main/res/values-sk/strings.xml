@@ -34,6 +34,16 @@
     <string name="public_event_notification_text">Blíži sa udalosť</string>
     <string name="saving_filtered_out">Ukladá sa… Ale zvolený typ je vyfiltrovaný v hornom Menu - Filtrovať</string>
 
+    <!-- Tasks -->
+    <string name="task">Úloha</string>
+    <string name="tasks">Úlohy</string>
+    <string name="edit_task">Upraviť úlohu</string>
+    <string name="new_task">Nová úloha</string>
+    <string name="create_new_task">Vytvoriť novú úlohu</string>
+    <string name="duplicate_task">Duplikovať úlohu</string>
+    <string name="mark_completed">Označiť ako dokončenú</string>
+    <string name="mark_incomplete">Označiť ako nedokončenú</string>
+
     <!-- Event Repetition -->
     <string name="repetition">Opakovanie</string>
     <string name="no_repetition">Neopakuje sa</string>

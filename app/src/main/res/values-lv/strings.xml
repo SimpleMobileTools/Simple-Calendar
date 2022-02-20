@@ -31,6 +31,15 @@
     <string name="please_fill_location">Lūdzu, ievadiet/norādiet atrašanās vietu, kuru parādīt kartē</string>
     <string name="public_event_notification_text">Gaidāms/Priekšāstāvošs notikums</string>
     <string name="saving_filtered_out">Saving… But the selected event type is filtered out in the top Menu - Filter</string>
+    <!-- Tasks -->
+    <string name="task">Task</string>
+    <string name="tasks">Tasks</string>
+    <string name="edit_task">Edit Task</string>
+    <string name="new_task">New Task</string>
+    <string name="create_new_task">Create a new task</string>
+    <string name="duplicate_task">Duplicate task</string>
+    <string name="mark_completed">Mark completed</string>
+    <string name="mark_incomplete">Mark incomplete</string>
     <!-- Event Repetition -->
     <string name="repetition">Atkārtojošs</string>
     <string name="no_repetition">Bez atkārtošanās</string>
