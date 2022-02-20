@@ -108,7 +108,6 @@ class EventActivity : SimpleActivity() {
             return
         }
 
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_cross_vector)
         val intent = intent ?: return
         mDialogTheme = getDialogTheme()
         mWasContactsPermissionChecked = hasPermission(PERMISSION_READ_CONTACTS)
@@ -253,7 +252,7 @@ class EventActivity : SimpleActivity() {
             menu.findItem(R.id.duplicate).isVisible = mEvent.id != null
         }
 
-        updateMenuItemColors(menu)
+        updateMenuItemColors(menu, true)
         return true
     }
 
