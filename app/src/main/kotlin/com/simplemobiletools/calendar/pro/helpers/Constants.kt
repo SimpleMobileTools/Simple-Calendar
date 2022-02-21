@@ -112,7 +112,7 @@ const val REPEAT_ORDER_WEEKDAY_USE_LAST = 2             // i.e. every last sunda
 const val REPEAT_LAST_DAY = 3                           // i.e. every last day of the month
 const val REPEAT_ORDER_WEEKDAY = 4                      // i.e. every 4th sunday, even if a month has 4 sundays only (will stay 4th even at months with 5)
 
-// special event flags
+// special event and task flags
 const val FLAG_ALL_DAY = 1
 const val FLAG_IS_IN_PAST = 2
 const val FLAG_MISSING_YEAR = 4
