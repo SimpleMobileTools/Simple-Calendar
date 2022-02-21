@@ -38,14 +38,14 @@
     <string name="public_event_notification_text">Bir etkinlik yaklaşıyor</string>
     <string name="saving_filtered_out">Kaydediliyor… Ancak seçilen etkinlik türü üst Menü - Filtre kısmında filtreleniyor</string>
     <!-- Tasks -->
-    <string name="task">Task</string>
-    <string name="tasks">Tasks</string>
-    <string name="edit_task">Edit Task</string>
-    <string name="new_task">New Task</string>
-    <string name="create_new_task">Create a new task</string>
-    <string name="duplicate_task">Duplicate task</string>
-    <string name="mark_completed">Mark completed</string>
-    <string name="mark_incomplete">Mark incomplete</string>
+    <string name="task">Görev</string>
+    <string name="tasks">Görevler</string>
+    <string name="edit_task">Görevi Düzenle</string>
+    <string name="new_task">Yeni Görev</string>
+    <string name="create_new_task">Yeni görev oluştur</string>
+    <string name="duplicate_task">Görevi çoğalt</string>
+    <string name="mark_completed">Tamamlandı olarak işaretle</string>
+    <string name="mark_incomplete">Tamamlanmadı olarak işaretle</string>
     <!-- Event Repetition -->
     <string name="repetition">Tekrarla</string>
     <string name="no_repetition">Tekrarlama yok</string>
@@ -207,7 +207,7 @@
     <string name="highlight_weekends_color">Vurgulanan hafta sonlarının rengi</string>
     <string name="allow_changing_time_zones">Etkinlik saat dilimlerini değiştirmeye izin ver</string>
     <string name="manage_quick_filter_event_types">Hızlı filtre etkinlik türlerini yönet</string>
-    <string name="allow_creating_tasks">Allow creating tasks</string>
+    <string name="allow_creating_tasks">Görev oluşturmaya izin ver</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Senkronize edilecek takvimleri seç</string>
