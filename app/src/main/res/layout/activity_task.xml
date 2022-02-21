@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/task_scrollview"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -23,6 +24,93 @@
             android:minEms="20"
             android:textCursorDrawable="@null"
             android:textSize="@dimen/day_text_size" />
+
+        <com.simplemobiletools.commons.views.MyEditText
+            android:id="@+id/task_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/task_title"
+            android:layout_marginStart="@dimen/activity_margin"
+            android:layout_marginTop="@dimen/activity_margin"
+            android:layout_marginEnd="@dimen/activity_margin"
+            android:autoLink="all"
+            android:gravity="top"
+            android:hint="@string/description"
+            android:inputType="textCapSentences|textMultiLine"
+            android:linksClickable="true"
+            android:minEms="20"
+            android:textCursorDrawable="@null"
+            android:textSize="@dimen/day_text_size" />
+
+        <ImageView
+            android:id="@+id/task_description_divider"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_below="@+id/task_description"
+            android:layout_marginTop="@dimen/activity_margin"
+            android:layout_marginBottom="@dimen/normal_margin"
+            android:background="@color/divider_grey"
+            android:importantForAccessibility="no" />
+
+        <ImageView
+            android:id="@+id/task_time_image"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/task_description_divider"
+            android:layout_alignTop="@+id/task_all_day_holder"
+            android:layout_alignBottom="@+id/task_all_day_holder"
+            android:layout_marginStart="@dimen/normal_margin"
+            android:padding="@dimen/medium_margin"
+            android:src="@drawable/ic_clock_vector" />
+
+        <RelativeLayout
+            android:id="@+id/task_all_day_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/task_description_divider"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_toEndOf="@+id/task_time_image"
+            android:background="?attr/selectableItemBackground"
+            android:paddingTop="@dimen/normal_margin"
+            android:paddingEnd="@dimen/normal_margin"
+            android:paddingBottom="@dimen/normal_margin">
+
+            <com.simplemobiletools.commons.views.MyAppCompatCheckbox
+                android:id="@+id/task_all_day"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:clickable="false"
+                android:layoutDirection="rtl"
+                android:text="@string/all_day"
+                android:textSize="@dimen/day_text_size" />
+
+        </RelativeLayout>
+
+        <com.simplemobiletools.commons.views.MyTextView
+            android:id="@+id/task_start_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/task_time_image"
+            android:layout_alignStart="@+id/task_all_day_holder"
+            android:background="?attr/selectableItemBackground"
+            android:paddingTop="@dimen/activity_margin"
+            android:paddingEnd="@dimen/activity_margin"
+            android:paddingBottom="@dimen/activity_margin"
+            android:textSize="@dimen/day_text_size"
+            tools:text="January 1 1970" />
+
+        <com.simplemobiletools.commons.views.MyTextView
+            android:id="@+id/task_start_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/task_time_image"
+            android:layout_alignParentEnd="true"
+            android:background="?attr/selectableItemBackground"
+            android:padding="@dimen/activity_margin"
+            android:textSize="@dimen/day_text_size"
+            tools:text="00:00" />
 
     </RelativeLayout>
 </ScrollView>
