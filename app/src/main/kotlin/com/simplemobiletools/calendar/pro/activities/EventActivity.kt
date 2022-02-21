@@ -565,7 +565,7 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun handleNotificationAvailability(callback: () -> Unit) {
-        if (NotificationManagerCompat.from(applicationContext).areNotificationsEnabled()) {
+        if (NotificationManagerCompat.from(this).areNotificationsEnabled()) {
             callback()
         } else {
             ConfirmationDialog(this, messageId = R.string.notifications_disabled, positive = R.string.ok, negative = 0) {
@@ -642,7 +642,7 @@ class EventActivity : SimpleActivity() {
             mRepeatLimit > 0 -> {
                 event_repetition_limit_label.text = getString(R.string.repeat_till)
                 val repeatLimitDateTime = Formatter.getDateTimeFromTS(mRepeatLimit)
-                Formatter.getFullDate(applicationContext, repeatLimitDateTime)
+                Formatter.getFullDate(this, repeatLimitDateTime)
             }
             else -> {
                 event_repetition_limit_label.text = getString(R.string.repeat)
@@ -1263,7 +1263,7 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun updateStartDateText() {
-        event_start_date.text = Formatter.getDate(applicationContext, mEventStartDateTime)
+        event_start_date.text = Formatter.getDate(this, mEventStartDateTime)
         checkStartEndValidity()
     }
 
@@ -1278,7 +1278,7 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun updateEndDateText() {
-        event_end_date.text = Formatter.getDate(applicationContext, mEventEndDateTime)
+        event_end_date.text = Formatter.getDate(this, mEventEndDateTime)
         checkStartEndValidity()
     }
 
@@ -1554,7 +1554,7 @@ class EventActivity : SimpleActivity() {
 
             val placeholder = BitmapDrawable(resources, SimpleContactsHelper(context).getContactLetterIcon(event_contact_name.value))
             event_contact_image.apply {
-                attendee.updateImage(applicationContext, this, placeholder)
+                attendee.updateImage(this@EventActivity, this, placeholder)
                 beVisible()
             }
 
