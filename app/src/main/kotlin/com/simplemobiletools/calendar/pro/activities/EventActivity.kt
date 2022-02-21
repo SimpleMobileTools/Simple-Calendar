@@ -1322,7 +1322,6 @@ class EventActivity : SimpleActivity() {
 
     private fun setupStartDate() {
         hideKeyboard()
-        config.backgroundColor.getContrastColor()
         val datepicker = DatePickerDialog(
             this, mDialogTheme, startDateSetListener, mEventStartDateTime.year, mEventStartDateTime.monthOfYear - 1,
             mEventStartDateTime.dayOfMonth

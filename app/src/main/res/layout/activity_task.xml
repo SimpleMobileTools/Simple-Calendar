@@ -89,7 +89,7 @@
         </RelativeLayout>
 
         <com.simplemobiletools.commons.views.MyTextView
-            android:id="@+id/task_start_date"
+            android:id="@+id/task_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/task_time_image"
@@ -102,7 +102,7 @@
             tools:text="January 1 1970" />
 
         <com.simplemobiletools.commons.views.MyTextView
-            android:id="@+id/task_start_time"
+            android:id="@+id/task_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/task_time_image"
