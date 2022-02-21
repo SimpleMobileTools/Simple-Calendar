@@ -38,14 +38,14 @@
     <string name="public_event_notification_text">S\'acosta un esdeveniment</string>
     <string name="saving_filtered_out">S\'està desant… Però el tipus d\'esdeveniment seleccionat està filtrat al Menú superior - Filtre</string>
     <!-- Tasks -->
-    <string name="task">Task</string>
-    <string name="tasks">Tasks</string>
-    <string name="edit_task">Edit Task</string>
-    <string name="new_task">New Task</string>
-    <string name="create_new_task">Create a new task</string>
-    <string name="duplicate_task">Duplicate task</string>
-    <string name="mark_completed">Mark completed</string>
-    <string name="mark_incomplete">Mark incomplete</string>
+    <string name="task">Tasca</string>
+    <string name="tasks">Tasques</string>
+    <string name="edit_task">Edita la tasca</string>
+    <string name="new_task">Tasca nova</string>
+    <string name="create_new_task">Crea una tasca nova</string>
+    <string name="duplicate_task">Duplica la tasca</string>
+    <string name="mark_completed">Marca com a completada</string>
+    <string name="mark_incomplete">Marca com a no completada</string>
     <!-- Event Repetition -->
     <string name="repetition">Repetició</string>
     <string name="no_repetition">Sense repetició</string>
@@ -207,7 +207,7 @@
     <string name="highlight_weekends_color">Color dels caps de setmana ressaltats</string>
     <string name="allow_changing_time_zones">Permet canviar les zones horàries dels esdeveniments</string>
     <string name="manage_quick_filter_event_types">Gestiona els tipus d\'esdeveniment de filtre ràpid</string>
-    <string name="allow_creating_tasks">Allow creating tasks</string>
+    <string name="allow_creating_tasks">Permet crear tasques</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Seleccioneu els calendaris que voleu sincronitzar</string>
