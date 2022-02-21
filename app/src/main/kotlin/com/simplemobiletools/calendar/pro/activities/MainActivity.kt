@@ -12,6 +12,7 @@ import android.graphics.drawable.Icon
 import android.graphics.drawable.LayerDrawable
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
 import android.provider.ContactsContract.CommonDataKinds
 import android.provider.ContactsContract.Contacts
 import android.provider.ContactsContract.Data
@@ -92,10 +93,34 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         checkWhatsNewDialog()
         calendar_fab.beVisibleIf(config.storedView != YEARLY_VIEW && config.storedView != WEEKLY_VIEW)
         calendar_fab.setOnClickListener {
+            if (config.allowCreatingTasks) {
+                if (fab_extended_overlay.isVisible()) {
+                    openNewEvent()
+
+                    Handler().postDelayed({
+                        hideExtendedFab()
+                    }, 300)
+                } else {
+                    showExtendedFab()
+                }
+            } else {
+                openNewEvent()
+            }
+        }
+
+        fab_extended_overlay.setOnClickListener {
+            hideExtendedFab()
+        }
+
+        fab_task_icon.setOnClickListener {
             hideKeyboard()
-            val lastFragment = currentFragments.last()
-            val allowChangingDay = lastFragment !is DayFragmentsHolder && lastFragment !is MonthDayFragmentsHolder
-            launchNewEventIntent(lastFragment.getNewEventDayCode(), allowChangingDay)
+            Intent(this, TaskActivity::class.java).apply {
+                startActivity(this)
+            }
+
+            Handler().postDelayed({
+                hideExtendedFab()
+            }, 300)
         }
 
         storeStateVariables()
@@ -159,6 +184,12 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         storeStateVariables()
         updateWidgets()
         updateTextColors(calendar_coordinator)
+        fab_extended_overlay.background = ColorDrawable(config.backgroundColor.adjustAlpha(0.8f))
+        fab_event_label.setTextColor(config.textColor)
+        fab_task_label.setTextColor(config.textColor)
+
+        fab_task_icon.drawable.applyColorFilter(mStoredAdjustedPrimaryColor.getContrastColor())
+        fab_task_icon.background.applyColorFilter(mStoredAdjustedPrimaryColor)
 
         search_holder.background = ColorDrawable(config.backgroundColor)
         checkSwipeRefreshAvailability()
@@ -201,6 +232,10 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     override fun onPrepareOptionsMenu(menu: Menu): Boolean {
+        if (fab_extended_overlay.isVisible()) {
+            hideExtendedFab()
+        }
+
         menu.apply {
             findItem(R.id.refresh_caldav_calendars).isVisible = config.caldavSync
             findItem(R.id.filter).isVisible = mShouldFilterBeVisible
@@ -210,6 +245,10 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (fab_extended_overlay.isVisible()) {
+            hideExtendedFab()
+        }
+
         when (item.itemId) {
             R.id.change_view -> showViewDialog()
             R.id.go_to_today -> goToToday()
@@ -233,10 +272,10 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     override fun onBackPressed() {
         swipe_refresh_layout.isRefreshing = false
         checkSwipeRefreshAvailability()
-        if (currentFragments.size > 1) {
-            removeTopFragment()
-        } else {
-            super.onBackPressed()
+        when {
+            fab_extended_overlay.isVisible() -> hideExtendedFab()
+            currentFragments.size > 1 -> removeTopFragment()
+            else -> super.onBackPressed()
         }
     }
 
@@ -870,6 +909,25 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         config.storedView == WEEKLY_VIEW && (dayCode?.length == Formatter.DAYCODE_PATTERN.length) -> getDatesWeekDateTime(Formatter.getDateTimeFromCode(dayCode))
         config.storedView == YEARLY_VIEW && (dayCode?.length == Formatter.DAYCODE_PATTERN.length) -> Formatter.getYearFromDayCode(dayCode)
         else -> dayCode
+    }
+
+    private fun showExtendedFab() {
+        arrayOf(fab_event_label, fab_extended_overlay, fab_task_icon, fab_task_label).forEach {
+            it.fadeIn()
+        }
+    }
+
+    private fun hideExtendedFab() {
+        arrayOf(fab_event_label, fab_extended_overlay, fab_task_icon, fab_task_label).forEach {
+            it.fadeOut()
+        }
+    }
+
+    private fun openNewEvent() {
+        hideKeyboard()
+        val lastFragment = currentFragments.last()
+        val allowChangingDay = lastFragment !is DayFragmentsHolder && lastFragment !is MonthDayFragmentsHolder
+        launchNewEventIntent(lastFragment.getNewEventDayCode(), allowChangingDay)
     }
 
     fun openMonthFromYearly(dateTime: DateTime) {

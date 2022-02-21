@@ -4,6 +4,7 @@
     <dimen name="yearly_padding_half">3dp</dimen>
     <dimen name="yearly_padding_full">6dp</dimen>
     <dimen name="circle_stroke_width">2dp</dimen>
+    <dimen name="secondary_fab_size">40dp</dimen>
 
     <dimen name="monthly_day_height">40dp</dimen>
 
