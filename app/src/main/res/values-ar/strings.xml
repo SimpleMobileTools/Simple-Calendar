@@ -182,7 +182,7 @@
     <string name="delete_all_events">حذف جميع الأحداث</string>
     <string name="delete_all_events_confirmation">هل حقا تريد حذف جميع الأحداث؟ ستبقى جميع \'أنواع الأحداث\' والإعدادات الأخرى سليمة.</string>
     <string name="show_a_grid">إظهار شبكة</string>
-    <string name="loop_reminders">"كرر التنبيهات حتى إلغاءها "</string>
+    <string name="loop_reminders">كرر التنبيهات حتى إلغاءها</string>
     <string name="dim_past_events">إخفات الأحداث السابقة</string>
     <string name="events">أحداث</string>
     <string name="reminder_stream">صوت يستخدم مع التنبيه</string>
@@ -214,10 +214,10 @@
     <string name="manage_synced_calendars">ادارة التقويمات المتزامنة</string>
     <string name="store_locally_only">حفظ محليا فقط</string>
     <string name="refresh_caldav_calendars">تحديث تقويمات CalDAV</string>
-    <string name="refreshing">جاري التحديث...</string>
+    <string name="refreshing">جاري التحديث…</string>
     <string name="refreshing_complete">اكتمال التحديث</string>
     <string name="editing_calendar_failed">فشل في تعديل التقويم</string>
-    <string name="syncing">جارى المزامنة...</string>
+    <string name="syncing">جاري المزامنة…</string>
     <string name="synchronization_completed">اكتمال المزامنة</string>
     <string name="select_a_different_caldav_color">اختر لون مختلف (يمكن تطبيقه محليا فقط)</string>
     <string name="insufficient_permissions">لا يمكنك التعديل في هذا التقويم</string>
