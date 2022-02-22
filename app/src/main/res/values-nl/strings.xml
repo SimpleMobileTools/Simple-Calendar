@@ -32,14 +32,14 @@
     <string name="public_event_notification_text">Afspraak aanstaande</string>
     <string name="saving_filtered_out">Opslaan… Pas op: het gekozen afspraaktype is weggefilterd via Menu - Filteren</string>
     <!-- Tasks -->
-    <string name="task">Task</string>
-    <string name="tasks">Tasks</string>
-    <string name="edit_task">Edit Task</string>
-    <string name="new_task">New Task</string>
-    <string name="create_new_task">Create a new task</string>
-    <string name="duplicate_task">Duplicate task</string>
-    <string name="mark_completed">Mark completed</string>
-    <string name="mark_incomplete">Mark incomplete</string>
+    <string name="task">Taak</string>
+    <string name="tasks">Taken</string>
+    <string name="edit_task">Taak bewerken</string>
+    <string name="new_task">Nieuwe taak</string>
+    <string name="create_new_task">Nieuwe taak aanmaken</string>
+    <string name="duplicate_task">Taak dupliceren</string>
+    <string name="mark_completed">Als voltooid markeren</string>
+    <string name="mark_incomplete">Als onvoltooid markeren</string>
     <!-- Event Repetition -->
     <string name="repetition">Herhaling</string>
     <string name="no_repetition">Niet herhalen</string>
@@ -201,7 +201,7 @@
     <string name="highlight_weekends_color">Kleur voor weekends</string>
     <string name="allow_changing_time_zones">Bewerken van tijdzone voor afspraken toestaan</string>
     <string name="manage_quick_filter_event_types">Snelfilter gebeurtenistypes beheren</string>
-    <string name="allow_creating_tasks">Allow creating tasks</string>
+    <string name="allow_creating_tasks">Taken aanmaken toestaan</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Selecteer te synchroniseren agenda\'s</string>
