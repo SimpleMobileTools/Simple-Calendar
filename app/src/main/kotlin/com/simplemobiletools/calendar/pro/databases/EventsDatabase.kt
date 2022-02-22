@@ -112,7 +112,7 @@ abstract class EventsDatabase : RoomDatabase() {
         private val MIGRATION_5_6 = object : Migration(5, 6) {
             override fun migrate(database: SupportSQLiteDatabase) {
                 database.apply {
-                    execSQL("CREATE TABLE IF NOT EXISTS `tasks` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `start_ts` INTEGER NOT NULL, `title` TEXT NOT NULL, `description` TEXT NOT NULL, `import_id` TEXT NOT NULL, `time_zone` TEXT NOT NULL, `flags` INTEGER NOT NULL, `event_type` INTEGER NOT NULL, `last_updated` INTEGER NOT NULL, `source` TEXT NOT NULL, `color` INTEGER NOT NULL)")
+                    execSQL("CREATE TABLE IF NOT EXISTS `tasks` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `start_ts` INTEGER NOT NULL, `title` TEXT NOT NULL, `description` TEXT NOT NULL, `reminder_1_minutes` INTEGER NOT NULL, `reminder_2_minutes` INTEGER NOT NULL, `reminder_3_minutes` INTEGER NOT NULL, `repeat_interval` INTEGER NOT NULL, `repeat_rule` INTEGER NOT NULL, `repeat_limit` INTEGER NOT NULL, `repetition_exceptions` TEXT NOT NULL, `import_id` TEXT NOT NULL, `time_zone` TEXT NOT NULL, `flags` INTEGER NOT NULL, `event_type` INTEGER NOT NULL, `last_updated` INTEGER NOT NULL, `source` TEXT NOT NULL, `color` INTEGER NOT NULL)")
                     execSQL("CREATE UNIQUE INDEX IF NOT EXISTS `index_tasks_id` ON `tasks` (`id`)")
                 }
             }
