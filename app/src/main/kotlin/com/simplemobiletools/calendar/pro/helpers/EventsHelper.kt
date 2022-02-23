@@ -17,7 +17,7 @@ class EventsHelper(val context: Context) {
     private val eventsDB = context.eventsDB
     private val eventTypesDB = context.eventTypesDB
 
-    fun getEventTypes(activity: Activity, showWritableOnly: Boolean, callback: (notes: ArrayList<EventType>) -> Unit) {
+    fun getEventTypes(activity: Activity, showWritableOnly: Boolean, callback: (eventTypes: ArrayList<EventType>) -> Unit) {
         ensureBackgroundThread {
             var eventTypes = ArrayList<EventType>()
             try {

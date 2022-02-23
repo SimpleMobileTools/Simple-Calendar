@@ -8,11 +8,12 @@ import android.view.MenuItem
 import android.view.WindowManager
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.config
+import com.simplemobiletools.calendar.pro.extensions.seconds
+import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
-import com.simplemobiletools.calendar.pro.helpers.NEW_EVENT_START_TS
-import com.simplemobiletools.calendar.pro.helpers.TASK_ID
 import com.simplemobiletools.calendar.pro.models.Task
 import com.simplemobiletools.commons.extensions.*
+import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import kotlinx.android.synthetic.main.activity_task.*
 import org.joda.time.DateTime
 import java.util.*
@@ -50,7 +51,7 @@ class TaskActivity : SimpleActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.save -> saveCurrentTask()
+            R.id.save -> saveTask()
             R.id.delete -> deleteTask()
             R.id.duplicate -> duplicateTask()
             else -> return super.onOptionsItemSelected(item)
@@ -88,7 +89,31 @@ class TaskActivity : SimpleActivity() {
         updateActionBarTitle(getString(R.string.new_task))
     }
 
-    private fun saveCurrentTask() {}
+    private fun saveTask() {
+        val newTitle = task_title.value
+        if (newTitle.isEmpty()) {
+            toast(R.string.title_empty)
+            runOnUiThread {
+                task_title.requestFocus()
+            }
+            return
+        }
+
+        mTask.apply {
+            startTS = mTaskDateTime.withSecondOfMinute(0).withMillisOfSecond(0).seconds()
+            title = newTitle
+            description = task_description.value
+            flags = mTask.flags.addBitIf(task_all_day.isChecked, FLAG_ALL_DAY)
+            lastUpdated = System.currentTimeMillis()
+        }
+
+        ensureBackgroundThread {
+            TasksHelper(this).insertTask(mTask) {
+                hideKeyboard()
+                finish()
+            }
+        }
+    }
 
     private fun deleteTask() {}
 
