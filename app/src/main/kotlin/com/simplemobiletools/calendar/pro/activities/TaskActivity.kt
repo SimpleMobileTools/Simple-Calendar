@@ -8,6 +8,7 @@ import android.view.WindowManager
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.helpers.Formatter
+import com.simplemobiletools.calendar.pro.helpers.NEW_EVENT_START_TS
 import com.simplemobiletools.calendar.pro.helpers.TASK_ID
 import com.simplemobiletools.commons.extensions.*
 import kotlinx.android.synthetic.main.activity_task.*
@@ -29,7 +30,6 @@ class TaskActivity : SimpleActivity() {
         val intent = intent ?: return
         mDialogTheme = getDialogTheme()
         val taskId = intent.getLongExtra(TASK_ID, 0L)
-        mTaskDateTime = DateTime.now()
         updateColors()
         gotTask()
     }
@@ -54,6 +54,10 @@ class TaskActivity : SimpleActivity() {
     }
 
     private fun setupNewTask() {
+        val startTS = intent.getLongExtra(NEW_EVENT_START_TS, 0L)
+        val dateTime = Formatter.getDateTimeFromTS(startTS)
+        mTaskDateTime = dateTime
+
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
         task_title.requestFocus()
         updateActionBarTitle(getString(R.string.new_task))

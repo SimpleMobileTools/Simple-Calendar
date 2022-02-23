@@ -27,6 +27,7 @@ import androidx.print.PrintHelper
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.EventActivity
 import com.simplemobiletools.calendar.pro.activities.SnoozeReminderActivity
+import com.simplemobiletools.calendar.pro.activities.TaskActivity
 import com.simplemobiletools.calendar.pro.databases.EventsDatabase
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
@@ -362,6 +363,15 @@ fun Context.rescheduleReminder(event: Event?, minutes: Int) {
 // if the default event start time is set to "Next full hour" and the event is created before midnight, it could change the day
 fun Context.launchNewEventIntent(dayCode: String = Formatter.getTodayCode(), allowChangingDay: Boolean = false) {
     Intent(applicationContext, EventActivity::class.java).apply {
+        putExtra(NEW_EVENT_START_TS, getNewEventTimestampFromCode(dayCode, allowChangingDay))
+        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(this)
+    }
+}
+
+// if the default start time is set to "Next full hour" and the task is created before midnight, it could change the day
+fun Context.launchNewTaskIntent(dayCode: String = Formatter.getTodayCode(), allowChangingDay: Boolean = false) {
+    Intent(applicationContext, TaskActivity::class.java).apply {
         putExtra(NEW_EVENT_START_TS, getNewEventTimestampFromCode(dayCode, allowChangingDay))
         addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(this)

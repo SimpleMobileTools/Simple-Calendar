@@ -113,10 +113,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
 
         fab_task_icon.setOnClickListener {
-            hideKeyboard()
-            Intent(this, TaskActivity::class.java).apply {
-                startActivity(this)
-            }
+            openNewTask()
 
             Handler().postDelayed({
                 hideExtendedFab()
@@ -928,6 +925,13 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         val lastFragment = currentFragments.last()
         val allowChangingDay = lastFragment !is DayFragmentsHolder && lastFragment !is MonthDayFragmentsHolder
         launchNewEventIntent(lastFragment.getNewEventDayCode(), allowChangingDay)
+    }
+
+    private fun openNewTask() {
+        hideKeyboard()
+        val lastFragment = currentFragments.last()
+        val allowChangingDay = lastFragment !is DayFragmentsHolder && lastFragment !is MonthDayFragmentsHolder
+        launchNewTaskIntent(lastFragment.getNewEventDayCode(), allowChangingDay)
     }
 
     fun openMonthFromYearly(dateTime: DateTime) {
