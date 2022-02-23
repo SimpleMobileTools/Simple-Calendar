@@ -4,12 +4,14 @@ import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.view.WindowManager
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.helpers.NEW_EVENT_START_TS
 import com.simplemobiletools.calendar.pro.helpers.TASK_ID
+import com.simplemobiletools.calendar.pro.models.Task
 import com.simplemobiletools.commons.extensions.*
 import kotlinx.android.synthetic.main.activity_task.*
 import org.joda.time.DateTime
@@ -18,6 +20,7 @@ import java.util.*
 class TaskActivity : SimpleActivity() {
     private var mDialogTheme = 0
     private lateinit var mTaskDateTime: DateTime
+    private lateinit var mTask: Task
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,17 +32,39 @@ class TaskActivity : SimpleActivity() {
 
         val intent = intent ?: return
         mDialogTheme = getDialogTheme()
-        val taskId = intent.getLongExtra(TASK_ID, 0L)
         updateColors()
-        gotTask()
+        val taskId = intent.getLongExtra(TASK_ID, 0L)
+        gotTask(null)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_task, menu)
+        if (::mTask.isInitialized) {
+            menu.findItem(R.id.delete).isVisible = mTask.id != null
+            menu.findItem(R.id.duplicate).isVisible = mTask.id != null
+        }
+
         updateMenuItemColors(menu, true)
         return true
     }
 
-    private fun gotTask() {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.save -> saveCurrentTask()
+            R.id.delete -> deleteTask()
+            R.id.duplicate -> duplicateTask()
+            else -> return super.onOptionsItemSelected(item)
+        }
+        return true
+    }
+
+    private fun gotTask(task: Task?) {
+        if (task != null) {
+            mTask = task
+        } else {
+            mTask = Task(null)
+        }
+
         task_all_day.setOnCheckedChangeListener { compoundButton, isChecked -> toggleAllDay(isChecked) }
         task_all_day_holder.setOnClickListener {
             task_all_day.toggle()
@@ -62,6 +87,12 @@ class TaskActivity : SimpleActivity() {
         task_title.requestFocus()
         updateActionBarTitle(getString(R.string.new_task))
     }
+
+    private fun saveCurrentTask() {}
+
+    private fun deleteTask() {}
+
+    private fun duplicateTask() {}
 
     private fun setupDate() {
         hideKeyboard()
