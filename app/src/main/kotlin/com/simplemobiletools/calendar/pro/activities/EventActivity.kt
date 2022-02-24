@@ -50,22 +50,6 @@ import kotlin.collections.ArrayList
 
 class EventActivity : SimpleActivity() {
     private val LAT_LON_PATTERN = "^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?)([,;])\\s*[-+]?(180(\\.0+)?|((1[0-7]\\d)|([1-9]?\\d))(\\.\\d+)?)\$"
-    private val EVENT = "EVENT"
-    private val START_TS = "START_TS"
-    private val END_TS = "END_TS"
-    private val REMINDER_1_MINUTES = "REMINDER_1_MINUTES"
-    private val REMINDER_2_MINUTES = "REMINDER_2_MINUTES"
-    private val REMINDER_3_MINUTES = "REMINDER_3_MINUTES"
-    private val REMINDER_1_TYPE = "REMINDER_1_TYPE"
-    private val REMINDER_2_TYPE = "REMINDER_2_TYPE"
-    private val REMINDER_3_TYPE = "REMINDER_3_TYPE"
-    private val REPEAT_INTERVAL = "REPEAT_INTERVAL"
-    private val REPEAT_LIMIT = "REPEAT_LIMIT"
-    private val REPEAT_RULE = "REPEAT_RULE"
-    private val ATTENDEES = "ATTENDEES"
-    private val AVAILABILITY = "AVAILABILITY"
-    private val EVENT_TYPE_ID = "EVENT_TYPE_ID"
-    private val EVENT_CALENDAR_ID = "EVENT_CALENDAR_ID"
     private val SELECT_TIME_ZONE_INTENT = 1
 
     private var mIsAllDayEvent = false

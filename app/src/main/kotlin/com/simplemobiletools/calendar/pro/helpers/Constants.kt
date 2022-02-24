@@ -198,6 +198,24 @@ const val DELETE_ALL_OCCURRENCES = 2
 const val REMINDER_NOTIFICATION = 0
 const val REMINDER_EMAIL = 1
 
+const val EVENT = "EVENT"
+const val TASK = "TASK"
+const val START_TS = "START_TS"
+const val END_TS = "END_TS"
+const val REMINDER_1_MINUTES = "REMINDER_1_MINUTES"
+const val REMINDER_2_MINUTES = "REMINDER_2_MINUTES"
+const val REMINDER_3_MINUTES = "REMINDER_3_MINUTES"
+const val REMINDER_1_TYPE = "REMINDER_1_TYPE"
+const val REMINDER_2_TYPE = "REMINDER_2_TYPE"
+const val REMINDER_3_TYPE = "REMINDER_3_TYPE"
+const val REPEAT_INTERVAL = "REPEAT_INTERVAL"
+const val REPEAT_LIMIT = "REPEAT_LIMIT"
+const val REPEAT_RULE = "REPEAT_RULE"
+const val ATTENDEES = "ATTENDEES"
+const val AVAILABILITY = "AVAILABILITY"
+const val EVENT_TYPE_ID = "EVENT_TYPE_ID"
+const val EVENT_CALENDAR_ID = "EVENT_CALENDAR_ID"
+
 fun getNowSeconds() = System.currentTimeMillis() / 1000L
 
 fun isWeekend(i: Int, isSundayFirst: Boolean): Boolean {

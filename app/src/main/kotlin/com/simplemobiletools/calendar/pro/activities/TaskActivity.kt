@@ -62,6 +62,38 @@ class TaskActivity : SimpleActivity() {
         return true
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        if (!::mTask.isInitialized) {
+            return
+        }
+
+        outState.apply {
+            putSerializable(TASK, mTask)
+            putLong(START_TS, mTaskDateTime.seconds())
+            putLong(EVENT_TYPE_ID, mEventTypeId)
+        }
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        if (!savedInstanceState.containsKey(START_TS)) {
+            hideKeyboard()
+            finish()
+            return
+        }
+
+        savedInstanceState.apply {
+            mTask = getSerializable(TASK) as Event
+            mTaskDateTime = Formatter.getDateTimeFromTS(getLong(START_TS))
+            mEventTypeId = getLong(EVENT_TYPE_ID)
+        }
+
+        updateEventType()
+        updateDateText()
+        updateTimeText()
+    }
+
     private fun gotTask(savedInstanceState: Bundle?, task: Event?) {
         if (task != null) {
             mTask = task
