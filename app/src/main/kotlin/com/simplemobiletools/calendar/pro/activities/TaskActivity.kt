@@ -2,6 +2,7 @@ package com.simplemobiletools.calendar.pro.activities
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -117,6 +118,11 @@ class TaskActivity : SimpleActivity() {
             if (savedInstanceState == null) {
                 setupEditTask()
             }
+
+            if (intent.getBooleanExtra(IS_DUPLICATE_INTENT, false)) {
+                mTask.id = null
+                updateActionBarTitle(getString(R.string.new_task))
+            }
         } else {
             mTask = Event(null)
             if (savedInstanceState == null) {
@@ -204,7 +210,16 @@ class TaskActivity : SimpleActivity() {
         }
     }
 
-    private fun duplicateTask() {}
+    private fun duplicateTask() {
+        // the activity has the singleTask launchMode to avoid some glitches, so finish it before relaunching
+        hideKeyboard()
+        finish()
+        Intent(this, TaskActivity::class.java).apply {
+            putExtra(EVENT_ID, mTask.id)
+            putExtra(IS_DUPLICATE_INTENT, true)
+            startActivity(this)
+        }
+    }
 
     private fun setupDate() {
         hideKeyboard()
