@@ -8,13 +8,11 @@ import android.view.MenuItem
 import android.view.WindowManager
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.dialogs.SelectEventTypeDialog
-import com.simplemobiletools.calendar.pro.extensions.config
-import com.simplemobiletools.calendar.pro.extensions.eventTypesDB
-import com.simplemobiletools.calendar.pro.extensions.eventsDB
-import com.simplemobiletools.calendar.pro.extensions.seconds
+import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.models.Event
+import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import kotlinx.android.synthetic.main.activity_event.*
@@ -193,7 +191,18 @@ class TaskActivity : SimpleActivity() {
         }
     }
 
-    private fun deleteTask() {}
+    private fun deleteTask() {
+        ConfirmationDialog(this) {
+            ensureBackgroundThread {
+                eventsHelper.deleteEvent(mTask.id!!, false)
+
+                runOnUiThread {
+                    hideKeyboard()
+                    finish()
+                }
+            }
+        }
+    }
 
     private fun duplicateTask() {}
 
