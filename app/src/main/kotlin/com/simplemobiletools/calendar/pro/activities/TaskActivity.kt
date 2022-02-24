@@ -144,6 +144,7 @@ class TaskActivity : SimpleActivity() {
         config.lastUsedLocalEventTypeId = mEventTypeId
         mTask.apply {
             startTS = mTaskDateTime.withSecondOfMinute(0).withMillisOfSecond(0).seconds()
+            endTS = startTS
             title = newTitle
             description = task_description.value
             flags = mTask.flags.addBitIf(task_all_day.isChecked, FLAG_ALL_DAY)

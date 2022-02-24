@@ -294,6 +294,8 @@ class EventsHelper(val context: Context) {
 
         events.addAll(getRepeatableEventsFor(fromTS, toTS, eventId, applyTypeFilter))
 
+        events.addAll(eventsDB.getTasksFromTo(fromTS, toTS))
+
         events = events
             .asSequence()
             .distinct()
