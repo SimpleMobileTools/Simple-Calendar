@@ -37,7 +37,7 @@ class TaskActivity : SimpleActivity() {
         val intent = intent ?: return
         mDialogTheme = getDialogTheme()
         updateColors()
-        val taskId = intent.getLongExtra(TASK_ID, 0L)
+        val taskId = intent.getLongExtra(EVENT_ID, 0L)
         gotTask(savedInstanceState, null)
     }
 

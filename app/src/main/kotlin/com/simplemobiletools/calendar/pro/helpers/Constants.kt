@@ -8,7 +8,6 @@ const val SCHEDULE_CALDAV_REQUEST_CODE = 10000
 const val DAY_CODE = "day_code"
 const val YEAR_LABEL = "year"
 const val EVENT_ID = "event_id"
-const val TASK_ID = "task_id"
 const val IS_DUPLICATE_INTENT = "is_duplicate_intent"
 const val EVENT_OCCURRENCE_TS = "event_occurrence_ts"
 const val NEW_EVENT_START_TS = "new_event_start_ts"

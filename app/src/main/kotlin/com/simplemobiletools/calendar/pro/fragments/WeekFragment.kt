@@ -549,7 +549,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                         }
 
                         setOnClickListener {
-                            Intent(context, EventActivity::class.java).apply {
+                            Intent(context, event.getActivityToOpen()).apply {
                                 putExtra(EVENT_ID, event.id!!)
                                 putExtra(EVENT_OCCURRENCE_TS, event.startTS)
                                 startActivity(this)
@@ -719,7 +719,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             calculateExtraHeight()
 
             setOnClickListener {
-                Intent(context, EventActivity::class.java).apply {
+                Intent(context, event.getActivityToOpen()).apply {
                     putExtra(EVENT_ID, event.id)
                     putExtra(EVENT_OCCURRENCE_TS, event.startTS)
                     startActivity(this)
