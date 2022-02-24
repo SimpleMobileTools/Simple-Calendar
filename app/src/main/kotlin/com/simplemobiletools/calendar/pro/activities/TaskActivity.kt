@@ -10,13 +10,19 @@ import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.dialogs.SelectEventTypeDialog
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.eventTypesDB
+import com.simplemobiletools.calendar.pro.extensions.eventsDB
 import com.simplemobiletools.calendar.pro.extensions.seconds
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
+import kotlinx.android.synthetic.main.activity_event.*
 import kotlinx.android.synthetic.main.activity_task.*
+import kotlinx.android.synthetic.main.activity_task.event_type
+import kotlinx.android.synthetic.main.activity_task.event_type_color
+import kotlinx.android.synthetic.main.activity_task.event_type_holder
+import kotlinx.android.synthetic.main.activity_task.event_type_image
 import org.joda.time.DateTime
 import java.util.*
 
@@ -38,7 +44,20 @@ class TaskActivity : SimpleActivity() {
         mDialogTheme = getDialogTheme()
         updateColors()
         val taskId = intent.getLongExtra(EVENT_ID, 0L)
-        gotTask(savedInstanceState, null)
+        ensureBackgroundThread {
+            val task = eventsDB.getTaskWithId(taskId)
+            if (taskId != 0L && task == null) {
+                hideKeyboard()
+                finish()
+                return@ensureBackgroundThread
+            }
+
+            runOnUiThread {
+                if (!isDestroyed && !isFinishing) {
+                    gotTask(savedInstanceState, task)
+                }
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -97,8 +116,14 @@ class TaskActivity : SimpleActivity() {
     private fun gotTask(savedInstanceState: Bundle?, task: Event?) {
         if (task != null) {
             mTask = task
+            if (savedInstanceState == null) {
+                setupEditTask()
+            }
         } else {
             mTask = Event(null)
+            if (savedInstanceState == null) {
+                setupNewTask()
+            }
         }
 
         mEventTypeId = if (config.defaultEventTypeId == -1L) config.lastUsedLocalEventTypeId else config.defaultEventTypeId
@@ -112,13 +137,20 @@ class TaskActivity : SimpleActivity() {
         task_time.setOnClickListener { setupTime() }
         event_type_holder.setOnClickListener { showEventTypeDialog() }
 
-        setupNewTask()
-
         if (savedInstanceState == null) {
             updateEventType()
             updateDateText()
             updateTimeText()
         }
+    }
+
+    private fun setupEditTask() {
+        mTaskDateTime = Formatter.getDateTimeFromTS(mTask.startTS)
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
+        updateActionBarTitle(getString(R.string.edit_task))
+
+        task_title.setText(mTask.title)
+        task_description.setText(mTask.description)
     }
 
     private fun setupNewTask() {
