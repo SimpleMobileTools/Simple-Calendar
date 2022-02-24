@@ -7,7 +7,9 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.WindowManager
 import com.simplemobiletools.calendar.pro.R
+import com.simplemobiletools.calendar.pro.dialogs.SelectEventTypeDialog
 import com.simplemobiletools.calendar.pro.extensions.config
+import com.simplemobiletools.calendar.pro.extensions.eventTypesDB
 import com.simplemobiletools.calendar.pro.extensions.seconds
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
@@ -20,6 +22,7 @@ import java.util.*
 
 class TaskActivity : SimpleActivity() {
     private var mDialogTheme = 0
+    private var mEventTypeId = REGULAR_EVENT_TYPE_ID
     private lateinit var mTaskDateTime: DateTime
     private lateinit var mTask: Event
 
@@ -35,7 +38,7 @@ class TaskActivity : SimpleActivity() {
         mDialogTheme = getDialogTheme()
         updateColors()
         val taskId = intent.getLongExtra(TASK_ID, 0L)
-        gotTask(null)
+        gotTask(savedInstanceState, null)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -59,12 +62,14 @@ class TaskActivity : SimpleActivity() {
         return true
     }
 
-    private fun gotTask(task: Event?) {
+    private fun gotTask(savedInstanceState: Bundle?, task: Event?) {
         if (task != null) {
             mTask = task
         } else {
             mTask = Event(null)
         }
+
+        mEventTypeId = if (config.defaultEventTypeId == -1L) config.lastUsedLocalEventTypeId else config.defaultEventTypeId
 
         task_all_day.setOnCheckedChangeListener { compoundButton, isChecked -> toggleAllDay(isChecked) }
         task_all_day_holder.setOnClickListener {
@@ -73,10 +78,15 @@ class TaskActivity : SimpleActivity() {
 
         task_date.setOnClickListener { setupDate() }
         task_time.setOnClickListener { setupTime() }
+        event_type_holder.setOnClickListener { showEventTypeDialog() }
 
         setupNewTask()
-        updateDateText()
-        updateTimeText()
+
+        if (savedInstanceState == null) {
+            updateEventType()
+            updateDateText()
+            updateTimeText()
+        }
     }
 
     private fun setupNewTask() {
@@ -99,12 +109,15 @@ class TaskActivity : SimpleActivity() {
             return
         }
 
+        config.lastUsedLocalEventTypeId = mEventTypeId
         mTask.apply {
             startTS = mTaskDateTime.withSecondOfMinute(0).withMillisOfSecond(0).seconds()
             title = newTitle
             description = task_description.value
             flags = mTask.flags.addBitIf(task_all_day.isChecked, FLAG_ALL_DAY)
             lastUpdated = System.currentTimeMillis()
+            eventType = mEventTypeId
+            type = TYPE_TASK
         }
 
         ensureBackgroundThread {
@@ -167,8 +180,29 @@ class TaskActivity : SimpleActivity() {
         task_time.beGoneIf(isChecked)
     }
 
+    private fun showEventTypeDialog() {
+        hideKeyboard()
+        SelectEventTypeDialog(this, mEventTypeId, false, true, false, true) {
+            mEventTypeId = it.id!!
+            updateEventType()
+        }
+    }
+
+    private fun updateEventType() {
+        ensureBackgroundThread {
+            val eventType = eventTypesDB.getEventTypeWithId(mEventTypeId)
+            if (eventType != null) {
+                runOnUiThread {
+                    event_type.text = eventType.title
+                    event_type_color.setFillWithStroke(eventType.color, config.backgroundColor)
+                }
+            }
+        }
+    }
+
     private fun updateColors() {
         updateTextColors(task_scrollview)
         task_time_image.applyColorFilter(config.textColor)
+        event_type_image.applyColorFilter(config.textColor)
     }
 }
