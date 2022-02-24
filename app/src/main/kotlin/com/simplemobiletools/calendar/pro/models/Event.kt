@@ -142,6 +142,7 @@ data class Event(
     fun getIsAllDay() = flags and FLAG_ALL_DAY != 0
     fun hasMissingYear() = flags and FLAG_MISSING_YEAR != 0
     fun isTask() = type == TYPE_TASK
+    fun isTaskCompleted() = flags and FLAG_TASK_COMPLETED != 0
 
     fun getReminders() = listOf(
         Reminder(reminder1Minutes, reminder1Type),

@@ -3,6 +3,7 @@ package com.simplemobiletools.calendar.pro.activities
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -156,6 +157,17 @@ class TaskActivity : SimpleActivity() {
         mEventTypeId = mTask.eventType
         task_title.setText(mTask.title)
         task_description.setText(mTask.description)
+
+        mark_complete.setOnClickListener { toggleCompletion() }
+        mark_complete.beVisible()
+
+        val markCompleteBgColor = if (isWhiteTheme()) {
+            Color.WHITE
+        } else {
+            getAdjustedPrimaryColor()
+        }
+
+        mark_complete.setTextColor(markCompleteBgColor.getContrastColor())
     }
 
     private fun setupNewTask() {
@@ -268,6 +280,20 @@ class TaskActivity : SimpleActivity() {
     private fun toggleAllDay(isChecked: Boolean) {
         hideKeyboard()
         task_time.beGoneIf(isChecked)
+    }
+
+    private fun toggleCompletion() {
+        if (mTask.isTaskCompleted()) {
+            mTask.flags = mTask.flags.removeBit(FLAG_TASK_COMPLETED)
+        } else {
+            mTask.flags = mTask.flags or FLAG_TASK_COMPLETED
+        }
+
+        ensureBackgroundThread {
+            eventsDB.updateTaskCompletion(mTask.id!!, mTask.flags)
+            hideKeyboard()
+            finish()
+        }
     }
 
     private fun showEventTypeDialog() {

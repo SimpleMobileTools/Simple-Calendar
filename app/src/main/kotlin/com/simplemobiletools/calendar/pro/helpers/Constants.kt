@@ -122,7 +122,7 @@ const val REPEAT_ORDER_WEEKDAY = 4                      // i.e. every 4th sunday
 const val FLAG_ALL_DAY = 1
 const val FLAG_IS_IN_PAST = 2
 const val FLAG_MISSING_YEAR = 4
-const val FLAG_TASK_COMPLETE = 8
+const val FLAG_TASK_COMPLETED = 8
 
 // constants related to ICS file exporting / importing
 const val BEGIN_CALENDAR = "BEGIN:VCALENDAR"

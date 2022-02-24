@@ -170,5 +170,17 @@
             android:layout_below="@+id/event_type_holder"
             android:background="@color/divider_grey"
             android:importantForAccessibility="no" />
+
+        <android.widget.TextView
+            android:id="@+id/mark_complete"
+            style="@style/ColoredButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/event_type_divider"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/activity_margin"
+            android:text="@string/mark_completed"
+            android:visibility="gone" />
+
     </RelativeLayout>
 </ScrollView>
