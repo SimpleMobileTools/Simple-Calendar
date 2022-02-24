@@ -544,7 +544,19 @@ fun Context.getEventListItems(events: List<Event>, addSectionDays: Boolean = tru
         }
 
         val listEvent =
-            ListEvent(it.id!!, it.startTS, it.endTS, it.title, it.description, it.getIsAllDay(), it.color, it.location, it.isPastEvent, it.repeatInterval > 0)
+            ListEvent(
+                it.id!!,
+                it.startTS,
+                it.endTS,
+                it.title,
+                it.description,
+                it.getIsAllDay(),
+                it.color,
+                it.location,
+                it.isPastEvent,
+                it.repeatInterval > 0,
+                it.isTask()
+            )
         listItems.add(listEvent)
     }
     return listItems
@@ -610,7 +622,7 @@ fun Context.printBitmap(bitmap: Bitmap) {
 }
 
 fun Context.editEvent(event: ListEvent) {
-    Intent(this, EventActivity::class.java).apply {
+    Intent(this, getActivityToOpen(event.isTask)).apply {
         putExtra(EVENT_ID, event.id)
         putExtra(EVENT_OCCURRENCE_TS, event.startTS)
         startActivity(this)

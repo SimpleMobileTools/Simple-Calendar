@@ -1135,7 +1135,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                     val listItems = getEventListItems(events)
                     val eventsAdapter = EventListAdapter(this, listItems, true, this, search_results_list) {
                         if (it is ListEvent) {
-                            Intent(applicationContext, EventActivity::class.java).apply {
+                            Intent(applicationContext, getActivityToOpen(it.isTask)).apply {
                                 putExtra(EVENT_ID, it.id)
                                 startActivity(this)
                             }

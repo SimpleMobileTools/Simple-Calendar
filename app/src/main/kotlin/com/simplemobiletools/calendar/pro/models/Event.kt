@@ -5,8 +5,6 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
-import com.simplemobiletools.calendar.pro.activities.EventActivity
-import com.simplemobiletools.calendar.pro.activities.TaskActivity
 import com.simplemobiletools.calendar.pro.extensions.seconds
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.commons.extensions.addBitIf
@@ -206,11 +204,5 @@ data class Event(
         } else {
             DateTimeZone.getDefault().id
         }
-    }
-
-    fun getActivityToOpen() = if (isTask()) {
-        TaskActivity::class.java
-    } else {
-        EventActivity::class.java
     }
 }

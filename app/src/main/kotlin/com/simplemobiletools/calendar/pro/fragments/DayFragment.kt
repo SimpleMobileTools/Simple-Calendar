@@ -16,9 +16,7 @@ import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.eventsHelper
 import com.simplemobiletools.calendar.pro.extensions.getViewBitmap
 import com.simplemobiletools.calendar.pro.extensions.printBitmap
-import com.simplemobiletools.calendar.pro.helpers.DAY_CODE
-import com.simplemobiletools.calendar.pro.helpers.EVENT_ID
-import com.simplemobiletools.calendar.pro.helpers.EVENT_OCCURRENCE_TS
+import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.interfaces.NavigationListener
 import com.simplemobiletools.calendar.pro.models.Event
@@ -131,7 +129,7 @@ class DayFragment : Fragment() {
     }
 
     private fun editEvent(event: Event) {
-        Intent(context, event.getActivityToOpen()).apply {
+        Intent(context, getActivityToOpen(event.isTask())).apply {
             putExtra(EVENT_ID, event.id)
             putExtra(EVENT_OCCURRENCE_TS, event.startTS)
             startActivity(this)

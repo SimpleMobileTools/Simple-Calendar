@@ -232,6 +232,7 @@ class WidgetListConfigureActivity : SimpleActivity() {
                 config.primaryColor,
                 "",
                 false,
+                false,
                 false
             )
         )
@@ -246,6 +247,7 @@ class WidgetListConfigureActivity : SimpleActivity() {
                 false,
                 config.primaryColor,
                 "",
+                false,
                 false,
                 false
             )
@@ -268,6 +270,7 @@ class WidgetListConfigureActivity : SimpleActivity() {
                 config.primaryColor,
                 "",
                 false,
+                false,
                 false
             )
         )
@@ -283,6 +286,7 @@ class WidgetListConfigureActivity : SimpleActivity() {
                 config.primaryColor,
                 "",
                 false,
+                false,
                 false
             )
         )
@@ -297,6 +301,7 @@ class WidgetListConfigureActivity : SimpleActivity() {
                 false,
                 config.primaryColor,
                 "",
+                false,
                 false,
                 false
             )
