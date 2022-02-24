@@ -24,6 +24,10 @@ fun BaseSimpleActivity.shareEvents(ids: List<Long>) {
         }
 
         val events = eventsDB.getEventsWithIds(ids) as ArrayList<Event>
+        if (events.isEmpty()) {
+            toast(R.string.no_items_found)
+        }
+
         getFileOutputStream(file.toFileDirItem(this), true) {
             IcsExporter().exportEvents(this, it, events, false) {
                 if (it == IcsExporter.ExportResult.EXPORT_OK) {
