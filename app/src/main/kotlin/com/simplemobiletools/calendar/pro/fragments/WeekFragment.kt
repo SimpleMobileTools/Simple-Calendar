@@ -16,7 +16,6 @@ import android.widget.TextView
 import androidx.collection.LongSparseArray
 import androidx.fragment.app.Fragment
 import com.simplemobiletools.calendar.pro.R
-import com.simplemobiletools.calendar.pro.activities.EventActivity
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
@@ -25,8 +24,10 @@ import com.simplemobiletools.calendar.pro.interfaces.WeeklyCalendar
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.EventWeeklyView
 import com.simplemobiletools.calendar.pro.views.MyScrollView
+import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
+import com.simplemobiletools.commons.models.RadioItem
 import com.simplemobiletools.commons.views.MyTextView
 import kotlinx.android.synthetic.main.fragment_week.*
 import kotlinx.android.synthetic.main.fragment_week.view.*
@@ -317,10 +318,17 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
                     setOnClickListener {
                         val timestamp = Formatter.getDateTimeFromTS(weekTimestamp + index * DAY_SECONDS).withTime(hour, 0, 0, 0).seconds()
-                        Intent(context, EventActivity::class.java).apply {
-                            putExtra(NEW_EVENT_START_TS, timestamp)
-                            putExtra(NEW_EVENT_SET_HOUR_DURATION, true)
-                            startActivity(this)
+                        if (config.allowCreatingTasks) {
+                            val items = arrayListOf(
+                                RadioItem(TYPE_EVENT, getString(R.string.event)),
+                                RadioItem(TYPE_TASK, getString(R.string.task))
+                            )
+
+                            RadioGroupDialog(activity!!, items) {
+                                launchNewEventIntent(timestamp, it as Int == TYPE_TASK)
+                            }
+                        } else {
+                            launchNewEventIntent(timestamp, false)
                         }
                     }
 
@@ -335,6 +343,14 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 return super.onSingleTapUp(event)
             }
         })
+    }
+
+    private fun launchNewEventIntent(timestamp: Long, isTask: Boolean) {
+        Intent(context, getActivityToOpen(isTask)).apply {
+            putExtra(NEW_EVENT_START_TS, timestamp)
+            putExtra(NEW_EVENT_SET_HOUR_DURATION, true)
+            startActivity(this)
+        }
     }
 
     private fun getViewScaleDetector(): ScaleGestureDetector {
