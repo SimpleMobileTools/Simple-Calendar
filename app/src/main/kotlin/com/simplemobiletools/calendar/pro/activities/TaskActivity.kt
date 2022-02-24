@@ -113,6 +113,8 @@ class TaskActivity : SimpleActivity() {
     }
 
     private fun gotTask(savedInstanceState: Bundle?, task: Event?) {
+        mEventTypeId = if (config.defaultEventTypeId == -1L) config.lastUsedLocalEventTypeId else config.defaultEventTypeId
+
         if (task != null) {
             mTask = task
             if (savedInstanceState == null) {
@@ -129,8 +131,6 @@ class TaskActivity : SimpleActivity() {
                 setupNewTask()
             }
         }
-
-        mEventTypeId = if (config.defaultEventTypeId == -1L) config.lastUsedLocalEventTypeId else config.defaultEventTypeId
 
         task_all_day.setOnCheckedChangeListener { compoundButton, isChecked -> toggleAllDay(isChecked) }
         task_all_day_holder.setOnClickListener {
@@ -153,6 +153,7 @@ class TaskActivity : SimpleActivity() {
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
         updateActionBarTitle(getString(R.string.edit_task))
 
+        mEventTypeId = mTask.eventType
         task_title.setText(mTask.title)
         task_description.setText(mTask.description)
     }
