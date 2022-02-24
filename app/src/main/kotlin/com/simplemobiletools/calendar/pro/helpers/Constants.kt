@@ -45,6 +45,9 @@ const val ITEM_SECTION_MONTH = 2
 const val DEFAULT_START_TIME_NEXT_FULL_HOUR = -1
 const val DEFAULT_START_TIME_CURRENT_TIME = -2
 
+const val TYPE_EVENT = 0
+const val TYPE_TASK = 1
+
 const val DAY = 86400
 const val WEEK = 604800
 const val MONTH = 2592001    // exact value not taken into account, Joda is used for adding months and years

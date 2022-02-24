@@ -11,7 +11,7 @@ import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.seconds
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
-import com.simplemobiletools.calendar.pro.models.Task
+import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import kotlinx.android.synthetic.main.activity_task.*
@@ -21,7 +21,7 @@ import java.util.*
 class TaskActivity : SimpleActivity() {
     private var mDialogTheme = 0
     private lateinit var mTaskDateTime: DateTime
-    private lateinit var mTask: Task
+    private lateinit var mTask: Event
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,11 +59,11 @@ class TaskActivity : SimpleActivity() {
         return true
     }
 
-    private fun gotTask(task: Task?) {
+    private fun gotTask(task: Event?) {
         if (task != null) {
             mTask = task
         } else {
-            mTask = Task(null)
+            mTask = Event(null)
         }
 
         task_all_day.setOnCheckedChangeListener { compoundButton, isChecked -> toggleAllDay(isChecked) }
@@ -108,7 +108,7 @@ class TaskActivity : SimpleActivity() {
         }
 
         ensureBackgroundThread {
-            TasksHelper(this).insertTask(mTask) {
+            EventsHelper(this).insertTask(mTask) {
                 hideKeyboard()
                 finish()
             }

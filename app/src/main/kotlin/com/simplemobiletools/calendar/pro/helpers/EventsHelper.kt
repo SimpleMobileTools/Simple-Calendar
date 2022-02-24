@@ -120,6 +120,12 @@ class EventsHelper(val context: Context) {
         callback?.invoke(event.id!!)
     }
 
+    fun insertTask(task: Event, callback: () -> Unit) {
+        eventsDB.insertOrUpdate(task)
+        context.updateWidgets()
+        callback()
+    }
+
     fun insertEvents(events: ArrayList<Event>, addToCalDAV: Boolean) {
         try {
             for (event in events) {

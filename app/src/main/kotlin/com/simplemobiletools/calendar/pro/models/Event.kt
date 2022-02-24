@@ -39,7 +39,8 @@ data class Event(
     @ColumnInfo(name = "last_updated") var lastUpdated: Long = 0L,
     @ColumnInfo(name = "source") var source: String = SOURCE_SIMPLE_CALENDAR,
     @ColumnInfo(name = "availability") var availability: Int = 0,
-    @ColumnInfo(name = "color") var color: Int = 0
+    @ColumnInfo(name = "color") var color: Int = 0,
+    @ColumnInfo(name = "type") var type: Int = TYPE_EVENT
 ) : Serializable {
 
     companion object {
@@ -140,6 +141,7 @@ data class Event(
 
     fun getIsAllDay() = flags and FLAG_ALL_DAY != 0
     fun hasMissingYear() = flags and FLAG_MISSING_YEAR != 0
+    fun isTask() = type == TYPE_TASK
 
     fun getReminders() = listOf(
         Reminder(reminder1Minutes, reminder1Type),
