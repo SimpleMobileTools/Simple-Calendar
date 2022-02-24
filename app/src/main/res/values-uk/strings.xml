@@ -13,12 +13,10 @@
     <string name="go_to_today">Події сьогодні</string>
     <string name="go_to_date">Перегляд за датою</string>
     <string name="upgraded_from_free">Привіт,\n\nздається, що ви оновили застарілий безкоштовний додаток. Вам доведеться перенести локально збережені події вручну, експортувавши їх у файл .ics, а потім імпортувавши. Кнопки експорту/імпорту знаходяться в головному меню.\n\nПотім ви можете видалити стару версію, яка містить кнопку \"Оновити до Pro\" у верхній частині налаштувань додатка. Нарешті вам необхідно скинути налаштування додатка.\n\nДякуємо!</string>
-
     <!-- Widget titles -->
     <string name="widget_monthly">Календар на місяць</string>
     <string name="widget_list">Календар списку подій</string>
     <string name="widget_todays_date">Календар подій на сьогодні</string>
-
     <!-- Event -->
     <string name="event">Подія</string>
     <string name="edit_event">Редагувати подію</string>
@@ -33,17 +31,15 @@
     <string name="please_fill_location">Будь ласка, вкажіть місце, що буде показано на карті</string>
     <string name="public_event_notification_text">Наближається подія</string>
     <string name="saving_filtered_out">Saving… But the selected event type is filtered out in the top Menu - Filter</string>
-
     <!-- Tasks -->
-    <string name="task">Task</string>
-    <string name="tasks">Tasks</string>
-    <string name="edit_task">Edit Task</string>
-    <string name="new_task">New Task</string>
-    <string name="create_new_task">Create a new task</string>
-    <string name="duplicate_task">Duplicate task</string>
-    <string name="mark_completed">Mark completed</string>
-    <string name="mark_incomplete">Mark incomplete</string>
-
+    <string name="task">Завдання</string>
+    <string name="tasks">Завдання</string>
+    <string name="edit_task">Редагувати завдання</string>
+    <string name="new_task">Нове завдання</string>
+    <string name="create_new_task">Створити нове завдання</string>
+    <string name="duplicate_task">Дублювати завдання</string>
+    <string name="mark_completed">Позначити завершеним</string>
+    <string name="mark_incomplete">Позначити незавершеним</string>
     <!-- Event Repetition -->
     <string name="repetition">Повторювати</string>
     <string name="no_repetition">Без повторень</string>
@@ -85,7 +81,6 @@
     <string name="fourth_m">четвертий</string>
     <string name="fifth_m">п\'ятий</string>
     <string name="last_m">останній</string>
-
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
     <string name="repeat_every_f">Повторити кожного</string>
@@ -96,29 +91,25 @@
     <string name="fourth_f">четвертий</string>
     <string name="fifth_f">п\'ятий</string>
     <string name="last_f">останній</string>
-
     <!-- Birthdays -->
     <string name="birthdays">Дні народжень</string>
     <string name="add_birthdays">Додати дні народжень контактів</string>
     <string name="no_birthdays">Дні народжень не знайдено</string>
     <string name="no_new_birthdays">Не знайдено нових днів народжень</string>
     <string name="birthdays_added">Дні народжень успішно додано</string>
-    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
-
+    <string name="add_birthdays_automatically">Додавати нові дні народження автоматично</string>
     <!-- Anniversaries -->
     <string name="anniversaries">Річниці</string>
     <string name="add_anniversaries">Додати річниці контактів</string>
     <string name="no_anniversaries">Річниці не знайдено</string>
     <string name="no_new_anniversaries">Нових річниць не знайдено</string>
     <string name="anniversaries_added">Річниці успішно додано</string>
-    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
-
+    <string name="add_anniversaries_automatically">Додавати нові річниці автоматично</string>
     <!-- Event Reminders -->
     <string name="reminder">Нагадування</string>
     <string name="before">до події</string>
     <string name="add_another_reminder">Додати інше нагадування</string>
     <string name="event_reminders">Нагадування про події</string>
-
     <!-- Event attendees -->
     <string name="add_another_attendee">Додати іншого учасника</string>
     <string name="my_status">Мій статус:</string>
@@ -126,10 +117,8 @@
     <string name="not_going">Не прийду</string>
     <string name="maybe_going">Можливо прийду</string>
     <string name="invited">Запрошений</string>
-
     <!-- Time zones -->
     <string name="enter_a_country">Введіть країну або часовий пояс</string>
-
     <!-- Export / Import -->
     <string name="import_events">Імпорт подій</string>
     <string name="export_events">Експорт подій</string>
@@ -139,17 +128,14 @@
     <string name="export_past_events_too">Експортувати також події, що відбулися</string>
     <string name="include_event_types">Приєднати тип подій</string>
     <string name="filename_without_ics">Назва файлу (без .ics)</string>
-    <string name="ignore_event_types">Ignore event types in the file, always use the default one</string>
-
+    <string name="ignore_event_types">Ігнорувати типи подій у файлі, завжди використовувати за замовчуванням</string>
     <!-- Event details -->
     <string name="location">Місце</string>
     <string name="description">Описання</string>
     <string name="all_day">Цілий день</string>
-
     <!-- Weekly view -->
     <string name="week">Тиждень</string>
-    <string name="start_week_with_current_day">Start week with the current day</string>
-
+    <string name="start_week_with_current_day">Починати тиждень з поточного дня</string>
     <!-- Event types -->
     <string name="event_types">Типи подій</string>
     <string name="add_new_type">Додати новий тип подій</string>
@@ -162,7 +148,6 @@
     <string name="move_events_into_default">Встановити обраним подіям стандартний тип</string>
     <string name="remove_affected_events">Назавжди видалити пов\'язані події</string>
     <string name="unsync_caldav_calendar">Щоб видалити календар CalDAV, необхідно відключити синхронізацію з ним</string>
-
     <!-- Holidays -->
     <string name="holidays">Свята</string>
     <string name="add_holidays">Додати свято</string>
@@ -171,7 +156,6 @@
     <string name="holidays_imported_successfully">Свята успішно імпортовано в \"Свята\"</string>
     <string name="importing_some_holidays_failed">Деякі події не вдалось імпортувати</string>
     <string name="importing_holidays_failed">Свята не вдалось імпортувати</string>
-
     <!-- Settings -->
     <string name="manage_event_types">Керувати типами подій</string>
     <string name="start_day_at">Огляд тижня починати</string>
@@ -188,7 +172,7 @@
     <string name="event_lists">Списки подій</string>
     <string name="display_past_events">Показувати події, що відбулися</string>
     <string name="replace_description_with_location">Замінювати описання події місцем</string>
-    <string name="display_description_or_location">Display description or location</string>
+    <string name="display_description_or_location">Відображати опис або місце розташування</string>
     <string name="delete_all_events">Видалити всі події</string>
     <string name="delete_all_events_confirmation">Ви дійсно бажаєте видалити всі події? Це не торкнеться ваших типів подій та інших налаштувань.</string>
     <string name="show_a_grid">Показувати решітку</string>
@@ -214,11 +198,10 @@
     <string name="last_used_one">Останнє використане</string>
     <string name="other_time">Інший час</string>
     <string name="highlight_weekends">Виділяти вихідні дні на деяких переглядах</string>
-    <string name="highlight_weekends_color">Color of highlighted weekends</string>
+    <string name="highlight_weekends_color">Колір виділених вихідних днів</string>
     <string name="allow_changing_time_zones">Дозволити змінювати часові пояси подій</string>
-    <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
-    <string name="allow_creating_tasks">Allow creating tasks</string>
-
+    <string name="manage_quick_filter_event_types">Керування типами подій швидкого фільтра</string>
+    <string name="allow_creating_tasks">Дозволити створення завдань</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Оберіть календарі для синхронізації</string>
@@ -235,8 +218,7 @@
     <string name="caldav_event_not_found">Подію не знайдено. Будь ласка, увімкніть синхронізацію згідно CalDAV для відповідного календаря у налаштуваннях додатка.</string>
     <string name="no_synchronized_calendars">Не знайдено календарів для синхронізації</string>
     <string name="status_free">Free</string>
-    <string name="status_busy">Busy</string>
-
+    <string name="status_busy">Зайнятий</string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">понеділок</string>
@@ -246,7 +228,6 @@
     <string name="friday_alt">п\'ятниця</string>
     <string name="saturday_alt">субота</string>
     <string name="sunday_alt">неділя</string>
-
     <!-- List widget config example events -->
     <string name="sample_title_1">Тренування</string>
     <string name="sample_description_1">День ніг</string>
@@ -256,28 +237,32 @@
     <string name="sample_title_4">Обід із Марією</string>
     <string name="sample_description_4">На Центральній площі</string>
     <string name="sample_title_5">Час на каву</string>
-
     <!-- List widget config -->
-    <string name="show_events_happening">Show events happening:</string>
-    <string name="within_the_next_one_year">Within the next 1 year</string>
-    <string name="today_only">Today only</string>
-    <string name="within_the_next">Within the next…</string>
+    <string name="show_events_happening">Показати події, що відбуваються:</string>
+    <string name="within_the_next_one_year">Протягом наступного року</string>
+    <string name="today_only">Тільки сьогодні</string>
+    <string name="within_the_next">Протягом…</string>
     <plurals name="within_the_next_days">
-        <item quantity="one">Within the next %d day</item>
-        <item quantity="other">Within the next %d days</item>
+        <item quantity="one">Протягом наступного %d дня</item>
+        <item quantity="few">Протягом наступних %d днів</item>
+        <item quantity="many">Протягом наступних %d днів</item>
+        <item quantity="other">Протягом наступних %d днів</item>
     </plurals>
     <plurals name="within_the_next_weeks">
-        <item quantity="one">Within the next %d week</item>
-        <item quantity="other">Within the next %d weeks</item>
+        <item quantity="one">Протягом наступного %d тижня</item>
+        <item quantity="few">Протягом наступних %d тижнів</item>
+        <item quantity="many">Протягом наступних %d тижнів</item>
+        <item quantity="other">Протягом наступних %d тижнів</item>
     </plurals>
     <plurals name="within_the_next_months">
-        <item quantity="one">Within the next %d month</item>
-        <item quantity="other">Within the next %d months</item>
+        <item quantity="one">Протягом наступного %d місяця</item>
+        <item quantity="few">Протягом наступних %d місяців</item>
+        <item quantity="many">Протягом наступних %d місяців</item>
+        <item quantity="other">Протягом наступних %d місяців</item>
     </plurals>
-
     <!-- FAQ -->
     <string name="faq_1_title">Як видалити свята, імпортовані з допомогою кнопки \"Додати свята\"?</string>
-    <string name="faq_1_text">Свята, створені таким чином, групуються в новий тип подій, що називається \"Свята\". Можна перейти в \"Налаштування\" -> \"Керувати типами подій\", 
+    <string name="faq_1_text">Свята, створені таким чином, групуються в новий тип подій, що називається \"Свята\". Можна перейти в \"Налаштування\" -&gt; \"Керувати типами подій\", 
         потім тривале натиснення на даному типу подій активує процедуру видалення, нарешті натиснути \"Кошик\".</string>
     <string name="faq_2_title">Чи можна синхронізувати події з допомогою Календаря Google чи інших служб, що підтримують CalDAV?</string>
     <string name="faq_2_text">Так, достатньо увімкнути \"Синхронізувати з CalDAV\" у налаштуваннях додатка і вибрати календарі, які бажаєте синхронізувати. Однак вам знадобиться сторонній додаток, що здійснить синхронізацію між пристроєм і сервером.
@@ -288,11 +273,10 @@
     <string name="faq_4_title">Чи підтримує додаток часові пояси?</string>
     <string name="faq_4_text">Так, підтримує. Типово всі події створюються у вашому часовому поясі. Якщо ви бажаєте змінити часовий пояс події,
         вам спершу доведеться увімкнути перемикач часових поясів у налаштуваннях додатка, потім змінити налаштування у вікні Деталі Події. Типово ця опція не активована, оскільки більшість користувачів нею не користуються.</string>
-    <string name="faq_5_title">The app shows no notifications, why is that?</string>
-    <string name="faq_5_text">Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. You might also want to take a look at &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, it has some useful tips.</string>
-    <string name="faq_6_title">How can I modify or delete an existing event type?</string>
+    <string name="faq_5_title">Додаток не показує жодних сповіщень, чому так\?</string>
+    <string name="faq_5_text">Перевірте акумулятор вашого пристрою та налаштування сповіщень і переконайтесь, що ніщо не блокує нагадування чи не вимикає програму у фоновому режимі. Ви також можете поглянути на &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, там є кілька корисних порад.</string>
+    <string name="faq_6_title">Як змінити або видалити наявний тип події\?</string>
     <string name="faq_6_text">You can do both of those in the app Settings - Manage event types. Just click on the wanted one for changing the label and color, or select the wanted one by long pressing it and use the trashbin at the top menu for deleting.</string>
-
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Простий Календар Pro - Події і Нагадування</string>
@@ -340,7 +324,6 @@
         <b>Reddit:</b>
         https://www.reddit.com/r/SimpleMobileTools
     </string>
-
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res

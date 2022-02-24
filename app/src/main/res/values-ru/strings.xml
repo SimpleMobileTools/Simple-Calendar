@@ -32,14 +32,14 @@
     <string name="public_event_notification_text">Предстоящее событие</string>
     <string name="saving_filtered_out">Сохранение… Однако выбранный тип события исключён в разделе \"Фильтр\" верхнего меню</string>
     <!-- Tasks -->
-    <string name="task">Task</string>
-    <string name="tasks">Tasks</string>
-    <string name="edit_task">Edit Task</string>
-    <string name="new_task">New Task</string>
-    <string name="create_new_task">Create a new task</string>
-    <string name="duplicate_task">Duplicate task</string>
-    <string name="mark_completed">Mark completed</string>
-    <string name="mark_incomplete">Mark incomplete</string>
+    <string name="task">Задача</string>
+    <string name="tasks">Задачи</string>
+    <string name="edit_task">Редактировать задачу</string>
+    <string name="new_task">Новая задача</string>
+    <string name="create_new_task">Создать новую задачу</string>
+    <string name="duplicate_task">Дублировать задачу</string>
+    <string name="mark_completed">Пометить завершённой</string>
+    <string name="mark_incomplete">Пометить незавершённой</string>
     <!-- Event Repetition -->
     <string name="repetition">Повторять</string>
     <string name="no_repetition">Без повторения</string>
@@ -201,7 +201,7 @@
     <string name="highlight_weekends_color">Цвет выделенных выходных дней</string>
     <string name="allow_changing_time_zones">Разрешить изменение часового пояса событий</string>
     <string name="manage_quick_filter_event_types">Управление типами событий быстрого фильтра</string>
-    <string name="allow_creating_tasks">Allow creating tasks</string>
+    <string name="allow_creating_tasks">Разрешить создание задач</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Выберите календари для синхронизации</string>

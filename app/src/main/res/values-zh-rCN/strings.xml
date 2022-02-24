@@ -38,14 +38,14 @@
     <string name="public_event_notification_text">一个活动即将到来</string>
     <string name="saving_filtered_out">正在保存…但所选择的事件类型在顶部菜单的“筛选”中被过滤掉</string>
     <!-- Tasks -->
-    <string name="task">Task</string>
-    <string name="tasks">Tasks</string>
-    <string name="edit_task">Edit Task</string>
-    <string name="new_task">New Task</string>
-    <string name="create_new_task">Create a new task</string>
-    <string name="duplicate_task">Duplicate task</string>
-    <string name="mark_completed">Mark completed</string>
-    <string name="mark_incomplete">Mark incomplete</string>
+    <string name="task">任务</string>
+    <string name="tasks">任务</string>
+    <string name="edit_task">编辑任务</string>
+    <string name="new_task">新建任务</string>
+    <string name="create_new_task">创建新任务</string>
+    <string name="duplicate_task">重复任务</string>
+    <string name="mark_completed">标记已完成</string>
+    <string name="mark_incomplete">标记未完成</string>
     <!-- Event Repetition -->
     <string name="repetition">重复</string>
     <string name="no_repetition">不重复</string>
@@ -207,7 +207,7 @@
     <string name="highlight_weekends_color">突出显示的周末的颜色</string>
     <string name="allow_changing_time_zones">允许更改活动时区</string>
     <string name="manage_quick_filter_event_types">管理快速过滤事件类型</string>
-    <string name="allow_creating_tasks">Allow creating tasks</string>
+    <string name="allow_creating_tasks">允许创建任务</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV 同步</string>
     <string name="select_caldav_calendars">选择日历来同步</string>
