@@ -172,7 +172,7 @@
             android:importantForAccessibility="no" />
 
         <android.widget.TextView
-            android:id="@+id/mark_complete"
+            android:id="@+id/toggle_mark_complete"
             style="@style/ColoredButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.WindowManager
+import androidx.core.content.ContextCompat
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.dialogs.SelectEventTypeDialog
 import com.simplemobiletools.calendar.pro.extensions.*
@@ -157,17 +158,7 @@ class TaskActivity : SimpleActivity() {
         mEventTypeId = mTask.eventType
         task_title.setText(mTask.title)
         task_description.setText(mTask.description)
-
-        mark_complete.setOnClickListener { toggleCompletion() }
-        mark_complete.beVisible()
-
-        val markCompleteBgColor = if (isWhiteTheme()) {
-            Color.WHITE
-        } else {
-            getAdjustedPrimaryColor()
-        }
-
-        mark_complete.setTextColor(markCompleteBgColor.getContrastColor())
+        setupMarkCompleteButton()
     }
 
     private fun setupNewTask() {
@@ -280,6 +271,23 @@ class TaskActivity : SimpleActivity() {
     private fun toggleAllDay(isChecked: Boolean) {
         hideKeyboard()
         task_time.beGoneIf(isChecked)
+    }
+
+    private fun setupMarkCompleteButton() {
+        toggle_mark_complete.setOnClickListener { toggleCompletion() }
+        toggle_mark_complete.beVisible()
+        if (mTask.isTaskCompleted()) {
+            toggle_mark_complete.background = ContextCompat.getDrawable(this, R.drawable.button_background_stroke)
+            toggle_mark_complete.setText(R.string.mark_incomplete)
+            toggle_mark_complete.setTextColor(config.textColor)
+        } else {
+            val markCompleteBgColor = if (isWhiteTheme()) {
+                Color.WHITE
+            } else {
+                getAdjustedPrimaryColor()
+            }
+            toggle_mark_complete.setTextColor(markCompleteBgColor.getContrastColor())
+        }
     }
 
     private fun toggleCompletion() {
