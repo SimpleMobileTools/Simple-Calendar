@@ -116,7 +116,7 @@
             android:id="@+id/event_caldav_calendar_divider"
             android:layout_width="match_parent"
             android:layout_height="1px"
-            android:layout_below="@+id/task_time"
+            android:layout_below="@+id/task_date"
             android:background="@color/divider_grey"
             android:importantForAccessibility="no" />
 
