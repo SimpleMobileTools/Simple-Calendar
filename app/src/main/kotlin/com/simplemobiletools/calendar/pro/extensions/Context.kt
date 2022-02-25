@@ -555,7 +555,8 @@ fun Context.getEventListItems(events: List<Event>, addSectionDays: Boolean = tru
                 it.location,
                 it.isPastEvent,
                 it.repeatInterval > 0,
-                it.isTask()
+                it.isTask(),
+                it.isTaskCompleted()
             )
         listItems.add(listEvent)
     }

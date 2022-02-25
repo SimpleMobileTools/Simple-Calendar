@@ -122,7 +122,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
                 val validDayEvent = isDayValid(event, day.code)
                 if ((lastEvent == null || lastEvent.startDayIndex + daysCnt <= day.indexOnMonthView) && !validDayEvent) {
                     val monthViewEvent = MonthViewEvent(event.id!!, event.title, event.startTS, event.endTS, event.color, day.indexOnMonthView,
-                        daysCnt, day.indexOnMonthView, event.getIsAllDay(), event.isPastEvent)
+                        daysCnt, day.indexOnMonthView, event.getIsAllDay(), event.isPastEvent, event.isTask(), event.isTaskCompleted())
                     allEvents.add(monthViewEvent)
                 }
             }
@@ -331,6 +331,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
 
         val curPaint = Paint(eventTitlePaint)
         curPaint.color = paintColor
+        curPaint.isStrikeThruText = event.isTaskCompleted
         return curPaint
     }
 

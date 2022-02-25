@@ -6,10 +6,7 @@ import android.view.ViewGroup
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.dialogs.DeleteEventDialog
-import com.simplemobiletools.calendar.pro.extensions.config
-import com.simplemobiletools.calendar.pro.extensions.eventsHelper
-import com.simplemobiletools.calendar.pro.extensions.handleEventDeleting
-import com.simplemobiletools.calendar.pro.extensions.shareEvents
+import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.models.ListEvent
@@ -134,6 +131,7 @@ class EventListAdapter(
             event_item_holder.isSelected = selectedKeys.contains(listEvent.hashCode())
             event_item_holder.background.applyColorFilter(textColor)
             event_item_title.text = listEvent.title
+            event_item_title.checkViewStrikeThrough(listEvent.isTaskCompleted)
             event_item_time.text = if (listEvent.isAllDay) allDayString else Formatter.getTimeFromTS(context, listEvent.startTS)
             if (listEvent.startTS != listEvent.endTS) {
                 if (!listEvent.isAllDay) {

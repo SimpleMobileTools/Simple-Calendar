@@ -546,6 +546,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                         background = ColorDrawable(backgroundColor)
                         setTextColor(textColor)
                         text = event.title
+                        checkViewStrikeThrough(event.isTaskCompleted())
                         contentDescription = text
                         dayColumn.addView(this)
                         y = currentEventWeeklyView!!.range.lower * minuteHeight
