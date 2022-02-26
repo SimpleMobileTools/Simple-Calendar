@@ -119,13 +119,14 @@ class TaskActivity : SimpleActivity() {
 
         if (task != null) {
             mTask = task
-            if (savedInstanceState == null) {
-                setupEditTask()
-            }
 
             if (intent.getBooleanExtra(IS_DUPLICATE_INTENT, false)) {
                 mTask.id = null
                 updateActionBarTitle(getString(R.string.new_task))
+            }
+
+            if (savedInstanceState == null) {
+                setupEditTask()
             }
         } else {
             mTask = Event(null)
@@ -275,7 +276,7 @@ class TaskActivity : SimpleActivity() {
 
     private fun setupMarkCompleteButton() {
         toggle_mark_complete.setOnClickListener { toggleCompletion() }
-        toggle_mark_complete.beVisible()
+        toggle_mark_complete.beVisibleIf(mTask.id != null)
         if (mTask.isTaskCompleted()) {
             toggle_mark_complete.background = ContextCompat.getDrawable(this, R.drawable.button_background_stroke)
             toggle_mark_complete.setText(R.string.mark_incomplete)
