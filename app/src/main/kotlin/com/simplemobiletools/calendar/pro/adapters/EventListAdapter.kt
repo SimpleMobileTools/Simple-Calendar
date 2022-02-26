@@ -3,6 +3,7 @@ package com.simplemobiletools.calendar.pro.adapters
 import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.dialogs.DeleteEventDialog
@@ -38,6 +39,7 @@ class EventListAdapter(
     private var use24HourFormat = activity.config.use24HourFormat
     private var currentItemsHash = listItems.hashCode()
     private var isPrintVersion = false
+    private val mediumMargin = activity.resources.getDimension(R.dimen.medium_margin).toInt()
 
     init {
         setupDragListener(true)
@@ -165,6 +167,15 @@ class EventListAdapter(
             event_item_time.setTextColor(newTextColor)
             event_item_title.setTextColor(newTextColor)
             event_item_description.setTextColor(newTextColor)
+            event_item_task_image.applyColorFilter(newTextColor)
+            event_item_task_image.beVisibleIf(listEvent.isTask)
+
+            val startMargin = if (listEvent.isTask) {
+                0
+            } else {
+                mediumMargin
+            }
+            (event_item_title.layoutParams as ConstraintLayout.LayoutParams).marginStart = startMargin
         }
     }
 

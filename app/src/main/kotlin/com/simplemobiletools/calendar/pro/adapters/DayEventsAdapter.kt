@@ -1,9 +1,9 @@
 package com.simplemobiletools.calendar.pro.adapters
 
-import android.graphics.Paint
 import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.dialogs.DeleteEventDialog
@@ -11,7 +11,9 @@ import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.commons.adapters.MyRecyclerViewAdapter
-import com.simplemobiletools.commons.extensions.*
+import com.simplemobiletools.commons.extensions.adjustAlpha
+import com.simplemobiletools.commons.extensions.applyColorFilter
+import com.simplemobiletools.commons.extensions.beVisibleIf
 import com.simplemobiletools.commons.helpers.MEDIUM_ALPHA
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import com.simplemobiletools.commons.views.MyRecyclerView
@@ -25,6 +27,7 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
     private val replaceDescriptionWithLocation = activity.config.replaceDescription
     private val dimPastEvents = activity.config.dimPastEvents
     private var isPrintVersion = false
+    private val mediumMargin = activity.resources.getDimension(R.dimen.medium_margin).toInt()
 
     init {
         setupDragListener(true)
@@ -98,6 +101,15 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
             event_item_time.setTextColor(newTextColor)
             event_item_title.setTextColor(newTextColor)
             event_item_description?.setTextColor(newTextColor)
+            event_item_task_image.applyColorFilter(newTextColor)
+            event_item_task_image.beVisibleIf(event.isTask())
+
+            val startMargin = if (event.isTask()) {
+                0
+            } else {
+                mediumMargin
+            }
+            (event_item_title.layoutParams as ConstraintLayout.LayoutParams).marginStart = startMargin
         }
     }
 

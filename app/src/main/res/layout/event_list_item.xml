@@ -31,11 +31,22 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/event_item_title" />
 
+        <ImageView
+            android:id="@+id/event_item_task_image"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/small_margin"
+            android:paddingTop="@dimen/small_margin"
+            android:paddingBottom="@dimen/small_margin"
+            android:src="@drawable/ic_task_vector"
+            app:layout_constraintBottom_toBottomOf="@+id/event_item_title"
+            app:layout_constraintStart_toEndOf="@+id/event_item_color_bar"
+            app:layout_constraintTop_toTopOf="@+id/event_item_title" />
+
         <TextView
             android:id="@+id/event_item_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/medium_margin"
             android:ellipsize="end"
             android:includeFontPadding="false"
             android:maxLines="1"
@@ -44,7 +55,7 @@
             android:paddingBottom="@dimen/tiny_margin"
             android:textSize="@dimen/day_text_size"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/event_item_color_bar"
+            app:layout_constraintStart_toEndOf="@+id/event_item_task_image"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Event title" />
 
@@ -54,12 +65,13 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_item_title"
             android:layout_alignStart="@+id/event_item_title"
+            android:layout_marginStart="@dimen/medium_margin"
             android:alpha="0.8"
             android:includeFontPadding="false"
             android:paddingBottom="@dimen/small_margin"
             android:textFontWeight="300"
             android:textSize="@dimen/normal_text_size"
-            app:layout_constraintStart_toStartOf="@+id/event_item_title"
+            app:layout_constraintStart_toEndOf="@+id/event_item_color_bar"
             app:layout_constraintTop_toBottomOf="@+id/event_item_title"
             tools:text="13:00" />
 
@@ -68,6 +80,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_item_title"
+            android:layout_marginStart="@dimen/medium_margin"
             android:alpha="0.8"
             android:ellipsize="end"
             android:includeFontPadding="false"
@@ -77,7 +90,7 @@
             android:textFontWeight="300"
             android:textSize="@dimen/normal_text_size"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/event_item_time"
+            app:layout_constraintStart_toEndOf="@+id/event_item_color_bar"
             app:layout_constraintTop_toBottomOf="@+id/event_item_time"
             tools:text="Event description" />
 
